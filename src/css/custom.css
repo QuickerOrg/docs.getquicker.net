@@ -1,0 +1,40 @@
+/**
+ * Global styles for the Quicker documentation site.
+ */
+
+/* You can override the default Infima variables here. */
+:root {
+  --ifm-color-primary: #1f7a8c;
+  --ifm-color-primary-dark: #1c6e7e;
+  --ifm-color-primary-darker: #1a6877;
+  --ifm-color-primary-darkest: #155662;
+  --ifm-color-primary-light: #22869a;
+  --ifm-color-primary-lighter: #248ca1;
+  --ifm-color-primary-lightest: #2a9fb6;
+  --ifm-code-font-size: 95%;
+  --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.1);
+}
+
+[data-theme='dark'] {
+  --ifm-color-primary: #4fb3c8;
+  --ifm-color-primary-dark: #38a7bf;
+  --ifm-color-primary-darker: #349eb5;
+  --ifm-color-primary-darkest: #2b8295;
+  --ifm-color-primary-light: #66bfd0;
+  --ifm-color-primary-lighter: #72c4d4;
+  --ifm-color-primary-lightest: #94d2de;
+  --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.3);
+}
+
+.quicker-comments {
+  border-top: 1px solid var(--ifm-color-emphasis-200);
+  margin-top: 3rem;
+  padding-top: 1.5rem;
+}
+
+.quicker-comments__frame {
+  border: 1px solid var(--ifm-color-emphasis-200);
+  border-radius: 8px;
+  min-height: 360px;
+  width: 100%;
+}

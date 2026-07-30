@@ -1,6 +1,6 @@
 ---
 title: 内置工具
-description: Quicker V2 内置的截图、AI 等工具的使用。
+description: Quicker V2 内置的截图、AI 等工具入口。
 sidebar_position: 50
 quickerDocKey: v2/features/tools
 comments: true
@@ -8,10 +8,14 @@ comments: true
 
 # 内置工具
 
-本文用于说明 Quicker V2 内置工具（截图、AI 等）的使用。
+Quicker V2 内置了一批可直接使用或在动作中调用的工具。截图相关能力已单独成章，其它工具说明会陆续补充。
 
-## 待补充内容
+## 截图与贴图
 
-- 截图工具与长截图
+- [截图与贴图概览](./screenshot/index.md)
+- [截图 Pro](./screenshot/capture-pro.md)：选区、控件吸附、标注、复制 / 保存 / 贴图，以及长截图与录屏入口
+
+## 待补充
+
 - AI 相关功能入口
 - 其它内置小工具

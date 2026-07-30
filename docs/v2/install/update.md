@@ -1,7 +1,7 @@
 ---
 title: 更新 Quicker V2
 description: Quicker V2 的更新检查、下载和注意事项。
-sidebar_position: 2
+sidebar_position: 20
 quickerDocKey: v2/update
 comments: true
 ---

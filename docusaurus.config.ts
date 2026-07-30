@@ -22,7 +22,7 @@ const config: Config = {
 
   // GitHub pages deployment config.
   // If you aren't using GitHub pages, you don't need these.
-  organizationName: 'cuiliang', // Usually your GitHub org/user name.
+  organizationName: 'QuickerOrg', // Usually your GitHub org/user name.
   projectName: 'docs.getquicker.net', // Usually your repo name.
 
   onBrokenLinks: 'throw',
@@ -43,7 +43,7 @@ const config: Config = {
           sidebarPath: './sidebars.ts',
           routeBasePath: '/',
           editUrl:
-            'https://github.com/cuiliang/docs.getquicker.net/tree/main/',
+            'https://github.com/QuickerOrg/docs.getquicker.net/tree/main/',
         },
         blog: false,
         theme: {
@@ -78,7 +78,7 @@ const config: Config = {
           position: 'right',
         },
         {
-          href: 'https://github.com/cuiliang/docs.getquicker.net',
+          href: 'https://github.com/QuickerOrg/docs.getquicker.net',
           label: 'GitHub',
           position: 'right',
         },
@@ -122,7 +122,7 @@ const config: Config = {
           items: [
             {
               label: 'GitHub',
-              href: 'https://github.com/cuiliang/docs.getquicker.net',
+              href: 'https://github.com/QuickerOrg/docs.getquicker.net',
             },
           ],
         },

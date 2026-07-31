@@ -17,6 +17,7 @@ comments: false
 - [开始使用 Quicker V2](./v2/getting-started.md)
 - [安装 Quicker V2](./v2/install/windows.md)
 - [从 V1 迁移](./v2/migration/from-v1.md)
+- [截图 Pro](./v2/features/screenshot/capture-pro.md)
 - [常见问题](./v2/troubleshooting.md)
 
 ## 编写约定

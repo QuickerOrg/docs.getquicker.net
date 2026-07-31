@@ -1,6 +1,6 @@
 ---
 title: 重要提示
-description: ''
+description: 有关数据完整性的重要提示信息
 sidebar_position: 10
 quickerDocKey: important-notice
 comments: true

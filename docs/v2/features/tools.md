@@ -14,6 +14,8 @@ Quicker V2 内置了一批可直接使用或在动作中调用的工具。截图
 
 - [截图与贴图概览](./screenshot/index.md)
 - [截图 Pro](./screenshot/capture-pro.md)：选区、控件吸附、标注、复制 / 保存 / 贴图，以及长截图与录屏入口
+- [图片翻译](./screenshot/image-translate.md)：截图 / 贴图图到图翻译与百度 / 有道 API 配置
+- [JS 自定义工具栏](./screenshot/toolbar-script.md)：用脚本定制工具栏，并调用子程序或启动动作
 
 ## 待补充
 

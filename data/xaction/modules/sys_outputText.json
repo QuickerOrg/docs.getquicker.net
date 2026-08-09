@@ -1,0 +1,123 @@
+{
+  "key": "sys:outputText",
+  "slug": "outputtext",
+  "legacySlug": "outputtext",
+  "ownsLegacyContent": true,
+  "name": "发送文本到窗口",
+  "description": "将文本输出到活动窗口中",
+  "category": "Basic",
+  "categoryName": "基础",
+  "stepType": "Action",
+  "isRisky": false,
+  "isProOnly": false,
+  "helpLink": "https://getquicker.net/KC/Help/Doc/outputtext",
+  "inputs": [
+    {
+      "key": "content",
+      "name": "内容",
+      "type": "Text",
+      "defaultValue": "",
+      "required": true,
+      "variableMode": "UseVarOrInput",
+      "condition": "",
+      "description": "要输出的内容"
+    },
+    {
+      "key": "method",
+      "name": "方法",
+      "type": "Enum",
+      "defaultValue": "paste",
+      "required": true,
+      "variableMode": "Input",
+      "condition": "",
+      "description": "发送内容使用的方法"
+    },
+    {
+      "key": "delayBeforePaste",
+      "name": "粘贴前延时",
+      "type": "Integer",
+      "defaultValue": "50",
+      "required": false,
+      "variableMode": "Input",
+      "condition": "仅：paste",
+      "description": "毫秒数。写入剪贴板以后，等待指定的时间后再发送粘贴按键(Ctrl+V)"
+    },
+    {
+      "key": "delayAfterPaste",
+      "name": "粘贴后延时",
+      "type": "Integer",
+      "defaultValue": "10",
+      "required": false,
+      "variableMode": "Input",
+      "condition": "仅：paste",
+      "description": "毫秒数。发送粘贴按键(Ctrl+V)之后等待的毫秒数"
+    },
+    {
+      "key": "delayBetweenChar",
+      "name": "字符间延迟",
+      "type": "Integer",
+      "defaultValue": "0",
+      "required": false,
+      "variableMode": "Input",
+      "condition": "仅：input",
+      "description": "模拟输入下一个字符之前等待的毫秒数。"
+    },
+    {
+      "key": "appendReturn",
+      "name": "在末尾添加回车",
+      "type": "Boolean",
+      "defaultValue": "false",
+      "required": false,
+      "variableMode": "Input",
+      "condition": "",
+      "description": "发送内容后，在末尾输入回车"
+    },
+    {
+      "key": "hideInHistory",
+      "name": "从剪贴板历史中隐藏",
+      "type": "Boolean",
+      "defaultValue": "false",
+      "required": false,
+      "variableMode": "Input",
+      "condition": "仅：paste",
+      "description": "Win+v 是否允许看到本条历史"
+    },
+    {
+      "key": "stopIfFail",
+      "name": "失败后停止",
+      "type": "Boolean",
+      "defaultValue": "true",
+      "required": false,
+      "variableMode": "Input",
+      "condition": "",
+      "description": "失败后是否停止动作"
+    }
+  ],
+  "outputs": [
+    {
+      "key": "isSuccess",
+      "name": "步骤是否成功",
+      "type": "Boolean",
+      "condition": "",
+      "description": "步骤是否成功完成"
+    }
+  ],
+  "selections": {
+    "method": {
+      "name": "方法",
+      "items": [
+        {
+          "value": "input",
+          "name": "模拟输入",
+          "description": ""
+        },
+        {
+          "value": "paste",
+          "name": "复制到剪贴板后粘贴(Ctrl+V)",
+          "description": ""
+        }
+      ]
+    }
+  },
+  "sourceFileName": "sys_outputText_发送文本到窗口.md"
+}

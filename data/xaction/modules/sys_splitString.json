@@ -1,0 +1,77 @@
+{
+  "key": "sys:splitString",
+  "slug": "splitstring",
+  "legacySlug": "splitstring",
+  "ownsLegacyContent": true,
+  "name": "拆分文本为列表",
+  "description": "将文本拆分为列表",
+  "category": "Text",
+  "categoryName": "文本处理",
+  "stepType": "Action",
+  "isRisky": false,
+  "isProOnly": false,
+  "helpLink": "https://getquicker.net/KC/Help/Doc/splitstring",
+  "inputs": [
+    {
+      "key": "data",
+      "name": "输入",
+      "type": "Text",
+      "defaultValue": "",
+      "required": true,
+      "variableMode": "UseVarOrInput",
+      "condition": "",
+      "description": "要拆分为列表的文本"
+    },
+    {
+      "key": "separator",
+      "name": "分隔",
+      "type": "Text",
+      "defaultValue": ",",
+      "required": true,
+      "variableMode": "Input",
+      "condition": "",
+      "description": "拆分分隔符"
+    },
+    {
+      "key": "escapeSeparator",
+      "name": "转义分隔符",
+      "type": "Boolean",
+      "defaultValue": "false",
+      "required": false,
+      "variableMode": "Input",
+      "condition": "",
+      "description": "转义分隔符\\r\\n\\t字符"
+    },
+    {
+      "key": "multiSeparator",
+      "name": "使用多个分隔符拆分列表",
+      "type": "Boolean",
+      "defaultValue": "false",
+      "required": false,
+      "variableMode": "Input",
+      "condition": "",
+      "description": "每行指定一个。"
+    },
+    {
+      "key": "removeEmpty",
+      "name": "滤除空值",
+      "type": "Boolean",
+      "defaultValue": "true",
+      "required": true,
+      "variableMode": "Input",
+      "condition": "",
+      "description": "滤除没有内容的文本"
+    }
+  ],
+  "outputs": [
+    {
+      "key": "output",
+      "name": "结果",
+      "type": "List",
+      "condition": "",
+      "description": "生成的文本内容"
+    }
+  ],
+  "selections": {},
+  "sourceFileName": "sys_splitString_拆分文本为列表.md"
+}

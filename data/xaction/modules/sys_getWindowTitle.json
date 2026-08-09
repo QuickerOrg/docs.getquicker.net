@@ -1,0 +1,341 @@
+{
+  "key": "sys:getWindowTitle",
+  "slug": "getwindowtitle",
+  "legacySlug": "getwindowtitle",
+  "ownsLegacyContent": true,
+  "name": "获取窗口信息/查找窗口",
+  "description": "获取指定窗口的标题等信息。",
+  "category": "System",
+  "categoryName": "Windows系统",
+  "stepType": "Action",
+  "isRisky": false,
+  "isProOnly": false,
+  "helpLink": "https://getquicker.net/KC/Help/Doc/getwindowtitle",
+  "inputs": [
+    {
+      "key": "which",
+      "name": "目标窗口",
+      "type": "Enum",
+      "defaultValue": "foreground",
+      "required": true,
+      "variableMode": "Input",
+      "condition": "",
+      "description": "判断哪个窗口的信息"
+    },
+    {
+      "key": "hWnd",
+      "name": "窗口句柄hWnd",
+      "type": "Integer",
+      "defaultValue": "",
+      "required": false,
+      "variableMode": "UseVarOrInput",
+      "condition": "仅：fromHwnd, findChildWindow, child_windows",
+      "description": "未指定时使用前台窗口句柄"
+    },
+    {
+      "key": "className",
+      "name": "窗口类名",
+      "type": "Text",
+      "defaultValue": "",
+      "required": false,
+      "variableMode": "UseVarOrInput",
+      "condition": "仅：findWindow, top_windows, findChildWindow, child_windows",
+      "description": "要查找窗口的类名（ClassName），为空时不检查此项。"
+    },
+    {
+      "key": "windowName",
+      "name": "窗口名称",
+      "type": "Text",
+      "defaultValue": "",
+      "required": false,
+      "variableMode": "UseVarOrInput",
+      "condition": "仅：findWindow, top_windows, findChildWindow, child_windows",
+      "description": "要查找窗口的标题，为空时不检查此项。"
+    },
+    {
+      "key": "procIdOrName",
+      "name": "进程名/pid",
+      "type": "Text",
+      "defaultValue": "",
+      "required": false,
+      "variableMode": "UseVarOrInput",
+      "condition": "仅：findWindow, top_windows",
+      "description": "要查找窗口所属的进程名或pid，为空时不检查此项。"
+    },
+    {
+      "key": "onlyVisible",
+      "name": "仅可见窗口",
+      "type": "Enum",
+      "defaultValue": "default",
+      "required": false,
+      "variableMode": "Input",
+      "condition": "仅：top_windows, findWindow",
+      "description": ""
+    },
+    {
+      "key": "requireTitle",
+      "name": "仅名称(标题)不为空的窗口",
+      "type": "Boolean",
+      "defaultValue": "true",
+      "required": false,
+      "variableMode": "Input",
+      "condition": "仅：top_windows, findWindow",
+      "description": ""
+    },
+    {
+      "key": "useRegex",
+      "name": "使用正则匹配窗口类名和标题",
+      "type": "Boolean",
+      "defaultValue": "false",
+      "required": false,
+      "variableMode": "Input",
+      "condition": "仅：findWindow, top_windows, child_windows",
+      "description": ""
+    },
+    {
+      "key": "winRectIncludeInvisibleBorder",
+      "name": "窗口位置包含不可见边框（阴影区域）",
+      "type": "Boolean",
+      "defaultValue": "false",
+      "required": false,
+      "variableMode": "Input",
+      "condition": "排除：top_windows, findChildWindow, child_windows",
+      "description": ""
+    },
+    {
+      "key": "stopIfFail",
+      "name": "失败后停止",
+      "type": "Boolean",
+      "defaultValue": "true",
+      "required": false,
+      "variableMode": "Input",
+      "condition": "",
+      "description": "失败后是否停止动作"
+    }
+  ],
+  "outputs": [
+    {
+      "key": "isSuccess",
+      "name": "是否成功",
+      "type": "Boolean",
+      "condition": "",
+      "description": "操作是否成功"
+    },
+    {
+      "key": "output",
+      "name": "窗口标题",
+      "type": "Text",
+      "condition": "排除：top_windows, findChildWindow, child_windows",
+      "description": "窗口的标题文字"
+    },
+    {
+      "key": "className",
+      "name": "类名",
+      "type": "Text",
+      "condition": "排除：top_windows, findChildWindow, child_windows",
+      "description": "窗口的 Class Name"
+    },
+    {
+      "key": "handle",
+      "name": "句柄",
+      "type": "Integer",
+      "condition": "排除：top_windows, child_windows",
+      "description": "窗口的句柄"
+    },
+    {
+      "key": "pid",
+      "name": "进程ID",
+      "type": "Integer",
+      "condition": "排除：top_windows, findChildWindow, child_windows",
+      "description": "窗口所属进程的ID"
+    },
+    {
+      "key": "procName",
+      "name": "进程名",
+      "type": "Text",
+      "condition": "排除：top_windows, findChildWindow, child_windows",
+      "description": "进程名称"
+    },
+    {
+      "key": "path",
+      "name": "程序路径",
+      "type": "Text",
+      "condition": "排除：top_windows, findChildWindow, child_windows",
+      "description": "获得的进程路径"
+    },
+    {
+      "key": "parent",
+      "name": "父窗口句柄",
+      "type": "Integer",
+      "condition": "排除：top_windows, findChildWindow, child_windows",
+      "description": ""
+    },
+    {
+      "key": "root",
+      "name": "根窗口句柄",
+      "type": "Integer",
+      "condition": "排除：top_windows, findChildWindow, child_windows",
+      "description": ""
+    },
+    {
+      "key": "rootOwner",
+      "name": "根所有者窗口句柄",
+      "type": "Integer",
+      "condition": "排除：top_windows, findChildWindow, child_windows",
+      "description": ""
+    },
+    {
+      "key": "rect",
+      "name": "窗口位置",
+      "type": "Text",
+      "condition": "排除：top_windows, findChildWindow, child_windows",
+      "description": "文本值，格式为:Left,Top,Right,Bottom,Width,Height。"
+    },
+    {
+      "key": "rectNoSize",
+      "name": "窗口位置(不含尺寸)",
+      "type": "Text",
+      "condition": "排除：top_windows, child_windows",
+      "description": "文本值，格式为:Left,Top,Right,Bottom。如:0,0,100,100"
+    },
+    {
+      "key": "rectDict",
+      "name": "窗口位置(词典值)",
+      "type": "Dict",
+      "condition": "排除：top_windows, child_windows",
+      "description": "词典值，属性为:Left,Top,Right,Bottom,Width,Height"
+    },
+    {
+      "key": "isTopmost",
+      "name": "是否置顶",
+      "type": "Boolean",
+      "condition": "排除：top_windows, findChildWindow, child_windows",
+      "description": ""
+    },
+    {
+      "key": "isVisible",
+      "name": "是否可见",
+      "type": "Boolean",
+      "condition": "排除：top_windows, findChildWindow, child_windows",
+      "description": ""
+    },
+    {
+      "key": "showState",
+      "name": "显示状态",
+      "type": "Integer",
+      "condition": "排除：top_windows, findChildWindow, child_windows",
+      "description": "1:普通，2:最小化，3:最大化。"
+    },
+    {
+      "key": "alpha",
+      "name": "不透明度",
+      "type": "Integer",
+      "condition": "排除：top_windows, findChildWindow, child_windows",
+      "description": "窗口的透明度，范围为0-255。0表示全透明"
+    },
+    {
+      "key": "borderColor",
+      "name": "边框颜色",
+      "type": "Text",
+      "condition": "排除：top_windows, findChildWindow, child_windows",
+      "description": "窗口的边框颜色，格式为#RRGGBB，或空字符串表示未设置颜色。（仅支持通过Quicker设置的边框颜色）"
+    },
+    {
+      "key": "allChildWindows",
+      "name": "所有子窗口",
+      "type": "Dict",
+      "condition": "排除：top_windows, findChildWindow",
+      "description": "词典值，Key为窗口句柄，Value为窗口标题"
+    },
+    {
+      "key": "topLevelWindows",
+      "name": "所有顶层窗口",
+      "type": "Dict",
+      "condition": "仅：top_windows",
+      "description": "词典值，Key为窗口句柄，Value为窗口标题"
+    }
+  ],
+  "selections": {
+    "which": {
+      "name": "目标窗口",
+      "items": [
+        {
+          "value": "foreground",
+          "name": "前台窗口",
+          "description": ""
+        },
+        {
+          "value": "selectWindow",
+          "name": "选择一个窗口",
+          "description": ""
+        },
+        {
+          "value": "pointing",
+          "name": "弹出面板前鼠标位置的窗口（可能为子窗口）",
+          "description": ""
+        },
+        {
+          "value": "pointing_root",
+          "name": "弹出面板前鼠标位置窗口的根窗口",
+          "description": ""
+        },
+        {
+          "value": "pointing_now",
+          "name": "当前鼠标位置的窗口（可能为子窗口）",
+          "description": ""
+        },
+        {
+          "value": "pointing_now_root",
+          "name": "当前鼠标位置窗口的根窗口",
+          "description": ""
+        },
+        {
+          "value": "fromHwnd",
+          "name": "句柄指定的窗口",
+          "description": ""
+        },
+        {
+          "value": "findWindow",
+          "name": "查找顶层窗口 (单个窗口)",
+          "description": ""
+        },
+        {
+          "value": "top_windows",
+          "name": "所有顶层窗口",
+          "description": ""
+        },
+        {
+          "value": "findChildWindow",
+          "name": "查找子窗口/控件 (单个窗口)",
+          "description": ""
+        },
+        {
+          "value": "child_windows",
+          "name": "查找子窗口 (多个窗口)",
+          "description": ""
+        }
+      ]
+    },
+    "onlyVisible": {
+      "name": "仅可见窗口",
+      "items": [
+        {
+          "value": "default",
+          "name": "未指定",
+          "description": ""
+        },
+        {
+          "value": "1",
+          "name": "仅可见窗口",
+          "description": ""
+        },
+        {
+          "value": "0",
+          "name": "所有窗口",
+          "description": ""
+        }
+      ]
+    }
+  },
+  "sourceFileName": "sys_getWindowTitle_获取窗口信息_查找窗口.md"
+}

@@ -1,0 +1,571 @@
+{
+  "key": "sys:uiautomation",
+  "slug": "uiautomation",
+  "legacySlug": "uiautomation",
+  "ownsLegacyContent": true,
+  "name": "窗口界面控制",
+  "description": "触发Windows窗口的菜单/按钮等控件。",
+  "category": "SoftInteraction",
+  "categoryName": "第三方软件交互",
+  "stepType": "Action",
+  "isRisky": false,
+  "isProOnly": false,
+  "helpLink": "https://getquicker.net/KC/Help/Doc/uiautomation",
+  "inputs": [
+    {
+      "key": "type",
+      "name": "操作类型",
+      "type": "Enum",
+      "defaultValue": "TriggerMenu",
+      "required": true,
+      "variableMode": "Input",
+      "condition": "",
+      "description": "操作类型。按下和抬起需要配对使用。"
+    },
+    {
+      "key": "window",
+      "name": "窗口句柄",
+      "type": "Text",
+      "defaultValue": "",
+      "required": false,
+      "variableMode": "UseVarOrInput",
+      "condition": "仅：TriggerMenu, TriggerControl, GetControlInfo",
+      "description": "要操作哪个窗口的控件。不填写=使用前台窗口；或窗口句柄数字。"
+    },
+    {
+      "key": "menuPath",
+      "name": "菜单路径",
+      "type": "Text",
+      "defaultValue": "",
+      "required": false,
+      "variableMode": "UseVarOrInput",
+      "condition": "仅：TriggerMenu",
+      "description": "菜单的展开路径。每行写一个级别的菜单名（需完全匹配）"
+    },
+    {
+      "key": "expandDelay",
+      "name": "展开延时",
+      "type": "Integer",
+      "defaultValue": "200",
+      "required": false,
+      "variableMode": "Input",
+      "condition": "仅：TriggerMenu",
+      "description": "等待下级菜单展开的时间(ms)"
+    },
+    {
+      "key": "control",
+      "name": "控件名",
+      "type": "Text",
+      "defaultValue": "",
+      "required": false,
+      "variableMode": "UseVarOrInput",
+      "condition": "仅：TriggerControl, GetControlInfo",
+      "description": "控件名，请确保唯一性。"
+    },
+    {
+      "key": "controlType",
+      "name": "控件类型",
+      "type": "Enum",
+      "defaultValue": "0",
+      "required": false,
+      "variableMode": "UseVarOrInput",
+      "condition": "仅：TriggerControl, GetControlInfo",
+      "description": "可选。当有多个名称相同但类型不同的控件时区分。"
+    },
+    {
+      "key": "controlOperation",
+      "name": "动作",
+      "type": "Enum",
+      "defaultValue": "Auto",
+      "required": false,
+      "variableMode": "Input",
+      "condition": "仅：TriggerControl",
+      "description": "对控件执行的操作。"
+    },
+    {
+      "key": "value",
+      "name": "值",
+      "type": "Text",
+      "defaultValue": "",
+      "required": false,
+      "variableMode": "UseVarOrInput",
+      "condition": "仅：TriggerControl",
+      "description": "仅用于 \"设置值\" 操作。"
+    },
+    {
+      "key": "pointLocation",
+      "name": "坐标位置",
+      "type": "Text",
+      "defaultValue": "",
+      "required": false,
+      "variableMode": "UseVarOrInput",
+      "condition": "仅：GetControlInfoByPosition",
+      "description": "指定要检查的控件的屏幕坐标位置，格式为\"x,y\""
+    },
+    {
+      "key": "path",
+      "name": "路径",
+      "type": "Text",
+      "defaultValue": "",
+      "required": false,
+      "variableMode": "UseVarOrInput",
+      "condition": "仅：UpdateSaveAsDialogPath",
+      "description": "要更新的路径"
+    },
+    {
+      "key": "autoCreateDir",
+      "name": "自动创建文件夹",
+      "type": "Enum",
+      "defaultValue": "no",
+      "required": false,
+      "variableMode": "Input",
+      "condition": "仅：UpdateSaveAsDialogPath",
+      "description": "如果目录不存在则自动创建。"
+    },
+    {
+      "key": "stopIfFail",
+      "name": "失败后停止",
+      "type": "Boolean",
+      "defaultValue": "true",
+      "required": false,
+      "variableMode": "Input",
+      "condition": "",
+      "description": "失败后是否停止动作"
+    }
+  ],
+  "outputs": [
+    {
+      "key": "isSuccess",
+      "name": "是否成功",
+      "type": "Boolean",
+      "condition": "",
+      "description": "操作是否成功"
+    },
+    {
+      "key": "value",
+      "name": "值",
+      "type": "Text",
+      "condition": "仅：GetControlInfo, GetCursorPointControlInfo, GetFocusedControlInfo, GetControlInfoByPosition",
+      "description": "控件的值"
+    },
+    {
+      "key": "controlText",
+      "name": "文本",
+      "type": "Text",
+      "condition": "仅：GetControlInfo, GetCursorPointControlInfo, GetFocusedControlInfo, GetControlInfoByPosition",
+      "description": "获取控件上的文本。根据控件不同，可能从Value、Text、Name等信息获取。"
+    },
+    {
+      "key": "rect",
+      "name": "位置",
+      "type": "Text",
+      "condition": "仅：GetControlInfo, GetCursorPointControlInfo, GetFocusedControlInfo, GetControlInfoByPosition",
+      "description": "控件坐标位置"
+    },
+    {
+      "key": "controlName",
+      "name": "控件名称",
+      "type": "Text",
+      "condition": "仅：GetControlInfo, GetCursorPointControlInfo, GetFocusedControlInfo, GetControlInfoByPosition",
+      "description": ""
+    },
+    {
+      "key": "controlType",
+      "name": "控件类型",
+      "type": "Text",
+      "condition": "仅：GetControlInfo, GetCursorPointControlInfo, GetFocusedControlInfo, GetControlInfoByPosition",
+      "description": ""
+    },
+    {
+      "key": "controlTypeId",
+      "name": "控件类型ID",
+      "type": "Integer",
+      "condition": "仅：GetControlInfo, GetCursorPointControlInfo, GetFocusedControlInfo, GetControlInfoByPosition",
+      "description": ""
+    },
+    {
+      "key": "controlIsEnabled",
+      "name": "是否启用",
+      "type": "Boolean",
+      "condition": "仅：GetControlInfo, GetCursorPointControlInfo, GetFocusedControlInfo, GetControlInfoByPosition",
+      "description": "控件未处于禁用状态"
+    },
+    {
+      "key": "controlIsVisible",
+      "name": "是否可见",
+      "type": "Boolean",
+      "condition": "仅：GetControlInfo, GetCursorPointControlInfo, GetFocusedControlInfo, GetControlInfoByPosition",
+      "description": "控件是否在屏幕上。"
+    },
+    {
+      "key": "controlNativeWindowHandle",
+      "name": "原始句柄",
+      "type": "Integer",
+      "condition": "仅：GetControlInfo, GetCursorPointControlInfo, GetFocusedControlInfo, GetControlInfoByPosition",
+      "description": "控件的原始窗口句柄(NativeWindowHandle)"
+    }
+  ],
+  "selections": {
+    "type": {
+      "name": "操作类型",
+      "items": [
+        {
+          "value": "TriggerMenu",
+          "name": "触发窗口菜单",
+          "description": ""
+        },
+        {
+          "value": "TriggerControl",
+          "name": "触发窗口控件",
+          "description": ""
+        },
+        {
+          "value": "GetControlInfo",
+          "name": "获取窗口控件信息",
+          "description": ""
+        },
+        {
+          "value": "GetCursorPointControlInfo",
+          "name": "获取鼠标指针位置控件信息",
+          "description": ""
+        },
+        {
+          "value": "GetFocusedControlInfo",
+          "name": "获取焦点控件信息",
+          "description": ""
+        },
+        {
+          "value": "GetControlInfoByPosition",
+          "name": "获取指定位置控件信息",
+          "description": ""
+        },
+        {
+          "value": "UpdateSaveAsDialogPath",
+          "name": "更新\"另存为\"或\"打开\"对话框的路径",
+          "description": ""
+        }
+      ]
+    },
+    "controlType": {
+      "name": "控件类型",
+      "items": [
+        {
+          "value": "0",
+          "name": "*任意类型*",
+          "description": ""
+        },
+        {
+          "value": "50000",
+          "name": "按钮",
+          "description": ""
+        },
+        {
+          "value": "50001",
+          "name": "日历",
+          "description": ""
+        },
+        {
+          "value": "50002",
+          "name": "复选框",
+          "description": ""
+        },
+        {
+          "value": "50003",
+          "name": "组合框",
+          "description": ""
+        },
+        {
+          "value": "50025",
+          "name": "自定义",
+          "description": ""
+        },
+        {
+          "value": "50028",
+          "name": "数据网格",
+          "description": ""
+        },
+        {
+          "value": "50029",
+          "name": "数据项",
+          "description": ""
+        },
+        {
+          "value": "50030",
+          "name": "文档",
+          "description": ""
+        },
+        {
+          "value": "50004",
+          "name": "编辑",
+          "description": ""
+        },
+        {
+          "value": "50026",
+          "name": "组",
+          "description": ""
+        },
+        {
+          "value": "50034",
+          "name": "标头",
+          "description": ""
+        },
+        {
+          "value": "50035",
+          "name": "标头项",
+          "description": ""
+        },
+        {
+          "value": "50005",
+          "name": "超链接",
+          "description": ""
+        },
+        {
+          "value": "50006",
+          "name": "图像",
+          "description": ""
+        },
+        {
+          "value": "50008",
+          "name": "列表视图",
+          "description": ""
+        },
+        {
+          "value": "50007",
+          "name": "列表项",
+          "description": ""
+        },
+        {
+          "value": "50009",
+          "name": "菜单",
+          "description": ""
+        },
+        {
+          "value": "50010",
+          "name": "菜单栏",
+          "description": ""
+        },
+        {
+          "value": "50011",
+          "name": "菜单项",
+          "description": ""
+        },
+        {
+          "value": "50033",
+          "name": "窗格",
+          "description": ""
+        },
+        {
+          "value": "50012",
+          "name": "进度栏",
+          "description": ""
+        },
+        {
+          "value": "50013",
+          "name": "单选按钮",
+          "description": ""
+        },
+        {
+          "value": "50014",
+          "name": "滚动条",
+          "description": ""
+        },
+        {
+          "value": "50038",
+          "name": "分隔符",
+          "description": ""
+        },
+        {
+          "value": "50015",
+          "name": "滑块",
+          "description": ""
+        },
+        {
+          "value": "50016",
+          "name": "微调框",
+          "description": ""
+        },
+        {
+          "value": "50031",
+          "name": "拆分按钮",
+          "description": ""
+        },
+        {
+          "value": "50017",
+          "name": "状态栏",
+          "description": ""
+        },
+        {
+          "value": "50018",
+          "name": "选项卡",
+          "description": ""
+        },
+        {
+          "value": "50019",
+          "name": "选项卡项",
+          "description": ""
+        },
+        {
+          "value": "50036",
+          "name": "表",
+          "description": ""
+        },
+        {
+          "value": "50020",
+          "name": "文本",
+          "description": ""
+        },
+        {
+          "value": "50027",
+          "name": "缩略",
+          "description": ""
+        },
+        {
+          "value": "50037",
+          "name": "标题栏",
+          "description": ""
+        },
+        {
+          "value": "50021",
+          "name": "工具栏",
+          "description": ""
+        },
+        {
+          "value": "50022",
+          "name": "工具提示",
+          "description": ""
+        },
+        {
+          "value": "50023",
+          "name": "树视图",
+          "description": ""
+        },
+        {
+          "value": "50024",
+          "name": "树视图项",
+          "description": ""
+        },
+        {
+          "value": "50032",
+          "name": "窗口",
+          "description": ""
+        }
+      ]
+    },
+    "controlOperation": {
+      "name": "动作",
+      "items": [
+        {
+          "value": "Auto",
+          "name": "自动",
+          "description": ""
+        },
+        {
+          "value": "Invoke",
+          "name": "调用（按钮、菜单项等）",
+          "description": ""
+        },
+        {
+          "value": "LeftClick",
+          "name": "鼠标左键单击",
+          "description": ""
+        },
+        {
+          "value": "MiddleClick",
+          "name": "鼠标中键单击",
+          "description": ""
+        },
+        {
+          "value": "RightClick",
+          "name": "鼠标右键单击",
+          "description": ""
+        },
+        {
+          "value": "LeftDoubleClick",
+          "name": "鼠标左键双击",
+          "description": ""
+        },
+        {
+          "value": "Select",
+          "name": "单选：选择（单选框、标签页等）",
+          "description": ""
+        },
+        {
+          "value": "AddToSelection",
+          "name": "多选：添加到多选（多选列表等）",
+          "description": ""
+        },
+        {
+          "value": "RemoveFromSelection",
+          "name": "多选：从多选中移除（多选列表）",
+          "description": ""
+        },
+        {
+          "value": "ToggleItemSelection",
+          "name": "多选：切换选中状态",
+          "description": ""
+        },
+        {
+          "value": "Expand",
+          "name": "展开折叠：展开（菜单等）",
+          "description": ""
+        },
+        {
+          "value": "Collapse",
+          "name": "展开折叠：折叠（菜单等）",
+          "description": ""
+        },
+        {
+          "value": "ToggleExpandCollapse",
+          "name": "展开折叠：切换展开折叠（菜单等）",
+          "description": ""
+        },
+        {
+          "value": "Toggle",
+          "name": "切换：切换（检查框等）",
+          "description": ""
+        },
+        {
+          "value": "ToggleOn",
+          "name": "切换：开（检查框等）",
+          "description": ""
+        },
+        {
+          "value": "ToggleOff",
+          "name": "切换：关（检查框等）",
+          "description": ""
+        },
+        {
+          "value": "SetValue",
+          "name": "设置值",
+          "description": ""
+        }
+      ]
+    },
+    "autoCreateDir": {
+      "name": "自动创建文件夹",
+      "items": [
+        {
+          "value": "no",
+          "name": "不自动创建",
+          "description": ""
+        },
+        {
+          "value": "auto",
+          "name": "自动创建：自动（根据后缀自动判断路径为文件还是文件夹路径）",
+          "description": ""
+        },
+        {
+          "value": "asFilePath",
+          "name": "自动创建：给定文件路径",
+          "description": ""
+        },
+        {
+          "value": "asFolderPath",
+          "name": "自动创建：给定文件夹路径",
+          "description": ""
+        }
+      ]
+    }
+  },
+  "sourceFileName": "sys_uiautomation_窗口界面控制.md"
+}

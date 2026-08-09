@@ -1,0 +1,212 @@
+{
+  "key": "sys:htmlExtract",
+  "slug": "htmlextract",
+  "legacySlug": "htmlextract",
+  "ownsLegacyContent": true,
+  "name": "提取HTML内容",
+  "description": "从HTML代码中提取内容",
+  "category": "Network",
+  "categoryName": "网络服务",
+  "stepType": "Action",
+  "isRisky": false,
+  "isProOnly": false,
+  "helpLink": "https://getquicker.net/KC/Help/Doc/htmlextract",
+  "inputs": [
+    {
+      "key": "operation",
+      "name": "操作类型",
+      "type": "Enum",
+      "defaultValue": "extractText",
+      "required": true,
+      "variableMode": "Input",
+      "condition": "",
+      "description": ""
+    },
+    {
+      "key": "source",
+      "name": "源HTML",
+      "type": "Text",
+      "defaultValue": "",
+      "required": true,
+      "variableMode": "UseVarOrInput",
+      "condition": "",
+      "description": "原始HTML内容，或网址，或根节点对象"
+    },
+    {
+      "key": "encoding",
+      "name": "网页编码类型",
+      "type": "Text",
+      "defaultValue": "",
+      "required": false,
+      "variableMode": "UseVarOrInput",
+      "condition": "",
+      "description": "通过网址加载内容时，使用指定的编码。留空时默认为UTF8。"
+    },
+    {
+      "key": "xpath",
+      "name": "节点XPath",
+      "type": "Text",
+      "defaultValue": "",
+      "required": true,
+      "variableMode": "UseVarOrInput",
+      "condition": "",
+      "description": "内容的XPath，详细说明请参考文档"
+    },
+    {
+      "key": "selectTarget",
+      "name": "提取方式",
+      "type": "Enum",
+      "defaultValue": "single",
+      "required": false,
+      "variableMode": "Input",
+      "condition": "",
+      "description": "提取单个节点还是符合条件的所有节点。"
+    },
+    {
+      "key": "returnType",
+      "name": "提取内容类型",
+      "type": "Enum",
+      "defaultValue": "InnerHtml",
+      "required": false,
+      "variableMode": "Input",
+      "condition": "",
+      "description": "要提取的节点信息。"
+    },
+    {
+      "key": "attribute",
+      "name": "属性名称",
+      "type": "Text",
+      "defaultValue": "",
+      "required": false,
+      "variableMode": "UseVarOrInput",
+      "condition": "",
+      "description": "仅在提取节点属性时有效。指定属性的名称。"
+    },
+    {
+      "key": "writeToSheet",
+      "name": "写入工作表对象",
+      "type": "Object",
+      "defaultValue": "",
+      "required": false,
+      "variableMode": "UseVarOnly",
+      "condition": "",
+      "description": "将提取到的表格内容写入工作表对象中。"
+    },
+    {
+      "key": "stopIfFail",
+      "name": "失败后停止动作",
+      "type": "Boolean",
+      "defaultValue": "true",
+      "required": false,
+      "variableMode": "Input",
+      "condition": "",
+      "description": "失败后是否停止动作"
+    }
+  ],
+  "outputs": [
+    {
+      "key": "isSuccess",
+      "name": "步骤执行是否成功",
+      "type": "Boolean",
+      "condition": "",
+      "description": "步骤执行是否成功"
+    },
+    {
+      "key": "value",
+      "name": "提取值",
+      "type": "Any",
+      "condition": "",
+      "description": "提取的内容。请确保结果类型和变量类型匹配。"
+    },
+    {
+      "key": "rootNode",
+      "name": "根节点",
+      "type": "Any",
+      "condition": "",
+      "description": "整个HTML源内容对应的HtmlNode节点对象，可用于后续处理使用。"
+    }
+  ],
+  "selections": {
+    "operation": {
+      "name": "操作类型",
+      "items": [
+        {
+          "value": "extractText",
+          "name": "提取文本内容",
+          "description": ""
+        },
+        {
+          "value": "extractTable",
+          "name": "提取表格内容",
+          "description": ""
+        }
+      ]
+    },
+    "encoding": {
+      "name": "网页编码类型",
+      "items": [
+        {
+          "value": "auto",
+          "name": "自动检测 (加载两次)",
+          "description": ""
+        },
+        {
+          "value": "gb2312",
+          "name": "GB2312编码",
+          "description": ""
+        },
+        {
+          "value": "utf-8",
+          "name": "UTF8编码",
+          "description": ""
+        }
+      ]
+    },
+    "selectTarget": {
+      "name": "提取方式",
+      "items": [
+        {
+          "value": "single",
+          "name": "第一个符合条件的节点",
+          "description": ""
+        },
+        {
+          "value": "all",
+          "name": "所有符合条件的节点",
+          "description": ""
+        }
+      ]
+    },
+    "returnType": {
+      "name": "提取内容类型",
+      "items": [
+        {
+          "value": "InnerHtml",
+          "name": "innerHtml 内部HTML",
+          "description": ""
+        },
+        {
+          "value": "InnerText",
+          "name": "innerText 内部文本",
+          "description": ""
+        },
+        {
+          "value": "OuterHtml",
+          "name": "outerHTML 节点全部HTML",
+          "description": ""
+        },
+        {
+          "value": "Attribute",
+          "name": "Attribute 节点的某个属性",
+          "description": ""
+        },
+        {
+          "value": "Node",
+          "name": "节点对象",
+          "description": ""
+        }
+      ]
+    }
+  },
+  "sourceFileName": "sys_htmlExtract_提取HTML内容.md"
+}

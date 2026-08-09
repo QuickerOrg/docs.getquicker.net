@@ -1,0 +1,351 @@
+{
+  "key": "sys:basic-ocr",
+  "slug": "basic-ocr",
+  "legacySlug": "basic-ocr",
+  "ownsLegacyContent": true,
+  "name": "基础OCR",
+  "description": "获取图片中的文字",
+  "category": "Network",
+  "categoryName": "网络服务",
+  "stepType": "Action",
+  "isRisky": false,
+  "isProOnly": false,
+  "helpLink": "https://getquicker.net/KC/Help/Doc/basic-ocr",
+  "inputs": [
+    {
+      "key": "operation",
+      "name": "接口/引擎",
+      "type": "Enum",
+      "defaultValue": "QuickerServerOcr",
+      "required": true,
+      "variableMode": "Input",
+      "condition": "",
+      "description": "OCR接口或引擎。离线引擎安装方式请参考模块文档。"
+    },
+    {
+      "key": "apiKey",
+      "name": "ApiKey",
+      "type": "Text",
+      "defaultValue": "",
+      "required": true,
+      "variableMode": "UseVarOrInput",
+      "condition": "仅：baidu-basic, baidu-custom",
+      "description": "请填写OCR帐号的ApiKey"
+    },
+    {
+      "key": "secretKey",
+      "name": "SecretKey",
+      "type": "Text",
+      "defaultValue": "",
+      "required": true,
+      "variableMode": "UseVarOrInput",
+      "condition": "仅：baidu-basic, baidu-custom",
+      "description": "请填写OCR帐号的SecretKey"
+    },
+    {
+      "key": "imgVar",
+      "name": "图片变量",
+      "type": "Image",
+      "defaultValue": "",
+      "required": true,
+      "variableMode": "UseVar",
+      "condition": "",
+      "description": "从指定变量中加载图片"
+    },
+    {
+      "key": "punctuationType",
+      "name": "转换标点符号",
+      "type": "Enum",
+      "defaultValue": "no",
+      "required": true,
+      "variableMode": "UseVarOrInput",
+      "condition": "仅：baidu-basic, baidu-quicker, QuickerServerOcr",
+      "description": "合并文本时，是否转换标点符号"
+    },
+    {
+      "key": "mergeChapter",
+      "name": "合并段落",
+      "type": "Enum",
+      "defaultValue": "no",
+      "required": true,
+      "variableMode": "UseVarOrInput",
+      "condition": "仅：baidu-basic, baidu-quicker, QuickerServerOcr",
+      "description": "是否智能合并段落。"
+    },
+    {
+      "key": "interface",
+      "name": "接口名称或网址",
+      "type": "Text",
+      "defaultValue": "",
+      "required": false,
+      "variableMode": "UseVarOrInput",
+      "condition": "仅：baidu-custom",
+      "description": "接口的完整网址，或 https://aip.baidubce.com/rest/2.0/ocr/v1/ 后面的部分"
+    },
+    {
+      "key": "options",
+      "name": "附加参数",
+      "type": "Dict",
+      "defaultValue": "",
+      "required": false,
+      "variableMode": "UseVarOrInput",
+      "condition": "仅：baidu-custom",
+      "description": "请参考百度官方/Quicker服务接口说明。每行一个参数，使用option:value的格式。"
+    },
+    {
+      "key": "lang",
+      "name": "语言",
+      "type": "Text",
+      "defaultValue": "",
+      "required": false,
+      "variableMode": "UseVarOrInput",
+      "condition": "仅：QuickerServerOcr, table_quicker",
+      "description": "待识别内容的语言。表格识别仅支持中英混合和英文。"
+    },
+    {
+      "key": "offlineMode",
+      "name": "离线模式",
+      "type": "Enum",
+      "defaultValue": "Auto",
+      "required": false,
+      "variableMode": "Input",
+      "condition": "仅：QuickerServerOcr",
+      "description": "旧版兼容参数。Quicker OCR 当前固定使用在线服务；旧动作选择“仅使用离线引擎”时转为本地 OCR。新动作请直接选择“本地 OCR（中英）”。"
+    },
+    {
+      "key": "stopIfFail",
+      "name": "失败后停止",
+      "type": "Boolean",
+      "defaultValue": "true",
+      "required": false,
+      "variableMode": "Input",
+      "condition": "",
+      "description": "失败后是否停止动作"
+    }
+  ],
+  "outputs": [
+    {
+      "key": "isSuccess",
+      "name": "是否成功",
+      "type": "Boolean",
+      "condition": "",
+      "description": "操作是否成功"
+    },
+    {
+      "key": "textList",
+      "name": "行列表",
+      "type": "List",
+      "condition": "仅：baidu-basic, baidu-quicker, QuickerServerOcr, LocalOcr, WindowsOcr",
+      "description": "OCR识别结果，列表格式，每行一项。"
+    },
+    {
+      "key": "content",
+      "name": "合并后结果",
+      "type": "Text",
+      "condition": "仅：baidu-basic, baidu-quicker, QuickerServerOcr, LocalOcr, WindowsOcr, table_quicker",
+      "description": "合并在一起的的文本内容"
+    },
+    {
+      "key": "rawData",
+      "name": "原始结果",
+      "type": "Text",
+      "condition": "",
+      "description": "API接口返回的完整内容"
+    },
+    {
+      "key": "rawObject",
+      "name": "原始结果JObject对象",
+      "type": "Object",
+      "condition": "仅：baidu-basic, baidu-quicker, baidu-custom",
+      "description": "返回结果的JObject对象"
+    }
+  ],
+  "selections": {
+    "operation": {
+      "name": "接口/引擎",
+      "items": [
+        {
+          "value": "QuickerServerOcr",
+          "name": "Quicker OCR引擎",
+          "description": ""
+        },
+        {
+          "value": "WindowsOcr",
+          "name": "Windows10/11 内置OCR引擎",
+          "description": ""
+        },
+        {
+          "value": "baidu-basic",
+          "name": "百度通用文字识别（自定义帐号）",
+          "description": ""
+        },
+        {
+          "value": "baidu-quicker",
+          "name": "百度通用文字识别（Quicker帐号）",
+          "description": ""
+        },
+        {
+          "value": "baidu-custom",
+          "name": "百度自定义接口识别（自定义帐号）",
+          "description": ""
+        },
+        {
+          "value": "table_quicker",
+          "name": "表格识别（Quicker服务）",
+          "description": ""
+        },
+        {
+          "value": "LocalOcr",
+          "name": "本地 OCR（中英）",
+          "description": ""
+        }
+      ]
+    },
+    "punctuationType": {
+      "name": "转换标点符号",
+      "items": [
+        {
+          "value": "no",
+          "name": "不转换",
+          "description": ""
+        },
+        {
+          "value": "sbc",
+          "name": "全角符号",
+          "description": ""
+        },
+        {
+          "value": "dbc",
+          "name": "半角符号",
+          "description": ""
+        }
+      ]
+    },
+    "mergeChapter": {
+      "name": "合并段落",
+      "items": [
+        {
+          "value": "no",
+          "name": "不合并",
+          "description": ""
+        },
+        {
+          "value": "merge",
+          "name": "合并",
+          "description": ""
+        }
+      ]
+    },
+    "interface": {
+      "name": "接口名称或网址",
+      "items": [
+        {
+          "value": "general_basic",
+          "name": "通用文字识别（标准版）",
+          "description": ""
+        },
+        {
+          "value": "general",
+          "name": "通用文字识别（标准含位置版）",
+          "description": ""
+        },
+        {
+          "value": "accurate_basic",
+          "name": "通用文字识别（高精度版）",
+          "description": ""
+        },
+        {
+          "value": "accurate",
+          "name": "通用文字识别（高精度含位置版）",
+          "description": ""
+        },
+        {
+          "value": "handwriting",
+          "name": "手写文字识别",
+          "description": ""
+        },
+        {
+          "value": "numbers",
+          "name": "数字识别",
+          "description": ""
+        },
+        {
+          "value": "doc_analysis_office",
+          "name": "办公文档识别",
+          "description": ""
+        },
+        {
+          "value": "form",
+          "name": "表格文字识别(同步接口)",
+          "description": ""
+        },
+        {
+          "value": "qrcode",
+          "name": "二维码识别",
+          "description": ""
+        }
+      ]
+    },
+    "lang": {
+      "name": "语言",
+      "items": [
+        {
+          "value": "CHN_ENG",
+          "name": "中英混合",
+          "description": ""
+        },
+        {
+          "value": "ENG",
+          "name": "英语",
+          "description": ""
+        },
+        {
+          "value": "KOR",
+          "name": "韩语",
+          "description": ""
+        },
+        {
+          "value": "JAP",
+          "name": "日语",
+          "description": ""
+        },
+        {
+          "value": "CHT",
+          "name": "繁体中文",
+          "description": ""
+        },
+        {
+          "value": "LAT",
+          "name": "拉丁语",
+          "description": ""
+        },
+        {
+          "value": "ARA",
+          "name": "阿拉伯语",
+          "description": ""
+        }
+      ]
+    },
+    "offlineMode": {
+      "name": "离线模式",
+      "items": [
+        {
+          "value": "Auto",
+          "name": "自动",
+          "description": ""
+        },
+        {
+          "value": "OnlineOnly",
+          "name": "仅使用在线服务",
+          "description": ""
+        },
+        {
+          "value": "OfflineOnly",
+          "name": "仅使用离线引擎",
+          "description": ""
+        }
+      ]
+    }
+  },
+  "sourceFileName": "sys_basic-ocr_基础OCR.md"
+}

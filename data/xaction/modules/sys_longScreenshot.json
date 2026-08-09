@@ -1,0 +1,63 @@
+{
+  "key": "sys:longScreenshot",
+  "slug": "long-screenshot",
+  "legacySlug": "screencapture",
+  "ownsLegacyContent": false,
+  "name": "长截图",
+  "description": "先使用屏幕选区工具选择范围，再进行长截图。",
+  "category": "Image",
+  "categoryName": "图片处理",
+  "stepType": "Action",
+  "isRisky": false,
+  "isProOnly": false,
+  "helpLink": "https://getquicker.net/KC/Help/Doc/screencapture",
+  "inputs": [
+    {
+      "key": "toClip",
+      "name": "写入剪贴板",
+      "type": "Boolean",
+      "defaultValue": "true",
+      "required": false,
+      "variableMode": "Input",
+      "condition": "",
+      "description": "长截图结果是否写入到剪贴板中。"
+    },
+    {
+      "key": "stopIfFail",
+      "name": "失败后停止",
+      "type": "Boolean",
+      "defaultValue": "true",
+      "required": false,
+      "variableMode": "Input",
+      "condition": "",
+      "description": "失败后是否停止动作"
+    }
+  ],
+  "outputs": [
+    {
+      "key": "isSuccess",
+      "name": "是否成功",
+      "type": "Boolean",
+      "condition": "",
+      "description": "操作是否成功"
+    },
+    {
+      "key": "img",
+      "name": "图片",
+      "type": "Image",
+      "condition": "",
+      "description": "长截图结果图片。"
+    },
+    {
+      "key": "rect",
+      "name": "截图区域",
+      "type": "Text",
+      "condition": "",
+      "description": "长截图起始选区(left,top,right,bottom)。"
+    }
+  ],
+  "selections": {},
+  "sharedDocumentationKey": "sys:screenCapture",
+  "sharedDocumentationSlug": "screencapture",
+  "sourceFileName": "sys_longScreenshot_长截图.md"
+}

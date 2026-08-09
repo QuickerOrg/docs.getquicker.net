@@ -1,0 +1,29 @@
+{
+  "key": "sys:if",
+  "slug": "if",
+  "legacySlug": "if",
+  "ownsLegacyContent": true,
+  "name": "如果/否则",
+  "description": "依据条件执行操作",
+  "category": "Flow",
+  "categoryName": "程序流程",
+  "stepType": "If",
+  "isRisky": false,
+  "isProOnly": false,
+  "helpLink": "https://getquicker.net/KC/Help/Doc/if",
+  "inputs": [
+    {
+      "key": "condition",
+      "name": "如果",
+      "type": "Boolean",
+      "defaultValue": "",
+      "required": false,
+      "variableMode": "UseVarOrInput",
+      "condition": "",
+      "description": "是否符合指定的条件"
+    }
+  ],
+  "outputs": [],
+  "selections": {},
+  "sourceFileName": "sys_if_如果_否则.md"
+}

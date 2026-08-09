@@ -1,0 +1,177 @@
+{
+  "key": "sys:smtp",
+  "slug": "smtp",
+  "legacySlug": "smtp",
+  "ownsLegacyContent": true,
+  "name": "SMTP发送邮件",
+  "description": "使用SMTP协议发送邮件",
+  "category": "Network",
+  "categoryName": "网络服务",
+  "stepType": "Action",
+  "isRisky": false,
+  "isProOnly": false,
+  "helpLink": "https://getquicker.net/KC/Help/Doc/smtp",
+  "inputs": [
+    {
+      "key": "server",
+      "name": "邮件服务器",
+      "type": "Text",
+      "defaultValue": "",
+      "required": true,
+      "variableMode": "UseVarOrInput",
+      "condition": "",
+      "description": "邮件服务器的域名或IP"
+    },
+    {
+      "key": "port",
+      "name": "端口",
+      "type": "Integer",
+      "defaultValue": "25",
+      "required": true,
+      "variableMode": "UseVarOrInput",
+      "condition": "",
+      "description": "Smtp端口号"
+    },
+    {
+      "key": "useSsl",
+      "name": "使用加密连接",
+      "type": "Boolean",
+      "defaultValue": "false",
+      "required": false,
+      "variableMode": "UseVarOrInput",
+      "condition": "",
+      "description": "是否使用TLS连接（通常为587端口）。"
+    },
+    {
+      "key": "account",
+      "name": "帐号",
+      "type": "Text",
+      "defaultValue": "",
+      "required": true,
+      "variableMode": "UseVarOrInput",
+      "condition": "",
+      "description": "发信帐号"
+    },
+    {
+      "key": "password",
+      "name": "密码",
+      "type": "Text",
+      "defaultValue": "",
+      "required": true,
+      "variableMode": "UseVarOrInput",
+      "condition": "",
+      "description": "发信帐号的密码"
+    },
+    {
+      "key": "sender",
+      "name": "发信邮箱",
+      "type": "Text",
+      "defaultValue": "",
+      "required": true,
+      "variableMode": "UseVarOrInput",
+      "condition": "",
+      "description": "发信帐号所对应的Email地址"
+    },
+    {
+      "key": "senderName",
+      "name": "发件人名称",
+      "type": "Text",
+      "defaultValue": "",
+      "required": true,
+      "variableMode": "UseVarOrInput",
+      "condition": "",
+      "description": "发件人的显示名称（可选）"
+    },
+    {
+      "key": "to",
+      "name": "收件人",
+      "type": "Text",
+      "defaultValue": "",
+      "required": true,
+      "variableMode": "UseVarOrInput",
+      "condition": "",
+      "description": "收件人Email地址，多个的话使用小写逗号分隔。"
+    },
+    {
+      "key": "cc",
+      "name": "抄送",
+      "type": "Text",
+      "defaultValue": "",
+      "required": true,
+      "variableMode": "UseVarOrInput",
+      "condition": "",
+      "description": "抄送给的Email地址列表，多个的话使用小写逗号分隔。"
+    },
+    {
+      "key": "bcc",
+      "name": "密送",
+      "type": "Text",
+      "defaultValue": "",
+      "required": true,
+      "variableMode": "UseVarOrInput",
+      "condition": "",
+      "description": "密送给的Email地址列表，多个的话使用小写逗号分隔。"
+    },
+    {
+      "key": "subject",
+      "name": "邮件主题",
+      "type": "Text",
+      "defaultValue": "",
+      "required": true,
+      "variableMode": "UseVarOrInput",
+      "condition": "",
+      "description": "邮件的主题"
+    },
+    {
+      "key": "content",
+      "name": "邮件正文",
+      "type": "Text",
+      "defaultValue": "",
+      "required": false,
+      "variableMode": "UseVarOrInput",
+      "condition": "",
+      "description": "邮件正文内容"
+    },
+    {
+      "key": "attachList",
+      "name": "附件",
+      "type": "Text",
+      "defaultValue": "",
+      "required": false,
+      "variableMode": "UseVarOrInput",
+      "condition": "",
+      "description": "附件文件列表。多个时每行一个。"
+    },
+    {
+      "key": "isHtml",
+      "name": "内容为html",
+      "type": "Boolean",
+      "defaultValue": "false",
+      "required": false,
+      "variableMode": "UseVarOrInput",
+      "condition": "",
+      "description": "邮件内容是否为HTML格式"
+    },
+    {
+      "key": "stopIfFail",
+      "name": "失败后停止",
+      "type": "Boolean",
+      "defaultValue": "true",
+      "required": false,
+      "variableMode": "Input",
+      "condition": "",
+      "description": "失败后是否停止动作"
+    }
+  ],
+  "outputs": [
+    {
+      "key": "isSuccess",
+      "name": "是否成功",
+      "type": "Boolean",
+      "condition": "",
+      "description": "操作是否成功"
+    }
+  ],
+  "selections": {},
+  "sourceFileName": "sys_smtp_SMTP发送邮件.md"
+}

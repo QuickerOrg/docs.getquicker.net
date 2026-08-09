@@ -1,0 +1,67 @@
+{
+  "key": "sys:fileToClipboard",
+  "slug": "filetoclipboard",
+  "legacySlug": "filetoclipboard",
+  "ownsLegacyContent": true,
+  "name": "文件放入剪贴板",
+  "description": "将文件或文件列表存入剪贴板",
+  "category": "Clipboard",
+  "categoryName": "剪贴板操作",
+  "stepType": "Action",
+  "isRisky": false,
+  "isProOnly": false,
+  "helpLink": "https://getquicker.net/KC/Help/Doc/filetoclipboard",
+  "inputs": [
+    {
+      "key": "file",
+      "name": "单个文件",
+      "type": "Text",
+      "defaultValue": "",
+      "required": false,
+      "variableMode": "UseVarOrInput",
+      "condition": "",
+      "description": "要存入剪贴板的文件(夹)路径（与文件列表二选一）"
+    },
+    {
+      "key": "list",
+      "name": "文件列表",
+      "type": "List",
+      "defaultValue": "",
+      "required": false,
+      "variableMode": "UseVarOrInput",
+      "condition": "",
+      "description": "要存入剪贴板的多个文件路径（与单个文件二选一）"
+    },
+    {
+      "key": "useCut",
+      "name": "剪切文件",
+      "type": "Boolean",
+      "defaultValue": "false",
+      "required": false,
+      "variableMode": "UseVarOrInput",
+      "condition": "",
+      "description": "是否剪切文件"
+    },
+    {
+      "key": "stopIfFail",
+      "name": "失败后停止",
+      "type": "Boolean",
+      "defaultValue": "true",
+      "required": false,
+      "variableMode": "Input",
+      "condition": "",
+      "description": "失败后是否停止动作"
+    }
+  ],
+  "outputs": [
+    {
+      "key": "isSuccess",
+      "name": "是否成功",
+      "type": "Boolean",
+      "condition": "",
+      "description": "操作是否成功"
+    }
+  ],
+  "selections": {},
+  "sourceFileName": "sys_fileToClipboard_文件放入剪贴板.md"
+}

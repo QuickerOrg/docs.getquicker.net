@@ -1,0 +1,125 @@
+---
+title: "步骤组"
+description: "一组有关的模块（方便整体禁用、删除等）"
+slug: "/v2/xaction/modules/group"
+sidebar_label: "步骤组"
+sidebar_position: 10
+quickerDocKey: "xaction/module/sys:group"
+comments: true
+moduleKey: "sys:group"
+docStatus: "migrated-unreviewed"
+metadataGeneratedAt: "2026-08-03 20:08:03"
+metadataHash: "06d52fd442256b3ef1d6d031286abb1a5dd2b6782b6c93133d582fc812b70400"
+legacyDocId: 1377064
+legacyContentUpdatedAt: "2024-03-27T02:01:40.000Z"
+---
+
+# 步骤组
+
+一组有关的模块（方便整体禁用、删除等）
+
+{/* xaction-metadata:start */}
+## 当前模块定义
+
+- 模块 Key：`sys:group`
+- 分类：程序流程（`Flow`）
+- 类型：`Loop`
+- 风险操作：否
+- 专业版：否
+
+## 输入参数
+
+| Key | 名称 | 类型 | 默认值 | 必填 | 变量模式 | 条件 | 说明 |
+| --- | --- | --- | --- | --- | --- | --- | --- |
+| `skipErr` | 忽略错误 | `Boolean` | false | 否 | `Input` |  | 忽略内部步骤的错误，继续允许后续代码 |
+| `skipWhenDebugging` | 调试运行时不输出调试内容 | `Boolean` | false | 否 | `Input` |  | 用以减少不必要的调试输出 |
+| `useMultiThread` | 使用多线程 | `Boolean` | false | 否 | `Input` |  | ⚠通常不要选择! 请阅读文档详细了解后再使用。 |
+| `waitAny` | 多线程使用WaitAny模式 | `Boolean` | false | 否 | `Input` |  | 任意一个线程结束即可。 |
+| `cancelRemainingOnWaitAny` | WaitAny模式下自动取消其它分支 | `Boolean` | false | 否 | `Input` |  | 启用WaitAny时，任一分支完成后请求取消其它未完成分支，并阻止其执行后续步骤。取消为协作式取消，不保证立即终止正在执行的步骤。 |
+
+## 输出参数
+
+| Key | 名称 | 类型 | 条件 | 说明 |
+| --- | --- | --- | --- | --- |
+| `isSuccess` | 是否成功 | `Boolean` |  | 内部步骤是否运行成功 |
+| `errorMessage` | 错误消息 | `Text` |  |  |
+{/* xaction-metadata:end */}
+
+步骤组主要用于将一些逻辑上相关的步骤（比如用于完成某个小的功能模块）组合在一起，从而可以折叠、整体禁用、整体拖放调整位置。 
+
+也可用于使用实现使用多线程同步方式执行内部的步骤。
+
+![](./img/group-001-25e766f8fe.png)
+
+
+
+
+
+
+
+动画演示：
+
+
+
+此处为语雀视频卡片，点击链接查看：[步骤组.mp4](/v2/xaction/modules/group)
+
+
+
+## 参数
+
+【忽略错误】内部模块有错误（包含使用了停止动作模块），都不影响此步骤组下面的后续模块的运行。
+
+
+
+【使用多线程】（通常不要使用）（1.7.4版本提供）使用多线程方式同步运行步骤组中的子模块步骤。
+
+![](./img/group-002-528f6ebc59.png)
+
+这些步骤应该是独立的没有相互关系的操作。
+
+如果子模块是步骤组/如果等，他们内部的下一级子步骤将会顺序执行。
+
+【调试运行时不输出调试内容】忽略对内部步骤的调试输出。
+
+【多线程使用WaitAny模式】使用多线程时，内部任意一个线程完成，即向后继续执行。 此时其它未完成的步骤仍然会继续执行，但是不会被等待。
+
+
+
+### 多线程功能提示
+
+-   警告！在多线程运行的代码中更新相同的变量可能会产生冲突。
+-   为避免log格式混乱，同步执行时调试运行log会被关闭。
+-   一些跳转处理将会失效（如停止动作/停止循环等，具体需测试）。
+-   可能存在其他潜在问题，请多测试动作。
+-   参考示例：[多线程测试（需1.7.4版本）](https://getquicker.net/sharedaction?code=1aefbbd1-cca2-42e6-c4e0-08d7f7cf8b53)
+
+
+
+## 操作
+
+### 创建步骤组
+
+从工具箱中拖入步骤组到合适的位置，然后将需要的其他模块拖入其中即可。
+
+
+
+此处为语雀视频卡片，点击链接查看：[添加步骤组.mp4](/v2/xaction/modules/group)
+
+
+
+### 将已有的模块放入步骤组
+
+按Shift键后，点击要加入步骤组的模块列表的第一个和最后一个，选中这些步骤，然后点右键选择“加入步骤组”即可。
+
+
+
+此处为语雀视频卡片，点击链接查看：[已有模块加入步骤组.mp4](/v2/xaction/modules/group)
+
+
+
+
+
+## 更新历史
+
+-   1.7.4 增加多线程支持。
+-   20240327 增加多线程WaitAny模式的说明。

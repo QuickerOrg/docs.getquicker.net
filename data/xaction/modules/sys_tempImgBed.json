@@ -1,0 +1,54 @@
+{
+  "key": "sys:tempImgBed",
+  "slug": "tempimgbed",
+  "legacySlug": "tempimgbed",
+  "ownsLegacyContent": true,
+  "name": "临时图床",
+  "description": "将图片上传到临时（1分钟后删除）的图床，用以搜图等场景。勿上传非法内容。",
+  "category": "Image",
+  "categoryName": "图片处理",
+  "stepType": "Action",
+  "isRisky": false,
+  "isProOnly": false,
+  "helpLink": "https://getquicker.net/KC/Help/Doc/tempImgBed",
+  "inputs": [
+    {
+      "key": "imgVar",
+      "name": "图片变量",
+      "type": "Image",
+      "defaultValue": "",
+      "required": false,
+      "variableMode": "UseVar",
+      "condition": "",
+      "description": "指定要上传的图片变量。"
+    },
+    {
+      "key": "stopIfFail",
+      "name": "失败后停止",
+      "type": "Boolean",
+      "defaultValue": "true",
+      "required": false,
+      "variableMode": "Input",
+      "condition": "",
+      "description": "失败后是否停止动作"
+    }
+  ],
+  "outputs": [
+    {
+      "key": "isSuccess",
+      "name": "是否成功",
+      "type": "Boolean",
+      "condition": "",
+      "description": "操作是否成功"
+    },
+    {
+      "key": "url",
+      "name": "网址",
+      "type": "Text",
+      "condition": "",
+      "description": "图片的临时网址"
+    }
+  ],
+  "selections": {},
+  "sourceFileName": "sys_tempImgBed_临时图床.md"
+}

@@ -1,0 +1,78 @@
+{
+  "key": "sys:readQrCode",
+  "slug": "readqrcode",
+  "legacySlug": "readqrcode",
+  "ownsLegacyContent": true,
+  "name": "识别二维码",
+  "description": "识别图片中的二维码",
+  "category": "Image",
+  "categoryName": "图片处理",
+  "stepType": "Action",
+  "isRisky": false,
+  "isProOnly": false,
+  "helpLink": "https://getquicker.net/KC/Help/Doc/readqrcode",
+  "inputs": [
+    {
+      "key": "img",
+      "name": "输入图片",
+      "type": "Image",
+      "defaultValue": "",
+      "required": true,
+      "variableMode": "UseVar",
+      "condition": "",
+      "description": "要识别二维码的图片"
+    },
+    {
+      "key": "tryNetwork",
+      "name": "本地识别失败后尝试在线识别服务",
+      "type": "Boolean",
+      "defaultValue": "false",
+      "required": false,
+      "variableMode": "Input",
+      "condition": "",
+      "description": "在线服务拥有更强识别能力（频率限制2秒/次，仅专业版提供）。"
+    },
+    {
+      "key": "stopIfFail",
+      "name": "失败后停止",
+      "type": "Boolean",
+      "defaultValue": "true",
+      "required": false,
+      "variableMode": "Input",
+      "condition": "",
+      "description": "失败后是否停止动作"
+    }
+  ],
+  "outputs": [
+    {
+      "key": "isSuccess",
+      "name": "是否成功",
+      "type": "Boolean",
+      "condition": "",
+      "description": "操作是否成功"
+    },
+    {
+      "key": "code",
+      "name": "值",
+      "type": "Text",
+      "condition": "",
+      "description": "识别出的二维码内容"
+    },
+    {
+      "key": "codeList",
+      "name": "全部二维码值",
+      "type": "List",
+      "condition": "",
+      "description": "当一个图片含有多个二维码，且需要返回所有结果时使用。"
+    },
+    {
+      "key": "barcodFormat",
+      "name": "条码类型",
+      "type": "Text",
+      "condition": "",
+      "description": "识别出的条码类型，如\"EAN-13\""
+    }
+  ],
+  "selections": {},
+  "sourceFileName": "sys_readQrCode_识别二维码.md"
+}

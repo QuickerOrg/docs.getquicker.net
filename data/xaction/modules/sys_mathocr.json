@@ -1,0 +1,122 @@
+{
+  "key": "sys:mathocr",
+  "slug": "mathocr",
+  "legacySlug": "mathocr",
+  "ownsLegacyContent": true,
+  "name": "公式识别",
+  "description": "数学公式识别",
+  "category": "Network",
+  "categoryName": "网络服务",
+  "stepType": "Action",
+  "isRisky": false,
+  "isProOnly": false,
+  "helpLink": "https://getquicker.net/KC/Help/Doc/mathocr",
+  "inputs": [
+    {
+      "key": "vendor",
+      "name": "厂商接口",
+      "type": "Enum",
+      "defaultValue": "Mathpix",
+      "required": true,
+      "variableMode": "Input",
+      "condition": "",
+      "description": "详情请参考文档。"
+    },
+    {
+      "key": "image",
+      "name": "公式图片",
+      "type": "Image",
+      "defaultValue": "",
+      "required": true,
+      "variableMode": "UseVarOrInput",
+      "condition": "排除：MathpixStrokes",
+      "description": "指定待识别的图片变量、图片文件的路径或网址(通过表达式传入)。"
+    },
+    {
+      "key": "stopIfFail",
+      "name": "失败后停止",
+      "type": "Boolean",
+      "defaultValue": "true",
+      "required": false,
+      "variableMode": "Input",
+      "condition": "",
+      "description": "失败后是否停止动作"
+    }
+  ],
+  "outputs": [
+    {
+      "key": "isSuccess",
+      "name": "是否成功",
+      "type": "Boolean",
+      "condition": "",
+      "description": "操作是否成功"
+    },
+    {
+      "key": "mathpixMarkdown",
+      "name": "Mathpix MD",
+      "type": "Text",
+      "condition": "",
+      "description": "Mathpix Markdown格式"
+    },
+    {
+      "key": "mathml",
+      "name": "MathML",
+      "type": "Text",
+      "condition": "",
+      "description": ""
+    },
+    {
+      "key": "asciimath",
+      "name": "AsciiMath",
+      "type": "Text",
+      "condition": "",
+      "description": ""
+    },
+    {
+      "key": "latex",
+      "name": "Latex",
+      "type": "Text",
+      "condition": "",
+      "description": ""
+    },
+    {
+      "key": "latexEx1",
+      "name": "Latex附加格式1",
+      "type": "Text",
+      "condition": "",
+      "description": ""
+    },
+    {
+      "key": "latexEx2",
+      "name": "Latex附加格式2",
+      "type": "Text",
+      "condition": "",
+      "description": ""
+    },
+    {
+      "key": "rawData",
+      "name": "原始响应",
+      "type": "Text",
+      "condition": "",
+      "description": "厂商接口返回的原始内容，通常为json格式。"
+    }
+  ],
+  "selections": {
+    "vendor": {
+      "name": "厂商接口",
+      "items": [
+        {
+          "value": "Mathpix",
+          "name": "图片识别(Mathpix)",
+          "description": ""
+        },
+        {
+          "value": "MathpixStrokes",
+          "name": "手写并识别(Mathpix)",
+          "description": ""
+        }
+      ]
+    }
+  },
+  "sourceFileName": "sys_mathocr_公式识别.md"
+}

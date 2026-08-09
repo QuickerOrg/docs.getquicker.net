@@ -1,0 +1,324 @@
+{
+  "key": "sys:ai",
+  "slug": "ai",
+  "legacySlug": "ai",
+  "ownsLegacyContent": true,
+  "name": "AI 调用",
+  "description": "调用第三方AI服务",
+  "category": "Network",
+  "categoryName": "网络服务",
+  "stepType": "Action",
+  "isRisky": false,
+  "isProOnly": false,
+  "helpLink": "https://getquicker.net/KC/Help/Doc/ai",
+  "inputs": [
+    {
+      "key": "endpoint",
+      "name": "接口端点",
+      "type": "Enum",
+      "defaultValue": "chat",
+      "required": true,
+      "variableMode": "Input",
+      "condition": "",
+      "description": ""
+    },
+    {
+      "key": "model",
+      "name": "模型",
+      "type": "Text",
+      "defaultValue": "",
+      "required": false,
+      "variableMode": "Input",
+      "condition": "",
+      "description": "适用于可能适用于不同的端点，请参考官方文档使用。"
+    },
+    {
+      "key": "apiUrlFormat",
+      "name": "API网址",
+      "type": "Text",
+      "defaultValue": "",
+      "required": false,
+      "variableMode": "Input",
+      "condition": "",
+      "description": "可选，使用自定义的API服务器时使用。请参考模块文档了解如何设置。"
+    },
+    {
+      "key": "apiKey",
+      "name": "APIKey",
+      "type": "Text",
+      "defaultValue": "",
+      "required": false,
+      "variableMode": "Input",
+      "condition": "",
+      "description": ""
+    },
+    {
+      "key": "apiOrg",
+      "name": "Orgnization",
+      "type": "Text",
+      "defaultValue": "",
+      "required": false,
+      "variableMode": "Input",
+      "condition": "",
+      "description": "可选"
+    },
+    {
+      "key": "systemPrompt",
+      "name": "系统提示词",
+      "type": "Text",
+      "defaultValue": "",
+      "required": false,
+      "variableMode": "Input",
+      "condition": "仅：chat",
+      "description": "告知AI所需要扮演的角色和要求。如\"你是一个专业的翻译助手\"。"
+    },
+    {
+      "key": "sessionId",
+      "name": "会话ID",
+      "type": "Text",
+      "defaultValue": "",
+      "required": false,
+      "variableMode": "Input",
+      "condition": "仅：chat",
+      "description": "可选。每次会话请生成新的GUID格式会话ID，设置后将自动保存会话历史。"
+    },
+    {
+      "key": "historyMessages",
+      "name": "历史消息",
+      "type": "Text",
+      "defaultValue": "",
+      "required": false,
+      "variableMode": "Input",
+      "condition": "仅：chat",
+      "description": "可选。存放历史消息的json数组，格式请参考文档说明。设定会话ID后，也可直接写发送的历史会话条数。"
+    },
+    {
+      "key": "prompt",
+      "name": "提示词",
+      "type": "Text",
+      "defaultValue": "",
+      "required": false,
+      "variableMode": "Input",
+      "condition": "仅：chat, completions",
+      "description": "要为其生成补全的完整提示内容。"
+    },
+    {
+      "key": "maxTokens",
+      "name": "最大响应Token数",
+      "type": "Integer",
+      "defaultValue": "0",
+      "required": false,
+      "variableMode": "Input",
+      "condition": "",
+      "description": "最大响应输出token数（max_completion_tokens）"
+    },
+    {
+      "key": "temperature",
+      "name": "温度",
+      "type": "Number",
+      "defaultValue": "0.2",
+      "required": false,
+      "variableMode": "Input",
+      "condition": "",
+      "description": "用于控制输出的随机性，请根据模型文档设置温度参数。"
+    },
+    {
+      "key": "topP",
+      "name": "top_p",
+      "type": "Number",
+      "defaultValue": "1",
+      "required": false,
+      "variableMode": "Input",
+      "condition": "仅：chat, completions",
+      "description": ""
+    },
+    {
+      "key": "n",
+      "name": "n",
+      "type": "Integer",
+      "defaultValue": "1",
+      "required": false,
+      "variableMode": "Input",
+      "condition": "",
+      "description": "对每个问题生成几个结果，将会耗费更多token。"
+    },
+    {
+      "key": "expireSeconds",
+      "name": "超时秒数",
+      "type": "Number",
+      "defaultValue": "120",
+      "required": false,
+      "variableMode": "Input",
+      "condition": "",
+      "description": "最长等待秒数"
+    },
+    {
+      "key": "stream",
+      "name": "使用流式输出",
+      "type": "Boolean",
+      "defaultValue": "false",
+      "required": false,
+      "variableMode": "UseVarOrInput",
+      "condition": "",
+      "description": "即时输出结果，将结果输出到文本窗口，详见文档。此时将无法获得完整响应和token用量等信息。"
+    },
+    {
+      "key": "streamTo",
+      "name": "流式输出窗口标识",
+      "type": "Text",
+      "defaultValue": "",
+      "required": false,
+      "variableMode": "Input",
+      "condition": "",
+      "description": "一个预先使用非等待模式显示的文本窗口的标识，流式输出时将结果显示在该窗口中。"
+    },
+    {
+      "key": "stop",
+      "name": "停止符stop",
+      "type": "Text",
+      "defaultValue": "",
+      "required": false,
+      "variableMode": "Input",
+      "condition": "",
+      "description": "遇到指定的内容时自动停止生成。可使用\\r,\\n,\\t等表示特殊字符。输入多行时，表示多个停止符。"
+    },
+    {
+      "key": "forceProxy",
+      "name": "强制使用代理",
+      "type": "Boolean",
+      "defaultValue": "false",
+      "required": false,
+      "variableMode": "Input",
+      "condition": "",
+      "description": "即使系统设置中未启用代理，本步骤仍然使用代理访问。"
+    },
+    {
+      "key": "respFormat",
+      "name": "响应格式",
+      "type": "Text",
+      "defaultValue": "",
+      "required": false,
+      "variableMode": "UseVarOrInput",
+      "condition": "仅：chat",
+      "description": "留空，或使用\"json_object\"表示json格式响应，或json格式的完整的response_format内容。"
+    },
+    {
+      "key": "extraProps",
+      "name": "附加参数",
+      "type": "Dict",
+      "defaultValue": "",
+      "required": false,
+      "variableMode": "Input",
+      "condition": "仅：chat",
+      "description": "用于添加额外的请求参数。请参考文档"
+    },
+    {
+      "key": "stopIfFail",
+      "name": "失败后停止",
+      "type": "Boolean",
+      "defaultValue": "true",
+      "required": false,
+      "variableMode": "Input",
+      "condition": "",
+      "description": "失败后是否停止动作"
+    }
+  ],
+  "outputs": [
+    {
+      "key": "isSuccess",
+      "name": "是否成功",
+      "type": "Boolean",
+      "condition": "",
+      "description": "操作是否成功"
+    },
+    {
+      "key": "result",
+      "name": "生成结果",
+      "type": "Text",
+      "condition": "",
+      "description": "生成的结果文本"
+    },
+    {
+      "key": "reasoningContent",
+      "name": "推理内容",
+      "type": "Text",
+      "condition": "",
+      "description": "推理模型的reasoning_content"
+    },
+    {
+      "key": "rawResponse",
+      "name": "原始响应内容",
+      "type": "Text",
+      "condition": "",
+      "description": "接口返回的原始响应内容"
+    },
+    {
+      "key": "promptTokens",
+      "name": "提示Token数",
+      "type": "Integer",
+      "condition": "",
+      "description": "Prompt耗费的token数量"
+    },
+    {
+      "key": "completionTokens",
+      "name": "响应Token数",
+      "type": "Integer",
+      "condition": "",
+      "description": "响应耗费的token数量"
+    },
+    {
+      "key": "totalTokens",
+      "name": "总Token数",
+      "type": "Integer",
+      "condition": "",
+      "description": "总耗费的token数量"
+    },
+    {
+      "key": "finishReason",
+      "name": "结束原因",
+      "type": "Text",
+      "condition": "",
+      "description": ""
+    },
+    {
+      "key": "historyMessages",
+      "name": "历史消息",
+      "type": "Object",
+      "condition": "仅：chat",
+      "description": "消息类型列表对象"
+    }
+  ],
+  "selections": {
+    "endpoint": {
+      "name": "接口端点",
+      "items": [
+        {
+          "value": "chat",
+          "name": "Chat",
+          "description": ""
+        },
+        {
+          "value": "completions",
+          "name": "Completions",
+          "description": ""
+        }
+      ]
+    },
+    "respFormat": {
+      "name": "响应格式",
+      "items": [
+        {
+          "value": "",
+          "name": "文本",
+          "description": ""
+        },
+        {
+          "value": "json_object",
+          "name": "JSON对象",
+          "description": ""
+        }
+      ]
+    }
+  },
+  "sourceFileName": "sys_ai_AI 调用.md"
+}

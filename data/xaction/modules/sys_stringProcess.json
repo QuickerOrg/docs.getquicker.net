@@ -1,0 +1,405 @@
+{
+  "key": "sys:stringProcess",
+  "slug": "stringprocess",
+  "legacySlug": "stringprocess",
+  "ownsLegacyContent": true,
+  "name": "文本处理",
+  "description": "各种文本处理功能",
+  "category": "Text",
+  "categoryName": "文本处理",
+  "stepType": "Action",
+  "isRisky": false,
+  "isProOnly": false,
+  "helpLink": "https://getquicker.net/KC/Help/Doc/stringprocess",
+  "inputs": [
+    {
+      "key": "data",
+      "name": "待处理内容",
+      "type": "Text",
+      "defaultValue": "",
+      "required": false,
+      "variableMode": "UseVarOrInput",
+      "condition": "",
+      "description": "需要进行文本处理的内容"
+    },
+    {
+      "key": "method",
+      "name": "处理",
+      "type": "Enum",
+      "defaultValue": "",
+      "required": true,
+      "variableMode": "Input",
+      "condition": "",
+      "description": "对文本进行什么处理"
+    },
+    {
+      "key": "srcEncoding",
+      "name": "编码",
+      "type": "Text",
+      "defaultValue": "utf-8",
+      "required": false,
+      "variableMode": "UseVarOrInput",
+      "condition": "仅：convertEncoding, urlEncode, urlDecode",
+      "description": ""
+    },
+    {
+      "key": "dstEncoding",
+      "name": "目标编码",
+      "type": "Text",
+      "defaultValue": "gbk",
+      "required": false,
+      "variableMode": "UseVarOrInput",
+      "condition": "仅：convertEncoding",
+      "description": ""
+    },
+    {
+      "key": "start",
+      "name": "开始位置",
+      "type": "Integer",
+      "defaultValue": "0",
+      "required": false,
+      "variableMode": "UseVarOrInput",
+      "condition": "仅：substring, insert, remove",
+      "description": "开始截取/插入位置，从0开始。如果为负值，表示从文本末尾开始向前的字符数。"
+    },
+    {
+      "key": "value",
+      "name": "内容",
+      "type": "Text",
+      "defaultValue": "",
+      "required": false,
+      "variableMode": "UseVarOrInput",
+      "condition": "仅：insert, append",
+      "description": "插入或追加的内容"
+    },
+    {
+      "key": "length",
+      "name": "长度",
+      "type": "Integer",
+      "defaultValue": "0",
+      "required": false,
+      "variableMode": "UseVarOrInput",
+      "condition": "仅：substring, remove",
+      "description": "截取或移除字符个数。截取时，0表示开始位置以后的所有内容，负值表示截取到结束前的多少个字符。"
+    },
+    {
+      "key": "totalWidth",
+      "name": "总宽度",
+      "type": "Integer",
+      "defaultValue": "10",
+      "required": false,
+      "variableMode": "UseVarOrInput",
+      "condition": "仅：padLeft, padRight",
+      "description": "补齐后的总字符数"
+    },
+    {
+      "key": "paddingChar",
+      "name": "填充字符",
+      "type": "Text",
+      "defaultValue": "",
+      "required": false,
+      "variableMode": "UseVarOrInput",
+      "condition": "仅：padLeft, padRight",
+      "description": "补齐时使用的填充字符，默认为空格。"
+    },
+    {
+      "key": "stopIfFail",
+      "name": "失败后停止",
+      "type": "Boolean",
+      "defaultValue": "true",
+      "required": false,
+      "variableMode": "Input",
+      "condition": "",
+      "description": "失败后是否停止动作"
+    }
+  ],
+  "outputs": [
+    {
+      "key": "isSuccess",
+      "name": "是否成功",
+      "type": "Boolean",
+      "condition": "",
+      "description": "操作是否成功"
+    },
+    {
+      "key": "output",
+      "name": "结果",
+      "type": "Text",
+      "condition": "",
+      "description": "处理后的文本"
+    }
+  ],
+  "selections": {
+    "method": {
+      "name": "处理",
+      "items": [
+        {
+          "value": "toUpper",
+          "name": "英文转大写",
+          "description": ""
+        },
+        {
+          "value": "toLower",
+          "name": "英文转小写",
+          "description": ""
+        },
+        {
+          "value": "reverse",
+          "name": "前后反转",
+          "description": ""
+        },
+        {
+          "value": "substring",
+          "name": "截取",
+          "description": ""
+        },
+        {
+          "value": "trimStart",
+          "name": "去除前面空白字符",
+          "description": ""
+        },
+        {
+          "value": "trimEnd",
+          "name": "去除后面空白字符",
+          "description": ""
+        },
+        {
+          "value": "trim",
+          "name": "去除前后空白字符",
+          "description": ""
+        },
+        {
+          "value": "urlEncode",
+          "name": "URL编码",
+          "description": ""
+        },
+        {
+          "value": "urlDecode",
+          "name": "URL解码 (+解码为空格)",
+          "description": ""
+        },
+        {
+          "value": "urlDataDecode",
+          "name": "URL数据解码 (保留+号)",
+          "description": ""
+        },
+        {
+          "value": "htmlEncode",
+          "name": "Html编码",
+          "description": ""
+        },
+        {
+          "value": "htmlDecode",
+          "name": "Html解码",
+          "description": ""
+        },
+        {
+          "value": "intercappedToSentence",
+          "name": "组合词拆分成句子(thisIsChina=>this Is China)",
+          "description": ""
+        },
+        {
+          "value": "base64Encode",
+          "name": "Base64编码",
+          "description": ""
+        },
+        {
+          "value": "base64Decode",
+          "name": "Base64解码",
+          "description": ""
+        },
+        {
+          "value": "removeEmptyLine",
+          "name": "去除空行",
+          "description": ""
+        },
+        {
+          "value": "mergeEmptyLine",
+          "name": "合并多个空行",
+          "description": ""
+        },
+        {
+          "value": "sortLinesAsc",
+          "name": "排序多行A-Z",
+          "description": ""
+        },
+        {
+          "value": "sortLinesDesc",
+          "name": "排序多行Z-A",
+          "description": ""
+        },
+        {
+          "value": "reverseLines",
+          "name": "翻转多行顺序",
+          "description": ""
+        },
+        {
+          "value": "toTitleCase",
+          "name": "首字母大写",
+          "description": ""
+        },
+        {
+          "value": "formatJson",
+          "name": "格式化JSON",
+          "description": ""
+        },
+        {
+          "value": "md5",
+          "name": "计算MD5哈希",
+          "description": ""
+        },
+        {
+          "value": "sha256Hash",
+          "name": "计算SHA256哈希",
+          "description": ""
+        },
+        {
+          "value": "sha1Hash",
+          "name": "计算SHA1哈希",
+          "description": ""
+        },
+        {
+          "value": "escapeJson",
+          "name": "转义文本为合法Json值",
+          "description": ""
+        },
+        {
+          "value": "DecodeUnicode",
+          "name": "解码Unicode字串(\\uXXXX转普通字符)",
+          "description": ""
+        },
+        {
+          "value": "convertEncoding",
+          "name": "转换编码",
+          "description": ""
+        },
+        {
+          "value": "toCnNum",
+          "name": "金额数字转换为大写",
+          "description": ""
+        },
+        {
+          "value": "cn2num",
+          "name": "中文转数字",
+          "description": ""
+        },
+        {
+          "value": "num2cn",
+          "name": "数字转中文",
+          "description": ""
+        },
+        {
+          "value": "ExpandEnvironmentVariables",
+          "name": "替换环境变量",
+          "description": ""
+        },
+        {
+          "value": "padLeft",
+          "name": "从左侧补齐长度",
+          "description": ""
+        },
+        {
+          "value": "padRight",
+          "name": "从右侧补齐长度",
+          "description": ""
+        },
+        {
+          "value": "insert",
+          "name": "插入内容",
+          "description": ""
+        },
+        {
+          "value": "append",
+          "name": "追加内容",
+          "description": ""
+        },
+        {
+          "value": "remove",
+          "name": "移除内容",
+          "description": ""
+        },
+        {
+          "value": "removeZeroWidthChars",
+          "name": "移除零宽字符",
+          "description": ""
+        },
+        {
+          "value": "html2text",
+          "name": "HTML转纯文本",
+          "description": ""
+        }
+      ]
+    },
+    "srcEncoding": {
+      "name": "编码",
+      "items": [
+        {
+          "value": "utf-8",
+          "name": "utf-8",
+          "description": ""
+        },
+        {
+          "value": "gbk",
+          "name": "gbk",
+          "description": ""
+        },
+        {
+          "value": "gb2312",
+          "name": "gb2312",
+          "description": ""
+        },
+        {
+          "value": "big5",
+          "name": "big5",
+          "description": ""
+        },
+        {
+          "value": "utf-16",
+          "name": "utf-16",
+          "description": ""
+        },
+        {
+          "value": "utf-32",
+          "name": "utf-32",
+          "description": ""
+        }
+      ]
+    },
+    "dstEncoding": {
+      "name": "目标编码",
+      "items": [
+        {
+          "value": "utf-8",
+          "name": "utf-8",
+          "description": ""
+        },
+        {
+          "value": "gbk",
+          "name": "gbk",
+          "description": ""
+        },
+        {
+          "value": "gb2312",
+          "name": "gb2312",
+          "description": ""
+        },
+        {
+          "value": "big5",
+          "name": "big5",
+          "description": ""
+        },
+        {
+          "value": "utf-16",
+          "name": "utf-16",
+          "description": ""
+        },
+        {
+          "value": "utf-32",
+          "name": "utf-32",
+          "description": ""
+        }
+      ]
+    }
+  },
+  "sourceFileName": "sys_stringProcess_文本处理.md"
+}

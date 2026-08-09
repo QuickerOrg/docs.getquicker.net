@@ -1,0 +1,57 @@
+{
+  "key": "sys:pythonscript",
+  "slug": "pythonscript",
+  "legacySlug": "pythonscript",
+  "ownsLegacyContent": true,
+  "name": "运行Python代码",
+  "description": "执行Python代码片段。",
+  "category": "Flow",
+  "categoryName": "程序流程",
+  "stepType": "Action",
+  "isRisky": false,
+  "isProOnly": false,
+  "helpLink": "https://getquicker.net/KC/Help/Doc/pythonscript",
+  "inputs": [
+    {
+      "key": "script",
+      "name": "脚本内容",
+      "type": "Text",
+      "defaultValue": "##.py \nquicker.context.SetVarValue('text', 'hello world')",
+      "required": true,
+      "variableMode": "UseVarOrInput",
+      "condition": "",
+      "description": "要运行的脚本内容"
+    },
+    {
+      "key": "pythonPath",
+      "name": "Python环境路径",
+      "type": "Text",
+      "defaultValue": "",
+      "required": false,
+      "variableMode": "UseVarOrInput",
+      "condition": "",
+      "description": "可选。Python环境(PythonXXX.dll)所在目录，留空时使用全局设置"
+    },
+    {
+      "key": "stopIfFail",
+      "name": "失败后停止",
+      "type": "Boolean",
+      "defaultValue": "true",
+      "required": false,
+      "variableMode": "Input",
+      "condition": "",
+      "description": "失败后是否停止动作"
+    }
+  ],
+  "outputs": [
+    {
+      "key": "isSuccess",
+      "name": "是否成功",
+      "type": "Boolean",
+      "condition": "",
+      "description": "操作是否成功"
+    }
+  ],
+  "selections": {},
+  "sourceFileName": "sys_pythonscript_运行Python代码.md"
+}

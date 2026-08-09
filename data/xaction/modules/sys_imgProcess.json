@@ -1,0 +1,225 @@
+{
+  "key": "sys:imgProcess",
+  "slug": "imgprocess",
+  "legacySlug": "imgprocess",
+  "ownsLegacyContent": true,
+  "name": "图片处理",
+  "description": "图片处理和变换",
+  "category": "Image",
+  "categoryName": "图片处理",
+  "stepType": "Action",
+  "isRisky": false,
+  "isProOnly": false,
+  "helpLink": "https://getquicker.net/KC/Help/Doc/imgprocess",
+  "inputs": [
+    {
+      "key": "img",
+      "name": "图片",
+      "type": "Image",
+      "defaultValue": "",
+      "required": true,
+      "variableMode": "UseVar",
+      "condition": "",
+      "description": "要转换的图片"
+    },
+    {
+      "key": "type",
+      "name": "操作类型",
+      "type": "Enum",
+      "defaultValue": "resize_percent",
+      "required": true,
+      "variableMode": "Input",
+      "condition": "",
+      "description": "对图片的转换操作类型"
+    },
+    {
+      "key": "resizePercent",
+      "name": "缩放比例",
+      "type": "Number",
+      "defaultValue": "50",
+      "required": false,
+      "variableMode": "UseVarOrInput",
+      "condition": "仅：resize_percent",
+      "description": "缩小或放大到原来的百分之多少"
+    },
+    {
+      "key": "maxWidth",
+      "name": "最大宽度",
+      "type": "Integer",
+      "defaultValue": "0",
+      "required": false,
+      "variableMode": "UseVarOrInput",
+      "condition": "仅：resize_pixel",
+      "description": "最大宽度(像素数)，0表示自动"
+    },
+    {
+      "key": "maxHeight",
+      "name": "最大高度",
+      "type": "Integer",
+      "defaultValue": "0",
+      "required": false,
+      "variableMode": "UseVarOrInput",
+      "condition": "仅：resize_pixel",
+      "description": "最大高度(像素数)，0表示自动"
+    },
+    {
+      "key": "rotation",
+      "name": "旋转方式",
+      "type": "Integer",
+      "defaultValue": "0",
+      "required": false,
+      "variableMode": "UseVarOrInput",
+      "condition": "仅：Rotate",
+      "description": "顺时针角度。0:不旋转, 1:90°, 2:180°, 3:270°, 其他值请参考模块文档。"
+    },
+    {
+      "key": "filterParams",
+      "name": "处理参数",
+      "type": "Text",
+      "defaultValue": "",
+      "required": false,
+      "variableMode": "Input",
+      "condition": "仅：Filters",
+      "description": "每行设定一个处理步骤，具体设置请参考文档"
+    },
+    {
+      "key": "iconFilePath",
+      "name": "图标文件保存路径",
+      "type": "Text",
+      "defaultValue": "",
+      "required": true,
+      "variableMode": "UseVarOrInput",
+      "condition": "仅：GenerateIco",
+      "description": "保存图标文件(.ico)的完整路径"
+    },
+    {
+      "key": "iconSize",
+      "name": "图标大小",
+      "type": "Text",
+      "defaultValue": "256,48,32,16",
+      "required": true,
+      "variableMode": "UseVarOrInput",
+      "condition": "仅：GenerateIco",
+      "description": "图标中的位图大小，单位为像素。多尺寸图标可用英文逗号风格"
+    },
+    {
+      "key": "iconScaling",
+      "name": "缩放采样",
+      "type": "Enum",
+      "defaultValue": "HighQualityBicubic",
+      "required": false,
+      "variableMode": "Input",
+      "condition": "仅：GenerateIco",
+      "description": "自动：整数倍放大使用邻近采样，大比例缩小使用 Lanczos，其余使用高质量双三次"
+    },
+    {
+      "key": "stopIfFail",
+      "name": "失败后停止",
+      "type": "Boolean",
+      "defaultValue": "true",
+      "required": false,
+      "variableMode": "Input",
+      "condition": "",
+      "description": "失败后是否停止动作"
+    }
+  ],
+  "outputs": [
+    {
+      "key": "isSuccess",
+      "name": "是否成功",
+      "type": "Boolean",
+      "condition": "",
+      "description": "操作是否成功"
+    },
+    {
+      "key": "result",
+      "name": "结果图片",
+      "type": "Image",
+      "condition": "仅：Clone, resize_percent, resize_pixel, Filters",
+      "description": "处理后的图片"
+    }
+  ],
+  "selections": {
+    "type": {
+      "name": "操作类型",
+      "items": [
+        {
+          "value": "resize_percent",
+          "name": "缩放图片(指定比例)",
+          "description": ""
+        },
+        {
+          "value": "resize_pixel",
+          "name": "缩小图片(指定像素)",
+          "description": ""
+        },
+        {
+          "value": "Clone",
+          "name": "复制图片",
+          "description": ""
+        },
+        {
+          "value": "Invert",
+          "name": "反色",
+          "description": ""
+        },
+        {
+          "value": "GrayScale",
+          "name": "灰度",
+          "description": ""
+        },
+        {
+          "value": "Rotate",
+          "name": "旋转",
+          "description": ""
+        },
+        {
+          "value": "Filters",
+          "name": "组合处理",
+          "description": ""
+        },
+        {
+          "value": "GenerateIco",
+          "name": "生成图标文件(.ico)",
+          "description": ""
+        }
+      ]
+    },
+    "iconScaling": {
+      "name": "缩放采样",
+      "items": [
+        {
+          "value": "Auto",
+          "name": "自动",
+          "description": ""
+        },
+        {
+          "value": "NearestNeighbor",
+          "name": "像素化（邻近采样）",
+          "description": ""
+        },
+        {
+          "value": "HighQualityBilinear",
+          "name": "清晰（高质量双线性）",
+          "description": ""
+        },
+        {
+          "value": "HighQualityBicubic",
+          "name": "平滑（高质量双三次）",
+          "description": ""
+        },
+        {
+          "value": "Lanczos",
+          "name": "锐利（Lanczos）",
+          "description": ""
+        },
+        {
+          "value": "Box",
+          "name": "区域平均（Box）",
+          "description": ""
+        }
+      ]
+    }
+  },
+  "sourceFileName": "sys_imgProcess_图片处理.md"
+}

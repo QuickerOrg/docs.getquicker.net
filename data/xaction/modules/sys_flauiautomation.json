@@ -1,0 +1,552 @@
+{
+  "key": "sys:flauiautomation",
+  "slug": "flauiautomation",
+  "legacySlug": "uiautomation",
+  "ownsLegacyContent": false,
+  "name": "窗口界面控制(FlaUI)",
+  "description": "触发Windows窗口的菜单/按钮等控件(通过FlaUI库实现)。",
+  "category": "SoftInteraction",
+  "categoryName": "第三方软件交互",
+  "stepType": "Action",
+  "isRisky": false,
+  "isProOnly": false,
+  "helpLink": "https://getquicker.net/KC/Help/Doc/uiautomation",
+  "inputs": [
+    {
+      "key": "type",
+      "name": "操作类型",
+      "type": "Enum",
+      "defaultValue": "TriggerMenu",
+      "required": true,
+      "variableMode": "Input",
+      "condition": "",
+      "description": "操作类型。按下和抬起需要配对使用。"
+    },
+    {
+      "key": "window",
+      "name": "窗口句柄",
+      "type": "Text",
+      "defaultValue": "",
+      "required": false,
+      "variableMode": "UseVarOrInput",
+      "condition": "仅：TriggerMenu, TriggerControl, GetControlInfo",
+      "description": "要操作哪个窗口的控件。不填写=使用前台窗口；或窗口句柄数字。"
+    },
+    {
+      "key": "menuPath",
+      "name": "菜单路径",
+      "type": "Text",
+      "defaultValue": "",
+      "required": false,
+      "variableMode": "UseVarOrInput",
+      "condition": "仅：TriggerMenu",
+      "description": "菜单的展开路径。每行写一个级别的菜单名（需完全匹配）"
+    },
+    {
+      "key": "expandDelay",
+      "name": "展开延时",
+      "type": "Integer",
+      "defaultValue": "200",
+      "required": false,
+      "variableMode": "Input",
+      "condition": "仅：TriggerMenu",
+      "description": "等待下级菜单展开的时间(ms)"
+    },
+    {
+      "key": "control",
+      "name": "控件XPath或Name",
+      "type": "Text",
+      "defaultValue": "",
+      "required": false,
+      "variableMode": "UseVarOrInput",
+      "condition": "仅：TriggerControl, GetControlInfo",
+      "description": "控件的XPath或Name、AutomationId。XPath以/开始。(可写多个，每行一个，前一个查找失败时会自动尝试下一个)"
+    },
+    {
+      "key": "controlType",
+      "name": "控件类型",
+      "type": "Enum",
+      "defaultValue": "0",
+      "required": false,
+      "variableMode": "UseVarOrInput",
+      "condition": "仅：TriggerControl, GetControlInfo",
+      "description": "可选。当有多个名称相同但类型不同的控件时区分。"
+    },
+    {
+      "key": "controlOperation",
+      "name": "动作",
+      "type": "Enum",
+      "defaultValue": "Auto",
+      "required": false,
+      "variableMode": "Input",
+      "condition": "仅：TriggerControl",
+      "description": "对控件执行的操作。"
+    },
+    {
+      "key": "value",
+      "name": "值",
+      "type": "Text",
+      "defaultValue": "",
+      "required": false,
+      "variableMode": "UseVarOrInput",
+      "condition": "仅：TriggerControl",
+      "description": "仅用于 \"设置值\" 操作。"
+    },
+    {
+      "key": "pointLocation",
+      "name": "坐标位置",
+      "type": "Text",
+      "defaultValue": "",
+      "required": false,
+      "variableMode": "UseVarOrInput",
+      "condition": "仅：GetControlInfoByPosition",
+      "description": "指定要检查的控件的屏幕坐标位置，格式为\"x,y\""
+    },
+    {
+      "key": "stopIfFail",
+      "name": "失败后停止",
+      "type": "Boolean",
+      "defaultValue": "true",
+      "required": false,
+      "variableMode": "Input",
+      "condition": "",
+      "description": "失败后是否停止动作"
+    }
+  ],
+  "outputs": [
+    {
+      "key": "isSuccess",
+      "name": "是否成功",
+      "type": "Boolean",
+      "condition": "",
+      "description": "操作是否成功"
+    },
+    {
+      "key": "value",
+      "name": "值",
+      "type": "Text",
+      "condition": "仅：GetControlInfo, GetCursorPointControlInfo, GetFocusedControlInfo, GetControlInfoByPosition",
+      "description": "控件的值"
+    },
+    {
+      "key": "controlText",
+      "name": "文本",
+      "type": "Text",
+      "condition": "仅：GetControlInfo, GetCursorPointControlInfo, GetFocusedControlInfo, GetControlInfoByPosition",
+      "description": "获取控件上的文本。根据控件不同，可能从Value、Text、Name等信息获取。"
+    },
+    {
+      "key": "rect",
+      "name": "位置",
+      "type": "Text",
+      "condition": "仅：GetControlInfo, GetCursorPointControlInfo, GetFocusedControlInfo, GetControlInfoByPosition",
+      "description": "控件坐标位置"
+    },
+    {
+      "key": "controlName",
+      "name": "控件名称",
+      "type": "Text",
+      "condition": "仅：GetControlInfo, GetCursorPointControlInfo, GetFocusedControlInfo, GetControlInfoByPosition",
+      "description": ""
+    },
+    {
+      "key": "controlType",
+      "name": "控件类型",
+      "type": "Text",
+      "condition": "仅：GetControlInfo, GetCursorPointControlInfo, GetFocusedControlInfo, GetControlInfoByPosition",
+      "description": ""
+    },
+    {
+      "key": "controlXPath",
+      "name": "控件XPath",
+      "type": "Text",
+      "condition": "仅：GetControlInfo, GetCursorPointControlInfo, GetFocusedControlInfo, GetControlInfoByPosition",
+      "description": ""
+    },
+    {
+      "key": "controlTypeId",
+      "name": "控件类型ID",
+      "type": "Integer",
+      "condition": "仅：GetControlInfo, GetCursorPointControlInfo, GetFocusedControlInfo, GetControlInfoByPosition",
+      "description": ""
+    },
+    {
+      "key": "controlInfo",
+      "name": "其他信息",
+      "type": "Dict",
+      "condition": "仅：GetControlInfo, GetCursorPointControlInfo, GetFocusedControlInfo, GetControlInfoByPosition",
+      "description": ""
+    },
+    {
+      "key": "controlIsEnabled",
+      "name": "是否启用",
+      "type": "Boolean",
+      "condition": "仅：GetControlInfo, GetCursorPointControlInfo, GetFocusedControlInfo, GetControlInfoByPosition",
+      "description": "控件未处于禁用状态"
+    },
+    {
+      "key": "controlIsVisible",
+      "name": "是否可见",
+      "type": "Boolean",
+      "condition": "仅：GetControlInfo, GetCursorPointControlInfo, GetFocusedControlInfo, GetControlInfoByPosition",
+      "description": "控件是否在屏幕上。"
+    },
+    {
+      "key": "element",
+      "name": "原始对象",
+      "type": "Object",
+      "condition": "仅：GetControlInfo, GetCursorPointControlInfo, GetFocusedControlInfo, GetControlInfoByPosition",
+      "description": "返回控件的AutomationElement对象"
+    }
+  ],
+  "selections": {
+    "type": {
+      "name": "操作类型",
+      "items": [
+        {
+          "value": "TriggerMenu",
+          "name": "触发窗口菜单",
+          "description": ""
+        },
+        {
+          "value": "TriggerControl",
+          "name": "触发窗口控件",
+          "description": ""
+        },
+        {
+          "value": "GetControlInfo",
+          "name": "获取窗口控件信息",
+          "description": ""
+        },
+        {
+          "value": "GetCursorPointControlInfo",
+          "name": "获取鼠标指针位置控件信息",
+          "description": ""
+        },
+        {
+          "value": "GetControlInfoByPosition",
+          "name": "获取指定位置控件信息",
+          "description": ""
+        },
+        {
+          "value": "GetFocusedControlInfo",
+          "name": "获取焦点控件信息",
+          "description": ""
+        }
+      ]
+    },
+    "controlType": {
+      "name": "控件类型",
+      "items": [
+        {
+          "value": "0",
+          "name": "*任意类型*",
+          "description": ""
+        },
+        {
+          "value": "AppBar",
+          "name": "AppBar",
+          "description": ""
+        },
+        {
+          "value": "Button",
+          "name": "Button",
+          "description": ""
+        },
+        {
+          "value": "Calendar",
+          "name": "Calendar",
+          "description": ""
+        },
+        {
+          "value": "CheckBox",
+          "name": "CheckBox",
+          "description": ""
+        },
+        {
+          "value": "ComboBox",
+          "name": "ComboBox",
+          "description": ""
+        },
+        {
+          "value": "Custom",
+          "name": "Custom",
+          "description": ""
+        },
+        {
+          "value": "DataGrid",
+          "name": "DataGrid",
+          "description": ""
+        },
+        {
+          "value": "DataItem",
+          "name": "DataItem",
+          "description": ""
+        },
+        {
+          "value": "Document",
+          "name": "Document",
+          "description": ""
+        },
+        {
+          "value": "Edit",
+          "name": "Edit",
+          "description": ""
+        },
+        {
+          "value": "Group",
+          "name": "Group",
+          "description": ""
+        },
+        {
+          "value": "Header",
+          "name": "Header",
+          "description": ""
+        },
+        {
+          "value": "HeaderItem",
+          "name": "HeaderItem",
+          "description": ""
+        },
+        {
+          "value": "Hyperlink",
+          "name": "Hyperlink",
+          "description": ""
+        },
+        {
+          "value": "Image",
+          "name": "Image",
+          "description": ""
+        },
+        {
+          "value": "List",
+          "name": "List",
+          "description": ""
+        },
+        {
+          "value": "ListItem",
+          "name": "ListItem",
+          "description": ""
+        },
+        {
+          "value": "Menu",
+          "name": "Menu",
+          "description": ""
+        },
+        {
+          "value": "MenuBar",
+          "name": "MenuBar",
+          "description": ""
+        },
+        {
+          "value": "MenuItem",
+          "name": "MenuItem",
+          "description": ""
+        },
+        {
+          "value": "Pane",
+          "name": "Pane",
+          "description": ""
+        },
+        {
+          "value": "ProgressBar",
+          "name": "ProgressBar",
+          "description": ""
+        },
+        {
+          "value": "RadioButton",
+          "name": "RadioButton",
+          "description": ""
+        },
+        {
+          "value": "ScrollBar",
+          "name": "ScrollBar",
+          "description": ""
+        },
+        {
+          "value": "SemanticZoom",
+          "name": "SemanticZoom",
+          "description": ""
+        },
+        {
+          "value": "Separator",
+          "name": "Separator",
+          "description": ""
+        },
+        {
+          "value": "Slider",
+          "name": "Slider",
+          "description": ""
+        },
+        {
+          "value": "Spinner",
+          "name": "Spinner",
+          "description": ""
+        },
+        {
+          "value": "SplitButton",
+          "name": "SplitButton",
+          "description": ""
+        },
+        {
+          "value": "StatusBar",
+          "name": "StatusBar",
+          "description": ""
+        },
+        {
+          "value": "Tab",
+          "name": "Tab",
+          "description": ""
+        },
+        {
+          "value": "TabItem",
+          "name": "TabItem",
+          "description": ""
+        },
+        {
+          "value": "Table",
+          "name": "Table",
+          "description": ""
+        },
+        {
+          "value": "Text",
+          "name": "Text",
+          "description": ""
+        },
+        {
+          "value": "Thumb",
+          "name": "Thumb",
+          "description": ""
+        },
+        {
+          "value": "TitleBar",
+          "name": "TitleBar",
+          "description": ""
+        },
+        {
+          "value": "ToolBar",
+          "name": "ToolBar",
+          "description": ""
+        },
+        {
+          "value": "ToolTip",
+          "name": "ToolTip",
+          "description": ""
+        },
+        {
+          "value": "Tree",
+          "name": "Tree",
+          "description": ""
+        },
+        {
+          "value": "TreeItem",
+          "name": "TreeItem",
+          "description": ""
+        },
+        {
+          "value": "Window",
+          "name": "Window",
+          "description": ""
+        }
+      ]
+    },
+    "controlOperation": {
+      "name": "动作",
+      "items": [
+        {
+          "value": "Auto",
+          "name": "自动",
+          "description": ""
+        },
+        {
+          "value": "Invoke",
+          "name": "调用（按钮、菜单项等）",
+          "description": ""
+        },
+        {
+          "value": "SetFocus",
+          "name": "设置焦点",
+          "description": ""
+        },
+        {
+          "value": "LeftClick",
+          "name": "鼠标左键单击",
+          "description": ""
+        },
+        {
+          "value": "MiddleClick",
+          "name": "鼠标中键单击",
+          "description": ""
+        },
+        {
+          "value": "RightClick",
+          "name": "鼠标右键单击",
+          "description": ""
+        },
+        {
+          "value": "LeftDoubleClick",
+          "name": "鼠标左键双击",
+          "description": ""
+        },
+        {
+          "value": "Select",
+          "name": "单选：选择（单选框、标签页等）",
+          "description": ""
+        },
+        {
+          "value": "AddToSelection",
+          "name": "多选：添加到多选（多选列表等）",
+          "description": ""
+        },
+        {
+          "value": "RemoveFromSelection",
+          "name": "多选：从多选中移除（多选列表）",
+          "description": ""
+        },
+        {
+          "value": "ToggleItemSelection",
+          "name": "多选：切换选中状态",
+          "description": ""
+        },
+        {
+          "value": "Expand",
+          "name": "展开折叠：展开（菜单等）",
+          "description": ""
+        },
+        {
+          "value": "Collapse",
+          "name": "展开折叠：折叠（菜单等）",
+          "description": ""
+        },
+        {
+          "value": "ToggleExpandCollapse",
+          "name": "展开折叠：切换展开折叠（菜单等）",
+          "description": ""
+        },
+        {
+          "value": "Toggle",
+          "name": "切换：切换（检查框等）",
+          "description": ""
+        },
+        {
+          "value": "ToggleOn",
+          "name": "切换：开（检查框等）",
+          "description": ""
+        },
+        {
+          "value": "ToggleOff",
+          "name": "切换：关（检查框等）",
+          "description": ""
+        },
+        {
+          "value": "SetValue",
+          "name": "设置值",
+          "description": ""
+        }
+      ]
+    }
+  },
+  "sharedDocumentationKey": "sys:uiautomation",
+  "sharedDocumentationSlug": "uiautomation",
+  "sourceFileName": "sys_flauiautomation_窗口界面控制(FlaUI).md"
+}

@@ -1,0 +1,108 @@
+{
+  "key": "sys:activateProcessMainWindow",
+  "slug": "activateprocessmainwindow",
+  "legacySlug": "activateprocessmainwindow",
+  "ownsLegacyContent": true,
+  "name": "激活进程主窗口",
+  "description": "找到指定进程的主窗口并使其显示在前台。",
+  "category": "System",
+  "categoryName": "Windows系统",
+  "stepType": "Action",
+  "isRisky": false,
+  "isProOnly": false,
+  "helpLink": "https://getquicker.net/KC/Help/Doc/activateprocessmainwindow",
+  "inputs": [
+    {
+      "key": "process",
+      "name": "进程名称/pid",
+      "type": "Text",
+      "defaultValue": "",
+      "required": true,
+      "variableMode": "UseVarOrInput",
+      "condition": "",
+      "description": "请输入要验证的进程名称或pid。进程名通常是exe的文件名去掉后缀，比如记事本程序的进程名称为notepad。"
+    },
+    {
+      "key": "hotkey",
+      "name": "热键",
+      "type": "Text",
+      "defaultValue": "",
+      "required": false,
+      "variableMode": "UseVarOrInput",
+      "condition": "",
+      "description": "选填。软件最小化到托盘时，使用指定的全局热键激活窗口。"
+    },
+    {
+      "key": "className",
+      "name": "窗口类名",
+      "type": "Text",
+      "defaultValue": "",
+      "required": false,
+      "variableMode": "UseVarOrInput",
+      "condition": "",
+      "description": "选填。未能获取主窗口时（如窗口隐藏），可以尝试根据类名查找窗口，支持正则。"
+    },
+    {
+      "key": "windowTitle",
+      "name": "窗口标题",
+      "type": "Text",
+      "defaultValue": "",
+      "required": false,
+      "variableMode": "UseVarOrInput",
+      "condition": "",
+      "description": "选填。未能获取主窗口时，根据窗口标题查找，支持正则。"
+    },
+    {
+      "key": "path",
+      "name": "程序路径",
+      "type": "Text",
+      "defaultValue": "",
+      "required": true,
+      "variableMode": "UseVarOrInput",
+      "condition": "",
+      "description": "选填。如果进程不存在，可以根据此路径启动程序。"
+    },
+    {
+      "key": "stopIfFail",
+      "name": "失败后停止",
+      "type": "Boolean",
+      "defaultValue": "true",
+      "required": false,
+      "variableMode": "Input",
+      "condition": "",
+      "description": "失败后是否停止动作"
+    }
+  ],
+  "outputs": [
+    {
+      "key": "isSuccess",
+      "name": "是否成功",
+      "type": "Boolean",
+      "condition": "",
+      "description": "是否成功激活了进程主窗口"
+    },
+    {
+      "key": "pid",
+      "name": "PID",
+      "type": "Integer",
+      "condition": "",
+      "description": "进程ID"
+    },
+    {
+      "key": "mainWinHandle",
+      "name": "主窗口句柄",
+      "type": "Integer",
+      "condition": "",
+      "description": "进程的主窗口句柄"
+    },
+    {
+      "key": "mainWinTitle",
+      "name": "主窗口标题",
+      "type": "Text",
+      "condition": "",
+      "description": ""
+    }
+  ],
+  "selections": {},
+  "sourceFileName": "sys_activateProcessMainWindow_激活进程主窗口.md"
+}

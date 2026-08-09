@@ -1,0 +1,151 @@
+{
+  "key": "sys:getSelectedText",
+  "slug": "get_selected_text",
+  "legacySlug": "get_selected_text",
+  "ownsLegacyContent": true,
+  "name": "获取选中的文本",
+  "description": "获取选中的文字",
+  "category": "Basic",
+  "categoryName": "基础",
+  "stepType": "Action",
+  "isRisky": false,
+  "isProOnly": false,
+  "helpLink": "https://getquicker.net/KC/Help/Doc/get_selected_text",
+  "inputs": [
+    {
+      "key": "format",
+      "name": "文本数据格式",
+      "type": "Enum",
+      "defaultValue": "UnicodeText",
+      "required": true,
+      "variableMode": "Input",
+      "condition": "",
+      "description": "需要读取的剪贴板文本内容格式。通常请使用Unicode纯文本格式。"
+    },
+    {
+      "key": "waitMs",
+      "name": "等待剪贴板时间",
+      "type": "Integer",
+      "defaultValue": "250",
+      "required": false,
+      "variableMode": "UseVarOrInput",
+      "condition": "",
+      "description": "模拟复制键后，等待剪贴板变化的最长时间毫秒数。"
+    },
+    {
+      "key": "repeat",
+      "name": "重试次数",
+      "type": "Integer",
+      "defaultValue": "0",
+      "required": false,
+      "variableMode": "Input",
+      "condition": "",
+      "description": "【已过时，仅为兼容性保留】失败后重试的次数。"
+    },
+    {
+      "key": "tryNoClipboard",
+      "name": "尝试不通过剪贴板的方式获取",
+      "type": "Boolean",
+      "defaultValue": "false",
+      "required": false,
+      "variableMode": "Input",
+      "condition": "",
+      "description": "通过UIAutomation方式获取（某些情况可能出现无法完整获取文字、失去换行信息等问题）"
+    },
+    {
+      "key": "useActionParam",
+      "name": "如果为动作传递了参数，使用参数值作为获取的结果",
+      "type": "Boolean",
+      "defaultValue": "false",
+      "required": false,
+      "variableMode": "Input",
+      "condition": "",
+      "description": "没有传递参数时仍尝试获取选中的文本。"
+    },
+    {
+      "key": "trim",
+      "name": "去除前后的空白",
+      "type": "Boolean",
+      "defaultValue": "false",
+      "required": false,
+      "variableMode": "Input",
+      "condition": "",
+      "description": "去除内容前后的空白（包括空行）。"
+    },
+    {
+      "key": "stopIfFail",
+      "name": "失败后中止动作",
+      "type": "Boolean",
+      "defaultValue": "true",
+      "required": false,
+      "variableMode": "Input",
+      "condition": "",
+      "description": "获取选中的文本失败后，是否停止后续动作的执行。"
+    }
+  ],
+  "outputs": [
+    {
+      "key": "isSuccess",
+      "name": "是否成功",
+      "type": "Boolean",
+      "condition": "",
+      "description": "是否成功获取了文本"
+    },
+    {
+      "key": "output",
+      "name": "内容",
+      "type": "Text",
+      "condition": "",
+      "description": "将获得的文本写入到变量"
+    },
+    {
+      "key": "cleanHtml",
+      "name": "去除封装的HTML",
+      "type": "Text",
+      "condition": "仅：Html",
+      "description": "剪贴板HTML的主要内容<!--StartFragment-->和<!--EndFragment-->之间的部分"
+    },
+    {
+      "key": "outputEncoded",
+      "name": "URL编码的内容",
+      "type": "Text",
+      "condition": "",
+      "description": "对选中的内容进行URL编码处理后的结果，通常用于拼接网址。"
+    },
+    {
+      "key": "url",
+      "name": "来源网址",
+      "type": "Text",
+      "condition": "",
+      "description": "从网页中复制内容时，可能会携带网址信息。"
+    }
+  ],
+  "selections": {
+    "format": {
+      "name": "文本数据格式",
+      "items": [
+        {
+          "value": "UnicodeText",
+          "name": "纯文本（默认）",
+          "description": ""
+        },
+        {
+          "value": "Rtf",
+          "name": "Rtf",
+          "description": ""
+        },
+        {
+          "value": "Html",
+          "name": "Html",
+          "description": ""
+        },
+        {
+          "value": "CommaSeparatedValue",
+          "name": "逗号分隔的值（csv）",
+          "description": ""
+        }
+      ]
+    }
+  },
+  "sourceFileName": "sys_getSelectedText_获取选中的文本.md"
+}

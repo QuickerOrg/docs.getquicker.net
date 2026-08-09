@@ -1,0 +1,39 @@
+{
+  "key": "sys:playRecords",
+  "slug": "playrecord",
+  "legacySlug": "playrecord",
+  "ownsLegacyContent": true,
+  "name": "重放键鼠操作",
+  "description": "重放录制好的键鼠操作数据。",
+  "category": "Ui",
+  "categoryName": "界面组件",
+  "stepType": "Action",
+  "isRisky": false,
+  "isProOnly": false,
+  "helpLink": "https://getquicker.net/KC/Help/Doc/playrecord",
+  "inputs": [
+    {
+      "key": "data",
+      "name": "录制数据",
+      "type": "Text",
+      "defaultValue": "",
+      "required": true,
+      "variableMode": "UseVarOrInput",
+      "condition": "",
+      "description": "录制的键鼠操作数据"
+    },
+    {
+      "key": "speed",
+      "name": "重放速度",
+      "type": "Number",
+      "defaultValue": "2",
+      "required": true,
+      "variableMode": "UseVarOrInput",
+      "condition": "",
+      "description": "重放操作的速度"
+    }
+  ],
+  "outputs": [],
+  "selections": {},
+  "sourceFileName": "sys_playRecords_重放键鼠操作.md"
+}

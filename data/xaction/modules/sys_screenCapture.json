@@ -1,0 +1,167 @@
+{
+  "key": "sys:screenCapture",
+  "slug": "screencapture",
+  "legacySlug": "screencapture",
+  "ownsLegacyContent": true,
+  "name": "屏幕截图",
+  "description": "截取屏幕区域",
+  "category": "Image",
+  "categoryName": "图片处理",
+  "stepType": "Action",
+  "isRisky": false,
+  "isProOnly": false,
+  "helpLink": "https://getquicker.net/KC/Help/Doc/screencapture",
+  "inputs": [
+    {
+      "key": "type",
+      "name": "截图类型",
+      "type": "Enum",
+      "defaultValue": "select",
+      "required": true,
+      "variableMode": "Input",
+      "condition": "",
+      "description": "截取图片的屏幕区域类型"
+    },
+    {
+      "key": "area",
+      "name": "截图区域",
+      "type": "Text",
+      "defaultValue": "",
+      "required": false,
+      "variableMode": "UseVarOrInput",
+      "condition": "仅：fixed_area",
+      "description": "要截取的屏幕坐标位置（像素值），格式为：left,top,right,bottom。默认不包含右边和底边像素。"
+    },
+    {
+      "key": "preSelectArea",
+      "name": "预选截图区域",
+      "type": "Text",
+      "defaultValue": "",
+      "required": false,
+      "variableMode": "UseVarOrInput",
+      "condition": "仅：select",
+      "description": "非必要请勿设置。预先选择的截图区域，格式为：left,top,right,bottom。默认不包含右边和底边像素。"
+    },
+    {
+      "key": "includeRightBottomBorder",
+      "name": "预选截图区域包含右边和底边像素",
+      "type": "Boolean",
+      "defaultValue": "true",
+      "required": false,
+      "variableMode": "Input",
+      "condition": "仅：fixed_area, select",
+      "description": "包含时，当指定 0,0,2,2 的时候，截图的大小为3*3, 否则为2*2"
+    },
+    {
+      "key": "windowHandle",
+      "name": "窗口句柄",
+      "type": "Integer",
+      "defaultValue": "0",
+      "required": false,
+      "variableMode": "UseVarOrInput",
+      "condition": "仅：window, windowBackground",
+      "description": "要截取的窗口句柄数字。0或留空表示截取前台窗口。"
+    },
+    {
+      "key": "delay",
+      "name": "截图前延迟时间",
+      "type": "Integer",
+      "defaultValue": "0",
+      "required": true,
+      "variableMode": "UseVarOrInput",
+      "condition": "",
+      "description": "等待多少毫秒后开始截图"
+    },
+    {
+      "key": "toClip",
+      "name": "写入剪贴板",
+      "type": "Boolean",
+      "defaultValue": "false",
+      "required": false,
+      "variableMode": "Input",
+      "condition": "",
+      "description": "截屏图片是否写入到剪贴板中"
+    },
+    {
+      "key": "addToHistory",
+      "name": "加入截图历史",
+      "type": "Boolean",
+      "defaultValue": "false",
+      "required": false,
+      "variableMode": "Input",
+      "condition": "",
+      "description": "显式启用后将结果保存到本机截图历史；默认关闭，避免后台或循环动作持续留存画面。"
+    },
+    {
+      "key": "stopIfFail",
+      "name": "失败后停止",
+      "type": "Boolean",
+      "defaultValue": "true",
+      "required": false,
+      "variableMode": "Input",
+      "condition": "",
+      "description": "失败后是否停止动作"
+    }
+  ],
+  "outputs": [
+    {
+      "key": "isSuccess",
+      "name": "是否成功",
+      "type": "Boolean",
+      "condition": "",
+      "description": "操作是否成功"
+    },
+    {
+      "key": "img",
+      "name": "图片",
+      "type": "Image",
+      "condition": "",
+      "description": "截图的图片"
+    },
+    {
+      "key": "rect",
+      "name": "截图区域",
+      "type": "Text",
+      "condition": "",
+      "description": "图片的截取区域(left,top,right,bottom)。"
+    }
+  ],
+  "selections": {
+    "type": {
+      "name": "截图类型",
+      "items": [
+        {
+          "value": "select",
+          "name": "选择区域",
+          "description": ""
+        },
+        {
+          "value": "full_screen",
+          "name": "所有屏幕",
+          "description": ""
+        },
+        {
+          "value": "primary_screen",
+          "name": "主屏幕",
+          "description": ""
+        },
+        {
+          "value": "fixed_area",
+          "name": "固定区域",
+          "description": ""
+        },
+        {
+          "value": "window",
+          "name": "窗口 (屏幕可见内容)",
+          "description": ""
+        },
+        {
+          "value": "windowBackground",
+          "name": "窗口 (支持后台显示)",
+          "description": ""
+        }
+      ]
+    }
+  },
+  "sourceFileName": "sys_screenCapture_屏幕截图.md"
+}

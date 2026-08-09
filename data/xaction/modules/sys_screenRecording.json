@@ -1,0 +1,335 @@
+{
+  "key": "sys:screenRecording",
+  "slug": "screen-recording",
+  "legacySlug": "screencapture",
+  "ownsLegacyContent": false,
+  "name": "后台屏幕录制",
+  "description": "后台录制屏幕区域为视频文件，通过会话 ID 跨步骤控制录制生命周期。",
+  "category": "Image",
+  "categoryName": "图片处理",
+  "stepType": "Action",
+  "isRisky": false,
+  "isProOnly": false,
+  "helpLink": "https://getquicker.net/KC/Help/Doc/screencapture",
+  "inputs": [
+    {
+      "key": "operation",
+      "name": "操作",
+      "type": "Enum",
+      "defaultValue": "start",
+      "required": true,
+      "variableMode": "Input",
+      "condition": "",
+      "description": "录屏会话操作类型。"
+    },
+    {
+      "key": "sessionId",
+      "name": "会话 ID",
+      "type": "Text",
+      "defaultValue": "",
+      "required": false,
+      "variableMode": "UseVarOrInput",
+      "condition": "",
+      "description": "录屏会话标识（GUID）。开始录屏时留空将自动生成；暂停/继续/结束时必须提供。"
+    },
+    {
+      "key": "stopIfFail",
+      "name": "失败后停止",
+      "type": "Boolean",
+      "defaultValue": "true",
+      "required": false,
+      "variableMode": "Input",
+      "condition": "",
+      "description": "失败后是否停止动作"
+    },
+    {
+      "key": "regionType",
+      "name": "录制范围",
+      "type": "Enum",
+      "defaultValue": "fixed_area",
+      "required": true,
+      "variableMode": "Input",
+      "condition": "仅：start",
+      "description": "要录制的屏幕区域类型。"
+    },
+    {
+      "key": "area",
+      "name": "录制区域",
+      "type": "Text",
+      "defaultValue": "",
+      "required": false,
+      "variableMode": "UseVarOrInput",
+      "condition": "仅：start, fixed_area",
+      "description": "固定区域坐标，格式：left,top,right,bottom。默认不包含右边和底边像素。"
+    },
+    {
+      "key": "includeRightBottomBorder",
+      "name": "包含右下边像素",
+      "type": "Boolean",
+      "defaultValue": "true",
+      "required": false,
+      "variableMode": "Input",
+      "condition": "仅：start, fixed_area",
+      "description": "包含时，0,0,2,2 表示 3×3 区域；否则为 2×2。"
+    },
+    {
+      "key": "outputFilePath",
+      "name": "输出文件路径",
+      "type": "Text",
+      "defaultValue": "",
+      "required": false,
+      "variableMode": "UseVarOrInput",
+      "condition": "仅：start",
+      "description": "留空时使用 Quicker 临时目录下的时间戳文件名。"
+    },
+    {
+      "key": "outputFormat",
+      "name": "输出格式",
+      "type": "Enum",
+      "defaultValue": "mp4",
+      "required": true,
+      "variableMode": "Input",
+      "condition": "仅：start",
+      "description": "录屏输出文件格式。"
+    },
+    {
+      "key": "exportQuality",
+      "name": "导出画质",
+      "type": "Enum",
+      "defaultValue": "standard",
+      "required": true,
+      "variableMode": "Input",
+      "condition": "仅：start",
+      "description": "录屏导出画质：标准、高清或原始。"
+    },
+    {
+      "key": "framesPerSecond",
+      "name": "帧率",
+      "type": "Integer",
+      "defaultValue": "30",
+      "required": false,
+      "variableMode": "UseVarOrInput",
+      "condition": "仅：start",
+      "description": "录制帧率，将自动规整到 10/15/24/30/60。"
+    },
+    {
+      "key": "showCursor",
+      "name": "显示鼠标光标",
+      "type": "Boolean",
+      "defaultValue": "true",
+      "required": false,
+      "variableMode": "Input",
+      "condition": "仅：start",
+      "description": "是否在录制画面中显示鼠标光标。"
+    },
+    {
+      "key": "encodingStrategy",
+      "name": "编码策略",
+      "type": "Enum",
+      "defaultValue": "encodeWhileRecording",
+      "required": true,
+      "variableMode": "Input",
+      "condition": "仅：start",
+      "description": "边录边编码：录制时实时生成成品文件，停止后立即可用（需要 QuickerAvCodec）。先录后编码：先录制中间文件，停止后通过 ffmpeg 转码为目标格式，等待时间取决于录制时长和分辨率。"
+    },
+    {
+      "key": "returnImmediately",
+      "name": "开始后立即返回",
+      "type": "Boolean",
+      "defaultValue": "true",
+      "required": false,
+      "variableMode": "Input",
+      "condition": "仅：start",
+      "description": "启用后步骤在启动录制后立即成功返回；结束录屏请使用单独的结束步骤。"
+    },
+    {
+      "key": "delay",
+      "name": "开始前延迟",
+      "type": "Integer",
+      "defaultValue": "0",
+      "required": false,
+      "variableMode": "UseVarOrInput",
+      "condition": "仅：start",
+      "description": "等待多少毫秒后开始录制。"
+    },
+    {
+      "key": "waitForCompletion",
+      "name": "等待编码完成",
+      "type": "Boolean",
+      "defaultValue": "true",
+      "required": false,
+      "variableMode": "Input",
+      "condition": "仅：stop",
+      "description": "结束录屏时是否等待文件写入完成。"
+    },
+    {
+      "key": "removeSessionAfterStop",
+      "name": "结束后删除会话",
+      "type": "Boolean",
+      "defaultValue": "true",
+      "required": false,
+      "variableMode": "Input",
+      "condition": "仅：stop",
+      "description": "结束录屏成功后从会话注册表移除。"
+    },
+    {
+      "key": "addToHistory",
+      "name": "加入录屏历史",
+      "type": "Boolean",
+      "defaultValue": "false",
+      "required": false,
+      "variableMode": "Input",
+      "condition": "仅：stop",
+      "description": "结束录屏时显式将成品复制到本机录屏历史。后台录屏默认不加入历史。"
+    }
+  ],
+  "outputs": [
+    {
+      "key": "isSuccess",
+      "name": "是否成功",
+      "type": "Boolean",
+      "condition": "",
+      "description": "操作是否成功"
+    },
+    {
+      "key": "sessionIdOut",
+      "name": "会话 ID",
+      "type": "Text",
+      "condition": "",
+      "description": "录屏会话标识，供后续暂停/继续/结束步骤使用。"
+    },
+    {
+      "key": "filePath",
+      "name": "文件路径",
+      "type": "Text",
+      "condition": "",
+      "description": "录制完成的视频文件路径。"
+    },
+    {
+      "key": "durationSeconds",
+      "name": "录制时长",
+      "type": "Number",
+      "condition": "",
+      "description": "录制时长（秒）。"
+    },
+    {
+      "key": "rect",
+      "name": "录制区域",
+      "type": "Text",
+      "condition": "",
+      "description": "实际录制区域(left,top,right,bottom)。"
+    },
+    {
+      "key": "errMessage",
+      "name": "错误消息",
+      "type": "Text",
+      "condition": "",
+      "description": "步骤执行出错时的消息"
+    }
+  ],
+  "selections": {
+    "operation": {
+      "name": "操作",
+      "items": [
+        {
+          "value": "start",
+          "name": "开始录屏",
+          "description": ""
+        },
+        {
+          "value": "pause",
+          "name": "暂停录屏",
+          "description": ""
+        },
+        {
+          "value": "resume",
+          "name": "继续录屏",
+          "description": ""
+        },
+        {
+          "value": "stop",
+          "name": "结束录屏",
+          "description": ""
+        }
+      ]
+    },
+    "regionType": {
+      "name": "录制范围",
+      "items": [
+        {
+          "value": "fixed_area",
+          "name": "固定区域",
+          "description": ""
+        },
+        {
+          "value": "primary_screen",
+          "name": "主屏幕",
+          "description": ""
+        },
+        {
+          "value": "full_screen",
+          "name": "所有屏幕",
+          "description": ""
+        }
+      ]
+    },
+    "outputFormat": {
+      "name": "输出格式",
+      "items": [
+        {
+          "value": "mp4",
+          "name": "MP4",
+          "description": ""
+        },
+        {
+          "value": "gif",
+          "name": "GIF",
+          "description": ""
+        },
+        {
+          "value": "avi",
+          "name": "AVI",
+          "description": ""
+        }
+      ]
+    },
+    "exportQuality": {
+      "name": "导出画质",
+      "items": [
+        {
+          "value": "standard",
+          "name": "标准",
+          "description": ""
+        },
+        {
+          "value": "high",
+          "name": "高清",
+          "description": ""
+        },
+        {
+          "value": "original",
+          "name": "原始",
+          "description": ""
+        }
+      ]
+    },
+    "encodingStrategy": {
+      "name": "编码策略",
+      "items": [
+        {
+          "value": "encodeWhileRecording",
+          "name": "实时编码",
+          "description": ""
+        },
+        {
+          "value": "recordThenEncode",
+          "name": "录制结束后转码",
+          "description": ""
+        }
+      ]
+    }
+  },
+  "sharedDocumentationKey": "sys:screenCapture",
+  "sharedDocumentationSlug": "screencapture",
+  "sourceFileName": "sys_screenRecording_后台屏幕录制.md"
+}

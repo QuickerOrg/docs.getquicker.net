@@ -1,0 +1,74 @@
+{
+  "key": "sys:record",
+  "slug": "record",
+  "legacySlug": "record",
+  "ownsLegacyContent": true,
+  "name": "录制键鼠操作",
+  "description": "录制键鼠操作过程",
+  "category": "Ui",
+  "categoryName": "界面组件",
+  "stepType": "Action",
+  "isRisky": false,
+  "isProOnly": false,
+  "helpLink": "https://getquicker.net/KC/Help/Doc/record",
+  "inputs": [
+    {
+      "key": "autoStart",
+      "name": "自动开始录制",
+      "type": "Boolean",
+      "defaultValue": "true",
+      "required": false,
+      "variableMode": "UseVarOrInput",
+      "condition": "",
+      "description": "2秒后是否自动开始录制"
+    },
+    {
+      "key": "recordMouseMove",
+      "name": "录制鼠标移动过程",
+      "type": "Boolean",
+      "defaultValue": "true",
+      "required": false,
+      "variableMode": "UseVarOrInput",
+      "condition": "",
+      "description": "是否录制鼠标的中间移动过程，仅必要时开启。关闭时仅记录点击位置。"
+    },
+    {
+      "key": "prepareSeconds",
+      "name": "准备时间",
+      "type": "Number",
+      "defaultValue": "2",
+      "required": false,
+      "variableMode": "UseVarOrInput",
+      "condition": "",
+      "description": "开始录制前的倒计时秒数（支持小数）"
+    },
+    {
+      "key": "stopIfFail",
+      "name": "失败后停止",
+      "type": "Boolean",
+      "defaultValue": "true",
+      "required": false,
+      "variableMode": "Input",
+      "condition": "",
+      "description": "失败后是否停止动作"
+    }
+  ],
+  "outputs": [
+    {
+      "key": "isSuccess",
+      "name": "是否成功",
+      "type": "Boolean",
+      "condition": "",
+      "description": "操作是否成功"
+    },
+    {
+      "key": "output",
+      "name": "录制数据",
+      "type": "Text",
+      "condition": "",
+      "description": "录制的结果数据"
+    }
+  ],
+  "selections": {},
+  "sourceFileName": "sys_record_录制键鼠操作.md"
+}

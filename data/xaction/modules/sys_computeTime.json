@@ -1,0 +1,210 @@
+{
+  "key": "sys:computeTime",
+  "slug": "computetime",
+  "legacySlug": "computetime",
+  "ownsLegacyContent": true,
+  "name": "计算时间",
+  "description": "时间相关的计算操作",
+  "category": "Compute",
+  "categoryName": "计算与比较",
+  "stepType": "Action",
+  "isRisky": false,
+  "isProOnly": false,
+  "helpLink": "https://getquicker.net/KC/Help/Doc/computetime",
+  "inputs": [
+    {
+      "key": "type",
+      "name": "类型",
+      "type": "Enum",
+      "defaultValue": "getdate",
+      "required": true,
+      "variableMode": "Input",
+      "condition": "",
+      "description": "比较方式"
+    },
+    {
+      "key": "time1",
+      "name": "日期时间",
+      "type": "DateTime",
+      "defaultValue": "",
+      "required": true,
+      "variableMode": "UseVarOrInput",
+      "condition": "",
+      "description": "要计算的时间值"
+    },
+    {
+      "key": "time2",
+      "name": "日期时间2",
+      "type": "DateTime",
+      "defaultValue": "",
+      "required": true,
+      "variableMode": "UseVarOrInput",
+      "condition": "仅：timespan",
+      "description": "要计算的第二个时间值"
+    },
+    {
+      "key": "formatString",
+      "name": "格式化字符串",
+      "type": "Text",
+      "defaultValue": "d\\.hh\\:mm\\:ss",
+      "required": true,
+      "variableMode": "UseVarOrInput",
+      "condition": "仅：timespan",
+      "description": "时间差转换为文本时的格式化字符串。d:天数,hh:小时,mm:分钟,ss:秒。符号.:需要使用\\转义"
+    },
+    {
+      "key": "addYears",
+      "name": "添加年数",
+      "type": "Number",
+      "defaultValue": "0",
+      "required": false,
+      "variableMode": "UseVarOrInput",
+      "condition": "仅：endtime",
+      "description": "添加指定的年数（整数）"
+    },
+    {
+      "key": "addMonths",
+      "name": "添加月数",
+      "type": "Number",
+      "defaultValue": "0",
+      "required": false,
+      "variableMode": "UseVarOrInput",
+      "condition": "仅：endtime",
+      "description": "添加指定的月数（整数）结果不跨月，如1月31日增加1个月等于2月28日。"
+    },
+    {
+      "key": "addDays",
+      "name": "添加天数",
+      "type": "Number",
+      "defaultValue": "0",
+      "required": false,
+      "variableMode": "UseVarOrInput",
+      "condition": "仅：endtime",
+      "description": "添加指定的天数（可以为小数）"
+    },
+    {
+      "key": "addHours",
+      "name": "添加小时数",
+      "type": "Number",
+      "defaultValue": "0",
+      "required": false,
+      "variableMode": "UseVarOrInput",
+      "condition": "仅：endtime",
+      "description": "添加指定的小时数（可以为小数）"
+    },
+    {
+      "key": "addMinutes",
+      "name": "添加分钟数",
+      "type": "Number",
+      "defaultValue": "0",
+      "required": false,
+      "variableMode": "UseVarOrInput",
+      "condition": "仅：endtime",
+      "description": "添加指定的分钟数（可以为小数）"
+    },
+    {
+      "key": "addSeconds",
+      "name": "添加秒数",
+      "type": "Number",
+      "defaultValue": "0",
+      "required": false,
+      "variableMode": "UseVarOrInput",
+      "condition": "仅：endtime",
+      "description": "添加指定的秒数（可以为小数）"
+    },
+    {
+      "key": "stopIfFail",
+      "name": "失败后停止",
+      "type": "Boolean",
+      "defaultValue": "true",
+      "required": false,
+      "variableMode": "Input",
+      "condition": "",
+      "description": "失败后是否停止动作"
+    }
+  ],
+  "outputs": [
+    {
+      "key": "isSuccess",
+      "name": "是否成功",
+      "type": "Boolean",
+      "condition": "",
+      "description": "操作是否成功"
+    },
+    {
+      "key": "resultTime",
+      "name": "结果时间",
+      "type": "DateTime",
+      "condition": "仅：endtime, getdate, utcToLocal, localToUtc",
+      "description": "计算的结果时间"
+    },
+    {
+      "key": "totalDays",
+      "name": "总天数",
+      "type": "Number",
+      "condition": "仅：timespan",
+      "description": "间隔的总天数值"
+    },
+    {
+      "key": "totalHours",
+      "name": "总小时数",
+      "type": "Number",
+      "condition": "仅：timespan",
+      "description": "间隔的总小时数"
+    },
+    {
+      "key": "totalMinutes",
+      "name": "总分钟数",
+      "type": "Number",
+      "condition": "仅：timespan",
+      "description": "间隔的总分钟数值"
+    },
+    {
+      "key": "totalSeconds",
+      "name": "总秒数",
+      "type": "Number",
+      "condition": "仅：timespan",
+      "description": "间隔的总秒数数值"
+    },
+    {
+      "key": "textValue",
+      "name": "文本值",
+      "type": "Text",
+      "condition": "仅：timespan",
+      "description": "时间间隔的文本结果"
+    }
+  ],
+  "selections": {
+    "type": {
+      "name": "类型",
+      "items": [
+        {
+          "value": "getdate",
+          "name": "取日期值（去除当天的时间部分）",
+          "description": ""
+        },
+        {
+          "value": "timespan",
+          "name": "计算时间差（日期时间2 减 日期时间）",
+          "description": ""
+        },
+        {
+          "value": "endtime",
+          "name": "计算结束时间",
+          "description": ""
+        },
+        {
+          "value": "localToUtc",
+          "name": "本地时间转换为UTC时间",
+          "description": ""
+        },
+        {
+          "value": "utcToLocal",
+          "name": "UTC时间转换为本地时间",
+          "description": ""
+        }
+      ]
+    }
+  },
+  "sourceFileName": "sys_computeTime_计算时间.md"
+}

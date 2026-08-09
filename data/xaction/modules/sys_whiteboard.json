@@ -1,0 +1,94 @@
+{
+  "key": "sys:whiteboard",
+  "slug": "whiteboard",
+  "legacySlug": "whiteboard",
+  "ownsLegacyContent": true,
+  "name": "手写板",
+  "description": "手写内容，生成图片对象。",
+  "category": "Image",
+  "categoryName": "图片处理",
+  "stepType": "Action",
+  "isRisky": false,
+  "isProOnly": false,
+  "helpLink": "https://getquicker.net/KC/Help/Doc/whiteboard",
+  "inputs": [
+    {
+      "key": "winPosition",
+      "name": "窗口位置",
+      "type": "Text",
+      "defaultValue": "15%,30%,85%,70%",
+      "required": false,
+      "variableMode": "UseVarOrInput",
+      "condition": "",
+      "description": "可选。指定显示位置，格式为：left,top,right,bottom。支持像素数值或屏幕宽高百分比。"
+    },
+    {
+      "key": "bgColor",
+      "name": "绘图区背景颜色",
+      "type": "Text",
+      "defaultValue": "#FFFFFFFF",
+      "required": false,
+      "variableMode": "UseVarOrInput",
+      "condition": "",
+      "description": "绘图窗口的背景颜色。格式为#AARRGGBB"
+    },
+    {
+      "key": "penColor",
+      "name": "画笔颜色",
+      "type": "Text",
+      "defaultValue": "#FFFF0000",
+      "required": false,
+      "variableMode": "UseVarOrInput",
+      "condition": "",
+      "description": "画笔颜色。格式为#AARRGGBB"
+    },
+    {
+      "key": "enableTransparent",
+      "name": "使用透明无边框窗口",
+      "type": "Boolean",
+      "defaultValue": "false",
+      "required": false,
+      "variableMode": "Input",
+      "condition": "",
+      "description": "不显示窗口标题栏，绘图区透明，可以看到底层窗口内容。"
+    },
+    {
+      "key": "imageWithBackground",
+      "name": "图片包含背景内容",
+      "type": "Boolean",
+      "defaultValue": "false",
+      "required": false,
+      "variableMode": "Input",
+      "condition": "",
+      "description": "使用透明窗口时，结果图片是否包含背景内容。"
+    },
+    {
+      "key": "stopIfFail",
+      "name": "取消后停止动作",
+      "type": "Boolean",
+      "defaultValue": "true",
+      "required": false,
+      "variableMode": "Input",
+      "condition": "",
+      "description": ""
+    }
+  ],
+  "outputs": [
+    {
+      "key": "isSuccess",
+      "name": "是否成功",
+      "type": "Boolean",
+      "condition": "",
+      "description": "操作是否成功"
+    },
+    {
+      "key": "result",
+      "name": "结果图片",
+      "type": "Image",
+      "condition": "",
+      "description": ""
+    }
+  ],
+  "selections": {},
+  "sourceFileName": "sys_whiteboard_手写板.md"
+}

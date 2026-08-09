@@ -1,0 +1,128 @@
+{
+  "key": "sys:openUrl",
+  "slug": "openurl",
+  "legacySlug": "openurl",
+  "ownsLegacyContent": true,
+  "name": "打开网址",
+  "description": "打开指定的网址",
+  "category": "Basic",
+  "categoryName": "基础",
+  "stepType": "Action",
+  "isRisky": false,
+  "isProOnly": false,
+  "helpLink": "https://getquicker.net/KC/Help/Doc/openurl",
+  "inputs": [
+    {
+      "key": "url",
+      "name": "网址",
+      "type": "Text",
+      "defaultValue": "https://",
+      "required": true,
+      "variableMode": "UseVarOrInput",
+      "condition": "",
+      "description": "要打开的网页地址"
+    },
+    {
+      "key": "browser",
+      "name": "浏览器",
+      "type": "Enum",
+      "defaultValue": "default",
+      "required": true,
+      "variableMode": "UseVarOrInput",
+      "condition": "",
+      "description": "使用什么浏览器打开网址"
+    },
+    {
+      "key": "exePath",
+      "name": "浏览器程序路径",
+      "type": "Text",
+      "defaultValue": "",
+      "required": true,
+      "variableMode": "UseVarOrInput",
+      "condition": "仅：custom",
+      "description": "浏览器exe程序路径"
+    },
+    {
+      "key": "stopIfFail",
+      "name": "失败后停止",
+      "type": "Boolean",
+      "defaultValue": "true",
+      "required": false,
+      "variableMode": "Input",
+      "condition": "",
+      "description": "失败后是否停止动作"
+    }
+  ],
+  "outputs": [
+    {
+      "key": "isSuccess",
+      "name": "是否成功",
+      "type": "Boolean",
+      "condition": "",
+      "description": "操作是否成功"
+    }
+  ],
+  "selections": {
+    "browser": {
+      "name": "浏览器",
+      "items": [
+        {
+          "value": "default",
+          "name": "(系统默认浏览器)",
+          "description": ""
+        },
+        {
+          "value": "iexplore.exe",
+          "name": "IE浏览器",
+          "description": ""
+        },
+        {
+          "value": "microsoft-edge:",
+          "name": "Edge",
+          "description": ""
+        },
+        {
+          "value": "msedgeApp",
+          "name": "Edge App模式",
+          "description": ""
+        },
+        {
+          "value": "msedgeIncognito",
+          "name": "Edge InPrivate窗口",
+          "description": ""
+        },
+        {
+          "value": "chrome",
+          "name": "Chrome",
+          "description": ""
+        },
+        {
+          "value": "chromeApp",
+          "name": "Chrome App模式",
+          "description": ""
+        },
+        {
+          "value": "chromeIncognito",
+          "name": "Chrome 无痕窗口",
+          "description": ""
+        },
+        {
+          "value": "local",
+          "name": "本地浏览器窗口",
+          "description": ""
+        },
+        {
+          "value": "custom",
+          "name": "*自定义浏览器程序*",
+          "description": ""
+        },
+        {
+          "value": "current",
+          "name": "*前台浏览器程序*",
+          "description": ""
+        }
+      ]
+    }
+  },
+  "sourceFileName": "sys_openUrl_打开网址.md"
+}

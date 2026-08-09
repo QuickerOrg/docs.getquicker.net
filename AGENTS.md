@@ -47,6 +47,15 @@
 npm run start -- --host 127.0.0.1 --port 3000 --no-open
 ```
 
+## 组合动作模块文档
+
+- `docs/v2/xaction/modules/` 是用户可见的模块页，页面身份以 `moduleKey` 和 `quickerDocKey` 为准，不依赖中文标题或分类目录。
+- 模块页中 `{/* xaction-metadata:start/end */}` 标记之间是程序元数据生成区，不要手工修改；使用说明、示例、限制和排障写在标记之外。
+- `data/xaction/` 是 AI 和校验器使用的结构化事实源。参数 Key、类型、默认值、枚举和显示条件以这里的数据为准，不根据旧截图猜测。
+- 同步新版本时使用 `tools/xaction-docs/` 的脚本和说明。同步后至少运行 `npm run docs:xaction:check`、`npm run docs:xaction:test` 与 `npm run build`。
+- 旧版正文迁入后默认标记为 `migrated-unreviewed`。只有核对当前代码、实际界面或真实运行结果后，才能改为 `reviewed` 或 `verified`。
+- 新增、删除、改名或共享帮助页属于需要判断的兼容性变化。同步工具不得自动删除旧页面或覆盖人工正文。
+
 ## 依赖与功能选型
 
 - 当前项目使用 npm 和 `package-lock.json`，不要混用 Yarn 或 pnpm，除非用户明确要求。

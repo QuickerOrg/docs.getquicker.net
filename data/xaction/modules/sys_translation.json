@@ -1,0 +1,263 @@
+{
+  "key": "sys:translation",
+  "slug": "translation",
+  "legacySlug": "translation",
+  "ownsLegacyContent": true,
+  "name": "机器翻译/词典",
+  "description": "调用第三方服务翻译文字到指定的语言。此功能需要单独付费使用，详情请参考文档。",
+  "category": "Network",
+  "categoryName": "网络服务",
+  "stepType": "Action",
+  "isRisky": false,
+  "isProOnly": false,
+  "helpLink": "https://getquicker.net/KC/Help/Doc/translation",
+  "inputs": [
+    {
+      "key": "operation",
+      "name": "操作类型",
+      "type": "Enum",
+      "defaultValue": "single",
+      "required": true,
+      "variableMode": "Input",
+      "condition": "",
+      "description": ""
+    },
+    {
+      "key": "text",
+      "name": "待翻译文本内容或单词。",
+      "type": "Text",
+      "defaultValue": "",
+      "required": false,
+      "variableMode": "UseVarOrInput",
+      "condition": "",
+      "description": ""
+    },
+    {
+      "key": "srcLang",
+      "name": "源语言",
+      "type": "Text",
+      "defaultValue": "Auto",
+      "required": false,
+      "variableMode": "UseVarOrInput",
+      "condition": "排除：en2zh_dict",
+      "description": "待翻译内容的语言"
+    },
+    {
+      "key": "dstLang",
+      "name": "目标语言",
+      "type": "Text",
+      "defaultValue": "Auto",
+      "required": false,
+      "variableMode": "UseVarOrInput",
+      "condition": "排除：en2zh_dict",
+      "description": "翻译的结果语言"
+    },
+    {
+      "key": "vendor",
+      "name": "厂商",
+      "type": "Enum",
+      "defaultValue": "Youdao",
+      "required": false,
+      "variableMode": "UseVarOrInput",
+      "condition": "仅：single",
+      "description": "不同厂商价格不同，详情请参考文档。"
+    },
+    {
+      "key": "vendorList",
+      "name": "厂商列表",
+      "type": "Enum",
+      "defaultValue": "Youdao,Baidu,Tencent,Caiyun",
+      "required": false,
+      "variableMode": "UseVarOrInput",
+      "condition": "仅：multiple",
+      "description": "用逗号分割的厂商标识，详细信息请参考文档。"
+    },
+    {
+      "key": "stopIfFail",
+      "name": "失败后停止",
+      "type": "Boolean",
+      "defaultValue": "true",
+      "required": false,
+      "variableMode": "Input",
+      "condition": "",
+      "description": "失败后是否停止动作"
+    }
+  ],
+  "outputs": [
+    {
+      "key": "isSuccess",
+      "name": "是否成功",
+      "type": "Boolean",
+      "condition": "",
+      "description": "操作是否成功"
+    },
+    {
+      "key": "resultText",
+      "name": "结果文本",
+      "type": "Text",
+      "condition": "",
+      "description": "翻译结果文本。多厂商翻译时自动组合各厂商结果"
+    },
+    {
+      "key": "rawData",
+      "name": "原始响应",
+      "type": "Text",
+      "condition": "仅：single, en2zh_dict",
+      "description": "厂商接口返回的原始内容，通常为json格式。"
+    },
+    {
+      "key": "vendorResult",
+      "name": "各厂商翻译结果",
+      "type": "Dict",
+      "condition": "仅：multiple",
+      "description": "各厂商的翻译结果（词典）。key为厂商标识，value为翻译结果。"
+    },
+    {
+      "key": "vendorRawData",
+      "name": "各厂商原始响应",
+      "type": "Dict",
+      "condition": "仅：multiple",
+      "description": "各厂商的原始响应内容（词典）。key为厂商标识，value为厂商原始响应。"
+    },
+    {
+      "key": "costPoints",
+      "name": "消耗点数",
+      "type": "Integer",
+      "condition": "仅：single, multiple",
+      "description": "此次翻译消耗的点数,单位为0.0001 Q豆。"
+    }
+  ],
+  "selections": {
+    "operation": {
+      "name": "操作类型",
+      "items": [
+        {
+          "value": "single",
+          "name": "单厂商文字翻译",
+          "description": ""
+        },
+        {
+          "value": "multiple",
+          "name": "多厂商文字翻译",
+          "description": ""
+        },
+        {
+          "value": "en2zh_dict",
+          "name": "英汉词典",
+          "description": ""
+        }
+      ]
+    },
+    "srcLang": {
+      "name": "源语言",
+      "items": [
+        {
+          "value": "Auto",
+          "name": "自动",
+          "description": ""
+        },
+        {
+          "value": "ZhCn",
+          "name": "简体中文",
+          "description": ""
+        },
+        {
+          "value": "En",
+          "name": "英文",
+          "description": ""
+        },
+        {
+          "value": "Ja",
+          "name": "日文",
+          "description": ""
+        },
+        {
+          "value": "Ko",
+          "name": "韩文",
+          "description": ""
+        }
+      ]
+    },
+    "dstLang": {
+      "name": "目标语言",
+      "items": [
+        {
+          "value": "Auto",
+          "name": "自动",
+          "description": ""
+        },
+        {
+          "value": "ZhCn",
+          "name": "简体中文",
+          "description": ""
+        },
+        {
+          "value": "En",
+          "name": "英文",
+          "description": ""
+        },
+        {
+          "value": "Ja",
+          "name": "日文",
+          "description": ""
+        },
+        {
+          "value": "Ko",
+          "name": "韩文",
+          "description": ""
+        }
+      ]
+    },
+    "vendor": {
+      "name": "厂商",
+      "items": [
+        {
+          "value": "Quicker",
+          "name": "Quicker服务",
+          "description": ""
+        },
+        {
+          "value": "Aliyun",
+          "name": "阿里云",
+          "description": ""
+        },
+        {
+          "value": "Baidu",
+          "name": "百度",
+          "description": ""
+        },
+        {
+          "value": "Tencent",
+          "name": "腾讯云",
+          "description": ""
+        },
+        {
+          "value": "Youdao",
+          "name": "网易有道",
+          "description": ""
+        },
+        {
+          "value": "Caiyun",
+          "name": "彩云",
+          "description": ""
+        },
+        {
+          "value": "Xunfei",
+          "name": "讯飞",
+          "description": ""
+        },
+        {
+          "value": "XunfeiNiutrans",
+          "name": "讯飞(2代)",
+          "description": ""
+        },
+        {
+          "value": "Google",
+          "name": "谷歌",
+          "description": ""
+        }
+      ]
+    }
+  },
+  "sourceFileName": "sys_translation_机器翻译_词典.md"
+}

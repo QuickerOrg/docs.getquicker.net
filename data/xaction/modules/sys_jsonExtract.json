@@ -1,0 +1,149 @@
+{
+  "key": "sys:jsonExtract",
+  "slug": "jsonextract",
+  "legacySlug": "jsonextract",
+  "ownsLegacyContent": true,
+  "name": "提取JSON内容",
+  "description": "提取Json文本中的信息",
+  "category": "Text",
+  "categoryName": "文本处理",
+  "stepType": "Action",
+  "isRisky": false,
+  "isProOnly": false,
+  "helpLink": "https://getquicker.net/KC/Help/Doc/jsonExtract",
+  "inputs": [
+    {
+      "key": "data",
+      "name": "输入",
+      "type": "Text",
+      "defaultValue": "",
+      "required": true,
+      "variableMode": "UseVarOrInput",
+      "condition": "",
+      "description": "要从中提取内容的Json文本或JToken对象"
+    },
+    {
+      "key": "p0",
+      "name": "提取路径0",
+      "type": "Text",
+      "defaultValue": "",
+      "required": false,
+      "variableMode": "Input",
+      "condition": "",
+      "description": ""
+    },
+    {
+      "key": "p1",
+      "name": "提取路径1",
+      "type": "Text",
+      "defaultValue": "",
+      "required": false,
+      "variableMode": "Input",
+      "condition": "",
+      "description": ""
+    },
+    {
+      "key": "p2",
+      "name": "提取路径2",
+      "type": "Text",
+      "defaultValue": "",
+      "required": false,
+      "variableMode": "Input",
+      "condition": "",
+      "description": ""
+    },
+    {
+      "key": "p3",
+      "name": "提取路径3",
+      "type": "Text",
+      "defaultValue": "",
+      "required": false,
+      "variableMode": "Input",
+      "condition": "",
+      "description": ""
+    },
+    {
+      "key": "p4",
+      "name": "提取路径4",
+      "type": "Text",
+      "defaultValue": "",
+      "required": false,
+      "variableMode": "Input",
+      "condition": "",
+      "description": ""
+    },
+    {
+      "key": "dateAsString",
+      "name": "日期时间按照文本处理",
+      "type": "Boolean",
+      "defaultValue": "false",
+      "required": false,
+      "variableMode": "Input",
+      "condition": "",
+      "description": "保留原有数据格式"
+    },
+    {
+      "key": "stopIfFail",
+      "name": "失败后停止",
+      "type": "Boolean",
+      "defaultValue": "true",
+      "required": false,
+      "variableMode": "Input",
+      "condition": "",
+      "description": "失败后是否停止动作"
+    }
+  ],
+  "outputs": [
+    {
+      "key": "isSuccess",
+      "name": "是否成功",
+      "type": "Boolean",
+      "condition": "",
+      "description": "操作是否没有异常"
+    },
+    {
+      "key": "v0",
+      "name": "值0",
+      "type": "Any",
+      "condition": "",
+      "description": "提取到的内容，和提取路径对应"
+    },
+    {
+      "key": "v1",
+      "name": "值1",
+      "type": "Any",
+      "condition": "",
+      "description": "提取到的内容，和提取路径对应"
+    },
+    {
+      "key": "v2",
+      "name": "值2",
+      "type": "Any",
+      "condition": "",
+      "description": "提取到的内容，和提取路径对应"
+    },
+    {
+      "key": "v3",
+      "name": "值3",
+      "type": "Any",
+      "condition": "",
+      "description": "提取到的内容，和提取路径对应"
+    },
+    {
+      "key": "v4",
+      "name": "值4",
+      "type": "Any",
+      "condition": "",
+      "description": "提取到的内容，和提取路径对应"
+    },
+    {
+      "key": "rootToken",
+      "name": "根对象",
+      "type": "Object",
+      "condition": "",
+      "description": "整个输入内容解析后获得的JToken对象。可用于后续使用。"
+    }
+  ],
+  "selections": {},
+  "sourceFileName": "sys_jsonExtract_提取JSON内容.md"
+}

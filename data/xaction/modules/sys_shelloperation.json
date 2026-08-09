@@ -1,0 +1,197 @@
+{
+  "key": "sys:shelloperation",
+  "slug": "shelloperation",
+  "legacySlug": "shelloperation",
+  "ownsLegacyContent": true,
+  "name": "Shell文件操作",
+  "description": "针对文件的Windows Shell相关操作",
+  "category": "System",
+  "categoryName": "Windows系统",
+  "stepType": "Action",
+  "isRisky": false,
+  "isProOnly": false,
+  "helpLink": "https://getquicker.net/KC/Help/Doc/shelloperation",
+  "inputs": [
+    {
+      "key": "operation",
+      "name": "操作类型",
+      "type": "Enum",
+      "defaultValue": "getverb",
+      "required": true,
+      "variableMode": "Input",
+      "condition": "",
+      "description": ""
+    },
+    {
+      "key": "pathOrExt",
+      "name": "文件路径或扩展名",
+      "type": "Text",
+      "defaultValue": ".txt",
+      "required": false,
+      "variableMode": "UseVarOrInput",
+      "condition": "仅：getverb, gettitles",
+      "description": "需要获取可用动词的文件类型，可使用扩展名如.txt或提供完整文件名。"
+    },
+    {
+      "key": "pathList",
+      "name": "文件路径列表",
+      "type": "List",
+      "defaultValue": "",
+      "required": false,
+      "variableMode": "UseVarOrInput",
+      "condition": "仅：execverb, showmenu, execbytitle",
+      "description": "要操作文件的完整路径的列表。每个文件将会被依次调用。"
+    },
+    {
+      "key": "verb",
+      "name": "动词",
+      "type": "Text",
+      "defaultValue": "",
+      "required": false,
+      "variableMode": "UseVarOrInput",
+      "condition": "仅：execverb",
+      "description": "Shell操作动词，需要在当前电脑上支持才能正常运行。"
+    },
+    {
+      "key": "title",
+      "name": "菜单标题",
+      "type": "Text",
+      "defaultValue": "",
+      "required": false,
+      "variableMode": "UseVarOrInput",
+      "condition": "仅：execbytitle",
+      "description": "菜单上的标题文字，需要准确匹配。"
+    },
+    {
+      "key": "stopIfFail",
+      "name": "失败后停止",
+      "type": "Boolean",
+      "defaultValue": "true",
+      "required": false,
+      "variableMode": "Input",
+      "condition": "",
+      "description": "失败后是否停止动作"
+    }
+  ],
+  "outputs": [
+    {
+      "key": "isSuccess",
+      "name": "是否成功",
+      "type": "Boolean",
+      "condition": "",
+      "description": "操作是否成功"
+    },
+    {
+      "key": "verbs",
+      "name": "动词列表",
+      "type": "List",
+      "condition": "仅：getverb",
+      "description": "每项格式为：描述文字|动词"
+    },
+    {
+      "key": "titles",
+      "name": "菜单标题列表",
+      "type": "List",
+      "condition": "仅：gettitles",
+      "description": ""
+    }
+  ],
+  "selections": {
+    "operation": {
+      "name": "操作类型",
+      "items": [
+        {
+          "value": "getverb",
+          "name": "获取文件的可用动词列表(verb)",
+          "description": ""
+        },
+        {
+          "value": "execverb",
+          "name": "对文件执行动词(verb)",
+          "description": ""
+        },
+        {
+          "value": "gettitles",
+          "name": "获取文件的可用菜单标题列表",
+          "description": ""
+        },
+        {
+          "value": "execbytitle",
+          "name": "对文件执行菜单(指定菜单标题)",
+          "description": ""
+        },
+        {
+          "value": "showmenu",
+          "name": "显示系统上下文菜单",
+          "description": ""
+        }
+      ]
+    },
+    "verb": {
+      "name": "动词",
+      "items": [
+        {
+          "value": "open",
+          "name": "打开",
+          "description": ""
+        },
+        {
+          "value": "edit",
+          "name": "编辑",
+          "description": ""
+        },
+        {
+          "value": "print",
+          "name": "打印",
+          "description": ""
+        },
+        {
+          "value": "link",
+          "name": "创建快捷方式",
+          "description": ""
+        },
+        {
+          "value": "openas",
+          "name": "选择打开方式",
+          "description": ""
+        },
+        {
+          "value": "copy",
+          "name": "复制",
+          "description": ""
+        },
+        {
+          "value": "cut",
+          "name": "剪切",
+          "description": ""
+        },
+        {
+          "value": "delete",
+          "name": "删除",
+          "description": ""
+        },
+        {
+          "value": "setdesktopwallpaper",
+          "name": "设置为桌面背景",
+          "description": ""
+        },
+        {
+          "value": "ShellEdit",
+          "name": "使用照片编辑",
+          "description": ""
+        },
+        {
+          "value": "VSCode",
+          "name": "通过VisualStudioCode打开",
+          "description": ""
+        },
+        {
+          "value": "通过QQ发送到我的手机，打开QQ手机版接收。",
+          "name": "通过QQ发送到手机",
+          "description": ""
+        }
+      ]
+    }
+  },
+  "sourceFileName": "sys_shelloperation_Shell文件操作.md"
+}

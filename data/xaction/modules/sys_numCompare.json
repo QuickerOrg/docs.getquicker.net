@@ -1,0 +1,88 @@
+{
+  "key": "sys:numCompare",
+  "slug": "numcompare",
+  "legacySlug": "numcompare",
+  "ownsLegacyContent": true,
+  "name": "比较数字",
+  "description": "比较数字大小。",
+  "category": "Compute",
+  "categoryName": "计算与比较",
+  "stepType": "Action",
+  "isRisky": false,
+  "isProOnly": false,
+  "helpLink": "https://getquicker.net/KC/Help/Doc/numcompare",
+  "inputs": [
+    {
+      "key": "param1",
+      "name": "数字1",
+      "type": "Number",
+      "defaultValue": "0",
+      "required": true,
+      "variableMode": "UseVarOrInput",
+      "condition": "",
+      "description": "左侧的数字"
+    },
+    {
+      "key": "type",
+      "name": "类型",
+      "type": "Enum",
+      "defaultValue": ">",
+      "required": true,
+      "variableMode": "Input",
+      "condition": "",
+      "description": "比较方式"
+    },
+    {
+      "key": "param2",
+      "name": "数字2",
+      "type": "Number",
+      "defaultValue": "0",
+      "required": true,
+      "variableMode": "UseVarOrInput",
+      "condition": "",
+      "description": "右侧的数字"
+    }
+  ],
+  "outputs": [
+    {
+      "key": "value",
+      "name": "值",
+      "type": "Boolean",
+      "condition": "",
+      "description": "比较结果是否为真"
+    }
+  ],
+  "selections": {
+    "type": {
+      "name": "类型",
+      "items": [
+        {
+          "value": ">",
+          "name": ">",
+          "description": ""
+        },
+        {
+          "value": ">=",
+          "name": ">=",
+          "description": ""
+        },
+        {
+          "value": "=",
+          "name": "=",
+          "description": ""
+        },
+        {
+          "value": "<",
+          "name": "<",
+          "description": ""
+        },
+        {
+          "value": "<=",
+          "name": "<=",
+          "description": ""
+        }
+      ]
+    }
+  },
+  "sourceFileName": "sys_numCompare_比较数字.md"
+}

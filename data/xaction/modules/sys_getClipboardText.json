@@ -1,0 +1,183 @@
+{
+  "key": "sys:getClipboardText",
+  "slug": "getclipboardtext",
+  "legacySlug": "getclipboardtext",
+  "ownsLegacyContent": true,
+  "name": "获取剪贴板文本",
+  "description": "读取剪贴板中的文本内容",
+  "category": "Clipboard",
+  "categoryName": "剪贴板操作",
+  "stepType": "Action",
+  "isRisky": false,
+  "isProOnly": false,
+  "helpLink": "https://getquicker.net/KC/Help/Doc/getClipboardText",
+  "inputs": [
+    {
+      "key": "format",
+      "name": "文本数据格式",
+      "type": "Enum",
+      "defaultValue": "UnicodeText",
+      "required": true,
+      "variableMode": "Input",
+      "condition": "",
+      "description": "需要读取的剪贴板文本内容格式。通常请使用Unicode纯文本格式。"
+    },
+    {
+      "key": "customFormat",
+      "name": "格式名称",
+      "type": "Text",
+      "defaultValue": "",
+      "required": false,
+      "variableMode": "Input",
+      "condition": "仅：Custom",
+      "description": "自定义的剪贴板格式名，请和实际剪贴板格式名一致。只支持实际为文本类型的内容。"
+    },
+    {
+      "key": "encoding",
+      "name": "文本编码",
+      "type": "Enum",
+      "defaultValue": "utf-8",
+      "required": true,
+      "variableMode": "Input",
+      "condition": "仅：Custom",
+      "description": "读取自定义格式时候使用的编码类型"
+    },
+    {
+      "key": "waitMs",
+      "name": "重试时间",
+      "type": "Integer",
+      "defaultValue": "400",
+      "required": false,
+      "variableMode": "UseVarOrInput",
+      "condition": "",
+      "description": "每10ms重试一次，直到获取到文本。为0时不重试。"
+    },
+    {
+      "key": "stopIfFail",
+      "name": "失败后中止动作",
+      "type": "Boolean",
+      "defaultValue": "true",
+      "required": false,
+      "variableMode": "Input",
+      "condition": "",
+      "description": "获取剪贴板文本失败后，是否停止后续动作的执行。"
+    }
+  ],
+  "outputs": [
+    {
+      "key": "isSuccess",
+      "name": "是否成功",
+      "type": "Boolean",
+      "condition": "",
+      "description": "是否成功获得文本"
+    },
+    {
+      "key": "output",
+      "name": "完整结果内容",
+      "type": "Text",
+      "condition": "",
+      "description": "将获得的文本内容写入到变量"
+    },
+    {
+      "key": "cleanHtml",
+      "name": "主要HTML片段",
+      "type": "Text",
+      "condition": "仅：Html",
+      "description": "HTML的主要内容。<!--StartFragment-->和<!--EndFragment-->之间的部分"
+    },
+    {
+      "key": "htmlDoc",
+      "name": "完整的HTML文档",
+      "type": "Text",
+      "condition": "仅：Html",
+      "description": "仅去除剪贴板头部信息的完整HTML文档内容。包含<html>等标签，可直接保存为.html文件。"
+    },
+    {
+      "key": "url",
+      "name": "来源网址",
+      "type": "Text",
+      "condition": "",
+      "description": "从网页中复制内容时，可能会携带网址信息。"
+    },
+    {
+      "key": "elapsedMs",
+      "name": "已更新时间",
+      "type": "Integer",
+      "condition": "",
+      "description": "剪贴板最后更新是在多少毫秒以前"
+    }
+  ],
+  "selections": {
+    "format": {
+      "name": "文本数据格式",
+      "items": [
+        {
+          "value": "UnicodeText",
+          "name": "纯文本（默认）",
+          "description": ""
+        },
+        {
+          "value": "Rtf",
+          "name": "Rtf",
+          "description": ""
+        },
+        {
+          "value": "Html",
+          "name": "Html",
+          "description": ""
+        },
+        {
+          "value": "CommaSeparatedValue",
+          "name": "逗号分隔的值（csv）",
+          "description": ""
+        },
+        {
+          "value": "Custom",
+          "name": "自定义格式名",
+          "description": ""
+        }
+      ]
+    },
+    "encoding": {
+      "name": "文本编码",
+      "items": [
+        {
+          "value": "utf-8",
+          "name": "UTF8",
+          "description": ""
+        },
+        {
+          "value": "utf-16",
+          "name": "UTF-16 LE",
+          "description": ""
+        },
+        {
+          "value": "utf-16BE",
+          "name": "UTF-16 BE",
+          "description": ""
+        },
+        {
+          "value": "us-ascii",
+          "name": "ASCII",
+          "description": ""
+        },
+        {
+          "value": "utf-7",
+          "name": "UTF7",
+          "description": ""
+        },
+        {
+          "value": "utf-32",
+          "name": "UTF32",
+          "description": ""
+        },
+        {
+          "value": "default",
+          "name": "系统默认(gb2312)",
+          "description": ""
+        }
+      ]
+    }
+  },
+  "sourceFileName": "sys_getClipboardText_获取剪贴板文本.md"
+}

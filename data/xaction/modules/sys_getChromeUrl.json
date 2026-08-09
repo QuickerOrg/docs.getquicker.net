@@ -1,0 +1,44 @@
+{
+  "key": "sys:getChromeUrl",
+  "slug": "getchromeurl",
+  "legacySlug": "getchromeurl",
+  "ownsLegacyContent": true,
+  "name": "获取浏览器网址",
+  "description": "获取当前浏览器网址。",
+  "category": "SoftInteraction",
+  "categoryName": "第三方软件交互",
+  "stepType": "Action",
+  "isRisky": false,
+  "isProOnly": false,
+  "helpLink": "https://getquicker.net/KC/Help/Doc/getchromeurl",
+  "inputs": [
+    {
+      "key": "stopIfFail",
+      "name": "失败后停止",
+      "type": "Boolean",
+      "defaultValue": "true",
+      "required": false,
+      "variableMode": "Input",
+      "condition": "",
+      "description": "失败后是否停止动作"
+    }
+  ],
+  "outputs": [
+    {
+      "key": "isSuccess",
+      "name": "是否成功",
+      "type": "Boolean",
+      "condition": "",
+      "description": "操作是否成功"
+    },
+    {
+      "key": "output",
+      "name": "网址",
+      "type": "Text",
+      "condition": "",
+      "description": "当前标签网址URL"
+    }
+  ],
+  "selections": {},
+  "sourceFileName": "sys_getChromeUrl_获取浏览器网址.md"
+}

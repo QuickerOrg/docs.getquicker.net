@@ -1,0 +1,206 @@
+{
+  "key": "sys:httpserver",
+  "slug": "httpserver",
+  "legacySlug": "httpserver",
+  "ownsLegacyContent": true,
+  "name": "HTTP服务器",
+  "description": "创建临时的本地HTTP服务器，从而可以从移动端或其它设备访问。",
+  "category": "Network",
+  "categoryName": "网络服务",
+  "stepType": "Action",
+  "isRisky": false,
+  "isProOnly": false,
+  "helpLink": "https://getquicker.net/KC/Help/Doc/httpserver",
+  "inputs": [
+    {
+      "key": "operation",
+      "name": "操作类型",
+      "type": "Enum",
+      "defaultValue": "CreateFileServer",
+      "required": true,
+      "variableMode": "Input",
+      "condition": "",
+      "description": ""
+    },
+    {
+      "key": "port",
+      "name": "端口号",
+      "type": "Integer",
+      "defaultValue": "8080",
+      "required": false,
+      "variableMode": "UseVarOrInput",
+      "condition": "仅：CreateFileServer",
+      "description": "服务端口号。值为0时自动生成端口号。"
+    },
+    {
+      "key": "enableHttps",
+      "name": "启用HTTPS",
+      "type": "Boolean",
+      "defaultValue": "true",
+      "required": false,
+      "variableMode": "UseVarOrInput",
+      "condition": "仅：CreateFileServer",
+      "description": ""
+    },
+    {
+      "key": "docPath",
+      "name": "文件夹路径",
+      "type": "Text",
+      "defaultValue": "",
+      "required": false,
+      "variableMode": "UseVarOrInput",
+      "condition": "仅：CreateFileServer",
+      "description": "服务的文件夹完整路径。不支持磁盘根目录。"
+    },
+    {
+      "key": "defaultDoc",
+      "name": "默认文档",
+      "type": "Text",
+      "defaultValue": "",
+      "required": false,
+      "variableMode": "UseVarOrInput",
+      "condition": "仅：CreateFileServer",
+      "description": "可选，如index.html。"
+    },
+    {
+      "key": "password",
+      "name": "基础验证密码",
+      "type": "Text",
+      "defaultValue": "",
+      "required": false,
+      "variableMode": "UseVarOrInput",
+      "condition": "仅：CreateFileServer",
+      "description": "Basic验证的密码，账号固定为quicker"
+    },
+    {
+      "key": "serviceId",
+      "name": "服务ID",
+      "type": "Text",
+      "defaultValue": "default",
+      "required": false,
+      "variableMode": "UseVarOrInput",
+      "condition": "",
+      "description": "通过服务ID启动或关闭服务。同一服务ID再次创建时会先关闭旧服务。"
+    },
+    {
+      "key": "customRequest",
+      "name": "自定义请求处理",
+      "type": "Text",
+      "defaultValue": "",
+      "required": false,
+      "variableMode": "UseVarOrInput",
+      "condition": "仅：CreateFileServer",
+      "description": "每行一条规则，格式为：\"路径:HTTP方法:子程序名\"。详细信息请参考模块文档。"
+    },
+    {
+      "key": "headCode",
+      "name": "HEAD插入代码",
+      "type": "Text",
+      "defaultValue": "",
+      "required": false,
+      "variableMode": "UseVarOrInput",
+      "condition": "仅：CreateFileServer",
+      "description": "向目录HTML文档的Head中插入代码，可用于自定义风格。"
+    },
+    {
+      "key": "bodyCode",
+      "name": "BODY插入代码",
+      "type": "Text",
+      "defaultValue": "",
+      "required": false,
+      "variableMode": "UseVarOrInput",
+      "condition": "仅：CreateFileServer",
+      "description": "向目录HTML文档的BODY中插入代码，可用于自定义脚本。"
+    },
+    {
+      "key": "autoShutdownSeconds",
+      "name": "闲置自动关闭",
+      "type": "Number",
+      "defaultValue": "0",
+      "required": false,
+      "variableMode": "UseVarOrInput",
+      "condition": "仅：CreateFileServer",
+      "description": "可选。一定时间（秒）没有请求后自动关闭服务。"
+    },
+    {
+      "key": "showNotifyWhenAutoClose",
+      "name": "自动关闭时显示通知",
+      "type": "Boolean",
+      "defaultValue": "false",
+      "required": false,
+      "variableMode": "UseVarOrInput",
+      "condition": "仅：CreateFileServer",
+      "description": "闲置超时关闭时，是否显示通知。"
+    },
+    {
+      "key": "stopIfFail",
+      "name": "失败后停止",
+      "type": "Boolean",
+      "defaultValue": "true",
+      "required": false,
+      "variableMode": "Input",
+      "condition": "",
+      "description": "失败后是否停止动作"
+    }
+  ],
+  "outputs": [
+    {
+      "key": "isSuccess",
+      "name": "是否成功",
+      "type": "Boolean",
+      "condition": "",
+      "description": "操作是否成功"
+    },
+    {
+      "key": "serverUrl",
+      "name": "服务地址",
+      "type": "Text",
+      "condition": "仅：CreateFileServer",
+      "description": "服务网址"
+    },
+    {
+      "key": "serverUrlWithAccount",
+      "name": "带账号的地址",
+      "type": "Text",
+      "condition": "仅：CreateFileServer",
+      "description": "带有账号密码的地址。可用于扫码后自动登录。"
+    },
+    {
+      "key": "isRunning",
+      "name": "是否在运行",
+      "type": "Boolean",
+      "condition": "仅：GetServerState",
+      "description": "指定ID的web服务是否在运行中"
+    },
+    {
+      "key": "serverList",
+      "name": "运行中的服务列表",
+      "type": "List",
+      "condition": "仅：GetServerState",
+      "description": "所有运行中的服务的列表"
+    }
+  ],
+  "selections": {
+    "operation": {
+      "name": "操作类型",
+      "items": [
+        {
+          "value": "CreateFileServer",
+          "name": "创建文件服务器",
+          "description": ""
+        },
+        {
+          "value": "CloseServer",
+          "name": "关闭服务",
+          "description": ""
+        },
+        {
+          "value": "GetServerState",
+          "name": "获取服务状态",
+          "description": ""
+        }
+      ]
+    }
+  },
+  "sourceFileName": "sys_httpserver_HTTP服务器.md"
+}

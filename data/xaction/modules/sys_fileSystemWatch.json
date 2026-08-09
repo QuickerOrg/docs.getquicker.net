@@ -1,0 +1,184 @@
+{
+  "key": "sys:fileSystemWatch",
+  "slug": "filesystemwatch",
+  "legacySlug": "filesystemwatch",
+  "ownsLegacyContent": true,
+  "name": "文件系统监控",
+  "description": "监控文件创建/变更/删除等事件。",
+  "category": "System",
+  "categoryName": "Windows系统",
+  "stepType": "Action",
+  "isRisky": false,
+  "isProOnly": false,
+  "helpLink": "https://getquicker.net/KC/Help/Doc/filesystemwatch",
+  "inputs": [
+    {
+      "key": "operation",
+      "name": "操作类型",
+      "type": "Enum",
+      "defaultValue": "wait",
+      "required": true,
+      "variableMode": "Input",
+      "condition": "",
+      "description": "时间数据来源"
+    },
+    {
+      "key": "path",
+      "name": "文件夹路径",
+      "type": "Text",
+      "defaultValue": "",
+      "required": false,
+      "variableMode": "UseVarOrInput",
+      "condition": "",
+      "description": "要监控的文件夹路径"
+    },
+    {
+      "key": "filter",
+      "name": "文件筛选",
+      "type": "Text",
+      "defaultValue": "*.*",
+      "required": false,
+      "variableMode": "UseVarOrInput",
+      "condition": "",
+      "description": "筛选要监控的文件。可指定文件名（如foo.txt），或使用通配符（如*.txt）"
+    },
+    {
+      "key": "notifyFilter",
+      "name": "通知筛选",
+      "type": "Text",
+      "defaultValue": "",
+      "required": false,
+      "variableMode": "UseVarOrInput",
+      "condition": "",
+      "description": "可选，可选值请参考文档。留空表示默认设置(LastWrite,FileName,DirectoryName)。"
+    },
+    {
+      "key": "includeSubdirectories",
+      "name": "包含子文件夹",
+      "type": "Boolean",
+      "defaultValue": "true",
+      "required": false,
+      "variableMode": "Input",
+      "condition": "",
+      "description": ""
+    },
+    {
+      "key": "waitEvents",
+      "name": "等待的事件",
+      "type": "Text",
+      "defaultValue": "created",
+      "required": false,
+      "variableMode": "UseVarOrInput",
+      "condition": "仅：wait",
+      "description": ""
+    },
+    {
+      "key": "waitSeconds",
+      "name": "等待秒数",
+      "type": "Number",
+      "defaultValue": "0.0",
+      "required": false,
+      "variableMode": "UseVarOrInput",
+      "condition": "仅：wait",
+      "description": "最长等待时间。0表示不限时间。"
+    },
+    {
+      "key": "createdCallback",
+      "name": "[创建] 处理子程序",
+      "type": "Text",
+      "defaultValue": "",
+      "required": false,
+      "variableMode": "UseVarOrInput",
+      "condition": "仅：callback",
+      "description": "文件或文件创建时调用的子程序"
+    },
+    {
+      "key": "changedCallback",
+      "name": "[变更] 处理子程序",
+      "type": "Text",
+      "defaultValue": "",
+      "required": false,
+      "variableMode": "UseVarOrInput",
+      "condition": "仅：callback",
+      "description": "文件或文件夹变更时调用的子程序"
+    },
+    {
+      "key": "deletedCallback",
+      "name": "[删除] 处理子程序",
+      "type": "Text",
+      "defaultValue": "",
+      "required": false,
+      "variableMode": "UseVarOrInput",
+      "condition": "仅：callback",
+      "description": "文件或文件被删除时调用的子程序"
+    },
+    {
+      "key": "renamedCallback",
+      "name": "[重命名] 处理子程序",
+      "type": "Text",
+      "defaultValue": "",
+      "required": false,
+      "variableMode": "UseVarOrInput",
+      "condition": "仅：callback",
+      "description": "文件或文件重命名时调用的子程序"
+    },
+    {
+      "key": "stopIfFail",
+      "name": "失败后停止",
+      "type": "Boolean",
+      "defaultValue": "true",
+      "required": false,
+      "variableMode": "Input",
+      "condition": "",
+      "description": "失败后是否停止动作"
+    }
+  ],
+  "outputs": [
+    {
+      "key": "isSuccess",
+      "name": "是否成功",
+      "type": "Boolean",
+      "condition": "",
+      "description": "操作是否成功"
+    },
+    {
+      "key": "fullPath",
+      "name": "变更的路径",
+      "type": "Text",
+      "condition": "仅：wait",
+      "description": "发生变更的文件(夹)路径，或重命名后的新路径"
+    },
+    {
+      "key": "changedType",
+      "name": "变更类型",
+      "type": "Text",
+      "condition": "仅：wait",
+      "description": "变更类型"
+    },
+    {
+      "key": "oldFullPath",
+      "name": "旧路径",
+      "type": "Text",
+      "condition": "仅：wait",
+      "description": "重命名时的原始路径"
+    }
+  ],
+  "selections": {
+    "operation": {
+      "name": "操作类型",
+      "items": [
+        {
+          "value": "wait",
+          "name": "等待事件发生",
+          "description": ""
+        },
+        {
+          "value": "callback",
+          "name": "持续监控（事件发生后调用子程序）",
+          "description": ""
+        }
+      ]
+    }
+  },
+  "sourceFileName": "sys_fileSystemWatch_文件系统监控.md"
+}

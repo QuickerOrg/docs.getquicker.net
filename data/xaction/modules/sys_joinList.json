@@ -1,0 +1,57 @@
+{
+  "key": "sys:joinList",
+  "slug": "joinlist",
+  "legacySlug": "joinlist",
+  "ownsLegacyContent": true,
+  "name": "列表合并成文本",
+  "description": "将列表拼接为一段文本",
+  "category": "Text",
+  "categoryName": "文本处理",
+  "stepType": "Action",
+  "isRisky": false,
+  "isProOnly": false,
+  "helpLink": "https://getquicker.net/KC/Help/Doc/joinlist",
+  "inputs": [
+    {
+      "key": "list",
+      "name": "输入",
+      "type": "List",
+      "defaultValue": "",
+      "required": true,
+      "variableMode": "UseVarOrInput",
+      "condition": "",
+      "description": "要拼接为文本的列表"
+    },
+    {
+      "key": "separator",
+      "name": "分隔文本",
+      "type": "Text",
+      "defaultValue": ",",
+      "required": true,
+      "variableMode": "Input",
+      "condition": "",
+      "description": "拼接内容时，两项之间的内容。"
+    },
+    {
+      "key": "escapeSeparator",
+      "name": "转义“分隔文本”",
+      "type": "Boolean",
+      "defaultValue": "false",
+      "required": false,
+      "variableMode": "Input",
+      "condition": "",
+      "description": "替换\"分隔文本\"中的转义字符（\\r,\\n,\\t）"
+    }
+  ],
+  "outputs": [
+    {
+      "key": "output",
+      "name": "结果",
+      "type": "Text",
+      "condition": "",
+      "description": "生成的文本内容"
+    }
+  ],
+  "selections": {},
+  "sourceFileName": "sys_joinList_列表合并成文本.md"
+}

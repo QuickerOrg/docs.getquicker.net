@@ -1,0 +1,175 @@
+{
+  "key": "sys:dictOperations",
+  "slug": "dictoperations",
+  "legacySlug": "dictoperations",
+  "ownsLegacyContent": true,
+  "name": "词典操作",
+  "description": "对词典变量进行添加、删除等操作",
+  "category": "Compute",
+  "categoryName": "计算与比较",
+  "stepType": "Action",
+  "isRisky": false,
+  "isProOnly": false,
+  "helpLink": "https://getquicker.net/KC/Help/Doc/dictoperations",
+  "inputs": [
+    {
+      "key": "type",
+      "name": "操作类型",
+      "type": "Enum",
+      "defaultValue": "setOriginValue",
+      "required": true,
+      "variableMode": "Input",
+      "condition": "",
+      "description": ""
+    },
+    {
+      "key": "dict",
+      "name": "词典",
+      "type": "Dict",
+      "defaultValue": "",
+      "required": false,
+      "variableMode": "UseVar",
+      "condition": "排除：queryStringToDict",
+      "description": "要操作的词典变量"
+    },
+    {
+      "key": "queryString",
+      "name": "查询字符串",
+      "type": "Text",
+      "defaultValue": "",
+      "required": false,
+      "variableMode": "UseVarOrInput",
+      "condition": "仅：queryStringToDict",
+      "description": "要解析的查询字符串"
+    },
+    {
+      "key": "key",
+      "name": "键",
+      "type": "Text",
+      "defaultValue": "",
+      "required": false,
+      "variableMode": "UseVarOrInput",
+      "condition": "仅：get, set, remove, setOriginValue",
+      "description": "要操作元素的键值。"
+    },
+    {
+      "key": "value",
+      "name": "值",
+      "type": "Text",
+      "defaultValue": "",
+      "required": false,
+      "variableMode": "UseVarOrInput",
+      "condition": "仅：set, setOriginValue",
+      "description": "要保存的内容"
+    },
+    {
+      "key": "returnEmptyIfKeyNotExist",
+      "name": "键不存在时返回空值",
+      "type": "Boolean",
+      "defaultValue": "false",
+      "required": false,
+      "variableMode": "Input",
+      "condition": "仅：get",
+      "description": "此时不作为失败处理"
+    },
+    {
+      "key": "ignoreCase",
+      "name": "忽略键的大小写",
+      "type": "Boolean",
+      "defaultValue": "false",
+      "required": false,
+      "variableMode": "Input",
+      "condition": "仅：set, get, remove, setOriginValue",
+      "description": ""
+    },
+    {
+      "key": "stopIfFail",
+      "name": "失败后停止",
+      "type": "Boolean",
+      "defaultValue": "false",
+      "required": false,
+      "variableMode": "Input",
+      "condition": "",
+      "description": "失败后是否停止动作"
+    }
+  ],
+  "outputs": [
+    {
+      "key": "isSuccess",
+      "name": "是否成功",
+      "type": "Boolean",
+      "condition": "",
+      "description": "操作是否成功"
+    },
+    {
+      "key": "value",
+      "name": "结果",
+      "type": "Any",
+      "condition": "仅：get, keyList, valueList, reverse, queryStringToDict, dictToQueryString, dictToQueryStringNoEncode",
+      "description": "操作后的输出（取的元素值、键列表、值列表等）"
+    }
+  ],
+  "selections": {
+    "type": {
+      "name": "操作类型",
+      "items": [
+        {
+          "value": "get",
+          "name": "取值",
+          "description": ""
+        },
+        {
+          "value": "set",
+          "name": "设置值 (文本类型)",
+          "description": ""
+        },
+        {
+          "value": "setOriginValue",
+          "name": "设置值 (变量原始类型)",
+          "description": ""
+        },
+        {
+          "value": "remove",
+          "name": "删除一项",
+          "description": ""
+        },
+        {
+          "value": "clear",
+          "name": "清空",
+          "description": ""
+        },
+        {
+          "value": "keyList",
+          "name": "获取键(Key)列表",
+          "description": ""
+        },
+        {
+          "value": "valueList",
+          "name": "获取值列表",
+          "description": ""
+        },
+        {
+          "value": "reverse",
+          "name": "翻转键值",
+          "description": ""
+        },
+        {
+          "value": "queryStringToDict",
+          "name": "查询字符串转换为词典(name1=value1&name2=value2...)",
+          "description": ""
+        },
+        {
+          "value": "dictToQueryString",
+          "name": "词典转换为查询字符串",
+          "description": ""
+        },
+        {
+          "value": "dictToQueryStringNoEncode",
+          "name": "词典转换为查询字符串(不对键和值进行URL编码)",
+          "description": ""
+        }
+      ]
+    }
+  },
+  "sourceFileName": "sys_dictOperations_词典操作.md"
+}

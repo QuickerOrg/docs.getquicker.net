@@ -1,0 +1,267 @@
+{
+  "key": "sys:run",
+  "slug": "run",
+  "legacySlug": "run",
+  "ownsLegacyContent": true,
+  "name": "运行或打开",
+  "description": "运行软件或命令，打开文件、文件夹或网址。效果类似于在Windows\"运行\"对话框中执行命令。",
+  "category": "Basic",
+  "categoryName": "基础",
+  "stepType": "Action",
+  "isRisky": false,
+  "isProOnly": false,
+  "helpLink": "https://getquicker.net/KC/Help/Doc/run",
+  "inputs": [
+    {
+      "key": "path",
+      "name": "路径或命令",
+      "type": "Text",
+      "defaultValue": "",
+      "required": true,
+      "variableMode": "UseVarOrInput",
+      "condition": "",
+      "description": "要运行的命令或打开的文件路径、网址、URI等。"
+    },
+    {
+      "key": "arg",
+      "name": "参数(可选)",
+      "type": "Text",
+      "defaultValue": "",
+      "required": false,
+      "variableMode": "UseVarOrInput",
+      "condition": "",
+      "description": "程序参数"
+    },
+    {
+      "key": "setWorkingDir",
+      "name": "工作目录",
+      "type": "Text",
+      "defaultValue": "1",
+      "required": false,
+      "variableMode": "UseVarOrInput",
+      "condition": "",
+      "description": "可输入 0或留空(不设置,由windows默认)、1(软件所在目录)、具体的工作目录路径。"
+    },
+    {
+      "key": "windowStyle",
+      "name": "窗口风格",
+      "type": "Enum",
+      "defaultValue": "0",
+      "required": false,
+      "variableMode": "UseVarOrInput",
+      "condition": "",
+      "description": "设置期望的窗口风格，是否有效依赖于具体的软件。"
+    },
+    {
+      "key": "runas",
+      "name": "以管理员身份运行",
+      "type": "Boolean",
+      "defaultValue": "false",
+      "required": false,
+      "variableMode": "UseVarOrInput",
+      "condition": "",
+      "description": "以管理员身份运行软件或命令。"
+    },
+    {
+      "key": "waitInputIdle",
+      "name": "等待启动完成",
+      "type": "Boolean",
+      "defaultValue": "false",
+      "required": false,
+      "variableMode": "UseVarOrInput",
+      "condition": "",
+      "description": "等待进程完成后了初始化，可以接受用户输入。"
+    },
+    {
+      "key": "waitExit",
+      "name": "等待进程结束",
+      "type": "Boolean",
+      "defaultValue": "false",
+      "required": false,
+      "variableMode": "UseVarOrInput",
+      "condition": "",
+      "description": "等待进程结束后再执行后续操作步骤。"
+    },
+    {
+      "key": "activateWindowIfRunning",
+      "name": "如果程序已运行则尝试激活窗口",
+      "type": "Boolean",
+      "defaultValue": "false",
+      "required": false,
+      "variableMode": "UseVarOrInput",
+      "condition": "",
+      "description": "如果程序已经在运行，则尝试激活其窗口。"
+    },
+    {
+      "key": "activateWindowHotkey",
+      "name": "激活窗口快捷键",
+      "type": "Text",
+      "defaultValue": "",
+      "required": false,
+      "variableMode": "UseVarOrInput",
+      "condition": "",
+      "description": "对于支持快捷键激活窗口的软件，设置该快捷键。支持\"模拟按键B\"语法。"
+    },
+    {
+      "key": "alternativePath",
+      "name": "备用路径",
+      "type": "Text",
+      "defaultValue": "",
+      "required": false,
+      "variableMode": "Input",
+      "condition": "",
+      "description": "文件在多个电脑上路径不同时，使用备用路径填写其他电脑上的文件路径。"
+    },
+    {
+      "key": "username",
+      "name": "用户名",
+      "type": "Text",
+      "defaultValue": "",
+      "required": false,
+      "variableMode": "UseVarOrInput",
+      "condition": "",
+      "description": "使用指定的用户运行"
+    },
+    {
+      "key": "password",
+      "name": "密码",
+      "type": "Text",
+      "defaultValue": "",
+      "required": false,
+      "variableMode": "UseVarOrInput",
+      "condition": "",
+      "description": "用户名对应的密码"
+    },
+    {
+      "key": "outputEncoding",
+      "name": "控制台输出编码",
+      "type": "Enum",
+      "defaultValue": "oem",
+      "required": true,
+      "variableMode": "Input",
+      "condition": "",
+      "description": "控制台输出编码。如果输出遇到乱码，尝试修改此选项。"
+    },
+    {
+      "key": "envVariables",
+      "name": "环境变量",
+      "type": "Text",
+      "defaultValue": "",
+      "required": false,
+      "variableMode": "UseVarOrInput",
+      "condition": "",
+      "description": "为应用程序设置特定的环境变量值。每行一个，格式\"变量名=值\"，如\"CONFIG_FILE=d:\\config.json\""
+    },
+    {
+      "key": "stopIfFail",
+      "name": "失败后停止",
+      "type": "Boolean",
+      "defaultValue": "true",
+      "required": false,
+      "variableMode": "Input",
+      "condition": "",
+      "description": "失败后是否停止动作"
+    }
+  ],
+  "outputs": [
+    {
+      "key": "isSuccess",
+      "name": "是否成功",
+      "type": "Boolean",
+      "condition": "",
+      "description": "操作是否成功"
+    },
+    {
+      "key": "pid",
+      "name": "PID",
+      "type": "Integer",
+      "condition": "",
+      "description": "进程ID"
+    },
+    {
+      "key": "mainWinHandle",
+      "name": "主窗口句柄",
+      "type": "Integer",
+      "condition": "",
+      "description": "进程的主窗口句柄"
+    },
+    {
+      "key": "mainWinTitle",
+      "name": "主窗口标题",
+      "type": "Text",
+      "condition": "",
+      "description": ""
+    },
+    {
+      "key": "stdout",
+      "name": "控制台输出",
+      "type": "Text",
+      "condition": "",
+      "description": "慎用！仅用于控制台程序，会自动等待进程结束。输出stdout，为空时输出stderr。"
+    },
+    {
+      "key": "stdoutOnly",
+      "name": "stdout输出",
+      "type": "Text",
+      "condition": "",
+      "description": "慎用！捕获控制台程序的stdout输出，会自动等待进程结束"
+    },
+    {
+      "key": "stderr",
+      "name": "stderr输出",
+      "type": "Text",
+      "condition": "",
+      "description": "慎用！捕获控制台程序的stderr输出，会自动等待进程结束"
+    },
+    {
+      "key": "exitCode",
+      "name": "退出代码",
+      "type": "Integer",
+      "condition": "",
+      "description": "进程的ExitCode，会自动等待进程结束。"
+    }
+  ],
+  "selections": {
+    "windowStyle": {
+      "name": "窗口风格",
+      "items": [
+        {
+          "value": "0",
+          "name": "普通(Normal)",
+          "description": ""
+        },
+        {
+          "value": "1",
+          "name": "隐藏(Hidden)",
+          "description": ""
+        },
+        {
+          "value": "2",
+          "name": "最小化(Minimized)",
+          "description": ""
+        },
+        {
+          "value": "3",
+          "name": "最大化(Maximized)",
+          "description": ""
+        }
+      ]
+    },
+    "outputEncoding": {
+      "name": "控制台输出编码",
+      "items": [
+        {
+          "value": "utf8",
+          "name": "UTF8",
+          "description": ""
+        },
+        {
+          "value": "oem",
+          "name": "OEM",
+          "description": ""
+        }
+      ]
+    }
+  },
+  "sourceFileName": "sys_run_运行或打开.md"
+}

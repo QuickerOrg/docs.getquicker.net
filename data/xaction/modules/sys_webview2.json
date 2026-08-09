@@ -1,0 +1,610 @@
+{
+  "key": "sys:webview2",
+  "slug": "webview2",
+  "legacySlug": "webview2",
+  "ownsLegacyContent": true,
+  "name": "WebView2浏览器窗口",
+  "description": "基于微软Edge浏览器内核的组件，需要安装Edge最新预览版方可使用。",
+  "category": "Ui",
+  "categoryName": "界面组件",
+  "stepType": "Action",
+  "isRisky": false,
+  "isProOnly": false,
+  "helpLink": "https://getquicker.net/KC/Help/Doc/webview2",
+  "inputs": [
+    {
+      "key": "type",
+      "name": "操作类型",
+      "type": "Enum",
+      "defaultValue": "OpenUrl",
+      "required": true,
+      "variableMode": "Input",
+      "condition": "",
+      "description": ""
+    },
+    {
+      "key": "url",
+      "name": "网址或HTML内容",
+      "type": "Text",
+      "defaultValue": "",
+      "required": true,
+      "variableMode": "UseVarOrInput",
+      "condition": "仅：OpenUrl, OpenAndWaitLoad, OpenUrlAndWaitClose",
+      "description": "网页地址/文件路径或html代码内容"
+    },
+    {
+      "key": "urlList",
+      "name": "网址列表",
+      "type": "List",
+      "defaultValue": "",
+      "required": true,
+      "variableMode": "UseVarOrInput",
+      "condition": "仅：MultiTab_OpenUrl, MultiColumn_OpenUrl",
+      "description": "每行一个：网址，或\"标题|网址\"，或\"[图标]标题|网址\"格式。"
+    },
+    {
+      "key": "additionalBrowserArguments",
+      "name": "附加的浏览器参数",
+      "type": "Text",
+      "defaultValue": "",
+      "required": true,
+      "variableMode": "UseVarOrInput",
+      "condition": "仅：OpenUrl, OpenAndWaitLoad, OpenUrlAndWaitClose",
+      "description": "用于设置代理等用途"
+    },
+    {
+      "key": "virtualHostToFolder",
+      "name": "虚拟主机映射",
+      "type": "Text",
+      "defaultValue": "",
+      "required": true,
+      "variableMode": "UseVarOrInput",
+      "condition": "仅：OpenUrl, OpenAndWaitLoad, OpenUrlAndWaitClose",
+      "description": "将文件夹映射为虚拟主机名。格式：主机名|文件夹路径。多个时，每行一个。\n在html中可以使用https://servername/path/to/file.png的格式访问文件。"
+    },
+    {
+      "key": "userAgent",
+      "name": "User Agent",
+      "type": "Text",
+      "defaultValue": "",
+      "required": false,
+      "variableMode": "UseVarOrInput",
+      "condition": "仅：OpenUrl, OpenAndWaitLoad, OpenUrlAndWaitClose, MultiTab_OpenUrl, MultiColumn_OpenUrl",
+      "description": "可选。自定义UserAgent"
+    },
+    {
+      "key": "title",
+      "name": "窗口标题",
+      "type": "Text",
+      "defaultValue": "",
+      "required": true,
+      "variableMode": "UseVarOrInput",
+      "condition": "仅：OpenUrl, OpenAndWaitLoad, OpenUrlAndWaitClose, MultiTab_OpenUrl, MultiColumn_OpenUrl",
+      "description": "窗口标题文字。未设置时，自动使用网页标题。"
+    },
+    {
+      "key": "icon",
+      "name": "窗口图标",
+      "type": "Text",
+      "defaultValue": "",
+      "required": false,
+      "variableMode": "UseVarOrInput",
+      "condition": "仅：OpenUrl, OpenAndWaitLoad, OpenUrlAndWaitClose",
+      "description": "显示在窗口左上角的图标。支持fa:内置图报名:#RRGGBB或图标网址。"
+    },
+    {
+      "key": "defaultBgColor",
+      "name": "默认背景色",
+      "type": "Text",
+      "defaultValue": "",
+      "required": false,
+      "variableMode": "UseVarOrInput",
+      "condition": "仅：OpenUrl, OpenAndWaitLoad, OpenUrlAndWaitClose",
+      "description": "可选。设置窗口的默认背景色。"
+    },
+    {
+      "key": "autoCloseKey",
+      "name": "窗口标识",
+      "type": "Text",
+      "defaultValue": "=",
+      "required": false,
+      "variableMode": "UseVarOrInput",
+      "condition": "排除：CheckInstalled",
+      "description": "(仅必要时使用)用于关闭之前打开的具有此标识的WebView2窗口。使用=表示当前动作ID。"
+    },
+    {
+      "key": "modeForExists",
+      "name": "如果窗口已存在",
+      "type": "Enum",
+      "defaultValue": "SkipThisStep",
+      "required": false,
+      "variableMode": "Input",
+      "condition": "仅：OpenUrl, OpenAndWaitLoad",
+      "description": ""
+    },
+    {
+      "key": "script",
+      "name": "JS脚本",
+      "type": "Text",
+      "defaultValue": "",
+      "required": true,
+      "variableMode": "UseVarOrInput",
+      "condition": "仅：OpenUrl, OpenAndWaitLoad, OpenUrlAndWaitClose, ExecuteScript",
+      "description": "可选。"
+    },
+    {
+      "key": "sendMessage",
+      "name": "消息内容",
+      "type": "Text",
+      "defaultValue": "",
+      "required": true,
+      "variableMode": "UseVarOrInput",
+      "condition": "仅：SendMessage",
+      "description": "Json格式的消息内容。词典变量会自动转换成json。"
+    },
+    {
+      "key": "additionalObjects",
+      "name": "附加对象",
+      "type": "List",
+      "defaultValue": "",
+      "required": false,
+      "variableMode": "UseVarOrInput",
+      "condition": "仅：SendMessage",
+      "description": "PostWebMessageAsJson的附加对象列表参数内容。目前支持路径的列表"
+    },
+    {
+      "key": "winLocation",
+      "name": "窗口位置",
+      "type": "Enum",
+      "defaultValue": "CenterScreen",
+      "required": false,
+      "variableMode": "UseVarOrInput",
+      "condition": "仅：OpenUrl, OpenAndWaitLoad, OpenUrlAndWaitClose, MultiTab_OpenUrl, MultiColumn_OpenUrl",
+      "description": "在哪里显示选择窗口"
+    },
+    {
+      "key": "winSize",
+      "name": "窗口尺寸/位置",
+      "type": "Text",
+      "defaultValue": "",
+      "required": false,
+      "variableMode": "Input",
+      "condition": "仅：OpenUrl, OpenAndWaitLoad, OpenUrlAndWaitClose, MultiTab_OpenUrl, MultiColumn_OpenUrl",
+      "description": "设置选择窗口的尺寸，格式为：宽度,高度。支持像素数值或屏幕宽高百分比，详情请参考模块文档。\n\"窗口位置\" 类型为 \"自定义位置\" 时用于指定显示位置，格式为：left,top,right,bottom"
+    },
+    {
+      "key": "defaultDownloadFolderPath",
+      "name": "默认下载文件夹",
+      "type": "Text",
+      "defaultValue": "",
+      "required": false,
+      "variableMode": "Input",
+      "condition": "仅：OpenUrl, OpenAndWaitLoad, OpenUrlAndWaitClose, MultiTab_OpenUrl, MultiColumn_OpenUrl",
+      "description": "默认的文件下载存储目录"
+    },
+    {
+      "key": "profileName",
+      "name": "Profile",
+      "type": "Text",
+      "defaultValue": "",
+      "required": false,
+      "variableMode": "Input",
+      "condition": "仅：OpenUrl, OpenAndWaitLoad, OpenUrlAndWaitClose",
+      "description": "当需要同时登录一个网站的多个账号时，可以创建独立的Profile。请输入Profile名称，不支持文件夹路径。"
+    },
+    {
+      "key": "topMost",
+      "name": "置顶显示",
+      "type": "Boolean",
+      "defaultValue": "false",
+      "required": false,
+      "variableMode": "UseVarOrInput",
+      "condition": "仅：OpenUrl, OpenAndWaitLoad, OpenUrlAndWaitClose, MultiTab_OpenUrl, MultiColumn_OpenUrl",
+      "description": ""
+    },
+    {
+      "key": "showInTaskbar",
+      "name": "显示任务栏图标",
+      "type": "Boolean",
+      "defaultValue": "true",
+      "required": false,
+      "variableMode": "UseVarOrInput",
+      "condition": "仅：OpenUrl, OpenAndWaitLoad, OpenUrlAndWaitClose",
+      "description": ""
+    },
+    {
+      "key": "noActivate",
+      "name": "不占用焦点",
+      "type": "Boolean",
+      "defaultValue": "false",
+      "required": false,
+      "variableMode": "UseVarOrInput",
+      "condition": "仅：OpenUrl, OpenAndWaitLoad, OpenUrlAndWaitClose",
+      "description": "不占用焦点时也无法在窗口中输入文字"
+    },
+    {
+      "key": "closeWhenLostFocus",
+      "name": "失去焦点后",
+      "type": "Enum",
+      "defaultValue": "false",
+      "required": false,
+      "variableMode": "UseVarOrInput",
+      "condition": "仅：OpenUrl, OpenAndWaitLoad, OpenUrlAndWaitClose",
+      "description": ""
+    },
+    {
+      "key": "escCloseWindow",
+      "name": "按Esc关闭窗口",
+      "type": "Boolean",
+      "defaultValue": "false",
+      "required": false,
+      "variableMode": "UseVarOrInput",
+      "condition": "仅：OpenUrl, OpenAndWaitLoad, OpenUrlAndWaitClose",
+      "description": ""
+    },
+    {
+      "key": "showToolbar",
+      "name": "显示工具栏",
+      "type": "Boolean",
+      "defaultValue": "false",
+      "required": false,
+      "variableMode": "UseVarOrInput",
+      "condition": "仅：OpenUrl, OpenAndWaitLoad, OpenUrlAndWaitClose",
+      "description": ""
+    },
+    {
+      "key": "addDevTool",
+      "name": "添加DevTools桥",
+      "type": "Boolean",
+      "defaultValue": "false",
+      "required": false,
+      "variableMode": "Input",
+      "condition": "仅：OpenUrl, OpenAndWaitLoad, OpenUrlAndWaitClose",
+      "description": ""
+    },
+    {
+      "key": "windowStyle",
+      "name": "窗口风格",
+      "type": "Enum",
+      "defaultValue": "normal",
+      "required": false,
+      "variableMode": "UseVarOrInput",
+      "condition": "仅：OpenUrl, OpenAndWaitLoad, OpenUrlAndWaitClose",
+      "description": ""
+    },
+    {
+      "key": "clearCookies",
+      "name": "关闭窗口时清理Cookie",
+      "type": "Boolean",
+      "defaultValue": "false",
+      "required": false,
+      "variableMode": "Input",
+      "condition": "仅：OpenUrl, OpenAndWaitLoad, OpenUrlAndWaitClose",
+      "description": ""
+    },
+    {
+      "key": "stopIfFail",
+      "name": "失败后停止",
+      "type": "Boolean",
+      "defaultValue": "true",
+      "required": false,
+      "variableMode": "Input",
+      "condition": "",
+      "description": "失败后是否停止动作"
+    }
+  ],
+  "outputs": [
+    {
+      "key": "isSuccess",
+      "name": "是否成功",
+      "type": "Boolean",
+      "condition": "",
+      "description": "操作是否成功。获取窗口信息时，窗口是否存在。"
+    },
+    {
+      "key": "isInstalled",
+      "name": "是否安装WebView2",
+      "type": "Boolean",
+      "condition": "仅：CheckInstalled",
+      "description": ""
+    },
+    {
+      "key": "hWnd",
+      "name": "窗口句柄",
+      "type": "Integer",
+      "condition": "仅：OpenUrl, OpenAndWaitLoad, CheckWindowState",
+      "description": ""
+    },
+    {
+      "key": "webView",
+      "name": "WebView2对象",
+      "type": "Object",
+      "condition": "仅：OpenUrl, OpenAndWaitLoad, CheckWindowState",
+      "description": "可用于在C#脚本中使用，需运行在UI线程中。注意避免循环引用。"
+    },
+    {
+      "key": "lastLocation",
+      "name": "窗口位置",
+      "type": "Text",
+      "condition": "仅：OpenAndWaitLoad, CheckWindowState, OpenUrlAndWaitClose",
+      "description": "返回窗口坐标范围。格式为：left,top,right,bottom"
+    },
+    {
+      "key": "currUri",
+      "name": "当前网址",
+      "type": "Text",
+      "condition": "仅：OpenAndWaitLoad, CheckWindowState",
+      "description": "浏览器当前网址"
+    },
+    {
+      "key": "docTitle",
+      "name": "网页标题",
+      "type": "Text",
+      "condition": "仅：OpenAndWaitLoad, CheckWindowState",
+      "description": ""
+    },
+    {
+      "key": "sourceCode",
+      "name": "网页代码",
+      "type": "Text",
+      "condition": "仅：OpenAndWaitLoad, CheckWindowState",
+      "description": ""
+    },
+    {
+      "key": "cookies",
+      "name": "Cookie",
+      "type": "Text",
+      "condition": "仅：OpenAndWaitLoad, CheckWindowState",
+      "description": ""
+    },
+    {
+      "key": "scriptResult",
+      "name": "脚本运行结果",
+      "type": "Text",
+      "condition": "仅：ExecuteScript",
+      "description": "json编码的脚本运行结果内容"
+    },
+    {
+      "key": "previewImage",
+      "name": "预览图",
+      "type": "Image",
+      "condition": "仅：CheckWindowState",
+      "description": ""
+    },
+    {
+      "key": "isNavCompleted",
+      "name": "导航是否已结束",
+      "type": "Boolean",
+      "condition": "仅：CheckWindowState",
+      "description": "是否已完成网页加载过程"
+    }
+  ],
+  "selections": {
+    "type": {
+      "name": "操作类型",
+      "items": [
+        {
+          "value": "OpenUrl",
+          "name": "打开网页",
+          "description": ""
+        },
+        {
+          "value": "OpenAndWaitLoad",
+          "name": "打开网页并等待加载完成",
+          "description": ""
+        },
+        {
+          "value": "OpenUrlAndWaitClose",
+          "name": "打开网页并等待窗口关闭",
+          "description": ""
+        },
+        {
+          "value": "SendMessage",
+          "name": "发送消息",
+          "description": ""
+        },
+        {
+          "value": "ExecuteScript",
+          "name": "执行脚本",
+          "description": ""
+        },
+        {
+          "value": "CheckWindowState",
+          "name": "获取窗口状态",
+          "description": ""
+        },
+        {
+          "value": "Close",
+          "name": "关闭窗口(如果尚未关闭)",
+          "description": ""
+        },
+        {
+          "value": "Reload",
+          "name": "重新加载/刷新",
+          "description": ""
+        },
+        {
+          "value": "Stop",
+          "name": "停止加载",
+          "description": ""
+        },
+        {
+          "value": "CheckInstalled",
+          "name": "检查是否安装WebView2",
+          "description": ""
+        },
+        {
+          "value": "MultiTab_OpenUrl",
+          "name": "【多标签】打开网址",
+          "description": ""
+        },
+        {
+          "value": "MultiColumn_OpenUrl",
+          "name": "【多列】打开网址",
+          "description": ""
+        }
+      ]
+    },
+    "modeForExists": {
+      "name": "如果窗口已存在",
+      "items": [
+        {
+          "value": "SkipThisStep",
+          "name": "跳过此步骤",
+          "description": ""
+        },
+        {
+          "value": "UpdateUrl",
+          "name": "更新网址",
+          "description": ""
+        },
+        {
+          "value": "UpdateUrlAndPosition",
+          "name": "更新网址和窗口位置",
+          "description": ""
+        },
+        {
+          "value": "RecreateWindow",
+          "name": "关闭并重建窗口",
+          "description": ""
+        },
+        {
+          "value": "BringToFront",
+          "name": "激活窗口",
+          "description": ""
+        }
+      ]
+    },
+    "winLocation": {
+      "name": "窗口位置",
+      "items": [
+        {
+          "value": "WithMouse1",
+          "name": "跟随鼠标（指针周围）",
+          "description": ""
+        },
+        {
+          "value": "WithMouse2",
+          "name": "跟随鼠标（指针右下）",
+          "description": ""
+        },
+        {
+          "value": "CenterScreen",
+          "name": "屏幕中间",
+          "description": ""
+        },
+        {
+          "value": "TopLeft",
+          "name": "屏幕左上",
+          "description": ""
+        },
+        {
+          "value": "TopCenter",
+          "name": "屏幕中上",
+          "description": ""
+        },
+        {
+          "value": "TopRight",
+          "name": "屏幕右上",
+          "description": ""
+        },
+        {
+          "value": "LeftCenter",
+          "name": "屏幕左中",
+          "description": ""
+        },
+        {
+          "value": "RightCenter",
+          "name": "屏幕右中",
+          "description": ""
+        },
+        {
+          "value": "BottomLeft",
+          "name": "屏幕左下",
+          "description": ""
+        },
+        {
+          "value": "BottomCenter",
+          "name": "屏幕中下",
+          "description": ""
+        },
+        {
+          "value": "BottomRight",
+          "name": "屏幕右下",
+          "description": ""
+        },
+        {
+          "value": "FullScreen",
+          "name": "全屏",
+          "description": ""
+        },
+        {
+          "value": "Maximized",
+          "name": "最大化",
+          "description": ""
+        },
+        {
+          "value": "Manual",
+          "name": "自定义位置",
+          "description": ""
+        }
+      ]
+    },
+    "closeWhenLostFocus": {
+      "name": "失去焦点后",
+      "items": [
+        {
+          "value": "false",
+          "name": "不执行操作",
+          "description": ""
+        },
+        {
+          "value": "true",
+          "name": "关闭窗口",
+          "description": ""
+        },
+        {
+          "value": "hide",
+          "name": "隐藏窗口",
+          "description": ""
+        },
+        {
+          "value": "minimize",
+          "name": "最小化窗口",
+          "description": ""
+        },
+        {
+          "value": "close_if_not_topmost",
+          "name": "如果未置顶，关闭窗口",
+          "description": ""
+        },
+        {
+          "value": "hide_if_not_topmost",
+          "name": "如果未置顶，隐藏窗口",
+          "description": ""
+        },
+        {
+          "value": "minimize_if_not_topmost",
+          "name": "如果未置顶，最小化窗口",
+          "description": ""
+        }
+      ]
+    },
+    "windowStyle": {
+      "name": "窗口风格",
+      "items": [
+        {
+          "value": "normal",
+          "name": "正常",
+          "description": ""
+        },
+        {
+          "value": "none",
+          "name": "无边框",
+          "description": ""
+        }
+      ]
+    }
+  },
+  "sourceFileName": "sys_webview2_WebView2浏览器窗口.md"
+}

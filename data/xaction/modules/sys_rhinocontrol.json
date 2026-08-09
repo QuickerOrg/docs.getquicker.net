@@ -1,0 +1,95 @@
+{
+  "key": "sys:rhinocontrol",
+  "slug": "rhinocontrol",
+  "legacySlug": "rhinocontrol",
+  "ownsLegacyContent": true,
+  "name": "Rhino软件控制",
+  "description": "向Rhino发送命令或脚本",
+  "category": "SoftInteraction",
+  "categoryName": "第三方软件交互",
+  "stepType": "Action",
+  "isRisky": false,
+  "isProOnly": false,
+  "helpLink": "https://getquicker.net/KC/Help/Doc/rhinocontrol",
+  "inputs": [
+    {
+      "key": "operation",
+      "name": "操作类型",
+      "type": "Enum",
+      "defaultValue": "RunScript",
+      "required": true,
+      "variableMode": "Input",
+      "condition": "",
+      "description": "操作类型"
+    },
+    {
+      "key": "command",
+      "name": "命令内容",
+      "type": "Text",
+      "defaultValue": "",
+      "required": false,
+      "variableMode": "UseVarOrInput",
+      "condition": "仅：RunScript",
+      "description": "命令或脚本内容。"
+    },
+    {
+      "key": "waitResp",
+      "name": "等待命令结束",
+      "type": "Boolean",
+      "defaultValue": "true",
+      "required": false,
+      "variableMode": "UseVarOrInput",
+      "condition": "仅：RunScript",
+      "description": ""
+    },
+    {
+      "key": "waitMs",
+      "name": "最长等待时间(ms)",
+      "type": "Number",
+      "defaultValue": "10000",
+      "required": true,
+      "variableMode": "Input",
+      "condition": "",
+      "description": "最长的等待返回结果的，毫秒数"
+    },
+    {
+      "key": "stopIfFail",
+      "name": "失败后停止",
+      "type": "Boolean",
+      "defaultValue": "true",
+      "required": false,
+      "variableMode": "Input",
+      "condition": "",
+      "description": "失败后是否停止动作"
+    }
+  ],
+  "outputs": [
+    {
+      "key": "isSuccess",
+      "name": "是否成功",
+      "type": "Boolean",
+      "condition": "",
+      "description": "操作是否成功"
+    },
+    {
+      "key": "output",
+      "name": "脚本输出",
+      "type": "Text",
+      "condition": "",
+      "description": "仅通过接口执行脚本时支持返回内容。"
+    }
+  ],
+  "selections": {
+    "operation": {
+      "name": "操作类型",
+      "items": [
+        {
+          "value": "RunScript",
+          "name": "执行脚本",
+          "description": ""
+        }
+      ]
+    }
+  },
+  "sourceFileName": "sys_rhinocontrol_Rhino软件控制.md"
+}

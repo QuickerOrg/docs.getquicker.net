@@ -1,0 +1,197 @@
+{
+  "key": "sys:fileOperation",
+  "slug": "fileoperation",
+  "legacySlug": "fileoperation",
+  "ownsLegacyContent": true,
+  "name": "文件和目录操作",
+  "description": "文件和目录操作。请确保路径是合法的。",
+  "category": "Files",
+  "categoryName": "系统操作",
+  "stepType": "Action",
+  "isRisky": false,
+  "isProOnly": false,
+  "helpLink": "https://getquicker.net/KC/Help/Doc/fileoperation",
+  "inputs": [
+    {
+      "key": "type",
+      "name": "操作类型",
+      "type": "Enum",
+      "defaultValue": "",
+      "required": true,
+      "variableMode": "Input",
+      "condition": "",
+      "description": "操作类型"
+    },
+    {
+      "key": "path",
+      "name": "路径",
+      "type": "Text",
+      "defaultValue": "",
+      "required": false,
+      "variableMode": "UseVarOrInput",
+      "condition": "",
+      "description": "要操作的文件或文件夹路径"
+    },
+    {
+      "key": "dstPath",
+      "name": "目标路径/名称",
+      "type": "Text",
+      "defaultValue": "",
+      "required": false,
+      "variableMode": "UseVarOrInput",
+      "condition": "仅：copyFile, copyInto, copyTo, copyIntoWithShell, moveIntoWithShell, moveFile, moveInto, rename, moveTo",
+      "description": "复制/移动的目标路径或新文件、文件名。详情请参考文档。"
+    },
+    {
+      "key": "overwrite",
+      "name": "覆盖已有",
+      "type": "Boolean",
+      "defaultValue": "false",
+      "required": false,
+      "variableMode": "Input",
+      "condition": "仅：copyFile, copyInto, copyTo, moveFile, moveInto, rename, moveTo",
+      "description": "如果目标位置已存在文件，是否覆盖？"
+    },
+    {
+      "key": "searchPattern",
+      "name": "搜索内容",
+      "type": "Text",
+      "defaultValue": "*",
+      "required": false,
+      "variableMode": "UseVarOrInput",
+      "condition": "仅：enumFiles, enumDirs",
+      "description": "筛选文件或目录名。可以包含通配符*和?，或\"regex:正则表达式\"。搜索文件时也可以为分号隔开的多个后缀名如.jpg;.png;.bmp"
+    },
+    {
+      "key": "isAll",
+      "name": "包含子目录",
+      "type": "Boolean",
+      "defaultValue": "false",
+      "required": false,
+      "variableMode": "UseVarOrInput",
+      "condition": "仅：enumFiles, enumDirs",
+      "description": "包含子目录中的(否则只搜索顶层目录)"
+    },
+    {
+      "key": "stopIfFail",
+      "name": "失败后中止动作",
+      "type": "Boolean",
+      "defaultValue": "true",
+      "required": false,
+      "variableMode": "Input",
+      "condition": "",
+      "description": "如果操作异常，是否终止动作"
+    }
+  ],
+  "outputs": [
+    {
+      "key": "isSuccess",
+      "name": "是否成功",
+      "type": "Boolean",
+      "condition": "",
+      "description": "操作是否成功"
+    },
+    {
+      "key": "files",
+      "name": "路径列表",
+      "type": "List",
+      "condition": "仅：enumFiles, enumDirs",
+      "description": "搜索到的文件或文件夹列表"
+    },
+    {
+      "key": "resultPath",
+      "name": "结果路径",
+      "type": "Text",
+      "condition": "仅：copyTo, rename, copyInto",
+      "description": "结果文件路径"
+    }
+  ],
+  "selections": {
+    "type": {
+      "name": "操作类型",
+      "items": [
+        {
+          "value": "copyInto",
+          "name": "复制到指定目录下",
+          "description": ""
+        },
+        {
+          "value": "copyIntoWithShell",
+          "name": "复制到指定目录下(Windows)",
+          "description": ""
+        },
+        {
+          "value": "copyTo",
+          "name": "复制为（指定结果名称或路径）",
+          "description": ""
+        },
+        {
+          "value": "moveInto",
+          "name": "移动到指定目录下",
+          "description": ""
+        },
+        {
+          "value": "moveIntoWithShell",
+          "name": "移动到指定目录下(Windows)",
+          "description": ""
+        },
+        {
+          "value": "rename",
+          "name": "移动/重命名为（指定结果名称或完整路径）",
+          "description": ""
+        },
+        {
+          "value": "deleteFile",
+          "name": "删除文件（不支持文件夹）",
+          "description": ""
+        },
+        {
+          "value": "deleteEmptyFolder",
+          "name": "删除空文件夹",
+          "description": ""
+        },
+        {
+          "value": "recycle",
+          "name": "移入回收站",
+          "description": ""
+        },
+        {
+          "value": "recycleNoUi",
+          "name": "移入回收站（安静模式，自动确认操作）",
+          "description": ""
+        },
+        {
+          "value": "makeDir",
+          "name": "创建文件夹",
+          "description": ""
+        },
+        {
+          "value": "createFile",
+          "name": "创建空文件",
+          "description": ""
+        },
+        {
+          "value": "enumFiles",
+          "name": "获取文件夹内的文件",
+          "description": ""
+        },
+        {
+          "value": "enumDirs",
+          "name": "获取文件夹内的子文件夹",
+          "description": ""
+        },
+        {
+          "value": "copyFile",
+          "name": "复制文件/文件夹（自动）【不建议使用】",
+          "description": ""
+        },
+        {
+          "value": "moveFile",
+          "name": "移动/重命名文件(夹)（自动）【不建议使用】",
+          "description": ""
+        }
+      ]
+    }
+  },
+  "sourceFileName": "sys_fileOperation_文件和目录操作.md"
+}

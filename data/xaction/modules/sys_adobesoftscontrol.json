@@ -1,0 +1,150 @@
+{
+  "key": "sys:adobesoftscontrol",
+  "slug": "adobesoftscontrol",
+  "legacySlug": "adobesoftscontrol",
+  "ownsLegacyContent": true,
+  "name": "Adobe系列软件控制",
+  "description": "",
+  "category": "SoftInteraction",
+  "categoryName": "第三方软件交互",
+  "stepType": "Action",
+  "isRisky": false,
+  "isProOnly": false,
+  "helpLink": "https://getquicker.net/KC/Help/Doc/adobesoftscontrol",
+  "inputs": [
+    {
+      "key": "software",
+      "name": "软件名称",
+      "type": "Enum",
+      "defaultValue": "Photoshop.Application",
+      "required": true,
+      "variableMode": "Input",
+      "condition": "",
+      "description": "要执行脚本的软件"
+    },
+    {
+      "key": "operation",
+      "name": "操作类型",
+      "type": "Enum",
+      "defaultValue": "dojavascript",
+      "required": true,
+      "variableMode": "Input",
+      "condition": "",
+      "description": "操作类型"
+    },
+    {
+      "key": "script",
+      "name": "脚本内容",
+      "type": "Text",
+      "defaultValue": "",
+      "required": false,
+      "variableMode": "UseVarOrInput",
+      "condition": "仅：dojavascript",
+      "description": "要执行的js脚本代码。"
+    },
+    {
+      "key": "scriptFile",
+      "name": "脚本文件路径",
+      "type": "Text",
+      "defaultValue": "",
+      "required": false,
+      "variableMode": "UseVarOrInput",
+      "condition": "仅：dojavascriptfile",
+      "description": "js脚本文件的完整路径"
+    },
+    {
+      "key": "waitResp",
+      "name": "等待执行结束",
+      "type": "Boolean",
+      "defaultValue": "true",
+      "required": false,
+      "variableMode": "UseVarOrInput",
+      "condition": "",
+      "description": ""
+    },
+    {
+      "key": "waitMs",
+      "name": "最长等待时间(ms)",
+      "type": "Number",
+      "defaultValue": "10000",
+      "required": true,
+      "variableMode": "Input",
+      "condition": "",
+      "description": "最长的等待返回结果的，毫秒数"
+    },
+    {
+      "key": "tryRunScriptUsingExe",
+      "name": "接口失败后，尝试使用程序exe运行脚本文件",
+      "type": "Boolean",
+      "defaultValue": "false",
+      "required": false,
+      "variableMode": "UseVarOrInput",
+      "condition": "",
+      "description": "使用运行程序并将脚本路径作为参数的方式执行脚本。"
+    },
+    {
+      "key": "stopIfFail",
+      "name": "失败后停止",
+      "type": "Boolean",
+      "defaultValue": "true",
+      "required": false,
+      "variableMode": "Input",
+      "condition": "",
+      "description": "失败后是否停止动作"
+    }
+  ],
+  "outputs": [
+    {
+      "key": "isSuccess",
+      "name": "是否成功",
+      "type": "Boolean",
+      "condition": "",
+      "description": "操作是否成功"
+    },
+    {
+      "key": "output",
+      "name": "脚本输出",
+      "type": "Text",
+      "condition": "",
+      "description": "仅通过接口执行脚本时支持返回内容。"
+    }
+  ],
+  "selections": {
+    "software": {
+      "name": "软件名称",
+      "items": [
+        {
+          "value": "Photoshop.Application",
+          "name": "Photoshop",
+          "description": ""
+        },
+        {
+          "value": "Illustrator.Application",
+          "name": "Illustrator",
+          "description": ""
+        },
+        {
+          "value": "afterfx",
+          "name": "After Effects",
+          "description": ""
+        }
+      ]
+    },
+    "operation": {
+      "name": "操作类型",
+      "items": [
+        {
+          "value": "dojavascript",
+          "name": "执行js脚本",
+          "description": ""
+        },
+        {
+          "value": "dojavascriptfile",
+          "name": "执行js脚本文件",
+          "description": ""
+        }
+      ]
+    }
+  },
+  "sourceFileName": "sys_adobesoftscontrol_Adobe系列软件控制.md"
+}

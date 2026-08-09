@@ -1,0 +1,629 @@
+{
+  "key": "sys:showText",
+  "slug": "showtext",
+  "legacySlug": "showtext",
+  "ownsLegacyContent": true,
+  "name": "文本窗口",
+  "description": "在独立的窗口中显示文本。",
+  "category": "Text",
+  "categoryName": "文本处理",
+  "stepType": "Action",
+  "isRisky": false,
+  "isProOnly": false,
+  "helpLink": "https://getquicker.net/KC/Help/Doc/showText",
+  "inputs": [
+    {
+      "key": "type",
+      "name": "操作类型",
+      "type": "Enum",
+      "defaultValue": "NO_WAIT",
+      "required": true,
+      "variableMode": "Input",
+      "condition": "",
+      "description": "是否等待窗口关闭后继续"
+    },
+    {
+      "key": "text",
+      "name": "文本内容",
+      "type": "Text",
+      "defaultValue": "",
+      "required": true,
+      "variableMode": "UseVarOrInput",
+      "condition": "仅：WAIT, NO_WAIT, APPEND_TEXT",
+      "description": "要显示的文本内容"
+    },
+    {
+      "key": "title",
+      "name": "窗口标题",
+      "type": "Text",
+      "defaultValue": "文本窗口",
+      "required": true,
+      "variableMode": "UseVarOrInput",
+      "condition": "仅：WAIT, NO_WAIT",
+      "description": "窗口标题文字"
+    },
+    {
+      "key": "operations",
+      "name": "工具栏操作",
+      "type": "Text",
+      "defaultValue": "",
+      "required": true,
+      "variableMode": "Input",
+      "condition": "仅：WAIT, NO_WAIT",
+      "description": "用于显示在窗口工具栏。每行一个选项，格式为 \"文本\" 或 \"显示文本|值\"。"
+    },
+    {
+      "key": "autoCloseKey",
+      "name": "文本窗口标识",
+      "type": "Text",
+      "defaultValue": "=",
+      "required": false,
+      "variableMode": "Input",
+      "condition": "排除：GET_ALL_WINDOWS, GET_ACTION_WINDOWS",
+      "description": "可选。自动更新或关闭之前打开的具有此标识的文本窗口。使用'='表示当前动作id。"
+    },
+    {
+      "key": "winLocation",
+      "name": "窗口位置类型",
+      "type": "Enum",
+      "defaultValue": "CenterScreen",
+      "required": false,
+      "variableMode": "UseVarOrInput",
+      "condition": "仅：WAIT, NO_WAIT",
+      "description": "在哪里显示选择窗口"
+    },
+    {
+      "key": "winSize",
+      "name": "窗口尺寸/位置",
+      "type": "Text",
+      "defaultValue": "",
+      "required": false,
+      "variableMode": "Input",
+      "condition": "仅：WAIT, NO_WAIT",
+      "description": "设置选择窗口的尺寸，格式为：宽度,高度。支持逻辑像素数值或屏幕宽高百分比，详情请参考模块文档。\n\"窗口位置\" 类型为 \"自定义位置\" 时用于指定显示位置，格式为：left,top,right,bottom"
+    },
+    {
+      "key": "topMost",
+      "name": "置顶显示",
+      "type": "Boolean",
+      "defaultValue": "false",
+      "required": false,
+      "variableMode": "UseVarOrInput",
+      "condition": "仅：WAIT, NO_WAIT",
+      "description": ""
+    },
+    {
+      "key": "fontsize",
+      "name": "字体大小",
+      "type": "Number",
+      "defaultValue": "14.0",
+      "required": true,
+      "variableMode": "UseVarOrInput",
+      "condition": "仅：WAIT, NO_WAIT",
+      "description": "默认的字体大小"
+    },
+    {
+      "key": "fontfamily",
+      "name": "字体名称",
+      "type": "Text",
+      "defaultValue": "",
+      "required": false,
+      "variableMode": "UseVarOrInput",
+      "condition": "仅：WAIT, NO_WAIT",
+      "description": "可选。设置字体名称。如有多个字体，使用逗号分隔。"
+    },
+    {
+      "key": "bgColor",
+      "name": "背景颜色",
+      "type": "Text",
+      "defaultValue": "",
+      "required": false,
+      "variableMode": "UseVarOrInput",
+      "condition": "仅：WAIT, NO_WAIT",
+      "description": "可选。格式为#RRGGBB"
+    },
+    {
+      "key": "textColor",
+      "name": "文字颜色",
+      "type": "Text",
+      "defaultValue": "",
+      "required": false,
+      "variableMode": "UseVarOrInput",
+      "condition": "仅：WAIT, NO_WAIT",
+      "description": "可选。格式为#RRGGBB"
+    },
+    {
+      "key": "highlight",
+      "name": "语法高亮",
+      "type": "Enum",
+      "defaultValue": "",
+      "required": false,
+      "variableMode": "UseVarOrInput",
+      "condition": "仅：WAIT, NO_WAIT",
+      "description": ""
+    },
+    {
+      "key": "autoSaveToState",
+      "name": "自动保存到状态",
+      "type": "Text",
+      "defaultValue": "",
+      "required": false,
+      "variableMode": "UseVarOrInput",
+      "condition": "仅：WAIT, NO_WAIT",
+      "description": "指定状态Key。文本内容将自动保存到状态中。"
+    },
+    {
+      "key": "showLineNum",
+      "name": "显示行号",
+      "type": "Boolean",
+      "defaultValue": "true",
+      "required": false,
+      "variableMode": "UseVarOrInput",
+      "condition": "仅：WAIT, NO_WAIT",
+      "description": ""
+    },
+    {
+      "key": "autoWrap",
+      "name": "自动换行显示",
+      "type": "Boolean",
+      "defaultValue": "true",
+      "required": false,
+      "variableMode": "UseVarOrInput",
+      "condition": "仅：WAIT, NO_WAIT",
+      "description": ""
+    },
+    {
+      "key": "copyWholeLine",
+      "name": "未选择内容时，复制或剪切整行",
+      "type": "Boolean",
+      "defaultValue": "false",
+      "required": false,
+      "variableMode": "UseVarOrInput",
+      "condition": "仅：WAIT, NO_WAIT",
+      "description": ""
+    },
+    {
+      "key": "closeWhenLostFocus",
+      "name": "失去焦点自动关闭",
+      "type": "Boolean",
+      "defaultValue": "false",
+      "required": false,
+      "variableMode": "UseVarOrInput",
+      "condition": "仅：WAIT, NO_WAIT",
+      "description": ""
+    },
+    {
+      "key": "enableEscClose",
+      "name": "Esc 键关闭窗口",
+      "type": "Boolean",
+      "defaultValue": "true",
+      "required": false,
+      "variableMode": "UseVarOrInput",
+      "condition": "仅：WAIT, NO_WAIT",
+      "description": ""
+    },
+    {
+      "key": "updateIfExists",
+      "name": "如果窗口存在，则直接更新窗口内容（而不是关闭后打开新窗口）",
+      "type": "Boolean",
+      "defaultValue": "false",
+      "required": false,
+      "variableMode": "Input",
+      "condition": "仅：NO_WAIT",
+      "description": ""
+    },
+    {
+      "key": "showBuildInToolbar",
+      "name": "显示内置工具栏",
+      "type": "Boolean",
+      "defaultValue": "true",
+      "required": false,
+      "variableMode": "UseVarOrInput",
+      "condition": "仅：WAIT, NO_WAIT",
+      "description": ""
+    },
+    {
+      "key": "caretPosition",
+      "name": "光标位置",
+      "type": "Integer",
+      "defaultValue": "0",
+      "required": true,
+      "variableMode": "UseVarOrInput",
+      "condition": "仅：WAIT, NO_WAIT",
+      "description": "0表示最前面，-1表示最后面，其它数字表示某个具体字符位置。"
+    },
+    {
+      "key": "advancedSettings",
+      "name": "高级设置",
+      "type": "Text",
+      "defaultValue": "",
+      "required": false,
+      "variableMode": "Input",
+      "condition": "",
+      "description": "请参考模块文档。"
+    },
+    {
+      "key": "stopIfFail",
+      "name": "失败后停止",
+      "type": "Boolean",
+      "defaultValue": "true",
+      "required": false,
+      "variableMode": "Input",
+      "condition": "",
+      "description": "失败后是否停止动作"
+    }
+  ],
+  "outputs": [
+    {
+      "key": "isSuccess",
+      "name": "是否成功",
+      "type": "Boolean",
+      "condition": "",
+      "description": "操作是否成功"
+    },
+    {
+      "key": "selectedOperation",
+      "name": "选择的项",
+      "type": "Text",
+      "condition": "仅：WAIT",
+      "description": "选择的后续操作项"
+    },
+    {
+      "key": "resultText",
+      "name": "结果文本",
+      "type": "Text",
+      "condition": "仅：WAIT, CLOSE_WINDOW, GET_WIN_INFO",
+      "description": "文本框内的所有文本"
+    },
+    {
+      "key": "windowHandle",
+      "name": "窗口句柄",
+      "type": "Integer",
+      "condition": "仅：NO_WAIT, GET_WIN_INFO",
+      "description": ""
+    },
+    {
+      "key": "selectedText",
+      "name": "选中的文本",
+      "type": "Text",
+      "condition": "仅：WAIT, CLOSE_WINDOW, GET_WIN_INFO",
+      "description": "文本框内选中的文本"
+    },
+    {
+      "key": "caretPosition",
+      "name": "光标位置",
+      "type": "Integer",
+      "condition": "仅：WAIT, CLOSE_WINDOW, GET_WIN_INFO",
+      "description": "插入符所在字符序号"
+    },
+    {
+      "key": "windowPosition",
+      "name": "窗口位置",
+      "type": "Text",
+      "condition": "仅：WAIT, CLOSE_WINDOW, GET_WIN_INFO",
+      "description": "窗口的最终显示位置"
+    },
+    {
+      "key": "isWindowExists",
+      "name": "窗口是否存在",
+      "type": "Boolean",
+      "condition": "仅：GET_WIN_INFO",
+      "description": ""
+    },
+    {
+      "key": "allWindows",
+      "name": "所有窗口",
+      "type": "Dict",
+      "condition": "仅：GET_ALL_WINDOWS, GET_ACTION_WINDOWS",
+      "description": "词典类型，key为窗口的句柄，value为窗口的标识。获取全部窗口时，为了安全，仅限自己开发的动作使用。"
+    }
+  ],
+  "selections": {
+    "type": {
+      "name": "操作类型",
+      "items": [
+        {
+          "value": "NO_WAIT",
+          "name": "显示窗口，不等待关闭（立即开始执行后续的步骤）",
+          "description": ""
+        },
+        {
+          "value": "WAIT",
+          "name": "显示窗口，等待关闭",
+          "description": ""
+        },
+        {
+          "value": "CLOSE_WINDOW",
+          "name": "关闭窗口",
+          "description": ""
+        },
+        {
+          "value": "GET_WIN_INFO",
+          "name": "获取窗口信息",
+          "description": ""
+        },
+        {
+          "value": "APPEND_TEXT",
+          "name": "追加内容",
+          "description": ""
+        },
+        {
+          "value": "ACTIVATE_WINDOW",
+          "name": "显示和激活窗口",
+          "description": ""
+        },
+        {
+          "value": "WAIT_CLOSE",
+          "name": "等待窗口关闭",
+          "description": ""
+        },
+        {
+          "value": "GET_ALL_WINDOWS",
+          "name": "获取所有文本窗口",
+          "description": ""
+        },
+        {
+          "value": "GET_ACTION_WINDOWS",
+          "name": "获取当前动作创建的所有文本窗口",
+          "description": ""
+        }
+      ]
+    },
+    "winLocation": {
+      "name": "窗口位置类型",
+      "items": [
+        {
+          "value": "WithMouse1",
+          "name": "跟随鼠标（指针周围）",
+          "description": ""
+        },
+        {
+          "value": "WithMouse2",
+          "name": "跟随鼠标（指针右下）",
+          "description": ""
+        },
+        {
+          "value": "CenterScreen",
+          "name": "屏幕中间",
+          "description": ""
+        },
+        {
+          "value": "TopLeft",
+          "name": "屏幕左上",
+          "description": ""
+        },
+        {
+          "value": "TopCenter",
+          "name": "屏幕中上",
+          "description": ""
+        },
+        {
+          "value": "TopRight",
+          "name": "屏幕右上",
+          "description": ""
+        },
+        {
+          "value": "LeftCenter",
+          "name": "屏幕左中",
+          "description": ""
+        },
+        {
+          "value": "RightCenter",
+          "name": "屏幕右中",
+          "description": ""
+        },
+        {
+          "value": "BottomLeft",
+          "name": "屏幕左下",
+          "description": ""
+        },
+        {
+          "value": "BottomCenter",
+          "name": "屏幕中下",
+          "description": ""
+        },
+        {
+          "value": "BottomRight",
+          "name": "屏幕右下",
+          "description": ""
+        },
+        {
+          "value": "FullScreen",
+          "name": "全屏",
+          "description": ""
+        },
+        {
+          "value": "Maximized",
+          "name": "最大化",
+          "description": ""
+        },
+        {
+          "value": "Manual",
+          "name": "自定义位置",
+          "description": ""
+        }
+      ]
+    },
+    "highlight": {
+      "name": "语法高亮",
+      "items": [
+        {
+          "value": "",
+          "name": "无",
+          "description": ""
+        },
+        {
+          "value": "ActionScript3",
+          "name": "ActionScript3",
+          "description": ""
+        },
+        {
+          "value": "ASP/XHTML",
+          "name": "ASP/XHTML",
+          "description": ""
+        },
+        {
+          "value": "BAT",
+          "name": "BAT",
+          "description": ""
+        },
+        {
+          "value": "C#",
+          "name": "C#",
+          "description": ""
+        },
+        {
+          "value": "C++",
+          "name": "C++",
+          "description": ""
+        },
+        {
+          "value": "CSS",
+          "name": "CSS",
+          "description": ""
+        },
+        {
+          "value": "F#",
+          "name": "F#",
+          "description": ""
+        },
+        {
+          "value": "HLSL",
+          "name": "HLSL",
+          "description": ""
+        },
+        {
+          "value": "HTML",
+          "name": "HTML",
+          "description": ""
+        },
+        {
+          "value": "INI",
+          "name": "INI",
+          "description": ""
+        },
+        {
+          "value": "Java",
+          "name": "Java",
+          "description": ""
+        },
+        {
+          "value": "JavaScript",
+          "name": "JavaScript",
+          "description": ""
+        },
+        {
+          "value": "Json",
+          "name": "Json",
+          "description": ""
+        },
+        {
+          "value": "LOG",
+          "name": "LOG",
+          "description": ""
+        },
+        {
+          "value": "MarkDown",
+          "name": "MarkDown",
+          "description": ""
+        },
+        {
+          "value": "MarkDownWithFontSize",
+          "name": "MarkDownWithFontSize",
+          "description": ""
+        },
+        {
+          "value": "Pascal",
+          "name": "Pascal",
+          "description": ""
+        },
+        {
+          "value": "Patch",
+          "name": "Patch",
+          "description": ""
+        },
+        {
+          "value": "PHP",
+          "name": "PHP",
+          "description": ""
+        },
+        {
+          "value": "PLSQL",
+          "name": "PLSQL",
+          "description": ""
+        },
+        {
+          "value": "PowerShell",
+          "name": "PowerShell",
+          "description": ""
+        },
+        {
+          "value": "Python",
+          "name": "Python",
+          "description": ""
+        },
+        {
+          "value": "QuickerExpression",
+          "name": "QuickerExpression",
+          "description": ""
+        },
+        {
+          "value": "QuickerInterpolation",
+          "name": "QuickerInterpolation",
+          "description": ""
+        },
+        {
+          "value": "Ruby",
+          "name": "Ruby",
+          "description": ""
+        },
+        {
+          "value": "Scheme",
+          "name": "Scheme",
+          "description": ""
+        },
+        {
+          "value": "Squirrel",
+          "name": "Squirrel",
+          "description": ""
+        },
+        {
+          "value": "TeX",
+          "name": "TeX",
+          "description": ""
+        },
+        {
+          "value": "TSQL",
+          "name": "TSQL",
+          "description": ""
+        },
+        {
+          "value": "TXT",
+          "name": "TXT",
+          "description": ""
+        },
+        {
+          "value": "VB",
+          "name": "VB",
+          "description": ""
+        },
+        {
+          "value": "VTL",
+          "name": "VTL",
+          "description": ""
+        },
+        {
+          "value": "XML",
+          "name": "XML",
+          "description": ""
+        },
+        {
+          "value": "XmlDoc",
+          "name": "XmlDoc",
+          "description": ""
+        }
+      ]
+    }
+  },
+  "sourceFileName": "sys_showText_文本窗口.md"
+}

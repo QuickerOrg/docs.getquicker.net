@@ -1,0 +1,125 @@
+{
+  "key": "sys:tempcloudstore",
+  "slug": "tempcloudstore",
+  "legacySlug": "tempcloudstore",
+  "ownsLegacyContent": true,
+  "name": "临时云存储",
+  "description": "将文本、文件、图片临时保存到云端并得到网址。",
+  "category": "Network",
+  "categoryName": "网络服务",
+  "stepType": "Action",
+  "isRisky": false,
+  "isProOnly": false,
+  "helpLink": "https://getquicker.net/KC/Help/Doc/tempcloudstore",
+  "inputs": [
+    {
+      "key": "dataType",
+      "name": "数据类型",
+      "type": "Enum",
+      "defaultValue": "text",
+      "required": true,
+      "variableMode": "Input",
+      "condition": "",
+      "description": ""
+    },
+    {
+      "key": "text",
+      "name": "文本内容",
+      "type": "Text",
+      "defaultValue": "",
+      "required": true,
+      "variableMode": "UseVarOrInput",
+      "condition": "仅：text",
+      "description": "要保存的文本内容"
+    },
+    {
+      "key": "imageVar",
+      "name": "图片变量",
+      "type": "Image",
+      "defaultValue": "",
+      "required": false,
+      "variableMode": "UseVar",
+      "condition": "仅：imageVar",
+      "description": "要保存的图片变量"
+    },
+    {
+      "key": "file",
+      "name": "文件路径",
+      "type": "Text",
+      "defaultValue": "",
+      "required": true,
+      "variableMode": "UseVarOrInput",
+      "condition": "仅：file",
+      "description": "要保存的文件路径"
+    },
+    {
+      "key": "expireSeconds",
+      "name": "超时时间",
+      "type": "Number",
+      "defaultValue": "2.5",
+      "required": false,
+      "variableMode": "UseVarOrInput",
+      "condition": "",
+      "description": "请求超时时间（秒数）"
+    },
+    {
+      "key": "useRandomFileName",
+      "name": "生成随机文件名",
+      "type": "Boolean",
+      "defaultValue": "false",
+      "required": false,
+      "variableMode": "Input",
+      "condition": "",
+      "description": "是否使用随机的文件名（仅适用于上传文件的情况）"
+    },
+    {
+      "key": "stopIfFail",
+      "name": "失败后停止",
+      "type": "Boolean",
+      "defaultValue": "true",
+      "required": false,
+      "variableMode": "Input",
+      "condition": "",
+      "description": "失败后是否停止动作"
+    }
+  ],
+  "outputs": [
+    {
+      "key": "isSuccess",
+      "name": "是否成功",
+      "type": "Boolean",
+      "condition": "",
+      "description": "操作是否成功"
+    },
+    {
+      "key": "url",
+      "name": "网址",
+      "type": "Text",
+      "condition": "",
+      "description": "生成的访问网址"
+    }
+  ],
+  "selections": {
+    "dataType": {
+      "name": "数据类型",
+      "items": [
+        {
+          "value": "text",
+          "name": "文本内容",
+          "description": ""
+        },
+        {
+          "value": "file",
+          "name": "文件",
+          "description": ""
+        },
+        {
+          "value": "imageVar",
+          "name": "图片变量",
+          "description": ""
+        }
+      ]
+    }
+  },
+  "sourceFileName": "sys_tempcloudstore_临时云存储.md"
+}

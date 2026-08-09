@@ -1,0 +1,87 @@
+{
+  "key": "sys:formatString",
+  "slug": "formatstring",
+  "legacySlug": "formatstring",
+  "ownsLegacyContent": true,
+  "name": "组合成文本",
+  "description": "将（多个）变量组合成一段文本。",
+  "category": "Text",
+  "categoryName": "文本处理",
+  "stepType": "Action",
+  "isRisky": false,
+  "isProOnly": false,
+  "helpLink": "https://getquicker.net/KC/Help/Doc/formatstring",
+  "inputs": [
+    {
+      "key": "formatString",
+      "name": "格式化字符串",
+      "type": "Text",
+      "defaultValue": "{0}",
+      "required": true,
+      "variableMode": "UseVarOrInput",
+      "condition": "",
+      "description": "使用C#的String.Format语法。"
+    },
+    {
+      "key": "p0",
+      "name": "参数0",
+      "type": "Any",
+      "defaultValue": "",
+      "required": false,
+      "variableMode": "UseVarOrInput",
+      "condition": "",
+      "description": "第 0 个参数"
+    },
+    {
+      "key": "p1",
+      "name": "参数1",
+      "type": "Any",
+      "defaultValue": "",
+      "required": false,
+      "variableMode": "UseVarOrInput",
+      "condition": "",
+      "description": "第 1 个参数"
+    },
+    {
+      "key": "p2",
+      "name": "参数2",
+      "type": "Any",
+      "defaultValue": "",
+      "required": false,
+      "variableMode": "UseVarOrInput",
+      "condition": "",
+      "description": "第 2 个参数"
+    },
+    {
+      "key": "p3",
+      "name": "参数3",
+      "type": "Any",
+      "defaultValue": "",
+      "required": false,
+      "variableMode": "UseVarOrInput",
+      "condition": "",
+      "description": "第 3 个参数"
+    },
+    {
+      "key": "p4",
+      "name": "参数4",
+      "type": "Any",
+      "defaultValue": "",
+      "required": false,
+      "variableMode": "UseVarOrInput",
+      "condition": "",
+      "description": "第 4 个参数"
+    }
+  ],
+  "outputs": [
+    {
+      "key": "output",
+      "name": "结果",
+      "type": "Text",
+      "condition": "",
+      "description": "生成的文本内容"
+    }
+  ],
+  "selections": {},
+  "sourceFileName": "sys_formatString_组合成文本.md"
+}

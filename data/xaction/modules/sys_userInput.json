@@ -1,0 +1,331 @@
+{
+  "key": "sys:userInput",
+  "slug": "userinput",
+  "legacySlug": "userinput",
+  "ownsLegacyContent": true,
+  "name": "用户输入",
+  "description": "请用户输入内容。",
+  "category": "Basic",
+  "categoryName": "基础",
+  "stepType": "Action",
+  "isRisky": false,
+  "isProOnly": false,
+  "helpLink": "https://getquicker.net/KC/Help/Doc/userInput",
+  "inputs": [
+    {
+      "key": "type",
+      "name": "类型",
+      "type": "Enum",
+      "defaultValue": "text",
+      "required": true,
+      "variableMode": "Input",
+      "condition": "",
+      "description": "输入内容的类型"
+    },
+    {
+      "key": "prompt",
+      "name": "提示文字",
+      "type": "Text",
+      "defaultValue": "请输入内容",
+      "required": true,
+      "variableMode": "UseVarOrInput",
+      "condition": "",
+      "description": "提示用户输入什么内容。显示在输入框上方。"
+    },
+    {
+      "key": "defaultValue",
+      "name": "默认值",
+      "type": "Text",
+      "defaultValue": "",
+      "required": false,
+      "variableMode": "UseVarOrInput",
+      "condition": "",
+      "description": "默认填写到输入框中的内容"
+    },
+    {
+      "key": "texttools",
+      "name": "文本选择工具",
+      "type": "Text",
+      "defaultValue": "",
+      "required": false,
+      "variableMode": "UseVarOrInput",
+      "condition": "仅：text, multiline",
+      "description": "鼠标悬浮在文本框上时显示的小工具"
+    },
+    {
+      "key": "extraSettings",
+      "name": "扩展设置",
+      "type": "Text",
+      "defaultValue": "",
+      "required": false,
+      "variableMode": "UseVarOrInput",
+      "condition": "仅：text, multiline",
+      "description": "可用于自定义文本选择工具，详情请参考文档。"
+    },
+    {
+      "key": "pattern",
+      "name": "验证表达式",
+      "type": "Text",
+      "defaultValue": "",
+      "required": false,
+      "variableMode": "Input",
+      "condition": "仅：text, multiline, number",
+      "description": "正则验证表达式"
+    },
+    {
+      "key": "isRequired",
+      "name": "必填",
+      "type": "Boolean",
+      "defaultValue": "false",
+      "required": false,
+      "variableMode": "Input",
+      "condition": "",
+      "description": "是否必须填写内容"
+    },
+    {
+      "key": "winLocation",
+      "name": "窗口位置",
+      "type": "Enum",
+      "defaultValue": "CenterScreen",
+      "required": false,
+      "variableMode": "UseVarOrInput",
+      "condition": "",
+      "description": "在哪里显示选择窗口"
+    },
+    {
+      "key": "restoreFocus",
+      "name": "恢复活动窗口",
+      "type": "Boolean",
+      "defaultValue": "true",
+      "required": false,
+      "variableMode": "Input",
+      "condition": "",
+      "description": "用户输入后，是否将焦点还原到之前的活动窗口"
+    },
+    {
+      "key": "closeOnDeactivated",
+      "name": "失去焦点后关闭窗口",
+      "type": "Boolean",
+      "defaultValue": "false",
+      "required": false,
+      "variableMode": "Input",
+      "condition": "",
+      "description": ""
+    },
+    {
+      "key": "submitWithReturn",
+      "name": "回车提交结果（Shift+回车换行）",
+      "type": "Boolean",
+      "defaultValue": "false",
+      "required": false,
+      "variableMode": "Input",
+      "condition": "仅：multiline",
+      "description": ""
+    },
+    {
+      "key": "fontfamily",
+      "name": "字体名称",
+      "type": "Text",
+      "defaultValue": "",
+      "required": false,
+      "variableMode": "UseVarOrInput",
+      "condition": "仅：text, multiline, number",
+      "description": "可选。设置字体名称。如有2个字体，使用逗号分隔。"
+    },
+    {
+      "key": "fontsize",
+      "name": "字体大小",
+      "type": "Number",
+      "defaultValue": "14.0",
+      "required": true,
+      "variableMode": "UseVarOrInput",
+      "condition": "仅：text, multiline, number",
+      "description": ""
+    },
+    {
+      "key": "imeState",
+      "name": "输入法状态",
+      "type": "Enum",
+      "defaultValue": "NO_CONTROL",
+      "required": false,
+      "variableMode": "Input",
+      "condition": "仅：text, multiline",
+      "description": ""
+    },
+    {
+      "key": "help",
+      "name": "帮助按钮内容",
+      "type": "Text",
+      "defaultValue": "",
+      "required": false,
+      "variableMode": "Input",
+      "condition": "",
+      "description": "点击弹出显示帮助内容，MarkDown格式"
+    },
+    {
+      "key": "topMost",
+      "name": "置顶显示",
+      "type": "Boolean",
+      "defaultValue": "false",
+      "required": false,
+      "variableMode": "Input",
+      "condition": "",
+      "description": ""
+    },
+    {
+      "key": "stopIfFail",
+      "name": "失败后停止",
+      "type": "Boolean",
+      "defaultValue": "true",
+      "required": false,
+      "variableMode": "Input",
+      "condition": "",
+      "description": "用户取消后是否停止动作"
+    }
+  ],
+  "outputs": [
+    {
+      "key": "isSuccess",
+      "name": "是否成功",
+      "type": "Boolean",
+      "condition": "",
+      "description": "操作是否成功"
+    },
+    {
+      "key": "textValue",
+      "name": "文本值",
+      "type": "Text",
+      "condition": "",
+      "description": "文本类型的输入值"
+    },
+    {
+      "key": "numberValue",
+      "name": "数字值",
+      "type": "Number",
+      "condition": "仅：number",
+      "description": "数字类型的输入值"
+    },
+    {
+      "key": "datetimeValue",
+      "name": "日期时间值",
+      "type": "DateTime",
+      "condition": "仅：date_time",
+      "description": ""
+    },
+    {
+      "key": "isEmpty",
+      "name": "是否为空",
+      "type": "Boolean",
+      "condition": "",
+      "description": "用户是否没有输入内容"
+    }
+  ],
+  "selections": {
+    "type": {
+      "name": "类型",
+      "items": [
+        {
+          "value": "text",
+          "name": "单行文本",
+          "description": ""
+        },
+        {
+          "value": "multiline",
+          "name": "多行文本",
+          "description": ""
+        },
+        {
+          "value": "number",
+          "name": "数字",
+          "description": ""
+        },
+        {
+          "value": "date_time",
+          "name": "日期时间",
+          "description": ""
+        }
+      ]
+    },
+    "winLocation": {
+      "name": "窗口位置",
+      "items": [
+        {
+          "value": "WithMouse1",
+          "name": "跟随鼠标（指针周围）",
+          "description": ""
+        },
+        {
+          "value": "WithMouse2",
+          "name": "跟随鼠标（指针右下）",
+          "description": ""
+        },
+        {
+          "value": "CenterScreen",
+          "name": "屏幕中间",
+          "description": ""
+        },
+        {
+          "value": "TopLeft",
+          "name": "屏幕左上",
+          "description": ""
+        },
+        {
+          "value": "TopCenter",
+          "name": "屏幕中上",
+          "description": ""
+        },
+        {
+          "value": "TopRight",
+          "name": "屏幕右上",
+          "description": ""
+        },
+        {
+          "value": "LeftCenter",
+          "name": "屏幕左中",
+          "description": ""
+        },
+        {
+          "value": "RightCenter",
+          "name": "屏幕右中",
+          "description": ""
+        },
+        {
+          "value": "BottomLeft",
+          "name": "屏幕左下",
+          "description": ""
+        },
+        {
+          "value": "BottomCenter",
+          "name": "屏幕中下",
+          "description": ""
+        },
+        {
+          "value": "BottomRight",
+          "name": "屏幕右下",
+          "description": ""
+        }
+      ]
+    },
+    "imeState": {
+      "name": "输入法状态",
+      "items": [
+        {
+          "value": "NO_CONTROL",
+          "name": "不控制",
+          "description": ""
+        },
+        {
+          "value": "ON",
+          "name": "开启",
+          "description": ""
+        },
+        {
+          "value": "OFF",
+          "name": "关闭",
+          "description": ""
+        }
+      ]
+    }
+  },
+  "sourceFileName": "sys_userInput_用户输入.md"
+}

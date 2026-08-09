@@ -1,0 +1,98 @@
+{
+  "key": "sys:reportProgress",
+  "slug": "reportprogress",
+  "legacySlug": "reportprogress",
+  "ownsLegacyContent": true,
+  "name": "显示进度条",
+  "description": "显示/更新进度条",
+  "category": "Ui",
+  "categoryName": "界面组件",
+  "stepType": "Action",
+  "isRisky": false,
+  "isProOnly": false,
+  "helpLink": "https://getquicker.net/KC/Help/Doc/reportProgress",
+  "inputs": [
+    {
+      "key": "type",
+      "name": "类型",
+      "type": "Enum",
+      "defaultValue": "REQUEST_ID",
+      "required": true,
+      "variableMode": "Input",
+      "condition": "",
+      "description": "操作类型"
+    },
+    {
+      "key": "progressId",
+      "name": "进度条ID",
+      "type": "Integer",
+      "defaultValue": "0",
+      "required": false,
+      "variableMode": "UseVarOrInput",
+      "condition": "仅：UPDATE_PROGRESS, REMOVE",
+      "description": "进度条的序号，用于后续更新或删除进度条"
+    },
+    {
+      "key": "title",
+      "name": "进度条标题",
+      "type": "Text",
+      "defaultValue": "",
+      "required": false,
+      "variableMode": "UseVarOrInput",
+      "condition": "仅：UPDATE_PROGRESS",
+      "description": "进度条的标题(显示在进度条上方)"
+    },
+    {
+      "key": "percentage",
+      "name": "进度百分比",
+      "type": "Number",
+      "defaultValue": "0.0",
+      "required": false,
+      "variableMode": "UseVarOrInput",
+      "condition": "仅：UPDATE_PROGRESS",
+      "description": "0到100之间的数字"
+    },
+    {
+      "key": "text",
+      "name": "说明文字",
+      "type": "Text",
+      "defaultValue": "",
+      "required": false,
+      "variableMode": "UseVarOrInput",
+      "condition": "仅：UPDATE_PROGRESS",
+      "description": "显示在进度条下方"
+    }
+  ],
+  "outputs": [
+    {
+      "key": "progressId",
+      "name": "进度条ID",
+      "type": "Integer",
+      "condition": "仅：REQUEST_ID",
+      "description": "进度条的序号，用于后续更新或删除进度条"
+    }
+  ],
+  "selections": {
+    "type": {
+      "name": "类型",
+      "items": [
+        {
+          "value": "REQUEST_ID",
+          "name": "创建进度条",
+          "description": ""
+        },
+        {
+          "value": "UPDATE_PROGRESS",
+          "name": "更新进度",
+          "description": ""
+        },
+        {
+          "value": "REMOVE",
+          "name": "去除进度条",
+          "description": ""
+        }
+      ]
+    }
+  },
+  "sourceFileName": "sys_reportProgress_显示进度条.md"
+}

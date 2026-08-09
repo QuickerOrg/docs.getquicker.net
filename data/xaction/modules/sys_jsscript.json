@@ -1,0 +1,64 @@
+{
+  "key": "sys:jsscript",
+  "slug": "jsscript",
+  "legacySlug": "jsscript",
+  "ownsLegacyContent": true,
+  "name": "运行Javascript代码",
+  "description": "执行Js代码片段。代码中应包含主函数exec()，请参考文档。",
+  "category": "Flow",
+  "categoryName": "程序流程",
+  "stepType": "Action",
+  "isRisky": false,
+  "isProOnly": false,
+  "helpLink": "https://getquicker.net/KC/Help/Doc/jsscript",
+  "inputs": [
+    {
+      "key": "script",
+      "name": "脚本内容",
+      "type": "Text",
+      "defaultValue": "//.js 主函数 exec()\nfunction exec(){\n var localName = quickerGetVar('text');  // 读取text变量值, (text 是动作里的变量)\n quickerSetVar('text', 'Hello, ' + localName ); //输出修改后的值到text变量中。\n return 0; //返回0表示成功。返回其他数字表示失败。\n}",
+      "required": true,
+      "variableMode": "UseVarOrInput",
+      "condition": "",
+      "description": "要运行的脚本内容"
+    },
+    {
+      "key": "allClr",
+      "name": "允许访问.Net程序集",
+      "type": "Boolean",
+      "defaultValue": "false",
+      "required": false,
+      "variableMode": "Input",
+      "condition": "",
+      "description": "是否需要在js代码中访问.Net程序集"
+    },
+    {
+      "key": "stopIfFail",
+      "name": "失败后停止",
+      "type": "Boolean",
+      "defaultValue": "true",
+      "required": false,
+      "variableMode": "Input",
+      "condition": "",
+      "description": "失败后是否停止动作"
+    }
+  ],
+  "outputs": [
+    {
+      "key": "isSuccess",
+      "name": "是否成功",
+      "type": "Boolean",
+      "condition": "",
+      "description": "操作是否成功"
+    },
+    {
+      "key": "return",
+      "name": "返回值",
+      "type": "Integer",
+      "condition": "",
+      "description": "脚本代码返回的数字值。"
+    }
+  ],
+  "selections": {},
+  "sourceFileName": "sys_jsscript_运行Javascript代码.md"
+}

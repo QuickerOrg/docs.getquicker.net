@@ -1,0 +1,64 @@
+{
+  "key": "sys:dependencycheck",
+  "slug": "dependencycheck",
+  "legacySlug": "dependencycheck",
+  "ownsLegacyContent": true,
+  "name": "检查和下载依赖",
+  "description": "检查和下载依赖的外部文件包。",
+  "category": "Flow",
+  "categoryName": "程序流程",
+  "stepType": "Action",
+  "isRisky": false,
+  "isProOnly": false,
+  "helpLink": "https://getquicker.net/KC/Help/Doc/dependencycheck",
+  "inputs": [
+    {
+      "key": "packageName",
+      "name": "依赖包名",
+      "type": "Text",
+      "defaultValue": "",
+      "required": true,
+      "variableMode": "UseVarOrInput",
+      "condition": "",
+      "description": "已经在官网上发布的依赖包的名称"
+    },
+    {
+      "key": "packageVersion",
+      "name": "依赖包版本",
+      "type": "Text",
+      "defaultValue": "",
+      "required": true,
+      "variableMode": "UseVarOrInput",
+      "condition": "",
+      "description": "留空：表示任意版本即可；或写具体版本，表示最低版本。格式为1.2.3"
+    },
+    {
+      "key": "stopIfFail",
+      "name": "失败后停止",
+      "type": "Boolean",
+      "defaultValue": "true",
+      "required": false,
+      "variableMode": "Input",
+      "condition": "",
+      "description": "失败后是否停止动作"
+    }
+  ],
+  "outputs": [
+    {
+      "key": "isSuccess",
+      "name": "是否成功",
+      "type": "Boolean",
+      "condition": "",
+      "description": "操作是否成功"
+    },
+    {
+      "key": "packagePath",
+      "name": "依赖包路径",
+      "type": "Text",
+      "condition": "",
+      "description": "解压缩后的依赖包路径"
+    }
+  ],
+  "selections": {},
+  "sourceFileName": "sys_dependencycheck_检查和下载依赖.md"
+}

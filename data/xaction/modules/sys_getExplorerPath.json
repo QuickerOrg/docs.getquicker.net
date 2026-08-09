@@ -1,0 +1,94 @@
+{
+  "key": "sys:getExplorerPath",
+  "slug": "getexplorerpath",
+  "legacySlug": "getexplorerpath",
+  "ownsLegacyContent": true,
+  "name": "获取资源管理器路径/跳转路径",
+  "description": "获取资源管理器的当前文件夹路径。",
+  "category": "System",
+  "categoryName": "Windows系统",
+  "stepType": "Action",
+  "isRisky": false,
+  "isProOnly": false,
+  "helpLink": "https://getquicker.net/KC/Help/Doc/getexplorerpath",
+  "inputs": [
+    {
+      "key": "operation",
+      "name": "操作类型",
+      "type": "Enum",
+      "defaultValue": "getPath",
+      "required": true,
+      "variableMode": "Input",
+      "condition": "",
+      "description": ""
+    },
+    {
+      "key": "path",
+      "name": "路径",
+      "type": "Text",
+      "defaultValue": "",
+      "required": false,
+      "variableMode": "Input",
+      "condition": "仅：setPath",
+      "description": ""
+    },
+    {
+      "key": "stopIfFail",
+      "name": "失败后停止",
+      "type": "Boolean",
+      "defaultValue": "true",
+      "required": false,
+      "variableMode": "Input",
+      "condition": "",
+      "description": "失败后是否停止动作"
+    }
+  ],
+  "outputs": [
+    {
+      "key": "isSuccess",
+      "name": "是否成功",
+      "type": "Boolean",
+      "condition": "",
+      "description": "操作是否成功"
+    },
+    {
+      "key": "output",
+      "name": "当前窗口路径",
+      "type": "Text",
+      "condition": "仅：getPath",
+      "description": "当前资源管理器窗口的路径"
+    },
+    {
+      "key": "allPathList",
+      "name": "所有打开的路径",
+      "type": "List",
+      "condition": "仅：getPath",
+      "description": "所有资源管理器窗口中打开的路径列表"
+    },
+    {
+      "key": "lastPath",
+      "name": "最近访问的路径",
+      "type": "Text",
+      "condition": "仅：getPath",
+      "description": "最近访问的资源管理器窗口的路径"
+    }
+  ],
+  "selections": {
+    "operation": {
+      "name": "操作类型",
+      "items": [
+        {
+          "value": "getPath",
+          "name": "获取路径",
+          "description": ""
+        },
+        {
+          "value": "setPath",
+          "name": "设置路径",
+          "description": ""
+        }
+      ]
+    }
+  },
+  "sourceFileName": "sys_getExplorerPath_获取资源管理器路径_跳转路径.md"
+}

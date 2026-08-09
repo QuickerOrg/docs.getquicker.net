@@ -1,0 +1,126 @@
+{
+  "key": "sys:winservice",
+  "slug": "winservice",
+  "legacySlug": "winservice",
+  "ownsLegacyContent": true,
+  "name": "Windows服务和注册表",
+  "description": "获取Windows服务的状态、注册表项信息",
+  "category": "System",
+  "categoryName": "Windows系统",
+  "stepType": "Action",
+  "isRisky": false,
+  "isProOnly": false,
+  "helpLink": "https://getquicker.net/KC/Help/Doc/winservice",
+  "inputs": [
+    {
+      "key": "operation",
+      "name": "操作类型",
+      "type": "Enum",
+      "defaultValue": "getServiceInfo",
+      "required": true,
+      "variableMode": "Input",
+      "condition": "",
+      "description": ""
+    },
+    {
+      "key": "name",
+      "name": "服务名",
+      "type": "Text",
+      "defaultValue": "",
+      "required": false,
+      "variableMode": "UseVarOrInput",
+      "condition": "仅：getServiceInfo",
+      "description": "服务名称（不是显示名称），大小写敏感。"
+    },
+    {
+      "key": "regKeyPath",
+      "name": "注册表项路径",
+      "type": "Text",
+      "defaultValue": "",
+      "required": false,
+      "variableMode": "UseVarOrInput",
+      "condition": "仅：getRegValue",
+      "description": "如：HKEY_CURRENT_USER\\Software\\Quicker"
+    },
+    {
+      "key": "regValueName",
+      "name": "值名称",
+      "type": "Text",
+      "defaultValue": "",
+      "required": false,
+      "variableMode": "UseVarOrInput",
+      "condition": "仅：getRegValue",
+      "description": "留空表示\"默认\"项"
+    },
+    {
+      "key": "stopIfFail",
+      "name": "失败后停止",
+      "type": "Boolean",
+      "defaultValue": "true",
+      "required": false,
+      "variableMode": "Input",
+      "condition": "",
+      "description": "失败后是否停止动作"
+    }
+  ],
+  "outputs": [
+    {
+      "key": "isExists",
+      "name": "是否存在",
+      "type": "Boolean",
+      "condition": "仅：getServiceInfo, getRegValue",
+      "description": "服务或注册表项是否存在"
+    },
+    {
+      "key": "displayName",
+      "name": "显示名",
+      "type": "Text",
+      "condition": "仅：getServiceInfo",
+      "description": "服务的显示名"
+    },
+    {
+      "key": "state",
+      "name": "服务状态",
+      "type": "Integer",
+      "condition": "仅：getServiceInfo",
+      "description": "服务的当前状态。4:运行中，1:已停止。其它状态请参考文档。"
+    },
+    {
+      "key": "regValue",
+      "name": "值",
+      "type": "Text",
+      "condition": "仅：getRegValue",
+      "description": "注册表项的值"
+    },
+    {
+      "key": "serviceList",
+      "name": "服务名列表",
+      "type": "List",
+      "condition": "仅：getServiceList",
+      "description": ""
+    }
+  ],
+  "selections": {
+    "operation": {
+      "name": "操作类型",
+      "items": [
+        {
+          "value": "getServiceInfo",
+          "name": "获取某个服务的信息",
+          "description": ""
+        },
+        {
+          "value": "getServiceList",
+          "name": "获取Windows服务列表",
+          "description": ""
+        },
+        {
+          "value": "getRegValue",
+          "name": "获取注册表项值",
+          "description": ""
+        }
+      ]
+    }
+  },
+  "sourceFileName": "sys_winservice_Windows服务和注册表.md"
+}

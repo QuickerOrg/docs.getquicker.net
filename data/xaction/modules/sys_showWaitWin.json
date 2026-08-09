@@ -1,0 +1,285 @@
+{
+  "key": "sys:showWaitWin",
+  "slug": "showwaitwin",
+  "legacySlug": "showwaitwin",
+  "ownsLegacyContent": true,
+  "name": "显示等待窗口",
+  "description": "显示一个等待用户完成某个操作的提示窗口。",
+  "category": "Ui",
+  "categoryName": "界面组件",
+  "stepType": "Action",
+  "isRisky": false,
+  "isProOnly": false,
+  "helpLink": "https://getquicker.net/KC/Help/Doc/showwaitwin",
+  "inputs": [
+    {
+      "key": "mode",
+      "name": "操作",
+      "type": "Enum",
+      "defaultValue": "show",
+      "required": true,
+      "variableMode": "Input",
+      "condition": "",
+      "description": "请选择操作类型"
+    },
+    {
+      "key": "title",
+      "name": "窗口标题",
+      "type": "Text",
+      "defaultValue": "完成后继续",
+      "required": true,
+      "variableMode": "Input",
+      "condition": "仅：show, update, showAndWaitClose",
+      "description": ""
+    },
+    {
+      "key": "prompt",
+      "name": "提示文字",
+      "type": "Text",
+      "defaultValue": "请在完成操作后点下面的按钮",
+      "required": true,
+      "variableMode": "Input",
+      "condition": "仅：show, update, showAndWaitClose",
+      "description": "提示文字内容"
+    },
+    {
+      "key": "btnText",
+      "name": "默认按钮上的文字",
+      "type": "Text",
+      "defaultValue": "完成",
+      "required": true,
+      "variableMode": "UseVarOrInput",
+      "condition": "仅：show, update, showAndWaitClose",
+      "description": "默认按键仅用于关闭窗口。文字内容为空时隐藏默认按钮。"
+    },
+    {
+      "key": "winLocation",
+      "name": "窗口位置",
+      "type": "Enum",
+      "defaultValue": "BottomRight",
+      "required": false,
+      "variableMode": "UseVarOrInput",
+      "condition": "仅：show, showAndWaitClose",
+      "description": "在哪里显示选择窗口"
+    },
+    {
+      "key": "progress",
+      "name": "进度条参数",
+      "type": "Text",
+      "defaultValue": "",
+      "required": false,
+      "variableMode": "Input",
+      "condition": "仅：show, update, showAndWaitClose",
+      "description": "请以 当前值/总数 的格式传入（可使用插值方式）。 比如：40/80"
+    },
+    {
+      "key": "operations",
+      "name": "附加操作按钮",
+      "type": "Text",
+      "defaultValue": "",
+      "required": true,
+      "variableMode": "Input",
+      "condition": "仅：show, update, showAndWaitClose",
+      "description": "每行定义一个按钮，格式为 \"文本\" 或 \"显示文本|值\"。显示在默认按钮的左侧。"
+    },
+    {
+      "key": "iconSize",
+      "name": "图标大小",
+      "type": "Number",
+      "defaultValue": "16.0",
+      "required": true,
+      "variableMode": "UseVarOrInput",
+      "condition": "仅：show, update, showAndWaitClose",
+      "description": "按钮上图标的大小，单位为逻辑像素。"
+    },
+    {
+      "key": "fontsize",
+      "name": "文字大小",
+      "type": "Number",
+      "defaultValue": "12.0",
+      "required": true,
+      "variableMode": "UseVarOrInput",
+      "condition": "仅：show, update, showAndWaitClose",
+      "description": "按钮上文字的大小，单位为逻辑像素。"
+    },
+    {
+      "key": "stopActionIfClose",
+      "name": "关闭窗口时（点右上角x按钮）后停止动作",
+      "type": "Boolean",
+      "defaultValue": "true",
+      "required": false,
+      "variableMode": "Input",
+      "condition": "仅：show, showAndWaitClose",
+      "description": ""
+    },
+    {
+      "key": "autoCloseSeconds",
+      "name": "自动关闭",
+      "type": "Number",
+      "defaultValue": "0.0",
+      "required": false,
+      "variableMode": "Input",
+      "condition": "仅：show, showAndWaitClose",
+      "description": "几秒后自动关闭。0表示不自动关闭。"
+    },
+    {
+      "key": "activateMode",
+      "name": "激活模式",
+      "type": "Enum",
+      "defaultValue": "NotActivatable",
+      "required": false,
+      "variableMode": "Input",
+      "condition": "仅：show, showAndWaitClose",
+      "description": ""
+    },
+    {
+      "key": "help",
+      "name": "帮助按钮内容",
+      "type": "Text",
+      "defaultValue": "",
+      "required": false,
+      "variableMode": "Input",
+      "condition": "仅：show, showAndWaitClose",
+      "description": "点击弹出显示帮助内容，MarkDown格式"
+    }
+  ],
+  "outputs": [
+    {
+      "key": "isClosed",
+      "name": "是否已关闭",
+      "type": "Boolean",
+      "condition": "仅：check",
+      "description": "等待窗口是否已经关闭了"
+    },
+    {
+      "key": "selectedOperation",
+      "name": "选择的按钮",
+      "type": "Text",
+      "condition": "仅：check, waitClose, showAndWaitClose",
+      "description": "选择的后续操作项"
+    }
+  ],
+  "selections": {
+    "mode": {
+      "name": "操作",
+      "items": [
+        {
+          "value": "show",
+          "name": "显示窗口",
+          "description": ""
+        },
+        {
+          "value": "update",
+          "name": "更新窗口",
+          "description": ""
+        },
+        {
+          "value": "check",
+          "name": "检查是否关闭",
+          "description": ""
+        },
+        {
+          "value": "close",
+          "name": "关闭窗口(如果还开着的话)",
+          "description": ""
+        },
+        {
+          "value": "waitClose",
+          "name": "等待用户关闭",
+          "description": ""
+        },
+        {
+          "value": "showAndWaitClose",
+          "name": "显示窗口并等待用户关闭",
+          "description": ""
+        }
+      ]
+    },
+    "winLocation": {
+      "name": "窗口位置",
+      "items": [
+        {
+          "value": "WithMouse1",
+          "name": "跟随鼠标（指针周围）",
+          "description": ""
+        },
+        {
+          "value": "WithMouse2",
+          "name": "跟随鼠标（指针右下）",
+          "description": ""
+        },
+        {
+          "value": "CenterScreen",
+          "name": "屏幕中间",
+          "description": ""
+        },
+        {
+          "value": "TopLeft",
+          "name": "屏幕左上",
+          "description": ""
+        },
+        {
+          "value": "TopCenter",
+          "name": "屏幕中上",
+          "description": ""
+        },
+        {
+          "value": "TopRight",
+          "name": "屏幕右上",
+          "description": ""
+        },
+        {
+          "value": "LeftCenter",
+          "name": "屏幕左中",
+          "description": ""
+        },
+        {
+          "value": "RightCenter",
+          "name": "屏幕右中",
+          "description": ""
+        },
+        {
+          "value": "BottomLeft",
+          "name": "屏幕左下",
+          "description": ""
+        },
+        {
+          "value": "BottomCenter",
+          "name": "屏幕中下",
+          "description": ""
+        },
+        {
+          "value": "BottomRight",
+          "name": "屏幕右下",
+          "description": ""
+        },
+        {
+          "value": "LastPosition",
+          "name": "上次的位置",
+          "description": ""
+        }
+      ]
+    },
+    "activateMode": {
+      "name": "激活模式",
+      "items": [
+        {
+          "value": "NotActivatable",
+          "name": "不支持激活（不占用焦点，仅能使用鼠标操作）",
+          "description": ""
+        },
+        {
+          "value": "NotActivated",
+          "name": "支持激活，打开时不抢占焦点",
+          "description": ""
+        },
+        {
+          "value": "AutoActivate",
+          "name": "支持激活，打开时抢占焦点",
+          "description": ""
+        }
+      ]
+    }
+  },
+  "sourceFileName": "sys_showWaitWin_显示等待窗口.md"
+}

@@ -1,0 +1,614 @@
+{
+  "key": "sys:custompanel",
+  "slug": "custompanel",
+  "legacySlug": "custompanel",
+  "ownsLegacyContent": true,
+  "name": "自定义操作窗",
+  "description": "自定义悬浮操作窗口，点击后直接执行操作，不隐藏。",
+  "category": "Ui",
+  "categoryName": "界面组件",
+  "stepType": "Action",
+  "isRisky": false,
+  "isProOnly": false,
+  "helpLink": "https://getquicker.net/KC/Help/Doc/custompanel",
+  "inputs": [
+    {
+      "key": "operation",
+      "name": "操作类型",
+      "type": "Enum",
+      "defaultValue": "show_fixed_panel_wait_close",
+      "required": true,
+      "variableMode": "Input",
+      "condition": "",
+      "description": ""
+    },
+    {
+      "key": "operationData",
+      "name": "操作项定义",
+      "type": "Text",
+      "defaultValue": "",
+      "required": true,
+      "variableMode": "UseVarOrInput",
+      "condition": "仅：show_fixed_panel, show_fixed_panel_wait_close",
+      "description": "可以为Json/菜单文本格式/IList<CommonOperationItem>对象，详情请参考文档"
+    },
+    {
+      "key": "defaultOperation",
+      "name": "默认Operation",
+      "type": "Text",
+      "defaultValue": "",
+      "required": false,
+      "variableMode": "Input",
+      "condition": "仅：show_fixed_panel, show_fixed_panel_wait_close",
+      "description": "默认的Operation值或参数组合。提供此值时，操作项可以直接通过\"[图标]标题(提示)|data\"的形式定义。"
+    },
+    {
+      "key": "spacingStr",
+      "name": "按钮之间的间隔",
+      "type": "Text",
+      "defaultValue": "5",
+      "required": true,
+      "variableMode": "UseVarOrInput",
+      "condition": "仅：show_fixed_panel, show_fixed_panel_wait_close",
+      "description": "可选格式1：5 => 四个边都是5；格式2：10,5 => 左右10，上下5;"
+    },
+    {
+      "key": "buttonPadding",
+      "name": "按钮内边距",
+      "type": "Text",
+      "defaultValue": "10,6",
+      "required": true,
+      "variableMode": "UseVarOrInput",
+      "condition": "仅：show_fixed_panel, show_fixed_panel_wait_close",
+      "description": "格式1：5 => 四个边都是5；格式2：10,5 => 左右10，上下5; 格式3：7,8,9,10 => 分别指定左上右下4边边距。"
+    },
+    {
+      "key": "columnCount",
+      "name": "列数",
+      "type": "Integer",
+      "defaultValue": "2",
+      "required": true,
+      "variableMode": "UseVarOrInput",
+      "condition": "仅：show_fixed_panel, show_fixed_panel_wait_close",
+      "description": "按钮排列方式为固定列数时，指定列数。0表示自动。"
+    },
+    {
+      "key": "columnWidth",
+      "name": "列宽",
+      "type": "Integer",
+      "defaultValue": "0",
+      "required": true,
+      "variableMode": "UseVarOrInput",
+      "condition": "仅：show_fixed_panel, show_fixed_panel_wait_close",
+      "description": "固定列宽时使用。0表示自动列宽，-1表示不对齐宽度，各子项根据内容自动调整宽度。"
+    },
+    {
+      "key": "groupMode",
+      "name": "分组方式",
+      "type": "Enum",
+      "defaultValue": "heading",
+      "required": false,
+      "variableMode": "UseVarOrInput",
+      "condition": "仅：show_fixed_panel, show_fixed_panel_wait_close",
+      "description": "当包含子项时，第一级节点作为分组，第二级节点作为按钮。"
+    },
+    {
+      "key": "selectGroup",
+      "name": "选择标签分组",
+      "type": "Text",
+      "defaultValue": "",
+      "required": false,
+      "variableMode": "UseVarOrInput",
+      "condition": "仅：show_fixed_panel, show_fixed_panel_wait_close",
+      "description": "标签页分组时切换至设定的标签页标题，留空表示默认。"
+    },
+    {
+      "key": "title",
+      "name": "操作窗标题",
+      "type": "Text",
+      "defaultValue": "",
+      "required": true,
+      "variableMode": "UseVarOrInput",
+      "condition": "仅：show_fixed_panel, show_fixed_panel_wait_close",
+      "description": "标题文字，或\"[图标]标题\"格式。"
+    },
+    {
+      "key": "windowId",
+      "name": "窗口标识",
+      "type": "Text",
+      "defaultValue": "",
+      "required": true,
+      "variableMode": "UseVarOrInput",
+      "condition": "",
+      "description": "如需单独的步骤关闭窗口，需使用标识查找窗口。可使用\"=\"表示当前动作ID。"
+    },
+    {
+      "key": "winLocation",
+      "name": "窗口位置",
+      "type": "Enum",
+      "defaultValue": "CenterScreen",
+      "required": false,
+      "variableMode": "UseVarOrInput",
+      "condition": "仅：show_fixed_panel, show_fixed_panel_wait_close",
+      "description": "在哪里显示选择窗口"
+    },
+    {
+      "key": "winSize",
+      "name": "窗口尺寸/位置",
+      "type": "Text",
+      "defaultValue": "",
+      "required": false,
+      "variableMode": "Input",
+      "condition": "仅：show_fixed_panel, show_fixed_panel_wait_close",
+      "description": "设置选择窗口的最大尺寸，格式为：宽度,高度。支持像素数值或屏幕宽高百分比，详情请参考模块文档。\n\"窗口位置\" 类型为 \"自定义位置\" 时用于指定显示位置，格式为：left,top,right,bottom"
+    },
+    {
+      "key": "horzAlign",
+      "name": "按钮内容对齐方式",
+      "type": "Enum",
+      "defaultValue": "Center",
+      "required": false,
+      "variableMode": "UseVarOrInput",
+      "condition": "仅：show_fixed_panel, show_fixed_panel_wait_close",
+      "description": ""
+    },
+    {
+      "key": "bgColor",
+      "name": "背景颜色",
+      "type": "Text",
+      "defaultValue": "",
+      "required": true,
+      "variableMode": "UseVarOrInput",
+      "condition": "仅：show_fixed_panel, show_fixed_panel_wait_close",
+      "description": ""
+    },
+    {
+      "key": "btnColor",
+      "name": "按钮颜色",
+      "type": "Text",
+      "defaultValue": "",
+      "required": false,
+      "variableMode": "UseVarOrInput",
+      "condition": "仅：show_fixed_panel, show_fixed_panel_wait_close",
+      "description": ""
+    },
+    {
+      "key": "btnBorderColor",
+      "name": "按钮边框颜色",
+      "type": "Text",
+      "defaultValue": "",
+      "required": false,
+      "variableMode": "UseVarOrInput",
+      "condition": "仅：show_fixed_panel, show_fixed_panel_wait_close",
+      "description": ""
+    },
+    {
+      "key": "fontColor",
+      "name": "字体颜色",
+      "type": "Text",
+      "defaultValue": "",
+      "required": false,
+      "variableMode": "UseVarOrInput",
+      "condition": "仅：show_fixed_panel, show_fixed_panel_wait_close",
+      "description": ""
+    },
+    {
+      "key": "fontsize",
+      "name": "字体大小",
+      "type": "Number",
+      "defaultValue": "12",
+      "required": true,
+      "variableMode": "UseVarOrInput",
+      "condition": "仅：show_fixed_panel, show_fixed_panel_wait_close",
+      "description": ""
+    },
+    {
+      "key": "iconsize",
+      "name": "图标大小",
+      "type": "Number",
+      "defaultValue": "16",
+      "required": true,
+      "variableMode": "UseVarOrInput",
+      "condition": "仅：show_fixed_panel, show_fixed_panel_wait_close",
+      "description": "图标的宽度/高度像素数"
+    },
+    {
+      "key": "contextMenuData",
+      "name": "窗口右键菜单",
+      "type": "Text",
+      "defaultValue": "",
+      "required": true,
+      "variableMode": "UseVarOrInput",
+      "condition": "仅：show_fixed_panel, show_fixed_panel_wait_close",
+      "description": "可以为Json/菜单文本格式/IList<CommonOperationItem>对象，详情请参考文档"
+    },
+    {
+      "key": "buttonContextMenuData",
+      "name": "默认的按钮右键菜单",
+      "type": "Text",
+      "defaultValue": "",
+      "required": true,
+      "variableMode": "UseVarOrInput",
+      "condition": "仅：show_fixed_panel, show_fixed_panel_wait_close",
+      "description": "可以为Json/菜单文本格式/IList<CommonOperationItem>对象，详情请参考文档"
+    },
+    {
+      "key": "bindProc",
+      "name": "自动关联到进程",
+      "type": "Enum",
+      "defaultValue": "",
+      "required": true,
+      "variableMode": "UseVarOrInput",
+      "condition": "仅：show_fixed_panel, show_fixed_panel_wait_close",
+      "description": "要关联的进程名称，输入\"-\"禁用此功能。当该进程为前台时显示操作窗，否则自动隐藏。"
+    },
+    {
+      "key": "autoCollapse",
+      "name": "自动折叠",
+      "type": "Enum",
+      "defaultValue": "0",
+      "required": false,
+      "variableMode": "Input",
+      "condition": "仅：show_fixed_panel, show_fixed_panel_wait_close",
+      "description": ""
+    },
+    {
+      "key": "saveState",
+      "name": "记忆位置等状态",
+      "type": "Boolean",
+      "defaultValue": "true",
+      "required": false,
+      "variableMode": "Input",
+      "condition": "仅：show_fixed_panel, show_fixed_panel_wait_close",
+      "description": "多次使用操作窗时，保持上一次所在位置和分组"
+    },
+    {
+      "key": "stopIfFail",
+      "name": "失败后停止",
+      "type": "Boolean",
+      "defaultValue": "true",
+      "required": false,
+      "variableMode": "Input",
+      "condition": "",
+      "description": "失败后是否停止动作"
+    }
+  ],
+  "outputs": [
+    {
+      "key": "isSuccess",
+      "name": "是否成功",
+      "type": "Boolean",
+      "condition": "",
+      "description": "操作是否成功"
+    },
+    {
+      "key": "selectedItemData",
+      "name": "选择的操作项数据",
+      "type": "Text",
+      "condition": "仅：show_fixed_panel_wait_close",
+      "description": "选择的操作项的data属性数据"
+    },
+    {
+      "key": "selectedItem",
+      "name": "选择的操作项",
+      "type": "Object",
+      "condition": "仅：show_fixed_panel_wait_close",
+      "description": "选择的操作项的CommonOperationItem对象"
+    },
+    {
+      "key": "currentGroup",
+      "name": "当前标签分组",
+      "type": "Object",
+      "condition": "仅：show_fixed_panel_wait_close, get_panel_info",
+      "description": "当使用标签分组显示时，关闭窗口时所停留的标签分组名称。"
+    },
+    {
+      "key": "buttonItemData",
+      "name": "按钮操作项数据",
+      "type": "Text",
+      "condition": "仅：show_fixed_panel_wait_close",
+      "description": "点击的是按钮的菜单时，所对应按钮的操作项Data数据"
+    },
+    {
+      "key": "buttonItem",
+      "name": "按钮操作项",
+      "type": "Object",
+      "condition": "仅：show_fixed_panel_wait_close",
+      "description": "点击的是按钮的菜单时，所对应按钮的CommonOperationItem对象"
+    },
+    {
+      "key": "winHandle",
+      "name": "窗口句柄",
+      "type": "Integer",
+      "condition": "仅：show_fixed_panel, get_panel_info",
+      "description": "操作窗的窗口句柄"
+    },
+    {
+      "key": "isWindowExpanded",
+      "name": "窗口是否展开",
+      "type": "Boolean",
+      "condition": "仅：get_panel_info",
+      "description": ""
+    },
+    {
+      "key": "isWindowVisible",
+      "name": "窗口是否可见",
+      "type": "Boolean",
+      "condition": "仅：get_panel_info",
+      "description": "可能会因为关联进程而隐藏"
+    }
+  ],
+  "selections": {
+    "operation": {
+      "name": "操作类型",
+      "items": [
+        {
+          "value": "show_fixed_panel",
+          "name": "显示操作窗",
+          "description": ""
+        },
+        {
+          "value": "show_fixed_panel_wait_close",
+          "name": "显示操作窗并等待关闭",
+          "description": ""
+        },
+        {
+          "value": "close_fixed_panel",
+          "name": "关闭操作窗",
+          "description": ""
+        },
+        {
+          "value": "toggle_collapse",
+          "name": "切换展开状态",
+          "description": ""
+        },
+        {
+          "value": "get_panel_info",
+          "name": "获取操作窗状态",
+          "description": ""
+        }
+      ]
+    },
+    "defaultOperation": {
+      "name": "默认Operation",
+      "items": [
+        {
+          "value": "copy",
+          "name": "复制",
+          "description": ""
+        },
+        {
+          "value": "paste",
+          "name": "粘贴",
+          "description": ""
+        },
+        {
+          "value": "pastefile",
+          "name": "粘贴文件",
+          "description": ""
+        },
+        {
+          "value": "pasteimage",
+          "name": "粘贴图片",
+          "description": ""
+        },
+        {
+          "value": "inputtext",
+          "name": "键入文本",
+          "description": ""
+        },
+        {
+          "value": "run",
+          "name": "执行命令",
+          "description": ""
+        },
+        {
+          "value": "sendkeys",
+          "name": "模拟按键B",
+          "description": ""
+        },
+        {
+          "value": "action",
+          "name": "执行动作",
+          "description": ""
+        },
+        {
+          "value": "selectfile",
+          "name": "定位文件",
+          "description": ""
+        },
+        {
+          "value": "inputscript",
+          "name": "多步骤输入",
+          "description": ""
+        },
+        {
+          "value": "sp",
+          "name": "执行子程序",
+          "description": ""
+        }
+      ]
+    },
+    "groupMode": {
+      "name": "分组方式",
+      "items": [
+        {
+          "value": "heading",
+          "name": "标题分组",
+          "description": ""
+        },
+        {
+          "value": "expander",
+          "name": "可折叠的分组",
+          "description": ""
+        },
+        {
+          "value": "tab-top",
+          "name": "标签页-顶部",
+          "description": ""
+        },
+        {
+          "value": "tab-left",
+          "name": "标签页-左侧",
+          "description": ""
+        },
+        {
+          "value": "tab-right",
+          "name": "标签页-右侧",
+          "description": ""
+        },
+        {
+          "value": "tab-bottom",
+          "name": "标签页-底部",
+          "description": ""
+        },
+        {
+          "value": "headingLeft",
+          "name": "多行",
+          "description": ""
+        },
+        {
+          "value": "columns",
+          "name": "多列",
+          "description": ""
+        },
+        {
+          "value": "none",
+          "name": "不分组",
+          "description": ""
+        }
+      ]
+    },
+    "winLocation": {
+      "name": "窗口位置",
+      "items": [
+        {
+          "value": "WithMouse1",
+          "name": "跟随鼠标（指针周围）",
+          "description": ""
+        },
+        {
+          "value": "WithMouse2",
+          "name": "跟随鼠标（指针右下）",
+          "description": ""
+        },
+        {
+          "value": "CenterScreen",
+          "name": "屏幕中间",
+          "description": ""
+        },
+        {
+          "value": "TopLeft",
+          "name": "屏幕左上",
+          "description": ""
+        },
+        {
+          "value": "TopCenter",
+          "name": "屏幕中上",
+          "description": ""
+        },
+        {
+          "value": "TopRight",
+          "name": "屏幕右上",
+          "description": ""
+        },
+        {
+          "value": "LeftCenter",
+          "name": "屏幕左中",
+          "description": ""
+        },
+        {
+          "value": "RightCenter",
+          "name": "屏幕右中",
+          "description": ""
+        },
+        {
+          "value": "BottomLeft",
+          "name": "屏幕左下",
+          "description": ""
+        },
+        {
+          "value": "BottomCenter",
+          "name": "屏幕中下",
+          "description": ""
+        },
+        {
+          "value": "BottomRight",
+          "name": "屏幕右下",
+          "description": ""
+        },
+        {
+          "value": "FullScreen",
+          "name": "全屏",
+          "description": ""
+        },
+        {
+          "value": "Maximized",
+          "name": "最大化",
+          "description": ""
+        },
+        {
+          "value": "Manual",
+          "name": "自定义位置",
+          "description": ""
+        },
+        {
+          "value": "Auto",
+          "name": "系统默认",
+          "description": ""
+        }
+      ]
+    },
+    "horzAlign": {
+      "name": "按钮内容对齐方式",
+      "items": [
+        {
+          "value": "Center",
+          "name": "居中",
+          "description": ""
+        },
+        {
+          "value": "Left",
+          "name": "左侧",
+          "description": ""
+        },
+        {
+          "value": "Right",
+          "name": "右侧",
+          "description": ""
+        }
+      ]
+    },
+    "bindProc": {
+      "name": "自动关联到进程",
+      "items": [
+        {
+          "value": "-",
+          "name": "禁用此功能",
+          "description": ""
+        }
+      ]
+    },
+    "autoCollapse": {
+      "name": "自动折叠",
+      "items": [
+        {
+          "value": "0",
+          "name": "关闭",
+          "description": ""
+        },
+        {
+          "value": "1",
+          "name": "开启",
+          "description": ""
+        },
+        {
+          "value": "-1",
+          "name": "禁用此功能",
+          "description": ""
+        }
+      ]
+    }
+  },
+  "sourceFileName": "sys_custompanel_自定义操作窗.md"
+}

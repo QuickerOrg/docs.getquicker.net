@@ -1,0 +1,236 @@
+{
+  "key": "sys:getSysInfo",
+  "slug": "getsysinfo",
+  "legacySlug": "getsysinfo",
+  "ownsLegacyContent": true,
+  "name": "获取系统或动作信息",
+  "description": "获取系统、Quicker 及当前运行动作的相关信息。",
+  "category": "System",
+  "categoryName": "Windows系统",
+  "stepType": "Action",
+  "isRisky": false,
+  "isProOnly": false,
+  "helpLink": "https://getquicker.net/KC/Help/Doc/getsysinfo",
+  "inputs": [],
+  "outputs": [
+    {
+      "key": "MachineName",
+      "name": "机器名",
+      "type": "Text",
+      "condition": "",
+      "description": ""
+    },
+    {
+      "key": "OsVersion",
+      "name": "系统版本号",
+      "type": "Text",
+      "condition": "",
+      "description": ""
+    },
+    {
+      "key": "isWin10",
+      "name": "是否为Win10或以上",
+      "type": "Boolean",
+      "condition": "",
+      "description": ""
+    },
+    {
+      "key": "isWin11",
+      "name": "是否为Win11",
+      "type": "Boolean",
+      "condition": "",
+      "description": ""
+    },
+    {
+      "key": "isAutoRun",
+      "name": "是否自动启动",
+      "type": "Boolean",
+      "condition": "",
+      "description": "是否开机自动启动Quicker"
+    },
+    {
+      "key": "startupSeconds",
+      "name": "系统正常运行秒数",
+      "type": "Number",
+      "condition": "",
+      "description": "可参考任务管理器中显示的正常运行时间。"
+    },
+    {
+      "key": "isLocked",
+      "name": "Windows是否锁定",
+      "type": "Boolean",
+      "condition": "",
+      "description": ""
+    },
+    {
+      "key": "userName",
+      "name": "用户名",
+      "type": "Text",
+      "condition": "",
+      "description": "当前登录到电脑的用户名"
+    },
+    {
+      "key": "userDomainName",
+      "name": "用户域名",
+      "type": "Text",
+      "condition": "",
+      "description": "当前用户的网络域名（DomainName）"
+    },
+    {
+      "key": "sysEnv",
+      "name": "环境变量",
+      "type": "Dict",
+      "condition": "",
+      "description": ""
+    },
+    {
+      "key": "primaryScreenRes",
+      "name": "主屏分辨率",
+      "type": "Text",
+      "condition": "",
+      "description": ""
+    },
+    {
+      "key": "isFullscreen",
+      "name": "前台窗口是否为全屏状态",
+      "type": "Boolean",
+      "condition": "",
+      "description": ""
+    },
+    {
+      "key": "isNetworkConnected",
+      "name": "是否联网",
+      "type": "Boolean",
+      "condition": "",
+      "description": ""
+    },
+    {
+      "key": "lanIp",
+      "name": "本机局域网IP",
+      "type": "Text",
+      "condition": "",
+      "description": ""
+    },
+    {
+      "key": "quickerVersion",
+      "name": "Quicker版本",
+      "type": "Integer",
+      "condition": "",
+      "description": ""
+    },
+    {
+      "key": "runnedSeconds",
+      "name": "Quicker启动秒数",
+      "type": "Number",
+      "condition": "",
+      "description": "Quicker启动后运行的秒数"
+    },
+    {
+      "key": "actionId",
+      "name": "动作ID",
+      "type": "Text",
+      "condition": "",
+      "description": "当前运行的动作ID"
+    },
+    {
+      "key": "actionName",
+      "name": "动作名称",
+      "type": "Text",
+      "condition": "",
+      "description": "当前运行的动作名称"
+    },
+    {
+      "key": "sharedActionId",
+      "name": "动作库ID",
+      "type": "Text",
+      "condition": "",
+      "description": "当前动作的动作库ID"
+    },
+    {
+      "key": "sharedActionRevision",
+      "name": "动作版本号",
+      "type": "Integer",
+      "condition": "",
+      "description": "当前安装的动作版本"
+    },
+    {
+      "key": "actionCount",
+      "name": "运行个数",
+      "type": "Integer",
+      "condition": "",
+      "description": "当前动作运行中的实例个数(包含此实例)"
+    },
+    {
+      "key": "isDebugging",
+      "name": "是否调试运行",
+      "type": "Boolean",
+      "condition": "",
+      "description": "是否正在调试运行动作"
+    },
+    {
+      "key": "trigger",
+      "name": "触发方式",
+      "type": "Text",
+      "condition": "",
+      "description": "动作的触发方式"
+    },
+    {
+      "key": "textParam",
+      "name": "文本上下文参数",
+      "type": "Text",
+      "condition": "",
+      "description": "传入动作的文本上下文参数"
+    },
+    {
+      "key": "imageParam",
+      "name": "图片上下文参数",
+      "type": "Image",
+      "condition": "",
+      "description": "传入动作的图片上下文参数"
+    },
+    {
+      "key": "isPro",
+      "name": "是否为专业版",
+      "type": "Boolean",
+      "condition": "",
+      "description": "当前用户是否使用专业版软件。"
+    },
+    {
+      "key": "unionId",
+      "name": "UnionId",
+      "type": "Text",
+      "condition": "",
+      "description": "一个标识用户身份的字符串"
+    },
+    {
+      "key": "hasBaiduAccount",
+      "name": "已设置自有百度OCR帐号",
+      "type": "Boolean",
+      "condition": "",
+      "description": "已经在设置中添加了自有百度OCR帐号。"
+    },
+    {
+      "key": "isWinInDarkMode",
+      "name": "Windows是否为深色模式",
+      "type": "Boolean",
+      "condition": "",
+      "description": "true表示深色模式，false表示浅色模式。"
+    },
+    {
+      "key": "quickerThemeMode",
+      "name": "Quicker主题模式",
+      "type": "Text",
+      "condition": "",
+      "description": "可能为：light/dark/auto_light/auto_dark。auto_light/auto_dark表示为跟随windows，当前为浅色或深色模式。"
+    },
+    {
+      "key": "isPaused",
+      "name": "Quicker是否暂停",
+      "type": "Boolean",
+      "condition": "",
+      "description": "Quicker是否处于暂停状态。true表示已暂停，false表示正常运行。"
+    }
+  ],
+  "selections": {},
+  "sourceFileName": "sys_getSysInfo_获取系统或动作信息.md"
+}

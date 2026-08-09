@@ -1,0 +1,173 @@
+{
+  "key": "sys:WriteTextFile",
+  "slug": "writetextfile",
+  "legacySlug": "writetextfile",
+  "ownsLegacyContent": true,
+  "name": "写入文本文件",
+  "description": "将内容写入文本文件",
+  "category": "Files",
+  "categoryName": "系统操作",
+  "stepType": "Action",
+  "isRisky": false,
+  "isProOnly": false,
+  "helpLink": "https://getquicker.net/KC/Help/Doc/writetextfile",
+  "inputs": [
+    {
+      "key": "content",
+      "name": "内容",
+      "type": "Text",
+      "defaultValue": "",
+      "required": true,
+      "variableMode": "UseVarOrInput",
+      "condition": "",
+      "description": "要写入文件的内容"
+    },
+    {
+      "key": "filePath",
+      "name": "文件路径",
+      "type": "Text",
+      "defaultValue": "",
+      "required": true,
+      "variableMode": "UseVarOrInput",
+      "condition": "",
+      "description": "要写入的完整文件路径（包含文件名）"
+    },
+    {
+      "key": "encoding",
+      "name": "文件编码",
+      "type": "Enum",
+      "defaultValue": "utf-8",
+      "required": true,
+      "variableMode": "Input",
+      "condition": "",
+      "description": "写入文件的编码格式"
+    },
+    {
+      "key": "addUtf8Bom",
+      "name": "添加UTF-BOM",
+      "type": "Boolean",
+      "defaultValue": "false",
+      "required": false,
+      "variableMode": "Input",
+      "condition": "",
+      "description": "UTF8编码文件是否写入BOM标记"
+    },
+    {
+      "key": "appendMode",
+      "name": "添加到文件末尾",
+      "type": "Boolean",
+      "defaultValue": "false",
+      "required": false,
+      "variableMode": "Input",
+      "condition": "",
+      "description": "如果文件已存在，则添加到文件的末尾"
+    },
+    {
+      "key": "addNewLine",
+      "name": "添加空行",
+      "type": "Boolean",
+      "defaultValue": "false",
+      "required": false,
+      "variableMode": "Input",
+      "condition": "",
+      "description": "在文件末尾添加空行"
+    },
+    {
+      "key": "newLineChars",
+      "name": "统一换行字符",
+      "type": "Enum",
+      "defaultValue": "",
+      "required": true,
+      "variableMode": "Input",
+      "condition": "",
+      "description": ""
+    },
+    {
+      "key": "stopIfFail",
+      "name": "失败后停止",
+      "type": "Boolean",
+      "defaultValue": "true",
+      "required": false,
+      "variableMode": "Input",
+      "condition": "",
+      "description": "失败后是否停止动作"
+    }
+  ],
+  "outputs": [
+    {
+      "key": "isSuccess",
+      "name": "是否成功",
+      "type": "Boolean",
+      "condition": "",
+      "description": "操作是否成功"
+    }
+  ],
+  "selections": {
+    "encoding": {
+      "name": "文件编码",
+      "items": [
+        {
+          "value": "utf-8",
+          "name": "UTF8",
+          "description": ""
+        },
+        {
+          "value": "utf-16",
+          "name": "UTF-16 LE",
+          "description": ""
+        },
+        {
+          "value": "utf-16BE",
+          "name": "UTF-16 BE",
+          "description": ""
+        },
+        {
+          "value": "us-ascii",
+          "name": "ASCII",
+          "description": ""
+        },
+        {
+          "value": "utf-7",
+          "name": "UTF7",
+          "description": ""
+        },
+        {
+          "value": "utf-32",
+          "name": "UTF32",
+          "description": ""
+        },
+        {
+          "value": "default",
+          "name": "系统默认(gb2312)",
+          "description": ""
+        }
+      ]
+    },
+    "newLineChars": {
+      "name": "统一换行字符",
+      "items": [
+        {
+          "value": "",
+          "name": "默认（不处理）",
+          "description": ""
+        },
+        {
+          "value": "",
+          "name": "\\r\\n",
+          "description": "Windows"
+        },
+        {
+          "value": "",
+          "name": "\\r",
+          "description": "(Mac)"
+        },
+        {
+          "value": "",
+          "name": "\\n",
+          "description": "(Linux)"
+        }
+      ]
+    }
+  },
+  "sourceFileName": "sys_WriteTextFile_写入文本文件.md"
+}

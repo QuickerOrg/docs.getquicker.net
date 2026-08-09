@@ -1,0 +1,337 @@
+{
+  "key": "sys:form",
+  "slug": "form",
+  "legacySlug": "form",
+  "ownsLegacyContent": true,
+  "name": "多字段表单",
+  "description": "使用表单窗口编辑多个变量的值。",
+  "category": "Ui",
+  "categoryName": "界面组件",
+  "stepType": "Action",
+  "isRisky": false,
+  "isProOnly": false,
+  "helpLink": "https://getquicker.net/KC/Help/Doc/form",
+  "inputs": [
+    {
+      "key": "operation",
+      "name": "工作模式",
+      "type": "Enum",
+      "defaultValue": "variables",
+      "required": true,
+      "variableMode": "Input",
+      "condition": "",
+      "description": "工作模式：编辑某个词典的值，或编辑一些变量的值"
+    },
+    {
+      "key": "dictVar",
+      "name": "词典变量",
+      "type": "Dict",
+      "defaultValue": "",
+      "required": false,
+      "variableMode": "UseVarOnly",
+      "condition": "仅：dict, dict_dynamic",
+      "description": "表单需要编辑的词典变量"
+    },
+    {
+      "key": "title",
+      "name": "窗口标题",
+      "type": "Text",
+      "defaultValue": "填写表单",
+      "required": true,
+      "variableMode": "UseVarOrInput",
+      "condition": "",
+      "description": "表单窗口标题文字"
+    },
+    {
+      "key": "formDef",
+      "name": "表单定义",
+      "type": "Form",
+      "defaultValue": "",
+      "required": true,
+      "variableMode": "Input",
+      "condition": "仅：variables",
+      "description": ""
+    },
+    {
+      "key": "formForDictDef",
+      "name": "表单定义(词典)",
+      "type": "FormForDict",
+      "defaultValue": "",
+      "required": true,
+      "variableMode": "Input",
+      "condition": "仅：dict",
+      "description": ""
+    },
+    {
+      "key": "dynamicFormForDictDef",
+      "name": "表单定义(词典)",
+      "type": "Text",
+      "defaultValue": "",
+      "required": true,
+      "variableMode": "UseVarOrInput",
+      "condition": "仅：dict_dynamic",
+      "description": "JSON格式的表单定义数据。格式说明请参考模块文档。"
+    },
+    {
+      "key": "help",
+      "name": "提示文字",
+      "type": "Text",
+      "defaultValue": "",
+      "required": false,
+      "variableMode": "UseVarOrInput",
+      "condition": "",
+      "description": "帮助用户填写表单的提示文字。"
+    },
+    {
+      "key": "titleColumnWidth",
+      "name": "标题列宽度",
+      "type": "Number",
+      "defaultValue": "100",
+      "required": false,
+      "variableMode": "UseVarOrInput",
+      "condition": "",
+      "description": "左侧字段标题区域的宽度(逻辑像素)。负值，如-200表示自适应列宽且最大宽度为200。"
+    },
+    {
+      "key": "windowWidth",
+      "name": "窗口宽度",
+      "type": "Number",
+      "defaultValue": "500",
+      "required": true,
+      "variableMode": "UseVarOrInput",
+      "condition": "",
+      "description": "逻辑像素，最小400。"
+    },
+    {
+      "key": "defaultInputWidth",
+      "name": "输入框默认宽度",
+      "type": "Number",
+      "defaultValue": "0",
+      "required": true,
+      "variableMode": "UseVarOrInput",
+      "condition": "",
+      "description": "逻辑像素，0表示自动宽度。"
+    },
+    {
+      "key": "windowHeight",
+      "name": "窗口最大高度",
+      "type": "Number",
+      "defaultValue": "0",
+      "required": true,
+      "variableMode": "UseVarOrInput",
+      "condition": "",
+      "description": "逻辑像素，0表示默认。设置时请填写大于100的值。"
+    },
+    {
+      "key": "topMost",
+      "name": "置顶显示",
+      "type": "Boolean",
+      "defaultValue": "false",
+      "required": false,
+      "variableMode": "UseVarOrInput",
+      "condition": "",
+      "description": ""
+    },
+    {
+      "key": "restoreFocus",
+      "name": "恢复活动窗口",
+      "type": "Boolean",
+      "defaultValue": "false",
+      "required": false,
+      "variableMode": "Input",
+      "condition": "",
+      "description": "用户输入后，是否将焦点还原到之前的活动窗口"
+    },
+    {
+      "key": "markdownhelp",
+      "name": "帮助按钮内容",
+      "type": "Text",
+      "defaultValue": "",
+      "required": false,
+      "variableMode": "Input",
+      "condition": "",
+      "description": "点击弹出显示帮助内容，MarkDown格式。"
+    },
+    {
+      "key": "confirm",
+      "name": "自定义“确定”按钮标题",
+      "type": "Text",
+      "defaultValue": "",
+      "required": false,
+      "variableMode": "Input",
+      "condition": "",
+      "description": "仅在需要时填写。使用\"_字符\"的形式定义触发字符,如\"_S\"表示Alt+S可直接触发按钮"
+    },
+    {
+      "key": "customButtons",
+      "name": "自定义按钮",
+      "type": "Text",
+      "defaultValue": "",
+      "required": false,
+      "variableMode": "Input",
+      "condition": "",
+      "description": "使用\"标题|返回值\"的形式定义按钮，多个按钮用换行分隔。"
+    },
+    {
+      "key": "selectedGroup",
+      "name": "选择的分组",
+      "type": "Text",
+      "defaultValue": "",
+      "required": false,
+      "variableMode": "Input",
+      "condition": "",
+      "description": "使用分组标签页时，默认选择的分组。"
+    },
+    {
+      "key": "disableEnterSubmit",
+      "name": "关闭Enter提交表单功能",
+      "type": "Boolean",
+      "defaultValue": "false",
+      "required": false,
+      "variableMode": "Input",
+      "condition": "",
+      "description": ""
+    },
+    {
+      "key": "winLocation",
+      "name": "窗口位置类型",
+      "type": "Enum",
+      "defaultValue": "CenterScreen",
+      "required": false,
+      "variableMode": "UseVarOrInput",
+      "condition": "",
+      "description": "在哪里显示选择窗口"
+    },
+    {
+      "key": "winSize",
+      "name": "位置",
+      "type": "Text",
+      "defaultValue": "",
+      "required": false,
+      "variableMode": "Input",
+      "condition": "",
+      "description": "当 \"窗口位置\" 类型为 \"自定义位置\" 时用于指定显示位置，格式为：left,top,right,bottom"
+    },
+    {
+      "key": "stopIfFail",
+      "name": "取消后停止",
+      "type": "Boolean",
+      "defaultValue": "true",
+      "required": false,
+      "variableMode": "Input",
+      "condition": "",
+      "description": "取消后是否停止动作"
+    }
+  ],
+  "outputs": [
+    {
+      "key": "isSuccess",
+      "name": "是否成功",
+      "type": "Boolean",
+      "condition": "",
+      "description": "操作是否成功"
+    },
+    {
+      "key": "button",
+      "name": "点击的按钮",
+      "type": "Text",
+      "condition": "",
+      "description": "默认的确认按钮返回值为空，自定义按钮返回值为自定义的值。"
+    },
+    {
+      "key": "selectedGroup",
+      "name": "选择的分组",
+      "type": "Text",
+      "condition": "",
+      "description": "关闭时所选择的标签页分组。"
+    }
+  ],
+  "selections": {
+    "operation": {
+      "name": "工作模式",
+      "items": [
+        {
+          "value": "variables",
+          "name": "编辑动作变量的值",
+          "description": ""
+        },
+        {
+          "value": "dict",
+          "name": "编辑词典数据",
+          "description": ""
+        },
+        {
+          "value": "dict_dynamic",
+          "name": "编辑词典数据（动态）",
+          "description": ""
+        }
+      ]
+    },
+    "winLocation": {
+      "name": "窗口位置类型",
+      "items": [
+        {
+          "value": "WithMouse1",
+          "name": "跟随鼠标（指针周围）",
+          "description": ""
+        },
+        {
+          "value": "WithMouse2",
+          "name": "跟随鼠标（指针右下）",
+          "description": ""
+        },
+        {
+          "value": "CenterScreen",
+          "name": "屏幕中间",
+          "description": ""
+        },
+        {
+          "value": "TopLeft",
+          "name": "屏幕左上",
+          "description": ""
+        },
+        {
+          "value": "TopCenter",
+          "name": "屏幕中上",
+          "description": ""
+        },
+        {
+          "value": "TopRight",
+          "name": "屏幕右上",
+          "description": ""
+        },
+        {
+          "value": "LeftCenter",
+          "name": "屏幕左中",
+          "description": ""
+        },
+        {
+          "value": "RightCenter",
+          "name": "屏幕右中",
+          "description": ""
+        },
+        {
+          "value": "BottomLeft",
+          "name": "屏幕左下",
+          "description": ""
+        },
+        {
+          "value": "BottomCenter",
+          "name": "屏幕中下",
+          "description": ""
+        },
+        {
+          "value": "BottomRight",
+          "name": "屏幕右下",
+          "description": ""
+        },
+        {
+          "value": "Manual",
+          "name": "自定义位置",
+          "description": ""
+        }
+      ]
+    }
+  },
+  "sourceFileName": "sys_form_多字段表单.md"
+}

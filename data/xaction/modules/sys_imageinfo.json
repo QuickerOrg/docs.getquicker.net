@@ -1,0 +1,142 @@
+{
+  "key": "sys:imageinfo",
+  "slug": "imageinfo",
+  "legacySlug": "imageinfo",
+  "ownsLegacyContent": true,
+  "name": "读取图片信息",
+  "description": "获取图片的尺寸或exif信息",
+  "category": "Image",
+  "categoryName": "图片处理",
+  "stepType": "Action",
+  "isRisky": false,
+  "isProOnly": false,
+  "helpLink": "https://getquicker.net/KC/Help/Doc/imageinfo",
+  "inputs": [
+    {
+      "key": "sourceType",
+      "name": "图片来源",
+      "type": "Enum",
+      "defaultValue": "var",
+      "required": true,
+      "variableMode": "Input",
+      "condition": "",
+      "description": ""
+    },
+    {
+      "key": "bmpFile",
+      "name": "文件路径",
+      "type": "Text",
+      "defaultValue": "",
+      "required": true,
+      "variableMode": "UseVarOrInput",
+      "condition": "仅：file",
+      "description": "图片文件的完整路径"
+    },
+    {
+      "key": "bmpVar",
+      "name": "图片变量",
+      "type": "Image",
+      "defaultValue": "",
+      "required": true,
+      "variableMode": "UseVar",
+      "condition": "仅：var",
+      "description": ""
+    },
+    {
+      "key": "autoRotate",
+      "name": "计算旋转后的宽高",
+      "type": "Boolean",
+      "defaultValue": "false",
+      "required": false,
+      "variableMode": "Input",
+      "condition": "",
+      "description": "如果Exif中包含旋转角度信息，则获取旋转后的宽高"
+    },
+    {
+      "key": "stopIfFail",
+      "name": "失败后停止",
+      "type": "Boolean",
+      "defaultValue": "true",
+      "required": false,
+      "variableMode": "Input",
+      "condition": "",
+      "description": "失败后是否停止动作"
+    }
+  ],
+  "outputs": [
+    {
+      "key": "isSuccess",
+      "name": "是否成功",
+      "type": "Boolean",
+      "condition": "",
+      "description": "操作是否成功"
+    },
+    {
+      "key": "width",
+      "name": "宽度",
+      "type": "Integer",
+      "condition": "",
+      "description": ""
+    },
+    {
+      "key": "height",
+      "name": "高度",
+      "type": "Integer",
+      "condition": "",
+      "description": ""
+    },
+    {
+      "key": "rotateDegree",
+      "name": "旋转角度",
+      "type": "Integer",
+      "condition": "",
+      "description": ""
+    },
+    {
+      "key": "dateTimeOriginal",
+      "name": "拍摄时间",
+      "type": "DateTime",
+      "condition": "",
+      "description": ""
+    },
+    {
+      "key": "exifData",
+      "name": "Exif数据",
+      "type": "Dict",
+      "condition": "",
+      "description": "转换为文本格式的exif数据（词典格式，请参考模块文档）"
+    },
+    {
+      "key": "rawExifData",
+      "name": "原始属性数据",
+      "type": "Dict",
+      "condition": "",
+      "description": "原始Exif数据(词典格式，请参考模块文档)"
+    },
+    {
+      "key": "fileTypeFromData",
+      "name": "内容图片格式",
+      "type": "Text",
+      "condition": "仅：file",
+      "description": "根据文件内容判断的文件格式（可能不准确），用于在无法根据扩展名得到图片格式的情况下使用。"
+    }
+  ],
+  "selections": {
+    "sourceType": {
+      "name": "图片来源",
+      "items": [
+        {
+          "value": "var",
+          "name": "图片变量",
+          "description": ""
+        },
+        {
+          "value": "file",
+          "name": "图片文件",
+          "description": ""
+        }
+      ]
+    }
+  },
+  "sourceFileName": "sys_imageinfo_读取图片信息.md"
+}

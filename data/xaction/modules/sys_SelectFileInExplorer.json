@@ -1,0 +1,47 @@
+{
+  "key": "sys:SelectFileInExplorer",
+  "slug": "selectfileinexplorer",
+  "legacySlug": "selectfileinexplorer",
+  "ownsLegacyContent": true,
+  "name": "在资源管理器中定位文件",
+  "description": "在资源管理器中选中文件",
+  "category": "System",
+  "categoryName": "Windows系统",
+  "stepType": "Action",
+  "isRisky": false,
+  "isProOnly": false,
+  "helpLink": "https://getquicker.net/KC/Help/Doc/selectfileinexplorer",
+  "inputs": [
+    {
+      "key": "path",
+      "name": "路径",
+      "type": "Text",
+      "defaultValue": "",
+      "required": true,
+      "variableMode": "UseVarOrInput",
+      "condition": "",
+      "description": "要定位的文件完整路径。"
+    },
+    {
+      "key": "stopIfFail",
+      "name": "失败后停止",
+      "type": "Boolean",
+      "defaultValue": "true",
+      "required": false,
+      "variableMode": "Input",
+      "condition": "",
+      "description": "失败后是否停止动作"
+    }
+  ],
+  "outputs": [
+    {
+      "key": "isSuccess",
+      "name": "是否成功",
+      "type": "Boolean",
+      "condition": "",
+      "description": "操作是否成功"
+    }
+  ],
+  "selections": {},
+  "sourceFileName": "sys_SelectFileInExplorer_在资源管理器中定位文件.md"
+}

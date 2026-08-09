@@ -1,0 +1,110 @@
+{
+  "key": "sys:screenCapturePro",
+  "slug": "screen-capture-pro",
+  "legacySlug": "screencapture",
+  "ownsLegacyContent": false,
+  "name": "截图 Pro",
+  "description": "渐进式选区截图：全屏 overlay，光标处初始选区，支持控件跟踪，双击确认。Esc 取消。",
+  "category": "Image",
+  "categoryName": "图片处理",
+  "stepType": "Action",
+  "isRisky": false,
+  "isProOnly": false,
+  "helpLink": "https://getquicker.net/KC/Help/Doc/screencapture",
+  "inputs": [
+    {
+      "key": "delay",
+      "name": "截图前延迟时间",
+      "type": "Integer",
+      "defaultValue": "0",
+      "required": true,
+      "variableMode": "UseVarOrInput",
+      "condition": "",
+      "description": "等待多少毫秒后开始截图"
+    },
+    {
+      "key": "toClip",
+      "name": "写入剪贴板",
+      "type": "Boolean",
+      "defaultValue": "false",
+      "required": false,
+      "variableMode": "Input",
+      "condition": "",
+      "description": "截屏图片是否写入到剪贴板中"
+    },
+    {
+      "key": "pinImage",
+      "name": "截图后贴图",
+      "type": "Boolean",
+      "defaultValue": "false",
+      "required": false,
+      "variableMode": "Input",
+      "condition": "",
+      "description": "截图完成后在选区位置显示贴图窗口（浮动显示截取的图片）。保存结束时不贴图。"
+    },
+    {
+      "key": "showToolbarAfterPin",
+      "name": "贴图后显示工具栏",
+      "type": "Boolean",
+      "defaultValue": "false",
+      "required": false,
+      "variableMode": "Input",
+      "condition": "",
+      "description": "贴图窗口打开后是否自动显示标注工具栏。默认关闭（贴图前通常已标注）；需要时可按空格再显示。"
+    },
+    {
+      "key": "autoAdsorb",
+      "name": "自动吸附",
+      "type": "Boolean",
+      "defaultValue": "false",
+      "required": false,
+      "variableMode": "Input",
+      "condition": "",
+      "description": "开启后悬停自动吸附到控件元素；关闭时（默认）仅跟随窗口范围，滚轮再触发 UIA 精细选区。"
+    },
+    {
+      "key": "stopIfFail",
+      "name": "失败后停止",
+      "type": "Boolean",
+      "defaultValue": "true",
+      "required": false,
+      "variableMode": "Input",
+      "condition": "",
+      "description": "失败后是否停止动作"
+    }
+  ],
+  "outputs": [
+    {
+      "key": "isSuccess",
+      "name": "是否成功",
+      "type": "Boolean",
+      "condition": "",
+      "description": "操作是否成功"
+    },
+    {
+      "key": "img",
+      "name": "图片",
+      "type": "Image",
+      "condition": "",
+      "description": "截图的图片"
+    },
+    {
+      "key": "rect",
+      "name": "截图区域",
+      "type": "Text",
+      "condition": "",
+      "description": "图片的截取区域(left,top,right,bottom)。"
+    },
+    {
+      "key": "savedPath",
+      "name": "保存路径",
+      "type": "Text",
+      "condition": "",
+      "description": "用户点击保存并写入磁盘后的文件路径；通过确认按钮结束时为空。"
+    }
+  ],
+  "selections": {},
+  "sharedDocumentationKey": "sys:screenCapture",
+  "sharedDocumentationSlug": "screencapture",
+  "sourceFileName": "sys_screenCapturePro_截图 Pro.md"
+}

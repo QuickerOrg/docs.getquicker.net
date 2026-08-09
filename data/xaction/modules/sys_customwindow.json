@@ -1,0 +1,336 @@
+{
+  "key": "sys:customwindow",
+  "slug": "customwindow",
+  "legacySlug": "customwindow",
+  "ownsLegacyContent": true,
+  "name": "自定义窗口",
+  "description": "创建和显示自定义窗口",
+  "category": "Ui",
+  "categoryName": "界面组件",
+  "stepType": "Action",
+  "isRisky": false,
+  "isProOnly": false,
+  "helpLink": "https://getquicker.net/KC/Help/Doc/customwindow",
+  "inputs": [
+    {
+      "key": "type",
+      "name": "操作类型",
+      "type": "Enum",
+      "defaultValue": "ShowAndWaitClose",
+      "required": true,
+      "variableMode": "Input",
+      "condition": "",
+      "description": ""
+    },
+    {
+      "key": "windowMarkup",
+      "name": "窗口XAML代码",
+      "type": "Text",
+      "defaultValue": "<Window xmlns=\"http://schemas.microsoft.com/winfx/2006/xaml/presentation\"\n        xmlns:d=\"http://schemas.microsoft.com/expression/blend/2008\"\n        xmlns:x=\"http://schemas.microsoft.com/winfx/2006/xaml\"\n        xmlns:hc=\"https://handyorg.github.io/handycontrol\"\n        xmlns:mc=\"http://schemas.openxmlformats.org/markup-compatibility/2006\"\n        xmlns:qk=\"https://getquicker.net\"\n        Width=\"637\"\n        Height=\"556\"\n        Title=\"Test Window\"\n        mc:Ignorable=\"d\">\n  <Grid Margin=\"10\">\n    <StackPanel>\n      <TextBlock Margin=\"10,50,10,50\" Text=\"Hello World！\" FontSize=\"20\" />\n     \n      <Button Margin=\"10\" qk:Att.Action=\"close:result\" Style=\"{StaticResource ButtonPrimary}\" Width=\"50\">\n        关闭\n      </Button>\n    </StackPanel>\n  </Grid>\n</Window>",
+      "required": true,
+      "variableMode": "UseVarOrInput",
+      "condition": "仅：Show, ShowAndWaitClose",
+      "description": "窗口定义XAML代码"
+    },
+    {
+      "key": "dataMapping",
+      "name": "数据映射",
+      "type": "Text",
+      "defaultValue": "",
+      "required": true,
+      "variableMode": "UseVarOrInput",
+      "condition": "仅：Show, ShowAndWaitClose",
+      "description": "将变量与窗口上下文数据进行映射。每行一个，格式为:\"窗口数据项名称:{动作变量名}\" 或 \"窗口数据项:=表达式\""
+    },
+    {
+      "key": "events",
+      "name": "事件",
+      "type": "Text",
+      "defaultValue": "",
+      "required": true,
+      "variableMode": "UseVarOrInput",
+      "condition": "仅：Show, ShowAndWaitClose",
+      "description": "详细说明请参考模块文档"
+    },
+    {
+      "key": "cscode",
+      "name": "辅助C#代码",
+      "type": "Text",
+      "defaultValue": "",
+      "required": false,
+      "variableMode": "UseVarOrInput",
+      "condition": "仅：Show, ShowAndWaitClose",
+      "description": "辅助处理窗口事件的代码，详见文档。"
+    },
+    {
+      "key": "csReference",
+      "name": "辅助C#引用DLL库",
+      "type": "Text",
+      "defaultValue": "",
+      "required": false,
+      "variableMode": "UseVarOrInput",
+      "condition": "仅：Show, ShowAndWaitClose",
+      "description": "辅助 C# 代码要引用的 DLL 文件，每行一个。也可以在代码中使用 #r 指令。"
+    },
+    {
+      "key": "windowId",
+      "name": "窗口标识",
+      "type": "Text",
+      "defaultValue": "",
+      "required": true,
+      "variableMode": "UseVarOrInput",
+      "condition": "",
+      "description": "如需单独的步骤关闭窗口，需使用标识查找窗口。"
+    },
+    {
+      "key": "autoCloseTime",
+      "name": "自动关闭时间(S)",
+      "type": "Number",
+      "defaultValue": "0",
+      "required": true,
+      "variableMode": "UseVarOrInput",
+      "condition": "仅：Show, ShowAndWaitClose",
+      "description": "自动关闭窗口的时间（秒数）。需大于0.5秒。"
+    },
+    {
+      "key": "winLocation",
+      "name": "窗口位置",
+      "type": "Enum",
+      "defaultValue": "CenterScreen",
+      "required": false,
+      "variableMode": "UseVarOrInput",
+      "condition": "仅：Show, ShowAndWaitClose",
+      "description": "在哪里显示选择窗口"
+    },
+    {
+      "key": "winSize",
+      "name": "窗口尺寸/位置",
+      "type": "Text",
+      "defaultValue": "",
+      "required": false,
+      "variableMode": "Input",
+      "condition": "仅：Show, ShowAndWaitClose",
+      "description": "设置选择窗口的最大尺寸，格式为：宽度,高度。支持像素数值或屏幕宽高百分比，详情请参考模块文档。\n\"窗口位置\" 类型为 \"自定义位置\" 时用于指定显示位置，格式为：left,top,right,bottom"
+    },
+    {
+      "key": "activateMode",
+      "name": "激活模式",
+      "type": "Enum",
+      "defaultValue": "AutoActivate",
+      "required": false,
+      "variableMode": "UseVarOrInput",
+      "condition": "仅：Show, ShowAndWaitClose",
+      "description": ""
+    },
+    {
+      "key": "closeWhenDeactivate",
+      "name": "失去焦点后关闭窗口",
+      "type": "Text",
+      "defaultValue": "false",
+      "required": false,
+      "variableMode": "UseVarOrInput",
+      "condition": "仅：Show, ShowAndWaitClose",
+      "description": "仅在窗口支持激活（获取焦点）的情况下有效。"
+    },
+    {
+      "key": "stopIfFail",
+      "name": "失败后停止",
+      "type": "Boolean",
+      "defaultValue": "true",
+      "required": false,
+      "variableMode": "Input",
+      "condition": "",
+      "description": "失败后是否停止动作"
+    }
+  ],
+  "outputs": [
+    {
+      "key": "isSuccess",
+      "name": "是否成功",
+      "type": "Boolean",
+      "condition": "",
+      "description": "操作是否成功"
+    },
+    {
+      "key": "result",
+      "name": "窗口结果",
+      "type": "Text",
+      "condition": "仅：ShowAndWaitClose, Close",
+      "description": "通过close:result返回的结果"
+    },
+    {
+      "key": "windowList",
+      "name": "窗口对象列表",
+      "type": "Object",
+      "condition": "仅：GetWindows",
+      "description": "IList<Window>对象"
+    },
+    {
+      "key": "windowHandle",
+      "name": "窗口句柄",
+      "type": "Integer",
+      "condition": "仅：Show",
+      "description": ""
+    },
+    {
+      "key": "windowLocation",
+      "name": "关闭时窗口位置",
+      "type": "Text",
+      "condition": "仅：ShowAndWaitClose",
+      "description": ""
+    }
+  ],
+  "selections": {
+    "type": {
+      "name": "操作类型",
+      "items": [
+        {
+          "value": "ShowAndWaitClose",
+          "name": "显示窗口并等待关闭",
+          "description": ""
+        },
+        {
+          "value": "Show",
+          "name": "显示窗口",
+          "description": ""
+        },
+        {
+          "value": "Close",
+          "name": "关闭窗口",
+          "description": ""
+        },
+        {
+          "value": "GetWindows",
+          "name": "获取窗口列表",
+          "description": ""
+        }
+      ]
+    },
+    "winLocation": {
+      "name": "窗口位置",
+      "items": [
+        {
+          "value": "WithMouse1",
+          "name": "跟随鼠标（指针周围）",
+          "description": ""
+        },
+        {
+          "value": "WithMouse2",
+          "name": "跟随鼠标（指针右下）",
+          "description": ""
+        },
+        {
+          "value": "CenterScreen",
+          "name": "屏幕中间",
+          "description": ""
+        },
+        {
+          "value": "TopLeft",
+          "name": "屏幕左上",
+          "description": ""
+        },
+        {
+          "value": "TopCenter",
+          "name": "屏幕中上",
+          "description": ""
+        },
+        {
+          "value": "TopRight",
+          "name": "屏幕右上",
+          "description": ""
+        },
+        {
+          "value": "LeftCenter",
+          "name": "屏幕左中",
+          "description": ""
+        },
+        {
+          "value": "RightCenter",
+          "name": "屏幕右中",
+          "description": ""
+        },
+        {
+          "value": "BottomLeft",
+          "name": "屏幕左下",
+          "description": ""
+        },
+        {
+          "value": "BottomCenter",
+          "name": "屏幕中下",
+          "description": ""
+        },
+        {
+          "value": "BottomRight",
+          "name": "屏幕右下",
+          "description": ""
+        },
+        {
+          "value": "FullScreen",
+          "name": "全屏",
+          "description": ""
+        },
+        {
+          "value": "Maximized",
+          "name": "最大化",
+          "description": ""
+        },
+        {
+          "value": "Manual",
+          "name": "自定义位置",
+          "description": ""
+        },
+        {
+          "value": "Auto",
+          "name": "系统默认",
+          "description": ""
+        }
+      ]
+    },
+    "activateMode": {
+      "name": "激活模式",
+      "items": [
+        {
+          "value": "AutoActivate",
+          "name": "支持激活，打开时抢占焦点",
+          "description": ""
+        },
+        {
+          "value": "NotActivatable",
+          "name": "不支持激活（不占用焦点，仅能使用鼠标操作）",
+          "description": ""
+        },
+        {
+          "value": "NotActivatableMouseThrough",
+          "name": "不支持激活，鼠标穿透",
+          "description": ""
+        },
+        {
+          "value": "NotActivated",
+          "name": "支持激活，打开时不抢占焦点",
+          "description": ""
+        }
+      ]
+    },
+    "closeWhenDeactivate": {
+      "name": "失去焦点后关闭窗口",
+      "items": [
+        {
+          "value": "true",
+          "name": "是",
+          "description": ""
+        },
+        {
+          "value": "false",
+          "name": "否",
+          "description": ""
+        },
+        {
+          "value": "closeIfNotTopmost",
+          "name": "在未置顶时",
+          "description": ""
+        }
+      ]
+    }
+  },
+  "sourceFileName": "sys_customwindow_自定义窗口.md"
+}

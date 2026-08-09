@@ -1,0 +1,125 @@
+{
+  "key": "sys:sendMessage",
+  "slug": "sendmessage",
+  "legacySlug": "sendmessage",
+  "ownsLegacyContent": true,
+  "name": "向窗口发送消息",
+  "description": "使用SendMessage Win32Api向窗口发送消息。使用方法请搜索SendMessage Win32 API接口。",
+  "category": "System",
+  "categoryName": "Windows系统",
+  "stepType": "Action",
+  "isRisky": false,
+  "isProOnly": false,
+  "helpLink": "https://getquicker.net/KC/Help/Doc/sendMessage",
+  "inputs": [
+    {
+      "key": "operation",
+      "name": "操作类型",
+      "type": "Enum",
+      "defaultValue": "SendMessage",
+      "required": true,
+      "variableMode": "Input",
+      "condition": "",
+      "description": ""
+    },
+    {
+      "key": "hWnd",
+      "name": "窗口句柄hWnd",
+      "type": "Integer",
+      "defaultValue": "",
+      "required": false,
+      "variableMode": "UseVarOrInput",
+      "condition": "",
+      "description": "留空或0表示前台窗口"
+    },
+    {
+      "key": "wMsg",
+      "name": "消息",
+      "type": "Text",
+      "defaultValue": "",
+      "required": false,
+      "variableMode": "UseVarOrInput",
+      "condition": "",
+      "description": "要发送的消息。"
+    },
+    {
+      "key": "wParam",
+      "name": "wParam参数",
+      "type": "Text",
+      "defaultValue": "",
+      "required": false,
+      "variableMode": "UseVarOrInput",
+      "condition": "",
+      "description": ""
+    },
+    {
+      "key": "lParam",
+      "name": "lParam参数",
+      "type": "Text",
+      "defaultValue": "0",
+      "required": false,
+      "variableMode": "UseVarOrInput",
+      "condition": "排除：SendMessageTextLParam",
+      "description": ""
+    },
+    {
+      "key": "textLParam",
+      "name": "lParam参数(文本)",
+      "type": "Text",
+      "defaultValue": "",
+      "required": false,
+      "variableMode": "UseVarOrInput",
+      "condition": "仅：SendMessageTextLParam",
+      "description": "文本内容"
+    },
+    {
+      "key": "stopIfFail",
+      "name": "失败后停止",
+      "type": "Boolean",
+      "defaultValue": "true",
+      "required": false,
+      "variableMode": "Input",
+      "condition": "",
+      "description": "失败后是否停止动作"
+    }
+  ],
+  "outputs": [
+    {
+      "key": "isSuccess",
+      "name": "是否成功",
+      "type": "Boolean",
+      "condition": "",
+      "description": "操作是否成功"
+    },
+    {
+      "key": "rtn",
+      "name": "返回值",
+      "type": "Integer",
+      "condition": "仅：SendMessage, SendMessageTextLParam",
+      "description": "返回值，依据消息的不同具有不同的含义，请查询对应API的文档。"
+    }
+  ],
+  "selections": {
+    "operation": {
+      "name": "操作类型",
+      "items": [
+        {
+          "value": "SendMessage",
+          "name": "SendMessage(等待返回，LParam为数字)",
+          "description": ""
+        },
+        {
+          "value": "SendMessageTextLParam",
+          "name": "SendMessage(等待返回，LParam为文本)",
+          "description": ""
+        },
+        {
+          "value": "PostMessage",
+          "name": "PostMessage(不等待返回)",
+          "description": ""
+        }
+      ]
+    }
+  },
+  "sourceFileName": "sys_sendMessage_向窗口发送消息.md"
+}

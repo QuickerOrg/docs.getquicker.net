@@ -1,0 +1,412 @@
+{
+  "key": "sys:getCurrentTime",
+  "slug": "gettime",
+  "legacySlug": "gettime",
+  "ownsLegacyContent": true,
+  "name": "获取日期时间",
+  "description": "获取当前或从文本、unix时间戳转换日期时间",
+  "category": "System",
+  "categoryName": "Windows系统",
+  "stepType": "Action",
+  "isRisky": false,
+  "isProOnly": false,
+  "helpLink": "https://getquicker.net/KC/Help/Doc/gettime",
+  "inputs": [
+    {
+      "key": "source",
+      "name": "时间来源",
+      "type": "Enum",
+      "defaultValue": "currTime",
+      "required": true,
+      "variableMode": "Input",
+      "condition": "",
+      "description": "时间数据来源"
+    },
+    {
+      "key": "useUtc",
+      "name": "使用UTC时间",
+      "type": "Boolean",
+      "defaultValue": "false",
+      "required": false,
+      "variableMode": "Input",
+      "condition": "仅：currTime, fromString, fromUnixTimeStamp, Source_UnixTimeStampMs",
+      "description": "是表示使用UTC时间，否表示使用本地时间（电脑的当前时间）。"
+    },
+    {
+      "key": "timeStr",
+      "name": "待解析文本",
+      "type": "Text",
+      "defaultValue": "",
+      "required": false,
+      "variableMode": "UseVarOrInput",
+      "condition": "仅：fromString",
+      "description": "待转换为时间值的文本"
+    },
+    {
+      "key": "inputFormat",
+      "name": "数据格式",
+      "type": "Text",
+      "defaultValue": "",
+      "required": false,
+      "variableMode": "UseVarOrInput",
+      "condition": "仅：fromString",
+      "description": "可选，待解析文本的数据格式，如yyyy表示4位数年份，MM表示2位数月份等。详情请参考文档。"
+    },
+    {
+      "key": "inputCulture",
+      "name": "语言文化",
+      "type": "Text",
+      "defaultValue": "CURRENT",
+      "required": false,
+      "variableMode": "UseVarOrInput",
+      "condition": "仅：fromString",
+      "description": "可选，待解析文本的语言文化。如zh-CN表示中文简体，en-US表示英文美国等。详情请参考文档。"
+    },
+    {
+      "key": "timeVar",
+      "name": "时间变量",
+      "type": "DateTime",
+      "defaultValue": "",
+      "required": false,
+      "variableMode": "UseVarOnly",
+      "condition": "仅：fromVar",
+      "description": "时间变量"
+    },
+    {
+      "key": "timeStampStr",
+      "name": "Unix时间戳值",
+      "type": "Text",
+      "defaultValue": "",
+      "required": false,
+      "variableMode": "UseVarOrInput",
+      "condition": "仅：fromUnixTimeStamp, Source_UnixTimeStampMs",
+      "description": "从1970年1月1日开始所经过的秒数或毫秒数。根据需要开启或关闭使用UTC时间选项。"
+    },
+    {
+      "key": "addDays",
+      "name": "添加天数",
+      "type": "Number",
+      "defaultValue": "0",
+      "required": false,
+      "variableMode": "UseVarOrInput",
+      "condition": "",
+      "description": "添加指定的天数（可以为小数/负数）"
+    },
+    {
+      "key": "addHours",
+      "name": "添加小时数",
+      "type": "Number",
+      "defaultValue": "0",
+      "required": false,
+      "variableMode": "UseVarOrInput",
+      "condition": "",
+      "description": "添加指定的小时数（可以为小数/负数）"
+    },
+    {
+      "key": "addMinutes",
+      "name": "添加分钟数",
+      "type": "Number",
+      "defaultValue": "0",
+      "required": false,
+      "variableMode": "UseVarOrInput",
+      "condition": "",
+      "description": "添加指定的分钟数（可以为小数/负数）"
+    },
+    {
+      "key": "addSeconds",
+      "name": "添加秒数",
+      "type": "Number",
+      "defaultValue": "0",
+      "required": false,
+      "variableMode": "UseVarOrInput",
+      "condition": "",
+      "description": "添加指定的秒数（可以为小数/负数）"
+    },
+    {
+      "key": "addMonths",
+      "name": "添加月数",
+      "type": "Number",
+      "defaultValue": "0",
+      "required": false,
+      "variableMode": "UseVarOrInput",
+      "condition": "",
+      "description": "添加指定的月数（整数）结果不跨月，如1月31日增加1个月等于2月28日。"
+    },
+    {
+      "key": "format",
+      "name": "输出文本值格式",
+      "type": "Text",
+      "defaultValue": "yyyy-MM-dd HH:mm:ss",
+      "required": false,
+      "variableMode": "UseVarOrInput",
+      "condition": "",
+      "description": "文本值的输出格式，请参考c#语言DateTime.ToString()的参数文档。"
+    },
+    {
+      "key": "outputCulture",
+      "name": "输出语言文化",
+      "type": "Text",
+      "defaultValue": "CURRENT",
+      "required": false,
+      "variableMode": "UseVarOrInput",
+      "condition": "",
+      "description": "可选。指定将时间值格式化为文本时所使用的语言文化。如zh-CN表示中文简体，en-US表示美国英文等。"
+    },
+    {
+      "key": "stopIfFail",
+      "name": "失败后停止",
+      "type": "Boolean",
+      "defaultValue": "true",
+      "required": false,
+      "variableMode": "Input",
+      "condition": "",
+      "description": "失败后是否停止动作"
+    }
+  ],
+  "outputs": [
+    {
+      "key": "isSuccess",
+      "name": "是否成功",
+      "type": "Boolean",
+      "condition": "",
+      "description": "操作是否成功"
+    },
+    {
+      "key": "output",
+      "name": "时间值",
+      "type": "DateTime",
+      "condition": "",
+      "description": "日期时间类型的结果时间"
+    },
+    {
+      "key": "strValue",
+      "name": "文本值",
+      "type": "Text",
+      "condition": "",
+      "description": "按'文本值格式'参数转换后的文本格式值"
+    },
+    {
+      "key": "timeStamp",
+      "name": "UNIX时间戳(s)",
+      "type": "Integer",
+      "condition": "",
+      "description": "获取Unix时间戳（1970年1月1日0时到指定时间的秒数）"
+    },
+    {
+      "key": "timeStampMs",
+      "name": "UNIX时间戳(ms)",
+      "type": "Integer",
+      "condition": "",
+      "description": "获取Unix时间戳（1970年1月1日0时到指定时间的毫秒数）"
+    },
+    {
+      "key": "year",
+      "name": "年",
+      "type": "Integer",
+      "condition": "",
+      "description": "年份值"
+    },
+    {
+      "key": "month",
+      "name": "月",
+      "type": "Integer",
+      "condition": "",
+      "description": "月份值"
+    },
+    {
+      "key": "day",
+      "name": "日",
+      "type": "Integer",
+      "condition": "",
+      "description": "日期值"
+    },
+    {
+      "key": "hour",
+      "name": "时",
+      "type": "Integer",
+      "condition": "",
+      "description": "当前小时数，24小时制。"
+    },
+    {
+      "key": "minute",
+      "name": "分",
+      "type": "Integer",
+      "condition": "",
+      "description": "当前分钟数。"
+    },
+    {
+      "key": "second",
+      "name": "秒",
+      "type": "Integer",
+      "condition": "",
+      "description": "当前秒数。"
+    },
+    {
+      "key": "dayOfWeek",
+      "name": "周第几天",
+      "type": "Integer",
+      "condition": "",
+      "description": "本周的第几天，周日为0，周一为1，以此类推。"
+    },
+    {
+      "key": "dayOfYear",
+      "name": "年第几天",
+      "type": "Integer",
+      "condition": "",
+      "description": "本年的第几天。"
+    }
+  ],
+  "selections": {
+    "source": {
+      "name": "时间来源",
+      "items": [
+        {
+          "value": "currTime",
+          "name": "当前时间",
+          "description": ""
+        },
+        {
+          "value": "fromString",
+          "name": "从文本转换",
+          "description": ""
+        },
+        {
+          "value": "fromUnixTimeStamp",
+          "name": "从Unix时间戳转换(秒)",
+          "description": ""
+        },
+        {
+          "value": "Source_UnixTimeStampMs",
+          "name": "从Unix时间戳转换(毫秒)",
+          "description": ""
+        },
+        {
+          "value": "fromVar",
+          "name": "时间变量",
+          "description": ""
+        }
+      ]
+    },
+    "inputCulture": {
+      "name": "语言文化",
+      "items": [
+        {
+          "value": "CURRENT",
+          "name": "当前系统语言",
+          "description": ""
+        },
+        {
+          "value": "zh-CN",
+          "name": "中文",
+          "description": ""
+        },
+        {
+          "value": "en-US",
+          "name": "英文",
+          "description": ""
+        },
+        {
+          "value": "ja-JP",
+          "name": "日文",
+          "description": ""
+        },
+        {
+          "value": "ko-KR",
+          "name": "韩文",
+          "description": ""
+        },
+        {
+          "value": "fr-FR",
+          "name": "法文",
+          "description": ""
+        },
+        {
+          "value": "de-DE",
+          "name": "德文",
+          "description": ""
+        },
+        {
+          "value": "es-ES",
+          "name": "西班牙文",
+          "description": ""
+        },
+        {
+          "value": "it-IT",
+          "name": "意大利文",
+          "description": ""
+        },
+        {
+          "value": "ru-RU",
+          "name": "俄文",
+          "description": ""
+        },
+        {
+          "value": "pt-BR",
+          "name": "葡萄牙文(巴西)",
+          "description": ""
+        }
+      ]
+    },
+    "outputCulture": {
+      "name": "输出语言文化",
+      "items": [
+        {
+          "value": "CURRENT",
+          "name": "当前系统语言",
+          "description": ""
+        },
+        {
+          "value": "zh-CN",
+          "name": "中文",
+          "description": ""
+        },
+        {
+          "value": "en-US",
+          "name": "英文",
+          "description": ""
+        },
+        {
+          "value": "ja-JP",
+          "name": "日文",
+          "description": ""
+        },
+        {
+          "value": "ko-KR",
+          "name": "韩文",
+          "description": ""
+        },
+        {
+          "value": "fr-FR",
+          "name": "法文",
+          "description": ""
+        },
+        {
+          "value": "de-DE",
+          "name": "德文",
+          "description": ""
+        },
+        {
+          "value": "es-ES",
+          "name": "西班牙文",
+          "description": ""
+        },
+        {
+          "value": "it-IT",
+          "name": "意大利文",
+          "description": ""
+        },
+        {
+          "value": "ru-RU",
+          "name": "俄文",
+          "description": ""
+        },
+        {
+          "value": "pt-BR",
+          "name": "葡萄牙文(巴西)",
+          "description": ""
+        }
+      ]
+    }
+  },
+  "sourceFileName": "sys_getCurrentTime_获取日期时间.md"
+}

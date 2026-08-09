@@ -1,0 +1,413 @@
+{
+  "key": "sys:quickeroperations",
+  "slug": "quickeroperations",
+  "legacySlug": "quickeroperations",
+  "ownsLegacyContent": true,
+  "name": "Quicker操作",
+  "description": "调用Quicker的某个功能",
+  "category": "System",
+  "categoryName": "Windows系统",
+  "stepType": "Action",
+  "isRisky": false,
+  "isProOnly": false,
+  "helpLink": "https://getquicker.net/KC/Help/Doc/quickeroperations",
+  "inputs": [
+    {
+      "key": "type",
+      "name": "类型",
+      "type": "Enum",
+      "defaultValue": "showPanel",
+      "required": true,
+      "variableMode": "UseVarOrInput",
+      "condition": "",
+      "description": "操作类型"
+    },
+    {
+      "key": "profileId",
+      "name": "动作页ID",
+      "type": "Text",
+      "defaultValue": "",
+      "required": true,
+      "variableMode": "UseVarOrInput",
+      "condition": "仅：loadProfile",
+      "description": "请在场景与动作管理中，查看动作页信息获取ID。"
+    },
+    {
+      "key": "actionId",
+      "name": "动作ID或名称",
+      "type": "Text",
+      "defaultValue": "",
+      "required": true,
+      "variableMode": "UseVarOrInput",
+      "condition": "仅：editAction, SearchWithCertainAction, FloatAction, GetActionInfo",
+      "description": "在动作上点右键->信息可以查看动作信息。使用名称时不能有重名动作。获取动作信息时仅可填写动作Id。编辑动作时，使用%%id或%%name格式，可用于编辑公共子程序。"
+    },
+    {
+      "key": "position",
+      "name": "位置",
+      "type": "Text",
+      "defaultValue": "200,200",
+      "required": true,
+      "variableMode": "UseVarOrInput",
+      "condition": "仅：FloatAction",
+      "description": "坐标，格式为：left,top"
+    },
+    {
+      "key": "exe",
+      "name": "场景标识",
+      "type": "Text",
+      "defaultValue": "",
+      "required": true,
+      "variableMode": "UseVarOrInput",
+      "condition": "仅：loadExeProfiles, loadExeProfilesNoLock, showCircleMenu, GetActionList, showExeSettingWindow, showDashboardWindow",
+      "description": "场景关联的exe文件名。请参考场景与动作管理窗口左侧应用列表。"
+    },
+    {
+      "key": "sceneGroup",
+      "name": "切换到分组",
+      "type": "Text",
+      "defaultValue": "",
+      "required": false,
+      "variableMode": "UseVarOrInput",
+      "condition": "仅：loadExeProfiles, loadExeProfilesNoLock",
+      "description": "加载场景后，在新版面板中自动切换到此分组。留空时按场景默认逻辑显示；填写“未分组”可切换到未分组。"
+    },
+    {
+      "key": "activatePointWindow",
+      "name": "自动激活鼠标位置窗口",
+      "type": "Boolean",
+      "defaultValue": "false",
+      "required": false,
+      "variableMode": "Input",
+      "condition": "仅：showPanel",
+      "description": ""
+    },
+    {
+      "key": "followMousePosition",
+      "name": "跟随鼠标位置",
+      "type": "Boolean",
+      "defaultValue": "true",
+      "required": false,
+      "variableMode": "Input",
+      "condition": "仅：showPanel",
+      "description": ""
+    },
+    {
+      "key": "searchText",
+      "name": "预置的搜索内容",
+      "type": "Text",
+      "defaultValue": "",
+      "required": false,
+      "variableMode": "UseVarOrInput",
+      "condition": "仅：StartSearchWithAction, showSearch, SearchWithCertainAction",
+      "description": "预先放入搜索框的内容"
+    },
+    {
+      "key": "skinId",
+      "name": "外观ID",
+      "type": "Text",
+      "defaultValue": "",
+      "required": true,
+      "variableMode": "UseVarOrInput",
+      "condition": "仅：LoadSkin",
+      "description": "请在外观网页中复制外观ID"
+    },
+    {
+      "key": "theme",
+      "name": "主题模式",
+      "type": "Enum",
+      "defaultValue": "",
+      "required": false,
+      "variableMode": "Input",
+      "condition": "仅：LoadSkin",
+      "description": "可选切换为浅色或暗色模式"
+    },
+    {
+      "key": "viewMode",
+      "name": "显示状态",
+      "type": "Enum",
+      "defaultValue": "ByProcess",
+      "required": false,
+      "variableMode": "Input",
+      "condition": "仅：ToggleFloatButtons",
+      "description": ""
+    },
+    {
+      "key": "stopIfFail",
+      "name": "失败后停止",
+      "type": "Boolean",
+      "defaultValue": "true",
+      "required": false,
+      "variableMode": "Input",
+      "condition": "",
+      "description": "失败后是否停止动作"
+    }
+  ],
+  "outputs": [
+    {
+      "key": "isSuccess",
+      "name": "步骤是否成功",
+      "type": "Boolean",
+      "condition": "",
+      "description": "步骤是否成功完成"
+    },
+    {
+      "key": "actionList",
+      "name": "动作列表",
+      "type": "List",
+      "condition": "仅：GetActionList",
+      "description": ""
+    },
+    {
+      "key": "actionTitle",
+      "name": "动作标题",
+      "type": "Text",
+      "condition": "仅：GetActionInfo",
+      "description": ""
+    },
+    {
+      "key": "actionIcon",
+      "name": "动作图标",
+      "type": "Text",
+      "condition": "仅：GetActionInfo",
+      "description": ""
+    },
+    {
+      "key": "actionDescription",
+      "name": "动作描述",
+      "type": "Text",
+      "condition": "仅：GetActionInfo",
+      "description": ""
+    },
+    {
+      "key": "windowHandle",
+      "name": "窗口句柄",
+      "type": "Integer",
+      "condition": "仅：FloatAction",
+      "description": ""
+    }
+  ],
+  "selections": {
+    "type": {
+      "name": "类型",
+      "items": [
+        {
+          "value": "showPanel",
+          "name": "显示面板",
+          "description": ""
+        },
+        {
+          "value": "showSearch",
+          "name": "显示搜索框",
+          "description": ""
+        },
+        {
+          "value": "closeSearch",
+          "name": "关闭搜索框",
+          "description": ""
+        },
+        {
+          "value": "showCircleMenu",
+          "name": "显示轮盘菜单 (点击)",
+          "description": ""
+        },
+        {
+          "value": "showTextSelectionToolbar",
+          "name": "显示选中文本工具条",
+          "description": ""
+        },
+        {
+          "value": "togglePause",
+          "name": "禁用/启用",
+          "description": ""
+        },
+        {
+          "value": "runLastAction",
+          "name": "运行最后使用的动作",
+          "description": ""
+        },
+        {
+          "value": "startAppVoiceInput",
+          "name": "启动App语音输入",
+          "description": ""
+        },
+        {
+          "value": "stopAllActions",
+          "name": "停止运行中的动作",
+          "description": ""
+        },
+        {
+          "value": "reinstallMouseHook",
+          "name": "重新加载键鼠挂钩",
+          "description": ""
+        },
+        {
+          "value": "ResetKeyboard",
+          "name": "重置键盘状态",
+          "description": ""
+        },
+        {
+          "value": "showDashboardWindow",
+          "name": "显示仪表盘窗口",
+          "description": ""
+        },
+        {
+          "value": "showConfigWindow",
+          "name": "显示设置窗口",
+          "description": ""
+        },
+        {
+          "value": "showExeSettingWindow",
+          "name": "显示场景与动作管理窗口",
+          "description": ""
+        },
+        {
+          "value": "closeAllFloatWindow",
+          "name": "关闭所有悬浮按钮",
+          "description": ""
+        },
+        {
+          "value": "loadProfile",
+          "name": "加载动作页",
+          "description": ""
+        },
+        {
+          "value": "loadExeProfiles",
+          "name": "加载场景动作（锁定切换）",
+          "description": ""
+        },
+        {
+          "value": "loadExeProfilesNoLock",
+          "name": "加载场景动作（不锁定切换）",
+          "description": ""
+        },
+        {
+          "value": "ToggleLockPanel",
+          "name": "锁定/解锁 动作页自动切换",
+          "description": ""
+        },
+        {
+          "value": "editAction",
+          "name": "编辑动作",
+          "description": ""
+        },
+        {
+          "value": "RestartQuicker",
+          "name": "重启Quicker",
+          "description": ""
+        },
+        {
+          "value": "SetPushActiveClient",
+          "name": "推送服务：设置为活动客户端",
+          "description": ""
+        },
+        {
+          "value": "StartSearchWithAction",
+          "name": "使用当前动作进行实时搜索",
+          "description": ""
+        },
+        {
+          "value": "SearchWithCertainAction",
+          "name": "使用指定动作进行实时搜索",
+          "description": ""
+        },
+        {
+          "value": "operation_show_context_menu",
+          "name": "显示剪贴板上下文菜单",
+          "description": ""
+        },
+        {
+          "value": "LoadSkin",
+          "name": "加载外观/切换主题(专业版功能)",
+          "description": ""
+        },
+        {
+          "value": "ExitQuicker",
+          "name": "退出Quicker",
+          "description": ""
+        },
+        {
+          "value": "FloatAction",
+          "name": "悬浮动作(专业版功能)",
+          "description": ""
+        },
+        {
+          "value": "ToggleFloatButtons",
+          "name": "切换所有悬浮按钮显示",
+          "description": ""
+        },
+        {
+          "value": "ShowHideImageWindows",
+          "name": "显示或隐藏所有图片窗口",
+          "description": ""
+        },
+        {
+          "value": "RemoveAction",
+          "name": "删除当前动作",
+          "description": ""
+        },
+        {
+          "value": "GetActionInfo",
+          "name": "根据ID获取动作信息",
+          "description": ""
+        }
+      ]
+    },
+    "theme": {
+      "name": "主题模式",
+      "items": [
+        {
+          "value": "",
+          "name": "不改变",
+          "description": ""
+        },
+        {
+          "value": "auto",
+          "name": "跟随Windows",
+          "description": ""
+        },
+        {
+          "value": "light",
+          "name": "浅色",
+          "description": ""
+        },
+        {
+          "value": "dark",
+          "name": "暗色",
+          "description": ""
+        },
+        {
+          "value": "toggle",
+          "name": "切换浅色和暗色",
+          "description": ""
+        }
+      ]
+    },
+    "viewMode": {
+      "name": "显示状态",
+      "items": [
+        {
+          "value": "HideAll",
+          "name": "隐藏全部",
+          "description": ""
+        },
+        {
+          "value": "ByProcess",
+          "name": "自动(按关联进程切换)",
+          "description": ""
+        },
+        {
+          "value": "ShowAll",
+          "name": "显示全部",
+          "description": ""
+        },
+        {
+          "value": "ToggleHideAndAuto",
+          "name": "切换隐藏和自动",
+          "description": ""
+        }
+      ]
+    }
+  },
+  "sourceFileName": "sys_quickeroperations_Quicker操作.md"
+}

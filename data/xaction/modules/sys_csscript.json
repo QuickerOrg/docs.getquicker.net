@@ -1,0 +1,216 @@
+{
+  "key": "sys:csscript",
+  "slug": "csscript",
+  "legacySlug": "csscript",
+  "ownsLegacyContent": true,
+  "name": "运行C#代码",
+  "description": "执行C#代码片段。代码中应包含主函数Exec(stepContext)，请参考文档说明。",
+  "category": "Flow",
+  "categoryName": "程序流程",
+  "stepType": "Action",
+  "isRisky": true,
+  "isProOnly": false,
+  "helpLink": "https://getquicker.net/KC/Help/Doc/csscript",
+  "inputs": [
+    {
+      "key": "mode",
+      "name": "运行模式",
+      "type": "Enum",
+      "defaultValue": "normal_roslyn",
+      "required": true,
+      "variableMode": "Input",
+      "condition": "",
+      "description": "普通模式：在Quicker进程中执行；低权限模式：在单独的进程中执行，可用于COM操作。"
+    },
+    {
+      "key": "script",
+      "name": "脚本内容",
+      "type": "Text",
+      "defaultValue": "//.cs  文件类型，便于外部编辑时使用\n// 引用必要的命名空间\nusing System.Windows.Forms;\n\n// Quicker将会调用的函数。可以根据需要修改返回值类型。\npublic static void Exec(Quicker.Public.IStepContext context)\n{\n    //var oldValue = context.GetVarValue(\"varName\");  // 读取动作里的变量值\n    //MessageBox.Show(oldValue as string);\n    //context.SetVarValue(\"varName\", \"从脚本输出的内容。\"); // 向变量里输出值\n    MessageBox.Show(\"Hello World!\");\n}",
+      "required": true,
+      "variableMode": "UseVarOrInput",
+      "condition": "仅：normal_roslyn",
+      "description": "要运行的脚本内容"
+    },
+    {
+      "key": "scriptForLp",
+      "name": "脚本内容",
+      "type": "Text",
+      "defaultValue": "//.cs  文件类型，便于外部编辑时使用\n// 引用必要的命名空间\nusing System.Windows.Forms;\n\n// Quicker将会调用的函数\npublic static string Exec(string paramValue)\n{\n    System.Windows.Forms.MessageBox.Show(\"Hello World!\");\n    return \"Hello World!\";\n}",
+      "required": true,
+      "variableMode": "UseVarOrInput",
+      "condition": "仅：low_permission_roslyn",
+      "description": "要运行的脚本内容"
+    },
+    {
+      "key": "scriptForAssembly",
+      "name": "脚本内容",
+      "type": "Text",
+      "defaultValue": "//.cs  文件类型，便于外部编辑时使用\n// 引用必要的命名空间\nusing System.Windows.Forms;\n\nnamespace MyNamespace\n{\n    // Quicker将会调用的函数\n    public static class MyClass\n    {\n        public static string Exec(string paramValue)\n        {\n            System.Windows.Forms.MessageBox.Show(\"Hello World!\");\n            return \"Hello World!\";\n        }\n    }\n}",
+      "required": true,
+      "variableMode": "UseVarOrInput",
+      "condition": "仅：generate_assembly",
+      "description": "要运行的脚本内容"
+    },
+    {
+      "key": "paramValue",
+      "name": "参数值",
+      "type": "Text",
+      "defaultValue": "",
+      "required": true,
+      "variableMode": "UseVarOrInput",
+      "condition": "仅：low_permission_roslyn",
+      "description": "传递给Exec的参数"
+    },
+    {
+      "key": "reference",
+      "name": "引用DLL库",
+      "type": "Text",
+      "defaultValue": "",
+      "required": false,
+      "variableMode": "Input",
+      "condition": "",
+      "description": "要引用的DLL文件，每行一个。也可以在代码中使用 #r 指令。"
+    },
+    {
+      "key": "enableCache",
+      "name": "开启磁盘缓存",
+      "type": "Boolean",
+      "defaultValue": "true",
+      "required": false,
+      "variableMode": "Input",
+      "condition": "仅：normal_roslyn, low_permission_roslyn",
+      "description": "是否将编译结果缓存到磁盘。关闭后仍会按最终脚本内容在当前进程内自动复用；脚本使用 $= 表达式或 $$ 插值动态生成时，会自动关闭磁盘缓存。"
+    },
+    {
+      "key": "runOnUiThread",
+      "name": "执行线程",
+      "type": "Enum",
+      "defaultValue": "auto",
+      "required": false,
+      "variableMode": "Input",
+      "condition": "仅：normal_roslyn",
+      "description": "是否在界面线程上运行代码。如果在脚本中使用了wpf窗口，请选中此项。"
+    },
+    {
+      "key": "waitResp",
+      "name": "等待返回",
+      "type": "Boolean",
+      "defaultValue": "true",
+      "required": false,
+      "variableMode": "Input",
+      "condition": "仅：low_permission_roslyn",
+      "description": "是否等待脚本返回结果"
+    },
+    {
+      "key": "waitMs",
+      "name": "最长等待时间(ms)",
+      "type": "Number",
+      "defaultValue": "10000",
+      "required": true,
+      "variableMode": "Input",
+      "condition": "仅：low_permission_roslyn",
+      "description": "最长的等待返回结果的，毫秒数"
+    },
+    {
+      "key": "stopIfFail",
+      "name": "失败后停止",
+      "type": "Boolean",
+      "defaultValue": "true",
+      "required": false,
+      "variableMode": "Input",
+      "condition": "",
+      "description": "失败后是否停止动作"
+    }
+  ],
+  "outputs": [
+    {
+      "key": "isSuccess",
+      "name": "是否成功",
+      "type": "Boolean",
+      "condition": "",
+      "description": "操作是否成功"
+    },
+    {
+      "key": "resp",
+      "name": "返回内容",
+      "type": "Text",
+      "condition": "仅：low_permission_roslyn",
+      "description": "脚本执行返回的结果文本"
+    },
+    {
+      "key": "rtn",
+      "name": "返回内容",
+      "type": "Any",
+      "condition": "仅：normal_roslyn",
+      "description": "Exec方法的返回值"
+    },
+    {
+      "key": "rtnAssembly",
+      "name": "程序集对象",
+      "type": "Object",
+      "condition": "仅：generate_assembly",
+      "description": "生成的Assembly对象（已经加载）"
+    },
+    {
+      "key": "assemblyPath",
+      "name": "程序集路径",
+      "type": "Text",
+      "condition": "仅：generate_assembly",
+      "description": "生成的Assembly路径"
+    }
+  ],
+  "selections": {
+    "mode": {
+      "name": "运行模式",
+      "items": [
+        {
+          "value": "normal_roslyn",
+          "name": "普通模式",
+          "description": ""
+        },
+        {
+          "value": "low_permission_roslyn",
+          "name": "低权限模式",
+          "description": ""
+        },
+        {
+          "value": "generate_assembly",
+          "name": "生成程序集",
+          "description": ""
+        }
+      ]
+    },
+    "runOnUiThread": {
+      "name": "执行线程",
+      "items": [
+        {
+          "value": "auto",
+          "name": "自动",
+          "description": ""
+        },
+        {
+          "value": "ui",
+          "name": "UI线程",
+          "description": ""
+        },
+        {
+          "value": "background",
+          "name": "后台线程(MTA)",
+          "description": ""
+        },
+        {
+          "value": "sta",
+          "name": "后台线程(STA)",
+          "description": ""
+        },
+        {
+          "value": "staLongRun",
+          "name": "后台线程(STA独立线程)",
+          "description": ""
+        }
+      ]
+    }
+  },
+  "sourceFileName": "sys_csscript_运行C#代码.md"
+}

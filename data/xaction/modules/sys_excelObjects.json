@@ -1,0 +1,155 @@
+{
+  "key": "sys:excelObjects",
+  "slug": "excelobjects",
+  "legacySlug": "excelobjects",
+  "ownsLegacyContent": true,
+  "name": "Excel对象操作",
+  "description": "操作Excel的某个对象",
+  "category": "SoftInteraction",
+  "categoryName": "第三方软件交互",
+  "stepType": "Action",
+  "isRisky": false,
+  "isProOnly": false,
+  "helpLink": "https://getquicker.net/KC/Help/Doc/excelobjects",
+  "inputs": [
+    {
+      "key": "operation",
+      "name": "操作类型",
+      "type": "Enum",
+      "defaultValue": "",
+      "required": true,
+      "variableMode": "Input",
+      "condition": "",
+      "description": "操作类型"
+    },
+    {
+      "key": "workbook",
+      "name": "工作簿对象",
+      "type": "Object",
+      "defaultValue": "",
+      "required": false,
+      "variableMode": "UseVarOrInput",
+      "condition": "仅：SaveWorkbook, CloseWorkbook, SelectWorksheet",
+      "description": "根据具体操作，可用参数不同。请参考文档。"
+    },
+    {
+      "key": "params",
+      "name": "参数",
+      "type": "Text",
+      "defaultValue": "",
+      "required": false,
+      "variableMode": "UseVarOrInput",
+      "condition": "",
+      "description": "根据具体操作，可用参数不同。请参考文档。"
+    },
+    {
+      "key": "path",
+      "name": "文件/模板路径",
+      "type": "Text",
+      "defaultValue": "",
+      "required": false,
+      "variableMode": "UseVarOrInput",
+      "condition": "仅：OpenFile, SaveWorkbook, CreateWorkbook",
+      "description": "完整路径。创建工作簿时，用于指定模板文件。"
+    },
+    {
+      "key": "stopIfFail",
+      "name": "失败后停止",
+      "type": "Boolean",
+      "defaultValue": "true",
+      "required": false,
+      "variableMode": "Input",
+      "condition": "",
+      "description": "失败后是否停止动作"
+    }
+  ],
+  "outputs": [
+    {
+      "key": "isSuccess",
+      "name": "是否成功",
+      "type": "Boolean",
+      "condition": "",
+      "description": "操作是否成功"
+    },
+    {
+      "key": "application",
+      "name": "Application对象",
+      "type": "Object",
+      "condition": "仅：ApplicationInfo, OpenFile, CreateWorkbook",
+      "description": "Application对象的引用"
+    },
+    {
+      "key": "activeWorkbook",
+      "name": "活动工作簿",
+      "type": "Object",
+      "condition": "仅：ApplicationInfo, OpenFile, CreateWorkbook",
+      "description": "ActiveWorkbook"
+    },
+    {
+      "key": "activeSheet",
+      "name": "活动工作表",
+      "type": "Object",
+      "condition": "仅：ApplicationInfo, OpenFile, CreateWorkbook",
+      "description": "ActiveSheet"
+    },
+    {
+      "key": "worksheets",
+      "name": "工作表对象列表",
+      "type": "Object",
+      "condition": "仅：ApplicationInfo, OpenFile, CreateWorkbook",
+      "description": "Worksheets"
+    },
+    {
+      "key": "worksheetNames",
+      "name": "工作表名称的列表",
+      "type": "List",
+      "condition": "仅：ApplicationInfo, OpenFile",
+      "description": "Worksheets"
+    },
+    {
+      "key": "workbookPath",
+      "name": "工作簿路径",
+      "type": "Text",
+      "condition": "仅：ApplicationInfo",
+      "description": "Worksheets"
+    }
+  ],
+  "selections": {
+    "operation": {
+      "name": "操作类型",
+      "items": [
+        {
+          "value": "ApplicationInfo",
+          "name": "获取当前Excel应用信息",
+          "description": ""
+        },
+        {
+          "value": "OpenFile",
+          "name": "工作簿: 打开工作簿",
+          "description": ""
+        },
+        {
+          "value": "SaveWorkbook",
+          "name": "工作簿: 保存工作簿",
+          "description": ""
+        },
+        {
+          "value": "CloseWorkbook",
+          "name": "工作簿: 关闭工作簿",
+          "description": ""
+        },
+        {
+          "value": "CreateWorkbook",
+          "name": "工作簿: 创建工作簿",
+          "description": ""
+        },
+        {
+          "value": "SelectWorksheet",
+          "name": "工作表：选择工作表",
+          "description": ""
+        }
+      ]
+    }
+  },
+  "sourceFileName": "sys_excelObjects_Excel对象操作.md"
+}

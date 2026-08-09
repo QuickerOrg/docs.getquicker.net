@@ -1,0 +1,190 @@
+{
+  "key": "sys:dboperation",
+  "slug": "dboperation",
+  "legacySlug": "dboperation",
+  "ownsLegacyContent": true,
+  "name": "数据库查询",
+  "description": "对数据库执行SQL语句并返回结果",
+  "category": "Compute",
+  "categoryName": "计算与比较",
+  "stepType": "Action",
+  "isRisky": false,
+  "isProOnly": false,
+  "helpLink": "https://getquicker.net/KC/Help/Doc/dboperation",
+  "inputs": [
+    {
+      "key": "dbType",
+      "name": "数据库连接类型",
+      "type": "Enum",
+      "defaultValue": "",
+      "required": false,
+      "variableMode": "Input",
+      "condition": "",
+      "description": ""
+    },
+    {
+      "key": "connectionString",
+      "name": "连接字符串",
+      "type": "Text",
+      "defaultValue": "",
+      "required": false,
+      "variableMode": "UseVarOrInput",
+      "condition": "",
+      "description": "Connection string"
+    },
+    {
+      "key": "sql",
+      "name": "SQL语句",
+      "type": "Text",
+      "defaultValue": "",
+      "required": false,
+      "variableMode": "UseVarOrInput",
+      "condition": "",
+      "description": "要执行的SQL语句内容"
+    },
+    {
+      "key": "sqlParam",
+      "name": "参数",
+      "type": "Object",
+      "defaultValue": "",
+      "required": false,
+      "variableMode": "UseVarOrInput",
+      "condition": "",
+      "description": "为SQL语句提供的参数"
+    },
+    {
+      "key": "timeoutSeconds",
+      "name": "超时秒数",
+      "type": "Integer",
+      "defaultValue": "",
+      "required": false,
+      "variableMode": "UseVarOrInput",
+      "condition": "",
+      "description": "留空或0表示默认。"
+    },
+    {
+      "key": "operationType",
+      "name": "执行方式",
+      "type": "Enum",
+      "defaultValue": "Query",
+      "required": true,
+      "variableMode": "Input",
+      "condition": "",
+      "description": ""
+    },
+    {
+      "key": "stopIfFail",
+      "name": "失败后停止",
+      "type": "Boolean",
+      "defaultValue": "true",
+      "required": false,
+      "variableMode": "Input",
+      "condition": "",
+      "description": "失败后是否停止动作"
+    }
+  ],
+  "outputs": [
+    {
+      "key": "isSuccess",
+      "name": "是否成功",
+      "type": "Boolean",
+      "condition": "",
+      "description": "操作是否成功"
+    },
+    {
+      "key": "rowsAffected",
+      "name": "影响行数",
+      "type": "Integer",
+      "condition": "仅：Execute",
+      "description": ""
+    },
+    {
+      "key": "scalarResult",
+      "name": "单值结果",
+      "type": "Any",
+      "condition": "仅：ExecuteScalar",
+      "description": ""
+    },
+    {
+      "key": "dataTableResult",
+      "name": "查询结果(表格)",
+      "type": "Table",
+      "condition": "仅：Query",
+      "description": "获取表格类型的行结果"
+    },
+    {
+      "key": "listResult",
+      "name": "查询结果(对象列表)",
+      "type": "Object",
+      "condition": "仅：Query",
+      "description": "获得动态对象列表类型的结果"
+    },
+    {
+      "key": "firstItem",
+      "name": "首项结果",
+      "type": "Object",
+      "condition": "仅：Query",
+      "description": "如果只需要返回结果的第一行，可以使用此项输出，支持词典或dynamic对象。没有结果时返回null。"
+    },
+    {
+      "key": "rowCount",
+      "name": "结果行数",
+      "type": "Integer",
+      "condition": "仅：Query",
+      "description": ""
+    }
+  ],
+  "selections": {
+    "dbType": {
+      "name": "数据库连接类型",
+      "items": [
+        {
+          "value": "sqlserver",
+          "name": "SQL Server",
+          "description": ""
+        },
+        {
+          "value": "mysql",
+          "name": "MySQL",
+          "description": ""
+        },
+        {
+          "value": "sqlite",
+          "name": "SQLite",
+          "description": ""
+        },
+        {
+          "value": "oledb",
+          "name": "OleDB",
+          "description": ""
+        },
+        {
+          "value": "odbc",
+          "name": "ODBC",
+          "description": ""
+        }
+      ]
+    },
+    "operationType": {
+      "name": "执行方式",
+      "items": [
+        {
+          "value": "Query",
+          "name": "Query：查询并返回结果数据",
+          "description": ""
+        },
+        {
+          "value": "Execute",
+          "name": "Execute：执行并返回影响的行数",
+          "description": ""
+        },
+        {
+          "value": "ExecuteScalar",
+          "name": "ExecuteScalar：执行并返回单个值(首行首列的值)",
+          "description": ""
+        }
+      ]
+    }
+  },
+  "sourceFileName": "sys_dboperation_数据库查询.md"
+}

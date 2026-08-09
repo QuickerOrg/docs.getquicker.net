@@ -1,0 +1,119 @@
+---
+title: "公式识别"
+description: "数学公式识别"
+slug: "/v2/xaction/modules/mathocr"
+sidebar_label: "公式识别"
+sidebar_position: 20
+quickerDocKey: "xaction/module/sys:mathocr"
+comments: true
+moduleKey: "sys:mathocr"
+docStatus: "migrated-unreviewed"
+metadataGeneratedAt: "2026-08-03 20:08:03"
+metadataHash: "75b35155fb2ad3ef909cf8bb5a4e38701c2fd0cc8fa91a8ef085312006861094"
+legacyDocId: 49850606
+legacyContentUpdatedAt: "2026-03-20T00:32:28.000Z"
+---
+
+# 公式识别
+
+数学公式识别
+
+{/* xaction-metadata:start */}
+## 当前模块定义
+
+- 模块 Key：`sys:mathocr`
+- 分类：网络服务（`Network`）
+- 类型：`Action`
+- 风险操作：否
+- 专业版：否
+
+## 输入参数
+
+| Key | 名称 | 类型 | 默认值 | 必填 | 变量模式 | 条件 | 说明 |
+| --- | --- | --- | --- | --- | --- | --- | --- |
+| `vendor` | 厂商接口 | `Enum` | Mathpix | 是 | `Input` |  | 详情请参考文档。 |
+| `image` | 公式图片 | `Image` |  | 是 | `UseVarOrInput` | 排除：MathpixStrokes | 指定待识别的图片变量、图片文件的路径或网址(通过表达式传入)。 |
+| `stopIfFail` | 失败后停止 | `Boolean` | true | 否 | `Input` |  | 失败后是否停止动作 |
+
+## 输出参数
+
+| Key | 名称 | 类型 | 条件 | 说明 |
+| --- | --- | --- | --- | --- |
+| `isSuccess` | 是否成功 | `Boolean` |  | 操作是否成功 |
+| `mathpixMarkdown` | Mathpix MD | `Text` |  | Mathpix Markdown格式 |
+| `mathml` | MathML | `Text` |  |  |
+| `asciimath` | AsciiMath | `Text` |  |  |
+| `latex` | Latex | `Text` |  |  |
+| `latexEx1` | Latex附加格式1 | `Text` |  |  |
+| `latexEx2` | Latex附加格式2 | `Text` |  |  |
+| `rawData` | 原始响应 | `Text` |  | 厂商接口返回的原始内容，通常为json格式。 |
+
+## 选项值
+
+### `vendor` 厂商接口
+
+| Value | 名称 | 说明 |
+| --- | --- | --- |
+| `Mathpix` | 图片识别(Mathpix) |  |
+| `MathpixStrokes` | 手写并识别(Mathpix) |  |
+{/* xaction-metadata:end */}
+
+调用Mathpix接口识别图片中的公式。
+
+本功能耗费Q豆，费用：每次调用**0.015**豆(价格可能会随汇率等因素波动)。[什么是Q豆？](https://getquicker.net/KC/Kb/Article/933)
+
+注：Mathpix自2022年9月1日起大幅提升了前1000次的API[请求费用](https://mathpix.com/pricing)（从免费提高到0.02美元/每请求），外加美元升值，目前前1000次的每次成本约0.15元，之后每次成本约0.03元。考虑到此功能用户主要为学生朋友，CL在能力范围之内进行补贴，保持每次请求价格0.028Q豆不变。
+
+Mathpix 目前降低了识别价格，从2026年3月21日起，每次识别价格从0.028Q豆下调为0.015Q豆（即约1.5分钱）。
+
+![](./img/mathocr-001-9c92767a4e.png)
+
+支持两种操作类型：
+
+（1）图片识别：根据给定的图片识别公式。
+
+（2）手写并识别：显示手写板，书写公式后识别内容。
+
+
+
+## 图片识别
+
+通常用于截图后识别。
+
+
+
+参数：
+
+【公式图片】指定要识别的图片。可以为图片变变量（如截图后生成的图片）、图片文件路径或图片网址。
+
+图片文件路径和图片网址需要通过表达式方式传入。
+
+### 输出
+
+【是否成功】操作是否成功。
+
+【Mathpix MD】Mathpix Markdown文本。
+
+【Latex】Latex识别结果。
+
+【MathML】MathML识别结果。
+
+【AsciiMath】AsciiMath识别结果。
+
+【Latex附加格式1】在Latex两侧增加$$符号。
+
+【Latex附加格式2】在Latex两侧增加\\begin&#123;equation&#125;与\\end&#123;equation&#125;
+
+【原始响应】Mathpix服务器返回的原始内容。
+
+## 手写并识别
+
+先显示手写板窗口，确认后识别手势数据。
+
+输出参数同图片识别（有的参数会输出空内容，具体以实际输出为准）。
+
+## 示例动作
+
+-   公式识别：[https://getquicker.net/sharedaction?code=1bdedee6-4774-42d3-7697-08d950c2afd2](https://getquicker.net/sharedaction?code=1bdedee6-4774-42d3-7697-08d950c2afd2)
+
+——

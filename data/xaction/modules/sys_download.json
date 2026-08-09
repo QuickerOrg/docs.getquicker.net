@@ -1,0 +1,165 @@
+{
+  "key": "sys:download",
+  "slug": "download",
+  "legacySlug": "download",
+  "ownsLegacyContent": true,
+  "name": "下载文件",
+  "description": "下载网络文件(请勿用于下载大文件)",
+  "category": "Network",
+  "categoryName": "网络服务",
+  "stepType": "Action",
+  "isRisky": true,
+  "isProOnly": false,
+  "helpLink": "https://getquicker.net/KC/Help/Doc/download",
+  "inputs": [
+    {
+      "key": "url",
+      "name": "网址",
+      "type": "Text",
+      "defaultValue": "https://",
+      "required": true,
+      "variableMode": "UseVarOrInput",
+      "condition": "",
+      "description": "要下载的文件网址"
+    },
+    {
+      "key": "savePath",
+      "name": "保存文件夹",
+      "type": "Text",
+      "defaultValue": "",
+      "required": true,
+      "variableMode": "UseVarOrInput",
+      "condition": "",
+      "description": "下载文件的保存位置（文件夹的路径）"
+    },
+    {
+      "key": "saveName",
+      "name": "保存文件名",
+      "type": "Text",
+      "defaultValue": "",
+      "required": true,
+      "variableMode": "UseVarOrInput",
+      "condition": "",
+      "description": "可选。为空时自动判断文件名。"
+    },
+    {
+      "key": "ua",
+      "name": "UserAgent",
+      "type": "Text",
+      "defaultValue": "",
+      "required": false,
+      "variableMode": "Input",
+      "condition": "",
+      "description": "可选。"
+    },
+    {
+      "key": "header",
+      "name": "请求头",
+      "type": "Text",
+      "defaultValue": "",
+      "required": false,
+      "variableMode": "UseVarOrInput",
+      "condition": "",
+      "description": "发送的HttpHeader。每行一个header，格式为Name:Value"
+    },
+    {
+      "key": "cookie",
+      "name": "Cookie",
+      "type": "Text",
+      "defaultValue": "",
+      "required": false,
+      "variableMode": "UseVarOrInput",
+      "condition": "",
+      "description": "请求的cookie内容"
+    },
+    {
+      "key": "expireSeconds",
+      "name": "超时秒数",
+      "type": "Number",
+      "defaultValue": "10",
+      "required": false,
+      "variableMode": "Input",
+      "condition": "",
+      "description": "长时间未接收到数据时，中止下载。"
+    },
+    {
+      "key": "showProgress",
+      "name": "显示进度条",
+      "type": "Boolean",
+      "defaultValue": "false",
+      "required": false,
+      "variableMode": "Input",
+      "condition": "",
+      "description": "是否显示下载进度条"
+    },
+    {
+      "key": "skipCertVerify",
+      "name": "忽略HTTPS证书验证",
+      "type": "Boolean",
+      "defaultValue": "false",
+      "required": false,
+      "variableMode": "Input",
+      "condition": "",
+      "description": ""
+    },
+    {
+      "key": "autoRename",
+      "name": "如果文件已存在，自动重命名下载的文件",
+      "type": "Boolean",
+      "defaultValue": "false",
+      "required": false,
+      "variableMode": "Input",
+      "condition": "",
+      "description": "在文件名后面增加\"_序号\"避免重复。否则将会覆盖已有文件。"
+    },
+    {
+      "key": "stopIfFail",
+      "name": "失败后停止",
+      "type": "Boolean",
+      "defaultValue": "true",
+      "required": false,
+      "variableMode": "Input",
+      "condition": "",
+      "description": "失败后是否停止动作"
+    }
+  ],
+  "outputs": [
+    {
+      "key": "isSuccess",
+      "name": "是否成功",
+      "type": "Boolean",
+      "condition": "",
+      "description": "是否成功下载了文件"
+    },
+    {
+      "key": "savedPath",
+      "name": "文件路径",
+      "type": "Text",
+      "condition": "",
+      "description": "文件的完整保存路径"
+    },
+    {
+      "key": "contentMd5",
+      "name": "内容MD5",
+      "type": "Text",
+      "condition": "",
+      "description": "内容MD5值，不是所有请求都会返回此内容。"
+    },
+    {
+      "key": "downloadSize",
+      "name": "下载大小",
+      "type": "Text",
+      "condition": "",
+      "description": "下载文件的大小（字节数）"
+    },
+    {
+      "key": "eTag",
+      "name": "ETag",
+      "type": "Text",
+      "condition": "",
+      "description": "响应头Etag值，不是所有请求都会返回此内容。"
+    }
+  ],
+  "selections": {},
+  "sourceFileName": "sys_download_下载文件.md"
+}

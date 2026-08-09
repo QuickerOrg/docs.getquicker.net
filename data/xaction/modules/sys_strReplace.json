@@ -1,0 +1,153 @@
+{
+  "key": "sys:strReplace",
+  "slug": "strreplace",
+  "legacySlug": "strreplace",
+  "ownsLegacyContent": true,
+  "name": "替换文本",
+  "description": "替换文本中的指定内容",
+  "category": "Text",
+  "categoryName": "文本处理",
+  "stepType": "Action",
+  "isRisky": false,
+  "isProOnly": false,
+  "helpLink": "https://getquicker.net/KC/Help/Doc/strReplace",
+  "inputs": [
+    {
+      "key": "type",
+      "name": "操作类型",
+      "type": "Enum",
+      "defaultValue": "single",
+      "required": true,
+      "variableMode": "Input",
+      "condition": "",
+      "description": ""
+    },
+    {
+      "key": "input",
+      "name": "输入",
+      "type": "Text",
+      "defaultValue": "",
+      "required": true,
+      "variableMode": "UseVarOrInput",
+      "condition": "",
+      "description": "要提取内容的文本"
+    },
+    {
+      "key": "old",
+      "name": "查找内容",
+      "type": "Text",
+      "defaultValue": "",
+      "required": true,
+      "variableMode": "UseVarOrInput",
+      "condition": "仅：single",
+      "description": "要替换的内容"
+    },
+    {
+      "key": "new",
+      "name": "替换为",
+      "type": "Text",
+      "defaultValue": "",
+      "required": true,
+      "variableMode": "UseVarOrInput",
+      "condition": "仅：single",
+      "description": "替换成的内容"
+    },
+    {
+      "key": "batchReplaceData",
+      "name": "查找和替换内容",
+      "type": "Text",
+      "defaultValue": "",
+      "required": true,
+      "variableMode": "UseVarOrInput",
+      "condition": "仅：batch",
+      "description": "每行一对查找和替换内容，中间使用|||或|分隔。例如将a替换成A，写作:a|A 或 a|||A"
+    },
+    {
+      "key": "escapeOld",
+      "name": "转义“查找内容”",
+      "type": "Boolean",
+      "defaultValue": "false",
+      "required": false,
+      "variableMode": "UseVarOrInput",
+      "condition": "",
+      "description": "替换\"查找内容\"中的转义字符（\\r,\\n,\\t）"
+    },
+    {
+      "key": "replaceEscapes",
+      "name": "转义“替换为”",
+      "type": "Boolean",
+      "defaultValue": "true",
+      "required": false,
+      "variableMode": "UseVarOrInput",
+      "condition": "",
+      "description": "替换\"替换为\"中的转义字符（\\r,\\n,\\t）"
+    },
+    {
+      "key": "useRegex",
+      "name": "使用正则替换",
+      "type": "Boolean",
+      "defaultValue": "false",
+      "required": false,
+      "variableMode": "UseVarOrInput",
+      "condition": "",
+      "description": ""
+    },
+    {
+      "key": "ignoreCase",
+      "name": "忽略大小写",
+      "type": "Boolean",
+      "defaultValue": "false",
+      "required": false,
+      "variableMode": "UseVarOrInput",
+      "condition": "",
+      "description": ""
+    },
+    {
+      "key": "singleLine",
+      "name": "正则：单行",
+      "type": "Boolean",
+      "defaultValue": "true",
+      "required": false,
+      "variableMode": "UseVarOrInput",
+      "condition": "",
+      "description": "此模式下\".\"能匹配任意字符，包括换行符。(否则匹配除了\\n外的任意字符)"
+    },
+    {
+      "key": "multiLine",
+      "name": "正则：多行",
+      "type": "Boolean",
+      "defaultValue": "false",
+      "required": false,
+      "variableMode": "UseVarOrInput",
+      "condition": "",
+      "description": "此模式下^和$可以分别匹配行首和行尾。(否则匹配输入内容的开始和结束)"
+    }
+  ],
+  "outputs": [
+    {
+      "key": "output",
+      "name": "结果",
+      "type": "Text",
+      "condition": "",
+      "description": "替换后的文本"
+    }
+  ],
+  "selections": {
+    "type": {
+      "name": "操作类型",
+      "items": [
+        {
+          "value": "single",
+          "name": "普通（替换一种内容）",
+          "description": ""
+        },
+        {
+          "value": "batch",
+          "name": "批量（替换多种内容）",
+          "description": ""
+        }
+      ]
+    }
+  },
+  "sourceFileName": "sys_strReplace_替换文本.md"
+}

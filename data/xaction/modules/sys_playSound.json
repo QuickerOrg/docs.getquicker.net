@@ -1,0 +1,143 @@
+{
+  "key": "sys:playSound",
+  "slug": "playsound",
+  "legacySlug": "playsound",
+  "ownsLegacyContent": true,
+  "name": "播放声音",
+  "description": "播放声音提示或声音文件。",
+  "category": "System",
+  "categoryName": "Windows系统",
+  "stepType": "Action",
+  "isRisky": false,
+  "isProOnly": false,
+  "helpLink": "https://getquicker.net/KC/Help/Doc/playsound",
+  "inputs": [
+    {
+      "key": "type",
+      "name": "类型",
+      "type": "Enum",
+      "defaultValue": "LOCAL",
+      "required": true,
+      "variableMode": "Input",
+      "condition": "",
+      "description": ""
+    },
+    {
+      "key": "localSound",
+      "name": "提示音类型",
+      "type": "Enum",
+      "defaultValue": "info",
+      "required": false,
+      "variableMode": "Input",
+      "condition": "仅：LOCAL",
+      "description": ""
+    },
+    {
+      "key": "uri",
+      "name": "路径或URL",
+      "type": "Text",
+      "defaultValue": "",
+      "required": false,
+      "variableMode": "UseVarOrInput",
+      "condition": "仅：EXTERN",
+      "description": "音乐文件的本地路径或网址。"
+    },
+    {
+      "key": "text",
+      "name": "文本内容",
+      "type": "Text",
+      "defaultValue": "",
+      "required": false,
+      "variableMode": "UseVarOrInput",
+      "condition": "仅：TTS",
+      "description": "需要朗读的文本。"
+    },
+    {
+      "key": "wait",
+      "name": "等待播放完成",
+      "type": "Boolean",
+      "defaultValue": "",
+      "required": false,
+      "variableMode": "Input",
+      "condition": "",
+      "description": ""
+    },
+    {
+      "key": "stopIfFail",
+      "name": "失败后停止",
+      "type": "Boolean",
+      "defaultValue": "true",
+      "required": false,
+      "variableMode": "Input",
+      "condition": "",
+      "description": "失败后是否停止动作"
+    }
+  ],
+  "outputs": [
+    {
+      "key": "isSuccess",
+      "name": "是否成功",
+      "type": "Boolean",
+      "condition": "",
+      "description": "操作是否成功"
+    }
+  ],
+  "selections": {
+    "type": {
+      "name": "类型",
+      "items": [
+        {
+          "value": "LOCAL",
+          "name": "内置声音提示",
+          "description": ""
+        },
+        {
+          "value": "EXTERN",
+          "name": "电脑文件或网络文件",
+          "description": ""
+        },
+        {
+          "value": "TTS",
+          "name": "朗读文本（系统TTS）",
+          "description": ""
+        }
+      ]
+    },
+    "localSound": {
+      "name": "提示音类型",
+      "items": [
+        {
+          "value": "info",
+          "name": "信息",
+          "description": ""
+        },
+        {
+          "value": "snip",
+          "name": "截图",
+          "description": ""
+        },
+        {
+          "value": "succeed",
+          "name": "成功",
+          "description": ""
+        },
+        {
+          "value": "warning",
+          "name": "警告",
+          "description": ""
+        },
+        {
+          "value": "wrong",
+          "name": "错误",
+          "description": ""
+        },
+        {
+          "value": "dim",
+          "name": "弱提醒",
+          "description": ""
+        }
+      ]
+    }
+  },
+  "sourceFileName": "sys_playSound_播放声音.md"
+}

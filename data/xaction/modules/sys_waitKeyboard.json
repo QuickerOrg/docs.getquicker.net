@@ -1,0 +1,234 @@
+{
+  "key": "sys:waitKeyboard",
+  "slug": "waitkeyboard",
+  "legacySlug": "waitkeyboard",
+  "ownsLegacyContent": true,
+  "name": "等待按键",
+  "description": "等待用户按下某个按键",
+  "category": "Ui",
+  "categoryName": "界面组件",
+  "stepType": "Action",
+  "isRisky": true,
+  "isProOnly": false,
+  "helpLink": "https://getquicker.net/KC/Help/Doc/waitkeyboard",
+  "inputs": [
+    {
+      "key": "operation",
+      "name": "操作类型",
+      "type": "Enum",
+      "defaultValue": "waitKeyDown",
+      "required": true,
+      "variableMode": "Input",
+      "condition": "",
+      "description": ""
+    },
+    {
+      "key": "waitingKeys",
+      "name": "等待的按键",
+      "type": "Text",
+      "defaultValue": "",
+      "required": false,
+      "variableMode": "Input",
+      "condition": "",
+      "description": "可选，留空表示任意键盘按键。格式请参考文档。"
+    },
+    {
+      "key": "modifierKeys",
+      "name": "修饰键",
+      "type": "Text",
+      "defaultValue": "",
+      "required": false,
+      "variableMode": "Input",
+      "condition": "",
+      "description": "可选。逗号分隔的ctrl,shift,alt,win组合。仅用于等待组合快捷键。修饰键不会被拦截。"
+    },
+    {
+      "key": "maxWaitSeconds",
+      "name": "最长等待秒数",
+      "type": "Number",
+      "defaultValue": "0",
+      "required": true,
+      "variableMode": "Input",
+      "condition": "",
+      "description": "0为永久超时超过等待时间，则结束等待。"
+    },
+    {
+      "key": "filterEvent",
+      "name": "拦截原始按键事件",
+      "type": "Boolean",
+      "defaultValue": "true",
+      "required": false,
+      "variableMode": "Input",
+      "condition": "",
+      "description": "避免按键输入到窗口中 (仅对键盘按键有效)"
+    },
+    {
+      "key": "waitKeyUp",
+      "name": "等待按键抬起",
+      "type": "Boolean",
+      "defaultValue": "false",
+      "required": false,
+      "variableMode": "Input",
+      "condition": "",
+      "description": "等待按键抬起后再返回 (仅对键盘按键有效)"
+    },
+    {
+      "key": "ignoreSimulated",
+      "name": "忽略模拟的按键",
+      "type": "Boolean",
+      "defaultValue": "false",
+      "required": false,
+      "variableMode": "Input",
+      "condition": "",
+      "description": "是否忽略（不检测）模拟的按键消息"
+    },
+    {
+      "key": "help",
+      "name": "提示信息",
+      "type": "Text",
+      "defaultValue": "请按键...",
+      "required": false,
+      "variableMode": "UseVarOrInput",
+      "condition": "",
+      "description": "等待按键时显示的提示文字"
+    },
+    {
+      "key": "fontfamily",
+      "name": "字体名称",
+      "type": "Text",
+      "defaultValue": "",
+      "required": false,
+      "variableMode": "UseVarOrInput",
+      "condition": "",
+      "description": "可选。设置字体名称。如有多个字体，使用逗号分隔。"
+    },
+    {
+      "key": "winLocation",
+      "name": "提示窗口位置",
+      "type": "Enum",
+      "defaultValue": "TopCenter",
+      "required": false,
+      "variableMode": "UseVarOrInput",
+      "condition": "",
+      "description": "在哪里显示提示窗口"
+    },
+    {
+      "key": "mouseThrough",
+      "name": "鼠标穿透",
+      "type": "Boolean",
+      "defaultValue": "true",
+      "required": false,
+      "variableMode": "Input",
+      "condition": "",
+      "description": "鼠标是否可以穿透提示窗口点击下面的内容"
+    },
+    {
+      "key": "stopIfFail",
+      "name": "失败后停止动作",
+      "type": "Boolean",
+      "defaultValue": "true",
+      "required": false,
+      "variableMode": "Input",
+      "condition": "",
+      "description": "失败后是否停止动作"
+    }
+  ],
+  "outputs": [
+    {
+      "key": "isSuccess",
+      "name": "步骤执行是否成功",
+      "type": "Boolean",
+      "condition": "",
+      "description": "步骤执行是否成功"
+    },
+    {
+      "key": "keyCode",
+      "name": "键名",
+      "type": "Text",
+      "condition": "",
+      "description": "按键名，具体请参考模块文档。"
+    },
+    {
+      "key": "keyValue",
+      "name": "键值",
+      "type": "Integer",
+      "condition": "",
+      "description": "按键数值，具体请参考模块文档。"
+    },
+    {
+      "key": "holdTimeMs",
+      "name": "按下保持时间",
+      "type": "Integer",
+      "condition": "",
+      "description": "按下保持时间，单位毫秒。仅支持键盘按键。"
+    }
+  ],
+  "selections": {
+    "operation": {
+      "name": "操作类型",
+      "items": [
+        {
+          "value": "waitKeyDown",
+          "name": "等待按下",
+          "description": ""
+        },
+        {
+          "value": "waitAllKeyUp",
+          "name": "等待所有按键抬起",
+          "description": ""
+        }
+      ]
+    },
+    "winLocation": {
+      "name": "提示窗口位置",
+      "items": [
+        {
+          "value": "CenterScreen",
+          "name": "屏幕中间",
+          "description": ""
+        },
+        {
+          "value": "TopLeft",
+          "name": "屏幕左上",
+          "description": ""
+        },
+        {
+          "value": "TopCenter",
+          "name": "屏幕中上",
+          "description": ""
+        },
+        {
+          "value": "TopRight",
+          "name": "屏幕右上",
+          "description": ""
+        },
+        {
+          "value": "LeftCenter",
+          "name": "屏幕左中",
+          "description": ""
+        },
+        {
+          "value": "RightCenter",
+          "name": "屏幕右中",
+          "description": ""
+        },
+        {
+          "value": "BottomLeft",
+          "name": "屏幕左下",
+          "description": ""
+        },
+        {
+          "value": "BottomCenter",
+          "name": "屏幕中下",
+          "description": ""
+        },
+        {
+          "value": "BottomRight",
+          "name": "屏幕右下",
+          "description": ""
+        }
+      ]
+    }
+  },
+  "sourceFileName": "sys_waitKeyboard_等待按键.md"
+}

@@ -1,0 +1,97 @@
+{
+  "key": "sys:screenRecordingUI",
+  "slug": "screen-recording-ui",
+  "legacySlug": "screencapture",
+  "ownsLegacyContent": false,
+  "name": "屏幕录制",
+  "description": "弹出选区 UI 让用户框选录制范围，打开录屏工具栏进行可视化录制，录完后返回文件路径。",
+  "category": "Image",
+  "categoryName": "图片处理",
+  "stepType": "Action",
+  "isRisky": false,
+  "isProOnly": false,
+  "helpLink": "https://getquicker.net/KC/Help/Doc/screencapture",
+  "inputs": [
+    {
+      "key": "delay",
+      "name": "开始前延迟",
+      "type": "Integer",
+      "defaultValue": "0",
+      "required": false,
+      "variableMode": "UseVarOrInput",
+      "condition": "",
+      "description": "等待多少毫秒后弹出选区界面。"
+    },
+    {
+      "key": "manualAdjustSelection",
+      "name": "手动调整选区",
+      "type": "Boolean",
+      "defaultValue": "false",
+      "required": false,
+      "variableMode": "Input",
+      "condition": "",
+      "description": "默认关闭：框选完成后自动确认并进入录屏。勾选后可先调整选区，再确认开录。"
+    },
+    {
+      "key": "addToHistory",
+      "name": "加入录屏历史",
+      "type": "Boolean",
+      "defaultValue": "false",
+      "required": false,
+      "variableMode": "Input",
+      "condition": "",
+      "description": "显式启用后，将录制结果复制到本机录屏历史；默认关闭以保持既有动作的文件生命周期。"
+    },
+    {
+      "key": "stopIfFail",
+      "name": "失败后停止",
+      "type": "Boolean",
+      "defaultValue": "true",
+      "required": false,
+      "variableMode": "Input",
+      "condition": "",
+      "description": "失败后是否停止动作"
+    }
+  ],
+  "outputs": [
+    {
+      "key": "isSuccess",
+      "name": "是否成功",
+      "type": "Boolean",
+      "condition": "",
+      "description": "操作是否成功"
+    },
+    {
+      "key": "filePath",
+      "name": "文件路径",
+      "type": "Text",
+      "condition": "",
+      "description": "录制完成的视频文件路径；用户取消时为空。"
+    },
+    {
+      "key": "durationSeconds",
+      "name": "录制时长",
+      "type": "Number",
+      "condition": "",
+      "description": "录制时长（秒）。"
+    },
+    {
+      "key": "rect",
+      "name": "录制区域",
+      "type": "Text",
+      "condition": "",
+      "description": "实际录制区域(left,top,right,bottom)。"
+    },
+    {
+      "key": "errMessage",
+      "name": "错误消息",
+      "type": "Text",
+      "condition": "",
+      "description": "步骤执行出错时的消息"
+    }
+  ],
+  "selections": {},
+  "sharedDocumentationKey": "sys:screenCapture",
+  "sharedDocumentationSlug": "screencapture",
+  "sourceFileName": "sys_screenRecordingUI_屏幕录制.md"
+}

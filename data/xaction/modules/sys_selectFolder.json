@@ -1,0 +1,74 @@
+{
+  "key": "sys:selectFolder",
+  "slug": "selectfolder",
+  "legacySlug": "selectfolder",
+  "ownsLegacyContent": true,
+  "name": "选择文件夹",
+  "description": "文件夹选择对话框",
+  "category": "Ui",
+  "categoryName": "界面组件",
+  "stepType": "Action",
+  "isRisky": false,
+  "isProOnly": false,
+  "helpLink": "https://getquicker.net/KC/Help/Doc/selectfolder",
+  "inputs": [
+    {
+      "key": "prompt",
+      "name": "提示文字",
+      "type": "Text",
+      "defaultValue": "请选择文件夹",
+      "required": true,
+      "variableMode": "Input",
+      "condition": "",
+      "description": "选择窗口的标题"
+    },
+    {
+      "key": "initDir",
+      "name": "初始路径",
+      "type": "Text",
+      "defaultValue": "",
+      "required": false,
+      "variableMode": "UseVarOrInput",
+      "condition": "",
+      "description": "初始文件夹路径"
+    },
+    {
+      "key": "showOpenedDirs",
+      "name": "显示已打开的文件夹",
+      "type": "Boolean",
+      "defaultValue": "true",
+      "required": false,
+      "variableMode": "Input",
+      "condition": "",
+      "description": "显示当前在资源管理器窗口中打开的文件夹。"
+    },
+    {
+      "key": "stopIfFail",
+      "name": "失败后停止",
+      "type": "Boolean",
+      "defaultValue": "true",
+      "required": false,
+      "variableMode": "Input",
+      "condition": "",
+      "description": "失败后是否停止动作"
+    }
+  ],
+  "outputs": [
+    {
+      "key": "isSuccess",
+      "name": "是否成功",
+      "type": "Boolean",
+      "condition": "",
+      "description": "是否成功选择了路径。"
+    },
+    {
+      "key": "path",
+      "name": "路径",
+      "type": "Text",
+      "condition": "",
+      "description": "选择的文件夹路径。"
+    }
+  ],
+  "selections": {},
+  "sourceFileName": "sys_selectFolder_选择文件夹.md"
+}

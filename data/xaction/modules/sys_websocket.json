@@ -1,0 +1,175 @@
+{
+  "key": "sys:websocket",
+  "slug": "websocket",
+  "legacySlug": "websocket",
+  "ownsLegacyContent": true,
+  "name": "Websocket",
+  "description": "Websocket相关操作",
+  "category": "Network",
+  "categoryName": "网络服务",
+  "stepType": "Action",
+  "isRisky": false,
+  "isProOnly": false,
+  "helpLink": "https://getquicker.net/KC/Help/Doc/websocket",
+  "inputs": [
+    {
+      "key": "operation",
+      "name": "操作类型",
+      "type": "Enum",
+      "defaultValue": "CreateClient",
+      "required": true,
+      "variableMode": "Input",
+      "condition": "",
+      "description": ""
+    },
+    {
+      "key": "server",
+      "name": "服务器地址",
+      "type": "Text",
+      "defaultValue": "",
+      "required": false,
+      "variableMode": "UseVarOrInput",
+      "condition": "仅：CreateClient",
+      "description": ""
+    },
+    {
+      "key": "clientId",
+      "name": "连接ID",
+      "type": "Text",
+      "defaultValue": "",
+      "required": false,
+      "variableMode": "UseVarOrInput",
+      "condition": "仅：CreateClient, SendMsgToServer, GetClientState, CloseClient",
+      "description": "用于区分不同的客户端连接。连接相同id的客户端时，前一个连接会被自动关闭。"
+    },
+    {
+      "key": "spName",
+      "name": "消息处理子程序",
+      "type": "Text",
+      "defaultValue": "",
+      "required": false,
+      "variableMode": "UseVarOrInput",
+      "condition": "仅：CreateClient",
+      "description": "使用子程序处理从websocket服务接收到的消息。详情请参考文档。"
+    },
+    {
+      "key": "account",
+      "name": "账号密码",
+      "type": "Text",
+      "defaultValue": "",
+      "required": false,
+      "variableMode": "UseVarOrInput",
+      "condition": "仅：CreateClient",
+      "description": "支持Basic和Digest认证方式。多行填写。第一行写账号，第二行写密码。"
+    },
+    {
+      "key": "origin",
+      "name": "Origin",
+      "type": "Text",
+      "defaultValue": "",
+      "required": false,
+      "variableMode": "UseVarOrInput",
+      "condition": "仅：CreateClient",
+      "description": "仅需要时填写"
+    },
+    {
+      "key": "cookie",
+      "name": "Cookie",
+      "type": "Text",
+      "defaultValue": "",
+      "required": false,
+      "variableMode": "UseVarOrInput",
+      "condition": "仅：CreateClient",
+      "description": "请求的cookie内容"
+    },
+    {
+      "key": "content",
+      "name": "消息内容",
+      "type": "Text",
+      "defaultValue": "",
+      "required": false,
+      "variableMode": "UseVarOrInput",
+      "condition": "仅：CreateClient, SendTextToClient, SendFileToClient, SendFileToClientBase64, SendMsgToServer",
+      "description": "文本内容。发送文件时为文件的完整路径。"
+    },
+    {
+      "key": "callbackOnClose",
+      "name": "服务断开时通知动作(调用动作并传入参数:websocket__closed)",
+      "type": "Boolean",
+      "defaultValue": "true",
+      "required": false,
+      "variableMode": "Input",
+      "condition": "仅：CreateClient",
+      "description": "是否等待服务器响应"
+    },
+    {
+      "key": "stopIfFail",
+      "name": "失败后停止",
+      "type": "Boolean",
+      "defaultValue": "true",
+      "required": false,
+      "variableMode": "Input",
+      "condition": "",
+      "description": "失败后是否停止动作"
+    }
+  ],
+  "outputs": [
+    {
+      "key": "isSuccess",
+      "name": "是否成功",
+      "type": "Boolean",
+      "condition": "",
+      "description": "操作是否成功"
+    },
+    {
+      "key": "isConnected",
+      "name": "是否连接",
+      "type": "Boolean",
+      "condition": "仅：GetClientState",
+      "description": "指定客户端是否连接到远程服务器"
+    }
+  ],
+  "selections": {
+    "operation": {
+      "name": "操作类型",
+      "items": [
+        {
+          "value": "CreateClient",
+          "name": "客户端：连接到Websocket服务",
+          "description": ""
+        },
+        {
+          "value": "SendMsgToServer",
+          "name": "客户端：向Websocket服务发送消息",
+          "description": ""
+        },
+        {
+          "value": "GetClientState",
+          "name": "客户端：获取连接状态",
+          "description": ""
+        },
+        {
+          "value": "CloseClient",
+          "name": "客户端：关闭连接",
+          "description": ""
+        },
+        {
+          "value": "SendTextToClient",
+          "name": "服务器：向连接的客户端发送文本",
+          "description": ""
+        },
+        {
+          "value": "SendFileToClient",
+          "name": "服务器：向连接的客户端发送文件(二进制方式)",
+          "description": ""
+        },
+        {
+          "value": "SendFileToClientBase64",
+          "name": "服务器：向连接的客户端发送文件(Base64方式)",
+          "description": ""
+        }
+      ]
+    }
+  },
+  "sourceFileName": "sys_websocket_Websocket.md"
+}

@@ -1,0 +1,142 @@
+{
+  "key": "sys:selectFile",
+  "slug": "selectfile",
+  "legacySlug": "selectfile",
+  "ownsLegacyContent": true,
+  "name": "选择文件",
+  "description": "用文件选择对话框选择要打开或保存的文件",
+  "category": "Ui",
+  "categoryName": "界面组件",
+  "stepType": "Action",
+  "isRisky": false,
+  "isProOnly": false,
+  "helpLink": "https://getquicker.net/KC/Help/Doc/selectfile",
+  "inputs": [
+    {
+      "key": "type",
+      "name": "操作类型",
+      "type": "Enum",
+      "defaultValue": "openFile",
+      "required": true,
+      "variableMode": "Input",
+      "condition": "",
+      "description": "打开文件：选择一个已存在的文件。保存文件：选择文件要保存的目标位置。"
+    },
+    {
+      "key": "filter",
+      "name": "文件类型筛选器",
+      "type": "Text",
+      "defaultValue": "文本文件|*.txt|所有文件|*.*",
+      "required": false,
+      "variableMode": "UseVarOrInput",
+      "condition": "",
+      "description": "文件类型筛选器，格式为：类型1|扩展名1|类型2|扩展名2。如：文本文件(*.txt)|*.txt|C#文件|*.cs|所有文件|*.*"
+    },
+    {
+      "key": "defaultExt",
+      "name": "默认扩展名",
+      "type": "Text",
+      "defaultValue": ".txt",
+      "required": false,
+      "variableMode": "UseVarOrInput",
+      "condition": "",
+      "description": "默认的文件扩展名，应该是筛选器里的一种"
+    },
+    {
+      "key": "initFileName",
+      "name": "初始文件名",
+      "type": "Text",
+      "defaultValue": "",
+      "required": false,
+      "variableMode": "UseVarOrInput",
+      "condition": "",
+      "description": "预选选择或设置的文件名"
+    },
+    {
+      "key": "initDir",
+      "name": "初始路径",
+      "type": "Text",
+      "defaultValue": "",
+      "required": false,
+      "variableMode": "UseVarOrInput",
+      "condition": "",
+      "description": "初始文件夹路径"
+    },
+    {
+      "key": "title",
+      "name": "对话框标题",
+      "type": "Text",
+      "defaultValue": "",
+      "required": false,
+      "variableMode": "UseVarOrInput",
+      "condition": "",
+      "description": "选择窗口的标题"
+    },
+    {
+      "key": "topMost",
+      "name": "置顶显示",
+      "type": "Boolean",
+      "defaultValue": "true",
+      "required": false,
+      "variableMode": "Input",
+      "condition": "",
+      "description": "是否置置顶显示窗口。"
+    },
+    {
+      "key": "stopIfFail",
+      "name": "失败后停止",
+      "type": "Boolean",
+      "defaultValue": "true",
+      "required": false,
+      "variableMode": "Input",
+      "condition": "",
+      "description": "失败后是否停止动作"
+    }
+  ],
+  "outputs": [
+    {
+      "key": "isSuccess",
+      "name": "是否成功",
+      "type": "Boolean",
+      "condition": "",
+      "description": "是否成功选择了路径。"
+    },
+    {
+      "key": "path",
+      "name": "路径",
+      "type": "Text",
+      "condition": "仅：openFile, saveFile",
+      "description": "选择的文件路径。"
+    },
+    {
+      "key": "pathList",
+      "name": "路径列表",
+      "type": "List",
+      "condition": "仅：openMultiFile",
+      "description": "选择的文件路径列表。"
+    }
+  ],
+  "selections": {
+    "type": {
+      "name": "操作类型",
+      "items": [
+        {
+          "value": "openFile",
+          "name": "打开单个文件",
+          "description": ""
+        },
+        {
+          "value": "openMultiFile",
+          "name": "打开多个文件",
+          "description": ""
+        },
+        {
+          "value": "saveFile",
+          "name": "保存文件",
+          "description": ""
+        }
+      ]
+    }
+  },
+  "sourceFileName": "sys_selectFile_选择文件.md"
+}

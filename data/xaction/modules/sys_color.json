@@ -1,0 +1,243 @@
+{
+  "key": "sys:color",
+  "slug": "color",
+  "legacySlug": "color",
+  "ownsLegacyContent": true,
+  "name": "屏幕取色/颜色转换与计算",
+  "description": "转换颜色值及相关计算处理",
+  "category": "Compute",
+  "categoryName": "计算与比较",
+  "stepType": "Action",
+  "isRisky": false,
+  "isProOnly": false,
+  "helpLink": "https://getquicker.net/KC/Help/Doc/color",
+  "inputs": [
+    {
+      "key": "type",
+      "name": "类型",
+      "type": "Enum",
+      "defaultValue": "fromString",
+      "required": true,
+      "variableMode": "Input",
+      "condition": "",
+      "description": "比较方式"
+    },
+    {
+      "key": "colorStr",
+      "name": "颜色",
+      "type": "Text",
+      "defaultValue": "",
+      "required": true,
+      "variableMode": "UseVarOrInput",
+      "condition": "仅：fromString, editOrSelectColor",
+      "description": "颜色的文本值, 格式支持：#223344, #FF223344(ARGB顺序), Red, rgb(200,200,200), rgba(200,200,200,0.5), CMYK(0,0,0,0)或CMYK:0,0,0,0"
+    },
+    {
+      "key": "location",
+      "name": "坐标",
+      "type": "Text",
+      "defaultValue": "0,0",
+      "required": true,
+      "variableMode": "UseVarOrInput",
+      "condition": "仅：fromScreenPosition",
+      "description": "格式为:\"横坐标X,纵坐标Y\""
+    },
+    {
+      "key": "format",
+      "name": "输出文本格式",
+      "type": "Enum",
+      "defaultValue": "HEX_RGB",
+      "required": true,
+      "variableMode": "UseVarOrInput",
+      "condition": "",
+      "description": "输出的颜色文本值格式，用以转换颜色值的格式"
+    },
+    {
+      "key": "stopIfFail",
+      "name": "失败后停止",
+      "type": "Boolean",
+      "defaultValue": "true",
+      "required": false,
+      "variableMode": "Input",
+      "condition": "",
+      "description": "失败后是否停止动作"
+    }
+  ],
+  "outputs": [
+    {
+      "key": "isSuccess",
+      "name": "是否成功",
+      "type": "Boolean",
+      "condition": "",
+      "description": "操作是否成功"
+    },
+    {
+      "key": "A",
+      "name": "透明度值",
+      "type": "Number",
+      "condition": "",
+      "description": "Alpha值（0-255）0表示透明"
+    },
+    {
+      "key": "R",
+      "name": "红色值",
+      "type": "Number",
+      "condition": "",
+      "description": "R值（0-255）"
+    },
+    {
+      "key": "G",
+      "name": "绿色值",
+      "type": "Number",
+      "condition": "",
+      "description": "G值（0-255）"
+    },
+    {
+      "key": "B",
+      "name": "蓝色值",
+      "type": "Number",
+      "condition": "",
+      "description": "B值（0-255）"
+    },
+    {
+      "key": "Hue",
+      "name": "色相",
+      "type": "Number",
+      "condition": "",
+      "description": "Hue值（0-360）"
+    },
+    {
+      "key": "HslS",
+      "name": "HSL.S",
+      "type": "Number",
+      "condition": "",
+      "description": "HSL颜色空间的饱和度S"
+    },
+    {
+      "key": "HslL",
+      "name": "HSL.L",
+      "type": "Number",
+      "condition": "",
+      "description": "HSL颜色空间的亮度值L"
+    },
+    {
+      "key": "HsvS",
+      "name": "HSV.S",
+      "type": "Number",
+      "condition": "",
+      "description": "HSV颜色空间的饱和度S"
+    },
+    {
+      "key": "HsvV",
+      "name": "HSV.V",
+      "type": "Number",
+      "condition": "",
+      "description": "HSV颜色空间的明度V"
+    },
+    {
+      "key": "textValue",
+      "name": "文本值",
+      "type": "Text",
+      "condition": "",
+      "description": "输出颜色的文本值，格式请在输入参数中选择"
+    }
+  ],
+  "selections": {
+    "type": {
+      "name": "类型",
+      "items": [
+        {
+          "value": "fromString",
+          "name": "通过文本指定颜色",
+          "description": ""
+        },
+        {
+          "value": "selectFromScreen",
+          "name": "从屏幕选取颜色",
+          "description": ""
+        },
+        {
+          "value": "fromScreenPosition",
+          "name": "取屏幕指定位置颜色",
+          "description": ""
+        },
+        {
+          "value": "editOrSelectColor",
+          "name": "编辑/选择颜色",
+          "description": ""
+        }
+      ]
+    },
+    "format": {
+      "name": "输出文本格式",
+      "items": [
+        {
+          "value": "HEX_RGB",
+          "name": "十六进制RGB: #6496C8",
+          "description": ""
+        },
+        {
+          "value": "HEX_ARGB",
+          "name": "十六进制ARGB: #FF6496C8",
+          "description": ""
+        },
+        {
+          "value": "rgba",
+          "name": "HTML: rgba(100,150,200,1)",
+          "description": ""
+        },
+        {
+          "value": "rgb",
+          "name": "HTML: rgb(100,150,200)",
+          "description": ""
+        },
+        {
+          "value": "DOT_RGB",
+          "name": "RGB: 100,150,200",
+          "description": ""
+        },
+        {
+          "value": "DOT_RGBA",
+          "name": "RGBA: 100,150,200,255",
+          "description": ""
+        },
+        {
+          "value": "DOT_ARGB",
+          "name": "ARGB: 255,100,150,200",
+          "description": ""
+        },
+        {
+          "value": "float_rgba",
+          "name": "浮点: 0.39f, 0.59f, 0.78f, 1.00f",
+          "description": ""
+        },
+        {
+          "value": "Swift",
+          "name": "Swift: UIColor(red:0.39, green:0.59, blue:0.78, alpha:1.00)",
+          "description": ""
+        },
+        {
+          "value": "CMYK",
+          "name": "CMYK: 50,25,0,22",
+          "description": ""
+        },
+        {
+          "value": "HSL",
+          "name": "hsl(210,47.6%,58.8%)",
+          "description": ""
+        },
+        {
+          "value": "hsla",
+          "name": "hsla(210,47.6%,58.8%,1)",
+          "description": ""
+        },
+        {
+          "value": "HSV_HSB",
+          "name": "HSV/HSB: 210°,50,78.4",
+          "description": ""
+        }
+      ]
+    }
+  },
+  "sourceFileName": "sys_color_屏幕取色_颜色转换与计算.md"
+}

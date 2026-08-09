@@ -1,0 +1,324 @@
+{
+  "key": "sys:everythingsearch",
+  "slug": "everythingsearch",
+  "legacySlug": "everythingsearch",
+  "ownsLegacyContent": true,
+  "name": "使用Everything搜索文件",
+  "description": "调用Everything提供的接口搜索文件",
+  "category": "Files",
+  "categoryName": "系统操作",
+  "stepType": "Action",
+  "isRisky": false,
+  "isProOnly": false,
+  "helpLink": "https://getquicker.net/KC/Help/Doc/everythingsearch",
+  "inputs": [
+    {
+      "key": "search",
+      "name": "搜索内容",
+      "type": "Text",
+      "defaultValue": "",
+      "required": true,
+      "variableMode": "UseVarOrInput",
+      "condition": "",
+      "description": "要搜索的内容，格式与直接在everything软件中搜索时相同。"
+    },
+    {
+      "key": "folder",
+      "name": "限定目录",
+      "type": "Text",
+      "defaultValue": "",
+      "required": false,
+      "variableMode": "UseVarOrInput",
+      "condition": "",
+      "description": "可选。在指定目录下搜索（包含子目录）。"
+    },
+    {
+      "key": "ext",
+      "name": "扩展名",
+      "type": "Text",
+      "defaultValue": "",
+      "required": false,
+      "variableMode": "UseVarOrInput",
+      "condition": "",
+      "description": "可选。半角分号分隔的扩展名列表。如\"txt;docx;xlsx;\""
+    },
+    {
+      "key": "matchWholeFilename",
+      "name": "匹配完整文件名",
+      "type": "Boolean",
+      "defaultValue": "false",
+      "required": false,
+      "variableMode": "UseVarOrInput",
+      "condition": "",
+      "description": "匹配整个文件名。0表示否，1表示是。"
+    },
+    {
+      "key": "matchWholeWord",
+      "name": "匹配整个单词",
+      "type": "Boolean",
+      "defaultValue": "true",
+      "required": false,
+      "variableMode": "UseVarOrInput",
+      "condition": "",
+      "description": "匹配整个单词。如 quicker.exe 将会匹配：quicker.exe, quicker.exe.config等。0表示否，1表示是。"
+    },
+    {
+      "key": "matchPath",
+      "name": "匹配路径",
+      "type": "Boolean",
+      "defaultValue": "false",
+      "required": false,
+      "variableMode": "UseVarOrInput",
+      "condition": "",
+      "description": "匹配路径的不同部分，而不仅是文件名。"
+    },
+    {
+      "key": "matchCase",
+      "name": "匹配大小写",
+      "type": "Boolean",
+      "defaultValue": "false",
+      "required": false,
+      "variableMode": "UseVarOrInput",
+      "condition": "",
+      "description": "是否大小写敏感。0表示否，1表示是。"
+    },
+    {
+      "key": "useRegex",
+      "name": "使用正则匹配",
+      "type": "Boolean",
+      "defaultValue": "false",
+      "required": false,
+      "variableMode": "UseVarOrInput",
+      "condition": "",
+      "description": "是否使用正则匹配。0表示否，1表示是。"
+    },
+    {
+      "key": "maxCount",
+      "name": "最大结果数量",
+      "type": "Integer",
+      "defaultValue": "100",
+      "required": true,
+      "variableMode": "UseVarOrInput",
+      "condition": "",
+      "description": "-1表示不限制"
+    },
+    {
+      "key": "sort",
+      "name": "排序方式",
+      "type": "Enum",
+      "defaultValue": "1",
+      "required": true,
+      "variableMode": "UseVarOrInput",
+      "condition": "",
+      "description": ""
+    },
+    {
+      "key": "stopIfFail",
+      "name": "失败后停止",
+      "type": "Boolean",
+      "defaultValue": "true",
+      "required": false,
+      "variableMode": "Input",
+      "condition": "",
+      "description": "失败后是否停止动作"
+    }
+  ],
+  "outputs": [
+    {
+      "key": "isSuccess",
+      "name": "是否成功",
+      "type": "Boolean",
+      "condition": "",
+      "description": "操作是否成功"
+    },
+    {
+      "key": "pathList",
+      "name": "路径列表",
+      "type": "List",
+      "condition": "",
+      "description": ""
+    },
+    {
+      "key": "resultCount",
+      "name": "结果个数",
+      "type": "Integer",
+      "condition": "",
+      "description": ""
+    },
+    {
+      "key": "rawResult",
+      "name": "原始结果",
+      "type": "Object",
+      "condition": "",
+      "description": ""
+    }
+  ],
+  "selections": {
+    "ext": {
+      "name": "扩展名",
+      "items": [
+        {
+          "value": "bat;cmd;exe;msi;msp;scr;cpl",
+          "name": "可执行文件",
+          "description": ""
+        },
+        {
+          "value": "c;chm;cpp;csv;cxx;doc;docm;docx;dot;dotm;dotx;h;hpp;htm;html;hxx;ini;java;lua;mht;mhtml;odt;pdf;potx;potm;ppam;ppsm;ppsx;pps;ppt;pptm;pptx;rtf;sldm;sldx;thmx;txt;vsd;wpd;wps;wri;xlam;xls;xlsb;xlsm;xlsx;xltm;xltx;xml",
+          "name": "文档",
+          "description": ""
+        },
+        {
+          "value": "ani;bmp;gif;ico;jpe;jpeg;jpg;pcx;png;psd;tga;tif;tiff;webp;wmf",
+          "name": "图片",
+          "description": ""
+        },
+        {
+          "value": "3g2;3gp;3gp2;3gpp;amr;amv;asf;avi;bdmv;bik;d2v;divx;drc;dsa;dsm;dss;dsv;evo;f4v;flc;fli;flic;flv;hdmov;ifo;ivf;m1v;m2p;m2t;m2ts;m2v;m4b;m4p;m4v;mkv;mp2v;mp4;mp4v;mpe;mpeg;mpg;mpls;mpv2;mpv4;mov;mts;ogm;ogv;pss;pva;qt;ram;ratdvd;rm;rmm;rmvb;roq;rpm;smil;smk;swf;tp;tpr;ts;vob;vp6;webm;wm;wmp;wmv",
+          "name": "视频文件",
+          "description": ""
+        },
+        {
+          "value": "aac;ac3;aif;aifc;aiff;au;cda;dts;fla;flac;it;m1a;m2a;m3u;m4a;mid;midi;mka;mod;mp2;mp3;mpa;ogg;ra;rmi;spc;rmi;snd;umx;voc;wav;wma;xm",
+          "name": "音频文件",
+          "description": ""
+        }
+      ]
+    },
+    "sort": {
+      "name": "排序方式",
+      "items": [
+        {
+          "value": "1",
+          "name": "名称顺序 NAME_ASCENDING",
+          "description": ""
+        },
+        {
+          "value": "2",
+          "name": "名称倒序 NAME_DESCENDING",
+          "description": ""
+        },
+        {
+          "value": "3",
+          "name": "路径顺序 PATH_ASCENDING",
+          "description": ""
+        },
+        {
+          "value": "4",
+          "name": "路径倒序 PATH_DESCENDING",
+          "description": ""
+        },
+        {
+          "value": "5",
+          "name": "大小顺序 SIZE_ASCENDING",
+          "description": ""
+        },
+        {
+          "value": "6",
+          "name": "大小倒序 SIZE_DESCENDING",
+          "description": ""
+        },
+        {
+          "value": "7",
+          "name": "扩展名顺序 EXTENSION_ASCENDING",
+          "description": ""
+        },
+        {
+          "value": "8",
+          "name": "扩展名倒序 EXTENSION_DESCENDING",
+          "description": ""
+        },
+        {
+          "value": "9",
+          "name": "类型名顺序 TYPE_NAME_ASCENDING",
+          "description": ""
+        },
+        {
+          "value": "10",
+          "name": "类型名倒序 TYPE_NAME_DESCENDING",
+          "description": ""
+        },
+        {
+          "value": "11",
+          "name": "创建时间顺序 DATE_CREATED_ASCENDING",
+          "description": ""
+        },
+        {
+          "value": "12",
+          "name": "创建时间倒序 DATE_CREATED_DESCENDING",
+          "description": ""
+        },
+        {
+          "value": "13",
+          "name": "修改时间顺序 DATE_MODIFIED_ASCENDING",
+          "description": ""
+        },
+        {
+          "value": "14",
+          "name": "修改时间倒序 DATE_MODIFIED_DESCENDING",
+          "description": ""
+        },
+        {
+          "value": "15",
+          "name": "属性顺序 ATTRIBUTES_ASCENDING",
+          "description": ""
+        },
+        {
+          "value": "16",
+          "name": "属性倒序 ATTRIBUTES_DESCENDING",
+          "description": ""
+        },
+        {
+          "value": "17",
+          "name": "文件列表文件名顺序 FILE_LIST_FILENAME_ASCENDING",
+          "description": ""
+        },
+        {
+          "value": "18",
+          "name": "文件列表文件名倒序 FILE_LIST_FILENAME_DESCENDING",
+          "description": ""
+        },
+        {
+          "value": "19",
+          "name": "运行次数顺序 RUN_COUNT_ASCENDING",
+          "description": ""
+        },
+        {
+          "value": "20",
+          "name": "运行次数倒序 RUN_COUNT_DESCENDING",
+          "description": ""
+        },
+        {
+          "value": "21",
+          "name": "最后变更时间顺序 DATE_RECENTLY_CHANGED_ASCENDING",
+          "description": ""
+        },
+        {
+          "value": "22",
+          "name": "最后变更时间倒序 DATE_RECENTLY_CHANGED_DESCENDING",
+          "description": ""
+        },
+        {
+          "value": "23",
+          "name": "最后访问时间顺序 DATE_ACCESSED_ASCENDING",
+          "description": ""
+        },
+        {
+          "value": "24",
+          "name": "最后访问时间倒序 DATE_ACCESSED_DESCENDING",
+          "description": ""
+        },
+        {
+          "value": "25",
+          "name": "最后运行时间顺序 DATE_RUN_ASCENDING",
+          "description": ""
+        },
+        {
+          "value": "26",
+          "name": "最后运行时间倒序 DATE_RUN_DESCENDING",
+          "description": ""
+        }
+      ]
+    }
+  },
+  "sourceFileName": "sys_everythingsearch_使用Everything搜索文件.md"
+}

@@ -1,0 +1,147 @@
+{
+  "key": "sys:manageList",
+  "slug": "managelist",
+  "legacySlug": "managelist",
+  "ownsLegacyContent": true,
+  "name": "管理和排序列表",
+  "description": "对列表内容进行手工排序、添加、删除等操作",
+  "category": "Compute",
+  "categoryName": "计算与比较",
+  "stepType": "Action",
+  "isRisky": false,
+  "isProOnly": false,
+  "helpLink": "https://getquicker.net/KC/Help/Doc/managelist",
+  "inputs": [
+    {
+      "key": "list",
+      "name": "列表",
+      "type": "List",
+      "defaultValue": "",
+      "required": false,
+      "variableMode": "UseVarOnly",
+      "condition": "",
+      "description": "要操作的列表变量。直接选择对应变量，不要使用表达式。"
+    },
+    {
+      "key": "winTitle",
+      "name": "窗口标题",
+      "type": "Text",
+      "defaultValue": "",
+      "required": false,
+      "variableMode": "UseVarOrInput",
+      "condition": "",
+      "description": ""
+    },
+    {
+      "key": "note",
+      "name": "提示信息",
+      "type": "Text",
+      "defaultValue": "",
+      "required": false,
+      "variableMode": "UseVarOrInput",
+      "condition": "",
+      "description": ""
+    },
+    {
+      "key": "allowAdd",
+      "name": "允许添加项",
+      "type": "Boolean",
+      "defaultValue": "true",
+      "required": false,
+      "variableMode": "Input",
+      "condition": "",
+      "description": ""
+    },
+    {
+      "key": "allowEdit",
+      "name": "允许编辑项",
+      "type": "Boolean",
+      "defaultValue": "true",
+      "required": false,
+      "variableMode": "Input",
+      "condition": "",
+      "description": ""
+    },
+    {
+      "key": "allowDelete",
+      "name": "允许删除项",
+      "type": "Boolean",
+      "defaultValue": "true",
+      "required": false,
+      "variableMode": "Input",
+      "condition": "",
+      "description": ""
+    },
+    {
+      "key": "stopIfFail",
+      "name": "取消后停止动作",
+      "type": "Boolean",
+      "defaultValue": "false",
+      "required": false,
+      "variableMode": "Input",
+      "condition": "",
+      "description": ""
+    },
+    {
+      "key": "parseData",
+      "name": "解析菜单数据",
+      "type": "Boolean",
+      "defaultValue": "false",
+      "required": false,
+      "variableMode": "Input",
+      "condition": "",
+      "description": "解析 \"[图标]标题(tooltip)|值\" 格式的数据并显示图标。"
+    },
+    {
+      "key": "seperator",
+      "name": "分隔符",
+      "type": "Text",
+      "defaultValue": "|",
+      "required": false,
+      "variableMode": "Input",
+      "condition": "",
+      "description": "解析菜单数据时，显示内容与值之间的分隔符，默认为竖线'|'"
+    },
+    {
+      "key": "windowSize",
+      "name": "窗口宽度",
+      "type": "Text",
+      "defaultValue": "",
+      "required": false,
+      "variableMode": "Input",
+      "condition": "",
+      "description": "可选，在需要自定义窗口宽度的情况下使用。最小值为200。"
+    },
+    {
+      "key": "titleDelegate",
+      "name": "显示内容提取表达式",
+      "type": "Text",
+      "defaultValue": "",
+      "required": false,
+      "variableMode": "Input",
+      "condition": "",
+      "description": "可选，在不解析菜单数据时自定义每一项的显示内容。使用方式请参考模块文档。"
+    },
+    {
+      "key": "help",
+      "name": "帮助按钮内容",
+      "type": "Text",
+      "defaultValue": "",
+      "required": false,
+      "variableMode": "Input",
+      "condition": "",
+      "description": "点击弹出显示帮助内容，MarkDown格式"
+    }
+  ],
+  "outputs": [
+    {
+      "key": "isSuccess",
+      "name": "是否确认",
+      "type": "Boolean",
+      "condition": "",
+      "description": "是否点击了确认按钮"
+    }
+  ],
+  "selections": {},
+  "sourceFileName": "sys_manageList_管理和排序列表.md"
+}

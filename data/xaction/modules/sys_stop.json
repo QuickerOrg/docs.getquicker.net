@@ -1,0 +1,75 @@
+{
+  "key": "sys:stop",
+  "slug": "stop",
+  "legacySlug": "stop",
+  "ownsLegacyContent": true,
+  "name": "停止(return)",
+  "description": "停止动作或从子程序中返回",
+  "category": "Flow",
+  "categoryName": "程序流程",
+  "stepType": "Action",
+  "isRisky": false,
+  "isProOnly": false,
+  "helpLink": "https://getquicker.net/KC/Help/Doc/stop",
+  "inputs": [
+    {
+      "key": "method",
+      "name": "操作类型",
+      "type": "Enum",
+      "defaultValue": "default",
+      "required": true,
+      "variableMode": "Input",
+      "condition": "",
+      "description": ""
+    },
+    {
+      "key": "isError",
+      "name": "标记为出错",
+      "type": "Boolean",
+      "defaultValue": "false",
+      "required": false,
+      "variableMode": "Input",
+      "condition": "",
+      "description": "用作子程序或被其他动作调用时，返回出错状态。"
+    },
+    {
+      "key": "return",
+      "name": "返回值",
+      "type": "Any",
+      "defaultValue": "",
+      "required": false,
+      "variableMode": "UseVarOrInput",
+      "condition": "",
+      "description": "被其他动作调用时，返回的动作结果。"
+    },
+    {
+      "key": "showMessage",
+      "name": "提示消息",
+      "type": "Text",
+      "defaultValue": "",
+      "required": false,
+      "variableMode": "UseVarOrInput",
+      "condition": "",
+      "description": "显示的提示信息。"
+    }
+  ],
+  "outputs": [],
+  "selections": {
+    "method": {
+      "name": "操作类型",
+      "items": [
+        {
+          "value": "default",
+          "name": "默认：停止动作或从子程序返回",
+          "description": ""
+        },
+        {
+          "value": "forcestop",
+          "name": "停止动作：停止整个动作(即使在子程序中)",
+          "description": ""
+        }
+      ]
+    }
+  },
+  "sourceFileName": "sys_stop_停止(return).md"
+}

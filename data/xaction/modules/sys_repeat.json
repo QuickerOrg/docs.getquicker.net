@@ -1,0 +1,77 @@
+{
+  "key": "sys:repeat",
+  "slug": "repeat",
+  "legacySlug": "repeat",
+  "ownsLegacyContent": true,
+  "name": "重复",
+  "description": "循环指定的次数，或符合某个条件时中止",
+  "category": "Flow",
+  "categoryName": "程序流程",
+  "stepType": "Loop",
+  "isRisky": false,
+  "isProOnly": false,
+  "helpLink": "https://getquicker.net/KC/Help/Doc/repeat",
+  "inputs": [
+    {
+      "key": "count",
+      "name": "次数",
+      "type": "Integer",
+      "defaultValue": "1",
+      "required": false,
+      "variableMode": "UseVarOrInput",
+      "condition": "",
+      "description": "重复次数，除非符合条件提前中止。-1表示无限循环。"
+    },
+    {
+      "key": "startIndex",
+      "name": "计数开始值",
+      "type": "Integer",
+      "defaultValue": "0",
+      "required": false,
+      "variableMode": "UseVarOrInput",
+      "condition": "",
+      "description": "计数序号的开始值，通常应该为0。"
+    },
+    {
+      "key": "stopCondition",
+      "name": "中止条件",
+      "type": "Boolean",
+      "defaultValue": "",
+      "required": false,
+      "variableMode": "UseVarOrInput",
+      "condition": "",
+      "description": "选填。条件满足时停止循环（每次循环开始时检查）。"
+    },
+    {
+      "key": "repeatDelayMs",
+      "name": "循环间隔时间",
+      "type": "Integer",
+      "defaultValue": "1",
+      "required": false,
+      "variableMode": "UseVarOrInput",
+      "condition": "",
+      "description": "每次循环之间的间隔毫秒数。如果为0，请确保循环内部有其他等待步骤，避免连续循环占用较多资源。"
+    },
+    {
+      "key": "progressBarTitle",
+      "name": "进度条标题",
+      "type": "Text",
+      "defaultValue": "",
+      "required": false,
+      "variableMode": "UseVarOrInput",
+      "condition": "",
+      "description": "如果设置了此参数，则在循环过程中会显示一个进度条，标题为此参数的值。"
+    }
+  ],
+  "outputs": [
+    {
+      "key": "count",
+      "name": "计数",
+      "type": "Integer",
+      "condition": "",
+      "description": "计数序号，表示第几次循环。"
+    }
+  ],
+  "selections": {},
+  "sourceFileName": "sys_repeat_重复.md"
+}

@@ -1,0 +1,47 @@
+{
+  "key": "sys:inputScript",
+  "slug": "inputscript",
+  "legacySlug": "inputscript",
+  "ownsLegacyContent": true,
+  "name": "多步骤输入",
+  "description": "多步骤键盘组合输入",
+  "category": "Input",
+  "categoryName": "键鼠输入",
+  "stepType": "Action",
+  "isRisky": false,
+  "isProOnly": false,
+  "helpLink": "https://getquicker.net/KC/Help/Doc/inputscript",
+  "inputs": [
+    {
+      "key": "data",
+      "name": "步骤脚本",
+      "type": "Text",
+      "defaultValue": "",
+      "required": false,
+      "variableMode": "UseVarOrInput",
+      "condition": "",
+      "description": "模拟输入的步骤列表，每行一个。详细格式请参考模块文档。"
+    },
+    {
+      "key": "stopIfFail",
+      "name": "失败后停止",
+      "type": "Boolean",
+      "defaultValue": "true",
+      "required": false,
+      "variableMode": "Input",
+      "condition": "",
+      "description": "失败后是否停止动作"
+    }
+  ],
+  "outputs": [
+    {
+      "key": "isSuccess",
+      "name": "是否成功",
+      "type": "Boolean",
+      "condition": "",
+      "description": "操作是否成功"
+    }
+  ],
+  "selections": {},
+  "sourceFileName": "sys_inputScript_多步骤输入.md"
+}

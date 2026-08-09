@@ -1,0 +1,401 @@
+{
+  "key": "sys:tableoperation",
+  "slug": "tableoperation",
+  "legacySlug": "tableoperation",
+  "ownsLegacyContent": true,
+  "name": "表格数据操作",
+  "description": "表格变量的相关处理操作",
+  "category": "Compute",
+  "categoryName": "计算与比较",
+  "stepType": "Action",
+  "isRisky": false,
+  "isProOnly": false,
+  "helpLink": "https://getquicker.net/KC/Help/Doc/tableoperation",
+  "inputs": [
+    {
+      "key": "table",
+      "name": "表格变量",
+      "type": "Table",
+      "defaultValue": "",
+      "required": true,
+      "variableMode": "UseVarOnly",
+      "condition": "",
+      "description": "要操作的表格变量"
+    },
+    {
+      "key": "type",
+      "name": "操作类型",
+      "type": "Enum",
+      "defaultValue": "info",
+      "required": true,
+      "variableMode": "Input",
+      "condition": "",
+      "description": ""
+    },
+    {
+      "key": "rowData",
+      "name": "行数据",
+      "type": "Dict",
+      "defaultValue": "",
+      "required": false,
+      "variableMode": "UseVarOrInput",
+      "condition": "仅：addRow, update",
+      "description": "包含行数据的词典；更新行时，仅包含要更新的列的内容。"
+    },
+    {
+      "key": "dataText",
+      "name": "文本数据",
+      "type": "Text",
+      "defaultValue": "",
+      "required": false,
+      "variableMode": "UseVarOrInput",
+      "condition": "仅：importCsv, importJson",
+      "description": "CSV/Json格式的文本内容"
+    },
+    {
+      "key": "filterExpression",
+      "name": "筛选表达式",
+      "type": "Text",
+      "defaultValue": "",
+      "required": false,
+      "variableMode": "UseVarOrInput",
+      "condition": "仅：select, exportExcel, export_text, deleteRows, update",
+      "description": ""
+    },
+    {
+      "key": "deleteColumns",
+      "name": "要删除的列",
+      "type": "Text",
+      "defaultValue": "",
+      "required": false,
+      "variableMode": "UseVarOrInput",
+      "condition": "仅：deleteColumns",
+      "description": "可选。逗号','或分号';'隔开的列名，\"*\"表示删除所有列，\"!列1,列2...\"表示保留指定的列，删除其余的。"
+    },
+    {
+      "key": "sort",
+      "name": "排序",
+      "type": "Text",
+      "defaultValue": "",
+      "required": false,
+      "variableMode": "UseVarOrInput",
+      "condition": "仅：select, exportExcel, export_text, manage",
+      "description": ""
+    },
+    {
+      "key": "exportColumns",
+      "name": "导出的列",
+      "type": "Text",
+      "defaultValue": "",
+      "required": false,
+      "variableMode": "UseVarOrInput",
+      "condition": "仅：exportExcel, export_text",
+      "description": "可选。逗号','或分号';'隔开的列名。留空时导出所有列。"
+    },
+    {
+      "key": "excelFilePath",
+      "name": "Excel文件路径",
+      "type": "Text",
+      "defaultValue": "",
+      "required": false,
+      "variableMode": "UseVarOrInput",
+      "condition": "仅：importExcel, exportExcel",
+      "description": ""
+    },
+    {
+      "key": "sheetName",
+      "name": "Excel工作表名",
+      "type": "Text",
+      "defaultValue": "",
+      "required": false,
+      "variableMode": "UseVarOrInput",
+      "condition": "仅：importExcel, exportExcel",
+      "description": "如果未指定，则取第一个工作表。工作表首行为标题行。"
+    },
+    {
+      "key": "startRowNum",
+      "name": "标题行号",
+      "type": "Integer",
+      "defaultValue": "1",
+      "required": true,
+      "variableMode": "UseVarOrInput",
+      "condition": "仅：importExcel",
+      "description": "标题行的行号（从1开始）。当前面有表头之类的内容时，行号会变大。"
+    },
+    {
+      "key": "gridSelectionMode",
+      "name": "选择模式",
+      "type": "Enum",
+      "defaultValue": "Cells",
+      "required": false,
+      "variableMode": "Input",
+      "condition": "仅：manage",
+      "description": "注：单元格模式不支持返回选择的行。"
+    },
+    {
+      "key": "clearOldRows",
+      "name": "清除已有的行",
+      "type": "Boolean",
+      "defaultValue": "true",
+      "required": false,
+      "variableMode": "Input",
+      "condition": "仅：importCsv, importJson",
+      "description": "加载数据之前是否清除现有的行数据"
+    },
+    {
+      "key": "isReadOnly",
+      "name": "只读模式",
+      "type": "Boolean",
+      "defaultValue": "false",
+      "required": false,
+      "variableMode": "Input",
+      "condition": "仅：manage",
+      "description": "是否以只读模式打开"
+    },
+    {
+      "key": "windowTitle",
+      "name": "窗口标题",
+      "type": "Text",
+      "defaultValue": "表格数据",
+      "required": false,
+      "variableMode": "Input",
+      "condition": "仅：manage",
+      "description": ""
+    },
+    {
+      "key": "helpText",
+      "name": "帮助文本",
+      "type": "Text",
+      "defaultValue": "",
+      "required": false,
+      "variableMode": "Input",
+      "condition": "仅：manage",
+      "description": ""
+    },
+    {
+      "key": "useColumnTitle",
+      "name": "使用列标题而非列名作为导出数据的标题",
+      "type": "Boolean",
+      "defaultValue": "false",
+      "required": false,
+      "variableMode": "Input",
+      "condition": "仅：exportExcel, export_text",
+      "description": ""
+    },
+    {
+      "key": "csvDelimiter",
+      "name": "CSV分隔符",
+      "type": "Text",
+      "defaultValue": ",",
+      "required": false,
+      "variableMode": "Input",
+      "condition": "仅：export_text, importCsv",
+      "description": "导出或导入CSV数据时使用的字段分隔符。使用'\\t'表示Tab。"
+    },
+    {
+      "key": "winSize",
+      "name": "窗口尺寸/位置",
+      "type": "Text",
+      "defaultValue": "",
+      "required": false,
+      "variableMode": "Input",
+      "condition": "仅：manage",
+      "description": "设置选择窗口的最大尺寸，格式为：宽度,高度。支持像素数值或屏幕宽高百分比，详情请参考模块文档。"
+    },
+    {
+      "key": "topMost",
+      "name": "是否置顶显示",
+      "type": "Boolean",
+      "defaultValue": "false",
+      "required": false,
+      "variableMode": "UseVarOrInput",
+      "condition": "仅：manage",
+      "description": "是否置顶显示窗口"
+    },
+    {
+      "key": "stopIfFail",
+      "name": "失败后停止",
+      "type": "Boolean",
+      "defaultValue": "true",
+      "required": false,
+      "variableMode": "Input",
+      "condition": "",
+      "description": "失败后是否停止动作"
+    }
+  ],
+  "outputs": [
+    {
+      "key": "isSuccess",
+      "name": "是否成功",
+      "type": "Boolean",
+      "condition": "",
+      "description": "操作是否成功"
+    },
+    {
+      "key": "rowCount",
+      "name": "行数",
+      "type": "Integer",
+      "condition": "",
+      "description": "表格内的数据行数"
+    },
+    {
+      "key": "affectedRowCount",
+      "name": "影响行数",
+      "type": "Integer",
+      "condition": "仅：exportExcel, export_text, deleteRows, update",
+      "description": "更新或删除、筛选的行数"
+    },
+    {
+      "key": "rows",
+      "name": "行列表",
+      "type": "Object",
+      "condition": "仅：select, info",
+      "description": "符合条件的行的数组"
+    },
+    {
+      "key": "columns",
+      "name": "列的列表",
+      "type": "Object",
+      "condition": "仅：info",
+      "description": "表格的列的信息列表(DataTable.Columns)"
+    },
+    {
+      "key": "firstRow",
+      "name": "第一行/结果行",
+      "type": "Object",
+      "condition": "仅：select, addRow",
+      "description": "第一个符合条件的行或新添加的行，可输出为词典对象"
+    },
+    {
+      "key": "selectedRows",
+      "name": "选择的行列表",
+      "type": "Object",
+      "condition": "仅：manage",
+      "description": "选择的所有行的列表"
+    },
+    {
+      "key": "csvExportData",
+      "name": "CSV格式文本",
+      "type": "Text",
+      "condition": "仅：export_text",
+      "description": ""
+    },
+    {
+      "key": "jsonExportData",
+      "name": "Json格式文本",
+      "type": "Text",
+      "condition": "仅：export_text",
+      "description": ""
+    },
+    {
+      "key": "isConfirmed",
+      "name": "是否确认",
+      "type": "Boolean",
+      "condition": "仅：manage",
+      "description": "是否点击了确认按钮"
+    }
+  ],
+  "selections": {
+    "type": {
+      "name": "操作类型",
+      "items": [
+        {
+          "value": "info",
+          "name": "获取信息",
+          "description": ""
+        },
+        {
+          "value": "addRow",
+          "name": "添加行",
+          "description": ""
+        },
+        {
+          "value": "update",
+          "name": "更新行",
+          "description": ""
+        },
+        {
+          "value": "manage",
+          "name": "查看或编辑数据",
+          "description": ""
+        },
+        {
+          "value": "select",
+          "name": "查询或筛选行(Select)",
+          "description": ""
+        },
+        {
+          "value": "clear",
+          "name": "清除所有行",
+          "description": ""
+        },
+        {
+          "value": "deleteRows",
+          "name": "删除符合条件的行",
+          "description": ""
+        },
+        {
+          "value": "deleteColumns",
+          "name": "删除列",
+          "description": ""
+        },
+        {
+          "value": "importCsv",
+          "name": "从CSV文本加载数据",
+          "description": ""
+        },
+        {
+          "value": "importJson",
+          "name": "从Json文本加载数据",
+          "description": ""
+        },
+        {
+          "value": "importExcel",
+          "name": "从Excel工作表加载数据",
+          "description": ""
+        },
+        {
+          "value": "export_text",
+          "name": "导出文本数据",
+          "description": ""
+        },
+        {
+          "value": "exportExcel",
+          "name": "导出Excel文件",
+          "description": ""
+        }
+      ]
+    },
+    "gridSelectionMode": {
+      "name": "选择模式",
+      "items": [
+        {
+          "value": "Cells",
+          "name": "单元格(类似Excel)",
+          "description": ""
+        },
+        {
+          "value": "OneRow",
+          "name": "行：0行或1行",
+          "description": ""
+        },
+        {
+          "value": "OneRowRequired",
+          "name": "行：1行(必选)",
+          "description": ""
+        },
+        {
+          "value": "Rows",
+          "name": "行：0、1或多行",
+          "description": ""
+        },
+        {
+          "value": "RowsRequired",
+          "name": "行：一行或多行(必选)",
+          "description": ""
+        }
+      ]
+    }
+  },
+  "sourceFileName": "sys_tableoperation_表格数据操作.md"
+}

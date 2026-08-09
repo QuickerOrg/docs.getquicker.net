@@ -1,0 +1,29 @@
+{
+  "key": "sys:comment",
+  "slug": "comment",
+  "legacySlug": "comment",
+  "ownsLegacyContent": true,
+  "name": "注释",
+  "description": "使用注释将步骤分组，描述后续步骤的目的。",
+  "category": "Basic",
+  "categoryName": "基础",
+  "stepType": "Comment",
+  "isRisky": false,
+  "isProOnly": false,
+  "helpLink": "https://getquicker.net/KC/Help/Doc/comment",
+  "inputs": [
+    {
+      "key": "note",
+      "name": "注释内容",
+      "type": "Text",
+      "defaultValue": "",
+      "required": false,
+      "variableMode": "Input",
+      "condition": "",
+      "description": "注释内容。若想设置注释步骤的背景色，请参考模块文档。"
+    }
+  ],
+  "outputs": [],
+  "selections": {},
+  "sourceFileName": "sys_comment_注释.md"
+}

@@ -1,0 +1,84 @@
+{
+  "key": "sys:group",
+  "slug": "group",
+  "legacySlug": "group",
+  "ownsLegacyContent": true,
+  "name": "步骤组",
+  "description": "一组有关的模块（方便整体禁用、删除等）",
+  "category": "Flow",
+  "categoryName": "程序流程",
+  "stepType": "Loop",
+  "isRisky": false,
+  "isProOnly": false,
+  "helpLink": "https://getquicker.net/KC/Help/Doc/group",
+  "inputs": [
+    {
+      "key": "skipErr",
+      "name": "忽略错误",
+      "type": "Boolean",
+      "defaultValue": "false",
+      "required": false,
+      "variableMode": "Input",
+      "condition": "",
+      "description": "忽略内部步骤的错误，继续允许后续代码"
+    },
+    {
+      "key": "skipWhenDebugging",
+      "name": "调试运行时不输出调试内容",
+      "type": "Boolean",
+      "defaultValue": "false",
+      "required": false,
+      "variableMode": "Input",
+      "condition": "",
+      "description": "用以减少不必要的调试输出"
+    },
+    {
+      "key": "useMultiThread",
+      "name": "使用多线程",
+      "type": "Boolean",
+      "defaultValue": "false",
+      "required": false,
+      "variableMode": "Input",
+      "condition": "",
+      "description": "⚠通常不要选择! 请阅读文档详细了解后再使用。"
+    },
+    {
+      "key": "waitAny",
+      "name": "多线程使用WaitAny模式",
+      "type": "Boolean",
+      "defaultValue": "false",
+      "required": false,
+      "variableMode": "Input",
+      "condition": "",
+      "description": "任意一个线程结束即可。"
+    },
+    {
+      "key": "cancelRemainingOnWaitAny",
+      "name": "WaitAny模式下自动取消其它分支",
+      "type": "Boolean",
+      "defaultValue": "false",
+      "required": false,
+      "variableMode": "Input",
+      "condition": "",
+      "description": "启用WaitAny时，任一分支完成后请求取消其它未完成分支，并阻止其执行后续步骤。取消为协作式取消，不保证立即终止正在执行的步骤。"
+    }
+  ],
+  "outputs": [
+    {
+      "key": "isSuccess",
+      "name": "是否成功",
+      "type": "Boolean",
+      "condition": "",
+      "description": "内部步骤是否运行成功"
+    },
+    {
+      "key": "errorMessage",
+      "name": "错误消息",
+      "type": "Text",
+      "condition": "",
+      "description": ""
+    }
+  ],
+  "selections": {},
+  "sourceFileName": "sys_group_步骤组.md"
+}

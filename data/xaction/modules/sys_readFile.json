@@ -1,0 +1,142 @@
+{
+  "key": "sys:readFile",
+  "slug": "readfile",
+  "legacySlug": "readfile",
+  "ownsLegacyContent": true,
+  "name": "读取文件",
+  "description": "将读取的文本或图片内容写入变量。",
+  "category": "Files",
+  "categoryName": "系统操作",
+  "stepType": "Action",
+  "isRisky": false,
+  "isProOnly": false,
+  "helpLink": "https://getquicker.net/KC/Help/Doc/readFile",
+  "inputs": [
+    {
+      "key": "path",
+      "name": "文件路径",
+      "type": "Text",
+      "defaultValue": "",
+      "required": true,
+      "variableMode": "UseVarOrInput",
+      "condition": "",
+      "description": "要读取的文件的完整路径。"
+    },
+    {
+      "key": "type",
+      "name": "格式",
+      "type": "Enum",
+      "defaultValue": "text",
+      "required": true,
+      "variableMode": "Input",
+      "condition": "",
+      "description": "文件内容类型"
+    },
+    {
+      "key": "encoding",
+      "name": "文件编码",
+      "type": "Enum",
+      "defaultValue": "utf-8",
+      "required": true,
+      "variableMode": "Input",
+      "condition": "仅：text",
+      "description": "文件的编码格式"
+    },
+    {
+      "key": "stopIfFail",
+      "name": "失败后停止",
+      "type": "Boolean",
+      "defaultValue": "true",
+      "required": false,
+      "variableMode": "Input",
+      "condition": "",
+      "description": "失败后是否停止动作"
+    }
+  ],
+  "outputs": [
+    {
+      "key": "isSuccess",
+      "name": "是否成功",
+      "type": "Boolean",
+      "condition": "",
+      "description": "操作是否成功"
+    },
+    {
+      "key": "txt",
+      "name": "文本内容",
+      "type": "Text",
+      "condition": "仅：text",
+      "description": "读取的文本文件的内容"
+    },
+    {
+      "key": "image",
+      "name": "图片内容",
+      "type": "Image",
+      "condition": "仅：image",
+      "description": "读取的图片文件的内容"
+    }
+  ],
+  "selections": {
+    "type": {
+      "name": "格式",
+      "items": [
+        {
+          "value": "text",
+          "name": "文本",
+          "description": ""
+        },
+        {
+          "value": "image",
+          "name": "图片",
+          "description": ""
+        }
+      ]
+    },
+    "encoding": {
+      "name": "文件编码",
+      "items": [
+        {
+          "value": "utf-8",
+          "name": "UTF8",
+          "description": ""
+        },
+        {
+          "value": "utf-16",
+          "name": "UTF-16 LE",
+          "description": ""
+        },
+        {
+          "value": "utf-16BE",
+          "name": "UTF-16 BE",
+          "description": ""
+        },
+        {
+          "value": "us-ascii",
+          "name": "ASCII",
+          "description": ""
+        },
+        {
+          "value": "utf-7",
+          "name": "UTF7",
+          "description": ""
+        },
+        {
+          "value": "utf-32",
+          "name": "UTF32",
+          "description": ""
+        },
+        {
+          "value": "default",
+          "name": "系统默认(gb2312)",
+          "description": ""
+        },
+        {
+          "value": "auto",
+          "name": "自动（BOM/UTF/ANSI）",
+          "description": ""
+        }
+      ]
+    }
+  },
+  "sourceFileName": "sys_readFile_读取文件.md"
+}

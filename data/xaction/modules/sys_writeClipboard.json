@@ -1,0 +1,168 @@
+{
+  "key": "sys:writeClipboard",
+  "slug": "writeclipboard",
+  "legacySlug": "writeclipboard",
+  "ownsLegacyContent": true,
+  "name": "写入剪贴板",
+  "description": "将文本或图片等内容写入剪贴板",
+  "category": "Clipboard",
+  "categoryName": "剪贴板操作",
+  "stepType": "Action",
+  "isRisky": false,
+  "isProOnly": false,
+  "helpLink": "https://getquicker.net/KC/Help/Doc/writeClipboard",
+  "inputs": [
+    {
+      "key": "type",
+      "name": "类型",
+      "type": "Enum",
+      "defaultValue": "auto",
+      "required": true,
+      "variableMode": "Input",
+      "condition": "",
+      "description": "操作类型"
+    },
+    {
+      "key": "customFormat",
+      "name": "格式名",
+      "type": "Text",
+      "defaultValue": "",
+      "required": true,
+      "variableMode": "Input",
+      "condition": "仅：custom",
+      "description": "自定义的剪贴板格式名"
+    },
+    {
+      "key": "input",
+      "name": "输入",
+      "type": "Any",
+      "defaultValue": "",
+      "required": true,
+      "variableMode": "UseVar",
+      "condition": "仅：auto",
+      "description": "要写入剪贴板的数据"
+    },
+    {
+      "key": "html",
+      "name": "HTML内容",
+      "type": "Text",
+      "defaultValue": "",
+      "required": true,
+      "variableMode": "UseVarOrInput",
+      "condition": "仅：html",
+      "description": "HTML代码片段"
+    },
+    {
+      "key": "text",
+      "name": "文本内容",
+      "type": "Text",
+      "defaultValue": "",
+      "required": true,
+      "variableMode": "UseVarOrInput",
+      "condition": "仅：html, text, rtf, csv, custom",
+      "description": "纯文本格式内容。"
+    },
+    {
+      "key": "imageVar",
+      "name": "图片(变量)",
+      "type": "Image",
+      "defaultValue": "",
+      "required": false,
+      "variableMode": "UseVar",
+      "condition": "仅：image",
+      "description": "要写入剪贴板的图片内容"
+    },
+    {
+      "key": "fastMode",
+      "name": "快速模式",
+      "type": "Boolean",
+      "defaultValue": "false",
+      "required": false,
+      "variableMode": "Input",
+      "condition": "仅：image",
+      "description": "不需要处理图片中的透明通道时选择"
+    },
+    {
+      "key": "successMsg",
+      "name": "成功后提示",
+      "type": "Text",
+      "defaultValue": "",
+      "required": true,
+      "variableMode": "Input",
+      "condition": "",
+      "description": "可选。写入成功后提示消息，如\"XXX已写入剪贴板\"。"
+    },
+    {
+      "key": "stopIfFail",
+      "name": "失败后停止",
+      "type": "Boolean",
+      "defaultValue": "true",
+      "required": false,
+      "variableMode": "Input",
+      "condition": "",
+      "description": "失败后是否停止动作"
+    }
+  ],
+  "outputs": [
+    {
+      "key": "isSuccess",
+      "name": "是否成功",
+      "type": "Boolean",
+      "condition": "",
+      "description": "操作是否成功"
+    }
+  ],
+  "selections": {
+    "type": {
+      "name": "类型",
+      "items": [
+        {
+          "value": "auto",
+          "name": "自动（纯文本或图片）",
+          "description": ""
+        },
+        {
+          "value": "html",
+          "name": "HTML片段",
+          "description": ""
+        },
+        {
+          "value": "text",
+          "name": "纯文本",
+          "description": ""
+        },
+        {
+          "value": "image",
+          "name": "图片",
+          "description": ""
+        },
+        {
+          "value": "rtf",
+          "name": "Rtf",
+          "description": ""
+        },
+        {
+          "value": "csv",
+          "name": "Csv",
+          "description": ""
+        },
+        {
+          "value": "custom",
+          "name": "自定义格式",
+          "description": ""
+        },
+        {
+          "value": "clear",
+          "name": "清空剪贴板",
+          "description": ""
+        },
+        {
+          "value": "clearHistory",
+          "name": "清空剪贴板历史(Win10+)",
+          "description": ""
+        }
+      ]
+    }
+  },
+  "sourceFileName": "sys_writeClipboard_写入剪贴板.md"
+}

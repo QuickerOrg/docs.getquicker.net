@@ -1,0 +1,37 @@
+{
+  "key": "sys:GenTempFilePath",
+  "slug": "gentempfilepath",
+  "legacySlug": "gentempfilepath",
+  "ownsLegacyContent": true,
+  "name": "生成临时文件路径",
+  "description": "根据指定的扩展名生成一个随机的临时文件名（完整路径），供后续步骤写入文件使用。",
+  "category": "Files",
+  "categoryName": "系统操作",
+  "stepType": "Action",
+  "isRisky": false,
+  "isProOnly": false,
+  "helpLink": "https://getquicker.net/KC/Help/Doc/gentempfilepath",
+  "inputs": [
+    {
+      "key": "ext",
+      "name": "扩展名",
+      "type": "Text",
+      "defaultValue": ".txt",
+      "required": true,
+      "variableMode": "Input",
+      "condition": "",
+      "description": "生成临时文件的扩展名"
+    }
+  ],
+  "outputs": [
+    {
+      "key": "filePath",
+      "name": "文件路径",
+      "type": "Text",
+      "condition": "",
+      "description": "生成的临时文件路径"
+    }
+  ],
+  "selections": {},
+  "sourceFileName": "sys_GenTempFilePath_生成临时文件路径.md"
+}

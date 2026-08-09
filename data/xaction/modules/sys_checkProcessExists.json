@@ -1,0 +1,96 @@
+{
+  "key": "sys:checkProcessExists",
+  "slug": "checkprocessexists",
+  "legacySlug": "checkprocessexists",
+  "ownsLegacyContent": true,
+  "name": "检查程序已启动/获取进程信息",
+  "description": "检查指定的应用程序是否已经启动。",
+  "category": "System",
+  "categoryName": "Windows系统",
+  "stepType": "Action",
+  "isRisky": false,
+  "isProOnly": false,
+  "helpLink": "https://getquicker.net/KC/Help/Doc/checkprocessexists",
+  "inputs": [
+    {
+      "key": "process",
+      "name": "进程名称/pid",
+      "type": "Text",
+      "defaultValue": "",
+      "required": true,
+      "variableMode": "UseVarOrInput",
+      "condition": "",
+      "description": "请输入要验证的进程名称或id。通常是exe的文件名去掉后缀，比如记事本程序的进程名称为notepad。"
+    },
+    {
+      "key": "stopIfFail",
+      "name": "失败后停止",
+      "type": "Boolean",
+      "defaultValue": "true",
+      "required": false,
+      "variableMode": "Input",
+      "condition": "",
+      "description": "失败后是否停止动作"
+    }
+  ],
+  "outputs": [
+    {
+      "key": "isSuccess",
+      "name": "操作是否成功",
+      "type": "Boolean",
+      "condition": "",
+      "description": "可能会因为无法访问高权限进程等原因而失败。进程未启动不会导致操作失败。"
+    },
+    {
+      "key": "isExists",
+      "name": "是否运行",
+      "type": "Boolean",
+      "condition": "",
+      "description": "指定的进程是否运行。如果已运行，返回True，否则返回False"
+    },
+    {
+      "key": "pid",
+      "name": "进程ID",
+      "type": "Integer",
+      "condition": "",
+      "description": "找到的第一个匹配进程的ID"
+    },
+    {
+      "key": "pidList",
+      "name": "所有进程ID列表",
+      "type": "List",
+      "condition": "",
+      "description": "具有相同进程名的所有进程的ID列表"
+    },
+    {
+      "key": "path",
+      "name": "程序路径",
+      "type": "Text",
+      "condition": "",
+      "description": "进程的应用程序路径"
+    },
+    {
+      "key": "mainWinHandle",
+      "name": "主窗口句柄",
+      "type": "Integer",
+      "condition": "",
+      "description": ""
+    },
+    {
+      "key": "mainwinTitle",
+      "name": "主窗口标题",
+      "type": "Text",
+      "condition": "",
+      "description": ""
+    },
+    {
+      "key": "startTime",
+      "name": "启动时间",
+      "type": "DateTime",
+      "condition": "",
+      "description": ""
+    }
+  ],
+  "selections": {},
+  "sourceFileName": "sys_checkProcessExists_检查程序已启动_获取进程信息.md"
+}

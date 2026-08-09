@@ -1,0 +1,164 @@
+{
+  "key": "sys:runAction",
+  "slug": "runaction",
+  "legacySlug": "runaction",
+  "ownsLegacyContent": true,
+  "name": "运行或停止动作",
+  "description": "执行指定的其他动作",
+  "category": "Flow",
+  "categoryName": "程序流程",
+  "stepType": "Action",
+  "isRisky": false,
+  "isProOnly": false,
+  "helpLink": "https://getquicker.net/KC/Help/Doc/runaction",
+  "inputs": [
+    {
+      "key": "type",
+      "name": "类型",
+      "type": "Enum",
+      "defaultValue": "StartAction",
+      "required": true,
+      "variableMode": "Input",
+      "condition": "",
+      "description": "操作类型"
+    },
+    {
+      "key": "actionId",
+      "name": "目标动作",
+      "type": "Text",
+      "defaultValue": "",
+      "required": true,
+      "variableMode": "UseVarOrInput",
+      "condition": "仅：StartAction, StopAction, ShowActionContextMenu, GetRunningActionCount",
+      "description": "要运行的其他动作的ID或名称(使用名称时需要完全匹配且不能有重名动作)"
+    },
+    {
+      "key": "onlyCustomMenu",
+      "name": "仅显示动作的自定义菜单",
+      "type": "Boolean",
+      "defaultValue": "false",
+      "required": false,
+      "variableMode": "Input",
+      "condition": "仅：ShowActionContextMenu",
+      "description": "不显示编辑、复制等菜单"
+    },
+    {
+      "key": "wait",
+      "name": "等待运行结束",
+      "type": "Boolean",
+      "defaultValue": "true",
+      "required": false,
+      "variableMode": "Input",
+      "condition": "仅：StartAction, StartCurrentAction",
+      "description": "是否等待此动作运行结束再执行后续动作（如需获取目标动作的输出，需选中此项）"
+    },
+    {
+      "key": "inputParam",
+      "name": "命令参数",
+      "type": "Text",
+      "defaultValue": "",
+      "required": true,
+      "variableMode": "UseVarOrInput",
+      "condition": "仅：StartAction, StartCurrentAction",
+      "description": "传递给目标动作的参数。存储在该动作的quicker_in_param变量中。"
+    },
+    {
+      "key": "debug",
+      "name": "调试模式运行",
+      "type": "Boolean",
+      "defaultValue": "false",
+      "required": false,
+      "variableMode": "Input",
+      "condition": "仅：StartAction, StartCurrentAction",
+      "description": "是否以调试模式运行动作"
+    },
+    {
+      "key": "hideMessage",
+      "name": "不显示提示消息",
+      "type": "Boolean",
+      "defaultValue": "false",
+      "required": false,
+      "variableMode": "Input",
+      "condition": "仅：StopAction",
+      "description": "仅对非动作库安装的动作有效"
+    },
+    {
+      "key": "stopIfFail",
+      "name": "失败后停止",
+      "type": "Boolean",
+      "defaultValue": "true",
+      "required": false,
+      "variableMode": "Input",
+      "condition": "",
+      "description": "如果未找到目标动作，是否停止当前动作"
+    }
+  ],
+  "outputs": [
+    {
+      "key": "isSuccess",
+      "name": "是否成功",
+      "type": "Boolean",
+      "condition": "",
+      "description": "操作是否成功"
+    },
+    {
+      "key": "actionTitle",
+      "name": "动作名称",
+      "type": "Text",
+      "condition": "仅：StartAction",
+      "description": "运行的动作名称。"
+    },
+    {
+      "key": "output",
+      "name": "动作输出",
+      "type": "Text",
+      "condition": "仅：StartAction, StartCurrentAction",
+      "description": "被调用动作的输出。"
+    },
+    {
+      "key": "count",
+      "name": "运行个数",
+      "type": "Number",
+      "condition": "仅：GetRunningActionCount",
+      "description": "动作正在运行的个数"
+    }
+  ],
+  "selections": {
+    "type": {
+      "name": "类型",
+      "items": [
+        {
+          "value": "StartAction",
+          "name": "运行动作",
+          "description": ""
+        },
+        {
+          "value": "StopAction",
+          "name": "停止动作",
+          "description": ""
+        },
+        {
+          "value": "ShowActionContextMenu",
+          "name": "显示动作右键菜单",
+          "description": ""
+        },
+        {
+          "value": "StartCurrentAction",
+          "name": "运行当前动作（注意避免产生循环或递归）",
+          "description": ""
+        },
+        {
+          "value": "StopOtherInstance",
+          "name": "停止当前动作的其它实例",
+          "description": ""
+        },
+        {
+          "value": "GetRunningActionCount",
+          "name": "获取动作运行个数（自己编写动作时可用）",
+          "description": ""
+        }
+      ]
+    }
+  },
+  "sourceFileName": "sys_runAction_运行或停止动作.md"
+}

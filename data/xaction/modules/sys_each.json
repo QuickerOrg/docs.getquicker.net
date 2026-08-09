@@ -1,0 +1,157 @@
+{
+  "key": "sys:each",
+  "slug": "each",
+  "legacySlug": "each",
+  "ownsLegacyContent": true,
+  "name": "每个",
+  "description": "对列表的每项执行处理",
+  "category": "Flow",
+  "categoryName": "程序流程",
+  "stepType": "Loop",
+  "isRisky": false,
+  "isProOnly": false,
+  "helpLink": "https://getquicker.net/KC/Help/Doc/each",
+  "inputs": [
+    {
+      "key": "input",
+      "name": "列表",
+      "type": "List",
+      "defaultValue": "",
+      "required": true,
+      "variableMode": "UseVarOrInput",
+      "condition": "",
+      "description": "要处理的列表"
+    },
+    {
+      "key": "useMultiThread",
+      "name": "线程模式",
+      "type": "Enum",
+      "defaultValue": "0",
+      "required": false,
+      "variableMode": "Input",
+      "condition": "",
+      "description": "⚠通常不要选择! 请阅读文档详细了解后再使用。"
+    },
+    {
+      "key": "threadDelay",
+      "name": "线程启动间隔",
+      "type": "Integer",
+      "defaultValue": "5",
+      "required": false,
+      "variableMode": "Input",
+      "condition": "仅：1",
+      "description": "多线程运行时，每个线程之间的启动时间间隔毫秒数。"
+    },
+    {
+      "key": "concurrentThreadNum",
+      "name": "同时线程数",
+      "type": "Integer",
+      "defaultValue": "4",
+      "required": false,
+      "variableMode": "Input",
+      "condition": "仅：1",
+      "description": "最多同时启动的线程数，请根据电脑配置和任务内容设置。"
+    },
+    {
+      "key": "timeoutMs",
+      "name": "超时毫秒数",
+      "type": "Integer",
+      "defaultValue": "-1",
+      "required": false,
+      "variableMode": "Input",
+      "condition": "仅：1",
+      "description": "所有线程开启后，等待的超时时间，单位：毫秒。-1:不设置超时时间"
+    },
+    {
+      "key": "waitAny",
+      "name": "WaitAny模式",
+      "type": "Boolean",
+      "defaultValue": "false",
+      "required": false,
+      "variableMode": "Input",
+      "condition": "仅：1",
+      "description": "任意一个线程结束即可。"
+    },
+    {
+      "key": "cancelRemainingOnWaitAny",
+      "name": "WaitAny模式下自动取消其它分支",
+      "type": "Boolean",
+      "defaultValue": "false",
+      "required": false,
+      "variableMode": "Input",
+      "condition": "仅：1",
+      "description": "启用WaitAny时，任一分支完成后请求取消其它未完成分支，并阻止其执行后续步骤。取消为协作式取消，不保证立即终止正在执行的步骤。"
+    },
+    {
+      "key": "useLocalContext",
+      "name": "为线程创建独立上下文",
+      "type": "Boolean",
+      "defaultValue": "false",
+      "required": false,
+      "variableMode": "Input",
+      "condition": "仅：1",
+      "description": "此时只能读取变量，不能更新变量（词典、列表等引用传递的除外）"
+    },
+    {
+      "key": "progressBarTitle",
+      "name": "进度条标题",
+      "type": "Text",
+      "defaultValue": "",
+      "required": false,
+      "variableMode": "UseVarOrInput",
+      "condition": "仅：0",
+      "description": "如果设置了此参数，则在循环过程中会显示一个进度条，标题为此参数的值。仅单线程支持。"
+    },
+    {
+      "key": "stopIfFail",
+      "name": "失败后停止",
+      "type": "Boolean",
+      "defaultValue": "true",
+      "required": false,
+      "variableMode": "Input",
+      "condition": "",
+      "description": "失败后是否停止动作"
+    }
+  ],
+  "outputs": [
+    {
+      "key": "isSuccess",
+      "name": "是否成功",
+      "type": "Boolean",
+      "condition": "",
+      "description": "操作是否成功"
+    },
+    {
+      "key": "item",
+      "name": "项",
+      "type": "Any",
+      "condition": "",
+      "description": "列表中的每项，每次循环赋予当前项的值。在子步骤中应该对本输出进行处理。"
+    },
+    {
+      "key": "count",
+      "name": "计数",
+      "type": "Integer",
+      "condition": "",
+      "description": "本次循环，处理到了第几项。"
+    }
+  ],
+  "selections": {
+    "useMultiThread": {
+      "name": "线程模式",
+      "items": [
+        {
+          "value": "0",
+          "name": "单线程（顺序执行）",
+          "description": ""
+        },
+        {
+          "value": "1",
+          "name": "多线程（同时执行）",
+          "description": ""
+        }
+      ]
+    }
+  },
+  "sourceFileName": "sys_each_每个.md"
+}

@@ -1,0 +1,67 @@
+{
+  "key": "sys:waitClipboardChange",
+  "slug": "waitclipboardchange",
+  "legacySlug": "waitclipboardchange",
+  "ownsLegacyContent": true,
+  "name": "等待剪贴板内容改变",
+  "description": "等待剪贴板的内容发生改变。等待第三方工具（如截图工具）完成操作并更新剪贴板。",
+  "category": "Clipboard",
+  "categoryName": "剪贴板操作",
+  "stepType": "Action",
+  "isRisky": false,
+  "isProOnly": false,
+  "helpLink": "https://getquicker.net/KC/Help/Doc/waitclipboardchange",
+  "inputs": [
+    {
+      "key": "maxWaitSeconds",
+      "name": "最长等待秒数",
+      "type": "Number",
+      "defaultValue": "10",
+      "required": true,
+      "variableMode": "UseVarOrInput",
+      "condition": "",
+      "description": "超过等待时间剪贴板未改变，则结束等待。"
+    },
+    {
+      "key": "recentChangeMs",
+      "name": "包含临近的改变",
+      "type": "Integer",
+      "defaultValue": "10",
+      "required": true,
+      "variableMode": "UseVarOrInput",
+      "condition": "",
+      "description": "包含在此之前一定时间内(毫秒)发生的改变。"
+    },
+    {
+      "key": "monitorWaitWin",
+      "name": "等待窗口关闭时取消",
+      "type": "Boolean",
+      "defaultValue": "false",
+      "required": false,
+      "variableMode": "Input",
+      "condition": "",
+      "description": "结合\"等待窗口\"模块，如果等待窗口关闭，则停止等待剪贴板变化。"
+    },
+    {
+      "key": "stopIfFail",
+      "name": "失败后中止动作",
+      "type": "Boolean",
+      "defaultValue": "true",
+      "required": false,
+      "variableMode": "Input",
+      "condition": "",
+      "description": "超时后剪贴板仍未改变，是否中止动作。"
+    }
+  ],
+  "outputs": [
+    {
+      "key": "isSuccess",
+      "name": "是否改变",
+      "type": "Boolean",
+      "condition": "",
+      "description": "剪贴板内容是否改变了"
+    }
+  ],
+  "selections": {},
+  "sourceFileName": "sys_waitClipboardChange_等待剪贴板内容改变.md"
+}

@@ -1,0 +1,311 @@
+{
+  "key": "sys:listOperations",
+  "slug": "listoperations",
+  "legacySlug": "listoperations",
+  "ownsLegacyContent": true,
+  "name": "列表操作",
+  "description": "对列表变量进行添加、删除等操作",
+  "category": "Compute",
+  "categoryName": "计算与比较",
+  "stepType": "Action",
+  "isRisky": false,
+  "isProOnly": false,
+  "helpLink": "https://getquicker.net/KC/Help/Doc/listoperations",
+  "inputs": [
+    {
+      "key": "type",
+      "name": "操作类型",
+      "type": "Enum",
+      "defaultValue": "none",
+      "required": true,
+      "variableMode": "Input",
+      "condition": "",
+      "description": ""
+    },
+    {
+      "key": "list",
+      "name": "列表",
+      "type": "List",
+      "defaultValue": "",
+      "required": false,
+      "variableMode": "UseVarOnly",
+      "condition": "",
+      "description": "要操作的列表变量"
+    },
+    {
+      "key": "list2",
+      "name": "列表2",
+      "type": "List",
+      "defaultValue": "",
+      "required": false,
+      "variableMode": "UseVarOrInput",
+      "condition": "仅：concat",
+      "description": "要拼接的列表"
+    },
+    {
+      "key": "pos",
+      "name": "序号",
+      "type": "Integer",
+      "defaultValue": "0",
+      "required": false,
+      "variableMode": "UseVarOrInput",
+      "condition": "仅：getAt, insertAt, setAt, removeAt, sub",
+      "description": "目标元素的序号，从0开始。负值表示从后向前的第几个。"
+    },
+    {
+      "key": "length",
+      "name": "长度",
+      "type": "Integer",
+      "defaultValue": "1",
+      "required": false,
+      "variableMode": "UseVarOrInput",
+      "condition": "仅：sub",
+      "description": "操作元素的数量"
+    },
+    {
+      "key": "item",
+      "name": "值",
+      "type": "Text",
+      "defaultValue": "",
+      "required": false,
+      "variableMode": "UseVarOrInput",
+      "condition": "仅：append, insertAt, setAt, remove, removeAllByValue, indexOf, filterByDefault, filterByContains, filterByStarts, filterByEnds",
+      "description": "要插入或更新的值，或筛选关键词"
+    },
+    {
+      "key": "orderByScore",
+      "name": "按匹配程度排序",
+      "type": "Boolean",
+      "defaultValue": "false",
+      "required": false,
+      "variableMode": "UseVarOrInput",
+      "condition": "仅：filterByDefault",
+      "description": "筛选结果按匹配程度倒序排列"
+    },
+    {
+      "key": "pattern",
+      "name": "正则表达式",
+      "type": "Text",
+      "defaultValue": "",
+      "required": false,
+      "variableMode": "UseVarOrInput",
+      "condition": "仅：removeByMatch, removeByNotMatch, filterByRegex",
+      "description": "要匹配的正则表达式。"
+    },
+    {
+      "key": "stopIfFail",
+      "name": "失败后停止",
+      "type": "Boolean",
+      "defaultValue": "true",
+      "required": false,
+      "variableMode": "Input",
+      "condition": "",
+      "description": "失败后是否停止动作"
+    }
+  ],
+  "outputs": [
+    {
+      "key": "value",
+      "name": "结果",
+      "type": "Any",
+      "condition": "仅：getAt, sortAsc, sortAscNature, sortDesc, sub, concat, distinct, filterByRegex, filterByDefault, filterByContains, filterByStarts, filterByEnds, FileSizeAsc, FileSizeDesc, CreationTimeDesc, CreationTimeAsc, LastAccessTimeDesc, LastAccessTimeAsc, LastWriteTimeDesc, LastWriteTimeAsc",
+      "description": "操作后的输出（取的元素值、排序、切片或拼接后的列表等）"
+    },
+    {
+      "key": "isEmpty",
+      "name": "是否为空",
+      "type": "Boolean",
+      "condition": "",
+      "description": "空返回true，非空返回false"
+    },
+    {
+      "key": "length",
+      "name": "列表长度",
+      "type": "Integer",
+      "condition": "",
+      "description": "列表包含的元素数量，截断或拼接后输出结果列表的长度"
+    },
+    {
+      "key": "index",
+      "name": "序号",
+      "type": "Integer",
+      "condition": "仅：indexOf",
+      "description": "值在列表里的序号，-1表示不存在"
+    },
+    {
+      "key": "filterOutItems",
+      "name": "剩余项列表",
+      "type": "Any",
+      "condition": "仅：filterByRegex, filterByDefault, filterByContains, filterByStarts, filterByEnds",
+      "description": "不符合筛选条件的项的列表"
+    }
+  ],
+  "selections": {
+    "type": {
+      "name": "操作类型",
+      "items": [
+        {
+          "value": "none",
+          "name": "无操作（仅用于获取列表信息）",
+          "description": ""
+        },
+        {
+          "value": "getAt",
+          "name": "读取某位置元素",
+          "description": ""
+        },
+        {
+          "value": "append",
+          "name": "添加元素到末尾",
+          "description": ""
+        },
+        {
+          "value": "insertAt",
+          "name": "插入元素",
+          "description": ""
+        },
+        {
+          "value": "setAt",
+          "name": "设置/更新某序号元素",
+          "description": ""
+        },
+        {
+          "value": "remove",
+          "name": "去除元素(指定值，有多个时去除第一个)",
+          "description": ""
+        },
+        {
+          "value": "removeAllByValue",
+          "name": "去除元素(指定值，有多个时去除全部)",
+          "description": ""
+        },
+        {
+          "value": "removeAt",
+          "name": "去除元素(指定位置)",
+          "description": ""
+        },
+        {
+          "value": "removeByMatch",
+          "name": "去除元素(匹配正则表达式的项)",
+          "description": ""
+        },
+        {
+          "value": "removeByNotMatch",
+          "name": "去除元素(不匹配正则表达式的项)",
+          "description": ""
+        },
+        {
+          "value": "clear",
+          "name": "清空列表",
+          "description": ""
+        },
+        {
+          "value": "sortAsc",
+          "name": "排序A-Z（输出到结果）",
+          "description": ""
+        },
+        {
+          "value": "sortDesc",
+          "name": "排序Z-A（输出到结果）",
+          "description": ""
+        },
+        {
+          "value": "sortAscNature",
+          "name": "自然排序A-Z（输出到结果）",
+          "description": ""
+        },
+        {
+          "value": "FileSizeAsc",
+          "name": "排序文件列表：文件大小（从小到大）",
+          "description": ""
+        },
+        {
+          "value": "FileSizeDesc",
+          "name": "排序文件列表：文件大小（从大到小）",
+          "description": ""
+        },
+        {
+          "value": "CreationTimeDesc",
+          "name": "排序文件列表：创建时间（从新到旧）",
+          "description": ""
+        },
+        {
+          "value": "CreationTimeAsc",
+          "name": "排序文件列表：创建时间（从旧到新）",
+          "description": ""
+        },
+        {
+          "value": "LastAccessTimeDesc",
+          "name": "排序文件列表：最后访问时间（从晚到早）",
+          "description": ""
+        },
+        {
+          "value": "LastAccessTimeAsc",
+          "name": "排序文件列表：最后访问时间（从早到晚）",
+          "description": ""
+        },
+        {
+          "value": "LastWriteTimeDesc",
+          "name": "排序文件列表：最后写入时间（从晚到早）",
+          "description": ""
+        },
+        {
+          "value": "LastWriteTimeAsc",
+          "name": "排序文件列表：最后写入时间（从早到晚）",
+          "description": ""
+        },
+        {
+          "value": "reverse",
+          "name": "倒置",
+          "description": ""
+        },
+        {
+          "value": "sub",
+          "name": "截取（输出到结果）",
+          "description": ""
+        },
+        {
+          "value": "concat",
+          "name": "拼接（输出到结果）",
+          "description": ""
+        },
+        {
+          "value": "distinct",
+          "name": "去除重复（输出到结果）",
+          "description": ""
+        },
+        {
+          "value": "indexOf",
+          "name": "获取值的序号",
+          "description": ""
+        },
+        {
+          "value": "filterByRegex",
+          "name": "筛选（正则,输出到结果）",
+          "description": ""
+        },
+        {
+          "value": "filterByDefault",
+          "name": "筛选（模糊匹配,输出到结果）",
+          "description": ""
+        },
+        {
+          "value": "filterByContains",
+          "name": "筛选（包含）",
+          "description": ""
+        },
+        {
+          "value": "filterByStarts",
+          "name": "筛选（开始）",
+          "description": ""
+        },
+        {
+          "value": "filterByEnds",
+          "name": "筛选（结束）",
+          "description": ""
+        }
+      ]
+    }
+  },
+  "sourceFileName": "sys_listOperations_列表操作.md"
+}

@@ -1,0 +1,184 @@
+{
+  "key": "sys:regexExtract",
+  "slug": "regexextract",
+  "legacySlug": "regexextract",
+  "ownsLegacyContent": true,
+  "name": "正则提取",
+  "description": "使用正则表达式提取指定内容",
+  "category": "Text",
+  "categoryName": "文本处理",
+  "stepType": "Action",
+  "isRisky": false,
+  "isProOnly": false,
+  "helpLink": "https://getquicker.net/KC/Help/Doc/regexextract",
+  "inputs": [
+    {
+      "key": "getGroup",
+      "name": "提取方式",
+      "type": "Enum",
+      "defaultValue": "0",
+      "required": true,
+      "variableMode": "Input",
+      "condition": "",
+      "description": "输出的内容根据提取内容有所不同，请参考模块文档。"
+    },
+    {
+      "key": "data",
+      "name": "输入",
+      "type": "Text",
+      "defaultValue": "",
+      "required": true,
+      "variableMode": "UseVarOrInput",
+      "condition": "",
+      "description": "要提取内容的文本"
+    },
+    {
+      "key": "pattern",
+      "name": "正则表达式",
+      "type": "Text",
+      "defaultValue": "",
+      "required": true,
+      "variableMode": "UseVarOrInput",
+      "condition": "",
+      "description": "用于提取内容的正则表达式"
+    },
+    {
+      "key": "ignoreCase",
+      "name": "忽略大小写",
+      "type": "Boolean",
+      "defaultValue": "false",
+      "required": false,
+      "variableMode": "UseVarOrInput",
+      "condition": "",
+      "description": "不区分英文大小写"
+    },
+    {
+      "key": "singleLine",
+      "name": "单行模式",
+      "type": "Boolean",
+      "defaultValue": "false",
+      "required": false,
+      "variableMode": "UseVarOrInput",
+      "condition": "",
+      "description": "此模式下\".\"能匹配任意字符，包括换行符。(否则匹配除了\\n外的任意字符)"
+    },
+    {
+      "key": "multiLine",
+      "name": "多行模式",
+      "type": "Boolean",
+      "defaultValue": "false",
+      "required": false,
+      "variableMode": "UseVarOrInput",
+      "condition": "",
+      "description": "此模式下^和$可以分别匹配行首和行尾。(否则匹配输入内容的开始和结束)"
+    },
+    {
+      "key": "rightToLeft",
+      "name": "从右向左",
+      "type": "Boolean",
+      "defaultValue": "false",
+      "required": false,
+      "variableMode": "UseVarOrInput",
+      "condition": "",
+      "description": "从右向左查找匹配内容"
+    },
+    {
+      "key": "stopIfFail",
+      "name": "失败后中止动作",
+      "type": "Boolean",
+      "defaultValue": "true",
+      "required": false,
+      "variableMode": "Input",
+      "condition": "",
+      "description": "操作失败后，是否停止后续动作的执行。"
+    }
+  ],
+  "outputs": [
+    {
+      "key": "isSuccess",
+      "name": "是否成功",
+      "type": "Boolean",
+      "condition": "",
+      "description": "是否匹配成功"
+    },
+    {
+      "key": "matches",
+      "name": "所有匹配列表",
+      "type": "List",
+      "condition": "",
+      "description": "返回所有的匹配项"
+    },
+    {
+      "key": "match1",
+      "name": "匹配1",
+      "type": "Any",
+      "condition": "",
+      "description": "第1个匹配项的值"
+    },
+    {
+      "key": "match2",
+      "name": "匹配2",
+      "type": "Any",
+      "condition": "",
+      "description": "第2个匹配项的值"
+    },
+    {
+      "key": "match3",
+      "name": "匹配3",
+      "type": "Any",
+      "condition": "",
+      "description": "第3个匹配项的值"
+    },
+    {
+      "key": "match4",
+      "name": "匹配4",
+      "type": "Any",
+      "condition": "",
+      "description": "第4个匹配项的值"
+    },
+    {
+      "key": "match5",
+      "name": "匹配5",
+      "type": "Any",
+      "condition": "",
+      "description": "第5个匹配项的值"
+    },
+    {
+      "key": "matchObj",
+      "name": "Match对象",
+      "type": "Object",
+      "condition": "仅：1",
+      "description": "首个匹配的原始的C#语言Match对象，可以在表达式中使用"
+    },
+    {
+      "key": "matchesCollection",
+      "name": "Matches集合",
+      "type": "Object",
+      "condition": "仅：0, 2",
+      "description": "所有匹配的原始Match对象集合(MatchCollection)，可以在表达式中使用"
+    }
+  ],
+  "selections": {
+    "getGroup": {
+      "name": "提取方式",
+      "items": [
+        {
+          "value": "0",
+          "name": "各匹配项的值",
+          "description": ""
+        },
+        {
+          "value": "1",
+          "name": "第一个匹配项的组",
+          "description": ""
+        },
+        {
+          "value": "2",
+          "name": "各匹配项的组",
+          "description": ""
+        }
+      ]
+    }
+  },
+  "sourceFileName": "sys_regexExtract_正则提取.md"
+}

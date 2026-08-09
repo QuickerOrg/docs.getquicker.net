@@ -137,7 +137,9 @@
 }
 
 .markdown table {
-  display: table;
+  display: block;
+  max-width: 100%;
+  overflow-x: auto;
   width: 100%;
   font-size: 0.95rem;
 }

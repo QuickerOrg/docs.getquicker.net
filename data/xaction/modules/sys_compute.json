@@ -1,0 +1,64 @@
+{
+  "key": "sys:compute",
+  "slug": "compute",
+  "legacySlug": "compute",
+  "ownsLegacyContent": true,
+  "name": "计算",
+  "description": "对表达式进行计算。",
+  "category": "Compute",
+  "categoryName": "计算与比较",
+  "stepType": "Action",
+  "isRisky": false,
+  "isProOnly": false,
+  "helpLink": "https://getquicker.net/KC/Help/Doc/compute",
+  "inputs": [
+    {
+      "key": "expression",
+      "name": "表达式",
+      "type": "Text",
+      "defaultValue": "1+1",
+      "required": true,
+      "variableMode": "UseVarOrInput",
+      "condition": "",
+      "description": "要计算的表达式"
+    },
+    {
+      "key": "evalVar",
+      "name": "增强模式",
+      "type": "Boolean",
+      "defaultValue": "false",
+      "required": false,
+      "variableMode": "Input",
+      "condition": "",
+      "description": "支持在表达式中使用{变量名}和Math对象"
+    },
+    {
+      "key": "stopIfFail",
+      "name": "失败后停止",
+      "type": "Boolean",
+      "defaultValue": "true",
+      "required": false,
+      "variableMode": "Input",
+      "condition": "",
+      "description": "失败后是否停止动作"
+    }
+  ],
+  "outputs": [
+    {
+      "key": "isSuccess",
+      "name": "是否成功",
+      "type": "Boolean",
+      "condition": "",
+      "description": "操作是否成功"
+    },
+    {
+      "key": "output",
+      "name": "结果",
+      "type": "Any",
+      "condition": "",
+      "description": "将表达式计算结果写入变量"
+    }
+  ],
+  "selections": {},
+  "sourceFileName": "sys_compute_计算.md"
+}

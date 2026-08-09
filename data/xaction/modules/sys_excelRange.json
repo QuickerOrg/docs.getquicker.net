@@ -1,0 +1,342 @@
+{
+  "key": "sys:excelRange",
+  "slug": "excelrange",
+  "legacySlug": "excelrange",
+  "ownsLegacyContent": true,
+  "name": "Excel区域操作",
+  "description": "操作Excel的某个区域或单元格",
+  "category": "SoftInteraction",
+  "categoryName": "第三方软件交互",
+  "stepType": "Action",
+  "isRisky": false,
+  "isProOnly": false,
+  "helpLink": "https://getquicker.net/KC/Help/Doc/excelrange",
+  "inputs": [
+    {
+      "key": "range",
+      "name": "区域",
+      "type": "Object",
+      "defaultValue": "",
+      "required": false,
+      "variableMode": "UseVarOrInput",
+      "condition": "",
+      "description": "可以输入区域变量、留空(表示当前选择区域）、used(表示当前工作表的使用区域)或区域范围如A1:E9等，请参考文档。"
+    },
+    {
+      "key": "subRange",
+      "name": "限定子范围",
+      "type": "Enum",
+      "defaultValue": "FullArea",
+      "required": true,
+      "variableMode": "UseVarOrInput",
+      "condition": "",
+      "description": "根据需要，将要操作的目标限定为一个子区域"
+    },
+    {
+      "key": "operation",
+      "name": "操作类型",
+      "type": "Enum",
+      "defaultValue": "SetValue",
+      "required": true,
+      "variableMode": "Input",
+      "condition": "",
+      "description": "操作类型"
+    },
+    {
+      "key": "value",
+      "name": "参数",
+      "type": "Any",
+      "defaultValue": "",
+      "required": false,
+      "variableMode": "UseVarOrInput",
+      "condition": "仅：SetValue, SetFormula, SetNumberFormat",
+      "description": "要设置的内容"
+    },
+    {
+      "key": "cellSize",
+      "name": "行高,列宽",
+      "type": "Any",
+      "defaultValue": "",
+      "required": false,
+      "variableMode": "UseVarOrInput",
+      "condition": "仅：SetCellSize",
+      "description": "-表示不改变，auto表示自动，数字表示具体值。如auto,auto表示自适应高度和宽度"
+    },
+    {
+      "key": "style",
+      "name": "格式",
+      "type": "Text",
+      "defaultValue": "",
+      "required": false,
+      "variableMode": "UseVarOrInput",
+      "condition": "仅：SetStyle",
+      "description": "要设置的格式内容。每行一个格式设置，请参考模块文档了解详细参数设置。"
+    },
+    {
+      "key": "methods",
+      "name": "方法",
+      "type": "Text",
+      "defaultValue": "",
+      "required": false,
+      "variableMode": "UseVarOrInput",
+      "condition": "仅：CallMethod",
+      "description": "要调用的方法，每行一个。格式请参考文档。"
+    },
+    {
+      "key": "replaceWhat",
+      "name": "查找内容",
+      "type": "Text",
+      "defaultValue": "",
+      "required": true,
+      "variableMode": "UseVarOrInput",
+      "condition": "仅：Replace",
+      "description": "要替换的内容"
+    },
+    {
+      "key": "replaceTo",
+      "name": "替换为",
+      "type": "Text",
+      "defaultValue": "",
+      "required": true,
+      "variableMode": "UseVarOrInput",
+      "condition": "仅：Replace",
+      "description": "替换成的内容"
+    },
+    {
+      "key": "replaceEscapeWhat",
+      "name": "转义\"查找内容\"",
+      "type": "Boolean",
+      "defaultValue": "false",
+      "required": false,
+      "variableMode": "Input",
+      "condition": "仅：Replace",
+      "description": "替换\"查找内容\"中的转义字符（\\r,\\n,\\t）"
+    },
+    {
+      "key": "replaceEscapeTo",
+      "name": "转义\"替换为\"",
+      "type": "Boolean",
+      "defaultValue": "true",
+      "required": false,
+      "variableMode": "Input",
+      "condition": "仅：Replace",
+      "description": "替换\"替换为\"中的转义字符（\\r,\\n,\\t）"
+    },
+    {
+      "key": "replaceMatchCase",
+      "name": "区分大小写",
+      "type": "Boolean",
+      "defaultValue": "false",
+      "required": false,
+      "variableMode": "Input",
+      "condition": "仅：Replace",
+      "description": ""
+    },
+    {
+      "key": "stopIfFail",
+      "name": "失败后停止",
+      "type": "Boolean",
+      "defaultValue": "true",
+      "required": false,
+      "variableMode": "Input",
+      "condition": "",
+      "description": "失败后是否停止动作"
+    }
+  ],
+  "outputs": [
+    {
+      "key": "isSuccess",
+      "name": "是否成功",
+      "type": "Boolean",
+      "condition": "",
+      "description": "操作是否成功"
+    },
+    {
+      "key": "value",
+      "name": "值",
+      "type": "Any",
+      "condition": "仅：GetRangeInfo",
+      "description": "单元格的值"
+    },
+    {
+      "key": "text",
+      "name": "文本",
+      "type": "Text",
+      "condition": "仅：GetRangeInfo",
+      "description": "单元格的显示文本"
+    },
+    {
+      "key": "formula",
+      "name": "公式",
+      "type": "Text",
+      "condition": "仅：GetRangeInfo",
+      "description": "单元格的公式值"
+    },
+    {
+      "key": "numberFormat",
+      "name": "数值格式",
+      "type": "Text",
+      "condition": "仅：GetRangeInfo",
+      "description": "单元格数值格式值"
+    },
+    {
+      "key": "address",
+      "name": "位置引用",
+      "type": "Text",
+      "condition": "仅：GetRangeInfo",
+      "description": "区域位置范围"
+    },
+    {
+      "key": "column",
+      "name": "列号",
+      "type": "Integer",
+      "condition": "仅：GetRangeInfo",
+      "description": "左上角单元格从1开始的列数"
+    },
+    {
+      "key": "row",
+      "name": "行号",
+      "type": "Integer",
+      "condition": "仅：GetRangeInfo",
+      "description": "左上角单元格从1开始的行数"
+    },
+    {
+      "key": "colNum",
+      "name": "列数",
+      "type": "Integer",
+      "condition": "仅：GetRangeInfo",
+      "description": "区域包含的列数"
+    },
+    {
+      "key": "rowNum",
+      "name": "行数",
+      "type": "Integer",
+      "condition": "仅：GetRangeInfo",
+      "description": "区域包含的行数"
+    },
+    {
+      "key": "style",
+      "name": "格式信息",
+      "type": "Text",
+      "condition": "仅：GetRangeInfo",
+      "description": "单元格的格式"
+    },
+    {
+      "key": "range",
+      "name": "区域对象",
+      "type": "Object",
+      "condition": "仅：GetRangeInfo",
+      "description": "Range对象"
+    },
+    {
+      "key": "sheet",
+      "name": "工作表对象",
+      "type": "Object",
+      "condition": "仅：GetRangeInfo",
+      "description": "WorkSheet对象"
+    }
+  ],
+  "selections": {
+    "subRange": {
+      "name": "限定子范围",
+      "items": [
+        {
+          "value": "FullArea",
+          "name": "整个区域",
+          "description": ""
+        },
+        {
+          "value": "FirstRow",
+          "name": "区域内的第一行",
+          "description": ""
+        },
+        {
+          "value": "FirstColumn",
+          "name": "区域内的第一列",
+          "description": ""
+        },
+        {
+          "value": "LastRow",
+          "name": "区域内最后一行",
+          "description": ""
+        },
+        {
+          "value": "LastColumn",
+          "name": "区域内最后一列",
+          "description": ""
+        },
+        {
+          "value": "ActiveCell",
+          "name": "活动单元格",
+          "description": ""
+        },
+        {
+          "value": "EntireRow",
+          "name": "整行(包含区域外)",
+          "description": ""
+        },
+        {
+          "value": "EntireColumn",
+          "name": "整列(包含区域外)",
+          "description": ""
+        },
+        {
+          "value": "Rows",
+          "name": "所有行(区域范围内)",
+          "description": ""
+        },
+        {
+          "value": "Columns",
+          "name": "所有列(区域范围内)",
+          "description": ""
+        }
+      ]
+    },
+    "operation": {
+      "name": "操作类型",
+      "items": [
+        {
+          "value": "SetValue",
+          "name": "设置值",
+          "description": ""
+        },
+        {
+          "value": "SetFormula",
+          "name": "设置公式",
+          "description": ""
+        },
+        {
+          "value": "SetNumberFormat",
+          "name": "设置数值格式",
+          "description": ""
+        },
+        {
+          "value": "SetCellSize",
+          "name": "行高,列宽",
+          "description": ""
+        },
+        {
+          "value": "SetStyle",
+          "name": "设置格式",
+          "description": ""
+        },
+        {
+          "value": "CallMethod",
+          "name": "调用方法",
+          "description": ""
+        },
+        {
+          "value": "Replace",
+          "name": "替换内容",
+          "description": ""
+        },
+        {
+          "value": "GetRangeInfo",
+          "name": "获取区域信息",
+          "description": ""
+        }
+      ]
+    }
+  },
+  "sourceFileName": "sys_excelRange_Excel区域操作.md"
+}

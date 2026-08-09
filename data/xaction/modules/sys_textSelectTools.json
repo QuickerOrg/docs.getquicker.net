@@ -1,0 +1,190 @@
+{
+  "key": "sys:textSelectTools",
+  "slug": "textselecttools",
+  "legacySlug": "textselecttools",
+  "ownsLegacyContent": true,
+  "name": "辅助选择工具",
+  "description": "一些常用的选择内容并获取文本的工具",
+  "category": "Ui",
+  "categoryName": "界面组件",
+  "stepType": "Action",
+  "isRisky": false,
+  "isProOnly": false,
+  "helpLink": "https://getquicker.net/KC/Help/Doc/textselecttools",
+  "inputs": [
+    {
+      "key": "operation",
+      "name": "选择器",
+      "type": "Enum",
+      "defaultValue": "",
+      "required": false,
+      "variableMode": "UseVarOrInput",
+      "condition": "",
+      "description": ""
+    },
+    {
+      "key": "currValue",
+      "name": "当前值",
+      "type": "Text",
+      "defaultValue": "",
+      "required": false,
+      "variableMode": "UseVarOrInput",
+      "condition": "仅：OperationItemEditor",
+      "description": ""
+    },
+    {
+      "key": "stopIfFail",
+      "name": "失败后停止",
+      "type": "Boolean",
+      "defaultValue": "true",
+      "required": false,
+      "variableMode": "Input",
+      "condition": "",
+      "description": "失败后是否停止动作"
+    }
+  ],
+  "outputs": [
+    {
+      "key": "isSuccess",
+      "name": "是否成功",
+      "type": "Boolean",
+      "condition": "",
+      "description": "操作是否成功"
+    },
+    {
+      "key": "output",
+      "name": "结果文本",
+      "type": "Text",
+      "condition": "",
+      "description": "选择器的结果"
+    }
+  ],
+  "selections": {
+    "operation": {
+      "name": "选择器",
+      "items": [
+        {
+          "value": "SelectSingleFile",
+          "name": "选取文件",
+          "description": ""
+        },
+        {
+          "value": "SelectMultiFile",
+          "name": "选取(多个)文件",
+          "description": ""
+        },
+        {
+          "value": "SelectSingleFolder",
+          "name": "选取文件夹",
+          "description": ""
+        },
+        {
+          "value": "SelectSavePath",
+          "name": "选择保存路径",
+          "description": ""
+        },
+        {
+          "value": "SelectProcessPath",
+          "name": "选择窗口的进程路径",
+          "description": ""
+        },
+        {
+          "value": "SelectProcessName",
+          "name": "选择进程名",
+          "description": ""
+        },
+        {
+          "value": "SelectProfileExe",
+          "name": "选择场景标识",
+          "description": ""
+        },
+        {
+          "value": "SelectWindowHandle",
+          "name": "选择窗口句柄",
+          "description": ""
+        },
+        {
+          "value": "SelectKeyName",
+          "name": "从键盘输入键名",
+          "description": ""
+        },
+        {
+          "value": "SelectSendKeysData",
+          "name": "从键盘输入模拟按键B的内容",
+          "description": ""
+        },
+        {
+          "value": "SelectKeyCode",
+          "name": "从键盘输入键码数字",
+          "description": ""
+        },
+        {
+          "value": "SelectLocationArea",
+          "name": "选取区域",
+          "description": ""
+        },
+        {
+          "value": "SelectLocationPoint",
+          "name": "选取坐标位置",
+          "description": ""
+        },
+        {
+          "value": "SelectRelativePoint",
+          "name": "选取窗口坐标位置",
+          "description": ""
+        },
+        {
+          "value": "CaptureToFile",
+          "name": "截图并获取路径",
+          "description": ""
+        },
+        {
+          "value": "SelectIcon",
+          "name": "选取矢量图标",
+          "description": ""
+        },
+        {
+          "value": "SelectActionId",
+          "name": "选取动作ID",
+          "description": ""
+        },
+        {
+          "value": "SelectActionName",
+          "name": "选取动作名称",
+          "description": ""
+        },
+        {
+          "value": "SelectControlXPath",
+          "name": "选择窗口控件，获取其XPath",
+          "description": ""
+        },
+        {
+          "value": "OperationItemEditor",
+          "name": "操作项编辑器",
+          "description": ""
+        },
+        {
+          "value": "SelectBluetoothDevice",
+          "name": "已配对的蓝牙设备",
+          "description": ""
+        },
+        {
+          "value": "SelectBluetoothLEDevice",
+          "name": "低功耗蓝牙设备",
+          "description": ""
+        },
+        {
+          "value": "SelectNetworkProfile",
+          "name": "网络连接",
+          "description": ""
+        },
+        {
+          "value": "SelectWebElementSelector",
+          "name": "网页元素的CSS选择器",
+          "description": ""
+        }
+      ]
+    }
+  },
+  "sourceFileName": "sys_textSelectTools_辅助选择工具.md"
+}

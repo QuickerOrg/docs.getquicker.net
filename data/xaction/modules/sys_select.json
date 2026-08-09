@@ -1,0 +1,514 @@
+{
+  "key": "sys:select",
+  "slug": "userselect",
+  "legacySlug": "userselect",
+  "ownsLegacyContent": true,
+  "name": "用户选择",
+  "description": "请用户选择一个选项。",
+  "category": "Basic",
+  "categoryName": "基础",
+  "stepType": "Action",
+  "isRisky": false,
+  "isProOnly": false,
+  "helpLink": "https://getquicker.net/KC/Help/Doc/userselect",
+  "inputs": [
+    {
+      "key": "type",
+      "name": "类型",
+      "type": "Enum",
+      "defaultValue": "single",
+      "required": true,
+      "variableMode": "Input",
+      "condition": "",
+      "description": ""
+    },
+    {
+      "key": "prompt",
+      "name": "窗口标题",
+      "type": "Text",
+      "defaultValue": "请选择",
+      "required": true,
+      "variableMode": "Input",
+      "condition": "",
+      "description": ""
+    },
+    {
+      "key": "note",
+      "name": "提示信息",
+      "type": "Text",
+      "defaultValue": "",
+      "required": false,
+      "variableMode": "Input",
+      "condition": "",
+      "description": ""
+    },
+    {
+      "key": "items",
+      "name": "选项",
+      "type": "Text",
+      "defaultValue": "",
+      "required": true,
+      "variableMode": "UseVarOrInput",
+      "condition": "",
+      "description": "每行一个选项，格式为 \"文本\" 或 \"显示文本|值\"。如需显示图标，格式请参考文档。"
+    },
+    {
+      "key": "defaultValue",
+      "name": "默认值",
+      "type": "Text",
+      "defaultValue": "",
+      "required": false,
+      "variableMode": "UseVarOrInput",
+      "condition": "仅：single",
+      "description": "预先选择的项"
+    },
+    {
+      "key": "defaultValueMulti",
+      "name": "默认值",
+      "type": "Text",
+      "defaultValue": "",
+      "required": false,
+      "variableMode": "UseVarOrInput",
+      "condition": "仅：multi",
+      "description": "多选时默认选项，每行一个"
+    },
+    {
+      "key": "winLocation",
+      "name": "窗口位置",
+      "type": "Enum",
+      "defaultValue": "WithMouse1",
+      "required": false,
+      "variableMode": "UseVarOrInput",
+      "condition": "",
+      "description": "在哪里显示选择窗口"
+    },
+    {
+      "key": "maxWinSize",
+      "name": "最大尺寸/位置坐标",
+      "type": "Text",
+      "defaultValue": "",
+      "required": false,
+      "variableMode": "Input",
+      "condition": "",
+      "description": "可选。设置选择窗口的最大尺寸，格式为：宽度,高度。支持像素数值或屏幕宽高百分比，详情请参考模块文档。\\n\"窗口位置\" 类型为 \"自定义位置\" 时用于指定显示位置，格式为：left,top,right,bottom"
+    },
+    {
+      "key": "keepLastPos",
+      "name": "使用上次位置",
+      "type": "Enum",
+      "defaultValue": "1",
+      "required": false,
+      "variableMode": "UseVarOrInput",
+      "condition": "",
+      "description": "重复显示选择窗口时，保持上次的显示位置。"
+    },
+    {
+      "key": "autoCloseSeconds",
+      "name": "自动关闭",
+      "type": "Number",
+      "defaultValue": "0.0",
+      "required": false,
+      "variableMode": "Input",
+      "condition": "",
+      "description": "几秒后自动关闭选择窗口。0表示不自动关闭。"
+    },
+    {
+      "key": "noKeyboard",
+      "name": "不使用焦点",
+      "type": "Boolean",
+      "defaultValue": "false",
+      "required": false,
+      "variableMode": "UseVarOrInput",
+      "condition": "",
+      "description": "不抢占其他应用的焦点。此时无法使用键盘选择选项，只能用鼠标操作。"
+    },
+    {
+      "key": "closeOnDeactivated",
+      "name": "失去焦点后关闭窗口（仅在使用焦点时有效）",
+      "type": "Boolean",
+      "defaultValue": "false",
+      "required": false,
+      "variableMode": "Input",
+      "condition": "",
+      "description": ""
+    },
+    {
+      "key": "showFilter",
+      "name": "启用筛选",
+      "type": "Enum",
+      "defaultValue": "auto",
+      "required": false,
+      "variableMode": "UseVarOrInput",
+      "condition": "",
+      "description": "是否显示筛选框。仅在且使用焦点时有效。"
+    },
+    {
+      "key": "filterContent",
+      "name": "筛选内容",
+      "type": "Text",
+      "defaultValue": "",
+      "required": false,
+      "variableMode": "UseVarOrInput",
+      "condition": "",
+      "description": "预先显示的筛选内容"
+    },
+    {
+      "key": "imeState",
+      "name": "输入法状态",
+      "type": "Enum",
+      "defaultValue": "NO_CONTROL",
+      "required": false,
+      "variableMode": "UseVarOrInput",
+      "condition": "",
+      "description": "筛选框输入法状态"
+    },
+    {
+      "key": "restoreForeground",
+      "name": "恢复活动窗口到弹出前",
+      "type": "Boolean",
+      "defaultValue": "true",
+      "required": false,
+      "variableMode": "Input",
+      "condition": "",
+      "description": "将前台窗口还原为弹窗前的活动窗口。否则将会还原到最后一个活动窗口上。"
+    },
+    {
+      "key": "allowOkWhenEmpty",
+      "name": "允许不选择任何选项时点击确定",
+      "type": "Boolean",
+      "defaultValue": "false",
+      "required": false,
+      "variableMode": "Input",
+      "condition": "",
+      "description": ""
+    },
+    {
+      "key": "enableQuickConfirm",
+      "name": "启用快速确认（点击选项后立即确认选择并关闭窗口）",
+      "type": "Boolean",
+      "defaultValue": "true",
+      "required": false,
+      "variableMode": "Input",
+      "condition": "仅：single",
+      "description": ""
+    },
+    {
+      "key": "topMost",
+      "name": "置顶显示",
+      "type": "Boolean",
+      "defaultValue": "true",
+      "required": false,
+      "variableMode": "Input",
+      "condition": "",
+      "description": ""
+    },
+    {
+      "key": "stopIfCancel",
+      "name": "取消后停止",
+      "type": "Boolean",
+      "defaultValue": "true",
+      "required": false,
+      "variableMode": "Input",
+      "condition": "",
+      "description": "取消选择后是否停止动作"
+    },
+    {
+      "key": "operations",
+      "name": "右键/全局菜单",
+      "type": "Text",
+      "defaultValue": "",
+      "required": false,
+      "variableMode": "Input",
+      "condition": "",
+      "description": "每行定义一个操作，具体格式请参考文档。"
+    },
+    {
+      "key": "fontsize",
+      "name": "字体大小",
+      "type": "Number",
+      "defaultValue": "12.0",
+      "required": true,
+      "variableMode": "UseVarOrInput",
+      "condition": "",
+      "description": ""
+    },
+    {
+      "key": "fontfamily",
+      "name": "字体名称",
+      "type": "Text",
+      "defaultValue": "",
+      "required": false,
+      "variableMode": "UseVarOrInput",
+      "condition": "",
+      "description": "可选。设置字体名称。如有多个字体，使用逗号分隔。"
+    },
+    {
+      "key": "iconsize",
+      "name": "图标大小",
+      "type": "Number",
+      "defaultValue": "16.0",
+      "required": true,
+      "variableMode": "UseVarOrInput",
+      "condition": "",
+      "description": ""
+    },
+    {
+      "key": "windowKey",
+      "name": "窗口标识",
+      "type": "Text",
+      "defaultValue": "",
+      "required": false,
+      "variableMode": "UseVarOrInput",
+      "condition": "",
+      "description": "再次运行动作时，可根据标识自动关闭前一个窗口并在该位置显示新窗口。"
+    },
+    {
+      "key": "help",
+      "name": "帮助按钮内容",
+      "type": "Text",
+      "defaultValue": "",
+      "required": false,
+      "variableMode": "Input",
+      "condition": "",
+      "description": "点击弹出显示帮助内容，MarkDown格式"
+    }
+  ],
+  "outputs": [
+    {
+      "key": "isSuccess",
+      "name": "是否确认",
+      "type": "Boolean",
+      "condition": "",
+      "description": "是否成功选择了选项/点击了保存按钮"
+    },
+    {
+      "key": "textValue",
+      "name": "选择的项(值)",
+      "type": "Text",
+      "condition": "仅：single",
+      "description": "选中选项的值"
+    },
+    {
+      "key": "selectedIndex",
+      "name": "索引号",
+      "type": "Integer",
+      "condition": "仅：single",
+      "description": "选择的项在列表里的序号数字，从0开始。"
+    },
+    {
+      "key": "selectedIndexList",
+      "name": "索引号列表",
+      "type": "List",
+      "condition": "仅：multi",
+      "description": "所有选择的项的序号列表"
+    },
+    {
+      "key": "multiSelected",
+      "name": "选择的项值列表",
+      "type": "List",
+      "condition": "仅：multi",
+      "description": "所有选择的项的值的列表"
+    },
+    {
+      "key": "extraOperation",
+      "name": "选择的菜单",
+      "type": "Text",
+      "condition": "",
+      "description": "选择的右键菜单或全局菜单项的值"
+    },
+    {
+      "key": "selectedFullItems",
+      "name": "选择的完整选项",
+      "type": "Any",
+      "condition": "",
+      "description": "选择选项的完整定义内容（不仅仅返回选项值）"
+    },
+    {
+      "key": "selectedItemTitle",
+      "name": "选择的选项标题",
+      "type": "Text",
+      "condition": "仅：single",
+      "description": "所选中选项的标题"
+    },
+    {
+      "key": "filterContent",
+      "name": "筛选内容",
+      "type": "Text",
+      "condition": "",
+      "description": "最后使用的筛选词"
+    }
+  ],
+  "selections": {
+    "type": {
+      "name": "类型",
+      "items": [
+        {
+          "value": "single",
+          "name": "单选",
+          "description": ""
+        },
+        {
+          "value": "multi",
+          "name": "多选",
+          "description": ""
+        }
+      ]
+    },
+    "winLocation": {
+      "name": "窗口位置",
+      "items": [
+        {
+          "value": "WithMouse1",
+          "name": "跟随鼠标（指针周围）",
+          "description": ""
+        },
+        {
+          "value": "WithMouse2",
+          "name": "跟随鼠标（指针右下）",
+          "description": ""
+        },
+        {
+          "value": "CenterScreen",
+          "name": "屏幕中间",
+          "description": ""
+        },
+        {
+          "value": "TopLeft",
+          "name": "屏幕左上",
+          "description": ""
+        },
+        {
+          "value": "TopCenter",
+          "name": "屏幕中上",
+          "description": ""
+        },
+        {
+          "value": "TopRight",
+          "name": "屏幕右上",
+          "description": ""
+        },
+        {
+          "value": "LeftCenter",
+          "name": "屏幕左中",
+          "description": ""
+        },
+        {
+          "value": "RightCenter",
+          "name": "屏幕右中",
+          "description": ""
+        },
+        {
+          "value": "BottomLeft",
+          "name": "屏幕左下",
+          "description": ""
+        },
+        {
+          "value": "BottomCenter",
+          "name": "屏幕中下",
+          "description": ""
+        },
+        {
+          "value": "BottomRight",
+          "name": "屏幕右下",
+          "description": ""
+        },
+        {
+          "value": "Manual",
+          "name": "自定义位置",
+          "description": ""
+        }
+      ]
+    },
+    "keepLastPos": {
+      "name": "使用上次位置",
+      "items": [
+        {
+          "value": "0",
+          "name": "不保持",
+          "description": ""
+        },
+        {
+          "value": "3",
+          "name": "保持本次运行的上次位置(左上角)",
+          "description": ""
+        },
+        {
+          "value": "1",
+          "name": "保持本次运行的上次位置+宽度",
+          "description": ""
+        },
+        {
+          "value": "5",
+          "name": "保持本次运行的上次位置+尺寸",
+          "description": ""
+        },
+        {
+          "value": "7",
+          "name": "保持本次运行的上次窗口尺寸",
+          "description": ""
+        },
+        {
+          "value": "4",
+          "name": "总是保持上次位置(左上角)",
+          "description": ""
+        },
+        {
+          "value": "2",
+          "name": "总是保持上次位置+宽度",
+          "description": ""
+        },
+        {
+          "value": "6",
+          "name": "总是保持上次位置+尺寸",
+          "description": ""
+        },
+        {
+          "value": "8",
+          "name": "总是保持上次窗口尺寸",
+          "description": ""
+        }
+      ]
+    },
+    "showFilter": {
+      "name": "启用筛选",
+      "items": [
+        {
+          "value": "0",
+          "name": "不启用",
+          "description": ""
+        },
+        {
+          "value": "1",
+          "name": "启用",
+          "description": ""
+        },
+        {
+          "value": "auto",
+          "name": "自动(选项超过10个时启用)",
+          "description": ""
+        }
+      ]
+    },
+    "imeState": {
+      "name": "输入法状态",
+      "items": [
+        {
+          "value": "NO_CONTROL",
+          "name": "不控制",
+          "description": ""
+        },
+        {
+          "value": "ON",
+          "name": "开启",
+          "description": ""
+        },
+        {
+          "value": "OFF",
+          "name": "关闭",
+          "description": ""
+        }
+      ]
+    }
+  },
+  "sourceFileName": "sys_select_用户选择.md"
+}

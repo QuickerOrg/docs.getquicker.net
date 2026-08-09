@@ -1,0 +1,128 @@
+{
+  "key": "sys:clouddata",
+  "slug": "clouddata",
+  "legacySlug": "clouddata",
+  "ownsLegacyContent": true,
+  "name": "云状态存取",
+  "description": "根据键值读取或写入网络数据。",
+  "category": "Network",
+  "categoryName": "网络服务",
+  "stepType": "Action",
+  "isRisky": false,
+  "isProOnly": false,
+  "helpLink": "https://getquicker.net/KC/Help/Doc/clouddata",
+  "inputs": [
+    {
+      "key": "type",
+      "name": "操作类型",
+      "type": "Enum",
+      "defaultValue": "readGlobalState",
+      "required": true,
+      "variableMode": "Input",
+      "condition": "",
+      "description": ""
+    },
+    {
+      "key": "key",
+      "name": "状态名称",
+      "type": "Text",
+      "defaultValue": "",
+      "required": false,
+      "variableMode": "Input",
+      "condition": "仅：readGlobalState, saveGlobalState",
+      "description": "存储或读取的数据条目名称(键)。"
+    },
+    {
+      "key": "value",
+      "name": "内容",
+      "type": "Text",
+      "defaultValue": "",
+      "required": false,
+      "variableMode": "UseVarOrInput",
+      "condition": "仅：saveGlobalState",
+      "description": "要保存的数据值。使用\"*NULL*\"删除此状态的存储。"
+    },
+    {
+      "key": "expireSeconds",
+      "name": "超时时间",
+      "type": "Number",
+      "defaultValue": "2.5",
+      "required": false,
+      "variableMode": "UseVarOrInput",
+      "condition": "",
+      "description": "请求超时时间（秒数）"
+    },
+    {
+      "key": "stopIfFail",
+      "name": "失败后停止",
+      "type": "Boolean",
+      "defaultValue": "true",
+      "required": false,
+      "variableMode": "Input",
+      "condition": "",
+      "description": "失败后是否停止动作"
+    }
+  ],
+  "outputs": [
+    {
+      "key": "isSuccess",
+      "name": "是否成功",
+      "type": "Boolean",
+      "condition": "",
+      "description": "操作是否成功"
+    },
+    {
+      "key": "value",
+      "name": "内容",
+      "type": "Any",
+      "condition": "仅：readGlobalState",
+      "description": "读取到的状态内容"
+    },
+    {
+      "key": "lastUpdateTime",
+      "name": "最后更新时间",
+      "type": "DateTime",
+      "condition": "仅：readGlobalState",
+      "description": "云状态对象在服务器上的最后更新时间，已转换为本机时区。"
+    },
+    {
+      "key": "lastUpdateTimeUtc",
+      "name": "最后更新时间(UTC)",
+      "type": "DateTime",
+      "condition": "仅：readGlobalState",
+      "description": "云状态对象在服务器上的最后更新时间（UTC）。"
+    },
+    {
+      "key": "err",
+      "name": "错误信息",
+      "type": "Text",
+      "condition": "",
+      "description": "出错时输出的错误信息。"
+    },
+    {
+      "key": "errCode",
+      "name": "错误代码",
+      "type": "Text",
+      "condition": "仅：readGlobalState",
+      "description": "从云服务商返回的错误代码。NoSuchKey=不存在此状态。"
+    }
+  ],
+  "selections": {
+    "type": {
+      "name": "操作类型",
+      "items": [
+        {
+          "value": "readGlobalState",
+          "name": "从网络读取数据",
+          "description": ""
+        },
+        {
+          "value": "saveGlobalState",
+          "name": "写入数据到网络",
+          "description": ""
+        }
+      ]
+    }
+  },
+  "sourceFileName": "sys_clouddata_云状态存取.md"
+}

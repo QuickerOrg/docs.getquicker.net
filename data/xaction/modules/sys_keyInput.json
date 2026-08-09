@@ -1,0 +1,59 @@
+{
+  "key": "sys:keyInput",
+  "slug": "keyinput",
+  "legacySlug": "keyinput",
+  "ownsLegacyContent": true,
+  "name": "模拟按键A（录入）",
+  "description": "模拟键盘输入",
+  "category": "Basic",
+  "categoryName": "基础",
+  "stepType": "Keyboard",
+  "isRisky": false,
+  "isProOnly": false,
+  "helpLink": "https://getquicker.net/KC/Help/Doc/keyinput",
+  "inputs": [
+    {
+      "key": "keys",
+      "name": "按键",
+      "type": "Keyboard",
+      "defaultValue": "",
+      "required": true,
+      "variableMode": "Input",
+      "condition": "",
+      "description": "模拟的按键内容"
+    },
+    {
+      "key": "repeat",
+      "name": "重复次数",
+      "type": "Integer",
+      "defaultValue": "1",
+      "required": false,
+      "variableMode": "Input",
+      "condition": "",
+      "description": ""
+    },
+    {
+      "key": "interval",
+      "name": "重复间隔(毫秒)",
+      "type": "Integer",
+      "defaultValue": "1",
+      "required": false,
+      "variableMode": "Input",
+      "condition": "",
+      "description": "每次重复之间的间隔毫秒数"
+    },
+    {
+      "key": "holdMs",
+      "name": "保持毫秒数",
+      "type": "Integer",
+      "defaultValue": "-1",
+      "required": false,
+      "variableMode": "Input",
+      "condition": "",
+      "description": "普通键（非Ctrl/Alt/Shift/Win）在抬起前保持的时间。-1表示使用默认设置。\n某些直接模拟按键无法生效的软件中可以尝试增加此值。"
+    }
+  ],
+  "outputs": [],
+  "selections": {},
+  "sourceFileName": "sys_keyInput_模拟按键A（录入）.md"
+}

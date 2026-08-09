@@ -1,0 +1,105 @@
+{
+  "key": "sys:keyoperation",
+  "slug": "keyoperation",
+  "legacySlug": "keyoperation",
+  "ownsLegacyContent": true,
+  "name": "按键操作",
+  "description": "单个键盘按键的操作控制或状态获取",
+  "category": "System",
+  "categoryName": "Windows系统",
+  "stepType": "Action",
+  "isRisky": false,
+  "isProOnly": false,
+  "helpLink": "https://getquicker.net/KC/Help/Doc/keyoperation",
+  "inputs": [
+    {
+      "key": "type",
+      "name": "类型",
+      "type": "Enum",
+      "defaultValue": "get_key_state",
+      "required": true,
+      "variableMode": "Input",
+      "condition": "",
+      "description": "操作类型。按下和抬起需要配对使用。"
+    },
+    {
+      "key": "key",
+      "name": "按键",
+      "type": "Text",
+      "defaultValue": "",
+      "required": false,
+      "variableMode": "UseVarOrInput",
+      "condition": "排除：key_keydown_v1, key_keyup_v1",
+      "description": "要操作或检查状态的按键(单个)。获取状态可使用鼠标键；如需发送真实鼠标事件，请使用“鼠标输入”步骤。"
+    },
+    {
+      "key": "getRealMouseState",
+      "name": "获取按键的实际状态（在远程时无法获取）",
+      "type": "Boolean",
+      "defaultValue": "false",
+      "required": false,
+      "variableMode": "Input",
+      "condition": "仅：get_key_state",
+      "description": ""
+    },
+    {
+      "key": "keepMs",
+      "name": "保持按下时间",
+      "type": "Integer",
+      "defaultValue": "1000",
+      "required": false,
+      "variableMode": "UseVarOrInput",
+      "condition": "仅：key_keydown_v1",
+      "description": "保持此虚拟键按下的时间（毫秒数），之后会自动抬起。"
+    }
+  ],
+  "outputs": [
+    {
+      "key": "isDown",
+      "name": "是否按下",
+      "type": "Boolean",
+      "condition": "仅：get_key_state",
+      "description": "此按键是否为按下状态"
+    },
+    {
+      "key": "isToggled",
+      "name": "是否锁定",
+      "type": "Boolean",
+      "condition": "仅：get_key_state",
+      "description": "此按键是否为锁定状态，仅对CapsLock、NumLock等按键有效。"
+    }
+  ],
+  "selections": {
+    "type": {
+      "name": "类型",
+      "items": [
+        {
+          "value": "get_key_state",
+          "name": "获取按键状态",
+          "description": ""
+        },
+        {
+          "value": "key_down",
+          "name": "按下按键",
+          "description": ""
+        },
+        {
+          "value": "key_up",
+          "name": "抬起按键",
+          "description": ""
+        },
+        {
+          "value": "key_keydown_v1",
+          "name": "按下Quicker虚拟键V1",
+          "description": ""
+        },
+        {
+          "value": "key_keyup_v1",
+          "name": "抬起Quicker虚拟键V1",
+          "description": ""
+        }
+      ]
+    }
+  },
+  "sourceFileName": "sys_keyoperation_按键操作.md"
+}

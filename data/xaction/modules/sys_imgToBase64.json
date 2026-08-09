@@ -1,0 +1,90 @@
+{
+  "key": "sys:imgToBase64",
+  "slug": "imgtobase64",
+  "legacySlug": "imgtobase64",
+  "ownsLegacyContent": true,
+  "name": "图片/Base64 转换",
+  "description": "图片和Base64转换",
+  "category": "Image",
+  "categoryName": "图片处理",
+  "stepType": "Action",
+  "isRisky": false,
+  "isProOnly": false,
+  "helpLink": "https://getquicker.net/KC/Help/Doc/imgtobase64",
+  "inputs": [
+    {
+      "key": "type",
+      "name": "操作类型",
+      "type": "Enum",
+      "defaultValue": "imgToBase64",
+      "required": true,
+      "variableMode": "Input",
+      "condition": "",
+      "description": "转换操作类型"
+    },
+    {
+      "key": "img",
+      "name": "图片",
+      "type": "Image",
+      "defaultValue": "",
+      "required": true,
+      "variableMode": "UseVar",
+      "condition": "仅：imgToBase64",
+      "description": "要转换的图片（图片变量或文件路径）"
+    },
+    {
+      "key": "base64",
+      "name": "Base64编码",
+      "type": "Text",
+      "defaultValue": "",
+      "required": true,
+      "variableMode": "UseVarOrInput",
+      "condition": "仅：base64ToImg",
+      "description": "要转换的编码文本"
+    },
+    {
+      "key": "addHeader",
+      "name": "添加data头",
+      "type": "Boolean",
+      "defaultValue": "false",
+      "required": false,
+      "variableMode": "Input",
+      "condition": "仅：imgToBase64",
+      "description": "是否添加\"data:image/png;base64,\"头"
+    }
+  ],
+  "outputs": [
+    {
+      "key": "code",
+      "name": "Base64编码",
+      "type": "Text",
+      "condition": "仅：imgToBase64",
+      "description": "Base64编码结果"
+    },
+    {
+      "key": "img",
+      "name": "图片",
+      "type": "Image",
+      "condition": "仅：base64ToImg",
+      "description": "转换输出的图片"
+    }
+  ],
+  "selections": {
+    "type": {
+      "name": "操作类型",
+      "items": [
+        {
+          "value": "imgToBase64",
+          "name": "图片或文件转Base64文本",
+          "description": ""
+        },
+        {
+          "value": "base64ToImg",
+          "name": "Base64文本转图片",
+          "description": ""
+        }
+      ]
+    }
+  },
+  "sourceFileName": "sys_imgToBase64_图片_Base64 转换.md"
+}

@@ -1,0 +1,222 @@
+{
+  "key": "sys:numberprocess",
+  "slug": "numberprocess",
+  "legacySlug": "numberprocess",
+  "ownsLegacyContent": true,
+  "name": "数字转换与处理",
+  "description": "数字转换为文本等相关处理",
+  "category": "Compute",
+  "categoryName": "计算与比较",
+  "stepType": "Action",
+  "isRisky": false,
+  "isProOnly": false,
+  "helpLink": "https://getquicker.net/KC/Help/Doc/numberprocess",
+  "inputs": [
+    {
+      "key": "operation",
+      "name": "操作",
+      "type": "Enum",
+      "defaultValue": "toString",
+      "required": true,
+      "variableMode": "Input",
+      "condition": "",
+      "description": ""
+    },
+    {
+      "key": "srcNumber",
+      "name": "原始数字",
+      "type": "Number",
+      "defaultValue": "0.0",
+      "required": false,
+      "variableMode": "UseVarOrInput",
+      "condition": "仅：toString, toInteger",
+      "description": ""
+    },
+    {
+      "key": "decimalPlace",
+      "name": "保留小数位",
+      "type": "Integer",
+      "defaultValue": "2",
+      "required": false,
+      "variableMode": "UseVarOrInput",
+      "condition": "仅：toString",
+      "description": ""
+    },
+    {
+      "key": "roundingMethod",
+      "name": "舍入方式",
+      "type": "Enum",
+      "defaultValue": "Round45",
+      "required": false,
+      "variableMode": "Input",
+      "condition": "仅：toString",
+      "description": ""
+    },
+    {
+      "key": "toIntegerMethod",
+      "name": "取整方式",
+      "type": "Enum",
+      "defaultValue": "Round45",
+      "required": false,
+      "variableMode": "Input",
+      "condition": "仅：toInteger",
+      "description": ""
+    },
+    {
+      "key": "srcNumberStr",
+      "name": "原始数字(文本)",
+      "type": "Text",
+      "defaultValue": "0",
+      "required": false,
+      "variableMode": "UseVarOrInput",
+      "condition": "仅：baseConversion",
+      "description": ""
+    },
+    {
+      "key": "srcBase",
+      "name": "原始数字进制",
+      "type": "Integer",
+      "defaultValue": "0",
+      "required": false,
+      "variableMode": "UseVarOrInput",
+      "condition": "仅：baseConversion",
+      "description": "可选0/2/8/16。0为自动判断：全由0、1构成判断为二进制，0x开始或包含A-D判断为16进制，其它判断为10进制。"
+    },
+    {
+      "key": "stopIfFail",
+      "name": "失败后停止",
+      "type": "Boolean",
+      "defaultValue": "true",
+      "required": false,
+      "variableMode": "Input",
+      "condition": "",
+      "description": "失败后是否停止动作"
+    }
+  ],
+  "outputs": [
+    {
+      "key": "isSuccess",
+      "name": "是否成功",
+      "type": "Boolean",
+      "condition": "",
+      "description": "操作是否成功"
+    },
+    {
+      "key": "rtnF",
+      "name": "结果文本(不含逗号)",
+      "type": "Text",
+      "condition": "仅：toString",
+      "description": "如1234.56"
+    },
+    {
+      "key": "rtnN",
+      "name": "结果文本(含逗号)",
+      "type": "Text",
+      "condition": "仅：toString",
+      "description": "如1,234.56"
+    },
+    {
+      "key": "rtnPercent",
+      "name": "结果文本(百分比)",
+      "type": "Text",
+      "condition": "仅：toString",
+      "description": "如23.56%"
+    },
+    {
+      "key": "rtnInteger",
+      "name": "结果整数",
+      "type": "Integer",
+      "condition": "仅：toInteger, baseConversion",
+      "description": "十进制数"
+    },
+    {
+      "key": "resultHex",
+      "name": "十六进制",
+      "type": "Text",
+      "condition": "仅：baseConversion",
+      "description": ""
+    },
+    {
+      "key": "resultOctal",
+      "name": "八进制",
+      "type": "Text",
+      "condition": "仅：baseConversion",
+      "description": ""
+    },
+    {
+      "key": "resultBin",
+      "name": "二进制",
+      "type": "Text",
+      "condition": "仅：baseConversion",
+      "description": ""
+    }
+  ],
+  "selections": {
+    "operation": {
+      "name": "操作",
+      "items": [
+        {
+          "value": "toString",
+          "name": "数字转换为文本",
+          "description": ""
+        },
+        {
+          "value": "toInteger",
+          "name": "取整",
+          "description": ""
+        },
+        {
+          "value": "baseConversion",
+          "name": "进制转换",
+          "description": ""
+        }
+      ]
+    },
+    "roundingMethod": {
+      "name": "舍入方式",
+      "items": [
+        {
+          "value": "Round",
+          "name": "舍入：奇进偶舍",
+          "description": ""
+        },
+        {
+          "value": "Round45",
+          "name": "舍入：四舍五入",
+          "description": ""
+        },
+        {
+          "value": "Truncate",
+          "name": "截断",
+          "description": ""
+        }
+      ]
+    },
+    "toIntegerMethod": {
+      "name": "取整方式",
+      "items": [
+        {
+          "value": "Round",
+          "name": "舍入：奇进偶舍",
+          "description": ""
+        },
+        {
+          "value": "Round45",
+          "name": "舍入：四舍五入",
+          "description": ""
+        },
+        {
+          "value": "Ceiling",
+          "name": "向上取整",
+          "description": ""
+        },
+        {
+          "value": "Floor",
+          "name": "向下取整",
+          "description": ""
+        }
+      ]
+    }
+  },
+  "sourceFileName": "sys_numberprocess_数字转换与处理.md"
+}

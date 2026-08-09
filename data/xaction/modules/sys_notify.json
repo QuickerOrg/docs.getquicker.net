@@ -1,0 +1,175 @@
+{
+  "key": "sys:notify",
+  "slug": "notify",
+  "legacySlug": "notify",
+  "ownsLegacyContent": true,
+  "name": "提示消息",
+  "description": "显示可以自动消失的消息提示。",
+  "category": "Basic",
+  "categoryName": "基础",
+  "stepType": "Action",
+  "isRisky": false,
+  "isProOnly": false,
+  "helpLink": "https://getquicker.net/KC/Help/Doc/notify",
+  "inputs": [
+    {
+      "key": "type",
+      "name": "类型",
+      "type": "Enum",
+      "defaultValue": "Info",
+      "required": true,
+      "variableMode": "Input",
+      "condition": "",
+      "description": "消息的类型"
+    },
+    {
+      "key": "msg",
+      "name": "消息内容",
+      "type": "Text",
+      "defaultValue": "",
+      "required": false,
+      "variableMode": "UseVarOrInput",
+      "condition": "",
+      "description": "显示的消息内容"
+    },
+    {
+      "key": "title",
+      "name": "标题",
+      "type": "Text",
+      "defaultValue": "",
+      "required": false,
+      "variableMode": "UseVarOrInput",
+      "condition": "",
+      "description": "留空使用动作名称，填写 - 不显示标题，其他内容原样显示"
+    },
+    {
+      "key": "placement",
+      "name": "显示位置",
+      "type": "Enum",
+      "defaultValue": "BottomCenter",
+      "required": true,
+      "variableMode": "UseVarOrInput",
+      "condition": "仅：Success, Info, Warning, Error",
+      "description": ""
+    },
+    {
+      "key": "maxLines",
+      "name": "最大行数",
+      "type": "Integer",
+      "defaultValue": "0",
+      "required": true,
+      "variableMode": "UseVarOrInput",
+      "condition": "",
+      "description": "显示内容的最大行数，0表示不限"
+    },
+    {
+      "key": "durationSeconds",
+      "name": "保持秒数",
+      "type": "Integer",
+      "defaultValue": "0",
+      "required": false,
+      "variableMode": "UseVarOrInput",
+      "condition": "仅：Success, Info, Warning, Error",
+      "description": "0 使用默认时长，-1 持续显示，或填写 2 到 30 秒"
+    },
+    {
+      "key": "showTime",
+      "name": "显示时间",
+      "type": "Boolean",
+      "defaultValue": "false",
+      "required": false,
+      "variableMode": "UseVarOrInput",
+      "condition": "仅：Success, Info, Warning, Error",
+      "description": "有标题时，在通知右上方显示消息发出时间；无标题的紧凑通知不显示时间。"
+    },
+    {
+      "key": "duplicate",
+      "name": "重复控制",
+      "type": "Text",
+      "defaultValue": "",
+      "required": false,
+      "variableMode": "UseVarOrInput",
+      "condition": "仅：Success, Info, Warning, Error",
+      "description": "留空时每次显示新通知。填写标识可复用同一通知：replace:标识 替换内容，count:标识 累计次数，ignore:标识 忽略后续重复；省略模式时按 replace 处理。"
+    },
+    {
+      "key": "clickAction",
+      "name": "点击操作",
+      "type": "Text",
+      "defaultValue": "",
+      "required": false,
+      "variableMode": "UseVarOrInput",
+      "condition": "",
+      "description": "普通文本表示整卡点击命令；以 @button 或 @buttons 独立首行开头时定义一到两个按钮。留空时点击复制正文。"
+    }
+  ],
+  "outputs": [],
+  "selections": {
+    "type": {
+      "name": "类型",
+      "items": [
+        {
+          "value": "Success",
+          "name": "成功",
+          "description": ""
+        },
+        {
+          "value": "Info",
+          "name": "信息",
+          "description": ""
+        },
+        {
+          "value": "Warning",
+          "name": "告警",
+          "description": ""
+        },
+        {
+          "value": "Error",
+          "name": "错误",
+          "description": ""
+        },
+        {
+          "value": "WindowsToast",
+          "name": "Windows 通知 (win10+)",
+          "description": ""
+        }
+      ]
+    },
+    "placement": {
+      "name": "显示位置",
+      "items": [
+        {
+          "value": "BottomCenter",
+          "name": "默认位置（底部居中）",
+          "description": ""
+        },
+        {
+          "value": "TopLeft",
+          "name": "左上角",
+          "description": ""
+        },
+        {
+          "value": "TopCenter",
+          "name": "顶部居中",
+          "description": ""
+        },
+        {
+          "value": "TopRight",
+          "name": "右上角",
+          "description": ""
+        },
+        {
+          "value": "BottomLeft",
+          "name": "左下角",
+          "description": ""
+        },
+        {
+          "value": "BottomRight",
+          "name": "右下角",
+          "description": ""
+        }
+      ]
+    }
+  },
+  "sourceFileName": "sys_notify_提示消息.md"
+}

@@ -1,0 +1,110 @@
+{
+  "key": "sys:autocadcontrol",
+  "slug": "autocadcontrol",
+  "legacySlug": "autocadcontrol",
+  "ownsLegacyContent": true,
+  "name": "AutoCAD控制",
+  "description": "向AutoCAD发送命令",
+  "category": "SoftInteraction",
+  "categoryName": "第三方软件交互",
+  "stepType": "Action",
+  "isRisky": false,
+  "isProOnly": false,
+  "helpLink": "https://getquicker.net/KC/Help/Doc/autocadcontrol",
+  "inputs": [
+    {
+      "key": "operation",
+      "name": "操作类型",
+      "type": "Enum",
+      "defaultValue": "SendCommand",
+      "required": true,
+      "variableMode": "Input",
+      "condition": "",
+      "description": "操作类型"
+    },
+    {
+      "key": "command",
+      "name": "命令内容",
+      "type": "Text",
+      "defaultValue": "",
+      "required": false,
+      "variableMode": "UseVarOrInput",
+      "condition": "仅：SendCommand",
+      "description": "发送到CAD执行的命令内容。通常以空格结尾开始执行。"
+    },
+    {
+      "key": "varList",
+      "name": "变量列表",
+      "type": "Text",
+      "defaultValue": "",
+      "required": false,
+      "variableMode": "UseVarOrInput",
+      "condition": "仅：ReadVariable",
+      "description": "每行一个变量名称"
+    },
+    {
+      "key": "waitResp",
+      "name": "等待命令结束",
+      "type": "Boolean",
+      "defaultValue": "true",
+      "required": false,
+      "variableMode": "UseVarOrInput",
+      "condition": "仅：SendCommand",
+      "description": ""
+    },
+    {
+      "key": "waitMs",
+      "name": "最长等待时间(ms)",
+      "type": "Number",
+      "defaultValue": "10000",
+      "required": true,
+      "variableMode": "Input",
+      "condition": "",
+      "description": "最长的等待返回结果的，毫秒数"
+    },
+    {
+      "key": "stopIfFail",
+      "name": "失败后停止",
+      "type": "Boolean",
+      "defaultValue": "true",
+      "required": false,
+      "variableMode": "Input",
+      "condition": "",
+      "description": "失败后是否停止动作"
+    }
+  ],
+  "outputs": [
+    {
+      "key": "isSuccess",
+      "name": "是否成功",
+      "type": "Boolean",
+      "condition": "",
+      "description": "操作是否成功"
+    },
+    {
+      "key": "output",
+      "name": "变量值",
+      "type": "Text",
+      "condition": "仅：ReadVariable",
+      "description": "从当前文档读取的变量值，多个变量时每行一个，和变量名顺序对应。"
+    }
+  ],
+  "selections": {
+    "operation": {
+      "name": "操作类型",
+      "items": [
+        {
+          "value": "SendCommand",
+          "name": "执行命令",
+          "description": ""
+        },
+        {
+          "value": "ReadVariable",
+          "name": "读取变量",
+          "description": ""
+        }
+      ]
+    }
+  },
+  "sourceFileName": "sys_autocadcontrol_AutoCAD控制.md"
+}

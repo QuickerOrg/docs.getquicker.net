@@ -1,0 +1,289 @@
+{
+  "key": "sys:searchBmp",
+  "slug": "searchbmp",
+  "legacySlug": "searchbmp",
+  "ownsLegacyContent": true,
+  "name": "屏幕找图/找色/找字",
+  "description": "在屏幕上查找图片里的内容出现的位置",
+  "category": "Image",
+  "categoryName": "图片处理",
+  "stepType": "Action",
+  "isRisky": false,
+  "isProOnly": false,
+  "helpLink": "https://getquicker.net/KC/Help/Doc/searchBmp",
+  "inputs": [
+    {
+      "key": "type",
+      "name": "类型",
+      "type": "Enum",
+      "defaultValue": "locateByBitmapFile",
+      "required": true,
+      "variableMode": "Input",
+      "condition": "",
+      "description": "操作类型"
+    },
+    {
+      "key": "bmp",
+      "name": "位图路径",
+      "type": "Text",
+      "defaultValue": "",
+      "required": true,
+      "variableMode": "UseVarOrInput",
+      "condition": "仅：locateByBitmapFile",
+      "description": "需要在屏幕中查找的位图路径。位图必须和屏幕图像完全匹配，不能压缩。此时X、Y的值为相对于搜索位图的左上角的偏移。"
+    },
+    {
+      "key": "bmpVar",
+      "name": "位图变量",
+      "type": "Image",
+      "defaultValue": "",
+      "required": true,
+      "variableMode": "UseVar",
+      "condition": "仅：locateByBitmapVar",
+      "description": "需要在屏幕中查找的位图。位图必须和屏幕图像完全匹配，不能压缩。此时X、Y的值为相对于搜索位图的左上角的偏移。"
+    },
+    {
+      "key": "color",
+      "name": "颜色",
+      "type": "Text",
+      "defaultValue": "#FF0000",
+      "required": true,
+      "variableMode": "UseVarOrInput",
+      "condition": "仅：locateByColor",
+      "description": "要查找的颜色，如#FF0000"
+    },
+    {
+      "key": "searchText",
+      "name": "文字",
+      "type": "Text",
+      "defaultValue": "",
+      "required": false,
+      "variableMode": "UseVarOrInput",
+      "condition": "仅：locateByText",
+      "description": "要查找的文字。可使用多行指定多组可选文字，找到任意一组即可。"
+    },
+    {
+      "key": "bmpTargetType",
+      "name": "查找范围",
+      "type": "Enum",
+      "defaultValue": "MainScreen",
+      "required": false,
+      "variableMode": "Input",
+      "condition": "仅：locateByBitmapFile, locateByBitmapVar, locateByColor, locateByText",
+      "description": "位图查找范围"
+    },
+    {
+      "key": "searchRect",
+      "name": "查找坐标范围",
+      "type": "Text",
+      "defaultValue": "",
+      "required": false,
+      "variableMode": "UseVarOrInput",
+      "condition": "",
+      "description": "可选。当\"查找范围\"为\"坐标范围\"时有效，格式为：left,top,right,bottom"
+    },
+    {
+      "key": "bmpPosition",
+      "name": "定位位置",
+      "type": "Enum",
+      "defaultValue": "Center",
+      "required": false,
+      "variableMode": "Input",
+      "condition": "仅：locateByBitmapFile, locateByBitmapVar",
+      "description": "定位点相对位图的位置"
+    },
+    {
+      "key": "x",
+      "name": "X偏移",
+      "type": "Integer",
+      "defaultValue": "0",
+      "required": true,
+      "variableMode": "UseVarOrInput",
+      "condition": "",
+      "description": "定位点水平坐标偏移量（正值向右）"
+    },
+    {
+      "key": "y",
+      "name": "Y偏移",
+      "type": "Integer",
+      "defaultValue": "0",
+      "required": true,
+      "variableMode": "UseVarOrInput",
+      "condition": "",
+      "description": "定位点垂直坐标偏移量（正值向下）"
+    },
+    {
+      "key": "bmpColorError",
+      "name": "颜色容差",
+      "type": "Integer",
+      "defaultValue": "10",
+      "required": false,
+      "variableMode": "Input",
+      "condition": "仅：locateByBitmapFile, locateByBitmapVar, locateByColor",
+      "description": "匹配像素时允许每个颜色通道的偏差值0-100，0表示精确匹配，速度最快。"
+    },
+    {
+      "key": "maxFindCount",
+      "name": "最大匹配",
+      "type": "Integer",
+      "defaultValue": "1",
+      "required": false,
+      "variableMode": "Input",
+      "condition": "仅：locateByBitmapFile, locateByBitmapVar",
+      "description": "找图的最大匹配数量。将对每个查找到的目标执行附加动作。"
+    },
+    {
+      "key": "retryCount",
+      "name": "重试次数",
+      "type": "Integer",
+      "defaultValue": "0",
+      "required": false,
+      "variableMode": "Input",
+      "condition": "仅：locateByBitmapFile, locateByBitmapVar, locateByColor, locateByText",
+      "description": "未找到位图时的重试次数。每次重试间隔300ms。"
+    },
+    {
+      "key": "ignoreWindowsOcr",
+      "name": "跳过WindowsOCR引擎",
+      "type": "Boolean",
+      "defaultValue": "false",
+      "required": false,
+      "variableMode": "UseVarOrInput",
+      "condition": "仅：locateByText",
+      "description": ""
+    },
+    {
+      "key": "ignoreBgColor",
+      "name": "忽略背景色",
+      "type": "Boolean",
+      "defaultValue": "true",
+      "required": false,
+      "variableMode": "Input",
+      "condition": "仅：locateByBitmapFile, locateByBitmapVar",
+      "description": "如果查找图片的4个顶点颜色一致，则认为是背景色，找图时忽略此颜色。"
+    },
+    {
+      "key": "stopIfFail",
+      "name": "失败后中止动作",
+      "type": "Boolean",
+      "defaultValue": "true",
+      "required": false,
+      "variableMode": "Input",
+      "condition": "",
+      "description": "获取位置失败后，是否停止后续动作的执行。"
+    }
+  ],
+  "outputs": [
+    {
+      "key": "isSuccess",
+      "name": "是否成功",
+      "type": "Boolean",
+      "condition": "",
+      "description": "操作是否成功"
+    },
+    {
+      "key": "firstPoint",
+      "name": "第一个匹配点",
+      "type": "Text",
+      "condition": "",
+      "description": "第一个匹配点坐标，格式为：x坐标,y坐标"
+    },
+    {
+      "key": "imgIndex",
+      "name": "匹配序号",
+      "type": "Integer",
+      "condition": "仅：locateByBitmapFile, locateByText",
+      "description": "从多个图片或多组文字中查找时，返回匹配到的图片或文字组序号，从0开始。"
+    },
+    {
+      "key": "allPoints",
+      "name": "所有匹配点",
+      "type": "List",
+      "condition": "仅：locateByBitmapFile, locateByBitmapVar, locateByText",
+      "description": "所有的匹配点列表"
+    }
+  ],
+  "selections": {
+    "type": {
+      "name": "类型",
+      "items": [
+        {
+          "value": "locateByBitmapFile",
+          "name": "查找图片(文件)",
+          "description": ""
+        },
+        {
+          "value": "locateByBitmapVar",
+          "name": "查找图片(变量)",
+          "description": ""
+        },
+        {
+          "value": "locateByColor",
+          "name": "查找颜色",
+          "description": ""
+        },
+        {
+          "value": "locateByText",
+          "name": "查找文字",
+          "description": ""
+        }
+      ]
+    },
+    "bmpTargetType": {
+      "name": "查找范围",
+      "items": [
+        {
+          "value": "MainScreen",
+          "name": "主屏幕",
+          "description": ""
+        },
+        {
+          "value": "CurrentWindow",
+          "name": "当前窗口",
+          "description": ""
+        },
+        {
+          "value": "Rect",
+          "name": "坐标范围",
+          "description": ""
+        },
+        {
+          "value": "AllScreens",
+          "name": "所有屏幕",
+          "description": ""
+        }
+      ]
+    },
+    "bmpPosition": {
+      "name": "定位位置",
+      "items": [
+        {
+          "value": "Center",
+          "name": "位图中间",
+          "description": ""
+        },
+        {
+          "value": "TopLeft",
+          "name": "左上角",
+          "description": ""
+        },
+        {
+          "value": "TopRight",
+          "name": "右上角",
+          "description": ""
+        },
+        {
+          "value": "BottomLeft",
+          "name": "左下角",
+          "description": ""
+        },
+        {
+          "value": "BottomRight",
+          "name": "右下角",
+          "description": ""
+        }
+      ]
+    }
+  },
+  "sourceFileName": "sys_searchBmp_屏幕找图_找色_找字.md"
+}

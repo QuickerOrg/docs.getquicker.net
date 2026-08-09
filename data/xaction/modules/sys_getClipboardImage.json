@@ -1,0 +1,51 @@
+{
+  "key": "sys:getClipboardImage",
+  "slug": "getclipboardimage",
+  "legacySlug": "getclipboardimage",
+  "ownsLegacyContent": true,
+  "name": "获取剪贴板图片",
+  "description": "读取剪贴板中的图片内容输出到图片变量中。",
+  "category": "Clipboard",
+  "categoryName": "剪贴板操作",
+  "stepType": "Action",
+  "isRisky": false,
+  "isProOnly": false,
+  "helpLink": "https://getquicker.net/KC/Help/Doc/getclipboardimage",
+  "inputs": [
+    {
+      "key": "stopIfFail",
+      "name": "失败后中止动作",
+      "type": "Boolean",
+      "defaultValue": "true",
+      "required": false,
+      "variableMode": "Input",
+      "condition": "",
+      "description": "获取失败后，是否停止后续动作的执行。"
+    }
+  ],
+  "outputs": [
+    {
+      "key": "isSuccess",
+      "name": "是否成功",
+      "type": "Boolean",
+      "condition": "",
+      "description": "是否成功获得剪贴板图片"
+    },
+    {
+      "key": "output",
+      "name": "结果图片",
+      "type": "Image",
+      "condition": "",
+      "description": "将获得的图片写入到变量"
+    },
+    {
+      "key": "elapsedMs",
+      "name": "已更新时间",
+      "type": "Integer",
+      "condition": "",
+      "description": "剪贴板最后更新是在多少毫秒以前"
+    }
+  ],
+  "selections": {},
+  "sourceFileName": "sys_getClipboardImage_获取剪贴板图片.md"
+}

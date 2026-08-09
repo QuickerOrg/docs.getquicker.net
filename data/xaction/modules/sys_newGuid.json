@@ -1,0 +1,78 @@
+{
+  "key": "sys:newGuid",
+  "slug": "newguid",
+  "legacySlug": "newguid",
+  "ownsLegacyContent": true,
+  "name": "生成Guid",
+  "description": "生成一个新的Guid(全局唯一ID标示符)，并转换为文本格式。",
+  "category": "Compute",
+  "categoryName": "计算与比较",
+  "stepType": "Action",
+  "isRisky": false,
+  "isProOnly": false,
+  "helpLink": "https://getquicker.net/KC/Help/Doc/newguid",
+  "inputs": [
+    {
+      "key": "format",
+      "name": "格式",
+      "type": "Enum",
+      "defaultValue": "D",
+      "required": false,
+      "variableMode": "Input",
+      "condition": "",
+      "description": "转换为文本时使用的格式"
+    },
+    {
+      "key": "upper",
+      "name": "大写",
+      "type": "Boolean",
+      "defaultValue": "false",
+      "required": false,
+      "variableMode": "Input",
+      "condition": "",
+      "description": "字母输出为大写格式。"
+    }
+  ],
+  "outputs": [
+    {
+      "key": "output",
+      "name": "内容",
+      "type": "Text",
+      "condition": "",
+      "description": "将获得的文本写入到变量"
+    }
+  ],
+  "selections": {
+    "format": {
+      "name": "格式",
+      "items": [
+        {
+          "value": "D",
+          "name": "默认：00000000-0000-0000-0000-000000000000",
+          "description": ""
+        },
+        {
+          "value": "N",
+          "name": "去除连字符：00000000000000000000000000000000",
+          "description": ""
+        },
+        {
+          "value": "B",
+          "name": "大括号包围：{00000000-0000-0000-0000-000000000000}",
+          "description": ""
+        },
+        {
+          "value": "P",
+          "name": "小括号包围：(00000000-0000-0000-0000-000000000000)",
+          "description": ""
+        },
+        {
+          "value": "X",
+          "name": "十六进制：{0x00000000,0x0000,0x0000,{0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00}}",
+          "description": ""
+        }
+      ]
+    }
+  },
+  "sourceFileName": "sys_newGuid_生成Guid.md"
+}

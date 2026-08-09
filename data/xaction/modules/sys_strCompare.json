@@ -1,0 +1,113 @@
+{
+  "key": "sys:strCompare",
+  "slug": "strcompare",
+  "legacySlug": "strcompare",
+  "ownsLegacyContent": true,
+  "name": "比较文本",
+  "description": "文本比较",
+  "category": "Compute",
+  "categoryName": "计算与比较",
+  "stepType": "Action",
+  "isRisky": false,
+  "isProOnly": false,
+  "helpLink": "https://getquicker.net/KC/Help/Doc/strCompare",
+  "inputs": [
+    {
+      "key": "param1",
+      "name": "文本1",
+      "type": "Text",
+      "defaultValue": "",
+      "required": true,
+      "variableMode": "UseVarOrInput",
+      "condition": "",
+      "description": "被比较的文本"
+    },
+    {
+      "key": "type",
+      "name": "类型",
+      "type": "Enum",
+      "defaultValue": ">",
+      "required": true,
+      "variableMode": "Input",
+      "condition": "",
+      "description": "比较方式"
+    },
+    {
+      "key": "param2",
+      "name": "文本2",
+      "type": "Text",
+      "defaultValue": "",
+      "required": true,
+      "variableMode": "UseVarOrInput",
+      "condition": "",
+      "description": "对比文本。拼音匹配时，也可用于指定拼音、拼音首字母。"
+    },
+    {
+      "key": "case",
+      "name": "区分大小写",
+      "type": "Boolean",
+      "defaultValue": "false",
+      "required": false,
+      "variableMode": "Input",
+      "condition": "排除：pinyinMatch",
+      "description": "是否区分大小写"
+    }
+  ],
+  "outputs": [
+    {
+      "key": "value",
+      "name": "值",
+      "type": "Boolean",
+      "condition": "",
+      "description": "比较结果是否为真"
+    }
+  ],
+  "selections": {
+    "type": {
+      "name": "类型",
+      "items": [
+        {
+          "value": ">",
+          "name": ">",
+          "description": ""
+        },
+        {
+          "value": "=",
+          "name": "=",
+          "description": ""
+        },
+        {
+          "value": "<",
+          "name": "<",
+          "description": ""
+        },
+        {
+          "value": "contains",
+          "name": "包含",
+          "description": ""
+        },
+        {
+          "value": "startsWith",
+          "name": "以指定内容开始",
+          "description": ""
+        },
+        {
+          "value": "endsWith",
+          "name": "以指定内容结束",
+          "description": ""
+        },
+        {
+          "value": "match",
+          "name": "正则匹配",
+          "description": ""
+        },
+        {
+          "value": "pinyinMatch",
+          "name": "包含指定内容，或匹配拼音、拼音首字母",
+          "description": ""
+        }
+      ]
+    }
+  },
+  "sourceFileName": "sys_strCompare_比较文本.md"
+}

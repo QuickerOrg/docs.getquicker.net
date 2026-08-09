@@ -1,0 +1,67 @@
+{
+  "key": "sys:subprogram",
+  "slug": "subprogram",
+  "legacySlug": "subprogram",
+  "ownsLegacyContent": true,
+  "name": "运行子程序",
+  "description": "运行子程序",
+  "category": "Flow",
+  "categoryName": "程序流程",
+  "stepType": "SubProgram",
+  "isRisky": false,
+  "isProOnly": false,
+  "helpLink": "https://getquicker.net/KC/Help/Doc/subprogram",
+  "inputs": [
+    {
+      "key": "subProgram",
+      "name": "子程序",
+      "type": "Text",
+      "defaultValue": "",
+      "required": true,
+      "variableMode": "UseVarOrInput",
+      "condition": "",
+      "description": "调用哪个子程序"
+    },
+    {
+      "key": "summary",
+      "name": "Summary",
+      "type": "Text",
+      "defaultValue": "",
+      "required": false,
+      "variableMode": "UseVarOrInput",
+      "condition": "仅：NO_SHOW",
+      "description": "内部使用"
+    },
+    {
+      "key": "skipDebugOutput",
+      "name": "跳过调试输出",
+      "type": "Boolean",
+      "defaultValue": "false",
+      "required": false,
+      "variableMode": "UseVarOrInput",
+      "condition": "",
+      "description": "调试运行动作时，不输出子程序内部调试信息"
+    },
+    {
+      "key": "stopIfFail",
+      "name": "失败后停止",
+      "type": "Boolean",
+      "defaultValue": "true",
+      "required": false,
+      "variableMode": "Input",
+      "condition": "",
+      "description": "子程序运行失败后是否停止动作"
+    }
+  ],
+  "outputs": [
+    {
+      "key": "isSuccess",
+      "name": "是否成功",
+      "type": "Boolean",
+      "condition": "",
+      "description": "子程序是否运行成功"
+    }
+  ],
+  "selections": {},
+  "sourceFileName": "sys_subprogram_运行子程序.md"
+}

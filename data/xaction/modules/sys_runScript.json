@@ -1,0 +1,267 @@
+{
+  "key": "sys:runScript",
+  "slug": "runscript",
+  "legacySlug": "runscript",
+  "ownsLegacyContent": true,
+  "name": "运行脚本",
+  "description": "运行脚本。",
+  "category": "Basic",
+  "categoryName": "基础",
+  "stepType": "Action",
+  "isRisky": true,
+  "isProOnly": false,
+  "helpLink": "https://getquicker.net/KC/Help/Doc/runScript",
+  "inputs": [
+    {
+      "key": "script",
+      "name": "脚本内容",
+      "type": "Text",
+      "defaultValue": "",
+      "required": true,
+      "variableMode": "UseVarOrInput",
+      "condition": "",
+      "description": "要运行的脚本内容"
+    },
+    {
+      "key": "type",
+      "name": "脚本类型",
+      "type": "Enum",
+      "defaultValue": "CMD_K",
+      "required": true,
+      "variableMode": "Input",
+      "condition": "",
+      "description": "要执行的脚本类型"
+    },
+    {
+      "key": "ext",
+      "name": "扩展名",
+      "type": "Text",
+      "defaultValue": "",
+      "required": true,
+      "variableMode": "Input",
+      "condition": "仅：CUSTOM",
+      "description": "自定义脚本文件的扩展名(如: .ps1 )"
+    },
+    {
+      "key": "encoding",
+      "name": "文件编码",
+      "type": "Enum",
+      "defaultValue": "default",
+      "required": true,
+      "variableMode": "Input",
+      "condition": "",
+      "description": "写入文件的编码格式"
+    },
+    {
+      "key": "runner",
+      "name": "使用指定软件",
+      "type": "Text",
+      "defaultValue": "",
+      "required": true,
+      "variableMode": "Input",
+      "condition": "仅：CUSTOM",
+      "description": "使用指定的程序运行脚本。如果双击脚本可以直接运行，则不需要指定。"
+    },
+    {
+      "key": "argTemplate",
+      "name": "命令行参数模板",
+      "type": "Text",
+      "defaultValue": "%FILE%",
+      "required": true,
+      "variableMode": "Input",
+      "condition": "仅：CUSTOM",
+      "description": "使用指定软件时指定命令行参数的格式。%FILE% 代替脚本文件的路径。"
+    },
+    {
+      "key": "workingDir",
+      "name": "工作目录",
+      "type": "Text",
+      "defaultValue": "",
+      "required": false,
+      "variableMode": "UseVarOrInput",
+      "condition": "",
+      "description": "不填写（自动为资源管理器的当前目录或桌面目录）或具体的工作目录路径。"
+    },
+    {
+      "key": "scriptParams",
+      "name": "脚本参数",
+      "type": "Text",
+      "defaultValue": "",
+      "required": false,
+      "variableMode": "UseVarOrInput",
+      "condition": "排除：CUSTOM, CMD_C, CMD_H, CMD_K",
+      "description": "为脚本传递的参数。将会被追加到运行脚本的命令行中。"
+    },
+    {
+      "key": "runAsAdmin",
+      "name": "以管理员身份运行",
+      "type": "Boolean",
+      "defaultValue": "false",
+      "required": false,
+      "variableMode": "Input",
+      "condition": "",
+      "description": "是否以管理员身份运行脚本。隐藏窗口或输出控制台内容时，不支持以管理员身份运行。"
+    },
+    {
+      "key": "waitToExit",
+      "name": "等待进程结束",
+      "type": "Boolean",
+      "defaultValue": "false",
+      "required": false,
+      "variableMode": "Input",
+      "condition": "",
+      "description": "等待此进程结束后再进行后续操作"
+    },
+    {
+      "key": "outputEncoding",
+      "name": "控制台输出编码",
+      "type": "Enum",
+      "defaultValue": "oem",
+      "required": true,
+      "variableMode": "Input",
+      "condition": "",
+      "description": "控制台输出编码。如果输出遇到乱码，尝试修改此选项。"
+    },
+    {
+      "key": "stopIfFail",
+      "name": "失败后停止",
+      "type": "Boolean",
+      "defaultValue": "true",
+      "required": false,
+      "variableMode": "Input",
+      "condition": "",
+      "description": "失败后是否停止动作"
+    }
+  ],
+  "outputs": [
+    {
+      "key": "stdout",
+      "name": "控制台输出",
+      "type": "Text",
+      "condition": "",
+      "description": "捕获控制台输出(输出stdout，为空时输出stderr)，会自动等待进程结束。输出此内容时，命令行窗口将不显示。"
+    },
+    {
+      "key": "stdoutOnly",
+      "name": "标准输出",
+      "type": "Text",
+      "condition": "",
+      "description": "捕获标准输出(stdout)，会自动等待进程结束。输出此内容时，命令行窗口将不显示。"
+    },
+    {
+      "key": "stderr",
+      "name": "错误输出",
+      "type": "Text",
+      "condition": "",
+      "description": "捕获错误输出(stderr)，会自动等待进程结束。输出此内容时，命令行窗口将不显示。"
+    }
+  ],
+  "selections": {
+    "type": {
+      "name": "脚本类型",
+      "items": [
+        {
+          "value": "CMD_K",
+          "name": "CMD命令 (完成后保留窗口)",
+          "description": ""
+        },
+        {
+          "value": "CMD_C",
+          "name": "CMD命令 (完成后关闭窗口)",
+          "description": ""
+        },
+        {
+          "value": "CMD_H",
+          "name": "CMD命令 (隐藏命令行窗口)",
+          "description": ""
+        },
+        {
+          "value": "BAT",
+          "name": "BAT批处理脚本(.bat)",
+          "description": ""
+        },
+        {
+          "value": "CMD_F",
+          "name": "CMD批处理脚本(.cmd)",
+          "description": ""
+        },
+        {
+          "value": "PS",
+          "name": "PowerShell脚本(.ps1)",
+          "description": ""
+        },
+        {
+          "value": "AHK",
+          "name": "AutoHotKey脚本(.ahk)",
+          "description": ""
+        },
+        {
+          "value": "CUSTOM",
+          "name": "自定义脚本类型",
+          "description": ""
+        }
+      ]
+    },
+    "encoding": {
+      "name": "文件编码",
+      "items": [
+        {
+          "value": "utf-8",
+          "name": "UTF8 (有BOM)",
+          "description": ""
+        },
+        {
+          "value": "UTF8-NOBOM",
+          "name": "UTF8 (无BOM)",
+          "description": ""
+        },
+        {
+          "value": "utf-16",
+          "name": "UTF-16 LE",
+          "description": ""
+        },
+        {
+          "value": "utf-16BE",
+          "name": "UTF-16 BE",
+          "description": ""
+        },
+        {
+          "value": "us-ascii",
+          "name": "ASCII",
+          "description": ""
+        },
+        {
+          "value": "utf-7",
+          "name": "UTF7",
+          "description": ""
+        },
+        {
+          "value": "utf-32",
+          "name": "UTF32",
+          "description": ""
+        },
+        {
+          "value": "default",
+          "name": "系统默认(gb2312)",
+          "description": ""
+        }
+      ]
+    },
+    "outputEncoding": {
+      "name": "控制台输出编码",
+      "items": [
+        {
+          "value": "utf8",
+          "name": "UTF8",
+          "description": ""
+        },
+        {
+          "value": "oem",
+          "name": "OEM",
+          "description": ""
+        }
+      ]
+    }
+  },
+  "sourceFileName": "sys_runScript_运行脚本.md"
+}

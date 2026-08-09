@@ -1,0 +1,58 @@
+{
+  "key": "sys:getActiveProcessInfo",
+  "slug": "getactiveprocessinfo",
+  "legacySlug": "getactiveprocessinfo",
+  "ownsLegacyContent": true,
+  "name": "获取前台进程信息",
+  "description": "获取当前活动窗口进程的信息。",
+  "category": "System",
+  "categoryName": "Windows系统",
+  "stepType": "Action",
+  "isRisky": false,
+  "isProOnly": false,
+  "helpLink": "https://getquicker.net/KC/Help/Doc/getactiveprocessinfo",
+  "inputs": [
+    {
+      "key": "stopIfFail",
+      "name": "失败后中止动作",
+      "type": "Boolean",
+      "defaultValue": "true",
+      "required": false,
+      "variableMode": "Input",
+      "condition": "",
+      "description": "获取进程信息失败后是否停止动作"
+    }
+  ],
+  "outputs": [
+    {
+      "key": "isSuccess",
+      "name": "是否成功",
+      "type": "Boolean",
+      "condition": "",
+      "description": "是否成功获得进程信息"
+    },
+    {
+      "key": "path",
+      "name": "程序路径",
+      "type": "Text",
+      "condition": "",
+      "description": "获得的进程路径"
+    },
+    {
+      "key": "procName",
+      "name": "进程名",
+      "type": "Text",
+      "condition": "",
+      "description": "进程名称"
+    },
+    {
+      "key": "pid",
+      "name": "PID",
+      "type": "Integer",
+      "condition": "",
+      "description": "进程ID"
+    }
+  ],
+  "selections": {},
+  "sourceFileName": "sys_getActiveProcessInfo_获取前台进程信息.md"
+}

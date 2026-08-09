@@ -1,0 +1,220 @@
+{
+  "key": "sys:MsgBox",
+  "slug": "msgbox",
+  "legacySlug": "msgbox",
+  "ownsLegacyContent": true,
+  "name": "弹窗提示或确认",
+  "description": "弹窗显示提示或确认对话框",
+  "category": "Basic",
+  "categoryName": "基础",
+  "stepType": "Action",
+  "isRisky": false,
+  "isProOnly": false,
+  "helpLink": "https://getquicker.net/KC/Help/Doc/msgbox",
+  "inputs": [
+    {
+      "key": "operation",
+      "name": "模式",
+      "type": "Enum",
+      "defaultValue": "default",
+      "required": true,
+      "variableMode": "Input",
+      "condition": "",
+      "description": ""
+    },
+    {
+      "key": "message",
+      "name": "消息内容",
+      "type": "Text",
+      "defaultValue": "Hello.",
+      "required": true,
+      "variableMode": "UseVarOrInput",
+      "condition": "",
+      "description": "弹窗显示的消息内容。\"自定义\"模式时，也支持\"MD:Markdown内容\"。"
+    },
+    {
+      "key": "title",
+      "name": "标题",
+      "type": "Text",
+      "defaultValue": "Quicker",
+      "required": true,
+      "variableMode": "Input",
+      "condition": "",
+      "description": "消息窗口标题。留空时自动使用动作名称。"
+    },
+    {
+      "key": "icon",
+      "name": "图标",
+      "type": "Enum",
+      "defaultValue": "Information",
+      "required": true,
+      "variableMode": "Input",
+      "condition": "仅：default",
+      "description": "消息窗口图标"
+    },
+    {
+      "key": "customIcon",
+      "name": "图标",
+      "type": "Text",
+      "defaultValue": "Information",
+      "required": true,
+      "variableMode": "UseVarOrInput",
+      "condition": "仅：custom",
+      "description": "消息窗口图标。"
+    },
+    {
+      "key": "buttons",
+      "name": "按钮",
+      "type": "Enum",
+      "defaultValue": "OK",
+      "required": true,
+      "variableMode": "Input",
+      "condition": "仅：default",
+      "description": "消息窗口图标"
+    },
+    {
+      "key": "customButtons",
+      "name": "按钮",
+      "type": "Text",
+      "defaultValue": "[fa:Regular_Check:#4caf50]是(_Y)|Yes\n[fa:Regular_Times:#dc3545]否(_N)|No\n[fa:Light_Undo:#444444]取消(_C)|Cancel",
+      "required": true,
+      "variableMode": "Input",
+      "condition": "仅：custom",
+      "description": "每行定义一个按钮，格式为 \"文本\" 或 \"[图标]显示文本(提示内容)|值\"。"
+    },
+    {
+      "key": "defaultButton",
+      "name": "默认按钮",
+      "type": "Text",
+      "defaultValue": "Yes",
+      "required": true,
+      "variableMode": "Input",
+      "condition": "仅：custom",
+      "description": "指定默认按钮的值。默认按钮以高亮颜色显示，可直接回车选择。"
+    },
+    {
+      "key": "restoreFocus",
+      "name": "恢复活动窗口",
+      "type": "Boolean",
+      "defaultValue": "true",
+      "required": false,
+      "variableMode": "Input",
+      "condition": "",
+      "description": "关闭弹窗后，是否将焦点还原到之前的活动窗口"
+    }
+  ],
+  "outputs": [
+    {
+      "key": "result",
+      "name": "选择的按钮",
+      "type": "Text",
+      "condition": "",
+      "description": "点击的按钮，标准模式下结果可能为OK,Cancel,Yes,No，自定义模式下为按钮的值。"
+    },
+    {
+      "key": "okOrYes",
+      "name": "是否确认",
+      "type": "Boolean",
+      "condition": "仅：default",
+      "description": "选择的按钮是否为\"确定\"或\"是\""
+    }
+  ],
+  "selections": {
+    "operation": {
+      "name": "模式",
+      "items": [
+        {
+          "value": "default",
+          "name": "标准",
+          "description": ""
+        },
+        {
+          "value": "custom",
+          "name": "自定义",
+          "description": ""
+        }
+      ]
+    },
+    "icon": {
+      "name": "图标",
+      "items": [
+        {
+          "value": "None",
+          "name": "无",
+          "description": ""
+        },
+        {
+          "value": "Information",
+          "name": "信息",
+          "description": ""
+        },
+        {
+          "value": "Question",
+          "name": "疑问",
+          "description": ""
+        },
+        {
+          "value": "Warning",
+          "name": "警告",
+          "description": ""
+        },
+        {
+          "value": "Error",
+          "name": "错误",
+          "description": ""
+        }
+      ]
+    },
+    "customIcon": {
+      "name": "图标",
+      "items": [
+        {
+          "value": "",
+          "name": "无",
+          "description": ""
+        },
+        {
+          "value": "Information",
+          "name": "信息",
+          "description": ""
+        },
+        {
+          "value": "Question",
+          "name": "疑问",
+          "description": ""
+        },
+        {
+          "value": "Warning",
+          "name": "警告",
+          "description": ""
+        },
+        {
+          "value": "Error",
+          "name": "错误",
+          "description": ""
+        }
+      ]
+    },
+    "buttons": {
+      "name": "按钮",
+      "items": [
+        {
+          "value": "OK",
+          "name": "确定",
+          "description": ""
+        },
+        {
+          "value": "OKCancel",
+          "name": "确定/取消",
+          "description": ""
+        },
+        {
+          "value": "YesNo",
+          "name": "是/否",
+          "description": ""
+        }
+      ]
+    }
+  },
+  "sourceFileName": "sys_MsgBox_弹窗提示或确认.md"
+}

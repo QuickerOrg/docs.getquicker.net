@@ -1,0 +1,58 @@
+{
+  "key": "sys:textCounter",
+  "slug": "textcounter",
+  "legacySlug": "textcounter",
+  "ownsLegacyContent": true,
+  "name": "字数统计",
+  "description": "统计文本行数、字符数等",
+  "category": "Text",
+  "categoryName": "文本处理",
+  "stepType": "Action",
+  "isRisky": false,
+  "isProOnly": false,
+  "helpLink": "https://getquicker.net/KC/Help/Doc/textcounter",
+  "inputs": [
+    {
+      "key": "content",
+      "name": "文本",
+      "type": "Text",
+      "defaultValue": "",
+      "required": true,
+      "variableMode": "UseVar",
+      "condition": "",
+      "description": "要统计的内容"
+    }
+  ],
+  "outputs": [
+    {
+      "key": "line",
+      "name": "行数",
+      "type": "Integer",
+      "condition": "",
+      "description": ""
+    },
+    {
+      "key": "char",
+      "name": "字符数",
+      "type": "Integer",
+      "condition": "",
+      "description": ""
+    },
+    {
+      "key": "visableChar",
+      "name": "可见字符数",
+      "type": "Integer",
+      "condition": "",
+      "description": ""
+    },
+    {
+      "key": "cnChar",
+      "name": "汉字数",
+      "type": "Integer",
+      "condition": "",
+      "description": ""
+    }
+  ],
+  "selections": {},
+  "sourceFileName": "sys_textCounter_字数统计.md"
+}

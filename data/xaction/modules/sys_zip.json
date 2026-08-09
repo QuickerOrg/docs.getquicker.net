@@ -1,0 +1,180 @@
+{
+  "key": "sys:zip",
+  "slug": "zip",
+  "legacySlug": "zip",
+  "ownsLegacyContent": true,
+  "name": "Zip压缩打包",
+  "description": "Zip压缩或解压缩",
+  "category": "Files",
+  "categoryName": "系统操作",
+  "stepType": "Action",
+  "isRisky": false,
+  "isProOnly": false,
+  "helpLink": "https://getquicker.net/KC/Help/Doc/zip",
+  "inputs": [
+    {
+      "key": "type",
+      "name": "操作类型",
+      "type": "Enum",
+      "defaultValue": "Zip",
+      "required": true,
+      "variableMode": "Input",
+      "condition": "",
+      "description": ""
+    },
+    {
+      "key": "sourcePath",
+      "name": "源路径",
+      "type": "Text",
+      "defaultValue": "",
+      "required": true,
+      "variableMode": "UseVarOrInput",
+      "condition": "仅：Zip",
+      "description": "待压缩的文件夹或文件路径。多个文件时每个文件一行。"
+    },
+    {
+      "key": "targetZipFile",
+      "name": "Zip文件路径",
+      "type": "Text",
+      "defaultValue": "",
+      "required": true,
+      "variableMode": "UseVarOrInput",
+      "condition": "仅：Zip",
+      "description": "压缩时：目标文件的路径。留空时自动生成临时文件。点(.)表示待压缩的文件夹或文件所在位置。"
+    },
+    {
+      "key": "sourceZipFile",
+      "name": "Zip文件路径",
+      "type": "Text",
+      "defaultValue": "",
+      "required": true,
+      "variableMode": "UseVarOrInput",
+      "condition": "仅：Unzip",
+      "description": "待解压的文件路径。"
+    },
+    {
+      "key": "keepBaseFolder",
+      "name": "源路径为单个文件夹时，压缩整个文件夹（保留文件夹名称）",
+      "type": "Boolean",
+      "defaultValue": "false",
+      "required": false,
+      "variableMode": "Input",
+      "condition": "仅：Zip",
+      "description": ""
+    },
+    {
+      "key": "outputPath",
+      "name": "目标路径",
+      "type": "Text",
+      "defaultValue": "",
+      "required": true,
+      "variableMode": "UseVarOrInput",
+      "condition": "仅：Unzip",
+      "description": "解压缩的目标路径, 点(.)表示zip文件所在的文件夹, 星(*)表示以zip文件名创建的子文件夹。"
+    },
+    {
+      "key": "password",
+      "name": "密码",
+      "type": "Text",
+      "defaultValue": "",
+      "required": false,
+      "variableMode": "UseVarOrInput",
+      "condition": "",
+      "description": "压缩文件密码"
+    },
+    {
+      "key": "comment",
+      "name": "备注",
+      "type": "Text",
+      "defaultValue": "",
+      "required": false,
+      "variableMode": "UseVarOrInput",
+      "condition": "仅：Zip",
+      "description": "压缩文件注释内容"
+    },
+    {
+      "key": "level",
+      "name": "级别",
+      "type": "Integer",
+      "defaultValue": "1",
+      "required": false,
+      "variableMode": "UseVarOrInput",
+      "condition": "仅：Zip",
+      "description": "压缩级别，0-9。0表示不压缩（速度快），9表示压缩到最小（速度慢）"
+    },
+    {
+      "key": "overwrite",
+      "name": "自动覆盖文件",
+      "type": "Boolean",
+      "defaultValue": "false",
+      "required": false,
+      "variableMode": "Input",
+      "condition": "仅：Unzip",
+      "description": ""
+    },
+    {
+      "key": "skipOverwriteError",
+      "name": "覆盖失败时忽略",
+      "type": "Boolean",
+      "defaultValue": "false",
+      "required": false,
+      "variableMode": "Input",
+      "condition": "仅：Unzip",
+      "description": "忽略掉无法覆盖的情况"
+    },
+    {
+      "key": "showProgress",
+      "name": "显示进度条",
+      "type": "Boolean",
+      "defaultValue": "false",
+      "required": false,
+      "variableMode": "Input",
+      "condition": "仅：Zip, Unzip",
+      "description": "仅支持解压缩或压缩单个文件夹。"
+    },
+    {
+      "key": "stopIfFail",
+      "name": "失败后停止",
+      "type": "Boolean",
+      "defaultValue": "true",
+      "required": false,
+      "variableMode": "Input",
+      "condition": "",
+      "description": "失败后是否停止动作"
+    }
+  ],
+  "outputs": [
+    {
+      "key": "isSuccess",
+      "name": "是否成功",
+      "type": "Boolean",
+      "condition": "",
+      "description": "操作是否成功"
+    },
+    {
+      "key": "resultPath",
+      "name": "结果路径",
+      "type": "Text",
+      "condition": "",
+      "description": "生成的zip文件完整路径，或解压缩后的完整路径"
+    }
+  ],
+  "selections": {
+    "type": {
+      "name": "操作类型",
+      "items": [
+        {
+          "value": "Zip",
+          "name": "创建Zip文件",
+          "description": ""
+        },
+        {
+          "value": "Unzip",
+          "name": "解压缩Zip文件",
+          "description": ""
+        }
+      ]
+    }
+  },
+  "sourceFileName": "sys_zip_Zip压缩打包.md"
+}

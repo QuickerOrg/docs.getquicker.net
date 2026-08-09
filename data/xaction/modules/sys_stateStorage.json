@@ -1,0 +1,202 @@
+{
+  "key": "sys:stateStorage",
+  "slug": "statestorage",
+  "legacySlug": "statestorage",
+  "ownsLegacyContent": true,
+  "name": "状态存取",
+  "description": "存取状态数据；更新动作的徽标文字；设置附加的动作右键菜单项",
+  "category": "Files",
+  "categoryName": "系统操作",
+  "stepType": "Action",
+  "isRisky": false,
+  "isProOnly": false,
+  "helpLink": "https://getquicker.net/KC/Help/Doc/stateStorage",
+  "inputs": [
+    {
+      "key": "type",
+      "name": "操作类型",
+      "type": "Enum",
+      "defaultValue": "readActionState",
+      "required": true,
+      "variableMode": "Input",
+      "condition": "",
+      "description": ""
+    },
+    {
+      "key": "key",
+      "name": "名称",
+      "type": "Text",
+      "defaultValue": "",
+      "required": false,
+      "variableMode": "Input",
+      "condition": "仅：readActionState, saveActionState, readGlobalState, saveGlobalState",
+      "description": "存储或读取的状态条目名称。"
+    },
+    {
+      "key": "value",
+      "name": "值",
+      "type": "Text",
+      "defaultValue": "",
+      "required": false,
+      "variableMode": "UseVarOrInput",
+      "condition": "仅：saveActionState, saveGlobalState",
+      "description": "要保存的状态值。使用\"*NULL*\"删除此状态的存储。"
+    },
+    {
+      "key": "defaultValue",
+      "name": "默认值",
+      "type": "Text",
+      "defaultValue": "",
+      "required": false,
+      "variableMode": "Input",
+      "condition": "仅：readActionState, readGlobalState",
+      "description": "读取失败的时候返回的值"
+    },
+    {
+      "key": "inputIfEmpty",
+      "name": "为空时请用户输入",
+      "type": "Boolean",
+      "defaultValue": "false",
+      "required": false,
+      "variableMode": "Input",
+      "condition": "仅：readActionState, readGlobalState",
+      "description": "如果读到的状态值为空，则弹出对话框请用户输入值。启用此选项时，请保持默认值为空。"
+    },
+    {
+      "key": "prompt",
+      "name": "用户输入提示",
+      "type": "Text",
+      "defaultValue": "",
+      "required": false,
+      "variableMode": "UseVarOrInput",
+      "condition": "仅：readActionState, readGlobalState",
+      "description": "需要用户输入变量内容时，给用户的输入提示。"
+    },
+    {
+      "key": "overlayIcon",
+      "name": "徽标图标",
+      "type": "Text",
+      "defaultValue": "",
+      "required": false,
+      "variableMode": "UseVarOrInput",
+      "condition": "仅：UpdateOverlyIcon",
+      "description": "使用内置矢量图标：\"fa:图标名称:图标颜色\"。如：\"fa:Solid_Circle:#FF0000\""
+    },
+    {
+      "key": "badgeText",
+      "name": "徽标文字",
+      "type": "Text",
+      "defaultValue": "",
+      "required": false,
+      "variableMode": "UseVarOrInput",
+      "condition": "仅：UpdateActionBadge",
+      "description": "在动作右上角显示的提示文字"
+    },
+    {
+      "key": "badgeColor",
+      "name": "徽标颜色",
+      "type": "Text",
+      "defaultValue": "",
+      "required": false,
+      "variableMode": "UseVarOrInput",
+      "condition": "仅：UpdateActionBadge",
+      "description": "在动作右上角显示的徽标底色。留空表示透明。"
+    },
+    {
+      "key": "badgeTextColor",
+      "name": "徽标文字颜色",
+      "type": "Text",
+      "defaultValue": "",
+      "required": false,
+      "variableMode": "UseVarOrInput",
+      "condition": "仅：UpdateActionBadge",
+      "description": ""
+    },
+    {
+      "key": "actionContextMenu",
+      "name": "附加的右键菜单项",
+      "type": "Text",
+      "defaultValue": "",
+      "required": false,
+      "variableMode": "UseVarOrInput",
+      "condition": "仅：UpdateContextMenu",
+      "description": "附加的动作右键菜单，格式请参考文档"
+    },
+    {
+      "key": "stopIfFail",
+      "name": "失败后停止",
+      "type": "Boolean",
+      "defaultValue": "true",
+      "required": false,
+      "variableMode": "Input",
+      "condition": "",
+      "description": "失败后是否停止动作"
+    }
+  ],
+  "outputs": [
+    {
+      "key": "isSuccess",
+      "name": "是否成功",
+      "type": "Boolean",
+      "condition": "仅：readActionState, readGlobalState",
+      "description": "是否成功获取了値"
+    },
+    {
+      "key": "value",
+      "name": "值",
+      "type": "Any",
+      "condition": "仅：readActionState, readGlobalState",
+      "description": "读取到的值"
+    },
+    {
+      "key": "isEmpty",
+      "name": "是否为空",
+      "type": "Boolean",
+      "condition": "仅：readActionState, readGlobalState",
+      "description": "读取到的值是否为空"
+    }
+  ],
+  "selections": {
+    "type": {
+      "name": "操作类型",
+      "items": [
+        {
+          "value": "readActionState",
+          "name": "读取动作状态",
+          "description": ""
+        },
+        {
+          "value": "saveActionState",
+          "name": "写入动作状态",
+          "description": ""
+        },
+        {
+          "value": "UpdateActionBadge",
+          "name": "设置徽标文字",
+          "description": ""
+        },
+        {
+          "value": "UpdateOverlyIcon",
+          "name": "设置徽标图标",
+          "description": ""
+        },
+        {
+          "value": "UpdateContextMenu",
+          "name": "设置附加的右键菜单项",
+          "description": ""
+        },
+        {
+          "value": "readGlobalState",
+          "name": "【谨慎使用】读取全局状态",
+          "description": ""
+        },
+        {
+          "value": "saveGlobalState",
+          "name": "【谨慎使用】写入全局状态",
+          "description": ""
+        }
+      ]
+    }
+  },
+  "sourceFileName": "sys_stateStorage_状态存取.md"
+}

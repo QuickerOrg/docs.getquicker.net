@@ -41,6 +41,14 @@ npm run build
 - `docs/`: Markdown/MDX 文档内容。
 - `src/`: Docusaurus 站点代码、主题覆盖和 React 组件。
 - `static/`: 原样复制到构建输出的图片、下载文件等静态资源。
+- `data/xaction/`: 组合动作模块的机器可读元数据，供同步器、校验器和 AI 使用。
+- `tools/xaction-docs/`: 从 Quicker 导出结果同步和校验模块文档的工具。
+
+组合动作文档更新后，除完整构建外还应运行：
+
+```powershell
+npm run docs:xaction:check
+```
 
 ## 评论接入
 

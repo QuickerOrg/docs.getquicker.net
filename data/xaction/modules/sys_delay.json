@@ -1,0 +1,39 @@
+{
+  "key": "sys:delay",
+  "slug": "delay",
+  "legacySlug": "delay",
+  "ownsLegacyContent": true,
+  "name": "等待时间",
+  "description": "等待指定的毫秒数",
+  "category": "Basic",
+  "categoryName": "基础",
+  "stepType": "Action",
+  "isRisky": false,
+  "isProOnly": false,
+  "helpLink": "https://getquicker.net/KC/Help/Doc/delay",
+  "inputs": [
+    {
+      "key": "delayMs",
+      "name": "等待时间",
+      "type": "Integer",
+      "defaultValue": "100",
+      "required": true,
+      "variableMode": "UseVarOrInput",
+      "condition": "",
+      "description": "等待时间毫秒数"
+    },
+    {
+      "key": "monitorWaitWin",
+      "name": "等待窗口关闭时取消",
+      "type": "Boolean",
+      "defaultValue": "false",
+      "required": false,
+      "variableMode": "Input",
+      "condition": "",
+      "description": "结合\"等待窗口\"模块，如果等待窗口关闭，则停止等待。仅当等待时间超过1000ms时生效"
+    }
+  ],
+  "outputs": [],
+  "selections": {},
+  "sourceFileName": "sys_delay_等待时间.md"
+}

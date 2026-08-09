@@ -1,0 +1,54 @@
+{
+  "key": "sys:assign",
+  "slug": "assign",
+  "legacySlug": "assign",
+  "ownsLegacyContent": true,
+  "name": "赋值",
+  "description": "为变量赋值。",
+  "category": "Compute",
+  "categoryName": "计算与比较",
+  "stepType": "Action",
+  "isRisky": false,
+  "isProOnly": false,
+  "helpLink": "https://getquicker.net/KC/Help/Doc/assign",
+  "inputs": [
+    {
+      "key": "input",
+      "name": "输入",
+      "type": "Any",
+      "defaultValue": "",
+      "required": true,
+      "variableMode": "UseVarOrInput",
+      "condition": "",
+      "description": "要赋值给变量的内容，可以直接是其他变量，也可以直接输入值或使用插值格式。"
+    },
+    {
+      "key": "stopIfFail",
+      "name": "失败后停止",
+      "type": "Boolean",
+      "defaultValue": "true",
+      "required": false,
+      "variableMode": "Input",
+      "condition": "",
+      "description": "失败后是否停止动作"
+    }
+  ],
+  "outputs": [
+    {
+      "key": "isSuccess",
+      "name": "是否成功",
+      "type": "Boolean",
+      "condition": "",
+      "description": "操作是否成功"
+    },
+    {
+      "key": "output",
+      "name": "输出",
+      "type": "Any",
+      "condition": "",
+      "description": "将数据写入到变量中"
+    }
+  ],
+  "selections": {},
+  "sourceFileName": "sys_assign_赋值.md"
+}

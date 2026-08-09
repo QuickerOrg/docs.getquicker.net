@@ -33,15 +33,15 @@ Quicker 1.x 主要使用 Z.Expressions 计算组合动作中的表达式。V2 �
 
 表达式执行失败时，QkEval 会尽量提供：
 
-- 出错原因
-- 出错的表达式片段
-- 对应的行号和列号
-- 暂不支持的语法类型
-- 解析错误与执行错误的区别
+* 出错原因
+* 出错的表达式片段
+* 对应的行号和列号
+* 暂不支持的语法类型
+* 解析错误与执行错误的区别
 
 即使表达式经过了兼容转换，错误位置也会尽量映射回用户最初输入的代码，方便在表达式编辑器中快速定位问题。
 
-
+<img width="682" alt="clipboard-image" src={require("./assets/img/image.png").default} />
 
 ## 更全面的 C# 语法支持
 
@@ -62,12 +62,12 @@ score switch
 
 同时支持：
 
-- 常量模式
-- 类型模式
-- 关系模式
-- 属性模式
-- `and`、`or`、`not` 组合模式
-- `when` 条件
+* 常量模式
+* 类型模式
+* 关系模式
+* 属性模式
+* `and`、`or`、`not` 组合模式
+* `when` 条件
 
 ```csharp
 value switch
@@ -92,16 +92,16 @@ select item.Title
 
 目前支持的主要查询子句包括：
 
-- `from`
-- `where`
-- `select`
-- `orderby`
-- `let`
-- 多重 `from`
-- `group by`
-- `join`
-- `join into`
-- `select into`
+* `from`
+* `where`
+* `select`
+* `orderby`
+* `let`
+* 多重 `from`
+* `group by`
+* `join`
+* `join into`
+* `select into`
 
 ### 目标类型 new
 
@@ -146,9 +146,9 @@ var middle = text[1..^1];
 
 目前主要支持：
 
-- 字符串
-- 一维数组
-- `List<T>` 等常见列表
+* 字符串
+* 一维数组
+* `List<T>` 等常见列表
 
 ### 元组与解构
 

@@ -1,0 +1,169 @@
+{
+  "key": "sys:cloud_oss",
+  "slug": "cloud_oss",
+  "legacySlug": "cloud_oss",
+  "ownsLegacyContent": true,
+  "name": "第三方云存储/图床",
+  "description": "使用第三方云服务上传文件。",
+  "category": "Network",
+  "categoryName": "网络服务",
+  "stepType": "Action",
+  "isRisky": false,
+  "isProOnly": false,
+  "helpLink": "https://getquicker.net/KC/Help/Doc/cloud_oss",
+  "inputs": [
+    {
+      "key": "operation",
+      "name": "操作类型",
+      "type": "Enum",
+      "defaultValue": "Upload",
+      "required": true,
+      "variableMode": "Input",
+      "condition": "",
+      "description": ""
+    },
+    {
+      "key": "vendor",
+      "name": "服务商",
+      "type": "Enum",
+      "defaultValue": "Aliyun",
+      "required": true,
+      "variableMode": "Input",
+      "condition": "",
+      "description": ""
+    },
+    {
+      "key": "vendorSettings",
+      "name": "服务商参数",
+      "type": "Text",
+      "defaultValue": "",
+      "required": true,
+      "variableMode": "Input",
+      "condition": "",
+      "description": "设置相关"
+    },
+    {
+      "key": "key",
+      "name": "对象名",
+      "type": "Text",
+      "defaultValue": "",
+      "required": false,
+      "variableMode": "Input",
+      "condition": "仅：Upload",
+      "description": "可选。留空时自动生成对象名。如果以'/'结尾，则在此基础上自动生成对象名。"
+    },
+    {
+      "key": "content",
+      "name": "上传内容",
+      "type": "Any",
+      "defaultValue": "",
+      "required": false,
+      "variableMode": "Input",
+      "condition": "仅：Upload",
+      "description": "要上传的文件路径、其它文本内容或图片变量。"
+    },
+    {
+      "key": "customDomain",
+      "name": "自定义域名",
+      "type": "Text",
+      "defaultValue": "",
+      "required": false,
+      "variableMode": "Input",
+      "condition": "仅：Upload",
+      "description": "如\"https://files.example.com\"。"
+    },
+    {
+      "key": "extraHeaders",
+      "name": "额外的请求头",
+      "type": "Text",
+      "defaultValue": "",
+      "required": true,
+      "variableMode": "Input",
+      "condition": "",
+      "description": "可选。设置厂商相关的特定http头。"
+    },
+    {
+      "key": "expireSeconds",
+      "name": "超时时间",
+      "type": "Number",
+      "defaultValue": "180",
+      "required": false,
+      "variableMode": "UseVarOrInput",
+      "condition": "",
+      "description": "请求超时时间（秒数）"
+    },
+    {
+      "key": "stopIfFail",
+      "name": "失败后停止",
+      "type": "Boolean",
+      "defaultValue": "true",
+      "required": false,
+      "variableMode": "Input",
+      "condition": "",
+      "description": "失败后是否停止动作"
+    }
+  ],
+  "outputs": [
+    {
+      "key": "isSuccess",
+      "name": "是否成功",
+      "type": "Boolean",
+      "condition": "",
+      "description": "操作是否成功"
+    },
+    {
+      "key": "vendorUrl",
+      "name": "服务商网址",
+      "type": "Any",
+      "condition": "仅：Upload",
+      "description": ""
+    },
+    {
+      "key": "customUrl",
+      "name": "自定义域名网址",
+      "type": "Any",
+      "condition": "仅：Upload",
+      "description": "设置了自定义域名时会生成此网址。"
+    },
+    {
+      "key": "err",
+      "name": "错误信息",
+      "type": "Text",
+      "condition": "",
+      "description": "出错时输出的错误信息。"
+    }
+  ],
+  "selections": {
+    "operation": {
+      "name": "操作类型",
+      "items": [
+        {
+          "value": "Upload",
+          "name": "上传",
+          "description": ""
+        }
+      ]
+    },
+    "vendor": {
+      "name": "服务商",
+      "items": [
+        {
+          "value": "Aliyun",
+          "name": "阿里云 OSS",
+          "description": ""
+        },
+        {
+          "value": "Tencent",
+          "name": "腾讯云 COS",
+          "description": ""
+        },
+        {
+          "value": "Qiniu",
+          "name": "七牛云",
+          "description": ""
+        }
+      ]
+    }
+  },
+  "sourceFileName": "sys_cloud_oss_第三方云存储_图床.md"
+}

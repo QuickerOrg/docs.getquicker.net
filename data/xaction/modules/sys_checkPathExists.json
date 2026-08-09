@@ -1,0 +1,156 @@
+{
+  "key": "sys:checkPathExists",
+  "slug": "checkpathexists",
+  "legacySlug": "checkpathexists",
+  "ownsLegacyContent": true,
+  "name": "检查路径/获取文件信息",
+  "description": "检查指定的文件或文件夹是否存在。",
+  "category": "Files",
+  "categoryName": "系统操作",
+  "stepType": "Action",
+  "isRisky": false,
+  "isProOnly": false,
+  "helpLink": "https://getquicker.net/KC/Help/Doc/checkPathExists",
+  "inputs": [
+    {
+      "key": "path",
+      "name": "路径",
+      "type": "Text",
+      "defaultValue": "",
+      "required": true,
+      "variableMode": "UseVarOrInput",
+      "condition": "",
+      "description": "文件或文件夹的完整路径。"
+    }
+  ],
+  "outputs": [
+    {
+      "key": "isExists",
+      "name": "路径是否存在",
+      "type": "Boolean",
+      "condition": "",
+      "description": ""
+    },
+    {
+      "key": "isFile",
+      "name": "是否为文件",
+      "type": "Boolean",
+      "condition": "",
+      "description": ""
+    },
+    {
+      "key": "isFolder",
+      "name": "是否为文件夹",
+      "type": "Boolean",
+      "condition": "",
+      "description": ""
+    },
+    {
+      "key": "isReadonly",
+      "name": "是否只读",
+      "type": "Boolean",
+      "condition": "",
+      "description": ""
+    },
+    {
+      "key": "isHidden",
+      "name": "是否隐藏",
+      "type": "Boolean",
+      "condition": "",
+      "description": ""
+    },
+    {
+      "key": "isSystem",
+      "name": "是否为系统文件",
+      "type": "Boolean",
+      "condition": "",
+      "description": ""
+    },
+    {
+      "key": "fileLength",
+      "name": "文件长度",
+      "type": "Integer",
+      "condition": "",
+      "description": ""
+    },
+    {
+      "key": "fileCount",
+      "name": "文件夹内文件个数",
+      "type": "Integer",
+      "condition": "",
+      "description": "仅对文件夹路径有效，输出时需要耗费一定时间扫描文件夹"
+    },
+    {
+      "key": "totalLength",
+      "name": "文件夹大小",
+      "type": "Integer",
+      "condition": "",
+      "description": "仅对文件夹路径有效，输出时需要耗费一定时间扫描文件夹"
+    },
+    {
+      "key": "createTime",
+      "name": "创建时间",
+      "type": "DateTime",
+      "condition": "",
+      "description": ""
+    },
+    {
+      "key": "editTime",
+      "name": "更新时间",
+      "type": "DateTime",
+      "condition": "",
+      "description": ""
+    },
+    {
+      "key": "metaData",
+      "name": "文件扩展信息",
+      "type": "Dict",
+      "condition": "",
+      "description": "获取文件的扩展信息，值为词典类型。"
+    },
+    {
+      "key": "lnkTarget",
+      "name": "lnk目标路径",
+      "type": "Text",
+      "condition": "",
+      "description": "快捷方式文件的目标文件"
+    },
+    {
+      "key": "lnkArguments",
+      "name": "lnk命令行参数",
+      "type": "Text",
+      "condition": "",
+      "description": "快捷方式中的命令行参数"
+    },
+    {
+      "key": "md5hash",
+      "name": "MD5 哈希值",
+      "type": "Text",
+      "condition": "",
+      "description": "获取文件的MD5哈希值。仅对文件有效，大文件需要一些时间扫描。"
+    },
+    {
+      "key": "sha1hash",
+      "name": "SHA1 哈希值",
+      "type": "Text",
+      "condition": "",
+      "description": "获取文件的SHA1哈希值。仅对文件有效，大文件需要一些时间扫描。"
+    },
+    {
+      "key": "sha256hash",
+      "name": "SHA256 哈希值",
+      "type": "Text",
+      "condition": "",
+      "description": "获取文件的SHA256哈希值。仅对文件有效，大文件需要一些时间扫描。"
+    },
+    {
+      "key": "crc32hash",
+      "name": "CRC32 哈希值",
+      "type": "Text",
+      "condition": "",
+      "description": "获取文件的CRC32哈希值。仅对文件有效，大文件需要一些时间扫描。"
+    }
+  ],
+  "selections": {},
+  "sourceFileName": "sys_checkPathExists_检查路径_获取文件信息.md"
+}

@@ -1,0 +1,283 @@
+{
+  "key": "sys:getFolderPath",
+  "slug": "getfolderpath",
+  "legacySlug": "getfolderpath",
+  "ownsLegacyContent": true,
+  "name": "获取系统路径",
+  "description": "返回指定的特殊目录路径。",
+  "category": "System",
+  "categoryName": "Windows系统",
+  "stepType": "Action",
+  "isRisky": false,
+  "isProOnly": false,
+  "helpLink": "https://getquicker.net/KC/Help/Doc/getfolderpath",
+  "inputs": [
+    {
+      "key": "folder",
+      "name": "目录类型",
+      "type": "Enum",
+      "defaultValue": "",
+      "required": true,
+      "variableMode": "Input",
+      "condition": "",
+      "description": "Windows的特殊目录类型，详情请搜索\"Environment.SpecialFolder\"。"
+    }
+  ],
+  "outputs": [
+    {
+      "key": "path",
+      "name": "路径",
+      "type": "Text",
+      "condition": "",
+      "description": "返回的完整路径"
+    }
+  ],
+  "selections": {
+    "folder": {
+      "name": "目录类型",
+      "items": [
+        {
+          "value": "AdminTools",
+          "name": "AdminTools",
+          "description": ""
+        },
+        {
+          "value": "ApplicationData",
+          "name": "ApplicationData 应用数据",
+          "description": ""
+        },
+        {
+          "value": "CDBurning",
+          "name": "CDBurning",
+          "description": ""
+        },
+        {
+          "value": "CommonAdminTools",
+          "name": "CommonAdminTools",
+          "description": ""
+        },
+        {
+          "value": "CommonApplicationData",
+          "name": "CommonApplicationData",
+          "description": ""
+        },
+        {
+          "value": "CommonDesktopDirectory",
+          "name": "CommonDesktopDirectory",
+          "description": ""
+        },
+        {
+          "value": "CommonDocuments",
+          "name": "CommonDocuments",
+          "description": ""
+        },
+        {
+          "value": "CommonMusic",
+          "name": "CommonMusic",
+          "description": ""
+        },
+        {
+          "value": "CommonOemLinks",
+          "name": "CommonOemLinks",
+          "description": ""
+        },
+        {
+          "value": "CommonPictures",
+          "name": "CommonPictures",
+          "description": ""
+        },
+        {
+          "value": "CommonProgramFiles",
+          "name": "CommonProgramFiles",
+          "description": ""
+        },
+        {
+          "value": "CommonProgramFilesX86",
+          "name": "CommonProgramFilesX86",
+          "description": ""
+        },
+        {
+          "value": "CommonPrograms",
+          "name": "CommonPrograms",
+          "description": ""
+        },
+        {
+          "value": "CommonStartMenu",
+          "name": "CommonStartMenu 通用开始菜单",
+          "description": ""
+        },
+        {
+          "value": "CommonStartup",
+          "name": "CommonStartup 通用启动",
+          "description": ""
+        },
+        {
+          "value": "CommonTemplates",
+          "name": "CommonTemplates",
+          "description": ""
+        },
+        {
+          "value": "CommonVideos",
+          "name": "CommonVideos",
+          "description": ""
+        },
+        {
+          "value": "Cookies",
+          "name": "Cookies",
+          "description": ""
+        },
+        {
+          "value": "Desktop",
+          "name": "Desktop 桌面",
+          "description": ""
+        },
+        {
+          "value": "DesktopDirectory",
+          "name": "DesktopDirectory",
+          "description": ""
+        },
+        {
+          "value": "Downloads",
+          "name": "Downloads 下载",
+          "description": ""
+        },
+        {
+          "value": "Favorites",
+          "name": "Favorites 收藏夹",
+          "description": ""
+        },
+        {
+          "value": "Fonts",
+          "name": "Fonts 字体",
+          "description": ""
+        },
+        {
+          "value": "History",
+          "name": "History 网络历史",
+          "description": ""
+        },
+        {
+          "value": "InternetCache",
+          "name": "InternetCache 网络缓存",
+          "description": ""
+        },
+        {
+          "value": "LocalApplicationData",
+          "name": "LocalApplicationData 本地应用数据",
+          "description": ""
+        },
+        {
+          "value": "LocalizedResources",
+          "name": "LocalizedResources",
+          "description": ""
+        },
+        {
+          "value": "MyComputer",
+          "name": "MyComputer 我的电脑",
+          "description": ""
+        },
+        {
+          "value": "MyDocuments",
+          "name": "MyDocuments 我的文档",
+          "description": ""
+        },
+        {
+          "value": "MyMusic",
+          "name": "MyMusic 我的音乐",
+          "description": ""
+        },
+        {
+          "value": "MyPictures",
+          "name": "MyPictures 我的照片",
+          "description": ""
+        },
+        {
+          "value": "MyVideos",
+          "name": "MyVideos 我的视频",
+          "description": ""
+        },
+        {
+          "value": "NetworkShortcuts",
+          "name": "NetworkShortcuts 网络位置",
+          "description": ""
+        },
+        {
+          "value": "Personal",
+          "name": "Personal",
+          "description": ""
+        },
+        {
+          "value": "PrinterShortcuts",
+          "name": "PrinterShortcuts 打印机",
+          "description": ""
+        },
+        {
+          "value": "ProgramFiles",
+          "name": "ProgramFiles",
+          "description": ""
+        },
+        {
+          "value": "ProgramFilesX86",
+          "name": "ProgramFilesX86",
+          "description": ""
+        },
+        {
+          "value": "Programs",
+          "name": "Programs",
+          "description": ""
+        },
+        {
+          "value": "Recent",
+          "name": "Recent 最近",
+          "description": ""
+        },
+        {
+          "value": "Resources",
+          "name": "Resources",
+          "description": ""
+        },
+        {
+          "value": "SendTo",
+          "name": "SendTo 发送到",
+          "description": ""
+        },
+        {
+          "value": "StartMenu",
+          "name": "StartMenu 开始菜单",
+          "description": ""
+        },
+        {
+          "value": "Startup",
+          "name": "Startup 启动",
+          "description": ""
+        },
+        {
+          "value": "System",
+          "name": "System System目录",
+          "description": ""
+        },
+        {
+          "value": "SystemX86",
+          "name": "SystemX86",
+          "description": ""
+        },
+        {
+          "value": "Templates",
+          "name": "Templates 文档模版",
+          "description": ""
+        },
+        {
+          "value": "UserProfile",
+          "name": "UserProfile",
+          "description": ""
+        },
+        {
+          "value": "Windows",
+          "name": "Windows Windows根目录",
+          "description": ""
+        }
+      ]
+    }
+  },
+  "sourceFileName": "sys_getFolderPath_获取系统路径.md"
+}

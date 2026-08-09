@@ -1,0 +1,47 @@
+{
+  "key": "sys:randomNum",
+  "slug": "randomnum",
+  "legacySlug": "randomnum",
+  "ownsLegacyContent": true,
+  "name": "生成随机数",
+  "description": "生成随机数",
+  "category": "Compute",
+  "categoryName": "计算与比较",
+  "stepType": "Action",
+  "isRisky": false,
+  "isProOnly": false,
+  "helpLink": "https://getquicker.net/KC/Help/Doc/randomnum",
+  "inputs": [
+    {
+      "key": "min",
+      "name": "最小值",
+      "type": "Integer",
+      "defaultValue": "0",
+      "required": true,
+      "variableMode": "UseVarOrInput",
+      "condition": "",
+      "description": "随机数范围的最小值（结果大于或等于此值）"
+    },
+    {
+      "key": "max",
+      "name": "最大值",
+      "type": "Integer",
+      "defaultValue": "100",
+      "required": true,
+      "variableMode": "UseVarOrInput",
+      "condition": "",
+      "description": "随机数范围的最大值（结果小于此值）"
+    }
+  ],
+  "outputs": [
+    {
+      "key": "output",
+      "name": "随机数",
+      "type": "Integer",
+      "condition": "",
+      "description": "生成的随机数"
+    }
+  ],
+  "selections": {},
+  "sourceFileName": "sys_randomNum_生成随机数.md"
+}

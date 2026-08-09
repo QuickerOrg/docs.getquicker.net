@@ -1,0 +1,67 @@
+{
+  "key": "sys:WriteImageFile",
+  "slug": "writeimagefile",
+  "legacySlug": "writeimagefile",
+  "ownsLegacyContent": true,
+  "name": "写入图片文件",
+  "description": "将图片内容写入文件",
+  "category": "Files",
+  "categoryName": "系统操作",
+  "stepType": "Action",
+  "isRisky": false,
+  "isProOnly": false,
+  "helpLink": "https://getquicker.net/KC/Help/Doc/writeimagefile",
+  "inputs": [
+    {
+      "key": "content",
+      "name": "图片",
+      "type": "Image",
+      "defaultValue": "",
+      "required": true,
+      "variableMode": "UseVar",
+      "condition": "",
+      "description": "要写入文件的图片（变量）"
+    },
+    {
+      "key": "filePath",
+      "name": "文件路径",
+      "type": "Text",
+      "defaultValue": "",
+      "required": true,
+      "variableMode": "UseVarOrInput",
+      "condition": "",
+      "description": "要写入的文件完整路径（包含文件名）"
+    },
+    {
+      "key": "quality",
+      "name": "图片质量",
+      "type": "Text",
+      "defaultValue": "95",
+      "required": true,
+      "variableMode": "UseVarOrInput",
+      "condition": "",
+      "description": "保存为JPG格式时的图片质量参数。范围10-100。"
+    },
+    {
+      "key": "stopIfFail",
+      "name": "失败后停止",
+      "type": "Boolean",
+      "defaultValue": "true",
+      "required": false,
+      "variableMode": "Input",
+      "condition": "",
+      "description": "失败后是否停止动作"
+    }
+  ],
+  "outputs": [
+    {
+      "key": "isSuccess",
+      "name": "是否成功",
+      "type": "Boolean",
+      "condition": "",
+      "description": "操作是否成功"
+    }
+  ],
+  "selections": {},
+  "sourceFileName": "sys_WriteImageFile_写入图片文件.md"
+}

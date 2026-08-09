@@ -1,0 +1,212 @@
+{
+  "key": "sys:officehelper",
+  "slug": "officehelper",
+  "legacySlug": "officehelper",
+  "ownsLegacyContent": true,
+  "name": "Office软件辅助",
+  "description": "辅助控制Office软件",
+  "category": "SoftInteraction",
+  "categoryName": "第三方软件交互",
+  "stepType": "Action",
+  "isRisky": false,
+  "isProOnly": false,
+  "helpLink": "https://getquicker.net/KC/Help/Doc/officehelper",
+  "inputs": [
+    {
+      "key": "operation",
+      "name": "操作类型",
+      "type": "Enum",
+      "defaultValue": "execVBA",
+      "required": true,
+      "variableMode": "Input",
+      "condition": "",
+      "description": ""
+    },
+    {
+      "key": "appType",
+      "name": "应用程序",
+      "type": "Enum",
+      "defaultValue": "word_wps",
+      "required": false,
+      "variableMode": "Input",
+      "condition": "",
+      "description": ""
+    },
+    {
+      "key": "code",
+      "name": "宏名称或VBA代码",
+      "type": "Text",
+      "defaultValue": "Sub Hello()\nMsgBox \"Hello World\"\nEnd Sub",
+      "required": false,
+      "variableMode": "Input",
+      "condition": "仅：execVBA",
+      "description": "宏的名称，或VBA代码（将执行第一个找到的Sub或Function）"
+    },
+    {
+      "key": "command",
+      "name": "命令ID",
+      "type": "Text",
+      "defaultValue": "",
+      "required": false,
+      "variableMode": "Input",
+      "condition": "仅：executeMsoCommand",
+      "description": "界面按钮所对应的命令ID，请参考模块文档了解如何获取。"
+    },
+    {
+      "key": "formats",
+      "name": "格式设置/属性赋值代码",
+      "type": "Text",
+      "defaultValue": "",
+      "required": false,
+      "variableMode": "Input",
+      "condition": "仅：setFormats",
+      "description": "请参考文档说明"
+    },
+    {
+      "key": "waitResp",
+      "name": "等待执行结束",
+      "type": "Boolean",
+      "defaultValue": "true",
+      "required": false,
+      "variableMode": "Input",
+      "condition": "仅：execVBA, setFormats, executeMsoCommand",
+      "description": "不等待将立即继续后续步骤的执行，如果遇到异常情况无法获知。"
+    },
+    {
+      "key": "waitMs",
+      "name": "最长等待时间(ms)",
+      "type": "Number",
+      "defaultValue": "10000",
+      "required": true,
+      "variableMode": "Input",
+      "condition": "仅：execVBA, setFormats, executeMsoCommand",
+      "description": "最长的等待返回结果的，毫秒数"
+    },
+    {
+      "key": "stopIfFail",
+      "name": "失败后停止动作",
+      "type": "Boolean",
+      "defaultValue": "true",
+      "required": false,
+      "variableMode": "Input",
+      "condition": "",
+      "description": "失败后是否停止动作"
+    }
+  ],
+  "outputs": [
+    {
+      "key": "isSuccess",
+      "name": "步骤执行是否成功",
+      "type": "Boolean",
+      "condition": "",
+      "description": "步骤执行是否成功"
+    },
+    {
+      "key": "resp",
+      "name": "返回内容",
+      "type": "Text",
+      "condition": "仅：execVBA, setFormats, executeMsoCommand",
+      "description": ""
+    },
+    {
+      "key": "progId",
+      "name": "ProgId",
+      "type": "Text",
+      "condition": "仅：getProgId",
+      "description": "获取程序的ProgId，可用于在C#里得到对应的Application对象。"
+    }
+  ],
+  "selections": {
+    "operation": {
+      "name": "操作类型",
+      "items": [
+        {
+          "value": "execVBA",
+          "name": "执行VBA宏代码",
+          "description": ""
+        },
+        {
+          "value": "setFormats",
+          "name": "设置格式/对象属性赋值",
+          "description": ""
+        },
+        {
+          "value": "executeMsoCommand",
+          "name": "执行界面命令",
+          "description": ""
+        },
+        {
+          "value": "getProgId",
+          "name": "获取ProgId",
+          "description": ""
+        }
+      ]
+    },
+    "appType": {
+      "name": "应用程序",
+      "items": [
+        {
+          "value": "word_wps",
+          "name": "Word 或 WPS文字（根据前台进程自动识别）",
+          "description": ""
+        },
+        {
+          "value": "word",
+          "name": "Word",
+          "description": ""
+        },
+        {
+          "value": "wps",
+          "name": "WPS文字",
+          "description": ""
+        },
+        {
+          "value": "excel_et",
+          "name": "Excel 或 WPS表格（根据前台进程自动识别）",
+          "description": ""
+        },
+        {
+          "value": "excel",
+          "name": "Excel",
+          "description": ""
+        },
+        {
+          "value": "et",
+          "name": "WPS表格",
+          "description": ""
+        },
+        {
+          "value": "powerpoint_wpp",
+          "name": "PowerPoint 或 WPS幻灯片（根据前台进程自动识别）",
+          "description": ""
+        },
+        {
+          "value": "powerpoint",
+          "name": "PowerPoint",
+          "description": ""
+        },
+        {
+          "value": "wpp",
+          "name": "WPS幻灯片",
+          "description": ""
+        },
+        {
+          "value": "outlook",
+          "name": "Outlook (支持界面命令)",
+          "description": ""
+        },
+        {
+          "value": "project",
+          "name": "Project (支持界面命令)",
+          "description": ""
+        },
+        {
+          "value": "visio",
+          "name": "Visio (支持界面命令、VBA)",
+          "description": ""
+        }
+      ]
+    }
+  },
+  "sourceFileName": "sys_officehelper_Office软件辅助.md"
+}

@@ -1,0 +1,245 @@
+{
+  "key": "sys:windowOperations",
+  "slug": "windowoperations",
+  "legacySlug": "windowoperations",
+  "ownsLegacyContent": true,
+  "name": "窗口操作",
+  "description": "Window窗口相关操作",
+  "category": "System",
+  "categoryName": "Windows系统",
+  "stepType": "Action",
+  "isRisky": false,
+  "isProOnly": false,
+  "helpLink": "https://getquicker.net/KC/Help/Doc/windowoperations",
+  "inputs": [
+    {
+      "key": "type",
+      "name": "类型",
+      "type": "Enum",
+      "defaultValue": "move",
+      "required": true,
+      "variableMode": "Input",
+      "condition": "",
+      "description": "操作类型"
+    },
+    {
+      "key": "hWnd",
+      "name": "窗口句柄",
+      "type": "Integer",
+      "defaultValue": "",
+      "required": false,
+      "variableMode": "UseVarOrInput",
+      "condition": "",
+      "description": "要操作的窗口句柄（数字）。0或留空表示操作前台窗口。"
+    },
+    {
+      "key": "x",
+      "name": "X坐标",
+      "type": "Integer",
+      "defaultValue": "100",
+      "required": false,
+      "variableMode": "UseVarOrInput",
+      "condition": "仅：move",
+      "description": "窗口左上角X坐标"
+    },
+    {
+      "key": "y",
+      "name": "Y坐标",
+      "type": "Integer",
+      "defaultValue": "100",
+      "required": false,
+      "variableMode": "UseVarOrInput",
+      "condition": "仅：move",
+      "description": "窗口左上角Y坐标"
+    },
+    {
+      "key": "width",
+      "name": "宽度",
+      "type": "Integer",
+      "defaultValue": "500",
+      "required": false,
+      "variableMode": "UseVarOrInput",
+      "condition": "仅：move",
+      "description": "窗口宽度。-1时表示不更改窗口尺寸。"
+    },
+    {
+      "key": "height",
+      "name": "高度",
+      "type": "Integer",
+      "defaultValue": "500",
+      "required": false,
+      "variableMode": "UseVarOrInput",
+      "condition": "仅：move",
+      "description": "窗口高度。-1时表示不更改窗口尺寸。"
+    },
+    {
+      "key": "area",
+      "name": "目标位置",
+      "type": "Text",
+      "defaultValue": "25%,25%,75%,75%",
+      "required": false,
+      "variableMode": "UseVarOrInput",
+      "condition": "仅：move_ex",
+      "description": "窗口左,上,右,下的位置坐标"
+    },
+    {
+      "key": "showCmd",
+      "name": "显示状态",
+      "type": "Enum",
+      "defaultValue": "3",
+      "required": true,
+      "variableMode": "Input",
+      "condition": "仅：show",
+      "description": "窗口显示状态，具体说明请参考Win32接口。"
+    },
+    {
+      "key": "alpha",
+      "name": "不透明度Alpha",
+      "type": "Text",
+      "defaultValue": "128",
+      "required": false,
+      "variableMode": "UseVarOrInput",
+      "condition": "仅：set_trans",
+      "description": "数字0-255：0为全透明，255为不透明。-数字：将当前透明度增加一些。+数字：将透明度减少一些。"
+    },
+    {
+      "key": "borderColor",
+      "name": "窗口边框颜色",
+      "type": "Text",
+      "defaultValue": "",
+      "required": false,
+      "variableMode": "UseVarOrInput",
+      "condition": "仅：setBorderColor",
+      "description": "颜色格式：#RRGGBB。留空表示去除边框颜色。"
+    },
+    {
+      "key": "stopIfFail",
+      "name": "失败后停止",
+      "type": "Boolean",
+      "defaultValue": "true",
+      "required": false,
+      "variableMode": "Input",
+      "condition": "",
+      "description": "失败后是否停止动作"
+    }
+  ],
+  "outputs": [
+    {
+      "key": "isSuccess",
+      "name": "是否成功",
+      "type": "Boolean",
+      "condition": "",
+      "description": "操作是否成功"
+    },
+    {
+      "key": "isTopmost",
+      "name": "是否置顶",
+      "type": "Boolean",
+      "condition": "仅：toggleTopMost",
+      "description": "操作后窗口是否为置顶"
+    }
+  ],
+  "selections": {
+    "type": {
+      "name": "类型",
+      "items": [
+        {
+          "value": "move",
+          "name": "移动窗口",
+          "description": ""
+        },
+        {
+          "value": "move_ex",
+          "name": "移动窗口(增强)",
+          "description": ""
+        },
+        {
+          "value": "setTopmost",
+          "name": "置顶窗口",
+          "description": ""
+        },
+        {
+          "value": "toggleTopMost",
+          "name": "切换置顶状态",
+          "description": ""
+        },
+        {
+          "value": "removeTopmost",
+          "name": "取消置顶窗口",
+          "description": ""
+        },
+        {
+          "value": "setBottom",
+          "name": "置底窗口",
+          "description": ""
+        },
+        {
+          "value": "show",
+          "name": "设置显示状态",
+          "description": ""
+        },
+        {
+          "value": "SET_FOREGROUND",
+          "name": "设置为前台窗口",
+          "description": ""
+        },
+        {
+          "value": "close",
+          "name": "关闭",
+          "description": ""
+        },
+        {
+          "value": "kill",
+          "name": "强制关闭",
+          "description": ""
+        },
+        {
+          "value": "set_trans",
+          "name": "设置或更新透明度",
+          "description": ""
+        },
+        {
+          "value": "setBorderColor",
+          "name": "设置边框颜色",
+          "description": ""
+        }
+      ]
+    },
+    "showCmd": {
+      "name": "显示状态",
+      "items": [
+        {
+          "value": "3",
+          "name": "最大化(SW_MAXIMIZE)",
+          "description": ""
+        },
+        {
+          "value": "6",
+          "name": "最小化(SW_MINIMIZE)",
+          "description": ""
+        },
+        {
+          "value": "9",
+          "name": "显示并恢复大小(SW_RESTORE)",
+          "description": ""
+        },
+        {
+          "value": "0",
+          "name": "隐藏(SW_HIDE)",
+          "description": ""
+        },
+        {
+          "value": "5",
+          "name": "显示(SW_SHOW)",
+          "description": ""
+        },
+        {
+          "value": "TOGGLE_MAXMIZE",
+          "name": "切换最大化/恢复",
+          "description": ""
+        }
+      ]
+    }
+  },
+  "sourceFileName": "sys_windowOperations_窗口操作.md"
+}

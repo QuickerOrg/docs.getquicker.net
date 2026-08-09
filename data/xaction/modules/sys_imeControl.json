@@ -1,0 +1,63 @@
+{
+  "key": "sys:imeControl",
+  "slug": "imecontrol",
+  "legacySlug": "imecontrol",
+  "ownsLegacyContent": true,
+  "name": "输入法状态",
+  "description": "获取或更改当前的输入法中英文状态，避免在发送热键时受影响。",
+  "category": "System",
+  "categoryName": "Windows系统",
+  "stepType": "Action",
+  "isRisky": false,
+  "isProOnly": false,
+  "helpLink": "https://getquicker.net/KC/Help/Doc/imecontrol",
+  "inputs": [
+    {
+      "key": "operation",
+      "name": "操作类型",
+      "type": "Enum",
+      "defaultValue": "GET_STATE",
+      "required": true,
+      "variableMode": "Input",
+      "condition": "",
+      "description": "要执行的操作。所有操作仅在输入法启用的情况下有效。"
+    }
+  ],
+  "outputs": [
+    {
+      "key": "isEnabled",
+      "name": "是否为中文状态",
+      "type": "Boolean",
+      "condition": "仅：GET_STATE",
+      "description": ""
+    }
+  ],
+  "selections": {
+    "operation": {
+      "name": "操作类型",
+      "items": [
+        {
+          "value": "ENABLE",
+          "name": "切换为中文",
+          "description": ""
+        },
+        {
+          "value": "DISABLE",
+          "name": "切换为英文",
+          "description": ""
+        },
+        {
+          "value": "RESTORE",
+          "name": "恢复",
+          "description": ""
+        },
+        {
+          "value": "GET_STATE",
+          "name": "是否为中文状态？",
+          "description": ""
+        }
+      ]
+    }
+  },
+  "sourceFileName": "sys_imeControl_输入法状态.md"
+}

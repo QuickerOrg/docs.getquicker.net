@@ -1,0 +1,198 @@
+{
+  "key": "sys:pathExtraction",
+  "slug": "pathextraction",
+  "legacySlug": "pathextraction",
+  "ownsLegacyContent": true,
+  "name": "提取文件路径信息/生成路径",
+  "description": "从文件路径中提取文件名、文件夹等信息",
+  "category": "Files",
+  "categoryName": "系统操作",
+  "stepType": "Action",
+  "isRisky": false,
+  "isProOnly": false,
+  "helpLink": "https://getquicker.net/KC/Help/Doc/pathExtraction",
+  "inputs": [
+    {
+      "key": "operation",
+      "name": "操作类型",
+      "type": "Enum",
+      "defaultValue": "getInfo",
+      "required": true,
+      "variableMode": "Input",
+      "condition": "",
+      "description": ""
+    },
+    {
+      "key": "path",
+      "name": "路径",
+      "type": "Text",
+      "defaultValue": "",
+      "required": true,
+      "variableMode": "UseVarOrInput",
+      "condition": "仅：getInfo, changeExt, changeName, changeNameWithoutExt, changeDir, combine",
+      "description": "待处理或拼接的路径"
+    },
+    {
+      "key": "newExtension",
+      "name": "新的扩展名",
+      "type": "Text",
+      "defaultValue": "",
+      "required": true,
+      "variableMode": "UseVarOrInput",
+      "condition": "仅：changeExt",
+      "description": "新的扩展名，如：.png"
+    },
+    {
+      "key": "newFileName",
+      "name": "新的文件名",
+      "type": "Text",
+      "defaultValue": "",
+      "required": true,
+      "variableMode": "UseVarOrInput",
+      "condition": "仅：changeName",
+      "description": "新的文件名，如：abcd.png"
+    },
+    {
+      "key": "newFileNameWithoutExt",
+      "name": "新的文件名",
+      "type": "Text",
+      "defaultValue": "",
+      "required": true,
+      "variableMode": "UseVarOrInput",
+      "condition": "仅：changeNameWithoutExt",
+      "description": "新的文件名(不包含扩展名），如：newfile"
+    },
+    {
+      "key": "newDir",
+      "name": "目标目录路径",
+      "type": "Text",
+      "defaultValue": "",
+      "required": true,
+      "variableMode": "UseVarOrInput",
+      "condition": "仅：changeDir",
+      "description": "目标存储路径，如：d:\\Work\\Test"
+    },
+    {
+      "key": "path2",
+      "name": "路径部分2",
+      "type": "Text",
+      "defaultValue": "",
+      "required": true,
+      "variableMode": "UseVarOrInput",
+      "condition": "仅：combine",
+      "description": ""
+    },
+    {
+      "key": "path3",
+      "name": "路径部分3",
+      "type": "Text",
+      "defaultValue": "",
+      "required": true,
+      "variableMode": "UseVarOrInput",
+      "condition": "仅：combine",
+      "description": ""
+    },
+    {
+      "key": "path4",
+      "name": "路径部分4",
+      "type": "Text",
+      "defaultValue": "",
+      "required": true,
+      "variableMode": "UseVarOrInput",
+      "condition": "仅：combine",
+      "description": ""
+    },
+    {
+      "key": "stopIfFail",
+      "name": "失败后停止",
+      "type": "Boolean",
+      "defaultValue": "true",
+      "required": false,
+      "variableMode": "Input",
+      "condition": "",
+      "description": "失败后是否停止动作"
+    }
+  ],
+  "outputs": [
+    {
+      "key": "isSuccess",
+      "name": "是否成功",
+      "type": "Boolean",
+      "condition": "",
+      "description": "提取过程是否没有遇到异常"
+    },
+    {
+      "key": "resultPath",
+      "name": "结果路径",
+      "type": "Text",
+      "condition": "仅：changeExt, changeDir, changeName, changeNameWithoutExt, combine",
+      "description": "生成的结果路径"
+    },
+    {
+      "key": "name",
+      "name": "文件名",
+      "type": "Text",
+      "condition": "仅：getInfo",
+      "description": "去除路径的文件名"
+    },
+    {
+      "key": "nameNoExt",
+      "name": "文件名(去掉扩展名)",
+      "type": "Text",
+      "condition": "仅：getInfo",
+      "description": "去除扩展名的文件名"
+    },
+    {
+      "key": "path",
+      "name": "所在文件夹路径",
+      "type": "Text",
+      "condition": "仅：getInfo",
+      "description": "父目录路径"
+    },
+    {
+      "key": "ext",
+      "name": "扩展名",
+      "type": "Text",
+      "condition": "仅：getInfo",
+      "description": "文件的扩展名"
+    }
+  ],
+  "selections": {
+    "operation": {
+      "name": "操作类型",
+      "items": [
+        {
+          "value": "getInfo",
+          "name": "提取文件路径信息",
+          "description": ""
+        },
+        {
+          "value": "changeExt",
+          "name": "更改扩展名，其它不变",
+          "description": ""
+        },
+        {
+          "value": "changeName",
+          "name": "更改文件名(含扩展名)，所在目录不变",
+          "description": ""
+        },
+        {
+          "value": "changeNameWithoutExt",
+          "name": "更改文件名(不含扩展名和所在目录)",
+          "description": ""
+        },
+        {
+          "value": "changeDir",
+          "name": "更改所在目录，文件名不变",
+          "description": ""
+        },
+        {
+          "value": "combine",
+          "name": "合并路径 (拼接)",
+          "description": ""
+        }
+      ]
+    }
+  },
+  "sourceFileName": "sys_pathExtraction_提取文件路径信息_生成路径.md"
+}

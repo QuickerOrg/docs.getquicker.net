@@ -1,0 +1,148 @@
+{
+  "key": "sys:createQrCode",
+  "slug": "createqrcode",
+  "legacySlug": "createqrcode",
+  "ownsLegacyContent": true,
+  "name": "生成二维码",
+  "description": "将文本转换为二维码",
+  "category": "Image",
+  "categoryName": "图片处理",
+  "stepType": "Action",
+  "isRisky": false,
+  "isProOnly": false,
+  "helpLink": "https://getquicker.net/KC/Help/Doc/createqrcode",
+  "inputs": [
+    {
+      "key": "code",
+      "name": "文本",
+      "type": "Text",
+      "defaultValue": "",
+      "required": true,
+      "variableMode": "UseVarOrInput",
+      "condition": "",
+      "description": "要转换为二维码的内容"
+    },
+    {
+      "key": "pixelsPerModule",
+      "name": "每模块像素数",
+      "type": "Integer",
+      "defaultValue": "4",
+      "required": false,
+      "variableMode": "UseVarOrInput",
+      "condition": "",
+      "description": ""
+    },
+    {
+      "key": "darkColor",
+      "name": "暗色",
+      "type": "Text",
+      "defaultValue": "#FF000000",
+      "required": false,
+      "variableMode": "UseVarOrInput",
+      "condition": "",
+      "description": "#AARRGGBB格式的颜色值"
+    },
+    {
+      "key": "lightColor",
+      "name": "亮色",
+      "type": "Text",
+      "defaultValue": "#FFFFFFFF",
+      "required": false,
+      "variableMode": "UseVarOrInput",
+      "condition": "",
+      "description": "#AARRGGBB格式的颜色值"
+    },
+    {
+      "key": "icon",
+      "name": "图标",
+      "type": "Image",
+      "defaultValue": "",
+      "required": false,
+      "variableMode": "UseVarOrInput",
+      "condition": "",
+      "description": "图片变量或图标文件路径"
+    },
+    {
+      "key": "iconPercent",
+      "name": "图标占比",
+      "type": "Integer",
+      "defaultValue": "15",
+      "required": false,
+      "variableMode": "UseVarOrInput",
+      "condition": "",
+      "description": "百分比数字（只填数字，不写百分号）"
+    },
+    {
+      "key": "iconBorderWidth",
+      "name": "图标边框宽度",
+      "type": "Integer",
+      "defaultValue": "6",
+      "required": false,
+      "variableMode": "UseVarOrInput",
+      "condition": "",
+      "description": "最小为1"
+    },
+    {
+      "key": "drawQuietZones",
+      "name": "绘制外框",
+      "type": "Boolean",
+      "defaultValue": "true",
+      "required": false,
+      "variableMode": "UseVarOrInput",
+      "condition": "",
+      "description": ""
+    },
+    {
+      "key": "saveToPdfPath",
+      "name": "输出pdf文件",
+      "type": "Text",
+      "defaultValue": "",
+      "required": false,
+      "variableMode": "UseVarOrInput",
+      "condition": "",
+      "description": ""
+    },
+    {
+      "key": "stopIfFail",
+      "name": "失败后停止",
+      "type": "Boolean",
+      "defaultValue": "true",
+      "required": false,
+      "variableMode": "Input",
+      "condition": "",
+      "description": "失败后是否停止动作"
+    }
+  ],
+  "outputs": [
+    {
+      "key": "isSuccess",
+      "name": "是否成功",
+      "type": "Boolean",
+      "condition": "",
+      "description": "操作是否成功"
+    },
+    {
+      "key": "img",
+      "name": "二维码图片",
+      "type": "Image",
+      "condition": "",
+      "description": "生成的二维码图片对象"
+    },
+    {
+      "key": "svg",
+      "name": "SVG格式结果",
+      "type": "Text",
+      "condition": "",
+      "description": "Svg格式结果代码"
+    },
+    {
+      "key": "ascii",
+      "name": "Ascii格式结果",
+      "type": "Text",
+      "condition": "",
+      "description": "Ascii字符格式结果代码"
+    }
+  ],
+  "selections": {},
+  "sourceFileName": "sys_createQrCode_生成二维码.md"
+}

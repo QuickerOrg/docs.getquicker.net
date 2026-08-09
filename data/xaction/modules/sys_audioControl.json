@@ -1,0 +1,233 @@
+{
+  "key": "sys:audioControl",
+  "slug": "audiocontrol",
+  "legacySlug": "audiocontrol",
+  "ownsLegacyContent": true,
+  "name": "音频设备",
+  "description": "获取音频设备信息，设置默认音频设备。",
+  "category": "System",
+  "categoryName": "Windows系统",
+  "stepType": "Action",
+  "isRisky": false,
+  "isProOnly": false,
+  "helpLink": "https://getquicker.net/KC/Help/Doc/audioControl",
+  "inputs": [
+    {
+      "key": "operation",
+      "name": "操作类型",
+      "type": "Enum",
+      "defaultValue": "GetOutputDeviceList",
+      "required": true,
+      "variableMode": "Input",
+      "condition": "",
+      "description": ""
+    },
+    {
+      "key": "id",
+      "name": "设备ID",
+      "type": "Text",
+      "defaultValue": "",
+      "required": true,
+      "variableMode": "UseVarOrInput",
+      "condition": "仅：GetDeviceById, SetDefaultDeviceById, SetDeviceMute, SetDeviceVolume",
+      "description": "要获取或更新信息的设备ID。"
+    },
+    {
+      "key": "mute",
+      "name": "静音状态",
+      "type": "Text",
+      "defaultValue": "true",
+      "required": true,
+      "variableMode": "UseVarOrInput",
+      "condition": "仅：SetDeviceMute",
+      "description": "可选值 true/false/toggle 静音、取消静音或切换状态。"
+    },
+    {
+      "key": "volume",
+      "name": "音量",
+      "type": "Number",
+      "defaultValue": "0.1",
+      "required": true,
+      "variableMode": "UseVarOrInput",
+      "condition": "仅：SetDeviceVolume",
+      "description": "0-1.0之间的小数数字。"
+    },
+    {
+      "key": "returnAll",
+      "name": "返回所有状态的设备",
+      "type": "Boolean",
+      "defaultValue": "false",
+      "required": false,
+      "variableMode": "Input",
+      "condition": "仅：GetOutputDeviceList, GetInputDeviceList",
+      "description": "否则只返回就绪状态 (Active) 的设备"
+    },
+    {
+      "key": "deviceName",
+      "name": "蓝牙设备名称",
+      "type": "Text",
+      "defaultValue": "",
+      "required": false,
+      "variableMode": "UseVarOrInput",
+      "condition": "仅：ConnectBluetoothDevice",
+      "description": ""
+    },
+    {
+      "key": "stopIfFail",
+      "name": "失败后停止动作",
+      "type": "Boolean",
+      "defaultValue": "true",
+      "required": false,
+      "variableMode": "Input",
+      "condition": "",
+      "description": "失败后是否停止动作"
+    }
+  ],
+  "outputs": [
+    {
+      "key": "isSuccess",
+      "name": "是否成功",
+      "type": "Boolean",
+      "condition": "",
+      "description": "操作是否成功"
+    },
+    {
+      "key": "deviceList",
+      "name": "设备信息列表",
+      "type": "List",
+      "condition": "仅：GetOutputDeviceList, GetInputDeviceList",
+      "description": "每项的格式为:[图标]名称(注释)|设备ID"
+    },
+    {
+      "key": "deviceId",
+      "name": "设备ID",
+      "type": "Text",
+      "condition": "仅：GetOutputDefaultDevice, GetInputDefaultDevice",
+      "description": ""
+    },
+    {
+      "key": "deviceName",
+      "name": "设备名称",
+      "type": "Text",
+      "condition": "仅：GetOutputDefaultDevice, GetInputDefaultDevice, GetDeviceById",
+      "description": ""
+    },
+    {
+      "key": "deviceState",
+      "name": "设备状态",
+      "type": "Text",
+      "condition": "仅：GetOutputDefaultDevice, GetInputDefaultDevice, GetDeviceById",
+      "description": ""
+    },
+    {
+      "key": "mute",
+      "name": "是否静音",
+      "type": "Boolean",
+      "condition": "仅：GetOutputDefaultDevice, GetInputDefaultDevice, GetDeviceById",
+      "description": ""
+    },
+    {
+      "key": "isPlaying",
+      "name": "是否正在播放",
+      "type": "Boolean",
+      "condition": "仅：GetOutputDefaultDevice, GetInputDefaultDevice, GetDeviceById",
+      "description": ""
+    },
+    {
+      "key": "volume",
+      "name": "设置音量",
+      "type": "Number",
+      "condition": "仅：GetOutputDefaultDevice, GetInputDefaultDevice, GetDeviceById",
+      "description": ""
+    },
+    {
+      "key": "masterPeakValue",
+      "name": "实时音量",
+      "type": "Number",
+      "condition": "仅：GetOutputDefaultDevice, GetInputDefaultDevice, GetDeviceById",
+      "description": ""
+    },
+    {
+      "key": "deviceObject",
+      "name": "原始对象",
+      "type": "Object",
+      "condition": "仅：GetOutputDefaultDevice, GetInputDefaultDevice, GetDeviceById",
+      "description": "原始MMDevice对象"
+    },
+    {
+      "key": "deviceObjectList",
+      "name": "原始对象列表",
+      "type": "Object",
+      "condition": "仅：GetOutputDeviceList, GetInputDeviceList",
+      "description": "原始MMDevice对象的列表(IList<MMDevice>)"
+    }
+  ],
+  "selections": {
+    "operation": {
+      "name": "操作类型",
+      "items": [
+        {
+          "value": "GetOutputDeviceList",
+          "name": "获取输出设备列表",
+          "description": ""
+        },
+        {
+          "value": "GetOutputDefaultDevice",
+          "name": "获取默认输出设备信息",
+          "description": ""
+        },
+        {
+          "value": "GetInputDeviceList",
+          "name": "获取输入设备列表",
+          "description": ""
+        },
+        {
+          "value": "GetInputDefaultDevice",
+          "name": "获取默认输入设备信息",
+          "description": ""
+        },
+        {
+          "value": "GetDeviceById",
+          "name": "获取指定设备的信息",
+          "description": ""
+        },
+        {
+          "value": "SetDefaultDeviceById",
+          "name": "设置默认设备",
+          "description": ""
+        },
+        {
+          "value": "SetDeviceMute",
+          "name": "设置静音",
+          "description": ""
+        },
+        {
+          "value": "SetDeviceVolume",
+          "name": "设置音量",
+          "description": ""
+        }
+      ]
+    },
+    "mute": {
+      "name": "静音状态",
+      "items": [
+        {
+          "value": "true",
+          "name": "静音",
+          "description": ""
+        },
+        {
+          "value": "false",
+          "name": "取消静音",
+          "description": ""
+        },
+        {
+          "value": "toggle",
+          "name": "切换静音状态",
+          "description": ""
+        }
+      ]
+    }
+  },
+  "sourceFileName": "sys_audioControl_音频设备.md"
+}

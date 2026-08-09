@@ -1,0 +1,29 @@
+{
+  "key": "sys:sendKeys",
+  "slug": "sendkeys",
+  "legacySlug": "sendkeys",
+  "ownsLegacyContent": true,
+  "name": "模拟按键B（参数）",
+  "description": "发送按键和文本",
+  "category": "Basic",
+  "categoryName": "基础",
+  "stepType": "Action",
+  "isRisky": false,
+  "isProOnly": false,
+  "helpLink": "https://getquicker.net/KC/Help/Doc/sendKeys",
+  "inputs": [
+    {
+      "key": "keys",
+      "name": "按键序列",
+      "type": "Text",
+      "defaultValue": "",
+      "required": false,
+      "variableMode": "UseVarOrInput",
+      "condition": "",
+      "description": "要发送的按键序列，使用C#语言SendKeys.Send()语法，具体请参考教程文档。"
+    }
+  ],
+  "outputs": [],
+  "selections": {},
+  "sourceFileName": "sys_sendKeys_模拟按键B（参数）.md"
+}

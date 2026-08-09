@@ -1,0 +1,203 @@
+{
+  "key": "sys:getSelectedFiles",
+  "slug": "getselectedfiles",
+  "legacySlug": "getselectedfiles",
+  "ownsLegacyContent": true,
+  "name": "获取选择的文件(夹)/选择特定文件",
+  "description": "获取资源管理器、桌面等位置选择的文件或文件夹的路径",
+  "category": "System",
+  "categoryName": "Windows系统",
+  "stepType": "Action",
+  "isRisky": false,
+  "isProOnly": false,
+  "helpLink": "https://getquicker.net/KC/Help/Doc/getselectedfiles",
+  "inputs": [
+    {
+      "key": "operation",
+      "name": "操作类型",
+      "type": "Enum",
+      "defaultValue": "getSelection",
+      "required": true,
+      "variableMode": "Input",
+      "condition": "",
+      "description": ""
+    },
+    {
+      "key": "waitMs",
+      "name": "等待剪贴板时间",
+      "type": "Integer",
+      "defaultValue": "200",
+      "required": false,
+      "variableMode": "UseVarOrInput",
+      "condition": "仅：getSelection",
+      "description": "通过复制方式获取选择文件时，等待剪贴板变化的最长时间毫秒数。"
+    },
+    {
+      "key": "sortType",
+      "name": "排序文件列表",
+      "type": "Enum",
+      "defaultValue": "Default",
+      "required": false,
+      "variableMode": "UseVarOrInput",
+      "condition": "仅：getSelection",
+      "description": "获取多个文件时，根据需要可以对文件列表进行排序。仅支持文件。"
+    },
+    {
+      "key": "pathList",
+      "name": "路径或文件名",
+      "type": "Text",
+      "defaultValue": "",
+      "required": false,
+      "variableMode": "Input",
+      "condition": "仅：setSelection",
+      "description": "要选中的路径或文件名。支持使用 \"regex:表达式\" \"pinyin:筛选\" 选择匹配的文件。"
+    },
+    {
+      "key": "winHandle",
+      "name": "指定窗口句柄",
+      "type": "Integer",
+      "defaultValue": "",
+      "required": false,
+      "variableMode": "UseVarOrInput",
+      "condition": "仅：setSelection",
+      "description": "指定要操作的资源管理器窗口，留空时表示前台窗口。（仅支持资源管理器）"
+    },
+    {
+      "key": "stopIfFail",
+      "name": "失败后中止动作",
+      "type": "Boolean",
+      "defaultValue": "true",
+      "required": false,
+      "variableMode": "Input",
+      "condition": "",
+      "description": "获取失败后，是否停止后续动作的执行。"
+    }
+  ],
+  "outputs": [
+    {
+      "key": "isSuccess",
+      "name": "是否成功",
+      "type": "Boolean",
+      "condition": "",
+      "description": "是否成功获得文件列表"
+    },
+    {
+      "key": "files",
+      "name": "路径列表",
+      "type": "List",
+      "condition": "仅：getSelection",
+      "description": "所有选中的文件和文件夹的路径列表"
+    },
+    {
+      "key": "firstFile",
+      "name": "首个路径",
+      "type": "Text",
+      "condition": "仅：getSelection",
+      "description": "选择1个文件(夹)时，返回其路径；选择多个时，返回第一个的路径。"
+    },
+    {
+      "key": "fileNames",
+      "name": "文件(夹)名列表",
+      "type": "List",
+      "condition": "仅：getSelection",
+      "description": "所有选中的文件和文件夹的名称的列表（不包含所在路径）"
+    },
+    {
+      "key": "firstFileName",
+      "name": "首个文件(夹)名",
+      "type": "Text",
+      "condition": "仅：getSelection",
+      "description": "选择1个文件(夹)时，返回其名称；选择多个时，返回第一个的名称。"
+    },
+    {
+      "key": "fileCount",
+      "name": "文件个数",
+      "type": "Integer",
+      "condition": "仅：getSelection, setSelection",
+      "description": "选择的文件个数"
+    }
+  ],
+  "selections": {
+    "operation": {
+      "name": "操作类型",
+      "items": [
+        {
+          "value": "getSelection",
+          "name": "获取选择的文件",
+          "description": ""
+        },
+        {
+          "value": "setSelection",
+          "name": "设置选择的文件",
+          "description": ""
+        }
+      ]
+    },
+    "sortType": {
+      "name": "排序文件列表",
+      "items": [
+        {
+          "value": "Default",
+          "name": "默认（文件名自然排序）",
+          "description": ""
+        },
+        {
+          "value": "Origin",
+          "name": "原始（系统返回顺序）",
+          "description": ""
+        },
+        {
+          "value": "FileName",
+          "name": "文件名（字母顺序）",
+          "description": ""
+        },
+        {
+          "value": "FileNameNature",
+          "name": "文件名（自然顺序）",
+          "description": ""
+        },
+        {
+          "value": "FileSizeAsc",
+          "name": "文件大小（从小到大）",
+          "description": ""
+        },
+        {
+          "value": "FileSizeDesc",
+          "name": "文件大小（从大到小）",
+          "description": ""
+        },
+        {
+          "value": "CreationTimeDesc",
+          "name": "创建时间（从新到旧）",
+          "description": ""
+        },
+        {
+          "value": "CreationTimeAsc",
+          "name": "创建时间（从旧到新）",
+          "description": ""
+        },
+        {
+          "value": "LastAccessTimeDesc",
+          "name": "最后访问时间（从晚到早）",
+          "description": ""
+        },
+        {
+          "value": "LastAccessTimeAsc",
+          "name": "最后访问时间（从早到晚）",
+          "description": ""
+        },
+        {
+          "value": "LastWriteTimeDesc",
+          "name": "最后写入时间（从晚到早）",
+          "description": ""
+        },
+        {
+          "value": "LastWriteTimeAsc",
+          "name": "最后写入时间（从早到晚）",
+          "description": ""
+        }
+      ]
+    }
+  },
+  "sourceFileName": "sys_getSelectedFiles_获取选择的文件(夹)_选择特定文件.md"
+}

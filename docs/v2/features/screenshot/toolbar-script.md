@@ -68,6 +68,7 @@ return [
 说明：
 
 - `增强图片` 是**当前动作内**的子程序名称（或 ID）。调用公共子程序时，在名字前加 `%%`，例如 `await ctx.runSp('%%上传到图床', { note: 'toolbar' })`。
+- 处理型子程序请把结果图输出到名为 **`image`** 的变量，脚本里用 `r.outputs.image`（完整类型见 [TypeScript 类型定义](#typescript-类型定义完整参考)）。
 - `launchAction` 里的 GUID 换成你要启动的动作 ID；也可写成对象并附带字符串 `param`（见下文）。
 - 自定义按钮必须是**对象本身**放进数组，不能写字符串 `'增强'` 指望宿主去猜变量名。
 
@@ -186,12 +187,13 @@ await ctx.runSp({
 | `ok` | 是否成功 |
 | `status` | `'succeeded'` / `'cancelled'` / `'failed'` |
 | `code` / `message` | 失败时的稳定错误码与说明 |
-| `outputs` | 子程序输出字典；图片字段为可交给 `post.plan` 的句柄 |
+| `outputs` | 子程序输出字典；**处理型推荐出图键名为 `image`**（见下文类型注释），再交给 `post.plan({ replace })` |
 
 常见情况：
 
 - 从全局快捷截图进入、且未传 `actionId` 时调用动作内子程序 → 失败，`code` 类似 `missing_owner_action`。此时请改用 `%%` 公共子程序，或 `launchAction`。
 - 参数形状错误、过期图片句柄等属于 API 用法错误，可能直接抛异常。
+- 子程序侧：图默认从截图附加数据读取；处理后请把结果图输出到名为 `image` 的变量。宿主不会把其它键名猜成 `replace`。
 
 ## 告诉宿主事后做什么：`post`
 
@@ -232,6 +234,179 @@ return post.plan({
 ```
 
 后处理按固定顺序执行：校验 → `replace` → `clipboard` → `pin` → `save` → `session` → `launchAction` → `notification`。`launchAction` 放在会话收口之后，以便动作窗口在全屏截图关闭后再出现。某步在启动动作之前失败时，会停止后续步骤并保持截图打开以显示错误；已完成的副作用不会回滚。
+
+## TypeScript 类型定义（完整参考）
+
+运行时执行的是 **JavaScript**；下面 TypeScript 仅作作者参考，脚本里**不必** `import`，也不用改成 `.ts`。字段与上文表格一致，可直接对照复制。
+
+```ts
+/** 当前截图选区（屏幕坐标；只用 left/top/width/height，避免 right/bottom 含边歧义）。 */
+type CaptureArea = {
+  left: number;
+  top: number;
+  width: number;
+  height: number;
+};
+
+/**
+ * 不透明图片句柄。只能传给 runSp / post.plan，不要当普通对象枚举或序列化。
+ * 真实像素保存在宿主侧；伪造或过期句柄会被拒绝。
+ */
+type ImageRef = {
+  readonly __captureImageHandle: string;
+};
+
+/** 可传入子程序 inputs / 出现在 outputs 中的值。 */
+type JsPrimitive = null | boolean | number | string;
+type JsInputValue =
+  | JsPrimitive
+  | ImageRef
+  | CaptureArea
+  | JsInputValue[]
+  | { [key: string]: JsInputValue };
+type JsOutputValue = JsInputValue;
+
+type ProgramRunStatus = 'succeeded' | 'cancelled' | 'failed';
+
+/** ctx.runSp 的统一结果。业务失败不抛异常，而是 ok: false。 */
+type ProgramRunResult = {
+  ok: boolean;
+  status: ProgramRunStatus;
+  /** 稳定错误码，如 missing_owner_action */
+  code?: string;
+  message?: string;
+  target: {
+    type: 'subprogram' | 'publicSubprogram';
+    /** 公共子程序的 id 不含 %% 前缀 */
+    id: string;
+    title?: string;
+  };
+  /**
+   * 子程序输出变量。
+   * 处理型（图进图出）推荐：把结果图放到名为 image 的输出 → r.outputs.image → post.plan({ replace })。
+   * 宿主不会把其它键名自动猜成 replace。
+   */
+  outputs?: Record<string, JsOutputValue>;
+};
+
+/** ctx.runSp 的完整对象参数；也可用字符串 id + 第二参 inputs 简写。 */
+type RunSpOptions = {
+  /** 动作内：名称或 GUID；公共：'%%' + 名称或 GUID */
+  id: string;
+  /** 仅动作内子程序需要；省略则用 ctx.originActionId */
+  actionId?: string;
+  /** 业务参数；通常不必传 image（截图已进 ExtraData） */
+  inputs?: Record<string, JsInputValue>;
+  /** 写入 ExtraData 的图；默认 ctx.image；显式 null 表示不注入截图 ExtraData */
+  image?: ImageRef | null;
+  area?: CaptureArea | null;
+  timeoutMs?: number;
+};
+
+/** 点击自定义按钮时注入的只读上下文。布局阶段没有可用的 runSp。 */
+type CaptureToolContext = {
+  sessionId: string;
+  toolId: string;
+  host: 'capturePro' | 'pin';
+  /** 点击瞬间合成图（含已提交标注，不含工具栏等 chrome） */
+  image: ImageRef;
+  area: CaptureArea;
+  /** 仅由动作内「截图 Pro」步骤进入时存在；全局快捷截图可能为空 */
+  originActionId?: string;
+  /**
+   * 运行子程序并等待结束。
+   * 简写：runSp('增强图片', { strength: 0.8 })
+   * 公共：runSp('%%上传到图床', { note: 'toolbar' })
+   */
+  runSp(
+    idOrOptions: string | RunSpOptions,
+    inputs?: Record<string, JsInputValue>,
+  ): Promise<ProgramRunResult>;
+};
+
+type CapturePostSession = 'keep' | 'confirm' | 'close';
+
+/**
+ * post.plan 的载荷。不要直接 return 图片或普通对象。
+ * 未单独指定图片的 clipboard/pin/save/launchAction 使用 replace ?? ctx.image。
+ * 有 launchAction 且未写 session 时，默认 confirm。
+ */
+type CapturePostPlan = {
+  /** 设为当前会话新底图；替换后清空绘制元素 / OCR 层 / 撤销栈，屏幕选区框不变 */
+  replace?: ImageRef;
+  clipboard?: boolean | { image?: ImageRef };
+  pin?: boolean | { image?: ImageRef; showToolbar?: boolean };
+  /** 首版只走现有保存对话框，不支持任意路径静默写盘 */
+  save?: boolean | { prompt?: boolean; image?: ImageRef };
+  /**
+   * 启动动作（不等待结束）。
+   * 字符串简写为动作 Id 或名称；对象可带字符串 param。
+   */
+  launchAction?:
+    | string
+    | {
+        id: string;
+        param?: string;
+        image?: ImageRef | null;
+        area?: CaptureArea | null;
+      };
+  session?: CapturePostSession;
+  /** 字符串简写为提示文字 */
+  notification?:
+    | string
+    | {
+        level?: 'success' | 'info' | 'warning';
+        text: string;
+      };
+};
+
+/** 自定义工具栏按钮。id/type 可省略；必须提供可调用的 run。 */
+type CaptureToolbarCommand = {
+  id?: string;
+  type?: 'command';
+  title?: string;
+  tooltip?: string;
+  /** 如 fa:Light_WandMagic */
+  icon?: string;
+  /**
+   * 点击时执行。允许返回：
+   * - undefined / post.none()：成功且无后处理
+   * - post.error(...)：失败提示
+   * - post.plan({...})：后处理计划
+   * 无 await 时可不写 async；有 await ctx.runSp 时必须 async。
+   */
+  run(
+    ctx: CaptureToolContext,
+  ): Promise<CapturePostPlan | void> | CapturePostPlan | void;
+};
+
+/**
+ * 脚本顶层 return 值。
+ * 数组元素：内置 id 字符串 | '|' | 绘图工具组 string[] | 命令对象 | 自定义动作组命令对象[]
+ */
+type CaptureToolbarLayout =
+  | Array<string | string[] | CaptureToolbarCommand | CaptureToolbarCommand[]>
+  | {
+      version?: number;
+      items: Array<
+        string | string[] | CaptureToolbarCommand | CaptureToolbarCommand[]
+      >;
+    };
+
+/**
+ * 点击阶段由宿主注入的全局对象（布局阶段不可用）。
+ * plan / error / none 的返回值请直接 return 给 run。
+ */
+declare const post: {
+  plan(plan: CapturePostPlan): CapturePostPlan;
+  error(resultOrMessage: ProgramRunResult | string): CapturePostPlan;
+  none(): CapturePostPlan;
+};
+
+// 脚本最后应 return 符合 CaptureToolbarLayout 的值
+```
+
+后处理执行顺序（与类型字段对应）：校验 → `replace` → `clipboard` → `pin` → `save` → `session` → `launchAction` → `notification`。
 
 ## 运行时行为（使用注意）
 

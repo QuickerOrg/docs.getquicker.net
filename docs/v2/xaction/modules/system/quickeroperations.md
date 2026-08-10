@@ -9,7 +9,6 @@ comments: true
 moduleKey: "sys:quickeroperations"
 docStatus: "migrated-unreviewed"
 metadataGeneratedAt: "2026-08-03 20:08:03"
-metadataHash: "9acc1d9096447ffb8b77ecad3f99fe2a24a87e5d2a5fdac7bb80179250a6f7c0"
 legacyDocId: 3884756
 legacyContentUpdatedAt: "2024-08-20T01:16:01.000Z"
 ---
@@ -18,114 +17,17 @@ legacyContentUpdatedAt: "2024-08-20T01:16:01.000Z"
 
 调用Quicker的某个功能
 
-{/* xaction-metadata:start */}
 ## 当前模块定义
 
-- 模块 Key：`sys:quickeroperations`
-- 分类：Windows系统（`System`）
-- 类型：`Action`
-- 风险操作：否
-- 专业版：否
-
-## 输入参数
-
-| Key | 名称 | 类型 | 默认值 | 必填 | 变量模式 | 条件 | 说明 |
-| --- | --- | --- | --- | --- | --- | --- | --- |
-| `type` | 类型 | `Enum` | showPanel | 是 | `UseVarOrInput` |  | 操作类型 |
-| `profileId` | 动作页ID | `Text` |  | 是 | `UseVarOrInput` | 仅：loadProfile | 请在场景与动作管理中，查看动作页信息获取ID。 |
-| `actionId` | 动作ID或名称 | `Text` |  | 是 | `UseVarOrInput` | 仅：editAction, SearchWithCertainAction, FloatAction, GetActionInfo | 在动作上点右键-&gt;信息可以查看动作信息。使用名称时不能有重名动作。获取动作信息时仅可填写动作Id。编辑动作时，使用%%id或%%name格式，可用于编辑公共子程序。 |
-| `position` | 位置 | `Text` | 200,200 | 是 | `UseVarOrInput` | 仅：FloatAction | 坐标，格式为：left,top |
-| `exe` | 场景标识 | `Text` |  | 是 | `UseVarOrInput` | 仅：loadExeProfiles, loadExeProfilesNoLock, showCircleMenu, GetActionList, showExeSettingWindow, showDashboardWindow | 场景关联的exe文件名。请参考场景与动作管理窗口左侧应用列表。 |
-| `sceneGroup` | 切换到分组 | `Text` |  | 否 | `UseVarOrInput` | 仅：loadExeProfiles, loadExeProfilesNoLock | 加载场景后，在新版面板中自动切换到此分组。留空时按场景默认逻辑显示；填写“未分组”可切换到未分组。 |
-| `activatePointWindow` | 自动激活鼠标位置窗口 | `Boolean` | false | 否 | `Input` | 仅：showPanel |  |
-| `followMousePosition` | 跟随鼠标位置 | `Boolean` | true | 否 | `Input` | 仅：showPanel |  |
-| `searchText` | 预置的搜索内容 | `Text` |  | 否 | `UseVarOrInput` | 仅：StartSearchWithAction, showSearch, SearchWithCertainAction | 预先放入搜索框的内容 |
-| `skinId` | 外观ID | `Text` |  | 是 | `UseVarOrInput` | 仅：LoadSkin | 请在外观网页中复制外观ID |
-| `theme` | 主题模式 | `Enum` |  | 否 | `Input` | 仅：LoadSkin | 可选切换为浅色或暗色模式 |
-| `viewMode` | 显示状态 | `Enum` | ByProcess | 否 | `Input` | 仅：ToggleFloatButtons |  |
-| `stopIfFail` | 失败后停止 | `Boolean` | true | 否 | `Input` |  | 失败后是否停止动作 |
-
-## 输出参数
-
-| Key | 名称 | 类型 | 条件 | 说明 |
-| --- | --- | --- | --- | --- |
-| `isSuccess` | 步骤是否成功 | `Boolean` |  | 步骤是否成功完成 |
-| `actionList` | 动作列表 | `List` | 仅：GetActionList |  |
-| `actionTitle` | 动作标题 | `Text` | 仅：GetActionInfo |  |
-| `actionIcon` | 动作图标 | `Text` | 仅：GetActionInfo |  |
-| `actionDescription` | 动作描述 | `Text` | 仅：GetActionInfo |  |
-| `windowHandle` | 窗口句柄 | `Integer` | 仅：FloatAction |  |
-
-## 选项值
-
-### `type` 类型
-
-| Value | 名称 | 说明 |
-| --- | --- | --- |
-| `showPanel` | 显示面板 |  |
-| `showSearch` | 显示搜索框 |  |
-| `closeSearch` | 关闭搜索框 |  |
-| `showCircleMenu` | 显示轮盘菜单 (点击) |  |
-| `showTextSelectionToolbar` | 显示选中文本工具条 |  |
-| `togglePause` | 禁用/启用 |  |
-| `runLastAction` | 运行最后使用的动作 |  |
-| `startAppVoiceInput` | 启动App语音输入 |  |
-| `stopAllActions` | 停止运行中的动作 |  |
-| `reinstallMouseHook` | 重新加载键鼠挂钩 |  |
-| `ResetKeyboard` | 重置键盘状态 |  |
-| `showDashboardWindow` | 显示仪表盘窗口 |  |
-| `showConfigWindow` | 显示设置窗口 |  |
-| `showExeSettingWindow` | 显示场景与动作管理窗口 |  |
-| `closeAllFloatWindow` | 关闭所有悬浮按钮 |  |
-| `loadProfile` | 加载动作页 |  |
-| `loadExeProfiles` | 加载场景动作（锁定切换） |  |
-| `loadExeProfilesNoLock` | 加载场景动作（不锁定切换） |  |
-| `ToggleLockPanel` | 锁定/解锁 动作页自动切换 |  |
-| `editAction` | 编辑动作 |  |
-| `RestartQuicker` | 重启Quicker |  |
-| `SetPushActiveClient` | 推送服务：设置为活动客户端 |  |
-| `StartSearchWithAction` | 使用当前动作进行实时搜索 |  |
-| `SearchWithCertainAction` | 使用指定动作进行实时搜索 |  |
-| `operation_show_context_menu` | 显示剪贴板上下文菜单 |  |
-| `LoadSkin` | 加载外观/切换主题(专业版功能) |  |
-| `ExitQuicker` | 退出Quicker |  |
-| `FloatAction` | 悬浮动作(专业版功能) |  |
-| `ToggleFloatButtons` | 切换所有悬浮按钮显示 |  |
-| `ShowHideImageWindows` | 显示或隐藏所有图片窗口 |  |
-| `RemoveAction` | 删除当前动作 |  |
-| `GetActionInfo` | 根据ID获取动作信息 |  |
-
-### `theme` 主题模式
-
-| Value | 名称 | 说明 |
-| --- | --- | --- |
-| `` | 不改变 |  |
-| `auto` | 跟随Windows |  |
-| `light` | 浅色 |  |
-| `dark` | 暗色 |  |
-| `toggle` | 切换浅色和暗色 |  |
-
-### `viewMode` 显示状态
-
-| Value | 名称 | 说明 |
-| --- | --- | --- |
-| `HideAll` | 隐藏全部 |  |
-| `ByProcess` | 自动(按关联进程切换) |  |
-| `ShowAll` | 显示全部 |  |
-| `ToggleHideAndAuto` | 切换隐藏和自动 |  |
-{/* xaction-metadata:end */}
+<XActionModuleMeta moduleKey="sys:quickeroperations" />
 
 在动作中调用Quicker功能。从而方便的使用轮盘菜单、扩展热键等操作Quicker。
 
 ![](./img/quickeroperations-001-60c89e8665.png)
 
-
-
 可以结合使用“显示面板”和“加载动作页”实现用动作切换到某个特定的动作页上的目的。
 
 ## 部分操作类型的说明
-
-
 
 ### 显示面板
 
@@ -133,15 +35,11 @@ legacyContentUpdatedAt: "2024-08-20T01:16:01.000Z"
 
 ![](./img/quickeroperations-002-a8d3907695.png)
 
-
-
 ### 显示搜索框
 
 用于触发搜索框，并自动填入特定的搜索词（通常填写某个[搜索功能](https://getquicker.net/kc/manual/doc/searching)的触发词）。
 
 ![](./img/quickeroperations-003-4b3b4dfd7e.png)
-
-
 
 ### 关闭搜索框
 
@@ -168,8 +66,6 @@ legacyContentUpdatedAt: "2024-08-20T01:16:01.000Z"
 -   双击托盘图标；
 -   按下“暂停/恢复Quicker”的快捷键；
 
-
-
 ### 运行最后使用的动作
 
 不建议使用此功能，“最后使用的动作”可能会意外变化。
@@ -177,8 +73,6 @@ legacyContentUpdatedAt: "2024-08-20T01:16:01.000Z"
 ### 启用App语音输入
 
 【已过时】安卓客户端已不再维护。
-
-
 
 ### 停止运行中的动作
 
@@ -196,29 +90,17 @@ legacyContentUpdatedAt: "2024-08-20T01:16:01.000Z"
 
 ![](./img/quickeroperations-006-96636ee68f.png)
 
-
-
-
-
 ### 显示仪表盘窗口
 
 显示仪表盘窗口，如果需要可以指定特定场景的仪表盘窗口。
 
 ![](./img/quickeroperations-007-c4024bcc7b.png)
 
-
-
-
-
 ### 开启/关闭文本悬浮窗功能
-
-
 
 功能等同于对应托盘菜单：
 
 ![](./img/quickeroperations-008-67f551cba7.png)
-
-
 
 ### 显示配置窗口
 
@@ -230,8 +112,6 @@ legacyContentUpdatedAt: "2024-08-20T01:16:01.000Z"
 
 ![](./img/quickeroperations-010-79b445d8dc.png)
 
-
-
 ### 显示场景与动作管理窗口
 
 显示场景与动作管理窗口，必要时可以指定场景标识以自动切换到特定场景的设置界面。
@@ -241,8 +121,6 @@ legacyContentUpdatedAt: "2024-08-20T01:16:01.000Z"
 功能等同于
 
 ![](./img/quickeroperations-012-67df0b89e5.png)
-
-
 
 ### 关闭所有悬浮按钮
 
@@ -256,14 +134,6 @@ legacyContentUpdatedAt: "2024-08-20T01:16:01.000Z"
 
 ![](./img/quickeroperations-013-c3c5bfffb5.png)
 
-
-
-
-
-
-
-
-
 ### 加载指定应用程序的所有动作页（锁定切换）
 
 ![](./img/quickeroperations-014-2c2294b4ab.png)
@@ -276,8 +146,6 @@ legacyContentUpdatedAt: "2024-08-20T01:16:01.000Z"
 
 ![](./img/quickeroperations-015-6e7f1a2a63.png)
 
-
-
 #### 如何使加载动作页时，面板窗口跟随鼠标？
 
 （1）先显示面板，里面可以设置是否跟随鼠标；
@@ -288,23 +156,15 @@ legacyContentUpdatedAt: "2024-08-20T01:16:01.000Z"
 
 ![](./img/quickeroperations-016-78395b31e8.png)
 
-
-
 ### 加载指定应用程序的所有动作页（不锁定切换）
 
 加载动作页，但不锁定切换。
-
-
 
 ### 锁定/解锁 动作页自动切换
 
 等同于按下面板窗口的锁定切换按钮。
 
 ![](./img/quickeroperations-015-6e7f1a2a63.png)
-
-
-
-
 
 ### 编辑动作
 
@@ -318,8 +178,6 @@ legacyContentUpdatedAt: "2024-08-20T01:16:01.000Z"
 -   %%公共子程序名称（1.43.18+版本）
 
 ![](./img/quickeroperations-018-a4f1f84d17.png)
-
-
 
 ### 重启Quicker
 
@@ -339,8 +197,6 @@ legacyContentUpdatedAt: "2024-08-20T01:16:01.000Z"
 
 ![](./img/quickeroperations-019-78108a0754.png)
 
-
-
 ### 显示剪贴板上下文菜单
 
 触发显示[内容上下文菜单](https://getquicker.net/kc/manual/doc/content-contextmenu)，该菜单根据当前剪贴板中的内容加载菜单项。
@@ -357,8 +213,6 @@ legacyContentUpdatedAt: "2024-08-20T01:16:01.000Z"
 
 ![](./img/quickeroperations-021-c3af82bff7.png)
 
-
-
 ### 退出Quicker
 
 关闭Quicker软件。
@@ -369,15 +223,11 @@ legacyContentUpdatedAt: "2024-08-20T01:16:01.000Z"
 
 ![](./img/quickeroperations-022-d673978120.png)
 
-
-
 ### 切换所有悬浮按钮显示
 
 切换悬浮动作的显示状态，可全部隐藏、全部显示或切换为默认的按活动进程显示的状态。
 
 ![](./img/quickeroperations-023-5a3a6c3ef9.png)
-
-
 
 ### 显示或隐藏所有图片窗口
 
@@ -392,7 +242,5 @@ legacyContentUpdatedAt: "2024-08-20T01:16:01.000Z"
 获取指定动作的信息。
 
 ## 更新历史
-
-
 
 -   20240820 完善文档。

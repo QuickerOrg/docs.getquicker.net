@@ -9,7 +9,6 @@ comments: true
 moduleKey: "sys:websocket"
 docStatus: "migrated-unreviewed"
 metadataGeneratedAt: "2026-08-03 20:08:03"
-metadataHash: "108b5640bc25076c4846cda5dd5dad95d5e9a23d56d3d5a662d7e8fdd39e35af"
 legacyDocId: 66932334
 legacyContentUpdatedAt: "2022-02-25T12:22:45.000Z"
 ---
@@ -18,51 +17,9 @@ legacyContentUpdatedAt: "2022-02-25T12:22:45.000Z"
 
 Websocket相关操作
 
-{/* xaction-metadata:start */}
 ## 当前模块定义
 
-- 模块 Key：`sys:websocket`
-- 分类：网络服务（`Network`）
-- 类型：`Action`
-- 风险操作：否
-- 专业版：否
-
-## 输入参数
-
-| Key | 名称 | 类型 | 默认值 | 必填 | 变量模式 | 条件 | 说明 |
-| --- | --- | --- | --- | --- | --- | --- | --- |
-| `operation` | 操作类型 | `Enum` | CreateClient | 是 | `Input` |  |  |
-| `server` | 服务器地址 | `Text` |  | 否 | `UseVarOrInput` | 仅：CreateClient |  |
-| `clientId` | 连接ID | `Text` |  | 否 | `UseVarOrInput` | 仅：CreateClient, SendMsgToServer, GetClientState, CloseClient | 用于区分不同的客户端连接。连接相同id的客户端时，前一个连接会被自动关闭。 |
-| `spName` | 消息处理子程序 | `Text` |  | 否 | `UseVarOrInput` | 仅：CreateClient | 使用子程序处理从websocket服务接收到的消息。详情请参考文档。 |
-| `account` | 账号密码 | `Text` |  | 否 | `UseVarOrInput` | 仅：CreateClient | 支持Basic和Digest认证方式。多行填写。第一行写账号，第二行写密码。 |
-| `origin` | Origin | `Text` |  | 否 | `UseVarOrInput` | 仅：CreateClient | 仅需要时填写 |
-| `cookie` | Cookie | `Text` |  | 否 | `UseVarOrInput` | 仅：CreateClient | 请求的cookie内容 |
-| `content` | 消息内容 | `Text` |  | 否 | `UseVarOrInput` | 仅：CreateClient, SendTextToClient, SendFileToClient, SendFileToClientBase64, SendMsgToServer | 文本内容。发送文件时为文件的完整路径。 |
-| `callbackOnClose` | 服务断开时通知动作(调用动作并传入参数:websocket__closed) | `Boolean` | true | 否 | `Input` | 仅：CreateClient | 是否等待服务器响应 |
-| `stopIfFail` | 失败后停止 | `Boolean` | true | 否 | `Input` |  | 失败后是否停止动作 |
-
-## 输出参数
-
-| Key | 名称 | 类型 | 条件 | 说明 |
-| --- | --- | --- | --- | --- |
-| `isSuccess` | 是否成功 | `Boolean` |  | 操作是否成功 |
-| `isConnected` | 是否连接 | `Boolean` | 仅：GetClientState | 指定客户端是否连接到远程服务器 |
-
-## 选项值
-
-### `operation` 操作类型
-
-| Value | 名称 | 说明 |
-| --- | --- | --- |
-| `CreateClient` | 客户端：连接到Websocket服务 |  |
-| `SendMsgToServer` | 客户端：向Websocket服务发送消息 |  |
-| `GetClientState` | 客户端：获取连接状态 |  |
-| `CloseClient` | 客户端：关闭连接 |  |
-| `SendTextToClient` | 服务器：向连接的客户端发送文本 |  |
-| `SendFileToClient` | 服务器：向连接的客户端发送文件(二进制方式) |  |
-| `SendFileToClientBase64` | 服务器：向连接的客户端发送文件(Base64方式) |  |
-{/* xaction-metadata:end */}
+<XActionModuleMeta moduleKey="sys:websocket" />
 
 主要有2个功能：
 
@@ -112,8 +69,6 @@ Websocket相关操作
 【cookie】请求附带的cookie内容。格式为每行一个，每个为 name:value 的形式。
 
 【origin】可选。请求的http来源信息。
-
-
 
 ### 向Websocket服务发送消息
 

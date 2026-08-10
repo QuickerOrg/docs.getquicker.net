@@ -9,7 +9,6 @@ comments: true
 moduleKey: "sys:jsonExtract"
 docStatus: "migrated-unreviewed"
 metadataGeneratedAt: "2026-08-03 20:08:03"
-metadataHash: "dfb2fa3aaef9485a9852071df2413e93450f85df3cc98b216c2e74f7bf3607af"
 legacyDocId: 2113782
 legacyContentUpdatedAt: "2022-03-11T14:45:55.000Z"
 ---
@@ -18,40 +17,9 @@ legacyContentUpdatedAt: "2022-03-11T14:45:55.000Z"
 
 提取Json文本中的信息
 
-{/* xaction-metadata:start */}
 ## 当前模块定义
 
-- 模块 Key：`sys:jsonExtract`
-- 分类：文本处理（`Text`）
-- 类型：`Action`
-- 风险操作：否
-- 专业版：否
-
-## 输入参数
-
-| Key | 名称 | 类型 | 默认值 | 必填 | 变量模式 | 条件 | 说明 |
-| --- | --- | --- | --- | --- | --- | --- | --- |
-| `data` | 输入 | `Text` |  | 是 | `UseVarOrInput` |  | 要从中提取内容的Json文本或JToken对象 |
-| `p0` | 提取路径0 | `Text` |  | 否 | `Input` |  |  |
-| `p1` | 提取路径1 | `Text` |  | 否 | `Input` |  |  |
-| `p2` | 提取路径2 | `Text` |  | 否 | `Input` |  |  |
-| `p3` | 提取路径3 | `Text` |  | 否 | `Input` |  |  |
-| `p4` | 提取路径4 | `Text` |  | 否 | `Input` |  |  |
-| `dateAsString` | 日期时间按照文本处理 | `Boolean` | false | 否 | `Input` |  | 保留原有数据格式 |
-| `stopIfFail` | 失败后停止 | `Boolean` | true | 否 | `Input` |  | 失败后是否停止动作 |
-
-## 输出参数
-
-| Key | 名称 | 类型 | 条件 | 说明 |
-| --- | --- | --- | --- | --- |
-| `isSuccess` | 是否成功 | `Boolean` |  | 操作是否没有异常 |
-| `v0` | 值0 | `Any` |  | 提取到的内容，和提取路径对应 |
-| `v1` | 值1 | `Any` |  | 提取到的内容，和提取路径对应 |
-| `v2` | 值2 | `Any` |  | 提取到的内容，和提取路径对应 |
-| `v3` | 值3 | `Any` |  | 提取到的内容，和提取路径对应 |
-| `v4` | 值4 | `Any` |  | 提取到的内容，和提取路径对应 |
-| `rootToken` | 根对象 | `Object` |  | 整个输入内容解析后获得的JToken对象。可用于后续使用。 |
-{/* xaction-metadata:end */}
+<XActionModuleMeta moduleKey="sys:jsonExtract" />
 
 用于从JSON格式的数据中提取需要的值。
 
@@ -61,10 +29,6 @@ json是一种轻量级的数据交换格式。通常用于网络数据交换或�
 
 ![](./img/jsonextract-001-f7fb0c06b3.png)
 
-
-
-
-
 ## 参数
 
 ### 输入
@@ -73,13 +37,9 @@ json是一种轻量级的数据交换格式。通常用于网络数据交换或�
 
 【提取路径n】一次可以提取5项信息，对每一项指定要提取的JsonPath。
 
-
-
 Quicker在内部将先使用[JToken.SelectToken()](https://www.newtonsoft.com/json/help/html/SelectToken.htm)方法提取单个值的内容，失败时尝试使用[JToken.SelectTokens()](https://www.newtonsoft.com/json/help/html/Overload_Newtonsoft_Json_Linq_JToken_SelectTokens.htm)方法提取列表类型的内容。
 
 (1.30.14+) 对于明确需要提取数组/列表类型的结果的情况，可以在路径上增加前缀`list:`强制使用数组方式提取。
-
-
 
 #### 路径参数的格式
 
@@ -91,8 +51,6 @@ Quicker在内部将先使用[JToken.SelectToken()](https://www.newtonsoft.com/js
 
 格式2：使用JSONPath。
 
-
-
 ### 输出
 
 【值n】根据路径n所提取到的内容。请确保输出的内容与变量类型兼容。
@@ -101,15 +59,11 @@ Quicker在内部将先使用[JToken.SelectToken()](https://www.newtonsoft.com/js
 
 说明
 
-
-
 ## 高级
 
 ### 表达式替代用法
 
 通过`JsonConvert.DeserializeObject({JSON字符串})`这个函数可以将字符串转化为Jtoken，然后通过`{JToken}["path1"]["path2"]`即可获取内容。
-
-
 
 ### JToken说明
 
@@ -154,8 +108,6 @@ json数据：
   'Dot.Name': 'Hello'
 &#125;
 
-
-
 | **要提取的内容** | **路径** | **值** |
 | --- | --- | --- |
 | City | City | 文本:<br />Beijig |
@@ -165,17 +117,9 @@ json数据：
 | 所有Manufacture对象的列表 | Manufacturers | 对象列表，可以使用“每个”模块循环处理每一项。 |
 | Dot.Name的值（Key含有点） | \['Dot.Name'\] | Hello |
 
-
-
-
-
 ## 更新历史
 
 -   1.4.18 当提取的数据为复杂类型时，返回原始JToken对象。
-
-
-
-
 
 ## 参考资料
 

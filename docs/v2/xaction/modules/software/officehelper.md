@@ -9,7 +9,6 @@ comments: true
 moduleKey: "sys:officehelper"
 docStatus: "migrated-unreviewed"
 metadataGeneratedAt: "2026-08-03 20:08:03"
-metadataHash: "9097cc6615a87c9b6dc0166cd5fc4b0687b0b0318123b2bda3333129beb18f6e"
 legacyDocId: 105089178
 legacyContentUpdatedAt: "2024-08-08T13:46:01.000Z"
 ---
@@ -18,64 +17,9 @@ legacyContentUpdatedAt: "2024-08-08T13:46:01.000Z"
 
 辅助控制Office软件
 
-{/* xaction-metadata:start */}
 ## 当前模块定义
 
-- 模块 Key：`sys:officehelper`
-- 分类：第三方软件交互（`SoftInteraction`）
-- 类型：`Action`
-- 风险操作：否
-- 专业版：否
-
-## 输入参数
-
-| Key | 名称 | 类型 | 默认值 | 必填 | 变量模式 | 条件 | 说明 |
-| --- | --- | --- | --- | --- | --- | --- | --- |
-| `operation` | 操作类型 | `Enum` | execVBA | 是 | `Input` |  |  |
-| `appType` | 应用程序 | `Enum` | word_wps | 否 | `Input` |  |  |
-| `code` | 宏名称或VBA代码 | `Text` | Sub Hello()<br />MsgBox "Hello World"<br />End Sub<br /> | 否 | `Input` | 仅：execVBA | 宏的名称，或VBA代码（将执行第一个找到的Sub或Function） |
-| `command` | 命令ID | `Text` |  | 否 | `Input` | 仅：executeMsoCommand | 界面按钮所对应的命令ID，请参考模块文档了解如何获取。 |
-| `formats` | 格式设置/属性赋值代码 | `Text` |  | 否 | `Input` | 仅：setFormats | 请参考文档说明 |
-| `waitResp` | 等待执行结束 | `Boolean` | true | 否 | `Input` | 仅：execVBA, setFormats, executeMsoCommand | 不等待将立即继续后续步骤的执行，如果遇到异常情况无法获知。 |
-| `waitMs` | 最长等待时间(ms) | `Number` | 10000 | 是 | `Input` | 仅：execVBA, setFormats, executeMsoCommand | 最长的等待返回结果的，毫秒数 |
-| `stopIfFail` | 失败后停止动作 | `Boolean` | true | 否 | `Input` |  | 失败后是否停止动作 |
-
-## 输出参数
-
-| Key | 名称 | 类型 | 条件 | 说明 |
-| --- | --- | --- | --- | --- |
-| `isSuccess` | 步骤执行是否成功 | `Boolean` |  | 步骤执行是否成功 |
-| `resp` | 返回内容 | `Text` | 仅：execVBA, setFormats, executeMsoCommand |  |
-| `progId` | ProgId | `Text` | 仅：getProgId | 获取程序的ProgId，可用于在C#里得到对应的Application对象。 |
-
-## 选项值
-
-### `operation` 操作类型
-
-| Value | 名称 | 说明 |
-| --- | --- | --- |
-| `execVBA` | 执行VBA宏代码 |  |
-| `setFormats` | 设置格式/对象属性赋值 |  |
-| `executeMsoCommand` | 执行界面命令 |  |
-| `getProgId` | 获取ProgId |  |
-
-### `appType` 应用程序
-
-| Value | 名称 | 说明 |
-| --- | --- | --- |
-| `word_wps` | Word 或 WPS文字（根据前台进程自动识别） |  |
-| `word` | Word |  |
-| `wps` | WPS文字 |  |
-| `excel_et` | Excel 或 WPS表格（根据前台进程自动识别） |  |
-| `excel` | Excel |  |
-| `et` | WPS表格 |  |
-| `powerpoint_wpp` | PowerPoint 或 WPS幻灯片（根据前台进程自动识别） |  |
-| `powerpoint` | PowerPoint |  |
-| `wpp` | WPS幻灯片 |  |
-| `outlook` | Outlook (支持界面命令) |  |
-| `project` | Project (支持界面命令) |  |
-| `visio` | Visio (支持界面命令、VBA) |  |
-{/* xaction-metadata:end */}
+<XActionModuleMeta moduleKey="sys:officehelper" />
 
 本模块为测试状态，欢迎反馈问题。
 
@@ -89,8 +33,6 @@ legacyContentUpdatedAt: "2024-08-08T13:46:01.000Z"
 
 -   本步骤使用低权限方式运行，不能用于使用“管理员身份”启动的Office或wps程序。
 -   如果禁用系统UAC（用户账户控制设置），可能会影响本模块的运行。
-
-
 
 ## 执行VBA代码
 
@@ -107,15 +49,11 @@ legacyContentUpdatedAt: "2024-08-08T13:46:01.000Z"
 -   Excel 软件执行VBA代码后，将会丢失撤销(undo)历史，无法进行撤销操作。因此，请先备份好重要数据，再使用VBA代码。
 -   通过Quicker启动运行的Excel程序会被提权，导致[无法控制](https://getquicker.net/QA/Question/16310)。请从Windows启动Excel，或通过打开Excel文档的方式开启Excel。
 
-
-
 参考演示：[录制宏并转换为动作](https://getquicker.net/Sharedaction?code=4d774256-f3fa-4c61-72c6-08dac59559d0)
 
 ### 参数
 
 ![](./img/officehelper-001-8325e10f8e.png)
-
-
 
 **【应用程序】**选择要执行VBA代码的程序。
 
@@ -173,8 +111,6 @@ End Function
 ### 参数
 
 ![](./img/officehelper-003-f16a44bf1c.png)
-
-
 
 **【应用程序】**
 
@@ -283,16 +219,12 @@ selection
   .style = "标题 1"
 ```
 
-
-
 清除选中内容的格式 (结尾的冒号表示调用方法）：
 
 ```
 Selection
   .ClearFormatting:
 ```
-
-
 
 设置高亮显示颜色（[可选值](https://learn.microsoft.com/en-us/office/vba/api/word.wdcolorindex)）：
 
@@ -396,8 +328,6 @@ selection.shapes
   .Distribute: msoDistributeHorizontally, msoTrue
 ```
 
-
-
 ### 示例动作
 
 -   [冻结窗格](https://getquicker.net/Sharedaction?code=dd32199e-8d36-465a-b13d-08dac77c5292)
@@ -428,8 +358,6 @@ Office软件上每个按钮通常对应一个ID字符串，如格式刷按钮对
 
 2）从微软提供的文档（英文）中查找，文档仓库地址：[https://github.com/OfficeDev/office-fluent-ui-command-identifiers](https://github.com/OfficeDev/office-fluent-ui-command-identifiers)
 
-
-
 ## 故障排查
 
 **（1）异常来自HRESULT：0x800401E1**
@@ -441,10 +369,6 @@ Office软件上每个按钮通常对应一个ID字符串，如格式刷按钮对
 -   当前未启动目标程序；
 -   或者目标程序以不同安全级别启动了（如以管理员身份启动了Excel等软件，用Quicker启动也可能造成这种情况）；
 -   修改了Windows用户账户控制。
-
-
-
-
 
 （2）现象：无法将类型为“System.\_\_ComObject”的 COM 对象强制转换为接口类型“Microsoft.Vbe.Interop.VBComponent”。或 Unable to cast COM object of type 'System.\_\_ComObject' to interface type 'Microsoft.Vbe.Interop.VBComponent'.
 

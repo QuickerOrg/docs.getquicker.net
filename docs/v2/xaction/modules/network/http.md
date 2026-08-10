@@ -9,7 +9,6 @@ comments: true
 moduleKey: "sys:http"
 docStatus: "migrated-unreviewed"
 metadataGeneratedAt: "2026-08-03 20:08:03"
-metadataHash: "d09514bbb5b4e27a37fa40b60a40743745f84c820db0d06ae1f90329e8f5dd93"
 legacyDocId: 2134354
 legacyContentUpdatedAt: "2024-04-19T13:27:14.000Z"
 ---
@@ -18,80 +17,9 @@ legacyContentUpdatedAt: "2024-04-19T13:27:14.000Z"
 
 发送HTTP请求，并获取返回结果
 
-{/* xaction-metadata:start */}
 ## 当前模块定义
 
-- 模块 Key：`sys:http`
-- 分类：网络服务（`Network`）
-- 类型：`Action`
-- 风险操作：否
-- 专业版：否
-
-## 输入参数
-
-| Key | 名称 | 类型 | 默认值 | 必填 | 变量模式 | 条件 | 说明 |
-| --- | --- | --- | --- | --- | --- | --- | --- |
-| `url` | 网址 | `Text` | https:// | 是 | `UseVarOrInput` |  | 要打开的网页地址 |
-| `method` | 方法 | `Enum` | GET | 是 | `Input` |  | Http请求的类型 |
-| `header` | 请求头 | `Text` |  | 否 | `UseVarOrInput` |  | 发送的HttpHeader。每行一个header，格式为Name:Value |
-| `cookie` | Cookie | `Text` |  | 否 | `UseVarOrInput` |  | 请求的cookie内容 |
-| `bodyType` | 请求体类型 | `Enum` | JSON | 否 | `Input` | 排除：GET, HEAD, OPTIONS | Http 请求体的内容 |
-| `body` | 请求体 | `Text` |  | 否 | `UseVarOrInput` | 排除：GET, HEAD, OPTIONS | Http 请求 BODY。格式要求详见模块帮助。 |
-| `contentType` | 内容类型 | `Text` |  | 否 | `UseVarOrInput` | 排除：GET, HEAD, OPTIONS | 选填。上传内容的ContentType，适用于"单个文件或图片变量（二进制）"或"纯文本" 请求体类型。 |
-| `resultType` | 结果类型 | `Enum` | Text | 否 | `Input` |  | Http请求的结果类型 |
-| `ua` | UserAgent | `Text` | Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/112.0.0.0 Safari/537.36 | 否 | `Input` |  |  |
-| `expireSeconds` | 超时时间 | `Number` | 100 | 否 | `Input` |  | 请求超时时间（秒数） |
-| `noAutoRedirect` | 禁止重定向 | `Boolean` | false | 否 | `Input` |  | 是否禁止自动跳转 |
-| `forceProxy` | 强制使用代理 | `Boolean` | false | 否 | `Input` |  | 即使系统设置中未启用代理，本步骤仍然使用代理访问。 |
-| `skipCertVerify` | 忽略HTTPS证书验证 | `Boolean` | false | 否 | `Input` |  |  |
-| `showProgress` | 显示进度条 | `Boolean` | false | 否 | `Input` |  | 是否显示上传下载进度条 |
-| `useSSE` | 启用SSE流式响应 | `Boolean` | false | 否 | `Input` |  | 调用AI接口时使用，通过子程序处理接收到的流式响应内容 |
-| `sseSpName` | SSE流式响应处理子程序 | `Text` |  | 否 | `Input` |  | 用于处理接收到的流式响应消息，每次收到调用一次，通过data输入变量接收内容。 |
-| `stopIfFail` | 失败后停止 | `Boolean` | true | 否 | `Input` |  | 失败后是否停止动作 |
-
-## 输出参数
-
-| Key | 名称 | 类型 | 条件 | 说明 |
-| --- | --- | --- | --- | --- |
-| `isSuccess` | 是否成功 | `Boolean` |  | 是否操作成功 |
-| `statusCode` | 状态码 | `Integer` |  | 返回的http请求状态码 |
-| `respHeaders` | 响应头 | `Dict` |  | 返回的HTTP响应Headers |
-| `respCookies` | 响应Cookies | `Dict` |  | 返回的Cookies |
-| `content` | 文本结果 | `Text` |  | 返回的文本内容 |
-| `imgResult` | 图片结果 | `Image` |  | 返回的图片内容 |
-
-## 选项值
-
-### `method` 方法
-
-| Value | 名称 | 说明 |
-| --- | --- | --- |
-| `GET` | GET |  |
-| `POST` | POST |  |
-| `PUT` | PUT |  |
-| `DELETE` | DELETE |  |
-| `PATCH` | PATCH |  |
-| `HEAD` | HEAD |  |
-| `OPTIONS` | OPTIONS |  |
-
-### `bodyType` 请求体类型
-
-| Value | 名称 | 说明 |
-| --- | --- | --- |
-| `JSON` | JSON |  |
-| `FORM` | 文本表单 |  |
-| `FILE` | MultiPart表单 |  |
-| `BinaryFile` | 单个文件或图片变量（二进制） |  |
-| `Text` | 纯文本 |  |
-
-### `resultType` 结果类型
-
-| Value | 名称 | 说明 |
-| --- | --- | --- |
-| `Text` | 文本 |  |
-| `Image` | 图片 |  |
-| `File` | 文件 |  |
-{/* xaction-metadata:end */}
+<XActionModuleMeta moduleKey="sys:http" />
 
 ## 概述
 
@@ -99,11 +27,7 @@ legacyContentUpdatedAt: "2024-04-19T13:27:14.000Z"
 
 使用此模块需要您了解http协议的有关内容。
 
-
-
 ![](./img/http-001-fdf530df95.png)
-
-
 
 ##  参数
 
@@ -149,8 +73,6 @@ legacyContentUpdatedAt: "2024-04-19T13:27:14.000Z"
 
 ![](./img/http-002-b5fc62f3f4.png)
 
-
-
 【使用SSE流式输出响应】开启自定义处理流式响应。 此时应该指定【SSE流式响应处理子程序】。
 
 【SSE流式响应处理子程序】指定处理流式响应消息的子程序。 该子程序需要有一个data输入变量用于接收每次收到的文本行。
@@ -162,8 +84,6 @@ legacyContentUpdatedAt: "2024-04-19T13:27:14.000Z"
 可以根据需要显示在文本窗口，或发送文本到前台窗口。
 
 请参考本文后面的流式输出说明及示例。
-
-
 
 ## 输出
 
@@ -182,21 +102,15 @@ legacyContentUpdatedAt: "2024-04-19T13:27:14.000Z"
 
 【图片结果】结果类型为“图片”时，将图片转换为变量。
 
-
-
 ## Post数据格式说明
 
 ### JSON
 
 ContentType设置为application/json。此时请求体内容应该为一个合法的json数据文本。如：
 
-
-
 ```
 {"title":"test","sub":[1,2,3]}
 ```
-
-
 
 #### 使用表达式得到json格式的请求体内容
 
@@ -218,19 +132,13 @@ new
 
 更多获取合法json的方式请参考[此文档](https://getquicker.net/KC/Kb/Article/909)。
 
-
-
 ### 文本表单
 
 ContentType设置为x-www-form-urlencoded。类似于浏览器中的&lt;form&gt;表单。请求体数据格式类似于：
 
-
-
 ```
 id=3&name=Hello&param1=value1
 ```
-
-
 
 ### Multipart表单
 
@@ -247,31 +155,19 @@ FileParam=FILE:文件完整路径
 ImgFileParam=IMG:图片变量名
 ```
 
-
-
 ### 单个文件或图片变量（二进制）
 
 如果需要上传文件，格式为：“FILE:完整文件路径”。注意冒号要小写。
-
-
 
 ```
 FILE:C:\Users\Leal\Pictures\jiupian.PNG
 ```
 
-
-
 如需上传图片变量，格式为：“IMG:变量名”，冒号要小写。
-
-
 
 ```
 IMG:img
 ```
-
-
-
-
 
 ## SSE 流式输出
 
@@ -287,13 +183,9 @@ IMG:img
 
 根据接口不同，服务端每次返回的内容可能是新生成的文本，也可能是当前已经生成的所有文本（通义千问就是这种情况）。在输出文本结果时，需要做相应的处理（如只输出新生成的文本）。
 
-
-
 然后在http请求中开启SSE流式响应选项，并且指定处理流式响应的子程序名称。根据接口的规定，可能需要在http头或请求体中增加标记告知服务器端开启SSE方式输出。
 
 ![](./img/http-005-71a2e6920f.png)
-
-
 
 ## 乱码问题
 
@@ -301,15 +193,9 @@ IMG:img
 
 [https://getquicker.net/subprogram?id=c1cbb130-e2b3-4260-f84a-08d8e37a0602](https://getquicker.net/subprogram?id=c1cbb130-e2b3-4260-f84a-08d8e37a0602)
 
-
-
 ## 示例
 
 -   [上传SMMS图床](https://getquicker.net/sharedaction?code=18fdf83e-048e-46c7-185a-08d69d1d124b) 
-
-
-
-
 
 ## 更新说明
 

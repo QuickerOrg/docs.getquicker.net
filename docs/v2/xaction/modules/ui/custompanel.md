@@ -9,7 +9,6 @@ comments: true
 moduleKey: "sys:custompanel"
 docStatus: "migrated-unreviewed"
 metadataGeneratedAt: "2026-08-03 20:08:03"
-metadataHash: "5fce72dd7135eb857d36f82e8861b081a7d4b5a54758f501d4a8ddd9d27799ab"
 legacyDocId: 110076830
 legacyContentUpdatedAt: "2025-12-23T08:07:51.000Z"
 ---
@@ -18,144 +17,9 @@ legacyContentUpdatedAt: "2025-12-23T08:07:51.000Z"
 
 自定义悬浮操作窗口，点击后直接执行操作，不隐藏。
 
-{/* xaction-metadata:start */}
 ## 当前模块定义
 
-- 模块 Key：`sys:custompanel`
-- 分类：界面组件（`Ui`）
-- 类型：`Action`
-- 风险操作：否
-- 专业版：否
-
-## 输入参数
-
-| Key | 名称 | 类型 | 默认值 | 必填 | 变量模式 | 条件 | 说明 |
-| --- | --- | --- | --- | --- | --- | --- | --- |
-| `operation` | 操作类型 | `Enum` | show_fixed_panel_wait_close | 是 | `Input` |  |  |
-| `operationData` | 操作项定义 | `Text` |  | 是 | `UseVarOrInput` | 仅：show_fixed_panel, show_fixed_panel_wait_close | 可以为Json/菜单文本格式/IList&lt;CommonOperationItem&gt;对象，详情请参考文档 |
-| `defaultOperation` | 默认Operation | `Text` |  | 否 | `Input` | 仅：show_fixed_panel, show_fixed_panel_wait_close | 默认的Operation值或参数组合。提供此值时，操作项可以直接通过"[图标]标题(提示)\|data"的形式定义。 |
-| `spacingStr` | 按钮之间的间隔 | `Text` | 5 | 是 | `UseVarOrInput` | 仅：show_fixed_panel, show_fixed_panel_wait_close | 可选格式1：5 =&gt; 四个边都是5；格式2：10,5 =&gt; 左右10，上下5;  |
-| `buttonPadding` | 按钮内边距 | `Text` | 10,6 | 是 | `UseVarOrInput` | 仅：show_fixed_panel, show_fixed_panel_wait_close | 格式1：5 =&gt; 四个边都是5；格式2：10,5 =&gt; 左右10，上下5; 格式3：7,8,9,10 =&gt; 分别指定左上右下4边边距。 |
-| `columnCount` | 列数 | `Integer` | 2 | 是 | `UseVarOrInput` | 仅：show_fixed_panel, show_fixed_panel_wait_close | 按钮排列方式为固定列数时，指定列数。0表示自动。 |
-| `columnWidth` | 列宽 | `Integer` | 0 | 是 | `UseVarOrInput` | 仅：show_fixed_panel, show_fixed_panel_wait_close | 固定列宽时使用。0表示自动列宽，-1表示不对齐宽度，各子项根据内容自动调整宽度。 |
-| `groupMode` | 分组方式 | `Enum` | heading | 否 | `UseVarOrInput` | 仅：show_fixed_panel, show_fixed_panel_wait_close | 当包含子项时，第一级节点作为分组，第二级节点作为按钮。 |
-| `selectGroup` | 选择标签分组 | `Text` |  | 否 | `UseVarOrInput` | 仅：show_fixed_panel, show_fixed_panel_wait_close | 标签页分组时切换至设定的标签页标题，留空表示默认。 |
-| `title` | 操作窗标题 | `Text` |  | 是 | `UseVarOrInput` | 仅：show_fixed_panel, show_fixed_panel_wait_close | 标题文字，或"[图标]标题"格式。 |
-| `windowId` | 窗口标识 | `Text` |  | 是 | `UseVarOrInput` |  | 如需单独的步骤关闭窗口，需使用标识查找窗口。可使用"="表示当前动作ID。 |
-| `winLocation` | 窗口位置 | `Enum` | CenterScreen | 否 | `UseVarOrInput` | 仅：show_fixed_panel, show_fixed_panel_wait_close | 在哪里显示选择窗口 |
-| `winSize` | 窗口尺寸/位置 | `Text` |  | 否 | `Input` | 仅：show_fixed_panel, show_fixed_panel_wait_close | 设置选择窗口的最大尺寸，格式为：宽度,高度。支持像素数值或屏幕宽高百分比，详情请参考模块文档。<br />"窗口位置" 类型为 "自定义位置" 时用于指定显示位置，格式为：left,top,right,bottom |
-| `horzAlign` | 按钮内容对齐方式 | `Enum` | Center | 否 | `UseVarOrInput` | 仅：show_fixed_panel, show_fixed_panel_wait_close |  |
-| `bgColor` | 背景颜色 | `Text` |  | 是 | `UseVarOrInput` | 仅：show_fixed_panel, show_fixed_panel_wait_close |  |
-| `btnColor` | 按钮颜色 | `Text` |  | 否 | `UseVarOrInput` | 仅：show_fixed_panel, show_fixed_panel_wait_close |  |
-| `btnBorderColor` | 按钮边框颜色 | `Text` |  | 否 | `UseVarOrInput` | 仅：show_fixed_panel, show_fixed_panel_wait_close |  |
-| `fontColor` | 字体颜色 | `Text` |  | 否 | `UseVarOrInput` | 仅：show_fixed_panel, show_fixed_panel_wait_close |  |
-| `fontsize` | 字体大小 | `Number` | 12 | 是 | `UseVarOrInput` | 仅：show_fixed_panel, show_fixed_panel_wait_close |  |
-| `iconsize` | 图标大小 | `Number` | 16 | 是 | `UseVarOrInput` | 仅：show_fixed_panel, show_fixed_panel_wait_close | 图标的宽度/高度像素数 |
-| `contextMenuData` | 窗口右键菜单 | `Text` |  | 是 | `UseVarOrInput` | 仅：show_fixed_panel, show_fixed_panel_wait_close | 可以为Json/菜单文本格式/IList&lt;CommonOperationItem&gt;对象，详情请参考文档 |
-| `buttonContextMenuData` | 默认的按钮右键菜单 | `Text` |  | 是 | `UseVarOrInput` | 仅：show_fixed_panel, show_fixed_panel_wait_close | 可以为Json/菜单文本格式/IList&lt;CommonOperationItem&gt;对象，详情请参考文档 |
-| `bindProc` | 自动关联到进程 | `Enum` |  | 是 | `UseVarOrInput` | 仅：show_fixed_panel, show_fixed_panel_wait_close | 要关联的进程名称，输入"-"禁用此功能。当该进程为前台时显示操作窗，否则自动隐藏。 |
-| `autoCollapse` | 自动折叠 | `Enum` | 0 | 否 | `Input` | 仅：show_fixed_panel, show_fixed_panel_wait_close |  |
-| `saveState` | 记忆位置等状态 | `Boolean` | true | 否 | `Input` | 仅：show_fixed_panel, show_fixed_panel_wait_close | 多次使用操作窗时，保持上一次所在位置和分组 |
-| `stopIfFail` | 失败后停止 | `Boolean` | true | 否 | `Input` |  | 失败后是否停止动作 |
-
-## 输出参数
-
-| Key | 名称 | 类型 | 条件 | 说明 |
-| --- | --- | --- | --- | --- |
-| `isSuccess` | 是否成功 | `Boolean` |  | 操作是否成功 |
-| `selectedItemData` | 选择的操作项数据 | `Text` | 仅：show_fixed_panel_wait_close | 选择的操作项的data属性数据 |
-| `selectedItem` | 选择的操作项 | `Object` | 仅：show_fixed_panel_wait_close | 选择的操作项的CommonOperationItem对象 |
-| `currentGroup` | 当前标签分组 | `Object` | 仅：show_fixed_panel_wait_close, get_panel_info | 当使用标签分组显示时，关闭窗口时所停留的标签分组名称。 |
-| `buttonItemData` | 按钮操作项数据 | `Text` | 仅：show_fixed_panel_wait_close | 点击的是按钮的菜单时，所对应按钮的操作项Data数据 |
-| `buttonItem` | 按钮操作项 | `Object` | 仅：show_fixed_panel_wait_close | 点击的是按钮的菜单时，所对应按钮的CommonOperationItem对象 |
-| `winHandle` | 窗口句柄 | `Integer` | 仅：show_fixed_panel, get_panel_info | 操作窗的窗口句柄 |
-| `isWindowExpanded` | 窗口是否展开 | `Boolean` | 仅：get_panel_info |  |
-| `isWindowVisible` | 窗口是否可见 | `Boolean` | 仅：get_panel_info | 可能会因为关联进程而隐藏 |
-
-## 选项值
-
-### `operation` 操作类型
-
-| Value | 名称 | 说明 |
-| --- | --- | --- |
-| `show_fixed_panel` | 显示操作窗 |  |
-| `show_fixed_panel_wait_close` | 显示操作窗并等待关闭 |  |
-| `close_fixed_panel` | 关闭操作窗 |  |
-| `toggle_collapse` | 切换展开状态 |  |
-| `get_panel_info` | 获取操作窗状态 |  |
-
-### `defaultOperation` 默认Operation
-
-| Value | 名称 | 说明 |
-| --- | --- | --- |
-| `copy` | 复制 |  |
-| `paste` | 粘贴 |  |
-| `pastefile` | 粘贴文件 |  |
-| `pasteimage` | 粘贴图片 |  |
-| `inputtext` | 键入文本 |  |
-| `run` | 执行命令 |  |
-| `sendkeys` | 模拟按键B |  |
-| `action` | 执行动作 |  |
-| `selectfile` | 定位文件 |  |
-| `inputscript` | 多步骤输入 |  |
-| `sp` | 执行子程序 |  |
-
-### `groupMode` 分组方式
-
-| Value | 名称 | 说明 |
-| --- | --- | --- |
-| `heading` | 标题分组 |  |
-| `expander` | 可折叠的分组 |  |
-| `tab-top` | 标签页-顶部 |  |
-| `tab-left` | 标签页-左侧 |  |
-| `tab-right` | 标签页-右侧 |  |
-| `tab-bottom` | 标签页-底部 |  |
-| `headingLeft` | 多行 |  |
-| `columns` | 多列 |  |
-| `none` | 不分组 |  |
-
-### `winLocation` 窗口位置
-
-| Value | 名称 | 说明 |
-| --- | --- | --- |
-| `WithMouse1` | 跟随鼠标（指针周围） |  |
-| `WithMouse2` | 跟随鼠标（指针右下） |  |
-| `CenterScreen` | 屏幕中间 |  |
-| `TopLeft` | 屏幕左上 |  |
-| `TopCenter` | 屏幕中上 |  |
-| `TopRight` | 屏幕右上 |  |
-| `LeftCenter` | 屏幕左中 |  |
-| `RightCenter` | 屏幕右中 |  |
-| `BottomLeft` | 屏幕左下 |  |
-| `BottomCenter` | 屏幕中下 |  |
-| `BottomRight` | 屏幕右下 |  |
-| `FullScreen` | 全屏 |  |
-| `Maximized` | 最大化 |  |
-| `Manual` | 自定义位置 |  |
-| `Auto` | 系统默认 |  |
-
-### `horzAlign` 按钮内容对齐方式
-
-| Value | 名称 | 说明 |
-| --- | --- | --- |
-| `Center` | 居中 |  |
-| `Left` | 左侧 |  |
-| `Right` | 右侧 |  |
-
-### `bindProc` 自动关联到进程
-
-| Value | 名称 | 说明 |
-| --- | --- | --- |
-| `-` | 禁用此功能 |  |
-
-### `autoCollapse` 自动折叠
-
-| Value | 名称 | 说明 |
-| --- | --- | --- |
-| `0` | 关闭 |  |
-| `1` | 开启 |  |
-| `-1` | 禁用此功能 |  |
-{/* xaction-metadata:end */}
+<XActionModuleMeta moduleKey="sys:custompanel" />
 
 本模块的目的是为了提供一个可以多次点击按钮触发某项操作（而不会自动关闭）的小窗口。
 
@@ -173,13 +37,9 @@ legacyContentUpdatedAt: "2025-12-23T08:07:51.000Z"
 
 ![](./img/custompanel-001-bf8bac5196.png)
 
-
-
 ### 参数
 
 #### 操作项定义
-
-
 
 **【操作项定义】**
 
@@ -192,16 +52,10 @@ legacyContentUpdatedAt: "2025-12-23T08:07:51.000Z"
 -   支持使用`operation=sp&spname=子程序名称`的形式调用动作中所定义的子程序。更详细的说明请参考本文后面部分。
 -   最多支持一级子项。数据通常有两种形式：（1）全部都不带子项，所有操作项按设定的方式平铺排列。（2）首层节点带子项。此时首层节点作为分组处理（可选多种分组方式）。
 
-
-
 ![](./img/custompanel-002-cc3da6e682.png)
 
 -   使用`[]`作为操作项的标题，可以创建按钮占位符，用于在创建按钮时跳过某些位置以便实现特定布局方式。（1.39.42+）
     ![](./img/custompanel-003-7d5cff297e.png)
-
-
-
-
 
 **缩进格式的子项定义**
 
@@ -209,13 +63,9 @@ legacyContentUpdatedAt: "2025-12-23T08:07:51.000Z"
 
 ![](./img/custompanel-004-672d17580d.png)
 
-
-
 生成的效果如图。 如果按钮本身不需要实现其它操作，可以在标题后面加`|`或`|operation=&data=`表示空操作，这时点主按钮，也可直接展开子项菜单。
 
 ![](./img/custompanel-005-b97c232d47.png)
-
-
 
 示例动作：[CAD命令板 - 动作信息 - Quicker](https://getquicker.net/Sharedaction?code=6085f206-34f6-4ee7-97b7-08db3d4a9dcd)
 
@@ -228,8 +78,6 @@ legacyContentUpdatedAt: "2025-12-23T08:07:51.000Z"
 -   可以通过`.dropdown_width=30`的参数设定右侧按钮的宽度。（v1.44.49)
     ![](./img/custompanel-006-655ec9e838.png)
 
-
-
 **默认的按钮右键菜单 (v1.39.32)**
 
 如果按钮所需要的右键菜单类似，可以在步骤中设置“默认的按钮右键菜单”参数。
@@ -237,8 +85,6 @@ legacyContentUpdatedAt: "2025-12-23T08:07:51.000Z"
 ![](./img/custompanel-007-cafb9eee14.png)
 
 当菜单调用子程序（operation=sp）时，按钮的相关信息将通过子程序输入变量传入子程序中。
-
-
 
 **缩进格式的右击菜单定义**
 
@@ -339,8 +185,6 @@ $=new CommonOperationItem(){
 }
 ```
 
-
-
 **使用操作项编辑器**
 
 注意：
@@ -380,13 +224,9 @@ $=new CommonOperationItem(){
 
 ![](./img/custompanel-011-77de9b3650.png)
 
-
-
 注：
 
 -   如果某个操作项的operation和默认的不同，可以按上面章节中所描述的完整格式写。
-
-
 
 #### 其它参数
 
@@ -407,8 +247,6 @@ $=new CommonOperationItem(){
 
 可选格式：格式1：`5`\=&gt; 四个边都是5；格式2：`10,5` =&gt; 左右10，上下5; 格式3：`7,8,9,10` =&gt; 分别指定左上右下4边边距。
 
-
-
 **【列数】【列宽】**
 
 确定按钮的排列方式。
@@ -425,8 +263,6 @@ $=new CommonOperationItem(){
 
 ![](./img/custompanel-013-236140e171.png)
 
-
-
 **【分组方式】**
 
 操作项数据一级节点包含子项时，一级作为分组，二级作为按钮显示。
@@ -437,8 +273,6 @@ $=new CommonOperationItem(){
 
 **【选择标签分组】**使用标签页分组方式时，在显示操作窗时自动切换到指定的标签页。留空表示默认（通常显示上次关闭时的标签页）。
 
-
-
 **【操作窗标题】** 窗口左上角的标题文字。
 
 **【窗口标识】**
@@ -447,15 +281,11 @@ $=new CommonOperationItem(){
 
 为避免和其它动作重复，尽量使用较为特殊一点的文字，或使用`=`表示使用当前动作ID作为窗口标识（在多个动作中使用=作为窗口标识时，各动作之间互不影响）。
 
-
-
 **【失败后停止】**
 
 遇到异常后是否停止动作。
 
 特别的，当操作方式为“显示操作窗并等待关闭”，并且输出了“选择的操作项数据”或“选择的操作项”时，如果通过点击窗口右上角的关闭按钮或双击空白区域等方式关闭了窗口，则视为步骤执行失败。如需继续执行后续的步骤，请取消本选项。
-
-
 
 **【窗口位置】**选择操作窗的显示位置类型。
 
@@ -470,8 +300,6 @@ $=new CommonOperationItem(){
 -   100,100,50%,50%：指定窗口的左、顶、右、底边在屏幕上的位置（百分比单位和像素单位结合）
 
 支持增加!(英文半角叹号)前缀表示禁止调整操作窗大小。如：`!300,200`创建固定大小的窗口。(1.39.42+)
-
-
 
 **【记忆位置等状态】**保存操作窗的位置、分组折叠展开状态、当前标签页等信息，并在下次显示此操作窗时自动使用之前的状态。
 
@@ -499,23 +327,15 @@ $=new CommonOperationItem(){
 
 ![](./img/custompanel-017-b03c9454ae.png)
 
-
-
-
-
 ### 操作窗的使用
 
 **折叠：**点击标题栏最小化按钮，或双击标题栏或窗口内部，可将操作窗折叠为一个横条。也可使用轮盘、手势的窗口最小化、最大化功能来折叠。
 
 ![](./img/custompanel-018-b804d0da00.gif)
 
-
-
 **拖动位置：**按住标题栏或窗口空白区域即可拖动窗口。
 
 ![](./img/custompanel-019-2dc1e745b0.gif)
-
-
 
 **切换分组：**点击标签页，或在标签页标题区使用滚轮可以快速切换页面。
 
@@ -529,19 +349,11 @@ $=new CommonOperationItem(){
 -   在设置中开启后，可双击关闭操作窗。
     ![](./img/custompanel-021-8fec64cfc2.png)
 
-
-
 **重置操作窗位置**
 
 如果因为某种原因，操作窗未能显示到屏幕内（如副屏断开等造成了上次显示的位置不存在），可以通过右键菜单重置操作窗状态（1.40.34+）：
 
 ![](./img/custompanel-022-fd6eb4f094.png)
-
-
-
-
-
-
 
 ### 调用子程序并传递参数
 
@@ -550,13 +362,9 @@ $=new CommonOperationItem(){
 -   无论按钮本身或按钮的菜单，都可以使用operation类型为sp的操作项定义。
 -   文本格式的例子：`[图标]标题(提示内容)|operation=sp&spname=子程序名&data=data数据&其他参数.....`的格式定义。
 
-
-
 将会为子程序传递如下数据：
 
 ![](./img/custompanel-023-64f8c8716f.png)
-
-
 
 -   **data**：点击的按钮或按钮的子菜单、右键菜单对应的操作项（CommonOperationItem）的data数据。
 -   **num**：示例：一个自定义变量。当需要为子程序传递自定义的内容时，可以添加自定义变量并且设置为子程序的输入。在操作项定义中，为其传递参数即可：
@@ -572,10 +380,6 @@ $=new CommonOperationItem(){
 -   **\_buttonItemTitle**：按钮所对应操作项的标题。
 -   **\_buttonItemAll**：当操作项以文本缩进方式定义时，返回对应的原始文本。
 -   **\_buttonItem**：按钮所对应的操作项对象，类型为CommonOperationItem。
-
-
-
-
 
 ## 显示操作窗并等待关闭
 
@@ -601,15 +405,11 @@ $=new CommonOperationItem(){
 
 ![](./img/custompanel-029-31bc785395.png)
 
-
-
 ## 注意事项
 
 1）尽量避免在Quicker的窗口上使用自定义操作窗。
 
 同一个进程的窗口会互相抢占焦点，在操作窗里模拟的按键消息，可能会作用到操作窗自身，从而导致一些意外的情况。（如模拟空格，会导致再次按下操作窗按钮，从而循环触发动作）。
-
-
 
 ## 更新历史
 

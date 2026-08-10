@@ -9,7 +9,6 @@ comments: true
 moduleKey: "sys:stringProcess"
 docStatus: "migrated-unreviewed"
 metadataGeneratedAt: "2026-08-03 20:08:03"
-metadataHash: "8bb7d864c910e0d5ddc9012be0c6b0655ff2237a5d95149d03667b53e265a5d6"
 legacyDocId: 2114367
 legacyContentUpdatedAt: "2025-06-10T03:28:24.000Z"
 ---
@@ -18,113 +17,13 @@ legacyContentUpdatedAt: "2025-06-10T03:28:24.000Z"
 
 各种文本处理功能
 
-{/* xaction-metadata:start */}
 ## 当前模块定义
 
-- 模块 Key：`sys:stringProcess`
-- 分类：文本处理（`Text`）
-- 类型：`Action`
-- 风险操作：否
-- 专业版：否
-
-## 输入参数
-
-| Key | 名称 | 类型 | 默认值 | 必填 | 变量模式 | 条件 | 说明 |
-| --- | --- | --- | --- | --- | --- | --- | --- |
-| `data` | 待处理内容 | `Text` |  | 否 | `UseVarOrInput` |  | 需要进行文本处理的内容 |
-| `method` | 处理 | `Enum` |  | 是 | `Input` |  | 对文本进行什么处理 |
-| `srcEncoding` | 编码 | `Text` | utf-8 | 否 | `UseVarOrInput` | 仅：convertEncoding, urlEncode, urlDecode |  |
-| `dstEncoding` | 目标编码 | `Text` | gbk | 否 | `UseVarOrInput` | 仅：convertEncoding |  |
-| `start` | 开始位置 | `Integer` | 0 | 否 | `UseVarOrInput` | 仅：substring, insert, remove | 开始截取/插入位置，从0开始。如果为负值，表示从文本末尾开始向前的字符数。 |
-| `value` | 内容 | `Text` |  | 否 | `UseVarOrInput` | 仅：insert, append | 插入或追加的内容 |
-| `length` | 长度 | `Integer` | 0 | 否 | `UseVarOrInput` | 仅：substring, remove | 截取或移除字符个数。截取时，0表示开始位置以后的所有内容，负值表示截取到结束前的多少个字符。 |
-| `totalWidth` | 总宽度 | `Integer` | 10 | 否 | `UseVarOrInput` | 仅：padLeft, padRight | 补齐后的总字符数 |
-| `paddingChar` | 填充字符 | `Text` |   | 否 | `UseVarOrInput` | 仅：padLeft, padRight | 补齐时使用的填充字符，默认为空格。 |
-| `stopIfFail` | 失败后停止 | `Boolean` | true | 否 | `Input` |  | 失败后是否停止动作 |
-
-## 输出参数
-
-| Key | 名称 | 类型 | 条件 | 说明 |
-| --- | --- | --- | --- | --- |
-| `isSuccess` | 是否成功 | `Boolean` |  | 操作是否成功 |
-| `output` | 结果 | `Text` |  | 处理后的文本 |
-
-## 选项值
-
-### `method` 处理
-
-| Value | 名称 | 说明 |
-| --- | --- | --- |
-| `toUpper` | 英文转大写 |  |
-| `toLower` | 英文转小写 |  |
-| `reverse` | 前后反转 |  |
-| `substring` | 截取 |  |
-| `trimStart` | 去除前面空白字符 |  |
-| `trimEnd` | 去除后面空白字符 |  |
-| `trim` | 去除前后空白字符 |  |
-| `urlEncode` | URL编码 |  |
-| `urlDecode` | URL解码 (+解码为空格) |  |
-| `urlDataDecode` | URL数据解码 (保留+号) |  |
-| `htmlEncode` | Html编码 |  |
-| `htmlDecode` | Html解码 |  |
-| `intercappedToSentence` | 组合词拆分成句子(thisIsChina=&gt;this Is China) |  |
-| `base64Encode` | Base64编码 |  |
-| `base64Decode` | Base64解码 |  |
-| `removeEmptyLine` | 去除空行 |  |
-| `mergeEmptyLine` | 合并多个空行 |  |
-| `sortLinesAsc` | 排序多行A-Z |  |
-| `sortLinesDesc` | 排序多行Z-A |  |
-| `reverseLines` | 翻转多行顺序 |  |
-| `toTitleCase` | 首字母大写 |  |
-| `formatJson` | 格式化JSON |  |
-| `md5` | 计算MD5哈希 |  |
-| `sha256Hash` | 计算SHA256哈希 |  |
-| `sha1Hash` | 计算SHA1哈希 |  |
-| `escapeJson` | 转义文本为合法Json值 |  |
-| `DecodeUnicode` | 解码Unicode字串(\uXXXX转普通字符) |  |
-| `convertEncoding` | 转换编码 |  |
-| `toCnNum` | 金额数字转换为大写 |  |
-| `cn2num` | 中文转数字 |  |
-| `num2cn` | 数字转中文 |  |
-| `ExpandEnvironmentVariables` | 替换环境变量 |  |
-| `padLeft` | 从左侧补齐长度 |  |
-| `padRight` | 从右侧补齐长度 |  |
-| `insert` | 插入内容 |  |
-| `append` | 追加内容 |  |
-| `remove` | 移除内容 |  |
-| `removeZeroWidthChars` | 移除零宽字符 |  |
-| `html2text` | HTML转纯文本 |  |
-
-### `srcEncoding` 编码
-
-| Value | 名称 | 说明 |
-| --- | --- | --- |
-| `utf-8` | utf-8 |  |
-| `gbk` | gbk |  |
-| `gb2312` | gb2312 |  |
-| `big5` | big5 |  |
-| `utf-16` | utf-16 |  |
-| `utf-32` | utf-32 |  |
-
-### `dstEncoding` 目标编码
-
-| Value | 名称 | 说明 |
-| --- | --- | --- |
-| `utf-8` | utf-8 |  |
-| `gbk` | gbk |  |
-| `gb2312` | gb2312 |  |
-| `big5` | big5 |  |
-| `utf-16` | utf-16 |  |
-| `utf-32` | utf-32 |  |
-{/* xaction-metadata:end */}
+<XActionModuleMeta moduleKey="sys:stringProcess" />
 
 对文本内容实施某种处理，输出处理的结果。
 
-
-
 ![](./img/stringprocess-001-d70eadd0c0.png)
-
-
 
 ## 参数
 
@@ -256,8 +155,6 @@ legacyContentUpdatedAt: "2025-06-10T03:28:24.000Z"
 
 如：`%USERPROFILE%\AppData`处理后的结果为：`C:\Users\用户名\AppData`
 
-
-
 **从左侧补齐长度**
 
 从文本内容的左侧添加指定的字符，从而让文本总长度不少于指定的数值。
@@ -265,10 +162,6 @@ legacyContentUpdatedAt: "2025-06-10T03:28:24.000Z"
 ![](./img/stringprocess-003-19216dc031.png)
 
 如：将`abc`从左侧使用字符`*`补齐长度为5，则得到的结果为`**abc`
-
-
-
-
 
 **从右侧补齐长度**
 
@@ -303,10 +196,6 @@ legacyContentUpdatedAt: "2025-06-10T03:28:24.000Z"
 【长度】移除的字符个数。
 
 如：对`abcdefg`，从开始位置 -2 移除长度2，得到的结果为`abcde`。
-
-
-
-
 
 ### 输出
 

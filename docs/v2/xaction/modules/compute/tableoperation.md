@@ -9,7 +9,6 @@ comments: true
 moduleKey: "sys:tableoperation"
 docStatus: "migrated-unreviewed"
 metadataGeneratedAt: "2026-08-03 20:08:03"
-metadataHash: "86aa841e688a836d5db45a0028ad8278a24b2b6f394e06d6d64355d2b74c0ab4"
 legacyDocId: 62743542
 legacyContentUpdatedAt: "2024-05-14T08:26:31.000Z"
 ---
@@ -18,86 +17,9 @@ legacyContentUpdatedAt: "2024-05-14T08:26:31.000Z"
 
 表格变量的相关处理操作
 
-{/* xaction-metadata:start */}
 ## 当前模块定义
 
-- 模块 Key：`sys:tableoperation`
-- 分类：计算与比较（`Compute`）
-- 类型：`Action`
-- 风险操作：否
-- 专业版：否
-
-## 输入参数
-
-| Key | 名称 | 类型 | 默认值 | 必填 | 变量模式 | 条件 | 说明 |
-| --- | --- | --- | --- | --- | --- | --- | --- |
-| `table` | 表格变量 | `Table` |  | 是 | `UseVarOnly` |  | 要操作的表格变量 |
-| `type` | 操作类型 | `Enum` | info | 是 | `Input` |  |  |
-| `rowData` | 行数据 | `Dict` |  | 否 | `UseVarOrInput` | 仅：addRow, update | 包含行数据的词典；更新行时，仅包含要更新的列的内容。 |
-| `dataText` | 文本数据 | `Text` |  | 否 | `UseVarOrInput` | 仅：importCsv, importJson | CSV/Json格式的文本内容 |
-| `filterExpression` | 筛选表达式 | `Text` |  | 否 | `UseVarOrInput` | 仅：select, exportExcel, export_text, deleteRows, update |  |
-| `deleteColumns` | 要删除的列 | `Text` |  | 否 | `UseVarOrInput` | 仅：deleteColumns | 可选。逗号','或分号';'隔开的列名，"*"表示删除所有列，"!列1,列2..."表示保留指定的列，删除其余的。 |
-| `sort` | 排序 | `Text` |  | 否 | `UseVarOrInput` | 仅：select, exportExcel, export_text, manage |  |
-| `exportColumns` | 导出的列 | `Text` |  | 否 | `UseVarOrInput` | 仅：exportExcel, export_text | 可选。逗号','或分号';'隔开的列名。留空时导出所有列。 |
-| `excelFilePath` | Excel文件路径 | `Text` |  | 否 | `UseVarOrInput` | 仅：importExcel, exportExcel |  |
-| `sheetName` | Excel工作表名 | `Text` |  | 否 | `UseVarOrInput` | 仅：importExcel, exportExcel | 如果未指定，则取第一个工作表。工作表首行为标题行。 |
-| `startRowNum` | 标题行号 | `Integer` | 1 | 是 | `UseVarOrInput` | 仅：importExcel | 标题行的行号（从1开始）。当前面有表头之类的内容时，行号会变大。 |
-| `gridSelectionMode` | 选择模式 | `Enum` | Cells | 否 | `Input` | 仅：manage | 注：单元格模式不支持返回选择的行。 |
-| `clearOldRows` | 清除已有的行 | `Boolean` | true | 否 | `Input` | 仅：importCsv, importJson | 加载数据之前是否清除现有的行数据 |
-| `isReadOnly` | 只读模式 | `Boolean` | false | 否 | `Input` | 仅：manage | 是否以只读模式打开 |
-| `windowTitle` | 窗口标题 | `Text` | 表格数据 | 否 | `Input` | 仅：manage |  |
-| `helpText` | 帮助文本 | `Text` |  | 否 | `Input` | 仅：manage |  |
-| `useColumnTitle` | 使用列标题而非列名作为导出数据的标题 | `Boolean` | false | 否 | `Input` | 仅：exportExcel, export_text |  |
-| `csvDelimiter` | CSV分隔符 | `Text` | , | 否 | `Input` | 仅：export_text, importCsv | 导出或导入CSV数据时使用的字段分隔符。使用'\t'表示Tab。 |
-| `winSize` | 窗口尺寸/位置 | `Text` |  | 否 | `Input` | 仅：manage | 设置选择窗口的最大尺寸，格式为：宽度,高度。支持像素数值或屏幕宽高百分比，详情请参考模块文档。 |
-| `topMost` | 是否置顶显示 | `Boolean` | false | 否 | `UseVarOrInput` | 仅：manage | 是否置顶显示窗口 |
-| `stopIfFail` | 失败后停止 | `Boolean` | true | 否 | `Input` |  | 失败后是否停止动作 |
-
-## 输出参数
-
-| Key | 名称 | 类型 | 条件 | 说明 |
-| --- | --- | --- | --- | --- |
-| `isSuccess` | 是否成功 | `Boolean` |  | 操作是否成功 |
-| `rowCount` | 行数 | `Integer` |  | 表格内的数据行数 |
-| `affectedRowCount` | 影响行数 | `Integer` | 仅：exportExcel, export_text, deleteRows, update | 更新或删除、筛选的行数 |
-| `rows` | 行列表 | `Object` | 仅：select, info | 符合条件的行的数组 |
-| `columns` | 列的列表 | `Object` | 仅：info | 表格的列的信息列表(DataTable.Columns) |
-| `firstRow` | 第一行/结果行 | `Object` | 仅：select, addRow | 第一个符合条件的行或新添加的行，可输出为词典对象 |
-| `selectedRows` | 选择的行列表 | `Object` | 仅：manage | 选择的所有行的列表 |
-| `csvExportData` | CSV格式文本 | `Text` | 仅：export_text |  |
-| `jsonExportData` | Json格式文本 | `Text` | 仅：export_text |  |
-| `isConfirmed` | 是否确认 | `Boolean` | 仅：manage | 是否点击了确认按钮 |
-
-## 选项值
-
-### `type` 操作类型
-
-| Value | 名称 | 说明 |
-| --- | --- | --- |
-| `info` | 获取信息 |  |
-| `addRow` | 添加行 |  |
-| `update` | 更新行 |  |
-| `manage` | 查看或编辑数据 |  |
-| `select` | 查询或筛选行(Select) |  |
-| `clear` | 清除所有行 |  |
-| `deleteRows` | 删除符合条件的行 |  |
-| `deleteColumns` | 删除列 |  |
-| `importCsv` | 从CSV文本加载数据 |  |
-| `importJson` | 从Json文本加载数据 |  |
-| `importExcel` | 从Excel工作表加载数据 |  |
-| `export_text` | 导出文本数据 |  |
-| `exportExcel` | 导出Excel文件 |  |
-
-### `gridSelectionMode` 选择模式
-
-| Value | 名称 | 说明 |
-| --- | --- | --- |
-| `Cells` | 单元格(类似Excel) |  |
-| `OneRow` | 行：0行或1行 |  |
-| `OneRowRequired` | 行：1行(必选) |  |
-| `Rows` | 行：0、1或多行 |  |
-| `RowsRequired` | 行：一行或多行(必选) |  |
-{/* xaction-metadata:end */}
+<XActionModuleMeta moduleKey="sys:tableoperation" />
 
 【本功能为预览状态，欢迎反馈问题】
 
@@ -106,8 +28,6 @@ legacyContentUpdatedAt: "2024-05-14T08:26:31.000Z"
 关于表格变量的相关说明，请参考文档《[表格变量类型](/v2/xaction/concepts/tablevar)》。
 
 ![](./img/tableoperation-001-64de37de97.png)
-
-
 
 ## 通用输入输出参数
 
@@ -122,8 +42,6 @@ legacyContentUpdatedAt: "2024-05-14T08:26:31.000Z"
 输出参数：
 
 【是否成功】操作是否没有遇到异常。
-
-
 
 ## 操作类型
 

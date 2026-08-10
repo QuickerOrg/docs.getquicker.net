@@ -9,7 +9,6 @@ comments: true
 moduleKey: "sys:fileSystemWatch"
 docStatus: "migrated-unreviewed"
 metadataGeneratedAt: "2026-08-03 20:08:03"
-metadataHash: "15e3c015322404446bab6b069aba6ae54bb22a048eb84c95e017f737894895d6"
 legacyDocId: 69738760
 legacyContentUpdatedAt: "2022-07-15T06:51:51.000Z"
 ---
@@ -18,50 +17,9 @@ legacyContentUpdatedAt: "2022-07-15T06:51:51.000Z"
 
 监控文件创建/变更/删除等事件。
 
-{/* xaction-metadata:start */}
 ## 当前模块定义
 
-- 模块 Key：`sys:fileSystemWatch`
-- 分类：Windows系统（`System`）
-- 类型：`Action`
-- 风险操作：否
-- 专业版：否
-
-## 输入参数
-
-| Key | 名称 | 类型 | 默认值 | 必填 | 变量模式 | 条件 | 说明 |
-| --- | --- | --- | --- | --- | --- | --- | --- |
-| `operation` | 操作类型 | `Enum` | wait | 是 | `Input` |  | 时间数据来源 |
-| `path` | 文件夹路径 | `Text` |  | 否 | `UseVarOrInput` |  | 要监控的文件夹路径 |
-| `filter` | 文件筛选 | `Text` | *.* | 否 | `UseVarOrInput` |  | 筛选要监控的文件。可指定文件名（如foo.txt），或使用通配符（如*.txt） |
-| `notifyFilter` | 通知筛选 | `Text` |  | 否 | `UseVarOrInput` |  | 可选，可选值请参考文档。留空表示默认设置(LastWrite,FileName,DirectoryName)。 |
-| `includeSubdirectories` | 包含子文件夹 | `Boolean` | true | 否 | `Input` |  |  |
-| `waitEvents` | 等待的事件 | `Text` | created | 否 | `UseVarOrInput` | 仅：wait |  |
-| `waitSeconds` | 等待秒数 | `Number` | 0.0 | 否 | `UseVarOrInput` | 仅：wait | 最长等待时间。0表示不限时间。 |
-| `createdCallback` | [创建] 处理子程序 | `Text` |  | 否 | `UseVarOrInput` | 仅：callback | 文件或文件创建时调用的子程序 |
-| `changedCallback` | [变更] 处理子程序 | `Text` |  | 否 | `UseVarOrInput` | 仅：callback | 文件或文件夹变更时调用的子程序 |
-| `deletedCallback` | [删除] 处理子程序 | `Text` |  | 否 | `UseVarOrInput` | 仅：callback | 文件或文件被删除时调用的子程序 |
-| `renamedCallback` | [重命名] 处理子程序 | `Text` |  | 否 | `UseVarOrInput` | 仅：callback | 文件或文件重命名时调用的子程序 |
-| `stopIfFail` | 失败后停止 | `Boolean` | true | 否 | `Input` |  | 失败后是否停止动作 |
-
-## 输出参数
-
-| Key | 名称 | 类型 | 条件 | 说明 |
-| --- | --- | --- | --- | --- |
-| `isSuccess` | 是否成功 | `Boolean` |  | 操作是否成功 |
-| `fullPath` | 变更的路径 | `Text` | 仅：wait | 发生变更的文件(夹)路径，或重命名后的新路径 |
-| `changedType` | 变更类型 | `Text` | 仅：wait | 变更类型 |
-| `oldFullPath` | 旧路径 | `Text` | 仅：wait | 重命名时的原始路径 |
-
-## 选项值
-
-### `operation` 操作类型
-
-| Value | 名称 | 说明 |
-| --- | --- | --- |
-| `wait` | 等待事件发生 |  |
-| `callback` | 持续监控（事件发生后调用子程序） |  |
-{/* xaction-metadata:end */}
+<XActionModuleMeta moduleKey="sys:fileSystemWatch" />
 
 监控指定文件夹下文件或目录的变化（创建/删除/变更/重命名）。（1.31.0+版本提供。欢迎反馈问题）
 
@@ -80,8 +38,6 @@ legacyContentUpdatedAt: "2022-07-15T06:51:51.000Z"
 类似于“等待剪贴板改变”模块，等待目录中发生预期的事件后继续运行动作的后续步骤。
 
 ![](./img/filesystemwatch-001-a840b8c14b.png)
-
-
 
 **参数**
 
@@ -139,8 +95,6 @@ legacyContentUpdatedAt: "2022-07-15T06:51:51.000Z"
 
 ![](./img/filesystemwatch-002-bf1b0bbfae.png)
 
-
-
 【文件夹路径】请参考上面章节的说明。
 
 【包含子文件夹】请参考上面章节的说明。
@@ -175,8 +129,6 @@ legacyContentUpdatedAt: "2022-07-15T06:51:51.000Z"
 
 -   `OldFullPath` 文件或文件夹的原始完整路径。
 -   `OldName` 文件或文件夹的原始名称。
-
-
 
 ![](./img/filesystemwatch-003-5a29d275fb.png)
 

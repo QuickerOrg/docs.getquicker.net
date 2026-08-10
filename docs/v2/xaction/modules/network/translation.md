@@ -9,7 +9,6 @@ comments: true
 moduleKey: "sys:translation"
 docStatus: "migrated-unreviewed"
 metadataGeneratedAt: "2026-08-03 20:08:03"
-metadataHash: "9a97c8bd9d2779f480957b1f0c2a604a3f7e2eb3abf052efc0328de4130dca5c"
 legacyDocId: 49614304
 legacyContentUpdatedAt: "2025-03-17T14:58:05.000Z"
 ---
@@ -18,82 +17,9 @@ legacyContentUpdatedAt: "2025-03-17T14:58:05.000Z"
 
 调用第三方服务翻译文字到指定的语言。此功能需要单独付费使用，详情请参考文档。
 
-{/* xaction-metadata:start */}
 ## 当前模块定义
 
-- 模块 Key：`sys:translation`
-- 分类：网络服务（`Network`）
-- 类型：`Action`
-- 风险操作：否
-- 专业版：否
-
-## 输入参数
-
-| Key | 名称 | 类型 | 默认值 | 必填 | 变量模式 | 条件 | 说明 |
-| --- | --- | --- | --- | --- | --- | --- | --- |
-| `operation` | 操作类型 | `Enum` | single | 是 | `Input` |  |  |
-| `text` | 待翻译文本内容或单词。 | `Text` |  | 否 | `UseVarOrInput` |  |  |
-| `srcLang` | 源语言 | `Text` | Auto | 否 | `UseVarOrInput` | 排除：en2zh_dict | 待翻译内容的语言 |
-| `dstLang` | 目标语言 | `Text` | Auto | 否 | `UseVarOrInput` | 排除：en2zh_dict | 翻译的结果语言 |
-| `vendor` | 厂商 | `Enum` | Youdao | 否 | `UseVarOrInput` | 仅：single | 不同厂商价格不同，详情请参考文档。 |
-| `vendorList` | 厂商列表 | `Enum` | Youdao,Baidu,Tencent,Caiyun | 否 | `UseVarOrInput` | 仅：multiple | 用逗号分割的厂商标识，详细信息请参考文档。 |
-| `stopIfFail` | 失败后停止 | `Boolean` | true | 否 | `Input` |  | 失败后是否停止动作 |
-
-## 输出参数
-
-| Key | 名称 | 类型 | 条件 | 说明 |
-| --- | --- | --- | --- | --- |
-| `isSuccess` | 是否成功 | `Boolean` |  | 操作是否成功 |
-| `resultText` | 结果文本 | `Text` |  | 翻译结果文本。多厂商翻译时自动组合各厂商结果 |
-| `rawData` | 原始响应 | `Text` | 仅：single, en2zh_dict | 厂商接口返回的原始内容，通常为json格式。 |
-| `vendorResult` | 各厂商翻译结果 | `Dict` | 仅：multiple | 各厂商的翻译结果（词典）。key为厂商标识，value为翻译结果。 |
-| `vendorRawData` | 各厂商原始响应 | `Dict` | 仅：multiple | 各厂商的原始响应内容（词典）。key为厂商标识，value为厂商原始响应。 |
-| `costPoints` | 消耗点数 | `Integer` | 仅：single, multiple | 此次翻译消耗的点数,单位为0.0001 Q豆。 |
-
-## 选项值
-
-### `operation` 操作类型
-
-| Value | 名称 | 说明 |
-| --- | --- | --- |
-| `single` | 单厂商文字翻译 |  |
-| `multiple` | 多厂商文字翻译 |  |
-| `en2zh_dict` | 英汉词典 |  |
-
-### `srcLang` 源语言
-
-| Value | 名称 | 说明 |
-| --- | --- | --- |
-| `Auto` | 自动 |  |
-| `ZhCn` | 简体中文 |  |
-| `En` | 英文 |  |
-| `Ja` | 日文 |  |
-| `Ko` | 韩文 |  |
-
-### `dstLang` 目标语言
-
-| Value | 名称 | 说明 |
-| --- | --- | --- |
-| `Auto` | 自动 |  |
-| `ZhCn` | 简体中文 |  |
-| `En` | 英文 |  |
-| `Ja` | 日文 |  |
-| `Ko` | 韩文 |  |
-
-### `vendor` 厂商
-
-| Value | 名称 | 说明 |
-| --- | --- | --- |
-| `Quicker` | Quicker服务 |  |
-| `Aliyun` | 阿里云 |  |
-| `Baidu` | 百度 |  |
-| `Tencent` | 腾讯云 |  |
-| `Youdao` | 网易有道 |  |
-| `Caiyun` | 彩云 |  |
-| `Xunfei` | 讯飞 |  |
-| `XunfeiNiutrans` | 讯飞(2代) |  |
-| `Google` | 谷歌 |  |
-{/* xaction-metadata:end */}
+<XActionModuleMeta moduleKey="sys:translation" />
 
 ## 概述
 
@@ -106,8 +32,6 @@ legacyContentUpdatedAt: "2025-03-17T14:58:05.000Z"
 -   2021年7月23日起：**官网**续费/购买专业版，赠送实际支付金额的 5% Q豆数量。
 -   2021年7月23日前的专业版账号，赠送Q豆：剩余天数 \* 0.008，最多赠送30个Q豆。
 -   2025年3月17日起：专业版用户翻译服务Q豆消耗按5折优惠计费。
-
-
 
 本功能需要联网实现。Quicker1.25.11+版本。
 
@@ -123,8 +47,6 @@ legacyContentUpdatedAt: "2025-03-17T14:58:05.000Z"
 
 【目标语言】翻译的目标语言类型。设置为Auto可自动识别，如果待翻译内容包含中文，则翻译为英文，否则翻译为中文。
 
-
-
 ### 单厂商翻译
 
 调用某个厂商的翻译接口。
@@ -136,8 +58,6 @@ legacyContentUpdatedAt: "2025-03-17T14:58:05.000Z"
 【结果文本】翻译得到的结果内容。
 
 【原始相应】厂商接口返回的原始内容，通常为一段JSON文本。
-
-
 
 ### 多厂商翻译
 
@@ -165,8 +85,6 @@ legacyContentUpdatedAt: "2025-03-17T14:58:05.000Z"
 
 【各厂商原始相应】以词典形式返回每个厂商的**原始相应**内容。Key为厂商标识，Value为原始相应内容，通常为JSON文本。
 
-
-
 ### 英汉词典
 
 获取一个英文单词或使用英文逗号分隔的多个英文单词的汉语解释（1个单词与多个单词返回格式不同）。
@@ -176,8 +94,6 @@ legacyContentUpdatedAt: "2025-03-17T14:58:05.000Z"
 本接口免费。
 
 ![](./img/translation-004-0da5aa4b34.png)
-
-
 
 **查询一个单词：**
 
@@ -211,8 +127,6 @@ legacyContentUpdatedAt: "2025-03-17T14:58:05.000Z"
 
 【原始响应】包含各单词信息的**JSON数组**文本。
 
-
-
 ## 费用与购买
 
 **注意事项：**
@@ -240,8 +154,6 @@ legacyContentUpdatedAt: "2025-03-17T14:58:05.000Z"
 -   需要时，可[单独购买Q豆：链接](https://getquicker.net/Member/Buy?productId=3)
 
 -   因数据量较大，历史账单保留30天。
-
-
 
 ## 各厂商的接口限制
 

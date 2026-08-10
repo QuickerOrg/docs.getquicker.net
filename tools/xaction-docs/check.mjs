@@ -8,8 +8,6 @@ const scriptDirectory = path.dirname(fileURLToPath(import.meta.url));
 const repositoryRoot = path.resolve(scriptDirectory, '..', '..');
 const docsRoot = path.join(repositoryRoot, 'docs', 'v2', 'xaction');
 const dataRoot = path.join(repositoryRoot, 'data', 'xaction');
-const startMarker = '{/* xaction-metadata:start */}';
-const endMarker = '{/* xaction-metadata:end */}';
 
 function normalize(value) {
   return value.replace(/^\uFEFF/, '').replace(/\r\n/g, '\n');
@@ -17,10 +15,6 @@ function normalize(value) {
 
 function readText(filePath) {
   return normalize(fs.readFileSync(filePath, 'utf8'));
-}
-
-function sha256(value) {
-  return crypto.createHash('sha256').update(normalize(value)).digest('hex');
 }
 
 function collectFiles(directory, predicate) {
@@ -87,16 +81,17 @@ function main() {
       continue;
     }
     pageByKey.set(key, filePath);
-    const start = content.indexOf(startMarker);
-    const end = content.indexOf(endMarker);
-    if (start < 0 || end < start) {
-      fail(errors, `${key} 缺少自动生成区标记。`);
-      continue;
+    if (content.includes('xaction-metadata:')) {
+      fail(errors, `${key} 仍含旧的 xaction-metadata 标记，请运行 docs:xaction:rewrite-meta。`);
     }
-    const expectedHash = content.match(/^metadataHash:\s*["']?([a-f0-9]+)["']?$/m)?.[1];
-    const actualHash = sha256(content.slice(start, end + endMarker.length));
-    if (!expectedHash || expectedHash !== actualHash) {
-      fail(errors, `${key} 的自动生成区被手工修改，或 metadataHash 未同步。`);
+    if (content.includes('metadataHash:')) {
+      fail(errors, `${key} 仍含已废弃的 metadataHash。`);
+    }
+    const metaTag = content.match(/<XActionModuleMeta\s+moduleKey="([^"]+)"\s*\/>/);
+    if (!metaTag) {
+      fail(errors, `${key} 缺少 <XActionModuleMeta moduleKey="..." />。`);
+    } else if (metaTag[1] !== key) {
+      fail(errors, `${key} 的组件 moduleKey=${metaTag[1]} 与 front matter 不一致。`);
     }
   }
 

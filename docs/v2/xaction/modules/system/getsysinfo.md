@@ -9,7 +9,6 @@ comments: true
 moduleKey: "sys:getSysInfo"
 docStatus: "migrated-unreviewed"
 metadataGeneratedAt: "2026-08-03 20:08:03"
-metadataHash: "eaef470b446f86a3cfe330e566d83792583be590b1195de1a5206767903df7b9"
 legacyDocId: 2122406
 legacyContentUpdatedAt: "2024-03-27T02:22:03.000Z"
 ---
@@ -18,59 +17,11 @@ legacyContentUpdatedAt: "2024-03-27T02:22:03.000Z"
 
 获取系统、Quicker 及当前运行动作的相关信息。
 
-{/* xaction-metadata:start */}
 ## 当前模块定义
 
-- 模块 Key：`sys:getSysInfo`
-- 分类：Windows系统（`System`）
-- 类型：`Action`
-- 风险操作：否
-- 专业版：否
-
-## 输入参数
-
-无。
-
-## 输出参数
-
-| Key | 名称 | 类型 | 条件 | 说明 |
-| --- | --- | --- | --- | --- |
-| `MachineName` | 机器名 | `Text` |  |  |
-| `OsVersion` | 系统版本号 | `Text` |  |  |
-| `isWin10` | 是否为Win10或以上 | `Boolean` |  |  |
-| `isWin11` | 是否为Win11 | `Boolean` |  |  |
-| `isAutoRun` | 是否自动启动 | `Boolean` |  | 是否开机自动启动Quicker |
-| `startupSeconds` | 系统正常运行秒数 | `Number` |  | 可参考任务管理器中显示的正常运行时间。 |
-| `isLocked` | Windows是否锁定 | `Boolean` |  |  |
-| `userName` | 用户名 | `Text` |  | 当前登录到电脑的用户名 |
-| `userDomainName` | 用户域名 | `Text` |  | 当前用户的网络域名（DomainName） |
-| `sysEnv` | 环境变量 | `Dict` |  |  |
-| `primaryScreenRes` | 主屏分辨率 | `Text` |  |  |
-| `isFullscreen` | 前台窗口是否为全屏状态 | `Boolean` |  |  |
-| `isNetworkConnected` | 是否联网 | `Boolean` |  |  |
-| `lanIp` | 本机局域网IP | `Text` |  |  |
-| `quickerVersion` | Quicker版本 | `Integer` |  |  |
-| `runnedSeconds` | Quicker启动秒数 | `Number` |  | Quicker启动后运行的秒数 |
-| `actionId` | 动作ID | `Text` |  | 当前运行的动作ID |
-| `actionName` | 动作名称 | `Text` |  | 当前运行的动作名称 |
-| `sharedActionId` | 动作库ID | `Text` |  | 当前动作的动作库ID |
-| `sharedActionRevision` | 动作版本号 | `Integer` |  | 当前安装的动作版本 |
-| `actionCount` | 运行个数 | `Integer` |  | 当前动作运行中的实例个数(包含此实例) |
-| `isDebugging` | 是否调试运行 | `Boolean` |  | 是否正在调试运行动作 |
-| `trigger` | 触发方式 | `Text` |  | 动作的触发方式 |
-| `textParam` | 文本上下文参数 | `Text` |  | 传入动作的文本上下文参数 |
-| `imageParam` | 图片上下文参数 | `Image` |  | 传入动作的图片上下文参数 |
-| `isPro` | 是否为专业版 | `Boolean` |  | 当前用户是否使用专业版软件。 |
-| `unionId` | UnionId | `Text` |  | 一个标识用户身份的字符串 |
-| `hasBaiduAccount` | 已设置自有百度OCR帐号 | `Boolean` |  | 已经在设置中添加了自有百度OCR帐号。 |
-| `isWinInDarkMode` | Windows是否为深色模式 | `Boolean` |  | true表示深色模式，false表示浅色模式。 |
-| `quickerThemeMode` | Quicker主题模式 | `Text` |  | 可能为：light/dark/auto_light/auto_dark。auto_light/auto_dark表示为跟随windows，当前为浅色或深色模式。 |
-| `isPaused` | Quicker是否暂停 | `Boolean` |  | Quicker是否处于暂停状态。true表示已暂停，false表示正常运行。 |
-{/* xaction-metadata:end */}
+<XActionModuleMeta moduleKey="sys:getSysInfo" />
 
 获取Windows当前环境信息或当前运行的动作信息。
-
-
 
 【注】本模块不适合在子程序中使用，部分依赖于动作运行上下文的的信息无法在子程序中获取。
 
@@ -79,8 +30,6 @@ legacyContentUpdatedAt: "2024-03-27T02:22:03.000Z"
 参数
 
 ### 输出
-
-
 
 【机器名】Windows主机名。
 
@@ -123,8 +72,6 @@ legacyContentUpdatedAt: "2024-03-27T02:22:03.000Z"
 
 【触发方式】启动动作的方式，仅供参考。主要的触发方式有：
 
-
-
 ```
 Panel,          //主面板窗口
 TriggerKey,     //触发键
@@ -154,10 +101,6 @@ BrowserContextMenu, //浏览器右键菜单
 WebpageButton, //网页按钮点击
 EventTrigger,  //事件触发
 ```
-
-
-
-
 
 ## 更新历史
 

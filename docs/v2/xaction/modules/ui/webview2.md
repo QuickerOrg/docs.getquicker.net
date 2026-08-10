@@ -9,7 +9,6 @@ comments: true
 moduleKey: "sys:webview2"
 docStatus: "migrated-unreviewed"
 metadataGeneratedAt: "2026-08-03 20:08:03"
-metadataHash: "a1d672675f6b22e70a2719ae709aa211d00145b7663a1f1ea940c6ece64478c8"
 legacyDocId: 13009021
 legacyContentUpdatedAt: "2026-03-22T03:26:04.000Z"
 ---
@@ -18,142 +17,15 @@ legacyContentUpdatedAt: "2026-03-22T03:26:04.000Z"
 
 基于微软Edge浏览器内核的组件，需要安装Edge最新预览版方可使用。
 
-{/* xaction-metadata:start */}
 ## 当前模块定义
 
-- 模块 Key：`sys:webview2`
-- 分类：界面组件（`Ui`）
-- 类型：`Action`
-- 风险操作：否
-- 专业版：否
-
-## 输入参数
-
-| Key | 名称 | 类型 | 默认值 | 必填 | 变量模式 | 条件 | 说明 |
-| --- | --- | --- | --- | --- | --- | --- | --- |
-| `type` | 操作类型 | `Enum` | OpenUrl | 是 | `Input` |  |  |
-| `url` | 网址或HTML内容 | `Text` |  | 是 | `UseVarOrInput` | 仅：OpenUrl, OpenAndWaitLoad, OpenUrlAndWaitClose | 网页地址/文件路径或html代码内容 |
-| `urlList` | 网址列表 | `List` |  | 是 | `UseVarOrInput` | 仅：MultiTab_OpenUrl, MultiColumn_OpenUrl | 每行一个：网址，或"标题\|网址"，或"[图标]标题\|网址"格式。 |
-| `additionalBrowserArguments` | 附加的浏览器参数 | `Text` |  | 是 | `UseVarOrInput` | 仅：OpenUrl, OpenAndWaitLoad, OpenUrlAndWaitClose | 用于设置代理等用途 |
-| `virtualHostToFolder` | 虚拟主机映射 | `Text` |  | 是 | `UseVarOrInput` | 仅：OpenUrl, OpenAndWaitLoad, OpenUrlAndWaitClose | 将文件夹映射为虚拟主机名。格式：主机名\|文件夹路径。多个时，每行一个。<br />在html中可以使用https://servername/path/to/file.png的格式访问文件。 |
-| `userAgent` | User Agent | `Text` |  | 否 | `UseVarOrInput` | 仅：OpenUrl, OpenAndWaitLoad, OpenUrlAndWaitClose, MultiTab_OpenUrl, MultiColumn_OpenUrl | 可选。自定义UserAgent |
-| `title` | 窗口标题 | `Text` |  | 是 | `UseVarOrInput` | 仅：OpenUrl, OpenAndWaitLoad, OpenUrlAndWaitClose, MultiTab_OpenUrl, MultiColumn_OpenUrl | 窗口标题文字。未设置时，自动使用网页标题。 |
-| `icon` | 窗口图标 | `Text` |  | 否 | `UseVarOrInput` | 仅：OpenUrl, OpenAndWaitLoad, OpenUrlAndWaitClose | 显示在窗口左上角的图标。支持fa:内置图报名:#RRGGBB或图标网址。 |
-| `defaultBgColor` | 默认背景色 | `Text` |  | 否 | `UseVarOrInput` | 仅：OpenUrl, OpenAndWaitLoad, OpenUrlAndWaitClose | 可选。设置窗口的默认背景色。 |
-| `autoCloseKey` | 窗口标识 | `Text` | = | 否 | `UseVarOrInput` | 排除：CheckInstalled | (仅必要时使用)用于关闭之前打开的具有此标识的WebView2窗口。使用=表示当前动作ID。 |
-| `modeForExists` | 如果窗口已存在 | `Enum` | SkipThisStep | 否 | `Input` | 仅：OpenUrl, OpenAndWaitLoad |  |
-| `script` | JS脚本 | `Text` |  | 是 | `UseVarOrInput` | 仅：OpenUrl, OpenAndWaitLoad, OpenUrlAndWaitClose, ExecuteScript | 可选。 |
-| `sendMessage` | 消息内容 | `Text` |  | 是 | `UseVarOrInput` | 仅：SendMessage | Json格式的消息内容。词典变量会自动转换成json。 |
-| `additionalObjects` | 附加对象 | `List` |  | 否 | `UseVarOrInput` | 仅：SendMessage | PostWebMessageAsJson的附加对象列表参数内容。目前支持路径的列表 |
-| `winLocation` | 窗口位置 | `Enum` | CenterScreen | 否 | `UseVarOrInput` | 仅：OpenUrl, OpenAndWaitLoad, OpenUrlAndWaitClose, MultiTab_OpenUrl, MultiColumn_OpenUrl | 在哪里显示选择窗口 |
-| `winSize` | 窗口尺寸/位置 | `Text` |  | 否 | `Input` | 仅：OpenUrl, OpenAndWaitLoad, OpenUrlAndWaitClose, MultiTab_OpenUrl, MultiColumn_OpenUrl | 设置选择窗口的尺寸，格式为：宽度,高度。支持像素数值或屏幕宽高百分比，详情请参考模块文档。<br />"窗口位置" 类型为 "自定义位置" 时用于指定显示位置，格式为：left,top,right,bottom |
-| `defaultDownloadFolderPath` | 默认下载文件夹 | `Text` |  | 否 | `Input` | 仅：OpenUrl, OpenAndWaitLoad, OpenUrlAndWaitClose, MultiTab_OpenUrl, MultiColumn_OpenUrl | 默认的文件下载存储目录 |
-| `profileName` | Profile | `Text` |  | 否 | `Input` | 仅：OpenUrl, OpenAndWaitLoad, OpenUrlAndWaitClose | 当需要同时登录一个网站的多个账号时，可以创建独立的Profile。请输入Profile名称，不支持文件夹路径。 |
-| `topMost` | 置顶显示 | `Boolean` | false | 否 | `UseVarOrInput` | 仅：OpenUrl, OpenAndWaitLoad, OpenUrlAndWaitClose, MultiTab_OpenUrl, MultiColumn_OpenUrl |  |
-| `showInTaskbar` | 显示任务栏图标 | `Boolean` | true | 否 | `UseVarOrInput` | 仅：OpenUrl, OpenAndWaitLoad, OpenUrlAndWaitClose |  |
-| `noActivate` | 不占用焦点 | `Boolean` | false | 否 | `UseVarOrInput` | 仅：OpenUrl, OpenAndWaitLoad, OpenUrlAndWaitClose | 不占用焦点时也无法在窗口中输入文字 |
-| `closeWhenLostFocus` | 失去焦点后 | `Enum` | false | 否 | `UseVarOrInput` | 仅：OpenUrl, OpenAndWaitLoad, OpenUrlAndWaitClose |  |
-| `escCloseWindow` | 按Esc关闭窗口 | `Boolean` | false | 否 | `UseVarOrInput` | 仅：OpenUrl, OpenAndWaitLoad, OpenUrlAndWaitClose |  |
-| `showToolbar` | 显示工具栏 | `Boolean` | false | 否 | `UseVarOrInput` | 仅：OpenUrl, OpenAndWaitLoad, OpenUrlAndWaitClose |  |
-| `addDevTool` | 添加DevTools桥 | `Boolean` | false | 否 | `Input` | 仅：OpenUrl, OpenAndWaitLoad, OpenUrlAndWaitClose |  |
-| `windowStyle` | 窗口风格 | `Enum` | normal | 否 | `UseVarOrInput` | 仅：OpenUrl, OpenAndWaitLoad, OpenUrlAndWaitClose |  |
-| `clearCookies` | 关闭窗口时清理Cookie | `Boolean` | false | 否 | `Input` | 仅：OpenUrl, OpenAndWaitLoad, OpenUrlAndWaitClose |  |
-| `stopIfFail` | 失败后停止 | `Boolean` | true | 否 | `Input` |  | 失败后是否停止动作 |
-
-## 输出参数
-
-| Key | 名称 | 类型 | 条件 | 说明 |
-| --- | --- | --- | --- | --- |
-| `isSuccess` | 是否成功 | `Boolean` |  | 操作是否成功。获取窗口信息时，窗口是否存在。 |
-| `isInstalled` | 是否安装WebView2 | `Boolean` | 仅：CheckInstalled |  |
-| `hWnd` | 窗口句柄 | `Integer` | 仅：OpenUrl, OpenAndWaitLoad, CheckWindowState |  |
-| `webView` | WebView2对象 | `Object` | 仅：OpenUrl, OpenAndWaitLoad, CheckWindowState | 可用于在C#脚本中使用，需运行在UI线程中。注意避免循环引用。 |
-| `lastLocation` | 窗口位置 | `Text` | 仅：OpenAndWaitLoad, CheckWindowState, OpenUrlAndWaitClose | 返回窗口坐标范围。格式为：left,top,right,bottom |
-| `currUri` | 当前网址 | `Text` | 仅：OpenAndWaitLoad, CheckWindowState | 浏览器当前网址 |
-| `docTitle` | 网页标题 | `Text` | 仅：OpenAndWaitLoad, CheckWindowState |  |
-| `sourceCode` | 网页代码 | `Text` | 仅：OpenAndWaitLoad, CheckWindowState |  |
-| `cookies` | Cookie | `Text` | 仅：OpenAndWaitLoad, CheckWindowState |  |
-| `scriptResult` | 脚本运行结果 | `Text` | 仅：ExecuteScript | json编码的脚本运行结果内容 |
-| `previewImage` | 预览图 | `Image` | 仅：CheckWindowState |  |
-| `isNavCompleted` | 导航是否已结束 | `Boolean` | 仅：CheckWindowState | 是否已完成网页加载过程 |
-
-## 选项值
-
-### `type` 操作类型
-
-| Value | 名称 | 说明 |
-| --- | --- | --- |
-| `OpenUrl` | 打开网页 |  |
-| `OpenAndWaitLoad` | 打开网页并等待加载完成 |  |
-| `OpenUrlAndWaitClose` | 打开网页并等待窗口关闭 |  |
-| `SendMessage` | 发送消息 |  |
-| `ExecuteScript` | 执行脚本 |  |
-| `CheckWindowState` | 获取窗口状态 |  |
-| `Close` | 关闭窗口(如果尚未关闭) |  |
-| `Reload` | 重新加载/刷新 |  |
-| `Stop` | 停止加载 |  |
-| `CheckInstalled` | 检查是否安装WebView2 |  |
-| `MultiTab_OpenUrl` | 【多标签】打开网址 |  |
-| `MultiColumn_OpenUrl` | 【多列】打开网址 |  |
-
-### `modeForExists` 如果窗口已存在
-
-| Value | 名称 | 说明 |
-| --- | --- | --- |
-| `SkipThisStep` | 跳过此步骤 |  |
-| `UpdateUrl` | 更新网址 |  |
-| `UpdateUrlAndPosition` | 更新网址和窗口位置 |  |
-| `RecreateWindow` | 关闭并重建窗口 |  |
-| `BringToFront` | 激活窗口 |  |
-
-### `winLocation` 窗口位置
-
-| Value | 名称 | 说明 |
-| --- | --- | --- |
-| `WithMouse1` | 跟随鼠标（指针周围） |  |
-| `WithMouse2` | 跟随鼠标（指针右下） |  |
-| `CenterScreen` | 屏幕中间 |  |
-| `TopLeft` | 屏幕左上 |  |
-| `TopCenter` | 屏幕中上 |  |
-| `TopRight` | 屏幕右上 |  |
-| `LeftCenter` | 屏幕左中 |  |
-| `RightCenter` | 屏幕右中 |  |
-| `BottomLeft` | 屏幕左下 |  |
-| `BottomCenter` | 屏幕中下 |  |
-| `BottomRight` | 屏幕右下 |  |
-| `FullScreen` | 全屏 |  |
-| `Maximized` | 最大化 |  |
-| `Manual` | 自定义位置 |  |
-
-### `closeWhenLostFocus` 失去焦点后
-
-| Value | 名称 | 说明 |
-| --- | --- | --- |
-| `false` | 不执行操作 |  |
-| `true` | 关闭窗口 |  |
-| `hide` | 隐藏窗口 |  |
-| `minimize` | 最小化窗口 |  |
-| `close_if_not_topmost` | 如果未置顶，关闭窗口 |  |
-| `hide_if_not_topmost` | 如果未置顶，隐藏窗口 |  |
-| `minimize_if_not_topmost` | 如果未置顶，最小化窗口 |  |
-
-### `windowStyle` 窗口风格
-
-| Value | 名称 | 说明 |
-| --- | --- | --- |
-| `normal` | 正常 |  |
-| `none` | 无边框 |  |
-{/* xaction-metadata:end */}
+<XActionModuleMeta moduleKey="sys:webview2" />
 
 提示：
 
 -   本模块使用了微软[WebView2](https://docs.microsoft.com/en-us/microsoft-edge/webview2/)组件。
 -   组件安装地址：[https://developer.microsoft.com/zh-cn/microsoft-edge/webview2/](https://developer.microsoft.com/zh-cn/microsoft-edge/webview2/) （Win11操作系统会自带WebView2）
 -   在Quicker动作中修改变量名时，JS脚本中使用的Quicker变量名可能无法自动更改。
-
-
-
-
 
 ## 基础
 
@@ -173,8 +45,6 @@ legacyContentUpdatedAt: "2026-03-22T03:26:04.000Z"
 -   【多列】打开网址：使用多列布局方式同时打开多个网址。
 
 ### 参数
-
-
 
 #### 操作类型：打开网页
 
@@ -302,21 +172,13 @@ window.chrome.webview.addEventListener('message', event =>
 
 ### 桥接对象
 
-
-
 桥接对象用于同动作的其它部分交互，如访问动作中的变量、调用子程序等。
 
 可以通过 `window.chrome.webview.hostObjects.v` 对象以异步方式访问桥接对象，或者通过 `window.chrome.webview.hostObjects.sync.v` 以同步方式访问桥接对象。
 
 更多信息可参考微软[官方文档](https://docs.microsoft.com/en-us/dotnet/api/microsoft.web.webview2.core.corewebview2.addhostobjecttoscript?view=webview2-dotnet-1.0.774.44#Microsoft_Web_WebView2_Core_CoreWebView2_AddHostObjectToScript_System_String_System_Object_)。
 
-
-
 自1.23.5 版本起，可以在js中通过 `$quicker` 异步方式访问桥接对象，通过 `$quickerSync` 同步方式访问桥接对象。
-
-
-
-
 
 ### 读写动作变量
 
@@ -350,23 +212,13 @@ function funcSync(){
 
 -   [https://getquicker.net/sharedaction?code=c501debe-7e80-408c-d791-08d856359351](https://getquicker.net/sharedaction?code=c501debe-7e80-408c-d791-08d856359351)
 
-
-
-
-
 读写变量操作支持简单变量（数字/文本以及列表变量）。
 
 词典变量在读取时自动转换为json文本数据。词典变量不支持通过setVar方法写入。
 
-
-
-
-
 ### 词典变量的操作
 
 在js中无法直接操作词典变量。
-
-
 
 为词典变量赋予一个完整的新值
 
@@ -388,8 +240,6 @@ $quickerSync.setDictItemValue("dict", "c", 3);
 // 返回词典的某个键的值getDictItemValue(词典变量名,键名)
 var value = $quickerSync.getDictItemValue("dict","c");
 ```
-
-
 
 ### 调用子程序并返回结果
 
@@ -417,8 +267,6 @@ async function testSubprogram(){
   alert('success: ' + data.output); //output为子程序的一个输出变量
 }
 ```
-
-
 
 【以下方法不建议使用】
 
@@ -456,15 +304,9 @@ async function testSubprogram() {
 }
 ```
 
-
-
 注意：进行复杂操作时，请使用**异步调用方式**（await $quicker.subprogram()...)。同步调用时js会等待结果，可能会造成界面死锁。
 
-
-
 示例动作：[https://getquicker.net/sharedaction?code=c501debe-7e80-408c-d791-08d856359351](https://getquicker.net/sharedaction?code=c501debe-7e80-408c-d791-08d856359351)
-
-
 
 ## 推荐资源
 
@@ -472,15 +314,9 @@ async function testSubprogram() {
 
 -   [WebView2 官方文档](https://docs.microsoft.com/en-us/microsoft-edge/webview2/)
 
-
-
-
-
 ### 前端技术相关
 
 -   [现代JavaScript教程](https://zh.javascript.info/)
-
-
 
 ## 示例
 
@@ -488,16 +324,10 @@ async function testSubprogram() {
 
 -   [https://getquicker.net/sharedaction?code=c501debe-7e80-408c-d791-08d856359351](https://getquicker.net/sharedaction?code=c501debe-7e80-408c-d791-08d856359351)
 
-
-
 通过发送消息更新已打开的WebView窗口
 
 -   [https://getquicker.net/sharedaction?code=a6fd6ca9-b6d8-4fbf-afe2-08d8f6743496](https://getquicker.net/sharedaction?code=a6fd6ca9-b6d8-4fbf-afe2-08d8f6743496) （搜索Quicker网站）
 -   [https://getquicker.net/sharedaction?code=0b13fc42-ada7-4bb0-afe3-08d8f6743496](https://getquicker.net/sharedaction?code=0b13fc42-ada7-4bb0-afe3-08d8f6743496) (有道翻译）
-
-
-
-
 
 ## 更新历史
 

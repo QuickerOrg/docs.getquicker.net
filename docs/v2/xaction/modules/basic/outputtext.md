@@ -9,7 +9,6 @@ comments: true
 moduleKey: "sys:outputText"
 docStatus: "migrated-unreviewed"
 metadataGeneratedAt: "2026-08-03 20:08:03"
-metadataHash: "e1e9550d93b1a5d86655c2802e37e53a703b4431b888ca7185470dd68ebd3b28"
 legacyDocId: 1530559
 legacyContentUpdatedAt: "2025-01-20T02:53:53.000Z"
 ---
@@ -18,43 +17,9 @@ legacyContentUpdatedAt: "2025-01-20T02:53:53.000Z"
 
 将文本输出到活动窗口中
 
-{/* xaction-metadata:start */}
 ## 当前模块定义
 
-- 模块 Key：`sys:outputText`
-- 分类：基础（`Basic`）
-- 类型：`Action`
-- 风险操作：否
-- 专业版：否
-
-## 输入参数
-
-| Key | 名称 | 类型 | 默认值 | 必填 | 变量模式 | 条件 | 说明 |
-| --- | --- | --- | --- | --- | --- | --- | --- |
-| `content` | 内容 | `Text` |  | 是 | `UseVarOrInput` |  | 要输出的内容 |
-| `method` | 方法 | `Enum` | paste | 是 | `Input` |  | 发送内容使用的方法 |
-| `delayBeforePaste` | 粘贴前延时 | `Integer` | 50 | 否 | `Input` | 仅：paste | 毫秒数。写入剪贴板以后，等待指定的时间后再发送粘贴按键(Ctrl+V) |
-| `delayAfterPaste` | 粘贴后延时 | `Integer` | 10 | 否 | `Input` | 仅：paste | 毫秒数。发送粘贴按键(Ctrl+V)之后等待的毫秒数 |
-| `delayBetweenChar` | 字符间延迟 | `Integer` | 0 | 否 | `Input` | 仅：input | 模拟输入下一个字符之前等待的毫秒数。 |
-| `appendReturn` | 在末尾添加回车 | `Boolean` | false | 否 | `Input` |  | 发送内容后，在末尾输入回车 |
-| `hideInHistory` | 从剪贴板历史中隐藏 | `Boolean` | false | 否 | `Input` | 仅：paste | Win+v 是否允许看到本条历史 |
-| `stopIfFail` | 失败后停止 | `Boolean` | true | 否 | `Input` |  | 失败后是否停止动作 |
-
-## 输出参数
-
-| Key | 名称 | 类型 | 条件 | 说明 |
-| --- | --- | --- | --- | --- |
-| `isSuccess` | 步骤是否成功 | `Boolean` |  | 步骤是否成功完成 |
-
-## 选项值
-
-### `method` 方法
-
-| Value | 名称 | 说明 |
-| --- | --- | --- |
-| `input` | 模拟输入 |  |
-| `paste` | 复制到剪贴板后粘贴(Ctrl+V) |  |
-{/* xaction-metadata:end */}
+<XActionModuleMeta moduleKey="sys:outputText" />
 
 ## 概述
 
@@ -65,10 +30,6 @@ legacyContentUpdatedAt: "2025-01-20T02:53:53.000Z"
 ![](./img/outputtext-001-d1f5c49bfa.png)
 
 ## 参数
-
-
-
-
 
 **内容：**要发送到窗口的文字内容。
 
@@ -86,12 +47,6 @@ legacyContentUpdatedAt: "2025-01-20T02:53:53.000Z"
 ## 注意事项
 
 -   Excel或WPS表格：粘贴内容时，如果某个单元格处于激活状态（虚线环绕的选中状态）时，会粘贴此单元格的内容。请先模拟Esc按键，取消此状态之后再使用发送文本到窗口功能。
-
-
-
-
-
-
 
 ## 更新历史
 

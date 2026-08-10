@@ -9,7 +9,6 @@ comments: true
 moduleKey: "sys:basic-ocr"
 docStatus: "migrated-unreviewed"
 metadataGeneratedAt: "2026-08-03 20:08:03"
-metadataHash: "b5e2cb90fbdecde49087ea4eb514711321961d9a00f606f1ddc523e11c8625c1"
 legacyDocId: 3602224
 legacyContentUpdatedAt: "2024-12-06T01:38:30.000Z"
 ---
@@ -18,116 +17,15 @@ legacyContentUpdatedAt: "2024-12-06T01:38:30.000Z"
 
 获取图片中的文字
 
-{/* xaction-metadata:start */}
 ## 当前模块定义
 
-- 模块 Key：`sys:basic-ocr`
-- 分类：网络服务（`Network`）
-- 类型：`Action`
-- 风险操作：否
-- 专业版：否
-
-## 输入参数
-
-| Key | 名称 | 类型 | 默认值 | 必填 | 变量模式 | 条件 | 说明 |
-| --- | --- | --- | --- | --- | --- | --- | --- |
-| `operation` | 接口/引擎 | `Enum` | QuickerServerOcr | 是 | `Input` |  | OCR接口或引擎。离线引擎安装方式请参考模块文档。 |
-| `apiKey` | ApiKey | `Text` |  | 是 | `UseVarOrInput` | 仅：baidu-basic, baidu-custom | 请填写OCR帐号的ApiKey |
-| `secretKey` | SecretKey | `Text` |  | 是 | `UseVarOrInput` | 仅：baidu-basic, baidu-custom | 请填写OCR帐号的SecretKey |
-| `imgVar` | 图片变量 | `Image` |  | 是 | `UseVar` |  | 从指定变量中加载图片 |
-| `punctuationType` | 转换标点符号 | `Enum` | no | 是 | `UseVarOrInput` | 仅：baidu-basic, baidu-quicker, QuickerServerOcr | 合并文本时，是否转换标点符号 |
-| `mergeChapter` | 合并段落 | `Enum` | no | 是 | `UseVarOrInput` | 仅：baidu-basic, baidu-quicker, QuickerServerOcr | 是否智能合并段落。 |
-| `interface` | 接口名称或网址 | `Text` |  | 否 | `UseVarOrInput` | 仅：baidu-custom | 接口的完整网址，或 https://aip.baidubce.com/rest/2.0/ocr/v1/ 后面的部分 |
-| `options` | 附加参数 | `Dict` |  | 否 | `UseVarOrInput` | 仅：baidu-custom | 请参考百度官方/Quicker服务接口说明。每行一个参数，使用option:value的格式。 |
-| `lang` | 语言 | `Text` |  | 否 | `UseVarOrInput` | 仅：QuickerServerOcr, table_quicker | 待识别内容的语言。表格识别仅支持中英混合和英文。 |
-| `offlineMode` | 离线模式 | `Enum` | Auto | 否 | `Input` | 仅：QuickerServerOcr | 旧版兼容参数。Quicker OCR 当前固定使用在线服务；旧动作选择“仅使用离线引擎”时转为本地 OCR。新动作请直接选择“本地 OCR（中英）”。 |
-| `stopIfFail` | 失败后停止 | `Boolean` | true | 否 | `Input` |  | 失败后是否停止动作 |
-
-## 输出参数
-
-| Key | 名称 | 类型 | 条件 | 说明 |
-| --- | --- | --- | --- | --- |
-| `isSuccess` | 是否成功 | `Boolean` |  | 操作是否成功 |
-| `textList` | 行列表 | `List` | 仅：baidu-basic, baidu-quicker, QuickerServerOcr, LocalOcr, WindowsOcr | OCR识别结果，列表格式，每行一项。 |
-| `content` | 合并后结果 | `Text` | 仅：baidu-basic, baidu-quicker, QuickerServerOcr, LocalOcr, WindowsOcr, table_quicker | 合并在一起的的文本内容 |
-| `rawData` | 原始结果 | `Text` |  | API接口返回的完整内容 |
-| `rawObject` | 原始结果JObject对象 | `Object` | 仅：baidu-basic, baidu-quicker, baidu-custom | 返回结果的JObject对象 |
-
-## 选项值
-
-### `operation` 接口/引擎
-
-| Value | 名称 | 说明 |
-| --- | --- | --- |
-| `QuickerServerOcr` | Quicker OCR引擎 |  |
-| `WindowsOcr` | Windows10/11 内置OCR引擎 |  |
-| `baidu-basic` | 百度通用文字识别（自定义帐号） |  |
-| `baidu-quicker` | 百度通用文字识别（Quicker帐号） |  |
-| `baidu-custom` | 百度自定义接口识别（自定义帐号） |  |
-| `table_quicker` | 表格识别（Quicker服务） |  |
-| `LocalOcr` | 本地 OCR（中英） |  |
-
-### `punctuationType` 转换标点符号
-
-| Value | 名称 | 说明 |
-| --- | --- | --- |
-| `no` | 不转换 |  |
-| `sbc` | 全角符号 |  |
-| `dbc` | 半角符号 |  |
-
-### `mergeChapter` 合并段落
-
-| Value | 名称 | 说明 |
-| --- | --- | --- |
-| `no` | 不合并 |  |
-| `merge` | 合并 |  |
-
-### `interface` 接口名称或网址
-
-| Value | 名称 | 说明 |
-| --- | --- | --- |
-| `general_basic` | 通用文字识别（标准版） |  |
-| `general` | 通用文字识别（标准含位置版） |  |
-| `accurate_basic` | 通用文字识别（高精度版） |  |
-| `accurate` | 通用文字识别（高精度含位置版） |  |
-| `handwriting` | 手写文字识别 |  |
-| `numbers` | 数字识别 |  |
-| `doc_analysis_office` | 办公文档识别 |  |
-| `form` | 表格文字识别(同步接口) |  |
-| `qrcode` | 二维码识别 |  |
-
-### `lang` 语言
-
-| Value | 名称 | 说明 |
-| --- | --- | --- |
-| `CHN_ENG` | 中英混合 |  |
-| `ENG` | 英语 |  |
-| `KOR` | 韩语 |  |
-| `JAP` | 日语 |  |
-| `CHT` | 繁体中文 |  |
-| `LAT` | 拉丁语 |  |
-| `ARA` | 阿拉伯语 |  |
-
-### `offlineMode` 离线模式
-
-| Value | 名称 | 说明 |
-| --- | --- | --- |
-| `Auto` | 自动 |  |
-| `OnlineOnly` | 仅使用在线服务 |  |
-| `OfflineOnly` | 仅使用离线引擎 |  |
-{/* xaction-metadata:end */}
+<XActionModuleMeta moduleKey="sys:basic-ocr" />
 
 识别图片中的文字或表格。
 
 目前支持的接口类型：
 
 ![](./img/basic-ocr-001-05752ebcaf.png)
-
-
-
-
-
-
 
 ## Quicker OCR引擎
 
@@ -152,13 +50,7 @@ legacyContentUpdatedAt: "2024-12-06T01:38:30.000Z"
 -   首次使用（或空闲时间超过设定的保活时间后第一次使用），需要一定的额外时间加载模型；
 -   注：不支持多线程，请勿多线程方式或同时在多个动作中调用；
 
-
-
-
-
 ![](./img/basic-ocr-002-39aae5242a.png)
-
-
 
 **参数说明**
 
@@ -182,8 +74,6 @@ legacyContentUpdatedAt: "2024-12-06T01:38:30.000Z"
 
 ![](./img/basic-ocr-003-9122e59f45.png)
 
-
-
 **输出**
 
 【是否成功】是否成功识别。
@@ -194,29 +84,17 @@ legacyContentUpdatedAt: "2024-12-06T01:38:30.000Z"
 
 【原始结果】原始识别结果的json格式文本。
 
-
-
-
-
 ### 离线识别引擎包
-
-
-
-
 
 **安装条件：**
 
 -   64位Windows系统。
 -   CPU支持AVX指令集。
 
-
-
 **什么情况下需要离线识别包：**
 
 -   识别需求比较多；（如果识别需求不多，可以直接使用在线服务，首次识别速度更快。专业版用户独享GPU服务器，性能更好。）
 -   需要屏幕找字功能；
-
-
 
 **下载网址：**
 
@@ -237,8 +115,6 @@ legacyContentUpdatedAt: "2024-12-06T01:38:30.000Z"
 -   支持屏幕找字功能；
 -   支持设定保活时间；
 
-
-
 **安装方法：**
 
 -   下载安装包zip文件。
@@ -256,10 +132,6 @@ legacyContentUpdatedAt: "2024-12-06T01:38:30.000Z"
 
 [QuickerOCR离线 - by CL - 动作信息 - Quicker](https://getquicker.net/Sharedaction?code=4f27bd92-e6fc-4c48-ad58-08dd15875f2b)
 
-
-
-
-
 **使用：**
 
 安装离线包后，接选择 `Quicker OCR引擎`（原名“Quicker 免费OCR服务”），离线模式中选择`自动`或`仅使用离线引擎`即可自动使用离线OCR引擎。
@@ -269,8 +141,6 @@ legacyContentUpdatedAt: "2024-12-06T01:38:30.000Z"
 **设置保活时间：**
 
 保活时间是指离线引擎在处理OCR请求后等待一定的时间，没有新的请求再退出。 这样可以避免每次识别重新加载模型，从而可以大幅提升后续识别的效率。
-
-
 
 ![](./img/basic-ocr-008-074dd26b9c.png)
 
@@ -284,8 +154,6 @@ Windows自带OCR引擎识别速度快但是效果比较一般。
 
 参数请参考上文中“Quicker OCR引擎”中的说明。
 
-
-
 ## 百度OCR识别
 
 使用百度的OCR服务识别文字。支持下面3个接口：
@@ -294,19 +162,13 @@ Windows自带OCR引擎识别速度快但是效果比较一般。
 -   百度通用文字识别 (Quicker帐号)
 -   百度自定义接口识别 (自定义帐号)
 
-
-
 ### 百度通用文字识别（自定义账号）
 
 ![](./img/basic-ocr-010-8529b7185c.png)
 
 使用自有账号调用百度通用文字识别接口。
 
-
-
 **参数**
-
-
 
 【ApiKey】自有百度帐号的ApiKey。
 
@@ -317,8 +179,6 @@ Windows自带OCR引擎识别速度快但是效果比较一般。
 【转换标点符号】选择是否对识别结果中的标点符号进行转换。
 
 【合并段落】选择是否将多行合并成一个段落（根据行的末尾是不是有句子结束的标点符号判断）。
-
-
 
 **输出**
 
@@ -332,11 +192,7 @@ Windows自带OCR引擎识别速度快但是效果比较一般。
 
 【原始结果JObject对象】返回的JObject对象，可用于提取内容。
 
-
-
 ### 百度通用文字识别（Quicker账号）
-
-
 
 **Quicker公共帐号**主要目的是消除大家自己申请百度帐号的麻烦。因为所有用户共享百度公司提供的每日5万次免费调用额度，所以此公共帐号会有一定的限制：
 
@@ -349,13 +205,7 @@ Windows自带OCR引擎识别速度快但是效果比较一般。
 
 -   在设置中可选择在免费额度用完以后耗费Q豆继续使用基础OCR服务（请参见下一个章节的截图）。每次OCR的费用为0.005Q豆（1元可用200次）。[什么是Q豆？](https://getquicker.net/KC/Kb/Article/933)
 
-
-
 ![](./img/basic-ocr-011-b78e0b4cbb.png)
-
-
-
-
 
 ### 使用全局自有OCR账号
 
@@ -367,8 +217,6 @@ Windows自带OCR引擎识别速度快但是效果比较一般。
 
 【总是使用上面设置的自有ApiKey】设置自有百度账号后，在Quicker中使用“基础OCR”模块时，自动使用自有账号，即使已经在动作中配置了账号或选择使用Quicker的账号。
 
-
-
 ### 百度自定义接口识别
 
 使用指定的百度接口识别文字，并返回原始响应内容。
@@ -377,11 +225,7 @@ Windows自带OCR引擎识别速度快但是效果比较一般。
 
 请参考：[百度账号申请教程](https://getquicker.net/KC/Kb/Article/364)，作者@Marcus
 
-
-
 ![](./img/basic-ocr-013-5bb4f3d6f2.png)
-
-
 
 **参数**
 
@@ -409,11 +253,7 @@ Windows自带OCR引擎识别速度快但是效果比较一般。
 
 参考动作：[表格识别](https://getquicker.net/Sharedaction?code=3fc97b7e-7be1-4a23-3d64-08db3e27302e)
 
-
-
 ![](./img/basic-ocr-015-0fc9ae6f35.png)
-
-
 
 参数：请参考前面其它接口的说明。
 

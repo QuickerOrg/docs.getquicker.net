@@ -9,7 +9,6 @@ comments: true
 moduleKey: "sys:pythonscript"
 docStatus: "migrated-unreviewed"
 metadataGeneratedAt: "2026-08-03 20:08:03"
-metadataHash: "6861abc546ab0aa245560f7c45499248964f7401dccfe0ce29316861fd124f0c"
 legacyDocId: 84031885
 legacyContentUpdatedAt: "2025-06-24T01:29:03.000Z"
 ---
@@ -18,29 +17,9 @@ legacyContentUpdatedAt: "2025-06-24T01:29:03.000Z"
 
 执行Python代码片段。
 
-{/* xaction-metadata:start */}
 ## 当前模块定义
 
-- 模块 Key：`sys:pythonscript`
-- 分类：程序流程（`Flow`）
-- 类型：`Action`
-- 风险操作：否
-- 专业版：否
-
-## 输入参数
-
-| Key | 名称 | 类型 | 默认值 | 必填 | 变量模式 | 条件 | 说明 |
-| --- | --- | --- | --- | --- | --- | --- | --- |
-| `script` | 脚本内容 | `Text` | ##.py <br />quicker.context.SetVarValue('text', 'hello world')<br /> | 是 | `UseVarOrInput` |  | 要运行的脚本内容 |
-| `pythonPath` | Python环境路径 | `Text` |  | 否 | `UseVarOrInput` |  | 可选。Python环境(PythonXXX.dll)所在目录，留空时使用全局设置 |
-| `stopIfFail` | 失败后停止 | `Boolean` | true | 否 | `Input` |  | 失败后是否停止动作 |
-
-## 输出参数
-
-| Key | 名称 | 类型 | 条件 | 说明 |
-| --- | --- | --- | --- | --- |
-| `isSuccess` | 是否成功 | `Boolean` |  | 操作是否成功 |
-{/* xaction-metadata:end */}
+<XActionModuleMeta moduleKey="sys:pythonscript" />
 
 执行python代码片段。
 
@@ -59,8 +38,6 @@ legacyContentUpdatedAt: "2025-06-24T01:29:03.000Z"
 
 ![](./img/pythonscript-001-d88736ee67.png)
 
-
-
 ### Python的路径
 
 可以直接设定cpython主运行库的路径，也可以让Quicker自动查找python。
@@ -74,8 +51,6 @@ legacyContentUpdatedAt: "2025-06-24T01:29:03.000Z"
 未设定运行库路径时，Quicker 会尝试从系统PATH环境变量所包含的目录中寻找符合条件的目录。
 
 目录名需要包含版本信息，如3.9版目录名应该为xx\\xxx\\python39（目录内有python39.dll，目录名和dll文件名匹配）。
-
-
 
 ## 参数
 
@@ -94,11 +69,7 @@ quicker.context.SetVarValue('list', ['hello1','hello2','hello3'])
 quicker.context.SetVarValue('dict', {'a':1, 'b':2, 'day':'2022-1-1'})
 ```
 
-
-
 建议不要返回更复杂的数据类型（从python到c#的转换可能会出现奇怪的问题），而是在python中完成所有处理以后将简单的值返回到动作。
-
-
 
 ## 测试动作
 

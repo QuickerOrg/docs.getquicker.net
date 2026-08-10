@@ -9,7 +9,6 @@ comments: true
 moduleKey: "sys:getCurrentTime"
 docStatus: "migrated-unreviewed"
 metadataGeneratedAt: "2026-08-03 20:08:03"
-metadataHash: "6834def7059fa1b1d16e8bfd1518bc421152c9d4359b0fe695bdd6a16fc113fa"
 legacyDocId: 2118194
 legacyContentUpdatedAt: "2025-01-20T00:48:35.000Z"
 ---
@@ -18,115 +17,19 @@ legacyContentUpdatedAt: "2025-01-20T00:48:35.000Z"
 
 获取当前或从文本、unix时间戳转换日期时间
 
-{/* xaction-metadata:start */}
 ## 当前模块定义
 
-- 模块 Key：`sys:getCurrentTime`
-- 分类：Windows系统（`System`）
-- 类型：`Action`
-- 风险操作：否
-- 专业版：否
-
-## 输入参数
-
-| Key | 名称 | 类型 | 默认值 | 必填 | 变量模式 | 条件 | 说明 |
-| --- | --- | --- | --- | --- | --- | --- | --- |
-| `source` | 时间来源 | `Enum` | currTime | 是 | `Input` |  | 时间数据来源 |
-| `useUtc` | 使用UTC时间 | `Boolean` | false | 否 | `Input` | 仅：currTime, fromString, fromUnixTimeStamp, Source_UnixTimeStampMs | 是表示使用UTC时间，否表示使用本地时间（电脑的当前时间）。 |
-| `timeStr` | 待解析文本 | `Text` |  | 否 | `UseVarOrInput` | 仅：fromString | 待转换为时间值的文本 |
-| `inputFormat` | 数据格式 | `Text` |  | 否 | `UseVarOrInput` | 仅：fromString | 可选，待解析文本的数据格式，如yyyy表示4位数年份，MM表示2位数月份等。详情请参考文档。 |
-| `inputCulture` | 语言文化 | `Text` | CURRENT | 否 | `UseVarOrInput` | 仅：fromString | 可选，待解析文本的语言文化。如zh-CN表示中文简体，en-US表示英文美国等。详情请参考文档。 |
-| `timeVar` | 时间变量 | `DateTime` |  | 否 | `UseVarOnly` | 仅：fromVar | 时间变量 |
-| `timeStampStr` | Unix时间戳值 | `Text` |  | 否 | `UseVarOrInput` | 仅：fromUnixTimeStamp, Source_UnixTimeStampMs | 从1970年1月1日开始所经过的秒数或毫秒数。根据需要开启或关闭使用UTC时间选项。 |
-| `addDays` | 添加天数 | `Number` | 0 | 否 | `UseVarOrInput` |  | 添加指定的天数（可以为小数/负数） |
-| `addHours` | 添加小时数 | `Number` | 0 | 否 | `UseVarOrInput` |  | 添加指定的小时数（可以为小数/负数） |
-| `addMinutes` | 添加分钟数 | `Number` | 0 | 否 | `UseVarOrInput` |  | 添加指定的分钟数（可以为小数/负数） |
-| `addSeconds` | 添加秒数 | `Number` | 0 | 否 | `UseVarOrInput` |  | 添加指定的秒数（可以为小数/负数） |
-| `addMonths` | 添加月数 | `Number` | 0 | 否 | `UseVarOrInput` |  | 添加指定的月数（整数）结果不跨月，如1月31日增加1个月等于2月28日。 |
-| `format` | 输出文本值格式 | `Text` | yyyy-MM-dd HH:mm:ss | 否 | `UseVarOrInput` |  | 文本值的输出格式，请参考c#语言DateTime.ToString()的参数文档。 |
-| `outputCulture` | 输出语言文化 | `Text` | CURRENT | 否 | `UseVarOrInput` |  | 可选。指定将时间值格式化为文本时所使用的语言文化。如zh-CN表示中文简体，en-US表示美国英文等。 |
-| `stopIfFail` | 失败后停止 | `Boolean` | true | 否 | `Input` |  | 失败后是否停止动作 |
-
-## 输出参数
-
-| Key | 名称 | 类型 | 条件 | 说明 |
-| --- | --- | --- | --- | --- |
-| `isSuccess` | 是否成功 | `Boolean` |  | 操作是否成功 |
-| `output` | 时间值 | `DateTime` |  | 日期时间类型的结果时间 |
-| `strValue` | 文本值 | `Text` |  | 按'文本值格式'参数转换后的文本格式值 |
-| `timeStamp` | UNIX时间戳(s) | `Integer` |  | 获取Unix时间戳（1970年1月1日0时到指定时间的秒数） |
-| `timeStampMs` | UNIX时间戳(ms) | `Integer` |  | 获取Unix时间戳（1970年1月1日0时到指定时间的毫秒数） |
-| `year` | 年 | `Integer` |  | 年份值 |
-| `month` | 月 | `Integer` |  | 月份值 |
-| `day` | 日 | `Integer` |  | 日期值 |
-| `hour` | 时 | `Integer` |  | 当前小时数，24小时制。 |
-| `minute` | 分 | `Integer` |  | 当前分钟数。 |
-| `second` | 秒 | `Integer` |  | 当前秒数。 |
-| `dayOfWeek` | 周第几天 | `Integer` |  | 本周的第几天，周日为0，周一为1，以此类推。 |
-| `dayOfYear` | 年第几天 | `Integer` |  | 本年的第几天。 |
-
-## 选项值
-
-### `source` 时间来源
-
-| Value | 名称 | 说明 |
-| --- | --- | --- |
-| `currTime` | 当前时间 |  |
-| `fromString` | 从文本转换 |  |
-| `fromUnixTimeStamp` | 从Unix时间戳转换(秒) |  |
-| `Source_UnixTimeStampMs` | 从Unix时间戳转换(毫秒) |  |
-| `fromVar` | 时间变量 |  |
-
-### `inputCulture` 语言文化
-
-| Value | 名称 | 说明 |
-| --- | --- | --- |
-| `CURRENT` | 当前系统语言 |  |
-| `zh-CN` | 中文 |  |
-| `en-US` | 英文 |  |
-| `ja-JP` | 日文 |  |
-| `ko-KR` | 韩文 |  |
-| `fr-FR` | 法文 |  |
-| `de-DE` | 德文 |  |
-| `es-ES` | 西班牙文 |  |
-| `it-IT` | 意大利文 |  |
-| `ru-RU` | 俄文 |  |
-| `pt-BR` | 葡萄牙文(巴西) |  |
-
-### `outputCulture` 输出语言文化
-
-| Value | 名称 | 说明 |
-| --- | --- | --- |
-| `CURRENT` | 当前系统语言 |  |
-| `zh-CN` | 中文 |  |
-| `en-US` | 英文 |  |
-| `ja-JP` | 日文 |  |
-| `ko-KR` | 韩文 |  |
-| `fr-FR` | 法文 |  |
-| `de-DE` | 德文 |  |
-| `es-ES` | 西班牙文 |  |
-| `it-IT` | 意大利文 |  |
-| `ru-RU` | 俄文 |  |
-| `pt-BR` | 葡萄牙文(巴西) |  |
-{/* xaction-metadata:end */}
+<XActionModuleMeta moduleKey="sys:getCurrentTime" />
 
 获取一个时间（如系统当前时间/从时间戳或文本内容转换），根据需求做一定的计算，然后输出结果时间。
 
 本部分内容也可以直接在表达式中使用C#的[DateTime](https://learn.microsoft.com/en-us/dotnet/api/system.datetime?view=netframework-4.7.2)类型实现。
 
-
-
 ![](./img/gettime-001-55f804be61.png)
-
-
 
 ## 参数
 
-
-
 ### 输入
-
-
 
 #### 第一部分，获取原始时间值。
 
@@ -160,8 +63,6 @@ legacyContentUpdatedAt: "2025-01-20T00:48:35.000Z"
 
 ![](./img/gettime-004-27bb91cde0.png)
 
-
-
 **从Unix时间戳转换（秒/毫秒）**
 
 ![](./img/gettime-005-2780cf4098.png)
@@ -175,10 +76,6 @@ Unix时间戳是从1970年1月1日（UTC）开始所经过的秒数（或毫秒�
 ![](./img/gettime-006-52ec9204f6.png)
 
 读取指定时间变量中的值。
-
-
-
-
 
 #### 第二部分，计算。
 
@@ -194,23 +91,17 @@ Unix时间戳是从1970年1月1日（UTC）开始所经过的秒数（或毫秒�
 
 ![](./img/gettime-007-d4ab510a53.png)
 
-
-
 【输出文本值格式】
 
 用于控制输出参数中的“文本值”的日期时间格式。请参考C#日期时间格式化相关内容。
 
 如，使用“yyyy-MM-dd HH:mm:ss”，得到的文本值为“2020-06-16 10:38:32”
 
-
-
 【输出语言文化】
 
 当需要输出其它语言的时间文本时，设定目标语言信息。
 
 ### 常用格式指令字符
-
-
 
 **标准日期时间格式字符串**（[参考](https://learn.microsoft.com/zh-cn/dotnet/standard/base-types/standard-date-and-time-format-strings)，下表为此参考文档内容摘录）
 
@@ -234,11 +125,7 @@ Unix时间戳是从1970年1月1日（UTC）开始所经过的秒数（或毫秒�
 | U | 通用完整日期/时间模式。  <br />  <br />更多信息：[通用完整（“U”）格式说明符](https://learn.microsoft.com/zh-cn/dotnet/standard/base-types/standard-date-and-time-format-strings#UniversalFull)<br />。 | 2009-06-15T13:45:30 -&gt; Monday, June 15, 2009 8:45:30 PM (en-US)  <br />  <br />2009-06-15T13:45:30 -&gt; den 15 juni 2009 20:45:30 (sv-SE)  <br />  <br />2009-06-15T13:45:30 -&gt; Δευτέρα, 15 Ιουνίου 2009 8:45:30 μμ (el-GR) |
 | Y、y | 年月模式。  <br />  <br />更多信息：[年月（“Y”、“y”）格式说明符](https://learn.microsoft.com/zh-cn/dotnet/standard/base-types/standard-date-and-time-format-strings)<br />。 | 2009-06-15T13:45:30 -&gt; June 2009 (en-US)  <br />  <br />2009-06-15T13:45:30 -&gt; juni 2009 (da-DK)  <br />  <br />2009-06-15T13:45:30 -&gt; Juni 2009 (id-ID) |
 
-
-
 **自定义日期时间格式字符串**（[参考](https://learn.microsoft.com/zh-cn/dotnet/standard/base-types/custom-date-and-time-format-strings)）
-
-
 
 可组合使用。如`yyyy-MM-dd`
 
@@ -264,8 +151,6 @@ Unix时间戳是从1970年1月1日（UTC）开始所经过的秒数（或毫秒�
 | fff | 毫秒数前3位 | 235 |
 | ffff | 毫秒数前4位 | 2350 |
 | 分隔符 | 可使用分隔符来分隔年月日时分秒。<br />包含的值可为：-、/、:等非关键字符(中文也可以） | yyyy-MM-dd HH:mm:ss:ffff<br />  =&gt; 2016-05-09 13:09:55:2350<br />yyyy/MM/dd HH:mm:ss:ffff<br />  =&gt; 2016/05/09 13:09:55:2350<br />yyyy/MM/dd HH:mm:ss:ffff dddd<br />  =&gt; 2016/05/09 13:09:55:2350 星期一<br />yyyy年MM月dd日 HH时mm分ss秒<br />\=&gt; 2016年05月09日 13时09分55秒 |
-
-
 
 ### 输出
 
@@ -294,8 +179,6 @@ Unix时间戳是从1970年1月1日（UTC）开始所经过的秒数（或毫秒�
 -   $=DateTime.Now.Year
 
 -   得到当前年份数字
-
-
 
 ## 示例动作
 

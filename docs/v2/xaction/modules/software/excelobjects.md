@@ -9,7 +9,6 @@ comments: true
 moduleKey: "sys:excelObjects"
 docStatus: "migrated-unreviewed"
 metadataGeneratedAt: "2026-08-03 20:08:03"
-metadataHash: "d333902d14d67a88c0e9417568107696fd52110202a0db47a1578dee369935e0"
 legacyDocId: 9257561
 legacyContentUpdatedAt: "2023-02-16T07:33:45.000Z"
 ---
@@ -18,50 +17,9 @@ legacyContentUpdatedAt: "2023-02-16T07:33:45.000Z"
 
 操作Excel的某个对象
 
-{/* xaction-metadata:start */}
 ## 当前模块定义
 
-- 模块 Key：`sys:excelObjects`
-- 分类：第三方软件交互（`SoftInteraction`）
-- 类型：`Action`
-- 风险操作：否
-- 专业版：否
-
-## 输入参数
-
-| Key | 名称 | 类型 | 默认值 | 必填 | 变量模式 | 条件 | 说明 |
-| --- | --- | --- | --- | --- | --- | --- | --- |
-| `operation` | 操作类型 | `Enum` |  | 是 | `Input` |  | 操作类型 |
-| `workbook` | 工作簿对象 | `Object` |  | 否 | `UseVarOrInput` | 仅：SaveWorkbook, CloseWorkbook, SelectWorksheet | 根据具体操作，可用参数不同。请参考文档。 |
-| `params` | 参数 | `Text` |  | 否 | `UseVarOrInput` |  | 根据具体操作，可用参数不同。请参考文档。 |
-| `path` | 文件/模板路径 | `Text` |  | 否 | `UseVarOrInput` | 仅：OpenFile, SaveWorkbook, CreateWorkbook | 完整路径。创建工作簿时，用于指定模板文件。 |
-| `stopIfFail` | 失败后停止 | `Boolean` | true | 否 | `Input` |  | 失败后是否停止动作 |
-
-## 输出参数
-
-| Key | 名称 | 类型 | 条件 | 说明 |
-| --- | --- | --- | --- | --- |
-| `isSuccess` | 是否成功 | `Boolean` |  | 操作是否成功 |
-| `application` | Application对象 | `Object` | 仅：ApplicationInfo, OpenFile, CreateWorkbook | Application对象的引用 |
-| `activeWorkbook` | 活动工作簿 | `Object` | 仅：ApplicationInfo, OpenFile, CreateWorkbook | ActiveWorkbook |
-| `activeSheet` | 活动工作表 | `Object` | 仅：ApplicationInfo, OpenFile, CreateWorkbook | ActiveSheet |
-| `worksheets` | 工作表对象列表 | `Object` | 仅：ApplicationInfo, OpenFile, CreateWorkbook | Worksheets |
-| `worksheetNames` | 工作表名称的列表 | `List` | 仅：ApplicationInfo, OpenFile | Worksheets |
-| `workbookPath` | 工作簿路径 | `Text` | 仅：ApplicationInfo | Worksheets |
-
-## 选项值
-
-### `operation` 操作类型
-
-| Value | 名称 | 说明 |
-| --- | --- | --- |
-| `ApplicationInfo` | 获取当前Excel应用信息 |  |
-| `OpenFile` | 工作簿: 打开工作簿 |  |
-| `SaveWorkbook` | 工作簿: 保存工作簿 |  |
-| `CloseWorkbook` | 工作簿: 关闭工作簿 |  |
-| `CreateWorkbook` | 工作簿: 创建工作簿 |  |
-| `SelectWorksheet` | 工作表：选择工作表 |  |
-{/* xaction-metadata:end */}
+<XActionModuleMeta moduleKey="sys:excelObjects" />
 
 用于打开或创建工作簿。
 
@@ -74,13 +32,7 @@ legacyContentUpdatedAt: "2023-02-16T07:33:45.000Z"
 -   通过编程方式修改Excel工作簿后，将无法撤销修改。
 -   可能需要一定的c#和VBA知识才能方便的使用本模块。
 
-
-
-
-
 ## 各操作类型
-
-
 
 ### 获取当前Excel应用信息
 
@@ -110,8 +62,6 @@ legacyContentUpdatedAt: "2023-02-16T07:33:45.000Z"
 
 【Application对象】Marshal.GetActiveObject("Excel.Application")得到的对象本身。
 
-
-
 ### 打开工作簿
 
 打开指定的excel文件。
@@ -135,8 +85,6 @@ legacyContentUpdatedAt: "2023-02-16T07:33:45.000Z"
 -   4 Semicolons
 -   5 Nothing
 
-
-
 **输出**
 
 【活动工作簿】当前活动的Workbook对象（[Application.ActiveWorkbook](https://docs.microsoft.com/en-us/dotnet/api/microsoft.office.interop.excel._application.activeworkbook?view=excel-pia)）。
@@ -148,8 +96,6 @@ legacyContentUpdatedAt: "2023-02-16T07:33:45.000Z"
 【工作簿路径】当前窗口的文件路径（通过\_Application.ActiveWorkbook.FullName得到）。
 
 【Application对象】打开此文件的Application对象。如果之前已经存在Application对象，则使用已存在的，否则创建一个新的Application对象。通常每个Application对象对应一个Excel进程。
-
-
 
 ### 保存工作簿
 
@@ -171,10 +117,6 @@ legacyContentUpdatedAt: "2023-02-16T07:33:45.000Z"
 -   Password=密码。
 -   FileFormat=保存文件格式，可选值请参考：[https://docs.microsoft.com/en-us/dotnet/api/microsoft.office.interop.excel.xlfileformat?view=excel-pia](https://docs.microsoft.com/en-us/dotnet/api/microsoft.office.interop.excel.xlfileformat?view=excel-pia)
 
-
-
-
-
 ### 创建工作簿
 
 创建一个新的工作簿。
@@ -189,8 +131,6 @@ legacyContentUpdatedAt: "2023-02-16T07:33:45.000Z"
 
 +:工作表1
 +:工作表2
-
-
 
 ### 选择工作表
 
@@ -208,10 +148,6 @@ legacyContentUpdatedAt: "2023-02-16T07:33:45.000Z"
 -   name=工作表名称
 
 请确保工作表是存在的。
-
-
-
-
 
 ## 示例动作
 

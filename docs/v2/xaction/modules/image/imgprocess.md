@@ -9,7 +9,6 @@ comments: true
 moduleKey: "sys:imgProcess"
 docStatus: "migrated-unreviewed"
 metadataGeneratedAt: "2026-08-03 20:08:03"
-metadataHash: "2ae369b409eca92bd6b3efa0cc0c2b38654cfe8ed15a5b72ef04a9c9df31f45f"
 legacyDocId: 2213317
 legacyContentUpdatedAt: "2024-08-26T12:05:06.000Z"
 ---
@@ -18,72 +17,13 @@ legacyContentUpdatedAt: "2024-08-26T12:05:06.000Z"
 
 图片处理和变换
 
-{/* xaction-metadata:start */}
 ## 当前模块定义
 
-- 模块 Key：`sys:imgProcess`
-- 分类：图片处理（`Image`）
-- 类型：`Action`
-- 风险操作：否
-- 专业版：否
-
-## 输入参数
-
-| Key | 名称 | 类型 | 默认值 | 必填 | 变量模式 | 条件 | 说明 |
-| --- | --- | --- | --- | --- | --- | --- | --- |
-| `img` | 图片 | `Image` |  | 是 | `UseVar` |  | 要转换的图片 |
-| `type` | 操作类型 | `Enum` | resize_percent | 是 | `Input` |  | 对图片的转换操作类型 |
-| `resizePercent` | 缩放比例 | `Number` | 50 | 否 | `UseVarOrInput` | 仅：resize_percent | 缩小或放大到原来的百分之多少 |
-| `maxWidth` | 最大宽度 | `Integer` | 0 | 否 | `UseVarOrInput` | 仅：resize_pixel | 最大宽度(像素数)，0表示自动 |
-| `maxHeight` | 最大高度 | `Integer` | 0 | 否 | `UseVarOrInput` | 仅：resize_pixel | 最大高度(像素数)，0表示自动 |
-| `rotation` | 旋转方式 | `Integer` | 0 | 否 | `UseVarOrInput` | 仅：Rotate | 顺时针角度。0:不旋转, 1:90°, 2:180°, 3:270°, 其他值请参考模块文档。 |
-| `filterParams` | 处理参数 | `Text` |  | 否 | `Input` | 仅：Filters | 每行设定一个处理步骤，具体设置请参考文档 |
-| `iconFilePath` | 图标文件保存路径 | `Text` |  | 是 | `UseVarOrInput` | 仅：GenerateIco | 保存图标文件(.ico)的完整路径 |
-| `iconSize` | 图标大小 | `Text` | 256,48,32,16 | 是 | `UseVarOrInput` | 仅：GenerateIco | 图标中的位图大小，单位为像素。多尺寸图标可用英文逗号风格 |
-| `iconScaling` | 缩放采样 | `Enum` | HighQualityBicubic | 否 | `Input` | 仅：GenerateIco | 自动：整数倍放大使用邻近采样，大比例缩小使用 Lanczos，其余使用高质量双三次 |
-| `stopIfFail` | 失败后停止 | `Boolean` | true | 否 | `Input` |  | 失败后是否停止动作 |
-
-## 输出参数
-
-| Key | 名称 | 类型 | 条件 | 说明 |
-| --- | --- | --- | --- | --- |
-| `isSuccess` | 是否成功 | `Boolean` |  | 操作是否成功 |
-| `result` | 结果图片 | `Image` | 仅：Clone, resize_percent, resize_pixel, Filters | 处理后的图片 |
-
-## 选项值
-
-### `type` 操作类型
-
-| Value | 名称 | 说明 |
-| --- | --- | --- |
-| `resize_percent` | 缩放图片(指定比例) |  |
-| `resize_pixel` | 缩小图片(指定像素) |  |
-| `Clone` | 复制图片 |  |
-| `Invert` | 反色 |  |
-| `GrayScale` | 灰度 |  |
-| `Rotate` | 旋转 |  |
-| `Filters` | 组合处理 |  |
-| `GenerateIco` | 生成图标文件(.ico) |  |
-
-### `iconScaling` 缩放采样
-
-| Value | 名称 | 说明 |
-| --- | --- | --- |
-| `Auto` | 自动 |  |
-| `NearestNeighbor` | 像素化（邻近采样） |  |
-| `HighQualityBilinear` | 清晰（高质量双线性） |  |
-| `HighQualityBicubic` | 平滑（高质量双三次） |  |
-| `Lanczos` | 锐利（Lanczos） |  |
-| `Box` | 区域平均（Box） |  |
-{/* xaction-metadata:end */}
+<XActionModuleMeta moduleKey="sys:imgProcess" />
 
 对图片进行变换处理后输出。
 
-
-
 ![](./img/imgprocess-001-8dd5601f33.png)
-
-
 
 ## 常规处理
 
@@ -102,17 +42,11 @@ legacyContentUpdatedAt: "2024-08-26T12:05:06.000Z"
 -   **组合处理：请参考后面的章节。**
 -   生成图标文件：根据图片生成ico文件。详见后面章节。
 
-
-
 【缩小比例】按比例缩小图片时，将图片缩小到原始尺寸的百分比。如“50”表示将图片边长缩小到原来的一半。
 
 【最大宽度】【最大高度】按像素缩小图片时，指定宽度和高度的最大值。0表示自动（根据另一边指定的像素数）。图片将保持长宽比进行缩放。可以同时指定最大高度和最大宽度。
 
-
-
 【旋转方式】一个指定图片旋转的度数和翻转规则的数字，其值和含义对应如下表所示（度数全部为顺时针方向）：
-
-
 
 | 值 | 旋转和翻转方式 |
 | --- | --- |
@@ -126,19 +60,9 @@ legacyContentUpdatedAt: "2024-08-26T12:05:06.000Z"
 | 7 | -   旋转90度后接垂直翻转<br />-   旋转270度后接水平翻转 |
 | 99 | 根据图片中Exif中的方向信息自动旋转。 |
 
-
-
 **输出**
 
 【结果图片】在一些操作方式下会输出处理后的图片。对于没有此输出的情况，表示直接在原始图片上进行处理。
-
-
-
-
-
-
-
-
 
 ## 组合图片处理
 
@@ -146,13 +70,9 @@ legacyContentUpdatedAt: "2024-08-26T12:05:06.000Z"
 
 对图片进行一系列的处理步骤。本功能封装了[ImageProcess](https://github.com/JimBobSquarePants/ImageProcessor)库的相关功能，可以参考该库的文档了解更多内容。您可能需要对图像处理有一定的了解才能有效使用本模块。
 
-
-
 使用组合处理时，通过【处理参数】传入要处理的步骤和相应的参数，每行一个。
 
 此时，【图片】参数不是必须的，也可以【处理参数】中通过**Load:**命令从磁盘加载图片；【结果图片】输出参数也可以不需要，而是通过【处理参数】中的**Save:**命令直接保存到磁盘。
-
-
 
 **示例**
 
@@ -182,17 +102,11 @@ Save:{savePath}
 -   自动旋转
 -   高于指定亮度的像素修改为白色
 
-
-
 处理效果如下图所示：
 
 ![](./img/imgprocess-003-a8856c088e.png)
 
-
-
 ### 命令与参数
-
-
 
 #### 格式约定
 
@@ -200,11 +114,7 @@ Save:{savePath}
 -   命令格式为：**命令单词****:****参数1****;****参数2****;****...** （命令单词后使用**半角冒号**，后面跟随使用半角分号隔开的参数）
 -   以//开始的行作为注释，不进行处理
 
-
-
 ### 命令列表
-
-
 
 | **处理** | **命令及说明** |
 | --- | --- |
@@ -246,21 +156,11 @@ Save:{savePath}
 | 输出质量 | Quality:质量<br />-   质量：输出为jpeg时的质量，范围0-100<br />-   仅对Save到jpg文件时有效。 |
 | 清除Exif数据 | ClearMetaData: |
 
-
-
-
-
-
-
-
-
 ### 参考图片
 
 （1）Filter 滤镜效果 (2)边界检测滤镜效果
 
 ![](./img/imgprocess-004-ef8b3abb54.png) ![](./img/imgprocess-005-dc437ffe22.png)
-
-
 
 ## 生成图标文件
 
@@ -273,8 +173,6 @@ Save:{savePath}
 【图标文件保存路径】生成的ico文件存储路径（需要完整路径）。
 
 【图标大小】图标中包含的位图大小，可以只包含一个大小的位图，如`32`，也可以包含多个大小的位图，使用半角逗号隔开，如`256,48,32,16`。Quicker会自动对原始图片缩放生成对应的位图。
-
-
 
 ## 更新历史
 

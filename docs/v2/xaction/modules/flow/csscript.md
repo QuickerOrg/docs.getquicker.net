@@ -9,7 +9,6 @@ comments: true
 moduleKey: "sys:csscript"
 docStatus: "migrated-unreviewed"
 metadataGeneratedAt: "2026-08-03 20:08:03"
-metadataHash: "7888664933e007d3085c255f73ead0a6c504c320faa8ef21e1f59c34f74c7aac"
 legacyDocId: 2571327
 legacyContentUpdatedAt: "2025-01-20T01:01:01.000Z"
 ---
@@ -18,61 +17,9 @@ legacyContentUpdatedAt: "2025-01-20T01:01:01.000Z"
 
 执行 C# 代码。普通模式可直接写语句（纯脚本），也可继续使用完整的 `Exec(context)`；低权限模式与生成程序集模式仍需按各自入口方法声明编写。
 
-{/* xaction-metadata:start */}
 ## 当前模块定义
 
-- 模块 Key：`sys:csscript`
-- 分类：程序流程（`Flow`）
-- 类型：`Action`
-- 风险操作：是
-- 专业版：否
-
-## 输入参数
-
-| Key | 名称 | 类型 | 默认值 | 必填 | 变量模式 | 条件 | 说明 |
-| --- | --- | --- | --- | --- | --- | --- | --- |
-| `mode` | 运行模式 | `Enum` | normal_roslyn | 是 | `Input` |  | 普通模式：在Quicker进程中执行；低权限模式：在单独的进程中执行，可用于COM操作。 |
-| `script` | 脚本内容 | `Text` | //.cs  文件类型，便于外部编辑时使用<br />// 引用必要的命名空间<br />using System.Windows.Forms;<br /><br />// 纯脚本：末行表达式即返回值；可用 context 读写动作变量。<br />// 也可写完整 public static void Exec(Quicker.Public.IStepContext context) &#123; ... &#125;<br />MessageBox.Show("Hello World!");<br />"done"<br /> | 是 | `UseVarOrInput` | 仅：normal_roslyn | 要运行的脚本内容 |
-| `scriptForLp` | 脚本内容 | `Text` | //.cs  文件类型，便于外部编辑时使用<br />// 引用必要的命名空间<br />using System.Windows.Forms;<br /><br />// Quicker将会调用的函数<br />public static string Exec(string paramValue)<br />&#123;<br />    System.Windows.Forms.MessageBox.Show("Hello World!");<br />    return "Hello World!";<br />&#125;<br /> | 是 | `UseVarOrInput` | 仅：low_permission_roslyn | 要运行的脚本内容 |
-| `scriptForAssembly` | 脚本内容 | `Text` | //.cs  文件类型，便于外部编辑时使用<br />// 引用必要的命名空间<br />using System.Windows.Forms;<br /><br />namespace MyNamespace<br />&#123;<br />    // Quicker将会调用的函数<br />    public static class MyClass<br />    &#123;<br />        public static string Exec(string paramValue)<br />        &#123;<br />            System.Windows.Forms.MessageBox.Show("Hello World!");<br />            return "Hello World!";<br />        &#125;<br />    &#125;<br />&#125;<br /> | 是 | `UseVarOrInput` | 仅：generate_assembly | 要运行的脚本内容 |
-| `paramValue` | 参数值 | `Text` |  | 是 | `UseVarOrInput` | 仅：low_permission_roslyn | 传递给Exec的参数 |
-| `reference` | 引用DLL库 | `Text` |  | 否 | `Input` |  | 要引用的DLL文件，每行一个。也可以在代码中使用 #r 指令。 |
-| `enableCache` | 开启磁盘缓存 | `Boolean` | true | 否 | `Input` | 仅：normal_roslyn, low_permission_roslyn | 是否将编译结果缓存到磁盘。关闭后仍会按最终脚本内容在当前进程内自动复用；脚本使用 $= 表达式或 $$ 插值动态生成时，会自动关闭磁盘缓存。 |
-| `runOnUiThread` | 执行线程 | `Enum` | auto | 否 | `Input` | 仅：normal_roslyn | 是否在界面线程上运行代码。如果在脚本中使用了wpf窗口，请选中此项。 |
-| `waitResp` | 等待返回 | `Boolean` | true | 否 | `Input` | 仅：low_permission_roslyn | 是否等待脚本返回结果 |
-| `waitMs` | 最长等待时间(ms) | `Number` | 10000 | 是 | `Input` | 仅：low_permission_roslyn | 最长的等待返回结果的，毫秒数 |
-| `stopIfFail` | 失败后停止 | `Boolean` | true | 否 | `Input` |  | 失败后是否停止动作 |
-
-## 输出参数
-
-| Key | 名称 | 类型 | 条件 | 说明 |
-| --- | --- | --- | --- | --- |
-| `isSuccess` | 是否成功 | `Boolean` |  | 操作是否成功 |
-| `resp` | 返回内容 | `Text` | 仅：low_permission_roslyn | 脚本执行返回的结果文本 |
-| `rtn` | 返回内容 | `Any` | 仅：normal_roslyn | 脚本返回值；若返回 Task/ValueTask，则为等待完成后的解包结果 |
-| `rtnAssembly` | 程序集对象 | `Object` | 仅：generate_assembly | 生成的Assembly对象（已经加载） |
-| `assemblyPath` | 程序集路径 | `Text` | 仅：generate_assembly | 生成的Assembly路径 |
-
-## 选项值
-
-### `mode` 运行模式
-
-| Value | 名称 | 说明 |
-| --- | --- | --- |
-| `normal_roslyn` | 普通模式 |  |
-| `low_permission_roslyn` | 低权限模式 |  |
-| `generate_assembly` | 生成程序集 |  |
-
-### `runOnUiThread` 执行线程
-
-| Value | 名称 | 说明 |
-| --- | --- | --- |
-| `auto` | 自动 |  |
-| `ui` | UI线程 |  |
-| `background` | 后台线程(MTA) |  |
-| `sta` | 后台线程(STA) |  |
-| `staLongRun` | 后台线程(STA独立线程) |  |
-{/* xaction-metadata:end */}
+<XActionModuleMeta moduleKey="sys:csscript" />
 
 **【注意】请勿设计任何可能侵犯Quicker软件或第三方权益的代码或其他恶意代码。如有违反将直接停用Quicker帐号，请知悉。**
 

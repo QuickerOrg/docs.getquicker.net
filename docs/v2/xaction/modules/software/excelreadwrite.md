@@ -9,7 +9,6 @@ comments: true
 moduleKey: "sys:excelreadwrite"
 docStatus: "migrated-unreviewed"
 metadataGeneratedAt: "2026-08-03 20:08:03"
-metadataHash: "210df5b1499c579f52fca04b9760fd15bd142e5174b2ea1be097a8cbfdfe88bd"
 legacyDocId: 71635402
 legacyContentUpdatedAt: "2026-04-22T00:22:41.000Z"
 ---
@@ -18,111 +17,9 @@ legacyContentUpdatedAt: "2026-04-22T00:22:41.000Z"
 
 读取Excel文件内容或写入Excel文件
 
-{/* xaction-metadata:start */}
 ## 当前模块定义
 
-- 模块 Key：`sys:excelreadwrite`
-- 分类：第三方软件交互（`SoftInteraction`）
-- 类型：`Action`
-- 风险操作：否
-- 专业版：否
-
-## 输入参数
-
-| Key | 名称 | 类型 | 默认值 | 必填 | 变量模式 | 条件 | 说明 |
-| --- | --- | --- | --- | --- | --- | --- | --- |
-| `operation` | 操作类型 | `Enum` |  | 是 | `Input` |  |  |
-| `fileType` | 工作簿类型 | `Enum` | XSSF | 否 | `Input` | 仅：newWorkbook |  |
-| `filePath` | 文件路径 | `Text` |  | 否 | `UseVarOrInput` | 仅：load, save | 要打开或写入的Excel文件路径 |
-| `readDataMap` | 提取数据定义 | `Text` |  | 否 | `UseVarOrInput` | 仅：readData | 每行一条规则："字段:[工作表序号或名称]单元格地址"，详情请参考模块文档。 |
-| `workbook` | 工作簿对象 | `Object` |  | 否 | `UseVarOnly` | 仅：getSheetByIndex, getSheetByName, getSheet, createSheet, save, readData, addNames | 需要操作的工作簿对象 |
-| `sheetIndex` | 工作表序号或名称 | `Text` |  | 否 | `UseVarOrInput` | 仅：getSheetByIndex, getSheet | 以0开始计算的序号或名称 |
-| `sheetName` | 工作表名称 | `Text` |  | 否 | `UseVarOrInput` | 仅：getSheetByName, createSheet | 要打开的工作表名称 |
-| `createSheetIfNotExist` | 如果工作表不存在则创建一个 | `Boolean` | false | 否 | `Input` | 仅：getSheetByName |  |
-| `sourceData` | 源数据 | `Object` |  | 否 | `UseVarOnly` | 仅：writeData | 可以为工作表对象、表格变量或对象列表 |
-| `columnMapping` | 字段映射 | `Text` |  | 否 | `UseVarOrInput` | 仅：writeData | 复制哪些字段信息到目标工作表。请参考文档了解使用方法。 |
-| `names` | 名称数据 | `Text` |  | 否 | `UseVarOrInput` | 仅：addNames | JSON格式的名称数据定义，详细请参考文档。 |
-| `writeTitleRow` | 写入标题行 | `Boolean` | true | 否 | `Input` | 仅：writeData | 是否输出标题行 |
-| `worksheet` | 工作表对象 | `Object` |  | 否 | `UseVarOnly` | 仅：getRow, getCell, batchReplace, setCell, writeData, mergeCells, setStyle, freezePane, autoFilter, getCellByValue | 需要操作或读写的工作表对象 |
-| `cellAddress` | 单元格地址 | `Text` |  | 否 | `UseVarOrInput` | 仅：getCell, setCell | 类似于"D5"这样的单元格位置名称。或在下方使用行序号和单元格序号指定（两种二选一）。 |
-| `cellRange` | 单元格范围 | `Text` |  | 否 | `UseVarOrInput` | 仅：mergeCells, setStyle, autoFilter | 类似于"A1:B5"格式，或"开始行号,结束行号,开始列号,结束列号"方式(从0开始的序号)。 |
-| `styleData` | 样式设置 | `Text` |  | 否 | `UseVarOrInput` | 仅：setStyle | 请参考模块文档。 |
-| `rowIndex` | 行序号 | `Integer` | 0 | 否 | `UseVarOrInput` | 仅：getRow, getCell, setCell, writeData, freezePane | 以0开始计算的序号 |
-| `cellIndex` | 列序号 | `Integer` | 0 | 否 | `UseVarOrInput` | 仅：getCell, setCell, freezePane | 单元格在所在行里的序号，从0开始 |
-| `cellType` | 单元格类型 | `Text` |  | 否 | `UseVarOrInput` | 仅：setCell | 设置单元格类型 |
-| `cellValue` | 值 | `Any` |  | 否 | `UseVarOrInput` | 仅：setCell, getCellByValue | 设置单元格的值 |
-| `dataFormat` | 数据格式 | `Text` |  | 否 | `UseVarOrInput` | 仅：setCell | 设置单元格的DataFormat |
-| `cellLink` | 链接 | `Text` |  | 否 | `UseVarOrInput` | 仅：setCell | 可以为网址、邮件地址(mailto:who@domain.com)、工作表名称、文件路径 |
-| `replaceDict` | 替换数据词典 | `Dict` |  | 否 | `UseVarOrInput` | 仅：batchReplace | 词典格式数据。键为要查找的字段，值为要填充的内容。 |
-| `replacePrefixSuffix` | 占位符前后缀 | `Text` | &#123;&#123;<br />&#125;&#125; | 否 | `UseVarOrInput` | 仅：batchReplace | 第一行写前缀，第二行写后缀。"前缀+字段名+后缀"组成要查找和替换的目标，如"&#123;&#123;姓名&#125;&#125;"。 |
-| `stopIfFail` | 失败后停止 | `Boolean` | true | 否 | `Input` |  | 失败后是否停止动作 |
-
-## 输出参数
-
-| Key | 名称 | 类型 | 条件 | 说明 |
-| --- | --- | --- | --- | --- |
-| `isSuccess` | 是否成功 | `Boolean` |  | 操作是否成功 |
-| `workbook` | 工作簿对象 | `Object` | 仅：load, newWorkbook | 用于在后续步骤中继续操作工作簿。 |
-| `worksheetNameList` | 工作表名称列表 | `List` | 仅：load | 工作簿中的工作表名列表。 |
-| `numberOfSheets` | 工作表个数 | `Integer` | 仅：load | 工作簿中的工作表个数。 |
-| `sheet` | 工作表对象 | `Object` | 仅：load, getSheetByIndex, getSheetByName, getSheet, createSheet | 返回指定的工作表。加载文件时返回工作簿中的第一个工作表对象 |
-| `firstRow` | 首行序号 | `Integer` | 仅：load, getSheetByIndex, getSheetByName, getSheet, getCellByValue | 工作表首行序号（从0开始）。 |
-| `lastRow` | 末行序号 | `Integer` | 仅：load, getSheetByIndex, getSheetByName, getSheet | 工作表有内容的最后一行序号（从0开始）。 |
-| `names` | 名称数据 | `Text` | 仅：load | 工作簿中定义的名称数据，返回json格式 |
-| `firstCellNum` | 首个单元格的列序号 | `Integer` | 仅：getRow, getCellByValue | 一行的首列序号（从0开始）。获取工作表信息时， |
-| `lastCellNum` | 末个单元格的列序号 | `Integer` | 仅：getRow | 一行的最后一个单元格的序号（从0开始）。 |
-| `maxColumnNum` | 最大列序号 | `Integer` | 仅：load, getSheetByIndex, getSheetByName, getSheet | 工作表的最大列序号（从0开始）。 |
-| `hasValue` | 是否有值 | `Boolean` | 仅：getCell | 单元格是否有值 |
-| `cellValue` | 值 | `Any` | 仅：getCell | 单元格的值 |
-| `cellTextValue` | 文本值 | `Text` | 仅：getCell | 文本格式的单元格内容 |
-| `cellType` | 类型 | `Text` | 仅：getCell | 单元格的类型 |
-| `cellFormula` | 公式 | `Text` | 仅：getCell | 单元格的公式值 |
-| `dictData` | 数据词典 | `Dict` | 仅：readData | 从工作簿加载的数据 |
-| `cellDataFormatString` | 数据格式字符串 | `Text` | 仅：getCell | 数据格式的字符串表示 |
-| `cellAddress` | 单元格地址 | `Object` | 仅：getCellByValue | 查找到的单元格地址 |
-| `cellAddressList` | 单元格地址列表 | `List` | 仅：getCellByValue | 查找到的单元格地址的列表（查找多个单元格的情况） |
-
-## 选项值
-
-### `operation` 操作类型
-
-| Value | 名称 | 说明 |
-| --- | --- | --- |
-| `load` | 打开Workbook |  |
-| `newWorkbook` | 创建Workbook |  |
-| `save` | 保存Workbook |  |
-| `getSheet` | 获取Sheet |  |
-| `createSheet` | 创建Sheet |  |
-| `getRow` | 获取行 |  |
-| `getCellByValue` | 查找单元格（根据值） |  |
-| `getCell` | 读取单元格 |  |
-| `setCell` | 写入单元格 |  |
-| `writeData` | 写入多行数据 |  |
-| `mergeCells` | 合并单元格 |  |
-| `freezePane` | 冻结窗格 |  |
-| `autoFilter` | 自动筛选 |  |
-| `setStyle` | 设置区域单元格样式 |  |
-| `readData` | 批量提取数据 |  |
-| `batchReplace` | 批量模板替换 |  |
-
-### `fileType` 工作簿类型
-
-| Value | 名称 | 说明 |
-| --- | --- | --- |
-| `XSSF` | XSSF(.xlsx 2007版Excel) |  |
-| `HSSF` | HSSF(.xls  2003版Excel) |  |
-
-### `cellType` 单元格类型
-
-| Value | 名称 | 说明 |
-| --- | --- | --- |
-| `` | 自动（根据值的类型判断） |  |
-| `String` | String（文本） |  |
-| `Numeric` | Numeric（数字或日期） |  |
-| `Boolean` | Boolean（布尔） |  |
-| `Formula` | Formula（公式） |  |
-| `Blank` | Blank（空白） |  |
-{/* xaction-metadata:end */}
+<XActionModuleMeta moduleKey="sys:excelreadwrite" />
 
 直接读写Excel文件。（需Quicker 1.32.6+版本。）
 
@@ -148,8 +45,6 @@ legacyContentUpdatedAt: "2026-04-22T00:22:41.000Z"
     ![](./img/excelreadwrite-001-5395bc0911.png)
 
 ## 操作类型
-
-
 
 ### 打开Workbook
 
@@ -185,8 +80,6 @@ legacyContentUpdatedAt: "2026-04-22T00:22:41.000Z"
 
 ![](./img/excelreadwrite-003-ece2b2592c.png)
 
-
-
 **输入参数**
 
 【工作簿类型】文档类型。
@@ -209,8 +102,6 @@ legacyContentUpdatedAt: "2026-04-22T00:22:41.000Z"
 
 ![](./img/excelreadwrite-004-d89f584c7d.png)
 
-
-
 **输入参数**
 
 【文件路径】保存的目标文件路径。
@@ -226,8 +117,6 @@ legacyContentUpdatedAt: "2026-04-22T00:22:41.000Z"
 从工作簿中获取一个工作表对象（以便于在后续步骤中读取或写入内容）。
 
 ![](./img/excelreadwrite-005-f9ad0829a3.png)
-
-
 
 **输入参数**
 
@@ -256,8 +145,6 @@ legacyContentUpdatedAt: "2026-04-22T00:22:41.000Z"
 
 ![](./img/excelreadwrite-006-69fcd7c956.png)
 
-
-
 **输入参数**
 
 【工作簿对象】指定要创建工作表的工作簿对象。
@@ -278,8 +165,6 @@ legacyContentUpdatedAt: "2026-04-22T00:22:41.000Z"
 注：如果指定的行不存在，则本步骤会执行失败。
 
 ![](./img/excelreadwrite-007-319d4af429.png)
-
-
 
 **输入参数**
 
@@ -355,8 +240,6 @@ legacyContentUpdatedAt: "2026-04-22T00:22:41.000Z"
 
 ![](./img/excelreadwrite-010-daf6efc628.png)
 
-
-
 **输入参数**
 
 【工作表对象】要读取的工作表对象。
@@ -387,16 +270,12 @@ legacyContentUpdatedAt: "2026-04-22T00:22:41.000Z"
 
 ![](./img/excelreadwrite-011-dce1f27eba.png)
 
-
-
 **输入参数**
 
 【源数据】数据源对象，可以为：
 
 -   另一个工作表对象。要求：工作表的首行应该标题行，有数据的行第一列不应该为空。各标题前后应避免有空格造成无法匹配。
 -   表格类型的变量（DataTable对象）。
-
-
 
 【字段映射】设定应该把哪个字段的数据放入哪一列中。
 
@@ -429,11 +308,7 @@ legacyContentUpdatedAt: "2026-04-22T00:22:41.000Z"
 
 ### 合并单元格
 
-
-
 ![](./img/excelreadwrite-012-749c514ddf.png)
-
-
 
 输入参数
 
@@ -444,15 +319,11 @@ legacyContentUpdatedAt: "2026-04-22T00:22:41.000Z"
 -   Excel范围地址格式，如`A1:F2`
 -   4个数字，分别指以0开始的“开始行号,结束行号,开始列号,结束列号”，如：`0,0,0,5`
 
-
-
 ### 冻结窗格
 
 锁定行列禁止滚动。
 
 ![](./img/excelreadwrite-013-d0d1e858c5.png)
-
-
 
 **输入参数**
 
@@ -468,8 +339,6 @@ legacyContentUpdatedAt: "2026-04-22T00:22:41.000Z"
 
 ![](./img/excelreadwrite-014-01df671e8c.png)
 
-
-
 **输入参数**
 
 【工作表对象】要建立筛选的工作表。
@@ -484,8 +353,6 @@ legacyContentUpdatedAt: "2026-04-22T00:22:41.000Z"
 
 ![](./img/excelreadwrite-015-686f13409e.png)
 
-
-
 **输入参数**
 
 【工作表对象】要操作的工作表对象。
@@ -498,8 +365,6 @@ legacyContentUpdatedAt: "2026-04-22T00:22:41.000Z"
 -   这些代码规则可以组合在一起使用，但不需要全部使用；
 -   底层库在更新样式时可能存在一些BUG，请测试验证；
 -   尽量先设置样式后更新数据，更新数据时可能会对样式有所影响；
-
-
 
 ```
 font.Name:仿宋
@@ -553,15 +418,11 @@ border.outside:Thick,#FF0000
 -   `vert:垂直对齐` 可选值`None` `Top` `Center` `Bottom` `Justify` `Distributed`, 请参考这里，可以填写名称也可以填写对应的数字值，请[参考这里](https://github.com/nissl-lab/npoi/blob/37a8435dc4d613d9cf6145d044e4bf28bdfc3e4e/main/SS/UserModel/VerticalAlignment.cs)，可以填写名称也可以填写对应数字值。
 -   `wraptext:true` 单元格内的内容是否自动换行。
 
-
-
 ### 批量提取数据
 
 将工作簿中指定位置的数据提取到词典的对应键值中。
 
 ![](./img/excelreadwrite-016-3557a5eb23.png)
-
-
 
 **输入参数**
 
@@ -582,11 +443,7 @@ border.outside:Thick,#FF0000
 
 用于根据汇总表及模板表批量生成Excel文件。实际的使用过程大概为：对于汇总表中的每行数据，创建一个模板文件的副本。将该行数据的每一列填充的副本文件的模板字段中。
 
-
-
 ![](./img/excelreadwrite-018-8195c0ef30.png)
-
-
 
 **输入参数**
 

@@ -9,7 +9,6 @@ comments: true
 moduleKey: "sys:autocadcontrol"
 docStatus: "migrated-unreviewed"
 metadataGeneratedAt: "2026-08-03 20:08:03"
-metadataHash: "1ef7f89cafeb87ffaba9a341cc976a51bb2cb51c69ba7fd421c18b42fe74315a"
 legacyDocId: 80627663
 legacyContentUpdatedAt: "2025-01-20T00:50:55.000Z"
 ---
@@ -18,50 +17,15 @@ legacyContentUpdatedAt: "2025-01-20T00:50:55.000Z"
 
 向AutoCAD发送命令
 
-{/* xaction-metadata:start */}
 ## 当前模块定义
 
-- 模块 Key：`sys:autocadcontrol`
-- 分类：第三方软件交互（`SoftInteraction`）
-- 类型：`Action`
-- 风险操作：否
-- 专业版：否
-
-## 输入参数
-
-| Key | 名称 | 类型 | 默认值 | 必填 | 变量模式 | 条件 | 说明 |
-| --- | --- | --- | --- | --- | --- | --- | --- |
-| `operation` | 操作类型 | `Enum` | SendCommand | 是 | `Input` |  | 操作类型 |
-| `command` | 命令内容 | `Text` |  | 否 | `UseVarOrInput` | 仅：SendCommand | 发送到CAD执行的命令内容。通常以空格结尾开始执行。 |
-| `varList` | 变量列表 | `Text` |  | 否 | `UseVarOrInput` | 仅：ReadVariable | 每行一个变量名称 |
-| `waitResp` | 等待命令结束 | `Boolean` | true | 否 | `UseVarOrInput` | 仅：SendCommand |  |
-| `waitMs` | 最长等待时间(ms) | `Number` | 10000 | 是 | `Input` |  | 最长的等待返回结果的，毫秒数 |
-| `stopIfFail` | 失败后停止 | `Boolean` | true | 否 | `Input` |  | 失败后是否停止动作 |
-
-## 输出参数
-
-| Key | 名称 | 类型 | 条件 | 说明 |
-| --- | --- | --- | --- | --- |
-| `isSuccess` | 是否成功 | `Boolean` |  | 操作是否成功 |
-| `output` | 变量值 | `Text` | 仅：ReadVariable | 从当前文档读取的变量值，多个变量时每行一个，和变量名顺序对应。 |
-
-## 选项值
-
-### `operation` 操作类型
-
-| Value | 名称 | 说明 |
-| --- | --- | --- |
-| `SendCommand` | 执行命令 |  |
-| `ReadVariable` | 读取变量 |  |
-{/* xaction-metadata:end */}
+<XActionModuleMeta moduleKey="sys:autocadcontrol" />
 
 ## 概述
 
 向AutoCAD软件发送命令或脚本。
 
 ![](./img/autocadcontrol-001-074afbab24.png)
-
-
 
 【操作类型】
 

@@ -9,7 +9,6 @@ comments: true
 moduleKey: "sys:compute"
 docStatus: "migrated-unreviewed"
 metadataGeneratedAt: "2026-08-03 20:08:03"
-metadataHash: "cd0f3a902564d16f9b9a58bd51dc21088b70dc691221da2f8a1209cde82cbcb1"
 legacyDocId: 1402290
 legacyContentUpdatedAt: "2021-04-11T23:43:30.000Z"
 ---
@@ -18,30 +17,9 @@ legacyContentUpdatedAt: "2021-04-11T23:43:30.000Z"
 
 对表达式进行计算。
 
-{/* xaction-metadata:start */}
 ## 当前模块定义
 
-- 模块 Key：`sys:compute`
-- 分类：计算与比较（`Compute`）
-- 类型：`Action`
-- 风险操作：否
-- 专业版：否
-
-## 输入参数
-
-| Key | 名称 | 类型 | 默认值 | 必填 | 变量模式 | 条件 | 说明 |
-| --- | --- | --- | --- | --- | --- | --- | --- |
-| `expression` | 表达式 | `Text` | 1+1 | 是 | `UseVarOrInput` |  | 要计算的表达式 |
-| `evalVar` | 增强模式 | `Boolean` | false | 否 | `Input` |  | 支持在表达式中使用&#123;变量名&#125;和Math对象 |
-| `stopIfFail` | 失败后停止 | `Boolean` | true | 否 | `Input` |  | 失败后是否停止动作 |
-
-## 输出参数
-
-| Key | 名称 | 类型 | 条件 | 说明 |
-| --- | --- | --- | --- | --- |
-| `isSuccess` | 是否成功 | `Boolean` |  | 操作是否成功 |
-| `output` | 结果 | `Any` |  | 将表达式计算结果写入变量 |
-{/* xaction-metadata:end */}
+<XActionModuleMeta moduleKey="sys:compute" />
 
 ## 简介
 
@@ -52,11 +30,7 @@ legacyContentUpdatedAt: "2021-04-11T23:43:30.000Z"
 
 ![image.png](./img/compute-001-dd8bbddf6c.png "image.png")
 
-
-
 可以结合[插值语法](/v2/xaction/concepts/interpolation)将变量的值替换到表达式中。例如表达式为：“$$  &#123;变量a&#125; &gt; 5 and &#123;变量a&#125; &lt; 20” ，如果 变量a 的值为 30，那么表达式在插值后变为“30 &gt; 5 and 30 &lt; 20” ，其结果为false。（插值后得到文本表达式，然后计算这个表达式得到最终结果）
-
-
 
 ## 参数
 
@@ -66,23 +40,15 @@ legacyContentUpdatedAt: "2021-04-11T23:43:30.000Z"
 
 **【增强模式】**强模式支持变量和C#语言的Math类。
 
-
-
 ### 输出
 
 【结果】计算结果。
 
-
-
 ## 普通模式与增强模式
-
-
 
 ### 普通模式
 
 这个模块在内部使用了[NCalc](https://www.google.com/search?q=ncalc&pws=0&gl=us&gws_rd=cr)组件，您也可以参考这个组件的文档以了解这个模块可以实现的功能。
-
-
 
 #### 示例
 
@@ -101,8 +67,6 @@ legacyContentUpdatedAt: "2021-04-11T23:43:30.000Z"
 
 -   50 \* 2 \* Sqrt(40)
 -   Min(1,2)
-
-
 
 *以下内容有部分转载自* [*tangikejun的文章*](https://segmentfault.com/u/tangyikejun/articles)*，感谢！*
 
@@ -143,8 +107,6 @@ legacyContentUpdatedAt: "2021-04-11T23:43:30.000Z"
 | Tan | \- | \- | d |
 | Truncate | 截取整数部分 | Truncate(1.7) | 1 |
 
-
-
 其他通用函数：
 
 | 函数名 | 描述 | 用例 | 结果 |
@@ -156,24 +118,16 @@ legacyContentUpdatedAt: "2021-04-11T23:43:30.000Z"
 
 将Unix时间戳转换为时间：UnixTimestampToDateTime(1552437663)
 
-
-
 ### 增强模式
 
 增强模式可以使用通用表达式相同的语法：[/v2/xaction/concepts/expression](/v2/xaction/concepts/expression)，（不需要在前面写$=，如果写了，会先解析表达式后，把得到的结果再作为表达式解析一遍）
 
 ![image.png](./img/compute-002-5c8245e243.png "image.png")
 
-
-
-
-
 ## 示例动作
 
 -   示例：计算模块： [https://getquicker.net/sharedaction?code=16317b5d-ffdf-4193-a919-08d7b30d7779](https://getquicker.net/sharedaction?code=16317b5d-ffdf-4193-a919-08d7b30d7779)
 -   计算多行：[https://getquicker.net/sharedaction?code=9205705f-d1a7-4713-3d38-08d673be1748](https://getquicker.net/sharedaction?code=9205705f-d1a7-4713-3d38-08d673be1748)
-
-
 
 ## 使用场景
 

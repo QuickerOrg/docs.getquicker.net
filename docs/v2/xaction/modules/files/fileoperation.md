@@ -9,7 +9,6 @@ comments: true
 moduleKey: "sys:fileOperation"
 docStatus: "migrated-unreviewed"
 metadataGeneratedAt: "2026-08-03 20:08:03"
-metadataHash: "58f21cf0a7872407d7199104bbda7f182cc94aa27544ef06dad43314c5bf970e"
 legacyDocId: 1461249
 legacyContentUpdatedAt: "2023-08-28T14:27:16.000Z"
 ---
@@ -18,68 +17,15 @@ legacyContentUpdatedAt: "2023-08-28T14:27:16.000Z"
 
 文件和目录操作。请确保路径是合法的。
 
-{/* xaction-metadata:start */}
 ## 当前模块定义
 
-- 模块 Key：`sys:fileOperation`
-- 分类：系统操作（`Files`）
-- 类型：`Action`
-- 风险操作：否
-- 专业版：否
-
-## 输入参数
-
-| Key | 名称 | 类型 | 默认值 | 必填 | 变量模式 | 条件 | 说明 |
-| --- | --- | --- | --- | --- | --- | --- | --- |
-| `type` | 操作类型 | `Enum` |  | 是 | `Input` |  | 操作类型 |
-| `path` | 路径 | `Text` |  | 否 | `UseVarOrInput` |  | 要操作的文件或文件夹路径 |
-| `dstPath` | 目标路径/名称 | `Text` |  | 否 | `UseVarOrInput` | 仅：copyFile, copyInto, copyTo, copyIntoWithShell, moveIntoWithShell, moveFile, moveInto, rename, moveTo | 复制/移动的目标路径或新文件、文件名。详情请参考文档。 |
-| `overwrite` | 覆盖已有 | `Boolean` | false | 否 | `Input` | 仅：copyFile, copyInto, copyTo, moveFile, moveInto, rename, moveTo | 如果目标位置已存在文件，是否覆盖？ |
-| `searchPattern` | 搜索内容 | `Text` | * | 否 | `UseVarOrInput` | 仅：enumFiles, enumDirs | 筛选文件或目录名。可以包含通配符*和?，或"regex:正则表达式"。搜索文件时也可以为分号隔开的多个后缀名如.jpg;.png;.bmp |
-| `isAll` | 包含子目录 | `Boolean` | false | 否 | `UseVarOrInput` | 仅：enumFiles, enumDirs | 包含子目录中的(否则只搜索顶层目录) |
-| `stopIfFail` | 失败后中止动作 | `Boolean` | true | 否 | `Input` |  | 如果操作异常，是否终止动作 |
-
-## 输出参数
-
-| Key | 名称 | 类型 | 条件 | 说明 |
-| --- | --- | --- | --- | --- |
-| `isSuccess` | 是否成功 | `Boolean` |  | 操作是否成功 |
-| `files` | 路径列表 | `List` | 仅：enumFiles, enumDirs | 搜索到的文件或文件夹列表 |
-| `resultPath` | 结果路径 | `Text` | 仅：copyTo, rename, copyInto | 结果文件路径 |
-
-## 选项值
-
-### `type` 操作类型
-
-| Value | 名称 | 说明 |
-| --- | --- | --- |
-| `copyInto` | 复制到指定目录下 |  |
-| `copyIntoWithShell` | 复制到指定目录下(Windows) |  |
-| `copyTo` | 复制为（指定结果名称或路径） |  |
-| `moveInto` | 移动到指定目录下 |  |
-| `moveIntoWithShell` | 移动到指定目录下(Windows) |  |
-| `rename` | 移动/重命名为（指定结果名称或完整路径） |  |
-| `deleteFile` | 删除文件（不支持文件夹） |  |
-| `deleteEmptyFolder` | 删除空文件夹 |  |
-| `recycle` | 移入回收站 |  |
-| `recycleNoUi` | 移入回收站（安静模式，自动确认操作） |  |
-| `makeDir` | 创建文件夹 |  |
-| `createFile` | 创建空文件 |  |
-| `enumFiles` | 获取文件夹内的文件 |  |
-| `enumDirs` | 获取文件夹内的子文件夹 |  |
-| `copyFile` | 复制文件/文件夹（自动）【不建议使用】 |  |
-| `moveFile` | 移动/重命名文件(夹)（自动）【不建议使用】 |  |
-{/* xaction-metadata:end */}
+<XActionModuleMeta moduleKey="sys:fileOperation" />
 
 **！！！警告：请在使用本模块进行移动、删除等操作之前备份好重要数据。**
-
-
 
 本模块用于实现基本的文件和目录操作。
 
 ![](./img/fileoperation-001-2f9a24c6c6.png)
-
-
 
 ## 支持的操作类型
 
@@ -102,10 +48,6 @@ legacyContentUpdatedAt: "2023-08-28T14:27:16.000Z"
 | 【不建议使用】<br />复制文件（或文件夹） | 将文件或文件夹复制到目标位置。 | 路径：要复制的文件或文件夹路径。 如果此路径是文件路径，则作为文件复制，否则作为文件夹复制。<br />目标路径：复制文件时，可以为目标的完整路径（带文件名），也可以是目标文件夹的路径（此时文件名会被保持原名，从0.10.4版本开始支持）。<br />示例：<br />-   复制文件d:\\dir1\\16.png到E:\\temp文件夹<br />-   路径：d:\\dir1\\16.png<br />-   目标路径：e:\\temp  或 e:\\temp\\16.png<br />-   复制文件夹d:\\dir1\\logos 到 e:\\temp下：<br />-   路径：d:\\dir1\\logos<br />-   目标路径：e:\\temp\\logos |
 | 【不建议使用】<br />移动/重命名文件（或文件夹） | 移动或改名文件/文件夹。 | 路径：要移动/重命名的文件或文件夹的完整路径。<br />目标路径：完整的目标文件路径（包含文件名），如果是移动文件，也可用只提供目标文件夹的路径。如果是重命名文件，也可只提供目标文件名。 |
 
-
-
-
-
 ### 参数说明
 
 【搜索内容】
@@ -120,8 +62,6 @@ legacyContentUpdatedAt: "2023-08-28T14:27:16.000Z"
 
 -   包含普通字符和通配符`*`（任意多个字符）、`?`（一个任意字符）的字符串。如`202*年*月`。（此方式仅支持一种匹配模式）
 -   （1.38.23+版本）`regex:正则表达式`。此时会获取所有子文件夹，然后对每个文件夹名称进行匹配检查。
-
-
 
 ## 示例动作
 

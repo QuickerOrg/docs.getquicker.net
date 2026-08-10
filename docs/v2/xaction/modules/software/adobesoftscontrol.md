@@ -9,61 +9,15 @@ comments: true
 moduleKey: "sys:adobesoftscontrol"
 docStatus: "migrated-unreviewed"
 metadataGeneratedAt: "2026-08-03 20:08:03"
-metadataHash: "0da1e9bb4bd574e2d7b745f08e9dfc9b97cff86ca9d8f4dbd50f4f70871e190a"
 legacyDocId: 80638336
 legacyContentUpdatedAt: "2025-12-15T02:38:05.000Z"
 ---
 
 # Adobe系列软件控制
 
-
-
-{/* xaction-metadata:start */}
 ## 当前模块定义
 
-- 模块 Key：`sys:adobesoftscontrol`
-- 分类：第三方软件交互（`SoftInteraction`）
-- 类型：`Action`
-- 风险操作：否
-- 专业版：否
-
-## 输入参数
-
-| Key | 名称 | 类型 | 默认值 | 必填 | 变量模式 | 条件 | 说明 |
-| --- | --- | --- | --- | --- | --- | --- | --- |
-| `software` | 软件名称 | `Enum` | Photoshop.Application | 是 | `Input` |  | 要执行脚本的软件 |
-| `operation` | 操作类型 | `Enum` | dojavascript | 是 | `Input` |  | 操作类型 |
-| `script` | 脚本内容 | `Text` |  | 否 | `UseVarOrInput` | 仅：dojavascript | 要执行的js脚本代码。 |
-| `scriptFile` | 脚本文件路径 | `Text` |  | 否 | `UseVarOrInput` | 仅：dojavascriptfile | js脚本文件的完整路径 |
-| `waitResp` | 等待执行结束 | `Boolean` | true | 否 | `UseVarOrInput` |  |  |
-| `waitMs` | 最长等待时间(ms) | `Number` | 10000 | 是 | `Input` |  | 最长的等待返回结果的，毫秒数 |
-| `tryRunScriptUsingExe` | 接口失败后，尝试使用程序exe运行脚本文件 | `Boolean` | false | 否 | `UseVarOrInput` |  | 使用运行程序并将脚本路径作为参数的方式执行脚本。 |
-| `stopIfFail` | 失败后停止 | `Boolean` | true | 否 | `Input` |  | 失败后是否停止动作 |
-
-## 输出参数
-
-| Key | 名称 | 类型 | 条件 | 说明 |
-| --- | --- | --- | --- | --- |
-| `isSuccess` | 是否成功 | `Boolean` |  | 操作是否成功 |
-| `output` | 脚本输出 | `Text` |  | 仅通过接口执行脚本时支持返回内容。 |
-
-## 选项值
-
-### `software` 软件名称
-
-| Value | 名称 | 说明 |
-| --- | --- | --- |
-| `Photoshop.Application` | Photoshop |  |
-| `Illustrator.Application` | Illustrator |  |
-| `afterfx` | After Effects |  |
-
-### `operation` 操作类型
-
-| Value | 名称 | 说明 |
-| --- | --- | --- |
-| `dojavascript` | 执行js脚本 |  |
-| `dojavascriptfile` | 执行js脚本文件 |  |
-{/* xaction-metadata:end */}
+<XActionModuleMeta moduleKey="sys:adobesoftscontrol" />
 
 ## 概要
 
@@ -125,15 +79,11 @@ legacyContentUpdatedAt: "2025-12-15T02:38:05.000Z"
 
 ![](./img/adobesoftscontrol-004-58eaea5eb4.png)
 
-
-
 ## psjs脚本的执行
 
 目前PS尚未提供执行psjs代码的接口。可以通过如下方式执行psjs脚本：
 
 ![](./img/adobesoftscontrol-005-d07b486340.png)
-
-
 
 ## 更新历史
 

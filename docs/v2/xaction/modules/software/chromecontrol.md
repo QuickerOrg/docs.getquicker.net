@@ -9,7 +9,6 @@ comments: true
 moduleKey: "sys:chromecontrol"
 docStatus: "migrated-unreviewed"
 metadataGeneratedAt: "2026-08-03 20:08:03"
-metadataHash: "c5b6af011d62e9077f213f2e43451ecf338a604b6bd142f822e25d870d2b46c5"
 legacyDocId: 9024629
 legacyContentUpdatedAt: "2025-10-28T06:17:46.000Z"
 ---
@@ -18,360 +17,9 @@ legacyContentUpdatedAt: "2025-10-28T06:17:46.000Z"
 
 与Chrome/Edge/Firefox等浏览器通信，控制网页或浏览器。
 
-{/* xaction-metadata:start */}
 ## 当前模块定义
 
-- 模块 Key：`sys:chromecontrol`
-- 分类：第三方软件交互（`SoftInteraction`）
-- 类型：`Action`
-- 风险操作：否
-- 专业版：否
-
-## 输入参数
-
-| Key | 名称 | 类型 | 默认值 | 必填 | 变量模式 | 条件 | 说明 |
-| --- | --- | --- | --- | --- | --- | --- | --- |
-| `operation` | 操作类型 | `Enum` |  | 是 | `Input` |  | 操作类型 |
-| `url` | 网址 | `Text` |  | 是 | `UseVarOrInput` | 仅：OpenUrl, ActivateTab | 要打开的网页地址。激活标签页时有多种使用方法，请参考模块文档。 |
-| `windowId` | 窗口Id | `Number` |  | 是 | `UseVarOrInput` | 仅：OpenUrl | 使用哪个窗口打开网址。可以使用选项或指定窗口id。 |
-| `tabId` | 标签页Id | `Text` |  | 是 | `UseVarOrInput` | 仅：GetTabInfo, CloseTab, RunScript, WaitTabComplete, GetElementInfo, UpdateElement, TriggerEvent, PickElement, Wait, ActivateTab | 留空表示当前活动标签页。 |
-| `selector` | 选择器 | `Text` |  | 是 | `UseVarOrInput` | 仅：GetElementInfo, UpdateElement, TriggerEvent, Wait | 要操作的元素选择器，请参考文档。 |
-| `fixSelector` | 修正选择器文本 | `Enum` | auto | 是 | `Input` | 仅：GetElementInfo, UpdateElement, TriggerEvent | 仅MV2版本扩展有效。 |
-| `elementInfo` | 元素信息类型 | `Enum` | Value | 是 | `Input` | 仅：GetElementInfo |  |
-| `updateElementInfo` | 元素信息类型 | `Enum` | Value | 是 | `Input` | 仅：UpdateElement |  |
-| `triggerEventType` | 触发事件类型 | `Enum` | click | 是 | `UseVarOrInput` | 仅：TriggerEvent |  |
-| `updateElementValue` | 值 | `Text` |  | 是 | `UseVarOrInput` | 仅：UpdateElement | 要更新的元素信息值 |
-| `attrName` | 属性名 | `Text` |  | 是 | `UseVarOrInput` | 仅：GetElementInfo, UpdateElement | 设置或读取Attribute属性/Property属性时，置顶Attribute或Property的名称。 |
-| `windowInfo` | 窗口/标签参数 | `Text` |  | 否 | `UseVarOrInput` | 仅：OpenUrl | 创建窗口或标签时的额外参数（json格式）。 |
-| `script` | 脚本内容 | `Text` | //.js <br /> | 否 | `UseVarOrInput` | 仅：RunScript, BackgroundScript |  |
-| `command` | 命令 | `Text` |  | 否 | `UseVarOrInput` | 仅：BackgroundCommand | 请参考模块文档获取支持的命令列表。需MV3版浏览器扩展与Chrome135+版本。 |
-| `commandParams` | 命令参数 | `Object` |  | 否 | `UseVarOrInput` | 仅：BackgroundCommand | 后台脚本命令的参数。每个命令参数不同，详情请参考模块文档。 |
-| `valueFilter` | 返回值过滤器 | `Text` |  | 否 | `UseVarOrInput` | 仅：BackgroundCommand | 用于从API返回的结果中提取单个属性。格式为属性名，多个时使用分号隔开。 |
-| `timeoutMs` | 超时时间(ms) | `Number` | 3000 | 是 | `Input` | 仅：OpenUrl, WaitTabComplete, BackgroundScript, GetTabInfo, RunScript, GetElementInfo, UpdateElement, TriggerEvent, PickElement, BackgroundCommand, Wait | 超时等待时间，毫秒数 |
-| `frame` | 运行脚本的框架 | `Text` | all | 是 | `Input` | 仅：RunScript, GetElementInfo, UpdateElement, TriggerEvent | all:所有框架，0：顶层框架，其它数字：框架id |
-| `executionWorld` | 执行环境 | `Text` |  | 是 | `Input` | 仅：RunScript | 自定义脚本的执行环境(ExecutionWorld)，默认为USER_SCRIPT。MAIN表示网页自身的执行环境。仅MV3版本扩展支持。 |
-| `waitManualReturn` | 从脚本手动返回数据 | `Boolean` | false | 否 | `Input` | 仅：RunScript | 在脚本中使用sendReplyToQuicker函数手动返回数据 |
-| `waitComplete` | 等待操作完成或返回数据 | `Boolean` | false | 否 | `Input` | 仅：OpenUrl, BackgroundScript, BackgroundCommand |  |
-| `browser` | 浏览器 | `Text` | auto | 是 | `UseVarOrInput` | 仅：SetBrowser | 设置本动作连接的浏览器进程名（需安装Quicker浏览器扩展） |
-| `mainProcessId` | 主进程ID | `Integer` | 0 | 否 | `UseVarOrInput` | 仅：SetBrowser | 可选。指定要连接的浏览器主进程ID。当同一个浏览器通过user-data-dir参数运行多个实例时使用。 |
-| `envName` | 自定义环境名 | `Text` | * | 否 | `UseVarOrInput` | 仅：SetBrowser | 指定要连接的浏览器扩展环境名称。用于区分同一个浏览器的不同Profile环境（需在扩展中设置环境名称）。*表示不判断环境名。 |
-| `stopIfFail` | 失败后停止 | `Boolean` | true | 否 | `Input` |  | 失败后是否停止动作 |
-| `waitEventType` | 事件类型 | `Enum` |  | 是 | `UseVarOrInput` | 仅：Wait |  |
-| `waitEventParams` | 参数 | `Text` |  | 否 | `UseVarOrInput` | 仅：Wait | 不同事件的参数不同，请参考模块文档。 |
-
-## 输出参数
-
-| Key | 名称 | 类型 | 条件 | 说明 |
-| --- | --- | --- | --- | --- |
-| `isSuccess` | 是否成功 | `Boolean` |  | 操作是否成功 |
-| `tabId` | 标签页ID | `Integer` | 仅：OpenUrl, GetTabInfo, ActivateTab | 网页所在标签页ID |
-| `windowId` | 窗口ID | `Integer` | 仅：OpenUrl, GetTabInfo, ActivateTab | 网页所在窗口的ID |
-| `groupId` | 分组ID | `Integer` | 仅：GetTabInfo, ActivateTab | 标签页所属分组ID |
-| `url` | 网址 | `Text` | 仅：GetTabInfo, ActivateTab | 标签页当前网址 |
-| `title` | 网页标题 | `Text` | 仅：GetTabInfo, ActivateTab | 标签页网页标题 |
-| `favicon` | Favicon图标网址 | `Text` | 仅：GetTabInfo, ActivateTab | 标签页网页图标网址 |
-| `firstValue` | 第一个值 | `Text` | 仅：GetElementInfo | 获取的第一个元素的信息结果 |
-| `allValues` | 所有值的列表 | `List` | 仅：GetElementInfo | 所有元素信息结果的列表 |
-| `browser` | 浏览器 | `Text` | 仅：GetTabInfo | 当前访问的浏览器 |
-| `extVersion` | 插件版本 | `Text` | 仅：GetTabInfo | 浏览器插件版本号 |
-| `manifestVersion` | Manifest版本 | `Integer` | 仅：GetTabInfo | 浏览器插件的Manifest版本号 |
-| `envName` | 环境名称 | `Text` | 仅：GetTabInfo | 浏览器Profile的自定义环境名称 |
-| `selector` | CSS选择器 | `Text` | 仅：PickElement | 所选择元素的CSS选择器 |
-| `rawResponse` | 原始返回结果 | `Any` |  | 从插件返回的原始jToken对象 |
-
-## 选项值
-
-### `operation` 操作类型
-
-| Value | 名称 | 说明 |
-| --- | --- | --- |
-| `OpenUrl` | 打开网址 |  |
-| `WaitTabComplete` | 等待加载完成 |  |
-| `ActivateTab` | 激活标签页 |  |
-| `CloseTab` | 关闭标签页 |  |
-| `GetTabInfo` | 获得标签页信息 |  |
-| `RunScript` | 对标签页运行脚本 (扩展需开启“允许运行用户脚本”选项) |  |
-| `PickElement` | 选择元素 (返回CSS选择器) |  |
-| `GetElementInfo` | 获取元素信息 |  |
-| `UpdateElement` | 更新元素信息 |  |
-| `TriggerEvent` | 触发事件 |  |
-| `Wait` | 等待网页变化 (MV3版扩展) |  |
-| `SetBrowser` | 浏览器：设置连接的浏览器 |  |
-| `BackgroundScript` | 浏览器：运行后台脚本 |  |
-| `BackgroundCommand` | 浏览器：运行后台命令 (MV3版扩展) |  |
-
-### `windowId` 窗口Id
-
-| Value | 名称 | 说明 |
-| --- | --- | --- |
-| `Current` | 当前窗口 |  |
-| `New` | 新窗口 |  |
-
-### `fixSelector` 修正选择器文本
-
-| Value | 名称 | 说明 |
-| --- | --- | --- |
-| `auto` | 自动 |  |
-| `noFix` | 不修正 |  |
-| `replaceBackslash` | \替换为\\ |  |
-
-### `elementInfo` 元素信息类型
-
-| Value | 名称 | 说明 |
-| --- | --- | --- |
-| `Value` | 值 |  |
-| `Attribute` | 某Attribute属性 |  |
-| `Property` | 某Property属性 |  |
-| `InnerText` | innerText 内部文本 |  |
-| `InnerHtml` | innerHTML 内部HTML |  |
-| `OuterHtml` | outerHTML 全部HTML |  |
-
-### `updateElementInfo` 元素信息类型
-
-| Value | 名称 | 说明 |
-| --- | --- | --- |
-| `Value` | 值 |  |
-| `ArrayValue` | 数组值 |  |
-| `Attribute` | 某Attribute属性 |  |
-| `Property` | 某Property属性 |  |
-| `InnerText` | InnerText 内部文本 |  |
-| `InnerHtml` | InnerHtml 内部HTML |  |
-
-### `triggerEventType` 触发事件类型
-
-| Value | 名称 | 说明 |
-| --- | --- | --- |
-| `click` | 点击 |  |
-| `submit` | 提交表单 |  |
-| `focus` | 获得焦点 |  |
-| `blur` | 失去焦点 |  |
-| `dblclick` | 双击 |  |
-| `change` | 值改变 |  |
-
-### `command` 命令
-
-| Value | 名称 | 说明 |
-| --- | --- | --- |
-| `api_bookmarks_getTree` | API: 获取书签树 |  |
-| `api_bookmarks_get` | API: 获取指定ID的书签 |  |
-| `api_bookmarks_getChildren` | API: 获取指定ID的书签的子书签 |  |
-| `api_bookmarks_getRecent` | API: 获取最近添加的书签 |  |
-| `api_bookmarks_search` | API: 搜索书签 |  |
-| `api_bookmarks_create` | API: 创建书签 |  |
-| `api_bookmarks_move` | API: 移动书签 |  |
-| `api_bookmarks_update` | API: 更新书签 |  |
-| `api_bookmarks_remove` | API: 删除书签 |  |
-| `api_bookmarks_removeTree` | API: 删除书签文件夹及其内容 |  |
-| `api_browsingData_remove` | API: 删除浏览数据 |  |
-| `api_browsingData_removeAppcache` | API: 删除应用缓存 |  |
-| `api_browsingData_removeCache` | API: 删除缓存 |  |
-| `api_browsingData_removeCookies` | API: 删除Cookie |  |
-| `api_browsingData_removeDownloads` | API: 删除下载记录 |  |
-| `api_browsingData_removeFileSystems` | API: 删除文件系统 |  |
-| `api_browsingData_removeFormData` | API: 删除表单数据 |  |
-| `api_browsingData_removeHistory` | API: 删除历史记录 |  |
-| `api_browsingData_removeIndexedDB` | API: 删除IndexedDB |  |
-| `api_browsingData_removeLocalStorage` | API: 删除本地存储 |  |
-| `api_browsingData_removePasswords` | API: 删除密码 |  |
-| `api_browsingData_removePluginData` | API: 删除插件数据 |  |
-| `api_browsingData_removeServiceWorkers` | API: 删除Service Workers |  |
-| `api_browsingData_removeWebSQL` | API: 删除WebSQL |  |
-| `api_browsingData_settings` | API: 浏览数据设置 |  |
-| `api_cookies_get` | API: 获取Cookie |  |
-| `api_cookies_getAll` | API: 获取所有Cookie |  |
-| `api_cookies_set` | API: 设置Cookie |  |
-| `api_cookies_remove` | API: 删除Cookie |  |
-| `api_cookies_getAllCookieStores` | API: 获取所有Cookie存储 |  |
-| `api_debugger_attach` | API: 附加调试器 |  |
-| `api_debugger_detach` | API: 分离调试器 |  |
-| `api_debugger_sendCommand` | API: 发送调试命令 |  |
-| `api_debugger_getTargets` | API: 获取调试目标 |  |
-| `api_downloads_download` | API: 下载文件 |  |
-| `api_downloads_search` | API: 搜索下载 |  |
-| `api_downloads_pause` | API: 暂停下载 |  |
-| `api_downloads_resume` | API: 恢复下载 |  |
-| `api_downloads_cancel` | API: 取消下载 |  |
-| `api_downloads_erase` | API: 清除下载记录 |  |
-| `api_downloads_removeFile` | API: 删除下载文件 |  |
-| `api_downloads_open` | API: 打开下载文件 |  |
-| `api_downloads_show` | API: 显示下载文件 |  |
-| `api_downloads_showDefaultFolder` | API: 显示默认下载文件夹 |  |
-| `api_downloads_getFileIcon` | API: 获取文件图标 |  |
-| `api_downloads_setShelfEnabled` | API: 设置下载栏启用状态 |  |
-| `api_history_search` | API: 搜索历史记录 |  |
-| `api_history_getVisits` | API: 获取访问记录 |  |
-| `api_history_addUrl` | API: 添加URL到历史记录 |  |
-| `api_history_deleteUrl` | API: 从历史记录删除URL |  |
-| `api_history_deleteRange` | API: 删除时间范围内的历史记录 |  |
-| `api_history_deleteAll` | API: 删除所有历史记录 |  |
-| `api_pageCapture_saveAsMHTML` | API: 保存为MHTML |  |
-| `api_readingList_add` | API: 添加到阅读列表 |  |
-| `api_readingList_query` | API: 查询阅读列表条目 |  |
-| `api_readingList_remove` | API: 从阅读列表移除 |  |
-| `api_readingList_update` | API: 更新阅读列表条目 |  |
-| `api_tabGroups_get` | API: 获取标签组 |  |
-| `api_tabGroups_update` | API: 更新标签组 |  |
-| `api_tabGroups_move` | API: 移动标签组 |  |
-| `api_tabGroups_query` | API: 查询标签组 |  |
-| `api_tabs_captureVisibleTab` | API: 捕获可见标签页 |  |
-| `api_tabs_create` | API: 创建标签页 |  |
-| `api_tabs_detectLanguage` | API: 检测标签页语言 |  |
-| `api_tabs_discard` | API: 丢弃标签页 |  |
-| `api_tabs_duplicate` | API: 复制标签页 |  |
-| `api_tabs_get` | API: 获取标签页 |  |
-| `api_tabs_getCurrent` | API: 获取当前标签页 |  |
-| `api_tabs_getZoom` | API: 获取缩放级别 |  |
-| `api_tabs_getZoomSettings` | API: 获取缩放设置 |  |
-| `api_tabs_goBack` | API: 后退 |  |
-| `api_tabs_goForward` | API: 前进 |  |
-| `api_tabs_group` | API: 组合标签页 |  |
-| `api_tabs_highlight` | API: 高亮标签页 |  |
-| `api_tabs_move` | API: 移动标签页 |  |
-| `api_tabs_query` | API: 查询标签页 |  |
-| `api_tabs_reload` | API: 重新加载标签页 |  |
-| `api_tabs_remove` | API: 删除标签页 |  |
-| `api_tabs_sendMessage` | API: 发送消息到标签页 |  |
-| `api_tabs_setZoom` | API: 设置缩放级别 |  |
-| `api_tabs_setZoomSettings` | API: 设置缩放设置 |  |
-| `api_tabs_toggleMuteState` | API: 切换静音状态 |  |
-| `api_tabs_ungroup` | API: 取消标签页组合 |  |
-| `api_tabs_update` | API: 更新标签页 |  |
-| `api_sessions_getRecentlyClosed` | API: 获取最近关闭的标签页和窗口 |  |
-| `api_sessions_getDevices` | API: 获取连接的设备及其会话信息 |  |
-| `api_sessions_restore` | API: 恢复已关闭的标签页或窗口 |  |
-| `api_tts_speak` | API: 朗读文本 |  |
-| `api_tts_stop` | API: 停止朗读 |  |
-| `api_tts_pause` | API: 暂停朗读 |  |
-| `api_tts_resume` | API: 恢复朗读 |  |
-| `api_tts_isSpeaking` | API: 是否正在朗读 |  |
-| `api_tts_getVoices` | API: 获取语音列表 |  |
-| `api_windows_create` | API: 创建窗口 |  |
-| `api_windows_get` | API: 获取窗口 |  |
-| `api_windows_getAll` | API: 获取所有窗口 |  |
-| `api_windows_getCurrent` | API: 获取当前窗口 |  |
-| `api_windows_getLastFocused` | API: 获取最后聚焦的窗口 |  |
-| `api_windows_remove` | API: 删除窗口 |  |
-| `api_windows_update` | API: 更新窗口 |  |
-| `scripts_closeOtherTabs` | 脚本: 关闭其他标签页 |  |
-| `scripts_closeLeftTabs` | 脚本: 关闭左侧标签页 |  |
-| `scripts_closeRightTabs` | 脚本: 关闭右侧标签页 |  |
-| `scripts_closeDuplicateTabs` | 脚本: 关闭重复标签页 |  |
-| `scripts_switchToLeftTab` | 脚本: 切换到左侧标签页 |  |
-| `scripts_switchToRightTab` | 脚本: 切换到右侧标签页 |  |
-| `scripts_switchToFirstTab` | 脚本: 切换到第一个标签页 |  |
-| `scripts_switchToLastTab` | 脚本: 切换到最后一个标签页 |  |
-| `scripts_moveTabToStart` | 脚本: 移动标签页到开头 |  |
-| `scripts_moveTabToEnd` | 脚本: 移动标签页到末尾 |  |
-| `scripts_moveTabRight` | 脚本: 向右移动标签页 |  |
-| `scripts_moveTabLeft` | 脚本: 向左移动标签页 |  |
-| `scripts_toggleTabMute` | 脚本: 切换标签页静音状态 |  |
-| `scripts_toggleTabPin` | 脚本: 切换标签页固定状态 |  |
-| `scripts_pinCurrentTab` | 脚本: 固定当前标签页 |  |
-| `scripts_addBookmarkForCurrentTab` | 脚本: 为当前标签页添加书签 |  |
-| `scripts_removeBookmarkForCurrentTab` | 脚本: 删除当前标签页的书签 |  |
-| `scripts_goToParentDirectory` | 脚本: 转到父目录 |  |
-| `scripts_scrollUp` | 脚本: 向上滚动 |  |
-| `scripts_scrollDown` | 脚本: 向下滚动 |  |
-| `scripts_scrollToTop` | 脚本: 滚动到顶部 |  |
-| `scripts_scrollToBottom` | 脚本: 滚动到底部 |  |
-| `scripts_scrollLeft` | 脚本: 向左滚动 |  |
-| `scripts_scrollRight` | 脚本: 向右滚动 |  |
-| `scripts_reloadTab` | 脚本: 重新加载标签页 |  |
-| `scripts_forceReloadTab` | 脚本: 强制重新加载标签页 |  |
-| `scripts_reloadAllTabs` | 脚本: 重新加载所有标签页 |  |
-| `scripts_reopenClosedTab` | 脚本: 重新打开关闭的标签页 |  |
-| `scripts_createNewTab` | 脚本: 创建新标签页 |  |
-| `scripts_duplicateCurrentTab` | 脚本: 复制当前标签页 |  |
-| `scripts_detachCurrentTab` | 脚本: 分离当前标签页 |  |
-| `scripts_createNewWindow` | 脚本: 创建新窗口 |  |
-| `scripts_createNewIncognitoWindow` | 脚本: 创建新隐身窗口 |  |
-| `scripts_createNewWindowWithUrls` | 脚本: 使用URL创建新窗口 |  |
-| `scripts_closeOtherWindows` | 脚本: 关闭其他窗口 |  |
-| `scripts_mergeAllWindows` | 脚本: 合并所有窗口 |  |
-| `scripts_closeLastFocusedWindow` | 脚本: 关闭最后聚焦的窗口 |  |
-| `scripts_closeAllWindows` | 脚本: 关闭所有窗口 |  |
-| `scripts_toggleFullscreen` | 脚本: 切换全屏模式 |  |
-| `scripts_closeCurrentTabAndActivateLeft` | 脚本: 关闭当前标签页并激活左侧 |  |
-| `scripts_openCurrentTabInIncognito` | 脚本: 在隐身模式打开当前标签页 |  |
-| `scripts_pageZoomIn` | 脚本: 页面放大 |  |
-| `scripts_pageZoomOut` | 脚本: 页面缩小 |  |
-| `scripts_injectCss` | 脚本: 向页面注入CSS代码 |  |
-| `scripts_openDownloadsFolder` | 脚本: 打开下载文件夹 |  |
-| `scripts_showLastDownloadedFile` | 脚本: 显示最后下载的文件 |  |
-| `scripts_openHistoryPage` | 脚本: 打开历史记录页面 |  |
-| `scripts_openDownloadsPage` | 脚本: 打开下载页面 |  |
-| `scripts_openExtensionsPage` | 脚本: 打开扩展页面 |  |
-| `scripts_openSettingsPage` | 脚本: 打开设置页面 |  |
-| `scripts_openBookmarksPage` | 脚本: 打开书签页面 |  |
-| `scripts_openFlagsPage` | 脚本: 打开实验功能页面 |  |
-| `scripts_openAboutPage` | 脚本: 打开关于页面 |  |
-| `scripts_openVersionPage` | 脚本: 打开版本页面 |  |
-| `scripts_openBlankPage` | 脚本: 打开空白页面 |  |
-| `scripts_groupTabsByDomain` | 脚本: 按域名分组标签页 |  |
-| `scripts_dismissGroup` | 脚本: 解散当前标签页所属分组 |  |
-| `scripts_dismissAllGroupsInCurrentWindow` | 脚本: 解散当前窗口的所有分组 |  |
-| `scripts_moveSameDomainTabsToCurrentWindow` | 脚本: 将相同域名网页移动到当前窗口 |  |
-| `scripts_moveSameDomainTabsToNewWindow` | 脚本: 将相同域名网页移动到新建窗口 |  |
-| `scripts_createOrRestoreGroup` | 脚本: 创建或恢复分组 |  |
-| `scripts_captureVisibleTab` | 脚本: 截图可见标签页视口 |  |
-| `scripts_captureSpecificTabView` | 脚本: 截图特定标签页视口 |  |
-| `scripts_captureElement` | 脚本: 截图指定元素 |  |
-| `scripts_captureFullPage` | 脚本: 截图整页 |  |
-| `scripts_setFileInputFiles` | 脚本: 设置文件输入框的文件 |  |
-
-### `frame` 运行脚本的框架
-
-| Value | 名称 | 说明 |
-| --- | --- | --- |
-| `all` | 全部框架 |  |
-| `0` | 顶层框架 |  |
-
-### `executionWorld` 执行环境
-
-| Value | 名称 | 说明 |
-| --- | --- | --- |
-| `USER_SCRIPT` | USER_SCRIPT |  |
-| `MAIN` | MAIN |  |
-
-### `browser` 浏览器
-
-| Value | 名称 | 说明 |
-| --- | --- | --- |
-| `auto` | 自动 |  |
-| `chrome` | 谷歌Chrome |  |
-| `msedge` | 微软Edge |  |
-| `firefox` | Firefox |  |
-| `vivaldi` | vivaldi |  |
-
-### `waitEventType` 事件类型
-
-| Value | 名称 | 说明 |
-| --- | --- | --- |
-| `elementExists` | 元素存在 |  |
-| `elementNotExists` | 元素不存在 |  |
-| `elementVisible` | 元素在网页可见 |  |
-| `elementNotVisible` | 元素在网页不可见 |  |
-| `elementClickable` | 元素可点击 |  |
-| `elementNotClickable` | 元素不可点击 |  |
-| `textContains` | 包含文本 |  |
-| `textNotContains` | 不包含文本 |  |
-| `textMatches` | 文本匹配表达式 |  |
-| `textNotMatches` | 文本不匹配表达式 |  |
-| `urlMatches` | 网址匹配表达式(PWA应用) |  |
-| `urlNotMatches` | 网址不匹配表达式(PWA应用) |  |
-| `titleMatches` | 标题匹配表达式(PWA应用) |  |
-| `titleNotMatches` | 标题不匹配表达式(PWA应用) |  |
-| `attributeMatches` | 属性匹配表达式 |  |
-| `attributeNotMatches` | 属性不匹配表达式 |  |
-| `elementHasClass` | 元素包含类名 |  |
-| `elementNotHasClass` | 元素不包含类名 |  |
-| `elementHasAttribute` | 元素包含属性 |  |
-| `elementNotHasAttribute` | 元素不包含属性 |  |
-| `elementCountGt` | 元素数量大于 |  |
-| `elementCountLt` | 元素数量小于 |  |
-| `elementCountEq` | 元素数量等于 |  |
-| `elementEvent` | 元素事件触发 |  |
-{/* xaction-metadata:end */}
+<XActionModuleMeta moduleKey="sys:chromecontrol" />
 
 通过Quicker动作控制浏览器或网页。
 
@@ -408,16 +56,10 @@ legacyContentUpdatedAt: "2025-10-28T06:17:46.000Z"
 -   对标签页运行脚本：可选择“MAIN”执行环境，访问网页js 变量。
 -   增加标签页分组API支持；
 
-
-
 **延期MV2版本扩展的使用**
 
 目前Chrome已经开始禁用MV2版本扩展。 如果需要，可以通过注册表开启对MV2的扩展支持（预计有1年有效期），尝试点击此按钮导入注册表条目后重启浏览器：
 ![](./img/chromecontrol-001-6e3a713cb6.png)![](./img/chromecontrol-002-f47aa09d7f.png)
-
-
-
-
 
 ### 安装浏览器扩展
 
@@ -426,8 +68,6 @@ legacyContentUpdatedAt: "2025-10-28T06:17:46.000Z"
 方便的话，请在扩展商店中为扩展评分⭐⭐⭐⭐⭐哦，这样有助于更新版本时更快通过审核💖。
 
 注：“紫鸟”浏览器，请自行联系紫鸟客服，申请加白名单后才能使用Quicker扩展。
-
-
 
 ### 界面说明
 
@@ -445,21 +85,15 @@ legacyContentUpdatedAt: "2025-10-28T06:17:46.000Z"
 
 -   开启网址同步：此选项为后期增加基于网址的动作页功能预留，目前请不要开启。
 
-
-
 **可选权限：**
 
 -   如果要运行使用到特殊权限的后台脚本，可以在此处开启。（后台脚本是指直接通过chrome API控制浏览器自身的脚本，如获取浏览历史、查看网页cookie等）
-
-
 
 **文档：**点击可打开浏览器扩展的文档。 MV3版本扩展将部分文档嵌入到了扩展内部，方便随时查看，包括“后台命令参考”、“更新历史”等。
 
 获取元素选择器：点击后可在网页中选择一个元素，然后自动复制该元素的css选择器。
 
 重置网页浮标位置：将网页浮标恢复到默认位置。
-
-
 
 ### 脚本限制
 
@@ -477,26 +111,14 @@ legacyContentUpdatedAt: "2025-10-28T06:17:46.000Z"
 1.  部分网页交互需要人工操作才能触发，如文件上传、document.execCommand脚本。（部分操作可能在人工点击页面一次之后可以通过脚本触发）
 2.  有些脚本在iframe框架中无法正常执行。
 
-
-
 4.  消息传递需要转换成文本，可能有部分内容无法正常传输。
-
-
-
-
 
 ### 多浏览器支持
 
 -   Quicker可以同时连接不同类型的浏览器程序（根据进程名判断），如同时连接Chrome/Edge/Firefox/Vivaldi等。
 -   暂不支持同时运行一个浏览器的多个副本（通过--user-data-dir方式使用多个账号）。
 
-
-
-
-
 在某个动作中第一次使用“浏览器控制”模块时，Quicker会根据前台窗口进程判断要连接的浏览器，并且在后续的操作步骤中持续连接此浏览器。
-
-
 
 如果在第一次运行到“浏览器控制”模块时，前台窗口不是已连接的浏览器，则使用配置中设定的“默认连接的浏览器”。
 
@@ -506,21 +128,13 @@ legacyContentUpdatedAt: "2025-10-28T06:17:46.000Z"
 
 ![](./img/chromecontrol-007-96fe07bd39.png)
 
-
-
 可能还有其他无法正常工作的情况，如有遇到欢迎反馈。
-
-
-
-
 
 ## 通用参数
 
 根据要执行的操作类型不同，参数也会有所变化。
 
 ![](./img/chromecontrol-008-57b144a67b.png)
-
-
 
 【操作类型】此步骤的目的。
 
@@ -530,15 +144,11 @@ legacyContentUpdatedAt: "2025-10-28T06:17:46.000Z"
 
 在连续多个步骤操作同一个标签页时使用（如：前面的步骤打开了新的标签页，后面的步骤操作此标签页）。
 
-
-
 【**选择器**】用于指定要操作的网页元素的[CSS选择器](https://www.runoob.com/cssref/css-selectors.html)。
 
 选择器对于操作网页是极其基础和重要的知识，请务必了解：[https://www.runoob.com/cssref/css-selectors.html](https://www.runoob.com/cssref/css-selectors.html) 同一个元素有多个CSS选择器可以表示，选择其中的一种即可。
 
 获取选择器的方式请参考本文[后面的章节](/v2/xaction/modules/chromecontrol)。
-
-
 
 如果需要通过xpath的方式指定元素，以`xpath:`开始，如：
 
@@ -548,8 +158,6 @@ xpath://*[@id="lark-text-editor"]/div/div/div[2]/div[1]/div[2]/div[1]/a[11]
 
 如果要选择一类元素，比如所有的链接或图片，就需要手写选择器了。
 
-
-
 【修正选择器文本】(1.10.3版本提供)从Chrome中复制的选择器文本，如果含有\\字符，需要将其替换成\\\\才能正常定位。此参数可选：
 
 -   自动：自动判断是否需要将\\替换为\\\\。
@@ -557,8 +165,6 @@ xpath://*[@id="lark-text-editor"]/div/div/div[2]/div[1]/div[2]/div[1]/a[11]
 -   替换\\为\\\\：将\\替换为\\\\。
 
 MV3版本浏览器不再需要此功能。
-
-
 
 ## 打开网址
 
@@ -569,8 +175,6 @@ MV3版本浏览器不再需要此功能。
 ![](./img/chromecontrol-010-a045de69f6.png)
 
 【网址】要打开的完整网址。需要带有协议头（http://或https://）。
-
-
 
 【窗口ID】使用哪个窗口打开网址。可选值：
 
@@ -599,11 +203,7 @@ MV3版本浏览器不再需要此功能。
 
 ![](./img/chromecontrol-011-5aa11799a0.png)
 
-
-
 【超时时间】等待网页加载的时间。
-
-
 
 **输出**
 
@@ -615,8 +215,6 @@ MV3版本浏览器不再需要此功能。
 
 【原始返回结果】从浏览器插件返回的原始结果反序列化后的[JToken](https://www.newtonsoft.com/json/help/html/T_Newtonsoft_Json_Linq_JToken.htm)对象。JToken可以用来方便的访问Json内容。
 
-
-
 **相关后台命令**
 
 对MV3版本扩展，您也可以通过“后台命令”功能创建标签页或窗口。
@@ -625,15 +223,9 @@ MV3版本浏览器不再需要此功能。
 -   [api\_windows\_create](https://quickerconnectortests.getquicker.cn/docs/commands.html#api_windows_create)
 -   [scripts\_createNewWindowWithUrls](https://quickerconnectortests.getquicker.cn/docs/commands.html#scripts_createNewWindowWithUrls) 创建窗口并打开多个网址
 
-
-
 **相关子程序**
 
 -   [切换标签或打开网址](https://getquicker.net/subprogram?id=2e862e5b-3a0e-45ee-b3fc-08db05106307) 如果浏览器中已经打开此网址，则不再打开新的标签页，而是将已有标签页激活。
-
-
-
-
 
 ## 等待加载完成
 
@@ -651,15 +243,9 @@ MV3版本浏览器不再需要此功能。
 
 【失败后停止】超时后是否停止动作。注：不是所有的操作都需要彻底加载完成才能继续。
 
-
-
 **输出**
 
 【原始返回结果】空。
-
-
-
-
 
 ## 激活标签页
 
@@ -678,10 +264,6 @@ MV3版本浏览器不再需要此功能。
 
 ![](./img/chromecontrol-013-fe0b3c1700.png)
 
-
-
-
-
 ## 获得标签页信息
 
 获得某个标签页的信息。不指定标签页ID时，获取当前活动标签页的信息和扩展本身的信息。
@@ -690,13 +272,9 @@ MV3版本扩展中新增输出Manifest版本，可以用以判断是否为新版
 
 ![](./img/chromecontrol-014-8df71c6c70.png)
 
-
-
 **输入**
 
 【标签页Id】要获取信息的标签页序号。 不填写时表示获取当前活动标签页的信息。
-
-
 
 **输出**
 
@@ -718,25 +296,15 @@ MV3版本扩展中新增输出Manifest版本，可以用以判断是否为新版
 
 【原始返回结果】当前标签页的[Tab对象信息](https://developer.chrome.com/extensions/tabs#type-Tab)。
 
-
-
-
-
 ## 关闭标签页
 
 关闭指定的标签页。
 
 ![](./img/chromecontrol-015-9ab26a6de3.png)
 
-
-
 **输入**
 
 【标签页Id】要关闭的标签页。未指定标签页Id时，关闭当前活动标签页。
-
-
-
-
 
 ## 对标签页运行脚本
 
@@ -774,8 +342,6 @@ document.body.innerText;
 let result = {name: '张三', age: 20};
 result;
 ```
-
-
 
 使用异步方法示例：
 
@@ -822,17 +388,11 @@ setTimeout(function(){
 
 【运行环境】可选，默认为`USER_SCRIPT`。指代码执行的上下文，可选值为`USER_SCRIPT`或`MAIN`。值为`MAIN`时，使用网页自身的上下文执行js代码，此时可访问网页中的全局变量信息。
 
-
-
 **输出**
 
 【原始返回结果】js脚本的返回值JToken对象。可以输出给文本变量获得原始json。
 
 实际值是一个数组（JAarry类型），表示每个Frame的运行结果。如果网页只有一个Frame，则该数组只有一项。
-
-
-
-
 
 ## 选择元素
 
@@ -840,15 +400,11 @@ setTimeout(function(){
 
 ![](./img/chromecontrol-017-9ad2f09a18.png)
 
-
-
 **输出**
 
 【CSS选择器】目标元素的css选择器。
 
 注意：如果网页是变化的，css选择器可能会失效。
-
-
 
 ## 获取元素信息
 
@@ -861,8 +417,6 @@ setTimeout(function(){
 【标签页ID】要获取信息的标签页，未指定时，获取前活动标签页中的网页元素。
 
 【选择器】用于选择要操作元素的[CSS选择器](https://www.runoob.com/cssref/css-selectors.html)。
-
-
 
 【元素信息类型】要获取元素哪方面的信息。
 
@@ -881,11 +435,7 @@ setTimeout(function(){
 -   innerHTML：元素内的HTML内容。此信息通过jquery的[html()](https://api.jquery.com/html/)方法获取。
 -   outerHTML：包含元素自身的HTML内容。此方法通过DOM元素的[outerHTML](https://developer.mozilla.org/zh-CN/docs/Web/API/Element/outerHTML)属性获得。
 
-
-
 【属性名】当要获取的元素信息类型位“某个Attribute”或“某个Property”时，指定属性名。如链接的网址属性为“href”。
-
-
 
 **输出**
 
@@ -893,15 +443,9 @@ setTimeout(function(){
 
 【所有的值】所有符合选择器条件的元素的值的列表。一般用于取某一类元素的信息。
 
-
-
 **示例动作**
 
 -   获取网页里的所有链接地址和图片网址：[https://getquicker.net/sharedaction?code=68da9f93-57ee-4465-058e-08d823a26917](https://getquicker.net/sharedaction?code=68da9f93-57ee-4465-058e-08d823a26917)
-
-
-
-
 
 ## 更新元素信息
 
@@ -909,23 +453,15 @@ setTimeout(function(){
 
 更新元素时，所有符合“选择器”条件的元素的对应信息都会被更新。
 
-
-
 参考文档：[使用浏览器控制的一些示例](/v2/xaction/guides/web-page-control)
 
 示例动作：[用百度特定搜索关键词](https://getquicker.net/Sharedaction?code=9e70fb7f-b85e-4b21-1b7a-08da8ae0e8b9)
 
-
-
 ![](./img/chromecontrol-019-eaded0cc1c.png)
-
-
 
 **对于input、textarea等元素**
 
 【元素信息类型】选择“值”，然后在【值】参数中填写目标值即可。
-
-
 
 **更新下拉框select元素的值**
 
@@ -936,8 +472,6 @@ setTimeout(function(){
 然后使用“更新元素信息”操作，元素信息类型为“值”
 
 ![](./img/chromecontrol-021-fc85a8ee73.png)
-
-
 
 **更新选择检查框和单选框的选择状态**
 
@@ -955,10 +489,6 @@ $('选择器').prop('checked', false);  //取消选择
 需要使用input元素本身的选择器来更新选中状态。
 
 ![](./img/chromecontrol-023-abe2e52a9a.png)
-
-
-
-
 
 ## 触发事件
 
@@ -980,17 +510,11 @@ $('选择器').prop('checked', false);  //取消选择
 
 ![](./img/chromecontrol-026-3ae0b9ccb9.png)
 
-
-
 -   支持以`native.`前缀表示使用javascript原生`dispatchEvent`方式触发事件。如`native.focus`表示`.dispatchEvent(new Event('focus') )`。
 -   `change`事件使用`dispatchEvent`方式触发。
 -   `click`事件直接调用DOM的[click()方法](https://developer.mozilla.org/zh-CN/docs/Web/API/HTMLElement/click) 实现。
 -   其它事件通过[jquery.trigger()](https://api.jquery.com/trigger/)方法实现。
 -   提交表单时，需要使用form元素本身的选择器。
-
-
-
-
 
 ## 等待网页变化
 
@@ -1037,23 +561,13 @@ $('选择器').prop('checked', false);  //取消选择
 
 【超时时间】最长等待时间。
 
-
-
-
-
 ## 设置连接的浏览器
 
 设置当前动作要控制的浏览器。后续步骤的浏览器控制将会使用此浏览器。
 
 如果总是操作前台窗口浏览器，不需要使用此步骤。
 
-
-
-
-
 ## 运行后台命令
-
-
 
 通过调用浏览器API，实现对浏览器自身的控制。
 
@@ -1067,8 +581,6 @@ $('选择器').prop('checked', false);  //取消选择
 -   [在线文档](https://quickerconnectortests.getquicker.cn/docs/commands.html)
 -   扩展内置文档：1）点击浏览器扩展图标；2）点击“文档”；3）进入后点击“后台命令参考”链接。
     ![](./img/chromecontrol-028-e258c8cee8.png)
-
-
 
 步骤截图：
 
@@ -1097,23 +609,15 @@ $= new {
 }
 ```
 
-
-
-
-
 【等待操作完成】如果需要返回值，请选择此项。
 
 【返回值过滤器】对于命令返回的数据，如果仅需要其中一部分属性，可以设置本参数。参数值为分号隔开的属性名。如，下面的步骤返回所有打开的网址：
 
 ![](./img/chromecontrol-030-12f2e1bdc0.png)
 
-
-
 示例动作：
 
 -   [测试后台命令 - by CL - 动作信息 - Quicker](https://getquicker.net/Sharedaction?code=64f1cc94-8261-4e3e-d379-08dd85c4ca35)
-
-
 
 ### 使用后台命令实现后台脚本相关功能
 
@@ -1121,12 +625,6 @@ $= new {
 
 -   后台脚本可以多次调用浏览器API，实现完整的自定义逻辑。
 -   后台命令每次只能调用一个API，可以看做使用了一次`await`方式调用API，因此可能需要多次调用后台命令实现原有单个后台脚本的功能。
-
-
-
-
-
-
 
 ## 运行后台脚本
 
@@ -1140,15 +638,11 @@ $= new {
 
 ![](./img/chromecontrol-031-cea86b3997.png)
 
-
-
 如需兼容MV2版本扩展，可通过“获取标签页信息”得到Manifest版本号。 然后判断如果Manifest版本为3，则使用后台命令，否则使用后台脚本。
 
 ![](./img/chromecontrol-032-b59dd50bd7.png)
 
 示例动作：[查看Cookie - by CL - 动作信息 - Quicker](https://getquicker.net/Sharedaction?code=287ef444-8487-471d-e118-08d82862a3c3)
-
-
 
 ### 后台脚本的编写
 
@@ -1207,13 +701,9 @@ MV3版浏览器API请参考[官方文档](https://developer.chrome.com/docs/exte
 
 ### 从后台脚本返回内容
 
-
-
 **1）选中“等待操作完成”选项。**
 
 ![](./img/chromecontrol-033-5fc09ea522.png)
-
-
 
 **2）返回结果**
 
@@ -1239,8 +729,6 @@ chrome.windows.getLastFocused({populate:true}, function(win){
 -   返回当前窗口的所有标签页网址 [https://getquicker.net/sharedaction?code=e0e854ea-5d36-4dd9-14fc-08d8255d6cc9](https://getquicker.net/sharedaction?code=e0e854ea-5d36-4dd9-14fc-08d8255d6cc9)
 -   返回TopSites（常用网址。需开通topSites权限）：[https://getquicker.net/sharedaction?code=a17f1c61-26b5-4013-14ff-08d8255d6cc9](https://getquicker.net/sharedaction?code=a17f1c61-26b5-4013-14ff-08d8255d6cc9)
 
-
-
 **3）输出返回结果**
 
 在脚本中使用sendReplyToQuicker返回的data参数，如果是object类型，将会直接返回；
@@ -1253,27 +741,17 @@ chrome.windows.getLastFocused({populate:true}, function(win){
 }
 ```
 
-
-
 输出结果为JToken对象。请参考后面的“从JToken提取数据”章节。
-
-
 
 其他后台脚本示例动作：
 
 -   关闭左侧标签页：[https://getquicker.net/sharedaction?code=315a8235-e00a-4b89-8236-08d8246a94ad](https://getquicker.net/sharedaction?code=315a8235-e00a-4b89-8236-08d8246a94ad)
 -   弹出此页：[https://getquicker.net/sharedaction?code=bed4a309-2d20-47cb-8238-08d8246a94ad](https://getquicker.net/sharedaction?code=bed4a309-2d20-47cb-8238-08d8246a94ad)
 
-
-
-
-
 ## 将动作关联到浏览器右键菜单
 
 -   浏览器右键菜单不支持显示图标。
 -   本功能使用了[chrome.contextMenus API](https://developer.chrome.com/docs/extensions/reference/contextMenus/)，更多信息可参考谷歌官方文档。
-
-
 
 可以将动作关联到浏览器右键菜单中，效果如下图所示：
 
@@ -1292,8 +770,6 @@ chrome.windows.getLastFocused({populate:true}, function(win){
 
 ![](./img/chromecontrol-035-4d0f0d987b.png)
 
-
-
 设置完成后需重新连接浏览器方可生效。可重启浏览器或Quicker，或在“修复浏览器扩展连接”窗口中点击“更新右键菜单”按钮。
 
 ![](./img/chromecontrol-036-49233cb66c.png)
@@ -1302,15 +778,9 @@ chrome.windows.getLastFocused({populate:true}, function(win){
 
 示例动作：[https://getquicker.net/Sharedaction?code=d1650c2d-f913-4959-3931-08d9f928b257](https://getquicker.net/Sharedaction?code=d1650c2d-f913-4959-3931-08d9f928b257)
 
-
-
-
-
 ## 排错
 
 ### 查看日志
-
-
 
 #### 查看背景页面控制台信息
 
@@ -1328,19 +798,11 @@ ChromeAgent.exe是与浏览器通信的中间件程序，由浏览器启动。Ch
 
 为避免更新Quicker软件时文件被锁定，ChromeAgent.exe将会在Quicker安装后首次启动时，由Quicker程序复制到应用数据文件夹下并注册。位置为：`Quicker应用数据文件夹\bin\NativeMessageHost`（一般为：C:\\Users\\用户名\\AppData\\Local\\Quicker\\bin\\NativeMessageHost）
 
-
-
 log文件的存储位置为`Quicker应用数据文件夹\logs`，文件名为`quickerhost_浏览器名称.log`
 
 ![](./img/chromecontrol-039-caee917160.png)
 
-
-
-
-
 ## 扩展连接问题排查
-
-
 
 ![](./img/chromecontrol-040-2d0fd66297.png)
 
@@ -1365,8 +827,6 @@ log文件的存储位置为`Quicker应用数据文件夹\logs`，文件名为`qu
 
 ![](./img/chromecontrol-044-baca91f0e1.png)
 
-
-
 5）尝试修复扩展连接：
 
 ![](./img/chromecontrol-045-b6a5067bd0.png)
@@ -1375,8 +835,6 @@ log文件的存储位置为`Quicker应用数据文件夹\logs`，文件名为`qu
 
 ![](./img/chromecontrol-046-9cd16914e2.png)
 
-
-
 7）如果有任何安全、管家类软件，彻底退出后测试排查。
 
 [腾讯管家](https://getquicker.net/KC/Kb/Article/1118)的某些版本可能会影响扩展正常链接，卸载管家后测试。（正常后可重新下载安装管家最新版解决。）
@@ -1384,8 +842,6 @@ log文件的存储位置为`Quicker应用数据文件夹\logs`，文件名为`qu
 8）如果仍然无法连接，请联系CL。
 
 ## 其它信息
-
-
 
 ### 如何获取页面元素的CSS选择器或XPATH
 
@@ -1405,10 +861,6 @@ log文件的存储位置为`Quicker应用数据文件夹\logs`，文件名为`qu
 
 （3）第三方浏览器扩展，如ChroPath、SelectorsHub。
 
-
-
-
-
 ### 组件构成
 
 **Quicker**：发送指令并获取返回结果；
@@ -1417,16 +869,12 @@ log文件的存储位置为`Quicker应用数据文件夹\logs`，文件名为`qu
 
 **Chrome浏览器插件**：负责接收指令、执行指令，并返回结果。
 
-
-
 ### 从JToken中提取信息
 
 注意：
 
 -   对标签页运行脚本，返回的结果是数组，表示每个Frame框架中的运行结果。
 -   运行后台脚本返回的是通过qk\_bgmsg\_result变量设置的object类型的结果或者封装的&#123;data: qk\_bgmsg\_result&#125;封装的简单值结果。
-
-
 
 [JToken](https://www.newtonsoft.com/json/help/html/T_Newtonsoft_Json_Linq_JToken.htm)可以在表达式中使用 **\[数组的序号\]** 和 **\[对象的属性名\]** 访问到某个值，然后通过.ToString() 方法得到文本。
 
@@ -1438,13 +886,9 @@ log文件的存储位置为`Quicker应用数据文件夹\logs`，文件名为`qu
 
 ![](./img/chromecontrol-050-2ba9eddef9.png)
 
-
-
 也可以获取其原始类型的值（根据实际的类型），下面的表达式得到 "val" 属性的整数值：
 
 ![](./img/chromecontrol-051-8e056fd888.png)
-
-
 
 ### 如何开启浏览器的开发者模式
 
@@ -1473,10 +917,6 @@ log文件的存储位置为`Quicker应用数据文件夹\logs`，文件名为`qu
 3） 重启Quicker Connector扩展。
 
 ![](./img/chromecontrol-056-d1d065ec74.png)
-
-
-
-
 
 ### 参考文档
 

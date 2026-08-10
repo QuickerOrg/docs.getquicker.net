@@ -9,7 +9,6 @@ comments: true
 moduleKey: "sys:cloud_oss"
 docStatus: "migrated-unreviewed"
 metadataGeneratedAt: "2026-08-03 20:08:03"
-metadataHash: "34091b54568aafeeed6a7a90688bceb52ca74d5422fdc09d9868f33e2d1cc077"
 legacyDocId: 115862502
 legacyContentUpdatedAt: "2024-12-06T06:30:48.000Z"
 ---
@@ -18,54 +17,9 @@ legacyContentUpdatedAt: "2024-12-06T06:30:48.000Z"
 
 使用第三方云服务上传文件。
 
-{/* xaction-metadata:start */}
 ## 当前模块定义
 
-- 模块 Key：`sys:cloud_oss`
-- 分类：网络服务（`Network`）
-- 类型：`Action`
-- 风险操作：否
-- 专业版：否
-
-## 输入参数
-
-| Key | 名称 | 类型 | 默认值 | 必填 | 变量模式 | 条件 | 说明 |
-| --- | --- | --- | --- | --- | --- | --- | --- |
-| `operation` | 操作类型 | `Enum` | Upload | 是 | `Input` |  |  |
-| `vendor` | 服务商 | `Enum` | Aliyun | 是 | `Input` |  |  |
-| `vendorSettings` | 服务商参数 | `Text` |  | 是 | `Input` |  | 设置相关 |
-| `key` | 对象名 | `Text` |  | 否 | `Input` | 仅：Upload | 可选。留空时自动生成对象名。如果以'/'结尾，则在此基础上自动生成对象名。 |
-| `content` | 上传内容 | `Any` |  | 否 | `Input` | 仅：Upload | 要上传的文件路径、其它文本内容或图片变量。 |
-| `customDomain` | 自定义域名 | `Text` |  | 否 | `Input` | 仅：Upload | 如"https://files.example.com"。 |
-| `extraHeaders` | 额外的请求头 | `Text` |  | 是 | `Input` |  | 可选。设置厂商相关的特定http头。 |
-| `expireSeconds` | 超时时间 | `Number` | 180 | 否 | `UseVarOrInput` |  | 请求超时时间（秒数） |
-| `stopIfFail` | 失败后停止 | `Boolean` | true | 否 | `Input` |  | 失败后是否停止动作 |
-
-## 输出参数
-
-| Key | 名称 | 类型 | 条件 | 说明 |
-| --- | --- | --- | --- | --- |
-| `isSuccess` | 是否成功 | `Boolean` |  | 操作是否成功 |
-| `vendorUrl` | 服务商网址 | `Any` | 仅：Upload |  |
-| `customUrl` | 自定义域名网址 | `Any` | 仅：Upload | 设置了自定义域名时会生成此网址。 |
-| `err` | 错误信息 | `Text` |  | 出错时输出的错误信息。 |
-
-## 选项值
-
-### `operation` 操作类型
-
-| Value | 名称 | 说明 |
-| --- | --- | --- |
-| `Upload` | 上传 |  |
-
-### `vendor` 服务商
-
-| Value | 名称 | 说明 |
-| --- | --- | --- |
-| `Aliyun` | 阿里云 OSS |  |
-| `Tencent` | 腾讯云 COS |  |
-| `Qiniu` | 七牛云 |  |
-{/* xaction-metadata:end */}
+<XActionModuleMeta moduleKey="sys:cloud_oss" />
 
 将文件、图片、文本数据保存到自己的云服务账号中。（1.37.5+版本提供）
 
@@ -75,8 +29,6 @@ legacyContentUpdatedAt: "2024-12-06T06:30:48.000Z"
 
 -   请勿分享含有账号信息的动作。
 -   请勿将含有账号信息的动作的调试运行文件发送给其他人。
-
-
 
 目前支持的服务商：
 
@@ -141,13 +93,9 @@ Bucket管理网址：[https://oss.console.aliyun.com/bucket](https://oss.console
 
 ![](./img/cloud_oss-002-ef329ed8d3.png)
 
-
-
 查看EndPoint
 
 ![](./img/cloud_oss-003-a4896c1094.png)
-
-
 
 ### 腾讯云
 
@@ -158,8 +106,6 @@ AppId:账号的AppID，在账号信息中查看，可以为空
 SecretId:账号的SecretId（建议使用子账号）
 SecretKey:账号的SecretKey
 ```
-
-
 
 ![](./img/cloud_oss-004-bbf1f1e0a6.png)
 
@@ -173,8 +119,6 @@ SecretId 和 SecretKey：
     ![](./img/cloud_oss-006-34682c3021.png)
 -   子账号：[https://console.cloud.tencent.com/cam](https://console.cloud.tencent.com/cam)
     ![](./img/cloud_oss-007-69425dd11a.png)
-
-
 
 ### 七牛云
 
@@ -195,12 +139,6 @@ AccessUrl:自定义域名，如：http://qiniutest.getquicker.cn
 AccessKey查看：[https://portal.qiniu.com/user/key](https://portal.qiniu.com/user/key)
 
 ![](./img/cloud_oss-009-33297167ed.png)
-
-
-
-
-
-
 
 ## 更新历史
 

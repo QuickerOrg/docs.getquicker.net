@@ -9,7 +9,6 @@ comments: true
 moduleKey: "sys:showText"
 docStatus: "migrated-unreviewed"
 metadataGeneratedAt: "2026-08-03 20:08:03"
-metadataHash: "951b0ea68fe32aea4d8ad6ffe8788f8cb8763ceb058a164f142dd346ff7c5c25"
 legacyDocId: 1548914
 legacyContentUpdatedAt: "2025-06-04T23:29:00.000Z"
 ---
@@ -18,139 +17,13 @@ legacyContentUpdatedAt: "2025-06-04T23:29:00.000Z"
 
 在独立的窗口中显示文本。
 
-{/* xaction-metadata:start */}
 ## 当前模块定义
 
-- 模块 Key：`sys:showText`
-- 分类：文本处理（`Text`）
-- 类型：`Action`
-- 风险操作：否
-- 专业版：否
-
-## 输入参数
-
-| Key | 名称 | 类型 | 默认值 | 必填 | 变量模式 | 条件 | 说明 |
-| --- | --- | --- | --- | --- | --- | --- | --- |
-| `type` | 操作类型 | `Enum` | NO_WAIT | 是 | `Input` |  | 是否等待窗口关闭后继续 |
-| `text` | 文本内容 | `Text` |  | 是 | `UseVarOrInput` | 仅：WAIT, NO_WAIT, APPEND_TEXT | 要显示的文本内容 |
-| `title` | 窗口标题 | `Text` | 文本窗口 | 是 | `UseVarOrInput` | 仅：WAIT, NO_WAIT | 窗口标题文字 |
-| `operations` | 工具栏操作 | `Text` |  | 是 | `Input` | 仅：WAIT, NO_WAIT | 用于显示在窗口工具栏。每行一个选项，格式为 "文本" 或 "显示文本\|值"。 |
-| `autoCloseKey` | 文本窗口标识 | `Text` | = | 否 | `Input` | 排除：GET_ALL_WINDOWS, GET_ACTION_WINDOWS | 可选。自动更新或关闭之前打开的具有此标识的文本窗口。使用'='表示当前动作id。 |
-| `winLocation` | 窗口位置类型 | `Enum` | CenterScreen | 否 | `UseVarOrInput` | 仅：WAIT, NO_WAIT | 在哪里显示选择窗口 |
-| `winSize` | 窗口尺寸/位置 | `Text` |  | 否 | `Input` | 仅：WAIT, NO_WAIT | 设置选择窗口的尺寸，格式为：宽度,高度。支持逻辑像素数值或屏幕宽高百分比，详情请参考模块文档。<br />"窗口位置" 类型为 "自定义位置" 时用于指定显示位置，格式为：left,top,right,bottom |
-| `topMost` | 置顶显示 | `Boolean` | false | 否 | `UseVarOrInput` | 仅：WAIT, NO_WAIT |  |
-| `fontsize` | 字体大小 | `Number` | 14.0 | 是 | `UseVarOrInput` | 仅：WAIT, NO_WAIT | 默认的字体大小 |
-| `fontfamily` | 字体名称 | `Text` |  | 否 | `UseVarOrInput` | 仅：WAIT, NO_WAIT | 可选。设置字体名称。如有多个字体，使用逗号分隔。 |
-| `bgColor` | 背景颜色 | `Text` |  | 否 | `UseVarOrInput` | 仅：WAIT, NO_WAIT | 可选。格式为#RRGGBB |
-| `textColor` | 文字颜色 | `Text` |  | 否 | `UseVarOrInput` | 仅：WAIT, NO_WAIT | 可选。格式为#RRGGBB |
-| `highlight` | 语法高亮 | `Enum` |  | 否 | `UseVarOrInput` | 仅：WAIT, NO_WAIT |  |
-| `autoSaveToState` | 自动保存到状态 | `Text` |  | 否 | `UseVarOrInput` | 仅：WAIT, NO_WAIT | 指定状态Key。文本内容将自动保存到状态中。 |
-| `showLineNum` | 显示行号 | `Boolean` | true | 否 | `UseVarOrInput` | 仅：WAIT, NO_WAIT |  |
-| `autoWrap` | 自动换行显示 | `Boolean` | true | 否 | `UseVarOrInput` | 仅：WAIT, NO_WAIT |  |
-| `copyWholeLine` | 未选择内容时，复制或剪切整行 | `Boolean` | false | 否 | `UseVarOrInput` | 仅：WAIT, NO_WAIT |  |
-| `closeWhenLostFocus` | 失去焦点自动关闭 | `Boolean` | false | 否 | `UseVarOrInput` | 仅：WAIT, NO_WAIT |  |
-| `enableEscClose` | Esc 键关闭窗口 | `Boolean` | true | 否 | `UseVarOrInput` | 仅：WAIT, NO_WAIT |  |
-| `updateIfExists` | 如果窗口存在，则直接更新窗口内容（而不是关闭后打开新窗口） | `Boolean` | false | 否 | `Input` | 仅：NO_WAIT |  |
-| `showBuildInToolbar` | 显示内置工具栏 | `Boolean` | true | 否 | `UseVarOrInput` | 仅：WAIT, NO_WAIT |  |
-| `caretPosition` | 光标位置 | `Integer` | 0 | 是 | `UseVarOrInput` | 仅：WAIT, NO_WAIT | 0表示最前面，-1表示最后面，其它数字表示某个具体字符位置。 |
-| `advancedSettings` | 高级设置 | `Text` |  | 否 | `Input` |  | 请参考模块文档。 |
-| `stopIfFail` | 失败后停止 | `Boolean` | true | 否 | `Input` |  | 失败后是否停止动作 |
-
-## 输出参数
-
-| Key | 名称 | 类型 | 条件 | 说明 |
-| --- | --- | --- | --- | --- |
-| `isSuccess` | 是否成功 | `Boolean` |  | 操作是否成功 |
-| `selectedOperation` | 选择的项 | `Text` | 仅：WAIT | 选择的后续操作项 |
-| `resultText` | 结果文本 | `Text` | 仅：WAIT, CLOSE_WINDOW, GET_WIN_INFO | 文本框内的所有文本 |
-| `windowHandle` | 窗口句柄 | `Integer` | 仅：NO_WAIT, GET_WIN_INFO |  |
-| `selectedText` | 选中的文本 | `Text` | 仅：WAIT, CLOSE_WINDOW, GET_WIN_INFO | 文本框内选中的文本 |
-| `caretPosition` | 光标位置 | `Integer` | 仅：WAIT, CLOSE_WINDOW, GET_WIN_INFO | 插入符所在字符序号 |
-| `windowPosition` | 窗口位置 | `Text` | 仅：WAIT, CLOSE_WINDOW, GET_WIN_INFO | 窗口的最终显示位置 |
-| `isWindowExists` | 窗口是否存在 | `Boolean` | 仅：GET_WIN_INFO |  |
-| `allWindows` | 所有窗口 | `Dict` | 仅：GET_ALL_WINDOWS, GET_ACTION_WINDOWS | 词典类型，key为窗口的句柄，value为窗口的标识。获取全部窗口时，为了安全，仅限自己开发的动作使用。 |
-
-## 选项值
-
-### `type` 操作类型
-
-| Value | 名称 | 说明 |
-| --- | --- | --- |
-| `NO_WAIT` | 显示窗口，不等待关闭（立即开始执行后续的步骤） |  |
-| `WAIT` | 显示窗口，等待关闭 |  |
-| `CLOSE_WINDOW` | 关闭窗口 |  |
-| `GET_WIN_INFO` | 获取窗口信息 |  |
-| `APPEND_TEXT` | 追加内容 |  |
-| `ACTIVATE_WINDOW` | 显示和激活窗口 |  |
-| `WAIT_CLOSE` | 等待窗口关闭 |  |
-| `GET_ALL_WINDOWS` | 获取所有文本窗口 |  |
-| `GET_ACTION_WINDOWS` | 获取当前动作创建的所有文本窗口 |  |
-
-### `winLocation` 窗口位置类型
-
-| Value | 名称 | 说明 |
-| --- | --- | --- |
-| `WithMouse1` | 跟随鼠标（指针周围） |  |
-| `WithMouse2` | 跟随鼠标（指针右下） |  |
-| `CenterScreen` | 屏幕中间 |  |
-| `TopLeft` | 屏幕左上 |  |
-| `TopCenter` | 屏幕中上 |  |
-| `TopRight` | 屏幕右上 |  |
-| `LeftCenter` | 屏幕左中 |  |
-| `RightCenter` | 屏幕右中 |  |
-| `BottomLeft` | 屏幕左下 |  |
-| `BottomCenter` | 屏幕中下 |  |
-| `BottomRight` | 屏幕右下 |  |
-| `FullScreen` | 全屏 |  |
-| `Maximized` | 最大化 |  |
-| `Manual` | 自定义位置 |  |
-
-### `highlight` 语法高亮
-
-| Value | 名称 | 说明 |
-| --- | --- | --- |
-| `` | 无 |  |
-| `ActionScript3` | ActionScript3 |  |
-| `ASP/XHTML` | ASP/XHTML |  |
-| `BAT` | BAT |  |
-| `C#` | C# |  |
-| `C++` | C++ |  |
-| `CSS` | CSS |  |
-| `F#` | F# |  |
-| `HLSL` | HLSL |  |
-| `HTML` | HTML |  |
-| `INI` | INI |  |
-| `Java` | Java |  |
-| `JavaScript` | JavaScript |  |
-| `Json` | Json |  |
-| `LOG` | LOG |  |
-| `MarkDown` | MarkDown |  |
-| `MarkDownWithFontSize` | MarkDownWithFontSize |  |
-| `Pascal` | Pascal |  |
-| `Patch` | Patch |  |
-| `PHP` | PHP |  |
-| `PLSQL` | PLSQL |  |
-| `PowerShell` | PowerShell |  |
-| `Python` | Python |  |
-| `QuickerExpression` | QuickerExpression |  |
-| `QuickerInterpolation` | QuickerInterpolation |  |
-| `Ruby` | Ruby |  |
-| `Scheme` | Scheme |  |
-| `Squirrel` | Squirrel |  |
-| `TeX` | TeX |  |
-| `TSQL` | TSQL |  |
-| `TXT` | TXT |  |
-| `VB` | VB |  |
-| `VTL` | VTL |  |
-| `XML` | XML |  |
-| `XmlDoc` | XmlDoc |  |
-{/* xaction-metadata:end */}
+<XActionModuleMeta moduleKey="sys:showText" />
 
 ## 概述
 
 用于显示或编辑较长的文本内容。
-
-
 
 有两种工作方式：
 
@@ -158,8 +31,6 @@ legacyContentUpdatedAt: "2025-06-04T23:29:00.000Z"
 -   等待关闭：等待窗口关闭后再执行后续步骤。等待关闭时，可以显示附加的操作按钮并返回用户选择的按钮以及修过后的文字。
 
 ![](./img/showtext-001-e7813dac79.png)
-
-
 
 ### 窗口使用
 
@@ -172,8 +43,6 @@ legacyContentUpdatedAt: "2025-06-04T23:29:00.000Z"
 -   高亮语法：选择使用高亮类型；
 -   置顶：置顶或取消置顶窗口。
 
-
-
 #### 快捷键
 
 -   Ctrl+Z 撤销编辑步骤
@@ -185,10 +54,6 @@ legacyContentUpdatedAt: "2025-06-04T23:29:00.000Z"
 -   Alt+↓ 将当前行向下移动一行
 -   Ctrl+D 重复当前选中内容，未选择时重复当前行 (v1.40.12+)
 -   Ctrl+Shift+D 删除当前行
-
-
-
-
 
 ## 操作类型
 
@@ -204,13 +69,9 @@ legacyContentUpdatedAt: "2025-06-04T23:29:00.000Z"
 
 在通过不同步骤控制相同窗口时，需要使用“**文本窗口标识**”参数指定要操作的窗口。 将此值设置为“=”，表示使用当前动作ID作为窗口标识，可避免和其它动作冲突。
 
-
-
 ## 参数
 
 ![](./img/showtext-004-6c86dd1256.png)
-
-
 
 ### 输入
 
@@ -221,8 +82,6 @@ legacyContentUpdatedAt: "2025-06-04T23:29:00.000Z"
 -   不等待：显示窗口后继续运行后面的步骤。
 -   等待关闭：显示窗口后，等待用户关闭窗口再继续运行后面的步骤。
 -   关闭窗口：关闭前面通过“不等待”方式显示的文本窗口。
-
-
 
 【文本内容】要显示的文字内容。
 
@@ -248,12 +107,7 @@ legacyContentUpdatedAt: "2025-06-04T23:29:00.000Z"
 -   百分比表示该位置到屏幕左侧边或顶边的距离占屏幕宽度或高度的百分比。如`0%,0%,50%,100%`表示占屏幕工作区左半边。
 -   可以结合使用数字和百分比。如`100,100,50%,50%`表示窗口左上角在 100,100 右下角在屏幕工作区中心位置。
 
-
 ![](./img/showtext-006-906c991867.png)
-
-
-
-
 
 -   窗口位置类型为其它类型时，指定窗口的大小，格式为`width,height`即“宽,高”。可以指定数字或百分比。
 
@@ -305,17 +159,11 @@ legacyContentUpdatedAt: "2025-06-04T23:29:00.000Z"
 
 您需要非常了解相关编程技术，避免卡死UI线程。（v1.39.34，1.42.35增加输出\_windowLocation)
 
-
-
 ### 输出
 
 【选择的项】用户选择的附加操作按钮。如果直接点击X关闭窗口，则返回空值。
 
 【结果文本】返回显示框内的最终结果文本。
-
-
-
-
 
 ## 工具栏操作按钮的定义
 
@@ -346,11 +194,7 @@ legacyContentUpdatedAt: "2025-06-04T23:29:00.000Z"
 
 -   使用////开始将改行作为注释使用或用于使其不生效。
 
-
-
 默认使用竖线“|”作为显示内容和值内容的分隔符。如果需要更改分隔符，可以在第一行使用“ |=新分隔符 ”的方法进行修改。
-
-
 
 ### 按钮的行为定义
 
@@ -368,11 +212,7 @@ legacyContentUpdatedAt: "2025-06-04T23:29:00.000Z"
 
 基本格式位call:后面加由$符号分隔的4个部分：
 
-
-
 **call:****第1部分****$****第2部分****$****第3部分****$****第4部分**
-
-
 
 #### 第1部分
 
@@ -383,8 +223,6 @@ legacyContentUpdatedAt: "2025-06-04T23:29:00.000Z"
 -   **n** 或 **none**: 不需要输入文本
 -   **auto**: 如果选中了内容，则使用选中部分，否则使用全部文本内容。（1.5.20版本支持）
 -   **l** 或 **line**：选中内容/光标所在位置的整行。（1.10.1版本支持)
-
-
 
 #### 第2部分
 
@@ -401,10 +239,6 @@ legacyContentUpdatedAt: "2025-06-04T23:29:00.000Z"
 
 在操作方式为“替换选中部分”（rs/replaceselection）或“在选中部分的后面插入”(ia/insertafter) 或 “替换文本框的全部内容”（ra/replaceall） 时，支持移动光标到插入内容的某个位置。使用格式为：**操作方式字符-从插入内容结尾开始向前移动的字符数** 或 **操作方式字符+从插入内容开始偏移的字符数。**如“rs-1”表示替换选中的内容后，光标位置设置为从替换内容的结尾向前移动一个字符。也可通过子程序`caretOffset`输出变量控制光标位置，详情请参考本文下面章节。
 
-
-
-
-
 #### 第3部分
 
 定义操作功能的类型。可选值：
@@ -415,8 +249,6 @@ legacyContentUpdatedAt: "2025-06-04T23:29:00.000Z"
 -   cloud: 在线文本处理服务。（后期支持）
 -   url：提供通用接口的第三方文本处理服务网址。（后期支持）
 
-
-
 #### 第4部分
 
 操作功能的资源名称或网址以及参数。
@@ -425,14 +257,10 @@ legacyContentUpdatedAt: "2025-06-04T23:29:00.000Z"
 
 如果没有参数，则?和后面的部分可以省略。参数值需要经过URL编码处理。
 
-
-
 示例动作：
 
 -   [https://getquicker.net/sharedaction?code=d3dcdaf2-1544-43b8-17c3-08d7dec8856a](https://getquicker.net/sharedaction?code=d3dcdaf2-1544-43b8-17c3-08d7dec8856a)
 -   [https://getquicker.net/sharedaction?code=1ec2aca5-554f-4abd-17c1-08d7dec8856a](https://getquicker.net/sharedaction?code=1ec2aca5-554f-4abd-17c1-08d7dec8856a)
-
-
 
 #### 文本处理子程序
 
@@ -440,10 +268,6 @@ legacyContentUpdatedAt: "2025-06-04T23:29:00.000Z"
 
 -   不带参数的调用：call:s$rs$sp$**子程序名**
 -   带有参数的调用：call:s$rs$sp$**子程序名****?****head=head\_value&end=end\_value&param3=value3**
-
-
-
-
 
 子程序需要符合如下的规范：
 
@@ -458,15 +282,9 @@ legacyContentUpdatedAt: "2025-06-04T23:29:00.000Z"
 -   \-0, 负数：从插入内如末尾**向前**的字符数。
 -   空字符串：不处理。
 
-
-
 ![](./img/showtext-009-2aabb594e2.png)
 
-
-
 参考子程序：[https://getquicker.net/SubProgram?id=58926ef7-0908-46d6-17c0-08d7dec8856a](https://getquicker.net/SubProgram?id=58926ef7-0908-46d6-17c0-08d7dec8856a)
-
-
 
 #### 内置的文本处理功能
 
@@ -474,8 +292,6 @@ legacyContentUpdatedAt: "2025-06-04T23:29:00.000Z"
 
 -   call:s$rs$**in**$**toUpper**
 -   call:a$ra$**internal**$**toLower**
-
-
 
 目前支持的内部处理功能：
 
@@ -509,8 +325,6 @@ legacyContentUpdatedAt: "2025-06-04T23:29:00.000Z"
 -   **num2cn** 阿拉伯数字转中文数字
 -   **ExpandEnvironmentVariables** 替换环境变量
 
-
-
 #### 在线文本处理服务
 
 本功能为以后扩展文本处理增加支持接口。
@@ -523,21 +337,15 @@ legacyContentUpdatedAt: "2025-06-04T23:29:00.000Z"
 
 -   Echo服务|call:all$rs$cloud$echo
 
-
-
 目前可用的处理服务：
 
 -   echo    直接返回原始输入文本。
-
-
 
 #### 第三方文本处理服务
 
 本功能为以后扩展文本处理增加支持接口。
 
 调用方式：call:a$ra$**url**$**https://somesite.com/text/processor?参数1=值1&参数2=值2**
-
-
 
 接口需要符合如下规范：
 
@@ -550,8 +358,6 @@ legacyContentUpdatedAt: "2025-06-04T23:29:00.000Z"
   "content":"待处理文本的内容。"
 }
 ```
-
-
 
 **响应：**
 
@@ -566,10 +372,6 @@ legacyContentUpdatedAt: "2025-06-04T23:29:00.000Z"
 -   isSuccess: 是否成功。
 -   message: 失败时的错误消息内容。
 -   data: 处理后的结果文本。
-
-
-
-
 
 ## 更新历史
 

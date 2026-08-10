@@ -9,7 +9,6 @@ comments: true
 moduleKey: "sys:activateProcessMainWindow"
 docStatus: "migrated-unreviewed"
 metadataGeneratedAt: "2026-08-03 20:08:03"
-metadataHash: "eb5aae45c852ffd89c8c1845d0ecdfbc8188430d8d7f3bcdb1605559301eebdd"
 legacyDocId: 2131596
 legacyContentUpdatedAt: "2022-06-14T05:58:37.000Z"
 ---
@@ -18,39 +17,11 @@ legacyContentUpdatedAt: "2022-06-14T05:58:37.000Z"
 
 找到指定进程的主窗口并使其显示在前台。
 
-{/* xaction-metadata:start */}
 ## 当前模块定义
 
-- 模块 Key：`sys:activateProcessMainWindow`
-- 分类：Windows系统（`System`）
-- 类型：`Action`
-- 风险操作：否
-- 专业版：否
-
-## 输入参数
-
-| Key | 名称 | 类型 | 默认值 | 必填 | 变量模式 | 条件 | 说明 |
-| --- | --- | --- | --- | --- | --- | --- | --- |
-| `process` | 进程名称/pid | `Text` |  | 是 | `UseVarOrInput` |  | 请输入要验证的进程名称或pid。进程名通常是exe的文件名去掉后缀，比如记事本程序的进程名称为notepad。 |
-| `hotkey` | 热键 | `Text` |  | 否 | `UseVarOrInput` |  | 选填。软件最小化到托盘时，使用指定的全局热键激活窗口。 |
-| `className` | 窗口类名 | `Text` |  | 否 | `UseVarOrInput` |  | 选填。未能获取主窗口时（如窗口隐藏），可以尝试根据类名查找窗口，支持正则。 |
-| `windowTitle` | 窗口标题 | `Text` |  | 否 | `UseVarOrInput` |  | 选填。未能获取主窗口时，根据窗口标题查找，支持正则。 |
-| `path` | 程序路径 | `Text` |  | 是 | `UseVarOrInput` |  | 选填。如果进程不存在，可以根据此路径启动程序。 |
-| `stopIfFail` | 失败后停止 | `Boolean` | true | 否 | `Input` |  | 失败后是否停止动作 |
-
-## 输出参数
-
-| Key | 名称 | 类型 | 条件 | 说明 |
-| --- | --- | --- | --- | --- |
-| `isSuccess` | 是否成功 | `Boolean` |  | 是否成功激活了进程主窗口 |
-| `pid` | PID | `Integer` |  | 进程ID |
-| `mainWinHandle` | 主窗口句柄 | `Integer` |  | 进程的主窗口句柄 |
-| `mainWinTitle` | 主窗口标题 | `Text` |  |  |
-{/* xaction-metadata:end */}
+<XActionModuleMeta moduleKey="sys:activateProcessMainWindow" />
 
 尝试使用多种方式激活某个进程的主窗口。
-
-
 
 ## 概述
 
@@ -62,15 +33,9 @@ legacyContentUpdatedAt: "2022-06-14T05:58:37.000Z"
 
 不是所有的软件都可以得到进程主窗口。
 
-
-
-
-
 **注意：**
 
 部分软件的进程没有主窗口句柄，所以可能会产生判断错误的情况。（已知QQ有此问题）
-
-
 
 ## 参数
 
@@ -84,13 +49,9 @@ legacyContentUpdatedAt: "2022-06-14T05:58:37.000Z"
 
 ![](./img/activateprocessmainwindow-002-d898ebff74.gif)
 
-
-
 如果未找到进程，则使用“程序路径”参数中提供的路径启动程序。
 
 如果找到了进程，并且获取了主窗口句柄，则直接激活该窗口。如果未能获取主窗口句柄，则尝试根据“窗口类名”“窗口标题”来确定该进程的主窗口。如果根据窗口类名和标题未找到窗口，则尝试查找该进程在桌面上显示的窗口中的第一个。
-
-
 
 【窗口类名】指定要查找窗口的类名。支持正则表达式匹配。
 
@@ -102,13 +63,9 @@ legacyContentUpdatedAt: "2022-06-14T05:58:37.000Z"
 
 在根据进程和窗口信息未找到窗口时，尝试使用发送此处设定的热键激活窗口。
 
-
-
 **【程序路径】**
 
 （选填）在进程未启动时，自动启动程序。
-
-
 
 ### 输出
 

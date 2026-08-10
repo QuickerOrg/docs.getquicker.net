@@ -1,5 +1,5 @@
 import assert from 'node:assert/strict';
-import {createChangeReport} from './sync.mjs';
+import {createChangeReport, createReference} from './sync.mjs';
 
 const commonModule = {
   key: 'sys:test',
@@ -62,5 +62,12 @@ assert.deepEqual(unchanged.summary, {addedModules: 0, removedModules: 0, changed
 const baseline = createChangeReport(null, next);
 assert.equal(baseline.baselineCreated, true);
 assert.deepEqual(baseline.summary, {addedModules: 0, removedModules: 0, changedModules: 0});
+
+const reference = createReference(commonModule);
+assert.ok(reference.includes('<XActionModuleMeta moduleKey="sys:test" />'));
+assert.ok(reference.includes('## 当前模块定义'));
+assert.ok(!reference.includes('xaction-metadata:'));
+assert.ok(!reference.includes('| Key |'));
+assert.ok(!reference.includes('## 输入参数'));
 
 console.log('组合动作模块差异测试通过。');

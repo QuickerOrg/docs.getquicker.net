@@ -9,7 +9,6 @@ comments: true
 moduleKey: "sys:showmenu"
 docStatus: "migrated-unreviewed"
 metadataGeneratedAt: "2026-08-03 20:08:03"
-metadataHash: "f0290a475ada9349d451e878be824062a43867b4e9725ce2736fbb8f89b08353"
 legacyDocId: 55509182
 legacyContentUpdatedAt: "2024-12-02T01:31:54.000Z"
 ---
@@ -18,36 +17,9 @@ legacyContentUpdatedAt: "2024-12-02T01:31:54.000Z"
 
 显示一个菜单
 
-{/* xaction-metadata:start */}
 ## 当前模块定义
 
-- 模块 Key：`sys:showmenu`
-- 分类：界面组件（`Ui`）
-- 类型：`Action`
-- 风险操作：否
-- 专业版：否
-
-## 输入参数
-
-| Key | 名称 | 类型 | 默认值 | 必填 | 变量模式 | 条件 | 说明 |
-| --- | --- | --- | --- | --- | --- | --- | --- |
-| `menuData` | 菜单数据 | `Text` |  | 是 | `UseVarOrInput` |  | 可以为Json/菜单文本格式/IList&lt;CommonOperationItem&gt;对象，详情请参考文档 |
-| `fontsize` | 字体大小 | `Number` | 12 | 是 | `UseVarOrInput` |  |  |
-| `iconsize` | 图标大小 | `Number` | 16 | 是 | `UseVarOrInput` |  | 图标的宽度/高度像素数 |
-| `maxHeight` | 最大高度 | `Text` | 0 | 是 | `UseVarOrInput` |  | 可以为百分比（如:50%）或固定数值（如:500）。 |
-| `waitMenuClose` | 等待菜单关闭 | `Boolean` | true | 否 | `Input` |  | 是否等待菜单关闭后再运行后续步骤 |
-| `useFocus` | 占用焦点 | `Boolean` | false | 否 | `Input` |  | 是否允许菜单占用焦点（从而可以键盘选择菜单项） |
-| `stopIfFail` | 失败后停止 | `Boolean` | true | 否 | `Input` |  | 失败后是否停止动作 |
-
-## 输出参数
-
-| Key | 名称 | 类型 | 条件 | 说明 |
-| --- | --- | --- | --- | --- |
-| `isSuccess` | 是否成功 | `Boolean` |  | 操作是否成功 |
-| `selectedItemData` | 选择的菜单项数据 | `Text` |  | 选择的菜单项的data属性数据 |
-| `selectedItem` | 选择的菜单项 | `Object` |  | 选择的菜单项的CommonOperationItem对象 |
-| `clickButton` | 点击按钮 | `Text` |  | 点击菜单使用的鼠标按钮：Left（左键）或 Right（右键） |
-{/* xaction-metadata:end */}
+<XActionModuleMeta moduleKey="sys:showmenu" />
 
 在鼠标指针所在位置显示一个纵向菜单（效果类似于右键菜单），可用于执行或选择特定操作。
 
@@ -56,8 +28,6 @@ legacyContentUpdatedAt: "2024-12-02T01:31:54.000Z"
 此菜单需要用鼠标点击，不支持键盘选择菜单项。
 
 也可以使用网友 @Ceastld 分享的[显示菜单的子程序](https://getquicker.net/subprogram?id=b68fab2f-7004-4373-9242-08d982821308)（支持焦点和水平排列等功能）。
-
-
 
 注意：
 
@@ -351,12 +321,8 @@ $=
 
 };
 
-
-
 return items;
 ```
-
-
 
 【字体大小】菜单文字字体大小。
 
@@ -378,8 +344,6 @@ return items;
 -   运行子程序并传递参数：[https://getquicker.net/Sharedaction?code=186c9f3f-46d4-4f63-00b9-08db56e12efe](https://getquicker.net/Sharedaction?code=186c9f3f-46d4-4f63-00b9-08db56e12efe)
 
 ## CommonOperationItem 对象
-
-
 
 在Quicker内部用于表示一个通用的操作条目。其定义如下：
 
@@ -433,7 +397,6 @@ return items;
         /// </summary>
         public string OriginText { get; set; }
 
-
         /// <summary>
         /// 扩展数据
         /// </summary>
@@ -445,10 +408,6 @@ return items;
         public IList<CommonOperationItem> Children { get; set; }
  }
 ```
-
-
-
-
 
 ### 支持的Operation类型
 
@@ -466,15 +425,11 @@ return items;
 -   none：不执行任何操作。
 -   inputscript: 多步骤输入。 如果无法使用多行方式传入data内容，也可以在一行中填写，并使用`;;`表示换行。(1.36.17+)
 
-
-
 CommonOperationItem 支持如下的静态方法：
 
 -   ParseLine：解析一行文本数据“\[图标\]标题(Tooltip)|operation=run&data=内容”，返回一个ComonOperationItem对象。
 -   ParseLines：解析多行文本数据，返回CommonOperationItem的列表。不支持子项。
 -   ParseLinesWithSubItems：解析多行文本数据，支持\[+\]\[-\]前缀声明父项和子项。请参考本文档中菜单数据的第一种格式。
-
-
 
 ## 更新说明
 

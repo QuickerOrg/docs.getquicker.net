@@ -9,7 +9,6 @@ comments: true
 moduleKey: "sys:zip"
 docStatus: "migrated-unreviewed"
 metadataGeneratedAt: "2026-08-03 20:08:03"
-metadataHash: "2f6bf254f090610d843f5ee487e627baf60a1f6cca4370b21ca74f30838283df"
 legacyDocId: 8014488
 legacyContentUpdatedAt: "2025-12-18T13:17:15.000Z"
 ---
@@ -18,49 +17,9 @@ legacyContentUpdatedAt: "2025-12-18T13:17:15.000Z"
 
 Zip压缩或解压缩
 
-{/* xaction-metadata:start */}
 ## 当前模块定义
 
-- 模块 Key：`sys:zip`
-- 分类：系统操作（`Files`）
-- 类型：`Action`
-- 风险操作：否
-- 专业版：否
-
-## 输入参数
-
-| Key | 名称 | 类型 | 默认值 | 必填 | 变量模式 | 条件 | 说明 |
-| --- | --- | --- | --- | --- | --- | --- | --- |
-| `type` | 操作类型 | `Enum` | Zip | 是 | `Input` |  |  |
-| `sourcePath` | 源路径 | `Text` |  | 是 | `UseVarOrInput` | 仅：Zip | 待压缩的文件夹或文件路径。多个文件时每个文件一行。 |
-| `targetZipFile` | Zip文件路径 | `Text` |  | 是 | `UseVarOrInput` | 仅：Zip | 压缩时：目标文件的路径。留空时自动生成临时文件。点(.)表示待压缩的文件夹或文件所在位置。 |
-| `sourceZipFile` | Zip文件路径 | `Text` |  | 是 | `UseVarOrInput` | 仅：Unzip | 待解压的文件路径。 |
-| `keepBaseFolder` | 源路径为单个文件夹时，压缩整个文件夹（保留文件夹名称） | `Boolean` | false | 否 | `Input` | 仅：Zip |  |
-| `outputPath` | 目标路径 | `Text` |  | 是 | `UseVarOrInput` | 仅：Unzip | 解压缩的目标路径, 点(.)表示zip文件所在的文件夹, 星(*)表示以zip文件名创建的子文件夹。 |
-| `password` | 密码 | `Text` |  | 否 | `UseVarOrInput` |  | 压缩文件密码 |
-| `comment` | 备注 | `Text` |  | 否 | `UseVarOrInput` | 仅：Zip | 压缩文件注释内容 |
-| `level` | 级别 | `Integer` | 1 | 否 | `UseVarOrInput` | 仅：Zip | 压缩级别，0-9。0表示不压缩（速度快），9表示压缩到最小（速度慢） |
-| `overwrite` | 自动覆盖文件 | `Boolean` | false | 否 | `Input` | 仅：Unzip |  |
-| `skipOverwriteError` | 覆盖失败时忽略 | `Boolean` | false | 否 | `Input` | 仅：Unzip | 忽略掉无法覆盖的情况 |
-| `showProgress` | 显示进度条 | `Boolean` | false | 否 | `Input` | 仅：Zip, Unzip | 仅支持解压缩或压缩单个文件夹。 |
-| `stopIfFail` | 失败后停止 | `Boolean` | true | 否 | `Input` |  | 失败后是否停止动作 |
-
-## 输出参数
-
-| Key | 名称 | 类型 | 条件 | 说明 |
-| --- | --- | --- | --- | --- |
-| `isSuccess` | 是否成功 | `Boolean` |  | 操作是否成功 |
-| `resultPath` | 结果路径 | `Text` |  | 生成的zip文件完整路径，或解压缩后的完整路径 |
-
-## 选项值
-
-### `type` 操作类型
-
-| Value | 名称 | 说明 |
-| --- | --- | --- |
-| `Zip` | 创建Zip文件 |  |
-| `Unzip` | 解压缩Zip文件 |  |
-{/* xaction-metadata:end */}
+<XActionModuleMeta moduleKey="sys:zip" />
 
 ## 概要
 
@@ -69,17 +28,11 @@ Zip压缩或解压缩
 -   将文件夹或多个文件打包成一个zip文件；
 -   解压缩一个zip文件到指定文件夹；
 
-
-
 注：
 
 本模块适用于需要将几个文件打包发送给他人等轻量级使用场景，不适合压缩大文件或大量文件，不适合解压缩大文件。
 
 本模块从1.8.2版本开始提供。
-
-
-
-
 
 ## 操作：创建zip文件
 
@@ -97,8 +50,6 @@ Zip压缩或解压缩
 -   1个文件
 -   同一文件夹下的多个文件或子文件夹
 
-
-
 【Zip文件路径】
 
 生成的目标zip文件路径。可以按如下格式指定：
@@ -111,8 +62,6 @@ Zip压缩或解压缩
 
 单个文件夹时，是否将文件夹本身也打包到zip中。 不选择时，会将文件夹内的内容压缩，而不包含文件夹自身。
 
-
-
 【密码】 设置zip文件的密码。
 
 【备注】 压缩文件中保存的备注文字。
@@ -121,19 +70,11 @@ Zip压缩或解压缩
 
 【显示进度条】 压缩时是否显示进度条。
 
-
-
 ### 输出参数
 
 【是否成功】是否成功完成了操作。
 
 【结果路径】生成的zip文件的完整路径。
-
-
-
-
-
-
 
 ## 操作：解压缩zip文件
 

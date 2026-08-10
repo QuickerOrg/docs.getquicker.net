@@ -9,7 +9,6 @@ comments: true
 moduleKey: "sys:inputScript"
 docStatus: "migrated-unreviewed"
 metadataGeneratedAt: "2026-08-03 20:08:03"
-metadataHash: "ec66162552fed9be017198d6113f3b72c26f6bb399f0b8935cacf16f7e072cdf"
 legacyDocId: 60667217
 legacyContentUpdatedAt: "2025-02-20T23:53:47.000Z"
 ---
@@ -18,28 +17,9 @@ legacyContentUpdatedAt: "2025-02-20T23:53:47.000Z"
 
 多步骤键盘组合输入
 
-{/* xaction-metadata:start */}
 ## 当前模块定义
 
-- 模块 Key：`sys:inputScript`
-- 分类：键鼠输入（`Input`）
-- 类型：`Action`
-- 风险操作：否
-- 专业版：否
-
-## 输入参数
-
-| Key | 名称 | 类型 | 默认值 | 必填 | 变量模式 | 条件 | 说明 |
-| --- | --- | --- | --- | --- | --- | --- | --- |
-| `data` | 步骤脚本 | `Text` |  | 否 | `UseVarOrInput` |  | 模拟输入的步骤列表，每行一个。详细格式请参考模块文档。 |
-| `stopIfFail` | 失败后停止 | `Boolean` | true | 否 | `Input` |  | 失败后是否停止动作 |
-
-## 输出参数
-
-| Key | 名称 | 类型 | 条件 | 说明 |
-| --- | --- | --- | --- | --- |
-| `isSuccess` | 是否成功 | `Boolean` |  | 操作是否成功 |
-{/* xaction-metadata:end */}
+<XActionModuleMeta moduleKey="sys:inputScript" />
 
 用于快速编写连续多个键盘输入步骤。
 
@@ -49,11 +29,7 @@ legacyContentUpdatedAt: "2025-02-20T23:53:47.000Z"
 
 -   步骤运行中不支持停止，不适合放置大量步骤。
 
-
-
 ## 参数
-
-
 
 【步骤脚本】
 
@@ -61,8 +37,6 @@ legacyContentUpdatedAt: "2025-02-20T23:53:47.000Z"
 -   //开始的行作为注释。
 -   指令的格式为：命令:参数。
 -   特殊情况下无法分行填写时，也可以写在一行，并使用`;;`表示换行。(1.36.17+版本)
-
-
 
 支持的命令类型如下：
 
@@ -78,8 +52,6 @@ legacyContentUpdatedAt: "2025-02-20T23:53:47.000Z"
 -   **keypress** 点击（按下并抬起）按键，格式同上。
 -   **hotkey** 发送组合快捷键。如：`hotkey:Ctrl+S` ，数字键请使用D+数字表示，如`hotkey:Ctrl+Alt+D1`。
 
-
-
 **鼠标命令（1.28.16+版本）**
 
 -   **moveto** 移动鼠标指针到一个绝对坐标。如：`moveto:100,200` 将鼠标指针移动到 (100,200)位置。1.30.0版本开始支持百分比数值，如：`moveto:50%,50%`将鼠标移动到主屏幕中心。
@@ -93,14 +65,10 @@ legacyContentUpdatedAt: "2025-02-20T23:53:47.000Z"
 -   **hwheel** 水平滚动，单位为clicks（可以理解为“行”）。正值表示滚动区域内容向左，负值表示滚动区域内容向右。
 -   **hwheeldelta** 水平滚动，单位为1/120 click。
 
-
-
 **组合命令（1.28.12+）**
 
 -   **pastefile** 粘贴文件（将文件写入剪贴板后模拟Ctrl+V）。参数为文件完整路径，多个文件使用英文半角分号隔开。如：`pastefile:d:\test.png` ， `pastefile:d:\test1.png;d:\test2.txt`
 -   **pasteimage** 粘贴图片（将图片文件读取为图片后写入剪贴板，然后模拟Ctrl+V，注意写入剪贴板的是图片对象而非图片文件）。如：`pasteimage:d:\test.png` 只支持单个图片。
-
-
 
 ## 其它
 

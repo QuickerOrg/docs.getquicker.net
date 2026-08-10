@@ -9,7 +9,6 @@ comments: true
 moduleKey: "sys:sendKeys"
 docStatus: "migrated-unreviewed"
 metadataGeneratedAt: "2026-08-03 20:08:03"
-metadataHash: "4bdcb4bb1f74afc65ea38e52f32751702180199faf8bc99e3a11809a7199736b"
 legacyDocId: 1986707
 legacyContentUpdatedAt: "2025-09-19T04:54:11.000Z"
 ---
@@ -18,25 +17,9 @@ legacyContentUpdatedAt: "2025-09-19T04:54:11.000Z"
 
 发送按键和文本
 
-{/* xaction-metadata:start */}
 ## 当前模块定义
 
-- 模块 Key：`sys:sendKeys`
-- 分类：基础（`Basic`）
-- 类型：`Action`
-- 风险操作：否
-- 专业版：否
-
-## 输入参数
-
-| Key | 名称 | 类型 | 默认值 | 必填 | 变量模式 | 条件 | 说明 |
-| --- | --- | --- | --- | --- | --- | --- | --- |
-| `keys` | 按键序列 | `Text` |  | 否 | `UseVarOrInput` |  | 要发送的按键序列，使用C#语言SendKeys.Send()语法，具体请参考教程文档。 |
-
-## 输出参数
-
-无。
-{/* xaction-metadata:end */}
+<XActionModuleMeta moduleKey="sys:sendKeys" />
 
 ## 概述
 
@@ -45,24 +28,14 @@ legacyContentUpdatedAt: "2025-09-19T04:54:11.000Z"
 -   本功能在内部使用了C#的 [System.Windows.Forms.SendKeys.SendWait()](https://docs.microsoft.com/en-us/dotnet/api/system.windows.forms.sendkeys?view=netframework-4.8) 函数。因此，参数格式可以直接参考该文档。
 -   **此操作可能会受到输入法的影响，请在使用前将输入法切换到英文状态。**[不受输入法影响的方式，请参考本文。](https://getquicker.net/KC/Kb/Article/1045)
 
-
-
 此模块和“[模拟按键A（录入）](/v2/xaction/modules/keyinput)”模块的区别为：
 
 -   “模拟按键（录入）”模块使用直接录入的方式指定要发送的内容，只能发送固定的内容。
 -   本模块使用文本参数的形式传入要发送的内容，可以接受参数或使用插值，可以和其他模块协作动态变更发送的按键序列内容。
 
-
-
-
-
 ![](./img/sendkeys-001-0dc31ff7d7.png)
 
-
-
 ### 按键序列参数格式
-
-
 
 #### 要点
 
@@ -71,8 +44,6 @@ legacyContentUpdatedAt: "2025-09-19T04:54:11.000Z"
 -   `%`代表Alt键
 -   其它普通字母和数字键使用小写形式。 如`^c`表示Ctrl+C（复制）。特殊键使用`{键名}`的格式，参见下表。
 -   不支持Win键和一些特殊按键，如F17-F24、媒体键等。
-
-
 
 #### 详解
 
@@ -126,8 +97,6 @@ legacyContentUpdatedAt: "2025-09-19T04:54:11.000Z"
 | Keypad multiply | &#123;MULTIPLY&#125; |
 | Keypad divide | &#123;DIVIDE&#125; |
 
-
-
 （4）为了表示在按下某个按键时同时要按下的SHIFT、CTRL和ALT控制键，可以在按键字符前插入下面的代码：
 
 | **按键** | **代码** |
@@ -140,15 +109,9 @@ legacyContentUpdatedAt: "2025-09-19T04:54:11.000Z"
 
 如果在按下SHIFT、CTRL、ALT组合的同时需要按下多个其他按键，则需要将他们包含在括号中。如：要表示按下SHIFT的同时依次按下e和c，可以用“+(ec)”表示。
 
-
-
 （5）如果要设定按键的重复次数，使用&#123;按键 次数&#125;的格式。按键和次数之间放置一个空格。如：&#123;LEFT 42&#125;表示按下方向键←42次，&#123;h 10&#125;表示按下H键10次。
 
-
-
 请注意，字符的大小写可能会影响执行的结果。如^s和^S可能会产生不同的结果。请多测试以确保目标软件按预期执行操作。
-
-
 
 #### 按键组合示例
 

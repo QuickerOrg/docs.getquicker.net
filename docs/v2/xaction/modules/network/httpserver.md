@@ -134,6 +134,62 @@ legacyContentUpdatedAt: "2024-07-01T08:24:43.000Z"
 
 10）打包下载所选择的子文件夹和文件。 这里只是简单打包成一个zip文件，不会压缩。
 
+## 程序调用上传文件
+
+程序、脚本或自动化工具可以调用以下固定接口上传文件，无需修改【自定义请求处理】配置：
+
+```text
+POST /__api/upload
+Content-Type: multipart/form-data
+```
+
+可选查询参数 `path` 用于指定文件服务器根目录内的目标文件夹。省略时上传到根目录；例如 `path=/uploads/` 会上传到根目录下的 `uploads` 文件夹，不存在的文件夹会自动创建。
+
+以下命令把 `D:\Temp\demo.txt` 上传到 `uploads` 文件夹：
+
+```powershell
+curl.exe -F "file=@D:\Temp\demo.txt" "http://127.0.0.1:8080/__api/upload?path=/uploads/"
+```
+
+上传成功返回 `200 OK` 和 JSON，不会跳转到目录网页：
+
+```json
+{
+  "success": true,
+  "files": [
+    {
+      "fieldName": "file",
+      "name": "demo.txt",
+      "path": "/uploads/demo.txt",
+      "url": "/uploads/demo.txt",
+      "size": 1234,
+      "contentType": "text/plain"
+    }
+  ]
+}
+```
+
+- `path` 是文件服务器内的公开路径，不会包含电脑上的实际文件夹路径。
+- `url` 是经过网址转义、可继续用于 HTTP GET 的地址。
+- 一次请求可以上传多个不同文件；如果多个文件最终使用同一个名称，请求会被拒绝并恢复上传前的文件，避免静默覆盖。
+- `path` 不能指向根目录之外，也不能经过目录符号链接、junction 或其它重解析点。
+- 请求必须是标准的 `multipart/form-data`；普通文本、JSON 或伪造的相似媒体类型会返回 `415 Unsupported Media Type`。
+- 非法路径、无文件等请求错误返回 400，落盘失败等服务器错误返回 500；错误正文使用 `application/problem+json`。
+- 接口沿用当前文件服务器的 HTTPS、访问密码、监听范围和闲置关闭设置，不会另外开启服务或绕过密码。
+- 【自定义请求处理】规则优先于内置接口。如果自定义规则匹配 `POST /__api/upload`，请求仍交给对应子程序处理。
+
+浏览器目录页原有的上传方式不受影响，上传成功后仍返回目录页面；程序需要结构化结果时才使用 `POST /__api/upload`。
+
+### 上传失败排查
+
+标准 multipart 支持中文文件名。如果某个客户端上传中文文件时返回 500，更可能是客户端生成的 `Content-Disposition` 文件名格式不标准，而不是 Windows 不支持中文路径。
+
+排查时请保留客户端发出的原始 multipart 请求，并查看：
+
+1. HTTP 500 的完整响应正文；
+2. Quicker 日志中的 `HTTP 文件上传失败` 记录。
+
+日志会记录请求的 `Content-Type`、`Content-Length`、`User-Agent` 以及失败分段的 `Content-Disposition`，但不会记录上传文件正文、Cookie 或认证信息。文件名可能包含隐私，因此这些诊断信息只写入本机日志，不自动上传错误平台。
 ## 自定义请求处理
 
 在必要时，可以通过子程序自定义实现HTTP请求的处理。
@@ -204,4 +260,5 @@ legacyContentUpdatedAt: "2024-07-01T08:24:43.000Z"
 
 ## 更新说明
 
+-   20260810 增加程序化文件上传 API 及上传失败排查说明。
 -   20240701 增加https证书过期的说明。

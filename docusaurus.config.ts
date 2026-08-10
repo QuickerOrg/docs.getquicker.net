@@ -131,7 +131,10 @@ const config: Config = {
     },
     prism: {
       theme: prismThemes.github,
-      darkTheme: prismThemes.dracula,
+      darkTheme: prismThemes.vsDark,
+      // Languages beyond prism-react-renderer defaults (TS/TSX already included).
+      // Requires the `prismjs` package (Docusaurus peer / transitive).
+      additionalLanguages: ['csharp', 'powershell'],
     },
   } satisfies Preset.ThemeConfig,
   customFields: {

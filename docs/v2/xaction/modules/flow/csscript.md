@@ -1,6 +1,6 @@
 ---
 title: "运行C#代码"
-description: "执行C#代码片段。代码中应包含主函数Exec(stepContext)，请参考文档说明。"
+description: "执行C#代码。普通模式可写纯脚本（末行表达式即返回值，可用 context 读写变量）；也可写完整 Exec(context)。"
 slug: "/v2/xaction/modules/csscript"
 sidebar_label: "运行C#代码"
 sidebar_position: 110
@@ -16,7 +16,7 @@ legacyContentUpdatedAt: "2025-01-20T01:01:01.000Z"
 
 # 运行C#代码
 
-执行C#代码片段。代码中应包含主函数Exec(stepContext)，请参考文档说明。
+执行 C# 代码。普通模式可直接写语句（纯脚本），也可继续使用完整的 `Exec(context)`；低权限模式与生成程序集模式仍需按各自入口方法声明编写。
 
 {/* xaction-metadata:start */}
 ## 当前模块定义
@@ -32,7 +32,7 @@ legacyContentUpdatedAt: "2025-01-20T01:01:01.000Z"
 | Key | 名称 | 类型 | 默认值 | 必填 | 变量模式 | 条件 | 说明 |
 | --- | --- | --- | --- | --- | --- | --- | --- |
 | `mode` | 运行模式 | `Enum` | normal_roslyn | 是 | `Input` |  | 普通模式：在Quicker进程中执行；低权限模式：在单独的进程中执行，可用于COM操作。 |
-| `script` | 脚本内容 | `Text` | //.cs  文件类型，便于外部编辑时使用<br />// 引用必要的命名空间<br />using System.Windows.Forms;<br /><br />// Quicker将会调用的函数。可以根据需要修改返回值类型。<br />public static void Exec(Quicker.Public.IStepContext context)<br />&#123;<br />    //var oldValue = context.GetVarValue("varName");  // 读取动作里的变量值<br />    //MessageBox.Show(oldValue as string);<br />    //context.SetVarValue("varName", "从脚本输出的内容。"); // 向变量里输出值<br />    MessageBox.Show("Hello World!");<br />&#125;<br /> | 是 | `UseVarOrInput` | 仅：normal_roslyn | 要运行的脚本内容 |
+| `script` | 脚本内容 | `Text` | //.cs  文件类型，便于外部编辑时使用<br />// 引用必要的命名空间<br />using System.Windows.Forms;<br /><br />// 纯脚本：末行表达式即返回值；可用 context 读写动作变量。<br />// 也可写完整 public static void Exec(Quicker.Public.IStepContext context) &#123; ... &#125;<br />MessageBox.Show("Hello World!");<br />"done"<br /> | 是 | `UseVarOrInput` | 仅：normal_roslyn | 要运行的脚本内容 |
 | `scriptForLp` | 脚本内容 | `Text` | //.cs  文件类型，便于外部编辑时使用<br />// 引用必要的命名空间<br />using System.Windows.Forms;<br /><br />// Quicker将会调用的函数<br />public static string Exec(string paramValue)<br />&#123;<br />    System.Windows.Forms.MessageBox.Show("Hello World!");<br />    return "Hello World!";<br />&#125;<br /> | 是 | `UseVarOrInput` | 仅：low_permission_roslyn | 要运行的脚本内容 |
 | `scriptForAssembly` | 脚本内容 | `Text` | //.cs  文件类型，便于外部编辑时使用<br />// 引用必要的命名空间<br />using System.Windows.Forms;<br /><br />namespace MyNamespace<br />&#123;<br />    // Quicker将会调用的函数<br />    public static class MyClass<br />    &#123;<br />        public static string Exec(string paramValue)<br />        &#123;<br />            System.Windows.Forms.MessageBox.Show("Hello World!");<br />            return "Hello World!";<br />        &#125;<br />    &#125;<br />&#125;<br /> | 是 | `UseVarOrInput` | 仅：generate_assembly | 要运行的脚本内容 |
 | `paramValue` | 参数值 | `Text` |  | 是 | `UseVarOrInput` | 仅：low_permission_roslyn | 传递给Exec的参数 |
@@ -49,7 +49,7 @@ legacyContentUpdatedAt: "2025-01-20T01:01:01.000Z"
 | --- | --- | --- | --- | --- |
 | `isSuccess` | 是否成功 | `Boolean` |  | 操作是否成功 |
 | `resp` | 返回内容 | `Text` | 仅：low_permission_roslyn | 脚本执行返回的结果文本 |
-| `rtn` | 返回内容 | `Any` | 仅：normal_roslyn | Exec方法的返回值 |
+| `rtn` | 返回内容 | `Any` | 仅：normal_roslyn | 脚本返回值；若返回 Task/ValueTask，则为等待完成后的解包结果 |
 | `rtnAssembly` | 程序集对象 | `Object` | 仅：generate_assembly | 生成的Assembly对象（已经加载） |
 | `assemblyPath` | 程序集路径 | `Text` | 仅：generate_assembly | 生成的Assembly路径 |
 
@@ -76,152 +76,173 @@ legacyContentUpdatedAt: "2025-01-20T01:01:01.000Z"
 
 **【注意】请勿设计任何可能侵犯Quicker软件或第三方权益的代码或其他恶意代码。如有违反将直接停用Quicker帐号，请知悉。**
 
+通过运行 C# 代码实现更高级的功能。此功能仅限对 C# 熟悉的用户谨慎使用。
 
-
-
-
-通过运行C#代码实现更高级的功能。
-
-此功能仅限对C#熟悉的用户谨慎使用。
-
--   普通模式和低权限模式（v1版本）使用cs-script组件实现，参考：[https://github.com/oleg-shilo/cs-script.net-framework](https://github.com/oleg-shilo/cs-script.net-framework) 为减小安装包，仅引用了CS-Script.lib，支持C#5.0语法。
--   普通模式和低权限模式v2版本使用Roslyn引擎，支持较新的c#语法。
-
-
+- 普通模式和低权限模式（v1 版本）使用 cs-script 组件实现，参考：[https://github.com/oleg-shilo/cs-script.net-framework](https://github.com/oleg-shilo/cs-script.net-framework)。为减小安装包，仅引用了 CS-Script.lib，支持 C# 5.0 语法。
+- 普通模式和低权限模式 v2 版本使用 Roslyn 引擎，支持较新的 C# 语法。**直接编写纯脚本**仅适用于普通模式（Roslyn）。
 
 注：
 
--   编译c#时，会根据c#代码的内容生成程序集。内容相同，可以复用已有程序集，内容不同则会生成新的程序集。因此，c#代码应尽量保持不变，应该避免使用文本插值方式生成脚本代码。
--   一些通过Interop控制Office软件的代码，因.net底层库的问题，可能出现编译失败、运行出错的情况，此时请使用 v2版本（普通模式v2或低权限模式v2）。
--   从第三方网页中复制的代码可能会有不可见字符，如遇到奇怪的编译错误可考虑此因素的可能性。
-
-
+- 编译 C# 时，会根据代码内容生成程序集。内容相同可复用已有程序集，内容不同则会生成新的程序集。因此代码应尽量保持不变，避免用文本插值动态拼出整段脚本。
+- 一些通过 Interop 控制 Office 的代码，因 .NET 底层库问题，可能出现编译失败、运行出错，此时请使用 v2 版本（普通模式 v2 或低权限模式 v2）。
+- 从第三方网页复制的代码可能会有不可见字符；若遇到奇怪的编译错误，可优先排查这一点。
 
 ## 运行模式
 
+**普通模式 v1 (CodeDOM)**
 
+C# 代码在 Quicker 进程中执行，可以访问动作的变量等信息。因为 Quicker 会自动提权运行，有可能无法通过 COM 接口访问和控制第三方程序。
 
-**普通模式v1 (CodeDOM)**
+**普通模式 v2 (Roslyn)**
 
-C# 代码在Quicker的进程中执行，可以访问动作的变量等信息。
+使用 Roslyn 引擎编译和执行 C# 脚本，支持较新的 C# 语法。整个 Quicker 中，第一次使用此模块编译（冷启动）需要较长时间。程序集会被自动缓存。支持下文的「直接编写脚本」。
 
-因为Quicker会自动提权运行，所以在Quicker进程中，有可能无法通过Com接口访问和控制第三方程序。
+**低权限模式 v1 (CodeDOM)**（*1.33.26+ 版本增加*）
 
-**普通模式v2 (Roslyn)**
+C# 代码传入低权限代理进程（LPAgent）中执行。跨进程时无法访问动作变量，只能进行简单的文本传递。
 
-使用Roslyn引擎编译和执行c#脚本，支持较新的c#语法。整个Quicker中，第一次使用此模块编译(冷启动)需要耗费较长时间。程序集会被自动缓存。
+**低权限模式 v2 (Roslyn)**
 
-**低权限模式v1 (CodeDOM)** （*1.33.26+版本增加*）
-
-C# 代码传入一个低权限模式运行的代理进程 （LPAgent）中执行。 这时候因为跨越进程，无法访问Quicker动作中的变量等信息，只能进行简单的文本变量传递。
-
-**低权限模式v2 (Roslyn)**
-
-使用Roslyn引擎编译和执行c#脚本，支持较新的c#语法。
-
-请注意，普通模式和低权限模式的Exec方法的声明不同，不支持混用。
+使用 Roslyn 引擎编译和执行 C# 脚本。请注意：普通模式与低权限模式的入口方法声明不同，不支持混用。低权限模式仍需手写 `Exec(string paramValue)`。
 
 **生成程序集**
 
-编译c#代码，并生成和加载程序集。
+编译 C# 代码，并生成和加载程序集。
 
 ## 普通权限模式
 
-代码直接在Quicker进程中执行。这时候可以通过context参数访问动作变量。
+代码直接在 Quicker 进程中执行，可通过 `context` 访问动作变量。
 
 ![](./img/csscript-001-6e3afcb65c.png)
 
-### 参数
+### 直接编写脚本（推荐）
 
-#### **模块输入**
+不必再写 `public static void Exec(...)`。在 **脚本内容** 里直接写语句即可；Quicker 会在运行前自动包一层入口，并注入名为 `context` 的步骤上下文。
 
-【脚本内容】要运行的c#代码。
+适用于：**普通模式（Roslyn）**。低权限模式、生成程序集模式请继续使用各自的完整入口方法。
 
-C#代码中必须包含一个Exec静态函数，接受`IStepContext`类型的参数，有或无返回值，参考如下示例：
+#### 最短示例
 
-
-
-```
-// 引用必要的命名空间
+```csharp
+//.cs  文件类型，便于外部编辑时使用
 using System.Windows.Forms;
 
-// Quicker将会调用的函数
-public static void Exec(Quicker.Public.IStepContext context){
-  var oldValue = context.GetVarValue("varName");  // 读取动作里的变量值
-  MessageBox.Show(oldValue as string);
-  context.SetVarValue("varName", "从脚本输出的内容。"); // 向变量里输出值
+// 末行表达式即返回值，会出现在步骤输出「返回内容」
+MessageBox.Show("Hello World!");
+"done"
+```
+
+#### 读写动作变量
+
+```csharp
+using System.Windows.Forms;
+
+var oldValue = context.GetVarValue("varName");
+MessageBox.Show(oldValue as string);
+context.SetVarValue("varName", "从脚本输出的内容。");
+```
+
+#### 末行表达式作为返回值
+
+最后一行若是**表达式**（不是以分号结尾的普通语句），会当作返回值，写入模块输出 **返回内容**（`rtn`）。
+
+```csharp
+var name = context.GetVarValue("name") as string ?? "";
+$"Hello, {name}"
+```
+
+也可以显式 `return`：
+
+```csharp
+return DateTime.Now.ToString("O");
+```
+
+若末行是 `MessageBox.Show(...)` 这类本身没有可用返回值的调用，编译器会按「无返回值」处理；需要同时弹窗并返回文本时，把返回值单独放在最后一行（见最短示例）。
+
+#### 使用 await
+
+脚本中出现 `await` 时，宿主会按异步方式编译并**等待完成**后再继续后续步骤。返回 `Task` / `ValueTask`（以及带结果的泛型形式）时，**返回内容** 取等待完成后的解包结果。
+
+```csharp
+await Task.Delay(200);
+context.SetVarValue("ready", true);
+"ok"
+```
+
+#### 何时仍应写完整 Exec
+
+以下情况不会按「纯脚本」包装，请继续用完整入口（或类成员）写法：
+
+- 已经声明了 `static Exec(...)` 或 `static Run(...)`；
+- 代码里包含 `class` / `struct` / `namespace` 等类型声明；
+- 使用了 `public` / `private` 等访问修饰符声明成员（例如辅助方法）。
+
+注释里写到 `Exec` 或 `public` **不会**妨碍纯脚本；只有真正出现在代码里的声明才会切换回传统路径。
+
+### 完整 Exec 写法
+
+也可以继续手写 `Exec`。接受 `IStepContext` 参数，可有可无返回值：
+
+```csharp
+using System.Windows.Forms;
+
+public static void Exec(Quicker.Public.IStepContext context)
+{
+    var oldValue = context.GetVarValue("varName");
+    MessageBox.Show(oldValue as string);
+    context.SetVarValue("varName", "从脚本输出的内容。");
 }
 ```
 
+带返回值时，从 **返回内容** 输出参数取得结果：
 
-
-该方法可根据需要修改为带有返回值，并从【返回内容】输出参数中得到结果。
-
-```
-//.cs  文件类型，便于外部编辑时使用
-// 引用必要的命名空间
+```csharp
 using System.Windows.Forms;
 using System.Threading;
 
-// Quicker将会调用的函数。可以根据需要修改返回值类型。
 public static string Exec(Quicker.Public.IStepContext context)
 {
-  // 获取当前线程的公寓状态
-  ApartmentState state = Thread.CurrentThread.GetApartmentState();
-
-  // 将公寓状态转换为字符串
-  string message = state == ApartmentState.STA ? "STA" : "MTA";
-
-  return message;
+    ApartmentState state = Thread.CurrentThread.GetApartmentState();
+    return state == ApartmentState.STA ? "STA" : "MTA";
 }
 ```
 
+### 参数
 
+#### 模块输入
 
-【引用DLL库】脚本内容需要引用（reference）的其他.Net库文件的完整路径。 每行写一个。
+【脚本内容】要运行的 C# 代码。普通模式（Roslyn）推荐使用上文「直接编写脚本」；也可使用完整 `Exec`。
 
-【允许缓存程序集】是否允许缓存代码编译后的程序集，以方便下次运行时直接加载程序集，提升启动速度。
+【引用 DLL 库】脚本需要引用的其他 .NET 库文件的完整路径，每行一个。
 
--   程序集缓存每次升级版本会丢弃。
--   缓存目录为Windows临时文件目录。
+【允许缓存程序集】是否允许缓存编译后的程序集，以便下次直接加载、加快启动。
 
+- 程序集缓存在每次升级版本后会丢弃。
+- 缓存目录为 Windows 临时文件目录。
 
+【执行线程】选择执行此 C# 代码的线程。
 
-【执行线程】选择执行此c#代码的线程。
+- 自动：Quicker 按规则自动判断。
+- UI 线程：主界面线程。避免在此线程执行可能停顿的代码。
+- 后台线程（MTA）：不涉及界面、COM 时优先使用，减少卡顿或内存无法释放。
+- 后台线程（STA）：COM 互操作、剪贴板等可能需要 STA。使用共享 STA 线程，适合很快结束的代码。
+- 后台线程（STA 独立线程）：需要长时间等待且必须在 STA 中执行时使用，会新建 STA 线程。
 
--   自动：Quicker根据一定的规则自动判断需要使用哪个线程。
--   UI线程：Quicker程序的主界面线程。需要避免在此线程中执行有可能产生停顿的代码。
--   后台线程（MTA）：如果代码不涉及界面、COM操作，请使用此选项，避免可能造成的卡顿或内存无法释放问题。
--   后台线程（STA）：当在代码中使用COM互操作、剪贴板等情况时，有可能需要在STA公寓模型的线程中执行代码。此选项会使用一个共享的STA线程执行代码，适合于可快速执行完毕的代码。
--   后台线程（STA独立线程）：当代码中需要长时间等待，并且需要在STA公寓模型线程中执行代码时使用。此选项会创建一个新的STA线程用于执行目标代码。
+【失败后停止】C# 运行出错时，是否停止当前动作。
 
+#### 模块输出
 
+【是否成功】代码是否正常执行完毕（未抛出异常）。
 
-【失败后停止】c#运行错误时，停止当前动作。
-
-
-
-#### **模块输出**
-
-【是否成功】代码是否正常执行完毕，没有遇到异常抛出。
-
-【返回内容】当代码中的`Exec`方法带有返回值时，从此输出得到返回的值。（注意，普通模式v1方式从1.40.16+之后的版本才支持输出此值）。
-
-
-
-
+【返回内容】纯脚本末行表达式 / `return` 的值，或 `Exec` 方法的返回值。若返回 `Task` / `ValueTask`，则为等待完成后的解包结果。（普通模式 v1 自 1.40.16+ 起支持该输出。）
 
 ### 调用
 
-
-
 #### IStepContext 接口
 
-Exec函数需要接收一个IStepContext接口类型的参数，从而实现Quicker动作变量的读写。
+纯脚本中的 `context`，以及 `Exec` 的参数，类型均为 `IStepContext`，用于读写动作变量：
 
-接口的声明如下：
-
-```
+```csharp
 namespace Quicker.Public
 {
     /// <summary>
@@ -246,124 +267,82 @@ namespace Quicker.Public
 }
 ```
 
-
-
-GetVarValue读取变量值，SetVarValue输出变量值。请在必要时进行类型转换。 词典，列表，不需要
-
-
+`GetVarValue` 读取变量，`SetVarValue` 写入变量。必要时自行做类型转换。
 
 #### 错误处理
 
-如果遇到了错误，直接抛出异常即可。
+遇到错误时直接抛出异常即可。
 
+### 引用外部 dll 文件
 
-
-### 引用外部dll文件
-
-
-
-
-
-```
+```csharp
 //css_reference office.dll;
 //css_reference  C:\Program Files ((x86))\TestProj\PInvoke.Kernel32.dll
 ```
 
+所有 `//css_*` 指令中，若路径含有 CS-Script 分隔符，需将分隔符加倍转义。例如对 `script(today).cs` 的 include，应将括号写成 `((today))`。
 
+.NET 自带的库通常可直接 `using` 命名空间。若找不到名称，可从系统 GAC 加载：
 
-所有// css\_ \*指令都应通过将分隔符加倍来转义任何内部CS-Script分隔符。 例如，''script(today).cs'的// css\_include应该转义为括号，因为它们是指令定界符。 因此，正确的语法应如下所示：'//css\_include script((today)).cs'
-
-
-
-.NET 自带的库通常应该可以直接通过using 命名空间的方式使用。 如果遇到找不到名称的问题，可以使用如下代码从系统GAC（应用程序集缓存）中加载。
-
-```
+```csharp
 //css_dir C:\Windows\Microsoft.NET\assembly\GAC_MSIL\**
 //css_ref UIAutomationClient.dll //<---要引用的DLL
 ```
 
+更多指令说明见：[https://www.cs-script.net/cs-script/help-legacy/Directives.html](https://www.cs-script.net/cs-script/help-legacy/Directives.html)
 
+### 带有界面的 C# 脚本注意事项
 
-关于更多的指令说明文档，请参考：[https://www.cs-script.net/cs-script/help-legacy/Directives.html](https://www.cs-script.net/cs-script/help-legacy/Directives.html)
-
-
-
-
-
-
-
-### 带有界面的C#脚本注意事项
-
--   如果在c#代码中使用WPF窗体：
-
--   应该选择使用“前台线程”运行脚本；
--   脚本中如果使用ShowDialog()以模态方式显示窗体，将会暂时不能操作其它Quicker窗口。
-
--   如果在c#代码中使用Winform窗体：
-
--   应该选择使用“后台线程”运行脚本。
--   如果使用前台线程运行，可能会出现奇怪的现象：输入框无法输入汉字。
-
-
-
-
-
-
-
-
-
-
+- 若使用 WPF 窗体：
+  - 应选择在前台 / UI 线程运行；
+  - 若使用 `ShowDialog()` 以模态显示，将暂时无法操作其它 Quicker 窗口。
+- 若使用 WinForms 窗体：
+  - 应选择后台线程运行；
+  - 若在前台线程运行，可能出现输入框无法输入汉字等异常现象。
 
 ## 低权限运行模式
 
-代码将传送到LPAgent进程中执行。此时因为跨进程，代码中无法访问动作中的其它变量，只能传递简单的文本参数和返回值。
+代码将传送到 LPAgent 进程中执行。跨进程时无法访问动作中的其它变量，只能传递简单的文本参数和返回值。
 
 ![](./img/csscript-002-353c839112.png)
-
-
 
 #### 输入参数
 
 【脚本内容】
 
-要执行的脚本内容。
+要执行的脚本内容。需要声明 `public static string Exec(string paramValue)`。
 
-需要在代码中声明`public static string Exec(string paramValue)`方法。
+`paramValue` 接收当前步骤「参数值」中的内容；返回值通过「返回内容」输出。
 
-该方法的`paramValue`用于接收当前步骤中“参数值”中传入的内容。返回的值将通过“返回内容”输出到步骤。
-
-```
+```csharp
 //.cs  文件类型，便于外部编辑时使用
-// 引用必要的命名空间
 
-// Quicker将会调用的函数
 public static string Exec(string paramValue)
 {
     return "要返回的内容";
 }
 ```
 
-
-
 【参数值】
 
-传递给`Exec(string paramValue)`方法的`paramValue`参数。
+传递给 `Exec(string paramValue)` 的 `paramValue`。
 
 【引用库】
 
-需要在c#中额外引用的dll文件的路径，每行一个。（已加入全局程序集缓存(GAC)的，可以直接写dll文件名，否则写dll文件的完整路径。）
+额外引用的 dll 路径，每行一个。（已在 GAC 中的可只写文件名，否则写完整路径。）
 
 【等待返回】
 
-是否等到`Exec(string paramValue)`方法执行完毕，并获取其返回值（从“返回内容”中输出）。 如果不等待，则“返回内容”输出为空。
+是否等到方法执行完毕并获取返回值。不等待时，「返回内容」为空。
 
 #### 输出参数
 
-【返回内容】在启用“等待返回”选项时，输出`Exec(string paramValue)`方法的返回值。
+【返回内容】在启用「等待返回」时，输出 `Exec(string paramValue)` 的返回值。
 
 ## 更新说明
 
--   20230406 增加v2版本说明。
--   20230731 增加网页复制代码可能带有不可见字符的说明。
--   20231130 执行线程参数增加STA相关选项，以解决动作线程改为MTA公寓模型可能产生的兼容性问题。 普通模式v1 增加支持返回值。
--   20250120 更新文档标题，以匹配实际功能。
+- 20230406 增加 v2 版本说明。
+- 20230731 增加网页复制代码可能带有不可见字符的说明。
+- 20231130 执行线程参数增加 STA 相关选项；普通模式 v1 增加支持返回值。
+- 20250120 更新文档标题，以匹配实际功能。
+- 20260811 普通模式（Roslyn）支持直接编写纯脚本：末行表达式作返回值、可用 `context`、支持 `await` / Task 等待；完整 `Exec` 仍兼容。

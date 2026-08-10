@@ -239,7 +239,7 @@ return post.plan({
 
 运行时执行的是 **JavaScript**；下面 TypeScript 仅作作者参考，脚本里**不必** `import`，也不用改成 `.ts`。字段与上文表格一致，可直接对照复制。
 
-```ts
+```typescript
 /** 当前截图选区（屏幕坐标；只用 left/top/width/height，避免 right/bottom 含边歧义）。 */
 type CaptureArea = {
   left: number;

@@ -166,6 +166,102 @@
   box-shadow: none !important;
 }
 
+/* Stronger TypeScript / JS token contrast (github + vsDark themes). */
+.theme-code-block pre {
+  font-size: 0.9rem;
+  line-height: 1.55;
+}
+
+.theme-code-block .token.comment,
+.theme-code-block .token.prolog,
+.theme-code-block .token.doctype,
+.theme-code-block .token.cdata {
+  font-style: italic;
+  opacity: 0.92;
+}
+
+html[data-theme='light'] .theme-code-block .token.keyword {
+  color: #0550ae;
+  font-weight: 600;
+}
+
+html[data-theme='light'] .theme-code-block .token.class-name,
+html[data-theme='light'] .theme-code-block .token.maybe-class-name {
+  color: #953800;
+}
+
+html[data-theme='light'] .theme-code-block .token.builtin,
+html[data-theme='light'] .theme-code-block .token.function {
+  color: #8250df;
+}
+
+html[data-theme='light'] .theme-code-block .token.string,
+html[data-theme='light'] .theme-code-block .token.template-string,
+html[data-theme='light'] .theme-code-block .token.attr-value {
+  color: #0a3069;
+}
+
+html[data-theme='light'] .theme-code-block .token.number,
+html[data-theme='light'] .theme-code-block .token.boolean,
+html[data-theme='light'] .theme-code-block .token.constant {
+  color: #0550ae;
+}
+
+html[data-theme='light'] .theme-code-block .token.operator,
+html[data-theme='light'] .theme-code-block .token.punctuation {
+  color: #24292f;
+}
+
+html[data-theme='light'] .theme-code-block .token.comment,
+html[data-theme='light'] .theme-code-block .token.doc-comment {
+  color: #6e7781;
+}
+
+html[data-theme='light'] .theme-code-block .token.parameter {
+  color: #953800;
+}
+
+html[data-theme='dark'] .theme-code-block .token.keyword {
+  color: #569cd6;
+  font-weight: 600;
+}
+
+html[data-theme='dark'] .theme-code-block .token.class-name,
+html[data-theme='dark'] .theme-code-block .token.maybe-class-name {
+  color: #4ec9b0;
+}
+
+html[data-theme='dark'] .theme-code-block .token.builtin,
+html[data-theme='dark'] .theme-code-block .token.function {
+  color: #dcdcaa;
+}
+
+html[data-theme='dark'] .theme-code-block .token.string,
+html[data-theme='dark'] .theme-code-block .token.template-string,
+html[data-theme='dark'] .theme-code-block .token.attr-value {
+  color: #ce9178;
+}
+
+html[data-theme='dark'] .theme-code-block .token.number,
+html[data-theme='dark'] .theme-code-block .token.boolean,
+html[data-theme='dark'] .theme-code-block .token.constant {
+  color: #b5cea8;
+}
+
+html[data-theme='dark'] .theme-code-block .token.operator,
+html[data-theme='dark'] .theme-code-block .token.punctuation {
+  color: #d4d4d4;
+}
+
+html[data-theme='dark'] .theme-code-block .token.comment,
+html[data-theme='dark'] .theme-code-block .token.doc-comment {
+  color: #6a9955;
+}
+
+html[data-theme='dark'] .theme-code-block .token.parameter {
+  color: #9cdcfe;
+}
+
 .alert {
   border-width: 1px;
   border-radius: 8px;

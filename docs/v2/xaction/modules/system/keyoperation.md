@@ -9,7 +9,6 @@ comments: true
 moduleKey: "sys:keyoperation"
 docStatus: "migrated-unreviewed"
 metadataGeneratedAt: "2026-08-03 20:08:03"
-metadataHash: "4fd1b51eec8772c0534ca2cdff4bb3c91c1fbdd65c52dc976a2e55378d17efec"
 legacyDocId: 3663420
 legacyContentUpdatedAt: "2022-06-16T07:03:48.000Z"
 ---
@@ -18,61 +17,21 @@ legacyContentUpdatedAt: "2022-06-16T07:03:48.000Z"
 
 单个键盘按键的操作控制或状态获取
 
-{/* xaction-metadata:start */}
 ## 当前模块定义
 
-- 模块 Key：`sys:keyoperation`
-- 分类：Windows系统（`System`）
-- 类型：`Action`
-- 风险操作：否
-- 专业版：否
-
-## 输入参数
-
-| Key | 名称 | 类型 | 默认值 | 必填 | 变量模式 | 条件 | 说明 |
-| --- | --- | --- | --- | --- | --- | --- | --- |
-| `type` | 类型 | `Enum` | get_key_state | 是 | `Input` |  | 操作类型。按下和抬起需要配对使用。 |
-| `key` | 按键 | `Text` |  | 否 | `UseVarOrInput` | 排除：key_keydown_v1, key_keyup_v1 | 要操作或检查状态的按键(单个)。获取状态可使用鼠标键；如需发送真实鼠标事件，请使用“鼠标输入”步骤。 |
-| `getRealMouseState` | 获取按键的实际状态（在远程时无法获取） | `Boolean` | false | 否 | `Input` | 仅：get_key_state |  |
-| `keepMs` | 保持按下时间 | `Integer` | 1000 | 否 | `UseVarOrInput` | 仅：key_keydown_v1 | 保持此虚拟键按下的时间（毫秒数），之后会自动抬起。 |
-
-## 输出参数
-
-| Key | 名称 | 类型 | 条件 | 说明 |
-| --- | --- | --- | --- | --- |
-| `isDown` | 是否按下 | `Boolean` | 仅：get_key_state | 此按键是否为按下状态 |
-| `isToggled` | 是否锁定 | `Boolean` | 仅：get_key_state | 此按键是否为锁定状态，仅对CapsLock、NumLock等按键有效。 |
-
-## 选项值
-
-### `type` 类型
-
-| Value | 名称 | 说明 |
-| --- | --- | --- |
-| `get_key_state` | 获取按键状态 |  |
-| `key_down` | 按下按键 |  |
-| `key_up` | 抬起按键 |  |
-| `key_keydown_v1` | 按下Quicker虚拟键V1 |  |
-| `key_keyup_v1` | 抬起Quicker虚拟键V1 |  |
-{/* xaction-metadata:end */}
+<XActionModuleMeta moduleKey="sys:keyoperation" />
 
 用于获取单个 **键盘**\\**鼠标** 按键的按下、锁定状态，或按下、抬起某个按键。
 
 ![](./img/keyoperation-001-3e1c75f42b.png)
 
-
-
 **注意**：如果按键被设置为“扩展热键”，或被Quicker用于触发功能的鼠标键，这时候按键消息会被Quicker拦截，会识别不到。这种情况下是正常的，请只用于检测没有被Quicker特殊处理的按键。
-
-
 
 ### 应用场景示例
 
 -   某些情况下模拟一直按下按键进行的其他操作。
 -   获取大小写锁定状态并自动设置为需要的状态。
 -   开始动作时根据是否按下某个键做动作功能的切换。
-
-
 
 ## 参数
 
@@ -83,8 +42,6 @@ legacyContentUpdatedAt: "2022-06-16T07:03:48.000Z"
 -   抬起按键：抬起某个按下的按键。
 
 【按键】要读取或操作的按键键名或虚拟键码。可参考“[等待按键](/v2/xaction/modules/waitkeyboard)”文档。
-
-
 
 ## 输出
 

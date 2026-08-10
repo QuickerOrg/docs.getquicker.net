@@ -9,7 +9,6 @@ comments: true
 moduleKey: "sys:uiautomation"
 docStatus: "migrated-unreviewed"
 metadataGeneratedAt: "2026-08-03 20:08:03"
-metadataHash: "43d885a83837110f9d6a073ace7659f5fe6fca1e3d694a767956d8508594c801"
 legacyDocId: 7949007
 legacyContentUpdatedAt: "2023-06-30T03:08:04.000Z"
 ---
@@ -18,137 +17,9 @@ legacyContentUpdatedAt: "2023-06-30T03:08:04.000Z"
 
 触发Windows窗口的菜单/按钮等控件。
 
-{/* xaction-metadata:start */}
 ## 当前模块定义
 
-- 模块 Key：`sys:uiautomation`
-- 分类：第三方软件交互（`SoftInteraction`）
-- 类型：`Action`
-- 风险操作：否
-- 专业版：否
-
-## 输入参数
-
-| Key | 名称 | 类型 | 默认值 | 必填 | 变量模式 | 条件 | 说明 |
-| --- | --- | --- | --- | --- | --- | --- | --- |
-| `type` | 操作类型 | `Enum` | TriggerMenu | 是 | `Input` |  | 操作类型。按下和抬起需要配对使用。 |
-| `window` | 窗口句柄 | `Text` |  | 否 | `UseVarOrInput` | 仅：TriggerMenu, TriggerControl, GetControlInfo | 要操作哪个窗口的控件。不填写=使用前台窗口；或窗口句柄数字。 |
-| `menuPath` | 菜单路径 | `Text` |  | 否 | `UseVarOrInput` | 仅：TriggerMenu | 菜单的展开路径。每行写一个级别的菜单名（需完全匹配） |
-| `expandDelay` | 展开延时 | `Integer` | 200 | 否 | `Input` | 仅：TriggerMenu | 等待下级菜单展开的时间(ms) |
-| `control` | 控件名 | `Text` |  | 否 | `UseVarOrInput` | 仅：TriggerControl, GetControlInfo | 控件名，请确保唯一性。 |
-| `controlType` | 控件类型 | `Enum` | 0 | 否 | `UseVarOrInput` | 仅：TriggerControl, GetControlInfo | 可选。当有多个名称相同但类型不同的控件时区分。 |
-| `controlOperation` | 动作 | `Enum` | Auto | 否 | `Input` | 仅：TriggerControl | 对控件执行的操作。 |
-| `value` | 值 | `Text` |  | 否 | `UseVarOrInput` | 仅：TriggerControl | 仅用于 "设置值" 操作。 |
-| `pointLocation` | 坐标位置 | `Text` |  | 否 | `UseVarOrInput` | 仅：GetControlInfoByPosition | 指定要检查的控件的屏幕坐标位置，格式为"x,y" |
-| `path` | 路径 | `Text` |  | 否 | `UseVarOrInput` | 仅：UpdateSaveAsDialogPath | 要更新的路径 |
-| `autoCreateDir` | 自动创建文件夹 | `Enum` | no | 否 | `Input` | 仅：UpdateSaveAsDialogPath | 如果目录不存在则自动创建。 |
-| `stopIfFail` | 失败后停止 | `Boolean` | true | 否 | `Input` |  | 失败后是否停止动作 |
-
-## 输出参数
-
-| Key | 名称 | 类型 | 条件 | 说明 |
-| --- | --- | --- | --- | --- |
-| `isSuccess` | 是否成功 | `Boolean` |  | 操作是否成功 |
-| `value` | 值 | `Text` | 仅：GetControlInfo, GetCursorPointControlInfo, GetFocusedControlInfo, GetControlInfoByPosition | 控件的值 |
-| `controlText` | 文本 | `Text` | 仅：GetControlInfo, GetCursorPointControlInfo, GetFocusedControlInfo, GetControlInfoByPosition | 获取控件上的文本。根据控件不同，可能从Value、Text、Name等信息获取。 |
-| `rect` | 位置 | `Text` | 仅：GetControlInfo, GetCursorPointControlInfo, GetFocusedControlInfo, GetControlInfoByPosition | 控件坐标位置 |
-| `controlName` | 控件名称 | `Text` | 仅：GetControlInfo, GetCursorPointControlInfo, GetFocusedControlInfo, GetControlInfoByPosition |  |
-| `controlType` | 控件类型 | `Text` | 仅：GetControlInfo, GetCursorPointControlInfo, GetFocusedControlInfo, GetControlInfoByPosition |  |
-| `controlTypeId` | 控件类型ID | `Integer` | 仅：GetControlInfo, GetCursorPointControlInfo, GetFocusedControlInfo, GetControlInfoByPosition |  |
-| `controlIsEnabled` | 是否启用 | `Boolean` | 仅：GetControlInfo, GetCursorPointControlInfo, GetFocusedControlInfo, GetControlInfoByPosition | 控件未处于禁用状态 |
-| `controlIsVisible` | 是否可见 | `Boolean` | 仅：GetControlInfo, GetCursorPointControlInfo, GetFocusedControlInfo, GetControlInfoByPosition | 控件是否在屏幕上。 |
-| `controlNativeWindowHandle` | 原始句柄 | `Integer` | 仅：GetControlInfo, GetCursorPointControlInfo, GetFocusedControlInfo, GetControlInfoByPosition | 控件的原始窗口句柄(NativeWindowHandle) |
-
-## 选项值
-
-### `type` 操作类型
-
-| Value | 名称 | 说明 |
-| --- | --- | --- |
-| `TriggerMenu` | 触发窗口菜单 |  |
-| `TriggerControl` | 触发窗口控件 |  |
-| `GetControlInfo` | 获取窗口控件信息 |  |
-| `GetCursorPointControlInfo` | 获取鼠标指针位置控件信息 |  |
-| `GetFocusedControlInfo` | 获取焦点控件信息 |  |
-| `GetControlInfoByPosition` | 获取指定位置控件信息 |  |
-| `UpdateSaveAsDialogPath` | 更新"另存为"或"打开"对话框的路径 |  |
-
-### `controlType` 控件类型
-
-| Value | 名称 | 说明 |
-| --- | --- | --- |
-| `0` | *任意类型* |  |
-| `50000` | 按钮 |  |
-| `50001` | 日历 |  |
-| `50002` | 复选框 |  |
-| `50003` | 组合框 |  |
-| `50025` | 自定义 |  |
-| `50028` | 数据网格 |  |
-| `50029` | 数据项 |  |
-| `50030` | 文档 |  |
-| `50004` | 编辑 |  |
-| `50026` | 组 |  |
-| `50034` | 标头 |  |
-| `50035` | 标头项 |  |
-| `50005` | 超链接 |  |
-| `50006` | 图像 |  |
-| `50008` | 列表视图 |  |
-| `50007` | 列表项 |  |
-| `50009` | 菜单 |  |
-| `50010` | 菜单栏 |  |
-| `50011` | 菜单项 |  |
-| `50033` | 窗格 |  |
-| `50012` | 进度栏 |  |
-| `50013` | 单选按钮 |  |
-| `50014` | 滚动条 |  |
-| `50038` | 分隔符 |  |
-| `50015` | 滑块 |  |
-| `50016` | 微调框 |  |
-| `50031` | 拆分按钮 |  |
-| `50017` | 状态栏 |  |
-| `50018` | 选项卡 |  |
-| `50019` | 选项卡项 |  |
-| `50036` | 表 |  |
-| `50020` | 文本 |  |
-| `50027` | 缩略 |  |
-| `50037` | 标题栏 |  |
-| `50021` | 工具栏 |  |
-| `50022` | 工具提示 |  |
-| `50023` | 树视图 |  |
-| `50024` | 树视图项 |  |
-| `50032` | 窗口 |  |
-
-### `controlOperation` 动作
-
-| Value | 名称 | 说明 |
-| --- | --- | --- |
-| `Auto` | 自动 |  |
-| `Invoke` | 调用（按钮、菜单项等） |  |
-| `LeftClick` | 鼠标左键单击 |  |
-| `MiddleClick` | 鼠标中键单击 |  |
-| `RightClick` | 鼠标右键单击 |  |
-| `LeftDoubleClick` | 鼠标左键双击 |  |
-| `Select` | 单选：选择（单选框、标签页等） |  |
-| `AddToSelection` | 多选：添加到多选（多选列表等） |  |
-| `RemoveFromSelection` | 多选：从多选中移除（多选列表） |  |
-| `ToggleItemSelection` | 多选：切换选中状态 |  |
-| `Expand` | 展开折叠：展开（菜单等） |  |
-| `Collapse` | 展开折叠：折叠（菜单等） |  |
-| `ToggleExpandCollapse` | 展开折叠：切换展开折叠（菜单等） |  |
-| `Toggle` | 切换：切换（检查框等） |  |
-| `ToggleOn` | 切换：开（检查框等） |  |
-| `ToggleOff` | 切换：关（检查框等） |  |
-| `SetValue` | 设置值 |  |
-
-### `autoCreateDir` 自动创建文件夹
-
-| Value | 名称 | 说明 |
-| --- | --- | --- |
-| `no` | 不自动创建 |  |
-| `auto` | 自动创建：自动（根据后缀自动判断路径为文件还是文件夹路径） |  |
-| `asFilePath` | 自动创建：给定文件路径 |  |
-| `asFolderPath` | 自动创建：给定文件夹路径 |  |
-{/* xaction-metadata:end */}
+<XActionModuleMeta moduleKey="sys:uiautomation" />
 
 ## 概述
 
@@ -164,8 +35,6 @@ Quicker目前提供了两个窗口界面控制模块。
 -   通过控件名称和类型定位控件。有的界面需要较长定位时间，这期间会造成界面卡顿。
 -   不支持有多个控件同名的情况。
 
-
-
 **窗口界面控制（FlaUI）：**
 
 -   基于[FlaUI库](https://github.com/FlaUI/FlaUI)实现。
@@ -180,25 +49,13 @@ Quicker目前提供了两个窗口界面控制模块。
 -   如果有多个步骤，需要在步骤中间增加必要的等待时间，等待界面准备好接受下一步的操作。
 -   对于比较复杂的界面，查找控件的时间可能会比较长。
 
-
-
 #### 辅助工具
 
 -   可以使用Windows SDK中提供的inspect.exe程序查看界面元素的信息（特别是控件的“名称”）。详见本页面底部的下载链接。
 
-
-
 ## A. 窗口界面控制
 
 ![](./img/uiautomation-002-94741896d1.png)
-
-
-
-
-
-
-
-
 
 ### 主要参数
 
@@ -211,11 +68,7 @@ Quicker目前提供了两个窗口界面控制模块。
 -   获取焦点控件信息
 -   更新“另存为”或“打开”对话框的路径。
 
-
-
 【窗口】要操作哪个窗口的控件。不填写表示使用前台窗口；也可以输入窗口句柄数字。
-
-
 
 ### 触发窗口菜单
 
@@ -233,21 +86,13 @@ Quicker目前提供了两个窗口界面控制模块。
 
 【展开延时】上级菜单展开后到下级菜单可用中间需要等待的时间。每个软件可能需要等待的时间不同。
 
-
-
-
-
 ### 触发窗口控件
-
-
 
 ![](./img/uiautomation-005-e761d54795.png)
 
 上面的截图用于定位资源管理器里的“选项”按钮。
 
 ![](./img/uiautomation-006-49d143368f.png)
-
-
 
 **参数**
 
@@ -259,15 +104,11 @@ Quicker目前提供了两个窗口界面控制模块。
 
 可能有多个控件具有相同的名字，但是他们类型不同。这时候可以使用“控件类型”参数进一步筛选。
 
-
-
 【控件类型】
 
 要查找控件的类型，用于在有名称相同类型不同的控件时加以区分。
 
 ![](./img/uiautomation-007-d6da992602.png)
-
-
 
 如果希望通过变量动态传递控件类型，需要传入这样的值（类型后面的数字）：
 
@@ -316,10 +157,6 @@ internal enum ControlTypes
       AppBar = 50040, // 0x0000C378
     &#125;
 
-
-
-
-
 【动作】
 
 找到控件后需要执行的操作。每个控件所支持的操作类型有所不同，您需要进行测试以判断使用哪个操作可以达到目标结果。
@@ -327,10 +164,6 @@ internal enum ControlTypes
 ![](./img/uiautomation-008-6faa1445e1.png)
 
 选择“自动”类型，将会依次尝试这些操作，直到其中的一个执行成功：调用、切换选中状态、选择、展开、点击。
-
-
-
-
 
 ### 获取窗口控件信息
 
@@ -345,10 +178,6 @@ internal enum ControlTypes
 【控件类型】输出控件类型的名称。此名称不一定和inspect.exe程序中得到的一样😂。
 
 【控件类型ID】表示控件类型的ID数字。
-
-
-
-
 
 ### 获取鼠标位置的控件信息
 
@@ -375,16 +204,10 @@ internal enum ControlTypes
 
 注：有的软件使用非Windows标准文件对话框可能无法控制。如果您遇到请报告给我们以便于寻找兼容方案。
 
-
-
 ### 示例：
 
 -   将资源管理器切换为大图标模式：[https://getquicker.net/sharedaction?code=891b5c11-8f82-4dfd-2e10-08d809d218a4](https://getquicker.net/sharedaction?code=891b5c11-8f82-4dfd-2e10-08d809d218a4)
 -   切换Win10的蓝牙开关：[https://getquicker.net/sharedaction?code=03585a9b-3378-4f4a-2e14-08d809d218a4](https://getquicker.net/sharedaction?code=03585a9b-3378-4f4a-2e14-08d809d218a4)
-
-
-
-
 
 ## B. 窗口界面控制FlaUI版
 
@@ -402,15 +225,11 @@ internal enum ControlTypes
 
 [https://player.bilibili.com/player.html?bvid=BV1S54y1J79d](https://player.bilibili.com/player.html?bvid=BV1S54y1J79d)
 
-
-
 ### 一些示例场景
 
 更新另存窗口的文件类型：
 
 ![](./img/uiautomation-013-01184c1bc9.png)
-
-
 
 ## 相关资源
 
@@ -418,8 +237,6 @@ internal enum ControlTypes
 
 -   x64版本：[https://files.getquicker.net/\_sitefiles/\_tools/inspect\_x64.exe](https://files.getquicker.net/_sitefiles/_tools/inspect_x64.exe)
 -   x86版本：[https://files.getquicker.net/\_sitefiles/\_tools/inspect\_x86.exe](https://files.getquicker.net/_sitefiles/_tools/inspect_x86.exe)
-
-
 
 -   FlaUInspect 程序：
 

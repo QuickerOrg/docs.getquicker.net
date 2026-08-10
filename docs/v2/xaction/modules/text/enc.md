@@ -9,7 +9,6 @@ comments: true
 moduleKey: "sys:enc"
 docStatus: "migrated-unreviewed"
 metadataGeneratedAt: "2026-08-03 20:08:03"
-metadataHash: "952922b0e3c445d3cb51877002b5bd2fc7439e79a31afdd8fe7ed761ebb471ec"
 legacyDocId: 127131509
 legacyContentUpdatedAt: "2023-06-09T12:24:24.000Z"
 ---
@@ -18,125 +17,9 @@ legacyContentUpdatedAt: "2023-06-09T12:24:24.000Z"
 
 加密、解密，以及哈希计算
 
-{/* xaction-metadata:start */}
 ## 当前模块定义
 
-- 模块 Key：`sys:enc`
-- 分类：文本处理（`Text`）
-- 类型：`Action`
-- 风险操作：否
-- 专业版：否
-
-## 输入参数
-
-| Key | 名称 | 类型 | 默认值 | 必填 | 变量模式 | 条件 | 说明 |
-| --- | --- | --- | --- | --- | --- | --- | --- |
-| `operation` | 操作类型 | `Enum` | hash_hmac | 是 | `Input` |  |  |
-| `inputContentType` | 输入内容类型 | `Enum` | text | 否 | `Input` |  |  |
-| `input` | 输入 | `Text` |  | 是 | `UseVarOrInput` |  | 待加密或解密的内容 |
-| `keyContentType` | 密钥内容类型 | `Enum` | text | 否 | `Input` | 仅：dec_des, dec_aes, enc_aes, enc_des, hash_hmac |  |
-| `key` | 密钥 | `Text` |  | 是 | `UseVarOrInput` | 仅：dec_des, dec_aes, enc_aes, enc_des, hash_hmac |  |
-| `ivContentType` | 初始化向量IV内容类型 | `Enum` | text | 否 | `Input` | 仅：dec_des, dec_aes, enc_aes, enc_des |  |
-| `iv` | 初始化向量 | `Text` |  | 是 | `UseVarOrInput` | 仅：dec_des, dec_aes, enc_aes, enc_des |  |
-| `pairKey` | 公钥/私钥 | `Text` |  | 是 | `UseVarOrInput` | 仅：enc_rsa, dec_rsa | XML格式的公钥（加密用）或私钥（解密用） |
-| `hashType` | 算法 | `Text` | MD5 | 是 | `UseVarOrInput` | 仅：hash |  |
-| `hmacAlgorithm` | 算法 | `Text` | HMACSHA1 | 是 | `UseVarOrInput` | 仅：hash_hmac |  |
-| `cipherMode` | 运算模式 | `Text` | CBC | 是 | `UseVarOrInput` | 仅：dec_aes, enc_aes, dec_des, enc_des |  |
-| `paddingMode` | 填充模式 | `Text` | PKCS7 | 是 | `UseVarOrInput` | 仅：dec_aes, enc_aes, dec_des, enc_des |  |
-| `stopIfFail` | 失败后停止 | `Boolean` | true | 否 | `Input` |  | 失败后是否停止动作 |
-
-## 输出参数
-
-| Key | 名称 | 类型 | 条件 | 说明 |
-| --- | --- | --- | --- | --- |
-| `isSuccess` | 是否成功 | `Boolean` |  | 操作是否成功 |
-| `resultText` | 文本结果 | `Text` | 仅：dec_aes, dec_des, dec_rsa, local_dec |  |
-| `resultHex` | 十六进制编码(大写) | `Text` |  |  |
-| `resultLowerHex` | 十六进制编码(小写) | `Text` |  |  |
-| `resultBase64` | Base64编码结果 | `Text` |  |  |
-
-## 选项值
-
-### `operation` 操作类型
-
-| Value | 名称 | 说明 |
-| --- | --- | --- |
-| `enc_des` | DES 加密 |  |
-| `dec_des` | DES 解密 |  |
-| `enc_aes` | AES 加密 |  |
-| `dec_aes` | AES 解密 |  |
-| `enc_rsa` | RSA 加密 |  |
-| `dec_rsa` | RSA 解密 |  |
-| `hash_hmac` | 键控哈希 HMAC |  |
-| `hash` | 哈希（MD5、SHA1等） |  |
-| `local_enc` | 自用加密 |  |
-| `local_dec` | 自用解密 |  |
-
-### `inputContentType` 输入内容类型
-
-| Value | 名称 | 说明 |
-| --- | --- | --- |
-| `text` | 文本 |  |
-| `base64` | Base64编码 |  |
-| `hex` | 十六进制编码 |  |
-
-### `keyContentType` 密钥内容类型
-
-| Value | 名称 | 说明 |
-| --- | --- | --- |
-| `text` | 文本 |  |
-| `base64` | Base64编码 |  |
-| `hex` | 十六进制编码 |  |
-
-### `ivContentType` 初始化向量IV内容类型
-
-| Value | 名称 | 说明 |
-| --- | --- | --- |
-| `text` | 文本 |  |
-| `base64` | Base64编码 |  |
-| `hex` | 十六进制编码 |  |
-
-### `hashType` 算法
-
-| Value | 名称 | 说明 |
-| --- | --- | --- |
-| `MD5` | MD5 |  |
-| `SHA1` | SHA1 |  |
-| `SHA256` | SHA256 |  |
-| `SHA384` | SHA384 |  |
-| `SHA512` | SHA512 |  |
-
-### `hmacAlgorithm` 算法
-
-| Value | 名称 | 说明 |
-| --- | --- | --- |
-| `HMACSHA1` | HMACSHA1 |  |
-| `HMACSHA256` | HMACSHA256 |  |
-| `HMACSHA384` | HMACSHA384 |  |
-| `HMACSHA512` | HMACSHA512 |  |
-| `MACTripleDES` | MACTripleDES |  |
-| `HMACMD5` | HMACMD5 |  |
-
-### `cipherMode` 运算模式
-
-| Value | 名称 | 说明 |
-| --- | --- | --- |
-| `CBC` | CBC(密码块链，默认) |  |
-| `CFB` | CFB(加密反馈) |  |
-| `CTS` | CTS(密文窃取) |  |
-| `ECB` | ECB(电子密码本) |  |
-| `OFB` | OFB(输出反馈) |  |
-
-### `paddingMode` 填充模式
-
-| Value | 名称 | 说明 |
-| --- | --- | --- |
-| `PKCS7` | PKCS7 |  |
-| `None` | None |  |
-| `ANSIX923` | ANSIX923 |  |
-| `ISO10126` | ISO10126 |  |
-| `Zeros` | Zeros |  |
-{/* xaction-metadata:end */}
+<XActionModuleMeta moduleKey="sys:enc" />
 
 封装常用的加密解密及哈希算法：
 
@@ -146,26 +29,18 @@ legacyContentUpdatedAt: "2023-06-09T12:24:24.000Z"
 -   键控哈希：HMACSHA1、HMACSHA256，HMACSHA384，HMACSHA512，MACTripleDES，HMACMD5
 -   自用加密、自用解密。
 
-
-
 注：
 
 -   每种加密解密算法都有自己特定参数及参数长度要求，您需要对此有一定了解才能使用本模块。
 -   文本内容涉及编码处理时，会全部使用UTF8编码。
 
-
-
 ## 常规参数说明
-
-
 
 **输入参数**
 
 【操作类型】选择要执行的操作。
 
 ![](./img/enc-001-b26613fd58.png)
-
-
 
 【xx内容类型】用于指定特定参数值的格式。如“输入内容类型”，用于指定“输入”参数（待加密、解密或哈希的原始内容）的内容类型。
 
@@ -194,8 +69,6 @@ legacyContentUpdatedAt: "2023-06-09T12:24:24.000Z"
 【十六进制编码】对运算结果进行十六进制编码后的值。可以根据需要选择大写或小写输出。
 
 【文本结果】对于解密操作，输出对应的明文内容。
-
-
 
 ## 键控哈希 HMAC
 

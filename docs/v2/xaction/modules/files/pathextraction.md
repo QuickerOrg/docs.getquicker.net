@@ -9,7 +9,6 @@ comments: true
 moduleKey: "sys:pathExtraction"
 docStatus: "migrated-unreviewed"
 metadataGeneratedAt: "2026-08-03 20:08:03"
-metadataHash: "9a7a490b9548e537586c7ec8a25d91a38bd3576d3339fc3a338a62eb0403a6e9"
 legacyDocId: 2117073
 legacyContentUpdatedAt: "2022-06-14T01:38:52.000Z"
 ---
@@ -18,54 +17,9 @@ legacyContentUpdatedAt: "2022-06-14T01:38:52.000Z"
 
 从文件路径中提取文件名、文件夹等信息
 
-{/* xaction-metadata:start */}
 ## 当前模块定义
 
-- 模块 Key：`sys:pathExtraction`
-- 分类：系统操作（`Files`）
-- 类型：`Action`
-- 风险操作：否
-- 专业版：否
-
-## 输入参数
-
-| Key | 名称 | 类型 | 默认值 | 必填 | 变量模式 | 条件 | 说明 |
-| --- | --- | --- | --- | --- | --- | --- | --- |
-| `operation` | 操作类型 | `Enum` | getInfo | 是 | `Input` |  |  |
-| `path` | 路径 | `Text` |  | 是 | `UseVarOrInput` | 仅：getInfo, changeExt, changeName, changeNameWithoutExt, changeDir, combine | 待处理或拼接的路径 |
-| `newExtension` | 新的扩展名 | `Text` |  | 是 | `UseVarOrInput` | 仅：changeExt | 新的扩展名，如：.png |
-| `newFileName` | 新的文件名 | `Text` |  | 是 | `UseVarOrInput` | 仅：changeName | 新的文件名，如：abcd.png |
-| `newFileNameWithoutExt` | 新的文件名 | `Text` |  | 是 | `UseVarOrInput` | 仅：changeNameWithoutExt | 新的文件名(不包含扩展名），如：newfile |
-| `newDir` | 目标目录路径 | `Text` |  | 是 | `UseVarOrInput` | 仅：changeDir | 目标存储路径，如：d:\Work\Test |
-| `path2` | 路径部分2 | `Text` |  | 是 | `UseVarOrInput` | 仅：combine |  |
-| `path3` | 路径部分3 | `Text` |  | 是 | `UseVarOrInput` | 仅：combine |  |
-| `path4` | 路径部分4 | `Text` |  | 是 | `UseVarOrInput` | 仅：combine |  |
-| `stopIfFail` | 失败后停止 | `Boolean` | true | 否 | `Input` |  | 失败后是否停止动作 |
-
-## 输出参数
-
-| Key | 名称 | 类型 | 条件 | 说明 |
-| --- | --- | --- | --- | --- |
-| `isSuccess` | 是否成功 | `Boolean` |  | 提取过程是否没有遇到异常 |
-| `resultPath` | 结果路径 | `Text` | 仅：changeExt, changeDir, changeName, changeNameWithoutExt, combine | 生成的结果路径 |
-| `name` | 文件名 | `Text` | 仅：getInfo | 去除路径的文件名 |
-| `nameNoExt` | 文件名(去掉扩展名) | `Text` | 仅：getInfo | 去除扩展名的文件名 |
-| `path` | 所在文件夹路径 | `Text` | 仅：getInfo | 父目录路径 |
-| `ext` | 扩展名 | `Text` | 仅：getInfo | 文件的扩展名 |
-
-## 选项值
-
-### `operation` 操作类型
-
-| Value | 名称 | 说明 |
-| --- | --- | --- |
-| `getInfo` | 提取文件路径信息 |  |
-| `changeExt` | 更改扩展名，其它不变 |  |
-| `changeName` | 更改文件名(含扩展名)，所在目录不变 |  |
-| `changeNameWithoutExt` | 更改文件名(不含扩展名和所在目录) |  |
-| `changeDir` | 更改所在目录，文件名不变 |  |
-| `combine` | 合并路径 (拼接) |  |
-{/* xaction-metadata:end */}
+<XActionModuleMeta moduleKey="sys:pathExtraction" />
 
 提取路径中的信息，以及计算生成新的路径。
 
@@ -77,13 +31,9 @@ legacyContentUpdatedAt: "2022-06-14T01:38:52.000Z"
 
 ![](./img/pathextraction-001-5e494dd491.png)
 
-
-
 **输入**
 
 【完整路径】要提取信息的完整路径。
-
-
 
 **输出**
 
@@ -94,8 +44,6 @@ legacyContentUpdatedAt: "2022-06-14T01:38:52.000Z"
 【路径】文件所在的文件夹路径。
 
 【扩展名】文件的后缀。
-
-
 
 **示例：**
 
@@ -109,8 +57,6 @@ legacyContentUpdatedAt: "2022-06-14T01:38:52.000Z"
 -   文件名（去掉扩展名）：`icon`
 -   扩展名：`.psd`
 -   所在文件夹路径：`D:\Work\Quicker\doc`
-
-
 
 ## 更改扩展名，其它不变
 
@@ -193,10 +139,6 @@ legacyContentUpdatedAt: "2022-06-14T01:38:52.000Z"
 
 -   结果路径：`D:\Backup\20220105\icon.psd`
 
-
-
-
-
 ## 生成路径
 
 根据根路径和更多路径片段生成一个完整路径。
@@ -225,10 +167,6 @@ legacyContentUpdatedAt: "2022-06-14T01:38:52.000Z"
 输出：
 
 -   结果路径：`D:\Work\Media\20220506\abc.gif`
-
-
-
-
 
 ## 示例动作
 

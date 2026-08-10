@@ -9,7 +9,6 @@ comments: true
 moduleKey: "sys:waitKeyboard"
 docStatus: "migrated-unreviewed"
 metadataGeneratedAt: "2026-08-03 20:08:03"
-metadataHash: "5808cc74dd608b883b9f003515cb8543406b6b593b5633105f568a612e96274f"
 legacyDocId: 2746710
 legacyContentUpdatedAt: "2024-10-23T03:42:21.000Z"
 ---
@@ -18,64 +17,9 @@ legacyContentUpdatedAt: "2024-10-23T03:42:21.000Z"
 
 等待用户按下某个按键
 
-{/* xaction-metadata:start */}
 ## 当前模块定义
 
-- 模块 Key：`sys:waitKeyboard`
-- 分类：界面组件（`Ui`）
-- 类型：`Action`
-- 风险操作：是
-- 专业版：否
-
-## 输入参数
-
-| Key | 名称 | 类型 | 默认值 | 必填 | 变量模式 | 条件 | 说明 |
-| --- | --- | --- | --- | --- | --- | --- | --- |
-| `operation` | 操作类型 | `Enum` | waitKeyDown | 是 | `Input` |  |  |
-| `waitingKeys` | 等待的按键 | `Text` |  | 否 | `Input` |  | 可选，留空表示任意键盘按键。格式请参考文档。 |
-| `modifierKeys` | 修饰键 | `Text` |  | 否 | `Input` |  | 可选。逗号分隔的ctrl,shift,alt,win组合。仅用于等待组合快捷键。修饰键不会被拦截。 |
-| `maxWaitSeconds` | 最长等待秒数 | `Number` | 0 | 是 | `Input` |  | 0为永久超时超过等待时间，则结束等待。 |
-| `filterEvent` | 拦截原始按键事件 | `Boolean` | true | 否 | `Input` |  | 避免按键输入到窗口中 (仅对键盘按键有效) |
-| `waitKeyUp` | 等待按键抬起 | `Boolean` | false | 否 | `Input` |  | 等待按键抬起后再返回 (仅对键盘按键有效) |
-| `ignoreSimulated` | 忽略模拟的按键 | `Boolean` | false | 否 | `Input` |  | 是否忽略（不检测）模拟的按键消息 |
-| `help` | 提示信息 | `Text` | 请按键... | 否 | `UseVarOrInput` |  | 等待按键时显示的提示文字 |
-| `fontfamily` | 字体名称 | `Text` |  | 否 | `UseVarOrInput` |  | 可选。设置字体名称。如有多个字体，使用逗号分隔。 |
-| `winLocation` | 提示窗口位置 | `Enum` | TopCenter | 否 | `UseVarOrInput` |  | 在哪里显示提示窗口 |
-| `mouseThrough` | 鼠标穿透 | `Boolean` | true | 否 | `Input` |  | 鼠标是否可以穿透提示窗口点击下面的内容 |
-| `stopIfFail` | 失败后停止动作 | `Boolean` | true | 否 | `Input` |  | 失败后是否停止动作 |
-
-## 输出参数
-
-| Key | 名称 | 类型 | 条件 | 说明 |
-| --- | --- | --- | --- | --- |
-| `isSuccess` | 步骤执行是否成功 | `Boolean` |  | 步骤执行是否成功 |
-| `keyCode` | 键名 | `Text` |  | 按键名，具体请参考模块文档。 |
-| `keyValue` | 键值 | `Integer` |  | 按键数值，具体请参考模块文档。 |
-| `holdTimeMs` | 按下保持时间 | `Integer` |  | 按下保持时间，单位毫秒。仅支持键盘按键。 |
-
-## 选项值
-
-### `operation` 操作类型
-
-| Value | 名称 | 说明 |
-| --- | --- | --- |
-| `waitKeyDown` | 等待按下 |  |
-| `waitAllKeyUp` | 等待所有按键抬起 |  |
-
-### `winLocation` 提示窗口位置
-
-| Value | 名称 | 说明 |
-| --- | --- | --- |
-| `CenterScreen` | 屏幕中间 |  |
-| `TopLeft` | 屏幕左上 |  |
-| `TopCenter` | 屏幕中上 |  |
-| `TopRight` | 屏幕右上 |  |
-| `LeftCenter` | 屏幕左中 |  |
-| `RightCenter` | 屏幕右中 |  |
-| `BottomLeft` | 屏幕左下 |  |
-| `BottomCenter` | 屏幕中下 |  |
-| `BottomRight` | 屏幕右下 |  |
-{/* xaction-metadata:end */}
+<XActionModuleMeta moduleKey="sys:waitKeyboard" />
 
 支持的操作类型：
 
@@ -90,14 +34,10 @@ legacyContentUpdatedAt: "2024-10-23T03:42:21.000Z"
 
 ![](./img/waitkeyboard-001-7cd8348ba5.png)
 
-
-
 典型用途：
 
 -   等待用户完成指定的操作后按键继续执行动作；
 -   从多个选项中使用按键选择一个；
-
-
 
 ### 参数
 
@@ -113,27 +53,17 @@ legacyContentUpdatedAt: "2024-10-23T03:42:21.000Z"
 -   LButton,A  (等到鼠标左键或A键)
 -   特别的，可以用wheel表示等待鼠标垂直滚轮（1.28.5+版本）
 
-
-
 对于控制键ControlKey/Control、ShiftKey/Shift、Menu（alt），会自动等待对应的左右两侧的按键。返回的键值是实际按下的左侧或右侧按键对应的值（如LControlKey/RControlKey等)
-
-
 
 【修饰键】仅用于等待组合快捷键。内容为使用英文半角逗号分隔的`ctrl,shift,alt,win`组合。如`Ctrl+Shift+S`组合，修饰键为`ctrl,shift`。
 
-
-
 【最长等待秒数】最长等待时间。如果该时间内没有按下要等待的按键则，则“是否成功”返回False，“键名”“键值”返回等待时间内最后按下的键的键名和键值，如果没有按任何键，则返回`None`和`0`。
-
-
 
 【拦截原始按键事件】如果拦截，则等待的按键不会发送到其他软件中变成字母输入。如果不拦截，则类似于普通键盘敲击的效果。仅对键盘按键有效。在等待组合按键时，不会拦截Ctrl/Shift/Alt/Win等修饰键。
 
 【等待按键抬起】对于键盘按键，可以在按下按键后继续等待该按键抬起。此时可以输出按下的保持时间。（v1.40.23+）
 
 【忽略模拟的按键】是否忽略通过动作或其它软件模拟生成的按键消息。（仅等待物理键盘按键）
-
-
 
 【提示信息】 在屏幕顶端使用透明窗口显示给用户的提示文字。
 
@@ -142,8 +72,6 @@ legacyContentUpdatedAt: "2024-10-23T03:42:21.000Z"
 【提示窗口位置】半透明提示窗口的显示位置。
 
 【鼠标穿透】半透明提示窗口是否允许鼠标穿透（从而避免影响点击提示窗下面的内容）。
-
-
 
 ### 输出
 
@@ -155,15 +83,9 @@ legacyContentUpdatedAt: "2024-10-23T03:42:21.000Z"
 
 【按下保持时间】开启“等待按键抬起”选项后，对键盘按键，可以输出按下的保持时间（用以区分短按和长按等场景使用）。（v1.40.23+）
 
-
-
 ### 参考动作
 
 -   示例：显示键值  [https://getquicker.net/sharedaction?code=55c2a301-191e-4650-aa19-08d743b351f9](https://getquicker.net/sharedaction?code=55c2a301-191e-4650-aa19-08d743b351f9)
-
-
-
-
 
 ## 等待所有按键抬起
 
@@ -173,15 +95,11 @@ legacyContentUpdatedAt: "2024-10-23T03:42:21.000Z"
 
 ![](./img/waitkeyboard-003-fc26eb9b99.png)
 
-
-
 ## 更改历史
 
 -   从1.1.33版本开始提供。
 -   1.2.11 增加“等待的按键”参数。
 -   1.5.3 增加支持鼠标按键(LButton/MButton/RButton/XButton1/XButton2)；增加是否拦截原始按键消息的选项。
-
-
 
 参考
 

@@ -9,7 +9,6 @@ comments: true
 moduleKey: "sys:rhinocontrol"
 docStatus: "migrated-unreviewed"
 metadataGeneratedAt: "2026-08-03 20:08:03"
-metadataHash: "881c3a572559236127eb97229e0b4d641dda3931dc8c382eda24034741fe7038"
 legacyDocId: 80629667
 legacyContentUpdatedAt: "2022-06-17T01:44:17.000Z"
 ---
@@ -18,48 +17,15 @@ legacyContentUpdatedAt: "2022-06-17T01:44:17.000Z"
 
 向Rhino发送命令或脚本
 
-{/* xaction-metadata:start */}
 ## 当前模块定义
 
-- 模块 Key：`sys:rhinocontrol`
-- 分类：第三方软件交互（`SoftInteraction`）
-- 类型：`Action`
-- 风险操作：否
-- 专业版：否
-
-## 输入参数
-
-| Key | 名称 | 类型 | 默认值 | 必填 | 变量模式 | 条件 | 说明 |
-| --- | --- | --- | --- | --- | --- | --- | --- |
-| `operation` | 操作类型 | `Enum` | RunScript | 是 | `Input` |  | 操作类型 |
-| `command` | 命令内容 | `Text` |  | 否 | `UseVarOrInput` | 仅：RunScript | 命令或脚本内容。 |
-| `waitResp` | 等待命令结束 | `Boolean` | true | 否 | `UseVarOrInput` | 仅：RunScript |  |
-| `waitMs` | 最长等待时间(ms) | `Number` | 10000 | 是 | `Input` |  | 最长的等待返回结果的，毫秒数 |
-| `stopIfFail` | 失败后停止 | `Boolean` | true | 否 | `Input` |  | 失败后是否停止动作 |
-
-## 输出参数
-
-| Key | 名称 | 类型 | 条件 | 说明 |
-| --- | --- | --- | --- | --- |
-| `isSuccess` | 是否成功 | `Boolean` |  | 操作是否成功 |
-| `output` | 脚本输出 | `Text` |  | 仅通过接口执行脚本时支持返回内容。 |
-
-## 选项值
-
-### `operation` 操作类型
-
-| Value | 名称 | 说明 |
-| --- | --- | --- |
-| `RunScript` | 执行脚本 |  |
-{/* xaction-metadata:end */}
+<XActionModuleMeta moduleKey="sys:rhinocontrol" />
 
 ## 概述
 
 向Rhino软件发送命令或脚本。
 
 ![](./img/rhinocontrol-001-33e73dbbca.png)
-
-
 
 【操作类型】
 

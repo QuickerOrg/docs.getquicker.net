@@ -9,7 +9,6 @@ comments: true
 moduleKey: "sys:clouddata"
 docStatus: "migrated-unreviewed"
 metadataGeneratedAt: "2026-08-03 20:08:03"
-metadataHash: "0b87a61041e3d6b68a793f3b1f810bda58e421dd4f055651635e6e72235ca42b"
 legacyDocId: 4544735
 legacyContentUpdatedAt: "2023-10-21T07:59:44.000Z"
 ---
@@ -18,51 +17,13 @@ legacyContentUpdatedAt: "2023-10-21T07:59:44.000Z"
 
 根据键值读取或写入网络数据。
 
-{/* xaction-metadata:start */}
 ## 当前模块定义
 
-- 模块 Key：`sys:clouddata`
-- 分类：网络服务（`Network`）
-- 类型：`Action`
-- 风险操作：否
-- 专业版：否
-
-## 输入参数
-
-| Key | 名称 | 类型 | 默认值 | 必填 | 变量模式 | 条件 | 说明 |
-| --- | --- | --- | --- | --- | --- | --- | --- |
-| `type` | 操作类型 | `Enum` | readGlobalState | 是 | `Input` |  |  |
-| `key` | 状态名称 | `Text` |  | 否 | `Input` | 仅：readGlobalState, saveGlobalState | 存储或读取的数据条目名称(键)。 |
-| `value` | 内容 | `Text` |  | 否 | `UseVarOrInput` | 仅：saveGlobalState | 要保存的数据值。使用"*NULL*"删除此状态的存储。 |
-| `expireSeconds` | 超时时间 | `Number` | 2.5 | 否 | `UseVarOrInput` |  | 请求超时时间（秒数） |
-| `stopIfFail` | 失败后停止 | `Boolean` | true | 否 | `Input` |  | 失败后是否停止动作 |
-
-## 输出参数
-
-| Key | 名称 | 类型 | 条件 | 说明 |
-| --- | --- | --- | --- | --- |
-| `isSuccess` | 是否成功 | `Boolean` |  | 操作是否成功 |
-| `value` | 内容 | `Any` | 仅：readGlobalState | 读取到的状态内容 |
-| `lastUpdateTime` | 最后更新时间 | `DateTime` | 仅：readGlobalState | 云状态对象在服务器上的最后更新时间，已转换为本机时区。 |
-| `lastUpdateTimeUtc` | 最后更新时间(UTC) | `DateTime` | 仅：readGlobalState | 云状态对象在服务器上的最后更新时间（UTC）。 |
-| `err` | 错误信息 | `Text` |  | 出错时输出的错误信息。 |
-| `errCode` | 错误代码 | `Text` | 仅：readGlobalState | 从云服务商返回的错误代码。NoSuchKey=不存在此状态。 |
-
-## 选项值
-
-### `type` 操作类型
-
-| Value | 名称 | 说明 |
-| --- | --- | --- |
-| `readGlobalState` | 从网络读取数据 |  |
-| `saveGlobalState` | 写入数据到网络 |  |
-{/* xaction-metadata:end */}
+<XActionModuleMeta moduleKey="sys:clouddata" />
 
 ## 概述
 
 用于将某些特定的内容保存在网络中，以方便在多个电脑上共享信息。
-
-
 
 ### 功能特点
 
@@ -71,8 +32,6 @@ legacyContentUpdatedAt: "2023-10-21T07:59:44.000Z"
 -   每一个状态相当于文件夹中的一个文件。
 -   状态的**名称**相当于文件名，状态的**值**相当于文件内容。
 -   状态的名称是全局的。（和动作的本地状态不同，本地状态每个动作是独立的。云状态的名称是全局的，可以多个动作访问相同的云状态条目。）
-
-
 
 ### 限制
 
@@ -85,8 +44,6 @@ legacyContentUpdatedAt: "2023-10-21T07:59:44.000Z"
 -   内容的存储空间、存取操作次数、网络带宽，都会给Quicker运营带来一定的成本，请本着合理使用的原则在满足功能的情况下尽量节约使用。
 -   本服务使用阿里云OSS存储，其稳定性依赖于阿里云服务的稳定性。
 
-
-
 ### 安全么？
 
 应该是比较安全的。
@@ -94,8 +51,6 @@ legacyContentUpdatedAt: "2023-10-21T07:59:44.000Z"
 -   每个用户使用不同的凭据存取数据，有严格的权限控制。
 -   https传输。
 -   数据在本地加密后传输，云服务保存加密后的内容。读取后在本地解密。每个用户密钥独立。
-
-
 
 ### 如何删除云状态数据
 
@@ -107,13 +62,9 @@ legacyContentUpdatedAt: "2023-10-21T07:59:44.000Z"
 
 ![](./img/clouddata-001-057dac14e4.png)
 
-
-
 2）通过动作删除：设置指定状态名称对应的内容为`*NULL*`
 
 ![](./img/clouddata-002-627e1eb233.png)
-
-
 
 ## 参数
 
@@ -127,8 +78,6 @@ legacyContentUpdatedAt: "2023-10-21T07:59:44.000Z"
 
 【内容】（写入数据时）要读取或写入的状态内容。
 
-
-
 ### 输出参数
 
 【是否成功】操作是否成功。
@@ -136,8 +85,6 @@ legacyContentUpdatedAt: "2023-10-21T07:59:44.000Z"
 【内容】（读取数据时）返回读取到的状态值。
 
 【错误信息】出错时，返回错误提示信息。可以根据消息内容是否包含 "specified key does not exist" 判断出错原因是否为键值不存在。
-
-
 
 ## 更新历史
 

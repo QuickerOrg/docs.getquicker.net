@@ -9,7 +9,6 @@ comments: true
 moduleKey: "sys:form"
 docStatus: "migrated-unreviewed"
 metadataGeneratedAt: "2026-08-03 20:08:03"
-metadataHash: "5dabcaf524691e02e2fa86f4bc002d42ff84826e69254c6c78e38b8c6052d38b"
 legacyDocId: 3878886
 legacyContentUpdatedAt: "2025-04-26T13:46:14.000Z"
 ---
@@ -18,84 +17,15 @@ legacyContentUpdatedAt: "2025-04-26T13:46:14.000Z"
 
 使用表单窗口编辑多个变量的值。
 
-{/* xaction-metadata:start */}
 ## 当前模块定义
 
-- 模块 Key：`sys:form`
-- 分类：界面组件（`Ui`）
-- 类型：`Action`
-- 风险操作：否
-- 专业版：否
-
-## 输入参数
-
-| Key | 名称 | 类型 | 默认值 | 必填 | 变量模式 | 条件 | 说明 |
-| --- | --- | --- | --- | --- | --- | --- | --- |
-| `operation` | 工作模式 | `Enum` | variables | 是 | `Input` |  | 工作模式：编辑某个词典的值，或编辑一些变量的值 |
-| `dictVar` | 词典变量 | `Dict` |  | 否 | `UseVarOnly` | 仅：dict, dict_dynamic | 表单需要编辑的词典变量 |
-| `title` | 窗口标题 | `Text` | 填写表单 | 是 | `UseVarOrInput` |  | 表单窗口标题文字 |
-| `formDef` | 表单定义 | `Form` |  | 是 | `Input` | 仅：variables |  |
-| `formForDictDef` | 表单定义(词典) | `FormForDict` |  | 是 | `Input` | 仅：dict |  |
-| `dynamicFormForDictDef` | 表单定义(词典) | `Text` |  | 是 | `UseVarOrInput` | 仅：dict_dynamic | JSON格式的表单定义数据。格式说明请参考模块文档。 |
-| `help` | 提示文字 | `Text` |  | 否 | `UseVarOrInput` |  | 帮助用户填写表单的提示文字。 |
-| `titleColumnWidth` | 标题列宽度 | `Number` | 100 | 否 | `UseVarOrInput` |  | 左侧字段标题区域的宽度(逻辑像素)。负值，如-200表示自适应列宽且最大宽度为200。 |
-| `windowWidth` | 窗口宽度 | `Number` | 500 | 是 | `UseVarOrInput` |  | 逻辑像素，最小400。 |
-| `defaultInputWidth` | 输入框默认宽度 | `Number` | 0 | 是 | `UseVarOrInput` |  | 逻辑像素，0表示自动宽度。 |
-| `windowHeight` | 窗口最大高度 | `Number` | 0 | 是 | `UseVarOrInput` |  | 逻辑像素，0表示默认。设置时请填写大于100的值。 |
-| `topMost` | 置顶显示 | `Boolean` | false | 否 | `UseVarOrInput` |  |  |
-| `restoreFocus` | 恢复活动窗口 | `Boolean` | false | 否 | `Input` |  | 用户输入后，是否将焦点还原到之前的活动窗口 |
-| `markdownhelp` | 帮助按钮内容 | `Text` |  | 否 | `Input` |  | 点击弹出显示帮助内容，MarkDown格式。 |
-| `confirm` | 自定义“确定”按钮标题 | `Text` |  | 否 | `Input` |  | 仅在需要时填写。使用"_字符"的形式定义触发字符,如"_S"表示Alt+S可直接触发按钮 |
-| `customButtons` | 自定义按钮 | `Text` |  | 否 | `Input` |  | 使用"标题\|返回值"的形式定义按钮，多个按钮用换行分隔。 |
-| `selectedGroup` | 选择的分组 | `Text` |  | 否 | `Input` |  | 使用分组标签页时，默认选择的分组。 |
-| `disableEnterSubmit` | 关闭Enter提交表单功能 | `Boolean` | false | 否 | `Input` |  |  |
-| `winLocation` | 窗口位置类型 | `Enum` | CenterScreen | 否 | `UseVarOrInput` |  | 在哪里显示选择窗口 |
-| `winSize` | 位置 | `Text` |  | 否 | `Input` |  | 当 "窗口位置" 类型为 "自定义位置" 时用于指定显示位置，格式为：left,top,right,bottom |
-| `stopIfFail` | 取消后停止 | `Boolean` | true | 否 | `Input` |  | 取消后是否停止动作 |
-
-## 输出参数
-
-| Key | 名称 | 类型 | 条件 | 说明 |
-| --- | --- | --- | --- | --- |
-| `isSuccess` | 是否成功 | `Boolean` |  | 操作是否成功 |
-| `button` | 点击的按钮 | `Text` |  | 默认的确认按钮返回值为空，自定义按钮返回值为自定义的值。 |
-| `selectedGroup` | 选择的分组 | `Text` |  | 关闭时所选择的标签页分组。 |
-
-## 选项值
-
-### `operation` 工作模式
-
-| Value | 名称 | 说明 |
-| --- | --- | --- |
-| `variables` | 编辑动作变量的值 |  |
-| `dict` | 编辑词典数据 |  |
-| `dict_dynamic` | 编辑词典数据（动态） |  |
-
-### `winLocation` 窗口位置类型
-
-| Value | 名称 | 说明 |
-| --- | --- | --- |
-| `WithMouse1` | 跟随鼠标（指针周围） |  |
-| `WithMouse2` | 跟随鼠标（指针右下） |  |
-| `CenterScreen` | 屏幕中间 |  |
-| `TopLeft` | 屏幕左上 |  |
-| `TopCenter` | 屏幕中上 |  |
-| `TopRight` | 屏幕右上 |  |
-| `LeftCenter` | 屏幕左中 |  |
-| `RightCenter` | 屏幕右中 |  |
-| `BottomLeft` | 屏幕左下 |  |
-| `BottomCenter` | 屏幕中下 |  |
-| `BottomRight` | 屏幕右下 |  |
-| `Manual` | 自定义位置 |  |
-{/* xaction-metadata:end */}
+<XActionModuleMeta moduleKey="sys:form" />
 
 ## 概述
 
 显示一个可以同时修改多个变量的表单窗口。如下图所示：
 
 ![](./img/form-001-1b317aa5a9.png)
-
-
 
 表单的每一行称为一个“**字段**”。每个字段用于修改一个变量的值或词典变量的某个键的值。
 
@@ -115,8 +45,6 @@ legacyContentUpdatedAt: "2025-04-26T13:46:14.000Z"
 
 ![](./img/form-002-8c7b764080.png)
 
-
-
 **【编辑词典数据（动态）】**
 
 在动作运行期间动态生成表单定义。
@@ -124,8 +52,6 @@ legacyContentUpdatedAt: "2025-04-26T13:46:14.000Z"
 词典中需要事先存在表单中需要编辑的键值对。
 
 ![](./img/form-003-2361eca5da.png)
-
-
 
 ### 使用
 
@@ -139,15 +65,9 @@ legacyContentUpdatedAt: "2025-04-26T13:46:14.000Z"
 -   Alt+C、Esc：取消
 -   Alt+R：重置表单内容
 
-
-
 ## 参数
 
-
-
 ![](./img/form-004-2c31f1ef66.png)
-
-
 
 【工作模式】选择用途：编辑变量，还是编辑某个词典的数据。
 
@@ -171,21 +91,13 @@ legacyContentUpdatedAt: "2025-04-26T13:46:14.000Z"
 
 【取消后停止】取消表单后，是否停止动作的后续步骤。
 
-
-
 ## 设计表单
 
 ![](./img/form-006-d61fc40fcc.png)
 
-
-
 在步骤设置中，点击“编辑表单”按钮，即可打开表单编辑器窗口。
 
-
-
 ![](./img/form-007-79615fa63d.png)
-
-
 
 在此窗口中设定需要通过表单修改哪些变量的值（或词典键对应的值），以及输入方式、验证条件等信息。
 
@@ -193,11 +105,7 @@ legacyContentUpdatedAt: "2025-04-26T13:46:14.000Z"
 
 点击“添加字段”按钮，添加新的字段：
 
-
-
 ![](./img/form-008-dcc02bbefc.png)
-
-
 
 【动作变量】工作模式为“编辑动作变量的值”时，设定要编辑的变量名。
 
@@ -220,8 +128,6 @@ legacyContentUpdatedAt: "2025-04-26T13:46:14.000Z"
 可以在字段列表中选中多项，然后通过右键菜单快速修改分组。
 
 ![](./img/form-011-337e83ae4a.png)
-
-
 
 【输入方式】设定使用哪种控件编辑值。
 
@@ -252,10 +158,6 @@ legacyContentUpdatedAt: "2025-04-26T13:46:14.000Z"
 -   `compute:表达式`依据其它字段自动计算当前字段的值时，指定计算表达式；
 -   `notify_on_change`多行文本框输入方式，可在每次修改内容后立即触发表单刷新（而不需要等待丢失焦点）(1.43.3+)；
 
-
-
-
-
 双击或点击后面的编辑按钮按钮可以修改字段。
 
 ### 动态生成下拉框字段的选项
@@ -266,21 +168,15 @@ legacyContentUpdatedAt: "2025-04-26T13:46:14.000Z"
 
 示例动作：[示例：表单刷新选项 - by CL - 动作信息 - Quicker](https://getquicker.net/Sharedaction?code=7ffbb877-da04-45dc-cdf6-08dc19b6971f)
 
-
-
 ![](./img/form-012-1003b098f2.png)
 
 ### 个别字段根据其它字段自动计算值
 
 如果希望一个字段的值根据其它字段的值自动计算，可以在字段 “扩展设置” 中添加行`compute:表达式`进行设置。表达式中可以引用其它字段变量。
 
-
-
 设置`compute:表达式`后，默认情况下，在其它任意字段修改后此字段都会重新计算值。 这可能导致一些问题，如果B、C两个字段根据A字段自动计算，在允许用户手动修改这两个参数的值时，修改其中一个就会导致另一个被自动计算，从而造成手动填写的内容被覆盖。
 
 为解决这个问题，可以增加一行`depd:变量名1,变量名2...`的规则。如设置B、C字段只依赖A字段变量，可以写作`depd:A`，这样在修改B或C其中一个的时候就不会导致另一个被重新计算覆盖掉了。（1.42.34+版本支持。）
-
-
 
 示例动作：
 
@@ -306,17 +202,11 @@ legacyContentUpdatedAt: "2025-04-26T13:46:14.000Z"
 
 ![](./img/form-016-03b3433449.png)
 
-
-
-
-
 ## 动态表单定义数据
 
 示例动作：[动态表单示例](https://getquicker.net/Sharedaction?code=02e52959-01b9-4f09-297a-08da62e9d954)
 
 ![](./img/form-017-f44745d3ee.png)
-
-
 
 表单定义的输入为`Quicker.Public.Forms.FormField`对象列表的JSON数据格式。 也可以直接通过表达式返回`Quicker.Public.Forms.FormField`对象的列表，此时会自动生成json数据。
 
@@ -452,13 +342,11 @@ namespace Quicker.Public.Actions
         [Display(Name = "布尔(是否)", Order = 1)]
         Boolean = 2, //布尔
 
-
         /// <summary>
         /// 文本列表
         /// </summary>
         [Display(Name = "文本列表", Order = 21)]
         List = 4, //字符串列表
-
 
         /// <summary>
         /// 时间日期
@@ -466,7 +354,6 @@ namespace Quicker.Public.Actions
         [Display(Name = "时间日期", Order = 11)]
         DateTime = 6, //日期时间
     }
-
 
 }
 ```
@@ -679,7 +566,6 @@ namespace Quicker.Modules.TextTools
         [Display(Name = "选择网络连接")]
         SelectNetworkProfile,
 
-
         [Display(Name = "选择窗口位置")]
         SelectRelativePoint, //选择位置
 
@@ -695,12 +581,6 @@ namespace Quicker.Modules.TextTools
 }
 ```
 
-
-
-
-
-
-
 ### 注意事项
 
 编辑词典数据时，可以通过使用变量的方式访问词典的其它key对应的值。
@@ -712,8 +592,6 @@ namespace Quicker.Modules.TextTools
 `**$=**_context.**GetRootContext**().**GetVarValue**("变量名")`
 
 ![](./img/form-018-67abcfa100.png)
-
-
 
 ## 更新历史
 

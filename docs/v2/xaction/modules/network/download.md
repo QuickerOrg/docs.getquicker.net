@@ -9,7 +9,6 @@ comments: true
 moduleKey: "sys:download"
 docStatus: "migrated-unreviewed"
 metadataGeneratedAt: "2026-08-03 20:08:03"
-metadataHash: "1df831a8f4ecc43aacc06e56e6ba766e1a7daf24f7e84f76d49cbfb470eb88e3"
 legacyDocId: 2920312
 legacyContentUpdatedAt: "2024-03-27T01:41:35.000Z"
 ---
@@ -18,49 +17,13 @@ legacyContentUpdatedAt: "2024-03-27T01:41:35.000Z"
 
 下载网络文件(请勿用于下载大文件)
 
-{/* xaction-metadata:start */}
 ## 当前模块定义
 
-- 模块 Key：`sys:download`
-- 分类：网络服务（`Network`）
-- 类型：`Action`
-- 风险操作：是
-- 专业版：否
-
-## 输入参数
-
-| Key | 名称 | 类型 | 默认值 | 必填 | 变量模式 | 条件 | 说明 |
-| --- | --- | --- | --- | --- | --- | --- | --- |
-| `url` | 网址 | `Text` | https:// | 是 | `UseVarOrInput` |  | 要下载的文件网址 |
-| `savePath` | 保存文件夹 | `Text` |  | 是 | `UseVarOrInput` |  | 下载文件的保存位置（文件夹的路径） |
-| `saveName` | 保存文件名 | `Text` |  | 是 | `UseVarOrInput` |  | 可选。为空时自动判断文件名。 |
-| `ua` | UserAgent | `Text` |  | 否 | `Input` |  | 可选。 |
-| `header` | 请求头 | `Text` |  | 否 | `UseVarOrInput` |  | 发送的HttpHeader。每行一个header，格式为Name:Value |
-| `cookie` | Cookie | `Text` |  | 否 | `UseVarOrInput` |  | 请求的cookie内容 |
-| `expireSeconds` | 超时秒数 | `Number` | 10 | 否 | `Input` |  | 长时间未接收到数据时，中止下载。 |
-| `showProgress` | 显示进度条 | `Boolean` | false | 否 | `Input` |  | 是否显示下载进度条 |
-| `skipCertVerify` | 忽略HTTPS证书验证 | `Boolean` | false | 否 | `Input` |  |  |
-| `autoRename` | 如果文件已存在，自动重命名下载的文件 | `Boolean` | false | 否 | `Input` |  | 在文件名后面增加"_序号"避免重复。否则将会覆盖已有文件。 |
-| `stopIfFail` | 失败后停止 | `Boolean` | true | 否 | `Input` |  | 失败后是否停止动作 |
-
-## 输出参数
-
-| Key | 名称 | 类型 | 条件 | 说明 |
-| --- | --- | --- | --- | --- |
-| `isSuccess` | 是否成功 | `Boolean` |  | 是否成功下载了文件 |
-| `savedPath` | 文件路径 | `Text` |  | 文件的完整保存路径 |
-| `contentMd5` | 内容MD5 | `Text` |  | 内容MD5值，不是所有请求都会返回此内容。 |
-| `downloadSize` | 下载大小 | `Text` |  | 下载文件的大小（字节数） |
-| `eTag` | ETag | `Text` |  | 响应头Etag值，不是所有请求都会返回此内容。 |
-{/* xaction-metadata:end */}
+<XActionModuleMeta moduleKey="sys:download" />
 
 用于从网络下载较小的可公开下载的文件。
 
-
-
 ![](./img/download-001-9a9be096e8.png)
-
-
 
 ## 参数
 
@@ -86,10 +49,6 @@ Referer: http://www.yunhe.gov.cn/art/2021/11/15/art_1229381708_4805048.html
 Upgrade-Insecure-Requests: 1
 User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/117.0.0.0 Safari/537.36
 ```
-
-
-
-
 
 【Cookie】Http的Cookie信息，通常不需要提供。
 
@@ -120,8 +79,6 @@ User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML,
 
 **获取Http请求头**
 
-
-
 ![](./img/download-002-103616bba4.png)
 
 -   F12 打开浏览器控制台。
@@ -139,8 +96,6 @@ User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML,
 【是否成功】是否成功下载了文件。
 
 【文件路径】下载文件的完整保存路径。
-
-
 
 ## 历史
 

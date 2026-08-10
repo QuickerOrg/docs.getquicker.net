@@ -66,12 +66,6 @@ const supportingDocuments = {
   ],
 };
 
-const generatedStartMarker = '{/* xaction-metadata:start */}';
-const generatedEndMarker = '{/* xaction-metadata:end */}';
-const legacyGeneratedStartMarker = '<!-- xaction-metadata:start -->';
-const legacyGeneratedEndMarker = '<!-- xaction-metadata:end -->';
-const encodedGeneratedStartMarker = '&#123;/* xaction-metadata:start */&#125;';
-const encodedGeneratedEndMarker = '&#123;/* xaction-metadata:end */&#125;';
 
 function parseArguments(argv) {
   const result = {};
@@ -452,21 +446,114 @@ function prepareLegacyBody(body, routeByLegacySlug) {
 }
 
 function createReference(module) {
-  const lines = [
+  // Page only mounts the UI component; parameter facts live in data/xaction.
+  return [
     '## 当前模块定义',
     '',
-    `- 模块 Key：\`${module.key}\``,
-    `- 分类：${module.categoryName}（\`${module.category}\`）`,
-    `- 类型：\`${module.stepType}\``,
-    `- 风险操作：${module.isRisky ? '是' : '否'}`,
-    `- 专业版：${module.isProOnly ? '是' : '否'}`,
-    '',
-    module.referenceTables,
-  ];
-  return `${generatedStartMarker}\n${makeMdxSafe(lines.join('\n').trim())}\n${generatedEndMarker}`;
+    `<XActionModuleMeta moduleKey="${module.key}" />`,
+  ].join('\n');
 }
 
-function moduleFrontMatter(module, legacy, generatedAt, metadataHash, position) {
+function ensureModuleMetaComponent(content, moduleKey) {
+  const componentLine = `<XActionModuleMeta moduleKey="${moduleKey}" />`;
+  if (content.includes(componentLine)) {
+    return content;
+  }
+  // Replace any existing component tag with the correct key.
+  if (/<XActionModuleMeta\b[^>]*\/>/.test(content)) {
+    return content.replace(/<XActionModuleMeta\b[^>]*\/>/, componentLine);
+  }
+  // Insert after the first markdown H1 block (title + optional lead paragraph).
+  const match = content.match(/^---\n[\s\S]*?\n---\n\n# .+\n(?:\n[^\n#][^\n]*\n)?/);
+  if (match) {
+    return `${match[0]}\n${createReference({key: moduleKey})}\n${content.slice(match[0].length)}`;
+  }
+  return `${content.trimEnd()}\n\n${createReference({key: moduleKey})}\n`;
+}
+
+function stripLegacyMetadataMarkers(content) {
+  return content
+    .replaceAll('{/* xaction-metadata:start */}', '')
+    .replaceAll('{/* xaction-metadata:end */}', '')
+    .replaceAll('<!-- xaction-metadata:start -->', '')
+    .replaceAll('<!-- xaction-metadata:end -->', '')
+    .replaceAll('&#123;/* xaction-metadata:start */&#125;', '')
+    .replaceAll('&#123;/* xaction-metadata:end */&#125;', '')
+    .replace(/\n{3,}/g, '\n\n')
+    .replace(/([^\n])\n(## 当前模块定义\n)/g, '$1\n\n$2');
+}
+
+function writeModulesIndex() {
+  // Thin typed wrapper; component loads full defs from catalog.json.
+  const content = `/**
+ * Build-time index of combo-action modules for docs UI.
+ * Prefer catalog.json (full defs) over per-file imports.
+ * Kept in sync with docs:xaction:sync (do not hand-edit).
+ */
+import catalog from './catalog.json';
+
+export type XActionParam = {
+  key: string;
+  name: string;
+  type: string;
+  defaultValue?: string;
+  required?: boolean;
+  variableMode?: string;
+  condition?: string;
+  description?: string;
+};
+
+export type XActionOutput = {
+  key: string;
+  name: string;
+  type: string;
+  condition?: string;
+  description?: string;
+};
+
+export type XActionSelectionItem = {
+  value: string;
+  name: string;
+  description?: string;
+};
+
+export type XActionSelection = {
+  name: string;
+  items: XActionSelectionItem[];
+};
+
+export type XActionModuleDef = {
+  key: string;
+  name: string;
+  description?: string;
+  category: string;
+  categoryName: string;
+  stepType: string;
+  isRisky: boolean;
+  isProOnly: boolean;
+  inputs: XActionParam[];
+  outputs: XActionOutput[];
+  selections?: Record<string, XActionSelection>;
+};
+
+type CatalogShape = {
+  modules: XActionModuleDef[];
+};
+
+const typedCatalog = catalog as CatalogShape;
+
+export const modulesByKey: Record<string, XActionModuleDef> = Object.fromEntries(
+  typedCatalog.modules.map((module) => [module.key, module]),
+);
+
+export function getModuleDef(moduleKey: string): XActionModuleDef | undefined {
+  return modulesByKey[moduleKey];
+}
+`;
+  writeText(path.join(dataRoot, 'modules-index.ts'), content);
+}
+
+function moduleFrontMatter(module, legacy, generatedAt, position) {
   const status = legacy ? 'migrated-unreviewed' : 'generated';
   const lines = [
     '---',
@@ -480,7 +567,6 @@ function moduleFrontMatter(module, legacy, generatedAt, metadataHash, position) 
     `moduleKey: ${jsonString(module.key)}`,
     `docStatus: ${jsonString(status)}`,
     `metadataGeneratedAt: ${jsonString(generatedAt)}`,
-    `metadataHash: ${jsonString(metadataHash)}`,
   ];
   if (legacy?.frontMatter?.doc_id) {
     lines.push(`legacyDocId: ${legacy.frontMatter.doc_id}`);
@@ -492,34 +578,15 @@ function moduleFrontMatter(module, legacy, generatedAt, metadataHash, position) 
   return lines.join('\n');
 }
 
-function updateExistingModulePage(content, module, reference, generatedAt, metadataHash) {
-  const activeStartMarker = content.includes(generatedStartMarker)
-    ? generatedStartMarker
-    : content.includes(legacyGeneratedStartMarker)
-      ? legacyGeneratedStartMarker
-      : encodedGeneratedStartMarker;
-  const activeEndMarker = content.includes(generatedEndMarker)
-    ? generatedEndMarker
-    : content.includes(legacyGeneratedEndMarker)
-      ? legacyGeneratedEndMarker
-      : encodedGeneratedEndMarker;
-  const start = content.indexOf(activeStartMarker);
-  const end = content.indexOf(activeEndMarker);
-  if (start < 0 || end < start) {
-    throw new Error(`模块 ${module.key} 的页面缺少自动生成区标记，拒绝覆盖人工正文。`);
-  }
-  let updated = `${makeMdxSafe(
-    cleanLegacyArtifacts(removeLegacyOpaqueAnchors(content.slice(0, start))),
-  )}${reference}${makeMdxSafe(
-    cleanLegacyArtifacts(
-      removeLegacyOpaqueAnchors(content.slice(end + activeEndMarker.length)),
-    ),
-  )}`;
+function updateExistingModulePage(content, module, generatedAt) {
+  let updated = stripLegacyMetadataMarkers(content);
+  updated = ensureModuleMetaComponent(updated, module.key);
+  // Drop obsolete page-side hash of the old Markdown metadata block.
+  updated = updated.replace(/^metadataHash: .*\n/m, '');
   const replacements = [
     [/^title: .*$/m, `title: ${jsonString(module.name)}`],
     [/^description: .*$/m, `description: ${jsonString(module.description || `${module.name}模块的参数、输出与使用说明。`)}`],
     [/^metadataGeneratedAt: .*$/m, `metadataGeneratedAt: ${jsonString(generatedAt)}`],
-    [/^metadataHash: .*$/m, `metadataHash: ${jsonString(metadataHash)}`],
   ];
   for (const [pattern, replacement] of replacements) {
     if (!pattern.test(updated)) {
@@ -768,7 +835,12 @@ function createChangeReport(previousCatalog, nextCatalog) {
   };
 }
 
-export {createChangeReport};
+export {
+  createChangeReport,
+  createReference,
+  ensureModuleMetaComponent,
+  stripLegacyMetadataMarkers,
+};
 
 function findExistingModulePages() {
   const pages = new Map();
@@ -883,7 +955,6 @@ function main() {
         );
       }
       const reference = createReference(module);
-      const metadataHash = hash(reference);
       const existingPath = existingPages.get(module.key);
       const destination =
         existingPath ?? path.join(docsRoot, 'modules', category.directory, `${module.slug}.md`);
@@ -891,9 +962,7 @@ function main() {
         const updated = updateExistingModulePage(
           readText(existingPath),
           module,
-          reference,
           generatedAt,
-          metadataHash,
         );
         writeText(existingPath, updated);
       } else {
@@ -905,13 +974,12 @@ function main() {
                 '相关模块'
               }](/v2/xaction/modules/${
                 module.sharedDocumentationSlug
-              })共享基础使用说明；本页上方参数表是当前模块自身的定义。`
+              })共享基础使用说明；本页上方「当前模块定义」是当前模块自身的参数。`
             : '## 使用说明\n\n这是 Quicker 2.0 新增模块，当前页面已收录模块定义，详细用法与示例待补充。';
         const content = `${moduleFrontMatter(
           module,
           legacyDocument,
           generatedAt,
-          metadataHash,
           (index + 1) * 10,
         )}\n\n# ${module.name}\n\n${module.description}\n\n${reference}\n\n${manualBody}`;
         writeText(destination, content);
@@ -949,6 +1017,7 @@ function main() {
   const changes = createChangeReport(previousCatalog, catalog);
   writeText(path.join(dataRoot, 'catalog.json'), JSON.stringify(catalog, null, 2));
   writeText(path.join(dataRoot, 'changes.json'), JSON.stringify(changes, null, 2));
+  writeModulesIndex();
   for (const module of normalizedModules) {
     writeText(
       path.join(dataRoot, 'modules', `${module.key.replace(/[^A-Za-z0-9_.-]+/g, '_')}.json`),

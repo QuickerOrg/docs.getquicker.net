@@ -9,7 +9,6 @@ comments: true
 moduleKey: "sys:mathocr"
 docStatus: "migrated-unreviewed"
 metadataGeneratedAt: "2026-08-03 20:08:03"
-metadataHash: "75b35155fb2ad3ef909cf8bb5a4e38701c2fd0cc8fa91a8ef085312006861094"
 legacyDocId: 49850606
 legacyContentUpdatedAt: "2026-03-20T00:32:28.000Z"
 ---
@@ -18,45 +17,9 @@ legacyContentUpdatedAt: "2026-03-20T00:32:28.000Z"
 
 数学公式识别
 
-{/* xaction-metadata:start */}
 ## 当前模块定义
 
-- 模块 Key：`sys:mathocr`
-- 分类：网络服务（`Network`）
-- 类型：`Action`
-- 风险操作：否
-- 专业版：否
-
-## 输入参数
-
-| Key | 名称 | 类型 | 默认值 | 必填 | 变量模式 | 条件 | 说明 |
-| --- | --- | --- | --- | --- | --- | --- | --- |
-| `vendor` | 厂商接口 | `Enum` | Mathpix | 是 | `Input` |  | 详情请参考文档。 |
-| `image` | 公式图片 | `Image` |  | 是 | `UseVarOrInput` | 排除：MathpixStrokes | 指定待识别的图片变量、图片文件的路径或网址(通过表达式传入)。 |
-| `stopIfFail` | 失败后停止 | `Boolean` | true | 否 | `Input` |  | 失败后是否停止动作 |
-
-## 输出参数
-
-| Key | 名称 | 类型 | 条件 | 说明 |
-| --- | --- | --- | --- | --- |
-| `isSuccess` | 是否成功 | `Boolean` |  | 操作是否成功 |
-| `mathpixMarkdown` | Mathpix MD | `Text` |  | Mathpix Markdown格式 |
-| `mathml` | MathML | `Text` |  |  |
-| `asciimath` | AsciiMath | `Text` |  |  |
-| `latex` | Latex | `Text` |  |  |
-| `latexEx1` | Latex附加格式1 | `Text` |  |  |
-| `latexEx2` | Latex附加格式2 | `Text` |  |  |
-| `rawData` | 原始响应 | `Text` |  | 厂商接口返回的原始内容，通常为json格式。 |
-
-## 选项值
-
-### `vendor` 厂商接口
-
-| Value | 名称 | 说明 |
-| --- | --- | --- |
-| `Mathpix` | 图片识别(Mathpix) |  |
-| `MathpixStrokes` | 手写并识别(Mathpix) |  |
-{/* xaction-metadata:end */}
+<XActionModuleMeta moduleKey="sys:mathocr" />
 
 调用Mathpix接口识别图片中的公式。
 
@@ -74,13 +37,9 @@ Mathpix 目前降低了识别价格，从2026年3月21日起，每次识别价�
 
 （2）手写并识别：显示手写板，书写公式后识别内容。
 
-
-
 ## 图片识别
 
 通常用于截图后识别。
-
-
 
 参数：
 

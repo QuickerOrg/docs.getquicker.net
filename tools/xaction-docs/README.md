@@ -4,15 +4,23 @@
 
 ## 内容边界
 
-- `data/xaction/` 保存面向 AI 和校验器的结构化模块数据。
-- `docs/v2/xaction/modules/` 保存用户可见的模块页面。
-- 模块页中 `{/* xaction-metadata:start/end */}` 之间的内容由程序元数据生成，不应手工修改。
-- 标记之外的使用说明、示例、限制和排障内容可以由人工或 AI 编辑。
-- 页面身份以 `moduleKey` 和 `quickerDocKey` 为准，不依赖中文标题或分类目录。
+- `data/xaction/` 保存结构化模块数据（`catalog.json`、`modules/*.json`）。**参数事实只在这里。**
+- `data/xaction/modules-index.ts` 供站点组件按 `moduleKey` 读取定义（由 sync 写入）。
+- `docs/v2/xaction/modules/` 是用户页：正文手写；参数 UI 用一行组件挂上即可：
+
+  ```md
+  ## 当前模块定义
+
+  <XActionModuleMeta moduleKey="sys:csscript" />
+  ```
+
+- 页面不需要再维护参数表，也不需要 `xaction-metadata` 标记 / `metadataHash`。
+- 参数 UI：[`src/components/XActionModuleMeta`](../../src/components/XActionModuleMeta)。
+- 页面身份以 `moduleKey` 和 `quickerDocKey` 为准。
 
 ## 同步新版本
 
-先在目标 Quicker 版本中生成模块文档，然后执行：
+`docs:xaction:sync` 的主要作用是**刷新 `data/xaction`**（以及新建缺页、迁入旧正文）。已有页面上的组件标签不会再被「参数表」覆盖。
 
 ```powershell
 npm run docs:xaction:sync -- `
@@ -20,16 +28,13 @@ npm run docs:xaction:sync -- `
   --legacy "D:\path\to\QuickerDocs\online\markdown\help"
 ```
 
-同步命令会：
+若要从旧标记迁移到「仅组件」：
 
-1. 解析当前模块 Key、输入、输出、枚举、条件和默认值。
-2. 按帮助链接将模块映射到旧版正文。
-3. 新模块自动创建页面；已有页面只更新受保护的元数据区。
-4. 生成 `data/xaction/catalog.json` 和单模块 JSON。
-5. 将相对上一份 catalog 的模块和参数变化写入 `data/xaction/changes.json`。
-6. 保留人工正文，不自动删除当前版本中消失的页面。
+```powershell
+npm run docs:xaction:rewrite-meta
+```
 
-同步后运行：
+然后：
 
 ```powershell
 npm run docs:xaction:check
@@ -39,15 +44,11 @@ npm run build
 
 ## AI 维护流程
 
-1. 先查看 `data/xaction/changes.json`，只打开发生变化的单模块 JSON 和页面。
-2. 参数事实以 catalog 和受保护元数据区为准，不根据旧截图猜测。
-3. 只修改受影响模块的人工正文；不要批量润色无关页面。
-4. 新增或修改示例时核对模块 Key、参数 Key、枚举值和输出变量。
-5. 复杂模块还应核对当前代码、真实界面和实际运行路径。
-6. 经人工或实际版本验证后，将页面的 `docStatus` 从 `migrated-unreviewed` 更新为 `reviewed` 或 `verified`。
+1. 参数变更：先看 `data/xaction/changes.json` 与对应 `modules/*.json`。
+2. 用法/示例：只改模块页人工正文。
+3. 页面上的 `<XActionModuleMeta />` 一般不用动；`moduleKey` 与 front matter 保持一致即可。
 
 ## 当前限制
 
-- 旧版正文迁移只保证结构、图片和已知文档链接可用，不代表内容已逐项通过 2.0 实机验证。
-- Quicker 当前导出的顶层 `catalog.json` 可能只有模块摘要；本工具会从单模块 Markdown 重建完整的文档 catalog。
-- 删除或重命名模块属于需要人工判断的兼容性变化，工具只报告，不自动删除旧页面。
+- 旧版正文迁移不代表已逐项 2.0 实机验证。
+- 删除/重命名模块需人工处理；工具只报告，不自动删页。

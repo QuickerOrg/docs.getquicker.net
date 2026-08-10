@@ -9,7 +9,6 @@ comments: true
 moduleKey: "sys:MsgBox"
 docStatus: "migrated-unreviewed"
 metadataGeneratedAt: "2026-08-03 20:08:03"
-metadataHash: "f02ac7ecbb267343fcf3a97c516d656cee466017a766aa7c50480faab22c7afb"
 legacyDocId: 1529960
 legacyContentUpdatedAt: "2024-10-29T00:01:11.000Z"
 ---
@@ -18,73 +17,9 @@ legacyContentUpdatedAt: "2024-10-29T00:01:11.000Z"
 
 弹窗显示提示或确认对话框
 
-{/* xaction-metadata:start */}
 ## 当前模块定义
 
-- 模块 Key：`sys:MsgBox`
-- 分类：基础（`Basic`）
-- 类型：`Action`
-- 风险操作：否
-- 专业版：否
-
-## 输入参数
-
-| Key | 名称 | 类型 | 默认值 | 必填 | 变量模式 | 条件 | 说明 |
-| --- | --- | --- | --- | --- | --- | --- | --- |
-| `operation` | 模式 | `Enum` | default | 是 | `Input` |  |  |
-| `message` | 消息内容 | `Text` | Hello. | 是 | `UseVarOrInput` |  | 弹窗显示的消息内容。"自定义"模式时，也支持"MD:Markdown内容"。 |
-| `title` | 标题 | `Text` | Quicker | 是 | `Input` |  | 消息窗口标题。留空时自动使用动作名称。 |
-| `icon` | 图标 | `Enum` | Information | 是 | `Input` | 仅：default | 消息窗口图标 |
-| `customIcon` | 图标 | `Text` | Information | 是 | `UseVarOrInput` | 仅：custom | 消息窗口图标。 |
-| `buttons` | 按钮 | `Enum` | OK | 是 | `Input` | 仅：default | 消息窗口图标 |
-| `customButtons` | 按钮 | `Text` | [fa:Regular_Check:#4caf50]是(_Y)\|Yes<br />[fa:Regular_Times:#dc3545]否(_N)\|No<br />[fa:Light_Undo:#444444]取消(_C)\|Cancel | 是 | `Input` | 仅：custom | 每行定义一个按钮，格式为 "文本" 或 "[图标]显示文本(提示内容)\|值"。 |
-| `defaultButton` | 默认按钮 | `Text` | Yes | 是 | `Input` | 仅：custom | 指定默认按钮的值。默认按钮以高亮颜色显示，可直接回车选择。 |
-| `restoreFocus` | 恢复活动窗口 | `Boolean` | true | 否 | `Input` |  | 关闭弹窗后，是否将焦点还原到之前的活动窗口 |
-
-## 输出参数
-
-| Key | 名称 | 类型 | 条件 | 说明 |
-| --- | --- | --- | --- | --- |
-| `result` | 选择的按钮 | `Text` |  | 点击的按钮，标准模式下结果可能为OK,Cancel,Yes,No，自定义模式下为按钮的值。 |
-| `okOrYes` | 是否确认 | `Boolean` | 仅：default | 选择的按钮是否为"确定"或"是" |
-
-## 选项值
-
-### `operation` 模式
-
-| Value | 名称 | 说明 |
-| --- | --- | --- |
-| `default` | 标准 |  |
-| `custom` | 自定义 |  |
-
-### `icon` 图标
-
-| Value | 名称 | 说明 |
-| --- | --- | --- |
-| `None` | 无 |  |
-| `Information` | 信息 |  |
-| `Question` | 疑问 |  |
-| `Warning` | 警告 |  |
-| `Error` | 错误 |  |
-
-### `customIcon` 图标
-
-| Value | 名称 | 说明 |
-| --- | --- | --- |
-| `` | 无 |  |
-| `Information` | 信息 |  |
-| `Question` | 疑问 |  |
-| `Warning` | 警告 |  |
-| `Error` | 错误 |  |
-
-### `buttons` 按钮
-
-| Value | 名称 | 说明 |
-| --- | --- | --- |
-| `OK` | 确定 |  |
-| `OKCancel` | 确定/取消 |  |
-| `YesNo` | 是/否 |  |
-{/* xaction-metadata:end */}
+<XActionModuleMeta moduleKey="sys:MsgBox" />
 
 ## 概述
 
@@ -99,15 +34,11 @@ legacyContentUpdatedAt: "2024-10-29T00:01:11.000Z"
 -   标准模式：类似于windows内置弹窗，支持固定图标和按钮组合。
 -   自定义模式：可自图标和按钮，显示内容比较灵活。
 
-
-
 ## 标准模式
 
 与Windows内置的弹窗功能类似，支持固定可选的图标类型和按钮组合。与各语言的`MessageBox.Show`方法功能类似。
 
 ![](./img/msgbox-002-2b2fb27fec.png)
-
-
 
 参数说明：
 
@@ -144,8 +75,6 @@ legacyContentUpdatedAt: "2024-10-29T00:01:11.000Z"
 
 ![](./img/msgbox-003-8c09dbb65c.png)
 
-
-
 参数说明：
 
 【模式、内容、标题】请参考上文标准模式中的说明。
@@ -156,12 +85,6 @@ legacyContentUpdatedAt: "2024-10-29T00:01:11.000Z"
 【图标】可选预定义的图标名称，或手动输入Quicker所支持的[各种自定义图标定义](/v2/xaction/concepts/use-icon-in-actions)（无需输入中括号，如`icon:**一个可能不存在的文件.docx**`）。
 
 ![](./img/msgbox-004-3c48550631.png)
-
-
-
-
-
-
 
 【按钮】每行定义一个按钮，其格式可参考《[用户选择](/v2/xaction/concepts/use-icon-in-actions)》模块中的选项定义：
 
@@ -180,10 +103,6 @@ legacyContentUpdatedAt: "2024-10-29T00:01:11.000Z"
 ## 示例动作
 
 -   [示例：弹窗消息](https://getquicker.net/sharedaction?code=b6098426-6fda-4db9-6d88-08d6bfa4ff29)
-
-
-
-
 
 ## 更新历史
 

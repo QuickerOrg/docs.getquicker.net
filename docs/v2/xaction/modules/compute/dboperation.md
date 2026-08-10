@@ -9,7 +9,6 @@ comments: true
 moduleKey: "sys:dboperation"
 docStatus: "migrated-unreviewed"
 metadataGeneratedAt: "2026-08-03 20:08:03"
-metadataHash: "647b77bfffcaa2cdd1ca262c146ad564090b7f08a20848e4383a965766254a81"
 legacyDocId: 62743498
 legacyContentUpdatedAt: "2021-12-27T07:35:08.000Z"
 ---
@@ -18,59 +17,9 @@ legacyContentUpdatedAt: "2021-12-27T07:35:08.000Z"
 
 对数据库执行SQL语句并返回结果
 
-{/* xaction-metadata:start */}
 ## 当前模块定义
 
-- 模块 Key：`sys:dboperation`
-- 分类：计算与比较（`Compute`）
-- 类型：`Action`
-- 风险操作：否
-- 专业版：否
-
-## 输入参数
-
-| Key | 名称 | 类型 | 默认值 | 必填 | 变量模式 | 条件 | 说明 |
-| --- | --- | --- | --- | --- | --- | --- | --- |
-| `dbType` | 数据库连接类型 | `Enum` |  | 否 | `Input` |  |  |
-| `connectionString` | 连接字符串 | `Text` |  | 否 | `UseVarOrInput` |  | Connection string |
-| `sql` | SQL语句 | `Text` |  | 否 | `UseVarOrInput` |  | 要执行的SQL语句内容 |
-| `sqlParam` | 参数 | `Object` |  | 否 | `UseVarOrInput` |  | 为SQL语句提供的参数 |
-| `timeoutSeconds` | 超时秒数 | `Integer` |  | 否 | `UseVarOrInput` |  | 留空或0表示默认。 |
-| `operationType` | 执行方式 | `Enum` | Query | 是 | `Input` |  |  |
-| `stopIfFail` | 失败后停止 | `Boolean` | true | 否 | `Input` |  | 失败后是否停止动作 |
-
-## 输出参数
-
-| Key | 名称 | 类型 | 条件 | 说明 |
-| --- | --- | --- | --- | --- |
-| `isSuccess` | 是否成功 | `Boolean` |  | 操作是否成功 |
-| `rowsAffected` | 影响行数 | `Integer` | 仅：Execute |  |
-| `scalarResult` | 单值结果 | `Any` | 仅：ExecuteScalar |  |
-| `dataTableResult` | 查询结果(表格) | `Table` | 仅：Query | 获取表格类型的行结果 |
-| `listResult` | 查询结果(对象列表) | `Object` | 仅：Query | 获得动态对象列表类型的结果 |
-| `firstItem` | 首项结果 | `Object` | 仅：Query | 如果只需要返回结果的第一行，可以使用此项输出，支持词典或dynamic对象。没有结果时返回null。 |
-| `rowCount` | 结果行数 | `Integer` | 仅：Query |  |
-
-## 选项值
-
-### `dbType` 数据库连接类型
-
-| Value | 名称 | 说明 |
-| --- | --- | --- |
-| `sqlserver` | SQL Server |  |
-| `mysql` | MySQL |  |
-| `sqlite` | SQLite |  |
-| `oledb` | OleDB |  |
-| `odbc` | ODBC |  |
-
-### `operationType` 执行方式
-
-| Value | 名称 | 说明 |
-| --- | --- | --- |
-| `Query` | Query：查询并返回结果数据 |  |
-| `Execute` | Execute：执行并返回影响的行数 |  |
-| `ExecuteScalar` | ExecuteScalar：执行并返回单个值(首行首列的值) |  |
-{/* xaction-metadata:end */}
+<XActionModuleMeta moduleKey="sys:dboperation" />
 
 【本功能为预览状态，欢迎反馈问题】
 
@@ -84,8 +33,6 @@ legacyContentUpdatedAt: "2021-12-27T07:35:08.000Z"
 -   更新、删除数据可能会造成重大损失，请谨慎操作。
 
 ![](./img/dboperation-001-498c1464ba.png)
-
-
 
 ## 步骤参数
 
@@ -101,8 +48,6 @@ legacyContentUpdatedAt: "2021-12-27T07:35:08.000Z"
 
 -   对SQLite数据库，可以直接指定SQLite数据库文件的完整路径。Quicker会自动补全连接字符串，格式为：`Data Source=SQLite数据库文件完整路径;Version=3;`
 -   在使用OleDb类型时，对于Access文件（扩展名为`.mdb`或`.accdb`）也可以直接指定文件路径。Quicker会自动补全连接字符串，格式为：`Provider=Microsoft.ACE.OLEDB.12.0;Data Source=Access文件路径;Persist Security Info=False;`
-
-
 
 **【SQL语句】**
 
@@ -150,8 +95,6 @@ legacyContentUpdatedAt: "2021-12-27T07:35:08.000Z"
 当遇到异常情况时是否停止动作。请注意：查询结果为空不一定会产生异常造成失败，请以实际测试结果为准。
 
 ### 各执行方式与输出
-
-
 
 #### Query：查询并返回结果数据
 
@@ -214,10 +157,6 @@ legacyContentUpdatedAt: "2021-12-27T07:35:08.000Z"
 此时，“项”应该输出到一个动态对象类型的变量中。在循环中，使用 `{行对象}.列名` 的方式访问某一列的数据。
 
 ![](./img/dboperation-007-ccd2839f7e.png)
-
-
-
-
 
 ## 参考
 

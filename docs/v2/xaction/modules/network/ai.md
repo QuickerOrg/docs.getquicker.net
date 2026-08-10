@@ -9,7 +9,6 @@ comments: true
 moduleKey: "sys:ai"
 docStatus: "migrated-unreviewed"
 metadataGeneratedAt: "2026-08-03 20:08:03"
-metadataHash: "8923943d343e87c4a2e7480c3f8dc82bd92341a7cd287ba5cff47cf6ea6725f9"
 legacyDocId: 117580978
 legacyContentUpdatedAt: "2025-11-04T00:24:46.000Z"
 ---
@@ -18,71 +17,9 @@ legacyContentUpdatedAt: "2025-11-04T00:24:46.000Z"
 
 调用第三方AI服务
 
-{/* xaction-metadata:start */}
 ## 当前模块定义
 
-- 模块 Key：`sys:ai`
-- 分类：网络服务（`Network`）
-- 类型：`Action`
-- 风险操作：否
-- 专业版：否
-
-## 输入参数
-
-| Key | 名称 | 类型 | 默认值 | 必填 | 变量模式 | 条件 | 说明 |
-| --- | --- | --- | --- | --- | --- | --- | --- |
-| `endpoint` | 接口端点 | `Enum` | chat | 是 | `Input` |  |  |
-| `model` | 模型 | `Text` |  | 否 | `Input` |  | 适用于可能适用于不同的端点，请参考官方文档使用。 |
-| `apiUrlFormat` | API网址 | `Text` |  | 否 | `Input` |  | 可选，使用自定义的API服务器时使用。请参考模块文档了解如何设置。 |
-| `apiKey` | APIKey | `Text` |  | 否 | `Input` |  |  |
-| `apiOrg` | Orgnization | `Text` |  | 否 | `Input` |  | 可选 |
-| `systemPrompt` | 系统提示词 | `Text` |  | 否 | `Input` | 仅：chat | 告知AI所需要扮演的角色和要求。如"你是一个专业的翻译助手"。 |
-| `sessionId` | 会话ID | `Text` |  | 否 | `Input` | 仅：chat | 可选。每次会话请生成新的GUID格式会话ID，设置后将自动保存会话历史。 |
-| `historyMessages` | 历史消息 | `Text` |  | 否 | `Input` | 仅：chat | 可选。存放历史消息的json数组，格式请参考文档说明。设定会话ID后，也可直接写发送的历史会话条数。 |
-| `prompt` | 提示词 | `Text` |  | 否 | `Input` | 仅：chat, completions | 要为其生成补全的完整提示内容。 |
-| `maxTokens` | 最大响应Token数 | `Integer` | 0 | 否 | `Input` |  | 最大响应输出token数（max_completion_tokens） |
-| `temperature` | 温度 | `Number` | 0.2 | 否 | `Input` |  | 用于控制输出的随机性，请根据模型文档设置温度参数。 |
-| `topP` | top_p | `Number` | 1 | 否 | `Input` | 仅：chat, completions |  |
-| `n` | n | `Integer` | 1 | 否 | `Input` |  | 对每个问题生成几个结果，将会耗费更多token。 |
-| `expireSeconds` | 超时秒数 | `Number` | 120 | 否 | `Input` |  | 最长等待秒数 |
-| `stream` | 使用流式输出 | `Boolean` | false | 否 | `UseVarOrInput` |  | 即时输出结果，将结果输出到文本窗口，详见文档。此时将无法获得完整响应和token用量等信息。 |
-| `streamTo` | 流式输出窗口标识 | `Text` |  | 否 | `Input` |  | 一个预先使用非等待模式显示的文本窗口的标识，流式输出时将结果显示在该窗口中。 |
-| `stop` | 停止符stop | `Text` |  | 否 | `Input` |  | 遇到指定的内容时自动停止生成。可使用\r,\n,\t等表示特殊字符。输入多行时，表示多个停止符。 |
-| `forceProxy` | 强制使用代理 | `Boolean` | false | 否 | `Input` |  | 即使系统设置中未启用代理，本步骤仍然使用代理访问。 |
-| `respFormat` | 响应格式 | `Text` |  | 否 | `UseVarOrInput` | 仅：chat | 留空，或使用"json_object"表示json格式响应，或json格式的完整的response_format内容。 |
-| `extraProps` | 附加参数 | `Dict` |  | 否 | `Input` | 仅：chat | 用于添加额外的请求参数。请参考文档 |
-| `stopIfFail` | 失败后停止 | `Boolean` | true | 否 | `Input` |  | 失败后是否停止动作 |
-
-## 输出参数
-
-| Key | 名称 | 类型 | 条件 | 说明 |
-| --- | --- | --- | --- | --- |
-| `isSuccess` | 是否成功 | `Boolean` |  | 操作是否成功 |
-| `result` | 生成结果 | `Text` |  | 生成的结果文本 |
-| `reasoningContent` | 推理内容 | `Text` |  | 推理模型的reasoning_content |
-| `rawResponse` | 原始响应内容 | `Text` |  | 接口返回的原始响应内容 |
-| `promptTokens` | 提示Token数 | `Integer` |  | Prompt耗费的token数量 |
-| `completionTokens` | 响应Token数 | `Integer` |  | 响应耗费的token数量 |
-| `totalTokens` | 总Token数 | `Integer` |  | 总耗费的token数量 |
-| `finishReason` | 结束原因 | `Text` |  |  |
-| `historyMessages` | 历史消息 | `Object` | 仅：chat | 消息类型列表对象 |
-
-## 选项值
-
-### `endpoint` 接口端点
-
-| Value | 名称 | 说明 |
-| --- | --- | --- |
-| `chat` | Chat |  |
-| `completions` | Completions |  |
-
-### `respFormat` 响应格式
-
-| Value | 名称 | 说明 |
-| --- | --- | --- |
-| `` | 文本 |  |
-| `json_object` | JSON对象 |  |
-{/* xaction-metadata:end */}
+<XActionModuleMeta moduleKey="sys:ai" />
 
 注：
 
@@ -92,10 +29,6 @@ legacyContentUpdatedAt: "2025-11-04T00:24:46.000Z"
 -   每种模型和服务端点之间有一定联系，请参考官方文档了解端点可用模型。
 -   每个请求的提示和响应token数量受到模型限制。
 -   请详细阅读官方文档以了解各方面知识和信息。
-
-
-
-
 
 ## 基本原理
 
@@ -113,13 +46,9 @@ Quicker动作中主要用来处理一些专用的场景，而不是连续的会�
 
 ![](./img/ai-001-c6658156b4.png)
 
-
-
 ## 参数
 
 ![](./img/ai-002-ce0a9adfec.png)
-
-
 
 【端点】目前支持Chat或Completions。
 
@@ -217,8 +146,6 @@ $= new {参数名 = "参数值"};
 
 ![](./img/ai-004-979cc8b0ca.gif)
 
-
-
 实现方法：
 
 ![](./img/ai-005-7af6fa79ce.png)
@@ -227,13 +154,9 @@ $= new {参数名 = "参数值"};
 
 ![](./img/ai-006-b5ae050753.png)
 
-
-
 2）在AI调用模块中，启用流式输出和输出的文本窗口标识。
 
 ![](./img/ai-007-569f56bf1c.png)
-
-
 
 这样当收到新的内容后，会将内容追加到窗口中。
 

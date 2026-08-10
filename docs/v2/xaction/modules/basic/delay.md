@@ -9,7 +9,6 @@ comments: true
 moduleKey: "sys:delay"
 docStatus: "migrated-unreviewed"
 metadataGeneratedAt: "2026-08-03 20:08:03"
-metadataHash: "104e464be4da5a5fc1201df5c5d5567f3898de4e972abdcca778a2cb14a5ea67"
 legacyDocId: 1465639
 legacyContentUpdatedAt: "2025-12-05T02:21:38.000Z"
 ---
@@ -18,45 +17,21 @@ legacyContentUpdatedAt: "2025-12-05T02:21:38.000Z"
 
 等待指定的毫秒数
 
-{/* xaction-metadata:start */}
 ## 当前模块定义
 
-- 模块 Key：`sys:delay`
-- 分类：基础（`Basic`）
-- 类型：`Action`
-- 风险操作：否
-- 专业版：否
-
-## 输入参数
-
-| Key | 名称 | 类型 | 默认值 | 必填 | 变量模式 | 条件 | 说明 |
-| --- | --- | --- | --- | --- | --- | --- | --- |
-| `delayMs` | 等待时间 | `Integer` | 100 | 是 | `UseVarOrInput` |  | 等待时间毫秒数 |
-| `monitorWaitWin` | 等待窗口关闭时取消 | `Boolean` | false | 否 | `Input` |  | 结合"等待窗口"模块，如果等待窗口关闭，则停止等待。仅当等待时间超过1000ms时生效 |
-
-## 输出参数
-
-无。
-{/* xaction-metadata:end */}
+<XActionModuleMeta moduleKey="sys:delay" />
 
 ## 概述
 
 功能：等待一段时间（指定毫秒数）再继续后面的动作步骤。
 
-
-
-
 ![](./img/delay-001-621a92fff1.png)
-
-
 
 ## 参数说明
 
 **等待时间**：要等待的毫秒数。实际等待的时间可能会存在误差（多等待0-20ms）。
 
 **等待窗口关闭时取消**：结合“[等待窗口](/v2/xaction/modules/showwaitwin)”模块，在“等待窗口”被关闭时提前结束等待。
-
-
 
 ## 快速操作
 
@@ -71,10 +46,6 @@ legacyContentUpdatedAt: "2025-12-05T02:21:38.000Z"
 在步骤列表中，在“等待时间模块”上**Ctrl+鼠标滚轮**上下滚动，可以以50ms为单位快速调整等待的毫秒数。
 
 ![](./img/delay-003-d2cf99fe72.gif)
-
-
-
-
 
 ## 应用场景
 

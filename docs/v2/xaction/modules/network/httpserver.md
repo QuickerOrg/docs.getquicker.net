@@ -9,7 +9,6 @@ comments: true
 moduleKey: "sys:httpserver"
 docStatus: "migrated-unreviewed"
 metadataGeneratedAt: "2026-08-03 20:08:03"
-metadataHash: "73d2db65498f40e73e486d1fd73c0c18f5d9028c398e0469176f47184dd0e764"
 legacyDocId: 66932563
 legacyContentUpdatedAt: "2024-07-01T08:24:43.000Z"
 ---
@@ -18,53 +17,9 @@ legacyContentUpdatedAt: "2024-07-01T08:24:43.000Z"
 
 创建临时的本地HTTP服务器，从而可以从移动端或其它设备访问。
 
-{/* xaction-metadata:start */}
 ## 当前模块定义
 
-- 模块 Key：`sys:httpserver`
-- 分类：网络服务（`Network`）
-- 类型：`Action`
-- 风险操作：否
-- 专业版：否
-
-## 输入参数
-
-| Key | 名称 | 类型 | 默认值 | 必填 | 变量模式 | 条件 | 说明 |
-| --- | --- | --- | --- | --- | --- | --- | --- |
-| `operation` | 操作类型 | `Enum` | CreateFileServer | 是 | `Input` |  |  |
-| `port` | 端口号 | `Integer` | 8080 | 否 | `UseVarOrInput` | 仅：CreateFileServer | 服务端口号。值为0时自动生成端口号。 |
-| `enableHttps` | 启用HTTPS | `Boolean` | true | 否 | `UseVarOrInput` | 仅：CreateFileServer |  |
-| `docPath` | 文件夹路径 | `Text` |  | 否 | `UseVarOrInput` | 仅：CreateFileServer | 服务的文件夹完整路径。不支持磁盘根目录。 |
-| `defaultDoc` | 默认文档 | `Text` |  | 否 | `UseVarOrInput` | 仅：CreateFileServer | 可选，如index.html。 |
-| `password` | 基础验证密码 | `Text` |  | 否 | `UseVarOrInput` | 仅：CreateFileServer | Basic验证的密码，账号固定为quicker |
-| `serviceId` | 服务ID | `Text` | default | 否 | `UseVarOrInput` |  | 通过服务ID启动或关闭服务。同一服务ID再次创建时会先关闭旧服务。 |
-| `customRequest` | 自定义请求处理 | `Text` |  | 否 | `UseVarOrInput` | 仅：CreateFileServer | 每行一条规则，格式为："路径:HTTP方法:子程序名"。详细信息请参考模块文档。 |
-| `headCode` | HEAD插入代码 | `Text` |  | 否 | `UseVarOrInput` | 仅：CreateFileServer | 向目录HTML文档的Head中插入代码，可用于自定义风格。 |
-| `bodyCode` | BODY插入代码 | `Text` |  | 否 | `UseVarOrInput` | 仅：CreateFileServer | 向目录HTML文档的BODY中插入代码，可用于自定义脚本。 |
-| `autoShutdownSeconds` | 闲置自动关闭 | `Number` | 0 | 否 | `UseVarOrInput` | 仅：CreateFileServer | 可选。一定时间（秒）没有请求后自动关闭服务。 |
-| `showNotifyWhenAutoClose` | 自动关闭时显示通知 | `Boolean` | false | 否 | `UseVarOrInput` | 仅：CreateFileServer | 闲置超时关闭时，是否显示通知。 |
-| `stopIfFail` | 失败后停止 | `Boolean` | true | 否 | `Input` |  | 失败后是否停止动作 |
-
-## 输出参数
-
-| Key | 名称 | 类型 | 条件 | 说明 |
-| --- | --- | --- | --- | --- |
-| `isSuccess` | 是否成功 | `Boolean` |  | 操作是否成功 |
-| `serverUrl` | 服务地址 | `Text` | 仅：CreateFileServer | 服务网址 |
-| `serverUrlWithAccount` | 带账号的地址 | `Text` | 仅：CreateFileServer | 带有账号密码的地址。可用于扫码后自动登录。 |
-| `isRunning` | 是否在运行 | `Boolean` | 仅：GetServerState | 指定ID的web服务是否在运行中 |
-| `serverList` | 运行中的服务列表 | `List` | 仅：GetServerState | 所有运行中的服务的列表 |
-
-## 选项值
-
-### `operation` 操作类型
-
-| Value | 名称 | 说明 |
-| --- | --- | --- |
-| `CreateFileServer` | 创建文件服务器 |  |
-| `CloseServer` | 关闭服务 |  |
-| `GetServerState` | 获取服务状态 |  |
-{/* xaction-metadata:end */}
+<XActionModuleMeta moduleKey="sys:httpserver" />
 
 对指定的文件夹创建临时http服务器（Web服务器），供文件浏览和传输。
 
@@ -112,8 +67,6 @@ legacyContentUpdatedAt: "2024-07-01T08:24:43.000Z"
 
 【自定义请求处理】通过子程序自助处理请求。定义方式请参考下面章节。
 
-
-
 【HEAD 插入代码】生成浏览目录网页时，自动在`<head>`末尾插入代码（替换默认代码中的`<!--HEAD-CODE-->`）。可用于加载自定义的css库引用等。
 
 【BODY 插入代码】在生成浏览目录网页时，自动在`<body>`末尾插入代码（替换默认代码中的`<!--BODY-CODE-->`）。可用于加载自定义的js脚本。
@@ -136,10 +89,6 @@ legacyContentUpdatedAt: "2024-07-01T08:24:43.000Z"
 
 -   开启服务后，显示等待窗口，待关闭等待窗口后关闭服务。
 -   添加右键菜单用于关闭服务。
-
-
-
-
 
 ### 获取服务状态
 
@@ -177,12 +126,6 @@ legacyContentUpdatedAt: "2024-07-01T08:24:43.000Z"
 
 10）打包下载所选择的子文件夹和文件。 这里只是简单打包成一个zip文件，不会压缩。
 
-
-
-
-
-
-
 ## 自定义请求处理
 
 在必要时，可以通过子程序自定义实现HTTP请求的处理。
@@ -197,8 +140,6 @@ legacyContentUpdatedAt: "2024-07-01T08:24:43.000Z"
 
 ### 路由规则定义
 
-
-
 在【自定义请求处理】参数中设置路由规则：
 
 -   每行一条路由规则。所有规则将按照从上到下的顺序匹配执行，有一项匹配到以后，后面的规则就会被忽略。
@@ -206,8 +147,6 @@ legacyContentUpdatedAt: "2024-07-01T08:24:43.000Z"
 -   路径：URI的[AbsolutePath](https://docs.microsoft.com/en-us/dotnet/api/system.uri.absolutepath?view=net-6.0)值的匹配字符串。可以完整匹配或使用正则。 例如：`/api`可用于匹配`http://192.168.1.20:8080/api`、`\S+`则可以匹配所有请求。
 -   HTTP方法列表：哪些HTTP Method使用此规则处理。支持的方法有 GET, POST, PUT, DELETE, HEAD。可使用`*`表示匹配所有Http Method。示例：`GET`、`GET,POST`、`*`
 -   处理需求的子程序名称：指定使用哪个子程序处理此需求。子程序需按规定的方式定义输入和输出参数，可参考此[模板子程序](https://getquicker.net/subprogram?id=c6f51262-75ca-4a39-fab7-08d9f7308243)及本文的后面章节。
-
-
 
 下图所示的规则：将任何路径的 GET 和 POST 请求都使用动作内名称为“http请求处理”的子程序处理。
 
@@ -221,11 +160,7 @@ legacyContentUpdatedAt: "2024-07-01T08:24:43.000Z"
 -   子程序会被直接执行。动作内主程序的步骤不会被执行，子程序也不需要添加到动作步骤列表中。
 -   子程序内部应当只处理数据并快速返回结果，不应该有任何界面交互的步骤。
 
-
-
 #### 子程序的输入
-
-
 
 ![](./img/httpserver-008-7783207c79.png)
 

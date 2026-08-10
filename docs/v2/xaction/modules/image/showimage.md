@@ -9,7 +9,6 @@ comments: true
 moduleKey: "sys:showImage"
 docStatus: "migrated-unreviewed"
 metadataGeneratedAt: "2026-08-03 20:08:03"
-metadataHash: "59bd8cff97a6a69e85368ce5c064552e7a64bb3a03a0038b4ba2e0417db27d70"
 legacyDocId: 2113283
 legacyContentUpdatedAt: "2025-05-11T08:37:04.000Z"
 ---
@@ -18,81 +17,13 @@ legacyContentUpdatedAt: "2025-05-11T08:37:04.000Z"
 
 在屏幕上显示图片。输入文件路径/url或图片变量。
 
-{/* xaction-metadata:start */}
 ## 当前模块定义
 
-- 模块 Key：`sys:showImage`
-- 分类：图片处理（`Image`）
-- 类型：`Action`
-- 风险操作：否
-- 专业版：否
-
-## 输入参数
-
-| Key | 名称 | 类型 | 默认值 | 必填 | 变量模式 | 条件 | 说明 |
-| --- | --- | --- | --- | --- | --- | --- | --- |
-| `source` | 操作/来源 | `Enum` | var | 是 | `Input` |  | 图片来源类型 |
-| `path` | 路径/网址 | `Text` |  | 是 | `UseVarOrInput` | 仅：file | 图片文件的路径或网址。 |
-| `imgVar` | 图片变量 | `Image` |  | 是 | `UseVar` | 仅：var | 从指定变量中加载图片 |
-| `scale` | 初始缩放比例 | `Number` | 1 | 是 | `Input` | 仅：file, var, clipboard | 可以为小数，1表示原始大小，-1表示对大图自动调整缩放比例 |
-| `autoCloseKey` | 唯一性标识 | `Text` |  | 否 | `Input` | 仅：file, var, clipboard, closeWindow, getState | (仅必要时使用)自动关闭之前打开的具有此标识的图片窗口。 |
-| `autoCloseTime` | 自动关闭时间 | `Number` | 0 | 是 | `Input` | 仅：file, var, clipboard | 几秒后自动关闭，可以为小数。0：不自动关闭。 |
-| `opacity` | 不透明度 | `Number` | 1 | 是 | `UseVarOrInput` | 仅：file, var, clipboard | 0-1之间的小数，1为完全不透明，0为完全透明。 |
-| `winLocation` | 显示位置 | `Enum` | Auto | 否 | `UseVarOrInput` | 仅：file, var, clipboard | 图片显示位置 |
-| `winPosition` | 位置坐标 | `Text` |  | 否 | `UseVarOrInput` | 仅：file, var, clipboard | 仅用于位置为"自定义位置"类型。格式为:left,top或left,top,right,bottom |
-| `waitClose` | 等待图片关闭 | `Boolean` | false | 否 | `UseVarOrInput` | 仅：file, var, clipboard | 是否等待图片关闭后再执行后续步骤 |
-| `showDropShadow` | 显示阴影 | `Boolean` | true | 否 | `UseVarOrInput` | 仅：file, var, clipboard | 是否显示边框阴影 |
-| `showTaskbarIcon` | 显示任务栏图标 | `Boolean` | true | 否 | `UseVarOrInput` | 仅：file, var, clipboard | 是否显示任务栏图标 |
-| `topMost` | 是否置顶显示 | `Boolean` | true | 否 | `UseVarOrInput` | 仅：file, var, clipboard | 是否置顶显示图片 |
-| `noActivate` | 不激活窗口 | `Boolean` | false | 否 | `Input` | 仅：file, var, clipboard | 图片窗口显示时不抢占焦点（无法通过Esc关闭） |
-| `closeWhenLostFocus` | 丢失焦点时自动关闭 | `Boolean` | false | 否 | `Input` | 仅：file, var, clipboard |  |
-| `tooltip` | ToolTip提示文字 | `Text` |  | 否 | `UseVarOrInput` | 仅：file, var, clipboard |  |
-| `closeCallbackParam` | 关闭窗口回调参数 | `Text` |  | 否 | `UseVarOrInput` | 仅：file, var, clipboard | 关闭图片窗口时，运行当前动作，并传入指定参数。未指定参数时，不进行回调。 |
-
-## 输出参数
-
-| Key | 名称 | 类型 | 条件 | 说明 |
-| --- | --- | --- | --- | --- |
-| `isExists` | 是否存在 | `Boolean` | 仅：getState | 是否存在指定标识的窗口 |
-| `hwnd` | 窗口句柄 | `Integer` | 仅：file, var, clipboard, getState | 新创建的图片窗口的句柄 |
-| `finalPosition` | 最终贴图位置 | `Text` | 仅：file, var, clipboard, getState | 移动窗口后的贴图位置格式为left,top,right,bottom。显示图片（开启"等待图片关闭" 选项）或获取当前打开的图片窗口信息时有效。 |
-| `windowIdList` | 窗口标识列表 | `List` | 仅：getImageWindows |  |
-
-## 选项值
-
-### `source` 操作/来源
-
-| Value | 名称 | 说明 |
-| --- | --- | --- |
-| `file` | 显示：图片文件或网络图片 |  |
-| `var` | 显示：变量中的图片 |  |
-| `clipboard` | 显示：剪贴板图片 |  |
-| `closeWindow` | 关闭图片窗口 |  |
-| `getState` | 获取图片窗口信息 |  |
-| `getImageWindows` | 获取所有图片窗口标识 |  |
-
-### `winLocation` 显示位置
-
-| Value | 名称 | 说明 |
-| --- | --- | --- |
-| `Auto` | 自动 |  |
-| `CenterScreen` | 屏幕中间 |  |
-| `TopLeft` | 屏幕左上 |  |
-| `TopCenter` | 屏幕中上 |  |
-| `TopRight` | 屏幕右上 |  |
-| `LeftCenter` | 屏幕左中 |  |
-| `RightCenter` | 屏幕右中 |  |
-| `BottomLeft` | 屏幕左下 |  |
-| `BottomCenter` | 屏幕中下 |  |
-| `BottomRight` | 屏幕右下 |  |
-| `Manual` | 自定义位置 |  |
-{/* xaction-metadata:end */}
+<XActionModuleMeta moduleKey="sys:showImage" />
 
 用于显示文件、变量或剪贴板中的图片。
 
 ![](./img/showimage-001-30cdea8ae8.png)
-
-
 
 **支持的操作类型**
 
@@ -103,8 +34,6 @@ legacyContentUpdatedAt: "2025-05-11T08:37:04.000Z"
 -   **获取图片窗口信息**：根据指定的唯一性标识，获取图片窗口信息。
 -   **获取所有图片窗口标识**：获取当前打开的所有图片窗口的唯一性标识的列表。示例动作：[关闭所有图片窗口](https://getquicker.net/Sharedaction?code=8e49c374-062d-4824-979c-08db3d4a9dcd)。
 
-
-
 ## 显示图片
 
 支持3种图片来源：
@@ -113,11 +42,7 @@ legacyContentUpdatedAt: "2025-05-11T08:37:04.000Z"
 -   图片变量：显示变量中存储的图片。此时需选择要显示的“图片变量”。
 -   剪贴板：显示剪贴板中的图片。
 
-
-
 **输入参数**
-
-
 
 【初始缩放比例】显示图片时的默认大小。1表示原始大小，0.5表示原始大小（边长）的一半，1.5表示原始大小的1.5倍。-1表示自动。
 
@@ -164,35 +89,21 @@ legacyContentUpdatedAt: "2025-05-11T08:37:04.000Z"
 
 ## 其它操作类型
 
-
-
 **关闭图片窗口：**关闭具有指定唯一性标识的图片窗口。
 
 ![](./img/showimage-002-88398ce2fb.png)
-
-
 
 **获取图片窗口信息：**用于获取指定唯一性标识的图片窗口是否存在。
 
 ![](./img/showimage-003-8391621c0e.png)
 
-
-
 **获取所有图片窗口标识：**获取所有已打开的图片窗口的标识列表。
 
 ![](./img/showimage-004-564d0a9f7c.png)
 
-
-
-
-
 ## 图片窗口的使用
 
-
-
 ![](./img/showimage-005-04f2c536e2.png)
-
-
 
 #### 右键菜单
 
@@ -207,8 +118,6 @@ legacyContentUpdatedAt: "2025-05-11T08:37:04.000Z"
 -   另存为：将图片保存到文件里；
 -   操作提示：显示鼠标快捷操作提示。
 
-
-
 #### 鼠标操作
 
 -   滚轮：调整缩放比例
@@ -218,15 +127,11 @@ legacyContentUpdatedAt: "2025-05-11T08:37:04.000Z"
 -   中键单击：恢复视图（缩放和旋转）；
 -   左键双击：关闭图片；
 
-
-
 **快速保存**
 
 -   Ctrl+拖拽图片到桌面或资源管理器、其它程序（如Word），可以直接保存图片或将图片内容嵌入文档中。
 
 ![](./img/showimage-006-4786e0565a.gif)
-
-
 
 #### 键盘操作
 
@@ -245,22 +150,16 @@ legacyContentUpdatedAt: "2025-05-11T08:37:04.000Z"
 -   `Ctrl+S`另存图片；
 -   `Alt+左/右`旋转图片；
 
-
-
 #### 其它说明
 
 -   图片窗口在置顶且不显示在任务栏时，将从Alt+Tab切换窗口中隐藏。
     ![](./img/showimage-008-d0ba16464e.png)
-
-
 
 ## 示例动作
 
 -   [显示原始尺寸图片](https://getquicker.net/Sharedaction?code=78e28478-b1ea-421e-75d3-08d692da05cc) : 获得图片网址后，以原始尺寸显示。
 -   [批量贴图](https://getquicker.net/sharedaction?code=b1c9e1a0-bb9a-41ad-6798-08d67448baf3)
 -   [截图并显示](https://getquicker.net/sharedaction?code=9bfc34fb-b7f7-40bd-6d0c-08d6c304e16e)
-
-
 
 ## 更新历史
 

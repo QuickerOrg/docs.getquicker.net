@@ -9,7 +9,6 @@ comments: true
 moduleKey: "sys:excelRange"
 docStatus: "migrated-unreviewed"
 metadataGeneratedAt: "2026-08-03 20:08:03"
-metadataHash: "973fe131fc83285ddd90c64cc0ab48f5412d3a70831a7b8d1d61564842fce69d"
 legacyDocId: 8579675
 legacyContentUpdatedAt: "2024-04-15T14:39:52.000Z"
 ---
@@ -18,89 +17,15 @@ legacyContentUpdatedAt: "2024-04-15T14:39:52.000Z"
 
 操作Excel的某个区域或单元格
 
-{/* xaction-metadata:start */}
 ## 当前模块定义
 
-- 模块 Key：`sys:excelRange`
-- 分类：第三方软件交互（`SoftInteraction`）
-- 类型：`Action`
-- 风险操作：否
-- 专业版：否
-
-## 输入参数
-
-| Key | 名称 | 类型 | 默认值 | 必填 | 变量模式 | 条件 | 说明 |
-| --- | --- | --- | --- | --- | --- | --- | --- |
-| `range` | 区域 | `Object` |  | 否 | `UseVarOrInput` |  | 可以输入区域变量、留空(表示当前选择区域）、used(表示当前工作表的使用区域)或区域范围如A1:E9等，请参考文档。 |
-| `subRange` | 限定子范围 | `Enum` | FullArea | 是 | `UseVarOrInput` |  | 根据需要，将要操作的目标限定为一个子区域 |
-| `operation` | 操作类型 | `Enum` | SetValue | 是 | `Input` |  | 操作类型 |
-| `value` | 参数 | `Any` |  | 否 | `UseVarOrInput` | 仅：SetValue, SetFormula, SetNumberFormat | 要设置的内容 |
-| `cellSize` | 行高,列宽 | `Any` |  | 否 | `UseVarOrInput` | 仅：SetCellSize | -表示不改变，auto表示自动，数字表示具体值。如auto,auto表示自适应高度和宽度 |
-| `style` | 格式 | `Text` |  | 否 | `UseVarOrInput` | 仅：SetStyle | 要设置的格式内容。每行一个格式设置，请参考模块文档了解详细参数设置。 |
-| `methods` | 方法 | `Text` |  | 否 | `UseVarOrInput` | 仅：CallMethod | 要调用的方法，每行一个。格式请参考文档。 |
-| `replaceWhat` | 查找内容 | `Text` |  | 是 | `UseVarOrInput` | 仅：Replace | 要替换的内容 |
-| `replaceTo` | 替换为 | `Text` |  | 是 | `UseVarOrInput` | 仅：Replace | 替换成的内容 |
-| `replaceEscapeWhat` | 转义"查找内容" | `Boolean` | false | 否 | `Input` | 仅：Replace | 替换"查找内容"中的转义字符（\r,\n,\t） |
-| `replaceEscapeTo` | 转义"替换为" | `Boolean` | true | 否 | `Input` | 仅：Replace | 替换"替换为"中的转义字符（\r,\n,\t） |
-| `replaceMatchCase` | 区分大小写 | `Boolean` | false | 否 | `Input` | 仅：Replace |  |
-| `stopIfFail` | 失败后停止 | `Boolean` | true | 否 | `Input` |  | 失败后是否停止动作 |
-
-## 输出参数
-
-| Key | 名称 | 类型 | 条件 | 说明 |
-| --- | --- | --- | --- | --- |
-| `isSuccess` | 是否成功 | `Boolean` |  | 操作是否成功 |
-| `value` | 值 | `Any` | 仅：GetRangeInfo | 单元格的值 |
-| `text` | 文本 | `Text` | 仅：GetRangeInfo | 单元格的显示文本 |
-| `formula` | 公式 | `Text` | 仅：GetRangeInfo | 单元格的公式值 |
-| `numberFormat` | 数值格式 | `Text` | 仅：GetRangeInfo | 单元格数值格式值 |
-| `address` | 位置引用 | `Text` | 仅：GetRangeInfo | 区域位置范围 |
-| `column` | 列号 | `Integer` | 仅：GetRangeInfo | 左上角单元格从1开始的列数 |
-| `row` | 行号 | `Integer` | 仅：GetRangeInfo | 左上角单元格从1开始的行数 |
-| `colNum` | 列数 | `Integer` | 仅：GetRangeInfo | 区域包含的列数 |
-| `rowNum` | 行数 | `Integer` | 仅：GetRangeInfo | 区域包含的行数 |
-| `style` | 格式信息 | `Text` | 仅：GetRangeInfo | 单元格的格式 |
-| `range` | 区域对象 | `Object` | 仅：GetRangeInfo | Range对象 |
-| `sheet` | 工作表对象 | `Object` | 仅：GetRangeInfo | WorkSheet对象 |
-
-## 选项值
-
-### `subRange` 限定子范围
-
-| Value | 名称 | 说明 |
-| --- | --- | --- |
-| `FullArea` | 整个区域 |  |
-| `FirstRow` | 区域内的第一行 |  |
-| `FirstColumn` | 区域内的第一列 |  |
-| `LastRow` | 区域内最后一行 |  |
-| `LastColumn` | 区域内最后一列 |  |
-| `ActiveCell` | 活动单元格 |  |
-| `EntireRow` | 整行(包含区域外) |  |
-| `EntireColumn` | 整列(包含区域外) |  |
-| `Rows` | 所有行(区域范围内) |  |
-| `Columns` | 所有列(区域范围内) |  |
-
-### `operation` 操作类型
-
-| Value | 名称 | 说明 |
-| --- | --- | --- |
-| `SetValue` | 设置值 |  |
-| `SetFormula` | 设置公式 |  |
-| `SetNumberFormat` | 设置数值格式 |  |
-| `SetCellSize` | 行高,列宽 |  |
-| `SetStyle` | 设置格式 |  |
-| `CallMethod` | 调用方法 |  |
-| `Replace` | 替换内容 |  |
-| `GetRangeInfo` | 获取区域信息 |  |
-{/* xaction-metadata:end */}
+<XActionModuleMeta moduleKey="sys:excelRange" />
 
 操作Excel工作表中某个区域。
 
 本模块通过Microsoft.Office.Interop接口调用Excel功能，需要本机安装Excel和相关组件。
 
 “区域”对应于[Range接口](https://docs.microsoft.com/zh-cn/dotnet/api/microsoft.office.interop.excel.range?view=excel-pia)，可以阅读官方文档了解更多信息。
-
-
 
 注意：
 
@@ -109,10 +34,6 @@ legacyContentUpdatedAt: "2024-04-15T14:39:52.000Z"
 -   因本人对VBA熟悉程度有限，相关封装的内容又特别多，所以可能会存在bug或不符合预期的情况，欢迎反馈指出，谢谢！
 
 您可能需要对VBA有一定的了解才能比较好的使用本模块。
-
-
-
-
 
 ## 通用参数
 
@@ -124,8 +45,6 @@ legacyContentUpdatedAt: "2024-04-15T14:39:52.000Z"
 -   不填写内容：表示当前Excel窗口中选定的区域。
 -   填写“**used**”（不写引号）：表示当前Excel窗口工作表中使用的整个区域。内部实现：通过当前工作表的[UsedRange](https://docs.microsoft.com/zh-cn/dotnet/api/microsoft.office.interop.excel.worksheetclass.usedrange?view=excel-pia#Microsoft_Office_Interop_Excel_WorksheetClass_UsedRange)属性得到。
 -   填写指定区域范围的文本，如“**A1:E9**”“**A1**”等（不写引号）。内部实现：通过当前工作表的[Range属性](https://docs.microsoft.com/zh-cn/dotnet/api/microsoft.office.interop.excel.worksheetclass.range?view=excel-pia#Microsoft_Office_Interop_Excel_WorksheetClass_Range_System_Object_System_Object_)([VBA文档](https://docs.microsoft.com/en-us/office/vba/api/excel.worksheet.range))得到。
-
-
 
 【限定子范围】
 
@@ -145,8 +64,6 @@ legacyContentUpdatedAt: "2024-04-15T14:39:52.000Z"
 -   所有列(区域范围内)：对应于[Region.Columns](https://docs.microsoft.com/en-us/dotnet/api/microsoft.office.interop.excel.range.columns?view=excel-pia#Microsoft_Office_Interop_Excel_Range_Columns)属性。
 -   指定单元格：使用“cell:行序号数字,列序号数字”指定单元格位置。（相对于“区域”参数指定的位置左上角单元格的偏移，可以是“区域”参数外面的位置）。此时也可以使用插值或表达式拼接文本结果。下图所使的
     ![](./img/excelrange-001-0eff326a3e.png)
-
-
 
 【操作类型】
 
@@ -175,13 +92,7 @@ legacyContentUpdatedAt: "2024-04-15T14:39:52.000Z"
 -   调用方法：调用Range对象的方法，每行一个方法。详细说明请参考本文后面的部分。
 -   获取区域信息：获取区域的值/公式/格式/信息/对象引用等数据。
 
-
-
-
-
 ## 设置格式
-
-
 
 ![](./img/excelrange-002-7c60977bbd.png)
 
@@ -211,15 +122,11 @@ legacyContentUpdatedAt: "2024-04-15T14:39:52.000Z"
 | Borders.All | 所有边框的风格。格式为英文逗号分隔的3个参数值：LineStyle,Weight,Color <br />  <br />**LineStyle可选值：**<br />xlContinuous 实线。<br />xlDash 虚线。<br />xlDashDot 点划相间线。<br />xlDashDotDot 划线后跟两个点。<br />xlDot 点线。<br />xlDouble 双线。<br />xlLineStyleNone 无线。<br />xlSlantDashDot 倾斜的划线。<br />  <br />Weight（宽度）可选值：<br />xlHairline 极细<br />xlThin 细<br />xlMedium 中等.<br />xlThick 粗<br />  <br />Color为#RRGGBB格式的颜色。 |  |
 | Borders.*BorderIndex* | 单独设置某一类边框的风格。<br />BorderIndex可能是下面的某一个：<br />xlDiagonalDown<br />xlDiagonalUp<br />xlEdgeBottom<br />xlEdgeLeft<br />xlEdgeRight<br />xlEdgeTop<br />xlInsideHorizontal<br />xlInsideVertical<br />  <br />值的格式与Borders.All相同，都是LineStyle,Weight,Color<br />  <br />[https://docs.microsoft.com/zh-cn/office/vba/api/excel.xlbordersindex](https://docs.microsoft.com/zh-cn/office/vba/api/excel.xlbordersindex) |  |
 
-
-
 ## 调用方法
 
 调用Range对象的某一个方法。请参考VBA文档中Range对象的各个方法的说明获取详细信息。
 
 每行一个方法，格式为：“方法名(不需要参数的方法):”或“方法名:参数1,参数2....”
-
-
 
 简单方法：
 
@@ -272,11 +179,7 @@ legacyContentUpdatedAt: "2024-04-15T14:39:52.000Z"
 
 注：本文部分方法的说明参考自 [https://www.bilibili.com/read/cv2365417/](https://www.bilibili.com/read/cv2365417/)
 
-
-
 ### 较为复杂的方法
-
-
 
 **AdvancedFilter:***Action*, *CriteriaRange*, *CopyToRange*, *Unique* 高级筛选 [VBA文档](https://docs.microsoft.com/zh-cn/office/vba/api/excel.range.advancedfilter)
 
@@ -328,10 +231,6 @@ Unique  是否筛选唯一值
 Type:类型，可选xlTypePDF、xlTypeXPS
 
 FileName：要导出的文件路径。
-
-
-
-
 
 **PasteSpecial:***Paste*, *Operation*, *SkipBlanks*, *Transpose* 特殊格式粘贴
 

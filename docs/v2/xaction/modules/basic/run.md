@@ -9,7 +9,6 @@ comments: true
 moduleKey: "sys:run"
 docStatus: "migrated-unreviewed"
 metadataGeneratedAt: "2026-08-03 20:08:03"
-metadataHash: "324c0347bc7d3d48b0c322c415a832b96b17b23746579f5d2d81c6efd8302c2c"
 legacyDocId: 1530304
 legacyContentUpdatedAt: "2025-01-20T02:30:50.000Z"
 ---
@@ -18,66 +17,9 @@ legacyContentUpdatedAt: "2025-01-20T02:30:50.000Z"
 
 运行软件或命令，打开文件、文件夹或网址。效果类似于在Windows"运行"对话框中执行命令。
 
-{/* xaction-metadata:start */}
 ## 当前模块定义
 
-- 模块 Key：`sys:run`
-- 分类：基础（`Basic`）
-- 类型：`Action`
-- 风险操作：否
-- 专业版：否
-
-## 输入参数
-
-| Key | 名称 | 类型 | 默认值 | 必填 | 变量模式 | 条件 | 说明 |
-| --- | --- | --- | --- | --- | --- | --- | --- |
-| `path` | 路径或命令 | `Text` |  | 是 | `UseVarOrInput` |  | 要运行的命令或打开的文件路径、网址、URI等。 |
-| `arg` | 参数(可选) | `Text` |  | 否 | `UseVarOrInput` |  | 程序参数 |
-| `setWorkingDir` | 工作目录 | `Text` | 1 | 否 | `UseVarOrInput` |  | 可输入 0或留空(不设置,由windows默认)、1(软件所在目录)、具体的工作目录路径。 |
-| `windowStyle` | 窗口风格 | `Enum` | 0 | 否 | `UseVarOrInput` |  | 设置期望的窗口风格，是否有效依赖于具体的软件。 |
-| `runas` | 以管理员身份运行 | `Boolean` | false | 否 | `UseVarOrInput` |  | 以管理员身份运行软件或命令。 |
-| `waitInputIdle` | 等待启动完成 | `Boolean` | false | 否 | `UseVarOrInput` |  | 等待进程完成后了初始化，可以接受用户输入。 |
-| `waitExit` | 等待进程结束 | `Boolean` | false | 否 | `UseVarOrInput` |  | 等待进程结束后再执行后续操作步骤。 |
-| `activateWindowIfRunning` | 如果程序已运行则尝试激活窗口 | `Boolean` | false | 否 | `UseVarOrInput` |  | 如果程序已经在运行，则尝试激活其窗口。 |
-| `activateWindowHotkey` | 激活窗口快捷键 | `Text` |  | 否 | `UseVarOrInput` |  | 对于支持快捷键激活窗口的软件，设置该快捷键。支持"模拟按键B"语法。 |
-| `alternativePath` | 备用路径 | `Text` |  | 否 | `Input` |  | 文件在多个电脑上路径不同时，使用备用路径填写其他电脑上的文件路径。 |
-| `username` | 用户名 | `Text` |  | 否 | `UseVarOrInput` |  | 使用指定的用户运行 |
-| `password` | 密码 | `Text` |  | 否 | `UseVarOrInput` |  | 用户名对应的密码 |
-| `outputEncoding` | 控制台输出编码 | `Enum` | oem | 是 | `Input` |  | 控制台输出编码。如果输出遇到乱码，尝试修改此选项。 |
-| `envVariables` | 环境变量 | `Text` |  | 否 | `UseVarOrInput` |  | 为应用程序设置特定的环境变量值。每行一个，格式"变量名=值"，如"CONFIG_FILE=d:\config.json" |
-| `stopIfFail` | 失败后停止 | `Boolean` | true | 否 | `Input` |  | 失败后是否停止动作 |
-
-## 输出参数
-
-| Key | 名称 | 类型 | 条件 | 说明 |
-| --- | --- | --- | --- | --- |
-| `isSuccess` | 是否成功 | `Boolean` |  | 操作是否成功 |
-| `pid` | PID | `Integer` |  | 进程ID |
-| `mainWinHandle` | 主窗口句柄 | `Integer` |  | 进程的主窗口句柄 |
-| `mainWinTitle` | 主窗口标题 | `Text` |  |  |
-| `stdout` | 控制台输出 | `Text` |  | 慎用！仅用于控制台程序，会自动等待进程结束。输出stdout，为空时输出stderr。 |
-| `stdoutOnly` | stdout输出 | `Text` |  | 慎用！捕获控制台程序的stdout输出，会自动等待进程结束 |
-| `stderr` | stderr输出 | `Text` |  | 慎用！捕获控制台程序的stderr输出，会自动等待进程结束 |
-| `exitCode` | 退出代码 | `Integer` |  | 进程的ExitCode，会自动等待进程结束。 |
-
-## 选项值
-
-### `windowStyle` 窗口风格
-
-| Value | 名称 | 说明 |
-| --- | --- | --- |
-| `0` | 普通(Normal) |  |
-| `1` | 隐藏(Hidden) |  |
-| `2` | 最小化(Minimized) |  |
-| `3` | 最大化(Maximized) |  |
-
-### `outputEncoding` 控制台输出编码
-
-| Value | 名称 | 说明 |
-| --- | --- | --- |
-| `utf8` | UTF8 |  |
-| `oem` | OEM |  |
-{/* xaction-metadata:end */}
+<XActionModuleMeta moduleKey="sys:run" />
 
 ## 概述
 
@@ -89,8 +31,6 @@ legacyContentUpdatedAt: "2025-01-20T02:30:50.000Z"
 -   打开一个网址
 -   打开一个UWP软件URI
 -   执行windows命令等
-
-
 
 **提示！**
 
@@ -106,8 +46,6 @@ legacyContentUpdatedAt: "2025-01-20T02:30:50.000Z"
 
 ![](./img/run-002-dbe55875ab.png)
 
-
-
 **路径或命令：**可以为
 
 -   要执行的windows命令，如`cmd`、`ping`、`control`（控制面板）等
@@ -119,15 +57,9 @@ legacyContentUpdatedAt: "2025-01-20T02:30:50.000Z"
 
 关于可以运行的命令或WIN10URI，可以参考：[https://getquicker.net/Forum/ViewTopic/172](https://getquicker.net/Forum/ViewTopic/172)
 
-
-
 可以点击参数输入框右侧的“...”按钮，在菜单中选择已安装的软件、文件或文件夹路径。
 
 ![](./img/run-003-cc89d7eb96.png)
-
-
-
-
 
 **参数：**运行exe程序时传递给程序的命令行参数。参数的格式依赖于所要启动的具体软件。通常，如果参数中需要包含一个可能带有空格的路径，通常可以在路径两段增加英文双引号"来避免空格造成的路径截断问题。
 
@@ -144,20 +76,14 @@ legacyContentUpdatedAt: "2025-01-20T02:30:50.000Z"
 
 **备用路径：**文件在多个电脑上路径不同时，使用备用路径填写其他电脑上的软件应用程序文件的完整路径。可以多个，每个一行。
 
-
-
 **工作目录：**打开进程的工作目录，需要时填写。如执行cmd命令时，如果工作目录设置为“d:”，则命令行窗口打开后自动进入到此目录中。
 
 参数值：留空或输入0时由系统默认，输入1时使用exe程序所在目录（此时路径参数需要提供文件的完整路径），或指定某个具体的路径。
-
-
 
 **窗口风格：**运行软件时使用的窗口风格（普通、隐藏、最小化、最大化）。
 
 -   此功能依赖于目标软件的支持。对特定的软件或程序，此参数不一定有效。
 -   注：在“路径”中使用软件的快捷方式（lnk文件）时此参数不会生效，请直接指定exe文件的完整路径。
-
-
 
 **等待启动完成：**等待软件初始化后，开始接受用户输入。仅对某些软件有效。
 
@@ -168,8 +94,6 @@ legacyContentUpdatedAt: "2025-01-20T02:30:50.000Z"
 **控制台编码输出：**如果所获取的控制台输出内容有乱码时，可尝试修改此值。
 
 **环境变量：**为应用程序设置特定的环境变量。
-
-
 
 ## 输出
 
@@ -187,23 +111,13 @@ legacyContentUpdatedAt: "2025-01-20T02:30:50.000Z"
 
 【退出代码】进程的ExitCode，输出此结果时，会自动等待进程结束。
 
-
-
 ## 示例动作
 
 -   [示例：运行或打开](https://getquicker.net/sharedaction?code=abf666ed-08bc-46a9-6d8a-08d6bfa4ff29)
 
-
-
-
-
 ## 注意事项
 
 -   除非必要，请勿输出控制台输出、退出代码等信息。
-
-
-
-
 
 ## 更新历史
 

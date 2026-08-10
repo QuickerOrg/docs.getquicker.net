@@ -9,7 +9,6 @@ comments: true
 moduleKey: "sys:manageList"
 docStatus: "migrated-unreviewed"
 metadataGeneratedAt: "2026-08-03 20:08:03"
-metadataHash: "bac6f1a477996b0c4a698afe08708a06c5722efc6fa18f3560ba98939066cfa4"
 legacyDocId: 5350953
 legacyContentUpdatedAt: "2024-10-23T06:02:52.000Z"
 ---
@@ -18,50 +17,17 @@ legacyContentUpdatedAt: "2024-10-23T06:02:52.000Z"
 
 对列表内容进行手工排序、添加、删除等操作
 
-{/* xaction-metadata:start */}
 ## 当前模块定义
 
-- 模块 Key：`sys:manageList`
-- 分类：计算与比较（`Compute`）
-- 类型：`Action`
-- 风险操作：否
-- 专业版：否
-
-## 输入参数
-
-| Key | 名称 | 类型 | 默认值 | 必填 | 变量模式 | 条件 | 说明 |
-| --- | --- | --- | --- | --- | --- | --- | --- |
-| `list` | 列表 | `List` |  | 否 | `UseVarOnly` |  | 要操作的列表变量。直接选择对应变量，不要使用表达式。 |
-| `winTitle` | 窗口标题 | `Text` |  | 否 | `UseVarOrInput` |  |  |
-| `note` | 提示信息 | `Text` |  | 否 | `UseVarOrInput` |  |  |
-| `allowAdd` | 允许添加项 | `Boolean` | true | 否 | `Input` |  |  |
-| `allowEdit` | 允许编辑项 | `Boolean` | true | 否 | `Input` |  |  |
-| `allowDelete` | 允许删除项 | `Boolean` | true | 否 | `Input` |  |  |
-| `stopIfFail` | 取消后停止动作 | `Boolean` | false | 否 | `Input` |  |  |
-| `parseData` | 解析菜单数据 | `Boolean` | false | 否 | `Input` |  | 解析 "[图标]标题(tooltip)\|值" 格式的数据并显示图标。 |
-| `seperator` | 分隔符 | `Text` | \| | 否 | `Input` |  | 解析菜单数据时，显示内容与值之间的分隔符，默认为竖线'\|' |
-| `windowSize` | 窗口宽度 | `Text` |  | 否 | `Input` |  | 可选，在需要自定义窗口宽度的情况下使用。最小值为200。 |
-| `titleDelegate` | 显示内容提取表达式 | `Text` |  | 否 | `Input` |  | 可选，在不解析菜单数据时自定义每一项的显示内容。使用方式请参考模块文档。 |
-| `help` | 帮助按钮内容 | `Text` |  | 否 | `Input` |  | 点击弹出显示帮助内容，MarkDown格式 |
-
-## 输出参数
-
-| Key | 名称 | 类型 | 条件 | 说明 |
-| --- | --- | --- | --- | --- |
-| `isSuccess` | 是否确认 | `Boolean` |  | 是否点击了确认按钮 |
-{/* xaction-metadata:end */}
+<XActionModuleMeta moduleKey="sys:manageList" />
 
 ## 概述
 
 用于调整列表中条目的顺序，或添加、修改或删除列表项。
 
-
-
 列表管理界面如下：
 
 ![](./img/managelist-001-040cc435a4.png)
-
-
 
 ### 管理界面使用
 
@@ -80,15 +46,9 @@ legacyContentUpdatedAt: "2024-10-23T06:02:52.000Z"
 
 **重置：**将数据恢复至打开窗口时的原始状态。
 
-
-
-
-
 ## 参数
 
 ![](./img/managelist-002-1f5433f27e.png)
-
-
 
 【列表】要管理的列表变量。
 
@@ -101,8 +61,6 @@ legacyContentUpdatedAt: "2024-10-23T06:02:52.000Z"
 当作菜单项管理时，列表显示解析后的图标、标题。编辑时使用“编辑菜单项”窗口。
 
 ![](./img/managelist-003-1875478276.png)
-
-
 
 当作普通内容管理时，列表显示原始内容，编辑时使用文本框输入。
 
@@ -124,8 +82,6 @@ legacyContentUpdatedAt: "2024-10-23T06:02:52.000Z"
 
 -   不需要以`$=`开始。（如果加了$=开始标记，表达式会被预先解析从而出错）
 -   在表达式中使用`x`表示当前需要处理的项，返回要显示的标题。
-
-
 
 ### 输出
 

@@ -9,7 +9,6 @@ comments: true
 moduleKey: "sys:screenCapture"
 docStatus: "migrated-unreviewed"
 metadataGeneratedAt: "2026-08-03 20:08:03"
-metadataHash: "e768dbc6c80f345878e8b686c48d392be853adba6a459d9789c647b2a9066f72"
 legacyDocId: 1454333
 legacyContentUpdatedAt: "2025-12-21T14:14:54.000Z"
 ---
@@ -18,50 +17,9 @@ legacyContentUpdatedAt: "2025-12-21T14:14:54.000Z"
 
 截取屏幕区域
 
-{/* xaction-metadata:start */}
 ## 当前模块定义
 
-- 模块 Key：`sys:screenCapture`
-- 分类：图片处理（`Image`）
-- 类型：`Action`
-- 风险操作：否
-- 专业版：否
-
-## 输入参数
-
-| Key | 名称 | 类型 | 默认值 | 必填 | 变量模式 | 条件 | 说明 |
-| --- | --- | --- | --- | --- | --- | --- | --- |
-| `type` | 截图类型 | `Enum` | select | 是 | `Input` |  | 截取图片的屏幕区域类型 |
-| `area` | 截图区域 | `Text` |  | 否 | `UseVarOrInput` | 仅：fixed_area | 要截取的屏幕坐标位置（像素值），格式为：left,top,right,bottom。默认不包含右边和底边像素。 |
-| `preSelectArea` | 预选截图区域 | `Text` |  | 否 | `UseVarOrInput` | 仅：select | 非必要请勿设置。预先选择的截图区域，格式为：left,top,right,bottom。默认不包含右边和底边像素。 |
-| `includeRightBottomBorder` | 预选截图区域包含右边和底边像素 | `Boolean` | true | 否 | `Input` | 仅：fixed_area, select | 包含时，当指定 0,0,2,2 的时候，截图的大小为3*3, 否则为2*2 |
-| `windowHandle` | 窗口句柄 | `Integer` | 0 | 否 | `UseVarOrInput` | 仅：window, windowBackground | 要截取的窗口句柄数字。0或留空表示截取前台窗口。 |
-| `delay` | 截图前延迟时间 | `Integer` | 0 | 是 | `UseVarOrInput` |  | 等待多少毫秒后开始截图 |
-| `toClip` | 写入剪贴板 | `Boolean` | false | 否 | `Input` |  | 截屏图片是否写入到剪贴板中 |
-| `addToHistory` | 加入截图历史 | `Boolean` | false | 否 | `Input` |  | 显式启用后将结果保存到本机截图历史；默认关闭，避免后台或循环动作持续留存画面。 |
-| `stopIfFail` | 失败后停止 | `Boolean` | true | 否 | `Input` |  | 失败后是否停止动作 |
-
-## 输出参数
-
-| Key | 名称 | 类型 | 条件 | 说明 |
-| --- | --- | --- | --- | --- |
-| `isSuccess` | 是否成功 | `Boolean` |  | 操作是否成功 |
-| `img` | 图片 | `Image` |  | 截图的图片 |
-| `rect` | 截图区域 | `Text` |  | 图片的截取区域(left,top,right,bottom)。 |
-
-## 选项值
-
-### `type` 截图类型
-
-| Value | 名称 | 说明 |
-| --- | --- | --- |
-| `select` | 选择区域 |  |
-| `full_screen` | 所有屏幕 |  |
-| `primary_screen` | 主屏幕 |  |
-| `fixed_area` | 固定区域 |  |
-| `window` | 窗口 (屏幕可见内容) |  |
-| `windowBackground` | 窗口 (支持后台显示) |  |
-{/* xaction-metadata:end */}
+<XActionModuleMeta moduleKey="sys:screenCapture" />
 
 ## 概述
 
@@ -77,11 +35,7 @@ legacyContentUpdatedAt: "2025-12-21T14:14:54.000Z"
 
 ![](./img/screencapture-002-00bdb24eb7.png)
 
-
-
 ## 常规参数
-
-
 
 **输入参数**
 
@@ -100,27 +54,19 @@ legacyContentUpdatedAt: "2025-12-21T14:14:54.000Z"
 
 【写入剪贴板】截图的内容是否写入剪贴板一份；
 
-
-
 **输出**
 
 【图片】截图的内容输出到图片变量中。
 
 【截图区域】截取图片的坐标范围，格式为：left,top,right,bottom。 此输出可以直接保存后，在后续“固定区域”方式截图时使用。也可以用于获取窗口坐标等用途。
 
-
-
 ## 截图类型类型
-
-
 
 ### 选择区域（手动截图）
 
 从屏幕上手动选择截图范围（类似于其它常用截图软件）。
 
 ![](./img/screencapture-003-254ac8acf9.png)
-
-
 
 #### 手动截图操作说明
 
@@ -133,8 +79,6 @@ legacyContentUpdatedAt: "2025-12-21T14:14:54.000Z"
 使用鼠标左键开始截图，进入选取模式。
 
 截图过程中停住鼠标超过1秒钟，或者点击鼠标侧键、中键，将会进入“调整模式”。
-
-
 
 **调整模式**：选区周围显示圆点。松开鼠标后，可以继续调整选区范围。
 
@@ -150,8 +94,6 @@ legacyContentUpdatedAt: "2025-12-21T14:14:54.000Z"
 -   按住拖动：移动选区。
 -   按Shift拖动：在水平会垂直方向移动选区（v1.44.49+）
 
-
-
 ##### 鼠标操作
 
 -   开始截图后
@@ -162,8 +104,6 @@ legacyContentUpdatedAt: "2025-12-21T14:14:54.000Z"
 
 -   右键取消截图（自1.1.3版本）
 
-
-
 ##### 键盘操作
 
 -   Esc取消截图
@@ -173,19 +113,9 @@ legacyContentUpdatedAt: "2025-12-21T14:14:54.000Z"
 
 -   左侧键盘：S=左、D=下、F=右、E=上。
 
-
-
 键盘微调选区示意：
 
-
-
 此处为语雀视频卡片，点击链接查看：[用键盘微调选区.mp4](/v2/xaction/modules/screencapture)
-
-
-
-
-
-
 
 ### 整个屏幕
 
@@ -199,8 +129,6 @@ legacyContentUpdatedAt: "2025-12-21T14:14:54.000Z"
 
 ![](./img/screencapture-006-8c2c04523b.png)
 
-
-
 ### 窗口（屏幕可见内容）
 
 截取屏幕上某个窗口的坐标范围。如果目标窗口被其他窗口盖住，也会截取到其它窗口的内容。
@@ -208,8 +136,6 @@ legacyContentUpdatedAt: "2025-12-21T14:14:54.000Z"
 【窗口句柄】可以通过获取前台窗口等方式得到，为0时表示截取当前屏幕上的前台窗口（拥有输入焦点的窗口）。
 
 ![](./img/screencapture-007-510b30adbd.png)
-
-
 
 ### 窗口（支持后台显示）
 
@@ -224,10 +150,6 @@ legacyContentUpdatedAt: "2025-12-21T14:14:54.000Z"
 -   截图保存：[https://getquicker.net/Sharedaction?code=2214ddb5-d718-4da5-2c60-08d6c8ffb643](https://getquicker.net/Sharedaction?code=2214ddb5-d718-4da5-2c60-08d6c8ffb643)
 -   固定区域截图：[https://getquicker.net/Sharedaction?code=d197881b-f8c5-4ce9-a982-08d8f2798c37](https://getquicker.net/Sharedaction?code=d197881b-f8c5-4ce9-a982-08d8f2798c37)
 -   截图：[https://getquicker.net/Sharedaction?code=9bfc34fb-b7f7-40bd-6d0c-08d6c304e16e](https://getquicker.net/Sharedaction?code=9bfc34fb-b7f7-40bd-6d0c-08d6c304e16e)
-
-
-
-
 
 ## 更新历史
 

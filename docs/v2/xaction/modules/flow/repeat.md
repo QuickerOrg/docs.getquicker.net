@@ -9,7 +9,6 @@ comments: true
 moduleKey: "sys:repeat"
 docStatus: "migrated-unreviewed"
 metadataGeneratedAt: "2026-08-03 20:08:03"
-metadataHash: "0cda28c34728cee324da52dfbba0cd0771b762cd0d836999e151b94191fe4f7f"
 legacyDocId: 2134056
 legacyContentUpdatedAt: "2023-06-23T14:05:51.000Z"
 ---
@@ -18,31 +17,9 @@ legacyContentUpdatedAt: "2023-06-23T14:05:51.000Z"
 
 循环指定的次数，或符合某个条件时中止
 
-{/* xaction-metadata:start */}
 ## 当前模块定义
 
-- 模块 Key：`sys:repeat`
-- 分类：程序流程（`Flow`）
-- 类型：`Loop`
-- 风险操作：否
-- 专业版：否
-
-## 输入参数
-
-| Key | 名称 | 类型 | 默认值 | 必填 | 变量模式 | 条件 | 说明 |
-| --- | --- | --- | --- | --- | --- | --- | --- |
-| `count` | 次数 | `Integer` | 1 | 否 | `UseVarOrInput` |  | 重复次数，除非符合条件提前中止。-1表示无限循环。 |
-| `startIndex` | 计数开始值 | `Integer` | 0 | 否 | `UseVarOrInput` |  | 计数序号的开始值，通常应该为0。 |
-| `stopCondition` | 中止条件 | `Boolean` |  | 否 | `UseVarOrInput` |  | 选填。条件满足时停止循环（每次循环开始时检查）。 |
-| `repeatDelayMs` | 循环间隔时间 | `Integer` | 1 | 否 | `UseVarOrInput` |  | 每次循环之间的间隔毫秒数。如果为0，请确保循环内部有其他等待步骤，避免连续循环占用较多资源。 |
-| `progressBarTitle` | 进度条标题 | `Text` |  | 否 | `UseVarOrInput` |  | 如果设置了此参数，则在循环过程中会显示一个进度条，标题为此参数的值。 |
-
-## 输出参数
-
-| Key | 名称 | 类型 | 条件 | 说明 |
-| --- | --- | --- | --- | --- |
-| `count` | 计数 | `Integer` |  | 计数序号，表示第几次循环。 |
-{/* xaction-metadata:end */}
+<XActionModuleMeta moduleKey="sys:repeat" />
 
 循环指定的次数。
 
@@ -50,11 +27,7 @@ legacyContentUpdatedAt: "2023-06-23T14:05:51.000Z"
 
 ![](./img/repeat-001-a28f455d1c.png)
 
-
-
 演示视频链接：[在组合动作中使用循环](https://www.bilibili.com/video/BV1ty4y1S7AK)
-
-
 
 请事先设置好停止动作运行的快捷键，以避免出现循环开始后无法停止的尴尬局面。
 
@@ -70,23 +43,15 @@ legacyContentUpdatedAt: "2023-06-23T14:05:51.000Z"
 
 【计数开始值】一般在计算机语言中次数或序号都是从0开始，0表示第一次、第一项。为方便用户的日常习惯，如果您需要给用户显示当前是第几次循环，可以在这里设置循环开始值为1。
 
-
-
 ## 输出
 
 【计数】当前是第几次循环，从“计数开始值”开始计算。
-
-
-
-
 
 ## 设置要重复的内容
 
 将需要重复执行的步骤拖放到“重复”模块中中间的“槽”中即可。
 
 ![](./img/repeat-003-9990394c7d.gif)
-
-
 
 ## 停止循环中的动作
 
@@ -96,16 +61,10 @@ legacyContentUpdatedAt: "2023-06-23T14:05:51.000Z"
     ![](./img/repeat-002-9644e73781.png)
 -   在托盘右键菜单中停止运行中动作。
 
-
-
 ## 更新历史
 
 -   1.1.1 重复次数为0时为无限循环。
 -   1.1.2 重复次数为-1时表示无限循环。
-
-
-
-
 
 ## 示例动作
 

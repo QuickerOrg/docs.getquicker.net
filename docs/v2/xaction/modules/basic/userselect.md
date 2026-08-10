@@ -9,7 +9,6 @@ comments: true
 moduleKey: "sys:select"
 docStatus: "migrated-unreviewed"
 metadataGeneratedAt: "2026-08-03 20:08:03"
-metadataHash: "83c516ce02103c0214c1be509c8afb379d4af5add02af02062cfabac6afde386"
 legacyDocId: 1402298
 legacyContentUpdatedAt: "2025-11-21T01:17:26.000Z"
 ---
@@ -18,116 +17,9 @@ legacyContentUpdatedAt: "2025-11-21T01:17:26.000Z"
 
 请用户选择一个选项。
 
-{/* xaction-metadata:start */}
 ## 当前模块定义
 
-- 模块 Key：`sys:select`
-- 分类：基础（`Basic`）
-- 类型：`Action`
-- 风险操作：否
-- 专业版：否
-
-## 输入参数
-
-| Key | 名称 | 类型 | 默认值 | 必填 | 变量模式 | 条件 | 说明 |
-| --- | --- | --- | --- | --- | --- | --- | --- |
-| `type` | 类型 | `Enum` | single | 是 | `Input` |  |  |
-| `prompt` | 窗口标题 | `Text` | 请选择 | 是 | `Input` |  |  |
-| `note` | 提示信息 | `Text` |  | 否 | `Input` |  |  |
-| `items` | 选项 | `Text` |  | 是 | `UseVarOrInput` |  | 每行一个选项，格式为 "文本" 或 "显示文本\|值"。如需显示图标，格式请参考文档。 |
-| `defaultValue` | 默认值 | `Text` |  | 否 | `UseVarOrInput` | 仅：single | 预先选择的项 |
-| `defaultValueMulti` | 默认值 | `Text` |  | 否 | `UseVarOrInput` | 仅：multi | 多选时默认选项，每行一个 |
-| `winLocation` | 窗口位置 | `Enum` | WithMouse1 | 否 | `UseVarOrInput` |  | 在哪里显示选择窗口 |
-| `maxWinSize` | 最大尺寸/位置坐标 | `Text` |  | 否 | `Input` |  | 可选。设置选择窗口的最大尺寸，格式为：宽度,高度。支持像素数值或屏幕宽高百分比，详情请参考模块文档。\n"窗口位置" 类型为 "自定义位置" 时用于指定显示位置，格式为：left,top,right,bottom |
-| `keepLastPos` | 使用上次位置 | `Enum` | 1 | 否 | `UseVarOrInput` |  | 重复显示选择窗口时，保持上次的显示位置。 |
-| `autoCloseSeconds` | 自动关闭 | `Number` | 0.0 | 否 | `Input` |  | 几秒后自动关闭选择窗口。0表示不自动关闭。 |
-| `noKeyboard` | 不使用焦点 | `Boolean` | false | 否 | `UseVarOrInput` |  | 不抢占其他应用的焦点。此时无法使用键盘选择选项，只能用鼠标操作。 |
-| `closeOnDeactivated` | 失去焦点后关闭窗口（仅在使用焦点时有效） | `Boolean` | false | 否 | `Input` |  |  |
-| `showFilter` | 启用筛选 | `Enum` | auto | 否 | `UseVarOrInput` |  | 是否显示筛选框。仅在且使用焦点时有效。 |
-| `filterContent` | 筛选内容 | `Text` |  | 否 | `UseVarOrInput` |  | 预先显示的筛选内容 |
-| `imeState` | 输入法状态 | `Enum` | NO_CONTROL | 否 | `UseVarOrInput` |  | 筛选框输入法状态 |
-| `restoreForeground` | 恢复活动窗口到弹出前 | `Boolean` | true | 否 | `Input` |  | 将前台窗口还原为弹窗前的活动窗口。否则将会还原到最后一个活动窗口上。 |
-| `allowOkWhenEmpty` | 允许不选择任何选项时点击确定 | `Boolean` | false | 否 | `Input` |  |  |
-| `enableQuickConfirm` | 启用快速确认（点击选项后立即确认选择并关闭窗口） | `Boolean` | true | 否 | `Input` | 仅：single |  |
-| `topMost` | 置顶显示 | `Boolean` | true | 否 | `Input` |  |  |
-| `stopIfCancel` | 取消后停止 | `Boolean` | true | 否 | `Input` |  | 取消选择后是否停止动作 |
-| `operations` | 右键/全局菜单 | `Text` |  | 否 | `Input` |  | 每行定义一个操作，具体格式请参考文档。 |
-| `fontsize` | 字体大小 | `Number` | 12.0 | 是 | `UseVarOrInput` |  |  |
-| `fontfamily` | 字体名称 | `Text` |  | 否 | `UseVarOrInput` |  | 可选。设置字体名称。如有多个字体，使用逗号分隔。 |
-| `iconsize` | 图标大小 | `Number` | 16.0 | 是 | `UseVarOrInput` |  |  |
-| `windowKey` | 窗口标识 | `Text` |  | 否 | `UseVarOrInput` |  | 再次运行动作时，可根据标识自动关闭前一个窗口并在该位置显示新窗口。 |
-| `help` | 帮助按钮内容 | `Text` |  | 否 | `Input` |  | 点击弹出显示帮助内容，MarkDown格式 |
-
-## 输出参数
-
-| Key | 名称 | 类型 | 条件 | 说明 |
-| --- | --- | --- | --- | --- |
-| `isSuccess` | 是否确认 | `Boolean` |  | 是否成功选择了选项/点击了保存按钮 |
-| `textValue` | 选择的项(值) | `Text` | 仅：single | 选中选项的值 |
-| `selectedIndex` | 索引号 | `Integer` | 仅：single | 选择的项在列表里的序号数字，从0开始。 |
-| `selectedIndexList` | 索引号列表 | `List` | 仅：multi | 所有选择的项的序号列表 |
-| `multiSelected` | 选择的项值列表 | `List` | 仅：multi | 所有选择的项的值的列表 |
-| `extraOperation` | 选择的菜单 | `Text` |  | 选择的右键菜单或全局菜单项的值 |
-| `selectedFullItems` | 选择的完整选项 | `Any` |  | 选择选项的完整定义内容（不仅仅返回选项值） |
-| `selectedItemTitle` | 选择的选项标题 | `Text` | 仅：single | 所选中选项的标题 |
-| `filterContent` | 筛选内容 | `Text` |  | 最后使用的筛选词 |
-
-## 选项值
-
-### `type` 类型
-
-| Value | 名称 | 说明 |
-| --- | --- | --- |
-| `single` | 单选 |  |
-| `multi` | 多选 |  |
-
-### `winLocation` 窗口位置
-
-| Value | 名称 | 说明 |
-| --- | --- | --- |
-| `WithMouse1` | 跟随鼠标（指针周围） |  |
-| `WithMouse2` | 跟随鼠标（指针右下） |  |
-| `CenterScreen` | 屏幕中间 |  |
-| `TopLeft` | 屏幕左上 |  |
-| `TopCenter` | 屏幕中上 |  |
-| `TopRight` | 屏幕右上 |  |
-| `LeftCenter` | 屏幕左中 |  |
-| `RightCenter` | 屏幕右中 |  |
-| `BottomLeft` | 屏幕左下 |  |
-| `BottomCenter` | 屏幕中下 |  |
-| `BottomRight` | 屏幕右下 |  |
-| `Manual` | 自定义位置 |  |
-
-### `keepLastPos` 使用上次位置
-
-| Value | 名称 | 说明 |
-| --- | --- | --- |
-| `0` | 不保持 |  |
-| `3` | 保持本次运行的上次位置(左上角) |  |
-| `1` | 保持本次运行的上次位置+宽度 |  |
-| `5` | 保持本次运行的上次位置+尺寸 |  |
-| `7` | 保持本次运行的上次窗口尺寸 |  |
-| `4` | 总是保持上次位置(左上角) |  |
-| `2` | 总是保持上次位置+宽度 |  |
-| `6` | 总是保持上次位置+尺寸 |  |
-| `8` | 总是保持上次窗口尺寸 |  |
-
-### `showFilter` 启用筛选
-
-| Value | 名称 | 说明 |
-| --- | --- | --- |
-| `0` | 不启用 |  |
-| `1` | 启用 |  |
-| `auto` | 自动(选项超过10个时启用) |  |
-
-### `imeState` 输入法状态
-
-| Value | 名称 | 说明 |
-| --- | --- | --- |
-| `NO_CONTROL` | 不控制 |  |
-| `ON` | 开启 |  |
-| `OFF` | 关闭 |  |
-{/* xaction-metadata:end */}
+<XActionModuleMeta moduleKey="sys:select" />
 
 ## 简介
 
@@ -137,8 +29,6 @@ legacyContentUpdatedAt: "2025-11-21T01:17:26.000Z"
 
 当用户点击一个选项的时候，会选中此选项并关闭选择窗口。
 
-
-
 ### 操作说明
 
 单选：
@@ -147,16 +37,12 @@ legacyContentUpdatedAt: "2025-11-21T01:17:26.000Z"
 -   键盘上下键切换选项，空格选中保存；
 -   Ctrl+选项前面的数字(1-9)可快速选择选项；
 
-
-
 多选：
 
 -   左键单击选中或取消选中；
 -   按住鼠标拖动，选择多项；
 -   键盘上下键切换选项，空格切换选择状态；
 -   Ctrl+选项前面的数字可以切换选择状态；
-
-
 
 **筛选**
 
@@ -168,10 +54,6 @@ legacyContentUpdatedAt: "2025-11-21T01:17:26.000Z"
 
 如果设置了右键菜单，点击右键可选菜单项。
 
-
-
-
-
 ## 单选与多选
 
 用户选择支持“单选”和“多选”两种操作类型。
@@ -180,8 +62,6 @@ legacyContentUpdatedAt: "2025-11-21T01:17:26.000Z"
 
 ![](./img/userselect-002-ac46e5a6be.png)
 
-
-
 ### 参数说明
 
 ![](./img/userselect-003-2c5ebf5454.png)
@@ -189,8 +69,6 @@ legacyContentUpdatedAt: "2025-11-21T01:17:26.000Z"
 **窗口标题：**窗口的标题文字。
 
 **提示信息：**显示在列表下面的提示文字。
-
-
 
 **选项：**定义列出的可选择项，每行一个。
 
@@ -204,13 +82,9 @@ legacyContentUpdatedAt: "2025-11-21T01:17:26.000Z"
 -   图标可用格式请参考[《在动作中使用图标》](/v2/xaction/concepts/use-icon-in-actions)。
 -   此时`|选项值`的部分不可缺少。
 
-
-
 选项显示内容和值之间默认使用**|**作为分隔符。如果希望将分隔符更改为其他值，请在第一行使用 **|=新分隔符** 的形式指定新的分隔符（前面不要有空格）。分隔符可以是单个字母也可以是多个字母的组合。在使用插值时，首行应该为“$$|=新分隔符”。
 
 ![](./img/userselect-004-7b6621784f.png)
-
-
 
 如果希望根据词典类型的变量指定选项，可以使用 $=&#123;词典变量&#125; 表达式格式填写可选值。此时，词典项的键(Key)将作为选项的显示内容，词典项的值(Value)将作为选项的值。
 
@@ -229,8 +103,6 @@ legacyContentUpdatedAt: "2025-11-21T01:17:26.000Z"
 -   \[fa:Solid\_Pen:#ff8800\]右键菜单标题(菜单项的tooltip悬浮提示)|edit。
 -   \[=\]\[fa:Solid\_Pen:#FF0000\]全局菜单(tooltip文字第一行\\r\\n文字第二行)|operation
 
-
-
 对于特别常用的全局菜单项，可以通过在标题前增加“!”符号的方式，将其显示为独立按钮。（1.44.26+版本）。如：
 
 -   \[=\]**!**按钮文字|operation
@@ -242,13 +114,7 @@ legacyContentUpdatedAt: "2025-11-21T01:17:26.000Z"
 
 全局菜单的下拉按钮“...”可以通过快捷键Alt+M展开（可以一起按，或先按Alt再按M）。（1.44.44+版本）
 
-
-
-
-
 **自动关闭：**几秒钟后如果未操作则自动关闭选择窗口，0表示不自动关闭。 如果预先选中了选项，则自动保存；否则自动取消。
-
-
 
 **窗口位置：**选项窗口的显示位置。
 
@@ -258,23 +124,13 @@ legacyContentUpdatedAt: "2025-11-21T01:17:26.000Z"
 
 **使用上次的位置：**在同一个动作中重复显示选择窗口的时候，是否保持上次显示的位置。在多次显示选择窗口的情况下，用户可能希望调整窗口位置以避开工作区域。
 
-
-
 **不使用焦点：**必须使用鼠标选择，不能使用键盘选择。 此时窗口不会抢占输入焦点。
 
 **失去焦点后关闭窗口：**如果在弹出选择窗口后用户点击了其他位置，则自动关闭选择窗口并取消输入。仅在“不使用焦点”未启用的时候有效。
 
-
-
-
-
 **启用筛选：**当选项比较多的时候，可以使用筛选功能快速找到选项。
 
 ![](./img/userselect-006-bd766e50e2.png)
-
-
-
-
 
 **恢复活动窗口到弹出前：**选择过后，是否将输入焦点还原到弹出选择窗口之前的窗口上。
 
@@ -307,8 +163,6 @@ legacyContentUpdatedAt: "2025-11-21T01:17:26.000Z"
 
 【筛选内容】最后使用的筛选词。
 
-
-
 ## 使用场景
 
 1.  将多个类似的动作组合在一起：
@@ -320,8 +174,6 @@ legacyContentUpdatedAt: "2025-11-21T01:17:26.000Z"
 
 2.  选择后续动作的分支：选择一个值后，结合 “如果” 模块执行不同的操作。参考动作：[示例：选择并执行动作](https://getquicker.net/Sharedaction?code=16ac0322-10c1-46b0-d7a2-08d682aaa91c&fromMyShare=true)
 3.  选择某个动作模块的参数，如选择时间的格式等。参考动作：[插入日期时间](https://getquicker.net/sharedaction?code=2a89f753-546d-45d0-bfd9-08d6720e1a02) 
-
-
 
 ## 其它信息
 

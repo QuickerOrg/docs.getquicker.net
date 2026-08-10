@@ -9,7 +9,6 @@ comments: true
 moduleKey: "sys:comment"
 docStatus: "migrated-unreviewed"
 metadataGeneratedAt: "2026-08-03 20:08:03"
-metadataHash: "2414e08cf88e0bd7bdd3e011d13bdfea50b3e66fac79d372d91ed7f4bebfa840"
 legacyDocId: 1530519
 legacyContentUpdatedAt: "2023-04-02T13:16:49.000Z"
 ---
@@ -18,25 +17,9 @@ legacyContentUpdatedAt: "2023-04-02T13:16:49.000Z"
 
 使用注释将步骤分组，描述后续步骤的目的。
 
-{/* xaction-metadata:start */}
 ## 当前模块定义
 
-- 模块 Key：`sys:comment`
-- 分类：基础（`Basic`）
-- 类型：`Comment`
-- 风险操作：否
-- 专业版：否
-
-## 输入参数
-
-| Key | 名称 | 类型 | 默认值 | 必填 | 变量模式 | 条件 | 说明 |
-| --- | --- | --- | --- | --- | --- | --- | --- |
-| `note` | 注释内容 | `Text` |  | 否 | `Input` |  | 注释内容。若想设置注释步骤的背景色，请参考模块文档。 |
-
-## 输出参数
-
-无。
-{/* xaction-metadata:end */}
+<XActionModuleMeta moduleKey="sys:comment" />
 
 ## 概述
 
@@ -46,11 +29,7 @@ legacyContentUpdatedAt: "2023-04-02T13:16:49.000Z"
 -   如何根据自身需求定制动作；
 -   方便以后修改动作的信息等...
 
-
-
 ![](./img/comment-001-351d29a6a6.png)
-
-
 
 ## 参数
 

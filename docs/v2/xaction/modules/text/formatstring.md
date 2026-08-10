@@ -9,7 +9,6 @@ comments: true
 moduleKey: "sys:formatString"
 docStatus: "migrated-unreviewed"
 metadataGeneratedAt: "2026-08-03 20:08:03"
-metadataHash: "3fa9507252506d459920219db71818b13a8ac9bafa00c899a434cee3e25f9d76"
 legacyDocId: 1499448
 legacyContentUpdatedAt: "2020-04-10T07:55:41.000Z"
 ---
@@ -18,32 +17,9 @@ legacyContentUpdatedAt: "2020-04-10T07:55:41.000Z"
 
 将（多个）变量组合成一段文本。
 
-{/* xaction-metadata:start */}
 ## 当前模块定义
 
-- 模块 Key：`sys:formatString`
-- 分类：文本处理（`Text`）
-- 类型：`Action`
-- 风险操作：否
-- 专业版：否
-
-## 输入参数
-
-| Key | 名称 | 类型 | 默认值 | 必填 | 变量模式 | 条件 | 说明 |
-| --- | --- | --- | --- | --- | --- | --- | --- |
-| `formatString` | 格式化字符串 | `Text` | &#123;0&#125; | 是 | `UseVarOrInput` |  | 使用C#的String.Format语法。 |
-| `p0` | 参数0 | `Any` |  | 否 | `UseVarOrInput` |  | 第 0 个参数 |
-| `p1` | 参数1 | `Any` |  | 否 | `UseVarOrInput` |  | 第 1 个参数 |
-| `p2` | 参数2 | `Any` |  | 否 | `UseVarOrInput` |  | 第 2 个参数 |
-| `p3` | 参数3 | `Any` |  | 否 | `UseVarOrInput` |  | 第 3 个参数 |
-| `p4` | 参数4 | `Any` |  | 否 | `UseVarOrInput` |  | 第 4 个参数 |
-
-## 输出参数
-
-| Key | 名称 | 类型 | 条件 | 说明 |
-| --- | --- | --- | --- | --- |
-| `output` | 结果 | `Text` |  | 生成的文本内容 |
-{/* xaction-metadata:end */}
+<XActionModuleMeta moduleKey="sys:formatString" />
 
 ## 概述
 
@@ -52,8 +28,6 @@ legacyContentUpdatedAt: "2020-04-10T07:55:41.000Z"
 ![](./img/formatstring-001-082ec3ecc2.png)
 
 此模块使用c#编程语言的 [String.Format()](https://docs.microsoft.com/en-us/dotnet/api/system.string.format?view=netframework-4.7.2) 函数，可以查看文档了解所支持的转换格式内容。也可以直接在表达式中使用String.Format函数来实现本模块的功能。
-
-
 
 ## 插入变量
 
@@ -64,17 +38,11 @@ legacyContentUpdatedAt: "2020-04-10T07:55:41.000Z"
 -   &#123;序号:格式&#125;，如：&#123;1:C3&#125;
 -   &#123;序号,对齐:格式&#125;，如：&#123;1,-10:C3&#125;
 
-
-
 例如：
 
 -   格式化字符串：*你好，****&#123;0&#125;****!*
 -   参数0的值：*Quicker*
 -   得到的结果：*你好，Quicker!*
-
-
-
-
 
 ### 控制对齐
 
@@ -84,15 +52,9 @@ legacyContentUpdatedAt: "2020-04-10T07:55:41.000Z"
 
 **正值**长度，在**左侧**补齐空格（用于实现右对齐），**负值**长度在**右侧**补齐空格（用于实现左对齐）。
 
-
-
 如下面的示例，&#123;0,10&#125;和&#123;1,-10&#125;分别将BBB和CCC插入到了文本中，得到结果如下图所示。可以看到BBB左侧插入了空格，CCC右侧插入了空格。
 
 ![image.png](./img/formatstring-002-04d6173976.png "image.png")
-
-
-
-
 
 ## 控制格式
 
@@ -100,17 +62,9 @@ legacyContentUpdatedAt: "2020-04-10T07:55:41.000Z"
 
 &#123;变量,对齐**:****格式****字串**&#125;
 
-
-
 格式字串用于控制将变量的内容转换为文本时的输出格式。不同类型的变量支持的格式化字串。
 
-
-
-
-
 ### 数字的格式化
-
-
 
 | C 或 c | 货币值 | &#123;0:c&#125;: 123.456 -&gt; ￥123.46 |
 | --- | --- | --- |
@@ -119,25 +73,15 @@ legacyContentUpdatedAt: "2020-04-10T07:55:41.000Z"
 
 【待续...】
 
-
-
 标准数字格式字符串：[https://docs.microsoft.com/zh-cn/dotnet/standard/base-types/standard-numeric-format-strings](https://docs.microsoft.com/zh-cn/dotnet/standard/base-types/standard-numeric-format-strings)
 
 自定义数字格式字符串：[https://docs.microsoft.com/zh-cn/dotnet/standard/base-types/custom-numeric-format-strings](https://docs.microsoft.com/zh-cn/dotnet/standard/base-types/custom-numeric-format-strings)
-
-
 
 ### 时间的格式化
 
 标准日期和时间格式字符串：[https://docs.microsoft.com/zh-cn/dotnet/standard/base-types/standard-date-and-time-format-strings](https://docs.microsoft.com/zh-cn/dotnet/standard/base-types/standard-date-and-time-format-strings)
 
 自定义的日期和时间格式字符串：[https://docs.microsoft.com/zh-cn/dotnet/standard/base-types/custom-date-and-time-format-strings](https://docs.microsoft.com/zh-cn/dotnet/standard/base-types/custom-date-and-time-format-strings)
-
-
-
-
-
-
 
 ## 示例动作
 

@@ -9,7 +9,6 @@ comments: true
 moduleKey: "sys:showWaitWin"
 docStatus: "migrated-unreviewed"
 metadataGeneratedAt: "2026-08-03 20:08:03"
-metadataHash: "9551ca16354c589e1c28dc0d865ea0283a1e392354b4155607a890737f79b585"
 legacyDocId: 1377039
 legacyContentUpdatedAt: "2025-03-13T03:07:54.000Z"
 ---
@@ -18,78 +17,9 @@ legacyContentUpdatedAt: "2025-03-13T03:07:54.000Z"
 
 显示一个等待用户完成某个操作的提示窗口。
 
-{/* xaction-metadata:start */}
 ## 当前模块定义
 
-- 模块 Key：`sys:showWaitWin`
-- 分类：界面组件（`Ui`）
-- 类型：`Action`
-- 风险操作：否
-- 专业版：否
-
-## 输入参数
-
-| Key | 名称 | 类型 | 默认值 | 必填 | 变量模式 | 条件 | 说明 |
-| --- | --- | --- | --- | --- | --- | --- | --- |
-| `mode` | 操作 | `Enum` | show | 是 | `Input` |  | 请选择操作类型 |
-| `title` | 窗口标题 | `Text` | 完成后继续 | 是 | `Input` | 仅：show, update, showAndWaitClose |  |
-| `prompt` | 提示文字 | `Text` | 请在完成操作后点下面的按钮 | 是 | `Input` | 仅：show, update, showAndWaitClose | 提示文字内容 |
-| `btnText` | 默认按钮上的文字 | `Text` | 完成 | 是 | `UseVarOrInput` | 仅：show, update, showAndWaitClose | 默认按键仅用于关闭窗口。文字内容为空时隐藏默认按钮。 |
-| `winLocation` | 窗口位置 | `Enum` | BottomRight | 否 | `UseVarOrInput` | 仅：show, showAndWaitClose | 在哪里显示选择窗口 |
-| `progress` | 进度条参数 | `Text` |  | 否 | `Input` | 仅：show, update, showAndWaitClose | 请以 当前值/总数 的格式传入（可使用插值方式）。 比如：40/80 |
-| `operations` | 附加操作按钮 | `Text` |  | 是 | `Input` | 仅：show, update, showAndWaitClose | 每行定义一个按钮，格式为 "文本" 或 "显示文本\|值"。显示在默认按钮的左侧。 |
-| `iconSize` | 图标大小 | `Number` | 16.0 | 是 | `UseVarOrInput` | 仅：show, update, showAndWaitClose | 按钮上图标的大小，单位为逻辑像素。 |
-| `fontsize` | 文字大小 | `Number` | 12.0 | 是 | `UseVarOrInput` | 仅：show, update, showAndWaitClose | 按钮上文字的大小，单位为逻辑像素。 |
-| `stopActionIfClose` | 关闭窗口时（点右上角x按钮）后停止动作 | `Boolean` | true | 否 | `Input` | 仅：show, showAndWaitClose |  |
-| `autoCloseSeconds` | 自动关闭 | `Number` | 0.0 | 否 | `Input` | 仅：show, showAndWaitClose | 几秒后自动关闭。0表示不自动关闭。 |
-| `activateMode` | 激活模式 | `Enum` | NotActivatable | 否 | `Input` | 仅：show, showAndWaitClose |  |
-| `help` | 帮助按钮内容 | `Text` |  | 否 | `Input` | 仅：show, showAndWaitClose | 点击弹出显示帮助内容，MarkDown格式 |
-
-## 输出参数
-
-| Key | 名称 | 类型 | 条件 | 说明 |
-| --- | --- | --- | --- | --- |
-| `isClosed` | 是否已关闭 | `Boolean` | 仅：check | 等待窗口是否已经关闭了 |
-| `selectedOperation` | 选择的按钮 | `Text` | 仅：check, waitClose, showAndWaitClose | 选择的后续操作项 |
-
-## 选项值
-
-### `mode` 操作
-
-| Value | 名称 | 说明 |
-| --- | --- | --- |
-| `show` | 显示窗口 |  |
-| `update` | 更新窗口 |  |
-| `check` | 检查是否关闭 |  |
-| `close` | 关闭窗口(如果还开着的话) |  |
-| `waitClose` | 等待用户关闭 |  |
-| `showAndWaitClose` | 显示窗口并等待用户关闭 |  |
-
-### `winLocation` 窗口位置
-
-| Value | 名称 | 说明 |
-| --- | --- | --- |
-| `WithMouse1` | 跟随鼠标（指针周围） |  |
-| `WithMouse2` | 跟随鼠标（指针右下） |  |
-| `CenterScreen` | 屏幕中间 |  |
-| `TopLeft` | 屏幕左上 |  |
-| `TopCenter` | 屏幕中上 |  |
-| `TopRight` | 屏幕右上 |  |
-| `LeftCenter` | 屏幕左中 |  |
-| `RightCenter` | 屏幕右中 |  |
-| `BottomLeft` | 屏幕左下 |  |
-| `BottomCenter` | 屏幕中下 |  |
-| `BottomRight` | 屏幕右下 |  |
-| `LastPosition` | 上次的位置 |  |
-
-### `activateMode` 激活模式
-
-| Value | 名称 | 说明 |
-| --- | --- | --- |
-| `NotActivatable` | 不支持激活（不占用焦点，仅能使用鼠标操作） |  |
-| `NotActivated` | 支持激活，打开时不抢占焦点 |  |
-| `AutoActivate` | 支持激活，打开时抢占焦点 |  |
-{/* xaction-metadata:end */}
+<XActionModuleMeta moduleKey="sys:showWaitWin" />
 
 ## 概述
 
@@ -103,20 +33,13 @@ legacyContentUpdatedAt: "2025-03-13T03:07:54.000Z"
 
 ![](./img/showwaitwin-001-45a0913042.png)
 
-
-
 用户点击等待窗口下部的按钮，窗口将关闭。
 
 点击右上角的X按钮，将会弹窗询问是否终止当前动作。
 
-
-
 ## 模块参数设置
 
-
 ![](./img/showwaitwin-002-f75db3275d.png)
-
-
 
 ### 输入参数
 
@@ -149,8 +72,6 @@ legacyContentUpdatedAt: "2025-03-13T03:07:54.000Z"
 
 -   \[fa:Light\_Pen:#99AAFF\]按钮标题(Tooltip文字内容)
 
-
-
 【图标大小】指定按钮上图标的尺寸，默认为16。
 
 【激活模式】窗口占用焦点的方式：
@@ -159,8 +80,6 @@ legacyContentUpdatedAt: "2025-03-13T03:07:54.000Z"
 -   支持激活，打开时不抢占焦点。
 
 -   支持激活，打开时抢占焦点。抢占焦点将导致之前操作的窗口失去焦点。
-
-
 
 ### 输出参数
 
@@ -171,15 +90,11 @@ legacyContentUpdatedAt: "2025-03-13T03:07:54.000Z"
 
 **选择的按钮：**当使用“操作按钮”参数定义了更多按钮时，选择的是哪个按钮。 如果选择了默认按钮，则返回空，否则返回按钮所对应的值。
 
-
-
 ## 结合其他模块
 
 等待窗口可以用于提前停止**等待剪贴板变化**和**等待时间模块**。
 
 ![](./img/showwaitwin-005-0be534860a.png)
-
-
 
 ## 通常的使用方法
 
@@ -190,8 +105,6 @@ legacyContentUpdatedAt: "2025-03-13T03:07:54.000Z"
 2.  如果需要判断用户是否关闭了窗口（点击了按钮上的动作），则调用“检查是否关闭”，并根据需要执行相应的操作，如跳出循环等；
 
 3.  需要时，调用“关闭窗口”窗口操作销毁等待窗口。
-
-
 
 ## 示例动作
 

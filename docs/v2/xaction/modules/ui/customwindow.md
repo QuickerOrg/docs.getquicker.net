@@ -9,7 +9,6 @@ comments: true
 moduleKey: "sys:customwindow"
 docStatus: "migrated-unreviewed"
 metadataGeneratedAt: "2026-08-03 20:08:03"
-metadataHash: "e8dfe0a107d15bc45c6d0e6a22e23ac6f75c683d2ba576c3e3a2a6d175dc0db3"
 legacyDocId: 45787871
 legacyContentUpdatedAt: "2025-12-22T08:33:42.000Z"
 ---
@@ -18,91 +17,9 @@ legacyContentUpdatedAt: "2025-12-22T08:33:42.000Z"
 
 创建和显示自定义窗口
 
-{/* xaction-metadata:start */}
 ## 当前模块定义
 
-- 模块 Key：`sys:customwindow`
-- 分类：界面组件（`Ui`）
-- 类型：`Action`
-- 风险操作：否
-- 专业版：否
-
-## 输入参数
-
-| Key | 名称 | 类型 | 默认值 | 必填 | 变量模式 | 条件 | 说明 |
-| --- | --- | --- | --- | --- | --- | --- | --- |
-| `type` | 操作类型 | `Enum` | ShowAndWaitClose | 是 | `Input` |  |  |
-| `windowMarkup` | 窗口XAML代码 | `Text` | &lt;Window xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"<br />        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"<br />        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"<br />        xmlns:hc="https://handyorg.github.io/handycontrol"<br />        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"<br />        xmlns:qk="https://getquicker.net"<br />        Width="637"<br />        Height="556"<br />        Title="Test Window"<br />        mc:Ignorable="d"&gt;<br />  &lt;Grid Margin="10"&gt;<br />    &lt;StackPanel&gt;<br />      &lt;TextBlock Margin="10,50,10,50" Text="Hello World！" FontSize="20" /&gt;<br />     <br />      &lt;Button Margin="10" qk:Att.Action="close:result" Style="&#123;StaticResource ButtonPrimary&#125;" Width="50"&gt;<br />        关闭<br />      &lt;/Button&gt;<br />    &lt;/StackPanel&gt;<br />  &lt;/Grid&gt;<br />&lt;/Window&gt; | 是 | `UseVarOrInput` | 仅：Show, ShowAndWaitClose | 窗口定义XAML代码 |
-| `dataMapping` | 数据映射 | `Text` |  | 是 | `UseVarOrInput` | 仅：Show, ShowAndWaitClose | 将变量与窗口上下文数据进行映射。每行一个，格式为:"窗口数据项名称:&#123;动作变量名&#125;" 或 "窗口数据项:=表达式" |
-| `events` | 事件 | `Text` |  | 是 | `UseVarOrInput` | 仅：Show, ShowAndWaitClose | 详细说明请参考模块文档 |
-| `cscode` | 辅助C#代码 | `Text` |  | 否 | `UseVarOrInput` | 仅：Show, ShowAndWaitClose | 辅助处理窗口事件的代码，详见文档。 |
-| `csReference` | 辅助C#引用DLL库 | `Text` |  | 否 | `UseVarOrInput` | 仅：Show, ShowAndWaitClose | 辅助 C# 代码要引用的 DLL 文件，每行一个。也可以在代码中使用 #r 指令。 |
-| `windowId` | 窗口标识 | `Text` |  | 是 | `UseVarOrInput` |  | 如需单独的步骤关闭窗口，需使用标识查找窗口。 |
-| `autoCloseTime` | 自动关闭时间(S) | `Number` | 0 | 是 | `UseVarOrInput` | 仅：Show, ShowAndWaitClose | 自动关闭窗口的时间（秒数）。需大于0.5秒。 |
-| `winLocation` | 窗口位置 | `Enum` | CenterScreen | 否 | `UseVarOrInput` | 仅：Show, ShowAndWaitClose | 在哪里显示选择窗口 |
-| `winSize` | 窗口尺寸/位置 | `Text` |  | 否 | `Input` | 仅：Show, ShowAndWaitClose | 设置选择窗口的最大尺寸，格式为：宽度,高度。支持像素数值或屏幕宽高百分比，详情请参考模块文档。<br />"窗口位置" 类型为 "自定义位置" 时用于指定显示位置，格式为：left,top,right,bottom |
-| `activateMode` | 激活模式 | `Enum` | AutoActivate | 否 | `UseVarOrInput` | 仅：Show, ShowAndWaitClose |  |
-| `closeWhenDeactivate` | 失去焦点后关闭窗口 | `Text` | false | 否 | `UseVarOrInput` | 仅：Show, ShowAndWaitClose | 仅在窗口支持激活（获取焦点）的情况下有效。 |
-| `stopIfFail` | 失败后停止 | `Boolean` | true | 否 | `Input` |  | 失败后是否停止动作 |
-
-## 输出参数
-
-| Key | 名称 | 类型 | 条件 | 说明 |
-| --- | --- | --- | --- | --- |
-| `isSuccess` | 是否成功 | `Boolean` |  | 操作是否成功 |
-| `result` | 窗口结果 | `Text` | 仅：ShowAndWaitClose, Close | 通过close:result返回的结果 |
-| `windowList` | 窗口对象列表 | `Object` | 仅：GetWindows | IList&lt;Window&gt;对象 |
-| `windowHandle` | 窗口句柄 | `Integer` | 仅：Show |  |
-| `windowLocation` | 关闭时窗口位置 | `Text` | 仅：ShowAndWaitClose |  |
-
-## 选项值
-
-### `type` 操作类型
-
-| Value | 名称 | 说明 |
-| --- | --- | --- |
-| `ShowAndWaitClose` | 显示窗口并等待关闭 |  |
-| `Show` | 显示窗口 |  |
-| `Close` | 关闭窗口 |  |
-| `GetWindows` | 获取窗口列表 |  |
-
-### `winLocation` 窗口位置
-
-| Value | 名称 | 说明 |
-| --- | --- | --- |
-| `WithMouse1` | 跟随鼠标（指针周围） |  |
-| `WithMouse2` | 跟随鼠标（指针右下） |  |
-| `CenterScreen` | 屏幕中间 |  |
-| `TopLeft` | 屏幕左上 |  |
-| `TopCenter` | 屏幕中上 |  |
-| `TopRight` | 屏幕右上 |  |
-| `LeftCenter` | 屏幕左中 |  |
-| `RightCenter` | 屏幕右中 |  |
-| `BottomLeft` | 屏幕左下 |  |
-| `BottomCenter` | 屏幕中下 |  |
-| `BottomRight` | 屏幕右下 |  |
-| `FullScreen` | 全屏 |  |
-| `Maximized` | 最大化 |  |
-| `Manual` | 自定义位置 |  |
-| `Auto` | 系统默认 |  |
-
-### `activateMode` 激活模式
-
-| Value | 名称 | 说明 |
-| --- | --- | --- |
-| `AutoActivate` | 支持激活，打开时抢占焦点 |  |
-| `NotActivatable` | 不支持激活（不占用焦点，仅能使用鼠标操作） |  |
-| `NotActivatableMouseThrough` | 不支持激活，鼠标穿透 |  |
-| `NotActivated` | 支持激活，打开时不抢占焦点 |  |
-
-### `closeWhenDeactivate` 失去焦点后关闭窗口
-
-| Value | 名称 | 说明 |
-| --- | --- | --- |
-| `true` | 是 |  |
-| `false` | 否 |  |
-| `closeIfNotTopmost` | 在未置顶时 |  |
-{/* xaction-metadata:end */}
+<XActionModuleMeta moduleKey="sys:customwindow" />
 
 此功能为预览状态，可能存在bug或随时改动。
 
@@ -114,8 +31,6 @@ legacyContentUpdatedAt: "2025-12-22T08:33:42.000Z"
 -   需要您对WPF编程有基本的了解。
 -   如果功能相对复杂，可以在VisualStudio中调试好后再迁移到Quicker中。
 
-
-
 ## 参数
 
 【操作类型】
@@ -123,8 +38,6 @@ legacyContentUpdatedAt: "2025-12-22T08:33:42.000Z"
 -   显示窗口并等待关闭：窗口关闭后再运行后续的动作步骤。
 -   显示窗口：显示窗口后，不等待关闭就继续运行后续的动作步骤。
 -   关闭窗口：关闭之前打开的自定义窗口（根据\[窗口标识\]参数确定要关闭的窗口）。
-
-
 
 【窗口XAML代码】
 
@@ -335,8 +248,6 @@ public static bool OnButtonClicked(string controlName, object controlTag, Window
 
 ### 按钮事件
 
-
-
 #### 注册按钮事件
 
 可以通过如下的几种方式为按钮点击添加基本的触发事件：
@@ -381,8 +292,6 @@ public static void OnWindowLoaded(Window win, IDictionary<string, object> dataCo
 -   关闭窗口`close:` 此时【窗口结果】返回内容为空。
 -   关闭窗口并返回结果：`close:result` 其中result替换为实际要返回到【窗口结果】的值。
 
-
-
 **其他操作**
 
 -   通过构建一个查询字符串指定较为复杂的操作。格式与推送服务参数、连续搜索参数类似。
@@ -405,8 +314,6 @@ public static void OnWindowLoaded(Window win, IDictionary<string, object> dataCo
 -   close：值为true或false，用于指定点击按钮后是否关闭当前自定义窗口。
 -   compute：值为true或false，用于指定点击按钮后是否更新窗口的计算数据（在【数据映射】参数中指定表达式）
 
-
-
 ### 数据绑定
 
 在xaml中可以绑定窗口数据。窗口的DataContext为保存窗口数据的词典对象。
@@ -417,11 +324,7 @@ public static void OnWindowLoaded(Window win, IDictionary<string, object> dataCo
 
 ### 如何运行子程序
 
-
-
 #### 声明式调用子程序
-
-
 
 ##### 触发子程序
 
@@ -440,11 +343,7 @@ operation=sp&amp;spname=Multiply
 -   spname=Multiply：执行的子程序名称为Multiply
 -   param1=value1：为子程序输入参数传递内容(param1为子程序的输入参数变量名)。
 
-
-
 qk:Attr.action中调用子程序时，为子程序传递\_\_sender, \_\_e, \_\_control 参数，分别对应click事件的sender、事件参数和OriginSource对象。
-
-
 
 **方式2：在【事件】参数中设定按钮执行子程序**
 
@@ -453,8 +352,6 @@ qk:Attr.action中调用子程序时，为子程序传递\_\_sender, \_\_e, \_\_c
 BtnAdd.click: 表示点击名称为BtnAdd的按钮时执行的操作。
 
 operation=sp&spname=Add：表示点击后执行名称为Add的子程序。
-
-
 
 ##### 参数传递
 
@@ -479,8 +376,6 @@ operation=sp&spname=Add：表示点击后执行名称为Add的子程序。
 -   第一个参数：子程序名称
 -   第二个参数：词典类型的对象。Key为子程序的参数名，Value为要给参数传入的值。（这里不一定需要对应到特定的窗口数据）。从1.24.28版本之后将支持以匿名对象的形式传入参数。
 -   输出数据为词典类型的对象。
-
-
 
 ## 输出参数
 

@@ -9,7 +9,6 @@ comments: true
 moduleKey: "sys:winservice"
 docStatus: "migrated-unreviewed"
 metadataGeneratedAt: "2026-08-03 20:08:03"
-metadataHash: "d8b5a6404b3521ade1b71a2f27b53e112312cf774045a7df0b84b0b9d2fdc191"
 legacyDocId: 88864932
 legacyContentUpdatedAt: "2022-08-08T08:45:27.000Z"
 ---
@@ -18,45 +17,9 @@ legacyContentUpdatedAt: "2022-08-08T08:45:27.000Z"
 
 获取Windows服务的状态、注册表项信息
 
-{/* xaction-metadata:start */}
 ## 当前模块定义
 
-- 模块 Key：`sys:winservice`
-- 分类：Windows系统（`System`）
-- 类型：`Action`
-- 风险操作：否
-- 专业版：否
-
-## 输入参数
-
-| Key | 名称 | 类型 | 默认值 | 必填 | 变量模式 | 条件 | 说明 |
-| --- | --- | --- | --- | --- | --- | --- | --- |
-| `operation` | 操作类型 | `Enum` | getServiceInfo | 是 | `Input` |  |  |
-| `name` | 服务名 | `Text` |  | 否 | `UseVarOrInput` | 仅：getServiceInfo | 服务名称（不是显示名称），大小写敏感。 |
-| `regKeyPath` | 注册表项路径 | `Text` |  | 否 | `UseVarOrInput` | 仅：getRegValue | 如：HKEY_CURRENT_USER\Software\Quicker |
-| `regValueName` | 值名称 | `Text` |  | 否 | `UseVarOrInput` | 仅：getRegValue | 留空表示"默认"项 |
-| `stopIfFail` | 失败后停止 | `Boolean` | true | 否 | `Input` |  | 失败后是否停止动作 |
-
-## 输出参数
-
-| Key | 名称 | 类型 | 条件 | 说明 |
-| --- | --- | --- | --- | --- |
-| `isExists` | 是否存在 | `Boolean` | 仅：getServiceInfo, getRegValue | 服务或注册表项是否存在 |
-| `displayName` | 显示名 | `Text` | 仅：getServiceInfo | 服务的显示名 |
-| `state` | 服务状态 | `Integer` | 仅：getServiceInfo | 服务的当前状态。4:运行中，1:已停止。其它状态请参考文档。 |
-| `regValue` | 值 | `Text` | 仅：getRegValue | 注册表项的值 |
-| `serviceList` | 服务名列表 | `List` | 仅：getServiceList |  |
-
-## 选项值
-
-### `operation` 操作类型
-
-| Value | 名称 | 说明 |
-| --- | --- | --- |
-| `getServiceInfo` | 获取某个服务的信息 |  |
-| `getServiceList` | 获取Windows服务列表 |  |
-| `getRegValue` | 获取注册表项值 |  |
-{/* xaction-metadata:end */}
+<XActionModuleMeta moduleKey="sys:winservice" />
 
 用于获取特定Windows服务的运行状态或某注册表项的信息（用于判断特定的组件是否已安装等目的）。
 
@@ -64,15 +27,11 @@ legacyContentUpdatedAt: "2022-08-08T08:45:27.000Z"
 
 ![](./img/winservice-001-3ce376f2b5.png)
 
-
-
 输入：
 
 【服务名】需要获取信息的Windows服务名称。
 
 ![](./img/winservice-002-cf7a93ab93.png)
-
-
 
 输出：
 
@@ -91,8 +50,6 @@ legacyContentUpdatedAt: "2022-08-08T08:45:27.000Z"
 | Stopped | 1 | 服务未运行。 这对应于 Win32 SERVICE\_STOPPED 常数，该常数定义为 0x00000001。 |
 | StopPending | 3 | 服务正在停止。 这对应于 Win32 SERVICE\_STOP\_PENDING 常数，该常数定义为 0x00000003。 |
 
-
-
 ## 获取windows服务列表
 
 ![](./img/winservice-003-81765bd170.png)
@@ -105,13 +62,9 @@ legacyContentUpdatedAt: "2022-08-08T08:45:27.000Z"
 
 ![](./img/winservice-004-75a1446712.png)
 
-
-
 模块设置：
 
 ![](./img/winservice-005-fcdc928c18.png)
-
-
 
 输入：
 

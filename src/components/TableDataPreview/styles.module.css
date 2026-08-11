@@ -1,0 +1,199 @@
+/**
+ * CSS sketch of Quicker/Domain/Tables/TableManageWindow.xaml and the
+ * AppDataGridStyle merged into Quicker/App.xaml. Keep this preview read-only.
+ */
+.root {
+  width: min(800px, 100%);
+  margin: 1rem 0;
+  overflow: hidden;
+  border: 1px solid var(--ifm-color-emphasis-300, #d1d5db);
+  border-radius: 6px;
+  background: var(--ifm-background-surface-color, #fff);
+  box-shadow: 0 8px 24px rgb(0 0 0 / 12%);
+  color: var(--ifm-font-color-base, #1f2937);
+  font-size: 14px;
+}
+
+.compact {
+  display: inline-block;
+  width: auto;
+  max-width: 100%;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+  box-shadow: none;
+  vertical-align: top;
+}
+
+.titleBar {
+  display: flex;
+  min-height: 38px;
+  align-items: center;
+  gap: 7px;
+  padding: 0 10px;
+  border-bottom: 1px solid var(--ifm-color-emphasis-200, #e5e7eb);
+}
+
+.logo {
+  display: inline-flex;
+  width: 20px;
+  height: 20px;
+  align-items: center;
+  justify-content: center;
+  border-radius: 4px;
+  background: #1687e8;
+  color: #fff;
+  font-size: 12px;
+}
+
+.close {
+  margin-left: auto;
+  color: var(--ifm-color-emphasis-700, #4b5563);
+  font-size: 20px;
+}
+
+.body {
+  padding: 15px;
+}
+
+.compact .body {
+  padding: 0;
+}
+
+.addButton,
+.button,
+.primaryButton,
+.editButton,
+.deleteButton {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid var(--ifm-color-emphasis-300, #d1d5db);
+  border-radius: 5px;
+  background: var(--ifm-background-surface-color, #fff);
+  white-space: nowrap;
+}
+
+.addButton {
+  width: fit-content;
+  margin-bottom: 14px;
+  padding: 7px 12px;
+  border-color: #24b454;
+  background: #24b454;
+  color: #fff;
+}
+
+.tableFrame {
+  max-width: 100%;
+  overflow: auto;
+  border: 1px solid var(--ifm-color-emphasis-400, #9ca3af);
+}
+
+.tableFrame table {
+  width: 100%;
+  min-width: max-content;
+  margin: 0;
+  border: 0;
+  border-collapse: collapse;
+  font: inherit;
+}
+
+.tableFrame th,
+.tableFrame td {
+  min-width: 72px;
+  padding: 5px 8px;
+  border: 0;
+  border-right: 1px solid var(--ifm-color-emphasis-300, #d1d5db);
+  border-bottom: 1px solid var(--ifm-color-emphasis-300, #d1d5db);
+  color: inherit;
+  text-align: left;
+  vertical-align: middle;
+}
+
+.tableFrame th {
+  background: var(--ifm-color-emphasis-100, #f3f4f6);
+  font-weight: 500;
+}
+
+.tableFrame tr:nth-child(even) td {
+  background: color-mix(in srgb, var(--ifm-color-emphasis-100) 55%, transparent);
+}
+
+.tableFrame th:last-child,
+.tableFrame td:last-child {
+  border-right: 0;
+}
+
+.tableFrame tbody tr:last-child td {
+  border-bottom: 0;
+}
+
+.actions {
+  display: flex;
+  gap: 5px;
+}
+
+.editButton,
+.deleteButton {
+  min-width: 38px;
+  padding: 3px 6px;
+}
+
+.deleteButton {
+  border-color: #ef4444;
+  background: #ef4444;
+  color: #fff;
+}
+
+.footer {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-top: 14px;
+}
+
+.spacer {
+  flex: 1;
+}
+
+.button,
+.primaryButton {
+  min-width: 78px;
+  padding: 7px 12px;
+}
+
+.primaryButton {
+  border-color: #3478f6;
+  background: #3478f6;
+  color: #fff;
+}
+
+html[data-theme='dark'] .root {
+  background: #20242b;
+  color: #e5e7eb;
+}
+
+html[data-theme='dark'] .tableFrame th {
+  background: #2d333d;
+}
+
+html[data-theme='dark'] .button,
+html[data-theme='dark'] .editButton {
+  background: #272c34;
+  color: #e5e7eb;
+}
+
+@media (max-width: 620px) {
+  .body {
+    padding: 10px;
+  }
+
+  .footer {
+    flex-wrap: wrap;
+  }
+
+  .button,
+  .primaryButton {
+    min-width: 68px;
+  }
+}

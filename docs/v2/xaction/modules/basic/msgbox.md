@@ -45,7 +45,34 @@ legacyContentUpdatedAt: "2024-10-29T00:01:11.000Z"
 
 与Windows内置的弹窗功能类似，支持固定可选的图标类型和按钮组合。与各语言的`MessageBox.Show`方法功能类似。
 
-![](./img/msgbox-002-2b2fb27fec.png)
+<PreviewMap
+  links={[
+    {from: 'title', to: 'title'},
+    {from: 'message', to: 'message'},
+    {from: 'icon', to: 'icon'},
+    {from: 'buttons', to: 'buttons'},
+  ]}
+>
+  <ModuleParamPreview
+    moduleKey="sys:MsgBox"
+    scrollBody={false}
+    values={{
+      operation: 'default',
+      message: '这是一个提示消息。',
+      title: '提示',
+      icon: 'Warning',
+      buttons: 'OKCancel',
+      restoreFocus: 'true',
+    }}
+    outputVars={{result: 'ABC result'}}
+  />
+  <MsgBoxPreview
+    title="提示"
+    icon="warning"
+    message="这是一个提示消息。"
+    buttons={['确定', '取消']}
+  />
+</PreviewMap>
 
 参数说明：
 
@@ -80,7 +107,39 @@ legacyContentUpdatedAt: "2024-10-29T00:01:11.000Z"
 
 支持自定义按钮、图标，标题栏可显示动作图标。
 
-![](./img/msgbox-003-8c09dbb65c.png)
+<PreviewMap
+  links={[
+    {from: 'actionIcon', to: 'actionIcon'},
+    {from: 'title', to: 'title'},
+    {from: 'message', to: 'message'},
+    {from: 'customIcon', to: 'icon'},
+    {from: 'customButtons', to: 'buttons'},
+    {from: 'defaultButton', to: 'primaryButton'},
+  ]}
+>
+  <ModuleParamPreview
+    moduleKey="sys:MsgBox"
+    actionIcon="fa:Light_CommentAltLines"
+    scrollBody={false}
+    values={{
+      operation: 'custom',
+      message: '你好，这是一条自定义弹窗提示消息。第二行。',
+      title: '保存信息',
+      customIcon: 'fa:Solid_InfoCircle:#FF0000',
+      customButtons: '[fa:Light_Check:#28a745]是(_Y)|Yes\n[fa:Light_Times:#dc3545]否(_N)|No\n[fa:Light_Undo:#28a745]取消(_C)|Cancel',
+      defaultButton: 'Yes',
+    }}
+    outputVars={{result: 'ABC result'}}
+  />
+  <MsgBoxPreview
+    title="保存信息"
+    actionIcon="fa:Light_CommentAltLines"
+    icon="fa:Solid_InfoCircle:#FF0000"
+    message={"你好，这是一条自定义弹窗提示消息。第二行。"}
+    buttonDefs={'[fa:Light_Check:#28a745]是(_Y)|Yes\n[fa:Light_Times:#dc3545]否(_N)|No\n[fa:Light_Undo:#28a745]取消(_C)|Cancel'}
+    defaultButton="Yes"
+  />
+</PreviewMap>
 
 参数说明：
 

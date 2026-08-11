@@ -668,13 +668,16 @@ function writeSupportingDocuments(legacyRoot, routeByLegacySlug) {
   return {pageCount, imageCount};
 }
 
-function createLandingPage(modules, migratedCount, legacyMappedModuleCount, generatedAt) {
-  const categoryRows = categoryDefinitions
+function formatLandingCounts(modules) {
+  return categoryDefinitions
     .map((category) => {
       const count = modules.filter((module) => module.category === category.key).length;
-      return `| [${category.label}](/v2/xaction/modules/category/${category.directory}) | ${count} |`;
+      return `    ${category.key}: ${count},`;
     })
     .join('\n');
+}
+
+function createLandingPage(modules, _migratedCount, _legacyMappedModuleCount, generatedAt) {
   return `---
 title: 组合动作
 description: Quicker 2.0 组合动作的入门、模块参考、教程与迁移说明。
@@ -682,32 +685,20 @@ slug: /v2/xaction
 sidebar_position: 1
 quickerDocKey: v2/xaction/index
 comments: true
+hide_table_of_contents: true
 ---
 
 # 组合动作
 
-Quicker 2.0 延续了 1.x 组合动作的主要模块和使用方式，并在模块、参数、执行与调试能力上持续扩展。本文档以 Quicker 当前导出的模块元数据为参数事实来源，同时保留经过整理的 1.x 使用说明、示例和排障经验。
+组合动作把多个步骤按顺序执行，用来完成打开网页、处理文本、操作窗口这类自动化。Quicker 2.0 沿用 1.x 的主要模块，并补充了参数、执行和调试能力。
 
-## 从哪里开始
-
-- 初次使用请先阅读[组合动作基础](/v2/xaction/concepts/xaction-intro)和[动作编辑器的使用](/v2/xaction/concepts/xaction-editor)。
-- 已经知道模块名称时，直接进入[模块参考](/v2/xaction/modules)或使用站内搜索。
-- 需要完成具体任务时，从[教程与实践](/v2/xaction/guides)开始。
-- 从 1.x 迁移时，阅读[2.0 模块兼容与变化](/v2/what's-new/actions/xaction-steps)。
-
-## 模块参考
-
-| 分类 | 模块数 |
-| --- | ---: |
-${categoryRows}
-
-当前共收录 **${modules.length}** 个模块，其中 **${legacyMappedModuleCount}** 个模块可以对应到 1.x 使用说明；共享帮助页合并后，共迁入 **${migratedCount}** 份模块正文。参数元数据生成时间为 **${generatedAt}**。
-
-:::info 内容来源
-
-模块 Key、输入输出、默认值、枚举和显示条件来自 Quicker 程序导出的当前定义；使用方法、示例和排障内容来自旧版文档迁移，尚未复核的页面会在源文件 front matter 中标记为 \`migrated-unreviewed\`。
-
-:::
+<XActionLanding
+  moduleCount={${modules.length}}
+  generatedAt=${jsonString(generatedAt)}
+  counts={{
+${formatLandingCounts(modules)}
+  }}
+/>
 `;
 }
 
@@ -837,6 +828,7 @@ function createChangeReport(previousCatalog, nextCatalog) {
 
 export {
   createChangeReport,
+  createLandingPage,
   createReference,
   ensureModuleMetaComponent,
   stripLegacyMetadataMarkers,

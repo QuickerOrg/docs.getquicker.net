@@ -1,19 +1,20 @@
 {
-  "generatedAt": "2026-08-11T10:12:19.227Z",
-  "count": 257,
+  "generatedAt": "2026-08-11T12:36:43.962Z",
+  "count": 303,
   "byComponent": {
     "ContextMenuPreview": 7,
-    "ModuleParamPreview": 231,
+    "ModuleParamPreview": 274,
     "StepProgramView": 4,
     "TableFieldPreview": 2,
     "VariableDefPreview": 3,
     "MsgBoxPreview": 1,
-    "NotifyToastPreview": 5,
+    "NotifyToastPreview": 4,
     "ChoiceListPreview": 3,
+    "TableDataPreview": 4,
     "WaitWinPreview": 1
   },
   "bySource": {
-    "orphan": 252,
+    "orphan": 298,
     "direct": 5
   },
   "items": [
@@ -476,12 +477,12 @@
       "moduleKey": "sys:notify",
       "image": "docs/v2/xaction/modules/basic/img/notify-002-42b2bba2c5.png",
       "imageName": "notify-002-42b2bba2c5.png",
-      "component": "NotifyToastPreview",
+      "component": "ModuleParamPreview",
       "props": {
-        "message": "Hello Quicker!\nHello Quicker!\n...",
-        "maxLines": "3"
+        "moduleKey": "sys:notify",
+        "values": "{\"type\":\"Info\",\"msg\":\"Hello Quicker!\",\"maxLines\":\"0\",\"placement\":\"BottomCenter\",\"clickAction\":\"https://getquicker.net\"}"
       },
-      "sourceSnippet": "<NotifyToastPreview message={\"Hello Quicker!\\nHello Quicker!\\n...\"} maxLines={3} />"
+      "sourceSnippet": "<ModuleParamPreview moduleKey=\"sys:notify\" values={{ type: 'Info', msg: 'Hello Quicker!', maxLines: '0', placement: 'BottomCenter', clickAction: 'https://getquicker.net', }} />"
     },
     {
       "id": "9d801e6faab7b41c",
@@ -494,11 +495,10 @@
       "imageName": "notify-003-7c965dd71b.png",
       "component": "NotifyToastPreview",
       "props": {
-        "styleVariant": "card",
-        "message": "Hello Quicker!Hello Quicker!Hello Quicker!\nHello Quicker!Hello Quicker!Hello Quicker!\nHello Quicker!\n...",
-        "maxLines": "4"
+        "message": "Hello Quicker!\nHello Quicker!\n...",
+        "maxLines": "3"
       },
-      "sourceSnippet": "<NotifyToastPreview styleVariant=\"card\" message={\"Hello Quicker!Hello Quicker!Hello Quicker!\\nHello Quicker!Hello Quicker!Hello Quicker!\\nHello Quicker!\\n...\"} maxLines={4} />"
+      "sourceSnippet": "<NotifyToastPreview message={\"Hello Quicker!\\nHello Quicker!\\n...\"} maxLines={3} />"
     },
     {
       "id": "63c0f9c0dbad5cea",
@@ -661,6 +661,21 @@
         "selectedIndex": "3"
       },
       "sourceSnippet": "<ChoiceListPreview title=\"请选择\" options={['a', 'b', 'c', 'd']} selectedIndex={3} globalButtons={['按钮文字', '全局按钮']} showMoreMenu />"
+    },
+    {
+      "id": "fba7476d40d25b43",
+      "source": "orphan",
+      "page": "docs/v2/xaction/modules/clipboard/filetoclipboard.md",
+      "pageUrl": "/v2/xaction/modules/filetoclipboard",
+      "title": "文件放入剪贴板",
+      "moduleKey": "sys:fileToClipboard",
+      "image": "docs/v2/xaction/modules/clipboard/img/filetoclipboard-001-af3d5a0a46.png",
+      "imageName": "filetoclipboard-001-af3d5a0a46.png",
+      "component": "ModuleParamPreview",
+      "props": {
+        "moduleKey": "sys:fileToClipboard"
+      },
+      "sourceSnippet": "<ModuleParamPreview moduleKey=\"sys:fileToClipboard\" />"
     },
     {
       "id": "38b991e33c245c53",
@@ -1178,6 +1193,39 @@
       "sourceSnippet": "<ModuleParamPreview moduleKey=\"sys:tableoperation\" focusKeys={['table', 'type', 'rowData', 'stopIfFail', 'isSuccess', 'rowCount']} values={{ type: 'addRow', rowData: `名称:测试条目 说明:这是一条测试数据 图标:fa:Light_Icon 注释:注释信息`, }} inputVars={{table: 'tab"
     },
     {
+      "id": "fcab3f15fc3e7daa",
+      "source": "orphan",
+      "page": "docs/v2/xaction/modules/compute/tableoperation.md",
+      "pageUrl": "/v2/xaction/modules/tableoperation",
+      "title": "表格数据操作",
+      "moduleKey": "sys:tableoperation",
+      "image": "docs/v2/xaction/modules/compute/img/tableoperation-004-27627e9b91.png",
+      "imageName": "tableoperation-004-27627e9b91.png",
+      "component": "TableDataPreview",
+      "props": {
+        "columns": "[\"Id\",\"名称\",\"说明\",\"图标\",\"注释\"]",
+        "rows": "[[0,\"测试条目\",\"这是一条测试数据\",\"fa:Light_Icon\",\"注释信息\"],[1,\"测试条目1\",\"这是一条测试数据\",\"fa:Light_Icon\",\"注释信息\"]]"
+      },
+      "sourceSnippet": "<TableDataPreview columns={['Id', '名称', '说明', '图标', '注释']} rows={[ [0, '测试条目', '这是一条测试数据', 'fa:Light_Icon', '注释信息'], [1, '测试条目1', '这是一条测试数据', 'fa:Light_Icon', '注释信息'], ]} />"
+    },
+    {
+      "id": "8e4538b12a05e769",
+      "source": "orphan",
+      "page": "docs/v2/xaction/modules/compute/tableoperation.md",
+      "pageUrl": "/v2/xaction/modules/tableoperation",
+      "title": "表格数据操作",
+      "moduleKey": "sys:tableoperation",
+      "image": "docs/v2/xaction/modules/compute/img/tableoperation-005-fd2b319808.png",
+      "imageName": "tableoperation-005-fd2b319808.png",
+      "component": "TableDataPreview",
+      "props": {
+        "columns": "[\"Id\",\"名称\",\"说明\",\"图标\",\"注释\"]",
+        "rows": "[[0,\"测试条目\",\"这是一条测试数据\",\"fa:Light_Icon\",\"注释信息\"],[1,\"测试条目1\",\"这是一条测试数据\",\"fa:Light_Icon\",\"注释信息\"]]",
+        "editable": "true"
+      },
+      "sourceSnippet": "<TableDataPreview editable={true} columns={['Id', '名称', '说明', '图标', '注释']} rows={[ [0, '测试条目', '这是一条测试数据', 'fa:Light_Icon', '注释信息'], [1, '测试条目1', '这是一条测试数据', 'fa:Light_Icon', '注释信息'], ]} />"
+    },
+    {
       "id": "7b11b107047ca616",
       "source": "orphan",
       "page": "docs/v2/xaction/modules/compute/tableoperation.md",
@@ -1230,6 +1278,40 @@
         "focusKeys": "[\"table\",\"type\",\"dataText\",\"clearOldRows\",\"stopIfFail\",\"isSuccess\",\"rowCount\"]"
       },
       "sourceSnippet": "<ModuleParamPreview moduleKey=\"sys:tableoperation\" focusKeys={[ 'table', 'type', 'dataText', 'clearOldRows', 'stopIfFail', 'isSuccess', 'rowCount', ]} values={{type: 'importCsv', clearOldRows: 'true'}} inputVars={{table: 'table', dataText: "
+    },
+    {
+      "id": "747e195f2f3bccb7",
+      "source": "orphan",
+      "page": "docs/v2/xaction/modules/compute/tableoperation.md",
+      "pageUrl": "/v2/xaction/modules/tableoperation",
+      "title": "表格数据操作",
+      "moduleKey": "sys:tableoperation",
+      "image": "docs/v2/xaction/modules/compute/img/tableoperation-009-72f4b63757.png",
+      "imageName": "tableoperation-009-72f4b63757.png",
+      "component": "TableDataPreview",
+      "props": {
+        "columns": "[\"name\",\"age\",\"City\"]",
+        "rows": "[[\"张三\",20,\"BeiJing\"],[\"李四\",21,\"ShangHai\"]]",
+        "compact": "true"
+      },
+      "sourceSnippet": "<TableDataPreview compact={true} columns={['name', 'age', 'City']} rows={[ ['张三', 20, 'BeiJing'], ['李四', 21, 'ShangHai'], ]} />"
+    },
+    {
+      "id": "f1cadb919d1e4f29",
+      "source": "orphan",
+      "page": "docs/v2/xaction/modules/compute/tableoperation.md",
+      "pageUrl": "/v2/xaction/modules/tableoperation",
+      "title": "表格数据操作",
+      "moduleKey": "sys:tableoperation",
+      "image": "docs/v2/xaction/modules/compute/img/tableoperation-010-acf2d5bcd3.png",
+      "imageName": "tableoperation-010-acf2d5bcd3.png",
+      "component": "TableDataPreview",
+      "props": {
+        "columns": "[\"Key\",\"Value\"]",
+        "rows": "[[\"name\",\"张三\"],[\"age\",20],[\"City\",\"BeiJing\"]]",
+        "compact": "true"
+      },
+      "sourceSnippet": "<TableDataPreview compact={true} columns={['Key', 'Value']} rows={[ ['name', '张三'], ['age', 20], ['City', 'BeiJing'], ]} />"
     },
     {
       "id": "f64a3368dcedd335",
@@ -2180,7 +2262,7 @@
       "sourceSnippet": "<ModuleParamPreview moduleKey=\"sys:inputScript\" />"
     },
     {
-      "id": "abc24662e70ac2a2",
+      "id": "b44fd747e24a1902",
       "source": "direct",
       "page": "docs/v2/xaction/modules/network/ai.md",
       "pageUrl": "/v2/xaction/modules/ai",
@@ -2245,7 +2327,7 @@
       "sourceSnippet": "<ModuleParamPreview moduleKey=\"sys:ai\" focusKeys={['prompt']} values={{ endpoint: 'chat', prompt: `[ { \"type\": \"image_url\", \"image_url\": { \"url\": \"https://cdn-dynmedia-1.microsoft.com/is/image/microsoftcorp/Studio-2-platinum_sprite_thumbnai"
     },
     {
-      "id": "c033bb6b89905ae4",
+      "id": "3c1b96c19c1c4e4a",
       "source": "direct",
       "page": "docs/v2/xaction/modules/network/basic-ocr.md",
       "pageUrl": "/v2/xaction/modules/basic-ocr",
@@ -2259,6 +2341,23 @@
         "message": "离线OCR失败。“Sdcb.PaddleInference.PaddleConfig”的类型初始值设定项引发异常。\n(----Quicker OCRv2:基础OCR----)"
       },
       "sourceSnippet": "<NotifyToastPreview variant=\"warning\" message={'离线OCR失败。“Sdcb.PaddleInference.PaddleConfig”的类型初始值设定项引发异常。\\n(----Quicker OCRv2:基础OCR----)'} />"
+    },
+    {
+      "id": "087ac4333a339e20",
+      "source": "orphan",
+      "page": "docs/v2/xaction/modules/network/basic-ocr.md",
+      "pageUrl": "/v2/xaction/modules/basic-ocr",
+      "title": "基础OCR",
+      "moduleKey": "sys:basic-ocr",
+      "image": "docs/v2/xaction/modules/network/img/basic-ocr-001-05752ebcaf.png",
+      "imageName": "basic-ocr-001-05752ebcaf.png",
+      "component": "ModuleParamPreview",
+      "props": {
+        "moduleKey": "sys:basic-ocr",
+        "values": "{\"operation\":\"QuickerServerOcr\"}",
+        "focusKeys": "[\"operation\"]"
+      },
+      "sourceSnippet": "<ModuleParamPreview moduleKey=\"sys:basic-ocr\" focusKeys={['operation']} values={{operation: 'QuickerServerOcr'}} />"
     },
     {
       "id": "0a3e99c3d8102216",
@@ -2482,6 +2581,40 @@
       "sourceSnippet": "<ModuleParamPreview moduleKey=\"sys:httpserver\" />"
     },
     {
+      "id": "71a83e6268f60140",
+      "source": "orphan",
+      "page": "docs/v2/xaction/modules/network/httpserver.md",
+      "pageUrl": "/v2/xaction/modules/httpserver",
+      "title": "HTTP服务器",
+      "moduleKey": "sys:httpserver",
+      "image": "docs/v2/xaction/modules/network/img/httpserver-002-29a9bd175d.png",
+      "imageName": "httpserver-002-29a9bd175d.png",
+      "component": "ModuleParamPreview",
+      "props": {
+        "moduleKey": "sys:httpserver",
+        "values": "{\"operation\":\"CloseServer\",\"serviceId\":\"default\",\"stopIfFail\":\"true\"}",
+        "focusKeys": "[\"operation\",\"serviceId\",\"stopIfFail\"]"
+      },
+      "sourceSnippet": "<ModuleParamPreview moduleKey=\"sys:httpserver\" focusKeys={['operation', 'serviceId', 'stopIfFail']} values={{operation: 'CloseServer', serviceId: 'default', stopIfFail: 'true'}} />"
+    },
+    {
+      "id": "9ec1a278eb9529cc",
+      "source": "orphan",
+      "page": "docs/v2/xaction/modules/network/httpserver.md",
+      "pageUrl": "/v2/xaction/modules/httpserver",
+      "title": "HTTP服务器",
+      "moduleKey": "sys:httpserver",
+      "image": "docs/v2/xaction/modules/network/img/httpserver-003-ea0447642e.png",
+      "imageName": "httpserver-003-ea0447642e.png",
+      "component": "ModuleParamPreview",
+      "props": {
+        "moduleKey": "sys:httpserver",
+        "values": "{\"operation\":\"GetServerState\",\"serviceId\":\"default\",\"stopIfFail\":\"true\"}",
+        "focusKeys": "[\"operation\",\"serviceId\",\"stopIfFail\",\"isSuccess\",\"isRunning\",\"serverList\"]"
+      },
+      "sourceSnippet": "<ModuleParamPreview moduleKey=\"sys:httpserver\" focusKeys={['operation', 'serviceId', 'stopIfFail', 'isSuccess', 'isRunning', 'serverList']} values={{operation: 'GetServerState', serviceId: 'default', stopIfFail: 'true'}} />"
+    },
+    {
       "id": "54e0db4e3c4bfc2e",
       "source": "orphan",
       "page": "docs/v2/xaction/modules/network/mathocr.md",
@@ -2646,6 +2779,253 @@
       "sourceSnippet": "<ModuleParamPreview moduleKey=\"sys:autocadcontrol\" />"
     },
     {
+      "id": "35b480ab9b3456bf",
+      "source": "orphan",
+      "page": "docs/v2/xaction/modules/software/chromecontrol.md",
+      "pageUrl": "/v2/xaction/modules/chromecontrol",
+      "title": "浏览器控制",
+      "moduleKey": "sys:chromecontrol",
+      "image": "docs/v2/xaction/modules/software/img/chromecontrol-008-57b144a67b.png",
+      "imageName": "chromecontrol-008-57b144a67b.png",
+      "component": "ModuleParamPreview",
+      "props": {
+        "moduleKey": "sys:chromecontrol",
+        "values": "{\"operation\":\"RunScript\",\"tabId\":\"\",\"script\":\"//.js\",\"waitManualReturn\":\"false\",\"stopIfFail\":\"true\",\"timeoutMs\":\"3000\",\"frame\":\"all\"}",
+        "focusKeys": "[\"operation\",\"tabId\",\"script\",\"waitManualReturn\",\"stopIfFail\",\"timeoutMs\",\"frame\",\"isSuccess\",\"rawResponse\"]"
+      },
+      "sourceSnippet": "<ModuleParamPreview moduleKey=\"sys:chromecontrol\" focusKeys={[ 'operation', 'tabId', 'script', 'waitManualReturn', 'stopIfFail', 'timeoutMs', 'frame', 'isSuccess', 'rawResponse', ]} values={{ operation: 'RunScript', tabId: '', script: '//.j"
+    },
+    {
+      "id": "5ede771846481f6e",
+      "source": "orphan",
+      "page": "docs/v2/xaction/modules/software/chromecontrol.md",
+      "pageUrl": "/v2/xaction/modules/chromecontrol",
+      "title": "浏览器控制",
+      "moduleKey": "sys:chromecontrol",
+      "image": "docs/v2/xaction/modules/software/img/chromecontrol-009-8bdb44c6a9.png",
+      "imageName": "chromecontrol-009-8bdb44c6a9.png",
+      "component": "ModuleParamPreview",
+      "props": {
+        "moduleKey": "sys:chromecontrol",
+        "values": "{\"operation\":\"BackgroundCommand\"}",
+        "focusKeys": "[\"operation\"]"
+      },
+      "sourceSnippet": "<ModuleParamPreview moduleKey=\"sys:chromecontrol\" focusKeys={['operation']} values={{operation: 'BackgroundCommand'}} />"
+    },
+    {
+      "id": "899b042b92765e31",
+      "source": "orphan",
+      "page": "docs/v2/xaction/modules/software/chromecontrol.md",
+      "pageUrl": "/v2/xaction/modules/chromecontrol",
+      "title": "浏览器控制",
+      "moduleKey": "sys:chromecontrol",
+      "image": "docs/v2/xaction/modules/software/img/chromecontrol-010-a045de69f6.png",
+      "imageName": "chromecontrol-010-a045de69f6.png",
+      "component": "ModuleParamPreview",
+      "props": {
+        "moduleKey": "sys:chromecontrol",
+        "outputVars": "{\"tabId\":\"tabId\",\"windowId\":\"windowId\",\"rawResponse\":\"rawResponse\"}",
+        "focusKeys": "[\"operation\",\"url\",\"windowId\",\"windowInfo\",\"waitComplete\",\"stopIfFail\",\"timeoutMs\",\"isSuccess\",\"tabId\",\"rawResponse\"]"
+      },
+      "sourceSnippet": "<ModuleParamPreview moduleKey=\"sys:chromecontrol\" focusKeys={[ 'operation', 'url', 'windowId', 'windowInfo', 'waitComplete', 'stopIfFail', 'timeoutMs', 'isSuccess', 'tabId', 'rawResponse', ]} values={{ operation: 'OpenUrl', url: 'https://ba"
+    },
+    {
+      "id": "d55d669826a00429",
+      "source": "orphan",
+      "page": "docs/v2/xaction/modules/software/chromecontrol.md",
+      "pageUrl": "/v2/xaction/modules/chromecontrol",
+      "title": "浏览器控制",
+      "moduleKey": "sys:chromecontrol",
+      "image": "docs/v2/xaction/modules/software/img/chromecontrol-013-fe0b3c1700.png",
+      "imageName": "chromecontrol-013-fe0b3c1700.png",
+      "component": "ModuleParamPreview",
+      "props": {
+        "moduleKey": "sys:chromecontrol",
+        "values": "{\"operation\":\"ActivateTab\",\"url\":\"https://baidu.com\",\"tabId\":\"\",\"stopIfFail\":\"true\"}",
+        "outputVars": "{\"tabId\":\"tabId\",\"windowId\":\"windowId\"}",
+        "focusKeys": "[\"operation\",\"url\",\"tabId\",\"stopIfFail\",\"isSuccess\",\"windowId\",\"groupId\",\"title\",\"favicon\",\"rawResponse\"]"
+      },
+      "sourceSnippet": "<ModuleParamPreview moduleKey=\"sys:chromecontrol\" focusKeys={[ 'operation', 'url', 'tabId', 'stopIfFail', 'isSuccess', 'windowId', 'groupId', 'title', 'favicon', 'rawResponse', ]} values={{operation: 'ActivateTab', url: 'https://baidu.com',"
+    },
+    {
+      "id": "705aa44b728c862a",
+      "source": "orphan",
+      "page": "docs/v2/xaction/modules/software/chromecontrol.md",
+      "pageUrl": "/v2/xaction/modules/chromecontrol",
+      "title": "浏览器控制",
+      "moduleKey": "sys:chromecontrol",
+      "image": "docs/v2/xaction/modules/software/img/chromecontrol-014-8df71c6c70.png",
+      "imageName": "chromecontrol-014-8df71c6c70.png",
+      "component": "ModuleParamPreview",
+      "props": {
+        "moduleKey": "sys:chromecontrol",
+        "values": "{\"operation\":\"GetTabInfo\",\"tabId\":\"\",\"stopIfFail\":\"true\",\"timeoutMs\":\"3000\"}",
+        "outputVars": "{\"tabId\":\"tabId\",\"windowId\":\"windowId\",\"groupId\":\"groupId\",\"url\":\"url\",\"title\":\"text\",\"favicon\":\"favicon\",\"browser\":\"browser\",\"extVersion\":\"extVersion\",\"manifestVersion\":\"manifestVersion\",\"rawResponse\":\"rawResponse\"}",
+        "focusKeys": "[\"operation\",\"tabId\",\"stopIfFail\",\"timeoutMs\",\"isSuccess\",\"windowId\",\"groupId\",\"url\",\"title\",\"favicon\",\"browser\",\"extVersion\",\"manifestVersion\",\"rawResponse\"]"
+      },
+      "sourceSnippet": "<ModuleParamPreview moduleKey=\"sys:chromecontrol\" focusKeys={[ 'operation', 'tabId', 'stopIfFail', 'timeoutMs', 'isSuccess', 'windowId', 'groupId', 'url', 'title', 'favicon', 'browser', 'extVersion', 'manifestVersion', 'rawResponse', ]} val"
+    },
+    {
+      "id": "250a5b8a336c1b9f",
+      "source": "orphan",
+      "page": "docs/v2/xaction/modules/software/chromecontrol.md",
+      "pageUrl": "/v2/xaction/modules/chromecontrol",
+      "title": "浏览器控制",
+      "moduleKey": "sys:chromecontrol",
+      "image": "docs/v2/xaction/modules/software/img/chromecontrol-016-ee19e8e4ef.png",
+      "imageName": "chromecontrol-016-ee19e8e4ef.png",
+      "component": "ModuleParamPreview",
+      "props": {
+        "moduleKey": "sys:chromecontrol",
+        "values": "{\"operation\":\"RunScript\",\"tabId\":\"\",\"script\":\"//.js\\ndocument.title\",\"frame\":\"0\",\"executionWorld\":\"\",\"waitManualReturn\":\"false\",\"stopIfFail\":\"true\",\"timeoutMs\":\"3000\"}",
+        "outputVars": "{\"rawResponse\":\"rawResponse\"}",
+        "focusKeys": "[\"operation\",\"tabId\",\"script\",\"frame\",\"executionWorld\",\"waitManualReturn\",\"stopIfFail\",\"timeoutMs\",\"isSuccess\",\"rawResponse\"]"
+      },
+      "sourceSnippet": "<ModuleParamPreview moduleKey=\"sys:chromecontrol\" focusKeys={[ 'operation', 'tabId', 'script', 'frame', 'executionWorld', 'waitManualReturn', 'stopIfFail', 'timeoutMs', 'isSuccess', 'rawResponse', ]} values={{ operation: 'RunScript', tabId:"
+    },
+    {
+      "id": "4240d8b4557f7e04",
+      "source": "orphan",
+      "page": "docs/v2/xaction/modules/software/chromecontrol.md",
+      "pageUrl": "/v2/xaction/modules/chromecontrol",
+      "title": "浏览器控制",
+      "moduleKey": "sys:chromecontrol",
+      "image": "docs/v2/xaction/modules/software/img/chromecontrol-017-9ad2f09a18.png",
+      "imageName": "chromecontrol-017-9ad2f09a18.png",
+      "component": "ModuleParamPreview",
+      "props": {
+        "moduleKey": "sys:chromecontrol",
+        "values": "{\"operation\":\"PickElement\",\"tabId\":\"\",\"stopIfFail\":\"true\",\"timeoutMs\":\"15000\"}",
+        "outputVars": "{\"selector\":\"selector\"}",
+        "focusKeys": "[\"operation\",\"tabId\",\"stopIfFail\",\"timeoutMs\",\"isSuccess\",\"selector\",\"rawResponse\"]"
+      },
+      "sourceSnippet": "<ModuleParamPreview moduleKey=\"sys:chromecontrol\" focusKeys={['operation', 'tabId', 'stopIfFail', 'timeoutMs', 'isSuccess', 'selector', 'rawResponse']} values={{operation: 'PickElement', tabId: '', stopIfFail: 'true', timeoutMs: '15000'}} o"
+    },
+    {
+      "id": "33a8bbe4d18bd160",
+      "source": "orphan",
+      "page": "docs/v2/xaction/modules/software/chromecontrol.md",
+      "pageUrl": "/v2/xaction/modules/chromecontrol",
+      "title": "浏览器控制",
+      "moduleKey": "sys:chromecontrol",
+      "image": "docs/v2/xaction/modules/software/img/chromecontrol-018-0f2e94fc16.png",
+      "imageName": "chromecontrol-018-0f2e94fc16.png",
+      "component": "ModuleParamPreview",
+      "props": {
+        "moduleKey": "sys:chromecontrol",
+        "values": "{\"operation\":\"GetElementInfo\",\"tabId\":\"\",\"selector\":\"#content-well-in-this-article-list > li:nth-child(1) > a\",\"elementInfo\":\"Property\",\"attrName\":\"href\",\"frame\":\"0\",\"stopIfFail\":\"true\",\"fixSelector\":\"auto\",\"timeoutMs\":\"3000\"}",
+        "outputVars": "{\"firstValue\":\"output\",\"rawResponse\":\"result\"}",
+        "focusKeys": "[\"operation\",\"tabId\",\"selector\",\"elementInfo\",\"attrName\",\"frame\",\"stopIfFail\",\"fixSelector\",\"timeoutMs\",\"isSuccess\",\"firstValue\",\"allValues\",\"rawResponse\"]"
+      },
+      "sourceSnippet": "<ModuleParamPreview moduleKey=\"sys:chromecontrol\" focusKeys={[ 'operation', 'tabId', 'selector', 'elementInfo', 'attrName', 'frame', 'stopIfFail', 'fixSelector', 'timeoutMs', 'isSuccess', 'firstValue', 'allValues', 'rawResponse', ]} values="
+    },
+    {
+      "id": "e4c313a6e963c7ee",
+      "source": "orphan",
+      "page": "docs/v2/xaction/modules/software/chromecontrol.md",
+      "pageUrl": "/v2/xaction/modules/chromecontrol",
+      "title": "浏览器控制",
+      "moduleKey": "sys:chromecontrol",
+      "image": "docs/v2/xaction/modules/software/img/chromecontrol-019-eaded0cc1c.png",
+      "imageName": "chromecontrol-019-eaded0cc1c.png",
+      "component": "ModuleParamPreview",
+      "props": {
+        "moduleKey": "sys:chromecontrol",
+        "values": "{\"operation\":\"UpdateElement\",\"tabId\":\"\",\"selector\":\"query\",\"updateElementInfo\":\"Value\",\"attrName\":\"\",\"updateElementValue\":\"关键词\",\"frame\":\"0\",\"stopIfFail\":\"true\"}",
+        "outputVars": "{\"rawResponse\":\"result\"}",
+        "focusKeys": "[\"operation\",\"tabId\",\"selector\",\"updateElementInfo\",\"attrName\",\"updateElementValue\",\"frame\",\"stopIfFail\",\"isSuccess\",\"rawResponse\"]"
+      },
+      "sourceSnippet": "<ModuleParamPreview moduleKey=\"sys:chromecontrol\" focusKeys={[ 'operation', 'tabId', 'selector', 'updateElementInfo', 'attrName', 'updateElementValue', 'frame', 'stopIfFail', 'isSuccess', 'rawResponse', ]} values={{ operation: 'UpdateElemen"
+    },
+    {
+      "id": "be4d2c4c282cd266",
+      "source": "orphan",
+      "page": "docs/v2/xaction/modules/software/chromecontrol.md",
+      "pageUrl": "/v2/xaction/modules/chromecontrol",
+      "title": "浏览器控制",
+      "moduleKey": "sys:chromecontrol",
+      "image": "docs/v2/xaction/modules/software/img/chromecontrol-024-22837a9375.png",
+      "imageName": "chromecontrol-024-22837a9375.png",
+      "component": "ModuleParamPreview",
+      "props": {
+        "moduleKey": "sys:chromecontrol",
+        "values": "{\"operation\":\"TriggerEvent\",\"tabId\":\"\",\"selector\":\"#submit\",\"triggerEventType\":\"click\",\"frame\":\"0\",\"stopIfFail\":\"true\"}",
+        "outputVars": "{\"rawResponse\":\"result\"}",
+        "focusKeys": "[\"operation\",\"tabId\",\"selector\",\"triggerEventType\",\"frame\",\"stopIfFail\",\"isSuccess\",\"rawResponse\"]"
+      },
+      "sourceSnippet": "<ModuleParamPreview moduleKey=\"sys:chromecontrol\" focusKeys={[ 'operation', 'tabId', 'selector', 'triggerEventType', 'frame', 'stopIfFail', 'isSuccess', 'rawResponse', ]} values={{ operation: 'TriggerEvent', tabId: '', selector: '#submit', "
+    },
+    {
+      "id": "1d7f73d5de09e779",
+      "source": "orphan",
+      "page": "docs/v2/xaction/modules/software/chromecontrol.md",
+      "pageUrl": "/v2/xaction/modules/chromecontrol",
+      "title": "浏览器控制",
+      "moduleKey": "sys:chromecontrol",
+      "image": "docs/v2/xaction/modules/software/img/chromecontrol-025-a90b20289d.png",
+      "imageName": "chromecontrol-025-a90b20289d.png",
+      "component": "ModuleParamPreview",
+      "props": {
+        "moduleKey": "sys:chromecontrol",
+        "values": "{\"operation\":\"TriggerEvent\",\"triggerEventType\":\"click\"}",
+        "focusKeys": "[\"triggerEventType\"]"
+      },
+      "sourceSnippet": "<ModuleParamPreview moduleKey=\"sys:chromecontrol\" focusKeys={['triggerEventType']} values={{operation: 'TriggerEvent', triggerEventType: 'click'}} />"
+    },
+    {
+      "id": "6124ae3739a3be51",
+      "source": "orphan",
+      "page": "docs/v2/xaction/modules/software/chromecontrol.md",
+      "pageUrl": "/v2/xaction/modules/chromecontrol",
+      "title": "浏览器控制",
+      "moduleKey": "sys:chromecontrol",
+      "image": "docs/v2/xaction/modules/software/img/chromecontrol-027-10ca3fdeb1.png",
+      "imageName": "chromecontrol-027-10ca3fdeb1.png",
+      "component": "ModuleParamPreview",
+      "props": {
+        "moduleKey": "sys:chromecontrol",
+        "values": "{\"operation\":\"Wait\",\"tabId\":\"\",\"selector\":\"#submit\",\"waitEventType\":\"textContains\",\"waitEventParams\":\"Hello\",\"stopIfFail\":\"true\"}",
+        "outputVars": "{\"rawResponse\":\"result\"}",
+        "focusKeys": "[\"operation\",\"tabId\",\"selector\",\"waitEventType\",\"waitEventParams\",\"stopIfFail\",\"isSuccess\",\"rawResponse\"]"
+      },
+      "sourceSnippet": "<ModuleParamPreview moduleKey=\"sys:chromecontrol\" focusKeys={[ 'operation', 'tabId', 'selector', 'waitEventType', 'waitEventParams', 'stopIfFail', 'isSuccess', 'rawResponse', ]} values={{ operation: 'Wait', tabId: '', selector: '#submit', w"
+    },
+    {
+      "id": "c8d8515d977ef7b3",
+      "source": "orphan",
+      "page": "docs/v2/xaction/modules/software/chromecontrol.md",
+      "pageUrl": "/v2/xaction/modules/chromecontrol",
+      "title": "浏览器控制",
+      "moduleKey": "sys:chromecontrol",
+      "image": "docs/v2/xaction/modules/software/img/chromecontrol-029-9ddbb1360d.png",
+      "imageName": "chromecontrol-029-9ddbb1360d.png",
+      "component": "ModuleParamPreview",
+      "props": {
+        "moduleKey": "sys:chromecontrol",
+        "outputVars": "{\"rawResponse\":\"rawResponse\"}",
+        "focusKeys": "[\"operation\",\"command\",\"commandParams\",\"valueFilter\",\"waitComplete\",\"stopIfFail\",\"timeoutMs\",\"isSuccess\",\"rawResponse\"]"
+      },
+      "sourceSnippet": "<ModuleParamPreview moduleKey=\"sys:chromecontrol\" focusKeys={[ 'operation', 'command', 'commandParams', 'valueFilter', 'waitComplete', 'stopIfFail', 'timeoutMs', 'isSuccess', 'rawResponse', ]} values={{ operation: 'BackgroundCommand', comma"
+    },
+    {
+      "id": "4b5c5370c48f9815",
+      "source": "orphan",
+      "page": "docs/v2/xaction/modules/software/chromecontrol.md",
+      "pageUrl": "/v2/xaction/modules/chromecontrol",
+      "title": "浏览器控制",
+      "moduleKey": "sys:chromecontrol",
+      "image": "docs/v2/xaction/modules/software/img/chromecontrol-030-12f2e1bdc0.png",
+      "imageName": "chromecontrol-030-12f2e1bdc0.png",
+      "component": "ModuleParamPreview",
+      "props": {
+        "moduleKey": "sys:chromecontrol",
+        "values": "{\"operation\":\"BackgroundCommand\",\"command\":\"api_tabs_query\",\"commandParams\":\"\",\"valueFilter\":\"url\",\"waitComplete\":\"true\",\"stopIfFail\":\"true\",\"timeoutMs\":\"3000\"}",
+        "outputVars": "{\"rawResponse\":\"result\"}",
+        "focusKeys": "[\"operation\",\"command\",\"commandParams\",\"valueFilter\",\"waitComplete\",\"stopIfFail\",\"timeoutMs\",\"isSuccess\",\"rawResponse\"]"
+      },
+      "sourceSnippet": "<ModuleParamPreview moduleKey=\"sys:chromecontrol\" focusKeys={[ 'operation', 'command', 'commandParams', 'valueFilter', 'waitComplete', 'stopIfFail', 'timeoutMs', 'isSuccess', 'rawResponse', ]} values={{ operation: 'BackgroundCommand', comma"
+    },
+    {
       "id": "0cbffa65fb797e0a",
       "source": "orphan",
       "page": "docs/v2/xaction/modules/software/excelobjects.md",
@@ -2659,6 +3039,77 @@
         "moduleKey": "sys:excelObjects"
       },
       "sourceSnippet": "<ModuleParamPreview moduleKey=\"sys:excelObjects\" />"
+    },
+    {
+      "id": "4d2c7bff45ad7bf1",
+      "source": "orphan",
+      "page": "docs/v2/xaction/modules/software/excelobjects.md",
+      "pageUrl": "/v2/xaction/modules/excelobjects",
+      "title": "Excel对象操作",
+      "moduleKey": "sys:excelObjects",
+      "image": "docs/v2/xaction/modules/software/img/excelobjects-002-541d461140.png",
+      "imageName": "excelobjects-002-541d461140.png",
+      "component": "ModuleParamPreview",
+      "props": {
+        "moduleKey": "sys:excelObjects",
+        "values": "{\"operation\":\"OpenFile\"}",
+        "outputVars": "{\"activeSheet\":\"sheet\"}",
+        "focusKeys": "[\"operation\",\"path\",\"params\",\"activeWorkbook\",\"activeSheet\",\"worksheets\",\"application\"]"
+      },
+      "sourceSnippet": "<ModuleParamPreview moduleKey=\"sys:excelObjects\" focusKeys={['operation', 'path', 'params', 'activeWorkbook', 'activeSheet', 'worksheets', 'application']} values={{operation: 'OpenFile'}} outputVars={{activeSheet: 'sheet'}} />"
+    },
+    {
+      "id": "0bab4ade81237754",
+      "source": "orphan",
+      "page": "docs/v2/xaction/modules/software/excelobjects.md",
+      "pageUrl": "/v2/xaction/modules/excelobjects",
+      "title": "Excel对象操作",
+      "moduleKey": "sys:excelObjects",
+      "image": "docs/v2/xaction/modules/software/img/excelobjects-003-8dec198bbf.png",
+      "imageName": "excelobjects-003-8dec198bbf.png",
+      "component": "ModuleParamPreview",
+      "props": {
+        "moduleKey": "sys:excelObjects",
+        "values": "{\"operation\":\"SaveWorkbook\"}",
+        "outputVars": "{\"isSuccess\":\"isSuccess\"}",
+        "focusKeys": "[\"operation\",\"workbook\",\"path\",\"params\",\"isSuccess\"]"
+      },
+      "sourceSnippet": "<ModuleParamPreview moduleKey=\"sys:excelObjects\" focusKeys={['operation', 'workbook', 'path', 'params', 'isSuccess']} values={{operation: 'SaveWorkbook'}} outputVars={{isSuccess: 'isSuccess'}} />"
+    },
+    {
+      "id": "622ef99c36ea9635",
+      "source": "orphan",
+      "page": "docs/v2/xaction/modules/software/excelobjects.md",
+      "pageUrl": "/v2/xaction/modules/excelobjects",
+      "title": "Excel对象操作",
+      "moduleKey": "sys:excelObjects",
+      "image": "docs/v2/xaction/modules/software/img/excelobjects-004-aeb88122c6.png",
+      "imageName": "excelobjects-004-aeb88122c6.png",
+      "component": "ModuleParamPreview",
+      "props": {
+        "moduleKey": "sys:excelObjects",
+        "values": "{\"operation\":\"CreateWorkbook\"}",
+        "outputVars": "{\"isSuccess\":\"isSuccess\",\"activeSheet\":\"worksheet\"}",
+        "focusKeys": "[\"operation\",\"path\",\"params\",\"isSuccess\",\"activeWorkbook\",\"activeSheet\"]"
+      },
+      "sourceSnippet": "<ModuleParamPreview moduleKey=\"sys:excelObjects\" focusKeys={['operation', 'path', 'params', 'isSuccess', 'activeWorkbook', 'activeSheet']} values={{operation: 'CreateWorkbook'}} outputVars={{isSuccess: 'isSuccess', activeSheet: 'worksheet'}"
+    },
+    {
+      "id": "f7d8e23dc2ee80da",
+      "source": "orphan",
+      "page": "docs/v2/xaction/modules/software/excelobjects.md",
+      "pageUrl": "/v2/xaction/modules/excelobjects",
+      "title": "Excel对象操作",
+      "moduleKey": "sys:excelObjects",
+      "image": "docs/v2/xaction/modules/software/img/excelobjects-005-f1a542d83e.png",
+      "imageName": "excelobjects-005-f1a542d83e.png",
+      "component": "ModuleParamPreview",
+      "props": {
+        "moduleKey": "sys:excelObjects",
+        "values": "{\"operation\":\"SelectWorksheet\",\"params\":\"name=工作表2\"}",
+        "focusKeys": "[\"operation\",\"workbook\",\"params\"]"
+      },
+      "sourceSnippet": "<ModuleParamPreview moduleKey=\"sys:excelObjects\" focusKeys={['operation', 'workbook', 'params']} values={{operation: 'SelectWorksheet', params: 'name=工作表2'}} />"
     },
     {
       "id": "548be5dbcc58913d",
@@ -2986,6 +3437,40 @@
       "sourceSnippet": "<ModuleParamPreview moduleKey=\"sys:officehelper\" />"
     },
     {
+      "id": "d5a2a55737598c96",
+      "source": "orphan",
+      "page": "docs/v2/xaction/modules/software/officehelper.md",
+      "pageUrl": "/v2/xaction/modules/officehelper",
+      "title": "Office软件辅助",
+      "moduleKey": "sys:officehelper",
+      "image": "docs/v2/xaction/modules/software/img/officehelper-003-f16a44bf1c.png",
+      "imageName": "officehelper-003-f16a44bf1c.png",
+      "component": "ModuleParamPreview",
+      "props": {
+        "moduleKey": "sys:officehelper",
+        "focusKeys": "[\"operation\",\"appType\",\"formats\",\"waitResp\",\"stopIfFail\",\"isSuccess\"]"
+      },
+      "sourceSnippet": "<ModuleParamPreview moduleKey=\"sys:officehelper\" focusKeys={['operation', 'appType', 'formats', 'waitResp', 'stopIfFail', 'isSuccess']} values={{ operation: 'setFormats', appType: 'word', formats: `selection .Font .Name = \"仿宋\" .NameAscii = "
+    },
+    {
+      "id": "77e288ea5137a23e",
+      "source": "orphan",
+      "page": "docs/v2/xaction/modules/software/officehelper.md",
+      "pageUrl": "/v2/xaction/modules/officehelper",
+      "title": "Office软件辅助",
+      "moduleKey": "sys:officehelper",
+      "image": "docs/v2/xaction/modules/software/img/officehelper-004-a91d979752.png",
+      "imageName": "officehelper-004-a91d979752.png",
+      "component": "ModuleParamPreview",
+      "props": {
+        "moduleKey": "sys:officehelper",
+        "values": "{\"operation\":\"getProgId\",\"appType\":\"excel_et\",\"stopIfFail\":\"true\"}",
+        "outputVars": "{\"progId\":\"progId\"}",
+        "focusKeys": "[\"operation\",\"appType\",\"stopIfFail\",\"isSuccess\",\"progId\"]"
+      },
+      "sourceSnippet": "<ModuleParamPreview moduleKey=\"sys:officehelper\" focusKeys={['operation', 'appType', 'stopIfFail', 'isSuccess', 'progId']} values={{operation: 'getProgId', appType: 'excel_et', stopIfFail: 'true'}} outputVars={{progId: 'progId'}} />"
+    },
+    {
       "id": "f303121f7dbfdcb1",
       "source": "orphan",
       "page": "docs/v2/xaction/modules/software/rhinocontrol.md",
@@ -3264,6 +3749,59 @@
       "sourceSnippet": "<ModuleParamPreview moduleKey=\"sys:fileSystemWatch\" />"
     },
     {
+      "id": "a399cd4d2b646f8f",
+      "source": "orphan",
+      "page": "docs/v2/xaction/modules/system/filesystemwatch.md",
+      "pageUrl": "/v2/xaction/modules/filesystemwatch",
+      "title": "文件系统监控",
+      "moduleKey": "sys:fileSystemWatch",
+      "image": "docs/v2/xaction/modules/system/img/filesystemwatch-002-bf1b0bbfae.png",
+      "imageName": "filesystemwatch-002-bf1b0bbfae.png",
+      "component": "ModuleParamPreview",
+      "props": {
+        "moduleKey": "sys:fileSystemWatch",
+        "values": "{\"operation\":\"callback\",\"includeSubdirectories\":\"true\",\"filter\":\"*.*\",\"notifyFilter\":\"\",\"createdCallback\":\"OnCreated\",\"changedCallback\":\"OnChanged\",\"deletedCallback\":\"OnDeleted\",\"renamedCallback\":\"OnRenamed\"}",
+        "inputVars": "{\"path\":\"path\"}",
+        "outputVars": "{\"isSuccess\":\"isSuccess\"}",
+        "focusKeys": "[\"operation\",\"path\",\"includeSubdirectories\",\"filter\",\"notifyFilter\",\"createdCallback\",\"changedCallback\",\"deletedCallback\",\"renamedCallback\",\"isSuccess\"]"
+      },
+      "sourceSnippet": "<ModuleParamPreview moduleKey=\"sys:fileSystemWatch\" focusKeys={[ 'operation', 'path', 'includeSubdirectories', 'filter', 'notifyFilter', 'createdCallback', 'changedCallback', 'deletedCallback', 'renamedCallback', 'isSuccess', ]} values={{ o"
+    },
+    {
+      "id": "44cdf5aabe09c64c",
+      "source": "orphan",
+      "page": "docs/v2/xaction/modules/system/filesystemwatch.md",
+      "pageUrl": "/v2/xaction/modules/filesystemwatch",
+      "title": "文件系统监控",
+      "moduleKey": "sys:runAction",
+      "image": "docs/v2/xaction/modules/system/img/filesystemwatch-004-22848d1142.png",
+      "imageName": "filesystemwatch-004-22848d1142.png",
+      "component": "ModuleParamPreview",
+      "props": {
+        "moduleKey": "sys:runAction",
+        "values": "{\"type\":\"StartAction\",\"actionId\":\"xxx目录监控\",\"inputParam\":\"shutdown\",\"wait\":\"false\"}",
+        "focusKeys": "[\"type\",\"actionId\",\"inputParam\",\"wait\"]"
+      },
+      "sourceSnippet": "<ModuleParamPreview moduleKey=\"sys:runAction\" focusKeys={['type', 'actionId', 'inputParam', 'wait']} values={{type: 'StartAction', actionId: 'xxx目录监控', inputParam: 'shutdown', wait: 'false'}} />"
+    },
+    {
+      "id": "1e9edaadf834faec",
+      "source": "orphan",
+      "page": "docs/v2/xaction/modules/system/filesystemwatch.md",
+      "pageUrl": "/v2/xaction/modules/filesystemwatch",
+      "title": "文件系统监控",
+      "moduleKey": "sys:runAction",
+      "image": "docs/v2/xaction/modules/system/img/filesystemwatch-005-41d8ad6984.png",
+      "imageName": "filesystemwatch-005-41d8ad6984.png",
+      "component": "ModuleParamPreview",
+      "props": {
+        "moduleKey": "sys:runAction",
+        "values": "{\"type\":\"StopOtherInstance\",\"stopIfFail\":\"true\"}",
+        "focusKeys": "[\"type\",\"stopIfFail\"]"
+      },
+      "sourceSnippet": "<ModuleParamPreview moduleKey=\"sys:runAction\" focusKeys={['type', 'stopIfFail']} values={{type: 'StopOtherInstance', stopIfFail: 'true'}} />"
+    },
+    {
       "id": "3083175b5c4897c9",
       "source": "orphan",
       "page": "docs/v2/xaction/modules/system/getactiveprocessinfo.md",
@@ -3522,6 +4060,142 @@
       "sourceSnippet": "<ModuleParamPreview moduleKey=\"sys:quickeroperations\" />"
     },
     {
+      "id": "802428064633e074",
+      "source": "orphan",
+      "page": "docs/v2/xaction/modules/system/quickeroperations.md",
+      "pageUrl": "/v2/xaction/modules/quickeroperations",
+      "title": "Quicker操作",
+      "moduleKey": "sys:quickeroperations",
+      "image": "docs/v2/xaction/modules/system/img/quickeroperations-002-a8d3907695.png",
+      "imageName": "quickeroperations-002-a8d3907695.png",
+      "component": "ModuleParamPreview",
+      "props": {
+        "moduleKey": "sys:quickeroperations",
+        "values": "{\"type\":\"showPanel\",\"activatePointWindow\":\"false\",\"followMousePosition\":\"true\",\"stopIfFail\":\"true\"}",
+        "focusKeys": "[\"type\",\"activatePointWindow\",\"followMousePosition\",\"stopIfFail\",\"isSuccess\"]"
+      },
+      "sourceSnippet": "<ModuleParamPreview moduleKey=\"sys:quickeroperations\" focusKeys={['type', 'activatePointWindow', 'followMousePosition', 'stopIfFail', 'isSuccess']} values={{ type: 'showPanel', activatePointWindow: 'false', followMousePosition: 'true', stop"
+    },
+    {
+      "id": "8c84d118038cb5e7",
+      "source": "orphan",
+      "page": "docs/v2/xaction/modules/system/quickeroperations.md",
+      "pageUrl": "/v2/xaction/modules/quickeroperations",
+      "title": "Quicker操作",
+      "moduleKey": "sys:quickeroperations",
+      "image": "docs/v2/xaction/modules/system/img/quickeroperations-007-c4024bcc7b.png",
+      "imageName": "quickeroperations-007-c4024bcc7b.png",
+      "component": "ModuleParamPreview",
+      "props": {
+        "moduleKey": "sys:quickeroperations",
+        "values": "{\"type\":\"showDashboardWindow\",\"exe\":\"\",\"stopIfFail\":\"true\"}",
+        "focusKeys": "[\"type\",\"exe\",\"stopIfFail\"]"
+      },
+      "sourceSnippet": "<ModuleParamPreview moduleKey=\"sys:quickeroperations\" focusKeys={['type', 'exe', 'stopIfFail']} values={{type: 'showDashboardWindow', exe: '', stopIfFail: 'true'}} />"
+    },
+    {
+      "id": "26aa3eea2c044005",
+      "source": "orphan",
+      "page": "docs/v2/xaction/modules/system/quickeroperations.md",
+      "pageUrl": "/v2/xaction/modules/quickeroperations",
+      "title": "Quicker操作",
+      "moduleKey": "sys:quickeroperations",
+      "image": "docs/v2/xaction/modules/system/img/quickeroperations-011-c72a1ce610.png",
+      "imageName": "quickeroperations-011-c72a1ce610.png",
+      "component": "ModuleParamPreview",
+      "props": {
+        "moduleKey": "sys:quickeroperations",
+        "values": "{\"type\":\"showExeSettingWindow\",\"exe\":\"\",\"stopIfFail\":\"true\"}",
+        "focusKeys": "[\"type\",\"exe\",\"stopIfFail\"]"
+      },
+      "sourceSnippet": "<ModuleParamPreview moduleKey=\"sys:quickeroperations\" focusKeys={['type', 'exe', 'stopIfFail']} values={{type: 'showExeSettingWindow', exe: '', stopIfFail: 'true'}} />"
+    },
+    {
+      "id": "7f02dcab21e2f669",
+      "source": "orphan",
+      "page": "docs/v2/xaction/modules/system/quickeroperations.md",
+      "pageUrl": "/v2/xaction/modules/quickeroperations",
+      "title": "Quicker操作",
+      "moduleKey": "sys:quickeroperations",
+      "image": "docs/v2/xaction/modules/system/img/quickeroperations-018-a4f1f84d17.png",
+      "imageName": "quickeroperations-018-a4f1f84d17.png",
+      "component": "ModuleParamPreview",
+      "props": {
+        "moduleKey": "sys:quickeroperations",
+        "values": "{\"type\":\"editAction\",\"actionId\":\"测试动作20240108\",\"stopIfFail\":\"true\"}",
+        "focusKeys": "[\"type\",\"actionId\",\"stopIfFail\"]"
+      },
+      "sourceSnippet": "<ModuleParamPreview moduleKey=\"sys:quickeroperations\" focusKeys={['type', 'actionId', 'stopIfFail']} values={{type: 'editAction', actionId: '测试动作20240108', stopIfFail: 'true'}} />"
+    },
+    {
+      "id": "9fc1bad793a7f635",
+      "source": "orphan",
+      "page": "docs/v2/xaction/modules/system/quickeroperations.md",
+      "pageUrl": "/v2/xaction/modules/quickeroperations",
+      "title": "Quicker操作",
+      "moduleKey": "sys:quickeroperations",
+      "image": "docs/v2/xaction/modules/system/img/quickeroperations-019-78108a0754.png",
+      "imageName": "quickeroperations-019-78108a0754.png",
+      "component": "ModuleParamPreview",
+      "props": {
+        "moduleKey": "sys:quickeroperations",
+        "values": "{\"type\":\"SearchWithCertainAction\",\"actionId\":\"测试动作20240108\",\"searchText\":\"\",\"stopIfFail\":\"true\"}",
+        "focusKeys": "[\"type\",\"actionId\",\"searchText\",\"stopIfFail\"]"
+      },
+      "sourceSnippet": "<ModuleParamPreview moduleKey=\"sys:quickeroperations\" focusKeys={['type', 'actionId', 'searchText', 'stopIfFail']} values={{ type: 'SearchWithCertainAction', actionId: '测试动作20240108', searchText: '', stopIfFail: 'true', }} />"
+    },
+    {
+      "id": "7bc20bb6e826b277",
+      "source": "orphan",
+      "page": "docs/v2/xaction/modules/system/quickeroperations.md",
+      "pageUrl": "/v2/xaction/modules/quickeroperations",
+      "title": "Quicker操作",
+      "moduleKey": "sys:quickeroperations",
+      "image": "docs/v2/xaction/modules/system/img/quickeroperations-020-52ff21f310.png",
+      "imageName": "quickeroperations-020-52ff21f310.png",
+      "component": "ModuleParamPreview",
+      "props": {
+        "moduleKey": "sys:quickeroperations",
+        "values": "{\"type\":\"LoadSkin\",\"skinId\":\"16e905c4-bdab-40d6-ff8e-08dcbaf60df3\",\"theme\":\"\"}",
+        "focusKeys": "[\"type\",\"skinId\",\"theme\",\"isSuccess\"]"
+      },
+      "sourceSnippet": "<ModuleParamPreview moduleKey=\"sys:quickeroperations\" focusKeys={['type', 'skinId', 'theme', 'isSuccess']} values={{ type: 'LoadSkin', skinId: '16e905c4-bdab-40d6-ff8e-08dcbaf60df3', theme: '', }} />"
+    },
+    {
+      "id": "f7353bbb8360d488",
+      "source": "orphan",
+      "page": "docs/v2/xaction/modules/system/quickeroperations.md",
+      "pageUrl": "/v2/xaction/modules/quickeroperations",
+      "title": "Quicker操作",
+      "moduleKey": "sys:quickeroperations",
+      "image": "docs/v2/xaction/modules/system/img/quickeroperations-022-d673978120.png",
+      "imageName": "quickeroperations-022-d673978120.png",
+      "component": "ModuleParamPreview",
+      "props": {
+        "moduleKey": "sys:quickeroperations",
+        "values": "{\"type\":\"FloatAction\",\"actionId\":\"\",\"position\":\"200,200\",\"stopIfFail\":\"true\"}",
+        "focusKeys": "[\"type\",\"actionId\",\"position\",\"stopIfFail\",\"isSuccess\"]"
+      },
+      "sourceSnippet": "<ModuleParamPreview moduleKey=\"sys:quickeroperations\" focusKeys={['type', 'actionId', 'position', 'stopIfFail', 'isSuccess']} values={{type: 'FloatAction', actionId: '', position: '200,200', stopIfFail: 'true'}} />"
+    },
+    {
+      "id": "36f01eaef0d7802a",
+      "source": "orphan",
+      "page": "docs/v2/xaction/modules/system/quickeroperations.md",
+      "pageUrl": "/v2/xaction/modules/quickeroperations",
+      "title": "Quicker操作",
+      "moduleKey": "sys:quickeroperations",
+      "image": "docs/v2/xaction/modules/system/img/quickeroperations-023-5a3a6c3ef9.png",
+      "imageName": "quickeroperations-023-5a3a6c3ef9.png",
+      "component": "ModuleParamPreview",
+      "props": {
+        "moduleKey": "sys:quickeroperations",
+        "values": "{\"type\":\"ToggleFloatButtons\",\"viewMode\":\"ByProcess\"}",
+        "focusKeys": "[\"type\",\"viewMode\",\"isSuccess\"]"
+      },
+      "sourceSnippet": "<ModuleParamPreview moduleKey=\"sys:quickeroperations\" focusKeys={['type', 'viewMode', 'isSuccess']} values={{type: 'ToggleFloatButtons', viewMode: 'ByProcess'}} />"
+    },
+    {
       "id": "1417e452a30cae77",
       "source": "orphan",
       "page": "docs/v2/xaction/modules/system/recordsound.md",
@@ -3618,6 +4292,24 @@
         "moduleKey": "sys:sendMessage"
       },
       "sourceSnippet": "<ModuleParamPreview moduleKey=\"sys:sendMessage\" />"
+    },
+    {
+      "id": "ec76a1010efc051c",
+      "source": "orphan",
+      "page": "docs/v2/xaction/modules/system/shelloperation.md",
+      "pageUrl": "/v2/xaction/modules/shelloperation",
+      "title": "Shell文件操作",
+      "moduleKey": "sys:shelloperation",
+      "image": "docs/v2/xaction/modules/system/img/shelloperation-002-d9f5f22620.png",
+      "imageName": "shelloperation-002-d9f5f22620.png",
+      "component": "ModuleParamPreview",
+      "props": {
+        "moduleKey": "sys:shelloperation",
+        "values": "{\"operation\":\"gettitles\",\"pathOrExt\":\"\"}",
+        "outputVars": "{\"titles\":\"verbs\"}",
+        "focusKeys": "[\"operation\",\"pathOrExt\",\"isSuccess\",\"titles\"]"
+      },
+      "sourceSnippet": "<ModuleParamPreview moduleKey=\"sys:shelloperation\" focusKeys={['operation', 'pathOrExt', 'isSuccess', 'titles']} values={{operation: 'gettitles', pathOrExt: ''}} outputVars={{titles: 'verbs'}} />"
     },
     {
       "id": "f04553a05a214df3",
@@ -3723,6 +4415,23 @@
         "moduleKey": "sys:windowOperations"
       },
       "sourceSnippet": "<ModuleParamPreview moduleKey=\"sys:windowOperations\" />"
+    },
+    {
+      "id": "29d2962b4582509b",
+      "source": "orphan",
+      "page": "docs/v2/xaction/modules/system/windowoperations.md",
+      "pageUrl": "/v2/xaction/modules/windowoperations",
+      "title": "窗口操作",
+      "moduleKey": "sys:windowOperations",
+      "image": "docs/v2/xaction/modules/system/img/windowoperations-005-0baeb889ca.png",
+      "imageName": "windowoperations-005-0baeb889ca.png",
+      "component": "ModuleParamPreview",
+      "props": {
+        "moduleKey": "sys:windowOperations",
+        "values": "{\"type\":\"show\",\"hWnd\":\"\",\"showCmd\":\"3\"}",
+        "focusKeys": "[\"type\",\"hWnd\",\"showCmd\",\"isSuccess\"]"
+      },
+      "sourceSnippet": "<ModuleParamPreview moduleKey=\"sys:windowOperations\" focusKeys={['type', 'hWnd', 'showCmd', 'isSuccess']} values={{type: 'show', hWnd: '', showCmd: '3'}} />"
     },
     {
       "id": "3861f97423571057",
@@ -3852,6 +4561,39 @@
         "moduleKey": "sys:regexExtract"
       },
       "sourceSnippet": "<ModuleParamPreview moduleKey=\"sys:regexExtract\" />"
+    },
+    {
+      "id": "726ffe7f922fe3c6",
+      "source": "orphan",
+      "page": "docs/v2/xaction/modules/text/showtext.md",
+      "pageUrl": "/v2/xaction/modules/showtext",
+      "title": "文本窗口",
+      "moduleKey": "sys:showText",
+      "image": "docs/v2/xaction/modules/text/img/showtext-003-638303e144.png",
+      "imageName": "showtext-003-638303e144.png",
+      "component": "ModuleParamPreview",
+      "props": {
+        "moduleKey": "sys:showText",
+        "values": "{\"type\":\"NO_WAIT\"}",
+        "focusKeys": "[\"type\"]"
+      },
+      "sourceSnippet": "<ModuleParamPreview moduleKey=\"sys:showText\" focusKeys={['type']} values={{type: 'NO_WAIT'}} />"
+    },
+    {
+      "id": "fde1d589d8c217e9",
+      "source": "orphan",
+      "page": "docs/v2/xaction/modules/text/showtext.md",
+      "pageUrl": "/v2/xaction/modules/showtext",
+      "title": "文本窗口",
+      "moduleKey": "sys:showText",
+      "image": "docs/v2/xaction/modules/text/img/showtext-004-6c86dd1256.png",
+      "imageName": "showtext-004-6c86dd1256.png",
+      "component": "ModuleParamPreview",
+      "props": {
+        "moduleKey": "sys:showText",
+        "values": "{\"type\":\"WAIT\",\"text\":\"\",\"title\":\"结果内容\",\"topMost\":\"false\",\"autoCloseKey\":\"\",\"winLocation\":\"CenterScreen\",\"winSize\":\"\",\"fontsize\":\"14\",\"fontfamily\":\"\",\"bgColor\":\"\",\"textColor\":\"\",\"highlight\":\"\",\"autoSaveToState\":\"\",\"closeWhenLostFocus\":\"false\",\"stopIfFail\":\"true\"}"
+      },
+      "sourceSnippet": "<ModuleParamPreview moduleKey=\"sys:showText\" values={{ type: 'WAIT', text: '', title: '结果内容', topMost: 'false', autoCloseKey: '', winLocation: 'CenterScreen', winSize: '', fontsize: '14', fontfamily: '', bgColor: '', textColor: '', highligh"
     },
     {
       "id": "0182c430378757ff",
@@ -3999,6 +4741,39 @@
         "moduleKey": "sys:custompanel"
       },
       "sourceSnippet": "<ModuleParamPreview moduleKey=\"sys:custompanel\" />"
+    },
+    {
+      "id": "1146c4acab249ca7",
+      "source": "orphan",
+      "page": "docs/v2/xaction/modules/ui/custompanel.md",
+      "pageUrl": "/v2/xaction/modules/custompanel",
+      "title": "自定义操作窗",
+      "moduleKey": "sys:custompanel",
+      "image": "docs/v2/xaction/modules/ui/img/custompanel-011-77de9b3650.png",
+      "imageName": "custompanel-011-77de9b3650.png",
+      "component": "ModuleParamPreview",
+      "props": {
+        "moduleKey": "sys:custompanel",
+        "focusKeys": "[\"operation\",\"operationData\",\"defaultOperation\",\"spacingStr\"]"
+      },
+      "sourceSnippet": "<ModuleParamPreview moduleKey=\"sys:custompanel\" focusKeys={['operation', 'operationData', 'defaultOperation', 'spacingStr']} values={{ operation: 'show_fixed_panel', operationData: `[fa:Light_Copy:#009900]复制(请选中内容后操作)|^c [fa:Light_Paste:#00"
+    },
+    {
+      "id": "bb252ca052f10ae5",
+      "source": "orphan",
+      "page": "docs/v2/xaction/modules/ui/custompanel.md",
+      "pageUrl": "/v2/xaction/modules/custompanel",
+      "title": "自定义操作窗",
+      "moduleKey": "sys:custompanel",
+      "image": "docs/v2/xaction/modules/ui/img/custompanel-029-31bc785395.png",
+      "imageName": "custompanel-029-31bc785395.png",
+      "component": "ModuleParamPreview",
+      "props": {
+        "moduleKey": "sys:custompanel",
+        "values": "{\"operation\":\"close_fixed_panel\",\"windowId\":\"hello_world\",\"stopIfFail\":\"true\"}",
+        "focusKeys": "[\"operation\",\"windowId\",\"stopIfFail\",\"isSuccess\"]"
+      },
+      "sourceSnippet": "<ModuleParamPreview moduleKey=\"sys:custompanel\" focusKeys={['operation', 'windowId', 'stopIfFail', 'isSuccess']} values={{operation: 'close_fixed_panel', windowId: 'hello_world', stopIfFail: 'true'}} />"
     },
     {
       "id": "c631c6c607de2d4b",
@@ -4242,6 +5017,23 @@
         "moduleKey": "sys:waitKeyboard"
       },
       "sourceSnippet": "<ModuleParamPreview moduleKey=\"sys:waitKeyboard\" />"
+    },
+    {
+      "id": "638845389e391630",
+      "source": "orphan",
+      "page": "docs/v2/xaction/modules/ui/waitkeyboard.md",
+      "pageUrl": "/v2/xaction/modules/waitkeyboard",
+      "title": "等待按键",
+      "moduleKey": "sys:waitKeyboard",
+      "image": "docs/v2/xaction/modules/ui/img/waitkeyboard-003-fc26eb9b99.png",
+      "imageName": "waitkeyboard-003-fc26eb9b99.png",
+      "component": "ModuleParamPreview",
+      "props": {
+        "moduleKey": "sys:waitKeyboard",
+        "values": "{\"operation\":\"waitAllKeyUp\",\"maxWaitSeconds\":\"20\",\"stopIfFail\":\"true\"}",
+        "focusKeys": "[\"operation\",\"maxWaitSeconds\",\"stopIfFail\",\"isSuccess\"]"
+      },
+      "sourceSnippet": "<ModuleParamPreview moduleKey=\"sys:waitKeyboard\" focusKeys={['operation', 'maxWaitSeconds', 'stopIfFail', 'isSuccess']} values={{operation: 'waitAllKeyUp', maxWaitSeconds: '20', stopIfFail: 'true'}} />"
     },
     {
       "id": "eb21bbb09eb947f2",

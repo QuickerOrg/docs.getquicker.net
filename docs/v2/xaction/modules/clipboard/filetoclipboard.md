@@ -25,7 +25,7 @@ legacyContentUpdatedAt: "2019-07-08T14:02:45.000Z"
 
 将指定的一个或多个文件存入剪贴板，方便在其他软件中粘贴（如粘贴在聊天窗口里）。
 
-![](./img/filetoclipboard-001-af3d5a0a46.png)
+<ModuleParamPreview moduleKey="sys:fileToClipboard" />
 
 ## 参数
 

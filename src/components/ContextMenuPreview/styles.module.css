@@ -28,17 +28,35 @@
 }
 
 .item {
+  position: relative;
   display: grid;
   grid-template-columns: 22px minmax(0, 1fr) 14px;
   align-items: center;
   gap: 6px;
+  width: 100%;
   padding: 6px 10px;
-  cursor: default;
+  appearance: none;
+  border: 0;
+  background: transparent;
+  color: inherit;
+  font: inherit;
+  text-align: left;
+  cursor: pointer;
   user-select: none;
 }
 
+.item:hover,
 .itemOpen {
   background: var(--cmp-open);
+}
+
+.itemPicked {
+  background: color-mix(in srgb, #2b7abf 18%, var(--cmp-hover));
+}
+
+.item:focus-visible {
+  outline: 2px solid var(--ifm-color-primary);
+  outline-offset: -2px;
 }
 
 .itemDanger .label {
@@ -51,6 +69,7 @@
   justify-content: center;
   width: 16px;
   height: 16px;
+  color: #6b7280;
   font-size: 12px;
   line-height: 1;
 }
@@ -80,37 +99,29 @@
 }
 
 .flyout {
-  margin-left: 2px;
-  padding-left: 2px;
+  margin-left: 0;
+  padding-left: 4px;
 }
 
-.tooltip,
-.tooltipBelow {
-  z-index: 2;
+.itemTooltip {
+  position: absolute;
+  left: calc(100% + 8px);
+  top: 50%;
+  z-index: 3;
   max-width: 200px;
   padding: 4px 8px;
   border-radius: 4px;
   background: #4b5563;
   color: #fff;
   font-size: 12px;
+  line-height: 1.35;
   white-space: nowrap;
+  pointer-events: none;
   box-shadow: 0 2px 8px rgb(0 0 0 / 18%);
+  transform: translateY(-50%);
 }
 
-.tooltip {
-  position: absolute;
-  left: calc(100% + 8px);
-  top: 8px;
-}
-
-.tooltipBelow {
-  position: absolute;
-  left: 12px;
-  top: calc(100% + 6px);
-}
-
-html[data-theme='dark'] .tooltip,
-html[data-theme='dark'] .tooltipBelow {
+html[data-theme='dark'] .itemTooltip {
   background: #9ca3af;
   color: #111827;
 }

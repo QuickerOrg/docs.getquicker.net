@@ -12,8 +12,11 @@ import ChoiceListPreview from '@site/src/components/ChoiceListPreview';
 import ContextMenuPreview from '@site/src/components/ContextMenuPreview';
 import WaitWinPreview from '@site/src/components/WaitWinPreview';
 import TableFieldPreview from '@site/src/components/TableFieldPreview';
+import TableDataPreview from '@site/src/components/TableDataPreview';
 import PreviewCompare from '@site/src/components/PreviewCompare';
+import PreviewMap from '@site/src/components/PreviewMap';
 import ShareLinkCard from '@site/src/components/ShareLinkCard';
+import XActionLanding from '@site/src/components/XActionLanding';
 
 type MDXComponentsType = NonNullable<ComponentProps<typeof MDXProvider>['components']>;
 
@@ -32,8 +35,11 @@ const components = {
   ContextMenuPreview,
   WaitWinPreview,
   TableFieldPreview,
+  TableDataPreview,
   PreviewCompare,
+  PreviewMap,
   ShareLinkCard,
+  XActionLanding,
 } as MDXComponentsType;
 
 export default function MDXContent({children}: {children: ReactNode}): ReactNode {

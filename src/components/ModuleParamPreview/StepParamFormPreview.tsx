@@ -22,6 +22,7 @@ import {
 } from "react";
 import { createPortal } from "react-dom";
 import {resolveRunScriptFileExt} from "@site/data/xaction/param-file-ext";
+import {DocsStepIcon} from "@site/src/components/StepProgramView/DocsStepIcon";
 import {
   canBindVariable,
   OutputVarPicker,
@@ -79,6 +80,13 @@ export type StepParamFormPreviewProps = {
   focusKeys?: readonly string[];
   /** Default true when focusKeys is set. */
   collapseOthers?: boolean;
+  /**
+   * Optional header icon (usually the action icon).
+   * Exposed as `data-preview-from="actionIcon"` for PreviewMap.
+   */
+  actionIcon?: string;
+  /** Override section body scrolling. Default: scroll when the form is long. */
+  scrollBody?: boolean;
   className?: string;
 };
 
@@ -127,29 +135,6 @@ export function isStepParamVisible(
   return Object.values(currentValues).some((v) => wanted.includes(v));
 }
 
-function wheelDeltaYPixels(event: WheelEvent): number {
-  if (event.deltaMode === WheelEvent.DOM_DELTA_LINE) return event.deltaY * 16;
-  if (event.deltaMode === WheelEvent.DOM_DELTA_PAGE) {
-    return event.deltaY * window.innerHeight * 0.9;
-  }
-  return event.deltaY;
-}
-
-function nearestOuterScroller(inner: HTMLElement): HTMLElement {
-  let node = inner.parentElement;
-  while (node) {
-    const style = window.getComputedStyle(node);
-    const overflowY = style.overflowY;
-    const canScroll =
-      (overflowY === "auto" || overflowY === "scroll" || overflowY === "overlay") &&
-      node.scrollHeight > node.clientHeight + 1;
-    if (canScroll) return node;
-    node = node.parentElement;
-  }
-  const root = document.scrollingElement;
-  return root instanceof HTMLElement ? root : document.documentElement;
-}
-
 function ParamSection({
   title,
   children,
@@ -163,32 +148,6 @@ function ParamSection({
   defaultExpanded?: boolean;
 }): JSX.Element {
   const [expanded, setExpanded] = useState(defaultExpanded);
-  const bodyRef = useRef<HTMLDivElement | null>(null);
-
-  useEffect(() => {
-    if (!scrollBody || !expanded) return;
-    const el = bodyRef.current;
-    if (!el) return;
-    const onWheel = (event: WheelEvent): void => {
-      if (event.ctrlKey || event.metaKey) return;
-      if (Math.abs(event.deltaX) > Math.abs(event.deltaY)) return;
-      const maxScroll = Math.max(0, el.scrollHeight - el.clientHeight);
-      // Empty / non-overflowing pane: do not steal the page wheel.
-      if (maxScroll <= 0) return;
-      const delta = wheelDeltaYPixels(event);
-      if (delta === 0) return;
-      const nextInner = Math.min(maxScroll, Math.max(0, el.scrollTop + delta));
-      const applied = nextInner - el.scrollTop;
-      const leftover = delta - applied;
-      if (leftover === 0) return;
-      event.preventDefault();
-      if (applied !== 0) el.scrollTop = nextInner;
-      const outer = nearestOuterScroller(el);
-      outer.scrollBy({ top: leftover, left: 0, behavior: "instant" });
-    };
-    el.addEventListener("wheel", onWheel, { passive: false });
-    return () => el.removeEventListener("wheel", onWheel);
-  }, [scrollBody, expanded]);
 
   return (
     <section
@@ -218,7 +177,6 @@ function ParamSection({
       </button>
       {expanded ? (
         <div
-          ref={bodyRef}
           className={[
             "step-editor-param-section__body",
             scrollBody ? "step-editor-param-section__body--scroll" : "",
@@ -255,6 +213,7 @@ function BoolRow({
       ]
         .filter(Boolean)
         .join(" ")}
+      data-preview-from={param.key}
     >
       <span className="step-param-inline-col1-spacer" aria-hidden />
       <div className="step-param-inline-bool">
@@ -537,9 +496,10 @@ function InputRow({
       ]
         .filter(Boolean)
         .join(" ")}
+      data-preview-from={param.key}
     >
       <div className="step-param-label">{param.name}</div>
-      <div className="step-param-field-col">
+      <div className="step-param-field-col" data-preview-handle="from">
         {useSelect ? (
           <EnumSelect module={module} param={param} value={value} onChange={onChange} />
         ) : (
@@ -576,9 +536,10 @@ function OutputRow({
       ]
         .filter(Boolean)
         .join(" ")}
+      data-preview-from={output.key}
     >
       <div className="step-param-label">{output.name}</div>
-      <div className="step-param-field-col">
+      <div className="step-param-field-col" data-preview-handle="from">
         <div className="step-param-output-picker-row">
           <OutputVarPicker varName={varName.trim()} varType={output.type} />
           {desc ? (
@@ -611,6 +572,8 @@ export function StepParamFormPreview({
   showHidden = false,
   focusKeys,
   collapseOthers,
+  actionIcon,
+  scrollBody,
   className,
 }: StepParamFormPreviewProps): JSX.Element {
   const initial = useMemo(() => buildInitialValues(module, values), [module, values]);
@@ -672,7 +635,14 @@ export function StepParamFormPreview({
     >
       <div className="step-editor-popup-header">
         <div className="qk-sr-param-form__title-wrap">
-          <h2>{module.name}</h2>
+          <div className="qk-sr-param-form__title-row">
+            {actionIcon ? (
+              <span data-preview-from="actionIcon" data-preview-handle="from">
+                <DocsStepIcon spec={actionIcon} size={18} title="动作图标" />
+              </span>
+            ) : null}
+            <h2>{module.name}</h2>
+          </div>
           {module.description ? (
             <div className="qk-sr-param-form__subtitle">{module.description}</div>
           ) : null}
@@ -692,7 +662,7 @@ export function StepParamFormPreview({
         {focusInputs.length > 0 ? (
           <ParamSection
             title="常规"
-            scrollBody={!hasFocus || focusInputs.length > 6}
+            scrollBody={scrollBody ?? (!hasFocus || focusInputs.length > 6)}
           >
             {focusInputs.map((param) => (
               <InputRow

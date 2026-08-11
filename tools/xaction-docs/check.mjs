@@ -119,6 +119,19 @@ function main() {
     }
   }
 
+  const landingPath = path.join(docsRoot, 'index.md');
+  if (!fs.existsSync(landingPath)) {
+    fail(errors, '缺少组合动作首页 docs/v2/xaction/index.md。');
+  } else {
+    const landing = readText(landingPath);
+    if (!landing.includes('<XActionLanding')) {
+      fail(errors, '组合动作首页缺少 <XActionLanding />。');
+    }
+    if (!landing.includes(`moduleCount={${catalog.moduleCount}}`)) {
+      fail(errors, `组合动作首页 moduleCount 与 catalog.moduleCount=${catalog.moduleCount} 不一致。`);
+    }
+  }
+
   if (errors.length > 0) {
     console.error(`组合动作文档校验失败，共 ${errors.length} 项：`);
     for (const error of errors) {

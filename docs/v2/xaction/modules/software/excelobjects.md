@@ -66,7 +66,12 @@ legacyContentUpdatedAt: "2023-02-16T07:33:45.000Z"
 
 打开指定的excel文件。
 
-![](./img/excelobjects-002-541d461140.png)
+<ModuleParamPreview
+  moduleKey="sys:excelObjects"
+  focusKeys={['operation', 'path', 'params', 'activeWorkbook', 'activeSheet', 'worksheets', 'application']}
+  values={{operation: 'OpenFile'}}
+  outputVars={{activeSheet: 'sheet'}}
+/>
 
 **输入**
 
@@ -101,7 +106,12 @@ legacyContentUpdatedAt: "2023-02-16T07:33:45.000Z"
 
 保存当前工作簿。
 
-![](./img/excelobjects-003-8dec198bbf.png)
+<ModuleParamPreview
+  moduleKey="sys:excelObjects"
+  focusKeys={['operation', 'workbook', 'path', 'params', 'isSuccess']}
+  values={{operation: 'SaveWorkbook'}}
+  outputVars={{isSuccess: 'isSuccess'}}
+/>
 
 输入
 
@@ -121,7 +131,12 @@ legacyContentUpdatedAt: "2023-02-16T07:33:45.000Z"
 
 创建一个新的工作簿。
 
-![](./img/excelobjects-004-aeb88122c6.png)
+<ModuleParamPreview
+  moduleKey="sys:excelObjects"
+  focusKeys={['operation', 'path', 'params', 'isSuccess', 'activeWorkbook', 'activeSheet']}
+  values={{operation: 'CreateWorkbook'}}
+  outputVars={{isSuccess: 'isSuccess', activeSheet: 'worksheet'}}
+/>
 
 输入
 
@@ -136,7 +151,11 @@ legacyContentUpdatedAt: "2023-02-16T07:33:45.000Z"
 
 （1.9.5+）选择（激活）某个工作表。
 
-![](./img/excelobjects-005-f1a542d83e.png)
+<ModuleParamPreview
+  moduleKey="sys:excelObjects"
+  focusKeys={['operation', 'workbook', 'params']}
+  values={{operation: 'SelectWorksheet', params: 'name=工作表2'}}
+/>
 
 输入
 

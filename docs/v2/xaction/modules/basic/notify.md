@@ -29,7 +29,16 @@ legacyContentUpdatedAt: "2022-07-01T09:39:34.000Z"
 
 ## 参数说明
 
-<ModuleParamPreview moduleKey="sys:notify" />
+<ModuleParamPreview
+  moduleKey="sys:notify"
+  values={{
+    type: 'Info',
+    msg: 'Hello Quicker!',
+    maxLines: '0',
+    placement: 'BottomCenter',
+    clickAction: 'https://getquicker.net',
+  }}
+/>
 
 【消息内容】：要显示的文字。
 

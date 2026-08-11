@@ -6,6 +6,7 @@
  * Icon source (read-only):
  *   QUICKER_ROOT/QuickerPc/Quicker/Actions/XActions/BuildinRunners (*.Definition.cs)
  *   QUICKER_ROOT/Libs/FontAwesomeIconsWpf/EFontAwesomeIcon.cs
+ * Extra glyphs: every `fa:Name` referenced from docs/ and src/.
  *
  *   node tools/screenshot-replace/build-step-catalog.mjs
  */
@@ -83,6 +84,36 @@ function collectStepIconSpecs(quickerRoot) {
   return byKey;
 }
 
+const FA_SPEC_RE = /fa:((?:Light|Solid|Regular|Brands|Duotone)_[A-Za-z0-9]+)/g;
+const SCAN_EXT = new Set(['.md', '.mdx', '.ts', '.tsx', '.js', '.mjs', '.css']);
+
+function walkFiles(dir, acc = []) {
+  if (!existsSync(dir)) return acc;
+  for (const name of readdirSync(dir)) {
+    if (name === 'node_modules' || name === '.docusaurus' || name === 'build') continue;
+    const full = path.join(dir, name);
+    const st = statSync(full);
+    if (st.isDirectory()) walkFiles(full, acc);
+    else if (SCAN_EXT.has(path.extname(name))) acc.push(full);
+  }
+  return acc;
+}
+
+/** Collect `fa:Name` specs used by docs previews and site components. */
+function collectReferencedFaNames() {
+  /** @type {Set<string>} */
+  const names = new Set();
+  for (const file of [...walkFiles(path.join(repoRoot, 'docs')), ...walkFiles(path.join(repoRoot, 'src'))]) {
+    const text = readFileSync(file, 'utf8');
+    FA_SPEC_RE.lastIndex = 0;
+    let m;
+    while ((m = FA_SPEC_RE.exec(text))) {
+      names.add(m[1]);
+    }
+  }
+  return names;
+}
+
 /** Load only the FA enum members we need from EFontAwesomeIcon.cs. */
 function loadFaGlyphs(quickerRoot, names) {
   const enumFile = path.join(
@@ -142,7 +173,7 @@ const quickerRoot = resolveQuickerRoot();
 const missingFa = [];
 if (quickerRoot) {
   const iconByKey = collectStepIconSpecs(quickerRoot);
-  const needed = new Set();
+  const needed = collectReferencedFaNames();
   for (const [key, spec] of Object.entries(iconByKey)) {
     if (!runners[key]) continue;
     runners[key].icon = spec;

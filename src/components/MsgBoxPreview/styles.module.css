@@ -31,6 +31,13 @@
   font-weight: 600;
 }
 
+.titleStart {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  min-width: 0;
+}
+
 .titleText {
   min-width: 0;
   overflow: hidden;
@@ -82,6 +89,15 @@
   background: var(--mbp-error);
 }
 
+.iconFa {
+  flex: 0 0 auto;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+}
+
 .message {
   flex: 1 1 auto;
   min-width: 0;
@@ -105,6 +121,7 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
+  gap: 5px;
   min-width: 72px;
   height: 28px;
   padding: 0 14px;

@@ -30,7 +30,7 @@
     "description": "Quicker 截图 Pro、贴图、长截图与录屏功能入口说明。"
   },
   "/v2/features/screenshot/toolbar-script": {
-    "description": "用一段 JavaScript 定义截图 Pro 工具栏布局，以及自定义按钮如何处理图片或启动动作。"
+    "description": "用一段 JavaScript 给截图 Pro 工具栏增加自定义按钮，或在进阶场景下重排整栏布局。"
   },
   "/v2/features/tools": {
     "description": "Quicker V2 内置的截图、AI 等工具入口。"
@@ -314,7 +314,7 @@
   "/v2/xaction/modules/msgbox": {
     "description": "弹窗显示提示或确认对话框",
     "covers": [
-      "/img/doc-gallery/b663c8d0f562.png"
+      "/img/doc-gallery/1013b66c0d03.png"
     ]
   },
   "/v2/xaction/modules/notify": {
@@ -357,10 +357,7 @@
     ]
   },
   "/v2/xaction/modules/filetoclipboard": {
-    "description": "将文件或文件列表存入剪贴板",
-    "covers": [
-      "/img/doc-gallery/fd7c5b2458f9.png"
-    ]
+    "description": "将文件或文件列表存入剪贴板"
   },
   "/v2/xaction/modules/getclipboardfiles": {
     "description": "获取剪贴板中复制的文件(或文件夹)的路径列表"
@@ -696,10 +693,7 @@
     ]
   },
   "/v2/xaction/modules/excelobjects": {
-    "description": "操作Excel的某个对象",
-    "covers": [
-      "/img/doc-gallery/c3b5579ffe50.png"
-    ]
+    "description": "操作Excel的某个对象"
   },
   "/v2/xaction/modules/excelrange": {
     "description": "操作Excel的某个区域或单元格",
@@ -933,7 +927,10 @@
     ]
   },
   "/v2/xaction/modules/showmenu": {
-    "description": "显示一个菜单"
+    "description": "显示一个菜单",
+    "covers": [
+      "/img/doc-gallery/aef0391fa1e0.png"
+    ]
   },
   "/v2/xaction/modules/showwaitwin": {
     "description": "显示一个等待用户完成某个操作的提示窗口。",
@@ -987,7 +984,7 @@
     "description": "打开网址、弹窗提示或确认、等待时间、发送文本到窗口",
     "covers": [
       "/img/doc-gallery/4fd5b3ace411.png",
-      "/img/doc-gallery/b663c8d0f562.png",
+      "/img/doc-gallery/1013b66c0d03.png",
       "/img/doc-gallery/94c88b579dce.png",
       "/img/doc-gallery/12186fa4089f.png"
     ]
@@ -996,7 +993,6 @@
     "description": "等待剪贴板内容改变、获取剪贴板图片、获取剪贴板文本、获取剪贴板文件列表",
     "covers": [
       "/img/doc-gallery/547d171fe486.png",
-      "/img/doc-gallery/fd7c5b2458f9.png",
       "/img/doc-gallery/a42c327f4be1.png"
     ]
   },

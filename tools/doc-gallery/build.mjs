@@ -6,6 +6,7 @@ import crypto from "node:crypto";
 import fs from "node:fs";
 import path from "node:path";
 import {fileURLToPath} from "node:url";
+import {snapshotAbs} from "./previews.mjs";
 
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "../..");
 const DOCS_DIR = path.join(ROOT, "docs");
@@ -139,11 +140,15 @@ function collectDocs() {
       ? firstParagraph(body)
       : fmDesc;
     const imageAbs = firstLocalImage(body, path.dirname(file));
+    const previewAbs = snapshotAbs(ROOT, href);
+    const coverAbs =
+      imageAbs ??
+      (fs.existsSync(previewAbs) ? previewAbs : null);
     docs.push({
       href,
       title,
       description,
-      covers: imageAbs ? [imageAbs] : [],
+      covers: coverAbs ? [coverAbs] : [],
       dir: path.dirname(file),
       kind: "doc",
       position: Number(fm.sidebar_position ?? 9999),

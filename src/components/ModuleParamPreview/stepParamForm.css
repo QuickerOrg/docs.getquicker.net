@@ -133,6 +133,13 @@ html[data-theme="dark"] .qk-sr-param-form {
   gap: 2px;
 }
 
+.qk-sr-param-form__title-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  min-width: 0;
+}
+
 .qk-sr-param-form__subtitle {
   font-size: 12px;
   color: var(--ad-fg-muted);
@@ -262,7 +269,10 @@ html[data-theme="dark"] .qk-sr-param-form {
 
 .qk-sr-param-form .step-editor-param-section__body--scroll {
   max-height: min(42vh, 360px);
-  overflow: auto;
+  overflow-x: hidden;
+  overflow-y: auto;
+  overscroll-behavior-y: contain;
+  scrollbar-gutter: stable;
 }
 
 .qk-sr-param-form .step-param-row {

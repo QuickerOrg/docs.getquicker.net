@@ -26,6 +26,10 @@ export type ModuleParamPreviewProps = {
   focusKeys?: readonly string[];
   /** Default true when focusKeys is set. */
   collapseOthers?: boolean;
+  /** Header action icon; also an anchor for PreviewMap (`actionIcon`). */
+  actionIcon?: string;
+  /** Override section body scrolling. Default: scroll when the form is long. */
+  scrollBody?: boolean;
   className?: string;
 };
 
@@ -42,6 +46,8 @@ export default function ModuleParamPreview({
   showHidden = false,
   focusKeys,
   collapseOthers,
+  actionIcon,
+  scrollBody,
   className,
 }: ModuleParamPreviewProps): ReactNode {
   const module = getModuleDef(moduleKey);
@@ -73,6 +79,8 @@ export default function ModuleParamPreview({
       showHidden={showHidden}
       focusKeys={focusKeys}
       collapseOthers={collapseOthers}
+      actionIcon={actionIcon}
+      scrollBody={scrollBody}
       className={className}
     />
   );

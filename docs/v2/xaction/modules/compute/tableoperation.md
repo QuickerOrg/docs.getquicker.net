@@ -103,13 +103,26 @@ legacyContentUpdatedAt: "2024-05-14T08:26:31.000Z"
 
 #### 只读模式
 
-![](./img/tableoperation-004-27627e9b91.png)
+<TableDataPreview
+  columns={['Id', '名称', '说明', '图标', '注释']}
+  rows={[
+    [0, '测试条目', '这是一条测试数据', 'fa:Light_Icon', '注释信息'],
+    [1, '测试条目1', '这是一条测试数据', 'fa:Light_Icon', '注释信息'],
+  ]}
+/>
 
 如果需要复制内容，可以鼠标拖动选中一个或多个单元格后Ctrl+C或使用右键菜单。
 
 #### 编辑模式
 
-![](./img/tableoperation-005-fd2b319808.png)
+<TableDataPreview
+  editable={true}
+  columns={['Id', '名称', '说明', '图标', '注释']}
+  rows={[
+    [0, '测试条目', '这是一条测试数据', 'fa:Light_Icon', '注释信息'],
+    [1, '测试条目1', '这是一条测试数据', 'fa:Light_Icon', '注释信息'],
+  ]}
+/>
 
 **注：需要事先在表格变量里定义每列的编辑方式。**
 
@@ -208,9 +221,24 @@ legacyContentUpdatedAt: "2024-05-14T08:26:31.000Z"
 根据json数据内容的不同，分两种情况：
 
 -   Json数组：数组中对象的key作为表的列名，对象的值作为作为每一行的对应key列的数据。如： `[{"name":"张三","age":20,'City':'BeiJing'},{"name":"李四","age":21,'City':'ShangHai'}]`，得到的表格为：
-    ![](./img/tableoperation-009-72f4b63757.png)
+    <TableDataPreview
+      compact={true}
+      columns={['name', 'age', 'City']}
+      rows={[
+        ['张三', 20, 'BeiJing'],
+        ['李四', 21, 'ShangHai'],
+      ]}
+    />
 -   Json对象（1.35.38+版本）：自动生成Key和Value两列，存储json对象每个属性的名称和值。如： `{"name":"张三","age":20,'City':'BeiJing'}` ，得到的表格内容为：
-    ![](./img/tableoperation-010-acf2d5bcd3.png)
+    <TableDataPreview
+      compact={true}
+      columns={['Key', 'Value']}
+      rows={[
+        ['name', '张三'],
+        ['age', 20],
+        ['City', 'BeiJing'],
+      ]}
+    />
 
 ### 从Excel工作表加载数据
 

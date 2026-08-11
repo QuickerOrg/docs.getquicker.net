@@ -93,24 +93,22 @@ legacyContentUpdatedAt: "2024-04-28T03:06:29.000Z"
 <ContextMenuPreview
   openPath={['设置', '设置项1']}
   items={[
-    {label: '编辑', icon: '✎', iconColor: '#2b7abf'},
-    {label: '调试运行', icon: '▶', iconColor: '#ed6c02'},
+    {label: '编辑', icon: 'fa:Light_Pen', iconColor: '#2b7abf'},
+    {label: '调试运行', icon: 'fa:Light_Play:#f75711'},
     {
       label: '设置',
-      icon: '⚙',
-      iconColor: '#d32f2f',
+      icon: 'fa:Light_Cog:#FF0000',
       children: [
         {
           label: '设置项1',
-          icon: '⚙',
-          iconColor: '#d32f2f',
-          children: [{label: '设置项11', icon: '⚙', iconColor: '#d32f2f'}],
+          icon: 'fa:Light_Cog:#FF0000',
+          children: [{label: '设置项11', icon: 'fa:Light_Cog:#FF0000'}],
         },
-        {label: '设置项2', icon: '⚙', iconColor: '#d32f2f', children: [{label: '设置项21'}]},
+        {label: '设置项2', icon: 'fa:Light_Cog:#FF0000', children: [{label: '设置项21'}]},
       ],
     },
-    {label: '悬浮', icon: '⇪', iconColor: '#2b7abf', children: [{label: '…'}]},
-    {label: '分享', icon: '⛓', iconColor: '#2b7abf', children: [{label: '…'}]},
+    {label: '悬浮', icon: 'fa:Light_UfoBeam', iconColor: '#2b7abf', children: [{label: '…'}]},
+    {label: '分享', icon: 'fa:Light_ShareAlt', iconColor: '#2b7abf', children: [{label: '…'}]},
   ]}
 />
 

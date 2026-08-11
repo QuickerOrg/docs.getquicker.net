@@ -24,19 +24,18 @@ legacyContentUpdatedAt: "2024-12-02T01:31:54.000Z"
 在鼠标指针所在位置显示一个纵向菜单（效果类似于右键菜单），可用于执行或选择特定操作。
 
 <ContextMenuPreview
+  galleryCover={true}
   openPath={['二级菜单']}
-  tooltip="提示内容..."
   items={[
     {label: '无图标菜单'},
-    {label: '带Tooltip的菜单'},
-    {label: '带图标的菜单', icon: '⚑', iconColor: '#6b7280'},
+    {label: '带Tooltip的菜单', tooltip: 'tooltip内容'},
+    {label: '带图标的菜单', icon: 'fa:Light_Flag', tooltip: 'tooltip内容'},
     {
       label: '二级菜单',
-      icon: '⚙',
-      iconColor: '#6b7280',
-      children: [{label: '子菜单', icon: '◎', iconColor: '#6b7280'}],
+      icon: 'fa:Light_Cog',
+      children: [{label: '子菜单', icon: 'fa:Light_UserCircle'}],
     },
-    {label: '危险动作菜单', icon: '⌕', iconColor: '#ed6c02', danger: true},
+    {label: '危险动作菜单', icon: 'fa:Light_Wrench:#f57e42', danger: true, tooltip: 'tooltip内容'},
   ]}
 />
 
@@ -118,17 +117,17 @@ Ping百度|operation=run&data=ping baidu.com
 <ContextMenuPreview
   openPath={['二级菜单', '三级菜单']}
   items={[
-    {label: '粘贴内容', icon: '⧉'},
+    {label: '粘贴内容', icon: 'fa:Light_Paste'},
     {
       label: '二级菜单',
-      icon: '⚙',
+      icon: 'fa:Light_Cog',
       children: [
-        {label: '发送按键Ctrl+S', icon: '▣'},
-        {label: '发送按键Ctrl+V', icon: '⧉'},
-        {label: '三级菜单', children: [{label: '菜单1', icon: '⚙'}]},
+        {label: '发送按键Ctrl+S', icon: 'fa:Light_Save'},
+        {label: '发送按键Ctrl+V', icon: 'fa:Light_Paste'},
+        {label: '三级菜单', children: [{label: '菜单1', icon: 'fa:Light_Cog'}]},
       ],
     },
-    {label: '运行一个Quicker动作', icon: '⌕', iconColor: '#ed6c02'},
+    {label: '运行一个Quicker动作', icon: 'fa:Light_Wrench:#f57e42'},
   ]}
 />
 

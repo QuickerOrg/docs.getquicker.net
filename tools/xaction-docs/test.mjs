@@ -1,5 +1,5 @@
 import assert from 'node:assert/strict';
-import {createChangeReport, createReference} from './sync.mjs';
+import {createChangeReport, createLandingPage, createReference} from './sync.mjs';
 
 const commonModule = {
   key: 'sys:test',
@@ -62,6 +62,19 @@ assert.deepEqual(unchanged.summary, {addedModules: 0, removedModules: 0, changed
 const baseline = createChangeReport(null, next);
 assert.equal(baseline.baselineCreated, true);
 assert.deepEqual(baseline.summary, {addedModules: 0, removedModules: 0, changedModules: 0});
+
+const landing = createLandingPage(
+  [commonModule, {...commonModule, key: 'sys:text', category: 'Text'}],
+  1,
+  2,
+  '2026-08-03 20:08:03',
+);
+assert.ok(landing.includes('<XActionLanding'));
+assert.ok(landing.includes('moduleCount={2}'));
+assert.ok(landing.includes('Basic: 1,'));
+assert.ok(landing.includes('Text: 1,'));
+assert.ok(landing.includes('hide_table_of_contents: true'));
+assert.ok(!landing.includes('| 分类 | 模块数 |'));
 
 const reference = createReference(commonModule);
 assert.ok(reference.includes('<XActionModuleMeta moduleKey="sys:test" />'));

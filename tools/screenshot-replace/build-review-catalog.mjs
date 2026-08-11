@@ -29,6 +29,7 @@ const PREVIEW_TAGS = [
   'StepProgramView',
   'WaitWinPreview',
   'TableFieldPreview',
+  'TableDataPreview',
 ];
 
 function walkMd(dir, acc = []) {
@@ -264,6 +265,12 @@ function extractComponents(text) {
         'progress',
         'fields',
         'field',
+        'columns',
+        'rows',
+        'editable',
+        'compact',
+        'showAddRow',
+        'showActions',
         'name',
         'typeLabel',
         'defaultValue',
@@ -318,6 +325,7 @@ function pickComponentForImage(imageName, components, moduleKey) {
   // explicit image-to-component routing. Filename-wide hints (for example
   // "menu" or "waitwin") are too broad for these pages.
   if (/action-custom-context-menu-007-/i.test(imageName)) return pickNamed('ModuleParamPreview');
+  if (/notify-002-/i.test(imageName)) return pickNamed('ModuleParamPreview');
   if (/var-dict-(001|002)-/i.test(imageName)) return pickNamed('VariableDefPreview');
   if (/var-dict-(003|004)-/i.test(imageName)) return pickNamed('ModuleParamPreview');
   if (/showmenu-002-/i.test(imageName)) return pickNamed('ModuleParamPreview');
@@ -331,6 +339,10 @@ function pickComponentForImage(imageName, components, moduleKey) {
   if (/tablevar-(003|004)-/i.test(imageName)) {
     const tableField = components.find((c) => c.name === 'TableFieldPreview');
     if (tableField) return tableField;
+  }
+
+  if (/tableoperation-(004|005|009|010)-/i.test(imageName)) {
+    return pickNamed('TableDataPreview');
   }
 
   // Runtime screenshots: prefer toast/dialog/list even when filename is *-001*

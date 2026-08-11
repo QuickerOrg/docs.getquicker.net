@@ -17,7 +17,7 @@
 - `static/` 保存需要按原路径复制到站点根目录的图片、附件、下载文件等静态资源。
 - `docusaurus.config.ts` 是站点主配置，`sidebars.ts` 是文档侧边栏配置。
 - 当前文档路由使用 `routeBasePath: '/'`，让 `docs.getquicker.net` 根路径直接显示文档。不要为了兼容编辑器或工具擅自改成 `/docs`，除非用户明确同意。
-- Agent Skills 权威目录为 **`.agents/skills/`**（Cursor / Codex 均可发现）。`.cursor/skills/` 仅保留兼容桩，勿在桩里维护正文。截图→组件流程见 `.agents/skills/docs-img-to-component/`（含 `focusKeys` 参数注意力约定）。从 Quicker 主仓抽 UI/样式到文档预览见 `.agents/skills/docs-port-quicker-ui/`。
+- Agent Skills 权威目录为 **`.agents/skills/`**（Cursor / Codex 均可发现）。`.cursor/skills/` 仅保留兼容桩，勿在桩里维护正文。单篇文档改写入口见 `.agents/skills/docs-page-rewrite/`。截图→组件流程见 `.agents/skills/docs-img-to-component/`（含 `focusKeys` 参数注意力约定）。从 Quicker 主仓抽 UI/样式到文档预览见 `.agents/skills/docs-port-quicker-ui/`。
 
 ## 文档编写
 
@@ -53,7 +53,8 @@ npm run start -- --host 127.0.0.1 --port 3000 --no-open
 - `docs/v2/xaction/modules/` 是用户可见的模块页，页面身份以 `moduleKey` 和 `quickerDocKey` 为准，不依赖中文标题或分类目录。
 - 模块页中 `{/* xaction-metadata:start/end */}` 标记之间是程序元数据生成区，不要手工修改；使用说明、示例、限制和排障写在标记之外。
 - `data/xaction/` 是 AI 和校验器使用的结构化事实源。参数 Key、类型、默认值、枚举和显示条件以这里的数据为准，不根据旧截图猜测。
-- 同步新版本时使用 `tools/xaction-docs/` 的脚本和说明。同步后至少运行 `npm run docs:xaction:check`、`npm run docs:xaction:test` 与 `npm run build`。
+- 同步新版本时使用 `tools/xaction-docs/` 的脚本和说明。增量同步可省略 `--legacy`（不覆盖概念/教程页）。同步后至少运行 `npm run docs:xaction:check`、`npm run docs:xaction:test` 与 `npm run build`。
+- 也可在 `QuickerOrg/Quicker` 用 Actions「Docs xaction sync」手动触发：`check` 对照模块漂移，`import` 向本仓开 PR。不要推 `main`。
 - 旧版正文迁入后默认标记为 `migrated-unreviewed`。只有核对当前代码、实际界面或真实运行结果后，才能改为 `reviewed` 或 `verified`。
 - 新增、删除、改名或共享帮助页属于需要判断的兼容性变化。同步工具不得自动删除旧页面或覆盖人工正文。
 

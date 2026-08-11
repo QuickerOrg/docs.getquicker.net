@@ -15,6 +15,7 @@ import TableFieldPreview from '@site/src/components/TableFieldPreview';
 import TableDataPreview from '@site/src/components/TableDataPreview';
 import PreviewCompare from '@site/src/components/PreviewCompare';
 import PreviewMap from '@site/src/components/PreviewMap';
+import PreviewMarks from '@site/src/components/PreviewMarks';
 import ShareLinkCard from '@site/src/components/ShareLinkCard';
 import XActionLanding from '@site/src/components/XActionLanding';
 
@@ -38,6 +39,7 @@ const components = {
   TableDataPreview,
   PreviewCompare,
   PreviewMap,
+  PreviewMarks,
   ShareLinkCard,
   XActionLanding,
 } as MDXComponentsType;

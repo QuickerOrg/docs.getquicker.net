@@ -7,8 +7,9 @@
  * CSS sliced from Quicker.Headless/Web/src/styles.css (step-param-* / step-editor-*).
  * Do not invent parallel field styles — sync from Headless when visuals drift.
  *
- * Enums use a native <select> so readers can open the list and browse options;
- * local state also drives condition visibility (仅：xxx).
+ * Enums are interactive so readers can browse options; local state also
+ * drives condition visibility (仅：xxx). Inside PreviewMap, value changes
+ * are reported on PreviewLive so the runtime pane re-renders.
  */
 import {
   useEffect,
@@ -22,6 +23,10 @@ import {
 } from "react";
 import { createPortal } from "react-dom";
 import {resolveRunScriptFileExt} from "@site/data/xaction/param-file-ext";
+import {
+  usePreviewLiveEnabled,
+  usePreviewLiveReporter,
+} from "@site/src/components/PreviewLive";
 import {DocsStepIcon} from "@site/src/components/StepProgramView/DocsStepIcon";
 import {
   canBindVariable,
@@ -433,6 +438,62 @@ function EnumSelect({
   );
 }
 
+function isMultilineParam(
+  param: StepParamFormInputDef,
+  value: string,
+): boolean {
+  if (value.includes("\n")) return true;
+  const type = (param.type || "").toLowerCase();
+  if (
+    type === "stringlist" ||
+    type === "list" ||
+    type === "multiline" ||
+    type === "textblock"
+  ) {
+    return true;
+  }
+  return /^(message|items|customButtons|script|text|content|body)$/i.test(
+    param.key,
+  );
+}
+
+function EditableParamValue({
+  param,
+  value,
+  onChange,
+}: {
+  param: StepParamFormInputDef;
+  value: string;
+  onChange: (next: string) => void;
+}): JSX.Element {
+  const multiline = isMultilineParam(param, value);
+  const className = "step-param-control qk-sr-param-form__editable";
+  const title = param.description?.trim() || param.name;
+  if (multiline) {
+    const rows = Math.min(8, Math.max(2, value.split(/\r?\n/).length));
+    return (
+      <textarea
+        className={className}
+        value={value}
+        rows={rows}
+        aria-label={param.name}
+        title={title}
+        onChange={(event) => onChange(event.target.value)}
+      />
+    );
+  }
+  return (
+    <input
+      type="text"
+      className={className}
+      value={value}
+      aria-label={param.name}
+      title={title}
+      onChange={(event) => onChange(event.target.value)}
+    />
+  );
+}
+
 function resolveRowFileExt(
   module: StepParamFormModule,
   param: StepParamFormInputDef,
@@ -452,6 +513,7 @@ function InputRow({
   inputVars,
   currentValues,
   focused = false,
+  editable = false,
 }: {
   module: StepParamFormModule;
   param: StepParamFormInputDef;
@@ -460,6 +522,7 @@ function InputRow({
   inputVars?: Readonly<Record<string, string>>;
   currentValues: Readonly<Record<string, string>>;
   focused?: boolean;
+  editable?: boolean;
 }): JSX.Element {
   const boundVar = resolveBoundVarName(
     param.key,
@@ -502,6 +565,8 @@ function InputRow({
       <div className="step-param-field-col" data-preview-handle="from">
         {useSelect ? (
           <EnumSelect module={module} param={param} value={value} onChange={onChange} />
+        ) : editable && !boundVar ? (
+          <EditableParamValue param={param} value={value} onChange={onChange} />
         ) : (
           <ParamVarOrValueControl
             value={boundVar ? "" : value}
@@ -578,9 +643,23 @@ export function StepParamFormPreview({
 }: StepParamFormPreviewProps): JSX.Element {
   const initial = useMemo(() => buildInitialValues(module, values), [module, values]);
   const [currentValues, setCurrentValues] = useState(initial);
+  const liveEdit = usePreviewLiveEnabled();
+  const reportLive = usePreviewLiveReporter();
   useEffect(() => {
     setCurrentValues(buildInitialValues(module, values));
   }, [module, values]);
+  useLayoutEffect(() => {
+    if (!reportLive) return;
+    reportLive({
+      values: currentValues,
+      extras: {actionIcon},
+    });
+  }, [reportLive, currentValues, actionIcon]);
+  useEffect(() => {
+    return () => {
+      reportLive?.(null);
+    };
+  }, [reportLive]);
 
   const focusSet = useMemo(
     () => new Set((focusKeys ?? []).map((k) => k.trim()).filter(Boolean)),
@@ -674,6 +753,7 @@ export function StepParamFormPreview({
                 inputVars={inputVars}
                 currentValues={currentValues}
                 focused={hasFocus}
+                editable={liveEdit}
               />
             ))}
           </ParamSection>
@@ -705,6 +785,7 @@ export function StepParamFormPreview({
                 onChange={(next) => setValue(param.key, next)}
                 inputVars={inputVars}
                 currentValues={currentValues}
+                editable={liveEdit}
               />
             ))}
             {otherOutputs.map((output) => (

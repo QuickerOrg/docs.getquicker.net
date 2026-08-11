@@ -1,7 +1,10 @@
 /**
- * Numbered highlight boxes from parameter rows (`data-preview-from`)
+ * Numbered badges from parameter rows (`data-preview-from`)
  * to a floating, draggable runtime preview (`data-preview-to`).
  * Replaces annotated red-arrow teaching screenshots.
+ *
+ * Also hosts PreviewLive: left ModuleParamPreview edits re-render the
+ * right runtime preview (MsgBoxPreview already binds).
  */
 import {
   Children,
@@ -12,6 +15,10 @@ import {
   type PointerEvent as ReactPointerEvent,
   type ReactNode,
 } from 'react';
+import {
+  PreviewLiveProvider,
+  usePreviewLiveSnapshot,
+} from '@site/src/components/PreviewLive';
 import styles from './styles.module.css';
 
 export type PreviewMapLink = {
@@ -32,13 +39,10 @@ export type PreviewMapProps = {
   className?: string;
 };
 
-type Box = {x: number; y: number; w: number; h: number};
-
 type Connector = {
   id: string;
   index: number;
   fromBadge: {x: number; y: number};
-  to: Box;
   toBadge: {x: number; y: number};
 };
 
@@ -93,33 +97,6 @@ function visibleInClip(el: Element): boolean {
     node = node.parentElement;
   }
   return true;
-}
-
-function toBox(
-  rect: DOMRect,
-  root: DOMRect,
-  pad = 4,
-  minW = 0,
-  minH = 0,
-): Box {
-  const w = Math.max(minW, rect.width + pad * 2);
-  const h = Math.max(minH, rect.height + pad * 2);
-  return {
-    x: rect.left - root.left + rect.width / 2 - w / 2,
-    y: rect.top - root.top + rect.height / 2 - h / 2,
-    w,
-    h,
-  };
-}
-
-function targetBox(rect: DOMRect, root: DOMRect, slot: string): Box {
-  if (slot === 'icon' || slot === 'actionIcon' || slot === 'primaryButton') {
-    return toBox(rect, root, 5, 28, 28);
-  }
-  if (slot === 'title' || slot === 'message') {
-    return toBox(rect, root, 5, 36, 22);
-  }
-  return toBox(rect, root, 4, 0, 22);
 }
 
 function clampPos(next: Pos, stage: HTMLElement, floater: HTMLElement): Pos {
@@ -181,7 +158,15 @@ function linkLabel(link: PreviewMapLink): string {
   return `${from} → ${to}`;
 }
 
-export default function PreviewMap({
+export default function PreviewMap(props: PreviewMapProps): ReactNode {
+  return (
+    <PreviewLiveProvider>
+      <PreviewMapView {...props} />
+    </PreviewLiveProvider>
+  );
+}
+
+function PreviewMapView({
   children,
   links,
   labels,
@@ -201,6 +186,7 @@ export default function PreviewMap({
   const [connectors, setConnectors] = useState<Connector[]>([]);
   const [pos, setPos] = useState<Pos | null>(null);
   const [dragging, setDragging] = useState(false);
+  const liveSnapshot = usePreviewLiveSnapshot();
   const panes = Children.toArray(children).filter(Boolean);
 
   const measure = useCallback((): void => {
@@ -220,7 +206,7 @@ export default function PreviewMap({
       const toHandle = handleOf(toEl, 'to');
       if (!visibleInClip(fromHandle) || !visibleInClip(toHandle)) continue;
       const fieldRect = fromHandle.getBoundingClientRect();
-      const to = targetBox(toHandle.getBoundingClientRect(), rootRect, link.to);
+      const toRect = toHandle.getBoundingClientRect();
       next.push({
         id: `${link.from}->${link.to}`,
         index: next.length + 1,
@@ -228,8 +214,10 @@ export default function PreviewMap({
           x: fieldRect.left - rootRect.left - 10,
           y: fieldRect.top - rootRect.top + 12,
         },
-        to,
-        toBadge: {x: to.x + 1, y: to.y + 1},
+        toBadge: {
+          x: toRect.left - rootRect.left + 1,
+          y: toRect.top - rootRect.top + 1,
+        },
       });
     }
     setConnectors(next);
@@ -248,7 +236,7 @@ export default function PreviewMap({
 
   useLayoutEffect(() => {
     measure();
-  }, [measure, pos]);
+  }, [measure, pos, liveSnapshot]);
 
   useLayoutEffect(() => {
     const root = rootRef.current;
@@ -377,14 +365,6 @@ export default function PreviewMap({
                 index={item.index}
                 badgeClass={styles.badge}
                 textClass={styles.badgeText}
-              />
-              <rect
-                x={item.to.x}
-                y={item.to.y}
-                width={item.to.w}
-                height={item.to.h}
-                rx={3}
-                className={styles.box}
               />
               <IndexBadge
                 x={item.toBadge.x}

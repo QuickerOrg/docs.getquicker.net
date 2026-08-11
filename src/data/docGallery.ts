@@ -3,6 +3,8 @@ import generated from "./docGallery.generated.json";
 export type DocGalleryEntry = {
   description?: string;
   covers?: string[];
+  excerpt?: string;
+  hints?: string[];
 };
 
 export const docGallery = generated as Record<string, DocGalleryEntry>;

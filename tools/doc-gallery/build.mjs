@@ -13,7 +13,19 @@ const DOCS_DIR = path.join(ROOT, "docs");
 const COVER_DIR = path.join(ROOT, "static/img/doc-gallery");
 const OUT_JSON = path.join(ROOT, "src/data/docGallery.generated.json");
 
-/** @typedef {{href: string, title: string, description: string, covers: string[], dir: string, kind: "doc" | "category", position: number}} GallerySource */
+/** @typedef {{href: string, title: string, description: string, covers: string[], dir: string, kind: "doc" | "category", position: number, excerpt: string, hints: string[]}} GallerySource */
+
+const SKIP_HINT_HEADINGS = new Set([
+  "当前模块定义",
+  "参数",
+  "示例",
+  "示例动作",
+  "相关",
+  "相关链接",
+  "限制",
+  "注意事项",
+  "说明",
+]);
 
 function walkFiles(dir, acc = []) {
   if (!fs.existsSync(dir)) return acc;
@@ -53,6 +65,71 @@ function isBoilerplateDescription(text, title) {
   if (/的 Quicker 2\.0 使用说明\.?$/.test(value)) return true;
   if (/模块参考/.test(value) && /参数表由/.test(value)) return true;
   return false;
+}
+
+function stripMd(text) {
+  return text
+    .replace(/\*\*/g, "")
+    .replace(/`([^`]+)`/g, "$1")
+    .replace(/\[([^\]]+)\]\([^)]+\)/g, "$1")
+    .trim();
+}
+
+function extractExcerpt(body, title, description) {
+  const skip = new Set([title, description].filter(Boolean).map((value) => value.trim()));
+  const chunks = [];
+  for (const line of body.split(/\r?\n/)) {
+    const raw = line.trim();
+    if (!raw) continue;
+    if (
+      raw.startsWith("#") ||
+      raw.startsWith("!") ||
+      raw.startsWith("<") ||
+      raw.startsWith("```") ||
+      raw.startsWith(":::") ||
+      raw.startsWith("import ") ||
+      raw.startsWith("|") ||
+      /^【[^】]+】/.test(raw)
+    ) {
+      continue;
+    }
+    const text = stripMd(raw.replace(/^[-*]\s+/, ""));
+    if (!text || text.length < 4 || skip.has(text)) continue;
+    chunks.push(text);
+    if (chunks.length >= 2 || chunks.join("").length >= 90) break;
+  }
+  return chunks.join("");
+}
+
+function similarHint(a, b) {
+  if (a === b || a.includes(b) || b.includes(a)) return true;
+  if (a.length !== b.length) return false;
+  let diff = 0;
+  for (let i = 0; i < a.length; i += 1) {
+    if (a[i] !== b[i]) diff += 1;
+  }
+  return diff <= 1;
+}
+
+function extractHints(body) {
+  /** @type {string[]} */
+  const hints = [];
+  const seen = new Set();
+  for (const match of body.matchAll(/【([^】]{1,16})】/g)) {
+    const label = match[1].trim();
+    if (!label || seen.has(label) || hints.some((item) => similarHint(item, label))) continue;
+    seen.add(label);
+    hints.push(label);
+    if (hints.length >= 4) return hints;
+  }
+  for (const match of body.matchAll(/^#{2,3}\s+(.+)$/gm)) {
+    const label = stripMd(match[1]).replace(/\s*\{#.*\}$/, "");
+    if (!label || SKIP_HINT_HEADINGS.has(label) || seen.has(label) || hints.some((item) => similarHint(item, label))) continue;
+    seen.add(label);
+    hints.push(label);
+    if (hints.length >= 4) break;
+  }
+  return hints;
 }
 
 function firstParagraph(body) {
@@ -152,6 +229,8 @@ function collectDocs() {
       dir: path.dirname(file),
       kind: "doc",
       position: Number(fm.sidebar_position ?? 9999),
+      excerpt: extractExcerpt(body, title, description),
+      hints: extractHints(body),
     });
   }
   return docs;
@@ -197,6 +276,8 @@ function collectCategories(docs) {
       dir,
       kind: "category",
       position: Number(json.position ?? 9999),
+      excerpt: "",
+      hints: children.slice(0, 4).map((child) => child.title),
     });
   }
   return categories;
@@ -205,7 +286,7 @@ function collectCategories(docs) {
 export function buildDocGallery() {
   const docs = collectDocs();
   const categories = collectCategories(docs);
-  /** @type {Record<string, {description?: string, covers?: string[]}>} */
+  /** @type {Record<string, {description?: string, covers?: string[], excerpt?: string, hints?: string[]}>} */
   const gallery = {};
   const usedNames = new Set();
 
@@ -219,8 +300,13 @@ export function buildDocGallery() {
     }
     const entry = {};
     if (item.description) entry.description = item.description;
-    if (covers.length > 0) entry.covers = covers;
-    if (entry.description || entry.covers) {
+    if (covers.length > 0) {
+      entry.covers = covers;
+    } else {
+      if (item.excerpt) entry.excerpt = item.excerpt;
+      if (item.hints.length > 0) entry.hints = item.hints;
+    }
+    if (entry.description || entry.covers || entry.excerpt || entry.hints) {
       gallery[item.href] = entry;
     }
   }

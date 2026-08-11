@@ -31,6 +31,8 @@
   --ad-bg-menu-hover: #f0f3f7;
   --ad-bg-list-selected: color-mix(in srgb, #2b7abf 14%, #ffffff);
   --ad-border-selected: color-mix(in srgb, #2b7abf 45%, #c4c4c4);
+  --ad-bg-row-focus: color-mix(in srgb, var(--ad-accent) 11%, var(--ad-bg-panel));
+  --ad-border-row-focus: color-mix(in srgb, var(--ad-accent) 34%, var(--ad-border-panel));
   --ad-shadow-popover: 0 8px 24px rgba(0, 0, 0, 0.16);
   /* Match Quicker Headless light scrollbar tokens (site tokens live in custom.css). */
   --ad-scrollbar-thumb: var(--qk-scrollbar-thumb, rgba(0, 0, 0, 0.12));
@@ -77,6 +79,8 @@ html[data-theme="dark"] .qk-sr-param-form {
   --ad-bg-menu-hover: #343b48;
   --ad-bg-list-selected: color-mix(in srgb, #4d9fff 22%, #23272f);
   --ad-border-selected: color-mix(in srgb, #4d9fff 50%, #3a4150);
+  --ad-bg-row-focus: color-mix(in srgb, var(--ad-accent) 16%, var(--ad-bg-panel));
+  --ad-border-row-focus: color-mix(in srgb, var(--ad-accent) 42%, var(--ad-border-panel));
   --ad-shadow-popover: 0 10px 28px rgba(0, 0, 0, 0.45);
   --ad-scrollbar-thumb: rgba(154, 163, 178, 0.18);
   --ad-scrollbar-thumb-hover: rgba(154, 163, 178, 0.32);
@@ -288,12 +292,30 @@ html[data-theme="dark"] .qk-sr-param-form {
 }
 
 .qk-sr-param-form .step-param-row--focus {
-  margin-left: -6px;
-  margin-right: -6px;
-  padding: 6px 6px 6px 3px;
-  border-radius: 6px;
-  background: color-mix(in srgb, var(--ifm-color-primary) 8%, transparent);
-  box-shadow: inset 3px 0 0 var(--ifm-color-primary);
+  position: relative;
+  z-index: 0;
+}
+
+.qk-sr-param-form .step-param-row--focus::before {
+  content: "";
+  position: absolute;
+  inset: -5px -8px;
+  border-radius: 8px;
+  background: var(--ad-bg-row-focus);
+  border: 1px solid var(--ad-border-row-focus);
+  box-shadow: inset 3px 0 0 var(--ad-accent);
+  pointer-events: none;
+  z-index: -1;
+}
+
+.qk-sr-param-form .step-param-row--focus .step-param-label {
+  color: var(--ad-accent);
+  font-weight: 650;
+}
+
+.qk-sr-param-form .step-param-row--focus .step-param-control {
+  border-color: var(--ad-border-selected);
+  background: color-mix(in srgb, var(--ad-bg-list-selected) 72%, var(--ad-bg-input));
 }
 
 .qk-sr-param-form .step-param-row--inline {
@@ -402,6 +424,28 @@ html[data-theme="dark"] .qk-sr-param-form {
   line-height: 1.35;
   white-space: pre-wrap;
   word-break: break-word;
+}
+
+.qk-sr-param-form .qk-sr-param-form__editable {
+  display: block;
+  margin: 0;
+  font: inherit;
+  cursor: text;
+  resize: vertical;
+}
+
+.qk-sr-param-form textarea.qk-sr-param-form__editable {
+  min-height: 48px;
+}
+
+.qk-sr-param-form .qk-sr-param-form__editable:hover {
+  border-color: color-mix(in srgb, var(--ad-accent) 35%, var(--ad-border-input));
+}
+
+.qk-sr-param-form .qk-sr-param-form__editable:focus,
+.qk-sr-param-form .qk-sr-param-form__editable:focus-visible {
+  outline: 2px solid color-mix(in srgb, var(--ad-accent) 55%, transparent);
+  outline-offset: 1px;
 }
 
 .qk-sr-param-form .qk-sr-param-form__enum {

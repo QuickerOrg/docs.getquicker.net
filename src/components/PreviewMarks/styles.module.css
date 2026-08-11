@@ -1,0 +1,79 @@
+.root {
+  --pm-line: #e53935;
+  --pm-muted: var(--ifm-color-emphasis-700, #4b5563);
+  position: relative;
+  margin: 1rem 0 1.5rem;
+}
+
+.stage :global(.qk-sr-param-form),
+.stage :global(.qk-docs-preview) {
+  width: 100%;
+  max-width: none;
+  margin: 0;
+}
+
+.stage :global([data-preview-mark-host]),
+.stage :global(.qk-sr-param-form__enum-trigger[data-preview-mark-host]) {
+  position: relative;
+  height: auto;
+  min-height: 28px;
+  flex-wrap: wrap;
+  white-space: normal;
+}
+
+.inField {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: flex-start;
+  gap: 6px;
+  min-width: 0;
+  padding: 0 2px;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.inFieldEnd {
+  position: static;
+  inset: auto;
+  transform: none;
+  flex: 1 1 100%;
+  max-width: none;
+  padding: 0 2px 4px 0;
+}
+
+.badge {
+  flex: 0 0 auto;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 16px;
+  height: 16px;
+  border-radius: 999px;
+  background: var(--pm-line);
+  color: #fff;
+  font-size: 10px;
+  font-weight: 700;
+  line-height: 1;
+}
+
+.chip {
+  min-width: 0;
+  color: var(--pm-line);
+  font-size: 12px;
+  font-weight: 650;
+  line-height: 1.35;
+  white-space: normal;
+  overflow: visible;
+}
+
+.caption {
+  margin: 8px 0 0;
+  font-size: 13px;
+  color: var(--pm-muted);
+  line-height: 1.5;
+}
+
+html[data-theme='dark'] .root {
+  --pm-line: #ff8a80;
+}

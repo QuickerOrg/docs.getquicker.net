@@ -15,17 +15,11 @@ legacyContentUpdatedAt: "2024-10-29T00:01:11.000Z"
 
 # 弹窗提示或确认
 
-弹窗显示提示或确认对话框
+显示一个占用焦点的提示或确认对话框。关闭前会一直停在屏幕上，动作也停在这一步，等用户点完再继续。
 
 ## 当前模块定义
 
 <XActionModuleMeta moduleKey="sys:MsgBox" />
-
-<ModuleParamPreview moduleKey="sys:MsgBox" />
-
-## 概述
-
-显示一个向用户提示或确认信息的对话框，就像你会经常在各种程序里看到的那样：
 
 <MsgBoxPreview
   title="Quicker"
@@ -34,16 +28,12 @@ legacyContentUpdatedAt: "2024-10-29T00:01:11.000Z"
   buttons={['确定', '取消']}
 />
 
-这个对话框会占用焦点，并且会在手动关闭之前一直显示在屏幕上。动作也会停留在这个步骤，等待关闭后再继续执行。
+两种模式：
 
-目前支持两种模式：
-
--   标准模式：类似于windows内置弹窗，支持固定图标和按钮组合。
--   自定义模式：可自图标和按钮，显示内容比较灵活。
+- **标准**：类似 Windows 内置弹窗，图标和按钮是固定组合。
+- **自定义**：可自定图标和按钮；内容更灵活，也支持 Markdown。
 
 ## 标准模式
-
-与Windows内置的弹窗功能类似，支持固定可选的图标类型和按钮组合。与各语言的`MessageBox.Show`方法功能类似。
 
 <PreviewMap
   links={[
@@ -74,38 +64,14 @@ legacyContentUpdatedAt: "2024-10-29T00:01:11.000Z"
   />
 </PreviewMap>
 
-参数说明：
+**恢复活动窗口**：关闭后是否把焦点还给弹窗前的窗口。
 
-【模式】选择标准或是自定义模式。
+输出：
 
-【内容】消息的主要内容。
-
-【标题】窗口标题。
-
-【图标】显示在消息内容左侧的图标，以显示消息的类型。支持如下的图标样式：
-
--   信息
--   疑问
--   告警
--   错误
-
-【按钮】定义对话框底部显示的按钮，支持如下的组合：
-
--   确定
--   确定和取消
--   是和否
-
-【恢复活动窗口】是否在弹窗关闭后，将焦点还原到弹窗之前拥有焦点的窗口上。
-
-输出参数
-
-【选择的按钮】点击的按钮，可能为`OK`,`Cancel`,`Yes`,`No`。
-
-【是否确认】是否点击的按钮为“确定”或“是”（表示正面选择的按钮）。
+- **选择的按钮**：`OK`、`Cancel`、`Yes`、`No`
+- **是否确认**：点的是「确定」或「是」
 
 ## 自定义模式
-
-支持自定义按钮、图标，标题栏可显示动作图标。
 
 <PreviewMap
   links={[
@@ -141,38 +107,45 @@ legacyContentUpdatedAt: "2024-10-29T00:01:11.000Z"
   />
 </PreviewMap>
 
-参数说明：
+自定义模式下，消息内容以 `MD:`（半角冒号）开头可写 Markdown（1.39.20+）。语法见 [MdXaml 扩展说明](https://github.com/whistyun/MdXaml/wiki/How-to-use-Enhanched-syntax)。
 
-【模式、内容、标题】请参考上文标准模式中的说明。
+**图标**：可选预定义名称，或直接输入 Quicker [自定义图标](/v2/xaction/concepts/use-icon-in-actions)（不要加中括号）。
 
--   自定义模式下，消息内容也支持MarkDown格式，以`MD:`（MD+英文半角冒号）开始作为启用Markdown的标记，后面写实际的Markdown内容。（需1.39.20+版本）
-    支持的[Markdown格式扩展语法参考](&lt;https://github.com/whistyun/MdXaml/wiki/How-to-use-Enhanched-syntax &gt;)。
+<PreviewMarks
+  marks={[
+    {key: 'customIcon', label: '可选预定义特殊图标，或直接输入图标定义'},
+  ]}
+>
+  <ModuleParamPreview
+    moduleKey="sys:MsgBox"
+    scrollBody={false}
+    focusKeys={['customIcon']}
+    values={{
+      operation: 'custom',
+      customIcon: 'fa:Solid_InfoCircle:#FF0000',
+    }}
+  />
+</PreviewMarks>
 
-【图标】可选预定义的图标名称，或手动输入Quicker所支持的[各种自定义图标定义](/v2/xaction/concepts/use-icon-in-actions)（无需输入中括号，如`icon:**一个可能不存在的文件.docx**`）。
+**按钮**：每行一个，格式与[用户选择](/v2/xaction/modules/userselect)的选项类似：
 
-![](./img/msgbox-004-3c48550631.png)
+- `标题`：值与标题相同
+- `标题|值`
+- `[图标]标题(_X)(提示文字)|值`
 
-【按钮】每行定义一个按钮，其格式可参考《[用户选择](/v2/xaction/concepts/use-icon-in-actions)》模块中的选项定义：
+`_C` 表示快捷键 `Alt+C`。
 
--   `标题` 只指定标题，自动使用和标题一样的内容作为按钮的值。
--   `标题|值` 自定义标题和值。
--   `[图标]标题(_X)(提示文字)|值` 指定图标、快捷字母、提示文字和值。
+**默认按钮**：填按钮的**值**（会高亮，回车即选）。
 
-下划线加字母表示按钮的快捷字母。如`_C`表示按钮的快捷字母为`C`。按`Alt+C`相当于按下此按钮。
-
-【默认按钮】指定要预先选中并且高亮显示的按钮**值**。
-
-输出参数：
-
-【选中的按钮】所点击的按钮的值。如果没有选择，则输出空字符串。
+输出 **选择的按钮** 为所点按钮的值；未选则为空。
 
 ## 示例动作
 
--   [示例：弹窗消息](https://getquicker.net/sharedaction?code=b6098426-6fda-4db9-6d88-08d6bfa4ff29)
+- [示例：弹窗消息](https://getquicker.net/sharedaction?code=b6098426-6fda-4db9-6d88-08d6bfa4ff29)
 
 ## 更新历史
 
--   20230617 v1.38.21 版本：增加自定义模式。
--   20230713 图标格式增加无需中括号的说明。
--   20230904 1.39.20 版本，自定义模式支持Markdown内容。
--   20241029 增加markdown扩展语法文档链接。
+- 20230617 v1.38.21：增加自定义模式。
+- 20230713：补充图标格式无需中括号的说明。
+- 20230904 1.39.20：自定义模式支持 Markdown 内容。
+- 20241029：增加 Markdown 扩展语法文档链接。

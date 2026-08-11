@@ -83,10 +83,8 @@ function parseArguments(argv) {
     }
   }
 
-  if (!result.generated || !result.legacy) {
-    throw new Error(
-      '必须同时提供 --generated <Quicker 模块文档导出目录> 和 --legacy <1.x help 目录>。',
-    );
+  if (!result.generated) {
+    throw new Error('必须提供 --generated <Quicker 模块文档导出目录>。');
   }
 
   return result;
@@ -827,6 +825,7 @@ function createChangeReport(previousCatalog, nextCatalog) {
 }
 
 export {
+  parseArguments,
   createChangeReport,
   createLandingPage,
   createReference,
@@ -855,7 +854,7 @@ function main() {
   if (!fs.existsSync(generatedModulesRoot)) {
     throw new Error(`找不到模块目录：${generatedModulesRoot}`);
   }
-  if (!fs.existsSync(path.join(legacy, 'images'))) {
+  if (legacy && !fs.existsSync(path.join(legacy, 'images'))) {
     throw new Error(`找不到旧文档图片目录：${path.join(legacy, 'images')}`);
   }
 
@@ -882,10 +881,12 @@ function main() {
 
   const generatedAt = extractGeneratedAt(generated);
   const legacyFiles = new Map(
-    fs
-      .readdirSync(legacy, {withFileTypes: true})
-      .filter((entry) => entry.isFile() && entry.name.endsWith('.md'))
-      .map((entry) => [entry.name.slice(0, -3).toLowerCase(), path.join(legacy, entry.name)]),
+    legacy
+      ? fs
+          .readdirSync(legacy, {withFileTypes: true})
+          .filter((entry) => entry.isFile() && entry.name.endsWith('.md'))
+          .map((entry) => [entry.name.slice(0, -3).toLowerCase(), path.join(legacy, entry.name)])
+      : [],
   );
   const routeByLegacySlug = new Map(
     modules
@@ -979,7 +980,9 @@ function main() {
     });
   }
 
-  const supportingResult = writeSupportingDocuments(legacy, routeByLegacySlug);
+  const supportingResult = legacy
+    ? writeSupportingDocuments(legacy, routeByLegacySlug)
+    : {pageCount: 0, imageCount: 0};
   writeText(
     path.join(docsRoot, 'index.md'),
     createLandingPage(modules, migratedCount, legacyMappedModuleCount, generatedAt),
@@ -1022,11 +1025,15 @@ function main() {
   }
 
   console.log(`已同步 ${modules.length} 个模块页面。`);
-  console.log(
-    `其中 ${legacyMappedModuleCount} 个模块可映射旧版说明，共迁入 ${migratedCount} 份去重正文。`,
-  );
-  console.log(`已迁移 ${supportingResult.pageCount} 篇概念/教程文档。`);
-  console.log(`已复制 ${moduleImageCount + supportingResult.imageCount} 个页面图片引用。`);
+  if (legacy) {
+    console.log(
+      `其中 ${legacyMappedModuleCount} 个模块可映射旧版说明，共迁入 ${migratedCount} 份去重正文。`,
+    );
+    console.log(`已迁移 ${supportingResult.pageCount} 篇概念/教程文档。`);
+    console.log(`已复制 ${moduleImageCount + supportingResult.imageCount} 个页面图片引用。`);
+  } else {
+    console.log('未提供 --legacy，已跳过概念/教程迁入；新模块页使用占位说明。');
+  }
 }
 
 if (process.argv[1] && import.meta.url === pathToFileURL(path.resolve(process.argv[1])).href) {

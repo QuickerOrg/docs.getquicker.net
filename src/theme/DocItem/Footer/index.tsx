@@ -1,6 +1,7 @@
 import type {ReactNode} from 'react';
 import OriginalFooter from '@theme-original/DocItem/Footer';
 import {useDoc} from '@docusaurus/plugin-content-docs/client';
+import DocLegacyUpdated from '@site/src/components/DocLegacyUpdated';
 import QuickerComments from '@site/src/components/QuickerComments';
 
 export default function DocItemFooterWrapper(props: Record<string, unknown>): ReactNode {
@@ -15,6 +16,7 @@ export default function DocItemFooterWrapper(props: Record<string, unknown>): Re
   return (
     <>
       <OriginalFooter {...props} />
+      <DocLegacyUpdated value={extendedFrontMatter.legacyContentUpdatedAt} />
       {commentsEnabled && (
         <QuickerComments docKey={docKey} title={metadata.title} />
       )}

@@ -1,48 +1,124 @@
 {
   "/contributing": {
-    "description": "Quicker 文档站的 Markdown 编写和维护约定。"
+    "description": "Quicker 文档站的 Markdown 编写和维护约定。",
+    "excerpt": "docs/ 只放面向用户的 Markdown/MDX 文档（含文档专属图片，见下文）。src/ 放站点组件、主题覆盖和样式。",
+    "hints": [
+      "表达式",
+      "文件组织",
+      "图片与附件",
+      "Markdown 加粗（CommonMark / MDX v3）"
+    ]
   },
   "/important-notice": {
-    "description": "有关数据完整性的重要提示信息"
+    "description": "有关数据完整性的重要提示信息",
+    "excerpt": "2.1.0 相对于 2.0.x 增加了大量功能，以及对应的底层数据存储。但是2.0.x里没有这些数据结构，因此，如果在2.1.0里使用了新增功能，且保存了新的配置数据，在2.0.x里，可能会被覆盖清除。",
+    "hints": [
+      "从 2.1.0 降低到更低版本的风险提示（2026年7月28日版本）"
+    ]
   },
   "/": {
-    "description": "Quicker V2 使用说明、迁移指南和常见问题。"
+    "description": "Quicker V2 使用说明、迁移指南和常见问题。",
+    "excerpt": "这里用于维护 Quicker V2 的用户文档、迁移说明、排错指南和更新记录。开始使用 Quicker V2",
+    "hints": [
+      "推荐阅读",
+      "编写约定"
+    ]
   },
   "/release-notes/index": {
-    "description": "Quicker V2 的版本更新记录。"
+    "description": "Quicker V2 的版本更新记录。",
+    "excerpt": "这里记录 Quicker V2 对用户可见的重要变化。优先写用户可感知变化",
+    "hints": [
+      "编写建议"
+    ]
   },
   "/v2/features/account-and-sync": {
-    "description": "Quicker V2 的账号登录、多账号切换、数据同步与离线使用。"
+    "description": "Quicker V2 的账号登录、多账号切换、数据同步与离线使用。",
+    "excerpt": "本文用于说明 Quicker V2 的账号、数据同步和离线使用。登录与账号状态",
+    "hints": [
+      "待补充内容"
+    ]
   },
   "/v2/features/actions": {
-    "description": "Quicker V2 中动作的使用、动作面板的呼出与操作。"
+    "description": "Quicker V2 中动作的使用、动作面板的呼出与操作。",
+    "excerpt": "动作是 Quicker 中可重复运行的功能单元，动作面板、场景、快捷键和触发规则则负责决定动作显示在哪里、何时运行。Quicker 2.0 将动作内容与使用位置分开。同一个动作可以出现在多个位置；编辑动作会影响所有引用它的位置，而从面板移除按钮并不等同于删除动作本体。",
+    "hints": [
+      "组合动作",
+      "运行与整理动作",
+      "了解 2.0 的变化"
+    ]
   },
   "/v2/features/scenes": {
-    "description": "Quicker V2 中场景的配置、切换与动作分组。"
+    "description": "Quicker V2 中场景的配置、切换与动作分组。",
+    "excerpt": "本文用于说明 Quicker V2 中场景配置和动作分组的使用。场景的概念和切换方式",
+    "hints": [
+      "待补充内容"
+    ]
   },
   "/v2/features/screenshot/capture-pro": {
-    "description": "Quicker 截图 Pro 的选区、控件吸附、标注、OCR、贴图、长截图与录屏入口，以及动作步骤参数说明。"
+    "description": "Quicker 截图 Pro 的选区、控件吸附、标注、OCR、贴图、长截图与录屏入口，以及动作步骤参数说明。",
+    "excerpt": "截图 Pro 是 Quicker 的渐进式选区截图：进入后先出现全屏遮罩，光标附近会给出初始选区；你可以拖拽框选、吸附控件，再标注、复制、保存或贴图。同一界面也可进入长截图或录屏。",
+    "hints": [
+      "快速开始",
+      "作为动作步骤",
+      "基本操作流程",
+      "选择区域"
+    ]
   },
   "/v2/features/screenshot/image-translate": {
-    "description": "在截图 Pro 与贴图中使用百度 / 有道图片翻译，以及如何配置本机 API Key。"
+    "description": "在截图 Pro 与贴图中使用百度 / 有道图片翻译，以及如何配置本机 API Key。",
+    "excerpt": "截图或贴图遇到外文界面、外文资料时，可用 图片翻译：把当前图像交给百度翻译或有道智云的图片翻译接口，得到带译文贴合的结果图（图到图），再决定复制或替换原图。配额与计费由你在开放平台开通的账号决定，Quicker 不提供内置翻译额度。",
+    "hints": [
+      "快速开始",
+      "设置项说明",
+      "本机保存，不同步",
+      "如何使用"
+    ]
   },
   "/v2/features/screenshot/index": {
-    "description": "Quicker 截图 Pro、贴图、长截图与录屏功能入口说明。"
+    "description": "Quicker 截图 Pro、贴图、长截图与录屏功能入口说明。",
+    "excerpt": "Quicker 提供一套完整的屏幕截取与后续处理能力，可在动作中作为步骤使用，也可配合快捷键随时唤起。组合动作中的相关步骤包括：截图 Pro、长截图、贴图、录屏、基础 OCR 等。截图界面内已集成 OCR、图片翻译、智能马赛克等常用后处理；更复杂的自动化仍可在动作链中用独立步骤完成，也可通过 JS 自定义工具栏 在截图界面内直接调用。"
   },
   "/v2/features/screenshot/toolbar-script": {
-    "description": "用一段 JavaScript 给截图 Pro 工具栏增加自定义按钮，或在进阶场景下重排整栏布局。"
+    "description": "用一段 JavaScript 给截图 Pro 工具栏增加自定义按钮，或在进阶场景下重排整栏布局。",
+    "excerpt": "截图 Pro 标注工具栏默认提供铅笔、形状、复制、贴图等内置项。通过 JS 自定义工具栏，你可以：默认：只定义几个自定义按钮；原工具栏不动，宿主在保存 / 复制前固定位置加一个「扩展」下拉；",
+    "hints": [
+      "你只需记住三件事",
+      "最短完整示例",
+      "两个最常见的按钮",
+      "处理图片（窗口继续开着）"
+    ]
   },
   "/v2/features/tools": {
-    "description": "Quicker V2 内置的截图、AI 等工具入口。"
+    "description": "Quicker V2 内置的截图、AI 等工具入口。",
+    "excerpt": "Quicker V2 内置了一批可直接使用或在动作中调用的工具。截图相关能力已单独成章，其它工具说明会陆续补充。截图与贴图概览",
+    "hints": [
+      "截图与贴图",
+      "待补充"
+    ]
   },
   "/v2/features/triggers/text-selection-toolbar": {
-    "description": "Quicker V2 选中文本工具条的开启、触发、动作配置、场景规则和故障排查。"
+    "description": "Quicker V2 选中文本工具条的开启、触发、动作配置、场景规则和故障排查。",
+    "excerpt": "选中文本工具条可以在鼠标附近显示一组常用操作，让你在选中文字后快速复制、搜索、翻译，或运行自己的 Quicker 动作。此功能需要 Quicker 专业版，并且默认关闭。",
+    "hints": [
+      "快速开始",
+      "设置显示方式",
+      "自动显示",
+      "主动显示快捷键"
+    ]
   },
   "/v2/getting-started": {
-    "description": "Quicker V2 的基本概念和首次使用入口。"
+    "description": "Quicker V2 的基本概念和首次使用入口。",
+    "excerpt": "本文用于承载 Quicker V2 的入门说明。正式内容可以从现有 Markdown 文档逐步迁入。V2 与 V1 的主要差异",
+    "hints": [
+      "建议内容"
+    ]
   },
   "/v2/install/update": {
-    "description": "Quicker V2 的更新检查、下载和注意事项。"
+    "description": "Quicker V2 的更新检查、下载和注意事项。",
+    "excerpt": "本文用于说明 Quicker V2 的更新机制和用户注意事项。自动更新和手动检查更新",
+    "hints": [
+      "待补充内容"
+    ]
   },
   "/v2/install/windows": {
     "description": "在 Windows 上安装 Quicker V2。",
@@ -51,34 +127,101 @@
     ]
   },
   "/v2/migration/from-v1": {
-    "description": "从 Quicker V1 迁移到 Quicker V2 的说明。"
+    "description": "从 Quicker V1 迁移到 Quicker V2 的说明。",
+    "excerpt": "Quicker 2.0 尽量兼容 1.x 的动作和组合动作模块，但动作存储、编辑器、表达式引擎、执行管道和调试能力已经发生变化。迁移的重点不是重新制作所有动作，而是先识别仍需维护的复杂动作，再逐步验证和替换。",
+    "hints": [
+      "迁移前",
+      "组合动作",
+      "建议验证顺序",
+      "需要重点检查的变化"
+    ]
   },
   "/v2/troubleshooting": {
-    "description": "Quicker V2 的常见问题和排查入口。"
+    "description": "Quicker V2 的常见问题和排查入口。",
+    "excerpt": "本文用于收集 Quicker V2 试用和正式使用过程中的常见问题。安装和启动问题",
+    "hints": [
+      "待补充内容"
+    ]
   },
   "/v2/what's-new/actions/new-expression-engine": {
-    "description": "Quicker V2 自研 QkEval 表达式引擎的性能、诊断、现代 C# 语法和迁移兼容性说明。"
+    "description": "Quicker V2 自研 QkEval 表达式引擎的性能、诊断、现代 C# 语法和迁移兼容性说明。",
+    "excerpt": "Quicker 1.x 主要使用 Z.Expressions 计算组合动作中的表达式。V2 新增自研 QkEval，以减少运行开销，并让语法、类型环境和错误位置由 Quicker 自己控制。",
+    "hints": [
+      "性能全面提升",
+      "更强的诊断能力",
+      "更全面的 C# 语法支持",
+      "Switch 表达式与模式匹配"
+    ]
   },
   "/v2/what's-new/actions/xaction-steps": {
-    "description": "Quicker V2 新版组合动作执行管道、步骤运行器、并行取消、结构化调试和断点单步功能。"
+    "description": "Quicker V2 新版组合动作执行管道、步骤运行器、并行取消、结构化调试和断点单步功能。",
+    "excerpt": "Quicker V2 为新版组合动作引入新的步骤运行器和统一执行管道。动作格式仍以兼容为前提，但运行、取消、调试和错误定位的基础结构已经更新。已有模块的使用方式总体保持兼容。当前 2.0 模块的 Key、输入输出、默认值和枚举值请以组合动作模块参考为准；旧版说明与当前元数据已经按模块 Key 合并，新增或共享帮助页的模块也有独立参考页。",
+    "hints": [
+      "新版步骤运行器",
+      "统一执行管道",
+      "并行步骤与 WaitAny",
+      "结构化调试记录"
+    ]
   },
   "/v2/what's-new/actions": {
-    "description": "Quicker V2 如何统一动作数据、操作参数、组合动作执行和调试能力。"
+    "description": "Quicker V2 如何统一动作数据、操作参数、组合动作执行和调试能力。",
+    "excerpt": "Quicker V2 重做了动作的底层模型。基础动作、面板中的快捷操作和触发规则执行内容开始使用同一套“操作”概念。这项变化主要解决 1.x 中动作类型多、参数字段含义不一致、正文与位置耦合，以及不同入口重复保存快捷操作的问题。",
+    "hints": [
+      "从字符串参数改为结构化参数",
+      "基础动作与快捷操作逐步统一",
+      "动作本体与使用位置分开",
+      "新的操作编辑器"
+    ]
   },
   "/v2/what's-new/data-and-sync": {
-    "description": "Quicker V2 按账号隔离数据，并将动作、动作页、场景配置和同步状态拆分为独立数据项后的重要变化。"
+    "description": "Quicker V2 按账号隔离数据，并将动作、动作页、场景配置和同步状态拆分为独立数据项后的重要变化。",
+    "excerpt": "Quicker V2 重做了本地存储和云同步。目标不是简单更换数据库组件，而是把原来边界较大的数据拆成可独立保存、同步、冲突处理和恢复的数据项。在 1.x 中，一个动作页通常以完整 JSON 保存，动作内容也依赖 Data、Data2、Data3 等字符串字段表达不同参数。",
+    "hints": [
+      "1.x 存储方式的局限",
+      "V2 的账号隔离存储",
+      "数据拆成独立项目",
+      "动作本体与使用位置分离"
+    ]
   },
   "/v2/what's-new/index": {
-    "description": "从 Quicker 1.x 升级到 V2 前需要了解的运行平台、数据存储、动作、面板、场景与兼容性变化。"
+    "description": "从 Quicker 1.x 升级到 V2 前需要了解的运行平台、数据存储、动作、面板、场景与兼容性变化。",
+    "excerpt": "Quicker V2 不只是更换界面。它升级了运行平台，并重做了动作、面板、场景管理、本地存储和云同步等基础结构。本节集中说明相对于 Quicker 1.x 的重要变化。具体版本新增的小功能和问题修复，请另行查看版本更新记录。",
+    "hints": [
+      "先看结论",
+      "升级前最需要确认的三件事",
+      "1. Windows 版本和位数必须受支持",
+      "2. V2 使用新的数据空间"
+    ]
   },
   "/v2/what's-new/new-main-win/faq": {
-    "description": "解答从 Quicker 1.x 迁移到 2.0 新面板窗口时，动作页、分组、批量转移和数据保留等常见问题。"
+    "description": "解答从 Quicker 1.x 迁移到 2.0 新面板窗口时，动作页、分组、批量转移和数据保留等常见问题。",
+    "excerpt": "本页主要解答 Quicker 1.x 用户切换到新面板窗口时常见的迁移问题。基本操作请先参阅新面板窗口的使用。切换新旧面板只改变弹出时使用的窗口。首次为某个场景建立新面板配置时，Quicker 会把该场景的旧动作页内容引入新面板，但不会因此删除旧动作页或动作本体。因此，已登录账号可以暂时切回旧面板核对原布局。",
+    "hints": [
+      "切换到新面板后，旧动作页和动作会被删除吗？",
+      "1.x 中同一程序有多个动作页，迁移后如何排列？",
+      "为什么后来在旧动作页新增的动作没有自动出现在新面板？",
+      "如何把多个旧动作页合并为一个场景中的分组？"
+    ]
   },
   "/v2/what's-new/new-main-win/usage": {
-    "description": "介绍 Quicker 2.0 新面板窗口的启用方法、界面结构、动作整理、批量移动和场景管理方式。"
+    "description": "介绍 Quicker 2.0 新面板窗口的启用方法、界面结构、动作整理、批量移动和场景管理方式。",
+    "excerpt": "新面板窗口是 Quicker 2.0 的主要动作入口。它不再要求把动作固定放在二维动作页中，而是按“场景 → 分组 → 动作”组织；同一个动作也可以出现在多个场景或其它触发入口中。",
+    "hints": [
+      "启用新面板窗口",
+      "认识面板结构",
+      "全局区",
+      "上下文区"
+    ]
   },
   "/v2/what's-new/not-supported": {
-    "description": "Quicker V2 已移除、改为只读兼容或需要迁移替代的 1.x 功能和运行环境。"
+    "description": "Quicker V2 已移除、改为只读兼容或需要迁移替代的 1.x 功能和运行环境。",
+    "excerpt": "V2 会尽量迁移 1.x 数据，但不会永久保留每一种旧运行环境、界面和数据格式。本页区分“完全移除”“仅保留兼容运行”和“不再建议继续使用”。如果某项仍有替代方式，会在对应章节说明。",
+    "hints": [
+      ".NET 10 不支持的 Windows 系统",
+      "x86 和 32 位 Windows",
+      "手机 App 遥控器",
+      "文本悬浮窗"
+    ]
   },
   "/v2/what's-new/others/action-hotkeys": {
     "description": "Quicker 2.x 动作快捷键在场景作用域、继承覆盖、实时目标解析、注册稳定性和状态诊断上的改进。"
@@ -102,7 +245,14 @@
     "description": "Quicker 2.x 鼠标手势在识别稳定性、轨迹显示、场景规则、延迟执行和管理方式上的改进。"
   },
   "/v2/what's-new/others/powerkeys": {
-    "description": "Quicker 2.x 扩展热键在防误触、按键顺序识别、右键组合和设置方式上的改进。"
+    "description": "Quicker 2.x 扩展热键在防误触、按键顺序识别、右键组合和设置方式上的改进。",
+    "excerpt": "扩展热键可以把一个普通按键或鼠标键作为“引导键”，再配合另一个按键执行操作。例如：按住空格再按 E，启动 Everything 搜索；",
+    "hints": [
+      "更准确地识别按键意图",
+      "三种激活策略",
+      "仅作为引导键",
+      "平衡模式"
+    ]
   },
   "/v2/what's-new/others/text-commands": {
     "description": "Quicker 2.x 文本指令在场景规则、继承覆盖、批量复制粘贴和运行目标识别上的改进。"
@@ -111,13 +261,34 @@
     "description": "Quicker 2.x 选中文本工具条相对 1.x 文本悬浮窗在界面、场景规则、内容过滤、位置和禁用管理上的改进。"
   },
   "/v2/what's-new/platform-and-compatibility": {
-    "description": "Quicker V2 从 .NET Framework 4.7.2 升级到 .NET 10 后，对 Windows 版本、系统位数和组件兼容性的要求。"
+    "description": "Quicker V2 从 .NET Framework 4.7.2 升级到 .NET 10 后，对 Windows 版本、系统位数和组件兼容性的要求。",
+    "excerpt": "Quicker 1.x 主程序基于 .NET Framework 4.7.2。Quicker V2 主程序升级为 .NET 10 for Windows，并将正式发布平台统一为 x64。",
+    "hints": [
+      "为什么升级到 .NET 10",
+      "Windows 系统版本要求",
+      "V2 不再提供 x86 正式版本",
+      "哪些动作需要重点检查"
+    ]
   },
   "/v2/what's-new/scenes-and-triggers": {
-    "description": "Quicker V2 如何统一管理程序、网址、动作面板、快捷键、轮盘、手势及其它场景规则。"
+    "description": "Quicker V2 如何统一管理程序、网址、动作面板、快捷键、轮盘、手势及其它场景规则。",
+    "excerpt": "Quicker 1.x 已经支持按程序切换动作页，以及文本指令、轮盘、手势和多种键鼠触发方式。V2 保留这些能力，并把分散的编辑入口集中到“场景与动作管理”窗口。场景不再只等同于一个程序名，而是成为面板和触发规则共同使用的上下文。",
+    "hints": [
+      "从“程序动作页”到“场景”",
+      "一个窗口管理场景相关功能",
+      "场景规则支持继承和禁用",
+      "新面板与触发规则共享场景身份"
+    ]
   },
   "/v2/what's-new/tools-and-experience": {
-    "description": "Quicker V2 在截图录屏、选中文本、搜索、通知和窗口交互方面的重要变化。"
+    "description": "Quicker V2 在截图录屏、选中文本、搜索、通知和窗口交互方面的重要变化。",
+    "excerpt": "除底层架构和动作系统外，V2 还更新了多项日常可见功能。本页只列出相对于 1.x 较重要的变化。V2 将截图、贴图、长截图和录屏整理为更完整的工作流。",
+    "hints": [
+      "截图 Pro、贴图与录屏",
+      "选中文本工具条",
+      "动作与文件搜索",
+      "统一的窗口和提示交互"
+    ]
   },
   "/v2/what's-new/xaction-steps/basic-ocr": {
     "description": "Quicker 2.x 基础 OCR 模块增加独立本地引擎、模型档位和本地表格识别。"
@@ -210,7 +381,11 @@
     ]
   },
   "/v2/xaction/concepts/edit-step-param": {
-    "description": "选择或输入步骤参数的 Quicker 2.0 使用说明。"
+    "description": "选择或输入步骤参数的 Quicker 2.0 使用说明。",
+    "excerpt": "待编写。在输入框中：",
+    "hints": [
+      "快捷操作"
+    ]
   },
   "/v2/xaction/concepts/expression-adv": {
     "description": "表达式高级话题的 Quicker 2.0 使用说明。",
@@ -231,7 +406,11 @@
     ]
   },
   "/v2/xaction/concepts/object": {
-    "description": "动态对象变量的 Quicker 2.0 使用说明。"
+    "description": "动态对象变量的 Quicker 2.0 使用说明。",
+    "excerpt": "动态对象可以用于存储任何一个类型的值。无论是简单的数字，还是复杂的类型（class）。Quicker使用C#语言编写，动态对象在内部表示为一个Object类型的变量。",
+    "hints": [
+      "使用说明"
+    ]
   },
   "/v2/xaction/concepts/parameters": {
     "description": "参数传递的 Quicker 2.0 使用说明。",
@@ -240,7 +419,14 @@
     ]
   },
   "/v2/xaction/concepts/public-api": {
-    "description": "公共API的 Quicker 2.0 使用说明。"
+    "description": "公共API的 Quicker 2.0 使用说明。",
+    "excerpt": "服务器资源有限，请勿频繁特别是不要循环调用API，否则您的IP可能会被屏蔽，导致无法正常使用Quicker。https://getquicker.net/open/api/actions/today",
+    "hints": [
+      "本日分享或更新的动作",
+      "最近24小时分享或更新的动作",
+      "检查某个动作的最新版本",
+      "获取动作基本信息"
+    ]
   },
   "/v2/xaction/concepts/quicker_in_param": {
     "description": "为动作传递参数的 Quicker 2.0 使用说明。",
@@ -279,10 +465,24 @@
     ]
   },
   "/v2/xaction/concepts/var-dict": {
-    "description": "词典类型的 Quicker 2.0 使用说明。"
+    "description": "词典类型的 Quicker 2.0 使用说明。",
+    "excerpt": "词典类型用于存储 “键-值”对 类型的数据。*词典类型在内部使用 Dictionary&lt;string, Object&gt; 实现。*",
+    "hints": [
+      "变量定义",
+      "默认值的定义/赋值操作里的文本写法",
+      "转换",
+      "相关操作模块"
+    ]
   },
   "/v2/xaction/concepts/var-list": {
-    "description": "列表类型的 Quicker 2.0 使用说明。"
+    "description": "列表类型的 Quicker 2.0 使用说明。",
+    "excerpt": "列表类型用于存储一组字符串。例如选中的多个文件的路径就可以看作一个列表。这个列表的每一项，就是一个文件的完整路径。",
+    "hints": [
+      "变量定义",
+      "列表和多行文本的转换",
+      "自动转换",
+      "拆分文本为列表"
+    ]
   },
   "/v2/xaction/concepts/variables": {
     "description": "变量的 Quicker 2.0 使用说明。",
@@ -345,7 +545,11 @@
     ]
   },
   "/v2/xaction/guides/samples": {
-    "description": "实例教程的 Quicker 2.0 使用说明。"
+    "description": "实例教程的 Quicker 2.0 使用说明。",
+    "excerpt": "（0）网友 @darcyc 制作的视频教程地球达西的个人空间-合集·一起学「组合动作」",
+    "hints": [
+      "使用说明"
+    ]
   },
   "/v2/xaction/guides/scroll-trigger": {
     "description": "使用滚轮连续触发的动作的 Quicker 2.0 使用说明。",
@@ -360,7 +564,13 @@
     ]
   },
   "/v2/xaction/guides/text-process": {
-    "description": "文本的处理的 Quicker 2.0 使用说明。"
+    "description": "文本的处理的 Quicker 2.0 使用说明。",
+    "excerpt": "本文简单介绍和文本获取处理相关的操作模块。获取选择的文本：通过向窗口发送Ctrl+C然后读取剪贴板的方式获取选择的文本。",
+    "hints": [
+      "获取文本",
+      "处理文本",
+      "输出文本"
+    ]
   },
   "/v2/xaction/guides/url-links": {
     "description": "网页动作按钮 & 网址关联场景/动作页的 Quicker 2.0 使用说明。",
@@ -375,7 +585,8 @@
     ]
   },
   "/v2/xaction": {
-    "description": "Quicker 2.0 组合动作的入门、模块参考、教程与迁移说明。"
+    "description": "Quicker 2.0 组合动作的入门、模块参考、教程与迁移说明。",
+    "excerpt": "组合动作把多个步骤按顺序执行，用来完成打开网页、处理文本、操作窗口这类自动化。Quicker 2.0 沿用 1.x 的主要模块，并补充了参数、执行和调试能力。moduleCount={144}"
   },
   "/v2/xaction/modules/comment": {
     "description": "使用注释将步骤分组，描述后续步骤的目的。",
@@ -390,7 +601,14 @@
     ]
   },
   "/v2/xaction/modules/get_selected_text": {
-    "description": "获取选中的文字"
+    "description": "获取选中的文字",
+    "excerpt": "获取当前选中的文本内容。也可用于接收动作参数。实现原理为：模拟ctrl+c，待剪贴板发生变化后，读取剪贴板内容。",
+    "hints": [
+      "文本数据格式",
+      "等待剪贴时间",
+      "重试次数",
+      "去除前后的空白"
+    ]
   },
   "/v2/xaction/modules/keyinput": {
     "description": "模拟键盘输入",
@@ -406,21 +624,38 @@
   },
   "/v2/xaction/modules/msgbox": {
     "description": "弹窗显示提示或确认对话框",
-    "covers": [
-      "/img/doc-gallery/1013b66c0d03.png"
+    "excerpt": "显示一个占用焦点的提示或确认对话框。关闭前会一直停在屏幕上，动作也停在这一步，等用户点完再继续。title=\"Quicker\"",
+    "hints": [
+      "标准模式",
+      "自定义模式",
+      "更新历史"
     ]
   },
   "/v2/xaction/modules/notify": {
-    "description": "显示可以自动消失的消息提示。"
+    "description": "显示可以自动消失的消息提示。",
+    "excerpt": "提示消息用于显示可以自动隐藏的提示信息。显示在桌面的中部下方位置。moduleKey=\"sys:notify\"",
+    "hints": [
+      "消息内容",
+      "最大行数",
+      "类型",
+      "点击命令"
+    ]
   },
   "/v2/xaction/modules/openurl": {
     "description": "打开指定的网址",
-    "covers": [
-      "/img/doc-gallery/4fd5b3ace411.png"
+    "excerpt": "使用浏览器打开指定的网址。网址：需要打开的网页地址。",
+    "hints": [
+      "输入参数",
+      "常见问题"
     ]
   },
   "/v2/xaction/modules/outputtext": {
-    "description": "将文本输出到活动窗口中"
+    "description": "将文本输出到活动窗口中",
+    "excerpt": "本模块用于将指定的文本发送到当前活动窗口中。例如一个去除空格的动作，则获得文本并去除空格后，需要将处理后的结果再发回到窗口替换之前的文本。请参考基本动作类型“发送文本”。",
+    "hints": [
+      "概述",
+      "更新历史"
+    ]
   },
   "/v2/xaction/modules/run": {
     "description": "运行软件或命令，打开文件、文件夹或网址。效果类似于在Windows\\\"运行\\\"对话框中执行命令。",
@@ -435,7 +670,12 @@
     ]
   },
   "/v2/xaction/modules/sendkeys": {
-    "description": "发送按键和文本"
+    "description": "发送按键和文本",
+    "excerpt": "发送指定的按键序列到目标窗口。本功能在内部使用了C#的 System.Windows.Forms.SendKeys.SendWait() 函数。因此，参数格式可以直接参考该文档。",
+    "hints": [
+      "概述",
+      "按键序列参数格式"
+    ]
   },
   "/v2/xaction/modules/userinput": {
     "description": "请用户输入内容。",
@@ -450,13 +690,33 @@
     ]
   },
   "/v2/xaction/modules/filetoclipboard": {
-    "description": "将文件或文件列表存入剪贴板"
+    "description": "将文件或文件列表存入剪贴板",
+    "excerpt": "将指定的一个或多个文件存入剪贴板，方便在其他软件中粘贴（如粘贴在聊天窗口里）。根据需求，【单个文件】和【文件列表】两个参数选择一个使用。",
+    "hints": [
+      "单个文件",
+      "文件列表",
+      "概述"
+    ]
   },
   "/v2/xaction/modules/getclipboardfiles": {
-    "description": "获取剪贴板中复制的文件(或文件夹)的路径列表"
+    "description": "获取剪贴板中复制的文件(或文件夹)的路径列表",
+    "excerpt": "返回剪贴板中的文件列表。内容为所有选中文件的路径。",
+    "hints": [
+      "失败后中止动作",
+      "文件列表",
+      "是否成功",
+      "概述"
+    ]
   },
   "/v2/xaction/modules/getclipboardimage": {
-    "description": "读取剪贴板中的图片内容输出到图片变量中。"
+    "description": "读取剪贴板中的图片内容输出到图片变量中。",
+    "excerpt": "读取剪贴板图片并保存到变量中。一般用于获取截图内容等情况。",
+    "hints": [
+      "失败后中止动作",
+      "结果图片",
+      "是否成功",
+      "概述"
+    ]
   },
   "/v2/xaction/modules/getclipboardtext": {
     "description": "读取剪贴板中的文本内容",
@@ -465,7 +725,14 @@
     ]
   },
   "/v2/xaction/modules/waitclipboardchange": {
-    "description": "等待剪贴板的内容发生改变。等待第三方工具（如截图工具）完成操作并更新剪贴板。"
+    "description": "等待剪贴板的内容发生改变。等待第三方工具（如截图工具）完成操作并更新剪贴板。",
+    "excerpt": "通常用于等待第三方工具（如截图软件）完成操作并将内容写入剪贴板。使用截图软件的通常操作步骤为：",
+    "hints": [
+      "注",
+      "概述",
+      "输入参数",
+      "输出"
+    ]
   },
   "/v2/xaction/modules/writeclipboard": {
     "description": "将文本或图片等内容写入剪贴板",
@@ -492,7 +759,14 @@
     ]
   },
   "/v2/xaction/modules/computetime": {
-    "description": "时间相关的计算操作"
+    "description": "时间相关的计算操作",
+    "excerpt": "时间相关的计算操作。比如 2020-1-1 12:34:00 ，去除时间值12:34:00，返回当天0点的时间值 2020-1-1 0:0:0",
+    "hints": [
+      "操作类型",
+      "取日期值",
+      "计算时间差",
+      "计算结束时间"
+    ]
   },
   "/v2/xaction/modules/dboperation": {
     "description": "对数据库执行SQL语句并返回结果",
@@ -501,10 +775,24 @@
     ]
   },
   "/v2/xaction/modules/dictoperations": {
-    "description": "对词典变量进行添加、删除等操作"
+    "description": "对词典变量进行添加、删除等操作",
+    "excerpt": "对词典类型变量进行信息提取或数据处理。取值：读取词典中某个键（Key）对应的值（Value）。",
+    "hints": [
+      "词典",
+      "操作类型",
+      "结果",
+      "键"
+    ]
   },
   "/v2/xaction/modules/listoperations": {
-    "description": "对列表变量进行添加、删除等操作"
+    "description": "对列表变量进行添加、删除等操作",
+    "excerpt": "对列表变量的项进行添加、删除等操作。如果仅用于输出内容，这里也可以直接使用多行文本的方式构建临时列表。",
+    "hints": [
+      "列表",
+      "操作类型",
+      "序号",
+      "长度"
+    ]
   },
   "/v2/xaction/modules/managelist": {
     "description": "对列表内容进行手工排序、添加、删除等操作",
@@ -513,19 +801,53 @@
     ]
   },
   "/v2/xaction/modules/newguid": {
-    "description": "生成一个新的Guid(全局唯一ID标示符)，并转换为文本格式。"
+    "description": "生成一个新的Guid(全局唯一ID标示符)，并转换为文本格式。",
+    "excerpt": "GUID一般在编程中使用。默认：00000000-0000-0000-0000-000000000000",
+    "hints": [
+      "格式",
+      "大写",
+      "内容",
+      "输出"
+    ]
   },
   "/v2/xaction/modules/numberprocess": {
-    "description": "数字转换为文本等相关处理"
+    "description": "数字转换为文本等相关处理",
+    "excerpt": "将数字转换为保留指定小数位的文本、取整或进行进制转换。根据设定的保留小数位数和舍入方式转换为文本值。",
+    "hints": [
+      "模块开发完善中...",
+      "原始数字",
+      "保留位数",
+      "舍入方式"
+    ]
   },
   "/v2/xaction/modules/numcompare": {
-    "description": "比较数字大小。"
+    "description": "比较数字大小。",
+    "excerpt": "比较两个数字的大小。也可以直接以表达式的形式写在布尔类型参数输入框中，请参考“如果”模块。",
+    "hints": [
+      "数字1",
+      "类型",
+      "值",
+      "输出"
+    ]
   },
   "/v2/xaction/modules/randomnum": {
-    "description": "生成随机数"
+    "description": "生成随机数",
+    "excerpt": "生成一个随机的数字（整数）。最小值 &lt;= 随机数 &lt; 最大值。",
+    "hints": [
+      "最小值",
+      "随机数",
+      "输出"
+    ]
   },
   "/v2/xaction/modules/strcompare": {
-    "description": "文本比较"
+    "description": "文本比较",
+    "excerpt": "比较两段文本是否符合指定的关系。\\&gt; ：文本1是否在字母顺序的角度大于文本2。比如“def”&gt; “abc”。",
+    "hints": [
+      "文本1",
+      "类型",
+      "区分大小写",
+      "值"
+    ]
   },
   "/v2/xaction/modules/tableoperation": {
     "description": "表格变量的相关处理操作",
@@ -546,16 +868,43 @@
     ]
   },
   "/v2/xaction/modules/fileoperation": {
-    "description": "文件和目录操作。请确保路径是合法的。"
+    "description": "文件和目录操作。请确保路径是合法的。",
+    "excerpt": "！！！警告：请在使用本模块进行移动、删除等操作之前备份好重要数据。本模块用于实现基本的文件和目录操作。",
+    "hints": [
+      "不建议使用",
+      "搜索内容",
+      "支持的操作类型",
+      "参数说明"
+    ]
   },
   "/v2/xaction/modules/gentempfilepath": {
-    "description": "根据指定的扩展名生成一个随机的临时文件名（完整路径），供后续步骤写入文件使用。"
+    "description": "根据指定的扩展名生成一个随机的临时文件名（完整路径），供后续步骤写入文件使用。",
+    "excerpt": "根据指定的后缀名，生成一个合法路径用于存储临时文件。",
+    "hints": [
+      "扩展名",
+      "文件路径",
+      "输入"
+    ]
   },
   "/v2/xaction/modules/pathextraction": {
-    "description": "从文件路径中提取文件名、文件夹等信息"
+    "description": "从文件路径中提取文件名、文件夹等信息",
+    "excerpt": "提取路径中的信息，以及计算生成新的路径。根据选择的“操作类型”不同，实现不同的功能。",
+    "hints": [
+      "完整路径",
+      "文件名",
+      "扩展名",
+      "结果路径"
+    ]
   },
   "/v2/xaction/modules/readfile": {
-    "description": "将读取的文本或图片内容写入变量。"
+    "description": "将读取的文本或图片内容写入变量。",
+    "excerpt": "读取指定文件的内容。目前支持文本文件和图片文件的读取。",
+    "hints": [
+      "文件路径",
+      "格式",
+      "文件编码",
+      "文本内容"
+    ]
   },
   "/v2/xaction/modules/statestorage": {
     "description": "存取状态数据；更新动作的徽标文字；设置附加的动作右键菜单项",
@@ -564,19 +913,42 @@
     ]
   },
   "/v2/xaction/modules/writeimagefile": {
-    "description": "将图片内容写入文件"
+    "description": "将图片内容写入文件",
+    "excerpt": "将图片写入文件。支持的图片格式类型：.jpg, .png, .bmp, .tiff",
+    "hints": [
+      "内容",
+      "文件路径",
+      "图片质量",
+      "输入"
+    ]
   },
   "/v2/xaction/modules/writetextfile": {
-    "description": "将内容写入文本文件"
+    "description": "将内容写入文本文件",
+    "excerpt": "将文本内容写入指定的文件。",
+    "hints": [
+      "内容",
+      "文件路径",
+      "文件编码",
+      "输入"
+    ]
   },
   "/v2/xaction/modules/zip": {
-    "description": "Zip压缩或解压缩"
+    "description": "Zip压缩或解压缩",
+    "excerpt": "本模块支持2个功能：将文件夹或多个文件打包成一个zip文件；",
+    "hints": [
+      "源路径",
+      "Zip文件路径",
+      "结果路径",
+      "密码"
+    ]
   },
   "/v2/xaction/modules/break": {
-    "description": "跳出循环（\\\"每个\\\" 或 \\\"重复\\\" 模块）"
+    "description": "跳出循环（\\\"每个\\\" 或 \\\"重复\\\" 模块）",
+    "excerpt": "跳出循环（\"每个\" 或 \"重复\" 模块）在循环模块（如“每个”，“重复”等）中，跳过后面的步骤 并 结束循环。"
   },
   "/v2/xaction/modules/continue": {
-    "description": "跳过后续步骤（循环内部），开始下一次循环。在循环内部使用。"
+    "description": "跳过后续步骤（循环内部），开始下一次循环。在循环内部使用。",
+    "excerpt": "在循环中，跳过后续步骤，开始下一次循环。类似于编程语言中的continue语句。"
   },
   "/v2/xaction/modules/csscript": {
     "description": "执行C#代码。普通模式可写纯脚本（末行表达式即返回值，可用 context 读写变量）；也可写完整 Exec(context)。",
@@ -591,10 +963,21 @@
     ]
   },
   "/v2/xaction/modules/each": {
-    "description": "对列表的每项执行处理"
+    "description": "对列表的每项执行处理",
+    "excerpt": "循环处理列表中的每一项。是循环的一种，另外一种循环模块是“重复”。",
+    "hints": [
+      "列表",
+      "使用多线程",
+      "为线程创建独立上下文",
+      "项"
+    ]
   },
   "/v2/xaction/modules/file-based-apps": {
-    "description": "使用.NET SDK运行C# file-based app。支持新语法、NuGet包引用和WPF等SDK功能。"
+    "description": "使用.NET SDK运行C# file-based app。支持新语法、NuGet包引用和WPF等SDK功能。",
+    "excerpt": "这是 Quicker 2.0 新增模块，当前页面已收录模块定义，详细用法与示例待补充。",
+    "hints": [
+      "使用说明"
+    ]
   },
   "/v2/xaction/modules/group": {
     "description": "一组有关的模块（方便整体禁用、删除等）",
@@ -609,7 +992,14 @@
     ]
   },
   "/v2/xaction/modules/jsscript": {
-    "description": "执行Js代码片段。代码中应包含主函数exec()，请参考文档。"
+    "description": "执行Js代码片段。代码中应包含主函数exec()，请参考文档。",
+    "excerpt": "运行js脚本。脚本应包含exec()全局函数，并返回0表示成功，返回其他数字表示失败。",
+    "hints": [
+      "脚本内容",
+      "允许访问 .Net 程序集",
+      "失败后停止",
+      "是否成功"
+    ]
   },
   "/v2/xaction/modules/pythonscript": {
     "description": "执行Python代码片段。",
@@ -630,10 +1020,20 @@
     ]
   },
   "/v2/xaction/modules/simple-if": {
-    "description": "依据条件执行操作"
+    "description": "依据条件执行操作",
+    "excerpt": "本模块与如果/否则共享基础使用说明；本页上方参数表是当前模块自身的定义。",
+    "hints": [
+      "使用说明"
+    ]
   },
   "/v2/xaction/modules/stop": {
-    "description": "停止动作或从子程序中返回"
+    "description": "停止动作或从子程序中返回",
+    "excerpt": "停止动作或从子程序中返回。类似于编程语言中的return语句。默认：​",
+    "hints": [
+      "标记为出错",
+      "返回值",
+      "操作类型"
+    ]
   },
   "/v2/xaction/modules/subprogram": {
     "description": "运行子程序",
@@ -642,10 +1042,24 @@
     ]
   },
   "/v2/xaction/modules/createqrcode": {
-    "description": "将文本转换为二维码"
+    "description": "将文本转换为二维码",
+    "excerpt": "根据指定的文本内容生成二维码图片。",
+    "hints": [
+      "文本",
+      "每模块像素数",
+      "暗色",
+      "图标"
+    ]
   },
   "/v2/xaction/modules/imageinfo": {
-    "description": "获取图片的尺寸或exif信息"
+    "description": "获取图片的尺寸或exif信息",
+    "excerpt": "读取图片的尺寸和Exif信息。&#123;",
+    "hints": [
+      "图片来源",
+      "图片变量",
+      "文件路径",
+      "宽度"
+    ]
   },
   "/v2/xaction/modules/imgprocess": {
     "description": "图片处理和变换",
@@ -654,22 +1068,52 @@
     ]
   },
   "/v2/xaction/modules/imgtobase64": {
-    "description": "图片和Base64转换"
+    "description": "图片和Base64转换",
+    "excerpt": "将图片转换为Base64文本，或者将Base64文本转换为图片。请勿将图片Base64保存在动作中（如变量的默认值等）。因为:",
+    "hints": [
+      "操作类型",
+      "图片",
+      "Base64编码",
+      "输出"
+    ]
   },
   "/v2/xaction/modules/long-screenshot": {
-    "description": "先使用屏幕选区工具选择范围，再进行长截图。"
+    "description": "先使用屏幕选区工具选择范围，再进行长截图。",
+    "excerpt": "本模块与屏幕截图共享基础使用说明；本页上方参数表是当前模块自身的定义。",
+    "hints": [
+      "使用说明"
+    ]
   },
   "/v2/xaction/modules/readqrcode": {
-    "description": "识别图片中的二维码"
+    "description": "识别图片中的二维码",
+    "excerpt": "识别图片中的二维码。20251020 增加条码类型返回说明。",
+    "hints": [
+      "输入图片",
+      "本地识别失败后尝试在线识别服务",
+      "值",
+      "条码类型"
+    ]
   },
   "/v2/xaction/modules/screen-capture-pro": {
-    "description": "渐进式选区截图：全屏 overlay，光标处初始选区，支持控件跟踪，双击确认。Esc 取消。"
+    "description": "渐进式选区截图：全屏 overlay，光标处初始选区，支持控件跟踪，双击确认。Esc 取消。",
+    "excerpt": "本模块与屏幕截图共享基础使用说明；本页上方参数表是当前模块自身的定义。",
+    "hints": [
+      "使用说明"
+    ]
   },
   "/v2/xaction/modules/screen-recording-ui": {
-    "description": "弹出选区 UI 让用户框选录制范围，打开录屏工具栏进行可视化录制，录完后返回文件路径。"
+    "description": "弹出选区 UI 让用户框选录制范围，打开录屏工具栏进行可视化录制，录完后返回文件路径。",
+    "excerpt": "本模块与屏幕截图共享基础使用说明；本页上方参数表是当前模块自身的定义。",
+    "hints": [
+      "使用说明"
+    ]
   },
   "/v2/xaction/modules/screen-recording": {
-    "description": "后台录制屏幕区域为视频文件，通过会话 ID 跨步骤控制录制生命周期。"
+    "description": "后台录制屏幕区域为视频文件，通过会话 ID 跨步骤控制录制生命周期。",
+    "excerpt": "本模块与屏幕截图共享基础使用说明；本页上方参数表是当前模块自身的定义。",
+    "hints": [
+      "使用说明"
+    ]
   },
   "/v2/xaction/modules/screencapture": {
     "description": "截取屏幕区域",
@@ -690,13 +1134,33 @@
     ]
   },
   "/v2/xaction/modules/tempimgbed": {
-    "description": "将图片上传到临时（1分钟后删除）的图床，用以搜图等场景。勿上传非法内容。"
+    "description": "将图片上传到临时（1分钟后删除）的图床，用以搜图等场景。勿上传非法内容。",
+    "excerpt": "本功能用于以图找图等需要临时将截图、图片上传到网络并获得公网地址的场景。警告：请勿使用本服务上传有可能违反国家法律或规定的文件。 文件网址会带有您的用户编号，如果被阿里云或第三方机构警告，我们将会停止您使用本服务的权限。",
+    "hints": [
+      "图片变量",
+      "失败后停止",
+      "网址",
+      "是否成功"
+    ]
   },
   "/v2/xaction/modules/whiteboard": {
-    "description": "手写内容，生成图片对象。"
+    "description": "手写内容，生成图片对象。",
+    "excerpt": "1.10.8版本提供。绘制简单图形并获得图片对象。",
+    "hints": [
+      "窗口位置",
+      "绘图区背景颜色",
+      "画笔颜色",
+      "使用透明无边框窗口"
+    ]
   },
   "/v2/xaction/modules/inputscript": {
-    "description": "多步骤键盘组合输入"
+    "description": "多步骤键盘组合输入",
+    "excerpt": "用于快速编写连续多个键盘输入步骤。步骤运行中不支持停止，不适合放置大量步骤。",
+    "hints": [
+      "步骤脚本",
+      "其它",
+      "更新历史"
+    ]
   },
   "/v2/xaction/modules/ai": {
     "description": "调用第三方AI服务",
@@ -729,7 +1193,14 @@
     ]
   },
   "/v2/xaction/modules/htmlextract": {
-    "description": "从HTML代码中提取内容"
+    "description": "从HTML代码中提取内容",
+    "excerpt": "从HTML代码中提取内容，在一定程度上也可以支持XML文档内容的提取。本模块在内部使用HtmlAgilityPack组件，深入使用可以参考其文档。",
+    "hints": [
+      "源HTML",
+      "网页编码类型",
+      "节点XPath",
+      "提取方式"
+    ]
   },
   "/v2/xaction/modules/http": {
     "description": "发送HTTP请求，并获取返回结果",
@@ -744,10 +1215,24 @@
     ]
   },
   "/v2/xaction/modules/mathocr": {
-    "description": "数学公式识别"
+    "description": "数学公式识别",
+    "excerpt": "调用Mathpix接口识别图片中的公式。本功能耗费Q豆，费用：每次调用0.015豆(价格可能会随汇率等因素波动)。什么是Q豆？",
+    "hints": [
+      "公式图片",
+      "是否成功",
+      "Mathpix MD",
+      "Latex"
+    ]
   },
   "/v2/xaction/modules/smtp": {
-    "description": "使用SMTP协议发送邮件"
+    "description": "使用SMTP协议发送邮件",
+    "excerpt": "使用SMTP协议发送邮件。此模块会需要使用敏感信息（如Email帐号和密码），请勿分享并谨慎使用。如需分享请使用状态存取模块将敏感信息保存在本地。",
+    "hints": [
+      "邮件服务器",
+      "端口",
+      "帐号",
+      "密码"
+    ]
   },
   "/v2/xaction/modules/tempcloudstore": {
     "description": "将文本、文件、图片临时保存到云端并得到网址。",
@@ -786,7 +1271,14 @@
     ]
   },
   "/v2/xaction/modules/excelobjects": {
-    "description": "操作Excel的某个对象"
+    "description": "操作Excel的某个对象",
+    "excerpt": "用于打开或创建工作簿。本模块仍在开发中，目前为预览状态。",
+    "hints": [
+      "参数",
+      "是否成功",
+      "活动工作簿",
+      "工作表列表"
+    ]
   },
   "/v2/xaction/modules/excelrange": {
     "description": "操作Excel的某个区域或单元格",
@@ -801,10 +1293,18 @@
     ]
   },
   "/v2/xaction/modules/flauiautomation": {
-    "description": "触发Windows窗口的菜单/按钮等控件(通过FlaUI库实现)。"
+    "description": "触发Windows窗口的菜单/按钮等控件(通过FlaUI库实现)。",
+    "excerpt": "本模块与窗口界面控制共享基础使用说明；本页上方参数表是当前模块自身的定义。",
+    "hints": [
+      "使用说明"
+    ]
   },
   "/v2/xaction/modules/getchromeurl": {
-    "description": "获取当前浏览器网址。"
+    "description": "获取当前浏览器网址。",
+    "excerpt": "获取当前浏览器窗口的网址。对于chrome、msedge和firefox进程，它会首先尝试通过浏览器扩展接口获取网址。",
+    "hints": [
+      "使用说明"
+    ]
   },
   "/v2/xaction/modules/officehelper": {
     "description": "辅助控制Office软件",
@@ -831,10 +1331,24 @@
     ]
   },
   "/v2/xaction/modules/audiocontrol": {
-    "description": "获取音频设备信息，设置默认音频设备。"
+    "description": "获取音频设备信息，设置默认音频设备。",
+    "excerpt": "用于获取音频设备信息或设置默认设备、调整静音、音量。moduleKey=\"sys:audioControl\"",
+    "hints": [
+      "获取输出设备列表",
+      "设备信息列表",
+      "原始对象列表",
+      "获取默认的输出设备信息"
+    ]
   },
   "/v2/xaction/modules/checkprocessexists": {
-    "description": "检查指定的应用程序是否已经启动。"
+    "description": "检查指定的应用程序是否已经启动。",
+    "excerpt": "检查某个软件是否在运行中（检查系统中存在指定名称的进程）。进程名称通常为应用程序文件.exe去除.exe后缀的部分。如quicker软件主程序为“quicker.exe”，对应的进程名为“quicker”；Word软件对应的进程名为“winword”。",
+    "hints": [
+      "进程名称/pid",
+      "失败后停止",
+      "操作是否成功",
+      "是否运行"
+    ]
   },
   "/v2/xaction/modules/filesystemwatch": {
     "description": "监控文件创建/变更/删除等事件。",
@@ -843,7 +1357,14 @@
     ]
   },
   "/v2/xaction/modules/getactiveprocessinfo": {
-    "description": "获取当前活动窗口进程的信息。"
+    "description": "获取当前活动窗口进程的信息。",
+    "excerpt": "获取Windows活动窗口所属进程的信息。",
+    "hints": [
+      "程序路径",
+      "进程名",
+      "PID",
+      "是否成功"
+    ]
   },
   "/v2/xaction/modules/getexplorerpath": {
     "description": "获取资源管理器的当前文件夹路径。",
@@ -852,7 +1373,13 @@
     ]
   },
   "/v2/xaction/modules/getfolderpath": {
-    "description": "返回指定的特殊目录路径。"
+    "description": "返回指定的特殊目录路径。",
+    "excerpt": "用于获取特定的Windows系统文件夹路径。可选值请参考https://docs.microsoft.com/zh-cn/dotnet/api/system.environment.specialfolder;k\\(TargetFrameworkMoniker-.NETFramework,Version%3Dv4.6.1\\);k\\(DevLang-csharp\\)%26rd%3Dtrue%26f%3D255%26MSPPError%3D-2147217396&view=netframework-4.8)",
+    "hints": [
+      "目录类型",
+      "路径",
+      "输入"
+    ]
   },
   "/v2/xaction/modules/getselectedfiles": {
     "description": "获取资源管理器、桌面等位置选择的文件或文件夹的路径",
@@ -873,7 +1400,13 @@
     ]
   },
   "/v2/xaction/modules/getwindowtitle": {
-    "description": "获取指定窗口的标题等信息。"
+    "description": "获取指定窗口的标题等信息。",
+    "excerpt": "前台窗口：Windows的当前活动窗口；弹出面板前鼠标位置的窗口（可能为子窗口）：弹出面板前鼠标所在位置的窗口，由于Windows创建是层级结构，这里得到的可能是子窗口。",
+    "hints": [
+      "目标窗口",
+      "输入",
+      "更新历史"
+    ]
   },
   "/v2/xaction/modules/imecontrol": {
     "description": "获取或更改当前的输入法中英文状态，避免在发送热键时受影响。",
@@ -882,10 +1415,21 @@
     ]
   },
   "/v2/xaction/modules/keyoperation": {
-    "description": "单个键盘按键的操作控制或状态获取"
+    "description": "单个键盘按键的操作控制或状态获取",
+    "excerpt": "用于获取单个 键盘\\\\鼠标 按键的按下、锁定状态，或按下、抬起某个按键。注意：如果按键被设置为“扩展热键”，或被Quicker用于触发功能的鼠标键，这时候按键消息会被Quicker拦截，会识别不到。这种情况下是正常的，请只用于检测没有被Quicker特殊处理的按键。",
+    "hints": [
+      "类型",
+      "按键",
+      "是否按下",
+      "是否锁定"
+    ]
   },
   "/v2/xaction/modules/playsound": {
-    "description": "播放声音提示或声音文件。"
+    "description": "播放声音提示或声音文件。",
+    "excerpt": "本模块用于播放提示音或其他声音文件。内置声音提示：播放Quicker内置的几种提示音。",
+    "hints": [
+      "概述"
+    ]
   },
   "/v2/xaction/modules/quickeroperations": {
     "description": "调用Quicker的某个功能",
@@ -900,7 +1444,11 @@
     ]
   },
   "/v2/xaction/modules/restoreactivewindow": {
-    "description": "如果活动窗口改变了（比如使用了参数输入步骤）,使用此动作恢复窗口焦点。"
+    "description": "如果活动窗口改变了（比如使用了参数输入步骤）,使用此动作恢复窗口焦点。",
+    "excerpt": "活动窗口是指当前具有输入焦点的窗口。本模块用于将活动窗口恢复为运行动作之前的活动窗口，用以解决目标窗口丢失焦点的情况。（如使用了用户选择模块或在动作中切换到了别的软件等情况",
+    "hints": [
+      "使用说明"
+    ]
   },
   "/v2/xaction/modules/selectfileinexplorer": {
     "description": "在资源管理器中选中文件",
@@ -909,7 +1457,14 @@
     ]
   },
   "/v2/xaction/modules/sendmessage": {
-    "description": "使用SendMessage Win32Api向窗口发送消息。使用方法请搜索SendMessage Win32 API接口。"
+    "description": "使用SendMessage Win32Api向窗口发送消息。使用方法请搜索SendMessage Win32 API接口。",
+    "excerpt": "调用SendMessage向指定的窗口发送Windows消息。您需要了解Win32编程知识才能使用本模块。 另外本模块限制了只能发送数字类型到lParam参数中，因此不是所有的消息类型都可以调用。",
+    "hints": [
+      "0.11.4版本之后开始提供",
+      "窗口句柄hWnd",
+      "消息",
+      "wParam"
+    ]
   },
   "/v2/xaction/modules/shelloperation": {
     "description": "针对文件的Windows Shell相关操作",
@@ -948,13 +1503,34 @@
     ]
   },
   "/v2/xaction/modules/joinlist": {
-    "description": "将列表拼接为一段文本"
+    "description": "将列表拼接为一段文本",
+    "excerpt": "使用列表里的各项拼接成一段文本。此操作的相反操作是“文本拆分成列表”。",
+    "hints": [
+      "输入",
+      "分隔文本",
+      "结果",
+      "更新历史"
+    ]
   },
   "/v2/xaction/modules/jsonextract": {
-    "description": "提取Json文本中的信息"
+    "description": "提取Json文本中的信息",
+    "excerpt": "用于从JSON格式的数据中提取需要的值。json是一种轻量级的数据交换格式。通常用于网络数据交换或配置文件存储等场景。",
+    "hints": [
+      "输入",
+      "提取路径n",
+      "值n",
+      "根对象"
+    ]
   },
   "/v2/xaction/modules/regexextract": {
-    "description": "使用正则表达式提取指定内容"
+    "description": "使用正则表达式提取指定内容",
+    "excerpt": "使用正则表达式从文本中提取方式。本模块需要您了解正则表达式相关知识之后才可以使用。",
+    "hints": [
+      "提取方式",
+      "输入",
+      "正则表达式",
+      "忽略大小写"
+    ]
   },
   "/v2/xaction/modules/showtext": {
     "description": "在独立的窗口中显示文本。",
@@ -963,16 +1539,43 @@
     ]
   },
   "/v2/xaction/modules/splitstring": {
-    "description": "将文本拆分为列表"
+    "description": "将文本拆分为列表",
+    "excerpt": "将文本变量拆分成列表变量。例如：将一个包含多个文件路径的文本拆分成列表，列表的每一项是一个文件路径，然后就可以使用“每个”模块对列表中的每个文件路径进行处理了。",
+    "hints": [
+      "输入",
+      "分隔",
+      "滤除空值"
+    ]
   },
   "/v2/xaction/modules/stringprocess": {
-    "description": "各种文本处理功能"
+    "description": "各种文本处理功能",
+    "excerpt": "对文本内容实施某种处理，输出处理的结果。将英文字母转换为大写，如：abc\\=&gt;ABC",
+    "hints": [
+      "待处理内容",
+      "开始位置",
+      "长度",
+      "结果"
+    ]
   },
   "/v2/xaction/modules/strreplace": {
-    "description": "替换文本中的指定内容"
+    "description": "替换文本中的指定内容",
+    "excerpt": "替换文本中的一部分内容。普通：查找一种内容并进行替换。",
+    "hints": [
+      "操作类型",
+      "输入",
+      "查找和替换内容",
+      "查找内容"
+    ]
   },
   "/v2/xaction/modules/textcounter": {
-    "description": "统计文本行数、字符数等"
+    "description": "统计文本行数、字符数等",
+    "excerpt": "统计文本的字符数量、行数等信息。",
+    "hints": [
+      "文本",
+      "行数",
+      "字符数",
+      "输入"
+    ]
   },
   "/v2/xaction/modules/custompanel": {
     "description": "自定义悬浮操作窗口，点击后直接执行操作，不隐藏。",
@@ -1011,7 +1614,14 @@
     ]
   },
   "/v2/xaction/modules/selectfile": {
-    "description": "用文件选择对话框选择要打开或保存的文件"
+    "description": "用文件选择对话框选择要打开或保存的文件",
+    "excerpt": "在0.12.3版本中添加。选择要打开或保存的文件路径。",
+    "hints": [
+      "操作类型",
+      "文件类型筛选器",
+      "默认扩展名",
+      "初始路径"
+    ]
   },
   "/v2/xaction/modules/selectfolder": {
     "description": "文件夹选择对话框",
@@ -1050,10 +1660,22 @@
     ]
   },
   "/v2/features/screenshot": {
-    "description": "截图 Pro、贴图、长截图与录屏等截图相关功能说明。"
+    "description": "截图 Pro、贴图、长截图与录屏等截图相关功能说明。",
+    "hints": [
+      "截图与贴图概览",
+      "截图 Pro",
+      "图片翻译",
+      "JS 自定义工具栏"
+    ]
   },
   "/v2/features": {
-    "description": "Quicker V2 各项功能的使用说明。"
+    "description": "Quicker V2 各项功能的使用说明。",
+    "hints": [
+      "截图与贴图概览",
+      "动作与动作面板",
+      "截图 Pro",
+      "选中文本工具条"
+    ]
   },
   "/v2/xaction/concepts": {
     "description": "组合动作基础、动作编辑器的使用、模块和步骤、选择或输入步骤参数",
@@ -1076,10 +1698,10 @@
   "/v2/xaction/modules/category/basic": {
     "description": "打开网址、弹窗提示或确认、等待时间、发送文本到窗口",
     "covers": [
-      "/img/doc-gallery/4fd5b3ace411.png",
-      "/img/doc-gallery/1013b66c0d03.png",
       "/img/doc-gallery/94c88b579dce.png",
-      "/img/doc-gallery/12186fa4089f.png"
+      "/img/doc-gallery/12186fa4089f.png",
+      "/img/doc-gallery/cc57c4257e8c.png",
+      "/img/doc-gallery/b88c60d2c2dc.png"
     ]
   },
   "/v2/xaction/modules/category/clipboard": {
@@ -1125,7 +1747,10 @@
     ]
   },
   "/v2/xaction/modules/category/input": {
-    "description": "多步骤输入"
+    "description": "多步骤输入",
+    "hints": [
+      "多步骤输入"
+    ]
   },
   "/v2/xaction/modules/category/network": {
     "description": "第三方云存储/图床、公式识别、机器翻译/词典、基础OCR",
@@ -1177,8 +1802,8 @@
     "covers": [
       "/img/doc-gallery/e26b99f13e7e.png",
       "/img/doc-gallery/82517028efa1.png",
-      "/img/doc-gallery/4fd5b3ace411.png",
-      "/img/doc-gallery/1d515c5c110c.png"
+      "/img/doc-gallery/1d515c5c110c.png",
+      "/img/doc-gallery/e37f69f3ab72.png"
     ]
   }
 }

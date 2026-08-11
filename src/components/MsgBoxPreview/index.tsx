@@ -1,8 +1,14 @@
 /**
  * Read-only Quicker confirm / message dialog (WPF ConfirmDialog sketch).
  * Source: QuickerPc/Quicker/View/UI/ConfirmDialog.xaml
+ *
+ * Inside PreviewMap, live form values override the static MDX props.
  */
 import type {ReactNode} from 'react';
+import {
+  usePreviewLiveSnapshot,
+  type PreviewLiveSnapshot,
+} from '@site/src/components/PreviewLive';
 import {DocsStepIcon} from '@site/src/components/StepProgramView/DocsStepIcon';
 import styles from './styles.module.css';
 
@@ -55,6 +61,46 @@ const PRESET_BY_CATALOG: Record<string, MsgBoxIcon> = {
   warning: 'warning',
   error: 'error',
 };
+
+const BUTTON_PRESETS: Record<string, string[]> = {
+  OK: ['确定'],
+  OKCancel: ['确定', '取消'],
+  YesNo: ['是', '否'],
+};
+
+function bindFromLive(
+  snapshot: PreviewLiveSnapshot,
+  fallback: MsgBoxPreviewProps,
+): MsgBoxPreviewProps {
+  const {values, extras} = snapshot;
+  const operation = (values.operation ?? 'default').trim().toLowerCase();
+  const title = values.title ?? fallback.title;
+  const message = values.message ?? fallback.message;
+  if (operation === 'custom') {
+    const customIcon = (values.customIcon ?? '').trim();
+    return {
+      ...fallback,
+      title,
+      message,
+      actionIcon: extras.actionIcon ?? fallback.actionIcon,
+      icon: customIcon || 'none',
+      buttons: undefined,
+      buttonDefs: values.customButtons,
+      defaultButton: values.defaultButton ?? fallback.defaultButton,
+    };
+  }
+  const buttonsKey = (values.buttons ?? '').trim();
+  return {
+    ...fallback,
+    title,
+    message,
+    actionIcon: undefined,
+    icon: values.icon ?? fallback.icon,
+    buttons: BUTTON_PRESETS[buttonsKey] ?? fallback.buttons,
+    buttonDefs: undefined,
+    defaultButton: undefined,
+  };
+}
 
 export function parseMsgBoxButtonDef(line: string): MsgBoxButton | null {
   const raw = line.trim();
@@ -130,17 +176,20 @@ function resolvePrimaryIndex(
 /**
  * Read-only Quicker MsgBox / confirm dialog for docs.
  */
-export default function MsgBoxPreview({
-  title = 'Quicker',
-  message,
-  icon = 'question',
-  actionIcon,
-  buttons,
-  buttonDefs,
-  defaultButton,
-  primaryIndex = 0,
-  className,
-}: MsgBoxPreviewProps): ReactNode {
+export default function MsgBoxPreview(props: MsgBoxPreviewProps): ReactNode {
+  const snapshot = usePreviewLiveSnapshot();
+  const bound = snapshot ? bindFromLive(snapshot, props) : props;
+  const {
+    title = 'Quicker',
+    message,
+    icon = 'question',
+    actionIcon,
+    buttons,
+    buttonDefs,
+    defaultButton,
+    primaryIndex = 0,
+    className,
+  } = bound;
   const items = normalizeButtons(buttons, buttonDefs);
   const active = resolvePrimaryIndex(items, defaultButton, primaryIndex);
   const preset = resolvePreset(icon);

@@ -17,6 +17,39 @@ const config: Config = {
   title: 'Quicker 文档',
   tagline: 'Quicker V2 使用说明与迁移指南',
   favicon: 'img/favicon.ico',
+  headTags: [
+    {
+      tagName: 'link',
+      attributes: {
+        rel: 'apple-touch-icon',
+        href: '/img/apple-touch-icon.png',
+      },
+    },
+  ],
+  // Drop the default "Docusaurus vX" generator meta from built HTML.
+  ssrTemplate: `
+<!DOCTYPE html>
+<html <%~ it.htmlAttributes %>>
+  <head>
+    <meta charset="UTF-8">
+    <% it.metaAttributes.forEach((metaAttribute) => { %>
+      <%~ metaAttribute %>
+    <% }); %>
+    <%~ it.headTags %>
+    <% it.stylesheets.forEach((stylesheet) => { %>
+      <link rel="stylesheet" href="<%= it.baseUrl %><%= stylesheet %>" />
+    <% }); %>
+    <% it.scripts.forEach((script) => { %>
+      <script src="<%= it.baseUrl %><%= script %>" defer></script>
+    <% }); %>
+  </head>
+  <body <%~ it.bodyAttributes %>>
+    <%~ it.preBodyTags %>
+    <div id="__docusaurus"><%~ it.appHtml %></div>
+    <%~ it.postBodyTags %>
+  </body>
+</html>
+`,
 
   // Future flags, see https://docusaurus.io/docs/api/docusaurus-config#future
   future: {
@@ -85,7 +118,7 @@ const config: Config = {
   ],
 
   themeConfig: {
-    image: 'img/logo.svg',
+    image: 'img/apple-touch-icon.png',
     colorMode: {
       respectPrefersColorScheme: true,
     },

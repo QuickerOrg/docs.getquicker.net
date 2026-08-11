@@ -30,24 +30,61 @@ function resolveHref(
   return item.href ?? findFirstSidebarItemLink(item) ?? undefined;
 }
 
-function Cover({covers, title}: {covers: string[]; title: string}): ReactNode {
+function Cover({
+  covers,
+  title,
+  excerpt,
+  hints,
+}: {
+  covers: string[];
+  title: string;
+  excerpt?: string;
+  hints?: string[];
+}): ReactNode {
   const shown = covers.slice(0, 4);
+  if (shown.length > 0) {
+    return (
+      <div
+        className={clsx(
+          "theme-doc-card__cover",
+          shown.length > 1 && "theme-doc-card__cover--mosaic",
+          shown.length === 2 && "theme-doc-card__cover--two",
+        )}
+      >
+        {shown.map((src) => (
+          <img key={src} src={src} alt="" loading="lazy" />
+        ))}
+      </div>
+    );
+  }
+
+  const fields = (hints ?? []).slice(0, 3);
+  if (fields.length > 0 || excerpt) {
+    return (
+      <div className="theme-doc-card__cover theme-doc-card__cover--text">
+        <div className="theme-doc-card__sheet">
+          {fields.length > 0 ? (
+            <ul className="theme-doc-card__fields">
+              {fields.map((hint) => (
+                <li key={hint}>
+                  <span>{hint}</span>
+                  <i aria-hidden />
+                </li>
+              ))}
+            </ul>
+          ) : (
+            <p className="theme-doc-card__excerpt">{excerpt}</p>
+          )}
+        </div>
+      </div>
+    );
+  }
+
   return (
-    <div
-      className={clsx(
-        "theme-doc-card__cover",
-        shown.length > 1 && "theme-doc-card__cover--mosaic",
-        shown.length === 2 && "theme-doc-card__cover--two",
-      )}
-    >
-      {shown.map((src) => (
-        <img key={src} src={src} alt="" loading="lazy" />
-      ))}
-      {shown.length === 0 ? (
-        <span className="theme-doc-card__cover-fallback" aria-hidden>
-          {title.slice(0, 1)}
-        </span>
-      ) : null}
+    <div className="theme-doc-card__cover">
+      <span className="theme-doc-card__cover-fallback" aria-hidden>
+        {title.slice(0, 1)}
+      </span>
     </div>
   );
 }
@@ -71,8 +108,6 @@ function GalleryCard({
       : description && !isBoilerplateDescription(description, title)
         ? description
         : undefined;
-  const hasMedia = covers.length > 0;
-
   return (
     <Link
       href={href}
@@ -83,7 +118,12 @@ function GalleryCard({
         className,
       )}
     >
-      {hasMedia ? <Cover covers={covers} title={title} /> : null}
+      <Cover
+        covers={covers}
+        title={title}
+        excerpt={gallery?.excerpt}
+        hints={gallery?.hints}
+      />
       <div className="theme-doc-card__body">
         <h2 className={clsx("theme-doc-card-heading", ThemeClassNames.docs.docCard.heading)}>
           <span className={ThemeClassNames.docs.docCard.title}>{title}</span>

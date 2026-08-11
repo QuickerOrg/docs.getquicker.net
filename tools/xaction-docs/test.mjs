@@ -1,5 +1,17 @@
 import assert from 'node:assert/strict';
-import {createChangeReport, createLandingPage, createReference} from './sync.mjs';
+import {
+  createChangeReport,
+  createLandingPage,
+  createReference,
+  parseArguments,
+} from './sync.mjs';
+
+const generatedOnly = parseArguments(['--generated', process.cwd()]);
+assert.ok(generatedOnly.generated);
+assert.equal(generatedOnly.legacy, undefined);
+const withLegacy = parseArguments(['--generated', process.cwd(), '--legacy', process.cwd()]);
+assert.ok(withLegacy.legacy);
+assert.throws(() => parseArguments([]), /--generated/);
 
 const commonModule = {
   key: 'sys:test',

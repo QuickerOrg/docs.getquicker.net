@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updatedAt": "2026-08-11T12:36:22.307Z",
+  "updatedAt": "2026-08-11T16:45:00.000Z",
   "items": [
     {
       "image": "docs/v2/xaction/concepts/img/action-custom-context-menu-005-268e6fc45d.png",
@@ -283,11 +283,12 @@
     {
       "image": "docs/v2/xaction/modules/basic/img/msgbox-004-3c48550631.png",
       "page": "docs/v2/xaction/modules/basic/msgbox.md",
-      "status": "kept",
+      "status": "converted",
+      "component": "PreviewMarks",
       "kind": "annotated",
-      "reason": "原图用红框和箭头说明预定义特殊图标与自定义图标输入方式，属于参数下拉菜单教学图。",
-      "evidence": "ocr+manual",
-      "updatedAt": "2026-08-11T20:35:21+08:00"
+      "reason": "不下拉展开；用 PreviewMarks + ModuleParamPreview(focusKeys=customIcon) 说明可选预定义图标或直接输入定义。",
+      "evidence": "manual",
+      "updatedAt": "2026-08-12T01:10:00+08:00"
     },
     {
       "image": "docs/v2/xaction/modules/basic/img/notify-001-edb9ff7c65.png",
@@ -339,6 +340,24 @@
       "evidence": "git-diff",
       "commit": "4fa032b",
       "updatedAt": "2026-08-11T19:17:14+08:00"
+    },
+    {
+      "image": "docs/v2/xaction/modules/basic/img/openurl-002-18b61d90fe.png",
+      "page": "docs/v2/xaction/modules/basic/openurl.md",
+      "status": "converted",
+      "component": "ModuleParamPreview",
+      "reason": "段落只讲「浏览器」枚举；旧截图下拉选项过时，改用 focusKeys 高亮该字段，读者可点开下拉查看 catalog 当前选项。",
+      "evidence": "ocr-review",
+      "updatedAt": "2026-08-12T00:40:00+08:00"
+    },
+    {
+      "image": "docs/v2/xaction/modules/basic/img/openurl-003-dd155b96c7.png",
+      "page": "docs/v2/xaction/modules/basic/openurl.md",
+      "status": "converted",
+      "component": "PreviewMarks",
+      "reason": "运行或打开参数窗，输入框内红字是填写说明；改为 sys:run 预览 + PreviewMarks 悬浮标记 path/arg。",
+      "evidence": "ocr-review",
+      "updatedAt": "2026-08-12T00:45:00+08:00"
     },
     {
       "image": "docs/v2/xaction/modules/basic/img/outputtext-001-d1f5c49bfa.png",

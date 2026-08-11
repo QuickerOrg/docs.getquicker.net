@@ -48,7 +48,16 @@ npm run build
 
 ```powershell
 npm run docs:xaction:check
+npm run docs:xaction:test
 ```
+
+从 Quicker 当前模块表同步时，可省略 1.x `--legacy`：
+
+```powershell
+npm run docs:xaction:sync -- --generated "D:\path\to\Quicker模块文档_yyyyMMdd_HHmmss"
+```
+
+也可在 `QuickerOrg/Quicker` 的 Actions 里手动跑 **Docs xaction sync**。本仓相关 PR 会跑模块校验 workflow。
 
 ## 评论接入
 

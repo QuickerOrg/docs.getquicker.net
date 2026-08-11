@@ -28,6 +28,14 @@ npm run docs:xaction:sync -- `
   --legacy "D:\path\to\QuickerDocs\online\markdown\help"
 ```
 
+增量同步（只刷新 `data/xaction`、更新已有模块页、为缺页写 stub）可以省略 `--legacy`，此时不会覆盖概念/教程正文：
+
+```powershell
+npm run docs:xaction:sync -- --generated "D:\path\to\Quicker模块文档_yyyyMMdd_HHmmss"
+```
+
+从 Quicker 仓手动触发：Actions → **Docs xaction sync**（`check` 只对照漂移，`import` 向本仓开 PR，不推 `main`）。本仓 PR 会跑 `docs:xaction:check` / `docs:xaction:test`。
+
 若要从旧标记迁移到「仅组件」：
 
 ```powershell

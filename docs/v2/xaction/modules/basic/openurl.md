@@ -29,9 +29,12 @@ legacyContentUpdatedAt: "2025-12-05T02:22:28.000Z"
 
 网址：需要打开的网页地址。
 
-浏览器：使用哪个浏览器打开网址。可选“系统默认浏览器”、“IE”、“Edge”、“Chrome App”模式等。
+浏览器：使用哪个浏览器打开网址。可选“系统默认浏览器”、“IE”、“Edge”、“Chrome App”模式等。点开下拉可查看当前全部选项。
 
-![](./img/openurl-002-18b61d90fe.png)
+<ModuleParamPreview
+  moduleKey="sys:openUrl"
+  focusKeys={['browser']}
+/>
 
 Chrome APP模式可以参考[https://sspai.com/post/47718](https://sspai.com/post/47718)。
 
@@ -43,6 +46,22 @@ Chrome APP模式可以参考[https://sspai.com/post/47718](https://sspai.com/pos
 
 答：
 
-使用“运行或打开”模块。
+使用“运行或打开”模块。路径填浏览器程序，参数填要打开的网址。
 
-![](./img/openurl-003-dd155b96c7.png)
+<PreviewMarks
+  marks={[
+    {key: 'path', label: '浏览器软件应用程序.exe的完整路径'},
+    {key: 'arg', label: '要打开的网址'},
+  ]}
+>
+  <ModuleParamPreview
+    moduleKey="sys:run"
+    scrollBody={false}
+    focusKeys={['path', 'arg', 'setWorkingDir', 'windowStyle', 'runas']}
+    values={{
+      setWorkingDir: '',
+      windowStyle: '0',
+      runas: 'false',
+    }}
+  />
+</PreviewMarks>

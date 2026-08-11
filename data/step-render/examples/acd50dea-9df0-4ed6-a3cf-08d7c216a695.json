@@ -1,0 +1,216 @@
+{
+  "code": "acd50dea-9df0-4ed6-a3cf-08d7c216a695",
+  "title": "转换化学公式",
+  "description": "将以ASC个是书写的化学公式转换为Unicode上下标的形式",
+  "author": "CL",
+  "revision": 4,
+  "source": "https://getquicker.net/sharedaction?code=acd50dea-9df0-4ed6-a3cf-08d7c216a695",
+  "pulledAt": "2026-08-11T21:27:37.727Z",
+  "variables": [
+    {
+      "name": "origin",
+      "type": "Text",
+      "remark": "ASC格式书写的"
+    },
+    {
+      "name": "result",
+      "type": "Text"
+    },
+    {
+      "name": "resultHtml",
+      "type": "Text"
+    },
+    {
+      "name": "元素表",
+      "type": "Dict"
+    },
+    {
+      "name": "format",
+      "type": "Text",
+      "remark": "选择的输出格式"
+    },
+    {
+      "name": "enableReplaceChar",
+      "type": "Boolean",
+      "remark": "自动转换大小写"
+    }
+  ],
+  "steps": [
+    {
+      "key": "sys:comment",
+      "inputs": {
+        "note": "动作设置处理"
+      }
+    },
+    {
+      "key": "sys:simpleIf",
+      "inputs": {
+        "condition": "$={quicker_in_param} == \"settings\""
+      },
+      "ifSteps": [
+        {
+          "key": "sys:form",
+          "inputs": {
+            "title": "填写表单",
+            "formDef": "{\"Fields\":[{\"FieldKey\":\"enableReplaceChar\",\"Label\":\"自动转换大小写\",\"HelpText\":\"自动转换化学元素的大小写\",\"HelpLink\":null,\"InputMethod\":6,\"SelectionItems\":\"\",\"IsRequired\":false,\"MinValue\":\"\",\"MaxValue\":\"\",\"Pattern\":\"\",\"MaxLength\":0,\"ImeState\":null,\"TextTools\":\"\",\"VisibleExpression\":\"\"},{\"FieldKey\":\"format\",\"Label\":\"输出格式\",\"HelpText\":\"选择的输出格式\",\"HelpLink\":null,\"InputMethod\":3,\"SelectionItems\":\"Unicode特殊符号（纯文本，支持所有编辑器）|unicode\\r\\nHTML上下标标记（支持word编辑器）|html\",\"IsRequired\":true,\"MinValue\":\"\",\"MaxValue\":\"\",\"Pattern\":\"\",\"MaxLength\":0,\"ImeState\":null,\"TextTools\":\"\",\"VisibleExpression\":\"\"}]}",
+            "titleColumnWidth": "100",
+            "windowWidth": "500",
+            "restoreFocus": "0",
+            "topMost": "false",
+            "stopIfFail": "1"
+          }
+        },
+        {
+          "key": "sys:stop",
+          "inputs": {
+            "method": "default",
+            "isError": "0"
+          }
+        }
+      ]
+    },
+    {
+      "key": "sys:getSelectedText",
+      "inputs": {
+        "format": "UnicodeText",
+        "repeat": "0",
+        "stopIfFail": "1"
+      },
+      "outputs": {
+        "output": "origin"
+      }
+    },
+    {
+      "key": "sys:comment",
+      "inputs": {
+        "note": "转换为unicode符号"
+      }
+    },
+    {
+      "key": "sys:jsscript",
+      "inputs": {
+        "script": "\r\nfunction ord(s)\r\n{\r\n    return s.charCodeAt();\r\n}\r\n\r\nfunction chr(i)\r\n{\r\n    return String.fromCharCode(i);\r\n}\r\n\r\nfunction Script(s)\r\n{\r\n    this[\"+\"] = s[0];\r\n    this[\"-\"] = s[1];\r\n    for (var i = 0; i < 10; i++) {\r\n        var c = chr(ord(\"0\") + i)\r\n        this[c] = s[2 + i];\r\n    }\r\n}\r\n\r\nScript.prototype.translate = function(s) {\r\n    var script = this;\r\n    var trans_char = function(c) {\r\n        var t = script[c];\r\n        if (t === undefined)\r\n            t = c;\r\n        return t;\r\n    }\r\n    return s.replace(/./g, trans_char);\r\n}\r\n\r\nvar sup = new Script(\"⁺⁻⁰¹²³⁴⁵⁶⁷⁸⁹\");\r\nvar sub = new Script(\"₊₋₀₁₂₃₄₅₆₇₈₉\");\r\nvar misc = {\r\n    \"->\": \"→\",\r\n    \"=\": \"⇌\",\r\n    \".\": \"·\",\r\n    \"*\": \"·\",\r\n};\r\n\r\nvar _regexp = [\r\n    /([\\]\\)A-Za-z])([0-9]*)([+-]?)/,\r\n    /(\\s+)([0-9]+[+-])/,\r\n    /(->|[=.*])/\r\n];\r\n_regexp = _regexp.map(function(re) { return re.source }).join(\"|\");\r\n_regexp = new RegExp(_regexp, \"g\");\r\n\r\nfunction translate(formula)\r\n{\r\n    var translate_one = function(match, g1, g1a, g1b, g2, g2a, g3)\r\n    {\r\n        if (g1 !== undefined)\r\n            return g1 + sub.translate(g1a) + sup.translate(g1b);\r\n        if (g2 !== undefined)\r\n            return sup.translate(g2a);\r\n        if (g3 !== undefined)\r\n            return misc[g3];\r\n    }\r\n    return formula.replace(_regexp, translate_one);\r\n}\r\n\r\n\r\n// 主函数 exec()\r\nfunction exec(){\r\n var asc = quickerGetVar('origin');  // 读取context变量值, (context 是动作里的变量)\r\n var result = translate(asc);\r\n quickerSetVar('result', result ); //输出修改后的值到name变量中。\r\n return 0; //返回0表示成功。返回其他数字表示失败。\r\n}\r\n",
+        "stopIfFail": "1"
+      }
+    },
+    {
+      "key": "sys:simpleIf",
+      "inputs": {
+        "condition": "{enableReplaceChar}"
+      },
+      "ifSteps": [
+        {
+          "key": "sys:comment",
+          "inputs": {
+            "note": "除 (C|N|P)o 中的 o，所有字母大写"
+          }
+        },
+        {
+          "key": "sys:jsscript",
+          "inputs": {
+            "script": "//.js 主函数 exec()\r\nfunction exec(){\r\n var input = quickerGetVar('result');  // 读取text变量值, (text 是动作里的变量)\r\n var temp = input.replace(/(?<!C|N|P)o|[abcdefghijklmnpqrstuvwxyz]/g, function(a){\r\n   return a.toUpperCase();})\r\n quickerSetVar('result', temp); //输出修改后的值到text变量中。\r\n return 0; //返回0表示成功。返回其他数字表示失败。\r\n}\r\n",
+            "stopIfFail": "1"
+          }
+        },
+        {
+          "key": "sys:comment",
+          "inputs": {
+            "note": "双字母元素大小写\r\n{元素表} 剔除了 Co No Po"
+          }
+        },
+        {
+          "key": "sys:assign",
+          "inputs": {
+            "input": "$=\r\nvar yuansuList = {元素表}.Values.Cast<string>().Where(s => s.Length > 1).ToList();\r\n\r\nvar text = {result};\r\nforeach(var item in yuansuList){\r\n\ttext = text.Replace(item.ToUpper(), item);\r\n}\r\n\r\nreturn text;",
+            "stopIfFail": "1"
+          },
+          "outputs": {
+            "output": "result"
+          }
+        }
+      ]
+    },
+    {
+      "key": "sys:comment",
+      "inputs": {
+        "note": "选择输出哪种格式"
+      }
+    },
+    {
+      "key": "sys:if",
+      "inputs": {
+        "condition": "$= {format} == \"unicode\""
+      },
+      "note": "选择了unicode格式",
+      "ifSteps": [
+        {
+          "key": "sys:outputText",
+          "inputs": {
+            "content": "{result}",
+            "method": "paste",
+            "delayBeforePaste": "50",
+            "delayAfterPaste": "10",
+            "appendReturn": "0"
+          }
+        }
+      ],
+      "elseSteps": [
+        {
+          "key": "sys:comment",
+          "inputs": {
+            "note": "使用上下标格式，则替换为html代码，写入剪贴板后粘贴"
+          }
+        },
+        {
+          "key": "sys:strReplace",
+          "inputs": {
+            "type": "batch",
+            "input": "{result}",
+            "batchReplaceData": "([⁺⁻⁰¹²³⁴⁵⁶⁷⁸⁹]+)|||<sup>$1</sup>\r\n([₊₋₀₁₂₃₄₅₆₇₈₉]+)|||<sub>$1</sub>",
+            "escapeOld": "0",
+            "replaceEscapes": "1",
+            "useRegex": "1",
+            "ignoreCase": "0",
+            "singleLine": "1",
+            "multiLine": "0"
+          },
+          "outputs": {
+            "output": "resultHtml"
+          }
+        },
+        {
+          "key": "sys:strReplace",
+          "inputs": {
+            "type": "batch",
+            "input": "{resultHtml}",
+            "batchReplaceData": "⁺|+\r\n⁻|-\r\n⁰|0\r\n¹|1\r\n²|2\r\n³|3\r\n⁴|4\r\n⁵|5\r\n⁶|6\r\n⁷|7\r\n⁸|8\r\n⁹|9\r\n₊|+\r\n₋|-\r\n₀|0\r\n₁|1\r\n₂|2\r\n₃|3\r\n₄|4\r\n₅|5\r\n₆|6\r\n₇|7\r\n₈|8\r\n₉|9",
+            "escapeOld": "0",
+            "replaceEscapes": "1",
+            "useRegex": "0",
+            "ignoreCase": "0",
+            "singleLine": "1",
+            "multiLine": "0"
+          },
+          "outputs": {
+            "output": "resultHtml"
+          }
+        },
+        {
+          "key": "sys:writeClipboard",
+          "inputs": {
+            "type": "html",
+            "html": "{resultHtml}",
+            "text": "{resultHtml}",
+            "stopIfFail": "1"
+          }
+        },
+        {
+          "key": "sys:keyInput",
+          "inputs": {
+            "keys": "{\"CtrlKeys\":[162],\"Keys\":[86]}"
+          }
+        }
+      ]
+    }
+  ]
+}

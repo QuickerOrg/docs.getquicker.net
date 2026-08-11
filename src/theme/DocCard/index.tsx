@@ -12,7 +12,13 @@ import type {
   PropSidebarItemCategory,
   PropSidebarItemLink,
 } from "@docusaurus/plugin-content-docs";
-import {lookupDocGallery, useDocGallery} from "@site/src/data/docGallery";
+import {
+  isStructuralHint,
+  lookupDocGallery,
+  useDocGallery,
+  type DocGalleryLiveCover,
+} from "@site/src/data/docGallery";
+import LiveCover from "./LiveCover";
 
 function isBoilerplateDescription(text: string | undefined, title: string): boolean {
   const value = (text ?? "").trim();
@@ -35,12 +41,17 @@ function Cover({
   title,
   excerpt,
   hints,
+  liveCover,
 }: {
   covers: string[];
   title: string;
   excerpt?: string;
   hints?: string[];
+  liveCover?: DocGalleryLiveCover;
 }): ReactNode {
+  if (liveCover) {
+    return <LiveCover cover={liveCover} />;
+  }
   const shown = covers.slice(0, 4);
   if (shown.length > 0) {
     return (
@@ -58,24 +69,19 @@ function Cover({
     );
   }
 
-  const fields = (hints ?? []).slice(0, 3);
-  if (fields.length > 0 || excerpt) {
+  const chips = (hints ?? []).filter((hint) => !isStructuralHint(hint)).slice(0, 4);
+  const blurb = (excerpt ?? "").trim();
+  if (blurb || chips.length > 0) {
     return (
       <div className="theme-doc-card__cover theme-doc-card__cover--text">
-        <div className="theme-doc-card__sheet">
-          {fields.length > 0 ? (
-            <ul className="theme-doc-card__fields">
-              {fields.map((hint) => (
-                <li key={hint}>
-                  <span>{hint}</span>
-                  <i aria-hidden />
-                </li>
-              ))}
-            </ul>
-          ) : (
-            <p className="theme-doc-card__excerpt">{excerpt}</p>
-          )}
-        </div>
+        {blurb ? <p className="theme-doc-card__excerpt">{blurb}</p> : null}
+        {chips.length > 0 ? (
+          <ul className="theme-doc-card__chips">
+            {chips.map((hint) => (
+              <li key={hint}>{hint}</li>
+            ))}
+          </ul>
+        ) : null}
       </div>
     );
   }
@@ -124,6 +130,7 @@ function GalleryCard({
         title={title}
         excerpt={gallery?.excerpt}
         hints={gallery?.hints}
+        liveCover={gallery?.liveCover}
       />
       <div className="theme-doc-card__body">
         <h2 className={clsx("theme-doc-card-heading", ThemeClassNames.docs.docCard.heading)}>

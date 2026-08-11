@@ -1,0 +1,208 @@
+{
+  "code": "7a49ca6b-d243-4478-1e87-08d9f1ba2358",
+  "title": "文件服务器",
+  "description": "对当前资源管理器目录开启文件服务器并显示二维码，扫码后连接",
+  "author": "CL",
+  "revision": 2,
+  "source": "https://getquicker.net/sharedaction?code=7a49ca6b-d243-4478-1e87-08d9f1ba2358",
+  "pulledAt": "2026-08-11T21:28:52.962Z",
+  "variables": [
+    {
+      "name": "isShowQrcode",
+      "type": "Boolean",
+      "remark": "是否显示二维码"
+    },
+    {
+      "name": "autoCloseSeconds",
+      "type": "Integer",
+      "remark": "空闲关闭时长"
+    },
+    {
+      "name": "autoOpenUrl",
+      "type": "Boolean",
+      "remark": "自动打开浏览器"
+    },
+    {
+      "name": "showWaitCloseWindow",
+      "type": "Boolean",
+      "remark": "显示等待关闭的窗口"
+    },
+    {
+      "name": "urlWithoutAccount",
+      "type": "Text",
+      "remark": "不带密码的网址"
+    },
+    {
+      "name": "urlWithAccount",
+      "type": "Text",
+      "remark": "带有账号密码的网址"
+    },
+    {
+      "name": "path",
+      "type": "Text"
+    },
+    {
+      "name": "img",
+      "type": "Image"
+    },
+    {
+      "name": "waitWindowResult",
+      "type": "Text"
+    },
+    {
+      "name": "serverId",
+      "type": "Text",
+      "remark": "web服务id，每个动作应该独立"
+    }
+  ],
+  "steps": [
+    {
+      "key": "sys:simpleIf",
+      "inputs": {
+        "condition": "$={quicker_in_param} == \"settings\""
+      },
+      "ifSteps": [
+        {
+          "key": "sys:form",
+          "inputs": {
+            "title": "文件服务器动作设置",
+            "formDef": "{\"Fields\":[{\"FieldKey\":\"autoCloseSeconds\",\"Label\":\"空闲自动关闭\",\"HelpText\":\"空闲多少秒以后自动关闭。0为不自动关闭。\",\"HelpLink\":null,\"InputMethod\":7,\"SelectionItems\":\"\",\"IsRequired\":false,\"MinValue\":\"\",\"MaxValue\":\"\",\"Pattern\":\"\",\"MaxLength\":0,\"ImeState\":null,\"TextTools\":\"\",\"VisibleExpression\":\"\"},{\"FieldKey\":\"isShowQrcode\",\"Label\":\"显示网址二维码图片\",\"HelpText\":\"是否显示二维码\",\"HelpLink\":null,\"InputMethod\":6,\"SelectionItems\":\"\",\"IsRequired\":false,\"MinValue\":\"\",\"MaxValue\":\"\",\"Pattern\":\"\",\"MaxLength\":0,\"ImeState\":null,\"TextTools\":\"\",\"VisibleExpression\":\"\"},{\"FieldKey\":\"autoOpenUrl\",\"Label\":\"自动打开浏览器\",\"HelpText\":\"使用默认浏览器打开网址\",\"HelpLink\":null,\"InputMethod\":6,\"SelectionItems\":\"\",\"IsRequired\":false,\"MinValue\":\"\",\"MaxValue\":\"\",\"Pattern\":\"\",\"MaxLength\":0,\"ImeState\":null,\"TextTools\":\"\",\"VisibleExpression\":\"\"},{\"FieldKey\":\"showWaitCloseWindow\",\"Label\":\"显示等待关闭的窗口\",\"HelpText\":\"如果希望手动关闭服务器，可以开启此选项。\",\"HelpLink\":null,\"InputMethod\":6,\"SelectionItems\":\"\",\"IsRequired\":false,\"MinValue\":\"\",\"MaxValue\":\"\",\"Pattern\":\"\",\"MaxLength\":0,\"ImeState\":null,\"TextTools\":\"\",\"VisibleExpression\":\"\"}]}",
+            "titleColumnWidth": "100",
+            "windowWidth": "500",
+            "restoreFocus": "0",
+            "topMost": "false",
+            "stopIfFail": "1"
+          }
+        },
+        {
+          "key": "sys:stop",
+          "inputs": {
+            "method": "default",
+            "isError": "0"
+          }
+        }
+      ]
+    },
+    {
+      "key": "sys:getExplorerPath",
+      "inputs": {
+        "stopIfFail": "1"
+      },
+      "outputs": {
+        "output": "path"
+      }
+    },
+    {
+      "key": "sys:httpserver",
+      "inputs": {
+        "operation": "CreateFileServer",
+        "port": "810",
+        "enableHttps": "1",
+        "docPath": "{path}",
+        "serviceId": "{serverId}",
+        "autoShutdownSeconds": "{autoCloseSeconds}",
+        "stopIfFail": "1"
+      },
+      "outputs": {
+        "serverUrl": "urlWithoutAccount",
+        "serverUrlWithAccount": "urlWithAccount"
+      }
+    },
+    {
+      "key": "sys:simpleIf",
+      "inputs": {
+        "condition": "{autoOpenUrl}"
+      },
+      "ifSteps": [
+        {
+          "key": "sys:openUrl",
+          "inputs": {
+            "url": "{urlWithAccount}",
+            "browser": "default",
+            "stopIfFail": "1"
+          }
+        }
+      ]
+    },
+    {
+      "key": "sys:simpleIf",
+      "inputs": {
+        "condition": "{isShowQrcode}"
+      },
+      "ifSteps": [
+        {
+          "key": "sys:createQrCode",
+          "inputs": {
+            "code": "{urlWithAccount}",
+            "pixelsPerModule": "8",
+            "darkColor": "#FF000000",
+            "lightColor": "#FFFFFFFF",
+            "iconPercent": "15",
+            "iconBorderWidth": "6",
+            "drawQuietZones": "1",
+            "stopIfFail": "1"
+          },
+          "outputs": {
+            "img": "img"
+          }
+        },
+        {
+          "key": "sys:showImage",
+          "inputs": {
+            "source": "var",
+            "imgVar": "{img}",
+            "scale": "1",
+            "opacity": "1",
+            "autoCloseTime": "0",
+            "winLocation": "CenterScreen",
+            "waitClose": "false",
+            "showDropShadow": "true",
+            "showTaskbarIcon": "true",
+            "topMost": "true",
+            "noActivate": "0"
+          }
+        }
+      ]
+    },
+    {
+      "key": "sys:simpleIf",
+      "inputs": {
+        "condition": "{showWaitCloseWindow}"
+      },
+      "ifSteps": [
+        {
+          "key": "sys:showWaitWin",
+          "inputs": {
+            "mode": "showAndWaitClose",
+            "title": "$=Path.GetFileName({path})",
+            "winLocation": "BottomRight",
+            "btnText": "关闭Http服务器",
+            "fontsize": "12",
+            "iconSize": "16",
+            "stopActionIfClose": "1",
+            "activateMode": "NotActivatable"
+          },
+          "outputs": {
+            "selectedOperation": "waitWindowResult"
+          }
+        },
+        {
+          "key": "sys:simpleIf",
+          "inputs": {
+            "condition": "$= {waitWindowResult} == \"\""
+          },
+          "ifSteps": [
+            {
+              "key": "sys:httpserver",
+              "inputs": {
+                "operation": "CloseServer",
+                "serviceId": "{serverId}",
+                "stopIfFail": "1"
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

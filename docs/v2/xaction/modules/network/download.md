@@ -7,7 +7,7 @@ sidebar_position: 70
 quickerDocKey: "xaction/module/sys:download"
 comments: true
 moduleKey: "sys:download"
-docStatus: "migrated-unreviewed"
+docStatus: "reviewed"
 metadataGeneratedAt: "2026-08-03 20:08:03"
 legacyDocId: 2920312
 legacyContentUpdatedAt: "2024-03-27T01:41:35.000Z"
@@ -15,88 +15,98 @@ legacyContentUpdatedAt: "2024-03-27T01:41:35.000Z"
 
 # 下载文件
 
-下载网络文件(请勿用于下载大文件)
+从网络下载较小的、可公开访问的文件。不要用来下大文件。需要自定义方法、请求体或拿响应头时，用 [HTTP请求](/v2/xaction/modules/http)。
 
 ## 当前模块定义
 
 <XActionModuleMeta moduleKey="sys:download" />
 
-用于从网络下载较小的可公开下载的文件。
+## 概述
 
 <ModuleParamPreview moduleKey="sys:download" />
 
-## 参数
+## 参数说明
 
-【网址】要下载文件的地址。
+**网址**：文件地址。
 
-【保存文件夹】下载文件的保存位置。可选，未指定时，自动保存到系统“下载”文件夹。
+**保存文件夹**：保存位置。不填则用系统「下载」文件夹。
 
-【保存文件名】指定要保存的文件名。如果不指定，文件名会自动根据返回的文件名或URL中的文件名确定。如果无法从这些信息中获取文件名，则会使用时间自动生成一个。 如果指定了，则会使用此文件名。如果文件已经存在，在可能会失败或覆盖已有文件。
+**保存文件名**：不填时按响应文件名或 URL 推断；再不行就用时间生成。已存在时可能覆盖或失败，除非打开自动重命名。
 
-【UserAgent】Http请求的UserAgent信息。可选。
+**UserAgent**：可选。
 
-【请求头】Http请求头信息，通常不需要提供。
-
-格式示例：（实际需要去除不必要的请求头。）
+**请求头**：通常不用。每行 `Name:Value`。从浏览器复制后请删掉不必要的头。
 
 ```text
-Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7
-Accept-Encoding: gzip, deflate
-Accept-Language: zh,zh-CN;q=0.9,en-US;q=0.8,en;q=0.7
-Cookie: arialoadData=false; SERVERID=57526053d080975751a9538d16dda0a7|1695861075|1695858557
-Proxy-Connection: keep-alive
-Referer: http://www.yunhe.gov.cn/art/2021/11/15/art_1229381708_4805048.html
-Upgrade-Insecure-Requests: 1
-User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/117.0.0.0 Safari/537.36
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8
+Accept-Language: zh-CN,zh;q=0.9
+Referer: https://example.com/
 ```
 
-【Cookie】Http的Cookie信息，通常不需要提供。
+**Cookie**：通常不用。例如 `name=value; other=value`。
 
-格式示例：`arialoadData=false; SERVERID=57526053d080975751a9538d16dda0a7|1695861075|1695858557`
+**超时秒数**：长时间收不到数据就中止。默认 `10`。
 
-【超时秒数】长时间未收到数据时，中止下载。
+**忽略HTTPS证书验证**：是否忽略无效证书。默认关闭。
 
-【忽略https证书验证】是否忽略无效的服务器https证书。
+**显示进度条**：是否显示下载进度。默认关闭。
 
-【显示进度条】是否显示下载进度条。
+**如果文件已存在，自动重命名下载的文件**：在文件名后加 `_序号`。关掉则会覆盖。
 
-【如果文件已存在，自动重命名下载的文件】是否自动重命名文件。
+**失败后停止**：失败是否中止动作。默认开启。
 
 ## 输出
 
-【文件路径】下载文件的完整保存路径。
+- **是否成功**
+- **文件路径**：完整保存路径。
+- **内容MD5**：响应 `Content-MD5`。不是每个服务器都给（1.42.23+）。
+- **ETag**：响应 `ETag`，会去掉前后双引号。通常与文件 MD5 一致，但不是每个服务器都给（1.42.23+）。
+- **下载大小**：字节数。旧稿未写。
 
-【内容MD5】从HTTP响应中获取的Content-MD5头的内容。此内容由服务端提供，个别服务端可能会不提供此信息。（v1.42.23+）
+## 如何从浏览器获取请求头或 Cookie
 
-【ETag】从HTTP响应中获取的ETag头的内容，会自动去除前后的双引号。 不是所有服务端都提供此信息。通常此信息与文件md5一致。（v1.42.23+）
+**Cookie**
 
-### 如何从浏览器获取请求头或Cookie
+- 方法 1：用下面的动作复制当前网页 Cookie。
+- 方法 2：按下面步骤从开发者工具里复制。
 
-**获取Cookie**
+<StepProgramView example="bbf0a162-6f95-46fb-1e7a-08dbbf546dec" />
 
--   方法1：使用动作 [https://getquicker.net/Sharedaction?code=bbf0a162-6f95-46fb-1e7a-08dbbf546dec](https://getquicker.net/Sharedaction?code=bbf0a162-6f95-46fb-1e7a-08dbbf546dec)
--   方法2：按下面的方式找到请求头中的Cookie内容并复制。
+<ShareLinkCard
+  code="bbf0a162-6f95-46fb-1e7a-08dbbf546dec"
+  title="复制当前网页Cookie"
+  description="用扩展取出当前页 Cookie，方便填进下载或 HTTP 请求"
+  author="CL"
+/>
 
-**获取Http请求头**
+**请求头**
 
 ![](./img/download-002-103616bba4.png)
 
--   F12 打开浏览器控制台。
--   切换至 Network（网络）标签页。
--   选中 “Preserve log（保留历史）”选项。
--   按F5或点击链接，再次发起请求。
--   选中响应状态码Status为200，类型Type为document的请求。
--   在右侧，打开Headers选项卡。
--   找到Request Headers块，切换为Raw模式
--   选中并复制需要的内容。
--   清理掉不需要的请求头，放入下载或http请求模块中。
+1. F12 打开开发者工具，切到 Network（网络）。
+2. 勾选 Preserve log（保留日志）。
+3. F5 或再点一次链接。
+4. 选状态码 200、类型为 document 的请求。
+5. 右侧 Headers 里找到 Request Headers，切到 Raw。
+6. 复制需要的行，删掉多余头，贴进本模块或 HTTP 请求。
 
-## 输出
+## 限制与排障
 
-【是否成功】是否成功下载了文件。
+只适合小文件。证书报错可临时打开 **忽略HTTPS证书验证**。需要登录态时补 **Cookie** / **请求头**。同名文件被覆盖时，打开自动重命名。
 
-【文件路径】下载文件的完整保存路径。
+## 相关链接
 
-## 历史
+<RelatedDocs
+  items={[
+    {
+      href: '/v2/xaction/modules/http',
+      label: 'HTTP请求',
+      description: '要 POST、自定义请求体或拿完整响应时用这个。',
+    },
+  ]}
+/>
 
--   从1.1.37版本开始提供。
+## 更新历史
+
+- 1.1.37 开始提供。
+- 1.42.23 增加内容 MD5、ETag。

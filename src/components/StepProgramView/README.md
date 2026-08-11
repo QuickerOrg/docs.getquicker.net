@@ -6,7 +6,7 @@
 
 `QuickerPc/Quicker.Headless/Web/src/features/steps/StepListRowPreview.tsx`
 
-不要搬拖放、选中、插入槽或参数弹窗。
+不要搬拖放、多选或插入槽。双击步骤行会打开只读参数弹窗（`ModuleParamPreview`，对齐 Headless `StepEditorPopup`）。
 
 ## MDX
 
@@ -42,6 +42,9 @@
 | `showIndex` | `false` | 行号 |
 | `showKey` | `false` | 显示 `sys:…` key |
 | `density` | `docs` | `docs` / `compact` |
+| `stepPopup` | `true` | 双击步骤行打开参数弹窗；嵌套子步骤同样有效 |
+
+行备注：有 `note` 用备注；否则用 catalog 里从 `[StepSummary]` 抽出的 `summaryParts` 做 `GetSummary`（`StepSummaryHelper`），**不要**用「第一个参数中文名: 值」。
 
 默认 catalog：`data/step-render/catalog.json`。`key` 对齐 `data/xaction/catalog.json`。
 

@@ -1,0 +1,133 @@
+{
+  "code": "16317b5d-ffdf-4193-a919-08d7b30d7779",
+  "title": "示例：计算模块",
+  "description": "演示计算模块的使用。需1.4.21版",
+  "author": "CL",
+  "revision": 0,
+  "source": "https://getquicker.net/sharedaction?code=16317b5d-ffdf-4193-a919-08d7b30d7779",
+  "pulledAt": "2026-08-11T21:13:02.728Z",
+  "variables": [
+    {
+      "name": "result",
+      "type": "Any"
+    },
+    {
+      "name": "a",
+      "type": "Integer"
+    },
+    {
+      "name": "b",
+      "type": "Integer"
+    }
+  ],
+  "steps": [
+    {
+      "key": "sys:subprogram",
+      "inputs": {
+        "subProgram": "Quicker版本验证",
+        "stopIfFail": "1",
+        "var:要求版本号": "1.4.21"
+      }
+    },
+    {
+      "key": "sys:comment",
+      "inputs": {
+        "note": "计算数学公式"
+      }
+    },
+    {
+      "key": "sys:compute",
+      "inputs": {
+        "expression": "1+1",
+        "evalVar": "0",
+        "stopIfFail": "1"
+      },
+      "outputs": {
+        "output": "result"
+      }
+    },
+    {
+      "key": "sys:notify",
+      "inputs": {
+        "msg": "{result}",
+        "maxLines": "0",
+        "type": "Info"
+      }
+    },
+    {
+      "key": "sys:comment",
+      "inputs": {
+        "note": "计算包含变量的表达式"
+      }
+    },
+    {
+      "key": "sys:compute",
+      "inputs": {
+        "expression": "{a} * {b} ",
+        "evalVar": "1",
+        "stopIfFail": "1"
+      },
+      "outputs": {
+        "output": "result"
+      }
+    },
+    {
+      "key": "sys:notify",
+      "inputs": {
+        "msg": "{result}",
+        "maxLines": "0",
+        "type": "Info"
+      }
+    },
+    {
+      "key": "sys:comment",
+      "inputs": {
+        "note": "返回其他类型的值"
+      }
+    },
+    {
+      "key": "sys:compute",
+      "inputs": {
+        "expression": "{a} > {b} ",
+        "evalVar": "1",
+        "stopIfFail": "1"
+      },
+      "outputs": {
+        "output": "result"
+      }
+    },
+    {
+      "key": "sys:notify",
+      "inputs": {
+        "msg": "{result}",
+        "maxLines": "0",
+        "type": "Info"
+      }
+    },
+    {
+      "key": "sys:comment",
+      "inputs": {
+        "note": "使用Math对象"
+      }
+    },
+    {
+      "key": "sys:compute",
+      "inputs": {
+        "expression": "Math.Pow({a},{b})",
+        "evalVar": "1",
+        "stopIfFail": "1"
+      },
+      "outputs": {
+        "output": "result"
+      }
+    },
+    {
+      "key": "sys:notify",
+      "inputs": {
+        "msg": "{result}",
+        "maxLines": "0",
+        "type": "Info"
+      }
+    }
+  ]
+}

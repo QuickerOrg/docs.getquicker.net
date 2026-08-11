@@ -1,13 +1,13 @@
 ---
 title: "等待时间"
-description: "等待指定的毫秒数"
+description: "暂停指定毫秒数，再继续后面的步骤。"
 slug: "/v2/xaction/modules/delay"
 sidebar_label: "等待时间"
 sidebar_position: 30
 quickerDocKey: "xaction/module/sys:delay"
 comments: true
 moduleKey: "sys:delay"
-docStatus: "migrated-unreviewed"
+docStatus: "reviewed"
 metadataGeneratedAt: "2026-08-03 20:08:03"
 legacyDocId: 1465639
 legacyContentUpdatedAt: "2025-12-05T02:21:38.000Z"
@@ -15,7 +15,7 @@ legacyContentUpdatedAt: "2025-12-05T02:21:38.000Z"
 
 # 等待时间
 
-等待指定的毫秒数
+暂停一段时间（毫秒），再继续后面的步骤。常用来等界面切换、菜单弹出或程序启动完。
 
 ## 当前模块定义
 
@@ -23,21 +23,17 @@ legacyContentUpdatedAt: "2025-12-05T02:21:38.000Z"
 
 ## 概述
 
-功能：等待一段时间（指定毫秒数）再继续后面的动作步骤。
-
 <ModuleParamPreview moduleKey="sys:delay" />
 
 ## 参数说明
 
-**等待时间**：要等待的毫秒数。实际等待的时间可能会存在误差（多等待0-20ms）。
+**等待时间**：毫秒数。实际可能多等 0～20ms。
 
-**等待窗口关闭时取消**：结合“[等待窗口](/v2/xaction/modules/showwaitwin)”模块，在“等待窗口”被关闭时提前结束等待。
+**等待窗口关闭时取消**：配合 [等待窗口](/v2/xaction/modules/showwaitwin)，窗口被关掉就提前结束等待。仅当等待时间超过 1000ms 时生效。
 
 ## 快速操作
 
-**快速插入等待时间**
-
-选择多个连续步骤，点击右键，选择“插入延时”即可。
+选中连续步骤后右键 **插入延时(_T)**：选一个步骤就插在它后面；选多个就插在它们中间。
 
 <ContextMenuPreview
   openPath={['插入延时(_T)']}
@@ -83,18 +79,33 @@ legacyContentUpdatedAt: "2025-12-05T02:21:38.000Z"
   />
 </ContextMenuPreview>
 
-**快速调整延时**
+在等待时间步骤上 **Ctrl+鼠标滚轮**，按 50ms 加减。
 
-在步骤列表中，在“等待时间模块”上**Ctrl+鼠标滚轮**上下滚动，可以以50ms为单位快速调整等待的毫秒数。
+<StepProgramView
+  wheelDelay={{from: 100, to: 350, step: 50}}
+  data={{
+    steps: [{key: 'sys:delay', inputs: {delayMs: '100'}}],
+  }}
+/>
 
-![](./img/delay-003-d2cf99fe72.gif)
+## 使用场景
 
-## 应用场景
+- 等界面响应：切页、弹出菜单、操作做完。
+- 等程序启动完再点下一步。
 
--   等待界面响应前面的操作，如
+## 相关链接
 
--   等待界面切换
--   等待菜单弹出
--   等待操作执行完成等
-
--   等待程序启动完成等
+<RelatedDocs
+  items={[
+    {
+      href: '/v2/xaction/modules/showwaitwin',
+      label: '等待窗口',
+      description: '给用户看进度；关掉窗口可取消超过 1 秒的等待。',
+    },
+    {
+      href: '/v2/xaction/modules/mouse',
+      label: '鼠标输入',
+      description: '点按之后常要垫一点延时。',
+    },
+  ]}
+/>

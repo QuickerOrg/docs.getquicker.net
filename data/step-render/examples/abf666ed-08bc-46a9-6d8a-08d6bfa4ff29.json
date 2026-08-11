@@ -1,0 +1,92 @@
+{
+  "code": "abf666ed-08bc-46a9-6d8a-08d6bfa4ff29",
+  "title": "示例：运行或打开",
+  "description": "演示“运行或打开”模块",
+  "author": "CL",
+  "revision": 1,
+  "source": "https://getquicker.net/sharedaction?code=abf666ed-08bc-46a9-6d8a-08d6bfa4ff29",
+  "pulledAt": "2026-08-11T20:59:15.614Z",
+  "variables": [
+    {
+      "name": "context",
+      "type": "Text",
+      "remark": "默认的文本变量"
+    },
+    {
+      "name": "img",
+      "type": "Image",
+      "remark": "默认的图片变量"
+    }
+  ],
+  "steps": [
+    {
+      "key": "sys:MsgBox",
+      "inputs": {
+        "message": "将会打开记事本",
+        "title": "Quicker",
+        "buttons": "OK"
+      }
+    },
+    {
+      "key": "sys:run",
+      "inputs": {
+        "path": "notepad.exe",
+        "windowStyle": "0",
+        "runas": "0",
+        "waitExit": "0"
+      }
+    },
+    {
+      "key": "sys:MsgBox",
+      "inputs": {
+        "message": "将会打开C:\\Program Files文件夹",
+        "title": "Quicker",
+        "buttons": "OK"
+      }
+    },
+    {
+      "key": "sys:run",
+      "inputs": {
+        "path": "C:\\Program Files",
+        "windowStyle": "0",
+        "runas": "0",
+        "waitExit": "0"
+      }
+    },
+    {
+      "key": "sys:MsgBox",
+      "inputs": {
+        "message": "将会打开网址https://getquicker.net/Forum/ViewTopic/172",
+        "title": "Quicker",
+        "buttons": "OK"
+      }
+    },
+    {
+      "key": "sys:run",
+      "inputs": {
+        "path": "https://getquicker.net/Forum/ViewTopic/172",
+        "windowStyle": "0",
+        "runas": "0",
+        "waitExit": "0"
+      }
+    },
+    {
+      "key": "sys:MsgBox",
+      "inputs": {
+        "message": "将会打开host文件",
+        "title": "Quicker",
+        "buttons": "OK"
+      }
+    },
+    {
+      "key": "sys:run",
+      "inputs": {
+        "path": "notepad.exe",
+        "arg": "C:\\Windows\\System32\\drivers\\etc\\hosts",
+        "windowStyle": "0",
+        "runas": "0",
+        "waitExit": "0"
+      }
+    }
+  ]
+}

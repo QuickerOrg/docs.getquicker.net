@@ -1,13 +1,13 @@
 ---
 title: "显示进度条"
-description: "显示/更新进度条"
+description: "在桌面右下角创建、更新或去掉进度条。"
 slug: "/v2/xaction/modules/reportprogress"
 sidebar_label: "显示进度条"
 sidebar_position: 70
 quickerDocKey: "xaction/module/sys:reportProgress"
 comments: true
 moduleKey: "sys:reportProgress"
-docStatus: "migrated-unreviewed"
+docStatus: "reviewed"
 metadataGeneratedAt: "2026-08-03 20:08:03"
 legacyDocId: 12796417
 legacyContentUpdatedAt: "2025-12-05T02:25:20.000Z"
@@ -15,51 +15,47 @@ legacyContentUpdatedAt: "2025-12-05T02:25:20.000Z"
 
 # 显示进度条
 
-显示/更新进度条
+在桌面右下角显示操作进度。1.10.8+ 提供。下载模块和 Http 模块也可以往同一个窗口里堆进度条。
 
 ## 当前模块定义
 
 <XActionModuleMeta moduleKey="sys:reportProgress" />
 
-自1.10.8+版本开始提供。
+## 概述
 
-用于显示某项操作的进度。
-
-示例动作：[https://getquicker.net/sharedaction?code=9a2970fd-14a5-4428-9b2a-08d852fc39cc](https://getquicker.net/sharedaction?code=9a2970fd-14a5-4428-9b2a-08d852fc39cc)
+窗口默认半透明，鼠标移上去变不透明，可同时叠多条。每条由标题、进度、说明文字组成。
 
 ![](./img/reportprogress-001-0a53ad12b4.gif)
 
-进度条窗口显示在桌面的**右下角**，窗口中可以同时堆叠显示多个进度条。窗口默认以半透明的方式显示，鼠标移动到窗口上时会变成完全不透明。
-
-每行进度条由三个部分组成：
-
 ![](./img/reportprogress-002-1351e8abb3.png)
 
-在1.10.8版本中，下载模块和Http模块增加了是否显示进度条的参数，它们与本模块共用一个进度条窗口。
+典型用法：先创建拿到 ID，循环里更新，结束后去掉。
 
-## 使用进度条
+<StepProgramView example="9a2970fd-14a5-4428-9b2a-08d852fc39cc" />
 
-进度条通常按下面的步骤来使用：
+<ShareLinkCard
+  code="9a2970fd-14a5-4428-9b2a-08d852fc39cc"
+  title="进度条测试"
+  description="测试进度条功能"
+  author="CL"
+/>
 
-1.  创建进度条：用于获得一个表示序号的进度条ID。
-2.  在循环中更新进度条。
-3.  去除进度条：操作完成后，删除进度条。
-
-更新和删除进度条时，现需指定在第一步中获得的进度条ID。
-
-![](./img/reportprogress-003-0c1b805480.png)
+## 参数说明
 
 ### 创建进度条
 
-操作类型选择“创建进度条”，将【进度条ID】输出到变量中。
+只生成 ID，不会立刻显示。把 **进度条ID** 输出到变量，后面更新和去除都用同一个 ID。
 
-![](./img/reportprogress-004-b96c25698b.png)
-
-创建进度条只是生成一个id，并不会立即显示进度条。
+<ModuleParamPreview
+  moduleKey="sys:reportProgress"
+  focusKeys={['type', 'progressId']}
+  values={{type: 'REQUEST_ID'}}
+  outputVars={{progressId: 'progressId'}}
+/>
 
 ### 更新进度
 
-更新进度操作会让进度条实际显示出来。
+真正把进度条画出来。
 
 <ModuleParamPreview
   moduleKey="sys:reportProgress"
@@ -73,21 +69,15 @@ legacyContentUpdatedAt: "2025-12-05T02:25:20.000Z"
   }}
 />
 
-参数说明：
+**进度条ID**：创建时拿到的编号。
 
-【进度条ID】通过“创建进度条”操作获得的进度条ID编号。
+**进度条标题**：进度条上方的深色粗体文字。
 
-【进度条标题】显示在进度条上方的文字，会以粗体/颜色较深的字体显示。
+**进度百分比**：0 到 100 的数字。7 件完成 3 件可写 `$= 100.0 * 3 / 7`。
 
-【进度百分比】从0到100之间的表示进度的数字（小数）。
-
--   如果表示总共7件任务完成了3件，百分比可以用表达式：$= 100.0 \* 3 / 7
-
-【说明文字】显示在进度条下方的浅色文字。
+**说明文字**：进度条下方的浅色文字。
 
 ### 去除进度条
-
-操作完成后，需要去除进度条。
 
 <ModuleParamPreview
   moduleKey="sys:reportProgress"
@@ -95,6 +85,27 @@ legacyContentUpdatedAt: "2025-12-05T02:25:20.000Z"
   values={{type: 'REMOVE', progressId: 'progressId'}}
 />
 
-如果没有消除进度条（如忘记添加消除步骤，或动作提取中止），该进度条将会一直显示。这时候也可以点击进度条窗口的垃圾桶图标清理。
+忘了去除或动作中途停掉时，进度条会一直留着。点窗口上的垃圾桶可清掉。
 
 ![](./img/reportprogress-007-0a60ada33f.png)
+
+## 输出
+
+- **进度条ID**：仅「创建进度条」。
+
+## 相关链接
+
+<RelatedDocs
+  items={[
+    {
+      href: '/v2/xaction/modules/showwaitwin',
+      label: '显示等待窗口',
+      description: '带按钮、可中止的进度提示。',
+    },
+    {
+      href: '/v2/xaction/modules/download',
+      label: '下载文件',
+      description: '下载进度和本模块共用一个窗口。',
+    },
+  ]}
+/>

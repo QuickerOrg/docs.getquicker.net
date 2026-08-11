@@ -1,0 +1,80 @@
+{
+  "code": "ef1a10ef-bbb2-4dcf-5f17-08d6cebc3090",
+  "title": "示例：发送窗口消息",
+  "description": "使用发送消息到窗口实现最大化窗口功能。",
+  "author": "CL",
+  "revision": 1,
+  "source": "https://getquicker.net/sharedaction?code=ef1a10ef-bbb2-4dcf-5f17-08d6cebc3090",
+  "pulledAt": "2026-08-11T21:28:46.947Z",
+  "variables": [
+    {
+      "name": "context",
+      "type": "Text",
+      "remark": "默认的文本变量"
+    },
+    {
+      "name": "img",
+      "type": "Image",
+      "remark": "默认的图片变量"
+    },
+    {
+      "name": "hwnd",
+      "type": "Number"
+    }
+  ],
+  "steps": [
+    {
+      "key": "sys:getWindowTitle",
+      "inputs": {
+        "which": "foreground"
+      },
+      "outputs": {
+        "handle": "hwnd"
+      }
+    },
+    {
+      "key": "sys:sendMessage",
+      "inputs": {
+        "hWnd": "{hwnd}",
+        "wMsg": "0x0112",
+        "wParam": "0xF030",
+        "lParam": "0"
+      },
+      "note": "最大化窗口"
+    },
+    {
+      "key": "sys:delay",
+      "inputs": {
+        "delayMs": "1000",
+        "monitorWaitWin": "0"
+      }
+    },
+    {
+      "key": "sys:sendMessage",
+      "inputs": {
+        "hWnd": "{hwnd}",
+        "wMsg": "0x0112",
+        "wParam": "0xF020",
+        "lParam": "0"
+      },
+      "note": "最小化窗口"
+    },
+    {
+      "key": "sys:delay",
+      "inputs": {
+        "delayMs": "1000",
+        "monitorWaitWin": "0"
+      }
+    },
+    {
+      "key": "sys:sendMessage",
+      "inputs": {
+        "hWnd": "{hwnd}",
+        "wMsg": "0x0112",
+        "wParam": "0xF120",
+        "lParam": "0"
+      },
+      "note": "还原窗口"
+    }
+  ]
+}

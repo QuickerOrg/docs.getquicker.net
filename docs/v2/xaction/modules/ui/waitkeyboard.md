@@ -1,13 +1,13 @@
 ---
 title: "等待按键"
-description: "等待用户按下某个按键"
+description: "等到用户按下指定按键，或等到全部按键抬起。"
 slug: "/v2/xaction/modules/waitkeyboard"
 sidebar_label: "等待按键"
 sidebar_position: 10
 quickerDocKey: "xaction/module/sys:waitKeyboard"
 comments: true
 moduleKey: "sys:waitKeyboard"
-docStatus: "migrated-unreviewed"
+docStatus: "reviewed"
 metadataGeneratedAt: "2026-08-03 20:08:03"
 legacyDocId: 2746710
 legacyContentUpdatedAt: "2024-10-23T03:42:21.000Z"
@@ -15,83 +15,66 @@ legacyContentUpdatedAt: "2024-10-23T03:42:21.000Z"
 
 # 等待按键
 
-等待用户按下某个按键
+等到用户按下指定键，或等到全部键盘键抬起。常用来等用户做完一件事再继续，或用按键在几个选项里选一个。
 
 ## 当前模块定义
 
 <XActionModuleMeta moduleKey="sys:waitKeyboard" />
 
-支持的操作类型：
+## 概述
 
--   等待按下：等待某个键盘或鼠标按键按下；
--   等待所有按键抬起：等待所有键盘按键抬起；
+两种操作：
 
-## 等待按下
-
-等待用户按下指定的键盘或鼠标按键。
-
-鼠标键自1.5.3版本开始支持（鼠标键不支持拦截）。
+- **等待按下**：等某个键盘或鼠标键（鼠标键 1.5.3+，不能拦截）。
+- **等待所有按键抬起**：等全部物理键盘键抬起（不含模拟键、不含鼠标）。常用来等 Ctrl / Shift / Alt 松开，避免叠到后面的模拟按键上。
 
 <ModuleParamPreview moduleKey="sys:waitKeyboard" />
 
-典型用途：
+## 参数说明
 
--   等待用户完成指定的操作后按键继续执行动作；
--   从多个选项中使用按键选择一个；
+**操作类型**：「等待按下」或「等待所有按键抬起」。
 
-### 参数
+**等待的按键**：可指定多个。等组合键时只写非修饰键（`Ctrl+S` 写 `S`）。留空表示任意**键盘键**（不含鼠标）。多个键用英文逗号分隔，可以是键名或键值（见文末表）。
 
-【等待的按键】等待的键盘或鼠标按键，可以指定多个。在等待组合快捷键时，用于指定按键组合中的非修饰键部分（如Ctrl+S组合，等待的按键为S）。
+- `LMenu,RMenu`：左或右 Alt
+- `112,113`：F1 或 F2
+- `LButton,A`：鼠标左键或 A
+- `wheel`：垂直滚轮（1.28.5+）
 
--   如果不指定，将会在按下任意**键盘键**时完成等待。此时不等待鼠标按键。
--   如果指定，则会在按下设定的鼠标或键盘键时完成等待。可以指定多个要等待的按键，其格式为：使用小写逗号分隔的多个键名或键值（[System.Windows.Forms.Keys](https://docs.microsoft.com/en-us/dotnet/api/system.windows.forms.keys?view=netframework-4.8)枚举值中的名字或数字值，请参见本文后面的表）。
+`ControlKey` / `Control`、`ShiftKey` / `Shift`、`Menu`（Alt）会同时等左右两侧，输出的是实际按下的那一侧（如 `LControlKey`）。
 
-示例：
+**修饰键**：仅组合快捷键。英文逗号分隔的 `ctrl,shift,alt,win`。`Ctrl+Shift+S` 填 `ctrl,shift`。
 
--   LMenu,RMenu   (等待左或右Alt键）
--   112,113    (等待F1或F2）
--   LButton,A  (等到鼠标左键或A键)
--   特别的，可以用wheel表示等待鼠标垂直滚轮（1.28.5+版本）
+**最长等待秒数**：超时则「步骤执行是否成功」为 False；「键名」「键值」是超时前最后一次按键，没按过则是 `None` 和 `0`。`0` 表示一直等。
 
-对于控制键ControlKey/Control、ShiftKey/Shift、Menu（alt），会自动等待对应的左右两侧的按键。返回的键值是实际按下的左侧或右侧按键对应的值（如LControlKey/RControlKey等)
+**拦截原始按键事件**：拦截后按键不会进其它软件。只对键盘有效；组合键里的 Ctrl / Shift / Alt / Win 不会被拦截。鼠标键不能拦截。
 
-【修饰键】仅用于等待组合快捷键。内容为使用英文半角逗号分隔的`ctrl,shift,alt,win`组合。如`Ctrl+Shift+S`组合，修饰键为`ctrl,shift`。
+**等待按键抬起**：按下后再等抬起，并输出保持时间。仅键盘。1.40.23+。
 
-【最长等待秒数】最长等待时间。如果该时间内没有按下要等待的按键则，则“是否成功”返回False，“键名”“键值”返回等待时间内最后按下的键的键名和键值，如果没有按任何键，则返回`None`和`0`。
+**忽略模拟的按键**：忽略动作或其它软件模拟的按键，只等物理键。
 
-【拦截原始按键事件】如果拦截，则等待的按键不会发送到其他软件中变成字母输入。如果不拦截，则类似于普通键盘敲击的效果。仅对键盘按键有效。在等待组合按键时，不会拦截Ctrl/Shift/Alt/Win等修饰键。
-
-【等待按键抬起】对于键盘按键，可以在按下按键后继续等待该按键抬起。此时可以输出按下的保持时间。（v1.40.23+）
-
-【忽略模拟的按键】是否忽略通过动作或其它软件模拟生成的按键消息。（仅等待物理键盘按键）
-
-【提示信息】 在屏幕顶端使用透明窗口显示给用户的提示文字。
+**提示信息**：屏幕上半透明提示。
 
 ![](./img/waitkeyboard-002-bb2a547ba8.png)
 
-【提示窗口位置】半透明提示窗口的显示位置。
+**字体名称**：提示文字字体，多个用逗号分隔。
 
-【鼠标穿透】半透明提示窗口是否允许鼠标穿透（从而避免影响点击提示窗下面的内容）。
+**提示窗口位置**：半透明提示出现的位置。
 
-### 输出
+**鼠标穿透**：鼠标能否点穿提示窗点到下面。默认开启。
 
-注：输出的是实际按键的值，比如等待的是ControlKey，根据按下的键，实际输出的是LControlKey或RControlKey。
+**失败后停止动作**：超时或失败后是否中止。默认开启。
 
-【键名】（KeyCode）按键的名称。参见下表或：[https://docs.microsoft.com/en-us/dotnet/api/system.windows.forms.keys?view=netframework-4.8](https://docs.microsoft.com/en-us/dotnet/api/system.windows.forms.keys?view=netframework-4.8)
+## 输出
 
-【键值】（Keyvalue）按键的数字值。可以用[示例动作](https://getquicker.net/sharedaction?code=55c2a301-191e-4650-aa19-08d743b351f9)检测按键的键值。
+输出的是实际按键。等 `ControlKey` 时，按下左侧就得到 `LControlKey`。
 
-【按下保持时间】开启“等待按键抬起”选项后，对键盘按键，可以输出按下的保持时间（用以区分短按和长按等场景使用）。（v1.40.23+）
-
-### 参考动作
-
--   示例：显示键值  [https://getquicker.net/sharedaction?code=55c2a301-191e-4650-aa19-08d743b351f9](https://getquicker.net/sharedaction?code=55c2a301-191e-4650-aa19-08d743b351f9)
+- **步骤执行是否成功**：是否等到了目标按键（或全部抬起）。
+- **键名**：见文末表或 [Keys 枚举](https://docs.microsoft.com/en-us/dotnet/api/system.windows.forms.keys?view=netframework-4.8)。
+- **键值**：数字。可用下面的示例动作查看。
+- **按下保持时间**：开启「等待按键抬起」后，键盘按下的毫秒数。1.40.23+。
 
 ## 等待所有按键抬起
-
-等待所有键盘物理按键抬起（不支持模拟按键状态，不支持鼠标键）。
-
-通常用于等待ctrl/shift/alt等按键抬起，避免其对后续模拟的按键产生叠加效果。
 
 <ModuleParamPreview
   moduleKey="sys:waitKeyboard"
@@ -99,15 +82,20 @@ legacyContentUpdatedAt: "2024-10-23T03:42:21.000Z"
   values={{operation: 'waitAllKeyUp', maxWaitSeconds: '20', stopIfFail: 'true'}}
 />
 
-## 更改历史
+## 示例动作
 
--   从1.1.33版本开始提供。
--   1.2.11 增加“等待的按键”参数。
--   1.5.3 增加支持鼠标按键(LButton/MButton/RButton/XButton1/XButton2)；增加是否拦截原始按键消息的选项。
+<StepProgramView example="55c2a301-191e-4650-aa19-08d743b351f9" />
 
-参考
+<ShareLinkCard
+  code="55c2a301-191e-4650-aa19-08d743b351f9"
+  title="示例：显示键值"
+  description="按下按键后显示键名和键值。按 Esc 退出。"
+  author="CL"
+/>
 
-##### System.Windows.Forms.Keys 键值对照表
+## 键值对照表
+
+System.Windows.Forms.Keys：
 
 | 键名 | 键值 | 说明 |
 | --- | --- | --- |
@@ -305,6 +293,31 @@ legacyContentUpdatedAt: "2024-10-23T03:42:21.000Z"
 | Z | 90 | Z 键。 |
 | Zoom | 251 | 缩放键。 |
 
+## 相关链接
+
+<RelatedDocs
+  items={[
+    {
+      href: '/v2/xaction/modules/keyinput',
+      label: '模拟按键',
+      description: '等到之后再模拟按键。',
+    },
+    {
+      href: '/v2/xaction/modules/sendkeys',
+      label: '模拟按键B',
+      description: '用 SendKeys 语法输入。',
+    },
+    {
+      href: '/v2/xaction/modules/showwaitwin',
+      label: '显示等待窗口',
+      description: '用按钮而不是按键来继续。',
+    },
+  ]}
+/>
+
 ## 更新历史
 
--   20241023 去除失效链接。
+- 1.1.33 起提供。
+- 1.2.11 增加「等待的按键」。
+- 1.5.3 支持鼠标按键（LButton / MButton / RButton / XButton1 / XButton2）；增加是否拦截原始按键。
+- 20241023 去除失效链接。

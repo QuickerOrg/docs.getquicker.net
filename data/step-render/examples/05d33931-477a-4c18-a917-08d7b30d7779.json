@@ -1,0 +1,229 @@
+{
+  "code": "05d33931-477a-4c18-a917-08d7b30d7779",
+  "title": "示例：Json提取",
+  "description": "需1.4.21版",
+  "author": "CL",
+  "revision": 0,
+  "source": "https://getquicker.net/sharedaction?code=05d33931-477a-4c18-a917-08d7b30d7779",
+  "pulledAt": "2026-08-11T21:09:07.606Z",
+  "variables": [
+    {
+      "name": "json",
+      "type": "Text",
+      "remark": "json内容"
+    },
+    {
+      "name": "list",
+      "type": "Any",
+      "remark": "Manufacture对象列表"
+    },
+    {
+      "name": "item",
+      "type": "Any",
+      "remark": "列表的一项"
+    },
+    {
+      "name": "rootToken",
+      "type": "Any",
+      "remark": "根JToken对象，对应整个Json数据"
+    },
+    {
+      "name": "oneName",
+      "type": "Text",
+      "remark": "某个Manufacture的Name属性"
+    },
+    {
+      "name": "index",
+      "type": "Integer",
+      "remark": "序号"
+    },
+    {
+      "name": "nameList",
+      "type": "Any",
+      "remark": "Name列表"
+    }
+  ],
+  "steps": [
+    {
+      "key": "sys:subprogram",
+      "inputs": {
+        "subProgram": "Quicker版本验证",
+        "stopIfFail": "1",
+        "var:要求版本号": "1.4.18"
+      }
+    },
+    {
+      "key": "sys:comment",
+      "inputs": {
+        "note": "提取所有的Manufacture对象到列表\r\n对列表中的每个Manufacture，显示其Name属性的值。"
+      }
+    },
+    {
+      "key": "sys:jsonExtract",
+      "inputs": {
+        "data": "{json}",
+        "p0": "Manufacturers"
+      },
+      "outputs": {
+        "v0": "list",
+        "rootToken": "rootToken"
+      }
+    },
+    {
+      "key": "sys:MsgBox",
+      "inputs": {
+        "message": "提取所有的Manufacture对象到列表\r\n对列表中的每个Manufacture，显示其Name属性的值。",
+        "title": "Quicker",
+        "buttons": "OK"
+      }
+    },
+    {
+      "key": "sys:each",
+      "inputs": {
+        "input": "{list}"
+      },
+      "outputs": {
+        "item": "item",
+        "count": "index"
+      },
+      "ifSteps": [
+        {
+          "key": "sys:notify",
+          "inputs": {
+            "msg": "$= \"序号\" + {index}.ToString() + \" \" + {item}[\"Name\"]",
+            "maxLines": "0",
+            "type": "Info"
+          }
+        }
+      ]
+    },
+    {
+      "key": "sys:delay",
+      "inputs": {
+        "delayMs": "2000",
+        "monitorWaitWin": "0"
+      }
+    },
+    {
+      "key": "sys:comment",
+      "inputs": {
+        "note": "提取所有的Manufacture对象的Name属性到一个存放了所有Name的列表，\r\n对列表中的每个Name，显示其值。"
+      }
+    },
+    {
+      "key": "sys:jsonExtract",
+      "inputs": {
+        "data": "{json}",
+        "p0": "Manufacturers[*].Name"
+      },
+      "outputs": {
+        "v0": "nameList",
+        "rootToken": "rootToken"
+      }
+    },
+    {
+      "key": "sys:MsgBox",
+      "inputs": {
+        "message": "提取所有的Manufacture对象的Name属性到一个列表，\r\n对列表中的每个Name，显示其值。",
+        "title": "Quicker",
+        "buttons": "OK"
+      }
+    },
+    {
+      "key": "sys:each",
+      "inputs": {
+        "input": "{nameList}"
+      },
+      "outputs": {
+        "item": "item",
+        "count": "index"
+      },
+      "ifSteps": [
+        {
+          "key": "sys:notify",
+          "inputs": {
+            "msg": "$= \"序号\" + {index}.ToString() + \" \" + {item}",
+            "maxLines": "0",
+            "type": "Info"
+          }
+        }
+      ]
+    },
+    {
+      "key": "sys:delay",
+      "inputs": {
+        "delayMs": "2000",
+        "monitorWaitWin": "0"
+      }
+    },
+    {
+      "key": "sys:comment",
+      "inputs": {
+        "note": "使用第一次提取时候保存的rootToken，提取json中的单个值"
+      }
+    },
+    {
+      "key": "sys:MsgBox",
+      "inputs": {
+        "message": "提取单个值 Manufacturers[0].Name",
+        "title": "Quicker",
+        "buttons": "OK"
+      }
+    },
+    {
+      "key": "sys:jsonExtract",
+      "inputs": {
+        "data": "{rootToken}",
+        "p0": "Manufacturers[0].Name"
+      },
+      "outputs": {
+        "v0": "oneName"
+      }
+    },
+    {
+      "key": "sys:notify",
+      "inputs": {
+        "msg": "{oneName}",
+        "maxLines": "0",
+        "type": "Info"
+      }
+    },
+    {
+      "key": "sys:delay",
+      "inputs": {
+        "delayMs": "2000",
+        "monitorWaitWin": "0"
+      }
+    },
+    {
+      "key": "sys:comment",
+      "inputs": {
+        "note": "使用表达式，读取第二个Manufacture的Name\r\n使用了两种写法。"
+      }
+    },
+    {
+      "key": "sys:MsgBox",
+      "inputs": {
+        "message": "使用表达式访问JToken中的内容\r\n$= \"方法1:\" + (string){rootToken}.SelectToken(\"Manufacturers[1].Name\")\r\n$= \"方法2\" + (string){rootToken}[\"Manufacturers\"][1][\"Name\"]",
+        "title": "Quicker",
+        "buttons": "OK"
+      }
+    },
+    {
+      "key": "sys:notify",
+      "inputs": {
+        "msg": "$= \"方法1:\" + (string){rootToken}.SelectToken(\"Manufacturers[1].Name\")",
+        "maxLines": "0",
+        "type": "Info"
+      }
+    },
+    {
+      "key": "sys:notify",
+      "inputs": {
+        "msg": "$= \"方法2\" + (string){rootToken}[\"Manufacturers\"][1][\"Name\"]",
+        "maxLines": "0",
+        "type": "Info"
+      }
+    }
+  ]
+}

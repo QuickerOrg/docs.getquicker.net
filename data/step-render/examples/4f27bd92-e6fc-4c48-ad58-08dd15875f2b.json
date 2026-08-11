@@ -1,0 +1,214 @@
+{
+  "code": "4f27bd92-e6fc-4c48-ad58-08dd15875f2b",
+  "title": "QuickerOCR离线",
+  "description": "离线QuickerOCR功能示例，识别并自动复制文本",
+  "author": "CL",
+  "revision": 0,
+  "source": "https://getquicker.net/sharedaction?code=4f27bd92-e6fc-4c48-ad58-08dd15875f2b",
+  "pulledAt": "2026-08-11T21:28:52.851Z",
+  "variables": [
+    {
+      "name": "text",
+      "type": "Text",
+      "remark": "默认的文本变量"
+    },
+    {
+      "name": "img",
+      "type": "Image"
+    },
+    {
+      "name": "showWindow",
+      "type": "Boolean",
+      "remark": "是否显示文本窗口"
+    },
+    {
+      "name": "autoCopy",
+      "type": "Boolean",
+      "remark": "自动复制"
+    },
+    {
+      "name": "lang",
+      "type": "Text",
+      "remark": "语言"
+    },
+    {
+      "name": "width",
+      "type": "Integer"
+    },
+    {
+      "name": "height",
+      "type": "Integer"
+    }
+  ],
+  "steps": [
+    {
+      "key": "sys:comment",
+      "inputs": {
+        "note": "设置处理"
+      }
+    },
+    {
+      "key": "sys:simpleIf",
+      "inputs": {
+        "condition": "$= {quicker_in_param} == \"settings\""
+      },
+      "ifSteps": [
+        {
+          "key": "sys:form",
+          "inputs": {
+            "operation": "variables",
+            "title": "动作设置",
+            "formDef": "{\"Fields\":[{\"FieldKey\":\"lang\",\"DictVarType\":null,\"Label\":\"语言\",\"HelpText\":\"待识别内容的语言\",\"HelpLink\":null,\"InputMethod\":3,\"SelectionItems\":\"中英|\\r\\n英语|ENG\\r\\n韩语|KOR\\r\\n日语|JAP\\r\\n繁体中文|CHT\\r\\n拉丁语|LAT\\r\\n阿拉伯语|ARA\",\"IsRequired\":false,\"MinValue\":\"\",\"MaxValue\":\"\",\"Pattern\":\"\",\"InputWidth\":\"\",\"MaxLength\":0,\"ImeState\":null,\"TextTools\":\"\",\"VisibleExpression\":\"\",\"DefaultValue\":null,\"Group\":\"\"},{\"FieldKey\":\"autoCopy\",\"DictVarType\":null,\"Label\":\"自动复制识别结果\",\"HelpText\":\"\",\"HelpLink\":null,\"InputMethod\":6,\"SelectionItems\":\"\",\"IsRequired\":false,\"MinValue\":\"\",\"MaxValue\":\"\",\"Pattern\":\"\",\"InputWidth\":\"\",\"MaxLength\":0,\"ImeState\":null,\"TextTools\":\"\",\"VisibleExpression\":\"\",\"DefaultValue\":null,\"Group\":\"\"},{\"FieldKey\":\"showWindow\",\"DictVarType\":null,\"Label\":\"使用文本窗口显示识别结果\",\"HelpText\":\"\",\"HelpLink\":null,\"InputMethod\":6,\"SelectionItems\":\"\",\"IsRequired\":false,\"MinValue\":\"\",\"MaxValue\":\"\",\"Pattern\":\"\",\"InputWidth\":\"\",\"MaxLength\":0,\"ImeState\":null,\"TextTools\":\"\",\"VisibleExpression\":\"\",\"DefaultValue\":null,\"Group\":\"\"}]}",
+            "titleColumnWidth": "100",
+            "windowWidth": "500",
+            "windowHeight": "0",
+            "restoreFocus": "0",
+            "topMost": "false",
+            "disableEnterSubmit": "0",
+            "stopIfFail": "1"
+          }
+        },
+        {
+          "key": "sys:stateStorage",
+          "inputs": {
+            "type": "UpdateActionBadge",
+            "badgeText": "{lang}",
+            "badgeColor": "#428ca7"
+          }
+        },
+        {
+          "key": "sys:stop",
+          "inputs": {
+            "method": "default",
+            "isError": "0"
+          }
+        }
+      ]
+    },
+    {
+      "key": "sys:comment",
+      "inputs": {
+        "note": "更新按钮上的语言名字"
+      }
+    },
+    {
+      "key": "sys:stateStorage",
+      "inputs": {
+        "type": "UpdateActionBadge",
+        "badgeText": "{lang}",
+        "badgeColor": "#428ca7"
+      }
+    },
+    {
+      "key": "sys:comment",
+      "inputs": {
+        "note": "截屏"
+      }
+    },
+    {
+      "key": "sys:if",
+      "inputs": {
+        "condition": "$= {quicker_in_param}.IsNullOrEmpty() == false \r\n\t&& File.Exists({quicker_in_param})"
+      },
+      "ifSteps": [
+        {
+          "key": "sys:readFile",
+          "inputs": {
+            "path": "{quicker_in_param}",
+            "type": "image",
+            "stopIfFail": "1"
+          },
+          "outputs": {
+            "image": "img"
+          }
+        }
+      ],
+      "elseSteps": [
+        {
+          "key": "sys:screenCapture",
+          "inputs": {
+            "type": "select",
+            "delay": "200",
+            "toClip": "0",
+            "stopIfFail": "1"
+          },
+          "outputs": {
+            "img": "img"
+          }
+        }
+      ]
+    },
+    {
+      "key": "sys:comment",
+      "inputs": {
+        "note": "OCR识别"
+      }
+    },
+    {
+      "key": "sys:basic-ocr",
+      "inputs": {
+        "operation": "QuickerServerOcr",
+        "imgVar": "{img}",
+        "punctuationType": "no",
+        "mergeChapter": "no",
+        "lang": "{lang}",
+        "offlineMode": "OfflineOnly",
+        "stopIfFail": "1"
+      },
+      "outputs": {
+        "content": "text"
+      }
+    },
+    {
+      "key": "sys:comment",
+      "inputs": {
+        "note": "根据设置复制内容和显示结果"
+      }
+    },
+    {
+      "key": "sys:simpleIf",
+      "inputs": {
+        "condition": "{autoCopy}"
+      },
+      "ifSteps": [
+        {
+          "key": "sys:writeClipboard",
+          "inputs": {
+            "type": "auto",
+            "input": "{text}",
+            "successMsg": "$=\"已复制!\" + {text}.ToShortString(30)",
+            "stopIfFail": "1"
+          }
+        }
+      ]
+    },
+    {
+      "key": "sys:simpleIf",
+      "inputs": {
+        "condition": "{showWindow}"
+      },
+      "ifSteps": [
+        {
+          "key": "sys:showText",
+          "inputs": {
+            "type": "NO_WAIT",
+            "text": "{text}",
+            "title": "识别结果",
+            "autoCloseKey": "=",
+            "topMost": "false",
+            "stopIfFail": "1",
+            "winLocation": "CenterScreen",
+            "fontsize": "14",
+            "closeWhenLostFocus": "false",
+            "showLineNum": "true",
+            "autoWrap": "true",
+            "showBuildInToolbar": "true",
+            "copyWholeLine": "false",
+            "caretPosition": "0",
+            "updateIfExists": "0"
+          }
+        }
+      ]
+    }
+  ]
+}

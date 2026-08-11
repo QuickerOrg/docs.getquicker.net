@@ -1,0 +1,87 @@
+{
+  "code": "2a59718b-523b-4e7e-a4a8-08d70bf0ab12",
+  "title": "示例：等待另存为窗口",
+  "description": "等待另存为对话框打开",
+  "author": "CL",
+  "revision": 1,
+  "source": "https://getquicker.net/sharedaction?code=2a59718b-523b-4e7e-a4a8-08d70bf0ab12",
+  "pulledAt": "2026-08-11T21:28:45.450Z",
+  "variables": [
+    {
+      "name": "found",
+      "type": "Boolean",
+      "remark": "是否找到了窗口"
+    },
+    {
+      "name": "winTitle",
+      "type": "Text",
+      "remark": "前台窗口的标题"
+    }
+  ],
+  "steps": [
+    {
+      "key": "sys:repeat",
+      "inputs": {
+        "count": "10",
+        "stopCondition": "$$ {found}"
+      },
+      "ifSteps": [
+        {
+          "key": "sys:getWindowTitle",
+          "inputs": {
+            "which": "foreground"
+          },
+          "outputs": {
+            "output": "winTitle"
+          }
+        },
+        {
+          "key": "sys:strCompare",
+          "inputs": {
+            "param1": "{winTitle}",
+            "type": "contains",
+            "param2": "另存为",
+            "case": "0"
+          },
+          "outputs": {
+            "value": "found"
+          }
+        },
+        {
+          "key": "sys:if",
+          "inputs": {
+            "condition": "{found}"
+          },
+          "ifSteps": [
+            {
+              "key": "sys:notify",
+              "inputs": {
+                "msg": "另存为窗口已打开",
+                "type": "Success"
+              }
+            },
+            {
+              "key": "sys:stop"
+            }
+          ],
+          "elseSteps": [
+            {
+              "key": "sys:delay",
+              "inputs": {
+                "delayMs": "1000",
+                "monitorWaitWin": "0"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "key": "sys:notify",
+      "inputs": {
+        "msg": "没有等到“另存为”窗口打开。",
+        "type": "Warning"
+      }
+    }
+  ]
+}

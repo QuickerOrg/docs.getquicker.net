@@ -28,6 +28,7 @@ import {
   usePreviewLiveReporter,
 } from "@site/src/components/PreviewLive";
 import {DocsStepIcon} from "@site/src/components/StepProgramView/DocsStepIcon";
+import {KeyboardParamControl} from "./KeyboardParamControl";
 import {
   canBindVariable,
   OutputVarPicker,
@@ -92,6 +93,16 @@ export type StepParamFormPreviewProps = {
   actionIcon?: string;
   /** Override section body scrolling. Default: scroll when the form is long. */
   scrollBody?: boolean;
+  /** Step note shown in the footer (Headless StepEditorPopup). */
+  note?: string;
+  /** “停用此步骤” checkbox (read-only chrome). */
+  stepDisabled?: boolean;
+  /**
+   * Overlay chrome: “查看步骤 —” title, close button, footer 关闭.
+   * Used when opened from StepProgramView double-click.
+   */
+  dialog?: boolean;
+  onClose?: () => void;
   className?: string;
 };
 
@@ -549,6 +560,7 @@ function InputRow({
   const desc = (param.description ?? "").trim();
   const items = module.selections?.[param.key]?.items ?? [];
   const useSelect = !boundVar && (type === "enum" || items.length > 0);
+  const useKeyboard = !boundVar && type === "keyboard";
   const showChevron = Boolean(boundVar) || canBindVariable(param.variableMode);
   return (
     <div
@@ -563,7 +575,13 @@ function InputRow({
     >
       <div className="step-param-label">{param.name}</div>
       <div className="step-param-field-col" data-preview-handle="from">
-        {useSelect ? (
+        {useKeyboard ? (
+          <KeyboardParamControl
+            value={value}
+            onChange={onChange}
+            description={desc || undefined}
+          />
+        ) : useSelect ? (
           <EnumSelect module={module} param={param} value={value} onChange={onChange} />
         ) : editable && !boundVar ? (
           <EditableParamValue param={param} value={value} onChange={onChange} />
@@ -618,17 +636,6 @@ function OutputRow({
   );
 }
 
-function NoteRow(): JSX.Element {
-  return (
-    <div className="step-param-row step-param-row--single">
-      <div className="step-param-label">步骤注释</div>
-      <div className="step-param-field-col">
-        <div className="step-param-control">{"\u00a0"}</div>
-      </div>
-    </div>
-  );
-}
-
 export function StepParamFormPreview({
   module,
   values,
@@ -639,6 +646,10 @@ export function StepParamFormPreview({
   collapseOthers,
   actionIcon,
   scrollBody,
+  note,
+  stepDisabled = false,
+  dialog = false,
+  onClose,
   className,
 }: StepParamFormPreviewProps): JSX.Element {
   const initial = useMemo(() => buildInitialValues(module, values), [module, values]);
@@ -696,10 +707,8 @@ export function StepParamFormPreview({
     ? visibleOutputs.filter((output) => !focusSet.has(output.key))
     : [];
 
-  const otherCount =
-    otherInputs.length + otherOutputs.length + (doCollapseOthers ? 1 : 0);
+  const otherCount = otherInputs.length + otherOutputs.length;
   const showOthersBucket = doCollapseOthers && otherCount > 0;
-  const showStandaloneNote = !doCollapseOthers;
 
   return (
     <div
@@ -707,10 +716,14 @@ export function StepParamFormPreview({
         "qk-sr-param-form",
         "step-editor-popup",
         hasFocus ? "qk-sr-param-form--focus" : "",
+        dialog ? "qk-sr-param-form--dialog" : "",
         className,
       ]
         .filter(Boolean)
         .join(" ")}
+      role={dialog ? "dialog" : undefined}
+      aria-modal={dialog || undefined}
+      aria-labelledby={dialog ? "step-editor-popup-title" : undefined}
     >
       <div className="step-editor-popup-header">
         <div className="qk-sr-param-form__title-wrap">
@@ -720,7 +733,9 @@ export function StepParamFormPreview({
                 <DocsStepIcon spec={actionIcon} size={18} title="动作图标" />
               </span>
             ) : null}
-            <h2>{module.name}</h2>
+            <h2 id={dialog ? "step-editor-popup-title" : undefined}>
+              {dialog ? `查看步骤 — ${module.name}` : module.name}
+            </h2>
           </div>
           {module.description ? (
             <div className="qk-sr-param-form__subtitle">{module.description}</div>
@@ -736,6 +751,16 @@ export function StepParamFormPreview({
         >
           重置
         </button>
+        {onClose ? (
+          <button
+            type="button"
+            className="step-editor-popup-close"
+            aria-label="关闭"
+            onClick={onClose}
+          >
+            ×
+          </button>
+        ) : null}
       </div>
       <div className="step-editor-popup-body step-editor-popup-params">
         {focusInputs.length > 0 ? (
@@ -793,29 +818,60 @@ export function StepParamFormPreview({
                 varName={outputVars?.[output.key] ?? ""}
               />
             ))}
-            <NoteRow />
-          </ParamSection>
-        ) : null}
-        {showStandaloneNote ? (
-          <ParamSection title="其它">
-            <NoteRow />
           </ParamSection>
         ) : null}
       </div>
       <div className="step-editor-popup-footer">
         <div className="step-editor-popup-footer__start">
           <label className="qk-sr-param-form__disable">
-            <input type="checkbox" className="step-param-checkbox" checked={false} readOnly tabIndex={-1} />
+            <input
+              type="checkbox"
+              className="step-param-checkbox"
+              checked={stepDisabled}
+              readOnly
+              tabIndex={-1}
+            />
             <span>停用此步骤</span>
           </label>
         </div>
+        <div className="step-editor-popup-footer__meta">
+          <label className="step-form-inline-group step-form-note-block">
+            <span className="step-form-inline-label">备注</span>
+            <input
+              className="step-form-note-input"
+              value={note ?? ""}
+              readOnly
+              placeholder="可选"
+              aria-label="步骤备注"
+            />
+          </label>
+          <label className="step-form-inline-group step-form-delay-block">
+            <span className="step-form-inline-label">延迟</span>
+            <input
+              type="number"
+              className="step-form-delay-input"
+              defaultValue={0}
+              min={0}
+              step={50}
+              title="执行后延迟（毫秒）"
+              aria-label="延迟毫秒"
+            />
+            <span className="step-form-inline-suffix" aria-hidden>
+              ms
+            </span>
+          </label>
+        </div>
         <div className="step-editor-popup-footer__end">
-          <span className="qk-sr-param-form__delay">
-            运行后延迟
-            <span className="step-param-control qk-sr-param-form__delay-val">0</span>
-          </span>
-          <span className="qk-sr-param-form__btn qk-sr-param-form__btn--primary">保存(S)</span>
-          <span className="qk-sr-param-form__btn">取消</span>
+          {dialog ? (
+            <button type="button" className="qk-sr-param-form__btn" onClick={onClose}>
+              关闭
+            </button>
+          ) : (
+            <>
+              <span className="qk-sr-param-form__btn qk-sr-param-form__btn--primary">保存(S)</span>
+              <span className="qk-sr-param-form__btn">取消</span>
+            </>
+          )}
         </div>
       </div>
     </div>

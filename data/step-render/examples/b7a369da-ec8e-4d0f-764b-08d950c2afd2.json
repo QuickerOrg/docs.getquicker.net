@@ -1,0 +1,61 @@
+{
+  "code": "b7a369da-ec8e-4d0f-764b-08d950c2afd2",
+  "title": "切换",
+  "description": "另存、打开对话框，切换到最后打开的资源管理器目录",
+  "author": "CL",
+  "revision": 0,
+  "source": "https://getquicker.net/sharedaction?code=b7a369da-ec8e-4d0f-764b-08d950c2afd2",
+  "pulledAt": "2026-08-11T21:29:12.114Z",
+  "variables": [
+    {
+      "name": "text",
+      "type": "Text",
+      "remark": "默认的文本变量"
+    },
+    {
+      "name": "path",
+      "type": "Text"
+    },
+    {
+      "name": "isSuccess",
+      "type": "Boolean"
+    }
+  ],
+  "steps": [
+    {
+      "key": "sys:getExplorerPath",
+      "inputs": {
+        "stopIfFail": "0"
+      },
+      "outputs": {
+        "lastPath": "path",
+        "isSuccess": "isSuccess"
+      }
+    },
+    {
+      "key": "sys:simpleIf",
+      "inputs": {
+        "condition": "$= !{isSuccess}"
+      },
+      "ifSteps": [
+        {
+          "key": "sys:getFolderPath",
+          "inputs": {
+            "folder": "Desktop"
+          },
+          "outputs": {
+            "path": "path"
+          }
+        }
+      ]
+    },
+    {
+      "key": "sys:uiautomation",
+      "inputs": {
+        "type": "UpdateSaveAsDialogPath",
+        "path": "{path}",
+        "stopIfFail": "1"
+      }
+    }
+  ]
+}

@@ -1,0 +1,299 @@
+{
+  "code": "65a5ee04-29bc-42f0-3962-08db5c50a3af",
+  "title": "正则速查手册",
+  "description": "Quicker正则表达式速查手册",
+  "author": "咿呀杀杀",
+  "revision": 10,
+  "source": "https://getquicker.net/sharedaction?code=65a5ee04-29bc-42f0-3962-08db5c50a3af",
+  "pulledAt": "2026-08-11T21:09:08.652Z",
+  "variables": [
+    {
+      "name": "网页文件路径",
+      "type": "Text"
+    },
+    {
+      "name": "打开方式",
+      "type": "Text"
+    },
+    {
+      "name": "工作目录",
+      "type": "Text"
+    },
+    {
+      "name": "MyDocument",
+      "type": "Text"
+    },
+    {
+      "name": "html",
+      "type": "Text",
+      "remark": "@"
+    },
+    {
+      "name": "当前版本标识",
+      "type": "Text"
+    },
+    {
+      "name": "更新后初次运行",
+      "type": "Boolean"
+    },
+    {
+      "name": "安装后第一次运行",
+      "type": "Boolean"
+    },
+    {
+      "name": "正文字体",
+      "type": "Text"
+    },
+    {
+      "name": "代码字体",
+      "type": "Text"
+    },
+    {
+      "name": "大纲宽度",
+      "type": "Text"
+    }
+  ],
+  "steps": [
+    {
+      "key": "sys:simpleIf",
+      "inputs": {
+        "condition": "$= !Directory.Exists({工作目录})"
+      },
+      "note": "检查工作目录",
+      "ifSteps": [
+        {
+          "key": "sys:getFolderPath",
+          "inputs": {
+            "folder": "MyDocuments"
+          },
+          "outputs": {
+            "path": "MyDocument"
+          }
+        },
+        {
+          "key": "sys:assign",
+          "inputs": {
+            "input": "$= {MyDocument} + @\"\\Quicker\\YiYaShaSha\\正则速查手册\"",
+            "stopIfFail": "1"
+          },
+          "outputs": {
+            "output": "工作目录"
+          }
+        },
+        {
+          "key": "sys:fileOperation",
+          "inputs": {
+            "type": "makeDir",
+            "path": "{工作目录}",
+            "stopIfFail": "1"
+          }
+        }
+      ]
+    },
+    {
+      "key": "sys:group",
+      "inputs": {
+        "skipErr": "0",
+        "skipWhenDebugging": "0",
+        "useMultiThread": "0"
+      },
+      "note": "初次运行（写入网页）",
+      "ifSteps": [
+        {
+          "key": "sys:comment",
+          "inputs": {
+            "note": "更新动作的版本标识后的初次运行"
+          }
+        },
+        {
+          "key": "sys:subprogram",
+          "inputs": {
+            "subProgram": "是否初次运行",
+            "var:输入的版本标识": "uworiuslkdfjalkscxnmcbmnxbc",
+            "stopIfFail": "0",
+            "skipDebugOutput": "false"
+          },
+          "outputs": {
+            "var:更新后初始运行": "更新后初次运行",
+            "var:安装后初次运行": "安装后第一次运行"
+          }
+        },
+        {
+          "key": "sys:assign",
+          "inputs": {
+            "input": "$= {工作目录} + @\"\\RegexQuickReference.html\"",
+            "stopIfFail": "1"
+          },
+          "outputs": {
+            "output": "网页文件路径"
+          },
+          "note": "网页文件路径"
+        },
+        {
+          "key": "sys:simpleIf",
+          "inputs": {
+            "condition": "$= !File.Exists({网页文件路径}) || {更新后初次运行}"
+          },
+          "ifSteps": [
+            {
+              "key": "sys:assign",
+              "inputs": {
+                "input": "$= \r\n\r\nvar mainFonts = {正文字体};\r\nvar codeFonts = {代码字体};\r\nvar outline_width = {大纲宽度}; \r\n\r\n// 字体\r\nvar result = Regex.Replace({html}, @\"--(main-fonts|code-fonts):(.*?);\", m =>\r\n{\r\n\tif(m.Value.Contains(\"main\")) return $\"--main-fonts: {mainFonts};\";\r\n\telse return $\"--code-fonts: {codeFonts};\";\r\n});\r\n\r\n// 大纲宽度\r\nresult = Regex.Replace(result, @\"(?smx)^\\s*\\.typora-export-sidebar(\\s+\\.outline-content)?\\s*\r\n\\{.+?\\}\", m =>\r\n{\r\n\treturn Regex.Replace(m.Value, @\"(width):\\s*[^;]+;\", $\"$1: {outline_width};\");\r\n});\r\n\r\nreturn result;",
+                "stopIfFail": "0"
+              },
+              "outputs": {
+                "output": "html"
+              },
+              "note": "更新字体"
+            },
+            {
+              "key": "sys:WriteTextFile",
+              "inputs": {
+                "content": "{html}",
+                "filePath": "{网页文件路径}",
+                "encoding": "utf-8",
+                "addUtf8Bom": "0",
+                "appendMode": "0",
+                "addNewLine": "0",
+                "stopIfFail": "1"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "key": "sys:simpleIf",
+      "inputs": {
+        "condition": "$= {quicker_in_param} == \"打开方式\" || {安装后第一次运行}"
+      },
+      "note": "右键菜单",
+      "ifSteps": [
+        {
+          "key": "sys:form",
+          "inputs": {
+            "operation": "variables",
+            "title": "正则手册打开方式",
+            "formDef": "{\"Fields\":[{\"FieldKey\":\"打开方式\",\"DictVarType\":null,\"Label\":\"打开方式\",\"HelpText\":\"\",\"HelpLink\":null,\"InputMethod\":3,\"SelectionItems\":\"系统默认浏览器\\r\\nEdge\\r\\nEdge App模式\\r\\nChrome\\r\\nChrome App模式\\r\\nWebView2\",\"IsRequired\":true,\"MinValue\":\"\",\"MaxValue\":\"\",\"Pattern\":\"\",\"InputWidth\":\"\",\"MaxLength\":0,\"ImeState\":null,\"TextTools\":\"\",\"VisibleExpression\":\"\",\"DefaultValue\":null,\"ColumnWidth\":0.0,\"Group\":\"\"},{\"FieldKey\":\"正文字体\",\"DictVarType\":null,\"Label\":\"正文字体\",\"HelpText\":\"\",\"HelpLink\":null,\"InputMethod\":1,\"SelectionItems\":\"\",\"IsRequired\":false,\"MinValue\":\"\",\"MaxValue\":\"\",\"Pattern\":\"\",\"InputWidth\":\"\",\"MaxLength\":0,\"ImeState\":null,\"TextTools\":\"\",\"VisibleExpression\":\"\",\"DefaultValue\":null,\"ColumnWidth\":0.0,\"Group\":\"\"},{\"FieldKey\":\"代码字体\",\"DictVarType\":null,\"Label\":\"代码字体\",\"HelpText\":\"\",\"HelpLink\":null,\"InputMethod\":1,\"SelectionItems\":\"\",\"IsRequired\":false,\"MinValue\":\"\",\"MaxValue\":\"\",\"Pattern\":\"\",\"InputWidth\":\"\",\"MaxLength\":0,\"ImeState\":null,\"TextTools\":\"\",\"VisibleExpression\":\"\",\"DefaultValue\":null,\"ColumnWidth\":0.0,\"Group\":\"\"},{\"FieldKey\":\"大纲宽度\",\"DictVarType\":null,\"Label\":\"大纲宽度\",\"HelpText\":\"\",\"HelpLink\":null,\"InputMethod\":1,\"SelectionItems\":\"\",\"IsRequired\":false,\"MinValue\":\"\",\"MaxValue\":\"\",\"Pattern\":\"\",\"InputWidth\":\"\",\"MaxLength\":0,\"ImeState\":null,\"TextTools\":\"\",\"VisibleExpression\":\"\",\"DefaultValue\":null,\"ColumnWidth\":0.0,\"Group\":\"\"}]}",
+            "titleColumnWidth": "65",
+            "windowWidth": "400",
+            "windowHeight": "0",
+            "restoreFocus": "0",
+            "topMost": "false",
+            "disableEnterSubmit": "0",
+            "stopIfFail": "1"
+          }
+        },
+        {
+          "key": "sys:assign",
+          "inputs": {
+            "input": "$= {工作目录} + @\"\\RegexQuickReference.html\"",
+            "stopIfFail": "1"
+          },
+          "outputs": {
+            "output": "网页文件路径"
+          }
+        },
+        {
+          "key": "sys:assign",
+          "inputs": {
+            "input": "$= \r\n\r\nvar mainFonts = {正文字体};\r\nvar codeFonts = {代码字体};\r\nvar outline_width = {大纲宽度}; \r\n\r\n// 字体\r\nvar result = Regex.Replace({html}, @\"--(main-fonts|code-fonts):(.*?);\", m =>\r\n{\r\n\tif(m.Value.Contains(\"main\")) return $\"--main-fonts: {mainFonts};\";\r\n\telse return $\"--code-fonts: {codeFonts};\";\r\n});\r\n\r\n// 大纲宽度\r\nresult = Regex.Replace(result, @\"(?smx)^\\s*\\.typora-export-sidebar(\\s+\\.outline-content)?\\s*\r\n\\{.+?\\}\", m =>\r\n{\r\n\treturn Regex.Replace(m.Value, @\"(width):\\s*[^;]+;\", $\"$1: {outline_width};\");\r\n});\r\n\r\nreturn result;",
+            "stopIfFail": "0"
+          },
+          "outputs": {
+            "output": "html"
+          },
+          "note": "更新字体"
+        },
+        {
+          "key": "sys:WriteTextFile",
+          "inputs": {
+            "content": "{html}",
+            "filePath": "{网页文件路径}",
+            "encoding": "utf-8",
+            "addUtf8Bom": "0",
+            "appendMode": "0",
+            "addNewLine": "0",
+            "stopIfFail": "1"
+          }
+        },
+        {
+          "key": "sys:stop",
+          "inputs": {
+            "method": "default",
+            "isError": "0"
+          }
+        }
+      ]
+    },
+    {
+      "key": "sys:subprogram",
+      "inputs": {
+        "subProgram": "选择浏览器打开",
+        "var:浏览器": "{打开方式}",
+        "var:网页路径": "{网页文件路径}",
+        "stopIfFail": "1",
+        "skipDebugOutput": "false"
+      }
+    },
+    {
+      "key": "sys:comment",
+      "inputs": {
+        "note": "<link rel=\"icon\" href=\"https://files.getquicker.net/_icons/45DC09C806BB3CC1F1AF5D4925287437D9E1B0BE.png\"/>\r\n<title>.NET 正则表达式速查手册</title>"
+      }
+    },
+    {
+      "key": "sys:group",
+      "inputs": {
+        "skipErr": "0",
+        "skipWhenDebugging": "0",
+        "useMultiThread": "0"
+      },
+      "note": "更新历史",
+      "ifSteps": [
+        {
+          "key": "sys:comment",
+          "inputs": {
+            "note": "2024.02. 更新：\r\n- 更正一些笔误\r\n- 扩写短文「什么是断言」\r\n- 增加短文「后向引用的歧义问题」\r\n- 增加短文「捕获分组与非捕获分组的区别」\r\n\r\n\r\n2023.09.09 更新：\r\n- 新增大纲栏的宽度设置（动作右键菜单）"
+          }
+        },
+        {
+          "key": "sys:comment",
+          "inputs": {
+            "note": "2023.07.25 更新：\r\n- 修复“WebView2”打开方式字体不生效问题"
+          }
+        },
+        {
+          "key": "sys:comment",
+          "inputs": {
+            "note": "2023.07.16 更新：\r\n- 小更新，错别字以及排版修正"
+          }
+        },
+        {
+          "key": "sys:comment",
+          "inputs": {
+            "note": "2023.07.07 更新：\r\n\r\n- 扩写“.*的陷阱”\r\n- 新增短文“单行模式与多行模式”\r\n- 新增字体设置（动作右键菜单）"
+          }
+        },
+        {
+          "key": "sys:comment",
+          "inputs": {
+            "note": "2023.06.18 更新：\r\n\r\n- 更新排版样式\r\n- 添加「附录」章节\r\n- “正则短文集”移至「附录]章节\r\n- 新增“Unicode属性”参考\r\n- 新增短文“后向引用与子表达式调用”"
+          }
+        },
+        {
+          "key": "sys:comment",
+          "inputs": {
+            "note": "2023.05.27 更新：\r\n\r\n- 添加一些 regex101 在线示例\r\n- 部分关联知识点之间添加跳转锚点\r\n- 新增章节“正则短文汇总”\r\n- 修改“关于 CR 与 LF 的问题”\r\n- 扩写“非捕获分组”“命名分组”"
+          }
+        },
+        {
+          "key": "sys:comment",
+          "inputs": {
+            "note": "2023.05.26 更新：\r\n\r\n- 新增短文“选择分支的优先级”"
+          }
+        }
+      ]
+    }
+  ]
+}

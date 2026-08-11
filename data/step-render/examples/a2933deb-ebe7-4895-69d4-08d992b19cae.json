@@ -1,0 +1,75 @@
+{
+  "code": "a2933deb-ebe7-4895-69d4-08d992b19cae",
+  "title": "菜单模块测试",
+  "description": "显示菜单模块示例",
+  "author": "CL",
+  "revision": 0,
+  "source": "https://getquicker.net/sharedaction?code=a2933deb-ebe7-4895-69d4-08d992b19cae",
+  "pulledAt": "2026-08-11T21:27:55.984Z",
+  "variables": [
+    {
+      "name": "text",
+      "type": "Text",
+      "remark": "默认的文本变量"
+    },
+    {
+      "name": "selectedItemData",
+      "type": "Text"
+    },
+    {
+      "name": "selectedItem",
+      "type": "Any"
+    },
+    {
+      "name": "isSuccess",
+      "type": "Boolean"
+    }
+  ],
+  "steps": [
+    {
+      "key": "sys:showmenu",
+      "inputs": {
+        "menuData": "////注释内容。\r\nPing百度|operation=run&data=ping baidu.com\r\n//// ----表示分隔符\r\n只有Data的菜单(返回结果后使用)|只有data数据\r\n[fa:Light_Paste]粘贴内容(tooltip内容)|operation=paste&data=要粘贴的内容\r\n[+][fa:Light_Cog]二级菜单(提示内容...)\r\n[-][fa:Light_Save]发送按键Ctrl+S(模拟保存)|operation=sendkeys&data=^s\r\n[-][fa:Light_Paste]发送按键Ctrl+V(模拟保存)|operation=sendkeys&data=^v\r\n[fa:Light_Wrench:#f57e42]运行一个Quicker动作(tooltip内容)|operation=action&action=动作名称",
+        "fontsize": "16",
+        "waitMenuClose": "1",
+        "stopIfFail": "1"
+      },
+      "outputs": {
+        "isSuccess": "isSuccess",
+        "selectedItemData": "selectedItemData",
+        "selectedItem": "selectedItem"
+      }
+    },
+    {
+      "key": "sys:notify",
+      "inputs": {
+        "msg": "$$选择的菜单：{selectedItemData}",
+        "maxLines": "0",
+        "type": "Info",
+        "style": "Default"
+      }
+    },
+    {
+      "key": "sys:showmenu",
+      "inputs": {
+        "menuData": "$=\r\n\tvar items =  new List<CommonOperationItem>(){\r\n\tnew CommonOperationItem(){\r\n\t\tTitle = \"Ping baidu\",\r\n\t\tData=\"ping baidu.com\",\r\n\t\tIcon=\"fa:Light_Pen\",\r\n\t\tOperation=\"run\",\r\n\t\tDescription=\"屏Ping百度\"},\r\n\tnew CommonOperationItem(){ IsSeparator = true},\r\n\tnew CommonOperationItem(){\r\n\t\tTitle = \"快搜\",\r\n\t\tData=\"\",\r\n\t\tIcon=\"fa:Light_Search\",\r\n\t\tOperation=\"action\",\r\n\t\tAction=\"快搜\",\r\n\t\tDescription=\"屏Ping百度\"},\r\n\tnew CommonOperationItem(){\r\n\t\tTitle = \"多级菜单\",\r\n\t\tData=\"\",\r\n\t\tIcon=\"fa:Light_Search\",\r\n\t\tChildren = new List<CommonOperationItem>(){\r\n\t\t\tnew CommonOperationItem(){\r\n\t\t\t\tTitle = \"Ping baidu\",\r\n\t\t\t\tData=\"ping baidu.com\",\r\n\t\t\t\tIcon=\"fa:Light_Pen\",\r\n\t\t\t\tOperation=\"run\",\r\n\t\t\t\tDescription=\"屏Ping百度\"},\r\n\t\t\tnew CommonOperationItem(){ IsSeparator = true},\r\n\t\t\tnew CommonOperationItem(){\r\n\t\t\t\tTitle = \"快搜\",\r\n\t\t\t\tData=\"\",\r\n\t\t\t\tIcon=\"fa:Light_Search\",\r\n\t\t\t\tOperation=\"action\",\r\n\t\t\t\tAction=\"快搜\",\r\n\t\t\t\tDescription=\"屏Ping百度\"},\r\n\t\t\tnew CommonOperationItem(){\r\n\t\t\t\tTitle = \"多级菜单\",\r\n\t\t\t\tData=\"\",\r\n\t\t\t\tIcon=\"fa:Light_Search\",\r\n\t\t\t\tChildren = new List<CommonOperationItem>(){\r\n\t\t\t\t\tnew CommonOperationItem(){\r\n\t\t\t\t\t\tTitle = \"Ping baidu\",\r\n\t\t\t\t\t\tData=\"ping baidu.com\",\r\n\t\t\t\t\t\tIcon=\"fa:Light_Pen\",\r\n\t\t\t\t\t\tOperation=\"run\",\r\n\t\t\t\t\t\tDescription=\"屏Ping百度\"},\r\n\t\t\t\t\tnew CommonOperationItem(){ IsSeparator = true},\r\n\t\t\t\t\tnew CommonOperationItem(){\r\n\t\t\t\t\t\tTitle = \"快搜\",\r\n\t\t\t\t\t\tData=\"\",\r\n\t\t\t\t\t\tIcon=\"fa:Light_Search\",\r\n\t\t\t\t\t\tOperation=\"action\",\r\n\t\t\t\t\t\tAction=\"快搜\",\r\n\t\t\t\t\t\tDescription=\"屏Ping百度\"},\r\n\t\t\t\t\tnew CommonOperationItem(){\r\n\t\t\t\t\t\tTitle = \"多级菜单\",\r\n\t\t\t\t\t\tData=\"\",\r\n\t\t\t\t\t\tIcon=\"fa:Light_Search\",\r\n\t\t\t\t\t\tChildren = new List<CommonOperationItem>(){\r\n\t\t\t\t\t\t\t\r\n\t\t\t\t\t\t}}\r\n\t\t\t\t\t\r\n\t\t\t\t}}\r\n\t\t}}\r\n\r\n};\r\n\r\n\r\n\r\nreturn items;",
+        "fontsize": "12",
+        "waitMenuClose": "1",
+        "stopIfFail": "1"
+      },
+      "outputs": {
+        "selectedItemData": "selectedItemData",
+        "selectedItem": "selectedItem"
+      }
+    },
+    {
+      "key": "sys:notify",
+      "inputs": {
+        "msg": "$$选择的菜单：{selectedItemData}",
+        "maxLines": "0",
+        "type": "Info",
+        "style": "Default"
+      }
+    }
+  ]
+}

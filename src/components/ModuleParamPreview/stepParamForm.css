@@ -13,8 +13,13 @@
   --ad-fg-param-label: #2a3440;
   --ad-fg-param-hint: #5a6168;
   --ad-fg-input: #1a1a1a;
+  --ad-fg-placeholder: #757575;
+  --ad-fg-form-muted: #5a5a5a;
   --ad-fg-on-emphasis: #ffffff;
+  --ad-fg-section: #333333;
   --ad-fg-button-secondary: #1a1a1a;
+  --ad-overlay-hover: rgba(0, 0, 0, 0.06);
+  --ad-backdrop-popup: rgba(0, 0, 0, 0.35);
   --ad-bg-panel: #ffffff;
   --ad-bg-input: #ffffff;
   --ad-bg-muted: rgba(127, 127, 127, 0.08);
@@ -61,8 +66,13 @@ html[data-theme="dark"] .qk-sr-param-form {
   --ad-fg-param-label: #c8d0d8;
   --ad-fg-param-hint: #8a9199;
   --ad-fg-input: #e8eaed;
+  --ad-fg-placeholder: #7a8494;
+  --ad-fg-form-muted: #b0b8c4;
   --ad-fg-on-emphasis: #ffffff;
+  --ad-fg-section: #cfd6e0;
   --ad-fg-button-secondary: #e0e4ea;
+  --ad-overlay-hover: rgba(255, 255, 255, 0.05);
+  --ad-backdrop-popup: rgba(0, 0, 0, 0.55);
   --ad-bg-panel: #23272f;
   --ad-bg-input: #252a33;
   --ad-bg-muted: rgba(127, 127, 127, 0.08);
@@ -114,6 +124,52 @@ html[data-theme="dark"] .qk-sr-param-form {
 
 .qk-sr-param-form *::-webkit-scrollbar-thumb:hover {
   background: var(--ad-scrollbar-thumb-hover);
+}
+
+/* Headless .step-editor-popup-backdrop — used by StepProgramView inspect. */
+.qk-sr-param-form-backdrop {
+  --ad-backdrop-popup: rgba(0, 0, 0, 0.35);
+  position: fixed;
+  inset: 0;
+  z-index: 10040;
+  background: var(--ad-backdrop-popup);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+}
+
+html[data-theme="dark"] .qk-sr-param-form-backdrop {
+  --ad-backdrop-popup: rgba(0, 0, 0, 0.55);
+}
+
+.qk-sr-param-form.qk-sr-param-form--dialog {
+  margin: 0;
+  width: min(600px, 100%);
+  max-height: min(86vh, 720px);
+  overflow: hidden;
+}
+
+.qk-sr-param-form--dialog .step-editor-popup-body {
+  overflow: auto;
+}
+
+.qk-sr-param-form .step-editor-popup-close {
+  flex-shrink: 0;
+  width: 32px;
+  height: 32px;
+  border: 0;
+  border-radius: 4px;
+  background: transparent;
+  color: var(--ad-fg-section);
+  font-size: 22px;
+  line-height: 1;
+  cursor: pointer;
+}
+
+.qk-sr-param-form .step-editor-popup-close:hover {
+  background: var(--ad-overlay-hover);
+  color: var(--ad-fg-primary);
 }
 
 .qk-sr-param-form .step-editor-popup-header {
@@ -408,6 +464,35 @@ html[data-theme="dark"] .qk-sr-param-form {
   max-width: 100%;
   padding-left: 0;
   line-height: 1.35;
+}
+
+/* Sliced from Headless formDesigner.css (.keyboard-param-*). */
+.qk-sr-param-form .keyboard-param-editor {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.qk-sr-param-form .keyboard-param-display {
+  min-height: 32px;
+  padding: 6px 8px;
+  border: 1px solid var(--ad-border-input);
+  border-radius: 4px;
+  background: var(--ad-bg-input);
+  color: var(--ad-fg-input);
+  font-family: ui-monospace, Consolas, monospace;
+  font-size: 13px;
+}
+
+.qk-sr-param-form .keyboard-param-display.is-recording {
+  border-color: var(--ad-accent);
+  box-shadow: 0 0 0 1px color-mix(in srgb, var(--ad-accent) 40%, transparent);
+}
+
+.qk-sr-param-form .keyboard-param-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
 }
 
 .qk-sr-param-form .step-param-control {
@@ -908,6 +993,97 @@ html[data-theme="dark"] .qk-sr-expr-var {
   flex-shrink: 0;
 }
 
+.qk-sr-param-form .step-editor-popup-footer__meta {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  flex: 1 1 auto;
+  gap: 12px;
+  min-width: 0;
+  margin: 0 8px;
+}
+
+.qk-sr-param-form .step-form-inline-group {
+  display: inline-flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 6px;
+  min-width: 0;
+}
+
+.qk-sr-param-form .step-form-inline-label {
+  flex: 0 0 auto;
+  margin-left: 0;
+  font-size: 11px;
+  color: var(--ad-fg-form-muted);
+  white-space: nowrap;
+}
+
+.qk-sr-param-form .step-form-inline-suffix {
+  flex: 0 0 auto;
+  font-size: 11px;
+  color: var(--ad-fg-form-muted);
+  white-space: nowrap;
+  user-select: none;
+}
+
+.qk-sr-param-form .step-editor-popup-footer__meta .step-form-note-block {
+  flex: 1 1 180px;
+  max-width: 320px;
+  min-width: 120px;
+  gap: 6px;
+}
+
+.qk-sr-param-form .step-editor-popup-footer__meta .step-form-delay-block {
+  flex: 0 0 auto;
+  gap: 4px;
+}
+
+.qk-sr-param-form .step-editor-popup-footer__meta .step-form-note-input,
+.qk-sr-param-form .step-editor-popup-footer__meta .step-form-delay-input {
+  height: 30px;
+  padding: 0 8px;
+  box-sizing: border-box;
+  border: 1px solid var(--ad-border-input);
+  border-radius: 4px;
+  background: var(--ad-bg-input);
+  color: var(--ad-fg-input);
+  font-size: 12px;
+  line-height: 1.2;
+}
+
+.qk-sr-param-form .step-editor-popup-footer__meta .step-form-note-input {
+  flex: 1 1 0;
+  min-width: 72px;
+}
+
+.qk-sr-param-form .step-editor-popup-footer__meta .step-form-note-input::placeholder {
+  color: var(--ad-fg-placeholder);
+  opacity: 1;
+}
+
+.qk-sr-param-form .step-editor-popup-footer__meta .step-form-note-input:focus,
+.qk-sr-param-form .step-editor-popup-footer__meta .step-form-note-input:focus-visible,
+.qk-sr-param-form .step-editor-popup-footer__meta .step-form-delay-input:focus,
+.qk-sr-param-form .step-editor-popup-footer__meta .step-form-delay-input:focus-visible {
+  outline: none;
+  border-color: var(--ad-accent);
+  box-shadow: inset 0 0 0 1px var(--ad-accent);
+}
+
+.qk-sr-param-form .step-editor-popup-footer__meta .step-form-delay-input {
+  width: 52px;
+  text-align: right;
+  appearance: textfield;
+  -moz-appearance: textfield;
+}
+
+.qk-sr-param-form .step-editor-popup-footer__meta .step-form-delay-input::-webkit-outer-spin-button,
+.qk-sr-param-form .step-editor-popup-footer__meta .step-form-delay-input::-webkit-inner-spin-button {
+  appearance: none;
+  margin: 0;
+}
+
 .qk-sr-param-form .step-editor-popup-footer__end {
   display: flex;
   flex-direction: row;
@@ -927,21 +1103,6 @@ html[data-theme="dark"] .qk-sr-expr-var {
   cursor: default;
 }
 
-.qk-sr-param-form__delay {
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-  font-size: 11px;
-  color: var(--ad-fg-muted);
-  white-space: nowrap;
-}
-
-.qk-sr-param-form__delay-val {
-  width: 64px;
-  text-align: right;
-  font-variant-numeric: tabular-nums;
-}
-
 .qk-sr-param-form__btn {
   display: inline-flex;
   align-items: center;
@@ -953,8 +1114,18 @@ html[data-theme="dark"] .qk-sr-expr-var {
   border: 1px solid var(--ad-border-strong);
   background: var(--ad-bg-button-secondary);
   color: var(--ad-fg-button-secondary);
+  font: inherit;
   font-size: 12px;
   user-select: none;
+}
+
+button.qk-sr-param-form__btn {
+  cursor: pointer;
+}
+
+button.qk-sr-param-form__btn:hover {
+  border-color: var(--ad-border-strong);
+  color: var(--ad-fg-primary);
 }
 
 .qk-sr-param-form__btn--primary {

@@ -1,0 +1,45 @@
+{
+  "code": "b89f2926-96a1-4c81-fad4-08d9f7308243",
+  "title": "示例：自定义HTTP",
+  "description": "一个自定义HTTP请求处理的示例",
+  "author": "CL",
+  "revision": 0,
+  "source": "https://getquicker.net/sharedaction?code=b89f2926-96a1-4c81-fad4-08d9f7308243",
+  "pulledAt": "2026-08-11T21:28:53.012Z",
+  "variables": [
+    {
+      "name": "text",
+      "type": "Text",
+      "remark": "默认的文本变量"
+    },
+    {
+      "name": "serverUrl",
+      "type": "Text"
+    }
+  ],
+  "steps": [
+    {
+      "key": "sys:httpserver",
+      "inputs": {
+        "operation": "CreateFileServer",
+        "port": "8080",
+        "enableHttps": "1",
+        "serviceId": "default",
+        "autoShutdownSeconds": "0",
+        "stopIfFail": "1",
+        "customRequest": "\\S+:get,post:http请求处理"
+      },
+      "outputs": {
+        "serverUrl": "serverUrl"
+      }
+    },
+    {
+      "key": "sys:openUrl",
+      "inputs": {
+        "url": "{serverUrl}",
+        "browser": "default",
+        "stopIfFail": "1"
+      }
+    }
+  ]
+}

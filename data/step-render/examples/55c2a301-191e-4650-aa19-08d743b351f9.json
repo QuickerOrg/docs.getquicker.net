@@ -1,0 +1,57 @@
+{
+  "code": "55c2a301-191e-4650-aa19-08d743b351f9",
+  "title": "示例：显示键值",
+  "description": "按下按键后显示键名和键值。按Esc退出。",
+  "author": "CL",
+  "revision": 0,
+  "source": "https://getquicker.net/sharedaction?code=55c2a301-191e-4650-aa19-08d743b351f9",
+  "pulledAt": "2026-08-11T21:27:55.863Z",
+  "variables": [
+    {
+      "name": "context",
+      "type": "Text",
+      "remark": "默认的文本变量"
+    },
+    {
+      "name": "img",
+      "type": "Image",
+      "remark": "默认的图片变量"
+    },
+    {
+      "name": "keyValue",
+      "type": "Number"
+    },
+    {
+      "name": "keyName",
+      "type": "Text"
+    }
+  ],
+  "steps": [
+    {
+      "key": "sys:repeat",
+      "inputs": {
+        "count": "-1",
+        "stopCondition": "$${keyValue} == 27"
+      },
+      "ifSteps": [
+        {
+          "key": "sys:waitKeyboard",
+          "inputs": {
+            "help": "请按键...\r\nA：执行A功能，B：执行B功能。\r\nEsc退出。\r\n"
+          },
+          "outputs": {
+            "keyCode": "keyName",
+            "keyValue": "keyValue"
+          }
+        },
+        {
+          "key": "sys:notify",
+          "inputs": {
+            "msg": "$${keyName}  --- {keyValue}",
+            "type": "Info"
+          }
+        }
+      ]
+    }
+  ]
+}

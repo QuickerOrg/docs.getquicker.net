@@ -1,13 +1,13 @@
 ---
 title: "多步骤输入"
-description: "多步骤键盘组合输入"
+description: "用脚本连续模拟键盘、鼠标和粘贴，适合短串操作。"
 slug: "/v2/xaction/modules/inputscript"
 sidebar_label: "多步骤输入"
 sidebar_position: 10
 quickerDocKey: "xaction/module/sys:inputScript"
 comments: true
 moduleKey: "sys:inputScript"
-docStatus: "migrated-unreviewed"
+docStatus: "reviewed"
 metadataGeneratedAt: "2026-08-03 20:08:03"
 legacyDocId: 60667217
 legacyContentUpdatedAt: "2025-02-20T23:53:47.000Z"
@@ -15,69 +15,100 @@ legacyContentUpdatedAt: "2025-02-20T23:53:47.000Z"
 
 # 多步骤输入
 
-多步骤键盘组合输入
+用一小段脚本来连续模拟键盘、鼠标和粘贴。适合短串操作；运行中不能中途停止，不要塞太多步。单步按键用 [模拟按键B](/v2/xaction/modules/sendkeys)。
 
 ## 当前模块定义
 
 <XActionModuleMeta moduleKey="sys:inputScript" />
 
-用于快速编写连续多个键盘输入步骤。
+## 概述
 
-<ModuleParamPreview moduleKey="sys:inputScript" />
+<ModuleParamPreview
+  moduleKey="sys:inputScript"
+  values={{
+    data: 'input:hello\ndelay:200\nhotkey:Ctrl+A',
+  }}
+/>
 
-注意：
+## 参数说明
 
--   步骤运行中不支持停止，不适合放置大量步骤。
+**步骤脚本**：每行一条指令。`//` 开头是注释。格式为 `命令:参数`。没法换行时，可用 `;;` 表示换行（1.36.17+）。
 
-## 参数
+**失败后停止**：出错后是否中止动作。默认开启。
 
-【步骤脚本】
+### 键盘命令
 
--   每行一个步骤指令。
--   //开始的行作为注释。
--   指令的格式为：命令:参数。
--   特殊情况下无法分行填写时，也可以写在一行，并使用`;;`表示换行。(1.36.17+版本)
+- **input**：模拟键入纯文本（不受输入法影响）。如 `input:hello world，你好 世界`。
+- **input2**（1.30.0+）：纯文本，支持转义。`\t` 是 Tab，`\r\n` 是换行。
+- **sendkeys**：按 [模拟按键B](/v2/xaction/modules/sendkeys) 语法。如 `sendkeys:{LEFT 2}`。
+- **delay**：等待毫秒。如 `delay:1000`。
+- **paste**：写入剪贴板后模拟 Ctrl+V。如 `paste:hello world`。
+- **keydown** / **keyup** / **keypress**：按下、抬起、点按。如 `keydown:F1`，或 `keydown:#175`（`#` + 键值）。keydown 必须配对 keyup。键名见 [Keys 枚举](https://docs.microsoft.com/zh-cn/dotnet/api/system.windows.forms.keys?view=net-5.0)。
+- **hotkey**：组合键。如 `hotkey:Ctrl+S`。数字键写成 `D` + 数字，如 `hotkey:Ctrl+Alt+D1`。
 
-支持的命令类型如下：
+### 鼠标命令（1.28.16+）
 
-**键盘命令**
+- **moveto**：移到绝对坐标。`moveto:100,200`。1.30.0+ 支持百分比，`moveto:50%,50%` 是主屏中心。
+- **move**：相对移动。`move:10,-10` 向右、向上各 10 像素。
+- **click** / **dbclick** / **down** / **up**：按键名为 `left` / `right` / `middle` / `x1` / `x2`。按下和抬起必须配对。
+- **wheel** / **wheeldelta**：垂直滚动。正值远离用户（内容向下），负值朝向用户。`wheel` 单位是 click（行），`wheeldelta` 是 1/120 click。
+- **hwheel** / **hwheeldelta**：水平滚动。正值内容向左，负值向右。
 
--   **input** 模拟键入纯文本（不受输入法影响）。如：`input:hello world，你好 世界`。
--   **input2** (1.30.0+版本) 模拟键入纯文本，支持使用转义字符。 如`\t内容\r\n换行`中的\\t表示tab，\\r\\n表示换行。
--   **sendkeys** 使用[模拟按键B](/v2/xaction/modules/sendkeys)的语法键入内容。如： `sendkeys:{LEFT 2}` 发送2个向左的方向键用于移动光标位置。
--   **delay** 等待时间（毫秒数）如：`delay:1000` 等待1秒钟
--   **paste** 粘贴内容，如：`paste:hello world` 将hello world写入剪贴板后模拟Ctrl+V进行粘贴。
--   **keydown** 按下按键：如：`keydown:F1` 按下F1键，或`keydown:#175`按下音量增加键(#+键值数字）。 注意应该在后续步骤中使用keyup命令抬起按键。键名可参考：[微软官方文档](https://docs.microsoft.com/zh-cn/dotnet/api/system.windows.forms.keys?view=net-5.0)。
--   **keyup** 抬起按键，格式同上，如：`keyup:F1`。
--   **keypress** 点击（按下并抬起）按键，格式同上。
--   **hotkey** 发送组合快捷键。如：`hotkey:Ctrl+S` ，数字键请使用D+数字表示，如`hotkey:Ctrl+Alt+D1`。
+### 组合命令（1.28.12+）
 
-**鼠标命令（1.28.16+版本）**
+- **pastefile**：把文件放进剪贴板后 Ctrl+V。多个路径用英文分号：`pastefile:d:\test1.png;d:\test2.txt`。
+- **pasteimage**：读图片文件为图片对象再粘贴（不是粘贴文件）。只支持一张：`pasteimage:d:\test.png`。
 
--   **moveto** 移动鼠标指针到一个绝对坐标。如：`moveto:100,200` 将鼠标指针移动到 (100,200)位置。1.30.0版本开始支持百分比数值，如：`moveto:50%,50%`将鼠标移动到主屏幕中心。
--   **move** 将鼠标指针移动一定距离（相对于当前位置），参数为“水平方向像素数,垂直方向像素数”。如：`move:10,-10` 将指针向右和向上分别移动10个像素。
--   **click** 点击鼠标某个按键。参数为鼠标按键名，可选：left/right/middle/x1/x2。如：`click:left` 点击左键。
--   **dbclick** 双击鼠标某个按键。参数格式同上。
--   **down** 按下某个鼠标按键。参数格式同上。需要特别注意：按下和抬起鼠标按键要完全配对。
--   **up** 抬起某个鼠标按键。参数格式同上。
--   **wheel** 垂直滚动，单位为clicks（可以理解为“行”）。正值表示向前（远离用户，滚动区域内容向下），负值表示向后（朝向用户，滚动区域内容向上）。
--   **wheeldelta** 垂直滚动。单位为1/120 click。更细微的滚动。
--   **hwheel** 水平滚动，单位为clicks（可以理解为“行”）。正值表示滚动区域内容向左，负值表示滚动区域内容向右。
--   **hwheeldelta** 水平滚动，单位为1/120 click。
+## 输出
 
-**组合命令（1.28.12+）**
+- **是否成功**：脚本是否跑完。
 
--   **pastefile** 粘贴文件（将文件写入剪贴板后模拟Ctrl+V）。参数为文件完整路径，多个文件使用英文半角分号隔开。如：`pastefile:d:\test.png` ， `pastefile:d:\test1.png;d:\test2.txt`
--   **pasteimage** 粘贴图片（将图片文件读取为图片后写入剪贴板，然后模拟Ctrl+V，注意写入剪贴板的是图片对象而非图片文件）。如：`pasteimage:d:\test.png` 只支持单个图片。
+## 限制与排障
 
-## 其它
+- 步骤运行中不支持停止，不适合放大量步骤。
+- `down` / `keydown` 必须配对抬起，否则按键会卡住。
 
--   辅助生成代码的动作：
+## 辅助动作
 
--   [多步骤生成 - by IDongYou - 动作信息 - Quicker](https://getquicker.net/Sharedaction?code=82678afc-219e-4e63-a7d1-08dd5143284a)
--   [多步骤生成器 - by EC10010 - 动作信息 - Quicker](https://getquicker.net/Sharedaction?code=52e0112f-076d-4347-df18-08d9db64e6a1)
+生成脚本用下面的分享动作，不必手写每行：
+
+<ShareLinkCard
+  code="82678afc-219e-4e63-a7d1-08dd5143284a"
+  title="多步骤生成"
+  description="通过拖拽的方式快速生成多步骤脚本"
+  author="IDongYou"
+/>
+
+<ShareLinkCard
+  code="52e0112f-076d-4347-df18-08d9db64e6a1"
+  title="多步骤生成器"
+  description="辅助编写多步骤输入模块。"
+  author="EC10010"
+/>
+
+## 相关链接
+
+<RelatedDocs
+  items={[
+    {
+      href: '/v2/xaction/modules/sendkeys',
+      label: '模拟按键B',
+      description: 'sendkeys 命令用同一套语法。',
+    },
+    {
+      href: '/v2/xaction/modules/keyinput',
+      label: '模拟按键',
+      description: '单步按键、组合键。',
+    },
+    {
+      href: '/v2/xaction/modules/mouse',
+      label: '鼠标操作',
+      description: '单步移动、点击、滚轮。',
+    },
+  ]}
+/>
 
 ## 更新历史
 
--   20230219 增加hotkey中使用数字键的说明。
--   20250221 增加新的辅助动作链接。
+- 20230219 增加 hotkey 中使用数字键的说明。
+- 20250221 增加新的辅助动作链接。

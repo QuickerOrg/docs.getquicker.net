@@ -1,13 +1,13 @@
 ---
 title: "临时图床"
-description: "将图片上传到临时（1分钟后删除）的图床，用以搜图等场景。勿上传非法内容。"
+description: "把图片上传到约 1 分钟后删除的临时图床，换取公网地址。勿上传非法内容。"
 slug: "/v2/xaction/modules/tempimgbed"
 sidebar_label: "临时图床"
 sidebar_position: 40
 quickerDocKey: "xaction/module/sys:tempImgBed"
 comments: true
 moduleKey: "sys:tempImgBed"
-docStatus: "migrated-unreviewed"
+docStatus: "reviewed"
 metadataGeneratedAt: "2026-08-03 20:08:03"
 legacyDocId: 7612384
 legacyContentUpdatedAt: "2023-04-30T04:24:10.000Z"
@@ -15,40 +15,58 @@ legacyContentUpdatedAt: "2023-04-30T04:24:10.000Z"
 
 # 临时图床
 
-将图片上传到临时（1分钟后删除）的图床，用以搜图等场景。勿上传非法内容。
+把图片上传到临时图床，换一段公网网址。适合以图搜图等「只要几秒钟能被别人访问」的场景。不要上传可能违法的内容。
 
 ## 当前模块定义
 
 <XActionModuleMeta moduleKey="sys:tempImgBed" />
 
-本功能用于以图找图等需要**临时**将截图、图片上传到网络并获得公网地址的场景。
+## 概述
 
-**警告**：请勿使用本服务上传有可能违反国家法律或规定的文件。 文件网址会带有您的用户编号，如果被阿里云或第三方机构警告，我们将会停止您使用本服务的权限。
+网址会带上你的用户编号。若被云厂商或第三方警告，Quicker 会停用你的本服务权限。
 
-<ModuleParamPreview moduleKey="sys:tempImgBed" />
-
-图片上传后会在1分钟后自动删除。（专业版用户可能会使用阿里云+CDN服务，保持时间更长）
-
-*注：目前本服务对所有用户开放，由于带宽限制，会对图片大小、分辨率及调用频率进行限制。根据资源状况，后续可能会对服务范围有所调整。*
+普通用户约 1 分钟后自动删除。专业版可能走阿里云 + CDN，保留更久。目前对所有用户开放，但会限制图片大小、分辨率和调用频率；资源紧张时服务范围可能再收。
 
 <ModuleParamPreview
   moduleKey="sys:tempImgBed"
-  focusKeys={['imgVar', 'stopIfFail', 'isSuccess', 'url']}
   values={{stopIfFail: 'true'}}
   inputVars={{imgVar: 'imgVar'}}
   outputVars={{isSuccess: 'isSuccess', url: 'url'}}
 />
 
-## 参数
+## 参数说明
 
-### 输入参数
+**图片变量**：要上传的图片。
 
-【图片变量】要上传的图片变量。
+**失败后停止**：上传失败是否中止动作。默认开启。
 
-【失败后停止】操作失败后是否停止动作。
+## 输出
 
-### 输出
+- **是否成功**：是否上传成功。
+- **网址**：临时公网地址。
 
-【网址】图片上传后生成的临时网址。
+## 限制与排障
 
-【是否成功】操作是否成功。
+本服务只解决「临时可访问」。要长期存图，请用自己的网盘、对象存储或 [写入图片文件](/v2/xaction/modules/writeimagefile)。
+
+## 相关链接
+
+<RelatedDocs
+  items={[
+    {
+      href: '/v2/xaction/modules/screencapture',
+      label: '屏幕截图',
+      description: '常见的上传来源。',
+    },
+    {
+      href: '/v2/xaction/modules/getclipboardimage',
+      label: '获取剪贴板图片',
+      description: '从剪贴板取出后再上传。',
+    },
+    {
+      href: '/v2/xaction/modules/writeimagefile',
+      label: '写入图片文件',
+      description: '需要长期保存时走本地文件。',
+    },
+  ]}
+/>

@@ -1,0 +1,198 @@
+{
+  "code": "63e550e1-aa9f-478e-f824-08da38cccadf",
+  "title": "表格数据提取",
+  "description": "根据指定字段提取excel表中的某行信息。",
+  "author": "CL",
+  "revision": 1,
+  "source": "https://getquicker.net/sharedaction?code=63e550e1-aa9f-478e-f824-08da38cccadf",
+  "pulledAt": "2026-08-11T21:28:47.275Z",
+  "variables": [
+    {
+      "name": "text",
+      "type": "Text",
+      "remark": "默认的文本变量"
+    },
+    {
+      "name": "filePath",
+      "type": "Text",
+      "remark": "文件路径"
+    },
+    {
+      "name": "checkField",
+      "type": "Text",
+      "remark": "要判断的列名"
+    },
+    {
+      "name": "checkValue",
+      "type": "Text",
+      "remark": "搜索的字段值"
+    },
+    {
+      "name": "table",
+      "type": "Table"
+    },
+    {
+      "name": "rows",
+      "type": "Any"
+    },
+    {
+      "name": "tableClone",
+      "type": "Table"
+    },
+    {
+      "name": "rowCount",
+      "type": "Integer"
+    },
+    {
+      "name": "isSelected",
+      "type": "Boolean"
+    }
+  ],
+  "steps": [
+    {
+      "key": "sys:comment",
+      "inputs": {
+        "note": "尝试获取选中的内容"
+      }
+    },
+    {
+      "key": "sys:getSelectedText",
+      "inputs": {
+        "format": "UnicodeText",
+        "waitMs": "450",
+        "repeat": "0",
+        "trim": "1",
+        "useActionParam": "0",
+        "stopIfFail": "0"
+      },
+      "outputs": {
+        "isSuccess": "isSelected",
+        "output": "checkValue"
+      }
+    },
+    {
+      "key": "sys:comment",
+      "inputs": {
+        "note": "设置（右键菜单，或者文件不存在时）"
+      }
+    },
+    {
+      "key": "sys:simpleIf",
+      "inputs": {
+        "condition": "$= {quicker_in_param} == \"settings\" || File.Exists({filePath}) == false"
+      },
+      "ifSteps": [
+        {
+          "key": "sys:form",
+          "inputs": {
+            "title": "动作设置",
+            "formDef": "{\"Fields\":[{\"FieldKey\":\"filePath\",\"Label\":\"Excel文件路径\",\"HelpText\":\"文件需要是一个规范的表格，在第一个Sheet中第一行为表头，下面行为数据\",\"HelpLink\":null,\"InputMethod\":1,\"SelectionItems\":\"\",\"IsRequired\":true,\"MinValue\":\"\",\"MaxValue\":\"\",\"Pattern\":\"\",\"MaxLength\":0,\"ImeState\":null,\"TextTools\":\"SelectSingleFile\",\"VisibleExpression\":\"\"},{\"FieldKey\":\"checkField\",\"Label\":\"查找的字段\",\"HelpText\":\"根据哪个字段的值定位行数据\",\"HelpLink\":null,\"InputMethod\":1,\"SelectionItems\":\"\",\"IsRequired\":true,\"MinValue\":\"\",\"MaxValue\":\"\",\"Pattern\":\"\",\"MaxLength\":0,\"ImeState\":null,\"TextTools\":\"\",\"VisibleExpression\":\"\"}]}",
+            "titleColumnWidth": "100",
+            "windowWidth": "500",
+            "restoreFocus": "0",
+            "topMost": "false",
+            "stopIfFail": "1"
+          }
+        }
+      ]
+    },
+    {
+      "key": "sys:comment",
+      "inputs": {
+        "note": "如果没有选中内容，则输入要搜索的值"
+      }
+    },
+    {
+      "key": "sys:simpleIf",
+      "inputs": {
+        "condition": "$={checkValue}.IsNullOrEmpty()"
+      },
+      "ifSteps": [
+        {
+          "key": "sys:userInput",
+          "inputs": {
+            "type": "text",
+            "prompt": "$$请输入查询的值({checkField} = ?)",
+            "isRequired": "0",
+            "restoreFocus": "1",
+            "closeOnDeactivated": "0",
+            "stopIfFail": "1",
+            "fontsize": "14",
+            "winLocation": "CenterScreen",
+            "imeState": "NO_CONTROL"
+          },
+          "outputs": {
+            "textValue": "checkValue"
+          }
+        }
+      ]
+    },
+    {
+      "key": "sys:comment",
+      "inputs": {
+        "note": "从excel表中加载数据"
+      }
+    },
+    {
+      "key": "sys:tableoperation",
+      "inputs": {
+        "table": "{table}",
+        "type": "importExcel",
+        "excelFilePath": "{filePath}",
+        "startRowNum": "1",
+        "stopIfFail": "1"
+      }
+    },
+    {
+      "key": "sys:comment",
+      "inputs": {
+        "note": "筛选结果"
+      }
+    },
+    {
+      "key": "sys:tableoperation",
+      "inputs": {
+        "table": "{table}",
+        "type": "select",
+        "filterExpression": "$=\r\n// 如果包含%，进行模糊匹配。\r\nvar op = {checkValue}.Contains(\"%\") ? \" LIKE \" : \" = \";\r\n\r\nreturn \"[\" + {checkField} + \"]\" + op + \"'\" + {checkValue}.Trim() + \"'\";",
+        "stopIfFail": "1"
+      },
+      "outputs": {
+        "rows": "rows",
+        "rowCount": "rowCount"
+      }
+    },
+    {
+      "key": "sys:comment",
+      "inputs": {
+        "note": "将筛选结果放入新表"
+      }
+    },
+    {
+      "key": "sys:assign",
+      "inputs": {
+        "input": "$=DataTable table = {table}.Clone();\r\n\r\nforeach(DataRow row in {rows}){\r\n\ttable.ImportRow(row);\r\n}\r\n\r\nreturn table;",
+        "stopIfFail": "1"
+      },
+      "outputs": {
+        "output": "tableClone"
+      }
+    },
+    {
+      "key": "sys:comment",
+      "inputs": {
+        "note": "显示结果"
+      }
+    },
+    {
+      "key": "sys:tableoperation",
+      "inputs": {
+        "table": "{tableClone}",
+        "type": "manage",
+        "gridSelectionMode": "Cells",
+        "isReadOnly": "1",
+        "stopIfFail": "1"
+      }
+    }
+  ]
+}

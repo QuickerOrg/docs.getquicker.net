@@ -1,13 +1,13 @@
 ---
 title: "数字转换与处理"
-description: "数字转换为文本等相关处理"
+description: "把数字转成文本、取整，或做进制转换。"
 slug: "/v2/xaction/modules/numberprocess"
 sidebar_label: "数字转换与处理"
 sidebar_position: 140
 quickerDocKey: "xaction/module/sys:numberprocess"
 comments: true
 moduleKey: "sys:numberprocess"
-docStatus: "migrated-unreviewed"
+docStatus: "reviewed"
 metadataGeneratedAt: "2026-08-03 20:08:03"
 legacyDocId: 67836513
 legacyContentUpdatedAt: "2022-03-01T01:54:50.000Z"
@@ -15,44 +15,47 @@ legacyContentUpdatedAt: "2022-03-01T01:54:50.000Z"
 
 # 数字转换与处理
 
-数字转换为文本等相关处理
+把数字转成保留指定小数位的文本、取整，或做进制转换。要写完整算式用 [计算](/v2/xaction/modules/compute)。
 
 ## 当前模块定义
 
 <XActionModuleMeta moduleKey="sys:numberprocess" />
 
-【模块开发完善中...】
+## 概述
 
-将数字转换为保留指定小数位的文本、取整或进行进制转换。
-
-## 数字转换为文本
-
-根据设定的保留小数位数和舍入方式转换为文本值。
+先选 **操作**，再按类型填写附加参数。
 
 <ModuleParamPreview moduleKey="sys:numberprocess" />
 
-【原始数字】需要转换的数字值。
+## 参数说明
 
-【保留位数】小数点后需要保留的位数，0表示仅保留整数部分。
+**操作**：数字转换为文本、取整、进制转换。
 
-【舍入方式】
+**失败后停止**：处理失败是否中止动作。默认开启。旧稿未写。
 
--   奇进偶舍：即四舍六入五取偶。四舍五入到最接近的数字的策略，当一个数字在其他两个数字之间时，它会向最接近的偶数四舍五入。例如在保留1位小数时，1.25 → 1.2， 1.35 → 1.4。
--   四舍五入：常规的四舍五入方式。
+### 数字转换为文本
 
--   截断：直接去除后面的小数位，不进行舍入操作。例如在保留1位小数时，1.49 → 1.4。
+按保留小数位和舍入方式转成文本。
 
-**输出**
+**原始数字**：要转换的数字。
 
-【结果文本（不含逗号）】格式类似 `123456.78`
+**保留小数位**：小数点后保留几位，`0` 表示只留整数。
 
-【结果文本（含逗号）】整数部分每3个数字之间使用逗号隔开，如：`123,456.78`
+**舍入方式**：
 
-【结果文本（百分比）】转换为百分比数字，如 0.728 -&gt; 72.8%
+- **舍入：奇进偶舍**：四舍六入五取偶。保留 1 位时 `1.25` → `1.2`，`1.35` → `1.4`。
+- **舍入：四舍五入**：常规四舍五入。
+- **截断**：直接去掉后面的小数，不舍入。保留 1 位时 `1.49` → `1.4`。
 
-## 取整
+输出：
 
-将小数数字转换为整数。
+- **结果文本(不含逗号)**：如 `123456.78`
+- **结果文本(含逗号)**：如 `123,456.78`
+- **结果文本(百分比)**：如 `0.728` → `72.8%`
+
+### 取整
+
+把小数变成整数。
 
 <ModuleParamPreview
   moduleKey="sys:numberprocess"
@@ -61,41 +64,63 @@ legacyContentUpdatedAt: "2022-03-01T01:54:50.000Z"
   outputVars={{rtnInteger: 'rtnInteger'}}
 />
 
-【原始数字】待处理的数字。
+**原始数字**：待处理的数字。
 
-【取整方式】
+**取整方式**：
 
--   奇进偶舍：参考上一节中的说明。
--   四舍五入：参考上一节中的说明。
+- **舍入：奇进偶舍** / **舍入：四舍五入**：同上。
+- **向上取整**：不小于原数的最小整数。
+- **向下取整**：不大于原数的最大整数。
 
--   向上取整：取大于等于原始数字的最小整数。
--   向下取整：取小于等于原始数字的最小整数。
+输出 **结果整数**。
 
-## 进制转换
+### 进制转换
 
-根据指定的进制解析原始数字文本，转换为整数、十六进制和二进制文本。
+按指定进制解析数字文本，再给出十进制、十六进制、八进制、二进制。
 
 <ModuleParamPreview
   moduleKey="sys:numberprocess"
-  focusKeys={['operation', 'srcNumberStr', 'srcBase', 'rtnInteger', 'resultHex', 'resultBin']}
+  focusKeys={['operation', 'srcNumberStr', 'srcBase', 'rtnInteger', 'resultHex', 'resultOctal', 'resultBin']}
   values={{operation: 'baseConversion', srcNumberStr: '1001', srcBase: '2'}}
-  outputVars={{rtnInteger: 'rtnInteger', resultHex: 'resultHex', resultBin: 'resultBin'}}
+  outputVars={{rtnInteger: 'rtnInteger', resultHex: 'resultHex', resultOctal: 'resultOctal', resultBin: 'resultBin'}}
 />
 
-【原始数字】表示原始数字的文本。（这里传入的是文本类型），支持 普通数字，十六进制0xAB12、带有逗号的数字123,456等。
+**原始数字(文本)**：表示数字的文本。支持普通数字、`0xAB12`、带逗号的 `123,456`。
 
-【原始数字进制】原始数字的进制数。 可选0/2/8/16。为0时根据传入的原始数字文本格式尝试自动识别。
+**原始数字进制**：`0` / `2` / `8` / `16`。为 `0` 时按文本自动识别：
 
--   包含逗号时判断为10进制
--   0x开始或者包含大于等于A的字符，判断为16进制
+- 含逗号 → 十进制
+- `0x` 开头或含 A–D → 十六进制
+- 只含 `0` / `1` → 二进制
+- 其它 → 十进制
 
--   只包含0/1，判断为二进制
--   其它情况判断为10进制。
+输出：
 
-输出
+- **结果整数**：十进制值
+- **十六进制** / **八进制** / **二进制**：对应文本。八进制为旧稿未写。
 
-【结果整数】解析出的数字10进制值。
+## 输出
 
-【十六进制数】值的16进制文本。
+- **是否成功**：操作是否成功。旧稿未写。
+- 其余输出随 **操作** 变化，见上一节。
 
-【二进制值】值的二进制文本。
+## 限制与排障
+
+进制转换的输入是文本，不是数字类型。自动识别时，只含 `0` / `1` 的文本会当成二进制；这类文本若要按十进制解析，请改用 [赋值](/v2/xaction/modules/assign) 或 [计算](/v2/xaction/modules/compute)。
+
+## 相关链接
+
+<RelatedDocs
+  items={[
+    {
+      href: '/v2/xaction/modules/compute',
+      label: '计算',
+      description: '写完整算式，或做类型转换。',
+    },
+    {
+      href: '/v2/xaction/modules/randomnum',
+      label: '生成随机数',
+      description: '先得到整数再格式化。',
+    },
+  ]}
+/>

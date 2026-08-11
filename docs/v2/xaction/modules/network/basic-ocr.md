@@ -7,7 +7,7 @@ sidebar_position: 40
 quickerDocKey: "xaction/module/sys:basic-ocr"
 comments: true
 moduleKey: "sys:basic-ocr"
-docStatus: "migrated-unreviewed"
+docStatus: "reviewed"
 metadataGeneratedAt: "2026-08-03 20:08:03"
 legacyDocId: 3602224
 legacyContentUpdatedAt: "2024-12-06T01:38:30.000Z"
@@ -15,15 +15,15 @@ legacyContentUpdatedAt: "2024-12-06T01:38:30.000Z"
 
 # 基础OCR
 
-获取图片中的文字
+从图片里认出文字或表格。公式请用 [公式识别](/v2/xaction/modules/mathocr)。
 
 ## 当前模块定义
 
 <XActionModuleMeta moduleKey="sys:basic-ocr" />
 
-识别图片中的文字或表格。
+## 概述
 
-目前支持的接口类型：
+**接口/引擎** 决定走哪套识别：
 
 <ModuleParamPreview
   moduleKey="sys:basic-ocr"
@@ -31,28 +31,44 @@ legacyContentUpdatedAt: "2024-12-06T01:38:30.000Z"
   values={{operation: 'QuickerServerOcr'}}
 />
 
+- **Quicker OCR引擎**：在线服务。当前固定走在线，不再用「离线模式」切换。
+- **本地 OCR（中英）**：2.x 独立本地引擎，图片不上传。首次按需下载模型，可选标准和快速档。见 [2.x 基础OCR说明](/v2/what's-new/xaction-steps/basic-ocr)。
+- **Windows10/11 内置OCR引擎**
+- **百度通用文字识别（自定义帐号 / Quicker帐号）**
+- **百度自定义接口识别（自定义帐号）**
+- **表格识别（Quicker服务）**：2.x 改为本地完成。
+
+旧动作若在 Quicker OCR 上选了「仅使用离线引擎」，会转到 **本地 OCR（中英）**。新动作请直接选本地 OCR。
+
+## 共用参数
+
+多数引擎都会用到：
+
+**图片变量**：要识别的图。也可以传图片路径或 Base64 文本。图越小越快。
+
+**转换标点符号**：不转换 / 全角 / 半角。仅 Quicker 在线、百度通用。
+
+**合并段落**：按行尾是否像句子结束，决定要不要把多行合成一段。仅 Quicker 在线、百度通用。
+
+**语言**：仅 Quicker 在线和表格识别。中英、英语、韩语、日语、繁体中文、拉丁语、阿拉伯语。表格识别只支持中英和英文。
+
+**失败后停止**：失败是否中止动作。默认开启。
+
+## 输出
+
+- **是否成功**
+- **行列表**：每行一项。Quicker 在线、本地 OCR、Windows、百度通用。
+- **合并后结果**：按标点和合并段落处理后的文本。表格识别时是 HTML。
+- **原始结果**：接口返回的完整内容。
+- **原始结果JObject对象**：仅百度三种接口。
+
 ## Quicker OCR引擎
 
-使用Quicker提供的免费**在线OCR识别服务**或**离线OCR引擎**识别文字。本服务23年4月升级后，识别准确度和速度大幅提升。据网友评测，识别效果甚至可媲美某服务商高精度接口；
+免费在线识别。服务器资源有限，请合理使用。
 
-示例动作：[Quicker OCR](https://getquicker.net/Sharedaction?code=45a0cf34-ca99-494c-4af7-08db410cf70d)
-
--   在线服务：
-
--   因服务器资源有限，同时被所有用户共享，因此请在合理范围内使用本服务。
--   免费版最短用户每10秒一次，每日最多100次；专业版用户最短每2秒一次，每日最多1000次；（此限制可能会依据服务器负载情况进行调整）
--   专业版用户可享用我们所提供的专用独享GPU服务器，识别效率更佳；
--   无首次启动延迟，适合偶尔使用；
-
--   离线引擎：
-
--   为专业版用户打造，免费版用户也可使用，但是限制半速运行；
--   免费；高速度（省去网络传输时间）；无数量限制；
--   内网离线部署；
--   支持屏幕找字功能；
--   支持更大图片（如整个4k屏幕）的识别；
--   首次使用（或空闲时间超过设定的保活时间后第一次使用），需要一定的额外时间加载模型；
--   注：不支持多线程，请勿多线程方式或同时在多个动作中调用；
+- 免费版：最短间隔 10 秒，每日最多 100 次。
+- 专业版：最短间隔 2 秒，每日最多 1000 次；可用独享 GPU。
+- 额度可能随负载调整。无首次启动延迟，适合偶尔用。
 
 <ModuleParamPreview
   moduleKey="sys:basic-ocr"
@@ -61,140 +77,94 @@ legacyContentUpdatedAt: "2024-12-06T01:38:30.000Z"
     punctuationType: 'no',
     mergeChapter: 'no',
     lang: 'CHN_ENG',
-    offlineMode: 'Auto',
   }}
   inputVars={{imgVar: 'img'}}
   outputVars={{content: 'text'}}
 />
 
-**参数说明**
+**离线模式** 是旧版兼容项，仅 Quicker OCR 引擎还显示。现在这个引擎固定走在线；旧动作选「仅使用离线引擎」会改走本地 OCR。
 
-【图片变量】需要识别的图片。 这里也可以传入图片文件的路径/图片base64编码文本。 越小的图片，识别速度越快。
-
-【转换标点符号】是否转换识别结果中的标点符号为半角、全角，或保持原始识别结果不变。
-
-【合并段落】选择是否将多行合并成一个段落（根据行的末尾是不是有句子结束的标点符号判断）。
-
-【语言】识别语言，支持中英、英文、韩文、日文、繁体中文、拉丁语、阿拉伯语。应该针对要识别的图片中的内容选择合适的语言。
-
-【离线模式】可选值：
-
--   自动：如果安装了离线引擎，则使用离线识别，否则使用在线识别服务。
--   仅使用在线服务：即使安装了离线识别引擎，也仍然使用在线服务。
--   仅使用离线引擎：强制仅使用离线引擎，如果未安装离线引擎则返回失败。
-
-*设计“离线模式”参数的目的，是给使用者根据动作的使用场景来自由控制所选择的引擎。 对于自动化/循环/频繁使用的这类识别请求，请使用离线引擎；对于偶尔/随机性/少量使用的文字识别需求，可使用在线服务来避免首次启动延迟。*
-
-可以通过调试运行观察实际使用的引擎类型。
+调试运行时可以看到实际用的引擎：
 
 ![](./img/basic-ocr-003-9122e59f45.png)
 
-**输出**
+<ShareLinkCard
+  code="45a0cf34-ca99-494c-4af7-08db410cf70d"
+  title="QuickerOCR"
+  description="识别并自动复制文本"
+  author="CL"
+/>
 
-【是否成功】是否成功识别。
+## 本地 OCR（中英）
 
-【合并后的结果】识别结果根据“转换标点符号”“合并段落”选项处理后的结果。
+2.x 的本地引擎，不经过在线服务。首次使用某个模型会按需下载；标准档偏准，快速档偏小偏快。会占磁盘、内存和 CPU。复杂版面或其它语言可换别的引擎。
 
-【行列表】表示原始识别结果的文本列表（也可以输出给文本变量）。
+旧版离线包（Paddle 引擎、手动解压到 `文档\Quicker\_ocr`）仍可用于老环境。新动作请直接选本项，不必再装那套 zip。
 
-【原始结果】原始识别结果的json格式文本。
+<ModuleParamPreview
+  moduleKey="sys:basic-ocr"
+  focusKeys={['operation', 'imgVar', 'isSuccess', 'content', 'textList']}
+  values={{operation: 'LocalOcr'}}
+  inputVars={{imgVar: 'img'}}
+  outputVars={{content: 'text'}}
+/>
 
-### 离线识别引擎包
+### 旧版离线识别引擎包
 
-**安装条件：**
+安装条件：64 位 Windows，CPU 支持 AVX。
 
--   64位Windows系统。
--   CPU支持AVX指令集。
+适合识别很勤、需要屏幕找字、或要认整屏大图的场景。不支持多线程，不要同时在多个动作里调。首次（或超过保活时间后再用）要加载模型，会慢一点。1.2.1 起不再支持表格识别。
 
-**什么情况下需要离线识别包：**
+下载：
 
--   识别需求比较多；（如果识别需求不多，可以直接使用在线服务，首次识别速度更快。专业版用户独享GPU服务器，性能更好。）
--   需要屏幕找字功能；
+- [百度网盘](https://pan.baidu.com/s/19PF_mVVfnEIXqjJju4I4fA?pwd=rrv4)（提取码 rrv4）
+- [123 网盘](https://www.123pan.com/s/9eOcVv-HsSD3.html)
+- [GitHub OfflineOCR1.2.1](https://github.com/cuiliang/Quicker/releases/tag/OfflineOCR1.2.1)
+- QQ 群文件
 
-**下载网址：**
+默认会做文字方向检测；小图可能判错。要关掉旋转检测，先装完整包，再用 [quickerocragent_norotation.zip](https://files.getquicker.cn/files/quickerocragent_norotation.zip) 覆盖对应文件。
 
--   百度网盘：[https://pan.baidu.com/s/19PF\_mVVfnEIXqjJju4I4fA?pwd=rrv4](https://pan.baidu.com/s/19PF_mVVfnEIXqjJju4I4fA?pwd=rrv4)
--   123网盘：[https://www.123pan.com/s/9eOcVv-HsSD3.html](https://www.123pan.com/s/9eOcVv-HsSD3.html)
--   Github：[https://github.com/cuiliang/Quicker/releases/tag/OfflineOCR1.2.1](https://github.com/cuiliang/Quicker/releases/tag/OfflineOCR1.2.1)
--   QQ群文件；
+安装：下载 zip → 解压 → 双击 `安装到目标位置.bat`，或把内容复制到 `文档\Quicker\_ocr`。
 
-离线包默认支持文字方向的识别。对于较小的图片，可能识别错误。如果您希望完全禁止自动的方向检测，请使用下面的文件解压缩后覆盖到离线包目录中。
+![](./img/basic-ocr-004-2fb1920fb5.png)
 
--   禁用旋转检测的主程序：[https://files.getquicker.cn/files/quickerocragent\_norotation.zip](https://files.getquicker.cn/files/quickerocragent_norotation.zip) （需先安装完整离线包后，使用此文件解压缩后覆盖完整包中的对应文件）
+最终目录类似：
 
-1.2.1 更新内容：
+![](./img/basic-ocr-005-9e612e1086.png)
 
--   更换底层组件到[PaddleSharp](https://github.com/sdcb/PaddleSharp)，解决长时间运行时不稳定问题；
--   支持多种语言识别；
--   不再支持表格识别；
--   支持屏幕找字功能；
--   支持设定保活时间；
-
-**安装方法：**
-
--   下载安装包zip文件。
--   解压缩到任意目录。
--   双击目录中的`安装到目标位置.bat`，或手动将解压缩后的目录中的所有内容复制到`Windows我的文档\Quicker\_ocr`目录中。
-    ![](./img/basic-ocr-004-2fb1920fb5.png)
--   最终的效果为：
-    ![](./img/basic-ocr-005-9e612e1086.png)
-
-如果在使用时出现“PaddleConfig的类型初始值设定项引发异常”报错（如下图所示），请下载和安装[VisualC++再发布包(Visual C++ Redistributable)](https://aka.ms/vs/17/release/vc_redist.x64.exe)。
+若出现「PaddleConfig 的类型初始值设定项引发异常」，安装 [Visual C++ Redistributable](https://aka.ms/vs/17/release/vc_redist.x64.exe)。
 
 <NotifyToastPreview
   variant="warning"
   message={'离线OCR失败。“Sdcb.PaddleInference.PaddleConfig”的类型初始值设定项引发异常。\n(----Quicker OCRv2:基础OCR----)'}
 />
 
-**测试动作：**
-
-[QuickerOCR离线 - by CL - 动作信息 - Quicker](https://getquicker.net/Sharedaction?code=4f27bd92-e6fc-4c48-ad58-08dd15875f2b)
-
-**使用：**
-
-安装离线包后，接选择 `Quicker OCR引擎`（原名“Quicker 免费OCR服务”），离线模式中选择`自动`或`仅使用离线引擎`即可自动使用离线OCR引擎。
-
-![](./img/basic-ocr-007-5448b39c2d.png)
-
-**设置保活时间：**
-
-保活时间是指离线引擎在处理OCR请求后等待一定的时间，没有新的请求再退出。 这样可以避免每次识别重新加载模型，从而可以大幅提升后续识别的效率。
+旧版保活时间在软件设置里调，避免每次重新加载模型：
 
 ![](./img/basic-ocr-008-074dd26b9c.png)
 
+<ShareLinkCard
+  code="4f27bd92-e6fc-4c48-ad58-08dd15875f2b"
+  title="QuickerOCR离线"
+  description="旧版离线引擎示例"
+  author="CL"
+/>
+
 ## Windows 10/11 内置OCR
+
+用系统当前语言识别，速度快，效果一般。参数含义与上文共用项相同。
 
 <ModuleParamPreview
   moduleKey="sys:basic-ocr"
-  focusKeys={[
-    'operation',
-    'imgVar',
-    'stopIfFail',
-    'isSuccess',
-    'content',
-    'textList',
-    'rawData',
-  ]}
+  focusKeys={['operation', 'imgVar', 'stopIfFail', 'isSuccess', 'content', 'textList', 'rawData']}
   values={{operation: 'WindowsOcr'}}
   inputVars={{imgVar: 'img'}}
   outputVars={{content: 'text'}}
 />
 
-使用Windows自带OCR引擎识别文字。识别时将使用Windows当前语言设置进行识别。
+## 百度OCR
 
-Windows自带OCR引擎识别速度快但是效果比较一般。
-
-参数请参考上文中“Quicker OCR引擎”中的说明。
-
-## 百度OCR识别
-
-使用百度的OCR服务识别文字。支持下面3个接口：
-
--   百度通用文字识别 (自定义帐号)
--   百度通用文字识别 (Quicker帐号)
--   百度自定义接口识别 (自定义帐号)
-
-### 百度通用文字识别（自定义账号）
+### 通用文字识别（自定义帐号）
 
 <ModuleParamPreview
   moduleKey="sys:basic-ocr"
@@ -217,44 +187,18 @@ Windows自带OCR引擎识别速度快但是效果比较一般。
   outputVars={{content: 'text'}}
 />
 
-使用自有账号调用百度通用文字识别接口。
+**ApiKey** / **SecretKey**：自己的百度账号。
 
-**参数**
+申请可参考：[百度账号申请教程](https://getquicker.net/KC/Kb/Article/364)（@Marcus）。
 
-【ApiKey】自有百度帐号的ApiKey。
+### 通用文字识别（Quicker帐号）
 
-【SecretKey】自由百度帐号的SecretKey。
+公共账号省去自己申请，但大家共享百度每日约 5 万次免费额度：
 
-【图片变量】要识别文字的图片。
-
-【转换标点符号】选择是否对识别结果中的标点符号进行转换。
-
-【合并段落】选择是否将多行合并成一个段落（根据行的末尾是不是有句子结束的标点符号判断）。
-
-**输出**
-
-【是否成功】是否识别成功。
-
-【行列表】识别出来的文本行，类型为文本列表。
-
-【合并后结果】将行合并成一段文本。根据“合并段落”参数，如果合并段落，则将可能是一段的内容合并在一行内。否则的话直接将各行合并成一段多行文本。
-
-【原始结果】服务商API返回的原始结果内容。
-
-【原始结果JObject对象】返回的JObject对象，可用于提取内容。
-
-### 百度通用文字识别（Quicker账号）
-
-**Quicker公共帐号**主要目的是消除大家自己申请百度帐号的麻烦。因为所有用户共享百度公司提供的每日5万次免费调用额度，所以此公共帐号会有一定的限制：
-
--   如果百度公司降低或不再提供免费额度，此服务将会不能使用（据说会长期提供）；
--   仅供日常轻度使用场景，大的需求量请使用自己的百度帐号。
--   为避免某个人占用了过多额度造成大家都使用不了，因此对每个人每日使用次数有如下限制：
-
--   免费版用户：每日最多20次。
--   专业版用户：每日最多100次。
-
--   在设置中可选择在免费额度用完以后耗费Q豆继续使用基础OCR服务（请参见下一个章节的截图）。每次OCR的费用为0.005Q豆（1元可用200次）。[什么是Q豆？](https://getquicker.net/KC/Kb/Article/933)
+- 百度若取消免费额度，此方式会不可用。
+- 只适合轻度使用；量大请用自己的账号。
+- 免费版每日最多 20 次，专业版 100 次。
+- 设置里可在额度用完后花 Q豆继续，每次 0.005 Q豆。[什么是 Q豆？](https://getquicker.net/KC/Kb/Article/933)
 
 <ModuleParamPreview
   moduleKey="sys:basic-ocr"
@@ -275,23 +219,17 @@ Windows自带OCR引擎识别速度快但是效果比较一般。
   outputVars={{content: 'text'}}
 />
 
-### 使用全局自有OCR账号
+### 全局自有 OCR 账号
 
-设置一个全局的百度OCR账号，以便于在所有使用百度接口识别文字的地方自动使用此全局账号。
+在软件设置里填一组百度 ApiKey，供所有基础 OCR 步骤使用。
 
 ![](./img/basic-ocr-012-480c543752.png)
 
-选项说明：
+勾选 **总是使用上面设置的自有ApiKey** 后，即使步骤里选了 Quicker 账号或另填了密钥，也会改用这组全局账号。
 
-【总是使用上面设置的自有ApiKey】设置自有百度账号后，在Quicker中使用“基础OCR”模块时，自动使用自有账号，即使已经在动作中配置了账号或选择使用Quicker的账号。
+### 自定义接口识别
 
-### 百度自定义接口识别
-
-使用指定的百度接口识别文字，并返回原始响应内容。
-
-百度文字识别接口文档地址：[https://cloud.baidu.com/doc/OCR/s/1k3h7y3db](https://cloud.baidu.com/doc/OCR/s/1k3h7y3db)
-
-请参考：[百度账号申请教程](https://getquicker.net/KC/Kb/Article/364)，作者@Marcus
+按百度文档调用指定接口，返回原始响应。[接口文档](https://cloud.baidu.com/doc/OCR/s/1k3h7y3db)
 
 <ModuleParamPreview
   moduleKey="sys:basic-ocr"
@@ -311,55 +249,57 @@ Windows自带OCR引擎识别速度快但是效果比较一般。
   inputVars={{imgVar: 'img'}}
 />
 
-**参数**
-
-【接口名称或网址】接口文档中“请求URL”网址或末尾的接口名部分。
-
-如高精度识别接口：可以用“https://aip.baidubce.com/rest/2.0/ocr/v1/accurate\_basic”或“accurate\_basic”。参数下拉框中预制了几种常用的识别接口关键词可以选择。
-
-注意：个别接口使用了不同的网址类型，这时候需要提供完整网址，并测试是否能正常工作。
+**接口名称或网址**：完整 URL，或 `https://aip.baidubce.com/rest/2.0/ocr/v1/` 后面的名字，如下拉里的 `accurate_basic`。个别接口域名不同，这时要填完整网址并自己试。
 
 ![](./img/basic-ocr-014-a73dd30a25.png)
 
-【附加参数】
-
-词典格式的接口附加参数，具体支持的参数请参考百度API文档。可以用 key:value 的形式每行指定一个。
-
-**输出**
-
-【原始结果JObject对象】根据原始响应json内容转换生成的JObject对象。
+**附加参数**：词典，或每行 `option:value`。以百度文档为准。
 
 ## 表格识别（Quicker服务）
 
-提取图片中的表格内容，并生成HTML格式的结果。
-
-本功能使用Quicker提供的在线服务，免费版限制10分钟一次，专业版限制10秒钟一次。
-
-参考动作：[表格识别](https://getquicker.net/Sharedaction?code=3fc97b7e-7be1-4a23-3d64-08db3e27302e)
+抽出图中的表格，**合并后结果** 是 HTML。2.x 改为本地识别。旧版在线额度：免费版约 10 分钟一次，专业版约 10 秒一次。
 
 <ModuleParamPreview
   moduleKey="sys:basic-ocr"
-  focusKeys={[
-    'operation',
-    'imgVar',
-    'lang',
-    'stopIfFail',
-    'isSuccess',
-    'content',
-    'rawData',
-  ]}
+  focusKeys={['operation', 'imgVar', 'lang', 'stopIfFail', 'isSuccess', 'content', 'rawData']}
   values={{operation: 'table_quicker', lang: 'CHN_ENG'}}
   inputVars={{imgVar: 'bmp'}}
   outputVars={{content: 'selectedText'}}
 />
 
-参数：请参考前面其它接口的说明。
+<ShareLinkCard
+  code="3fc97b7e-7be1-4a23-3d64-08db3e27302e"
+  title="表格识别"
+  description="截图识别表格并生成 Excel"
+  author="CL"
+/>
 
-输出：
+## 限制与排障
 
-【合并后结果】表格识别结果，为HTML格式的文本。
+- 在线 Quicker OCR 有次数和间隔限制，循环里请改用本地 OCR。
+- 旧版离线包报 PaddleConfig 异常时，先装 VC++ 运行库。
+- 百度公共账号额度用完会失败，改自己的 ApiKey 或开 Q豆续用。
+- 本地 OCR 首次会下载模型，需已登录 Quicker。
+
+## 相关链接
+
+<RelatedDocs
+  items={[
+    {
+      href: '/v2/xaction/modules/mathocr',
+      label: '公式识别',
+      description: '认的是公式，不是普通文字。',
+    },
+    {
+      href: "/v2/what's-new/xaction-steps/basic-ocr",
+      label: '2.x 基础OCR',
+      description: '本地引擎、模型档位和本地表格识别。',
+    },
+  ]}
+/>
 
 ## 更新历史
 
--   20230505 整理文档。
--   20241206 增加离线OCR测试动作链接。
+- 20230505 整理文档。
+- 20241206 增加离线 OCR 测试动作。
+- 2.x 增加本地 OCR（中英）；旧离线选项映射到本地引擎。

@@ -1,0 +1,330 @@
+{
+  "code": "0cf96600-866a-4eac-7f44-08d8fe1fe745",
+  "title": "音频设备控制示例",
+  "description": "演示音频设备相关操作",
+  "author": "CL",
+  "revision": 0,
+  "source": "https://getquicker.net/sharedaction?code=0cf96600-866a-4eac-7f44-08d8fe1fe745",
+  "pulledAt": "2026-08-11T21:28:47.747Z",
+  "variables": [
+    {
+      "name": "text",
+      "type": "Text",
+      "remark": "默认的文本变量"
+    },
+    {
+      "name": "outputDevices",
+      "type": "List"
+    },
+    {
+      "name": "deviceId",
+      "type": "Text"
+    },
+    {
+      "name": "inputDevices",
+      "type": "List"
+    },
+    {
+      "name": "deviceName",
+      "type": "Text"
+    },
+    {
+      "name": "isMute",
+      "type": "Boolean"
+    },
+    {
+      "name": "volume",
+      "type": "Number"
+    },
+    {
+      "name": "deviceObject",
+      "type": "Any"
+    }
+  ],
+  "steps": [
+    {
+      "key": "sys:comment",
+      "inputs": {
+        "note": "音频输出设备"
+      }
+    },
+    {
+      "key": "sys:audioControl",
+      "inputs": {
+        "operation": "GetOutputDeviceList",
+        "stopIfFail": "1"
+      },
+      "outputs": {
+        "deviceList": "outputDevices"
+      }
+    },
+    {
+      "key": "sys:select",
+      "inputs": {
+        "type": "single",
+        "prompt": "音频输出设备(选择一个查看其信息）",
+        "items": "{outputDevices}",
+        "showFilter": "auto",
+        "imeState": "NO_CONTROL",
+        "fontsize": "12",
+        "autoCloseSeconds": "0",
+        "winLocation": "WithMouse1",
+        "keepLastPos": "1",
+        "noKeyboard": "0",
+        "closeOnDeactivated": "0",
+        "restoreForeground": "1",
+        "allowOkWhenEmpty": "0",
+        "stopIfCancel": "1"
+      },
+      "outputs": {
+        "textValue": "deviceId"
+      }
+    },
+    {
+      "key": "sys:audioControl",
+      "inputs": {
+        "operation": "GetDeviceById",
+        "id": "{deviceId}",
+        "stopIfFail": "1"
+      },
+      "outputs": {
+        "deviceName": "deviceName",
+        "mute": "isMute",
+        "volume": "volume",
+        "deviceObject": "deviceObject"
+      }
+    },
+    {
+      "key": "sys:showText",
+      "inputs": {
+        "type": "WAIT",
+        "text": "$$\r\n名称：{deviceName}\r\n静音：{isMute}\r\n音量：{volume}",
+        "title": "结果内容",
+        "winLocation": "CenterScreen",
+        "fontsize": "14",
+        "topMost": "false",
+        "closeWhenLostFocus": "false",
+        "showLineNum": "true",
+        "autoWrap": "true",
+        "showBuildInToolbar": "true",
+        "copyWholeLine": "0"
+      }
+    },
+    {
+      "key": "sys:comment",
+      "inputs": {
+        "note": "音频输入设备"
+      }
+    },
+    {
+      "key": "sys:audioControl",
+      "inputs": {
+        "operation": "GetInputDeviceList",
+        "stopIfFail": "1"
+      },
+      "outputs": {
+        "deviceList": "inputDevices"
+      }
+    },
+    {
+      "key": "sys:select",
+      "inputs": {
+        "type": "single",
+        "prompt": "音频输入设备",
+        "items": "{inputDevices}",
+        "showFilter": "auto",
+        "imeState": "NO_CONTROL",
+        "fontsize": "12",
+        "autoCloseSeconds": "0",
+        "winLocation": "WithMouse1",
+        "keepLastPos": "1",
+        "noKeyboard": "0",
+        "closeOnDeactivated": "0",
+        "restoreForeground": "1",
+        "allowOkWhenEmpty": "0",
+        "stopIfCancel": "1"
+      },
+      "outputs": {
+        "textValue": "deviceId"
+      }
+    },
+    {
+      "key": "sys:audioControl",
+      "inputs": {
+        "operation": "GetDeviceById",
+        "id": "{deviceId}",
+        "stopIfFail": "1"
+      },
+      "outputs": {
+        "deviceName": "deviceName",
+        "mute": "isMute",
+        "volume": "volume",
+        "deviceObject": "deviceObject"
+      }
+    },
+    {
+      "key": "sys:showText",
+      "inputs": {
+        "type": "WAIT",
+        "text": "$$\r\n名称：{deviceName}\r\n静音：{isMute}\r\n音量：{volume}",
+        "title": "结果内容",
+        "winLocation": "CenterScreen",
+        "fontsize": "14",
+        "topMost": "false",
+        "closeWhenLostFocus": "false",
+        "showLineNum": "true",
+        "autoWrap": "true",
+        "showBuildInToolbar": "true",
+        "copyWholeLine": "0"
+      }
+    },
+    {
+      "key": "sys:comment",
+      "inputs": {
+        "note": "当前默认输出设备"
+      }
+    },
+    {
+      "key": "sys:audioControl",
+      "inputs": {
+        "operation": "GetOutputDefaultDevice",
+        "stopIfFail": "1"
+      },
+      "outputs": {
+        "deviceId": "deviceId",
+        "deviceName": "deviceName",
+        "mute": "isMute",
+        "volume": "volume",
+        "deviceObject": "deviceObject"
+      }
+    },
+    {
+      "key": "sys:showText",
+      "inputs": {
+        "type": "WAIT",
+        "text": "$$当前音频输出设备：\r\nID:{deviceId}\r\n名称：{deviceName}\r\n静音：{isMute}\r\n音量：{volume}",
+        "title": "结果内容",
+        "winLocation": "CenterScreen",
+        "fontsize": "14",
+        "topMost": "false",
+        "closeWhenLostFocus": "false",
+        "showLineNum": "true",
+        "autoWrap": "true",
+        "showBuildInToolbar": "true",
+        "copyWholeLine": "0"
+      }
+    },
+    {
+      "key": "sys:comment",
+      "inputs": {
+        "note": "静音、音量测试"
+      }
+    },
+    {
+      "key": "sys:audioControl",
+      "inputs": {
+        "operation": "SetDeviceMute",
+        "mute": "true",
+        "stopIfFail": "1"
+      }
+    },
+    {
+      "key": "sys:MsgBox",
+      "inputs": {
+        "message": "音频已静音",
+        "title": "Quicker",
+        "buttons": "OK"
+      }
+    },
+    {
+      "key": "sys:audioControl",
+      "inputs": {
+        "operation": "SetDeviceMute",
+        "mute": "false",
+        "stopIfFail": "1"
+      }
+    },
+    {
+      "key": "sys:MsgBox",
+      "inputs": {
+        "message": "音频已开启",
+        "title": "Quicker",
+        "buttons": "OK"
+      }
+    },
+    {
+      "key": "sys:audioControl",
+      "inputs": {
+        "operation": "SetDeviceVolume",
+        "volume": "0.2",
+        "stopIfFail": "1"
+      }
+    },
+    {
+      "key": "sys:MsgBox",
+      "inputs": {
+        "message": "已设置音量为20%",
+        "title": "Quicker",
+        "buttons": "OK"
+      }
+    },
+    {
+      "key": "sys:comment",
+      "inputs": {
+        "note": "更改默认输出设备"
+      }
+    },
+    {
+      "key": "sys:select",
+      "inputs": {
+        "type": "single",
+        "prompt": "更改默认的音频输出设备",
+        "items": "{outputDevices}",
+        "showFilter": "auto",
+        "imeState": "NO_CONTROL",
+        "fontsize": "12",
+        "autoCloseSeconds": "0",
+        "winLocation": "WithMouse1",
+        "keepLastPos": "1",
+        "noKeyboard": "0",
+        "closeOnDeactivated": "0",
+        "restoreForeground": "1",
+        "allowOkWhenEmpty": "0",
+        "stopIfCancel": "1"
+      },
+      "outputs": {
+        "textValue": "deviceId"
+      }
+    },
+    {
+      "key": "sys:audioControl",
+      "inputs": {
+        "operation": "SetDefaultDeviceById",
+        "id": "{deviceId}",
+        "stopIfFail": "1"
+      }
+    },
+    {
+      "key": "sys:audioControl",
+      "inputs": {
+        "operation": "GetOutputDefaultDevice",
+        "stopIfFail": "1"
+      },
+      "outputs": {
+        "deviceId": "deviceId",
+        "deviceName": "deviceName",
+        "mute": "isMute",
+        "volume": "volume",
+        "deviceObject": "deviceObject"
+      }
+    },
+    {
+      "key": "sys:MsgBox",
+      "inputs": {
+        "message": "$$当前音频输出设备：{deviceName}",
+        "title": "Quicker",
+        "buttons": "OK"
+      }
+    }
+  ]
+}

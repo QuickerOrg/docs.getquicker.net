@@ -1,13 +1,13 @@
 ---
 title: "Excel区域操作"
-description: "操作Excel的某个区域或单元格"
+description: "对已打开的 Excel 区域赋值、设格式、调用方法或读取信息。"
 slug: "/v2/xaction/modules/excelrange"
 sidebar_label: "Excel区域操作"
 sidebar_position: 80
 quickerDocKey: "xaction/module/sys:excelRange"
 comments: true
 moduleKey: "sys:excelRange"
-docStatus: "migrated-unreviewed"
+docStatus: "reviewed"
 metadataGeneratedAt: "2026-08-03 20:08:03"
 legacyDocId: 8579675
 legacyContentUpdatedAt: "2024-04-15T14:39:52.000Z"
@@ -15,59 +15,53 @@ legacyContentUpdatedAt: "2024-04-15T14:39:52.000Z"
 
 # Excel区域操作
 
-操作Excel的某个区域或单元格
+对已打开 Excel 里的某个区域赋值、设格式、调用方法或读取信息。通过 Microsoft.Office.Interop，本机需要安装 Excel。「区域」对应 [Range](https://docs.microsoft.com/zh-cn/dotnet/api/microsoft.office.interop.excel.range?view=excel-pia)。只读写文件、不启动 Excel 请用 [Excel文件读写](/v2/xaction/modules/excelreadwrite)。
 
 ## 当前模块定义
 
 <XActionModuleMeta moduleKey="sys:excelRange" />
 
-操作Excel工作表中某个区域。
+## 概述
 
-本模块通过Microsoft.Office.Interop接口调用Excel功能，需要本机安装Excel和相关组件。
+<ModuleParamPreview moduleKey="sys:excelRange" />
 
-“区域”对应于[Range接口](https://docs.microsoft.com/zh-cn/dotnet/api/microsoft.office.interop.excel.range?view=excel-pia)，可以阅读官方文档了解更多信息。
+- 因权限限制，只能操作由 Quicker 打开的工作簿。用下面的动作打开：
+- 编程改过的内容无法撤销，改之前先保存。
+- 封装面很广，可能和预期不一致，欢迎反馈。熟悉 VBA 会更好用。
 
-注意：
+<StepProgramView example="efa8a4af-4a87-4d52-d718-08d827485760" />
 
--   因权限原因，Quicker只能操作通过Quicker打开的excel工作簿。请使用此动作：[https://getquicker.net/sharedaction?code=efa8a4af-4a87-4d52-d718-08d827485760](https://getquicker.net/sharedaction?code=efa8a4af-4a87-4d52-d718-08d827485760)
--   同VBA一样，使用编程方式更改Excel内容后，Excel将无法撤销更改。可以在进行编程修改之前保存文件，修改后如果不理想可以不保存。
--   因本人对VBA熟悉程度有限，相关封装的内容又特别多，所以可能会存在bug或不符合预期的情况，欢迎反馈指出，谢谢！
+<ShareLinkCard
+  code="efa8a4af-4a87-4d52-d718-08d827485760"
+  title="用Excel打开"
+  description="选择 Excel 文件并用 Quicker 打开，以便后续模块控制"
+  author="CL"
+/>
 
-您可能需要对VBA有一定的了解才能比较好的使用本模块。
+## 参数说明
 
-## 通用参数
-
-【区域】
-
-指定要操作的区域。可以通过下面的方式之一指定：
+**区域**：要操作的范围，任选一种写法：
 
 -   通过变量或表达式传入Range对象。
 -   不填写内容：表示当前Excel窗口中选定的区域。
 -   填写“**used**”（不写引号）：表示当前Excel窗口工作表中使用的整个区域。内部实现：通过当前工作表的[UsedRange](https://docs.microsoft.com/zh-cn/dotnet/api/microsoft.office.interop.excel.worksheetclass.usedrange?view=excel-pia#Microsoft_Office_Interop_Excel_WorksheetClass_UsedRange)属性得到。
 -   填写指定区域范围的文本，如“**A1:E9**”“**A1**”等（不写引号）。内部实现：通过当前工作表的[Range属性](https://docs.microsoft.com/zh-cn/dotnet/api/microsoft.office.interop.excel.worksheetclass.range?view=excel-pia#Microsoft_Office_Interop_Excel_WorksheetClass_Range_System_Object_System_Object_)([VBA文档](https://docs.microsoft.com/en-us/office/vba/api/excel.worksheet.range))得到。
 
-【限定子范围】
+**限定子范围**：把操作目标再收窄到「区域」里的一部分。
 
-有的情况下，可能需要将要操作的目标限定为“区域”参数的一个子区域，如“第一行”“第一列”，或里面的一个单元格。这时候可以通过“限定子范围”进一步限定操作目标。
+- **整个区域**
+- **区域内的第一行** / **区域内的第一列** / **区域内最后一行** / **区域内最后一列**
+- **活动单元格**：当前有录入焦点的单元格
+- **整行(包含区域外)**：[EntireRow](https://docs.microsoft.com/zh-cn/dotnet/api/microsoft.office.interop.excel.range.entirerow?view=excel-pia#Microsoft_Office_Interop_Excel_Range_EntireRow)，调行高时用
+- **整列(包含区域外)**：[EntireColumn](https://docs.microsoft.com/zh-cn/dotnet/api/microsoft.office.interop.excel.range.entirecolumn?view=excel-pia#Microsoft_Office_Interop_Excel_Range_EntireColumn)，调列宽时用
+- **所有行(区域范围内)**：[Rows](https://docs.microsoft.com/en-us/dotnet/api/microsoft.office.interop.excel.range.rows?view=excel-pia#Microsoft_Office_Interop_Excel_Range_Rows)
+- **所有列(区域范围内)**：[Columns](https://docs.microsoft.com/en-us/dotnet/api/microsoft.office.interop.excel.range.columns?view=excel-pia#Microsoft_Office_Interop_Excel_Range_Columns)
 
-可选的参数值如下：
+旧稿里的「指定单元格 / `cell:行,列`」当前 catalog 已无此项；请改用「区域」写 `A1` 这类地址，或先「获取区域信息」再操作。
 
--   整个区域：【区域】参数所指定的整个范围。
--   区域内的第一行
--   区域内的第一列
--   区域内的最后一行
--   区域内的最后一列
--   活动单元格：当前工作表的活动单元格（处于录入焦点的单元格）
--   整行：对应于[Region.EntireRow](https://docs.microsoft.com/zh-cn/dotnet/api/microsoft.office.interop.excel.range.entirerow?view=excel-pia#Microsoft_Office_Interop_Excel_Range_EntireRow)属性。在需要调整行高的时候，需要对整行进行调整。
--   整列：对应于[Region.EntireColumn](https://docs.microsoft.com/zh-cn/dotnet/api/microsoft.office.interop.excel.range.entirecolumn?view=excel-pia#Microsoft_Office_Interop_Excel_Range_EntireColumn)属性。在需要调整列宽的时候，需要对整列进行调整。
--   所有行(区域范围内)：对应于[Region.Rows](https://docs.microsoft.com/en-us/dotnet/api/microsoft.office.interop.excel.range.rows?view=excel-pia#Microsoft_Office_Interop_Excel_Range_Rows) 属性。
--   所有列(区域范围内)：对应于[Region.Columns](https://docs.microsoft.com/en-us/dotnet/api/microsoft.office.interop.excel.range.columns?view=excel-pia#Microsoft_Office_Interop_Excel_Range_Columns)属性。
--   指定单元格：使用“cell:行序号数字,列序号数字”指定单元格位置。（相对于“区域”参数指定的位置左上角单元格的偏移，可以是“区域”参数外面的位置）。此时也可以使用插值或表达式拼接文本结果。下图所使的
-    ![](./img/excelrange-001-0eff326a3e.png)
+![](./img/excelrange-001-0eff326a3e.png)
 
-【操作类型】
-
-要执行的操作类型：
+**操作类型**：
 
 -   设置值：为区域的单元格赋值。内部实现为：为 `Region.Value` 属性赋值。
 -   设置公式：为区域的单元格设置公式。内部实现为：为 [Region.Formula](https://docs.microsoft.com/zh-cn/dotnet/api/microsoft.office.interop.excel.range.formula?view=excel-pia#Microsoft_Office_Interop_Excel_Range_Formula) 属性赋值。与在编辑栏（包括等号）中显示时的格式相同，如：“=RAND()\*100000”
@@ -88,15 +82,46 @@ legacyContentUpdatedAt: "2024-04-15T14:39:52.000Z"
 -   std：表示默认列宽；
 -   整数数字：指定具体的宽度数值。一个列宽单位等于"常规"样式中一个字符的宽度。对于比例字体，则使用字符 0（零）的宽度。
 
--   设置格式：为区域设置格式，每行一个格式。详细格式定义请参考本文后面部分。
--   调用方法：调用Range对象的方法，每行一个方法。详细说明请参考本文后面的部分。
--   获取区域信息：获取区域的值/公式/格式/信息/对象引用等数据。
+- **设置格式**：每行一条格式，见下文。对应参数 **格式**。
+- **调用方法**：每行一个 Range 方法，见下文。对应参数 **方法**。
+- **替换内容**：在区域内查找替换。对应 **查找内容**、**替换为**、**转义"查找内容"**、**转义"替换为"**、**区分大小写**。
+- **获取区域信息**：读值 / 公式 / 格式 / 位置 / 对象引用。
+
+**失败后停止**：失败后是否中止动作。默认开启。
+
+设置值 / 公式 / 数值格式时，内容写在 **参数** 里。行高列宽写在 **行高,列宽** 里。
+
+## 输出
+
+- **是否成功**
+- 仅「获取区域信息」：**值**、**文本**、**公式**、**数值格式**、**位置引用**、**列号**、**行号**、**列数**、**行数**、**格式信息**、**区域对象**、**工作表对象**
+
+## 替换内容
+
+<ModuleParamPreview
+  moduleKey="sys:excelRange"
+  focusKeys={[
+    'operation',
+    'replaceWhat',
+    'replaceTo',
+    'replaceEscapeWhat',
+    'replaceEscapeTo',
+    'replaceMatchCase',
+  ]}
+  values={{operation: 'Replace', replaceWhat: '旧', replaceTo: '新'}}
+/>
+
+**查找内容** / **替换为**：要找的文本和换成的文本。
+
+**转义"查找内容"** / **转义"替换为"**：把 `\r` `\n` `\t` 当成换行和 Tab。
+
+**区分大小写**：默认关闭。
 
 ## 设置格式
 
 ![](./img/excelrange-002-7c60977bbd.png)
 
-在【格式】参数中设定格式内容，每行一个，形式为“格式名称=格式值”。
+在 **格式** 参数里写，每行一条，形式为 `格式名称=格式值`。
 
 支持的格式如下：
 
@@ -270,3 +295,25 @@ FileName：要导出的文件路径。
 ```text
 PasteSpecial:xlPasteValues,xlPasteSpecialOperationAdd,false,false
 ```
+
+## 相关链接
+
+<RelatedDocs
+  items={[
+    {
+      href: '/v2/xaction/modules/excelobjects',
+      label: 'Excel对象操作',
+      description: '工作簿 / 工作表对象，与本模块同一套 Interop。',
+    },
+    {
+      href: '/v2/xaction/modules/excelreadwrite',
+      label: 'Excel文件读写',
+      description: '不启动 Excel，直接读写文件。对象不通用。',
+    },
+    {
+      href: '/v2/xaction/modules/officehelper',
+      label: 'Office软件辅助',
+      description: 'VBA、格式、功能区命令。',
+    },
+  ]}
+/>

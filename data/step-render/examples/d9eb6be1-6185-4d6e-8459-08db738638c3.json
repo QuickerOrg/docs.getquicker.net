@@ -1,0 +1,79 @@
+{
+  "code": "d9eb6be1-6185-4d6e-8459-08db738638c3",
+  "title": "重复示例",
+  "description": "重复方式输出列表内容",
+  "author": "CL",
+  "revision": 0,
+  "source": "https://getquicker.net/sharedaction?code=d9eb6be1-6185-4d6e-8459-08db738638c3",
+  "pulledAt": "2026-08-11T21:27:37.011Z",
+  "variables": [
+    {
+      "name": "text1",
+      "type": "Text",
+      "remark": "默认的文本变量"
+    },
+    {
+      "name": "text2",
+      "type": "Text",
+      "remark": "默认的文本变量"
+    },
+    {
+      "name": "list1",
+      "type": "List"
+    },
+    {
+      "name": "list2",
+      "type": "List"
+    },
+    {
+      "name": "index",
+      "type": "Integer"
+    }
+  ],
+  "steps": [
+    {
+      "key": "sys:repeat",
+      "inputs": {
+        "count": "5",
+        "startIndex": "0",
+        "repeatDelayMs": "1000"
+      },
+      "outputs": {
+        "count": "index"
+      },
+      "ifSteps": [
+        {
+          "key": "sys:listOperations",
+          "inputs": {
+            "list": "{list1}",
+            "type": "getAt",
+            "pos": "{index}"
+          },
+          "outputs": {
+            "value": "text1"
+          }
+        },
+        {
+          "key": "sys:listOperations",
+          "inputs": {
+            "list": "{list2}",
+            "type": "getAt",
+            "pos": "{index}"
+          },
+          "outputs": {
+            "value": "text2"
+          }
+        },
+        {
+          "key": "sys:notify",
+          "inputs": {
+            "type": "Info",
+            "msg": "$${text1} --- {text2}",
+            "maxLines": "0",
+            "style": "Default"
+          }
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,61 @@
+{
+  "code": "27d4c30d-803e-473e-4296-08da08643be0",
+  "title": "文件监控示例",
+  "description": "监控某个目录并获得提示",
+  "author": "CL",
+  "revision": 1,
+  "source": "https://getquicker.net/sharedaction?code=27d4c30d-803e-473e-4296-08da08643be0",
+  "pulledAt": "2026-08-11T21:29:12.647Z",
+  "variables": [
+    {
+      "name": "isSuccess",
+      "type": "Boolean"
+    },
+    {
+      "name": "path",
+      "type": "Text"
+    }
+  ],
+  "steps": [
+    {
+      "key": "sys:getExplorerPath",
+      "inputs": {
+        "stopIfFail": "1"
+      },
+      "outputs": {
+        "output": "path"
+      }
+    },
+    {
+      "key": "sys:notify",
+      "inputs": {
+        "msg": "$$开始监控 {path}",
+        "maxLines": "0",
+        "type": "Info",
+        "style": "Default"
+      }
+    },
+    {
+      "key": "sys:fileSystemWatch",
+      "inputs": {
+        "operation": "callback",
+        "path": "{path}",
+        "includeSubdirectories": "1",
+        "filter": "*.*",
+        "createdCallback": "OnCreated",
+        "changedCallback": "OnChanged",
+        "deletedCallback": "OnDeleted",
+        "renamedCallback": "OnRenamed"
+      },
+      "outputs": {
+        "isSuccess": "isSuccess"
+      }
+    },
+    {
+      "key": "sys:comment",
+      "inputs": {
+        "note": "开始监控后将会停在上面一步。结束动作将停止监控。"
+      }
+    }
+  ]
+}

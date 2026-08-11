@@ -1,0 +1,150 @@
+{
+  "code": "80427a4f-78c4-4fc5-7b1a-08d6a9169e61",
+  "title": "示例: 等待窗口",
+  "description": "用于演示等待窗口模块的使用",
+  "author": "CL",
+  "revision": 2,
+  "source": "https://getquicker.net/sharedaction?code=80427a4f-78c4-4fc5-7b1a-08d6a9169e61",
+  "pulledAt": "2026-08-11T21:27:56.083Z",
+  "variables": [
+    {
+      "name": "context",
+      "type": "Text",
+      "remark": "默认的文本变量"
+    },
+    {
+      "name": "img",
+      "type": "Image",
+      "remark": "默认的图片变量"
+    },
+    {
+      "name": "isClosed",
+      "type": "Boolean"
+    },
+    {
+      "name": "clipChanged",
+      "type": "Boolean"
+    },
+    {
+      "name": "count",
+      "type": "Number"
+    },
+    {
+      "name": "time",
+      "type": "DateTime"
+    }
+  ],
+  "steps": [
+    {
+      "key": "sys:comment",
+      "inputs": {
+        "note": "循环更新并监测是否关闭"
+      }
+    },
+    {
+      "key": "sys:showWaitWin",
+      "inputs": {
+        "title": "完成后继续",
+        "prompt": "这里是一个循环，可以点击按钮提前中止",
+        "btnText": "结束循环",
+        "winLocation": "BottomCenter",
+        "mode": "show",
+        "progress": "$${count}/100"
+      }
+    },
+    {
+      "key": "sys:repeat",
+      "inputs": {
+        "count": "101"
+      },
+      "outputs": {
+        "count": "count"
+      },
+      "ifSteps": [
+        {
+          "key": "sys:showWaitWin",
+          "inputs": {
+            "mode": "update",
+            "title": "完成后继续",
+            "prompt": "完成复制操作后，点按钮开始粘贴",
+            "btnText": "继续",
+            "winLocation": "BottomCenter",
+            "progress": "$${count}/100"
+          }
+        },
+        {
+          "key": "sys:showWaitWin",
+          "inputs": {
+            "mode": "check",
+            "title": "完成后继续",
+            "prompt": "完成复制操作后，点按钮开始粘贴",
+            "btnText": "继续",
+            "winLocation": "BottomCenter",
+            "progress": "$${count}/100"
+          },
+          "outputs": {
+            "isClosed": "isClosed"
+          }
+        },
+        {
+          "key": "sys:if",
+          "inputs": {
+            "condition": "{isClosed}"
+          },
+          "ifSteps": [
+            {
+              "key": "sys:break"
+            }
+          ]
+        },
+        {
+          "key": "sys:delay",
+          "inputs": {
+            "delayMs": "100",
+            "monitorWaitWin": "0"
+          }
+        }
+      ]
+    },
+    {
+      "key": "sys:comment",
+      "inputs": {
+        "note": "等待时间"
+      }
+    },
+    {
+      "key": "sys:showWaitWin",
+      "inputs": {
+        "mode": "show",
+        "title": "完成后继续",
+        "prompt": "循环完成了，现在等待10秒钟",
+        "btnText": "停止等待",
+        "winLocation": "BottomCenter"
+      }
+    },
+    {
+      "key": "sys:delay",
+      "inputs": {
+        "delayMs": "10000",
+        "monitorWaitWin": "1"
+      }
+    },
+    {
+      "key": "sys:showWaitWin",
+      "inputs": {
+        "mode": "close",
+        "title": "完成后继续",
+        "prompt": "请在完成操作后点下面的按钮",
+        "btnText": "完成",
+        "winLocation": "BottomRight"
+      }
+    },
+    {
+      "key": "sys:notify",
+      "inputs": {
+        "msg": "等待结束",
+        "type": "Info"
+      }
+    }
+  ]
+}

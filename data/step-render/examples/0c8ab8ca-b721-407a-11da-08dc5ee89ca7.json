@@ -1,0 +1,189 @@
+{
+  "code": "0c8ab8ca-b721-407a-11da-08dc5ee89ca7",
+  "title": "通义千问测试",
+  "description": "使用HTTP请求调用大模型流式响应。",
+  "author": "CL",
+  "revision": 0,
+  "source": "https://getquicker.net/sharedaction?code=0c8ab8ca-b721-407a-11da-08dc5ee89ca7",
+  "pulledAt": "2026-08-11T21:28:52.193Z",
+  "variables": [
+    {
+      "name": "text",
+      "type": "Text",
+      "remark": "默认的文本变量"
+    },
+    {
+      "name": "apiKey",
+      "type": "Text"
+    },
+    {
+      "name": "content",
+      "type": "Text"
+    },
+    {
+      "name": "prevContent",
+      "type": "Text",
+      "remark": "上一次消息内容。千问的sse消息会自带之前发送的内容。"
+    },
+    {
+      "name": "prompt",
+      "type": "Text"
+    }
+  ],
+  "steps": [
+    {
+      "key": "sys:simpleIf",
+      "inputs": {
+        "condition": "$=string.IsNullOrEmpty({apiKey})"
+      },
+      "ifSteps": [
+        {
+          "key": "sys:userInput",
+          "inputs": {
+            "type": "text",
+            "prompt": "请输入ApiKey",
+            "isRequired": "0",
+            "restoreFocus": "1",
+            "closeOnDeactivated": "0",
+            "topMost": "0",
+            "stopIfFail": "1",
+            "fontsize": "14",
+            "winLocation": "CenterScreen",
+            "imeState": "NO_CONTROL"
+          },
+          "outputs": {
+            "textValue": "apiKey"
+          }
+        }
+      ]
+    },
+    {
+      "key": "sys:http",
+      "inputs": {
+        "url": "https://dashscope.aliyuncs.com/api/v1/services/aigc/text-generation/generation",
+        "method": "POST",
+        "header": "$$Authorization:Bearer {apiKey}",
+        "bodyType": "JSON",
+        "body": "{\r\n    \"model\": \"qwen-turbo\",\r\n    \"input\":{\r\n        \"messages\":[      \r\n            {\r\n                \"role\": \"system\",\r\n                \"content\": \"You are a helpful assistant.\"\r\n            },\r\n            {\r\n                \"role\": \"user\",\r\n                \"content\": \"你好，哪个公园距离我最近？\"\r\n            }\r\n        ]\r\n    },\r\n    \"parameters\": {\r\n        \"result_format\": \"message\"\r\n    }\r\n}",
+        "resultType": "Text",
+        "ua": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/112.0.0.0 Safari/537.36",
+        "expireSeconds": "100",
+        "noAutoRedirect": "0",
+        "showProgress": "0",
+        "skipCertVerify": "0",
+        "forceProxy": "0",
+        "stopIfFail": "1",
+        "useSSE": "0",
+        "sseSpName": "false"
+      },
+      "outputs": {
+        "content": "content"
+      },
+      "disabled": true
+    },
+    {
+      "key": "sys:showText",
+      "inputs": {
+        "type": "NO_WAIT",
+        "text": "{content}",
+        "title": "文本窗口",
+        "autoCloseKey": "=",
+        "topMost": "false",
+        "stopIfFail": "1",
+        "winLocation": "CenterScreen",
+        "fontsize": "14",
+        "closeWhenLostFocus": "false",
+        "showLineNum": "true",
+        "autoWrap": "true",
+        "showBuildInToolbar": "true",
+        "copyWholeLine": "false",
+        "caretPosition": "0",
+        "updateIfExists": "0"
+      },
+      "disabled": true
+    },
+    {
+      "key": "sys:userInput",
+      "inputs": {
+        "type": "multiline",
+        "prompt": "请输入提示词",
+        "defaultValue": "写一首描写春天的诗歌。",
+        "isRequired": "0",
+        "submitWithReturn": "0",
+        "restoreFocus": "1",
+        "closeOnDeactivated": "0",
+        "topMost": "0",
+        "stopIfFail": "1",
+        "fontsize": "14",
+        "winLocation": "CenterScreen",
+        "imeState": "NO_CONTROL"
+      },
+      "outputs": {
+        "textValue": "prompt"
+      }
+    },
+    {
+      "key": "sys:stringProcess",
+      "inputs": {
+        "data": "{prompt}",
+        "method": "escapeJson",
+        "stopIfFail": "1"
+      },
+      "outputs": {
+        "output": "prompt"
+      }
+    },
+    {
+      "key": "sys:showText",
+      "inputs": {
+        "type": "NO_WAIT",
+        "text": "{content}",
+        "title": "文本窗口",
+        "autoCloseKey": "=",
+        "topMost": "false",
+        "stopIfFail": "1",
+        "winLocation": "CenterScreen",
+        "fontsize": "14",
+        "closeWhenLostFocus": "false",
+        "showLineNum": "true",
+        "autoWrap": "true",
+        "showBuildInToolbar": "true",
+        "copyWholeLine": "false",
+        "caretPosition": "0",
+        "updateIfExists": "0"
+      }
+    },
+    {
+      "key": "sys:http",
+      "inputs": {
+        "url": "https://dashscope.aliyuncs.com/api/v1/services/aigc/text-generation/generation",
+        "method": "POST",
+        "header": "$$Authorization:Bearer {apiKey}\r\nX-DashScope-SSE: enable",
+        "bodyType": "JSON",
+        "body": "$${\r\n    \"model\": \"qwen-turbo\",\r\n    \"input\":{\r\n        \"messages\":[      \r\n            {\r\n                \"role\": \"system\",\r\n                \"content\": \"You are a helpful assistant.\"\r\n            },\r\n            {\r\n                \"role\": \"user\",\r\n                \"content\": \"{prompt}\"\r\n            }\r\n        ]\r\n    },\r\n    \"parameters\": {\r\n        \"result_format\": \"message\"\r\n    }\r\n}",
+        "resultType": "Text",
+        "ua": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/112.0.0.0 Safari/537.36",
+        "expireSeconds": "100",
+        "noAutoRedirect": "0",
+        "showProgress": "0",
+        "skipCertVerify": "0",
+        "forceProxy": "0",
+        "stopIfFail": "1",
+        "useSSE": "1",
+        "sseSpName": "sse"
+      },
+      "outputs": {
+        "content": "content"
+      }
+    },
+    {
+      "key": "sys:notify",
+      "inputs": {
+        "type": "Success",
+        "msg": "输出完成！",
+        "maxLines": "0",
+        "style": "Default"
+      }
+    }
+  ]
+}

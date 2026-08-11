@@ -7,7 +7,7 @@ sidebar_position: 120
 quickerDocKey: "xaction/module/sys:activateProcessMainWindow"
 comments: true
 moduleKey: "sys:activateProcessMainWindow"
-docStatus: "migrated-unreviewed"
+docStatus: "reviewed"
 metadataGeneratedAt: "2026-08-03 20:08:03"
 legacyDocId: 2131596
 legacyContentUpdatedAt: "2022-06-14T05:58:37.000Z"
@@ -15,64 +15,63 @@ legacyContentUpdatedAt: "2022-06-14T05:58:37.000Z"
 
 # 激活进程主窗口
 
-找到指定进程的主窗口并使其显示在前台。
+找到指定进程的主窗口并提到前台。进程还没启动时，可按 **程序路径** 自动打开。只要窗口句柄、不要按进程找，用 [窗口操作](/v2/xaction/modules/windowoperations)。
 
 ## 当前模块定义
 
 <XActionModuleMeta moduleKey="sys:activateProcessMainWindow" />
 
-尝试使用多种方式激活某个进程的主窗口。
-
 ## 概述
+
+会依次尝试：进程主窗口句柄 → **窗口类名** / **窗口标题** → 该进程桌面上的第一个窗口。窗口藏在托盘时，可再发 **热键**（软件自己要支持，如部分 IM）。
 
 <ModuleParamPreview moduleKey="sys:activateProcessMainWindow" />
 
-找到指定进程的主窗口并使其显示在前台。
+## 参数说明
 
-如果窗口已隐藏到系统托盘，则尝试发送全局热键激活（需要软件本身支持，如QQ等）。
-
-不是所有的软件都可以得到进程主窗口。
-
-**注意：**
-
-部分软件的进程没有主窗口句柄，所以可能会产生判断错误的情况。（已知QQ有此问题）
-
-## 参数
-
-### 输入
-
-【进程名称/pid】
-
-指定要激活主窗口的进程。必须提供此参数。
-
-进程名通常为软件的应用程序.exe文件名去除.exe。如记事本的进程名为`notepad`。可以直接点击输入框右侧的窗口工具选择进程名：
+**进程名称/pid**：要激活的进程。进程名通常是 exe 去掉 `.exe`，如记事本是 `notepad`。可按住输入框右侧的窗口工具拖到目标窗口：
 
 ![](./img/activateprocessmainwindow-002-d898ebff74.gif)
 
-如果未找到进程，则使用“程序路径”参数中提供的路径启动程序。
+**热键**：选填。最小化到托盘时发送的全局热键，格式见 [模拟按键B](/v2/xaction/modules/sendkeys)。
 
-如果找到了进程，并且获取了主窗口句柄，则直接激活该窗口。如果未能获取主窗口句柄，则尝试根据“窗口类名”“窗口标题”来确定该进程的主窗口。如果根据窗口类名和标题未找到窗口，则尝试查找该进程在桌面上显示的窗口中的第一个。
+**窗口类名**：选填。拿不到主窗口时按类名查找，支持正则。
 
-【窗口类名】指定要查找窗口的类名。支持正则表达式匹配。
+**窗口标题**：选填。拿不到主窗口时按标题查找，支持正则。
 
-【窗口标题】指定要查找窗口的标题。支持正则表达式匹配。
+**程序路径**：选填。进程不存在时按此路径启动程序。
 
-**【热键】**
+**失败后停止**：失败是否中止动作。默认开启。
 
-（需软件自身支持）用于激活软件窗口的全局热键（在软件最小化到托盘后使用）。定义格式请参照：[模拟按键B](/v2/xaction/modules/sendkeys)。
+## 输出
 
-在根据进程和窗口信息未找到窗口时，尝试使用发送此处设定的热键激活窗口。
+- **是否成功**：是否找到并激活了主窗口。
+- **PID**：进程 ID。
+- **主窗口句柄**：窗口句柄。
+- **主窗口标题**：窗口标题。
 
-**【程序路径】**
+## 限制与排障
 
-（选填）在进程未启动时，自动启动程序。
+不是所有进程都有主窗口句柄，可能误判（已知部分 QQ 版本有此问题）。热键必须是软件自己注册的全局热键，Quicker 无法替它「从托盘还原」。
 
-### 输出
+## 相关链接
 
-【是否成功】是否找到了主窗口并激活了。
-
-【PID】进程ID。
-
-【主窗口句柄】窗口句柄数据。
-
-【主窗口标题】窗口的标题。
+<RelatedDocs
+  items={[
+    {
+      href: '/v2/xaction/modules/checkprocessexists',
+      label: '检查程序已启动/获取进程信息',
+      description: '先确认进程在不在。',
+    },
+    {
+      href: '/v2/xaction/modules/windowoperations',
+      label: '窗口操作',
+      description: '已有句柄时移动、置顶或设为前台。',
+    },
+    {
+      href: '/v2/xaction/modules/sendkeys',
+      label: '模拟按键B',
+      description: '热键格式与本模块「热键」相同。',
+    },
+  ]}
+/>

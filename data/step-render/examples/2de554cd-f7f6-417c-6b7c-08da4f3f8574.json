@@ -1,0 +1,37 @@
+{
+  "code": "2de554cd-f7f6-417c-6b7c-08da4f3f8574",
+  "title": "LispHelloWorld",
+  "description": "AutoLisp Hello World",
+  "author": "CL",
+  "revision": 0,
+  "source": "https://getquicker.net/sharedaction?code=2de554cd-f7f6-417c-6b7c-08da4f3f8574",
+  "pulledAt": "2026-08-11T21:27:56.336Z",
+  "variables": [
+    {
+      "name": "text",
+      "type": "Text",
+      "remark": "默认的文本变量"
+    }
+  ],
+  "steps": [
+    {
+      "key": "sys:autocadcontrol",
+      "inputs": {
+        "operation": "SendCommand",
+        "command": "(alert \"Hello, world!\")\r\n",
+        "waitResp": "true",
+        "stopIfFail": "1"
+      }
+    },
+    {
+      "key": "sys:notify",
+      "inputs": {
+        "msg": "done",
+        "maxLines": "0",
+        "type": "Info",
+        "style": "Default"
+      },
+      "disabled": true
+    }
+  ]
+}

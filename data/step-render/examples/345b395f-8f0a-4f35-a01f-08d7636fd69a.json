@@ -1,0 +1,48 @@
+{
+  "code": "345b395f-8f0a-4f35-a01f-08d7636fd69a",
+  "title": "示例: 格式化数字",
+  "description": "将数字格式化为指定的格式",
+  "author": "CL",
+  "revision": 1,
+  "source": "https://getquicker.net/sharedaction?code=345b395f-8f0a-4f35-a01f-08d7636fd69a",
+  "pulledAt": "2026-08-11T21:09:09.224Z",
+  "variables": [
+    {
+      "name": "context",
+      "type": "Text",
+      "remark": "默认的文本变量"
+    },
+    {
+      "name": "img",
+      "type": "Image",
+      "remark": "默认的图片变量"
+    },
+    {
+      "name": "number",
+      "type": "Number"
+    }
+  ],
+  "steps": [
+    {
+      "key": "sys:formatString",
+      "inputs": {
+        "formatString": "提示：请查看动作定义了解使用方法\r\n组合成文本模块的说明：https://www.yuque.com/quicker/help/formatstring\r\n\r\n默认格式: {0}\r\n\r\n--- 标准格式---\r\n参考网址：https://docs.microsoft.com/zh-cn/dotnet/standard/base-types/standard-numeric-format-strings\r\n货币格式C: C=> {0:C}   C2=> {0:C2}  C4=> {0:C4}\r\n十进制D 不支持（Quicker中的数字为decimal类型，d只适合于int类型）\r\n指数E: E=> {0:E}  E2=> {0:E2}\r\n定点F: F=> {0:F}  F2=> {0:F2}\r\n常规G: G=> {0:G}  G2=> {0:G2}\r\n数字N: N=> {0:N}  N2=> {0:N2}\r\n百分比P:P=> {0:P}  P1=> {0:P1} P2=> {0:P2} P3=> {0:P3}\r\n十六进制X:不支持\r\n\r\n---自定义格式---\r\n参考网址：https://docs.microsoft.com/zh-cn/dotnet/standard/base-types/custom-numeric-format-strings\r\n0 零占位符，用对应的数字（如果存在）替换零；否则，将在结果字符串中显示零。\r\n  00000000.000000 => {0:00000000.000000}\r\n# 数字占位符：用对应的数字（如果存在）替换“#”符号；否则，不会在结果字符串中显示任何数字。\r\n  ##### => {0:#####}    #.## => {0:#.##}\r\n. 确定小数点分隔符在结果字符串中的位置。\r\n  0.00 => {0:0.00}\r\n% 百分比占位符\t将数字乘以 100，并在结果字符串中插入本地化的百分比符号。\r\n  ##.0% => {0:##.0%}  ##,#.0%=>{0:##,#.0%}\r\n\r\n\r\n  ",
+        "p0": "{number}"
+      },
+      "outputs": {
+        "output": "context"
+      }
+    },
+    {
+      "key": "sys:showText",
+      "inputs": {
+        "type": "NO_WAIT",
+        "text": "{context}",
+        "title": "结果内容",
+        "winLocation": "CenterScreen",
+        "fontsize": "14",
+        "fontfamily": "Consolas"
+      }
+    }
+  ]
+}

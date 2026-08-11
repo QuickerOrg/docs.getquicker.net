@@ -1,13 +1,13 @@
 ---
 title: "Office软件辅助"
-description: "辅助控制Office软件"
+description: "对当前 Office / WPS 窗口执行 VBA、改格式，或触发功能区命令。"
 slug: "/v2/xaction/modules/officehelper"
 sidebar_label: "Office软件辅助"
 sidebar_position: 100
 quickerDocKey: "xaction/module/sys:officehelper"
 comments: true
 moduleKey: "sys:officehelper"
-docStatus: "migrated-unreviewed"
+docStatus: "reviewed"
 metadataGeneratedAt: "2026-08-03 20:08:03"
 legacyDocId: 105089178
 legacyContentUpdatedAt: "2024-08-08T13:46:01.000Z"
@@ -15,31 +15,26 @@ legacyContentUpdatedAt: "2024-08-08T13:46:01.000Z"
 
 # Office软件辅助
 
-辅助控制Office软件
+对当前 Office / WPS 窗口执行 VBA、给选中对象设格式，或触发功能区命令。本模块为测试状态。执行 VBA 主要参考网友 @Zetalpha 的子程序。
 
 ## 当前模块定义
 
 <XActionModuleMeta moduleKey="sys:officehelper" />
 
-本模块为测试状态，欢迎反馈问题。
+## 概述
 
-对当前Office软件窗口执行VBA宏代码、对文档或选定对象设置格式等。
+<ModuleParamPreview moduleKey="sys:officehelper" />
 
-特别感谢网友**@Zetalpha**，执行VBA脚本功能主要参考Zetalpha的子程序实现。
-
-如果您在使用中遇到什么问题，欢迎通过官网讨论区反馈。
-
-提示：
-
--   本步骤使用低权限方式运行，不能用于使用“管理员身份”启动的Office或wps程序。
--   如果禁用系统UAC（用户账户控制设置），可能会影响本模块的运行。
+- 低权限运行，不能操作「以管理员身份」启动的 Office / WPS。
+- 关掉系统 UAC 可能影响本模块。
+- 读写打开的 Excel 工作簿请看 [Excel区域操作](/v2/xaction/modules/excelrange)；只读写文件、不启动 Excel 请看 [Excel文件读写](/v2/xaction/modules/excelreadwrite)。
 
 ## 执行VBA代码
 
 **前置条件：**
 
 -   Office 系列软件需要开启**【信任对 VBA 工程对象模型的访问】** 选项。
--   WPS 软件需要安装VBA模块，并开启【信任对于“Visual Basic项目”的访问】选项。
+- WPS 需要安装 VBA 模块，并开启「信任对于 Visual Basic 项目的访问」。
 -   以上选项开启方法请[参考本文](https://getquicker.net/KC/Kb/Article/1049)。
 
 **注意事项：**
@@ -49,19 +44,22 @@ legacyContentUpdatedAt: "2024-08-08T13:46:01.000Z"
 -   Excel 软件执行VBA代码后，将会丢失撤销(undo)历史，无法进行撤销操作。因此，请先备份好重要数据，再使用VBA代码。
 -   通过Quicker启动运行的Excel程序会被提权，导致[无法控制](https://getquicker.net/QA/Question/16310)。请从Windows启动Excel，或通过打开Excel文档的方式开启Excel。
 
-参考演示：[录制宏并转换为动作](https://getquicker.net/Sharedaction?code=4d774256-f3fa-4c61-72c6-08dac59559d0)
+<StepProgramView example="4d774256-f3fa-4c61-72c6-08dac59559d0" />
 
-### 参数
+<ShareLinkCard
+  code="4d774256-f3fa-4c61-72c6-08dac59559d0"
+  title="示例：录制VBA宏并转换为动作"
+  description="通过 VBA 将选中单元格设为中等线条框线"
+  author="CL"
+/>
 
-<ModuleParamPreview moduleKey="sys:officehelper" />
+### 参数说明
 
-**【应用程序】** 选择要执行VBA代码的程序。
-
-支持如下选项：
+**应用程序**：要操作的程序。可选 Word / WPS 文字、Excel / WPS 表格、PowerPoint / WPS 幻灯片，以及「根据前台进程自动识别」的组合项；Outlook、Project、Visio 见下方操作类型限制。
 
 ![](./img/officehelper-002-39584d0365.png)
 
-**【VBA宏名称或代码】**
+**宏名称或VBA代码**
 
 -   如需执行文档中已有的宏，填写宏的名称。
 -   否则填写完整的宏代码。通常是这样的格式：
@@ -84,19 +82,13 @@ End Function
 
 自1.39.32版本起，VBA脚本支持不在第一行的sub、function，会自动查找到第一个。支持在第一行使用`'main:主程序sub或function名`的方式指定要执行的主要sub或function。(建议不要修改已有动作，避免旧版本Quicker无法支持）
 
-**【等待执行结束】**
+**等待执行结束**：是否等执行完再继续。不等待则 VBA 出错也不会提示。
 
-是否等待执行结束后再继续后面的步骤。
+**最长等待时间(ms)**：等待上限，默认 10000。
 
-如果不等待，在VBA代码执行中遇到的问题将不会有提示和报错。
+**失败后停止动作**：出错后是否中止。默认开启。
 
-**【失败后停止动作】**
-
-执行出错后是否停止动作的运行。
-
-【返回内容】
-
-从`Function`方法中返回的内容。1.39.31+版本支持。
+**返回内容**：`Function` 的返回值。1.39.31+。
 
 ## 设置格式、设置对象属性
 
@@ -108,7 +100,7 @@ End Function
 
 -   可参考通过录制宏得到的代码。
 
-### 参数
+### 参数说明
 
 <ModuleParamPreview
   moduleKey="sys:officehelper"
@@ -126,11 +118,9 @@ End Function
   }}
 />
 
-**【应用程序】**
+**应用程序**：目前不支持 Excel 和 WPS 表格。
 
-选择程序类型。目前不支持Excel和WPS表格。
-
-**【格式设置/对象属性赋值】**
+**格式设置/属性赋值代码**
 
 用于设置对象属性值的代码。其语法如下：
 
@@ -141,14 +131,14 @@ End Function
 -   每个对象类型所支持的属性，可以参考VBA文档，或通过查看录制宏所生成的代码了解。
 -   也可以通过`.方法名: 参数1,参数2,....`的形式调用参数类型明确的简单方法。
 -   对可枚举类型(IEnumerable)类型的对象，可以使用`.*`表示其每个元素。用于对该枚举对象的每个元素调用相同的处理。
--   可以在行的开始使用`//`注释一行
--   布尔类型属性，可以使用`!`表示对当前值取反。[示例动作](https://getquicker.net/Sharedaction?code=dd32199e-8d36-465a-b13d-08dac77c5292)
+- 可以在行的开始使用 `//` 注释一行
+- 布尔类型属性，可以使用 `!` 表示对当前值取反。
 
 注：本功能通过c#的反射机制查找属性和方法名称，并根据其类型定义转换属性值。有的参数类型可能无法正常转换。
 
-**【等待执行结束】**
+**等待执行结束**：不等待则忽略错误。
 
-是否等待执行结束后再继续后面的步骤。如果不等待，将会忽略所遇到的任何错误。
+**最长等待时间(ms)**：等待上限，默认 10000。
 
 ### Word 支持说明
 
@@ -344,7 +334,14 @@ selection.shapes
 
 ### 示例动作
 
--   [冻结窗格](https://getquicker.net/Sharedaction?code=dd32199e-8d36-465a-b13d-08dac77c5292)
+<StepProgramView example="dd32199e-8d36-465a-b13d-08dac77c5292" />
+
+<ShareLinkCard
+  code="dd32199e-8d36-465a-b13d-08dac77c5292"
+  title="冻结窗格"
+  description="使用对象赋值方式实现冻结窗格，支持 Excel 和 WPS 表格"
+  author="CL"
+/>
 
 ## 获取ProgId
 
@@ -359,15 +356,32 @@ selection.shapes
   outputVars={{progId: 'progId'}}
 />
 
-示例动作：
+<StepProgramView example="3737b0c5-e216-4f76-b13e-08dac77c5292" />
 
--   [示例：C#冻结窗格](https://getquicker.net/Sharedaction?code=3737b0c5-e216-4f76-b13e-08dac77c5292)
+<ShareLinkCard
+  code="3737b0c5-e216-4f76-b13e-08dac77c5292"
+  title="示例：C#冻结窗格"
+  description="使用 C# 脚本实现冻结窗格"
+  author="CL"
+/>
 
 ## 执行界面命令
 
-Office软件上每个按钮通常对应一个ID字符串，如格式刷按钮对应的ID为`FormatPainter`。本操作类型可以根据给定的命令ID触发对应的功能。
+功能区每个按钮通常对应一个命令 ID，如格式刷是 `FormatPainter`。本操作按 ID 触发。
 
-![](./img/officehelper-005-1abbf9a2b3.png)
+<ModuleParamPreview
+  moduleKey="sys:officehelper"
+  focusKeys={['operation', 'appType', 'command', 'waitResp', 'stopIfFail']}
+  values={{
+    operation: 'executeMsoCommand',
+    appType: 'word_wps',
+    command: 'AlignRight',
+    waitResp: 'true',
+    stopIfFail: 'true',
+  }}
+/>
+
+**命令ID**：界面按钮对应的 ID。
 
 可以从如下渠道获取某个功能对应的ID：
 
@@ -417,6 +431,28 @@ Office软件上每个按钮通常对应一个ID字符串，如格式刷按钮对
 
 -   如果Excel中有打开的对话框，关闭这些对话框窗口；
 -   如果有已打开的Excel，从任务管理器中找到并退出这些进程。
+
+## 相关链接
+
+<RelatedDocs
+  items={[
+    {
+      href: '/v2/xaction/modules/excelrange',
+      label: 'Excel区域操作',
+      description: '控制已打开的 Excel 区域。',
+    },
+    {
+      href: '/v2/xaction/modules/excelobjects',
+      label: 'Excel对象操作',
+      description: '工作簿 / 工作表对象。',
+    },
+    {
+      href: '/v2/xaction/modules/excelreadwrite',
+      label: 'Excel文件读写',
+      description: '不启动 Excel，直接读写文件。',
+    },
+  ]}
+/>
 
 ## 更新历史
 

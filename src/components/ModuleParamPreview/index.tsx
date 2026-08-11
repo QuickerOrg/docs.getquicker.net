@@ -30,6 +30,13 @@ export type ModuleParamPreviewProps = {
   actionIcon?: string;
   /** Override section body scrolling. Default: scroll when the form is long. */
   scrollBody?: boolean;
+  /** Step note shown in the footer. */
+  note?: string;
+  /** “停用此步骤” checkbox (read-only chrome). */
+  stepDisabled?: boolean;
+  /** Overlay chrome when opened from StepProgramView double-click. */
+  dialog?: boolean;
+  onClose?: () => void;
   className?: string;
 };
 
@@ -48,12 +55,42 @@ export default function ModuleParamPreview({
   collapseOthers,
   actionIcon,
   scrollBody,
+  note,
+  stepDisabled,
+  dialog = false,
+  onClose,
   className,
 }: ModuleParamPreviewProps): ReactNode {
   const module = getModuleDef(moduleKey);
   if (!module) {
     return (
-      <div className={['qk-sr-param-form', className].filter(Boolean).join(' ')}>
+      <div
+        className={[
+          'qk-sr-param-form',
+          dialog ? 'qk-sr-param-form--dialog' : '',
+          className,
+        ]
+          .filter(Boolean)
+          .join(' ')}
+        role={dialog ? 'dialog' : undefined}
+        aria-modal={dialog || undefined}
+        aria-labelledby={dialog ? 'step-editor-popup-title' : undefined}
+      >
+        {dialog ? (
+          <div className="step-editor-popup-header">
+            <h2 id="step-editor-popup-title">查看步骤</h2>
+            {onClose ? (
+              <button
+                type="button"
+                className="step-editor-popup-close"
+                aria-label="关闭"
+                onClick={onClose}
+              >
+                ×
+              </button>
+            ) : null}
+          </div>
+        ) : null}
         <p className="qk-sr-param-form__missing">
           未找到模块定义 <code>{moduleKey}</code>
         </p>
@@ -81,6 +118,10 @@ export default function ModuleParamPreview({
       collapseOthers={collapseOthers}
       actionIcon={actionIcon}
       scrollBody={scrollBody}
+      note={note}
+      stepDisabled={stepDisabled}
+      dialog={dialog}
+      onClose={onClose}
       className={className}
     />
   );

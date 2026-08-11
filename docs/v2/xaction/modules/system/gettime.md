@@ -7,7 +7,7 @@ sidebar_position: 70
 quickerDocKey: "xaction/module/sys:getCurrentTime"
 comments: true
 moduleKey: "sys:getCurrentTime"
-docStatus: "migrated-unreviewed"
+docStatus: "reviewed"
 metadataGeneratedAt: "2026-08-03 20:08:03"
 legacyDocId: 2118194
 legacyContentUpdatedAt: "2025-01-20T00:48:35.000Z"
@@ -15,33 +15,27 @@ legacyContentUpdatedAt: "2025-01-20T00:48:35.000Z"
 
 # 获取日期时间
 
-获取当前或从文本、unix时间戳转换日期时间
+取当前时间，或从文本、Unix 时间戳、时间变量转换，再按需要加减时长并格式化输出。只要对已有时间做差或换时区，用 [计算时间](/v2/xaction/modules/computetime)。表达式里也可以直接用 C# [DateTime](https://learn.microsoft.com/dotnet/api/system.datetime)。
 
 ## 当前模块定义
 
 <XActionModuleMeta moduleKey="sys:getCurrentTime" />
 
-获取一个时间（如系统当前时间/从时间戳或文本内容转换），根据需求做一定的计算，然后输出结果时间。
+## 概述
 
-本部分内容也可以直接在表达式中使用C#的[DateTime](https://learn.microsoft.com/en-us/dotnet/api/system.datetime?view=netframework-4.7.2)类型实现。
+分三步：选时间来源 → 按需加减 → 设定文本格式。
 
-![](./img/gettime-001-55f804be61.png)
+<ModuleParamPreview moduleKey="sys:getCurrentTime" />
 
-## 参数
+## 参数说明
 
-### 输入
+**时间来源**：当前时间、从文本转换、从 Unix 时间戳转换（秒 / 毫秒）、时间变量。
 
-#### 第一部分，获取原始时间值。
+**使用UTC时间**：仅当前时间、从文本、从时间戳。开启返回 UTC，关闭返回本地时间。默认关闭。标准 Unix 时间戳请开启；按本地 1970-01-01 起算的时间戳请关闭。
 
-【时间来源】选择原始时间的来源，可选值如下：
+**失败后停止**：失败是否中止动作。默认开启。
 
--   当前时间
--   从文本转换
--   从Unix时间戳转换(秒)
--   从Unix时间戳转换(毫秒)
--   时间变量
-
-**当前时间**
+### 当前时间
 
 <ModuleParamPreview
   moduleKey="sys:getCurrentTime"
@@ -49,13 +43,7 @@ legacyContentUpdatedAt: "2025-01-20T00:48:35.000Z"
   values={{source: 'currTime', useUtc: 'false'}}
 />
 
-获取系统当前时间。
-
-选中“使用UTC时间”时，返回当前UTC时间，否则返回本地时间。
-
-**从文本值转换**
-
-从文本中解析时间。
+### 从文本转换
 
 <ModuleParamPreview
   moduleKey="sys:getCurrentTime"
@@ -68,15 +56,15 @@ legacyContentUpdatedAt: "2025-01-20T00:48:35.000Z"
   }}
 />
 
-【待解析文本】需要从中获取时间的文本值。
+**待解析文本**：要从中解析时间的文本。
 
-【语言文化】用于将其它语言的文本值转换为时间。如果时间值是和特定语言无关的（如2023-12-13 22:22:00），此处保持默认即可。
+**语言文化**：解析其它语言的时间文本时使用。与语言无关的值（如 `2023-12-13 22:22:00`）保持默认即可。
 
-【数据格式】在解析特定格式的时间时，可从此参数指定格式内容。
+**数据格式**：特定格式时填写，如 `yyyy` 表示 4 位年、`MM` 表示 2 位月。
 
 ![](./img/gettime-004-27bb91cde0.png)
 
-**从Unix时间戳转换（秒/毫秒）**
+### 从 Unix 时间戳转换
 
 <ModuleParamPreview
   moduleKey="sys:getCurrentTime"
@@ -88,11 +76,9 @@ legacyContentUpdatedAt: "2025-01-20T00:48:35.000Z"
   }}
 />
 
-Unix时间戳是从1970年1月1日（UTC）开始所经过的秒数（或毫秒数）。但是实际也会遇到一些从本地时间1970年1月1日0点开始计算的时间戳。
+**Unix时间戳值**：从 1970-01-01 起经过的秒数或毫秒数。
 
-如果时间戳是标准的，请选中“使用UTC时间”选项。如果时间戳是以本地时间计算的，请去掉此选项。
-
-**时间变量**
+### 时间变量
 
 <ModuleParamPreview
   moduleKey="sys:getCurrentTime"
@@ -100,121 +86,105 @@ Unix时间戳是从1970年1月1日（UTC）开始所经过的秒数（或毫秒�
   values={{source: 'fromVar', timeVar: 'timeVar'}}
 />
 
-读取指定时间变量中的值。
+**时间变量**：要读取的时间变量。
 
-#### 第二部分，计算。
+### 加减时长
 
-在获取的原始时间的基础上，增减指定的时间值，仅需要时填写。
+在原始时间上增减，仅需要时填写。
 
-【增加天数】【增加小时数】【增加分钟数】【增加秒数】：正值表示增加，负值表示减少的时间值。可以为小数。
+**添加天数** / **添加小时数** / **添加分钟数** / **添加秒数**：正加负减，可以为小数。
 
-【增加的月数】需要为整数，正值表示增加，负值表示减少。不会跨月，比如3月31日加1个月等于4月30日。
+**添加月数**：整数。结果不跨月，如 3 月 31 日加 1 个月等于 4 月 30 日。
 
-#### 第三部分，设定输出文本的格式
+### 输出文本格式
 
-如果不需要输出“文本值”，则可忽略本部分参数。
+不需要 **文本值** 时可忽略。
 
 ![](./img/gettime-007-d4ab510a53.png)
 
-【输出文本值格式】
+**输出文本值格式**：控制 **文本值** 的格式，见 C# `DateTime.ToString`。例如 `yyyy-MM-dd HH:mm:ss` → `2020-06-16 10:38:32`。默认即此格式。
 
-用于控制输出参数中的“文本值”的日期时间格式。请参考C#日期时间格式化相关内容。
+**输出语言文化**：输出其它语言的时间文本时设定。
 
-如，使用“yyyy-MM-dd HH:mm:ss”，得到的文本值为“2020-06-16 10:38:32”
+### 常用格式指令
 
-【输出语言文化】
-
-当需要输出其它语言的时间文本时，设定目标语言信息。
-
-### 常用格式指令字符
-
-**标准日期时间格式字符串**（[参考](https://learn.microsoft.com/zh-cn/dotnet/standard/base-types/standard-date-and-time-format-strings)，下表为此参考文档内容摘录）
-
-指定某个标准格式，这里的格式说明符需要单独使用，不能组合。
+**标准日期时间格式字符串**（[参考](https://learn.microsoft.com/zh-cn/dotnet/standard/base-types/standard-date-and-time-format-strings)）需单独使用，不能组合。
 
 | 格式说明符 | 描述 | 示例 |
 | --- | --- | --- |
-| d | 短日期模式。  <br />  <br />有关详细信息，请参阅[短日期（“d”）格式说明符](https://learn.microsoft.com/zh-cn/dotnet/standard/base-types/standard-date-and-time-format-strings)<br />。 | 2009-06-15T13:45:30 -&gt; 6/15/2009 (en-US)  <br />  <br />2009-06-15T13:45:30 -&gt; 15/06/2009 (fr-FR)  <br />  <br />2009-06-15T13:45:30 -&gt; 2009/06/15 (ja-JP) |
-| D | 长日期模式。  <br />  <br />有关详细信息，请参阅[长日期（“D”）格式说明符](https://learn.microsoft.com/zh-cn/dotnet/standard/base-types/standard-date-and-time-format-strings)<br />。 | 2009-06-15T13:45:30 -&gt; Monday, June 15, 2009 (en-US)  <br />  <br />2009-06-15T13:45:30 -&gt; понедельник, 15 июня 2009 г. (ru-RU)  <br />  <br />2009-06-15T13:45:30 -&gt; Montag, 15. Juni 2009 (de-DE) |
-| f | 完整日期/时间模式（短时间）。  <br />  <br />更多信息：[完整日期短时间（“f”）格式说明符](https://learn.microsoft.com/zh-cn/dotnet/standard/base-types/standard-date-and-time-format-strings#FullDateShortTime)<br />。 | 2009-06-15T13:45:30 -&gt; Monday, June 15, 2009 1:45 PM (en-US)  <br />  <br />2009-06-15T13:45:30 -&gt; den 15 juni 2009 13:45 (sv-SE)  <br />  <br />2009-06-15T13:45:30 -&gt; Δευτέρα, 15 Ιουνίου 2009 1:45 μμ (el-GR) |
-| F | 完整日期/时间模式（长时间）。  <br />  <br />更多信息：[完整日期长时间（“F”）格式说明符](https://learn.microsoft.com/zh-cn/dotnet/standard/base-types/standard-date-and-time-format-strings#FullDateLongTime)<br />。 | 2009-06-15T13:45:30 -&gt; Monday, June 15, 2009 1:45:30 PM (en-US)  <br />  <br />2009-06-15T13:45:30 -&gt; den 15 juni 2009 13:45:30 (sv-SE)  <br />  <br />2009-06-15T13:45:30 -&gt; Δευτέρα, 15 Ιουνίου 2009 1:45:30 μμ (el-GR) |
-| g | 常规日期/时间模式（短时间）。  <br />  <br />更多信息：[常规日期短时间（“g”）格式说明符](https://learn.microsoft.com/zh-cn/dotnet/standard/base-types/standard-date-and-time-format-strings#GeneralDateShortTime)<br />。 | 2009-06-15T13:45:30 -&gt; 6/15/2009 1:45 PM (en-US)  <br />  <br />2009-06-15T13:45:30 -&gt; 15/06/2009 13:45 (es-ES)  <br />  <br />2009-06-15T13:45:30 -&gt; 2009/6/15 13:45 (zh-CN) |
-| G | 常规日期/时间模式（长时间）。  <br />  <br />更多信息：[常规日期长时间（“G”）格式说明符](https://learn.microsoft.com/zh-cn/dotnet/standard/base-types/standard-date-and-time-format-strings#GeneralDateLongTime)<br />。 | 2009-06-15T13:45:30 -&gt; 6/15/2009 1:45:30 PM (en-US)  <br />  <br />2009-06-15T13:45:30 -&gt; 15/06/2009 13:45:30 (es-ES)  <br />  <br />2009-06-15T13:45:30 -&gt; 2009/6/15 13:45:30 (zh-CN) |
-| M、m | 月/日模式。  <br />  <br />更多信息：[月（“M”、“m”）格式说明符](https://learn.microsoft.com/zh-cn/dotnet/standard/base-types/standard-date-and-time-format-strings)<br />。 | 2009-06-15T13:45:30 -&gt; June 15 (en-US)  <br />  <br />2009-06-15T13:45:30 -&gt; 15. juni (da-DK)  <br />  <br />2009-06-15T13:45:30 -&gt; 15 Juni (id-ID) |
-| O、o | 往返日期/时间模式。  <br />  <br />更多信息：[往返（“O”、“o”）格式说明符](https://learn.microsoft.com/zh-cn/dotnet/standard/base-types/standard-date-and-time-format-strings)<br />。 | [DateTime](https://learn.microsoft.com/zh-cn/dotnet/api/system.datetime)<br />值：  <br />  <br />2009-06-15T13:45:30 (DateTimeKind.Local) --&gt; 2009-06-15T13:45:30.0000000-07:00  <br />  <br />2009-06-15T13:45:30 (DateTimeKind.Utc) --&gt; 2009-06-15T13:45:30.0000000Z  <br />  <br />2009-06-15T13:45:30 (DateTimeKind.Unspecified) --&gt; 2009-06-15T13:45:30.0000000  <br />  <br />[DateTimeOffset](https://learn.microsoft.com/zh-cn/dotnet/api/system.datetimeoffset)<br />值：  <br />  <br />2009-06-15T13:45:30-07:00 --&gt; 2009-06-15T13:45:30.0000000-07:00 |
-| R、r | RFC1123 模式。  <br />  <br />更多信息：[RFC1123（“R”、“r”）格式说明符](https://learn.microsoft.com/zh-cn/dotnet/standard/base-types/standard-date-and-time-format-strings)<br />。 | 2009-06-15T13:45:30 -&gt; Mon, 15 Jun 2009 20:45:30 GMT |
-| s | 可排序日期/时间模式。  <br />  <br />更多信息：[可排序（“s”）格式说明符](https://learn.microsoft.com/zh-cn/dotnet/standard/base-types/standard-date-and-time-format-strings)<br />。 | 2009-06-15T13:45:30 (DateTimeKind.Local) -&gt; 2009-06-15T13:45:30  <br />  <br />2009-06-15T13:45:30 (DateTimeKind.Utc) -&gt; 2009-06-15T13:45:30 |
-| t | 短时间模式。  <br />  <br />更多信息：[短时间（“t”）格式说明符](https://learn.microsoft.com/zh-cn/dotnet/standard/base-types/standard-date-and-time-format-strings)<br />。 | 2009-06-15T13:45:30 -&gt; 1:45 PM (en-US)  <br />  <br />2009-06-15T13:45:30 -&gt; 13:45 (hr-HR)  <br />  <br />2009-06-15T13:45:30 -&gt; 01:45 م (ar-EG) |
-| T | 长时间模式。  <br />  <br />更多信息：[长时间（“T”）格式说明符](https://learn.microsoft.com/zh-cn/dotnet/standard/base-types/standard-date-and-time-format-strings)<br />。 | 2009-06-15T13:45:30 -&gt; 1:45:30 PM (en-US)  <br />  <br />2009-06-15T13:45:30 -&gt; 13:45:30 (hr-HR)  <br />  <br />2009-06-15T13:45:30 -&gt; 01:45:30 م (ar-EG) |
-| u | 通用可排序日期/时间模式。  <br />  <br />更多信息：[通用可排序（“u”）格式说明符](https://learn.microsoft.com/zh-cn/dotnet/standard/base-types/standard-date-and-time-format-strings#UniversalSortable)<br />。 | 含 [DateTime](https://learn.microsoft.com/zh-cn/dotnet/api/system.datetime)<br />值：2009-06-15T13:45:30 -&gt; 2009-06-15 13:45:30Z  <br />  <br />含 [DateTimeOffset](https://learn.microsoft.com/zh-cn/dotnet/api/system.datetimeoffset)<br />值：2009-06-15T13:45:30 -&gt; 2009-06-15 20:45:30Z |
-| U | 通用完整日期/时间模式。  <br />  <br />更多信息：[通用完整（“U”）格式说明符](https://learn.microsoft.com/zh-cn/dotnet/standard/base-types/standard-date-and-time-format-strings#UniversalFull)<br />。 | 2009-06-15T13:45:30 -&gt; Monday, June 15, 2009 8:45:30 PM (en-US)  <br />  <br />2009-06-15T13:45:30 -&gt; den 15 juni 2009 20:45:30 (sv-SE)  <br />  <br />2009-06-15T13:45:30 -&gt; Δευτέρα, 15 Ιουνίου 2009 8:45:30 μμ (el-GR) |
-| Y、y | 年月模式。  <br />  <br />更多信息：[年月（“Y”、“y”）格式说明符](https://learn.microsoft.com/zh-cn/dotnet/standard/base-types/standard-date-and-time-format-strings)<br />。 | 2009-06-15T13:45:30 -&gt; June 2009 (en-US)  <br />  <br />2009-06-15T13:45:30 -&gt; juni 2009 (da-DK)  <br />  <br />2009-06-15T13:45:30 -&gt; Juni 2009 (id-ID) |
+| d | 短日期 | 2009-06-15T13:45:30 → 6/15/2009 (en-US) |
+| D | 长日期 | → Monday, June 15, 2009 (en-US) |
+| f / F | 完整日期/时间（短/长） | |
+| g / G | 常规日期/时间（短/长） | zh-CN 下 G → 2009/6/15 13:45:30 |
+| M、m | 月/日 | June 15 (en-US) |
+| O、o | 往返 | 含时区偏移 |
+| R、r | RFC1123 | Mon, 15 Jun 2009 20:45:30 GMT |
+| s | 可排序 | 2009-06-15T13:45:30 |
+| t / T | 短/长时间 | |
+| u / U | 通用可排序 / 通用完整 | |
+| Y、y | 年月 | June 2009 (en-US) |
 
-**自定义日期时间格式字符串**（[参考](https://learn.microsoft.com/zh-cn/dotnet/standard/base-types/custom-date-and-time-format-strings)）
+**自定义日期时间格式字符串**（[参考](https://learn.microsoft.com/zh-cn/dotnet/standard/base-types/custom-date-and-time-format-strings)）可组合，如 `yyyy-MM-dd`。
 
-可组合使用。如`yyyy-MM-dd`
-
-| **符号** | **说明** | **示例(2016-05-09 13:09:55:2350)** |
+| 符号 | 说明 | 示例（2016-05-09 13:09:55.2350） |
 | --- | --- | --- |
-| yy | 年份后两位 | 16 |
-| yyyy | 4位年份 | 2016 |
-| MM | 两位月份；单数月份前面用0填充 | 05 |
-| M | 不补0的自然数月份 | 5 |
-| dd | 长日期，前面补0 | 09 |
-| d | 短日期，前面不补0 | 9 |
-| ddd | 周几 | 周一 |
-| dddd | 星期几 | 星期一 |
-| hh | 12小时制的小时数 | 01 |
-| h | 不补0的小时数 | 1 |
-| HH | 24小时制的小时数 | 13 |
-| H | 不补0的小时数 | 13 |
-| mm | 分钟数 | 09 |
-| m | 不补0的分钟数 | 9 |
-| ss | 秒数 | 05 |
-| s | 不补0的秒数 | 5 |
-| ff | 毫秒数前2位 | 23 |
-| fff | 毫秒数前3位 | 235 |
-| ffff | 毫秒数前4位 | 2350 |
-| 分隔符 | 可使用分隔符来分隔年月日时分秒。<br />包含的值可为：-、/、:等非关键字符(中文也可以） | yyyy-MM-dd HH:mm:ss:ffff<br />  =&gt; 2016-05-09 13:09:55:2350<br />yyyy/MM/dd HH:mm:ss:ffff<br />  =&gt; 2016/05/09 13:09:55:2350<br />yyyy/MM/dd HH:mm:ss:ffff dddd<br />  =&gt; 2016/05/09 13:09:55:2350 星期一<br />yyyy年MM月dd日 HH时mm分ss秒<br />\=&gt; 2016年05月09日 13时09分55秒 |
+| yy / yyyy | 两位 / 四位年 | 16 / 2016 |
+| M / MM | 月（不补 0 / 补 0） | 5 / 05 |
+| d / dd | 日 | 9 / 09 |
+| ddd / dddd | 周几 / 星期几 | 周一 / 星期一 |
+| h / hh | 12 小时制 | 1 / 01 |
+| H / HH | 24 小时制 | 13 |
+| m / mm | 分 | 9 / 09 |
+| s / ss | 秒 | 5 / 05 |
+| ff / fff / ffff | 毫秒前 2/3/4 位 | 23 / 235 / 2350 |
 
-### 输出
+分隔符可用 `-`、`/`、`:` 或中文，例如 `yyyy年MM月dd日 HH时mm分ss秒`。
 
-【原始值】计算得到的时间类型变量值。
+## 输出
 
-【文本值】依据输入参数“文本值格式”，将原始值转换成的文本格式，用于输出到文本变量中。
-
-【Unix时间戳】将原始值转换为Unix时间戳。此处不考虑原始值是本地时间还是UTC时间。
-
-【年】【月】【日】【时】【分】【秒】时间值中对应的数据。
-
-【周第几天】是一周中的第几天。周日为0，周一为1，以此类推。
-
-【年第几天】是当年的第几天。
+- **是否成功**
+- **时间值**：日期时间类型的结果。
+- **文本值**：按 **输出文本值格式** 转成的文本。
+- **UNIX时间戳(s)** / **UNIX时间戳(ms)**：此处不考虑原始值是本地还是 UTC。
+- **年** / **月** / **日** / **时** / **分** / **秒**
+- **周第几天**：周日为 0，周一为 1。
+- **年第几天**
 
 ## 表达式
 
-也可以使用表达式的方式代替本模块的功能。
+也可以不用本模块，例如：
 
-例如：
+- `$= "当前时间是：" + DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss")`
+- `$=DateTime.Now.Year`
 
--   $= "当前时间是：" + DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss")
+## 示例
 
--   将一个文本加上当前时间的文本值
+<StepProgramView example="2a89f753-546d-45d0-bfd9-08d6720e1a02" />
 
--   $=DateTime.Now.Year
+<ShareLinkCard
+  code="2a89f753-546d-45d0-bfd9-08d6720e1a02"
+  title="插入日期时间"
+  description="在当前位置插入时间/日期"
+  author="CL"
+/>
 
--   得到当前年份数字
+## 限制与排障
 
-## 示例动作
+从文本转换失败时，核对 **语言文化** 和 **数据格式** 是否与原文一致。时间戳单位要和「秒 / 毫秒」操作对应。1.36.33+ 才有输入格式/语言、输出语言等参数。
 
--   插入日期时间：[https://getquicker.net/sharedaction?code=2a89f753-546d-45d0-bfd9-08d6720e1a02](https://getquicker.net/sharedaction?code=2a89f753-546d-45d0-bfd9-08d6720e1a02)
+## 相关链接
 
-## 参考
-
--   c# DateTime日期格式化 [https://www.cnblogs.com/polk6/p/5465088.html](https://www.cnblogs.com/polk6/p/5465088.html) 
--   组合成文本模块 [/v2/xaction/modules/formatstring](/v2/xaction/modules/formatstring)
-
-## 更新历史
-
--   20230213 增加输入文本格式/语言，输出文本语言等参数（需Quicker1.36.33+版本）。完善文档。
--   20250120 更新文档标题，以匹配实际功能。
+<RelatedDocs
+  items={[
+    {
+      href: '/v2/xaction/modules/computetime',
+      label: '计算时间',
+      description: '算时间差、加减时长、本地与 UTC 互转。',
+    },
+    {
+      href: '/v2/xaction/modules/formatstring',
+      label: '组合成文本',
+      description: '把时间文本嵌进一段说明。',
+    },
+  ]}
+/>

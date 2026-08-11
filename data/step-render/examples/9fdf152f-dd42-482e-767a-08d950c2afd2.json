@@ -1,0 +1,204 @@
+{
+  "code": "9fdf152f-dd42-482e-767a-08d950c2afd2",
+  "title": "查词",
+  "description": "查询每个英文单词的含义",
+  "author": "CL",
+  "revision": 5,
+  "source": "https://getquicker.net/sharedaction?code=9fdf152f-dd42-482e-767a-08d950c2afd2",
+  "pulledAt": "2026-08-11T21:28:52.533Z",
+  "variables": [
+    {
+      "name": "text",
+      "type": "Text",
+      "remark": "默认的文本变量"
+    },
+    {
+      "name": "words",
+      "type": "Text",
+      "remark": "待查的单词"
+    },
+    {
+      "name": "resultText",
+      "type": "Text"
+    },
+    {
+      "name": "searchResult",
+      "type": "Text",
+      "remark": "搜索处理结果"
+    }
+  ],
+  "steps": [
+    {
+      "key": "sys:comment",
+      "inputs": {
+        "note": "实时搜索处理"
+      }
+    },
+    {
+      "key": "sys:simpleIf",
+      "inputs": {
+        "condition": "$={quicker_in_param}.StartsWith(\"search:\")"
+      },
+      "ifSteps": [
+        {
+          "key": "sys:if",
+          "inputs": {
+            "condition": "$= {quicker_in_param}.Length == \"search:\".Length"
+          },
+          "ifSteps": [
+            {
+              "key": "sys:comment",
+              "inputs": {
+                "note": "搜索内容为空。"
+              }
+            }
+          ],
+          "elseSteps": [
+            {
+              "key": "sys:subprogram",
+              "inputs": {
+                "subProgram": "搜索处理",
+                "stopIfFail": "1",
+                "var:searchWord": "$={quicker_in_param}.Substring(\"search:\".Length)"
+              },
+              "outputs": {
+                "var:searchResult": "searchResult"
+              }
+            }
+          ]
+        },
+        {
+          "key": "sys:stop",
+          "inputs": {
+            "method": "default",
+            "isError": "0",
+            "return": "{searchResult}"
+          }
+        }
+      ]
+    },
+    {
+      "key": "sys:comment",
+      "inputs": {
+        "note": "正常动作处理"
+      }
+    },
+    {
+      "key": "sys:getSelectedText",
+      "inputs": {
+        "format": "UnicodeText",
+        "repeat": "0",
+        "useActionParam": "1",
+        "stopIfFail": "0"
+      },
+      "outputs": {
+        "output": "text"
+      }
+    },
+    {
+      "key": "sys:simpleIf",
+      "inputs": {
+        "condition": "$=String.IsNullOrWhiteSpace({text})"
+      },
+      "ifSteps": [
+        {
+          "key": "sys:quickeroperations",
+          "inputs": {
+            "type": "StartSearchWithAction"
+          }
+        },
+        {
+          "key": "sys:stop",
+          "inputs": {
+            "method": "default",
+            "isError": "0",
+            "showMessage": "请选择单词后查询。"
+          }
+        }
+      ]
+    },
+    {
+      "key": "sys:comment",
+      "inputs": {
+        "note": "如果是一个单词，则将组合词拆分成多个单词。否则根据单词中间的符号拆分成多个单词进行查询。"
+      }
+    },
+    {
+      "key": "sys:if",
+      "inputs": {
+        "condition": "$= {text}.ContainsAny(\",\",\".\",\" \",\"\\t\",\"(\",\"\\n\")"
+      },
+      "note": "如果不只是一个词",
+      "ifSteps": [
+        {
+          "key": "sys:assign",
+          "inputs": {
+            "input": "$=String.Join(\",\", {text}.Split(new char[]{',',' ','\\t','.'}, StringSplitOptions.RemoveEmptyEntries));",
+            "stopIfFail": "1"
+          },
+          "outputs": {
+            "output": "words"
+          },
+          "note": "通过符号提取单词"
+        }
+      ],
+      "elseSteps": [
+        {
+          "key": "sys:stringProcess",
+          "inputs": {
+            "data": "{text}",
+            "method": "intercappedToSentence",
+            "stopIfFail": "1"
+          },
+          "outputs": {
+            "output": "text"
+          }
+        },
+        {
+          "key": "sys:assign",
+          "inputs": {
+            "input": "$=String.Join(\",\", {text}.Split(new char[]{',',' ','\\t','.'}, StringSplitOptions.RemoveEmptyEntries));",
+            "stopIfFail": "1"
+          },
+          "outputs": {
+            "output": "words"
+          },
+          "note": "通过符号提取单词"
+        }
+      ]
+    },
+    {
+      "key": "sys:comment",
+      "inputs": {
+        "note": "查单词并显示。"
+      }
+    },
+    {
+      "key": "sys:translation",
+      "inputs": {
+        "operation": "en2zh_dict",
+        "text": "{words}",
+        "stopIfFail": "1"
+      },
+      "outputs": {
+        "resultText": "resultText"
+      }
+    },
+    {
+      "key": "sys:showText",
+      "inputs": {
+        "type": "NO_WAIT",
+        "text": "$$【原文】{words}\r\n\r\n{resultText}",
+        "title": "结果内容",
+        "topMost": "false",
+        "winLocation": "CenterScreen",
+        "fontsize": "14",
+        "closeWhenLostFocus": "true",
+        "showLineNum": "true",
+        "autoWrap": "true",
+        "showBuildInToolbar": "true",
+        "copyWholeLine": "false"
+      }
+    }
+  ]
+}

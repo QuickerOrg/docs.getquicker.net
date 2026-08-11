@@ -1,13 +1,13 @@
 ---
 title: "重放键鼠操作"
-description: "重放录制好的键鼠操作数据。"
+description: "按指定速度回放录制好的键鼠操作数据。"
 slug: "/v2/xaction/modules/playrecord"
 sidebar_label: "重放键鼠操作"
 sidebar_position: 100
 quickerDocKey: "xaction/module/sys:playRecords"
 comments: true
 moduleKey: "sys:playRecords"
-docStatus: "migrated-unreviewed"
+docStatus: "reviewed"
 metadataGeneratedAt: "2026-08-03 20:08:03"
 legacyDocId: 3817323
 legacyContentUpdatedAt: "2024-07-11T01:19:39.000Z"
@@ -15,101 +15,90 @@ legacyContentUpdatedAt: "2024-07-11T01:19:39.000Z"
 
 # 重放键鼠操作
 
-重放录制好的键鼠操作数据。
+回放 [录制键鼠操作](/v2/xaction/modules/record) 或托盘「键鼠录制工具」录下的数据。
 
 ## 当前模块定义
 
 <XActionModuleMeta moduleKey="sys:playRecords" />
 
-回放录制的键鼠操作。
+## 概述
 
-可以使用托盘菜单中的“键鼠录制工具”录制，也可以使用“录制键鼠操作”模块录制。请参考：[/v2/xaction/modules/record](/v2/xaction/modules/record)
-
-注意：录制的数据使用绝对坐标，重放时是否能够成功依赖比较多的因素：
-
--   窗口位置和状态
--   屏幕分辨率
--   输入法状态
--   其他可能有影响的情况。
-
-因此包含这类操作的动作仅供特定情况下使用，使用时需保持和录制时尽量相同的环境。
+坐标是绝对坐标。窗口位置、分辨率、输入法和录制时不一致时，重放容易失败。
 
 <ModuleParamPreview moduleKey="sys:playRecords" />
 
-### 如何中止重放
-
-与其他情形下中止动作的操作类似，可以在配置中设置好“停止运行中动作”的快捷键后，在需要时按下此快捷键。
+中止重放：在设置里配好「停止运行中的动作」快捷键，重放时按下即可。
 
 ![](./img/playrecord-002-13e45d2fc0.png)
 
-## 参数
+## 参数说明
 
-【录制数据】使用录制功能录制的键鼠操作数据。
+**录制数据**：录制模块或录制工具输出的文本。
 
-【重放速度】重复速度，1为原始速度，1.5为原始速度的1.5倍（更快）。
+**重放速度**：`1` 为原始速度，`1.5` 更快。默认 `2`。
 
-## 录制数据的格式
+## 录制数据格式
 
-以下为一段实例数据：
+`//` 开头的行是注释，会被忽略。其余每行一次操作，用分号和 Tab 分成三部分：
+
+1. 距上一步的毫秒数。重放时会再除以重放速度。
+2. 操作类型。
+3. 该类型的参数。
 
 ```text
-
 816;	MC;	Left,693,2130,1;
 559;	MC;	Left,1531,1274,1;
 707;	KP;	Space;
 207;	KD;	LShiftKey;
 184;	KP;	H;
 59;	KU;	LShiftKey;
-103;	KP;	E;
-106;	KP;	L;
-152;	KP;	L;
-192;	KP;	O;
-152;	KP;	Space;
-130;	KD;	LShiftKey;
-88;	KP;	W;
-72;	KU;	LShiftKey;
-76;	KP;	O;
-126;	KP;	R;
-83;	KP;	L;
-147;	KP;	D;
-216;	KD;	LShiftKey;
-131;	KP;	D1;
-80;	KU;	LShiftKey;
-71;	KD;	LShiftKey;
-40;	KU;	LShiftKey;
 ```
 
-以`//`开始的行视为注释内容，会被忽略。
+操作类型：
 
-除此以外，每行一个键盘或鼠标操作，数据分为3个部分，使用分号和tab分隔开。
+| 类型 | 含义 |
+| --- | --- |
+| MV | 鼠标移动 |
+| MD | 鼠标按下 |
+| MC | 鼠标点击（按下+抬起） |
+| MU | 鼠标抬起 |
+| MH | 水平滚轮 |
+| MW | 垂直滚轮 |
+| DL | 等待（无操作） |
+| KD | 键盘按下 |
+| KU | 键盘抬起 |
+| KP | 按键按下+抬起 |
+| MVD | 移动相对距离（1.10.12+） |
 
-第一个部分：表示距离上一步的毫秒数。重放时会根据速度参数重新计算实际等待时间（此值除以重复速度）。
+鼠标事件参数：`按键,X,Y,滚动click数`。X/Y 留空或 `-99999` 表示不移动；按键留空表示 None。
 
-第二个部分：表示操作类型。
+- `100; MVD; None,-10,0,0;`：100ms 后向左移 10 像素
+- `0; MW;None,0,0,-30`：滚轮
 
-第三个部分：根据第二部分的操作类型，提供具体的参数。
+键盘事件参数是键名，见 [Keys 枚举](https://docs.microsoft.com/en-us/dotnet/api/system.windows.forms.keys?view=netframework-4.8)。
 
-支持的操作类型有：
+## 限制与排障
 
--   MV：鼠标移动
--   MD：鼠标按下
--   MC：鼠标点击（按下+抬起）
--   MU：鼠标抬起
--   MH：鼠标水平滚轮滚动
--   MW：鼠标滚轮垂直滚动
--   DL：等待时间（无操作）
--   KD：键盘按键按下
--   KU：键盘按键抬起
--   KP：按键按下+抬起
--   MVD：移动相对距离 （1.10.12增加）
+- 环境与录制时不一致就会点偏或输入错。
+- 重放过程中只能靠「停止运行中的动作」快捷键打断。
 
-对鼠标类型的事件，参数格式为：**按键,鼠标位置X,鼠标位置Y,滚动click数量**。x，y坐标留空或-99999表示不移动鼠标，按键位置留空表示None。
+## 相关链接
 
--   例如，100ms后，向左移动10个像素：100; MVD; None,-10,0,0;
--   滚动鼠标滚轮：0; MW;None,0,0,-30
-
-对于按键类型的事件，参数格式为：按键名 （参考：[https://docs.microsoft.com/en-us/dotnet/api/system.windows.forms.keys?view=netframework-4.8](https://docs.microsoft.com/en-us/dotnet/api/system.windows.forms.keys?view=netframework-4.8)）
+<RelatedDocs
+  items={[
+    {
+      href: '/v2/xaction/modules/record',
+      label: '录制键鼠操作',
+      description: '生成这里要回放的数据。',
+    },
+    {
+      href: '/v2/xaction/modules/inputscript',
+      label: '多步骤输入',
+      description: '可维护的替代方案。',
+    },
+  ]}
+/>
 
 ## 更新历史
 
--   20240711 增加注释语法说明。
+- 20240711 增加注释语法说明。

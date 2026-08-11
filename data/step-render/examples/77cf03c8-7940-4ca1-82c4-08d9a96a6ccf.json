@@ -1,0 +1,131 @@
+{
+  "code": "77cf03c8-7940-4ca1-82c4-08d9a96a6ccf",
+  "title": "截图反色",
+  "description": "截图后反色/转换为灰度图片",
+  "author": "CL",
+  "revision": 2,
+  "source": "https://getquicker.net/sharedaction?code=77cf03c8-7940-4ca1-82c4-08d9a96a6ccf",
+  "pulledAt": "2026-08-11T21:27:26.527Z",
+  "variables": [
+    {
+      "name": "img",
+      "type": "Image"
+    },
+    {
+      "name": "rect",
+      "type": "Text"
+    },
+    {
+      "name": "hwnd",
+      "type": "Integer"
+    },
+    {
+      "name": "inverse",
+      "type": "Boolean",
+      "remark": "是否反色"
+    },
+    {
+      "name": "GreyScale",
+      "type": "Boolean",
+      "remark": "是否灰度"
+    },
+    {
+      "name": "brightness",
+      "type": "Integer",
+      "remark": "亮度调整"
+    },
+    {
+      "name": "contrast",
+      "type": "Integer",
+      "remark": "对比度调整"
+    }
+  ],
+  "steps": [
+    {
+      "key": "sys:simpleIf",
+      "inputs": {
+        "condition": "$= {quicker_in_param} == \"settings\""
+      },
+      "ifSteps": [
+        {
+          "key": "sys:form",
+          "inputs": {
+            "title": "填写表单",
+            "formDef": "{\"Fields\":[{\"FieldKey\":\"inverse\",\"Label\":\"是否进行反色处理\",\"HelpText\":\"\",\"HelpLink\":null,\"InputMethod\":6,\"SelectionItems\":\"\",\"IsRequired\":false,\"MinValue\":\"\",\"MaxValue\":\"\",\"Pattern\":\"\",\"MaxLength\":0,\"ImeState\":null,\"TextTools\":\"\",\"VisibleExpression\":\"\"},{\"FieldKey\":\"GreyScale\",\"Label\":\"是否变为灰度图像\",\"HelpText\":\"\",\"HelpLink\":null,\"InputMethod\":6,\"SelectionItems\":\"\",\"IsRequired\":false,\"MinValue\":\"\",\"MaxValue\":\"\",\"Pattern\":\"\",\"MaxLength\":0,\"ImeState\":null,\"TextTools\":\"\",\"VisibleExpression\":\"\"},{\"FieldKey\":\"brightness\",\"Label\":\"亮度调整\",\"HelpText\":\"负数降低亮度，正数增加亮度\",\"HelpLink\":null,\"InputMethod\":7,\"SelectionItems\":\"\",\"IsRequired\":false,\"MinValue\":\"-100\",\"MaxValue\":\"100\",\"Pattern\":\"\",\"MaxLength\":0,\"ImeState\":null,\"TextTools\":\"\",\"VisibleExpression\":\"\"},{\"FieldKey\":\"contrast\",\"Label\":\"对比度调整\",\"HelpText\":\"负数降低对比度，正数增加对比度\",\"HelpLink\":null,\"InputMethod\":7,\"SelectionItems\":\"\",\"IsRequired\":false,\"MinValue\":\"-100\",\"MaxValue\":\"100\",\"Pattern\":\"\",\"MaxLength\":0,\"ImeState\":null,\"TextTools\":\"\",\"VisibleExpression\":\"\"}]}",
+            "titleColumnWidth": "100",
+            "windowWidth": "500",
+            "restoreFocus": "0",
+            "topMost": "false",
+            "stopIfFail": "1"
+          }
+        },
+        {
+          "key": "sys:stop",
+          "inputs": {
+            "method": "default",
+            "isError": "0"
+          }
+        }
+      ]
+    },
+    {
+      "key": "sys:delay",
+      "inputs": {
+        "delayMs": "300",
+        "monitorWaitWin": "0"
+      }
+    },
+    {
+      "key": "sys:screenCapture",
+      "inputs": {
+        "type": "select",
+        "delay": "0",
+        "toClip": "0",
+        "stopIfFail": "1"
+      },
+      "outputs": {
+        "img": "img",
+        "rect": "rect"
+      }
+    },
+    {
+      "key": "sys:imgProcess",
+      "inputs": {
+        "img": "{img}",
+        "type": "Filters",
+        "filterParams": "$= \r\n\"format:png\\r\\n\" \r\n+ ({inverse} ? \"Filter:5\\r\\n\" : \"\")\r\n+ ({GreyScale} ? \"Filter:3\\r\\n\" : \"\")\r\n+ ({brightness} != 0 ? $\"Brightness:{{brightness}}\\r\\n\" : \"\")\r\n+ ({contrast} != 0 ? $\"Contrast:{{contrast}}\\r\\n\" : \"\");",
+        "stopIfFail": "1"
+      },
+      "outputs": {
+        "result": "img"
+      }
+    },
+    {
+      "key": "sys:writeClipboard",
+      "inputs": {
+        "type": "image",
+        "imageVar": "{img}",
+        "stopIfFail": "1"
+      }
+    },
+    {
+      "key": "sys:showImage",
+      "inputs": {
+        "source": "var",
+        "imgVar": "{img}",
+        "scale": "1",
+        "autoCloseTime": "0",
+        "winLocation": "Manual",
+        "winPosition": "{rect}",
+        "waitClose": "0",
+        "showDropShadow": "1",
+        "showTaskbarIcon": "true",
+        "topMost": "true",
+        "noActivate": "1"
+      },
+      "outputs": {
+        "hwnd": "hwnd"
+      }
+    }
+  ]
+}

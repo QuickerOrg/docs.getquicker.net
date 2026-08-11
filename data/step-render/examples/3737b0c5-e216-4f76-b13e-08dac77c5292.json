@@ -1,0 +1,55 @@
+{
+  "code": "3737b0c5-e216-4f76-b13e-08dac77c5292",
+  "title": "示例：C#冻结窗格",
+  "description": "使用c#脚本实现冻结窗格功能",
+  "author": "CL",
+  "revision": 1,
+  "source": "https://getquicker.net/sharedaction?code=3737b0c5-e216-4f76-b13e-08dac77c5292",
+  "pulledAt": "2026-08-11T21:28:47.336Z",
+  "variables": [
+    {
+      "name": "text",
+      "type": "Text",
+      "remark": "默认的文本变量"
+    },
+    {
+      "name": "progId",
+      "type": "Text"
+    }
+  ],
+  "steps": [
+    {
+      "key": "sys:comment",
+      "inputs": {
+        "note": "为兼容Excel和WPS，先根据前台进程获取ProgId（用于调用接口的程序对象标识）"
+      }
+    },
+    {
+      "key": "sys:officehelper",
+      "inputs": {
+        "operation": "getProgId",
+        "appType": "excel_et",
+        "stopIfFail": "1"
+      },
+      "outputs": {
+        "progId": "progId"
+      }
+    },
+    {
+      "key": "sys:comment",
+      "inputs": {
+        "note": "使用c#代码获取程序对象并执行逻辑"
+      }
+    },
+    {
+      "key": "sys:csscript",
+      "inputs": {
+        "mode": "low_permission",
+        "scriptForLp": "$$//.cs  文件类型，便于外部编辑时使用\r\n// 引用必要的命名空间\r\nusing System.Runtime.InteropServices;\r\n\r\n// Quicker将会调用的函数\r\npublic static string Exec(string paramValue)\r\n{\r\n   dynamic app = Marshal.GetActiveObject(\"{progId}\");\r\n    \r\n    app.ActiveWindow.FreezePanes = !app.ActiveWindow.FreezePanes;\r\n    \r\n    Marshal.ReleaseComObject(app);\r\n    return \"ok\";\r\n}\r\n",
+        "waitResp": "1",
+        "enableCache": "0",
+        "stopIfFail": "1"
+      }
+    }
+  ]
+}

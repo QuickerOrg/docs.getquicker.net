@@ -10,6 +10,7 @@ import {
   type ReactNode,
 } from 'react';
 import {createPortal} from 'react-dom';
+import {observeResize} from '@site/src/components/observeResize';
 import styles from './styles.module.css';
 
 export type PreviewMark = {
@@ -150,15 +151,14 @@ export default function PreviewMarks({
   useLayoutEffect(() => {
     const root = rootRef.current;
     if (!root) return;
-    const ro = new ResizeObserver(() => measure());
-    ro.observe(root);
+    const stopRo = observeResize([root], measure);
     const onScrollOrResize = (): void => measure();
     root.addEventListener('scroll', onScrollOrResize, true);
     window.addEventListener('resize', onScrollOrResize);
     const fonts = document.fonts;
     void fonts?.ready.then(() => measure());
     return () => {
-      ro.disconnect();
+      stopRo();
       root.removeEventListener('scroll', onScrollOrResize, true);
       window.removeEventListener('resize', onScrollOrResize);
       for (const host of hostsRef.current) {

@@ -1,0 +1,37 @@
+{
+  "code": "f757e64d-dff9-4bc1-6b82-08da4f3f8574",
+  "title": "右转90度",
+  "description": "将当前画布向右旋转90度",
+  "author": "CL",
+  "revision": 0,
+  "source": "https://getquicker.net/sharedaction?code=f757e64d-dff9-4bc1-6b82-08da4f3f8574",
+  "pulledAt": "2026-08-11T21:27:56.483Z",
+  "variables": [
+    {
+      "name": "text",
+      "type": "Text",
+      "remark": "默认的文本变量"
+    }
+  ],
+  "steps": [
+    {
+      "key": "sys:adobesoftscontrol",
+      "inputs": {
+        "software": "Photoshop.Application",
+        "operation": "dojavascript",
+        "script": "// if image is in portrait mode, rotate it 90 degrees  \r\nactiveDocument.rotateCanvas(90);",
+        "waitResp": "true",
+        "stopIfFail": "1"
+      }
+    },
+    {
+      "key": "sys:notify",
+      "inputs": {
+        "msg": "ok",
+        "maxLines": "0",
+        "type": "Info",
+        "style": "Default"
+      }
+    }
+  ]
+}

@@ -7,7 +7,7 @@ sidebar_position: 10
 quickerDocKey: "xaction/module/sys:cloud_oss"
 comments: true
 moduleKey: "sys:cloud_oss"
-docStatus: "migrated-unreviewed"
+docStatus: "reviewed"
 metadataGeneratedAt: "2026-08-03 20:08:03"
 legacyDocId: 115862502
 legacyContentUpdatedAt: "2024-12-06T06:30:48.000Z"
@@ -15,68 +15,48 @@ legacyContentUpdatedAt: "2024-12-06T06:30:48.000Z"
 
 # 第三方云存储/图床
 
-使用第三方云服务上传文件。
+把文件、图片或文本传到你自己的云账号，换回网址。1.37.5+。只要临时链接，用 [临时云存储](/v2/xaction/modules/tempcloudstore)。
 
 ## 当前模块定义
 
 <XActionModuleMeta moduleKey="sys:cloud_oss" />
 
-将文件、图片、文本数据保存到自己的云服务账号中。（1.37.5+版本提供）
+## 概述
 
-本模块为测试状态，欢迎反馈问题。
+本模块仍是测试状态，欢迎反馈。
 
-安全注意事项：
+不要分享带账号信息的动作，也不要把含密钥的调试运行文件发给别人。
 
--   请勿分享含有账号信息的动作。
--   请勿将含有账号信息的动作的调试运行文件发送给其他人。
-
-目前支持的服务商：
-
--   阿里云 OSS
--   腾讯云 COS
--   七牛云 kodo
-
-在使用本模块之前，您需要有云服务商的账号及相关访问凭据、创建好存储桶(Bucket)、设置好自定义域名。每种厂商具有自己特定的设置参数，请参考下面的详细说明。Bucket需要设置为公共可读才能通过浏览器访问。
+使用前需要：云账号和访问凭据、已创建存储桶、按需配好自定义域名。桶要设为公共可读，浏览器才能直接打开。目前支持阿里云 OSS、腾讯云 COS、七牛云。
 
 <ModuleParamPreview moduleKey="sys:cloud_oss" />
 
-## 参数
+## 参数说明
 
-**输入参数**
+**操作类型**：目前只有 **上传**。
 
-【操作类型】目前仅支持“上传”。
+**服务商**：阿里云 OSS、腾讯云 COS、七牛云。
 
-【服务商】选择厂商。
+**服务商参数**：按厂商填写，见下文。
 
-【服务商参数】针对所选择的服务商，提供上传文件所需要的必要参数。每种厂商所需要的参数请参考本文后续部分的说明。
+**对象名**：服务端路径。例如对象名 `_sitefiles/home/abc.png`、域名 `https://files.example.com`，最终网址是 `https://files.example.com/_sitefiles/home/abc.png`。不要以 `/` 开头。留空则自动生成；以 `/` 结尾时在此前缀下自动生成。
 
-【对象名】可以理解为文件在服务器端的路径。
+**上传内容**：文件完整路径（按原格式上传）、图片变量，或其它文本（当成文本文件）。
 
-如，当对象名为`_sitefiles/home/abc.png`时，如果域名为`https://files.example.com`得到的最终网址就是`https://files.example.com/_sitefiles/home/abc.png`
+**自定义域名**：使用自定义域或 CDN 时填写，需带 `http` 或 `https`，如 `https://files.example.com`。
 
-注意：对象名不要以`/`字符开始。
+**额外的请求头**：每行 `name:value`。仅阿里云、腾讯云支持。
 
-【上传内容】可以是以下几种类型：
+**超时时间**：秒数，默认 `180`。大文件请调大。
 
--   文件的完整路径，按原格式上传文件；
--   图片变量，上传为一个图片文件；
--   其它文本内容，上传为一个文本文件；
+**失败后停止**：失败是否中止动作。默认开启。
 
-【自定义域名】当使用自定义域名或CDN时，指定域名（需要带http或https），如`https://files.example.com`。
+## 输出
 
-【额外的请求头】额外发送的http header。每行一个，使用`name:value`的形式填写。
-
-注：仅阿里云、腾讯云 接口支持设置请求头。
-
-【超时时间】请求超时时间。 这里可能需要根据要上传文件的大小做调整。
-
-**输出参数**
-
-【服务商网址】服务商对上传网站所生成的网址（使用服务商所提供的域名）。注：（1）阿里云提供的oss网址通常只能下载。（2）七牛云提供的网址仅供测试使用。
-
-【自定义域名网址】根据自定义域名生成的网址。
-
-【错误信息】出现错误时返回的错误信息。
+- **是否成功**
+- **服务商网址**：厂商域名下的地址。阿里云 OSS 地址通常只能下载；七牛云自带地址仅供测试。
+- **自定义域名网址**：填了自定义域名时生成。
+- **错误信息**
 
 ## 各服务商参数
 
@@ -89,11 +69,11 @@ AccessKeySecret:您的AccessKeySecret
 BucketName:Bucket的名称
 ```
 
-Bucket管理网址：[https://oss.console.aliyun.com/bucket](https://oss.console.aliyun.com/bucket)
+桶管理：[OSS 控制台](https://oss.console.aliyun.com/bucket)
 
 ![](./img/cloud_oss-002-ef329ed8d3.png)
 
-查看EndPoint
+查看 Endpoint：
 
 ![](./img/cloud_oss-003-a4896c1094.png)
 
@@ -109,16 +89,19 @@ SecretKey:账号的SecretKey
 
 ![](./img/cloud_oss-004-bbf1f1e0a6.png)
 
-查看APPID：
+查看 AppID：
 
 ![](./img/cloud_oss-005-e53b766cc6.png)
 
-SecretId 和 SecretKey：
+SecretId / SecretKey：
 
--   总账号（不建议使用）：[https://console.cloud.tencent.com/cam/capi](https://console.cloud.tencent.com/cam/capi)
-    ![](./img/cloud_oss-006-34682c3021.png)
--   子账号：[https://console.cloud.tencent.com/cam](https://console.cloud.tencent.com/cam)
-    ![](./img/cloud_oss-007-69425dd11a.png)
+- 总账号（不建议）：[访问密钥](https://console.cloud.tencent.com/cam/capi)
+
+![](./img/cloud_oss-006-34682c3021.png)
+
+- 子账号：[访问管理](https://console.cloud.tencent.com/cam)
+
+![](./img/cloud_oss-007-69425dd11a.png)
 
 ### 七牛云
 
@@ -132,14 +115,35 @@ Bucket:存储空间名称，如quicker-test
 AccessUrl:自定义域名，如：http://qiniutest.getquicker.cn
 ```
 
-存储空间信息：[https://portal.qiniu.com/kodo/bucket](https://portal.qiniu.com/kodo/bucket)
+存储空间：[对象存储](https://portal.qiniu.com/kodo/bucket)
 
 ![](./img/cloud_oss-008-d3670107d7.png)
 
-AccessKey查看：[https://portal.qiniu.com/user/key](https://portal.qiniu.com/user/key)
+AccessKey：[密钥管理](https://portal.qiniu.com/user/key)
 
 ![](./img/cloud_oss-009-33297167ed.png)
 
+## 限制与排障
+
+密钥填错、桶不是公共可读、对象名以 `/` 开头，都会导致打不开或上传失败。七牛云请用自定义域名，不要依赖测试域名做正式分发。超时按文件大小加大 **超时时间**。
+
+## 相关链接
+
+<RelatedDocs
+  items={[
+    {
+      href: '/v2/xaction/modules/tempcloudstore',
+      label: '临时云存储',
+      description: '不自备云账号，只要短时网址。',
+    },
+    {
+      href: '/v2/xaction/modules/http',
+      label: 'HTTP请求',
+      description: '厂商不在列表里时，自己调上传 API。',
+    },
+  ]}
+/>
+
 ## 更新历史
 
--   20241206 完善文字。
+- 20241206 完善文字。

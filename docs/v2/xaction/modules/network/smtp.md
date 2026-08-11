@@ -7,7 +7,7 @@ sidebar_position: 120
 quickerDocKey: "xaction/module/sys:smtp"
 comments: true
 moduleKey: "sys:smtp"
-docStatus: "migrated-unreviewed"
+docStatus: "reviewed"
 metadataGeneratedAt: "2026-08-03 20:08:03"
 legacyDocId: 2570697
 legacyContentUpdatedAt: "2021-11-29T13:33:22.000Z"
@@ -15,53 +15,76 @@ legacyContentUpdatedAt: "2021-11-29T13:33:22.000Z"
 
 # SMTP发送邮件
 
-使用SMTP协议发送邮件
+用 SMTP 发一封邮件。账号密码是敏感信息，不要写进分享动作；需要保存时用 [状态存取](/v2/xaction/modules/statestorage) 放在本机。
 
 ## 当前模块定义
 
 <XActionModuleMeta moduleKey="sys:smtp" />
 
-使用SMTP协议发送邮件。
+## 概述
 
-此模块会需要使用敏感信息（如Email帐号和密码），请勿分享并谨慎使用。如需分享请使用状态存取模块将敏感信息保存在本地。
-
-请勿使用此模块大量发送邮件，容易被邮件服务商认定为垃圾邮件发送者，造成帐号停用或其他损失。
+请勿用本模块大量群发，容易被服务商当成垃圾邮件，导致账号停用。
 
 <ModuleParamPreview moduleKey="sys:smtp" />
 
-## 参数
+## 参数说明
 
-### 输入
+**邮件服务器**：SMTP 域名或 IP。本机要能访问到。
 
--   【邮件服务器】Email服务器的域名或IP地址。保证Quicker所在电脑可以正常访问到邮件服务器。
--   【端口】SMTP发送端口。通常不使用SSL连接方式时端口为25。 Gmail邮箱的端口为587，需开启SSL。
+**端口**：通常不加密用 `25`；Gmail 等用 `587` 并打开加密连接。
 
--   【帐号】发信使用的Email帐号。
--   【密码】发信使用帐号的密码。
+**使用加密连接**：是否用 TLS（常见于 587 端口）。默认关闭。
 
--   【发信邮箱】与帐号匹配的发信email地址。
--   【收件人】要发送给的Email地址，多个邮件地址使用半角小写逗号分隔。次参数不能为空。
+**帐号** / **密码**：发信账号。
 
--   【抄送】要抄送给的Email地址，多个邮件地址使用半角小写逗号分隔。
--   【邮件主题】邮件的主题。
+**发信邮箱**：与账号匹配的邮箱地址。
 
--   【邮件正文】邮件的正文内容。
--   【附件】要发送的附件文件路径。 多个文件每个一行。请勿发送太大的文件，可能会失败。
+**发件人名称**：收件人看到的显示名。可选。
 
--   【内容为html】邮件正文的内容格式。
+**收件人**：不能为空。多个地址用半角逗号分隔。
 
-### 输出
+**抄送** / **密送**：多个地址同样用半角逗号分隔。
 
--   【是否成功】是否成功发送邮件到邮件服务器。
+**邮件主题** / **邮件正文**
+
+**附件**：文件完整路径，多个时每行一个。文件太大可能失败。
+
+**内容为html**：正文是否按 HTML 发送。默认关闭。
+
+**失败后停止**：发送失败是否中止动作。默认开启。
+
+## 输出
+
+- **是否成功**：是否已交给邮件服务器。
 
 ## 示例动作
 
--   发送到QQ邮箱 [https://getquicker.net/sharedaction?code=4943c94a-0437-4b98-20f1-08d742f11f76](https://getquicker.net/sharedaction?code=4943c94a-0437-4b98-20f1-08d742f11f76)
+步骤较多，用卡片打开后查看。
 
-## 参考信息
+<ShareLinkCard
+  code="4943c94a-0437-4b98-20f1-08d742f11f76"
+  title="发送到QQ邮箱"
+  author="CL"
+/>
 
--   常用邮箱的SMTP服务器信息：[https://blog.csdn.net/ning521513/article/details/79217203](https://blog.csdn.net/ning521513/article/details/79217203)
+## 限制与排障
+
+本机访问不到 SMTP、端口/加密方式与服务商要求不一致、或开启了「登录保护 / 应用专用密码」时会失败。先用服务商提供的 SMTP 主机、端口和 TLS 要求核对。
+
+常用邮箱的 SMTP 信息可参考：[CSDN 整理](https://blog.csdn.net/ning521513/article/details/79217203)（第三方文章，以各服务商当前文档为准）。
+
+## 相关链接
+
+<RelatedDocs
+  items={[
+    {
+      href: '/v2/xaction/modules/statestorage',
+      label: '状态存取',
+      description: '把账号密码存在本机，不要写进分享动作。',
+    },
+  ]}
+/>
 
 ## 更新历史
 
--   *本模块自1.1.12版本开始提供。*
+- 1.1.12 开始提供。

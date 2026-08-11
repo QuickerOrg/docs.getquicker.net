@@ -7,7 +7,7 @@ sidebar_position: 20
 quickerDocKey: "xaction/module/sys:dependencycheck"
 comments: true
 moduleKey: "sys:dependencycheck"
-docStatus: "migrated-unreviewed"
+docStatus: "reviewed"
 metadataGeneratedAt: "2026-08-03 20:08:03"
 legacyDocId: 88859521
 legacyContentUpdatedAt: "2022-08-09T02:54:40.000Z"
@@ -15,19 +15,38 @@ legacyContentUpdatedAt: "2022-08-09T02:54:40.000Z"
 
 # 检查和下载依赖
 
-从 Quicker 网站下载动作所需的第三方组件，并返回解压后的本地路径。
+从 Quicker 网站下载动作所需的第三方组件，并返回解压后的本地路径。需 Quicker 1.34.19+。
 
 ## 当前模块定义
 
 <XActionModuleMeta moduleKey="sys:dependencycheck" />
 
-为方便动作使用常用第三方组件，Quicker 网站提供了一个简单的组件托管服务。依赖包下载后会自动解压到：
+## 概述
+
+依赖包下载后会自动解压到：
 
 `我的文档\Quicker\_packages\依赖包名\版本号`
 
 ![](./img/dependencycheck-001-33ceddde5f.png)
 
-需 Quicker 1.34.19+。
+<ModuleParamPreview
+  moduleKey="sys:dependencycheck"
+  values={{packageName: 'everything'}}
+  outputVars={{packagePath: 'packagePath'}}
+/>
+
+## 参数说明
+
+**依赖包名**：已经在官网上发布的依赖包名称。
+
+**依赖包版本**：留空表示任意版本即可；写具体版本（如 `1.2.3`）表示最低版本。
+
+**失败后停止**：失败后是否停止动作。默认开启。
+
+## 输出
+
+- **是否成功**：操作是否成功。
+- **依赖包路径**：解压后的目录。路径里可能有空格（例如「我的文档」），后续拼命令行或传给外部程序时要加引号或转义。
 
 ## 依赖包的上传和管理
 
@@ -43,14 +62,14 @@ legacyContentUpdatedAt: "2022-08-09T02:54:40.000Z"
 - 打包为 zip（Quicker 会自动解压到目录）。
 - 如果 x64 和 x86 需要不同文件，请打两个 zip 包，并保持相同的内部文件名和子目录结构，方便后续动作用同一路径调用。
 
-## 使用说明
+## 相关链接
 
-<ModuleParamPreview
-  moduleKey="sys:dependencycheck"
-  values={{packageName: 'everything'}}
-  outputVars={{packagePath: 'packagePath'}}
+<RelatedDocs
+  items={[
+    {
+      href: '/v2/xaction/modules/everythingsearch',
+      label: '使用Everything搜索文件',
+      description: '常见依赖包 everything 的用法。',
+    },
+  ]}
 />
-
-参数含义见上方模块定义。这里只补充实际使用时要注意的点：
-
-- **依赖包路径**里可能包含空格（例如「我的文档」目录）。后续拼命令行或传给外部程序时，需要加引号或做转义。

@@ -7,7 +7,7 @@ sidebar_position: 80
 quickerDocKey: "xaction/module/sys:stop"
 comments: true
 moduleKey: "sys:stop"
-docStatus: "migrated-unreviewed"
+docStatus: "reviewed"
 metadataGeneratedAt: "2026-08-03 20:08:03"
 legacyDocId: 2133611
 legacyContentUpdatedAt: "2020-02-07T15:07:05.000Z"
@@ -15,37 +15,26 @@ legacyContentUpdatedAt: "2020-02-07T15:07:05.000Z"
 
 # 停止(return)
 
-停止动作或从子程序中返回
+立刻结束当前动作，或从[子程序](/v2/xaction/concepts/subprogram)返回。相当于编程里的 `return`。
 
 ## 当前模块定义
 
 <XActionModuleMeta moduleKey="sys:stop" />
 
-停止动作或从子程序中返回。类似于编程语言中的**return**语句。
+## 概述
 
 <ModuleParamPreview moduleKey="sys:stop" />
 
-## 操作类型
+## 参数说明
 
-**默认：**​
+**操作类型**：
 
--   如果在主程序中：停止当前动作。
--   如果在启用了“忽略错误”选项的[步骤组](/v2/xaction/modules/group)中：只跳过后面的步骤，不停止动作，从此步骤组下面的模块开始执行。
--   如果在子程序中：结束当前子程序，返回到主程序中。
+- **默认：停止动作或从子程序返回**：在主程序里会停掉整个动作；在开启了「忽略错误」的[步骤组](/v2/xaction/modules/group)里，只跳过组内后面的步骤，从组后面继续；在子程序里则结束子程序、回到调用处。
+- **停止动作：停止整个动作(即使在子程序中)**：无论在哪一层，都停掉整个动作。
 
-**​停止动作：**​
+**标记为出错**：用作子程序或被其他动作调用时，返回出错状态。调用方若开了「失败后停止」，当前动作也会停。
 
--   停止动作，即便是在子程序中使用，也会停止整个动作。
-
-## 参数
-
-**【标记为出错】**
-
-用于中止子程序时，标记为子程序出错。此时如果在“[运行子程序](/v2/xaction/concepts/subprogram)”模块中选择了“失败后停止”选项，则会停止动作。
-
-**【返回值】**
-
-当动作被其他动作调用时，也可用于向其他动作返回执行结果信息。
+**返回值**：被其他动作调用时，作为动作结果传回去。从子程序返回且勾选了「标记为出错」时，这里通常是错误消息。
 
 <PreviewCompare
   labels={['停止(return)', '运行或停止动作']}
@@ -64,4 +53,26 @@ legacyContentUpdatedAt: "2020-02-07T15:07:05.000Z"
   />
 </PreviewCompare>
 
-当从子程序返回时，如果选择了“标记为出错”选项，则用以传递错误消息。
+**提示消息**：停止时显示的提示信息。
+
+## 相关链接
+
+<RelatedDocs
+  items={[
+    {
+      href: '/v2/xaction/modules/runaction',
+      label: '运行或停止动作',
+      description: '调用别的动作，并用「动作输出」接收这里的返回值。',
+    },
+    {
+      href: '/v2/xaction/modules/group',
+      label: '步骤组',
+      description: '组内开了「忽略错误」时，默认停止不会中断组外步骤。',
+    },
+    {
+      href: '/v2/xaction/concepts/subprogram',
+      label: '子程序',
+      description: '从子程序返回时用本模块。',
+    },
+  ]}
+/>

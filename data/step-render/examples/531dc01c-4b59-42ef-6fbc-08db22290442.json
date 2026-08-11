@@ -1,0 +1,127 @@
+{
+  "code": "531dc01c-4b59-42ef-6fbc-08db22290442",
+  "title": "AI中英互译",
+  "description": "使用AI引擎自动翻译成中文或英文",
+  "author": "CL",
+  "revision": 0,
+  "source": "https://getquicker.net/sharedaction?code=531dc01c-4b59-42ef-6fbc-08db22290442",
+  "pulledAt": "2026-08-11T21:28:52.754Z",
+  "variables": [
+    {
+      "name": "text",
+      "type": "Text",
+      "remark": "默认的文本变量"
+    },
+    {
+      "name": "apikey",
+      "type": "Text"
+    },
+    {
+      "name": "result",
+      "type": "Text"
+    }
+  ],
+  "steps": [
+    {
+      "key": "sys:getSelectedText",
+      "inputs": {
+        "format": "UnicodeText",
+        "waitMs": "250",
+        "repeat": "0",
+        "trim": "0",
+        "useActionParam": "0",
+        "stopIfFail": "1"
+      },
+      "outputs": {
+        "output": "text"
+      }
+    },
+    {
+      "key": "sys:simpleIf",
+      "inputs": {
+        "condition": "$={apikey}.IsNullOrWhiteSpace()"
+      },
+      "ifSteps": [
+        {
+          "key": "sys:userInput",
+          "inputs": {
+            "type": "text",
+            "prompt": "请输入API Key",
+            "isRequired": "1",
+            "restoreFocus": "1",
+            "closeOnDeactivated": "0",
+            "topMost": "0",
+            "stopIfFail": "1",
+            "fontsize": "14",
+            "winLocation": "CenterScreen",
+            "imeState": "NO_CONTROL"
+          },
+          "outputs": {
+            "textValue": "apikey"
+          }
+        }
+      ]
+    },
+    {
+      "key": "sys:showText",
+      "inputs": {
+        "type": "NO_WAIT",
+        "text": "翻译结果：\r\n",
+        "title": "结果内容",
+        "topMost": "false",
+        "stopIfFail": "1",
+        "autoCloseKey": "=",
+        "winLocation": "CenterScreen",
+        "fontsize": "14",
+        "closeWhenLostFocus": "false",
+        "showLineNum": "true",
+        "autoWrap": "true",
+        "showBuildInToolbar": "true",
+        "copyWholeLine": "false",
+        "caretPosition": "0",
+        "updateIfExists": "0"
+      }
+    },
+    {
+      "key": "sys:ai",
+      "inputs": {
+        "endpoint": "chat",
+        "model": "gpt-3.5-turbo",
+        "systemPrompt": "你是一个专业的翻译助手。",
+        "prompt": "$$如果下面的文字包含中文，则将其翻译成英文（只返回翻译结果）；如果下面的文字中不包含中文，则将这些内容翻译成中文（只返回翻译结果）：\r\n{text}",
+        "maxTokens": "0",
+        "temperature": "0.2",
+        "stopIfFail": "1",
+        "apiKey": "{apikey}",
+        "topP": "1",
+        "n": "1",
+        "stream": "1",
+        "streamTo": "=",
+        "expireSeconds": "120",
+        "forceProxy": "1"
+      },
+      "outputs": {
+        "result": "result"
+      }
+    },
+    {
+      "key": "sys:writeClipboard",
+      "inputs": {
+        "type": "auto",
+        "input": "{result}",
+        "successMsg": "翻译完成，已写入剪贴板",
+        "stopIfFail": "1"
+      }
+    },
+    {
+      "key": "sys:notify",
+      "inputs": {
+        "msg": "$$翻译完成",
+        "maxLines": "0",
+        "type": "Success",
+        "style": "Default"
+      },
+      "disabled": true
+    }
+  ]
+}

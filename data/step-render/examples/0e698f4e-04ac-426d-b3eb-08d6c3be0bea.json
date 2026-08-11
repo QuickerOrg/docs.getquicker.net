@@ -1,0 +1,219 @@
+{
+  "code": "0e698f4e-04ac-426d-b3eb-08d6c3be0bea",
+  "title": "转HTML链接",
+  "description": "将编辑器的文本链接转换为HTML格式",
+  "author": "CL",
+  "revision": 3,
+  "source": "https://getquicker.net/sharedaction?code=0e698f4e-04ac-426d-b3eb-08d6c3be0bea",
+  "pulledAt": "2026-08-11T21:11:30.730Z",
+  "variables": [
+    {
+      "name": "content",
+      "type": "Text",
+      "remark": "默认的文本变量"
+    },
+    {
+      "name": "img",
+      "type": "Image",
+      "remark": "默认的图片变量"
+    },
+    {
+      "name": "url",
+      "type": "Text",
+      "remark": "网址"
+    },
+    {
+      "name": "title",
+      "type": "Text"
+    },
+    {
+      "name": "isSuccess",
+      "type": "Boolean"
+    },
+    {
+      "name": "usePageTitle",
+      "type": "Boolean",
+      "remark": "使用网页标题"
+    }
+  ],
+  "steps": [
+    {
+      "key": "sys:if",
+      "inputs": {
+        "condition": "$={quicker_in_param} == \"settings\""
+      },
+      "ifSteps": [
+        {
+          "key": "sys:form",
+          "inputs": {
+            "operation": "variables",
+            "title": "动作设置",
+            "formDef": "{\"Fields\":[{\"FieldKey\":\"usePageTitle\",\"DictVarType\":null,\"Label\":\"使用网页标题\",\"HelpText\":\"请求网页并获取标题显示在链接中\",\"HelpLink\":null,\"InputMethod\":6,\"SelectionItems\":\"\",\"IsRequired\":false,\"MinValue\":\"\",\"MaxValue\":\"\",\"Pattern\":\"\",\"InputWidth\":\"\",\"MaxLength\":0,\"ImeState\":null,\"TextTools\":\"\",\"VisibleExpression\":\"\",\"DefaultValue\":null,\"ColumnWidth\":0.0,\"OnlyDate\":false,\"Group\":\"\"}]}",
+            "titleColumnWidth": "100",
+            "windowWidth": "500",
+            "windowHeight": "0",
+            "restoreFocus": "0",
+            "topMost": "false",
+            "disableEnterSubmit": "0",
+            "stopIfFail": "1"
+          }
+        },
+        {
+          "key": "sys:stop",
+          "inputs": {
+            "method": "default",
+            "isError": "0",
+            "showMessage": "已保存设置。"
+          }
+        }
+      ]
+    },
+    {
+      "key": "sys:getSelectedText",
+      "inputs": {
+        "format": "UnicodeText",
+        "waitMs": "250",
+        "repeat": "0",
+        "trim": "0",
+        "useActionParam": "0",
+        "stopIfFail": "1"
+      },
+      "outputs": {
+        "output": "content"
+      }
+    },
+    {
+      "key": "sys:stringProcess",
+      "inputs": {
+        "data": "{content}",
+        "method": "trim",
+        "stopIfFail": "1"
+      },
+      "outputs": {
+        "output": "content"
+      }
+    },
+    {
+      "key": "sys:if",
+      "inputs": {
+        "condition": "$=Path.IsPathRooted({content})"
+      },
+      "note": "如果是路径，则特殊处理一下",
+      "ifSteps": [
+        {
+          "key": "sys:comment",
+          "inputs": {
+            "note": "路径"
+          }
+        },
+        {
+          "key": "sys:assign",
+          "inputs": {
+            "input": "$= \"file:///\" + {content}",
+            "stopIfFail": "1"
+          },
+          "outputs": {
+            "output": "url"
+          }
+        },
+        {
+          "key": "sys:assign",
+          "inputs": {
+            "input": "{content}",
+            "stopIfFail": "1"
+          },
+          "outputs": {
+            "output": "title"
+          }
+        }
+      ],
+      "elseSteps": [
+        {
+          "key": "sys:comment",
+          "inputs": {
+            "note": "普通网址"
+          }
+        },
+        {
+          "key": "sys:assign",
+          "inputs": {
+            "input": "{content}",
+            "stopIfFail": "1"
+          },
+          "outputs": {
+            "output": "url"
+          }
+        },
+        {
+          "key": "sys:if",
+          "inputs": {
+            "condition": "{usePageTitle}"
+          },
+          "ifSteps": [
+            {
+              "key": "sys:htmlExtract",
+              "inputs": {
+                "operation": "extractText",
+                "source": "{url}",
+                "xpath": "//title",
+                "selectTarget": "single",
+                "returnType": "InnerText",
+                "stopIfFail": "0"
+              },
+              "outputs": {
+                "isSuccess": "isSuccess",
+                "value": "title"
+              }
+            },
+            {
+              "key": "sys:if",
+              "inputs": {
+                "condition": "$={isSuccess} == false"
+              },
+              "ifSteps": [
+                {
+                  "key": "sys:assign",
+                  "inputs": {
+                    "input": "{content}",
+                    "stopIfFail": "1"
+                  },
+                  "outputs": {
+                    "output": "title"
+                  }
+                }
+              ]
+            }
+          ],
+          "elseSteps": [
+            {
+              "key": "sys:assign",
+              "inputs": {
+                "input": "{content}",
+                "stopIfFail": "1"
+              },
+              "outputs": {
+                "output": "title"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "key": "sys:writeClipboard",
+      "inputs": {
+        "type": "html",
+        "html": "$$<a href='{url}'>{title}</a>",
+        "text": "{url}",
+        "stopIfFail": "1"
+      },
+      "note": "写入剪贴板"
+    },
+    {
+      "key": "sys:keyInput",
+      "inputs": {
+        "keys": "{\"CtrlKeys\":[162],\"Keys\":[86]}"
+      }
+    }
+  ]
+}

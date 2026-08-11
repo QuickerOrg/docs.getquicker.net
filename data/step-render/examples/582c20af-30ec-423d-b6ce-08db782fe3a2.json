@@ -1,0 +1,93 @@
+{
+  "code": "582c20af-30ec-423d-b6ce-08db782fe3a2",
+  "title": "Shell可用动词和菜单标题",
+  "description": "获取选中文件的Shell可用动词",
+  "author": "CL",
+  "revision": 0,
+  "source": "https://getquicker.net/sharedaction?code=582c20af-30ec-423d-b6ce-08db782fe3a2",
+  "pulledAt": "2026-08-11T21:29:13.485Z",
+  "variables": [
+    {
+      "name": "text",
+      "type": "Text",
+      "remark": "默认的文本变量"
+    },
+    {
+      "name": "files",
+      "type": "List"
+    },
+    {
+      "name": "verbs",
+      "type": "List"
+    },
+    {
+      "name": "titles",
+      "type": "List"
+    }
+  ],
+  "steps": [
+    {
+      "key": "sys:getSelectedFiles",
+      "inputs": {
+        "operation": "getSelection",
+        "waitMs": "200",
+        "sortType": "Default",
+        "stopIfFail": "1"
+      },
+      "outputs": {
+        "files": "files"
+      }
+    },
+    {
+      "key": "sys:shelloperation",
+      "inputs": {
+        "operation": "getverb",
+        "pathOrExt": "{files}",
+        "stopIfFail": "1"
+      },
+      "outputs": {
+        "verbs": "verbs"
+      }
+    },
+    {
+      "key": "sys:shelloperation",
+      "inputs": {
+        "operation": "gettitles",
+        "pathOrExt": "{files}",
+        "stopIfFail": "1"
+      },
+      "outputs": {
+        "titles": "titles"
+      }
+    },
+    {
+      "key": "sys:showText",
+      "inputs": {
+        "type": "NO_WAIT",
+        "text": "$$动词：\r\n{verbs}\r\n\r\n\r\n标题：\r\n{titles}",
+        "title": "结果内容",
+        "autoCloseKey": "=",
+        "topMost": "false",
+        "stopIfFail": "1",
+        "winLocation": "CenterScreen",
+        "fontsize": "14",
+        "closeWhenLostFocus": "false",
+        "showLineNum": "true",
+        "autoWrap": "true",
+        "showBuildInToolbar": "true",
+        "copyWholeLine": "false",
+        "caretPosition": "0",
+        "updateIfExists": "0"
+      }
+    },
+    {
+      "key": "sys:shelloperation",
+      "inputs": {
+        "operation": "execbytitle",
+        "pathList": "{files}",
+        "title": "邮件收件人",
+        "stopIfFail": "1"
+      }
+    }
+  ]
+}

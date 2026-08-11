@@ -1,0 +1,38 @@
+{
+  "code": "dd32199e-8d36-465a-b13d-08dac77c5292",
+  "title": "冻结窗格",
+  "description": "使用对象赋值方式实现冻结窗格，支持excel和wt",
+  "author": "CL",
+  "revision": 0,
+  "source": "https://getquicker.net/sharedaction?code=dd32199e-8d36-465a-b13d-08dac77c5292",
+  "pulledAt": "2026-08-11T21:27:56.638Z",
+  "variables": [
+    {
+      "name": "text",
+      "type": "Text",
+      "remark": "默认的文本变量"
+    },
+    {
+      "name": "progId",
+      "type": "Text"
+    }
+  ],
+  "steps": [
+    {
+      "key": "sys:comment",
+      "inputs": {
+        "note": "下面步骤代码中的叹号表示对属性值取反。"
+      }
+    },
+    {
+      "key": "sys:officehelper",
+      "inputs": {
+        "operation": "setFormats",
+        "appType": "excel_et",
+        "formats": "application\r\n\t.ActiveWindow.FreezePanes = !",
+        "waitResp": "1",
+        "stopIfFail": "1"
+      }
+    }
+  ]
+}

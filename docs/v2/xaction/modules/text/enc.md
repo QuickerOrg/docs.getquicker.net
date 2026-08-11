@@ -1,13 +1,13 @@
 ---
 title: "加密/解密/哈希"
-description: "加密、解密，以及哈希计算"
+description: "DES / AES / RSA、哈希、HMAC，以及仅本机账号能解开的自用加解密。"
 slug: "/v2/xaction/modules/enc"
 sidebar_label: "加密/解密/哈希"
 sidebar_position: 30
 quickerDocKey: "xaction/module/sys:enc"
 comments: true
 moduleKey: "sys:enc"
-docStatus: "migrated-unreviewed"
+docStatus: "reviewed"
 metadataGeneratedAt: "2026-08-03 20:08:03"
 legacyDocId: 127131509
 legacyContentUpdatedAt: "2023-06-09T12:24:24.000Z"
@@ -15,98 +15,108 @@ legacyContentUpdatedAt: "2023-06-09T12:24:24.000Z"
 
 # 加密/解密/哈希
 
-加密、解密，以及哈希计算
+做对称/非对称加解密、哈希和 HMAC。只算一段文本的 MD5 / SHA，也可以用 [文本处理](/v2/xaction/modules/stringprocess)；算整个文件用 [检查路径/获取文件信息](/v2/xaction/modules/checkpathexists)。
 
 ## 当前模块定义
 
 <XActionModuleMeta moduleKey="sys:enc" />
 
-封装常用的加密解密及哈希算法：
+## 概述
 
--   对称加密：DES、AES
--   非对称加密：RSA
--   哈希：MD5、SHA1、SHA256、SHA384、SHA512
--   键控哈希：HMACSHA1、HMACSHA256，HMACSHA384，HMACSHA512，MACTripleDES，HMACMD5
--   自用加密、自用解密。
+每种算法对密钥、IV 长度有自己的要求。文本编解码一律按 UTF-8。
 
-注：
+<ModuleParamPreview moduleKey="sys:enc" />
 
--   每种加密解密算法都有自己特定参数及参数长度要求，您需要对此有一定了解才能使用本模块。
--   文本内容涉及编码处理时，会全部使用UTF8编码。
+## 参数说明
 
-## 常规参数说明
+**操作类型**：DES / AES / RSA 加解密、键控哈希 HMAC、哈希、自用加密/解密。
 
-**输入参数**
+**输入内容类型** / **密钥内容类型** / **初始化向量IV内容类型**：文本、Base64 或十六进制。例如 `Hello World!` 的 Base64 是 `SGVsbG8gV29ybGQh`，HEX 是 `48656C6C6F20576F726C6421`。
 
-【操作类型】选择要执行的操作。
+**输入**：待处理内容。
 
-![](./img/enc-001-b26613fd58.png)
+**密钥**：对称算法和 HMAC 用。长度按算法要求。
 
-【xx内容类型】用于指定特定参数值的格式。如“输入内容类型”，用于指定“输入”参数（待加密、解密或哈希的原始内容）的内容类型。
+**初始化向量**：对称算法的 IV，同样有长度要求。
 
-![](./img/enc-002-5a262d846c.png)
+**公钥/私钥**：仅 RSA。XML 格式，加密用公钥、解密用私钥。
 
-可能为：
-
--   `文本`：输入的内容为原始文本，如`Hello World!`
--   `Base64编码`：输入的内容为原始文本的Base64编码，如`SGVsbG8gV29ybGQh`(`Hello World!`的base64编码结果）。
--   `十六进制编码`（HEX编码）：输入的内容为原始文本对应的字节数组的十六进制编码（每个字节编码为两个十六进制字符），如`48656C6C6F20576F726C6421`(`Hello World!`的HEX编码结果)。
-
-【输入】待加密、解密或计算哈希值的内容。
-
-【秘钥】对称加密算法中的秘钥内容。不同加密算法所需要的秘钥长度可能不同。
-
-【初始化向量】（IV）对称加密算法中所需要提供的参数。不同加密算法所需要的初始化向量长度可能不同。
-
-**输出参数**
+**算法**：哈希选 MD5 / SHA1 / SHA256 / SHA384 / SHA512；HMAC 另有一套算法列表。
 
 <ModuleParamPreview
   moduleKey="sys:enc"
-  focusKeys={[
-    'isSuccess',
-    'resultBase64',
-    'resultHex',
-    'resultLowerHex',
-    'resultText',
-  ]}
-  values={{operation: 'dec_des'}}
-  outputVars={{resultBase64: 'resultBase64', resultText: 'text'}}
+  focusKeys={['operation', 'hmacAlgorithm', 'hashType', 'input', 'key']}
+  values={{operation: 'hash_hmac', hmacAlgorithm: 'HMACSHA1'}}
 />
 
-加解密或哈希运算后，会得到一个字节数组。由于字节数组本身不方便显示，通常需要将它们编码输出。
+**运算模式** / **填充模式**：仅 DES / AES。默认 CBC、PKCS7。
 
-【Base64编码结果】对加解密或哈希运算的结果进行Base64编码后的值。
+**失败后停止**：失败是否中止动作。默认开启。
 
-【十六进制编码】对运算结果进行十六进制编码后的值。可以根据需要选择大写或小写输出。
+## 输出
 
-【文本结果】对于解密操作，输出对应的明文内容。
+运算结果是字节数组，用下面几种编码取出：
+
+- **是否成功**
+- **文本结果**：仅解密和自用解密，明文。
+- **十六进制编码(大写)** / **十六进制编码(小写)**
+- **Base64编码结果**
+
+<ModuleParamPreview
+  moduleKey="sys:enc"
+  focusKeys={['isSuccess', 'resultText', 'resultHex', 'resultLowerHex', 'resultBase64']}
+  values={{operation: 'dec_des'}}
+/>
 
 ## 键控哈希 HMAC
 
-常用于对HTTP请求参数进行签名。如[阿里云](https://help.aliyun.com/document_detail/30563.html)、[腾讯云](https://cloud.tencent.com/document/product/213/15693)、[百度云](https://cloud.baidu.com/doc/Reference/s/6k6yfh1he)等。
-
-操作类型选择“键控哈希”后，可选择具体的算法。
-
-![](./img/enc-004-79f3b7b5bf.png)
+常用于给 HTTP 请求签名（阿里云、腾讯云、百度云等）。操作类型选 **键控哈希 HMAC**，再选算法。
 
 ## 哈希
 
-操作类型选择“哈希”后，选择具体的哈希算法。
+操作类型选 **哈希（MD5、SHA1等）**，再选算法。大文件请用检查路径模块流式计算，不要整文件读进内存。
 
-![](./img/enc-005-2ee7f69184.png)
-
-注：如果您需要对文件计算哈希，请使用“[检查路径/获取文件信息](/v2/xaction/modules/checkpathexists)”模块。它使用流式读取，可以避免将文件整个读入内存，具有更高的性能。
+<ModuleParamPreview
+  moduleKey="sys:enc"
+  focusKeys={['operation', 'hashType', 'input']}
+  values={{operation: 'hash', hashType: 'MD5'}}
+/>
 
 ## 自用加密和自用解密
 
-使用当前用户自己的用户标识信息作为秘钥对数据进行加密。 得到的数据只能在自己的Quicker账号上解密读取。
+用当前 Quicker 账号标识当密钥，只能在本账号解开。内部是 AES。
 
-内部使用AES加密算法。
+## 限制与排障
+
+密钥或 IV 长度不对会失败。输入已是 Base64 / HEX 时，对应内容类型要选对，否则会把编码字面量再加密一遍。
 
 ## 示例动作
 
--   [加密解密测试](https://getquicker.net/Sharedaction?code=b20f2a88-3bc4-4446-fe0c-08db67a6796c) ： 请调试运行动作以观察输入输出。
+步骤较多，用卡片打开后调试查看输入输出。
+
+<ShareLinkCard
+  code="b20f2a88-3bc4-4446-fe0c-08db67a6796c"
+  title="加密解密测试"
+  description="请调试运行以观察输入输出"
+/>
+
+## 相关链接
+
+<RelatedDocs
+  items={[
+    {
+      href: '/v2/xaction/modules/stringprocess',
+      label: '文本处理',
+      description: '只要文本 MD5 / SHA / Base64。',
+    },
+    {
+      href: '/v2/xaction/modules/checkpathexists',
+      label: '检查路径/获取文件信息',
+      description: '流式计算文件哈希。',
+    },
+  ]}
+/>
 
 ## 更新历史
 
--   20230609 1.38.17 版本增加模块。
+- 20230609 1.38.17 增加本模块。

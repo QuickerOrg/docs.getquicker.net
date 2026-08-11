@@ -1,9 +1,27 @@
-import type {JSX, ReactNode} from 'react';
+import {
+  useCallback,
+  useMemo,
+  useRef,
+  useState,
+  type CSSProperties,
+  type JSX,
+  type ReactNode,
+} from 'react';
+import {collectProgramVars} from './collectProgramVars';
 import {DocsStepIcon} from './DocsStepIcon';
 import {normalizeStepCatalog, normalizeStepList} from './normalize';
 import {resolveParamLabel} from './resolveParamLabel';
 import {resolveStepRowPresentation} from './resolvePresentation';
-import type {StepCatalog, StepProgramDensity, StepWire} from './types';
+import {contrastOnHex, parseStepCommentStyle} from './stepCommentTint';
+import {StepInspectPopup} from './StepInspectPopup';
+import type {ProgramVar, StepCatalog, StepProgramDensity, StepWire} from './types';
+import {VariableListPane} from './VariableListPane';
+import {
+  applyWheelDelayStep,
+  useWheelDelayDemo,
+  type WheelDelayDemoConfig,
+  type WheelDelayTick,
+} from './useWheelDelayDemo';
 
 export type StepProgramViewProps = {
   /** Steps JSON / array / `{ steps }` / single step. */
@@ -19,8 +37,27 @@ export type StepProgramViewProps = {
   showKey?: boolean;
   /** Optional caption above the list well, e.g. example title. */
   caption?: ReactNode;
+  /**
+   * Show a narrow variable list beside the steps (Headless XProgramEditor layout).
+   * Auto-collects names from step `outputs` unless `variables` is set.
+   */
+  showVariables?: boolean;
+  /** Explicit variable rows; merged over auto-collected outputs when both set. */
+  variables?: readonly ProgramVar[];
+  /** Variable column width in px. Default 120 (docs-narrow). */
+  variablePaneWidth?: number;
   /** Highlight these top-level step indexes (0-based), e.g. a right-click multi-select. */
   selectedIndexes?: readonly number[];
+  /**
+   * Auto-play Ctrl+wheel on a wait-time step (WPF ±50ms).
+   * Pass `true` or `{from, to, step}`. Hover+Ctrl+wheel still works.
+   */
+  wheelDelay?: boolean | WheelDelayDemoConfig;
+  /**
+   * Double-click a row to open the step param popup (Headless StepEditorPopup).
+   * Default true. Nested children are included.
+   */
+  stepPopup?: boolean;
   density?: StepProgramDensity;
   empty?: ReactNode;
   className?: string;
@@ -99,7 +136,11 @@ function StepListInner({
   showIndex,
   showKey,
   nested,
+  pathPrefix,
   selectedIndexes,
+  inspectPath,
+  wheelTick,
+  onInspect,
 }: {
   steps: StepWire[];
   catalog: StepCatalog;
@@ -108,24 +149,35 @@ function StepListInner({
   showIndex: boolean;
   showKey: boolean;
   nested: boolean;
+  pathPrefix: string;
   selectedIndexes?: readonly number[];
+  inspectPath?: string | null;
+  wheelTick?: WheelDelayTick | null;
+  onInspect?: (step: StepWire, path: string, iconSpec: string) => void;
 }): JSX.Element {
   const selected = new Set(selectedIndexes ?? []);
   return (
     <div className={nested ? 'step-listbox nested' : 'step-listbox root'}>
-      {steps.map((step, index) => (
-        <StepBlock
-          key={`${nested ? 'n' : 'r'}-${index}-${step.key}`}
-          step={step}
-          index={index}
-          catalog={catalog}
-          icons={icons}
-          showParams={showParams}
-          showIndex={showIndex}
-          showKey={showKey}
-          selected={!nested && selected.has(index)}
-        />
-      ))}
+      {steps.map((step, index) => {
+        const path = pathPrefix ? `${pathPrefix}/${index}` : String(index);
+        return (
+          <StepBlock
+            key={`${nested ? 'n' : 'r'}-${index}-${step.key}`}
+            step={step}
+            index={index}
+            path={path}
+            catalog={catalog}
+            icons={icons}
+            showParams={showParams}
+            showIndex={showIndex}
+            showKey={showKey}
+            selected={(!nested && selected.has(index)) || inspectPath === path}
+            wheelTick={!nested && wheelTick?.index === index ? wheelTick : null}
+            inspectPath={inspectPath}
+            onInspect={onInspect}
+          />
+        );
+      })}
     </div>
   );
 }
@@ -133,23 +185,42 @@ function StepListInner({
 function StepBlock({
   step,
   index,
+  path,
   catalog,
   icons,
   showParams,
   showIndex,
   showKey,
   selected,
+  wheelTick,
+  inspectPath,
+  onInspect,
 }: {
   step: StepWire;
   index: number;
+  path: string;
   catalog: StepCatalog;
   icons?: Readonly<Record<string, string>>;
   showParams: boolean;
   showIndex: boolean;
   showKey: boolean;
   selected: boolean;
+  wheelTick?: WheelDelayTick | null;
+  inspectPath?: string | null;
+  onInspect?: (step: StepWire, path: string, iconSpec: string) => void;
 }): JSX.Element {
   const presentation = resolveStepRowPresentation(step, catalog);
+  const commentStyle = parseStepCommentStyle(
+    step.note ?? step.inputs?.note ?? '',
+  );
+  const rowTint = commentStyle.tint
+    ? `var(--qk-step-tint-${commentStyle.tint})`
+    : commentStyle.hexBackground;
+  const rowTintFg = commentStyle.tint
+    ? `var(--qk-step-tint-${commentStyle.tint}-fg)`
+    : commentStyle.hexBackground
+      ? contrastOnHex(commentStyle.hexBackground)
+      : undefined;
   const hasCatalogName = Boolean(catalog.runners[step.key]?.name);
   const hasParams =
     showParams &&
@@ -172,16 +243,48 @@ function StepBlock({
           className={[
             'step-row',
             'step-row--preview',
+            onInspect ? 'step-row--inspectable' : '',
             selected ? 'selected' : '',
             step.disabled ? 'disabled' : '',
           ]
             .filter(Boolean)
             .join(' ')}
-          title={presentation.titleAttr}
+          data-comment-tint={
+            commentStyle.tint ?? (commentStyle.hexBackground ? 'custom' : undefined)
+          }
+          style={
+            rowTint
+              ? ({
+                  ['--qk-step-row-tint']: rowTint,
+                  ...(rowTintFg ? {['--qk-step-row-tint-fg']: rowTintFg} : {}),
+                } as CSSProperties)
+              : undefined
+          }
+          title={
+            onInspect
+              ? `${presentation.titleAttr}（双击查看参数）`
+              : presentation.titleAttr
+          }
           aria-selected={selected || undefined}
+          onDoubleClick={
+            onInspect
+              ? (event) => {
+                  event.preventDefault();
+                  event.stopPropagation();
+                  onInspect(step, path, presentation.iconSpec);
+                }
+              : undefined
+          }
         >
           {hasBranches ? (
-            <span className="expand" aria-hidden="true">
+            <span
+              className="expand"
+              aria-hidden="true"
+              onDoubleClick={(event) => {
+                event.preventDefault();
+                event.stopPropagation();
+              }}
+            >
               <ExpandTriangle />
             </span>
           ) : null}
@@ -200,15 +303,38 @@ function StepBlock({
           ) : null}
           <span className="step-titles">
             <span className="primary">{presentation.primary}</span>
-            {presentation.secondary ? (
+            {wheelTick ? (
+              <span className="step-note step-note--wheel" aria-live="polite">
+                等待{' '}
+                <span
+                  key={wheelTick.ms}
+                  className={`qk-sr-delay-ms qk-sr-delay-ms--${wheelTick.dir}`}
+                >
+                  {wheelTick.ms}
+                </span>{' '}
+                ms
+              </span>
+            ) : presentation.secondary ? (
               <span className="step-note">{presentation.secondary}</span>
             ) : null}
           </span>
+          {wheelTick ? (
+            <span className="qk-sr-wheel-hint" aria-hidden="true">
+              <kbd>Ctrl</kbd>
+              <span className={`qk-sr-wheel-glyph qk-sr-wheel-glyph--${wheelTick.dir}`} />
+              滚轮
+            </span>
+          ) : null}
           {showKey && hasCatalogName && presentation.primary !== step.key ? (
             <code className="step-row-key">{step.key}</code>
           ) : null}
           {!hasCatalogName && !step.title ? (
             <code className="step-row-key">{step.key}</code>
+          ) : null}
+          {onInspect && !wheelTick ? (
+            <span className="step-row-inspect-hint" aria-hidden="true">
+              双击查看
+            </span>
           ) : null}
         </div>
         {hasParams ? (
@@ -234,6 +360,9 @@ function StepBlock({
                   showIndex={showIndex}
                   showKey={showKey}
                   nested
+                  pathPrefix={`${path}/if`}
+                  inspectPath={inspectPath}
+                  onInspect={onInspect}
                 />
               </div>
             ) : null}
@@ -248,6 +377,9 @@ function StepBlock({
                   showIndex={showIndex}
                   showKey={showKey}
                   nested
+                  pathPrefix={`${path}/else`}
+                  inspectPath={inspectPath}
+                  onInspect={onInspect}
                 />
               </div>
             ) : null}
@@ -270,22 +402,51 @@ export function StepProgramView({
   showIndex = false,
   showKey = false,
   caption,
+  showVariables = false,
+  variables,
+  variablePaneWidth = 120,
   selectedIndexes,
+  wheelDelay,
+  stepPopup = true,
   density = 'docs',
   empty,
   className,
 }: StepProgramViewProps): JSX.Element {
+  const rootRef = useRef<HTMLDivElement>(null);
   const steps = normalizeStepList(data);
   const resolvedCatalog = normalizeStepCatalog(catalog);
+  const programVars = useMemo(
+    () => (showVariables || variables?.length ? collectProgramVars(steps, variables) : []),
+    [showVariables, variables, steps],
+  );
+  const showVarPane = showVariables || (variables?.length ?? 0) > 0;
   const mergedIcons =
     icons || resolvedCatalog.icons
       ? {...(resolvedCatalog.icons ?? {}), ...(icons ?? {})}
       : undefined;
+  const wheelTick = useWheelDelayDemo(steps, wheelDelay, rootRef);
+  const displaySteps = applyWheelDelayStep(steps, wheelTick);
+  const highlightIndexes =
+    selectedIndexes ?? (wheelTick ? [wheelTick.index] : undefined);
+  const [inspect, setInspect] = useState<{
+    step: StepWire;
+    path: string;
+    iconSpec: string;
+  } | null>(null);
+  const closeInspect = useCallback(() => setInspect(null), []);
+  const openInspect = useCallback(
+    (step: StepWire, path: string, iconSpec: string) => {
+      setInspect({step, path, iconSpec});
+    },
+    [],
+  );
 
   const rootClass = [
     'qk-sr-program',
     'qk-docs-preview',
     `qk-sr-list--${density}`,
+    showVarPane ? 'qk-sr-program--with-vars' : '',
+    wheelTick ? 'qk-sr-program--wheel-delay' : '',
     className ?? '',
   ]
     .filter(Boolean)
@@ -301,18 +462,46 @@ export function StepProgramView({
   }
 
   return (
-    <div className={rootClass}>
+    <div
+      ref={rootRef}
+      className={rootClass}
+      style={
+        showVarPane
+          ? ({'--qk-sr-varpane': `${variablePaneWidth}px`} as CSSProperties)
+          : undefined
+      }>
       {caption ? <div className="qk-sr-program__caption">{caption}</div> : null}
-      <StepListInner
-        steps={steps}
-        catalog={resolvedCatalog}
-        icons={mergedIcons}
-        showParams={showParams}
-        showIndex={showIndex}
-        showKey={showKey}
-        nested={false}
-        selectedIndexes={selectedIndexes}
-      />
+      <div className="qk-sr-program__body">
+        <div className="qk-sr-program__steps">
+          <StepListInner
+            steps={displaySteps}
+            catalog={resolvedCatalog}
+            icons={mergedIcons}
+            showParams={showParams}
+            showIndex={showIndex}
+            showKey={showKey}
+            nested={false}
+            pathPrefix=""
+            selectedIndexes={highlightIndexes}
+            inspectPath={inspect?.path}
+            wheelTick={wheelTick}
+            onInspect={stepPopup ? openInspect : undefined}
+          />
+        </div>
+        {showVarPane ? (
+          <>
+            <div className="qk-sr-program__gutter" aria-hidden />
+            <VariableListPane variables={programVars} />
+          </>
+        ) : null}
+      </div>
+      {stepPopup && inspect ? (
+        <StepInspectPopup
+          step={inspect.step}
+          actionIcon={inspect.iconSpec}
+          onClose={closeInspect}
+        />
+      ) : null}
     </div>
   );
 }

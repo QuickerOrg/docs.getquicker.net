@@ -1,0 +1,108 @@
+{
+  "code": "7e0ffda7-cbc9-4e31-2462-08da4d582a20",
+  "title": "示例：路径操作 (请调试运行)",
+  "description": "演示路径信息获取和生成",
+  "author": "CL",
+  "revision": 1,
+  "source": "https://getquicker.net/sharedaction?code=7e0ffda7-cbc9-4e31-2462-08da4d582a20",
+  "pulledAt": "2026-08-11T21:11:34.935Z",
+  "variables": [
+    {
+      "name": "text",
+      "type": "Text",
+      "remark": "默认的文本变量"
+    },
+    {
+      "name": "name",
+      "type": "Text"
+    },
+    {
+      "name": "nameNoExt",
+      "type": "Text"
+    },
+    {
+      "name": "ext",
+      "type": "Text"
+    },
+    {
+      "name": "path",
+      "type": "Text"
+    },
+    {
+      "name": "resultPath",
+      "type": "Text"
+    }
+  ],
+  "steps": [
+    {
+      "key": "sys:comment",
+      "inputs": {
+        "note": "请使用调试方式运行，观察输入和输出情况"
+      }
+    },
+    {
+      "key": "sys:pathExtraction",
+      "inputs": {
+        "operation": "getInfo",
+        "path": "D:\\Work\\Quicker\\doc\\icon.psd",
+        "stopIfFail": "1"
+      },
+      "outputs": {
+        "name": "name",
+        "nameNoExt": "nameNoExt",
+        "ext": "ext",
+        "path": "path"
+      }
+    },
+    {
+      "key": "sys:pathExtraction",
+      "inputs": {
+        "operation": "changeExt",
+        "path": "D:\\Work\\Quicker\\doc\\icon.psd",
+        "newExtension": ".jpg",
+        "stopIfFail": "1"
+      },
+      "outputs": {
+        "resultPath": "resultPath"
+      }
+    },
+    {
+      "key": "sys:pathExtraction",
+      "inputs": {
+        "operation": "changeName",
+        "path": "D:\\Work\\Quicker\\doc\\icon.psd",
+        "newFileName": "icon_save_20220506_112233.psd",
+        "stopIfFail": "1"
+      },
+      "outputs": {
+        "resultPath": "resultPath"
+      }
+    },
+    {
+      "key": "sys:pathExtraction",
+      "inputs": {
+        "operation": "changeDir",
+        "path": "D:\\Work\\Quicker\\doc\\icon.psd",
+        "newDir": "D:\\Backup\\20220105",
+        "stopIfFail": "1"
+      },
+      "outputs": {
+        "resultPath": "resultPath"
+      }
+    },
+    {
+      "key": "sys:pathExtraction",
+      "inputs": {
+        "operation": "combine",
+        "path": "d:\\Work",
+        "path2": "media",
+        "path3": "20220506",
+        "path4": "abc.gif",
+        "stopIfFail": "1"
+      },
+      "outputs": {
+        "resultPath": "resultPath"
+      }
+    }
+  ]
+}

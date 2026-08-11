@@ -1,0 +1,117 @@
+{
+  "code": "8139f36b-059a-49a6-9f64-08d8ff04bb1d",
+  "title": "选择音频设备",
+  "description": "复制音频设备的ID，方便通过扩展热键等功能使用",
+  "author": "CL",
+  "revision": 0,
+  "source": "https://getquicker.net/sharedaction?code=8139f36b-059a-49a6-9f64-08d8ff04bb1d",
+  "pulledAt": "2026-08-11T21:28:47.905Z",
+  "variables": [
+    {
+      "name": "outputDevices",
+      "type": "List"
+    },
+    {
+      "name": "deviceId",
+      "type": "Text"
+    },
+    {
+      "name": "deviceName",
+      "type": "Text"
+    }
+  ],
+  "steps": [
+    {
+      "key": "sys:if",
+      "inputs": {
+        "condition": "$= String.IsNullOrEmpty({quicker_in_param})"
+      },
+      "ifSteps": [
+        {
+          "key": "sys:comment",
+          "inputs": {
+            "note": "如果没有传递参数，则选择活动设备并复制设备ID到剪贴板"
+          }
+        },
+        {
+          "key": "sys:audioControl",
+          "inputs": {
+            "operation": "GetOutputDeviceList",
+            "stopIfFail": "1"
+          },
+          "outputs": {
+            "deviceList": "outputDevices"
+          }
+        },
+        {
+          "key": "sys:select",
+          "inputs": {
+            "type": "single",
+            "prompt": "音频输出设备(选择一个查看其信息）",
+            "items": "{outputDevices}",
+            "showFilter": "auto",
+            "imeState": "NO_CONTROL",
+            "fontsize": "12",
+            "autoCloseSeconds": "0",
+            "winLocation": "WithMouse1",
+            "keepLastPos": "1",
+            "noKeyboard": "0",
+            "closeOnDeactivated": "0",
+            "restoreForeground": "1",
+            "allowOkWhenEmpty": "0",
+            "stopIfCancel": "1"
+          },
+          "outputs": {
+            "textValue": "deviceId"
+          }
+        },
+        {
+          "key": "sys:writeClipboard",
+          "inputs": {
+            "type": "auto",
+            "input": "{deviceId}",
+            "successMsg": "$$已复制设备ID: {deviceId}",
+            "stopIfFail": "1"
+          }
+        },
+        {
+          "key": "sys:audioControl",
+          "inputs": {
+            "operation": "SetDefaultDeviceById",
+            "id": "{deviceId}",
+            "stopIfFail": "1"
+          }
+        }
+      ],
+      "elseSteps": [
+        {
+          "key": "sys:audioControl",
+          "inputs": {
+            "operation": "SetDefaultDeviceById",
+            "id": "{quicker_in_param}",
+            "stopIfFail": "1"
+          }
+        },
+        {
+          "key": "sys:audioControl",
+          "inputs": {
+            "operation": "GetOutputDefaultDevice",
+            "stopIfFail": "1"
+          },
+          "outputs": {
+            "deviceName": "deviceName"
+          }
+        },
+        {
+          "key": "sys:notify",
+          "inputs": {
+            "msg": "$${deviceName}",
+            "maxLines": "0",
+            "type": "Info",
+            "style": "Default"
+          }
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,301 @@
+{
+  "code": "3fc97b7e-7be1-4a23-3d64-08db3e27302e",
+  "title": "表格识别",
+  "description": "截图识别表格，生成Excel文件",
+  "author": "CL",
+  "revision": 4,
+  "source": "https://getquicker.net/sharedaction?code=3fc97b7e-7be1-4a23-3d64-08db3e27302e",
+  "pulledAt": "2026-08-11T21:28:52.903Z",
+  "variables": [
+    {
+      "name": "html",
+      "type": "Text",
+      "remark": "默认的文本变量"
+    },
+    {
+      "name": "img",
+      "type": "Image"
+    },
+    {
+      "name": "sheet",
+      "type": "Any"
+    },
+    {
+      "name": "workbook",
+      "type": "Any"
+    },
+    {
+      "name": "filePath",
+      "type": "Text"
+    },
+    {
+      "name": "showHtmlPreview",
+      "type": "Boolean",
+      "remark": "是否显示HTML预览"
+    },
+    {
+      "name": "exportExcel",
+      "type": "Boolean",
+      "remark": "导出Excel"
+    },
+    {
+      "name": "copyMarkdown",
+      "type": "Boolean"
+    },
+    {
+      "name": "copyHtml",
+      "type": "Boolean",
+      "remark": "是否复制html格式内容"
+    },
+    {
+      "name": "markdownContent",
+      "type": "Text"
+    }
+  ],
+  "steps": [
+    {
+      "key": "sys:simpleIf",
+      "inputs": {
+        "condition": "$={quicker_in_param} == \"settings\""
+      },
+      "ifSteps": [
+        {
+          "key": "sys:form",
+          "inputs": {
+            "operation": "variables",
+            "title": "动作设置",
+            "formDef": "{\"Fields\":[{\"FieldKey\":\"showHtmlPreview\",\"DictVarType\":null,\"Label\":\"显示HTML预览\",\"HelpText\":\"是否显示HTML预览\",\"HelpLink\":null,\"InputMethod\":6,\"SelectionItems\":\"\",\"IsRequired\":false,\"MinValue\":\"\",\"MaxValue\":\"\",\"Pattern\":\"\",\"InputWidth\":\"\",\"MaxLength\":0,\"ImeState\":null,\"TextTools\":\"\",\"VisibleExpression\":\"\",\"DefaultValue\":null,\"ColumnWidth\":0.0,\"OnlyDate\":false,\"Group\":\"\"},{\"FieldKey\":\"exportExcel\",\"DictVarType\":null,\"Label\":\"生成Excel文件\",\"HelpText\":\"导出Excel\",\"HelpLink\":null,\"InputMethod\":6,\"SelectionItems\":\"\",\"IsRequired\":false,\"MinValue\":\"\",\"MaxValue\":\"\",\"Pattern\":\"\",\"InputWidth\":\"\",\"MaxLength\":0,\"ImeState\":null,\"TextTools\":\"\",\"VisibleExpression\":\"\",\"DefaultValue\":null,\"ColumnWidth\":0.0,\"OnlyDate\":false,\"Group\":\"\"},{\"FieldKey\":\"copyMarkdown\",\"DictVarType\":null,\"Label\":\"复制Markdown代码\",\"HelpText\":\"复制表格markdown代码\",\"HelpLink\":null,\"InputMethod\":6,\"SelectionItems\":\"\",\"IsRequired\":false,\"MinValue\":\"\",\"MaxValue\":\"\",\"Pattern\":\"\",\"InputWidth\":\"\",\"MaxLength\":0,\"ImeState\":null,\"TextTools\":\"\",\"VisibleExpression\":\"\",\"DefaultValue\":null,\"ColumnWidth\":0.0,\"OnlyDate\":false,\"Group\":\"\"},{\"FieldKey\":\"copyHtml\",\"DictVarType\":null,\"Label\":\"是否复制html格式内容\",\"HelpText\":\"html和markdown只能选择一种\",\"HelpLink\":null,\"InputMethod\":6,\"SelectionItems\":\"\",\"IsRequired\":false,\"MinValue\":\"\",\"MaxValue\":\"\",\"Pattern\":\"\",\"InputWidth\":\"\",\"MaxLength\":0,\"ImeState\":null,\"TextTools\":\"\",\"VisibleExpression\":\"\",\"DefaultValue\":null,\"ColumnWidth\":0.0,\"OnlyDate\":false,\"Group\":\"\"}]}",
+            "titleColumnWidth": "100",
+            "windowWidth": "500",
+            "windowHeight": "0",
+            "restoreFocus": "0",
+            "topMost": "false",
+            "disableEnterSubmit": "0",
+            "stopIfFail": "1"
+          }
+        },
+        {
+          "key": "sys:stop",
+          "inputs": {
+            "method": "default",
+            "isError": "0"
+          }
+        }
+      ]
+    },
+    {
+      "key": "sys:screenCapture",
+      "inputs": {
+        "type": "select",
+        "delay": "200",
+        "toClip": "0",
+        "stopIfFail": "1"
+      },
+      "outputs": {
+        "img": "img"
+      }
+    },
+    {
+      "key": "sys:comment",
+      "inputs": {
+        "note": "识别表格，输出HTML代码"
+      }
+    },
+    {
+      "key": "sys:basic-ocr",
+      "inputs": {
+        "operation": "table_quicker",
+        "imgVar": "{img}",
+        "stopIfFail": "1"
+      },
+      "outputs": {
+        "content": "html"
+      }
+    },
+    {
+      "key": "sys:simpleIf",
+      "inputs": {
+        "condition": "{copyMarkdown}"
+      },
+      "ifSteps": [
+        {
+          "key": "sys:http",
+          "inputs": {
+            "url": "https://tools.getquicker.cn/api/MarkDown/Html2Markdown",
+            "method": "POST",
+            "bodyType": "JSON",
+            "body": "$= JsonConvert.SerializeObject(new{Source={html}})",
+            "resultType": "Text",
+            "ua": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/60.0.3112.113 Safari/537.36",
+            "expireSeconds": "100",
+            "noAutoRedirect": "0",
+            "showProgress": "0",
+            "skipCertVerify": "0",
+            "forceProxy": "0",
+            "stopIfFail": "1"
+          },
+          "outputs": {
+            "content": "markdownContent"
+          }
+        },
+        {
+          "key": "sys:writeClipboard",
+          "inputs": {
+            "type": "auto",
+            "input": "{markdownContent}",
+            "successMsg": "已复制Markdown代码",
+            "stopIfFail": "1"
+          }
+        }
+      ]
+    },
+    {
+      "key": "sys:simpleIf",
+      "inputs": {
+        "condition": "{copyHtml}"
+      },
+      "ifSteps": [
+        {
+          "key": "sys:writeClipboard",
+          "inputs": {
+            "type": "html",
+            "html": "{html}",
+            "successMsg": "已复制Html片段",
+            "stopIfFail": "1"
+          }
+        }
+      ]
+    },
+    {
+      "key": "sys:simpleIf",
+      "inputs": {
+        "condition": "{exportExcel}"
+      },
+      "ifSteps": [
+        {
+          "key": "sys:comment",
+          "inputs": {
+            "note": "准备Excel文档"
+          }
+        },
+        {
+          "key": "sys:excelreadwrite",
+          "inputs": {
+            "operation": "newWorkbook",
+            "fileType": "XSSF",
+            "stopIfFail": "1"
+          },
+          "outputs": {
+            "workbook": "workbook"
+          }
+        },
+        {
+          "key": "sys:excelreadwrite",
+          "inputs": {
+            "operation": "createSheet",
+            "workbook": "{workbook}",
+            "sheetName": "Sheet1",
+            "stopIfFail": "1"
+          },
+          "outputs": {
+            "sheet": "sheet"
+          }
+        },
+        {
+          "key": "sys:comment",
+          "inputs": {
+            "note": "提取HTML表格到Excel工作表"
+          }
+        },
+        {
+          "key": "sys:htmlExtract",
+          "inputs": {
+            "operation": "extractTable",
+            "source": "{html}",
+            "writeToSheet": "{sheet}",
+            "stopIfFail": "1"
+          }
+        },
+        {
+          "key": "sys:comment",
+          "inputs": {
+            "note": "写入文件"
+          }
+        },
+        {
+          "key": "sys:GenTempFilePath",
+          "inputs": {
+            "ext": ".xlsx"
+          },
+          "outputs": {
+            "filePath": "filePath"
+          }
+        },
+        {
+          "key": "sys:excelreadwrite",
+          "inputs": {
+            "operation": "save",
+            "filePath": "{filePath}",
+            "workbook": "{workbook}",
+            "stopIfFail": "1"
+          }
+        },
+        {
+          "key": "sys:comment",
+          "inputs": {
+            "note": "打开文件"
+          }
+        },
+        {
+          "key": "sys:run",
+          "inputs": {
+            "path": "{filePath}",
+            "runas": "false",
+            "activateWindowIfRunning": "false",
+            "stopIfFail": "1",
+            "setWorkingDir": "1",
+            "windowStyle": "0",
+            "waitInputIdle": "false",
+            "waitExit": "false",
+            "outputEncoding": "oem"
+          }
+        }
+      ]
+    },
+    {
+      "key": "sys:simpleIf",
+      "inputs": {
+        "condition": "{showHtmlPreview}"
+      },
+      "ifSteps": [
+        {
+          "key": "sys:comment",
+          "inputs": {
+            "note": "使用WebView预览识别出的表格"
+          }
+        },
+        {
+          "key": "sys:webview2",
+          "inputs": {
+            "type": "OpenUrl",
+            "url": "$=\r\n\r\nstring style = \"<style>table, th, td {border: 1px solid black;border-collapse: collapse;}th, td {padding: 3px;text-align: left; font-size:12px;}body{background-color:#FFFFFF;}</style>\";\r\n\r\nstring modifiedHtmlCode = \r\n\t{html}\r\n\t.Replace(\"<head>\", \"<head>\" + style)\r\n\t.Replace(\"<html>\", \"<html><head>\" + style + \"</head>\");\r\n            \r\nreturn modifiedHtmlCode;\r\n            \r\n",
+            "title": "表格识别预览",
+            "defaultBgColor": "#FFFFFF",
+            "modeForExists": "SkipThisStep",
+            "winLocation": "CenterScreen",
+            "stopIfFail": "1",
+            "topMost": "false",
+            "showInTaskbar": "true",
+            "noActivate": "false",
+            "closeWhenLostFocus": "false",
+            "escCloseWindow": "false",
+            "showToolbar": "false",
+            "windowStyle": "normal",
+            "clearCookies": "0",
+            "addDevTool": "0"
+          }
+        }
+      ]
+    }
+  ]
+}

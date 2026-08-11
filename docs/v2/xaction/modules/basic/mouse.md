@@ -1,13 +1,13 @@
 ---
 title: "鼠标输入"
-description: "模拟鼠标输入"
+description: "移动指针、点击、滚动，或按窗口/找图结果定位鼠标。"
 slug: "/v2/xaction/modules/mouse"
 sidebar_label: "鼠标输入"
 sidebar_position: 80
 quickerDocKey: "xaction/module/sys:mouse"
 comments: true
 moduleKey: "sys:mouse"
-docStatus: "migrated-unreviewed"
+docStatus: "reviewed"
 metadataGeneratedAt: "2026-08-03 20:08:03"
 legacyDocId: 1453657
 legacyContentUpdatedAt: "2025-01-20T02:00:01.000Z"
@@ -15,7 +15,7 @@ legacyContentUpdatedAt: "2025-01-20T02:00:01.000Z"
 
 # 鼠标输入
 
-模拟鼠标输入
+移动指针、点击、滚动，或按窗口、找图结果把鼠标移到目标位置。
 
 ## 当前模块定义
 
@@ -23,53 +23,39 @@ legacyContentUpdatedAt: "2025-01-20T02:00:01.000Z"
 
 ## 概述
 
-本模块用于移动鼠标指针、模拟鼠标点击等操作。支持多种操作类型。
+先选 **类型**，再填该类型需要的坐标、按钮或找图参数。默认类型是 **还原鼠标位置**。
 
 <ModuleParamPreview moduleKey="sys:mouse" />
 
 ### 屏幕坐标
 
-![](./img/mouse-002-db0cd3c6f1.png)
+主屏幕左上角是原点 `(0, 0)`。多屏时仍以**主屏**左上角为原点。X 向右增大，Y 向下增大。在下图里移动指针，可直接读出坐标。
 
-主屏幕的左上角为原点，X=0, Y=0。多屏幕时，主屏的左上角为原点。
+<CoordDiagram />
 
-X表示水平坐标，向右为正值增加。
+## 通用参数
 
-Y表示垂直坐标，向下为正值增加。
+这些项只在部分类型下出现。
 
-### 通用参数说明
+**移动后操作**：移到目标后立刻执行的点击。可选：无、左键单击、左键双击、右键单击、中键单击。
 
-【移动后操作】
+**操作完成后恢复鼠标位置**：点完后把指针移回操作前的位置。
 
-通过移动距离、移动到目标位置等方式移动鼠标坐标后，需要执行的操作，可选：`无、左键单击、左键双击、右键单击、右键双击`。
+**逐渐移动到目标**：分成多次挪过去，用来触发某些软件对“鼠标经过”的响应。
 
-【操作完成后恢复鼠标位置】
+**窗口句柄**：相对窗口定位时指定目标窗口。留空或 `0` 表示前台窗口（当前有输入焦点的窗口）。句柄是 Windows 给窗口的数字，可用获取窗口类模块得到。
 
-移动鼠标并模拟点击后，是否还原鼠标位置。
+## 操作类型
 
-【逐渐移动到目标】
+### 还原鼠标位置
 
-分多次逐渐移动到目标位置，用于在特定情况下触发一下目标软件的鼠标移动消息。
+把指针送回弹出 Quicker 面板**之前**的位置。用面板点选动作时指针会先移到动作上，需要在原处点击时用这个类型。
 
-【窗口句柄】
+用悬浮按钮、悬浮面板或快捷键触发时，拿不到“弹出面板前”的位置，这一步会无效。
 
-相对于窗口移动鼠标时，指定目标窗口的句柄。[什么是窗口句柄？](https://getquicker.net/KC/Kb/Article/1108)
+### 移动距离
 
-留空或0表示前台窗口（即当前具有输入焦点的窗口）。
-
-## 各操作类型说明
-
-#### 还原鼠标位置
-
-将鼠标指针还原到弹出Quicker面板前的位置。
-
-因为弹出面板、选择动作时，会移动鼠标指针到动作位置，如果希望在弹出面板前的位置执行鼠标操作可以使用此操作。
-
-通过悬浮按钮/悬浮面板/快捷键等方式触发动作时，因为无法获得弹出面板前的位置，会导致此模块无法正常操作。
-
-#### 移动距离
-
-将鼠标指针从**当前位置**移动一定的距离（单位为像素）。X正值表示向右移动，负值表示向左移动。Y正值表示向下移动，负值表示向上移动。
+从**当前位置**平移，单位像素。X 正右负左，Y 正下负上。
 
 <ModuleParamPreview
   moduleKey="sys:mouse"
@@ -77,9 +63,9 @@ Y表示垂直坐标，向下为正值增加。
   values={{type: 'move', x: '0', y: '0'}}
 />
 
-#### 移动到（x,y分别指定）
+### 移动到（x、y 分别指定）
 
-移动到某个屏幕坐标，通过2个参数分别传递x和y的坐标数值。
+移到屏幕绝对坐标，X、Y 分两个参数。
 
 <ModuleParamPreview
   moduleKey="sys:mouse"
@@ -88,17 +74,23 @@ Y表示垂直坐标，向下为正值增加。
   inputVars={{x: 'x', y: 'y'}}
 />
 
-#### 移动到（x、y一同指定）
+### 移动到（x、y 一同指定）
 
-移动到某个屏幕坐标，使用`x坐标,y坐标`格式的文本指定目标位置，如`100,200`。也可以使用百分比方式指定，如：`50%,50%`表示屏幕中心，或`50%,100`表示水平方向屏幕中心，y=100的位置。
+一个文本参数写 `x,y`，例如 `100,200`。也可用百分比：`50%,50%` 是屏幕中心，`50%,100` 是水平居中、Y=100。
 
-可以使用Snipaste等工具查看某个位置的绝对坐标。也可以使用输入框右侧的小工具进行选择。
+软件里可点坐标框右侧准星，在屏幕上点选。也可用 Snipaste 等工具读坐标。
 
-![](./img/mouse-005-29eee7b0a8.png)
+<PreviewMarks marks={[{key: 'xy', label: '点准星，在屏幕上选取坐标'}]}>
+  <ModuleParamPreview
+    moduleKey="sys:mouse"
+    focusKeys={['type', 'xy']}
+    values={{type: 'moveToXy', xy: '2429,762'}}
+  />
+</PreviewMarks>
 
-#### 单击、双击、抬起、按下
+### 单击、双击、按下、抬起
 
-模拟鼠标按键事件。
+在**当前指针位置**发送按键事件。按钮可选左键、右键、中键、X1、X2。
 
 <ModuleParamPreview
   moduleKey="sys:mouse"
@@ -106,9 +98,12 @@ Y表示垂直坐标，向下为正值增加。
   values={{type: 'click', btn: 'left'}}
 />
 
-#### 滚动
+### 滚动
 
-模拟鼠标滚动事件。
+对指针所在窗口发送滚轮消息。X、Y 填 click 数（通常一格滚轮 = 1 click）：
+
+- **Y**：正值向前（向上翻），负值向后（向下翻）
+- **X**：正值向右，负值向左
 
 <ModuleParamPreview
   moduleKey="sys:mouse"
@@ -116,37 +111,17 @@ Y表示垂直坐标，向下为正值增加。
   values={{type: 'scroll', x: '0', y: '0'}}
 />
 
-此时可以在X、Y参数中填写数字，表示水平和垂直方向的滚动距离。
+不要用悬浮按钮直接触发滚动（指针还在按钮上）。用面板触发时，若动作一开始就滚，先加[等待时间](./delay.md)等面板关掉。有的软件要循环发多次滚动才生效。
 
-Y表示垂直滚动的click数量，正值表示向前（向上翻页），负值表示向后（向下翻页）。
+### 按下 / 松开 Ctrl、Shift
 
-X表示水平滚动的click数量，正值表示向右，负值表示向左。
+用来做「Ctrl + 点击」这类组合：先按下修饰键，再鼠标，再松开。也可以改用[按键操作](../system/keyoperation.md)。修饰键和鼠标步骤之间建议加 10ms 以上延时（键盘、鼠标不在同一消息队列）。
 
-（1 click，一般情况下等于鼠标滚轮的一格，一个顿挫感）
+### 移动到窗口位置
 
-滚动只对鼠标指针所在位置的窗口有效。因此，不要使用悬浮按钮来触发模拟滚动的动作。使用面板窗口触发时，如果动作开始时就滚动，需要增加延时以等待面板窗口关闭。
+窗口位置或大小会变、但目标相对窗口固定时用。参考点：左上、右上、左下、右下、中心。
 
-有一些软件需要使用循环模拟多次滚动消息才有效果。
-
-#### 按下Ctrl、松开Ctrl、按下Shift、松开Shift
-
-用于模拟类似于“Ctrl+鼠标点击”的情况。
-
-通常先模拟按下按键后，再模拟鼠标输入，再松开按键。
-
-本功能也可以用单独的模块《[按键操作](/v2/xaction/modules/keyoperation)》实现。
-
-#### 移动到窗口位置（左上角、右上角等）
-
-当窗口位置或尺寸可能会变化，但是目标位置相对于窗口是固定的，可使用本功能。
-
-可选的参考点类型：
-
--   窗口左上角
--   窗口右上角
--   窗口左下角
--   窗口右下角
--   窗口中心
+**X** / **Y** 是相对参考点的偏移，X 正右、Y 正下。相对右下角时，偏移通常是负值才能落到窗口内。
 
 <ModuleParamPreview
   moduleKey="sys:mouse"
@@ -154,15 +129,7 @@ X表示水平滚动的click数量，正值表示向右，负值表示向左。
   values={{type: 'toWinTL', hWnd: '', x: '0', y: '0'}}
 />
 
-【X】和【Y】参数
-
-表示相对于窗口参考点的偏移。X正值向右，Y正值向下。
-
-比如在使用相对于右下角的方式时，X和Y分别为负值，才能定位到窗口内。
-
-#### 移动到窗口位置（xy一同指定）
-
-效果类似于“移动到窗口位置：相对于窗口左上角”，但是使用字符串方式一同指定相对坐标。
+**移动到窗口位置：xy 一同指定** 效果相当于相对左上角，但用一个字符串：`100,200` 或 `50%,50%`（窗口中心）。
 
 <ModuleParamPreview
   moduleKey="sys:mouse"
@@ -170,21 +137,9 @@ X表示水平滚动的click数量，正值表示向右，负值表示向左。
   values={{type: 'moveToWinXy', hWnd: '', xyForWin: '50%,50%'}}
 />
 
-【相对坐标】
+### 获取鼠标位置
 
-格式为：`x,y`，如：`100,200`（相对于窗口左上角向右100，向下200）。也可以使用百分比表示，如：`50%,50%` 表示窗口中心。
-
-#### 移动到位图位置（图片文件、图片变量）
-
-找图定位功能。根据指定的小图，在屏幕上或窗口内查找匹配图片，并将鼠标指针移动到该位置。
-
-找图后自动移动到目标位置。 如果只需要找到位图位置而不需要进行鼠标操作，或者要进行自定义的鼠标操作，请使用“[屏幕找图](/v2/xaction/modules/searchbmp)”模块。也可以使用子程序“[屏幕找图增强版](https://getquicker.net/subprogram?id=e4af1d5b-143b-4b62-4de5-08d85ac8eddb)”进行找图操作，该子程序具有更高的容错能力。
-
-#### 获取鼠标位置（弹出面板前位置）
-
-获取面板的触发位置。
-
-与“还原鼠标位置”操作所恢复的鼠标位置一致。
+**获取鼠标位置（弹出面板前位置）**：和「还原鼠标位置」用的是同一处坐标。
 
 <ModuleParamPreview
   moduleKey="sys:mouse"
@@ -193,9 +148,7 @@ X表示水平滚动的click数量，正值表示向右，负值表示向左。
   outputVars={{mouseLocation: 'mouseLocation', mouseX: 'mouseX', mouseY: 'mouseY'}}
 />
 
-#### 获取鼠标位置及指针类型（当前位置）
-
-获取动作执行到此步骤时的（而非弹出面板之前的）鼠标位置和指针类型。
+**获取鼠标位置及指针类型（当前位置）**：取执行到这一步时的指针位置和形状，不是弹出面板前。
 
 <ModuleParamPreview
   moduleKey="sys:mouse"
@@ -209,87 +162,147 @@ X表示水平滚动的click数量，正值表示向右，负值表示向左。
   }}
 />
 
-【光标类型】
+**光标类型**常见值：Arrow（默认）、IBeam（文本）、Hand（链接）、SizeAll / SizeWE / SizeNS / SizeNESW / SizeNWSE（移动或拉伸）、Wait、Appstarting。认不出来时返回原始数字。请在目标软件里实测。
 
-鼠标指针的类型。请实际测试以获得准确的值。
+### 显示鼠标位置提示
 
-常见鼠标指针类型：
+在当前指针处播一个由小变大的水波纹，用来标位置。
 
--   Arrow 默认
--   IBeam 选定文本
--   Hand 链接选择
--   SizeAll 移动
--   SizeWE 水平调整
--   SizeNS 垂直调整
--   SizeNESW 东北西南对角线调整
--   SizeNWSE 西北东南对角线调整
--   Wait 忙碌
--   Appstarting 后台运行
-
-不能识别的，返回原始值（一个数字）。
-
-#### 显示鼠标位置提示
-
-在当前鼠标位置显示一个从小到大的水波纹动画，用于提示当前鼠标位置。
-
-![](./img/mouse-012-b16078e96c.png)
-
-## 注意事项
-
--   滚动操作会作用到鼠标指针所在位置窗口上。所以不能使用悬浮动作按钮触发（除非在动作中增加了足够的延迟时间，待鼠标移动到目标位置后再模拟滚动）。
--   模拟键盘+鼠标的组合操作时（如模拟Ctrl+滚动），键盘和步骤之间需要增加一些延迟（10ms+）。这是因为鼠标和键盘是不同的消息队列，如果没有延迟，可能会出现生效顺序和预期不一致的情况（[参考](https://getquicker.net/QA/Question/15424)）。
-
-## 移动到位图位置（找图定位）参数说明
-
-注意：本功能已提取为单独的模块《[屏幕找图/找色/找字](/v2/xaction/modules/searchbmp)》，后续开发建议使用该模块。
+<ClickIndicatorPreview />
 
 <ModuleParamPreview
   moduleKey="sys:mouse"
-  values={{
-    type: 'locateByBitmapVar',
-    bmpVar: 'img',
-    bmpTargetType: 'CurrentWindow',
-    bmpPosition: 'Center',
-    bmpColorError: '0',
-    maxFindCount: '100',
-    x: '0',
-    y: '0',
-    extAction: 'left',
-  }}
-  outputVars={{isSuccess: 'imgTrue'}}
+  focusKeys={['type']}
+  values={{type: 'showIndicator'}}
 />
 
-**位图变量/位图路径**：要在屏幕或窗口中寻找的小图；
+## 移动到位图位置（找图）
 
-**查找范围（****当前窗口或主屏幕****）**：在哪个范围内查找图片；
+按小图在屏幕或窗口里查找，找到后把指针移过去。位图必须和屏幕像素一致，不能压缩。
 
-**定位位置**：找到图片位置后，将鼠标移动到寻找图片的左上角（如下图的A点）还是中间位置（如下图的B点）。
+只找位置、或要自己决定怎么点，请用[屏幕找图](../image/searchbmp.md)。后续新动作也建议用那个模块。容错更高可用子程序 [屏幕找图增强版](https://getquicker.net/subprogram?id=e4af1d5b-143b-4b62-4de5-08d85ac8eddb)。
+
+**位图路径** / **位图变量**：要找的小图。
+
+**查找范围**：主屏幕、当前窗口、所有屏幕，或 **坐标范围**（再填 **查找坐标范围**，格式 `left,top,right,bottom`）。
+
+**定位位置**：移到匹配区域的中间或四角。下图 A 是左上角，B 是中间。
 
 ![](./img/mouse-014-efb9812e0a.png)
 
-**颜色容差**：在匹配像素颜色时，对每种颜色（red、green、blue）的值在上下多少的范围内认为是匹配。0表示精确匹配，运算速度会最快。
+**颜色容差**：每个颜色通道允许的偏差，`0`–`100`。`0` 是精确匹配，最快。默认 `10`。
 
-**最大匹配数量**：允许最多找到多少个匹配位置。当一个窗口内有多个匹配时，会对每个匹配执行“移动后操作”。
+**最大匹配数量**：最多处理几个匹配；每个匹配都会执行 **移动后操作**。默认 `1`。
 
-**X、Y**：定位位置的偏移量。定位到图片的左上角或中间位置后，可以使用这两个值对坐标偏移一定的像素数。
+**重试次数**：找不到时重试，每次间隔 300ms。
 
-**移动后操作**：移动到目标位置后要进行的操作，比如点击。
+**X** / **Y**：在定位点上再偏移。
 
-### 示例动作
+**失败后中止动作**：找不到是否停掉后面的步骤。默认开启。
 
-下面的动画演示了一个截图点击动作（参考Marcus的[分享动作](https://getquicker.net/sharedaction?code=95efcbcf-0333-4e72-0086-08d6b398dbc5)）：
+**找图定位是否成功**：布尔输出。
 
-此处为语雀视频卡片，点击链接查看：[截图点击.mp4](/v2/xaction/modules/mouse)
+<PreviewMarks
+  marks={[
+    {key: 'bmpVar', label: '读取截到的 img 变量'},
+    {key: 'bmpTargetType', label: '在当前窗口里找'},
+    {key: 'bmpPosition', label: '移到位图中间'},
+    {key: 'bmpColorError', label: '0 = 精确匹配'},
+    {key: 'maxFindCount', label: '最多处理 50 处'},
+    {key: 'extAction', label: '找到后左键单击'},
+  ]}
+>
+  <ModuleParamPreview
+    moduleKey="sys:mouse"
+    values={{
+      type: 'locateByBitmapVar',
+      bmpVar: 'img',
+      bmpTargetType: 'CurrentWindow',
+      bmpPosition: 'Center',
+      bmpColorError: '0',
+      maxFindCount: '50',
+      x: '0',
+      y: '0',
+      extAction: 'left',
+      stopIfFail: 'false',
+    }}
+    outputVars={{isSuccess: 'imgTrue'}}
+  />
+</PreviewMarks>
 
-**动作定义：**
+### 示例：截图后点击匹配位置
 
-![](./img/mouse-015-850bb03c05.png)
+先截一块图存进 `img`，再循环找图并点击。参考 [分享动作](https://getquicker.net/sharedaction?code=95efcbcf-0333-4e72-0086-08d6b398dbc5)。
 
-其中“鼠标输入”步骤的定义如下图所示：
+<StepProgramView
+  showVariables
+  data={{
+    steps: [
+      {
+        key: 'sys:screenCapture',
+        note: '截图后位图存入 img 变量',
+        outputs: {img: 'img'},
+      },
+      {
+        key: 'sys:repeat',
+        inputs: {count: '10'},
+        ifSteps: [
+          {key: 'sys:delay', inputs: {delayMs: '100'}},
+          {
+            key: 'sys:mouse',
+            note: '找到截图位置并点击',
+            inputs: {
+              type: 'locateByBitmapVar',
+              bmpVar: 'img',
+              bmpTargetType: 'CurrentWindow',
+              bmpPosition: 'Center',
+              extAction: 'left',
+            },
+            outputs: {isSuccess: 'imgTrue'},
+          },
+          {
+            key: 'sys:assign',
+            note: '判断是否找图成功',
+            inputs: {input: '{imgTrue}'},
+            outputs: {output: 'found'},
+          },
+        ],
+      },
+      {key: 'sys:notify'},
+    ],
+  }}
+/>
 
-![](./img/mouse-016-da277c9034.png)
+## 限制与排障
 
-## 更新历史
+- 滚动只作用在指针所在窗口。悬浮按钮触发时指针还在按钮上，滚动会打偏。
+- Ctrl/Shift + 鼠标时，键盘步骤和鼠标步骤之间加 10ms 以上延时。
+- 「还原 / 获取弹出面板前位置」依赖面板触发；快捷键、悬浮按钮没有这个坐标。
+- 找图对压缩、缩放、主题变化敏感；对不上就加大容差，或改用[屏幕找图](../image/searchbmp.md)。
 
--   20230109 增加一些注意事项。
--   20250120 完善文档以匹配实际功能。
+## 相关链接
+
+<RelatedDocs
+  items={[
+    {
+      href: '/v2/xaction/modules/searchbmp',
+      label: '屏幕找图',
+      description: '只定位图片或颜色，不强制移动鼠标。',
+    },
+    {
+      href: '/v2/xaction/modules/keyoperation',
+      label: '按键操作',
+      description: '单独按下或抬起 Ctrl / Shift，再配合点击。',
+    },
+    {
+      href: '/v2/xaction/modules/delay',
+      label: '等待时间',
+      description: '等面板关掉，或隔开键盘与鼠标消息。',
+    },
+    {
+      href: '/v2/xaction/modules/screencapture',
+      label: '屏幕截图',
+      description: '截一块图供「移动到位图位置」使用。',
+    },
+  ]}
+/>

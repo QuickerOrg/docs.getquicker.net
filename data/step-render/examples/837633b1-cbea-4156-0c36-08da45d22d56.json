@@ -1,0 +1,36 @@
+{
+  "code": "837633b1-cbea-4156-0c36-08da45d22d56",
+  "title": "ZoomAll",
+  "description": "测试cad命令模块。",
+  "author": "CL",
+  "revision": 3,
+  "source": "https://getquicker.net/sharedaction?code=837633b1-cbea-4156-0c36-08da45d22d56",
+  "pulledAt": "2026-08-11T21:27:56.287Z",
+  "variables": [
+    {
+      "name": "text",
+      "type": "Text",
+      "remark": "默认的文本变量"
+    }
+  ],
+  "steps": [
+    {
+      "key": "sys:autocadcontrol",
+      "inputs": {
+        "operation": "SendCommand",
+        "command": "_zoom all ",
+        "waitResp": "false",
+        "stopIfFail": "1"
+      }
+    },
+    {
+      "key": "sys:notify",
+      "inputs": {
+        "msg": "执行完成",
+        "maxLines": "0",
+        "type": "Success",
+        "style": "Default"
+      }
+    }
+  ]
+}

@@ -1,0 +1,52 @@
+{
+  "code": "186c9f3f-46d4-4f63-00b9-08db56e12efe",
+  "title": "示例：菜单调用子程序传递参数",
+  "description": "通过显示菜单调用子程序并传递参数",
+  "author": "CL",
+  "revision": 1,
+  "source": "https://getquicker.net/sharedaction?code=186c9f3f-46d4-4f63-00b9-08db56e12efe",
+  "pulledAt": "2026-08-11T21:27:56.034Z",
+  "variables": [
+    {
+      "name": "text",
+      "type": "Text",
+      "remark": "默认的文本变量"
+    },
+    {
+      "name": "time",
+      "type": "Text"
+    }
+  ],
+  "steps": [
+    {
+      "key": "sys:getCurrentTime",
+      "inputs": {
+        "source": "currTime",
+        "useUtc": "0",
+        "addDays": "0",
+        "addHours": "0",
+        "addMinutes": "0",
+        "addSeconds": "0",
+        "addMonths": "0",
+        "format": "yyyy-MM-dd HH:mm:ss",
+        "outputCulture": "CURRENT",
+        "stopIfFail": "1"
+      },
+      "outputs": {
+        "strValue": "time"
+      }
+    },
+    {
+      "key": "sys:showmenu",
+      "inputs": {
+        "menuData": "$$张三|operation=sp&spname=testsp&name=张三\r\n李四|operation=sp&spname=testsp&name=李四\r\n时间变量|operation=sp&spname=testsp&name={time}",
+        "fontsize": "12",
+        "iconsize": "16",
+        "maxHeight": "0",
+        "useFocus": "0",
+        "waitMenuClose": "1",
+        "stopIfFail": "1"
+      }
+    }
+  ]
+}

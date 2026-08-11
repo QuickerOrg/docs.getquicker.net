@@ -1,0 +1,194 @@
+{
+  "code": "fb351711-0941-4816-d9b7-08db2ba80230",
+  "title": "AI对话测试",
+  "description": "测试Quicker AI历史消息功能",
+  "author": "CL",
+  "revision": 0,
+  "source": "https://getquicker.net/sharedaction?code=fb351711-0941-4816-d9b7-08db2ba80230",
+  "pulledAt": "2026-08-11T21:28:52.642Z",
+  "variables": [
+    {
+      "name": "text",
+      "type": "Text",
+      "remark": "默认的文本变量"
+    },
+    {
+      "name": "SecretKey",
+      "type": "Text"
+    },
+    {
+      "name": "sessionId",
+      "type": "Text"
+    },
+    {
+      "name": "userPromot",
+      "type": "Text",
+      "remark": "用户输入的内容"
+    },
+    {
+      "name": "reply",
+      "type": "Text"
+    },
+    {
+      "name": "isWindowExists",
+      "type": "Boolean",
+      "remark": "文本窗口是否存在"
+    },
+    {
+      "name": "historyMessages",
+      "type": "Text"
+    }
+  ],
+  "steps": [
+    {
+      "key": "sys:comment",
+      "inputs": {
+        "note": "1）这里文本窗口使用SessionId作为标识，每次会话使用一个单独的窗口。（避免同一个动作多运行造成重复冲突）\r\n2）用户输入窗口应该置顶，避免被文本窗口盖住。"
+      }
+    },
+    {
+      "key": "sys:if",
+      "inputs": {
+        "condition": "$={SecretKey}.IsNullOrWhiteSpace()"
+      },
+      "ifSteps": [
+        {
+          "key": "sys:form",
+          "inputs": {
+            "operation": "variables",
+            "title": "参数设置",
+            "formDef": "{\"Fields\":[{\"FieldKey\":\"SecretKey\",\"DictVarType\":null,\"Label\":\"SecretKey\",\"HelpText\":\"\",\"HelpLink\":null,\"InputMethod\":1,\"SelectionItems\":\"\",\"IsRequired\":true,\"MinValue\":\"\",\"MaxValue\":\"\",\"Pattern\":\"\",\"InputWidth\":\"\",\"MaxLength\":0,\"ImeState\":null,\"TextTools\":\"\",\"VisibleExpression\":\"\",\"DefaultValue\":null,\"Group\":\"\"}]}",
+            "titleColumnWidth": "100",
+            "windowWidth": "500",
+            "windowHeight": "0",
+            "restoreFocus": "0",
+            "topMost": "false",
+            "disableEnterSubmit": "0",
+            "stopIfFail": "1"
+          }
+        }
+      ]
+    },
+    {
+      "key": "sys:newGuid",
+      "inputs": {
+        "format": "D",
+        "upper": "1"
+      },
+      "outputs": {
+        "output": "sessionId"
+      }
+    },
+    {
+      "key": "sys:repeat",
+      "inputs": {
+        "count": "-1",
+        "startIndex": "0",
+        "repeatDelayMs": "1"
+      },
+      "ifSteps": [
+        {
+          "key": "sys:userInput",
+          "inputs": {
+            "type": "multiline",
+            "prompt": "请输入要发送给AI的问题内容：",
+            "isRequired": "1",
+            "submitWithReturn": "1",
+            "restoreFocus": "1",
+            "closeOnDeactivated": "0",
+            "topMost": "1",
+            "stopIfFail": "1",
+            "fontsize": "14",
+            "winLocation": "CenterScreen",
+            "imeState": "NO_CONTROL"
+          },
+          "outputs": {
+            "textValue": "userPromot"
+          }
+        },
+        {
+          "key": "sys:showText",
+          "inputs": {
+            "type": "GET_WIN_INFO",
+            "stopIfFail": "1",
+            "autoCloseKey": "{sessionId}"
+          },
+          "outputs": {
+            "isWindowExists": "isWindowExists"
+          }
+        },
+        {
+          "key": "sys:if",
+          "inputs": {
+            "condition": "{isWindowExists}"
+          },
+          "ifSteps": [
+            {
+              "key": "sys:showText",
+              "inputs": {
+                "type": "ACTIVATE_WINDOW",
+                "stopIfFail": "1",
+                "autoCloseKey": "{sessionId}"
+              }
+            },
+            {
+              "key": "sys:showText",
+              "inputs": {
+                "type": "APPEND_TEXT",
+                "text": "$$\r\n我：{userPromot}\r\nAI:",
+                "stopIfFail": "1",
+                "autoCloseKey": "{sessionId}"
+              }
+            }
+          ],
+          "elseSteps": [
+            {
+              "key": "sys:showText",
+              "inputs": {
+                "type": "NO_WAIT",
+                "text": "$$我：{userPromot}\r\nAI:",
+                "title": "会话内容",
+                "topMost": "false",
+                "stopIfFail": "1",
+                "autoCloseKey": "{sessionId}",
+                "winLocation": "CenterScreen",
+                "fontsize": "14",
+                "closeWhenLostFocus": "false",
+                "showLineNum": "true",
+                "autoWrap": "true",
+                "showBuildInToolbar": "true",
+                "copyWholeLine": "false",
+                "caretPosition": "-1",
+                "updateIfExists": "1"
+              }
+            }
+          ]
+        },
+        {
+          "key": "sys:ai",
+          "inputs": {
+            "endpoint": "chat",
+            "model": "gpt-3.5-turbo",
+            "sessionId": "{sessionId}",
+            "historyMessages": "8",
+            "prompt": "{userPromot}",
+            "maxTokens": "0",
+            "temperature": "0.2",
+            "stopIfFail": "1",
+            "apiKey": "{SecretKey}",
+            "topP": "1",
+            "n": "1",
+            "stream": "true",
+            "streamTo": "{sessionId}",
+            "expireSeconds": "120",
+            "forceProxy": "1"
+          },
+          "outputs": {
+            "result": "reply",
+            "historyMessages": "historyMessages"
+          }
+        }
+      ]
+    }
+  ]
+}

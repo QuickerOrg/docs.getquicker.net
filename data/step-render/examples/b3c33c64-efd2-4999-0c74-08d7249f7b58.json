@@ -1,0 +1,144 @@
+{
+  "code": "b3c33c64-efd2-4999-0c74-08d7249f7b58",
+  "title": "示例：创建docx文件",
+  "description": "在当前文件夹下创建指定名称的docx文件并打开。",
+  "author": "CL",
+  "revision": 0,
+  "source": "https://getquicker.net/sharedaction?code=b3c33c64-efd2-4999-0c74-08d7249f7b58",
+  "pulledAt": "2026-08-11T21:11:36.251Z",
+  "variables": [
+    {
+      "name": "path",
+      "type": "Text",
+      "remark": "当前路径"
+    },
+    {
+      "name": "filename",
+      "type": "Text",
+      "remark": "用户输入的文件名，不包含扩展名"
+    },
+    {
+      "name": "isSuccess",
+      "type": "Boolean"
+    },
+    {
+      "name": "fullPath",
+      "type": "Text",
+      "remark": "完整路径"
+    },
+    {
+      "name": "quickerVersion",
+      "type": "Number",
+      "remark": "Quicker版本号"
+    }
+  ],
+  "steps": [
+    {
+      "key": "sys:getSysInfo",
+      "outputs": {
+        "quickerVersion": "quickerVersion"
+      }
+    },
+    {
+      "key": "sys:if",
+      "inputs": {
+        "condition": "$${quickerVersion} < 1000011"
+      },
+      "ifSteps": [
+        {
+          "key": "sys:notify",
+          "inputs": {
+            "msg": "需要Quicker 1.0.11或更新版本支持。",
+            "type": "Warning"
+          }
+        },
+        {
+          "key": "sys:stop"
+        }
+      ]
+    },
+    {
+      "key": "sys:getExplorerPath",
+      "outputs": {
+        "output": "path"
+      }
+    },
+    {
+      "key": "sys:comment",
+      "inputs": {
+        "note": "得到当前文件夹路径"
+      }
+    },
+    {
+      "key": "sys:userInput",
+      "inputs": {
+        "prompt": "请输入文件名",
+        "type": "text",
+        "defaultValue": "xxx文件",
+        "restoreFocus": "0"
+      },
+      "outputs": {
+        "textValue": "filename"
+      }
+    },
+    {
+      "key": "sys:comment",
+      "inputs": {
+        "note": "组合成完整文件名"
+      }
+    },
+    {
+      "key": "sys:assign",
+      "inputs": {
+        "input": "$${path}/{filename}.docx"
+      },
+      "outputs": {
+        "output": "fullPath"
+      }
+    },
+    {
+      "key": "sys:comment",
+      "inputs": {
+        "note": "创建文件"
+      }
+    },
+    {
+      "key": "sys:fileOperation",
+      "inputs": {
+        "type": "createFile",
+        "path": "{fullPath}",
+        "searchPattern": "*",
+        "isAll": "0",
+        "overwrite": "0",
+        "stopIfFail": "0"
+      },
+      "outputs": {
+        "isSuccess": "isSuccess"
+      }
+    },
+    {
+      "key": "sys:comment",
+      "inputs": {
+        "note": "如果创建成功了，则打开"
+      }
+    },
+    {
+      "key": "sys:if",
+      "inputs": {
+        "condition": "{isSuccess}"
+      },
+      "ifSteps": [
+        {
+          "key": "sys:run",
+          "inputs": {
+            "path": "{fullPath}",
+            "windowStyle": "0",
+            "runas": "0",
+            "waitInputIdle": "0",
+            "waitExit": "0"
+          }
+        }
+      ]
+    }
+  ]
+}

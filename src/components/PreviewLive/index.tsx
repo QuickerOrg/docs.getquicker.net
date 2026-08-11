@@ -1,6 +1,6 @@
 /**
  * Live value bus for PreviewMap: the param form reports catalog values,
- * and the runtime preview (MsgBoxPreview, …) re-renders from them.
+ * and the runtime preview (MsgBoxPreview, UserInputPreview, …) re-renders from them.
  */
 import {
   createContext,

@@ -1,13 +1,13 @@
 ---
 title: "替换文本"
-description: "替换文本中的指定内容"
+description: "按字面量或正则，替换一段文本里的一种或多种内容。"
 slug: "/v2/xaction/modules/strreplace"
 sidebar_label: "替换文本"
 sidebar_position: 60
 quickerDocKey: "xaction/module/sys:strReplace"
 comments: true
 moduleKey: "sys:strReplace"
-docStatus: "migrated-unreviewed"
+docStatus: "reviewed"
 metadataGeneratedAt: "2026-08-03 20:08:03"
 legacyDocId: 2114156
 legacyContentUpdatedAt: "2024-06-05T02:30:46.000Z"
@@ -15,28 +15,34 @@ legacyContentUpdatedAt: "2024-06-05T02:30:46.000Z"
 
 # 替换文本
 
-替换文本中的指定内容
+把文本里的指定内容换成别的。一种内容用普通模式；一次换多种用批量模式。只要截取、去空白、编解码，用 [文本处理](/v2/xaction/modules/stringprocess)。
 
 ## 当前模块定义
 
 <XActionModuleMeta moduleKey="sys:strReplace" />
 
-替换文本中的一部分内容。
+## 概述
 
 <ModuleParamPreview moduleKey="sys:strReplace" />
 
-## 参数
+## 参数说明
 
-### 输入
+**操作类型**：
 
-【操作类型】替换一种内容或多种内容。
+- **普通（替换一种内容）**：用下面的查找 / 替换为一对。
+- **批量（替换多种内容）**：用查找和替换内容，每行一对。
 
--   普通：查找一种内容并进行替换。
--   批量：查找多种内容并进行替换。
+<ModuleParamPreview
+  moduleKey="sys:strReplace"
+  focusKeys={['type', 'old', 'new', 'batchReplaceData']}
+  values={{type: 'single'}}
+/>
 
-【输入】要替换内容的原始文本。
+**输入**：要改的原文。
 
-【查找和替换内容】（批量模式下使用）每行指定一对要查找和替换的内容。如：
+**查找内容** / **替换为**：仅普通模式。
+
+**查找和替换内容**：仅批量模式。每行一对，用 `|` 或 `|||` 分开（内容里本身有竖线时用三个）。也可以在首行写 `|=分隔符` 自定义分隔（1.5.20+）。
 
 ```text
 a|A
@@ -44,38 +50,45 @@ b|B
 cc|||CC|CC
 ```
 
-会分别将输入文本中的a替换为A，b替换为B，cc替换为CC|CC。
+会把 `a`→`A`、`b`→`B`、`cc`→`CC|CC`。
 
-使用 |（一个竖线）或 |||（三个竖线）分隔要查找的内容和要替换成的内容。三个竖线用于在要查找的或要替换的内容中包含一个或两个竖线的情况。
+**转义“查找内容”**：把查找内容里的 `\r` `\n` `\t` 当成对应字符。开了 **使用正则替换** 时不要勾，正则自己会处理 `\`。
 
-也可以在首行使用“|=分隔符”的方式自定义分隔文本（自1.5.20版本支持，支持单个字符或多个字符）。
+**转义“替换为”**：对替换为做同样转义。默认开启。
 
-【查找内容】（普通模式下使用）需要替换掉的内容。
+**使用正则替换**：查找内容按正则写。
 
-【替换为】（普通模式下使用）将“查找内容”替换成这里指定的文字。
+开启正则后可用：
 
-选项：
+- **忽略大小写**
+- **正则：单行**：`.` 也能匹配换行。默认开启。
+- **正则：多行**：`^` / `$` 匹配行首行尾。
 
-【转义“查找内容”】将“查找内容”参数中的\\r\\n\\t识别为对应的ASCII字符。在开启“使用正则表达式”选项时，因为``字符在正则中会被自动当做转义字符，所以请勿选择本选项，以避免重复的转义处理。
+## 输出
 
-【转义“替换为”】将“替换为”参数中的\\r\\n\\t识别为对应的ASCII字符。
+- **结果**：替换后的文本。旧稿未写输出项。
 
-【使用正则表达式】使用正则替换。这时候“查找内容”是一个正则表达式。
+## 限制与排障
 
-在使用正则替换时，下面的选项会生效：
+正则和「转义查找内容」不要一起开，会双重转义。批量分隔符和要替换的竖线冲突时，改用 `|||` 或首行自定义分隔。
 
-【正则选项：忽略大小写】匹配要替换的内容时忽略大小写。
+## 相关链接
 
-【正则选项：单行】启用单行模式。详细说明请参考正则相关资料。
-
-【正则选项：多行】启用多行模式。详细说明请参考正则相关资料。
+<RelatedDocs
+  items={[
+    {
+      href: '/v2/xaction/modules/regexextract',
+      label: '正则提取',
+      description: '只要取出匹配，不替换。',
+    },
+    {
+      href: '/v2/xaction/modules/stringprocess',
+      label: '文本处理',
+      description: '截取、去空白、编解码。',
+    },
+  ]}
+/>
 
 ## 更新历史
 
--   1.1.33 增加支持批量替换功能。
--   增加开启正则时，避免开启“转义查找内容”的说明。
-
-## 参考
-
--   正则表达式教程：[https://deerchao.net/tutorials/regex/regex.htm](https://deerchao.net/tutorials/regex/regex.htm)
--   [https://www.runoob.com/csharp/csharp-regular-expressions.html](https://www.runoob.com/csharp/csharp-regular-expressions.html)
+- 1.1.33 增加批量替换。

@@ -1,0 +1,150 @@
+{
+  "code": "bf4e796f-e1a5-41ba-1925-08d7b02d7fd4",
+  "title": "生成MarkDown链接",
+  "description": "将当前网址生成markdown",
+  "author": "CL",
+  "revision": 2,
+  "source": "https://getquicker.net/sharedaction?code=bf4e796f-e1a5-41ba-1925-08d7b02d7fd4",
+  "pulledAt": "2026-08-11T21:28:53.112Z",
+  "variables": [
+    {
+      "name": "markdown",
+      "type": "Text",
+      "remark": "生成的markdown内容"
+    },
+    {
+      "name": "title",
+      "type": "Text"
+    },
+    {
+      "name": "url",
+      "type": "Text",
+      "remark": "网址"
+    },
+    {
+      "name": "html",
+      "type": "Text",
+      "remark": "html内容"
+    },
+    {
+      "name": "description",
+      "type": "Text"
+    }
+  ],
+  "steps": [
+    {
+      "key": "sys:getChromeUrl",
+      "inputs": {
+        "stopIfFail": "1"
+      },
+      "outputs": {
+        "output": "url"
+      },
+      "disabled": true
+    },
+    {
+      "key": "sys:subprogram",
+      "inputs": {
+        "subProgram": "Quicker版本验证",
+        "stopIfFail": "1",
+        "var:要求版本号": "1.4.17"
+      }
+    },
+    {
+      "key": "sys:comment",
+      "inputs": {
+        "note": "获取浏览器的当前网址"
+      }
+    },
+    {
+      "key": "sys:subprogram",
+      "inputs": {
+        "subProgram": "提取当前页标题网址",
+        "stopIfFail": "1"
+      },
+      "outputs": {
+        "var:网址": "url"
+      }
+    },
+    {
+      "key": "sys:comment",
+      "inputs": {
+        "note": "获取网页HTML内容"
+      }
+    },
+    {
+      "key": "sys:http",
+      "inputs": {
+        "url": "{url}",
+        "method": "GET",
+        "resultType": "Text",
+        "ua": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/60.0.3112.113 Safari/537.36",
+        "expireSeconds": "100",
+        "noAutoRedirect": "0",
+        "stopIfFail": "1"
+      },
+      "outputs": {
+        "content": "html"
+      }
+    },
+    {
+      "key": "sys:comment",
+      "inputs": {
+        "note": "提取网页的Title和Description"
+      }
+    },
+    {
+      "key": "sys:htmlExtract",
+      "inputs": {
+        "source": "{html}",
+        "xpath": "html/head/title",
+        "selectTarget": "single",
+        "returnType": "InnerText",
+        "stopIfFail": "1"
+      },
+      "outputs": {
+        "value": "title"
+      },
+      "note": "提取标题"
+    },
+    {
+      "key": "sys:htmlExtract",
+      "inputs": {
+        "source": "{html}",
+        "xpath": "//meta[@name='description']",
+        "selectTarget": "single",
+        "returnType": "Attribute",
+        "attribute": "content",
+        "stopIfFail": "0"
+      },
+      "outputs": {
+        "value": "description"
+      },
+      "note": "提取description"
+    },
+    {
+      "key": "sys:comment",
+      "inputs": {
+        "note": "拼接为MarkDown链接，写入剪贴板"
+      }
+    },
+    {
+      "key": "sys:assign",
+      "inputs": {
+        "input": "$$[{title}]({url} '{description}')"
+      },
+      "outputs": {
+        "output": "markdown"
+      }
+    },
+    {
+      "key": "sys:writeClipboard",
+      "inputs": {
+        "type": "text",
+        "text": "{markdown}",
+        "successMsg": "$$已写入剪贴板：\r\n{markdown}",
+        "stopIfFail": "1"
+      }
+    }
+  ]
+}

@@ -1,0 +1,183 @@
+{
+  "code": "9205705f-d1a7-4713-3d38-08d673be1748",
+  "title": "计算多行",
+  "description": "例子：计算多行表达式",
+  "author": "CL",
+  "revision": 3,
+  "source": "https://getquicker.net/sharedaction?code=9205705f-d1a7-4713-3d38-08d673be1748",
+  "pulledAt": "2026-08-11T21:13:02.778Z",
+  "variables": [
+    {
+      "name": "context",
+      "type": "Text",
+      "remark": "默认的文本变量"
+    },
+    {
+      "name": "img",
+      "type": "Image",
+      "remark": "默认的图片变量"
+    },
+    {
+      "name": "lines",
+      "type": "List"
+    },
+    {
+      "name": "result",
+      "type": "Text"
+    },
+    {
+      "name": "lineResult",
+      "type": "Text",
+      "remark": "每行的结果"
+    },
+    {
+      "name": "resultList",
+      "type": "List"
+    },
+    {
+      "name": "isSuccess",
+      "type": "Boolean"
+    }
+  ],
+  "steps": [
+    {
+      "key": "sys:getSelectedText",
+      "inputs": {
+        "format": "UnicodeText",
+        "waitMs": "250",
+        "repeat": "0",
+        "trim": "0",
+        "tryNoClipboard": "0",
+        "useActionParam": "0",
+        "stopIfFail": "1"
+      },
+      "outputs": {
+        "output": "context"
+      }
+    },
+    {
+      "key": "sys:comment",
+      "inputs": {
+        "note": "拆分成列表。 支持3种换行。"
+      }
+    },
+    {
+      "key": "sys:assign",
+      "inputs": {
+        "input": "$={context}.SplitToList(\"\\r\\n\",\"\\n\",\"\\r\")",
+        "stopIfFail": "1"
+      },
+      "outputs": {
+        "output": "lines"
+      }
+    },
+    {
+      "key": "sys:each",
+      "inputs": {
+        "input": "{lines}",
+        "useMultiThread": "0",
+        "stopIfFail": "1"
+      },
+      "outputs": {
+        "item": "context"
+      },
+      "ifSteps": [
+        {
+          "key": "sys:comment",
+          "inputs": {
+            "note": "如果行不为空，则计算"
+          }
+        },
+        {
+          "key": "sys:if",
+          "inputs": {
+            "condition": "$= !String.IsNullOrWhiteSpace({context})"
+          },
+          "ifSteps": [
+            {
+              "key": "sys:compute",
+              "inputs": {
+                "expression": "{context}",
+                "evalVar": "0",
+                "stopIfFail": "0"
+              },
+              "outputs": {
+                "isSuccess": "isSuccess",
+                "output": "lineResult"
+              }
+            },
+            {
+              "key": "sys:comment",
+              "inputs": {
+                "note": "如果计算成功，则输出结果，否则原样输出"
+              }
+            },
+            {
+              "key": "sys:if",
+              "inputs": {
+                "condition": "{isSuccess}"
+              },
+              "ifSteps": [
+                {
+                  "key": "sys:listOperations",
+                  "inputs": {
+                    "list": "{resultList}",
+                    "type": "append",
+                    "item": "$${context} = {lineResult}"
+                  }
+                }
+              ],
+              "elseSteps": [
+                {
+                  "key": "sys:listOperations",
+                  "inputs": {
+                    "list": "{resultList}",
+                    "type": "append",
+                    "item": "$${context}"
+                  }
+                }
+              ]
+            }
+          ],
+          "elseSteps": [
+            {
+              "key": "sys:comment",
+              "inputs": {
+                "note": "空的情况，输出空行"
+              }
+            },
+            {
+              "key": "sys:listOperations",
+              "inputs": {
+                "list": "{resultList}",
+                "type": "append",
+                "item": "$${context}"
+              }
+            }
+          ]
+        },
+        {
+          "key": "sys:formatString",
+          "inputs": {
+            "formatString": "$${result}\r\n{context} = {lineResult}"
+          },
+          "outputs": {
+            "output": "result"
+          },
+          "disabled": true
+        }
+      ]
+    },
+    {
+      "key": "sys:outputText",
+      "inputs": {
+        "content": "{resultList}",
+        "method": "paste",
+        "delayBeforePaste": "50",
+        "delayAfterPaste": "10",
+        "appendReturn": "0",
+        "stopIfFail": "1"
+      }
+    }
+  ]
+}

@@ -1,0 +1,184 @@
+{
+  "code": "bb16cf76-5b79-4327-4cdf-08da16aad73c",
+  "title": "示例：乘法口诀2",
+  "description": "使用Excel文件读写模块生成乘法口诀表。",
+  "author": "CL",
+  "revision": 1,
+  "source": "https://getquicker.net/sharedaction?code=bb16cf76-5b79-4327-4cdf-08da16aad73c",
+  "pulledAt": "2026-08-11T21:28:47.133Z",
+  "variables": [
+    {
+      "name": "text",
+      "type": "Text",
+      "remark": "默认的文本变量"
+    },
+    {
+      "name": "isSuccess",
+      "type": "Boolean"
+    },
+    {
+      "name": "worksheet",
+      "type": "Any"
+    },
+    {
+      "name": "workbook",
+      "type": "Any"
+    },
+    {
+      "name": "x",
+      "type": "Integer"
+    },
+    {
+      "name": "y",
+      "type": "Integer"
+    },
+    {
+      "name": "filePath",
+      "type": "Text"
+    }
+  ],
+  "steps": [
+    {
+      "key": "sys:comment",
+      "inputs": {
+        "note": "创建新的excel工作簿"
+      }
+    },
+    {
+      "key": "sys:excelreadwrite",
+      "inputs": {
+        "operation": "newWorkbook",
+        "fileType": "XSSF",
+        "stopIfFail": "1"
+      },
+      "outputs": {
+        "workbook": "workbook"
+      }
+    },
+    {
+      "key": "sys:comment",
+      "inputs": {
+        "note": "演示选中某个工作簿"
+      }
+    },
+    {
+      "key": "sys:excelreadwrite",
+      "inputs": {
+        "operation": "getSheetByName",
+        "workbook": "{workbook}",
+        "sheetName": "Sheet1",
+        "createSheetIfNotExist": "1",
+        "stopIfFail": "1"
+      },
+      "outputs": {
+        "sheet": "worksheet"
+      }
+    },
+    {
+      "key": "sys:comment",
+      "inputs": {
+        "note": "生成乘法口诀"
+      }
+    },
+    {
+      "key": "sys:repeat",
+      "inputs": {
+        "count": "9",
+        "startIndex": "1",
+        "repeatDelayMs": "1"
+      },
+      "outputs": {
+        "count": "x"
+      },
+      "ifSteps": [
+        {
+          "key": "sys:repeat",
+          "inputs": {
+            "count": "{x}",
+            "startIndex": "1",
+            "repeatDelayMs": "1"
+          },
+          "outputs": {
+            "count": "y"
+          },
+          "ifSteps": [
+            {
+              "key": "sys:excelreadwrite",
+              "inputs": {
+                "operation": "setCell",
+                "worksheet": "{worksheet}",
+                "rowIndex": "$= {x}-1",
+                "cellIndex": "$= {y}-1",
+                "cellValue": "$= {y}.ToString() + \" X \" + {x}.ToString() + \" = \" + ({x}*{y}).ToString()",
+                "stopIfFail": "1"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "key": "sys:comment",
+      "inputs": {
+        "note": "示例：调用NPOI方法"
+      }
+    },
+    {
+      "key": "sys:assign",
+      "inputs": {
+        "input": "$={worksheet}.SetColumnWidth(1, 50*256)",
+        "stopIfFail": "1"
+      }
+    },
+    {
+      "key": "sys:comment",
+      "inputs": {
+        "note": "保存并关闭工作簿"
+      }
+    },
+    {
+      "key": "sys:GenTempFilePath",
+      "inputs": {
+        "ext": ".xlsx"
+      },
+      "outputs": {
+        "filePath": "filePath"
+      }
+    },
+    {
+      "key": "sys:excelreadwrite",
+      "inputs": {
+        "operation": "save",
+        "filePath": "{filePath}",
+        "workbook": "{workbook}",
+        "stopIfFail": "1"
+      }
+    },
+    {
+      "key": "sys:run",
+      "inputs": {
+        "path": "{filePath}",
+        "runas": "false",
+        "stopIfFail": "1",
+        "setWorkingDir": "1",
+        "windowStyle": "0",
+        "waitInputIdle": "false",
+        "waitExit": "false"
+      }
+    },
+    {
+      "key": "sys:excelObjects",
+      "inputs": {
+        "operation": "SaveWorkbook",
+        "path": "d:\\test.xlsx",
+        "workbook": "{workbook}",
+        "params": "CloseApplication=false",
+        "stopIfFail": "1"
+      },
+      "outputs": {
+        "isSuccess": "isSuccess"
+      },
+      "disabled": true
+    }
+  ]
+}

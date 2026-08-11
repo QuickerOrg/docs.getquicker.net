@@ -1,0 +1,190 @@
+{
+  "code": "1bdedee6-4774-42d3-7697-08d950c2afd2",
+  "title": "公式识别",
+  "description": "截图后识别公式",
+  "author": "CL",
+  "revision": 2,
+  "source": "https://getquicker.net/sharedaction?code=1bdedee6-4774-42d3-7697-08d950c2afd2",
+  "pulledAt": "2026-08-11T21:28:53.062Z",
+  "variables": [
+    {
+      "name": "text",
+      "type": "Text",
+      "remark": "默认的文本变量"
+    },
+    {
+      "name": "mathml",
+      "type": "Text"
+    },
+    {
+      "name": "image",
+      "type": "Image"
+    },
+    {
+      "name": "mathpixMarkdown",
+      "type": "Text"
+    },
+    {
+      "name": "latex",
+      "type": "Text"
+    },
+    {
+      "name": "latexEx1",
+      "type": "Text"
+    },
+    {
+      "name": "latexEx2",
+      "type": "Text"
+    },
+    {
+      "name": "rawData",
+      "type": "Text"
+    },
+    {
+      "name": "asciimath",
+      "type": "Text"
+    },
+    {
+      "name": "lines",
+      "type": "Text",
+      "remark": "合并的选项"
+    },
+    {
+      "name": "selectedLine",
+      "type": "Text",
+      "remark": "选择的内容"
+    }
+  ],
+  "steps": [
+    {
+      "key": "sys:if",
+      "inputs": {
+        "condition": "$= {quicker_in_param} == \"write\""
+      },
+      "ifSteps": [
+        {
+          "key": "sys:mathocr",
+          "inputs": {
+            "vendor": "MathpixStrokes",
+            "stopIfFail": "1"
+          },
+          "outputs": {
+            "mathpixMarkdown": "mathpixMarkdown",
+            "latex": "latex",
+            "mathml": "mathml",
+            "asciimath": "asciimath",
+            "latexEx1": "latexEx1",
+            "latexEx2": "latexEx2",
+            "rawData": "rawData"
+          }
+        }
+      ],
+      "elseSteps": [
+        {
+          "key": "sys:screenCapture",
+          "inputs": {
+            "type": "select",
+            "delay": "0",
+            "toClip": "0",
+            "stopIfFail": "1"
+          },
+          "outputs": {
+            "img": "image"
+          }
+        },
+        {
+          "key": "sys:mathocr",
+          "inputs": {
+            "vendor": "Mathpix",
+            "image": "{image}",
+            "stopIfFail": "1"
+          },
+          "outputs": {
+            "mathpixMarkdown": "mathpixMarkdown",
+            "latex": "latex",
+            "mathml": "mathml",
+            "asciimath": "asciimath",
+            "latexEx1": "latexEx1",
+            "latexEx2": "latexEx2",
+            "rawData": "rawData"
+          }
+        }
+      ]
+    },
+    {
+      "key": "sys:assign",
+      "inputs": {
+        "input": "$={mathpixMarkdown}.Replace(\"\\r\\n\",\"\\r\").Replace(\"\\n\",\"\\r\") + \"\\n\" +\r\n{latex}.Replace(\"\\r\\n\",\"\\r\").Replace(\"\\n\",\"\\r\") + \"\\n\" +\r\n{mathml}.Replace(\"\\r\\n\",\" \").Replace(\"\\n\",\" \") + \"\\n\" +\r\n{asciimath}.Replace(\"\\r\\n\",\"\\r\").Replace(\"\\n\",\"\\r\") + \"\\n\"+\r\n{latexEx1}.Replace(\"\\r\\n\",\"\\r\").Replace(\"\\n\",\"\\r\") + \"\\n\"+\r\n{latexEx2}.Replace(\"\\r\\n\",\"\\r\").Replace(\"\\n\",\"\\r\")",
+        "stopIfFail": "1"
+      },
+      "outputs": {
+        "output": "lines"
+      }
+    },
+    {
+      "key": "sys:stringProcess",
+      "inputs": {
+        "data": "{lines}",
+        "method": "removeEmptyLine",
+        "stopIfFail": "1"
+      },
+      "outputs": {
+        "output": "lines"
+      },
+      "disabled": true
+    },
+    {
+      "key": "sys:if",
+      "inputs": {
+        "condition": "$= String.IsNullOrWhiteSpace({lines})"
+      },
+      "ifSteps": [
+        {
+          "key": "sys:stop",
+          "inputs": {
+            "method": "default",
+            "isError": "0",
+            "showMessage": "未识别出有效内容。"
+          }
+        }
+      ],
+      "elseSteps": [
+        {
+          "key": "sys:select",
+          "inputs": {
+            "type": "single",
+            "prompt": "请选择要复制的内容",
+            "items": "{lines}",
+            "showFilter": "auto",
+            "winLocation": "WithMouse1",
+            "maxWinSize": "500,600",
+            "keepLastPos": "1",
+            "closeOnDeactivated": "0",
+            "restoreForeground": "1",
+            "allowOkWhenEmpty": "0",
+            "enableQuickConfirm": "1",
+            "topMost": "1",
+            "stopIfCancel": "1",
+            "imeState": "NO_CONTROL",
+            "fontsize": "12",
+            "iconsize": "16",
+            "autoCloseSeconds": "0",
+            "noKeyboard": "0"
+          },
+          "outputs": {
+            "selectedFullItems": "selectedLine"
+          }
+        },
+        {
+          "key": "sys:writeClipboard",
+          "inputs": {
+            "type": "auto",
+            "input": "$={selectedLine}.Replace(\"\\r\",\"\\r\\n\")",
+            "successMsg": "已复制到剪贴板。",
+            "stopIfFail": "1"
+          }
+        }
+      ]
+    }
+  ]
+}

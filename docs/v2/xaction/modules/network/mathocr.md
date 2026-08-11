@@ -7,7 +7,7 @@ sidebar_position: 20
 quickerDocKey: "xaction/module/sys:mathocr"
 comments: true
 moduleKey: "sys:mathocr"
-docStatus: "migrated-unreviewed"
+docStatus: "reviewed"
 metadataGeneratedAt: "2026-08-03 20:08:03"
 legacyDocId: 49850606
 legacyContentUpdatedAt: "2026-03-20T00:32:28.000Z"
@@ -15,64 +15,67 @@ legacyContentUpdatedAt: "2026-03-20T00:32:28.000Z"
 
 # 公式识别
 
-数学公式识别
+调用 Mathpix 识别图片或手写板里的公式，得到 LaTeX、MathML 等格式。普通文字请用 [基础OCR](/v2/xaction/modules/basic-ocr)。
 
 ## 当前模块定义
 
 <XActionModuleMeta moduleKey="sys:mathocr" />
 
-调用Mathpix接口识别图片中的公式。
+## 概述
 
-本功能耗费Q豆，费用：每次调用**0.015**豆(价格可能会随汇率等因素波动)。[什么是Q豆？](https://getquicker.net/KC/Kb/Article/933)
+本功能消耗 Q豆，每次 **0.015** 豆（价格可能随汇率波动）。[什么是 Q豆？](https://getquicker.net/KC/Kb/Article/933)
 
-注：Mathpix自2022年9月1日起大幅提升了前1000次的API[请求费用](https://mathpix.com/pricing)（从免费提高到0.02美元/每请求），外加美元升值，目前前1000次的每次成本约0.15元，之后每次成本约0.03元。考虑到此功能用户主要为学生朋友，CL在能力范围之内进行补贴，保持每次请求价格0.028Q豆不变。
-
-Mathpix 目前降低了识别价格，从2026年3月21日起，每次识别价格从0.028Q豆下调为0.015Q豆（即约1.5分钱）。
+Mathpix 自 2022-09-01 起提高了前 1000 次 API [请求费用](https://mathpix.com/pricing)。考虑到使用者多为学生，CL 在能力范围内补贴。2026-03-21 起每次从 0.028 Q豆下调为 0.015 Q豆。
 
 <ModuleParamPreview moduleKey="sys:mathocr" />
 
-支持两种操作类型：
+## 参数说明
 
-（1）图片识别：根据给定的图片识别公式。
+**厂商接口**：
 
-（2）手写并识别：显示手写板，书写公式后识别内容。
+- **图片识别(Mathpix)**：识别已有图片。
+- **手写并识别(Mathpix)**：先出手写板，确认后再识别。
 
-## 图片识别
+**公式图片**：仅图片识别。可以是图片变量、图片文件路径或图片网址。路径和网址要用表达式传入。
 
-通常用于截图后识别。
+**失败后停止**：失败是否中止动作。默认开启。
 
-参数：
+## 输出
 
-【公式图片】指定要识别的图片。可以为图片变变量（如截图后生成的图片）、图片文件路径或图片网址。
+手写识别的部分格式可能为空，以实际输出为准。
 
-图片文件路径和图片网址需要通过表达式方式传入。
-
-### 输出
-
-【是否成功】操作是否成功。
-
-【Mathpix MD】Mathpix Markdown文本。
-
-【Latex】Latex识别结果。
-
-【MathML】MathML识别结果。
-
-【AsciiMath】AsciiMath识别结果。
-
-【Latex附加格式1】在Latex两侧增加$$符号。
-
-【Latex附加格式2】在Latex两侧增加\\begin&#123;equation&#125;与\\end&#123;equation&#125;
-
-【原始响应】Mathpix服务器返回的原始内容。
-
-## 手写并识别
-
-先显示手写板窗口，确认后识别手势数据。
-
-输出参数同图片识别（有的参数会输出空内容，具体以实际输出为准）。
+- **是否成功**
+- **Mathpix MD**：Mathpix Markdown。
+- **Latex**
+- **MathML**
+- **AsciiMath**
+- **Latex附加格式1**：两侧加 `$$`。
+- **Latex附加格式2**：两侧加 `\begin{equation}` 与 `\end{equation}`。
+- **原始响应**：Mathpix 返回的原始内容。
 
 ## 示例动作
 
--   公式识别：[https://getquicker.net/sharedaction?code=1bdedee6-4774-42d3-7697-08d950c2afd2](https://getquicker.net/sharedaction?code=1bdedee6-4774-42d3-7697-08d950c2afd2)
+<StepProgramView example="1bdedee6-4774-42d3-7697-08d950c2afd2" />
 
-——
+<ShareLinkCard
+  code="1bdedee6-4774-42d3-7697-08d950c2afd2"
+  title="公式识别"
+  description="截图后识别公式"
+  author="CL"
+/>
+
+## 限制与排障
+
+每次调用都计费。图片变量为空、路径写错或网络不通时会失败。手写板取消也算失败。
+
+## 相关链接
+
+<RelatedDocs
+  items={[
+    {
+      href: '/v2/xaction/modules/basic-ocr',
+      label: '基础OCR',
+      description: '识别普通文字或表格，不是公式。',
+    },
+  ]}
+/>

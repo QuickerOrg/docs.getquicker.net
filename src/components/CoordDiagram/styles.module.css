@@ -1,0 +1,230 @@
+/**
+ * Teaching schematic (not Quicker chrome).
+ * Annotation red matches PreviewMap --pm-line.
+ */
+
+.root {
+  --coord-ink: #e53935;
+  --coord-screen: #d7e3ef;
+  --coord-grid: rgba(24, 90, 145, 0.12);
+  --coord-bezel: #2c333c;
+  --coord-desk: #e8eaed;
+  --coord-caption: #5c636a;
+  --coord-hud: #1a1a1a;
+  margin: 1rem 0 1.5rem;
+}
+
+html[data-theme='dark'] .root {
+  --coord-screen: #1b2430;
+  --coord-grid: rgba(77, 159, 255, 0.14);
+  --coord-bezel: #0f1216;
+  --coord-desk: #14171c;
+  --coord-caption: #9aa3b2;
+  --coord-hud: #e8eaed;
+}
+
+.desk {
+  padding: 12px 12px 8px;
+  border: 1px solid var(--ifm-color-emphasis-300, #d1d5db);
+  border-radius: 8px 8px 0 0;
+  background: var(--coord-desk);
+}
+
+.row {
+  display: flex;
+  align-items: stretch;
+  gap: 10px;
+}
+
+.monitor {
+  flex: 1.7 1 0;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.monitorSecondary {
+  flex: 1 1 0;
+}
+
+.screen {
+  position: relative;
+  aspect-ratio: 16 / 9;
+  overflow: hidden;
+  border: 3px solid var(--coord-bezel);
+  border-radius: 4px;
+  background-color: var(--coord-screen);
+  background-image:
+    linear-gradient(var(--coord-grid) 1px, transparent 1px),
+    linear-gradient(90deg, var(--coord-grid) 1px, transparent 1px);
+  background-size: 12.5% 16.666%;
+  cursor: crosshair;
+  color: var(--coord-ink);
+  touch-action: none;
+}
+
+.monitorSecondary .screen {
+  aspect-ratio: unset;
+  flex: 1 1 auto;
+  min-height: 0;
+}
+
+.axes {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+
+.axisText {
+  font-size: 64px;
+  font-weight: 700;
+  font-family: 'Segoe UI', 'Microsoft YaHei UI', sans-serif;
+}
+
+.origin {
+  position: absolute;
+  top: 6px;
+  left: 6px;
+  z-index: 2;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  pointer-events: none;
+}
+
+.originDot {
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  background: var(--coord-ink);
+  box-shadow: 0 0 0 2px color-mix(in srgb, var(--coord-screen) 70%, #fff);
+}
+
+.originText {
+  padding: 1px 6px;
+  border-radius: 3px;
+  background: color-mix(in srgb, var(--coord-screen) 82%, #fff);
+  color: var(--coord-ink);
+  font-size: 12px;
+  font-weight: 600;
+  line-height: 1.4;
+  white-space: nowrap;
+}
+
+html[data-theme='dark'] .originText {
+  background: color-mix(in srgb, var(--coord-screen) 70%, #000);
+}
+
+.crosshair {
+  position: absolute;
+  z-index: 3;
+  width: 0;
+  height: 0;
+  pointer-events: none;
+}
+
+.crossDot {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 9px;
+  height: 9px;
+  border: 2px solid var(--coord-ink);
+  border-radius: 50%;
+  background: color-mix(in srgb, var(--coord-screen) 55%, #fff);
+  transform: translate(-50%, -50%);
+}
+
+.crosshair::before,
+.crosshair::after {
+  content: '';
+  position: absolute;
+  background: var(--coord-ink);
+  opacity: 0.55;
+}
+
+.crosshair::before {
+  left: 0;
+  top: -18px;
+  width: 1px;
+  height: 36px;
+  transform: translateX(-50%);
+}
+
+.crosshair::after {
+  top: 0;
+  left: -18px;
+  width: 36px;
+  height: 1px;
+  transform: translateY(-50%);
+}
+
+.crossLabel {
+  position: absolute;
+  left: 10px;
+  top: 8px;
+  padding: 1px 6px;
+  border-radius: 3px;
+  background: var(--coord-ink);
+  color: #fff;
+  font-size: 11px;
+  font-variant-numeric: tabular-nums;
+  line-height: 1.4;
+  white-space: nowrap;
+}
+
+.caption {
+  color: var(--coord-caption);
+  font-size: 12px;
+  line-height: 1.3;
+  text-align: center;
+}
+
+.hud {
+  margin: 0;
+  padding: 8px 12px 10px;
+  border: 1px solid var(--ifm-color-emphasis-300, #d1d5db);
+  border-top: 0;
+  border-radius: 0 0 8px 8px;
+  background: var(--ifm-background-surface-color, #fff);
+  color: var(--coord-hud);
+  font-size: 13px;
+  line-height: 1.45;
+}
+
+html[data-theme='dark'] .hud {
+  background: #23272f;
+}
+
+.hudCoords {
+  display: block;
+}
+
+.hudCoords strong {
+  font-variant-numeric: tabular-nums;
+}
+
+.hudHint {
+  display: block;
+  margin-top: 2px;
+  color: var(--coord-caption);
+  font-size: 12px;
+}
+
+@media (max-width: 520px) {
+  .row {
+    flex-direction: column;
+  }
+
+  .monitorSecondary .screen {
+    aspect-ratio: 16 / 9;
+    height: auto;
+  }
+
+  .axisText {
+    font-size: 80px;
+  }
+}

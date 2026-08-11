@@ -19,6 +19,7 @@ import {
   PreviewLiveProvider,
   usePreviewLiveSnapshot,
 } from '@site/src/components/PreviewLive';
+import {observeResize} from '@site/src/components/observeResize';
 import styles from './styles.module.css';
 
 export type PreviewMapLink = {
@@ -243,7 +244,7 @@ function PreviewMapView({
     const stage = stageRef.current;
     const floater = floatRef.current;
     if (!root) return;
-    const ro = new ResizeObserver(() => {
+    const stopRo = observeResize([root, stage, floater], () => {
       const s = stageRef.current;
       const f = floatRef.current;
       if (s && f) {
@@ -255,16 +256,13 @@ function PreviewMapView({
       }
       measure();
     });
-    ro.observe(root);
-    if (stage) ro.observe(stage);
-    if (floater) ro.observe(floater);
     const onScrollOrResize = (): void => measure();
     root.addEventListener('scroll', onScrollOrResize, true);
     window.addEventListener('resize', onScrollOrResize);
     const fonts = document.fonts;
     void fonts?.ready.then(() => measure());
     return () => {
-      ro.disconnect();
+      stopRo();
       root.removeEventListener('scroll', onScrollOrResize, true);
       window.removeEventListener('resize', onScrollOrResize);
     };

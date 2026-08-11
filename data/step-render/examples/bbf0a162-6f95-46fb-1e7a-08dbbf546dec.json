@@ -1,0 +1,42 @@
+{
+  "code": "bbf0a162-6f95-46fb-1e7a-08dbbf546dec",
+  "title": "复制当前网页Cookie",
+  "description": "使用Quicker扩展复制当前网页的cookie方便在http请求或下载模块中使用",
+  "author": "CL",
+  "revision": 0,
+  "source": "https://getquicker.net/sharedaction?code=bbf0a162-6f95-46fb-1e7a-08dbbf546dec",
+  "pulledAt": "2026-08-11T21:28:52.141Z",
+  "variables": [
+    {
+      "name": "text",
+      "type": "Text",
+      "remark": "默认的文本变量"
+    },
+    {
+      "name": "cookies",
+      "type": "Text"
+    }
+  ],
+  "steps": [
+    {
+      "key": "sys:subprogram",
+      "inputs": {
+        "subProgram": "@@487cbbc5-cc07-4a11-e935-08d82eb96b41@0@获取当前页面cookie",
+        "stopIfFail": "1",
+        "skipDebugOutput": "1"
+      },
+      "outputs": {
+        "var:请求格式": "cookies"
+      }
+    },
+    {
+      "key": "sys:writeClipboard",
+      "inputs": {
+        "type": "auto",
+        "input": "{cookies}",
+        "successMsg": "$$已复制：\r\n{cookies}",
+        "stopIfFail": "1"
+      }
+    }
+  ]
+}

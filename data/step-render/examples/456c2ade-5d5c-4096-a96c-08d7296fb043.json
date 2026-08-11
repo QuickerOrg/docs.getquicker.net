@@ -1,0 +1,159 @@
+{
+  "code": "456c2ade-5d5c-4096-a96c-08d7296fb043",
+  "title": "示例：词典操作",
+  "description": "词典操作，赋值、取值、设置值、取列表、清空。",
+  "author": "Ever",
+  "revision": 1,
+  "source": "https://getquicker.net/sharedaction?code=456c2ade-5d5c-4096-a96c-08d7296fb043",
+  "pulledAt": "2026-08-11T21:13:01.807Z",
+  "variables": [
+    {
+      "name": "context",
+      "type": "Text",
+      "remark": "默认的文本变量"
+    },
+    {
+      "name": "img",
+      "type": "Image",
+      "remark": "默认的图片变量"
+    },
+    {
+      "name": "示例词典",
+      "type": "Dict"
+    },
+    {
+      "name": "示例列表",
+      "type": "List"
+    },
+    {
+      "name": "x的值",
+      "type": "Text"
+    },
+    {
+      "name": "词典的键列表",
+      "type": "Text",
+      "remark": "书名列表"
+    },
+    {
+      "name": "词典的值列表",
+      "type": "Text",
+      "remark": "书的内容"
+    }
+  ],
+  "steps": [
+    {
+      "key": "sys:comment",
+      "inputs": {
+        "note": "赋值：把词典当作一个作文全集，现在开始把作文放进去，一篇一篇的放。一个作文名（键），对作文的内容（值）。注意！！！放的时候作文名（键）不能重复，否则会直接无视，放不进来。但是作文的内容（值）可以一样。"
+      }
+    },
+    {
+      "key": "sys:assign",
+      "inputs": {
+        "input": "111:词典里面的第一个值\r\n222:第2 个了\r\n333:我只能是3了\r\nup:我是上\r\ndown:我是下的坐标\r\nx:我是x坐标999\r\ny:我是一y坐标222"
+      },
+      "outputs": {
+        "output": "示例词典"
+      },
+      "note": "赋值给词典"
+    },
+    {
+      "key": "sys:assign",
+      "inputs": {
+        "input": "AAA:aaa\r\nbbb:BBB\r\nCCC:ccc"
+      },
+      "outputs": {
+        "output": "示例列表"
+      },
+      "note": "给列表赋值"
+    },
+    {
+      "key": "sys:comment",
+      "inputs": {
+        "note": "设置值：词典里面可以放文本，数字，时间，列表，甚至是词典（词典里面放词典）等等。放列表就相当与直接把某一类型的很多篇作文当进去。取的时候就要知道类型名，然后再取作文名。"
+      }
+    },
+    {
+      "key": "sys:dictOperations",
+      "inputs": {
+        "dict": "{示例词典}",
+        "type": "set",
+        "key": "我是示例列表",
+        "value": "{示例列表}",
+        "ignoreCase": "0"
+      },
+      "note": "把列表放到词典里，并且把键名设置为：我是示例列表"
+    },
+    {
+      "key": "sys:comment",
+      "inputs": {
+        "note": "取值：键就相当于作文名，值就相当于作文的内容。你要取作文就先要知道作文名，我有作文名了，就能取到作文，就能得到内容，也就是值。"
+      }
+    },
+    {
+      "key": "sys:dictOperations",
+      "inputs": {
+        "dict": "{示例词典}",
+        "type": "get",
+        "key": "x",
+        "ignoreCase": "0"
+      },
+      "outputs": {
+        "value": "x的值"
+      }
+    },
+    {
+      "key": "sys:comment",
+      "inputs": {
+        "note": "删除值：一些不需要的作文就要从作文全集拿出去。通过作文名找到，然后把这篇作文拿出去，查找目录上消除这篇作文名（键），当然作文的内容（值）自然也就没了。"
+      }
+    },
+    {
+      "key": "sys:dictOperations",
+      "inputs": {
+        "dict": "{示例词典}",
+        "type": "remove",
+        "key": "y",
+        "ignoreCase": "0"
+      },
+      "note": "删除名叫y的作文"
+    },
+    {
+      "key": "sys:comment",
+      "inputs": {
+        "note": "取列表：就相当与开篇的目录，得到作文名列表（键列表），同样的，可以获取到作文的内容列表。"
+      }
+    },
+    {
+      "key": "sys:dictOperations",
+      "inputs": {
+        "dict": "{示例词典}",
+        "type": "keyList",
+        "ignoreCase": "0"
+      },
+      "outputs": {
+        "value": "词典的键列表"
+      }
+    },
+    {
+      "key": "sys:dictOperations",
+      "inputs": {
+        "dict": "{示例词典}",
+        "type": "valueList",
+        "ignoreCase": "0"
+      },
+      "outputs": {
+        "value": "词典的值列表"
+      }
+    },
+    {
+      "key": "sys:showText",
+      "inputs": {
+        "type": "NO_WAIT",
+        "text": "$$x的值：\r\n{x的值}\r\n\r\n键列表：\r\n{词典的键列表}\r\n\r\n值列表：\r\n{词典的值列表}\r\n\r\n最后这个词典的样子，示例词典：\r\n{示例词典}\r\n\r\n",
+        "title": "结果内容",
+        "winLocation": "CenterScreen"
+      }
+    }
+  ]
+}

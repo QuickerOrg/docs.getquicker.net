@@ -1,0 +1,180 @@
+{
+  "code": "7d6dcc8c-2a1f-41d3-35e5-08d95890efa9",
+  "title": "有道翻译",
+  "description": "使用有道词典API翻译或查词",
+  "author": "CL",
+  "revision": 1,
+  "source": "https://getquicker.net/sharedaction?code=7d6dcc8c-2a1f-41d3-35e5-08d95890efa9",
+  "pulledAt": "2026-08-11T21:28:52.589Z",
+  "variables": [
+    {
+      "name": "text",
+      "type": "Text",
+      "remark": "默认的文本变量"
+    },
+    {
+      "name": "rawData",
+      "type": "Text"
+    },
+    {
+      "name": "rootToken",
+      "type": "Text"
+    },
+    {
+      "name": "resultText",
+      "type": "Text",
+      "remark": "翻译结果"
+    },
+    {
+      "name": "autoCopy",
+      "type": "Boolean",
+      "remark": "是否自动复制翻译结果"
+    },
+    {
+      "name": "vendor",
+      "type": "Text",
+      "remark": "厂商类型"
+    },
+    {
+      "name": "srcLang",
+      "type": "Text",
+      "remark": "源语言"
+    },
+    {
+      "name": "dstLang",
+      "type": "Text",
+      "remark": "目标语言"
+    }
+  ],
+  "steps": [
+    {
+      "key": "sys:comment",
+      "inputs": {
+        "note": "动作设置"
+      }
+    },
+    {
+      "key": "sys:simpleIf",
+      "inputs": {
+        "condition": "$={quicker_in_param} == \"settings\""
+      },
+      "ifSteps": [
+        {
+          "key": "sys:form",
+          "inputs": {
+            "title": "动作设置",
+            "formDef": "{\"Fields\":[{\"FieldKey\":\"srcLang\",\"Label\":\"源语言\",\"HelpText\":\"自动：Auto，其他请参考所用厂商接口文档。\",\"HelpLink\":null,\"InputMethod\":11,\"SelectionItems\":\"Auto\\r\\nZhCn\\r\\nEn\\r\\nJa\\r\\nKo\",\"IsRequired\":false,\"MinValue\":\"\",\"MaxValue\":\"\",\"Pattern\":\"\",\"MaxLength\":0,\"ImeState\":null,\"TextTools\":\"\",\"VisibleExpression\":\"\"},{\"FieldKey\":\"dstLang\",\"Label\":\"目标语言\",\"HelpText\":\"自动为Auto，其他请参考厂商接口文档\",\"HelpLink\":null,\"InputMethod\":11,\"SelectionItems\":\"Auto\\r\\nZhCn\\r\\nEn\\r\\nJa\\r\\nKo\",\"IsRequired\":false,\"MinValue\":\"\",\"MaxValue\":\"\",\"Pattern\":\"\",\"MaxLength\":0,\"ImeState\":null,\"TextTools\":\"\",\"VisibleExpression\":\"\"},{\"FieldKey\":\"autoCopy\",\"Label\":\"自动复制翻译结果\",\"HelpText\":\"将翻译结果自动放入剪贴板\",\"HelpLink\":null,\"InputMethod\":6,\"SelectionItems\":\"\",\"IsRequired\":false,\"MinValue\":\"\",\"MaxValue\":\"\",\"Pattern\":\"\",\"MaxLength\":0,\"ImeState\":null,\"TextTools\":\"\",\"VisibleExpression\":\"\"}]}",
+            "titleColumnWidth": "100",
+            "windowWidth": "500",
+            "restoreFocus": "0",
+            "topMost": "false",
+            "stopIfFail": "1"
+          }
+        },
+        {
+          "key": "sys:stop",
+          "inputs": {
+            "method": "default",
+            "isError": "0"
+          }
+        }
+      ]
+    },
+    {
+      "key": "sys:comment",
+      "inputs": {
+        "note": "正常流程"
+      }
+    },
+    {
+      "key": "sys:getSelectedText",
+      "inputs": {
+        "format": "UnicodeText",
+        "repeat": "0",
+        "useActionParam": "0",
+        "stopIfFail": "1"
+      },
+      "outputs": {
+        "output": "text"
+      }
+    },
+    {
+      "key": "sys:if",
+      "inputs": {
+        "condition": "$= String.IsNullOrEmpty({text})"
+      },
+      "ifSteps": [
+        {
+          "key": "sys:notify",
+          "inputs": {
+            "msg": "要翻译的内容为空。",
+            "maxLines": "0",
+            "type": "Warning",
+            "style": "Default"
+          }
+        }
+      ],
+      "elseSteps": [
+        {
+          "key": "sys:translation",
+          "inputs": {
+            "operation": "single",
+            "text": "{text}",
+            "srcLang": "{srcLang}",
+            "dstLang": "{dstLang}",
+            "vendor": "Youdao",
+            "stopIfFail": "1"
+          },
+          "outputs": {
+            "resultText": "resultText",
+            "rawData": "rawData"
+          }
+        },
+        {
+          "key": "sys:comment",
+          "inputs": {
+            "note": "根据设置，复制翻译结果到剪贴板"
+          }
+        },
+        {
+          "key": "sys:simpleIf",
+          "inputs": {
+            "condition": "{autoCopy}"
+          },
+          "ifSteps": [
+            {
+              "key": "sys:writeClipboard",
+              "inputs": {
+                "type": "auto",
+                "input": "{resultText}",
+                "stopIfFail": "0"
+              }
+            }
+          ]
+        },
+        {
+          "key": "sys:comment",
+          "inputs": {
+            "note": "显示文本窗"
+          }
+        },
+        {
+          "key": "sys:showText",
+          "inputs": {
+            "type": "NO_WAIT",
+            "text": "$=\r\n\tstring originText = {text};\r\n\r\n// 合并JArray文本串\r\nFunc<JArray, string, string> JoinArray = (JArray JArray, string splitter) =>\r\n{\r\n\tif (JArray != null)\r\n\t{\r\n\t\treturn String.Join(splitter, JArray.Select(x => (string)x));\r\n\t}\r\n\r\n\treturn \"\";\r\n};\r\n\r\n\r\nvar jToken = JToken.Parse({rawData}) as JObject;\r\n\r\n// 构造结果\r\nStringBuilder sb = new StringBuilder();\r\n\r\n\r\nsb.AppendLine(originText);\r\n//sb.AppendLine(\"----\");\r\nsb.AppendLine();\r\n\r\n//基础翻译结果\r\nvar translation = jToken[\"translation\"] as JArray;\r\nif (translation != null)\r\n{\r\n\tsb.AppendLine(\"【翻译结果】\");\r\n\tforeach (var item in translation)\r\n\t{\r\n\t\tsb.AppendLine(item.ToString());\r\n\t}\r\n\tsb.AppendLine();\r\n}\r\n\r\n// 单词内容\r\nvar isWord = jToken.Value<bool?>(\"isWord\") == true;\r\nvar basic = jToken[\"basic\"] as JObject;\r\nif (isWord && basic != null)\r\n{\r\n\r\n\r\n\tif (basic.ContainsKey(\"phonetic\"))\r\n\t{\r\n\t\tsb.AppendLine(\"【单词发音】\");\r\n\t\tsb.Append($\"{basic.Value<string>(\"phonetic\")} \");\r\n\t\tif (basic.ContainsKey(\"us-phonetic\")){\r\n\t\t\tsb.Append($\"[美]{basic.Value<string>(\"us-phonetic\")} \");\r\n\t\t}\r\n\t\tif (basic.ContainsKey(\"uk-phonetic\")){\r\n\t\t\tsb.Append($\"[英]{basic.Value<string>(\"uk-phonetic\")} \");\r\n\t\t}\r\n\t\t\r\n\t\tsb.AppendLine();\r\n\t\tsb.AppendLine();\r\n\t}\r\n\r\n\t//基本释义\r\n\tvar explains = basic[\"explains\"] as JArray;\r\n\tif (explains != null)\r\n\t{\r\n\t\tsb.AppendLine(\"【基本释义】\");\r\n\t\tforeach (var exp in explains)\r\n\t\t{\r\n\t\t\tsb.AppendLine(exp.ToString());\r\n\t\t}\r\n\t\tsb.AppendLine();\r\n\t}\r\n\r\n\t// 变换\r\n\tvar wfs = basic[\"wfs\"] as JArray;\r\n\tif (wfs != null)\r\n\t{\r\n\t\tsb.AppendLine(\"【词形变换】\");\r\n\t\tforeach (var wf in wfs)\r\n\t\t{\r\n\t\t\tsb.Append($\"{wf[\"wf\"].Value<string>(\"name\")}: {wf[\"wf\"].Value<string>(\"value\")};  \");\r\n\t\t}\r\n\t\tsb.AppendLine();\r\n\t\tsb.AppendLine();\r\n\t}\r\n\r\n\tvar exam_type = basic[\"exam_type\"] as JArray;\r\n\tif (exam_type != null)\r\n\t{\r\n\t\tsb.AppendLine(\"【考试范围】\");\r\n\t\tforeach (var item in exam_type)\r\n\t\t{\r\n\t\t\tsb.Append(item.ToString());\r\n\t\t\tsb.Append(\"; \");\r\n\t\t}\r\n\t\tsb.AppendLine();\r\n\t\tsb.AppendLine();\r\n\t}\r\n}\r\n\r\n// 网络释义\r\nvar web = jToken[\"web\"] as JArray;\r\nif (web != null)\r\n{\r\n\tsb.AppendLine(\"【网络释义】\");\r\n\tforeach (var item in web)\r\n\t{\r\n\t\t//sb.AppendLine(item.ToString());\r\n\t\tsb.Append(item.Value<string>(\"key\"));\r\n\t\tsb.Append(\": \");\r\n\t\tsb.Append(JoinArray(item.Value<JArray>(\"value\"), \" | \"));\r\n\t\t\r\n\t\tsb.AppendLine();\r\n\t}\r\n\tsb.AppendLine();\r\n}\r\n\r\nvar dictLink = jToken[\"webdict\"]?.Value<string>(\"url\");\r\nif (dictLink != null)\r\n{\r\n\tsb.AppendLine(\"【网络词典链接】\");\r\n\tsb.AppendLine($\"{dictLink}\");\r\n}\r\n\r\nreturn sb.ToString();\r\n\r\n            ",
+            "title": "结果内容",
+            "topMost": "false",
+            "winLocation": "WithMouse2",
+            "fontsize": "14",
+            "closeWhenLostFocus": "true",
+            "showLineNum": "true",
+            "autoWrap": "true",
+            "showBuildInToolbar": "true",
+            "copyWholeLine": "false"
+          }
+        }
+      ]
+    }
+  ]
+}

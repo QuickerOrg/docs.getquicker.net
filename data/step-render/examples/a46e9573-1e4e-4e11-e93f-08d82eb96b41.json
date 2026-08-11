@@ -1,0 +1,86 @@
+{
+  "code": "a46e9573-1e4e-4e11-e93f-08d82eb96b41",
+  "title": "复杂词典值的变化",
+  "description": "将复杂对象保存到词典值中的时候，它的内容可能会变化。",
+  "author": "CL",
+  "revision": 0,
+  "source": "https://getquicker.net/sharedaction?code=a46e9573-1e4e-4e11-e93f-08d82eb96b41",
+  "pulledAt": "2026-08-11T21:13:01.755Z",
+  "variables": [
+    {
+      "name": "text",
+      "type": "Text",
+      "remark": "默认的文本变量"
+    },
+    {
+      "name": "dict",
+      "type": "Dict"
+    },
+    {
+      "name": "dict2",
+      "type": "Dict"
+    }
+  ],
+  "steps": [
+    {
+      "key": "sys:comment",
+      "inputs": {
+        "note": "将dict2保存到dict[\"item\"]中"
+      }
+    },
+    {
+      "key": "sys:dictOperations",
+      "inputs": {
+        "dict": "{dict}",
+        "type": "setOriginValue",
+        "key": "item1",
+        "value": "{dict2}",
+        "ignoreCase": "0"
+      }
+    },
+    {
+      "key": "sys:comment",
+      "inputs": {
+        "note": "显示dict的内容"
+      }
+    },
+    {
+      "key": "sys:MsgBox",
+      "inputs": {
+        "message": "{dict}",
+        "title": "Quicker",
+        "buttons": "OK"
+      }
+    },
+    {
+      "key": "sys:comment",
+      "inputs": {
+        "note": "修改dict2的内容"
+      }
+    },
+    {
+      "key": "sys:dictOperations",
+      "inputs": {
+        "dict": "{dict2}",
+        "type": "setOriginValue",
+        "key": "a",
+        "value": "aaaaaaa",
+        "ignoreCase": "0"
+      }
+    },
+    {
+      "key": "sys:comment",
+      "inputs": {
+        "note": "显示dict的内容，可以发现dict[\"item\"]的实际值发生了变化"
+      }
+    },
+    {
+      "key": "sys:MsgBox",
+      "inputs": {
+        "message": "{dict}",
+        "title": "Quicker",
+        "buttons": "OK"
+      }
+    }
+  ]
+}

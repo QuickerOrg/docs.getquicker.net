@@ -7,25 +7,15 @@ import crypto from "node:crypto";
 import fs from "node:fs";
 import path from "node:path";
 import {fileURLToPath} from "node:url";
+import {isStructuralHint} from "./hints.mjs";
+import {extractLiveCover} from "./live-cover.mjs";
 import {snapshotAbs} from "./previews.mjs";
 
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "../..");
 const DOCS_DIR = path.join(ROOT, "docs");
 const COVER_DIR = path.join(ROOT, "static/img/doc-gallery");
 
-/** @typedef {{href: string, title: string, description: string, covers: string[], dir: string, kind: "doc" | "category", position: number, excerpt: string, hints: string[]}} GallerySource */
-
-const SKIP_HINT_HEADINGS = new Set([
-  "当前模块定义",
-  "参数",
-  "示例",
-  "示例动作",
-  "相关",
-  "相关链接",
-  "限制",
-  "注意事项",
-  "说明",
-]);
+/** @typedef {{href: string, title: string, description: string, covers: string[], dir: string, kind: "doc" | "category", position: number, excerpt: string, hints: string[], liveCover: {name: string, props: Record<string, unknown>} | null}} GallerySource */
 
 function walkFiles(dir, acc = []) {
   if (!fs.existsSync(dir)) return acc;
@@ -124,7 +114,7 @@ function extractHints(body) {
   }
   for (const match of body.matchAll(/^#{2,3}\s+(.+)$/gm)) {
     const label = stripMd(match[1]).replace(/\s*\{#.*\}$/, "");
-    if (!label || SKIP_HINT_HEADINGS.has(label) || seen.has(label) || hints.some((item) => similarHint(item, label))) continue;
+    if (!label || isStructuralHint(label) || seen.has(label) || hints.some((item) => similarHint(item, label))) continue;
     seen.add(label);
     hints.push(label);
     if (hints.length >= 4) break;
@@ -231,6 +221,7 @@ function collectDocs() {
       position: Number(fm.sidebar_position ?? 9999),
       excerpt: extractExcerpt(body, title, description),
       hints: extractHints(body),
+      liveCover: extractLiveCover(body),
     });
   }
   return docs;
@@ -278,6 +269,7 @@ function collectCategories(docs) {
       position: Number(json.position ?? 9999),
       excerpt: "",
       hints: children.slice(0, 4).map((child) => child.title),
+      liveCover: null,
     });
   }
   return categories;
@@ -286,7 +278,7 @@ function collectCategories(docs) {
 export function buildDocGallery() {
   const docs = collectDocs();
   const categories = collectCategories(docs);
-  /** @type {Record<string, {description?: string, covers?: string[], excerpt?: string, hints?: string[]}>} */
+  /** @type {Record<string, {description?: string, covers?: string[], excerpt?: string, hints?: string[], liveCover?: {name: string, props: Record<string, unknown>}}>} */
   const gallery = {};
   const usedNames = new Set();
 
@@ -300,13 +292,14 @@ export function buildDocGallery() {
     }
     const entry = {};
     if (item.description) entry.description = item.description;
+    if (item.liveCover) entry.liveCover = item.liveCover;
     if (covers.length > 0) {
       entry.covers = covers;
     } else {
       if (item.excerpt) entry.excerpt = item.excerpt;
       if (item.hints.length > 0) entry.hints = item.hints;
     }
-    if (entry.description || entry.covers || entry.excerpt || entry.hints) {
+    if (entry.description || entry.covers || entry.excerpt || entry.hints || entry.liveCover) {
       gallery[item.href] = entry;
     }
   }

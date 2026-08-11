@@ -1,0 +1,2730 @@
+{
+  "code": "dd277f4e-50a4-4971-26fc-08d697a0f29b",
+  "title": "文件分类",
+  "description": "【DropIt简易版】对特定多文件夹内的文件/选中的文件进行统筹分类到目标文件夹",
+  "author": "i_orange",
+  "revision": 21,
+  "source": "https://getquicker.net/sharedaction?code=dd277f4e-50a4-4971-26fc-08d697a0f29b",
+  "pulledAt": "2026-08-11T21:11:36.076Z",
+  "variables": [
+    {
+      "name": "column1Head",
+      "type": "Text"
+    },
+    {
+      "name": "column2Head",
+      "type": "Text"
+    },
+    {
+      "name": "countFile",
+      "type": "Integer"
+    },
+    {
+      "name": "currentPath",
+      "type": "Text"
+    },
+    {
+      "name": "ext",
+      "type": "Text"
+    },
+    {
+      "name": "extFolderName",
+      "type": "Text"
+    },
+    {
+      "name": "extProtocol",
+      "type": "List",
+      "remark": "分类协议"
+    },
+    {
+      "name": "i",
+      "type": "Integer"
+    },
+    {
+      "name": "instruction1",
+      "type": "List"
+    },
+    {
+      "name": "instructionRows",
+      "type": "Integer"
+    },
+    {
+      "name": "isConfig",
+      "type": "Boolean"
+    },
+    {
+      "name": "isDefault",
+      "type": "Boolean"
+    },
+    {
+      "name": "isEmptyTempPath",
+      "type": "Boolean"
+    },
+    {
+      "name": "isEqual",
+      "type": "Boolean"
+    },
+    {
+      "name": "isExist",
+      "type": "Boolean"
+    },
+    {
+      "name": "isInitial",
+      "type": "Boolean"
+    },
+    {
+      "name": "isNotClassified",
+      "type": "Boolean"
+    },
+    {
+      "name": "isNoted",
+      "type": "Boolean"
+    },
+    {
+      "name": "isPing",
+      "type": "Boolean"
+    },
+    {
+      "name": "isProtocol",
+      "type": "Boolean"
+    },
+    {
+      "name": "isSelected",
+      "type": "Boolean"
+    },
+    {
+      "name": "isSetExt",
+      "type": "Boolean"
+    },
+    {
+      "name": "isStop",
+      "type": "Boolean"
+    },
+    {
+      "name": "isTemp1",
+      "type": "Boolean"
+    },
+    {
+      "name": "isTemp2",
+      "type": "Boolean"
+    },
+    {
+      "name": "isValidKey",
+      "type": "Boolean"
+    },
+    {
+      "name": "isValidValue",
+      "type": "Boolean"
+    },
+    {
+      "name": "j",
+      "type": "Integer"
+    },
+    {
+      "name": "key",
+      "type": "Text"
+    },
+    {
+      "name": "keyInValue",
+      "type": "Integer"
+    },
+    {
+      "name": "keyLength",
+      "type": "Integer"
+    },
+    {
+      "name": "keyList",
+      "type": "List"
+    },
+    {
+      "name": "option",
+      "type": "Text"
+    },
+    {
+      "name": "runMode",
+      "type": "Text"
+    },
+    {
+      "name": "setting",
+      "type": "Dict"
+    },
+    {
+      "name": "settingFile",
+      "type": "Text"
+    },
+    {
+      "name": "settingFileName",
+      "type": "Text"
+    },
+    {
+      "name": "settingPath",
+      "type": "Text"
+    },
+    {
+      "name": "singleConfig",
+      "type": "Text"
+    },
+    {
+      "name": "tempAimedPath",
+      "type": "Text"
+    },
+    {
+      "name": "tempData",
+      "type": "Text"
+    },
+    {
+      "name": "tempDataLength",
+      "type": "Integer"
+    },
+    {
+      "name": "tempDataList",
+      "type": "List"
+    },
+    {
+      "name": "tempExtProtocol",
+      "type": "List"
+    },
+    {
+      "name": "tempFile",
+      "type": "Text"
+    },
+    {
+      "name": "tempFilesList",
+      "type": "List"
+    },
+    {
+      "name": "tempKey",
+      "type": "Text"
+    },
+    {
+      "name": "tempKeyList",
+      "type": "List"
+    },
+    {
+      "name": "tempValue",
+      "type": "Text"
+    },
+    {
+      "name": "tempValue1",
+      "type": "Text"
+    },
+    {
+      "name": "tempValueList",
+      "type": "List"
+    },
+    {
+      "name": "tempValueList1",
+      "type": "List"
+    },
+    {
+      "name": "tempValueList2",
+      "type": "List"
+    },
+    {
+      "name": "value",
+      "type": "Text"
+    },
+    {
+      "name": "valueInKey",
+      "type": "Integer"
+    },
+    {
+      "name": "valueInValue",
+      "type": "Integer"
+    },
+    {
+      "name": "valueLength",
+      "type": "Integer"
+    },
+    {
+      "name": "valueList",
+      "type": "List"
+    },
+    {
+      "name": "valueList1",
+      "type": "List"
+    },
+    {
+      "name": "wholeConfigList",
+      "type": "List"
+    },
+    {
+      "name": "option1",
+      "type": "Text"
+    },
+    {
+      "name": "instruction2",
+      "type": "List"
+    },
+    {
+      "name": "tempValue2",
+      "type": "Text"
+    },
+    {
+      "name": "isMatch",
+      "type": "Boolean"
+    },
+    {
+      "name": "isSingle",
+      "type": "Boolean"
+    }
+  ],
+  "steps": [
+    {
+      "key": "sys:comment",
+      "inputs": {
+        "note": "读取文件并预处理，分离出键-值对，检查数据是否正常"
+      }
+    },
+    {
+      "key": "sys:group",
+      "inputs": {
+        "skipErr": "0"
+      },
+      "note": "云存储",
+      "disabled": true,
+      "ifSteps": [
+        {
+          "key": "sys:comment",
+          "inputs": {
+            "note": "优先尝试从云端读取协议文件，若失败则读取本地协议"
+          }
+        },
+        {
+          "key": "sys:clouddata",
+          "inputs": {
+            "type": "readGlobalState",
+            "key": "extProtocol",
+            "stopIfFail": "0"
+          },
+          "outputs": {
+            "isSuccess": "isPing"
+          },
+          "disabled": true
+        },
+        {
+          "key": "sys:simpleIf",
+          "inputs": {
+            "condition": "{isPing}"
+          },
+          "disabled": true,
+          "ifSteps": [
+            {
+              "key": "sys:clouddata",
+              "inputs": {
+                "type": "readGlobalState",
+                "key": "extProtocol",
+                "stopIfFail": "0"
+              },
+              "outputs": {
+                "value": "extProtocol"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "key": "sys:getFolderPath",
+      "inputs": {
+        "folder": "Favorites"
+      },
+      "outputs": {
+        "path": "settingPath"
+      }
+    },
+    {
+      "key": "sys:formatString",
+      "inputs": {
+        "formatString": "{0}/{1}",
+        "p0": "{settingPath}",
+        "p1": "{settingFileName}"
+      },
+      "outputs": {
+        "output": "settingFile"
+      }
+    },
+    {
+      "key": "sys:group",
+      "inputs": {
+        "skipErr": "0"
+      },
+      "note": "读取配置文件并对数据进行预处理",
+      "ifSteps": [
+        {
+          "key": "sys:assign",
+          "outputs": {
+            "output": "valueList"
+          }
+        },
+        {
+          "key": "sys:assign",
+          "outputs": {
+            "output": "keyList"
+          }
+        },
+        {
+          "key": "sys:readFile",
+          "inputs": {
+            "path": "{settingFile}",
+            "type": "text",
+            "encoding": "default",
+            "stopIfFail": "0"
+          },
+          "outputs": {
+            "txt": "setting",
+            "isSuccess": "isInitial"
+          }
+        },
+        {
+          "key": "sys:dictOperations",
+          "inputs": {
+            "dict": "{setting}",
+            "type": "keyList"
+          },
+          "outputs": {
+            "value": "keyList"
+          }
+        },
+        {
+          "key": "sys:each",
+          "inputs": {
+            "input": "{keyList}"
+          },
+          "outputs": {
+            "item": "key"
+          },
+          "ifSteps": [
+            {
+              "key": "sys:dictOperations",
+              "inputs": {
+                "dict": "{setting}",
+                "type": "get",
+                "key": "{key}",
+                "ignoreCase": "0"
+              },
+              "outputs": {
+                "value": "value"
+              }
+            },
+            {
+              "key": "sys:listOperations",
+              "inputs": {
+                "list": "{valueList}",
+                "type": "append",
+                "item": "{value}"
+              }
+            }
+          ]
+        },
+        {
+          "key": "sys:listOperations",
+          "inputs": {
+            "list": "{keyList}",
+            "type": "remove"
+          },
+          "outputs": {
+            "length": "keyLength"
+          }
+        },
+        {
+          "key": "sys:listOperations",
+          "inputs": {
+            "list": "{valueList}",
+            "type": "remove"
+          },
+          "outputs": {
+            "length": "valueLength"
+          }
+        }
+      ]
+    },
+    {
+      "key": "sys:numCompare",
+      "inputs": {
+        "param1": "{keyLength}",
+        "type": "=",
+        "param2": "{valueLength}"
+      },
+      "outputs": {
+        "value": "isEqual"
+      },
+      "note": "判断“键-值“数量是否匹配"
+    },
+    {
+      "key": "sys:comment",
+      "inputs": {
+        "note": "数据异常则报错"
+      }
+    },
+    {
+      "key": "sys:if",
+      "inputs": {
+        "condition": "$$'{isEqual}' == 'false'"
+      },
+      "ifSteps": [
+        {
+          "key": "sys:group",
+          "inputs": {
+            "skipErr": "0"
+          },
+          "note": "发现异常",
+          "ifSteps": [
+            {
+              "key": "sys:notify",
+              "inputs": {
+                "msg": "错误：配置文件(键-值数量不匹配)存在损坏，请人工检查后确认",
+                "maxLines": "0",
+                "type": "Error"
+              }
+            },
+            {
+              "key": "sys:notify",
+              "inputs": {
+                "msg": "即将跳转并定位到配置文件...",
+                "maxLines": "0",
+                "type": "Info"
+              }
+            },
+            {
+              "key": "sys:runScript",
+              "inputs": {
+                "script": "$$explorer /e,/select,{settingFile}",
+                "type": "CMD_H",
+                "encoding": "utf-8",
+                "outputEncoding": "oem",
+                "runAsAdmin": "0",
+                "waitToExit": "0"
+              }
+            },
+            {
+              "key": "sys:showWaitWin",
+              "inputs": {
+                "mode": "showAndWaitClose",
+                "title": "配置数据格式说明",
+                "prompt": "配置数据格:\r\n{\"目标文件夹1\":\"源文件夹1/源文件夹2/...\",\"目标文件夹2\":\"源文件夹3/源文件夹4/...\", ...}",
+                "winLocation": "BottomRight",
+                "btnText": "已了解"
+              }
+            },
+            {
+              "key": "sys:stop",
+              "inputs": {
+                "method": "default",
+                "isError": "0"
+              }
+            }
+          ]
+        }
+      ],
+      "elseSteps": [
+        {
+          "key": "sys:comment",
+          "inputs": {
+            "note": "数据无误后进入用户操作环节"
+          }
+        },
+        {
+          "key": "sys:simpleIf",
+          "inputs": {
+            "condition": "$$'{isInitial}' == 'false'"
+          },
+          "ifSteps": [
+            {
+              "key": "sys:comment",
+              "inputs": {
+                "note": "0.初次使用"
+              }
+            },
+            {
+              "key": "sys:notify",
+              "inputs": {
+                "msg": "首次使用请移步菜单【配置路径】进行设置",
+                "maxLines": "0",
+                "type": "Warning"
+              }
+            }
+          ]
+        },
+        {
+          "key": "sys:comment",
+          "inputs": {
+            "note": "用户选择"
+          }
+        },
+        {
+          "key": "sys:select",
+          "inputs": {
+            "type": "single",
+            "prompt": "功能选择",
+            "note": "默认模式：【已设定源文件夹】分类到【已设定目标文件夹】\r\n临时模式：【当前选中文件】分类到【临时设定文件夹/当前文件夹】",
+            "items": "默认模式|0\r\n临时模式|1\r\n分类协议|3\r\n配置路径|4\r\n定位配置文件|2",
+            "winLocation": "CenterScreen",
+            "keepLastPos": "0",
+            "autoCloseSeconds": "0",
+            "noKeyboard": "0",
+            "showFilter": "0",
+            "restoreForeground": "1",
+            "stopIfCancel": "1"
+          },
+          "outputs": {
+            "textValue": "option"
+          },
+          "note": "【1】功能选择"
+        },
+        {
+          "key": "sys:group",
+          "inputs": {
+            "skipErr": "0"
+          },
+          "note": "选择判断",
+          "ifSteps": [
+            {
+              "key": "sys:strCompare",
+              "inputs": {
+                "param1": "{option}",
+                "type": "=",
+                "param2": "0",
+                "case": "0"
+              },
+              "outputs": {
+                "value": "isDefault"
+              },
+              "note": "默认模式|0"
+            },
+            {
+              "key": "sys:strCompare",
+              "inputs": {
+                "param1": "{option}",
+                "type": "=",
+                "param2": "1",
+                "case": "0"
+              },
+              "outputs": {
+                "value": "isTemp1"
+              },
+              "note": "临时模式|1"
+            },
+            {
+              "key": "sys:strCompare",
+              "inputs": {
+                "param1": "{option}",
+                "type": "=",
+                "param2": "2",
+                "case": "0"
+              },
+              "outputs": {
+                "value": "isTemp2"
+              },
+              "note": "打开配置文件|2"
+            },
+            {
+              "key": "sys:strCompare",
+              "inputs": {
+                "param1": "{option}",
+                "type": "=",
+                "param2": "3",
+                "case": "0"
+              },
+              "outputs": {
+                "value": "isProtocol"
+              },
+              "note": "分类协议|3"
+            },
+            {
+              "key": "sys:strCompare",
+              "inputs": {
+                "param1": "{option}",
+                "type": "=",
+                "param2": "4",
+                "case": "0"
+              },
+              "outputs": {
+                "value": "isConfig"
+              },
+              "note": "配置路径|4"
+            }
+          ]
+        },
+        {
+          "key": "sys:comment",
+          "inputs": {
+            "note": "1.默认模式"
+          }
+        },
+        {
+          "key": "sys:simpleIf",
+          "inputs": {
+            "condition": "{isDefault}"
+          },
+          "note": "默认模式|0",
+          "ifSteps": [
+            {
+              "key": "sys:comment",
+              "inputs": {
+                "note": "按行解析配置文件：\r\n目标文件夹:源文件夹1/源文件夹2/源文件夹3..."
+              }
+            },
+            {
+              "key": "sys:group",
+              "inputs": {
+                "skipErr": "0"
+              },
+              "note": "标题和说明",
+              "ifSteps": [
+                {
+                  "key": "sys:listOperations",
+                  "inputs": {
+                    "list": "{instruction1}",
+                    "type": "none"
+                  },
+                  "outputs": {
+                    "length": "instructionRows"
+                  }
+                },
+                {
+                  "key": "sys:subprogram",
+                  "inputs": {
+                    "subProgram": "字符对齐",
+                    "stopIfFail": "1",
+                    "var:align": "M",
+                    "var:input": "[源文件夹]",
+                    "var:length": "50"
+                  },
+                  "outputs": {
+                    "var:output": "column1Head"
+                  }
+                },
+                {
+                  "key": "sys:subprogram",
+                  "inputs": {
+                    "subProgram": "字符对齐",
+                    "stopIfFail": "1",
+                    "var:align": "M",
+                    "var:input": "[目标文件夹]",
+                    "var:length": "50"
+                  },
+                  "outputs": {
+                    "var:output": "column2Head"
+                  }
+                },
+                {
+                  "key": "sys:listOperations",
+                  "inputs": {
+                    "list": "{wholeConfigList}",
+                    "type": "append",
+                    "item": "$${instruction1}\r\n{column1Head}→{column2Head}"
+                  }
+                }
+              ]
+            },
+            {
+              "key": "sys:repeat",
+              "inputs": {
+                "count": "{keyLength}",
+                "startIndex": "0"
+              },
+              "outputs": {
+                "count": "i"
+              },
+              "ifSteps": [
+                {
+                  "key": "sys:listOperations",
+                  "inputs": {
+                    "list": "{keyList}",
+                    "type": "getAt",
+                    "pos": "{i}"
+                  },
+                  "outputs": {
+                    "value": "key"
+                  }
+                },
+                {
+                  "key": "sys:subprogram",
+                  "inputs": {
+                    "subProgram": "字符对齐",
+                    "stopIfFail": "1",
+                    "var:align": "R",
+                    "var:input": "{key}",
+                    "var:length": "50"
+                  },
+                  "outputs": {
+                    "var:output": "key"
+                  }
+                },
+                {
+                  "key": "sys:listOperations",
+                  "inputs": {
+                    "list": "{valueList}",
+                    "type": "getAt",
+                    "pos": "{i}"
+                  },
+                  "outputs": {
+                    "value": "value"
+                  }
+                },
+                {
+                  "key": "sys:splitString",
+                  "inputs": {
+                    "data": "{value}",
+                    "separator": "/",
+                    "escapeSeparator": "0",
+                    "removeEmpty": "1"
+                  },
+                  "outputs": {
+                    "output": "valueList1"
+                  }
+                },
+                {
+                  "key": "sys:each",
+                  "inputs": {
+                    "input": "{valueList1}"
+                  },
+                  "outputs": {
+                    "item": "value"
+                  },
+                  "ifSteps": [
+                    {
+                      "key": "sys:subprogram",
+                      "inputs": {
+                        "subProgram": "字符对齐",
+                        "stopIfFail": "1",
+                        "var:align": "L",
+                        "var:input": "{value}",
+                        "var:length": "50"
+                      },
+                      "outputs": {
+                        "var:output": "value"
+                      }
+                    },
+                    {
+                      "key": "sys:formatString",
+                      "inputs": {
+                        "formatString": "{0}→{1}",
+                        "p0": "{value}",
+                        "p1": "{key}"
+                      },
+                      "outputs": {
+                        "output": "singleConfig"
+                      }
+                    },
+                    {
+                      "key": "sys:listOperations",
+                      "inputs": {
+                        "list": "{wholeConfigList}",
+                        "type": "append",
+                        "item": "{singleConfig}"
+                      }
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "key": "sys:showText",
+              "inputs": {
+                "type": "WAIT",
+                "text": "{wholeConfigList}",
+                "title": "运行前确认(关闭窗口后继续运行)",
+                "operations": "停止|true",
+                "winLocation": "CenterScreen",
+                "fontsize": "14",
+                "fontfamily": "宋体"
+              },
+              "outputs": {
+                "selectedOperation": "isStop",
+                "resultText": "tempDataList"
+              }
+            },
+            {
+              "key": "sys:simpleIf",
+              "inputs": {
+                "condition": "{isStop}"
+              },
+              "ifSteps": [
+                {
+                  "key": "sys:comment",
+                  "inputs": {
+                    "note": "用户中断"
+                  }
+                },
+                {
+                  "key": "sys:group",
+                  "inputs": {
+                    "skipErr": "0"
+                  },
+                  "note": "用户中断",
+                  "ifSteps": [
+                    {
+                      "key": "sys:notify",
+                      "inputs": {
+                        "msg": "用户发起中断，动作停止",
+                        "maxLines": "0",
+                        "type": "Warning"
+                      }
+                    },
+                    {
+                      "key": "sys:stop",
+                      "inputs": {
+                        "method": "default",
+                        "isError": "0"
+                      }
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "key": "sys:group",
+              "inputs": {
+                "skipErr": "0"
+              },
+              "note": "中间数据处理",
+              "ifSteps": [
+                {
+                  "key": "sys:group",
+                  "inputs": {
+                    "skipErr": "0"
+                  },
+                  "note": "去除标题和说明",
+                  "ifSteps": [
+                    {
+                      "key": "sys:repeat",
+                      "inputs": {
+                        "count": "$={instructionRows}+1",
+                        "startIndex": "0"
+                      },
+                      "ifSteps": [
+                        {
+                          "key": "sys:listOperations",
+                          "inputs": {
+                            "list": "{tempDataList}",
+                            "type": "removeAt",
+                            "pos": "0"
+                          }
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "key": "sys:each",
+                  "inputs": {
+                    "input": "{tempDataList}"
+                  },
+                  "outputs": {
+                    "item": "tempData"
+                  },
+                  "ifSteps": [
+                    {
+                      "key": "sys:regexExtract",
+                      "inputs": {
+                        "getGroup": "1",
+                        "data": "{tempData}",
+                        "pattern": "(.*)→(.*)",
+                        "ignoreCase": "0",
+                        "singleLine": "0",
+                        "multiLine": "0",
+                        "stopIfFail": "1"
+                      },
+                      "outputs": {
+                        "match1": "tempValue",
+                        "match2": "tempKey"
+                      }
+                    },
+                    {
+                      "key": "sys:stringProcess",
+                      "inputs": {
+                        "data": "{tempValue}",
+                        "method": "trim",
+                        "stopIfFail": "0"
+                      },
+                      "outputs": {
+                        "output": "tempValue"
+                      }
+                    },
+                    {
+                      "key": "sys:stringProcess",
+                      "inputs": {
+                        "data": "{tempKey}",
+                        "method": "trim",
+                        "stopIfFail": "0"
+                      },
+                      "outputs": {
+                        "output": "tempKey"
+                      }
+                    },
+                    {
+                      "key": "sys:listOperations",
+                      "inputs": {
+                        "list": "{tempValueList}",
+                        "type": "append",
+                        "item": "{tempValue}"
+                      }
+                    },
+                    {
+                      "key": "sys:listOperations",
+                      "inputs": {
+                        "list": "{tempKeyList}",
+                        "type": "append",
+                        "item": "{tempKey}"
+                      }
+                    }
+                  ]
+                },
+                {
+                  "key": "sys:listOperations",
+                  "inputs": {
+                    "list": "{tempDataList}",
+                    "type": "none"
+                  },
+                  "outputs": {
+                    "length": "tempDataLength"
+                  }
+                }
+              ]
+            },
+            {
+              "key": "sys:repeat",
+              "inputs": {
+                "count": "{tempDataLength}",
+                "startIndex": "0"
+              },
+              "outputs": {
+                "count": "j"
+              },
+              "ifSteps": [
+                {
+                  "key": "sys:listOperations",
+                  "inputs": {
+                    "list": "{tempKeyList}",
+                    "type": "getAt",
+                    "pos": "{j}"
+                  },
+                  "outputs": {
+                    "value": "tempKey"
+                  }
+                },
+                {
+                  "key": "sys:listOperations",
+                  "inputs": {
+                    "list": "{tempValueList}",
+                    "type": "getAt",
+                    "pos": "{j}"
+                  },
+                  "outputs": {
+                    "value": "tempValue"
+                  }
+                },
+                {
+                  "key": "sys:regexExtract",
+                  "inputs": {
+                    "getGroup": "1",
+                    "data": "{tempValue}",
+                    "pattern": "^//",
+                    "ignoreCase": "0",
+                    "singleLine": "0",
+                    "multiLine": "0",
+                    "stopIfFail": "0"
+                  },
+                  "outputs": {
+                    "isSuccess": "isNoted"
+                  },
+                  "note": "判断是否为注释行"
+                },
+                {
+                  "key": "sys:if",
+                  "inputs": {
+                    "condition": "{isNoted}"
+                  },
+                  "ifSteps": [
+                    {
+                      "key": "sys:comment",
+                      "inputs": {
+                        "note": "以//开头，注释当前行"
+                      }
+                    },
+                    {
+                      "key": "sys:continue"
+                    }
+                  ],
+                  "elseSteps": [
+                    {
+                      "key": "sys:comment",
+                      "inputs": {
+                        "note": "判断是否分类"
+                      }
+                    },
+                    {
+                      "key": "sys:group",
+                      "inputs": {
+                        "skipErr": "0"
+                      },
+                      "note": "判断是否分类",
+                      "ifSteps": [
+                        {
+                          "key": "sys:strCompare",
+                          "inputs": {
+                            "param1": "{tempValue}",
+                            "type": "contains",
+                            "param2": "不分类",
+                            "case": "0"
+                          },
+                          "outputs": {
+                            "value": "isNotClassified"
+                          }
+                        },
+                        {
+                          "key": "sys:strReplace",
+                          "inputs": {
+                            "type": "single",
+                            "input": "{tempValue}",
+                            "old": "?不分类?",
+                            "escapeOld": "0",
+                            "replaceEscapes": "0",
+                            "useRegex": "0",
+                            "ignoreCase": "0",
+                            "singleLine": "0",
+                            "multiLine": "0"
+                          },
+                          "outputs": {
+                            "output": "tempValue"
+                          }
+                        },
+                        {
+                          "key": "sys:strReplace",
+                          "inputs": {
+                            "type": "single",
+                            "input": "{tempValue}",
+                            "old": "?分类?",
+                            "escapeOld": "0",
+                            "replaceEscapes": "0",
+                            "useRegex": "0",
+                            "ignoreCase": "0",
+                            "singleLine": "0",
+                            "multiLine": "0"
+                          },
+                          "outputs": {
+                            "output": "tempValue"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "key": "sys:fileOperation",
+                      "inputs": {
+                        "type": "enumFiles",
+                        "path": "{tempValue}",
+                        "searchPattern": "*",
+                        "isAll": "0",
+                        "stopIfFail": "1"
+                      },
+                      "outputs": {
+                        "files": "tempFilesList"
+                      }
+                    },
+                    {
+                      "key": "sys:comment",
+                      "inputs": {
+                        "note": "将每个源文件夹内的文件链接到目标文件夹"
+                      }
+                    },
+                    {
+                      "key": "sys:compute",
+                      "inputs": {
+                        "expression": "0",
+                        "evalVar": "1",
+                        "stopIfFail": "0"
+                      },
+                      "outputs": {
+                        "output": "countFile"
+                      }
+                    },
+                    {
+                      "key": "sys:if",
+                      "inputs": {
+                        "condition": "{isNotClassified}"
+                      },
+                      "ifSteps": [
+                        {
+                          "key": "sys:comment",
+                          "inputs": {
+                            "note": "仅移动文件而不进行分类"
+                          }
+                        },
+                        {
+                          "key": "sys:each",
+                          "inputs": {
+                            "input": "{tempFilesList}"
+                          },
+                          "outputs": {
+                            "item": "tempFile"
+                          },
+                          "ifSteps": [
+                            {
+                              "key": "sys:fileOperation",
+                              "inputs": {
+                                "type": "moveFile",
+                                "path": "{tempFile}",
+                                "dstPath": "{tempKey}",
+                                "stopIfFail": "1"
+                              }
+                            },
+                            {
+                              "key": "sys:compute",
+                              "inputs": {
+                                "expression": "{countFile}+1",
+                                "evalVar": "1",
+                                "stopIfFail": "0"
+                              },
+                              "outputs": {
+                                "output": "countFile"
+                              }
+                            }
+                          ]
+                        }
+                      ],
+                      "elseSteps": [
+                        {
+                          "key": "sys:comment",
+                          "inputs": {
+                            "note": "移动文件并进行分类"
+                          }
+                        },
+                        {
+                          "key": "sys:assign",
+                          "inputs": {
+                            "input": "{extProtocol}"
+                          },
+                          "outputs": {
+                            "output": "tempExtProtocol"
+                          }
+                        },
+                        {
+                          "key": "sys:listOperations",
+                          "inputs": {
+                            "list": "{tempExtProtocol}",
+                            "type": "removeByMatch",
+                            "pattern": "^//"
+                          },
+                          "note": "忽略注释过的协议"
+                        },
+                        {
+                          "key": "sys:each",
+                          "inputs": {
+                            "input": "{tempFilesList}"
+                          },
+                          "outputs": {
+                            "item": "tempFile",
+                            "count": "countFile"
+                          },
+                          "ifSteps": [
+                            {
+                              "key": "sys:pathExtraction",
+                              "inputs": {
+                                "path": "{tempFile}"
+                              },
+                              "outputs": {
+                                "ext": "ext"
+                              }
+                            },
+                            {
+                              "key": "sys:strReplace",
+                              "inputs": {
+                                "type": "single",
+                                "input": "{ext}",
+                                "old": ".",
+                                "escapeOld": "0",
+                                "replaceEscapes": "0",
+                                "useRegex": "0",
+                                "ignoreCase": "0",
+                                "singleLine": "0",
+                                "multiLine": "0"
+                              },
+                              "outputs": {
+                                "output": "ext"
+                              }
+                            },
+                            {
+                              "key": "sys:listOperations",
+                              "inputs": {
+                                "list": "{tempExtProtocol}",
+                                "type": "filterByDefault",
+                                "item": "{ext}"
+                              },
+                              "outputs": {
+                                "value": "extFolderName"
+                              }
+                            },
+                            {
+                              "key": "sys:regexExtract",
+                              "inputs": {
+                                "getGroup": "1",
+                                "data": "{extFolderName}",
+                                "pattern": "(.*)\\|",
+                                "ignoreCase": "0",
+                                "singleLine": "0",
+                                "multiLine": "0",
+                                "stopIfFail": "0"
+                              },
+                              "outputs": {
+                                "match1": "extFolderName",
+                                "isSuccess": "isSetExt"
+                              }
+                            },
+                            {
+                              "key": "sys:if",
+                              "inputs": {
+                                "condition": "{isSetExt}"
+                              },
+                              "ifSteps": [
+                                {
+                                  "key": "sys:comment",
+                                  "inputs": {
+                                    "note": "按分类协议进行分类"
+                                  }
+                                },
+                                {
+                                  "key": "sys:fileOperation",
+                                  "inputs": {
+                                    "type": "makeDir",
+                                    "path": "$${tempKey}\\{extFolderName}",
+                                    "stopIfFail": "1"
+                                  }
+                                },
+                                {
+                                  "key": "sys:fileOperation",
+                                  "inputs": {
+                                    "type": "moveFile",
+                                    "path": "{tempFile}",
+                                    "dstPath": "$${tempKey}\\{extFolderName}",
+                                    "stopIfFail": "1"
+                                  }
+                                }
+                              ],
+                              "elseSteps": [
+                                {
+                                  "key": "sys:continue"
+                                },
+                                {
+                                  "key": "sys:comment",
+                                  "inputs": {
+                                    "note": "不在分类协议中的文件分类到【其它】文件夹"
+                                  }
+                                },
+                                {
+                                  "key": "sys:fileOperation",
+                                  "inputs": {
+                                    "type": "makeDir",
+                                    "path": "$${tempKey}\\其它",
+                                    "stopIfFail": "1"
+                                  }
+                                },
+                                {
+                                  "key": "sys:fileOperation",
+                                  "inputs": {
+                                    "type": "moveFile",
+                                    "path": "{tempFile}",
+                                    "dstPath": "$${tempKey}\\其它",
+                                    "stopIfFail": "1"
+                                  }
+                                }
+                              ]
+                            },
+                            {
+                              "key": "sys:compute",
+                              "inputs": {
+                                "expression": "{countFile}+1",
+                                "evalVar": "1",
+                                "stopIfFail": "0"
+                              },
+                              "outputs": {
+                                "output": "countFile"
+                              }
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "key": "sys:comment",
+                      "inputs": {
+                        "note": "完成信息统计"
+                      }
+                    },
+                    {
+                      "key": "sys:group",
+                      "inputs": {
+                        "skipErr": "0"
+                      },
+                      "note": "完成信息统计",
+                      "ifSteps": [
+                        {
+                          "key": "sys:if",
+                          "inputs": {
+                            "condition": "$={j}+1 == {tempDataLength}"
+                          },
+                          "ifSteps": [
+                            {
+                              "key": "sys:showWaitWin",
+                              "inputs": {
+                                "mode": "showAndWaitClose",
+                                "title": "完成情况统计",
+                                "prompt": "$$完成：目标文件夹 [{tempKey}] 新增 [{countFile}] 个文件",
+                                "winLocation": "BottomRight",
+                                "btnText": "完成",
+                                "operations": "停止|true"
+                              },
+                              "outputs": {
+                                "selectedOperation": "isStop"
+                              }
+                            }
+                          ],
+                          "elseSteps": [
+                            {
+                              "key": "sys:showWaitWin",
+                              "inputs": {
+                                "mode": "showAndWaitClose",
+                                "title": "完成情况统计",
+                                "prompt": "$$完成：目标文件夹 [{tempKey}] 新增 [{countFile}] 个文件",
+                                "winLocation": "BottomRight",
+                                "btnText": "执行下一个",
+                                "operations": "停止|true"
+                              },
+                              "outputs": {
+                                "selectedOperation": "isStop"
+                              }
+                            }
+                          ]
+                        },
+                        {
+                          "key": "sys:comment",
+                          "inputs": {
+                            "note": "用户中断"
+                          }
+                        },
+                        {
+                          "key": "sys:simpleIf",
+                          "inputs": {
+                            "condition": "{isStop}"
+                          },
+                          "ifSteps": [
+                            {
+                              "key": "sys:notify",
+                              "inputs": {
+                                "msg": "用户发起中断，动作停止",
+                                "maxLines": "0",
+                                "type": "Warning"
+                              }
+                            },
+                            {
+                              "key": "sys:stop",
+                              "inputs": {
+                                "method": "default",
+                                "isError": "0"
+                              }
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "key": "sys:comment",
+          "inputs": {
+            "note": "2.临时模式"
+          }
+        },
+        {
+          "key": "sys:simpleIf",
+          "inputs": {
+            "condition": "{isTemp1}"
+          },
+          "note": "临时模式",
+          "ifSteps": [
+            {
+              "key": "sys:showWaitWin",
+              "inputs": {
+                "mode": "showAndWaitClose",
+                "title": "完成操作后继续",
+                "prompt": "选择要分类/转移的文件后点击下面的按钮",
+                "winLocation": "BottomRight",
+                "btnText": "下一步"
+              }
+            },
+            {
+              "key": "sys:getSelectedFiles",
+              "inputs": {
+                "stopIfFail": "0"
+              },
+              "outputs": {
+                "files": "tempFilesList",
+                "isSuccess": "isSelected"
+              }
+            },
+            {
+              "key": "sys:if",
+              "inputs": {
+                "condition": "{isSelected}"
+              },
+              "ifSteps": [
+                {
+                  "key": "sys:comment",
+                  "inputs": {
+                    "note": "选择文件后"
+                  }
+                },
+                {
+                  "key": "sys:getExplorerPath",
+                  "inputs": {
+                    "stopIfFail": "0"
+                  },
+                  "outputs": {
+                    "output": "currentPath"
+                  }
+                },
+                {
+                  "key": "sys:form",
+                  "inputs": {
+                    "title": "请选择运行方式",
+                    "formDef": "{\"Fields\":[{\"FieldKey\":\"runMode\",\"Label\":\"移动方式\",\"HelpText\":\"1. 移动并分类 2.仅移动\",\"HelpLink\":null,\"InputMethod\":3,\"SelectionItems\":\"$${runMode}\",\"IsRequired\":true,\"MinValue\":\"\",\"MaxValue\":\"\",\"Pattern\":\"\",\"MaxLength\":0},{\"FieldKey\":\"tempAimedPath\",\"Label\":\"目标路径\",\"HelpText\":\"定位到目标文件夹，路径空则默认为 [当前路径]\",\"HelpLink\":null,\"InputMethod\":1,\"SelectionItems\":\"\",\"IsRequired\":false,\"MinValue\":\"\",\"MaxValue\":\"\",\"Pattern\":\"\",\"MaxLength\":0}]}",
+                    "restoreFocus": "0",
+                    "stopIfFail": "1"
+                  }
+                },
+                {
+                  "key": "sys:strCompare",
+                  "inputs": {
+                    "param1": "{runMode}",
+                    "type": "=",
+                    "param2": "仅移动",
+                    "case": "0"
+                  },
+                  "outputs": {
+                    "value": "isNotClassified"
+                  }
+                },
+                {
+                  "key": "sys:strCompare",
+                  "inputs": {
+                    "param1": "{tempAimedPath}",
+                    "type": "=",
+                    "case": "0"
+                  },
+                  "outputs": {
+                    "value": "isEmptyTempPath"
+                  }
+                },
+                {
+                  "key": "sys:simpleIf",
+                  "inputs": {
+                    "condition": "{isEmptyTempPath}"
+                  },
+                  "ifSteps": [
+                    {
+                      "key": "sys:comment",
+                      "inputs": {
+                        "note": "空路径则默认为当前路径"
+                      }
+                    },
+                    {
+                      "key": "sys:assign",
+                      "inputs": {
+                        "input": "{currentPath}"
+                      },
+                      "outputs": {
+                        "output": "tempAimedPath"
+                      }
+                    }
+                  ]
+                },
+                {
+                  "key": "sys:assign",
+                  "inputs": {
+                    "input": "{tempAimedPath}"
+                  },
+                  "outputs": {
+                    "output": "tempKey"
+                  }
+                },
+                {
+                  "key": "sys:compute",
+                  "inputs": {
+                    "expression": "0",
+                    "evalVar": "1",
+                    "stopIfFail": "0"
+                  },
+                  "outputs": {
+                    "output": "countFile"
+                  }
+                },
+                {
+                  "key": "sys:if",
+                  "inputs": {
+                    "condition": "{isNotClassified}"
+                  },
+                  "ifSteps": [
+                    {
+                      "key": "sys:comment",
+                      "inputs": {
+                        "note": "仅移动文件而不进行分类"
+                      }
+                    },
+                    {
+                      "key": "sys:each",
+                      "inputs": {
+                        "input": "{tempFilesList}"
+                      },
+                      "outputs": {
+                        "item": "tempFile"
+                      },
+                      "ifSteps": [
+                        {
+                          "key": "sys:fileOperation",
+                          "inputs": {
+                            "type": "moveFile",
+                            "path": "{tempFile}",
+                            "dstPath": "{tempKey}",
+                            "stopIfFail": "1"
+                          }
+                        },
+                        {
+                          "key": "sys:compute",
+                          "inputs": {
+                            "expression": "{countFile}+1",
+                            "evalVar": "1",
+                            "stopIfFail": "0"
+                          },
+                          "outputs": {
+                            "output": "countFile"
+                          }
+                        }
+                      ]
+                    }
+                  ],
+                  "elseSteps": [
+                    {
+                      "key": "sys:comment",
+                      "inputs": {
+                        "note": "移动文件并进行分类"
+                      }
+                    },
+                    {
+                      "key": "sys:assign",
+                      "inputs": {
+                        "input": "{extProtocol}"
+                      },
+                      "outputs": {
+                        "output": "tempExtProtocol"
+                      }
+                    },
+                    {
+                      "key": "sys:listOperations",
+                      "inputs": {
+                        "list": "{tempExtProtocol}",
+                        "type": "removeByMatch",
+                        "pattern": "^//"
+                      },
+                      "note": "忽略注释过的协议"
+                    },
+                    {
+                      "key": "sys:each",
+                      "inputs": {
+                        "input": "{tempFilesList}"
+                      },
+                      "outputs": {
+                        "item": "tempFile",
+                        "count": "countFile"
+                      },
+                      "ifSteps": [
+                        {
+                          "key": "sys:pathExtraction",
+                          "inputs": {
+                            "path": "{tempFile}"
+                          },
+                          "outputs": {
+                            "ext": "ext"
+                          }
+                        },
+                        {
+                          "key": "sys:strReplace",
+                          "inputs": {
+                            "type": "single",
+                            "input": "{ext}",
+                            "old": ".",
+                            "escapeOld": "0",
+                            "replaceEscapes": "0",
+                            "useRegex": "0",
+                            "ignoreCase": "0",
+                            "singleLine": "0",
+                            "multiLine": "0"
+                          },
+                          "outputs": {
+                            "output": "ext"
+                          }
+                        },
+                        {
+                          "key": "sys:listOperations",
+                          "inputs": {
+                            "list": "{tempExtProtocol}",
+                            "type": "filterByDefault",
+                            "item": "{ext}"
+                          },
+                          "outputs": {
+                            "value": "extFolderName"
+                          }
+                        },
+                        {
+                          "key": "sys:regexExtract",
+                          "inputs": {
+                            "getGroup": "1",
+                            "data": "{extFolderName}",
+                            "pattern": "(.*)\\|",
+                            "ignoreCase": "0",
+                            "singleLine": "0",
+                            "multiLine": "0",
+                            "stopIfFail": "0"
+                          },
+                          "outputs": {
+                            "match1": "extFolderName",
+                            "isSuccess": "isSetExt"
+                          }
+                        },
+                        {
+                          "key": "sys:if",
+                          "inputs": {
+                            "condition": "{isSetExt}"
+                          },
+                          "ifSteps": [
+                            {
+                              "key": "sys:comment",
+                              "inputs": {
+                                "note": "按分类协议进行分类"
+                              }
+                            },
+                            {
+                              "key": "sys:fileOperation",
+                              "inputs": {
+                                "type": "makeDir",
+                                "path": "$${tempKey}\\{extFolderName}",
+                                "stopIfFail": "1"
+                              }
+                            },
+                            {
+                              "key": "sys:fileOperation",
+                              "inputs": {
+                                "type": "moveFile",
+                                "path": "{tempFile}",
+                                "dstPath": "$${tempKey}\\{extFolderName}",
+                                "stopIfFail": "1"
+                              }
+                            }
+                          ],
+                          "elseSteps": [
+                            {
+                              "key": "sys:continue"
+                            },
+                            {
+                              "key": "sys:comment",
+                              "inputs": {
+                                "note": "不在分类协议中的文件分类到【其它】文件夹"
+                              }
+                            },
+                            {
+                              "key": "sys:fileOperation",
+                              "inputs": {
+                                "type": "makeDir",
+                                "path": "$${tempKey}\\其它",
+                                "stopIfFail": "1"
+                              }
+                            },
+                            {
+                              "key": "sys:fileOperation",
+                              "inputs": {
+                                "type": "moveFile",
+                                "path": "{tempFile}",
+                                "dstPath": "$${tempKey}\\其它",
+                                "stopIfFail": "1"
+                              }
+                            }
+                          ]
+                        },
+                        {
+                          "key": "sys:compute",
+                          "inputs": {
+                            "expression": "{countFile}+1",
+                            "evalVar": "1",
+                            "stopIfFail": "0"
+                          },
+                          "outputs": {
+                            "output": "countFile"
+                          }
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "key": "sys:comment",
+                  "inputs": {
+                    "note": "完成信息统计"
+                  }
+                },
+                {
+                  "key": "sys:group",
+                  "inputs": {
+                    "skipErr": "0"
+                  },
+                  "note": "完成信息统计",
+                  "ifSteps": [
+                    {
+                      "key": "sys:showWaitWin",
+                      "inputs": {
+                        "mode": "showAndWaitClose",
+                        "title": "完成情况统计",
+                        "prompt": "$$完成：目标文件夹 [{tempKey}] 新增 [{countFile}] 个文件",
+                        "winLocation": "BottomRight",
+                        "btnText": "完成",
+                        "operations": "停止|true"
+                      },
+                      "outputs": {
+                        "selectedOperation": "isStop"
+                      }
+                    },
+                    {
+                      "key": "sys:comment",
+                      "inputs": {
+                        "note": "用户中断"
+                      }
+                    },
+                    {
+                      "key": "sys:simpleIf",
+                      "inputs": {
+                        "condition": "{isStop}"
+                      },
+                      "ifSteps": [
+                        {
+                          "key": "sys:notify",
+                          "inputs": {
+                            "msg": "用户发起中断，动作停止",
+                            "maxLines": "0",
+                            "type": "Warning"
+                          }
+                        },
+                        {
+                          "key": "sys:stop",
+                          "inputs": {
+                            "method": "default",
+                            "isError": "0"
+                          }
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ],
+              "elseSteps": [
+                {
+                  "key": "sys:notify",
+                  "inputs": {
+                    "msg": "获取文件列表失败，请选择文件后再试",
+                    "maxLines": "0",
+                    "type": "Warning"
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "key": "sys:comment",
+          "inputs": {
+            "note": "3.打开配置文件"
+          }
+        },
+        {
+          "key": "sys:simpleIf",
+          "inputs": {
+            "condition": "{isTemp2}"
+          },
+          "note": "定位到配置文件",
+          "ifSteps": [
+            {
+              "key": "sys:showText",
+              "inputs": {
+                "type": "NO_WAIT",
+                "text": "$${settingPath}\\{settingFileName}",
+                "title": "结果内容",
+                "winLocation": "CenterScreen",
+                "fontsize": "14"
+              }
+            },
+            {
+              "key": "sys:notify",
+              "inputs": {
+                "msg": "即将跳转并定位到配置文件...",
+                "maxLines": "0",
+                "type": "Info"
+              }
+            },
+            {
+              "key": "sys:runScript",
+              "inputs": {
+                "script": "$$explorer /e,/select,{settingPath}\\{settingFileName}",
+                "type": "CMD_H",
+                "encoding": "utf-8",
+                "outputEncoding": "oem",
+                "runAsAdmin": "0",
+                "waitToExit": "0"
+              }
+            }
+          ]
+        },
+        {
+          "key": "sys:comment",
+          "inputs": {
+            "note": "4.分类协议"
+          }
+        },
+        {
+          "key": "sys:simpleIf",
+          "inputs": {
+            "condition": "{isProtocol}"
+          },
+          "note": "分类协议|3",
+          "ifSteps": [
+            {
+              "key": "sys:userInput",
+              "inputs": {
+                "prompt": "请定义分类协议[指定分类文件夹名称|扩展名1;扩展名2;...]",
+                "type": "multiline",
+                "defaultValue": "{extProtocol}",
+                "isRequired": "1",
+                "winLocation": "CenterScreen",
+                "restoreFocus": "1",
+                "stopIfFail": "1"
+              },
+              "outputs": {
+                "textValue": "extProtocol"
+              }
+            },
+            {
+              "key": "sys:clouddata",
+              "inputs": {
+                "type": "saveGlobalState",
+                "key": "extProtocol",
+                "value": "{extProtocol}",
+                "stopIfFail": "0"
+              },
+              "disabled": true
+            }
+          ]
+        },
+        {
+          "key": "sys:comment",
+          "inputs": {
+            "note": "5.配置路径"
+          }
+        },
+        {
+          "key": "sys:simpleIf",
+          "inputs": {
+            "condition": "{isConfig}"
+          },
+          "note": "配置路径|4",
+          "ifSteps": [
+            {
+              "key": "sys:comment",
+              "inputs": {
+                "note": "用户查看当前配置数据"
+              }
+            },
+            {
+              "key": "sys:group",
+              "inputs": {
+                "skipErr": "0"
+              },
+              "note": "标题和说明",
+              "ifSteps": [
+                {
+                  "key": "sys:listOperations",
+                  "inputs": {
+                    "list": "{instruction2}",
+                    "type": "none"
+                  },
+                  "outputs": {
+                    "length": "instructionRows"
+                  }
+                },
+                {
+                  "key": "sys:subprogram",
+                  "inputs": {
+                    "subProgram": "字符对齐",
+                    "stopIfFail": "1",
+                    "var:align": "M",
+                    "var:input": "[源文件夹]",
+                    "var:length": "50"
+                  },
+                  "outputs": {
+                    "var:output": "column1Head"
+                  }
+                },
+                {
+                  "key": "sys:subprogram",
+                  "inputs": {
+                    "subProgram": "字符对齐",
+                    "stopIfFail": "1",
+                    "var:align": "M",
+                    "var:input": "[目标文件夹]",
+                    "var:length": "50"
+                  },
+                  "outputs": {
+                    "var:output": "column2Head"
+                  }
+                },
+                {
+                  "key": "sys:listOperations",
+                  "inputs": {
+                    "list": "{wholeConfigList}",
+                    "type": "append",
+                    "item": "$${instruction2}\r\n{column1Head}→{column2Head}"
+                  }
+                }
+              ]
+            },
+            {
+              "key": "sys:repeat",
+              "inputs": {
+                "count": "{keyLength}",
+                "startIndex": "0"
+              },
+              "outputs": {
+                "count": "i"
+              },
+              "ifSteps": [
+                {
+                  "key": "sys:listOperations",
+                  "inputs": {
+                    "list": "{keyList}",
+                    "type": "getAt",
+                    "pos": "{i}"
+                  },
+                  "outputs": {
+                    "value": "key"
+                  }
+                },
+                {
+                  "key": "sys:subprogram",
+                  "inputs": {
+                    "subProgram": "字符对齐",
+                    "stopIfFail": "1",
+                    "var:align": "R",
+                    "var:input": "{key}",
+                    "var:length": "50"
+                  },
+                  "outputs": {
+                    "var:output": "key"
+                  }
+                },
+                {
+                  "key": "sys:listOperations",
+                  "inputs": {
+                    "list": "{valueList}",
+                    "type": "getAt",
+                    "pos": "{i}"
+                  },
+                  "outputs": {
+                    "value": "value"
+                  }
+                },
+                {
+                  "key": "sys:splitString",
+                  "inputs": {
+                    "data": "{value}",
+                    "separator": "/",
+                    "escapeSeparator": "0",
+                    "removeEmpty": "1"
+                  },
+                  "outputs": {
+                    "output": "valueList1"
+                  }
+                },
+                {
+                  "key": "sys:each",
+                  "inputs": {
+                    "input": "{valueList1}"
+                  },
+                  "outputs": {
+                    "item": "value"
+                  },
+                  "ifSteps": [
+                    {
+                      "key": "sys:subprogram",
+                      "inputs": {
+                        "subProgram": "字符对齐",
+                        "stopIfFail": "1",
+                        "var:align": "L",
+                        "var:input": "{value}",
+                        "var:length": "50"
+                      },
+                      "outputs": {
+                        "var:output": "value"
+                      }
+                    },
+                    {
+                      "key": "sys:formatString",
+                      "inputs": {
+                        "formatString": "{0}→{1}",
+                        "p0": "{value}",
+                        "p1": "{key}"
+                      },
+                      "outputs": {
+                        "output": "singleConfig"
+                      }
+                    },
+                    {
+                      "key": "sys:listOperations",
+                      "inputs": {
+                        "list": "{wholeConfigList}",
+                        "type": "append",
+                        "item": "{singleConfig}"
+                      }
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "key": "sys:showText",
+              "inputs": {
+                "type": "WAIT",
+                "text": "{wholeConfigList}",
+                "title": "运行前确认(关闭窗口后继续运行)",
+                "operations": "停止|stop\r\n增加|add\r\n删除|delete",
+                "winLocation": "CenterScreen",
+                "fontsize": "14",
+                "fontfamily": "宋体"
+              },
+              "outputs": {
+                "selectedOperation": "option1",
+                "resultText": "tempDataList"
+              }
+            },
+            {
+              "key": "sys:comment",
+              "inputs": {
+                "note": "停止运行"
+              }
+            },
+            {
+              "key": "sys:simpleIf",
+              "inputs": {
+                "condition": "$$'{option1}' == 'stop'"
+              },
+              "note": "停止",
+              "ifSteps": [
+                {
+                  "key": "sys:comment",
+                  "inputs": {
+                    "note": "用户中断"
+                  }
+                },
+                {
+                  "key": "sys:group",
+                  "inputs": {
+                    "skipErr": "0"
+                  },
+                  "note": "用户中断",
+                  "ifSteps": [
+                    {
+                      "key": "sys:notify",
+                      "inputs": {
+                        "msg": "用户发起中断，动作停止",
+                        "maxLines": "0",
+                        "type": "Warning"
+                      }
+                    },
+                    {
+                      "key": "sys:stop",
+                      "inputs": {
+                        "method": "default",
+                        "isError": "0"
+                      }
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "key": "sys:comment",
+              "inputs": {
+                "note": "增加配置路径"
+              }
+            },
+            {
+              "key": "sys:simpleIf",
+              "inputs": {
+                "condition": "$$'{option1}' == 'add'"
+              },
+              "note": "增加",
+              "ifSteps": [
+                {
+                  "key": "sys:notify",
+                  "inputs": {
+                    "msg": "注意：为了数据安全，每个文件夹只能指定一次",
+                    "maxLines": "0",
+                    "type": "Info"
+                  }
+                },
+                {
+                  "key": "sys:repeat",
+                  "inputs": {
+                    "count": "-1",
+                    "startIndex": "0"
+                  },
+                  "ifSteps": [
+                    {
+                      "key": "sys:form",
+                      "inputs": {
+                        "title": "请选择源/目标文件夹路径",
+                        "formDef": "{\"Fields\":[{\"FieldKey\":\"runMode\",\"Label\":\"运行方式\",\"HelpText\":\"1.移动并分类；2.仅移动\",\"HelpLink\":null,\"InputMethod\":3,\"SelectionItems\":\"移动并分类\\r\\n仅移动\",\"IsRequired\":true,\"MinValue\":\"\",\"MaxValue\":\"\",\"Pattern\":\"\",\"MaxLength\":0},{\"FieldKey\":\"tempValue\",\"Label\":\"源文件夹\",\"HelpText\":\"选择源文件夹路径\",\"HelpLink\":null,\"InputMethod\":1,\"SelectionItems\":\"\",\"IsRequired\":true,\"MinValue\":\"\",\"MaxValue\":\"\",\"Pattern\":\"\",\"MaxLength\":0},{\"FieldKey\":\"tempKey\",\"Label\":\"目标文件夹\",\"HelpText\":\"选择目标文件夹路径\",\"HelpLink\":null,\"InputMethod\":1,\"SelectionItems\":\"\",\"IsRequired\":true,\"MinValue\":\"\",\"MaxValue\":\"\",\"Pattern\":\"\",\"MaxLength\":0}]}",
+                        "restoreFocus": "0",
+                        "stopIfFail": "1"
+                      }
+                    },
+                    {
+                      "key": "sys:group",
+                      "inputs": {
+                        "skipErr": "0"
+                      },
+                      "note": "判断路径有效性",
+                      "ifSteps": [
+                        {
+                          "key": "sys:checkPathExists",
+                          "inputs": {
+                            "path": "{tempKey}"
+                          },
+                          "outputs": {
+                            "isExists": "isValidKey"
+                          }
+                        },
+                        {
+                          "key": "sys:checkPathExists",
+                          "inputs": {
+                            "path": "{tempValue}"
+                          },
+                          "outputs": {
+                            "isExists": "isValidValue"
+                          }
+                        },
+                        {
+                          "key": "sys:if",
+                          "inputs": {
+                            "condition": "$${isValidValue} == false || {isValidKey} == false"
+                          },
+                          "ifSteps": [
+                            {
+                              "key": "sys:notify",
+                              "inputs": {
+                                "msg": "存在无效路径，请重新选择",
+                                "maxLines": "0",
+                                "type": "Warning"
+                              }
+                            },
+                            {
+                              "key": "sys:continue"
+                            }
+                          ],
+                          "elseSteps": [
+                            {
+                              "key": "sys:strCompare",
+                              "inputs": {
+                                "param1": "{runMode}",
+                                "type": "contains",
+                                "param2": "仅",
+                                "case": "0"
+                              },
+                              "outputs": {
+                                "value": "isNotClassified"
+                              }
+                            },
+                            {
+                              "key": "sys:if",
+                              "inputs": {
+                                "condition": "{isNotClassified}"
+                              },
+                              "ifSteps": [
+                                {
+                                  "key": "sys:assign",
+                                  "inputs": {
+                                    "input": "不分类"
+                                  },
+                                  "outputs": {
+                                    "output": "runMode"
+                                  }
+                                }
+                              ],
+                              "elseSteps": [
+                                {
+                                  "key": "sys:assign",
+                                  "inputs": {
+                                    "input": "分类"
+                                  },
+                                  "outputs": {
+                                    "output": "runMode"
+                                  }
+                                }
+                              ]
+                            },
+                            {
+                              "key": "sys:listOperations",
+                              "inputs": {
+                                "list": "{tempKeyList}",
+                                "type": "indexOf",
+                                "item": "{tempValue}"
+                              },
+                              "outputs": {
+                                "index": "valueInKey"
+                              },
+                              "note": "valueInKey"
+                            },
+                            {
+                              "key": "sys:each",
+                              "inputs": {
+                                "input": "{tempValueList}"
+                              },
+                              "outputs": {
+                                "item": "tempValue1"
+                              },
+                              "ifSteps": [
+                                {
+                                  "key": "sys:strReplace",
+                                  "inputs": {
+                                    "type": "batch",
+                                    "input": "{tempValue1}",
+                                    "batchReplaceData": "?分类?|\r\n?不分类?|",
+                                    "escapeOld": "0",
+                                    "replaceEscapes": "0",
+                                    "useRegex": "0",
+                                    "ignoreCase": "0",
+                                    "singleLine": "0",
+                                    "multiLine": "0"
+                                  },
+                                  "outputs": {
+                                    "output": "tempValue1"
+                                  }
+                                },
+                                {
+                                  "key": "sys:splitString",
+                                  "inputs": {
+                                    "data": "{tempValue1}",
+                                    "separator": "/",
+                                    "escapeSeparator": "0",
+                                    "removeEmpty": "1"
+                                  },
+                                  "outputs": {
+                                    "output": "tempValueList1"
+                                  }
+                                },
+                                {
+                                  "key": "sys:listOperations",
+                                  "inputs": {
+                                    "list": "{tempValueList2}",
+                                    "type": "append",
+                                    "item": "{tempValueList1}"
+                                  }
+                                }
+                              ]
+                            },
+                            {
+                              "key": "sys:listOperations",
+                              "inputs": {
+                                "list": "{tempValueList2}",
+                                "type": "indexOf",
+                                "item": "{tempKey}"
+                              },
+                              "outputs": {
+                                "index": "keyInValue"
+                              },
+                              "note": "keyInValue"
+                            },
+                            {
+                              "key": "sys:listOperations",
+                              "inputs": {
+                                "list": "{tempValueList2}",
+                                "type": "indexOf",
+                                "item": "{tempValue}"
+                              },
+                              "outputs": {
+                                "index": "valueInValue"
+                              },
+                              "note": "valueInValue"
+                            },
+                            {
+                              "key": "sys:if",
+                              "inputs": {
+                                "condition": "$={valueInKey} != -1 || {keyInValue} != -1 || {valueInValue} != -1"
+                              },
+                              "note": "判断路径是否已经存在于配置文件中",
+                              "ifSteps": [
+                                {
+                                  "key": "sys:comment",
+                                  "inputs": {
+                                    "note": "路径存在重复"
+                                  }
+                                },
+                                {
+                                  "key": "sys:simpleIf",
+                                  "inputs": {
+                                    "condition": "$={{valueInKey}} != -1"
+                                  },
+                                  "note": "valueInKey",
+                                  "ifSteps": [
+                                    {
+                                      "key": "sys:notify",
+                                      "inputs": {
+                                        "msg": "$$[{tempValue}] 路径已定义为“目标文件夹”，请重新选择",
+                                        "maxLines": "0",
+                                        "type": "Warning"
+                                      }
+                                    }
+                                  ]
+                                },
+                                {
+                                  "key": "sys:simpleIf",
+                                  "inputs": {
+                                    "condition": "$={keyInValue} != -1"
+                                  },
+                                  "note": "keyInValue",
+                                  "ifSteps": [
+                                    {
+                                      "key": "sys:notify",
+                                      "inputs": {
+                                        "msg": "$$[{tempKey}] 路径已定义为“源文件夹”，请重新选择",
+                                        "maxLines": "0",
+                                        "type": "Warning"
+                                      }
+                                    }
+                                  ]
+                                },
+                                {
+                                  "key": "sys:simpleIf",
+                                  "inputs": {
+                                    "condition": "$={valueInValue} != -1"
+                                  },
+                                  "note": "valueInValue",
+                                  "ifSteps": [
+                                    {
+                                      "key": "sys:notify",
+                                      "inputs": {
+                                        "msg": "$$[{tempValue}] 路径已存在于其它“源文件夹”中，请重新选择",
+                                        "maxLines": "0",
+                                        "type": "Warning"
+                                      }
+                                    }
+                                  ]
+                                },
+                                {
+                                  "key": "sys:continue"
+                                }
+                              ],
+                              "elseSteps": [
+                                {
+                                  "key": "sys:dictOperations",
+                                  "inputs": {
+                                    "dict": "{setting}",
+                                    "type": "get",
+                                    "key": "{tempKey}",
+                                    "ignoreCase": "0"
+                                  },
+                                  "outputs": {
+                                    "value": "tempValue1",
+                                    "isSuccess": "isExist"
+                                  }
+                                },
+                                {
+                                  "key": "sys:if",
+                                  "inputs": {
+                                    "condition": "{isExist}"
+                                  },
+                                  "note": "已存在目标文件夹",
+                                  "ifSteps": [
+                                    {
+                                      "key": "sys:formatString",
+                                      "inputs": {
+                                        "formatString": "{0}/?{1}?{2}",
+                                        "p0": "{tempValue1}",
+                                        "p1": "{runMode}",
+                                        "p2": "{tempValue}"
+                                      },
+                                      "outputs": {
+                                        "output": "tempValue1"
+                                      }
+                                    },
+                                    {
+                                      "key": "sys:dictOperations",
+                                      "inputs": {
+                                        "dict": "{setting}",
+                                        "type": "set",
+                                        "key": "{tempKey}",
+                                        "value": "{tempValue1}",
+                                        "ignoreCase": "0"
+                                      }
+                                    }
+                                  ],
+                                  "elseSteps": [
+                                    {
+                                      "key": "sys:formatString",
+                                      "inputs": {
+                                        "formatString": "?{0}?{1}",
+                                        "p0": "{runMode}",
+                                        "p1": "{tempValue}"
+                                      },
+                                      "outputs": {
+                                        "output": "tempValue1"
+                                      }
+                                    },
+                                    {
+                                      "key": "sys:dictOperations",
+                                      "inputs": {
+                                        "dict": "{setting}",
+                                        "type": "set",
+                                        "key": "{tempKey}",
+                                        "value": "{tempValue1}",
+                                        "ignoreCase": "0"
+                                      }
+                                    }
+                                  ]
+                                },
+                                {
+                                  "key": "sys:notify",
+                                  "inputs": {
+                                    "msg": "路径添加成功",
+                                    "maxLines": "0",
+                                    "type": "Success"
+                                  }
+                                },
+                                {
+                                  "key": "sys:WriteTextFile",
+                                  "inputs": {
+                                    "content": "{setting}",
+                                    "filePath": "{settingFile}",
+                                    "encoding": "utf-8",
+                                    "addUtf8Bom": "1",
+                                    "appendMode": "0",
+                                    "addNewLine": "0"
+                                  }
+                                },
+                                {
+                                  "key": "sys:break"
+                                }
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "key": "sys:comment",
+              "inputs": {
+                "note": "删除配置路径"
+              }
+            },
+            {
+              "key": "sys:simpleIf",
+              "inputs": {
+                "condition": "$$'{option1}' == 'delete'"
+              },
+              "note": "删除",
+              "ifSteps": [
+                {
+                  "key": "sys:splitString",
+                  "inputs": {
+                    "data": "{valueList}",
+                    "separator": "/",
+                    "escapeSeparator": "0",
+                    "removeEmpty": "1"
+                  },
+                  "outputs": {
+                    "output": "valueList1"
+                  }
+                },
+                {
+                  "key": "sys:strReplace",
+                  "inputs": {
+                    "type": "single",
+                    "input": "{valueList1}",
+                    "old": "^\\n",
+                    "escapeOld": "0",
+                    "replaceEscapes": "0",
+                    "useRegex": "1",
+                    "ignoreCase": "0",
+                    "singleLine": "1",
+                    "multiLine": "1"
+                  },
+                  "outputs": {
+                    "output": "valueList1"
+                  }
+                },
+                {
+                  "key": "sys:form",
+                  "inputs": {
+                    "title": "请选择要删除的源/目标文件夹路径(要求一一对应)",
+                    "formDef": "{\"Fields\":[{\"FieldKey\":\"tempValue\",\"Label\":\"源文件夹路径\",\"HelpText\":\"要删除的源文件夹路径\",\"HelpLink\":null,\"InputMethod\":3,\"SelectionItems\":\"$${valueList1}\",\"IsRequired\":true,\"MinValue\":\"\",\"MaxValue\":\"\",\"Pattern\":\"\",\"MaxLength\":0},{\"FieldKey\":\"tempKey\",\"Label\":\"目标文件夹路径\",\"HelpText\":\"要删除的目标文件夹路径\",\"HelpLink\":null,\"InputMethod\":3,\"SelectionItems\":\"$${keyList}\",\"IsRequired\":true,\"MinValue\":\"\",\"MaxValue\":\"\",\"Pattern\":\"\",\"MaxLength\":0}]}",
+                    "restoreFocus": "0",
+                    "stopIfFail": "1"
+                  }
+                },
+                {
+                  "key": "sys:dictOperations",
+                  "inputs": {
+                    "dict": "{setting}",
+                    "type": "get",
+                    "key": "{tempKey}",
+                    "ignoreCase": "0"
+                  },
+                  "outputs": {
+                    "value": "tempValue2"
+                  }
+                },
+                {
+                  "key": "sys:strCompare",
+                  "inputs": {
+                    "param1": "{tempValue2}",
+                    "type": "contains",
+                    "param2": "{tempValue}",
+                    "case": "0"
+                  },
+                  "outputs": {
+                    "value": "isMatch"
+                  }
+                },
+                {
+                  "key": "sys:comment",
+                  "inputs": {
+                    "note": "键-值能够匹配"
+                  }
+                },
+                {
+                  "key": "sys:if",
+                  "inputs": {
+                    "condition": "{isMatch}"
+                  },
+                  "ifSteps": [
+                    {
+                      "key": "sys:strReplace",
+                      "inputs": {
+                        "type": "single",
+                        "input": "{tempValue2}",
+                        "old": "{tempValue}",
+                        "escapeOld": "0",
+                        "replaceEscapes": "0",
+                        "useRegex": "0",
+                        "ignoreCase": "0",
+                        "singleLine": "0",
+                        "multiLine": "0"
+                      },
+                      "outputs": {
+                        "output": "tempValue2"
+                      }
+                    },
+                    {
+                      "key": "sys:strCompare",
+                      "inputs": {
+                        "param1": "{tempValue2}",
+                        "type": "=",
+                        "case": "0"
+                      },
+                      "outputs": {
+                        "value": "isSingle"
+                      }
+                    },
+                    {
+                      "key": "sys:if",
+                      "inputs": {
+                        "condition": "{isSingle}"
+                      },
+                      "ifSteps": [
+                        {
+                          "key": "sys:comment",
+                          "inputs": {
+                            "note": "单键-单值"
+                          }
+                        },
+                        {
+                          "key": "sys:dictOperations",
+                          "inputs": {
+                            "dict": "{setting}",
+                            "type": "remove",
+                            "key": "{tempKey}",
+                            "ignoreCase": "0"
+                          }
+                        }
+                      ],
+                      "elseSteps": [
+                        {
+                          "key": "sys:comment",
+                          "inputs": {
+                            "note": "单键-多值"
+                          }
+                        },
+                        {
+                          "key": "sys:dictOperations",
+                          "inputs": {
+                            "dict": "{setting}",
+                            "type": "set",
+                            "key": "{tempKey}",
+                            "value": "{tempValue2}",
+                            "ignoreCase": "0"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "key": "sys:WriteTextFile",
+                      "inputs": {
+                        "content": "{setting}",
+                        "filePath": "{settingFile}",
+                        "encoding": "utf-8",
+                        "addUtf8Bom": "1",
+                        "appendMode": "0",
+                        "addNewLine": "0"
+                      }
+                    },
+                    {
+                      "key": "sys:notify",
+                      "inputs": {
+                        "msg": "删除成功",
+                        "maxLines": "0",
+                        "type": "Success"
+                      }
+                    }
+                  ],
+                  "elseSteps": [
+                    {
+                      "key": "sys:notify",
+                      "inputs": {
+                        "msg": "目标文件夹-源文件夹不匹配，请确认后再试",
+                        "maxLines": "0",
+                        "type": "Warning"
+                      }
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

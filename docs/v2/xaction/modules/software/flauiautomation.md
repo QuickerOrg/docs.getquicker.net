@@ -1,6 +1,6 @@
 ---
 title: "窗口界面控制(FlaUI)"
-description: "触发Windows窗口的菜单/按钮等控件(通过FlaUI库实现)。"
+description: "用 FlaUI 触发 Windows 窗口的菜单、按钮等控件。"
 slug: "/v2/xaction/modules/flauiautomation"
 sidebar_label: "窗口界面控制(FlaUI)"
 sidebar_position: 20
@@ -13,7 +13,7 @@ metadataGeneratedAt: "2026-08-03 20:08:03"
 
 # 窗口界面控制(FlaUI)
 
-触发Windows窗口的菜单/按钮等控件(通过FlaUI库实现)。
+用 FlaUI 库触发 Windows 窗口里的菜单、按钮等控件。和 [窗口界面控制](/v2/xaction/modules/uiautomation) 能力相近，实现库不同；参数以本页上方定义为准。
 
 ## 当前模块定义
 
@@ -23,4 +23,21 @@ metadataGeneratedAt: "2026-08-03 20:08:03"
 
 ## 使用说明
 
-本模块与[窗口界面控制](/v2/xaction/modules/uiautomation)共享基础使用说明；本页上方参数表是当前模块自身的定义。
+本模块与 [窗口界面控制](/v2/xaction/modules/uiautomation) 共享基础使用说明；本页参数表是当前模块自身的定义。
+
+## 相关链接
+
+<RelatedDocs
+  items={[
+    {
+      href: '/v2/xaction/modules/uiautomation',
+      label: '窗口界面控制',
+      description: '同一类能力的另一套实现，说明更完整。',
+    },
+    {
+      href: '/v2/xaction/modules/textselecttools',
+      label: '辅助选择工具',
+      description: '可用「选择窗口控件」拾取 XPath。',
+    },
+  ]}
+/>

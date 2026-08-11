@@ -1,0 +1,56 @@
+{
+  "code": "a6aaa916-9fea-4355-fbd4-08d7cd418588",
+  "title": "编辑颜色",
+  "description": "选择颜色",
+  "author": "CL",
+  "revision": 0,
+  "source": "https://getquicker.net/sharedaction?code=a6aaa916-9fea-4355-fbd4-08d7cd418588",
+  "pulledAt": "2026-08-11T21:13:02.289Z",
+  "variables": [
+    {
+      "name": "color",
+      "type": "Text",
+      "remark": "默认的文本变量"
+    },
+    {
+      "name": "img",
+      "type": "Image",
+      "remark": "默认的图片变量"
+    }
+  ],
+  "steps": [
+    {
+      "key": "sys:getSelectedText",
+      "inputs": {
+        "format": "UnicodeText",
+        "repeat": "0",
+        "stopIfFail": "0"
+      },
+      "outputs": {
+        "output": "color"
+      }
+    },
+    {
+      "key": "sys:color",
+      "inputs": {
+        "type": "editOrSelectColor",
+        "colorStr": "{color}",
+        "format": "HEX_RGB",
+        "stopIfFail": "1"
+      },
+      "outputs": {
+        "textValue": "color"
+      }
+    },
+    {
+      "key": "sys:outputText",
+      "inputs": {
+        "content": "{color}",
+        "method": "paste",
+        "delayBeforePaste": "50",
+        "delayAfterPaste": "10",
+        "appendReturn": "0"
+      }
+    }
+  ]
+}

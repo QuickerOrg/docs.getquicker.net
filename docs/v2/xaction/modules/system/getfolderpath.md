@@ -7,7 +7,7 @@ sidebar_position: 90
 quickerDocKey: "xaction/module/sys:getFolderPath"
 comments: true
 moduleKey: "sys:getFolderPath"
-docStatus: "migrated-unreviewed"
+docStatus: "reviewed"
 metadataGeneratedAt: "2026-08-03 20:08:03"
 legacyDocId: 2121294
 legacyContentUpdatedAt: "2019-07-15T08:30:07.000Z"
@@ -15,24 +15,43 @@ legacyContentUpdatedAt: "2019-07-15T08:30:07.000Z"
 
 # 获取系统路径
 
-返回指定的特殊目录路径。
+返回 Windows 特殊目录的实际路径，例如桌面、下载、开始菜单。要检查路径是否存在，用 [检查路径/获取文件信息](/v2/xaction/modules/checkpathexists)。
 
 ## 当前模块定义
 
 <XActionModuleMeta moduleKey="sys:getFolderPath" />
 
-用于获取特定的Windows系统文件夹路径。
+## 概述
+
+选一个目录类型，步骤返回该文件夹的完整路径。
 
 <ModuleParamPreview moduleKey="sys:getFolderPath" />
 
-## 参数
+## 参数说明
 
-### 输入
+**目录类型**：要获取的系统目录。点开下拉看当前全部选项，对应 .NET `Environment.SpecialFolder`（另有 Downloads 等扩展项）。说明见 [SpecialFolder](https://learn.microsoft.com/zh-cn/dotnet/api/system.environment.specialfolder)。
 
-【目录类型】指定要获取的系统目录类型。
+## 输出
 
-可选值请参考[https://docs.microsoft.com/zh-cn/dotnet/api/system.environment.specialfolder](https://docs.microsoft.com/zh-cn/dotnet/api/system.environment.specialfolder?f1url=https%3A%2F%2Fmsdn.microsoft.com%2Fquery%2Fdev15.query%3FappId%3DDev15IDEF1%26l%3DEN-US%26k%3Dk\(System.Environment.SpecialFolder\);k\(TargetFrameworkMoniker-.NETFramework,Version%3Dv4.6.1\);k\(DevLang-csharp\)%26rd%3Dtrue%26f%3D255%26MSPPError%3D-2147217396&view=netframework-4.8)
+- **路径**：该目录的完整路径。
 
-### 输出
+## 限制与排障
 
-【路径】文件夹对应的实际路径。
+个别类型在当前系统上可能没有对应文件夹，此时路径可能为空。不要手写盘符去猜「我的文档」等位置，用本模块取当前用户的实际路径。
+
+## 相关链接
+
+<RelatedDocs
+  items={[
+    {
+      href: '/v2/xaction/modules/checkpathexists',
+      label: '检查路径/获取文件信息',
+      description: '拿到路径后再确认是否存在。',
+    },
+    {
+      href: '/v2/xaction/modules/pathextraction',
+      label: '路径提取',
+      description: '从完整路径拆出目录、文件名。',
+    },
+  ]}
+/>

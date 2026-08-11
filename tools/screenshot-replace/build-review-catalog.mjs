@@ -30,6 +30,9 @@ const PREVIEW_TAGS = [
   'WaitWinPreview',
   'TableFieldPreview',
   'TableDataPreview',
+  'CoordDiagram',
+  'ClickIndicatorPreview',
+  'UserInputPreview',
 ];
 
 function walkMd(dir, acc = []) {
@@ -332,6 +335,7 @@ function pickComponentForImage(imageName, components, moduleKey) {
   if (/showmenu-(001|003)-/i.test(imageName)) return pickNamed('ContextMenuPreview');
   if (/showwaitwin-(002|004)-/i.test(imageName)) return pickNamed('ModuleParamPreview');
   if (/showwaitwin-001-/i.test(imageName)) return pickNamed('WaitWinPreview');
+  if (/userinput-001-/i.test(imageName)) return pickNamed('UserInputPreview');
 
   // Annotated / concept diagrams must stay as images — never pair with live previews.
   if (/(coord|diagram|origin)/i.test(imageName)) return null;

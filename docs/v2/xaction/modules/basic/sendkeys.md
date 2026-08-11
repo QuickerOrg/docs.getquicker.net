@@ -1,13 +1,13 @@
 ---
 title: "模拟按键B（参数）"
-description: "发送按键和文本"
+description: "用文本参数向当前窗口发送按键序列，可用变量或插值。"
 slug: "/v2/xaction/modules/sendkeys"
 sidebar_label: "模拟按键B（参数）"
 sidebar_position: 70
 quickerDocKey: "xaction/module/sys:sendKeys"
 comments: true
 moduleKey: "sys:sendKeys"
-docStatus: "migrated-unreviewed"
+docStatus: "reviewed"
 metadataGeneratedAt: "2026-08-03 20:08:03"
 legacyDocId: 1986707
 legacyContentUpdatedAt: "2025-09-19T04:54:11.000Z"
@@ -15,7 +15,7 @@ legacyContentUpdatedAt: "2025-09-19T04:54:11.000Z"
 
 # 模拟按键B（参数）
 
-发送按键和文本
+用**文本**向当前窗口发送按键序列。内容可以来自变量或插值，适合动态组合。固定快捷键用[模拟按键A（录入）](./keyinput.md)。
 
 ## 当前模块定义
 
@@ -23,111 +23,148 @@ legacyContentUpdatedAt: "2025-09-19T04:54:11.000Z"
 
 ## 概述
 
-发送指定的按键序列到目标窗口。
+把一段 SendKeys 字符串发给前台窗口。和 A 的差别：
 
--   本功能在内部使用了C#的 [System.Windows.Forms.SendKeys.SendWait()](https://docs.microsoft.com/en-us/dotnet/api/system.windows.forms.sendkeys?view=netframework-4.8) 函数。因此，参数格式可以直接参考该文档。
--   **此操作可能会受到输入法的影响，请在使用前将输入法切换到英文状态。**[不受输入法影响的方式，请参考本文。](https://getquicker.net/KC/Kb/Article/1045)
+- **A（录入）**：在步骤里录制或点选一组固定按键。
+- **B（参数）**：按键写在文本里，可以 `{变量}` 插值，也可以和其他步骤拼出不同序列。
 
-此模块和“[模拟按键A（录入）](/v2/xaction/modules/keyinput)”模块的区别为：
+内部使用 .NET 的 `SendKeys.SendWait`（Quicker 做了兼容处理）。语法与 [Microsoft 文档](https://learn.microsoft.com/dotnet/api/system.windows.forms.sendkeys) 一致。
 
--   “模拟按键（录入）”模块使用直接录入的方式指定要发送的内容，只能发送固定的内容。
--   本模块使用文本参数的形式传入要发送的内容，可以接受参数或使用插值，可以和其他模块协作动态变更发送的按键序列内容。
+<ModuleParamPreview
+  moduleKey="sys:sendKeys"
+  values={{keys: '^c'}}
+/>
 
-<ModuleParamPreview moduleKey="sys:sendKeys" />
+<StepProgramView
+  data={{
+    steps: [
+      {
+        key: 'sys:sendKeys',
+        note: 'Ctrl+C',
+        inputs: {keys: '^c'},
+      },
+    ],
+  }}
+/>
 
-### 按键序列参数格式
+## 参数说明
 
-#### 要点
+**按键序列**：要发送的字符串。留空则不发送。软件里可点参数右侧工具从键盘选择；文档预览是普通文本框。
 
--   `^`代表Ctrl键
--   `+`代表Shift键
--   `%`代表Alt键
--   其它普通字母和数字键使用小写形式。 如`^c`表示Ctrl+C（复制）。特殊键使用`{键名}`的格式，参见下表。
--   不支持Win键和一些特殊按键，如F17-F24、媒体键等。
+<ModuleParamPreview
+  moduleKey="sys:sendKeys"
+  focusKeys={['keys']}
+  values={{keys: 'Hello~Next line'}}
+/>
 
-#### 详解
+## 语法
 
-（1）普通字符使用字符本身表示，如“a”表示发送字符“a”，“abc”表示发送“abc”三个字符。
+### 要点
 
-（2）加号 (+)、插入符 (^)、百分比符号 (%)、上划线 (~) 及圆括号 ( ) 都具有特殊意义。为了指定上述任何一个字符，要将它放在大括号 (&#123;&#125;) 当中。例如，要指定正号，可用 &#123;+&#125; 表示。方括号 (\[ \]) 并不具有特殊意义，但必须将它们放在大括号中。为了指定大括号字符，请使用 "&#123;&#123;&#125;" 和"&#123;&#125;&#125;"。
-
-（3）为了在按下按键时指定那些不显示的字符，例如 ENTER 或 TAB 以及那些表示动作而非字符的按键，请使用下列代码：
-
-| **按键** | **代码** |
+| 写法 | 含义 |
 | --- | --- |
-| WIN | 底层API**不支持** |
-| BACKSPACE | &#123;BACKSPACE&#125;, &#123;BS&#125;, or &#123;BKSP&#125; |
-| BREAK | &#123;BREAK&#125; |
-| CAPS LOCK | &#123;CAPSLOCK&#125; |
-| DEL or DELETE | &#123;DELETE&#125; or &#123;DEL&#125; |
-| DOWN ARROW | &#123;DOWN&#125; |
-| END | &#123;END&#125; |
-| **ENTER 回车** | &#123;ENTER&#125; or ~ |
-| ESC | &#123;ESC&#125; |
-| HELP | &#123;HELP&#125; |
-| HOME | &#123;HOME&#125; |
-| INS or INSERT | &#123;INSERT&#125; or &#123;INS&#125; |
-| LEFT ARROW | &#123;LEFT&#125; |
-| NUM LOCK | &#123;NUMLOCK&#125; |
-| PAGE DOWN | &#123;PGDN&#125; |
-| PAGE UP | &#123;PGUP&#125; |
-| PRINT SCREEN | &#123;PRTSC&#125; (reserved for future use) |
-| RIGHT ARROW | &#123;RIGHT&#125; |
-| SCROLL LOCK | &#123;SCROLLLOCK&#125; |
-| TAB | &#123;TAB&#125; |
-| UP ARROW | &#123;UP&#125; |
-| F1 | &#123;F1&#125; |
-| F2 | &#123;F2&#125; |
-| F3 | &#123;F3&#125; |
-| F4 | &#123;F4&#125; |
-| F5 | &#123;F5&#125; |
-| F6 | &#123;F6&#125; |
-| F7 | &#123;F7&#125; |
-| F8 | &#123;F8&#125; |
-| F9 | &#123;F9&#125; |
-| F10 | &#123;F10&#125; |
-| F11 | &#123;F11&#125; |
-| F12 | &#123;F12&#125; |
-| F13 | &#123;F13&#125; |
-| F14 | &#123;F14&#125; |
-| F15 | &#123;F15&#125; |
-| F16 | &#123;F16&#125; |
-| Keypad add | &#123;ADD&#125; |
-| Keypad subtract | &#123;SUBTRACT&#125; |
-| Keypad multiply | &#123;MULTIPLY&#125; |
-| Keypad divide | &#123;DIVIDE&#125; |
+| `^` | Ctrl |
+| `+` | Shift |
+| `%` | Alt |
+| 普通字母、数字 | 用**小写**，如 `^c` 表示 Ctrl+C |
+| `{键名}` | 特殊键，见下表 |
+| `{键名 次数}` | 重复。键名和次数之间有一个空格，如 `{LEFT 10}` |
 
-（4）为了表示在按下某个按键时同时要按下的SHIFT、CTRL和ALT控制键，可以在按键字符前插入下面的代码：
+不支持 Win 键，以及 F17–F24、媒体键等。
 
-| **按键** | **代码** |
+### 普通字符与转义
+
+普通字符按原样发送：`a` 发 a，`abc` 发三个字符。
+
+这些字符有特殊含义，要发字面量时必须包在大括号里：`+` `^` `%` `~` `(` `)` 分别写成 `{+}` `{^}` `{%}` `{~}` `{(}` `{)}`。`[` `]` 本身无特殊含义，但仍要写成 `{[}` `{]}`。字面量的大括号写成 `{{}` 和 `{}}`。
+
+### 特殊键
+
+| 按键 | 代码 |
 | --- | --- |
-| SHIFT | + |
-| CTRL | ^ |
-| ALT | % |
+| Win | 底层 API **不支持** |
+| Backspace | `{BACKSPACE}`、`{BS}` 或 `{BKSP}` |
+| Break | `{BREAK}` |
+| Caps Lock | `{CAPSLOCK}` |
+| Delete | `{DELETE}` 或 `{DEL}` |
+| ↓ | `{DOWN}` |
+| End | `{END}` |
+| Enter | `{ENTER}` 或 `~` |
+| Esc | `{ESC}` |
+| Help | `{HELP}` |
+| Home | `{HOME}` |
+| Insert | `{INSERT}` 或 `{INS}` |
+| ← | `{LEFT}` |
+| Num Lock | `{NUMLOCK}` |
+| Page Down | `{PGDN}` |
+| Page Up | `{PGUP}` |
+| Print Screen | `{PRTSC}`（预留，通常无效） |
+| → | `{RIGHT}` |
+| Scroll Lock | `{SCROLLLOCK}` |
+| Tab | `{TAB}` |
+| ↑ | `{UP}` |
+| F1–F16 | `{F1}` … `{F16}` |
+| 小键盘 + − × ÷ | `{ADD}` `{SUBTRACT}` `{MULTIPLY}` `{DIVIDE}` |
 
-如Ctrl+C可以表示为“^c”。
+### 组合与分组
 
-如果在按下SHIFT、CTRL、ALT组合的同时需要按下多个其他按键，则需要将他们包含在括号中。如：要表示按下SHIFT的同时依次按下e和c，可以用“+(ec)”表示。
+要在按住 Shift / Ctrl / Alt 的同时按其他键，把修饰符写在前面：
 
-（5）如果要设定按键的重复次数，使用&#123;按键 次数&#125;的格式。按键和次数之间放置一个空格。如：&#123;LEFT 42&#125;表示按下方向键←42次，&#123;h 10&#125;表示按下H键10次。
-
-请注意，字符的大小写可能会影响执行的结果。如^s和^S可能会产生不同的结果。请多测试以确保目标软件按预期执行操作。
-
-#### 按键组合示例
-
-| **代码** | **按键序列** |
+| 代码 | 含义 |
 | --- | --- |
-| ^p | Ctrl+p 组合键 |
-| +p | Shift+p 组合键 |
-| %p | Alt+p 组合键 |
-| ^+s | Ctrl+Shift+s 组合键 |
-| ^(kc) | 按Ctrl同时按K和C |
-| ^kc | 先按Ctrl+k组合键，全部松开后再按c键 |
-| Hello~New Line | Hello(回车)<br />New Line |
-| 中文字符 | 中文字符 |
-| &#123;LEFT 10&#125; | 按←键 10次 |
-| &#123;h 10&#125; | 按h键 10次 |
+| `^c` | Ctrl+C |
+| `+p` | Shift+P |
+| `%p` | Alt+P |
+| `^+s` | Ctrl+Shift+S |
+| `+(ec)` | 按住 Shift，依次按 E、C |
+| `^(kc)` | 按住 Ctrl，依次按 K、C |
+| `^kc` | 先 Ctrl+K，松开后再按 C |
 
-## 示例
+大小写可能影响结果（`^s` 和 `^S` 不一定一样）。改完后请在目标软件里实测。
 
--   选择一个快捷键组合发送：[https://getquicker.net/Sharedaction?code=67129c30-9d18-40c7-0ab8-08d714376b4c](https://getquicker.net/Sharedaction?code=67129c30-9d18-40c7-0ab8-08d714376b4c)
+### 示例
+
+| 代码 | 效果 |
+| --- | --- |
+| `^p` | Ctrl+P |
+| `Hello~New Line` | 输入 Hello，回车，再输入 New Line |
+| `中文字符` | 按字符发送中文（更易受输入法影响） |
+| `{LEFT 10}` | ← 十次 |
+| `{h 10}` | H 十次 |
+
+## 限制与排障
+
+- 可能受输入法影响。效果不对时，先切到英文，或在前面加[输入法状态](../system/imecontrol.md)切到英文。
+- 发送前确保目标窗口已就绪；必要时在前后加[等待时间](./delay.md)。
+- 不支持鼠标按键，也不支持 Win 键。
+- 语法无效时步骤失败，提示「发送按键出错。」加具体原因。
+- 需要不受输入法影响的纯文本，用[多步骤输入](../input/inputscript.md)的 `input:`。
+- 只要一组固定快捷键，用[模拟按键A（录入）](./keyinput.md)。
+- 要单独按下或抬起某个键，用[按键操作](../system/keyoperation.md)。
+
+## 相关链接
+
+<RelatedDocs
+  items={[
+    {
+      href: '/v2/xaction/modules/keyinput',
+      label: '模拟按键A（录入）',
+      description: '录制一组固定按键，不能随变量变化。',
+    },
+    {
+      href: '/v2/xaction/modules/imecontrol',
+      label: '输入法状态',
+      description: '发送前切到英文，减少输入法干扰。',
+    },
+    {
+      href: '/v2/xaction/modules/inputscript',
+      label: '多步骤输入',
+      description: 'input: 可键入不受输入法影响的纯文本。',
+    },
+    {
+      href: '/v2/xaction/modules/keyoperation',
+      label: '按键操作',
+      description: '单独按下或抬起某个键。',
+    },
+  ]}
+/>

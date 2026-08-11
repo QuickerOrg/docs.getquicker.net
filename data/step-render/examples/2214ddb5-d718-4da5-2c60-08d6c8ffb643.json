@@ -1,0 +1,258 @@
+{
+  "code": "2214ddb5-d718-4da5-2c60-08d6c8ffb643",
+  "title": "截图保存",
+  "description": "截图并保存到桌面或指定位置",
+  "author": "CL",
+  "revision": 9,
+  "source": "https://getquicker.net/sharedaction?code=2214ddb5-d718-4da5-2c60-08d6c8ffb643",
+  "pulledAt": "2026-08-11T21:27:26.598Z",
+  "variables": [
+    {
+      "name": "img",
+      "type": "Image",
+      "remark": "默认的图片变量"
+    },
+    {
+      "name": "deskdir",
+      "type": "Text"
+    },
+    {
+      "name": "fileName",
+      "type": "Text",
+      "remark": "文件名"
+    },
+    {
+      "name": "otherDir",
+      "type": "Text",
+      "remark": "要保存的其他位置"
+    },
+    {
+      "name": "inputFileName",
+      "type": "Boolean",
+      "remark": "手动输入文件名"
+    },
+    {
+      "name": "copyPath",
+      "type": "Integer",
+      "remark": "0:复制图片，1：复制路径，2：复制文件"
+    },
+    {
+      "name": "fullPath",
+      "type": "Text",
+      "remark": "完整路径"
+    },
+    {
+      "name": "format",
+      "type": "Text"
+    }
+  ],
+  "steps": [
+    {
+      "key": "sys:comment",
+      "inputs": {
+        "note": "如果需要改为使用第三方截图工具：\r\n停用第一个步骤，启用第二部的步骤组，并修改里面的截图快捷键。"
+      }
+    },
+    {
+      "key": "sys:simpleIf",
+      "inputs": {
+        "condition": "$= {quicker_in_param} == \"config\""
+      },
+      "ifSteps": [
+        {
+          "key": "sys:form",
+          "inputs": {
+            "title": "动作设置",
+            "formDef": "{\"Fields\":[{\"FieldKey\":\"otherDir\",\"Label\":\"保存位置\",\"HelpText\":\"要保存截图的文件夹路径。留空自动保存在桌面\",\"HelpLink\":null,\"InputMethod\":1,\"SelectionItems\":\"\",\"IsRequired\":false,\"MinValue\":\"\",\"MaxValue\":\"\",\"Pattern\":\"\",\"MaxLength\":0,\"ImeState\":null,\"TextTools\":\"SelectSingleFolder\",\"VisibleExpression\":\"\"},{\"FieldKey\":\"inputFileName\",\"Label\":\"手动输入文件名\",\"HelpText\":\"手动输入文件名，否则根据时间自动生成文件名\",\"HelpLink\":null,\"InputMethod\":6,\"SelectionItems\":\"\",\"IsRequired\":false,\"MinValue\":\"\",\"MaxValue\":\"\",\"Pattern\":\"\",\"MaxLength\":0,\"ImeState\":null,\"TextTools\":\"\",\"VisibleExpression\":\"\"},{\"FieldKey\":\"copyPath\",\"Label\":\"自动复制内容\",\"HelpText\":\"是否复制图片文件路径\",\"HelpLink\":null,\"InputMethod\":3,\"SelectionItems\":\"图片对象|0\\r\\n图片文件的路径|1\\r\\n图片文件|2\",\"IsRequired\":false,\"MinValue\":\"\",\"MaxValue\":\"\",\"Pattern\":\"\",\"MaxLength\":0,\"ImeState\":null,\"TextTools\":\"\",\"VisibleExpression\":\"\"},{\"FieldKey\":\"format\",\"Label\":\"图片格式\",\"HelpText\":\"\",\"HelpLink\":null,\"InputMethod\":3,\"SelectionItems\":\".png\\r\\n.jpg\",\"IsRequired\":true,\"MinValue\":\"\",\"MaxValue\":\"\",\"Pattern\":\"\",\"MaxLength\":0,\"ImeState\":null,\"TextTools\":\"\",\"VisibleExpression\":\"\"}]}",
+            "titleColumnWidth": "100",
+            "windowWidth": "500",
+            "restoreFocus": "0",
+            "topMost": "false",
+            "stopIfFail": "1"
+          }
+        },
+        {
+          "key": "sys:stop",
+          "inputs": {
+            "method": "default",
+            "isError": "0"
+          }
+        }
+      ]
+    },
+    {
+      "key": "sys:screenCapture",
+      "inputs": {
+        "type": "select",
+        "delay": "200",
+        "toClip": "0",
+        "stopIfFail": "1"
+      },
+      "outputs": {
+        "img": "img"
+      }
+    },
+    {
+      "key": "sys:if",
+      "inputs": {
+        "condition": "$= {otherDir}.Length == 0"
+      },
+      "ifSteps": [
+        {
+          "key": "sys:getFolderPath",
+          "inputs": {
+            "folder": "Desktop"
+          },
+          "outputs": {
+            "path": "deskdir"
+          }
+        }
+      ],
+      "elseSteps": [
+        {
+          "key": "sys:assign",
+          "inputs": {
+            "input": "{otherDir}"
+          },
+          "outputs": {
+            "output": "deskdir"
+          }
+        }
+      ]
+    },
+    {
+      "key": "sys:comment",
+      "inputs": {
+        "note": "根据是否手动输入文件名，弹出界面或根据时间自动生成文件名"
+      }
+    },
+    {
+      "key": "sys:if",
+      "inputs": {
+        "condition": "{inputFileName}"
+      },
+      "ifSteps": [
+        {
+          "key": "sys:userInput",
+          "inputs": {
+            "type": "text",
+            "prompt": "请输入保存的文件名",
+            "defaultValue": "$=DateTime.Now.ToString(\"yyyyMMdd-HHmmss\")",
+            "isRequired": "1",
+            "winLocation": "CenterScreen",
+            "imeState": "NO_CONTROL",
+            "restoreFocus": "1",
+            "closeOnDeactivated": "0",
+            "stopIfFail": "1"
+          },
+          "outputs": {
+            "textValue": "fileName"
+          }
+        }
+      ],
+      "elseSteps": [
+        {
+          "key": "sys:getCurrentTime",
+          "inputs": {
+            "source": "currTime",
+            "useUtc": "0",
+            "addDays": "0",
+            "addHours": "0",
+            "addMinutes": "0",
+            "addSeconds": "0",
+            "addMonths": "0",
+            "format": "yyyyMMdd_HHmmss",
+            "stopIfFail": "1"
+          },
+          "outputs": {
+            "strValue": "fileName"
+          }
+        }
+      ]
+    },
+    {
+      "key": "sys:assign",
+      "inputs": {
+        "input": "$${deskdir}\\{fileName}{format}",
+        "stopIfFail": "1"
+      },
+      "outputs": {
+        "output": "fullPath"
+      }
+    },
+    {
+      "key": "sys:WriteImageFile",
+      "inputs": {
+        "content": "{img}",
+        "filePath": "{fullPath}",
+        "quality": "95",
+        "stopIfFail": "1"
+      }
+    },
+    {
+      "key": "sys:notify",
+      "inputs": {
+        "msg": "$$截图已保存到{fullPath}。",
+        "maxLines": "0",
+        "type": "Info",
+        "style": "Default"
+      }
+    },
+    {
+      "key": "sys:if",
+      "inputs": {
+        "condition": "$={copyPath} == 0"
+      },
+      "ifSteps": [
+        {
+          "key": "sys:writeClipboard",
+          "inputs": {
+            "type": "auto",
+            "input": "{img}",
+            "stopIfFail": "1"
+          }
+        }
+      ],
+      "elseSteps": [
+        {
+          "key": "sys:if",
+          "inputs": {
+            "condition": "$= {copyPath} == 1"
+          },
+          "ifSteps": [
+            {
+              "key": "sys:comment",
+              "inputs": {
+                "note": "文件名写入剪贴板"
+              }
+            },
+            {
+              "key": "sys:writeClipboard",
+              "inputs": {
+                "type": "text",
+                "text": "{fullPath}",
+                "stopIfFail": "1"
+              }
+            }
+          ],
+          "elseSteps": [
+            {
+              "key": "sys:comment",
+              "inputs": {
+                "note": "图片文件写入剪贴板"
+              }
+            },
+            {
+              "key": "sys:fileToClipboard",
+              "inputs": {
+                "file": "{fullPath}",
+                "useCut": "false",
+                "stopIfFail": "1"
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

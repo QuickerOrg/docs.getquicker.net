@@ -1,13 +1,13 @@
 ---
 title: "屏幕取色/颜色转换与计算"
-description: "转换颜色值及相关计算处理"
+description: "从文本、屏幕或调色板取得颜色，并输出各通道和指定格式的文本。"
 slug: "/v2/xaction/modules/color"
 sidebar_label: "屏幕取色/颜色转换与计算"
 sidebar_position: 100
 quickerDocKey: "xaction/module/sys:color"
 comments: true
 moduleKey: "sys:color"
-docStatus: "migrated-unreviewed"
+docStatus: "reviewed"
 metadataGeneratedAt: "2026-08-03 20:08:03"
 legacyDocId: 3996714
 legacyContentUpdatedAt: "2020-04-02T03:19:32.000Z"
@@ -15,56 +15,86 @@ legacyContentUpdatedAt: "2020-04-02T03:19:32.000Z"
 
 # 屏幕取色/颜色转换与计算
 
-转换颜色值及相关计算处理
+获取或编辑颜色，并返回各通道的值和指定格式的文本。1.3.10 起提供。
 
 ## 当前模块定义
 
 <XActionModuleMeta moduleKey="sys:color" />
 
-注：子1.3.10版本提供。
+## 概述
 
-获取或编辑颜色，并返回颜色信息中各通道颜色的值。
+先选 **类型**，再按类型填颜色文本或坐标。
 
 <ModuleParamPreview moduleKey="sys:color" />
 
-支持的操作类型：
+## 参数说明
 
--   通过文本指定颜色：根据指定的颜色文本（如“#223444”等）获取颜色信息；
--   取屏幕指定位置颜色：根据指定的坐标位置，取屏幕颜色；
--   从屏幕选取颜色：手动选择屏幕位置获取颜色；
--   编辑/选择颜色：从颜色选择器中选择颜色；
+**类型**：
 
-## 参数
+- **通过文本指定颜色**：按颜色文本解析。
+- **从屏幕选取颜色**：运行时用小方框从屏幕上点选。
+- **取屏幕指定位置颜色**：按 **坐标** 取色。
+- **编辑/选择颜色**：弹出调色板，可改色或用吸管。
 
-【颜色】通过文本方式指定的颜色的**当前值**。支持的格式有：
+**颜色**：仅「通过文本指定颜色」「编辑/选择颜色」。支持：
 
--   HTML颜色格式：#RGB 、 #RRGGBB
--   ARGB格式：#AARRGGBB
--   rgb(10,20,30)
--   rgba(10,20,30,0.5)
+- HTML：`#RGB`、`#RRGGBB`
+- ARGB：`#AARRGGBB`
+- 颜色名：`Red`
+- `rgb(10,20,30)` / `rgba(10,20,30,0.5)`
+- `CMYK(0,0,0,0)` 或 `CMYK:0,0,0,0`
 
-【坐标】在“取屏幕指定位置颜色”操作模式下，设定要获取颜色的屏幕坐标。
+**坐标**：仅「取屏幕指定位置颜色」。格式 `横坐标X,纵坐标Y`，如 `0,0`。
 
-【输出文本格式】用于控制“文本值”输出参数中输出的文本格式。
+**输出文本格式**：控制 **文本值** 的格式。点开下拉看当前全部选项，例如十六进制 RGB/ARGB、`rgb`/`rgba`、逗号分隔、浮点、Swift、CMYK、HSL/HSV。
+
+**失败后停止**：失败是否中止动作。默认开启。旧稿未写。
 
 ### 编辑/选择颜色
 
-弹出颜色选择窗口，并预先选择当前的颜色值。可以在此窗口中调整颜色或使用吸管工具从其他位置选择颜色。
+弹出颜色选择窗口，并预先选中当前颜色。可在窗口里调色，或用吸管从别处取色。
 
-![编辑或选择颜色操作.gif](./img/color-002-efae8e7c2b.gif "编辑或选择颜色操作.gif")
+![编辑或选择颜色操作](./img/color-002-efae8e7c2b.gif)
 
 ### 从屏幕选择颜色
 
-显示一个小方框，按下后开始从屏幕上选择颜色。
+显示一个小方框，按下后开始从屏幕上选颜色。
 
-![从屏幕选择颜色.gif](./img/color-003-6bd4fc7342.gif "从屏幕选择颜色.gif")
+![从屏幕选择颜色](./img/color-003-6bd4fc7342.gif)
 
 ## 输出
 
-颜色的各种参数数据。
+- **是否成功**：操作是否成功。旧稿未写。
+- **透明度值**：Alpha，0–255，0 为全透明。
+- **红色值** / **绿色值** / **蓝色值**：0–255。
+- **色相**：Hue，0–360。
+- **HSL.S** / **HSL.L**：HSL 饱和度、亮度。
+- **HSV.S** / **HSV.V**：HSV 饱和度、明度。
+- **文本值**：按 **输出文本格式** 写出的颜色文本。
 
-【文本值】用于将颜色使用指定的格式输出，通常用于转换颜色的格式。具体格式由输入参数“输出文本格式”指定。
+## 限制与排障
+
+取屏幕颜色依赖当前显示器上的像素，窗口被挡住或坐标越界会取到别的颜色。颜色文本格式不对时步骤会失败，先对照上面列出的写法。
 
 ## 示例动作
 
--   [https://getquicker.net/sharedaction?code=a6aaa916-9fea-4355-fbd4-08d7cd418588](https://getquicker.net/sharedaction?code=a6aaa916-9fea-4355-fbd4-08d7cd418588)
+<StepProgramView example="a6aaa916-9fea-4355-fbd4-08d7cd418588" />
+
+<ShareLinkCard
+  code="a6aaa916-9fea-4355-fbd4-08d7cd418588"
+  title="编辑颜色"
+  description="选择颜色"
+  author="CL"
+/>
+
+## 相关链接
+
+<RelatedDocs
+  items={[
+    {
+      href: '/v2/xaction/modules/mouse',
+      label: '鼠标',
+      description: '先移动到目标位置，再按坐标取色。',
+    },
+  ]}
+/>

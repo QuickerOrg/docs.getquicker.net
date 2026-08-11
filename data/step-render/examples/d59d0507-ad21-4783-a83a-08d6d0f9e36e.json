@@ -1,0 +1,89 @@
+{
+  "code": "d59d0507-ad21-4783-a83a-08d6d0f9e36e",
+  "title": "排序多行",
+  "description": "排序多行文本",
+  "author": "CL",
+  "revision": 2,
+  "source": "https://getquicker.net/sharedaction?code=d59d0507-ad21-4783-a83a-08d6d0f9e36e",
+  "pulledAt": "2026-08-11T21:09:07.094Z",
+  "variables": [
+    {
+      "name": "context",
+      "type": "Text",
+      "remark": "默认的文本变量"
+    },
+    {
+      "name": "img",
+      "type": "Image",
+      "remark": "默认的图片变量"
+    },
+    {
+      "name": "list",
+      "type": "List"
+    }
+  ],
+  "steps": [
+    {
+      "key": "sys:getSelectedText",
+      "inputs": {
+        "format": "UnicodeText",
+        "stopIfFail": "1"
+      },
+      "outputs": {
+        "output": "context"
+      }
+    },
+    {
+      "key": "sys:splitString",
+      "inputs": {
+        "data": "{context}",
+        "separator": "\\n",
+        "escapeSeparator": "1",
+        "removeEmpty": "1"
+      },
+      "outputs": {
+        "output": "list"
+      }
+    },
+    {
+      "key": "sys:if",
+      "inputs": {
+        "condition": "$={quicker_in_param} == \"desc\""
+      },
+      "ifSteps": [
+        {
+          "key": "sys:listOperations",
+          "inputs": {
+            "list": "{list}",
+            "type": "sortDesc"
+          },
+          "outputs": {
+            "value": "list"
+          }
+        }
+      ],
+      "elseSteps": [
+        {
+          "key": "sys:listOperations",
+          "inputs": {
+            "list": "{list}",
+            "type": "sortAsc",
+            "pos": "0",
+            "length": "1"
+          },
+          "outputs": {
+            "value": "list"
+          }
+        }
+      ]
+    },
+    {
+      "key": "sys:outputText",
+      "inputs": {
+        "content": "{list}",
+        "method": "paste",
+        "appendReturn": "0"
+      }
+    }
+  ]
+}

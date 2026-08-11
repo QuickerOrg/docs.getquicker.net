@@ -1,0 +1,94 @@
+{
+  "code": "789bfd8d-3ef0-43c9-7f48-08d8fe1fe745",
+  "title": "输出到固定设备",
+  "description": "设置音频输出到指定的设备。",
+  "author": "CL",
+  "revision": 0,
+  "source": "https://getquicker.net/sharedaction?code=789bfd8d-3ef0-43c9-7f48-08d8fe1fe745",
+  "pulledAt": "2026-08-11T21:28:47.805Z",
+  "variables": [
+    {
+      "name": "deviceId",
+      "type": "Text",
+      "remark": "要设置到的输出"
+    },
+    {
+      "name": "deviceList",
+      "type": "List"
+    },
+    {
+      "name": "deviceName",
+      "type": "Text"
+    }
+  ],
+  "steps": [
+    {
+      "key": "sys:if",
+      "inputs": {
+        "condition": "$= String.IsNullOrEmpty({deviceId}) || {quicker_in_param} == \"select\""
+      },
+      "ifSteps": [
+        {
+          "key": "sys:audioControl",
+          "inputs": {
+            "operation": "GetOutputDeviceList",
+            "stopIfFail": "1"
+          },
+          "outputs": {
+            "deviceList": "deviceList"
+          }
+        },
+        {
+          "key": "sys:select",
+          "inputs": {
+            "type": "single",
+            "prompt": "请选择要设置为输出的设备",
+            "items": "{deviceList}",
+            "defaultValue": "{deviceId}",
+            "showFilter": "auto",
+            "imeState": "NO_CONTROL",
+            "fontsize": "12",
+            "autoCloseSeconds": "0",
+            "winLocation": "WithMouse1",
+            "keepLastPos": "1",
+            "noKeyboard": "0",
+            "closeOnDeactivated": "0",
+            "restoreForeground": "1",
+            "allowOkWhenEmpty": "0",
+            "stopIfCancel": "1"
+          },
+          "outputs": {
+            "textValue": "deviceId"
+          }
+        }
+      ]
+    },
+    {
+      "key": "sys:audioControl",
+      "inputs": {
+        "operation": "SetDefaultDeviceById",
+        "id": "{deviceId}",
+        "stopIfFail": "1"
+      }
+    },
+    {
+      "key": "sys:audioControl",
+      "inputs": {
+        "operation": "GetOutputDefaultDevice",
+        "stopIfFail": "1"
+      },
+      "outputs": {
+        "deviceName": "deviceName"
+      }
+    },
+    {
+      "key": "sys:notify",
+      "inputs": {
+        "msg": "$$音频输出已设置为：{deviceName}",
+        "maxLines": "0",
+        "type": "Success",
+        "style": "Default"
+      }
+    }
+  ]
+}

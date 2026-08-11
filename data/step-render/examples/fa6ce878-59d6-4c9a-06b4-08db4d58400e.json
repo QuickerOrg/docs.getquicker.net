@@ -1,0 +1,89 @@
+{
+  "code": "fa6ce878-59d6-4c9a-06b4-08db4d58400e",
+  "title": "屏幕找字示例",
+  "description": "演示Quicker屏幕找字功能",
+  "author": "CL",
+  "revision": 1,
+  "source": "https://getquicker.net/sharedaction?code=fa6ce878-59d6-4c9a-06b4-08db4d58400e",
+  "pulledAt": "2026-08-11T21:27:27.369Z",
+  "variables": [
+    {
+      "name": "text",
+      "type": "Text",
+      "remark": "默认的文本变量"
+    },
+    {
+      "name": "point",
+      "type": "Text",
+      "remark": "坐标点"
+    },
+    {
+      "name": "isSuccess",
+      "type": "Boolean"
+    }
+  ],
+  "steps": [
+    {
+      "key": "sys:comment",
+      "inputs": {
+        "note": "请用户输入要定位的文字"
+      }
+    },
+    {
+      "key": "sys:userInput",
+      "inputs": {
+        "type": "text",
+        "prompt": "请输入要寻找的文字",
+        "defaultValue": "{text}",
+        "isRequired": "1",
+        "restoreFocus": "0",
+        "closeOnDeactivated": "0",
+        "topMost": "0",
+        "stopIfFail": "1",
+        "fontsize": "14",
+        "winLocation": "CenterScreen",
+        "imeState": "NO_CONTROL"
+      },
+      "outputs": {
+        "textValue": "text"
+      }
+    },
+    {
+      "key": "sys:comment",
+      "inputs": {
+        "note": "找字，默认为整个屏幕，可以修改为当前窗口以提升速度"
+      }
+    },
+    {
+      "key": "sys:searchBmp",
+      "inputs": {
+        "type": "locateByText",
+        "searchText": "{text}",
+        "bmpTargetType": "MainScreen",
+        "x": "0",
+        "y": "0",
+        "retryCount": "1",
+        "stopIfFail": "1"
+      },
+      "outputs": {
+        "isSuccess": "isSuccess",
+        "firstPoint": "point"
+      }
+    },
+    {
+      "key": "sys:comment",
+      "inputs": {
+        "note": "鼠标移动到找到的坐标点"
+      }
+    },
+    {
+      "key": "sys:mouse",
+      "inputs": {
+        "type": "moveToXy",
+        "xy": "{point}",
+        "slowMove": "0",
+        "extAction": "none"
+      }
+    }
+  ]
+}

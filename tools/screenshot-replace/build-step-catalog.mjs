@@ -33,6 +33,133 @@ function labelMap(items) {
   return Object.keys(out).length > 0 ? out : undefined;
 }
 
+/** @param {unknown} selections */
+function enumMap(selections) {
+  if (!selections || typeof selections !== 'object') return undefined;
+  /** @type {Record<string, Record<string, string>>} */
+  const out = {};
+  for (const [key, group] of Object.entries(selections)) {
+    const items = group && typeof group === 'object' ? group.items : null;
+    if (!Array.isArray(items)) continue;
+    /** @type {Record<string, string>} */
+    const map = {};
+    for (const item of items) {
+      const value = typeof item?.value === 'string' ? item.value.trim() : '';
+      const name = typeof item?.name === 'string' ? item.name.trim() : '';
+      if (value && name) map[value] = name;
+    }
+    if (Object.keys(map).length) out[key] = map;
+  }
+  return Object.keys(out).length ? out : undefined;
+}
+
+function camelParamKey(name) {
+  if (!name) return '';
+  return name.length === 1 ? name.toLowerCase() : name[0].toLowerCase() + name.slice(1);
+}
+
+/** Map Params.Property → InputParam/OutputParam Key. */
+function collectParamKeys(csText) {
+  /** @type {Record<string, string>} */
+  const map = {};
+  const re =
+    /\[(?:ControlField)?(?:Input|Output)Param\(([\s\S]*?)\)\][\s\S]*?public\s+partial\s+\S+\s+(\w+)\s*\{/g;
+  let m;
+  while ((m = re.exec(csText))) {
+    const prop = m[2];
+    const key = /Key\s*=\s*"([^"]+)"/.exec(m[1])?.[1]?.trim() || camelParamKey(prop);
+    if (prop && key) map[prop] = key;
+  }
+  return map;
+}
+
+/** Split StepSummary(...) args; commas inside strings / nameof() stay intact. */
+function splitSummaryArgs(inner) {
+  const parts = [];
+  let buf = '';
+  let depth = 0;
+  let inStr = false;
+  let escape = false;
+  for (const ch of inner) {
+    if (inStr) {
+      buf += ch;
+      if (escape) escape = false;
+      else if (ch === '\\') escape = true;
+      else if (ch === '"') inStr = false;
+      continue;
+    }
+    if (ch === '"') {
+      inStr = true;
+      buf += ch;
+      continue;
+    }
+    if (ch === '(') depth += 1;
+    if (ch === ')') depth = Math.max(0, depth - 1);
+    if (ch === ',' && depth === 0) {
+      const piece = buf.trim();
+      if (piece) parts.push(piece);
+      buf = '';
+      continue;
+    }
+    buf += ch;
+  }
+  const last = buf.trim();
+  if (last) parts.push(last);
+  return parts;
+}
+
+/**
+ * Compile one C# StepSummary argument to a template part.
+ * nameof(Params.Path) + " " → catalog key `path` (or literal).
+ */
+function compileSummaryArg(raw, propToKey) {
+  let compiled = '';
+  const tokenRe = /nameof\s*\(\s*Params\.(\w+)\s*\)|"((?:\\.|[^"\\])*)"/g;
+  let m;
+  while ((m = tokenRe.exec(raw))) {
+    if (m[1]) compiled += m[1];
+    else compiled += m[2].replace(/\\n/g, '\n').replace(/\\r/g, '\r').replace(/\\"/g, '"');
+  }
+  if (!compiled && raw) return null;
+  const tagged = /^([A-Za-z_]\w*)(!)?(?::(\d+))?$/.exec(compiled);
+  if (tagged && propToKey[tagged[1]]) {
+    return `${propToKey[tagged[1]]}${tagged[2] ?? ''}${tagged[3] != null ? `:${tagged[3]}` : ''}`;
+  }
+  return compiled;
+}
+
+/** Parse [StepSummary] next to [Step(Key=)] from Definition.cs. */
+function collectStepSummaryParts(quickerRoot) {
+  const runnersDir = path.join(
+    quickerRoot,
+    'QuickerPc',
+    'Quicker',
+    'Actions',
+    'XActions',
+    'BuildinRunners',
+  );
+  /** @type {Record<string, string[]>} */
+  const byKey = {};
+  for (const file of walkCs(runnersDir)) {
+    const text = readFileSync(file, 'utf8');
+    const propToKey = collectParamKeys(text);
+    const summaryRe = /\[StepSummary\(([\s\S]*?)\)\]/g;
+    let sm;
+    while ((sm = summaryRe.exec(text))) {
+      const before = text.slice(0, sm.index);
+      const stepBlocks = [...before.matchAll(/\[Step\(([\s\S]*?)\)\]/g)];
+      const lastStep = stepBlocks[stepBlocks.length - 1];
+      const key = lastStep ? /Key\s*=\s*"([^"]+)"/.exec(lastStep[1])?.[1]?.trim() : '';
+      if (!key) continue;
+      const parts = splitSummaryArgs(sm[1])
+        .map((arg) => compileSummaryArg(arg, propToKey))
+        .filter((part) => part != null);
+      if (parts.length) byKey[key] = parts;
+    }
+  }
+  return byKey;
+}
+
 function walkCs(dir, acc = []) {
   if (!existsSync(dir)) return acc;
   for (const name of readdirSync(dir)) {
@@ -165,6 +292,8 @@ for (const m of src.modules || []) {
   const outputs = labelMap(m.outputs);
   if (inputs) entry.inputLabels = inputs;
   if (outputs) entry.outputLabels = outputs;
+  const enums = enumMap(m.selections);
+  if (enums) entry.inputEnums = enums;
   runners[m.key] = entry;
 }
 
@@ -173,6 +302,11 @@ const quickerRoot = resolveQuickerRoot();
 const missingFa = [];
 if (quickerRoot) {
   const iconByKey = collectStepIconSpecs(quickerRoot);
+  const summaryByKey = collectStepSummaryParts(quickerRoot);
+  for (const [key, parts] of Object.entries(summaryByKey)) {
+    if (!runners[key]) continue;
+    runners[key].summaryParts = parts;
+  }
   const needed = collectReferencedFaNames();
   for (const [key, spec] of Object.entries(iconByKey)) {
     if (!runners[key]) continue;

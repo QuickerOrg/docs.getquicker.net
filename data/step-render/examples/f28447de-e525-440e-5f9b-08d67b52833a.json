@@ -1,0 +1,63 @@
+{
+  "code": "f28447de-e525-440e-5f9b-08d67b52833a",
+  "title": "创建模版目录",
+  "description": "一次性创建多个指定的目录。修改dirs变量的默认值设置子目录名称。",
+  "author": "CL",
+  "revision": 0,
+  "source": "https://getquicker.net/sharedaction?code=f28447de-e525-440e-5f9b-08d67b52833a",
+  "pulledAt": "2026-08-11T21:11:36.141Z",
+  "variables": [
+    {
+      "name": "context",
+      "type": "Text",
+      "remark": "默认的文本变量"
+    },
+    {
+      "name": "img",
+      "type": "Image",
+      "remark": "默认的图片变量"
+    },
+    {
+      "name": "dirs",
+      "type": "List",
+      "remark": "要建立的子文件夹名称列表"
+    },
+    {
+      "name": "currPath",
+      "type": "Text",
+      "remark": "当前路径"
+    },
+    {
+      "name": "subDir",
+      "type": "Text"
+    }
+  ],
+  "steps": [
+    {
+      "key": "sys:getExplorerPath",
+      "outputs": {
+        "output": "currPath"
+      }
+    },
+    {
+      "key": "sys:each",
+      "inputs": {
+        "input": "{dirs}"
+      },
+      "outputs": {
+        "item": "subDir"
+      },
+      "ifSteps": [
+        {
+          "key": "sys:fileOperation",
+          "inputs": {
+            "type": "makeDir",
+            "path": "$${currPath}\\{subDir}",
+            "overwrite": "0",
+            "stopIfFail": "1"
+          }
+        }
+      ]
+    }
+  ]
+}

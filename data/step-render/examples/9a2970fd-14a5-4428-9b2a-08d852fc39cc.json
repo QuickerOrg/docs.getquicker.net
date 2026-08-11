@@ -1,0 +1,129 @@
+{
+  "code": "9a2970fd-14a5-4428-9b2a-08d852fc39cc",
+  "title": "进度条测试",
+  "description": "测试1.10.6版本中的进度条功能",
+  "author": "CL",
+  "revision": 1,
+  "source": "https://getquicker.net/sharedaction?code=9a2970fd-14a5-4428-9b2a-08d852fc39cc",
+  "pulledAt": "2026-08-11T21:27:55.915Z",
+  "variables": [
+    {
+      "name": "text",
+      "type": "Text",
+      "remark": "默认的文本变量"
+    },
+    {
+      "name": "progressId",
+      "type": "Integer"
+    },
+    {
+      "name": "count",
+      "type": "Integer"
+    }
+  ],
+  "steps": [
+    {
+      "key": "sys:group",
+      "inputs": {
+        "skipErr": "0",
+        "useMultiThread": "1"
+      },
+      "ifSteps": [
+        {
+          "key": "sys:comment",
+          "inputs": {
+            "note": "使用模块控制进度条"
+          }
+        },
+        {
+          "key": "sys:group",
+          "inputs": {
+            "skipErr": "0",
+            "useMultiThread": "0"
+          },
+          "note": "手工更新进度",
+          "ifSteps": [
+            {
+              "key": "sys:reportProgress",
+              "inputs": {
+                "type": "REQUEST_ID"
+              },
+              "outputs": {
+                "progressId": "progressId"
+              }
+            },
+            {
+              "key": "sys:reportProgress",
+              "inputs": {
+                "type": "UPDATE_PROGRESS",
+                "progressId": "{progressId}",
+                "title": "测试进度条",
+                "percentage": "0",
+                "text": "开始"
+              }
+            },
+            {
+              "key": "sys:repeat",
+              "inputs": {
+                "count": "10",
+                "startIndex": "0",
+                "repeatDelayMs": "1"
+              },
+              "outputs": {
+                "count": "count"
+              },
+              "ifSteps": [
+                {
+                  "key": "sys:delay",
+                  "inputs": {
+                    "delayMs": "1000",
+                    "monitorWaitWin": "0"
+                  }
+                },
+                {
+                  "key": "sys:reportProgress",
+                  "inputs": {
+                    "type": "UPDATE_PROGRESS",
+                    "progressId": "{progressId}",
+                    "title": "测试进度条",
+                    "percentage": "$= 100.0 * ({count}+1)/10.0",
+                    "text": "$$count = {count}"
+                  }
+                }
+              ]
+            },
+            {
+              "key": "sys:reportProgress",
+              "inputs": {
+                "type": "REMOVE",
+                "progressId": "{progressId}"
+              }
+            }
+          ]
+        },
+        {
+          "key": "sys:comment",
+          "inputs": {
+            "note": "下载进度条"
+          }
+        },
+        {
+          "key": "sys:download",
+          "inputs": {
+            "url": "https://getquicker.net/download/item/fast_x64",
+            "savePath": "z:\\",
+            "stopIfFail": "1"
+          }
+        },
+        {
+          "key": "sys:download",
+          "inputs": {
+            "url": "https://cdn1.evernote.com/win6/public/Evernote_6.25.1.9091.exe",
+            "savePath": "z:\\",
+            "stopIfFail": "1"
+          }
+        }
+      ]
+    }
+  ]
+}

@@ -1,13 +1,13 @@
 ---
 title: "显示菜单"
-description: "显示一个菜单"
+description: "在指针位置弹出纵向菜单，点选后执行操作或返回数据。"
 slug: "/v2/xaction/modules/showmenu"
 sidebar_label: "显示菜单"
 sidebar_position: 50
 quickerDocKey: "xaction/module/sys:showmenu"
 comments: true
 moduleKey: "sys:showmenu"
-docStatus: "migrated-unreviewed"
+docStatus: "reviewed"
 metadataGeneratedAt: "2026-08-03 20:08:03"
 legacyDocId: 55509182
 legacyContentUpdatedAt: "2024-12-02T01:31:54.000Z"
@@ -15,13 +15,15 @@ legacyContentUpdatedAt: "2024-12-02T01:31:54.000Z"
 
 # 显示菜单
 
-显示一个菜单
+在鼠标指针处弹出纵向菜单（类似右键菜单），用来执行操作或让用户选一项。要从列表里选且支持键盘，用 [用户选择](/v2/xaction/modules/userselect)。
 
 ## 当前模块定义
 
 <XActionModuleMeta moduleKey="sys:showmenu" />
 
-在鼠标指针所在位置显示一个纵向菜单（效果类似于右键菜单），可用于执行或选择特定操作。
+## 概述
+
+默认不占用焦点，只能鼠标点。打开「占用焦点」后可以用键盘选。网友 @Ceastld 的 [显示菜单子程序](https://getquicker.net/subprogram?id=b68fab2f-7004-4373-9242-08d982821308) 还支持焦点和水平排列。
 
 <ContextMenuPreview
   galleryCover={true}
@@ -39,15 +41,9 @@ legacyContentUpdatedAt: "2024-12-02T01:31:54.000Z"
   ]}
 />
 
-此菜单需要用鼠标点击，不支持键盘选择菜单项。
+鼠标或键盘抬起会自动关菜单。若动作是点出来的，显示菜单前先等一会儿，避免抬起鼠标时菜单立刻被关掉。（[讨论](https://getquicker.net/QA/Question/10669)）
 
-也可以使用网友 @Ceastld 分享的[显示菜单的子程序](https://getquicker.net/subprogram?id=b68fab2f-7004-4373-9242-08d982821308)（支持焦点和水平排列等功能）。
-
-注意：
-
--   鼠标或键盘的抬起事件会自动关闭菜单。根据使用方式，可能需要在显示菜单之前增加一些等待时间，以避免在点击动作后抬起鼠标时菜单被自动关闭的情况发生。（[参考](https://getquicker.net/QA/Question/10669)）
-
-## 参数
+## 参数说明
 
 <ModuleParamPreview
   moduleKey="sys:showmenu"
@@ -63,11 +59,11 @@ legacyContentUpdatedAt: "2024-12-02T01:31:54.000Z"
   }}
 />
 
-【菜单数据】菜单的定义。
+**菜单数据**：菜单定义，支持下面四种格式。
 
 支持四种类型的数据：
 
-**（1）类似于**[**动作右键菜单定义**](/v2/xaction/concepts/action-custom-context-menu)**的文本格式。**
+**（1）文本格式**（与 [动作右键菜单定义](/v2/xaction/concepts/action-custom-context-menu) 相近）：
 
 与动作右键菜单不同的是，动作右键菜单仅支持返回一个文本数据作为参数返回给动作。
 
@@ -365,24 +361,44 @@ $=
 return items;
 ```
 
-【字体大小】菜单文字字体大小。
+**字体大小**：菜单文字大小。默认 12。
 
-【等待菜单关闭】是否等待菜单关闭后再执行后面的步骤
+**图标大小**：图标宽高像素。默认 16。
 
-【失败后停止】在“等待菜单关闭”的情况下，未点击菜单时，是否停止动作。
+**最大高度**：百分比（如 `50%`）或固定像素（如 `500`）。`0` 不限制。
 
-### 输出参数
+**等待菜单关闭**：是否等菜单关掉再跑后面的步骤。默认开启。
 
-【是否成功】在“等待菜单关闭”的情况下，用户是否点击了菜单项。
+**占用焦点**：是否让菜单占用焦点，从而可用键盘选择。默认关闭。
 
-【选择的菜单项数据】选择的菜单项的data参数。使用第一种格式设定菜单数据时，如果未指定data部分内容，则返回标题内容。
+**失败后停止**：在「等待菜单关闭」时，用户没点菜单是否中止动作。默认开启。
 
-【选择的菜单项】选择的菜单项对应的CommonOperationItem对象。
+## 输出
 
-### 示例动作
+- **是否成功**：在「等待菜单关闭」时，用户是否点了菜单项。
+- **选择的菜单项数据**：该项的 data。第一种文本格式若没写 data，则返回标题。
+- **选择的菜单项**：对应的 CommonOperationItem 对象。
+- **点击按钮**：`Left` 或 `Right`。
 
--   菜单模块测试：[https://getquicker.net/Sharedaction?code=a2933deb-ebe7-4895-69d4-08d992b19cae](https://getquicker.net/Sharedaction?code=a2933deb-ebe7-4895-69d4-08d992b19cae)
--   运行子程序并传递参数：[https://getquicker.net/Sharedaction?code=186c9f3f-46d4-4f63-00b9-08db56e12efe](https://getquicker.net/Sharedaction?code=186c9f3f-46d4-4f63-00b9-08db56e12efe)
+## 示例动作
+
+<StepProgramView example="a2933deb-ebe7-4895-69d4-08d992b19cae" />
+
+<ShareLinkCard
+  code="a2933deb-ebe7-4895-69d4-08d992b19cae"
+  title="菜单模块测试"
+  description="显示菜单模块示例"
+  author="CL"
+/>
+
+<StepProgramView example="186c9f3f-46d4-4f63-00b9-08db56e12efe" />
+
+<ShareLinkCard
+  code="186c9f3f-46d4-4f63-00b9-08db56e12efe"
+  title="示例：菜单调用子程序传递参数"
+  description="通过显示菜单调用子程序并传递参数"
+  author="CL"
+/>
 
 ## CommonOperationItem 对象
 
@@ -472,9 +488,26 @@ CommonOperationItem 支持如下的静态方法：
 -   ParseLines：解析多行文本数据，返回CommonOperationItem的列表。不支持子项。
 -   ParseLinesWithSubItems：解析多行文本数据，支持\[+\]\[-\]前缀声明父项和子项。请参考本文档中菜单数据的第一种格式。
 
+## 相关链接
+
+<RelatedDocs
+  items={[
+    {
+      href: '/v2/xaction/modules/userselect',
+      label: '用户选择',
+      description: '列表选择，支持键盘。',
+    },
+    {
+      href: '/v2/xaction/concepts/action-custom-context-menu',
+      label: '动作右键菜单',
+      description: '第一种文本格式与这里相近。',
+    },
+  ]}
+/>
+
 ## 更新说明
 
--   20221229： 增加operation类型：open/sp/none/inputscript。
--   20230106：1.36.22版本增加operation=action时，通过`action=_this_`表示当前动作。
--   20230426：增加pastefile和pasteimage的说明。
--   20230518：增加调用子程序示例动作。
+- 20221229：增加 operation 类型：open / sp / none / inputscript。
+- 20230106：1.36.22 `operation=action` 时可用 `action=_this_` 表示当前动作。
+- 20230426：增加 pastefile 和 pasteimage 的说明。
+- 20230518：增加调用子程序示例动作。

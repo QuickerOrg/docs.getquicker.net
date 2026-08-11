@@ -1,0 +1,73 @@
+{
+  "code": "f6fc9c05-7b95-40f7-b326-08d6756598a8",
+  "title": "格式化数字",
+  "description": "转换数字的格式",
+  "author": "CL",
+  "revision": 2,
+  "source": "https://getquicker.net/sharedaction?code=f6fc9c05-7b95-40f7-b326-08d6756598a8",
+  "pulledAt": "2026-08-11T21:09:09.278Z",
+  "variables": [
+    {
+      "name": "context",
+      "type": "Text",
+      "remark": "默认的文本变量"
+    },
+    {
+      "name": "img",
+      "type": "Image",
+      "remark": "默认的图片变量"
+    },
+    {
+      "name": "num",
+      "type": "Number"
+    }
+  ],
+  "steps": [
+    {
+      "key": "sys:getSelectedText",
+      "inputs": {
+        "format": "UnicodeText",
+        "stopIfFail": "1"
+      },
+      "outputs": {
+        "output": "context"
+      }
+    },
+    {
+      "key": "sys:compute",
+      "inputs": {
+        "expression": "$${context}"
+      },
+      "outputs": {
+        "output": "num"
+      }
+    },
+    {
+      "key": "sys:formatString",
+      "inputs": {
+        "formatString": "{0:N}\r\n{0:C}\r\n{0:P}\r\n{0:.00‰}\r\n{0:00.00}",
+        "p0": "{num}"
+      },
+      "outputs": {
+        "output": "context"
+      }
+    },
+    {
+      "key": "sys:select",
+      "inputs": {
+        "prompt": "请选择格式",
+        "items": "$${context}"
+      },
+      "outputs": {
+        "textValue": "context"
+      }
+    },
+    {
+      "key": "sys:outputText",
+      "inputs": {
+        "content": "{context}",
+        "method": "input"
+      }
+    }
+  ]
+}

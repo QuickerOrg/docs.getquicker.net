@@ -1,13 +1,13 @@
 ---
 title: "计算"
-description: "对表达式进行计算。"
+description: "把一段文本当成公式或表达式来计算。"
 slug: "/v2/xaction/modules/compute"
 sidebar_label: "计算"
 sidebar_position: 70
 quickerDocKey: "xaction/module/sys:compute"
 comments: true
 moduleKey: "sys:compute"
-docStatus: "migrated-unreviewed"
+docStatus: "reviewed"
 metadataGeneratedAt: "2026-08-03 20:08:03"
 legacyDocId: 1402290
 legacyContentUpdatedAt: "2021-04-11T23:43:30.000Z"
@@ -15,122 +15,140 @@ legacyContentUpdatedAt: "2021-04-11T23:43:30.000Z"
 
 # 计算
 
-对表达式进行计算。
+把一段文本当成公式或表达式来计算。只要比两个数，用 [比较数字](/v2/xaction/modules/numcompare)；只要赋给变量，用 [赋值](/v2/xaction/modules/assign)。
 
 ## 当前模块定义
 
 <XActionModuleMeta moduleKey="sys:compute" />
 
-## 简介
+## 概述
 
-用于将一段**文本内容**作为计算公式或表达式进行解析计算。例如：
-
--   3\*5+20  （结果为35）
--   15&gt;6    (结果为True）
+例如 `3*5+20` 得到 `35`，`15>6` 得到真。可结合 [插值](/v2/xaction/concepts/interpolation) 把变量嵌进公式：表达式写成 `$$ {变量a} > 5 and {变量a} < 20`，若 `变量a` 为 `30`，插值后变成 `30 > 5 and 30 < 20`，结果为假。
 
 <ModuleParamPreview moduleKey="sys:compute" />
 
-可以结合[插值语法](/v2/xaction/concepts/interpolation)将变量的值替换到表达式中。例如表达式为：“$$  &#123;变量a&#125; &gt; 5 and &#123;变量a&#125; &lt; 20” ，如果 变量a 的值为 30，那么表达式在插值后变为“30 &gt; 5 and 30 &lt; 20” ，其结果为false。（插值后得到文本表达式，然后计算这个表达式得到最终结果）
+## 参数说明
 
-## 参数
+**表达式**：要计算的公式。
 
-### 输入参数
+**增强模式**：开启后支持在表达式里使用 `{变量名}` 和 C# 的 `Math`。默认关闭。
 
-**【表达式】** 表示需要计算的数学公式。
+**失败后停止**：计算失败是否中止动作。默认开启。旧稿未写。
 
-**【增强模式】** 强模式支持变量和C#语言的Math类。
+## 输出
 
-### 输出
-
-【结果】计算结果。
+- **是否成功**：计算是否成功。旧稿未写。
+- **结果**：计算结果。
 
 ## 普通模式与增强模式
 
 ### 普通模式
 
-这个模块在内部使用了[NCalc](https://www.google.com/search?q=ncalc&pws=0&gl=us&gws_rd=cr)组件，您也可以参考这个组件的文档以了解这个模块可以实现的功能。
+内部使用 [NCalc](https://github.com/ncalc/ncalc)。也可以结合插值：
 
-#### 示例
+- 类型转换：`$${含有数字的文本变量}` → 数字；`$$ '{数字}'` → 文本
+- 判断：`$$ {变量} > 5 and {变量} < 30`
+- 计算：`50 * 2 * Sqrt(40)`、`Min(1,2)`
 
--   类型转换
-
--   $$&#123;含有数字的文本变量&#125;   =&gt;  转换为数字
--   $$ '&#123;数字&#125;'     =&gt;  转换为文本
-
--   判断
-
--   $$ &#123;变量&#125; &gt; 5 and &#123;变量&#125; &lt; 30
--   $$ &#123;变量&#125; \* 5 &lt; 20
--   $$ &#123;变量1&#125; &gt; &#123;变量2&#125;             =&gt; 判断 变量1 和 变量2 的大小关系
-
--   计算
-
--   50 \* 2 \* Sqrt(40)
--   Min(1,2)
-
-*以下内容有部分转载自* [*tangikejun的文章*](https://segmentfault.com/u/tangyikejun/articles)*，感谢！*
+*以下运算符和函数说明有部分转载自 [tangyikejun 的文章](https://segmentfault.com/u/tangyikejun/articles)，感谢。*
 
 #### 普通模式支持的运算符
 
-1.  原子运算符 `(`, `)`
-2.  单目运算符 `!`, `not`, `-`, `~`(按位取反)
-3.  幂次运算符 (原文作者遗漏了，他写了位运算符 `&`, `|`, `^`(xor), `<<`, `>>` )
-4.  乘除运算符 `*`, `/`, `%`
-5.  加减运算符 `+`, `-`
-6.  关系运算符 `=`, `==`, `!=`, `<>`, `<`, `<=`, `>`, `>=`
-7.  逻辑运算符 `or`,`||`,`and`,`&&`
+1. 原子运算符 `(`, `)`
+2. 单目运算符 `!`, `not`, `-`, `~`（按位取反）
+3. 幂次运算符；位运算符 `&`, `|`, `^`（xor）, `<<`, `>>`
+4. 乘除运算符 `*`, `/`, `%`
+5. 加减运算符 `+`, `-`
+6. 关系运算符 `=`, `==`, `!=`, `<>`, `<`, `<=`, `>`, `>=`
+7. 逻辑运算符 `or`, `||`, `and`, `&&`
 
 #### 普通模式支持的函数
 
-**注**：结果中的 M 代表 Decimal 类型，d 代表 Double 类型，是不同精度的有理数。
+结果中的 M 代表 Decimal，d 代表 Double。
 
 | 函数名 | 描述 | 用例 | 用例结果 |
 | --- | --- | --- | --- |
-| Abs | 返回绝对值 | Abs(-1) | 1M |
-| Acos | 返回余弦值对应的角度 | Acos(1) | 0d |
-| Asin | \- | \- | d |
-| Atan | \- | \- | d |
+| Abs | 绝对值 | Abs(-1) | 1M |
+| Acos | 反余弦 | Acos(1) | 0d |
+| Asin | 反正弦 | — | d |
+| Atan | 反正切 | — | d |
 | Ceiling | 向上取整 | Ceiling(1.5) | 2d |
-| Cos | \- | \- | d |
-| Exp | 相当于 e 的 X 次幂 | Exp(0) | 1d |
+| Cos | 余弦 | — | d |
+| Exp | e 的 X 次幂 | Exp(0) | 1d |
 | Floor | 向下取整 | Floor(1.5) | 1d |
-| IEEERemainder | IEEE 754 标准下的取余操作，具体细节自行百度。普通的整数取余数请使用%操作符，如 15 % 7 结果为 1。 | IEEERemainder(3, 2) | \-1d |
-| Log | 以第二个参数为底取对数 | Log(1,10) | 0d |
-| Log10 | 以10为底取对数 | Log10(1) | 0d |
-| Max | \- | Max(1,2) | 2 |
-| Min | \- | Min(1,2) | 1 |
-| Pow | \- | Pow(3,2) | 9d |
-| Round | 第二个参数表示保留几位小数，Round 的舍入规则是“四舍六入五成双”，具体的舍入中间值可以在构造 Expression 对象时用 `EvaluateOption.RoundAwayFromZero` 设定。 | Round(3.222,2) | 3.22d |
-| Sign | 取符号 | Sign(-10) | \-1 |
-| Sin | \- | \- | d |
-| Sqrt | 取平方根 | Sqrt(4) | 2d |
-| Tan | \- | \- | d |
+| IEEERemainder | IEEE 754 取余。普通取余用 `%`，如 `15 % 7` 为 1 | IEEERemainder(3, 2) | -1d |
+| Log | 以第二参数为底取对数 | Log(1,10) | 0d |
+| Log10 | 以 10 为底 | Log10(1) | 0d |
+| Max | 较大值 | Max(1,2) | 2 |
+| Min | 较小值 | Min(1,2) | 1 |
+| Pow | 乘方 | Pow(3,2) | 9d |
+| Round | 第二参数是小数位。舍入为奇进偶舍 | Round(3.222,2) | 3.22d |
+| Sign | 符号 | Sign(-10) | -1 |
+| Sin | 正弦 | — | d |
+| Sqrt | 平方根 | Sqrt(4) | 2d |
+| Tan | 正切 | — | d |
 | Truncate | 截取整数部分 | Truncate(1.7) | 1 |
 
-其他通用函数：
+其它通用函数：
 
 | 函数名 | 描述 | 用例 | 结果 |
 | --- | --- | --- | --- |
-| in | 判断第一个元素是否在后面的一系列值之中 | in(1 + 1, 1, 2, 3) | true |
-| if | 类似于 expression ? a:b 。根据表达式结果在后两个参数中选择一个返回 | if(3 % 2 = 1, 'value is true', 'value is false') | 'value is true' |
+| in | 第一个元素是否在后面的值之中 | in(1 + 1, 1, 2, 3) | true |
+| if | 类似 `条件 ? a : b` | if(3 % 2 = 1, 'value is true', 'value is false') | 'value is true' |
 
-#### 自定义函数
-
-将Unix时间戳转换为时间：UnixTimestampToDateTime(1552437663)
+自定义函数：把 Unix 时间戳转成时间 `UnixTimestampToDateTime(1552437663)`。
 
 ### 增强模式
 
-增强模式可以使用通用表达式相同的语法：[/v2/xaction/concepts/expression](/v2/xaction/concepts/expression)，（不需要在前面写$=，如果写了，会先解析表达式后，把得到的结果再作为表达式解析一遍）
+语法与通用 [表达式](/v2/xaction/concepts/expression) 相同。前面不必写 `$=`；如果写了，会先算一遍，再把结果当成表达式算第二遍。
 
-![image.png](./img/compute-002-5c8245e243.png "image.png")
+![](./img/compute-002-5c8245e243.png)
+
+## 限制与排障
+
+普通模式不认 `{变量名}`，要把变量嵌进去请用插值 `$$`，或打开增强模式。增强模式里再写 `$=` 会解析两遍，结果往往不是你想要的。公式非法时步骤失败，可看 **是否成功**。
 
 ## 示例动作
 
--   示例：计算模块： [https://getquicker.net/sharedaction?code=16317b5d-ffdf-4193-a919-08d7b30d7779](https://getquicker.net/sharedaction?code=16317b5d-ffdf-4193-a919-08d7b30d7779)
--   计算多行：[https://getquicker.net/sharedaction?code=9205705f-d1a7-4713-3d38-08d673be1748](https://getquicker.net/sharedaction?code=9205705f-d1a7-4713-3d38-08d673be1748)
+<ShareLinkCard
+  code="16317b5d-ffdf-4193-a919-08d7b30d7779"
+  title="示例：计算模块"
+  description="演示计算模块的使用。需1.4.21版"
+  author="CL"
+/>
 
-## 使用场景
+<StepProgramView example="9205705f-d1a7-4713-3d38-08d673be1748" />
 
--   简单的运算求解，比如计算选中的一个数学算式；
--   比较数字、文本等，以获得分支条件；
--   变量类型转换，比如将文本转换成数字等；
+<ShareLinkCard
+  code="9205705f-d1a7-4713-3d38-08d673be1748"
+  title="计算多行"
+  description="例子：计算多行表达式"
+  author="CL"
+/>
+
+## 相关链接
+
+<RelatedDocs
+  items={[
+    {
+      href: '/v2/xaction/concepts/expression',
+      label: '表达式',
+      description: '增强模式用这套语法。',
+    },
+    {
+      href: '/v2/xaction/concepts/interpolation',
+      label: '插值写法',
+      description: '普通模式里把变量嵌进公式。',
+    },
+    {
+      href: '/v2/xaction/modules/numberprocess',
+      label: '数字转换与处理',
+      description: '只要取整、改小数位或进制。',
+    },
+    {
+      href: '/v2/xaction/modules/if',
+      label: '如果',
+      description: '用计算结果做分支。',
+    },
+  ]}
+/>

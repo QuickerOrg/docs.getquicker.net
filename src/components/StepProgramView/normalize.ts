@@ -160,6 +160,22 @@ export function normalizeStepCatalog(raw: unknown): StepCatalog {
     const outputLabels = readLabelMap(entry.outputLabels);
     if (inputLabels) item.inputLabels = inputLabels;
     if (outputLabels) item.outputLabels = outputLabels;
+    if (Array.isArray(entry.summaryParts)) {
+      const parts = entry.summaryParts
+        .filter((part): part is string => typeof part === 'string')
+        .map((part) => part);
+      if (parts.length) item.summaryParts = parts;
+    }
+    if (isRecord(entry.inputEnums)) {
+      const enums: Record<string, Record<string, string>> = {};
+      for (const [paramKey, group] of Object.entries(entry.inputEnums)) {
+        const pk = paramKey.trim();
+        if (!pk || !isRecord(group)) continue;
+        const map = readLabelMap(group);
+        if (map) enums[pk] = map;
+      }
+      if (Object.keys(enums).length) item.inputEnums = enums;
+    }
     runners[k] = item;
   }
   const iconsRaw = isRecord(value.icons) ? value.icons : undefined;

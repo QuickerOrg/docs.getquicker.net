@@ -7,7 +7,7 @@ sidebar_position: 130
 quickerDocKey: "xaction/module/sys:jsscript"
 comments: true
 moduleKey: "sys:jsscript"
-docStatus: "migrated-unreviewed"
+docStatus: "reviewed"
 metadataGeneratedAt: "2026-08-03 20:08:03"
 legacyDocId: 2577253
 legacyContentUpdatedAt: "2024-07-01T23:59:07.000Z"
@@ -15,19 +15,15 @@ legacyContentUpdatedAt: "2024-07-01T23:59:07.000Z"
 
 # 运行Javascript代码
 
-执行Js代码片段。代码中应包含主函数exec()，请参考文档。
+在动作里跑一段 JavaScript。脚本必须提供全局函数 `exec()`，返回 `0` 表示成功，其它数字表示失败。
 
 ## 当前模块定义
 
 <XActionModuleMeta moduleKey="sys:jsscript" />
 
-运行js脚本。
+## 概述
 
-脚本应包含exec()全局函数，并**返回0**表示成功，返回其他数字表示失败。
-
-本功能 1.43.7+ 版本使用 Jint 库实现（[https://github.com/sebastienros/jint](https://github.com/sebastienros/jint)），支持更全面的js语法，请参考该库的官网了解详情。1.43.6 及更早版本使用Jurassic库(网址：[https://github.com/paulbartrum/jurassic](https://github.com/paulbartrum/jurassic)) 实现（仅支持ECMAScript 3 、ECMAScript 5语法与功能）。
-
-示例脚本：
+1.43.7+ 使用 [Jint](https://github.com/sebastienros/jint)，语法更完整。1.43.6 及更早使用 [Jurassic](https://github.com/paulbartrum/jurassic)（ECMAScript 3 / 5）。
 
 ```javascript
 // 主函数 exec()
@@ -40,61 +36,78 @@ function exec(){
 
 <ModuleParamPreview moduleKey="sys:jsscript" />
 
-## 模块参数
+## 参数说明
 
-### 输入
+**脚本内容**：要运行的 JS。必须包含 `exec()`。
 
--   【脚本内容】要运行的js脚本代码。
--   【允许访问 .Net 程序集】选中此项时，初始化jint引擎会调用`var engine = new Engine(cfg => cfg.AllowClr());`以允许在js代码中访问.net基本类库。请参考jint类库官网文档了解详情。（v1.43.7+）
--   【失败后停止】失败后是否停止动作。
+**允许访问.Net程序集**：初始化 Jint 时允许访问 .NET 基本类库（相当于 `new Engine(cfg => cfg.AllowClr())`）。详见 Jint 文档。1.43.7+。
 
-### 输出
+**失败后停止**：失败后是否停止动作。默认开启。
 
--   【是否成功】脚本是否没有遇到运行错误并最终返回0.
--   【返回值】脚本返回的值。
+## 输出
 
-## 脚本
+- **是否成功**：没有运行错误，且 `exec()` 返回 `0`。
+- **返回值**：脚本返回的数字。
 
-#### 主函数
+## 脚本写法
 
-Quicker将调用 `exec` 主函数。
+Quicker 会调用 `exec`。正常请返回数字 `0`，否则返回非 0。
 
-如果执行正常，请**返回数字0**，否则返回一个非0值表示遇到了问题。
+1.43.7+ 还提供：
 
-js代码中支持以下预置的方法（v1.43.7+）：
+- `log('text')`：输出调试信息（仅调试运行时）
+- `alert('text')`：显示提示消息
 
--   `log('text')`输出调试信息（仅调试运行时会输出）；
--   `alert('text')`显示提示消息；
-
-#### 读取动作中的变量值
-
-使用 `quickerGetVar` 全局函数读取动作中的变量的值。仅支持一部分变量类型，具体请参考jurassic文档。
+读取动作变量：
 
 ```javascript
 var localVar = quickerGetVar('动作里的变量名');
 ```
 
-#### 输出到变量
-
-使用 `quickerSetVar` 函数将新的值写入变量中。仅支持一部分变量类型，具体请参考jurassic文档。
+写入动作变量：
 
 ```javascript
 quickerSetVar('动作里的变量名', 新的值);
 ```
 
-#### 返回值
+列表、词典传入 JS 时是副本，在 JS 里改这些对象不会影响 Quicker 变量。要写回请用 `quickerSetVar` 整份覆盖。
 
-返回0表示成功，其他数字表示失败。 可以在【返回值】输出中读取此返回值供其他模块使用。
+只支持一部分变量类型。早期版本请参考 Jurassic 文档。
 
-#### 其他
+## 示例动作
 
-Quicker的列表类型和词典类型在js脚本中使用时是创建的副本，在js中修改这些对象不会影响Quicker变量中的值。如果需要修改变量中的值，需要使用quickerSetVar将整个变量写回。
+<StepProgramView example="acd50dea-9df0-4ed6-a3cf-08d7c216a695" />
 
-## 参考动作
+<ShareLinkCard
+  code="acd50dea-9df0-4ed6-a3cf-08d7c216a695"
+  title="转换化学公式"
+  description="将以ASC个是书写的化学公式转换为Unicode上下标的形式"
+  author="CL"
+/>
 
--   [https://getquicker.net/sharedaction?code=acd50dea-9df0-4ed6-a3cf-08d7c216a695](https://getquicker.net/sharedaction?code=acd50dea-9df0-4ed6-a3cf-08d7c216a695)
+## 相关链接
+
+<RelatedDocs
+  items={[
+    {
+      href: '/v2/xaction/modules/csscript',
+      label: '运行C#代码',
+      description: '需要 .NET API 或更完整类型时用 C#。',
+    },
+    {
+      href: '/v2/xaction/modules/pythonscript',
+      label: '运行Python代码',
+      description: '本机已装 Python 时跑片段。',
+    },
+    {
+      href: '/v2/xaction/modules/runscript',
+      label: '运行脚本',
+      description: '写成临时文件再交给外部解释器。',
+    },
+  ]}
+/>
 
 ## 更新历史
 
--   1.1.13 开始提供此模块。
--   20240702 改为Jint库，支持更新的js语法；js代码中支持log('text')输出调试信息（调试运行时）；支持使用alert('text')显示提示消息。（感谢@小布丁的大布丁）
+- 1.1.13 开始提供此模块。
+- 20240702 改为 Jint；支持 `log` / `alert`。（感谢 @小布丁的大布丁）

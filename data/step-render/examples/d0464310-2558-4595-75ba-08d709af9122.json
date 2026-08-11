@@ -1,0 +1,77 @@
+{
+  "code": "d0464310-2558-4595-75ba-08d709af9122",
+  "title": "示例：跳过后续步骤",
+  "description": "符合条件时跳过循环中的后续步骤",
+  "author": "CL",
+  "revision": 0,
+  "source": "https://getquicker.net/sharedaction?code=d0464310-2558-4595-75ba-08d709af9122",
+  "pulledAt": "2026-08-11T21:27:34.465Z",
+  "variables": [
+    {
+      "name": "count",
+      "type": "Number"
+    },
+    {
+      "name": "list",
+      "type": "List",
+      "remark": "列表"
+    },
+    {
+      "name": "item",
+      "type": "Text",
+      "remark": "列表中的每一项"
+    }
+  ],
+  "steps": [
+    {
+      "key": "sys:comment",
+      "inputs": {
+        "note": "list列表有6项，判断当count = 2时不运行后面的提示信息步骤。"
+      }
+    },
+    {
+      "key": "sys:each",
+      "inputs": {
+        "input": "{list}"
+      },
+      "outputs": {
+        "item": "item",
+        "count": "count"
+      },
+      "ifSteps": [
+        {
+          "key": "sys:if",
+          "inputs": {
+            "condition": "$$ {count} == 2"
+          },
+          "ifSteps": [
+            {
+              "key": "sys:notify",
+              "inputs": {
+                "msg": "count等于2，跳过提示步骤",
+                "type": "Success"
+              }
+            },
+            {
+              "key": "sys:continue"
+            }
+          ]
+        },
+        {
+          "key": "sys:notify",
+          "inputs": {
+            "msg": "$$序号：{count}  值：{item}",
+            "type": "Info"
+          }
+        },
+        {
+          "key": "sys:delay",
+          "inputs": {
+            "delayMs": "1000",
+            "monitorWaitWin": "0"
+          }
+        }
+      ]
+    }
+  ]
+}

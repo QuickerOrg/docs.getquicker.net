@@ -1,0 +1,107 @@
+{
+  "code": "b6098426-6fda-4db9-6d88-08d6bfa4ff29",
+  "title": "示例：弹窗消息",
+  "description": "用于演示弹窗消息模块",
+  "author": "CL",
+  "revision": 1,
+  "source": "https://getquicker.net/sharedaction?code=b6098426-6fda-4db9-6d88-08d6bfa4ff29",
+  "pulledAt": "2026-08-11T21:05:44.889Z",
+  "variables": [
+    {
+      "name": "context",
+      "type": "Text",
+      "remark": "默认的文本变量"
+    },
+    {
+      "name": "img",
+      "type": "Image",
+      "remark": "默认的图片变量"
+    },
+    {
+      "name": "选择的结果",
+      "type": "Text"
+    },
+    {
+      "name": "是否确认",
+      "type": "Boolean"
+    },
+    {
+      "name": "result",
+      "type": "Text"
+    }
+  ],
+  "steps": [
+    {
+      "key": "sys:MsgBox",
+      "inputs": {
+        "operation": "default",
+        "message": "Hello. 你好，这是一条弹窗提示消息。\r\n两个结果选一个哦~",
+        "title": "标准风格弹窗",
+        "icon": "Question",
+        "buttons": "OKCancel",
+        "restoreFocus": "1"
+      },
+      "outputs": {
+        "result": "选择的结果",
+        "okOrYes": "是否确认"
+      }
+    },
+    {
+      "key": "sys:notify",
+      "inputs": {
+        "type": "Info",
+        "msg": "$$标准弹窗选择的结果：{选择的结果}\r\n是否确认：{是否确认}",
+        "maxLines": "0",
+        "style": "Default"
+      }
+    },
+    {
+      "key": "sys:MsgBox",
+      "inputs": {
+        "operation": "default",
+        "message": "$$选择的结果：{选择的结果}\r\n是否确认：{是否确认}",
+        "title": "Quicker",
+        "icon": "Asterisk",
+        "buttons": "OK",
+        "restoreFocus": "1"
+      },
+      "disabled": true
+    },
+    {
+      "key": "sys:MsgBox",
+      "inputs": {
+        "operation": "custom",
+        "message": "你好，这是一条自定义弹窗提示消息。\r\n第二行。",
+        "title": "自定义弹窗",
+        "customIcon": "fa:Solid_InfoCircle:#FF0000",
+        "customButtons": "[fa:Light_Check:#28a745]是(_Y)|Yes\r\n[fa:Light_Times:#dc3545]否(_N)|No\r\n[fa:Light_Undo:#28a745]取消(_C)|Cancel\r\n测试",
+        "defaultButton": "Yes",
+        "restoreFocus": "1"
+      },
+      "outputs": {
+        "result": "result"
+      }
+    },
+    {
+      "key": "sys:notify",
+      "inputs": {
+        "type": "Info",
+        "msg": "$$自定义弹窗选择的结果：{result}",
+        "maxLines": "0",
+        "style": "Default"
+      }
+    },
+    {
+      "key": "sys:MsgBox",
+      "inputs": {
+        "operation": "default",
+        "message": "$$选择的结果：{选择的结果}",
+        "title": "Quicker",
+        "icon": "Asterisk",
+        "buttons": "OK",
+        "restoreFocus": "1"
+      },
+      "disabled": true
+    }
+  ]
+}

@@ -1,13 +1,13 @@
 ---
 title: "拆分文本为列表"
-description: "将文本拆分为列表"
+description: "按分隔符把一段文本拆成列表，再交给「每个」逐项处理。"
 slug: "/v2/xaction/modules/splitstring"
 sidebar_label: "拆分文本为列表"
 sidebar_position: 10
 quickerDocKey: "xaction/module/sys:splitString"
 comments: true
 moduleKey: "sys:splitString"
-docStatus: "migrated-unreviewed"
+docStatus: "reviewed"
 metadataGeneratedAt: "2026-08-03 20:08:03"
 legacyDocId: 2113554
 legacyContentUpdatedAt: "2022-12-29T05:29:28.000Z"
@@ -15,35 +15,72 @@ legacyContentUpdatedAt: "2022-12-29T05:29:28.000Z"
 
 # 拆分文本为列表
 
-将文本拆分为列表
+把一段文本按分隔符拆成列表。拼回去用 [列表合并成文本](/v2/xaction/modules/joinlist)；拆完逐项处理用 [循环：每个](/v2/xaction/modules/each)。
 
 ## 当前模块定义
 
 <XActionModuleMeta moduleKey="sys:splitString" />
 
-将文本变量拆分成列表变量。
+## 概述
 
-例如：将一个包含多个文件路径的文本拆分成列表，列表的每一项是一个文件路径，然后就可以使用“每个”模块对列表中的每个文件路径进行处理了。
+例如把多行路径拆开，列表每一项是一条路径。`AAA;BBB;CCC;` 用 `;` 拆，得到 `AAA`、`BBB`、`CCC`（开启滤除空值时末尾空项会丢掉）。
 
 <ModuleParamPreview moduleKey="sys:splitString" />
 
-## 参数
+## 参数说明
 
-【输入】要拆分的文本；
+**输入**：要拆的文本。
 
-【分隔】根据什么内容拆分。比如“AAA;BBB;CCC;”，可以使用“;”作为分隔符拆分。
+**分隔**：按什么切开，默认 `,`。拆多行时可以：
 
-如果需要拆分多行文本，可以使用换行符作为分隔符。可以用两种方式输入换行符：
+- 在分隔里直接回车；
+- 填 `\r\n` 并勾选 **转义分隔符**。
 
--   直接在“分隔”参数中按下回车输入一个换行；
--   使用“\\r\\n”并且选中【转意分隔符】参数。
+Windows 常见 `\r\n`，也有环境只有 `\n`。拆不开就换一种，或只用 `\n`。
 
-注意：Windows和Linux的换行习惯不同，Windows通常使用"\\r\\n"，Linux等通常使用 "\\n\\r"。如果发现拆分不成功，可以尝试更改一下，或者直接使用"\\n"。
+**转义分隔符**：把分隔里的 `\r`、`\n`、`\t` 当成对应字符。默认关闭。
 
-【转义分隔符】是否转换“分隔”参数中的\\r、\\n、\\t为对应的字符。
+**使用多个分隔符拆分列表**：开启后每行一个分隔符。旧稿未写，当前模块已提供。
 
-【滤除空值】如果拆分出来的某一项内容为空，是否丢弃。
+**滤除空值**：拆出空项时是否丢掉。默认开启。
+
+## 输出
+
+- **结果**：拆好的文本列表。
+
+## 限制与排障
+
+拆多行失败时，先确认实际换行是 `\r\n` 还是 `\n`，必要时打开转义后再试。
 
 ## 示例动作
 
--   [排序多行](https://getquicker.net/sharedaction?code=d59d0507-ad21-4783-a83a-08d6d0f9e36e)
+<StepProgramView example="d59d0507-ad21-4783-a83a-08d6d0f9e36e" />
+
+<ShareLinkCard
+  code="d59d0507-ad21-4783-a83a-08d6d0f9e36e"
+  title="排序多行"
+  description="拆成列表后再排序"
+  author="CL"
+/>
+
+## 相关链接
+
+<RelatedDocs
+  items={[
+    {
+      href: '/v2/xaction/modules/joinlist',
+      label: '列表合并成文本',
+      description: '本模块的反向操作。',
+    },
+    {
+      href: '/v2/xaction/modules/each',
+      label: '循环：每个',
+      description: '对拆出的每一项做后续步骤。',
+    },
+    {
+      href: '/v2/xaction/modules/stringprocess',
+      label: '文本处理',
+      description: '排序多行、去空行等。',
+    },
+  ]}
+/>

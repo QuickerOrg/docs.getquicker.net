@@ -9,6 +9,7 @@ export const PREVIEW_TAGS = [
   'NotifyToastPreview',
   'MsgBoxPreview',
   'ChoiceListPreview',
+  'UserInputPreview',
   'WaitWinPreview',
   'VariableDefPreview',
   'StepProgramView',

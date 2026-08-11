@@ -1,0 +1,347 @@
+{
+  "code": "b20f2a88-3bc4-4446-fe0c-08db67a6796c",
+  "title": "加密解密测试",
+  "description": "请以调试方式运行，以观察输入输出",
+  "author": "CL",
+  "revision": 1,
+  "source": "https://getquicker.net/sharedaction?code=b20f2a88-3bc4-4446-fe0c-08db67a6796c",
+  "pulledAt": "2026-08-11T21:09:09.922Z",
+  "variables": [
+    {
+      "name": "text",
+      "type": "Text",
+      "remark": "默认的文本变量"
+    },
+    {
+      "name": "resultBase64",
+      "type": "Text"
+    },
+    {
+      "name": "resultHex",
+      "type": "Text"
+    },
+    {
+      "name": "key",
+      "type": "Text",
+      "remark": "秘钥"
+    },
+    {
+      "name": "iv",
+      "type": "Text"
+    },
+    {
+      "name": "resultLowerHex",
+      "type": "Text"
+    }
+  ],
+  "steps": [
+    {
+      "key": "sys:comment",
+      "inputs": {
+        "note": "DES"
+      }
+    },
+    {
+      "key": "sys:enc",
+      "inputs": {
+        "operation": "enc_des",
+        "inputContentType": "text",
+        "input": "Hello World!",
+        "keyContentType": "text",
+        "key": "12345678",
+        "ivContentType": "text",
+        "iv": "abcdefgh",
+        "stopIfFail": "1"
+      },
+      "outputs": {
+        "resultBase64": "resultBase64",
+        "resultHex": "resultHex"
+      }
+    },
+    {
+      "key": "sys:enc",
+      "inputs": {
+        "operation": "dec_des",
+        "inputContentType": "base64",
+        "input": "{resultBase64}",
+        "keyContentType": "text",
+        "key": "12345678",
+        "ivContentType": "text",
+        "iv": "abcdefgh",
+        "stopIfFail": "1"
+      },
+      "outputs": {
+        "resultBase64": "resultBase64",
+        "resultText": "text"
+      }
+    },
+    {
+      "key": "sys:enc",
+      "inputs": {
+        "operation": "dec_des",
+        "inputContentType": "hex",
+        "input": "{resultHex}",
+        "keyContentType": "text",
+        "key": "12345678",
+        "ivContentType": "text",
+        "iv": "abcdefgh",
+        "stopIfFail": "1"
+      },
+      "outputs": {
+        "resultText": "text",
+        "resultBase64": "resultBase64"
+      }
+    },
+    {
+      "key": "sys:comment",
+      "inputs": {
+        "note": "AES"
+      }
+    },
+    {
+      "key": "sys:assign",
+      "inputs": {
+        "input": "1234567812345678",
+        "stopIfFail": "1"
+      },
+      "outputs": {
+        "output": "key"
+      }
+    },
+    {
+      "key": "sys:assign",
+      "inputs": {
+        "input": "ABCDEFGHABCDEFGH",
+        "stopIfFail": "1"
+      },
+      "outputs": {
+        "output": "iv"
+      }
+    },
+    {
+      "key": "sys:enc",
+      "inputs": {
+        "operation": "enc_aes",
+        "inputContentType": "text",
+        "input": "Hello World!",
+        "keyContentType": "text",
+        "key": "{key}",
+        "ivContentType": "text",
+        "iv": "{iv}",
+        "stopIfFail": "1"
+      },
+      "outputs": {
+        "resultHex": "resultHex",
+        "resultBase64": "resultBase64"
+      }
+    },
+    {
+      "key": "sys:enc",
+      "inputs": {
+        "operation": "dec_aes",
+        "inputContentType": "base64",
+        "input": "{resultBase64}",
+        "keyContentType": "text",
+        "key": "{key}",
+        "ivContentType": "text",
+        "iv": "{iv}",
+        "stopIfFail": "1"
+      },
+      "outputs": {
+        "resultText": "text",
+        "resultBase64": "resultBase64"
+      }
+    },
+    {
+      "key": "sys:enc",
+      "inputs": {
+        "operation": "dec_aes",
+        "inputContentType": "hex",
+        "input": "{resultHex}",
+        "keyContentType": "text",
+        "key": "{key}",
+        "ivContentType": "text",
+        "iv": "{iv}",
+        "stopIfFail": "1"
+      },
+      "outputs": {
+        "resultText": "text",
+        "resultBase64": "resultBase64"
+      }
+    },
+    {
+      "key": "sys:comment",
+      "inputs": {
+        "note": "自用加密解密"
+      }
+    },
+    {
+      "key": "sys:enc",
+      "inputs": {
+        "operation": "local_enc",
+        "inputContentType": "text",
+        "input": "Hello World",
+        "stopIfFail": "1"
+      },
+      "outputs": {
+        "resultBase64": "resultBase64"
+      }
+    },
+    {
+      "key": "sys:enc",
+      "inputs": {
+        "operation": "local_dec",
+        "inputContentType": "base64",
+        "input": "{resultBase64}",
+        "stopIfFail": "1"
+      },
+      "outputs": {
+        "resultText": "text"
+      }
+    },
+    {
+      "key": "sys:comment",
+      "inputs": {
+        "note": "RSA - XML"
+      }
+    },
+    {
+      "key": "sys:enc",
+      "inputs": {
+        "operation": "enc_rsa",
+        "inputContentType": "text",
+        "input": "Hello world!",
+        "pairKey": "<RSAKeyValue>\r\n  <Modulus>xWLa58iyy491rJkVdUPrCKYu6WjpBu61QbXQW8zfi+DmjRx6CSONCusSdFTP4djjQ0hCK282ufJs1Da2X85Zm7vOavUHMxvtus/skdVW64r36WLqmWKv8317VRhPIPaJKsH+lm2TuoPMOAb0rlP7N1mq6ChUtNxzvBblNvscQUqfb9YsORwlDa9MwUVdxk7FtTht69p6S0I/Sr0wmjO+DPofNZs61tJ7p2cngJaU5fhqMqfr+lVJaCUmbvC0ugXaZtIU+EsQT7SxunD0w3PFhFFfQvSEw9DM0juNRC8Ofqyld/ny9ubaF5P0/VRLWrhyC7aOE77u/tAZGP9nHoYrDw==</Modulus>\r\n  <Exponent>AQAB</Exponent>\r\n</RSAKeyValue>",
+        "stopIfFail": "1"
+      },
+      "outputs": {
+        "resultBase64": "resultBase64"
+      }
+    },
+    {
+      "key": "sys:enc",
+      "inputs": {
+        "operation": "dec_rsa",
+        "inputContentType": "base64",
+        "input": "{resultBase64}",
+        "pairKey": "<RSAKeyPair>\r\n  <Modulus>xWLa58iyy491rJkVdUPrCKYu6WjpBu61QbXQW8zfi+DmjRx6CSONCusSdFTP4djjQ0hCK282ufJs1Da2X85Zm7vOavUHMxvtus/skdVW64r36WLqmWKv8317VRhPIPaJKsH+lm2TuoPMOAb0rlP7N1mq6ChUtNxzvBblNvscQUqfb9YsORwlDa9MwUVdxk7FtTht69p6S0I/Sr0wmjO+DPofNZs61tJ7p2cngJaU5fhqMqfr+lVJaCUmbvC0ugXaZtIU+EsQT7SxunD0w3PFhFFfQvSEw9DM0juNRC8Ofqyld/ny9ubaF5P0/VRLWrhyC7aOE77u/tAZGP9nHoYrDw==</Modulus>\r\n  <Exponent>AQAB</Exponent>\r\n  <P>85y0zEBtf/jm5cseXNC7x1PQhXXpQfAQ/bK57snkFeXUbSHe0EGLj5H7FD7uZrADQW3PhJGuHVVdGhSuEOuWmkils6N8APawfEu1T7CrGmfa0YTsua37dfCaZchx/v+VuSQInCncB/Sknq2Z4eQyxCM/ldwUAWAsgUMQwlborfM=</P>\r\n  <Q>z2xjaeAV3u6JnyrI61YJzpG+3qGEXe1yLF8PWmdzDbL9VZm3/yKtCtxPXjeknTm1XPtXMJeU4LVr7lksLDUou3hZqfdHbX6liH3DLUjAceC+9xL4bplI262ecPOsvH62N2DVrbovaEdsp8lahQB+xtT5M6MpgUgPkonFE4VSaXU=</Q>\r\n  <DP>o0Tse1PWz4TuoyX9xHD02QOYZkn/Ofz+NjnZmWtf3Tk6pKWlome7dE5/OzNuLg5bMDe7c/r6+ZfjnP4tJxPtzJtRytKP4klzQOqwqqcaFclzAycWTN+I/6NwpzSvChsbqoi26Iq5d++DgQGSd62sRH3nOLXWBpIBYeSjz8vVh/c=</DP>\r\n  <DQ>UBSSlQ+0oesKKu9Dvsfq5VuTizRkfDbt+39/1/FUlBdkgyXjyZbDpAvGgKOO5DyhbpKC6Pm8uryQPOckjLTBUw913o7ffsCEfBvBvLv3wH96er1SOLDpVhbDsuwA5o0tIFg8ZuQY5XOd2XF9hxfX2j/jLjJyFb2SdYrHEXBJjvk=</DQ>\r\n  <InverseQ>neerbNjiRba8tFWtsbI8UmFQtR0cJ9MA5LaDL+Dk5iPxzKYUG91vmthgQGC3i13xvb2J5jwLBt07TVIa06c7zJ/K8J9CByh8B4JW3/ngGmXK+ojFpifP+Z1QJp4kGoKPVwVVi+moM8U8qMCFRerOxIXitrg3/I9ERxcfGSG9q/o=</InverseQ>\r\n  <D>boi5RWsilNO1df4UAiMSjzlgs9zIAdXTMwT5tS65UL+U3BjCTjPWW/Lf1r1X3IV0Xs0sIN6aqu6S+xPYdTY8//Tf1w14BqrxKdgeBlyN3EFqKwv1jAezuIrgcfq29SKaFZOlWd/rBlugFQ/wHV9yIsDX8EIFjXKWbRH1MiDU5cpDglWGZqfG7svhXoVFXp2YZJWop4h9mU+UNtx/Dj3bUIj5oGqxMO/zK+RjjUQKAPhIyoLNi67O/W0EcF+Aghj3V1T00i+N95dlCVxa2IxaYJKikRB9HlIc/Dc4uGFL2b5OFoW63JB6ay53RVCVw3KCHGwllXQUkzc48Dmm2pToYQ==</D>\r\n</RSAKeyPair>",
+        "stopIfFail": "1"
+      },
+      "outputs": {
+        "resultText": "text"
+      }
+    },
+    {
+      "key": "sys:comment",
+      "inputs": {
+        "note": "RSA - PEM"
+      },
+      "disabled": true
+    },
+    {
+      "key": "sys:enc",
+      "inputs": {
+        "operation": "enc_rsa",
+        "inputContentType": "text",
+        "input": "Hello world!",
+        "pairKey": "<RSAKeyValue>\r\n  <Modulus>y5zGqveJItvP6TlqunI7ULRgDbohOM9/pSl3RMWwTQypnxnzktuj2oKVVG7lKBUKhrhA4nP/ZPKYUQKcfmqTow==</Modulus>\r\n  <Exponent>AQAB</Exponent>\r\n</RSAKeyValue>",
+        "stopIfFail": "1"
+      },
+      "outputs": {
+        "resultBase64": "resultBase64"
+      }
+    },
+    {
+      "key": "sys:enc",
+      "inputs": {
+        "operation": "dec_rsa",
+        "inputContentType": "base64",
+        "input": "{resultBase64}",
+        "pairKey": "<RSAKeyPair>\r\n  <Modulus>y5zGqveJItvP6TlqunI7ULRgDbohOM9/pSl3RMWwTQypnxnzktuj2oKVVG7lKBUKhrhA4nP/ZPKYUQKcfmqTow==</Modulus>\r\n  <Exponent>AQAB</Exponent>\r\n  <P>85liSGqPE12MrEJQYNr975Yw3KRumEkh3q7D1JawAr8=</P>\r\n  <Q>1fpHkkfnkpvrHHhlVn94jq9XUJ/voF2ENdsd6LEKvB0=</Q>\r\n  <DP>lNPZYDT6RPKax4OcaBBjpMU2BRfRGelUcCCGNJP75TE=</DP>\r\n  <DQ>0TX09mxBWZIC7YI1qr3VVMTRPS4y73ufwbxsYM+A7G0=</DQ>\r\n  <InverseQ>nFa2Xl05zEQEA4rzsOu9ci6YpypJedZIbjPibwB/heQ=</InverseQ>\r\n  <D>ybxipqAtcqlBfT2TPnnRxSuCA/fH1MbaHKVR84S/IgZFZ2/AZgwJ8v/FKgXsmM6e/jOJLFc9G+0pn5E1N7TM6Q==</D>\r\n</RSAKeyPair>",
+        "stopIfFail": "1"
+      },
+      "outputs": {
+        "resultText": "text"
+      }
+    },
+    {
+      "key": "sys:comment",
+      "inputs": {
+        "note": "签名"
+      }
+    },
+    {
+      "key": "sys:enc",
+      "inputs": {
+        "operation": "hash_hmac",
+        "hmacAlgorithm": "HMACSHA1",
+        "inputContentType": "text",
+        "input": "hello world！",
+        "keyContentType": "text",
+        "key": "12345678",
+        "stopIfFail": "1"
+      },
+      "outputs": {
+        "resultBase64": "resultBase64",
+        "resultLowerHex": "resultLowerHex",
+        "resultHex": "resultHex"
+      }
+    },
+    {
+      "key": "sys:enc",
+      "inputs": {
+        "operation": "hash",
+        "inputContentType": "text",
+        "input": "hello world！",
+        "hashType": "MD5",
+        "stopIfFail": "1"
+      },
+      "outputs": {
+        "resultHex": "resultHex",
+        "resultBase64": "resultBase64"
+      }
+    },
+    {
+      "key": "sys:enc",
+      "inputs": {
+        "operation": "hash",
+        "inputContentType": "text",
+        "input": "hello world！",
+        "hashType": "SHA1",
+        "stopIfFail": "1"
+      },
+      "outputs": {
+        "resultHex": "resultHex",
+        "resultBase64": "resultBase64"
+      }
+    },
+    {
+      "key": "sys:enc",
+      "inputs": {
+        "operation": "hash",
+        "inputContentType": "text",
+        "input": "hello world！",
+        "hashType": "SHA256",
+        "stopIfFail": "1"
+      },
+      "outputs": {
+        "resultHex": "resultHex",
+        "resultBase64": "resultBase64"
+      }
+    },
+    {
+      "key": "sys:enc",
+      "inputs": {
+        "operation": "hash",
+        "inputContentType": "text",
+        "input": "hello world！",
+        "hashType": "SHA512",
+        "stopIfFail": "1"
+      },
+      "outputs": {
+        "resultHex": "resultHex",
+        "resultBase64": "resultBase64"
+      }
+    }
+  ]
+}

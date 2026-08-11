@@ -1,0 +1,59 @@
+{
+  "code": "d5470b3f-cae1-4388-75b8-08d709af9122",
+  "title": "示例：每个",
+  "description": "对列表里的每项进行显示并等待1s",
+  "author": "CL",
+  "revision": 0,
+  "source": "https://getquicker.net/sharedaction?code=d5470b3f-cae1-4388-75b8-08d709af9122",
+  "pulledAt": "2026-08-11T21:27:35.394Z",
+  "variables": [
+    {
+      "name": "count",
+      "type": "Number"
+    },
+    {
+      "name": "list",
+      "type": "List",
+      "remark": "列表"
+    },
+    {
+      "name": "item",
+      "type": "Text",
+      "remark": "列表中的每一项"
+    }
+  ],
+  "steps": [
+    {
+      "key": "sys:comment",
+      "inputs": {
+        "note": "list是列表变量，设置了默认值。\r\n使用“每个”对列表里的每一项进行操作。"
+      }
+    },
+    {
+      "key": "sys:each",
+      "inputs": {
+        "input": "{list}"
+      },
+      "outputs": {
+        "item": "item",
+        "count": "count"
+      },
+      "ifSteps": [
+        {
+          "key": "sys:notify",
+          "inputs": {
+            "msg": "$$序号：{count}  值：{item}",
+            "type": "Info"
+          }
+        },
+        {
+          "key": "sys:delay",
+          "inputs": {
+            "delayMs": "1000",
+            "monitorWaitWin": "0"
+          }
+        }
+      ]
+    }
+  ]
+}

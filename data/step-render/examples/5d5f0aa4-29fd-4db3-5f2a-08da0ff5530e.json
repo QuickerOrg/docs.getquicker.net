@@ -1,0 +1,290 @@
+{
+  "code": "5d5f0aa4-29fd-4db3-5f2a-08da0ff5530e",
+  "title": "模板生成Excel",
+  "description": "根据汇总表和模板批量生成文件",
+  "author": "CL",
+  "revision": 2,
+  "source": "https://getquicker.net/sharedaction?code=5d5f0aa4-29fd-4db3-5f2a-08da0ff5530e",
+  "pulledAt": "2026-08-11T21:28:47.217Z",
+  "variables": [
+    {
+      "name": "dataSourceFilePath",
+      "type": "Text",
+      "remark": "汇总表路径"
+    },
+    {
+      "name": "templateFilePath",
+      "type": "Text",
+      "remark": "模板文件路径"
+    },
+    {
+      "name": "outputFolder",
+      "type": "Text",
+      "remark": "输出文件路径"
+    },
+    {
+      "name": "fileNameField",
+      "type": "Text",
+      "remark": "文件名列"
+    },
+    {
+      "name": "autoDeleteOld",
+      "type": "Boolean",
+      "remark": "是否删除旧文件"
+    },
+    {
+      "name": "table",
+      "type": "Table",
+      "remark": "总表"
+    },
+    {
+      "name": "rowCount",
+      "type": "Integer",
+      "remark": "行数"
+    },
+    {
+      "name": "rowIndex",
+      "type": "Integer",
+      "remark": "行号"
+    },
+    {
+      "name": "rowDict",
+      "type": "Dict",
+      "remark": "每一行数据的词典"
+    },
+    {
+      "name": "rowFilePath",
+      "type": "Text",
+      "remark": "对某一行数据生成的目标路径"
+    },
+    {
+      "name": "workbook",
+      "type": "Any",
+      "remark": "工作簿"
+    },
+    {
+      "name": "sheet",
+      "type": "Any",
+      "remark": "工作表"
+    },
+    {
+      "name": "autoPrint",
+      "type": "Boolean"
+    }
+  ],
+  "steps": [
+    {
+      "key": "sys:comment",
+      "inputs": {
+        "note": "每次启动时允许用户选择模板和总表文件。"
+      }
+    },
+    {
+      "key": "sys:form",
+      "inputs": {
+        "title": "填写表单",
+        "formDef": "{\"Fields\":[{\"FieldKey\":\"dataSourceFilePath\",\"Label\":\"汇总表路径\",\"HelpText\":\"第一个工作表存储汇总数据。第一行为列名，列名单元格里面不要有空格。\",\"HelpLink\":null,\"InputMethod\":1,\"SelectionItems\":\"\",\"IsRequired\":true,\"MinValue\":\"\",\"MaxValue\":\"\",\"Pattern\":\"\",\"MaxLength\":0,\"ImeState\":null,\"TextTools\":\"SelectSingleFile\",\"VisibleExpression\":\"\"},{\"FieldKey\":\"templateFilePath\",\"Label\":\"模板文件路径\",\"HelpText\":\"模板文件中使用{{列名}}作为待替换的占位符。\",\"HelpLink\":null,\"InputMethod\":1,\"SelectionItems\":\"\",\"IsRequired\":true,\"MinValue\":\"\",\"MaxValue\":\"\",\"Pattern\":\"\",\"MaxLength\":0,\"ImeState\":null,\"TextTools\":\"SelectSingleFile\",\"VisibleExpression\":\"\"},{\"FieldKey\":\"outputFolder\",\"Label\":\"输出文件路径\",\"HelpText\":\"输出文件保存的目录，需清理里面的文件避免生成失败。\",\"HelpLink\":null,\"InputMethod\":1,\"SelectionItems\":\"\",\"IsRequired\":true,\"MinValue\":\"\",\"MaxValue\":\"\",\"Pattern\":\"\",\"MaxLength\":0,\"ImeState\":null,\"TextTools\":\"SelectSingleFolder\",\"VisibleExpression\":\"\"},{\"FieldKey\":\"fileNameField\",\"Label\":\"文件名列名\",\"HelpText\":\"指定作为文件名的列。%Index表示行序号。\",\"HelpLink\":null,\"InputMethod\":1,\"SelectionItems\":\"\",\"IsRequired\":true,\"MinValue\":\"\",\"MaxValue\":\"\",\"Pattern\":\"\",\"MaxLength\":0,\"ImeState\":null,\"TextTools\":\"\",\"VisibleExpression\":\"\"},{\"FieldKey\":\"autoDeleteOld\",\"Label\":\"自动删除旧文件\",\"HelpText\":\"如果输出位置已经存在旧文件会造成失败。\",\"HelpLink\":null,\"InputMethod\":6,\"SelectionItems\":\"\",\"IsRequired\":false,\"MinValue\":\"\",\"MaxValue\":\"\",\"Pattern\":\"\",\"MaxLength\":0,\"ImeState\":null,\"TextTools\":\"\",\"VisibleExpression\":\"\"},{\"FieldKey\":\"autoPrint\",\"Label\":\"自动打印\",\"HelpText\":\"自动打印生成的文件（本选项不保存）\",\"HelpLink\":null,\"InputMethod\":6,\"SelectionItems\":\"\",\"IsRequired\":false,\"MinValue\":\"\",\"MaxValue\":\"\",\"Pattern\":\"\",\"MaxLength\":0,\"ImeState\":null,\"TextTools\":\"\",\"VisibleExpression\":\"\"}]}",
+        "help": "请设置好停止动作快捷键，以便于出现异常情况的时候停止动作。",
+        "titleColumnWidth": "100",
+        "windowWidth": "700",
+        "restoreFocus": "0",
+        "topMost": "false",
+        "stopIfFail": "1"
+      }
+    },
+    {
+      "key": "sys:comment",
+      "inputs": {
+        "note": "将汇总表加载到表格中"
+      }
+    },
+    {
+      "key": "sys:tableoperation",
+      "inputs": {
+        "table": "{table}",
+        "type": "importExcel",
+        "excelFilePath": "{dataSourceFilePath}",
+        "startRowNum": "1",
+        "stopIfFail": "1"
+      },
+      "outputs": {
+        "rowCount": "rowCount"
+      }
+    },
+    {
+      "key": "sys:comment",
+      "inputs": {
+        "note": "遍历表格的每一行，将数据写入rawDict中，并对该行数据进行处理"
+      }
+    },
+    {
+      "key": "sys:each",
+      "inputs": {
+        "input": "$={table}.Rows",
+        "useMultiThread": "0"
+      },
+      "outputs": {
+        "item": "rowDict",
+        "count": "rowIndex"
+      },
+      "ifSteps": [
+        {
+          "key": "sys:comment",
+          "inputs": {
+            "note": "生成输出文件的完整路径"
+          }
+        },
+        {
+          "key": "sys:assign",
+          "inputs": {
+            "input": "$= \r\nvar fileName = {fileNameField} == \"%Index\" \r\n\t? ({rowIndex} + 2).ToString()\r\n\t: {rowDict}[{fileNameField}];\r\n\t\r\nreturn Path.Combine({outputFolder}, fileName +\".xlsx\");\t",
+            "stopIfFail": "1"
+          },
+          "outputs": {
+            "output": "rowFilePath"
+          }
+        },
+        {
+          "key": "sys:comment",
+          "inputs": {
+            "note": "根据设定，删除可能存在的旧文件"
+          }
+        },
+        {
+          "key": "sys:simpleIf",
+          "inputs": {
+            "condition": "{autoDeleteOld}"
+          },
+          "ifSteps": [
+            {
+              "key": "sys:fileOperation",
+              "inputs": {
+                "type": "deleteFile",
+                "path": "{rowFilePath}",
+                "stopIfFail": "0"
+              }
+            }
+          ]
+        },
+        {
+          "key": "sys:comment",
+          "inputs": {
+            "note": "将模板复制一份"
+          }
+        },
+        {
+          "key": "sys:fileOperation",
+          "inputs": {
+            "type": "copyTo",
+            "path": "{templateFilePath}",
+            "dstPath": "{rowFilePath}",
+            "overwrite": "0",
+            "stopIfFail": "1"
+          }
+        },
+        {
+          "key": "sys:comment",
+          "inputs": {
+            "note": "读取结果文件（模板复制出来的一个副本）"
+          }
+        },
+        {
+          "key": "sys:excelreadwrite",
+          "inputs": {
+            "operation": "load",
+            "filePath": "{rowFilePath}",
+            "stopIfFail": "1"
+          },
+          "outputs": {
+            "workbook": "workbook",
+            "sheet": "sheet"
+          }
+        },
+        {
+          "key": "sys:comment",
+          "inputs": {
+            "note": "将行数据填充到文件中"
+          }
+        },
+        {
+          "key": "sys:excelreadwrite",
+          "inputs": {
+            "operation": "batchReplace",
+            "worksheet": "{sheet}",
+            "replaceDict": "{rowDict}",
+            "replacePrefixSuffix": "{{\r\n}}",
+            "stopIfFail": "1"
+          }
+        },
+        {
+          "key": "sys:comment",
+          "inputs": {
+            "note": "保存文件"
+          }
+        },
+        {
+          "key": "sys:excelreadwrite",
+          "inputs": {
+            "operation": "save",
+            "workbook": "{workbook}",
+            "stopIfFail": "1"
+          }
+        },
+        {
+          "key": "sys:comment",
+          "inputs": {
+            "note": "根据设定打印文件"
+          }
+        },
+        {
+          "key": "sys:simpleIf",
+          "inputs": {
+            "condition": "{autoPrint}"
+          },
+          "ifSteps": [
+            {
+              "key": "sys:shelloperation",
+              "inputs": {
+                "operation": "execverb",
+                "pathList": "{rowFilePath}",
+                "verb": "print",
+                "stopIfFail": "1"
+              }
+            }
+          ]
+        },
+        {
+          "key": "sys:break",
+          "disabled": true
+        }
+      ]
+    },
+    {
+      "key": "sys:notify",
+      "inputs": {
+        "msg": "完成",
+        "maxLines": "0",
+        "type": "Info",
+        "style": "Default"
+      }
+    },
+    {
+      "key": "sys:comment",
+      "inputs": {
+        "note": "打开输出文件所在的文件夹"
+      }
+    },
+    {
+      "key": "sys:run",
+      "inputs": {
+        "path": "{outputFolder}",
+        "runas": "false",
+        "stopIfFail": "1",
+        "setWorkingDir": "1",
+        "windowStyle": "0",
+        "waitInputIdle": "false",
+        "waitExit": "false"
+      }
+    }
+  ]
+}

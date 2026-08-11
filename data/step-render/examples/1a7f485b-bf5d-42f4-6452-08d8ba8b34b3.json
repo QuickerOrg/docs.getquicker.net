@@ -1,0 +1,79 @@
+{
+  "code": "1a7f485b-bf5d-42f4-6452-08d8ba8b34b3",
+  "title": "节约墨水",
+  "description": "将老师拍摄的作业图片加亮",
+  "author": "CL",
+  "revision": 0,
+  "source": "https://getquicker.net/sharedaction?code=1a7f485b-bf5d-42f4-6452-08d8ba8b34b3",
+  "pulledAt": "2026-08-11T21:27:25.978Z",
+  "variables": [
+    {
+      "name": "text",
+      "type": "Text",
+      "remark": "默认的文本变量"
+    },
+    {
+      "name": "path",
+      "type": "Text"
+    },
+    {
+      "name": "fileList",
+      "type": "List"
+    },
+    {
+      "name": "prefix",
+      "type": "Text"
+    },
+    {
+      "name": "savePath",
+      "type": "Text"
+    }
+  ],
+  "steps": [
+    {
+      "key": "sys:getSelectedFiles",
+      "inputs": {
+        "stopIfFail": "1"
+      },
+      "outputs": {
+        "files": "fileList",
+        "firstFile": "path"
+      }
+    },
+    {
+      "key": "sys:each",
+      "inputs": {
+        "input": "{fileList}",
+        "useMultiThread": "0",
+        "threadDelay": "5"
+      },
+      "outputs": {
+        "item": "path"
+      },
+      "ifSteps": [
+        {
+          "key": "sys:assign",
+          "inputs": {
+            "input": "$= Path.Combine(Path.GetDirectoryName({path}), {prefix}+Path.GetFileName({path}))",
+            "stopIfFail": "1"
+          },
+          "outputs": {
+            "output": "savePath"
+          }
+        },
+        {
+          "key": "sys:imgProcess",
+          "inputs": {
+            "type": "Filters",
+            "resizePercent": "50",
+            "maxWidth": "0",
+            "maxHeight": "0",
+            "rotation": "0",
+            "filterParams": "$$\r\nLoad:{path}\r\nBrightness:30\r\nContrast:30\r\n//GaussianSharpen:3\r\n//Filter:3\r\nAutoRotate:\r\nWhiteThreshold:220\r\n//ReplaceColor:#edeae1;#FFFFFF;40\r\nSave:{savePath}",
+            "stopIfFail": "1"
+          }
+        }
+      ]
+    }
+  ]
+}

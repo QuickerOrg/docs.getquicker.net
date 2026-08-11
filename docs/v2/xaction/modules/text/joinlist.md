@@ -1,13 +1,13 @@
 ---
 title: "列表合并成文本"
-description: "将列表拼接为一段文本"
+description: "把列表各项拼成一段文本，中间可插入分隔符。"
 slug: "/v2/xaction/modules/joinlist"
 sidebar_label: "列表合并成文本"
 sidebar_position: 40
 quickerDocKey: "xaction/module/sys:joinList"
 comments: true
 moduleKey: "sys:joinList"
-docStatus: "migrated-unreviewed"
+docStatus: "reviewed"
 metadataGeneratedAt: "2026-08-03 20:08:03"
 legacyDocId: 2113748
 legacyContentUpdatedAt: "2020-04-02T03:01:27.000Z"
@@ -15,34 +15,47 @@ legacyContentUpdatedAt: "2020-04-02T03:01:27.000Z"
 
 # 列表合并成文本
 
-将列表拼接为一段文本
+把列表里的各项拼成一段文本。要把一段文本拆回列表，用 [拆分文本为列表](/v2/xaction/modules/splitstring)。
 
 ## 当前模块定义
 
 <XActionModuleMeta moduleKey="sys:joinList" />
 
-使用列表里的各项拼接成一段文本。
+## 概述
 
-此操作的相反操作是“[文本拆分成列表](/v2/xaction/modules/splitstring)”。
+列表 `AAA`、`BBB`、`CCC`，分隔文本为 `，`，结果是 `AAA，BBB，CCC`。要每项一行，分隔文本里直接回车即可。
 
 <ModuleParamPreview moduleKey="sys:joinList" />
 
-## 参数
+## 参数说明
 
-【输入】要合并成文本的列表变量；
+**输入**：要拼接的列表。
 
-【分隔文本】拼接时两项中间插入的字符；如果要合并成多行文本每个一行，分隔文本可以直接输入一个回车换行。
+**分隔文本**：两项中间插入的内容，默认 `,`。
 
-【转义“分隔文本”】将“分隔文本”参数中的\\r、\\n、\\t转义处理成换行和tab字符。
+**转义“分隔文本”**：把分隔文本里的 `\r`、`\n`、`\t` 当成换行和 Tab。默认关闭。
 
-### 输出
+## 输出
 
-【结果】拼接成的文本。
+- **结果**：拼接后的文本。
 
-## 示例
+## 相关链接
 
-假设列表中各项为“AAA”“BBB”“CCC”，分隔符为“，”，则拼接的结果为：“AAA，BBB，CCC”。
+<RelatedDocs
+  items={[
+    {
+      href: '/v2/xaction/modules/splitstring',
+      label: '拆分文本为列表',
+      description: '本模块的反向操作。',
+    },
+    {
+      href: '/v2/xaction/modules/each',
+      label: '循环：每个',
+      description: '拆开之后逐项处理。',
+    },
+  ]}
+/>
 
 ## 更新历史
 
--   1.5.7 增加 转义“分隔文本” 参数。
+- 1.5.7 增加「转义“分隔文本”」参数。

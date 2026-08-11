@@ -1,21 +1,24 @@
 {
-  "generatedAt": "2026-08-11T12:36:43.962Z",
-  "count": 303,
+  "generatedAt": "2026-08-11T20:34:56.032Z",
+  "count": 328,
   "byComponent": {
-    "ContextMenuPreview": 7,
-    "ModuleParamPreview": 274,
-    "StepProgramView": 4,
+    "ContextMenuPreview": 8,
+    "ModuleParamPreview": 283,
+    "StepProgramView": 10,
     "TableFieldPreview": 2,
     "VariableDefPreview": 3,
-    "MsgBoxPreview": 1,
+    "ClickIndicatorPreview": 1,
+    "CoordDiagram": 1,
+    "MsgBoxPreview": 4,
     "NotifyToastPreview": 4,
-    "ChoiceListPreview": 3,
+    "UserInputPreview": 1,
+    "ChoiceListPreview": 6,
     "TableDataPreview": 4,
     "WaitWinPreview": 1
   },
   "bySource": {
-    "orphan": 298,
-    "direct": 5
+    "orphan": 314,
+    "direct": 14
   },
   "items": [
     {
@@ -30,9 +33,9 @@
       "component": "ContextMenuPreview",
       "props": {
         "openPath": "[\"设置\",\"设置项1\"]",
-        "items": "[{\"label\":\"编辑\",\"icon\":\"✎\",\"iconColor\":\"#2b7abf\"},{\"label\":\"调试运行\",\"icon\":\"▶\",\"iconColor\":\"#ed6c02\"},{\"label\":\"设置\",\"icon\":\"⚙\",\"iconColor\":\"#d32f2f\",\"children\":[{\"label\":\"设置项1\",\"icon\":\"⚙\",\"iconColor\":\"#d32f2f\",\"children\":[{\"label\":\"设置项11\",\"icon\":\"⚙\",\"iconColor\":\"#d32f2f\"}]},{\"label\":\"设置项2\",\"icon\":\"⚙\",\"iconColor\":\"#d32f2f\",\"children\":[{\"label\":\"设置项21\"}]}]},{\"label\":\"悬浮\",\"icon\":\"⇪\",\"iconColor\":\"#2b7abf\",\"children\":[{\"label\":\"…\"}]},{\"label\":\"分享\",\"icon\":\"⛓\",\"iconColor\":\"#2b7abf\",\"children\":[{\"label\":\"…\"}]}]"
+        "items": "[{\"label\":\"编辑\",\"icon\":\"fa:Light_Pen\",\"iconColor\":\"#2b7abf\"},{\"label\":\"调试运行\",\"icon\":\"fa:Light_Play:#f75711\"},{\"label\":\"设置\",\"icon\":\"fa:Light_Cog:#FF0000\",\"children\":[{\"label\":\"设置项1\",\"icon\":\"fa:Light_Cog:#FF0000\",\"children\":[{\"label\":\"设置项11\",\"icon\":\"fa:Light_Cog:#FF0000\"}]},{\"label\":\"设置项2\",\"icon\":\"fa:Light_Cog:#FF0000\",\"children\":[{\"label\":\"设置项21\"}]}]},{\"label\":\"悬浮\",\"icon\":\"fa:Light_UfoBeam\",\"iconColor\":\"#2b7abf\",\"children\":[{\"label\":\"…\"}]},{\"label\":\"分享\",\"icon\":\"fa:Light_ShareAlt\",\"iconColor\":\"#2b7abf\",\"children\":[{\"label\":\"…\"}]}]"
       },
-      "sourceSnippet": "<ContextMenuPreview openPath={['设置', '设置项1']} items={[ {label: '编辑', icon: '✎', iconColor: '#2b7abf'}, {label: '调试运行', icon: '▶', iconColor: '#ed6c02'}, { label: '设置', icon: '⚙', iconColor: '#d32f2f', children: [ { label: '设置项1', icon: '⚙',"
+      "sourceSnippet": "<ContextMenuPreview openPath={['设置', '设置项1']} items={[ {label: '编辑', icon: 'fa:Light_Pen', iconColor: '#2b7abf'}, {label: '调试运行', icon: 'fa:Light_Play:#f75711'}, { label: '设置', icon: 'fa:Light_Cog:#FF0000', children: [ { label: '设置项1', icon"
     },
     {
       "id": "bce9506381e7411a",
@@ -235,6 +238,53 @@
       "sourceSnippet": "<ModuleParamPreview moduleKey=\"sys:comment\" focusKeys={['note']} values={{note: '要备注的内容\\n可以多行'}} />"
     },
     {
+      "id": "70c32927ed61bd95",
+      "source": "direct",
+      "page": "docs/v2/xaction/modules/basic/delay.md",
+      "pageUrl": "/v2/xaction/modules/delay",
+      "title": "等待时间",
+      "moduleKey": "sys:delay",
+      "image": "",
+      "imageName": "（直接写组件）",
+      "component": "ContextMenuPreview",
+      "props": {
+        "openPath": "[\"插入延时(_T)\"]",
+        "items": "[{\"label\":\"复制(_C)\",\"icon\":\"fa:Light_Copy:#6aaded\"},{\"label\":\"剪切(_X)\",\"icon\":\"fa:Light_Cut:#6aaded\"},{\"type\":\"separator\"},{\"label\":\"插入延时(_T)\",\"icon\":\"fa:Light_Clock:#6aaded\",\"tooltip\":\"选择一个模块，在模块后插入延时；\\n选择多个模块，在模块中间插入延时；\"},{\"label\":\"放入...(_F)\",\"icon\":\"fa:Light_ObjectGroup:#6aaded\",\"children\":[{\"label\":\"步骤组(_G)\",\"icon\":\"fa:Light_LayerGroup:#6aaded\"},{\"label\":\"循环：每个(_E)\",\"icon\":\"fa:Light_Repeat:#6aaded\"},{\"label\":\"循环：重复(_R)\",\"icon\":\"fa:Light_Repeat:#6aaded\"},{\"label\":\"如果/否则 的 “如果” 分支(_I)\",\"icon\":\"fa:Light_ProjectDiagram:#6aaded\"},{\"label\":\"如果/否则 的 “否则” 分支(_F)\",\"icon\":\"fa:Light_ProjectDiagram:#6aaded\"},{\"label\":\"如果(_S)\",\"icon\":\"fa:Light_ProjectDiagram:#6aaded\"}]},{\"label\":\"转换成子程序(_S)\",\"icon\":\"fa:Light_Cube:#6aaded\"},{\"label\":\"运行(_R)\",\"icon\":\"fa:Light_Play:#f5b042\"},{\"label\":\"停用/取消停用(_P)\",\"icon\":\"fa:Light_Ban:#E00000\"}]",
+        "data": "{\"steps\":[{\"key\":\"sys:getWindowTitle\"},{\"key\":\"sys:sendMessage\",\"note\":\"最大化窗口\"},{\"key\":\"sys:delay\",\"inputs\":{\"delayMs\":\"1000\"},\"note\":\"等待 1000 ms\"},{\"key\":\"sys:sendMessage\",\"note\":\"最小化窗口\"},{\"key\":\"sys:delay\",\"inputs\":{\"delayMs\":\"1000\"},\"note\":\"等待 1000 ms\"},{\"key\":\"sys:sendMessage\",\"note\":\"还原\"}]}"
+      },
+      "sourceSnippet": "<ContextMenuPreview openPath={['插入延时(_T)']} items={[ {label: '复制(_C)', icon: 'fa:Light_Copy:#6aaded'}, {label: '剪切(_X)', icon: 'fa:Light_Cut:#6aaded'}, {type: 'separator'}, { label: '插入延时(_T)', icon: 'fa:Light_Clock:#6aaded', tooltip: '选择一个"
+    },
+    {
+      "id": "8c0e446992244eaa",
+      "source": "direct",
+      "page": "docs/v2/xaction/modules/basic/delay.md",
+      "pageUrl": "/v2/xaction/modules/delay",
+      "title": "等待时间",
+      "moduleKey": "sys:delay",
+      "image": "",
+      "imageName": "（直接写组件）",
+      "component": "StepProgramView",
+      "props": {
+        "data": "{\"steps\":[{\"key\":\"sys:getWindowTitle\"},{\"key\":\"sys:sendMessage\",\"note\":\"最大化窗口\"},{\"key\":\"sys:delay\",\"inputs\":{\"delayMs\":\"1000\"},\"note\":\"等待 1000 ms\"},{\"key\":\"sys:sendMessage\",\"note\":\"最小化窗口\"},{\"key\":\"sys:delay\",\"inputs\":{\"delayMs\":\"1000\"},\"note\":\"等待 1000 ms\"},{\"key\":\"sys:sendMessage\",\"note\":\"还原\"}]}"
+      },
+      "sourceSnippet": "<StepProgramView selectedIndexes={[1, 2, 3, 4]} data={{ steps: [ {key: 'sys:getWindowTitle'}, {key: 'sys:sendMessage', note: '最大化窗口'}, {key: 'sys:delay', inputs: {delayMs: '1000'}, note: '等待 1000 ms'}, {key: 'sys:sendMessage', note: '最小化窗口'"
+    },
+    {
+      "id": "81300bb075a0c85b",
+      "source": "direct",
+      "page": "docs/v2/xaction/modules/basic/delay.md",
+      "pageUrl": "/v2/xaction/modules/delay",
+      "title": "等待时间",
+      "moduleKey": "sys:delay",
+      "image": "",
+      "imageName": "（直接写组件）",
+      "component": "StepProgramView",
+      "props": {
+        "data": "{\"steps\":[{\"key\":\"sys:delay\",\"inputs\":{\"delayMs\":\"100\"}}]}"
+      },
+      "sourceSnippet": "<StepProgramView wheelDelay={{from: 100, to: 350, step: 50}} data={{ steps: [{key: 'sys:delay', inputs: {delayMs: '100'}}], }} />"
+    },
+    {
       "id": "946b2a2bad4dfb58",
       "source": "orphan",
       "page": "docs/v2/xaction/modules/basic/delay.md",
@@ -250,6 +300,36 @@
       "sourceSnippet": "<ModuleParamPreview moduleKey=\"sys:delay\" />"
     },
     {
+      "id": "6613f66a8e77dc5b",
+      "source": "orphan",
+      "page": "docs/v2/xaction/modules/basic/delay.md",
+      "pageUrl": "/v2/xaction/modules/delay",
+      "title": "等待时间",
+      "moduleKey": "sys:delay",
+      "image": "docs/v2/xaction/modules/basic/img/delay-002-98f9e35ed4.png",
+      "imageName": "delay-002-98f9e35ed4.png",
+      "component": "ModuleParamPreview",
+      "props": {
+        "moduleKey": "sys:delay"
+      },
+      "sourceSnippet": "<ModuleParamPreview moduleKey=\"sys:delay\" />"
+    },
+    {
+      "id": "c948169fba347f50",
+      "source": "direct",
+      "page": "docs/v2/xaction/modules/basic/get_selected_text.md",
+      "pageUrl": "/v2/xaction/modules/get_selected_text",
+      "title": "获取选中的文本",
+      "moduleKey": "sys:getSelectedText",
+      "image": "",
+      "imageName": "（直接写组件）",
+      "component": "StepProgramView",
+      "props": {
+        "data": "{\"steps\":[{\"key\":\"sys:getSelectedText\",\"outputs\":{\"output\":\"text\",\"isSuccess\":\"ok\"}}]}"
+      },
+      "sourceSnippet": "<StepProgramView data={{ steps: [ { key: 'sys:getSelectedText', outputs: {output: 'text', isSuccess: 'ok'}, }, ], }} />"
+    },
+    {
       "id": "a8bb0bec21948e15",
       "source": "orphan",
       "page": "docs/v2/xaction/modules/basic/get_selected_text.md",
@@ -260,9 +340,82 @@
       "imageName": "get_selected_text-001-a4ea572192.png",
       "component": "ModuleParamPreview",
       "props": {
-        "moduleKey": "sys:getSelectedText"
+        "moduleKey": "sys:getSelectedText",
+        "outputVars": "{\"output\":\"text\",\"isSuccess\":\"ok\"}"
       },
-      "sourceSnippet": "<ModuleParamPreview moduleKey=\"sys:getSelectedText\" />"
+      "sourceSnippet": "<ModuleParamPreview moduleKey=\"sys:getSelectedText\" outputVars={{output: 'text', isSuccess: 'ok'}} />"
+    },
+    {
+      "id": "bcd159de62e3d50c",
+      "source": "direct",
+      "page": "docs/v2/xaction/modules/basic/keyinput.md",
+      "pageUrl": "/v2/xaction/modules/keyinput",
+      "title": "模拟按键A（录入）",
+      "moduleKey": "sys:keyInput",
+      "image": "",
+      "imageName": "（直接写组件）",
+      "component": "StepProgramView",
+      "props": {
+        "data": "{\"steps\":[{\"key\":\"sys:keyInput\",\"note\":\"LeftAlt+ [ H ]\",\"inputs\":{\"keys\":\"{\\\"CtrlKeys\\\":[164],\\\"Keys\\\":[72]}\"}}]}"
+      },
+      "sourceSnippet": "<StepProgramView data={{ steps: [ { key: 'sys:keyInput', note: 'LeftAlt+ [ H ]', inputs: {keys: '{\"CtrlKeys\":[164],\"Keys\":[72]}'}, }, ], }} />"
+    },
+    {
+      "id": "c570ed96572f4b00",
+      "source": "orphan",
+      "page": "docs/v2/xaction/modules/basic/keyinput.md",
+      "pageUrl": "/v2/xaction/modules/keyinput",
+      "title": "模拟按键A（录入）",
+      "moduleKey": "sys:keyInput",
+      "image": "docs/v2/xaction/modules/basic/img/keyinput-001-2fdc4c2e0a.png",
+      "imageName": "keyinput-001-2fdc4c2e0a.png",
+      "component": "ModuleParamPreview",
+      "props": {
+        "moduleKey": "sys:keyInput",
+        "values": "{\"keys\":\"{\\\"CtrlKeys\\\":[164],\\\"Keys\\\":[72]}\"}"
+      },
+      "sourceSnippet": "<ModuleParamPreview moduleKey=\"sys:keyInput\" values={{keys: '{\"CtrlKeys\":[164],\"Keys\":[72]}'}} />"
+    },
+    {
+      "id": "cb3b7cdf9b3959e5",
+      "source": "direct",
+      "page": "docs/v2/xaction/modules/basic/mouse.md",
+      "pageUrl": "/v2/xaction/modules/mouse",
+      "title": "鼠标输入",
+      "moduleKey": "sys:mouse",
+      "image": "",
+      "imageName": "（直接写组件）",
+      "component": "ClickIndicatorPreview",
+      "props": {},
+      "sourceSnippet": "<ClickIndicatorPreview />"
+    },
+    {
+      "id": "33e275e2cbedf4b7",
+      "source": "direct",
+      "page": "docs/v2/xaction/modules/basic/mouse.md",
+      "pageUrl": "/v2/xaction/modules/mouse",
+      "title": "鼠标输入",
+      "moduleKey": "sys:mouse",
+      "image": "",
+      "imageName": "（直接写组件）",
+      "component": "CoordDiagram",
+      "props": {},
+      "sourceSnippet": "<CoordDiagram />"
+    },
+    {
+      "id": "7184194a829c6f1b",
+      "source": "direct",
+      "page": "docs/v2/xaction/modules/basic/mouse.md",
+      "pageUrl": "/v2/xaction/modules/mouse",
+      "title": "鼠标输入",
+      "moduleKey": "sys:mouse",
+      "image": "",
+      "imageName": "（直接写组件）",
+      "component": "StepProgramView",
+      "props": {
+        "data": "{\"steps\":[{\"key\":\"sys:screenCapture\",\"note\":\"截图后位图存入 img 变量\",\"outputs\":{\"img\":\"img\"}},{\"key\":\"sys:repeat\",\"inputs\":{\"count\":\"10\"},\"ifSteps\":[{\"key\":\"sys:delay\",\"inputs\":{\"delayMs\":\"100\"}},{\"key\":\"sys:mouse\",\"note\":\"找到截图位置并点击\",\"inputs\":{\"type\":\"locateByBitmapVar\",\"bmpVar\":\"img\",\"bmpTargetType\":\"CurrentWindow\",\"bmpPosition\":\"Center\",\"extAction\":\"left\"},\"outputs\":{\"isSuccess\":\"imgTrue\"}},{\"key\":\"sys:assign\",\"note\":\"判断是否找图成功\",\"inputs\":{\"input\":\"{imgTrue}\"},\"outputs\":{\"output\":\"found\"}}]},{\"key\":\"sys:notify\"}]}"
+      },
+      "sourceSnippet": "<StepProgramView showVariables data={{ steps: [ { key: 'sys:screenCapture', note: '截图后位图存入 img 变量', outputs: {img: 'img'}, }, { key: 'sys:repeat', inputs: {count: '10'}, ifSteps: [ {key: 'sys:delay', inputs: {delayMs: '100'}}, { key: 'sys:m"
     },
     {
       "id": "56ea2394b74b8d8d",
@@ -280,6 +433,23 @@
       "sourceSnippet": "<ModuleParamPreview moduleKey=\"sys:mouse\" />"
     },
     {
+      "id": "c0f70309fbf540d0",
+      "source": "orphan",
+      "page": "docs/v2/xaction/modules/basic/mouse.md",
+      "pageUrl": "/v2/xaction/modules/mouse",
+      "title": "鼠标输入",
+      "moduleKey": "sys:mouse",
+      "image": "docs/v2/xaction/modules/basic/img/mouse-002-db0cd3c6f1.png",
+      "imageName": "mouse-002-db0cd3c6f1.png",
+      "component": "ModuleParamPreview",
+      "props": {
+        "moduleKey": "sys:mouse",
+        "values": "{\"type\":\"move\",\"x\":\"0\",\"y\":\"0\"}",
+        "focusKeys": "[\"type\",\"x\",\"y\"]"
+      },
+      "sourceSnippet": "<ModuleParamPreview moduleKey=\"sys:mouse\" focusKeys={['type', 'x', 'y']} values={{type: 'move', x: '0', y: '0'}} />"
+    },
+    {
       "id": "5e18fa17a8e972e5",
       "source": "orphan",
       "page": "docs/v2/xaction/modules/basic/mouse.md",
@@ -291,10 +461,11 @@
       "component": "ModuleParamPreview",
       "props": {
         "moduleKey": "sys:mouse",
-        "values": "{\"type\":\"move\",\"x\":\"0\",\"y\":\"0\"}",
+        "values": "{\"type\":\"moveTo\"}",
+        "inputVars": "{\"x\":\"x\",\"y\":\"y\"}",
         "focusKeys": "[\"type\",\"x\",\"y\"]"
       },
-      "sourceSnippet": "<ModuleParamPreview moduleKey=\"sys:mouse\" focusKeys={['type', 'x', 'y']} values={{type: 'move', x: '0', y: '0'}} />"
+      "sourceSnippet": "<ModuleParamPreview moduleKey=\"sys:mouse\" focusKeys={['type', 'x', 'y']} values={{type: 'moveTo'}} inputVars={{x: 'x', y: 'y'}} />"
     },
     {
       "id": "c8a58b9892c6105d",
@@ -308,11 +479,27 @@
       "component": "ModuleParamPreview",
       "props": {
         "moduleKey": "sys:mouse",
-        "values": "{\"type\":\"moveTo\"}",
-        "inputVars": "{\"x\":\"x\",\"y\":\"y\"}",
-        "focusKeys": "[\"type\",\"x\",\"y\"]"
+        "values": "{\"type\":\"moveToXy\",\"xy\":\"2429,762\"}",
+        "focusKeys": "[\"type\",\"xy\"]"
       },
-      "sourceSnippet": "<ModuleParamPreview moduleKey=\"sys:mouse\" focusKeys={['type', 'x', 'y']} values={{type: 'moveTo'}} inputVars={{x: 'x', y: 'y'}} />"
+      "sourceSnippet": "<ModuleParamPreview moduleKey=\"sys:mouse\" focusKeys={['type', 'xy']} values={{type: 'moveToXy', xy: '2429,762'}} />"
+    },
+    {
+      "id": "f1cbdbd587405708",
+      "source": "orphan",
+      "page": "docs/v2/xaction/modules/basic/mouse.md",
+      "pageUrl": "/v2/xaction/modules/mouse",
+      "title": "鼠标输入",
+      "moduleKey": "sys:mouse",
+      "image": "docs/v2/xaction/modules/basic/img/mouse-005-29eee7b0a8.png",
+      "imageName": "mouse-005-29eee7b0a8.png",
+      "component": "ModuleParamPreview",
+      "props": {
+        "moduleKey": "sys:mouse",
+        "values": "{\"type\":\"click\",\"btn\":\"left\"}",
+        "focusKeys": "[\"type\",\"btn\"]"
+      },
+      "sourceSnippet": "<ModuleParamPreview moduleKey=\"sys:mouse\" focusKeys={['type', 'btn']} values={{type: 'click', btn: 'left'}} />"
     },
     {
       "id": "b98b2302affcfc1c",
@@ -326,10 +513,10 @@
       "component": "ModuleParamPreview",
       "props": {
         "moduleKey": "sys:mouse",
-        "values": "{\"type\":\"click\",\"btn\":\"left\"}",
-        "focusKeys": "[\"type\",\"btn\"]"
+        "values": "{\"type\":\"scroll\",\"x\":\"0\",\"y\":\"0\"}",
+        "focusKeys": "[\"type\",\"x\",\"y\"]"
       },
-      "sourceSnippet": "<ModuleParamPreview moduleKey=\"sys:mouse\" focusKeys={['type', 'btn']} values={{type: 'click', btn: 'left'}} />"
+      "sourceSnippet": "<ModuleParamPreview moduleKey=\"sys:mouse\" focusKeys={['type', 'x', 'y']} values={{type: 'scroll', x: '0', y: '0'}} />"
     },
     {
       "id": "1172f3b9dfd84279",
@@ -343,10 +530,10 @@
       "component": "ModuleParamPreview",
       "props": {
         "moduleKey": "sys:mouse",
-        "values": "{\"type\":\"scroll\",\"x\":\"0\",\"y\":\"0\"}",
-        "focusKeys": "[\"type\",\"x\",\"y\"]"
+        "values": "{\"type\":\"toWinTL\",\"hWnd\":\"\",\"x\":\"0\",\"y\":\"0\"}",
+        "focusKeys": "[\"type\",\"hWnd\",\"x\",\"y\"]"
       },
-      "sourceSnippet": "<ModuleParamPreview moduleKey=\"sys:mouse\" focusKeys={['type', 'x', 'y']} values={{type: 'scroll', x: '0', y: '0'}} />"
+      "sourceSnippet": "<ModuleParamPreview moduleKey=\"sys:mouse\" focusKeys={['type', 'hWnd', 'x', 'y']} values={{type: 'toWinTL', hWnd: '', x: '0', y: '0'}} />"
     },
     {
       "id": "6c289ed70be9f361",
@@ -360,10 +547,10 @@
       "component": "ModuleParamPreview",
       "props": {
         "moduleKey": "sys:mouse",
-        "values": "{\"type\":\"toWinTL\",\"hWnd\":\"\",\"x\":\"0\",\"y\":\"0\"}",
-        "focusKeys": "[\"type\",\"hWnd\",\"x\",\"y\"]"
+        "values": "{\"type\":\"moveToWinXy\",\"hWnd\":\"\",\"xyForWin\":\"50%,50%\"}",
+        "focusKeys": "[\"type\",\"hWnd\",\"xyForWin\"]"
       },
-      "sourceSnippet": "<ModuleParamPreview moduleKey=\"sys:mouse\" focusKeys={['type', 'hWnd', 'x', 'y']} values={{type: 'toWinTL', hWnd: '', x: '0', y: '0'}} />"
+      "sourceSnippet": "<ModuleParamPreview moduleKey=\"sys:mouse\" focusKeys={['type', 'hWnd', 'xyForWin']} values={{type: 'moveToWinXy', hWnd: '', xyForWin: '50%,50%'}} />"
     },
     {
       "id": "03f5064ad03535ae",
@@ -377,10 +564,11 @@
       "component": "ModuleParamPreview",
       "props": {
         "moduleKey": "sys:mouse",
-        "values": "{\"type\":\"moveToWinXy\",\"hWnd\":\"\",\"xyForWin\":\"50%,50%\"}",
-        "focusKeys": "[\"type\",\"hWnd\",\"xyForWin\"]"
+        "values": "{\"type\":\"getMouseOriginPosition\"}",
+        "outputVars": "{\"mouseLocation\":\"mouseLocation\",\"mouseX\":\"mouseX\",\"mouseY\":\"mouseY\"}",
+        "focusKeys": "[\"type\",\"mouseLocation\",\"mouseX\",\"mouseY\"]"
       },
-      "sourceSnippet": "<ModuleParamPreview moduleKey=\"sys:mouse\" focusKeys={['type', 'hWnd', 'xyForWin']} values={{type: 'moveToWinXy', hWnd: '', xyForWin: '50%,50%'}} />"
+      "sourceSnippet": "<ModuleParamPreview moduleKey=\"sys:mouse\" focusKeys={['type', 'mouseLocation', 'mouseX', 'mouseY']} values={{type: 'getMouseOriginPosition'}} outputVars={{mouseLocation: 'mouseLocation', mouseX: 'mouseX', mouseY: 'mouseY'}} />"
     },
     {
       "id": "26aac1138ab612fc",
@@ -394,11 +582,11 @@
       "component": "ModuleParamPreview",
       "props": {
         "moduleKey": "sys:mouse",
-        "values": "{\"type\":\"getMouseOriginPosition\"}",
-        "outputVars": "{\"mouseLocation\":\"mouseLocation\",\"mouseX\":\"mouseX\",\"mouseY\":\"mouseY\"}",
-        "focusKeys": "[\"type\",\"mouseLocation\",\"mouseX\",\"mouseY\"]"
+        "values": "{\"type\":\"getMouseCurrentPosition\"}",
+        "outputVars": "{\"mouseLocation\":\"mouseLocation\",\"mouseX\":\"mouseX\",\"mouseY\":\"mouseY\",\"cursorType\":\"cursorType\"}",
+        "focusKeys": "[\"type\",\"mouseLocation\",\"mouseX\",\"mouseY\",\"cursorType\"]"
       },
-      "sourceSnippet": "<ModuleParamPreview moduleKey=\"sys:mouse\" focusKeys={['type', 'mouseLocation', 'mouseX', 'mouseY']} values={{type: 'getMouseOriginPosition'}} outputVars={{mouseLocation: 'mouseLocation', mouseX: 'mouseX', mouseY: 'mouseY'}} />"
+      "sourceSnippet": "<ModuleParamPreview moduleKey=\"sys:mouse\" focusKeys={['type', 'mouseLocation', 'mouseX', 'mouseY', 'cursorType']} values={{type: 'getMouseCurrentPosition'}} outputVars={{ mouseLocation: 'mouseLocation', mouseX: 'mouseX', mouseY: 'mouseY', c"
     },
     {
       "id": "37eba2d5ab677054",
@@ -412,11 +600,27 @@
       "component": "ModuleParamPreview",
       "props": {
         "moduleKey": "sys:mouse",
-        "values": "{\"type\":\"getMouseCurrentPosition\"}",
-        "outputVars": "{\"mouseLocation\":\"mouseLocation\",\"mouseX\":\"mouseX\",\"mouseY\":\"mouseY\",\"cursorType\":\"cursorType\"}",
-        "focusKeys": "[\"type\",\"mouseLocation\",\"mouseX\",\"mouseY\",\"cursorType\"]"
+        "values": "{\"type\":\"showIndicator\"}",
+        "focusKeys": "[\"type\"]"
       },
-      "sourceSnippet": "<ModuleParamPreview moduleKey=\"sys:mouse\" focusKeys={['type', 'mouseLocation', 'mouseX', 'mouseY', 'cursorType']} values={{type: 'getMouseCurrentPosition'}} outputVars={{ mouseLocation: 'mouseLocation', mouseX: 'mouseX', mouseY: 'mouseY', c"
+      "sourceSnippet": "<ModuleParamPreview moduleKey=\"sys:mouse\" focusKeys={['type']} values={{type: 'showIndicator'}} />"
+    },
+    {
+      "id": "462df032c89fc2ba",
+      "source": "orphan",
+      "page": "docs/v2/xaction/modules/basic/mouse.md",
+      "pageUrl": "/v2/xaction/modules/mouse",
+      "title": "鼠标输入",
+      "moduleKey": "sys:mouse",
+      "image": "docs/v2/xaction/modules/basic/img/mouse-012-b16078e96c.png",
+      "imageName": "mouse-012-b16078e96c.png",
+      "component": "ModuleParamPreview",
+      "props": {
+        "moduleKey": "sys:mouse",
+        "values": "{\"type\":\"locateByBitmapVar\",\"bmpVar\":\"img\",\"bmpTargetType\":\"CurrentWindow\",\"bmpPosition\":\"Center\",\"bmpColorError\":\"0\",\"maxFindCount\":\"50\",\"x\":\"0\",\"y\":\"0\",\"extAction\":\"left\",\"stopIfFail\":\"false\"}",
+        "outputVars": "{\"isSuccess\":\"imgTrue\"}"
+      },
+      "sourceSnippet": "<ModuleParamPreview moduleKey=\"sys:mouse\" values={{ type: 'locateByBitmapVar', bmpVar: 'img', bmpTargetType: 'CurrentWindow', bmpPosition: 'Center', bmpColorError: '0', maxFindCount: '50', x: '0', y: '0', extAction: 'left', stopIfFail: 'fal"
     },
     {
       "id": "7866da0a35fa5d35",
@@ -430,10 +634,44 @@
       "component": "ModuleParamPreview",
       "props": {
         "moduleKey": "sys:mouse",
-        "values": "{\"type\":\"locateByBitmapVar\",\"bmpVar\":\"img\",\"bmpTargetType\":\"CurrentWindow\",\"bmpPosition\":\"Center\",\"bmpColorError\":\"0\",\"maxFindCount\":\"100\",\"x\":\"0\",\"y\":\"0\",\"extAction\":\"left\"}",
+        "values": "{\"type\":\"locateByBitmapVar\",\"bmpVar\":\"img\",\"bmpTargetType\":\"CurrentWindow\",\"bmpPosition\":\"Center\",\"bmpColorError\":\"0\",\"maxFindCount\":\"50\",\"x\":\"0\",\"y\":\"0\",\"extAction\":\"left\",\"stopIfFail\":\"false\"}",
         "outputVars": "{\"isSuccess\":\"imgTrue\"}"
       },
-      "sourceSnippet": "<ModuleParamPreview moduleKey=\"sys:mouse\" values={{ type: 'locateByBitmapVar', bmpVar: 'img', bmpTargetType: 'CurrentWindow', bmpPosition: 'Center', bmpColorError: '0', maxFindCount: '100', x: '0', y: '0', extAction: 'left', }} outputVars={"
+      "sourceSnippet": "<ModuleParamPreview moduleKey=\"sys:mouse\" values={{ type: 'locateByBitmapVar', bmpVar: 'img', bmpTargetType: 'CurrentWindow', bmpPosition: 'Center', bmpColorError: '0', maxFindCount: '50', x: '0', y: '0', extAction: 'left', stopIfFail: 'fal"
+    },
+    {
+      "id": "5ac75d7d8d47db60",
+      "source": "orphan",
+      "page": "docs/v2/xaction/modules/basic/mouse.md",
+      "pageUrl": "/v2/xaction/modules/mouse",
+      "title": "鼠标输入",
+      "moduleKey": "sys:mouse",
+      "image": "docs/v2/xaction/modules/basic/img/mouse-015-850bb03c05.png",
+      "imageName": "mouse-015-850bb03c05.png",
+      "component": "ModuleParamPreview",
+      "props": {
+        "moduleKey": "sys:mouse",
+        "values": "{\"type\":\"locateByBitmapVar\",\"bmpVar\":\"img\",\"bmpTargetType\":\"CurrentWindow\",\"bmpPosition\":\"Center\",\"bmpColorError\":\"0\",\"maxFindCount\":\"50\",\"x\":\"0\",\"y\":\"0\",\"extAction\":\"left\",\"stopIfFail\":\"false\"}",
+        "outputVars": "{\"isSuccess\":\"imgTrue\"}"
+      },
+      "sourceSnippet": "<ModuleParamPreview moduleKey=\"sys:mouse\" values={{ type: 'locateByBitmapVar', bmpVar: 'img', bmpTargetType: 'CurrentWindow', bmpPosition: 'Center', bmpColorError: '0', maxFindCount: '50', x: '0', y: '0', extAction: 'left', stopIfFail: 'fal"
+    },
+    {
+      "id": "42e4deda2724de61",
+      "source": "orphan",
+      "page": "docs/v2/xaction/modules/basic/mouse.md",
+      "pageUrl": "/v2/xaction/modules/mouse",
+      "title": "鼠标输入",
+      "moduleKey": "sys:mouse",
+      "image": "docs/v2/xaction/modules/basic/img/mouse-016-da277c9034.png",
+      "imageName": "mouse-016-da277c9034.png",
+      "component": "ModuleParamPreview",
+      "props": {
+        "moduleKey": "sys:mouse",
+        "values": "{\"type\":\"locateByBitmapVar\",\"bmpVar\":\"img\",\"bmpTargetType\":\"CurrentWindow\",\"bmpPosition\":\"Center\",\"bmpColorError\":\"0\",\"maxFindCount\":\"50\",\"x\":\"0\",\"y\":\"0\",\"extAction\":\"left\",\"stopIfFail\":\"false\"}",
+        "outputVars": "{\"isSuccess\":\"imgTrue\"}"
+      },
+      "sourceSnippet": "<ModuleParamPreview moduleKey=\"sys:mouse\" values={{ type: 'locateByBitmapVar', bmpVar: 'img', bmpTargetType: 'CurrentWindow', bmpPosition: 'Center', bmpColorError: '0', maxFindCount: '50', x: '0', y: '0', extAction: 'left', stopIfFail: 'fal"
     },
     {
       "id": "a66dfb5500650eb9",
@@ -452,6 +690,62 @@
         "buttons": "[\"确定\",\"取消\"]"
       },
       "sourceSnippet": "<MsgBoxPreview title=\"Quicker\" icon=\"question\" message={\"Hello. 你好，这是一条弹窗提示消息。\\n两个结果选一个哦~\"} buttons={['确定', '取消']} />"
+    },
+    {
+      "id": "aeff886e9aa91446",
+      "source": "orphan",
+      "page": "docs/v2/xaction/modules/basic/msgbox.md",
+      "pageUrl": "/v2/xaction/modules/msgbox",
+      "title": "弹窗提示或确认",
+      "moduleKey": "sys:MsgBox",
+      "image": "docs/v2/xaction/modules/basic/img/msgbox-002-2b2fb27fec.png",
+      "imageName": "msgbox-002-2b2fb27fec.png",
+      "component": "MsgBoxPreview",
+      "props": {
+        "title": "提示",
+        "icon": "warning",
+        "message": "这是一个提示消息。",
+        "buttons": "[\"确定\",\"取消\"]"
+      },
+      "sourceSnippet": "<MsgBoxPreview title=\"提示\" icon=\"warning\" message=\"这是一个提示消息。\" buttons={['确定', '取消']} />"
+    },
+    {
+      "id": "be943230e1a427c0",
+      "source": "orphan",
+      "page": "docs/v2/xaction/modules/basic/msgbox.md",
+      "pageUrl": "/v2/xaction/modules/msgbox",
+      "title": "弹窗提示或确认",
+      "moduleKey": "sys:MsgBox",
+      "image": "docs/v2/xaction/modules/basic/img/msgbox-003-8c09dbb65c.png",
+      "imageName": "msgbox-003-8c09dbb65c.png",
+      "component": "MsgBoxPreview",
+      "props": {
+        "title": "保存信息",
+        "actionIcon": "fa:Light_CommentAltLines",
+        "icon": "fa:Solid_InfoCircle:#FF0000",
+        "defaultButton": "Yes",
+        "message": "你好，这是一条自定义弹窗提示消息。第二行。"
+      },
+      "sourceSnippet": "<MsgBoxPreview title=\"保存信息\" actionIcon=\"fa:Light_CommentAltLines\" icon=\"fa:Solid_InfoCircle:#FF0000\" message={\"你好，这是一条自定义弹窗提示消息。第二行。\"} buttonDefs={'[fa:Light_Check:#28a745]是(_Y)|Yes\\n[fa:Light_Times:#dc3545]否(_N)|No\\n[fa:Light_Undo:#28a745]"
+    },
+    {
+      "id": "9e2c99cbfede4efc",
+      "source": "orphan",
+      "page": "docs/v2/xaction/modules/basic/msgbox.md",
+      "pageUrl": "/v2/xaction/modules/msgbox",
+      "title": "弹窗提示或确认",
+      "moduleKey": "sys:MsgBox",
+      "image": "docs/v2/xaction/modules/basic/img/msgbox-004-3c48550631.png",
+      "imageName": "msgbox-004-3c48550631.png",
+      "component": "MsgBoxPreview",
+      "props": {
+        "title": "保存信息",
+        "actionIcon": "fa:Light_CommentAltLines",
+        "icon": "fa:Solid_InfoCircle:#FF0000",
+        "defaultButton": "Yes",
+        "message": "你好，这是一条自定义弹窗提示消息。第二行。"
+      },
+      "sourceSnippet": "<MsgBoxPreview title=\"保存信息\" actionIcon=\"fa:Light_CommentAltLines\" icon=\"fa:Solid_InfoCircle:#FF0000\" message={\"你好，这是一条自定义弹窗提示消息。第二行。\"} buttonDefs={'[fa:Light_Check:#28a745]是(_Y)|Yes\\n[fa:Light_Times:#dc3545]否(_N)|No\\n[fa:Light_Undo:#28a745]"
     },
     {
       "id": "273a5a8228d59a7e",
@@ -533,6 +827,39 @@
       "sourceSnippet": "<ModuleParamPreview moduleKey=\"sys:openUrl\" />"
     },
     {
+      "id": "b5d549b7300187d8",
+      "source": "orphan",
+      "page": "docs/v2/xaction/modules/basic/openurl.md",
+      "pageUrl": "/v2/xaction/modules/openurl",
+      "title": "打开网址",
+      "moduleKey": "sys:openUrl",
+      "image": "docs/v2/xaction/modules/basic/img/openurl-002-18b61d90fe.png",
+      "imageName": "openurl-002-18b61d90fe.png",
+      "component": "ModuleParamPreview",
+      "props": {
+        "moduleKey": "sys:openUrl",
+        "focusKeys": "[\"browser\"]"
+      },
+      "sourceSnippet": "<ModuleParamPreview moduleKey=\"sys:openUrl\" focusKeys={['browser']} />"
+    },
+    {
+      "id": "8799b821877f7518",
+      "source": "orphan",
+      "page": "docs/v2/xaction/modules/basic/openurl.md",
+      "pageUrl": "/v2/xaction/modules/openurl",
+      "title": "打开网址",
+      "moduleKey": "sys:run",
+      "image": "docs/v2/xaction/modules/basic/img/openurl-003-dd155b96c7.png",
+      "imageName": "openurl-003-dd155b96c7.png",
+      "component": "ModuleParamPreview",
+      "props": {
+        "moduleKey": "sys:run",
+        "values": "{\"setWorkingDir\":\"\",\"windowStyle\":\"0\",\"runas\":\"false\"}",
+        "focusKeys": "[\"path\",\"arg\",\"setWorkingDir\",\"windowStyle\",\"runas\"]"
+      },
+      "sourceSnippet": "<ModuleParamPreview moduleKey=\"sys:run\" scrollBody={false} focusKeys={['path', 'arg', 'setWorkingDir', 'windowStyle', 'runas']} values={{ setWorkingDir: '', windowStyle: '0', runas: 'false', }} />"
+    },
+    {
       "id": "ba3ecb4cb5972a77",
       "source": "orphan",
       "page": "docs/v2/xaction/modules/basic/outputtext.md",
@@ -579,6 +906,21 @@
       "sourceSnippet": "<ModuleParamPreview moduleKey=\"sys:runScript\" />"
     },
     {
+      "id": "d0752f905651a37e",
+      "source": "direct",
+      "page": "docs/v2/xaction/modules/basic/sendkeys.md",
+      "pageUrl": "/v2/xaction/modules/sendkeys",
+      "title": "模拟按键B（参数）",
+      "moduleKey": "sys:sendKeys",
+      "image": "",
+      "imageName": "（直接写组件）",
+      "component": "StepProgramView",
+      "props": {
+        "data": "{\"steps\":[{\"key\":\"sys:sendKeys\",\"note\":\"Ctrl+C\",\"inputs\":{\"keys\":\"^c\"}}]}"
+      },
+      "sourceSnippet": "<StepProgramView data={{ steps: [ { key: 'sys:sendKeys', note: 'Ctrl+C', inputs: {keys: '^c'}, }, ], }} />"
+    },
+    {
       "id": "ae2dfcd4bf3ae092",
       "source": "orphan",
       "page": "docs/v2/xaction/modules/basic/sendkeys.md",
@@ -589,9 +931,29 @@
       "imageName": "sendkeys-001-0dc31ff7d7.png",
       "component": "ModuleParamPreview",
       "props": {
-        "moduleKey": "sys:sendKeys"
+        "moduleKey": "sys:sendKeys",
+        "values": "{\"keys\":\"^c\"}"
       },
-      "sourceSnippet": "<ModuleParamPreview moduleKey=\"sys:sendKeys\" />"
+      "sourceSnippet": "<ModuleParamPreview moduleKey=\"sys:sendKeys\" values={{keys: '^c'}} />"
+    },
+    {
+      "id": "ba546c6252ad70b3",
+      "source": "orphan",
+      "page": "docs/v2/xaction/modules/basic/userinput.md",
+      "pageUrl": "/v2/xaction/modules/userinput",
+      "title": "用户输入",
+      "moduleKey": "sys:userInput",
+      "image": "docs/v2/xaction/modules/basic/img/userinput-001-9f5976c4ce.png",
+      "imageName": "userinput-001-9f5976c4ce.png",
+      "component": "UserInputPreview",
+      "props": {
+        "title": "test1234",
+        "prompt": "请选择程序路径",
+        "texttools": "SelectProcessPath,SelectSingleFolder,ExtraSelectMenu",
+        "activeTool": "SelectProcessPath",
+        "value": "d:\\\\test.exe"
+      },
+      "sourceSnippet": "<UserInputPreview title=\"test1234\" prompt=\"请选择程序路径\" value={\"d:\\\\test.exe\"} texttools=\"SelectProcessPath,SelectSingleFolder,ExtraSelectMenu\" activeTool=\"SelectProcessPath\" showHelp showToolTooltip />"
     },
     {
       "id": "bd1eda2ff13c293c",
@@ -637,12 +999,48 @@
       "imageName": "userselect-002-ac46e5a6be.png",
       "component": "ChoiceListPreview",
       "props": {
+        "title": "请选择格式",
+        "hint": "请选择一种日期格式",
+        "options": "[\"2018-12-01\",\"2018-12-01 12:32\",\"2018-12-01 12:32:33\",\"2018/12/01\",\"2018年12月01日\"]",
+        "selectedIndex": "0"
+      },
+      "sourceSnippet": "<ChoiceListPreview title=\"请选择格式\" hint=\"请选择一种日期格式\" selectedIndex={0} options={[ '2018-12-01', '2018-12-01 12:32', '2018-12-01 12:32:33', '2018/12/01', '2018年12月01日', ]} />"
+    },
+    {
+      "id": "323de655fbfb7963",
+      "source": "orphan",
+      "page": "docs/v2/xaction/modules/basic/userselect.md",
+      "pageUrl": "/v2/xaction/modules/userselect",
+      "title": "用户选择",
+      "moduleKey": "sys:select",
+      "image": "docs/v2/xaction/modules/basic/img/userselect-003-2c5ebf5454.png",
+      "imageName": "userselect-003-2c5ebf5454.png",
+      "component": "ChoiceListPreview",
+      "props": {
         "title": "请选择",
         "options": "[\"a\",\"b\",\"c\",\"d\"]",
         "globalButtons": "[\"按钮文字\",\"全局按钮\"]",
         "selectedIndex": "3"
       },
       "sourceSnippet": "<ChoiceListPreview title=\"请选择\" options={['a', 'b', 'c', 'd']} selectedIndex={3} globalButtons={['按钮文字', '全局按钮']} showMoreMenu />"
+    },
+    {
+      "id": "26a885d712a90c6a",
+      "source": "orphan",
+      "page": "docs/v2/xaction/modules/basic/userselect.md",
+      "pageUrl": "/v2/xaction/modules/userselect",
+      "title": "用户选择",
+      "moduleKey": "sys:select",
+      "image": "docs/v2/xaction/modules/basic/img/userselect-004-7b6621784f.png",
+      "imageName": "userselect-004-7b6621784f.png",
+      "component": "ChoiceListPreview",
+      "props": {
+        "title": "请选择 (单选)",
+        "filterText": "xcq",
+        "options": "[\"110102 西城区\",\"150102 新城区\",\"320507 相城区\",\"321302 宿城区\",\"330103 下城区\",\"350602 芗城区\",\"370403 薛城区\",\"420602 襄城区\",\"610102 新城区\"]",
+        "selectedIndex": "0"
+      },
+      "sourceSnippet": "<ChoiceListPreview title=\"请选择 (单选)\" filterText=\"xcq\" selectedIndex={0} options={[ '110102 西城区', '150102 新城区', '320507 相城区', '321302 宿城区', '330103 下城区', '350602 芗城区', '370403 薛城区', '420602 襄城区', '610102 新城区', ]} />"
     },
     {
       "id": "4ae780cb3602aee5",
@@ -655,12 +1053,30 @@
       "imageName": "userselect-005-53e9b14666.png",
       "component": "ChoiceListPreview",
       "props": {
-        "title": "请选择",
-        "options": "[\"a\",\"b\",\"c\",\"d\"]",
-        "globalButtons": "[\"按钮文字\",\"全局按钮\"]",
-        "selectedIndex": "3"
+        "title": "请选择 (单选)",
+        "filterText": "xcq",
+        "options": "[\"110102 西城区\",\"150102 新城区\",\"320507 相城区\",\"321302 宿城区\",\"330103 下城区\",\"350602 芗城区\",\"370403 薛城区\",\"420602 襄城区\",\"610102 新城区\"]",
+        "selectedIndex": "0"
       },
-      "sourceSnippet": "<ChoiceListPreview title=\"请选择\" options={['a', 'b', 'c', 'd']} selectedIndex={3} globalButtons={['按钮文字', '全局按钮']} showMoreMenu />"
+      "sourceSnippet": "<ChoiceListPreview title=\"请选择 (单选)\" filterText=\"xcq\" selectedIndex={0} options={[ '110102 西城区', '150102 新城区', '320507 相城区', '321302 宿城区', '330103 下城区', '350602 芗城区', '370403 薛城区', '420602 襄城区', '610102 新城区', ]} />"
+    },
+    {
+      "id": "8fdaf5fddf38ce8e",
+      "source": "orphan",
+      "page": "docs/v2/xaction/modules/basic/userselect.md",
+      "pageUrl": "/v2/xaction/modules/userselect",
+      "title": "用户选择",
+      "moduleKey": "sys:select",
+      "image": "docs/v2/xaction/modules/basic/img/userselect-006-bd766e50e2.png",
+      "imageName": "userselect-006-bd766e50e2.png",
+      "component": "ChoiceListPreview",
+      "props": {
+        "title": "请选择 (单选)",
+        "filterText": "xcq",
+        "options": "[\"110102 西城区\",\"150102 新城区\",\"320507 相城区\",\"321302 宿城区\",\"330103 下城区\",\"350602 芗城区\",\"370403 薛城区\",\"420602 襄城区\",\"610102 新城区\"]",
+        "selectedIndex": "0"
+      },
+      "sourceSnippet": "<ChoiceListPreview title=\"请选择 (单选)\" filterText=\"xcq\" selectedIndex={0} options={[ '110102 西城区', '150102 新城区', '320507 相城区', '321302 宿城区', '330103 下城区', '350602 芗城区', '370403 薛城区', '420602 襄城区', '610102 新城区', ]} />"
     },
     {
       "id": "fba7476d40d25b43",
@@ -4897,11 +5313,10 @@
       "imageName": "showmenu-001-c54f304422.png",
       "component": "ContextMenuPreview",
       "props": {
-        "tooltip": "提示内容...",
         "openPath": "[\"二级菜单\"]",
-        "items": "[{\"label\":\"无图标菜单\"},{\"label\":\"带Tooltip的菜单\"},{\"label\":\"带图标的菜单\",\"icon\":\"⚑\",\"iconColor\":\"#6b7280\"},{\"label\":\"二级菜单\",\"icon\":\"⚙\",\"iconColor\":\"#6b7280\",\"children\":[{\"label\":\"子菜单\",\"icon\":\"◎\",\"iconColor\":\"#6b7280\"}]},{\"label\":\"危险动作菜单\",\"icon\":\"⌕\",\"iconColor\":\"#ed6c02\",\"danger\":true}]"
+        "items": "[{\"label\":\"无图标菜单\"},{\"label\":\"带Tooltip的菜单\",\"tooltip\":\"tooltip内容\"},{\"label\":\"带图标的菜单\",\"icon\":\"fa:Light_Flag\",\"tooltip\":\"tooltip内容\"},{\"label\":\"二级菜单\",\"icon\":\"fa:Light_Cog\",\"children\":[{\"label\":\"子菜单\",\"icon\":\"fa:Light_UserCircle\"}]},{\"label\":\"危险动作菜单\",\"icon\":\"fa:Light_Wrench:#f57e42\",\"danger\":true,\"tooltip\":\"tooltip内容\"}]"
       },
-      "sourceSnippet": "<ContextMenuPreview openPath={['二级菜单']} tooltip=\"提示内容...\" items={[ {label: '无图标菜单'}, {label: '带Tooltip的菜单'}, {label: '带图标的菜单', icon: '⚑', iconColor: '#6b7280'}, { label: '二级菜单', icon: '⚙', iconColor: '#6b7280', children: [{label: '子菜单', ico"
+      "sourceSnippet": "<ContextMenuPreview galleryCover={true} openPath={['二级菜单']} items={[ {label: '无图标菜单'}, {label: '带Tooltip的菜单', tooltip: 'tooltip内容'}, {label: '带图标的菜单', icon: 'fa:Light_Flag', tooltip: 'tooltip内容'}, { label: '二级菜单', icon: 'fa:Light_Cog', chil"
     },
     {
       "id": "fa293bd3617589bf",
@@ -4932,9 +5347,9 @@
       "component": "ContextMenuPreview",
       "props": {
         "openPath": "[\"二级菜单\",\"三级菜单\"]",
-        "items": "[{\"label\":\"粘贴内容\",\"icon\":\"⧉\"},{\"label\":\"二级菜单\",\"icon\":\"⚙\",\"children\":[{\"label\":\"发送按键Ctrl+S\",\"icon\":\"▣\"},{\"label\":\"发送按键Ctrl+V\",\"icon\":\"⧉\"},{\"label\":\"三级菜单\",\"children\":[{\"label\":\"菜单1\",\"icon\":\"⚙\"}]}]},{\"label\":\"运行一个Quicker动作\",\"icon\":\"⌕\",\"iconColor\":\"#ed6c02\"}]"
+        "items": "[{\"label\":\"粘贴内容\",\"icon\":\"fa:Light_Paste\"},{\"label\":\"二级菜单\",\"icon\":\"fa:Light_Cog\",\"children\":[{\"label\":\"发送按键Ctrl+S\",\"icon\":\"fa:Light_Save\"},{\"label\":\"发送按键Ctrl+V\",\"icon\":\"fa:Light_Paste\"},{\"label\":\"三级菜单\",\"children\":[{\"label\":\"菜单1\",\"icon\":\"fa:Light_Cog\"}]}]},{\"label\":\"运行一个Quicker动作\",\"icon\":\"fa:Light_Wrench:#f57e42\"}]"
       },
-      "sourceSnippet": "<ContextMenuPreview openPath={['二级菜单', '三级菜单']} items={[ {label: '粘贴内容', icon: '⧉'}, { label: '二级菜单', icon: '⚙', children: [ {label: '发送按键Ctrl+S', icon: '▣'}, {label: '发送按键Ctrl+V', icon: '⧉'}, {label: '三级菜单', children: [{label: '菜单1', icon:"
+      "sourceSnippet": "<ContextMenuPreview openPath={['二级菜单', '三级菜单']} items={[ {label: '粘贴内容', icon: 'fa:Light_Paste'}, { label: '二级菜单', icon: 'fa:Light_Cog', children: [ {label: '发送按键Ctrl+S', icon: 'fa:Light_Save'}, {label: '发送按键Ctrl+V', icon: 'fa:Light_Paste'}"
     },
     {
       "id": "c3ab137321216678",

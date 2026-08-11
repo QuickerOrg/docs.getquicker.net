@@ -1,0 +1,96 @@
+/**
+ * Sliced from Quicker ClickIndicator.xaml / .xaml.cs
+ * Ellipse StrokeThickness=3; Play(isDown): start 20% size, window opacity 0.95;
+ * 0.4s linear DoubleAnimation → full size + circle opacity 0.
+ */
+
+.root {
+  --qi-size: 150px;
+  --qi-color: #ff0000;
+  --qi-stroke: 3px;
+  --qi-start: 0.2;
+  --qi-anim: 0.4s;
+  --qi-cycle: 1.2s;
+  width: fit-content;
+  margin: 1rem 0 1.5rem;
+}
+
+.stage {
+  position: relative;
+  display: block;
+  width: calc(var(--qi-size) + 36px);
+  height: calc(var(--qi-size) + 36px);
+  margin: 0;
+  padding: 0;
+  border: 1px solid var(--ifm-color-emphasis-300, #d1d5db);
+  border-radius: 8px;
+  background: var(--ifm-background-surface-color, #fff);
+  cursor: pointer;
+}
+
+.circle {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: var(--qi-size);
+  height: var(--qi-size);
+  box-sizing: border-box;
+  border: var(--qi-stroke) solid var(--qi-color);
+  border-radius: 50%;
+  background: transparent;
+  transform: translate(-50%, -50%) scale(var(--qi-start));
+  opacity: 0.95;
+  animation: qk-click-indicator var(--qi-cycle) linear infinite;
+  pointer-events: none;
+}
+
+.circleStatic {
+  animation: none;
+  transform: translate(-50%, -50%) scale(0.7);
+  opacity: 0.4;
+}
+
+.pointer {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-2px, -1px);
+  pointer-events: none;
+  z-index: 1;
+}
+
+.hint {
+  margin: 6px 0 0;
+  color: var(--ifm-color-emphasis-600, #6b7280);
+  font-size: 12px;
+  line-height: 1.35;
+}
+
+@keyframes qk-click-indicator {
+  0% {
+    transform: translate(-50%, -50%) scale(var(--qi-start));
+    opacity: 0.95;
+  }
+  /* 0.4s of 1.2s — matches WPF interval */
+  33.333% {
+    transform: translate(-50%, -50%) scale(1);
+    opacity: 0;
+  }
+  33.334%,
+  100% {
+    transform: translate(-50%, -50%) scale(var(--qi-start));
+    opacity: 0;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .circle {
+    animation: none;
+    transform: translate(-50%, -50%) scale(0.7);
+    opacity: 0.4;
+  }
+}
+
+html[data-theme='dark'] .stage {
+  background: #23272f;
+}

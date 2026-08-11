@@ -1,13 +1,13 @@
 ---
 title: "表格数据操作"
-description: "表格变量的相关处理操作"
+description: "对表格变量做读写、筛选、导入导出。"
 slug: "/v2/xaction/modules/tableoperation"
 sidebar_label: "表格数据操作"
 sidebar_position: 30
 quickerDocKey: "xaction/module/sys:tableoperation"
 comments: true
 moduleKey: "sys:tableoperation"
-docStatus: "migrated-unreviewed"
+docStatus: "reviewed"
 metadataGeneratedAt: "2026-08-03 20:08:03"
 legacyDocId: 62743542
 legacyContentUpdatedAt: "2024-05-14T08:26:31.000Z"
@@ -15,49 +15,39 @@ legacyContentUpdatedAt: "2024-05-14T08:26:31.000Z"
 
 # 表格数据操作
 
-表格变量的相关处理操作
+对表格变量做读写或更新。表格变量本身见 [表格变量类型](/v2/xaction/concepts/tablevar)。
 
 ## 当前模块定义
 
 <XActionModuleMeta moduleKey="sys:tableoperation" />
 
-【本功能为预览状态，欢迎反馈问题】
+## 概述
 
-对某个表格变量（[DataTable对象](https://docs.microsoft.com/en-us/dotnet/api/system.data.datatable?view=netframework-4.7.2)）进行读写或更新。
+先选 **表格变量** 和 **操作类型**，再按类型填写附加参数。输出随类型变化。
 
-关于表格变量的相关说明，请参考文档《[表格变量类型](/v2/xaction/concepts/tablevar)》。
+<ModuleParamPreview moduleKey="sys:tableoperation" />
 
 ![](./img/tableoperation-001-64de37de97.png)
 
-## 通用输入输出参数
+## 参数说明
 
-输入参数：
+**表格变量**：要操作的表格变量。
 
-【表格变量】选择要操作的目标表格变量。
+**操作类型**：对表格做哪一种。点开下拉看当前全部选项。下面按类型说明。
 
-【操作类型】对表格变量进行的操作种类。
-
-【失败后停止】遇到异常情况时停止继续执行后续步骤。
-
-输出参数：
-
-【是否成功】操作是否没有遇到异常。
-
-## 操作类型
+**失败后停止**：遇到异常是否中止后续步骤。默认开启。
 
 ### 获取信息
 
-获取表格变量的数据信息。
+输出：
 
-输出参数：
-
--   行列表：表格的[Rows](https://docs.microsoft.com/en-us/dotnet/api/system.data.datatable.rows?view=netframework-4.7.2#System_Data_DataTable_Rows)数据。需输出到“对象”类型变量中。
--   列的列表：表格的[Columns](https://docs.microsoft.com/en-us/dotnet/api/system.data.datatable.columns?view=netframework-4.7.2)数据。需输出到“对象”类型变量中。
--   行数：表格数据的总行数。
+- **行列表**：表格的 [Rows](https://learn.microsoft.com/dotnet/api/system.data.datatable.rows)。需输出到对象类型变量。
+- **列的列表**：表格的 [Columns](https://learn.microsoft.com/dotnet/api/system.data.datatable.columns)。需输出到对象类型变量。
+- **行数**：表格里的数据行数。
 
 ### 添加行
 
-向表格中添加一行数据。
+向表格添加一行。
 
 <ModuleParamPreview
   moduleKey="sys:tableoperation"
@@ -73,33 +63,39 @@ legacyContentUpdatedAt: "2024-05-14T08:26:31.000Z"
   outputVars={{isSuccess: 'isSuccess', rowCount: 'rowCount'}}
 />
 
-【行数据】
+**行数据**：新行各列的词典，键是列名。不必给自动生成的列（如自增列）填值。
 
-新添加行的各列数据。为词典类型，每一项的Key为列名，Value为值。
-
-注：不需要为自动生成值的列提供数据（如自增长的列等）。
+输出 **第一行/结果行**：新添加的行，可输出为词典。
 
 ### 更新行
 
-更新符合条件的行的某些列的内容。1.42.38+支持。
+更新符合条件的行的某些列。1.42.38+。
 
 ![](./img/tableoperation-003-dba68f282d.png)
 
-**输入**
+**行数据**：要更新的列和值的词典，可同时改多列。
 
-【行数据】要更新的列和对应值的词典。可以同时更新多列。
+**筛选表达式**：决定更新哪些行。
 
-【筛选表达式】用于确定更新哪些行。
-
-**输出**
-
-【行数】更新的行数。
+输出 **影响行数**：实际更新的行数。
 
 ### 查看或编辑数据
 
-显示一个窗口，可用于查看或修改表格变量中的数据。
+弹出窗口查看或修改表格。
 
-通过【只读模式】参数可以控制是否允许修改表格变量中的数据。
+**只读模式**：是否禁止修改。默认关闭。
+
+**窗口标题**：默认「表格数据」。旧稿未写。
+
+**帮助文本**：旧稿未写。
+
+**窗口尺寸/位置**：可选。格式 `宽度,高度`，可用像素或屏幕宽高百分比。旧稿未写。
+
+**是否置顶显示**：旧稿未写。
+
+**选择模式**：单元格类似 Excel；也可按行单选/多选，部分模式必选。单元格模式不支持返回选择的行。旧稿未写。
+
+**排序**：可选。查看时的排序。旧稿未写。
 
 #### 只读模式
 
@@ -111,7 +107,7 @@ legacyContentUpdatedAt: "2024-05-14T08:26:31.000Z"
   ]}
 />
 
-如果需要复制内容，可以鼠标拖动选中一个或多个单元格后Ctrl+C或使用右键菜单。
+要复制内容：拖选单元格后 Ctrl+C，或用右键菜单。
 
 #### 编辑模式
 
@@ -124,51 +120,46 @@ legacyContentUpdatedAt: "2024-05-14T08:26:31.000Z"
   ]}
 />
 
-**注：需要事先在表格变量里定义每列的编辑方式。**
+需要事先在表格变量里定义每列的编辑方式。
 
-点击“添加行”按钮，可以打开表单窗口添加新的行。
-
-双击一行中的单元格或点击后面的“编辑”按钮，可以编辑该行内容。
-
-点击“删除”按钮可以删除一行。
-
-点击“还原”可以将数据恢复到打开窗口时的状态。
-
-### 查询或筛选行(Select)
-
-使用[DataTable对象的Select()](https://docs.microsoft.com/en-us/dotnet/api/system.data.datatable.select?view=netframework-4.7.2)方法获取符合条件的行。
-
-【筛选表达式】查询条件，语法请参考《[DataView RowFilter Syntax](https://www.csharp-examples.net/dataview-rowfilter/)》。
-
-示例：
-
--   `Id = 10` `Id > 20` `Id in (1,2,3)`
--   `Name = '张三'` `Name <> '李四'` `Name in ('张三','李四','王五')`
--   `Date = #2022-12-27#`
--   `Name LIKE '*str*'` (通配符\*可以在最前面或/和最后面，不能在中间)
--   布尔操作符支持`AND``OR``NOT` 如：`NOT City = 'Tokyo' AND NOT City = 'Paris'`
--   支持使用`CONVERT`方法在比较的时候转换数据类型，[参考来源](https://stackoverflow.com/a/56853222/3335415)。例如：动态加载的表格，数字类型的列可能会被当做文本类型，此时如果要按数字比较，可以通过这样的方式转换：`**CONVERT(序号, System.Int32) > 3**`
-
-【排序】可选。设定查询结果的排序方式，例如：
-
--   `Birth DESC`（按Birth列从大到小倒序排序）
--   `Id` (按ID从小到大正序排序）
+- 「添加行」打开表单加新行。
+- 双击单元格或点「编辑」改该行。
+- 「删除」删一行。
+- 「还原」恢复到打开窗口时的数据。
 
 输出：
 
-【行数】符合筛选条件的结果行数。
+- **选择的行列表**：当前选中的行。旧稿未写。
+- **是否确认**：是否点了确认。旧稿未写。
 
-【行列表】符合条件的行列表(类型为DataRow\[\])，可通过“每个”模块循环访问各行信息。
+### 查询或筛选行(Select)
 
-【第一行】第一条符合条件的行。
+用 [DataTable.Select()](https://learn.microsoft.com/dotnet/api/system.data.datatable.select) 取出符合条件的行。
+
+**筛选表达式**：查询条件，语法见 [DataView RowFilter Syntax](https://www.csharp-examples.net/dataview-rowfilter/)。例如：
+
+- `Id = 10` `Id > 20` `Id in (1,2,3)`
+- `Name = '张三'` `Name <> '李四'` `Name in ('张三','李四','王五')`
+- `Date = #2022-12-27#`
+- `Name LIKE '*str*'`（通配符 `*` 只能在最前或最后，不能在中间）
+- 布尔：`AND` `OR` `NOT`，如 `NOT City = 'Tokyo' AND NOT City = 'Paris'`
+- 可用 `CONVERT` 改类型后再比。动态加载的表里数字列有时是文本，要按数字比可以写：`CONVERT(序号, System.Int32) > 3`
+
+**排序**：可选。如 `Birth DESC`、`Id`。
+
+输出：
+
+- **行数**：表格内的数据行数。
+- **行列表**：符合条件的行（`DataRow[]`），可用 [循环：每个](/v2/xaction/modules/each) 遍历。
+- **第一行/结果行**：第一条符合条件的行。
 
 ### 清除所有行
 
-清除表格中的所有数据。
+清掉表格里的全部数据。
 
 ### 删除符合条件的行
 
-删掉匹配指定筛选条件的行。
+按筛选条件删行。
 
 <ModuleParamPreview
   moduleKey="sys:tableoperation"
@@ -177,9 +168,9 @@ legacyContentUpdatedAt: "2024-05-14T08:26:31.000Z"
   inputVars={{table: 'table'}}
 />
 
-### 删除列
+输出 **影响行数**。
 
-从表格删除掉指定的列。
+### 删除列
 
 <ModuleParamPreview
   moduleKey="sys:tableoperation"
@@ -188,9 +179,11 @@ legacyContentUpdatedAt: "2024-05-14T08:26:31.000Z"
   inputVars={{table: 'table'}}
 />
 
+**要删除的列**：用逗号 `,` 或分号 `;` 分隔列名。`*` 表示删全部列；`!列1,列2` 表示保留这些列、删掉其余的。
+
 ### 从CSV文本加载数据
 
-从csv格式（逗号分隔）的文本加载数据到表格变量。可以在前面使用“[读取文件](/v2/xaction/modules/readfile)”模块将文件内如读取到文本变量中（csv文件在简体中文系统中通常使用GB2312编码保存），再在本模块中将变量输入到“文本数据”参数。
+从逗号分隔文本加载到表格。可先用 [读取文件](/v2/xaction/modules/readfile) 读入文本（简体中文系统里 CSV 常用 GB2312），再交给 **文本数据**。
 
 <ModuleParamPreview
   moduleKey="sys:tableoperation"
@@ -208,41 +201,42 @@ legacyContentUpdatedAt: "2024-05-14T08:26:31.000Z"
   outputVars={{rowCount: 'rowCount'}}
 />
 
-【文本数据】csv文本内容。第一行应该为标题行，内容为各列的列名。
+**文本数据**：CSV 文本。第一行应是列名。
 
-【清除已有的行】是否清除已有的数据。
+**清除已有的行**：加载前是否清空现有行。默认开启。
+
+**CSV分隔符**：字段分隔符，`\t` 表示 Tab。旧稿未写。
 
 ### 从JSON文本加载数据
 
-从JSON数组文本中加载数据。
+从 JSON 加载。其它参数与 CSV 相同（无 CSV 分隔符）。
 
-其它参数同上。
+按 JSON 形状分两种：
 
-根据json数据内容的不同，分两种情况：
+- 数组：对象的 key 当列名。例如 `[{"name":"张三","age":20,"City":"BeiJing"},{"name":"李四","age":21,"City":"ShangHai"}]`：
 
--   Json数组：数组中对象的key作为表的列名，对象的值作为作为每一行的对应key列的数据。如： `[{"name":"张三","age":20,'City':'BeiJing'},{"name":"李四","age":21,'City':'ShangHai'}]`，得到的表格为：
-    <TableDataPreview
-      compact={true}
-      columns={['name', 'age', 'City']}
-      rows={[
-        ['张三', 20, 'BeiJing'],
-        ['李四', 21, 'ShangHai'],
-      ]}
-    />
--   Json对象（1.35.38+版本）：自动生成Key和Value两列，存储json对象每个属性的名称和值。如： `{"name":"张三","age":20,'City':'BeiJing'}` ，得到的表格内容为：
-    <TableDataPreview
-      compact={true}
-      columns={['Key', 'Value']}
-      rows={[
-        ['name', '张三'],
-        ['age', 20],
-        ['City', 'BeiJing'],
-      ]}
-    />
+  <TableDataPreview
+    compact={true}
+    columns={['name', 'age', 'City']}
+    rows={[
+      ['张三', 20, 'BeiJing'],
+      ['李四', 21, 'ShangHai'],
+    ]}
+  />
+
+- 对象（1.35.38+）：自动生成 Key、Value 两列。例如 `{"name":"张三","age":20,"City":"BeiJing"}`：
+
+  <TableDataPreview
+    compact={true}
+    columns={['Key', 'Value']}
+    rows={[
+      ['name', '张三'],
+      ['age', 20],
+      ['City', 'BeiJing'],
+    ]}
+  />
 
 ### 从Excel工作表加载数据
-
-从Excel工作表加载数据。
 
 <ModuleParamPreview
   moduleKey="sys:tableoperation"
@@ -261,31 +255,71 @@ legacyContentUpdatedAt: "2024-05-14T08:26:31.000Z"
   outputVars={{rowCount: 'rowCount'}}
 />
 
-要读取的Excel工作表中应该有规范的二维表格数据。
+工作表里应是规范的二维表。
 
 ![](./img/tableoperation-012-77a4f2e906.png)
 
-【Excel文件路径】Excel文件的完整路径。此文件当前不能被锁定（如在Excel中打开）。
+**Excel文件路径**：完整路径。文件当前不能被占用（例如正用 Excel 打开）。
 
-【Excel工作表名】工作表名称。留空时读取第一个工作表。
+**Excel工作表名**：留空则读第一个工作表。
 
-【标题行号】列名所在行的行号（从1开始的数字，当前面有表头之类的内容时，会大于1）
-
-注：如果遇到错误提示“Wrong Local header signature: 0xE011CFD0”说明您的excel文件后缀名和实际格式不匹配。xslx和xls是两种excel版本，不能混用。
+**标题行号**：列名所在行，从 1 计。前面有表头时会大于 1。
 
 ### 导出文本数据
 
-将表格变量内容导出为文本格式（CSV或Json）。
+把表格导出为 CSV 或 JSON 文本。
+
+**筛选表达式** / **排序** / **导出的列**：可选。导出的列用逗号或分号分隔，留空则全部列。旧稿未写「导出的列」。
+
+**使用列标题而非列名作为导出数据的标题**：旧稿未写。
+
+**CSV分隔符**：导出 CSV 时的分隔符。
+
+输出 **CSV格式文本**、**Json格式文本**、**影响行数**。
 
 ### 导出Excel文件
 
-将表格内容输出到一个新建的Excel文档中。
+把表格写到一个新的 Excel 文件。
 
-【Excel文件路径】文件的保存路径。
+**Excel文件路径**：保存路径。
 
-【Excel工作表名】工作表名，留空时为“Sheet1”。
+**Excel工作表名**：留空则为 `Sheet1`。
+
+同样可填筛选、排序、导出的列、是否用列标题。
+
+## 输出
+
+- **是否成功**：是否没有遇到异常。
+- **行数**：表格内的数据行数。
+- 其余输出随操作类型变化，见上一节。
+
+## 限制与排障
+
+Excel 报错 `Wrong Local header signature: 0xE011CFD0` 时，多半是后缀和实际格式不一致：`.xlsx` 与 `.xls` 不能混用。导入 Excel 时文件不能被 Excel 打开占用。筛选表达式里的字符串要用单引号，日期用 `#2022-12-27#`。
+
+## 相关链接
+
+<RelatedDocs
+  items={[
+    {
+      href: '/v2/xaction/concepts/tablevar',
+      label: '表格变量类型',
+      description: '列定义、编辑方式、和本模块的关系。',
+    },
+    {
+      href: '/v2/xaction/modules/each',
+      label: '循环：每个',
+      description: '遍历查询得到的行列表。',
+    },
+    {
+      href: '/v2/xaction/modules/readfile',
+      label: '读取文件',
+      description: '先读出 CSV/JSON 文本再导入。',
+    },
+  ]}
+/>
 
 ## 更新说明
 
--   20240227 增加查询筛选时转换数据类型的说明。
--   20240514 增加更新行、删除行、清空表格、删除列操作类型的说明。
+- 20240227 增加查询筛选时转换数据类型的说明。
+- 20240514 增加更新行、删除行、清空表格、删除列操作类型的说明。

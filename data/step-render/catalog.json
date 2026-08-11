@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-08-11T13:28:34.290Z",
+  "generatedAt": "2026-08-11T21:02:55.090Z",
   "sourceVersion": "xaction-catalog",
   "runners": {
     "sys:openUrl": {
@@ -16,6 +16,27 @@
       "outputLabels": {
         "isSuccess": "是否成功"
       },
+      "inputEnums": {
+        "browser": {
+          "default": "(系统默认浏览器)",
+          "iexplore.exe": "IE浏览器",
+          "microsoft-edge:": "Edge",
+          "msedgeApp": "Edge App模式",
+          "msedgeIncognito": "Edge InPrivate窗口",
+          "chrome": "Chrome",
+          "chromeApp": "Chrome App模式",
+          "chromeIncognito": "Chrome 无痕窗口",
+          "local": "本地浏览器窗口",
+          "custom": "*自定义浏览器程序*",
+          "current": "*前台浏览器程序*"
+        }
+      },
+      "summaryParts": [
+        "(",
+        "browser",
+        ") ",
+        "url"
+      ],
       "icon": "fa:Light_Globe"
     },
     "sys:MsgBox": {
@@ -37,6 +58,33 @@
         "result": "选择的按钮",
         "okOrYes": "是否确认"
       },
+      "inputEnums": {
+        "operation": {
+          "default": "标准",
+          "custom": "自定义"
+        },
+        "icon": {
+          "None": "无",
+          "Information": "信息",
+          "Question": "疑问",
+          "Warning": "警告",
+          "Error": "错误"
+        },
+        "customIcon": {
+          "Information": "信息",
+          "Question": "疑问",
+          "Warning": "警告",
+          "Error": "错误"
+        },
+        "buttons": {
+          "OK": "确定",
+          "OKCancel": "确定/取消",
+          "YesNo": "是/否"
+        }
+      },
+      "summaryParts": [
+        "message"
+      ],
       "icon": "res:Steps/msgbox.png"
     },
     "sys:delay": {
@@ -47,6 +95,11 @@
         "delayMs": "等待时间",
         "monitorWaitWin": "等待窗口关闭时取消"
       },
+      "summaryParts": [
+        "等待 ",
+        "delayMs",
+        " ms"
+      ],
       "icon": "fa:Light_Stopwatch"
     },
     "sys:outputText": {
@@ -66,6 +119,15 @@
       "outputLabels": {
         "isSuccess": "步骤是否成功"
       },
+      "inputEnums": {
+        "method": {
+          "input": "模拟输入",
+          "paste": "复制到剪贴板后粘贴(Ctrl+V)"
+        }
+      },
+      "summaryParts": [
+        "content"
+      ],
       "icon": "fa:Light_CommentAltLines"
     },
     "sys:getSelectedText": {
@@ -88,6 +150,20 @@
         "outputEncoded": "URL编码的内容",
         "url": "来源网址"
       },
+      "inputEnums": {
+        "format": {
+          "UnicodeText": "纯文本（默认）",
+          "Rtf": "Rtf",
+          "Html": "Html",
+          "CommaSeparatedValue": "逗号分隔的值（csv）"
+        }
+      },
+      "summaryParts": [
+        "=> ",
+        "output",
+        " ",
+        "outputEncoded"
+      ],
       "icon": "fa:Light_ICursor"
     },
     "sys:keyInput": {
@@ -100,6 +176,9 @@
         "interval": "重复间隔(毫秒)",
         "holdMs": "保持毫秒数"
       },
+      "summaryParts": [
+        "keys"
+      ],
       "icon": "fa:Light_Keyboard"
     },
     "sys:sendKeys": {
@@ -109,6 +188,9 @@
       "inputLabels": {
         "keys": "按键序列"
       },
+      "summaryParts": [
+        "keys"
+      ],
       "icon": "fa:Light_Keyboard"
     },
     "sys:mouse": {
@@ -143,6 +225,66 @@
         "mouseY": "鼠标位置Y",
         "cursorType": "光标类型"
       },
+      "inputEnums": {
+        "type": {
+          "restore": "还原鼠标位置",
+          "move": "移动距离",
+          "moveTo": "移动到(x,y分别指定)",
+          "moveToXy": "移动到(x,y一同指定)",
+          "click": "单击",
+          "dbclick": "双击",
+          "down": "按下",
+          "up": "抬起",
+          "scroll": "滚动",
+          "ctrlDown": "按下Ctrl",
+          "ctrlUp": "松开Ctrl",
+          "shiftDown": "按下Shift",
+          "shiftUp": "松开Shift",
+          "toWinTL": "移动到窗口位置：相对于窗口左上角",
+          "toWinTR": "移动到窗口位置：相对于窗口右上角",
+          "toWinBL": "移动到窗口位置：相对于窗口左下角",
+          "toWinBR": "移动到窗口位置：相对于窗口右下角",
+          "toWinCenter": "移动到窗口位置：窗口中心",
+          "moveToWinXy": "移动到窗口位置：xy一同指定",
+          "locateByBitmap": "移动到位图位置(图片文件)",
+          "locateByBitmapVar": "移动到位图位置(图片变量)",
+          "getMouseOriginPosition": "获取鼠标位置(弹出面板前位置)",
+          "getMouseCurrentPosition": "获取鼠标位置及指针类型(当前位置)",
+          "showIndicator": "显示鼠标位置提示"
+        },
+        "btn": {
+          "left": "左键",
+          "right": "右键",
+          "middle": "中键",
+          "x1": "X1",
+          "x2": "X2"
+        },
+        "bmpTargetType": {
+          "MainScreen": "主屏幕",
+          "CurrentWindow": "当前窗口",
+          "Rect": "坐标范围",
+          "AllScreens": "所有屏幕"
+        },
+        "bmpPosition": {
+          "Center": "位图中间",
+          "TopLeft": "左上角",
+          "TopRight": "右上角",
+          "BottomLeft": "左下角",
+          "BottomRight": "右下角"
+        },
+        "extAction": {
+          "none": "无",
+          "left": "左键单击",
+          "leftDbClick": "左键双击",
+          "right": "右键单击",
+          "middle": "中键单击"
+        }
+      },
+      "summaryParts": [
+        "type",
+        "   ",
+        "extAction"
+      ],
       "icon": "fa:Solid_MousePointer"
     },
     "sys:notify": {
@@ -160,6 +302,26 @@
         "duplicate": "重复控制",
         "clickAction": "点击操作"
       },
+      "inputEnums": {
+        "type": {
+          "Success": "成功",
+          "Info": "信息",
+          "Warning": "告警",
+          "Error": "错误",
+          "WindowsToast": "Windows 通知 (win10+)"
+        },
+        "placement": {
+          "BottomCenter": "默认位置（底部居中）",
+          "TopLeft": "左上角",
+          "TopCenter": "顶部居中",
+          "TopRight": "右上角",
+          "BottomLeft": "左下角",
+          "BottomRight": "右下角"
+        }
+      },
+      "summaryParts": [
+        "msg"
+      ],
       "icon": "fa:Light_Bullhorn:#6aaded"
     },
     "sys:userInput": {
@@ -192,6 +354,35 @@
         "datetimeValue": "日期时间值",
         "isEmpty": "是否为空"
       },
+      "inputEnums": {
+        "type": {
+          "text": "单行文本",
+          "multiline": "多行文本",
+          "number": "数字",
+          "date_time": "日期时间"
+        },
+        "winLocation": {
+          "WithMouse1": "跟随鼠标（指针周围）",
+          "WithMouse2": "跟随鼠标（指针右下）",
+          "CenterScreen": "屏幕中间",
+          "TopLeft": "屏幕左上",
+          "TopCenter": "屏幕中上",
+          "TopRight": "屏幕右上",
+          "LeftCenter": "屏幕左中",
+          "RightCenter": "屏幕右中",
+          "BottomLeft": "屏幕左下",
+          "BottomCenter": "屏幕中下",
+          "BottomRight": "屏幕右下"
+        },
+        "imeState": {
+          "NO_CONTROL": "不控制",
+          "ON": "开启",
+          "OFF": "关闭"
+        }
+      },
+      "summaryParts": [
+        "type"
+      ],
       "icon": "fa:Light_UserEdit"
     },
     "sys:select": {
@@ -237,6 +428,52 @@
         "selectedItemTitle": "选择的选项标题",
         "filterContent": "筛选内容"
       },
+      "inputEnums": {
+        "type": {
+          "single": "单选",
+          "multi": "多选"
+        },
+        "winLocation": {
+          "WithMouse1": "跟随鼠标（指针周围）",
+          "WithMouse2": "跟随鼠标（指针右下）",
+          "CenterScreen": "屏幕中间",
+          "TopLeft": "屏幕左上",
+          "TopCenter": "屏幕中上",
+          "TopRight": "屏幕右上",
+          "LeftCenter": "屏幕左中",
+          "RightCenter": "屏幕右中",
+          "BottomLeft": "屏幕左下",
+          "BottomCenter": "屏幕中下",
+          "BottomRight": "屏幕右下",
+          "Manual": "自定义位置"
+        },
+        "keepLastPos": {
+          "0": "不保持",
+          "1": "保持本次运行的上次位置+宽度",
+          "2": "总是保持上次位置+宽度",
+          "3": "保持本次运行的上次位置(左上角)",
+          "4": "总是保持上次位置(左上角)",
+          "5": "保持本次运行的上次位置+尺寸",
+          "6": "总是保持上次位置+尺寸",
+          "7": "保持本次运行的上次窗口尺寸",
+          "8": "总是保持上次窗口尺寸"
+        },
+        "showFilter": {
+          "0": "不启用",
+          "1": "启用",
+          "auto": "自动(选项超过10个时启用)"
+        },
+        "imeState": {
+          "NO_CONTROL": "不控制",
+          "ON": "开启",
+          "OFF": "关闭"
+        }
+      },
+      "summaryParts": [
+        "textValue",
+        "   ",
+        "multiSelected"
+      ],
       "icon": "fa:Light_Ballot"
     },
     "sys:run": {
@@ -270,6 +507,24 @@
         "stderr": "stderr输出",
         "exitCode": "退出代码"
       },
+      "inputEnums": {
+        "windowStyle": {
+          "0": "普通(Normal)",
+          "1": "隐藏(Hidden)",
+          "2": "最小化(Minimized)",
+          "3": "最大化(Maximized)"
+        },
+        "outputEncoding": {
+          "utf8": "UTF8",
+          "oem": "OEM"
+        }
+      },
+      "summaryParts": [
+        "运行：",
+        "path",
+        " ",
+        "arg"
+      ],
       "icon": "fa:Solid_PaperPlane"
     },
     "sys:runScript": {
@@ -295,6 +550,32 @@
         "stdoutOnly": "标准输出",
         "stderr": "错误输出"
       },
+      "inputEnums": {
+        "type": {
+          "CMD_K": "CMD命令 (完成后保留窗口)",
+          "CMD_C": "CMD命令 (完成后关闭窗口)",
+          "CMD_H": "CMD命令 (隐藏命令行窗口)",
+          "BAT": "BAT批处理脚本(.bat)",
+          "CMD_F": "CMD批处理脚本(.cmd)",
+          "PS": "PowerShell脚本(.ps1)",
+          "AHK": "AutoHotKey脚本(.ahk)",
+          "CUSTOM": "自定义脚本类型"
+        },
+        "encoding": {
+          "utf-8": "UTF8 (有BOM)",
+          "UTF8-NOBOM": "UTF8 (无BOM)",
+          "utf-16": "UTF-16 LE",
+          "utf-16BE": "UTF-16 BE",
+          "us-ascii": "ASCII",
+          "utf-7": "UTF7",
+          "utf-32": "UTF32",
+          "default": "系统默认(gb2312)"
+        },
+        "outputEncoding": {
+          "utf8": "UTF8",
+          "oem": "OEM"
+        }
+      },
       "icon": "fa:Light_Scroll"
     },
     "sys:comment": {
@@ -304,6 +585,9 @@
       "inputLabels": {
         "note": "注释内容"
       },
+      "summaryParts": [
+        "note:0"
+      ],
       "icon": "fa:Solid_FileAlt"
     },
     "sys:waitClipboardChange": {
@@ -319,6 +603,11 @@
       "outputLabels": {
         "isSuccess": "是否改变"
       },
+      "summaryParts": [
+        "最长 ",
+        "maxWaitSeconds",
+        " 秒"
+      ],
       "icon": "fa:Light_ClipboardCheck"
     },
     "sys:getClipboardImage": {
@@ -333,6 +622,10 @@
         "output": "结果图片",
         "elapsedMs": "已更新时间"
       },
+      "summaryParts": [
+        "=> ",
+        "output"
+      ],
       "icon": "fa:Light_Clipboard"
     },
     "sys:getClipboardText": {
@@ -354,6 +647,28 @@
         "url": "来源网址",
         "elapsedMs": "已更新时间"
       },
+      "inputEnums": {
+        "format": {
+          "UnicodeText": "纯文本（默认）",
+          "Rtf": "Rtf",
+          "Html": "Html",
+          "CommaSeparatedValue": "逗号分隔的值（csv）",
+          "Custom": "自定义格式名"
+        },
+        "encoding": {
+          "utf-8": "UTF8",
+          "utf-16": "UTF-16 LE",
+          "utf-16BE": "UTF-16 BE",
+          "us-ascii": "ASCII",
+          "utf-7": "UTF7",
+          "utf-32": "UTF32",
+          "default": "系统默认(gb2312)"
+        }
+      },
+      "summaryParts": [
+        "=> ",
+        "output"
+      ],
       "icon": "fa:Light_Clipboard"
     },
     "sys:getClipboardFiles": {
@@ -368,6 +683,10 @@
         "output": "文件列表",
         "elapsedMs": "已更新时间"
       },
+      "summaryParts": [
+        "=> ",
+        "output"
+      ],
       "icon": "fa:Light_ClipboardList"
     },
     "sys:fileToClipboard": {
@@ -383,6 +702,12 @@
       "outputLabels": {
         "isSuccess": "是否成功"
       },
+      "summaryParts": [
+        "file",
+        " ",
+        "list",
+        " => 剪贴板"
+      ],
       "icon": "fa:Light_NotesMedical"
     },
     "sys:writeClipboard": {
@@ -403,6 +728,23 @@
       "outputLabels": {
         "isSuccess": "是否成功"
       },
+      "inputEnums": {
+        "type": {
+          "auto": "自动（纯文本或图片）",
+          "html": "HTML片段",
+          "text": "纯文本",
+          "image": "图片",
+          "rtf": "Rtf",
+          "csv": "Csv",
+          "custom": "自定义格式",
+          "clear": "清空剪贴板",
+          "clearHistory": "清空剪贴板历史(Win10+)"
+        }
+      },
+      "summaryParts": [
+        "type",
+        " => 剪贴板"
+      ],
       "icon": "fa:Light_NotesMedical"
     },
     "sys:numCompare": {
@@ -417,6 +759,23 @@
       "outputLabels": {
         "value": "值"
       },
+      "inputEnums": {
+        "type": {
+          ">": ">",
+          ">=": ">=",
+          "=": "=",
+          "<": "<",
+          "<=": "<="
+        }
+      },
+      "summaryParts": [
+        "param1",
+        " ",
+        "type",
+        " ",
+        "param2",
+        " ?"
+      ],
       "icon": "fa:Light_Calculator"
     },
     "sys:strCompare": {
@@ -432,6 +791,26 @@
       "outputLabels": {
         "value": "值"
       },
+      "inputEnums": {
+        "type": {
+          ">": ">",
+          "=": "=",
+          "<": "<",
+          "contains": "包含",
+          "startsWith": "以指定内容开始",
+          "endsWith": "以指定内容结束",
+          "match": "正则匹配",
+          "pinyinMatch": "包含指定内容，或匹配拼音、拼音首字母"
+        }
+      },
+      "summaryParts": [
+        "param1",
+        " ",
+        "type",
+        " ",
+        "param2",
+        " ?"
+      ],
       "icon": "fa:Light_Calculator"
     },
     "sys:tableoperation": {
@@ -473,6 +852,35 @@
         "jsonExportData": "Json格式文本",
         "isConfirmed": "是否确认"
       },
+      "inputEnums": {
+        "type": {
+          "info": "获取信息",
+          "addRow": "添加行",
+          "update": "更新行",
+          "manage": "查看或编辑数据",
+          "select": "查询或筛选行(Select)",
+          "clear": "清除所有行",
+          "deleteRows": "删除符合条件的行",
+          "deleteColumns": "删除列",
+          "importCsv": "从CSV文本加载数据",
+          "importJson": "从Json文本加载数据",
+          "importExcel": "从Excel工作表加载数据",
+          "export_text": "导出文本数据",
+          "exportExcel": "导出Excel文件"
+        },
+        "gridSelectionMode": {
+          "Cells": "单元格(类似Excel)",
+          "OneRow": "行：0行或1行",
+          "OneRowRequired": "行：1行(必选)",
+          "Rows": "行：0、1或多行",
+          "RowsRequired": "行：一行或多行(必选)"
+        }
+      },
+      "summaryParts": [
+        "table",
+        " ",
+        "type"
+      ],
       "icon": "fa:Light_Table"
     },
     "sys:dictOperations": {
@@ -493,6 +901,28 @@
         "isSuccess": "是否成功",
         "value": "结果"
       },
+      "inputEnums": {
+        "type": {
+          "get": "取值",
+          "set": "设置值 (文本类型)",
+          "setOriginValue": "设置值 (变量原始类型)",
+          "remove": "删除一项",
+          "clear": "清空",
+          "keyList": "获取键(Key)列表",
+          "valueList": "获取值列表",
+          "reverse": "翻转键值",
+          "queryStringToDict": "查询字符串转换为词典(name1=value1&name2=value2...)",
+          "dictToQueryString": "词典转换为查询字符串",
+          "dictToQueryStringNoEncode": "词典转换为查询字符串(不对键和值进行URL编码)"
+        }
+      },
+      "summaryParts": [
+        "Dict",
+        " ",
+        "type",
+        " Key:",
+        "key"
+      ],
       "icon": "fa:Light_Book"
     },
     "sys:assign": {
@@ -507,6 +937,11 @@
         "isSuccess": "是否成功",
         "output": "输出"
       },
+      "summaryParts": [
+        "input:60",
+        " => ",
+        "output"
+      ],
       "icon": "fa:Light_Edit"
     },
     "sys:manageList": {
@@ -530,6 +965,9 @@
       "outputLabels": {
         "isSuccess": "是否确认"
       },
+      "summaryParts": [
+        "list"
+      ],
       "icon": "fa:Light_ListOl"
     },
     "sys:compute": {
@@ -545,6 +983,11 @@
         "isSuccess": "是否成功",
         "output": "结果"
       },
+      "summaryParts": [
+        "expression",
+        " => ",
+        "output"
+      ],
       "icon": "fa:Light_CalculatorAlt"
     },
     "sys:computeTime": {
@@ -573,6 +1016,18 @@
         "totalSeconds": "总秒数",
         "textValue": "文本值"
       },
+      "inputEnums": {
+        "type": {
+          "getdate": "取日期值（去除当天的时间部分）",
+          "timespan": "计算时间差（日期时间2 减 日期时间）",
+          "endtime": "计算结束时间",
+          "localToUtc": "本地时间转换为UTC时间",
+          "utcToLocal": "UTC时间转换为本地时间"
+        }
+      },
+      "summaryParts": [
+        "type"
+      ],
       "icon": "fa:Light_Clock"
     },
     "sys:listOperations": {
@@ -597,6 +1052,47 @@
         "index": "序号",
         "filterOutItems": "剩余项列表"
       },
+      "inputEnums": {
+        "type": {
+          "none": "无操作（仅用于获取列表信息）",
+          "getAt": "读取某位置元素",
+          "append": "添加元素到末尾",
+          "insertAt": "插入元素",
+          "setAt": "设置/更新某序号元素",
+          "remove": "去除元素(指定值，有多个时去除第一个)",
+          "removeAllByValue": "去除元素(指定值，有多个时去除全部)",
+          "removeAt": "去除元素(指定位置)",
+          "removeByMatch": "去除元素(匹配正则表达式的项)",
+          "removeByNotMatch": "去除元素(不匹配正则表达式的项)",
+          "clear": "清空列表",
+          "sortAsc": "排序A-Z（输出到结果）",
+          "sortDesc": "排序Z-A（输出到结果）",
+          "sortAscNature": "自然排序A-Z（输出到结果）",
+          "FileSizeAsc": "排序文件列表：文件大小（从小到大）",
+          "FileSizeDesc": "排序文件列表：文件大小（从大到小）",
+          "CreationTimeDesc": "排序文件列表：创建时间（从新到旧）",
+          "CreationTimeAsc": "排序文件列表：创建时间（从旧到新）",
+          "LastAccessTimeDesc": "排序文件列表：最后访问时间（从晚到早）",
+          "LastAccessTimeAsc": "排序文件列表：最后访问时间（从早到晚）",
+          "LastWriteTimeDesc": "排序文件列表：最后写入时间（从晚到早）",
+          "LastWriteTimeAsc": "排序文件列表：最后写入时间（从早到晚）",
+          "reverse": "倒置",
+          "sub": "截取（输出到结果）",
+          "concat": "拼接（输出到结果）",
+          "distinct": "去除重复（输出到结果）",
+          "indexOf": "获取值的序号",
+          "filterByRegex": "筛选（正则,输出到结果）",
+          "filterByDefault": "筛选（模糊匹配,输出到结果）",
+          "filterByContains": "筛选（包含）",
+          "filterByStarts": "筛选（开始）",
+          "filterByEnds": "筛选（结束）"
+        }
+      },
+      "summaryParts": [
+        "type",
+        " ",
+        "list"
+      ],
       "icon": "fa:Light_ListOl"
     },
     "sys:color": {
@@ -623,6 +1119,32 @@
         "HsvV": "HSV.V",
         "textValue": "文本值"
       },
+      "inputEnums": {
+        "type": {
+          "fromString": "通过文本指定颜色",
+          "selectFromScreen": "从屏幕选取颜色",
+          "fromScreenPosition": "取屏幕指定位置颜色",
+          "editOrSelectColor": "编辑/选择颜色"
+        },
+        "format": {
+          "HEX_RGB": "十六进制RGB: #6496C8",
+          "HEX_ARGB": "十六进制ARGB: #FF6496C8",
+          "rgba": "HTML: rgba(100,150,200,1)",
+          "rgb": "HTML: rgb(100,150,200)",
+          "DOT_RGB": "RGB: 100,150,200",
+          "DOT_RGBA": "RGBA: 100,150,200,255",
+          "DOT_ARGB": "ARGB: 255,100,150,200",
+          "float_rgba": "浮点: 0.39f, 0.59f, 0.78f, 1.00f",
+          "Swift": "Swift: UIColor(red:0.39, green:0.59, blue:0.78, alpha:1.00)",
+          "CMYK": "CMYK: 50,25,0,22",
+          "HSL": "hsl(210,47.6%,58.8%)",
+          "hsla": "hsla(210,47.6%,58.8%,1)",
+          "HSV_HSB": "HSV/HSB: 210°,50,78.4"
+        }
+      },
+      "summaryParts": [
+        "type"
+      ],
       "icon": "fa:Solid_FillDrip"
     },
     "sys:randomNum": {
@@ -636,6 +1158,10 @@
       "outputLabels": {
         "output": "随机数"
       },
+      "summaryParts": [
+        "=> ",
+        "output"
+      ],
       "icon": "fa:Light_Cog"
     },
     "sys:newGuid": {
@@ -649,6 +1175,19 @@
       "outputLabels": {
         "output": "内容"
       },
+      "inputEnums": {
+        "format": {
+          "D": "默认：00000000-0000-0000-0000-000000000000",
+          "N": "去除连字符：00000000000000000000000000000000",
+          "B": "大括号包围：{00000000-0000-0000-0000-000000000000}",
+          "P": "小括号包围：(00000000-0000-0000-0000-000000000000)",
+          "X": "十六进制：{0x00000000,0x0000,0x0000,{0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00}}"
+        }
+      },
+      "summaryParts": [
+        "输出到：",
+        "output"
+      ],
       "icon": "fa:Light_Cog"
     },
     "sys:dboperation": {
@@ -673,6 +1212,25 @@
         "firstItem": "首项结果",
         "rowCount": "结果行数"
       },
+      "inputEnums": {
+        "dbType": {
+          "sqlserver": "SQL Server",
+          "mysql": "MySQL",
+          "sqlite": "SQLite",
+          "oledb": "OleDB",
+          "odbc": "ODBC"
+        },
+        "operationType": {
+          "Query": "Query：查询并返回结果数据",
+          "Execute": "Execute：执行并返回影响的行数",
+          "ExecuteScalar": "ExecuteScalar：执行并返回单个值(首行首列的值)"
+        }
+      },
+      "summaryParts": [
+        "operationType!",
+        " ",
+        "sql"
+      ],
       "icon": "fa:Light_Database"
     },
     "sys:numberprocess": {
@@ -699,6 +1257,27 @@
         "resultOctal": "八进制",
         "resultBin": "二进制"
       },
+      "inputEnums": {
+        "operation": {
+          "toString": "数字转换为文本",
+          "toInteger": "取整",
+          "baseConversion": "进制转换"
+        },
+        "roundingMethod": {
+          "Round": "舍入：奇进偶舍",
+          "Round45": "舍入：四舍五入",
+          "Truncate": "截断"
+        },
+        "toIntegerMethod": {
+          "Round": "舍入：奇进偶舍",
+          "Round45": "舍入：四舍五入",
+          "Ceiling": "向上取整",
+          "Floor": "向下取整"
+        }
+      },
+      "summaryParts": [
+        "srcNumber"
+      ],
       "icon": "res:Steps/common_step.png"
     },
     "sys:readFile": {
@@ -716,6 +1295,28 @@
         "txt": "文本内容",
         "image": "图片内容"
       },
+      "inputEnums": {
+        "type": {
+          "text": "文本",
+          "image": "图片"
+        },
+        "encoding": {
+          "utf-8": "UTF8",
+          "utf-16": "UTF-16 LE",
+          "utf-16BE": "UTF-16 BE",
+          "us-ascii": "ASCII",
+          "utf-7": "UTF7",
+          "utf-32": "UTF32",
+          "default": "系统默认(gb2312)",
+          "auto": "自动（BOM/UTF/ANSI）"
+        }
+      },
+      "summaryParts": [
+        "path",
+        " => ",
+        "txt",
+        "image"
+      ],
       "icon": "fa:Light_FolderOpen"
     },
     "sys:checkPathExists": {
@@ -745,6 +1346,9 @@
         "sha256hash": "SHA256 哈希值",
         "crc32hash": "CRC32 哈希值"
       },
+      "summaryParts": [
+        "path"
+      ],
       "icon": "res:windows.png"
     },
     "sys:GenTempFilePath": {
@@ -757,6 +1361,10 @@
       "outputLabels": {
         "filePath": "文件路径"
       },
+      "summaryParts": [
+        "生成文件路径到：",
+        "filePath"
+      ],
       "icon": "fa:Light_Cog"
     },
     "sys:everythingsearch": {
@@ -782,6 +1390,46 @@
         "resultCount": "结果个数",
         "rawResult": "原始结果"
       },
+      "inputEnums": {
+        "ext": {
+          "bat;cmd;exe;msi;msp;scr;cpl": "可执行文件",
+          "c;chm;cpp;csv;cxx;doc;docm;docx;dot;dotm;dotx;h;hpp;htm;html;hxx;ini;java;lua;mht;mhtml;odt;pdf;potx;potm;ppam;ppsm;ppsx;pps;ppt;pptm;pptx;rtf;sldm;sldx;thmx;txt;vsd;wpd;wps;wri;xlam;xls;xlsb;xlsm;xlsx;xltm;xltx;xml": "文档",
+          "ani;bmp;gif;ico;jpe;jpeg;jpg;pcx;png;psd;tga;tif;tiff;webp;wmf": "图片",
+          "3g2;3gp;3gp2;3gpp;amr;amv;asf;avi;bdmv;bik;d2v;divx;drc;dsa;dsm;dss;dsv;evo;f4v;flc;fli;flic;flv;hdmov;ifo;ivf;m1v;m2p;m2t;m2ts;m2v;m4b;m4p;m4v;mkv;mp2v;mp4;mp4v;mpe;mpeg;mpg;mpls;mpv2;mpv4;mov;mts;ogm;ogv;pss;pva;qt;ram;ratdvd;rm;rmm;rmvb;roq;rpm;smil;smk;swf;tp;tpr;ts;vob;vp6;webm;wm;wmp;wmv": "视频文件",
+          "aac;ac3;aif;aifc;aiff;au;cda;dts;fla;flac;it;m1a;m2a;m3u;m4a;mid;midi;mka;mod;mp2;mp3;mpa;ogg;ra;rmi;spc;rmi;snd;umx;voc;wav;wma;xm": "音频文件"
+        },
+        "sort": {
+          "1": "名称顺序 NAME_ASCENDING",
+          "2": "名称倒序 NAME_DESCENDING",
+          "3": "路径顺序 PATH_ASCENDING",
+          "4": "路径倒序 PATH_DESCENDING",
+          "5": "大小顺序 SIZE_ASCENDING",
+          "6": "大小倒序 SIZE_DESCENDING",
+          "7": "扩展名顺序 EXTENSION_ASCENDING",
+          "8": "扩展名倒序 EXTENSION_DESCENDING",
+          "9": "类型名顺序 TYPE_NAME_ASCENDING",
+          "10": "类型名倒序 TYPE_NAME_DESCENDING",
+          "11": "创建时间顺序 DATE_CREATED_ASCENDING",
+          "12": "创建时间倒序 DATE_CREATED_DESCENDING",
+          "13": "修改时间顺序 DATE_MODIFIED_ASCENDING",
+          "14": "修改时间倒序 DATE_MODIFIED_DESCENDING",
+          "15": "属性顺序 ATTRIBUTES_ASCENDING",
+          "16": "属性倒序 ATTRIBUTES_DESCENDING",
+          "17": "文件列表文件名顺序 FILE_LIST_FILENAME_ASCENDING",
+          "18": "文件列表文件名倒序 FILE_LIST_FILENAME_DESCENDING",
+          "19": "运行次数顺序 RUN_COUNT_ASCENDING",
+          "20": "运行次数倒序 RUN_COUNT_DESCENDING",
+          "21": "最后变更时间顺序 DATE_RECENTLY_CHANGED_ASCENDING",
+          "22": "最后变更时间倒序 DATE_RECENTLY_CHANGED_DESCENDING",
+          "23": "最后访问时间顺序 DATE_ACCESSED_ASCENDING",
+          "24": "最后访问时间倒序 DATE_ACCESSED_DESCENDING",
+          "25": "最后运行时间顺序 DATE_RUN_ASCENDING",
+          "26": "最后运行时间倒序 DATE_RUN_DESCENDING"
+        }
+      },
+      "summaryParts": [
+        "search"
+      ],
       "icon": "fa:Light_Search"
     },
     "sys:pathExtraction": {
@@ -808,6 +1456,16 @@
         "path": "所在文件夹路径",
         "ext": "扩展名"
       },
+      "inputEnums": {
+        "operation": {
+          "getInfo": "提取文件路径信息",
+          "changeExt": "更改扩展名，其它不变",
+          "changeName": "更改文件名(含扩展名)，所在目录不变",
+          "changeNameWithoutExt": "更改文件名(不含扩展名和所在目录)",
+          "changeDir": "更改所在目录，文件名不变",
+          "combine": "合并路径 (拼接)"
+        }
+      },
       "icon": "fa:Light_Cog"
     },
     "sys:fileOperation": {
@@ -828,6 +1486,29 @@
         "files": "路径列表",
         "resultPath": "结果路径"
       },
+      "inputEnums": {
+        "type": {
+          "copyInto": "复制到指定目录下",
+          "copyIntoWithShell": "复制到指定目录下(Windows)",
+          "copyTo": "复制为（指定结果名称或路径）",
+          "moveInto": "移动到指定目录下",
+          "moveIntoWithShell": "移动到指定目录下(Windows)",
+          "rename": "移动/重命名为（指定结果名称或完整路径）",
+          "deleteFile": "删除文件（不支持文件夹）",
+          "deleteEmptyFolder": "删除空文件夹",
+          "recycle": "移入回收站",
+          "recycleNoUi": "移入回收站（安静模式，自动确认操作）",
+          "makeDir": "创建文件夹",
+          "createFile": "创建空文件",
+          "enumFiles": "获取文件夹内的文件",
+          "enumDirs": "获取文件夹内的子文件夹",
+          "copyFile": "复制文件/文件夹（自动）【不建议使用】",
+          "moveFile": "移动/重命名文件(夹)（自动）【不建议使用】"
+        }
+      },
+      "summaryParts": [
+        "type"
+      ],
       "icon": "fa:Light_Folders"
     },
     "sys:WriteImageFile": {
@@ -843,6 +1524,10 @@
       "outputLabels": {
         "isSuccess": "是否成功"
       },
+      "summaryParts": [
+        "写入文件：",
+        "filePath"
+      ],
       "icon": "fa:Light_FileImage"
     },
     "sys:WriteTextFile": {
@@ -862,6 +1547,20 @@
       "outputLabels": {
         "isSuccess": "是否成功"
       },
+      "inputEnums": {
+        "encoding": {
+          "utf-8": "UTF8",
+          "utf-16": "UTF-16 LE",
+          "utf-16BE": "UTF-16 BE",
+          "us-ascii": "ASCII",
+          "utf-7": "UTF7",
+          "utf-32": "UTF32",
+          "default": "系统默认(gb2312)"
+        }
+      },
+      "summaryParts": [
+        "filePath"
+      ],
       "icon": "fa:Light_FileEdit"
     },
     "sys:stateStorage": {
@@ -887,6 +1586,22 @@
         "value": "值",
         "isEmpty": "是否为空"
       },
+      "inputEnums": {
+        "type": {
+          "readActionState": "读取动作状态",
+          "saveActionState": "写入动作状态",
+          "UpdateActionBadge": "设置徽标文字",
+          "UpdateOverlyIcon": "设置徽标图标",
+          "UpdateContextMenu": "设置附加的右键菜单项",
+          "readGlobalState": "【谨慎使用】读取全局状态",
+          "saveGlobalState": "【谨慎使用】写入全局状态"
+        }
+      },
+      "summaryParts": [
+        "type",
+        " ",
+        "key"
+      ],
       "icon": "fa:Light_Save"
     },
     "sys:zip": {
@@ -912,6 +1627,18 @@
         "isSuccess": "是否成功",
         "resultPath": "结果路径"
       },
+      "inputEnums": {
+        "type": {
+          "Zip": "创建Zip文件",
+          "Unzip": "解压缩Zip文件"
+        }
+      },
+      "summaryParts": [
+        "type",
+        " ",
+        "sourcePath",
+        "sourceZipFile"
+      ],
       "icon": "fa:Light_FileArchive"
     },
     "sys:group": {
@@ -944,6 +1671,11 @@
         "isSuccess": "是否成功",
         "packagePath": "依赖包路径"
       },
+      "summaryParts": [
+        "packageName",
+        " ",
+        "packageVersion"
+      ],
       "icon": "res:Steps/common_step.png"
     },
     "sys:each": {
@@ -967,6 +1699,17 @@
         "item": "项",
         "count": "计数"
       },
+      "inputEnums": {
+        "useMultiThread": {
+          "0": "单线程（顺序执行）",
+          "1": "多线程（同时执行）"
+        }
+      },
+      "summaryParts": [
+        "对 ",
+        "input",
+        " 的每项执行"
+      ],
       "icon": "fa:Light_Repeat"
     },
     "sys:simpleIf": {
@@ -976,6 +1719,10 @@
       "inputLabels": {
         "condition": "如果"
       },
+      "summaryParts": [
+        "判断条件：",
+        "condition"
+      ],
       "icon": "fa:Regular_ProjectDiagram"
     },
     "sys:if": {
@@ -985,6 +1732,10 @@
       "inputLabels": {
         "condition": "如果"
       },
+      "summaryParts": [
+        "判断条件：",
+        "condition"
+      ],
       "icon": "fa:Regular_ProjectDiagram"
     },
     "sys:break": {
@@ -1009,6 +1760,18 @@
         "return": "返回值",
         "showMessage": "提示消息"
       },
+      "inputEnums": {
+        "method": {
+          "default": "默认：停止动作或从子程序返回",
+          "forcestop": "停止动作：停止整个动作(即使在子程序中)"
+        }
+      },
+      "summaryParts": [
+        "method",
+        " (标记为出错：",
+        "isError",
+        ")"
+      ],
       "icon": "fa:Solid_Square"
     },
     "sys:runAction": {
@@ -1031,6 +1794,23 @@
         "output": "动作输出",
         "count": "运行个数"
       },
+      "inputEnums": {
+        "type": {
+          "StartAction": "运行动作",
+          "StopAction": "停止动作",
+          "ShowActionContextMenu": "显示动作右键菜单",
+          "StartCurrentAction": "运行当前动作（注意避免产生循环或递归）",
+          "StopOtherInstance": "停止当前动作的其它实例",
+          "GetRunningActionCount": "获取动作运行个数（自己编写动作时可用）"
+        }
+      },
+      "summaryParts": [
+        "type",
+        " ",
+        "actionId",
+        " ",
+        "inputParam"
+      ],
       "icon": "fa:Light_Cog"
     },
     "sys:subprogram": {
@@ -1071,6 +1851,20 @@
         "rtnAssembly": "程序集对象",
         "assemblyPath": "程序集路径"
       },
+      "inputEnums": {
+        "mode": {
+          "normal_roslyn": "普通模式",
+          "low_permission_roslyn": "低权限模式",
+          "generate_assembly": "生成程序集"
+        },
+        "runOnUiThread": {
+          "auto": "自动",
+          "ui": "UI线程",
+          "background": "后台线程(MTA)",
+          "sta": "后台线程(STA)",
+          "staLongRun": "后台线程(STA独立线程)"
+        }
+      },
       "icon": "fa:Light_Scroll"
     },
     "sys:csharpFileApp": {
@@ -1092,6 +1886,9 @@
         "sourceFile": "源码文件路径",
         "errMessage": "错误消息"
       },
+      "summaryParts": [
+        "code"
+      ],
       "icon": "fa:Light_Code"
     },
     "sys:jsscript": {
@@ -1137,6 +1934,14 @@
       "outputLabels": {
         "count": "计数"
       },
+      "summaryParts": [
+        "重复",
+        "count",
+        "次，循环间隔: ",
+        "repeatDelayMs",
+        "ms，中止条件: ",
+        "stopCondition"
+      ],
       "icon": "fa:Light_Repeat"
     },
     "sys:imageinfo": {
@@ -1160,6 +1965,15 @@
         "rawExifData": "原始属性数据",
         "fileTypeFromData": "内容图片格式"
       },
+      "inputEnums": {
+        "sourceType": {
+          "var": "图片变量",
+          "file": "图片文件"
+        }
+      },
+      "summaryParts": [
+        "sourceType"
+      ],
       "icon": "fa:Light_Image"
     },
     "sys:screenRecording": {
@@ -1193,6 +2007,38 @@
         "rect": "录制区域",
         "errMessage": "错误消息"
       },
+      "inputEnums": {
+        "operation": {
+          "start": "开始录屏",
+          "pause": "暂停录屏",
+          "resume": "继续录屏",
+          "stop": "结束录屏"
+        },
+        "regionType": {
+          "fixed_area": "固定区域",
+          "primary_screen": "主屏幕",
+          "full_screen": "所有屏幕"
+        },
+        "outputFormat": {
+          "mp4": "MP4",
+          "gif": "GIF",
+          "avi": "AVI"
+        },
+        "exportQuality": {
+          "standard": "标准",
+          "high": "高清",
+          "original": "原始"
+        },
+        "encodingStrategy": {
+          "encodeWhileRecording": "实时编码",
+          "recordThenEncode": "录制结束后转码"
+        }
+      },
+      "summaryParts": [
+        "operation",
+        " ",
+        "sessionId"
+      ],
       "icon": "fa:Light_Video"
     },
     "sys:screenCapturePro": {
@@ -1213,6 +2059,9 @@
         "rect": "截图区域",
         "savedPath": "保存路径"
       },
+      "summaryParts": [
+        "img"
+      ],
       "icon": "fa:Light_ExpandWide"
     },
     "sys:tempImgBed": {
@@ -1227,6 +2076,11 @@
         "isSuccess": "是否成功",
         "url": "网址"
       },
+      "summaryParts": [
+        "imgVar",
+        " => ",
+        "url"
+      ],
       "icon": "fa:Light_Images"
     },
     "sys:screenCapture": {
@@ -1249,6 +2103,21 @@
         "img": "图片",
         "rect": "截图区域"
       },
+      "inputEnums": {
+        "type": {
+          "select": "选择区域",
+          "full_screen": "所有屏幕",
+          "primary_screen": "主屏幕",
+          "fixed_area": "固定区域",
+          "window": "窗口 (屏幕可见内容)",
+          "windowBackground": "窗口 (支持后台显示)"
+        }
+      },
+      "summaryParts": [
+        "type",
+        " => ",
+        "img"
+      ],
       "icon": "fa:Light_ExpandWide"
     },
     "sys:screenRecordingUI": {
@@ -1268,6 +2137,9 @@
         "rect": "录制区域",
         "errMessage": "错误消息"
       },
+      "summaryParts": [
+        "filePath"
+      ],
       "icon": "fa:Light_Video"
     },
     "sys:searchBmp": {
@@ -1298,6 +2170,36 @@
         "imgIndex": "匹配序号",
         "allPoints": "所有匹配点"
       },
+      "inputEnums": {
+        "type": {
+          "locateByBitmapFile": "查找图片(文件)",
+          "locateByBitmapVar": "查找图片(变量)",
+          "locateByColor": "查找颜色",
+          "locateByText": "查找文字"
+        },
+        "bmpTargetType": {
+          "MainScreen": "主屏幕",
+          "CurrentWindow": "当前窗口",
+          "Rect": "坐标范围",
+          "AllScreens": "所有屏幕"
+        },
+        "bmpPosition": {
+          "Center": "位图中间",
+          "TopLeft": "左上角",
+          "TopRight": "右上角",
+          "BottomLeft": "左下角",
+          "BottomRight": "右下角"
+        }
+      },
+      "summaryParts": [
+        "type",
+        " ",
+        "bmpVar",
+        " ",
+        "color",
+        " ",
+        "bmp"
+      ],
       "icon": "fa:Light_SearchLocation"
     },
     "sys:createQrCode": {
@@ -1322,6 +2224,11 @@
         "svg": "SVG格式结果",
         "ascii": "Ascii格式结果"
       },
+      "summaryParts": [
+        "code",
+        " => ",
+        "img"
+      ],
       "icon": "fa:Light_Qrcode"
     },
     "sys:readQrCode": {
@@ -1339,6 +2246,11 @@
         "codeList": "全部二维码值",
         "barcodFormat": "条码类型"
       },
+      "summaryParts": [
+        "img",
+        " => ",
+        "code"
+      ],
       "icon": "fa:Light_Qrcode"
     },
     "sys:whiteboard": {
@@ -1373,6 +2285,15 @@
         "code": "Base64编码",
         "img": "图片"
       },
+      "inputEnums": {
+        "type": {
+          "imgToBase64": "图片或文件转Base64文本",
+          "base64ToImg": "Base64文本转图片"
+        }
+      },
+      "summaryParts": [
+        "type"
+      ],
       "icon": "fa:Light_Image"
     },
     "sys:imgProcess": {
@@ -1396,6 +2317,29 @@
         "isSuccess": "是否成功",
         "result": "结果图片"
       },
+      "inputEnums": {
+        "type": {
+          "resize_percent": "缩放图片(指定比例)",
+          "resize_pixel": "缩小图片(指定像素)",
+          "Clone": "复制图片",
+          "Invert": "反色",
+          "GrayScale": "灰度",
+          "Rotate": "旋转",
+          "Filters": "组合处理",
+          "GenerateIco": "生成图标文件(.ico)"
+        },
+        "iconScaling": {
+          "Auto": "自动",
+          "NearestNeighbor": "像素化（邻近采样）",
+          "HighQualityBilinear": "清晰（高质量双线性）",
+          "HighQualityBicubic": "平滑（高质量双三次）",
+          "Lanczos": "锐利（Lanczos）",
+          "Box": "区域平均（Box）"
+        }
+      },
+      "summaryParts": [
+        "type"
+      ],
       "icon": "fa:Light_Images"
     },
     "sys:showImage": {
@@ -1427,6 +2371,35 @@
         "finalPosition": "最终贴图位置",
         "windowIdList": "窗口标识列表"
       },
+      "inputEnums": {
+        "source": {
+          "file": "显示：图片文件或网络图片",
+          "var": "显示：变量中的图片",
+          "clipboard": "显示：剪贴板图片",
+          "closeWindow": "关闭图片窗口",
+          "getState": "获取图片窗口信息",
+          "getImageWindows": "获取所有图片窗口标识"
+        },
+        "winLocation": {
+          "Auto": "自动",
+          "CenterScreen": "屏幕中间",
+          "TopLeft": "屏幕左上",
+          "TopCenter": "屏幕中上",
+          "TopRight": "屏幕右上",
+          "LeftCenter": "屏幕左中",
+          "RightCenter": "屏幕右中",
+          "BottomLeft": "屏幕左下",
+          "BottomCenter": "屏幕中下",
+          "BottomRight": "屏幕右下",
+          "Manual": "自定义位置"
+        }
+      },
+      "summaryParts": [
+        "source",
+        " ",
+        "path",
+        "imgVar"
+      ],
       "icon": "fa:Light_Images"
     },
     "sys:longScreenshot": {
@@ -1442,6 +2415,9 @@
         "img": "图片",
         "rect": "截图区域"
       },
+      "summaryParts": [
+        "img"
+      ],
       "icon": "fa:Light_ExpandWide"
     },
     "sys:inputScript": {
@@ -1455,6 +2431,9 @@
       "outputLabels": {
         "isSuccess": "是否成功"
       },
+      "summaryParts": [
+        "data"
+      ],
       "icon": "fa:Light_Keyboard"
     },
     "sys:cloud_oss": {
@@ -1478,6 +2457,22 @@
         "customUrl": "自定义域名网址",
         "err": "错误信息"
       },
+      "inputEnums": {
+        "operation": {
+          "Upload": "上传"
+        },
+        "vendor": {
+          "Aliyun": "阿里云 OSS",
+          "Tencent": "腾讯云 COS",
+          "Qiniu": "七牛云"
+        }
+      },
+      "summaryParts": [
+        "operation",
+        "(",
+        "vendor",
+        ")"
+      ],
       "icon": "fa:Light_Cloud"
     },
     "sys:mathocr": {
@@ -1498,6 +2493,12 @@
         "latexEx1": "Latex附加格式1",
         "latexEx2": "Latex附加格式2",
         "rawData": "原始响应"
+      },
+      "inputEnums": {
+        "vendor": {
+          "Mathpix": "图片识别(Mathpix)",
+          "MathpixStrokes": "手写并识别(Mathpix)"
+        }
       },
       "icon": "fa:Light_Function"
     },
@@ -1522,6 +2523,43 @@
         "vendorRawData": "各厂商原始响应",
         "costPoints": "消耗点数"
       },
+      "inputEnums": {
+        "operation": {
+          "single": "单厂商文字翻译",
+          "multiple": "多厂商文字翻译",
+          "en2zh_dict": "英汉词典"
+        },
+        "srcLang": {
+          "Auto": "自动",
+          "ZhCn": "简体中文",
+          "En": "英文",
+          "Ja": "日文",
+          "Ko": "韩文"
+        },
+        "dstLang": {
+          "Auto": "自动",
+          "ZhCn": "简体中文",
+          "En": "英文",
+          "Ja": "日文",
+          "Ko": "韩文"
+        },
+        "vendor": {
+          "Quicker": "Quicker服务",
+          "Aliyun": "阿里云",
+          "Baidu": "百度",
+          "Tencent": "腾讯云",
+          "Youdao": "网易有道",
+          "Caiyun": "彩云",
+          "Xunfei": "讯飞",
+          "XunfeiNiutrans": "讯飞(2代)",
+          "Google": "谷歌"
+        }
+      },
+      "summaryParts": [
+        "operation",
+        " => ",
+        "resultText"
+      ],
       "icon": "fa:Light_Language"
     },
     "sys:basic-ocr": {
@@ -1548,6 +2586,56 @@
         "rawData": "原始结果",
         "rawObject": "原始结果JObject对象"
       },
+      "inputEnums": {
+        "operation": {
+          "QuickerServerOcr": "Quicker OCR引擎",
+          "WindowsOcr": "Windows10/11 内置OCR引擎",
+          "baidu-basic": "百度通用文字识别（自定义帐号）",
+          "baidu-quicker": "百度通用文字识别（Quicker帐号）",
+          "baidu-custom": "百度自定义接口识别（自定义帐号）",
+          "table_quicker": "表格识别（Quicker服务）",
+          "LocalOcr": "本地 OCR（中英）"
+        },
+        "punctuationType": {
+          "no": "不转换",
+          "sbc": "全角符号",
+          "dbc": "半角符号"
+        },
+        "mergeChapter": {
+          "no": "不合并",
+          "merge": "合并"
+        },
+        "interface": {
+          "general_basic": "通用文字识别（标准版）",
+          "general": "通用文字识别（标准含位置版）",
+          "accurate_basic": "通用文字识别（高精度版）",
+          "accurate": "通用文字识别（高精度含位置版）",
+          "handwriting": "手写文字识别",
+          "numbers": "数字识别",
+          "doc_analysis_office": "办公文档识别",
+          "form": "表格文字识别(同步接口)",
+          "qrcode": "二维码识别"
+        },
+        "lang": {
+          "CHN_ENG": "中英混合",
+          "ENG": "英语",
+          "KOR": "韩语",
+          "JAP": "日语",
+          "CHT": "繁体中文",
+          "LAT": "拉丁语",
+          "ARA": "阿拉伯语"
+        },
+        "offlineMode": {
+          "Auto": "自动",
+          "OnlineOnly": "仅使用在线服务",
+          "OfflineOnly": "仅使用离线引擎"
+        }
+      },
+      "summaryParts": [
+        "operation",
+        " ",
+        "imgVar"
+      ],
       "icon": "fa:Light_ExpandWide"
     },
     "sys:tempcloudstore": {
@@ -1567,6 +2655,16 @@
         "isSuccess": "是否成功",
         "url": "网址"
       },
+      "inputEnums": {
+        "dataType": {
+          "text": "文本内容",
+          "file": "文件",
+          "imageVar": "图片变量"
+        }
+      },
+      "summaryParts": [
+        "dataType"
+      ],
       "icon": "fa:Light_Cloud"
     },
     "sys:htmlExtract": {
@@ -1589,6 +2687,31 @@
         "value": "提取值",
         "rootNode": "根节点"
       },
+      "inputEnums": {
+        "operation": {
+          "extractText": "提取文本内容",
+          "extractTable": "提取表格内容"
+        },
+        "encoding": {
+          "auto": "自动检测 (加载两次)",
+          "gb2312": "GB2312编码",
+          "utf-8": "UTF8编码"
+        },
+        "selectTarget": {
+          "single": "第一个符合条件的节点",
+          "all": "所有符合条件的节点"
+        },
+        "returnType": {
+          "InnerHtml": "innerHtml 内部HTML",
+          "InnerText": "innerText 内部文本",
+          "OuterHtml": "outerHTML 节点全部HTML",
+          "Attribute": "Attribute 节点的某个属性",
+          "Node": "节点对象"
+        }
+      },
+      "summaryParts": [
+        "xpath"
+      ],
       "icon": "fa:Brands_Html5"
     },
     "sys:download": {
@@ -1615,6 +2738,9 @@
         "downloadSize": "下载大小",
         "eTag": "ETag"
       },
+      "summaryParts": [
+        "url"
+      ],
       "icon": "fa:Light_Download"
     },
     "sys:clouddata": {
@@ -1636,6 +2762,17 @@
         "err": "错误信息",
         "errCode": "错误代码"
       },
+      "inputEnums": {
+        "type": {
+          "readGlobalState": "从网络读取数据",
+          "saveGlobalState": "写入数据到网络"
+        }
+      },
+      "summaryParts": [
+        "type",
+        "  ",
+        "key"
+      ],
       "icon": "fa:Light_Cloud"
     },
     "sys:ai": {
@@ -1676,6 +2813,15 @@
         "finishReason": "结束原因",
         "historyMessages": "历史消息"
       },
+      "inputEnums": {
+        "endpoint": {
+          "chat": "Chat",
+          "completions": "Completions"
+        },
+        "respFormat": {
+          "json_object": "JSON对象"
+        }
+      },
       "icon": "res:Steps/common_step.png"
     },
     "sys:httpserver": {
@@ -1704,6 +2850,18 @@
         "isRunning": "是否在运行",
         "serverList": "运行中的服务列表"
       },
+      "inputEnums": {
+        "operation": {
+          "CreateFileServer": "创建文件服务器",
+          "CloseServer": "关闭服务",
+          "GetServerState": "获取服务状态"
+        }
+      },
+      "summaryParts": [
+        "operation",
+        " ",
+        "docPath"
+      ],
       "icon": "fa:Light_Server"
     },
     "sys:http": {
@@ -1737,6 +2895,34 @@
         "content": "文本结果",
         "imgResult": "图片结果"
       },
+      "inputEnums": {
+        "method": {
+          "GET": "GET",
+          "POST": "POST",
+          "PUT": "PUT",
+          "DELETE": "DELETE",
+          "PATCH": "PATCH",
+          "HEAD": "HEAD",
+          "OPTIONS": "OPTIONS"
+        },
+        "bodyType": {
+          "JSON": "JSON",
+          "FORM": "文本表单",
+          "FILE": "MultiPart表单",
+          "BinaryFile": "单个文件或图片变量（二进制）",
+          "Text": "纯文本"
+        },
+        "resultType": {
+          "Text": "文本",
+          "Image": "图片",
+          "File": "文件"
+        }
+      },
+      "summaryParts": [
+        "method",
+        " ",
+        "url!"
+      ],
       "icon": "fa:Light_Cog"
     },
     "sys:smtp": {
@@ -1785,6 +2971,20 @@
         "isSuccess": "是否成功",
         "isConnected": "是否连接"
       },
+      "inputEnums": {
+        "operation": {
+          "CreateClient": "客户端：连接到Websocket服务",
+          "SendMsgToServer": "客户端：向Websocket服务发送消息",
+          "GetClientState": "客户端：获取连接状态",
+          "CloseClient": "客户端：关闭连接",
+          "SendTextToClient": "服务器：向连接的客户端发送文本",
+          "SendFileToClient": "服务器：向连接的客户端发送文件(二进制方式)",
+          "SendFileToClientBase64": "服务器：向连接的客户端发送文件(Base64方式)"
+        }
+      },
+      "summaryParts": [
+        "operation"
+      ],
       "icon": "fa:Light_Plug"
     },
     "sys:uiautomation": {
@@ -1817,6 +3017,91 @@
         "controlIsVisible": "是否可见",
         "controlNativeWindowHandle": "原始句柄"
       },
+      "inputEnums": {
+        "type": {
+          "TriggerMenu": "触发窗口菜单",
+          "TriggerControl": "触发窗口控件",
+          "GetControlInfo": "获取窗口控件信息",
+          "GetCursorPointControlInfo": "获取鼠标指针位置控件信息",
+          "GetFocusedControlInfo": "获取焦点控件信息",
+          "GetControlInfoByPosition": "获取指定位置控件信息",
+          "UpdateSaveAsDialogPath": "更新\"另存为\"或\"打开\"对话框的路径"
+        },
+        "controlType": {
+          "0": "*任意类型*",
+          "50000": "按钮",
+          "50001": "日历",
+          "50002": "复选框",
+          "50003": "组合框",
+          "50004": "编辑",
+          "50005": "超链接",
+          "50006": "图像",
+          "50007": "列表项",
+          "50008": "列表视图",
+          "50009": "菜单",
+          "50010": "菜单栏",
+          "50011": "菜单项",
+          "50012": "进度栏",
+          "50013": "单选按钮",
+          "50014": "滚动条",
+          "50015": "滑块",
+          "50016": "微调框",
+          "50017": "状态栏",
+          "50018": "选项卡",
+          "50019": "选项卡项",
+          "50020": "文本",
+          "50021": "工具栏",
+          "50022": "工具提示",
+          "50023": "树视图",
+          "50024": "树视图项",
+          "50025": "自定义",
+          "50026": "组",
+          "50027": "缩略",
+          "50028": "数据网格",
+          "50029": "数据项",
+          "50030": "文档",
+          "50031": "拆分按钮",
+          "50032": "窗口",
+          "50033": "窗格",
+          "50034": "标头",
+          "50035": "标头项",
+          "50036": "表",
+          "50037": "标题栏",
+          "50038": "分隔符"
+        },
+        "controlOperation": {
+          "Auto": "自动",
+          "Invoke": "调用（按钮、菜单项等）",
+          "LeftClick": "鼠标左键单击",
+          "MiddleClick": "鼠标中键单击",
+          "RightClick": "鼠标右键单击",
+          "LeftDoubleClick": "鼠标左键双击",
+          "Select": "单选：选择（单选框、标签页等）",
+          "AddToSelection": "多选：添加到多选（多选列表等）",
+          "RemoveFromSelection": "多选：从多选中移除（多选列表）",
+          "ToggleItemSelection": "多选：切换选中状态",
+          "Expand": "展开折叠：展开（菜单等）",
+          "Collapse": "展开折叠：折叠（菜单等）",
+          "ToggleExpandCollapse": "展开折叠：切换展开折叠（菜单等）",
+          "Toggle": "切换：切换（检查框等）",
+          "ToggleOn": "切换：开（检查框等）",
+          "ToggleOff": "切换：关（检查框等）",
+          "SetValue": "设置值"
+        },
+        "autoCreateDir": {
+          "no": "不自动创建",
+          "auto": "自动创建：自动（根据后缀自动判断路径为文件还是文件夹路径）",
+          "asFilePath": "自动创建：给定文件路径",
+          "asFolderPath": "自动创建：给定文件夹路径"
+        }
+      },
+      "summaryParts": [
+        "type",
+        " ",
+        "control",
+        " ",
+        "controlOperation"
+      ],
       "icon": "fa:Light_Window"
     },
     "sys:flauiautomation": {
@@ -1849,6 +3134,87 @@
         "controlIsVisible": "是否可见",
         "element": "原始对象"
       },
+      "inputEnums": {
+        "type": {
+          "TriggerMenu": "触发窗口菜单",
+          "TriggerControl": "触发窗口控件",
+          "GetControlInfo": "获取窗口控件信息",
+          "GetCursorPointControlInfo": "获取鼠标指针位置控件信息",
+          "GetControlInfoByPosition": "获取指定位置控件信息",
+          "GetFocusedControlInfo": "获取焦点控件信息"
+        },
+        "controlType": {
+          "0": "*任意类型*",
+          "AppBar": "AppBar",
+          "Button": "Button",
+          "Calendar": "Calendar",
+          "CheckBox": "CheckBox",
+          "ComboBox": "ComboBox",
+          "Custom": "Custom",
+          "DataGrid": "DataGrid",
+          "DataItem": "DataItem",
+          "Document": "Document",
+          "Edit": "Edit",
+          "Group": "Group",
+          "Header": "Header",
+          "HeaderItem": "HeaderItem",
+          "Hyperlink": "Hyperlink",
+          "Image": "Image",
+          "List": "List",
+          "ListItem": "ListItem",
+          "Menu": "Menu",
+          "MenuBar": "MenuBar",
+          "MenuItem": "MenuItem",
+          "Pane": "Pane",
+          "ProgressBar": "ProgressBar",
+          "RadioButton": "RadioButton",
+          "ScrollBar": "ScrollBar",
+          "SemanticZoom": "SemanticZoom",
+          "Separator": "Separator",
+          "Slider": "Slider",
+          "Spinner": "Spinner",
+          "SplitButton": "SplitButton",
+          "StatusBar": "StatusBar",
+          "Tab": "Tab",
+          "TabItem": "TabItem",
+          "Table": "Table",
+          "Text": "Text",
+          "Thumb": "Thumb",
+          "TitleBar": "TitleBar",
+          "ToolBar": "ToolBar",
+          "ToolTip": "ToolTip",
+          "Tree": "Tree",
+          "TreeItem": "TreeItem",
+          "Window": "Window"
+        },
+        "controlOperation": {
+          "Auto": "自动",
+          "Invoke": "调用（按钮、菜单项等）",
+          "SetFocus": "设置焦点",
+          "LeftClick": "鼠标左键单击",
+          "MiddleClick": "鼠标中键单击",
+          "RightClick": "鼠标右键单击",
+          "LeftDoubleClick": "鼠标左键双击",
+          "Select": "单选：选择（单选框、标签页等）",
+          "AddToSelection": "多选：添加到多选（多选列表等）",
+          "RemoveFromSelection": "多选：从多选中移除（多选列表）",
+          "ToggleItemSelection": "多选：切换选中状态",
+          "Expand": "展开折叠：展开（菜单等）",
+          "Collapse": "展开折叠：折叠（菜单等）",
+          "ToggleExpandCollapse": "展开折叠：切换展开折叠（菜单等）",
+          "Toggle": "切换：切换（检查框等）",
+          "ToggleOn": "切换：开（检查框等）",
+          "ToggleOff": "切换：关（检查框等）",
+          "SetValue": "设置值"
+        }
+      },
+      "summaryParts": [
+        "type",
+        " ",
+        "control",
+        " ",
+        "controlOperation"
+      ],
       "icon": "fa:Light_Window"
     },
     "sys:getChromeUrl": {
@@ -1862,6 +3228,10 @@
         "isSuccess": "是否成功",
         "output": "网址"
       },
+      "summaryParts": [
+        " => ",
+        "output"
+      ],
       "icon": "fa:Light_Cog"
     },
     "sys:chromecontrol": {
@@ -1914,6 +3284,271 @@
         "selector": "CSS选择器",
         "rawResponse": "原始返回结果"
       },
+      "inputEnums": {
+        "operation": {
+          "OpenUrl": "打开网址",
+          "WaitTabComplete": "等待加载完成",
+          "ActivateTab": "激活标签页",
+          "CloseTab": "关闭标签页",
+          "GetTabInfo": "获得标签页信息",
+          "RunScript": "对标签页运行脚本 (扩展需开启“允许运行用户脚本”选项)",
+          "PickElement": "选择元素 (返回CSS选择器)",
+          "GetElementInfo": "获取元素信息",
+          "UpdateElement": "更新元素信息",
+          "TriggerEvent": "触发事件",
+          "Wait": "等待网页变化 (MV3版扩展)",
+          "SetBrowser": "浏览器：设置连接的浏览器",
+          "BackgroundScript": "浏览器：运行后台脚本",
+          "BackgroundCommand": "浏览器：运行后台命令 (MV3版扩展)"
+        },
+        "windowId": {
+          "Current": "当前窗口",
+          "New": "新窗口"
+        },
+        "fixSelector": {
+          "auto": "自动",
+          "noFix": "不修正",
+          "replaceBackslash": "\\替换为\\\\"
+        },
+        "elementInfo": {
+          "Value": "值",
+          "Attribute": "某Attribute属性",
+          "Property": "某Property属性",
+          "InnerText": "innerText 内部文本",
+          "InnerHtml": "innerHTML 内部HTML",
+          "OuterHtml": "outerHTML 全部HTML"
+        },
+        "updateElementInfo": {
+          "Value": "值",
+          "ArrayValue": "数组值",
+          "Attribute": "某Attribute属性",
+          "Property": "某Property属性",
+          "InnerText": "InnerText 内部文本",
+          "InnerHtml": "InnerHtml 内部HTML"
+        },
+        "triggerEventType": {
+          "click": "点击",
+          "submit": "提交表单",
+          "focus": "获得焦点",
+          "blur": "失去焦点",
+          "dblclick": "双击",
+          "change": "值改变"
+        },
+        "command": {
+          "api_bookmarks_getTree": "API: 获取书签树",
+          "api_bookmarks_get": "API: 获取指定ID的书签",
+          "api_bookmarks_getChildren": "API: 获取指定ID的书签的子书签",
+          "api_bookmarks_getRecent": "API: 获取最近添加的书签",
+          "api_bookmarks_search": "API: 搜索书签",
+          "api_bookmarks_create": "API: 创建书签",
+          "api_bookmarks_move": "API: 移动书签",
+          "api_bookmarks_update": "API: 更新书签",
+          "api_bookmarks_remove": "API: 删除书签",
+          "api_bookmarks_removeTree": "API: 删除书签文件夹及其内容",
+          "api_browsingData_remove": "API: 删除浏览数据",
+          "api_browsingData_removeAppcache": "API: 删除应用缓存",
+          "api_browsingData_removeCache": "API: 删除缓存",
+          "api_browsingData_removeCookies": "API: 删除Cookie",
+          "api_browsingData_removeDownloads": "API: 删除下载记录",
+          "api_browsingData_removeFileSystems": "API: 删除文件系统",
+          "api_browsingData_removeFormData": "API: 删除表单数据",
+          "api_browsingData_removeHistory": "API: 删除历史记录",
+          "api_browsingData_removeIndexedDB": "API: 删除IndexedDB",
+          "api_browsingData_removeLocalStorage": "API: 删除本地存储",
+          "api_browsingData_removePasswords": "API: 删除密码",
+          "api_browsingData_removePluginData": "API: 删除插件数据",
+          "api_browsingData_removeServiceWorkers": "API: 删除Service Workers",
+          "api_browsingData_removeWebSQL": "API: 删除WebSQL",
+          "api_browsingData_settings": "API: 浏览数据设置",
+          "api_cookies_get": "API: 获取Cookie",
+          "api_cookies_getAll": "API: 获取所有Cookie",
+          "api_cookies_set": "API: 设置Cookie",
+          "api_cookies_remove": "API: 删除Cookie",
+          "api_cookies_getAllCookieStores": "API: 获取所有Cookie存储",
+          "api_debugger_attach": "API: 附加调试器",
+          "api_debugger_detach": "API: 分离调试器",
+          "api_debugger_sendCommand": "API: 发送调试命令",
+          "api_debugger_getTargets": "API: 获取调试目标",
+          "api_downloads_download": "API: 下载文件",
+          "api_downloads_search": "API: 搜索下载",
+          "api_downloads_pause": "API: 暂停下载",
+          "api_downloads_resume": "API: 恢复下载",
+          "api_downloads_cancel": "API: 取消下载",
+          "api_downloads_erase": "API: 清除下载记录",
+          "api_downloads_removeFile": "API: 删除下载文件",
+          "api_downloads_open": "API: 打开下载文件",
+          "api_downloads_show": "API: 显示下载文件",
+          "api_downloads_showDefaultFolder": "API: 显示默认下载文件夹",
+          "api_downloads_getFileIcon": "API: 获取文件图标",
+          "api_downloads_setShelfEnabled": "API: 设置下载栏启用状态",
+          "api_history_search": "API: 搜索历史记录",
+          "api_history_getVisits": "API: 获取访问记录",
+          "api_history_addUrl": "API: 添加URL到历史记录",
+          "api_history_deleteUrl": "API: 从历史记录删除URL",
+          "api_history_deleteRange": "API: 删除时间范围内的历史记录",
+          "api_history_deleteAll": "API: 删除所有历史记录",
+          "api_pageCapture_saveAsMHTML": "API: 保存为MHTML",
+          "api_readingList_add": "API: 添加到阅读列表",
+          "api_readingList_query": "API: 查询阅读列表条目",
+          "api_readingList_remove": "API: 从阅读列表移除",
+          "api_readingList_update": "API: 更新阅读列表条目",
+          "api_tabGroups_get": "API: 获取标签组",
+          "api_tabGroups_update": "API: 更新标签组",
+          "api_tabGroups_move": "API: 移动标签组",
+          "api_tabGroups_query": "API: 查询标签组",
+          "api_tabs_captureVisibleTab": "API: 捕获可见标签页",
+          "api_tabs_create": "API: 创建标签页",
+          "api_tabs_detectLanguage": "API: 检测标签页语言",
+          "api_tabs_discard": "API: 丢弃标签页",
+          "api_tabs_duplicate": "API: 复制标签页",
+          "api_tabs_get": "API: 获取标签页",
+          "api_tabs_getCurrent": "API: 获取当前标签页",
+          "api_tabs_getZoom": "API: 获取缩放级别",
+          "api_tabs_getZoomSettings": "API: 获取缩放设置",
+          "api_tabs_goBack": "API: 后退",
+          "api_tabs_goForward": "API: 前进",
+          "api_tabs_group": "API: 组合标签页",
+          "api_tabs_highlight": "API: 高亮标签页",
+          "api_tabs_move": "API: 移动标签页",
+          "api_tabs_query": "API: 查询标签页",
+          "api_tabs_reload": "API: 重新加载标签页",
+          "api_tabs_remove": "API: 删除标签页",
+          "api_tabs_sendMessage": "API: 发送消息到标签页",
+          "api_tabs_setZoom": "API: 设置缩放级别",
+          "api_tabs_setZoomSettings": "API: 设置缩放设置",
+          "api_tabs_toggleMuteState": "API: 切换静音状态",
+          "api_tabs_ungroup": "API: 取消标签页组合",
+          "api_tabs_update": "API: 更新标签页",
+          "api_sessions_getRecentlyClosed": "API: 获取最近关闭的标签页和窗口",
+          "api_sessions_getDevices": "API: 获取连接的设备及其会话信息",
+          "api_sessions_restore": "API: 恢复已关闭的标签页或窗口",
+          "api_tts_speak": "API: 朗读文本",
+          "api_tts_stop": "API: 停止朗读",
+          "api_tts_pause": "API: 暂停朗读",
+          "api_tts_resume": "API: 恢复朗读",
+          "api_tts_isSpeaking": "API: 是否正在朗读",
+          "api_tts_getVoices": "API: 获取语音列表",
+          "api_windows_create": "API: 创建窗口",
+          "api_windows_get": "API: 获取窗口",
+          "api_windows_getAll": "API: 获取所有窗口",
+          "api_windows_getCurrent": "API: 获取当前窗口",
+          "api_windows_getLastFocused": "API: 获取最后聚焦的窗口",
+          "api_windows_remove": "API: 删除窗口",
+          "api_windows_update": "API: 更新窗口",
+          "scripts_closeOtherTabs": "脚本: 关闭其他标签页",
+          "scripts_closeLeftTabs": "脚本: 关闭左侧标签页",
+          "scripts_closeRightTabs": "脚本: 关闭右侧标签页",
+          "scripts_closeDuplicateTabs": "脚本: 关闭重复标签页",
+          "scripts_switchToLeftTab": "脚本: 切换到左侧标签页",
+          "scripts_switchToRightTab": "脚本: 切换到右侧标签页",
+          "scripts_switchToFirstTab": "脚本: 切换到第一个标签页",
+          "scripts_switchToLastTab": "脚本: 切换到最后一个标签页",
+          "scripts_moveTabToStart": "脚本: 移动标签页到开头",
+          "scripts_moveTabToEnd": "脚本: 移动标签页到末尾",
+          "scripts_moveTabRight": "脚本: 向右移动标签页",
+          "scripts_moveTabLeft": "脚本: 向左移动标签页",
+          "scripts_toggleTabMute": "脚本: 切换标签页静音状态",
+          "scripts_toggleTabPin": "脚本: 切换标签页固定状态",
+          "scripts_pinCurrentTab": "脚本: 固定当前标签页",
+          "scripts_addBookmarkForCurrentTab": "脚本: 为当前标签页添加书签",
+          "scripts_removeBookmarkForCurrentTab": "脚本: 删除当前标签页的书签",
+          "scripts_goToParentDirectory": "脚本: 转到父目录",
+          "scripts_scrollUp": "脚本: 向上滚动",
+          "scripts_scrollDown": "脚本: 向下滚动",
+          "scripts_scrollToTop": "脚本: 滚动到顶部",
+          "scripts_scrollToBottom": "脚本: 滚动到底部",
+          "scripts_scrollLeft": "脚本: 向左滚动",
+          "scripts_scrollRight": "脚本: 向右滚动",
+          "scripts_reloadTab": "脚本: 重新加载标签页",
+          "scripts_forceReloadTab": "脚本: 强制重新加载标签页",
+          "scripts_reloadAllTabs": "脚本: 重新加载所有标签页",
+          "scripts_reopenClosedTab": "脚本: 重新打开关闭的标签页",
+          "scripts_createNewTab": "脚本: 创建新标签页",
+          "scripts_duplicateCurrentTab": "脚本: 复制当前标签页",
+          "scripts_detachCurrentTab": "脚本: 分离当前标签页",
+          "scripts_createNewWindow": "脚本: 创建新窗口",
+          "scripts_createNewIncognitoWindow": "脚本: 创建新隐身窗口",
+          "scripts_createNewWindowWithUrls": "脚本: 使用URL创建新窗口",
+          "scripts_closeOtherWindows": "脚本: 关闭其他窗口",
+          "scripts_mergeAllWindows": "脚本: 合并所有窗口",
+          "scripts_closeLastFocusedWindow": "脚本: 关闭最后聚焦的窗口",
+          "scripts_closeAllWindows": "脚本: 关闭所有窗口",
+          "scripts_toggleFullscreen": "脚本: 切换全屏模式",
+          "scripts_closeCurrentTabAndActivateLeft": "脚本: 关闭当前标签页并激活左侧",
+          "scripts_openCurrentTabInIncognito": "脚本: 在隐身模式打开当前标签页",
+          "scripts_pageZoomIn": "脚本: 页面放大",
+          "scripts_pageZoomOut": "脚本: 页面缩小",
+          "scripts_injectCss": "脚本: 向页面注入CSS代码",
+          "scripts_openDownloadsFolder": "脚本: 打开下载文件夹",
+          "scripts_showLastDownloadedFile": "脚本: 显示最后下载的文件",
+          "scripts_openHistoryPage": "脚本: 打开历史记录页面",
+          "scripts_openDownloadsPage": "脚本: 打开下载页面",
+          "scripts_openExtensionsPage": "脚本: 打开扩展页面",
+          "scripts_openSettingsPage": "脚本: 打开设置页面",
+          "scripts_openBookmarksPage": "脚本: 打开书签页面",
+          "scripts_openFlagsPage": "脚本: 打开实验功能页面",
+          "scripts_openAboutPage": "脚本: 打开关于页面",
+          "scripts_openVersionPage": "脚本: 打开版本页面",
+          "scripts_openBlankPage": "脚本: 打开空白页面",
+          "scripts_groupTabsByDomain": "脚本: 按域名分组标签页",
+          "scripts_dismissGroup": "脚本: 解散当前标签页所属分组",
+          "scripts_dismissAllGroupsInCurrentWindow": "脚本: 解散当前窗口的所有分组",
+          "scripts_moveSameDomainTabsToCurrentWindow": "脚本: 将相同域名网页移动到当前窗口",
+          "scripts_moveSameDomainTabsToNewWindow": "脚本: 将相同域名网页移动到新建窗口",
+          "scripts_createOrRestoreGroup": "脚本: 创建或恢复分组",
+          "scripts_captureVisibleTab": "脚本: 截图可见标签页视口",
+          "scripts_captureSpecificTabView": "脚本: 截图特定标签页视口",
+          "scripts_captureElement": "脚本: 截图指定元素",
+          "scripts_captureFullPage": "脚本: 截图整页",
+          "scripts_setFileInputFiles": "脚本: 设置文件输入框的文件"
+        },
+        "frame": {
+          "0": "顶层框架",
+          "all": "全部框架"
+        },
+        "executionWorld": {
+          "USER_SCRIPT": "USER_SCRIPT",
+          "MAIN": "MAIN"
+        },
+        "browser": {
+          "auto": "自动",
+          "chrome": "谷歌Chrome",
+          "msedge": "微软Edge",
+          "firefox": "Firefox",
+          "vivaldi": "vivaldi"
+        },
+        "waitEventType": {
+          "elementExists": "元素存在",
+          "elementNotExists": "元素不存在",
+          "elementVisible": "元素在网页可见",
+          "elementNotVisible": "元素在网页不可见",
+          "elementClickable": "元素可点击",
+          "elementNotClickable": "元素不可点击",
+          "textContains": "包含文本",
+          "textNotContains": "不包含文本",
+          "textMatches": "文本匹配表达式",
+          "textNotMatches": "文本不匹配表达式",
+          "urlMatches": "网址匹配表达式(PWA应用)",
+          "urlNotMatches": "网址不匹配表达式(PWA应用)",
+          "titleMatches": "标题匹配表达式(PWA应用)",
+          "titleNotMatches": "标题不匹配表达式(PWA应用)",
+          "attributeMatches": "属性匹配表达式",
+          "attributeNotMatches": "属性不匹配表达式",
+          "elementHasClass": "元素包含类名",
+          "elementNotHasClass": "元素不包含类名",
+          "elementHasAttribute": "元素包含属性",
+          "elementNotHasAttribute": "元素不包含属性",
+          "elementCountGt": "元素数量大于",
+          "elementCountLt": "元素数量小于",
+          "elementCountEq": "元素数量等于",
+          "elementEvent": "元素事件触发"
+        }
+      },
+      "summaryParts": [
+        "operation",
+        " ",
+        "selector"
+      ],
       "icon": "fa:Brands_Chrome"
     },
     "sys:adobesoftscontrol": {
@@ -1933,6 +3568,22 @@
         "isSuccess": "是否成功",
         "output": "脚本输出"
       },
+      "inputEnums": {
+        "software": {
+          "Photoshop.Application": "Photoshop",
+          "Illustrator.Application": "Illustrator",
+          "afterfx": "After Effects"
+        },
+        "operation": {
+          "dojavascript": "执行js脚本",
+          "dojavascriptfile": "执行js脚本文件"
+        }
+      },
+      "summaryParts": [
+        "operation",
+        " ",
+        "script"
+      ],
       "icon": "fa:Brands_Adobe"
     },
     "sys:autocadcontrol": {
@@ -1951,6 +3602,17 @@
         "isSuccess": "是否成功",
         "output": "变量值"
       },
+      "inputEnums": {
+        "operation": {
+          "SendCommand": "执行命令",
+          "ReadVariable": "读取变量"
+        }
+      },
+      "summaryParts": [
+        "operation",
+        " ",
+        "command"
+      ],
       "icon": "fa:Light_RulerCombined"
     },
     "sys:excelObjects": {
@@ -1973,6 +3635,19 @@
         "worksheetNames": "工作表名称的列表",
         "workbookPath": "工作簿路径"
       },
+      "inputEnums": {
+        "operation": {
+          "ApplicationInfo": "获取当前Excel应用信息",
+          "OpenFile": "工作簿: 打开工作簿",
+          "SaveWorkbook": "工作簿: 保存工作簿",
+          "CloseWorkbook": "工作簿: 关闭工作簿",
+          "CreateWorkbook": "工作簿: 创建工作簿",
+          "SelectWorksheet": "工作表：选择工作表"
+        }
+      },
+      "summaryParts": [
+        "operation"
+      ],
       "icon": "fa:Light_Table"
     },
     "sys:excelRange": {
@@ -2009,6 +3684,33 @@
         "range": "区域对象",
         "sheet": "工作表对象"
       },
+      "inputEnums": {
+        "subRange": {
+          "FullArea": "整个区域",
+          "FirstRow": "区域内的第一行",
+          "FirstColumn": "区域内的第一列",
+          "LastRow": "区域内最后一行",
+          "LastColumn": "区域内最后一列",
+          "ActiveCell": "活动单元格",
+          "EntireRow": "整行(包含区域外)",
+          "EntireColumn": "整列(包含区域外)",
+          "Rows": "所有行(区域范围内)",
+          "Columns": "所有列(区域范围内)"
+        },
+        "operation": {
+          "SetValue": "设置值",
+          "SetFormula": "设置公式",
+          "SetNumberFormat": "设置数值格式",
+          "SetCellSize": "行高,列宽",
+          "SetStyle": "设置格式",
+          "CallMethod": "调用方法",
+          "Replace": "替换内容",
+          "GetRangeInfo": "获取区域信息"
+        }
+      },
+      "summaryParts": [
+        "operation"
+      ],
       "icon": "fa:Light_Table"
     },
     "sys:excelreadwrite": {
@@ -2064,6 +3766,37 @@
         "cellAddress": "单元格地址",
         "cellAddressList": "单元格地址列表"
       },
+      "inputEnums": {
+        "operation": {
+          "load": "打开Workbook",
+          "newWorkbook": "创建Workbook",
+          "save": "保存Workbook",
+          "getSheet": "获取Sheet",
+          "createSheet": "创建Sheet",
+          "getRow": "获取行",
+          "getCellByValue": "查找单元格（根据值）",
+          "getCell": "读取单元格",
+          "setCell": "写入单元格",
+          "writeData": "写入多行数据",
+          "mergeCells": "合并单元格",
+          "freezePane": "冻结窗格",
+          "autoFilter": "自动筛选",
+          "setStyle": "设置区域单元格样式",
+          "readData": "批量提取数据",
+          "batchReplace": "批量模板替换"
+        },
+        "fileType": {
+          "XSSF": "XSSF(.xlsx 2007版Excel)",
+          "HSSF": "HSSF(.xls  2003版Excel)"
+        },
+        "cellType": {
+          "String": "String（文本）",
+          "Numeric": "Numeric（数字或日期）",
+          "Boolean": "Boolean（布尔）",
+          "Formula": "Formula（公式）",
+          "Blank": "Blank（空白）"
+        }
+      },
       "icon": "fa:Light_FileExcel"
     },
     "sys:officehelper": {
@@ -2085,6 +3818,33 @@
         "resp": "返回内容",
         "progId": "ProgId"
       },
+      "inputEnums": {
+        "operation": {
+          "execVBA": "执行VBA宏代码",
+          "setFormats": "设置格式/对象属性赋值",
+          "executeMsoCommand": "执行界面命令",
+          "getProgId": "获取ProgId"
+        },
+        "appType": {
+          "word_wps": "Word 或 WPS文字（根据前台进程自动识别）",
+          "word": "Word",
+          "wps": "WPS文字",
+          "excel_et": "Excel 或 WPS表格（根据前台进程自动识别）",
+          "excel": "Excel",
+          "et": "WPS表格",
+          "powerpoint_wpp": "PowerPoint 或 WPS幻灯片（根据前台进程自动识别）",
+          "powerpoint": "PowerPoint",
+          "wpp": "WPS幻灯片",
+          "outlook": "Outlook (支持界面命令)",
+          "project": "Project (支持界面命令)",
+          "visio": "Visio (支持界面命令、VBA)"
+        }
+      },
+      "summaryParts": [
+        "operation",
+        " ",
+        "appType"
+      ],
       "icon": "fa:Brands_Microsoft"
     },
     "sys:rhinocontrol": {
@@ -2102,6 +3862,16 @@
         "isSuccess": "是否成功",
         "output": "脚本输出"
       },
+      "inputEnums": {
+        "operation": {
+          "RunScript": "执行脚本"
+        }
+      },
+      "summaryParts": [
+        "operation",
+        " ",
+        "command"
+      ],
       "icon": "fa:Light_RulerCombined"
     },
     "sys:keyoperation": {
@@ -2118,6 +3888,20 @@
         "isDown": "是否按下",
         "isToggled": "是否锁定"
       },
+      "inputEnums": {
+        "type": {
+          "get_key_state": "获取按键状态",
+          "key_down": "按下按键",
+          "key_up": "抬起按键",
+          "key_keydown_v1": "按下Quicker虚拟键V1",
+          "key_keyup_v1": "抬起Quicker虚拟键V1"
+        }
+      },
+      "summaryParts": [
+        "type",
+        " ",
+        "key"
+      ],
       "icon": "fa:Light_Keyboard:#6aaded"
     },
     "sys:playSound": {
@@ -2135,6 +3919,26 @@
       "outputLabels": {
         "isSuccess": "是否成功"
       },
+      "inputEnums": {
+        "type": {
+          "LOCAL": "内置声音提示",
+          "EXTERN": "电脑文件或网络文件",
+          "TTS": "朗读文本（系统TTS）"
+        },
+        "localSound": {
+          "info": "信息",
+          "snip": "截图",
+          "succeed": "成功",
+          "warning": "警告",
+          "wrong": "错误",
+          "dim": "弱提醒"
+        }
+      },
+      "summaryParts": [
+        "type",
+        " ",
+        "localSound"
+      ],
       "icon": "fa:Light_Music"
     },
     "sys:windowOperations": {
@@ -2158,12 +3962,39 @@
         "isSuccess": "是否成功",
         "isTopmost": "是否置顶"
       },
+      "inputEnums": {
+        "type": {
+          "move": "移动窗口",
+          "move_ex": "移动窗口(增强)",
+          "setTopmost": "置顶窗口",
+          "toggleTopMost": "切换置顶状态",
+          "removeTopmost": "取消置顶窗口",
+          "setBottom": "置底窗口",
+          "show": "设置显示状态",
+          "SET_FOREGROUND": "设置为前台窗口",
+          "close": "关闭",
+          "kill": "强制关闭",
+          "set_trans": "设置或更新透明度",
+          "setBorderColor": "设置边框颜色"
+        },
+        "showCmd": {
+          "0": "隐藏(SW_HIDE)",
+          "3": "最大化(SW_MAXIMIZE)",
+          "5": "显示(SW_SHOW)",
+          "6": "最小化(SW_MINIMIZE)",
+          "9": "显示并恢复大小(SW_RESTORE)",
+          "TOGGLE_MAXMIZE": "切换最大化/恢复"
+        }
+      },
       "icon": "fa:Light_Window"
     },
     "sys:restoreActiveWindow": {
       "name": "恢复活动窗口",
       "description": "如果活动窗口改变了（比如使用了参数输入步骤）,使用此动作恢复窗口焦点。",
       "stepType": "Action",
+      "summaryParts": [
+        "还原活动窗口"
+      ],
       "icon": "fa:Light_Cog"
     },
     "sys:getWindowTitle": {
@@ -2204,6 +4035,29 @@
         "allChildWindows": "所有子窗口",
         "topLevelWindows": "所有顶层窗口"
       },
+      "inputEnums": {
+        "which": {
+          "foreground": "前台窗口",
+          "selectWindow": "选择一个窗口",
+          "pointing": "弹出面板前鼠标位置的窗口（可能为子窗口）",
+          "pointing_root": "弹出面板前鼠标位置窗口的根窗口",
+          "pointing_now": "当前鼠标位置的窗口（可能为子窗口）",
+          "pointing_now_root": "当前鼠标位置窗口的根窗口",
+          "fromHwnd": "句柄指定的窗口",
+          "findWindow": "查找顶层窗口 (单个窗口)",
+          "top_windows": "所有顶层窗口",
+          "findChildWindow": "查找子窗口/控件 (单个窗口)",
+          "child_windows": "查找子窗口 (多个窗口)"
+        },
+        "onlyVisible": {
+          "0": "所有窗口",
+          "1": "仅可见窗口",
+          "default": "未指定"
+        }
+      },
+      "summaryParts": [
+        "which"
+      ],
       "icon": "fa:Light_Cog"
     },
     "sys:getActiveProcessInfo": {
@@ -2219,6 +4073,10 @@
         "procName": "进程名",
         "pid": "PID"
       },
+      "summaryParts": [
+        "获取进程信息：",
+        "path"
+      ],
       "icon": "fa:Light_Cog:#6aaded"
     },
     "sys:getCurrentTime": {
@@ -2257,6 +4115,44 @@
         "dayOfWeek": "周第几天",
         "dayOfYear": "年第几天"
       },
+      "inputEnums": {
+        "source": {
+          "currTime": "当前时间",
+          "fromString": "从文本转换",
+          "fromUnixTimeStamp": "从Unix时间戳转换(秒)",
+          "Source_UnixTimeStampMs": "从Unix时间戳转换(毫秒)",
+          "fromVar": "时间变量"
+        },
+        "inputCulture": {
+          "CURRENT": "当前系统语言",
+          "zh-CN": "中文",
+          "en-US": "英文",
+          "ja-JP": "日文",
+          "ko-KR": "韩文",
+          "fr-FR": "法文",
+          "de-DE": "德文",
+          "es-ES": "西班牙文",
+          "it-IT": "意大利文",
+          "ru-RU": "俄文",
+          "pt-BR": "葡萄牙文(巴西)"
+        },
+        "outputCulture": {
+          "CURRENT": "当前系统语言",
+          "zh-CN": "中文",
+          "en-US": "英文",
+          "ja-JP": "日文",
+          "ko-KR": "韩文",
+          "fr-FR": "法文",
+          "de-DE": "德文",
+          "es-ES": "西班牙文",
+          "it-IT": "意大利文",
+          "ru-RU": "俄文",
+          "pt-BR": "葡萄牙文(巴西)"
+        }
+      },
+      "summaryParts": [
+        "source"
+      ],
       "icon": "fa:Light_Clock"
     },
     "sys:getSysInfo": {
@@ -2308,6 +4204,61 @@
       "outputLabels": {
         "path": "路径"
       },
+      "inputEnums": {
+        "folder": {
+          "AdminTools": "AdminTools",
+          "ApplicationData": "ApplicationData 应用数据",
+          "CDBurning": "CDBurning",
+          "CommonAdminTools": "CommonAdminTools",
+          "CommonApplicationData": "CommonApplicationData",
+          "CommonDesktopDirectory": "CommonDesktopDirectory",
+          "CommonDocuments": "CommonDocuments",
+          "CommonMusic": "CommonMusic",
+          "CommonOemLinks": "CommonOemLinks",
+          "CommonPictures": "CommonPictures",
+          "CommonProgramFiles": "CommonProgramFiles",
+          "CommonProgramFilesX86": "CommonProgramFilesX86",
+          "CommonPrograms": "CommonPrograms",
+          "CommonStartMenu": "CommonStartMenu 通用开始菜单",
+          "CommonStartup": "CommonStartup 通用启动",
+          "CommonTemplates": "CommonTemplates",
+          "CommonVideos": "CommonVideos",
+          "Cookies": "Cookies",
+          "Desktop": "Desktop 桌面",
+          "DesktopDirectory": "DesktopDirectory",
+          "Downloads": "Downloads 下载",
+          "Favorites": "Favorites 收藏夹",
+          "Fonts": "Fonts 字体",
+          "History": "History 网络历史",
+          "InternetCache": "InternetCache 网络缓存",
+          "LocalApplicationData": "LocalApplicationData 本地应用数据",
+          "LocalizedResources": "LocalizedResources",
+          "MyComputer": "MyComputer 我的电脑",
+          "MyDocuments": "MyDocuments 我的文档",
+          "MyMusic": "MyMusic 我的音乐",
+          "MyPictures": "MyPictures 我的照片",
+          "MyVideos": "MyVideos 我的视频",
+          "NetworkShortcuts": "NetworkShortcuts 网络位置",
+          "Personal": "Personal",
+          "PrinterShortcuts": "PrinterShortcuts 打印机",
+          "ProgramFiles": "ProgramFiles",
+          "ProgramFilesX86": "ProgramFilesX86",
+          "Programs": "Programs",
+          "Recent": "Recent 最近",
+          "Resources": "Resources",
+          "SendTo": "SendTo 发送到",
+          "StartMenu": "StartMenu 开始菜单",
+          "Startup": "Startup 启动",
+          "System": "System System目录",
+          "SystemX86": "SystemX86",
+          "Templates": "Templates 文档模版",
+          "UserProfile": "UserProfile",
+          "Windows": "Windows Windows根目录"
+        }
+      },
+      "summaryParts": [
+        "folder"
+      ],
       "icon": "fa:Light_Cog"
     },
     "sys:getSelectedFiles": {
@@ -2330,6 +4281,31 @@
         "firstFileName": "首个文件(夹)名",
         "fileCount": "文件个数"
       },
+      "inputEnums": {
+        "operation": {
+          "getSelection": "获取选择的文件",
+          "setSelection": "设置选择的文件"
+        },
+        "sortType": {
+          "Default": "默认（文件名自然排序）",
+          "Origin": "原始（系统返回顺序）",
+          "FileName": "文件名（字母顺序）",
+          "FileNameNature": "文件名（自然顺序）",
+          "FileSizeAsc": "文件大小（从小到大）",
+          "FileSizeDesc": "文件大小（从大到小）",
+          "CreationTimeDesc": "创建时间（从新到旧）",
+          "CreationTimeAsc": "创建时间（从旧到新）",
+          "LastAccessTimeDesc": "最后访问时间（从晚到早）",
+          "LastAccessTimeAsc": "最后访问时间（从早到晚）",
+          "LastWriteTimeDesc": "最后写入时间（从晚到早）",
+          "LastWriteTimeAsc": "最后写入时间（从早到晚）"
+        }
+      },
+      "summaryParts": [
+        "operation",
+        " ",
+        "files"
+      ],
       "icon": "fa:Light_FolderTree"
     },
     "sys:getExplorerPath": {
@@ -2347,6 +4323,17 @@
         "allPathList": "所有打开的路径",
         "lastPath": "最近访问的路径"
       },
+      "inputEnums": {
+        "operation": {
+          "getPath": "获取路径",
+          "setPath": "设置路径"
+        }
+      },
+      "summaryParts": [
+        "operation",
+        " ",
+        "output"
+      ],
       "icon": "fa:Light_Cog:#6aaded"
     },
     "sys:activateProcessMainWindow": {
@@ -2367,6 +4354,11 @@
         "mainWinHandle": "主窗口句柄",
         "mainWinTitle": "主窗口标题"
       },
+      "summaryParts": [
+        "激活 ",
+        "process",
+        " 进程的主窗口"
+      ],
       "icon": "res:windows.png"
     },
     "sys:checkProcessExists": {
@@ -2387,6 +4379,9 @@
         "mainwinTitle": "主窗口标题",
         "startTime": "启动时间"
       },
+      "summaryParts": [
+        "process"
+      ],
       "icon": "res:windows.png"
     },
     "sys:recordSound": {
@@ -2410,6 +4405,28 @@
         "speechContent": "语音文字内容",
         "error": "错误"
       },
+      "inputEnums": {
+        "operation": {
+          "record": "录制外部声音",
+          "record_internal": "录制正在播放的声音",
+          "short_voice_input": "短语音输入"
+        },
+        "waveFormat": {
+          "8000|1": "单声道，8 kHz",
+          "16000|1": "单声道，16 kHz",
+          "22050|1": "单声道，22.05 kHz",
+          "32000|1": "单声道，32 kHz",
+          "44100|1": "单声道，44.1 kHz",
+          "8000|2": "双声道，8 kHz",
+          "16000|2": "双声道，16 kHz",
+          "22050|2": "双声道，22.05 kHz",
+          "32000|2": "双声道，32 kHz",
+          "44100|2": "双声道，44.1 kHz"
+        }
+      },
+      "summaryParts": [
+        "operation"
+      ],
       "icon": "fa:Light_Microphone"
     },
     "sys:imeControl": {
@@ -2422,6 +4439,17 @@
       "outputLabels": {
         "isEnabled": "是否为中文状态"
       },
+      "inputEnums": {
+        "operation": {
+          "ENABLE": "切换为中文",
+          "DISABLE": "切换为英文",
+          "RESTORE": "恢复",
+          "GET_STATE": "是否为中文状态？"
+        }
+      },
+      "summaryParts": [
+        "operation"
+      ],
       "icon": "fa:Light_Keyboard"
     },
     "sys:fileSystemWatch": {
@@ -2448,6 +4476,16 @@
         "changedType": "变更类型",
         "oldFullPath": "旧路径"
       },
+      "inputEnums": {
+        "operation": {
+          "wait": "等待事件发生",
+          "callback": "持续监控（事件发生后调用子程序）"
+        }
+      },
+      "summaryParts": [
+        "operation",
+        "path"
+      ],
       "icon": "fa:Light_MonitorHeartRate"
     },
     "sys:sendMessage": {
@@ -2467,6 +4505,16 @@
         "isSuccess": "是否成功",
         "rtn": "返回值"
       },
+      "inputEnums": {
+        "operation": {
+          "SendMessage": "SendMessage(等待返回，LParam为数字)",
+          "SendMessageTextLParam": "SendMessage(等待返回，LParam为文本)",
+          "PostMessage": "PostMessage(不等待返回)"
+        }
+      },
+      "summaryParts": [
+        "向窗口发送消息"
+      ],
       "icon": "fa:Light_Envelope"
     },
     "sys:audioControl": {
@@ -2495,6 +4543,27 @@
         "deviceObject": "原始对象",
         "deviceObjectList": "原始对象列表"
       },
+      "inputEnums": {
+        "operation": {
+          "GetOutputDeviceList": "获取输出设备列表",
+          "GetOutputDefaultDevice": "获取默认输出设备信息",
+          "GetInputDeviceList": "获取输入设备列表",
+          "GetInputDefaultDevice": "获取默认输入设备信息",
+          "GetDeviceById": "获取指定设备的信息",
+          "SetDefaultDeviceById": "设置默认设备",
+          "SetDeviceMute": "设置静音",
+          "SetDeviceVolume": "设置音量"
+        },
+        "mute": {
+          "true": "静音",
+          "false": "取消静音",
+          "toggle": "切换静音状态"
+        }
+      },
+      "summaryParts": [
+        "operation",
+        "id"
+      ],
       "icon": "fa:Light_Volume"
     },
     "sys:SelectFileInExplorer": {
@@ -2508,6 +4577,9 @@
       "outputLabels": {
         "isSuccess": "是否成功"
       },
+      "summaryParts": [
+        "path"
+      ],
       "icon": "fa:Light_Cog:#6aaded"
     },
     "sys:quickeroperations": {
@@ -2537,6 +4609,57 @@
         "actionDescription": "动作描述",
         "windowHandle": "窗口句柄"
       },
+      "inputEnums": {
+        "type": {
+          "showPanel": "显示面板",
+          "showSearch": "显示搜索框",
+          "closeSearch": "关闭搜索框",
+          "showCircleMenu": "显示轮盘菜单 (点击)",
+          "showTextSelectionToolbar": "显示选中文本工具条",
+          "togglePause": "禁用/启用",
+          "runLastAction": "运行最后使用的动作",
+          "startAppVoiceInput": "启动App语音输入",
+          "stopAllActions": "停止运行中的动作",
+          "reinstallMouseHook": "重新加载键鼠挂钩",
+          "ResetKeyboard": "重置键盘状态",
+          "showDashboardWindow": "显示仪表盘窗口",
+          "showConfigWindow": "显示设置窗口",
+          "showExeSettingWindow": "显示场景与动作管理窗口",
+          "closeAllFloatWindow": "关闭所有悬浮按钮",
+          "loadProfile": "加载动作页",
+          "loadExeProfiles": "加载场景动作（锁定切换）",
+          "loadExeProfilesNoLock": "加载场景动作（不锁定切换）",
+          "ToggleLockPanel": "锁定/解锁 动作页自动切换",
+          "editAction": "编辑动作",
+          "RestartQuicker": "重启Quicker",
+          "SetPushActiveClient": "推送服务：设置为活动客户端",
+          "StartSearchWithAction": "使用当前动作进行实时搜索",
+          "SearchWithCertainAction": "使用指定动作进行实时搜索",
+          "operation_show_context_menu": "显示剪贴板上下文菜单",
+          "LoadSkin": "加载外观/切换主题(专业版功能)",
+          "ExitQuicker": "退出Quicker",
+          "FloatAction": "悬浮动作(专业版功能)",
+          "ToggleFloatButtons": "切换所有悬浮按钮显示",
+          "ShowHideImageWindows": "显示或隐藏所有图片窗口",
+          "RemoveAction": "删除当前动作",
+          "GetActionInfo": "根据ID获取动作信息"
+        },
+        "theme": {
+          "auto": "跟随Windows",
+          "light": "浅色",
+          "dark": "暗色",
+          "toggle": "切换浅色和暗色"
+        },
+        "viewMode": {
+          "HideAll": "隐藏全部",
+          "ByProcess": "自动(按关联进程切换)",
+          "ShowAll": "显示全部",
+          "ToggleHideAndAuto": "切换隐藏和自动"
+        }
+      },
+      "summaryParts": [
+        "type"
+      ],
       "icon": "fa:Light_Cog"
     },
     "sys:shelloperation": {
@@ -2556,6 +4679,34 @@
         "verbs": "动词列表",
         "titles": "菜单标题列表"
       },
+      "inputEnums": {
+        "operation": {
+          "getverb": "获取文件的可用动词列表(verb)",
+          "execverb": "对文件执行动词(verb)",
+          "gettitles": "获取文件的可用菜单标题列表",
+          "execbytitle": "对文件执行菜单(指定菜单标题)",
+          "showmenu": "显示系统上下文菜单"
+        },
+        "verb": {
+          "open": "打开",
+          "edit": "编辑",
+          "print": "打印",
+          "link": "创建快捷方式",
+          "openas": "选择打开方式",
+          "copy": "复制",
+          "cut": "剪切",
+          "delete": "删除",
+          "setdesktopwallpaper": "设置为桌面背景",
+          "ShellEdit": "使用照片编辑",
+          "VSCode": "通过VisualStudioCode打开",
+          "通过QQ发送到我的手机，打开QQ手机版接收。": "通过QQ发送到手机"
+        }
+      },
+      "summaryParts": [
+        "operation",
+        " ",
+        "verb"
+      ],
       "icon": "fa:Light_Window"
     },
     "sys:winservice": {
@@ -2576,6 +4727,20 @@
         "regValue": "值",
         "serviceList": "服务名列表"
       },
+      "inputEnums": {
+        "operation": {
+          "getServiceInfo": "获取某个服务的信息",
+          "getServiceList": "获取Windows服务列表",
+          "getRegValue": "获取注册表项值"
+        }
+      },
+      "summaryParts": [
+        "operation",
+        " ",
+        "name",
+        " ",
+        "regKeyPath"
+      ],
       "icon": "res:Steps/common_step.png"
     },
     "sys:splitString": {
@@ -2592,6 +4757,11 @@
       "outputLabels": {
         "output": "结果"
       },
+      "summaryParts": [
+        "data",
+        " => ",
+        "output"
+      ],
       "icon": "fa:Light_Cog"
     },
     "sys:charInfo": {
@@ -2609,6 +4779,11 @@
         "pinyinFirstCharAll": "拼音首字母(全部)",
         "pinyinAll": "拼音(全部)"
       },
+      "summaryParts": [
+        "获取字符 ",
+        "char",
+        " 的信息"
+      ],
       "icon": "fa:Light_Font"
     },
     "sys:enc": {
@@ -2637,6 +4812,67 @@
         "resultLowerHex": "十六进制编码(小写)",
         "resultBase64": "Base64编码结果"
       },
+      "inputEnums": {
+        "operation": {
+          "enc_des": "DES 加密",
+          "dec_des": "DES 解密",
+          "enc_aes": "AES 加密",
+          "dec_aes": "AES 解密",
+          "enc_rsa": "RSA 加密",
+          "dec_rsa": "RSA 解密",
+          "hash_hmac": "键控哈希 HMAC",
+          "hash": "哈希（MD5、SHA1等）",
+          "local_enc": "自用加密",
+          "local_dec": "自用解密"
+        },
+        "inputContentType": {
+          "text": "文本",
+          "base64": "Base64编码",
+          "hex": "十六进制编码"
+        },
+        "keyContentType": {
+          "text": "文本",
+          "base64": "Base64编码",
+          "hex": "十六进制编码"
+        },
+        "ivContentType": {
+          "text": "文本",
+          "base64": "Base64编码",
+          "hex": "十六进制编码"
+        },
+        "hashType": {
+          "MD5": "MD5",
+          "SHA1": "SHA1",
+          "SHA256": "SHA256",
+          "SHA384": "SHA384",
+          "SHA512": "SHA512"
+        },
+        "hmacAlgorithm": {
+          "HMACSHA1": "HMACSHA1",
+          "HMACSHA256": "HMACSHA256",
+          "HMACSHA384": "HMACSHA384",
+          "HMACSHA512": "HMACSHA512",
+          "MACTripleDES": "MACTripleDES",
+          "HMACMD5": "HMACMD5"
+        },
+        "cipherMode": {
+          "CBC": "CBC(密码块链，默认)",
+          "CFB": "CFB(加密反馈)",
+          "CTS": "CTS(密文窃取)",
+          "ECB": "ECB(电子密码本)",
+          "OFB": "OFB(输出反馈)"
+        },
+        "paddingMode": {
+          "PKCS7": "PKCS7",
+          "None": "None",
+          "ANSIX923": "ANSIX923",
+          "ISO10126": "ISO10126",
+          "Zeros": "Zeros"
+        }
+      },
+      "summaryParts": [
+        "operation"
+      ],
       "icon": "fa:Light_UserSecret"
     },
     "sys:joinList": {
@@ -2651,6 +4887,11 @@
       "outputLabels": {
         "output": "结果"
       },
+      "summaryParts": [
+        "list",
+        " => ",
+        "output"
+      ],
       "icon": "fa:Light_Cog"
     },
     "sys:jsonExtract": {
@@ -2676,6 +4917,16 @@
         "v4": "值4",
         "rootToken": "根对象"
       },
+      "summaryParts": [
+        "data",
+        " => ",
+        "V0",
+        " ",
+        "V1",
+        " ",
+        "V2",
+        "..."
+      ],
       "icon": "fa:Light_Cog"
     },
     "sys:strReplace": {
@@ -2698,6 +4949,17 @@
       "outputLabels": {
         "output": "结果"
       },
+      "inputEnums": {
+        "type": {
+          "single": "普通（替换一种内容）",
+          "batch": "批量（替换多种内容）"
+        }
+      },
+      "summaryParts": [
+        "type",
+        " => ",
+        "output"
+      ],
       "icon": "fa:Light_Cog"
     },
     "sys:stringProcess": {
@@ -2720,6 +4982,72 @@
         "isSuccess": "是否成功",
         "output": "结果"
       },
+      "inputEnums": {
+        "method": {
+          "toUpper": "英文转大写",
+          "toLower": "英文转小写",
+          "reverse": "前后反转",
+          "substring": "截取",
+          "trimStart": "去除前面空白字符",
+          "trimEnd": "去除后面空白字符",
+          "trim": "去除前后空白字符",
+          "urlEncode": "URL编码",
+          "urlDecode": "URL解码 (+解码为空格)",
+          "urlDataDecode": "URL数据解码 (保留+号)",
+          "htmlEncode": "Html编码",
+          "htmlDecode": "Html解码",
+          "intercappedToSentence": "组合词拆分成句子(thisIsChina=>this Is China)",
+          "base64Encode": "Base64编码",
+          "base64Decode": "Base64解码",
+          "removeEmptyLine": "去除空行",
+          "mergeEmptyLine": "合并多个空行",
+          "sortLinesAsc": "排序多行A-Z",
+          "sortLinesDesc": "排序多行Z-A",
+          "reverseLines": "翻转多行顺序",
+          "toTitleCase": "首字母大写",
+          "formatJson": "格式化JSON",
+          "md5": "计算MD5哈希",
+          "sha256Hash": "计算SHA256哈希",
+          "sha1Hash": "计算SHA1哈希",
+          "escapeJson": "转义文本为合法Json值",
+          "DecodeUnicode": "解码Unicode字串(\\uXXXX转普通字符)",
+          "convertEncoding": "转换编码",
+          "toCnNum": "金额数字转换为大写",
+          "cn2num": "中文转数字",
+          "num2cn": "数字转中文",
+          "ExpandEnvironmentVariables": "替换环境变量",
+          "padLeft": "从左侧补齐长度",
+          "padRight": "从右侧补齐长度",
+          "insert": "插入内容",
+          "append": "追加内容",
+          "remove": "移除内容",
+          "removeZeroWidthChars": "移除零宽字符",
+          "html2text": "HTML转纯文本"
+        },
+        "srcEncoding": {
+          "utf-8": "utf-8",
+          "gbk": "gbk",
+          "gb2312": "gb2312",
+          "big5": "big5",
+          "utf-16": "utf-16",
+          "utf-32": "utf-32"
+        },
+        "dstEncoding": {
+          "utf-8": "utf-8",
+          "gbk": "gbk",
+          "gb2312": "gb2312",
+          "big5": "big5",
+          "utf-16": "utf-16",
+          "utf-32": "utf-32"
+        }
+      },
+      "summaryParts": [
+        "data",
+        " ",
+        "method",
+        " => ",
+        "output"
+      ],
       "icon": "fa:Light_Cog"
     },
     "sys:showText": {
@@ -2763,6 +5091,76 @@
         "isWindowExists": "窗口是否存在",
         "allWindows": "所有窗口"
       },
+      "inputEnums": {
+        "type": {
+          "NO_WAIT": "显示窗口，不等待关闭（立即开始执行后续的步骤）",
+          "WAIT": "显示窗口，等待关闭",
+          "CLOSE_WINDOW": "关闭窗口",
+          "GET_WIN_INFO": "获取窗口信息",
+          "APPEND_TEXT": "追加内容",
+          "ACTIVATE_WINDOW": "显示和激活窗口",
+          "WAIT_CLOSE": "等待窗口关闭",
+          "GET_ALL_WINDOWS": "获取所有文本窗口",
+          "GET_ACTION_WINDOWS": "获取当前动作创建的所有文本窗口"
+        },
+        "winLocation": {
+          "WithMouse1": "跟随鼠标（指针周围）",
+          "WithMouse2": "跟随鼠标（指针右下）",
+          "CenterScreen": "屏幕中间",
+          "TopLeft": "屏幕左上",
+          "TopCenter": "屏幕中上",
+          "TopRight": "屏幕右上",
+          "LeftCenter": "屏幕左中",
+          "RightCenter": "屏幕右中",
+          "BottomLeft": "屏幕左下",
+          "BottomCenter": "屏幕中下",
+          "BottomRight": "屏幕右下",
+          "FullScreen": "全屏",
+          "Maximized": "最大化",
+          "Manual": "自定义位置"
+        },
+        "highlight": {
+          "ActionScript3": "ActionScript3",
+          "ASP/XHTML": "ASP/XHTML",
+          "BAT": "BAT",
+          "C#": "C#",
+          "C++": "C++",
+          "CSS": "CSS",
+          "F#": "F#",
+          "HLSL": "HLSL",
+          "HTML": "HTML",
+          "INI": "INI",
+          "Java": "Java",
+          "JavaScript": "JavaScript",
+          "Json": "Json",
+          "LOG": "LOG",
+          "MarkDown": "MarkDown",
+          "MarkDownWithFontSize": "MarkDownWithFontSize",
+          "Pascal": "Pascal",
+          "Patch": "Patch",
+          "PHP": "PHP",
+          "PLSQL": "PLSQL",
+          "PowerShell": "PowerShell",
+          "Python": "Python",
+          "QuickerExpression": "QuickerExpression",
+          "QuickerInterpolation": "QuickerInterpolation",
+          "Ruby": "Ruby",
+          "Scheme": "Scheme",
+          "Squirrel": "Squirrel",
+          "TeX": "TeX",
+          "TSQL": "TSQL",
+          "TXT": "TXT",
+          "VB": "VB",
+          "VTL": "VTL",
+          "XML": "XML",
+          "XmlDoc": "XmlDoc"
+        }
+      },
+      "summaryParts": [
+        "type",
+        " ",
+        "text"
+      ],
       "icon": "fa:Light_WindowAlt"
     },
     "sys:regexExtract": {
@@ -2790,6 +5188,18 @@
         "matchObj": "Match对象",
         "matchesCollection": "Matches集合"
       },
+      "inputEnums": {
+        "getGroup": {
+          "0": "各匹配项的值",
+          "1": "第一个匹配项的组",
+          "2": "各匹配项的组"
+        }
+      },
+      "summaryParts": [
+        "getGroup",
+        " ",
+        "pattern"
+      ],
       "icon": "fa:Light_Cog"
     },
     "sys:textCounter": {
@@ -2805,6 +5215,9 @@
         "visableChar": "可见字符数",
         "cnChar": "汉字数"
       },
+      "summaryParts": [
+        "content"
+      ],
       "icon": "fa:Light_Cog:#6aaded"
     },
     "sys:formatString": {
@@ -2822,6 +5235,9 @@
       "outputLabels": {
         "output": "结果"
       },
+      "summaryParts": [
+        "formatString!"
+      ],
       "icon": "fa:Light_Cog"
     },
     "sys:waitKeyboard": {
@@ -2848,6 +5264,26 @@
         "keyValue": "键值",
         "holdTimeMs": "按下保持时间"
       },
+      "inputEnums": {
+        "operation": {
+          "waitKeyDown": "等待按下",
+          "waitAllKeyUp": "等待所有按键抬起"
+        },
+        "winLocation": {
+          "CenterScreen": "屏幕中间",
+          "TopLeft": "屏幕左上",
+          "TopCenter": "屏幕中上",
+          "TopRight": "屏幕右上",
+          "LeftCenter": "屏幕左中",
+          "RightCenter": "屏幕右中",
+          "BottomLeft": "屏幕左下",
+          "BottomCenter": "屏幕中下",
+          "BottomRight": "屏幕右下"
+        }
+      },
+      "summaryParts": [
+        "operation"
+      ],
       "icon": "fa:Light_Keyboard"
     },
     "sys:form": {
@@ -2882,6 +5318,34 @@
         "button": "点击的按钮",
         "selectedGroup": "选择的分组"
       },
+      "inputEnums": {
+        "operation": {
+          "variables": "编辑动作变量的值",
+          "dict": "编辑词典数据",
+          "dict_dynamic": "编辑词典数据（动态）"
+        },
+        "winLocation": {
+          "WithMouse1": "跟随鼠标（指针周围）",
+          "WithMouse2": "跟随鼠标（指针右下）",
+          "CenterScreen": "屏幕中间",
+          "TopLeft": "屏幕左上",
+          "TopCenter": "屏幕中上",
+          "TopRight": "屏幕右上",
+          "LeftCenter": "屏幕左中",
+          "RightCenter": "屏幕右中",
+          "BottomLeft": "屏幕左下",
+          "BottomCenter": "屏幕中下",
+          "BottomRight": "屏幕右下",
+          "Manual": "自定义位置"
+        }
+      },
+      "summaryParts": [
+        "operation",
+        " ",
+        "dictVar",
+        " ",
+        "help"
+      ],
       "icon": "fa:Light_Window"
     },
     "sys:textSelectTools": {
@@ -2897,6 +5361,39 @@
         "isSuccess": "是否成功",
         "output": "结果文本"
       },
+      "inputEnums": {
+        "operation": {
+          "SelectSingleFile": "选取文件",
+          "SelectMultiFile": "选取(多个)文件",
+          "SelectSingleFolder": "选取文件夹",
+          "SelectSavePath": "选择保存路径",
+          "SelectProcessPath": "选择窗口的进程路径",
+          "SelectProcessName": "选择进程名",
+          "SelectProfileExe": "选择场景标识",
+          "SelectWindowHandle": "选择窗口句柄",
+          "SelectKeyName": "从键盘输入键名",
+          "SelectSendKeysData": "从键盘输入模拟按键B的内容",
+          "SelectKeyCode": "从键盘输入键码数字",
+          "SelectLocationArea": "选取区域",
+          "SelectLocationPoint": "选取坐标位置",
+          "SelectRelativePoint": "选取窗口坐标位置",
+          "CaptureToFile": "截图并获取路径",
+          "SelectIcon": "选取矢量图标",
+          "SelectActionId": "选取动作ID",
+          "SelectActionName": "选取动作名称",
+          "SelectControlXPath": "选择窗口控件，获取其XPath",
+          "OperationItemEditor": "操作项编辑器",
+          "SelectBluetoothDevice": "已配对的蓝牙设备",
+          "SelectBluetoothLEDevice": "低功耗蓝牙设备",
+          "SelectNetworkProfile": "网络连接",
+          "SelectWebElementSelector": "网页元素的CSS选择器"
+        }
+      },
+      "summaryParts": [
+        "operation",
+        " => ",
+        "output"
+      ],
       "icon": "fa:Light_MousePointer"
     },
     "sys:record": {
@@ -2934,6 +5431,9 @@
         "selectedItem": "选择的菜单项",
         "clickButton": "点击按钮"
       },
+      "summaryParts": [
+        "menuData"
+      ],
       "icon": "fa:Light_Bars"
     },
     "sys:showWaitWin": {
@@ -2959,6 +5459,38 @@
         "isClosed": "是否已关闭",
         "selectedOperation": "选择的按钮"
       },
+      "inputEnums": {
+        "mode": {
+          "show": "显示窗口",
+          "update": "更新窗口",
+          "check": "检查是否关闭",
+          "close": "关闭窗口(如果还开着的话)",
+          "waitClose": "等待用户关闭",
+          "showAndWaitClose": "显示窗口并等待用户关闭"
+        },
+        "winLocation": {
+          "WithMouse1": "跟随鼠标（指针周围）",
+          "WithMouse2": "跟随鼠标（指针右下）",
+          "CenterScreen": "屏幕中间",
+          "TopLeft": "屏幕左上",
+          "TopCenter": "屏幕中上",
+          "TopRight": "屏幕右上",
+          "LeftCenter": "屏幕左中",
+          "RightCenter": "屏幕右中",
+          "BottomLeft": "屏幕左下",
+          "BottomCenter": "屏幕中下",
+          "BottomRight": "屏幕右下",
+          "LastPosition": "上次的位置"
+        },
+        "activateMode": {
+          "NotActivatable": "不支持激活（不占用焦点，仅能使用鼠标操作）",
+          "NotActivated": "支持激活，打开时不抢占焦点",
+          "AutoActivate": "支持激活，打开时抢占焦点"
+        }
+      },
+      "summaryParts": [
+        "mode"
+      ],
       "icon": "fa:Light_UserEdit"
     },
     "sys:reportProgress": {
@@ -2975,6 +5507,18 @@
       "outputLabels": {
         "progressId": "进度条ID"
       },
+      "inputEnums": {
+        "type": {
+          "REQUEST_ID": "创建进度条",
+          "UPDATE_PROGRESS": "更新进度",
+          "REMOVE": "去除进度条"
+        }
+      },
+      "summaryParts": [
+        "type",
+        " ",
+        "progressId"
+      ],
       "icon": "fa:Light_TasksAlt"
     },
     "sys:selectFile": {
@@ -2996,6 +5540,19 @@
         "path": "路径",
         "pathList": "路径列表"
       },
+      "inputEnums": {
+        "type": {
+          "openFile": "打开单个文件",
+          "openMultiFile": "打开多个文件",
+          "saveFile": "保存文件"
+        }
+      },
+      "summaryParts": [
+        "-> ",
+        "path",
+        " ",
+        "pathList"
+      ],
       "icon": "fa:Light_FolderOpen"
     },
     "sys:selectFolder": {
@@ -3012,6 +5569,9 @@
         "isSuccess": "是否成功",
         "path": "路径"
       },
+      "summaryParts": [
+        "选择文件夹路径"
+      ],
       "icon": "fa:Light_FolderOpen"
     },
     "sys:playRecords": {
@@ -3067,6 +5627,72 @@
         "isWindowExpanded": "窗口是否展开",
         "isWindowVisible": "窗口是否可见"
       },
+      "inputEnums": {
+        "operation": {
+          "show_fixed_panel": "显示操作窗",
+          "show_fixed_panel_wait_close": "显示操作窗并等待关闭",
+          "close_fixed_panel": "关闭操作窗",
+          "toggle_collapse": "切换展开状态",
+          "get_panel_info": "获取操作窗状态"
+        },
+        "defaultOperation": {
+          "copy": "复制",
+          "paste": "粘贴",
+          "pastefile": "粘贴文件",
+          "pasteimage": "粘贴图片",
+          "inputtext": "键入文本",
+          "run": "执行命令",
+          "sendkeys": "模拟按键B",
+          "action": "执行动作",
+          "selectfile": "定位文件",
+          "inputscript": "多步骤输入",
+          "sp": "执行子程序"
+        },
+        "groupMode": {
+          "heading": "标题分组",
+          "expander": "可折叠的分组",
+          "tab-top": "标签页-顶部",
+          "tab-left": "标签页-左侧",
+          "tab-right": "标签页-右侧",
+          "tab-bottom": "标签页-底部",
+          "headingLeft": "多行",
+          "columns": "多列",
+          "none": "不分组"
+        },
+        "winLocation": {
+          "WithMouse1": "跟随鼠标（指针周围）",
+          "WithMouse2": "跟随鼠标（指针右下）",
+          "CenterScreen": "屏幕中间",
+          "TopLeft": "屏幕左上",
+          "TopCenter": "屏幕中上",
+          "TopRight": "屏幕右上",
+          "LeftCenter": "屏幕左中",
+          "RightCenter": "屏幕右中",
+          "BottomLeft": "屏幕左下",
+          "BottomCenter": "屏幕中下",
+          "BottomRight": "屏幕右下",
+          "FullScreen": "全屏",
+          "Maximized": "最大化",
+          "Manual": "自定义位置",
+          "Auto": "系统默认"
+        },
+        "horzAlign": {
+          "Center": "居中",
+          "Left": "左侧",
+          "Right": "右侧"
+        },
+        "bindProc": {
+          "-": "禁用此功能"
+        },
+        "autoCollapse": {
+          "0": "关闭",
+          "1": "开启",
+          "-1": "禁用此功能"
+        }
+      },
+      "summaryParts": [
+        "operation"
+      ],
       "icon": "fa:Light_Bars:#6aaded"
     },
     "sys:customwindow": {
@@ -3095,6 +5721,45 @@
         "windowHandle": "窗口句柄",
         "windowLocation": "关闭时窗口位置"
       },
+      "inputEnums": {
+        "type": {
+          "ShowAndWaitClose": "显示窗口并等待关闭",
+          "Show": "显示窗口",
+          "Close": "关闭窗口",
+          "GetWindows": "获取窗口列表"
+        },
+        "winLocation": {
+          "WithMouse1": "跟随鼠标（指针周围）",
+          "WithMouse2": "跟随鼠标（指针右下）",
+          "CenterScreen": "屏幕中间",
+          "TopLeft": "屏幕左上",
+          "TopCenter": "屏幕中上",
+          "TopRight": "屏幕右上",
+          "LeftCenter": "屏幕左中",
+          "RightCenter": "屏幕右中",
+          "BottomLeft": "屏幕左下",
+          "BottomCenter": "屏幕中下",
+          "BottomRight": "屏幕右下",
+          "FullScreen": "全屏",
+          "Maximized": "最大化",
+          "Manual": "自定义位置",
+          "Auto": "系统默认"
+        },
+        "activateMode": {
+          "AutoActivate": "支持激活，打开时抢占焦点",
+          "NotActivatable": "不支持激活（不占用焦点，仅能使用鼠标操作）",
+          "NotActivatableMouseThrough": "不支持激活，鼠标穿透",
+          "NotActivated": "支持激活，打开时不抢占焦点"
+        },
+        "closeWhenDeactivate": {
+          "true": "是",
+          "false": "否",
+          "closeIfNotTopmost": "在未置顶时"
+        }
+      },
+      "summaryParts": [
+        "type"
+      ],
       "icon": "fa:Light_WindowAlt"
     },
     "sys:webview2": {
@@ -3145,6 +5810,61 @@
         "previewImage": "预览图",
         "isNavCompleted": "导航是否已结束"
       },
+      "inputEnums": {
+        "type": {
+          "OpenUrl": "打开网页",
+          "OpenAndWaitLoad": "打开网页并等待加载完成",
+          "OpenUrlAndWaitClose": "打开网页并等待窗口关闭",
+          "SendMessage": "发送消息",
+          "ExecuteScript": "执行脚本",
+          "CheckWindowState": "获取窗口状态",
+          "Close": "关闭窗口(如果尚未关闭)",
+          "Reload": "重新加载/刷新",
+          "Stop": "停止加载",
+          "CheckInstalled": "检查是否安装WebView2",
+          "MultiTab_OpenUrl": "【多标签】打开网址",
+          "MultiColumn_OpenUrl": "【多列】打开网址"
+        },
+        "modeForExists": {
+          "SkipThisStep": "跳过此步骤",
+          "UpdateUrl": "更新网址",
+          "UpdateUrlAndPosition": "更新网址和窗口位置",
+          "RecreateWindow": "关闭并重建窗口",
+          "BringToFront": "激活窗口"
+        },
+        "winLocation": {
+          "WithMouse1": "跟随鼠标（指针周围）",
+          "WithMouse2": "跟随鼠标（指针右下）",
+          "CenterScreen": "屏幕中间",
+          "TopLeft": "屏幕左上",
+          "TopCenter": "屏幕中上",
+          "TopRight": "屏幕右上",
+          "LeftCenter": "屏幕左中",
+          "RightCenter": "屏幕右中",
+          "BottomLeft": "屏幕左下",
+          "BottomCenter": "屏幕中下",
+          "BottomRight": "屏幕右下",
+          "FullScreen": "全屏",
+          "Maximized": "最大化",
+          "Manual": "自定义位置"
+        },
+        "closeWhenLostFocus": {
+          "false": "不执行操作",
+          "true": "关闭窗口",
+          "hide": "隐藏窗口",
+          "minimize": "最小化窗口",
+          "close_if_not_topmost": "如果未置顶，关闭窗口",
+          "hide_if_not_topmost": "如果未置顶，隐藏窗口",
+          "minimize_if_not_topmost": "如果未置顶，最小化窗口"
+        },
+        "windowStyle": {
+          "normal": "正常",
+          "none": "无边框"
+        }
+      },
+      "summaryParts": [
+        "type"
+      ],
       "icon": "fa:Brands_Edge"
     },
     "if": {
@@ -3154,6 +5874,10 @@
       "inputLabels": {
         "condition": "如果"
       },
+      "summaryParts": [
+        "判断条件：",
+        "condition"
+      ],
       "icon": "fa:Regular_ProjectDiagram"
     },
     "if-only": {
@@ -3163,6 +5887,10 @@
       "inputLabels": {
         "condition": "如果"
       },
+      "summaryParts": [
+        "判断条件：",
+        "condition"
+      ],
       "icon": "fa:Regular_ProjectDiagram"
     },
     "loop": {
@@ -3186,6 +5914,17 @@
         "item": "项",
         "count": "计数"
       },
+      "inputEnums": {
+        "useMultiThread": {
+          "0": "单线程（顺序执行）",
+          "1": "多线程（同时执行）"
+        }
+      },
+      "summaryParts": [
+        "对 ",
+        "input",
+        " 的每项执行"
+      ],
       "icon": "fa:Light_Repeat"
     }
   }

@@ -1,0 +1,101 @@
+{
+  "code": "fe04a515-508b-4238-645d-08d8ba8b34b3",
+  "title": "文件信息",
+  "description": "使用系统接口获取文件信息示例",
+  "author": "CL",
+  "revision": 0,
+  "source": "https://getquicker.net/sharedaction?code=fe04a515-508b-4238-645d-08d8ba8b34b3",
+  "pulledAt": "2026-08-11T21:11:36.692Z",
+  "variables": [
+    {
+      "name": "path",
+      "type": "Text",
+      "remark": "文件路径"
+    },
+    {
+      "name": "dict",
+      "type": "Dict",
+      "remark": "文件信息词典"
+    },
+    {
+      "name": "json",
+      "type": "Text",
+      "remark": "格式化后的文件扩展信息内容"
+    }
+  ],
+  "steps": [
+    {
+      "key": "sys:comment",
+      "inputs": {
+        "note": "获取选中的文件"
+      }
+    },
+    {
+      "key": "sys:getSelectedFiles",
+      "inputs": {
+        "stopIfFail": "1"
+      },
+      "outputs": {
+        "firstFile": "path"
+      }
+    },
+    {
+      "key": "sys:comment",
+      "inputs": {
+        "note": "获取信息"
+      }
+    },
+    {
+      "key": "sys:checkPathExists",
+      "inputs": {
+        "path": "{path}"
+      },
+      "outputs": {
+        "metaData": "dict"
+      }
+    },
+    {
+      "key": "sys:comment",
+      "inputs": {
+        "note": "转换为json"
+      }
+    },
+    {
+      "key": "sys:stringProcess",
+      "inputs": {
+        "data": "$=JsonConvert.SerializeObject({dict})",
+        "method": "formatJson",
+        "srcEncoding": "utf-8",
+        "dstEncoding": "gbk",
+        "start": "0",
+        "length": "0",
+        "stopIfFail": "1"
+      },
+      "outputs": {
+        "output": "json"
+      }
+    },
+    {
+      "key": "sys:comment",
+      "inputs": {
+        "note": "显示结果"
+      }
+    },
+    {
+      "key": "sys:showText",
+      "inputs": {
+        "type": "NO_WAIT",
+        "text": "{json}",
+        "title": "结果内容",
+        "topMost": "0",
+        "closeWhenLostFocus": "0",
+        "showLineNum": "1",
+        "autoWrap": "1",
+        "showBuildInToolbar": "1",
+        "winLocation": "CenterScreen",
+        "fontsize": "14",
+        "copyWholeLine": "0"
+      }
+    }
+  ]
+}

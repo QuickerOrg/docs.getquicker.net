@@ -1,0 +1,813 @@
+{
+  "code": "9bfc34fb-b7f7-40bd-6d0c-08d6c304e16e",
+  "title": "截图",
+  "description": "截图后自动将图片贴在屏幕上，可拖动位置，双击图片关闭，滚轮放大缩小。右键菜单支持更多功能。",
+  "author": "Marcusx",
+  "revision": 8,
+  "source": "https://getquicker.net/sharedaction?code=9bfc34fb-b7f7-40bd-6d0c-08d6c304e16e",
+  "pulledAt": "2026-08-11T21:27:26.757Z",
+  "variables": [
+    {
+      "name": "clipSwitch",
+      "type": "Boolean"
+    },
+    {
+      "name": "delay",
+      "type": "Number"
+    },
+    {
+      "name": "delaySwitch",
+      "type": "Boolean"
+    },
+    {
+      "name": "fileNameTime",
+      "type": "Text"
+    },
+    {
+      "name": "filesList",
+      "type": "List"
+    },
+    {
+      "name": "img",
+      "type": "Image",
+      "remark": "默认的图片变量"
+    },
+    {
+      "name": "imgBase64",
+      "type": "Text"
+    },
+    {
+      "name": "imgBedMsgSwitch",
+      "type": "Boolean"
+    },
+    {
+      "name": "imgBedOpenSwitch",
+      "type": "Boolean"
+    },
+    {
+      "name": "imgCloseTime",
+      "type": "Number"
+    },
+    {
+      "name": "imgUrl",
+      "type": "Text"
+    },
+    {
+      "name": "qrCodeMsgSwitch",
+      "type": "Boolean"
+    },
+    {
+      "name": "qrCodeText",
+      "type": "Text"
+    },
+    {
+      "name": "rect",
+      "type": "Text"
+    },
+    {
+      "name": "saveMsgSwitch",
+      "type": "Boolean"
+    },
+    {
+      "name": "savePath",
+      "type": "Text"
+    },
+    {
+      "name": "saveSwitch",
+      "type": "Boolean"
+    },
+    {
+      "name": "stateDelay",
+      "type": "Number"
+    },
+    {
+      "name": "success",
+      "type": "Boolean"
+    },
+    {
+      "name": "tietuSwitch",
+      "type": "Boolean"
+    },
+    {
+      "name": "zoomSize",
+      "type": "Number"
+    }
+  ],
+  "steps": [
+    {
+      "key": "sys:group",
+      "inputs": {
+        "skipErr": "0",
+        "useMultiThread": "0"
+      },
+      "note": "右键菜单设置",
+      "ifSteps": [
+        {
+          "key": "sys:subprogram",
+          "inputs": {
+            "subProgram": "右键菜单设置",
+            "stopIfFail": "1",
+            "var:tietuSwitch": "{tietuSwitch}",
+            "var:saveSwitch": "{saveSwitch}",
+            "var:quicker_in_param": "{quicker_in_param}"
+          },
+          "outputs": {
+            "isSuccess": "success",
+            "var:tietuSwitch": "tietuSwitch",
+            "var:saveSwitch": "saveSwitch"
+          }
+        },
+        {
+          "key": "sys:simpleIf",
+          "inputs": {
+            "condition": "$= {quicker_in_param}.StartsWith(\"menuSwitch\")"
+          },
+          "ifSteps": [
+            {
+              "key": "sys:stop",
+              "inputs": {
+                "method": "forcestop",
+                "isError": "0"
+              }
+            }
+          ]
+        },
+        {
+          "key": "sys:if",
+          "inputs": {
+            "condition": "$= {quicker_in_param} == \"\""
+          },
+          "ifSteps": [
+            {
+              "key": "sys:assign",
+              "inputs": {
+                "input": "0.1",
+                "stopIfFail": "1"
+              },
+              "outputs": {
+                "output": "delay"
+              }
+            }
+          ],
+          "elseSteps": [
+            {
+              "key": "sys:getClipboardImage",
+              "inputs": {
+                "stopIfFail": "0"
+              },
+              "outputs": {
+                "output": "img",
+                "isSuccess": "success"
+              }
+            },
+            {
+              "key": "sys:simpleIf",
+              "inputs": {
+                "condition": "$= !{success}"
+              },
+              "ifSteps": [
+                {
+                  "key": "sys:getClipboardFiles",
+                  "inputs": {
+                    "stopIfFail": "0"
+                  },
+                  "outputs": {
+                    "output": "filesList",
+                    "isSuccess": "success"
+                  }
+                },
+                {
+                  "key": "sys:simpleIf",
+                  "inputs": {
+                    "condition": "{success}"
+                  },
+                  "ifSteps": [
+                    {
+                      "key": "sys:readFile",
+                      "inputs": {
+                        "path": "$= {filesList}[0]",
+                        "type": "image",
+                        "stopIfFail": "0"
+                      },
+                      "outputs": {
+                        "image": "img",
+                        "isSuccess": "success"
+                      }
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "key": "sys:simpleIf",
+      "inputs": {
+        "condition": "$= {quicker_in_param} == \"贴图\""
+      },
+      "ifSteps": [
+        {
+          "key": "sys:simpleIf",
+          "inputs": {
+            "condition": "{success}"
+          },
+          "ifSteps": [
+            {
+              "key": "sys:showImage",
+              "inputs": {
+                "source": "var",
+                "imgVar": "{img}",
+                "scale": "1",
+                "autoCloseTime": "0",
+                "winLocation": "CenterScreen",
+                "waitClose": "0",
+                "showDropShadow": "1",
+                "showTaskbarIcon": "0"
+              }
+            },
+            {
+              "key": "sys:stop",
+              "inputs": {
+                "method": "forcestop",
+                "isError": "0"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "key": "sys:simpleIf",
+      "inputs": {
+        "condition": "$= {quicker_in_param} == \"延时截图\""
+      },
+      "ifSteps": [
+        {
+          "key": "sys:if",
+          "inputs": {
+            "condition": "$= !{delaySwitch}"
+          },
+          "ifSteps": [
+            {
+              "key": "sys:form",
+              "inputs": {
+                "title": "设置延时截图",
+                "formDef": "{\"Fields\":[{\"FieldKey\":\"stateDelay\",\"Label\":\"延时截图\",\"HelpText\":\"延时截图等待秒数，支持小数。\",\"HelpLink\":null,\"InputMethod\":7,\"SelectionItems\":\"\",\"IsRequired\":false,\"MinValue\":\"0.1\",\"MaxValue\":\"1000\",\"Pattern\":\"\",\"MaxLength\":0,\"ImeState\":null},{\"FieldKey\":\"delaySwitch\",\"Label\":\"记住时间，下次自动延时\",\"HelpText\":\"\",\"HelpLink\":null,\"InputMethod\":6,\"SelectionItems\":\"\",\"IsRequired\":false,\"MinValue\":\"\",\"MaxValue\":\"\",\"Pattern\":\"\",\"MaxLength\":0,\"ImeState\":null}]}",
+                "restoreFocus": "0",
+                "stopIfFail": "1"
+              }
+            },
+            {
+              "key": "sys:assign",
+              "inputs": {
+                "input": "{stateDelay}"
+              },
+              "outputs": {
+                "output": "delay"
+              }
+            }
+          ],
+          "elseSteps": [
+            {
+              "key": "sys:assign",
+              "inputs": {
+                "input": "{stateDelay}"
+              },
+              "outputs": {
+                "output": "delay"
+              }
+            }
+          ]
+        },
+        {
+          "key": "sys:notify",
+          "inputs": {
+            "msg": "$${stateDelay} 秒后开始截图...",
+            "maxLines": "0",
+            "type": "Info"
+          }
+        }
+      ]
+    },
+    {
+      "key": "sys:simpleIf",
+      "inputs": {
+        "condition": "$= {quicker_in_param} == \"自定义截图\""
+      },
+      "ifSteps": [
+        {
+          "key": "sys:form",
+          "inputs": {
+            "title": "设置 - 截图",
+            "formDef": "{\"Fields\":[{\"FieldKey\":\"clipSwitch\",\"Label\":\"截图后自动写入剪贴板\",\"HelpText\":\"\",\"HelpLink\":null,\"InputMethod\":6,\"SelectionItems\":\"\",\"IsRequired\":false,\"MinValue\":\"\",\"MaxValue\":\"\",\"Pattern\":\"\",\"MaxLength\":0,\"ImeState\":null},{\"FieldKey\":\"zoomSize\",\"Label\":\"显示比例\",\"HelpText\":\"默认的图片显示比例，原尺寸为 1 。\",\"HelpLink\":null,\"InputMethod\":7,\"SelectionItems\":\"\",\"IsRequired\":true,\"MinValue\":\"0\",\"MaxValue\":\"10\",\"Pattern\":\"\",\"MaxLength\":0,\"ImeState\":null},{\"FieldKey\":\"stateDelay\",\"Label\":\"延时截图\",\"HelpText\":\"延时截图等待秒数，支持小数。\",\"HelpLink\":null,\"InputMethod\":7,\"SelectionItems\":\"\",\"IsRequired\":false,\"MinValue\":\"0.1\",\"MaxValue\":\"1000\",\"Pattern\":\"\",\"MaxLength\":0,\"ImeState\":null},{\"FieldKey\":\"delaySwitch\",\"Label\":\"自动使用上次的时间延时截图\",\"HelpText\":\"\",\"HelpLink\":null,\"InputMethod\":6,\"SelectionItems\":\"\",\"IsRequired\":false,\"MinValue\":\"\",\"MaxValue\":\"\",\"Pattern\":\"\",\"MaxLength\":0,\"ImeState\":null},{\"FieldKey\":\"tietuSwitch\",\"Label\":\"开启自动贴图模式\",\"HelpText\":\"\",\"HelpLink\":null,\"InputMethod\":6,\"SelectionItems\":\"\",\"IsRequired\":false,\"MinValue\":\"\",\"MaxValue\":\"\",\"Pattern\":\"\",\"MaxLength\":0,\"ImeState\":null},{\"FieldKey\":\"imgCloseTime\",\"Label\":\"自动关贴图\",\"HelpText\":\"贴图显示的秒数，0 为不自动关闭。\",\"HelpLink\":null,\"InputMethod\":7,\"SelectionItems\":\"\",\"IsRequired\":false,\"MinValue\":\"0\",\"MaxValue\":\"\",\"Pattern\":\"\",\"MaxLength\":0,\"ImeState\":null},{\"FieldKey\":\"saveSwitch\",\"Label\":\"开启自动保存模式\",\"HelpText\":\"\",\"HelpLink\":null,\"InputMethod\":6,\"SelectionItems\":\"\",\"IsRequired\":false,\"MinValue\":\"\",\"MaxValue\":\"\",\"Pattern\":\"\",\"MaxLength\":0,\"ImeState\":null},{\"FieldKey\":\"savePath\",\"Label\":\"保存路径\",\"HelpText\":\"请点击右边的…选择文件夹，确保路径准确。\",\"HelpLink\":null,\"InputMethod\":1,\"SelectionItems\":\"\",\"IsRequired\":false,\"MinValue\":\"\",\"MaxValue\":\"\",\"Pattern\":\"\",\"MaxLength\":0,\"ImeState\":null},{\"FieldKey\":\"saveMsgSwitch\",\"Label\":\"保存后提示消息\",\"HelpText\":\"\",\"HelpLink\":null,\"InputMethod\":6,\"SelectionItems\":\"\",\"IsRequired\":false,\"MinValue\":\"\",\"MaxValue\":\"\",\"Pattern\":\"\",\"MaxLength\":0,\"ImeState\":null},{\"FieldKey\":\"qrCodeMsgSwitch\",\"Label\":\"二维码识别后提示消息\",\"HelpText\":\"\",\"HelpLink\":null,\"InputMethod\":6,\"SelectionItems\":\"\",\"IsRequired\":false,\"MinValue\":\"\",\"MaxValue\":\"\",\"Pattern\":\"\",\"MaxLength\":0,\"ImeState\":null},{\"FieldKey\":\"imgBedOpenSwitch\",\"Label\":\"上传图床后自动打开\",\"HelpText\":\"\",\"HelpLink\":null,\"InputMethod\":6,\"SelectionItems\":\"\",\"IsRequired\":false,\"MinValue\":\"\",\"MaxValue\":\"\",\"Pattern\":\"\",\"MaxLength\":0,\"ImeState\":null},{\"FieldKey\":\"imgBedMsgSwitch\",\"Label\":\"上传图床后提示消息\",\"HelpText\":\"\",\"HelpLink\":null,\"InputMethod\":6,\"SelectionItems\":\"\",\"IsRequired\":false,\"MinValue\":\"\",\"MaxValue\":\"\",\"Pattern\":\"\",\"MaxLength\":0,\"ImeState\":null}]}",
+            "restoreFocus": "0",
+            "stopIfFail": "1"
+          }
+        },
+        {
+          "key": "sys:notify",
+          "inputs": {
+            "msg": "$$设置成功",
+            "maxLines": "0",
+            "type": "Success"
+          }
+        },
+        {
+          "key": "sys:stop",
+          "inputs": {
+            "method": "default",
+            "isError": "0"
+          }
+        }
+      ]
+    },
+    {
+      "key": "sys:simpleIf",
+      "inputs": {
+        "condition": "$= {quicker_in_param} == \"\" || {quicker_in_param} == \"延时截图\" || !{success} || {quicker_in_param} == \"二维码识别\""
+      },
+      "ifSteps": [
+        {
+          "key": "sys:if",
+          "inputs": {
+            "condition": "{clipSwitch}"
+          },
+          "ifSteps": [
+            {
+              "key": "sys:screenCapture",
+              "inputs": {
+                "type": "select",
+                "delay": "$= {delay} * 1000",
+                "toClip": "1",
+                "stopIfFail": "1"
+              },
+              "outputs": {
+                "img": "img",
+                "rect": "rect"
+              }
+            }
+          ],
+          "elseSteps": [
+            {
+              "key": "sys:screenCapture",
+              "inputs": {
+                "type": "select",
+                "delay": "$= {delay} * 1000",
+                "toClip": "0",
+                "stopIfFail": "1"
+              },
+              "outputs": {
+                "img": "img",
+                "rect": "rect"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "key": "sys:simpleIf",
+      "inputs": {
+        "condition": "$= {quicker_in_param}.StartsWith(\"图床\")"
+      },
+      "ifSteps": [
+        {
+          "key": "sys:tempImgBed",
+          "inputs": {
+            "imgVar": "{img}",
+            "stopIfFail": "1"
+          },
+          "outputs": {
+            "url": "imgUrl"
+          }
+        }
+      ]
+    },
+    {
+      "key": "sys:simpleIf",
+      "inputs": {
+        "condition": "$= {quicker_in_param} == \"图床_临时图床\""
+      },
+      "ifSteps": [
+        {
+          "key": "sys:simpleIf",
+          "inputs": {
+            "condition": "{imgBedOpenSwitch}"
+          },
+          "ifSteps": [
+            {
+              "key": "sys:openUrl",
+              "inputs": {
+                "url": "{imgUrl}",
+                "browser": "default",
+                "stopIfFail": "1"
+              }
+            }
+          ]
+        },
+        {
+          "key": "sys:writeClipboard",
+          "inputs": {
+            "type": "text",
+            "text": "{imgUrl}",
+            "stopIfFail": "1"
+          }
+        },
+        {
+          "key": "sys:simpleIf",
+          "inputs": {
+            "condition": "{imgBedMsgSwitch}"
+          },
+          "ifSteps": [
+            {
+              "key": "sys:notify",
+              "inputs": {
+                "msg": "$$已复制 {imgUrl}",
+                "maxLines": "0",
+                "type": "Success"
+              }
+            }
+          ]
+        },
+        {
+          "key": "sys:stop",
+          "inputs": {
+            "method": "default",
+            "isError": "0"
+          }
+        }
+      ]
+    },
+    {
+      "key": "sys:simpleIf",
+      "inputs": {
+        "condition": "$= {quicker_in_param} == \"百度搜图\""
+      },
+      "ifSteps": [
+        {
+          "key": "sys:imgToBase64",
+          "inputs": {
+            "type": "imgToBase64",
+            "img": "{img}"
+          },
+          "outputs": {
+            "code": "imgBase64"
+          }
+        },
+        {
+          "key": "sys:stringProcess",
+          "inputs": {
+            "data": "{imgBase64}",
+            "method": "urlEncode",
+            "srcEncoding": "utf-8",
+            "stopIfFail": "1"
+          },
+          "outputs": {
+            "output": "imgBase64"
+          }
+        },
+        {
+          "key": "sys:http",
+          "inputs": {
+            "url": "https://graph.baidu.com/upload?tn=pc&from=pc&image_source=PC_UPLOAD_IMAGE_FILE",
+            "method": "POST",
+            "bodyType": "FORM",
+            "body": "$$image={imgBase64}",
+            "resultType": "Text",
+            "ua": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/60.0.3112.113 Safari/537.36",
+            "expireSeconds": "100",
+            "noAutoRedirect": "0",
+            "stopIfFail": "1"
+          },
+          "outputs": {
+            "content": "imgUrl"
+          }
+        },
+        {
+          "key": "sys:jsonExtract",
+          "inputs": {
+            "data": "{imgUrl}",
+            "p0": "$..url",
+            "stopIfFail": "1"
+          },
+          "outputs": {
+            "v0": "imgUrl"
+          }
+        },
+        {
+          "key": "sys:openUrl",
+          "inputs": {
+            "url": "{imgUrl}",
+            "browser": "default",
+            "stopIfFail": "1"
+          }
+        },
+        {
+          "key": "sys:stop",
+          "inputs": {
+            "method": "default",
+            "isError": "0"
+          }
+        }
+      ]
+    },
+    {
+      "key": "sys:simpleIf",
+      "inputs": {
+        "condition": "$= {quicker_in_param} == \"图床_谷歌搜图\""
+      },
+      "ifSteps": [
+        {
+          "key": "sys:openUrl",
+          "inputs": {
+            "url": "$$https://lens.google.com/uploadbyurl?url={imgUrl}",
+            "browser": "default",
+            "stopIfFail": "1"
+          }
+        },
+        {
+          "key": "sys:stop",
+          "inputs": {
+            "method": "default",
+            "isError": "0"
+          }
+        }
+      ]
+    },
+    {
+      "key": "sys:simpleIf",
+      "inputs": {
+        "condition": "$= {quicker_in_param} == \"图床_Yandex搜图\""
+      },
+      "ifSteps": [
+        {
+          "key": "sys:openUrl",
+          "inputs": {
+            "url": "$$https://yandex.com/images/search?source=collections&rpt=imageview&url={imgUrl}",
+            "browser": "default",
+            "stopIfFail": "1"
+          }
+        },
+        {
+          "key": "sys:stop",
+          "inputs": {
+            "method": "default",
+            "isError": "0"
+          }
+        }
+      ]
+    },
+    {
+      "key": "sys:simpleIf",
+      "inputs": {
+        "condition": "$= {quicker_in_param} == \"二维码识别\""
+      },
+      "ifSteps": [
+        {
+          "key": "sys:readQrCode",
+          "inputs": {
+            "img": "{img}",
+            "stopIfFail": "0"
+          },
+          "outputs": {
+            "isSuccess": "success",
+            "code": "qrCodeText"
+          }
+        },
+        {
+          "key": "sys:if",
+          "inputs": {
+            "condition": "{success}"
+          },
+          "note": "二维码识别结果",
+          "ifSteps": [
+            {
+              "key": "sys:regexExtract",
+              "inputs": {
+                "getGroup": "0",
+                "data": "{qrCodeText}",
+                "pattern": ".*://.*",
+                "ignoreCase": "0",
+                "singleLine": "0",
+                "multiLine": "1",
+                "rightToLeft": "0",
+                "stopIfFail": "0"
+              },
+              "outputs": {
+                "match1": "qrCodeText",
+                "isSuccess": "success"
+              }
+            },
+            {
+              "key": "sys:simpleIf",
+              "inputs": {
+                "condition": "{success}"
+              },
+              "ifSteps": [
+                {
+                  "key": "sys:openUrl",
+                  "inputs": {
+                    "url": "$${qrCodeText}",
+                    "browser": "default",
+                    "stopIfFail": "1"
+                  }
+                }
+              ]
+            },
+            {
+              "key": "sys:writeClipboard",
+              "inputs": {
+                "type": "auto",
+                "input": "{qrCodeText}",
+                "stopIfFail": "0"
+              },
+              "outputs": {
+                "isSuccess": "success"
+              }
+            },
+            {
+              "key": "sys:simpleIf",
+              "inputs": {
+                "condition": "{qrCodeMsgSwitch}"
+              },
+              "ifSteps": [
+                {
+                  "key": "sys:notify",
+                  "inputs": {
+                    "msg": "$${qrCodeText}",
+                    "maxLines": "0",
+                    "type": "Success"
+                  }
+                }
+              ]
+            }
+          ],
+          "elseSteps": [
+            {
+              "key": "sys:notify",
+              "inputs": {
+                "msg": "没有识别到二维码",
+                "maxLines": "0",
+                "type": "Warning"
+              }
+            }
+          ]
+        },
+        {
+          "key": "sys:stop",
+          "inputs": {
+            "method": "forcestop",
+            "isError": "0"
+          }
+        }
+      ]
+    },
+    {
+      "key": "sys:simpleIf",
+      "inputs": {
+        "condition": "$= {quicker_in_param} == \"Base64转码\""
+      },
+      "ifSteps": [
+        {
+          "key": "sys:imgToBase64",
+          "inputs": {
+            "type": "imgToBase64",
+            "img": "{img}"
+          },
+          "outputs": {
+            "code": "imgBase64"
+          }
+        },
+        {
+          "key": "sys:writeClipboard",
+          "inputs": {
+            "type": "text",
+            "text": "{imgBase64}",
+            "successMsg": "已复制图片Base64码",
+            "stopIfFail": "1"
+          }
+        },
+        {
+          "key": "sys:stop",
+          "inputs": {
+            "method": "default",
+            "isError": "0"
+          }
+        }
+      ]
+    },
+    {
+      "key": "sys:simpleIf",
+      "inputs": {
+        "condition": "{tietuSwitch}"
+      },
+      "ifSteps": [
+        {
+          "key": "sys:showImage",
+          "inputs": {
+            "source": "var",
+            "imgVar": "{img}",
+            "scale": "$${zoomSize}",
+            "autoCloseTime": "$${imgCloseTime}",
+            "winLocation": "Manual",
+            "winPosition": "{rect}",
+            "waitClose": "0",
+            "showDropShadow": "1",
+            "showTaskbarIcon": "0"
+          }
+        }
+      ]
+    },
+    {
+      "key": "sys:simpleIf",
+      "inputs": {
+        "condition": "{saveSwitch}"
+      },
+      "ifSteps": [
+        {
+          "key": "sys:simpleIf",
+          "inputs": {
+            "condition": "$= {saveSwitch} && {savePath} == \"\""
+          },
+          "ifSteps": [
+            {
+              "key": "sys:notify",
+              "inputs": {
+                "msg": "自动保存路径为空，请先设置...",
+                "maxLines": "0",
+                "type": "Info"
+              }
+            },
+            {
+              "key": "sys:delay",
+              "inputs": {
+                "delayMs": "100"
+              }
+            },
+            {
+              "key": "sys:selectFolder",
+              "inputs": {
+                "prompt": "请选择截图自动保存路径...",
+                "showOpenedDirs": "0",
+                "stopIfFail": "1"
+              },
+              "outputs": {
+                "path": "savePath"
+              }
+            },
+            {
+              "key": "sys:notify",
+              "inputs": {
+                "msg": "$$已设置自动保存路径为：{savePath}",
+                "maxLines": "0",
+                "type": "Success"
+              }
+            }
+          ]
+        },
+        {
+          "key": "sys:getCurrentTime",
+          "inputs": {
+            "source": "currTime",
+            "useUtc": "0",
+            "addDays": "0",
+            "addHours": "0",
+            "addMinutes": "0",
+            "addSeconds": "0",
+            "addMonths": "0",
+            "format": "yyyyMMddHHmmssfff"
+          },
+          "outputs": {
+            "strValue": "fileNameTime"
+          }
+        },
+        {
+          "key": "sys:WriteImageFile",
+          "inputs": {
+            "content": "{img}",
+            "filePath": "$${savePath}\\{fileNameTime}.png",
+            "quality": "100"
+          }
+        },
+        {
+          "key": "sys:simpleIf",
+          "inputs": {
+            "condition": "$= {saveMsgSwitch}"
+          },
+          "ifSteps": [
+            {
+              "key": "sys:notify",
+              "inputs": {
+                "msg": "$$已保存 {savePath}\\{fileNameTime}.png",
+                "maxLines": "0",
+                "type": "Success"
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

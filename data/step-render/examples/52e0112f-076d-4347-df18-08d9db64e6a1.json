@@ -1,0 +1,2124 @@
+{
+  "code": "52e0112f-076d-4347-df18-08d9db64e6a1",
+  "title": "多步骤生成器",
+  "description": "辅助编写多步骤输入模块。",
+  "author": "EC10010",
+  "revision": 33,
+  "source": "https://getquicker.net/sharedaction?code=52e0112f-076d-4347-df18-08d9db64e6a1",
+  "pulledAt": "2026-08-11T21:27:57.155Z",
+  "variables": [
+    {
+      "name": "text",
+      "type": "Text"
+    },
+    {
+      "name": "list",
+      "type": "List"
+    },
+    {
+      "name": "list_2",
+      "type": "List"
+    },
+    {
+      "name": "operations",
+      "type": "Text"
+    },
+    {
+      "name": "工具栏默认值",
+      "type": "Text"
+    },
+    {
+      "name": "selectedOperation",
+      "type": "Text"
+    },
+    {
+      "name": "selectedText",
+      "type": "Text"
+    },
+    {
+      "name": "winSize",
+      "type": "Text"
+    },
+    {
+      "name": "上次命令",
+      "type": "Text"
+    },
+    {
+      "name": "状态名称_上次内容",
+      "type": "Text"
+    },
+    {
+      "name": "上次内容",
+      "type": "List"
+    },
+    {
+      "name": "okOrYes",
+      "type": "Boolean"
+    },
+    {
+      "name": "中文输入",
+      "type": "Boolean"
+    },
+    {
+      "name": "isSuccess",
+      "type": "Boolean"
+    },
+    {
+      "name": "isToggled",
+      "type": "Boolean"
+    },
+    {
+      "name": "右键菜单",
+      "type": "Text"
+    },
+    {
+      "name": "命令词典",
+      "type": "Dict"
+    },
+    {
+      "name": "状态名称_触发方式",
+      "type": "Text"
+    },
+    {
+      "name": "触发方式",
+      "type": "Text",
+      "remark": "文本窗口工具栏\r\n文本窗口右键菜单"
+    },
+    {
+      "name": "更新后首次运行",
+      "type": "Boolean"
+    }
+  ],
+  "steps": [
+    {
+      "key": "sys:subprogram",
+      "inputs": {
+        "subProgram": "%%46bf2878-46a3-4b36-b8b7-da9364da186e",
+        "stopIfFail": "1",
+        "skipDebugOutput": "1"
+      },
+      "outputs": {
+        "var:更新后首次运行": "更新后首次运行"
+      },
+      "disabled": true
+    },
+    {
+      "key": "sys:simpleIf",
+      "inputs": {
+        "condition": "$={更新后首次运行}"
+      },
+      "disabled": true,
+      "ifSteps": [
+        {
+          "key": "sys:simpleIf",
+          "inputs": {
+            "condition": "$={operations}.SplitToList( \"\\r\\n\", \"\\n\", \"\\r\").Count()!={工具栏默认值}.SplitToList( \"\\r\\n\", \"\\n\", \"\\r\").Count()"
+          },
+          "ifSteps": [
+            {
+              "key": "sys:comment",
+              "inputs": {
+                "note": "● 本次更新发现，您设置的工具栏功能行数与默认工具栏行数不同。目前默认有37行。"
+              }
+            },
+            {
+              "key": "sys:showText",
+              "inputs": {
+                "type": "NO_WAIT",
+                "text": "$$● 本次更新发现，您设置的工具栏功能行数与默认工具栏行数不同。目前默认有37行。\r\n\r\n● 默认工具栏：\r\n{工具栏默认值}",
+                "title": "$=_context.ActionTitle",
+                "topMost": "false",
+                "stopIfFail": "1",
+                "winLocation": "Maximized",
+                "fontsize": "14",
+                "closeWhenLostFocus": "false",
+                "showLineNum": "true",
+                "autoWrap": "true",
+                "showBuildInToolbar": "true",
+                "copyWholeLine": "false",
+                "caretPosition": "0",
+                "updateIfExists": "0"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "key": "sys:simpleIf",
+      "inputs": {
+        "condition": "$={quicker_in_param}==\"自定义文本窗口右键菜单\""
+      },
+      "ifSteps": [
+        {
+          "key": "sys:subprogram",
+          "inputs": {
+            "subProgram": "自定义文本窗口右键菜单",
+            "var:命令词典": "{命令词典}",
+            "stopIfFail": "1",
+            "skipDebugOutput": "false"
+          },
+          "outputs": {
+            "var:命令词典": "命令词典"
+          }
+        },
+        {
+          "key": "sys:stop",
+          "inputs": {
+            "method": "default",
+            "isError": "0"
+          }
+        }
+      ]
+    },
+    {
+      "key": "sys:simpleIf",
+      "inputs": {
+        "condition": "$={quicker_in_param}==\"自定义窗口大小\""
+      },
+      "ifSteps": [
+        {
+          "key": "sys:form",
+          "inputs": {
+            "operation": "variables",
+            "title": "自定义窗口大小",
+            "formDef": "{\"Fields\":[{\"FieldKey\":\"winSize\",\"DictVarType\":null,\"Label\":\"窗口大小\",\"HelpText\":\"窗口左边与屏幕左边的距离，占屏幕宽的百分比；\\r\\n窗口顶边与屏幕顶边的距离，占屏幕高的百分比；\\r\\n窗口右边与屏幕左边的距离，占屏幕宽的百分比；\\r\\n窗口底边与屏幕顶边的距离，占屏幕高的百分比；\\r\\n也可以是具体像素值，输入框右侧有辅助输入工具。\\r\\n若留空，则恢复为默认值。\",\"HelpLink\":null,\"InputMethod\":1,\"SelectionItems\":\"\",\"IsRequired\":false,\"MinValue\":\"\",\"MaxValue\":\"\",\"Pattern\":\"\",\"InputWidth\":\"\",\"MaxLength\":0,\"ImeState\":null,\"TextTools\":\"SelectLocationArea\",\"VisibleExpression\":\"\",\"DefaultValue\":null,\"ColumnWidth\":0.0,\"OnlyDate\":false,\"Group\":\"\"}]}",
+            "titleColumnWidth": "100",
+            "windowWidth": "500",
+            "windowHeight": "0",
+            "restoreFocus": "0",
+            "topMost": "false",
+            "disableEnterSubmit": "0",
+            "stopIfFail": "1"
+          }
+        },
+        {
+          "key": "sys:if",
+          "inputs": {
+            "condition": "$={winSize}==\"\""
+          },
+          "ifSteps": [
+            {
+              "key": "sys:assign",
+              "inputs": {
+                "input": "10%,10%,90%,90%",
+                "stopIfFail": "1"
+              },
+              "outputs": {
+                "output": "winSize"
+              }
+            },
+            {
+              "key": "sys:notify",
+              "inputs": {
+                "type": "Success",
+                "msg": "已恢复为默认值",
+                "maxLines": "0",
+                "style": "Default"
+              }
+            }
+          ],
+          "elseSteps": [
+            {
+              "key": "sys:notify",
+              "inputs": {
+                "type": "Success",
+                "msg": "设置成功",
+                "maxLines": "0",
+                "style": "Default"
+              }
+            }
+          ]
+        },
+        {
+          "key": "sys:stop",
+          "inputs": {
+            "method": "default",
+            "isError": "0"
+          }
+        }
+      ]
+    },
+    {
+      "key": "sys:simpleIf",
+      "inputs": {
+        "condition": "$={quicker_in_param}==\"自定义工具栏操作\""
+      },
+      "ifSteps": [
+        {
+          "key": "sys:repeat",
+          "inputs": {
+            "count": "-1",
+            "startIndex": "0",
+            "repeatDelayMs": "1"
+          },
+          "ifSteps": [
+            {
+              "key": "sys:showText",
+              "inputs": {
+                "type": "WAIT",
+                "text": "{operations}",
+                "title": "自定义工具栏操作",
+                "topMost": "false",
+                "stopIfFail": "1",
+                "operations": "保存并关闭(_S)|保存并关闭\r\n不保存关闭(_C)|不保存关闭\r\n恢复至默认(_D)|恢复至默认",
+                "winLocation": "Maximized",
+                "fontsize": "14",
+                "closeWhenLostFocus": "false",
+                "showLineNum": "true",
+                "autoWrap": "true",
+                "showBuildInToolbar": "true",
+                "copyWholeLine": "false",
+                "caretPosition": "0"
+              },
+              "outputs": {
+                "selectedOperation": "selectedOperation",
+                "resultText": "text"
+              }
+            },
+            {
+              "key": "sys:simpleIf",
+              "inputs": {
+                "condition": "$={selectedOperation}==\"\""
+              },
+              "ifSteps": [
+                {
+                  "key": "sys:if",
+                  "inputs": {
+                    "condition": "$={text}==\"\""
+                  },
+                  "ifSteps": [
+                    {
+                      "key": "sys:notify",
+                      "inputs": {
+                        "type": "Error",
+                        "msg": "未保存",
+                        "maxLines": "0",
+                        "style": "Default"
+                      }
+                    }
+                  ],
+                  "elseSteps": [
+                    {
+                      "key": "sys:subprogram",
+                      "inputs": {
+                        "subProgram": "Quicker弹窗提示Pro",
+                        "var:title": "提示",
+                        "var:message": "即将关闭窗口。\r\n\r\n确定：保存并关闭\r\n取消：不保存关闭\r\n\r\n\r\n🔊  回车键确定✔\tESC键取消❌",
+                        "stopIfFail": "1",
+                        "skipDebugOutput": "false",
+                        "summary": "提示"
+                      },
+                      "outputs": {
+                        "var:okOrYes": "okOrYes"
+                      }
+                    },
+                    {
+                      "key": "sys:simpleIf",
+                      "inputs": {
+                        "condition": "{okOrYes}"
+                      },
+                      "ifSteps": [
+                        {
+                          "key": "sys:assign",
+                          "inputs": {
+                            "input": "{text}",
+                            "stopIfFail": "1"
+                          },
+                          "outputs": {
+                            "output": "operations"
+                          }
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "key": "sys:break"
+                }
+              ]
+            },
+            {
+              "key": "sys:simpleIf",
+              "inputs": {
+                "condition": "$={selectedOperation}==\"保存并关闭\""
+              },
+              "ifSteps": [
+                {
+                  "key": "sys:assign",
+                  "inputs": {
+                    "input": "{text}",
+                    "stopIfFail": "1"
+                  },
+                  "outputs": {
+                    "output": "operations"
+                  }
+                },
+                {
+                  "key": "sys:notify",
+                  "inputs": {
+                    "type": "Success",
+                    "msg": "保存成功",
+                    "maxLines": "0",
+                    "style": "Default"
+                  }
+                },
+                {
+                  "key": "sys:break"
+                }
+              ]
+            },
+            {
+              "key": "sys:simpleIf",
+              "inputs": {
+                "condition": "$={selectedOperation}==\"不保存关闭\""
+              },
+              "ifSteps": [
+                {
+                  "key": "sys:notify",
+                  "inputs": {
+                    "type": "Error",
+                    "msg": "未保存",
+                    "maxLines": "0",
+                    "style": "Default"
+                  }
+                },
+                {
+                  "key": "sys:break"
+                }
+              ]
+            },
+            {
+              "key": "sys:simpleIf",
+              "inputs": {
+                "condition": "$={selectedOperation}==\"恢复至默认\""
+              },
+              "ifSteps": [
+                {
+                  "key": "sys:assign",
+                  "inputs": {
+                    "input": "{工具栏默认值}",
+                    "stopIfFail": "1"
+                  },
+                  "outputs": {
+                    "output": "operations"
+                  }
+                },
+                {
+                  "key": "sys:notify",
+                  "inputs": {
+                    "type": "Success",
+                    "msg": "已恢复至默认",
+                    "maxLines": "0",
+                    "style": "Default"
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "key": "sys:stop",
+          "inputs": {
+            "method": "default",
+            "isError": "0"
+          }
+        }
+      ]
+    },
+    {
+      "key": "sys:simpleIf",
+      "inputs": {
+        "condition": "$={quicker_in_param}.StartsWith(\"预置_\")"
+      },
+      "ifSteps": [
+        {
+          "key": "sys:strReplace",
+          "inputs": {
+            "type": "single",
+            "input": "$${quicker_in_param}",
+            "old": "^预置_",
+            "escapeOld": "false",
+            "replaceEscapes": "false",
+            "useRegex": "true",
+            "ignoreCase": "false",
+            "singleLine": "false",
+            "multiLine": "false"
+          },
+          "outputs": {
+            "output": "list"
+          }
+        }
+      ]
+    },
+    {
+      "key": "sys:group",
+      "inputs": {
+        "skipErr": "0",
+        "skipWhenDebugging": "0",
+        "useMultiThread": "0"
+      },
+      "note": "初始化",
+      "ifSteps": [
+        {
+          "key": "sys:group",
+          "inputs": {
+            "skipErr": "0",
+            "skipWhenDebugging": "0",
+            "useMultiThread": "0"
+          },
+          "note": "以防误删子程序",
+          "disabled": true,
+          "ifSteps": [
+            {
+              "key": "sys:subprogram",
+              "inputs": {
+                "subProgram": "menu",
+                "stopIfFail": "1",
+                "skipDebugOutput": "false"
+              }
+            },
+            {
+              "key": "sys:subprogram",
+              "inputs": {
+                "subProgram": "追加内容（按键名）",
+                "stopIfFail": "1",
+                "skipDebugOutput": "false"
+              }
+            },
+            {
+              "key": "sys:subprogram",
+              "inputs": {
+                "subProgram": "追加内容（获取一个坐标）",
+                "stopIfFail": "1",
+                "skipDebugOutput": "false"
+              }
+            },
+            {
+              "key": "sys:subprogram",
+              "inputs": {
+                "subProgram": "追加内容（获取坐标距离）",
+                "stopIfFail": "1",
+                "skipDebugOutput": "false"
+              }
+            },
+            {
+              "key": "sys:subprogram",
+              "inputs": {
+                "subProgram": "追加内容（模拟按键B）",
+                "stopIfFail": "1",
+                "skipDebugOutput": "false"
+              }
+            },
+            {
+              "key": "sys:subprogram",
+              "inputs": {
+                "subProgram": "追加内容（鼠标键）",
+                "stopIfFail": "1",
+                "skipDebugOutput": "false"
+              }
+            },
+            {
+              "key": "sys:subprogram",
+              "inputs": {
+                "subProgram": "追加内容（组合快捷键）",
+                "stopIfFail": "1",
+                "skipDebugOutput": "false"
+              }
+            },
+            {
+              "key": "sys:subprogram",
+              "inputs": {
+                "subProgram": "文本窗口_自定义菜单",
+                "stopIfFail": "1",
+                "skipDebugOutput": "false"
+              }
+            }
+          ]
+        },
+        {
+          "key": "sys:subprogram",
+          "inputs": {
+            "subProgram": "从命令词典解析右键菜单",
+            "var:命令词典": "{命令词典}",
+            "stopIfFail": "1",
+            "skipDebugOutput": "false"
+          },
+          "outputs": {
+            "var:ResultList": "右键菜单"
+          }
+        },
+        {
+          "key": "sys:subprogram",
+          "inputs": {
+            "subProgram": "全局变量_by_Cea",
+            "var:operation": "write",
+            "var:key": "右键菜单",
+            "var:value": "$${右键菜单}",
+            "stopIfFail": "1",
+            "skipDebugOutput": "1",
+            "summary": "写入 右键菜单"
+          }
+        }
+      ]
+    },
+    {
+      "key": "sys:repeat",
+      "inputs": {
+        "count": "-1",
+        "startIndex": "0",
+        "repeatDelayMs": "1"
+      },
+      "ifSteps": [
+        {
+          "key": "sys:simpleIf",
+          "inputs": {
+            "condition": "$={list}.Count>0"
+          },
+          "note": "去除前面空行",
+          "ifSteps": [
+            {
+              "key": "sys:repeat",
+              "inputs": {
+                "count": "-1",
+                "startIndex": "0",
+                "repeatDelayMs": "1"
+              },
+              "ifSteps": [
+                {
+                  "key": "sys:if",
+                  "inputs": {
+                    "condition": "$=String.IsNullOrWhiteSpace({list}[0].ToString())"
+                  },
+                  "ifSteps": [
+                    {
+                      "key": "sys:listOperations",
+                      "inputs": {
+                        "list": "{list}",
+                        "type": "removeAt",
+                        "pos": "0"
+                      }
+                    }
+                  ],
+                  "elseSteps": [
+                    {
+                      "key": "sys:break"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "key": "sys:group",
+          "inputs": {
+            "skipErr": "0",
+            "skipWhenDebugging": "0",
+            "useMultiThread": "1"
+          },
+          "ifSteps": [
+            {
+              "key": "sys:if",
+              "inputs": {
+                "condition": "{中文输入}"
+              },
+              "ifSteps": [
+                {
+                  "key": "sys:group",
+                  "inputs": {
+                    "skipErr": "0",
+                    "skipWhenDebugging": "0",
+                    "useMultiThread": "0"
+                  },
+                  "note": "切换为中文输入法",
+                  "ifSteps": [
+                    {
+                      "key": "sys:delay",
+                      "inputs": {
+                        "delayMs": "500"
+                      }
+                    },
+                    {
+                      "key": "sys:imeControl",
+                      "inputs": {
+                        "operation": "ENABLE"
+                      }
+                    }
+                  ]
+                }
+              ],
+              "elseSteps": [
+                {
+                  "key": "sys:group",
+                  "inputs": {
+                    "skipErr": "0",
+                    "skipWhenDebugging": "0",
+                    "useMultiThread": "0"
+                  },
+                  "note": "切换为英文输入法",
+                  "ifSteps": [
+                    {
+                      "key": "sys:delay",
+                      "inputs": {
+                        "delayMs": "500"
+                      }
+                    },
+                    {
+                      "key": "sys:imeControl",
+                      "inputs": {
+                        "operation": "DISABLE"
+                      }
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "key": "sys:showText",
+              "inputs": {
+                "type": "WAIT",
+                "text": "{list}",
+                "title": "$=_context.ActionTitle",
+                "autoCloseKey": "=",
+                "topMost": "false",
+                "stopIfFail": "1",
+                "operations": "{operations}",
+                "winLocation": "Manual",
+                "winSize": "{winSize}",
+                "fontsize": "14",
+                "closeWhenLostFocus": "false",
+                "showLineNum": "false",
+                "autoWrap": "true",
+                "showBuildInToolbar": "true",
+                "copyWholeLine": "false",
+                "caretPosition": "-1",
+                "advancedSettings": "loaded_sp:文本窗口_自定义菜单"
+              },
+              "outputs": {
+                "selectedOperation": "selectedOperation",
+                "resultText": "list",
+                "selectedText": "selectedText"
+              }
+            },
+            {
+              "key": "sys:stateStorage",
+              "inputs": {
+                "type": "saveActionState",
+                "key": "$${状态名称_触发方式}",
+                "value": "文本窗口工具栏"
+              }
+            }
+          ]
+        },
+        {
+          "key": "sys:group",
+          "inputs": {
+            "skipErr": "0",
+            "skipWhenDebugging": "0",
+            "useMultiThread": "0"
+          },
+          "note": "其它",
+          "ifSteps": [
+            {
+              "key": "sys:if",
+              "inputs": {
+                "condition": "$={selectedOperation}==\"执行上次命令\""
+              },
+              "ifSteps": [
+                {
+                  "key": "sys:stateStorage",
+                  "inputs": {
+                    "type": "readActionState",
+                    "key": "{上次命令}",
+                    "defaultValue": "{上次命令}",
+                    "inputIfEmpty": "0"
+                  },
+                  "outputs": {
+                    "value": "上次命令"
+                  }
+                },
+                {
+                  "key": "sys:assign",
+                  "inputs": {
+                    "input": "{上次命令}",
+                    "stopIfFail": "1"
+                  },
+                  "outputs": {
+                    "output": "selectedOperation"
+                  }
+                }
+              ],
+              "elseSteps": [
+                {
+                  "key": "sys:assign",
+                  "inputs": {
+                    "input": "{selectedOperation}",
+                    "stopIfFail": "1"
+                  },
+                  "outputs": {
+                    "output": "上次命令"
+                  }
+                },
+                {
+                  "key": "sys:stateStorage",
+                  "inputs": {
+                    "type": "saveActionState",
+                    "key": "{上次命令}",
+                    "value": "$${上次命令}"
+                  }
+                }
+              ]
+            },
+            {
+              "key": "sys:if",
+              "inputs": {
+                "condition": "$={selectedOperation}==\"插入注释\""
+              },
+              "ifSteps": [
+                {
+                  "key": "sys:keyoperation",
+                  "inputs": {
+                    "type": "get_key_state",
+                    "key": "Capital",
+                    "getRealMouseState": "0"
+                  },
+                  "outputs": {
+                    "isToggled": "isToggled"
+                  }
+                },
+                {
+                  "key": "sys:assign",
+                  "inputs": {
+                    "input": "1",
+                    "stopIfFail": "1"
+                  },
+                  "outputs": {
+                    "output": "中文输入"
+                  }
+                },
+                {
+                  "key": "sys:simpleIf",
+                  "inputs": {
+                    "condition": "{isToggled}"
+                  },
+                  "ifSteps": [
+                    {
+                      "key": "sys:keyInput",
+                      "inputs": {
+                        "keys": "{\"CtrlKeys\":[],\"Keys\":[20]}",
+                        "repeat": "1",
+                        "interval": "1",
+                        "holdMs": "-1"
+                      }
+                    }
+                  ]
+                },
+                {
+                  "key": "sys:assign",
+                  "inputs": {
+                    "input": "$${list}\r\n//",
+                    "stopIfFail": "1"
+                  },
+                  "outputs": {
+                    "output": "list"
+                  }
+                }
+              ],
+              "elseSteps": [
+                {
+                  "key": "sys:assign",
+                  "inputs": {
+                    "input": "0",
+                    "stopIfFail": "1"
+                  },
+                  "outputs": {
+                    "output": "中文输入"
+                  }
+                }
+              ]
+            },
+            {
+              "key": "sys:simpleIf",
+              "inputs": {
+                "condition": "$={selectedOperation}==\"\""
+              },
+              "ifSteps": [
+                {
+                  "key": "sys:stateStorage",
+                  "inputs": {
+                    "type": "readActionState",
+                    "key": "$${状态名称_触发方式}",
+                    "inputIfEmpty": "0"
+                  },
+                  "outputs": {
+                    "value": "触发方式"
+                  }
+                },
+                {
+                  "key": "sys:simpleIf",
+                  "inputs": {
+                    "condition": "$={触发方式}==\"文本窗口工具栏\""
+                  },
+                  "ifSteps": [
+                    {
+                      "key": "sys:simpleIf",
+                      "inputs": {
+                        "condition": "$={list}.Count>0"
+                      },
+                      "ifSteps": [
+                        {
+                          "key": "sys:subprogram",
+                          "inputs": {
+                            "subProgram": "Quicker弹窗提示Pro",
+                            "var:title": "提示",
+                            "var:message": "即将关闭窗口。\r\n\r\n确定：复制内容并关闭\r\n取消：直接关闭\r\n\r\n\r\n🔊  回车键确定✔\tESC键取消❌",
+                            "stopIfFail": "1",
+                            "skipDebugOutput": "false",
+                            "summary": "提示"
+                          },
+                          "outputs": {
+                            "var:okOrYes": "okOrYes"
+                          }
+                        },
+                        {
+                          "key": "sys:simpleIf",
+                          "inputs": {
+                            "condition": "{okOrYes}"
+                          },
+                          "ifSteps": [
+                            {
+                              "key": "sys:simpleIf",
+                              "inputs": {
+                                "condition": "$={list}.Count>0"
+                              },
+                              "ifSteps": [
+                                {
+                                  "key": "sys:writeClipboard",
+                                  "inputs": {
+                                    "type": "auto",
+                                    "input": "{list}",
+                                    "successMsg": "{list}",
+                                    "stopIfFail": "1"
+                                  }
+                                }
+                              ]
+                            }
+                          ]
+                        },
+                        {
+                          "key": "sys:simpleIf",
+                          "inputs": {
+                            "condition": "$={list}.Count>0"
+                          },
+                          "note": "保存到“上次内容”",
+                          "ifSteps": [
+                            {
+                              "key": "sys:assign",
+                              "inputs": {
+                                "input": "{list}",
+                                "stopIfFail": "1"
+                              },
+                              "outputs": {
+                                "output": "上次内容"
+                              }
+                            },
+                            {
+                              "key": "sys:stateStorage",
+                              "inputs": {
+                                "type": "saveActionState",
+                                "key": "$${状态名称_上次内容}",
+                                "value": "$${上次内容}"
+                              }
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "key": "sys:break"
+                }
+              ]
+            },
+            {
+              "key": "sys:simpleIf",
+              "inputs": {
+                "condition": "$={selectedOperation}==\"复制并关闭\""
+              },
+              "ifSteps": [
+                {
+                  "key": "sys:simpleIf",
+                  "inputs": {
+                    "condition": "$={list}.Count>0"
+                  },
+                  "ifSteps": [
+                    {
+                      "key": "sys:writeClipboard",
+                      "inputs": {
+                        "type": "auto",
+                        "input": "{list}",
+                        "successMsg": "{list}",
+                        "stopIfFail": "1"
+                      }
+                    }
+                  ]
+                },
+                {
+                  "key": "sys:simpleIf",
+                  "inputs": {
+                    "condition": "$={list}.Count>0"
+                  },
+                  "note": "保存到“上次内容”",
+                  "ifSteps": [
+                    {
+                      "key": "sys:assign",
+                      "inputs": {
+                        "input": "{list}",
+                        "stopIfFail": "1"
+                      },
+                      "outputs": {
+                        "output": "上次内容"
+                      }
+                    },
+                    {
+                      "key": "sys:stateStorage",
+                      "inputs": {
+                        "type": "saveActionState",
+                        "key": "$${状态名称_上次内容}",
+                        "value": "$${上次内容}"
+                      }
+                    }
+                  ]
+                },
+                {
+                  "key": "sys:break"
+                }
+              ]
+            },
+            {
+              "key": "sys:simpleIf",
+              "inputs": {
+                "condition": "$={selectedOperation}==\"关闭（不复制）\""
+              },
+              "ifSteps": [
+                {
+                  "key": "sys:simpleIf",
+                  "inputs": {
+                    "condition": "$={list}.Count>0"
+                  },
+                  "note": "保存到“上次内容”",
+                  "ifSteps": [
+                    {
+                      "key": "sys:assign",
+                      "inputs": {
+                        "input": "{list}",
+                        "stopIfFail": "1"
+                      },
+                      "outputs": {
+                        "output": "上次内容"
+                      }
+                    },
+                    {
+                      "key": "sys:stateStorage",
+                      "inputs": {
+                        "type": "saveActionState",
+                        "key": "$${状态名称_上次内容}",
+                        "value": "$${上次内容}"
+                      }
+                    }
+                  ]
+                },
+                {
+                  "key": "sys:break"
+                }
+              ]
+            },
+            {
+              "key": "sys:simpleIf",
+              "inputs": {
+                "condition": "$={selectedOperation}==\"去除空行\""
+              },
+              "ifSteps": [
+                {
+                  "key": "sys:stringProcess",
+                  "inputs": {
+                    "data": "{list}",
+                    "method": "removeEmptyLine",
+                    "stopIfFail": "1"
+                  },
+                  "outputs": {
+                    "output": "list"
+                  }
+                }
+              ]
+            },
+            {
+              "key": "sys:simpleIf",
+              "inputs": {
+                "condition": "$={selectedOperation}==\"插入延时\""
+              },
+              "ifSteps": [
+                {
+                  "key": "sys:subprogram",
+                  "inputs": {
+                    "subProgram": "插入延时",
+                    "var:当前内容": "{list}",
+                    "stopIfFail": "1",
+                    "skipDebugOutput": "false"
+                  },
+                  "outputs": {
+                    "var:结果内容": "list"
+                  }
+                }
+              ]
+            },
+            {
+              "key": "sys:simpleIf",
+              "inputs": {
+                "condition": "$={selectedOperation}==\"调试选中的步骤\""
+              },
+              "ifSteps": [
+                {
+                  "key": "sys:simpleIf",
+                  "inputs": {
+                    "condition": "$={selectedText}==\"\""
+                  },
+                  "ifSteps": [
+                    {
+                      "key": "sys:assign",
+                      "inputs": {
+                        "input": "$${list}",
+                        "stopIfFail": "1"
+                      },
+                      "outputs": {
+                        "output": "selectedText"
+                      }
+                    }
+                  ]
+                },
+                {
+                  "key": "sys:subprogram",
+                  "inputs": {
+                    "subProgram": "好看的倒计时",
+                    "var:倒计时秒数": "3",
+                    "var:若干秒后文本": "调试选中的步骤（若不选中，则视为全选）",
+                    "var:窗口标识": "好看的倒计时",
+                    "var:图标": "fa:Solid_AlarmClock:#00FFD4",
+                    "stopIfFail": "1",
+                    "skipDebugOutput": "1",
+                    "summary": "倒计时秒数[3]"
+                  }
+                },
+                {
+                  "key": "sys:delay",
+                  "inputs": {
+                    "delayMs": "500",
+                    "monitorWaitWin": "0"
+                  }
+                },
+                {
+                  "key": "sys:inputScript",
+                  "inputs": {
+                    "data": "$${selectedText}",
+                    "stopIfFail": "1"
+                  }
+                }
+              ]
+            },
+            {
+              "key": "sys:simpleIf",
+              "inputs": {
+                "condition": "$={selectedOperation}==\"将多步骤输入模块代码写入剪贴板\""
+              },
+              "ifSteps": [
+                {
+                  "key": "sys:subprogram",
+                  "inputs": {
+                    "subProgram": "竖列表转横文本",
+                    "var:竖列表": "$={list}",
+                    "var:转义替换为内容": "0",
+                    "var:替换为内容": "\\r\\n",
+                    "stopIfFail": "1",
+                    "skipDebugOutput": "1",
+                    "summary": "查找内容[]竖列表[$={list}]竖列表分隔文本[]替换为内容[\\r\\n]横文本[{text}]"
+                  },
+                  "outputs": {
+                    "var:横文本": "text"
+                  }
+                },
+                {
+                  "key": "sys:subprogram",
+                  "inputs": {
+                    "subProgram": "quicker步骤读写剪贴板",
+                    "var:操作": "2",
+                    "var:input": "$${\r\n  \"Variables\": [],\r\n  \"Steps\": [\r\n    {\r\n      \"StepRunnerKey\": \"sys:inputScript\",\r\n      \"InputParams\": {\r\n        \"data\": {\r\n          \"VarKey\": null,\r\n          \"Value\": \"{text}\"\r\n        },\r\n        \"stopIfFail\": {\r\n          \"VarKey\": null,\r\n          \"Value\": \"1\"\r\n        }\r\n      },\r\n      \"OutputParams\": {\r\n        \"isSuccess\": null\r\n      },\r\n      \"IfSteps\": null,\r\n      \"ElseSteps\": null,\r\n      \"Note\": \"\",\r\n      \"Disabled\": false,\r\n      \"Collapsed\": false,\r\n      \"DelayMs\": 0\r\n    }\r\n  ],\r\n  \"SubPrograms\": []\r\n}",
+                    "var:超时时间": "150",
+                    "stopIfFail": "1",
+                    "skipDebugOutput": "1",
+                    "summary": "操作[写入]"
+                  }
+                },
+                {
+                  "key": "sys:notify",
+                  "inputs": {
+                    "type": "Success",
+                    "msg": "步骤已写入剪贴板",
+                    "maxLines": "0",
+                    "style": "Default"
+                  }
+                }
+              ]
+            },
+            {
+              "key": "sys:simpleIf",
+              "inputs": {
+                "condition": "$={selectedOperation}==\"载入上次内容\""
+              },
+              "ifSteps": [
+                {
+                  "key": "sys:subprogram",
+                  "inputs": {
+                    "subProgram": "载入内容",
+                    "var:当前内容": "{list}",
+                    "stopIfFail": "1",
+                    "skipDebugOutput": "true",
+                    "summary": "当前内容[{list}]载入内容[{载入内容}]"
+                  },
+                  "outputs": {
+                    "var:结果内容": "list"
+                  }
+                }
+              ]
+            },
+            {
+              "key": "sys:simpleIf",
+              "inputs": {
+                "condition": "$={selectedOperation}==\"帮助\""
+              },
+              "ifSteps": [
+                {
+                  "key": "sys:showText",
+                  "inputs": {
+                    "type": "NO_WAIT",
+                    "text": "本动作让您编写“多步骤输入”更便捷。\r\n以下内容是源于官方文档（https://getquicker.net/KC/Help/Doc/inputscript）：\r\n步骤脚本每行一个步骤指令。\r\n//开始的行作为注释。\r\n指令的格式为：命令:参数。\r\n特殊情况下无法分行填写时，也可以写在一行，并使用;;表示换行。(1.36.17+版本) 🔘支持的命令类型如下：\r\n\r\n● 键盘命令\r\ninput 模拟键入纯文本（不受输入法影响）。如：input:hello world，你好世界。\r\ninput2 (1.30.0+版本) 模拟键入纯文本，支持使用转义字符。如\\t内容\\r\\n换行中的\\t表示tab，\\r\\n表示换行。\r\nsendkeys 使用模拟按键B的语法键入内容。如： sendkeys:{LEFT 2} 发送2个向左的方向键用于移动光标位置。\r\ndelay 等待时间（毫秒数）如：delay:1000 等待1秒钟paste 粘贴内容，如：paste:hello world 将hello world写入剪贴板后模拟Ctrl+V进行粘贴。\r\nkeydown 按下按键：如：keydown:F1 按下F1键，或keydown:#175按下音量增加键(#+键值数字）。注意应该在后续步骤中使用keyup命令抬起按键。键名可参考：微软官方文档。\r\nkeyup 抬起按键，格式同上，如：keyup:F1。\r\nkeypress 点击（按下并抬起）按键，格式同上。\r\nhotkey 发送组合快捷键。如：hotkey:Ctrl+S ，数字键请使用D+数字表示，如hotkey:Ctrl+Alt+D1。\r\n\r\n● 鼠标命令（1.28.16+版本）\r\nmoveto 移动鼠标指针到一个绝对坐标。如：moveto:100,200 将鼠标指针移动到 (100,200)位置。1.30.0版本开始支持百分比数值，如：moveto:50%,50%将鼠标移动到主屏幕中心。\r\nmove 将鼠标指针移动一定距离（相对于当前位置），参数为“水平方向像素数,垂直方向像素数”。如：move:10,-10 将指针向右和向上分别移动10个像素。\r\nclick 点击鼠标某个按键。参数为鼠标按键名，可选：left/right/middle/x1/x2。如：click:left 点击左键。\r\ndbclick 双击鼠标某个按键。参数格式同上。\r\ndown 按下某个鼠标按键。参数格式同上。需要特别注意：按下和抬起鼠标按键要完全配对。\r\nup 抬起某个鼠标按键。参数格式同上。\r\nwheel 垂直滚动，单位为clicks（可以理解为“行”）。正值表示向前（远离用户，滚动区域内容向下），负值表示向后（朝向用户，滚动区域内容向上）。\r\nwheeldelta 垂直滚动。单位为1/120 click。更细微的滚动。\r\nhwheel 水平滚动，单位为clicks（可以理解为“行”）。正值表示滚动区域内容向左，负值表示滚动区域内容向右。\r\nhwheeldelta 水平滚动，单位为1/120 click。\r\n\r\n● 组合命令（1.28.12+）\r\npastefile 粘贴文件（将文件写入剪贴板后模拟Ctrl+V）。参数为文件完整路径，多个文件使用英文半角分号隔开。如：pastefile:d:\\test.png ， pastefile:d:\\test1.png;d:\\test2.txt pasteimage 粘贴图片（将图片文件读取为图片后写入剪贴板，然后模拟Ctrl+V，注意写入剪贴板的是图片对象而非图片文件）。如：pasteimage:d:\\test.png 只支持单个图片。",
+                    "title": "帮助",
+                    "topMost": "true",
+                    "stopIfFail": "1",
+                    "autoCloseKey": "帮助",
+                    "winLocation": "Manual",
+                    "winSize": "10%,3%,90%,97%",
+                    "fontsize": "14",
+                    "closeWhenLostFocus": "false",
+                    "showLineNum": "true",
+                    "autoWrap": "true",
+                    "showBuildInToolbar": "true",
+                    "copyWholeLine": "false",
+                    "caretPosition": "0",
+                    "updateIfExists": "0"
+                  }
+                }
+              ]
+            },
+            {
+              "key": "sys:simpleIf",
+              "inputs": {
+                "condition": "$={selectedOperation}==\"自定义工具栏操作\""
+              },
+              "ifSteps": [
+                {
+                  "key": "sys:runAction",
+                  "inputs": {
+                    "type": "StartCurrentAction",
+                    "inputParam": "自定义工具栏操作",
+                    "wait": "0",
+                    "debug": "0",
+                    "stopIfFail": "1"
+                  }
+                },
+                {
+                  "key": "sys:break"
+                }
+              ]
+            },
+            {
+              "key": "sys:simpleIf",
+              "inputs": {
+                "condition": "$={selectedOperation}==\"自定义窗口大小\""
+              },
+              "ifSteps": [
+                {
+                  "key": "sys:runAction",
+                  "inputs": {
+                    "type": "StartCurrentAction",
+                    "inputParam": "自定义窗口大小",
+                    "wait": "0",
+                    "debug": "0",
+                    "stopIfFail": "1"
+                  }
+                },
+                {
+                  "key": "sys:break"
+                }
+              ]
+            },
+            {
+              "key": "sys:simpleIf",
+              "inputs": {
+                "condition": "$={selectedOperation}==\"自定义文本窗口右键菜单\""
+              },
+              "ifSteps": [
+                {
+                  "key": "sys:runAction",
+                  "inputs": {
+                    "type": "StartCurrentAction",
+                    "inputParam": "自定义文本窗口右键菜单",
+                    "wait": "0",
+                    "debug": "0",
+                    "stopIfFail": "1"
+                  }
+                },
+                {
+                  "key": "sys:break"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "key": "sys:group",
+          "inputs": {
+            "skipErr": "1",
+            "skipWhenDebugging": "0",
+            "useMultiThread": "0"
+          },
+          "outputs": {
+            "isSuccess": "isSuccess"
+          },
+          "note": "键盘命令",
+          "ifSteps": [
+            {
+              "key": "sys:simpleIf",
+              "inputs": {
+                "condition": "$={selectedOperation}==\"模拟键入纯文本（不受输入法影响）\""
+              },
+              "ifSteps": [
+                {
+                  "key": "sys:group",
+                  "inputs": {
+                    "skipErr": "0",
+                    "skipWhenDebugging": "0",
+                    "useMultiThread": "1"
+                  },
+                  "ifSteps": [
+                    {
+                      "key": "sys:group",
+                      "inputs": {
+                        "skipErr": "0",
+                        "skipWhenDebugging": "0",
+                        "useMultiThread": "0"
+                      },
+                      "note": "切换为中文输入法",
+                      "ifSteps": [
+                        {
+                          "key": "sys:delay",
+                          "inputs": {
+                            "delayMs": "500"
+                          }
+                        },
+                        {
+                          "key": "sys:imeControl",
+                          "inputs": {
+                            "operation": "ENABLE"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "key": "sys:subprogram",
+                      "inputs": {
+                        "subProgram": "添加键盘命令",
+                        "var:键盘命令": "模拟键入纯文本（不受输入法影响）",
+                        "stopIfFail": "1",
+                        "skipDebugOutput": "false",
+                        "summary": "模拟键入纯文本（不受输入法影响）"
+                      },
+                      "outputs": {
+                        "var:结果内容": "list_2"
+                      }
+                    }
+                  ]
+                },
+                {
+                  "key": "sys:listOperations",
+                  "inputs": {
+                    "list": "{list}",
+                    "type": "concat",
+                    "list2": "{list_2}"
+                  },
+                  "outputs": {
+                    "value": "list"
+                  }
+                }
+              ]
+            },
+            {
+              "key": "sys:simpleIf",
+              "inputs": {
+                "condition": "$={selectedOperation}==\"模拟键入纯文本，支持使用转义字符\""
+              },
+              "ifSteps": [
+                {
+                  "key": "sys:group",
+                  "inputs": {
+                    "skipErr": "0",
+                    "skipWhenDebugging": "0",
+                    "useMultiThread": "1"
+                  },
+                  "ifSteps": [
+                    {
+                      "key": "sys:group",
+                      "inputs": {
+                        "skipErr": "0",
+                        "skipWhenDebugging": "0",
+                        "useMultiThread": "0"
+                      },
+                      "note": "切换为中文输入法",
+                      "ifSteps": [
+                        {
+                          "key": "sys:delay",
+                          "inputs": {
+                            "delayMs": "500"
+                          }
+                        },
+                        {
+                          "key": "sys:imeControl",
+                          "inputs": {
+                            "operation": "ENABLE"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "key": "sys:subprogram",
+                      "inputs": {
+                        "subProgram": "添加键盘命令",
+                        "var:键盘命令": "模拟键入纯文本，支持使用转义字符",
+                        "stopIfFail": "1",
+                        "skipDebugOutput": "false",
+                        "summary": "模拟键入纯文本，支持使用转义字符"
+                      },
+                      "outputs": {
+                        "var:结果内容": "list_2"
+                      }
+                    }
+                  ]
+                },
+                {
+                  "key": "sys:listOperations",
+                  "inputs": {
+                    "list": "{list}",
+                    "type": "concat",
+                    "list2": "{list_2}"
+                  },
+                  "outputs": {
+                    "value": "list"
+                  }
+                }
+              ]
+            },
+            {
+              "key": "sys:simpleIf",
+              "inputs": {
+                "condition": "$={selectedOperation}==\"使用模拟按键B的语法键入内容\""
+              },
+              "ifSteps": [
+                {
+                  "key": "sys:subprogram",
+                  "inputs": {
+                    "subProgram": "添加键盘命令",
+                    "var:键盘命令": "使用模拟按键B的语法键入内容",
+                    "stopIfFail": "1",
+                    "skipDebugOutput": "false",
+                    "summary": "使用模拟按键B的语法键入内容"
+                  },
+                  "outputs": {
+                    "var:结果内容": "list_2"
+                  }
+                },
+                {
+                  "key": "sys:listOperations",
+                  "inputs": {
+                    "list": "{list}",
+                    "type": "concat",
+                    "list2": "{list_2}"
+                  },
+                  "outputs": {
+                    "value": "list"
+                  }
+                }
+              ]
+            },
+            {
+              "key": "sys:simpleIf",
+              "inputs": {
+                "condition": "$={selectedOperation}==\"粘贴内容\""
+              },
+              "ifSteps": [
+                {
+                  "key": "sys:group",
+                  "inputs": {
+                    "skipErr": "0",
+                    "skipWhenDebugging": "0",
+                    "useMultiThread": "1"
+                  },
+                  "ifSteps": [
+                    {
+                      "key": "sys:group",
+                      "inputs": {
+                        "skipErr": "0",
+                        "skipWhenDebugging": "0",
+                        "useMultiThread": "0"
+                      },
+                      "note": "切换为中文输入法",
+                      "ifSteps": [
+                        {
+                          "key": "sys:delay",
+                          "inputs": {
+                            "delayMs": "500"
+                          }
+                        },
+                        {
+                          "key": "sys:imeControl",
+                          "inputs": {
+                            "operation": "ENABLE"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "key": "sys:subprogram",
+                      "inputs": {
+                        "subProgram": "添加键盘命令",
+                        "var:键盘命令": "粘贴内容",
+                        "stopIfFail": "1",
+                        "skipDebugOutput": "false",
+                        "summary": "粘贴内容"
+                      },
+                      "outputs": {
+                        "var:结果内容": "list_2"
+                      }
+                    }
+                  ]
+                },
+                {
+                  "key": "sys:listOperations",
+                  "inputs": {
+                    "list": "{list}",
+                    "type": "concat",
+                    "list2": "{list_2}"
+                  },
+                  "outputs": {
+                    "value": "list"
+                  }
+                }
+              ]
+            },
+            {
+              "key": "sys:simpleIf",
+              "inputs": {
+                "condition": "$={selectedOperation}==\"按下按键\""
+              },
+              "ifSteps": [
+                {
+                  "key": "sys:subprogram",
+                  "inputs": {
+                    "subProgram": "添加键盘命令",
+                    "var:键盘命令": "按下按键",
+                    "stopIfFail": "1",
+                    "skipDebugOutput": "false",
+                    "summary": "按下按键"
+                  },
+                  "outputs": {
+                    "var:结果内容": "list_2"
+                  }
+                },
+                {
+                  "key": "sys:listOperations",
+                  "inputs": {
+                    "list": "{list}",
+                    "type": "concat",
+                    "list2": "{list_2}"
+                  },
+                  "outputs": {
+                    "value": "list"
+                  }
+                }
+              ]
+            },
+            {
+              "key": "sys:simpleIf",
+              "inputs": {
+                "condition": "$={selectedOperation}==\"抬起按键\""
+              },
+              "ifSteps": [
+                {
+                  "key": "sys:subprogram",
+                  "inputs": {
+                    "subProgram": "添加键盘命令",
+                    "var:键盘命令": "抬起按键",
+                    "stopIfFail": "1",
+                    "skipDebugOutput": "false",
+                    "summary": "抬起按键"
+                  },
+                  "outputs": {
+                    "var:结果内容": "list_2"
+                  }
+                },
+                {
+                  "key": "sys:listOperations",
+                  "inputs": {
+                    "list": "{list}",
+                    "type": "concat",
+                    "list2": "{list_2}"
+                  },
+                  "outputs": {
+                    "value": "list"
+                  }
+                }
+              ]
+            },
+            {
+              "key": "sys:simpleIf",
+              "inputs": {
+                "condition": "$={selectedOperation}==\"点击按键（按下并抬起）\""
+              },
+              "ifSteps": [
+                {
+                  "key": "sys:subprogram",
+                  "inputs": {
+                    "subProgram": "添加键盘命令",
+                    "var:键盘命令": "点击按键（按下并抬起）",
+                    "stopIfFail": "1",
+                    "skipDebugOutput": "false",
+                    "summary": "点击按键（按下并抬起）"
+                  },
+                  "outputs": {
+                    "var:结果内容": "list_2"
+                  }
+                },
+                {
+                  "key": "sys:listOperations",
+                  "inputs": {
+                    "list": "{list}",
+                    "type": "concat",
+                    "list2": "{list_2}"
+                  },
+                  "outputs": {
+                    "value": "list"
+                  }
+                }
+              ]
+            },
+            {
+              "key": "sys:simpleIf",
+              "inputs": {
+                "condition": "$={selectedOperation}==\"发送组合快捷键\""
+              },
+              "ifSteps": [
+                {
+                  "key": "sys:subprogram",
+                  "inputs": {
+                    "subProgram": "添加键盘命令",
+                    "var:键盘命令": "发送组合快捷键",
+                    "stopIfFail": "1",
+                    "skipDebugOutput": "false",
+                    "summary": "发送组合快捷键"
+                  },
+                  "outputs": {
+                    "var:结果内容": "list_2"
+                  }
+                },
+                {
+                  "key": "sys:listOperations",
+                  "inputs": {
+                    "list": "{list}",
+                    "type": "concat",
+                    "list2": "{list_2}"
+                  },
+                  "outputs": {
+                    "value": "list"
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "key": "sys:simpleIf",
+          "inputs": {
+            "condition": "$=!{isSuccess}"
+          },
+          "ifSteps": [
+            {
+              "key": "sys:notify",
+              "inputs": {
+                "msg": "此操作异常",
+                "maxLines": "0",
+                "type": "Error",
+                "style": "Default"
+              }
+            }
+          ]
+        },
+        {
+          "key": "sys:group",
+          "inputs": {
+            "skipErr": "1",
+            "skipWhenDebugging": "0",
+            "useMultiThread": "0"
+          },
+          "outputs": {
+            "isSuccess": "isSuccess"
+          },
+          "note": "鼠标命令",
+          "ifSteps": [
+            {
+              "key": "sys:simpleIf",
+              "inputs": {
+                "condition": "$={selectedOperation}==\"移动鼠标指针到一个绝对坐标\""
+              },
+              "ifSteps": [
+                {
+                  "key": "sys:subprogram",
+                  "inputs": {
+                    "subProgram": "添加鼠标命令",
+                    "var:鼠标命令": "移动鼠标指针到一个绝对坐标",
+                    "stopIfFail": "1",
+                    "skipDebugOutput": "false",
+                    "summary": "移动鼠标指针到一个绝对坐标"
+                  },
+                  "outputs": {
+                    "var:结果内容": "list_2"
+                  }
+                },
+                {
+                  "key": "sys:listOperations",
+                  "inputs": {
+                    "list": "{list}",
+                    "type": "concat",
+                    "list2": "{list_2}"
+                  },
+                  "outputs": {
+                    "value": "list"
+                  }
+                }
+              ]
+            },
+            {
+              "key": "sys:simpleIf",
+              "inputs": {
+                "condition": "$={selectedOperation}==\"将鼠标指针移动一定距离（相对于当前位置）\""
+              },
+              "ifSteps": [
+                {
+                  "key": "sys:subprogram",
+                  "inputs": {
+                    "subProgram": "添加鼠标命令",
+                    "var:鼠标命令": "将鼠标指针移动一定距离（相对于当前位置）",
+                    "stopIfFail": "1",
+                    "skipDebugOutput": "false",
+                    "summary": "将鼠标指针移动一定距离（相对于当前位置）"
+                  },
+                  "outputs": {
+                    "var:结果内容": "list_2"
+                  }
+                },
+                {
+                  "key": "sys:listOperations",
+                  "inputs": {
+                    "list": "{list}",
+                    "type": "concat",
+                    "list2": "{list_2}"
+                  },
+                  "outputs": {
+                    "value": "list"
+                  }
+                }
+              ]
+            },
+            {
+              "key": "sys:simpleIf",
+              "inputs": {
+                "condition": "$={selectedOperation}==\"点击鼠标某个按键\""
+              },
+              "ifSteps": [
+                {
+                  "key": "sys:subprogram",
+                  "inputs": {
+                    "subProgram": "添加鼠标命令",
+                    "var:鼠标命令": "点击鼠标某个按键",
+                    "stopIfFail": "1",
+                    "skipDebugOutput": "false",
+                    "summary": "点击鼠标某个按键"
+                  },
+                  "outputs": {
+                    "var:结果内容": "list_2"
+                  }
+                },
+                {
+                  "key": "sys:listOperations",
+                  "inputs": {
+                    "list": "{list}",
+                    "type": "concat",
+                    "list2": "{list_2}"
+                  },
+                  "outputs": {
+                    "value": "list"
+                  }
+                }
+              ]
+            },
+            {
+              "key": "sys:simpleIf",
+              "inputs": {
+                "condition": "$={selectedOperation}==\"双击鼠标某个按键\""
+              },
+              "ifSteps": [
+                {
+                  "key": "sys:subprogram",
+                  "inputs": {
+                    "subProgram": "添加鼠标命令",
+                    "var:鼠标命令": "双击鼠标某个按键",
+                    "stopIfFail": "1",
+                    "skipDebugOutput": "false",
+                    "summary": "双击鼠标某个按键"
+                  },
+                  "outputs": {
+                    "var:结果内容": "list_2"
+                  }
+                },
+                {
+                  "key": "sys:listOperations",
+                  "inputs": {
+                    "list": "{list}",
+                    "type": "concat",
+                    "list2": "{list_2}"
+                  },
+                  "outputs": {
+                    "value": "list"
+                  }
+                }
+              ]
+            },
+            {
+              "key": "sys:simpleIf",
+              "inputs": {
+                "condition": "$={selectedOperation}==\"按下某个鼠标按键\""
+              },
+              "ifSteps": [
+                {
+                  "key": "sys:subprogram",
+                  "inputs": {
+                    "subProgram": "添加鼠标命令",
+                    "var:鼠标命令": "按下某个鼠标按键",
+                    "stopIfFail": "1",
+                    "skipDebugOutput": "false",
+                    "summary": "按下某个鼠标按键"
+                  },
+                  "outputs": {
+                    "var:结果内容": "list_2"
+                  }
+                },
+                {
+                  "key": "sys:listOperations",
+                  "inputs": {
+                    "list": "{list}",
+                    "type": "concat",
+                    "list2": "{list_2}"
+                  },
+                  "outputs": {
+                    "value": "list"
+                  }
+                }
+              ]
+            },
+            {
+              "key": "sys:simpleIf",
+              "inputs": {
+                "condition": "$={selectedOperation}==\"抬起某个鼠标按键\""
+              },
+              "ifSteps": [
+                {
+                  "key": "sys:subprogram",
+                  "inputs": {
+                    "subProgram": "添加鼠标命令",
+                    "var:鼠标命令": "抬起某个鼠标按键",
+                    "stopIfFail": "1",
+                    "skipDebugOutput": "false",
+                    "summary": "抬起某个鼠标按键"
+                  },
+                  "outputs": {
+                    "var:结果内容": "list_2"
+                  }
+                },
+                {
+                  "key": "sys:listOperations",
+                  "inputs": {
+                    "list": "{list}",
+                    "type": "concat",
+                    "list2": "{list_2}"
+                  },
+                  "outputs": {
+                    "value": "list"
+                  }
+                }
+              ]
+            },
+            {
+              "key": "sys:simpleIf",
+              "inputs": {
+                "condition": "$={selectedOperation}==\"垂直滚动\""
+              },
+              "ifSteps": [
+                {
+                  "key": "sys:subprogram",
+                  "inputs": {
+                    "subProgram": "添加鼠标命令",
+                    "var:鼠标命令": "垂直滚动",
+                    "stopIfFail": "1",
+                    "skipDebugOutput": "false",
+                    "summary": "垂直滚动"
+                  },
+                  "outputs": {
+                    "var:结果内容": "list_2"
+                  }
+                },
+                {
+                  "key": "sys:listOperations",
+                  "inputs": {
+                    "list": "{list}",
+                    "type": "concat",
+                    "list2": "{list_2}"
+                  },
+                  "outputs": {
+                    "value": "list"
+                  }
+                }
+              ]
+            },
+            {
+              "key": "sys:simpleIf",
+              "inputs": {
+                "condition": "$={selectedOperation}==\"垂直滚动（更细微）\""
+              },
+              "ifSteps": [
+                {
+                  "key": "sys:subprogram",
+                  "inputs": {
+                    "subProgram": "添加鼠标命令",
+                    "var:鼠标命令": "垂直滚动（更细微）",
+                    "stopIfFail": "1",
+                    "skipDebugOutput": "false",
+                    "summary": "垂直滚动（更细微）"
+                  },
+                  "outputs": {
+                    "var:结果内容": "list_2"
+                  }
+                },
+                {
+                  "key": "sys:listOperations",
+                  "inputs": {
+                    "list": "{list}",
+                    "type": "concat",
+                    "list2": "{list_2}"
+                  },
+                  "outputs": {
+                    "value": "list"
+                  }
+                }
+              ]
+            },
+            {
+              "key": "sys:simpleIf",
+              "inputs": {
+                "condition": "$={selectedOperation}==\"水平滚动\""
+              },
+              "ifSteps": [
+                {
+                  "key": "sys:subprogram",
+                  "inputs": {
+                    "subProgram": "添加鼠标命令",
+                    "var:鼠标命令": "水平滚动",
+                    "stopIfFail": "1",
+                    "skipDebugOutput": "false",
+                    "summary": "水平滚动"
+                  },
+                  "outputs": {
+                    "var:结果内容": "list_2"
+                  }
+                },
+                {
+                  "key": "sys:listOperations",
+                  "inputs": {
+                    "list": "{list}",
+                    "type": "concat",
+                    "list2": "{list_2}"
+                  },
+                  "outputs": {
+                    "value": "list"
+                  }
+                }
+              ]
+            },
+            {
+              "key": "sys:simpleIf",
+              "inputs": {
+                "condition": "$={selectedOperation}==\"水平滚动（更细微）\""
+              },
+              "ifSteps": [
+                {
+                  "key": "sys:subprogram",
+                  "inputs": {
+                    "subProgram": "添加鼠标命令",
+                    "var:鼠标命令": "水平滚动（更细微）",
+                    "stopIfFail": "1",
+                    "skipDebugOutput": "false",
+                    "summary": "水平滚动（更细微）"
+                  },
+                  "outputs": {
+                    "var:结果内容": "list_2"
+                  }
+                },
+                {
+                  "key": "sys:listOperations",
+                  "inputs": {
+                    "list": "{list}",
+                    "type": "concat",
+                    "list2": "{list_2}"
+                  },
+                  "outputs": {
+                    "value": "list"
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "key": "sys:simpleIf",
+          "inputs": {
+            "condition": "$=!{isSuccess}"
+          },
+          "ifSteps": [
+            {
+              "key": "sys:notify",
+              "inputs": {
+                "msg": "此操作异常",
+                "maxLines": "0",
+                "type": "Error",
+                "style": "Default"
+              }
+            }
+          ]
+        },
+        {
+          "key": "sys:group",
+          "inputs": {
+            "skipErr": "1",
+            "skipWhenDebugging": "0",
+            "useMultiThread": "0"
+          },
+          "outputs": {
+            "isSuccess": "isSuccess"
+          },
+          "note": "组合命令",
+          "ifSteps": [
+            {
+              "key": "sys:simpleIf",
+              "inputs": {
+                "condition": "$={selectedOperation}==\"粘贴文件\""
+              },
+              "ifSteps": [
+                {
+                  "key": "sys:subprogram",
+                  "inputs": {
+                    "subProgram": "添加组合命令",
+                    "var:组合命令": "粘贴文件",
+                    "stopIfFail": "1",
+                    "skipDebugOutput": "false",
+                    "summary": "粘贴文件"
+                  },
+                  "outputs": {
+                    "var:结果内容": "list_2"
+                  }
+                },
+                {
+                  "key": "sys:listOperations",
+                  "inputs": {
+                    "list": "{list}",
+                    "type": "concat",
+                    "list2": "{list_2}"
+                  },
+                  "outputs": {
+                    "value": "list"
+                  }
+                }
+              ]
+            },
+            {
+              "key": "sys:simpleIf",
+              "inputs": {
+                "condition": "$={selectedOperation}==\"粘贴图片\""
+              },
+              "ifSteps": [
+                {
+                  "key": "sys:subprogram",
+                  "inputs": {
+                    "subProgram": "添加组合命令",
+                    "var:组合命令": "粘贴图片",
+                    "stopIfFail": "1",
+                    "skipDebugOutput": "false",
+                    "summary": "粘贴图片"
+                  },
+                  "outputs": {
+                    "var:结果内容": "list_2"
+                  }
+                },
+                {
+                  "key": "sys:listOperations",
+                  "inputs": {
+                    "list": "{list}",
+                    "type": "concat",
+                    "list2": "{list_2}"
+                  },
+                  "outputs": {
+                    "value": "list"
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "key": "sys:simpleIf",
+          "inputs": {
+            "condition": "$=!{isSuccess}"
+          },
+          "ifSteps": [
+            {
+              "key": "sys:notify",
+              "inputs": {
+                "msg": "此操作异常",
+                "maxLines": "0",
+                "type": "Error",
+                "style": "Default"
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

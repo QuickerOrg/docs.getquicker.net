@@ -1,0 +1,165 @@
+{
+  "code": "16cd6907-13d1-45bb-9c56-08d9f836c603",
+  "title": "Websocket操作",
+  "description": "连接echo测试服务",
+  "author": "CL",
+  "revision": 0,
+  "source": "https://getquicker.net/sharedaction?code=16cd6907-13d1-45bb-9c56-08d9f836c603",
+  "pulledAt": "2026-08-11T21:28:52.294Z",
+  "variables": [
+    {
+      "name": "text",
+      "type": "Text",
+      "remark": "默认的文本变量"
+    },
+    {
+      "name": "isSuccess",
+      "type": "Boolean"
+    },
+    {
+      "name": "clientId",
+      "type": "Text"
+    },
+    {
+      "name": "count",
+      "type": "Integer"
+    },
+    {
+      "name": "isConnected",
+      "type": "Boolean"
+    }
+  ],
+  "steps": [
+    {
+      "key": "sys:comment",
+      "inputs": {
+        "note": "判断是否为连接关闭时的通知：动作参数为websocket_closed\r\n警告：如不处理关闭通知，在建立连接时不要开启关闭通知选项，否则动作会循环运行"
+      }
+    },
+    {
+      "key": "sys:simpleIf",
+      "inputs": {
+        "condition": "$= {quicker_in_param} == \"websocket_closed\""
+      },
+      "ifSteps": [
+        {
+          "key": "sys:notify",
+          "inputs": {
+            "msg": "连接关闭了",
+            "maxLines": "0",
+            "type": "Warning",
+            "style": "Default"
+          }
+        },
+        {
+          "key": "sys:stop",
+          "inputs": {
+            "method": "default",
+            "isError": "0"
+          }
+        }
+      ]
+    },
+    {
+      "key": "sys:comment",
+      "inputs": {
+        "note": "建立连接。然后发送一条Hello消息"
+      }
+    },
+    {
+      "key": "sys:websocket",
+      "inputs": {
+        "operation": "CreateClient",
+        "server": "wss://tools.getquicker.cn/ws",
+        "clientId": "{clientId}",
+        "spName": "消息处理",
+        "content": "Hello",
+        "callbackOnClose": "1",
+        "stopIfFail": "1"
+      },
+      "outputs": {
+        "isSuccess": "isSuccess"
+      }
+    },
+    {
+      "key": "sys:websocket",
+      "inputs": {
+        "operation": "GetClientState",
+        "clientId": "{clientId}",
+        "stopIfFail": "1"
+      },
+      "outputs": {
+        "isSuccess": "isSuccess"
+      },
+      "disabled": true
+    },
+    {
+      "key": "sys:comment",
+      "inputs": {
+        "note": "循环发送5条消息。服务器将会返回相同的内容，会在子程序中接收到并显示。"
+      }
+    },
+    {
+      "key": "sys:repeat",
+      "inputs": {
+        "count": "5",
+        "startIndex": "0",
+        "repeatDelayMs": "1000"
+      },
+      "outputs": {
+        "count": "count"
+      },
+      "ifSteps": [
+        {
+          "key": "sys:websocket",
+          "inputs": {
+            "operation": "SendMsgToServer",
+            "clientId": "{clientId}",
+            "content": "$$Hello, 这是发送的第{count}条消息",
+            "stopIfFail": "1"
+          },
+          "outputs": {
+            "isSuccess": "isSuccess"
+          }
+        }
+      ]
+    },
+    {
+      "key": "sys:comment",
+      "inputs": {
+        "note": "关闭连接（根据实际需要，也可能会持续连接）"
+      }
+    },
+    {
+      "key": "sys:websocket",
+      "inputs": {
+        "operation": "CloseClient",
+        "clientId": "{clientId}",
+        "stopIfFail": "1"
+      },
+      "outputs": {
+        "isSuccess": "isSuccess"
+      }
+    },
+    {
+      "key": "sys:websocket",
+      "inputs": {
+        "operation": "GetClientState",
+        "clientId": "{clientId}",
+        "stopIfFail": "1"
+      },
+      "outputs": {
+        "isConnected": "isConnected"
+      }
+    },
+    {
+      "key": "sys:notify",
+      "inputs": {
+        "msg": "$$连接状态：{isConnected}",
+        "maxLines": "0",
+        "type": "Success",
+        "style": "Default"
+      }
+    }
+  ]
+}

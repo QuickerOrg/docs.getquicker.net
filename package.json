@@ -20,6 +20,7 @@
     "docs:screenshot:check": "node tools/screenshot-replace/task-ledger.mjs --check",
     "docs:review:catalog": "node tools/screenshot-replace/build-review-catalog.mjs",
     "docs:step-catalog": "node tools/screenshot-replace/build-step-catalog.mjs",
+    "docs:example-action": "node tools/example-actions/pull-shared-action.mjs",
     "docs:gallery:snapshot": "npx --yes -p playwright node tools/doc-gallery/snapshot.mjs",
     "docs:review:api": "node tools/screenshot-replace/review-api.mjs",
     "docs:xaction:test": "node tools/xaction-docs/test.mjs",

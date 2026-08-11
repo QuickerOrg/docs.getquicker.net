@@ -1,0 +1,278 @@
+/**
+ * Sketch of QuickerPc/Quicker/View/UI/UserInputWindow.xaml
+ * (Width 568, Grid Margin 15, FormFooterWrapperStyle, ButtonPrimary).
+ */
+.root {
+  --uip-border: var(--ifm-color-emphasis-300, #d1d5db);
+  --uip-bg: var(--ifm-background-surface-color, #fff);
+  --uip-fg: var(--ifm-font-color-base, #1f2937);
+  --uip-muted: var(--ifm-color-emphasis-100, #f3f4f6);
+  --uip-soft: var(--ifm-color-emphasis-200, #e5e7eb);
+  --uip-primary: #2b7abf;
+  --uip-help: green;
+  --uip-tip: #8e8412;
+  width: min(568px, 100%);
+  margin: 1rem 0;
+  overflow: visible;
+  border: 1px solid var(--uip-border);
+  border-radius: 4px;
+  background: var(--uip-bg);
+  box-shadow: 0 8px 24px rgb(0 0 0 / 14%);
+  color: var(--uip-fg);
+  font-size: 13px;
+  line-height: 1.45;
+}
+
+.titleBar {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  min-height: 32px;
+  padding: 0 4px 0 10px;
+  border-bottom: 1px solid var(--uip-soft);
+  background: color-mix(in srgb, var(--uip-muted) 85%, transparent);
+}
+
+.logo {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 18px;
+  height: 18px;
+  border-radius: 3px;
+  background: linear-gradient(135deg, #2b7abf, #1e5f96);
+  color: #fff;
+  font-size: 11px;
+  line-height: 1;
+}
+
+.title {
+  flex: 1;
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  font-weight: 600;
+}
+
+.titleTools {
+  display: inline-flex;
+  align-items: center;
+  color: var(--ifm-color-emphasis-600, #6b7280);
+}
+
+.pin,
+.close {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 28px;
+  user-select: none;
+}
+
+.close {
+  font-size: 16px;
+  line-height: 1;
+}
+
+.body {
+  padding: 15px;
+}
+
+.prompt {
+  margin: 0 0 5px;
+}
+
+.prompt [data-preview-handle='from'] {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  gap: 6px;
+}
+
+.field {
+  position: relative;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  gap: 4px;
+  min-height: 28px;
+  padding: 3px 5px;
+  border: 1px solid var(--uip-primary);
+  border-radius: 2px;
+  background: var(--uip-bg);
+  font-size: 14px;
+}
+
+.fieldHasTooltip {
+  align-items: flex-start;
+}
+
+.fieldMultiline {
+  min-height: 50px;
+  align-items: flex-start;
+}
+
+.valueHost {
+  flex: 1 1 auto;
+  min-width: 0;
+}
+
+.valueHandle {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  gap: 4px;
+  min-width: 0;
+}
+
+.selected {
+  background: #cce8ff;
+  color: #111;
+}
+
+.placeholder {
+  display: inline-block;
+  min-width: 1px;
+  min-height: 1em;
+}
+
+.tools {
+  display: flex;
+  flex: 0 0 auto;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 4px;
+  margin-left: auto;
+  max-width: 52%;
+}
+
+.toolRow {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 4px 0;
+}
+
+.tool {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 22px;
+  height: 22px;
+  border-radius: 2px;
+}
+
+.toolActive {
+  background: #d7ebff;
+}
+
+.tooltip {
+  width: max-content;
+  max-width: 100%;
+  padding: 4px 8px;
+  border: 1px solid var(--uip-border);
+  border-radius: 2px;
+  background: var(--uip-bg);
+  box-shadow: 0 2px 8px rgb(0 0 0 / 16%);
+  color: var(--uip-fg);
+  font-size: 12px;
+  line-height: 1.4;
+  white-space: nowrap;
+}
+
+.footer {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 12px;
+  margin: 10px 0 0;
+  padding: 10px 0 0;
+  border-top: 1px solid var(--uip-border);
+}
+
+.footerStart,
+.footerEnd {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+}
+
+.footerEnd {
+  justify-content: flex-end;
+  margin-left: auto;
+}
+
+.helpHost {
+  display: inline-flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 6px;
+}
+
+.helpHandle {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  min-height: 26px;
+  padding: 2px 8px;
+  border: 1px solid var(--uip-border);
+  border-radius: 3px;
+  background: var(--uip-bg);
+}
+
+.helpIcon {
+  display: inline-flex;
+  color: var(--uip-help);
+}
+
+.tip {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  color: #6b7280;
+  font-size: 12px;
+}
+
+.tipIcon {
+  display: inline-flex;
+  color: var(--uip-tip);
+}
+
+.btn,
+.btnPrimary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 72px;
+  height: 28px;
+  padding: 0 14px;
+  border: 1px solid var(--uip-border);
+  border-radius: 3px;
+  background: var(--uip-bg);
+  font-size: 12px;
+  user-select: none;
+}
+
+.btnPrimary {
+  border-color: color-mix(in srgb, var(--uip-primary) 45%, var(--uip-border));
+  background: var(--uip-primary);
+  color: #fff;
+  font-weight: 600;
+}
+
+html[data-theme='dark'] .btnPrimary {
+  color: #f8fafc;
+}
+
+html[data-theme='dark'] .selected {
+  background: color-mix(in srgb, var(--uip-primary) 35%, transparent);
+  color: inherit;
+}
+
+html[data-theme='dark'] .helpIcon {
+  color: #c050ff50;
+}

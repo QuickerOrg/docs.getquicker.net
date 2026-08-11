@@ -1,0 +1,211 @@
+{
+  "code": "4943c94a-0437-4b98-20f1-08d742f11f76",
+  "title": "发送到QQ邮箱",
+  "description": "将选中的文字或文件发送到自己的QQ邮箱中",
+  "author": "CL",
+  "revision": 0,
+  "source": "https://getquicker.net/sharedaction?code=4943c94a-0437-4b98-20f1-08d742f11f76",
+  "pulledAt": "2026-08-11T21:28:53.162Z",
+  "variables": [
+    {
+      "name": "context",
+      "type": "Text",
+      "remark": "默认的文本变量"
+    },
+    {
+      "name": "img",
+      "type": "Image",
+      "remark": "默认的图片变量"
+    },
+    {
+      "name": "QQ",
+      "type": "Text",
+      "remark": "QQ号"
+    },
+    {
+      "name": "SMTP授权码",
+      "type": "Text",
+      "remark": "SMTP验证码，不是QQ密码，在QQ邮箱里开启SMTP时得到"
+    },
+    {
+      "name": "FileList",
+      "type": "List"
+    },
+    {
+      "name": "FirstFile",
+      "type": "Text",
+      "remark": "第一个文件名"
+    },
+    {
+      "name": "isSuccess",
+      "type": "Boolean"
+    },
+    {
+      "name": "selectedContent",
+      "type": "Text"
+    },
+    {
+      "name": "subject",
+      "type": "Text",
+      "remark": "摘要"
+    }
+  ],
+  "steps": [
+    {
+      "key": "sys:comment",
+      "inputs": {
+        "note": "获取选中的文件或文本"
+      }
+    },
+    {
+      "key": "sys:getSelectedFiles",
+      "inputs": {
+        "stopIfFail": "0"
+      },
+      "outputs": {
+        "files": "FileList",
+        "firstFile": "FirstFile",
+        "isSuccess": "isSuccess"
+      }
+    },
+    {
+      "key": "sys:if",
+      "inputs": {
+        "condition": "$$!{isSuccess}"
+      },
+      "ifSteps": [
+        {
+          "key": "sys:getSelectedText",
+          "inputs": {
+            "format": "UnicodeText",
+            "stopIfFail": "1"
+          },
+          "outputs": {
+            "output": "selectedContent"
+          }
+        }
+      ]
+    },
+    {
+      "key": "sys:comment",
+      "inputs": {
+        "note": "读取保存的QQ号、SMTP密码"
+      }
+    },
+    {
+      "key": "sys:stateStorage",
+      "inputs": {
+        "type": "readActionState",
+        "key": "QQ号",
+        "inputIfEmpty": "1",
+        "prompt": "请输入你的QQ号，不要输入错哦！"
+      },
+      "outputs": {
+        "value": "QQ"
+      }
+    },
+    {
+      "key": "sys:stateStorage",
+      "inputs": {
+        "type": "readActionState",
+        "key": "SMTP授权码",
+        "inputIfEmpty": "1",
+        "prompt": "输入在QQ邮箱中开启SMTP时显示的授权码，注意不是QQ密码。"
+      },
+      "outputs": {
+        "value": "SMTP授权码"
+      }
+    },
+    {
+      "key": "sys:comment",
+      "inputs": {
+        "note": "生成邮件标题"
+      }
+    },
+    {
+      "key": "sys:assign",
+      "inputs": {
+        "input": "$${FileList} {selectedContent}"
+      },
+      "outputs": {
+        "output": "subject"
+      }
+    },
+    {
+      "key": "sys:stringProcess",
+      "inputs": {
+        "data": "{subject}",
+        "method": "substring",
+        "srcEncoding": "utf-8",
+        "dstEncoding": "gbk",
+        "start": "0",
+        "length": "50"
+      },
+      "outputs": {
+        "output": "subject"
+      },
+      "disabled": true
+    },
+    {
+      "key": "sys:strReplace",
+      "inputs": {
+        "input": "{subject}",
+        "old": "\\r\\n",
+        "escapeOld": "1",
+        "replaceEscapes": "0",
+        "useRegex": "0",
+        "ignoreCase": "0",
+        "singleLine": "1",
+        "multiLine": "0"
+      },
+      "outputs": {
+        "output": "subject"
+      },
+      "note": "去除摘要里的换行"
+    },
+    {
+      "key": "sys:stringProcess",
+      "inputs": {
+        "data": "{subject}",
+        "method": "substring",
+        "srcEncoding": "utf-8",
+        "dstEncoding": "gbk",
+        "start": "0",
+        "length": "50"
+      },
+      "outputs": {
+        "output": "subject"
+      }
+    },
+    {
+      "key": "sys:comment",
+      "inputs": {
+        "note": "发送邮件"
+      }
+    },
+    {
+      "key": "sys:smtp",
+      "inputs": {
+        "server": "smtp.qq.com",
+        "port": "587",
+        "useSsl": "1",
+        "account": "$${QQ}@qq.com",
+        "password": "{SMTP授权码}",
+        "sender": "$${QQ}@qq.com",
+        "to": "$${QQ}@qq.com",
+        "subject": "$$Quicker:{subject}",
+        "content": "{selectedContent}",
+        "attachList": "{FileList}",
+        "stopIfFail": "1",
+        "isHtml": "0"
+      }
+    },
+    {
+      "key": "sys:notify",
+      "inputs": {
+        "msg": "发送完成",
+        "type": "Info"
+      }
+    }
+  ]
+}

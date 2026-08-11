@@ -1,0 +1,132 @@
+{
+  "code": "1aefbbd1-cca2-42e6-c4e0-08d7f7cf8b53",
+  "title": "多线程测试",
+  "description": "步骤组和每个模块的多线程选项",
+  "author": "CL",
+  "revision": 0,
+  "source": "https://getquicker.net/sharedaction?code=1aefbbd1-cca2-42e6-c4e0-08d7f7cf8b53",
+  "pulledAt": "2026-08-11T21:27:36.225Z",
+  "variables": [
+    {
+      "name": "text",
+      "type": "Text",
+      "remark": "默认的文本变量"
+    },
+    {
+      "name": "list",
+      "type": "List"
+    },
+    {
+      "name": "dict",
+      "type": "Dict"
+    }
+  ],
+  "steps": [
+    {
+      "key": "sys:group",
+      "inputs": {
+        "skipErr": "0",
+        "useMultiThread": "1"
+      },
+      "ifSteps": [
+        {
+          "key": "sys:group",
+          "inputs": {
+            "skipErr": "0"
+          },
+          "ifSteps": [
+            {
+              "key": "sys:notify",
+              "inputs": {
+                "msg": "111",
+                "maxLines": "0",
+                "type": "Info"
+              }
+            },
+            {
+              "key": "sys:delay",
+              "inputs": {
+                "delayMs": "1000",
+                "monitorWaitWin": "0"
+              }
+            },
+            {
+              "key": "sys:notify",
+              "inputs": {
+                "msg": "222",
+                "maxLines": "0",
+                "type": "Info"
+              }
+            },
+            {
+              "key": "sys:delay",
+              "inputs": {
+                "delayMs": "1000",
+                "monitorWaitWin": "0"
+              }
+            }
+          ]
+        },
+        {
+          "key": "sys:group",
+          "inputs": {
+            "skipErr": "0"
+          },
+          "ifSteps": [
+            {
+              "key": "sys:notify",
+              "inputs": {
+                "msg": "333",
+                "maxLines": "0",
+                "type": "Info"
+              }
+            },
+            {
+              "key": "sys:delay",
+              "inputs": {
+                "delayMs": "1000",
+                "monitorWaitWin": "0"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "key": "sys:each",
+      "inputs": {
+        "input": "{list}",
+        "useMultiThread": "1"
+      },
+      "outputs": {
+        "item": "text"
+      },
+      "ifSteps": [
+        {
+          "key": "sys:subprogram",
+          "inputs": {
+            "subProgram": "setdict",
+            "stopIfFail": "1",
+            "var:dict": "{dict}",
+            "var:text": "{text}"
+          }
+        },
+        {
+          "key": "sys:delay",
+          "inputs": {
+            "delayMs": "1000",
+            "monitorWaitWin": "0"
+          }
+        }
+      ]
+    },
+    {
+      "key": "sys:notify",
+      "inputs": {
+        "msg": "{dict}",
+        "maxLines": "0",
+        "type": "Info"
+      }
+    }
+  ]
+}

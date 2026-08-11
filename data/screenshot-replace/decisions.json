@@ -1,7 +1,16 @@
 {
   "version": 1,
-  "updatedAt": "2026-08-12T02:25:00.000Z",
+  "updatedAt": "2026-08-12T05:28:00+08:00",
   "items": [
+    {
+      "image": "docs/v2/xaction/concepts/img/xaction-intro-002-2d7a7d0eb7.png",
+      "kind": "steps",
+      "action": "replaced",
+      "component": "StepProgramView",
+      "confidence": "medium",
+      "page": "docs/v2/xaction/concepts/xaction-intro.md",
+      "notes": "OCR steps: getSelectedText→if selectSuccess→openUrl $$google search else google home. Restored as StepProgramView, not full editor."
+    },
     {
       "image": "docs/v2/xaction/concepts/img/action-custom-context-menu-005-268e6fc45d.png",
       "page": "docs/v2/xaction/concepts/action-custom-context-menu.md",
@@ -112,6 +121,16 @@
       "updatedAt": "2026-08-11T19:17:14+08:00"
     },
     {
+      "image": "docs/v2/xaction/modules/basic/img/comment-001-351d29a6a6.png",
+      "page": "docs/v2/xaction/modules/basic/comment.md",
+      "status": "converted",
+      "kind": "editor-chrome",
+      "component": "StepProgramView",
+      "reason": "整窗设计器 chrome（工具箱+步骤+变量）；只抽中间步骤列表，注释夹在步骤组之间。原图文件保留供审核。",
+      "evidence": "ocr+visual",
+      "updatedAt": "2026-08-12T05:25:00+08:00"
+    },
+    {
       "image": "docs/v2/xaction/modules/basic/img/comment-002-0927e4219c.png",
       "page": "docs/v2/xaction/modules/basic/comment.md",
       "status": "converted",
@@ -120,6 +139,16 @@
       "evidence": "git-diff",
       "commit": "4fa032b",
       "updatedAt": "2026-08-11T19:17:14+08:00"
+    },
+    {
+      "image": "docs/v2/xaction/modules/basic/img/comment-003-eb164a0324.png",
+      "page": "docs/v2/xaction/modules/basic/comment.md",
+      "status": "converted",
+      "kind": "context-menu",
+      "component": "ContextMenuPreview",
+      "reason": "OCR 误判 runtime-dialog；实为步骤列表右键，红框在 运行(_R)。当前 WPF 菜单标签包 StepProgramView。原图保留供审核。",
+      "evidence": "ocr+visual+wpf",
+      "updatedAt": "2026-08-12T05:25:00+08:00"
     },
     {
       "image": "docs/v2/xaction/modules/basic/img/delay-001-621a92fff1.png",
@@ -144,11 +173,12 @@
     {
       "image": "docs/v2/xaction/modules/basic/img/keyinput-001-2fdc4c2e0a.png",
       "page": "docs/v2/xaction/modules/basic/keyinput.md",
-      "status": "kept",
-      "kind": "annotated",
-      "reason": "原图用红色箭头说明点击“录制”后从键盘录入按键，属于操作教学图；参数预览无法表达这个交互过程。",
-      "evidence": "ocr+manual",
-      "updatedAt": "2026-08-11T20:35:21+08:00"
+      "status": "converted",
+      "kind": "step-param",
+      "component": "ModuleParamPreview",
+      "reason": "OCR kind=step-param。红箭头教学改为 PreviewMarks；Keyboard 类型按 WPF/Headless 渲染录制行（Alt+H 示例）。",
+      "evidence": "ocr",
+      "updatedAt": "2026-08-12T03:47:00+08:00"
     },
     {
       "image": "docs/v2/xaction/modules/basic/img/mouse-001-2ceb1871c3.png",
@@ -249,6 +279,65 @@
       "evidence": "git-diff",
       "commit": "4fa032b",
       "updatedAt": "2026-08-11T19:17:14+08:00"
+    },
+    {
+      "image": "docs/v2/xaction/modules/basic/img/mouse-002-db0cd3c6f1.png",
+      "page": "docs/v2/xaction/modules/basic/mouse.md",
+      "status": "converted",
+      "kind": "diagram",
+      "component": "CoordDiagram",
+      "reason": "OCR kind=diagram。主屏原点与 X/Y 正向改为可交互坐标系示意；原图文件保留供审核。",
+      "evidence": "ocr+manual",
+      "updatedAt": "2026-08-12T04:18:00+08:00"
+    },
+    {
+      "image": "docs/v2/xaction/modules/basic/img/mouse-005-29eee7b0a8.png",
+      "page": "docs/v2/xaction/modules/basic/mouse.md",
+      "status": "converted",
+      "kind": "annotated",
+      "component": "PreviewMarks+ModuleParamPreview",
+      "reason": "OCR kind=step-param。红箭头「选取坐标」改为 PreviewMarks 钉在 xy；type=moveToXy，xy=2429,762。",
+      "evidence": "ocr",
+      "updatedAt": "2026-08-12T04:05:00+08:00"
+    },
+    {
+      "image": "docs/v2/xaction/modules/basic/img/mouse-012-b16078e96c.png",
+      "page": "docs/v2/xaction/modules/basic/mouse.md",
+      "status": "converted",
+      "kind": "decorative",
+      "component": "ClickIndicatorPreview",
+      "reason": "OCR 只认出圆圈。对照 ClickIndicator.ShowIndicator(150, Red)：0.4s 由 20% 放大并淡出。",
+      "evidence": "ocr+source",
+      "updatedAt": "2026-08-12T04:23:00+08:00"
+    },
+    {
+      "image": "docs/v2/xaction/modules/basic/img/mouse-014-efb9812e0a.png",
+      "page": "docs/v2/xaction/modules/basic/mouse.md",
+      "status": "kept",
+      "kind": "annotated",
+      "reason": "找图定位 A=左上角 / B=中心的红箭头示意，单窗坐标教学 keep。",
+      "evidence": "ocr+manual",
+      "updatedAt": "2026-08-12T04:05:00+08:00"
+    },
+    {
+      "image": "docs/v2/xaction/modules/basic/img/mouse-015-850bb03c05.png",
+      "page": "docs/v2/xaction/modules/basic/mouse.md",
+      "status": "converted",
+      "kind": "steps",
+      "component": "StepProgramView",
+      "reason": "OCR review。步骤列表还原为 screenCapture + repeat(delay/mouse/strCompare) + notify。",
+      "evidence": "ocr+manual",
+      "updatedAt": "2026-08-12T04:05:00+08:00"
+    },
+    {
+      "image": "docs/v2/xaction/modules/basic/img/mouse-016-da277c9034.png",
+      "page": "docs/v2/xaction/modules/basic/mouse.md",
+      "status": "converted",
+      "kind": "annotated",
+      "component": "PreviewMarks+ModuleParamPreview",
+      "reason": "OCR review，实为找图参数窗+红字教学。PreviewMarks 钉 bmpVar/范围/定位/容差/数量/extAction。",
+      "evidence": "ocr+manual",
+      "updatedAt": "2026-08-12T04:05:00+08:00"
     },
     {
       "image": "docs/v2/xaction/modules/basic/img/msgbox-001-500a449d86.png",
@@ -370,6 +459,15 @@
       "updatedAt": "2026-08-11T19:17:14+08:00"
     },
     {
+      "image": "docs/v2/xaction/modules/basic/img/run-001-977f296532.png",
+      "page": "docs/v2/xaction/modules/basic/run.md",
+      "status": "kept",
+      "kind": "annotated",
+      "reason": "变量模式下拉展开教学（红圈）；所教的 false 默认值已在 RunOrOpenStepV2 把 false/true/0/1 当成空。正文改为说明，页面不再引用此图。",
+      "evidence": "ocr+manual",
+      "updatedAt": "2026-08-12T05:05:00+08:00"
+    },
+    {
       "image": "docs/v2/xaction/modules/basic/img/run-002-dbe55875ab.png",
       "page": "docs/v2/xaction/modules/basic/run.md",
       "status": "converted",
@@ -380,6 +478,16 @@
       "updatedAt": "2026-08-11T19:17:14+08:00"
     },
     {
+      "image": "docs/v2/xaction/modules/basic/img/run-003-cc89d7eb96.png",
+      "page": "docs/v2/xaction/modules/basic/run.md",
+      "status": "converted",
+      "kind": "context-menu",
+      "component": "ContextMenuPreview",
+      "reason": "路径框 … 菜单按当前 WPF TextExtMenu 还原（ContextMenuPreview 包 ModuleParamPreview），不抄截图里过期的「窗口进程名」。",
+      "evidence": "ocr+manual",
+      "updatedAt": "2026-08-12T05:05:00+08:00"
+    },
+    {
       "image": "docs/v2/xaction/modules/basic/img/runscript-001-05ddd7c149.png",
       "page": "docs/v2/xaction/modules/basic/runscript.md",
       "status": "converted",
@@ -388,6 +496,16 @@
       "evidence": "git-diff",
       "commit": "4fa032b",
       "updatedAt": "2026-08-11T19:17:14+08:00"
+    },
+    {
+      "image": "docs/v2/xaction/modules/basic/img/runscript-002-50fe228c23.png",
+      "page": "docs/v2/xaction/modules/basic/runscript.md",
+      "status": "converted",
+      "kind": "annotated",
+      "component": "PreviewMarks",
+      "reason": "自定义脚本类型下扩展名 / 使用指定软件的字段说明，用 PreviewMarks + focusKeys。",
+      "evidence": "ocr+manual",
+      "updatedAt": "2026-08-12T05:15:00+08:00"
     },
     {
       "image": "docs/v2/xaction/modules/basic/img/sendkeys-001-0dc31ff7d7.png",
@@ -402,11 +520,12 @@
     {
       "image": "docs/v2/xaction/modules/basic/img/userinput-001-9f5976c4ce.png",
       "page": "docs/v2/xaction/modules/basic/userinput.md",
-      "status": "kept",
+      "status": "converted",
       "kind": "annotated",
-      "reason": "原图在用户输入运行窗口上标出提示文字、默认值、选择工具和帮助按钮；当前没有对应的 UserInputPreview，且去掉箭头会丢失教学信息。",
+      "component": "UserInputPreview",
+      "reason": "OCR 误判为选择列表；实际是 UserInputWindow 运行态。已用 UserInputPreview 还原窗口，PreviewMarks 保留提示文字 / 默认值 / 选择工具 / 帮助按钮标注。原图文件保留供审核。",
       "evidence": "ocr+manual",
-      "updatedAt": "2026-08-11T20:35:21+08:00"
+      "updatedAt": "2026-08-12T04:40:00+08:00"
     },
     {
       "image": "docs/v2/xaction/modules/basic/img/userinput-002-ce4cb73b05.png",
@@ -441,20 +560,22 @@
     {
       "image": "docs/v2/xaction/modules/basic/img/userselect-003-2c5ebf5454.png",
       "page": "docs/v2/xaction/modules/basic/userselect.md",
-      "status": "kept",
+      "status": "converted",
       "kind": "annotated",
-      "reason": "原图用红色连线把参数窗中的提示文字和选项定义对应到实际选择窗口，普通高亮不能表达参数到运行态的映射。",
+      "component": "PreviewMap",
+      "reason": "参数窗标题/选项/提示 → 运行态选择窗，用 PreviewMap + ChoiceListPreview（PreviewLive）还原，不再靠红箭头截图。",
       "evidence": "ocr+manual",
-      "updatedAt": "2026-08-11T20:35:21+08:00"
+      "updatedAt": "2026-08-12T04:35:00+08:00"
     },
     {
       "image": "docs/v2/xaction/modules/basic/img/userselect-004-7b6621784f.png",
       "page": "docs/v2/xaction/modules/basic/userselect.md",
-      "status": "kept",
+      "status": "converted",
       "kind": "annotated",
-      "reason": "原图用箭头强调首行“|=&&”自定义分隔符语法，保留原图可避免丢失这一局部教学注记。",
+      "component": "PreviewMarks",
+      "reason": "单窗字段填写说明：首行 |=&& 自定义分隔符，用 PreviewMarks 标在选项框上。",
       "evidence": "ocr+manual",
-      "updatedAt": "2026-08-11T20:35:21+08:00"
+      "updatedAt": "2026-08-12T04:35:00+08:00"
     },
     {
       "image": "docs/v2/xaction/modules/basic/img/userselect-005-53e9b14666.png",
@@ -469,11 +590,12 @@
     {
       "image": "docs/v2/xaction/modules/basic/img/userselect-006-bd766e50e2.png",
       "page": "docs/v2/xaction/modules/basic/userselect.md",
-      "status": "kept",
-      "kind": "annotated",
-      "reason": "原图在真实选择窗口上用红色箭头强调筛选框支持拼音；无标注的 ChoiceListPreview 不能替代这层说明。",
+      "status": "converted",
+      "kind": "choice-list",
+      "component": "PreviewMap",
+      "reason": "筛选框 + 拼音首字母用 PreviewMap 把启用筛选/筛选内容连到 ChoiceListPreview 筛选行；正文说明拼音。",
       "evidence": "ocr+manual",
-      "updatedAt": "2026-08-11T20:35:21+08:00"
+      "updatedAt": "2026-08-12T04:35:00+08:00"
     },
     {
       "image": "docs/v2/xaction/modules/clipboard/img/filetoclipboard-001-af3d5a0a46.png",
@@ -500,18 +622,18 @@
       "page": "docs/v2/xaction/modules/clipboard/writeclipboard.md",
       "status": "kept",
       "kind": "annotated",
-      "reason": "原图用红色箭头说明“类型”与“写入内容”的对应关系；普通参数预览不能保留这层教学标注。",
+      "reason": "OCR 虽判 step-param，但图上有红箭头标注「类型」与「要写入的内容」的对应；单窗红框教学 keep。概述另附无箭头 ModuleParamPreview。",
       "evidence": "ocr+manual",
-      "updatedAt": "2026-08-11T20:06:13+08:00"
+      "updatedAt": "2026-08-12T05:20:00+08:00"
     },
     {
       "image": "docs/v2/xaction/modules/compute/img/assign-001-e016c44527.png",
       "page": "docs/v2/xaction/modules/compute/assign.md",
       "status": "kept",
       "kind": "annotated",
-      "reason": "原图用红色箭头同时解释输入模式和结果输出变量；focusKeys 高亮不能等价替代箭头语义。",
+      "reason": "OCR 为 step-param，但图上有红箭头说明输入支持纯文本/表达式/插值，以及结果输出到变量；属单窗教学标注，keep。",
       "evidence": "ocr+manual",
-      "updatedAt": "2026-08-11T20:06:13+08:00"
+      "updatedAt": "2026-08-12T05:20:00+08:00"
     },
     {
       "image": "docs/v2/xaction/modules/compute/img/assign-002-c20864fa49.png",
@@ -708,9 +830,9 @@
       "page": "docs/v2/xaction/modules/compute/tableoperation.md",
       "status": "kept",
       "kind": "annotated",
-      "reason": "原图用编号注记划分表格变量、操作类型和输出三个区域，属于模块整体教学示意，不能用无注记参数窗替代。",
+      "reason": "OCR 为 step-param，但图上有 1/2/3 编号划分表格变量、操作类型和输出，属模块教学注记，keep。",
       "evidence": "ocr+manual",
-      "updatedAt": "2026-08-11T20:35:21+08:00"
+      "updatedAt": "2026-08-12T05:20:00+08:00"
     },
     {
       "image": "docs/v2/xaction/modules/compute/img/tableoperation-002-46e293470c.png",
@@ -727,9 +849,9 @@
       "page": "docs/v2/xaction/modules/compute/tableoperation.md",
       "status": "kept",
       "kind": "annotated",
-      "reason": "原图直接在行数据和筛选表达式字段上标注多列更新与多行匹配语义，focusKeys 高亮不能表达这些说明。",
+      "reason": "更新行参数窗上有红字说明行数据词典与多行筛选语义，属单窗教学标注，keep。",
       "evidence": "ocr+manual",
-      "updatedAt": "2026-08-11T20:35:21+08:00"
+      "updatedAt": "2026-08-12T05:20:00+08:00"
     },
     {
       "image": "docs/v2/xaction/modules/compute/img/tableoperation-004-27627e9b91.png",
@@ -816,9 +938,9 @@
       "page": "docs/v2/xaction/modules/compute/tableoperation.md",
       "status": "kept",
       "kind": "annotated",
-      "reason": "原图是带红色箭头的 Excel 工作表概念图，专门说明标题行号和列名；表格组件无法保留箭头指向。",
+      "reason": "带红箭头的 Excel 概念图，说明标题行号和列名；表格组件无法保留箭头。",
       "evidence": "ocr+manual",
-      "updatedAt": "2026-08-11T20:35:21+08:00"
+      "updatedAt": "2026-08-12T05:20:00+08:00"
     },
     {
       "image": "docs/v2/xaction/modules/files/img/checkpathexists-001-6e0a969ff8.png",
@@ -2893,6 +3015,123 @@
       "reason": "OCR kind=context-menu。步骤列表右键「插入延时」及官方 tooltip，用 ContextMenuPreview 替代 890px 宽截图；菜单文案按当前 WPF StepListControl.ContextMenu。",
       "evidence": "ocr",
       "updatedAt": "2026-08-12T02:25:00+08:00"
+    },
+    {
+      "image": "docs/v2/xaction/modules/basic/img/delay-003-d2cf99fe72.gif",
+      "page": "docs/v2/xaction/modules/basic/delay.md",
+      "status": "converted",
+      "component": "StepProgramView",
+      "reason": "Ctrl+滚轮调延时 GIF 改为 StepProgramView wheelDelay 自动往返（WPF ±50ms），原图保留供审核。",
+      "evidence": "manual",
+      "updatedAt": "2026-08-12T03:24:00+08:00"
+    },
+    {
+      "image": "docs/v2/xaction/modules/clipboard/img/getclipboardtext-002-493ba546c2.png",
+      "page": "docs/v2/xaction/modules/clipboard/getclipboardtext.md",
+      "status": "kept",
+      "kind": "ui-other",
+      "reason": "第三方 Free Clipboard Viewer 界面，用来对照自定义格式名；不是 Quicker 参数窗，无对应预览组件。",
+      "evidence": "ocr+manual",
+      "updatedAt": "2026-08-12T05:20:00+08:00"
+    },
+    {
+      "image": "docs/v2/xaction/modules/files/img/checkpathexists-002-9beb7a6335.png",
+      "page": "docs/v2/xaction/modules/files/checkpathexists.md",
+      "status": "kept",
+      "kind": "unknown",
+      "reason": "OCR kind=unknown。Quicker「显示文本」运行态（标题「结果内容」+ 行号），展示文件扩展信息词典；暂无对应预览组件，且内容是教学示例。",
+      "evidence": "ocr+manual",
+      "updatedAt": "2026-08-12T05:15:00+08:00"
+    },
+    {
+      "image": "docs/v2/xaction/modules/files/img/everythingsearch-002-607633654c.png",
+      "page": "docs/v2/xaction/modules/files/everythingsearch.md",
+      "status": "kept",
+      "kind": "annotated",
+      "reason": "Everything 搜索框红框教学：限定目录写成带末尾反斜杠的引号路径。第三方软件 UI，不是 Quicker 参数窗。",
+      "evidence": "ocr+manual",
+      "updatedAt": "2026-08-12T05:15:00+08:00"
+    },
+    {
+      "image": "docs/v2/xaction/modules/files/img/everythingsearch-003-5318c9c1a8.png",
+      "page": "docs/v2/xaction/modules/files/everythingsearch.md",
+      "status": "kept",
+      "kind": "annotated",
+      "reason": "Everything 安装向导红箭头教学「选中安装 Everything 服务」。第三方安装程序，OCR 误判为 choice-list，不替换。",
+      "evidence": "ocr+manual",
+      "updatedAt": "2026-08-12T05:15:00+08:00"
+    },
+    {
+      "image": "docs/v2/xaction/modules/files/img/everythingsearch-004-7c1e07ae2e.png",
+      "page": "docs/v2/xaction/modules/files/everythingsearch.md",
+      "status": "kept",
+      "kind": "annotated",
+      "reason": "Everything 安装向导红箭头教学「开机自动启动」。第三方安装程序，OCR 误判为 choice-list，不替换。",
+      "evidence": "ocr+manual",
+      "updatedAt": "2026-08-12T05:15:00+08:00"
+    },
+    {
+      "image": "docs/v2/xaction/modules/files/img/everythingsearch-005-eafe303e17.png",
+      "page": "docs/v2/xaction/modules/files/everythingsearch.md",
+      "status": "kept",
+      "kind": "annotated",
+      "reason": "Everything 选项窗红箭头教学：随系统自启动 + Everything 服务。第三方设置窗，OCR 误判为 runtime-dialog，不替换。",
+      "evidence": "ocr+manual",
+      "updatedAt": "2026-08-12T05:15:00+08:00"
+    },
+    {
+      "image": "docs/v2/xaction/modules/compute/img/compute-002-5c8245e243.png",
+      "page": "docs/v2/xaction/modules/compute/compute.md",
+      "status": "kept",
+      "kind": "annotated",
+      "reason": "增强模式参数窗带箭头指向变量下拉，属下拉/字段教学；OCR 误判为 var-def（低置信），keep。",
+      "evidence": "ocr+manual",
+      "updatedAt": "2026-08-12T05:20:00+08:00"
+    },
+    {
+      "image": "docs/v2/xaction/modules/compute/img/color-002-efae8e7c2b.gif",
+      "page": "docs/v2/xaction/modules/compute/color.md",
+      "status": "kept",
+      "kind": "decorative",
+      "reason": "连续桌面录屏：调色板与吸管取色，无法用组件还原。",
+      "evidence": "manual",
+      "updatedAt": "2026-08-12T05:20:00+08:00"
+    },
+    {
+      "image": "docs/v2/xaction/modules/compute/img/color-003-6bd4fc7342.gif",
+      "page": "docs/v2/xaction/modules/compute/color.md",
+      "status": "kept",
+      "kind": "decorative",
+      "reason": "连续桌面录屏：从屏幕点选颜色，无法用组件还原。",
+      "evidence": "manual",
+      "updatedAt": "2026-08-12T05:20:00+08:00"
+    },
+    {
+      "image": "docs/v2/xaction/modules/compute/img/managelist-001-040cc435a4.png",
+      "page": "docs/v2/xaction/modules/compute/managelist.md",
+      "status": "kept",
+      "kind": "annotated",
+      "reason": "运行态「管理列表」+「编辑菜单项」叠窗，带编号注记；无 ManageListPreview，OCR 误判 step-param。",
+      "evidence": "ocr+manual",
+      "updatedAt": "2026-08-12T05:20:00+08:00"
+    },
+    {
+      "image": "docs/v2/xaction/modules/compute/img/managelist-003-1875478276.png",
+      "page": "docs/v2/xaction/modules/compute/managelist.md",
+      "status": "kept",
+      "kind": "ui-other",
+      "reason": "运行态「编辑菜单项」窗口，暂无对应预览组件。",
+      "evidence": "ocr+manual",
+      "updatedAt": "2026-08-12T05:20:00+08:00"
+    },
+    {
+      "image": "docs/v2/xaction/modules/compute/img/managelist-004-c987d208d3.png",
+      "page": "docs/v2/xaction/modules/compute/managelist.md",
+      "status": "kept",
+      "kind": "ui-other",
+      "reason": "运行态普通文本编辑列表项；OCR 误判 user-input，UserInputPreview 不能还原管理列表场景。",
+      "evidence": "ocr+manual",
+      "updatedAt": "2026-08-12T05:20:00+08:00"
     }
   ]
 }

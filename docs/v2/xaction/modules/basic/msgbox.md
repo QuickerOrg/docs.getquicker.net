@@ -7,7 +7,7 @@ sidebar_position: 20
 quickerDocKey: "xaction/module/sys:MsgBox"
 comments: true
 moduleKey: "sys:MsgBox"
-docStatus: "migrated-unreviewed"
+docStatus: "reviewed"
 metadataGeneratedAt: "2026-08-03 20:08:03"
 legacyDocId: 1529960
 legacyContentUpdatedAt: "2024-10-29T00:01:11.000Z"
@@ -141,7 +141,36 @@ legacyContentUpdatedAt: "2024-10-29T00:01:11.000Z"
 
 ## 示例动作
 
-- [示例：弹窗消息](https://getquicker.net/sharedaction?code=b6098426-6fda-4db9-6d88-08d6bfa4ff29)
+<StepProgramView example="b6098426-6fda-4db9-6d88-08d6bfa4ff29" />
+
+<ShareLinkCard
+  code="b6098426-6fda-4db9-6d88-08d6bfa4ff29"
+  title="示例：弹窗消息"
+  description="用于演示弹窗消息模块"
+  author="CL"
+/>
+
+## 相关链接
+
+<RelatedDocs
+  items={[
+    {
+      href: '/v2/xaction/modules/notify',
+      label: '提示消息',
+      description: '不打断动作、自动消失的轻提示。',
+    },
+    {
+      href: '/v2/xaction/modules/userselect',
+      label: '用户选择',
+      description: '自定义按钮的格式和这里类似。',
+    },
+    {
+      href: '/v2/xaction/concepts/use-icon-in-actions',
+      label: '在动作中使用图标',
+      description: '自定义模式的图标写法。',
+    },
+  ]}
+/>
 
 ## 更新历史
 

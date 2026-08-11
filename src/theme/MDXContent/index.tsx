@@ -17,7 +17,11 @@ import PreviewCompare from '@site/src/components/PreviewCompare';
 import PreviewMap from '@site/src/components/PreviewMap';
 import PreviewMarks from '@site/src/components/PreviewMarks';
 import ShareLinkCard from '@site/src/components/ShareLinkCard';
+import RelatedDocs from '@site/src/components/RelatedDocs';
 import XActionLanding from '@site/src/components/XActionLanding';
+import CoordDiagram from '@site/src/components/CoordDiagram';
+import ClickIndicatorPreview from '@site/src/components/ClickIndicatorPreview';
+import UserInputPreview from '@site/src/components/UserInputPreview';
 import NativeImg from '@site/src/theme/MDXComponents/NativeImg';
 
 type MDXComponentsType = NonNullable<ComponentProps<typeof MDXProvider>['components']>;
@@ -43,7 +47,11 @@ const components = {
   PreviewMap,
   PreviewMarks,
   ShareLinkCard,
+  RelatedDocs,
   XActionLanding,
+  CoordDiagram,
+  ClickIndicatorPreview,
+  UserInputPreview,
 } as MDXComponentsType;
 
 export default function MDXContent({children}: {children: ReactNode}): ReactNode {

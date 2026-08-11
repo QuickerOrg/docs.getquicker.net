@@ -7,7 +7,7 @@ sidebar_position: 60
 quickerDocKey: "xaction/module/sys:getActiveProcessInfo"
 comments: true
 moduleKey: "sys:getActiveProcessInfo"
-docStatus: "migrated-unreviewed"
+docStatus: "reviewed"
 metadataGeneratedAt: "2026-08-03 20:08:03"
 legacyDocId: 2118185
 legacyContentUpdatedAt: "2019-07-15T04:33:57.000Z"
@@ -15,24 +15,44 @@ legacyContentUpdatedAt: "2019-07-15T04:33:57.000Z"
 
 # 获取前台进程信息
 
-获取当前活动窗口进程的信息。
+读取当前活动窗口所属进程的路径、名称和 PID。要按名称查某个程序是否在跑，用 [检查程序已启动/获取进程信息](/v2/xaction/modules/checkprocessexists)。
 
 ## 当前模块定义
 
 <XActionModuleMeta moduleKey="sys:getActiveProcessInfo" />
 
-获取Windows活动窗口所属进程的信息。
+## 概述
 
 <ModuleParamPreview moduleKey="sys:getActiveProcessInfo" />
 
-## 参数
+## 参数说明
 
-### 输出
+**失败后中止动作**：拿不到进程信息时是否停止动作。默认开启。
 
-【程序路径】进程exe文件的完整路径。
+## 输出
 
-【进程名】进程名称，通常为去掉扩展名的exe文件名。比如记事本的进程名为“notepad”。
+- **是否成功**：是否拿到了进程信息。权限不足时可能失败。
+- **程序路径**：进程 exe 的完整路径。
+- **进程名**：通常是去掉 `.exe` 的文件名，如记事本是 `notepad`。
+- **PID**：进程 ID。
 
-【PID】进程ID
+## 限制与排障
 
-【是否成功】是否获取成功。有时候会因为权限原因无法获得进程信息。
+部分系统进程或提权进程会因权限读不到路径。先看 **是否成功**，不要假定路径一定有值。
+
+## 相关链接
+
+<RelatedDocs
+  items={[
+    {
+      href: '/v2/xaction/modules/checkprocessexists',
+      label: '检查程序已启动/获取进程信息',
+      description: '按进程名或 PID 查询是否在运行。',
+    },
+    {
+      href: '/v2/xaction/modules/getwindowtitle',
+      label: '获取窗口信息/查找窗口',
+      description: '同时要标题、句柄、位置时用窗口模块。',
+    },
+  ]}
+/>

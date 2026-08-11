@@ -1,13 +1,13 @@
 ---
 title: "运行或打开"
-description: "运行软件或命令，打开文件、文件夹或网址。效果类似于在Windows\"运行\"对话框中执行命令。"
+description: "启动进程：运行软件或命令，打开文件、文件夹或网址。类似 Win+R。"
 slug: "/v2/xaction/modules/run"
 sidebar_label: "运行或打开"
 sidebar_position: 120
 quickerDocKey: "xaction/module/sys:run"
 comments: true
 moduleKey: "sys:run"
-docStatus: "migrated-unreviewed"
+docStatus: "reviewed"
 metadataGeneratedAt: "2026-08-03 20:08:03"
 legacyDocId: 1530304
 legacyContentUpdatedAt: "2025-01-20T02:30:50.000Z"
@@ -15,7 +15,7 @@ legacyContentUpdatedAt: "2025-01-20T02:30:50.000Z"
 
 # 运行或打开
 
-运行软件或命令，打开文件、文件夹或网址。效果类似于在Windows"运行"对话框中执行命令。
+启动一个 Windows 进程：跑 exe、打开文件或文件夹、打开网址或商店应用 URI。效果接近 Win+R「运行」。
 
 ## 当前模块定义
 
@@ -23,31 +23,18 @@ legacyContentUpdatedAt: "2025-01-20T02:30:50.000Z"
 
 ## 概述
 
-本模块用于启动一个Windows进程，其作用类似于在Windows+R运行对话框中执行命令，可以用于如下场景：
+常见用途：
 
--   打开一个exe程序，并根据需要传入命令行参数
--   打开一个文件
--   打开一个文件夹
--   打开一个网址
--   打开一个UWP软件URI
--   执行windows命令等
-
-**提示！**
-
-【1.32.8 版本】如果您需要激活已有窗口，请将激活窗口快捷键的默认值“false”清掉（此问题将在下一个版本中间修复）：
-
--   点击下拉框展开；
--   选择第一项“输入内容（值或表达式）”
--   清空输入框中的文本内容，或者设置为实际的快捷键内容。
-
-![](./img/run-001-977f296532.png)
-
-## 参数
+- 启动 exe，按需带命令行参数
+- 用关联程序打开文件
+- 打开文件夹
+- 打开网址，或 Windows 商店应用 URI（如 `ms-settings:`）
+- 执行 `cmd`、`ping`、`control` 这类系统命令
 
 <ModuleParamPreview
   moduleKey="sys:run"
   values={{
-    path: '"https://baidu.com"',
+    path: 'notepad.exe',
     setWorkingDir: '1',
     windowStyle: '0',
     runas: 'false',
@@ -55,87 +42,132 @@ legacyContentUpdatedAt: "2025-01-20T02:30:50.000Z"
     waitInputIdle: 'false',
     waitExit: 'false',
     outputEncoding: 'oem',
+    stopIfFail: 'true',
   }}
 />
 
-**路径或命令**：可以为
+可运行的命令和 Win10 URI 可参考论坛：[可以运行的命令](https://getquicker.net/Forum/ViewTopic/172)。只打开网页时，也可以用 [打开网址](/v2/xaction/modules/openurl)。
 
--   要执行的windows命令，如`cmd`、`ping`、`control`（控制面板）等
--   要运行的exe软件的文件名（包含或不包含.exe扩展名均可）（如果文件所在目录已加入到Windows环境变量PATH中），或文件的完整路径。
--   要打开的文件的完整路径（如`E:\Download\技术协议-标准软件许可类.doc`）
--   要打开的网址，如`https://baidu.com`
--   Windows10商店应用的URI，如`ms-settings:`（Windows10设置应用）
--   其他可以在Win+R运行窗口中执行的命令。
+## 参数说明
 
-关于可以运行的命令或WIN10URI，可以参考：[https://getquicker.net/Forum/ViewTopic/172](https://getquicker.net/Forum/ViewTopic/172)
+**路径或命令**：要启动或打开的目标，例如：
 
-可以点击参数输入框右侧的“...”按钮，在菜单中选择已安装的软件、文件或文件夹路径。
+- Windows 命令：`cmd`、`ping`、`control`
+- PATH 里的程序名（带不带 `.exe` 都行），或 exe 的完整路径
+- 文件完整路径，如 `E:\Download\协议.doc`
+- 网址，如 `https://getquicker.net`
+- 商店应用 URI，如 `ms-settings:`
 
-![](./img/run-003-cc89d7eb96.png)
+点输入框右侧 **…** 可以从已安装软件、文件、文件夹里选路径（菜单以当前软件为准）：
 
-**参数**：运行exe程序时传递给程序的命令行参数。参数的格式依赖于所要启动的具体软件。通常，如果参数中需要包含一个可能带有空格的路径，通常可以在路径两段增加英文双引号"来避免空格造成的路径截断问题。
+<ContextMenuPreview
+  openPath={['已安装的软件...']}
+  items={[
+    {label: '已安装的软件...', icon: 'fa:Brands_Windows', tooltip: '选择开始菜单中可以找到的程序'},
+    {label: '文件...', icon: 'fa:Light_File', tooltip: '选择已存在的文件路径'},
+    {label: '文件夹...', icon: 'fa:Light_FolderOpen', tooltip: '选择文件夹路径'},
+    {label: '另存路径...', icon: 'fa:Light_Save', tooltip: '选择文件要保存到的位置'},
+    {type: 'separator'},
+    {label: '窗口信息(拖动选择)...', icon: 'fa:Light_Crosshairs', tooltip: '选择窗口，获取窗口信息'},
+    {label: '屏幕颜色(拖动选择)...', icon: 'fa:Light_EyeDropper', tooltip: '选择指定位置的颜色'},
+    {label: '屏幕坐标(拖动选择)...', icon: 'fa:Light_Location', tooltip: '选择指定位置的坐标'},
+    {type: 'separator'},
+    {label: '选择动作ID...', tooltip: '选择动作并填入动作的ID'},
+    {label: '选择图标...', tooltip: '选择内置的矢量图标名'},
+  ]}
+>
+  <ModuleParamPreview
+    moduleKey="sys:run"
+    scrollBody={false}
+    focusKeys={['path', 'arg']}
+    values={{
+      path: 'notepad.exe',
+      arg: '',
+    }}
+  />
+</ContextMenuPreview>
 
-**以管理员身份运行**：使用管理员身份打开文件或程序。Windows将会显示一个提示框请求确认是否运行。除非必要，请不要以管理员身份运行程序。
+**参数(可选)**：传给 exe 的命令行参数，格式取决于目标程序。路径里可能有空格时，两端加英文双引号，避免被截断。
 
-**激活窗口快捷键**：如果需要激活已有窗口，并且软件本身支持热键激活，可以在这里提供激活该窗口的快捷键。（[模拟按键B格式](/v2/xaction/modules/sendkeys)，可点击输入框右侧的键盘按钮直接在键盘中输入后生成）
+**以管理员身份运行**：会弹出 Windows 的 UAC 确认。非必要不要开。
 
-**如果程序已运行则尝试激活窗口**：如果判断到进程已启动，是否激活已存在的窗口，而不是再开启一个新的程序实例。需要“路径或命令”参数中提供程序exe文件的完整路径（需要根据此信息判断进程名）。
+**激活窗口快捷键**：目标软件若支持热键唤起已有窗口，按 [模拟按键B](/v2/xaction/modules/sendkeys) 的格式填写；可点输入框右侧键盘按钮录入。旧步骤里若误填成 `false` / `true` / `0` / `1`，运行时会当成空（不当热键）。
 
-注意：
+**如果程序已运行则尝试激活窗口**：已有同名进程时先试着激活窗口，而不是再开一份。**路径或命令** 要写成 exe 的完整路径，才能靠它判断进程。依赖目标软件；多进程、一进程多窗口、缩到托盘时通常不行。
 
--   此功能依赖于目标软件的支持，需实际测试。
--   对多进程、一个进程多个窗口、窗口最小化到系统托盘等情况，通常无法使用。
+**备用路径**：同一动作在不同电脑上 exe 路径不一样时，每行写一条备用完整路径。
 
-**备用路径**：文件在多个电脑上路径不同时，使用备用路径填写其他电脑上的软件应用程序文件的完整路径。可以多个，每个一行。
+**工作目录**：进程的当前目录。留空或 `0` 用系统默认；`1` 用 exe 所在目录（此时路径必须是完整路径）；也可以写成具体目录。例如执行 `cmd` 时填 `d:\`，窗口会进到该盘。
 
-**工作目录**：打开进程的工作目录，需要时填写。如执行cmd命令时，如果工作目录设置为“d:”，则命令行窗口打开后自动进入到此目录中。
+**窗口风格**：普通、隐藏、最小化、最大化。是否生效取决于目标软件。路径若是 `.lnk` 快捷方式，此参数无效，请直接写 exe 完整路径。
 
-参数值：留空或输入0时由系统默认，输入1时使用exe程序所在目录（此时路径参数需要提供文件的完整路径），或指定某个具体的路径。
+**等待启动完成**：等进程初始化完、能接受输入后再继续。只对部分软件有效。要拿主窗口句柄或标题时，常常需要打开它。
 
-**窗口风格**：运行软件时使用的窗口风格（普通、隐藏、最小化、最大化）。
+**等待进程结束**：等进程退出后再跑后面的步骤。
 
--   此功能依赖于目标软件的支持。对特定的软件或程序，此参数不一定有效。
--   注：在“路径”中使用软件的快捷方式（lnk文件）时此参数不会生效，请直接指定exe文件的完整路径。
+**用户名** / **密码**：需要用本机另一个 Windows 账号启动时再填。
 
-**等待启动完成**：等待软件初始化后，开始接受用户输入。仅对某些软件有效。
+**控制台输出编码**：控制台输出乱码时，在 `OEM` 和 `UTF8` 之间换一下。
 
-**等待进程结束**：是否等待进程关闭以后再继续运行后续的动作步骤。
+**环境变量**：给进程额外环境变量。每行 `变量名=值`，例如 `CONFIG_FILE=d:\config.json`。
 
-**用户名/密码**：特定情况下，当需要使用（模拟）当前电脑的其他Windows账号启动软件时，可以输入对应的Windows账号用户名，密码。
-
-**控制台编码输出**：如果所获取的控制台输出内容有乱码时，可尝试修改此值。
-
-**环境变量**：为应用程序设置特定的环境变量。
+**失败后停止**：启动失败时是否中止动作。默认开启。
 
 ## 输出
 
-【PID】进程ID。
+- **是否成功**：是否启动成功。
+- **PID**：进程 ID。
+- **主窗口句柄** / **主窗口标题**：不是每个进程都有主窗口；拿不到时打开 **等待启动完成** 再试。
+- **控制台输出**：仅控制台程序必要时再用。会自动等待进程结束；stdout 为空时改出 stderr。
+- **stdout输出** / **stderr输出**：分别捕获，同样会等待进程结束。
+- **退出代码**：进程 ExitCode。输出此项时会自动等待进程结束。
 
-【主窗口句柄】进程主窗口的句柄。不是所有进程都有主窗口。有的程序需要开启“等待启动完成”选项才能获得窗口信息。
-
-【主窗口标题】进程主窗口的标题。不是所有进程都有主窗口。有的程序需要开启“等待启动完成”选项才能获得窗口信息。
-
-【控制台输出】仅必要时使用，用于获取程序的控制台输出内容。
-
-【stdout输出】捕获控制台stdout输出。
-
-【stderr输出】捕获控制台stderr输出。
-
-【退出代码】进程的ExitCode，输出此结果时，会自动等待进程结束。
+不要随便接控制台输出或退出代码，否则动作会卡在等进程退出。
 
 ## 示例动作
 
--   [示例：运行或打开](https://getquicker.net/sharedaction?code=abf666ed-08bc-46a9-6d8a-08d6bfa4ff29)
+<StepProgramView example="abf666ed-08bc-46a9-6d8a-08d6bfa4ff29" />
 
-## 注意事项
+<ShareLinkCard
+  code="abf666ed-08bc-46a9-6d8a-08d6bfa4ff29"
+  title="示例：运行或打开"
+  description="演示“运行或打开”模块"
+  author="CL"
+/>
 
--   除非必要，请勿输出控制台输出、退出代码等信息。
+依次演示：记事本、打开 `C:\Program Files`、打开论坛帖、用记事本打开 hosts。
+
+## 限制与排障
+
+- 激活已有窗口、窗口风格都依赖目标软件，先实机试。
+- 用 `.lnk` 时窗口风格不生效。
+- 接了控制台输出或退出代码，会一直等到进程结束。
+- 管理员运行会出 UAC，无人值守动作容易卡在确认框。
+
+## 相关链接
+
+<RelatedDocs
+  items={[
+    {
+      href: '/v2/xaction/modules/openurl',
+      label: '打开网址',
+      description: '只打开网页时用这个更直接。',
+    },
+    {
+      href: '/v2/xaction/modules/sendkeys',
+      label: '模拟按键B',
+      description: '激活窗口快捷键的写法。',
+    },
+    {
+      href: '/v2/xaction/modules/runscript',
+      label: '运行脚本',
+      description: '跑一段脚本而不是启动外部程序。',
+    },
+  ]}
+/>
 
 ## 更新历史
 
--   v1.0.2
-
--   增加“等待启动完成”参数，以及“PID”、“主窗口句柄”、“主窗口标题”输出。
-
--   1.5.7  增加“失败后停止”参数。
--   20250120 完善文档。
+- v1.0.2：增加「等待启动完成」，以及 PID、主窗口句柄、主窗口标题。
+- 1.5.7：增加「失败后停止」。
+- 20250120：完善文档。

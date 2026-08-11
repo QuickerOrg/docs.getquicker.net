@@ -1,0 +1,43 @@
+{
+  "code": "ff3309da-7c30-4655-6b7d-08da4f3f8574",
+  "title": "参数传递Rhino命令",
+  "description": "从参数传递要执行的命令，方便在轮盘等触发方式中使用",
+  "author": "CL",
+  "revision": 0,
+  "source": "https://getquicker.net/sharedaction?code=ff3309da-7c30-4655-6b7d-08da4f3f8574",
+  "pulledAt": "2026-08-11T21:27:56.232Z",
+  "variables": [
+    {
+      "name": "text",
+      "type": "Text",
+      "remark": "默认的文本变量"
+    }
+  ],
+  "steps": [
+    {
+      "key": "sys:simpleIf",
+      "inputs": {
+        "condition": "$= string.IsNullOrEmpty({quicker_in_param})"
+      },
+      "ifSteps": [
+        {
+          "key": "sys:stop",
+          "inputs": {
+            "method": "default",
+            "isError": "0",
+            "showMessage": "请运行动作并将CAD命令作为参数传入"
+          }
+        }
+      ]
+    },
+    {
+      "key": "sys:rhinocontrol",
+      "inputs": {
+        "operation": "RunScript",
+        "command": "{quicker_in_param}",
+        "waitResp": "true",
+        "stopIfFail": "1"
+      }
+    }
+  ]
+}

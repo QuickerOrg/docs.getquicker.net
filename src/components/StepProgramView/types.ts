@@ -25,6 +25,13 @@ export type StepCatalogRunner = {
   /** Param key → Chinese display name (from StepRunner / xaction catalog). */
   inputLabels?: Record<string, string>;
   outputLabels?: Record<string, string>;
+  /** Param key → value → enum display name (for GetSummary). */
+  inputEnums?: Record<string, Record<string, string>>;
+  /**
+   * `[StepSummary]` parts from the runner Definition.cs.
+   * Param keys (optional `!` / `:n`) mixed with literal strings.
+   */
+  summaryParts?: string[];
 };
 
 /**
@@ -54,3 +61,11 @@ export type StepRowPresentation = {
 };
 
 export type StepProgramDensity = "docs" | "compact";
+
+/** One row in the optional side variable list (Headless VariableList, docs-narrow). */
+export type ProgramVar = {
+  name: string;
+  /** Catalog type, e.g. Text / Boolean / Image. */
+  type?: string;
+  remark?: string;
+};

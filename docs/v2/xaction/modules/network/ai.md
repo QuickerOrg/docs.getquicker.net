@@ -7,7 +7,7 @@ sidebar_position: 90
 quickerDocKey: "xaction/module/sys:ai"
 comments: true
 moduleKey: "sys:ai"
-docStatus: "migrated-unreviewed"
+docStatus: "reviewed"
 metadataGeneratedAt: "2026-08-03 20:08:03"
 legacyDocId: 117580978
 legacyContentUpdatedAt: "2025-11-04T00:24:46.000Z"
@@ -15,38 +15,22 @@ legacyContentUpdatedAt: "2025-11-04T00:24:46.000Z"
 
 # AI 调用
 
-调用第三方AI服务
+调用 OpenAI 兼容的 Chat / Completions 接口。非兼容接口请用 [HTTP请求](/v2/xaction/modules/http) 自己处理。
 
 ## 当前模块定义
 
 <XActionModuleMeta moduleKey="sys:ai" />
 
-注：
+## 概述
 
--   使用本模块需要您具备一定的网络条件和服务商账号。
--   数据将会发送到国外服务器，请勿发送敏感或隐私信息、法律法规规定不可传输到国外的信息。
--   请勿使用此功能用于可能非法的活动。
--   每种模型和服务端点之间有一定联系，请参考官方文档了解端点可用模型。
--   每个请求的提示和响应token数量受到模型限制。
--   请详细阅读官方文档以了解各方面知识和信息。
+动作里多半是一次性任务，不是连续聊天。常见写法：
 
-## 基本原理
+- **系统提示词** 说明角色和要求。
+- **提示词** 用插值拼出完整指令和待处理内容。
 
-Quicker动作中主要用来处理一些专用的场景，而不是连续的会话。
+下面是中英互译：系统提示说明「有中文就译成英文，否则译成中文，只返回译文」；提示词后面再接 `{text}`（来自获取选中文本或用户输入）。
 
-一般的做法是：
-
--   在系统提示中，告诉AI需要扮演的角色。
--   使用文本插值等方式拼接出完整的“提示”，告诉AI实际要生成的内容。 这里面包含指令要求和实际待处理的内容。
-
-下面是一个中英互译的翻译动作。提示包含两个部分：
-
--   `如果下面的文字包含中文，则将其翻译成英文（只返回翻译结果）；如果下面的文字中不包含中文，则将这些内容翻译成中文（只返回翻译结果）：` 告知AI，后面的内容是要翻译的实际内容，翻译的方法是根据内容里是否包含中文。
--   通过插值将`{text}`文本变量的内容放在后面。这部分可能是通过`获取选中文本`或`用户输入`方式得到的。
-
-![](./img/ai-001-c6658156b4.png)
-
-## 参数
+需要自备网络和服务商账号。数据会发到服务商（可能在境外），不要发送敏感、隐私或依法不得出境的信息，也不要用于违法用途。模型和端点的对应关系、token 上限以官方文档为准。
 
 <ModuleParamPreview
   moduleKey="sys:ai"
@@ -68,16 +52,15 @@ Quicker动作中主要用来处理一些专用的场景，而不是连续的会�
   outputVars={{result: 'result'}}
 />
 
-【端点】目前支持Chat或Completions。
+## 参数说明
 
-【模型】模型id。
+**接口端点**：Chat 或 Completions。
 
-【系统提示】用于告知AI所扮演的角色以及生成内容时的要求。
+**模型**：模型 ID。是否适用于当前端点，看官方文档。
 
-【提示】用户向AI给出的完整提示文字（提示词）。AI将根据这些提示生成内容。自1.42.21版本起，支持两种形式的内容：
+**系统提示词**：仅 Chat。角色和要求，例如「你是一个专业的翻译助手」。
 
--   纯文本提示词。
--   通过json数组，提供兼容gpt-4-vision的消息内容。示例：
+**提示词**：仅 Chat / Completions。完整用户提示。1.42.21+ 支持纯文本，或兼容 gpt-4-vision 的 JSON 数组。不要填完整请求体。
 
 <ModuleParamPreview
   moduleKey="sys:ai"
@@ -99,44 +82,35 @@ Quicker动作中主要用来处理一些专用的场景，而不是连续的会�
   }}
 />
 
-注意：这里不应当填写完整的请求体json。
+**最大响应Token数**：大约 1 个汉字或 2/3 个英文单词。建议 `0`，太短会被截断。提示 token + 本项不能超过模型上限。
 
-【最大响应Token数】token大约等于1个汉字或2/3个英文单词。建议使用0，太短时输出会被截断。每个模型有自己的提示和响应总共token数限制，较新的模型通常为4000。提示内容的token数+最大响应token数不能超过模型限制，否则会失败。
+**温度**：0～1。越小越稳，越大越发散。默认 `0.2`。
 
-【温度】Temperature，0-1之间的数值。值越小，输出越稳定，倾向于返回置信度更高的回答。值越大，输出越随机，会更发散（创造性）。
+**APIKey**：服务商密钥，注意保密。
 
-【APIKey】从服务商获取的API秘钥。注意此信息为保密信息，
+**Orgnization**：可选，APIKey 对应的组织 ID。
 
-【Orgnization】APIKey对应的组织ID。可选。
+**top_p**：见官方文档。仅 Chat / Completions。
 
-【top\_p】请参考官方文档。
+**n**：生成几条结果，会加倍耗 token。模块只输出一条，其余要从原始响应里解析。
 
-【n】输出几个结果，将会加倍耗费token。模块只能输出一个结果，其它结果需要从原始响应中解析。
+**使用流式输出**：边收边写到文本窗口。此时拿不到原始响应和 token 用量。
 
-【使用流式输出】立即看到输出的一种查询方式，可将结果连续输出到文本窗口。此方式下无法获得原始响应内容、耗费的token数等信息。
+**流式输出窗口标识**：事先用非等待模式打开的文本窗口标识。填 `INPUT_TEXT` 则模拟输入到当前窗口（一切走焦点就停）。
 
-【流式输出窗口标识】使用流式输出时，用于指定前面步骤打开的文本窗口。设置为INPUT\_TEXT，可将内容直接模拟输入到活动窗口（窗口切换时将停止输出）。
+**停止符stop**：遇到这些内容就停。[官方说明](https://help.openai.com/en/articles/5072263-how-do-i-use-stop-sequences)。留空时用推荐默认 `<|endoftext|>`。接第三方接口时务必设置（或用 1.38.35+），建议 `<|endoftext|>`。可用 `\r` `\n` `\t`；多行表示多个停止符。
 
-【停止符stop】[官方参考文档](https://help.openai.com/en/articles/5072263-how-do-i-use-stop-sequences)。遇到此内容时，接口停止输出更多结果。留空，使用推荐默认值`<|endoftext|>`或自定义的内容。在使用第三方接口时，请务必设置此值（或使用1.38.35以上版本），建议使用`<|endoftext|>`。
+**API网址**：自定义或中转。
 
-【API网址】自定义API网址，用于使用第三方服务中转请求时使用。
+- Azure：`https://YOUR_RESOURCE_NAME.openai.azure.com/openai/deployments/YOUR_DEPLOYMENT_NAME/{1}?api-version=2023-05-15`。`{1}` 不要改，是接口名占位符。
+- 其它中转：`https://api网址/{1}`。
+- 1.44.32+ 也可直接写以 `chat/completions` 结尾的完整网址。其它结尾可在前面加 `!` 强制使用，如 `!https://myserver/api/chat`。
+- 硅基流动：`https://api.siliconflow.cn/v1/{1}`
+- Ollama 本机：`http://127.0.0.1:11434/v1/{1}`
 
--   使用Azrue的OpenAI服务时，API网址可以设置为：`https://YOUR_RESOURCE_NAME.openai.azure.com/openai/deployments/YOUR_DEPLOYMENT_NAME/{1}?api-version=2023-05-15`
--   `YOUR_RESOURCE_NAME`、`YOUR_DEPLOYMENT_NAME` 替换为实际的值。`{1}`作为接口名称的占位符保持不动。`api-version`的值可根据需要修改。
--   使用第三方网址时，可以按如下格式：`https://api网址/{1}` ，其中`{1}`作为接口名称（如`chat/completions`）的占位符保持不动。
+**超时秒数**：默认 `120`。
 
--   1.44.32+版本，也可以直接指定以`chat/completions`结尾的完整网址。对于非`chat/completions`结尾的完整网址，可以在网址前增加`!`强制使用此网址，如`!https://myserver/api/chat`。
-
--   示例：
-
--   硅基流动的接口网址为`https://api.siliconflow.cn/v1/{1}`
--   Ollama，本机地址为`http://127.0.0.1:11434/v1/{1}`, 局域网其它服务器，请替换对应的ip地址和端口号。
-
-【超时秒数】超时时间。
-
-【响应格式】文本或`json_object`。json\_object用于指示输出内容为json格式，通常需要结合使用合适的提示词，并且要避免超过token限制被中间截止。请参考OpenAI文档了解此参数的用途。
-
-自1.43.55版本开始支持通过json文本指定自定义的内容，如json\_schema。例如：
+**响应格式**：仅 Chat。留空为文本，或 `json_object`。1.43.55+ 也可填完整 `response_format` JSON（如 json_schema）。输出 JSON 时提示词要配合，并避免超 token 被截断。
 
 ```json
 {
@@ -168,23 +142,49 @@ Quicker动作中主要用来处理一些专用的场景，而不是连续的会�
 }
 ```
 
-【附加参数】用于为第三方接口提供额外的参数。可传入词典值，json，或匿名对象，如：
+**附加参数**：仅 Chat。给第三方接口加字段。可传词典、JSON 或匿名对象：`$= new { 参数名 = "参数值" }`。
 
-```csharp
-$= new {参数名 = "参数值"};
-```
+**强制使用代理**：即使软件设置未开代理，本步骤也走代理。
+
+**会话ID** / **历史消息**：见下文。仅 Chat。
+
+**失败后停止**：失败是否中止动作。默认开启。
+
+## 输出
+
+- **是否成功**
+- **生成结果**
+- **推理内容**：推理模型的 `reasoning_content`。旧稿未单独列出。
+- **原始响应内容**
+- **提示Token数** / **响应Token数** / **总Token数**
+- **结束原因**
+- **历史消息**：仅 Chat。消息对象列表；赋给文本变量时会变成 JSON。
+
+流式输出时，原始响应和 token 相关输出不可用。
 
 ## 流式响应
 
-流式输出目前无法检测错误。
+流式目前无法检测错误。两种用法：
 
-流式输出有两种方式：
-
-#### 一、通过文本窗口显示
+### 写到文本窗口
 
 ![](./img/ai-004-979cc8b0ca.gif)
 
-实现方法：
+先开一个非等待的文本窗口，设好标识（建议 `=`，等于动作 ID，避免多个动作抢同一个窗）：
+
+<ModuleParamPreview
+  moduleKey="sys:showText"
+  focusKeys={['type', 'text', 'autoCloseKey']}
+  values={{type: 'NO_WAIT', text: '翻译结果：', autoCloseKey: '='}}
+/>
+
+再在 AI 调用里打开流式，并填同一个窗口标识：
+
+<ModuleParamPreview
+  moduleKey="sys:ai"
+  focusKeys={['stream', 'streamTo']}
+  values={{stream: 'true', streamTo: '='}}
+/>
 
 <StepProgramView
   data={{
@@ -198,57 +198,96 @@ $= new {参数名 = "参数值"};
   }}
 />
 
-1）事先创建一个以非等待模式显示的文本窗口，设置窗口标识（建议使用‘=’作为窗口标识，相当于动作ID，以避免动作之间冲突）。
+新内容会追加到窗口。1.43.61+ 若窗口开了 Markdown 高亮，`<think>` 推理过程会显示为灰色。
 
-![](./img/ai-006-b5ae050753.png)
+### 模拟输入到当前窗口
 
-2）在AI调用模块中，启用流式输出和输出的文本窗口标识。
-
-![](./img/ai-007-569f56bf1c.png)
-
-这样当收到新的内容后，会将内容追加到窗口中。
-
-#### 二、模拟输入到当前活动窗口
-
-将“流式输出窗口标识”设置为`INPUT_TEXT`。此时会将内容通过模拟输入的方式发送到当前焦点窗口。 如果切换了焦点窗口，则输出会停止。
+**流式输出窗口标识** 填 `INPUT_TEXT`。一切走焦点就停止输出。
 
 ## 历史会话
 
-从1.37.17版本开始支持历史消息自动发送。
+1.37.17+ 支持自动带上历史消息。
 
-![](./img/ai-008-d6ab3f8e4e.png)
+<ModuleParamPreview
+  moduleKey="sys:ai"
+  focusKeys={['sessionId', 'historyMessages']}
+  values={{endpoint: 'chat'}}
+/>
 
-可以有2种使用方式：
+**1）自己维护历史**：把 JSON 数组传给 **历史消息**，不要填会话 ID，也不会回写历史。
 
-**1）每次传入历史消息的内容，格式为json数组。**
+**2）交给 Quicker**：数据在 `Quicker数据文件夹\AiLogs`。
 
-此时不需要设定会话ID，也不会输出历史消息的内容。需要开发者自行维护历史消息记录。
+- **会话ID**：每次会话前用 [生成Guid](/v2/xaction/modules/newguid) 生成，必须是 GUID 格式。
+- **历史消息**：回传条数。总 token 有上限，太长要丢掉更早的消息。
 
-**2）由Quicker自动保存和回传历史消息。**
+建议用会话 ID 当文本窗口标识，避免同一动作连跑多次抢窗。
 
-数据文件保存在`Quicker数据文件夹\AiLogs`目录中。
+<StepProgramView example="fb351711-0941-4816-d9b7-08db2ba80230" />
 
-此时需设置这些参数：
-
-【会话ID】每次会话前，使用“生成GUID”模块生成一个全球唯一ID作为会话ID。（只能使用GUID格式的会话ID）
-
-【历史消息】参数中设定回传的历史消息个数。因为每次调用来回总token数量有限制，会话太长时需要抛弃更早的消息。
-
-输出参数【历史消息】，返回历史消息对象列表，输出给文本变量时，自动转换为json格式。
-
-建议使用会话ID作为显示会话内容的文本窗口标识，避免一个动作多次运行造成窗口冲突问题。
-
-示例动作：[AI对话测试](https://getquicker.net/Sharedaction?code=fb351711-0941-4816-d9b7-08db2ba80230)。
+<ShareLinkCard
+  code="fb351711-0941-4816-d9b7-08db2ba80230"
+  title="AI对话测试"
+  description="测试历史消息自动回传"
+  author="CL"
+/>
 
 ## 示例动作
 
--   [AI写诗](https://getquicker.net/Sharedaction?code=2ee54fa9-ad5b-4273-6f9b-08db22290442)
--   [AI中英互译](https://getquicker.net/Sharedaction?code=531dc01c-4b59-42ef-6fbc-08db22290442)
--   [AI对话测试](https://getquicker.net/Sharedaction?code=fb351711-0941-4816-d9b7-08db2ba80230)
+<ShareLinkCard
+  items={[
+    {
+      code: '2ee54fa9-ad5b-4273-6f9b-08db22290442',
+      title: 'AI写诗',
+      description: '按提示词写诗并输出到当前窗口',
+      author: 'CL',
+    },
+    {
+      code: '531dc01c-4b59-42ef-6fbc-08db22290442',
+      title: 'AI中英互译',
+      description: '按是否含中文自动互译',
+      author: 'CL',
+    },
+  ]}
+/>
+
+## 限制与排障
+
+- 密钥、组织 ID 不要写进分享动作。
+- 第三方中转必须带 `{1}` 或按 1.44.32+ 规则写完整网址。
+- 流式看不到错误和 token；调试先关掉流式。
+- 会话 ID 必须是 GUID，否则自动存历史会失败。
+
+## 相关链接
+
+<RelatedDocs
+  items={[
+    {
+      href: '/v2/xaction/modules/http',
+      label: 'HTTP请求',
+      description: '非 OpenAI 兼容接口，自己处理 SSE。',
+    },
+    {
+      href: '/v2/xaction/modules/showtext',
+      label: '文本窗口',
+      description: '流式输出要先开一个非等待窗口。',
+    },
+    {
+      href: '/v2/xaction/modules/newguid',
+      label: '生成Guid',
+      description: '给自动历史会话生成会话 ID。',
+    },
+    {
+      href: '/v2/xaction/modules/translation',
+      label: '机器翻译/词典',
+      description: '按厂商接口翻译，不必自己写提示词。',
+    },
+  ]}
+/>
 
 ## 更新历史
 
--   20230714 Fix Azure接口地址错误。
--   20240327 增加响应格式和附加参数的说明。增加提示词支持gpt-4-vision请求格式。
--   20241219 增加自定义相应格式的说明。
--   20250307 版本1.43.61版本支持输出reasoning\_content推理过程。当文本窗口设置为Markdown语法高亮时，灰色显示&lt;think&gt;内容。
+- 20230714 修复 Azure 接口地址。
+- 20240327 增加响应格式、附加参数；提示词支持 gpt-4-vision。
+- 20241219 增加自定义响应格式说明。
+- 20250307 1.43.61 输出 `reasoning_content`；Markdown 窗口灰色显示 `<think>`。

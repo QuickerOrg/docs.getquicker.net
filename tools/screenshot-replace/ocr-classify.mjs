@@ -35,7 +35,7 @@ const repoRoot = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..'
 const DEFAULT_OCR_ROOT = 'D:\\source\\repos\\quicker\\quickerorg\\qk-ocr-lite';
 const IMAGE_EXT = new Set(['.png', '.jpg', '.jpeg', '.bmp', '.webp']);
 
-/** @typedef {'step-param'|'var-def'|'steps'|'editor-chrome'|'runtime-dialog'|'runtime-toast'|'choice-list'|'context-menu'|'diagram'|'decorative'|'unknown'} Kind */
+/** @typedef {'step-param'|'var-def'|'steps'|'editor-chrome'|'runtime-dialog'|'runtime-toast'|'choice-list'|'user-input'|'context-menu'|'diagram'|'decorative'|'unknown'} Kind */
 /** @typedef {'replace'|'keep'|'review'} Action */
 
 /**
@@ -71,6 +71,10 @@ const RULES = [
   {kind: 'choice-list', weight: 2, re: /确定\s*\(\s*S\s*\)/i, cue: '确定(S)'},
   {kind: 'choice-list', weight: 1, re: /取消\s*\(\s*C\s*\)/i, cue: '取消(C)'},
 
+  {kind: 'user-input', weight: 5, re: /Enter\s*快速确认/, cue: 'Enter快速确认'},
+  {kind: 'user-input', weight: 4, re: /确认\s*\(\s*S\s*\)/i, cue: '确认(S)'},
+  {kind: 'user-input', weight: 2, re: /帮助按钮/, cue: '帮助按钮'},
+
   {kind: 'context-menu', weight: 2, re: /识别类型|连续截图|悬浮此动作|调试运行/, cue: '菜单项'},
   {kind: 'context-menu', weight: 1, re: /通用文字|高精度文字|营业执照/, cue: '识别子菜单'},
 
@@ -94,6 +98,7 @@ const KIND_MAP = {
   'runtime-dialog': {component: 'MsgBoxPreview', action: 'replace'},
   'runtime-toast': {component: 'NotifyToastPreview', action: 'replace'},
   'choice-list': {component: 'ChoiceListPreview', action: 'replace'},
+  'user-input': {component: 'UserInputPreview', action: 'replace'},
   'context-menu': {component: 'ContextMenuPreview', action: 'replace'},
   diagram: {component: null, action: 'keep'},
   decorative: {component: null, action: 'keep'},
@@ -244,10 +249,20 @@ function classifyText(fullText, blockCount) {
   if (
     (scores['choice-list'] ?? 0) >= 4 &&
     (scores['step-param'] ?? 0) < 3 &&
+    (scores['user-input'] ?? 0) < 4 &&
     /请选择/.test(fullText)
   ) {
     kind = 'choice-list';
     top = scores['choice-list'];
+  }
+
+  // User-input window: 确认(S) + Enter tip, not a numbered choice list
+  if (
+    (scores['user-input'] ?? 0) >= 4 &&
+    (scores['step-param'] ?? 0) < 3
+  ) {
+    kind = 'user-input';
+    top = scores['user-input'];
   }
 
   // Runtime dialog without step-param chrome

@@ -1,13 +1,13 @@
 ---
 title: "文本处理"
-description: "各种文本处理功能"
+description: "对一段文本做截取、编解码、排序、补齐等处理。"
 slug: "/v2/xaction/modules/stringprocess"
 sidebar_label: "文本处理"
 sidebar_position: 70
 quickerDocKey: "xaction/module/sys:stringProcess"
 comments: true
 moduleKey: "sys:stringProcess"
-docStatus: "migrated-unreviewed"
+docStatus: "reviewed"
 metadataGeneratedAt: "2026-08-03 20:08:03"
 legacyDocId: 2114367
 legacyContentUpdatedAt: "2025-06-10T03:28:24.000Z"
@@ -15,208 +15,128 @@ legacyContentUpdatedAt: "2025-06-10T03:28:24.000Z"
 
 # 文本处理
 
-各种文本处理功能
+对一段文本做一种处理并输出结果。只要替换指定内容，用 [替换文本](/v2/xaction/modules/strreplace)。
 
 ## 当前模块定义
 
 <XActionModuleMeta moduleKey="sys:stringProcess" />
 
-对文本内容实施某种处理，输出处理的结果。
+## 概述
+
+先选 **处理**，再按类型填写附加参数。点开下拉可看当前全部选项。
 
 <ModuleParamPreview moduleKey="sys:stringProcess" />
 
-## 参数
+## 参数说明
 
-输入
+**待处理内容**：原文。
 
-【待处理内容】需要处理的文本内容。
+**处理**：要做哪一种。下面按类型说明；名称与下拉一致。
 
-【处理】进行哪种处理。支持的选项有：
+**失败后停止**：处理失败是否中止动作。默认开启。
 
-**转大写**
+### 大小写与翻转
 
-将英文字母转换为大写，如：`abc`\=&gt;`ABC`
+| 处理 | 说明 |
+| --- | --- |
+| 英文转大写 / 英文转小写 | `abc` ↔ `ABC` |
+| 前后反转 | `ABC` → `CBA` |
+| 首字母大写 | 每个单词首字母大写 |
+| 组合词拆分成句子(thisIsChina=>this Is China) | 驼峰拆成词，方便搜索或翻译 |
 
-**转小写**
+### 截取、插入、删除、补齐
 
-将英文字母转换为小写，如：`ABC`\=&gt; `abc`
+这些项会显示 **开始位置**、**长度**、**内容**、**总宽度**、**填充字符**（按处理类型）。
 
-**前后反转**
+**开始位置**：从 0 计；负数表示从末尾往前。
 
-将文本串前后倒转，`ABC`\=&gt;`CBA`
+**长度**：截取时 `0` 表示一直到末尾；负数表示截到结束前若干字符。移除时是要删的个数。
 
-**截取**
+**内容**：插入或追加的文字。追加也可用表达式 `$={文本1} + "追加内容"`。
 
-取文本串中的一部分。参数：
-
-【开始位置】从哪个位置开始截取。如果是0或正数，表示从前往后数第几个字符（以0为开始序号）；如果为负数，则表示从后向前数第几个字符。
-
-【长度】要截取内容的长度。如果为大于0，表示截取指定的长度；如果为0，则截取从开始位置到末尾的所有内容。
-
-**去除前面空白字符**
-
-去除文本串前端的不可见字符，如空格和tab。（不包括零宽字符）；
-
-**去除后面空白字符**
-
-去除文本串末尾的不可见字符，如空格和tab。（不包括零宽字符）；
-
-**去除前后空白字符**
-
-去除文本串两端的不可见字符，如空格和tab。（不包括零宽字符）；
-
-**URL编码**
-
-**URL解码**
-
-**Html编码**
-
-**Html解码**
-
-**组合词拆分成句子(thisIsChina=&gt;this Is China)**
-
-将驼峰格式的合成词拆分成句子，通常用于将程序代码中的变量名、函数名拆分后搜索或翻译。
-
-**Base64编码**
-
-**Base64解码**
-
-**去除空行**
-
-滤除多行文本中不包含可见字符的行；
-
-**合并多个空行**
-
-将多个空行合并为1个，用于整理程序代码；
-
-**排序多行A-Z**
-
-将多行文字按字母顺序排序；
-
-**排序多行Z-A**
-
-将多行文字按字母顺序倒序排序；
-
-**翻转多行顺序**
-
-将多行文字的各行顺序倒转；
-
-**首字母大写**
-
-将句子中的每个单词修改为首字母大写；
-
-**格式化JSON**
-
-将json数据格式化，请确保输入的内容为合法的json数据；
-
-**计算MD5哈希**
-
-**计算SHA256哈希**
-
-**计算SHA1哈希**
-
-计算文本内容的hash值。
-
-**金额数字转换为大写**
-
-将数字金额转换为大写格式；
-
-如：`1234`处理后的结果为：`壹仟贰佰叁拾肆元`
-
-**转义文本为合法Json值**
-
-将一段文本转换为合法的json字段值（将里面的特殊字符进行转义，避免拼接的json内容出现格式混乱）；
-
-**解码Unicode字串(\\uXXXX转普通字符)**
-
-如`\u65b9\u6b63\u5c0f`得到的结果为`方正小`
-
-**转换编码**
-
-转换文本的编码，通常用于处理网络返回数据；
+**总宽度** / **填充字符**：左右补齐用，默认空格。
 
 <ModuleParamPreview
   moduleKey="sys:stringProcess"
-  focusKeys={['data', 'method', 'srcEncoding', 'dstEncoding', 'output']}
-  values={{data: '一万二千三百四十五点四五', method: 'convertEncoding', srcEncoding: 'utf-8', dstEncoding: 'gbk'}}
-  outputVars={{output: 'output'}}
-/>
-
-**中文转数字**
-
-将中文（金额）数字转换为阿拉伯数字。
-
-如：`一万二千三百四十五点四五`处理后的结果为：`12345.45`
-
-**数字转中文**
-
-将金额数字转换为中文。
-
-如：`12345.45` 或 `12,345.45` 处理后的结果为：`一万二千三百四十五点四五`
-
-**替换环境变量**
-
-将文本内容（通常是路径）中的环境变量替换为对应的值。
-
-如：`%USERPROFILE%\AppData`处理后的结果为：`C:\Users\用户名\AppData`
-
-**从左侧补齐长度**
-
-从文本内容的左侧添加指定的字符，从而让文本总长度不少于指定的数值。
-
-<ModuleParamPreview
-  moduleKey="sys:stringProcess"
-  focusKeys={['data', 'method', 'totalWidth', 'paddingChar', 'output']}
+  focusKeys={['data', 'method', 'start', 'value', 'length', 'totalWidth', 'paddingChar']}
   values={{data: 'abc', method: 'padLeft', totalWidth: '5', paddingChar: '*'}}
-  outputVars={{output: 'output'}}
 />
 
-如：将`abc`从左侧使用字符`*`补齐长度为5，则得到的结果为`**abc`
+例如：`aaa` 在位置 2 插入 `bb` → `aabba`；`abcdefg` 从 `-2` 移除长度 `2` → `abcde`；`abc` 左侧用 `*` 补到 5 → `**abc`。
 
-**从右侧补齐长度**
+### 空白与多行
 
-从文本内容的右侧添加指定的字符，从而让文本总长度不少于指定的数值。
+| 处理 | 说明 |
+| --- | --- |
+| 去除前面 / 后面 / 前后空白字符 | 去空格和 Tab，不含零宽字符 |
+| 移除零宽字符 | 旧稿未写 |
+| 去除空行 | 丢掉没有可见字符的行 |
+| 合并多个空行 | 连续空行收成 1 行 |
+| 排序多行A-Z / 排序多行Z-A | 按字母序 |
+| 翻转多行顺序 | 整行倒序 |
 
-**插入内容**
+### 编解码与哈希
 
-在文本的指定位置插入内容。
+| 处理 | 说明 |
+| --- | --- |
+| URL编码 / URL解码 (+解码为空格) | 解码时 `+` 变空格 |
+| URL数据解码 (保留+号) | 旧稿未写 |
+| Html编码 / Html解码 | |
+| HTML转纯文本 | 旧稿未写 |
+| Base64编码 / Base64解码 | |
+| 计算MD5 / SHA1 / SHA256哈希 | |
+| 转义文本为合法Json值 | 避免拼进 JSON 时格式乱掉 |
+| 格式化JSON | 输入必须是合法 JSON |
+| 解码Unicode字串(\\uXXXX转普通字符) | `\u65b9\u6b63\u5c0f` → `方正小` |
+| 转换编码 | 显示 **编码**、**目标编码**，常用于网络返回值 |
 
 <ModuleParamPreview
   moduleKey="sys:stringProcess"
-  focusKeys={['data', 'method', 'start', 'value', 'output']}
-  values={{data: 'aaa', method: 'insert', start: '2', value: 'bb'}}
-  outputVars={{output: 'output'}}
+  focusKeys={['data', 'method', 'srcEncoding', 'dstEncoding']}
+  values={{method: 'convertEncoding', srcEncoding: 'utf-8', dstEncoding: 'gbk'}}
 />
 
-【开始位置】要插入内容的位置，从0开始。如果是负数，表示从结尾向前的字符序号。
+### 中文数字与环境变量
 
-【内容】要插入的文本。
+| 处理 | 例子 |
+| --- | --- |
+| 金额数字转换为大写 | `1234` → `壹仟贰佰叁拾肆元` |
+| 中文转数字 | `一万二千三百四十五点四五` → `12345.45` |
+| 数字转中文 | `12345.45` 或 `12,345.45` → `一万二千三百四十五点四五` |
+| 替换环境变量 | `%USERPROFILE%\AppData` → 实际用户目录 |
 
-如：对`aaa`，在开始位置 2 插入内容`bb`，得到的结果为`aabba`。
+## 输出
 
-**追加内容**
+- **是否成功**：处理是否成功。
+- **结果**：处理后的文本。
 
-在文本内容的结尾追加指定的内容。
+## 限制与排障
 
-也可以使用表达式实现：`$={文本1} + "追加内容"`或插值：`$${文本1}追加内容`
+格式化 JSON 时输入不合法会失败。去空白不含零宽字符，需要时另选 **移除零宽字符**。哈希整文件请用 [检查路径/获取文件信息](/v2/xaction/modules/checkpathexists)，避免整文件进内存。
 
-**移除内容**
+## 相关链接
 
-从指定位置开始移除指定的字符个数。也可以在表达式中使用[String.Remove](https://docs.microsoft.com/en-us/dotnet/api/system.string.remove?view=netframework-4.7.2)方法实现`$={str}.Remove(0,2)`。
-
-<ModuleParamPreview
-  moduleKey="sys:stringProcess"
-  focusKeys={['data', 'method', 'start', 'length', 'output']}
-  values={{data: 'abcdefg', method: 'remove', start: '-2', length: '2'}}
-  outputVars={{output: 'output'}}
+<RelatedDocs
+  items={[
+    {
+      href: '/v2/xaction/modules/strreplace',
+      label: '替换文本',
+      description: '按查找内容或正则替换。',
+    },
+    {
+      href: '/v2/xaction/modules/enc',
+      label: '加密/解密/哈希',
+      description: 'HMAC、AES 等，不只算文本哈希。',
+    },
+    {
+      href: '/v2/xaction/modules/checkpathexists',
+      label: '检查路径/获取文件信息',
+      description: '流式计算整个文件的哈希。',
+    },
+    {
+      href: '/v2/xaction/modules/splitstring',
+      label: '拆分文本为列表',
+      description: '拆开后再逐项处理。',
+    },
+  ]}
 />
-
-【开始位置】从0开始的字符序号。如果是负数，表示从结尾向前的字符序号。
-
-【长度】移除的字符个数。
-
-如：对`abcdefg`，从开始位置 -2 移除长度2，得到的结果为`abcde`。
-
-### 输出
-
-【结果】处理后的输出。

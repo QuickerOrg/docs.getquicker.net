@@ -1,0 +1,303 @@
+{
+  "code": "d197881b-f8c5-4ce9-a982-08d8f2798c37",
+  "title": "固定区域截图",
+  "description": "按选定的区域自动截图。右键菜单可更改区域。支持设置延时、贴图显示、自动保存等功能。",
+  "author": "Marcusx",
+  "revision": 0,
+  "source": "https://getquicker.net/sharedaction?code=d197881b-f8c5-4ce9-a982-08d8f2798c37",
+  "pulledAt": "2026-08-11T21:27:26.667Z",
+  "variables": [
+    {
+      "name": "clipSwitch",
+      "type": "Boolean"
+    },
+    {
+      "name": "fileNameTime",
+      "type": "Text"
+    },
+    {
+      "name": "img",
+      "type": "Image",
+      "remark": "默认的图片变量"
+    },
+    {
+      "name": "imgCloseTime",
+      "type": "Number"
+    },
+    {
+      "name": "rect",
+      "type": "Text"
+    },
+    {
+      "name": "saveMsgSwitch",
+      "type": "Boolean"
+    },
+    {
+      "name": "savePath",
+      "type": "Text"
+    },
+    {
+      "name": "saveSwitch",
+      "type": "Boolean"
+    },
+    {
+      "name": "stateDelay",
+      "type": "Number"
+    },
+    {
+      "name": "success",
+      "type": "Boolean"
+    },
+    {
+      "name": "tietuSwitch",
+      "type": "Boolean"
+    },
+    {
+      "name": "zoomSize",
+      "type": "Number"
+    }
+  ],
+  "steps": [
+    {
+      "key": "sys:group",
+      "inputs": {
+        "skipErr": "0",
+        "useMultiThread": "0"
+      },
+      "note": "右键菜单设置",
+      "ifSteps": [
+        {
+          "key": "sys:subprogram",
+          "inputs": {
+            "subProgram": "右键菜单设置",
+            "stopIfFail": "1",
+            "var:tietuSwitch": "{tietuSwitch}",
+            "var:saveSwitch": "{saveSwitch}",
+            "var:quicker_in_param": "{quicker_in_param}"
+          },
+          "outputs": {
+            "isSuccess": "success",
+            "var:tietuSwitch": "tietuSwitch",
+            "var:saveSwitch": "saveSwitch"
+          }
+        },
+        {
+          "key": "sys:simpleIf",
+          "inputs": {
+            "condition": "$= {quicker_in_param}.StartsWith(\"menuSwitch\")"
+          },
+          "ifSteps": [
+            {
+              "key": "sys:stop",
+              "inputs": {
+                "method": "forcestop",
+                "isError": "0"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "key": "sys:simpleIf",
+      "inputs": {
+        "condition": "$= {quicker_in_param} == \"menu_设置\""
+      },
+      "ifSteps": [
+        {
+          "key": "sys:form",
+          "inputs": {
+            "title": "设置 - 固定区域截图",
+            "formDef": "{\"Fields\":[{\"FieldKey\":\"clipSwitch\",\"Label\":\"截图后自动复制\",\"HelpText\":\"\",\"HelpLink\":null,\"InputMethod\":6,\"SelectionItems\":\"\",\"IsRequired\":false,\"MinValue\":\"\",\"MaxValue\":\"\",\"Pattern\":\"\",\"MaxLength\":0,\"ImeState\":null,\"TextTools\":\"\",\"VisibleExpression\":\"\"},{\"FieldKey\":\"zoomSize\",\"Label\":\"显示比例\",\"HelpText\":\"默认的图片显示比例，原尺寸为 1 。\",\"HelpLink\":null,\"InputMethod\":7,\"SelectionItems\":\"\",\"IsRequired\":true,\"MinValue\":\"0\",\"MaxValue\":\"10\",\"Pattern\":\"\",\"MaxLength\":0,\"ImeState\":null,\"TextTools\":null,\"VisibleExpression\":null},{\"FieldKey\":\"stateDelay\",\"Label\":\"延时截图\",\"HelpText\":\"延时截图等待秒数，支持小数。\",\"HelpLink\":null,\"InputMethod\":7,\"SelectionItems\":\"\",\"IsRequired\":false,\"MinValue\":\"0.1\",\"MaxValue\":\"1000\",\"Pattern\":\"\",\"MaxLength\":0,\"ImeState\":null,\"TextTools\":null,\"VisibleExpression\":null},{\"FieldKey\":\"tietuSwitch\",\"Label\":\"开启自动贴图模式\",\"HelpText\":\"\",\"HelpLink\":null,\"InputMethod\":6,\"SelectionItems\":\"\",\"IsRequired\":false,\"MinValue\":\"\",\"MaxValue\":\"\",\"Pattern\":\"\",\"MaxLength\":0,\"ImeState\":null,\"TextTools\":null,\"VisibleExpression\":null},{\"FieldKey\":\"imgCloseTime\",\"Label\":\"自动关贴图\",\"HelpText\":\"贴图显示的秒数，0 为不自动关闭。\",\"HelpLink\":null,\"InputMethod\":7,\"SelectionItems\":\"\",\"IsRequired\":false,\"MinValue\":\"0\",\"MaxValue\":\"\",\"Pattern\":\"\",\"MaxLength\":0,\"ImeState\":null,\"TextTools\":null,\"VisibleExpression\":null},{\"FieldKey\":\"saveSwitch\",\"Label\":\"开启自动保存模式\",\"HelpText\":\"\",\"HelpLink\":null,\"InputMethod\":6,\"SelectionItems\":\"\",\"IsRequired\":false,\"MinValue\":\"\",\"MaxValue\":\"\",\"Pattern\":\"\",\"MaxLength\":0,\"ImeState\":null,\"TextTools\":\"\",\"VisibleExpression\":\"\"},{\"FieldKey\":\"savePath\",\"Label\":\"保存路径\",\"HelpText\":\"请点击右边的…选择文件夹，确保路径准确。\",\"HelpLink\":null,\"InputMethod\":1,\"SelectionItems\":\"\",\"IsRequired\":false,\"MinValue\":\"\",\"MaxValue\":\"\",\"Pattern\":\"\",\"MaxLength\":0,\"ImeState\":null,\"TextTools\":null,\"VisibleExpression\":null},{\"FieldKey\":\"saveMsgSwitch\",\"Label\":\"保存后提示消息\",\"HelpText\":\"\",\"HelpLink\":null,\"InputMethod\":6,\"SelectionItems\":\"\",\"IsRequired\":false,\"MinValue\":\"\",\"MaxValue\":\"\",\"Pattern\":\"\",\"MaxLength\":0,\"ImeState\":null,\"TextTools\":null,\"VisibleExpression\":null}]}",
+            "titleColumnWidth": "100",
+            "restoreFocus": "0",
+            "topMost": "false",
+            "stopIfFail": "1"
+          }
+        },
+        {
+          "key": "sys:notify",
+          "inputs": {
+            "msg": "$$设置成功",
+            "maxLines": "0",
+            "type": "Success"
+          }
+        },
+        {
+          "key": "sys:stop",
+          "inputs": {
+            "method": "default",
+            "isError": "0"
+          }
+        }
+      ]
+    },
+    {
+      "key": "sys:simpleIf",
+      "inputs": {
+        "condition": "$= {rect} == \"\" || {quicker_in_param} == \"menu_选择区域\""
+      },
+      "ifSteps": [
+        {
+          "key": "sys:screenCapture",
+          "inputs": {
+            "type": "select",
+            "delay": "150",
+            "toClip": "0",
+            "stopIfFail": "1"
+          },
+          "outputs": {
+            "rect": "rect"
+          }
+        }
+      ]
+    },
+    {
+      "key": "sys:if",
+      "inputs": {
+        "condition": "{clipSwitch}"
+      },
+      "ifSteps": [
+        {
+          "key": "sys:screenCapture",
+          "inputs": {
+            "type": "fixed_area",
+            "area": "{rect}",
+            "delay": "$= {stateDelay} * 1000",
+            "toClip": "1",
+            "stopIfFail": "1"
+          },
+          "outputs": {
+            "img": "img"
+          }
+        }
+      ],
+      "elseSteps": [
+        {
+          "key": "sys:screenCapture",
+          "inputs": {
+            "type": "fixed_area",
+            "area": "{rect}",
+            "delay": "$= {stateDelay} * 1000",
+            "toClip": "0",
+            "stopIfFail": "1"
+          },
+          "outputs": {
+            "img": "img"
+          }
+        }
+      ]
+    },
+    {
+      "key": "sys:simpleIf",
+      "inputs": {
+        "condition": "{tietuSwitch}"
+      },
+      "ifSteps": [
+        {
+          "key": "sys:showImage",
+          "inputs": {
+            "source": "var",
+            "imgVar": "{img}",
+            "scale": "$${zoomSize}",
+            "autoCloseTime": "$${imgCloseTime}",
+            "winLocation": "Manual",
+            "winPosition": "{rect}",
+            "waitClose": "0",
+            "showDropShadow": "1",
+            "showTaskbarIcon": "0"
+          }
+        }
+      ]
+    },
+    {
+      "key": "sys:simpleIf",
+      "inputs": {
+        "condition": "{saveSwitch}"
+      },
+      "ifSteps": [
+        {
+          "key": "sys:simpleIf",
+          "inputs": {
+            "condition": "$= {saveSwitch} && {savePath} == \"\""
+          },
+          "ifSteps": [
+            {
+              "key": "sys:notify",
+              "inputs": {
+                "msg": "自动保存路径为空，请先设置...",
+                "maxLines": "0",
+                "type": "Info"
+              }
+            },
+            {
+              "key": "sys:delay",
+              "inputs": {
+                "delayMs": "100"
+              }
+            },
+            {
+              "key": "sys:selectFolder",
+              "inputs": {
+                "prompt": "请选择截图自动保存路径...",
+                "showOpenedDirs": "0",
+                "stopIfFail": "1"
+              },
+              "outputs": {
+                "path": "savePath"
+              }
+            },
+            {
+              "key": "sys:notify",
+              "inputs": {
+                "msg": "$$已设置自动保存路径为：{savePath}",
+                "maxLines": "0",
+                "type": "Success"
+              }
+            }
+          ]
+        },
+        {
+          "key": "sys:getCurrentTime",
+          "inputs": {
+            "source": "currTime",
+            "useUtc": "0",
+            "addDays": "0",
+            "addHours": "0",
+            "addMinutes": "0",
+            "addSeconds": "0",
+            "addMonths": "0",
+            "format": "yyyyMMddHHmmssfff"
+          },
+          "outputs": {
+            "strValue": "fileNameTime"
+          }
+        },
+        {
+          "key": "sys:WriteImageFile",
+          "inputs": {
+            "content": "{img}",
+            "filePath": "$${savePath}\\{fileNameTime}.png",
+            "quality": "100"
+          }
+        },
+        {
+          "key": "sys:simpleIf",
+          "inputs": {
+            "condition": "$= {saveMsgSwitch}"
+          },
+          "ifSteps": [
+            {
+              "key": "sys:notify",
+              "inputs": {
+                "msg": "$$已保存 {savePath}\\{fileNameTime}.png",
+                "maxLines": "0",
+                "type": "Success"
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,548 @@
+{
+  "code": "6aaceddc-6917-41cf-721a-08d697a27161",
+  "title": "解散文件夹",
+  "description": "将一级文件夹中的所有文件提取到上一级目录。",
+  "author": "沨沄极客",
+  "revision": 3,
+  "source": "https://getquicker.net/sharedaction?code=6aaceddc-6917-41cf-721a-08d697a27161",
+  "pulledAt": "2026-08-11T21:11:36.200Z",
+  "variables": [
+    {
+      "name": "select_folder_list",
+      "type": "List",
+      "remark": "选中的文件夹列表"
+    },
+    {
+      "name": "select_folder_path",
+      "type": "Text",
+      "remark": "选中的每个文件夹名称"
+    },
+    {
+      "name": "process",
+      "type": "Text",
+      "remark": "正在执行的进程"
+    },
+    {
+      "name": "sccuess",
+      "type": "Boolean",
+      "remark": "是否成功"
+    },
+    {
+      "name": "path_now",
+      "type": "Text",
+      "remark": "当前路径"
+    },
+    {
+      "name": "subfolder_list",
+      "type": "List",
+      "remark": "子文件夹列表"
+    },
+    {
+      "name": "subfolder_name",
+      "type": "Text",
+      "remark": "子文件夹名称"
+    },
+    {
+      "name": "subfile_list",
+      "type": "List",
+      "remark": "子文件列表"
+    },
+    {
+      "name": "subfile_name",
+      "type": "Text",
+      "remark": "子文件名"
+    },
+    {
+      "name": "subfolder_path",
+      "type": "Text",
+      "remark": "子文件夹路径"
+    },
+    {
+      "name": "subfolder_NULL",
+      "type": "Boolean",
+      "remark": "子文件夹判断"
+    },
+    {
+      "name": "subfile_path",
+      "type": "Text",
+      "remark": "子文件路径"
+    },
+    {
+      "name": "subfile_NULL",
+      "type": "Boolean",
+      "remark": "子文件判断"
+    },
+    {
+      "name": "subfile_fail",
+      "type": "Number",
+      "remark": "子文件重名数量"
+    },
+    {
+      "name": "======",
+      "type": "Text",
+      "remark": "分割线"
+    },
+    {
+      "name": "folder_name_old",
+      "type": "Text",
+      "remark": "原动作文件夹名称"
+    },
+    {
+      "name": "file_name_ext",
+      "type": "Text",
+      "remark": "带扩展名的文件名"
+    },
+    {
+      "name": "file_name",
+      "type": "Text",
+      "remark": "文件名称"
+    },
+    {
+      "name": "file_path",
+      "type": "Text",
+      "remark": "文件路径"
+    }
+  ],
+  "steps": [
+    {
+      "key": "sys:getSelectedFiles",
+      "inputs": {
+        "stopIfFail": "1"
+      },
+      "outputs": {
+        "files": "select_folder_list",
+        "isSuccess": "sccuess"
+      }
+    },
+    {
+      "key": "sys:group",
+      "inputs": {
+        "skipErr": "0"
+      },
+      "note": "判断是否为第三方文件管理器，使用不同手段获取当前路径",
+      "ifSteps": [
+        {
+          "key": "sys:getActiveProcessInfo",
+          "inputs": {
+            "stopIfFail": "1"
+          },
+          "outputs": {
+            "procName": "process"
+          }
+        },
+        {
+          "key": "sys:if",
+          "inputs": {
+            "condition": "$$'{process}'=='explorer'"
+          },
+          "note": "判断是否为第三方文件管理器",
+          "ifSteps": [
+            {
+              "key": "sys:getExplorerPath",
+              "inputs": {
+                "stopIfFail": "1"
+              },
+              "outputs": {
+                "output": "path_now"
+              }
+            }
+          ],
+          "elseSteps": [
+            {
+              "key": "sys:keyInput",
+              "inputs": {
+                "keys": "{\"CtrlKeys\":[17],\"Keys\":[76]}"
+              }
+            },
+            {
+              "key": "sys:delay",
+              "inputs": {
+                "delayMs": "20",
+                "monitorWaitWin": "0"
+              }
+            },
+            {
+              "key": "sys:getSelectedText",
+              "inputs": {
+                "format": "UnicodeText",
+                "repeat": "0",
+                "stopIfFail": "1"
+              },
+              "outputs": {
+                "output": "path_now"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "key": "sys:group",
+      "inputs": {
+        "skipErr": "1"
+      },
+      "note": "自动解散文件夹",
+      "ifSteps": [
+        {
+          "key": "sys:each",
+          "inputs": {
+            "input": "{select_folder_list}"
+          },
+          "outputs": {
+            "item": "select_folder_path"
+          },
+          "ifSteps": [
+            {
+              "key": "sys:group",
+              "inputs": {
+                "skipErr": "1"
+              },
+              "note": "处理子文件夹",
+              "ifSteps": [
+                {
+                  "key": "sys:fileOperation",
+                  "inputs": {
+                    "type": "enumDirs",
+                    "path": "{select_folder_path}",
+                    "searchPattern": "*",
+                    "isAll": "0",
+                    "stopIfFail": "0"
+                  },
+                  "outputs": {
+                    "files": "subfolder_list",
+                    "isSuccess": "sccuess"
+                  }
+                },
+                {
+                  "key": "sys:if",
+                  "inputs": {
+                    "condition": "{sccuess}"
+                  },
+                  "note": "如果不是文件夹，则跳过处理，防止误删除",
+                  "elseSteps": [
+                    {
+                      "key": "sys:continue"
+                    }
+                  ]
+                },
+                {
+                  "key": "sys:each",
+                  "inputs": {
+                    "input": "{subfolder_list}"
+                  },
+                  "outputs": {
+                    "item": "subfolder_path"
+                  },
+                  "ifSteps": [
+                    {
+                      "key": "sys:pathExtraction",
+                      "inputs": {
+                        "path": "{subfolder_path}"
+                      },
+                      "outputs": {
+                        "name": "subfolder_name"
+                      }
+                    },
+                    {
+                      "key": "sys:fileOperation",
+                      "inputs": {
+                        "type": "moveFile",
+                        "path": "{subfolder_path}",
+                        "dstPath": "$${path_now}\\{subfolder_name}",
+                        "stopIfFail": "0"
+                      },
+                      "outputs": {
+                        "isSuccess": "sccuess"
+                      }
+                    },
+                    {
+                      "key": "sys:if",
+                      "inputs": {
+                        "condition": "{sccuess}"
+                      },
+                      "elseSteps": [
+                        {
+                          "key": "sys:compute",
+                          "inputs": {
+                            "expression": "$${subfile_fail}+1"
+                          },
+                          "outputs": {
+                            "output": "subfile_fail"
+                          }
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "key": "sys:group",
+              "inputs": {
+                "skipErr": "1"
+              },
+              "note": "处理内部文件",
+              "ifSteps": [
+                {
+                  "key": "sys:fileOperation",
+                  "inputs": {
+                    "type": "enumFiles",
+                    "path": "{select_folder_path}",
+                    "searchPattern": "*",
+                    "isAll": "0",
+                    "stopIfFail": "0"
+                  },
+                  "outputs": {
+                    "files": "subfile_list"
+                  }
+                },
+                {
+                  "key": "sys:each",
+                  "inputs": {
+                    "input": "{subfile_list}"
+                  },
+                  "outputs": {
+                    "item": "subfile_path"
+                  },
+                  "ifSteps": [
+                    {
+                      "key": "sys:pathExtraction",
+                      "inputs": {
+                        "path": "{subfile_path}"
+                      },
+                      "outputs": {
+                        "name": "subfile_name"
+                      }
+                    },
+                    {
+                      "key": "sys:fileOperation",
+                      "inputs": {
+                        "type": "moveFile",
+                        "path": "{subfile_path}",
+                        "dstPath": "$${path_now}\\{subfile_name}",
+                        "stopIfFail": "0"
+                      },
+                      "outputs": {
+                        "isSuccess": "sccuess"
+                      }
+                    },
+                    {
+                      "key": "sys:if",
+                      "inputs": {
+                        "condition": "{sccuess}"
+                      },
+                      "elseSteps": [
+                        {
+                          "key": "sys:compute",
+                          "inputs": {
+                            "expression": "$${subfile_fail}+1"
+                          },
+                          "outputs": {
+                            "output": "subfile_fail"
+                          }
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "key": "sys:group",
+              "inputs": {
+                "skipErr": "1"
+              },
+              "note": "检查是否有重名，无重名则删除空文件夹，有重名则保留",
+              "ifSteps": [
+                {
+                  "key": "sys:fileOperation",
+                  "inputs": {
+                    "type": "enumFiles",
+                    "path": "{select_folder_path}",
+                    "searchPattern": "*",
+                    "isAll": "0",
+                    "stopIfFail": "0"
+                  },
+                  "outputs": {
+                    "files": "subfile_list"
+                  },
+                  "note": "获取子文件的列表"
+                },
+                {
+                  "key": "sys:listOperations",
+                  "inputs": {
+                    "list": "{subfile_list}",
+                    "type": "none"
+                  },
+                  "outputs": {
+                    "isEmpty": "subfile_NULL"
+                  },
+                  "note": "检查子文件列表为空，如果为空则为真"
+                },
+                {
+                  "key": "sys:fileOperation",
+                  "inputs": {
+                    "type": "enumDirs",
+                    "path": "{select_folder_path}",
+                    "searchPattern": "*",
+                    "isAll": "0",
+                    "stopIfFail": "0"
+                  },
+                  "outputs": {
+                    "files": "subfolder_list"
+                  },
+                  "note": "获取子文件夹的列表"
+                },
+                {
+                  "key": "sys:listOperations",
+                  "inputs": {
+                    "list": "{subfolder_list}",
+                    "type": "none"
+                  },
+                  "outputs": {
+                    "isEmpty": "subfolder_NULL"
+                  },
+                  "note": "检查子文件夹列表为空，如果为空则为真"
+                },
+                {
+                  "key": "sys:if",
+                  "inputs": {
+                    "condition": "{subfolder_NULL}"
+                  },
+                  "note": "如果子文件夹列表为空",
+                  "ifSteps": [
+                    {
+                      "key": "sys:if",
+                      "inputs": {
+                        "condition": "{subfile_NULL}"
+                      },
+                      "note": "如果子文件列表为空",
+                      "ifSteps": [
+                        {
+                          "key": "sys:fileOperation",
+                          "inputs": {
+                            "type": "recycle",
+                            "path": "{select_folder_path}",
+                            "stopIfFail": "0"
+                          },
+                          "note": "删除空文件夹"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "key": "sys:comment",
+              "inputs": {
+                "note": "经 @yuelove123 同意，\r\n已将他改进后的解散文件夹动作逻辑加入到本动作中，\r\n提升了稳定性和速度，在此感谢。"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "key": "sys:each",
+      "inputs": {
+        "input": "{select_folder_list}"
+      },
+      "outputs": {
+        "item": "select_folder_path"
+      },
+      "note": "原动作，如果上述动作执行失败，请换成该动作",
+      "disabled": true,
+      "ifSteps": [
+        {
+          "key": "sys:pathExtraction",
+          "inputs": {
+            "path": "{select_folder_path}"
+          },
+          "outputs": {
+            "name": "file_name_ext",
+            "nameNoExt": "file_name",
+            "path": "file_path"
+          },
+          "note": "获取文件名称"
+        },
+        {
+          "key": "sys:delay",
+          "inputs": {
+            "delayMs": "100"
+          }
+        },
+        {
+          "key": "sys:formatString",
+          "inputs": {
+            "formatString": "$${file_path}\\{file_name_ext}"
+          },
+          "outputs": {
+            "output": "folder_name_old"
+          },
+          "note": "获取 folder_name 文件夹名称"
+        },
+        {
+          "key": "sys:delay",
+          "inputs": {
+            "delayMs": "100",
+            "monitorWaitWin": "0"
+          }
+        },
+        {
+          "key": "sys:comment",
+          "inputs": {
+            "note": " ↓ 为了避免报错，这一步默认会「覆盖已有文件」\r\n\r\n如果不希望覆盖，可以取消勾选"
+          }
+        },
+        {
+          "key": "sys:fileOperation",
+          "inputs": {
+            "type": "copyFile",
+            "path": "{folder_name_old}",
+            "dstPath": "{file_path}",
+            "overwrite": "1",
+            "stopIfFail": "1"
+          },
+          "note": "复制文件到上一级目录"
+        },
+        {
+          "key": "sys:fileOperation",
+          "inputs": {
+            "type": "recycle",
+            "path": "{folder_name_old}",
+            "stopIfFail": "1"
+          },
+          "note": "删除文件"
+        }
+      ]
+    },
+    {
+      "key": "sys:if",
+      "inputs": {
+        "condition": "$${subfile_fail}!=0"
+      },
+      "note": "提示内容",
+      "ifSteps": [
+        {
+          "key": "sys:notify",
+          "inputs": {
+            "msg": "$$解散文件夹已处理完毕。\r\n剩余{subfile_fail}个重名文件需要手动处理。",
+            "type": "Warning"
+          },
+          "note": "存在重名文件"
+        }
+      ],
+      "elseSteps": [
+        {
+          "key": "sys:notify",
+          "inputs": {
+            "msg": "选中的文件夹已解散完毕。",
+            "type": "Info"
+          },
+          "note": "提示"
+        }
+      ]
+    }
+  ]
+}

@@ -1,31 +1,24 @@
 /**
  * Host-free variable chips + `$=` / `{var}` highlighting for docs param previews.
  * Bound state mirrors Headless VarOrValueParamEditor (IconControl 16px + title).
- * Type icons: Quicker `Assets/Var/*.png` copied to `/img/quicker-var/`.
+ * Type icons: shared `VarTypeIcon` (Quicker `Assets/Var/*.png`).
  */
-import useBaseUrl from '@docusaurus/useBaseUrl';
 import type {JSX, ReactNode} from 'react';
 import {resolvePrismLanguage} from '@site/data/xaction/param-file-ext';
+import {
+  VarTypeIcon,
+  type VarTypeKind,
+} from '@site/src/components/VarTypeIcon';
 import {ParamCodeText} from './ParamCodeText';
+
+export type ParamVarTypeKind = VarTypeKind;
+export {normalizeVarType} from '@site/src/components/VarTypeIcon';
 
 const VAR_IDENT = String.raw`[\p{L}_][\p{L}\p{Nd}_]*`;
 const WHOLE_VAR_RE = new RegExp(`^\\{(${VAR_IDENT})\\}$`, 'u');
 const PLACEHOLDER_RE = new RegExp(`\\{(${VAR_IDENT})\\}`, 'gu');
 const PREFIX_RE = /^(\$\$|\$=)/;
 const GLOBALS_RE = /\b(_qk|_context|_eval)\b/g;
-
-export type ParamVarTypeKind =
-  | 'text'
-  | 'integer'
-  | 'number'
-  | 'boolean'
-  | 'image'
-  | 'list'
-  | 'datetime'
-  | 'dict'
-  | 'table'
-  | 'keyboard'
-  | 'object';
 
 type SyntaxKind = 'prefix' | 'variable' | 'global';
 
@@ -69,60 +62,6 @@ export function canBindVariable(variableMode: string | undefined): boolean {
   return vm === 'UseVarOrInput' || vm === 'UseVar' || vm === 'UseVarOnly';
 }
 
-export function normalizeVarType(raw: string | undefined): ParamVarTypeKind {
-  const t = (raw ?? '').trim().toLowerCase();
-  if (t === 'int' || t === 'integer') return 'integer';
-  if (t === 'number' || t === 'double' || t === 'float' || t === 'decimal') {
-    return 'number';
-  }
-  if (t === 'bool' || t === 'boolean') return 'boolean';
-  if (t === 'image' || t === 'bitmap' || t === 'img') return 'image';
-  if (t === 'list' || t === 'stringlist') return 'list';
-  if (t === 'datetime' || t === 'date' || t === 'time') return 'datetime';
-  if (t === 'dict' || t === 'dictionary') return 'dict';
-  if (t === 'table') return 'table';
-  if (t === 'keyboard') return 'keyboard';
-  if (t === 'object' || t === 'any' || t === 'dynamic') return 'object';
-  return 'text';
-}
-
-const VAR_ICON_FILE: Record<ParamVarTypeKind, string> = {
-  text: 'text.png',
-  integer: 'integer.png',
-  number: 'number.png',
-  boolean: 'boolean.png',
-  image: 'image.png',
-  list: 'list.png',
-  datetime: 'datetime.png',
-  dict: 'dict.png',
-  table: 'table.png',
-  keyboard: 'keyboard.png',
-  object: 'object.png',
-};
-
-function VarTypeIcon({
-  kind,
-  typeLabel,
-  size = 16,
-}: {
-  kind: ParamVarTypeKind;
-  typeLabel?: string;
-  size?: number;
-}): JSX.Element {
-  const src = useBaseUrl(`/img/quicker-var/${VAR_ICON_FILE[kind] ?? 'any.png'}`);
-  return (
-    <img
-      className="step-param-var-type-icon"
-      src={src}
-      width={size}
-      height={size}
-      alt=""
-      title={typeLabel || kind}
-      draggable={false}
-    />
-  );
-}
-
 export function ParamVarChip({
   name,
   type,
@@ -132,12 +71,11 @@ export function ParamVarChip({
   type?: string;
   remark?: string;
 }): JSX.Element {
-  const kind = normalizeVarType(type);
   const note = (remark ?? '').trim();
   const showNote = note.length > 0 && note !== name;
   return (
     <span className="step-param-varorvalue-display">
-      <VarTypeIcon kind={kind} typeLabel={type} />
+      <VarTypeIcon className="step-param-var-type-icon" type={type} size={16} />
       <span className="step-param-varorvalue-title">{name}</span>
       {showNote ? <span className="step-param-varorvalue-muted">{note}</span> : null}
     </span>
@@ -230,7 +168,6 @@ export function OutputVarPicker({
   emptyLabel?: string;
 }): JSX.Element {
   const bound = (varName ?? '').trim();
-  const kind = normalizeVarType(varType);
   const note = (remark ?? '').trim();
   const showNote = Boolean(bound) && note.length > 0 && note !== bound;
 
@@ -240,7 +177,7 @@ export function OutputVarPicker({
         {bound ? (
           <span className="step-param-variable-picker-item">
             <span className="step-param-variable-picker-item-icon">
-              <VarTypeIcon kind={kind} typeLabel={varType} size={14} />
+              <VarTypeIcon type={varType} size={14} />
             </span>
             <span className="step-param-variable-picker-item-main">
               <span className="step-param-variable-picker-item-title">{bound}</span>

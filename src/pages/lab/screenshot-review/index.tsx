@@ -10,6 +10,9 @@ import ContextMenuPreview from '@site/src/components/ContextMenuPreview';
 import VariableDefPreview from '@site/src/components/VariableDefPreview';
 import StepProgramView from '@site/src/components/StepProgramView';
 import WaitWinPreview from '@site/src/components/WaitWinPreview';
+import CoordDiagram from '@site/src/components/CoordDiagram';
+import ClickIndicatorPreview from '@site/src/components/ClickIndicatorPreview';
+import UserInputPreview from '@site/src/components/UserInputPreview';
 import TableFieldPreview, {
   type TableFieldDefinition,
 } from '@site/src/components/TableFieldPreview';
@@ -127,6 +130,34 @@ function PreviewForItem({item}: {item: ReviewItem}): ReactNode {
           progress={p.progress}
           buttons={safeParseJson<string[]>(p.buttons)}
           primaryIndex={p.primaryIndex ? Number(p.primaryIndex) : undefined}
+        />
+      );
+    case 'CoordDiagram':
+      return (
+        <CoordDiagram
+          width={p.width != null ? Number(p.width) : undefined}
+          height={p.height != null ? Number(p.height) : undefined}
+          showSecondary={p.showSecondary !== 'false'}
+        />
+      );
+    case 'ClickIndicatorPreview':
+      return (
+        <ClickIndicatorPreview
+          size={p.size != null ? Number(p.size) : undefined}
+          color={p.color}
+        />
+      );
+    case 'UserInputPreview':
+      return (
+        <UserInputPreview
+          title={p.title}
+          prompt={p.prompt}
+          value={p.value}
+          texttools={p.texttools}
+          activeTool={p.activeTool}
+          showHelp={p.showHelp !== 'false'}
+          showToolTooltip={p.showToolTooltip !== 'false'}
+          showTools={p.showTools === 'true'}
         />
       );
     case 'TableFieldPreview':

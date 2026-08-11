@@ -1,13 +1,13 @@
 ---
 title: "检查路径/获取文件信息"
-description: "检查指定的文件或文件夹是否存在。"
+description: "检查文件或文件夹是否存在，并读取大小、时间、哈希和扩展信息。"
 slug: "/v2/xaction/modules/checkpathexists"
 sidebar_label: "检查路径/获取文件信息"
 sidebar_position: 20
 quickerDocKey: "xaction/module/sys:checkPathExists"
 comments: true
 moduleKey: "sys:checkPathExists"
-docStatus: "migrated-unreviewed"
+docStatus: "reviewed"
 metadataGeneratedAt: "2026-08-03 20:08:03"
 legacyDocId: 2116341
 legacyContentUpdatedAt: "2025-01-20T00:45:55.000Z"
@@ -15,77 +15,84 @@ legacyContentUpdatedAt: "2025-01-20T00:45:55.000Z"
 
 # 检查路径/获取文件信息
 
-检查指定的文件或文件夹是否存在。
+检查路径是否存在、是文件还是文件夹，并读取大小、时间、快捷方式目标和文件哈希。只要一段文本的 MD5 / SHA，用 [文本处理](/v2/xaction/modules/stringprocess) 或 [加密/解密/哈希](/v2/xaction/modules/enc)；算整个文件请用本模块，不要整文件读进内存。
 
 ## 当前模块定义
 
 <XActionModuleMeta moduleKey="sys:checkPathExists" />
 
-检查路径是否存在、是文件还是文件夹，获取文件的基本信息。
+## 概述
 
 <ModuleParamPreview moduleKey="sys:checkPathExists" />
 
-## 参数
+## 参数说明
 
-### 输入
+**路径**：要检查的文件或文件夹完整路径。
 
-【路径】要检查的完整路径
+## 输出
 
-### 输出
+- **路径是否存在**
+- **是否为文件** / **是否为文件夹**
+- **是否只读** / **是否隐藏** / **是否为系统文件**
+- **文件长度**：仅文件，字节数
+- **文件夹内文件个数** / **文件夹大小**：仅文件夹；需要扫描，目录大时较慢
+- **创建时间** / **更新时间**：计算机本地时间；更新时间是最后写入时间
+- **文件扩展信息**：词典。每种文件字段不同，如图片分辨率、视频时长。1.22.25 起提供
+- **lnk目标路径** / **lnk命令行参数**：快捷方式的目标文件和参数。1.22.25 起提供
+- **MD5 哈希值** / **SHA1 哈希值** / **SHA256 哈希值** / **CRC32 哈希值**：仅文件；大文件要扫一段时间。需 1.33.25+
 
-【路径是否存在】此路径的文件或文件夹是否存在。
+### 文件扩展信息
 
-【是否为文件夹】路径位置是否是一个文件夹。
+每个属性通常有两项：
 
-【是否为文件】路径位置是否为一个文件。
+- `"属性名"`：值
+- `"属性名_FriendlyName"`：中文友好名
 
-【文件长度】如果是文件的话，文件长度字节数。
-
-【是否只读】文件或文件夹是否只读。
-
-【是否隐藏】文件或文件夹是否隐藏。
-
-【是否为系统文件】文件或文件夹是否为操作系统的组成部分或被操作系统使用。
-
-【文件夹内文件个数】路径为文件夹时，内部文件的个数。需要耗费一定的时间获取此信息。
-
-【文件夹大小】路径为文件夹时，内部文件的总大小。需要耗费一定的时间获取此信息。
-
-【创建时间】文件的创建时间（计算机本地时间）；
-
-【更新时间】文件的最后写入时间（计算机本地时间）。
-
-【文件扩展信息】以词典形式放回的文件各种元数据信息，如图片的分辨率、mp4文件的长度等。1.22.25版本增加。
-
-【lnk目标路径】用于获取快捷方式文件的实际目标文件路径。1.22.25版本增加。
-
-【lnk命令行参数】快捷方式为目标程序文件所传递的命令行参数。
-
-【MD5 哈希值】文件内容的MD5哈希值。大文件扫描需要一些时间。 需1.33.25+版本。
-
-【SHA1 哈希值】文件内容的SHA1哈希值。大文件扫描需要一些时间。
-
-【SHA256 哈希值】文件内容的SHA256哈希值。大文件扫描需要一些时间。
-
-【CRC32哈希值】文件内容的CRC32哈希值。大文件扫描需要一些时间。
-
-#### 文件扩展信息
-
-文件扩展信息每个属性返回2个条目：
-
--   "属性名": 属性值
--   "属性名\_FriendlyName": 属性名的友好名（通常是中文）
-
-下图是一个图片文件扩展信息的示例（部分）
-
-示例动作：[https://getquicker.net/sharedaction?code=fe04a515-508b-4238-645d-08d8ba8b34b3](https://getquicker.net/sharedaction?code=fe04a515-508b-4238-645d-08d8ba8b34b3)
+例如图片可能出现 `Image.HorizontalSize` / `宽度`、`MIMEType` 为 `image/jpeg`。快捷方式还可通过词典键 `Link.TargetParsingPath` 取目标路径。
 
 ![](./img/checkpathexists-002-9beb7a6335.png)
 
-每种文件的扩展信息不同。
+## 示例动作
 
-对lnk快捷方式文件，可以通过返回词典的"Link.TargetParsingPath"键得到链接的目标文件。
+选中文件后取出扩展信息，格式化成 JSON 再显示。
+
+<StepProgramView example="fe04a515-508b-4238-645d-08d8ba8b34b3" />
+
+<ShareLinkCard
+  code="fe04a515-508b-4238-645d-08d8ba8b34b3"
+  title="文件信息"
+  description="使用系统接口获取文件信息示例"
+  author="CL"
+/>
+
+## 限制与排障
+
+- 文件夹个数和总大小要扫描整棵目录，大目录会卡住一段时间。
+- 哈希只对文件有效，大文件同样要扫完全部内容。
+- 扩展信息因文件类型而异，没有的键不要当必有字段用。
+
+## 相关链接
+
+<RelatedDocs
+  items={[
+    {
+      href: '/v2/xaction/modules/enc',
+      label: '加密/解密/哈希',
+      description: '文本、密钥和 HMAC；整文件哈希用本页。',
+    },
+    {
+      href: '/v2/xaction/modules/stringprocess',
+      label: '文本处理',
+      description: '只要一段文本的 MD5 / SHA。',
+    },
+    {
+      href: '/v2/xaction/modules/fileoperation',
+      label: '文件和目录操作',
+      description: '确认存在后再复制或删除。',
+    },
+  ]}
+/>
 
 ## 更新历史
 
--   20250120 更新文档，以匹配实际功能。
+- 20250120 更新文档，以匹配实际功能。

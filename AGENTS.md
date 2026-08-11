@@ -17,7 +17,7 @@
 - `static/` 保存需要按原路径复制到站点根目录的图片、附件、下载文件等静态资源。
 - `docusaurus.config.ts` 是站点主配置，`sidebars.ts` 是文档侧边栏配置。
 - 当前文档路由使用 `routeBasePath: '/'`，让 `docs.getquicker.net` 根路径直接显示文档。不要为了兼容编辑器或工具擅自改成 `/docs`，除非用户明确同意。
-- Agent Skills 权威目录为 **`.agents/skills/`**（Cursor / Codex 均可发现）。`.cursor/skills/` 仅保留兼容桩，勿在桩里维护正文。单篇文档改写入口见 `.agents/skills/docs-page-rewrite/`。截图→组件流程见 `.agents/skills/docs-img-to-component/`（含 `focusKeys` 参数注意力约定）。从 Quicker 主仓抽 UI/样式到文档预览见 `.agents/skills/docs-port-quicker-ui/`。
+- Agent Skills 权威目录为 **`.agents/skills/`**（Cursor / Codex 均可发现）。`.cursor/skills/` 仅保留兼容桩，勿在桩里维护正文。单篇文档改写入口见 `.agents/skills/docs-page-rewrite/`（**正文 + 换图 + 示例动作**；无图也要跑 `body-rewrite`）。截图→组件流程见 `.agents/skills/docs-img-to-component/`（含 `focusKeys`、**尽量还原场景**）。分享动作链接→步骤定义见 `.agents/skills/docs-example-action/`。从 Quicker 主仓抽 UI/样式到文档预览见 `.agents/skills/docs-port-quicker-ui/`。改写默认一次一篇，做完后问用户指定下一篇。
 
 ## 文档编写
 

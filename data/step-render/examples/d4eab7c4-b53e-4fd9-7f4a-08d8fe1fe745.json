@@ -1,0 +1,139 @@
+{
+  "code": "d4eab7c4-b53e-4fd9-7f4a-08d8fe1fe745",
+  "title": "切换音频设备",
+  "description": "在两个指定的音频输出设备之间切换",
+  "author": "CL",
+  "revision": 0,
+  "source": "https://getquicker.net/sharedaction?code=d4eab7c4-b53e-4fd9-7f4a-08d8fe1fe745",
+  "pulledAt": "2026-08-11T21:28:47.856Z",
+  "variables": [
+    {
+      "name": "deviceId1",
+      "type": "Text",
+      "remark": "第一个音频设备"
+    },
+    {
+      "name": "deviceId2",
+      "type": "Text",
+      "remark": "第二个音频设备"
+    },
+    {
+      "name": "deviceList",
+      "type": "List"
+    },
+    {
+      "name": "deviceName",
+      "type": "Text"
+    },
+    {
+      "name": "currentActiveDeviceId",
+      "type": "Text",
+      "remark": "当前活动设备"
+    }
+  ],
+  "steps": [
+    {
+      "key": "sys:comment",
+      "inputs": {
+        "note": "初始化和设置"
+      }
+    },
+    {
+      "key": "sys:simpleIf",
+      "inputs": {
+        "condition": "$= String.IsNullOrEmpty({deviceId1}) || {quicker_in_param} == \"select\""
+      },
+      "ifSteps": [
+        {
+          "key": "sys:audioControl",
+          "inputs": {
+            "operation": "GetOutputDeviceList",
+            "stopIfFail": "1"
+          },
+          "outputs": {
+            "deviceList": "deviceList"
+          }
+        },
+        {
+          "key": "sys:form",
+          "inputs": {
+            "title": "请选择要切换的两个音频输出设备",
+            "formDef": "{\"Fields\":[{\"FieldKey\":\"deviceId1\",\"Label\":\"设备1\",\"HelpText\":\"第一个音频设备\",\"HelpLink\":null,\"InputMethod\":3,\"SelectionItems\":\"$={deviceList}\",\"IsRequired\":true,\"MinValue\":\"\",\"MaxValue\":\"\",\"Pattern\":\"\",\"MaxLength\":0,\"ImeState\":null,\"TextTools\":\"\",\"VisibleExpression\":\"\"},{\"FieldKey\":\"deviceId2\",\"Label\":\"设备2\",\"HelpText\":\"第二个音频设备\",\"HelpLink\":null,\"InputMethod\":3,\"SelectionItems\":\"$={deviceList}\",\"IsRequired\":true,\"MinValue\":\"\",\"MaxValue\":\"\",\"Pattern\":\"\",\"MaxLength\":0,\"ImeState\":null,\"TextTools\":\"\",\"VisibleExpression\":\"\"}]}",
+            "titleColumnWidth": "100",
+            "restoreFocus": "0",
+            "topMost": "false",
+            "stopIfFail": "1"
+          }
+        }
+      ]
+    },
+    {
+      "key": "sys:comment",
+      "inputs": {
+        "note": "根据当前设备，确定下一个设备"
+      }
+    },
+    {
+      "key": "sys:audioControl",
+      "inputs": {
+        "operation": "GetOutputDefaultDevice",
+        "stopIfFail": "1"
+      },
+      "outputs": {
+        "deviceId": "currentActiveDeviceId"
+      }
+    },
+    {
+      "key": "sys:if",
+      "inputs": {
+        "condition": "$= {deviceId1} != {currentActiveDeviceId}"
+      },
+      "note": "当前输出不是设备1，则设置为设备1，否则设置为设备2",
+      "ifSteps": [
+        {
+          "key": "sys:audioControl",
+          "inputs": {
+            "operation": "SetDefaultDeviceById",
+            "id": "{deviceId1}",
+            "stopIfFail": "1"
+          }
+        }
+      ],
+      "elseSteps": [
+        {
+          "key": "sys:audioControl",
+          "inputs": {
+            "operation": "SetDefaultDeviceById",
+            "id": "{deviceId2}",
+            "stopIfFail": "1"
+          }
+        }
+      ]
+    },
+    {
+      "key": "sys:comment",
+      "inputs": {
+        "note": "得到设置后的"
+      }
+    },
+    {
+      "key": "sys:audioControl",
+      "inputs": {
+        "operation": "GetOutputDefaultDevice",
+        "stopIfFail": "1"
+      },
+      "outputs": {
+        "deviceName": "deviceName"
+      }
+    },
+    {
+      "key": "sys:notify",
+      "inputs": {
+        "msg": "$${deviceName}",
+        "maxLines": "0",
+        "type": "Success",
+        "style": "Default"
+      }
+    }
+  ]
+}

@@ -1,0 +1,408 @@
+{
+  "code": "18fdf83e-048e-46c7-185a-08d69d1d124b",
+  "title": "SM.MS图床",
+  "description": "上传图片文件、剪贴板或截图到图床",
+  "author": "CL",
+  "revision": 1,
+  "source": "https://getquicker.net/sharedaction?code=18fdf83e-048e-46c7-185a-08d69d1d124b",
+  "pulledAt": "2026-08-11T21:28:52.243Z",
+  "variables": [
+    {
+      "name": "context",
+      "type": "Text",
+      "remark": "默认的文本变量"
+    },
+    {
+      "name": "img",
+      "type": "Image",
+      "remark": "默认的图片变量"
+    },
+    {
+      "name": "file",
+      "type": "Text",
+      "remark": "文件路径"
+    },
+    {
+      "name": "isSuccess",
+      "type": "Boolean",
+      "remark": "是否成功"
+    },
+    {
+      "name": "resultData",
+      "type": "Text",
+      "remark": "上传结果"
+    },
+    {
+      "name": "rtnCode",
+      "type": "Text",
+      "remark": "返回的状态，success或error"
+    },
+    {
+      "name": "rtnMsg",
+      "type": "Text",
+      "remark": "返回的错误消息"
+    },
+    {
+      "name": "rtnUrl",
+      "type": "Text",
+      "remark": "返回的图片网址链接"
+    },
+    {
+      "name": "rtnDeleteUrl",
+      "type": "Text",
+      "remark": "删除图片链接"
+    },
+    {
+      "name": "rtnFilename",
+      "type": "Text",
+      "remark": "返回的原始文件名"
+    },
+    {
+      "name": "selectedText",
+      "type": "Text",
+      "remark": "要复制到剪贴板的文本"
+    },
+    {
+      "name": "files",
+      "type": "List",
+      "remark": "选择的文件列表"
+    },
+    {
+      "name": "fileCount",
+      "type": "Number"
+    },
+    {
+      "name": "choice",
+      "type": "Text",
+      "remark": "选择的图片来源"
+    }
+  ],
+  "steps": [
+    {
+      "key": "sys:select",
+      "inputs": {
+        "prompt": "要上传的图片来源",
+        "items": "选择的文件|a\r\n剪贴板图片|b\r\n截图|c"
+      },
+      "outputs": {
+        "textValue": "choice"
+      }
+    },
+    {
+      "key": "sys:if",
+      "inputs": {
+        "condition": "$$ '{choice}' == 'a'"
+      },
+      "note": "文件",
+      "ifSteps": [
+        {
+          "key": "sys:restoreActiveWindow"
+        },
+        {
+          "key": "sys:delay",
+          "inputs": {
+            "delayMs": "100"
+          }
+        },
+        {
+          "key": "sys:getSelectedFiles",
+          "inputs": {
+            "stopIfFail": "0"
+          },
+          "outputs": {
+            "files": "files",
+            "firstFile": "file",
+            "isSuccess": "isSuccess"
+          }
+        },
+        {
+          "key": "sys:listOperations",
+          "inputs": {
+            "list": "{files}",
+            "type": "none",
+            "pos": "0",
+            "length": "1",
+            "item": "1"
+          },
+          "outputs": {
+            "length": "fileCount"
+          }
+        },
+        {
+          "key": "sys:comment",
+          "inputs": {
+            "note": "判断选择的文件是否不是1个。如果选多了给出提示中止动作。\r\n如果没有选择，则判断剪贴板，如果有图片的话写入临时文件。"
+          }
+        },
+        {
+          "key": "sys:if",
+          "inputs": {
+            "condition": "$${fileCount} != 1"
+          },
+          "note": "如果选择了超过1个文件，则给出提示停止动作",
+          "ifSteps": [
+            {
+              "key": "sys:notify",
+              "inputs": {
+                "msg": "只能选择一个文件哦",
+                "type": "Warning"
+              }
+            },
+            {
+              "key": "sys:stop"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "key": "sys:if",
+      "inputs": {
+        "condition": "$$ '{choice}' == 'b'"
+      },
+      "note": "剪贴板图片",
+      "ifSteps": [
+        {
+          "key": "sys:getClipboardImage",
+          "inputs": {
+            "stopIfFail": "0"
+          },
+          "outputs": {
+            "output": "img",
+            "isSuccess": "isSuccess"
+          }
+        },
+        {
+          "key": "sys:if",
+          "inputs": {
+            "condition": "{isSuccess}"
+          },
+          "ifSteps": [
+            {
+              "key": "sys:GenTempFilePath",
+              "inputs": {
+                "ext": ".png"
+              },
+              "outputs": {
+                "filePath": "file"
+              }
+            },
+            {
+              "key": "sys:WriteImageFile",
+              "inputs": {
+                "content": "{img}",
+                "filePath": "{file}"
+              }
+            }
+          ],
+          "elseSteps": [
+            {
+              "key": "sys:notify",
+              "inputs": {
+                "msg": "剪贴板中没有图片，请重新复制后执行动作。",
+                "type": "Warning"
+              }
+            },
+            {
+              "key": "sys:stop"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "key": "sys:if",
+      "inputs": {
+        "condition": "$$ '{choice}' == 'c'"
+      },
+      "note": "截图",
+      "ifSteps": [
+        {
+          "key": "sys:delay",
+          "inputs": {
+            "delayMs": "300"
+          },
+          "note": "等待选择窗口关闭",
+          "disabled": true
+        },
+        {
+          "key": "sys:keyInput",
+          "inputs": {
+            "keys": "{\"CtrlKeys\":[91,160],\"Keys\":[83]}"
+          },
+          "note": "启动Win10截图，可以修改为其他截图快捷键",
+          "disabled": true
+        },
+        {
+          "key": "sys:waitClipboardChange",
+          "inputs": {
+            "maxWaitSeconds": "15",
+            "stopIfFail": "1"
+          },
+          "disabled": true
+        },
+        {
+          "key": "sys:getClipboardImage",
+          "inputs": {
+            "stopIfFail": "1"
+          },
+          "outputs": {
+            "output": "img"
+          },
+          "disabled": true
+        },
+        {
+          "key": "sys:screenCapture",
+          "inputs": {
+            "type": "select",
+            "delay": "0",
+            "toClip": "0",
+            "stopIfFail": "1"
+          },
+          "outputs": {
+            "img": "img"
+          }
+        },
+        {
+          "key": "sys:GenTempFilePath",
+          "inputs": {
+            "ext": ".png"
+          },
+          "outputs": {
+            "filePath": "file"
+          }
+        },
+        {
+          "key": "sys:WriteImageFile",
+          "inputs": {
+            "content": "{img}",
+            "filePath": "{file}"
+          }
+        },
+        {
+          "key": "sys:getClipboardImage",
+          "inputs": {
+            "stopIfFail": "0"
+          },
+          "outputs": {
+            "output": "img",
+            "isSuccess": "isSuccess"
+          }
+        }
+      ]
+    },
+    {
+      "key": "sys:comment",
+      "inputs": {
+        "note": "上传并处理返回的数据"
+      }
+    },
+    {
+      "key": "sys:http",
+      "inputs": {
+        "url": "https://sm.ms/api/v2/upload",
+        "method": "POST",
+        "bodyType": "FILE",
+        "body": "$$smfile=FILE:{file}",
+        "resultType": "Text",
+        "ua": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/60.0.3112.113 Safari/537.36",
+        "expireSeconds": "100",
+        "noAutoRedirect": "0",
+        "stopIfFail": "1"
+      },
+      "outputs": {
+        "content": "resultData"
+      }
+    },
+    {
+      "key": "sys:group",
+      "note": "弹窗显示返回的结果内容，不需要可停用",
+      "disabled": true,
+      "ifSteps": [
+        {
+          "key": "sys:stringProcess",
+          "inputs": {
+            "data": "{resultData}",
+            "method": "formatJson"
+          },
+          "outputs": {
+            "output": "resultData"
+          }
+        },
+        {
+          "key": "sys:showText",
+          "inputs": {
+            "text": "{resultData}",
+            "title": "结果内容"
+          }
+        }
+      ]
+    },
+    {
+      "key": "sys:jsonExtract",
+      "inputs": {
+        "data": "{resultData}",
+        "p0": "code",
+        "p1": "msg",
+        "p2": "data.url",
+        "p3": "data.delete",
+        "p4": "data.filename"
+      },
+      "outputs": {
+        "v0": "rtnCode",
+        "v1": "rtnMsg",
+        "v2": "rtnUrl",
+        "v3": "rtnDeleteUrl",
+        "v4": "rtnFilename"
+      }
+    },
+    {
+      "key": "sys:if",
+      "inputs": {
+        "condition": "$$ '{rtnCode}' == 'success'"
+      },
+      "ifSteps": [
+        {
+          "key": "sys:openUrl",
+          "inputs": {
+            "url": "{rtnUrl}",
+            "browser": "default"
+          },
+          "note": "用浏览器打开图片进行预览，不需要可以停用"
+        },
+        {
+          "key": "sys:select",
+          "inputs": {
+            "prompt": "请选择要复制到剪贴板的格式",
+            "items": "$$【URL】{rtnUrl}|{rtnUrl}\r\n【img标签】<img src='{rtnUrl}' title='{rtnFilename}' />|<img src='{rtnUrl}' title='{rtnFilename}' />\r\n【MD】![{rtnFilename}]({rtnUrl})|![{rtnFilename}]({rtnUrl})"
+          },
+          "outputs": {
+            "textValue": "selectedText"
+          }
+        },
+        {
+          "key": "sys:writeClipboard",
+          "inputs": {
+            "input": "{selectedText}"
+          }
+        },
+        {
+          "key": "sys:notify",
+          "inputs": {
+            "msg": "$$已写入剪贴板：{selectedText}",
+            "type": "Info"
+          }
+        }
+      ],
+      "elseSteps": [
+        {
+          "key": "sys:notify",
+          "inputs": {
+            "msg": "$$服务器返回失败：{rtnMsg}",
+            "type": "Warning"
+          }
+        }
+      ]
+    }
+  ]
+}

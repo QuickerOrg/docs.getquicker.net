@@ -1,0 +1,64 @@
+{
+  "code": "3d9f7fbb-752a-40f5-d827-08d86cbb0005",
+  "title": "截图贴图",
+  "description": "截图后在原位置贴图1",
+  "author": "CL",
+  "revision": 1,
+  "source": "https://getquicker.net/sharedaction?code=3d9f7fbb-752a-40f5-d827-08d86cbb0005",
+  "pulledAt": "2026-08-11T21:27:26.461Z",
+  "variables": [
+    {
+      "name": "img",
+      "type": "Image"
+    },
+    {
+      "name": "rect",
+      "type": "Text"
+    },
+    {
+      "name": "hwnd",
+      "type": "Integer"
+    }
+  ],
+  "steps": [
+    {
+      "key": "sys:delay",
+      "inputs": {
+        "delayMs": "300",
+        "monitorWaitWin": "0"
+      }
+    },
+    {
+      "key": "sys:screenCapture",
+      "inputs": {
+        "type": "select",
+        "delay": "0",
+        "toClip": "1",
+        "stopIfFail": "1"
+      },
+      "outputs": {
+        "img": "img",
+        "rect": "rect"
+      }
+    },
+    {
+      "key": "sys:showImage",
+      "inputs": {
+        "source": "var",
+        "imgVar": "{img}",
+        "scale": "1",
+        "autoCloseTime": "0",
+        "winLocation": "Manual",
+        "winPosition": "{rect}",
+        "waitClose": "0",
+        "showDropShadow": "1",
+        "showTaskbarIcon": "true",
+        "topMost": "true",
+        "noActivate": "1"
+      },
+      "outputs": {
+        "hwnd": "hwnd"
+      }
+    }
+  ]
+}

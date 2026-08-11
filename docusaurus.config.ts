@@ -32,6 +32,25 @@ const config: Config = {
 <html <%~ it.htmlAttributes %>>
   <head>
     <meta charset="UTF-8">
+    <script>
+      (function () {
+        var root = document.documentElement;
+        function apply() {
+          root.style.setProperty('--qk-dpr', String(window.devicePixelRatio || 1));
+        }
+        apply();
+        try {
+          var mq;
+          function watch() {
+            apply();
+            if (mq) mq.removeEventListener('change', watch);
+            mq = window.matchMedia('(resolution: ' + (window.devicePixelRatio || 1) + 'dppx)');
+            mq.addEventListener('change', watch);
+          }
+          watch();
+        } catch (e) {}
+      })();
+    </script>
     <% it.metaAttributes.forEach((metaAttribute) => { %>
       <%~ metaAttribute %>
     <% }); %>

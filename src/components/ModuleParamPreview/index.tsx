@@ -20,7 +20,7 @@ export type ModuleParamPreviewProps = {
   /** Show condition-hidden params (exePath when browser≠custom, …). */
   showHidden?: boolean;
   /**
-   * Highlight these input/output keys and collapse the rest into「其他参数」.
+   * Keep these input/output keys visible; collapse the rest into「其他参数」.
    * Use beside prose that discusses a subset of fields.
    */
   focusKeys?: readonly string[];

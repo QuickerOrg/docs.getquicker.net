@@ -12,6 +12,30 @@
   color: var(--cmp-fg);
 }
 
+.rootScene {
+  display: grid;
+  grid-template: auto / minmax(0, 1fr);
+  overflow: visible;
+}
+
+.scene {
+  grid-area: 1 / 1;
+  min-width: 0;
+}
+
+.scene :global(.qk-sr-program) {
+  margin: 0;
+}
+
+.overlay {
+  grid-area: 1 / 1;
+  align-self: start;
+  justify-self: start;
+  z-index: 4;
+  margin-top: 2.25rem;
+  margin-left: 5.5rem;
+}
+
 .panelWrap {
   position: relative;
   display: inline-flex;
@@ -21,6 +45,7 @@
 .panel {
   min-width: 168px;
   padding: 4px 0;
+  overflow: visible;
   border: 1px solid var(--cmp-border);
   border-radius: 6px;
   background: var(--cmp-bg);
@@ -35,6 +60,7 @@
   gap: 6px;
   width: 100%;
   padding: 6px 10px;
+  overflow: visible;
   appearance: none;
   border: 0;
   background: transparent;
@@ -105,17 +131,21 @@
 
 .itemTooltip {
   position: absolute;
+  /* Span the whole row so CJK shrink-to-fit is not 1em (the icon column). */
+  grid-column: 1 / -1;
   left: calc(100% + 8px);
   top: 50%;
   z-index: 3;
-  max-width: 200px;
+  width: max-content;
+  max-width: min(22rem, 70vw);
   padding: 4px 8px;
   border-radius: 4px;
   background: #4b5563;
   color: #fff;
   font-size: 12px;
-  line-height: 1.35;
-  white-space: nowrap;
+  line-height: 1.45;
+  white-space: pre-wrap;
+  overflow-wrap: break-word;
   pointer-events: none;
   box-shadow: 0 2px 8px rgb(0 0 0 / 18%);
   transform: translateY(-50%);

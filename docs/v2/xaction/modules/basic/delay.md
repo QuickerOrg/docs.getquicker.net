@@ -39,7 +39,49 @@ legacyContentUpdatedAt: "2025-12-05T02:21:38.000Z"
 
 选择多个连续步骤，点击右键，选择“插入延时”即可。
 
-![](./img/delay-002-98f9e35ed4.png)
+<ContextMenuPreview
+  openPath={['插入延时(_T)']}
+  items={[
+    {label: '复制(_C)', icon: 'fa:Light_Copy:#6aaded'},
+    {label: '剪切(_X)', icon: 'fa:Light_Cut:#6aaded'},
+    {type: 'separator'},
+    {
+      label: '插入延时(_T)',
+      icon: 'fa:Light_Clock:#6aaded',
+      tooltip:
+        '选择一个模块，在模块后插入延时；\n选择多个模块，在模块中间插入延时；',
+    },
+    {
+      label: '放入...(_F)',
+      icon: 'fa:Light_ObjectGroup:#6aaded',
+      children: [
+        {label: '步骤组(_G)', icon: 'fa:Light_LayerGroup:#6aaded'},
+        {label: '循环：每个(_E)', icon: 'fa:Light_Repeat:#6aaded'},
+        {label: '循环：重复(_R)', icon: 'fa:Light_Repeat:#6aaded'},
+        {label: '如果/否则 的 “如果” 分支(_I)', icon: 'fa:Light_ProjectDiagram:#6aaded'},
+        {label: '如果/否则 的 “否则” 分支(_F)', icon: 'fa:Light_ProjectDiagram:#6aaded'},
+        {label: '如果(_S)', icon: 'fa:Light_ProjectDiagram:#6aaded'},
+      ],
+    },
+    {label: '转换成子程序(_S)', icon: 'fa:Light_Cube:#6aaded'},
+    {label: '运行(_R)', icon: 'fa:Light_Play:#f5b042'},
+    {label: '停用/取消停用(_P)', icon: 'fa:Light_Ban:#E00000'},
+  ]}
+>
+  <StepProgramView
+    selectedIndexes={[1, 2, 3, 4]}
+    data={{
+      steps: [
+        {key: 'sys:getWindowTitle'},
+        {key: 'sys:sendMessage', note: '最大化窗口'},
+        {key: 'sys:delay', inputs: {delayMs: '1000'}, note: '等待 1000 ms'},
+        {key: 'sys:sendMessage', note: '最小化窗口'},
+        {key: 'sys:delay', inputs: {delayMs: '1000'}, note: '等待 1000 ms'},
+        {key: 'sys:sendMessage', note: '还原'},
+      ],
+    }}
+  />
+</ContextMenuPreview>
 
 **快速调整延时**
 

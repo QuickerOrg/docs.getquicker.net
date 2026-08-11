@@ -1,6 +1,7 @@
 /**
  * Scan docs/ for DocCard gallery covers + descriptions.
- * Copies first images to static/img/doc-gallery/ and writes JSON.
+ * Copies first images to static/img/doc-gallery/ (gitignored).
+ * Returns the gallery map for the Docusaurus plugin to inject at runtime.
  */
 import crypto from "node:crypto";
 import fs from "node:fs";
@@ -11,7 +12,6 @@ import {snapshotAbs} from "./previews.mjs";
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "../..");
 const DOCS_DIR = path.join(ROOT, "docs");
 const COVER_DIR = path.join(ROOT, "static/img/doc-gallery");
-const OUT_JSON = path.join(ROOT, "src/data/docGallery.generated.json");
 
 /** @typedef {{href: string, title: string, description: string, covers: string[], dir: string, kind: "doc" | "category", position: number, excerpt: string, hints: string[]}} GallerySource */
 
@@ -319,8 +319,12 @@ export function buildDocGallery() {
     }
   }
 
-  writeIfChanged(OUT_JSON, Buffer.from(`${JSON.stringify(gallery, null, 2)}\n`, "utf8"));
-  return {docs: docs.length, categories: categories.length, cards: Object.keys(gallery).length};
+  return {
+    gallery,
+    docs: docs.length,
+    categories: categories.length,
+    cards: Object.keys(gallery).length,
+  };
 }
 
 if (process.argv[1] && path.resolve(process.argv[1]) === fileURLToPath(import.meta.url)) {

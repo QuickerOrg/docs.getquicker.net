@@ -19,6 +19,8 @@ export type StepProgramViewProps = {
   showKey?: boolean;
   /** Optional caption above the list well, e.g. example title. */
   caption?: ReactNode;
+  /** Highlight these top-level step indexes (0-based), e.g. a right-click multi-select. */
+  selectedIndexes?: readonly number[];
   density?: StepProgramDensity;
   empty?: ReactNode;
   className?: string;
@@ -97,6 +99,7 @@ function StepListInner({
   showIndex,
   showKey,
   nested,
+  selectedIndexes,
 }: {
   steps: StepWire[];
   catalog: StepCatalog;
@@ -105,7 +108,9 @@ function StepListInner({
   showIndex: boolean;
   showKey: boolean;
   nested: boolean;
+  selectedIndexes?: readonly number[];
 }): JSX.Element {
+  const selected = new Set(selectedIndexes ?? []);
   return (
     <div className={nested ? 'step-listbox nested' : 'step-listbox root'}>
       {steps.map((step, index) => (
@@ -118,6 +123,7 @@ function StepListInner({
           showParams={showParams}
           showIndex={showIndex}
           showKey={showKey}
+          selected={!nested && selected.has(index)}
         />
       ))}
     </div>
@@ -132,6 +138,7 @@ function StepBlock({
   showParams,
   showIndex,
   showKey,
+  selected,
 }: {
   step: StepWire;
   index: number;
@@ -140,6 +147,7 @@ function StepBlock({
   showParams: boolean;
   showIndex: boolean;
   showKey: boolean;
+  selected: boolean;
 }): JSX.Element {
   const presentation = resolveStepRowPresentation(step, catalog);
   const hasCatalogName = Boolean(catalog.runners[step.key]?.name);
@@ -155,14 +163,22 @@ function StepBlock({
   const {ifLabel, elseLabel} = branchLabelsForStep(step, catalog);
 
   return (
-    <div className="step-node-block">
+    <div
+      className={selected ? 'step-node-block step-node-block--selected' : 'step-node-block'}
+    >
       <div className="step-node-rail" aria-hidden="true" />
       <div className={step.disabled ? 'step-node-main step-node-main--disabled' : 'step-node-main'}>
         <div
-          className={['step-row', 'step-row--preview', step.disabled ? 'disabled' : '']
+          className={[
+            'step-row',
+            'step-row--preview',
+            selected ? 'selected' : '',
+            step.disabled ? 'disabled' : '',
+          ]
             .filter(Boolean)
             .join(' ')}
           title={presentation.titleAttr}
+          aria-selected={selected || undefined}
         >
           {hasBranches ? (
             <span className="expand" aria-hidden="true">
@@ -254,6 +270,7 @@ export function StepProgramView({
   showIndex = false,
   showKey = false,
   caption,
+  selectedIndexes,
   density = 'docs',
   empty,
   className,
@@ -294,6 +311,7 @@ export function StepProgramView({
         showIndex={showIndex}
         showKey={showKey}
         nested={false}
+        selectedIndexes={selectedIndexes}
       />
     </div>
   );

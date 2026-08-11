@@ -28,6 +28,9 @@
   --ad-fg-step-row-disabled: #9aa1a9;
   --ad-fg-branch-disabled: #b5ad92;
   --ad-fg-step-accent-disabled: #8aa8c4;
+  --ad-bg-selected-row: #d6e8f7;
+  --ad-bg-step-row-selected: var(--ad-bg-selected-row);
+  --ad-step-row-selected-ring: inset 0 0 0 1px rgba(24, 90, 145, 0.42);
 
   margin: 1rem 0 1.5rem;
   border: 1px solid var(--ad-border-panel);
@@ -62,6 +65,9 @@ html[data-theme="dark"] .qk-sr-program {
   --ad-fg-step-row-disabled: #7a8494;
   --ad-fg-branch-disabled: #8a7f5c;
   --ad-fg-step-accent-disabled: #5a7a9a;
+  --ad-bg-selected-row: #243044;
+  --ad-bg-step-row-selected: var(--ad-bg-selected-row);
+  --ad-step-row-selected-ring: none;
 }
 
 .qk-sr-program__caption {
@@ -209,6 +215,15 @@ html[data-theme="dark"] .qk-sr-program {
 
 .qk-sr-program .step-row:hover {
   background: var(--ad-bg-step-row-hover);
+}
+
+.qk-sr-program .step-row.selected {
+  background: var(--ad-bg-step-row-selected);
+  box-shadow: var(--ad-step-row-selected-ring);
+}
+
+.qk-sr-program .step-node-block--selected > .step-node-rail {
+  background: var(--ad-accent);
 }
 
 .qk-sr-program .step-row .expand {

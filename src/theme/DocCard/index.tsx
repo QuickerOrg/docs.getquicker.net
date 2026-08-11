@@ -12,7 +12,7 @@ import type {
   PropSidebarItemCategory,
   PropSidebarItemLink,
 } from "@docusaurus/plugin-content-docs";
-import {lookupDocGallery} from "@site/src/data/docGallery";
+import {lookupDocGallery, useDocGallery} from "@site/src/data/docGallery";
 
 function isBoilerplateDescription(text: string | undefined, title: string): boolean {
   const value = (text ?? "").trim();
@@ -100,7 +100,8 @@ function GalleryCard({
   description?: string;
   className?: string;
 }): ReactNode {
-  const gallery = lookupDocGallery(href);
+  const galleryMap = useDocGallery();
+  const gallery = lookupDocGallery(galleryMap, href);
   const covers = gallery?.covers ?? [];
   const text =
     gallery?.description && !isBoilerplateDescription(gallery.description, title)

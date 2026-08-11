@@ -752,7 +752,6 @@ export function StepParamFormPreview({
                 onChange={(next) => setValue(param.key, next)}
                 inputVars={inputVars}
                 currentValues={currentValues}
-                focused={hasFocus}
                 editable={liveEdit}
               />
             ))}
@@ -765,7 +764,6 @@ export function StepParamFormPreview({
                 key={output.key}
                 output={output}
                 varName={outputVars?.[output.key] ?? ""}
-                focused={hasFocus}
               />
             ))}
           </ParamSection>

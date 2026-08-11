@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updatedAt": "2026-08-11T16:45:00.000Z",
+  "updatedAt": "2026-08-12T02:25:00.000Z",
   "items": [
     {
       "image": "docs/v2/xaction/concepts/img/action-custom-context-menu-005-268e6fc45d.png",
@@ -2884,6 +2884,15 @@
       "evidence": "git-diff",
       "commit": "4fa032b",
       "updatedAt": "2026-08-11T19:17:14+08:00"
+    },
+    {
+      "image": "docs/v2/xaction/modules/basic/img/delay-002-98f9e35ed4.png",
+      "page": "docs/v2/xaction/modules/basic/delay.md",
+      "status": "converted",
+      "component": "ContextMenuPreview",
+      "reason": "OCR kind=context-menu。步骤列表右键「插入延时」及官方 tooltip，用 ContextMenuPreview 替代 890px 宽截图；菜单文案按当前 WPF StepListControl.ContextMenu。",
+      "evidence": "ocr",
+      "updatedAt": "2026-08-12T02:25:00+08:00"
     }
   ]
 }

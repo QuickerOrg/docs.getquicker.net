@@ -441,7 +441,7 @@ export default function ScreenshotReviewPage(): ReactNode {
                       <>
                         <div className={styles.paneLabel}>原图 · {item.imageName}</div>
                         <img
-                          className={styles.shot}
+                          className={`${styles.shot} qk-native-img`}
                           src={imgUrl(api, item.image)}
                           alt={item.imageName}
                           loading="lazy"

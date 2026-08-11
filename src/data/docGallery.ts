@@ -1,4 +1,4 @@
-import generated from "./docGallery.generated.json";
+import {usePluginData} from "@docusaurus/useGlobalData";
 
 export type DocGalleryEntry = {
   description?: string;
@@ -7,9 +7,18 @@ export type DocGalleryEntry = {
   hints?: string[];
 };
 
-export const docGallery = generated as Record<string, DocGalleryEntry>;
+export type DocGalleryMap = Record<string, DocGalleryEntry>;
 
-export function lookupDocGallery(href: string | undefined): DocGalleryEntry | undefined {
+export function lookupDocGallery(
+  gallery: DocGalleryMap,
+  href: string | undefined,
+): DocGalleryEntry | undefined {
   if (!href) return undefined;
-  return docGallery[href] ?? docGallery[href.replace(/\/$/, "")] ?? undefined;
+  return gallery[href] ?? gallery[href.replace(/\/$/, "")] ?? undefined;
+}
+
+/** Gallery map injected by plugins/doc-gallery.js at start/build. */
+export function useDocGallery(): DocGalleryMap {
+  const data = usePluginData("doc-gallery") as {gallery?: DocGalleryMap};
+  return data.gallery ?? {};
 }

@@ -29,6 +29,8 @@ export type ContextMenuPreviewProps = {
   interactive?: boolean;
   /** Use this preview as the DocCard gallery cover snapshot target. */
   galleryCover?: boolean;
+  /** Scene behind the menu, usually a selected StepProgramView. */
+  children?: ReactNode;
   className?: string;
 };
 
@@ -168,6 +170,7 @@ export default function ContextMenuPreview({
   tooltip,
   interactive = true,
   galleryCover = false,
+  children,
   className,
 }: ContextMenuPreviewProps): ReactNode {
   const [path, setPath] = useState(openPath);
@@ -198,21 +201,32 @@ export default function ContextMenuPreview({
 
   return (
     <div
-      className={['qk-docs-preview', styles.root, className].filter(Boolean).join(' ')}
+      className={[
+        'qk-docs-preview',
+        styles.root,
+        children ? styles.rootScene : '',
+        className,
+      ]
+        .filter(Boolean)
+        .join(' ')}
       data-gallery-cover={galleryCover ? '' : undefined}
-      aria-label="菜单示意，可悬停展开子菜单"
-      onPointerEnter={interactive ? clearReset : undefined}
-      onPointerLeave={interactive ? scheduleReset : undefined}>
-      <MenuPanel
-        items={items}
-        pathPrefix={[]}
-        openPath={interactive ? path : openPath}
-        pickedPath={pickedPath}
-        fallbackTooltip={tooltip}
-        interactive={interactive}
-        onHover={setPath}
-        onPick={setPickedPath}
-      />
+      aria-label="菜单示意，可悬停展开子菜单">
+      {children ? <div className={styles.scene}>{children}</div> : null}
+      <div
+        className={children ? styles.overlay : undefined}
+        onPointerEnter={interactive ? clearReset : undefined}
+        onPointerLeave={interactive ? scheduleReset : undefined}>
+        <MenuPanel
+          items={items}
+          pathPrefix={[]}
+          openPath={interactive ? path : openPath}
+          pickedPath={pickedPath}
+          fallbackTooltip={tooltip}
+          interactive={interactive}
+          onHover={setPath}
+          onPick={setPickedPath}
+        />
+      </div>
     </div>
   );
 }

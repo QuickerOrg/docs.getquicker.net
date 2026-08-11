@@ -48,6 +48,8 @@
   /* Match prism-react-renderer github / vsDark plain colors. */
   --qk-code-bg: #f6f8fa;
   --qk-code-fg: #393a34;
+  /* Overwritten by the head script to window.devicePixelRatio. */
+  --qk-dpr: 1;
   --ifm-navbar-search-input-background-color: var(--quicker-surface-subtle);
   --ifm-navbar-search-input-color: var(--ifm-font-color-base);
   --ifm-navbar-search-input-placeholder-color: var(--quicker-text-muted);
@@ -336,6 +338,17 @@
 
 .markdown p {
   margin-bottom: 0.75rem;
+}
+
+/*
+ * 1x screenshots: 1 bitmap pixel = 1 device pixel.
+ * zoom shrinks layout; raise max-width so a column-fitting image still
+ * fills 100% after zoom (visual = min(natural/dpr, 100% of container)).
+ */
+img.qk-native-img {
+  zoom: calc(1 / var(--qk-dpr, 1));
+  max-width: calc(100% * var(--qk-dpr, 1));
+  height: auto;
 }
 
 .markdown a {

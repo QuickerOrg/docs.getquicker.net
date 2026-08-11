@@ -18,6 +18,7 @@ import PreviewMap from '@site/src/components/PreviewMap';
 import PreviewMarks from '@site/src/components/PreviewMarks';
 import ShareLinkCard from '@site/src/components/ShareLinkCard';
 import XActionLanding from '@site/src/components/XActionLanding';
+import NativeImg from '@site/src/theme/MDXComponents/NativeImg';
 
 export default {
   // Re-use the default mapping
@@ -25,6 +26,7 @@ export default {
   // Faster/Rspack can drop theme MDX mappings; register explicitly.
   mermaid: Mermaid,
   Mermaid,
+  img: NativeImg,
   // Available in every MDX/Markdown page without local import
   XActionModuleMeta,
   StepProgramView,

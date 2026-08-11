@@ -119,6 +119,72 @@
   "/v2/what's-new/tools-and-experience": {
     "description": "Quicker V2 在截图录屏、选中文本、搜索、通知和窗口交互方面的重要变化。"
   },
+  "/v2/what's-new/xaction-steps/basic-ocr": {
+    "description": "Quicker 2.x 基础 OCR 模块增加独立本地引擎、模型档位和本地表格识别。"
+  },
+  "/v2/what's-new/xaction-steps/cloud-state": {
+    "description": "Quicker 2.x 云状态存取模块在读取内容时增加本机时间和 UTC 最后更新时间输出。"
+  },
+  "/v2/what's-new/xaction-steps/csharp-script": {
+    "description": "Quicker 2.x 运行 C# 代码模块改用新版编译与补全能力，并支持纯脚本和异步返回值。"
+  },
+  "/v2/what's-new/xaction-steps/custom-window": {
+    "description": "Quicker 2.x 自定义窗口模块改进脚本缓存、动作状态访问和异步窗口的调试与生命周期。"
+  },
+  "/v2/what's-new/xaction-steps/each": {
+    "description": "Quicker 2.x “每个”模块改进并行循环的 WaitAny、取消和结构化调试信息。"
+  },
+  "/v2/what's-new/xaction-steps/group": {
+    "description": "Quicker 2.x 步骤组模块改进多线程 WaitAny 的取消行为，并接入统一执行和调试管道。"
+  },
+  "/v2/what's-new/xaction-steps/image-process": {
+    "description": "Quicker 2.x 图片处理模块为缩放和图标生成增加多种采样算法与自动选择策略。"
+  },
+  "/v2/what's-new/xaction-steps/index": {
+    "description": "Quicker 2.x 相比 1.x 新增和改进的组合动作模块。"
+  },
+  "/v2/what's-new/xaction-steps/new-background-screen-recording": {
+    "description": "Quicker 2.x 新增后台屏幕录制模块，可通过会话 ID 控制无界面录制的开始、停止和状态查询。"
+  },
+  "/v2/what's-new/xaction-steps/new-csharp-file-app": {
+    "description": "Quicker 2.x 新增运行 C# 文件应用模块，使用 .NET SDK 编译运行单文件应用并支持现代 SDK 功能。"
+  },
+  "/v2/what's-new/xaction-steps/new-long-screenshot": {
+    "description": "Quicker 2.x 新增长截图模块，可选择滚动区域并输出拼接后的长图。"
+  },
+  "/v2/what's-new/xaction-steps/new-mobile-notification": {
+    "description": "Quicker 2.x 新增发送手机通知模块，可向已授权的 Android 设备发送通知并接收按钮或文本回复。"
+  },
+  "/v2/what's-new/xaction-steps/new-pdf": {
+    "description": "Quicker 2.x 新增 PDF 文件处理模块，集中提供创建、页面处理、文档信息、安全和内容叠加能力。"
+  },
+  "/v2/what's-new/xaction-steps/new-screen-capture-pro": {
+    "description": "Quicker 2.x 新增截图 Pro 模块，提供控件跟踪、渐进式选区、标注、贴图和保存结果。"
+  },
+  "/v2/what's-new/xaction-steps/new-screen-recording-ui": {
+    "description": "Quicker 2.x 新增交互式屏幕录制模块，可框选区域、使用录屏工具栏并返回录制结果。"
+  },
+  "/v2/what's-new/xaction-steps/notify": {
+    "description": "Quicker 2.x 提示消息模块改进了显示位置、持续时间、重复消息处理和交互按钮。"
+  },
+  "/v2/what's-new/xaction-steps/play-sound": {
+    "description": "Quicker 2.x 播放声音模块新增更轻柔的内置弱提醒音效。"
+  },
+  "/v2/what's-new/xaction-steps/quicker-operation": {
+    "description": "Quicker 2.x 的 Quicker 操作模块增加显示选中文本工具条等新版界面操作。"
+  },
+  "/v2/what's-new/xaction-steps/read-file": {
+    "description": "Quicker 2.x 读取文件模块改进自动编码识别，兼顾 BOM、UTF-8 与 Windows ANSI 文本。"
+  },
+  "/v2/what's-new/xaction-steps/screen-capture": {
+    "description": "Quicker 2.x 屏幕截图模块增加 UI 元素检测、截图历史，并接入新版截图后的 OCR 与翻译工具。"
+  },
+  "/v2/what's-new/xaction-steps/subprogram": {
+    "description": "Quicker 2.x 运行子程序模块改进了调用会话、取消传播和结构化调试关联。"
+  },
+  "/v2/what's-new/xaction-steps/wait-keyboard": {
+    "description": "Quicker 2.x 等待按键模块改进了动作停止和并行分支取消时的响应。"
+  },
   "/v2/xaction/concepts/action-custom-context-menu": {
     "description": "为动作设计自定义右键菜单的 Quicker 2.0 使用说明。",
     "covers": [

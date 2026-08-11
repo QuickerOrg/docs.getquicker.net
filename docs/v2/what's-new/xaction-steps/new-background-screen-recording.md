@@ -1,0 +1,17 @@
+---
+title: 新增：后台屏幕录制模块
+description: Quicker 2.x 新增后台屏幕录制模块，可通过会话 ID 控制无界面录制的开始、停止和状态查询。
+sidebar_position: 60
+quickerDocKey: v2/what's-new/xaction-steps/new-background-screen-recording
+comments: true
+---
+
+# 新增：后台屏幕录制模块
+
+“后台屏幕录制”是 2.x 新增的自动化录屏步骤。它不要求用户操作录屏工具栏，可以按屏幕、窗口或指定区域启动录制，并通过会话 ID 在后续步骤中查询或结束同一次录制。
+
+模块支持常用视频格式、帧率、画质和音频选项。开始步骤可以立即返回，让动作继续执行；停止后可以取得文件路径、时长和实际录制区域。
+
+后台录制适合定时、批量或由外部条件控制的流程。动作应妥善保存会话 ID，并为异常退出或取消路径安排停止步骤，避免遗留未结束的录制会话。
+
+参数说明见[后台屏幕录制](/v2/xaction/modules/screen-recording)。

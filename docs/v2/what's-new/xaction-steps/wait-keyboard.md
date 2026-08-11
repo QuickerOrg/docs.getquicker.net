@@ -1,0 +1,17 @@
+---
+title: 等待按键模块
+description: Quicker 2.x 等待按键模块改进了动作停止和并行分支取消时的响应。
+sidebar_position: 190
+quickerDocKey: v2/what's-new/xaction-steps/wait-keyboard
+comments: true
+---
+
+# 等待按键模块
+
+1.x 的“等待按键”在多线程步骤组中可能长时间占住分支：即使动作已中止或 WaitAny 已决定结束，等待仍要到用户按键后才退出。
+
+2.x 让等待过程接入动作的取消令牌。用户中止动作、并行分支被自动取消或运行会话结束时，模块会主动解除键盘监听并退出，不再要求额外按一次键。
+
+正常等待、按键条件和输出保持兼容；这项变化主要改善长时间等待动作的可停止性。
+
+参数说明见[等待按键](/v2/xaction/modules/waitkeyboard)。

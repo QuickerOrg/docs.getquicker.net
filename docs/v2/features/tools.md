@@ -17,7 +17,10 @@ Quicker V2 内置了一批可直接使用或在动作中调用的工具。截图
 - [图片翻译](./screenshot/image-translate.md)：截图 / 贴图图到图翻译与百度 / 有道 API 配置
 - [JS 自定义工具栏](./screenshot/toolbar-script.md)：用脚本定制工具栏，并调用子程序或启动动作
 
+## AI 设置
+
+- [统一 AI 服务与模型设置](../what's-new/ai-services-and-models.md)：配置服务连接、模型能力、用途优选和本机凭据
+
 ## 待补充
 
-- AI 相关功能入口
 - 其它内置小工具

@@ -62,8 +62,9 @@ V2 把“动作内容”和“动作出现在哪里”分开。同一个动作�
 - [运行平台、系统要求与 64 位迁移](./platform-and-compatibility.md)：.NET 10、Windows 支持范围、x64 以及脚本和组件兼容性。
 - [数据存储与同步变化](./data-and-sync.md)：按账号存储、细粒度同步、迁移和回退边界。
 - [动作存储、执行与调试](./actions.md)：结构化动作、QkEval、新组合动作引擎和调试。
+- [统一 AI 服务与模型设置](./ai-services-and-models.md)：集中管理服务连接、模型能力、用途优选和本机凭据。
 - [场景与触发方式](./scenes-and-triggers.md)：统一管理程序、网址、轮盘、手势及快捷键规则。
-- [新面板窗口](./new-main-win/usage.md)：场景、分组、置顶、批量移动和动作入口管理。
+- [新面板窗口](./new-main-win/usage.md)：场景、分组、置顶、批量移动、动作暂存和入口管理。
 - [工具与使用体验](./tools-and-experience.md)：截图、录屏、选中文本工具条、搜索等变化。
 - [不再支持的功能](./not-supported.md)：已移除能力、替代方式和迁移建议。
 

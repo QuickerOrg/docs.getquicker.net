@@ -1,6 +1,15 @@
+import fs from 'fs';
+import path from 'path';
 import {themes as prismThemes} from 'prism-react-renderer';
 import type {Config} from '@docusaurus/types';
 import type * as Preset from '@docusaurus/preset-classic';
+import type {PluginOptions as LocalSearchOptions} from '@easyops-cn/docusaurus-search-local';
+
+const isProd = process.env.NODE_ENV === 'production';
+const devSearchDir = path.join(__dirname, '.cache', 'dev-local-search');
+if (!isProd) {
+  fs.mkdirSync(devSearchDir, {recursive: true});
+}
 
 // This runs in Node.js - Don't use client-side code here (browser APIs, JSX...)
 
@@ -30,8 +39,24 @@ const config: Config = {
   markdown: {
     mermaid: true,
   },
-  themes: ['@docusaurus/theme-mermaid'],
-  plugins: ['./plugins/doc-gallery'],
+  themes: [
+    '@docusaurus/theme-mermaid',
+    [
+      '@easyops-cn/docusaurus-search-local',
+      {
+        hashed: true,
+        language: ['en', 'zh'],
+        // docs-only mode: docs are served from `/`, not `/docs`.
+        docsRouteBasePath: '/',
+        indexBlog: false,
+        indexPages: false,
+      } satisfies LocalSearchOptions,
+    ],
+  ],
+  plugins: ['./plugins/doc-gallery', './plugins/dev-local-search'],
+  staticDirectories: isProd
+    ? ['static']
+    : ['static', '.cache/dev-local-search'],
 
   // Even if you don't use internationalization, you can use this field to set
   // useful metadata like html lang. For example, if your site is Chinese, you

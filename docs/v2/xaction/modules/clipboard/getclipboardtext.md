@@ -25,7 +25,7 @@ legacyContentUpdatedAt: "2019-08-21T01:42:45.000Z"
 
 读取剪贴板中的文本格式内容。
 
-![image.png](./img/getclipboardtext-001-be2c678bbf.png "image.png")
+<ModuleParamPreview moduleKey="sys:getClipboardText" />
 
 ## 参数
 

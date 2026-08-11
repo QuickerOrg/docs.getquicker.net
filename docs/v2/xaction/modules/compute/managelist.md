@@ -38,17 +38,27 @@ legacyContentUpdatedAt: "2024-10-23T06:02:52.000Z"
 -   如果在步骤参数中启用了【解析菜单数据】选项，添加新项时会使用“编辑菜单项”窗口。此时可以用于生成带图标的[菜单数据项](/v2/xaction/concepts/action-custom-context-menu)。
 -   在“编辑菜单项”窗口中，可以选择开启“连续添加”模式。
 
-**编辑：**选中要编辑的项后，点“编辑”按钮。或者双击要编辑的项。
+**编辑**：选中要编辑的项后，点“编辑”按钮。或者双击要编辑的项。
 
-**删除：**选中要删除的项后，点“删除”按钮。按Ctrl或Shift可以多选。
+**删除**：选中要删除的项后，点“删除”按钮。按Ctrl或Shift可以多选。
 
-**排序：**用鼠标按住并拖动到新位置松开。也可点击右侧的“A-Z”“Z-A”按钮按字母顺序或倒序排列。
+**排序**：用鼠标按住并拖动到新位置松开。也可点击右侧的“A-Z”“Z-A”按钮按字母顺序或倒序排列。
 
-**重置：**将数据恢复至打开窗口时的原始状态。
+**重置**：将数据恢复至打开窗口时的原始状态。
 
 ## 参数
 
-![](./img/managelist-002-1f5433f27e.png)
+<ModuleParamPreview
+  moduleKey="sys:manageList"
+  values={{
+    parseData: 'true',
+    seperator: '|',
+    allowAdd: 'true',
+    allowEdit: 'true',
+    allowDelete: 'true',
+  }}
+  inputVars={{list: 'list'}}
+/>
 
 【列表】要管理的列表变量。
 

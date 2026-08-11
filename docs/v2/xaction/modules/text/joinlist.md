@@ -25,7 +25,7 @@ legacyContentUpdatedAt: "2020-04-02T03:01:27.000Z"
 
 此操作的相反操作是“[文本拆分成列表](/v2/xaction/modules/splitstring)”。
 
-![image.png](./img/joinlist-001-8a7b72465c.png "image.png")
+<ModuleParamPreview moduleKey="sys:joinList" />
 
 ## 参数
 

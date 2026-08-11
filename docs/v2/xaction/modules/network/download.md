@@ -23,7 +23,7 @@ legacyContentUpdatedAt: "2024-03-27T01:41:35.000Z"
 
 用于从网络下载较小的可公开下载的文件。
 
-![](./img/download-001-9a9be096e8.png)
+<ModuleParamPreview moduleKey="sys:download" />
 
 ## 参数
 
@@ -39,7 +39,7 @@ legacyContentUpdatedAt: "2024-03-27T01:41:35.000Z"
 
 格式示例：（实际需要去除不必要的请求头。）
 
-```
+```text
 Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7
 Accept-Encoding: gzip, deflate
 Accept-Language: zh,zh-CN;q=0.9,en-US;q=0.8,en;q=0.7

@@ -27,7 +27,7 @@ legacyContentUpdatedAt: "2023-07-04T10:07:42.000Z"
 
 本模块在内部使用[HtmlAgilityPack](https://html-agility-pack.net/)组件，深入使用可以参考其[文档](https://html-agility-pack.net/documentation)。
 
-![](./img/htmlextract-001-4a713e7105.png)
+<ModuleParamPreview moduleKey="sys:htmlExtract" />
 
 ## 注意
 

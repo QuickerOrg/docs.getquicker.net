@@ -29,7 +29,7 @@ legacyContentUpdatedAt: "2024-08-09T13:50:24.000Z"
 
 ## 参数
 
-![image.png](./img/sendmessage-001-176f8c3c61.png "image.png")
+<ModuleParamPreview moduleKey="sys:sendMessage" />
 
 【窗口句柄hWnd】要发送消息到的目标窗口。接收整数类型的参数。
 

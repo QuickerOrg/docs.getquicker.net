@@ -1,0 +1,116 @@
+.root {
+  --cmp-bg: var(--ifm-background-surface-color, #fff);
+  --cmp-fg: var(--ifm-font-color-base);
+  --cmp-border: var(--ifm-color-emphasis-300);
+  --cmp-hover: var(--ifm-color-emphasis-100, #f3f4f6);
+  --cmp-open: color-mix(in srgb, #2b7abf 10%, var(--cmp-hover));
+  display: inline-block;
+  max-width: 100%;
+  margin: 1rem 0;
+  font-size: 13px;
+  line-height: 1.35;
+  color: var(--cmp-fg);
+}
+
+.panelWrap {
+  position: relative;
+  display: inline-flex;
+  align-items: flex-start;
+}
+
+.panel {
+  min-width: 168px;
+  padding: 4px 0;
+  border: 1px solid var(--cmp-border);
+  border-radius: 6px;
+  background: var(--cmp-bg);
+  box-shadow: 0 4px 16px rgb(0 0 0 / 14%);
+}
+
+.item {
+  display: grid;
+  grid-template-columns: 22px minmax(0, 1fr) 14px;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 10px;
+  cursor: default;
+  user-select: none;
+}
+
+.itemOpen {
+  background: var(--cmp-open);
+}
+
+.itemDanger .label {
+  color: #b91c1c;
+}
+
+.icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 16px;
+  height: 16px;
+  font-size: 12px;
+  line-height: 1;
+}
+
+.label {
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.chevron,
+.chevronSpacer {
+  text-align: right;
+  opacity: 0.55;
+  font-size: 14px;
+}
+
+.chevronSpacer {
+  visibility: hidden;
+}
+
+.separator {
+  height: 1px;
+  margin: 4px 8px;
+  background: var(--cmp-border);
+}
+
+.flyout {
+  margin-left: 2px;
+  padding-left: 2px;
+}
+
+.tooltip,
+.tooltipBelow {
+  z-index: 2;
+  max-width: 200px;
+  padding: 4px 8px;
+  border-radius: 4px;
+  background: #4b5563;
+  color: #fff;
+  font-size: 12px;
+  white-space: nowrap;
+  box-shadow: 0 2px 8px rgb(0 0 0 / 18%);
+}
+
+.tooltip {
+  position: absolute;
+  left: calc(100% + 8px);
+  top: 8px;
+}
+
+.tooltipBelow {
+  position: absolute;
+  left: 12px;
+  top: calc(100% + 6px);
+}
+
+html[data-theme='dark'] .tooltip,
+html[data-theme='dark'] .tooltipBelow {
+  background: #9ca3af;
+  color: #111827;
+}

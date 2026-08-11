@@ -25,7 +25,7 @@ legacyContentUpdatedAt: "2019-07-16T13:50:22.000Z"
 
 也可以直接以表达式的形式写在布尔类型参数输入框中，请参考“如果”模块。
 
-![image.png](./img/numcompare-001-deb24ad530.png "image.png")
+<ModuleParamPreview moduleKey="sys:numCompare" />
 
 ## 参数
 

@@ -23,7 +23,7 @@ legacyContentUpdatedAt: "2025-02-20T23:53:47.000Z"
 
 用于快速编写连续多个键盘输入步骤。
 
-![](./img/inputscript-001-819a981cab.png)
+<ModuleParamPreview moduleKey="sys:inputScript" />
 
 注意：
 

@@ -23,7 +23,7 @@ legacyContentUpdatedAt: "2025-05-11T08:37:04.000Z"
 
 用于显示文件、变量或剪贴板中的图片。
 
-![](./img/showimage-001-30cdea8ae8.png)
+<ModuleParamPreview moduleKey="sys:showImage" />
 
 **支持的操作类型**
 
@@ -89,17 +89,30 @@ legacyContentUpdatedAt: "2025-05-11T08:37:04.000Z"
 
 ## 其它操作类型
 
-**关闭图片窗口：**关闭具有指定唯一性标识的图片窗口。
+**关闭图片窗口**：关闭具有指定唯一性标识的图片窗口。
 
-![](./img/showimage-002-88398ce2fb.png)
+<ModuleParamPreview
+  moduleKey="sys:showImage"
+  focusKeys={['source', 'autoCloseKey']}
+  values={{source: 'closeWindow', autoCloseKey: '每日一图'}}
+/>
 
-**获取图片窗口信息：**用于获取指定唯一性标识的图片窗口是否存在。
+**获取图片窗口信息**：用于获取指定唯一性标识的图片窗口是否存在。
 
-![](./img/showimage-003-8391621c0e.png)
+<ModuleParamPreview
+  moduleKey="sys:showImage"
+  focusKeys={['source', 'autoCloseKey', 'isExists', 'hwnd']}
+  values={{source: 'getState', autoCloseKey: '每日一图'}}
+/>
 
-**获取所有图片窗口标识：**获取所有已打开的图片窗口的标识列表。
+**获取所有图片窗口标识**：获取所有已打开的图片窗口的标识列表。
 
-![](./img/showimage-004-564d0a9f7c.png)
+<ModuleParamPreview
+  moduleKey="sys:showImage"
+  focusKeys={['source', 'windowIdList']}
+  values={{source: 'getImageWindows'}}
+  outputVars={{windowIdList: 'list'}}
+/>
 
 ## 图片窗口的使用
 

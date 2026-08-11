@@ -39,7 +39,7 @@ legacyContentUpdatedAt: "2024-07-01T08:24:43.000Z"
 
 对指定的目录开启一个网页服务器，可用于浏览或下载目录中的内容或向目录中上传文件。
 
-![](./img/httpserver-001-cf67b0326e.png)
+<ModuleParamPreview moduleKey="sys:httpserver" />
 
 【端口号】网页服务的端口号。
 
@@ -83,7 +83,11 @@ legacyContentUpdatedAt: "2024-07-01T08:24:43.000Z"
 
 关闭指定id的服务。
 
-![](./img/httpserver-002-29a9bd175d.png)
+<ModuleParamPreview
+  moduleKey="sys:httpserver"
+  focusKeys={['operation', 'serviceId', 'stopIfFail']}
+  values={{operation: 'CloseServer', serviceId: 'default', stopIfFail: 'true'}}
+/>
 
 参考使用方式：
 
@@ -94,7 +98,11 @@ legacyContentUpdatedAt: "2024-07-01T08:24:43.000Z"
 
 用于获取某个http服务是否在运行中，或得到所有当前运行中的web服务。
 
-![](./img/httpserver-003-ea0447642e.png)
+<ModuleParamPreview
+  moduleKey="sys:httpserver"
+  focusKeys={['operation', 'serviceId', 'stopIfFail', 'isSuccess', 'isRunning', 'serverList']}
+  values={{operation: 'GetServerState', serviceId: 'default', stopIfFail: 'true'}}
+/>
 
 【服务ID】要获取状态的http服务的标识（在创建服务时指定）。
 

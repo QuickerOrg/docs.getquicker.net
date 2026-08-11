@@ -31,7 +31,7 @@ legacyContentUpdatedAt: "2024-05-18T08:56:35.000Z"
 
 在“鼠标输入”模块中也包含“移动到位图位置”的操作类型，和本模块类似。 只是鼠标输入模块在找到位置以后会自动执行附加操作（如点击左键），但是不会返回找到的位图位置。本模块可以返回找到的位图位置，但不会执行点击等额外操作。
 
-![](./img/searchbmp-001-0ce50d3e4b.png)
+<ModuleParamPreview moduleKey="sys:searchBmp" />
 
 ## 参数
 
@@ -112,7 +112,34 @@ legacyContentUpdatedAt: "2024-05-18T08:56:35.000Z"
 
 在屏幕或窗口中找到指定颜色的首次出现位置。
 
-![](./img/searchbmp-005-9e8604d63b.png)
+<ModuleParamPreview
+  moduleKey="sys:searchBmp"
+  focusKeys={[
+    'type',
+    'color',
+    'bmpTargetType',
+    'searchRect',
+    'x',
+    'y',
+    'bmpColorError',
+    'retryCount',
+    'stopIfFail',
+    'isSuccess',
+    'firstPoint',
+  ]}
+  values={{
+    type: 'locateByColor',
+    color: '#352559',
+    bmpTargetType: 'AllScreens',
+    searchRect: '',
+    x: '0',
+    y: '0',
+    bmpColorError: '0',
+    retryCount: '1',
+    stopIfFail: 'true',
+  }}
+  outputVars={{isSuccess: 'isSuccess', firstPoint: 'position'}}
+/>
 
 **输出**
 
@@ -142,7 +169,32 @@ legacyContentUpdatedAt: "2024-05-18T08:56:35.000Z"
 -   避免出现标点符号、空格，它们容易被OCR错误识别；
 -   找字存在一定的失败几率；
 
-![](./img/searchbmp-008-53a7a59c46.png)
+<ModuleParamPreview
+  moduleKey="sys:searchBmp"
+  focusKeys={[
+    'type',
+    'searchText',
+    'bmpTargetType',
+    'searchRect',
+    'x',
+    'y',
+    'retryCount',
+    'stopIfFail',
+    'isSuccess',
+    'firstPoint',
+  ]}
+  values={{
+    type: 'locateByText',
+    searchText: '行业排名',
+    bmpTargetType: 'CurrentWindow',
+    searchRect: '',
+    x: '0',
+    y: '0',
+    retryCount: '1',
+    stopIfFail: 'true',
+  }}
+  outputVars={{isSuccess: 'isSuccess', firstPoint: 'firstPoint'}}
+/>
 
 **输出**
 

@@ -23,7 +23,7 @@ legacyContentUpdatedAt: "2022-06-16T07:03:48.000Z"
 
 用于获取单个 **键盘**\\**鼠标** 按键的按下、锁定状态，或按下、抬起某个按键。
 
-![](./img/keyoperation-001-3e1c75f42b.png)
+<ModuleParamPreview moduleKey="sys:keyoperation" />
 
 **注意**：如果按键被设置为“扩展热键”，或被Quicker用于触发功能的鼠标键，这时候按键消息会被Quicker拦截，会识别不到。这种情况下是正常的，请只用于检测没有被Quicker特殊处理的按键。
 

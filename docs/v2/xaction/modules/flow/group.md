@@ -25,7 +25,7 @@ legacyContentUpdatedAt: "2024-03-27T02:01:40.000Z"
 
 也可用于使用实现使用多线程同步方式执行内部的步骤。
 
-![](./img/group-001-25e766f8fe.png)
+<ModuleParamPreview moduleKey="sys:group" />
 
 动画演示：
 

@@ -1,0 +1,109 @@
+.root {
+  --ntp-info: #1e88e5;
+  --ntp-success: #2e7d32;
+  --ntp-warning: #ed6c02;
+  --ntp-error: #d32f2f;
+  --ntp-fg-on: #fff;
+  --ntp-radius: 6px;
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  max-width: min(560px, 100%);
+  margin: 1rem 0;
+  padding: 10px 12px;
+  border-radius: var(--ntp-radius);
+  box-shadow: 0 2px 10px rgb(0 0 0 / 18%);
+  font-size: 13px;
+  line-height: 1.45;
+  box-sizing: border-box;
+}
+
+.icon {
+  flex: 0 0 auto;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 22px;
+  height: 22px;
+  margin-top: 1px;
+  border-radius: 50%;
+  font-size: 12px;
+  font-weight: 700;
+  font-style: italic;
+  line-height: 1;
+  user-select: none;
+}
+
+.message {
+  flex: 1 1 auto;
+  min-width: 0;
+  white-space: pre-wrap;
+  word-break: break-word;
+}
+
+.close {
+  flex: 0 0 auto;
+  margin-top: -2px;
+  font-size: 16px;
+  line-height: 1;
+  opacity: 0.85;
+  user-select: none;
+}
+
+/* Solid bar (default / bottom placement) */
+.styleDefault {
+  color: var(--ntp-fg-on);
+}
+
+.styleDefault .icon {
+  border: 1.5px solid var(--ntp-fg-on);
+  color: var(--ntp-fg-on);
+  background: transparent;
+}
+
+.styleDefault.v_info {
+  background: var(--ntp-info);
+}
+.styleDefault.v_success {
+  background: var(--ntp-success);
+}
+.styleDefault.v_warning {
+  background: var(--ntp-warning);
+}
+.styleDefault.v_error {
+  background: var(--ntp-error);
+}
+
+/* White card (style 2) */
+.styleCard {
+  background: var(--ifm-background-surface-color, #fff);
+  color: var(--ifm-font-color-base);
+  border: 1px solid var(--ifm-color-emphasis-200, #e5e7eb);
+}
+
+.styleCard .icon {
+  color: #fff;
+  font-style: normal;
+}
+
+.styleCard.v_info .icon {
+  background: var(--ntp-info);
+}
+.styleCard.v_success .icon {
+  background: var(--ntp-success);
+}
+.styleCard.v_warning .icon {
+  background: var(--ntp-warning);
+}
+.styleCard.v_error .icon {
+  background: var(--ntp-error);
+}
+
+.styleCard .close {
+  color: var(--ifm-color-emphasis-600, #6b7280);
+}
+
+html[data-theme='dark'] .styleCard {
+  background: var(--ifm-background-surface-color);
+  border-color: var(--ifm-color-emphasis-300);
+}

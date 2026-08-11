@@ -25,7 +25,7 @@ legacyContentUpdatedAt: "2019-07-08T09:49:04.000Z"
 
 返回剪贴板中的文件列表。内容为所有选中文件的路径。
 
-![image.png](./img/getclipboardfiles-001-d9c7f89890.png "image.png")
+<ModuleParamPreview moduleKey="sys:getClipboardFiles" />
 
 ## 参数
 

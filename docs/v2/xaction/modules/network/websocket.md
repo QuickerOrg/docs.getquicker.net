@@ -54,7 +54,28 @@ Websocket相关操作
 
 向指定的服务器建立连接并保持。
 
-![](./img/websocket-003-208456130d.png)
+<ModuleParamPreview
+  moduleKey="sys:websocket"
+  focusKeys={[
+    'operation',
+    'server',
+    'clientId',
+    'spName',
+    'content',
+    'account',
+    'cookie',
+    'origin',
+    'callbackOnClose',
+    'isSuccess',
+  ]}
+  values={{
+    operation: 'CreateClient',
+    server: 'wss://socketsbay.com/wss/v2/2/demo/',
+    clientId: 'test',
+    spName: '消息处理',
+  }}
+  outputVars={{isSuccess: 'isSuccess'}}
+/>
 
 【服务器地址】第三方websocket服务器地址。
 
@@ -72,7 +93,12 @@ Websocket相关操作
 
 ### 向Websocket服务发送消息
 
-![](./img/websocket-004-a824988831.png)
+<ModuleParamPreview
+  moduleKey="sys:websocket"
+  focusKeys={['operation', 'clientId', 'content', 'isSuccess']}
+  values={{operation: 'SendMsgToServer', clientId: 'test'}}
+  outputVars={{isSuccess: 'isSuccess'}}
+/>
 
 ### 获取连接状态
 

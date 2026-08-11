@@ -36,7 +36,7 @@ legacyContentUpdatedAt: "2025-02-28T06:42:02.000Z"
 
 因此包含这类操作的动作仅供特定情况下使用，使用时需保持和录制时尽量相同的环境。
 
-![](./img/record-001-1659b7311d.png)
+<ModuleParamPreview moduleKey="sys:record" />
 
 运行到模块时，会自动等待2秒后自动开始录制。并在屏幕右下角显示录制控制窗口。
 

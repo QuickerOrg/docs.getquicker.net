@@ -23,7 +23,7 @@ legacyContentUpdatedAt: "2020-03-31T00:36:08.000Z"
 
 读取图片的尺寸和Exif信息。
 
-![image.png](./img/imageinfo-001-b7050eb9d3.png "image.png")
+<ModuleParamPreview moduleKey="sys:imageinfo" />
 
 ## 参数
 

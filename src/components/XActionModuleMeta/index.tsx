@@ -246,7 +246,7 @@ export default function XActionModuleMeta({moduleKey}: Props): ReactNode {
 
   if (!module) {
     return (
-      <div className={styles.root}>
+      <div className={['qk-docs-preview', styles.root].join(' ')}>
         <p className={styles.missing}>
           未找到模块定义 <code>{moduleKey}</code>。请确认已同步{' '}
           <code>data/xaction/catalog.json</code>。
@@ -256,7 +256,7 @@ export default function XActionModuleMeta({moduleKey}: Props): ReactNode {
   }
 
   return (
-    <div className={styles.root}>
+    <div className={['qk-docs-preview', styles.root].join(' ')}>
       <ModuleBody module={module} />
     </div>
   );

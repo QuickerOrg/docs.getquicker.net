@@ -23,7 +23,7 @@ legacyContentUpdatedAt: "2025-01-20T02:46:30.000Z"
 
 运行或停止指定的动作。
 
-![](./img/runaction-001-9b5781b103.png)
+<ModuleParamPreview moduleKey="sys:runAction" />
 
 ## 操作类型
 
@@ -72,7 +72,11 @@ legacyContentUpdatedAt: "2025-01-20T02:46:30.000Z"
 
 停止某个正在运行的动作。
 
-![](./img/runaction-003-728dded3e3.png)
+<ModuleParamPreview
+  moduleKey="sys:runAction"
+  focusKeys={['type', 'actionId', 'hideMessage']}
+  values={{type: 'StopAction', actionId: '等待点击', hideMessage: 'false'}}
+/>
 
 【目标动作】请参考“运行动作”操作类型中的说明。
 
@@ -82,7 +86,11 @@ legacyContentUpdatedAt: "2025-01-20T02:46:30.000Z"
 
 显示某个动作的右键菜单。
 
-![](./img/runaction-004-92465419ce.png)
+<ModuleParamPreview
+  moduleKey="sys:runAction"
+  focusKeys={['type', 'actionId', 'onlyCustomMenu']}
+  values={{type: 'ShowActionContextMenu', actionId: '', onlyCustomMenu: 'false'}}
+/>
 
 【仅显示动作的自定义菜单】仅显示动作自身定义的右键菜单项。参考：[为动作设计自定右键菜单](/v2/xaction/concepts/action-custom-context-menu)。
 
@@ -90,7 +98,11 @@ legacyContentUpdatedAt: "2025-01-20T02:46:30.000Z"
 
 再次运行当前动作。请避免循环调用或无法结束的递归。
 
-![](./img/runaction-005-216080f282.png)
+<ModuleParamPreview
+  moduleKey="sys:runAction"
+  focusKeys={['type', 'inputParam', 'wait', 'debug']}
+  values={{type: 'StartCurrentAction', inputParam: '', wait: 'true', debug: 'false'}}
+/>
 
 【调试模式运行】是否以调试模式运行当前动作。
 

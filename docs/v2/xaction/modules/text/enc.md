@@ -60,7 +60,18 @@ legacyContentUpdatedAt: "2023-06-09T12:24:24.000Z"
 
 **输出参数**
 
-![](./img/enc-003-ba5eae7780.png)
+<ModuleParamPreview
+  moduleKey="sys:enc"
+  focusKeys={[
+    'isSuccess',
+    'resultBase64',
+    'resultHex',
+    'resultLowerHex',
+    'resultText',
+  ]}
+  values={{operation: 'dec_des'}}
+  outputVars={{resultBase64: 'resultBase64', resultText: 'text'}}
+/>
 
 加解密或哈希运算后，会得到一个字节数组。由于字节数组本身不方便显示，通常需要将它们编码输出。
 

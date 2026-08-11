@@ -43,7 +43,11 @@ legacyContentUpdatedAt: "2025-01-20T00:48:35.000Z"
 
 **当前时间**
 
-![](./img/gettime-002-f8c706c680.png)
+<ModuleParamPreview
+  moduleKey="sys:getCurrentTime"
+  focusKeys={['source', 'useUtc']}
+  values={{source: 'currTime', useUtc: 'false'}}
+/>
 
 获取系统当前时间。
 
@@ -53,7 +57,16 @@ legacyContentUpdatedAt: "2025-01-20T00:48:35.000Z"
 
 从文本中解析时间。
 
-![](./img/gettime-003-8d4a1354e5.png)
+<ModuleParamPreview
+  moduleKey="sys:getCurrentTime"
+  focusKeys={['source', 'useUtc', 'timeStr', 'inputCulture', 'inputFormat']}
+  values={{
+    source: 'fromString',
+    useUtc: 'true',
+    timeStr: 'Monday, June 15, 2009',
+    inputCulture: 'en-US',
+  }}
+/>
 
 【待解析文本】需要从中获取时间的文本值。
 
@@ -65,7 +78,15 @@ legacyContentUpdatedAt: "2025-01-20T00:48:35.000Z"
 
 **从Unix时间戳转换（秒/毫秒）**
 
-![](./img/gettime-005-2780cf4098.png)
+<ModuleParamPreview
+  moduleKey="sys:getCurrentTime"
+  focusKeys={['source', 'useUtc', 'timeStampStr']}
+  values={{
+    source: 'fromUnixTimeStamp',
+    useUtc: 'true',
+    timeStampStr: '1676297270',
+  }}
+/>
 
 Unix时间戳是从1970年1月1日（UTC）开始所经过的秒数（或毫秒数）。但是实际也会遇到一些从本地时间1970年1月1日0点开始计算的时间戳。
 
@@ -73,7 +94,11 @@ Unix时间戳是从1970年1月1日（UTC）开始所经过的秒数（或毫秒�
 
 **时间变量**
 
-![](./img/gettime-006-52ec9204f6.png)
+<ModuleParamPreview
+  moduleKey="sys:getCurrentTime"
+  focusKeys={['source', 'timeVar']}
+  values={{source: 'fromVar', timeVar: 'timeVar'}}
+/>
 
 读取指定时间变量中的值。
 

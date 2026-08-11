@@ -18,9 +18,35 @@ legacyContentUpdatedAt: "2024-01-07T02:36:12.000Z"
 
 从左侧的步骤工具箱中拖放需要的模块到步骤列表中的合适位置即可添加新的步骤。
 
-![](./img/basic-001-c40d950f42.png)
+中间「步骤定义」区域示意（只读组件，不是完整编辑器窗口）：
 
-
+<StepProgramView
+  showParams
+  data={{
+    steps: [
+      {
+        key: "sys:getSelectedText",
+        outputs: {output: "selectedText", isSuccess: "selectSuccess"},
+      },
+      {
+        key: "sys:if",
+        inputs: {condition: "{selectSuccess}"},
+        ifSteps: [
+          {
+            key: "sys:openUrl",
+            inputs: {url: "$$https://www.google.com/search?q={selectedText}"},
+          },
+        ],
+        elseSteps: [
+          {
+            key: "sys:openUrl",
+            inputs: {url: "https://www.google.com"},
+          },
+        ],
+      },
+    ],
+  }}
+/>
 
 ### 模块
 

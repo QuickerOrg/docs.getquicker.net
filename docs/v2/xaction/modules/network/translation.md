@@ -51,7 +51,7 @@ legacyContentUpdatedAt: "2025-03-17T14:58:05.000Z"
 
 调用某个厂商的翻译接口。
 
-![](./img/translation-001-b0d779a0a6.png)
+<ModuleParamPreview moduleKey="sys:translation" />
 
 输出参数：
 
@@ -61,7 +61,18 @@ legacyContentUpdatedAt: "2025-03-17T14:58:05.000Z"
 
 ### 多厂商翻译
 
-![](./img/translation-002-38c9708bd3.png)
+<ModuleParamPreview
+  moduleKey="sys:translation"
+  focusKeys={['operation', 'text', 'srcLang', 'dstLang', 'vendorList', 'resultText']}
+  values={{
+    operation: 'multiple',
+    text: '获取本月剩余天数或本月已过去天数_今天菜里有肉...',
+    srcLang: 'Auto',
+    dstLang: 'Auto',
+    vendorList: 'Youdao,Baidu,Tencent,Caiyun',
+  }}
+  outputVars={{resultText: 'text'}}
+/>
 
 【厂商列表】需要选用的厂商接口标识，以英文逗号分隔。支持的接口如下：
 
@@ -93,7 +104,11 @@ legacyContentUpdatedAt: "2025-03-17T14:58:05.000Z"
 
 本接口免费。
 
-![](./img/translation-004-0da5aa4b34.png)
+<ModuleParamPreview
+  moduleKey="sys:translation"
+  focusKeys={['operation', 'text']}
+  values={{operation: 'en2zh_dict', text: 'Quick'}}
+/>
 
 **查询一个单词：**
 

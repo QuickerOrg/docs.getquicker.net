@@ -23,7 +23,7 @@ legacyContentUpdatedAt: "2025-01-20T00:45:55.000Z"
 
 检查路径是否存在、是文件还是文件夹，获取文件的基本信息。
 
-![](./img/checkpathexists-001-6e0a969ff8.png)
+<ModuleParamPreview moduleKey="sys:checkPathExists" />
 
 ## 参数
 

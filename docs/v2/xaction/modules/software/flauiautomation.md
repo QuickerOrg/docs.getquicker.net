@@ -19,6 +19,8 @@ metadataGeneratedAt: "2026-08-03 20:08:03"
 
 <XActionModuleMeta moduleKey="sys:flauiautomation" />
 
+<ModuleParamPreview moduleKey="sys:flauiautomation" />
+
 ## 使用说明
 
 本模块与[窗口界面控制](/v2/xaction/modules/uiautomation)共享基础使用说明；本页上方参数表是当前模块自身的定义。

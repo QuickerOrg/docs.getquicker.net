@@ -27,7 +27,7 @@ json是一种轻量级的数据交换格式。通常用于网络数据交换或�
 
 本模块使用[Json.Net](https://www.newtonsoft.com/json)组件的 [JToken.SelectToken](https://www.newtonsoft.com/json/help/html/SelectToken.htm) 和 JToken.SelectTokens 方法实现。深入使用请参考此组件的相关文档。
 
-![](./img/jsonextract-001-f7fb0c06b3.png)
+<ModuleParamPreview moduleKey="sys:jsonExtract" />
 
 ## 参数
 

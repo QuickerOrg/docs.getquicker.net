@@ -27,7 +27,7 @@ legacyContentUpdatedAt: "2024-04-19T13:27:14.000Z"
 
 使用此模块需要您了解http协议的有关内容。
 
-![](./img/http-001-fdf530df95.png)
+<ModuleParamPreview moduleKey="sys:http" />
 
 ##  参数
 
@@ -108,13 +108,13 @@ legacyContentUpdatedAt: "2024-04-19T13:27:14.000Z"
 
 ContentType设置为application/json。此时请求体内容应该为一个合法的json数据文本。如：
 
-```
+```json
 {"title":"test","sub":[1,2,3]}
 ```
 
 #### 使用表达式得到json格式的请求体内容
 
-```
+```csharp
 $= JsonConvert.SerializeObject(
 new
   {
@@ -136,7 +136,7 @@ new
 
 ContentType设置为x-www-form-urlencoded。类似于浏览器中的&lt;form&gt;表单。请求体数据格式类似于：
 
-```
+```text
 id=3&name=Hello&param1=value1
 ```
 
@@ -148,7 +148,7 @@ ContentType设置为multipart/form-data。数据格式为：
 
 类似于：
 
-```
+```text
 param1=value1
 param2=value2
 FileParam=FILE:文件完整路径
@@ -159,13 +159,13 @@ ImgFileParam=IMG:图片变量名
 
 如果需要上传文件，格式为：“FILE:完整文件路径”。注意冒号要小写。
 
-```
+```text
 FILE:C:\Users\Leal\Pictures\jiupian.PNG
 ```
 
 如需上传图片变量，格式为：“IMG:变量名”，冒号要小写。
 
-```
+```text
 IMG:img
 ```
 

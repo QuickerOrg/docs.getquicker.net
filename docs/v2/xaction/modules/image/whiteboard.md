@@ -25,11 +25,32 @@ legacyContentUpdatedAt: "2023-05-24T12:42:58.000Z"
 
 绘制简单图形并获得图片对象。
 
-![](./img/whiteboard-001-6f4a61285f.png)
+<ModuleParamPreview moduleKey="sys:whiteboard" />
 
 ## 参数
 
-![](./img/whiteboard-002-cb2a8248f7.png)
+<ModuleParamPreview
+  moduleKey="sys:whiteboard"
+  focusKeys={[
+    'winPosition',
+    'bgColor',
+    'penColor',
+    'enableTransparent',
+    'imageWithBackground',
+    'stopIfFail',
+    'isSuccess',
+    'result',
+  ]}
+  values={{
+    winPosition: '15%,30%,85%,70%',
+    bgColor: '#FFFFFFFF',
+    penColor: '#FFFF0000',
+    enableTransparent: 'false',
+    imageWithBackground: 'false',
+    stopIfFail: 'true',
+  }}
+  outputVars={{result: 'img'}}
+/>
 
 **输入**
 

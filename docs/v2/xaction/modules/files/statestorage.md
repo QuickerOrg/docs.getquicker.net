@@ -55,7 +55,7 @@ legacyContentUpdatedAt: "2024-01-11T04:51:48.000Z"
 
 在【操作类型】中选择“读取动作状态”。
 
-![](./img/statestorage-001-104f8dbc95.png)
+<ModuleParamPreview moduleKey="sys:stateStorage" />
 
 参数说明：
 
@@ -81,7 +81,11 @@ legacyContentUpdatedAt: "2024-01-11T04:51:48.000Z"
 
 在操作类型中选择“写入动作状态”。在表单中输入状态名和要写入的值即可。
 
-![](./img/statestorage-002-ea357b1fe5.png)
+<ModuleParamPreview
+  moduleKey="sys:stateStorage"
+  focusKeys={['type', 'key', 'value']}
+  values={{type: 'saveActionState', key: '次数标记', value: '2'}}
+/>
 
 如果写入的状态值为**\*NULL\***，则删除此状态数据。
 
@@ -146,7 +150,7 @@ legacyContentUpdatedAt: "2024-01-11T04:51:48.000Z"
 
 ### 注意事项
 
-**避免修改作为状态使用的变量的名称。**这种情况下，状态是和变量名对应的。如果修改了变量名，状态就丢失关联了，再次运行动作时会造成无法读取状态值。
+**避免修改作为状态使用的变量的名称**。这种情况下，状态是和变量名对应的。如果修改了变量名，状态就丢失关联了，再次运行动作时会造成无法读取状态值。
 
 变量对应的状态将在下面的情况下被更新：
 
@@ -173,7 +177,11 @@ legacyContentUpdatedAt: "2024-01-11T04:51:48.000Z"
 
 ![](./img/statestorage-006-7703ad2933.png)
 
-![](./img/statestorage-007-27543fdf25.png)
+<ModuleParamPreview
+  moduleKey="sys:stateStorage"
+  focusKeys={['type', 'overlayIcon']}
+  values={{type: 'UpdateOverlyIcon', overlayIcon: 'fa:Solid_Circle:#00AA00'}}
+/>
 
 参数：
 
@@ -185,7 +193,16 @@ legacyContentUpdatedAt: "2024-01-11T04:51:48.000Z"
 
 ![](./img/statestorage-008-b7bc2ad1c7.png)
 
-![](./img/statestorage-009-f33376d7a5.png)
+<ModuleParamPreview
+  moduleKey="sys:stateStorage"
+  focusKeys={['type', 'badgeText', 'badgeColor', 'badgeTextColor']}
+  values={{
+    type: 'UpdateActionBadge',
+    badgeText: '1234',
+    badgeColor: '#EE0000',
+    badgeTextColor: '#FFFFFF',
+  }}
+/>
 
 参数：
 
@@ -203,7 +220,19 @@ legacyContentUpdatedAt: "2024-01-11T04:51:48.000Z"
 
 ### 设置附加的右键菜单
 
-![](./img/statestorage-011-bfb1a07466.png)![](./img/statestorage-012-698a4bd838.png)
+![](./img/statestorage-011-bfb1a07466.png)
+
+<ModuleParamPreview
+  moduleKey="sys:stateStorage"
+  focusKeys={['type', 'actionContextMenu']}
+  values={{
+    type: 'UpdateContextMenu',
+    actionContextMenu: `[fa:Light_Flag]带图标的菜单(tooltip内容)|_qk_menu_icon_menu
+[+][fa:Light_Cog]二级菜单(提示内容...)
+[-][fa:Light_UserCircle]子菜单|_qk_menu_submenu
+[fa:Light_Wrench:#f57e42]危险动作菜单(tooltip内容)|_qk_menu_sample`,
+  }}
+/>
 
 本功能提供了一个在动作中更新右键菜单的渠道。
 

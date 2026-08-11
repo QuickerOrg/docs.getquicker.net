@@ -41,21 +41,41 @@ legacyContentUpdatedAt: "2023-11-01T08:49:47.000Z"
 
 （另一种方式是使用json:xxxx，其中xxxx为json数据）
 
-![](./img/assign-002-c20864fa49.png)
+<ModuleParamPreview
+  moduleKey="sys:assign"
+  focusKeys={['input', 'output']}
+  values={{input: 'aaa:AAA\nbbb:BBB'}}
+  outputVars={{output: 'dict'}}
+/>
 
 **赋值给布尔变量**
 
-![](./img/assign-003-ff931a79a6.png)
+<ModuleParamPreview
+  moduleKey="sys:assign"
+  focusKeys={['input', 'output']}
+  values={{input: '$= {count} > 30'}}
+  outputVars={{output: 'boo'}}
+/>
 
 **文本拼接赋值**
 
 （实际上可以在需要使用这个结果的地方直接写，不需要使用赋值模块处理一遍）
 
-![](./img/assign-004-422732fbc4.png)
+<ModuleParamPreview
+  moduleKey="sys:assign"
+  focusKeys={['input', 'output']}
+  values={{input: '$$您成功点击了 {button}。\n谢谢，{title}!'}}
+  outputVars={{output: '_message'}}
+/>
 
 **类型转换**
 
-![](./img/assign-005-b3274310c3.png)
+<ModuleParamPreview
+  moduleKey="sys:assign"
+  focusKeys={['input', 'output']}
+  values={{input: 'isTrue'}}
+  outputVars={{output: 'context'}}
+/>
 
 ## 更新说明
 

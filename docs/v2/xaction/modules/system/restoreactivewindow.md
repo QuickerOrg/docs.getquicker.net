@@ -27,4 +27,4 @@ legacyContentUpdatedAt: "2019-07-15T04:10:14.000Z"
 
 本模块用于将活动窗口恢复为运行动作之前的活动窗口，用以解决目标窗口丢失焦点的情况。（如使用了用户选择模块或在动作中切换到了别的软件等情况
 
-![image.png](./img/restoreactivewindow-001-bc83330fda.png "image.png")
+<ModuleParamPreview moduleKey="sys:restoreActiveWindow" />

@@ -25,7 +25,7 @@ legacyContentUpdatedAt: "2025-01-20T02:00:01.000Z"
 
 本模块用于移动鼠标指针、模拟鼠标点击等操作。支持多种操作类型。
 
-![](./img/mouse-001-2ceb1871c3.png)
+<ModuleParamPreview moduleKey="sys:mouse" />
 
 ### 屏幕坐标
 
@@ -71,13 +71,22 @@ Y表示垂直坐标，向下为正值增加。
 
 将鼠标指针从**当前位置**移动一定的距离（单位为像素）。X正值表示向右移动，负值表示向左移动。Y正值表示向下移动，负值表示向上移动。
 
-![](./img/mouse-003-259e1ab9ce.png)
+<ModuleParamPreview
+  moduleKey="sys:mouse"
+  focusKeys={['type', 'x', 'y']}
+  values={{type: 'move', x: '0', y: '0'}}
+/>
 
 #### 移动到（x,y分别指定）
 
 移动到某个屏幕坐标，通过2个参数分别传递x和y的坐标数值。
 
-![](./img/mouse-004-cf790dc36c.png)
+<ModuleParamPreview
+  moduleKey="sys:mouse"
+  focusKeys={['type', 'x', 'y']}
+  values={{type: 'moveTo'}}
+  inputVars={{x: 'x', y: 'y'}}
+/>
 
 #### 移动到（x、y一同指定）
 
@@ -91,13 +100,21 @@ Y表示垂直坐标，向下为正值增加。
 
 模拟鼠标按键事件。
 
-![](./img/mouse-006-a1da1407df.png)
+<ModuleParamPreview
+  moduleKey="sys:mouse"
+  focusKeys={['type', 'btn']}
+  values={{type: 'click', btn: 'left'}}
+/>
 
 #### 滚动
 
 模拟鼠标滚动事件。
 
-![](./img/mouse-007-939e6ac252.png)
+<ModuleParamPreview
+  moduleKey="sys:mouse"
+  focusKeys={['type', 'x', 'y']}
+  values={{type: 'scroll', x: '0', y: '0'}}
+/>
 
 此时可以在X、Y参数中填写数字，表示水平和垂直方向的滚动距离。
 
@@ -131,7 +148,11 @@ X表示水平滚动的click数量，正值表示向右，负值表示向左。
 -   窗口右下角
 -   窗口中心
 
-![](./img/mouse-008-c4fc515803.png)
+<ModuleParamPreview
+  moduleKey="sys:mouse"
+  focusKeys={['type', 'hWnd', 'x', 'y']}
+  values={{type: 'toWinTL', hWnd: '', x: '0', y: '0'}}
+/>
 
 【X】和【Y】参数
 
@@ -143,7 +164,11 @@ X表示水平滚动的click数量，正值表示向右，负值表示向左。
 
 效果类似于“移动到窗口位置：相对于窗口左上角”，但是使用字符串方式一同指定相对坐标。
 
-![](./img/mouse-009-b4f27cc34c.png)
+<ModuleParamPreview
+  moduleKey="sys:mouse"
+  focusKeys={['type', 'hWnd', 'xyForWin']}
+  values={{type: 'moveToWinXy', hWnd: '', xyForWin: '50%,50%'}}
+/>
 
 【相对坐标】
 
@@ -161,13 +186,28 @@ X表示水平滚动的click数量，正值表示向右，负值表示向左。
 
 与“还原鼠标位置”操作所恢复的鼠标位置一致。
 
-![](./img/mouse-010-ae623b3a82.png)
+<ModuleParamPreview
+  moduleKey="sys:mouse"
+  focusKeys={['type', 'mouseLocation', 'mouseX', 'mouseY']}
+  values={{type: 'getMouseOriginPosition'}}
+  outputVars={{mouseLocation: 'mouseLocation', mouseX: 'mouseX', mouseY: 'mouseY'}}
+/>
 
 #### 获取鼠标位置及指针类型（当前位置）
 
 获取动作执行到此步骤时的（而非弹出面板之前的）鼠标位置和指针类型。
 
-![](./img/mouse-011-2e6609b560.png)
+<ModuleParamPreview
+  moduleKey="sys:mouse"
+  focusKeys={['type', 'mouseLocation', 'mouseX', 'mouseY', 'cursorType']}
+  values={{type: 'getMouseCurrentPosition'}}
+  outputVars={{
+    mouseLocation: 'mouseLocation',
+    mouseX: 'mouseX',
+    mouseY: 'mouseY',
+    cursorType: 'cursorType',
+  }}
+/>
 
 【光标类型】
 
@@ -203,23 +243,37 @@ X表示水平滚动的click数量，正值表示向右，负值表示向左。
 
 注意：本功能已提取为单独的模块《[屏幕找图/找色/找字](/v2/xaction/modules/searchbmp)》，后续开发建议使用该模块。
 
-![](./img/mouse-013-94a0f61e30.png)
+<ModuleParamPreview
+  moduleKey="sys:mouse"
+  values={{
+    type: 'locateByBitmapVar',
+    bmpVar: 'img',
+    bmpTargetType: 'CurrentWindow',
+    bmpPosition: 'Center',
+    bmpColorError: '0',
+    maxFindCount: '100',
+    x: '0',
+    y: '0',
+    extAction: 'left',
+  }}
+  outputVars={{isSuccess: 'imgTrue'}}
+/>
 
-**位图变量/位图路径：**要在屏幕或窗口中寻找的小图；
+**位图变量/位图路径**：要在屏幕或窗口中寻找的小图；
 
-**查找范围（****当前窗口或主屏幕****）：**在哪个范围内查找图片；
+**查找范围（****当前窗口或主屏幕****）**：在哪个范围内查找图片；
 
-**定位位置：**找到图片位置后，将鼠标移动到寻找图片的左上角（如下图的A点）还是中间位置（如下图的B点）。
+**定位位置**：找到图片位置后，将鼠标移动到寻找图片的左上角（如下图的A点）还是中间位置（如下图的B点）。
 
 ![](./img/mouse-014-efb9812e0a.png)
 
-**颜色容差：**在匹配像素颜色时，对每种颜色（red、green、blue）的值在上下多少的范围内认为是匹配。0表示精确匹配，运算速度会最快。
+**颜色容差**：在匹配像素颜色时，对每种颜色（red、green、blue）的值在上下多少的范围内认为是匹配。0表示精确匹配，运算速度会最快。
 
-**最大匹配数量：**允许最多找到多少个匹配位置。当一个窗口内有多个匹配时，会对每个匹配执行“移动后操作”。
+**最大匹配数量**：允许最多找到多少个匹配位置。当一个窗口内有多个匹配时，会对每个匹配执行“移动后操作”。
 
-**X、Y：**定位位置的偏移量。定位到图片的左上角或中间位置后，可以使用这两个值对坐标偏移一定的像素数。
+**X、Y**：定位位置的偏移量。定位到图片的左上角或中间位置后，可以使用这两个值对坐标偏移一定的像素数。
 
-**移动后操作：**移动到目标位置后要进行的操作，比如点击。
+**移动后操作**：移动到目标位置后要进行的操作，比如点击。
 
 ### 示例动作
 

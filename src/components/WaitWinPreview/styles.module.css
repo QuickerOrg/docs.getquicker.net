@@ -1,0 +1,107 @@
+.root {
+  width: min(420px, 100%);
+  margin: 1rem 0;
+  overflow: hidden;
+  border: 1px solid var(--ifm-color-emphasis-300, #d1d5db);
+  border-radius: 4px;
+  background: var(--ifm-background-surface-color, #fff);
+  box-shadow: 0 8px 24px rgb(0 0 0 / 14%);
+  color: var(--ifm-font-color-base, #1f2937);
+  font-size: 14px;
+}
+
+.titleBar {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  min-height: 34px;
+  padding: 0 10px;
+  border-bottom: 1px solid var(--ifm-color-emphasis-200, #e5e7eb);
+}
+
+.logo {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 20px;
+  height: 20px;
+  border-radius: 2px;
+  background: #1687e8;
+  color: #fff;
+  font-size: 12px;
+  line-height: 1;
+}
+
+.title {
+  flex: 1;
+  min-width: 0;
+}
+
+.close {
+  color: var(--ifm-color-emphasis-600, #6b7280);
+  font-size: 18px;
+  line-height: 1;
+}
+
+.body {
+  padding: 16px 18px 18px;
+}
+
+.progress {
+  position: relative;
+  height: 28px;
+  margin-bottom: 14px;
+  overflow: hidden;
+  border: 1px solid var(--ifm-color-emphasis-400, #9ca3af);
+  background: var(--ifm-color-emphasis-100, #f3f4f6);
+}
+
+.progressValue {
+  position: absolute;
+  inset: 0 auto 0 0;
+  background: #08b72d;
+}
+
+.progressLabel {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  color: #111;
+  font-variant-numeric: tabular-nums;
+}
+
+.message {
+  margin: 4px 0 14px;
+  white-space: pre-wrap;
+}
+
+.buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.button,
+.buttonPrimary {
+  display: inline-flex;
+  min-width: 82px;
+  min-height: 36px;
+  align-items: center;
+  justify-content: center;
+  padding: 6px 16px;
+  border: 1px solid #3493f5;
+  background: var(--ifm-background-surface-color, #fff);
+}
+
+.buttonPrimary {
+  border-color: #1677ff;
+  background: #1677ff;
+  color: #fff;
+}
+
+html[data-theme='dark'] .progressLabel {
+  color: #f9fafb;
+}

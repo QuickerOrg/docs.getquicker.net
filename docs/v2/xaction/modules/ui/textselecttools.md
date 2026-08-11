@@ -23,7 +23,7 @@ legacyContentUpdatedAt: "2023-03-26T05:50:32.000Z"
 
 用于选取某项内容并得到对应的文本值。
 
-![](./img/textselecttools-001-2a21b8f41c.png)
+<ModuleParamPreview moduleKey="sys:textSelectTools" />
 
 功能类似于“表单”窗口或“用户输入”窗口的“文本选择工具”：
 

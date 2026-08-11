@@ -23,7 +23,7 @@ legacyContentUpdatedAt: "2023-02-04T13:19:28.000Z"
 
 获取指定窗口的标题等信息。
 
-![](./img/getwindowtitle-001-4d31c8bf24.png)
+<ModuleParamPreview moduleKey="sys:getWindowTitle" />
 
 ## 参数
 

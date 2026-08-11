@@ -23,7 +23,7 @@ legacyContentUpdatedAt: "2023-02-07T00:57:07.000Z"
 
 用于获取某个字符的Unicode编码信息/汉字的拼音信息。
 
-![](./img/charinfo-001-df6405de7e.png)
+<ModuleParamPreview moduleKey="sys:charInfo" />
 
 ## 参数
 

@@ -35,7 +35,7 @@ legacyContentUpdatedAt: "2025-12-23T08:07:51.000Z"
 
 显示操作窗后继续执行后面的步骤。
 
-![](./img/custompanel-001-bf8bac5196.png)
+<ModuleParamPreview moduleKey="sys:custompanel" />
 
 ### 参数
 
@@ -92,7 +92,7 @@ legacyContentUpdatedAt: "2025-12-23T08:07:51.000Z"
 
 注：按钮的右键菜单缩进比按钮本身的缩进多一级。
 
-```
+```text
 [fa:Light_Play]执行动作|operation=action&data=Hello&action=自定义操作窗示例
 [fa:Light_Pen]子程序|operation=sp&data=Hello&spname=testsp&num=100
 [icon:c:\windows\notepad.exe]记事本|operation=run&data=notepad
@@ -115,7 +115,7 @@ legacyContentUpdatedAt: "2025-12-23T08:07:51.000Z"
 
 例如：
 
-```
+```text
 父操作项
     - =|operation=xxxx......
 ```
@@ -126,7 +126,7 @@ legacyContentUpdatedAt: "2025-12-23T08:07:51.000Z"
 
 如果需要注释某一行，可以在缩进后添加`////`字符。此时该行以及它所有子节点会被注释。
 
-```
+```text
 aaaaa
   ////bbbb
   cccc
@@ -153,7 +153,7 @@ aaaaa
 
 **JSON格式：**
 
-```
+```json
       {
         "Title": "执行动作",
         "Icon": "fa:Light_Play",
@@ -172,7 +172,7 @@ aaaaa
 
 **表达式创建：**
 
-```
+```csharp
 $=new CommonOperationItem(){
     Title = "执行动作",
     Icon = "fa:Light_Pen:#000000",
@@ -200,7 +200,7 @@ $=new CommonOperationItem(){
 
 ![](./img/custompanel-010-3fdf7bc8cb.png)
 
-**【默认Operation】**可以为空。
+**【默认Operation】** 可以为空。
 
 默认的操作项Operation值，在1.38.23+版本中，也支持附带更多默认参数值。
 
@@ -222,7 +222,19 @@ $=new CommonOperationItem(){
 -   [示例：默认Operation](https://getquicker.net/Sharedaction?code=62cb23a0-fdc5-4616-9791-08db3d4a9dcd)
 -   [文字窗](https://getquicker.net/Sharedaction?code=c132bcb5-9cc1-476d-eba4-08db754ee2c2)
 
-![](./img/custompanel-011-77de9b3650.png)
+<ModuleParamPreview
+  moduleKey="sys:custompanel"
+  focusKeys={['operation', 'operationData', 'defaultOperation', 'spacingStr']}
+  values={{
+    operation: 'show_fixed_panel',
+    operationData: `[fa:Light_Copy:#009900]复制(请选中内容后操作)|^c
+[fa:Light_Paste:#009900]粘贴(粘贴剪贴板内容)|^v
+[fa:Light_Save]保存|^s
+[fa:Light_FolderOpen]打开|^o`,
+    defaultOperation: 'sendkeys',
+    spacingStr: '5',
+  }}
+/>
 
 注：
 
@@ -230,7 +242,7 @@ $=new CommonOperationItem(){
 
 #### 其它参数
 
-**【默认Operation】**默认的Operation值或参数组合。提供此值时，操作项可以直接通过“\[图标\]标题(提示)|data”的形式定义。此参数主要用于减少在操作项定义中输入重复的参数。
+**【默认Operation】** 默认的Operation值或参数组合。提供此值时，操作项可以直接通过“\[图标\]标题(提示)|data”的形式定义。此参数主要用于减少在操作项定义中输入重复的参数。
 
 例如：
 
@@ -243,7 +255,7 @@ $=new CommonOperationItem(){
 
 可选格式1：输入1个数字，如`5` =&gt; 四个边都是5；格式2：逗号分隔的2个数字，如`10,5` =&gt; 左右10，上下5;
 
-**【按钮内边距】**按钮内部的边框留白宽度。
+**【按钮内边距】** 按钮内部的边框留白宽度。
 
 可选格式：格式1：`5`\=&gt; 四个边都是5；格式2：`10,5` =&gt; 左右10，上下5; 格式3：`7,8,9,10` =&gt; 分别指定左上右下4边边距。
 
@@ -271,7 +283,7 @@ $=new CommonOperationItem(){
 
 ![](./img/custompanel-015-b3f998ff26.png)
 
-**【选择标签分组】**使用标签页分组方式时，在显示操作窗时自动切换到指定的标签页。留空表示默认（通常显示上次关闭时的标签页）。
+**【选择标签分组】** 使用标签页分组方式时，在显示操作窗时自动切换到指定的标签页。留空表示默认（通常显示上次关闭时的标签页）。
 
 **【操作窗标题】** 窗口左上角的标题文字。
 
@@ -287,9 +299,9 @@ $=new CommonOperationItem(){
 
 特别的，当操作方式为“显示操作窗并等待关闭”，并且输出了“选择的操作项数据”或“选择的操作项”时，如果通过点击窗口右上角的关闭按钮或双击空白区域等方式关闭了窗口，则视为步骤执行失败。如需继续执行后续的步骤，请取消本选项。
 
-**【窗口位置】**选择操作窗的显示位置类型。
+**【窗口位置】** 选择操作窗的显示位置类型。
 
-**【窗口尺寸/位置】**与“窗口位置”参数结合使用。在“窗口位置”参数选择“自定义位置”时，指定窗口的坐标范围。其他情况指定窗口的尺寸。
+**【窗口尺寸/位置】** 与“窗口位置”参数结合使用。在“窗口位置”参数选择“自定义位置”时，指定窗口的坐标范围。其他情况指定窗口的尺寸。
 
 可以使用百分比或像素值。如：
 
@@ -301,21 +313,21 @@ $=new CommonOperationItem(){
 
 支持增加!(英文半角叹号)前缀表示禁止调整操作窗大小。如：`!300,200`创建固定大小的窗口。(1.39.42+)
 
-**【记忆位置等状态】**保存操作窗的位置、分组折叠展开状态、当前标签页等信息，并在下次显示此操作窗时自动使用之前的状态。
+**【记忆位置等状态】** 保存操作窗的位置、分组折叠展开状态、当前标签页等信息，并在下次显示此操作窗时自动使用之前的状态。
 
-**【按钮内容对齐方式】**按钮中的图标和文字的对齐方向。
+**【按钮内容对齐方式】** 按钮中的图标和文字的对齐方向。
 
-**【背景颜色】**操作窗的背景颜色。
+**【背景颜色】** 操作窗的背景颜色。
 
-**【按钮颜色】**按钮的背景颜色。使用自定义按钮颜色后，鼠标悬浮时的颜色对比就会变得不是很明显了。
+**【按钮颜色】** 按钮的背景颜色。使用自定义按钮颜色后，鼠标悬浮时的颜色对比就会变得不是很明显了。
 
-**【字体大小】**按钮文字字体大小（逻辑像素数）。
+**【字体大小】** 按钮文字字体大小（逻辑像素数）。
 
-**【图标大小】**按钮图标大小（逻辑像素数）。
+**【图标大小】** 按钮图标大小（逻辑像素数）。
 
-**【窗口右键菜单】**必要时用于自定义窗口的右键菜单内容。 格式与“操作项定义”一致。
+**【窗口右键菜单】** 必要时用于自定义窗口的右键菜单内容。 格式与“操作项定义”一致。
 
-**【自动关联到进程】**指定自动关联的进程名。关联进程后，只有该进程在前台时，操作窗才显示。
+**【自动关联到进程】** 指定自动关联的进程名。关联进程后，只有该进程在前台时，操作窗才显示。
 
 绑定多个进程时，可使用英文半角分号或逗号隔开，如`notepad;winword;excel`。
 
@@ -329,15 +341,15 @@ $=new CommonOperationItem(){
 
 ### 操作窗的使用
 
-**折叠：**点击标题栏最小化按钮，或双击标题栏或窗口内部，可将操作窗折叠为一个横条。也可使用轮盘、手势的窗口最小化、最大化功能来折叠。
+**折叠**：点击标题栏最小化按钮，或双击标题栏或窗口内部，可将操作窗折叠为一个横条。也可使用轮盘、手势的窗口最小化、最大化功能来折叠。
 
 ![](./img/custompanel-018-b804d0da00.gif)
 
-**拖动位置：**按住标题栏或窗口空白区域即可拖动窗口。
+**拖动位置**：按住标题栏或窗口空白区域即可拖动窗口。
 
 ![](./img/custompanel-019-2dc1e745b0.gif)
 
-**切换分组：**点击标签页，或在标签页标题区使用滚轮可以快速切换页面。
+**切换分组**：点击标签页，或在标签页标题区使用滚轮可以快速切换页面。
 
 ![](./img/custompanel-020-9fff24356a.png)
 
@@ -403,7 +415,11 @@ $=new CommonOperationItem(){
 
 通过指定“窗口标识”的方式，关闭前面步骤打开的操作窗。
 
-![](./img/custompanel-029-31bc785395.png)
+<ModuleParamPreview
+  moduleKey="sys:custompanel"
+  focusKeys={['operation', 'windowId', 'stopIfFail', 'isSuccess']}
+  values={{operation: 'close_fixed_panel', windowId: 'hello_world', stopIfFail: 'true'}}
+/>
 
 ## 注意事项
 

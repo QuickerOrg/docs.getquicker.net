@@ -23,7 +23,7 @@ legacyContentUpdatedAt: "2019-07-14T10:39:54.000Z"
 
 比较两段文本是否符合指定的关系。
 
-![image.png](./img/strcompare-001-18c7a14ad8.png "image.png")
+<ModuleParamPreview moduleKey="sys:strCompare" />
 
 ## 参数
 

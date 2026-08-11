@@ -38,7 +38,7 @@ legacyContentUpdatedAt: "2024-08-08T13:46:01.000Z"
 
 **前置条件：**
 
--   Office 系列软件需要开启**【信任对 VBA 工程对象模型的访问】**选项。
+-   Office 系列软件需要开启**【信任对 VBA 工程对象模型的访问】** 选项。
 -   WPS 软件需要安装VBA模块，并开启【信任对于“Visual Basic项目”的访问】选项。
 -   以上选项开启方法请[参考本文](https://getquicker.net/KC/Kb/Article/1049)。
 
@@ -53,9 +53,9 @@ legacyContentUpdatedAt: "2024-08-08T13:46:01.000Z"
 
 ### 参数
 
-![](./img/officehelper-001-8325e10f8e.png)
+<ModuleParamPreview moduleKey="sys:officehelper" />
 
-**【应用程序】**选择要执行VBA代码的程序。
+**【应用程序】** 选择要执行VBA代码的程序。
 
 支持如下选项：
 
@@ -66,7 +66,7 @@ legacyContentUpdatedAt: "2024-08-08T13:46:01.000Z"
 -   如需执行文档中已有的宏，填写宏的名称。
 -   否则填写完整的宏代码。通常是这样的格式：
 
-```
+```text
 Sub 宏名称()
     '宏代码
 End Sub
@@ -76,7 +76,7 @@ End Sub
 
 如需返回内容，请声明Function。如下示例返回Word文档路径：
 
-```
+```text
 Function GetDocumentFullName() As String
    GetDocumentFullName = ActiveDocument.FullName
 End Function
@@ -110,7 +110,21 @@ End Function
 
 ### 参数
 
-![](./img/officehelper-003-f16a44bf1c.png)
+<ModuleParamPreview
+  moduleKey="sys:officehelper"
+  focusKeys={['operation', 'appType', 'formats', 'waitResp', 'stopIfFail', 'isSuccess']}
+  values={{
+    operation: 'setFormats',
+    appType: 'word',
+    formats: `selection
+  .Font
+    .Name = "仿宋"
+    .NameAscii = "Arial Black"
+    .Size = 40`,
+    waitResp: 'true',
+    stopIfFail: 'true',
+  }}
+/>
 
 **【应用程序】**
 
@@ -157,7 +171,7 @@ End Function
 
 示例：
 
-```
+```text
 Styles.正文
   .Font
     .Name = "仿宋"
@@ -193,7 +207,7 @@ Styles.标题 3
 
 公文排版标准对各级别标题的样式做了规定。 因此，可以根据段落的文字内容倒推判断其所对应的标题级别，。设置方法：
 
-```
+```text
 StyleByText
   .样式名1 = "正则表达式(C#语法)"
   .样式名2 = "正则表达式(C#语法)"
@@ -202,7 +216,7 @@ StyleByText
 
 示例：
 
-```
+```text
 StyleByText
   .标题 1 = "^\s*[一二三四五六七八九十]{1,3}、[^\r]*"
   .标题 2 = "^\s*（[一二三四五六七八九十]{1,3}）[^\r]*"
@@ -214,28 +228,28 @@ StyleByText
 
 设置选中内容的样式：
 
-```
+```text
 selection
   .style = "标题 1"
 ```
 
 清除选中内容的格式 (结尾的冒号表示调用方法）：
 
-```
+```text
 Selection
   .ClearFormatting:
 ```
 
 设置高亮显示颜色（[可选值](https://learn.microsoft.com/en-us/office/vba/api/word.wdcolorindex)）：
 
-```
+```text
 selection
   .Range.HighlightColorIndex = wdYellow
 ```
 
 #### PageSetup 页面设置
 
-```
+```text
 PageSetup
         .LineNumbering.Active = False
         .Orientation = wdOrientPortrait
@@ -268,7 +282,7 @@ PageSetup
 
 长度/尺寸数值可以直接使用VBA代码中的`CentimetersToPoints(厘米数)`，也可以使用`5.2cm`这样的格式。如使用下面的代码设置一个常规公文文档的页边距：
 
-```
+```text
 PageSetup
         .TopMargin = 3.7cm
         .BottomMargin = 3.5cm
@@ -294,7 +308,7 @@ PageSetup
 
 设置幻灯片大小为A4纸张，水平方向：
 
-```
+```text
 pagesetup
   .SlideSize = ppSlideSizeA4Paper
   .Slideorientation = msoOrientationHorizontal
@@ -302,7 +316,7 @@ pagesetup
 
 设置选中对象的文字字体
 
-```
+```text
 selection.font
     .name = "黑体"
     .size = 20
@@ -311,7 +325,7 @@ selection.font
 
 选中的图形快速对齐到左半屏：
 
-```
+```text
 selection.shapes
   .left = 0
   .top = 0
@@ -323,7 +337,7 @@ selection.shapes
 
 相对于幻灯片横向分布选中的图形（调用[ShapeRange.Distribute](https://learn.microsoft.com/en-us/office/vba/api/powerpoint.shaperange.distribute)方法）：
 
-```
+```text
 selection.shapes
   .Distribute: msoDistributeHorizontally, msoTrue
 ```
@@ -338,7 +352,12 @@ selection.shapes
 
 当“应用程序”参数选择“xxxx 或 xxxx”时，模块会判断前台进程名称返回对应的ProgID。
 
-![](./img/officehelper-004-a91d979752.png)
+<ModuleParamPreview
+  moduleKey="sys:officehelper"
+  focusKeys={['operation', 'appType', 'stopIfFail', 'isSuccess', 'progId']}
+  values={{operation: 'getProgId', appType: 'excel_et', stopIfFail: 'true'}}
+  outputVars={{progId: 'progId'}}
+/>
 
 示例动作：
 

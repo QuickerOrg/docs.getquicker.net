@@ -60,7 +60,7 @@ C# 代码传入低权限代理进程（LPAgent）中执行。跨进程时无法�
 
 代码直接在 Quicker 进程中执行，可通过 `context` 访问动作变量。
 
-![](./img/csscript-001-6e3afcb65c.png)
+<ModuleParamPreview moduleKey="sys:csscript" />
 
 ### 直接编写脚本（推荐）
 

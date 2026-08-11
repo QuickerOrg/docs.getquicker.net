@@ -25,7 +25,7 @@ legacyContentUpdatedAt: "2019-07-17T00:36:55.000Z"
 
 GUID一般在编程中使用。
 
-![image.png](./img/newguid-001-22dc5f0a30.png "image.png")
+<ModuleParamPreview moduleKey="sys:newGuid" />
 
 ## 参数
 

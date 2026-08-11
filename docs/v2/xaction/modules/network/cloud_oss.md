@@ -38,7 +38,7 @@ legacyContentUpdatedAt: "2024-12-06T06:30:48.000Z"
 
 在使用本模块之前，您需要有云服务商的账号及相关访问凭据、创建好存储桶(Bucket)、设置好自定义域名。每种厂商具有自己特定的设置参数，请参考下面的详细说明。Bucket需要设置为公共可读才能通过浏览器访问。
 
-![](./img/cloud_oss-001-5d95af09f4.png)
+<ModuleParamPreview moduleKey="sys:cloud_oss" />
 
 ## 参数
 
@@ -82,7 +82,7 @@ legacyContentUpdatedAt: "2024-12-06T06:30:48.000Z"
 
 ### 阿里云
 
-```
+```text
 Endpoint:服务节点网址，如：https://oss-cn-beijing.aliyuncs.com
 AccessKey:您的AccessKey（建议设立专用子账号并使用其AccessKey和AccessKeySecret）
 AccessKeySecret:您的AccessKeySecret
@@ -99,7 +99,7 @@ Bucket管理网址：[https://oss.console.aliyun.com/bucket](https://oss.console
 
 ### 腾讯云
 
-```
+```text
 BucketName:存储桶名称，如 test-13005123456
 Region:节点名称，如ap-beijing
 AppId:账号的AppID，在账号信息中查看，可以为空
@@ -122,7 +122,7 @@ SecretId 和 SecretKey：
 
 ### 七牛云
 
-```
+```text
 Zone:存储区域ID，如z2，参见https://developer.qiniu.com/kodo/1671/region-endpoint-fq
 UseHttps:true 是否使用https上传
 UseCdnDomains:true  是否使用CDN加速上传

@@ -29,4 +29,4 @@ legacyContentUpdatedAt: "2021-10-06T14:07:29.000Z"
 
 如果失败了，会尝试模拟Ctrl+L跳转到地址栏复制网址。
 
-![](./img/getchromeurl-001-0d486d352e.png)
+<ModuleParamPreview moduleKey="sys:getChromeUrl" />

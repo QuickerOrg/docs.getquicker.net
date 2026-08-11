@@ -25,7 +25,7 @@ legacyContentUpdatedAt: "2022-06-17T01:44:17.000Z"
 
 向Rhino软件发送命令或脚本。
 
-![](./img/rhinocontrol-001-33e73dbbca.png)
+<ModuleParamPreview moduleKey="sys:rhinocontrol" />
 
 【操作类型】
 

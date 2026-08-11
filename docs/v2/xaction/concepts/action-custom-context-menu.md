@@ -35,8 +35,6 @@ legacyContentUpdatedAt: "2024-04-28T03:06:29.000Z"
 -   点击菜单时，运行动作并给动作传递某个特定的参数。
 -   在动作中判断参数变量quicker\_in\_param的值，根据对应的菜单项执行某个操作。
 
-
-
 ![](./img/action-custom-context-menu-001-8e5e2322bf.png)
 
 
@@ -82,7 +80,7 @@ legacyContentUpdatedAt: "2024-04-28T03:06:29.000Z"
 
 示例：
 
-```
+```text
 [fa:Light_Cog:#FF0000]设置
   [fa:Light_Cog:#FF0000]设置项1|参数值1
     [fa:Light_Cog:#FF0000]设置项11|参数值11
@@ -92,7 +90,29 @@ legacyContentUpdatedAt: "2024-04-28T03:06:29.000Z"
 
 对应的菜单：
 
-![](./img/action-custom-context-menu-005-268e6fc45d.png)
+<ContextMenuPreview
+  openPath={['设置', '设置项1']}
+  items={[
+    {label: '编辑', icon: '✎', iconColor: '#2b7abf'},
+    {label: '调试运行', icon: '▶', iconColor: '#ed6c02'},
+    {
+      label: '设置',
+      icon: '⚙',
+      iconColor: '#d32f2f',
+      children: [
+        {
+          label: '设置项1',
+          icon: '⚙',
+          iconColor: '#d32f2f',
+          children: [{label: '设置项11', icon: '⚙', iconColor: '#d32f2f'}],
+        },
+        {label: '设置项2', icon: '⚙', iconColor: '#d32f2f', children: [{label: '设置项21'}]},
+      ],
+    },
+    {label: '悬浮', icon: '⇪', iconColor: '#2b7abf', children: [{label: '…'}]},
+    {label: '分享', icon: '⛓', iconColor: '#2b7abf', children: [{label: '…'}]},
+  ]}
+/>
 
 **符号标记格式**
 
@@ -105,7 +125,7 @@ legacyContentUpdatedAt: "2024-04-28T03:06:29.000Z"
 
 例子（网址[https://getquicker.net/sharedaction?code=85e2fa76-4bfb-4e1b-aa78-08d80d33b91a](https://getquicker.net/sharedaction?code=85e2fa76-4bfb-4e1b-aa78-08d80d33b91a)）：
 
-```
+```text
 ////注释内容
 无图标菜单|_qk_menu_no_icon
 带Tooltip的菜单(tooltip内容)|_qk_menu_tooltip
@@ -131,7 +151,11 @@ legacyContentUpdatedAt: "2024-04-28T03:06:29.000Z"
 
 使用“如果”模块，判断动作参数的值是否为某个菜单项的参数值：
 
-![](./img/action-custom-context-menu-007-bd149697b2.png)
+<ModuleParamPreview
+  moduleKey="sys:if"
+  focusKeys={['condition']}
+  values={{condition: '$= {quicker_in_param} == "_qk_menu_no_icon"'}}
+/>
 
 如果是的话，就执行对应的操作即可。
 
@@ -149,7 +173,7 @@ legacyContentUpdatedAt: "2024-04-28T03:06:29.000Z"
 
 ## 调试右键菜单项
 
-**方式1：**按右侧Shift键点击菜单项，可以启动调试运行模式。
+**方式1**：按右侧Shift键点击菜单项，可以启动调试运行模式。
 
 ![](./img/action-custom-context-menu-008-1d7066caf4.png)
 
@@ -157,7 +181,7 @@ legacyContentUpdatedAt: "2024-04-28T03:06:29.000Z"
 
 
 
-**方式2：**创建一个新的动作，在动作中使用“运行其他动作”模块，指定要传递的参数内容和是否启动调试模式。
+**方式2**：创建一个新的动作，在动作中使用“运行其他动作”模块，指定要传递的参数内容和是否启动调试模式。
 
 ![](./img/action-custom-context-menu-009-fdb648dc2c.png)
 

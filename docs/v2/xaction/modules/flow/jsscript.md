@@ -29,7 +29,7 @@ legacyContentUpdatedAt: "2024-07-01T23:59:07.000Z"
 
 示例脚本：
 
-```
+```javascript
 // 主函数 exec()
 function exec(){
  var localName = quickerGetVar('name');  // 读取name变量值, (name 是动作里的变量)
@@ -38,7 +38,7 @@ function exec(){
 }
 ```
 
-![](./img/jsscript-001-b2a7879d59.png)
+<ModuleParamPreview moduleKey="sys:jsscript" />
 
 ## 模块参数
 
@@ -70,7 +70,7 @@ js代码中支持以下预置的方法（v1.43.7+）：
 
 使用 `quickerGetVar` 全局函数读取动作中的变量的值。仅支持一部分变量类型，具体请参考jurassic文档。
 
-```
+```javascript
 var localVar = quickerGetVar('动作里的变量名');
 ```
 
@@ -78,7 +78,7 @@ var localVar = quickerGetVar('动作里的变量名');
 
 使用 `quickerSetVar` 函数将新的值写入变量中。仅支持一部分变量类型，具体请参考jurassic文档。
 
-```
+```javascript
 quickerSetVar('动作里的变量名', 新的值);
 ```
 

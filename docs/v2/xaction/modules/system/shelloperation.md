@@ -35,7 +35,12 @@ legacyContentUpdatedAt: "2023-08-17T06:49:24.000Z"
 -   有一些菜单有对应的**动词**（verb），可以通过**动词**调用这些菜单。没有动词的菜单可以尝试通过菜单标题文字触发。
 -   Shell菜单都是Windows或安装的软件在系统中注册的。如果没有安装对应的软件，则无法找到或运行这些菜单项。
 
-![](./img/shelloperation-002-d9f5f22620.png)
+<ModuleParamPreview
+  moduleKey="sys:shelloperation"
+  focusKeys={['operation', 'pathOrExt', 'isSuccess', 'titles']}
+  values={{operation: 'gettitles', pathOrExt: ''}}
+  outputVars={{titles: 'verbs'}}
+/>
 
 ## 支持的操作类型
 
@@ -43,7 +48,12 @@ legacyContentUpdatedAt: "2023-08-17T06:49:24.000Z"
 
 用于获取某个具体文件、文件夹或文件类型的可用动词列表。
 
-![](./img/shelloperation-003-4fe3f5bdad.png)
+<ModuleParamPreview
+  moduleKey="sys:shelloperation"
+  focusKeys={['operation', 'pathOrExt', 'stopIfFail', 'isSuccess', 'verbs']}
+  values={{operation: 'getverb', pathOrExt: '$={file}'}}
+  outputVars={{verbs: 'verbs'}}
+/>
 
 参数说明：
 
@@ -68,7 +78,12 @@ legacyContentUpdatedAt: "2023-08-17T06:49:24.000Z"
 
 对选定的（一个或多个）文件或文件夹执行动词。
 
-![](./img/shelloperation-005-83133c29d7.png)
+<ModuleParamPreview
+  moduleKey="sys:shelloperation"
+  focusKeys={['operation', 'pathList', 'verb', 'stopIfFail', 'isSuccess']}
+  values={{operation: 'execverb'}}
+  inputVars={{pathList: 'files', verb: 'verb'}}
+/>
 
 输入参数：
 
@@ -90,13 +105,23 @@ legacyContentUpdatedAt: "2023-08-17T06:49:24.000Z"
 
 与“获取文件可用的动词列表”类似，只是输出的是菜单标题。
 
-![](./img/shelloperation-007-730692db99.png)
+<ModuleParamPreview
+  moduleKey="sys:shelloperation"
+  focusKeys={['operation', 'pathOrExt', 'stopIfFail', 'isSuccess', 'titles']}
+  values={{operation: 'gettitles', pathOrExt: '$={files}[0]'}}
+  outputVars={{titles: 'menuList'}}
+/>
 
 ### 对文件执行菜单（指定菜单标题）
 
 通过标题文字指定要执行的菜单项。
 
-![](./img/shelloperation-008-3c07cab7a1.png)
+<ModuleParamPreview
+  moduleKey="sys:shelloperation"
+  focusKeys={['operation', 'pathList', 'title', 'stopIfFail', 'isSuccess']}
+  values={{operation: 'execbytitle', title: '打开(o)'}}
+  inputVars={{pathList: 'files'}}
+/>
 
 参数：
 
@@ -116,7 +141,12 @@ legacyContentUpdatedAt: "2023-08-17T06:49:24.000Z"
 
 参数：
 
-![](./img/shelloperation-010-7cdb57adca.png)
+<ModuleParamPreview
+  moduleKey="sys:shelloperation"
+  focusKeys={['operation', 'pathList', 'stopIfFail', 'isSuccess']}
+  values={{operation: 'showmenu'}}
+  inputVars={{pathList: 'files'}}
+/>
 
 【文件路径列表】文件或文件夹的完整路径列表。它们需要位于相同的父目录下。
 

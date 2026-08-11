@@ -21,11 +21,18 @@ legacyContentUpdatedAt: "2024-10-29T00:01:11.000Z"
 
 <XActionModuleMeta moduleKey="sys:MsgBox" />
 
+<ModuleParamPreview moduleKey="sys:MsgBox" />
+
 ## 概述
 
 显示一个向用户提示或确认信息的对话框，就像你会经常在各种程序里看到的那样：
 
-![](./img/msgbox-001-500a449d86.png)
+<MsgBoxPreview
+  title="Quicker"
+  icon="question"
+  message={"Hello. 你好，这是一条弹窗提示消息。\n两个结果选一个哦~"}
+  buttons={['确定', '取消']}
+/>
 
 这个对话框会占用焦点，并且会在手动关闭之前一直显示在屏幕上。动作也会停留在这个步骤，等待关闭后再继续执行。
 

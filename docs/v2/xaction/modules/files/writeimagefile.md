@@ -25,7 +25,7 @@ legacyContentUpdatedAt: "2020-10-26T11:02:29.000Z"
 
 支持的图片格式类型：.jpg, .png, .bmp, .tiff
 
-![image.png](./img/writeimagefile-001-137bd918a2.png "image.png")
+<ModuleParamPreview moduleKey="sys:WriteImageFile" />
 
 ## 参数
 

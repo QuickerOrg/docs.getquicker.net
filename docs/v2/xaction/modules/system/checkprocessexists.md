@@ -23,7 +23,7 @@ legacyContentUpdatedAt: "2021-08-03T05:28:28.000Z"
 
 检查某个软件是否在运行中（检查系统中存在指定名称的进程）。
 
-![](./img/checkprocessexists-001-6ffeec057f.png)
+<ModuleParamPreview moduleKey="sys:checkProcessExists" />
 
 ## 参数
 

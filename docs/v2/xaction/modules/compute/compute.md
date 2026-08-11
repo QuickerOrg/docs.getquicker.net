@@ -28,7 +28,7 @@ legacyContentUpdatedAt: "2021-04-11T23:43:30.000Z"
 -   3\*5+20  （结果为35）
 -   15&gt;6    (结果为True）
 
-![image.png](./img/compute-001-dd8bbddf6c.png "image.png")
+<ModuleParamPreview moduleKey="sys:compute" />
 
 可以结合[插值语法](/v2/xaction/concepts/interpolation)将变量的值替换到表达式中。例如表达式为：“$$  &#123;变量a&#125; &gt; 5 and &#123;变量a&#125; &lt; 20” ，如果 变量a 的值为 30，那么表达式在插值后变为“30 &gt; 5 and 30 &lt; 20” ，其结果为false。（插值后得到文本表达式，然后计算这个表达式得到最终结果）
 
@@ -36,9 +36,9 @@ legacyContentUpdatedAt: "2021-04-11T23:43:30.000Z"
 
 ### 输入参数
 
-**【表达式】**表示需要计算的数学公式。
+**【表达式】** 表示需要计算的数学公式。
 
-**【增强模式】**强模式支持变量和C#语言的Math类。
+**【增强模式】** 强模式支持变量和C#语言的Math类。
 
 ### 输出
 
@@ -82,7 +82,7 @@ legacyContentUpdatedAt: "2021-04-11T23:43:30.000Z"
 
 #### 普通模式支持的函数
 
-**注：**结果中的 M 代表 Decimal 类型，d 代表 Double 类型，是不同精度的有理数。
+**注**：结果中的 M 代表 Decimal 类型，d 代表 Double 类型，是不同精度的有理数。
 
 | 函数名 | 描述 | 用例 | 用例结果 |
 | --- | --- | --- | --- |

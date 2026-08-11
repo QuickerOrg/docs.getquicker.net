@@ -61,7 +61,17 @@ legacyContentUpdatedAt: "2025-12-05T02:25:20.000Z"
 
 更新进度操作会让进度条实际显示出来。
 
-![](./img/reportprogress-005-6a90af0ce0.png)
+<ModuleParamPreview
+  moduleKey="sys:reportProgress"
+  focusKeys={['type', 'progressId', 'title', 'percentage', 'text']}
+  values={{
+    type: 'UPDATE_PROGRESS',
+    progressId: 'progressId',
+    title: '测试进度条',
+    percentage: '$= 100.0 * ({count} + 1) / 10.0',
+    text: '$$count = {count}',
+  }}
+/>
 
 参数说明：
 
@@ -79,7 +89,11 @@ legacyContentUpdatedAt: "2025-12-05T02:25:20.000Z"
 
 操作完成后，需要去除进度条。
 
-![](./img/reportprogress-006-d2a48ec1b5.png)
+<ModuleParamPreview
+  moduleKey="sys:reportProgress"
+  focusKeys={['type', 'progressId']}
+  values={{type: 'REMOVE', progressId: 'progressId'}}
+/>
 
 如果没有消除进度条（如忘记添加消除步骤，或动作提取中止），该进度条将会一直显示。这时候也可以点击进度条窗口的垃圾桶图标清理。
 

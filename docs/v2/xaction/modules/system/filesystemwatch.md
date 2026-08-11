@@ -37,7 +37,7 @@ legacyContentUpdatedAt: "2022-07-15T06:51:51.000Z"
 
 类似于“等待剪贴板改变”模块，等待目录中发生预期的事件后继续运行动作的后续步骤。
 
-![](./img/filesystemwatch-001-a840b8c14b.png)
+<ModuleParamPreview moduleKey="sys:fileSystemWatch" />
 
 **参数**
 
@@ -93,7 +93,33 @@ legacyContentUpdatedAt: "2022-07-15T06:51:51.000Z"
 
 参考动作：[文件监控示例](https://getquicker.net/Sharedaction?code=27d4c30d-803e-473e-4296-08da08643be0&fromMyShare=True)
 
-![](./img/filesystemwatch-002-bf1b0bbfae.png)
+<ModuleParamPreview
+  moduleKey="sys:fileSystemWatch"
+  focusKeys={[
+    'operation',
+    'path',
+    'includeSubdirectories',
+    'filter',
+    'notifyFilter',
+    'createdCallback',
+    'changedCallback',
+    'deletedCallback',
+    'renamedCallback',
+    'isSuccess',
+  ]}
+  values={{
+    operation: 'callback',
+    includeSubdirectories: 'true',
+    filter: '*.*',
+    notifyFilter: '',
+    createdCallback: 'OnCreated',
+    changedCallback: 'OnChanged',
+    deletedCallback: 'OnDeleted',
+    renamedCallback: 'OnRenamed',
+  }}
+  inputVars={{path: 'path'}}
+  outputVars={{isSuccess: 'isSuccess'}}
+/>
 
 【文件夹路径】请参考上面章节的说明。
 
@@ -138,8 +164,16 @@ legacyContentUpdatedAt: "2022-07-15T06:51:51.000Z"
 
 1.  再次调用本动作，并且传递一个特定的参数，例如`shutdown`。
 
-![](./img/filesystemwatch-004-22848d1142.png)
+<ModuleParamPreview
+  moduleKey="sys:runAction"
+  focusKeys={['type', 'actionId', 'inputParam', 'wait']}
+  values={{type: 'StartAction', actionId: 'xxx目录监控', inputParam: 'shutdown', wait: 'false'}}
+/>
 
 2.  动作启动时判断一下参数，如果是这个特定内容`shutdown`的话，就停止本动作的其他实例：
 
-![](./img/filesystemwatch-005-41d8ad6984.png)
+<ModuleParamPreview
+  moduleKey="sys:runAction"
+  focusKeys={['type', 'stopIfFail']}
+  values={{type: 'StopOtherInstance', stopIfFail: 'true'}}
+/>

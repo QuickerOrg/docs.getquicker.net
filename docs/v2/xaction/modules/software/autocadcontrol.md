@@ -25,7 +25,7 @@ legacyContentUpdatedAt: "2025-01-20T00:50:55.000Z"
 
 向AutoCAD软件发送命令或脚本。
 
-![](./img/autocadcontrol-001-074afbab24.png)
+<ModuleParamPreview moduleKey="sys:autocadcontrol" />
 
 【操作类型】
 

@@ -7,6 +7,9 @@
 # Generated files
 .docusaurus
 .cache-loader
+.playwright-cli/
+/static/img/doc-gallery/
+/tools/temp/
 
 # Misc
 .DS_Store
@@ -18,3 +21,6 @@
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
+
+.cursor
+.agents

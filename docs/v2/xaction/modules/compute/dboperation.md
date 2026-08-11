@@ -32,7 +32,7 @@ legacyContentUpdatedAt: "2021-12-27T07:35:08.000Z"
 
 -   更新、删除数据可能会造成重大损失，请谨慎操作。
 
-![](./img/dboperation-001-498c1464ba.png)
+<ModuleParamPreview moduleKey="sys:dboperation" />
 
 ## 步骤参数
 
@@ -98,7 +98,34 @@ legacyContentUpdatedAt: "2021-12-27T07:35:08.000Z"
 
 #### Query：查询并返回结果数据
 
-![](./img/dboperation-002-127f1ca18a.png)
+<ModuleParamPreview
+  moduleKey="sys:dboperation"
+  focusKeys={[
+    'dbType',
+    'connectionString',
+    'sql',
+    'sqlParam',
+    'timeoutSeconds',
+    'operationType',
+    'isSuccess',
+    'dataTableResult',
+    'listResult',
+    'firstItem',
+    'rowCount',
+  ]}
+  values={{
+    dbType: 'sqlite',
+    sql: 'select * from contacts',
+    operationType: 'Query',
+  }}
+  inputVars={{connectionString: 'path'}}
+  outputVars={{
+    dataTableResult: 'table1',
+    listResult: 'listResult',
+    firstItem: 'firstItem',
+    rowCount: 'rowCount',
+  }}
+/>
 
 【是否成功】是否成功执行查询（不代表一定有返回结果）。
 
@@ -116,7 +143,29 @@ legacyContentUpdatedAt: "2021-12-27T07:35:08.000Z"
 
 #### Execute：执行并返回影响的行数
 
-![](./img/dboperation-003-9f02dbb7e0.png)
+<ModuleParamPreview
+  moduleKey="sys:dboperation"
+  focusKeys={[
+    'dbType',
+    'connectionString',
+    'sql',
+    'sqlParam',
+    'timeoutSeconds',
+    'operationType',
+    'isSuccess',
+    'rowsAffected',
+  ]}
+  values={{
+    dbType: 'sqlite',
+    sql:
+      'insert into contacts (first_name, last_name, email, phone)\nvalues(@FirstName, @LastName, @Email, @Phone)',
+    sqlParam:
+      'FirstName:李\nLastName:四\nEmail:lisi@getquicker.net\nPhone:13888889999',
+    operationType: 'Execute',
+  }}
+  inputVars={{connectionString: 'path'}}
+  outputVars={{rowsAffected: 'rowsAffected'}}
+/>
 
 【是否成功】
 
@@ -128,7 +177,27 @@ legacyContentUpdatedAt: "2021-12-27T07:35:08.000Z"
 
 #### ExecuteScalar：执行并返回单个值
 
-![](./img/dboperation-004-8b919941ea.png)
+<ModuleParamPreview
+  moduleKey="sys:dboperation"
+  focusKeys={[
+    'dbType',
+    'connectionString',
+    'sql',
+    'sqlParam',
+    'timeoutSeconds',
+    'operationType',
+    'isSuccess',
+    'scalarResult',
+  ]}
+  values={{
+    dbType: 'sqlite',
+    sql: 'select COUNT(1) from contacts',
+    sqlParam: 'FirstName:李',
+    operationType: 'ExecuteScalar',
+  }}
+  inputVars={{connectionString: 'path'}}
+  outputVars={{scalarResult: 'scalarResult'}}
+/>
 
 【是否成功】
 
@@ -152,7 +221,13 @@ legacyContentUpdatedAt: "2021-12-27T07:35:08.000Z"
 
 （2）对动态对象的列表进行循环。
 
-![](./img/dboperation-006-840af66c83.png)
+<ModuleParamPreview
+  moduleKey="sys:each"
+  focusKeys={['input', 'useMultiThread', 'item', 'count']}
+  values={{useMultiThread: '0'}}
+  inputVars={{input: 'listResult'}}
+  outputVars={{item: 'item'}}
+/>
 
 此时，“项”应该输出到一个动态对象类型的变量中。在循环中，使用 `{行对象}.列名` 的方式访问某一列的数据。
 

@@ -23,7 +23,7 @@ legacyContentUpdatedAt: "2023-06-17T15:02:36.000Z"
 
 ## 概述
 
-![](./img/get_selected_text-001-a4ea572192.png)
+<ModuleParamPreview moduleKey="sys:getSelectedText" />
 
 获取当前选中的文本内容。也可用于接收动作参数。
 

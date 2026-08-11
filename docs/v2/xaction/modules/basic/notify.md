@@ -25,11 +25,11 @@ legacyContentUpdatedAt: "2022-07-01T09:39:34.000Z"
 
 提示消息用于显示可以自动隐藏的提示信息。显示在桌面的中部下方位置。
 
-![](./img/notify-001-edb9ff7c65.png)
+<NotifyToastPreview message="你好，感谢你使用Quicker!" />
 
 ## 参数说明
 
-![](./img/notify-002-42b2bba2c5.png)
+<ModuleParamPreview moduleKey="sys:notify" />
 
 【消息内容】：要显示的文字。
 
@@ -47,11 +47,18 @@ legacyContentUpdatedAt: "2022-07-01T09:39:34.000Z"
 
 默认风格：显示在屏幕底部。
 
-![](./img/notify-003-7c965dd71b.png)
+<NotifyToastPreview
+  message={"Hello Quicker!\nHello Quicker!\n..."}
+  maxLines={3}
+/>
 
 风格2：显示在屏幕右上角。
 
-![](./img/notify-004-25c650701a.png)
+<NotifyToastPreview
+  styleVariant="card"
+  message={"Hello Quicker!Hello Quicker!Hello Quicker!\nHello Quicker!Hello Quicker!Hello Quicker!\nHello Quicker!\n..."}
+  maxLines={4}
+/>
 
 ## 注意
 

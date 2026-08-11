@@ -29,7 +29,7 @@ legacyContentUpdatedAt: "2022-03-01T01:54:50.000Z"
 
 根据设定的保留小数位数和舍入方式转换为文本值。
 
-![](./img/numberprocess-001-a789c8f93a.png)
+<ModuleParamPreview moduleKey="sys:numberprocess" />
 
 【原始数字】需要转换的数字值。
 
@@ -54,7 +54,12 @@ legacyContentUpdatedAt: "2022-03-01T01:54:50.000Z"
 
 将小数数字转换为整数。
 
-![](./img/numberprocess-002-9ad3e46416.png)
+<ModuleParamPreview
+  moduleKey="sys:numberprocess"
+  focusKeys={['operation', 'srcNumber', 'toIntegerMethod', 'rtnInteger']}
+  values={{operation: 'toInteger', srcNumber: '0', toIntegerMethod: 'Round45'}}
+  outputVars={{rtnInteger: 'rtnInteger'}}
+/>
 
 【原始数字】待处理的数字。
 
@@ -70,7 +75,12 @@ legacyContentUpdatedAt: "2022-03-01T01:54:50.000Z"
 
 根据指定的进制解析原始数字文本，转换为整数、十六进制和二进制文本。
 
-![](./img/numberprocess-003-cc30162031.png)
+<ModuleParamPreview
+  moduleKey="sys:numberprocess"
+  focusKeys={['operation', 'srcNumberStr', 'srcBase', 'rtnInteger', 'resultHex', 'resultBin']}
+  values={{operation: 'baseConversion', srcNumberStr: '1001', srcBase: '2'}}
+  outputVars={{rtnInteger: 'rtnInteger', resultHex: 'resultHex', resultBin: 'resultBin'}}
+/>
 
 【原始数字】表示原始数字的文本。（这里传入的是文本类型），支持 普通数字，十六进制0xAB12、带有逗号的数字123,456等。
 

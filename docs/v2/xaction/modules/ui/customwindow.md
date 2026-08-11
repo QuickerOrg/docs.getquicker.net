@@ -43,7 +43,7 @@ legacyContentUpdatedAt: "2025-12-22T08:33:42.000Z"
 
 示例代码：
 
-```
+```markup
 <Window xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
@@ -106,13 +106,13 @@ legacyContentUpdatedAt: "2025-12-22T08:33:42.000Z"
 
 设置从动作变量引入到窗口的数据。
 
-**情况1：**关联动作变量，格式：窗口数据:&#123;动作变量&#125;。窗口建立时，从动作变量取值放入窗口数据。窗口结束时，将窗口数据中的内容写回动作变量。（如下面示例中1、2行）
+**情况1**：关联动作变量，格式：窗口数据:&#123;动作变量&#125;。窗口建立时，从动作变量取值放入窗口数据。窗口结束时，将窗口数据中的内容写回动作变量。（如下面示例中1、2行）
 
-**情况2：**初始化一个内部数据项。（下面示例中3、4行）
+**情况2**：初始化一个内部数据项。（下面示例中3、4行）
 
-**情况3：**动态计算一个内部数据项。（下面示例中5）。
+**情况3**：动态计算一个内部数据项。（下面示例中5）。
 
-```
+```text
 # 情况1：关联动作变量
 # 格式：窗口数据:{动作变量}
 # 窗口建立时，从动作变量取值放入窗口数据。窗口结束时，将窗口数据中的内容写回动作变量
@@ -150,7 +150,7 @@ total:$= Convert.ToInt32(number1) +  Convert.ToInt32(number2)
 -   controlName：被点击的按钮名称（Name属性值）。
 -   controlTag：被点击的按钮的Tag属性值。
 
-```
+```csharp
 //
 using System.Text;
 using System.Windows;
@@ -200,7 +200,7 @@ public static bool OnButtonClicked(string controlName, object controlTag, Window
 
 为按钮设定执行的操作。格式为：
 
-```
+```text
 按钮名称.click:操作内容
 菜单项名称.click:操作内容
 窗口数据项.change:操作内容
@@ -256,7 +256,7 @@ public static bool OnButtonClicked(string controlName, object controlTag, Window
 2.  在【辅助代码】中定义`OnButtonClicked`回调函数。按钮被点击时，会触发回调函数。可以在函数中根据`controlName`得到控件名称，`controlTag`得到控件的Tag属性，并根据这两个属性值区分点击的控件以及相关的其他信息，判断并执行自定义操作。
 3.  在【辅助代码】中，`OnWindowCreated`或`OnWindowLoaded`回调函数中，找到控件并注册事件消息。
 
-```
+```csharp
 public static void OnWindowLoaded(Window win, IDictionary<string, object> dataContext,
   ICustomWindowContext winContext){
   var btnOk = (Button)win.FindName("BtnOK");
@@ -268,7 +268,7 @@ public static void OnWindowLoaded(Window win, IDictionary<string, object> dataCo
 
 4.  在XAML代码中，为按钮添加附加属性`qk:Att.Action="操作内容代码"`。例如：
 
-```
+```markup
 <Button Margin="10" qk:Att.Action="close:ok">
      关闭
 </Button>
@@ -330,7 +330,7 @@ public static void OnWindowLoaded(Window win, IDictionary<string, object> dataCo
 
 **方式1：声明按钮事件**
 
-```
+```markup
 <Button  Margin="10" qk:Att.Action="operation=sp&amp;spname=Multiply&amp;param1=value1">
           乘(声明式调用子程序)
         </Button>

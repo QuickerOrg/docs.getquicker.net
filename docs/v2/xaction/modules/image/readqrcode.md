@@ -23,7 +23,7 @@ legacyContentUpdatedAt: "2025-10-20T12:43:43.000Z"
 
 识别图片中的二维码。
 
-![](./img/readqrcode-001-54a151a6ee.png)
+<ModuleParamPreview moduleKey="sys:readQrCode" />
 
 ## 参数
 

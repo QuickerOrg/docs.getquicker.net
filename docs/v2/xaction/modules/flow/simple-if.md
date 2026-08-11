@@ -19,6 +19,8 @@ metadataGeneratedAt: "2026-08-03 20:08:03"
 
 <XActionModuleMeta moduleKey="sys:simpleIf" />
 
+<ModuleParamPreview moduleKey="sys:simpleIf" />
+
 ## 使用说明
 
 本模块与[如果/否则](/v2/xaction/modules/if)共享基础使用说明；本页上方参数表是当前模块自身的定义。

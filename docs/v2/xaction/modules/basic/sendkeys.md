@@ -33,7 +33,7 @@ legacyContentUpdatedAt: "2025-09-19T04:54:11.000Z"
 -   “模拟按键（录入）”模块使用直接录入的方式指定要发送的内容，只能发送固定的内容。
 -   本模块使用文本参数的形式传入要发送的内容，可以接受参数或使用插值，可以和其他模块协作动态变更发送的按键序列内容。
 
-![](./img/sendkeys-001-0dc31ff7d7.png)
+<ModuleParamPreview moduleKey="sys:sendKeys" />
 
 ### 按键序列参数格式
 

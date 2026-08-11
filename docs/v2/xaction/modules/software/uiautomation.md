@@ -55,7 +55,10 @@ Quicker目前提供了两个窗口界面控制模块。
 
 ## A. 窗口界面控制
 
-![](./img/uiautomation-002-94741896d1.png)
+<ModuleParamPreview
+  moduleKey="sys:uiautomation"
+  values={{type: 'TriggerControl'}}
+/>
 
 ### 主要参数
 
@@ -74,7 +77,15 @@ Quicker目前提供了两个窗口界面控制模块。
 
 用于触发软件的菜单项。
 
-![](./img/uiautomation-003-dd1a0575f4.png)
+<ModuleParamPreview
+  moduleKey="sys:uiautomation"
+  focusKeys={['type', 'window', 'menuPath', 'expandDelay', 'isSuccess']}
+  values={{
+    type: 'TriggerMenu',
+    menuPath: '视图(V)\n详情(D)',
+    expandDelay: '200',
+  }}
+/>
 
 上图的设置用于触发下面的菜单。
 
@@ -88,7 +99,24 @@ Quicker目前提供了两个窗口界面控制模块。
 
 ### 触发窗口控件
 
-![](./img/uiautomation-005-e761d54795.png)
+<ModuleParamPreview
+  moduleKey="sys:uiautomation"
+  focusKeys={[
+    'type',
+    'window',
+    'control',
+    'controlType',
+    'controlOperation',
+    'value',
+    'isSuccess',
+  ]}
+  values={{
+    type: 'TriggerControl',
+    control: '选项',
+    controlType: '50031',
+    controlOperation: 'Auto',
+  }}
+/>
 
 上面的截图用于定位资源管理器里的“选项”按钮。
 
@@ -169,7 +197,24 @@ internal enum ControlTypes
 
 获取指定控件的信息。
 
-![](./img/uiautomation-009-b59bea61b1.png)
+<ModuleParamPreview
+  moduleKey="sys:uiautomation"
+  focusKeys={[
+    'type',
+    'window',
+    'control',
+    'controlType',
+    'isSuccess',
+    'value',
+    'rect',
+    'controlName',
+  ]}
+  values={{
+    type: 'GetControlInfo',
+    control: '特殊格式(S):',
+    controlType: '50003',
+  }}
+/>
 
 【位置】输出控件的范围，格式为：Left,Top,Right,Bottom
 
@@ -183,7 +228,18 @@ internal enum ControlTypes
 
 获取当前鼠标位置界面元素的信息。
 
-![](./img/uiautomation-010-9fb1368605.png)
+<ModuleParamPreview
+  moduleKey="sys:uiautomation"
+  focusKeys={[
+    'type',
+    'isSuccess',
+    'value',
+    'rect',
+    'controlName',
+    'controlType',
+  ]}
+  values={{type: 'GetCursorPointControlInfo'}}
+/>
 
 ### 获得焦点控件信息
 
@@ -191,7 +247,14 @@ internal enum ControlTypes
 
 ### 更新“另存为”或“打开”对话框的路径
 
-![](./img/uiautomation-011-bb38a0e601.png)
+<ModuleParamPreview
+  moduleKey="sys:uiautomation"
+  focusKeys={['type', 'path', 'autoCreateDir', 'isSuccess']}
+  values={{
+    type: 'UpdateSaveAsDialogPath',
+    path: 'C:\\Users\\cuili\\Desktop\\',
+  }}
+/>
 
 用于快速更改保存或打开路径、文件名。
 

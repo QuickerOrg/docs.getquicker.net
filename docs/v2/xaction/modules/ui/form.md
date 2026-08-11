@@ -67,7 +67,19 @@ legacyContentUpdatedAt: "2025-04-26T13:46:14.000Z"
 
 ## 参数
 
-![](./img/form-004-2c31f1ef66.png)
+<ModuleParamPreview
+  moduleKey="sys:form"
+  values={{
+    operation: 'dict',
+    title: '填写表单',
+    titleColumnWidth: '100',
+    windowWidth: '500',
+    restoreFocus: 'false',
+    topMost: 'false',
+    stopIfFail: 'true',
+  }}
+  inputVars={{dictVar: 'userInfo'}}
+/>
 
 【工作模式】选择用途：编辑变量，还是编辑某个词典的数据。
 
@@ -214,7 +226,7 @@ legacyContentUpdatedAt: "2025-04-26T13:46:14.000Z"
 
 FormField类型的定义如下：
 
-```
+```csharp
 
 namespace Quicker.Public.Forms
 {
@@ -310,7 +322,7 @@ namespace Quicker.Public.Forms
 
 其中，VarType的定义为（已去除一些在表单中不支持的类型，在Json中写对应的数字值）：
 
-```
+```csharp
 namespace Quicker.Public.Actions
 {
     /// <summary>
@@ -360,7 +372,7 @@ namespace Quicker.Public.Actions
 
 InputMethod的定义（已去除一些在表单中不支持的类型，在Json中写对应的数字值）：
 
-```
+```csharp
 namespace Quicker.Public.Forms
 {
     /// <summary>
@@ -466,7 +478,7 @@ namespace Quicker.Public.Forms
 
 文本选择工具，Json中为以英文半角逗号分隔的工具名，如`EditInCodeWindow,SelectProcessPath`，可选值如下：
 
-```
+```csharp
 namespace Quicker.Modules.TextTools
 {
     /// <summary>

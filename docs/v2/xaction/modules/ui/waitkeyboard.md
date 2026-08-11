@@ -32,7 +32,7 @@ legacyContentUpdatedAt: "2024-10-23T03:42:21.000Z"
 
 鼠标键自1.5.3版本开始支持（鼠标键不支持拦截）。
 
-![](./img/waitkeyboard-001-7cd8348ba5.png)
+<ModuleParamPreview moduleKey="sys:waitKeyboard" />
 
 典型用途：
 
@@ -93,7 +93,11 @@ legacyContentUpdatedAt: "2024-10-23T03:42:21.000Z"
 
 通常用于等待ctrl/shift/alt等按键抬起，避免其对后续模拟的按键产生叠加效果。
 
-![](./img/waitkeyboard-003-fc26eb9b99.png)
+<ModuleParamPreview
+  moduleKey="sys:waitKeyboard"
+  focusKeys={['operation', 'maxWaitSeconds', 'stopIfFail', 'isSuccess']}
+  values={{operation: 'waitAllKeyUp', maxWaitSeconds: '20', stopIfFail: 'true'}}
+/>
 
 ## 更改历史
 

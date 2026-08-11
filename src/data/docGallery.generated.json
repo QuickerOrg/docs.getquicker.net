@@ -1,0 +1,1092 @@
+{
+  "/contributing": {
+    "description": "Quicker 文档站的 Markdown 编写和维护约定。"
+  },
+  "/important-notice": {
+    "description": "有关数据完整性的重要提示信息"
+  },
+  "/": {
+    "description": "Quicker V2 使用说明、迁移指南和常见问题。"
+  },
+  "/release-notes/index": {
+    "description": "Quicker V2 的版本更新记录。"
+  },
+  "/v2/features/account-and-sync": {
+    "description": "Quicker V2 的账号登录、多账号切换、数据同步与离线使用。"
+  },
+  "/v2/features/actions": {
+    "description": "Quicker V2 中动作的使用、动作面板的呼出与操作。"
+  },
+  "/v2/features/scenes": {
+    "description": "Quicker V2 中场景的配置、切换与动作分组。"
+  },
+  "/v2/features/screenshot/capture-pro": {
+    "description": "Quicker 截图 Pro 的选区、控件吸附、标注、OCR、贴图、长截图与录屏入口，以及动作步骤参数说明。"
+  },
+  "/v2/features/screenshot/image-translate": {
+    "description": "在截图 Pro 与贴图中使用百度 / 有道图片翻译，以及如何配置本机 API Key。"
+  },
+  "/v2/features/screenshot/index": {
+    "description": "Quicker 截图 Pro、贴图、长截图与录屏功能入口说明。"
+  },
+  "/v2/features/screenshot/toolbar-script": {
+    "description": "用一段 JavaScript 定义截图 Pro 工具栏布局，以及自定义按钮如何处理图片或启动动作。"
+  },
+  "/v2/features/tools": {
+    "description": "Quicker V2 内置的截图、AI 等工具入口。"
+  },
+  "/v2/features/triggers/text-selection-toolbar": {
+    "description": "Quicker V2 选中文本工具条的开启、触发、动作配置、场景规则和故障排查。"
+  },
+  "/v2/getting-started": {
+    "description": "Quicker V2 的基本概念和首次使用入口。"
+  },
+  "/v2/install/update": {
+    "description": "Quicker V2 的更新检查、下载和注意事项。"
+  },
+  "/v2/install/windows": {
+    "description": "在 Windows 上安装 Quicker V2。",
+    "covers": [
+      "/img/doc-gallery/7fd63b3bd120.svg"
+    ]
+  },
+  "/v2/migration/from-v1": {
+    "description": "从 Quicker V1 迁移到 Quicker V2 的说明。"
+  },
+  "/v2/troubleshooting": {
+    "description": "Quicker V2 的常见问题和排查入口。"
+  },
+  "/v2/what's-new/actions/new-expression-engine": {
+    "description": "Quicker V2 自研 QkEval 表达式引擎的性能、诊断、现代 C# 语法和迁移兼容性说明。"
+  },
+  "/v2/what's-new/actions/xaction-steps": {
+    "description": "Quicker V2 新版组合动作执行管道、步骤运行器、并行取消、结构化调试和断点单步功能。"
+  },
+  "/v2/what's-new/actions": {
+    "description": "Quicker V2 如何统一动作数据、操作参数、组合动作执行和调试能力。"
+  },
+  "/v2/what's-new/data-and-sync": {
+    "description": "Quicker V2 按账号隔离数据，并将动作、动作页、场景配置和同步状态拆分为独立数据项后的重要变化。"
+  },
+  "/v2/what's-new/index": {
+    "description": "从 Quicker 1.x 升级到 V2 前需要了解的运行平台、数据存储、动作、面板、场景与兼容性变化。"
+  },
+  "/v2/what's-new/new-main-win/faq": {
+    "description": "解答从 Quicker 1.x 迁移到 2.0 新面板窗口时，动作页、分组、批量转移和数据保留等常见问题。"
+  },
+  "/v2/what's-new/new-main-win/usage": {
+    "description": "介绍 Quicker 2.0 新面板窗口的启用方法、界面结构、动作整理、批量移动和场景管理方式。"
+  },
+  "/v2/what's-new/not-supported": {
+    "description": "Quicker V2 已移除、改为只读兼容或需要迁移替代的 1.x 功能和运行环境。"
+  },
+  "/v2/what's-new/platform-and-compatibility": {
+    "description": "Quicker V2 从 .NET Framework 4.7.2 升级到 .NET 10 后，对 Windows 版本、系统位数和组件兼容性的要求。"
+  },
+  "/v2/what's-new/scenes-and-triggers": {
+    "description": "Quicker V2 如何统一管理程序、网址、动作面板、快捷键、轮盘、手势及其它场景规则。"
+  },
+  "/v2/what's-new/tools-and-experience": {
+    "description": "Quicker V2 在截图录屏、选中文本、搜索、通知和窗口交互方面的重要变化。"
+  },
+  "/v2/xaction/concepts/action-custom-context-menu": {
+    "description": "为动作设计自定义右键菜单的 Quicker 2.0 使用说明。",
+    "covers": [
+      "/img/doc-gallery/859741b8e953.png"
+    ]
+  },
+  "/v2/xaction/concepts/basic": {
+    "description": "模块和步骤的 Quicker 2.0 使用说明。",
+    "covers": [
+      "/img/doc-gallery/a34dd73ff393.png"
+    ]
+  },
+  "/v2/xaction/concepts/custom_texttool": {
+    "description": "为输入框设置自定义的文本选择工具的 Quicker 2.0 使用说明。",
+    "covers": [
+      "/img/doc-gallery/a122aeacd277.png"
+    ]
+  },
+  "/v2/xaction/concepts/debug": {
+    "description": "调试运行组合动作的 Quicker 2.0 使用说明。",
+    "covers": [
+      "/img/doc-gallery/f8bf6c75e61a.png"
+    ]
+  },
+  "/v2/xaction/concepts/edit-step-param": {
+    "description": "选择或输入步骤参数的 Quicker 2.0 使用说明。"
+  },
+  "/v2/xaction/concepts/expression-adv": {
+    "description": "表达式高级话题的 Quicker 2.0 使用说明。",
+    "covers": [
+      "/img/doc-gallery/fbe238d3582e.gif"
+    ]
+  },
+  "/v2/xaction/concepts/expression": {
+    "description": "表达式的 Quicker 2.0 使用说明。",
+    "covers": [
+      "/img/doc-gallery/76417432b8ce.png"
+    ]
+  },
+  "/v2/xaction/concepts/interpolation": {
+    "description": "文本插值的 Quicker 2.0 使用说明。",
+    "covers": [
+      "/img/doc-gallery/32522bdb2a9e.png"
+    ]
+  },
+  "/v2/xaction/concepts/object": {
+    "description": "动态对象变量的 Quicker 2.0 使用说明。"
+  },
+  "/v2/xaction/concepts/parameters": {
+    "description": "参数传递的 Quicker 2.0 使用说明。",
+    "covers": [
+      "/img/doc-gallery/47f19b2812e2.png"
+    ]
+  },
+  "/v2/xaction/concepts/public-api": {
+    "description": "公共API的 Quicker 2.0 使用说明。"
+  },
+  "/v2/xaction/concepts/quicker_in_param": {
+    "description": "为动作传递参数的 Quicker 2.0 使用说明。",
+    "covers": [
+      "/img/doc-gallery/10fdbcf2ab91.png"
+    ]
+  },
+  "/v2/xaction/concepts/standard": {
+    "description": "复杂动作的编程约定的 Quicker 2.0 使用说明。",
+    "covers": [
+      "/img/doc-gallery/8a103fe960d5.png"
+    ]
+  },
+  "/v2/xaction/concepts/store-settings": {
+    "description": "在动作中存储用户设置的 Quicker 2.0 使用说明。",
+    "covers": [
+      "/img/doc-gallery/e0dbf145aae5.png"
+    ]
+  },
+  "/v2/xaction/concepts/subprogram": {
+    "description": "子程序的 Quicker 2.0 使用说明。",
+    "covers": [
+      "/img/doc-gallery/f8d9108ca480.png"
+    ]
+  },
+  "/v2/xaction/concepts/tablevar": {
+    "description": "表格变量类型的 Quicker 2.0 使用说明。",
+    "covers": [
+      "/img/doc-gallery/64bfaee1936d.png"
+    ]
+  },
+  "/v2/xaction/concepts/use-icon-in-actions": {
+    "description": "在动作中使用图标的 Quicker 2.0 使用说明。",
+    "covers": [
+      "/img/doc-gallery/53ea79b83221.png"
+    ]
+  },
+  "/v2/xaction/concepts/var-dict": {
+    "description": "词典类型的 Quicker 2.0 使用说明。"
+  },
+  "/v2/xaction/concepts/var-list": {
+    "description": "列表类型的 Quicker 2.0 使用说明。"
+  },
+  "/v2/xaction/concepts/variables": {
+    "description": "变量的 Quicker 2.0 使用说明。",
+    "covers": [
+      "/img/doc-gallery/9c1aac780019.png"
+    ]
+  },
+  "/v2/xaction/concepts/visibility-expression": {
+    "description": "可见性表达式的 Quicker 2.0 使用说明。",
+    "covers": [
+      "/img/doc-gallery/eaef6fef5cb6.gif"
+    ]
+  },
+  "/v2/xaction/concepts/xaction-editor": {
+    "description": "动作编辑器的使用的 Quicker 2.0 使用说明。",
+    "covers": [
+      "/img/doc-gallery/7c424e043345.png"
+    ]
+  },
+  "/v2/xaction/concepts/xaction-intro": {
+    "description": "组合动作基础的 Quicker 2.0 使用说明。",
+    "covers": [
+      "/img/doc-gallery/a406eda0a3ad.png"
+    ]
+  },
+  "/v2/xaction/guides/browser-multiprofile": {
+    "description": "一个浏览器多个Profile的情况的 Quicker 2.0 使用说明。",
+    "covers": [
+      "/img/doc-gallery/473023273d14.png"
+    ]
+  },
+  "/v2/xaction/guides/chrome-ext-settings": {
+    "description": "设置浏览器扩展的 Quicker 2.0 使用说明。",
+    "covers": [
+      "/img/doc-gallery/0ca33b73bfd0.png"
+    ]
+  },
+  "/v2/xaction/guides/date-time-process": {
+    "description": "日期时间的处理的 Quicker 2.0 使用说明。",
+    "covers": [
+      "/img/doc-gallery/0dc603ec10e1.png"
+    ]
+  },
+  "/v2/xaction/guides/flaui-xpath-intro": {
+    "description": "窗口界面控制的XPATH简介的 Quicker 2.0 使用说明。",
+    "covers": [
+      "/img/doc-gallery/3faff51daf7f.png"
+    ]
+  },
+  "/v2/xaction/guides/helloworld": {
+    "description": "第一个组合动作Hello World!的 Quicker 2.0 使用说明。",
+    "covers": [
+      "/img/doc-gallery/446fb1ae9ea8.png"
+    ]
+  },
+  "/v2/xaction/guides/how-to-learn": {
+    "description": "入门向导的 Quicker 2.0 使用说明。",
+    "covers": [
+      "/img/doc-gallery/67498307959b.png"
+    ]
+  },
+  "/v2/xaction/guides/samples": {
+    "description": "实例教程的 Quicker 2.0 使用说明。"
+  },
+  "/v2/xaction/guides/scroll-trigger": {
+    "description": "使用滚轮连续触发的动作的 Quicker 2.0 使用说明。",
+    "covers": [
+      "/img/doc-gallery/e41ff1214680.gif"
+    ]
+  },
+  "/v2/xaction/guides/search-adv": {
+    "description": "从搜索框给动作传递参数的 Quicker 2.0 使用说明。",
+    "covers": [
+      "/img/doc-gallery/f00d21a787de.gif"
+    ]
+  },
+  "/v2/xaction/guides/text-process": {
+    "description": "文本的处理的 Quicker 2.0 使用说明。"
+  },
+  "/v2/xaction/guides/url-links": {
+    "description": "网页动作按钮 & 网址关联场景/动作页的 Quicker 2.0 使用说明。",
+    "covers": [
+      "/img/doc-gallery/fdb92327d11a.gif"
+    ]
+  },
+  "/v2/xaction/guides/web-page-control": {
+    "description": "使用浏览器控制的一些示例的 Quicker 2.0 使用说明。",
+    "covers": [
+      "/img/doc-gallery/ecdf84ef18d3.png"
+    ]
+  },
+  "/v2/xaction": {
+    "description": "Quicker 2.0 组合动作的入门、模块参考、教程与迁移说明。"
+  },
+  "/v2/xaction/modules/comment": {
+    "description": "使用注释将步骤分组，描述后续步骤的目的。",
+    "covers": [
+      "/img/doc-gallery/483b6f089677.png"
+    ]
+  },
+  "/v2/xaction/modules/delay": {
+    "description": "等待指定的毫秒数",
+    "covers": [
+      "/img/doc-gallery/94c88b579dce.png"
+    ]
+  },
+  "/v2/xaction/modules/get_selected_text": {
+    "description": "获取选中的文字"
+  },
+  "/v2/xaction/modules/keyinput": {
+    "description": "模拟键盘输入",
+    "covers": [
+      "/img/doc-gallery/12186fa4089f.png"
+    ]
+  },
+  "/v2/xaction/modules/mouse": {
+    "description": "模拟鼠标输入",
+    "covers": [
+      "/img/doc-gallery/cc57c4257e8c.png"
+    ]
+  },
+  "/v2/xaction/modules/msgbox": {
+    "description": "弹窗显示提示或确认对话框",
+    "covers": [
+      "/img/doc-gallery/b663c8d0f562.png"
+    ]
+  },
+  "/v2/xaction/modules/notify": {
+    "description": "显示可以自动消失的消息提示。"
+  },
+  "/v2/xaction/modules/openurl": {
+    "description": "打开指定的网址",
+    "covers": [
+      "/img/doc-gallery/4fd5b3ace411.png"
+    ]
+  },
+  "/v2/xaction/modules/outputtext": {
+    "description": "将文本输出到活动窗口中"
+  },
+  "/v2/xaction/modules/run": {
+    "description": "运行软件或命令，打开文件、文件夹或网址。效果类似于在Windows\\\"运行\\\"对话框中执行命令。",
+    "covers": [
+      "/img/doc-gallery/7aef441a36c1.png"
+    ]
+  },
+  "/v2/xaction/modules/runscript": {
+    "description": "运行脚本。",
+    "covers": [
+      "/img/doc-gallery/29bc9bcbb273.png"
+    ]
+  },
+  "/v2/xaction/modules/sendkeys": {
+    "description": "发送按键和文本"
+  },
+  "/v2/xaction/modules/userinput": {
+    "description": "请用户输入内容。",
+    "covers": [
+      "/img/doc-gallery/b88c60d2c2dc.png"
+    ]
+  },
+  "/v2/xaction/modules/userselect": {
+    "description": "请用户选择一个选项。",
+    "covers": [
+      "/img/doc-gallery/88d44dbde997.png"
+    ]
+  },
+  "/v2/xaction/modules/filetoclipboard": {
+    "description": "将文件或文件列表存入剪贴板",
+    "covers": [
+      "/img/doc-gallery/fd7c5b2458f9.png"
+    ]
+  },
+  "/v2/xaction/modules/getclipboardfiles": {
+    "description": "获取剪贴板中复制的文件(或文件夹)的路径列表"
+  },
+  "/v2/xaction/modules/getclipboardimage": {
+    "description": "读取剪贴板中的图片内容输出到图片变量中。"
+  },
+  "/v2/xaction/modules/getclipboardtext": {
+    "description": "读取剪贴板中的文本内容",
+    "covers": [
+      "/img/doc-gallery/547d171fe486.png"
+    ]
+  },
+  "/v2/xaction/modules/waitclipboardchange": {
+    "description": "等待剪贴板的内容发生改变。等待第三方工具（如截图工具）完成操作并更新剪贴板。"
+  },
+  "/v2/xaction/modules/writeclipboard": {
+    "description": "将文本或图片等内容写入剪贴板",
+    "covers": [
+      "/img/doc-gallery/a42c327f4be1.png"
+    ]
+  },
+  "/v2/xaction/modules/assign": {
+    "description": "为变量赋值。",
+    "covers": [
+      "/img/doc-gallery/244892ebc259.png"
+    ]
+  },
+  "/v2/xaction/modules/color": {
+    "description": "转换颜色值及相关计算处理",
+    "covers": [
+      "/img/doc-gallery/a67af5f38d0e.gif"
+    ]
+  },
+  "/v2/xaction/modules/compute": {
+    "description": "对表达式进行计算。",
+    "covers": [
+      "/img/doc-gallery/d8de6de68341.png"
+    ]
+  },
+  "/v2/xaction/modules/computetime": {
+    "description": "时间相关的计算操作"
+  },
+  "/v2/xaction/modules/dboperation": {
+    "description": "对数据库执行SQL语句并返回结果",
+    "covers": [
+      "/img/doc-gallery/630fef24a750.png"
+    ]
+  },
+  "/v2/xaction/modules/dictoperations": {
+    "description": "对词典变量进行添加、删除等操作"
+  },
+  "/v2/xaction/modules/listoperations": {
+    "description": "对列表变量进行添加、删除等操作"
+  },
+  "/v2/xaction/modules/managelist": {
+    "description": "对列表内容进行手工排序、添加、删除等操作",
+    "covers": [
+      "/img/doc-gallery/fb4be65f7688.png"
+    ]
+  },
+  "/v2/xaction/modules/newguid": {
+    "description": "生成一个新的Guid(全局唯一ID标示符)，并转换为文本格式。"
+  },
+  "/v2/xaction/modules/numberprocess": {
+    "description": "数字转换为文本等相关处理"
+  },
+  "/v2/xaction/modules/numcompare": {
+    "description": "比较数字大小。"
+  },
+  "/v2/xaction/modules/randomnum": {
+    "description": "生成随机数"
+  },
+  "/v2/xaction/modules/strcompare": {
+    "description": "文本比较"
+  },
+  "/v2/xaction/modules/tableoperation": {
+    "description": "表格变量的相关处理操作",
+    "covers": [
+      "/img/doc-gallery/011cd56c6d3e.png"
+    ]
+  },
+  "/v2/xaction/modules/checkpathexists": {
+    "description": "检查指定的文件或文件夹是否存在。",
+    "covers": [
+      "/img/doc-gallery/22b9127a0c96.png"
+    ]
+  },
+  "/v2/xaction/modules/everythingsearch": {
+    "description": "调用Everything提供的接口搜索文件",
+    "covers": [
+      "/img/doc-gallery/c8a5b130a90f.png"
+    ]
+  },
+  "/v2/xaction/modules/fileoperation": {
+    "description": "文件和目录操作。请确保路径是合法的。"
+  },
+  "/v2/xaction/modules/gentempfilepath": {
+    "description": "根据指定的扩展名生成一个随机的临时文件名（完整路径），供后续步骤写入文件使用。"
+  },
+  "/v2/xaction/modules/pathextraction": {
+    "description": "从文件路径中提取文件名、文件夹等信息"
+  },
+  "/v2/xaction/modules/readfile": {
+    "description": "将读取的文本或图片内容写入变量。"
+  },
+  "/v2/xaction/modules/statestorage": {
+    "description": "存取状态数据；更新动作的徽标文字；设置附加的动作右键菜单项",
+    "covers": [
+      "/img/doc-gallery/d2ecfe499c23.png"
+    ]
+  },
+  "/v2/xaction/modules/writeimagefile": {
+    "description": "将图片内容写入文件"
+  },
+  "/v2/xaction/modules/writetextfile": {
+    "description": "将内容写入文本文件"
+  },
+  "/v2/xaction/modules/zip": {
+    "description": "Zip压缩或解压缩"
+  },
+  "/v2/xaction/modules/break": {
+    "description": "跳出循环（\\\"每个\\\" 或 \\\"重复\\\" 模块）"
+  },
+  "/v2/xaction/modules/continue": {
+    "description": "跳过后续步骤（循环内部），开始下一次循环。在循环内部使用。"
+  },
+  "/v2/xaction/modules/csscript": {
+    "description": "执行C#代码。普通模式可写纯脚本（末行表达式即返回值，可用 context 读写变量）；也可写完整 Exec(context)。",
+    "covers": [
+      "/img/doc-gallery/a5b27f8195e6.png"
+    ]
+  },
+  "/v2/xaction/modules/dependencycheck": {
+    "description": "检查和下载依赖的外部文件包。",
+    "covers": [
+      "/img/doc-gallery/c371a1f053df.png"
+    ]
+  },
+  "/v2/xaction/modules/each": {
+    "description": "对列表的每项执行处理"
+  },
+  "/v2/xaction/modules/file-based-apps": {
+    "description": "使用.NET SDK运行C# file-based app。支持新语法、NuGet包引用和WPF等SDK功能。"
+  },
+  "/v2/xaction/modules/group": {
+    "description": "一组有关的模块（方便整体禁用、删除等）",
+    "covers": [
+      "/img/doc-gallery/e26b99f13e7e.png"
+    ]
+  },
+  "/v2/xaction/modules/if": {
+    "description": "依据条件执行操作",
+    "covers": [
+      "/img/doc-gallery/aad410c7efb9.png"
+    ]
+  },
+  "/v2/xaction/modules/jsscript": {
+    "description": "执行Js代码片段。代码中应包含主函数exec()，请参考文档。"
+  },
+  "/v2/xaction/modules/pythonscript": {
+    "description": "执行Python代码片段。",
+    "covers": [
+      "/img/doc-gallery/c58176d5f19f.png"
+    ]
+  },
+  "/v2/xaction/modules/repeat": {
+    "description": "循环指定的次数，或符合某个条件时中止",
+    "covers": [
+      "/img/doc-gallery/ea222784abc5.png"
+    ]
+  },
+  "/v2/xaction/modules/runaction": {
+    "description": "执行指定的其他动作",
+    "covers": [
+      "/img/doc-gallery/7162e39129f1.png"
+    ]
+  },
+  "/v2/xaction/modules/simple-if": {
+    "description": "依据条件执行操作"
+  },
+  "/v2/xaction/modules/stop": {
+    "description": "停止动作或从子程序中返回"
+  },
+  "/v2/xaction/modules/subprogram": {
+    "description": "运行子程序",
+    "covers": [
+      "/img/doc-gallery/f438844d0a97.png"
+    ]
+  },
+  "/v2/xaction/modules/createqrcode": {
+    "description": "将文本转换为二维码"
+  },
+  "/v2/xaction/modules/imageinfo": {
+    "description": "获取图片的尺寸或exif信息"
+  },
+  "/v2/xaction/modules/imgprocess": {
+    "description": "图片处理和变换",
+    "covers": [
+      "/img/doc-gallery/16f2c57189b7.png"
+    ]
+  },
+  "/v2/xaction/modules/imgtobase64": {
+    "description": "图片和Base64转换"
+  },
+  "/v2/xaction/modules/long-screenshot": {
+    "description": "先使用屏幕选区工具选择范围，再进行长截图。"
+  },
+  "/v2/xaction/modules/readqrcode": {
+    "description": "识别图片中的二维码"
+  },
+  "/v2/xaction/modules/screen-capture-pro": {
+    "description": "渐进式选区截图：全屏 overlay，光标处初始选区，支持控件跟踪，双击确认。Esc 取消。"
+  },
+  "/v2/xaction/modules/screen-recording-ui": {
+    "description": "弹出选区 UI 让用户框选录制范围，打开录屏工具栏进行可视化录制，录完后返回文件路径。"
+  },
+  "/v2/xaction/modules/screen-recording": {
+    "description": "后台录制屏幕区域为视频文件，通过会话 ID 跨步骤控制录制生命周期。"
+  },
+  "/v2/xaction/modules/screencapture": {
+    "description": "截取屏幕区域",
+    "covers": [
+      "/img/doc-gallery/ea95910d6528.png"
+    ]
+  },
+  "/v2/xaction/modules/searchbmp": {
+    "description": "在屏幕上查找图片里的内容出现的位置",
+    "covers": [
+      "/img/doc-gallery/f329d80477d6.png"
+    ]
+  },
+  "/v2/xaction/modules/showimage": {
+    "description": "在屏幕上显示图片。输入文件路径/url或图片变量。",
+    "covers": [
+      "/img/doc-gallery/11cb31d5ff01.png"
+    ]
+  },
+  "/v2/xaction/modules/tempimgbed": {
+    "description": "将图片上传到临时（1分钟后删除）的图床，用以搜图等场景。勿上传非法内容。"
+  },
+  "/v2/xaction/modules/whiteboard": {
+    "description": "手写内容，生成图片对象。"
+  },
+  "/v2/xaction/modules/inputscript": {
+    "description": "多步骤键盘组合输入"
+  },
+  "/v2/xaction/modules/ai": {
+    "description": "调用第三方AI服务",
+    "covers": [
+      "/img/doc-gallery/fcb88916fc91.png"
+    ]
+  },
+  "/v2/xaction/modules/basic-ocr": {
+    "description": "获取图片中的文字",
+    "covers": [
+      "/img/doc-gallery/5394d29ba373.png"
+    ]
+  },
+  "/v2/xaction/modules/clouddata": {
+    "description": "根据键值读取或写入网络数据。",
+    "covers": [
+      "/img/doc-gallery/e4ca031f00a5.png"
+    ]
+  },
+  "/v2/xaction/modules/cloud_oss": {
+    "description": "使用第三方云服务上传文件。",
+    "covers": [
+      "/img/doc-gallery/e37f69f3ab72.png"
+    ]
+  },
+  "/v2/xaction/modules/download": {
+    "description": "下载网络文件(请勿用于下载大文件)",
+    "covers": [
+      "/img/doc-gallery/6283e24f2b1a.png"
+    ]
+  },
+  "/v2/xaction/modules/htmlextract": {
+    "description": "从HTML代码中提取内容"
+  },
+  "/v2/xaction/modules/http": {
+    "description": "发送HTTP请求，并获取返回结果",
+    "covers": [
+      "/img/doc-gallery/8399bd6e01b3.png"
+    ]
+  },
+  "/v2/xaction/modules/httpserver": {
+    "description": "创建临时的本地HTTP服务器，从而可以从移动端或其它设备访问。",
+    "covers": [
+      "/img/doc-gallery/796563096641.png"
+    ]
+  },
+  "/v2/xaction/modules/mathocr": {
+    "description": "数学公式识别"
+  },
+  "/v2/xaction/modules/smtp": {
+    "description": "使用SMTP协议发送邮件"
+  },
+  "/v2/xaction/modules/tempcloudstore": {
+    "description": "将文本、文件、图片临时保存到云端并得到网址。",
+    "covers": [
+      "/img/doc-gallery/f8ed5bbaf0fc.png"
+    ]
+  },
+  "/v2/xaction/modules/translation": {
+    "description": "调用第三方服务翻译文字到指定的语言。此功能需要单独付费使用，详情请参考文档。",
+    "covers": [
+      "/img/doc-gallery/99be074d88be.png"
+    ]
+  },
+  "/v2/xaction/modules/websocket": {
+    "description": "Websocket相关操作",
+    "covers": [
+      "/img/doc-gallery/af352ef509d7.png"
+    ]
+  },
+  "/v2/xaction/modules/adobesoftscontrol": {
+    "description": "Adobe系列软件控制模块的参数、输出与使用说明。",
+    "covers": [
+      "/img/doc-gallery/e246cfb6340a.png"
+    ]
+  },
+  "/v2/xaction/modules/autocadcontrol": {
+    "description": "向AutoCAD发送命令",
+    "covers": [
+      "/img/doc-gallery/5c7e3137d6fd.png"
+    ]
+  },
+  "/v2/xaction/modules/chromecontrol": {
+    "description": "与Chrome/Edge/Firefox等浏览器通信，控制网页或浏览器。",
+    "covers": [
+      "/img/doc-gallery/09d2ff2b9196.png"
+    ]
+  },
+  "/v2/xaction/modules/excelobjects": {
+    "description": "操作Excel的某个对象",
+    "covers": [
+      "/img/doc-gallery/c3b5579ffe50.png"
+    ]
+  },
+  "/v2/xaction/modules/excelrange": {
+    "description": "操作Excel的某个区域或单元格",
+    "covers": [
+      "/img/doc-gallery/8f438e3493bb.png"
+    ]
+  },
+  "/v2/xaction/modules/excelreadwrite": {
+    "description": "读取Excel文件内容或写入Excel文件",
+    "covers": [
+      "/img/doc-gallery/14e6382fe73e.png"
+    ]
+  },
+  "/v2/xaction/modules/flauiautomation": {
+    "description": "触发Windows窗口的菜单/按钮等控件(通过FlaUI库实现)。"
+  },
+  "/v2/xaction/modules/getchromeurl": {
+    "description": "获取当前浏览器网址。"
+  },
+  "/v2/xaction/modules/officehelper": {
+    "description": "辅助控制Office软件",
+    "covers": [
+      "/img/doc-gallery/f13f5319112f.png"
+    ]
+  },
+  "/v2/xaction/modules/rhinocontrol": {
+    "description": "向Rhino发送命令或脚本",
+    "covers": [
+      "/img/doc-gallery/c0a2264a09e4.png"
+    ]
+  },
+  "/v2/xaction/modules/uiautomation": {
+    "description": "触发Windows窗口的菜单/按钮等控件。",
+    "covers": [
+      "/img/doc-gallery/82517028efa1.png"
+    ]
+  },
+  "/v2/xaction/modules/activateprocessmainwindow": {
+    "description": "找到指定进程的主窗口并使其显示在前台。",
+    "covers": [
+      "/img/doc-gallery/842a34021991.gif"
+    ]
+  },
+  "/v2/xaction/modules/audiocontrol": {
+    "description": "获取音频设备信息，设置默认音频设备。"
+  },
+  "/v2/xaction/modules/checkprocessexists": {
+    "description": "检查指定的应用程序是否已经启动。"
+  },
+  "/v2/xaction/modules/filesystemwatch": {
+    "description": "监控文件创建/变更/删除等事件。",
+    "covers": [
+      "/img/doc-gallery/5d5ceae32bab.png"
+    ]
+  },
+  "/v2/xaction/modules/getactiveprocessinfo": {
+    "description": "获取当前活动窗口进程的信息。"
+  },
+  "/v2/xaction/modules/getexplorerpath": {
+    "description": "获取资源管理器的当前文件夹路径。",
+    "covers": [
+      "/img/doc-gallery/8355c6dde35d.png"
+    ]
+  },
+  "/v2/xaction/modules/getfolderpath": {
+    "description": "返回指定的特殊目录路径。"
+  },
+  "/v2/xaction/modules/getselectedfiles": {
+    "description": "获取资源管理器、桌面等位置选择的文件或文件夹的路径",
+    "covers": [
+      "/img/doc-gallery/38b88a50f48a.png"
+    ]
+  },
+  "/v2/xaction/modules/getsysinfo": {
+    "description": "获取系统、Quicker 及当前运行动作的相关信息。",
+    "covers": [
+      "/img/doc-gallery/509f18b3ab9a.png"
+    ]
+  },
+  "/v2/xaction/modules/gettime": {
+    "description": "获取当前或从文本、unix时间戳转换日期时间",
+    "covers": [
+      "/img/doc-gallery/4a04afe6da65.png"
+    ]
+  },
+  "/v2/xaction/modules/getwindowtitle": {
+    "description": "获取指定窗口的标题等信息。"
+  },
+  "/v2/xaction/modules/imecontrol": {
+    "description": "获取或更改当前的输入法中英文状态，避免在发送热键时受影响。",
+    "covers": [
+      "/img/doc-gallery/c24628720b61.png"
+    ]
+  },
+  "/v2/xaction/modules/keyoperation": {
+    "description": "单个键盘按键的操作控制或状态获取"
+  },
+  "/v2/xaction/modules/playsound": {
+    "description": "播放声音提示或声音文件。"
+  },
+  "/v2/xaction/modules/quickeroperations": {
+    "description": "调用Quicker的某个功能",
+    "covers": [
+      "/img/doc-gallery/ca74b661b5aa.png"
+    ]
+  },
+  "/v2/xaction/modules/recordsound": {
+    "description": "录制音频到文件或识别语音",
+    "covers": [
+      "/img/doc-gallery/79eaf1bc4235.png"
+    ]
+  },
+  "/v2/xaction/modules/restoreactivewindow": {
+    "description": "如果活动窗口改变了（比如使用了参数输入步骤）,使用此动作恢复窗口焦点。"
+  },
+  "/v2/xaction/modules/selectfileinexplorer": {
+    "description": "在资源管理器中选中文件",
+    "covers": [
+      "/img/doc-gallery/aef022ad48f5.png"
+    ]
+  },
+  "/v2/xaction/modules/sendmessage": {
+    "description": "使用SendMessage Win32Api向窗口发送消息。使用方法请搜索SendMessage Win32 API接口。"
+  },
+  "/v2/xaction/modules/shelloperation": {
+    "description": "针对文件的Windows Shell相关操作",
+    "covers": [
+      "/img/doc-gallery/0e033dfd05e0.png"
+    ]
+  },
+  "/v2/xaction/modules/windowoperations": {
+    "description": "Window窗口相关操作",
+    "covers": [
+      "/img/doc-gallery/30bb778f88a6.png"
+    ]
+  },
+  "/v2/xaction/modules/winservice": {
+    "description": "获取Windows服务的状态、注册表项信息",
+    "covers": [
+      "/img/doc-gallery/9519ec9c0177.png"
+    ]
+  },
+  "/v2/xaction/modules/charinfo": {
+    "description": "获取字符信息",
+    "covers": [
+      "/img/doc-gallery/ad07a5fb2a7e.png"
+    ]
+  },
+  "/v2/xaction/modules/enc": {
+    "description": "加密、解密，以及哈希计算",
+    "covers": [
+      "/img/doc-gallery/e20a428cb658.png"
+    ]
+  },
+  "/v2/xaction/modules/formatstring": {
+    "description": "将（多个）变量组合成一段文本。",
+    "covers": [
+      "/img/doc-gallery/f2c85492bcf3.png"
+    ]
+  },
+  "/v2/xaction/modules/joinlist": {
+    "description": "将列表拼接为一段文本"
+  },
+  "/v2/xaction/modules/jsonextract": {
+    "description": "提取Json文本中的信息"
+  },
+  "/v2/xaction/modules/regexextract": {
+    "description": "使用正则表达式提取指定内容"
+  },
+  "/v2/xaction/modules/showtext": {
+    "description": "在独立的窗口中显示文本。",
+    "covers": [
+      "/img/doc-gallery/9de6814e67a6.png"
+    ]
+  },
+  "/v2/xaction/modules/splitstring": {
+    "description": "将文本拆分为列表"
+  },
+  "/v2/xaction/modules/stringprocess": {
+    "description": "各种文本处理功能"
+  },
+  "/v2/xaction/modules/strreplace": {
+    "description": "替换文本中的指定内容"
+  },
+  "/v2/xaction/modules/textcounter": {
+    "description": "统计文本行数、字符数等"
+  },
+  "/v2/xaction/modules/custompanel": {
+    "description": "自定义悬浮操作窗口，点击后直接执行操作，不隐藏。",
+    "covers": [
+      "/img/doc-gallery/4e35643d2c0d.png"
+    ]
+  },
+  "/v2/xaction/modules/customwindow": {
+    "description": "创建和显示自定义窗口",
+    "covers": [
+      "/img/doc-gallery/2c75927aee11.png"
+    ]
+  },
+  "/v2/xaction/modules/form": {
+    "description": "使用表单窗口编辑多个变量的值。",
+    "covers": [
+      "/img/doc-gallery/b9200c782bb5.png"
+    ]
+  },
+  "/v2/xaction/modules/playrecord": {
+    "description": "重放录制好的键鼠操作数据。",
+    "covers": [
+      "/img/doc-gallery/c8d69d6c0864.png"
+    ]
+  },
+  "/v2/xaction/modules/record": {
+    "description": "录制键鼠操作过程",
+    "covers": [
+      "/img/doc-gallery/e800c9f3c29a.png"
+    ]
+  },
+  "/v2/xaction/modules/reportprogress": {
+    "description": "显示/更新进度条",
+    "covers": [
+      "/img/doc-gallery/e160570aec44.gif"
+    ]
+  },
+  "/v2/xaction/modules/selectfile": {
+    "description": "用文件选择对话框选择要打开或保存的文件"
+  },
+  "/v2/xaction/modules/selectfolder": {
+    "description": "文件夹选择对话框",
+    "covers": [
+      "/img/doc-gallery/819704ad1361.png"
+    ]
+  },
+  "/v2/xaction/modules/showmenu": {
+    "description": "显示一个菜单"
+  },
+  "/v2/xaction/modules/showwaitwin": {
+    "description": "显示一个等待用户完成某个操作的提示窗口。",
+    "covers": [
+      "/img/doc-gallery/ccf1b13d2292.png"
+    ]
+  },
+  "/v2/xaction/modules/textselecttools": {
+    "description": "一些常用的选择内容并获取文本的工具",
+    "covers": [
+      "/img/doc-gallery/df16b89477eb.png"
+    ]
+  },
+  "/v2/xaction/modules/waitkeyboard": {
+    "description": "等待用户按下某个按键",
+    "covers": [
+      "/img/doc-gallery/1d515c5c110c.png"
+    ]
+  },
+  "/v2/xaction/modules/webview2": {
+    "description": "基于微软Edge浏览器内核的组件，需要安装Edge最新预览版方可使用。",
+    "covers": [
+      "/img/doc-gallery/07310d7b6736.png"
+    ]
+  },
+  "/v2/features/screenshot": {
+    "description": "截图 Pro、贴图、长截图与录屏等截图相关功能说明。"
+  },
+  "/v2/features": {
+    "description": "Quicker V2 各项功能的使用说明。"
+  },
+  "/v2/xaction/concepts": {
+    "description": "组合动作基础、动作编辑器的使用、模块和步骤、选择或输入步骤参数",
+    "covers": [
+      "/img/doc-gallery/a406eda0a3ad.png",
+      "/img/doc-gallery/7c424e043345.png",
+      "/img/doc-gallery/a34dd73ff393.png",
+      "/img/doc-gallery/9c1aac780019.png"
+    ]
+  },
+  "/v2/xaction/guides": {
+    "description": "入门向导、实例教程、第一个组合动作Hello World!、日期时间的处理",
+    "covers": [
+      "/img/doc-gallery/67498307959b.png",
+      "/img/doc-gallery/446fb1ae9ea8.png",
+      "/img/doc-gallery/0dc603ec10e1.png",
+      "/img/doc-gallery/3faff51daf7f.png"
+    ]
+  },
+  "/v2/xaction/modules/category/basic": {
+    "description": "打开网址、弹窗提示或确认、等待时间、发送文本到窗口",
+    "covers": [
+      "/img/doc-gallery/4fd5b3ace411.png",
+      "/img/doc-gallery/b663c8d0f562.png",
+      "/img/doc-gallery/94c88b579dce.png",
+      "/img/doc-gallery/12186fa4089f.png"
+    ]
+  },
+  "/v2/xaction/modules/category/clipboard": {
+    "description": "等待剪贴板内容改变、获取剪贴板图片、获取剪贴板文本、获取剪贴板文件列表",
+    "covers": [
+      "/img/doc-gallery/547d171fe486.png",
+      "/img/doc-gallery/fd7c5b2458f9.png",
+      "/img/doc-gallery/a42c327f4be1.png"
+    ]
+  },
+  "/v2/xaction/modules/category/compute": {
+    "description": "比较数字、比较文本、表格数据操作、词典操作",
+    "covers": [
+      "/img/doc-gallery/011cd56c6d3e.png",
+      "/img/doc-gallery/244892ebc259.png",
+      "/img/doc-gallery/fb4be65f7688.png",
+      "/img/doc-gallery/d8de6de68341.png"
+    ]
+  },
+  "/v2/xaction/modules/category/files": {
+    "description": "读取文件、检查路径/获取文件信息、生成临时文件路径、使用Everything搜索文件",
+    "covers": [
+      "/img/doc-gallery/22b9127a0c96.png",
+      "/img/doc-gallery/c8a5b130a90f.png",
+      "/img/doc-gallery/d2ecfe499c23.png"
+    ]
+  },
+  "/v2/xaction/modules/category/flow": {
+    "description": "步骤组、检查和下载依赖、每个、如果",
+    "covers": [
+      "/img/doc-gallery/e26b99f13e7e.png",
+      "/img/doc-gallery/c371a1f053df.png",
+      "/img/doc-gallery/aad410c7efb9.png",
+      "/img/doc-gallery/7162e39129f1.png"
+    ]
+  },
+  "/v2/xaction/modules/category/image": {
+    "description": "读取图片信息、后台屏幕录制、截图 Pro、临时图床",
+    "covers": [
+      "/img/doc-gallery/ea95910d6528.png",
+      "/img/doc-gallery/f329d80477d6.png",
+      "/img/doc-gallery/16f2c57189b7.png",
+      "/img/doc-gallery/11cb31d5ff01.png"
+    ]
+  },
+  "/v2/xaction/modules/category/input": {
+    "description": "多步骤输入"
+  },
+  "/v2/xaction/modules/category/network": {
+    "description": "第三方云存储/图床、公式识别、机器翻译/词典、基础OCR",
+    "covers": [
+      "/img/doc-gallery/e37f69f3ab72.png",
+      "/img/doc-gallery/99be074d88be.png",
+      "/img/doc-gallery/5394d29ba373.png",
+      "/img/doc-gallery/f8ed5bbaf0fc.png"
+    ]
+  },
+  "/v2/xaction/modules/category/software": {
+    "description": "窗口界面控制、窗口界面控制(FlaUI)、获取浏览器网址、浏览器控制",
+    "covers": [
+      "/img/doc-gallery/82517028efa1.png",
+      "/img/doc-gallery/09d2ff2b9196.png",
+      "/img/doc-gallery/e246cfb6340a.png",
+      "/img/doc-gallery/5c7e3137d6fd.png"
+    ]
+  },
+  "/v2/xaction/modules/category/system": {
+    "description": "按键操作、播放声音、窗口操作、恢复活动窗口",
+    "covers": [
+      "/img/doc-gallery/30bb778f88a6.png",
+      "/img/doc-gallery/4a04afe6da65.png",
+      "/img/doc-gallery/509f18b3ab9a.png",
+      "/img/doc-gallery/38b88a50f48a.png"
+    ]
+  },
+  "/v2/xaction/modules/category/text": {
+    "description": "拆分文本为列表、获取字符信息、加密/解密/哈希、列表合并成文本",
+    "covers": [
+      "/img/doc-gallery/ad07a5fb2a7e.png",
+      "/img/doc-gallery/e20a428cb658.png",
+      "/img/doc-gallery/9de6814e67a6.png",
+      "/img/doc-gallery/f2c85492bcf3.png"
+    ]
+  },
+  "/v2/xaction/modules/category/ui": {
+    "description": "等待按键、多字段表单、辅助选择工具、录制键鼠操作",
+    "covers": [
+      "/img/doc-gallery/1d515c5c110c.png",
+      "/img/doc-gallery/b9200c782bb5.png",
+      "/img/doc-gallery/df16b89477eb.png",
+      "/img/doc-gallery/e800c9f3c29a.png"
+    ]
+  },
+  "/v2/xaction/modules": {
+    "description": "按键操作、比较数字、步骤组、拆分文本为列表",
+    "covers": [
+      "/img/doc-gallery/e26b99f13e7e.png",
+      "/img/doc-gallery/82517028efa1.png",
+      "/img/doc-gallery/4fd5b3ace411.png",
+      "/img/doc-gallery/1d515c5c110c.png"
+    ]
+  }
+}

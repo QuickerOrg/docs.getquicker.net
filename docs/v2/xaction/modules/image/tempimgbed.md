@@ -23,15 +23,21 @@ legacyContentUpdatedAt: "2023-04-30T04:24:10.000Z"
 
 本功能用于以图找图等需要**临时**将截图、图片上传到网络并获得公网地址的场景。
 
-**警告：**请勿使用本服务上传有可能违反国家法律或规定的文件。 文件网址会带有您的用户编号，如果被阿里云或第三方机构警告，我们将会停止您使用本服务的权限。
+**警告**：请勿使用本服务上传有可能违反国家法律或规定的文件。 文件网址会带有您的用户编号，如果被阿里云或第三方机构警告，我们将会停止您使用本服务的权限。
 
-![](./img/tempcloudstore-001-0a8af724a7.png)
+<ModuleParamPreview moduleKey="sys:tempImgBed" />
 
 图片上传后会在1分钟后自动删除。（专业版用户可能会使用阿里云+CDN服务，保持时间更长）
 
 *注：目前本服务对所有用户开放，由于带宽限制，会对图片大小、分辨率及调用频率进行限制。根据资源状况，后续可能会对服务范围有所调整。*
 
-![](./img/tempimgbed-002-654c3fef61.png)
+<ModuleParamPreview
+  moduleKey="sys:tempImgBed"
+  focusKeys={['imgVar', 'stopIfFail', 'isSuccess', 'url']}
+  values={{stopIfFail: 'true'}}
+  inputVars={{imgVar: 'imgVar'}}
+  outputVars={{isSuccess: 'isSuccess', url: 'url'}}
+/>
 
 ## 参数
 

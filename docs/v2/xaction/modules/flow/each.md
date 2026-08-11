@@ -25,7 +25,7 @@ legacyContentUpdatedAt: "2023-08-27T23:42:55.000Z"
 
 是循环的一种，另外一种循环模块是“重复”。
 
-![](./img/each-001-4d6f808264.png)
+<ModuleParamPreview moduleKey="sys:each" />
 
 演示视频链接：[在组合动作中使用循环](https://www.bilibili.com/video/BV1ty4y1S7AK)
 

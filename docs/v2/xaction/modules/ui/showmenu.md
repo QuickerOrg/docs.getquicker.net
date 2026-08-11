@@ -23,7 +23,22 @@ legacyContentUpdatedAt: "2024-12-02T01:31:54.000Z"
 
 在鼠标指针所在位置显示一个纵向菜单（效果类似于右键菜单），可用于执行或选择特定操作。
 
-![](./img/showmenu-001-c54f304422.png)
+<ContextMenuPreview
+  openPath={['二级菜单']}
+  tooltip="提示内容..."
+  items={[
+    {label: '无图标菜单'},
+    {label: '带Tooltip的菜单'},
+    {label: '带图标的菜单', icon: '⚑', iconColor: '#6b7280'},
+    {
+      label: '二级菜单',
+      icon: '⚙',
+      iconColor: '#6b7280',
+      children: [{label: '子菜单', icon: '◎', iconColor: '#6b7280'}],
+    },
+    {label: '危险动作菜单', icon: '⌕', iconColor: '#ed6c02', danger: true},
+  ]}
+/>
 
 此菜单需要用鼠标点击，不支持键盘选择菜单项。
 
@@ -35,7 +50,19 @@ legacyContentUpdatedAt: "2024-12-02T01:31:54.000Z"
 
 ## 参数
 
-![](./img/showmenu-002-cf933094ec.png)
+<ModuleParamPreview
+  moduleKey="sys:showmenu"
+  values={{
+    menuData: '////注释内容\n无图标菜单|_qk_menu_no_icon\n带Tooltip的菜单(tooltip内容)|_qk_menu_tooltip\n[fa:Light_Flag]带图标的菜单(tooltip内容)|_qk_menu_icon_menu\n[+][fa:Light_Cog]二级菜单(提示内容...)\n[-][fa:Light_UserCircle]子菜单|_qk_menu_submenu\n[fa:Light_Wrench:#f57e42]危险动作菜单(tooltip内容)|_qk_menu_sample',
+    fontsize: '16',
+    waitMenuClose: 'true',
+  }}
+  outputVars={{
+    isSuccess: 'isSuccess',
+    selectedItemData: 'selectedItemData',
+    selectedItem: 'selectedItem',
+  }}
+/>
 
 【菜单数据】菜单的定义。
 
@@ -47,7 +74,7 @@ legacyContentUpdatedAt: "2024-12-02T01:31:54.000Z"
 
 这种方式只支持一级子菜单。
 
-```
+```text
 ////注释内容。
 Ping百度|operation=run&data=ping baidu.com
 //// ----表示分隔符
@@ -78,7 +105,7 @@ Ping百度|operation=run&data=ping baidu.com
 -   只能使用空格或tab中的一种。
 -   可以使用一个或多个空格或tab表示缩进。
 
-```
+```text
 [fa:Light_Paste]粘贴内容(tooltip内容)|operation=paste&data=要粘贴的内容
 [fa:Light_Cog]二级菜单(提示内容...)
   [fa:Light_Save]发送按键Ctrl+S(模拟保存)|operation=sendkeys&data=^s
@@ -88,7 +115,22 @@ Ping百度|operation=run&data=ping baidu.com
 [fa:Light_Wrench:#f57e42]运行一个Quicker动作(tooltip内容)|operation=action&action=动作名称
 ```
 
-![](./img/showmenu-003-9223b36e42.png)
+<ContextMenuPreview
+  openPath={['二级菜单', '三级菜单']}
+  items={[
+    {label: '粘贴内容', icon: '⧉'},
+    {
+      label: '二级菜单',
+      icon: '⚙',
+      children: [
+        {label: '发送按键Ctrl+S', icon: '▣'},
+        {label: '发送按键Ctrl+V', icon: '⧉'},
+        {label: '三级菜单', children: [{label: '菜单1', icon: '⚙'}]},
+      ],
+    },
+    {label: '运行一个Quicker动作', icon: '⌕', iconColor: '#ed6c02'},
+  ]}
+/>
 
 注意：当`data`的参数值中包含特殊字符，如`+`时，必须对参数值进行URL编码。 参考：[讨论话题](https://getquicker.net/Common/Topics/ViewTopic/29658)
 
@@ -101,7 +143,7 @@ Ping百度|operation=run&data=ping baidu.com
 
 示例：
 
-```
+```json
 [{
   "Title": "Ping baidu",
   "Description": "屏Ping百度",
@@ -253,7 +295,7 @@ Ping百度|operation=run&data=ping baidu.com
 
 例如，通过表达式生成操作菜单的列表。
 
-```
+```csharp
 $=
   var items =  new List<CommonOperationItem>(){
   new CommonOperationItem(){
@@ -347,7 +389,7 @@ return items;
 
 在Quicker内部用于表示一个通用的操作条目。其定义如下：
 
-```
+```csharp
  public class CommonOperationItem
  {
 

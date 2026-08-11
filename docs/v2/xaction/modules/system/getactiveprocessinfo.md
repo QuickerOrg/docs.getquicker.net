@@ -23,7 +23,7 @@ legacyContentUpdatedAt: "2019-07-15T04:33:57.000Z"
 
 获取Windows活动窗口所属进程的信息。
 
-![image.png](./img/getactiveprocessinfo-001-f2ed91d257.png "image.png")
+<ModuleParamPreview moduleKey="sys:getActiveProcessInfo" />
 
 ## 参数
 

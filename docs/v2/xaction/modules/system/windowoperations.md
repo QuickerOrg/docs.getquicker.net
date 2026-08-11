@@ -23,7 +23,7 @@ Window窗口相关操作
 
 操作指定的Windows窗口对象。
 
-![](./img/windowoperations-001-f85b0056b7.png)
+<ModuleParamPreview moduleKey="sys:windowOperations" />
 
 ## 参数
 
@@ -72,7 +72,11 @@ Window窗口相关操作
 
 更改窗口的状态，如最大化、最小化、隐藏、显示、恢复等。
 
-![](./img/windowoperations-005-0baeb889ca.png)
+<ModuleParamPreview
+  moduleKey="sys:windowOperations"
+  focusKeys={['type', 'hWnd', 'showCmd', 'isSuccess']}
+  values={{type: 'show', hWnd: '', showCmd: '3'}}
+/>
 
 ### 设置为前台窗口
 

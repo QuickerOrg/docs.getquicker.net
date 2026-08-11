@@ -23,7 +23,7 @@ legacyContentUpdatedAt: "2022-01-14T14:50:43.000Z"
 
 选择一个文件夹，获取其完整路径。
 
-![](./img/selectfolder-001-ed56a5efd3.png)
+<ModuleParamPreview moduleKey="sys:selectFolder" />
 
 ## 参数
 
@@ -49,8 +49,22 @@ legacyContentUpdatedAt: "2022-01-14T14:50:43.000Z"
 
 ## 相关子程序
 
--   选择多个文件夹：[https://getquicker.net/subprogram?id=fe43699c-88dc-4b8d-0913-08d9d6a79e0f](https://getquicker.net/subprogram?id=fe43699c-88dc-4b8d-0913-08d9d6a79e0f)
+<ShareLinkCard
+  kind="subprogram"
+  id="fe43699c-88dc-4b8d-0913-08d9d6a79e0f"
+  title="多选文件夹"
+  description="选择多个文件夹并获得路径列表"
+  author="CL"
+  category="文件和目录"
+/>
 
 ## 参考动作
 
--   切换文件夹：[https://getquicker.net/sharedaction?code=065dc9ec-731b-4230-58c2-08d6a5df163e](https://getquicker.net/sharedaction?code=065dc9ec-731b-4230-58c2-08d6a5df163e)
+<ShareLinkCard
+  kind="action"
+  code="065dc9ec-731b-4230-58c2-08d6a5df163e"
+  title="切换文件夹"
+  description="获取资源管理器已打开的路径，选择后填入保存对话框。"
+  author="CL"
+  category="文件处理"
+/>

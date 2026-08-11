@@ -38,7 +38,7 @@ Zip压缩或解压缩
 
 将指定的文件夹或多个文件压缩为一个zip文件。
 
-![](./img/zip-001-816f083f00.png)
+<ModuleParamPreview moduleKey="sys:zip" />
 
 ### 输入参数
 
@@ -80,7 +80,27 @@ Zip压缩或解压缩
 
 将zip文件解压缩到指定文件夹。
 
-![](./img/zip-002-652a1a1eb0.png)
+<ModuleParamPreview
+  moduleKey="sys:zip"
+  focusKeys={[
+    'type',
+    'sourceZipFile',
+    'outputPath',
+    'password',
+    'overwrite',
+    'skipOverwriteError',
+    'showProgress',
+    'stopIfFail',
+    'isSuccess',
+    'resultPath',
+  ]}
+  values={{
+    type: 'Unzip',
+    overwrite: 'false',
+    skipOverwriteError: 'false',
+    showProgress: 'false',
+  }}
+/>
 
 ### 输入参数
 

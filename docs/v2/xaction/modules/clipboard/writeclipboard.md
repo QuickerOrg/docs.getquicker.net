@@ -25,7 +25,7 @@ legacyContentUpdatedAt: "2019-07-08T13:55:08.000Z"
 
 本模块用于将文本、图片或HTML代码片段写入剪贴板中，供后续的粘贴使用。
 
-![image.png](./img/writeclipboard-001-860eaf8230.png "image.png")
+![](./img/writeclipboard-001-860eaf8230.png)
 
 ## 参数
 
@@ -47,7 +47,15 @@ legacyContentUpdatedAt: "2019-07-08T13:55:08.000Z"
 
 用于将一段HTML代码写入剪贴板后，作为HTML格式粘贴到编辑器中。通常应该同时提供html格式内容和纯文本格式的内容以方便不同的第三方应用粘贴时使用。
 
-![image.png](./img/writeclipboard-002-01877d07cf.png "image.png")
+<ModuleParamPreview
+  moduleKey="sys:writeClipboard"
+  focusKeys={['type', 'html', 'text']}
+  values={{
+    type: 'html',
+    html: '<a href=baidu.com>baidu.com</a>',
+    text: 'baidu.com',
+  }}
+/>
 
 【HTML内容】要写入剪贴板的HTML代码片段。
 

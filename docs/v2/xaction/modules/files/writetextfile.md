@@ -23,7 +23,7 @@ legacyContentUpdatedAt: "2019-12-20T02:52:44.000Z"
 
 将文本内容写入指定的文件。
 
-![image.png](./img/writetextfile-001-3d59a24b6b.png "image.png")
+<ModuleParamPreview moduleKey="sys:WriteTextFile" />
 
 ## 参数
 

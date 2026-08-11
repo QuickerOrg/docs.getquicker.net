@@ -35,7 +35,18 @@ legacyContentUpdatedAt: "2025-11-16T15:11:27.000Z"
 
 录制麦克风中输入的声音，生成`.wav`格式的文件。
 
-![](./img/recordsound-002-db31e70918.png)
+<ModuleParamPreview
+  moduleKey="sys:recordSound"
+  focusKeys={['operation', 'waveFormat', 'filePath', 'autoStartSeconds', 'silentStopSeconds', 'helpText']}
+  values={{
+    operation: 'record',
+    waveFormat: '16000|1',
+    filePath: '',
+    autoStartSeconds: '0',
+    silentStopSeconds: '2',
+    helpText: '',
+  }}
+/>
 
 **输入参数**
 
@@ -61,7 +72,12 @@ legacyContentUpdatedAt: "2025-11-16T15:11:27.000Z"
 
 录制某个软件正在播放的声音。
 
-![](./img/recordsound-003-758e304509.png)
+<ModuleParamPreview
+  moduleKey="sys:recordSound"
+  focusKeys={['operation', 'filePath', 'silentStopSeconds', 'outputFilePath']}
+  values={{operation: 'record_internal', filePath: '', silentStopSeconds: '2'}}
+  outputVars={{outputFilePath: 'outputFilePath'}}
+/>
 
 输入输出参数，请参考“录制外部声音”中的说明。
 
@@ -69,7 +85,12 @@ legacyContentUpdatedAt: "2025-11-16T15:11:27.000Z"
 
 本功能使用[讯飞语音听写(流式版)](https://console.xfyun.cn/services/iat)，实现60秒内的语音转文字功能。
 
-![](./img/recordsound-004-45597de896.png)
+<ModuleParamPreview
+  moduleKey="sys:recordSound"
+  focusKeys={['operation', 'silentStopSeconds', 'helpText', 'speechContent']}
+  values={{operation: 'short_voice_input', silentStopSeconds: '2', helpText: 'hi，请输入指令。'}}
+  outputVars={{speechContent: 'text'}}
+/>
 
 【静音停止秒数】检测到一定的静音时间后停止输入。
 
@@ -81,7 +102,7 @@ legacyContentUpdatedAt: "2025-11-16T15:11:27.000Z"
 
 请自备账号，在讯飞后台获取接口认证信息，并开通“动态修正”功能。将账号信息按如下格式填写（不要有多余的空格）：
 
-```
+```text
 APPID:3e2c9c06
 APIKey:cd64XXXXXXXXXXXXXXXXXXXXXXXXXXX
 APISecret:MGEXXXXXXXXXXXXXXXXXXXXXXXXX

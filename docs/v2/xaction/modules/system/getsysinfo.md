@@ -25,7 +25,7 @@ legacyContentUpdatedAt: "2024-03-27T02:22:03.000Z"
 
 【注】本模块不适合在子程序中使用，部分依赖于动作运行上下文的的信息无法在子程序中获取。
 
-![](./img/getsysinfo-001-c4a17fdebc.png)
+<ModuleParamPreview moduleKey="sys:getSysInfo" />
 
 参数
 
@@ -72,7 +72,7 @@ legacyContentUpdatedAt: "2024-03-27T02:22:03.000Z"
 
 【触发方式】启动动作的方式，仅供参考。主要的触发方式有：
 
-```
+```text
 Panel,          //主面板窗口
 TriggerKey,     //触发键
 FloatButton,    //浮动按钮

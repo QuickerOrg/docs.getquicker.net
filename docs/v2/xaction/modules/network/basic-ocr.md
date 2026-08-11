@@ -25,7 +25,11 @@ legacyContentUpdatedAt: "2024-12-06T01:38:30.000Z"
 
 目前支持的接口类型：
 
-![](./img/basic-ocr-001-05752ebcaf.png)
+<ModuleParamPreview
+  moduleKey="sys:basic-ocr"
+  focusKeys={['operation']}
+  values={{operation: 'QuickerServerOcr'}}
+/>
 
 ## Quicker OCR引擎
 
@@ -50,7 +54,18 @@ legacyContentUpdatedAt: "2024-12-06T01:38:30.000Z"
 -   首次使用（或空闲时间超过设定的保活时间后第一次使用），需要一定的额外时间加载模型；
 -   注：不支持多线程，请勿多线程方式或同时在多个动作中调用；
 
-![](./img/basic-ocr-002-39aae5242a.png)
+<ModuleParamPreview
+  moduleKey="sys:basic-ocr"
+  values={{
+    operation: 'QuickerServerOcr',
+    punctuationType: 'no',
+    mergeChapter: 'no',
+    lang: 'CHN_ENG',
+    offlineMode: 'Auto',
+  }}
+  inputVars={{imgVar: 'img'}}
+  outputVars={{content: 'text'}}
+/>
 
 **参数说明**
 
@@ -126,7 +141,10 @@ legacyContentUpdatedAt: "2024-12-06T01:38:30.000Z"
 
 如果在使用时出现“PaddleConfig的类型初始值设定项引发异常”报错（如下图所示），请下载和安装[VisualC++再发布包(Visual C++ Redistributable)](https://aka.ms/vs/17/release/vc_redist.x64.exe)。
 
-![](./img/basic-ocr-006-29e65e5bc6.png)
+<NotifyToastPreview
+  variant="warning"
+  message={'离线OCR失败。“Sdcb.PaddleInference.PaddleConfig”的类型初始值设定项引发异常。\n(----Quicker OCRv2:基础OCR----)'}
+/>
 
 **测试动作：**
 
@@ -146,7 +164,21 @@ legacyContentUpdatedAt: "2024-12-06T01:38:30.000Z"
 
 ## Windows 10/11 内置OCR
 
-![](./img/basic-ocr-009-540168aac8.png)
+<ModuleParamPreview
+  moduleKey="sys:basic-ocr"
+  focusKeys={[
+    'operation',
+    'imgVar',
+    'stopIfFail',
+    'isSuccess',
+    'content',
+    'textList',
+    'rawData',
+  ]}
+  values={{operation: 'WindowsOcr'}}
+  inputVars={{imgVar: 'img'}}
+  outputVars={{content: 'text'}}
+/>
 
 使用Windows自带OCR引擎识别文字。识别时将使用Windows当前语言设置进行识别。
 
@@ -164,7 +196,26 @@ Windows自带OCR引擎识别速度快但是效果比较一般。
 
 ### 百度通用文字识别（自定义账号）
 
-![](./img/basic-ocr-010-8529b7185c.png)
+<ModuleParamPreview
+  moduleKey="sys:basic-ocr"
+  focusKeys={[
+    'operation',
+    'apiKey',
+    'secretKey',
+    'imgVar',
+    'punctuationType',
+    'mergeChapter',
+    'stopIfFail',
+    'isSuccess',
+    'content',
+    'textList',
+    'rawData',
+    'rawObject',
+  ]}
+  values={{operation: 'baidu-basic', punctuationType: 'no', mergeChapter: 'no'}}
+  inputVars={{imgVar: 'img'}}
+  outputVars={{content: 'text'}}
+/>
 
 使用自有账号调用百度通用文字识别接口。
 
@@ -205,7 +256,24 @@ Windows自带OCR引擎识别速度快但是效果比较一般。
 
 -   在设置中可选择在免费额度用完以后耗费Q豆继续使用基础OCR服务（请参见下一个章节的截图）。每次OCR的费用为0.005Q豆（1元可用200次）。[什么是Q豆？](https://getquicker.net/KC/Kb/Article/933)
 
-![](./img/basic-ocr-011-b78e0b4cbb.png)
+<ModuleParamPreview
+  moduleKey="sys:basic-ocr"
+  focusKeys={[
+    'operation',
+    'imgVar',
+    'punctuationType',
+    'mergeChapter',
+    'stopIfFail',
+    'isSuccess',
+    'content',
+    'textList',
+    'rawData',
+    'rawObject',
+  ]}
+  values={{operation: 'baidu-quicker', punctuationType: 'no', mergeChapter: 'no'}}
+  inputVars={{imgVar: 'img'}}
+  outputVars={{content: 'text'}}
+/>
 
 ### 使用全局自有OCR账号
 
@@ -225,7 +293,23 @@ Windows自带OCR引擎识别速度快但是效果比较一般。
 
 请参考：[百度账号申请教程](https://getquicker.net/KC/Kb/Article/364)，作者@Marcus
 
-![](./img/basic-ocr-013-5bb4f3d6f2.png)
+<ModuleParamPreview
+  moduleKey="sys:basic-ocr"
+  focusKeys={[
+    'operation',
+    'apiKey',
+    'secretKey',
+    'imgVar',
+    'interface',
+    'options',
+    'stopIfFail',
+    'isSuccess',
+    'rawData',
+    'rawObject',
+  ]}
+  values={{operation: 'baidu-custom'}}
+  inputVars={{imgVar: 'img'}}
+/>
 
 **参数**
 
@@ -253,7 +337,21 @@ Windows自带OCR引擎识别速度快但是效果比较一般。
 
 参考动作：[表格识别](https://getquicker.net/Sharedaction?code=3fc97b7e-7be1-4a23-3d64-08db3e27302e)
 
-![](./img/basic-ocr-015-0fc9ae6f35.png)
+<ModuleParamPreview
+  moduleKey="sys:basic-ocr"
+  focusKeys={[
+    'operation',
+    'imgVar',
+    'lang',
+    'stopIfFail',
+    'isSuccess',
+    'content',
+    'rawData',
+  ]}
+  values={{operation: 'table_quicker', lang: 'CHN_ENG'}}
+  inputVars={{imgVar: 'bmp'}}
+  outputVars={{content: 'selectedText'}}
+/>
 
 参数：请参考前面其它接口的说明。
 

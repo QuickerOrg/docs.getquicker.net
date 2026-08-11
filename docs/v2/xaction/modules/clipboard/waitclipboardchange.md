@@ -25,7 +25,7 @@ legacyContentUpdatedAt: "2025-12-05T02:21:23.000Z"
 
 通常用于等待第三方工具（如截图软件）完成操作并将内容写入剪贴板。
 
-![](./img/waitclipboardchange-001-2c1947c6de.png)
+<ModuleParamPreview moduleKey="sys:waitClipboardChange" />
 
 使用截图软件的通常操作步骤为：
 

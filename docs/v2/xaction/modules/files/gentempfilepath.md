@@ -23,7 +23,7 @@ legacyContentUpdatedAt: "2019-07-15T02:45:21.000Z"
 
 根据指定的后缀名，生成一个合法路径用于存储临时文件。
 
-![image.png](./img/gentempfilepath-001-87f237b133.png "image.png")
+<ModuleParamPreview moduleKey="sys:GenTempFilePath" />
 
 ## 参数
 

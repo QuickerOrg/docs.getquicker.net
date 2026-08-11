@@ -20,7 +20,7 @@ Quicker 1.44.48 版本，结合浏览器扩展 1.1.0 版本，可允许设定“
 
 可参考此[帖子](https://getquicker.net/QA/Question/36904)，如：
 
-```
+```text
 "C:\Program Files (x86)\Microsoft\Edge\Application\msedge.exe" --user-data-dir=d:\user_data1
 "C:\Program Files (x86)\Microsoft\Edge\Application\msedge.exe" --user-data-dir=d:\user_data2
 "C:\Program Files (x86)\Microsoft\Edge\Application\msedge.exe" --user-data-dir=d:\user_data3

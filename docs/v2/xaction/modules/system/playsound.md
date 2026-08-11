@@ -27,13 +27,13 @@ legacyContentUpdatedAt: "2019-04-18T13:55:13.000Z"
 
 ## 参数
 
-![image.png](./img/playsound-001-d27e1c1555.png "image.png")
+<ModuleParamPreview moduleKey="sys:playSound" />
 
 **类型：**
 
 -   内置声音提示：播放Quicker内置的几种提示音。
 -   电脑文件或网络文件：指定文件路径或URL。
 
-**提示音类型：**信息、截图、成功、告警、错误等。（音频资源由网友Moy提供，特此感谢！）
+**提示音类型**：信息、截图、成功、告警、错误等。（音频资源由网友Moy提供，特此感谢！）
 
-**路径或URL：**指定要播放的文件路径或网址。
+**路径或URL**：指定要播放的文件路径或网址。

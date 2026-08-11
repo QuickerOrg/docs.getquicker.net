@@ -23,7 +23,7 @@ legacyContentUpdatedAt: "2023-04-30T04:25:47.000Z"
 
 将文本、图片或文件保存到网络并获得网址（一段时间后自动删除）。
 
-**警告：**请勿使用本服务上传有可能违反国家法律或规定的文件。 文件网址会带有您的用户编号，如果被阿里云或第三方机构警告，我们将会停止您使用本服务的权限。情节严重的，将会根据有关部门要求提供您的相关信息。
+**警告**：请勿使用本服务上传有可能违反国家法律或规定的文件。 文件网址会带有您的用户编号，如果被阿里云或第三方机构警告，我们将会停止您使用本服务的权限。情节严重的，将会根据有关部门要求提供您的相关信息。
 
 ![](./img/tempcloudstore-001-0a8af724a7.png)
 
@@ -40,7 +40,12 @@ legacyContentUpdatedAt: "2023-04-30T04:25:47.000Z"
 -   文本长度限制1MB，文件大小限制10MB。
 -   专业版用户：上传间隔限制5秒。 免费版用户：上传间隔限制10分钟。
 
-![](./img/tempcloudstore-002-50905599cf.png)
+<ModuleParamPreview
+  moduleKey="sys:tempcloudstore"
+  values={{dataType: 'file', expireSeconds: '2.5'}}
+  inputVars={{file: 'textValue'}}
+  outputVars={{url: 'url'}}
+/>
 
 ## 参数
 

@@ -23,7 +23,7 @@ legacyContentUpdatedAt: "2024-06-05T02:30:46.000Z"
 
 替换文本中的一部分内容。
 
-![](./img/strreplace-001-75a37463b0.png)
+<ModuleParamPreview moduleKey="sys:strReplace" />
 
 ## 参数
 
@@ -38,7 +38,7 @@ legacyContentUpdatedAt: "2024-06-05T02:30:46.000Z"
 
 【查找和替换内容】（批量模式下使用）每行指定一对要查找和替换的内容。如：
 
-```
+```text
 a|A
 b|B
 cc|||CC|CC

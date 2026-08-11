@@ -317,7 +317,7 @@ Quicker中的数字类型变量在内部为C#语言的double类型，整数数�
 
 从一个例子开始：
 
-```
+```csharp
 $= {列表变量}.Where(x => !String.IsNullOrWhiteSpace(x)).Select(x => x.Trim().ToUpper() + "_后缀").ToList()
 ```
 
@@ -344,7 +344,7 @@ $= {列表变量}.Where(x => !String.IsNullOrWhiteSpace(x)).Select(x => x.Trim()
 
 -   给列表的每项添加序号：
 
-```
+```csharp
 $= {list}
 .Select((x,index) => {
   var temp = x.ToUpper().Trim();
@@ -356,19 +356,19 @@ $= {list}
 
 -   将词典转换为“用户选择”模块的可选值格式：
 
-```
+```csharp
 $= {dict}.Select(x => x.Value.ToString() + "|" + x.Key).ToList()
 ```
 
 -   将词典转换为Cookie数据格式：
 
-```
+```csharp
 $= String.Join(" ", {dict}.Select(x => x.Key+ "=" + x.Value +";"))
 ```
 
 -   将数字内容的列表按数字大小排序：
 
-```
+```csharp
 $= {list}.Select(x => Convert.ToInt32(x))
 .OrderBy(x => x)
 .Select(x => x.ToString())
@@ -377,7 +377,7 @@ $= {list}.Select(x => Convert.ToInt32(x))
 
 -   将两个同样长度的列表的每个元素横向合并：
 
-```
+```csharp
 $= {list1}.Select((x,index) => x + {list2}[index]).ToList()
 ```
 

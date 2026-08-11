@@ -59,7 +59,19 @@ legacyContentUpdatedAt: "2024-05-14T08:26:31.000Z"
 
 向表格中添加一行数据。
 
-![](./img/tableoperation-002-46e293470c.png)
+<ModuleParamPreview
+  moduleKey="sys:tableoperation"
+  focusKeys={['table', 'type', 'rowData', 'stopIfFail', 'isSuccess', 'rowCount']}
+  values={{
+    type: 'addRow',
+    rowData: `名称:测试条目
+说明:这是一条测试数据
+图标:fa:Light_Icon
+注释:注释信息`,
+  }}
+  inputVars={{table: 'table'}}
+  outputVars={{isSuccess: 'isSuccess', rowCount: 'rowCount'}}
+/>
 
 【行数据】
 
@@ -145,19 +157,43 @@ legacyContentUpdatedAt: "2024-05-14T08:26:31.000Z"
 
 删掉匹配指定筛选条件的行。
 
-![](./img/tableoperation-006-f1d366a553.png)
+<ModuleParamPreview
+  moduleKey="sys:tableoperation"
+  focusKeys={['table', 'type', 'filterExpression', 'stopIfFail']}
+  values={{type: 'deleteRows', filterExpression: "Name='王五'"}}
+  inputVars={{table: 'table'}}
+/>
 
 ### 删除列
 
 从表格删除掉指定的列。
 
-![](./img/tableoperation-007-e8825215e9.png)
+<ModuleParamPreview
+  moduleKey="sys:tableoperation"
+  focusKeys={['table', 'type', 'deleteColumns', 'stopIfFail']}
+  values={{type: 'deleteColumns', deleteColumns: 'Age,Name'}}
+  inputVars={{table: 'table'}}
+/>
 
 ### 从CSV文本加载数据
 
 从csv格式（逗号分隔）的文本加载数据到表格变量。可以在前面使用“[读取文件](/v2/xaction/modules/readfile)”模块将文件内如读取到文本变量中（csv文件在简体中文系统中通常使用GB2312编码保存），再在本模块中将变量输入到“文本数据”参数。
 
-![](./img/tableoperation-008-73c96b2964.png)
+<ModuleParamPreview
+  moduleKey="sys:tableoperation"
+  focusKeys={[
+    'table',
+    'type',
+    'dataText',
+    'clearOldRows',
+    'stopIfFail',
+    'isSuccess',
+    'rowCount',
+  ]}
+  values={{type: 'importCsv', clearOldRows: 'true'}}
+  inputVars={{table: 'table', dataText: 'text'}}
+  outputVars={{rowCount: 'rowCount'}}
+/>
 
 【文本数据】csv文本内容。第一行应该为标题行，内容为各列的列名。
 
@@ -180,7 +216,22 @@ legacyContentUpdatedAt: "2024-05-14T08:26:31.000Z"
 
 从Excel工作表加载数据。
 
-![](./img/tableoperation-011-aed2ab3c5b.png)
+<ModuleParamPreview
+  moduleKey="sys:tableoperation"
+  focusKeys={[
+    'table',
+    'type',
+    'excelFilePath',
+    'sheetName',
+    'startRowNum',
+    'stopIfFail',
+    'isSuccess',
+    'rowCount',
+  ]}
+  values={{type: 'importExcel', startRowNum: '1'}}
+  inputVars={{table: 'table'}}
+  outputVars={{rowCount: 'rowCount'}}
+/>
 
 要读取的Excel工作表中应该有规范的二维表格数据。
 

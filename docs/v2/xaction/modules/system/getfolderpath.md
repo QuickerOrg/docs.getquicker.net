@@ -23,7 +23,7 @@ legacyContentUpdatedAt: "2019-07-15T08:30:07.000Z"
 
 用于获取特定的Windows系统文件夹路径。
 
-![image.png](./img/getfolderpath-001-348e88218e.png "image.png")
+<ModuleParamPreview moduleKey="sys:getFolderPath" />
 
 ## 参数
 

@@ -23,7 +23,7 @@ legacyContentUpdatedAt: "2020-02-07T15:07:05.000Z"
 
 停止动作或从子程序中返回。类似于编程语言中的**return**语句。
 
-![image.png](./img/stop-001-446b0afe53.png "image.png")
+<ModuleParamPreview moduleKey="sys:stop" />
 
 ## 操作类型
 
@@ -47,6 +47,21 @@ legacyContentUpdatedAt: "2020-02-07T15:07:05.000Z"
 
 当动作被其他动作调用时，也可用于向其他动作返回执行结果信息。
 
-![image.png](./img/stop-002-8b3d373d6f.png "image.png")
+<PreviewCompare
+  labels={['停止(return)', '运行或停止动作']}
+  caption="被调用动作里「返回值」会出现在「动作输出」。勾选「标记为出错」时，这里通常是错误消息（需同时勾选等待运行结束）。"
+>
+  <ModuleParamPreview
+    moduleKey="sys:stop"
+    focusKeys={['isError', 'return']}
+    values={{isError: 'true', return: '未找到目标'}}
+  />
+  <ModuleParamPreview
+    moduleKey="sys:runAction"
+    focusKeys={['wait', 'output']}
+    values={{type: 'StartAction', actionId: 'tt2020', wait: 'true'}}
+    outputVars={{output: 'actionResult'}}
+  />
+</PreviewCompare>
 
 当从子程序返回时，如果选择了“标记为出错”选项，则用以传递错误消息。

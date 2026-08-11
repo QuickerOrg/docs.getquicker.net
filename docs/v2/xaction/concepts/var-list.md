@@ -22,11 +22,12 @@ legacyContentUpdatedAt: "2023-12-29T00:05:09.000Z"
 
 ## 变量定义
 
-
-
-![](./img/var-list-001-ecb8ed786a.png)
-
-
+<VariableDefPreview
+  name="fileList"
+  typeLabel="列表"
+  remark="文件路径列表"
+  defaultValue={"AAAAAA\nBBBBBB\nCCCCCCC"}
+/>
 
 创建变量时，选择“列表”类型即可。
 

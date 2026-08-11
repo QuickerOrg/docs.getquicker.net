@@ -23,7 +23,7 @@ legacyContentUpdatedAt: "2021-03-17T12:26:25.000Z"
 
 根据指定的文本内容生成二维码图片。
 
-![image.png](./img/createqrcode-001-d2431c24d2.png "image.png")
+<ModuleParamPreview moduleKey="sys:createQrCode" />
 
 ## 参数
 

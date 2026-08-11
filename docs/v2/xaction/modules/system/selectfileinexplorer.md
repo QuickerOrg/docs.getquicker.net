@@ -25,7 +25,7 @@ legacyContentUpdatedAt: "2022-11-12T12:17:59.000Z"
 
 会打开文件所在目录，然后选择文件。
 
-![](./img/selectfileinexplorer-001-00bb4b1ad6.png)
+<ModuleParamPreview moduleKey="sys:SelectFileInExplorer" />
 
 对应的效果：
 

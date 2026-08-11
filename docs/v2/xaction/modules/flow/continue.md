@@ -30,7 +30,7 @@ legacyContentUpdatedAt: "2020-02-07T14:40:01.000Z"
 -   跳出循环：中止所在循环模块的执行，不再循环下一次。
 -   跳过后续步骤：不中止循环，而是跳过本次循环的后续步骤直接开始下一次循环。
 
-![image.png](./img/continue-001-1237144978.png "image.png")
+<ModuleParamPreview moduleKey="sys:continue" />
 
 ## 示例
 

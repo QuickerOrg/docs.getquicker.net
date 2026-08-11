@@ -27,16 +27,19 @@ legacyContentUpdatedAt: "2025-09-28T15:04:27.000Z"
 
 
 
-
 ## 变量定义
 
 ### 默认值的定义/赋值操作里的文本写法
 
 词典变量默认值可以使用两种方式写：
 
--   简单模式：每行一个键值对， 格式为  Key:Value，例如：
+-   简单模式：每行一个键值对， 格式为 Key:Value，例如：
 
-![](./img/var-dict-001-489d4973bd.png)
+<VariableDefPreview
+  name="词典变量"
+  typeLabel="词典"
+  defaultValue={"a:aaaa\nb:bbbb\nc:cccc"}
+/>
 
 定义了一个词典变量，初始化后包含3个“键-值”对。第一个键为“a”，值为“aaaa”；第二个键为“**b**”，值为“bbbb”；第一个键为“c”，值为“cccc”。
 
@@ -44,10 +47,20 @@ legacyContentUpdatedAt: "2025-09-28T15:04:27.000Z"
 
 -   Json格式：
 
-![](./img/var-dict-002-acf3a5849d.png)
+<VariableDefPreview
+  name="dict"
+  typeLabel="词典"
+  defaultValue={'{\n  "Name": "张三",\n  "Age": 30\n}'}
+/>
 
-![](./img/var-dict-003-d97f8eb3fd.png)
+也可用「赋值」模块把 JSON 文本写入词典变量（示意）：
 
+<ModuleParamPreview
+  moduleKey="sys:assign"
+  focusKeys={['input', 'output']}
+  values={{input: '{\n  "Name": "张三"\n}'}}
+  outputVars={{output: 'dict'}}
+/>
 
 
 
@@ -58,14 +71,18 @@ legacyContentUpdatedAt: "2025-09-28T15:04:27.000Z"
 
 （1）使用“赋值”模块将词典变量赋值给文本变量即可自动转换。
 
-![](./img/var-dict-004-f318080d20.png)
+<ModuleParamPreview
+  moduleKey="sys:assign"
+  focusKeys={['input', 'output']}
+  values={{input: '{dict}'}}
+  outputVars={{output: 'text'}}
+/>
 
 （2）使用表达式:
 
-```
+```csharp
 $= JsonConvert.SerializeObject({词典变量})
 ```
-
 
 
 
@@ -75,7 +92,6 @@ $= JsonConvert.SerializeObject({词典变量})
 ## 相关操作模块
 
 -   [词典操作](/v2/xaction/modules/dictoperations)
-
 
 
 

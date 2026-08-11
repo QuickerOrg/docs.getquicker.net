@@ -1,0 +1,354 @@
+/**
+ * Sliced from Quicker.Headless/Web/src/styles.css
+ * (step-listbox / step-node-* / step-row / step-children / branch-*).
+ * Tokens from theme.css. Light values on the root; dark via html[data-theme="dark"].
+ * Prefer re-sync from Headless over hand-tuning.
+ */
+
+.qk-sr-program {
+  --ad-font-sans: "Segoe UI", "Microsoft YaHei UI", sans-serif;
+  --ad-bg-step-list: #d3d3d3;
+  --ad-bg-panel: #ffffff;
+  --ad-bg-step-row-hover: #eef0f4;
+  --ad-border-panel: #d0d0d0;
+  --ad-border-strong: #bdbdbd;
+  --ad-border-children: #e0e0e0;
+  --ad-fg-primary: #1a1a1a;
+  --ad-fg-secondary: #303030;
+  --ad-fg-muted: #6e6e6e;
+  --ad-fg-step-title: #454a50;
+  --ad-fg-note: #5c636a;
+  --ad-fg-branch: #8a7220;
+  --ad-fg-ban: #d92d2d;
+  --ad-accent: #2b7abf;
+  --ad-accent-bright: #1f6fad;
+  --ad-step-disabled-filter: saturate(0.82) brightness(0.9);
+  --ad-fg-step-title-disabled: #9aa1a9;
+  --ad-fg-note-disabled: #a8aeb5;
+  --ad-fg-step-row-disabled: #9aa1a9;
+  --ad-fg-branch-disabled: #b5ad92;
+  --ad-fg-step-accent-disabled: #8aa8c4;
+
+  margin: 1rem 0 1.5rem;
+  border: 1px solid var(--ad-border-panel);
+  border-radius: 6px;
+  overflow: hidden;
+  background: var(--ad-bg-step-list);
+  color: var(--ad-fg-secondary);
+  font-family: var(--ad-font-sans);
+  font-size: 13px;
+  line-height: 1.45;
+}
+
+html[data-theme="dark"] .qk-sr-program {
+  --ad-bg-step-list: #14171c;
+  --ad-bg-panel: #23272f;
+  --ad-bg-step-row-hover: #2a303a;
+  --ad-border-panel: #3a4150;
+  --ad-border-strong: #5c6b82;
+  --ad-border-children: #1e2228;
+  --ad-fg-primary: #e8eaed;
+  --ad-fg-secondary: #d4d8e0;
+  --ad-fg-muted: #9aa3b2;
+  --ad-fg-step-title: #d4d8e0;
+  --ad-fg-note: #9aa3b2;
+  --ad-fg-branch: #b7a46c;
+  --ad-fg-ban: #ff7979;
+  --ad-accent: #4d9fff;
+  --ad-accent-bright: #7ab8ff;
+  --ad-step-disabled-filter: saturate(0.65) brightness(0.65);
+  --ad-fg-step-title-disabled: #7a8494;
+  --ad-fg-note-disabled: #6a7382;
+  --ad-fg-step-row-disabled: #7a8494;
+  --ad-fg-branch-disabled: #8a7f5c;
+  --ad-fg-step-accent-disabled: #5a7a9a;
+}
+
+.qk-sr-program__caption {
+  padding: 6px 10px;
+  border-bottom: 1px solid var(--ad-border-panel);
+  background: var(--ad-bg-panel);
+  color: var(--ad-fg-muted);
+  font-size: 12px;
+}
+
+.qk-sr-program__empty {
+  padding: 12px 10px;
+  color: var(--ad-fg-muted);
+  font-size: 12px;
+  background: var(--ad-bg-panel);
+}
+
+.qk-sr-program .step-listbox {
+  border: none;
+  background: var(--ad-bg-step-list);
+  border-radius: 0;
+  padding: 2px 0 8px;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  min-height: 0;
+}
+
+.qk-sr-program .step-listbox.root {
+  padding-right: 2px;
+  padding-bottom: 8px;
+}
+
+.qk-sr-program .step-listbox.nested {
+  margin: 0;
+  border: none;
+  border-radius: 0;
+  padding: 2px 0;
+  overflow: visible;
+  background: var(--ad-bg-step-list);
+}
+
+.qk-sr-program .step-node-block .step-listbox.nested {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  max-width: none;
+  margin-right: 0;
+  box-sizing: border-box;
+}
+
+.qk-sr-program .step-node-block {
+  --step-rail-width: 2px;
+  margin: 0;
+  flex-shrink: 0;
+  position: relative;
+  display: grid;
+  grid-template-columns: var(--step-rail-width) minmax(0, 1fr);
+  align-items: stretch;
+  gap: 0;
+  background: transparent;
+  border: none;
+  border-radius: 0;
+}
+
+.qk-sr-program .step-node-rail {
+  min-width: 0;
+  min-height: 0;
+  align-self: stretch;
+  background: transparent;
+}
+
+.qk-sr-program .step-node-main {
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  background: var(--ad-bg-panel);
+}
+
+.qk-sr-program .step-node-main--disabled {
+  filter: var(--ad-step-disabled-filter);
+}
+
+.qk-sr-program .step-node-main--disabled .step-row {
+  color: var(--ad-fg-step-row-disabled);
+}
+
+.qk-sr-program .step-node-main--disabled .step-row .step-titles .primary {
+  color: var(--ad-fg-step-title-disabled);
+}
+
+.qk-sr-program .step-node-main--disabled .step-row .step-titles .step-note {
+  color: var(--ad-fg-note-disabled);
+}
+
+.qk-sr-program .step-node-main--disabled .branch-title {
+  color: var(--ad-fg-branch-disabled);
+}
+
+.qk-sr-program .step-node-main--disabled .step-row .expand,
+.qk-sr-program .step-node-main--disabled .step-row .icon {
+  color: var(--ad-fg-step-accent-disabled);
+}
+
+.qk-sr-program .step-children {
+  margin-left: 10px;
+  margin-top: 0;
+  padding-bottom: 4px;
+  border-top: 1px solid var(--ad-border-children);
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.qk-sr-program .branch-box {
+  margin-top: 0;
+}
+
+.qk-sr-program .branch-title {
+  margin: 0 0 1px 4px;
+  padding: 0;
+  line-height: 1.1;
+  font-size: 11px;
+  color: var(--ad-fg-branch);
+  letter-spacing: 0.2px;
+}
+
+.qk-sr-program .step-row {
+  width: 100%;
+  min-height: 26px;
+  box-sizing: border-box;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+  color: var(--ad-fg-secondary);
+  padding: 0 6px;
+  display: flex;
+  gap: 4px;
+  align-items: center;
+  text-align: left;
+  cursor: default;
+  position: relative;
+}
+
+.qk-sr-program .step-row:hover {
+  background: var(--ad-bg-step-row-hover);
+}
+
+.qk-sr-program .step-row .expand {
+  color: var(--ad-accent-bright);
+  width: 14px;
+  height: 14px;
+  flex: 0 0 14px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  line-height: 0;
+  user-select: none;
+}
+
+.qk-sr-program .step-row .expand .expand-triangle {
+  display: block;
+}
+
+.qk-sr-program .step-row .icon {
+  color: var(--ad-accent-bright);
+  font-size: 16px;
+  flex: 0 0 auto;
+}
+
+.qk-sr-program .step-row .ban {
+  color: var(--ad-fg-ban);
+  font-size: 11px;
+  flex: 0 0 auto;
+}
+
+.qk-sr-program .step-row .step-titles {
+  flex: 1 1 auto;
+  min-width: 0;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  align-self: stretch;
+  gap: 5px;
+  overflow: hidden;
+}
+
+.qk-sr-program .step-row .step-titles .primary {
+  flex: 0 0 auto;
+  min-width: 0;
+  max-width: 45%;
+  font-size: 12px;
+  color: var(--ad-fg-step-title);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  line-height: 22px;
+  height: 22px;
+  display: inline-flex;
+  align-items: center;
+  padding-right: 0;
+}
+
+.qk-sr-program .step-row .step-titles .step-note {
+  flex: 1 1 0;
+  min-width: 0;
+  font-size: 11px;
+  color: var(--ad-fg-note);
+  text-align: left;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  line-height: 22px;
+  height: 22px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+.qk-sr-program .step-row .step-row-index {
+  flex: 0 0 auto;
+  min-width: 1.25em;
+  color: var(--ad-fg-muted);
+  font-variant-numeric: tabular-nums;
+  font-size: 10px;
+  line-height: 22px;
+}
+
+.qk-sr-program .step-row .step-row-key {
+  flex: 0 0 auto;
+  margin-left: auto;
+  padding: 0 4px;
+  border-radius: 3px;
+  color: var(--ad-fg-muted);
+  font-family: ui-monospace, SFMono-Regular, Consolas, monospace;
+  font-size: 10px;
+  line-height: 18px;
+}
+
+.qk-sr-program .qk-sr-step-params {
+  display: grid;
+  gap: 4px;
+  padding: 4px 10px 8px 34px;
+  border-top: 1px solid var(--ad-border-children);
+  background: var(--ad-bg-panel);
+}
+
+.qk-sr-program .qk-sr-step-params__label {
+  font-size: 10px;
+  color: var(--ad-fg-muted);
+}
+
+.qk-sr-program .qk-sr-step-params__row {
+  display: grid;
+  grid-template-columns: minmax(64px, 0.28fr) minmax(0, 1fr);
+  gap: 8px;
+  font-size: 11px;
+  line-height: 1.4;
+}
+
+.qk-sr-program .qk-sr-step-params__key {
+  color: var(--ad-fg-muted);
+  text-align: right;
+  word-break: break-all;
+}
+
+.qk-sr-program .qk-sr-step-params__val {
+  min-width: 0;
+  color: var(--ad-fg-secondary);
+  white-space: pre-wrap;
+  word-break: break-word;
+}
+
+.qk-sr-program .qk-sr-icon-glyph {
+  border-radius: 3px;
+  background: color-mix(in srgb, var(--ad-accent) 12%, var(--ad-bg-panel));
+  color: var(--ad-accent-bright);
+}
+
+.qk-sr-program.qk-sr-list--compact .step-row {
+  min-height: 22px;
+  padding: 0 4px;
+}
+
+.qk-sr-program.qk-sr-list--compact .step-row .step-titles .primary,
+.qk-sr-program.qk-sr-list--compact .step-row .step-titles .step-note {
+  height: 20px;
+  line-height: 20px;
+}

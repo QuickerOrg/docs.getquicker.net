@@ -1,0 +1,31 @@
+{
+  "steps": [
+    {
+      "key": "sys:assign",
+      "inputs": { "input": "$=1" },
+      "outputs": { "output": "n" },
+      "note": "计数器初值"
+    },
+    {
+      "key": "if",
+      "inputs": { "condition": "$=n > 0" },
+      "ifSteps": [
+        {
+          "key": "sys:notify",
+          "inputs": { "message": "正数" }
+        }
+      ],
+      "elseSteps": [
+        {
+          "key": "MessageBox",
+          "inputs": { "text": "非正数" },
+          "disabled": true
+        }
+      ]
+    },
+    {
+      "key": "unknown.custom",
+      "note": "catalog 未覆盖时回退显示 key"
+    }
+  ]
+}

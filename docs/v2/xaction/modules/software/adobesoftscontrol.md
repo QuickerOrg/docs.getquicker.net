@@ -25,7 +25,7 @@ legacyContentUpdatedAt: "2025-12-15T02:38:05.000Z"
 
 需要启动软件后才能使用。
 
-![](./img/adobesoftscontrol-001-2aca30bd3a.png)
+<ModuleParamPreview moduleKey="sys:adobesoftscontrol" />
 
 注意：如果同时安装了多个版本的软件，只能控制其中一个版本。在其它版本上使用会报错 `操作无法使用 (异常来自 HRESULT:0x800401E3 (MK_E_UNAVAILABLE))`。
 

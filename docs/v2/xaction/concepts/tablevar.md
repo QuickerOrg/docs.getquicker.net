@@ -18,6 +18,14 @@ legacyContentUpdatedAt: "2025-08-08T11:45:12.000Z"
 
 ![](./img/tablevar-001-a2185810a0.png)
 
+| 列名 → | **姓名** | **年龄** | **地区** |
+| --- | --- | --- | --- |
+| 行 | 张三 | 20 | 北京 |
+| 行 | 李四 | 21 | 上海 |
+| 行 | 王五 | 22 | 深圳 |
+
+上表中，表头是**列名**；纵向一列是**列**；横向一条记录是**行**。
+
 
 
 **表格大概可以分为两种常见的使用方式：**
@@ -49,11 +57,28 @@ legacyContentUpdatedAt: "2025-08-08T11:45:12.000Z"
 
 在表格字段设置窗口中，可以添加、编辑或删除字段（列）。
 
-![](./img/tablevar-003-dc327fcdaa.png)
+<TableFieldPreview
+  fields={[
+    {key: 'Id', title: 'Id', type: '文本', unique: true, autoIncrement: true},
+    {key: '名称', title: '名称', type: '文本'},
+    {key: '说明', title: '说明', type: '文本'},
+    {key: '图标', title: '图标', type: '文本'},
+    {key: '注释', title: '注释', type: '文本'},
+  ]}
+/>
 
 添加或编辑一个列：
 
-![](./img/tablevar-004-6d8f7050da.png)
+<TableFieldPreview
+  field={{
+    key: '注释',
+    title: '注释',
+    type: '文本',
+    allowNull: true,
+    inputMode: '单行文本框',
+    maxLength: 0,
+  }}
+/>
 
 此界面分为两个主要部分，“基础信息”用于设置数据的类型和限制。“编辑设置”用于定义在添加或编辑行的时候所使用的界面（类似于表单模块）。
 
@@ -89,7 +114,39 @@ legacyContentUpdatedAt: "2025-08-08T11:45:12.000Z"
 
 在“列表”参数中，通过表达式 `$= {表格}.Rows`传入DataRow的集合。
 
-![](./img/tablevar-006-4585a7d600.png)
+参数示意（「每个」模块）：
+
+<ModuleParamPreview
+  moduleKey="sys:each"
+  focusKeys={['input', 'item']}
+  values={{input: '$={table1}.Rows'}}
+  outputVars={{item: 'tableRow'}}
+/>
+
+步骤结构示意（只读）：
+
+<StepProgramView
+  showParams
+  data={{
+    steps: [
+      {
+        key: "sys:each",
+        inputs: {input: "$={table1}.Rows"},
+        outputs: {item: "tableRow"},
+        note: "遍历表格行",
+        ifSteps: [
+          {
+            key: "sys:notify",
+            inputs: {
+              message:
+                '$= "表格行: " + {tableRow}["first_name"] + {tableRow}["last_name"]',
+            },
+          },
+        ],
+      },
+    ],
+  }}
+/>
 
 每次循环，会将一行数据放入“项”输出参数中指定的变量中。
 
@@ -98,6 +155,8 @@ legacyContentUpdatedAt: "2025-08-08T11:45:12.000Z"
 注意：不可以在循环中修改当前表格中的数据。如果有需要修改原始表格的情况下，可以使用 $= (&#123;表格&#125;.Copy()).Rows 创建临时数据副本进行循环。 请[参考此帖子](https://getquicker.net/Common/Topics/ViewTopic/35134)。
 
 无论哪种类型，都可以在循环内部使用类似于词典变量的方式（`行变量["列名"]`）获取该行中某一列的信息。
+
+例如在循环子步骤里用「提示消息」显示当前行字段（红箭头标出的是行变量）：
 
 ![](./img/tablevar-007-57a7d4f97d.png)
 

@@ -4,13 +4,13 @@
 
 /* You can override the default Infima variables here. */
 :root {
-  --ifm-color-primary: #1f7a8c;
-  --ifm-color-primary-dark: #1c6e7e;
-  --ifm-color-primary-darker: #1a6877;
-  --ifm-color-primary-darkest: #155662;
-  --ifm-color-primary-light: #22869a;
-  --ifm-color-primary-lighter: #248ca1;
-  --ifm-color-primary-lightest: #2a9fb6;
+  --ifm-color-primary: #2b7abf;
+  --ifm-color-primary-dark: #2469a4;
+  --ifm-color-primary-darker: #22639b;
+  --ifm-color-primary-darkest: #1c527f;
+  --ifm-color-primary-light: #3d88c6;
+  --ifm-color-primary-lighter: #488ec9;
+  --ifm-color-primary-lightest: #6aa4d4;
   --ifm-font-family-base:
     "Microsoft YaHei UI",
     "PingFang SC",
@@ -20,35 +20,47 @@
     -apple-system,
     sans-serif;
   --ifm-heading-font-family: var(--ifm-font-family-base);
-  --ifm-font-size-base: 16px;
-  --ifm-line-height-base: 1.75;
-  --ifm-heading-font-weight: 650;
-  --ifm-h1-font-size: 2.15rem;
-  --ifm-h2-font-size: 1.58rem;
-  --ifm-h3-font-size: 1.28rem;
-  --ifm-code-font-size: 92%;
+  --ifm-font-size-base: 15px;
+  --ifm-line-height-base: 1.65;
+  --ifm-leading-desktop: 1.25;
+  --ifm-heading-font-weight: 600;
+  --ifm-h1-font-size: 1.65rem;
+  --ifm-h2-font-size: 1.28rem;
+  --ifm-h3-font-size: 1.1rem;
+  --ifm-h4-font-size: 1rem;
+  --ifm-code-font-size: 88%;
   --ifm-container-width: 1160px;
   --ifm-container-width-xl: 1320px;
-  --ifm-navbar-height: 56px;
-  --ifm-global-radius: 8px;
+  --ifm-navbar-height: 48px;
+  --ifm-navbar-padding-vertical: 0;
+  --ifm-menu-link-padding-vertical: 0.28rem;
+  --ifm-menu-link-padding-horizontal: 0.55rem;
+  --ifm-global-radius: 6px;
+  --ifm-paragraph-margin-bottom: 0.75rem;
+  --ifm-list-margin: 0.7rem;
+  --ifm-spacing-horizontal: 1rem;
   --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.1);
   --quicker-text-muted: #5f6b7a;
   --quicker-surface-subtle: #f7f9fb;
   --quicker-border-subtle: #e4e9f0;
+  --qk-scrollbar-thumb: rgba(0, 0, 0, 0.08);
+  --qk-scrollbar-thumb-hover: rgba(0, 0, 0, 0.16);
 }
 
 [data-theme='dark'] {
-  --ifm-color-primary: #4fb3c8;
-  --ifm-color-primary-dark: #38a7bf;
-  --ifm-color-primary-darker: #349eb5;
-  --ifm-color-primary-darkest: #2b8295;
-  --ifm-color-primary-light: #66bfd0;
-  --ifm-color-primary-lighter: #72c4d4;
-  --ifm-color-primary-lightest: #94d2de;
+  --ifm-color-primary: #4d9fff;
+  --ifm-color-primary-dark: #2f8fff;
+  --ifm-color-primary-darker: #2287ff;
+  --ifm-color-primary-darkest: #006ee5;
+  --ifm-color-primary-light: #6aafff;
+  --ifm-color-primary-lighter: #79b6ff;
+  --ifm-color-primary-lightest: #a5ceff;
   --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.3);
   --quicker-text-muted: #a7b2c0;
   --quicker-surface-subtle: #18212b;
   --quicker-border-subtle: #2a3644;
+  --qk-scrollbar-thumb: rgba(255, 255, 255, 0.1);
+  --qk-scrollbar-thumb-hover: rgba(255, 255, 255, 0.18);
 }
 
 .navbar {
@@ -60,10 +72,20 @@
   font-weight: 650;
 }
 
+.navbar__logo {
+  height: 22px;
+  width: 22px;
+  margin-right: 0.45rem;
+}
+
 .navbar__item,
 .menu__link,
 .table-of-contents__link {
-  font-size: 0.94rem;
+  font-size: 0.86rem;
+}
+
+.navbar__title {
+  font-size: 0.95rem;
 }
 
 .theme-doc-sidebar-container {
@@ -71,16 +93,33 @@
 }
 
 .menu {
-  padding: 0.75rem;
+  padding: 0.45rem 0.4rem 1rem;
+  font-size: 0.86rem;
+}
+
+.menu__list-item:not(:first-child) {
+  margin-top: 0.08rem;
+}
+
+.menu__list .menu__list {
+  margin-top: 0.08rem;
+  padding-left: 0.65rem;
+}
+
+.menu__caret::before,
+.menu__link--sublist-caret::after {
+  min-width: 1rem;
+  min-height: 1rem;
+  background-size: 1.1rem 1.1rem;
 }
 
 .menu__link {
-  border-radius: 6px;
-  line-height: 1.45;
+  border-radius: 5px;
+  line-height: 1.35;
 }
 
 .menu__link--active:not(.menu__link--sublist) {
-  background: rgba(31, 122, 140, 0.1);
+  background: color-mix(in srgb, var(--ifm-color-primary) 12%, transparent);
   color: var(--ifm-color-primary-darkest);
   font-weight: 600;
 }
@@ -93,12 +132,37 @@
   color: var(--ifm-font-color-base);
 }
 
+/* Infima utilities live in @layer docusaurus.infima with !important.
+   Unlayered overrides lose; patch them in the same layer. */
+@layer docusaurus.infima {
+  main .container.padding-top--md {
+    padding-top: 0.7rem !important;
+  }
+
+  main .container.padding-bottom--lg {
+    padding-bottom: 1.25rem !important;
+  }
+
+  [class*="generatedIndexPage"] > article.margin-top--lg {
+    margin-top: 0.75rem !important;
+  }
+
+  .theme-doc-card-container.card.padding--lg {
+    padding: 0.5rem 0.75rem !important;
+  }
+
+  .theme-doc-card--gallery.card.padding--lg {
+    padding: 0 !important;
+  }
+}
+
 .markdown {
-  --ifm-heading-line-height: 1.28;
+  --ifm-heading-line-height: 1.32;
 }
 
 .markdown > h1:first-child {
-  margin-bottom: 1.2rem;
+  margin-top: 0.15rem;
+  margin-bottom: 0.7rem;
 }
 
 .markdown h1 {
@@ -107,21 +171,23 @@
 
 .markdown h2 {
   border-bottom: 1px solid var(--quicker-border-subtle);
-  margin-top: 2.4rem;
-  padding-bottom: 0.45rem;
+  margin-top: 1.65rem;
+  margin-bottom: 0.65rem;
+  padding-bottom: 0.28rem;
 }
 
 .markdown h3 {
-  margin-top: 1.9rem;
+  margin-top: 1.25rem;
+  margin-bottom: 0.45rem;
 }
 
 .markdown p,
 .markdown li {
-  line-height: 1.78;
+  line-height: 1.68;
 }
 
 .markdown p {
-  margin-bottom: 1rem;
+  margin-bottom: 0.75rem;
 }
 
 .markdown a {
@@ -141,18 +207,18 @@
   max-width: 100%;
   overflow-x: auto;
   width: 100%;
-  font-size: 0.95rem;
+  font-size: 0.86rem;
 }
 
 .markdown th {
   background: var(--quicker-surface-subtle);
-  font-weight: 650;
+  font-weight: 600;
 }
 
 .markdown th,
 .markdown td {
   border-color: var(--quicker-border-subtle);
-  padding: 0.62rem 0.75rem;
+  padding: 0.42rem 0.58rem;
 }
 
 .markdown code {
@@ -168,8 +234,8 @@
 
 /* Stronger TypeScript / JS token contrast (github + vsDark themes). */
 .theme-code-block pre {
-  font-size: 0.9rem;
-  line-height: 1.55;
+  font-size: 0.8rem;
+  line-height: 1.5;
 }
 
 .theme-code-block .token.comment,
@@ -270,7 +336,215 @@ html[data-theme='dark'] .theme-code-block .token.parameter {
 
 .table-of-contents {
   border-left-color: var(--quicker-border-subtle);
-  font-size: 0.92rem;
+  font-size: 0.8rem;
+  padding-left: 0.7rem;
+}
+
+.theme-doc-breadcrumbs {
+  margin-bottom: 0.55rem;
+}
+
+.theme-doc-footer {
+  margin-top: 2rem;
+}
+
+.pagination-nav {
+  gap: 0.65rem;
+}
+
+.pagination-nav__link {
+  padding: 0.65rem 0.8rem;
+}
+
+.pagination-nav__sublabel {
+  font-size: 0.7rem;
+  margin-bottom: 0.15rem;
+}
+
+.pagination-nav__label {
+  font-size: 0.88rem;
+}
+
+.footer {
+  --ifm-footer-background-color: var(--quicker-surface-subtle);
+  --ifm-footer-color: var(--quicker-text-muted);
+  --ifm-footer-link-color: var(--ifm-font-color-base);
+  --ifm-footer-link-hover-color: var(--ifm-color-primary);
+  --ifm-footer-padding-vertical: 0.7rem;
+  --ifm-footer-padding-horizontal: 0;
+  border-top: 1px solid var(--quicker-border-subtle);
+  font-size: 0.8rem;
+}
+
+.footer .container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem 1.25rem;
+  flex-wrap: wrap;
+}
+
+.footer__links {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: flex-start;
+  margin: 0;
+  text-align: left;
+}
+
+.footer__link-item {
+  display: inline-flex;
+  align-items: center;
+  line-height: 1.4;
+}
+
+.footer__link-item svg,
+.footer__link-item [class*="iconExternalLink"] {
+  display: none;
+}
+
+.footer__link-separator {
+  margin: 0 0.55rem;
+  color: var(--quicker-text-muted);
+  opacity: 0.45;
+}
+
+.footer__bottom {
+  margin: 0;
+  text-align: right;
+}
+
+.footer__copyright {
+  font-size: 0.75rem;
+}
+
+/* Generated-index / DocCard: compact title rows, no emoji tiles. */
+[class*="generatedIndexPage"] {
+  max-width: 100% !important;
+}
+
+[class*="generatedIndexPage"] > header h1,
+[class*="generatedIndexPage"] h1[class*="title"] {
+  --ifm-h1-font-size: 1.5rem;
+  font-size: 1.5rem;
+  margin-bottom: 0.45rem;
+}
+
+[class*="generatedIndexPage"] > header p {
+  color: var(--quicker-text-muted);
+  font-size: 0.88rem;
+  line-height: 1.55;
+  margin-bottom: 0.85rem;
+}
+
+article.col.col--6 {
+  margin-bottom: 0.75rem !important;
+}
+
+@media (min-width: 997px) {
+  [class*="generatedIndexPage"] article.col.col--6 {
+    flex: 0 0 33.333%;
+    max-width: 33.333%;
+  }
+}
+
+.theme-doc-card-container.card,
+.theme-doc-card--gallery.card {
+  box-shadow: none;
+  border: 1px solid var(--quicker-border-subtle);
+  background: var(--quicker-surface-subtle);
+  border-radius: 8px;
+  overflow: hidden;
+  height: 100%;
+  text-decoration: none !important;
+  color: inherit;
+  transition: border-color 0.15s ease, background 0.15s ease;
+}
+
+.theme-doc-card-container:hover,
+.theme-doc-card--gallery:hover {
+  box-shadow: none;
+  border-color: var(--ifm-color-primary);
+  background: color-mix(in srgb, var(--ifm-color-primary) 7%, var(--quicker-surface-subtle));
+}
+
+.theme-doc-card__cover {
+  display: block;
+  aspect-ratio: 16 / 10;
+  background: color-mix(in srgb, var(--ifm-color-primary) 8%, var(--quicker-surface-subtle));
+  overflow: hidden;
+}
+
+.theme-doc-card__cover img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: top left;
+}
+
+.theme-doc-card__cover--mosaic {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr 1fr;
+  gap: 1px;
+  background: var(--quicker-border-subtle);
+}
+
+.theme-doc-card__cover--two {
+  grid-template-rows: 1fr;
+}
+
+.theme-doc-card__cover--mosaic img {
+  min-width: 0;
+  min-height: 0;
+}
+
+.theme-doc-card__cover-fallback {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  color: var(--ifm-color-primary);
+  font-size: 1.4rem;
+  font-weight: 650;
+}
+
+.theme-doc-card__body {
+  padding: 0.55rem 0.7rem 0.7rem;
+}
+
+.theme-doc-card-heading {
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+  margin: 0;
+  font-size: 0.9rem;
+  font-weight: 600;
+  line-height: 1.35;
+}
+
+.theme-doc-card-icon {
+  display: none;
+}
+
+.theme-doc-card-title {
+  font-size: 0.9rem;
+  white-space: normal;
+  overflow: visible;
+  text-overflow: unset;
+}
+
+.theme-doc-card--gallery .theme-doc-card-description {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  overflow: hidden;
+  margin: 0.28rem 0 0;
+  color: var(--quicker-text-muted);
+  font-size: 0.76rem;
+  line-height: 1.45;
 }
 
 .table-of-contents__link--active {
@@ -289,4 +563,46 @@ html[data-theme='dark'] .theme-code-block .token.parameter {
   border-radius: 8px;
   min-height: 360px;
   width: 100%;
+}
+
+/**
+ * Quiet site scrollbars: thin thumb, transparent track, low contrast vs page bg.
+ * Preview embeds stay slightly thinner.
+ */
+html,
+body,
+* {
+  scrollbar-width: thin;
+  scrollbar-color: var(--qk-scrollbar-thumb) transparent;
+}
+
+*::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+  background: transparent;
+}
+
+*::-webkit-scrollbar-track,
+*::-webkit-scrollbar-track-piece,
+*::-webkit-scrollbar-corner {
+  background: transparent;
+}
+
+*::-webkit-scrollbar-thumb {
+  background: var(--qk-scrollbar-thumb);
+  border-radius: 3px;
+  border: none;
+  background-clip: padding-box;
+}
+
+*::-webkit-scrollbar-thumb:hover {
+  background: var(--qk-scrollbar-thumb-hover);
+}
+
+.qk-docs-preview::-webkit-scrollbar,
+.qk-docs-preview *::-webkit-scrollbar,
+.qk-sr-param-form::-webkit-scrollbar,
+.qk-sr-param-form *::-webkit-scrollbar {
+  width: 4px;
+  height: 4px;
 }

@@ -33,9 +33,13 @@ legacyContentUpdatedAt: "2023-04-02T13:16:49.000Z"
 
 ## 参数
 
-![](./img/comment-002-0927e4219c.png)
+<ModuleParamPreview
+  moduleKey="sys:comment"
+  focusKeys={['note']}
+  values={{note: '要备注的内容\n可以多行'}}
+/>
 
-**内容：**显示在注释模块上的文字。
+**内容**：显示在注释模块上的文字。
 
 （版本1.37.24+）如果注释中包含网址，可以点击右键，选择“运行”直接打开注释中的每个网址。
 

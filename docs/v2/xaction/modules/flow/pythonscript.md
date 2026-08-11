@@ -36,7 +36,7 @@ legacyContentUpdatedAt: "2025-06-24T01:29:03.000Z"
 -   在py脚本中，尽量只访问简单类型的quicker变量，如数字/文本。目前底层依赖库可能存在bug，使用复杂类型（如列表/词典）有概率遇到闪退问题。
 -   py脚本将在quicker进程中执行，拥有比普通非管理员身份运行的程序具有更高的权限。因此在py代码中不能使用com接口访问和控制第三方软件（如访问和使用Word.Application对象）。
 
-![](./img/pythonscript-001-d88736ee67.png)
+<ModuleParamPreview moduleKey="sys:pythonscript" />
 
 ### Python的路径
 
@@ -62,7 +62,7 @@ py脚本中，通过`quicker.context.GetVarValue('变量名')`读取动作变量
 
 简单的内容，可以在python脚本中可以直接使用`quicker.context.SetVarValue('变量名',value)`返回到对应类型的变量中。Quicker 3.35.37版本后，也可以使用此方式返回文本列表和简单的词典变量。
 
-```
+```python
 ##.py
 quicker.context.SetVarValue('text', 'hello world')
 quicker.context.SetVarValue('list', ['hello1','hello2','hello3'])

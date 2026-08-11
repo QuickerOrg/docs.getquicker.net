@@ -23,7 +23,7 @@ legacyContentUpdatedAt: "2025-06-10T03:28:24.000Z"
 
 对文本内容实施某种处理，输出处理的结果。
 
-![](./img/stringprocess-001-d70eadd0c0.png)
+<ModuleParamPreview moduleKey="sys:stringProcess" />
 
 ## 参数
 
@@ -135,7 +135,12 @@ legacyContentUpdatedAt: "2025-06-10T03:28:24.000Z"
 
 转换文本的编码，通常用于处理网络返回数据；
 
-![](./img/stringprocess-002-ce9df442d5.png)
+<ModuleParamPreview
+  moduleKey="sys:stringProcess"
+  focusKeys={['data', 'method', 'srcEncoding', 'dstEncoding', 'output']}
+  values={{data: '一万二千三百四十五点四五', method: 'convertEncoding', srcEncoding: 'utf-8', dstEncoding: 'gbk'}}
+  outputVars={{output: 'output'}}
+/>
 
 **中文转数字**
 
@@ -159,7 +164,12 @@ legacyContentUpdatedAt: "2025-06-10T03:28:24.000Z"
 
 从文本内容的左侧添加指定的字符，从而让文本总长度不少于指定的数值。
 
-![](./img/stringprocess-003-19216dc031.png)
+<ModuleParamPreview
+  moduleKey="sys:stringProcess"
+  focusKeys={['data', 'method', 'totalWidth', 'paddingChar', 'output']}
+  values={{data: 'abc', method: 'padLeft', totalWidth: '5', paddingChar: '*'}}
+  outputVars={{output: 'output'}}
+/>
 
 如：将`abc`从左侧使用字符`*`补齐长度为5，则得到的结果为`**abc`
 
@@ -171,7 +181,12 @@ legacyContentUpdatedAt: "2025-06-10T03:28:24.000Z"
 
 在文本的指定位置插入内容。
 
-![](./img/stringprocess-004-75b4eb903d.png)
+<ModuleParamPreview
+  moduleKey="sys:stringProcess"
+  focusKeys={['data', 'method', 'start', 'value', 'output']}
+  values={{data: 'aaa', method: 'insert', start: '2', value: 'bb'}}
+  outputVars={{output: 'output'}}
+/>
 
 【开始位置】要插入内容的位置，从0开始。如果是负数，表示从结尾向前的字符序号。
 
@@ -189,7 +204,12 @@ legacyContentUpdatedAt: "2025-06-10T03:28:24.000Z"
 
 从指定位置开始移除指定的字符个数。也可以在表达式中使用[String.Remove](https://docs.microsoft.com/en-us/dotnet/api/system.string.remove?view=netframework-4.7.2)方法实现`$={str}.Remove(0,2)`。
 
-![](./img/stringprocess-005-aaa4387db1.png)
+<ModuleParamPreview
+  moduleKey="sys:stringProcess"
+  focusKeys={['data', 'method', 'start', 'length', 'output']}
+  values={{data: 'abcdefg', method: 'remove', start: '-2', length: '2'}}
+  outputVars={{output: 'output'}}
+/>
 
 【开始位置】从0开始的字符序号。如果是负数，表示从结尾向前的字符序号。
 

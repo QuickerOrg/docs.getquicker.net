@@ -25,7 +25,7 @@ legacyContentUpdatedAt: "2020-04-02T03:19:32.000Z"
 
 获取或编辑颜色，并返回颜色信息中各通道颜色的值。
 
-![image.png](./img/color-001-0c4aa52350.png "image.png")
+<ModuleParamPreview moduleKey="sys:color" />
 
 支持的操作类型：
 

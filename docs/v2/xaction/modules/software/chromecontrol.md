@@ -75,7 +75,7 @@ legacyContentUpdatedAt: "2025-10-28T06:17:46.000Z"
 
 ![](./img/chromecontrol-003-990530dadb.png)
 
-**连接状态：**显示当前是否正常连接到消息代理和Quicker。
+**连接状态**：显示当前是否正常连接到消息代理和Quicker。
 
 -   两个已连接：正常状态。
 -   消息代理已连接，Quicker未连接：可能Quicker未启动或版本太老（请确认使用了1.29.3+版本）。
@@ -89,7 +89,7 @@ legacyContentUpdatedAt: "2025-10-28T06:17:46.000Z"
 
 -   如果要运行使用到特殊权限的后台脚本，可以在此处开启。（后台脚本是指直接通过chrome API控制浏览器自身的脚本，如获取浏览历史、查看网页cookie等）
 
-**文档：**点击可打开浏览器扩展的文档。 MV3版本扩展将部分文档嵌入到了扩展内部，方便随时查看，包括“后台命令参考”、“更新历史”等。
+**文档**：点击可打开浏览器扩展的文档。 MV3版本扩展将部分文档嵌入到了扩展内部，方便随时查看，包括“后台命令参考”、“更新历史”等。
 
 获取元素选择器：点击后可在网页中选择一个元素，然后自动复制该元素的css选择器。
 
@@ -134,11 +134,37 @@ legacyContentUpdatedAt: "2025-10-28T06:17:46.000Z"
 
 根据要执行的操作类型不同，参数也会有所变化。
 
-![](./img/chromecontrol-008-57b144a67b.png)
+<ModuleParamPreview
+  moduleKey="sys:chromecontrol"
+  focusKeys={[
+    'operation',
+    'tabId',
+    'script',
+    'waitManualReturn',
+    'stopIfFail',
+    'timeoutMs',
+    'frame',
+    'isSuccess',
+    'rawResponse',
+  ]}
+  values={{
+    operation: 'RunScript',
+    tabId: '',
+    script: '//.js',
+    waitManualReturn: 'false',
+    stopIfFail: 'true',
+    timeoutMs: '3000',
+    frame: 'all',
+  }}
+/>
 
 【操作类型】此步骤的目的。
 
-![](./img/chromecontrol-009-8bdb44c6a9.png)
+<ModuleParamPreview
+  moduleKey="sys:chromecontrol"
+  focusKeys={['operation']}
+  values={{operation: 'BackgroundCommand'}}
+/>
 
 【**标签页ID**】指定要操作的标签页，如果留空，则表示操作当前活动标签页。
 
@@ -152,7 +178,7 @@ legacyContentUpdatedAt: "2025-10-28T06:17:46.000Z"
 
 如果需要通过xpath的方式指定元素，以`xpath:`开始，如：
 
-```
+```text
 xpath://*[@id="lark-text-editor"]/div/div/div[2]/div[1]/div[2]/div[1]/a[11]
 ```
 
@@ -172,7 +198,39 @@ MV3版本浏览器不再需要此功能。
 
 如果浏览器未启动，quicker会尝试运行浏览器名称启动浏览器，请确保浏览器程序所在目录已经加入PATH环境变量中。
 
-![](./img/chromecontrol-010-a045de69f6.png)
+<ModuleParamPreview
+  moduleKey="sys:chromecontrol"
+  focusKeys={[
+    'operation',
+    'url',
+    'windowId',
+    'windowInfo',
+    'waitComplete',
+    'stopIfFail',
+    'timeoutMs',
+    'isSuccess',
+    'tabId',
+    'rawResponse',
+  ]}
+  values={{
+    operation: 'OpenUrl',
+    url: 'https://baidu.com',
+    windowId: 'New',
+    windowInfo: `{
+  focused: true,
+  width: 1000,
+  height: 1000,
+  incognito: false,
+  left: 100,
+  top: 100,
+  type: "normal"
+}`,
+    waitComplete: 'true',
+    stopIfFail: 'true',
+    timeoutMs: '3000',
+  }}
+  outputVars={{tabId: 'tabId', windowId: 'windowId', rawResponse: 'rawResponse'}}
+/>
 
 【网址】要打开的完整网址。需要带有协议头（http://或https://）。
 
@@ -186,7 +244,7 @@ MV3版本浏览器不再需要此功能。
 
 -   使用新窗口时，指定`chrome.windows.create()`方法的参数（除去url属性）。参数请参考Chrome API 文档[chrome.windows.create 的 createData参数](https://developer.chrome.com/extensions/windows#method-create)。示例(所有字段都是可选的)：
 
-```
+```json
 {
     "left": 100,
     "top": 100,
@@ -262,7 +320,23 @@ MV3版本浏览器不再需要此功能。
 
 函数执行成功后，会激活找到的标签页（使其成为当前活动标签）并使其所在的窗口获得焦点。
 
-![](./img/chromecontrol-013-fe0b3c1700.png)
+<ModuleParamPreview
+  moduleKey="sys:chromecontrol"
+  focusKeys={[
+    'operation',
+    'url',
+    'tabId',
+    'stopIfFail',
+    'isSuccess',
+    'windowId',
+    'groupId',
+    'title',
+    'favicon',
+    'rawResponse',
+  ]}
+  values={{operation: 'ActivateTab', url: 'https://baidu.com', tabId: '', stopIfFail: 'true'}}
+  outputVars={{tabId: 'tabId', windowId: 'windowId'}}
+/>
 
 ## 获得标签页信息
 
@@ -270,7 +344,38 @@ MV3版本浏览器不再需要此功能。
 
 MV3版本扩展中新增输出Manifest版本，可以用以判断是否为新版本扩展、是否支持运行后台脚本。
 
-![](./img/chromecontrol-014-8df71c6c70.png)
+<ModuleParamPreview
+  moduleKey="sys:chromecontrol"
+  focusKeys={[
+    'operation',
+    'tabId',
+    'stopIfFail',
+    'timeoutMs',
+    'isSuccess',
+    'windowId',
+    'groupId',
+    'url',
+    'title',
+    'favicon',
+    'browser',
+    'extVersion',
+    'manifestVersion',
+    'rawResponse',
+  ]}
+  values={{operation: 'GetTabInfo', tabId: '', stopIfFail: 'true', timeoutMs: '3000'}}
+  outputVars={{
+    tabId: 'tabId',
+    windowId: 'windowId',
+    groupId: 'groupId',
+    url: 'url',
+    title: 'text',
+    favicon: 'favicon',
+    browser: 'browser',
+    extVersion: 'extVersion',
+    manifestVersion: 'manifestVersion',
+    rawResponse: 'rawResponse',
+  }}
+/>
 
 **输入**
 
@@ -315,7 +420,32 @@ MV3版本扩展中新增输出Manifest版本，可以用以判断是否为新版
 -   需要在浏览器扩展设置中开启**开发者模式**或在扩展详情设置中开启**“允许运行用户脚本”**选项（浏览器138以后的版本）才能使用此功能。
 -   新增支持“运行环境”参数。使用`MAIN`时，可访问网页中的js变量。
 
-![](./img/chromecontrol-016-ee19e8e4ef.png)
+<ModuleParamPreview
+  moduleKey="sys:chromecontrol"
+  focusKeys={[
+    'operation',
+    'tabId',
+    'script',
+    'frame',
+    'executionWorld',
+    'waitManualReturn',
+    'stopIfFail',
+    'timeoutMs',
+    'isSuccess',
+    'rawResponse',
+  ]}
+  values={{
+    operation: 'RunScript',
+    tabId: '',
+    script: '//.js\ndocument.title',
+    frame: '0',
+    executionWorld: '',
+    waitManualReturn: 'false',
+    stopIfFail: 'true',
+    timeoutMs: '3000',
+  }}
+  outputVars={{rawResponse: 'rawResponse'}}
+/>
 
 **输入**
 
@@ -331,13 +461,13 @@ js脚本的值通常是脚本中最后一个语句的返回值。
 
 如下面的脚本返回网页的文本内容：
 
-```
+```javascript
 document.body.innerText;
 ```
 
 返回复杂对象：
 
-```
+```javascript
 //.js
 let result = {name: '张三', age: 20};
 result;
@@ -345,7 +475,7 @@ result;
 
 使用异步方法示例：
 
-```
+```javascript
 //.js
 // 定义一个等待指定毫秒数的函数，返回一个 Promise
 function wait(ms) {
@@ -364,7 +494,7 @@ fetchValue();
 
 【从脚本手动返回数据】有的情况运行脚本不能直接得到结果，需要等到回调函数执行/元素更新等情况，这时候可以开启“从脚本手动返回数据”选项，并在脚本中调用sendReplyToQuicker方法手动返回数据。也可以考虑使用上面的异步方法直接返回结果。
 
-```
+```javascript
 // 参数中需要启用“从脚本手动返回数据”选项。
 // sendReplyToQuicker(是否成功, '失败时提示消息', 数据对象, 回复的消息序号qk_msg_serial宏)
 
@@ -398,7 +528,12 @@ setTimeout(function(){
 
 从网页中选择一个HTML元素，返回这个元素的css选择器。通常用于在后续步骤中使用此选择器对目标元素执行操作。
 
-![](./img/chromecontrol-017-9ad2f09a18.png)
+<ModuleParamPreview
+  moduleKey="sys:chromecontrol"
+  focusKeys={['operation', 'tabId', 'stopIfFail', 'timeoutMs', 'isSuccess', 'selector', 'rawResponse']}
+  values={{operation: 'PickElement', tabId: '', stopIfFail: 'true', timeoutMs: '15000'}}
+  outputVars={{selector: 'selector'}}
+/>
 
 **输出**
 
@@ -410,7 +545,36 @@ setTimeout(function(){
 
 获取网页元素的信息。
 
-![](./img/chromecontrol-018-0f2e94fc16.png)
+<ModuleParamPreview
+  moduleKey="sys:chromecontrol"
+  focusKeys={[
+    'operation',
+    'tabId',
+    'selector',
+    'elementInfo',
+    'attrName',
+    'frame',
+    'stopIfFail',
+    'fixSelector',
+    'timeoutMs',
+    'isSuccess',
+    'firstValue',
+    'allValues',
+    'rawResponse',
+  ]}
+  values={{
+    operation: 'GetElementInfo',
+    tabId: '',
+    selector: '#content-well-in-this-article-list > li:nth-child(1) > a',
+    elementInfo: 'Property',
+    attrName: 'href',
+    frame: '0',
+    stopIfFail: 'true',
+    fixSelector: 'auto',
+    timeoutMs: '3000',
+  }}
+  outputVars={{firstValue: 'output', rawResponse: 'result'}}
+/>
 
 **输入**
 
@@ -457,7 +621,32 @@ setTimeout(function(){
 
 示例动作：[用百度特定搜索关键词](https://getquicker.net/Sharedaction?code=9e70fb7f-b85e-4b21-1b7a-08da8ae0e8b9)
 
-![](./img/chromecontrol-019-eaded0cc1c.png)
+<ModuleParamPreview
+  moduleKey="sys:chromecontrol"
+  focusKeys={[
+    'operation',
+    'tabId',
+    'selector',
+    'updateElementInfo',
+    'attrName',
+    'updateElementValue',
+    'frame',
+    'stopIfFail',
+    'isSuccess',
+    'rawResponse',
+  ]}
+  values={{
+    operation: 'UpdateElement',
+    tabId: '',
+    selector: 'query',
+    updateElementInfo: 'Value',
+    attrName: '',
+    updateElementValue: '关键词',
+    frame: '0',
+    stopIfFail: 'true',
+  }}
+  outputVars={{rawResponse: 'result'}}
+/>
 
 **对于input、textarea等元素**
 
@@ -481,7 +670,7 @@ setTimeout(function(){
 
 更早的版本，可以使用在对标签页运行js代码：
 
-```
+```javascript
 $('选择器').prop('checked', true);  //选择检查框
 $('选择器').prop('checked', false);  //取消选择
 ```
@@ -494,7 +683,28 @@ $('选择器').prop('checked', false);  //取消选择
 
 对指定的元素触发事件，如实现点击按钮、设置焦点、提交表单、触发变更等功能。
 
-![](./img/chromecontrol-024-22837a9375.png)
+<ModuleParamPreview
+  moduleKey="sys:chromecontrol"
+  focusKeys={[
+    'operation',
+    'tabId',
+    'selector',
+    'triggerEventType',
+    'frame',
+    'stopIfFail',
+    'isSuccess',
+    'rawResponse',
+  ]}
+  values={{
+    operation: 'TriggerEvent',
+    tabId: '',
+    selector: '#submit',
+    triggerEventType: 'click',
+    frame: '0',
+    stopIfFail: 'true',
+  }}
+  outputVars={{rawResponse: 'result'}}
+/>
 
 **输入**
 
@@ -504,7 +714,11 @@ $('选择器').prop('checked', false);  //取消选择
 
 【触发事件类型】要触发的事件。可以选择预置的事件，也可以直接写事件名称。
 
-![](./img/chromecontrol-025-a90b20289d.png)
+<ModuleParamPreview
+  moduleKey="sys:chromecontrol"
+  focusKeys={['triggerEventType']}
+  values={{operation: 'TriggerEvent', triggerEventType: 'click'}}
+/>
 
 或指定自定义的事件类型。
 
@@ -524,7 +738,28 @@ $('选择器').prop('checked', false);  //取消选择
 
 本功能仅适用于不会跳转到新页面的网页（因为新页面会造成嵌入的js代码丢失）。
 
-![](./img/chromecontrol-027-10ca3fdeb1.png)
+<ModuleParamPreview
+  moduleKey="sys:chromecontrol"
+  focusKeys={[
+    'operation',
+    'tabId',
+    'selector',
+    'waitEventType',
+    'waitEventParams',
+    'stopIfFail',
+    'isSuccess',
+    'rawResponse',
+  ]}
+  values={{
+    operation: 'Wait',
+    tabId: '',
+    selector: '#submit',
+    waitEventType: 'textContains',
+    waitEventParams: 'Hello',
+    stopIfFail: 'true',
+  }}
+  outputVars={{rawResponse: 'result'}}
+/>
 
 【选择器】所需要判断的目标元素。
 
@@ -584,7 +819,38 @@ $('选择器').prop('checked', false);  //取消选择
 
 步骤截图：
 
-![](./img/chromecontrol-029-9ddbb1360d.png)
+<ModuleParamPreview
+  moduleKey="sys:chromecontrol"
+  focusKeys={[
+    'operation',
+    'command',
+    'commandParams',
+    'valueFilter',
+    'waitComplete',
+    'stopIfFail',
+    'timeoutMs',
+    'isSuccess',
+    'rawResponse',
+  ]}
+  values={{
+    operation: 'BackgroundCommand',
+    command: 'scripts_createOrRestoreGroup',
+    commandParams: `{
+  "groupName": "AI",
+  "domains": ["claude.ai", "chatgpt.com", "gemini.google.com"],
+  "urls": [
+    "https://claude.ai/new",
+    "https://chatgpt.com/",
+    "https://gemini.google.com/app"
+  ]
+}`,
+    valueFilter: '',
+    waitComplete: 'true',
+    stopIfFail: 'true',
+    timeoutMs: '3000',
+  }}
+  outputVars={{rawResponse: 'rawResponse'}}
+/>
 
 **参数**
 
@@ -600,7 +866,7 @@ $('选择器').prop('checked', false);  //取消选择
 
 2）使用表达式创建匿名c#对象，如：
 
-```
+```csharp
 $= new {
     tabId = {数字变量},
     updateProperties = new {
@@ -613,7 +879,30 @@ $= new {
 
 【返回值过滤器】对于命令返回的数据，如果仅需要其中一部分属性，可以设置本参数。参数值为分号隔开的属性名。如，下面的步骤返回所有打开的网址：
 
-![](./img/chromecontrol-030-12f2e1bdc0.png)
+<ModuleParamPreview
+  moduleKey="sys:chromecontrol"
+  focusKeys={[
+    'operation',
+    'command',
+    'commandParams',
+    'valueFilter',
+    'waitComplete',
+    'stopIfFail',
+    'timeoutMs',
+    'isSuccess',
+    'rawResponse',
+  ]}
+  values={{
+    operation: 'BackgroundCommand',
+    command: 'api_tabs_query',
+    commandParams: '',
+    valueFilter: 'url',
+    waitComplete: 'true',
+    stopIfFail: 'true',
+    timeoutMs: '3000',
+  }}
+  outputVars={{rawResponse: 'result'}}
+/>
 
 示例动作：
 
@@ -652,7 +941,7 @@ $= new {
 
 下面的示例用于获取当前标签页中网址的cookie。
 
-```
+```javascript
 chrome.tabs.query({ lastFocusedWindow: true, active: true }, function (tabs) {
     if (tabs.length < 1) {
         sendReplyToQuicker(false, '未找到当前页', {}, qk_msg_serial)
@@ -675,7 +964,7 @@ chrome.tabs.query({ lastFocusedWindow: true, active: true }, function (tabs) {
 
 在MV3版本中，除了支持MV2中的回调模式，自Quicker **1.44.12+**版本，也支持异步方式调用。用异步模式可以大幅简化代码。上述获取cookie的脚本可使用异步方式编写：
 
-```
+```javascript
 //.js
 const tabs = await chrome.tabs.query({ lastFocusedWindow: true, active: true });
 
@@ -716,7 +1005,7 @@ MV3版浏览器API请参考[官方文档](https://developer.chrome.com/docs/exte
 -   data：返回的数据内容。
 -   qk\_msg\_serial：quicker的消息序号。在执行脚本时会被添加到window窗口，所以在脚本中直接写此变量名即可。
 
-```
+```javascript
 //.js  获取当前窗口的所有网址。动作网址：
 chrome.windows.getLastFocused({populate:true}, function(win){
     var urlList = win.tabs.map(x=>x.url);
@@ -735,7 +1024,7 @@ chrome.windows.getLastFocused({populate:true}, function(win){
 
 如果对象是简单类型（如数字、字符串等），会封装为一个对象返回（MV3版本扩展不再封装，而是直接返回）：
 
-```
+```json
 {
   "data":qk_bgmsg_result
 }

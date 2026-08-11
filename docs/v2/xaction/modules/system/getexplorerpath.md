@@ -29,7 +29,12 @@ legacyContentUpdatedAt: "2022-11-12T12:00:34.000Z"
 
 获取资源管理器窗口所打开的目录路径。
 
-![](./img/getexplorerpath-002-898fd2a554.png)
+<ModuleParamPreview
+  moduleKey="sys:getExplorerPath"
+  focusKeys={['operation', 'output', 'allPathList', 'lastPath']}
+  values={{operation: 'getPath'}}
+  outputVars={{output: 'currPath', allPathList: 'list', lastPath: 'recentPath'}}
+/>
 
 输出参数
 
@@ -43,7 +48,11 @@ legacyContentUpdatedAt: "2022-11-12T12:00:34.000Z"
 
 用于跳转前台资源管理器窗口到指定的目录。
 
-![](./img/getexplorerpath-003-f463d225d5.png)
+<ModuleParamPreview
+  moduleKey="sys:getExplorerPath"
+  focusKeys={['operation', 'path']}
+  values={{operation: 'setPath', path: 'D:\\Tools\\oss-browser-win32-x64'}}
+/>
 
 输入参数
 

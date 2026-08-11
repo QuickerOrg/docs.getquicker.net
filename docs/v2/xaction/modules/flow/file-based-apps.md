@@ -19,6 +19,8 @@ metadataGeneratedAt: "2026-08-03 20:08:03"
 
 <XActionModuleMeta moduleKey="sys:csharpFileApp" />
 
+<ModuleParamPreview moduleKey="sys:csharpFileApp" />
+
 ## 使用说明
 
 这是 Quicker 2.0 新增模块，当前页面已收录模块定义，详细用法与示例待补充。

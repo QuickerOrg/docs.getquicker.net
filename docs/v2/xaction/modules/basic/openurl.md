@@ -23,7 +23,7 @@ legacyContentUpdatedAt: "2025-12-05T02:22:28.000Z"
 
 使用浏览器打开指定的网址。
 
-![](./img/openurl-001-3470de43e3.png)
+<ModuleParamPreview moduleKey="sys:openUrl" />
 
 ## 输入参数
 

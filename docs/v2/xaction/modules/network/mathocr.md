@@ -29,7 +29,7 @@ legacyContentUpdatedAt: "2026-03-20T00:32:28.000Z"
 
 Mathpix 目前降低了识别价格，从2026年3月21日起，每次识别价格从0.028Q豆下调为0.015Q豆（即约1.5分钱）。
 
-![](./img/mathocr-001-9c92767a4e.png)
+<ModuleParamPreview moduleKey="sys:mathocr" />
 
 支持两种操作类型：
 

@@ -27,7 +27,7 @@ legacyContentUpdatedAt: "2025-12-21T14:14:54.000Z"
 
 注：截图通常会截取到向前一点时间的屏幕图像。因此如果从面板窗口、轮盘菜单触发，可能截取到Quicker界面，可以在截图之前增加一点延迟。
 
-![](./img/screencapture-001-2231b0e68f.png)
+<ModuleParamPreview moduleKey="sys:screenCapture" />
 
 对于“选择区域”操作类型，可以使用第三方截图工具代替Quicker的内置截图：
 
@@ -66,7 +66,12 @@ legacyContentUpdatedAt: "2025-12-21T14:14:54.000Z"
 
 从屏幕上手动选择截图范围（类似于其它常用截图软件）。
 
-![](./img/screencapture-003-254ac8acf9.png)
+<ModuleParamPreview
+  moduleKey="sys:screenCapture"
+  focusKeys={['type', 'delay', 'toClip', 'stopIfFail', 'img', 'rect', 'isSuccess']}
+  values={{type: 'select', delay: '0', toClip: 'false', stopIfFail: 'true'}}
+  outputVars={{img: 'img', rect: 'rect'}}
+/>
 
 #### 手动截图操作说明
 
@@ -135,7 +140,12 @@ legacyContentUpdatedAt: "2025-12-21T14:14:54.000Z"
 
 【窗口句柄】可以通过获取前台窗口等方式得到，为0时表示截取当前屏幕上的前台窗口（拥有输入焦点的窗口）。
 
-![](./img/screencapture-007-510b30adbd.png)
+<ModuleParamPreview
+  moduleKey="sys:screenCapture"
+  focusKeys={['type', 'windowHandle', 'delay', 'toClip', 'stopIfFail', 'img', 'rect', 'isSuccess']}
+  values={{type: 'window', windowHandle: '0', delay: '0', toClip: 'false', stopIfFail: 'true'}}
+  outputVars={{img: 'img', rect: 'rect'}}
+/>
 
 ### 窗口（支持后台显示）
 

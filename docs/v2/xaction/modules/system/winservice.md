@@ -25,7 +25,7 @@ legacyContentUpdatedAt: "2022-08-08T08:45:27.000Z"
 
 ## 获取某个服务的信息
 
-![](./img/winservice-001-3ce376f2b5.png)
+<ModuleParamPreview moduleKey="sys:winservice" />
 
 输入：
 
@@ -52,7 +52,12 @@ legacyContentUpdatedAt: "2022-08-08T08:45:27.000Z"
 
 ## 获取windows服务列表
 
-![](./img/winservice-003-81765bd170.png)
+<ModuleParamPreview
+  moduleKey="sys:winservice"
+  focusKeys={['operation', 'serviceList']}
+  values={{operation: 'getServiceList'}}
+  outputVars={{serviceList: 'serviceList'}}
+/>
 
 获取当前电脑服务列表。
 
@@ -64,7 +69,12 @@ legacyContentUpdatedAt: "2022-08-08T08:45:27.000Z"
 
 模块设置：
 
-![](./img/winservice-005-fcdc928c18.png)
+<ModuleParamPreview
+  moduleKey="sys:winservice"
+  focusKeys={['operation', 'regKeyPath', 'regValueName', 'isExists', 'regValue']}
+  values={{operation: 'getRegValue', regKeyPath: 'HKCU\\Software\\Quicker', regValueName: 'installed'}}
+  outputVars={{isExists: 'isExists', regValue: 'text'}}
+/>
 
 输入：
 

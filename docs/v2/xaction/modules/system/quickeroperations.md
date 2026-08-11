@@ -23,7 +23,7 @@ legacyContentUpdatedAt: "2024-08-20T01:16:01.000Z"
 
 在动作中调用Quicker功能。从而方便的使用轮盘菜单、扩展热键等操作Quicker。
 
-![](./img/quickeroperations-001-60c89e8665.png)
+<ModuleParamPreview moduleKey="sys:quickeroperations" />
 
 可以结合使用“显示面板”和“加载动作页”实现用动作切换到某个特定的动作页上的目的。
 
@@ -33,7 +33,16 @@ legacyContentUpdatedAt: "2024-08-20T01:16:01.000Z"
 
 显示面板窗口。可指定是否自动激活鼠标位置窗口、是否跟随鼠标。
 
-![](./img/quickeroperations-002-a8d3907695.png)
+<ModuleParamPreview
+  moduleKey="sys:quickeroperations"
+  focusKeys={['type', 'activatePointWindow', 'followMousePosition', 'stopIfFail', 'isSuccess']}
+  values={{
+    type: 'showPanel',
+    activatePointWindow: 'false',
+    followMousePosition: 'true',
+    stopIfFail: 'true',
+  }}
+/>
 
 ### 显示搜索框
 
@@ -94,7 +103,11 @@ legacyContentUpdatedAt: "2024-08-20T01:16:01.000Z"
 
 显示仪表盘窗口，如果需要可以指定特定场景的仪表盘窗口。
 
-![](./img/quickeroperations-007-c4024bcc7b.png)
+<ModuleParamPreview
+  moduleKey="sys:quickeroperations"
+  focusKeys={['type', 'exe', 'stopIfFail']}
+  values={{type: 'showDashboardWindow', exe: '', stopIfFail: 'true'}}
+/>
 
 ### 开启/关闭文本悬浮窗功能
 
@@ -116,7 +129,11 @@ legacyContentUpdatedAt: "2024-08-20T01:16:01.000Z"
 
 显示场景与动作管理窗口，必要时可以指定场景标识以自动切换到特定场景的设置界面。
 
-![](./img/quickeroperations-011-c72a1ce610.png)
+<ModuleParamPreview
+  moduleKey="sys:quickeroperations"
+  focusKeys={['type', 'exe', 'stopIfFail']}
+  values={{type: 'showExeSettingWindow', exe: '', stopIfFail: 'true'}}
+/>
 
 功能等同于
 
@@ -177,7 +194,11 @@ legacyContentUpdatedAt: "2024-08-20T01:16:01.000Z"
 -   %%公共子程序id（1.43.18+版本）
 -   %%公共子程序名称（1.43.18+版本）
 
-![](./img/quickeroperations-018-a4f1f84d17.png)
+<ModuleParamPreview
+  moduleKey="sys:quickeroperations"
+  focusKeys={['type', 'actionId', 'stopIfFail']}
+  values={{type: 'editAction', actionId: '测试动作20240108', stopIfFail: 'true'}}
+/>
 
 ### 重启Quicker
 
@@ -195,7 +216,16 @@ legacyContentUpdatedAt: "2024-08-20T01:16:01.000Z"
 
 触发使用另外的动作进行时搜索的功能并填入指定的搜索词。
 
-![](./img/quickeroperations-019-78108a0754.png)
+<ModuleParamPreview
+  moduleKey="sys:quickeroperations"
+  focusKeys={['type', 'actionId', 'searchText', 'stopIfFail']}
+  values={{
+    type: 'SearchWithCertainAction',
+    actionId: '测试动作20240108',
+    searchText: '',
+    stopIfFail: 'true',
+  }}
+/>
 
 ### 显示剪贴板上下文菜单
 
@@ -207,7 +237,15 @@ legacyContentUpdatedAt: "2024-08-20T01:16:01.000Z"
 
 仅切换主题模式时，可不填写外观ID。
 
-![](./img/quickeroperations-020-52ff21f310.png)
+<ModuleParamPreview
+  moduleKey="sys:quickeroperations"
+  focusKeys={['type', 'skinId', 'theme', 'isSuccess']}
+  values={{
+    type: 'LoadSkin',
+    skinId: '16e905c4-bdab-40d6-ff8e-08dcbaf60df3',
+    theme: '',
+  }}
+/>
 
 外观ID可从外观库中点击某个外观打开的外观详情页面中复制。
 
@@ -221,13 +259,21 @@ legacyContentUpdatedAt: "2024-08-20T01:16:01.000Z"
 
 将指定动作悬浮到特定位置。
 
-![](./img/quickeroperations-022-d673978120.png)
+<ModuleParamPreview
+  moduleKey="sys:quickeroperations"
+  focusKeys={['type', 'actionId', 'position', 'stopIfFail', 'isSuccess']}
+  values={{type: 'FloatAction', actionId: '', position: '200,200', stopIfFail: 'true'}}
+/>
 
 ### 切换所有悬浮按钮显示
 
 切换悬浮动作的显示状态，可全部隐藏、全部显示或切换为默认的按活动进程显示的状态。
 
-![](./img/quickeroperations-023-5a3a6c3ef9.png)
+<ModuleParamPreview
+  moduleKey="sys:quickeroperations"
+  focusKeys={['type', 'viewMode', 'isSuccess']}
+  values={{type: 'ToggleFloatButtons', viewMode: 'ByProcess'}}
+/>
 
 ### 显示或隐藏所有图片窗口
 

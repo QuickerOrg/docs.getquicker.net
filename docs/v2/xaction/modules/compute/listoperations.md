@@ -23,7 +23,7 @@ legacyContentUpdatedAt: "2022-07-06T05:37:04.000Z"
 
 对列表变量的项进行添加、删除等操作。
 
-![](./img/listoperations-001-d57f385831.png)
+<ModuleParamPreview moduleKey="sys:listOperations" />
 
 ## 参数
 

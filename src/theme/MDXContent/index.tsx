@@ -1,12 +1,39 @@
-import React, {type ReactNode} from 'react';
+import React, {type ComponentProps, type ReactNode} from 'react';
 import {MDXProvider} from '@mdx-js/react';
-import type {MDXComponents as MDXComponentsType} from '@mdx-js/react';
 import ThemeMDXComponents from '@theme-original/MDXComponents';
+import Mermaid from '@theme/Mermaid';
 import XActionModuleMeta from '@site/src/components/XActionModuleMeta';
+import StepProgramView from '@site/src/components/StepProgramView';
+import VariableDefPreview from '@site/src/components/VariableDefPreview';
+import ModuleParamPreview from '@site/src/components/ModuleParamPreview';
+import NotifyToastPreview from '@site/src/components/NotifyToastPreview';
+import MsgBoxPreview from '@site/src/components/MsgBoxPreview';
+import ChoiceListPreview from '@site/src/components/ChoiceListPreview';
+import ContextMenuPreview from '@site/src/components/ContextMenuPreview';
+import WaitWinPreview from '@site/src/components/WaitWinPreview';
+import TableFieldPreview from '@site/src/components/TableFieldPreview';
+import PreviewCompare from '@site/src/components/PreviewCompare';
+import ShareLinkCard from '@site/src/components/ShareLinkCard';
+
+type MDXComponentsType = NonNullable<ComponentProps<typeof MDXProvider>['components']>;
 
 const components = {
   ...ThemeMDXComponents,
+  // Faster/Rspack can drop theme MDX mappings; register explicitly.
+  mermaid: Mermaid,
+  Mermaid,
   XActionModuleMeta,
+  StepProgramView,
+  VariableDefPreview,
+  ModuleParamPreview,
+  NotifyToastPreview,
+  MsgBoxPreview,
+  ChoiceListPreview,
+  ContextMenuPreview,
+  WaitWinPreview,
+  TableFieldPreview,
+  PreviewCompare,
+  ShareLinkCard,
 } as MDXComponentsType;
 
 export default function MDXContent({children}: {children: ReactNode}): ReactNode {

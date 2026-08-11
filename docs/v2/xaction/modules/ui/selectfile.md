@@ -27,7 +27,7 @@ legacyContentUpdatedAt: "2021-11-15T11:23:11.000Z"
 
 选择要打开或保存的文件路径。
 
-![](./img/selectfile-001-27a4e58b97.png)
+<ModuleParamPreview moduleKey="sys:selectFile" />
 
 ## 参数
 

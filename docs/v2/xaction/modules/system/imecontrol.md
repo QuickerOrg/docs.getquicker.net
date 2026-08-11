@@ -36,7 +36,7 @@ legacyContentUpdatedAt: "2023-12-19T07:05:30.000Z"
 
 通常在发送热键或文本之前可以使用此模块将输入法切换到英文状态，从而避免发送到窗口的内容被输入法影响。
 
-![](./img/imecontrol-001-bb836e51b9.png)
+<ModuleParamPreview moduleKey="sys:imeControl" />
 
 ## 参数
 

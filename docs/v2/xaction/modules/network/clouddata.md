@@ -68,7 +68,7 @@ legacyContentUpdatedAt: "2023-10-21T07:59:44.000Z"
 
 ## 参数
 
-![](./img/clouddata-003-7eab3f3123.png)
+<ModuleParamPreview moduleKey="sys:clouddata" />
 
 ### 输入参数
 

@@ -36,7 +36,7 @@ legacyContentUpdatedAt: "2019-07-29T14:23:39.000Z"
 
 请参考：[https://getquicker.net/Forum/ViewTopic/877](https://getquicker.net/Forum/ViewTopic/877)
 
-![image.png](./img/imgtobase64-001-089a541add.png "image.png")
+<ModuleParamPreview moduleKey="sys:imgToBase64" />
 
 ## 参数
 

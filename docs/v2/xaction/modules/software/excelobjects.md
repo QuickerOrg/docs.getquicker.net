@@ -42,7 +42,7 @@ legacyContentUpdatedAt: "2023-02-16T07:33:45.000Z"
 
 在内部使用 `(Excel.Application)Marshal.GetActiveObject("Excel.Application")` 得到相关信息。
 
-![](./img/excelobjects-001-f3636aa04a.png)
+<ModuleParamPreview moduleKey="sys:excelObjects" />
 
 **输入**
 

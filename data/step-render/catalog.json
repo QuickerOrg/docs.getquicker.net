@@ -1,0 +1,3192 @@
+{
+  "schemaVersion": 1,
+  "generatedAt": "2026-08-11T10:18:46.652Z",
+  "sourceVersion": "xaction-catalog",
+  "runners": {
+    "sys:openUrl": {
+      "name": "打开网址",
+      "description": "打开指定的网址",
+      "stepType": "Action",
+      "inputLabels": {
+        "url": "网址",
+        "browser": "浏览器",
+        "exePath": "浏览器程序路径",
+        "stopIfFail": "失败后停止"
+      },
+      "outputLabels": {
+        "isSuccess": "是否成功"
+      },
+      "icon": "fa:Light_Globe"
+    },
+    "sys:MsgBox": {
+      "name": "弹窗提示或确认",
+      "description": "弹窗显示提示或确认对话框",
+      "stepType": "Action",
+      "inputLabels": {
+        "operation": "模式",
+        "message": "消息内容",
+        "title": "标题",
+        "icon": "图标",
+        "customIcon": "图标",
+        "buttons": "按钮",
+        "customButtons": "按钮",
+        "defaultButton": "默认按钮",
+        "restoreFocus": "恢复活动窗口"
+      },
+      "outputLabels": {
+        "result": "选择的按钮",
+        "okOrYes": "是否确认"
+      },
+      "icon": "res:Steps/msgbox.png"
+    },
+    "sys:delay": {
+      "name": "等待时间",
+      "description": "等待指定的毫秒数",
+      "stepType": "Action",
+      "inputLabels": {
+        "delayMs": "等待时间",
+        "monitorWaitWin": "等待窗口关闭时取消"
+      },
+      "icon": "fa:Light_Stopwatch"
+    },
+    "sys:outputText": {
+      "name": "发送文本到窗口",
+      "description": "将文本输出到活动窗口中",
+      "stepType": "Action",
+      "inputLabels": {
+        "content": "内容",
+        "method": "方法",
+        "delayBeforePaste": "粘贴前延时",
+        "delayAfterPaste": "粘贴后延时",
+        "delayBetweenChar": "字符间延迟",
+        "appendReturn": "在末尾添加回车",
+        "hideInHistory": "从剪贴板历史中隐藏",
+        "stopIfFail": "失败后停止"
+      },
+      "outputLabels": {
+        "isSuccess": "步骤是否成功"
+      },
+      "icon": "fa:Light_CommentAltLines"
+    },
+    "sys:getSelectedText": {
+      "name": "获取选中的文本",
+      "description": "获取选中的文字",
+      "stepType": "Action",
+      "inputLabels": {
+        "format": "文本数据格式",
+        "waitMs": "等待剪贴板时间",
+        "repeat": "重试次数",
+        "tryNoClipboard": "尝试不通过剪贴板的方式获取",
+        "useActionParam": "如果为动作传递了参数，使用参数值作为获取的结果",
+        "trim": "去除前后的空白",
+        "stopIfFail": "失败后中止动作"
+      },
+      "outputLabels": {
+        "isSuccess": "是否成功",
+        "output": "内容",
+        "cleanHtml": "去除封装的HTML",
+        "outputEncoded": "URL编码的内容",
+        "url": "来源网址"
+      },
+      "icon": "fa:Light_ICursor"
+    },
+    "sys:keyInput": {
+      "name": "模拟按键A（录入）",
+      "description": "模拟键盘输入",
+      "stepType": "Keyboard",
+      "inputLabels": {
+        "keys": "按键",
+        "repeat": "重复次数",
+        "interval": "重复间隔(毫秒)",
+        "holdMs": "保持毫秒数"
+      },
+      "icon": "fa:Light_Keyboard"
+    },
+    "sys:sendKeys": {
+      "name": "模拟按键B（参数）",
+      "description": "发送按键和文本",
+      "stepType": "Action",
+      "inputLabels": {
+        "keys": "按键序列"
+      },
+      "icon": "fa:Light_Keyboard"
+    },
+    "sys:mouse": {
+      "name": "鼠标输入",
+      "description": "模拟鼠标输入",
+      "stepType": "Action",
+      "inputLabels": {
+        "type": "类型",
+        "hWnd": "窗口句柄",
+        "btn": "按钮",
+        "bmp": "位图路径",
+        "bmpVar": "位图变量",
+        "bmpTargetType": "查找范围",
+        "searchRect": "查找坐标范围",
+        "bmpPosition": "定位位置",
+        "bmpColorError": "颜色容差",
+        "maxFindCount": "最大匹配数量",
+        "retryCount": "重试次数",
+        "x": "X",
+        "y": "Y",
+        "xy": "坐标",
+        "xyForWin": "相对坐标",
+        "slowMove": "逐渐移动到目标",
+        "extAction": "移动后操作",
+        "restoreMousePos": "操作完成后恢复鼠标位置",
+        "stopIfFail": "失败后中止动作"
+      },
+      "outputLabels": {
+        "isSuccess": "找图定位是否成功",
+        "mouseLocation": "鼠标位置",
+        "mouseX": "鼠标位置X",
+        "mouseY": "鼠标位置Y",
+        "cursorType": "光标类型"
+      },
+      "icon": "fa:Solid_MousePointer"
+    },
+    "sys:notify": {
+      "name": "提示消息",
+      "description": "显示可以自动消失的消息提示。",
+      "stepType": "Action",
+      "inputLabels": {
+        "type": "类型",
+        "msg": "消息内容",
+        "title": "标题",
+        "placement": "显示位置",
+        "maxLines": "最大行数",
+        "durationSeconds": "保持秒数",
+        "showTime": "显示时间",
+        "duplicate": "重复控制",
+        "clickAction": "点击操作"
+      },
+      "icon": "fa:Light_Bullhorn:#6aaded"
+    },
+    "sys:userInput": {
+      "name": "用户输入",
+      "description": "请用户输入内容。",
+      "stepType": "Action",
+      "inputLabels": {
+        "type": "类型",
+        "prompt": "提示文字",
+        "defaultValue": "默认值",
+        "texttools": "文本选择工具",
+        "extraSettings": "扩展设置",
+        "pattern": "验证表达式",
+        "isRequired": "必填",
+        "winLocation": "窗口位置",
+        "restoreFocus": "恢复活动窗口",
+        "closeOnDeactivated": "失去焦点后关闭窗口",
+        "submitWithReturn": "回车提交结果（Shift+回车换行）",
+        "fontfamily": "字体名称",
+        "fontsize": "字体大小",
+        "imeState": "输入法状态",
+        "help": "帮助按钮内容",
+        "topMost": "置顶显示",
+        "stopIfFail": "失败后停止"
+      },
+      "outputLabels": {
+        "isSuccess": "是否成功",
+        "textValue": "文本值",
+        "numberValue": "数字值",
+        "datetimeValue": "日期时间值",
+        "isEmpty": "是否为空"
+      },
+      "icon": "fa:Light_UserEdit"
+    },
+    "sys:select": {
+      "name": "用户选择",
+      "description": "请用户选择一个选项。",
+      "stepType": "Action",
+      "inputLabels": {
+        "type": "类型",
+        "prompt": "窗口标题",
+        "note": "提示信息",
+        "items": "选项",
+        "defaultValue": "默认值",
+        "defaultValueMulti": "默认值",
+        "winLocation": "窗口位置",
+        "maxWinSize": "最大尺寸/位置坐标",
+        "keepLastPos": "使用上次位置",
+        "autoCloseSeconds": "自动关闭",
+        "noKeyboard": "不使用焦点",
+        "closeOnDeactivated": "失去焦点后关闭窗口（仅在使用焦点时有效）",
+        "showFilter": "启用筛选",
+        "filterContent": "筛选内容",
+        "imeState": "输入法状态",
+        "restoreForeground": "恢复活动窗口到弹出前",
+        "allowOkWhenEmpty": "允许不选择任何选项时点击确定",
+        "enableQuickConfirm": "启用快速确认（点击选项后立即确认选择并关闭窗口）",
+        "topMost": "置顶显示",
+        "stopIfCancel": "取消后停止",
+        "operations": "右键/全局菜单",
+        "fontsize": "字体大小",
+        "fontfamily": "字体名称",
+        "iconsize": "图标大小",
+        "windowKey": "窗口标识",
+        "help": "帮助按钮内容"
+      },
+      "outputLabels": {
+        "isSuccess": "是否确认",
+        "textValue": "选择的项(值)",
+        "selectedIndex": "索引号",
+        "selectedIndexList": "索引号列表",
+        "multiSelected": "选择的项值列表",
+        "extraOperation": "选择的菜单",
+        "selectedFullItems": "选择的完整选项",
+        "selectedItemTitle": "选择的选项标题",
+        "filterContent": "筛选内容"
+      },
+      "icon": "fa:Light_Ballot"
+    },
+    "sys:run": {
+      "name": "运行或打开",
+      "description": "运行软件或命令，打开文件、文件夹或网址。效果类似于在Windows\"运行\"对话框中执行命令。",
+      "stepType": "Action",
+      "inputLabels": {
+        "path": "路径或命令",
+        "arg": "参数(可选)",
+        "setWorkingDir": "工作目录",
+        "windowStyle": "窗口风格",
+        "runas": "以管理员身份运行",
+        "waitInputIdle": "等待启动完成",
+        "waitExit": "等待进程结束",
+        "activateWindowIfRunning": "如果程序已运行则尝试激活窗口",
+        "activateWindowHotkey": "激活窗口快捷键",
+        "alternativePath": "备用路径",
+        "username": "用户名",
+        "password": "密码",
+        "outputEncoding": "控制台输出编码",
+        "envVariables": "环境变量",
+        "stopIfFail": "失败后停止"
+      },
+      "outputLabels": {
+        "isSuccess": "是否成功",
+        "pid": "PID",
+        "mainWinHandle": "主窗口句柄",
+        "mainWinTitle": "主窗口标题",
+        "stdout": "控制台输出",
+        "stdoutOnly": "stdout输出",
+        "stderr": "stderr输出",
+        "exitCode": "退出代码"
+      },
+      "icon": "fa:Solid_PaperPlane"
+    },
+    "sys:runScript": {
+      "name": "运行脚本",
+      "description": "运行脚本。",
+      "stepType": "Action",
+      "inputLabels": {
+        "script": "脚本内容",
+        "type": "脚本类型",
+        "ext": "扩展名",
+        "encoding": "文件编码",
+        "runner": "使用指定软件",
+        "argTemplate": "命令行参数模板",
+        "workingDir": "工作目录",
+        "scriptParams": "脚本参数",
+        "runAsAdmin": "以管理员身份运行",
+        "waitToExit": "等待进程结束",
+        "outputEncoding": "控制台输出编码",
+        "stopIfFail": "失败后停止"
+      },
+      "outputLabels": {
+        "stdout": "控制台输出",
+        "stdoutOnly": "标准输出",
+        "stderr": "错误输出"
+      },
+      "icon": "fa:Light_Scroll"
+    },
+    "sys:comment": {
+      "name": "注释",
+      "description": "使用注释将步骤分组，描述后续步骤的目的。",
+      "stepType": "Comment",
+      "inputLabels": {
+        "note": "注释内容"
+      },
+      "icon": "fa:Solid_FileAlt"
+    },
+    "sys:waitClipboardChange": {
+      "name": "等待剪贴板内容改变",
+      "description": "等待剪贴板的内容发生改变。等待第三方工具（如截图工具）完成操作并更新剪贴板。",
+      "stepType": "Action",
+      "inputLabels": {
+        "maxWaitSeconds": "最长等待秒数",
+        "recentChangeMs": "包含临近的改变",
+        "monitorWaitWin": "等待窗口关闭时取消",
+        "stopIfFail": "失败后中止动作"
+      },
+      "outputLabels": {
+        "isSuccess": "是否改变"
+      },
+      "icon": "fa:Light_ClipboardCheck"
+    },
+    "sys:getClipboardImage": {
+      "name": "获取剪贴板图片",
+      "description": "读取剪贴板中的图片内容输出到图片变量中。",
+      "stepType": "Action",
+      "inputLabels": {
+        "stopIfFail": "失败后中止动作"
+      },
+      "outputLabels": {
+        "isSuccess": "是否成功",
+        "output": "结果图片",
+        "elapsedMs": "已更新时间"
+      },
+      "icon": "fa:Light_Clipboard"
+    },
+    "sys:getClipboardText": {
+      "name": "获取剪贴板文本",
+      "description": "读取剪贴板中的文本内容",
+      "stepType": "Action",
+      "inputLabels": {
+        "format": "文本数据格式",
+        "customFormat": "格式名称",
+        "encoding": "文本编码",
+        "waitMs": "重试时间",
+        "stopIfFail": "失败后中止动作"
+      },
+      "outputLabels": {
+        "isSuccess": "是否成功",
+        "output": "完整结果内容",
+        "cleanHtml": "主要HTML片段",
+        "htmlDoc": "完整的HTML文档",
+        "url": "来源网址",
+        "elapsedMs": "已更新时间"
+      },
+      "icon": "fa:Light_Clipboard"
+    },
+    "sys:getClipboardFiles": {
+      "name": "获取剪贴板文件列表",
+      "description": "获取剪贴板中复制的文件(或文件夹)的路径列表",
+      "stepType": "Action",
+      "inputLabels": {
+        "stopIfFail": "失败后中止动作"
+      },
+      "outputLabels": {
+        "isSuccess": "是否成功",
+        "output": "文件列表",
+        "elapsedMs": "已更新时间"
+      },
+      "icon": "fa:Light_ClipboardList"
+    },
+    "sys:fileToClipboard": {
+      "name": "文件放入剪贴板",
+      "description": "将文件或文件列表存入剪贴板",
+      "stepType": "Action",
+      "inputLabels": {
+        "file": "单个文件",
+        "list": "文件列表",
+        "useCut": "剪切文件",
+        "stopIfFail": "失败后停止"
+      },
+      "outputLabels": {
+        "isSuccess": "是否成功"
+      },
+      "icon": "fa:Light_NotesMedical"
+    },
+    "sys:writeClipboard": {
+      "name": "写入剪贴板",
+      "description": "将文本或图片等内容写入剪贴板",
+      "stepType": "Action",
+      "inputLabels": {
+        "type": "类型",
+        "customFormat": "格式名",
+        "input": "输入",
+        "html": "HTML内容",
+        "text": "文本内容",
+        "imageVar": "图片(变量)",
+        "fastMode": "快速模式",
+        "successMsg": "成功后提示",
+        "stopIfFail": "失败后停止"
+      },
+      "outputLabels": {
+        "isSuccess": "是否成功"
+      },
+      "icon": "fa:Light_NotesMedical"
+    },
+    "sys:numCompare": {
+      "name": "比较数字",
+      "description": "比较数字大小。",
+      "stepType": "Action",
+      "inputLabels": {
+        "param1": "数字1",
+        "type": "类型",
+        "param2": "数字2"
+      },
+      "outputLabels": {
+        "value": "值"
+      },
+      "icon": "fa:Light_Calculator"
+    },
+    "sys:strCompare": {
+      "name": "比较文本",
+      "description": "文本比较",
+      "stepType": "Action",
+      "inputLabels": {
+        "param1": "文本1",
+        "type": "类型",
+        "param2": "文本2",
+        "case": "区分大小写"
+      },
+      "outputLabels": {
+        "value": "值"
+      },
+      "icon": "fa:Light_Calculator"
+    },
+    "sys:tableoperation": {
+      "name": "表格数据操作",
+      "description": "表格变量的相关处理操作",
+      "stepType": "Action",
+      "inputLabels": {
+        "table": "表格变量",
+        "type": "操作类型",
+        "rowData": "行数据",
+        "dataText": "文本数据",
+        "filterExpression": "筛选表达式",
+        "deleteColumns": "要删除的列",
+        "sort": "排序",
+        "exportColumns": "导出的列",
+        "excelFilePath": "Excel文件路径",
+        "sheetName": "Excel工作表名",
+        "startRowNum": "标题行号",
+        "gridSelectionMode": "选择模式",
+        "clearOldRows": "清除已有的行",
+        "isReadOnly": "只读模式",
+        "windowTitle": "窗口标题",
+        "helpText": "帮助文本",
+        "useColumnTitle": "使用列标题而非列名作为导出数据的标题",
+        "csvDelimiter": "CSV分隔符",
+        "winSize": "窗口尺寸/位置",
+        "topMost": "是否置顶显示",
+        "stopIfFail": "失败后停止"
+      },
+      "outputLabels": {
+        "isSuccess": "是否成功",
+        "rowCount": "行数",
+        "affectedRowCount": "影响行数",
+        "rows": "行列表",
+        "columns": "列的列表",
+        "firstRow": "第一行/结果行",
+        "selectedRows": "选择的行列表",
+        "csvExportData": "CSV格式文本",
+        "jsonExportData": "Json格式文本",
+        "isConfirmed": "是否确认"
+      },
+      "icon": "fa:Light_Table"
+    },
+    "sys:dictOperations": {
+      "name": "词典操作",
+      "description": "对词典变量进行添加、删除等操作",
+      "stepType": "Action",
+      "inputLabels": {
+        "type": "操作类型",
+        "dict": "词典",
+        "queryString": "查询字符串",
+        "key": "键",
+        "value": "值",
+        "returnEmptyIfKeyNotExist": "键不存在时返回空值",
+        "ignoreCase": "忽略键的大小写",
+        "stopIfFail": "失败后停止"
+      },
+      "outputLabels": {
+        "isSuccess": "是否成功",
+        "value": "结果"
+      },
+      "icon": "fa:Light_Book"
+    },
+    "sys:assign": {
+      "name": "赋值",
+      "description": "为变量赋值。",
+      "stepType": "Action",
+      "inputLabels": {
+        "input": "输入",
+        "stopIfFail": "失败后停止"
+      },
+      "outputLabels": {
+        "isSuccess": "是否成功",
+        "output": "输出"
+      },
+      "icon": "fa:Light_Edit"
+    },
+    "sys:manageList": {
+      "name": "管理和排序列表",
+      "description": "对列表内容进行手工排序、添加、删除等操作",
+      "stepType": "Action",
+      "inputLabels": {
+        "list": "列表",
+        "winTitle": "窗口标题",
+        "note": "提示信息",
+        "allowAdd": "允许添加项",
+        "allowEdit": "允许编辑项",
+        "allowDelete": "允许删除项",
+        "stopIfFail": "取消后停止动作",
+        "parseData": "解析菜单数据",
+        "seperator": "分隔符",
+        "windowSize": "窗口宽度",
+        "titleDelegate": "显示内容提取表达式",
+        "help": "帮助按钮内容"
+      },
+      "outputLabels": {
+        "isSuccess": "是否确认"
+      },
+      "icon": "fa:Light_ListOl"
+    },
+    "sys:compute": {
+      "name": "计算",
+      "description": "对表达式进行计算。",
+      "stepType": "Action",
+      "inputLabels": {
+        "expression": "表达式",
+        "evalVar": "增强模式",
+        "stopIfFail": "失败后停止"
+      },
+      "outputLabels": {
+        "isSuccess": "是否成功",
+        "output": "结果"
+      },
+      "icon": "fa:Light_CalculatorAlt"
+    },
+    "sys:computeTime": {
+      "name": "计算时间",
+      "description": "时间相关的计算操作",
+      "stepType": "Action",
+      "inputLabels": {
+        "type": "类型",
+        "time1": "日期时间",
+        "time2": "日期时间2",
+        "formatString": "格式化字符串",
+        "addYears": "添加年数",
+        "addMonths": "添加月数",
+        "addDays": "添加天数",
+        "addHours": "添加小时数",
+        "addMinutes": "添加分钟数",
+        "addSeconds": "添加秒数",
+        "stopIfFail": "失败后停止"
+      },
+      "outputLabels": {
+        "isSuccess": "是否成功",
+        "resultTime": "结果时间",
+        "totalDays": "总天数",
+        "totalHours": "总小时数",
+        "totalMinutes": "总分钟数",
+        "totalSeconds": "总秒数",
+        "textValue": "文本值"
+      },
+      "icon": "fa:Light_Clock"
+    },
+    "sys:listOperations": {
+      "name": "列表操作",
+      "description": "对列表变量进行添加、删除等操作",
+      "stepType": "Action",
+      "inputLabels": {
+        "type": "操作类型",
+        "list": "列表",
+        "list2": "列表2",
+        "pos": "序号",
+        "length": "长度",
+        "item": "值",
+        "orderByScore": "按匹配程度排序",
+        "pattern": "正则表达式",
+        "stopIfFail": "失败后停止"
+      },
+      "outputLabels": {
+        "value": "结果",
+        "isEmpty": "是否为空",
+        "length": "列表长度",
+        "index": "序号",
+        "filterOutItems": "剩余项列表"
+      },
+      "icon": "fa:Light_ListOl"
+    },
+    "sys:color": {
+      "name": "屏幕取色/颜色转换与计算",
+      "description": "转换颜色值及相关计算处理",
+      "stepType": "Action",
+      "inputLabels": {
+        "type": "类型",
+        "colorStr": "颜色",
+        "location": "坐标",
+        "format": "输出文本格式",
+        "stopIfFail": "失败后停止"
+      },
+      "outputLabels": {
+        "isSuccess": "是否成功",
+        "A": "透明度值",
+        "R": "红色值",
+        "G": "绿色值",
+        "B": "蓝色值",
+        "Hue": "色相",
+        "HslS": "HSL.S",
+        "HslL": "HSL.L",
+        "HsvS": "HSV.S",
+        "HsvV": "HSV.V",
+        "textValue": "文本值"
+      },
+      "icon": "fa:Solid_FillDrip"
+    },
+    "sys:randomNum": {
+      "name": "生成随机数",
+      "description": "生成随机数",
+      "stepType": "Action",
+      "inputLabels": {
+        "min": "最小值",
+        "max": "最大值"
+      },
+      "outputLabels": {
+        "output": "随机数"
+      },
+      "icon": "fa:Light_Cog"
+    },
+    "sys:newGuid": {
+      "name": "生成Guid",
+      "description": "生成一个新的Guid(全局唯一ID标示符)，并转换为文本格式。",
+      "stepType": "Action",
+      "inputLabels": {
+        "format": "格式",
+        "upper": "大写"
+      },
+      "outputLabels": {
+        "output": "内容"
+      },
+      "icon": "fa:Light_Cog"
+    },
+    "sys:dboperation": {
+      "name": "数据库查询",
+      "description": "对数据库执行SQL语句并返回结果",
+      "stepType": "Action",
+      "inputLabels": {
+        "dbType": "数据库连接类型",
+        "connectionString": "连接字符串",
+        "sql": "SQL语句",
+        "sqlParam": "参数",
+        "timeoutSeconds": "超时秒数",
+        "operationType": "执行方式",
+        "stopIfFail": "失败后停止"
+      },
+      "outputLabels": {
+        "isSuccess": "是否成功",
+        "rowsAffected": "影响行数",
+        "scalarResult": "单值结果",
+        "dataTableResult": "查询结果(表格)",
+        "listResult": "查询结果(对象列表)",
+        "firstItem": "首项结果",
+        "rowCount": "结果行数"
+      },
+      "icon": "fa:Light_Database"
+    },
+    "sys:numberprocess": {
+      "name": "数字转换与处理",
+      "description": "数字转换为文本等相关处理",
+      "stepType": "Action",
+      "inputLabels": {
+        "operation": "操作",
+        "srcNumber": "原始数字",
+        "decimalPlace": "保留小数位",
+        "roundingMethod": "舍入方式",
+        "toIntegerMethod": "取整方式",
+        "srcNumberStr": "原始数字(文本)",
+        "srcBase": "原始数字进制",
+        "stopIfFail": "失败后停止"
+      },
+      "outputLabels": {
+        "isSuccess": "是否成功",
+        "rtnF": "结果文本(不含逗号)",
+        "rtnN": "结果文本(含逗号)",
+        "rtnPercent": "结果文本(百分比)",
+        "rtnInteger": "结果整数",
+        "resultHex": "十六进制",
+        "resultOctal": "八进制",
+        "resultBin": "二进制"
+      },
+      "icon": "res:Steps/common_step.png"
+    },
+    "sys:readFile": {
+      "name": "读取文件",
+      "description": "将读取的文本或图片内容写入变量。",
+      "stepType": "Action",
+      "inputLabels": {
+        "path": "文件路径",
+        "type": "格式",
+        "encoding": "文件编码",
+        "stopIfFail": "失败后停止"
+      },
+      "outputLabels": {
+        "isSuccess": "是否成功",
+        "txt": "文本内容",
+        "image": "图片内容"
+      },
+      "icon": "fa:Light_FolderOpen"
+    },
+    "sys:checkPathExists": {
+      "name": "检查路径/获取文件信息",
+      "description": "检查指定的文件或文件夹是否存在。",
+      "stepType": "Action",
+      "inputLabels": {
+        "path": "路径"
+      },
+      "outputLabels": {
+        "isExists": "路径是否存在",
+        "isFile": "是否为文件",
+        "isFolder": "是否为文件夹",
+        "isReadonly": "是否只读",
+        "isHidden": "是否隐藏",
+        "isSystem": "是否为系统文件",
+        "fileLength": "文件长度",
+        "fileCount": "文件夹内文件个数",
+        "totalLength": "文件夹大小",
+        "createTime": "创建时间",
+        "editTime": "更新时间",
+        "metaData": "文件扩展信息",
+        "lnkTarget": "lnk目标路径",
+        "lnkArguments": "lnk命令行参数",
+        "md5hash": "MD5 哈希值",
+        "sha1hash": "SHA1 哈希值",
+        "sha256hash": "SHA256 哈希值",
+        "crc32hash": "CRC32 哈希值"
+      },
+      "icon": "res:windows.png"
+    },
+    "sys:GenTempFilePath": {
+      "name": "生成临时文件路径",
+      "description": "根据指定的扩展名生成一个随机的临时文件名（完整路径），供后续步骤写入文件使用。",
+      "stepType": "Action",
+      "inputLabels": {
+        "ext": "扩展名"
+      },
+      "outputLabels": {
+        "filePath": "文件路径"
+      },
+      "icon": "fa:Light_Cog"
+    },
+    "sys:everythingsearch": {
+      "name": "使用Everything搜索文件",
+      "description": "调用Everything提供的接口搜索文件",
+      "stepType": "Action",
+      "inputLabels": {
+        "search": "搜索内容",
+        "folder": "限定目录",
+        "ext": "扩展名",
+        "matchWholeFilename": "匹配完整文件名",
+        "matchWholeWord": "匹配整个单词",
+        "matchPath": "匹配路径",
+        "matchCase": "匹配大小写",
+        "useRegex": "使用正则匹配",
+        "maxCount": "最大结果数量",
+        "sort": "排序方式",
+        "stopIfFail": "失败后停止"
+      },
+      "outputLabels": {
+        "isSuccess": "是否成功",
+        "pathList": "路径列表",
+        "resultCount": "结果个数",
+        "rawResult": "原始结果"
+      },
+      "icon": "fa:Light_Search"
+    },
+    "sys:pathExtraction": {
+      "name": "提取文件路径信息/生成路径",
+      "description": "从文件路径中提取文件名、文件夹等信息",
+      "stepType": "Action",
+      "inputLabels": {
+        "operation": "操作类型",
+        "path": "路径",
+        "newExtension": "新的扩展名",
+        "newFileName": "新的文件名",
+        "newFileNameWithoutExt": "新的文件名",
+        "newDir": "目标目录路径",
+        "path2": "路径部分2",
+        "path3": "路径部分3",
+        "path4": "路径部分4",
+        "stopIfFail": "失败后停止"
+      },
+      "outputLabels": {
+        "isSuccess": "是否成功",
+        "resultPath": "结果路径",
+        "name": "文件名",
+        "nameNoExt": "文件名(去掉扩展名)",
+        "path": "所在文件夹路径",
+        "ext": "扩展名"
+      },
+      "icon": "fa:Light_Cog"
+    },
+    "sys:fileOperation": {
+      "name": "文件和目录操作",
+      "description": "文件和目录操作。请确保路径是合法的。",
+      "stepType": "Action",
+      "inputLabels": {
+        "type": "操作类型",
+        "path": "路径",
+        "dstPath": "目标路径/名称",
+        "overwrite": "覆盖已有",
+        "searchPattern": "搜索内容",
+        "isAll": "包含子目录",
+        "stopIfFail": "失败后中止动作"
+      },
+      "outputLabels": {
+        "isSuccess": "是否成功",
+        "files": "路径列表",
+        "resultPath": "结果路径"
+      },
+      "icon": "fa:Light_Folders"
+    },
+    "sys:WriteImageFile": {
+      "name": "写入图片文件",
+      "description": "将图片内容写入文件",
+      "stepType": "Action",
+      "inputLabels": {
+        "content": "图片",
+        "filePath": "文件路径",
+        "quality": "图片质量",
+        "stopIfFail": "失败后停止"
+      },
+      "outputLabels": {
+        "isSuccess": "是否成功"
+      },
+      "icon": "fa:Light_FileImage"
+    },
+    "sys:WriteTextFile": {
+      "name": "写入文本文件",
+      "description": "将内容写入文本文件",
+      "stepType": "Action",
+      "inputLabels": {
+        "content": "内容",
+        "filePath": "文件路径",
+        "encoding": "文件编码",
+        "addUtf8Bom": "添加UTF-BOM",
+        "appendMode": "添加到文件末尾",
+        "addNewLine": "添加空行",
+        "newLineChars": "统一换行字符",
+        "stopIfFail": "失败后停止"
+      },
+      "outputLabels": {
+        "isSuccess": "是否成功"
+      },
+      "icon": "fa:Light_FileEdit"
+    },
+    "sys:stateStorage": {
+      "name": "状态存取",
+      "description": "存取状态数据；更新动作的徽标文字；设置附加的动作右键菜单项",
+      "stepType": "Action",
+      "inputLabels": {
+        "type": "操作类型",
+        "key": "名称",
+        "value": "值",
+        "defaultValue": "默认值",
+        "inputIfEmpty": "为空时请用户输入",
+        "prompt": "用户输入提示",
+        "overlayIcon": "徽标图标",
+        "badgeText": "徽标文字",
+        "badgeColor": "徽标颜色",
+        "badgeTextColor": "徽标文字颜色",
+        "actionContextMenu": "附加的右键菜单项",
+        "stopIfFail": "失败后停止"
+      },
+      "outputLabels": {
+        "isSuccess": "是否成功",
+        "value": "值",
+        "isEmpty": "是否为空"
+      },
+      "icon": "fa:Light_Save"
+    },
+    "sys:zip": {
+      "name": "Zip压缩打包",
+      "description": "Zip压缩或解压缩",
+      "stepType": "Action",
+      "inputLabels": {
+        "type": "操作类型",
+        "sourcePath": "源路径",
+        "targetZipFile": "Zip文件路径",
+        "sourceZipFile": "Zip文件路径",
+        "keepBaseFolder": "源路径为单个文件夹时，压缩整个文件夹（保留文件夹名称）",
+        "outputPath": "目标路径",
+        "password": "密码",
+        "comment": "备注",
+        "level": "级别",
+        "overwrite": "自动覆盖文件",
+        "skipOverwriteError": "覆盖失败时忽略",
+        "showProgress": "显示进度条",
+        "stopIfFail": "失败后停止"
+      },
+      "outputLabels": {
+        "isSuccess": "是否成功",
+        "resultPath": "结果路径"
+      },
+      "icon": "fa:Light_FileArchive"
+    },
+    "sys:group": {
+      "name": "步骤组",
+      "description": "一组有关的模块（方便整体禁用、删除等）",
+      "stepType": "Loop",
+      "inputLabels": {
+        "skipErr": "忽略错误",
+        "skipWhenDebugging": "调试运行时不输出调试内容",
+        "useMultiThread": "使用多线程",
+        "waitAny": "多线程使用WaitAny模式",
+        "cancelRemainingOnWaitAny": "WaitAny模式下自动取消其它分支"
+      },
+      "outputLabels": {
+        "isSuccess": "是否成功",
+        "errorMessage": "错误消息"
+      },
+      "icon": "fa:Light_LayerGroup"
+    },
+    "sys:dependencycheck": {
+      "name": "检查和下载依赖",
+      "description": "检查和下载依赖的外部文件包。",
+      "stepType": "Action",
+      "inputLabels": {
+        "packageName": "依赖包名",
+        "packageVersion": "依赖包版本",
+        "stopIfFail": "失败后停止"
+      },
+      "outputLabels": {
+        "isSuccess": "是否成功",
+        "packagePath": "依赖包路径"
+      },
+      "icon": "res:Steps/common_step.png"
+    },
+    "sys:each": {
+      "name": "每个",
+      "description": "对列表的每项执行处理",
+      "stepType": "Loop",
+      "inputLabels": {
+        "input": "列表",
+        "useMultiThread": "线程模式",
+        "threadDelay": "线程启动间隔",
+        "concurrentThreadNum": "同时线程数",
+        "timeoutMs": "超时毫秒数",
+        "waitAny": "WaitAny模式",
+        "cancelRemainingOnWaitAny": "WaitAny模式下自动取消其它分支",
+        "useLocalContext": "为线程创建独立上下文",
+        "progressBarTitle": "进度条标题",
+        "stopIfFail": "失败后停止"
+      },
+      "outputLabels": {
+        "isSuccess": "是否成功",
+        "item": "项",
+        "count": "计数"
+      },
+      "icon": "fa:Light_Repeat"
+    },
+    "sys:simpleIf": {
+      "name": "如果",
+      "description": "依据条件执行操作",
+      "stepType": "Loop",
+      "inputLabels": {
+        "condition": "如果"
+      },
+      "icon": "fa:Regular_ProjectDiagram"
+    },
+    "sys:if": {
+      "name": "如果/否则",
+      "description": "依据条件执行操作",
+      "stepType": "If",
+      "inputLabels": {
+        "condition": "如果"
+      },
+      "icon": "fa:Regular_ProjectDiagram"
+    },
+    "sys:break": {
+      "name": "跳出循环(break)",
+      "description": "跳出循环（\"每个\" 或 \"重复\" 模块）",
+      "stepType": "Action",
+      "icon": "fa:Light_SignOut"
+    },
+    "sys:continue": {
+      "name": "跳过后续步骤(continue)",
+      "description": "跳过后续步骤（循环内部），开始下一次循环。在循环内部使用。",
+      "stepType": "Action",
+      "icon": "fa:Light_Forward"
+    },
+    "sys:stop": {
+      "name": "停止(return)",
+      "description": "停止动作或从子程序中返回",
+      "stepType": "Action",
+      "inputLabels": {
+        "method": "操作类型",
+        "isError": "标记为出错",
+        "return": "返回值",
+        "showMessage": "提示消息"
+      },
+      "icon": "fa:Solid_Square"
+    },
+    "sys:runAction": {
+      "name": "运行或停止动作",
+      "description": "执行指定的其他动作",
+      "stepType": "Action",
+      "inputLabels": {
+        "type": "类型",
+        "actionId": "目标动作",
+        "onlyCustomMenu": "仅显示动作的自定义菜单",
+        "wait": "等待运行结束",
+        "inputParam": "命令参数",
+        "debug": "调试模式运行",
+        "hideMessage": "不显示提示消息",
+        "stopIfFail": "失败后停止"
+      },
+      "outputLabels": {
+        "isSuccess": "是否成功",
+        "actionTitle": "动作名称",
+        "output": "动作输出",
+        "count": "运行个数"
+      },
+      "icon": "fa:Light_Cog"
+    },
+    "sys:subprogram": {
+      "name": "运行子程序",
+      "description": "运行子程序",
+      "stepType": "SubProgram",
+      "inputLabels": {
+        "subProgram": "子程序",
+        "summary": "Summary",
+        "skipDebugOutput": "跳过调试输出",
+        "stopIfFail": "失败后停止"
+      },
+      "outputLabels": {
+        "isSuccess": "是否成功"
+      }
+    },
+    "sys:csscript": {
+      "name": "运行C#代码",
+      "description": "执行C#代码片段。代码中应包含主函数Exec(stepContext)，请参考文档说明。",
+      "stepType": "Action",
+      "inputLabels": {
+        "mode": "运行模式",
+        "script": "脚本内容",
+        "scriptForLp": "脚本内容",
+        "scriptForAssembly": "脚本内容",
+        "paramValue": "参数值",
+        "reference": "引用DLL库",
+        "enableCache": "开启磁盘缓存",
+        "runOnUiThread": "执行线程",
+        "waitResp": "等待返回",
+        "waitMs": "最长等待时间(ms)",
+        "stopIfFail": "失败后停止"
+      },
+      "outputLabels": {
+        "isSuccess": "是否成功",
+        "resp": "返回内容",
+        "rtn": "返回内容",
+        "rtnAssembly": "程序集对象",
+        "assemblyPath": "程序集路径"
+      },
+      "icon": "fa:Light_Scroll"
+    },
+    "sys:csharpFileApp": {
+      "name": "运行C#文件应用",
+      "description": "使用.NET SDK运行C# file-based app。支持新语法、NuGet包引用和WPF等SDK功能。",
+      "stepType": "Action",
+      "inputLabels": {
+        "code": "C#代码",
+        "arguments": "命令行参数",
+        "workingDirectory": "工作目录",
+        "dotnetPath": "dotnet路径",
+        "stopIfFail": "失败后停止"
+      },
+      "outputLabels": {
+        "isSuccess": "是否成功",
+        "stdout": "标准输出",
+        "stderr": "错误输出",
+        "exitCode": "退出代码",
+        "sourceFile": "源码文件路径",
+        "errMessage": "错误消息"
+      },
+      "icon": "fa:Light_Code"
+    },
+    "sys:jsscript": {
+      "name": "运行Javascript代码",
+      "description": "执行Js代码片段。代码中应包含主函数exec()，请参考文档。",
+      "stepType": "Action",
+      "inputLabels": {
+        "script": "脚本内容",
+        "allClr": "允许访问.Net程序集",
+        "stopIfFail": "失败后停止"
+      },
+      "outputLabels": {
+        "isSuccess": "是否成功",
+        "return": "返回值"
+      },
+      "icon": "fa:Light_Scroll"
+    },
+    "sys:pythonscript": {
+      "name": "运行Python代码",
+      "description": "执行Python代码片段。",
+      "stepType": "Action",
+      "inputLabels": {
+        "script": "脚本内容",
+        "pythonPath": "Python环境路径",
+        "stopIfFail": "失败后停止"
+      },
+      "outputLabels": {
+        "isSuccess": "是否成功"
+      },
+      "icon": "fa:Brands_Python"
+    },
+    "sys:repeat": {
+      "name": "重复",
+      "description": "循环指定的次数，或符合某个条件时中止",
+      "stepType": "Loop",
+      "inputLabels": {
+        "count": "次数",
+        "startIndex": "计数开始值",
+        "stopCondition": "中止条件",
+        "repeatDelayMs": "循环间隔时间",
+        "progressBarTitle": "进度条标题"
+      },
+      "outputLabels": {
+        "count": "计数"
+      },
+      "icon": "fa:Light_Repeat"
+    },
+    "sys:imageinfo": {
+      "name": "读取图片信息",
+      "description": "获取图片的尺寸或exif信息",
+      "stepType": "Action",
+      "inputLabels": {
+        "sourceType": "图片来源",
+        "bmpFile": "文件路径",
+        "bmpVar": "图片变量",
+        "autoRotate": "计算旋转后的宽高",
+        "stopIfFail": "失败后停止"
+      },
+      "outputLabels": {
+        "isSuccess": "是否成功",
+        "width": "宽度",
+        "height": "高度",
+        "rotateDegree": "旋转角度",
+        "dateTimeOriginal": "拍摄时间",
+        "exifData": "Exif数据",
+        "rawExifData": "原始属性数据",
+        "fileTypeFromData": "内容图片格式"
+      },
+      "icon": "fa:Light_Image"
+    },
+    "sys:screenRecording": {
+      "name": "后台屏幕录制",
+      "description": "后台录制屏幕区域为视频文件，通过会话 ID 跨步骤控制录制生命周期。",
+      "stepType": "Action",
+      "inputLabels": {
+        "operation": "操作",
+        "sessionId": "会话 ID",
+        "stopIfFail": "失败后停止",
+        "regionType": "录制范围",
+        "area": "录制区域",
+        "includeRightBottomBorder": "包含右下边像素",
+        "outputFilePath": "输出文件路径",
+        "outputFormat": "输出格式",
+        "exportQuality": "导出画质",
+        "framesPerSecond": "帧率",
+        "showCursor": "显示鼠标光标",
+        "encodingStrategy": "编码策略",
+        "returnImmediately": "开始后立即返回",
+        "delay": "开始前延迟",
+        "waitForCompletion": "等待编码完成",
+        "removeSessionAfterStop": "结束后删除会话",
+        "addToHistory": "加入录屏历史"
+      },
+      "outputLabels": {
+        "isSuccess": "是否成功",
+        "sessionIdOut": "会话 ID",
+        "filePath": "文件路径",
+        "durationSeconds": "录制时长",
+        "rect": "录制区域",
+        "errMessage": "错误消息"
+      },
+      "icon": "fa:Light_Video"
+    },
+    "sys:screenCapturePro": {
+      "name": "截图 Pro",
+      "description": "渐进式选区截图：全屏 overlay，光标处初始选区，支持控件跟踪，双击确认。Esc 取消。",
+      "stepType": "Action",
+      "inputLabels": {
+        "delay": "截图前延迟时间",
+        "toClip": "写入剪贴板",
+        "pinImage": "截图后贴图",
+        "showToolbarAfterPin": "贴图后显示工具栏",
+        "autoAdsorb": "自动吸附",
+        "stopIfFail": "失败后停止"
+      },
+      "outputLabels": {
+        "isSuccess": "是否成功",
+        "img": "图片",
+        "rect": "截图区域",
+        "savedPath": "保存路径"
+      },
+      "icon": "fa:Light_ExpandWide"
+    },
+    "sys:tempImgBed": {
+      "name": "临时图床",
+      "description": "将图片上传到临时（1分钟后删除）的图床，用以搜图等场景。勿上传非法内容。",
+      "stepType": "Action",
+      "inputLabels": {
+        "imgVar": "图片变量",
+        "stopIfFail": "失败后停止"
+      },
+      "outputLabels": {
+        "isSuccess": "是否成功",
+        "url": "网址"
+      },
+      "icon": "fa:Light_Images"
+    },
+    "sys:screenCapture": {
+      "name": "屏幕截图",
+      "description": "截取屏幕区域",
+      "stepType": "Action",
+      "inputLabels": {
+        "type": "截图类型",
+        "area": "截图区域",
+        "preSelectArea": "预选截图区域",
+        "includeRightBottomBorder": "预选截图区域包含右边和底边像素",
+        "windowHandle": "窗口句柄",
+        "delay": "截图前延迟时间",
+        "toClip": "写入剪贴板",
+        "addToHistory": "加入截图历史",
+        "stopIfFail": "失败后停止"
+      },
+      "outputLabels": {
+        "isSuccess": "是否成功",
+        "img": "图片",
+        "rect": "截图区域"
+      },
+      "icon": "fa:Light_ExpandWide"
+    },
+    "sys:screenRecordingUI": {
+      "name": "屏幕录制",
+      "description": "弹出选区 UI 让用户框选录制范围，打开录屏工具栏进行可视化录制，录完后返回文件路径。",
+      "stepType": "Action",
+      "inputLabels": {
+        "delay": "开始前延迟",
+        "manualAdjustSelection": "手动调整选区",
+        "addToHistory": "加入录屏历史",
+        "stopIfFail": "失败后停止"
+      },
+      "outputLabels": {
+        "isSuccess": "是否成功",
+        "filePath": "文件路径",
+        "durationSeconds": "录制时长",
+        "rect": "录制区域",
+        "errMessage": "错误消息"
+      },
+      "icon": "fa:Light_Video"
+    },
+    "sys:searchBmp": {
+      "name": "屏幕找图/找色/找字",
+      "description": "在屏幕上查找图片里的内容出现的位置",
+      "stepType": "Action",
+      "inputLabels": {
+        "type": "类型",
+        "bmp": "位图路径",
+        "bmpVar": "位图变量",
+        "color": "颜色",
+        "searchText": "文字",
+        "bmpTargetType": "查找范围",
+        "searchRect": "查找坐标范围",
+        "bmpPosition": "定位位置",
+        "x": "X偏移",
+        "y": "Y偏移",
+        "bmpColorError": "颜色容差",
+        "maxFindCount": "最大匹配",
+        "retryCount": "重试次数",
+        "ignoreWindowsOcr": "跳过WindowsOCR引擎",
+        "ignoreBgColor": "忽略背景色",
+        "stopIfFail": "失败后中止动作"
+      },
+      "outputLabels": {
+        "isSuccess": "是否成功",
+        "firstPoint": "第一个匹配点",
+        "imgIndex": "匹配序号",
+        "allPoints": "所有匹配点"
+      },
+      "icon": "fa:Light_SearchLocation"
+    },
+    "sys:createQrCode": {
+      "name": "生成二维码",
+      "description": "将文本转换为二维码",
+      "stepType": "Action",
+      "inputLabels": {
+        "code": "文本",
+        "pixelsPerModule": "每模块像素数",
+        "darkColor": "暗色",
+        "lightColor": "亮色",
+        "icon": "图标",
+        "iconPercent": "图标占比",
+        "iconBorderWidth": "图标边框宽度",
+        "drawQuietZones": "绘制外框",
+        "saveToPdfPath": "输出pdf文件",
+        "stopIfFail": "失败后停止"
+      },
+      "outputLabels": {
+        "isSuccess": "是否成功",
+        "img": "二维码图片",
+        "svg": "SVG格式结果",
+        "ascii": "Ascii格式结果"
+      },
+      "icon": "fa:Light_Qrcode"
+    },
+    "sys:readQrCode": {
+      "name": "识别二维码",
+      "description": "识别图片中的二维码",
+      "stepType": "Action",
+      "inputLabels": {
+        "img": "输入图片",
+        "tryNetwork": "本地识别失败后尝试在线识别服务",
+        "stopIfFail": "失败后停止"
+      },
+      "outputLabels": {
+        "isSuccess": "是否成功",
+        "code": "值",
+        "codeList": "全部二维码值",
+        "barcodFormat": "条码类型"
+      },
+      "icon": "fa:Light_Qrcode"
+    },
+    "sys:whiteboard": {
+      "name": "手写板",
+      "description": "手写内容，生成图片对象。",
+      "stepType": "Action",
+      "inputLabels": {
+        "winPosition": "窗口位置",
+        "bgColor": "绘图区背景颜色",
+        "penColor": "画笔颜色",
+        "enableTransparent": "使用透明无边框窗口",
+        "imageWithBackground": "图片包含背景内容",
+        "stopIfFail": "取消后停止动作"
+      },
+      "outputLabels": {
+        "isSuccess": "是否成功",
+        "result": "结果图片"
+      },
+      "icon": "fa:Light_Pencil"
+    },
+    "sys:imgToBase64": {
+      "name": "图片/Base64 转换",
+      "description": "图片和Base64转换",
+      "stepType": "Action",
+      "inputLabels": {
+        "type": "操作类型",
+        "img": "图片",
+        "base64": "Base64编码",
+        "addHeader": "添加data头"
+      },
+      "outputLabels": {
+        "code": "Base64编码",
+        "img": "图片"
+      },
+      "icon": "fa:Light_Image"
+    },
+    "sys:imgProcess": {
+      "name": "图片处理",
+      "description": "图片处理和变换",
+      "stepType": "Action",
+      "inputLabels": {
+        "img": "图片",
+        "type": "操作类型",
+        "resizePercent": "缩放比例",
+        "maxWidth": "最大宽度",
+        "maxHeight": "最大高度",
+        "rotation": "旋转方式",
+        "filterParams": "处理参数",
+        "iconFilePath": "图标文件保存路径",
+        "iconSize": "图标大小",
+        "iconScaling": "缩放采样",
+        "stopIfFail": "失败后停止"
+      },
+      "outputLabels": {
+        "isSuccess": "是否成功",
+        "result": "结果图片"
+      },
+      "icon": "fa:Light_Images"
+    },
+    "sys:showImage": {
+      "name": "显示图片",
+      "description": "在屏幕上显示图片。输入文件路径/url或图片变量。",
+      "stepType": "Action",
+      "inputLabels": {
+        "source": "操作/来源",
+        "path": "路径/网址",
+        "imgVar": "图片变量",
+        "scale": "初始缩放比例",
+        "autoCloseKey": "唯一性标识",
+        "autoCloseTime": "自动关闭时间",
+        "opacity": "不透明度",
+        "winLocation": "显示位置",
+        "winPosition": "位置坐标",
+        "waitClose": "等待图片关闭",
+        "showDropShadow": "显示阴影",
+        "showTaskbarIcon": "显示任务栏图标",
+        "topMost": "是否置顶显示",
+        "noActivate": "不激活窗口",
+        "closeWhenLostFocus": "丢失焦点时自动关闭",
+        "tooltip": "ToolTip提示文字",
+        "closeCallbackParam": "关闭窗口回调参数"
+      },
+      "outputLabels": {
+        "isExists": "是否存在",
+        "hwnd": "窗口句柄",
+        "finalPosition": "最终贴图位置",
+        "windowIdList": "窗口标识列表"
+      },
+      "icon": "fa:Light_Images"
+    },
+    "sys:longScreenshot": {
+      "name": "长截图",
+      "description": "先使用屏幕选区工具选择范围，再进行长截图。",
+      "stepType": "Action",
+      "inputLabels": {
+        "toClip": "写入剪贴板",
+        "stopIfFail": "失败后停止"
+      },
+      "outputLabels": {
+        "isSuccess": "是否成功",
+        "img": "图片",
+        "rect": "截图区域"
+      },
+      "icon": "fa:Light_ExpandWide"
+    },
+    "sys:inputScript": {
+      "name": "多步骤输入",
+      "description": "多步骤键盘组合输入",
+      "stepType": "Action",
+      "inputLabels": {
+        "data": "步骤脚本",
+        "stopIfFail": "失败后停止"
+      },
+      "outputLabels": {
+        "isSuccess": "是否成功"
+      },
+      "icon": "fa:Light_Keyboard"
+    },
+    "sys:cloud_oss": {
+      "name": "第三方云存储/图床",
+      "description": "使用第三方云服务上传文件。",
+      "stepType": "Action",
+      "inputLabels": {
+        "operation": "操作类型",
+        "vendor": "服务商",
+        "vendorSettings": "服务商参数",
+        "key": "对象名",
+        "content": "上传内容",
+        "customDomain": "自定义域名",
+        "extraHeaders": "额外的请求头",
+        "expireSeconds": "超时时间",
+        "stopIfFail": "失败后停止"
+      },
+      "outputLabels": {
+        "isSuccess": "是否成功",
+        "vendorUrl": "服务商网址",
+        "customUrl": "自定义域名网址",
+        "err": "错误信息"
+      },
+      "icon": "fa:Light_Cloud"
+    },
+    "sys:mathocr": {
+      "name": "公式识别",
+      "description": "数学公式识别",
+      "stepType": "Action",
+      "inputLabels": {
+        "vendor": "厂商接口",
+        "image": "公式图片",
+        "stopIfFail": "失败后停止"
+      },
+      "outputLabels": {
+        "isSuccess": "是否成功",
+        "mathpixMarkdown": "Mathpix MD",
+        "mathml": "MathML",
+        "asciimath": "AsciiMath",
+        "latex": "Latex",
+        "latexEx1": "Latex附加格式1",
+        "latexEx2": "Latex附加格式2",
+        "rawData": "原始响应"
+      },
+      "icon": "fa:Light_Function"
+    },
+    "sys:translation": {
+      "name": "机器翻译/词典",
+      "description": "调用第三方服务翻译文字到指定的语言。此功能需要单独付费使用，详情请参考文档。",
+      "stepType": "Action",
+      "inputLabels": {
+        "operation": "操作类型",
+        "text": "待翻译文本内容或单词。",
+        "srcLang": "源语言",
+        "dstLang": "目标语言",
+        "vendor": "厂商",
+        "vendorList": "厂商列表",
+        "stopIfFail": "失败后停止"
+      },
+      "outputLabels": {
+        "isSuccess": "是否成功",
+        "resultText": "结果文本",
+        "rawData": "原始响应",
+        "vendorResult": "各厂商翻译结果",
+        "vendorRawData": "各厂商原始响应",
+        "costPoints": "消耗点数"
+      },
+      "icon": "fa:Light_Language"
+    },
+    "sys:basic-ocr": {
+      "name": "基础OCR",
+      "description": "获取图片中的文字",
+      "stepType": "Action",
+      "inputLabels": {
+        "operation": "接口/引擎",
+        "apiKey": "ApiKey",
+        "secretKey": "SecretKey",
+        "imgVar": "图片变量",
+        "punctuationType": "转换标点符号",
+        "mergeChapter": "合并段落",
+        "interface": "接口名称或网址",
+        "options": "附加参数",
+        "lang": "语言",
+        "offlineMode": "离线模式",
+        "stopIfFail": "失败后停止"
+      },
+      "outputLabels": {
+        "isSuccess": "是否成功",
+        "textList": "行列表",
+        "content": "合并后结果",
+        "rawData": "原始结果",
+        "rawObject": "原始结果JObject对象"
+      },
+      "icon": "fa:Light_ExpandWide"
+    },
+    "sys:tempcloudstore": {
+      "name": "临时云存储",
+      "description": "将文本、文件、图片临时保存到云端并得到网址。",
+      "stepType": "Action",
+      "inputLabels": {
+        "dataType": "数据类型",
+        "text": "文本内容",
+        "imageVar": "图片变量",
+        "file": "文件路径",
+        "expireSeconds": "超时时间",
+        "useRandomFileName": "生成随机文件名",
+        "stopIfFail": "失败后停止"
+      },
+      "outputLabels": {
+        "isSuccess": "是否成功",
+        "url": "网址"
+      },
+      "icon": "fa:Light_Cloud"
+    },
+    "sys:htmlExtract": {
+      "name": "提取HTML内容",
+      "description": "从HTML代码中提取内容",
+      "stepType": "Action",
+      "inputLabels": {
+        "operation": "操作类型",
+        "source": "源HTML",
+        "encoding": "网页编码类型",
+        "xpath": "节点XPath",
+        "selectTarget": "提取方式",
+        "returnType": "提取内容类型",
+        "attribute": "属性名称",
+        "writeToSheet": "写入工作表对象",
+        "stopIfFail": "失败后停止动作"
+      },
+      "outputLabels": {
+        "isSuccess": "步骤执行是否成功",
+        "value": "提取值",
+        "rootNode": "根节点"
+      },
+      "icon": "fa:Brands_Html5"
+    },
+    "sys:download": {
+      "name": "下载文件",
+      "description": "下载网络文件(请勿用于下载大文件)",
+      "stepType": "Action",
+      "inputLabels": {
+        "url": "网址",
+        "savePath": "保存文件夹",
+        "saveName": "保存文件名",
+        "ua": "UserAgent",
+        "header": "请求头",
+        "cookie": "Cookie",
+        "expireSeconds": "超时秒数",
+        "showProgress": "显示进度条",
+        "skipCertVerify": "忽略HTTPS证书验证",
+        "autoRename": "如果文件已存在，自动重命名下载的文件",
+        "stopIfFail": "失败后停止"
+      },
+      "outputLabels": {
+        "isSuccess": "是否成功",
+        "savedPath": "文件路径",
+        "contentMd5": "内容MD5",
+        "downloadSize": "下载大小",
+        "eTag": "ETag"
+      },
+      "icon": "fa:Light_Download"
+    },
+    "sys:clouddata": {
+      "name": "云状态存取",
+      "description": "根据键值读取或写入网络数据。",
+      "stepType": "Action",
+      "inputLabels": {
+        "type": "操作类型",
+        "key": "状态名称",
+        "value": "内容",
+        "expireSeconds": "超时时间",
+        "stopIfFail": "失败后停止"
+      },
+      "outputLabels": {
+        "isSuccess": "是否成功",
+        "value": "内容",
+        "lastUpdateTime": "最后更新时间",
+        "lastUpdateTimeUtc": "最后更新时间(UTC)",
+        "err": "错误信息",
+        "errCode": "错误代码"
+      },
+      "icon": "fa:Light_Cloud"
+    },
+    "sys:ai": {
+      "name": "AI 调用",
+      "description": "调用第三方AI服务",
+      "stepType": "Action",
+      "inputLabels": {
+        "endpoint": "接口端点",
+        "model": "模型",
+        "apiUrlFormat": "API网址",
+        "apiKey": "APIKey",
+        "apiOrg": "Orgnization",
+        "systemPrompt": "系统提示词",
+        "sessionId": "会话ID",
+        "historyMessages": "历史消息",
+        "prompt": "提示词",
+        "maxTokens": "最大响应Token数",
+        "temperature": "温度",
+        "topP": "top_p",
+        "n": "n",
+        "expireSeconds": "超时秒数",
+        "stream": "使用流式输出",
+        "streamTo": "流式输出窗口标识",
+        "stop": "停止符stop",
+        "forceProxy": "强制使用代理",
+        "respFormat": "响应格式",
+        "extraProps": "附加参数",
+        "stopIfFail": "失败后停止"
+      },
+      "outputLabels": {
+        "isSuccess": "是否成功",
+        "result": "生成结果",
+        "reasoningContent": "推理内容",
+        "rawResponse": "原始响应内容",
+        "promptTokens": "提示Token数",
+        "completionTokens": "响应Token数",
+        "totalTokens": "总Token数",
+        "finishReason": "结束原因",
+        "historyMessages": "历史消息"
+      },
+      "icon": "res:Steps/common_step.png"
+    },
+    "sys:httpserver": {
+      "name": "HTTP服务器",
+      "description": "创建临时的本地HTTP服务器，从而可以从移动端或其它设备访问。",
+      "stepType": "Action",
+      "inputLabels": {
+        "operation": "操作类型",
+        "port": "端口号",
+        "enableHttps": "启用HTTPS",
+        "docPath": "文件夹路径",
+        "defaultDoc": "默认文档",
+        "password": "基础验证密码",
+        "serviceId": "服务ID",
+        "customRequest": "自定义请求处理",
+        "headCode": "HEAD插入代码",
+        "bodyCode": "BODY插入代码",
+        "autoShutdownSeconds": "闲置自动关闭",
+        "showNotifyWhenAutoClose": "自动关闭时显示通知",
+        "stopIfFail": "失败后停止"
+      },
+      "outputLabels": {
+        "isSuccess": "是否成功",
+        "serverUrl": "服务地址",
+        "serverUrlWithAccount": "带账号的地址",
+        "isRunning": "是否在运行",
+        "serverList": "运行中的服务列表"
+      },
+      "icon": "fa:Light_Server"
+    },
+    "sys:http": {
+      "name": "HTTP请求",
+      "description": "发送HTTP请求，并获取返回结果",
+      "stepType": "Action",
+      "inputLabels": {
+        "url": "网址",
+        "method": "方法",
+        "header": "请求头",
+        "cookie": "Cookie",
+        "bodyType": "请求体类型",
+        "body": "请求体",
+        "contentType": "内容类型",
+        "resultType": "结果类型",
+        "ua": "UserAgent",
+        "expireSeconds": "超时时间",
+        "noAutoRedirect": "禁止重定向",
+        "forceProxy": "强制使用代理",
+        "skipCertVerify": "忽略HTTPS证书验证",
+        "showProgress": "显示进度条",
+        "useSSE": "启用SSE流式响应",
+        "sseSpName": "SSE流式响应处理子程序",
+        "stopIfFail": "失败后停止"
+      },
+      "outputLabels": {
+        "isSuccess": "是否成功",
+        "statusCode": "状态码",
+        "respHeaders": "响应头",
+        "respCookies": "响应Cookies",
+        "content": "文本结果",
+        "imgResult": "图片结果"
+      },
+      "icon": "fa:Light_Cog"
+    },
+    "sys:smtp": {
+      "name": "SMTP发送邮件",
+      "description": "使用SMTP协议发送邮件",
+      "stepType": "Action",
+      "inputLabels": {
+        "server": "邮件服务器",
+        "port": "端口",
+        "useSsl": "使用加密连接",
+        "account": "帐号",
+        "password": "密码",
+        "sender": "发信邮箱",
+        "senderName": "发件人名称",
+        "to": "收件人",
+        "cc": "抄送",
+        "bcc": "密送",
+        "subject": "邮件主题",
+        "content": "邮件正文",
+        "attachList": "附件",
+        "isHtml": "内容为html",
+        "stopIfFail": "失败后停止"
+      },
+      "outputLabels": {
+        "isSuccess": "是否成功"
+      },
+      "icon": "fa:Light_EnvelopeOpenText"
+    },
+    "sys:websocket": {
+      "name": "Websocket",
+      "description": "Websocket相关操作",
+      "stepType": "Action",
+      "inputLabels": {
+        "operation": "操作类型",
+        "server": "服务器地址",
+        "clientId": "连接ID",
+        "spName": "消息处理子程序",
+        "account": "账号密码",
+        "origin": "Origin",
+        "cookie": "Cookie",
+        "content": "消息内容",
+        "callbackOnClose": "服务断开时通知动作(调用动作并传入参数:websocket__closed)",
+        "stopIfFail": "失败后停止"
+      },
+      "outputLabels": {
+        "isSuccess": "是否成功",
+        "isConnected": "是否连接"
+      },
+      "icon": "fa:Light_Plug"
+    },
+    "sys:uiautomation": {
+      "name": "窗口界面控制",
+      "description": "触发Windows窗口的菜单/按钮等控件。",
+      "stepType": "Action",
+      "inputLabels": {
+        "type": "操作类型",
+        "window": "窗口句柄",
+        "menuPath": "菜单路径",
+        "expandDelay": "展开延时",
+        "control": "控件名",
+        "controlType": "控件类型",
+        "controlOperation": "动作",
+        "value": "值",
+        "pointLocation": "坐标位置",
+        "path": "路径",
+        "autoCreateDir": "自动创建文件夹",
+        "stopIfFail": "失败后停止"
+      },
+      "outputLabels": {
+        "isSuccess": "是否成功",
+        "value": "值",
+        "controlText": "文本",
+        "rect": "位置",
+        "controlName": "控件名称",
+        "controlType": "控件类型",
+        "controlTypeId": "控件类型ID",
+        "controlIsEnabled": "是否启用",
+        "controlIsVisible": "是否可见",
+        "controlNativeWindowHandle": "原始句柄"
+      },
+      "icon": "fa:Light_Window"
+    },
+    "sys:flauiautomation": {
+      "name": "窗口界面控制(FlaUI)",
+      "description": "触发Windows窗口的菜单/按钮等控件(通过FlaUI库实现)。",
+      "stepType": "Action",
+      "inputLabels": {
+        "type": "操作类型",
+        "window": "窗口句柄",
+        "menuPath": "菜单路径",
+        "expandDelay": "展开延时",
+        "control": "控件XPath或Name",
+        "controlType": "控件类型",
+        "controlOperation": "动作",
+        "value": "值",
+        "pointLocation": "坐标位置",
+        "stopIfFail": "失败后停止"
+      },
+      "outputLabels": {
+        "isSuccess": "是否成功",
+        "value": "值",
+        "controlText": "文本",
+        "rect": "位置",
+        "controlName": "控件名称",
+        "controlType": "控件类型",
+        "controlXPath": "控件XPath",
+        "controlTypeId": "控件类型ID",
+        "controlInfo": "其他信息",
+        "controlIsEnabled": "是否启用",
+        "controlIsVisible": "是否可见",
+        "element": "原始对象"
+      },
+      "icon": "fa:Light_Window"
+    },
+    "sys:getChromeUrl": {
+      "name": "获取浏览器网址",
+      "description": "获取当前浏览器网址。",
+      "stepType": "Action",
+      "inputLabels": {
+        "stopIfFail": "失败后停止"
+      },
+      "outputLabels": {
+        "isSuccess": "是否成功",
+        "output": "网址"
+      },
+      "icon": "fa:Light_Cog"
+    },
+    "sys:chromecontrol": {
+      "name": "浏览器控制",
+      "description": "与Chrome/Edge/Firefox等浏览器通信，控制网页或浏览器。",
+      "stepType": "Action",
+      "inputLabels": {
+        "operation": "操作类型",
+        "url": "网址",
+        "windowId": "窗口Id",
+        "tabId": "标签页Id",
+        "selector": "选择器",
+        "fixSelector": "修正选择器文本",
+        "elementInfo": "元素信息类型",
+        "updateElementInfo": "元素信息类型",
+        "triggerEventType": "触发事件类型",
+        "updateElementValue": "值",
+        "attrName": "属性名",
+        "windowInfo": "窗口/标签参数",
+        "script": "脚本内容",
+        "command": "命令",
+        "commandParams": "命令参数",
+        "valueFilter": "返回值过滤器",
+        "timeoutMs": "超时时间(ms)",
+        "frame": "运行脚本的框架",
+        "executionWorld": "执行环境",
+        "waitManualReturn": "从脚本手动返回数据",
+        "waitComplete": "等待操作完成或返回数据",
+        "browser": "浏览器",
+        "mainProcessId": "主进程ID",
+        "envName": "自定义环境名",
+        "stopIfFail": "失败后停止",
+        "waitEventType": "事件类型",
+        "waitEventParams": "参数"
+      },
+      "outputLabels": {
+        "isSuccess": "是否成功",
+        "tabId": "标签页ID",
+        "windowId": "窗口ID",
+        "groupId": "分组ID",
+        "url": "网址",
+        "title": "网页标题",
+        "favicon": "Favicon图标网址",
+        "firstValue": "第一个值",
+        "allValues": "所有值的列表",
+        "browser": "浏览器",
+        "extVersion": "插件版本",
+        "manifestVersion": "Manifest版本",
+        "envName": "环境名称",
+        "selector": "CSS选择器",
+        "rawResponse": "原始返回结果"
+      },
+      "icon": "fa:Brands_Chrome"
+    },
+    "sys:adobesoftscontrol": {
+      "name": "Adobe系列软件控制",
+      "stepType": "Action",
+      "inputLabels": {
+        "software": "软件名称",
+        "operation": "操作类型",
+        "script": "脚本内容",
+        "scriptFile": "脚本文件路径",
+        "waitResp": "等待执行结束",
+        "waitMs": "最长等待时间(ms)",
+        "tryRunScriptUsingExe": "接口失败后，尝试使用程序exe运行脚本文件",
+        "stopIfFail": "失败后停止"
+      },
+      "outputLabels": {
+        "isSuccess": "是否成功",
+        "output": "脚本输出"
+      },
+      "icon": "fa:Brands_Adobe"
+    },
+    "sys:autocadcontrol": {
+      "name": "AutoCAD控制",
+      "description": "向AutoCAD发送命令",
+      "stepType": "Action",
+      "inputLabels": {
+        "operation": "操作类型",
+        "command": "命令内容",
+        "varList": "变量列表",
+        "waitResp": "等待命令结束",
+        "waitMs": "最长等待时间(ms)",
+        "stopIfFail": "失败后停止"
+      },
+      "outputLabels": {
+        "isSuccess": "是否成功",
+        "output": "变量值"
+      },
+      "icon": "fa:Light_RulerCombined"
+    },
+    "sys:excelObjects": {
+      "name": "Excel对象操作",
+      "description": "操作Excel的某个对象",
+      "stepType": "Action",
+      "inputLabels": {
+        "operation": "操作类型",
+        "workbook": "工作簿对象",
+        "params": "参数",
+        "path": "文件/模板路径",
+        "stopIfFail": "失败后停止"
+      },
+      "outputLabels": {
+        "isSuccess": "是否成功",
+        "application": "Application对象",
+        "activeWorkbook": "活动工作簿",
+        "activeSheet": "活动工作表",
+        "worksheets": "工作表对象列表",
+        "worksheetNames": "工作表名称的列表",
+        "workbookPath": "工作簿路径"
+      },
+      "icon": "fa:Light_Table"
+    },
+    "sys:excelRange": {
+      "name": "Excel区域操作",
+      "description": "操作Excel的某个区域或单元格",
+      "stepType": "Action",
+      "inputLabels": {
+        "range": "区域",
+        "subRange": "限定子范围",
+        "operation": "操作类型",
+        "value": "参数",
+        "cellSize": "行高,列宽",
+        "style": "格式",
+        "methods": "方法",
+        "replaceWhat": "查找内容",
+        "replaceTo": "替换为",
+        "replaceEscapeWhat": "转义\"查找内容\"",
+        "replaceEscapeTo": "转义\"替换为\"",
+        "replaceMatchCase": "区分大小写",
+        "stopIfFail": "失败后停止"
+      },
+      "outputLabels": {
+        "isSuccess": "是否成功",
+        "value": "值",
+        "text": "文本",
+        "formula": "公式",
+        "numberFormat": "数值格式",
+        "address": "位置引用",
+        "column": "列号",
+        "row": "行号",
+        "colNum": "列数",
+        "rowNum": "行数",
+        "style": "格式信息",
+        "range": "区域对象",
+        "sheet": "工作表对象"
+      },
+      "icon": "fa:Light_Table"
+    },
+    "sys:excelreadwrite": {
+      "name": "Excel文件读写",
+      "description": "读取Excel文件内容或写入Excel文件",
+      "stepType": "Action",
+      "inputLabels": {
+        "operation": "操作类型",
+        "fileType": "工作簿类型",
+        "filePath": "文件路径",
+        "readDataMap": "提取数据定义",
+        "workbook": "工作簿对象",
+        "sheetIndex": "工作表序号或名称",
+        "sheetName": "工作表名称",
+        "createSheetIfNotExist": "如果工作表不存在则创建一个",
+        "sourceData": "源数据",
+        "columnMapping": "字段映射",
+        "names": "名称数据",
+        "writeTitleRow": "写入标题行",
+        "worksheet": "工作表对象",
+        "cellAddress": "单元格地址",
+        "cellRange": "单元格范围",
+        "styleData": "样式设置",
+        "rowIndex": "行序号",
+        "cellIndex": "列序号",
+        "cellType": "单元格类型",
+        "cellValue": "值",
+        "dataFormat": "数据格式",
+        "cellLink": "链接",
+        "replaceDict": "替换数据词典",
+        "replacePrefixSuffix": "占位符前后缀",
+        "stopIfFail": "失败后停止"
+      },
+      "outputLabels": {
+        "isSuccess": "是否成功",
+        "workbook": "工作簿对象",
+        "worksheetNameList": "工作表名称列表",
+        "numberOfSheets": "工作表个数",
+        "sheet": "工作表对象",
+        "firstRow": "首行序号",
+        "lastRow": "末行序号",
+        "names": "名称数据",
+        "firstCellNum": "首个单元格的列序号",
+        "lastCellNum": "末个单元格的列序号",
+        "maxColumnNum": "最大列序号",
+        "hasValue": "是否有值",
+        "cellValue": "值",
+        "cellTextValue": "文本值",
+        "cellType": "类型",
+        "cellFormula": "公式",
+        "dictData": "数据词典",
+        "cellDataFormatString": "数据格式字符串",
+        "cellAddress": "单元格地址",
+        "cellAddressList": "单元格地址列表"
+      },
+      "icon": "fa:Light_FileExcel"
+    },
+    "sys:officehelper": {
+      "name": "Office软件辅助",
+      "description": "辅助控制Office软件",
+      "stepType": "Action",
+      "inputLabels": {
+        "operation": "操作类型",
+        "appType": "应用程序",
+        "code": "宏名称或VBA代码",
+        "command": "命令ID",
+        "formats": "格式设置/属性赋值代码",
+        "waitResp": "等待执行结束",
+        "waitMs": "最长等待时间(ms)",
+        "stopIfFail": "失败后停止动作"
+      },
+      "outputLabels": {
+        "isSuccess": "步骤执行是否成功",
+        "resp": "返回内容",
+        "progId": "ProgId"
+      },
+      "icon": "fa:Brands_Microsoft"
+    },
+    "sys:rhinocontrol": {
+      "name": "Rhino软件控制",
+      "description": "向Rhino发送命令或脚本",
+      "stepType": "Action",
+      "inputLabels": {
+        "operation": "操作类型",
+        "command": "命令内容",
+        "waitResp": "等待命令结束",
+        "waitMs": "最长等待时间(ms)",
+        "stopIfFail": "失败后停止"
+      },
+      "outputLabels": {
+        "isSuccess": "是否成功",
+        "output": "脚本输出"
+      },
+      "icon": "fa:Light_RulerCombined"
+    },
+    "sys:keyoperation": {
+      "name": "按键操作",
+      "description": "单个键盘按键的操作控制或状态获取",
+      "stepType": "Action",
+      "inputLabels": {
+        "type": "类型",
+        "key": "按键",
+        "getRealMouseState": "获取按键的实际状态（在远程时无法获取）",
+        "keepMs": "保持按下时间"
+      },
+      "outputLabels": {
+        "isDown": "是否按下",
+        "isToggled": "是否锁定"
+      },
+      "icon": "fa:Light_Keyboard:#6aaded"
+    },
+    "sys:playSound": {
+      "name": "播放声音",
+      "description": "播放声音提示或声音文件。",
+      "stepType": "Action",
+      "inputLabels": {
+        "type": "类型",
+        "localSound": "提示音类型",
+        "uri": "路径或URL",
+        "text": "文本内容",
+        "wait": "等待播放完成",
+        "stopIfFail": "失败后停止"
+      },
+      "outputLabels": {
+        "isSuccess": "是否成功"
+      },
+      "icon": "fa:Light_Music"
+    },
+    "sys:windowOperations": {
+      "name": "窗口操作",
+      "description": "Window窗口相关操作",
+      "stepType": "Action",
+      "inputLabels": {
+        "type": "类型",
+        "hWnd": "窗口句柄",
+        "x": "X坐标",
+        "y": "Y坐标",
+        "width": "宽度",
+        "height": "高度",
+        "area": "目标位置",
+        "showCmd": "显示状态",
+        "alpha": "不透明度Alpha",
+        "borderColor": "窗口边框颜色",
+        "stopIfFail": "失败后停止"
+      },
+      "outputLabels": {
+        "isSuccess": "是否成功",
+        "isTopmost": "是否置顶"
+      },
+      "icon": "fa:Light_Window"
+    },
+    "sys:restoreActiveWindow": {
+      "name": "恢复活动窗口",
+      "description": "如果活动窗口改变了（比如使用了参数输入步骤）,使用此动作恢复窗口焦点。",
+      "stepType": "Action",
+      "icon": "fa:Light_Cog"
+    },
+    "sys:getWindowTitle": {
+      "name": "获取窗口信息/查找窗口",
+      "description": "获取指定窗口的标题等信息。",
+      "stepType": "Action",
+      "inputLabels": {
+        "which": "目标窗口",
+        "hWnd": "窗口句柄hWnd",
+        "className": "窗口类名",
+        "windowName": "窗口名称",
+        "procIdOrName": "进程名/pid",
+        "onlyVisible": "仅可见窗口",
+        "requireTitle": "仅名称(标题)不为空的窗口",
+        "useRegex": "使用正则匹配窗口类名和标题",
+        "winRectIncludeInvisibleBorder": "窗口位置包含不可见边框（阴影区域）",
+        "stopIfFail": "失败后停止"
+      },
+      "outputLabels": {
+        "isSuccess": "是否成功",
+        "output": "窗口标题",
+        "className": "类名",
+        "handle": "句柄",
+        "pid": "进程ID",
+        "procName": "进程名",
+        "path": "程序路径",
+        "parent": "父窗口句柄",
+        "root": "根窗口句柄",
+        "rootOwner": "根所有者窗口句柄",
+        "rect": "窗口位置",
+        "rectNoSize": "窗口位置(不含尺寸)",
+        "rectDict": "窗口位置(词典值)",
+        "isTopmost": "是否置顶",
+        "isVisible": "是否可见",
+        "showState": "显示状态",
+        "alpha": "不透明度",
+        "borderColor": "边框颜色",
+        "allChildWindows": "所有子窗口",
+        "topLevelWindows": "所有顶层窗口"
+      },
+      "icon": "fa:Light_Cog"
+    },
+    "sys:getActiveProcessInfo": {
+      "name": "获取前台进程信息",
+      "description": "获取当前活动窗口进程的信息。",
+      "stepType": "Action",
+      "inputLabels": {
+        "stopIfFail": "失败后中止动作"
+      },
+      "outputLabels": {
+        "isSuccess": "是否成功",
+        "path": "程序路径",
+        "procName": "进程名",
+        "pid": "PID"
+      },
+      "icon": "fa:Light_Cog:#6aaded"
+    },
+    "sys:getCurrentTime": {
+      "name": "获取日期时间",
+      "description": "获取当前或从文本、unix时间戳转换日期时间",
+      "stepType": "Action",
+      "inputLabels": {
+        "source": "时间来源",
+        "useUtc": "使用UTC时间",
+        "timeStr": "待解析文本",
+        "inputFormat": "数据格式",
+        "inputCulture": "语言文化",
+        "timeVar": "时间变量",
+        "timeStampStr": "Unix时间戳值",
+        "addDays": "添加天数",
+        "addHours": "添加小时数",
+        "addMinutes": "添加分钟数",
+        "addSeconds": "添加秒数",
+        "addMonths": "添加月数",
+        "format": "输出文本值格式",
+        "outputCulture": "输出语言文化",
+        "stopIfFail": "失败后停止"
+      },
+      "outputLabels": {
+        "isSuccess": "是否成功",
+        "output": "时间值",
+        "strValue": "文本值",
+        "timeStamp": "UNIX时间戳(s)",
+        "timeStampMs": "UNIX时间戳(ms)",
+        "year": "年",
+        "month": "月",
+        "day": "日",
+        "hour": "时",
+        "minute": "分",
+        "second": "秒",
+        "dayOfWeek": "周第几天",
+        "dayOfYear": "年第几天"
+      },
+      "icon": "fa:Light_Clock"
+    },
+    "sys:getSysInfo": {
+      "name": "获取系统或动作信息",
+      "description": "获取系统、Quicker 及当前运行动作的相关信息。",
+      "stepType": "Action",
+      "outputLabels": {
+        "MachineName": "机器名",
+        "OsVersion": "系统版本号",
+        "isWin10": "是否为Win10或以上",
+        "isWin11": "是否为Win11",
+        "isAutoRun": "是否自动启动",
+        "startupSeconds": "系统正常运行秒数",
+        "isLocked": "Windows是否锁定",
+        "userName": "用户名",
+        "userDomainName": "用户域名",
+        "sysEnv": "环境变量",
+        "primaryScreenRes": "主屏分辨率",
+        "isFullscreen": "前台窗口是否为全屏状态",
+        "isNetworkConnected": "是否联网",
+        "lanIp": "本机局域网IP",
+        "quickerVersion": "Quicker版本",
+        "runnedSeconds": "Quicker启动秒数",
+        "actionId": "动作ID",
+        "actionName": "动作名称",
+        "sharedActionId": "动作库ID",
+        "sharedActionRevision": "动作版本号",
+        "actionCount": "运行个数",
+        "isDebugging": "是否调试运行",
+        "trigger": "触发方式",
+        "textParam": "文本上下文参数",
+        "imageParam": "图片上下文参数",
+        "isPro": "是否为专业版",
+        "unionId": "UnionId",
+        "hasBaiduAccount": "已设置自有百度OCR帐号",
+        "isWinInDarkMode": "Windows是否为深色模式",
+        "quickerThemeMode": "Quicker主题模式",
+        "isPaused": "Quicker是否暂停"
+      },
+      "icon": "fa:Light_Cog"
+    },
+    "sys:getFolderPath": {
+      "name": "获取系统路径",
+      "description": "返回指定的特殊目录路径。",
+      "stepType": "Action",
+      "inputLabels": {
+        "folder": "目录类型"
+      },
+      "outputLabels": {
+        "path": "路径"
+      },
+      "icon": "fa:Light_Cog"
+    },
+    "sys:getSelectedFiles": {
+      "name": "获取选择的文件(夹)/选择特定文件",
+      "description": "获取资源管理器、桌面等位置选择的文件或文件夹的路径",
+      "stepType": "Action",
+      "inputLabels": {
+        "operation": "操作类型",
+        "waitMs": "等待剪贴板时间",
+        "sortType": "排序文件列表",
+        "pathList": "路径或文件名",
+        "winHandle": "指定窗口句柄",
+        "stopIfFail": "失败后中止动作"
+      },
+      "outputLabels": {
+        "isSuccess": "是否成功",
+        "files": "路径列表",
+        "firstFile": "首个路径",
+        "fileNames": "文件(夹)名列表",
+        "firstFileName": "首个文件(夹)名",
+        "fileCount": "文件个数"
+      },
+      "icon": "fa:Light_FolderTree"
+    },
+    "sys:getExplorerPath": {
+      "name": "获取资源管理器路径/跳转路径",
+      "description": "获取资源管理器的当前文件夹路径。",
+      "stepType": "Action",
+      "inputLabels": {
+        "operation": "操作类型",
+        "path": "路径",
+        "stopIfFail": "失败后停止"
+      },
+      "outputLabels": {
+        "isSuccess": "是否成功",
+        "output": "当前窗口路径",
+        "allPathList": "所有打开的路径",
+        "lastPath": "最近访问的路径"
+      },
+      "icon": "fa:Light_Cog:#6aaded"
+    },
+    "sys:activateProcessMainWindow": {
+      "name": "激活进程主窗口",
+      "description": "找到指定进程的主窗口并使其显示在前台。",
+      "stepType": "Action",
+      "inputLabels": {
+        "process": "进程名称/pid",
+        "hotkey": "热键",
+        "className": "窗口类名",
+        "windowTitle": "窗口标题",
+        "path": "程序路径",
+        "stopIfFail": "失败后停止"
+      },
+      "outputLabels": {
+        "isSuccess": "是否成功",
+        "pid": "PID",
+        "mainWinHandle": "主窗口句柄",
+        "mainWinTitle": "主窗口标题"
+      },
+      "icon": "res:windows.png"
+    },
+    "sys:checkProcessExists": {
+      "name": "检查程序已启动/获取进程信息",
+      "description": "检查指定的应用程序是否已经启动。",
+      "stepType": "Action",
+      "inputLabels": {
+        "process": "进程名称/pid",
+        "stopIfFail": "失败后停止"
+      },
+      "outputLabels": {
+        "isSuccess": "操作是否成功",
+        "isExists": "是否运行",
+        "pid": "进程ID",
+        "pidList": "所有进程ID列表",
+        "path": "程序路径",
+        "mainWinHandle": "主窗口句柄",
+        "mainwinTitle": "主窗口标题",
+        "startTime": "启动时间"
+      },
+      "icon": "res:windows.png"
+    },
+    "sys:recordSound": {
+      "name": "录制声音/语音识别",
+      "description": "录制音频到文件或识别语音",
+      "stepType": "Action",
+      "inputLabels": {
+        "operation": "操作类型",
+        "waveFormat": "采样率和声道",
+        "filePath": "文件保存路径",
+        "autoStartSeconds": "自动开始录音",
+        "silentStopSeconds": "静音停止秒数",
+        "helpText": "提示文字",
+        "vendorAccount": "服务商账号",
+        "volumeGain": "音量增益倍率",
+        "stopIfFail": "失败后停止"
+      },
+      "outputLabels": {
+        "isSuccess": "是否成功",
+        "outputFilePath": "文件保存路径",
+        "speechContent": "语音文字内容",
+        "error": "错误"
+      },
+      "icon": "fa:Light_Microphone"
+    },
+    "sys:imeControl": {
+      "name": "输入法状态",
+      "description": "获取或更改当前的输入法中英文状态，避免在发送热键时受影响。",
+      "stepType": "Action",
+      "inputLabels": {
+        "operation": "操作类型"
+      },
+      "outputLabels": {
+        "isEnabled": "是否为中文状态"
+      },
+      "icon": "fa:Light_Keyboard"
+    },
+    "sys:fileSystemWatch": {
+      "name": "文件系统监控",
+      "description": "监控文件创建/变更/删除等事件。",
+      "stepType": "Action",
+      "inputLabels": {
+        "operation": "操作类型",
+        "path": "文件夹路径",
+        "filter": "文件筛选",
+        "notifyFilter": "通知筛选",
+        "includeSubdirectories": "包含子文件夹",
+        "waitEvents": "等待的事件",
+        "waitSeconds": "等待秒数",
+        "createdCallback": "[创建] 处理子程序",
+        "changedCallback": "[变更] 处理子程序",
+        "deletedCallback": "[删除] 处理子程序",
+        "renamedCallback": "[重命名] 处理子程序",
+        "stopIfFail": "失败后停止"
+      },
+      "outputLabels": {
+        "isSuccess": "是否成功",
+        "fullPath": "变更的路径",
+        "changedType": "变更类型",
+        "oldFullPath": "旧路径"
+      },
+      "icon": "fa:Light_MonitorHeartRate"
+    },
+    "sys:sendMessage": {
+      "name": "向窗口发送消息",
+      "description": "使用SendMessage Win32Api向窗口发送消息。使用方法请搜索SendMessage Win32 API接口。",
+      "stepType": "Action",
+      "inputLabels": {
+        "operation": "操作类型",
+        "hWnd": "窗口句柄hWnd",
+        "wMsg": "消息",
+        "wParam": "wParam参数",
+        "lParam": "lParam参数",
+        "textLParam": "lParam参数(文本)",
+        "stopIfFail": "失败后停止"
+      },
+      "outputLabels": {
+        "isSuccess": "是否成功",
+        "rtn": "返回值"
+      },
+      "icon": "fa:Light_Envelope"
+    },
+    "sys:audioControl": {
+      "name": "音频设备",
+      "description": "获取音频设备信息，设置默认音频设备。",
+      "stepType": "Action",
+      "inputLabels": {
+        "operation": "操作类型",
+        "id": "设备ID",
+        "mute": "静音状态",
+        "volume": "音量",
+        "returnAll": "返回所有状态的设备",
+        "deviceName": "蓝牙设备名称",
+        "stopIfFail": "失败后停止动作"
+      },
+      "outputLabels": {
+        "isSuccess": "是否成功",
+        "deviceList": "设备信息列表",
+        "deviceId": "设备ID",
+        "deviceName": "设备名称",
+        "deviceState": "设备状态",
+        "mute": "是否静音",
+        "isPlaying": "是否正在播放",
+        "volume": "设置音量",
+        "masterPeakValue": "实时音量",
+        "deviceObject": "原始对象",
+        "deviceObjectList": "原始对象列表"
+      },
+      "icon": "fa:Light_Volume"
+    },
+    "sys:SelectFileInExplorer": {
+      "name": "在资源管理器中定位文件",
+      "description": "在资源管理器中选中文件",
+      "stepType": "Action",
+      "inputLabels": {
+        "path": "路径",
+        "stopIfFail": "失败后停止"
+      },
+      "outputLabels": {
+        "isSuccess": "是否成功"
+      },
+      "icon": "fa:Light_Cog:#6aaded"
+    },
+    "sys:quickeroperations": {
+      "name": "Quicker操作",
+      "description": "调用Quicker的某个功能",
+      "stepType": "Action",
+      "inputLabels": {
+        "type": "类型",
+        "profileId": "动作页ID",
+        "actionId": "动作ID或名称",
+        "position": "位置",
+        "exe": "场景标识",
+        "sceneGroup": "切换到分组",
+        "activatePointWindow": "自动激活鼠标位置窗口",
+        "followMousePosition": "跟随鼠标位置",
+        "searchText": "预置的搜索内容",
+        "skinId": "外观ID",
+        "theme": "主题模式",
+        "viewMode": "显示状态",
+        "stopIfFail": "失败后停止"
+      },
+      "outputLabels": {
+        "isSuccess": "步骤是否成功",
+        "actionList": "动作列表",
+        "actionTitle": "动作标题",
+        "actionIcon": "动作图标",
+        "actionDescription": "动作描述",
+        "windowHandle": "窗口句柄"
+      },
+      "icon": "fa:Light_Cog"
+    },
+    "sys:shelloperation": {
+      "name": "Shell文件操作",
+      "description": "针对文件的Windows Shell相关操作",
+      "stepType": "Action",
+      "inputLabels": {
+        "operation": "操作类型",
+        "pathOrExt": "文件路径或扩展名",
+        "pathList": "文件路径列表",
+        "verb": "动词",
+        "title": "菜单标题",
+        "stopIfFail": "失败后停止"
+      },
+      "outputLabels": {
+        "isSuccess": "是否成功",
+        "verbs": "动词列表",
+        "titles": "菜单标题列表"
+      },
+      "icon": "fa:Light_Window"
+    },
+    "sys:winservice": {
+      "name": "Windows服务和注册表",
+      "description": "获取Windows服务的状态、注册表项信息",
+      "stepType": "Action",
+      "inputLabels": {
+        "operation": "操作类型",
+        "name": "服务名",
+        "regKeyPath": "注册表项路径",
+        "regValueName": "值名称",
+        "stopIfFail": "失败后停止"
+      },
+      "outputLabels": {
+        "isExists": "是否存在",
+        "displayName": "显示名",
+        "state": "服务状态",
+        "regValue": "值",
+        "serviceList": "服务名列表"
+      },
+      "icon": "res:Steps/common_step.png"
+    },
+    "sys:splitString": {
+      "name": "拆分文本为列表",
+      "description": "将文本拆分为列表",
+      "stepType": "Action",
+      "inputLabels": {
+        "data": "输入",
+        "separator": "分隔",
+        "escapeSeparator": "转义分隔符",
+        "multiSeparator": "使用多个分隔符拆分列表",
+        "removeEmpty": "滤除空值"
+      },
+      "outputLabels": {
+        "output": "结果"
+      },
+      "icon": "fa:Light_Cog"
+    },
+    "sys:charInfo": {
+      "name": "获取字符信息",
+      "description": "获取字符信息",
+      "stepType": "Action",
+      "inputLabels": {
+        "char": "字符"
+      },
+      "outputLabels": {
+        "unicodeNum": "Unicode编码(数字)",
+        "unicodeHex": "Unicode编码(十六进制)",
+        "pinyinFirstChar": "拼音首字母",
+        "pinyin": "拼音",
+        "pinyinFirstCharAll": "拼音首字母(全部)",
+        "pinyinAll": "拼音(全部)"
+      },
+      "icon": "fa:Light_Font"
+    },
+    "sys:enc": {
+      "name": "加密/解密/哈希",
+      "description": "加密、解密，以及哈希计算",
+      "stepType": "Action",
+      "inputLabels": {
+        "operation": "操作类型",
+        "inputContentType": "输入内容类型",
+        "input": "输入",
+        "keyContentType": "密钥内容类型",
+        "key": "密钥",
+        "ivContentType": "初始化向量IV内容类型",
+        "iv": "初始化向量",
+        "pairKey": "公钥/私钥",
+        "hashType": "算法",
+        "hmacAlgorithm": "算法",
+        "cipherMode": "运算模式",
+        "paddingMode": "填充模式",
+        "stopIfFail": "失败后停止"
+      },
+      "outputLabels": {
+        "isSuccess": "是否成功",
+        "resultText": "文本结果",
+        "resultHex": "十六进制编码(大写)",
+        "resultLowerHex": "十六进制编码(小写)",
+        "resultBase64": "Base64编码结果"
+      },
+      "icon": "fa:Light_UserSecret"
+    },
+    "sys:joinList": {
+      "name": "列表合并成文本",
+      "description": "将列表拼接为一段文本",
+      "stepType": "Action",
+      "inputLabels": {
+        "list": "输入",
+        "separator": "分隔文本",
+        "escapeSeparator": "转义“分隔文本”"
+      },
+      "outputLabels": {
+        "output": "结果"
+      },
+      "icon": "fa:Light_Cog"
+    },
+    "sys:jsonExtract": {
+      "name": "提取JSON内容",
+      "description": "提取Json文本中的信息",
+      "stepType": "Action",
+      "inputLabels": {
+        "data": "输入",
+        "p0": "提取路径0",
+        "p1": "提取路径1",
+        "p2": "提取路径2",
+        "p3": "提取路径3",
+        "p4": "提取路径4",
+        "dateAsString": "日期时间按照文本处理",
+        "stopIfFail": "失败后停止"
+      },
+      "outputLabels": {
+        "isSuccess": "是否成功",
+        "v0": "值0",
+        "v1": "值1",
+        "v2": "值2",
+        "v3": "值3",
+        "v4": "值4",
+        "rootToken": "根对象"
+      },
+      "icon": "fa:Light_Cog"
+    },
+    "sys:strReplace": {
+      "name": "替换文本",
+      "description": "替换文本中的指定内容",
+      "stepType": "Action",
+      "inputLabels": {
+        "type": "操作类型",
+        "input": "输入",
+        "old": "查找内容",
+        "new": "替换为",
+        "batchReplaceData": "查找和替换内容",
+        "escapeOld": "转义“查找内容”",
+        "replaceEscapes": "转义“替换为”",
+        "useRegex": "使用正则替换",
+        "ignoreCase": "忽略大小写",
+        "singleLine": "正则：单行",
+        "multiLine": "正则：多行"
+      },
+      "outputLabels": {
+        "output": "结果"
+      },
+      "icon": "fa:Light_Cog"
+    },
+    "sys:stringProcess": {
+      "name": "文本处理",
+      "description": "各种文本处理功能",
+      "stepType": "Action",
+      "inputLabels": {
+        "data": "待处理内容",
+        "method": "处理",
+        "srcEncoding": "编码",
+        "dstEncoding": "目标编码",
+        "start": "开始位置",
+        "value": "内容",
+        "length": "长度",
+        "totalWidth": "总宽度",
+        "paddingChar": "填充字符",
+        "stopIfFail": "失败后停止"
+      },
+      "outputLabels": {
+        "isSuccess": "是否成功",
+        "output": "结果"
+      },
+      "icon": "fa:Light_Cog"
+    },
+    "sys:showText": {
+      "name": "文本窗口",
+      "description": "在独立的窗口中显示文本。",
+      "stepType": "Action",
+      "inputLabels": {
+        "type": "操作类型",
+        "text": "文本内容",
+        "title": "窗口标题",
+        "operations": "工具栏操作",
+        "autoCloseKey": "文本窗口标识",
+        "winLocation": "窗口位置类型",
+        "winSize": "窗口尺寸/位置",
+        "topMost": "置顶显示",
+        "fontsize": "字体大小",
+        "fontfamily": "字体名称",
+        "bgColor": "背景颜色",
+        "textColor": "文字颜色",
+        "highlight": "语法高亮",
+        "autoSaveToState": "自动保存到状态",
+        "showLineNum": "显示行号",
+        "autoWrap": "自动换行显示",
+        "copyWholeLine": "未选择内容时，复制或剪切整行",
+        "closeWhenLostFocus": "失去焦点自动关闭",
+        "enableEscClose": "Esc 键关闭窗口",
+        "updateIfExists": "如果窗口存在，则直接更新窗口内容（而不是关闭后打开新窗口）",
+        "showBuildInToolbar": "显示内置工具栏",
+        "caretPosition": "光标位置",
+        "advancedSettings": "高级设置",
+        "stopIfFail": "失败后停止"
+      },
+      "outputLabels": {
+        "isSuccess": "是否成功",
+        "selectedOperation": "选择的项",
+        "resultText": "结果文本",
+        "windowHandle": "窗口句柄",
+        "selectedText": "选中的文本",
+        "caretPosition": "光标位置",
+        "windowPosition": "窗口位置",
+        "isWindowExists": "窗口是否存在",
+        "allWindows": "所有窗口"
+      },
+      "icon": "fa:Light_WindowAlt"
+    },
+    "sys:regexExtract": {
+      "name": "正则提取",
+      "description": "使用正则表达式提取指定内容",
+      "stepType": "Action",
+      "inputLabels": {
+        "getGroup": "提取方式",
+        "data": "输入",
+        "pattern": "正则表达式",
+        "ignoreCase": "忽略大小写",
+        "singleLine": "单行模式",
+        "multiLine": "多行模式",
+        "rightToLeft": "从右向左",
+        "stopIfFail": "失败后中止动作"
+      },
+      "outputLabels": {
+        "isSuccess": "是否成功",
+        "matches": "所有匹配列表",
+        "match1": "匹配1",
+        "match2": "匹配2",
+        "match3": "匹配3",
+        "match4": "匹配4",
+        "match5": "匹配5",
+        "matchObj": "Match对象",
+        "matchesCollection": "Matches集合"
+      },
+      "icon": "fa:Light_Cog"
+    },
+    "sys:textCounter": {
+      "name": "字数统计",
+      "description": "统计文本行数、字符数等",
+      "stepType": "Action",
+      "inputLabels": {
+        "content": "文本"
+      },
+      "outputLabels": {
+        "line": "行数",
+        "char": "字符数",
+        "visableChar": "可见字符数",
+        "cnChar": "汉字数"
+      },
+      "icon": "fa:Light_Cog:#6aaded"
+    },
+    "sys:formatString": {
+      "name": "组合成文本",
+      "description": "将（多个）变量组合成一段文本。",
+      "stepType": "Action",
+      "inputLabels": {
+        "formatString": "格式化字符串",
+        "p0": "参数0",
+        "p1": "参数1",
+        "p2": "参数2",
+        "p3": "参数3",
+        "p4": "参数4"
+      },
+      "outputLabels": {
+        "output": "结果"
+      },
+      "icon": "fa:Light_Cog"
+    },
+    "sys:waitKeyboard": {
+      "name": "等待按键",
+      "description": "等待用户按下某个按键",
+      "stepType": "Action",
+      "inputLabels": {
+        "operation": "操作类型",
+        "waitingKeys": "等待的按键",
+        "modifierKeys": "修饰键",
+        "maxWaitSeconds": "最长等待秒数",
+        "filterEvent": "拦截原始按键事件",
+        "waitKeyUp": "等待按键抬起",
+        "ignoreSimulated": "忽略模拟的按键",
+        "help": "提示信息",
+        "fontfamily": "字体名称",
+        "winLocation": "提示窗口位置",
+        "mouseThrough": "鼠标穿透",
+        "stopIfFail": "失败后停止动作"
+      },
+      "outputLabels": {
+        "isSuccess": "步骤执行是否成功",
+        "keyCode": "键名",
+        "keyValue": "键值",
+        "holdTimeMs": "按下保持时间"
+      },
+      "icon": "fa:Light_Keyboard"
+    },
+    "sys:form": {
+      "name": "多字段表单",
+      "description": "使用表单窗口编辑多个变量的值。",
+      "stepType": "Action",
+      "inputLabels": {
+        "operation": "工作模式",
+        "dictVar": "词典变量",
+        "title": "窗口标题",
+        "formDef": "表单定义",
+        "formForDictDef": "表单定义(词典)",
+        "dynamicFormForDictDef": "表单定义(词典)",
+        "help": "提示文字",
+        "titleColumnWidth": "标题列宽度",
+        "windowWidth": "窗口宽度",
+        "defaultInputWidth": "输入框默认宽度",
+        "windowHeight": "窗口最大高度",
+        "topMost": "置顶显示",
+        "restoreFocus": "恢复活动窗口",
+        "markdownhelp": "帮助按钮内容",
+        "confirm": "自定义“确定”按钮标题",
+        "customButtons": "自定义按钮",
+        "selectedGroup": "选择的分组",
+        "disableEnterSubmit": "关闭Enter提交表单功能",
+        "winLocation": "窗口位置类型",
+        "winSize": "位置",
+        "stopIfFail": "取消后停止"
+      },
+      "outputLabels": {
+        "isSuccess": "是否成功",
+        "button": "点击的按钮",
+        "selectedGroup": "选择的分组"
+      },
+      "icon": "fa:Light_Window"
+    },
+    "sys:textSelectTools": {
+      "name": "辅助选择工具",
+      "description": "一些常用的选择内容并获取文本的工具",
+      "stepType": "Action",
+      "inputLabels": {
+        "operation": "选择器",
+        "currValue": "当前值",
+        "stopIfFail": "失败后停止"
+      },
+      "outputLabels": {
+        "isSuccess": "是否成功",
+        "output": "结果文本"
+      },
+      "icon": "fa:Light_MousePointer"
+    },
+    "sys:record": {
+      "name": "录制键鼠操作",
+      "description": "录制键鼠操作过程",
+      "stepType": "Action",
+      "inputLabels": {
+        "autoStart": "自动开始录制",
+        "recordMouseMove": "录制鼠标移动过程",
+        "prepareSeconds": "准备时间",
+        "stopIfFail": "失败后停止"
+      },
+      "outputLabels": {
+        "isSuccess": "是否成功",
+        "output": "录制数据"
+      },
+      "icon": "fa:Light_Video"
+    },
+    "sys:showmenu": {
+      "name": "显示菜单",
+      "description": "显示一个菜单",
+      "stepType": "Action",
+      "inputLabels": {
+        "menuData": "菜单数据",
+        "fontsize": "字体大小",
+        "iconsize": "图标大小",
+        "maxHeight": "最大高度",
+        "waitMenuClose": "等待菜单关闭",
+        "useFocus": "占用焦点",
+        "stopIfFail": "失败后停止"
+      },
+      "outputLabels": {
+        "isSuccess": "是否成功",
+        "selectedItemData": "选择的菜单项数据",
+        "selectedItem": "选择的菜单项",
+        "clickButton": "点击按钮"
+      },
+      "icon": "fa:Light_Bars"
+    },
+    "sys:showWaitWin": {
+      "name": "显示等待窗口",
+      "description": "显示一个等待用户完成某个操作的提示窗口。",
+      "stepType": "Action",
+      "inputLabels": {
+        "mode": "操作",
+        "title": "窗口标题",
+        "prompt": "提示文字",
+        "btnText": "默认按钮上的文字",
+        "winLocation": "窗口位置",
+        "progress": "进度条参数",
+        "operations": "附加操作按钮",
+        "iconSize": "图标大小",
+        "fontsize": "文字大小",
+        "stopActionIfClose": "关闭窗口时（点右上角x按钮）后停止动作",
+        "autoCloseSeconds": "自动关闭",
+        "activateMode": "激活模式",
+        "help": "帮助按钮内容"
+      },
+      "outputLabels": {
+        "isClosed": "是否已关闭",
+        "selectedOperation": "选择的按钮"
+      },
+      "icon": "fa:Light_UserEdit"
+    },
+    "sys:reportProgress": {
+      "name": "显示进度条",
+      "description": "显示/更新进度条",
+      "stepType": "Action",
+      "inputLabels": {
+        "type": "类型",
+        "progressId": "进度条ID",
+        "title": "进度条标题",
+        "percentage": "进度百分比",
+        "text": "说明文字"
+      },
+      "outputLabels": {
+        "progressId": "进度条ID"
+      },
+      "icon": "fa:Light_TasksAlt"
+    },
+    "sys:selectFile": {
+      "name": "选择文件",
+      "description": "用文件选择对话框选择要打开或保存的文件",
+      "stepType": "Action",
+      "inputLabels": {
+        "type": "操作类型",
+        "filter": "文件类型筛选器",
+        "defaultExt": "默认扩展名",
+        "initFileName": "初始文件名",
+        "initDir": "初始路径",
+        "title": "对话框标题",
+        "topMost": "置顶显示",
+        "stopIfFail": "失败后停止"
+      },
+      "outputLabels": {
+        "isSuccess": "是否成功",
+        "path": "路径",
+        "pathList": "路径列表"
+      },
+      "icon": "fa:Light_FolderOpen"
+    },
+    "sys:selectFolder": {
+      "name": "选择文件夹",
+      "description": "文件夹选择对话框",
+      "stepType": "Action",
+      "inputLabels": {
+        "prompt": "提示文字",
+        "initDir": "初始路径",
+        "showOpenedDirs": "显示已打开的文件夹",
+        "stopIfFail": "失败后停止"
+      },
+      "outputLabels": {
+        "isSuccess": "是否成功",
+        "path": "路径"
+      },
+      "icon": "fa:Light_FolderOpen"
+    },
+    "sys:playRecords": {
+      "name": "重放键鼠操作",
+      "description": "重放录制好的键鼠操作数据。",
+      "stepType": "Action",
+      "inputLabels": {
+        "data": "录制数据",
+        "speed": "重放速度"
+      },
+      "icon": "fa:Light_PlayCircle"
+    },
+    "sys:custompanel": {
+      "name": "自定义操作窗",
+      "description": "自定义悬浮操作窗口，点击后直接执行操作，不隐藏。",
+      "stepType": "Action",
+      "inputLabels": {
+        "operation": "操作类型",
+        "operationData": "操作项定义",
+        "defaultOperation": "默认Operation",
+        "spacingStr": "按钮之间的间隔",
+        "buttonPadding": "按钮内边距",
+        "columnCount": "列数",
+        "columnWidth": "列宽",
+        "groupMode": "分组方式",
+        "selectGroup": "选择标签分组",
+        "title": "操作窗标题",
+        "windowId": "窗口标识",
+        "winLocation": "窗口位置",
+        "winSize": "窗口尺寸/位置",
+        "horzAlign": "按钮内容对齐方式",
+        "bgColor": "背景颜色",
+        "btnColor": "按钮颜色",
+        "btnBorderColor": "按钮边框颜色",
+        "fontColor": "字体颜色",
+        "fontsize": "字体大小",
+        "iconsize": "图标大小",
+        "contextMenuData": "窗口右键菜单",
+        "buttonContextMenuData": "默认的按钮右键菜单",
+        "bindProc": "自动关联到进程",
+        "autoCollapse": "自动折叠",
+        "saveState": "记忆位置等状态",
+        "stopIfFail": "失败后停止"
+      },
+      "outputLabels": {
+        "isSuccess": "是否成功",
+        "selectedItemData": "选择的操作项数据",
+        "selectedItem": "选择的操作项",
+        "currentGroup": "当前标签分组",
+        "buttonItemData": "按钮操作项数据",
+        "buttonItem": "按钮操作项",
+        "winHandle": "窗口句柄",
+        "isWindowExpanded": "窗口是否展开",
+        "isWindowVisible": "窗口是否可见"
+      },
+      "icon": "fa:Light_Bars:#6aaded"
+    },
+    "sys:customwindow": {
+      "name": "自定义窗口",
+      "description": "创建和显示自定义窗口",
+      "stepType": "Action",
+      "inputLabels": {
+        "type": "操作类型",
+        "windowMarkup": "窗口XAML代码",
+        "dataMapping": "数据映射",
+        "events": "事件",
+        "cscode": "辅助C#代码",
+        "csReference": "辅助C#引用DLL库",
+        "windowId": "窗口标识",
+        "autoCloseTime": "自动关闭时间(S)",
+        "winLocation": "窗口位置",
+        "winSize": "窗口尺寸/位置",
+        "activateMode": "激活模式",
+        "closeWhenDeactivate": "失去焦点后关闭窗口",
+        "stopIfFail": "失败后停止"
+      },
+      "outputLabels": {
+        "isSuccess": "是否成功",
+        "result": "窗口结果",
+        "windowList": "窗口对象列表",
+        "windowHandle": "窗口句柄",
+        "windowLocation": "关闭时窗口位置"
+      },
+      "icon": "fa:Light_WindowAlt"
+    },
+    "sys:webview2": {
+      "name": "WebView2浏览器窗口",
+      "description": "基于微软Edge浏览器内核的组件，需要安装Edge最新预览版方可使用。",
+      "stepType": "Action",
+      "inputLabels": {
+        "type": "操作类型",
+        "url": "网址或HTML内容",
+        "urlList": "网址列表",
+        "additionalBrowserArguments": "附加的浏览器参数",
+        "virtualHostToFolder": "虚拟主机映射",
+        "userAgent": "User Agent",
+        "title": "窗口标题",
+        "icon": "窗口图标",
+        "defaultBgColor": "默认背景色",
+        "autoCloseKey": "窗口标识",
+        "modeForExists": "如果窗口已存在",
+        "script": "JS脚本",
+        "sendMessage": "消息内容",
+        "additionalObjects": "附加对象",
+        "winLocation": "窗口位置",
+        "winSize": "窗口尺寸/位置",
+        "defaultDownloadFolderPath": "默认下载文件夹",
+        "profileName": "Profile",
+        "topMost": "置顶显示",
+        "showInTaskbar": "显示任务栏图标",
+        "noActivate": "不占用焦点",
+        "closeWhenLostFocus": "失去焦点后",
+        "escCloseWindow": "按Esc关闭窗口",
+        "showToolbar": "显示工具栏",
+        "addDevTool": "添加DevTools桥",
+        "windowStyle": "窗口风格",
+        "clearCookies": "关闭窗口时清理Cookie",
+        "stopIfFail": "失败后停止"
+      },
+      "outputLabels": {
+        "isSuccess": "是否成功",
+        "isInstalled": "是否安装WebView2",
+        "hWnd": "窗口句柄",
+        "webView": "WebView2对象",
+        "lastLocation": "窗口位置",
+        "currUri": "当前网址",
+        "docTitle": "网页标题",
+        "sourceCode": "网页代码",
+        "cookies": "Cookie",
+        "scriptResult": "脚本运行结果",
+        "previewImage": "预览图",
+        "isNavCompleted": "导航是否已结束"
+      },
+      "icon": "fa:Brands_Edge"
+    },
+    "if": {
+      "name": "如果/否则",
+      "description": "依据条件执行操作",
+      "stepType": "If",
+      "inputLabels": {
+        "condition": "如果"
+      },
+      "icon": "fa:Regular_ProjectDiagram"
+    },
+    "if-only": {
+      "name": "如果",
+      "description": "依据条件执行操作",
+      "stepType": "Loop",
+      "inputLabels": {
+        "condition": "如果"
+      },
+      "icon": "fa:Regular_ProjectDiagram"
+    },
+    "loop": {
+      "name": "每个",
+      "description": "对列表的每项执行处理",
+      "stepType": "Loop",
+      "inputLabels": {
+        "input": "列表",
+        "useMultiThread": "线程模式",
+        "threadDelay": "线程启动间隔",
+        "concurrentThreadNum": "同时线程数",
+        "timeoutMs": "超时毫秒数",
+        "waitAny": "WaitAny模式",
+        "cancelRemainingOnWaitAny": "WaitAny模式下自动取消其它分支",
+        "useLocalContext": "为线程创建独立上下文",
+        "progressBarTitle": "进度条标题",
+        "stopIfFail": "失败后停止"
+      },
+      "outputLabels": {
+        "isSuccess": "是否成功",
+        "item": "项",
+        "count": "计数"
+      },
+      "icon": "fa:Light_Repeat"
+    }
+  }
+}

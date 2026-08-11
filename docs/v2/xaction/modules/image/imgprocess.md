@@ -23,7 +23,7 @@ legacyContentUpdatedAt: "2024-08-26T12:05:06.000Z"
 
 对图片进行变换处理后输出。
 
-![](./img/imgprocess-001-8dd5601f33.png)
+<ModuleParamPreview moduleKey="sys:imgProcess" />
 
 ## 常规处理
 
@@ -80,7 +80,7 @@ legacyContentUpdatedAt: "2024-08-26T12:05:06.000Z"
 
 ![](./img/imgprocess-002-b4c6d1c5c8.png)**$$**
 
-```
+```text
 $$
 Load:{path}
 Brightness:30
@@ -164,7 +164,17 @@ Save:{savePath}
 
 ## 生成图标文件
 
-![](./img/imgprocess-006-8dd1b3c2c4.png)
+<ModuleParamPreview
+  moduleKey="sys:imgProcess"
+  focusKeys={['img', 'type', 'iconFilePath', 'iconSize', 'stopIfFail', 'isSuccess']}
+  values={{
+    img: 'C:\\Pictures\\puffin.jpg',
+    type: 'GenerateIco',
+    iconFilePath: 'D:\\test2.ico',
+    iconSize: '256,48,32,16',
+    stopIfFail: 'true',
+  }}
+/>
 
 **输入**
 

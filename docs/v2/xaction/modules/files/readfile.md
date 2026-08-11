@@ -23,7 +23,7 @@ legacyContentUpdatedAt: "2020-10-26T11:03:34.000Z"
 
 读取指定文件的内容。目前支持文本文件和图片文件的读取。
 
-![image.png](./img/readfile-001-c107fc80d1.png "image.png")
+<ModuleParamPreview moduleKey="sys:readFile" />
 
 ## 参数
 

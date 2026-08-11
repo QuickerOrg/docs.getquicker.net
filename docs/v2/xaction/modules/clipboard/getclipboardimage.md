@@ -27,7 +27,7 @@ legacyContentUpdatedAt: "2020-05-28T06:41:20.000Z"
 
 一般用于获取截图内容等情况。
 
-![image.png](./img/getclipboardimage-001-f59ad3ef8d.png "image.png")
+<ModuleParamPreview moduleKey="sys:getClipboardImage" />
 
 ## 参数
 

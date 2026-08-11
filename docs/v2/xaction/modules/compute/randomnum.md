@@ -25,7 +25,7 @@ legacyContentUpdatedAt: "2019-07-17T00:48:53.000Z"
 
 最小值 &lt;= 随机数 &lt; 最大值。
 
-![image.png](./img/randomnum-001-35b9065b3a.png "image.png")
+<ModuleParamPreview moduleKey="sys:randomNum" />
 
 ## 参数
 

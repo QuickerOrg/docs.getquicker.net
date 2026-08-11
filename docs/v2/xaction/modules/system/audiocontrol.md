@@ -23,7 +23,7 @@ legacyContentUpdatedAt: "2025-01-20T01:00:00.000Z"
 
 用于获取音频设备信息或设置默认设备、调整静音、音量。
 
-![](./img/audiocontrol-001-a835ccea6b.png)
+<ModuleParamPreview moduleKey="sys:audioControl" />
 
 ## 支持的操作类型
 
@@ -33,7 +33,11 @@ legacyContentUpdatedAt: "2025-01-20T01:00:00.000Z"
 
 【获取输入设备列表】
 
-![](./img/audiocontrol-002-aad1d29110.png)
+<ModuleParamPreview
+  moduleKey="sys:audioControl"
+  focusKeys={['operation', 'returnAll']}
+  values={{operation: 'GetOutputDeviceList', returnAll: 'false'}}
+/>
 
 输出：
 
@@ -53,13 +57,21 @@ legacyContentUpdatedAt: "2025-01-20T01:00:00.000Z"
 
 【获取默认的输入设备信息】
 
-![](./img/audiocontrol-003-63f68980e5.png)
+<ModuleParamPreview
+  moduleKey="sys:audioControl"
+  focusKeys={['operation']}
+  values={{operation: 'GetOutputDefaultDevice'}}
+/>
 
 获取系统里当前选择的默认输出和输入设备，并且得到设备ID、设备名称、是否静音、音量等信息。原始对象为C#的NAudio.CoreAudioApi.MMDevice类型。
 
 ### 获取指定设备的信息
 
-![](./img/audiocontrol-004-d00f9bba0a.png)
+<ModuleParamPreview
+  moduleKey="sys:audioControl"
+  focusKeys={['operation', 'id']}
+  values={{operation: 'GetDeviceById', id: 'deviceId'}}
+/>
 
 根据提供的设备ID，获取其信息。
 
@@ -69,13 +81,21 @@ legacyContentUpdatedAt: "2025-01-20T01:00:00.000Z"
 
 ### 设置默认设备
 
-![](./img/audiocontrol-005-9dd84078d4.png)
+<ModuleParamPreview
+  moduleKey="sys:audioControl"
+  focusKeys={['operation', 'id']}
+  values={{operation: 'SetDefaultDeviceById', id: 'deviceId'}}
+/>
 
 将指定的设备设置为默认的输出或输入设备。
 
 ### 设置设备静音
 
-![](./img/audiocontrol-006-a4de5ea388.png)
+<ModuleParamPreview
+  moduleKey="sys:audioControl"
+  focusKeys={['operation', 'id', 'mute']}
+  values={{operation: 'SetDeviceMute', id: 'deviceId', mute: 'true'}}
+/>
 
 可选值：true（静音）、false（取消静音）、toggle（切换静音状态）。
 
@@ -83,11 +103,15 @@ legacyContentUpdatedAt: "2025-01-20T01:00:00.000Z"
 
 ### 设置设备音量
 
-![](./img/audiocontrol-007-ac0ce2e91f.png)
+<ModuleParamPreview
+  moduleKey="sys:audioControl"
+  focusKeys={['operation', 'id', 'volume']}
+  values={{operation: 'SetDeviceVolume', id: 'deviceId', volume: '0.1'}}
+/>
 
 设置指定设备的音量。当设备ID为空时，设置当前默认输出设备的音量。
 
-**音量值参数：**0-1.0之间的小数。
+**音量值参数**：0-1.0之间的小数。
 
 ## 示例动作
 

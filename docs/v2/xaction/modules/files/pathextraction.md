@@ -29,7 +29,7 @@ legacyContentUpdatedAt: "2022-06-14T01:38:52.000Z"
 
 从完整的文件、文件夹路径中提取文件名、扩展名等信息。
 
-![](./img/pathextraction-001-5e494dd491.png)
+<ModuleParamPreview moduleKey="sys:pathExtraction" />
 
 **输入**
 
@@ -62,7 +62,12 @@ legacyContentUpdatedAt: "2022-06-14T01:38:52.000Z"
 
 基于现有的文件路径，生成一个**仅修改文件扩展名**的新路径。 (需Quicker 1.33.25+)
 
-![](./img/pathextraction-002-d16a3ffe38.png)
+<ModuleParamPreview
+  moduleKey="sys:pathExtraction"
+  focusKeys={['operation', 'path', 'newExtension', 'resultPath']}
+  values={{operation: 'changeExt', path: 'D:\\Work\\Quicker\\doc\\icon.psd', newExtension: '.jpg'}}
+  outputVars={{resultPath: 'resultPath'}}
+/>
 
 **输入**
 
@@ -89,7 +94,16 @@ legacyContentUpdatedAt: "2022-06-14T01:38:52.000Z"
 
 基于现有的文件路径，生成一个**相同目录下**的新文件名的完整路径。
 
-![](./img/pathextraction-003-5b6478c443.png)
+<ModuleParamPreview
+  moduleKey="sys:pathExtraction"
+  focusKeys={['operation', 'path', 'newFileName', 'resultPath']}
+  values={{
+    operation: 'changeName',
+    path: 'D:\\Work\\Quicker\\doc\\icon.psd',
+    newFileName: 'icon_save_20220506_112233.psd',
+  }}
+  outputVars={{resultPath: 'resultPath'}}
+/>
 
 **输入**
 
@@ -116,7 +130,12 @@ legacyContentUpdatedAt: "2022-06-14T01:38:52.000Z"
 
 根据现有文件的名称和目标路径生成新的文件路径。
 
-![](./img/pathextraction-004-81ebbc016e.png)
+<ModuleParamPreview
+  moduleKey="sys:pathExtraction"
+  focusKeys={['operation', 'path', 'newDir', 'resultPath']}
+  values={{operation: 'changeDir', path: 'D:\\Work\\Quicker\\doc\\icon.psd', newDir: 'D:\\Backup\\20220105'}}
+  outputVars={{resultPath: 'resultPath'}}
+/>
 
 **输入**
 
@@ -143,7 +162,12 @@ legacyContentUpdatedAt: "2022-06-14T01:38:52.000Z"
 
 根据根路径和更多路径片段生成一个完整路径。
 
-![](./img/pathextraction-005-6b854a7e29.png)
+<ModuleParamPreview
+  moduleKey="sys:pathExtraction"
+  focusKeys={['operation', 'path', 'path2', 'path3', 'path4', 'resultPath']}
+  values={{operation: 'combine', path: 'D:\\Work', path2: 'media', path3: '20220506', path4: 'abc.gif'}}
+  outputVars={{resultPath: 'resultPath'}}
+/>
 
 **输入**
 

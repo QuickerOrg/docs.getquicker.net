@@ -48,7 +48,25 @@ Quicker动作中主要用来处理一些专用的场景，而不是连续的会�
 
 ## 参数
 
-![](./img/ai-002-ce0a9adfec.png)
+<ModuleParamPreview
+  moduleKey="sys:ai"
+  values={{
+    endpoint: 'chat',
+    model: 'gpt-3.5-turbo',
+    systemPrompt: '你是一位诗人。',
+    prompt: '$$请根据下面的提示词写一首诗歌：\n{text}',
+    maxTokens: '0',
+    temperature: '0.6',
+    topP: '1',
+    n: '1',
+    stream: 'true',
+    streamTo: 'INPUT_TEXT',
+    expireSeconds: '30',
+    forceProxy: 'true',
+  }}
+  inputVars={{apiKey: 'apikey'}}
+  outputVars={{result: 'result'}}
+/>
 
 【端点】目前支持Chat或Completions。
 
@@ -60,8 +78,28 @@ Quicker动作中主要用来处理一些专用的场景，而不是连续的会�
 
 -   纯文本提示词。
 -   通过json数组，提供兼容gpt-4-vision的消息内容。示例：
-    ![](./img/ai-003-d688236d3b.png)
-    注意：这里不应当填写完整的请求体json。
+
+<ModuleParamPreview
+  moduleKey="sys:ai"
+  focusKeys={['prompt']}
+  values={{
+    endpoint: 'chat',
+    prompt: `[
+  {
+    "type": "image_url",
+    "image_url": {
+      "url": "https://cdn-dynmedia-1.microsoft.com/is/image/microsoftcorp/Studio-2-platinum_sprite_thumbnaill?sc=1"
+    }
+  },
+  {
+    "type": "text",
+    "text": "图像描述了什么？"
+  }
+]`,
+  }}
+/>
+
+注意：这里不应当填写完整的请求体json。
 
 【最大响应Token数】token大约等于1个汉字或2/3个英文单词。建议使用0，太短时输出会被截断。每个模型有自己的提示和响应总共token数限制，较新的模型通常为4000。提示内容的token数+最大响应token数不能超过模型限制，否则会失败。
 
@@ -100,7 +138,7 @@ Quicker动作中主要用来处理一些专用的场景，而不是连续的会�
 
 自1.43.55版本开始支持通过json文本指定自定义的内容，如json\_schema。例如：
 
-```
+```json
 {
   "type": "json_schema",
   "json_schema": {
@@ -132,7 +170,7 @@ Quicker动作中主要用来处理一些专用的场景，而不是连续的会�
 
 【附加参数】用于为第三方接口提供额外的参数。可传入词典值，json，或匿名对象，如：
 
-```
+```csharp
 $= new {参数名 = "参数值"};
 ```
 
@@ -148,7 +186,17 @@ $= new {参数名 = "参数值"};
 
 实现方法：
 
-![](./img/ai-005-7af6fa79ce.png)
+<StepProgramView
+  data={{
+    steps: [
+      {
+        key: 'sys:showText',
+        note: '显示窗口，不等待关闭（立即开始执行后续的步骤）　翻译结果：',
+      },
+      {key: 'sys:ai'},
+    ],
+  }}
+/>
 
 1）事先创建一个以非等待模式显示的文本窗口，设置窗口标识（建议使用‘=’作为窗口标识，相当于动作ID，以避免动作之间冲突）。
 

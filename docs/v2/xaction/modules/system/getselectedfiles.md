@@ -30,7 +30,11 @@ legacyContentUpdatedAt: "2022-11-12T11:46:07.000Z"
 
 ## 获取选择的文件
 
-![](./img/getselectedfiles-002-4710141b53.png)
+<ModuleParamPreview
+  moduleKey="sys:getSelectedFiles"
+  focusKeys={['operation', 'waitMs', 'sortType']}
+  values={{operation: 'getSelection', waitMs: '200', sortType: 'Default'}}
+/>
 
 输入参数
 
@@ -58,7 +62,12 @@ legacyContentUpdatedAt: "2022-11-12T11:46:07.000Z"
 
 让当前（或通过句柄指定的）资源管理器窗口选中某些文件。
 
-![](./img/getselectedfiles-003-76f725be7a.png)
+<ModuleParamPreview
+  moduleKey="sys:getSelectedFiles"
+  focusKeys={['operation', 'pathList', 'winHandle', 'fileCount']}
+  values={{operation: 'setSelection', pathList: 'filename.txt\nregex:exe$\npinyin:llq'}}
+  outputVars={{fileCount: 'strValue'}}
+/>
 
 注：
 

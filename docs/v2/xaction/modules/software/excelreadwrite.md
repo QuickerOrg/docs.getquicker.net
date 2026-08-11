@@ -50,7 +50,23 @@ legacyContentUpdatedAt: "2026-04-22T00:22:41.000Z"
 
 打开一个Excel文件，并返回工作簿(Workbook)对象（用于在后面的步骤中对其内容进行操作）。
 
-![](./img/excelreadwrite-002-d0597921dc.png)
+<ModuleParamPreview
+  moduleKey="sys:excelreadwrite"
+  focusKeys={[
+    'operation',
+    'filePath',
+    'isSuccess',
+    'workbook',
+    'numberOfSheets',
+    'worksheetNameList',
+    'sheet',
+    'firstRow',
+    'lastRow',
+  ]}
+  values={{operation: 'load'}}
+  inputVars={{filePath: 'rowFilePath'}}
+  outputVars={{workbook: 'workbook', sheet: 'sheet'}}
+/>
 
 **输入参数**
 
@@ -78,7 +94,12 @@ legacyContentUpdatedAt: "2026-04-22T00:22:41.000Z"
 
 创建一个新的Excel文档。
 
-![](./img/excelreadwrite-003-ece2b2592c.png)
+<ModuleParamPreview
+  moduleKey="sys:excelreadwrite"
+  focusKeys={['operation', 'fileType', 'isSuccess', 'workbook']}
+  values={{operation: 'newWorkbook', fileType: 'XSSF'}}
+  outputVars={{workbook: 'workbook'}}
+/>
 
 **输入参数**
 
@@ -100,7 +121,12 @@ legacyContentUpdatedAt: "2026-04-22T00:22:41.000Z"
 -   在更新工作簿内容后，需要使用保存工作簿的步骤之后，才会实际写入excel文档中。
 -   因为NPOI组件可能无法支持所有的Excel功能，如果覆盖已有文件可能导致部分信息丢失，所以通常仅用此功能写入完全自动生成的Excel文档，重要的Excel文档请提前做好备份。
 
-![](./img/excelreadwrite-004-d89f584c7d.png)
+<ModuleParamPreview
+  moduleKey="sys:excelreadwrite"
+  focusKeys={['operation', 'filePath', 'workbook', 'isSuccess']}
+  values={{operation: 'save', filePath: 'd:\\test.xlsx'}}
+  inputVars={{workbook: 'workbook'}}
+/>
 
 **输入参数**
 
@@ -116,7 +142,21 @@ legacyContentUpdatedAt: "2026-04-22T00:22:41.000Z"
 
 从工作簿中获取一个工作表对象（以便于在后续步骤中读取或写入内容）。
 
-![](./img/excelreadwrite-005-f9ad0829a3.png)
+<ModuleParamPreview
+  moduleKey="sys:excelreadwrite"
+  focusKeys={[
+    'operation',
+    'workbook',
+    'sheetIndex',
+    'isSuccess',
+    'sheet',
+    'firstRow',
+    'lastRow',
+  ]}
+  values={{operation: 'getSheet', sheetIndex: '0'}}
+  inputVars={{workbook: 'workbook'}}
+  outputVars={{sheet: 'sheet'}}
+/>
 
 **输入参数**
 
@@ -143,7 +183,13 @@ legacyContentUpdatedAt: "2026-04-22T00:22:41.000Z"
 
 在指定的工作簿中创建一个新的工作表。
 
-![](./img/excelreadwrite-006-69fcd7c956.png)
+<ModuleParamPreview
+  moduleKey="sys:excelreadwrite"
+  focusKeys={['operation', 'workbook', 'sheetName', 'isSuccess', 'sheet']}
+  values={{operation: 'createSheet', sheetName: 'Sheet1'}}
+  inputVars={{workbook: 'workbook'}}
+  outputVars={{sheet: 'sheet'}}
+/>
 
 **输入参数**
 
@@ -164,7 +210,20 @@ legacyContentUpdatedAt: "2026-04-22T00:22:41.000Z"
 
 注：如果指定的行不存在，则本步骤会执行失败。
 
-![](./img/excelreadwrite-007-319d4af429.png)
+<ModuleParamPreview
+  moduleKey="sys:excelreadwrite"
+  focusKeys={[
+    'operation',
+    'worksheet',
+    'rowIndex',
+    'isSuccess',
+    'firstCellNum',
+    'lastCellNum',
+  ]}
+  values={{operation: 'getRow', rowIndex: '0'}}
+  inputVars={{worksheet: 'sheet'}}
+  outputVars={{firstCellNum: 'firstCol', lastCellNum: 'lastCell'}}
+/>
 
 **输入参数**
 
@@ -186,7 +245,25 @@ legacyContentUpdatedAt: "2026-04-22T00:22:41.000Z"
 
 查找首个具有特定值的单元格。（1.33.12+版本）
 
-![](./img/excelreadwrite-008-1eddb25442.png)
+<ModuleParamPreview
+  moduleKey="sys:excelreadwrite"
+  focusKeys={[
+    'operation',
+    'worksheet',
+    'cellValue',
+    'isSuccess',
+    'firstRow',
+    'firstCellNum',
+    'cellAddress',
+  ]}
+  values={{operation: 'getCellByValue', cellValue: 'NS XIAMEN'}}
+  inputVars={{worksheet: 'sheet'}}
+  outputVars={{
+    firstRow: 'row',
+    firstCellNum: 'col',
+    cellAddress: 'cellAddress',
+  }}
+/>
 
 **输入参数**
 
@@ -210,7 +287,33 @@ legacyContentUpdatedAt: "2026-04-22T00:22:41.000Z"
 
 读取单元格的数据。
 
-![](./img/excelreadwrite-009-54c0603bd0.png)
+<ModuleParamPreview
+  moduleKey="sys:excelreadwrite"
+  focusKeys={[
+    'operation',
+    'worksheet',
+    'cellAddress',
+    'rowIndex',
+    'cellIndex',
+    'isSuccess',
+    'hasValue',
+    'cellValue',
+    'cellTextValue',
+    'cellType',
+    'cellFormula',
+    'cellDataFormatString',
+  ]}
+  values={{operation: 'getCell', rowIndex: '0', cellIndex: '0'}}
+  inputVars={{worksheet: 'sheet'}}
+  outputVars={{
+    hasValue: 'hasValue',
+    cellValue: 'cellValue',
+    cellTextValue: 'text',
+    cellType: 'valueType',
+    cellFormula: 'formula',
+    cellDataFormatString: 'format',
+  }}
+/>
 
 **输入参数**
 
@@ -238,7 +341,30 @@ legacyContentUpdatedAt: "2026-04-22T00:22:41.000Z"
 
 向指定单元格写入数据。
 
-![](./img/excelreadwrite-010-daf6efc628.png)
+<ModuleParamPreview
+  moduleKey="sys:excelreadwrite"
+  focusKeys={[
+    'operation',
+    'worksheet',
+    'cellAddress',
+    'rowIndex',
+    'cellIndex',
+    'cellType',
+    'cellValue',
+    'dataFormat',
+    'cellLink',
+    'isSuccess',
+  ]}
+  values={{
+    operation: 'setCell',
+    rowIndex: '0',
+    cellIndex: '0',
+    cellType: 'Numeric',
+    cellValue: '$=DateTime.Now',
+    dataFormat: 'yyyy年MM月dd日',
+  }}
+  inputVars={{worksheet: 'sheet'}}
+/>
 
 **输入参数**
 
@@ -268,7 +394,25 @@ legacyContentUpdatedAt: "2026-04-22T00:22:41.000Z"
 
 将多行数据内容写入工作表的指定列中。
 
-![](./img/excelreadwrite-011-dce1f27eba.png)
+<ModuleParamPreview
+  moduleKey="sys:excelreadwrite"
+  focusKeys={[
+    'operation',
+    'sourceData',
+    'columnMapping',
+    'worksheet',
+    'rowIndex',
+    'writeTitleRow',
+    'isSuccess',
+  ]}
+  values={{
+    operation: 'writeData',
+    columnMapping: '#\nF:红\nG:橙\nH:黄\nI:绿',
+    rowIndex: '6',
+    writeTitleRow: 'false',
+  }}
+  inputVars={{sourceData: 'sourceSheet', worksheet: 'targetSheet'}}
+/>
 
 **输入参数**
 
@@ -308,7 +452,12 @@ legacyContentUpdatedAt: "2026-04-22T00:22:41.000Z"
 
 ### 合并单元格
 
-![](./img/excelreadwrite-012-749c514ddf.png)
+<ModuleParamPreview
+  moduleKey="sys:excelreadwrite"
+  focusKeys={['operation', 'worksheet', 'cellRange', 'isSuccess']}
+  values={{operation: 'mergeCells', cellRange: 'A1:F1'}}
+  inputVars={{worksheet: 'sheet'}}
+/>
 
 输入参数
 
@@ -323,7 +472,12 @@ legacyContentUpdatedAt: "2026-04-22T00:22:41.000Z"
 
 锁定行列禁止滚动。
 
-![](./img/excelreadwrite-013-d0d1e858c5.png)
+<ModuleParamPreview
+  moduleKey="sys:excelreadwrite"
+  focusKeys={['operation', 'worksheet', 'rowIndex', 'cellIndex', 'isSuccess']}
+  values={{operation: 'freezePane', rowIndex: '1', cellIndex: '1'}}
+  inputVars={{worksheet: 'sheet'}}
+/>
 
 **输入参数**
 
@@ -337,7 +491,12 @@ legacyContentUpdatedAt: "2026-04-22T00:22:41.000Z"
 
 设定列标题单元格自动筛选。
 
-![](./img/excelreadwrite-014-01df671e8c.png)
+<ModuleParamPreview
+  moduleKey="sys:excelreadwrite"
+  focusKeys={['operation', 'worksheet', 'cellRange', 'isSuccess']}
+  values={{operation: 'autoFilter', cellRange: 'A1:E1'}}
+  inputVars={{worksheet: 'sheet'}}
+/>
 
 **输入参数**
 
@@ -351,7 +510,17 @@ legacyContentUpdatedAt: "2026-04-22T00:22:41.000Z"
 
 仅支持对Excel2007格式的工作簿对象设置样式。
 
-![](./img/excelreadwrite-015-686f13409e.png)
+<ModuleParamPreview
+  moduleKey="sys:excelreadwrite"
+  focusKeys={['operation', 'worksheet', 'cellRange', 'styleData', 'isSuccess']}
+  values={{
+    operation: 'setStyle',
+    cellRange: 'A1:F8',
+    styleData:
+      'font.Name:仿宋\nfont.Height:30\nfont.Italic:true\nfont.Strikeout:true\nfont.Color:#FF0000\nfont.Bold:true\nfont.underline:2\nborder.All:Thin,#00FF00\nborder.Bottom:Double,#0000FF\nhorz:right',
+  }}
+  inputVars={{worksheet: 'sheet'}}
+/>
 
 **输入参数**
 
@@ -366,7 +535,7 @@ legacyContentUpdatedAt: "2026-04-22T00:22:41.000Z"
 -   底层库在更新样式时可能存在一些BUG，请测试验证；
 -   尽量先设置样式后更新数据，更新数据时可能会对样式有所影响；
 
-```
+```text
 font.Name:仿宋
 font.Height:30
 font.Italic:true
@@ -422,7 +591,16 @@ border.outside:Thick,#FF0000
 
 将工作簿中指定位置的数据提取到词典的对应键值中。
 
-![](./img/excelreadwrite-016-3557a5eb23.png)
+<ModuleParamPreview
+  moduleKey="sys:excelreadwrite"
+  focusKeys={['operation', 'workbook', 'readDataMap', 'isSuccess', 'dictData']}
+  values={{
+    operation: 'readData',
+    readDataMap: 'table:A1:D4\ntest:[Sheet2]A1',
+  }}
+  inputVars={{workbook: 'workbook'}}
+  outputVars={{dictData: 'dictData'}}
+/>
 
 **输入参数**
 
@@ -443,7 +621,22 @@ border.outside:Thick,#FF0000
 
 用于根据汇总表及模板表批量生成Excel文件。实际的使用过程大概为：对于汇总表中的每行数据，创建一个模板文件的副本。将该行数据的每一列填充的副本文件的模板字段中。
 
-![](./img/excelreadwrite-018-8195c0ef30.png)
+<ModuleParamPreview
+  moduleKey="sys:excelreadwrite"
+  focusKeys={[
+    'operation',
+    'worksheet',
+    'replaceDict',
+    'replacePrefixSuffix',
+    'isSuccess',
+  ]}
+  values={{
+    operation: 'batchReplace',
+    replaceDict: '供货单位:立冶合讯科技有限公司\n单位:套\n数量:5',
+    replacePrefixSuffix: '{{\n}}',
+  }}
+  inputVars={{worksheet: 'sheet'}}
+/>
 
 **输入参数**
 

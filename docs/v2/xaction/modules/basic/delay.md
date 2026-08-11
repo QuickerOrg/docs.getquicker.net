@@ -25,7 +25,7 @@ legacyContentUpdatedAt: "2025-12-05T02:21:38.000Z"
 
 功能：等待一段时间（指定毫秒数）再继续后面的动作步骤。
 
-![](./img/delay-001-621a92fff1.png)
+<ModuleParamPreview moduleKey="sys:delay" />
 
 ## 参数说明
 

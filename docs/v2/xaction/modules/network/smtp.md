@@ -27,7 +27,7 @@ legacyContentUpdatedAt: "2021-11-29T13:33:22.000Z"
 
 请勿使用此模块大量发送邮件，容易被邮件服务商认定为垃圾邮件发送者，造成帐号停用或其他损失。
 
-![](./img/smtp-001-193d503882.png)
+<ModuleParamPreview moduleKey="sys:smtp" />
 
 ## 参数
 

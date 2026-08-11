@@ -23,7 +23,7 @@ legacyContentUpdatedAt: "2019-07-15T00:53:30.000Z"
 
 统计文本的字符数量、行数等信息。
 
-![image.png](./img/textcounter-001-73eb8d5339.png "image.png")
+<ModuleParamPreview moduleKey="sys:textCounter" />
 
 ## 参数
 

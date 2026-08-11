@@ -27,7 +27,7 @@ legacyContentUpdatedAt: "2024-06-19T03:24:46.000Z"
 
 使用本模块需要已安装和运行Everything软件1.4.1.969+或以上版本。
 
-![](./img/everythingsearch-001-7265e3ee1c.png)
+<ModuleParamPreview moduleKey="sys:everythingsearch" />
 
 ## 参数
 

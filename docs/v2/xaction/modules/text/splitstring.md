@@ -25,7 +25,7 @@ legacyContentUpdatedAt: "2022-12-29T05:29:28.000Z"
 
 例如：将一个包含多个文件路径的文本拆分成列表，列表的每一项是一个文件路径，然后就可以使用“每个”模块对列表中的每个文件路径进行处理了。
 
-![](./img/splitstring-001-93ca61af2c.png)
+<ModuleParamPreview moduleKey="sys:splitString" />
 
 ## 参数
 

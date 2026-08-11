@@ -1,0 +1,127 @@
+.root {
+  --mbp-border: var(--ifm-color-emphasis-300);
+  --mbp-bg: var(--ifm-background-surface-color, #fff);
+  --mbp-fg: var(--ifm-font-color-base);
+  --mbp-muted: var(--ifm-color-emphasis-100, #f3f4f6);
+  --mbp-primary: #2b7abf;
+  --mbp-info: #1e88e5;
+  --mbp-question: #1e88e5;
+  --mbp-warning: #f9a825;
+  --mbp-error: #d32f2f;
+  max-width: 420px;
+  margin: 1rem 0;
+  border: 1px solid var(--mbp-border);
+  border-radius: 6px;
+  background: var(--mbp-bg);
+  box-shadow: 0 4px 18px rgb(0 0 0 / 14%);
+  overflow: hidden;
+  font-size: 13px;
+  line-height: 1.45;
+  color: var(--mbp-fg);
+}
+
+.titleBar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  padding: 7px 10px;
+  border-bottom: 1px solid var(--mbp-border);
+  background: color-mix(in srgb, var(--mbp-muted) 85%, transparent);
+  font-weight: 600;
+}
+
+.titleText {
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.titleClose {
+  flex: 0 0 auto;
+  font-size: 14px;
+  line-height: 1;
+  opacity: 0.65;
+  user-select: none;
+}
+
+.body {
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+  padding: 16px 16px 12px;
+}
+
+.icon {
+  flex: 0 0 auto;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  color: #fff;
+  font-size: 18px;
+  font-weight: 700;
+  line-height: 1;
+  user-select: none;
+}
+
+.icon_info,
+.icon_question {
+  background: var(--mbp-question);
+}
+
+.icon_warning {
+  background: var(--mbp-warning);
+  color: #3e2723;
+}
+
+.icon_error {
+  background: var(--mbp-error);
+}
+
+.message {
+  flex: 1 1 auto;
+  min-width: 0;
+  white-space: pre-wrap;
+  word-break: break-word;
+  padding-top: 4px;
+}
+
+.footer {
+  display: flex;
+  justify-content: flex-end;
+  flex-wrap: wrap;
+  gap: 8px;
+  padding: 10px 14px;
+  border-top: 1px solid var(--mbp-border);
+  background: color-mix(in srgb, var(--mbp-muted) 70%, transparent);
+}
+
+.btn,
+.btnPrimary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 72px;
+  height: 28px;
+  padding: 0 14px;
+  border-radius: 4px;
+  border: 1px solid var(--mbp-border);
+  font-size: 12px;
+  user-select: none;
+  background: var(--mbp-bg);
+}
+
+.btnPrimary {
+  border-color: color-mix(in srgb, var(--mbp-primary) 45%, var(--mbp-border));
+  background: var(--mbp-primary);
+  color: #fff;
+  font-weight: 600;
+}
+
+html[data-theme='dark'] .btnPrimary {
+  color: #f8fafc;
+}

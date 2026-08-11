@@ -25,7 +25,7 @@ legacyContentUpdatedAt: "2022-06-14T05:58:37.000Z"
 
 ## 概述
 
-![](./img/activateprocessmainwindow-001-a353a7f398.png)
+<ModuleParamPreview moduleKey="sys:activateProcessMainWindow" />
 
 找到指定进程的主窗口并使其显示在前台。
 

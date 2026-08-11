@@ -25,7 +25,7 @@ legacyContentUpdatedAt: "2023-05-25T23:24:40.000Z"
 
 本模块需要您了解正则表达式相关知识之后才可以使用。
 
-![](./img/regexextract-001-37522361fc.png)
+<ModuleParamPreview moduleKey="sys:regexExtract" />
 
 ## 参数
 
@@ -60,9 +60,9 @@ legacyContentUpdatedAt: "2023-05-25T23:24:40.000Z"
 -   提取方式为“第一个匹配项的组”时，返回第一个匹配项前5个匹配组（Group）的值。
 -   提取方式为“所有匹配项的组”时，返回的是所有匹配项的**对应位置**匹配组的值的**列表**。
 
-**【Matches集合】**提取方式为“各匹配项的值”和“各匹配项的组”时，返回表示所有匹配项的 [**MatchCollection**](https://docs.microsoft.com/en-us/dotnet/api/system.text.regularexpressions.matchcollection) 对象。可以在表达式中使用此对象。
+**【Matches集合】** 提取方式为“各匹配项的值”和“各匹配项的组”时，返回表示所有匹配项的 [**MatchCollection**](https://docs.microsoft.com/en-us/dotnet/api/system.text.regularexpressions.matchcollection) 对象。可以在表达式中使用此对象。
 
-**【Match对象】**提取方式为“第一个匹配项的组”时，返回该匹配项的 [**Match**](https://docs.microsoft.com/en-us/dotnet/api/system.text.regularexpressions.match) 对象。可以在表达式中使用此对象。
+**【Match对象】** 提取方式为“第一个匹配项的组”时，返回该匹配项的 [**Match**](https://docs.microsoft.com/en-us/dotnet/api/system.text.regularexpressions.match) 对象。可以在表达式中使用此对象。
 
 ### 示例
 

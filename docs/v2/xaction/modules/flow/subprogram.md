@@ -113,7 +113,14 @@ legacyContentUpdatedAt: "2025-06-06T03:33:32.000Z"
 
 在子程序上点击右键，可以看到右键菜单：
 
-![](./img/subprogram-009-177340a46e.png)
+<ContextMenuPreview
+  openPath={['转换为公共子程序(A)']}
+  items={[
+    {label: '高亮步骤(H)', icon: '✎', iconColor: '#e53935'},
+    {label: '转换为公共子程序(A)', icon: '→', iconColor: '#2196f3'},
+    {label: '删除(D)', icon: '×', iconColor: '#f44336', danger: true},
+  ]}
+/>
 
 1）高亮步骤：将子程序名称作为高亮关键字，高亮步骤列表中的相应步骤。（只能高亮展开的步骤）。
 
@@ -155,11 +162,28 @@ legacyContentUpdatedAt: "2025-06-06T03:33:32.000Z"
 
 可以在子程序列表上右键，对子程序进行重命名、复制、创建副本、复制名称等。
 
-![](./img/subprogram-014-17c23f40f9.png)
+<ContextMenuPreview
+  openPath={['重命名(R)']}
+  items={[
+    {label: '高亮步骤(H)', icon: '✎', iconColor: '#e53935'},
+    {label: '查找使用情况(U)', icon: '⌕', iconColor: '#2196f3'},
+    {label: '重命名(R)', icon: '✎', iconColor: '#2196f3'},
+    {label: '转换为公共子程序(A)', icon: '→', iconColor: '#2196f3'},
+    {label: '创建副本(N)', icon: '□', iconColor: '#2196f3'},
+    {label: '复制子程序(C)', icon: '□', iconColor: '#2196f3'},
+    {label: '复制子程序名', icon: '□', iconColor: '#2196f3'},
+    {label: '分享(S)', icon: '⌘', iconColor: '#2196f3'},
+    {label: '删除(D)', icon: '×', iconColor: '#f44336', danger: true},
+  ]}
+/>
 
 复制子程序后，可以在其它动作的子程序列表的空白处右键粘贴。
 
-![](./img/subprogram-015-f0ca20a03e.png)
+<ContextMenuPreview
+  items={[
+    {label: '粘贴剪贴板中的子程序', icon: '▱', iconColor: '#2196f3'},
+  ]}
+/>
 
 ## 公共子程序
 
@@ -220,7 +244,13 @@ legacyContentUpdatedAt: "2025-06-06T03:33:32.000Z"
 5.  按住并拖放到步骤区域即可。
 6.  双击子程序、点击右边的打开按钮，可以打开共享子程序网页。
 
-![](./img/subprogram-019-73b82928ba.png)
+<ContextMenuPreview
+  openPath={['查看子程序定义(P)']}
+  items={[
+    {label: '查看子程序定义(P)', icon: '⌕', iconColor: '#2196f3'},
+    {label: '导入为动作内子程序(D)', icon: '□', iconColor: '#2196f3'},
+  ]}
+/>
 
 在共享子程序上点右键，菜单中可选：
 

@@ -57,7 +57,11 @@ legacyContentUpdatedAt: "2025-06-04T23:29:00.000Z"
 
 ## 操作类型
 
-![](./img/showtext-003-638303e144.png)
+<ModuleParamPreview
+  moduleKey="sys:showText"
+  focusKeys={['type']}
+  values={{type: 'NO_WAIT'}}
+/>
 
 -   **显示窗口，不等待关闭**：显示窗口后继续运行后面的步骤。
 -   **显示窗口，等待关闭**：显示窗口后，等待用户关闭窗口再继续运行后面的步骤。
@@ -65,13 +69,32 @@ legacyContentUpdatedAt: "2025-06-04T23:29:00.000Z"
 -   **获取窗口信息**：获取指定文本窗口的信息。如是否存在、窗口文本内容等。
 -   **追加内容**：向已打开的文本窗口中追加内容。
 -   **显示和激活窗口**：将指定的已被最小化或在其它窗口后面的文本窗口显示在前台。
--   **等待窗口关闭：**等待指定的文本窗口关闭后再执行后续的步骤。(1.39.33)
+-   **等待窗口关闭**：等待指定的文本窗口关闭后再执行后续的步骤。(1.39.33)
 
 在通过不同步骤控制相同窗口时，需要使用“**文本窗口标识**”参数指定要操作的窗口。 将此值设置为“=”，表示使用当前动作ID作为窗口标识，可避免和其它动作冲突。
 
 ## 参数
 
-![](./img/showtext-004-6c86dd1256.png)
+<ModuleParamPreview
+  moduleKey="sys:showText"
+  values={{
+    type: 'WAIT',
+    text: '',
+    title: '结果内容',
+    topMost: 'false',
+    autoCloseKey: '',
+    winLocation: 'CenterScreen',
+    winSize: '',
+    fontsize: '14',
+    fontfamily: '',
+    bgColor: '',
+    textColor: '',
+    highlight: '',
+    autoSaveToState: '',
+    closeWhenLostFocus: 'false',
+    stopIfFail: 'true',
+  }}
+/>
 
 ### 输入
 
@@ -353,7 +376,7 @@ legacyContentUpdatedAt: "2025-06-04T23:29:00.000Z"
 
 以POST方式发送待处理文本，请求体为json格式：
 
-```
+```json
 {
   "content":"待处理文本的内容。"
 }
@@ -361,7 +384,7 @@ legacyContentUpdatedAt: "2025-06-04T23:29:00.000Z"
 
 **响应：**
 
-```
+```json
 {
     "isSuccess": true,
     "message": "",

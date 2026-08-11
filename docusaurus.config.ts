@@ -27,6 +27,12 @@ const config: Config = {
 
   onBrokenLinks: 'throw',
 
+  markdown: {
+    mermaid: true,
+  },
+  themes: ['@docusaurus/theme-mermaid'],
+  plugins: ['./plugins/doc-gallery'],
+
   // Even if you don't use internationalization, you can use this field to set
   // useful metadata like html lang. For example, if your site is Chinese, you
   // may want to replace "en" with "zh-Hans".
@@ -61,8 +67,9 @@ const config: Config = {
     navbar: {
       title: 'Quicker 文档',
       logo: {
-        alt: 'Quicker 文档',
+        alt: 'Quicker',
         src: 'img/logo.svg',
+        srcDark: 'img/logo-dark.svg',
       },
       items: [
         {
@@ -72,11 +79,16 @@ const config: Config = {
           label: '文档',
         },
         {to: '/release-notes', label: '更新记录', position: 'left'},
-        {
-          href: 'https://getquicker.net',
-          label: 'Quicker 官网',
-          position: 'right',
-        },
+    {
+      to: '/lab/screenshot-review',
+      label: '截图审核',
+      position: 'right',
+    },
+    {
+      href: 'https://getquicker.net',
+      label: 'Quicker 官网',
+      position: 'right',
+    },
         {
           href: 'https://github.com/QuickerOrg/docs.getquicker.net',
           label: 'GitHub',
@@ -85,62 +97,34 @@ const config: Config = {
       ],
     },
     footer: {
-      style: 'dark',
+      style: 'light',
       links: [
+        {label: 'Quicker V2', to: '/v2/getting-started'},
+        {label: '更新记录', to: '/release-notes'},
+        {label: '官网', href: 'https://getquicker.net'},
+        {label: '文档中心', href: 'https://getquicker.net/KC'},
+        {label: '讨论区', href: 'https://getquicker.net/QA'},
         {
-          title: 'Docs',
-          items: [
-            {
-              label: 'Quicker V2',
-              to: '/v2/getting-started',
-            },
-            {
-              label: '更新记录',
-              to: '/release-notes',
-            },
-          ],
-        },
-        {
-          title: 'Quicker',
-          items: [
-            {
-              label: '官网',
-              href: 'https://getquicker.net',
-            },
-            {
-              label: '文档中心',
-              href: 'https://getquicker.net/KC',
-            },
-            {
-              label: '讨论区',
-              href: 'https://getquicker.net/QA',
-            },
-          ],
-        },
-        {
-          title: 'More',
-          items: [
-            {
-              label: 'GitHub',
-              href: 'https://github.com/QuickerOrg/docs.getquicker.net',
-            },
-          ],
+          label: 'GitHub',
+          href: 'https://github.com/QuickerOrg/docs.getquicker.net',
         },
       ],
-      copyright: `Copyright © ${new Date().getFullYear()} Quicker. Built with Docusaurus.`,
+      copyright: `© ${new Date().getFullYear()} Quicker`,
     },
     prism: {
       theme: prismThemes.github,
       darkTheme: prismThemes.vsDark,
       // Languages beyond prism-react-renderer defaults (TS/TSX already included).
       // Requires the `prismjs` package (Docusaurus peer / transitive).
-      additionalLanguages: ['csharp', 'powershell'],
+      additionalLanguages: ['csharp', 'powershell', 'python', 'batch'],
     },
   } satisfies Preset.ThemeConfig,
   customFields: {
     // 后续 QuickerWeb 提供评论挂载页后，填入例如：
     // https://getquicker.net/V2Docs/Comments
     quickerCommentsBaseUrl: '',
+    // 本地截图审核 API（tools/screenshot-replace/review-api.mjs）
+    screenshotReviewApiBase: 'http://127.0.0.1:3920',
   },
 };
 

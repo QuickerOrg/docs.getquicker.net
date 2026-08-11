@@ -106,7 +106,7 @@ legacyContentUpdatedAt: "2026-03-22T03:26:04.000Z"
 
 在网页中需要有代码接受消息并进行处理。示例：
 
-```
+```javascript
 window.chrome.webview.addEventListener('message', event =>
 {
   console.log('recv message:', event.data);
@@ -146,7 +146,36 @@ window.chrome.webview.addEventListener('message', event =>
 
 #### 参数设置
 
-![](./img/webview2-003-73f41bfb09.png)
+<ModuleParamPreview
+  moduleKey="sys:webview2"
+  focusKeys={[
+    'type',
+    'urlList',
+    'userAgent',
+    'title',
+    'autoCloseKey',
+    'winLocation',
+    'winSize',
+    'defaultDownloadFolderPath',
+    'topMost',
+    'isSuccess',
+  ]}
+  values={{
+    type: 'MultiColumn_OpenUrl',
+    urlList: `Quicker|https://getquicker.net
+小红书|https://www.xiaohongshu.com/
+微博|https://weibo.com
+Baidu|https://baidu.com`,
+    userAgent:
+      'Mozilla/5.0 (Linux; Android 13; SM-N960U) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/117.0.5938.60 Mobile Safari/537.36',
+    title: 'Quicker',
+    autoCloseKey: '=',
+    winLocation: 'Manual',
+    winSize: '20%,20%,80%,80%',
+    defaultDownloadFolderPath: 'F:\\test',
+    topMost: 'false',
+  }}
+/>
 
 【网址列表】定义要打开的网址，每行一个，可以为下列格式之一：
 
@@ -186,7 +215,7 @@ Quicker中使用WebView2组件的[AddHostObjectToScript](https://docs.microsoft.
 
 异步操作方式：
 
-```
+```javascript
 async function func(){
   // 注入的对象
   let v = await $quicker;
@@ -199,7 +228,7 @@ async function func(){
 
 同步操作方式：
 
-```
+```javascript
 function funcSync(){
   // 读取变量
   let varValue = $quickerSync.getVar("text");
@@ -222,21 +251,21 @@ function funcSync(){
 
 为词典变量赋予一个完整的新值
 
-```
+```javascript
 //setDictByJson(变量名, json内容)
 $quickerSync.setDictByJson("dict", "{a: 1, b: 2}");
 ```
 
 为词典的某个key赋值：
 
-```
+```javascript
 //setDictItemValue(词典变量名,键名,值)
 $quickerSync.setDictItemValue("dict", "c", 3);
 ```
 
 获取词典的某个键的值：
 
-```
+```javascript
 // 返回词典的某个键的值getDictItemValue(词典变量名,键名)
 var value = $quickerSync.getDictItemValue("dict","c");
 ```
@@ -256,7 +285,7 @@ var value = $quickerSync.getDictItemValue("dict","c");
 
 示例：
 
-```
+```javascript
 // 调用子程序：返回原始输入值
 async function testSubprogram(){
   //子程序输入参数，每个key对应子程序的输入变量。 input为子程序的一个输入变量。
@@ -281,7 +310,7 @@ async function testSubprogram(){
 
 -   data为子程序各个输出变量名和对应的值的词典的JSON序列化**文本**。
 
-```
+```javascript
 async function testSubprogram() {
   // 为子程序的输入参数构造对象
   var inputParam = { input: "text to process", prop1: 3, prop2: "value" };

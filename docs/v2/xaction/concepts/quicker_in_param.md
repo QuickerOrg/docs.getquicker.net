@@ -108,13 +108,13 @@ legacyContentUpdatedAt: "2024-01-18T09:50:23.000Z"
 
 通过特定的方式为动作传递参数，可以让Quicker自动解析并将对应的内容写入动作变量中。
 
-**方式1：**使用QueryString格式，如`quicker:runaction:动作id或不重复的名称?write_to_vars=true&text=Hello&变量名=URL编码的值&...` 将会把“Hello”自动写入动作的“text”变量中。其中，`write_to_vars=true` 用于开启自动写入变量功能。
+**方式1**：使用QueryString格式，如`quicker:runaction:动作id或不重复的名称?write_to_vars=true&text=Hello&变量名=URL编码的值&...` 将会把“Hello”自动写入动作的“text”变量中。其中，`write_to_vars=true` 用于开启自动写入变量功能。
 
-**方式2：**URL编码的词典json，其中需包含键为`write_to_vars`值为`true`的键值对用于开启写入变量功能。
+**方式2**：URL编码的词典json，其中需包含键为`write_to_vars`值为`true`的键值对用于开启写入变量功能。
 
 如将下面的json进行URL编码后作为参数：
 
-```
+```json
 {
 "text":"hello quicker",
 "write_to_vars":true

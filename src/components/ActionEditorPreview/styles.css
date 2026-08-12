@@ -45,6 +45,7 @@
   border: 1px solid var(--ad-border-panel);
   border-radius: 6px;
   overflow: hidden;
+  position: relative;
   background: var(--ad-bg-workspace);
   color: var(--ad-fg-secondary);
   font-family: var(--ad-font-sans);
@@ -343,6 +344,12 @@ html[data-theme="dark"] .qk-ad-editor {
   overflow: hidden;
 }
 
+/* Toolbox / drag demos: give the step list more width than the variable pane. */
+.qk-ad-editor--focus-toolbox .x-program-editor,
+.qk-ad-editor--drag-demo .x-program-editor {
+  grid-template-columns: minmax(0, 1.55fr) 4px minmax(120px, 0.7fr);
+}
+
 .x-program-editor-toolbar {
   grid-column: 1;
   grid-row: 1;
@@ -616,4 +623,71 @@ html[data-theme="dark"] .qk-ad-editor {
 
 .qk-ad-editor__field-value--multi {
   min-height: 52px;
+}
+
+/* Docs dragDemo: toolbox → branch-slot ghost */
+.qk-ad-drag-ghost {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 20;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  box-sizing: border-box;
+  padding: 0 8px 0 6px;
+  border: 1px solid color-mix(in srgb, var(--ad-accent) 45%, var(--ad-border-panel));
+  border-radius: 4px;
+  background: color-mix(in srgb, var(--ad-bg-panel) 92%, var(--ad-accent));
+  box-shadow: 0 6px 18px rgb(0 0 0 / 18%);
+  color: var(--ad-fg-primary);
+  font-size: 12px;
+  line-height: 1;
+  pointer-events: none;
+  will-change: transform;
+}
+
+.qk-ad-drag-ghost__icon {
+  flex: 0 0 auto;
+  color: var(--ad-accent-bright);
+}
+
+.qk-ad-drag-ghost__name {
+  flex: 1 1 auto;
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.qk-ad-drag-ghost__plus {
+  flex: 0 0 auto;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 16px;
+  height: 16px;
+  border-radius: 3px;
+  background: var(--ad-accent);
+  color: #fff;
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.qk-ad-drag-demo-sr {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .qk-ad-drag-ghost {
+    display: none;
+  }
 }

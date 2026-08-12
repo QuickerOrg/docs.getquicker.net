@@ -1,0 +1,27 @@
+.root {
+  margin: 1rem 0 1.5rem;
+}
+
+.caption {
+  margin: 0 0 8px;
+  font-size: 13px;
+  line-height: 1.5;
+  color: var(--ifm-color-emphasis-700, #4b5563);
+}
+
+/* Reserve height for 如果/否则 (taller than 如果) so step swaps don't jump. */
+.root :global(.qk-sr-program) {
+  min-height: 96px;
+}
+
+.srOnly {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}

@@ -122,10 +122,41 @@ function branchLabelsForStep(
   if (stepType === 'loop' || key === 'sys:each' || key === 'sys:repeat' || key === 'loop') {
     return {};
   }
-  if (stepType === 'if' || key === 'sys:if' || key === 'sys:simpleif' || key === 'if') {
-    return {elseLabel: 'Else'};
+  if (key === 'sys:simpleif') {
+    return {};
   }
-  return {ifLabel: '子步骤', elseLabel: 'Else'};
+  if (stepType === 'if' || key === 'sys:if' || key === 'if') {
+    // WPF StepList shows 否则; Headless lab uses Else — docs follow WPF zh UI.
+    return {elseLabel: '否则'};
+  }
+  return {ifLabel: '子步骤', elseLabel: '否则'};
+}
+
+/** Structure steps always expose branch chrome (even with empty child lists). */
+function structureChrome(
+  step: StepWire,
+  catalog: StepCatalog,
+): {showIf: boolean; showElse: boolean} {
+  const stepType = (catalog.runners[step.key]?.stepType ?? '').toLowerCase();
+  const key = step.key.toLowerCase();
+  const hasIfData = Boolean(step.ifSteps && step.ifSteps.length > 0);
+  const hasElseData = Boolean(step.elseSteps && step.elseSteps.length > 0);
+  if (key === 'sys:simpleif') {
+    return {showIf: true, showElse: false};
+  }
+  if (stepType === 'if' || key === 'sys:if' || key === 'if') {
+    return {showIf: true, showElse: true};
+  }
+  if (
+    stepType === 'loop' ||
+    key === 'sys:each' ||
+    key === 'sys:repeat' ||
+    key === 'sys:group' ||
+    key === 'loop'
+  ) {
+    return {showIf: true, showElse: false};
+  }
+  return {showIf: hasIfData, showElse: hasElseData};
 }
 
 function StepListInner({
@@ -156,6 +187,17 @@ function StepListInner({
   onInspect?: (step: StepWire, path: string, iconSpec: string) => void;
 }): JSX.Element {
   const selected = new Set(selectedIndexes ?? []);
+  if (nested && steps.length === 0) {
+    return (
+      <div className="step-listbox nested">
+        <div
+          className="step-listbox-drop-placeholder"
+          aria-hidden
+          title="空分支槽"
+        />
+      </div>
+    );
+  }
   return (
     <div className={nested ? 'step-listbox nested' : 'step-listbox root'}>
       {steps.map((step, index) => {
@@ -226,8 +268,7 @@ function StepBlock({
     showParams &&
     ((step.inputs && Object.keys(step.inputs).length > 0) ||
       (step.outputs && Object.keys(step.outputs).length > 0));
-  const hasIf = Boolean(step.ifSteps && step.ifSteps.length > 0);
-  const hasElse = Boolean(step.elseSteps && step.elseSteps.length > 0);
+  const {showIf: hasIf, showElse: hasElse} = structureChrome(step, catalog);
   const hasBranches = hasIf || hasElse;
   const iconMap = icons ?? catalog.icons;
   const runner = catalog.runners[step.key];
@@ -350,7 +391,10 @@ function StepBlock({
         {hasBranches ? (
           <div className="step-children">
             {hasIf ? (
-              <div className="branch-box if-branch">
+              <div
+                className="branch-box if-branch"
+                data-qk-branch-slot={`${path}/if`}
+                data-qk-branch-empty={(step.ifSteps?.length ?? 0) === 0 ? '1' : '0'}>
                 {ifLabel ? <div className="branch-title">{ifLabel}</div> : null}
                 <StepListInner
                   steps={step.ifSteps ?? []}
@@ -367,7 +411,10 @@ function StepBlock({
               </div>
             ) : null}
             {hasElse ? (
-              <div className="branch-box else-branch">
+              <div
+                className="branch-box else-branch"
+                data-qk-branch-slot={`${path}/else`}
+                data-qk-branch-empty={(step.elseSteps?.length ?? 0) === 0 ? '1' : '0'}>
                 {elseLabel ? <div className="branch-title">{elseLabel}</div> : null}
                 <StepListInner
                   steps={step.elseSteps ?? []}

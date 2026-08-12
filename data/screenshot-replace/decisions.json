@@ -2706,11 +2706,12 @@
     {
       "image": "docs/v2/xaction/modules/flow/img/csscript-002-353c839112.png",
       "page": "docs/v2/xaction/modules/flow/csscript.md",
-      "status": "kept",
-      "kind": "annotated",
-      "reason": "原图用箭头连接参数值、Exec(paramValue) 和返回内容，表达跨字段与代码的对应关系；现有组件不能等价呈现。",
+      "status": "converted",
+      "kind": "step-param",
+      "component": "PreviewMarks+ModuleParamPreview",
+      "reason": "OCR step-param/high。红绿箭头教学改为 PreviewMarks 钉在 paramValue / resp；低权限脚本与截图一致（return paramValue），outputVars.resp=output。原图保留供审核。",
       "evidence": "ocr+manual",
-      "updatedAt": "2026-08-11T20:06:13+08:00"
+      "updatedAt": "2026-08-12T12:52:00+08:00"
     },
     {
       "image": "docs/v2/xaction/modules/flow/img/dependencycheck-002-232227bf1e.png",
@@ -2741,6 +2742,76 @@
       "evidence": "git-diff",
       "commit": "4fa032b",
       "updatedAt": "2026-08-11T19:17:14+08:00"
+    },
+    {
+      "image": "docs/v2/xaction/modules/flow/img/if-001-413e952756.png",
+      "page": "docs/v2/xaction/modules/flow/if.md",
+      "status": "converted",
+      "component": "mermaid",
+      "reason": "概念流程图，非产品 UI；改为 mermaid（对齐 xaction-intro），步骤场景见同页 StepProgramView。",
+      "evidence": "ocr steps/misclass; visual flowchart",
+      "updatedAt": "2026-08-12T11:50:00+08:00"
+    },
+    {
+      "image": "docs/v2/xaction/modules/flow/img/if-002-7273a4cef8.png",
+      "page": "docs/v2/xaction/modules/flow/if.md",
+      "status": "converted",
+      "component": "StepProgramView",
+      "reason": "如果/否则步骤树；红字教学改由正文说明。",
+      "evidence": "ocr steps",
+      "updatedAt": "2026-08-12T11:50:00+08:00"
+    },
+    {
+      "image": "docs/v2/xaction/modules/flow/img/if-003-bbc85ea91f.png",
+      "page": "docs/v2/xaction/modules/flow/if.md",
+      "status": "kept",
+      "reason": "工具箱红框标出「如果」与「如果/否则」，单窗红框教学。",
+      "evidence": "ocr + visual annotated",
+      "updatedAt": "2026-08-12T11:50:00+08:00"
+    },
+    {
+      "image": "docs/v2/xaction/modules/flow/img/if-004-9e2e72c7fe.gif",
+      "page": "docs/v2/xaction/modules/flow/if.md",
+      "status": "converted",
+      "component": "ElseToggleMenuDemo",
+      "reason": "单场景右键增加/隐藏「否则」：菜单高亮→点击闪→步骤树切换循环。",
+      "evidence": "GIF coalesce + WPF StepListControl.ContextMenu.cs",
+      "updatedAt": "2026-08-12T12:40:00+08:00"
+    },
+    {
+      "image": "docs/v2/xaction/modules/flow/img/if-005-989c3cfd9d.gif",
+      "page": "docs/v2/xaction/modules/flow/if.md",
+      "status": "converted",
+      "component": "ActionEditorPreview",
+      "reason": "ActionEditorPreview.dragDemo：工具箱→分支槽拖影 + 落入后步骤树。",
+      "evidence": "GIF coalesce drag toolbox→branch",
+      "updatedAt": "2026-08-12T12:15:00+08:00"
+    },
+    {
+      "image": "docs/v2/xaction/modules/flow/img/if-008-264686b097.gif",
+      "page": "docs/v2/xaction/modules/flow/if.md",
+      "status": "kept",
+      "reason": "布尔表达式助手弹窗尚未切片。",
+      "evidence": "gif helper UI",
+      "updatedAt": "2026-08-12T11:50:00+08:00"
+    },
+    {
+      "image": "docs/v2/xaction/modules/flow/img/if-009-e6e2ef28a9.png",
+      "page": "docs/v2/xaction/modules/flow/if.md",
+      "status": "converted",
+      "component": "StepProgramView",
+      "reason": "连续「如果」模拟 switch；红字注记改为 step note。",
+      "evidence": "ocr steps",
+      "updatedAt": "2026-08-12T11:50:00+08:00"
+    },
+    {
+      "image": "docs/v2/xaction/modules/flow/img/if-010-40c9938ea4.png",
+      "page": "docs/v2/xaction/modules/flow/if.md",
+      "status": "converted",
+      "component": "StepProgramView",
+      "reason": "重复1次+如果+break 模拟 else if；图内要点改写为正文列表。",
+      "evidence": "ocr steps + annotated bullets",
+      "updatedAt": "2026-08-12T11:50:00+08:00"
     },
     {
       "image": "docs/v2/xaction/modules/flow/img/jsscript-001-b2a7879d59.png",

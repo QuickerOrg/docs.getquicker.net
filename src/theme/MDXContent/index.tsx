@@ -10,6 +10,7 @@ import NotifyToastPreview from '@site/src/components/NotifyToastPreview';
 import MsgBoxPreview from '@site/src/components/MsgBoxPreview';
 import ChoiceListPreview from '@site/src/components/ChoiceListPreview';
 import ContextMenuPreview from '@site/src/components/ContextMenuPreview';
+import ElseToggleMenuDemo from '@site/src/components/ContextMenuPreview/ElseToggleMenuDemo';
 import WaitWinPreview from '@site/src/components/WaitWinPreview';
 import TableFieldPreview from '@site/src/components/TableFieldPreview';
 import TableDataPreview from '@site/src/components/TableDataPreview';
@@ -41,6 +42,7 @@ const components = {
   MsgBoxPreview,
   ChoiceListPreview,
   ContextMenuPreview,
+  ElseToggleMenuDemo,
   WaitWinPreview,
   TableFieldPreview,
   TableDataPreview,

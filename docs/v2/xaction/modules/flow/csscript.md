@@ -200,18 +200,26 @@ namespace Quicker.Public
 
 代码送到 LPAgent 进程执行。不能访问动作里的其它变量，只能传递文本参数和返回值。
 
-![](./img/csscript-002-353c839112.png)
-
-<ModuleParamPreview
-  moduleKey="sys:csscript"
-  focusKeys={['mode', 'scriptForLp', 'paramValue', 'waitResp', 'waitMs', 'resp']}
-  values={{
-    mode: 'low_permission_roslyn',
-    paramValue: 'Hello World!',
-    waitResp: 'true',
-  }}
-  outputVars={{resp: 'ABC output'}}
-/>
+<PreviewMarks
+  marks={[
+    {key: 'paramValue', label: '「参数值」输入到 Exec() 的 paramValue'},
+    {key: 'resp', label: 'Exec 的返回值，从「返回内容」输出'},
+  ]}
+>
+  <ModuleParamPreview
+    moduleKey="sys:csscript"
+    scrollBody={false}
+    focusKeys={['mode', 'scriptForLp', 'paramValue', 'waitResp', 'resp']}
+    values={{
+      mode: 'low_permission_roslyn',
+      scriptForLp:
+        '//.cs  文件类型，便于外部编辑时使用\n// 引用必要的命名空间\n\n// Quicker将会调用的函数\npublic static string Exec(string paramValue)\n{\n    return paramValue;\n}',
+      paramValue: 'Hello World!',
+      waitResp: 'true',
+    }}
+    outputVars={{resp: 'output'}}
+  />
+</PreviewMarks>
 
 必须声明 `public static string Exec(string paramValue)`。`paramValue` 来自 **参数值**，返回值写入 **返回内容**。
 

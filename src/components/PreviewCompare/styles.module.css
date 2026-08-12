@@ -1,6 +1,7 @@
 .root {
   --pc-border: var(--ifm-color-emphasis-200, #e5e7eb);
   --pc-muted: var(--ifm-color-emphasis-700, #4b5563);
+  --pc-fade-ms: 450ms;
   container-type: inline-size;
   margin: 1rem 0 1.5rem;
 }
@@ -18,7 +19,9 @@
 }
 
 .pane :global(.qk-sr-param-form),
-.pane :global(.qk-docs-preview) {
+.pane :global(.qk-docs-preview),
+.stagePane :global(.qk-sr-param-form),
+.stagePane :global(.qk-docs-preview) {
   width: 100%;
   max-width: none;
   margin: 0;
@@ -63,6 +66,73 @@
   border-radius: 6px;
   color: #b71c1c;
   font-size: 13px;
+}
+
+/* Crossfade cycle (animate prop). */
+.cycleHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 6px;
+}
+
+.cycleHeader .label {
+  margin: 0;
+}
+
+.dots {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.dot,
+.dotActive {
+  appearance: none;
+  width: 8px;
+  height: 8px;
+  padding: 0;
+  border: 0;
+  border-radius: 50%;
+  background: var(--ifm-color-emphasis-300, #d1d5db);
+  cursor: pointer;
+}
+
+.dotActive {
+  background: var(--ifm-color-primary);
+}
+
+.stage {
+  display: grid;
+  min-width: 0;
+}
+
+.stagePane {
+  grid-area: 1 / 1;
+  min-width: 0;
+  opacity: 0;
+  visibility: hidden;
+  transition:
+    opacity var(--pc-fade-ms) ease,
+    visibility 0s linear var(--pc-fade-ms);
+  pointer-events: none;
+}
+
+.stagePaneActive {
+  opacity: 1;
+  visibility: visible;
+  transition:
+    opacity var(--pc-fade-ms) ease,
+    visibility 0s;
+  pointer-events: auto;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .stagePane,
+  .stagePaneActive {
+    transition: none;
+  }
 }
 
 @container (min-width: 720px) {

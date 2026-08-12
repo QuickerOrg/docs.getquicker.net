@@ -1,13 +1,17 @@
 /**
- * Read-only three-column action editor chrome for docs.
- * Sliced from Headless:
- * - pages/ActionDesignerPage.tsx (toolbox + program)
- * - features/toolbox/TreeActionToolbox.tsx
- * - features/program/XProgramEditor.tsx
- * - features/variables/VariableEditor.tsx
- * - features/program/ActionAppearanceSidebar.tsx
+ * Docs-only three-column action editor chrome.
+ * Sliced from Headless ActionDesignerPage / TreeActionToolbox / XProgramEditor.
+ * Optional `dragDemo` animates a toolbox → branch-slot ghost (read-only).
  */
-import {useMemo, type ReactNode} from 'react';
+import {
+  useCallback,
+  useEffect,
+  useMemo,
+  useRef,
+  useState,
+  type CSSProperties,
+  type ReactNode,
+} from 'react';
 import catalogJson from '@site/data/xaction/catalog.json';
 import stepCatalog from '@site/data/step-render/catalog.json';
 import {DocsStepIcon} from '@site/src/components/StepProgramView/DocsStepIcon';
@@ -43,6 +47,35 @@ type CatalogModule = {
 type StepCatalogShape = {
   runners?: Record<string, {icon?: string; name?: string; description?: string}>;
   icons?: Record<string, string>;
+};
+
+/** Auto-demo: drag a toolbox module into an empty if/else branch slot. */
+export type ActionEditorDragDemoConfig = {
+  /** Program after the drop. `data` is the before state. */
+  afterData: unknown;
+  /** Toolbox module being dragged. Defaults to `toolboxSelected`. */
+  moduleKey?: string;
+  /**
+   * Branch slot path, e.g. `2/if` (top-level step index + if|else).
+   * Default: first empty `[data-qk-branch-empty="1"]` slot.
+   */
+  targetSlot?: string;
+  /** Pause on empty scene before lift. Default 1200. */
+  holdBeforeMs?: number;
+  /** Ghost flight duration. Default 900. */
+  flyMs?: number;
+  /** Pause on filled scene after drop. Default 2200. */
+  holdAfterMs?: number;
+};
+
+type DragPhase = 'idle' | 'fly' | 'dropped';
+
+type GhostPose = {
+  x: number;
+  y: number;
+  w: number;
+  h: number;
+  moving: boolean;
 };
 
 const STEP_CATALOG = stepCatalog as StepCatalogShape;
@@ -86,6 +119,10 @@ const DEFAULT_STEPS = {
   ],
 };
 
+const DEFAULT_HOLD_BEFORE = 1200;
+const DEFAULT_FLY_MS = 900;
+const DEFAULT_HOLD_AFTER = 2200;
+
 export type ActionEditorPreviewProps = {
   /** Same as StepProgramView `data`. */
   data?: unknown;
@@ -104,11 +141,20 @@ export type ActionEditorPreviewProps = {
   selectedIndexes?: readonly number[];
   variables?: readonly ProgramVar[];
   showRun?: boolean;
+  /** Docs demo: animate toolbox → branch drop (respects prefers-reduced-motion). */
+  dragDemo?: ActionEditorDragDemoConfig;
   className?: string;
 };
 
 function listModules(): CatalogModule[] {
   return (catalogJson as {modules: CatalogModule[]}).modules;
+}
+
+function prefersReducedMotion(): boolean {
+  return (
+    typeof window !== 'undefined' &&
+    window.matchMedia('(prefers-reduced-motion: reduce)').matches
+  );
 }
 
 function ToolbarBtn({
@@ -137,9 +183,23 @@ function ToolbarBtn({
   );
 }
 
+function measureInRoot(
+  root: HTMLElement,
+  el: Element,
+): {x: number; y: number; w: number; h: number} {
+  const rr = root.getBoundingClientRect();
+  const er = el.getBoundingClientRect();
+  return {
+    x: er.left - rr.left,
+    y: er.top - rr.top,
+    w: er.width,
+    h: er.height,
+  };
+}
+
 /**
  * Docs-only three-column action editor (toolbox + steps + variables).
- * Read-only; no drag / save / Host.
+ * Read-only; no Host. Optional dragDemo for branch-slot teaching.
  */
 export default function ActionEditorPreview({
   data,
@@ -157,10 +217,28 @@ export default function ActionEditorPreview({
   selectedIndexes,
   variables,
   showRun = true,
+  dragDemo,
   className,
 }: ActionEditorPreviewProps): ReactNode {
-  const stepsData = data ?? (example ? undefined : DEFAULT_STEPS);
-  const steps = normalizeStepList(stepsData ?? {steps: []});
+  const rootRef = useRef<HTMLDivElement | null>(null);
+  const [phase, setPhase] = useState<DragPhase>('idle');
+  const [ghost, setGhost] = useState<GhostPose | null>(null);
+  const [dropSlot, setDropSlot] = useState<string | null>(null);
+  const [inView, setInView] = useState(true);
+  const [hovered, setHovered] = useState(false);
+  const [motionOk, setMotionOk] = useState(false);
+  const timersRef = useRef<number[]>([]);
+
+  const beforeData = data ?? (example ? undefined : DEFAULT_STEPS);
+  const [rmShowAfter, setRmShowAfter] = useState(false);
+  const showFilled = dragDemo
+    ? motionOk
+      ? phase === 'dropped'
+      : rmShowAfter
+    : false;
+  const activeData = showFilled && dragDemo ? dragDemo.afterData : beforeData;
+
+  const steps = normalizeStepList(activeData ?? {steps: []});
   const programVars = useMemo(
     () => collectProgramVars(steps, variables),
     [steps, variables],
@@ -181,26 +259,226 @@ export default function ActionEditorPreview({
     return filtered.slice(0, query ? 24 : 14);
   }, [tab.category, query]);
 
-  const selectedKey = toolboxSelected ?? modules[0]?.key;
+  const dragModuleKey = dragDemo?.moduleKey ?? toolboxSelected ?? modules[0]?.key;
+  const selectedKey = toolboxSelected ?? dragModuleKey ?? modules[0]?.key;
+  const dragModule = modules.find((m) => m.key === dragModuleKey) ??
+    listModules().find((m) => m.key === dragModuleKey);
+  const dragIcon = dragModuleKey
+    ? STEP_CATALOG.runners?.[dragModuleKey]?.icon
+    : undefined;
   const showAppearance = focus === 'appearance' || rightTab === 'appearance';
+
+  const clearTimers = useCallback(() => {
+    for (const id of timersRef.current) {
+      window.clearTimeout(id);
+    }
+    timersRef.current = [];
+  }, []);
+
+  const schedule = useCallback(
+    (fn: () => void, ms: number) => {
+      const id = window.setTimeout(fn, ms);
+      timersRef.current.push(id);
+      return id;
+    },
+    [],
+  );
+
+  useEffect(() => {
+    setMotionOk(!prefersReducedMotion());
+  }, []);
+
+  useEffect(() => {
+    const el = rootRef.current;
+    if (!el || !dragDemo) {
+      return undefined;
+    }
+    const io = new IntersectionObserver(
+      ([entry]) => setInView(entry?.isIntersecting ?? false),
+      {threshold: 0.3},
+    );
+    io.observe(el);
+    return () => io.disconnect();
+  }, [dragDemo]);
+
+  // Reduced-motion: crossfade data only.
+  useEffect(() => {
+    if (!dragDemo || motionOk || !inView || hovered) {
+      return undefined;
+    }
+    const holdBefore = dragDemo.holdBeforeMs ?? DEFAULT_HOLD_BEFORE;
+    const holdAfter = dragDemo.holdAfterMs ?? DEFAULT_HOLD_AFTER;
+    let cancelled = false;
+    const loop = (): void => {
+      if (cancelled) return;
+      setRmShowAfter(false);
+      schedule(() => {
+        if (cancelled) return;
+        setRmShowAfter(true);
+        schedule(loop, holdAfter);
+      }, holdBefore);
+    };
+    loop();
+    return () => {
+      cancelled = true;
+      clearTimers();
+    };
+  }, [dragDemo, motionOk, inView, hovered, schedule, clearTimers]);
+
+  // Full drag ghost loop.
+  useEffect(() => {
+    if (!dragDemo || !motionOk || !inView || hovered) {
+      return undefined;
+    }
+
+    const holdBefore = dragDemo.holdBeforeMs ?? DEFAULT_HOLD_BEFORE;
+    const flyMs = dragDemo.flyMs ?? DEFAULT_FLY_MS;
+    const holdAfter = dragDemo.holdAfterMs ?? DEFAULT_HOLD_AFTER;
+    let cancelled = false;
+
+    const clearDropHighlight = (): void => {
+      const root = rootRef.current;
+      if (!root) return;
+      root
+        .querySelectorAll('.branch-box--drop-target')
+        .forEach((node) => node.classList.remove('branch-box--drop-target'));
+    };
+
+    const runCycle = (): void => {
+      if (cancelled) return;
+      clearTimers();
+      clearDropHighlight();
+      setPhase('idle');
+      setGhost(null);
+      setDropSlot(null);
+
+      schedule(() => {
+        if (cancelled) return;
+        const root = rootRef.current;
+        if (!root || !dragModuleKey) {
+          schedule(runCycle, holdAfter);
+          return;
+        }
+
+        const escapeAttr = (value: string): string =>
+          typeof CSS !== 'undefined' && typeof CSS.escape === 'function'
+            ? CSS.escape(value)
+            : value.replace(/\\/g, '\\\\').replace(/"/g, '\\"');
+
+        const source = root.querySelector(
+          `[data-qk-toolbox-key="${escapeAttr(dragModuleKey)}"]`,
+        );
+        let target: Element | null = null;
+        if (dragDemo.targetSlot) {
+          target = root.querySelector(
+            `[data-qk-branch-slot="${escapeAttr(dragDemo.targetSlot)}"]`,
+          );
+        }
+        if (!target) {
+          target = root.querySelector('[data-qk-branch-empty="1"]');
+        }
+        if (!source || !target) {
+          schedule(runCycle, holdAfter);
+          return;
+        }
+
+        const slot =
+          target.getAttribute('data-qk-branch-slot') ?? dragDemo.targetSlot ?? null;
+        setDropSlot(slot);
+        target.classList.add('branch-box--drop-target');
+
+        const dropHit =
+          target.querySelector('.step-listbox-drop-placeholder') ?? target;
+        const from = measureInRoot(root, source);
+        const to = measureInRoot(root, dropHit);
+        const ghostW = Math.min(160, Math.max(96, from.w));
+        const ghostH = 28;
+        const start: GhostPose = {
+          x: from.x + from.w / 2 - ghostW / 2,
+          y: from.y + from.h / 2 - ghostH / 2,
+          w: ghostW,
+          h: ghostH,
+          moving: false,
+        };
+        const end: GhostPose = {
+          x: to.x + to.w / 2 - ghostW / 2,
+          y: to.y + Math.max(0, (to.h - ghostH) / 2),
+          w: ghostW,
+          h: ghostH,
+          moving: true,
+        };
+
+        setPhase('fly');
+        setGhost(start);
+        // Next frame: enable transition toward the drop slot.
+        requestAnimationFrame(() => {
+          if (cancelled) return;
+          requestAnimationFrame(() => {
+            if (cancelled) return;
+            setGhost(end);
+          });
+        });
+
+        schedule(() => {
+          if (cancelled) return;
+          clearDropHighlight();
+          setGhost(null);
+          setPhase('dropped');
+          schedule(() => {
+            if (cancelled) return;
+            runCycle();
+          }, holdAfter);
+        }, flyMs + 40);
+      }, holdBefore);
+    };
+
+    runCycle();
+    return () => {
+      cancelled = true;
+      clearTimers();
+      clearDropHighlight();
+    };
+  }, [
+    dragDemo,
+    motionOk,
+    inView,
+    hovered,
+    dragModuleKey,
+    schedule,
+    clearTimers,
+    beforeData,
+  ]);
+
+  const ghostStyle: CSSProperties | undefined = ghost
+    ? {
+        width: ghost.w,
+        height: ghost.h,
+        transform: `translate(${ghost.x}px, ${ghost.y}px)`,
+        transition: ghost.moving
+          ? `transform ${dragDemo?.flyMs ?? DEFAULT_FLY_MS}ms cubic-bezier(0.22, 1, 0.36, 1)`
+          : 'none',
+      }
+    : undefined;
 
   return (
     <div
+      ref={rootRef}
       className={[
         'qk-ad-editor',
         'qk-docs-preview',
         focus !== 'full' ? `qk-ad-editor--focus-${focus}` : '',
+        dragDemo ? 'qk-ad-editor--drag-demo' : '',
         className ?? '',
       ]
         .filter(Boolean)
         .join(' ')}
       role="img"
-      aria-label="组合动作编辑器（只读示意）">
+      aria-label="组合动作编辑器（只读示意）"
+      onMouseEnter={() => setHovered(true)}
+      onMouseLeave={() => setHovered(false)}>
       {caption ? <div className="qk-ad-editor__caption">{caption}</div> : null}
       <div className="qk-ad-editor__body">
-        <section
-          className="qk-ad-editor__toolbox"
-          aria-label="模块工具箱">
+        <section className="qk-ad-editor__toolbox" aria-label="模块工具箱">
           <div className="toolbox-toolbar">
             <input
               className="filter-box"
@@ -240,6 +518,7 @@ export default function ActionEditorPreview({
                       className={`toolbox-node${selected ? ' selected' : ''}`}
                       role="treeitem"
                       aria-selected={selected}
+                      data-qk-toolbox-key={mod.key}
                       title={mod.description ?? mod.name}>
                       <span className="toolbox-expand hidden" aria-hidden="true" />
                       <DocsStepIcon
@@ -279,8 +558,8 @@ export default function ActionEditorPreview({
           <div className="x-program-editor-steps">
             <StepProgramView
               className="qk-sr-program--embedded"
-              data={stepsData}
-              example={example}
+              data={activeData}
+              example={dragDemo ? undefined : example}
               selectedIndexes={selectedIndexes}
               showVariables={false}
               stepPopup
@@ -335,6 +614,26 @@ export default function ActionEditorPreview({
           </div>
         </div>
       </div>
+
+      {ghost && dragModule ? (
+        <div className="qk-ad-drag-ghost" style={ghostStyle} aria-hidden>
+          <DocsStepIcon
+            className="qk-ad-drag-ghost__icon"
+            spec={dragIcon}
+            size={14}
+            icons={STEP_CATALOG.icons}
+          />
+          <span className="qk-ad-drag-ghost__name">{dragModule.name}</span>
+          <span className="qk-ad-drag-ghost__plus" title="放入">
+            +
+          </span>
+        </div>
+      ) : null}
+      {dragDemo && dropSlot && phase === 'fly' ? (
+        <span className="qk-ad-drag-demo-sr" aria-live="polite">
+          正在拖入分支槽 {dropSlot}
+        </span>
+      ) : null}
     </div>
   );
 }

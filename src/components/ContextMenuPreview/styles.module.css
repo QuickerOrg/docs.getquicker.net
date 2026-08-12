@@ -36,6 +36,13 @@
   margin-left: 5.5rem;
 }
 
+/* Keep layout height when demos hide the menu between beats. */
+.overlayHidden {
+  visibility: hidden;
+  opacity: 0;
+  pointer-events: none;
+}
+
 .panelWrap {
   position: relative;
   display: inline-flex;

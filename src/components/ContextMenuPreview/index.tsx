@@ -1,3 +1,8 @@
+/**
+ * Quicker context / action menu cascade for docs.
+ * Hover opens flyouts (ActionListMenuPopup); leave resets to openPath.
+ * Optional controlled `pickedPath` for click-flash demos.
+ */
 import {useEffect, useLayoutEffect, useRef, useState, type ReactNode} from 'react';
 import {DocsStepIcon} from '@site/src/components/StepProgramView/DocsStepIcon';
 import styles from './styles.module.css';
@@ -23,10 +28,17 @@ export type ContextMenuPreviewProps = {
   items: ContextMenuItem[];
   /** Labels path to highlight and open nested flyouts. Also the reset target. */
   openPath?: string[];
+  /**
+   * Controlled “clicked” highlight for docs demos.
+   * When set, overrides the internal pick flash from user clicks.
+   */
+  pickedPath?: string[] | null;
   /** Optional tooltip on the current hover leaf when the item has no tooltip. */
   tooltip?: string;
   /** Hover to open flyouts. Default true. */
   interactive?: boolean;
+  /** Hide the menu panel (scene-only beat after a click). */
+  menuVisible?: boolean;
   /** Use this preview as the DocCard gallery cover snapshot target. */
   galleryCover?: boolean;
   /** Scene behind the menu, usually a selected StepProgramView. */
@@ -92,7 +104,9 @@ function MenuPanel({
           const hasChildren = Boolean(item.children?.length);
           const tip =
             item.tooltip ??
-            (isOpen && !hasChildren && depth === openPath.length - 1 ? fallbackTooltip : undefined);
+            (isOpen && !hasChildren && depth === openPath.length - 1
+              ? fallbackTooltip
+              : undefined);
           return (
             <button
               key={`${label}-${i}`}
@@ -162,20 +176,29 @@ function MenuPanel({
 
 /**
  * Quicker context / action menu cascade for docs.
- * Hover opens flyouts (ActionListMenuPopup); leave resets to openPath.
  */
 export default function ContextMenuPreview({
   items,
   openPath = [],
+  pickedPath: pickedPathProp,
   tooltip,
   interactive = true,
+  menuVisible = true,
   galleryCover = false,
   children,
   className,
 }: ContextMenuPreviewProps): ReactNode {
   const [path, setPath] = useState(openPath);
-  const [pickedPath, setPickedPath] = useState<string[] | null>(null);
+  const [pickedPathLocal, setPickedPathLocal] = useState<string[] | null>(null);
   const resetTimer = useRef<number | null>(null);
+  const pickedPath =
+    pickedPathProp !== undefined ? pickedPathProp : pickedPathLocal;
+
+  useEffect(() => {
+    setPath(openPath);
+    // openPath is compared by joined labels (stable for demo toggles).
+    // eslint-disable-next-line react-hooks/exhaustive-deps -- join is the identity
+  }, [openPath.join('\u0000')]);
 
   useEffect(() => {
     return () => {
@@ -195,7 +218,7 @@ export default function ContextMenuPreview({
     clearReset();
     resetTimer.current = window.setTimeout(() => {
       setPath(openPath);
-      setPickedPath(null);
+      setPickedPathLocal(null);
     }, 220);
   };
 
@@ -213,18 +236,21 @@ export default function ContextMenuPreview({
       aria-label="菜单示意，可悬停展开子菜单">
       {children ? <div className={styles.scene}>{children}</div> : null}
       <div
-        className={children ? styles.overlay : undefined}
-        onPointerEnter={interactive ? clearReset : undefined}
-        onPointerLeave={interactive ? scheduleReset : undefined}>
+        className={[children ? styles.overlay : '', !menuVisible ? styles.overlayHidden : '']
+          .filter(Boolean)
+          .join(' ')}
+        aria-hidden={!menuVisible}
+        onPointerEnter={interactive && menuVisible ? clearReset : undefined}
+        onPointerLeave={interactive && menuVisible ? scheduleReset : undefined}>
         <MenuPanel
           items={items}
           pathPrefix={[]}
           openPath={interactive ? path : openPath}
           pickedPath={pickedPath}
           fallbackTooltip={tooltip}
-          interactive={interactive}
+          interactive={interactive && menuVisible}
           onHover={setPath}
-          onPick={setPickedPath}
+          onPick={setPickedPathLocal}
         />
       </div>
     </div>

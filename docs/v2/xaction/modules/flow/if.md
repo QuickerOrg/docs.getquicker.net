@@ -25,11 +25,53 @@ legacyContentUpdatedAt: "2021-08-12T06:37:42.000Z"
 
 常见场景：用百度搜选中文字时，成功取到文本就搜这段文字，否则打开百度首页。
 
-![](./img/if-001-413e952756.png)
+```mermaid
+flowchart TD
+  getText[获取选中的文本] --> ok{获取成功?}
+  ok -->|是，运行「如果」分支| join[拼接搜索网址]
+  join --> openSearch[打开此网址]
+  ok -->|否，运行「否则」分支| openHome[打开百度网页]
 
-基本步骤定义如下：
+  classDef decision fill:#C2185B,stroke:#880E4F,color:#fff
+  classDef action fill:#1E88E5,stroke:#1565C0,color:#fff
+  class ok decision
+  class getText,join,openSearch,openHome action
+```
 
-![](./img/if-002-7273a4cef8.png)
+用步骤写出来是这样（判断条件用 [获取选中的文本](/v2/xaction/modules/get_selected_text) 的 **是否成功**）：
+
+<StepProgramView
+  caption="选中文字则搜索，否则打开首页"
+  selectedIndexes={[1]}
+  data={{
+    steps: [
+      {
+        key: 'sys:getSelectedText',
+        outputs: {output: 'selectedText', isSuccess: 'isSelected'},
+      },
+      {
+        key: 'sys:if',
+        inputs: {condition: '{isSelected}'},
+        ifSteps: [
+          {
+            key: 'sys:openUrl',
+            inputs: {url: '$$https://www.baidu.com/s?wd={selectedText}'},
+          },
+          {
+            key: 'sys:notify',
+            inputs: {msg: '已打开搜索'},
+          },
+        ],
+        elseSteps: [
+          {
+            key: 'sys:openUrl',
+            inputs: {url: 'https://www.baidu.com'},
+          },
+        ],
+      },
+    ],
+  }}
+/>
 
 <ModuleParamPreview moduleKey="sys:if" />
 
@@ -42,15 +84,85 @@ Quicker 提供两个模块：
 - **如果**：只有一个分支。条件成立就执行组内步骤，不成立就跳过。
 - **如果/否则**：两个分支。成立走第一组，不成立走第二组。
 
-「如果/否则」覆盖了「如果」的能力。单独提供「如果」，主要是少占步骤列表空间。两个模块可以在步骤列表里右键互转。
+「如果/否则」覆盖了「如果」的能力。单独提供「如果」，主要是少占步骤列表空间。两个模块可以在步骤列表里右键互转：
 
-![](./img/if-004-9e2e72c7fe.gif)
+<ElseToggleMenuDemo caption="右键「如果」→ 增加「否则」；再右键 → 隐藏「否则」变回「如果」。悬停可暂停。" />
 
 ### 将步骤添加到分支
 
-从模块工具箱拖到「如果」或「否则」分支的槽里松开。
+从模块工具箱拖到「如果」或「否则」分支的槽里松开。悬停可暂停演示。
 
-![](./img/if-005-989c3cfd9d.gif)
+<ActionEditorPreview
+  focus="toolbox"
+  toolboxSelected="sys:notify"
+  toolboxSearch="提示"
+  selectedIndexes={[2]}
+  actionTitle="百度搜索"
+  actionDescription="选中文字则搜索，否则打开首页"
+  caption="拖入「如果」分支槽"
+  dragDemo={{
+    moduleKey: 'sys:notify',
+    targetSlot: '2/if',
+    afterData: {
+      steps: [
+        {
+          key: 'sys:getSelectedText',
+          outputs: {output: 'selectedText', isSuccess: 'isSelected'},
+        },
+        {
+          key: 'sys:if',
+          inputs: {condition: '{isSelected}'},
+          ifSteps: [
+            {
+              key: 'sys:openUrl',
+              inputs: {url: '$$https://www.baidu.com/s?wd={selectedText}'},
+            },
+          ],
+          elseSteps: [
+            {
+              key: 'sys:openUrl',
+              inputs: {url: 'https://www.baidu.com'},
+            },
+          ],
+        },
+        {
+          key: 'sys:simpleIf',
+          inputs: {condition: 'true'},
+          ifSteps: [{key: 'sys:notify', inputs: {msg: '提示'}}],
+        },
+      ],
+    },
+  }}
+  data={{
+    steps: [
+      {
+        key: 'sys:getSelectedText',
+        outputs: {output: 'selectedText', isSuccess: 'isSelected'},
+      },
+      {
+        key: 'sys:if',
+        inputs: {condition: '{isSelected}'},
+        ifSteps: [
+          {
+            key: 'sys:openUrl',
+            inputs: {url: '$$https://www.baidu.com/s?wd={selectedText}'},
+          },
+        ],
+        elseSteps: [
+          {
+            key: 'sys:openUrl',
+            inputs: {url: 'https://www.baidu.com'},
+          },
+        ],
+      },
+      {
+        key: 'sys:simpleIf',
+        inputs: {condition: 'true'},
+        ifSteps: [],
+      },
+    ],
+  }}
+/>
 
 ## 参数说明
 
@@ -132,19 +244,94 @@ Quicker 提供两个模块：
 
 按一个变量的不同取值分别执行时，可以用多个连续的「如果」。每个模块负责一个取值。
 
-![](./img/if-009-e6e2ef28a9.png)
+<StepProgramView
+  caption="按选择项分别提示"
+  data={{
+    steps: [
+      {
+        key: 'sys:select',
+        inputs: {
+          type: 'single',
+          prompt: '请选择',
+          items: '百度\n谷歌\n有道',
+        },
+        outputs: {textValue: '选择的项'},
+      },
+      {
+        key: 'sys:simpleIf',
+        inputs: {condition: '$= {选择的项} == "百度"'},
+        note: '如果选择了「百度」',
+        ifSteps: [{key: 'sys:notify', inputs: {msg: '百度'}}],
+      },
+      {
+        key: 'sys:simpleIf',
+        inputs: {condition: '$= {选择的项} == "谷歌"'},
+        note: '如果选择了「谷歌」',
+        ifSteps: [{key: 'sys:notify', inputs: {msg: '谷歌'}}],
+      },
+      {
+        key: 'sys:simpleIf',
+        inputs: {condition: '$= {选择的项} == "有道"'},
+        note: '如果选择了「有道」',
+        ifSteps: [{key: 'sys:notify', inputs: {msg: '有道'}}],
+      },
+    ],
+  }}
+/>
 
 ### 类似 else if
 
 @治钧分享的方法：[用「重复 1 次」包住多个「如果」](https://mp.weixin.qq.com/s/nR7n21i3gKOxARDgYj32SQ)。命中后用 [跳出循环](/v2/xaction/modules/break) 离开，最后一组相当于 else。
 
-![](./img/if-010-40c9938ea4.png)
+<StepProgramView
+  caption="重复 1 次模拟 else if"
+  data={{
+    steps: [
+      {
+        key: 'sys:repeat',
+        inputs: {count: '1', repeatDelayMs: '1'},
+        ifSteps: [
+          {
+            key: 'sys:simpleIf',
+            inputs: {condition: '$= {条件} == 1'},
+            ifSteps: [
+              {key: 'sys:notify', note: '一些步骤', inputs: {msg: '分支 1'}},
+              {key: 'sys:break'},
+            ],
+          },
+          {
+            key: 'sys:simpleIf',
+            inputs: {condition: '$= {条件} == 2'},
+            ifSteps: [
+              {key: 'sys:notify', note: '一些步骤', inputs: {msg: '分支 2'}},
+              {key: 'sys:break'},
+            ],
+          },
+          {
+            key: 'sys:notify',
+            note: '不满足所有条件情况下的一些步骤',
+            inputs: {msg: '默认分支'},
+          },
+        ],
+      },
+    ],
+  }}
+/>
+
+要点：
+
+1. **重复次数**填 `1`。
+2. 每个分支放进一个「如果」模块。
+3. 这些「如果」并排放进「重复」里。
+4. 所有「如果」后面放 else 部分；前面分支命中并 `break` 后不会跑到这里。
+5. 每个分支命中后用「跳出循环」离开「重复」。
 
 ## 限制与排障
 
 - **如果** 需要布尔结果。文本、数字请先写成表达式（如 `$= {文本} != ""`），不要直接拿非布尔变量当条件。
 - 表达式必须以 `$=` 开头，否则会当成普通文本。
 - 空结果不一定等于失败。例如获取选中文本失败时，把 **是否成功** 交给本模块判断。
+- 「获取选中的文本」默认失败后中止动作；要走到「否则」分支时，请关掉该步骤的 **失败后停止**。
 
 ## 相关链接
 

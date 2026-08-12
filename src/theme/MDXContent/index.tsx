@@ -25,6 +25,9 @@ import ClickIndicatorPreview from '@site/src/components/ClickIndicatorPreview';
 import UserInputPreview from '@site/src/components/UserInputPreview';
 import ActionEditorPreview from '@site/src/components/ActionEditorPreview';
 import TextWindowPreview from '@site/src/components/TextWindowPreview';
+import ReportProgressPreview from '@site/src/components/ReportProgressPreview';
+import ExpressionAssistPreview from '@site/src/components/ExpressionAssistPreview';
+import SearchBoxPreview from '@site/src/components/SearchBoxPreview';
 import ScreenshotSelectionDemo from '@site/src/components/ScreenshotSelectionDemo';
 import FlowChart from '@site/src/components/FlowChart';
 import NativeImg from '@site/src/theme/MDXComponents/NativeImg';
@@ -60,6 +63,9 @@ const components = {
   UserInputPreview,
   ActionEditorPreview,
   TextWindowPreview,
+  ReportProgressPreview,
+  ExpressionAssistPreview,
+  SearchBoxPreview,
   ScreenshotSelectionDemo,
   FlowChart,
 } as MDXComponentsType;

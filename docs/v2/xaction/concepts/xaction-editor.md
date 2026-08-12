@@ -91,9 +91,25 @@ legacyContentUpdatedAt: "2025-10-30T03:16:55.000Z"
 - 双击模块：加到列表末尾。
 - `Ctrl` + 拖动已有步骤：复制。
 
-拖入过程见下（连续手势，保留录屏）：
+拖入过程见下（离散示意，悬停可暂停）：
 
-![](./img/xaction-editor-011-ba7240afe2.gif)
+<ActionEditorPreview
+  focus="toolbox"
+  toolboxTab="basic"
+  toolboxSearch="提示"
+  toolboxSelected="sys:notify"
+  actionTitle="添加步骤"
+  actionDescription="从工具箱拖入模块"
+  caption="从工具箱拖到步骤列表"
+  data={{steps: []}}
+  dragDemo={{
+    moduleKey: 'sys:notify',
+    targetSlot: 'steps',
+    afterData: {
+      steps: [{key: 'sys:notify', inputs: {msg: '提示'}}],
+    },
+  }}
+/>
 
 ### 选择步骤
 

@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updatedAt": "2026-08-12T17:10:00+08:00",
+  "updatedAt": "2026-08-13T01:40:00+08:00",
   "items": [
     {
       "image": "docs/v2/xaction/concepts/img/action-custom-context-menu-001-8e5e2322bf.png",
@@ -414,10 +414,12 @@
       "image": "docs/v2/xaction/concepts/img/expression-adv-001-e21604f457.gif",
       "page": "docs/v2/xaction/concepts/expression-adv.md",
       "status": "kept",
-      "reason": "二次重评：表达式补全连续 GIF；缺 ExpressionAssistPreview。keep。",
+      "reason": "表达式补全下拉连续交互；ExpressionAssistPreview 不覆盖补全。keep。",
       "evidence": "manual",
-      "updatedAt": "2026-08-12T16:10:00+08:00",
-      "kind": "gesture-gif"
+      "updatedAt": "2026-08-13T01:40:00+08:00",
+      "kind": "gesture-gif",
+      "action": "kept",
+      "component": null
     },
     {
       "image": "docs/v2/xaction/concepts/img/expression-adv-002-7e8a5da993.png",
@@ -440,11 +442,13 @@
     {
       "image": "docs/v2/xaction/concepts/img/expression-adv-004-c7b4eb9f24.gif",
       "page": "docs/v2/xaction/concepts/expression-adv.md",
-      "status": "kept",
-      "reason": "二次重评：表达式测试器交互 GIF，不为单图新造。keep。",
+      "status": "converted",
+      "reason": "与 if-008 共用 ExpressionAssistPreview。原图保留供审核。",
       "evidence": "manual",
-      "updatedAt": "2026-08-12T16:10:00+08:00",
-      "kind": "gesture-gif"
+      "updatedAt": "2026-08-13T01:20:00+08:00",
+      "kind": "gesture-gif",
+      "action": "replaced",
+      "component": "ExpressionAssistPreview"
     },
     {
       "image": "docs/v2/xaction/concepts/img/expression-adv-005-6e6b36ac6c.png",
@@ -691,11 +695,13 @@
     {
       "image": "docs/v2/xaction/concepts/img/subprogram-002-6f4fc9d808.gif",
       "page": "docs/v2/xaction/concepts/subprogram.md",
-      "status": "kept",
-      "reason": "二次重评：拖入子程序连续桌面 GIF；dragDemo 只覆盖分支槽，不能还原子程序树拖入。keep。",
+      "status": "converted",
+      "reason": "顶层 dragDemo：与 modules/subprogram 同示意。原图保留供审核。",
       "evidence": "manual",
-      "updatedAt": "2026-08-12T16:10:00+08:00",
-      "kind": "gesture-gif"
+      "updatedAt": "2026-08-13T01:00:00+08:00",
+      "kind": "gesture-gif",
+      "component": "ActionEditorPreview",
+      "action": "replaced"
     },
     {
       "image": "docs/v2/xaction/concepts/img/subprogram-003-cb795a4acc.png",
@@ -1094,10 +1100,12 @@
       "image": "docs/v2/xaction/concepts/img/visibility-expression-001-a2ad45e573.gif",
       "page": "docs/v2/xaction/concepts/visibility-expression.md",
       "status": "kept",
-      "reason": "二次重评：子程序参数随下拉显隐的连续录屏，无表单运行时预览。keep。",
+      "reason": "子程序参数可见性连续显隐；缺 Form 运行时预览。keep。",
       "evidence": "manual",
-      "updatedAt": "2026-08-12T16:10:00+08:00",
-      "kind": "gesture-gif"
+      "updatedAt": "2026-08-13T01:40:00+08:00",
+      "kind": "gesture-gif",
+      "action": "kept",
+      "component": null
     },
     {
       "image": "docs/v2/xaction/concepts/img/visibility-expression-002-97e38c5544.png",
@@ -1113,10 +1121,12 @@
       "image": "docs/v2/xaction/concepts/img/visibility-expression-003-dae8a727c3.gif",
       "page": "docs/v2/xaction/concepts/visibility-expression.md",
       "status": "kept",
-      "reason": "二次重评：多字段表单随下拉显隐的连续录屏，无表单运行时预览。keep。",
+      "reason": "表单字段可见性连续显隐；缺 Form 运行时预览。keep。",
       "evidence": "manual",
-      "updatedAt": "2026-08-12T16:10:00+08:00",
-      "kind": "gesture-gif"
+      "updatedAt": "2026-08-13T01:40:00+08:00",
+      "kind": "gesture-gif",
+      "action": "kept",
+      "component": null
     },
     {
       "image": "docs/v2/xaction/concepts/img/visibility-expression-004-21c006aa72.png",
@@ -1260,14 +1270,14 @@
     {
       "image": "docs/v2/xaction/concepts/img/xaction-editor-011-ba7240afe2.gif",
       "kind": "gesture-gif",
-      "action": "kept",
-      "component": null,
+      "action": "replaced",
+      "component": "ActionEditorPreview",
       "confidence": "high",
       "page": "docs/v2/xaction/concepts/xaction-editor.md",
       "notes": "Continuous drag-from-toolbox GIF.",
-      "status": "kept",
-      "reason": "二次重评：从工具箱拖到顶层步骤列表的连续 GIF；dragDemo 只覆盖分支槽，不能冒充顶层投放。keep。",
-      "updatedAt": "2026-08-12T16:10:00+08:00",
+      "status": "converted",
+      "reason": "二次替换：顶层 dragDemo 离散示意替换连续拖入录屏。原图保留供审核。",
+      "updatedAt": "2026-08-13T01:00:00+08:00",
       "evidence": "manual"
     },
     {
@@ -1461,8 +1471,8 @@
       "page": "docs/v2/xaction/concepts/xaction-editor.md",
       "notes": "Continuous wrap-into-parent GIF.",
       "status": "kept",
-      "reason": "二次重评：多选后右键「放入...」包进父步骤的连续 GIF；无 wrap-into-parent 预览。keep。",
-      "updatedAt": "2026-08-12T16:10:00+08:00",
+      "reason": "多选「放入…」包父步骤连续手势；无 wrapDemo。keep。",
+      "updatedAt": "2026-08-13T01:40:00+08:00",
       "evidence": "manual"
     },
     {
@@ -2218,18 +2228,22 @@
       "page": "docs/v2/xaction/modules/compute/color.md",
       "status": "kept",
       "kind": "gesture-gif",
-      "reason": "二次重评：连续桌面录屏（调色板/吸管），无法用组件还原。keep。",
+      "reason": "系统调色板/吸管连续桌面录屏。keep。",
       "evidence": "manual",
-      "updatedAt": "2026-08-12T16:10:00+08:00"
+      "updatedAt": "2026-08-13T01:40:00+08:00",
+      "action": "kept",
+      "component": null
     },
     {
       "image": "docs/v2/xaction/modules/compute/img/color-003-6bd4fc7342.gif",
       "page": "docs/v2/xaction/modules/compute/color.md",
       "status": "kept",
       "kind": "gesture-gif",
-      "reason": "二次重评：连续桌面录屏（屏幕点选颜色），无法用组件还原。keep。",
+      "reason": "屏幕点选颜色连续录屏。keep。",
       "evidence": "manual",
-      "updatedAt": "2026-08-12T16:10:00+08:00"
+      "updatedAt": "2026-08-13T01:40:00+08:00",
+      "action": "kept",
+      "component": null
     },
     {
       "image": "docs/v2/xaction/modules/compute/img/compute-002-5c8245e243.png",
@@ -2843,11 +2857,13 @@
     {
       "image": "docs/v2/xaction/modules/flow/img/if-008-264686b097.gif",
       "page": "docs/v2/xaction/modules/flow/if.md",
-      "status": "deferred",
-      "reason": "二次重评：布尔表达式助手弹窗尚未从 Headless 切片；缺 ExpressionAssistPreview。GIF 暂留。",
+      "status": "converted",
+      "reason": "BoolExpressionHelperWindow 素描替换布尔助手 GIF。原图保留供审核。",
       "evidence": "manual",
-      "updatedAt": "2026-08-12T14:50:00+08:00",
-      "kind": "gesture-gif"
+      "updatedAt": "2026-08-13T01:20:00+08:00",
+      "kind": "gesture-gif",
+      "action": "replaced",
+      "component": "ExpressionAssistPreview"
     },
     {
       "image": "docs/v2/xaction/modules/flow/img/if-009-e6e2ef28a9.png",
@@ -4839,6 +4855,149 @@
       "evidence": "git-diff",
       "commit": "4fa032b",
       "updatedAt": "2026-08-11T19:17:14+08:00"
+    },
+    {
+      "evidence": "manual",
+      "updatedAt": "2026-08-13T01:00:00+08:00",
+      "image": "docs/v2/xaction/guides/img/helloworld-003-e9885f8abf.gif",
+      "page": "docs/v2/xaction/guides/helloworld.md",
+      "status": "converted",
+      "component": "ActionEditorPreview",
+      "kind": "gesture-gif",
+      "reason": "顶层 dragDemo：工具箱「文本窗口」→步骤列表。原图保留供审核。",
+      "action": "replaced"
+    },
+    {
+      "evidence": "manual",
+      "updatedAt": "2026-08-13T01:00:00+08:00",
+      "image": "docs/v2/xaction/modules/flow/img/subprogram-002-6f4fc9d808.gif",
+      "page": "docs/v2/xaction/modules/flow/subprogram.md",
+      "status": "converted",
+      "component": "ActionEditorPreview",
+      "kind": "gesture-gif",
+      "reason": "顶层 dragDemo：工具箱「运行子程序」→步骤列表。原图保留供审核。",
+      "action": "replaced"
+    },
+    {
+      "evidence": "manual",
+      "updatedAt": "2026-08-13T01:00:00+08:00",
+      "image": "docs/v2/xaction/modules/network/img/ai-004-979cc8b0ca.gif",
+      "page": "docs/v2/xaction/modules/network/ai.md",
+      "status": "converted",
+      "component": "TextWindowPreview",
+      "kind": "gesture-gif",
+      "reason": "流式结果终态用 TextWindowPreview；不复刻逐字流出。原图保留供审核。",
+      "action": "replaced"
+    },
+    {
+      "image": "docs/v2/xaction/modules/ui/img/reportprogress-001-0a53ad12b4.gif",
+      "page": "docs/v2/xaction/modules/ui/reportprogress.md",
+      "status": "converted",
+      "action": "replaced",
+      "component": "ReportProgressPreview",
+      "kind": "gesture-gif",
+      "reason": "ProgressReportWindow 右下角多条进度浮层示意。原图保留供审核。",
+      "evidence": "manual",
+      "updatedAt": "2026-08-13T01:10:00+08:00"
+    },
+    {
+      "evidence": "manual",
+      "updatedAt": "2026-08-13T01:30:00+08:00",
+      "image": "docs/v2/xaction/guides/img/search-adv-001-9bb455763a.gif",
+      "page": "docs/v2/xaction/guides/search-adv.md",
+      "status": "converted",
+      "action": "replaced",
+      "component": "SearchBoxPreview",
+      "kind": "gesture-gif",
+      "reason": "SearchWindow Tab 传参示意（pick↔param）。原图保留供审核。"
+    },
+    {
+      "evidence": "manual",
+      "updatedAt": "2026-08-13T01:30:00+08:00",
+      "image": "docs/v2/xaction/guides/img/search-adv-002-358598021a.gif",
+      "page": "docs/v2/xaction/guides/search-adv.md",
+      "status": "converted",
+      "action": "replaced",
+      "component": "SearchBoxPreview",
+      "kind": "gesture-gif",
+      "reason": "SearchWindow 实时搜索结果列表示意。原图保留供审核。"
+    },
+    {
+      "evidence": "manual",
+      "updatedAt": "2026-08-13T01:40:00+08:00",
+      "action": "kept",
+      "component": null,
+      "image": "docs/v2/xaction/modules/system/img/activateprocessmainwindow-002-d898ebff74.gif",
+      "page": "docs/v2/xaction/modules/system/activateprocessmainwindow.md",
+      "status": "kept",
+      "kind": "gesture-gif",
+      "reason": "跨窗窗口拾取拖拽连续录屏，无法用 ModuleParamPreview 还原。keep。"
+    },
+    {
+      "evidence": "manual",
+      "updatedAt": "2026-08-13T01:40:00+08:00",
+      "action": "kept",
+      "component": null,
+      "image": "docs/v2/xaction/guides/img/scroll-trigger-001-efdecd7a83.gif",
+      "page": "docs/v2/xaction/guides/scroll-trigger.md",
+      "status": "kept",
+      "kind": "gesture-gif",
+      "reason": "宿主 App + 悬浮钮 + 滚轮连续触发。keep。"
+    },
+    {
+      "evidence": "manual",
+      "updatedAt": "2026-08-13T01:40:00+08:00",
+      "action": "kept",
+      "component": null,
+      "image": "docs/v2/xaction/modules/image/img/showimage-006-4786e0565a.gif",
+      "page": "docs/v2/xaction/modules/image/showimage.md",
+      "status": "kept",
+      "kind": "gesture-gif",
+      "reason": "Ctrl+拖出到外部应用的 OS DnD。keep。"
+    },
+    {
+      "evidence": "manual",
+      "updatedAt": "2026-08-13T01:40:00+08:00",
+      "action": "kept",
+      "component": null,
+      "image": "docs/v2/xaction/guides/img/url-links-001-de103b4446.gif",
+      "page": "docs/v2/xaction/guides/url-links.md",
+      "status": "kept",
+      "kind": "gesture-gif",
+      "reason": "浏览器扩展浮层连续录屏。keep。"
+    },
+    {
+      "evidence": "manual",
+      "updatedAt": "2026-08-13T01:40:00+08:00",
+      "action": "kept",
+      "component": null,
+      "image": "docs/v2/xaction/modules/files/img/statestorage-005-8fb388416a.gif",
+      "page": "docs/v2/xaction/modules/files/statestorage.md",
+      "status": "kept",
+      "kind": "gesture-gif",
+      "reason": "面板徽标动态；缺 ActionBadgePreview。keep。"
+    },
+    {
+      "evidence": "manual",
+      "updatedAt": "2026-08-13T01:40:00+08:00",
+      "action": "deferred",
+      "component": null,
+      "image": "docs/v2/xaction/modules/ui/img/custompanel-018-b804d0da00.gif",
+      "page": "docs/v2/xaction/modules/ui/custompanel.md",
+      "status": "deferred",
+      "kind": "gesture-gif",
+      "reason": "需 CustomPanelPreview（折叠动画）；体量大单开一轮再 port。"
+    },
+    {
+      "evidence": "manual",
+      "updatedAt": "2026-08-13T01:40:00+08:00",
+      "action": "deferred",
+      "component": null,
+      "image": "docs/v2/xaction/modules/ui/img/custompanel-019-2dc1e745b0.gif",
+      "page": "docs/v2/xaction/modules/ui/custompanel.md",
+      "status": "deferred",
+      "kind": "gesture-gif",
+      "reason": "需 CustomPanelPreview（拖窗）；与 018 同阻塞。"
     }
   ]
 }

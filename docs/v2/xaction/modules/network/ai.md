@@ -168,7 +168,10 @@ legacyContentUpdatedAt: "2025-11-04T00:24:46.000Z"
 
 ### 写到文本窗口
 
-![](./img/ai-004-979cc8b0ca.gif)
+<TextWindowPreview
+  title="文本窗口"
+  text={'翻译结果：\nThe quick brown fox jumps over the lazy dog.'}
+/>
 
 先开一个非等待的文本窗口，设好标识（建议 `=`，等于动作 ID，避免多个动作抢同一个窗）：
 

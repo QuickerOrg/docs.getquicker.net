@@ -422,6 +422,35 @@ html[data-theme="dark"] .qk-sr-program {
   box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--ad-border-input) 50%, transparent);
 }
 
+/* Top-level steps list drop target (ActionEditorPreview dragDemo targetSlot=steps) */
+.qk-sr-program .qk-sr-program__steps.qk-sr-steps--drop-target,
+.qk-sr-program.qk-sr-steps--drop-target .qk-sr-program__steps,
+.qk-sr-program.qk-sr-steps--drop-target {
+  background: var(--ad-bg-drop-zone);
+  box-shadow: inset 0 0 0 1px var(--ad-accent-line);
+}
+
+.qk-sr-program .qk-sr-steps--drop-target .step-listbox-drop-placeholder,
+.qk-sr-program.qk-sr-steps--drop-target .step-listbox-drop-placeholder {
+  background: var(--ad-bg-drop-zone);
+  box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--ad-border-input) 50%, transparent);
+  min-height: 28px;
+  height: 28px;
+}
+
+.qk-sr-program__steps--empty-drop {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  min-height: 72px;
+  padding: 8px 4px;
+  box-sizing: border-box;
+}
+
+.qk-sr-program .qk-sr-steps-end-drop {
+  margin-top: 2px;
+}
+
 .qk-sr-program .step-row {
   width: 100%;
   min-height: 26px;

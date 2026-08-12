@@ -25,6 +25,7 @@ const PREVIEW_TAGS = [
   'MsgBoxPreview',
   'ChoiceListPreview',
   'ContextMenuPreview',
+  'ElseToggleMenuDemo',
   'VariableDefPreview',
   'StepProgramView',
   'WaitWinPreview',
@@ -33,7 +34,50 @@ const PREVIEW_TAGS = [
   'CoordDiagram',
   'ClickIndicatorPreview',
   'UserInputPreview',
+  'ActionEditorPreview',
+  'TextWindowPreview',
+  'ReportProgressPreview',
+  'ExpressionAssistPreview',
+  'SearchBoxPreview',
+  'PreviewMarks',
+  'PreviewMap',
+  'PreviewCompare',
 ];
+
+/** Previews written in MDX without a leftover screenshot. Skip unpaired ModuleParamPreview (too many heroes). */
+function shouldEmitDirect(name) {
+  return name !== 'ModuleParamPreview';
+}
+
+const DECISIONS_FILE = path.join(repoRoot, 'data', 'screenshot-replace', 'decisions.json');
+
+/** @returns {Map<string, {status?: string, action?: string, component?: string|null, reason?: string, notes?: string, kind?: string, sourceSnippet?: string, props?: object}>} */
+function loadDecisionsByImage() {
+  /** @type {Map<string, {status?: string, action?: string, component?: string|null, reason?: string, notes?: string, kind?: string, sourceSnippet?: string, props?: object}>} */
+  const map = new Map();
+  if (!existsSync(DECISIONS_FILE)) return map;
+  try {
+    const raw = JSON.parse(readFileSync(DECISIONS_FILE, 'utf8'));
+    const items = Array.isArray(raw?.items) ? raw.items : [];
+    for (const it of items) {
+      if (!it?.image) continue;
+      const key = String(it.image).replaceAll('\\', '/');
+      map.set(key, {
+        status: it.status || it.action,
+        action: it.action,
+        component: it.component || null,
+        reason: it.reason,
+        notes: it.notes,
+        kind: it.kind,
+        sourceSnippet: it.sourceSnippet,
+        props: it.props,
+      });
+    }
+  } catch {
+    // ignore malformed ledger
+  }
+  return map;
+}
 
 function walkMd(dir, acc = []) {
   for (const name of readdirSync(dir)) {
@@ -189,7 +233,8 @@ function putParsedProp(props, name, expr) {
     const value = parseJsLiteral(expr.raw);
     props[name] = typeof value === 'string' ? value : JSON.stringify(value);
   } catch {
-    // keep going; incomplete props are better than failing the page
+    // Still record raw so gesture filters (dragDemo/wheelDelay/…) can see the prop.
+    props[name] = expr.raw;
   }
 }
 
@@ -226,12 +271,16 @@ function unescapeJsStringContent(inner, quote) {
 function extractComponents(text) {
   /** @type {{name: string, raw: string, props: Record<string, string>, index: number}[]} */
   const items = [];
+  const wrapperNames = new Set(['PreviewMarks', 'PreviewMap', 'PreviewCompare']);
+
   for (const name of PREVIEW_TAGS) {
-    const re = new RegExp(`<${name}\\b([\\s\\S]*?)/>`, 'g');
+    const re = wrapperNames.has(name)
+      ? new RegExp(`<${name}\\b([\\s\\S]*?)>([\\s\\S]*?)<\\/${name}>|<${name}\\b([\\s\\S]*?)/>`, 'g')
+      : new RegExp(`<${name}\\b([\\s\\S]*?)/>`, 'g');
     let m;
     while ((m = re.exec(text))) {
       const raw = m[0];
-      const body = m[1] ?? '';
+      const body = (m[1] ?? m[3] ?? '') || '';
       /** @type {Record<string, string>} */
       const props = {};
       for (const pm of body.matchAll(/(\w+)="([^"]*)"/g)) {
@@ -281,6 +330,33 @@ function extractComponents(text) {
         'showParams',
         'showKey',
         'remark',
+        'text',
+        'showLineNum',
+        'showToolbar',
+        'mode',
+        'query',
+        'selectedAction',
+        'selectedIcon',
+        'results',
+        'animate',
+        'toolboxTab',
+        'toolboxSearch',
+        'toolboxSelected',
+        'actionTitle',
+        'actionDescription',
+        'focus',
+        'dragDemo',
+        'historyDemo',
+        'wheelDelay',
+        'afterData',
+        'showRun',
+        'variable',
+        'operation',
+        'paramTitle',
+        'paramValue',
+        'tab',
+        'marks',
+        'anchors',
       ]) {
         putParsedProp(props, propName, extractPropExpr(body, propName));
       }
@@ -296,11 +372,15 @@ function listOrphanImages(pageFile, text) {
   const imgDir = path.join(path.dirname(pageFile), 'img');
   if (!existsSync(imgDir)) return [];
   const pageStem = path.basename(pageFile, path.extname(pageFile)).toLowerCase();
-  // Shared category img/ folders: only pair files for this page stem (mouse-*.png).
+  // Shared category img/ folders: only this page's numbered assets (stem-001-hash.ext).
+  // Avoid `expression` matching `expression-adv-*`.
+  const stemRe = new RegExp(
+    `^${pageStem.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')}-\\d{3}-`,
+    'i',
+  );
   const files = readdirSync(imgDir).filter((f) => {
-    if (!/\.(png|jpg|jpeg|webp)$/i.test(f)) return false;
-    const lower = f.toLowerCase();
-    return lower.startsWith(`${pageStem}-`) || lower.startsWith(`${pageStem}_`);
+    if (!/\.(png|jpg|jpeg|webp|gif)$/i.test(f)) return false;
+    return stemRe.test(f);
   });
   return files
     .filter((f) => !text.includes(f))
@@ -316,127 +396,302 @@ function stableId(pageRel, imageRel) {
   return createHash('sha1').update(`${pageRel}|${imageRel}`).digest('hex').slice(0, 16);
 }
 
-function pickComponentForImage(imageName, components, moduleKey) {
-  const is001 = /-001-/.test(imageName);
-  const mpp = components.filter((c) => c.name === 'ModuleParamPreview');
-  const runtime = components.filter((c) => c.name !== 'ModuleParamPreview' && c.name !== 'StepProgramView');
-  const steps = components.filter((c) => c.name === 'StepProgramView');
+function imageSeq(fileName) {
+  const m = /-(\d{3})-/i.exec(fileName);
+  return m ? Number(m[1]) : 9999;
+}
 
-  const pickNamed = (name) => components.find((c) => c.name === name);
+function isConvertedStatus(status) {
+  return status === 'converted' || status === 'replaced';
+}
 
-  // Pages that mix runtime, parameter, and variable-definition screenshots need
-  // explicit image-to-component routing. Filename-wide hints (for example
-  // "menu" or "waitwin") are too broad for these pages.
-  if (/action-custom-context-menu-007-/i.test(imageName)) return pickNamed('ModuleParamPreview');
-  if (/notify-002-/i.test(imageName)) return pickNamed('ModuleParamPreview');
-  if (/var-dict-(001|002)-/i.test(imageName)) return pickNamed('VariableDefPreview');
-  if (/var-dict-(003|004)-/i.test(imageName)) return pickNamed('ModuleParamPreview');
-  if (/showmenu-002-/i.test(imageName)) return pickNamed('ModuleParamPreview');
-  if (/showmenu-(001|003)-/i.test(imageName)) return pickNamed('ContextMenuPreview');
-  if (/showwaitwin-(002|004)-/i.test(imageName)) return pickNamed('ModuleParamPreview');
-  if (/showwaitwin-001-/i.test(imageName)) return pickNamed('WaitWinPreview');
-  if (/userinput-001-/i.test(imageName)) return pickNamed('UserInputPreview');
+/**
+ * Resolve decision.component which may be compound ("PreviewMarks+ModuleParamPreview").
+ * Prefer the leftmost page instance (wrapper) so pools stay disjoint.
+ */
+function resolveDecisionComponentName(decidedName, components) {
+  if (!decidedName) return null;
+  if (components.some((c) => c.name === decidedName)) return decidedName;
+  if (!decidedName.includes('+')) return decidedName;
+  const parts = decidedName.split('+').map((s) => s.trim()).filter(Boolean);
+  for (const part of parts) {
+    if (components.some((c) => c.name === part)) return part;
+  }
+  return parts[0] || decidedName;
+}
 
-  // Annotated / concept diagrams must stay as images — never pair with live previews.
-  if (/(coord|diagram|origin)/i.test(imageName)) return null;
+function decisionBlob(dec) {
+  return `${dec?.reason || ''} ${dec?.notes || ''} ${dec?.kind || ''}`;
+}
 
-  if (/tablevar-(003|004)-/i.test(imageName)) {
-    const tableField = components.find((c) => c.name === 'TableFieldPreview');
-    if (tableField) return tableField;
+/**
+ * Only bind live props when the page instance is unambiguous.
+ * Ambiguous multi-instance pages → page-ref (review UI opens the real doc).
+ * Never zip orphans to the N-th ModuleParamPreview — that caused mass mismatches.
+ */
+function pickBoundComponent(decidedName, pool, dec, moduleKey) {
+  const empty = {
+    name: decidedName,
+    raw: `<${decidedName} />`,
+    props:
+      moduleKey && decidedName === 'ModuleParamPreview' ? {moduleKey} : {},
+    index: -1,
+  };
+
+  if (dec?.sourceSnippet && typeof dec.sourceSnippet === 'string') {
+    const parsed = extractComponents(dec.sourceSnippet);
+    const hit = parsed.find((c) => c.name === decidedName) || parsed[0];
+    if (hit) {
+      return {comp: hit, confidence: 'decision-snippet', renderMode: 'preview'};
+    }
   }
 
-  if (/tableoperation-(004|005|009|010)-/i.test(imageName)) {
-    return pickNamed('TableDataPreview');
-  }
-
-  // Runtime screenshots: prefer toast/dialog/list even when filename is *-001*
-  if (/(notify|msgbox|userselect|toast|menu)/i.test(imageName) && runtime.length) {
-    const byHint = runtime.find((c) => {
-      if (/notify/i.test(imageName)) return c.name === 'NotifyToastPreview';
-      if (/msgbox/i.test(imageName)) return c.name === 'MsgBoxPreview';
-      if (/userselect/i.test(imageName)) return c.name === 'ChoiceListPreview';
-      if (/menu/i.test(imageName)) return c.name === 'ContextMenuPreview';
-      return false;
-    });
-    if (byHint) return byHint;
-  }
-
-  if (/(showwaitwin|waitwin)/i.test(imageName) && runtime.length) {
-    const wait = runtime.find((c) => c.name === 'WaitWinPreview');
-    if (wait) return wait;
-  }
-
-  if (is001 && mpp.length) {
-    return mpp[0];
-  }
-  if (mpp.length) return mpp[0];
-  if (runtime.length) return runtime[0];
-  // StepProgramView only pairs when the orphan is clearly a steps/editor chrome shot.
-  // Concept diagrams (e.g. tablevar-001 annotated 列/行) must not steal the loop wire.
-  if (steps.length && /(steps?|flow|if-else|editor|chrome)/i.test(imageName)) {
-    return steps[0];
-  }
-  if (moduleKey) {
+  if (dec?.props && typeof dec.props === 'object' && !Array.isArray(dec.props)) {
+    /** @type {Record<string, string>} */
+    const props = {};
+    for (const [k, v] of Object.entries(dec.props)) {
+      props[k] = typeof v === 'string' ? v : JSON.stringify(v);
+    }
     return {
-      name: 'ModuleParamPreview',
-      raw: `<ModuleParamPreview moduleKey="${moduleKey}" />`,
-      props: {moduleKey},
-      index: -1,
+      comp: {name: decidedName, raw: `<${decidedName} />`, props, index: -1},
+      confidence: 'decision-props',
+      renderMode: 'preview',
     };
   }
-  return null;
+
+  if (pool.length === 1) {
+    return {comp: pool[0], confidence: 'decision-unique', renderMode: 'preview'};
+  }
+
+  const blob = decisionBlob(dec);
+  if (decidedName === 'ActionEditorPreview') {
+    if (/dragDemo|顶层 drag|分支槽|拖入|drag-from-toolbox|工具箱→/i.test(blob)) {
+      const drags = pool.filter((c) => Boolean(c.props.dragDemo));
+      if (drags.length === 1) {
+        return {comp: drags[0], confidence: 'decision-gesture', renderMode: 'preview'};
+      }
+    }
+    if (/historyDemo|撤销|重做/i.test(blob)) {
+      const hist = pool.filter((c) => Boolean(c.props.historyDemo));
+      if (hist.length === 1) {
+        return {comp: hist[0], confidence: 'decision-gesture', renderMode: 'preview'};
+      }
+    }
+  }
+  if (decidedName === 'StepProgramView' && /wheelDelay|滚轮|延时/i.test(blob)) {
+    let wheels = pool.filter((c) => Boolean(c.props.wheelDelay));
+    if (/on delay|delay step|等待时间|sys:delay/i.test(blob)) {
+      const delayWheels = wheels.filter((c) => /sys:delay/.test(c.props.data || ''));
+      if (delayWheels.length === 1) {
+        return {comp: delayWheels[0], confidence: 'decision-gesture', renderMode: 'preview'};
+      }
+      wheels = delayWheels.length ? delayWheels : wheels;
+    } else {
+      const nonDelay = wheels.filter((c) => !/sys:delay/.test(c.props.data || ''));
+      if (nonDelay.length === 1) {
+        return {comp: nonDelay[0], confidence: 'decision-gesture', renderMode: 'preview'};
+      }
+    }
+    if (wheels.length === 1) {
+      return {comp: wheels[0], confidence: 'decision-gesture', renderMode: 'preview'};
+    }
+  }
+  if (decidedName === 'ElseToggleMenuDemo' && pool.length >= 1) {
+    // Usually one per page.
+    if (pool.length === 1) {
+      return {comp: pool[0], confidence: 'decision-unique', renderMode: 'preview'};
+    }
+  }
+  if (decidedName === 'SearchBoxPreview') {
+    if (/实时|live/i.test(blob)) {
+      const lives = pool.filter((c) => c.props.mode === 'live');
+      if (lives.length === 1) {
+        return {comp: lives[0], confidence: 'decision-gesture', renderMode: 'preview'};
+      }
+    }
+    if (/Tab|传参|pick|param/i.test(blob)) {
+      const picks = pool.filter(
+        (c) => c.props.mode === 'pick' || c.props.mode === 'param' || !c.props.mode,
+      );
+      if (picks.length === 1) {
+        return {comp: picks[0], confidence: 'decision-gesture', renderMode: 'preview'};
+      }
+    }
+  }
+
+  return {comp: empty, confidence: 'page-ref', renderMode: 'page-ref'};
 }
 
-/** Previews written in MDX without a leftover screenshot. Skip unpaired ModuleParamPreview (too many heroes). */
-function shouldEmitDirect(name) {
-  return name !== 'ModuleParamPreview';
-}
-
-function assignComponents(orphans, components, moduleKey) {
+/**
+ * Pair orphan images using decisions.json only.
+ * kept / deferred / missing → skip.
+ * Prefer unambiguous binds; when remaining orphan count == remaining instance
+ * count for that type, zip in document/image order (decision-order).
+ * Otherwise page-ref + candidate props (no guessed single preview).
+ */
+function assignComponents(orphans, components, moduleKey, decisions) {
   /** @type {Record<string, typeof components>} */
   const byName = {};
   for (const c of components) {
     (byName[c.name] ||= []).push(c);
   }
-  /** @type {Record<string, number>} */
-  const nextIdx = {};
 
-  /** @type {{orphan: typeof orphans[0], comp: NonNullable<ReturnType<typeof pickComponentForImage>>}[]} */
-  const pairs = [];
+  /** @type {{orphan: (typeof orphans)[0], decidedName: string, dec: object}[]} */
+  const claimed = [];
+  /** @type {{orphan: (typeof orphans)[0], decidedName: string}[]} */
+  const keptRows = [];
 
   for (const orphan of orphans) {
-    const picked = pickComponentForImage(orphan.fileName, components, moduleKey);
-    if (!picked) continue;
-
-    const pool = byName[picked.name] || [picked];
-    const idx = nextIdx[picked.name] || 0;
-    const comp = pool[Math.min(idx, pool.length - 1)];
-    nextIdx[picked.name] = idx + 1;
-
-    pairs.push({orphan, comp});
+    const dec = decisions.get(orphan.relPath);
+    if (!dec || !isConvertedStatus(dec.status) || !dec.component) {
+      continue;
+    }
+    const decidedName = resolveDecisionComponentName(String(dec.component), components);
+    if (!decidedName) continue;
+    // kept = leftover asset for human review only; never consume live instances.
+    if (dec.action === 'kept') {
+      keptRows.push({orphan, decidedName});
+      continue;
+    }
+    claimed.push({orphan, decidedName, dec});
   }
+
+  claimed.sort(
+    (a, b) =>
+      imageSeq(a.orphan.fileName) - imageSeq(b.orphan.fileName) ||
+      a.orphan.fileName.localeCompare(b.orphan.fileName, 'en'),
+  );
+
+  /** @type {{orphan: (typeof orphans)[0], comp: {name: string, raw: string, props: Record<string, string>, index: number}, confidence: string, decidedComponent: string, renderMode: string, candidates?: {props: Record<string, string>, snippet: string}[]}[]} */
+  const pairs = [];
+  /** @type {Set<number>} */
+  const usedIndexes = new Set();
+
+  /** @type {Record<string, typeof claimed>} */
+  const byDecided = {};
+  for (const row of claimed) {
+    (byDecided[row.decidedName] ||= []).push(row);
+  }
+
+  for (const [decidedName, group] of Object.entries(byDecided)) {
+    const fullPool = byName[decidedName] || [];
+    /** @type {typeof group} */
+    const deferred = [];
+
+    for (const row of group) {
+      const available = fullPool.filter((c) => !usedIndexes.has(c.index));
+      const {comp, confidence, renderMode} = pickBoundComponent(
+        decidedName,
+        available,
+        row.dec,
+        moduleKey,
+      );
+      if (renderMode === 'preview' && comp.index >= 0) {
+        usedIndexes.add(comp.index);
+        pairs.push({
+          orphan: row.orphan,
+          comp,
+          confidence,
+          decidedComponent: decidedName,
+          renderMode,
+        });
+      } else {
+        deferred.push(row);
+      }
+    }
+
+    const remainingPool = fullPool.filter((c) => !usedIndexes.has(c.index));
+    if (deferred.length > 0 && deferred.length === remainingPool.length) {
+      deferred.sort(
+        (a, b) =>
+          imageSeq(a.orphan.fileName) - imageSeq(b.orphan.fileName) ||
+          a.orphan.fileName.localeCompare(b.orphan.fileName, 'en'),
+      );
+      remainingPool.sort((a, b) => a.index - b.index);
+      for (let i = 0; i < deferred.length; i += 1) {
+        const comp = remainingPool[i];
+        usedIndexes.add(comp.index);
+        pairs.push({
+          orphan: deferred[i].orphan,
+          comp,
+          confidence: 'decision-order',
+          decidedComponent: decidedName,
+          renderMode: 'preview',
+        });
+      }
+      continue;
+    }
+
+    const candidates = remainingPool.slice(0, 12).map((c) => ({
+      props: c.props,
+      snippet: c.raw.replace(/\s+/g, ' ').trim().slice(0, 240),
+    }));
+    for (const row of deferred) {
+      pairs.push({
+        orphan: row.orphan,
+        comp: {
+          name: decidedName,
+          raw: `<${decidedName} />`,
+          props:
+            moduleKey && decidedName === 'ModuleParamPreview' ? {moduleKey} : {},
+          index: -1,
+        },
+        confidence: 'page-ref',
+        decidedComponent: decidedName,
+        renderMode: 'page-ref',
+        candidates,
+      });
+    }
+  }
+
+  for (const {orphan, decidedName} of keptRows) {
+    const pool = byName[decidedName] || [];
+    pairs.push({
+      orphan,
+      comp: {
+        name: decidedName,
+        raw: `<${decidedName} />`,
+        props:
+          moduleKey && decidedName === 'ModuleParamPreview' ? {moduleKey} : {},
+        index: -1,
+      },
+      confidence: 'page-ref',
+      decidedComponent: decidedName,
+      renderMode: 'page-ref',
+      candidates: pool.slice(0, 12).map((c) => ({
+        props: c.props,
+        snippet: c.raw.replace(/\s+/g, ' ').trim().slice(0, 240),
+      })),
+    });
+  }
+
   return pairs;
 }
 
 function main() {
   const pages = walkMd(docsRoot);
+  const decisions = loadDecisionsByImage();
   /** @type {object[]} */
   const items = [];
+  let skippedNoDecision = 0;
+  const confidenceCounts = {};
 
   for (const file of pages) {
     const text = readFileSync(file, 'utf8');
     const components = extractComponents(text);
-    if (components.length === 0) continue;
     const orphans = listOrphanImages(file, text);
+    if (components.length === 0 && orphans.length === 0) continue;
 
     const pageRel = path.relative(repoRoot, file).replaceAll('\\', '/');
     const moduleKey = moduleKeyFromPage(text);
     const pageUrl = slugFromFrontMatter(text, file);
     const title = titleFromFrontMatter(text, file);
-    const pairs = assignComponents(orphans, components, moduleKey);
+    const pairs = assignComponents(orphans, components, moduleKey, decisions);
+    skippedNoDecision += Math.max(0, orphans.length - pairs.length);
     const used = new Set(pairs.map(({comp}) => `${comp.name}#${comp.index}`));
 
-    for (const {orphan, comp} of pairs) {
+    for (const {orphan, comp, confidence, decidedComponent, renderMode, candidates} of pairs) {
+      confidenceCounts[confidence] = (confidenceCounts[confidence] || 0) + 1;
       const id = stableId(pageRel, orphan.relPath);
       items.push({
         id,
@@ -448,8 +703,15 @@ function main() {
         image: orphan.relPath,
         imageName: orphan.fileName,
         component: comp.name,
-        props: comp.props,
-        sourceSnippet: comp.raw.replace(/\s+/g, ' ').trim().slice(0, 240),
+        decidedComponent: decidedComponent || comp.name,
+        pairConfidence: confidence,
+        renderMode: renderMode || 'preview',
+        props: renderMode === 'page-ref' ? {} : comp.props,
+        candidates: renderMode === 'page-ref' && candidates?.length ? candidates : undefined,
+        sourceSnippet:
+          renderMode === 'page-ref'
+            ? ''
+            : comp.raw.replace(/\s+/g, ' ').trim().slice(0, 240),
       });
     }
 
@@ -467,6 +729,7 @@ function main() {
         image: '',
         imageName: comp.props.caption || '（直接写组件）',
         component: comp.name,
+        pairConfidence: 'direct',
         props: comp.props,
         sourceSnippet: comp.raw.replace(/\s+/g, ' ').trim().slice(0, 240),
       });
@@ -494,6 +757,8 @@ function main() {
     count: items.length,
     byComponent,
     bySource,
+    pairConfidence: confidenceCounts,
+    skippedOrphansWithoutConvertedDecision: skippedNoDecision,
     items,
   };
 
@@ -501,6 +766,8 @@ function main() {
   writeFileSync(outFile, JSON.stringify(catalog, null, 2), 'utf8');
   console.log(`wrote ${items.length} items → ${path.relative(repoRoot, outFile)}`);
   console.log(bySource);
+  console.log('pairConfidence', confidenceCounts);
+  console.log('skipped orphans (no converted decision)', skippedNoDecision);
   console.log(byComponent);
 }
 

@@ -49,14 +49,16 @@ type StepCatalogShape = {
   icons?: Record<string, string>;
 };
 
-/** Auto-demo: drag a toolbox module into an empty if/else branch slot. */
+/** Auto-demo: drag a toolbox module into a branch slot or top-level steps list. */
 export type ActionEditorDragDemoConfig = {
   /** Program after the drop. `data` is the before state. */
   afterData: unknown;
   /** Toolbox module being dragged. Defaults to `toolboxSelected`. */
   moduleKey?: string;
   /**
-   * Branch slot path, e.g. `2/if` (top-level step index + if|else).
+   * Drop target:
+   * - Branch slot path, e.g. `2/if` → `[data-qk-branch-slot]`
+   * - `steps` / `steps:end` → top-level steps list `[data-qk-drop-slot="steps"]`
    * Default: first empty `[data-qk-branch-empty="1"]` slot.
    */
   targetSlot?: string;
@@ -67,6 +69,10 @@ export type ActionEditorDragDemoConfig = {
   /** Pause on filled scene after drop. Default 2200. */
   holdAfterMs?: number;
 };
+
+function isTopLevelStepsSlot(slot: string | undefined): boolean {
+  return slot === 'steps' || slot === 'steps:end';
+}
 
 /** Auto-demo: click undo/redo through a short history stack. */
 export type ActionEditorHistoryFrame = {
@@ -296,8 +302,16 @@ export default function ActionEditorPreview({
           return hay.includes(query);
         })
       : byTab;
-    return filtered.slice(0, query ? 24 : 14);
-  }, [tab.category, query]);
+    const pinnedKey = dragDemo?.moduleKey ?? toolboxSelected;
+    const list = filtered.slice(0, query ? 24 : 14);
+    if (pinnedKey && !list.some((item) => item.key === pinnedKey)) {
+      const pinned = all.find((item) => item.key === pinnedKey);
+      if (pinned) {
+        return [pinned, ...list].slice(0, query ? 24 : 14);
+      }
+    }
+    return list;
+  }, [tab.category, query, dragDemo?.moduleKey, toolboxSelected]);
 
   const dragModuleKey = dragDemo?.moduleKey ?? toolboxSelected ?? modules[0]?.key;
   const selectedKey = toolboxSelected ?? dragModuleKey ?? modules[0]?.key;
@@ -381,8 +395,11 @@ export default function ActionEditorPreview({
       const root = rootRef.current;
       if (!root) return;
       root
-        .querySelectorAll('.branch-box--drop-target')
-        .forEach((node) => node.classList.remove('branch-box--drop-target'));
+        .querySelectorAll('.branch-box--drop-target, .qk-sr-steps--drop-target')
+        .forEach((node) => {
+          node.classList.remove('branch-box--drop-target');
+          node.classList.remove('qk-sr-steps--drop-target');
+        });
     };
 
     const runCycle = (): void => {
@@ -409,13 +426,16 @@ export default function ActionEditorPreview({
         const source = root.querySelector(
           `[data-qk-toolbox-key="${escapeAttr(dragModuleKey)}"]`,
         );
+        const wantTopLevel = isTopLevelStepsSlot(dragDemo.targetSlot);
         let target: Element | null = null;
-        if (dragDemo.targetSlot) {
+        if (wantTopLevel) {
+          target = root.querySelector('[data-qk-drop-slot="steps"]');
+        } else if (dragDemo.targetSlot) {
           target = root.querySelector(
             `[data-qk-branch-slot="${escapeAttr(dragDemo.targetSlot)}"]`,
           );
         }
-        if (!target) {
+        if (!target && !wantTopLevel) {
           target = root.querySelector('[data-qk-branch-empty="1"]');
         }
         if (!source || !target) {
@@ -424,9 +444,16 @@ export default function ActionEditorPreview({
         }
 
         const slot =
-          target.getAttribute('data-qk-branch-slot') ?? dragDemo.targetSlot ?? null;
+          target.getAttribute('data-qk-drop-slot') ??
+          target.getAttribute('data-qk-branch-slot') ??
+          dragDemo.targetSlot ??
+          null;
         setDropSlot(slot);
-        target.classList.add('branch-box--drop-target');
+        if (wantTopLevel || target.getAttribute('data-qk-drop-slot') === 'steps') {
+          target.classList.add('qk-sr-steps--drop-target');
+        } else {
+          target.classList.add('branch-box--drop-target');
+        }
 
         const dropHit =
           target.querySelector('.step-listbox-drop-placeholder') ?? target;
@@ -757,7 +784,9 @@ export default function ActionEditorPreview({
       ) : null}
       {dragDemo && dropSlot && phase === 'fly' ? (
         <span className="qk-ad-drag-demo-sr" aria-live="polite">
-          正在拖入分支槽 {dropSlot}
+          {isTopLevelStepsSlot(dropSlot) || dropSlot === 'steps'
+            ? '正在拖入步骤列表'
+            : `正在拖入分支槽 ${dropSlot}`}
         </span>
       ) : null}
       {historyDemo && historyPress ? (

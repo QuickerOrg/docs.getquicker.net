@@ -54,7 +54,12 @@ if ({number1} > {number2})
 
 「如果」等布尔参数右侧的铅笔可打开助手。
 
-![](./img/expression-adv-004-c7b4eb9f24.gif)
+<ExpressionAssistPreview
+  variable="count"
+  operation="大于"
+  paramTitle="比较值"
+  paramValue="10"
+/>
 
 ![](./img/expression-adv-005-6e6b36ac6c.png)
 

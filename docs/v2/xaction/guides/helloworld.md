@@ -38,8 +38,28 @@ legacyContentUpdatedAt: "2021-12-30T10:41:30.000Z"
 
 -   **将“文本窗口”拖动到步骤定义区域，自动弹出设置窗口。**
 
-![](./img/helloworld-003-e9885f8abf.gif)
-
+<ActionEditorPreview
+  focus="toolbox"
+  toolboxTab="text"
+  toolboxSearch="文本窗口"
+  toolboxSelected="sys:showText"
+  actionTitle="我的第一个Quicker动作"
+  actionDescription="Hello World"
+  caption="将「文本窗口」拖到步骤列表（示意，悬停可暂停）"
+  data={{steps: []}}
+  dragDemo={{
+    moduleKey: 'sys:showText',
+    targetSlot: 'steps',
+    afterData: {
+      steps: [
+        {
+          key: 'sys:showText',
+          inputs: {text: 'Hello World！', title: '我的第一个Quicker动作'},
+        },
+      ],
+    },
+  }}
+/>
 
 
 -   **填写文本内容。**

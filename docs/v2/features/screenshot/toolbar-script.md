@@ -8,33 +8,27 @@ comments: true
 
 # JS 自定义工具栏
 
-截图 Pro 标注工具栏默认提供铅笔、形状、复制、贴图等内置项。通过 **JS 自定义工具栏**，你可以：
+用一段脚本给 [截图 Pro](./capture-pro.md) 工具栏加自定义按钮：调用子程序处理当前图，或把图交给某个动作。默认只加按钮（原工具栏保留，保存 / 复制前固定位置出「扩展」下拉）；只有要改内置工具顺序时，才整栏重排。
 
-- **默认**：只定义几个自定义按钮；原工具栏不动，宿主在保存 / 复制前固定位置加一个「扩展」下拉；
-- 自定义按钮里调用子程序处理当前截图，或把图片交给某个动作继续处理；
-- **进阶**：才整栏重排内置工具、分隔线和分组。
-
-脚本在打开截图会话前求值一次，用于决定加哪些按钮（或整栏布局）；点击自定义按钮时再执行对应逻辑。
+脚本在打开截图会话前求值一次，决定按钮（或整栏布局）；点击后再执行对应逻辑。
 
 :::info[步骤参数]
 后续会在组合动作的 **截图 Pro** 步骤中增加一个输入参数，用于填写本页所述的工具栏脚本。参数名称与编辑器界面以正式版本为准；本文先固定脚本写法，便于提前编写与验证。
 :::
 
-请先了解 [截图 Pro](./capture-pro.md) 的选区与标注流程。
+## 怎么写
 
-## 你只需记住三件事
+1. **加按钮**：最后 `return [ 增强, 发送 ]`。默认工具栏不动，固定位置出一个下拉。
+2. **处理、不关窗**：`await ctx.runSp(名字, { strength: 0.8 })` 跑子程序，再用 `post.keep({ replace: r.outputs.image })` 写回新图。当前图可省略。
+3. **交给动作、关窗**：`post.confirm({ launchAction: 动作Id })` 先结束截图（等同点勾），再打开动作；当前图由宿主自动带上。
 
-1. **加按钮**：脚本最终 `return [ 增强, 发送 ]`。默认工具栏不动，固定位置出一个下拉。
-2. **处理、不关窗**：`await ctx.runSp(名字, { strength: 0.8 })` 跑子程序，再用 `post.keep({ replace: r.outputs.image })` 把新图写回。当前图可省略。窗口继续开着，可以接着画。
-3. **交给动作、关窗**：`post.confirm({ launchAction: 动作Id })` 先结束截图（等同点勾），再打开动作。当前图由宿主自动带上。
+`runSp` 第二个对象的每个键对应子程序的一个输入变量，名字必须一致。当前截图可省略（宿主自动带上）；要写明进了哪个参数时再写 `image: ctx.image`。`post` 的动词决定截图窗：`keep` 不关，`confirm` 确认关闭，`close` 取消关闭。
 
-`runSp` 第二个对象的**每个键就是子程序的一个输入变量**，名字必须一致。当前截图可以不写（宿主会自动带上）；要看清「图进了哪个参数」时再写 `image: ctx.image`。看 `post` 后面的动词就能知道截图窗会怎样：`keep` 不关，`confirm` 确认关闭，`close` 取消关闭。
-
-不提供 `runAction` 一类接口——结构化处理写子程序，命令型移交用 `launchAction`。
+没有 `runAction`：结构化处理用子程序，命令型移交用 `launchAction`。
 
 ## 最短完整示例
 
-下面这段脚本只定义两个自定义按钮。默认标注工具栏保持原样，宿主会在保存 / 复制前加一个「扩展」下拉。可直接复制后改子程序名和动作 ID。
+两个自定义按钮。可直接复制后改子程序名和动作 ID：
 
 ```js
 const 增强 = {
@@ -58,60 +52,27 @@ const 发送 = {
 return [增强, 发送];
 ```
 
-当前图没写在 `runSp` 里：宿主会自动带上。子程序用输入变量 **`image`**，或用 **获取Quicker信息** 的 **图片上下文参数** 都能读到。
-
-要一眼看出「图进了哪个参数」时，把当前图写出来（和省略写法等价）：
-
-```js
-const r = await ctx.runSp('增强图片', {
-    image: ctx.image,
-    strength: 0.8,
-});
-```
-
 说明：
 
-- `增强图片` 是**当前动作内**的子程序名称（或 ID）。调用公共子程序时，在名字前加 `%%`。
-- `{ strength: 0.8 }` 里的键必须和子程序**输入变量同名**。`image` 可省略；写了就是当前截图。
-- 处理型子程序请把结果图输出到名为 **`image`** 的变量，脚本里用 `r.outputs.image`。
-- `launchAction` 里换成你要启动的动作 ID（或名称）。
-- 自定义按钮必须是**对象本身**放进数组，不能写字符串 `'增强'` 指望宿主去猜变量名。
+- 上例未写 `image`：宿主会自动带上当前图。子程序用输入变量 **`image`**，或用 **获取Quicker信息** 的 **图片上下文参数** 都能读到。需要写明时：`runSp('增强图片', { image: ctx.image, strength: 0.8 })`，与省略等价。
+- `增强图片` 是**当前动作内**的子程序名称（或 ID）。公共子程序在名字前加 `%%`。
+- `{ strength: 0.8 }` 的键必须与子程序**输入变量同名**。
+- 处理型子程序请把结果图输出到 **`image`**，脚本里用 `r.outputs.image`。
+- `launchAction` 换成要启动的动作 ID（或名称）。
+- 返回数组里放**命令对象本身**，不要写字符串 `'增强'`。
 
-## 两个最常见的按钮
+## 常见写法
 
-### 处理图片（窗口继续开着）
+### 处理图片（不关窗）
 
-适合增强、加水印、打码、上传后仍要继续标注。子程序跑完，用新图替换当前截图，**不关窗**。
+适合增强、加水印、打码、上传后仍要继续标注。子程序跑完后用新图替换当前截图。
 
-省略当前图（更短；图由宿主自动带上）：
-
-```js
-const 增强 = {
-    title: '增强',
-    icon: 'fa:Light_WandMagic',
-    async run(ctx) {
-        const r = await ctx.runSp('增强图片', { strength: 0.8 });
-        if (!r.ok) return post.error(r);
-        return post.keep({ replace: r.outputs.image });
-    },
-};
-```
-
-没有业务参数时可以更短：
+没有业务参数时：
 
 ```js
 const r = await ctx.runSp('增强图片');
 if (!r.ok) return post.error(r);
 return post.keep({ replace: r.outputs.image });
-```
-
-写全（和图省略等价，只是能看出进了输入变量 `image`）：
-
-```js
-const r = await ctx.runSp('增强图片', {
-    image: ctx.image,
-    strength: 0.8,
-});
 ```
 
 替换并复制，再给一句提示：
@@ -137,20 +98,14 @@ const 上传 = {
 };
 ```
 
-### 把图交给动作（先关掉截图窗）
+### 把图交给动作（关窗）
 
-适合发送到聊天、打开编辑器、走一套需要弹窗交互的动作。**先确认结束截图**（全屏收口），再启动动作；不等待动作跑完。
+适合发送到聊天、打开编辑器等需要弹窗的动作。先确认结束截图，再启动动作（不等待动作跑完）：
 
 ```js
-const 发送 = {
-    title: '发送',
-    icon: 'fa:Light_PlayCircle',
-    async run() {
-        return post.confirm({
-            launchAction: '这里换成动作ID',
-        });
-    },
-};
+return post.confirm({
+    launchAction: '这里换成动作ID',
+});
 ```
 
 需要带上动作原有的字符串参数时：
@@ -161,11 +116,11 @@ return post.confirm({
 });
 ```
 
-## 布局怎么写
+## 布局
 
 ### 默认：只返回自定义按钮
 
-多数情况到这里就够了。脚本最后返回命令对象列表即可：
+脚本最后返回命令对象列表即可：
 
 ```js
 return [增强, 发送];
@@ -200,7 +155,7 @@ return {
 | --- | --- |
 | `{ title, icon?, run }` | 自定义命令 |
 | `'pencil'` | 内置工具（见下表稳定 ID；出现即进入整栏重排） |
-| `'\|'` | 分隔线（把工具栏分成左 / 中 / 右区域；首版最多两个分隔线） |
+| `'\|'` | 分隔线（在下一项前显示分隔；可多次使用） |
 | `['rect', 'ellipse']` | **绘图工具组**：分裂按钮，组内轮换；成员必须是内置绘图工具 |
 | `[按钮A, 按钮B]` | **自定义动作组**：在整栏重排里也是下拉；成员必须是命令对象 |
 
@@ -213,7 +168,7 @@ return {
 
 ### 内置工具稳定 ID
 
-推荐在脚本里使用下列稳定 ID（大小写敏感）：
+推荐在脚本里使用下列稳定 ID（匹配时**不区分大小写**，会归一成下列写法）：
 
 ```text
 move, pencil, rect, ellipse, arrow, polyline, serial, text,
@@ -230,6 +185,7 @@ save, copy, pin, close, confirm
 | `circle` | `ellipse` |
 | `line` | `polyline` |
 | `number` | `serial` |
+| `smart-mosaic` / `smartmosaic` | `smart_mosaic` |
 | `长截图` | `long_screenshot` |
 | `录屏` | `screen_recording` |
 
@@ -241,15 +197,15 @@ save, copy, pin, close, confirm
 
 | 字段 | 必填 | 说明 |
 | --- | --- | --- |
-| `title` | 是 | 按钮标题 |
+| `title` | 建议 | 按钮标题；省略时用 `id`（或自动生成的 id）显示 |
 | `run` | 是 | `async function (ctx) { ... }`，点击时执行 |
 | `icon` | 否 | 矢量图标 |
 | `tooltip` | 否 | 悬停提示 |
 | `id` | 否 | 跨版本稳定引用时再写；省略则由宿主根据标题生成 |
 
-`run` 的返回值必须是明确契约之一（见「告诉宿主事后做什么」），不要直接 `return 图片` 或随意对象。
+`run` 的返回值必须是明确契约之一（见「`post`：结束后做什么」），不要直接 `return 图片` 或随意对象。
 
-## `ctx`：点击时可用的上下文
+## `ctx`
 
 点击自定义按钮时，宿主会注入只读上下文 `ctx`：
 
@@ -263,23 +219,14 @@ save, copy, pin, close, confirm
 | `ctx.originActionId` | 发起本次截图的动作 ID；仅由动作内 **截图 Pro** 步骤进入时存在。全局快捷截图入口可能为空 |
 | `ctx.runSp(...)` | 运行子程序并**等待**结果（见下） |
 
-`runSp` 第二个对象的键必须和子程序输入变量同名。当前图可以省略；要看清参数时再写 `image: ctx.image`。省略时宿主仍会自动带上当前截图，子程序用输入变量 **`image`** 或 **图片上下文参数** 都能读到。
+`runSp` 第二个对象的键必须和子程序输入变量同名；当前图可省略（见上文「怎么写」）。
 
-### `ctx.runSp`：跑子程序
+### `ctx.runSp`
 
 ```js
-// 省略当前图（更短）
 const r = await ctx.runSp('增强图片', { strength: 0.8 });
-await ctx.runSp('增强图片'); // 连业务参数也没有时
-
-// 写全：键名 = 子程序输入变量名
-await ctx.runSp('增强图片', {
-    image: ctx.image,
-    strength: 0.8,
-});
-
-// 公共子程序
-await ctx.runSp('%%上传到图床', { note: 'toolbar' });
+await ctx.runSp('增强图片'); // 无业务参数
+await ctx.runSp('%%上传到图床', { note: 'toolbar' }); // 公共子程序
 
 // 完整对象形式（inputs 里才是子程序变量）
 await ctx.runSp({
@@ -324,9 +271,7 @@ await ctx.runSp({
 
 宿主不会把其它输出键名猜成「替换当前图」。若你的子程序用了别的变量名，脚本里自行对齐，例如 `runSp('…', { photo: ctx.image })` 再 `post.keep({ replace: r.outputs.result })`。
 
-## 告诉宿主事后做什么：`post`
-
-看动词就知道截图窗会怎样：
+## `post`：结束后做什么
 
 | 写法 | 截图窗 | 含义 |
 | --- | --- | --- |
@@ -367,7 +312,7 @@ return post.plan({
 });
 ```
 
-后处理按固定顺序执行：校验 → `replace` → `clipboard` → `pin` → `save` → 关闭或保持窗口 → `launchAction` → `notification`。`launchAction` 放在窗口收口之后，以便动作窗口在全屏截图关闭后再出现。某步在启动动作之前失败时，会停止后续步骤并保持截图打开以显示错误；已完成的副作用不会回滚。
+后处理按固定顺序执行：校验 → `replace` → `clipboard` → `pin` → `save` → `notification` → 关闭或保持窗口 → `launchAction`。`launchAction` 放在窗口收口之后，以便动作窗口在全屏截图关闭后再出现。某步在启动动作之前失败时，会停止后续步骤并保持截图打开以显示错误；已完成的副作用不会回滚。
 
 ## TypeScript 类型定义（完整参考）
 
@@ -554,9 +499,9 @@ declare const post: {
 // 脚本最后应 return 符合 CaptureToolbarLayout 的值
 ```
 
-后处理执行顺序（与类型字段对应）：校验 → `replace` → `clipboard` → `pin` → `save` → 窗口收口 → `launchAction` → `notification`。
+后处理执行顺序（与类型字段对应）：校验 → `replace` → `clipboard` → `pin` → `save` → `notification` → 窗口收口 → `launchAction`。
 
-## 运行时行为（使用注意）
+## 运行时注意
 
 - **同一时间只跑一个自定义命令**；执行期间其它扩展按钮和会改图的内置命令会禁用，关闭 / 取消仍可用。
 - 关闭截图或取消命令会尝试中断进行中的 `runSp`；已收口会话后，晚到的结果不会再改图或贴图。
@@ -571,7 +516,7 @@ declare const post: {
 
 ### 点了按钮，不知道会不会关截图窗
 
-看你 `return` 的是哪个动词：`post.keep` 不关，`post.confirm` 确认关闭后再开动作，`post.close` 按取消关闭。不要写 `post.plan({ launchAction })` 再去猜默认值。
+看 `return` 的动词：`post.keep` 不关，`post.confirm` 确认关闭后再开动作，`post.close` 按取消关闭。不要写 `post.plan({ launchAction })` 再去猜默认值。
 
 ### 按钮点了没反应或提示失败
 
@@ -594,7 +539,7 @@ declare const post: {
 
 ### 能否自定义画笔或 OCR 浮层
 
-首版不支持用本 API 做自定义实时画笔或替换 OCR 交互；这类能力仍走内置工具。JS 工具栏默认负责**加处理型 / 命令型按钮**；整栏重排是进阶选项。
+首版不支持用本 API 做自定义实时画笔或替换 OCR 交互；这类能力仍走内置工具。本页默认覆盖**加处理型 / 命令型按钮**；整栏重排是进阶选项。
 
 ## 相关文档
 

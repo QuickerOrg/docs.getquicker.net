@@ -1,32 +1,61 @@
+/* Sketch of VariableEditorWindow.xaml — docs read-only. */
 .root {
   --vdp-fg: var(--ifm-font-color-base);
   --vdp-muted: var(--ifm-color-secondary-darkest, #6b7280);
   --vdp-border: var(--ifm-color-emphasis-300);
   --vdp-bg: var(--ifm-background-surface-color, #fff);
-  --vdp-input: var(--ifm-color-emphasis-100, #f8fafc);
-  --vdp-accent: var(--ifm-color-primary);
-  max-width: 420px;
+  --vdp-input: var(--ifm-background-color, #fff);
+  --vdp-soft: var(--ifm-color-emphasis-100, #f8fafc);
+  --vdp-accent: #2b7abf;
+  max-width: 460px;
   margin: 1rem 0;
   border: 1px solid var(--vdp-border);
-  border-radius: 8px;
+  border-radius: 6px;
   background: var(--vdp-bg);
-  box-shadow: var(--ifm-global-shadow-lw);
+  box-shadow: 0 4px 18px rgb(0 0 0 / 14%);
   overflow: hidden;
   font-size: 13px;
   line-height: 1.4;
+  color: var(--vdp-fg);
 }
 
 .titleBar {
-  padding: 8px 12px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 10px;
   border-bottom: 1px solid var(--vdp-border);
+  background: color-mix(in srgb, var(--vdp-soft) 80%, transparent);
   font-weight: 650;
-  background: color-mix(in srgb, var(--vdp-input) 80%, transparent);
+}
+
+.logo {
+  width: 16px;
+  height: 16px;
+  border-radius: 4px;
+  background: linear-gradient(135deg, #2b7abf, #1e5f96);
+  flex: 0 0 auto;
+}
+
+.titleText {
+  flex: 1 1 auto;
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.titleClose {
+  flex: 0 0 auto;
+  color: var(--vdp-muted);
+  font-size: 16px;
+  line-height: 1;
 }
 
 .body {
   display: grid;
   gap: 12px;
-  padding: 12px 14px 8px;
+  padding: 14px 16px 10px;
 }
 
 .field {
@@ -53,7 +82,7 @@
   width: 100%;
   box-sizing: border-box;
   border: 1px solid var(--vdp-border);
-  border-radius: 4px;
+  border-radius: 3px;
   background: var(--vdp-input);
 }
 
@@ -66,48 +95,67 @@
   display: inline-flex;
   align-items: center;
   gap: 6px;
+  width: auto;
+  min-width: 140px;
   min-height: 30px;
   padding: 4px 8px;
 }
 
 .typeIcon {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  width: 20px;
-  height: 18px;
-  border-radius: 3px;
-  background: var(--vdp-accent);
-  color: #fff;
-  font-size: 9px;
-  font-weight: 700;
+  display: block;
+  flex-shrink: 0;
+  width: 16px;
+  height: 16px;
+  object-fit: contain;
+}
+
+.defaultRow {
+  position: relative;
+  display: grid;
 }
 
 .defaultValue {
   margin: 0;
-  padding: 8px;
-  min-height: 72px;
+  padding: 6px 28px 6px 8px;
+  min-height: 30px;
   white-space: pre-wrap;
   word-break: break-word;
   font-family: var(--ifm-font-family-monospace);
   font-size: 12px;
 }
 
+.expandBtn {
+  position: absolute;
+  right: 6px;
+  bottom: 6px;
+  display: inline-flex;
+  opacity: 0.85;
+}
+
 .hint {
   margin: 4px 0 0;
   color: var(--vdp-muted);
   font-size: 11px;
+  line-height: 1.35;
 }
 
 .advanced {
-  margin-top: 4px;
+  display: grid;
+  grid-template-columns: 72px minmax(0, 1fr);
+  gap: 10px;
+  align-items: start;
+  margin-top: 2px;
   padding-top: 8px;
-  border-top: 1px dashed var(--vdp-border);
 }
 
-.advancedTitle {
-  margin-bottom: 6px;
-  font-weight: 650;
+.advancedLabel {
+  padding-top: 2px;
+  text-align: right;
+  font-weight: 500;
+}
+
+.advancedBody {
+  min-width: 0;
 }
 
 .checkRow {
@@ -119,6 +167,7 @@
 
 .checkRow input {
   margin: 0;
+  accent-color: var(--vdp-accent);
 }
 
 .footer {
@@ -128,10 +177,13 @@
   gap: 12px;
   padding: 10px 14px;
   border-top: 1px solid var(--vdp-border);
-  background: color-mix(in srgb, var(--vdp-input) 70%, transparent);
+  background: color-mix(in srgb, var(--vdp-soft) 70%, transparent);
 }
 
 .help {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
   color: var(--vdp-accent);
   font-size: 12px;
 }
@@ -149,19 +201,23 @@
   min-width: 72px;
   height: 28px;
   padding: 0 12px;
-  border-radius: 4px;
+  border-radius: 3px;
   border: 1px solid var(--vdp-border);
   font-size: 12px;
   user-select: none;
 }
 
+.btn {
+  background: var(--vdp-bg);
+}
+
 .btnPrimary {
-  border-color: color-mix(in srgb, var(--vdp-accent) 55%, var(--vdp-border));
-  background: color-mix(in srgb, var(--vdp-accent) 12%, var(--vdp-bg));
-  color: var(--vdp-accent);
+  border-color: color-mix(in srgb, var(--vdp-accent) 70%, #0f3d66);
+  background: var(--vdp-accent);
+  color: #fff;
   font-weight: 600;
 }
 
-html[data-theme='dark'] .typeIcon {
+html[data-theme='dark'] .btnPrimary {
   color: #0b1220;
 }

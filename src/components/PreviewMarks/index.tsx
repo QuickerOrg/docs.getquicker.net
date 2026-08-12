@@ -49,7 +49,12 @@ function resolveHost(row: Element): HTMLElement | null {
     row.querySelector('.qk-sr-param-form__varorvalue-body') ??
     row.querySelector('.step-param-control') ??
     row.querySelector('[data-preview-handle="from"]');
-  return host instanceof HTMLElement ? host : null;
+  if (host instanceof HTMLElement) return host;
+  // VariableDefPreview advanced block is itself the mark row.
+  if (row instanceof HTMLElement && row.hasAttribute('data-preview-handle')) {
+    return row;
+  }
+  return null;
 }
 
 function isVisuallyEmpty(host: HTMLElement): boolean {

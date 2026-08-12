@@ -46,9 +46,22 @@ legacyContentUpdatedAt: "2023-08-17T06:49:24.000Z"
 
 **文件路径或扩展名**：已存在的文件/文件夹完整路径，或扩展名（如 `.txt`）。填扩展名时，Quicker 会生成临时文件再取动词。
 
-输出 **动词列表**：每项 `描述文字|动词`，可直接给 [用户选择](/v2/xaction/modules/userselect)。
+输出 **动词列表**：每项 `描述文字|动词`，可直接给 [用户选择](/v2/xaction/modules/userselect)。下列为示意（已省略 7-Zip、校验和等第三方项）：
 
-![](./img/shelloperation-004-2dd47c23f3.png)
+<ChoiceListPreview
+  title="请选择"
+  showFilter
+  selectedIndex={1}
+  options={[
+    '编辑|edit',
+    '创建快捷方式|link',
+    '打开|open',
+    '打开方式 - 选择其他应用|openas',
+    '打印|print',
+    '复制|copy',
+    '共享|share',
+  ]}
+/>
 
 部分软件（如 7-Zip）的菜单标题里会带文件名，但动词是固定的。常见动词：`open` 打开、`edit` 编辑、`openas` 选择打开方式、`print` 打印。
 

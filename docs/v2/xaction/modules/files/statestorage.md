@@ -174,7 +174,16 @@ legacyContentUpdatedAt: "2024-01-11T04:51:48.000Z"
 
 让变量在动作结束后自动写入状态，下次运行时再加载。第一次运行使用默认值。
 
-![](./img/statestorage-004-32be44986d.png)
+<PreviewMarks
+  marks={[{key: 'asState', label: '勾选后，变量值会随动作持久保存'}]}>
+  <VariableDefPreview
+    name="number"
+    type="Integer"
+    remark="点击次数"
+    defaultValue="5"
+    asState
+  />
+</PreviewMarks>
 
 适合保存动作设置：用表单直接改变量即可，不必再单独读写状态。
 

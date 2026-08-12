@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updatedAt": "2026-08-12T16:10:00+08:00",
+  "updatedAt": "2026-08-12T17:10:00+08:00",
   "items": [
     {
       "image": "docs/v2/xaction/concepts/img/action-custom-context-menu-001-8e5e2322bf.png",
@@ -2573,36 +2573,36 @@
       "page": "docs/v2/xaction/modules/files/everythingsearch.md",
       "status": "kept",
       "kind": "annotated",
-      "reason": "二次重评：Everything 搜索框红框教学。第三方 UI。keep。",
-      "evidence": "ocr+manual",
-      "updatedAt": "2026-08-12T16:10:00+08:00"
+      "reason": "二次重评：Everything 搜索框红框教学。第三方 UI。keep；页内 width=500 限制显示放大。",
+      "evidence": "manual",
+      "updatedAt": "2026-08-12T17:10:00+08:00"
     },
     {
       "image": "docs/v2/xaction/modules/files/img/everythingsearch-003-5318c9c1a8.png",
       "page": "docs/v2/xaction/modules/files/everythingsearch.md",
       "status": "kept",
       "kind": "annotated",
-      "reason": "二次重评：Everything 安装向导「安装服务」。第三方安装程序。keep。",
-      "evidence": "ocr+manual",
-      "updatedAt": "2026-08-12T16:10:00+08:00"
+      "reason": "二次重评：Everything 安装向导「安装服务」。第三方安装程序。keep；页内 width=500 限制显示放大。",
+      "evidence": "manual",
+      "updatedAt": "2026-08-12T17:10:00+08:00"
     },
     {
       "image": "docs/v2/xaction/modules/files/img/everythingsearch-004-7c1e07ae2e.png",
       "page": "docs/v2/xaction/modules/files/everythingsearch.md",
       "status": "kept",
       "kind": "annotated",
-      "reason": "二次重评：Everything 安装向导「开机自动启动」。第三方安装程序。keep。",
-      "evidence": "ocr+manual",
-      "updatedAt": "2026-08-12T16:10:00+08:00"
+      "reason": "二次重评：Everything 安装向导「开机自动启动」。第三方安装程序。keep；页内 width=500 限制显示放大。",
+      "evidence": "manual",
+      "updatedAt": "2026-08-12T17:10:00+08:00"
     },
     {
       "image": "docs/v2/xaction/modules/files/img/everythingsearch-005-eafe303e17.png",
       "page": "docs/v2/xaction/modules/files/everythingsearch.md",
       "status": "kept",
       "kind": "annotated",
-      "reason": "二次重评：Everything 选项窗自启动+服务。第三方设置窗。keep。",
-      "evidence": "ocr+manual",
-      "updatedAt": "2026-08-12T16:10:00+08:00"
+      "reason": "二次重评：Everything 选项窗自启动+服务。第三方设置窗。keep；页内 width=500 限制显示放大。",
+      "evidence": "manual",
+      "updatedAt": "2026-08-12T17:10:00+08:00"
     },
     {
       "image": "docs/v2/xaction/modules/files/img/fileoperation-001-2f9a24c6c6.png",
@@ -2683,6 +2683,16 @@
       "evidence": "git-diff",
       "commit": "4fa032b",
       "updatedAt": "2026-08-11T19:17:14+08:00"
+    },
+    {
+      "image": "docs/v2/xaction/modules/files/img/statestorage-004-32be44986d.png",
+      "page": "docs/v2/xaction/modules/files/statestorage.md",
+      "status": "converted",
+      "kind": "var-def",
+      "reason": "OCR var-def：VariableDefPreview（对齐 VariableEditorWindow）+ PreviewMarks 标出「作为状态使用」。原图保留供审核。",
+      "evidence": "ocr+manual",
+      "updatedAt": "2026-08-12T17:30:00+08:00",
+      "component": "PreviewMarks+VariableDefPreview"
     },
     {
       "image": "docs/v2/xaction/modules/files/img/statestorage-007-27543fdf25.png",
@@ -4313,6 +4323,16 @@
       "evidence": "git-diff",
       "commit": "4fa032b",
       "updatedAt": "2026-08-11T19:17:14+08:00"
+    },
+    {
+      "image": "docs/v2/xaction/modules/system/img/shelloperation-004-2dd47c23f3.png",
+      "page": "docs/v2/xaction/modules/system/shelloperation.md",
+      "status": "converted",
+      "kind": "runtime-dialog",
+      "reason": "二次替换：动词列表接入用户选择；ChoiceListPreview 简化常见 Windows 动词（省略 7-Zip/CRC 等）。原图保留供审核。",
+      "evidence": "ocr+manual",
+      "updatedAt": "2026-08-12T17:00:00+08:00",
+      "component": "ChoiceListPreview"
     },
     {
       "image": "docs/v2/xaction/modules/system/img/shelloperation-005-83133c29d7.png",

@@ -33,7 +33,11 @@ legacyContentUpdatedAt: "2024-06-19T03:24:46.000Z"
 
 **限定目录**：只搜该目录（含子目录）。模块会把路径加到搜索内容前面，效果相当于在 Everything 里写成 `"c:\program files\" quicker.exe`。路径末尾必须带 `\`，否则会匹配所有以此开头的目录。多个目录请直接写进 **搜索内容**，例如 `"C:\Program Files"|"D:\Work\" 关键词`。
 
-![](./img/everythingsearch-002-607633654c.png)
+<img
+  src={require('./img/everythingsearch-002-607633654c.png').default}
+  width={500}
+  alt="Everything 搜索框：限定目录写成带末尾反斜杠的引号路径"
+/>
 
 **扩展名**：半角分号分隔，如 `doc;docx;docm`。内部会追加 `ext:doc;docx;docm`。下拉里有可执行文件、文档、图片、视频、音频等预设。
 
@@ -64,15 +68,28 @@ legacyContentUpdatedAt: "2024-06-19T03:24:46.000Z"
 
 1. 到 [https://www.voidtools.com/zh-cn/](https://www.voidtools.com/zh-cn/) 下载 **安装版 64 位** 或 **安装版 32 位**。
 2. 安装时用默认选项，并勾选 **安装 Everything 服务**。
+
+<img
+  src={require('./img/everythingsearch-003-5318c9c1a8.png').default}
+  width={500}
+  alt="安装向导：选中安装 Everything 服务"
+/>
+
 3. 建议勾选开机自动启动，这样 Quicker 调用时服务已在运行。
 
-![](./img/everythingsearch-003-5318c9c1a8.png)
-
-![](./img/everythingsearch-004-7c1e07ae2e.png)
+<img
+  src={require('./img/everythingsearch-004-7c1e07ae2e.png').default}
+  width={500}
+  alt="安装向导：勾选开机自动启动 Everything"
+/>
 
 已经装好的，可在「工具 → 选项」里改同样两项：随系统自启动、Everything 服务。不要开「启动时检查更新」。
 
-![](./img/everythingsearch-005-eafe303e17.png)
+<img
+  src={require('./img/everythingsearch-005-eafe303e17.png').default}
+  width={500}
+  alt="Everything 选项：随系统自启动与 Everything 服务"
+/>
 
 ## 限制与排障
 

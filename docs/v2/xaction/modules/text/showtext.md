@@ -28,15 +28,46 @@ legacyContentUpdatedAt: "2025-06-04T23:29:00.000Z"
 - **不等待**：弹出窗口后立刻执行后续步骤。
 - **等待关闭**：等窗口关掉再继续；可在工具栏加按钮，并返回用户点的按钮和改过的文字。
 
-![](./img/showtext-001-e7813dac79.png)
-
 <ModuleParamPreview moduleKey="sys:showText" />
 
 ### 窗口使用
 
+运行中的文本窗口带工具栏、扩展菜单、右键和查找（Ctrl+F）。下面叠层示意保留原图：
+
+![](./img/showtext-001-e7813dac79.png)
+
 #### 右键菜单
 
-![](./img/showtext-002-66210e1245.png)
+<ContextMenuPreview
+  openPath={['高亮语法', 'C#']}
+  items={[
+    {label: '撤消', icon: 'fa:Light_Undo'},
+    {label: '重做', icon: 'fa:Light_Redo'},
+    {type: 'separator'},
+    {label: '剪切'},
+    {label: '复制'},
+    {label: '粘贴'},
+    {type: 'separator'},
+    {label: '恢复初始内容'},
+    {
+      label: '高亮语法',
+      children: [
+        {label: 'XmlDoc'},
+        {label: 'C#'},
+        {label: 'JavaScript'},
+        {label: 'HTML'},
+        {label: 'CSS'},
+        {label: 'PowerShell'},
+      ],
+    },
+    {label: '置顶'},
+  ]}
+>
+  <TextWindowPreview
+    title="结果内容"
+    text={'# 标题1\n## 标题2\n\n单星号 = *斜体*\n双星号 = **加粗**'}
+  />
+</ContextMenuPreview>
 
 - 撤销、重做、剪切、复制、粘贴
 - **恢复初始内容**：回到刚打开时的文本

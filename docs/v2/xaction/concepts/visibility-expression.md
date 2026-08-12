@@ -30,7 +30,21 @@ legacyContentUpdatedAt: "2021-04-12T01:12:16.000Z"
 | `width`、`height` | 长方形的宽和高 | `$= {type} == "rect"` |
 | `side` | 正方形边长 | `$= {type} == "square"` |
 
-![](./img/visibility-expression-002-97e38c5544.png)
+<ActionEditorPreview
+  focus="variables"
+  caption="子程序输入：形状、宽高、边长；输出 area"
+  data={{steps: []}}
+  actionTitle="计算面积"
+  actionDescription="按形状切换可见参数"
+  selectedVar="area"
+  variables={[
+    {name: 'type', type: 'Text', usage: ['in'], remark: '形状类型'},
+    {name: 'width', type: 'Integer', usage: ['in'], remark: '长方形：宽度'},
+    {name: 'height', type: 'Integer', usage: ['in'], remark: '长方形：高度'},
+    {name: 'side', type: 'Integer', usage: ['in'], remark: '正方形：边长'},
+    {name: 'area', type: 'Integer', usage: ['out']},
+  ]}
+/>
 
 <ShareLinkCard
   code="6a2257de-0666-4365-79e7-08d8fd4af535"

@@ -24,6 +24,7 @@ import CoordDiagram from '@site/src/components/CoordDiagram';
 import ClickIndicatorPreview from '@site/src/components/ClickIndicatorPreview';
 import UserInputPreview from '@site/src/components/UserInputPreview';
 import ActionEditorPreview from '@site/src/components/ActionEditorPreview';
+import TextWindowPreview from '@site/src/components/TextWindowPreview';
 import NativeImg from '@site/src/theme/MDXComponents/NativeImg';
 
 type MDXComponentsType = NonNullable<ComponentProps<typeof MDXProvider>['components']>;
@@ -56,6 +57,7 @@ const components = {
   ClickIndicatorPreview,
   UserInputPreview,
   ActionEditorPreview,
+  TextWindowPreview,
 } as MDXComponentsType;
 
 export default function MDXContent({children}: {children: ReactNode}): ReactNode {

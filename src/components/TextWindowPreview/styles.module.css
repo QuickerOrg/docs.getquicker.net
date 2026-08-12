@@ -1,0 +1,99 @@
+/**
+ * Sketch of QuickerPc/Quicker/View/UI/TextWindow.xaml (HandyControl + AvalonEdit).
+ */
+.root {
+  max-width: 640px;
+  margin: 1rem 0;
+  border: 1px solid var(--ifm-color-emphasis-300);
+  border-radius: 6px;
+  background: var(--ifm-background-surface-color, #fff);
+  box-shadow: 0 4px 18px rgb(0 0 0 / 14%);
+  overflow: hidden;
+  color: var(--ifm-font-color-base);
+  font-size: 13px;
+}
+
+.titleBar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  padding: 7px 10px;
+  border-bottom: 1px solid var(--ifm-color-emphasis-300);
+  background: color-mix(in srgb, var(--ifm-color-emphasis-100) 85%, transparent);
+  font-weight: 600;
+}
+
+.titleText {
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.titleClose {
+  opacity: 0.65;
+  user-select: none;
+}
+
+.toolbar {
+  display: flex;
+  align-items: center;
+  gap: 2px;
+  padding: 4px 8px;
+  border-bottom: 1px solid var(--ifm-color-emphasis-200);
+}
+
+.tool {
+  display: inline-flex;
+  width: 22px;
+  height: 22px;
+  align-items: center;
+  justify-content: center;
+  color: #6aaded;
+}
+
+.body {
+  display: flex;
+  max-height: 280px;
+  overflow: auto;
+  background: #fff;
+}
+
+.gutter {
+  flex: 0 0 auto;
+  padding: 8px 8px 8px 10px;
+  border-right: 1px solid var(--ifm-color-emphasis-200);
+  background: #f6f7f8;
+  color: #8a8f98;
+  font-family: Consolas, 'Courier New', monospace;
+  font-size: 12px;
+  line-height: 1.55;
+  text-align: right;
+  user-select: none;
+}
+
+.text {
+  flex: 1 1 auto;
+  margin: 0;
+  padding: 8px 12px;
+  overflow: auto;
+  font-family: Consolas, 'Courier New', monospace;
+  font-size: 12px;
+  line-height: 1.55;
+  white-space: pre-wrap;
+  word-break: break-all;
+}
+
+html[data-theme='dark'] .body {
+  background: #1e1e1e;
+}
+
+html[data-theme='dark'] .gutter {
+  background: #252526;
+  color: #858585;
+}
+
+html[data-theme='dark'] .tool {
+  color: #7ab8ff;
+}

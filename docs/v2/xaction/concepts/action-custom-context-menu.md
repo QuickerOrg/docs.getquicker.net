@@ -36,11 +36,33 @@ legacyContentUpdatedAt: "2024-04-28T03:06:29.000Z"
 
 ## 定义菜单
 
-菜单文本写在编辑器右侧「选项 / 外观」里。输入框偏小，内容多时在框上右键选「在编辑器中修改」。
+菜单文本写在动作 **选项** 里的「右键菜单定义」。编辑器右侧外观栏也能看到这项。输入框偏小，内容多时在框上右键，用大窗口改。
 
-![](./img/action-custom-context-menu-002-1d103a1a05.png)
+<ActionEditorPreview
+  focus="appearance"
+  actionTitle="示例动作"
+  actionDescription="自定义右键菜单"
+  customMenu={`////注释内容
+无图标菜单|_qk_menu_no_i
+带Tooltip的菜单(tooltip内容)|_qk_menu_tip
+[fa:Light_Flag]带图标的菜单|_qk_menu_icon`}
+  data={{steps: []}}
+/>
 
-![](./img/action-custom-context-menu-003-9072d6bb7e.png)
+<ContextMenuPreview
+  openPath={['在文本编辑器中修改']}
+  items={[
+    {
+      label: '在文本编辑器中修改',
+      icon: 'fa:Light_AlignLeft:#1296db',
+      tooltip: '使用大的文本窗口编辑菜单项',
+    },
+    {label: '在操作设计器中修改', icon: 'fa:Light_PencilRuler:#1296db'},
+    {type: 'separator'},
+    {label: '撤消'},
+    {label: '重做'},
+  ]}
+/>
 
 ### 格式
 

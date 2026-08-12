@@ -138,6 +138,8 @@ export type ActionEditorPreviewProps = {
   selectedVar?: string;
   actionTitle?: string;
   actionDescription?: string;
+  /** Action options: custom right-click menu definition (WPF ActionOptionsControl). */
+  customMenu?: string;
   selectedIndexes?: readonly number[];
   variables?: readonly ProgramVar[];
   showRun?: boolean;
@@ -214,6 +216,7 @@ export default function ActionEditorPreview({
   selectedVar,
   actionTitle = '谷歌搜索',
   actionDescription = '选中文字则搜索，否则打开首页',
+  customMenu,
   selectedIndexes,
   variables,
   showRun = true,
@@ -604,6 +607,12 @@ export default function ActionEditorPreview({
                     <span>说明</span>
                     <span className="qk-ad-editor__field-value qk-ad-editor__field-value--multi">
                       {actionDescription}
+                    </span>
+                  </label>
+                  <label className="qk-ad-editor__field">
+                    <span>右键菜单定义</span>
+                    <span className="qk-ad-editor__field-value qk-ad-editor__field-value--menu">
+                      {customMenu?.trim() || '一行一项。内容多时在框上右键「在文本编辑器中修改」。'}
                     </span>
                   </label>
                 </div>

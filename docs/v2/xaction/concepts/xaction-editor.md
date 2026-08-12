@@ -201,10 +201,6 @@ legacyContentUpdatedAt: "2025-10-30T03:16:55.000Z"
 
 选中步骤后右键 **插入延时(_T)**：选一个插在它后面；选多个插在它们中间。在等待时间步骤上 `Ctrl+滚轮` 调毫秒数。
 
-插入过程见下（连续手势，保留录屏）：
-
-![](./img/xaction-editor-024-04549b7522.gif)
-
 <StepProgramView
   wheelDelay={{from: 100, to: 350, step: 50}}
   data={{

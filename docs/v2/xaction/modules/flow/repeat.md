@@ -61,9 +61,48 @@ legacyContentUpdatedAt: "2023-06-23T14:05:51.000Z"
 
 ## 设置要重复的内容
 
-将需要重复执行的步骤拖放到「重复」中间的槽里。
+将需要重复执行的步骤拖放到「重复」中间的槽里。悬停可暂停演示。
 
-![](./img/repeat-003-9990394c7d.gif)
+<ActionEditorPreview
+  focus="toolbox"
+  toolboxTab="basic"
+  toolboxSearch="提示"
+  toolboxSelected="sys:notify"
+  actionTitle="5秒计时"
+  actionDescription="测试"
+  rightTab="appearance"
+  caption="把「提示消息」拖进「重复」循环槽"
+  variables={[{name: 'index', type: 'Integer'}]}
+  dragDemo={{
+    moduleKey: 'sys:notify',
+    targetSlot: '0/if',
+    afterData: {
+      steps: [
+        {
+          key: 'sys:repeat',
+          inputs: {count: '5'},
+          outputs: {count: 'index'},
+          ifSteps: [
+            {
+              key: 'sys:notify',
+              inputs: {msg: '$$第{index}秒'},
+            },
+          ],
+        },
+      ],
+    },
+  }}
+  data={{
+    steps: [
+      {
+        key: 'sys:repeat',
+        inputs: {count: '5'},
+        outputs: {count: 'index'},
+        ifSteps: [],
+      },
+    ],
+  }}
+/>
 
 ## 停止循环中的动作
 

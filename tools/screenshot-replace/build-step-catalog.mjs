@@ -180,7 +180,22 @@ function faNameFromSpec(spec) {
   return (colon < 0 ? body : body.slice(0, colon)).trim();
 }
 
-/** Parse [Step(...)] blocks for Key + FaIcon / Icon. */
+/** Same default as Quicker.StepEngine StepAttribute.DefaultIconColor. */
+const DEFAULT_ICON_COLOR = '#6aaded';
+
+/**
+ * Interpolate `$"fa:{EFontAwesomeIcon.Solid_Cubes}:#3196F4"` → `fa:Solid_Cubes:#3196F4`.
+ * @param {string} raw
+ */
+function compileOverrideIconSpec(raw) {
+  return raw.replace(/\{EFontAwesomeIcon\.(\w+)\}/g, '$1').trim();
+}
+
+/**
+ * Parse [Step(...)] for Key + FaIcon / IconColor / Icon.
+ * Match StepAttribute.GetIcon(): FaIcon + IconColor (default #6aaded) wins over Icon.
+ * Then overlay `override string Icon => ...` (e.g. sys:subprogram).
+ */
 function collectStepIconSpecs(quickerRoot) {
   const runnersDir = path.join(
     quickerRoot,
@@ -194,17 +209,27 @@ function collectStepIconSpecs(quickerRoot) {
   const byKey = {};
   for (const file of walkCs(runnersDir)) {
     const text = readFileSync(file, 'utf8');
+    const keys = [];
     const blocks = text.matchAll(/\[Step\(([\s\S]*?)\)\]/g);
     for (const m of blocks) {
       const body = m[1];
       const key = /Key\s*=\s*"([^"]+)"/.exec(body)?.[1]?.trim();
       if (!key) continue;
+      keys.push(key);
       const iconStr = /(?<![A-Za-z])Icon\s*=\s*"([^"]+)"/.exec(body)?.[1]?.trim();
       const faEnum = /FaIcon\s*=\s*EFontAwesomeIcon\.(\w+)/.exec(body)?.[1]?.trim();
-      if (iconStr) {
+      const iconColor = /IconColor\s*=\s*"([^"]+)"/.exec(body)?.[1]?.trim();
+      if (faEnum) {
+        byKey[key] = `fa:${faEnum}:${iconColor || DEFAULT_ICON_COLOR}`;
+      } else if (iconStr) {
         byKey[key] = iconStr;
-      } else if (faEnum) {
-        byKey[key] = `fa:${faEnum}`;
+      }
+    }
+    const overrideM = /override string Icon\s*=>\s*\$?"((?:\\.|[^"\\])*)"/.exec(text);
+    if (overrideM && keys.length) {
+      const spec = compileOverrideIconSpec(overrideM[1]);
+      if (spec) {
+        for (const key of keys) byKey[key] = spec;
       }
     }
   }

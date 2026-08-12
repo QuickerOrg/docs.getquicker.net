@@ -625,6 +625,14 @@ html[data-theme="dark"] .qk-ad-editor {
   min-height: 52px;
 }
 
+.qk-ad-editor__field-value--menu {
+  min-height: 80px;
+  white-space: pre-wrap;
+  font-family: Consolas, 'Microsoft YaHei', monospace;
+  font-size: 11px;
+  line-height: 1.45;
+}
+
 /* Docs dragDemo: toolbox → branch-slot ghost */
 .qk-ad-drag-ghost {
   position: absolute;

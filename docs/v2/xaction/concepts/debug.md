@@ -40,7 +40,35 @@ legacyContentUpdatedAt: "2023-08-16T01:04:04.000Z"
 
 也可以给某个动作打开自动调试（1.38.43+）：之后无论怎么触发都走调试。同一时间只能开一个；再点一次菜单关掉；重启 Quicker 也会失效。
 
-![](./img/debug-003-072f9e9e4f.png)
+<ContextMenuPreview
+  openPath={['信息', '开启自动调试']}
+  tooltip="自动以调试模式运行此动作"
+  items={[
+    {label: '编辑', icon: 'fa:Light_Pen:#1296db'},
+    {label: '调试运行', icon: 'fa:Light_Play:#f5b042'},
+    {label: '设置', icon: 'fa:Light_Cog:#1296db', children: [{label: '…'}]},
+    {label: '悬浮', icon: 'fa:Light_UfoBeam:#1296db', children: [{label: '…'}]},
+    {label: '分享', icon: 'fa:Light_ShareAlt:#1296db', children: [{label: '…'}]},
+    {type: 'separator'},
+    {label: '复制', icon: 'fa:Light_Copy:#1296db'},
+    {label: '剪切', icon: 'fa:Light_Cut:#1296db'},
+    {label: '删除', icon: 'fa:Light_Times:#f44336', danger: true},
+    {
+      label: '信息',
+      icon: 'fa:Light_InfoCircle:#1296db',
+      children: [
+        {label: '设置快捷键', icon: 'fa:Light_Keyboard:#1296db'},
+        {label: '导出动作', icon: 'fa:Light_FileExport:#1296db'},
+        {
+          label: '开启自动调试',
+          icon: 'fa:Light_Play:#1296db',
+          tooltip: '自动以调试模式运行此动作',
+        },
+        {label: '动作数据', icon: 'fa:Light_Database:#1296db'},
+      ],
+    },
+  ]}
+/>
 
 编辑器里点工具条的调试钮，或右键运行按钮。只跑一段：选中步骤后右键 **运行(_R)**（旧版是按住 Shift 再点运行）。
 
@@ -98,9 +126,30 @@ legacyContentUpdatedAt: "2023-08-16T01:04:04.000Z"
 
 步骤组和「运行子程序」可以设成不写入调试细节，复杂动作会清爽很多。
 
-![](./img/debug-015-56fe860209.png)
+<PreviewMarks
+  marks={[{key: 'skipWhenDebugging', label: '减少不必要的调试输出'}]}
+>
+  <ModuleParamPreview
+    moduleKey="sys:group"
+    scrollBody={false}
+    focusKeys={['skipErr', 'skipWhenDebugging', 'useMultiThread']}
+    values={{skipWhenDebugging: 'true'}}
+  />
+</PreviewMarks>
 
-![](./img/debug-016-79fb9b6ae8.png)
+<PreviewMarks
+  marks={[{key: 'skipDebugOutput', label: '不输出子程序内部调试信息'}]}
+>
+  <ModuleParamPreview
+    moduleKey="sys:subprogram"
+    scrollBody={false}
+    focusKeys={['subProgram', 'skipDebugOutput', 'stopIfFail']}
+    values={{
+      subProgram: 'epub获取信息',
+      skipDebugOutput: 'false',
+    }}
+  />
+</PreviewMarks>
 
 ## 限制与排障
 

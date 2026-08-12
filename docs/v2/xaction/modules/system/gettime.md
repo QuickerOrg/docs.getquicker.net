@@ -23,11 +23,29 @@ legacyContentUpdatedAt: "2025-01-20T00:48:35.000Z"
 
 ## 概述
 
-分三步：选时间来源 → 按需加减 → 设定文本格式。
+分四步：选时间来源 → 按需加减 → 设定文本格式 → 输出到变量。
 
-![](./img/gettime-001-55f804be61.png)
-
-<ModuleParamPreview moduleKey="sys:getCurrentTime" />
+<PreviewMarks
+  marks={[
+    {key: 'source', label: '1 获取原始时间值'},
+    {key: 'addDays', label: '2 按需计算'},
+    {key: 'format', label: '3 设定输出文本格式'},
+    {key: 'strValue', label: '4 数据输出'},
+  ]}
+>
+  <ModuleParamPreview
+    moduleKey="sys:getCurrentTime"
+    scrollBody={false}
+    values={{
+      source: 'fromString',
+      useUtc: 'false',
+      timeStr: '20230203',
+      inputFormat: 'yyyyMMdd',
+      format: 'f',
+    }}
+    outputVars={{output: 'JsonData', strValue: 'result'}}
+  />
+</PreviewMarks>
 
 ## 参数说明
 
@@ -62,9 +80,25 @@ legacyContentUpdatedAt: "2025-01-20T00:48:35.000Z"
 
 **语言文化**：解析其它语言的时间文本时使用。与语言无关的值（如 `2023-12-13 22:22:00`）保持默认即可。
 
-**数据格式**：特定格式时填写，如 `yyyy` 表示 4 位年、`MM` 表示 2 位月。
+**数据格式**：特定格式时填写，如 `yyyy` 表示 4 位年、`MM` 表示 2 位月。待解析文本与数据格式必须一一对应。
 
-![](./img/gettime-004-27bb91cde0.png)
+<PreviewMarks
+  marks={[
+    {key: 'timeStr', label: '待解析文本'},
+    {key: 'inputFormat', label: '格式对应'},
+  ]}
+>
+  <ModuleParamPreview
+    moduleKey="sys:getCurrentTime"
+    scrollBody={false}
+    focusKeys={['source', 'timeStr', 'inputCulture', 'inputFormat']}
+    values={{
+      source: 'fromString',
+      timeStr: '20230213(122403)',
+      inputFormat: 'yyyyMMdd(HHmmss)',
+    }}
+  />
+</PreviewMarks>
 
 ### 从 Unix 时间戳转换
 
@@ -102,7 +136,25 @@ legacyContentUpdatedAt: "2025-01-20T00:48:35.000Z"
 
 不需要 **文本值** 时可忽略。
 
-![](./img/gettime-007-d4ab510a53.png)
+<PreviewMarks
+  marks={[
+    {key: 'format', label: '控制此输出的结果格式'},
+    {key: 'strValue', label: '按格式转换后的文本值'},
+  ]}
+>
+  <ModuleParamPreview
+    moduleKey="sys:getCurrentTime"
+    scrollBody={false}
+    focusKeys={['format', 'outputCulture', 'output', 'strValue']}
+    values={{
+      source: 'fromString',
+      timeStr: '20230203',
+      inputFormat: 'yyyyMMdd',
+      format: 'F',
+    }}
+    outputVars={{output: 'JsonData', strValue: 'result'}}
+  />
+</PreviewMarks>
 
 **输出文本值格式**：控制 **文本值** 的格式，见 C# `DateTime.ToString`。例如 `yyyy-MM-dd HH:mm:ss` → `2020-06-16 10:38:32`。默认即此格式。
 

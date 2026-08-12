@@ -102,7 +102,22 @@ legacyContentUpdatedAt: "2021-04-11T23:43:30.000Z"
 
 语法与通用 [表达式](/v2/xaction/concepts/expression) 相同。前面不必写 `$=`；如果写了，会先算一遍，再把结果当成表达式算第二遍。
 
-![](./img/compute-002-5c8245e243.png)
+<PreviewMarks
+  marks={[
+    {key: 'expression', label: '可直接写 {变量名}'},
+    {key: 'evalVar', label: '开启后支持变量与 Math'},
+  ]}
+>
+  <ModuleParamPreview
+    moduleKey="sys:compute"
+    scrollBody={false}
+    focusKeys={['expression', 'evalVar']}
+    values={{
+      expression: '{a} * {b}',
+      evalVar: 'true',
+    }}
+  />
+</PreviewMarks>
 
 ## 限制与排障
 

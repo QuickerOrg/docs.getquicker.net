@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updatedAt": "2026-08-12T12:40:00+08:00",
+  "updatedAt": "2026-08-12T16:10:00+08:00",
   "items": [
     {
       "image": "docs/v2/xaction/concepts/img/action-custom-context-menu-001-8e5e2322bf.png",
@@ -14,26 +14,31 @@
     {
       "image": "docs/v2/xaction/concepts/img/action-custom-context-menu-002-1d103a1a05.png",
       "page": "docs/v2/xaction/concepts/action-custom-context-menu.md",
-      "status": "kept",
-      "reason": "外观/选项区自定义菜单输入框尚未抽进 ActionEditorPreview。",
-      "evidence": "campaign-rewrite",
-      "updatedAt": "2026-08-12T12:30:00+08:00"
+      "status": "converted",
+      "reason": "二次替换：外观栏增加右键菜单定义字段。原图保留供审核。",
+      "evidence": "ocr+manual",
+      "updatedAt": "2026-08-12T15:10:00+08:00",
+      "kind": "editor-chrome",
+      "component": "ActionEditorPreview"
     },
     {
       "image": "docs/v2/xaction/concepts/img/action-custom-context-menu-003-9072d6bb7e.png",
       "page": "docs/v2/xaction/concepts/action-custom-context-menu.md",
-      "status": "kept",
-      "reason": "「在编辑器中修改」溢出编辑菜单，无对应预览。",
-      "evidence": "campaign-rewrite",
-      "updatedAt": "2026-08-12T12:30:00+08:00"
+      "status": "converted",
+      "reason": "二次替换：右键菜单定义框菜单按当前 WPF（在文本编辑器中修改 / 在操作设计器中修改）。原图保留供审核。",
+      "evidence": "ocr+manual",
+      "updatedAt": "2026-08-12T15:10:00+08:00",
+      "kind": "context-menu",
+      "component": "ContextMenuPreview"
     },
     {
       "image": "docs/v2/xaction/concepts/img/action-custom-context-menu-004-747e28cefc.png",
       "page": "docs/v2/xaction/concepts/action-custom-context-menu.md",
       "status": "kept",
-      "reason": "插入图标名菜单，无图标库选择器组件。",
-      "evidence": "campaign-rewrite",
-      "updatedAt": "2026-08-12T12:30:00+08:00"
+      "reason": "二次重评：代码编辑器整窗 + 插入图标名，无图标库/代码编辑器预览。keep。",
+      "evidence": "ocr+manual",
+      "updatedAt": "2026-08-12T15:10:00+08:00",
+      "kind": "context-menu"
     },
     {
       "image": "docs/v2/xaction/concepts/img/action-custom-context-menu-005-268e6fc45d.png",
@@ -185,17 +190,19 @@
       "image": "docs/v2/xaction/concepts/img/custom_texttool-005-dcb2d017ba.png",
       "page": "docs/v2/xaction/concepts/custom_texttool.md",
       "status": "kept",
-      "reason": "扩展设置 + 结果追加场景，无表单运行时预览。",
-      "evidence": "campaign-rewrite",
-      "updatedAt": "2026-08-12T12:30:00+08:00"
+      "reason": "二次重评：表单字段编辑窗「扩展设置」裁切（ttmode:\\n），无 FormFieldEditorPreview。keep。",
+      "evidence": "ocr+manual",
+      "updatedAt": "2026-08-12T16:10:00+08:00",
+      "kind": "annotated"
     },
     {
       "image": "docs/v2/xaction/concepts/img/custom_texttool-006-08561a8ec8.png",
       "page": "docs/v2/xaction/concepts/custom_texttool.md",
       "status": "kept",
-      "reason": "文本工具写回输入框的运行结果截图。",
-      "evidence": "campaign-rewrite",
-      "updatedAt": "2026-08-12T12:30:00+08:00"
+      "reason": "二次重评：运行态表单 + 红字标注 ttmode 追加换行。无等价运行态预览。keep。",
+      "evidence": "ocr+manual",
+      "updatedAt": "2026-08-12T16:10:00+08:00",
+      "kind": "annotated"
     },
     {
       "image": "docs/v2/xaction/concepts/img/debug-001-509735dba5.png",
@@ -218,10 +225,12 @@
     {
       "image": "docs/v2/xaction/concepts/img/debug-003-072f9e9e4f.png",
       "page": "docs/v2/xaction/concepts/debug.md",
-      "status": "kept",
-      "reason": "「自动调试」动作菜单标记，非整窗可还原。",
-      "evidence": "campaign-rewrite",
-      "updatedAt": "2026-08-12T12:30:00+08:00"
+      "status": "converted",
+      "reason": "二次替换：信息→开启自动调试 + 官方 tooltip。原图保留供审核。",
+      "evidence": "ocr+manual",
+      "updatedAt": "2026-08-12T15:10:00+08:00",
+      "kind": "context-menu",
+      "component": "ContextMenuPreview"
     },
     {
       "image": "docs/v2/xaction/concepts/img/debug-004-4defe88012.png",
@@ -245,17 +254,19 @@
       "image": "docs/v2/xaction/concepts/img/debug-006-8b12230f68.png",
       "page": "docs/v2/xaction/concepts/debug.md",
       "status": "kept",
-      "reason": "HTML 调试日志整页 chrome，战役约定 keep。",
-      "evidence": "campaign-rewrite",
-      "updatedAt": "2026-08-12T12:30:00+08:00"
+      "reason": "二次重评：HTML 调试日志整页 chrome，不为单图新造日志预览。keep。",
+      "evidence": "manual",
+      "updatedAt": "2026-08-12T16:10:00+08:00",
+      "kind": "ui-other"
     },
     {
       "image": "docs/v2/xaction/concepts/img/debug-007-41dce12a8b.png",
       "page": "docs/v2/xaction/concepts/debug.md",
       "status": "kept",
-      "reason": "调试日志文件头交互，战役约定 keep。",
-      "evidence": "campaign-rewrite",
-      "updatedAt": "2026-08-12T12:30:00+08:00"
+      "reason": "二次重评：调试日志文件头交互，不为单图新造日志预览。keep。",
+      "evidence": "manual",
+      "updatedAt": "2026-08-12T16:10:00+08:00",
+      "kind": "ui-other"
     },
     {
       "image": "docs/v2/xaction/concepts/img/debug-008-e542943bcb.png",
@@ -270,17 +281,19 @@
       "image": "docs/v2/xaction/concepts/img/debug-009-938add2b0c.png",
       "page": "docs/v2/xaction/concepts/debug.md",
       "status": "kept",
-      "reason": "调试日志步骤头，战役约定 keep。",
-      "evidence": "campaign-rewrite",
-      "updatedAt": "2026-08-12T12:30:00+08:00"
+      "reason": "二次重评：调试日志步骤头，不为单图新造日志预览。keep。",
+      "evidence": "manual",
+      "updatedAt": "2026-08-12T16:10:00+08:00",
+      "kind": "ui-other"
     },
     {
       "image": "docs/v2/xaction/concepts/img/debug-010-32d9747588.png",
       "page": "docs/v2/xaction/concepts/debug.md",
       "status": "kept",
-      "reason": "调试日志 [in]/[out] 详情，战役约定 keep。",
-      "evidence": "campaign-rewrite",
-      "updatedAt": "2026-08-12T12:30:00+08:00"
+      "reason": "二次重评：调试日志 [in]/[out] 详情，不为单图新造日志预览。keep。",
+      "evidence": "manual",
+      "updatedAt": "2026-08-12T16:10:00+08:00",
+      "kind": "ui-other"
     },
     {
       "image": "docs/v2/xaction/concepts/img/debug-011-8492086325.png",
@@ -302,9 +315,10 @@
       "image": "docs/v2/xaction/concepts/img/debug-013-7bac30c0d7.png",
       "page": "docs/v2/xaction/concepts/debug.md",
       "status": "kept",
-      "reason": "调试日志折叠态，战役约定 keep。",
-      "evidence": "campaign-rewrite",
-      "updatedAt": "2026-08-12T12:30:00+08:00"
+      "reason": "二次重评：调试日志折叠态，不为单图新造日志预览。keep。",
+      "evidence": "manual",
+      "updatedAt": "2026-08-12T16:10:00+08:00",
+      "kind": "ui-other"
     },
     {
       "image": "docs/v2/xaction/concepts/img/debug-014-00a3d05396.png",
@@ -317,18 +331,22 @@
     {
       "image": "docs/v2/xaction/concepts/img/debug-015-56fe860209.png",
       "page": "docs/v2/xaction/concepts/debug.md",
-      "status": "kept",
-      "reason": "步骤组跳过调试输出勾选，无对应预览。",
-      "evidence": "campaign-rewrite",
-      "updatedAt": "2026-08-12T12:30:00+08:00"
+      "status": "converted",
+      "reason": "二次替换：步骤组 skipWhenDebugging 改为 PreviewMarks。原图保留供审核。",
+      "evidence": "ocr+manual",
+      "updatedAt": "2026-08-12T15:10:00+08:00",
+      "kind": "step-param",
+      "component": "PreviewMarks+ModuleParamPreview"
     },
     {
       "image": "docs/v2/xaction/concepts/img/debug-016-79fb9b6ae8.png",
       "page": "docs/v2/xaction/concepts/debug.md",
-      "status": "kept",
-      "reason": "运行子程序跳过调试输出勾选，无对应预览。",
-      "evidence": "campaign-rewrite",
-      "updatedAt": "2026-08-12T12:30:00+08:00"
+      "status": "converted",
+      "reason": "二次替换：运行子程序 skipDebugOutput 改为 PreviewMarks。原图保留供审核。",
+      "evidence": "ocr+manual",
+      "updatedAt": "2026-08-12T15:10:00+08:00",
+      "kind": "step-param",
+      "component": "PreviewMarks+ModuleParamPreview"
     },
     {
       "image": "docs/v2/xaction/concepts/img/expression-001-bb23f82940.png",
@@ -396,49 +414,55 @@
       "image": "docs/v2/xaction/concepts/img/expression-adv-001-e21604f457.gif",
       "page": "docs/v2/xaction/concepts/expression-adv.md",
       "status": "kept",
-      "reason": "表达式补全连续 GIF，战役约定 keep。",
-      "evidence": "campaign-rewrite",
-      "updatedAt": "2026-08-12T12:30:00+08:00"
+      "reason": "二次重评：表达式补全连续 GIF；缺 ExpressionAssistPreview。keep。",
+      "evidence": "manual",
+      "updatedAt": "2026-08-12T16:10:00+08:00",
+      "kind": "gesture-gif"
     },
     {
       "image": "docs/v2/xaction/concepts/img/expression-adv-002-7e8a5da993.png",
       "page": "docs/v2/xaction/concepts/expression-adv.md",
       "status": "kept",
-      "reason": "补全列表静态截图，无 ExpressionAssist 组件。",
-      "evidence": "campaign-rewrite",
-      "updatedAt": "2026-08-12T12:30:00+08:00"
+      "reason": "二次重评：补全列表静态截图；缺 ExpressionAssistPreview（与 if-008 同缺口，本轮未 port）。keep。",
+      "evidence": "manual",
+      "updatedAt": "2026-08-12T16:10:00+08:00",
+      "kind": "ui-other"
     },
     {
       "image": "docs/v2/xaction/concepts/img/expression-adv-003-93f06d88cb.png",
       "page": "docs/v2/xaction/concepts/expression-adv.md",
       "status": "kept",
-      "reason": "表达式测试器 chrome，战役约定 keep。",
-      "evidence": "campaign-rewrite",
-      "updatedAt": "2026-08-12T12:30:00+08:00"
+      "reason": "二次重评：表达式测试器整窗 chrome，不为单图新造。keep。",
+      "evidence": "manual",
+      "updatedAt": "2026-08-12T16:10:00+08:00",
+      "kind": "ui-other"
     },
     {
       "image": "docs/v2/xaction/concepts/img/expression-adv-004-c7b4eb9f24.gif",
       "page": "docs/v2/xaction/concepts/expression-adv.md",
       "status": "kept",
-      "reason": "测试器交互 GIF，战役约定 keep。",
-      "evidence": "campaign-rewrite",
-      "updatedAt": "2026-08-12T12:30:00+08:00"
+      "reason": "二次重评：表达式测试器交互 GIF，不为单图新造。keep。",
+      "evidence": "manual",
+      "updatedAt": "2026-08-12T16:10:00+08:00",
+      "kind": "gesture-gif"
     },
     {
       "image": "docs/v2/xaction/concepts/img/expression-adv-005-6e6b36ac6c.png",
       "page": "docs/v2/xaction/concepts/expression-adv.md",
       "status": "kept",
-      "reason": "表达式测试设置窗，战役约定 keep。",
-      "evidence": "campaign-rewrite",
-      "updatedAt": "2026-08-12T12:30:00+08:00"
+      "reason": "二次重评：表达式测试设置窗，不为单图新造。keep。",
+      "evidence": "manual",
+      "updatedAt": "2026-08-12T16:10:00+08:00",
+      "kind": "ui-other"
     },
     {
       "image": "docs/v2/xaction/concepts/img/expression-adv-006-7d646baacf.png",
       "page": "docs/v2/xaction/concepts/expression-adv.md",
       "status": "kept",
-      "reason": "表达式上下文变量列表截图，战役约定 keep。",
-      "evidence": "campaign-rewrite",
-      "updatedAt": "2026-08-12T12:30:00+08:00"
+      "reason": "二次重评：表达式上下文变量列表截图，不为单图新造。keep。",
+      "evidence": "manual",
+      "updatedAt": "2026-08-12T16:10:00+08:00",
+      "kind": "ui-other"
     },
     {
       "image": "docs/v2/xaction/concepts/img/interpolation-001-2c97fb9e75.png",
@@ -659,17 +683,19 @@
       "image": "docs/v2/xaction/concepts/img/subprogram-001-1b76aae5f7.png",
       "page": "docs/v2/xaction/concepts/subprogram.md",
       "status": "kept",
-      "reason": "子程序概念总览图，非步骤列表。",
-      "evidence": "campaign-rewrite",
-      "updatedAt": "2026-08-12T12:30:00+08:00"
+      "reason": "二次重评：子程序概念总览示意图，非步骤/参数窗。keep。",
+      "evidence": "manual",
+      "updatedAt": "2026-08-12T16:10:00+08:00",
+      "kind": "diagram"
     },
     {
       "image": "docs/v2/xaction/concepts/img/subprogram-002-6f4fc9d808.gif",
       "page": "docs/v2/xaction/concepts/subprogram.md",
       "status": "kept",
-      "reason": "拖入子程序连续 GIF，战役约定 keep。",
-      "evidence": "campaign-rewrite",
-      "updatedAt": "2026-08-12T12:30:00+08:00"
+      "reason": "二次重评：拖入子程序连续桌面 GIF；dragDemo 只覆盖分支槽，不能还原子程序树拖入。keep。",
+      "evidence": "manual",
+      "updatedAt": "2026-08-12T16:10:00+08:00",
+      "kind": "gesture-gif"
     },
     {
       "image": "docs/v2/xaction/concepts/img/subprogram-003-cb795a4acc.png",
@@ -720,9 +746,10 @@
       "image": "docs/v2/xaction/concepts/img/subprogram-008-86881f079c.png",
       "page": "docs/v2/xaction/concepts/subprogram.md",
       "status": "kept",
-      "reason": "动作内子程序树/列表 chrome，战役约定 keep。",
-      "evidence": "campaign-rewrite",
-      "updatedAt": "2026-08-12T12:30:00+08:00"
+      "reason": "二次重评：动作内子程序树/列表 chrome，现有 ActionEditorPreview 无子程序栏。keep。",
+      "evidence": "manual",
+      "updatedAt": "2026-08-12T16:10:00+08:00",
+      "kind": "editor-chrome"
     },
     {
       "image": "docs/v2/xaction/concepts/img/subprogram-009-177340a46e.png",
@@ -807,9 +834,10 @@
       "image": "docs/v2/xaction/concepts/img/subprogram-018-895314019a.png",
       "page": "docs/v2/xaction/concepts/subprogram.md",
       "status": "kept",
-      "reason": "网络共享子程序搜索列表，战役约定 keep。",
-      "evidence": "campaign-rewrite",
-      "updatedAt": "2026-08-12T12:30:00+08:00"
+      "reason": "二次重评：网络共享子程序搜索列表，不为单图新造。keep。",
+      "evidence": "manual",
+      "updatedAt": "2026-08-12T16:10:00+08:00",
+      "kind": "ui-other"
     },
     {
       "image": "docs/v2/xaction/concepts/img/subprogram-019-73b82928ba.png",
@@ -908,9 +936,10 @@
       "image": "docs/v2/xaction/concepts/img/use-icon-in-actions-003-9ae71d6c53.png",
       "page": "docs/v2/xaction/concepts/use-icon-in-actions.md",
       "status": "kept",
-      "reason": "图标库整页，无组件。",
-      "evidence": "campaign-rewrite",
-      "updatedAt": "2026-08-12T12:30:00+08:00"
+      "reason": "二次重评：图标库整页，不为单图新造。keep。",
+      "evidence": "manual",
+      "updatedAt": "2026-08-12T16:10:00+08:00",
+      "kind": "ui-other"
     },
     {
       "image": "docs/v2/xaction/concepts/img/var-dict-001-489d4973bd.png",
@@ -1065,33 +1094,38 @@
       "image": "docs/v2/xaction/concepts/img/visibility-expression-001-a2ad45e573.gif",
       "page": "docs/v2/xaction/concepts/visibility-expression.md",
       "status": "kept",
-      "reason": "子程序参数显隐 GIF，战役约定 keep。",
-      "evidence": "campaign-rewrite",
-      "updatedAt": "2026-08-12T12:30:00+08:00"
+      "reason": "二次重评：子程序参数随下拉显隐的连续录屏，无表单运行时预览。keep。",
+      "evidence": "manual",
+      "updatedAt": "2026-08-12T16:10:00+08:00",
+      "kind": "gesture-gif"
     },
     {
       "image": "docs/v2/xaction/concepts/img/visibility-expression-002-97e38c5544.png",
       "page": "docs/v2/xaction/concepts/visibility-expression.md",
-      "status": "kept",
-      "reason": "可见性表达式字段截图，无表单运行时预览。",
-      "evidence": "campaign-rewrite",
-      "updatedAt": "2026-08-12T12:30:00+08:00"
+      "status": "converted",
+      "reason": "二次替换：变量定义栏（type/width/height/side/area）。原图保留供审核。",
+      "evidence": "ocr+manual",
+      "updatedAt": "2026-08-12T16:10:00+08:00",
+      "kind": "editor-chrome",
+      "component": "ActionEditorPreview"
     },
     {
       "image": "docs/v2/xaction/concepts/img/visibility-expression-003-dae8a727c3.gif",
       "page": "docs/v2/xaction/concepts/visibility-expression.md",
       "status": "kept",
-      "reason": "表单显隐 GIF，战役约定 keep。",
-      "evidence": "campaign-rewrite",
-      "updatedAt": "2026-08-12T12:30:00+08:00"
+      "reason": "二次重评：多字段表单随下拉显隐的连续录屏，无表单运行时预览。keep。",
+      "evidence": "manual",
+      "updatedAt": "2026-08-12T16:10:00+08:00",
+      "kind": "gesture-gif"
     },
     {
       "image": "docs/v2/xaction/concepts/img/visibility-expression-004-21c006aa72.png",
       "page": "docs/v2/xaction/concepts/visibility-expression.md",
       "status": "kept",
-      "reason": "表单可见性设置截图，战役约定 keep。",
-      "evidence": "campaign-rewrite",
-      "updatedAt": "2026-08-12T12:30:00+08:00"
+      "reason": "二次重评：创建/编辑表单字段整窗 + 可见性表达式；无 FormFieldEditorPreview。keep。",
+      "evidence": "ocr+manual",
+      "updatedAt": "2026-08-12T16:10:00+08:00",
+      "kind": "ui-other"
     },
     {
       "image": "docs/v2/xaction/concepts/img/xaction-editor-001-de25c2f7a6.png",
@@ -1232,9 +1266,9 @@
       "page": "docs/v2/xaction/concepts/xaction-editor.md",
       "notes": "Continuous drag-from-toolbox GIF.",
       "status": "kept",
-      "reason": "Continuous drag-from-toolbox GIF.",
-      "updatedAt": "2026-08-12T12:30:00+08:00",
-      "evidence": "campaign-rewrite"
+      "reason": "二次重评：从工具箱拖到顶层步骤列表的连续 GIF；dragDemo 只覆盖分支槽，不能冒充顶层投放。keep。",
+      "updatedAt": "2026-08-12T16:10:00+08:00",
+      "evidence": "manual"
     },
     {
       "image": "docs/v2/xaction/concepts/img/xaction-editor-012-143f93970a.png",
@@ -1396,14 +1430,14 @@
       "image": "docs/v2/xaction/concepts/img/xaction-editor-024-04549b7522.gif",
       "kind": "gesture-gif",
       "action": "kept",
-      "component": null,
+      "component": "StepProgramView",
       "confidence": "high",
       "page": "docs/v2/xaction/concepts/xaction-editor.md",
       "notes": "Continuous insert-delay GIF.",
-      "status": "kept",
-      "reason": "Continuous insert-delay GIF.",
-      "updatedAt": "2026-08-12T12:30:00+08:00",
-      "evidence": "campaign-rewrite"
+      "status": "converted",
+      "reason": "二次替换：页内已有 wheelDelay 示意，删除残留 insert-delay GIF。原图保留供审核。",
+      "updatedAt": "2026-08-12T14:50:00+08:00",
+      "evidence": "manual"
     },
     {
       "image": "docs/v2/xaction/concepts/img/xaction-editor-025-603170d9ee.gif",
@@ -1427,9 +1461,9 @@
       "page": "docs/v2/xaction/concepts/xaction-editor.md",
       "notes": "Continuous wrap-into-parent GIF.",
       "status": "kept",
-      "reason": "Continuous wrap-into-parent GIF.",
-      "updatedAt": "2026-08-12T12:30:00+08:00",
-      "evidence": "campaign-rewrite"
+      "reason": "二次重评：多选后右键「放入...」包进父步骤的连续 GIF；无 wrap-into-parent 预览。keep。",
+      "updatedAt": "2026-08-12T16:10:00+08:00",
+      "evidence": "manual"
     },
     {
       "image": "docs/v2/xaction/concepts/img/xaction-editor-027-1c58937251.png",
@@ -1479,9 +1513,9 @@
       "page": "docs/v2/xaction/concepts/xaction-editor.md",
       "notes": "Continuous undo/redo GIF.",
       "status": "kept",
-      "reason": "Continuous undo/redo GIF.",
-      "updatedAt": "2026-08-12T12:30:00+08:00",
-      "evidence": "campaign-rewrite"
+      "reason": "二次重评：撤销/重做连续操作 GIF，无历史栈预览。keep。",
+      "updatedAt": "2026-08-12T16:10:00+08:00",
+      "evidence": "manual"
     },
     {
       "image": "docs/v2/xaction/concepts/img/xaction-editor-031-9d1c6cdb70.png",
@@ -1563,16 +1597,16 @@
     },
     {
       "image": "docs/v2/xaction/concepts/img/xaction-editor-037-6427831871.png",
-      "kind": "subprogram-tree",
+      "kind": "editor-chrome",
       "action": "kept",
       "component": null,
       "confidence": "high",
       "page": "docs/v2/xaction/concepts/xaction-editor.md",
       "notes": "Subprogram tree; campaign keeps until subprogram page.",
       "status": "kept",
-      "reason": "Subprogram tree; campaign keeps until subprogram page.",
-      "updatedAt": "2026-08-12T12:30:00+08:00",
-      "evidence": "campaign-rewrite"
+      "reason": "二次重评：编辑器子程序树栏；ActionEditorPreview 无子程序栏，与 subprogram-008 同缺口（<2 张专用栏，本轮未扩）。keep。",
+      "updatedAt": "2026-08-12T16:10:00+08:00",
+      "evidence": "manual"
     },
     {
       "image": "docs/v2/xaction/concepts/img/xaction-intro-001-e8ef16a2e3.png",
@@ -1808,9 +1842,9 @@
       "page": "docs/v2/xaction/modules/basic/mouse.md",
       "status": "kept",
       "kind": "annotated",
-      "reason": "找图定位 A=左上角 / B=中心的红箭头示意，单窗坐标教学 keep。",
+      "reason": "二次重评：找图定位 A=左上角 / B=中间的真实窗口示意，不是参数窗；页内已有 bmpPosition PreviewMarks。单窗坐标教学 keep。",
       "evidence": "ocr+manual",
-      "updatedAt": "2026-08-12T04:05:00+08:00"
+      "updatedAt": "2026-08-12T14:40:00+08:00"
     },
     {
       "image": "docs/v2/xaction/modules/basic/img/mouse-015-850bb03c05.png",
@@ -1956,9 +1990,9 @@
       "page": "docs/v2/xaction/modules/basic/run.md",
       "status": "kept",
       "kind": "annotated",
-      "reason": "变量模式下拉展开教学（红圈）；所教的 false 默认值已在 RunOrOpenStepV2 把 false/true/0/1 当成空。正文改为说明，页面不再引用此图。",
-      "evidence": "ocr+manual",
-      "updatedAt": "2026-08-12T05:05:00+08:00"
+      "reason": "orphan-unreferenced：变量模式下拉展开教学；页内已改文字说明，不再引用。",
+      "evidence": "manual",
+      "updatedAt": "2026-08-12T16:10:00+08:00"
     },
     {
       "image": "docs/v2/xaction/modules/basic/img/run-002-dbe55875ab.png",
@@ -2105,9 +2139,9 @@
       "page": "docs/v2/xaction/modules/clipboard/getclipboardtext.md",
       "status": "kept",
       "kind": "ui-other",
-      "reason": "第三方 Free Clipboard Viewer 界面，用来对照自定义格式名；不是 Quicker 参数窗，无对应预览组件。",
+      "reason": "二次重评：第三方 Free Clipboard Viewer，对照自定义格式名。keep。",
       "evidence": "ocr+manual",
-      "updatedAt": "2026-08-12T05:20:00+08:00"
+      "updatedAt": "2026-08-12T16:10:00+08:00"
     },
     {
       "image": "docs/v2/xaction/modules/clipboard/img/waitclipboardchange-001-2c1947c6de.png",
@@ -2122,20 +2156,22 @@
     {
       "image": "docs/v2/xaction/modules/clipboard/img/writeclipboard-001-860eaf8230.png",
       "page": "docs/v2/xaction/modules/clipboard/writeclipboard.md",
-      "status": "kept",
-      "kind": "annotated",
-      "reason": "OCR 虽判 step-param，但图上有红箭头标注「类型」与「要写入的内容」的对应；单窗红框教学 keep。概述另附无箭头 ModuleParamPreview。",
+      "status": "converted",
+      "kind": "step-param",
+      "reason": "二次替换：红箭头点名 type/imageVar，改为 PreviewMarks；type=image, imageVar=img。原图保留供审核。",
       "evidence": "ocr+manual",
-      "updatedAt": "2026-08-12T05:20:00+08:00"
+      "updatedAt": "2026-08-12T14:40:00+08:00",
+      "component": "PreviewMarks+ModuleParamPreview"
     },
     {
       "image": "docs/v2/xaction/modules/compute/img/assign-001-e016c44527.png",
       "page": "docs/v2/xaction/modules/compute/assign.md",
-      "status": "kept",
-      "kind": "annotated",
-      "reason": "OCR 为 step-param，但图上有红箭头说明输入支持纯文本/表达式/插值，以及结果输出到变量；属单窗教学标注，keep。",
+      "status": "converted",
+      "kind": "step-param",
+      "reason": "二次替换：输入支持纯文本/表达式/插值、结果输出到变量，改为 PreviewMarks。原图保留供审核。",
       "evidence": "ocr+manual",
-      "updatedAt": "2026-08-12T05:20:00+08:00"
+      "updatedAt": "2026-08-12T14:40:00+08:00",
+      "component": "PreviewMarks+ModuleParamPreview"
     },
     {
       "image": "docs/v2/xaction/modules/compute/img/assign-002-c20864fa49.png",
@@ -2181,28 +2217,29 @@
       "image": "docs/v2/xaction/modules/compute/img/color-002-efae8e7c2b.gif",
       "page": "docs/v2/xaction/modules/compute/color.md",
       "status": "kept",
-      "kind": "decorative",
-      "reason": "连续桌面录屏：调色板与吸管取色，无法用组件还原。",
+      "kind": "gesture-gif",
+      "reason": "二次重评：连续桌面录屏（调色板/吸管），无法用组件还原。keep。",
       "evidence": "manual",
-      "updatedAt": "2026-08-12T05:20:00+08:00"
+      "updatedAt": "2026-08-12T16:10:00+08:00"
     },
     {
       "image": "docs/v2/xaction/modules/compute/img/color-003-6bd4fc7342.gif",
       "page": "docs/v2/xaction/modules/compute/color.md",
       "status": "kept",
-      "kind": "decorative",
-      "reason": "连续桌面录屏：从屏幕点选颜色，无法用组件还原。",
+      "kind": "gesture-gif",
+      "reason": "二次重评：连续桌面录屏（屏幕点选颜色），无法用组件还原。keep。",
       "evidence": "manual",
-      "updatedAt": "2026-08-12T05:20:00+08:00"
+      "updatedAt": "2026-08-12T16:10:00+08:00"
     },
     {
       "image": "docs/v2/xaction/modules/compute/img/compute-002-5c8245e243.png",
       "page": "docs/v2/xaction/modules/compute/compute.md",
-      "status": "kept",
-      "kind": "annotated",
-      "reason": "增强模式参数窗带箭头指向变量下拉，属下拉/字段教学；OCR 误判为 var-def（低置信），keep。",
+      "status": "converted",
+      "kind": "step-param",
+      "reason": "二次替换：增强模式表达式 {a}*{b} 字段说明改为 PreviewMarks。原图保留供审核。",
       "evidence": "ocr+manual",
-      "updatedAt": "2026-08-12T05:20:00+08:00"
+      "updatedAt": "2026-08-12T14:40:00+08:00",
+      "component": "PreviewMarks+ModuleParamPreview"
     },
     {
       "image": "docs/v2/xaction/modules/compute/img/computetime-001-96bc28002f.png",
@@ -2319,9 +2356,9 @@
       "page": "docs/v2/xaction/modules/compute/managelist.md",
       "status": "kept",
       "kind": "annotated",
-      "reason": "运行态「管理列表」+「编辑菜单项」叠窗，带编号注记；无 ManageListPreview，OCR 误判 step-param。",
+      "reason": "二次重评：管理列表+编辑菜单项叠窗带编号；缺 ManageListPreview。keep。",
       "evidence": "ocr+manual",
-      "updatedAt": "2026-08-12T05:20:00+08:00"
+      "updatedAt": "2026-08-12T15:30:00+08:00"
     },
     {
       "image": "docs/v2/xaction/modules/compute/img/managelist-002-1f5433f27e.png",
@@ -2336,20 +2373,20 @@
     {
       "image": "docs/v2/xaction/modules/compute/img/managelist-003-1875478276.png",
       "page": "docs/v2/xaction/modules/compute/managelist.md",
-      "status": "kept",
+      "status": "deferred",
       "kind": "ui-other",
-      "reason": "运行态「编辑菜单项」窗口，暂无对应预览组件。",
+      "reason": "二次重评：运行态「编辑菜单项」窗；缺 ManageListPreview（同缺口 003/004，本轮未 port 叠窗）。",
       "evidence": "ocr+manual",
-      "updatedAt": "2026-08-12T05:20:00+08:00"
+      "updatedAt": "2026-08-12T15:30:00+08:00"
     },
     {
       "image": "docs/v2/xaction/modules/compute/img/managelist-004-c987d208d3.png",
       "page": "docs/v2/xaction/modules/compute/managelist.md",
-      "status": "kept",
+      "status": "deferred",
       "kind": "ui-other",
-      "reason": "运行态普通文本编辑列表项；OCR 误判 user-input，UserInputPreview 不能还原管理列表场景。",
+      "reason": "二次重评：运行态普通文本编辑列表项；UserInputPreview 不能还原管理列表。缺 ManageListPreview。",
       "evidence": "ocr+manual",
-      "updatedAt": "2026-08-12T05:20:00+08:00"
+      "updatedAt": "2026-08-12T15:30:00+08:00"
     },
     {
       "image": "docs/v2/xaction/modules/compute/img/numberprocess-001-a789c8f93a.png",
@@ -2384,11 +2421,12 @@
     {
       "image": "docs/v2/xaction/modules/compute/img/tableoperation-001-64de37de97.png",
       "page": "docs/v2/xaction/modules/compute/tableoperation.md",
-      "status": "kept",
-      "kind": "annotated",
-      "reason": "OCR 为 step-param，但图上有 1/2/3 编号划分表格变量、操作类型和输出，属模块教学注记，keep。",
+      "status": "converted",
+      "kind": "step-param",
+      "reason": "二次替换：1/2/3 编号分区改为 PreviewMarks 钉 table/type/rowCount。原图保留供审核。",
       "evidence": "ocr+manual",
-      "updatedAt": "2026-08-12T05:20:00+08:00"
+      "updatedAt": "2026-08-12T14:40:00+08:00",
+      "component": "PreviewMarks+ModuleParamPreview"
     },
     {
       "image": "docs/v2/xaction/modules/compute/img/tableoperation-002-46e293470c.png",
@@ -2403,11 +2441,12 @@
     {
       "image": "docs/v2/xaction/modules/compute/img/tableoperation-003-dba68f282d.png",
       "page": "docs/v2/xaction/modules/compute/tableoperation.md",
-      "status": "kept",
-      "kind": "annotated",
-      "reason": "更新行参数窗上有红字说明行数据词典与多行筛选语义，属单窗教学标注，keep。",
+      "status": "converted",
+      "kind": "step-param",
+      "reason": "二次替换：行数据/筛选表达式红字改为 PreviewMarks；type=update。原图保留供审核。",
       "evidence": "ocr+manual",
-      "updatedAt": "2026-08-12T05:20:00+08:00"
+      "updatedAt": "2026-08-12T14:40:00+08:00",
+      "component": "PreviewMarks+ModuleParamPreview"
     },
     {
       "image": "docs/v2/xaction/modules/compute/img/tableoperation-004-27627e9b91.png",
@@ -2492,11 +2531,12 @@
     {
       "image": "docs/v2/xaction/modules/compute/img/tableoperation-012-77a4f2e906.png",
       "page": "docs/v2/xaction/modules/compute/tableoperation.md",
-      "status": "kept",
-      "kind": "annotated",
-      "reason": "带红箭头的 Excel 概念图，说明标题行号和列名；表格组件无法保留箭头。",
-      "evidence": "ocr+manual",
-      "updatedAt": "2026-08-12T05:20:00+08:00"
+      "status": "converted",
+      "kind": "diagram",
+      "reason": "二次替换：Excel 标题行号/列名概念图改为正文表格说明。原图保留供审核。",
+      "evidence": "manual",
+      "updatedAt": "2026-08-12T14:40:00+08:00",
+      "component": "markdown-table"
     },
     {
       "image": "docs/v2/xaction/modules/files/img/checkpathexists-001-6e0a969ff8.png",
@@ -2511,11 +2551,12 @@
     {
       "image": "docs/v2/xaction/modules/files/img/checkpathexists-002-9beb7a6335.png",
       "page": "docs/v2/xaction/modules/files/checkpathexists.md",
-      "status": "kept",
-      "kind": "unknown",
-      "reason": "OCR kind=unknown。Quicker「显示文本」运行态（标题「结果内容」+ 行号），展示文件扩展信息词典；暂无对应预览组件，且内容是教学示例。",
+      "status": "converted",
+      "kind": "runtime-dialog",
+      "reason": "二次替换：显示文本窗展示文件扩展信息词典。原图保留供审核。",
       "evidence": "ocr+manual",
-      "updatedAt": "2026-08-12T05:15:00+08:00"
+      "updatedAt": "2026-08-12T15:30:00+08:00",
+      "component": "TextWindowPreview"
     },
     {
       "image": "docs/v2/xaction/modules/files/img/everythingsearch-001-7265e3ee1c.png",
@@ -2532,36 +2573,36 @@
       "page": "docs/v2/xaction/modules/files/everythingsearch.md",
       "status": "kept",
       "kind": "annotated",
-      "reason": "Everything 搜索框红框教学：限定目录写成带末尾反斜杠的引号路径。第三方软件 UI，不是 Quicker 参数窗。",
+      "reason": "二次重评：Everything 搜索框红框教学。第三方 UI。keep。",
       "evidence": "ocr+manual",
-      "updatedAt": "2026-08-12T05:15:00+08:00"
+      "updatedAt": "2026-08-12T16:10:00+08:00"
     },
     {
       "image": "docs/v2/xaction/modules/files/img/everythingsearch-003-5318c9c1a8.png",
       "page": "docs/v2/xaction/modules/files/everythingsearch.md",
       "status": "kept",
       "kind": "annotated",
-      "reason": "Everything 安装向导红箭头教学「选中安装 Everything 服务」。第三方安装程序，OCR 误判为 choice-list，不替换。",
+      "reason": "二次重评：Everything 安装向导「安装服务」。第三方安装程序。keep。",
       "evidence": "ocr+manual",
-      "updatedAt": "2026-08-12T05:15:00+08:00"
+      "updatedAt": "2026-08-12T16:10:00+08:00"
     },
     {
       "image": "docs/v2/xaction/modules/files/img/everythingsearch-004-7c1e07ae2e.png",
       "page": "docs/v2/xaction/modules/files/everythingsearch.md",
       "status": "kept",
       "kind": "annotated",
-      "reason": "Everything 安装向导红箭头教学「开机自动启动」。第三方安装程序，OCR 误判为 choice-list，不替换。",
+      "reason": "二次重评：Everything 安装向导「开机自动启动」。第三方安装程序。keep。",
       "evidence": "ocr+manual",
-      "updatedAt": "2026-08-12T05:15:00+08:00"
+      "updatedAt": "2026-08-12T16:10:00+08:00"
     },
     {
       "image": "docs/v2/xaction/modules/files/img/everythingsearch-005-eafe303e17.png",
       "page": "docs/v2/xaction/modules/files/everythingsearch.md",
       "status": "kept",
       "kind": "annotated",
-      "reason": "Everything 选项窗红箭头教学：随系统自启动 + Everything 服务。第三方设置窗，OCR 误判为 runtime-dialog，不替换。",
+      "reason": "二次重评：Everything 选项窗自启动+服务。第三方设置窗。keep。",
       "evidence": "ocr+manual",
-      "updatedAt": "2026-08-12T05:15:00+08:00"
+      "updatedAt": "2026-08-12T16:10:00+08:00"
     },
     {
       "image": "docs/v2/xaction/modules/files/img/fileoperation-001-2f9a24c6c6.png",
@@ -2764,10 +2805,12 @@
     {
       "image": "docs/v2/xaction/modules/flow/img/if-003-bbc85ea91f.png",
       "page": "docs/v2/xaction/modules/flow/if.md",
-      "status": "kept",
-      "reason": "工具箱红框标出「如果」与「如果/否则」，单窗红框教学。",
-      "evidence": "ocr + visual annotated",
-      "updatedAt": "2026-08-12T11:50:00+08:00"
+      "status": "converted",
+      "reason": "二次替换：工具箱红框教学改为 ActionEditorPreview focus=toolbox、flow、搜索「如果」。原图保留供审核。",
+      "evidence": "ocr+manual",
+      "updatedAt": "2026-08-12T14:50:00+08:00",
+      "kind": "editor-chrome",
+      "component": "ActionEditorPreview"
     },
     {
       "image": "docs/v2/xaction/modules/flow/img/if-004-9e2e72c7fe.gif",
@@ -2790,10 +2833,11 @@
     {
       "image": "docs/v2/xaction/modules/flow/img/if-008-264686b097.gif",
       "page": "docs/v2/xaction/modules/flow/if.md",
-      "status": "kept",
-      "reason": "布尔表达式助手弹窗尚未切片。",
-      "evidence": "gif helper UI",
-      "updatedAt": "2026-08-12T11:50:00+08:00"
+      "status": "deferred",
+      "reason": "二次重评：布尔表达式助手弹窗尚未从 Headless 切片；缺 ExpressionAssistPreview。GIF 暂留。",
+      "evidence": "manual",
+      "updatedAt": "2026-08-12T14:50:00+08:00",
+      "kind": "gesture-gif"
     },
     {
       "image": "docs/v2/xaction/modules/flow/img/if-009-e6e2ef28a9.png",
@@ -2836,29 +2880,31 @@
     {
       "image": "docs/v2/xaction/modules/flow/img/repeat-001-a28f455d1c.png",
       "page": "docs/v2/xaction/modules/flow/repeat.md",
-      "status": "kept",
-      "kind": "annotated",
-      "reason": "原图在参数窗上直接标出无限循环、中止条件和当前计数的含义，属于教学注记截图。",
-      "evidence": "ocr+manual",
-      "updatedAt": "2026-08-11T20:06:13+08:00"
+      "status": "converted",
+      "kind": "step-param",
+      "reason": "页内已用 PreviewMarks 还原无限循环/中止条件；二次替换补登记。原图保留供审核。",
+      "evidence": "manual",
+      "updatedAt": "2026-08-12T14:40:00+08:00",
+      "component": "PreviewMarks+ModuleParamPreview"
     },
     {
       "image": "docs/v2/xaction/modules/flow/img/repeat-002-9644e73781.png",
       "page": "docs/v2/xaction/modules/flow/repeat.md",
       "status": "kept",
       "kind": "annotated",
-      "reason": "这是带编号和红框的 Quicker 全局快捷键设置导航图，不是模块参数窗；现有预览组件不覆盖该界面。",
+      "reason": "二次重评：Quicker 全局快捷键设置导航（编号/红框），现有预览不覆盖设置窗。keep。",
       "evidence": "ocr+manual",
-      "updatedAt": "2026-08-11T20:06:13+08:00"
+      "updatedAt": "2026-08-12T16:10:00+08:00"
     },
     {
       "image": "docs/v2/xaction/modules/flow/img/repeat-003-9990394c7d.gif",
       "page": "docs/v2/xaction/modules/flow/repeat.md",
-      "status": "kept",
-      "kind": "decorative",
-      "reason": "GIF 演示在动作设计器中拖放步骤到循环槽的动态过程；静态 StepProgramView 会丢失操作顺序。",
-      "evidence": "manual",
-      "updatedAt": "2026-08-11T20:06:13+08:00"
+      "status": "converted",
+      "kind": "gesture-gif",
+      "reason": "二次替换：ActionEditorPreview.dragDemo 工具箱→重复循环槽。原图保留供审核。",
+      "evidence": "ocr+manual",
+      "updatedAt": "2026-08-12T16:10:00+08:00",
+      "component": "ActionEditorPreview"
     },
     {
       "image": "docs/v2/xaction/modules/flow/img/runaction-001-9b5781b103.png",
@@ -4030,11 +4076,12 @@
     {
       "image": "docs/v2/xaction/modules/system/img/gettime-001-55f804be61.png",
       "page": "docs/v2/xaction/modules/system/gettime.md",
-      "status": "kept",
-      "kind": "annotated",
-      "reason": "原图用四色框和编号同时说明时间来源、计算、格式与输出四个区域，属于模块整体教学示意。",
+      "status": "converted",
+      "kind": "step-param",
+      "reason": "二次替换：四区编号教学改为 PreviewMarks（来源/加减/格式/输出）。原图保留供审核。",
       "evidence": "ocr+manual",
-      "updatedAt": "2026-08-11T20:06:13+08:00"
+      "updatedAt": "2026-08-12T14:40:00+08:00",
+      "component": "PreviewMarks+ModuleParamPreview"
     },
     {
       "image": "docs/v2/xaction/modules/system/img/gettime-002-f8c706c680.png",
@@ -4059,11 +4106,12 @@
     {
       "image": "docs/v2/xaction/modules/system/img/gettime-004-27bb91cde0.png",
       "page": "docs/v2/xaction/modules/system/gettime.md",
-      "status": "kept",
-      "kind": "annotated",
-      "reason": "原图用红框和箭头强调待解析文本与数据格式必须对应，普通字段高亮不能表达两者关系。",
+      "status": "converted",
+      "kind": "step-param",
+      "reason": "二次替换：待解析文本与数据格式对应改为 PreviewMarks。原图保留供审核。",
       "evidence": "ocr+manual",
-      "updatedAt": "2026-08-11T20:06:13+08:00"
+      "updatedAt": "2026-08-12T14:40:00+08:00",
+      "component": "PreviewMarks+ModuleParamPreview"
     },
     {
       "image": "docs/v2/xaction/modules/system/img/gettime-005-2780cf4098.png",
@@ -4088,11 +4136,12 @@
     {
       "image": "docs/v2/xaction/modules/system/img/gettime-007-d4ab510a53.png",
       "page": "docs/v2/xaction/modules/system/gettime.md",
-      "status": "kept",
-      "kind": "annotated",
-      "reason": "原图用红框和箭头说明输出格式如何控制文本值变量，保留能避免丢失字段间的因果关系。",
+      "status": "converted",
+      "kind": "step-param",
+      "reason": "二次替换：输出格式控制文本值改为 PreviewMarks 钉 format/strValue。原图保留供审核。",
       "evidence": "ocr+manual",
-      "updatedAt": "2026-08-11T20:06:13+08:00"
+      "updatedAt": "2026-08-12T14:40:00+08:00",
+      "component": "PreviewMarks+ModuleParamPreview"
     },
     {
       "image": "docs/v2/xaction/modules/system/img/getwindowtitle-001-4d31c8bf24.png",
@@ -4316,6 +4365,16 @@
       "updatedAt": "2026-08-11T19:17:14+08:00"
     },
     {
+      "image": "docs/v2/xaction/modules/system/img/windowoperations-004-337f551e34.png",
+      "page": "docs/v2/xaction/modules/system/windowoperations.md",
+      "status": "converted",
+      "kind": "diagram",
+      "reason": "坐标概念箭头图改为正文表格说明（左/上/右/下相对工作区）。原图保留供审核。",
+      "evidence": "ocr+manual",
+      "updatedAt": "2026-08-12T16:55:00+08:00",
+      "component": "markdown-table"
+    },
+    {
       "image": "docs/v2/xaction/modules/system/img/windowoperations-005-0baeb889ca.png",
       "page": "docs/v2/xaction/modules/system/windowoperations.md",
       "status": "converted",
@@ -4378,18 +4437,18 @@
       "page": "docs/v2/xaction/modules/text/enc.md",
       "status": "kept",
       "kind": "annotated",
-      "reason": "操作类型下拉展开教学；页内已另附全貌 ModuleParamPreview。",
-      "evidence": "ocr+manual",
-      "updatedAt": "2026-08-12T06:00:00+08:00"
+      "reason": "orphan-unreferenced：操作类型下拉展开教学；页内已用 ModuleParamPreview 全貌，不再引用。",
+      "evidence": "manual",
+      "updatedAt": "2026-08-12T16:10:00+08:00"
     },
     {
       "image": "docs/v2/xaction/modules/text/img/enc-002-5a262d846c.png",
       "page": "docs/v2/xaction/modules/text/enc.md",
       "status": "kept",
       "kind": "annotated",
-      "reason": "输入内容类型下拉展开教学。",
-      "evidence": "ocr+manual",
-      "updatedAt": "2026-08-12T06:00:00+08:00"
+      "reason": "orphan-unreferenced：输入内容类型下拉展开教学；页内已用 ModuleParamPreview 全貌，不再引用。",
+      "evidence": "manual",
+      "updatedAt": "2026-08-12T16:10:00+08:00"
     },
     {
       "image": "docs/v2/xaction/modules/text/img/enc-003-ba5eae7780.png",
@@ -4433,9 +4492,9 @@
       "page": "docs/v2/xaction/modules/text/formatstring.md",
       "status": "kept",
       "kind": "diagram",
-      "reason": "对齐效果示意（左/右补空格），页内已改用文字说明；原图未再引用。",
+      "reason": "orphan-unreferenced：对齐效果示意；页内已改文字说明，不再引用。",
       "evidence": "manual",
-      "updatedAt": "2026-08-12T06:00:00+08:00"
+      "updatedAt": "2026-08-12T16:10:00+08:00"
     },
     {
       "image": "docs/v2/xaction/modules/text/img/jsonextract-001-f7fb0c06b3.png",
@@ -4460,18 +4519,21 @@
     {
       "image": "docs/v2/xaction/modules/text/img/showtext-001-e7813dac79.png",
       "page": "docs/v2/xaction/modules/text/showtext.md",
-      "status": "deferred",
-      "reason": "文本窗口运行态，缺 TextWindowPreview；未 port。",
-      "evidence": "manual",
-      "updatedAt": "2026-08-12T06:00:00+08:00"
+      "status": "kept",
+      "reason": "二次重评：文本窗叠层教学（工具栏/扩展菜单/右键/查找）+ 红字标注，TextWindowPreview 不能等价还原。页内概述已用 ModuleParamPreview。keep。",
+      "evidence": "ocr+manual",
+      "updatedAt": "2026-08-12T15:30:00+08:00",
+      "kind": "annotated"
     },
     {
       "image": "docs/v2/xaction/modules/text/img/showtext-002-66210e1245.png",
       "page": "docs/v2/xaction/modules/text/showtext.md",
-      "status": "deferred",
-      "reason": "文本窗口右键菜单运行态，缺对应组件。",
-      "evidence": "manual",
-      "updatedAt": "2026-08-12T06:00:00+08:00"
+      "status": "converted",
+      "reason": "二次替换：文本窗右键/高亮语法子菜单。原图保留供审核。",
+      "evidence": "ocr+manual",
+      "updatedAt": "2026-08-12T15:30:00+08:00",
+      "kind": "context-menu",
+      "component": "ContextMenuPreview+TextWindowPreview"
     },
     {
       "image": "docs/v2/xaction/modules/text/img/showtext-003-638303e144.png",

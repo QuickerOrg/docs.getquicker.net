@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-08-12T03:10:30.452Z",
+  "generatedAt": "2026-08-12T06:04:18.738Z",
   "sourceVersion": "xaction-catalog",
   "runners": {
     "sys:openUrl": {
@@ -37,7 +37,7 @@
         ") ",
         "url"
       ],
-      "icon": "fa:Light_Globe"
+      "icon": "fa:Light_Globe:#6aaded"
     },
     "sys:MsgBox": {
       "name": "弹窗提示或确认",
@@ -100,7 +100,7 @@
         "delayMs",
         " ms"
       ],
-      "icon": "fa:Light_Stopwatch"
+      "icon": "fa:Light_Stopwatch:#6aaded"
     },
     "sys:outputText": {
       "name": "发送文本到窗口",
@@ -128,7 +128,7 @@
       "summaryParts": [
         "content"
       ],
-      "icon": "fa:Light_CommentAltLines"
+      "icon": "fa:Light_CommentAltLines:#6aaded"
     },
     "sys:getSelectedText": {
       "name": "获取选中的文本",
@@ -164,7 +164,7 @@
         " ",
         "outputEncoded"
       ],
-      "icon": "fa:Light_ICursor"
+      "icon": "fa:Light_ICursor:#6aaded"
     },
     "sys:keyInput": {
       "name": "模拟按键A（录入）",
@@ -179,7 +179,7 @@
       "summaryParts": [
         "keys"
       ],
-      "icon": "fa:Light_Keyboard"
+      "icon": "fa:Light_Keyboard:#6aaded"
     },
     "sys:sendKeys": {
       "name": "模拟按键B（参数）",
@@ -191,7 +191,7 @@
       "summaryParts": [
         "keys"
       ],
-      "icon": "fa:Light_Keyboard"
+      "icon": "fa:Light_Keyboard:#6aaded"
     },
     "sys:mouse": {
       "name": "鼠标输入",
@@ -285,7 +285,7 @@
         "   ",
         "extAction"
       ],
-      "icon": "fa:Solid_MousePointer"
+      "icon": "fa:Solid_MousePointer:#6aaded"
     },
     "sys:notify": {
       "name": "提示消息",
@@ -383,7 +383,7 @@
       "summaryParts": [
         "type"
       ],
-      "icon": "fa:Light_UserEdit"
+      "icon": "fa:Light_UserEdit:#6aaded"
     },
     "sys:select": {
       "name": "用户选择",
@@ -474,7 +474,7 @@
         "   ",
         "multiSelected"
       ],
-      "icon": "fa:Light_Ballot"
+      "icon": "fa:Light_Ballot:#6aaded"
     },
     "sys:run": {
       "name": "运行或打开",
@@ -525,7 +525,7 @@
         " ",
         "arg"
       ],
-      "icon": "fa:Solid_PaperPlane"
+      "icon": "fa:Solid_PaperPlane:#6aaded"
     },
     "sys:runScript": {
       "name": "运行脚本",
@@ -576,7 +576,7 @@
           "oem": "OEM"
         }
       },
-      "icon": "fa:Light_Scroll"
+      "icon": "fa:Light_Scroll:#6aaded"
     },
     "sys:comment": {
       "name": "注释",
@@ -588,7 +588,7 @@
       "summaryParts": [
         "note:0"
       ],
-      "icon": "fa:Solid_FileAlt"
+      "icon": "fa:Solid_FileAlt:#f2ba00"
     },
     "sys:waitClipboardChange": {
       "name": "等待剪贴板内容改变",
@@ -608,7 +608,7 @@
         "maxWaitSeconds",
         " 秒"
       ],
-      "icon": "fa:Light_ClipboardCheck"
+      "icon": "fa:Light_ClipboardCheck:#6aaded"
     },
     "sys:getClipboardImage": {
       "name": "获取剪贴板图片",
@@ -626,7 +626,7 @@
         "=> ",
         "output"
       ],
-      "icon": "fa:Light_Clipboard"
+      "icon": "fa:Light_Clipboard:#6aaded"
     },
     "sys:getClipboardText": {
       "name": "获取剪贴板文本",
@@ -669,7 +669,7 @@
         "=> ",
         "output"
       ],
-      "icon": "fa:Light_Clipboard"
+      "icon": "fa:Light_Clipboard:#6aaded"
     },
     "sys:getClipboardFiles": {
       "name": "获取剪贴板文件列表",
@@ -687,7 +687,7 @@
         "=> ",
         "output"
       ],
-      "icon": "fa:Light_ClipboardList"
+      "icon": "fa:Light_ClipboardList:#6aaded"
     },
     "sys:fileToClipboard": {
       "name": "文件放入剪贴板",
@@ -708,7 +708,7 @@
         "list",
         " => 剪贴板"
       ],
-      "icon": "fa:Light_NotesMedical"
+      "icon": "fa:Light_NotesMedical:#6aaded"
     },
     "sys:writeClipboard": {
       "name": "写入剪贴板",
@@ -745,7 +745,7 @@
         "type",
         " => 剪贴板"
       ],
-      "icon": "fa:Light_NotesMedical"
+      "icon": "fa:Light_NotesMedical:#6aaded"
     },
     "sys:numCompare": {
       "name": "比较数字",
@@ -776,7 +776,7 @@
         "param2",
         " ?"
       ],
-      "icon": "fa:Light_Calculator"
+      "icon": "fa:Light_Calculator:#6aaded"
     },
     "sys:strCompare": {
       "name": "比较文本",
@@ -811,7 +811,7 @@
         "param2",
         " ?"
       ],
-      "icon": "fa:Light_Calculator"
+      "icon": "fa:Light_Calculator:#6aaded"
     },
     "sys:tableoperation": {
       "name": "表格数据操作",
@@ -881,7 +881,7 @@
         " ",
         "type"
       ],
-      "icon": "fa:Light_Table"
+      "icon": "fa:Light_Table:#6aaded"
     },
     "sys:dictOperations": {
       "name": "词典操作",
@@ -923,7 +923,7 @@
         " Key:",
         "key"
       ],
-      "icon": "fa:Light_Book"
+      "icon": "fa:Light_Book:#6aaded"
     },
     "sys:assign": {
       "name": "赋值",
@@ -942,7 +942,7 @@
         " => ",
         "output"
       ],
-      "icon": "fa:Light_Edit"
+      "icon": "fa:Light_Edit:#6aaded"
     },
     "sys:manageList": {
       "name": "管理和排序列表",
@@ -968,7 +968,7 @@
       "summaryParts": [
         "list"
       ],
-      "icon": "fa:Light_ListOl"
+      "icon": "fa:Light_ListOl:#6aaded"
     },
     "sys:compute": {
       "name": "计算",
@@ -988,7 +988,7 @@
         " => ",
         "output"
       ],
-      "icon": "fa:Light_CalculatorAlt"
+      "icon": "fa:Light_CalculatorAlt:#6aaded"
     },
     "sys:computeTime": {
       "name": "计算时间",
@@ -1028,7 +1028,7 @@
       "summaryParts": [
         "type"
       ],
-      "icon": "fa:Light_Clock"
+      "icon": "fa:Light_Clock:#6aaded"
     },
     "sys:listOperations": {
       "name": "列表操作",
@@ -1093,7 +1093,7 @@
         " ",
         "list"
       ],
-      "icon": "fa:Light_ListOl"
+      "icon": "fa:Light_ListOl:#6aaded"
     },
     "sys:color": {
       "name": "屏幕取色/颜色转换与计算",
@@ -1145,7 +1145,7 @@
       "summaryParts": [
         "type"
       ],
-      "icon": "fa:Solid_FillDrip"
+      "icon": "fa:Solid_FillDrip:#6aaded"
     },
     "sys:randomNum": {
       "name": "生成随机数",
@@ -1162,7 +1162,7 @@
         "=> ",
         "output"
       ],
-      "icon": "fa:Light_Cog"
+      "icon": "fa:Light_Cog:#6aaded"
     },
     "sys:newGuid": {
       "name": "生成Guid",
@@ -1188,7 +1188,7 @@
         "输出到：",
         "output"
       ],
-      "icon": "fa:Light_Cog"
+      "icon": "fa:Light_Cog:#6aaded"
     },
     "sys:dboperation": {
       "name": "数据库查询",
@@ -1231,7 +1231,7 @@
         " ",
         "sql"
       ],
-      "icon": "fa:Light_Database"
+      "icon": "fa:Light_Database:#6aaded"
     },
     "sys:numberprocess": {
       "name": "数字转换与处理",
@@ -1317,7 +1317,7 @@
         "txt",
         "image"
       ],
-      "icon": "fa:Light_FolderOpen"
+      "icon": "fa:Light_FolderOpen:#6aaded"
     },
     "sys:checkPathExists": {
       "name": "检查路径/获取文件信息",
@@ -1365,7 +1365,7 @@
         "生成文件路径到：",
         "filePath"
       ],
-      "icon": "fa:Light_Cog"
+      "icon": "fa:Light_Cog:#6aaded"
     },
     "sys:everythingsearch": {
       "name": "使用Everything搜索文件",
@@ -1430,7 +1430,7 @@
       "summaryParts": [
         "search"
       ],
-      "icon": "fa:Light_Search"
+      "icon": "fa:Light_Search:#6aaded"
     },
     "sys:pathExtraction": {
       "name": "提取文件路径信息/生成路径",
@@ -1466,7 +1466,7 @@
           "combine": "合并路径 (拼接)"
         }
       },
-      "icon": "fa:Light_Cog"
+      "icon": "fa:Light_Cog:#6aaded"
     },
     "sys:fileOperation": {
       "name": "文件和目录操作",
@@ -1509,7 +1509,7 @@
       "summaryParts": [
         "type"
       ],
-      "icon": "fa:Light_Folders"
+      "icon": "fa:Light_Folders:#6aaded"
     },
     "sys:WriteImageFile": {
       "name": "写入图片文件",
@@ -1528,7 +1528,7 @@
         "写入文件：",
         "filePath"
       ],
-      "icon": "fa:Light_FileImage"
+      "icon": "fa:Light_FileImage:#6aaded"
     },
     "sys:WriteTextFile": {
       "name": "写入文本文件",
@@ -1561,7 +1561,7 @@
       "summaryParts": [
         "filePath"
       ],
-      "icon": "fa:Light_FileEdit"
+      "icon": "fa:Light_FileEdit:#6aaded"
     },
     "sys:stateStorage": {
       "name": "状态存取",
@@ -1602,7 +1602,7 @@
         " ",
         "key"
       ],
-      "icon": "fa:Light_Save"
+      "icon": "fa:Light_Save:#6aaded"
     },
     "sys:zip": {
       "name": "Zip压缩打包",
@@ -1639,7 +1639,7 @@
         "sourcePath",
         "sourceZipFile"
       ],
-      "icon": "fa:Light_FileArchive"
+      "icon": "fa:Light_FileArchive:#6aaded"
     },
     "sys:group": {
       "name": "步骤组",
@@ -1656,7 +1656,7 @@
         "isSuccess": "是否成功",
         "errorMessage": "错误消息"
       },
-      "icon": "fa:Light_LayerGroup"
+      "icon": "fa:Light_LayerGroup:#6aaded"
     },
     "sys:dependencycheck": {
       "name": "检查和下载依赖",
@@ -1710,7 +1710,7 @@
         "input",
         " 的每项执行"
       ],
-      "icon": "fa:Light_Repeat"
+      "icon": "fa:Light_Repeat:#6aaded"
     },
     "sys:simpleIf": {
       "name": "如果",
@@ -1723,7 +1723,7 @@
         "判断条件：",
         "condition"
       ],
-      "icon": "fa:Regular_ProjectDiagram"
+      "icon": "fa:Regular_ProjectDiagram:#6aaded"
     },
     "sys:if": {
       "name": "如果/否则",
@@ -1736,19 +1736,19 @@
         "判断条件：",
         "condition"
       ],
-      "icon": "fa:Regular_ProjectDiagram"
+      "icon": "fa:Regular_ProjectDiagram:#6aaded"
     },
     "sys:break": {
       "name": "跳出循环(break)",
       "description": "跳出循环（\"每个\" 或 \"重复\" 模块）",
       "stepType": "Action",
-      "icon": "fa:Light_SignOut"
+      "icon": "fa:Light_SignOut:#fbbc05"
     },
     "sys:continue": {
       "name": "跳过后续步骤(continue)",
       "description": "跳过后续步骤（循环内部），开始下一次循环。在循环内部使用。",
       "stepType": "Action",
-      "icon": "fa:Light_Forward"
+      "icon": "fa:Light_Forward:#6aaded"
     },
     "sys:stop": {
       "name": "停止(return)",
@@ -1772,7 +1772,7 @@
         "isError",
         ")"
       ],
-      "icon": "fa:Solid_Square"
+      "icon": "fa:Solid_Square:#FF3000"
     },
     "sys:runAction": {
       "name": "运行或停止动作",
@@ -1811,7 +1811,7 @@
         " ",
         "inputParam"
       ],
-      "icon": "fa:Light_Cog"
+      "icon": "fa:Light_Cog:#6aaded"
     },
     "sys:subprogram": {
       "name": "运行子程序",
@@ -1825,7 +1825,8 @@
       },
       "outputLabels": {
         "isSuccess": "是否成功"
-      }
+      },
+      "icon": "fa:Solid_Cubes:#3196F4"
     },
     "sys:csscript": {
       "name": "运行C#代码",
@@ -1865,7 +1866,7 @@
           "staLongRun": "后台线程(STA独立线程)"
         }
       },
-      "icon": "fa:Light_Scroll"
+      "icon": "fa:Light_Scroll:#6aaded"
     },
     "sys:csharpFileApp": {
       "name": "运行C#文件应用",
@@ -1889,7 +1890,7 @@
       "summaryParts": [
         "code"
       ],
-      "icon": "fa:Light_Code"
+      "icon": "fa:Light_Code:#6aaded"
     },
     "sys:jsscript": {
       "name": "运行Javascript代码",
@@ -1904,7 +1905,7 @@
         "isSuccess": "是否成功",
         "return": "返回值"
       },
-      "icon": "fa:Light_Scroll"
+      "icon": "fa:Light_Scroll:#6aaded"
     },
     "sys:pythonscript": {
       "name": "运行Python代码",
@@ -1918,7 +1919,7 @@
       "outputLabels": {
         "isSuccess": "是否成功"
       },
-      "icon": "fa:Brands_Python"
+      "icon": "fa:Brands_Python:#6aaded"
     },
     "sys:repeat": {
       "name": "重复",
@@ -1942,7 +1943,7 @@
         "ms，中止条件: ",
         "stopCondition"
       ],
-      "icon": "fa:Light_Repeat"
+      "icon": "fa:Light_Repeat:#6aaded"
     },
     "sys:imageinfo": {
       "name": "读取图片信息",
@@ -1974,7 +1975,7 @@
       "summaryParts": [
         "sourceType"
       ],
-      "icon": "fa:Light_Image"
+      "icon": "fa:Light_Image:#6aaded"
     },
     "sys:screenRecording": {
       "name": "后台屏幕录制",
@@ -2039,7 +2040,7 @@
         " ",
         "sessionId"
       ],
-      "icon": "fa:Light_Video"
+      "icon": "fa:Light_Video:#6aaded"
     },
     "sys:screenCapturePro": {
       "name": "截图 Pro",
@@ -2062,7 +2063,7 @@
       "summaryParts": [
         "img"
       ],
-      "icon": "fa:Light_ExpandWide"
+      "icon": "fa:Light_ExpandWide:#6aaded"
     },
     "sys:tempImgBed": {
       "name": "临时图床",
@@ -2081,7 +2082,7 @@
         " => ",
         "url"
       ],
-      "icon": "fa:Light_Images"
+      "icon": "fa:Light_Images:#6aaded"
     },
     "sys:screenCapture": {
       "name": "屏幕截图",
@@ -2118,7 +2119,7 @@
         " => ",
         "img"
       ],
-      "icon": "fa:Light_ExpandWide"
+      "icon": "fa:Light_ExpandWide:#6aaded"
     },
     "sys:screenRecordingUI": {
       "name": "屏幕录制",
@@ -2140,7 +2141,7 @@
       "summaryParts": [
         "filePath"
       ],
-      "icon": "fa:Light_Video"
+      "icon": "fa:Light_Video:#6aaded"
     },
     "sys:searchBmp": {
       "name": "屏幕找图/找色/找字",
@@ -2200,7 +2201,7 @@
         " ",
         "bmp"
       ],
-      "icon": "fa:Light_SearchLocation"
+      "icon": "fa:Light_SearchLocation:#6aaded"
     },
     "sys:createQrCode": {
       "name": "生成二维码",
@@ -2229,7 +2230,7 @@
         " => ",
         "img"
       ],
-      "icon": "fa:Light_Qrcode"
+      "icon": "fa:Light_Qrcode:#6aaded"
     },
     "sys:readQrCode": {
       "name": "识别二维码",
@@ -2251,7 +2252,7 @@
         " => ",
         "code"
       ],
-      "icon": "fa:Light_Qrcode"
+      "icon": "fa:Light_Qrcode:#6aaded"
     },
     "sys:whiteboard": {
       "name": "手写板",
@@ -2269,7 +2270,7 @@
         "isSuccess": "是否成功",
         "result": "结果图片"
       },
-      "icon": "fa:Light_Pencil"
+      "icon": "fa:Light_Pencil:#6aaded"
     },
     "sys:imgToBase64": {
       "name": "图片/Base64 转换",
@@ -2294,7 +2295,7 @@
       "summaryParts": [
         "type"
       ],
-      "icon": "fa:Light_Image"
+      "icon": "fa:Light_Image:#6aaded"
     },
     "sys:imgProcess": {
       "name": "图片处理",
@@ -2340,7 +2341,7 @@
       "summaryParts": [
         "type"
       ],
-      "icon": "fa:Light_Images"
+      "icon": "fa:Light_Images:#6aaded"
     },
     "sys:showImage": {
       "name": "显示图片",
@@ -2400,7 +2401,7 @@
         "path",
         "imgVar"
       ],
-      "icon": "fa:Light_Images"
+      "icon": "fa:Light_Images:#6aaded"
     },
     "sys:longScreenshot": {
       "name": "长截图",
@@ -2418,7 +2419,7 @@
       "summaryParts": [
         "img"
       ],
-      "icon": "fa:Light_ExpandWide"
+      "icon": "fa:Light_ExpandWide:#6aaded"
     },
     "sys:inputScript": {
       "name": "多步骤输入",
@@ -2434,7 +2435,7 @@
       "summaryParts": [
         "data"
       ],
-      "icon": "fa:Light_Keyboard"
+      "icon": "fa:Light_Keyboard:#6aaded"
     },
     "sys:cloud_oss": {
       "name": "第三方云存储/图床",
@@ -2473,7 +2474,7 @@
         "vendor",
         ")"
       ],
-      "icon": "fa:Light_Cloud"
+      "icon": "fa:Light_Cloud:#32a852"
     },
     "sys:mathocr": {
       "name": "公式识别",
@@ -2500,7 +2501,7 @@
           "MathpixStrokes": "手写并识别(Mathpix)"
         }
       },
-      "icon": "fa:Light_Function"
+      "icon": "fa:Light_Function:#6aaded"
     },
     "sys:translation": {
       "name": "机器翻译/词典",
@@ -2560,7 +2561,7 @@
         " => ",
         "resultText"
       ],
-      "icon": "fa:Light_Language"
+      "icon": "fa:Light_Language:#6aaded"
     },
     "sys:basic-ocr": {
       "name": "基础OCR",
@@ -2636,7 +2637,7 @@
         " ",
         "imgVar"
       ],
-      "icon": "fa:Light_ExpandWide"
+      "icon": "fa:Light_ExpandWide:#6aaded"
     },
     "sys:tempcloudstore": {
       "name": "临时云存储",
@@ -2665,7 +2666,7 @@
       "summaryParts": [
         "dataType"
       ],
-      "icon": "fa:Light_Cloud"
+      "icon": "fa:Light_Cloud:#32a852"
     },
     "sys:htmlExtract": {
       "name": "提取HTML内容",
@@ -2712,7 +2713,7 @@
       "summaryParts": [
         "xpath"
       ],
-      "icon": "fa:Brands_Html5"
+      "icon": "fa:Brands_Html5:#6aaded"
     },
     "sys:download": {
       "name": "下载文件",
@@ -2741,7 +2742,7 @@
       "summaryParts": [
         "url"
       ],
-      "icon": "fa:Light_Download"
+      "icon": "fa:Light_Download:#6aaded"
     },
     "sys:clouddata": {
       "name": "云状态存取",
@@ -2773,7 +2774,7 @@
         "  ",
         "key"
       ],
-      "icon": "fa:Light_Cloud"
+      "icon": "fa:Light_Cloud:#32a852"
     },
     "sys:ai": {
       "name": "AI 调用",
@@ -2862,7 +2863,7 @@
         " ",
         "docPath"
       ],
-      "icon": "fa:Light_Server"
+      "icon": "fa:Light_Server:#6aaded"
     },
     "sys:http": {
       "name": "HTTP请求",
@@ -2923,7 +2924,7 @@
         " ",
         "url!"
       ],
-      "icon": "fa:Light_Cog"
+      "icon": "fa:Light_Cog:#6aaded"
     },
     "sys:smtp": {
       "name": "SMTP发送邮件",
@@ -2949,7 +2950,7 @@
       "outputLabels": {
         "isSuccess": "是否成功"
       },
-      "icon": "fa:Light_EnvelopeOpenText"
+      "icon": "fa:Light_EnvelopeOpenText:#6aaded"
     },
     "sys:websocket": {
       "name": "Websocket",
@@ -2985,7 +2986,7 @@
       "summaryParts": [
         "operation"
       ],
-      "icon": "fa:Light_Plug"
+      "icon": "fa:Light_Plug:#6aaded"
     },
     "sys:uiautomation": {
       "name": "窗口界面控制",
@@ -3102,7 +3103,7 @@
         " ",
         "controlOperation"
       ],
-      "icon": "fa:Light_Window"
+      "icon": "fa:Light_Window:#6aaded"
     },
     "sys:flauiautomation": {
       "name": "窗口界面控制(FlaUI)",
@@ -3215,7 +3216,7 @@
         " ",
         "controlOperation"
       ],
-      "icon": "fa:Light_Window"
+      "icon": "fa:Light_Window:#6aaded"
     },
     "sys:getChromeUrl": {
       "name": "获取浏览器网址",
@@ -3232,7 +3233,7 @@
         " => ",
         "output"
       ],
-      "icon": "fa:Light_Cog"
+      "icon": "fa:Light_Cog:#6aaded"
     },
     "sys:chromecontrol": {
       "name": "浏览器控制",
@@ -3549,7 +3550,7 @@
         " ",
         "selector"
       ],
-      "icon": "fa:Brands_Chrome"
+      "icon": "fa:Brands_Chrome:#6aaded"
     },
     "sys:adobesoftscontrol": {
       "name": "Adobe系列软件控制",
@@ -3584,7 +3585,7 @@
         " ",
         "script"
       ],
-      "icon": "fa:Brands_Adobe"
+      "icon": "fa:Brands_Adobe:#6aaded"
     },
     "sys:autocadcontrol": {
       "name": "AutoCAD控制",
@@ -3613,7 +3614,7 @@
         " ",
         "command"
       ],
-      "icon": "fa:Light_RulerCombined"
+      "icon": "fa:Light_RulerCombined:#6aaded"
     },
     "sys:excelObjects": {
       "name": "Excel对象操作",
@@ -3648,7 +3649,7 @@
       "summaryParts": [
         "operation"
       ],
-      "icon": "fa:Light_Table"
+      "icon": "fa:Light_Table:#6aaded"
     },
     "sys:excelRange": {
       "name": "Excel区域操作",
@@ -3711,7 +3712,7 @@
       "summaryParts": [
         "operation"
       ],
-      "icon": "fa:Light_Table"
+      "icon": "fa:Light_Table:#6aaded"
     },
     "sys:excelreadwrite": {
       "name": "Excel文件读写",
@@ -3797,7 +3798,7 @@
           "Blank": "Blank（空白）"
         }
       },
-      "icon": "fa:Light_FileExcel"
+      "icon": "fa:Light_FileExcel:#6aaded"
     },
     "sys:officehelper": {
       "name": "Office软件辅助",
@@ -3845,7 +3846,7 @@
         " ",
         "appType"
       ],
-      "icon": "fa:Brands_Microsoft"
+      "icon": "fa:Brands_Microsoft:#6aaded"
     },
     "sys:rhinocontrol": {
       "name": "Rhino软件控制",
@@ -3872,7 +3873,7 @@
         " ",
         "command"
       ],
-      "icon": "fa:Light_RulerCombined"
+      "icon": "fa:Light_RulerCombined:#6aaded"
     },
     "sys:keyoperation": {
       "name": "按键操作",
@@ -3939,7 +3940,7 @@
         " ",
         "localSound"
       ],
-      "icon": "fa:Light_Music"
+      "icon": "fa:Light_Music:#6aaded"
     },
     "sys:windowOperations": {
       "name": "窗口操作",
@@ -3986,7 +3987,7 @@
           "TOGGLE_MAXMIZE": "切换最大化/恢复"
         }
       },
-      "icon": "fa:Light_Window"
+      "icon": "fa:Light_Window:#6aaded"
     },
     "sys:restoreActiveWindow": {
       "name": "恢复活动窗口",
@@ -3995,7 +3996,7 @@
       "summaryParts": [
         "还原活动窗口"
       ],
-      "icon": "fa:Light_Cog"
+      "icon": "fa:Light_Cog:#6aaded"
     },
     "sys:getWindowTitle": {
       "name": "获取窗口信息/查找窗口",
@@ -4058,7 +4059,7 @@
       "summaryParts": [
         "which"
       ],
-      "icon": "fa:Light_Cog"
+      "icon": "fa:Light_Cog:#6aaded"
     },
     "sys:getActiveProcessInfo": {
       "name": "获取前台进程信息",
@@ -4153,7 +4154,7 @@
       "summaryParts": [
         "source"
       ],
-      "icon": "fa:Light_Clock"
+      "icon": "fa:Light_Clock:#6aaded"
     },
     "sys:getSysInfo": {
       "name": "获取系统或动作信息",
@@ -4192,7 +4193,7 @@
         "quickerThemeMode": "Quicker主题模式",
         "isPaused": "Quicker是否暂停"
       },
-      "icon": "fa:Light_Cog"
+      "icon": "fa:Light_Cog:#6aaded"
     },
     "sys:getFolderPath": {
       "name": "获取系统路径",
@@ -4259,7 +4260,7 @@
       "summaryParts": [
         "folder"
       ],
-      "icon": "fa:Light_Cog"
+      "icon": "fa:Light_Cog:#6aaded"
     },
     "sys:getSelectedFiles": {
       "name": "获取选择的文件(夹)/选择特定文件",
@@ -4306,7 +4307,7 @@
         " ",
         "files"
       ],
-      "icon": "fa:Light_FolderTree"
+      "icon": "fa:Light_FolderTree:#6aaded"
     },
     "sys:getExplorerPath": {
       "name": "获取资源管理器路径/跳转路径",
@@ -4427,7 +4428,7 @@
       "summaryParts": [
         "operation"
       ],
-      "icon": "fa:Light_Microphone"
+      "icon": "fa:Light_Microphone:#6aaded"
     },
     "sys:imeControl": {
       "name": "输入法状态",
@@ -4450,7 +4451,7 @@
       "summaryParts": [
         "operation"
       ],
-      "icon": "fa:Light_Keyboard"
+      "icon": "fa:Light_Keyboard:#6aaded"
     },
     "sys:fileSystemWatch": {
       "name": "文件系统监控",
@@ -4486,7 +4487,7 @@
         "operation",
         "path"
       ],
-      "icon": "fa:Light_MonitorHeartRate"
+      "icon": "fa:Light_MonitorHeartRate:#6aaded"
     },
     "sys:sendMessage": {
       "name": "向窗口发送消息",
@@ -4515,7 +4516,7 @@
       "summaryParts": [
         "向窗口发送消息"
       ],
-      "icon": "fa:Light_Envelope"
+      "icon": "fa:Light_Envelope:#6aaded"
     },
     "sys:audioControl": {
       "name": "音频设备",
@@ -4564,7 +4565,7 @@
         "operation",
         "id"
       ],
-      "icon": "fa:Light_Volume"
+      "icon": "fa:Light_Volume:#6aaded"
     },
     "sys:SelectFileInExplorer": {
       "name": "在资源管理器中定位文件",
@@ -4660,7 +4661,7 @@
       "summaryParts": [
         "type"
       ],
-      "icon": "fa:Light_Cog"
+      "icon": "fa:Light_Cog:#6aaded"
     },
     "sys:shelloperation": {
       "name": "Shell文件操作",
@@ -4707,7 +4708,7 @@
         " ",
         "verb"
       ],
-      "icon": "fa:Light_Window"
+      "icon": "fa:Light_Window:#6aaded"
     },
     "sys:winservice": {
       "name": "Windows服务和注册表",
@@ -4762,7 +4763,7 @@
         " => ",
         "output"
       ],
-      "icon": "fa:Light_Cog"
+      "icon": "fa:Light_Cog:#6aaded"
     },
     "sys:charInfo": {
       "name": "获取字符信息",
@@ -4784,7 +4785,7 @@
         "char",
         " 的信息"
       ],
-      "icon": "fa:Light_Font"
+      "icon": "fa:Light_Font:#6aaded"
     },
     "sys:enc": {
       "name": "加密/解密/哈希",
@@ -4873,7 +4874,7 @@
       "summaryParts": [
         "operation"
       ],
-      "icon": "fa:Light_UserSecret"
+      "icon": "fa:Light_UserSecret:#6aaded"
     },
     "sys:joinList": {
       "name": "列表合并成文本",
@@ -4892,7 +4893,7 @@
         " => ",
         "output"
       ],
-      "icon": "fa:Light_Cog"
+      "icon": "fa:Light_Cog:#6aaded"
     },
     "sys:jsonExtract": {
       "name": "提取JSON内容",
@@ -4927,7 +4928,7 @@
         "V2",
         "..."
       ],
-      "icon": "fa:Light_Cog"
+      "icon": "fa:Light_Cog:#6aaded"
     },
     "sys:strReplace": {
       "name": "替换文本",
@@ -4960,7 +4961,7 @@
         " => ",
         "output"
       ],
-      "icon": "fa:Light_Cog"
+      "icon": "fa:Light_Cog:#6aaded"
     },
     "sys:stringProcess": {
       "name": "文本处理",
@@ -5048,7 +5049,7 @@
         " => ",
         "output"
       ],
-      "icon": "fa:Light_Cog"
+      "icon": "fa:Light_Cog:#6aaded"
     },
     "sys:showText": {
       "name": "文本窗口",
@@ -5161,7 +5162,7 @@
         " ",
         "text"
       ],
-      "icon": "fa:Light_WindowAlt"
+      "icon": "fa:Light_WindowAlt:#6aaded"
     },
     "sys:regexExtract": {
       "name": "正则提取",
@@ -5200,7 +5201,7 @@
         " ",
         "pattern"
       ],
-      "icon": "fa:Light_Cog"
+      "icon": "fa:Light_Cog:#6aaded"
     },
     "sys:textCounter": {
       "name": "字数统计",
@@ -5238,7 +5239,7 @@
       "summaryParts": [
         "formatString!"
       ],
-      "icon": "fa:Light_Cog"
+      "icon": "fa:Light_Cog:#6aaded"
     },
     "sys:waitKeyboard": {
       "name": "等待按键",
@@ -5284,7 +5285,7 @@
       "summaryParts": [
         "operation"
       ],
-      "icon": "fa:Light_Keyboard"
+      "icon": "fa:Light_Keyboard:#6aaded"
     },
     "sys:form": {
       "name": "多字段表单",
@@ -5346,7 +5347,7 @@
         " ",
         "help"
       ],
-      "icon": "fa:Light_Window"
+      "icon": "fa:Light_Window:#6aaded"
     },
     "sys:textSelectTools": {
       "name": "辅助选择工具",
@@ -5394,7 +5395,7 @@
         " => ",
         "output"
       ],
-      "icon": "fa:Light_MousePointer"
+      "icon": "fa:Light_MousePointer:#6aaded"
     },
     "sys:record": {
       "name": "录制键鼠操作",
@@ -5410,7 +5411,7 @@
         "isSuccess": "是否成功",
         "output": "录制数据"
       },
-      "icon": "fa:Light_Video"
+      "icon": "fa:Light_Video:#6aaded"
     },
     "sys:showmenu": {
       "name": "显示菜单",
@@ -5434,7 +5435,7 @@
       "summaryParts": [
         "menuData"
       ],
-      "icon": "fa:Light_Bars"
+      "icon": "fa:Light_Bars:#6aaded"
     },
     "sys:showWaitWin": {
       "name": "显示等待窗口",
@@ -5491,7 +5492,7 @@
       "summaryParts": [
         "mode"
       ],
-      "icon": "fa:Light_UserEdit"
+      "icon": "fa:Light_UserEdit:#6aaded"
     },
     "sys:reportProgress": {
       "name": "显示进度条",
@@ -5519,7 +5520,7 @@
         " ",
         "progressId"
       ],
-      "icon": "fa:Light_TasksAlt"
+      "icon": "fa:Light_TasksAlt:#6aaded"
     },
     "sys:selectFile": {
       "name": "选择文件",
@@ -5553,7 +5554,7 @@
         " ",
         "pathList"
       ],
-      "icon": "fa:Light_FolderOpen"
+      "icon": "fa:Light_FolderOpen:#6aaded"
     },
     "sys:selectFolder": {
       "name": "选择文件夹",
@@ -5572,7 +5573,7 @@
       "summaryParts": [
         "选择文件夹路径"
       ],
-      "icon": "fa:Light_FolderOpen"
+      "icon": "fa:Light_FolderOpen:#6aaded"
     },
     "sys:playRecords": {
       "name": "重放键鼠操作",
@@ -5582,7 +5583,7 @@
         "data": "录制数据",
         "speed": "重放速度"
       },
-      "icon": "fa:Light_PlayCircle"
+      "icon": "fa:Light_PlayCircle:#6aaded"
     },
     "sys:custompanel": {
       "name": "自定义操作窗",
@@ -5760,7 +5761,7 @@
       "summaryParts": [
         "type"
       ],
-      "icon": "fa:Light_WindowAlt"
+      "icon": "fa:Light_WindowAlt:#6aaded"
     },
     "sys:webview2": {
       "name": "WebView2浏览器窗口",
@@ -5865,7 +5866,7 @@
       "summaryParts": [
         "type"
       ],
-      "icon": "fa:Brands_Edge"
+      "icon": "fa:Brands_Edge:#6aaded"
     },
     "if": {
       "name": "如果/否则",
@@ -5878,7 +5879,7 @@
         "判断条件：",
         "condition"
       ],
-      "icon": "fa:Regular_ProjectDiagram"
+      "icon": "fa:Regular_ProjectDiagram:#6aaded"
     },
     "if-only": {
       "name": "如果",
@@ -5891,7 +5892,7 @@
         "判断条件：",
         "condition"
       ],
-      "icon": "fa:Regular_ProjectDiagram"
+      "icon": "fa:Regular_ProjectDiagram:#6aaded"
     },
     "loop": {
       "name": "每个",
@@ -5925,7 +5926,7 @@
         "input",
         " 的每项执行"
       ],
-      "icon": "fa:Light_Repeat"
+      "icon": "fa:Light_Repeat:#6aaded"
     }
   }
 }

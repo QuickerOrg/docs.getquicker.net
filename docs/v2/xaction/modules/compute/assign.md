@@ -29,9 +29,22 @@ legacyContentUpdatedAt: "2023-11-01T08:49:47.000Z"
 
 ## 参数说明
 
-**输入**：要赋给变量的源数据。
+**输入**：要赋给变量的源数据。可以是纯文本、表达式（`$=`）或文本插值（`$$`）。
 
-![](./img/assign-001-e016c44527.png)
+<PreviewMarks
+  marks={[
+    {key: 'input', label: '纯文本 / 表达式 / 文本插值'},
+    {key: 'output', label: '结果输出到变量'},
+  ]}
+>
+  <ModuleParamPreview
+    moduleKey="sys:assign"
+    scrollBody={false}
+    focusKeys={['input', 'output']}
+    values={{input: '$= "Hello " + {title}'}}
+    outputVars={{output: '_message'}}
+  />
+</PreviewMarks>
 
 **失败后停止**：赋值失败是否中止动作。默认开启。旧稿未写。
 

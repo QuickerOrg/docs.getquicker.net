@@ -77,7 +77,16 @@ flowchart TD
 
 ### 两个模块的区别
 
-![](./img/if-003-bbc85ea91f.png)
+在工具箱 **流程** 分类里可以同时看到这两个模块：
+
+<ActionEditorPreview
+  focus="toolbox"
+  toolboxTab="flow"
+  toolboxSearch="如果"
+  toolboxSelected="sys:if"
+  caption="「如果」只有一个分支；「如果/否则」有两个分支"
+  data={{steps: []}}
+/>
 
 Quicker 提供两个模块：
 

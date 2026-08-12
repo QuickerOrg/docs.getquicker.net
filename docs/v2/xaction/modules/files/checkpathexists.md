@@ -50,7 +50,17 @@ legacyContentUpdatedAt: "2025-01-20T00:45:55.000Z"
 
 例如图片可能出现 `Image.HorizontalSize` / `宽度`、`MIMEType` 为 `image/jpeg`。快捷方式还可通过词典键 `Link.TargetParsingPath` 取目标路径。
 
-![](./img/checkpathexists-002-9beb7a6335.png)
+<TextWindowPreview
+  title="结果内容"
+  text={`MIMEType: image/jpeg
+MIMEType_FriendlyName: MIME 类型
+Image.HorizontalSize: 1620
+Image.HorizontalSize_FriendlyName: 宽度
+Image.VerticalSize: 1080
+Image.VerticalSize_FriendlyName: 高度
+Image.Dimensions: 1620 x 1080
+Image.Dimensions_FriendlyName: 分辨率`}
+/>
 
 ## 示例动作
 

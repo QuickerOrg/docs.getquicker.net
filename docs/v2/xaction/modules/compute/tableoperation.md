@@ -25,9 +25,21 @@ legacyContentUpdatedAt: "2024-05-14T08:26:31.000Z"
 
 先选 **表格变量** 和 **操作类型**，再按类型填写附加参数。输出随类型变化。
 
-<ModuleParamPreview moduleKey="sys:tableoperation" />
-
-![](./img/tableoperation-001-64de37de97.png)
+<PreviewMarks
+  marks={[
+    {key: 'table', label: '要读写的表格变量'},
+    {key: 'type', label: '操作类型'},
+    {key: 'rowCount', label: '输出'},
+  ]}
+>
+  <ModuleParamPreview
+    moduleKey="sys:tableoperation"
+    scrollBody={false}
+    values={{type: 'info'}}
+    inputVars={{table: 'table'}}
+    outputVars={{rowCount: 'rowCount'}}
+  />
+</PreviewMarks>
 
 ## 参数说明
 
@@ -71,7 +83,25 @@ legacyContentUpdatedAt: "2024-05-14T08:26:31.000Z"
 
 更新符合条件的行的某些列。1.42.38+。
 
-![](./img/tableoperation-003-dba68f282d.png)
+<PreviewMarks
+  marks={[
+    {key: 'rowData', label: '要更新的列和值的词典，可同时更新多列'},
+    {key: 'filterExpression', label: '筛选条件，多行符合则更新多行'},
+  ]}
+>
+  <ModuleParamPreview
+    moduleKey="sys:tableoperation"
+    scrollBody={false}
+    focusKeys={['table', 'type', 'rowData', 'filterExpression', 'isSuccess', 'rowCount']}
+    values={{
+      type: 'update',
+      rowData: 'Birth:20',
+      filterExpression: "Name='王五'",
+    }}
+    inputVars={{table: 'table'}}
+    outputVars={{isSuccess: 'isSuccess', rowCount: 'rowCount'}}
+  />
+</PreviewMarks>
 
 **行数据**：要更新的列和值的词典，可同时改多列。
 
@@ -255,9 +285,14 @@ legacyContentUpdatedAt: "2024-05-14T08:26:31.000Z"
   outputVars={{rowCount: 'rowCount'}}
 />
 
-工作表里应是规范的二维表。
+工作表里应是规范的二维表。例如标题在第 4 行时，**标题行号**填 `4`，列名取该行（`Name` / `Birth` / `Position`）：
 
-![](./img/tableoperation-012-77a4f2e906.png)
+| 行号 | Name | Birth | Position |
+| --- | --- | --- | --- |
+| 4（标题行） | Name | Birth | Position |
+| 5 | 李四 | 1995 | 学生 |
+| 6 | 王五 | 2000 | 学生 |
+| 7 | 张三 | 1990 | 教师 |
 
 **Excel文件路径**：完整路径。文件当前不能被占用（例如正用 Excel 打开）。
 

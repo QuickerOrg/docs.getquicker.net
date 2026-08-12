@@ -31,7 +31,20 @@ legacyContentUpdatedAt: "2019-07-08T13:55:08.000Z"
 
 **类型**：要写入的内容类型。换类型后，下面的写入字段会跟着变。
 
-![类型决定下面填写哪一项写入内容](./img/writeclipboard-001-860eaf8230.png)
+<PreviewMarks
+  marks={[
+    {key: 'type', label: '要写入剪贴板的内容类型'},
+    {key: 'imageVar', label: '要写入的内容'},
+  ]}
+>
+  <ModuleParamPreview
+    moduleKey="sys:writeClipboard"
+    scrollBody={false}
+    focusKeys={['type', 'imageVar']}
+    values={{type: 'image'}}
+    inputVars={{imageVar: 'img'}}
+  />
+</PreviewMarks>
 
 - **自动（纯文本或图片）**：接受任意类型的变量。内容是图片就按图片写入，其它类型转成文本再写入。
 - **HTML片段**：写入 HTML，粘贴到支持富文本的编辑器时保留链接、样式。

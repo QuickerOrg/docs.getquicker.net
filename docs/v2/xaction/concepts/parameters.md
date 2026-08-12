@@ -14,13 +14,10 @@ legacyContentUpdatedAt: "2025-12-05T02:03:20.000Z"
 
 模块先收输入，做完操作再把结果写到输出。窗口里通常分成「（输入）参数」和「输出」。
 
-```mermaid
-flowchart LR
-  src[变量或输入框] --> calc[计算中间结果]
-  calc --> conv[转成参数类型]
-  conv --> step[模块执行]
-  step --> out[写入输出变量]
-```
+<FlowChart
+  layout="row"
+  steps={['变量或输入框', '计算中间结果', '转成参数类型', '模块执行', '写入输出变量']}
+/>
 
 <ModuleParamPreview
   moduleKey="sys:openUrl"
@@ -52,20 +49,18 @@ flowchart LR
 3. 布尔（如「如果」）和数字（如「重复」次数）必要时把中间结果再当公式解析。
 4. 转成目标参数类型后交给模块。
 
-```mermaid
-flowchart TD
-  start[输入框内容] --> q1{"以 $$ 开头?"}
-  q1 -->|是| interp[插值]
-  interp --> q2{"结果仍以 $$ 或 $= 开头?"}
-  q2 -->|是| second[再插值或再算表达式]
-  q2 -->|否| mid[中间结果]
-  q1 -->|否| q3{"以 $= 开头?"}
-  q3 -->|是| expr[表达式]
-  q3 -->|否| mid
-  expr --> mid
-  second --> mid
-  mid --> typed[转成参数类型]
-```
+<FlowChart
+  layout="funnel"
+  start="输入框内容"
+  decision="看前缀"
+  branches={[
+    {label: '$$', steps: ['插值', '必要时再处理一次']},
+    {label: '$=', steps: ['表达式']},
+    {label: '都不是', steps: ['原文']},
+  ]}
+  merge="中间结果"
+  after={['转成参数类型']}
+/>
 
 `$$` 得到的中间结果是文本；`$=` 可以是任意类型。
 

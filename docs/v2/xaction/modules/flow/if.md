@@ -25,18 +25,13 @@ legacyContentUpdatedAt: "2021-08-12T06:37:42.000Z"
 
 常见场景：用百度搜选中文字时，成功取到文本就搜这段文字，否则打开百度首页。
 
-```mermaid
-flowchart TD
-  getText[获取选中的文本] --> ok{获取成功?}
-  ok -->|是，运行「如果」分支| join[拼接搜索网址]
-  join --> openSearch[打开此网址]
-  ok -->|否，运行「否则」分支| openHome[打开百度网页]
-
-  classDef decision fill:#C2185B,stroke:#880E4F,color:#fff
-  classDef action fill:#1E88E5,stroke:#1565C0,color:#fff
-  class ok decision
-  class getText,join,openSearch,openHome action
-```
+<FlowChart
+  layout="branch"
+  before={['获取选中的文本']}
+  decision="获取成功？"
+  yes={['拼接搜索网址', '打开搜索页']}
+  no={['打开百度首页']}
+/>
 
 用步骤写出来是这样（判断条件用 [获取选中的文本](/v2/xaction/modules/get_selected_text) 的 **是否成功**）：
 

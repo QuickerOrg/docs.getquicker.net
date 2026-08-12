@@ -48,8 +48,11 @@ export type StepProgramViewProps = {
   variablePaneWidth?: number;
   /** Highlight these top-level step indexes (0-based), e.g. a right-click multi-select. */
   selectedIndexes?: readonly number[];
+  /** Highlight a nested step by path, e.g. `1/if/0`. */
+  selectedPath?: string;
   /**
-   * Auto-play Ctrl+wheel on a wait-time step (WPF ±50ms).
+   * Auto-play Ctrl+wheel delay. On `sys:delay` this is the wait param (±50ms);
+   * on other steps it is trailing DelayMs shown at the row end (±20ms).
    * Pass `true` or `{from, to, step}`. Hover+Ctrl+wheel still works.
    */
   wheelDelay?: boolean | WheelDelayDemoConfig;
@@ -169,6 +172,7 @@ function StepListInner({
   nested,
   pathPrefix,
   selectedIndexes,
+  selectedPath,
   inspectPath,
   wheelTick,
   onInspect,
@@ -182,6 +186,7 @@ function StepListInner({
   nested: boolean;
   pathPrefix: string;
   selectedIndexes?: readonly number[];
+  selectedPath?: string | null;
   inspectPath?: string | null;
   wheelTick?: WheelDelayTick | null;
   onInspect?: (step: StepWire, path: string, iconSpec: string) => void;
@@ -213,9 +218,14 @@ function StepListInner({
             showParams={showParams}
             showIndex={showIndex}
             showKey={showKey}
-            selected={(!nested && selected.has(index)) || inspectPath === path}
+            selected={
+              (!nested && selected.has(index)) ||
+              inspectPath === path ||
+              selectedPath === path
+            }
             wheelTick={!nested && wheelTick?.index === index ? wheelTick : null}
             inspectPath={inspectPath}
+            selectedPath={selectedPath}
             onInspect={onInspect}
           />
         );
@@ -236,6 +246,7 @@ function StepBlock({
   selected,
   wheelTick,
   inspectPath,
+  selectedPath,
   onInspect,
 }: {
   step: StepWire;
@@ -249,6 +260,7 @@ function StepBlock({
   selected: boolean;
   wheelTick?: WheelDelayTick | null;
   inspectPath?: string | null;
+  selectedPath?: string | null;
   onInspect?: (step: StepWire, path: string, iconSpec: string) => void;
 }): JSX.Element {
   const presentation = resolveStepRowPresentation(step, catalog);
@@ -273,6 +285,12 @@ function StepBlock({
   const iconMap = icons ?? catalog.icons;
   const runner = catalog.runners[step.key];
   const {ifLabel, elseLabel} = branchLabelsForStep(step, catalog);
+  const trailingMs =
+    wheelTick?.kind === 'wait-step'
+      ? 0
+      : wheelTick?.kind === 'trailing'
+        ? wheelTick.ms
+        : (step.delayMs ?? 0);
 
   return (
     <div
@@ -344,7 +362,7 @@ function StepBlock({
           ) : null}
           <span className="step-titles">
             <span className="primary">{presentation.primary}</span>
-            {wheelTick ? (
+            {wheelTick?.kind === 'wait-step' ? (
               <span className="step-note step-note--wheel" aria-live="polite">
                 等待{' '}
                 <span
@@ -359,11 +377,32 @@ function StepBlock({
               <span className="step-note">{presentation.secondary}</span>
             ) : null}
           </span>
-          {wheelTick ? (
-            <span className="qk-sr-wheel-hint" aria-hidden="true">
-              <kbd>Ctrl</kbd>
-              <span className={`qk-sr-wheel-glyph qk-sr-wheel-glyph--${wheelTick.dir}`} />
-              滚轮
+          {trailingMs > 0 || wheelTick ? (
+            <span className="step-row-trailing">
+              {trailingMs > 0 ? (
+                <span
+                  className="step-row-delay"
+                  title="执行下一步骤前的等待时间（毫秒）。(Ctrl+滚动快速调节)"
+                >
+                  {wheelTick?.kind === 'trailing' ? (
+                    <span
+                      key={wheelTick.ms}
+                      className={`qk-sr-delay-ms qk-sr-delay-ms--${wheelTick.dir}`}
+                    >
+                      {trailingMs}
+                    </span>
+                  ) : (
+                    trailingMs
+                  )}
+                </span>
+              ) : null}
+              {wheelTick ? (
+                <span className="qk-sr-wheel-hint" aria-hidden="true">
+                  <kbd>Ctrl</kbd>
+                  <span className={`qk-sr-wheel-glyph qk-sr-wheel-glyph--${wheelTick.dir}`} />
+                  滚轮
+                </span>
+              ) : null}
             </span>
           ) : null}
           {showKey && hasCatalogName && presentation.primary !== step.key ? (
@@ -406,6 +445,7 @@ function StepBlock({
                   nested
                   pathPrefix={`${path}/if`}
                   inspectPath={inspectPath}
+                  selectedPath={selectedPath}
                   onInspect={onInspect}
                 />
               </div>
@@ -426,6 +466,7 @@ function StepBlock({
                   nested
                   pathPrefix={`${path}/else`}
                   inspectPath={inspectPath}
+                  selectedPath={selectedPath}
                   onInspect={onInspect}
                 />
               </div>
@@ -453,6 +494,7 @@ export function StepProgramView({
   variables,
   variablePaneWidth = 120,
   selectedIndexes,
+  selectedPath,
   wheelDelay,
   stepPopup = true,
   density = 'docs',
@@ -530,6 +572,7 @@ export function StepProgramView({
             nested={false}
             pathPrefix=""
             selectedIndexes={highlightIndexes}
+            selectedPath={selectedPath}
             inspectPath={inspect?.path}
             wheelTick={wheelTick}
             onInspect={stepPopup ? openInspect : undefined}

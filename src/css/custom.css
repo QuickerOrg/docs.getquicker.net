@@ -871,3 +871,25 @@ body,
   width: 4px;
   height: 4px;
 }
+
+.docusaurus-mermaid-container {
+  margin: 1rem 0 1.5rem;
+  padding: 18px 16px 12px;
+  overflow-x: auto;
+  border: 1px solid var(--quicker-border-subtle);
+  border-radius: 10px;
+  background: var(--quicker-surface-subtle);
+}
+
+.docusaurus-mermaid-container svg {
+  display: block;
+  max-width: 100%;
+  height: auto;
+  margin: 0 auto;
+}
+
+.docusaurus-mermaid-container .nodeLabel,
+.docusaurus-mermaid-container .edgeLabel {
+  font-family: var(--ifm-font-family-base);
+  font-size: 13px;
+}

@@ -25,6 +25,8 @@ import ClickIndicatorPreview from '@site/src/components/ClickIndicatorPreview';
 import UserInputPreview from '@site/src/components/UserInputPreview';
 import ActionEditorPreview from '@site/src/components/ActionEditorPreview';
 import TextWindowPreview from '@site/src/components/TextWindowPreview';
+import ScreenshotSelectionDemo from '@site/src/components/ScreenshotSelectionDemo';
+import FlowChart from '@site/src/components/FlowChart';
 import NativeImg from '@site/src/theme/MDXComponents/NativeImg';
 
 export default {
@@ -58,4 +60,6 @@ export default {
   UserInputPreview,
   ActionEditorPreview,
   TextWindowPreview,
+  ScreenshotSelectionDemo,
+  FlowChart,
 };

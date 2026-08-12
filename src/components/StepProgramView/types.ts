@@ -8,6 +8,8 @@ export type StepWire = {
   outputs?: Record<string, string>;
   note?: string;
   disabled?: boolean;
+  /** Trailing wait after this step (WPF StepNode.DelayMs). Hidden when 0. */
+  delayMs?: number;
   /** Optional display override; wins over catalog name when set. */
   title?: string;
   ifSteps?: StepWire[];

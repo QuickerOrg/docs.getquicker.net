@@ -17,24 +17,15 @@ legacyContentUpdatedAt: "2023-10-14T02:18:19.000Z"
 
 例如做一个「谷歌搜索」动作：选中了文字就搜索这些文字，否则打开谷歌首页。流程如下：
 
-```mermaid
-flowchart TD
-  start([开始]) --> getText[/获取选中的文本/]
-  getText --> ok{"成功?"}
-  ok -->|是| search[搜索选中的文字]
-  ok -->|否| openSite[打开谷歌首页]
-  search --> stop([结束])
-  openSite --> stop
-
-  classDef terminal fill:#C2185B,stroke:#880E4F,color:#fff
-  classDef io fill:#FB8C00,stroke:#EF6C00,color:#fff
-  classDef decision fill:#C2185B,stroke:#880E4F,color:#fff
-  classDef action fill:#1E88E5,stroke:#1565C0,color:#fff
-  class start,stop terminal
-  class getText io
-  class ok decision
-  class search,openSite action
-```
+<FlowChart
+  layout="branch"
+  start="开始"
+  end="结束"
+  before={['获取选中的文本']}
+  decision="成功？"
+  yes={['搜索选中文字']}
+  no={['打开谷歌首页']}
+/>
 
 用组合动作写出来是这样：
 

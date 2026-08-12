@@ -8,7 +8,7 @@ import {
 import './styles.css';
 
 export type {StepProgramViewProps};
-export type {WheelDelayDemoConfig, WheelDelayTick} from './useWheelDelayDemo';
+export type {WheelDelayDemoConfig, WheelDelayKind, WheelDelayTick} from './useWheelDelayDemo';
 export type {
   StepCatalog,
   StepCatalogRunner,

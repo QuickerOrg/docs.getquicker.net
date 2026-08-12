@@ -187,14 +187,14 @@ legacyContentUpdatedAt: "2025-10-30T03:16:55.000Z"
 
 ### 给步骤加后续延迟
 
-鼠标停在步骤上，`Ctrl+滚轮` 给「本步完成后、下一步开始前」加等待；`Ctrl+Shift+滚轮` 加大步进。
+鼠标停在步骤上，`Ctrl+滚轮` 给「本步完成后、下一步开始前」加等待，行右侧出现毫秒数；`Ctrl+Shift+滚轮` 加大步进。
 
 <StepProgramView
-  wheelDelay={{from: 0, to: 200, step: 50}}
+  wheelDelay={{from: 0, to: 200, step: 20}}
   data={{
     steps: [
       {key: 'sys:notify', inputs: {msg: '准备点击'}},
-      {key: 'sys:delay', inputs: {delayMs: '0'}},
+      {key: 'sys:mouse', inputs: {type: 'left'}},
     ],
   }}
 />
@@ -246,9 +246,79 @@ legacyContentUpdatedAt: "2025-10-30T03:16:55.000Z"
 
 ### 撤销和重做
 
-改步骤或变量后，用工具栏撤销 / 重做，或 `Ctrl+Z` / `Ctrl+Y`。连续操作见下：
+改步骤或变量后，用工具栏撤销 / 重做，或 `Ctrl+Z` / `Ctrl+Y`。连续操作见下（悬停可暂停）：
 
-![](./img/xaction-editor-030-371651195c.gif)
+<ActionEditorPreview
+  caption="连续撤销 / 重做"
+  focus="steps"
+  showRun={false}
+  historyDemo={{
+    frames: [
+      {
+        action: 'idle',
+        selectedPath: '1/if/0',
+        data: {
+          steps: [
+            {key: 'sys:notify', inputs: {msg: '{result}'}},
+            {
+              key: 'sys:each',
+              inputs: {input: '{context}'},
+              ifSteps: [{key: 'sys:assign', outputs: {output: 'result'}}],
+            },
+            {key: 'sys:notify', inputs: {msg: '{result}'}},
+          ],
+        },
+      },
+      {
+        action: 'undo',
+        selectedIndexes: [1],
+        data: {
+          steps: [
+            {key: 'sys:notify', inputs: {msg: '{result}'}},
+            {key: 'sys:each', inputs: {input: '{context}'}, ifSteps: []},
+            {key: 'sys:notify', inputs: {msg: '{result}'}},
+          ],
+        },
+      },
+      {
+        action: 'undo',
+        selectedIndexes: [1],
+        data: {
+          steps: [
+            {key: 'sys:notify', inputs: {msg: '{result}'}},
+            {key: 'sys:notify', inputs: {msg: '{result}'}},
+          ],
+        },
+      },
+      {
+        action: 'redo',
+        selectedIndexes: [1],
+        data: {
+          steps: [
+            {key: 'sys:notify', inputs: {msg: '{result}'}},
+            {key: 'sys:each', inputs: {input: '{context}'}, ifSteps: []},
+            {key: 'sys:notify', inputs: {msg: '{result}'}},
+          ],
+        },
+      },
+      {
+        action: 'redo',
+        selectedPath: '1/if/0',
+        data: {
+          steps: [
+            {key: 'sys:notify', inputs: {msg: '{result}'}},
+            {
+              key: 'sys:each',
+              inputs: {input: '{context}'},
+              ifSteps: [{key: 'sys:assign', outputs: {output: 'result'}}],
+            },
+            {key: 'sys:notify', inputs: {msg: '{result}'}},
+          ],
+        },
+      },
+    ],
+  }}
+/>
 
 ### 保存
 

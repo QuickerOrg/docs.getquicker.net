@@ -199,6 +199,20 @@ const config: Config = {
       ],
       copyright: `© ${new Date().getFullYear()} Quicker`,
     },
+    mermaid: {
+      theme: {light: 'neutral', dark: 'dark'},
+      options: {
+        fontFamily:
+          '"Microsoft YaHei UI", "PingFang SC", "Noto Sans CJK SC", sans-serif',
+        flowchart: {
+          curve: 'basis',
+          padding: 12,
+          nodeSpacing: 36,
+          rankSpacing: 48,
+          htmlLabels: true,
+        },
+      },
+    },
     prism: {
       theme: prismThemes.github,
       darkTheme: prismThemes.vsDark,

@@ -26,6 +26,7 @@ import UserInputPreview from '@site/src/components/UserInputPreview';
 import ActionEditorPreview from '@site/src/components/ActionEditorPreview';
 import TextWindowPreview from '@site/src/components/TextWindowPreview';
 import ScreenshotSelectionDemo from '@site/src/components/ScreenshotSelectionDemo';
+import FlowChart from '@site/src/components/FlowChart';
 import NativeImg from '@site/src/theme/MDXComponents/NativeImg';
 
 type MDXComponentsType = NonNullable<ComponentProps<typeof MDXProvider>['components']>;
@@ -60,6 +61,7 @@ const components = {
   ActionEditorPreview,
   TextWindowPreview,
   ScreenshotSelectionDemo,
+  FlowChart,
 } as MDXComponentsType;
 
 export default function MDXContent({children}: {children: ReactNode}): ReactNode {

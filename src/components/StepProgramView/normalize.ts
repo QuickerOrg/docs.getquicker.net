@@ -83,6 +83,15 @@ export function normalizeStepWire(raw: unknown): StepWire | null {
         ? raw.displayName.trim()
         : undefined;
   const disabled = raw.disabled === true || raw.Disabled === true ? true : undefined;
+  const delayRaw = raw.delayMs ?? raw.DelayMs;
+  const delayParsed =
+    typeof delayRaw === "number"
+      ? delayRaw
+      : typeof delayRaw === "string"
+        ? Number.parseInt(delayRaw, 10)
+        : Number.NaN;
+  const delayMs =
+    Number.isFinite(delayParsed) && delayParsed > 0 ? Math.round(delayParsed) : undefined;
 
   const ifRaw = raw.ifSteps ?? raw.IfSteps;
   const elseRaw = raw.elseSteps ?? raw.ElseSteps;
@@ -99,6 +108,7 @@ export function normalizeStepWire(raw: unknown): StepWire | null {
   if (note) step.note = note;
   if (title) step.title = title;
   if (disabled) step.disabled = true;
+  if (delayMs != null) step.delayMs = delayMs;
   if (ifSteps && ifSteps.length > 0) step.ifSteps = ifSteps;
   if (elseSteps && elseSteps.length > 0) step.elseSteps = elseSteps;
   return step;

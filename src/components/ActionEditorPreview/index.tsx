@@ -1,7 +1,7 @@
 /**
  * Docs-only three-column action editor chrome.
  * Sliced from Headless ActionDesignerPage / TreeActionToolbox / XProgramEditor.
- * Optional `dragDemo` animates a toolbox → branch-slot ghost (read-only).
+ * Optional `dragDemo` / `historyDemo` teach discrete editor gestures (read-only).
  */
 import {
   useCallback,
@@ -68,6 +68,24 @@ export type ActionEditorDragDemoConfig = {
   holdAfterMs?: number;
 };
 
+/** Auto-demo: click undo/redo through a short history stack. */
+export type ActionEditorHistoryFrame = {
+  data: unknown;
+  selectedIndexes?: readonly number[];
+  /** Nested step path, e.g. `1/if/0` (highlights inside a branch). */
+  selectedPath?: string;
+  /** Toolbar button being pressed on this frame. */
+  action?: 'undo' | 'redo' | 'idle';
+};
+
+export type ActionEditorHistoryDemoConfig = {
+  frames: ActionEditorHistoryFrame[];
+  /** Pause after applying a frame. Default 1100. */
+  holdMs?: number;
+  /** Flash the toolbar button. Default 280. */
+  pressMs?: number;
+};
+
 type DragPhase = 'idle' | 'fly' | 'dropped';
 
 type GhostPose = {
@@ -122,6 +140,8 @@ const DEFAULT_STEPS = {
 const DEFAULT_HOLD_BEFORE = 1200;
 const DEFAULT_FLY_MS = 900;
 const DEFAULT_HOLD_AFTER = 2200;
+const DEFAULT_HISTORY_HOLD = 1100;
+const DEFAULT_HISTORY_PRESS = 280;
 
 export type ActionEditorPreviewProps = {
   /** Same as StepProgramView `data`. */
@@ -145,6 +165,8 @@ export type ActionEditorPreviewProps = {
   showRun?: boolean;
   /** Docs demo: animate toolbox → branch drop (respects prefers-reduced-motion). */
   dragDemo?: ActionEditorDragDemoConfig;
+  /** Docs demo: animate undo/redo through `frames` (respects prefers-reduced-motion). */
+  historyDemo?: ActionEditorHistoryDemoConfig;
   className?: string;
 };
 
@@ -163,10 +185,14 @@ function ToolbarBtn({
   spec,
   title,
   tone,
+  pressed,
+  toolbarKey,
 }: {
   spec: string;
   title: string;
   tone?: 'run' | 'debug' | 'primary' | 'danger';
+  pressed?: boolean;
+  toolbarKey?: string;
 }): ReactNode {
   const extra =
     tone === 'run'
@@ -179,7 +205,11 @@ function ToolbarBtn({
             ? ' variable-toolbar-btn--danger'
             : '';
   return (
-    <span className={`variable-toolbar-btn${extra}`} title={title} aria-label={title}>
+    <span
+      className={`variable-toolbar-btn${extra}${pressed ? ' variable-toolbar-btn--pressed' : ''}`}
+      title={title}
+      aria-label={title}
+      data-qk-toolbar={toolbarKey}>
       <DocsStepIcon spec={spec} size={12} />
     </span>
   );
@@ -201,7 +231,7 @@ function measureInRoot(
 
 /**
  * Docs-only three-column action editor (toolbox + steps + variables).
- * Read-only; no Host. Optional dragDemo for branch-slot teaching.
+ * Read-only; no Host. Optional dragDemo / historyDemo for gesture teaching.
  */
 export default function ActionEditorPreview({
   data,
@@ -221,6 +251,7 @@ export default function ActionEditorPreview({
   variables,
   showRun = true,
   dragDemo,
+  historyDemo,
   className,
 }: ActionEditorPreviewProps): ReactNode {
   const rootRef = useRef<HTMLDivElement | null>(null);
@@ -230,9 +261,15 @@ export default function ActionEditorPreview({
   const [inView, setInView] = useState(true);
   const [hovered, setHovered] = useState(false);
   const [motionOk, setMotionOk] = useState(false);
+  const [historyIndex, setHistoryIndex] = useState(0);
+  const [historyPress, setHistoryPress] = useState<'undo' | 'redo' | null>(null);
+  const [cursor, setCursor] = useState<{x: number; y: number} | null>(null);
   const timersRef = useRef<number[]>([]);
 
-  const beforeData = data ?? (example ? undefined : DEFAULT_STEPS);
+  const historyFrames = historyDemo?.frames ?? [];
+  const historyFrame = historyFrames[historyIndex] ?? historyFrames[0];
+  const beforeData =
+    historyFrame?.data ?? data ?? (example ? undefined : DEFAULT_STEPS);
   const [rmShowAfter, setRmShowAfter] = useState(false);
   const showFilled = dragDemo
     ? motionOk
@@ -269,6 +306,7 @@ export default function ActionEditorPreview({
   const dragIcon = dragModuleKey
     ? STEP_CATALOG.runners?.[dragModuleKey]?.icon
     : undefined;
+  const activeSelectedIndexes = historyFrame?.selectedIndexes ?? selectedIndexes;
   const showAppearance = focus === 'appearance' || rightTab === 'appearance';
 
   const clearTimers = useCallback(() => {
@@ -293,7 +331,7 @@ export default function ActionEditorPreview({
 
   useEffect(() => {
     const el = rootRef.current;
-    if (!el || !dragDemo) {
+    if (!el || (!dragDemo && !historyDemo)) {
       return undefined;
     }
     const io = new IntersectionObserver(
@@ -302,7 +340,7 @@ export default function ActionEditorPreview({
     );
     io.observe(el);
     return () => io.disconnect();
-  }, [dragDemo]);
+  }, [dragDemo, historyDemo]);
 
   // Reduced-motion: crossfade data only.
   useEffect(() => {
@@ -452,6 +490,73 @@ export default function ActionEditorPreview({
     beforeData,
   ]);
 
+  // Undo/redo history stack loop.
+  useEffect(() => {
+    if (!historyDemo || dragDemo || !inView || hovered) {
+      return undefined;
+    }
+    const frames = historyDemo.frames;
+    if (frames.length === 0) {
+      return undefined;
+    }
+    const holdMs = historyDemo.holdMs ?? DEFAULT_HISTORY_HOLD;
+    const pressMs = historyDemo.pressMs ?? DEFAULT_HISTORY_PRESS;
+    let cancelled = false;
+
+    const pointAtToolbar = (action: 'undo' | 'redo'): void => {
+      const root = rootRef.current;
+      if (!root) return;
+      const btn = root.querySelector(`[data-qk-toolbar="${action}"]`);
+      if (!btn) return;
+      const box = measureInRoot(root, btn);
+      setCursor({x: box.x + box.w * 0.62, y: box.y + box.h * 0.72});
+    };
+
+    const applyFrame = (index: number): void => {
+      setHistoryIndex(index);
+      setHistoryPress(null);
+    };
+
+    const playFrom = (index: number): void => {
+      if (cancelled) return;
+      const frame = frames[index];
+      if (!frame) {
+        schedule(() => playFrom(0), holdMs);
+        return;
+      }
+      const action = frame.action ?? (index === 0 ? 'idle' : undefined);
+      if (motionOk && (action === 'undo' || action === 'redo')) {
+        pointAtToolbar(action);
+        setHistoryPress(action);
+        schedule(() => {
+          if (cancelled) return;
+          applyFrame(index);
+          schedule(() => {
+            if (cancelled) return;
+            playFrom((index + 1) % frames.length);
+          }, holdMs);
+        }, pressMs);
+        return;
+      }
+      applyFrame(index);
+      setCursor(null);
+      schedule(() => {
+        if (cancelled) return;
+        playFrom((index + 1) % frames.length);
+      }, holdMs);
+    };
+
+    applyFrame(0);
+    setCursor(null);
+    schedule(() => playFrom(1 % frames.length), holdMs);
+    return () => {
+      cancelled = true;
+      clearTimers();
+      setHistoryPress(null);
+      setCursor(null);
+    };
+  }, [historyDemo, dragDemo, motionOk, inView, hovered, schedule, clearTimers]);
+
   const ghostStyle: CSSProperties | undefined = ghost
     ? {
         width: ghost.w,
@@ -471,6 +576,7 @@ export default function ActionEditorPreview({
         'qk-docs-preview',
         focus !== 'full' ? `qk-ad-editor--focus-${focus}` : '',
         dragDemo ? 'qk-ad-editor--drag-demo' : '',
+        historyDemo ? 'qk-ad-editor--history-demo' : '',
         className ?? '',
       ]
         .filter(Boolean)
@@ -541,8 +647,18 @@ export default function ActionEditorPreview({
 
         <div className="x-program-editor qk-ad-editor__program">
           <div className="x-program-editor-toolbar" role="toolbar" aria-label="程序编辑">
-            <ToolbarBtn spec="fa:Light_Undo" title="撤销 (Ctrl+Z)" />
-            <ToolbarBtn spec="fa:Light_Redo" title="重做 (Ctrl+Y / Ctrl+Shift+Z)" />
+            <ToolbarBtn
+              spec="fa:Light_Undo"
+              title="撤销 (Ctrl+Z)"
+              pressed={historyPress === 'undo'}
+              toolbarKey="undo"
+            />
+            <ToolbarBtn
+              spec="fa:Light_Redo"
+              title="重做 (Ctrl+Y / Ctrl+Shift+Z)"
+              pressed={historyPress === 'redo'}
+              toolbarKey="redo"
+            />
             {showRun ? (
               <div className="x-program-editor-toolbar-run" role="group" aria-label="运行动作">
                 <ToolbarBtn spec="fa:Light_Play:#39b54d" title="运行当前动作" tone="run" />
@@ -562,8 +678,9 @@ export default function ActionEditorPreview({
             <StepProgramView
               className="qk-sr-program--embedded"
               data={activeData}
-              example={dragDemo ? undefined : example}
-              selectedIndexes={selectedIndexes}
+              example={dragDemo || historyDemo ? undefined : example}
+              selectedIndexes={activeSelectedIndexes}
+              selectedPath={historyFrame?.selectedPath}
               showVariables={false}
               stepPopup
               density="compact"
@@ -642,6 +759,29 @@ export default function ActionEditorPreview({
         <span className="qk-ad-drag-demo-sr" aria-live="polite">
           正在拖入分支槽 {dropSlot}
         </span>
+      ) : null}
+      {historyDemo && historyPress ? (
+        <span className="qk-ad-drag-demo-sr" aria-live="polite">
+          {historyPress === 'undo' ? '撤销' : '重做'}
+        </span>
+      ) : null}
+      {historyDemo && cursor ? (
+        <svg
+          className="qk-ad-history-cursor"
+          style={{left: cursor.x, top: cursor.y}}
+          width="16"
+          height="20"
+          viewBox="0 0 16 20"
+          aria-hidden
+        >
+          <path
+            d="M1 1 L1 16 L5 12.2 L8.2 19 L11 17.6 L7.7 10.8 L13 10.8 Z"
+            fill="#fff"
+            stroke="#111"
+            strokeWidth="1.2"
+            strokeLinejoin="round"
+          />
+        </svg>
       ) : null}
     </div>
   );

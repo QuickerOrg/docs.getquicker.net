@@ -608,9 +608,36 @@ html[data-theme="dark"] .qk-sr-program {
   }
 }
 
-.qk-sr-program .qk-sr-wheel-hint {
+.qk-sr-program .step-row .step-row-trailing {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
   flex: 0 0 auto;
   margin-left: auto;
+  flex-shrink: 0;
+}
+
+.qk-sr-program .step-row .step-row-delay {
+  font-size: 11px;
+  font-variant-numeric: tabular-nums;
+  color: var(--ad-fg-muted);
+  line-height: 22px;
+  user-select: none;
+}
+
+.qk-sr-program .step-row:hover .step-row-delay,
+.qk-sr-program .step-row.selected .step-row-delay {
+  color: var(--ad-fg-secondary);
+}
+
+.qk-sr-program .step-node-main--disabled .step-row .step-row-delay,
+.qk-sr-program .step-node-main--disabled .step-row:hover .step-row-delay,
+.qk-sr-program .step-node-main--disabled .step-row.selected .step-row-delay {
+  color: var(--ad-fg-note-disabled);
+}
+
+.qk-sr-program .qk-sr-wheel-hint {
+  flex: 0 0 auto;
   display: inline-flex;
   align-items: center;
   gap: 5px;

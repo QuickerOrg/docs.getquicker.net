@@ -524,6 +524,11 @@ html[data-theme="dark"] .qk-ad-editor {
   color: #d49a28;
 }
 
+.variable-toolbar-btn--pressed {
+  background: var(--ad-bg-tab-active);
+  color: var(--ad-accent);
+}
+
 .variable-filter-row {
   display: flex;
   align-items: center;
@@ -698,4 +703,17 @@ html[data-theme="dark"] .qk-ad-editor {
   .qk-ad-drag-ghost {
     display: none;
   }
+}
+
+.qk-ad-editor--history-demo .x-program-editor-steps {
+  min-height: 168px;
+}
+
+.qk-ad-history-cursor {
+  position: absolute;
+  z-index: 30;
+  display: block;
+  margin: -1px 0 0 -1px;
+  pointer-events: none;
+  filter: drop-shadow(0 1px 1px rgb(0 0 0 / 40%));
 }

@@ -1,0 +1,217 @@
+{
+  "key": "sys:aiClassify",
+  "slug": "ai-classify",
+  "legacySlug": "ai-classify",
+  "ownsLegacyContent": true,
+  "name": "AI 文本分类",
+  "description": "使用全局 AI 设置从给定分类中选择一个稳定 Key",
+  "category": "Text",
+  "categoryName": "文本处理",
+  "stepType": "Action",
+  "isRisky": false,
+  "isProOnly": false,
+  "helpLink": "https://getquicker.net/KC/Help/Doc/ai-classify",
+  "inputs": [
+    {
+      "key": "text",
+      "name": "文本",
+      "type": "Text",
+      "defaultValue": "",
+      "required": true,
+      "variableMode": "UseVarOrInput",
+      "condition": "",
+      "description": "要判断类别的文本，例如邮件正文或用户反馈。"
+    },
+    {
+      "key": "categories",
+      "name": "分类项",
+      "type": "Dict",
+      "defaultValue": "",
+      "required": true,
+      "variableMode": "UseVarOrInput",
+      "condition": "",
+      "description": "Key 是供后续分支使用的稳定结果，Value 是分类说明。例如 Spam=垃圾邮件。"
+    },
+    {
+      "key": "defaultKey",
+      "name": "无法判断时的默认 Key",
+      "type": "Text",
+      "defaultValue": "",
+      "required": false,
+      "variableMode": "UseVarOrInput",
+      "condition": "",
+      "description": "模型返回未知 Key 时使用的已有分类 Key；留空则步骤失败。"
+    },
+    {
+      "key": "instructions",
+      "name": "判断标准",
+      "type": "Text",
+      "defaultValue": "",
+      "required": false,
+      "variableMode": "UseVarOrInput",
+      "condition": "",
+      "description": "补充分类依据，例如“促销邮件也归为 Spam”。"
+    },
+    {
+      "key": "useCaseId",
+      "name": "AI 任务场景",
+      "type": "Text",
+      "defaultValue": "text.general",
+      "required": false,
+      "variableMode": "UseVarOrInput",
+      "condition": "",
+      "description": "选择用于分类的文本任务场景；所选模型必须明确支持结构化输出。"
+    },
+    {
+      "key": "missingUseCaseBehavior",
+      "name": "任务场景缺失时",
+      "type": "Enum",
+      "defaultValue": "UseBaseUseCase",
+      "required": false,
+      "variableMode": "UseVarOrInput",
+      "condition": "",
+      "description": "自定义任务场景不存在时，使用内置文本任务场景或直接失败。"
+    },
+    {
+      "key": "maxOutputTokens",
+      "name": "最大输出 Token",
+      "type": "Integer",
+      "defaultValue": "512",
+      "required": false,
+      "variableMode": "UseVarOrInput",
+      "condition": "",
+      "description": ""
+    },
+    {
+      "key": "stopIfFail",
+      "name": "失败后停止",
+      "type": "Boolean",
+      "defaultValue": "true",
+      "required": false,
+      "variableMode": "Input",
+      "condition": "",
+      "description": "失败后是否停止动作"
+    }
+  ],
+  "outputs": [
+    {
+      "key": "isSuccess",
+      "name": "是否成功",
+      "type": "Boolean",
+      "condition": "",
+      "description": "操作是否成功"
+    },
+    {
+      "key": "categoryKey",
+      "name": "分类 Key",
+      "type": "Text",
+      "condition": "",
+      "description": ""
+    },
+    {
+      "key": "reason",
+      "name": "分类理由",
+      "type": "Text",
+      "condition": "",
+      "description": ""
+    },
+    {
+      "key": "resultJson",
+      "name": "结果 JSON",
+      "type": "Text",
+      "condition": "",
+      "description": ""
+    },
+    {
+      "key": "usedDefaultKey",
+      "name": "是否使用默认 Key",
+      "type": "Boolean",
+      "condition": "",
+      "description": ""
+    },
+    {
+      "key": "model",
+      "name": "实际模型",
+      "type": "Text",
+      "condition": "",
+      "description": ""
+    },
+    {
+      "key": "inputTokens",
+      "name": "输入 Token",
+      "type": "Integer",
+      "condition": "",
+      "description": ""
+    },
+    {
+      "key": "cachedInputTokens",
+      "name": "缓存输入 Token",
+      "type": "Integer",
+      "condition": "",
+      "description": "服务商报告的缓存命中输入 Token；未提供时为 0。"
+    },
+    {
+      "key": "outputTokens",
+      "name": "输出 Token",
+      "type": "Integer",
+      "condition": "",
+      "description": ""
+    },
+    {
+      "key": "totalTokens",
+      "name": "总 Token",
+      "type": "Integer",
+      "condition": "",
+      "description": ""
+    },
+    {
+      "key": "invocationId",
+      "name": "调用标识",
+      "type": "Text",
+      "condition": "",
+      "description": ""
+    },
+    {
+      "key": "resolvedUseCaseId",
+      "name": "实际任务场景",
+      "type": "Text",
+      "condition": "",
+      "description": ""
+    },
+    {
+      "key": "useCaseFallbackUsed",
+      "name": "是否回退场景",
+      "type": "Boolean",
+      "condition": "",
+      "description": ""
+    }
+  ],
+  "selections": {
+    "useCaseId": {
+      "name": "AI 任务场景",
+      "items": [
+        {
+          "value": "text.general",
+          "name": "日常文本处理与翻译",
+          "description": ""
+        }
+      ]
+    },
+    "missingUseCaseBehavior": {
+      "name": "任务场景缺失时",
+      "items": [
+        {
+          "value": "UseBaseUseCase",
+          "name": "使用基础场景",
+          "description": ""
+        },
+        {
+          "value": "Fail",
+          "name": "执行失败",
+          "description": ""
+        }
+      ]
+    }
+  },
+  "sourceFileName": "sys_aiClassify_AI 文本分类.md"
+}

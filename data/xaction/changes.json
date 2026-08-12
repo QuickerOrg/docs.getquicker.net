@@ -2,13 +2,44 @@
   "schemaVersion": 1,
   "baselineCreated": false,
   "fromGeneratedAt": "2026-08-03 20:08:03",
-  "toGeneratedAt": "2026-08-03 20:08:03",
+  "toGeneratedAt": "2026-08-12 20:29:09",
   "summary": {
-    "addedModules": 0,
+    "addedModules": 5,
     "removedModules": 0,
     "changedModules": 0
   },
-  "addedModules": [],
+  "addedModules": [
+    {
+      "key": "sys:aiText",
+      "name": "AI 文本处理",
+      "slug": "ai-text",
+      "category": "Text"
+    },
+    {
+      "key": "sys:aiVision",
+      "name": "AI 图片理解",
+      "slug": "ai-vision",
+      "category": "Image"
+    },
+    {
+      "key": "sys:aiClassify",
+      "name": "AI 文本分类",
+      "slug": "ai-classify",
+      "category": "Text"
+    },
+    {
+      "key": "sys:aiExtract",
+      "name": "AI 结构化提取",
+      "slug": "ai-extract",
+      "category": "Text"
+    },
+    {
+      "key": "sys:aiChat",
+      "name": "AI 交互对话",
+      "slug": "ai-chat",
+      "category": "Network"
+    }
+  ],
   "removedModules": [],
   "changedModules": []
 }

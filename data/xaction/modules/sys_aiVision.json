@@ -1,0 +1,238 @@
+{
+  "key": "sys:aiVision",
+  "slug": "ai-vision",
+  "legacySlug": "ai-vision",
+  "ownsLegacyContent": true,
+  "name": "AI 图片理解",
+  "description": "使用全局 AI 设置理解图片内容并回答问题",
+  "category": "Image",
+  "categoryName": "图片处理",
+  "stepType": "Action",
+  "isRisky": false,
+  "isProOnly": false,
+  "helpLink": "https://getquicker.net/KC/Help/Doc/ai-vision",
+  "inputs": [
+    {
+      "key": "image",
+      "name": "图片",
+      "type": "Image",
+      "defaultValue": "",
+      "required": true,
+      "variableMode": "UseVar",
+      "condition": "",
+      "description": "要理解的图片变量；上限 4000 万像素且 PNG 编码后不超过 10 MiB。"
+    },
+    {
+      "key": "question",
+      "name": "问题或任务",
+      "type": "Text",
+      "defaultValue": "",
+      "required": true,
+      "variableMode": "UseVarOrInput",
+      "condition": "",
+      "description": "告诉 AI 要观察或回答什么，例如“提取图片中的全部文字”。"
+    },
+    {
+      "key": "contextText",
+      "name": "辅助文本",
+      "type": "Text",
+      "defaultValue": "",
+      "required": false,
+      "variableMode": "UseVarOrInput",
+      "condition": "",
+      "description": "与图片一起提供的背景信息；不需要时留空。"
+    },
+    {
+      "key": "systemPrompt",
+      "name": "系统提示词",
+      "type": "Text",
+      "defaultValue": "",
+      "required": false,
+      "variableMode": "UseVarOrInput",
+      "condition": "",
+      "description": "可选的全局回答规则，例如“只返回识别出的文字”。"
+    },
+    {
+      "key": "useCaseId",
+      "name": "AI 任务场景",
+      "type": "Text",
+      "defaultValue": "image.understanding",
+      "required": false,
+      "variableMode": "UseVarOrInput",
+      "condition": "",
+      "description": "选择支持图片输入的 AI 任务场景。动作只保存场景 ID。"
+    },
+    {
+      "key": "outputMode",
+      "name": "输出方式",
+      "type": "Enum",
+      "defaultValue": "direct",
+      "required": false,
+      "variableMode": "UseVarOrInput",
+      "condition": "",
+      "description": "直接返回适合后台流程；交互调整会打开 Markdown 窗口，可实时查看、继续追问并显式采用回答。"
+    },
+    {
+      "key": "missingUseCaseBehavior",
+      "name": "任务场景缺失时",
+      "type": "Enum",
+      "defaultValue": "UseBaseUseCase",
+      "required": false,
+      "variableMode": "UseVarOrInput",
+      "condition": "",
+      "description": "自定义任务场景不存在时，使用内置图片理解任务场景或直接失败。"
+    },
+    {
+      "key": "temperature",
+      "name": "温度",
+      "type": "Number",
+      "defaultValue": "",
+      "required": false,
+      "variableMode": "UseVarOrInput",
+      "condition": "",
+      "description": "留空时不向模型发送 Temperature；仅在确认模型支持时填写。"
+    },
+    {
+      "key": "maxOutputTokens",
+      "name": "最大输出 Token",
+      "type": "Integer",
+      "defaultValue": "0",
+      "required": false,
+      "variableMode": "UseVarOrInput",
+      "condition": "",
+      "description": ""
+    },
+    {
+      "key": "stopIfFail",
+      "name": "失败后停止",
+      "type": "Boolean",
+      "defaultValue": "true",
+      "required": false,
+      "variableMode": "Input",
+      "condition": "",
+      "description": "失败后是否停止动作"
+    }
+  ],
+  "outputs": [
+    {
+      "key": "isSuccess",
+      "name": "是否成功",
+      "type": "Boolean",
+      "condition": "",
+      "description": "操作是否成功"
+    },
+    {
+      "key": "result",
+      "name": "回答",
+      "type": "Text",
+      "condition": "",
+      "description": ""
+    },
+    {
+      "key": "model",
+      "name": "实际模型",
+      "type": "Text",
+      "condition": "",
+      "description": ""
+    },
+    {
+      "key": "inputTokens",
+      "name": "输入 Token",
+      "type": "Integer",
+      "condition": "",
+      "description": ""
+    },
+    {
+      "key": "cachedInputTokens",
+      "name": "缓存输入 Token",
+      "type": "Integer",
+      "condition": "",
+      "description": "服务商报告的缓存命中输入 Token；未提供时为 0。"
+    },
+    {
+      "key": "outputTokens",
+      "name": "输出 Token",
+      "type": "Integer",
+      "condition": "",
+      "description": ""
+    },
+    {
+      "key": "totalTokens",
+      "name": "总 Token",
+      "type": "Integer",
+      "condition": "",
+      "description": ""
+    },
+    {
+      "key": "finishReason",
+      "name": "结束原因",
+      "type": "Text",
+      "condition": "",
+      "description": ""
+    },
+    {
+      "key": "invocationId",
+      "name": "调用标识",
+      "type": "Text",
+      "condition": "",
+      "description": ""
+    },
+    {
+      "key": "resolvedUseCaseId",
+      "name": "实际任务场景",
+      "type": "Text",
+      "condition": "",
+      "description": ""
+    },
+    {
+      "key": "useCaseFallbackUsed",
+      "name": "是否回退场景",
+      "type": "Boolean",
+      "condition": "",
+      "description": ""
+    }
+  ],
+  "selections": {
+    "useCaseId": {
+      "name": "AI 任务场景",
+      "items": [
+        {
+          "value": "image.understanding",
+          "name": "图片理解",
+          "description": ""
+        }
+      ]
+    },
+    "outputMode": {
+      "name": "输出方式",
+      "items": [
+        {
+          "value": "direct",
+          "name": "直接返回",
+          "description": ""
+        },
+        {
+          "value": "interactive",
+          "name": "交互调整",
+          "description": ""
+        }
+      ]
+    },
+    "missingUseCaseBehavior": {
+      "name": "任务场景缺失时",
+      "items": [
+        {
+          "value": "UseBaseUseCase",
+          "name": "使用基础场景",
+          "description": ""
+        },
+        {
+          "value": "Fail",
+          "name": "执行失败",
+          "description": ""
+        }
+      ]
+    }
+  },
+  "sourceFileName": "sys_aiVision_AI 图片理解.md"
+}

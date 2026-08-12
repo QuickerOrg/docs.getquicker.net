@@ -1,0 +1,200 @@
+{
+  "key": "sys:aiExtract",
+  "slug": "ai-extract",
+  "legacySlug": "ai-extract",
+  "ownsLegacyContent": true,
+  "name": "AI 结构化提取",
+  "description": "使用全局 AI 设置按 JSON Schema 从文本中提取结构化数据",
+  "category": "Text",
+  "categoryName": "文本处理",
+  "stepType": "Action",
+  "isRisky": false,
+  "isProOnly": false,
+  "helpLink": "https://getquicker.net/KC/Help/Doc/ai-extract",
+  "inputs": [
+    {
+      "key": "text",
+      "name": "文本",
+      "type": "Text",
+      "defaultValue": "",
+      "required": true,
+      "variableMode": "UseVarOrInput",
+      "condition": "",
+      "description": "要提取信息的原始文本，例如订单、邮件或日志。"
+    },
+    {
+      "key": "jsonSchema",
+      "name": "JSON Schema",
+      "type": "Text",
+      "defaultValue": "",
+      "required": true,
+      "variableMode": "UseVarOrInput",
+      "condition": "",
+      "description": "定义输出对象的字段和类型；根类型必须为 object。"
+    },
+    {
+      "key": "instructions",
+      "name": "提取要求",
+      "type": "Text",
+      "defaultValue": "",
+      "required": false,
+      "variableMode": "UseVarOrInput",
+      "condition": "",
+      "description": "补充字段含义或取值规则，例如“金额不包含货币符号”。"
+    },
+    {
+      "key": "useCaseId",
+      "name": "AI 任务场景",
+      "type": "Text",
+      "defaultValue": "text.general",
+      "required": false,
+      "variableMode": "UseVarOrInput",
+      "condition": "",
+      "description": "选择用于结构化提取的文本任务场景；所选模型必须明确支持结构化输出。"
+    },
+    {
+      "key": "missingUseCaseBehavior",
+      "name": "任务场景缺失时",
+      "type": "Enum",
+      "defaultValue": "UseBaseUseCase",
+      "required": false,
+      "variableMode": "UseVarOrInput",
+      "condition": "",
+      "description": "自定义任务场景不存在时，使用内置文本任务场景或直接失败。"
+    },
+    {
+      "key": "maxOutputTokens",
+      "name": "最大输出 Token",
+      "type": "Integer",
+      "defaultValue": "0",
+      "required": false,
+      "variableMode": "UseVarOrInput",
+      "condition": "",
+      "description": ""
+    },
+    {
+      "key": "stopIfFail",
+      "name": "失败后停止",
+      "type": "Boolean",
+      "defaultValue": "true",
+      "required": false,
+      "variableMode": "Input",
+      "condition": "",
+      "description": "失败后是否停止动作"
+    }
+  ],
+  "outputs": [
+    {
+      "key": "isSuccess",
+      "name": "是否成功",
+      "type": "Boolean",
+      "condition": "",
+      "description": "操作是否成功"
+    },
+    {
+      "key": "resultObject",
+      "name": "结果对象",
+      "type": "Object",
+      "condition": "",
+      "description": ""
+    },
+    {
+      "key": "resultJson",
+      "name": "结果 JSON",
+      "type": "Text",
+      "condition": "",
+      "description": ""
+    },
+    {
+      "key": "model",
+      "name": "实际模型",
+      "type": "Text",
+      "condition": "",
+      "description": ""
+    },
+    {
+      "key": "inputTokens",
+      "name": "输入 Token",
+      "type": "Integer",
+      "condition": "",
+      "description": ""
+    },
+    {
+      "key": "cachedInputTokens",
+      "name": "缓存输入 Token",
+      "type": "Integer",
+      "condition": "",
+      "description": "服务商报告的缓存命中输入 Token；未提供时为 0。"
+    },
+    {
+      "key": "outputTokens",
+      "name": "输出 Token",
+      "type": "Integer",
+      "condition": "",
+      "description": ""
+    },
+    {
+      "key": "totalTokens",
+      "name": "总 Token",
+      "type": "Integer",
+      "condition": "",
+      "description": ""
+    },
+    {
+      "key": "finishReason",
+      "name": "结束原因",
+      "type": "Text",
+      "condition": "",
+      "description": ""
+    },
+    {
+      "key": "invocationId",
+      "name": "调用标识",
+      "type": "Text",
+      "condition": "",
+      "description": ""
+    },
+    {
+      "key": "resolvedUseCaseId",
+      "name": "实际任务场景",
+      "type": "Text",
+      "condition": "",
+      "description": ""
+    },
+    {
+      "key": "useCaseFallbackUsed",
+      "name": "是否回退场景",
+      "type": "Boolean",
+      "condition": "",
+      "description": ""
+    }
+  ],
+  "selections": {
+    "useCaseId": {
+      "name": "AI 任务场景",
+      "items": [
+        {
+          "value": "text.general",
+          "name": "日常文本处理与翻译",
+          "description": ""
+        }
+      ]
+    },
+    "missingUseCaseBehavior": {
+      "name": "任务场景缺失时",
+      "items": [
+        {
+          "value": "UseBaseUseCase",
+          "name": "使用基础场景",
+          "description": ""
+        },
+        {
+          "value": "Fail",
+          "name": "执行失败",
+          "description": ""
+        }
+      ]
+    }
+  },
+  "sourceFileName": "sys_aiExtract_AI 结构化提取.md"
+}

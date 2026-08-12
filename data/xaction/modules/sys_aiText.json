@@ -1,0 +1,303 @@
+{
+  "key": "sys:aiText",
+  "slug": "ai-text",
+  "legacySlug": "ai-text",
+  "ownsLegacyContent": true,
+  "name": "AI 文本处理",
+  "description": "使用全局 AI 设置总结、改写、翻译或处理文本",
+  "category": "Text",
+  "categoryName": "文本处理",
+  "stepType": "Action",
+  "isRisky": false,
+  "isProOnly": false,
+  "helpLink": "https://getquicker.net/KC/Help/Doc/ai-text",
+  "inputs": [
+    {
+      "key": "operation",
+      "name": "操作",
+      "type": "Enum",
+      "defaultValue": "summarize",
+      "required": true,
+      "variableMode": "Input",
+      "condition": "",
+      "description": "选择预定义文本任务；选择“自定义”时只使用完整系统提示词。"
+    },
+    {
+      "key": "text",
+      "name": "文本",
+      "type": "Text",
+      "defaultValue": "",
+      "required": true,
+      "variableMode": "UseVarOrInput",
+      "condition": "",
+      "description": "要处理的原始文本，例如邮件、文章或剪贴板内容。"
+    },
+    {
+      "key": "instructions",
+      "name": "补充要求",
+      "type": "Text",
+      "defaultValue": "",
+      "required": false,
+      "variableMode": "UseVarOrInput",
+      "condition": "排除：custom",
+      "description": "追加到内置任务模板后的要求，例如“控制在 100 字内”。自定义操作时不使用。"
+    },
+    {
+      "key": "targetLanguage",
+      "name": "目标语言",
+      "type": "Text",
+      "defaultValue": "中文",
+      "required": false,
+      "variableMode": "UseVarOrInput",
+      "condition": "仅：translate",
+      "description": "翻译结果使用的语言，例如“英语”或“日语”。仅翻译操作显示。"
+    },
+    {
+      "key": "systemPrompt",
+      "name": "完整系统提示词",
+      "type": "Text",
+      "defaultValue": "",
+      "required": true,
+      "variableMode": "UseVarOrInput",
+      "condition": "仅：custom",
+      "description": "完全定义 AI 的处理规则，不会与任何内置模板或补充要求拼接。"
+    },
+    {
+      "key": "useCaseId",
+      "name": "AI 任务场景",
+      "type": "Text",
+      "defaultValue": "text.general",
+      "required": false,
+      "variableMode": "UseVarOrInput",
+      "condition": "",
+      "description": "选择“模型分配”中的任务场景。动作只保存场景 ID，可在其它设备匹配同步后的同一场景。"
+    },
+    {
+      "key": "outputMode",
+      "name": "输出方式",
+      "type": "Enum",
+      "defaultValue": "direct",
+      "required": false,
+      "variableMode": "UseVarOrInput",
+      "condition": "",
+      "description": "直接返回适合后台流程；交互调整会打开 Markdown 窗口，可实时查看、继续追问并显式采用回答。"
+    },
+    {
+      "key": "missingUseCaseBehavior",
+      "name": "任务场景缺失时",
+      "type": "Enum",
+      "defaultValue": "UseBaseUseCase",
+      "required": false,
+      "variableMode": "UseVarOrInput",
+      "condition": "",
+      "description": "自定义任务场景不存在时，使用内置文本任务场景或直接失败。"
+    },
+    {
+      "key": "temperature",
+      "name": "温度",
+      "type": "Number",
+      "defaultValue": "",
+      "required": false,
+      "variableMode": "UseVarOrInput",
+      "condition": "",
+      "description": "留空时不向模型发送 Temperature；仅在确认模型支持时填写，例如 0.2。"
+    },
+    {
+      "key": "maxOutputTokens",
+      "name": "最大输出 Token",
+      "type": "Integer",
+      "defaultValue": "0",
+      "required": false,
+      "variableMode": "UseVarOrInput",
+      "condition": "",
+      "description": "限制模型输出长度；0 表示不由本步骤设置。"
+    },
+    {
+      "key": "stopIfFail",
+      "name": "失败后停止",
+      "type": "Boolean",
+      "defaultValue": "true",
+      "required": false,
+      "variableMode": "Input",
+      "condition": "",
+      "description": "失败后是否停止动作"
+    }
+  ],
+  "outputs": [
+    {
+      "key": "isSuccess",
+      "name": "是否成功",
+      "type": "Boolean",
+      "condition": "",
+      "description": "操作是否成功"
+    },
+    {
+      "key": "result",
+      "name": "结果",
+      "type": "Text",
+      "condition": "",
+      "description": "本次调用返回的完整文本。若结束原因不是 stop，结果可能被截断。"
+    },
+    {
+      "key": "model",
+      "name": "实际模型",
+      "type": "Text",
+      "condition": "",
+      "description": ""
+    },
+    {
+      "key": "inputTokens",
+      "name": "输入 Token",
+      "type": "Integer",
+      "condition": "",
+      "description": ""
+    },
+    {
+      "key": "cachedInputTokens",
+      "name": "缓存输入 Token",
+      "type": "Integer",
+      "condition": "",
+      "description": "服务商报告的缓存命中输入 Token；未提供时为 0。"
+    },
+    {
+      "key": "outputTokens",
+      "name": "输出 Token",
+      "type": "Integer",
+      "condition": "",
+      "description": ""
+    },
+    {
+      "key": "totalTokens",
+      "name": "总 Token",
+      "type": "Integer",
+      "condition": "",
+      "description": ""
+    },
+    {
+      "key": "finishReason",
+      "name": "结束原因",
+      "type": "Text",
+      "condition": "",
+      "description": ""
+    },
+    {
+      "key": "invocationId",
+      "name": "调用标识",
+      "type": "Text",
+      "condition": "",
+      "description": ""
+    },
+    {
+      "key": "resolvedUseCaseId",
+      "name": "实际任务场景",
+      "type": "Text",
+      "condition": "",
+      "description": ""
+    },
+    {
+      "key": "useCaseFallbackUsed",
+      "name": "是否回退场景",
+      "type": "Boolean",
+      "condition": "",
+      "description": ""
+    }
+  ],
+  "selections": {
+    "operation": {
+      "name": "操作",
+      "items": [
+        {
+          "value": "custom",
+          "name": "自定义",
+          "description": ""
+        },
+        {
+          "value": "summarize",
+          "name": "总结",
+          "description": ""
+        },
+        {
+          "value": "rewrite",
+          "name": "改写",
+          "description": ""
+        },
+        {
+          "value": "shorten",
+          "name": "精简",
+          "description": ""
+        },
+        {
+          "value": "expand",
+          "name": "扩写",
+          "description": ""
+        },
+        {
+          "value": "translate",
+          "name": "翻译",
+          "description": ""
+        },
+        {
+          "value": "proofread",
+          "name": "校对",
+          "description": ""
+        },
+        {
+          "value": "tone",
+          "name": "改变语气",
+          "description": ""
+        },
+        {
+          "value": "title",
+          "name": "生成标题",
+          "description": ""
+        },
+        {
+          "value": "keywords",
+          "name": "提取关键词",
+          "description": ""
+        }
+      ]
+    },
+    "useCaseId": {
+      "name": "AI 任务场景",
+      "items": [
+        {
+          "value": "text.general",
+          "name": "日常文本处理与翻译",
+          "description": ""
+        }
+      ]
+    },
+    "outputMode": {
+      "name": "输出方式",
+      "items": [
+        {
+          "value": "direct",
+          "name": "直接返回",
+          "description": ""
+        },
+        {
+          "value": "interactive",
+          "name": "交互调整",
+          "description": ""
+        }
+      ]
+    },
+    "missingUseCaseBehavior": {
+      "name": "任务场景缺失时",
+      "items": [
+        {
+          "value": "UseBaseUseCase",
+          "name": "使用基础场景",
+          "description": ""
+        },
+        {
+          "value": "Fail",
+          "name": "执行失败",
+          "description": ""
+        }
+      ]
+    }
+  },
+  "sourceFileName": "sys_aiText_AI 文本处理.md"
+}

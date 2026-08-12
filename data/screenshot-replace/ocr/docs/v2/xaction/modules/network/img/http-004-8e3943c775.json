@@ -1,0 +1,11 @@
+{
+  "image": "docs/v2/xaction/modules/network/img/http-004-8e3943c775.png",
+  "model": "D:\\source\\repos\\quicker\\quickerorg\\qk-ocr-lite\\models\\ppocrv6\\tiny",
+  "source": "ocr",
+  "generatedAt": "2026-08-12T09:35:41.515Z",
+  "blockCount": 26,
+  "fullText": "通义干问测试-- Chrome #173行1列--编辑动作\n0\n主程序\nsse x\nsse\n变量定义+\n↑怜了\n动作内子程序\n筛选..\nX\n如果判断条件:$= String.IsNullOrEmpty({data)) = = false 8& {data).StartsWit..\n业ABC data\n2\n自根据返回的json格式，提取content\nABC content\n8sse\nABC delta新增内容。\n提取JSON内容$= {data}.Substring(\"data:\".Length); = >{content} -\n取实际增加的内容。通义千问每次返回的内容包含前一次的结果(是生成的全部结\n果)，所以要避免发送重复的内容到窗口。\n赋值$= var prevContent = _context.GetParentContextO.GetVa. = >{delta}\n提示消息{delta}\n文本窗口追加内容{delta)\n曰\n0\n发送文本到窗口{delta)",
+  "kind": "unknown",
+  "confidence": "low",
+  "cues": []
+}

@@ -1,0 +1,19 @@
+{
+  "image": "docs/v2/xaction/modules/software/img/chromecontrol-010-a045de69f6.png",
+  "model": "D:\\source\\repos\\quicker\\quickerorg\\qk-ocr-lite\\models\\ppocrv6\\tiny",
+  "source": "ocr",
+  "generatedAt": "2026-08-12T09:35:52.767Z",
+  "blockCount": 57,
+  "fullText": "9\n浏览器控制-编辑步骤\nX\n与Chrome/Edge/Firefox等浏览器通信，控制网页或浏览器。\n0查看帮助\n常规\n操作类型\n打开网址\n操作类型\n网址\nhttps://baidu.com\n7\n要打开的网页地址。激活标签页时用于指定域名。\n窗口ld\n新窗口New\n使用哪个窗口打开网址。可以使用选项或指定窗口id。\n窗口/标签参数\nfocused:true,\nwidth:1000,\nheight:1000,\nincognito:false,\nleft:100,\ntop:100,\ntype:\"normal\"\n创建窗口或标签时的额外参数(json格式)。\n等待操作完成\n失败后停止\n失败后是否停止动作\n高级\n超时时间(ms)\n3000\nv\n超时等待时间，毫秒数\n√输出到变量\n是否成功\n操作是否成功\n标签页ID\n123 tabld\n网页所在标签页ID\n窗口ID\n123 windowld\nV\n网页所在窗口的ID\n原始返回结果\nABC rawResponse\nV\n从插件返回的原始jToken对象\n错误消息\nV\n步骤执行出错时的消息\n√其它\n步骤注释\n停用此步骤\n运行后延迟：\n600\n保存(S)\n取消",
+  "kind": "step-param",
+  "confidence": "high",
+  "cues": [
+    "保存(S)",
+    "编辑步骤",
+    "停用此步骤",
+    "运行后延迟",
+    "常规",
+    "高级",
+    "取消"
+  ]
+}

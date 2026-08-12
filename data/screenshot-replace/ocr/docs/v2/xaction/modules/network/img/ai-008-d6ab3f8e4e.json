@@ -1,0 +1,19 @@
+{
+  "image": "docs/v2/xaction/modules/network/img/ai-008-d6ab3f8e4e.png",
+  "model": "D:\\source\\repos\\quicker\\quickerorg\\qk-ocr-lite\\models\\ppocrv6\\tiny",
+  "source": "ocr",
+  "generatedAt": "2026-08-12T09:35:41.494Z",
+  "blockCount": 57,
+  "fullText": "AI调用\nD\nX\n调用第三方AI服务\n0查看帮助\n常规\n接口端点\nChat\n模型\ngpt-3.5-turbo\n适用于可能适用于不同的端点，请参考官方文档使用。\n系统提示\n7\n告知AI所需要扮演的角色和要求。如“你是一个专业的翻译助手”。\n会话ID\nABc sessionld\n可选。每次会话请生成新的GUID格式会话ID，设置后将自动保存会话历史。\n历史消息\n8\n可选。存放历史消息的son数组，格式请参考文档说明。设定会话ID后，也可直接写发送的历史会话条数。\n提示\nABC userPromot 用户输入的内容\n要为其生成补全的完整提示内容。\n最大响应Token数\n0\n7\n提示token数+最大响应token数不能超过模型限制。\n温度\n0.2\n像0.8这样的较高值会使输出更随机(发散/创造性），而像0.2这样的较低值会使其更加专注和确定性。\n失败后停止\n失败后是否停止动作\n>高级\n输出到变量\n是否成功\n操作是否成功\n生成结果\nABC reply\n生成的结果文本\n原始响应内容\n接口返回的原始响应内容\n提示Token数\nPrompt耗费的token数量\n响应Token数\nV\n响应耗费的token数量\n总Token数\nV\n总耗费的token数量\n结束原因\n历史消息\nABc historyMessages\n消息类型列表对象\n停用此步骤运行后延迟:\n440\n保存(S)\n取消",
+  "kind": "step-param",
+  "confidence": "high",
+  "cues": [
+    "保存(S)",
+    "停用此步骤",
+    "运行后延迟",
+    "常规",
+    "高级",
+    "确定",
+    "取消"
+  ]
+}

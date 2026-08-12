@@ -1,0 +1,15 @@
+{
+  "image": "docs/v2/xaction/modules/network/img/http-001-fdf530df95.png",
+  "model": "D:\\source\\repos\\quicker\\quickerorg\\qk-ocr-lite\\models\\ppocrv6\\tiny",
+  "source": "ocr",
+  "generatedAt": "2026-08-12T09:35:41.514Z",
+  "blockCount": 45,
+  "fullText": "HTTP请求\nX\n发送HTTP请求，并获取返回结果\n参数\n网址全\n--不使用变量\nhttps://\n要打开的网页地址\n方法←\nGET\nHttp请求的类型\n请求头个\n--不使用变量\n发送的HttpHeader。每行—个header，格式为Name:Value\nCookie ←\n--不使用变量\n请求的cookie内容\n结果类型←文本\nHttp请求的结果类型\nUserAgent ←\nMozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko)\nChrome/60.0.3112.113 Safari/537.36\n超时时间\n100\n请求超时时间(秒数)\n禁止重定向\n是否禁止自动跳转\n输出\n是否成功\n是否成功获得文件列表\n状态码→\n返回的http请求状态码\n响应头→\n返回的HTTP响应Headers\n响应Cookies →\n返回的Cookies\n文本结果→\n返回的文本内容\n图片结果→\n返回的图片内容\n其他\n注释\n□停用此步骤\n保存(S)\n取消",
+  "kind": "step-param",
+  "confidence": "high",
+  "cues": [
+    "保存(S)",
+    "停用此步骤",
+    "取消"
+  ]
+}

@@ -1,0 +1,11 @@
+{
+  "image": "docs/v2/xaction/modules/software/img/chromecontrol-033-5fc09ea522.png",
+  "model": "D:\\source\\repos\\quicker\\quickerorg\\qk-ocr-lite\\models\\ppocrv6\\tiny",
+  "source": "ocr",
+  "generatedAt": "2026-08-12T09:35:52.777Z",
+  "blockCount": 24,
+  "fullText": "Chrome浏览器控制\n0\nX\n获取浏览器信息\n0查看帮助\n参数\n操作类型\n运行后台脚本\n操作类型\n脚本内容\n全\n--不使用变量\n11.js\nchrome.windows.getLastFocused({populate:true}, function(win){\nvar urlList = win.tabs.map(x=>x.url);\nsendReplyToQuicker(true,\n\"ok\", urlList, qk msg_serial)\n等待操作完成\n需要返回结果时，请选中此项\n超时时间(ms)\n1000\n超时等待时间，毫秒数\n失败后停止\n失败后是否停止动作",
+  "kind": "unknown",
+  "confidence": "low",
+  "cues": []
+}

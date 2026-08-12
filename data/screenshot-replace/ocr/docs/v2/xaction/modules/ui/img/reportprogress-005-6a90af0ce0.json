@@ -1,0 +1,15 @@
+{
+  "image": "docs/v2/xaction/modules/ui/img/reportprogress-005-6a90af0ce0.png",
+  "model": "D:\\source\\repos\\quicker\\quickerorg\\qk-ocr-lite\\models\\ppocrv6\\tiny",
+  "source": "ocr",
+  "generatedAt": "2026-08-12T09:35:33.818Z",
+  "blockCount": 30,
+  "fullText": "台显示进度条\n□\nx\n显示/更新进度条\n0查看帮助\n参数\n更新进度\n操作类型\n进度条ID\n123 progressld\n进度条的序号，用于后续更新或删除进度条\n进度条标题\n--固定值或使用插值、表达式--\n测试进度条\n进度条的标题(显示在进度条上方)\n进度百分比←\n--固定值或使用插值、表达式--\n$= 100.0*({count}+1)/10.0\nH\n0到100之间的数字\n说明文字\n-固定值或使用插值、表达式\n$$count = {count}\n显示在进度条下方\n输出\n其他\n汪释\n□停用此步骤\n保存(S)\n取消",
+  "kind": "step-param",
+  "confidence": "high",
+  "cues": [
+    "保存(S)",
+    "停用此步骤",
+    "取消"
+  ]
+}

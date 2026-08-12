@@ -1,0 +1,19 @@
+{
+  "image": "docs/v2/xaction/modules/network/img/ai-002-ce0a9adfec.png",
+  "model": "D:\\source\\repos\\quicker\\quickerorg\\qk-ocr-lite\\models\\ppocrv6\\tiny",
+  "source": "ocr",
+  "generatedAt": "2026-08-12T09:35:41.491Z",
+  "blockCount": 63,
+  "fullText": "AI调用\nX\n调用第三方AI服务\n0查看帮助\n√常规\n接口端点\nChat\n模型\ngpt-3.5-turbo\n适用于可能适用于不同的端点，请参考官方文档使用。\n系统提示\n你是一位诗人。\n7\n告知AI所需要扮演的角色和要求。如”你是一个专业的翻译助手”。\n提示\n$请根据下面的提示词写一首诗歌：\n(text)\n要为其生成补全的完整提示内容。\n最大响应Token数\n0\n提示token数+最大响应token数不能超过模型限制。\n温度\n0.6\n像0.8这样的较高值会使输出更随机(发散/创造性），而像0.2这样的较低值会使其更加专注和确定性。\n失败后停止\n失败后是否停止动作\n高级\nAPIKey\nABC apikey\nOrgnization\n可选\ntop_p\n1\nn\n1\n对每个问题生成几个结果，将会耗费更多token。\n写诗\n使用流式输出（将结果输出到文本窗口，将无法获得完整响应和token用量)\n流式输出窗口标识\nINPUT_TEXT\n个预先使用非等待模式显示的文本窗口的标识，流式输出时将结果显示在该窗口中。\n停止符stop\n遇到指定的内容时自动停止生成。可使用\\n表示换行。\nAPI网址\n可选，使用自定义的API服务器时使用。\n超时秒数\n30\n最长等待秒数\n強制使用代理\n即使系统设置中末启用代理，本步骤仍然使用代理访问。\n输出到变量\n是否成功\n操作是否成功\n生成结果\nABC result\n生成的结果文本\n原始响应内容\n接口返回的原始响应内容\n提示Token数\nPrompt耗费的token数量\n停用此步骤 运行后延迟:\n保存(S)\n取消",
+  "kind": "step-param",
+  "confidence": "high",
+  "cues": [
+    "保存(S)",
+    "停用此步骤",
+    "运行后延迟",
+    "常规",
+    "高级",
+    "确定",
+    "取消"
+  ]
+}

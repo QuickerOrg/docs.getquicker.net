@@ -1,0 +1,16 @@
+{
+  "image": "docs/v2/xaction/modules/compute/img/dboperation-001-498c1464ba.png",
+  "model": "D:\\source\\repos\\quicker\\quickerorg\\qk-ocr-lite\\models\\ppocrv6\\tiny",
+  "source": "ocr",
+  "generatedAt": "2026-08-12T09:34:57.280Z",
+  "blockCount": 44,
+  "fullText": "数据库查询\n□\nX\n对数据库执行SQL语句并返回结果\n0查看帮助\n√常规\n数据库连接类型\nsQLite\n连接字符串\nABC path\nConnection string\nSQL语句\nselect *from contacts Where first_name = @FirstName\n7\n000\n要执行的SQL语句内容\n参数\nFirstName:李\n为SQL语句提供的参数\n超时秒数\n000\n留空或0表示默认。\n执行方式\nQuery：查询并返回结果数据\n失败后停止\n失败后是否停止动作\n<输出到变量\n是否成功\n操作是否成功\n查询结果(表格)\ntable1 表格测试\n获取表格类型的行结果\n查询结果(对象列表)\nlistResult\n获得动态对象列表类型的结果\n首项结果\nfirstltem\n如果只需要返回结果的第一行，可以使用此项输出，支持词典或dynamic对象。没有缇\n结果行数\n其它\n步骤注释\n停用此步骤\n保存(S)\n取消",
+  "kind": "step-param",
+  "confidence": "high",
+  "cues": [
+    "保存(S)",
+    "停用此步骤",
+    "常规",
+    "取消"
+  ]
+}

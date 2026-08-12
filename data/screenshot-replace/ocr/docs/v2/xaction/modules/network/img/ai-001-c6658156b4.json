@@ -1,0 +1,14 @@
+{
+  "image": "docs/v2/xaction/modules/network/img/ai-001-c6658156b4.png",
+  "model": "D:\\source\\repos\\quicker\\quickerorg\\qk-ocr-lite\\models\\ppocrv6\\tiny",
+  "source": "ocr",
+  "generatedAt": "2026-08-12T09:35:41.484Z",
+  "blockCount": 29,
+  "fullText": "OAI调用\nX\n调用第三方AI服务\n0查看帮助\n常规\n接口端点\nChat\n模型\ngpt-3.5-turbo\n适用于可能适用于不同的端点，请参考官方文档使用。\nAE\n系统提示\n你是一个专业的翻译助手。\nAI中英\n告知AI所需要扮演的角色和要求。如”你是一个专业的翻译助手”。\n提示\n$$如果下面的文字包含中文，则将其翻译成英文（只返回翻译结果）；如果下面的文字中不包含中文，则将这\n些内容翻译成中文(只返回翻译结果)\n{text)\n2\n要为其生成补全的完整提示内容。\n最大响应Token数\n0\n提示token数+最大响应token数不能超过模型限制。\n温度\n0.2\n像0.8这样的较高值会使输出更随机（发散/创造性），而像0.2这样的较低值会使其更加专注和确定性。\n失败后停止\n失败后是否停止动作",
+  "kind": "runtime-dialog",
+  "confidence": "low",
+  "cues": [
+    "常规",
+    "确定"
+  ]
+}

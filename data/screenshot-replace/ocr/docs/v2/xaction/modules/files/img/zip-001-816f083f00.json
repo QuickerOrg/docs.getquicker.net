@@ -1,0 +1,18 @@
+{
+  "image": "docs/v2/xaction/modules/files/img/zip-001-816f083f00.png",
+  "model": "D:\\source\\repos\\quicker\\quickerorg\\qk-ocr-lite\\models\\ppocrv6\\tiny",
+  "source": "ocr",
+  "generatedAt": "2026-08-12T09:34:16.374Z",
+  "blockCount": 42,
+  "fullText": "Zip压缩打包 -编辑步骤\nX\nZip压缩或解压缩\n查看帮助\n√常规\n操作类型\n创建Zip文件\n源路径\nv\n待压缩的文件夹或文件路径。多个文件时每个文件一行。\nZip文件路径\n压缩时：目标文件的路径。留空时自动生成临时文件。点(.)表示待压缩的文件夹或文件所在位置。\n源路径为单个文件夹时，压缩整个文件夹(保留文件夹名称)\n密码\n压缩文件密码\n备注\nV\n压缩文件注释内容\n级别\n1\n压缩级别，0-9。0表示不压缩(速度快)，9表示压缩到最小(速度慢)\n显示进度条\n仅支持解压缩或压缩单个文件夹。\nV失败后停止\n失败后是否停止动作\n√输出到变量\n是否成功\nV\n操作是否成功\n结果路径\nV\n生成的zip文件完整路径，或解压缩后的完整路径\n错误消息\nV\n步骤执行出错时的消息\n√其它\n步骤注释\n停用此步骤\n运行后延迟:\n0\n保存(S)\n取消",
+  "kind": "step-param",
+  "confidence": "high",
+  "cues": [
+    "保存(S)",
+    "编辑步骤",
+    "停用此步骤",
+    "运行后延迟",
+    "常规",
+    "取消"
+  ]
+}

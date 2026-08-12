@@ -1,0 +1,15 @@
+{
+  "image": "docs/v2/xaction/modules/clipboard/img/waitclipboardchange-001-2c1947c6de.png",
+  "model": "D:\\source\\repos\\quicker\\quickerorg\\qk-ocr-lite\\models\\ppocrv6\\tiny",
+  "source": "ocr",
+  "generatedAt": "2026-08-12T09:35:20.235Z",
+  "blockCount": 20,
+  "fullText": "等待剪贴板内容改变\nx\n等待剪贴板的内容发生改变。等待第三方工具(如截图工具)完成操作并更新剪贴板。\n参数\n10\n超过等待时间剪贴板未改变，则结束等待。\n等待窗口关闭时取消\n结合\n”等待窗口“模块，如果等待窗口关闭，则停止等待剪贴板变化。\n□失败后中止动作\n超时后剪贴板仍未改变，是否中止动作。\n输出\n是否改变\nclipChanged 剪贴板变化了\n剪贴板内容是否改变了\n其他\n注释\n□停用此步骤\n保存(S)\n取消",
+  "kind": "step-param",
+  "confidence": "high",
+  "cues": [
+    "保存(S)",
+    "停用此步骤",
+    "取消"
+  ]
+}

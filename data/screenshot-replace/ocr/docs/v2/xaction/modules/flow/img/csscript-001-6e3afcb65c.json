@@ -1,0 +1,18 @@
+{
+  "image": "docs/v2/xaction/modules/flow/img/csscript-001-6e3afcb65c.png",
+  "model": "D:\\source\\repos\\quicker\\quickerorg\\qk-ocr-lite\\models\\ppocrv6\\tiny",
+  "source": "ocr",
+  "generatedAt": "2026-08-12T09:34:30.602Z",
+  "blockCount": 36,
+  "fullText": "口运行C#代码\n□\nX\n执行C#代码片段。代码中应包含主函数Exec(stepContext)，请参考文档说明。\n0查看帮助\n√常规\n运行模式\n普通模式v1 (CodeDom)\n脚本内容\n//.cs文件类型，便于外部编辑时使用\n//引用必要的命名空间\nusing System.Windows.Forms;\nusing system. Threading;\n// Quicker将会调用的函数。可以根据需要修改返回值类型。\npublic static string Exec(Quicker.Public.IStepContext context)\n1/ 获取当前线程的公寓状态\n7\n引用DLL库\n口\n执行线程\n后台线程(MTA)\n允许缓存程序集\n失败后停止\n>高级\n√输出到变量\n是否成功\n返回内容\nABC _message\n错误消息\n√其它\n步骤注释\n停用此步骤\n运行后延迟:\n0\n保存(S)\n取消",
+  "kind": "step-param",
+  "confidence": "high",
+  "cues": [
+    "保存(S)",
+    "停用此步骤",
+    "运行后延迟",
+    "常规",
+    "高级",
+    "取消"
+  ]
+}

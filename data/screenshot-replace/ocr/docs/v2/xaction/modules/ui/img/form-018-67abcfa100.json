@@ -1,0 +1,16 @@
+{
+  "image": "docs/v2/xaction/modules/ui/img/form-018-67abcfa100.png",
+  "model": "D:\\source\\repos\\quicker\\quickerorg\\qk-ocr-lite\\models\\ppocrv6\\tiny",
+  "source": "ocr",
+  "generatedAt": "2026-08-12T09:35:33.810Z",
+  "blockCount": 31,
+  "fullText": "S创建/编辑表单字段\nX\n词典的键名\nselect\n为词典的哪个键设置创建表单字段。\n数据类型\nABC文本\n值的数据类型。\n字段标题\nselect\n表单上显示的字段名。\n帮助提示\n字段帮助文字。\n分组\n分标签页显示表单。\n输入方式\n下拉选择\nV\n宁段的输入力/法。\n可选值\n$=_context.GetRootcontext().Getvarvalue(\"list\")\n字段可选值。每个选项一行。\n可见性表达式\n$= {kexlλ \"value1\"\n小例：\n控件宽度\n200\n逻辑像素值。\n其他选项不能为空\n保存(S)\n取消(C)",
+  "kind": "step-param",
+  "confidence": "medium",
+  "cues": [
+    "保存(S)",
+    "类型",
+    "取消(C)",
+    "取消"
+  ]
+}

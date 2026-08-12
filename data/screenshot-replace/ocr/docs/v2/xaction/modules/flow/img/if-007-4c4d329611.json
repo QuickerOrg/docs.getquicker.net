@@ -1,0 +1,15 @@
+{
+  "image": "docs/v2/xaction/modules/flow/img/if-007-4c4d329611.png",
+  "model": "D:\\source\\repos\\quicker\\quickerorg\\qk-ocr-lite\\models\\ppocrv6\\tiny",
+  "source": "ocr",
+  "generatedAt": "2026-08-12T09:34:30.614Z",
+  "blockCount": 28,
+  "fullText": "王获取选中的文本\n获取选中的文字\n0查看帮助\n参数\n文本数据格式←\nUnicode纯文本（默认)\n需要读取的剪贴板文本内容格式。通常请使用Unicode纯文本格式。\n重试次数←\no\n失败后重试的次数(每次重试需200ms左右)\n□失败后中止动作\n获取选中的文本失败后，是否停止后续动作的执行。\n输出\n内容\nABC selectedText 选中的文本\n将获得的文本写入到变量\nURL编码的内容\n对选中的内容进行URL编码处理后的结果，通常用于拼接网址。\n是否成功\n→\n isSelected 是否选中\n是否成功获取了文本\n其他\n是否成功获取选中文本的信息输出到isSelected变量中\n注释\n□停用此步骤\n保存(S)\n取消",
+  "kind": "step-param",
+  "confidence": "high",
+  "cues": [
+    "保存(S)",
+    "停用此步骤",
+    "取消"
+  ]
+}

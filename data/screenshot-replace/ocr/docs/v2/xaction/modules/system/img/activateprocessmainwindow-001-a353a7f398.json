@@ -1,0 +1,16 @@
+{
+  "image": "docs/v2/xaction/modules/system/img/activateprocessmainwindow-001-a353a7f398.png",
+  "model": "D:\\source\\repos\\quicker\\quickerorg\\qk-ocr-lite\\models\\ppocrv6\\tiny",
+  "source": "ocr",
+  "generatedAt": "2026-08-12T09:34:57.310Z",
+  "blockCount": 36,
+  "fullText": "日激活进程主窗口\n0\n找到指定进程的主窗口并使其显示在前台。\n0查看帮助\n常规\n进程名称/pid\nTim\n四…\n请输入要验证的进程名称a或pid。进程名通常是exe的文件名去掉后缀，比如记事本程序的进程名称为notepad。\n窗口类名\n选填。未能获取主窗口时（如窗口隐藏），可以尝试根据类名查找窗口，支持正则。\n窗口标题\n选填。未能获取主窗口时，根据窗口标题查找，支持正则。\n热键\n1%2\n国…\n选填。软件最小化到托盘时，使用指定的全局热键激活窗口。\n程序路径\nC:\\Program Files (x86)\\Tencent\\TIM\\Bin\\TIM.exe\n四2…\n选填。如果进程不存在，可以根据此路径启动程序。\n失败后停止\n失败后是否停止动作\n√输出到变量\nPID\n进程ID\n主窗口句柄\n进程的主窗口句柄\n主窗口标题\n是否成功\n是否成功激活了进程主窗口\n其它\n步骤注释\n停用此步骤 运行延迟:\n保存(S)\n取消",
+  "kind": "step-param",
+  "confidence": "high",
+  "cues": [
+    "保存(S)",
+    "停用此步骤",
+    "常规",
+    "取消"
+  ]
+}

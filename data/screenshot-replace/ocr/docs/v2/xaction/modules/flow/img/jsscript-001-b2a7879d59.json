@@ -1,0 +1,17 @@
+{
+  "image": "docs/v2/xaction/modules/flow/img/jsscript-001-b2a7879d59.png",
+  "model": "D:\\source\\repos\\quicker\\quickerorg\\qk-ocr-lite\\models\\ppocrv6\\tiny",
+  "source": "ocr",
+  "generatedAt": "2026-08-12T09:34:30.616Z",
+  "blockCount": 31,
+  "fullText": "口运行Javascript代码\n0\nX\n执行Js代码片段。代码中应包含主函数execO，请参考文档。\n0查看帮助\n常规\n脚本内容\nV/.js主函数 exec()\nfunction exec (){\nalert(' sum of 1+2 is ${1 + 2} );\nreturn 0;\n要运行的脚本内容\n允许访问.Net程序集\n是否需要在s代码中访问.Net程序集\n失败后停止\n失败后是否停止动作\n√输出到变量\n是否成功\nisSuccess\n操作是否成功\n返回值\n123 return\n脚本代码返回的数字值。\n错误消息\n步骤执行出错时的消息\n√其它\n步骤注释\n停用此步骤\n运行后延迟：\n保存(S)\n取消",
+  "kind": "step-param",
+  "confidence": "high",
+  "cues": [
+    "保存(S)",
+    "停用此步骤",
+    "运行后延迟",
+    "常规",
+    "取消"
+  ]
+}

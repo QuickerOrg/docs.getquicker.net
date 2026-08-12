@@ -1,0 +1,15 @@
+{
+  "image": "docs/v2/xaction/modules/clipboard/img/getclipboardtext-001-be2c678bbf.png",
+  "model": "D:\\source\\repos\\quicker\\quickerorg\\qk-ocr-lite\\models\\ppocrv6\\tiny",
+  "source": "ocr",
+  "generatedAt": "2026-08-12T09:35:20.232Z",
+  "blockCount": 21,
+  "fullText": "自获取剪贴板文本\nX\n读取剪贴板中的文本内容\n0查看帮助\n参数\n文本数据格\nUnicode纯文本（默认)\n式\n需要读取的剪贴板文本内容格式。通常请使用Unicode纯文本格式。\n失败后中止动作\n获取选中的文本失败后，是否停止后续动作的执行。\n输出\n结果內容\n将获得的文本内容写入到变量\n是否成功\n是否成功获得文本\n其他\n注释\n停用此步骤\n保存(S)\n取消",
+  "kind": "step-param",
+  "confidence": "high",
+  "cues": [
+    "保存(S)",
+    "停用此步骤",
+    "取消"
+  ]
+}

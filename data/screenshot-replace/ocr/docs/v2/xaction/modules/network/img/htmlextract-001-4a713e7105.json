@@ -1,0 +1,17 @@
+{
+  "image": "docs/v2/xaction/modules/network/img/htmlextract-001-4a713e7105.png",
+  "model": "D:\\source\\repos\\quicker\\quickerorg\\qk-ocr-lite\\models\\ppocrv6\\tiny",
+  "source": "ocr",
+  "generatedAt": "2026-08-12T09:35:41.513Z",
+  "blockCount": 38,
+  "fullText": "提取HTML内容\nX\n从HTML代码中提取内容\n0查看帮助\n常规\n源HTML\nhttps://weibo.com/7081990832/JyLmEmlsa\n000\n原始HTML内容，或网址，或根节点对象\n网页编码类型\nUTF8编码utf-8\n通过网址加载内容时，使用指定的编码。留空时默认为UTF8。\n节点XPath\n//html\n内容的XPath，详细说明请参考文档\n提取方式\n第一个符合条件的节点\n提取单个节点还是符合条件的所有节点。\n提取内容类型\ninnerHtml 内部HTML\n要提取的节点信息。\n属性名称\n仅在提取节点属性时有效。指定属性的名称。\n失败后停止\n失败后是否停止动作\n<输出\n是否成功\n操作是否成功\n提取值\nABC value\n提取的内容。请确保结果类型和变量类型匹配。\n根节点\n整个HTML源内容对应的HtmINode节点对象，可用于后续处理使用。\n√其它\n步骤注释\n停用此步骤\n保存(S)\n取消",
+  "kind": "step-param",
+  "confidence": "high",
+  "cues": [
+    "保存(S)",
+    "停用此步骤",
+    "常规",
+    "类型",
+    "取消"
+  ]
+}

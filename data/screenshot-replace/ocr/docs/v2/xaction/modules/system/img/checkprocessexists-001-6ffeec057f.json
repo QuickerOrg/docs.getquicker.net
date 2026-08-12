@@ -1,0 +1,15 @@
+{
+  "image": "docs/v2/xaction/modules/system/img/checkprocessexists-001-6ffeec057f.png",
+  "model": "D:\\source\\repos\\quicker\\quickerorg\\qk-ocr-lite\\models\\ppocrv6\\tiny",
+  "source": "ocr",
+  "generatedAt": "2026-08-12T09:34:57.318Z",
+  "blockCount": 33,
+  "fullText": "日检查程序已启动\nX\n检查指定的应用程序是否已经启动。\n0查看帮助\n参数\n进程名称/pid←\n-固定值或使用插值、表达式\n272\n请输入要验证的进程名称或id。通常是exe的文件名去掉后缀，比如记事本程序的进程名称为notepad。\n失败后停止\n失败后是否停止动作\n输出\n是否成功\nisSuccess 操作是否成功操作是否成功\n是否运行\nisExists 指定的进程是否运行。指定的进程是否运行。如果已运行，返回True，否则返回False\n进程ID\n123 pid 找到的第一个匹配进程的找到的第一个匹配进程的ID\n所有进程ID列表\n pidList 具有相同进程名的所祚具有相同进程名的所有进程的ID列表\n程序路径\nABC path 进程的应用程序路径进程的应用程序路径\n主窗口句柄\n123 mainWinHandle\n主窗口标题\nABc mainwinTitle\n启动时间\n startTime\n其他\n注释\n□停用此步骤\n保存(S)\n取消",
+  "kind": "step-param",
+  "confidence": "high",
+  "cues": [
+    "保存(S)",
+    "停用此步骤",
+    "取消"
+  ]
+}

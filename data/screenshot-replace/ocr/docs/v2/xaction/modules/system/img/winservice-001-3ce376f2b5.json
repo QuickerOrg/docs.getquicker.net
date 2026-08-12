@@ -1,0 +1,17 @@
+{
+  "image": "docs/v2/xaction/modules/system/img/winservice-001-3ce376f2b5.png",
+  "model": "D:\\source\\repos\\quicker\\quickerorg\\qk-ocr-lite\\models\\ppocrv6\\tiny",
+  "source": "ocr",
+  "generatedAt": "2026-08-12T09:34:57.376Z",
+  "blockCount": 28,
+  "fullText": "Windows服务和注册表\n×\n获取Windows服务的状态、注册表项信息\n0查看帮助\n常规\n操作类型\n获取某个服务的信息\n服务名\nEverything\n团…\n服务名称（不是显示名称)，大小写敏感。\n失败后停止\n失败后是否停止动作\n<输出到变量\n服务是否存在\n isExists\n服务是否存在\n显示名\nABc displayName\n服务的显示名\n服务状态\n123state\n服务的当前状态。4:运行中，1:已停止。其它状态请参考文档。\n√其它\n步骤注释\n停用此步骤运行后延迟：\n保存(S)\n取消",
+  "kind": "step-param",
+  "confidence": "high",
+  "cues": [
+    "保存(S)",
+    "停用此步骤",
+    "运行后延迟",
+    "常规",
+    "取消"
+  ]
+}

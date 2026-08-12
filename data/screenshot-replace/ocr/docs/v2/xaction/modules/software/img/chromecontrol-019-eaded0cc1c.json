@@ -1,0 +1,19 @@
+{
+  "image": "docs/v2/xaction/modules/software/img/chromecontrol-019-eaded0cc1c.png",
+  "model": "D:\\source\\repos\\quicker\\quickerorg\\qk-ocr-lite\\models\\ppocrv6\\tiny",
+  "source": "ocr",
+  "generatedAt": "2026-08-12T09:35:52.771Z",
+  "blockCount": 48,
+  "fullText": "9浏览器控制-编辑步骤\n□\nX\n与Chrome/Edge/Firefox等浏览器通信，控制网页或浏览器。\n0查看帮助\n常规\n操作类型\n更新元素信息\n操作类型\n标签页ld\n留空表示当前活动标签页\n选择器\n#query\n000\n要操作的元素选择器，请参考文档。\n元素信息类型\n值\n属性名\n设置或读取Attribute属性/Property属性时，置顶Attribute或Property的名称。\n值\n关键词\n000\n要更新的元素信息值\n运行脚本的框架\n顶层框架0\nall:所有框架，0:顶层框架，其它数字：框架id\n失败后停止\n失败后是否停止动作\n>高级\n√输出到变量\n是否成功\nV\n操作是否成功\n原始返回结果\nresult\nV\n从插件返回的原始jToken对象\n错误消息\nV\n步骤执行出错时的消息\n√其它\n步骤注释\n自动返回结果\n停用此步骤\n运行后延迟:\n0\n保存(S)\n取消",
+  "kind": "step-param",
+  "confidence": "high",
+  "cues": [
+    "保存(S)",
+    "编辑步骤",
+    "停用此步骤",
+    "运行后延迟",
+    "常规",
+    "高级",
+    "取消"
+  ]
+}

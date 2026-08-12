@@ -1,0 +1,16 @@
+{
+  "image": "docs/v2/xaction/modules/software/img/excelreadwrite-009-54c0603bd0.png",
+  "model": "D:\\source\\repos\\quicker\\quickerorg\\qk-ocr-lite\\models\\ppocrv6\\tiny",
+  "source": "ocr",
+  "generatedAt": "2026-08-12T09:35:52.791Z",
+  "blockCount": 47,
+  "fullText": "Excel文件读写\nX\n读取Excel文件内容或写入Excel文件\n0查看帮助\n√常规\n操作类型\n读取单元格\n工作表对象\n sheet\n需要操作或读写的工作表对象\n单元格地址\n类似于\"D5”这样的单元格位置名称。或在下方使用行序号和单元格序号指定(两种二选一）。\n行序号\n0\n以0开始计算的序号\n列序号\n0\n单元格在所在行里的序号，从0开始\n失败后停止\n失败后是否停止动作\n<\n输出到变量\n是否成功\n操作是否成功\n是否有值\n hasValue\n单元格的值\n值\n cellValue\n单元格的值\n文本值\nABC text 默认的文本变量\n文本格式的单元格内容\n类型\nABc valueType\n单元格的类型\n公式\nABC formula\n单元格的公式值\n数据格式字符串\nABC format\n数据格式的字符串表示\n√其它\n步骤注释\n停用此步骤 运行延迟:\n保存(S)\n取消",
+  "kind": "step-param",
+  "confidence": "high",
+  "cues": [
+    "保存(S)",
+    "停用此步骤",
+    "常规",
+    "取消"
+  ]
+}

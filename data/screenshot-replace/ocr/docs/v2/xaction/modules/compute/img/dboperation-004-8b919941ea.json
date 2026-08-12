@@ -1,0 +1,16 @@
+{
+  "image": "docs/v2/xaction/modules/compute/img/dboperation-004-8b919941ea.png",
+  "model": "D:\\source\\repos\\quicker\\quickerorg\\qk-ocr-lite\\models\\ppocrv6\\tiny",
+  "source": "ocr",
+  "generatedAt": "2026-08-12T09:34:57.282Z",
+  "blockCount": 33,
+  "fullText": "目数据库查询\n□\nX\n对数据库执行SQL语句并返回结果\n0查看帮助\n常规\n数据库连接类型\nsQLite\n连接字符串\nABC path\nConnection string\nSQL语句\nselect coUNT(1) from contacts\n要执行的SQL语句内容\n参数\nFirstName:李\n为SQL语句提供的参数\n超时秒数\n留空或0表示默认。\n执行方式\nExecuteScalar:执行并返回单个值(首行首列的值)\n失败后停止\n失败后是否停止动作\n√输出到变量\n是否成功\n操作是否成功\n单值结果\nABC scalarResult\n其它\n步骤注释\n停用此步骤\n保存(S)\n取消",
+  "kind": "step-param",
+  "confidence": "high",
+  "cues": [
+    "保存(S)",
+    "停用此步骤",
+    "常规",
+    "取消"
+  ]
+}

@@ -1,0 +1,11 @@
+{
+  "image": "docs/v2/xaction/concepts/img/debug-008-e542943bcb.png",
+  "model": "D:\\source\\repos\\quicker\\quickerorg\\qk-ocr-lite\\models\\ppocrv6\\tiny",
+  "source": "ocr",
+  "generatedAt": "2026-08-12T09:33:52.455Z",
+  "blockCount": 14,
+  "fullText": "392.0列表操作读取某位置元素{searchUrlList}\n[in] 列表 【变量 searchUrlList】0:\"https://www.baidu.com/s?wd=关键词}\n1:https://www.google.com/search?&q={关键词}\"\n2:\"https://cn.bing.com/search?q=(关键词)\"\n3:\"https:/www.zhihu.com/search?type=content&q=(关键词)\"\n4:\"https://s.weibo.com/weibo/{关键词)\"\n2\n5:\"https://weixin.sogou.com/weixin?type=28&query={关键词}\"\n6:\"{StartMenu}\\Programs\\Everything\\搜索 Everything.Ink\"-s \"(关键词)\"\n[in] 操作类型【值/表达式】getAt\n[in] 序号【变量 cuntNum】0\n[in] 长度【无输入】1\n[in]值【无输入】\n[out] 结果=>searchUrl \"https:/www.baidu.com/s?wd={关键词)\"",
+  "kind": "unknown",
+  "confidence": "low",
+  "cues": []
+}

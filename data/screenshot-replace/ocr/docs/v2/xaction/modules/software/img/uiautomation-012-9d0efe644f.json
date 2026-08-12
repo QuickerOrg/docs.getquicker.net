@@ -1,0 +1,16 @@
+{
+  "image": "docs/v2/xaction/modules/software/img/uiautomation-012-9d0efe644f.png",
+  "model": "D:\\source\\repos\\quicker\\quickerorg\\qk-ocr-lite\\models\\ppocrv6\\tiny",
+  "source": "ocr",
+  "generatedAt": "2026-08-12T09:35:52.806Z",
+  "blockCount": 35,
+  "fullText": "曰窗口界面控制(FlaUI)\nX\n触发Windows窗口的菜单/按钮等控件(通过FlaUI库实现)。\n0查看帮助\n常规\n操作类型\n触发窗口控件\n操作类型。按下和拾起需要配对使用。\n窗口\n要操作哪个窗口的控件。不填写=使用前台窗口；或窗口句柄数字。\n选择窗口控件，获取其XPat\n控件XPath或Name\n母…\n控件的XPath或Name。XPath以/开始。\n控件类型\n●*任意类型*0\n可选。当有多个名称相同但类型不同的控件时区分。\n动作\n自动\n对控件执行的操作。\n点击获取控件的XPath\n值\n团……\n仅用于“设置值”操作。\n失败后停止\n外\n失败后是否停止动作\n√输出\n是否成功\n操作是否成功\n√其它\n步骤注释\n停用此步骤\n保存(S)\n取消",
+  "kind": "step-param",
+  "confidence": "high",
+  "cues": [
+    "保存(S)",
+    "停用此步骤",
+    "常规",
+    "取消"
+  ]
+}

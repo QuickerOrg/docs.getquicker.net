@@ -1,0 +1,17 @@
+{
+  "image": "docs/v2/xaction/modules/input/img/inputscript-001-819a981cab.png",
+  "model": "D:\\source\\repos\\quicker\\quickerorg\\qk-ocr-lite\\models\\ppocrv6\\tiny",
+  "source": "ocr",
+  "generatedAt": "2026-08-12T09:35:20.033Z",
+  "blockCount": 22,
+  "fullText": "國多步骤输入\r\n多步骤键盘组合输入\r\n0查看帮助\r\n常规\r\n步骤脚本\r\ninput:hello\r\n团.…\r\ndelay:1000\r\nsendkeys:{LEFT 2}\r\nkeypress:S\r\nhotkey:ctrl+S\r\n模拟输入的步骤列表，每行一个。详细格式请参考模块文档。\r\n失败后停止\r\n失败后是否停止动作\r\n√输出\r\n是否成功\r\n操作是否成功\r\n√其它\r\n步骤注释\r\n停用此步骤\r\n保存(S)\r\n取消",
+  "kind": "step-param",
+  "confidence": "high",
+  "cues": [
+    "保存(S)",
+    "停用此步骤",
+    "常规",
+    "步骤列表",
+    "取消"
+  ]
+}

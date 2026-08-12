@@ -1,0 +1,15 @@
+{
+  "image": "docs/v2/xaction/modules/compute/img/computetime-002-a96e2853c9.png",
+  "model": "D:\\source\\repos\\quicker\\quickerorg\\qk-ocr-lite\\models\\ppocrv6\\tiny",
+  "source": "ocr",
+  "generatedAt": "2026-08-12T09:34:57.277Z",
+  "blockCount": 43,
+  "fullText": "①计算时间\n时间相关的计算操作\n0查看帮助\n参数\n耀←\n计算时间差（日期时间2 减日期时间)\n比较方式\n日期时间个\n curTime\n要计算的时间值\n日期时间2←\nendDay 结束时间\n要计算的第二个时间值\n格式化字符←\n--不使用变量-\nd\\:hh\\:mm\\:ss\n2\n时间差转换为文本时的格式化字符串。d:天数,hh:小时,mm:分钟,ss:秒。符号：需要使用\\转义\n失败后停止\n失败后是否停止动作\n输出\n是否成功→\n操作是否成功\n总天数→\n123 totalDays\n间隔的总天数值\n总小时数→\n123 totalHours\n间隔的总小时数\n总分钟数→\n123 totalMinutes\n间隔的总分钟数值\n总秒数\n123 totalSeconds\n间隔的总秒数数值\n文本值→\ne timeDiff 时检差\n时间间隔的文本结果\n其他\n注释\n□停用此步骤\n保存(S)\n取消",
+  "kind": "step-param",
+  "confidence": "high",
+  "cues": [
+    "保存(S)",
+    "停用此步骤",
+    "取消"
+  ]
+}

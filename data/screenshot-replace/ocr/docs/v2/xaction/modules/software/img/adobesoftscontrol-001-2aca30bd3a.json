@@ -1,0 +1,16 @@
+{
+  "image": "docs/v2/xaction/modules/software/img/adobesoftscontrol-001-2aca30bd3a.png",
+  "model": "D:\\source\\repos\\quicker\\quickerorg\\qk-ocr-lite\\models\\ppocrv6\\tiny",
+  "source": "ocr",
+  "generatedAt": "2026-08-12T09:35:52.752Z",
+  "blockCount": 29,
+  "fullText": "AIAdobe系列软件控制\n×\n0查看帮助\n√常规\n软件名称\nPhotoshop\n要执行脚本的软件\n操作类型\n执行js脚本\n操作类型\n脚本内容\n if image is in portrait mode,\nrotate it 90 degrees\nif\n(activeDocument . height > activeDocument .width) {\nactiveDOcument.rotatecanvas(90);\n要执行的is脚本代码。\n等待执行结束\n是true\n失败后停止\n失败后是否停止动作\n√输出到变量\n是否成功\n操作是否成功\n其它\n步骤注释\n停用此步骤 运行延迟:\n保存(S)\n取消",
+  "kind": "step-param",
+  "confidence": "high",
+  "cues": [
+    "保存(S)",
+    "停用此步骤",
+    "常规",
+    "取消"
+  ]
+}

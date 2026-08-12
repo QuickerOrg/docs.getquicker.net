@@ -1,0 +1,18 @@
+{
+  "image": "docs/v2/xaction/modules/ui/img/webview2-003-73f41bfb09.png",
+  "model": "D:\\source\\repos\\quicker\\quickerorg\\qk-ocr-lite\\models\\ppocrv6\\tiny",
+  "source": "ocr",
+  "generatedAt": "2026-08-12T09:35:33.836Z",
+  "blockCount": 53,
+  "fullText": "WebView2浏览器窗口\n×\n基于微软Edge浏览器内核的组件，需要安装Edge最新预览版方可使用。\n0查看帮助\n常规\n操作类型\n【多列】打开网址\n网址列表\nQuickerIhttps://getquicker.net\n小红书|https://www.xiaohongshu.com/\n微博|https://weibo.com\nv\nBaidu https://baidu.com\n每行个：网址，或”标题|网址”，或”[图标标题|网址\"格式。\nUser Agent\nMozilla/5.0 (Linux; Android 13; SM-N960u) AppleWebkit/537.36 (KHTML, like Gecko)\nChrome/117.0.5938.60 Mobile Safari/537.36\n可选。自定义UserAgent\n窗口标题\nQuicker\n窗口标题文字。未设置时，自动使用网页标题。\n窗口标识\n7\nv\n(仅必要时使用用于关闭之前打开的具有此标识的WebView2窗口。使用=表示当前动作ID。\n窗口位置\n自定义位置\n在哪里显示选择窗口\n窗口尺寸/位置\n20%,20%,80%,80%\n设置选择窗口的尺寸，格式为：宽度,高度。支持像素数值或屏幕宽高百分比，详情请参考模块文档。\n“窗口位置\"类型为“自定义位置\"时用于指定显示位置，格式为：left,top,right,bottom\n失败后停止\n失败后是否停止动作\n√高级\n默认下载文件夹\nE:\\test\n默认的文件下载存储目录\n置顶显示\n0\n否false\nV\n√输出到变量\n是否成功\nV\n操作是否成功。获取窗口信息时，窗口是否存在。\n√其它\n步骤注释\n停用此步骤\n运行后延迟：\n0\n保存(S)\n取消",
+  "kind": "step-param",
+  "confidence": "high",
+  "cues": [
+    "保存(S)",
+    "停用此步骤",
+    "运行后延迟",
+    "常规",
+    "高级",
+    "取消"
+  ]
+}

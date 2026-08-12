@@ -1,0 +1,16 @@
+{
+  "image": "docs/v2/xaction/modules/network/img/websocket-003-208456130d.png",
+  "model": "D:\\source\\repos\\quicker\\quickerorg\\qk-ocr-lite\\models\\ppocrv6\\tiny",
+  "source": "ocr",
+  "generatedAt": "2026-08-12T09:35:41.528Z",
+  "blockCount": 38,
+  "fullText": "Websocket\nX\nWebsocket相关操作\n0查看帮助\n√常规\n操作类型\n客户端：连接到Websocket服务\n服务器地址\nwss://socketsbay.com/wss/v2/2/demo/\n连接ID\ntest\n用于区分不同的客户端连车接。连接相同id的客户端时，前一个连接会被自动关闭。\n消息处理子程序\n消息处理\n00\n使用子程序处理从websocket服务接收到的消息。详情请参考文档。\n消息內容\n文本内容。发送文件时为文件的完整路径。\n账号密码\n支持Basic和Digesti认证方式。多行填写。第一行写账号，第二行写密码。\nCookie\n请求的cookie内容\nOrigin\n仅需要时填写\n服务断开时通知动作(调用动作并传入参数:websocketclosed)\n是否等待服务器响应\n失败后停止\n失败后是否停止动作\n∨\n输出到变量\n是否成功\n isSuccess\n操作是否成功\n√其它\n步骤注释\n停用此步骤 运行延迟:\n保存(S)\n取消",
+  "kind": "step-param",
+  "confidence": "high",
+  "cues": [
+    "保存(S)",
+    "停用此步骤",
+    "常规",
+    "取消"
+  ]
+}

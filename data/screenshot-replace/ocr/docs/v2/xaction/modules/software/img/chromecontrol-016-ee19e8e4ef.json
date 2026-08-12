@@ -1,0 +1,19 @@
+{
+  "image": "docs/v2/xaction/modules/software/img/chromecontrol-016-ee19e8e4ef.png",
+  "model": "D:\\source\\repos\\quicker\\quickerorg\\qk-ocr-lite\\models\\ppocrv6\\tiny",
+  "source": "ocr",
+  "generatedAt": "2026-08-12T09:35:52.770Z",
+  "blockCount": 48,
+  "fullText": "9浏览器控制-编辑步骤\n0\nX\n与Chrome/Edge/Firefox等浏览器通信，控制网页或浏览器。\n0查看帮助\n常规\n操作类型\n对标签页运行脚本(浏览器需开启开发者模式)\n操作类型\n标签页ld\n留空表示当前活动标签页\n脚本内容\n11.js\ndocument.title\n2\nv\n运行脚本的框架\n顶层框架0\nall:所有框架，0：顶层框架，其它数字:框架id\n执行环境\nV\n自定义脚本的执行环境(ExecutionWorld)，默认为USER_SCRIPT。MAIN表示网页自身的执行环境。仅MV3版本扩展支持。\n从脚本手动返回数据\n在脚本中使用sendReplyToQuicker函数手动返回数据\n失败后停止\n失败后是否停止动作\n高级\n超时时间(ms)\n3000\nv\n超时等待时间，毫秒数\n√输出到变量\n是否成功\n操作是否成功\n原始返回结果\nABC rawResponse\nV\n从插件返回的原始jToken对象\n错误消息\n步骤执行出错时的消息\n√其它\n步骤注释\n自动返回结果\n停用此步骤\n运行后延迟：\n0\n保存(S)\n取消",
+  "kind": "step-param",
+  "confidence": "high",
+  "cues": [
+    "保存(S)",
+    "编辑步骤",
+    "停用此步骤",
+    "运行后延迟",
+    "常规",
+    "高级",
+    "取消"
+  ]
+}

@@ -1,0 +1,17 @@
+{
+  "image": "docs/v2/xaction/concepts/img/subprogram-004-501759bafb.png",
+  "model": "D:\\source\\repos\\quicker\\quickerorg\\qk-ocr-lite\\models\\ppocrv6\\tiny",
+  "source": "ocr",
+  "generatedAt": "2026-08-12T09:33:52.478Z",
+  "blockCount": 33,
+  "fullText": "获取选中或输入的内容\nof\n{x}变量定义\n 获取剪贴板文本 尝试获取剪贴板内容\nX\ncdiptext剪贴板内容\nX\n会忽略获取剪贴板是否成功。没有成功也不影响后续的逻辑，只是...\nX\nisSuccess 操作是否成功\nX\n↑ selectedText选中的文本内容\nX\n获取选中的文本输出到变量:{selectedText}\nX\n prompt需要用户输入内容时显示的提示。\nX\n如果/否则 获取选中的文本是否成功\nX\n自选中的文本获取成功，这时候不需要做其他操作了。\nX\n否则\n用户输入\nX\n结束（如果)\n子程序名称\n获取选中或输入的内容\n备注\n获取选中的内容，\n如果没有选中，\n则请用户输入并且自动填入剪贴板内容。\n保存(S)\n取消(C)",
+  "kind": "step-param",
+  "confidence": "medium",
+  "cues": [
+    "保存(S)",
+    "否则",
+    "如果",
+    "取消(C)",
+    "取消"
+  ]
+}

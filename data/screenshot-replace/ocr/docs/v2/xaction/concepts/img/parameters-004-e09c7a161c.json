@@ -1,0 +1,13 @@
+{
+  "image": "docs/v2/xaction/concepts/img/parameters-004-e09c7a161c.png",
+  "model": "D:\\source\\repos\\quicker\\quickerorg\\qk-ocr-lite\\models\\ppocrv6\\tiny",
+  "source": "ocr",
+  "generatedAt": "2026-08-12T09:33:52.468Z",
+  "blockCount": 43,
+  "fullText": "开始\n直接使用变量\n次数←\n123 count\n重复次数，除非符合条件提前中止。-1表示天\n是\n直接使用变量？\n以$$开始，将变量值替换到文本中\n网址个\n不使用变量\n$$https://baidu.com?q={search}\n否\n要打开的网页地址\n取变量值\n插值结果\n以$$开始？\n是\n插值处理\n二次解析-\n以$$开始？\n是\n插值处理\n否\n以$=开始？\n计算表达式\n否\n以$=开始，计算表达式\n网址\n否\n\"https://baidu.com?q=\"\n{search}\n要打开的网d而地址\n以$=开始？\n是\n计算表达式\n否\n得到中间结果\n如果中间结果类型为文本，目标参数类型为布尔或数字\n（类似“如果”模块中的判断条件）\n会对此文本作为表达式解析\n根据需要转换为目标\n参数的类型\n输入到参数",
+  "kind": "steps",
+  "confidence": "low",
+  "cues": [
+    "如果"
+  ]
+}

@@ -1,0 +1,20 @@
+{
+  "image": "docs/v2/xaction/modules/basic/img/run-002-dbe55875ab.png",
+  "model": "D:\\source\\repos\\quicker\\quickerorg\\qk-ocr-lite\\models\\ppocrv6\\tiny",
+  "source": "ocr",
+  "generatedAt": "2026-08-12T09:34:20.776Z",
+  "blockCount": 89,
+  "fullText": "运行或打开-编辑步骤\nX\n运行软件或命令，打开文件、文件夹或网址。效果类似于在Windows\"运行“对话框中执行命令。\ne查看帮助\n√常规\n路径或命令\n\"https://baidu.com\"\nv\n要运行的命令或打开的文件路径、网址、URI等。\n参数(可选)\nV\n程序参数\n以管理员身份运行\n否 false\nV\n以管理员身份运行软件或命令。\n如果程序已运行则尝\n0\n否 false\nV\n试激活窗口\n如果程序已经在运行，则尝试激活其窗口。\n激活窗口快捷键\n國園\nV\n对于支持快捷键激活窗口的软件，设置该快捷键。支持”模拟按键B”语法。\n备用路径\n文件在多个电脑上路径不同时，使用备用路径填写其他电脑上的文件路径。\n失败后停止\n失败后是否停止动作\n√高级\n工作目录\n1\nv\n可输入0或留空(不设置,由windows默认)、1(软件所在目录)、具体的工作目录路径。\n窗口风格\n普通(Normal)0\n设置期望的窗口风格，是否有效依赖于具体的软件。\n等待启动完成\n否false\nV\n等待进程完成后了初始化，可以接受用户输入。\n等待进程结束\n0\n否false\nV\n等待进程结束后再执行后续操作步骤。\n用户名\n000\nV\n使用指定的用户运行\n密码\nv\n用户名对应的密码\n控制台输出编码\nOEM\n控制台输出编码。如果输出遇到乱码，尝试修改此选项。\n环境变量\n7\n为应用程序设置特定的环境变量值。每行一个，格式”变量名=值”，如“CONFIG_FILE=d:\\configjson\"\n√输出到变量\n是否成功\n操作是否成功\nPID\n进程ID\n主窗口句柄\n进程的主窗口句柄\n主窗口标题\nV\n控制台输出\nV\n慎用！仅用于控制台程序，会自动等待进程结束。输出stdout，为\n空时输出stderr。\nstdout输出\nv\n慎用！捕获控制台程序的stdout输出，会自动等待进程结束\nstderr输出\n慎用！捕获控制台程序的stderr输出，会自动等待进程结束\n退出代码\n进程的ExitCode，会自动等待进程结束。\n错误消息\nV\n步骤执行出错时的消息\n√其它\n停用此步骤\n运行后延迟：\n0\n保存(S)\n取消",
+  "kind": "step-param",
+  "confidence": "high",
+  "cues": [
+    "保存(S)",
+    "编辑步骤",
+    "停用此步骤",
+    "运行后延迟",
+    "常规",
+    "高级",
+    "变量名",
+    "取消"
+  ]
+}

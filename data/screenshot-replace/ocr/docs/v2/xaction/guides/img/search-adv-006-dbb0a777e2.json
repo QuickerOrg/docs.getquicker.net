@@ -1,0 +1,11 @@
+{
+  "image": "docs/v2/xaction/guides/img/search-adv-006-dbb0a777e2.png",
+  "model": "D:\\source\\repos\\quicker\\quickerorg\\qk-ocr-lite\\models\\ppocrv6\\tiny",
+  "source": "ocr",
+  "generatedAt": "2026-08-12T09:33:41.425Z",
+  "blockCount": 35,
+  "fullText": "代码编辑器\n□\nX\nC四X∂∥∥\nQuickerParam\nT\na\n1\n$=\n变量测试值\nN\n\"大写：\"+{searchText}.ToUpper()+\"(text命令，点击复制，ctrl+点击粘贴)loperation=text&data=\" + {searchText}.ToUpper(）.欢怎ncode(）+ \"\\r\\n\"\n+ \"复制(copy命令)loperation=copy&data=\" + {searchText}.UrlEncode() + \"\\r\\n\"\nABC searchText\nA\n+ \"右键菜单测试(点击右键可以查看自定义菜单)loperation=copy&data=+{searchText}.欢nçode()+ \"&menu=\" + {menuData}.ncode(）+ \"\\r\\n\"\nUI\n+\n\"文件路径(点击石键可以查看菜单）loperation=run&data=\"+ @\"C:\\Windows\\system32\\notepad.exe\"+ \"&datatype=path\"+\"rin\"\n+ \"粘贴(paste命令)loperation=paste&data=\" + {searchText}.Urlknçode(）+ \"\\r\\n\"\n+\n\"运行(run命令，直接运行文字)loperation=run&data=\"+ {searchText)·欢ncode(）+ \"\\r\\n\"\nABC menuData\n0\n+\n\"搜索(run命令打开网址)loperation=run&data=\" +(\"https://baidu.com/s?wd=\"~+{searchText}.UrlEnçode(）).UrlEncode(）+ \"\\r\\n\"\n[fa:Light_Cog]设置|settings\n9\n+\n\"键入(sendkeys命令，模拟按键B语法)loperation=sendkeys&data=\" + {searchText}.urEncode(）+rin\"\n[fa:Light_Pen]铅笔|pen\n10\n+\n\"回调(cal1back命令，返回给动作处理参数）operation=cal1back&data=\"+ {searchText}.欢ncode(）+ \"\\r\\n\"\n[fa:Light_Plus]添ladd",
+  "kind": "unknown",
+  "confidence": "low",
+  "cues": []
+}

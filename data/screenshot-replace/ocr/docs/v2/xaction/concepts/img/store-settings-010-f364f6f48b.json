@@ -1,0 +1,14 @@
+{
+  "image": "docs/v2/xaction/concepts/img/store-settings-010-f364f6f48b.png",
+  "model": "D:\\source\\repos\\quicker\\quickerorg\\qk-ocr-lite\\models\\ppocrv6\\tiny",
+  "source": "ocr",
+  "generatedAt": "2026-08-12T09:33:52.477Z",
+  "blockCount": 12,
+  "fullText": "百正常翻译处理\n王获取选中的文本 =>{text})\n如果判断条件：$= String.IsNullorEmpty(text)\nòQuicker操作使用当前动作进行实时搜索\n停止(return) 默认:停止动作或从子程序返回(标记为出错：0)\n机器翻译/词典单厂商文字翻译=>{resultText}\n根据选项粘贴或仅复制\n如果/否则判断条件:{autoPaste)\n发送文本到窗口{resultText)\n否则\n自写入剪贴板自动(纯文本或图片）=>剪贴板\n结束（如果)",
+  "kind": "steps",
+  "confidence": "medium",
+  "cues": [
+    "否则",
+    "如果"
+  ]
+}

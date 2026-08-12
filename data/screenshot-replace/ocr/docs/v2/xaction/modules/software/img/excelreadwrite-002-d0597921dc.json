@@ -1,0 +1,16 @@
+{
+  "image": "docs/v2/xaction/modules/software/img/excelreadwrite-002-d0597921dc.png",
+  "model": "D:\\source\\repos\\quicker\\quickerorg\\qk-ocr-lite\\models\\ppocrv6\\tiny",
+  "source": "ocr",
+  "generatedAt": "2026-08-12T09:35:52.788Z",
+  "blockCount": 33,
+  "fullText": "Excel文件读写\n读取Excel文件内容或写入Excel文件\n0查看帮助\n常规\n操作类型\n打开Workbook\n文件路径\nABC rowFilePath 对某一行数据生成的目标路径\n要打开或写入的Excel文件路径\n失败后停止\n失败后是否停止动作\n√输出到变量\n是否成功\n操作是否成功\n工作簿对象\nworkbook 工作簿\n用于在后续步骤中继续操作工作簿。\n工作表个数\n工作簿中的工作表名列表。\n工作表名称列表\n工作簿中的工作表名列表。\n工作表对象\nsheet 工作表\n返回指定的工作表。加载文件时返回工作簿中的第一个工作表对象\n首行序号\n工作表首行序号。\n末行序号\n工作表有内容的最后一行序号。\n√其它\n步骤注释\n停用此步骤运行延迟:\n保存(S)\n取消",
+  "kind": "step-param",
+  "confidence": "high",
+  "cues": [
+    "保存(S)",
+    "停用此步骤",
+    "常规",
+    "取消"
+  ]
+}

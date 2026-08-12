@@ -1,0 +1,17 @@
+{
+  "image": "docs/v2/xaction/modules/system/img/getsysinfo-001-c4a17fdebc.png",
+  "model": "D:\\source\\repos\\quicker\\quickerorg\\qk-ocr-lite\\models\\ppocrv6\\tiny",
+  "source": "ocr",
+  "generatedAt": "2026-08-12T09:34:57.329Z",
+  "blockCount": 53,
+  "fullText": "获取系统或动作信息\nX\n返回Windows系统信息。\n0查看帮助\n<输出到变量\n机器名\n用户名\n当前登录到电脑的用户名\n用户域名\n当前用户的网络域名(DomainName)\n系统版本号\n是否为Win10或以上\n是否为Win11\n是否自动启动\n是否开机自动启动Quicker\n系统正常运行秒数\n可参考任务管理器中显示的正常运行时间。\nWindows是否锁定\n环境变量\n主屏分辨率\n是否联网\n本机局域网IP\nQuicker版本\n是否为专业版\n当前用户是否使用专业版软件。\n已设置自有百度OCR\n已经在设置中添加了自有百度OCR帐号。\n亲号\nQuicker启动秒数\nQuicker启动后运行的秒数\n动作ID\n当前运行的动作ID\n动作名称\n当前运行的动作名称\n动作库ID\n当前动作的动作库ID\n动作版本号\n当前安装的动作版本\n运行个数\n当前动作运行中的实例个数(包含此实例)\n是否调试运行\n是否正在调试运行动作\n触发方式\n动作的触发方式\n文本上下文参数\n传入动作的文本上下文参数\n图片上下文参数\n传入动作的图片上下文参数\n其它\n步骤注释\n停用此步骤 运行后延迟:\n保存(S)\n取消",
+  "kind": "step-param",
+  "confidence": "high",
+  "cues": [
+    "保存(S)",
+    "停用此步骤",
+    "运行后延迟",
+    "菜单项",
+    "取消"
+  ]
+}

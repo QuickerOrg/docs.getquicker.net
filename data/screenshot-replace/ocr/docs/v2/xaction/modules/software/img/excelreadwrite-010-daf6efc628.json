@@ -1,0 +1,16 @@
+{
+  "image": "docs/v2/xaction/modules/software/img/excelreadwrite-010-daf6efc628.png",
+  "model": "D:\\source\\repos\\quicker\\quickerorg\\qk-ocr-lite\\models\\ppocrv6\\tiny",
+  "source": "ocr",
+  "generatedAt": "2026-08-12T09:35:52.792Z",
+  "blockCount": 41,
+  "fullText": "Excel文件读写\nX\n读取Excel文件内容或写入Excel文件\ne查看帮助\n常规\n操作类型\n写入单元格\n工作表对象\nsheet\n需要操作或读写的工作表对象\n单元格地址\n类似于\"D5”这样的单元格位置名称。或在下方使用行序号和单元格序号指定 (两种二选一)\n行序号\n0\n00\n以0开始计算的序号\n列序号\n0\n000\n单元格在所在行里的序号，从0开始\n单元格类型\n●Numeric(数字或日期) Numeric\n设置单元格类型\n值\n$=DateTime.Now\n设置单元格的值\n数据格式\nyyyy年MM月dd日\n设置单元格的DataFormat\n链接\n可以为网址、邮件地址(mailto:who@domain.com)、工作表名称、文件路径\n失败后停止\n失败后是否停止动作\n输出到变量\n是否成功\n操作是否成功\n其它\n步骤注释\n停用此步骤运行延迟:\n保存(S)\n取消",
+  "kind": "step-param",
+  "confidence": "high",
+  "cues": [
+    "保存(S)",
+    "停用此步骤",
+    "常规",
+    "取消"
+  ]
+}

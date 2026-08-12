@@ -1,0 +1,15 @@
+{
+  "image": "docs/v2/xaction/modules/software/img/uiautomation-009-b59bea61b1.png",
+  "model": "D:\\source\\repos\\quicker\\quickerorg\\qk-ocr-lite\\models\\ppocrv6\\tiny",
+  "source": "ocr",
+  "generatedAt": "2026-08-12T09:35:52.805Z",
+  "blockCount": 35,
+  "fullText": "窗口界面控制\nX\n触发Windows窗口的菜单/按钮等控件。\n查看帮助\n参数\n操作类型个\n获取窗口控件信息\n操作类型。按下和抬起需要配对使用。\n窗口个\n--不使用变量-\nV\n要操作哪个窗口的控件。不填写=使用前台窗口；或窗口句柄数字。\n控件名个\n--不使用变量-\n特殊格式(S）：\n控件名，请确保唯一性。\n控件类型个组合框\nV\n可选。当有多个名称相同但类型不同的控件时区分。\n 失败后停止\n失败后是否停止动作\n输出\n是否成功→\n操作是否成功\n值→\n控件的值\n位置→\n控件坐标位置\n控件名称→\n控件类型→\n其他\n注释\n停用此步骤\n保存(S)\n取消",
+  "kind": "step-param",
+  "confidence": "high",
+  "cues": [
+    "保存(S)",
+    "停用此步骤",
+    "取消"
+  ]
+}

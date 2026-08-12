@@ -1,0 +1,17 @@
+{
+  "image": "docs/v2/xaction/modules/system/img/getwindowtitle-001-4d31c8bf24.png",
+  "model": "D:\\source\\repos\\quicker\\quickerorg\\qk-ocr-lite\\models\\ppocrv6\\tiny",
+  "source": "ocr",
+  "generatedAt": "2026-08-12T09:34:57.335Z",
+  "blockCount": 48,
+  "fullText": "获取窗口信息/查找窗口\nX\n获取指定窗口的标题等信息。\n0查看帮助\n√常规\n目标窗口\n前台窗口\n判断哪个窗口的信息\n窗口位置包含不可见边框(阴影区域)\n失败后停止\n失败后是否停止动作\n<输出到变量\n是否成功\n操作是否成功\n窗口标题\n窗口的标题文字\n类名\n窗口的 Class Name\n句柄\n窗口的句柄\n进程ID\n窗口所属进程的ID\n进程名\n进程名称\n程序路径\n获得的进程路径\n父窗口句柄\n根窗口句柄\n根所有者窗口句柄\n窗口位置\n文本值，格式为:Left,Top,Right,Bottom,Width,Height。\n窗口位置(不含尺寸)\n文本值，格式为:Left,Top,Right,Bottom。如:0,0,100,100\n窗口位置(词典值)\n词典值，属性为：:Left,Top,Right,Bottom,Width,Height\n是否置顶\n是否可见\n] isVisible\n显示状态\n123 showState\n1:普通，2:最小化，3:最大化。\n所有子窗口\n词典值，Key为窗口句柄，Value为窗口标题\n其它\n步骤注释\n停用此步骤 运行后延迟:\n保存(S)\n取消",
+  "kind": "step-param",
+  "confidence": "high",
+  "cues": [
+    "保存(S)",
+    "停用此步骤",
+    "运行后延迟",
+    "常规",
+    "取消"
+  ]
+}

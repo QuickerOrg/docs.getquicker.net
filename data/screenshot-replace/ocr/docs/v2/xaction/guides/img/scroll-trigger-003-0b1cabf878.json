@@ -1,0 +1,16 @@
+{
+  "image": "docs/v2/xaction/guides/img/scroll-trigger-003-0b1cabf878.png",
+  "model": "D:\\source\\repos\\quicker\\quickerorg\\qk-ocr-lite\\models\\ppocrv6\\tiny",
+  "source": "ocr",
+  "generatedAt": "2026-08-12T09:33:41.423Z",
+  "blockCount": 67,
+  "fullText": "缩放文字-- POWERPNT #2 1行 1列\n□\nX\n筛选.\nX\n主程序步骤:\n①教程\n口品子程序~分H回\n{x}变量定义\nJ怜了\n打开网址\n如果/否则判断条件:$={quicker_in_param}.StartsWith(\"_scrol_\")\n判断是否滚动\nABC text默认的文本变量X\n等待时间\n口\n如果/否则判断条件:$= {quicker_in_param}.StartsWith(\"_scroll_-\")\nX\n曰发送文本到窗口\n获取选中的文本\n向下滚动。参数值通常为_scroll_-120\nX\n的每个\n國模拟按键A(录入）LeftCtrl+LeftShift+[.]\n根据是否向下滚动，\nX\nA\n國模拟按键A (录入)\n否则\n执行不同的操作\n國模拟按键B（参数)\n自向上滚动。参数值通常为_scroll_120\nX\n6°如果\n6°如果/否则\n國模拟按键A (录入）LeftCtrl +LeftShift+[,1\nX\n鼠标输入\n结束(如果)\n日提示消息\n否则\n停止(return)\n拖放模块到这里\n外观\n选项\n89\n文本处理\n结束(如果)\n停止运行中的动作时忽略\n巴文本窗口\n更新时保留名称和图标\n写入剪贴板\n检查更新时忽略\nE0用户输入\n禁止同时运行多个实例\n日用户选择\n解析变量内容\n1运行或打开\n启用滚轮触发动作\n重复\n右键菜单定义：\n自注释\n组合成文本\n启用滚动触发\n最低版本要求：1.9.18\n保存(S)\n取消",
+  "kind": "step-param",
+  "confidence": "medium",
+  "cues": [
+    "保存(S)",
+    "否则",
+    "如果",
+    "取消"
+  ]
+}

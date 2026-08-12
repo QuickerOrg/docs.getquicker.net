@@ -1,0 +1,15 @@
+{
+  "image": "docs/v2/xaction/modules/compute/img/color-001-0c4aa52350.png",
+  "model": "D:\\source\\repos\\quicker\\quickerorg\\qk-ocr-lite\\models\\ppocrv6\\tiny",
+  "source": "ocr",
+  "generatedAt": "2026-08-12T09:34:57.274Z",
+  "blockCount": 57,
+  "fullText": "。颜色转换与计算\n转换颜色值及相关计算处理\n0查看帮助\n参数\n耀←\n编辑/选择颜色\n比较方式\n颜色←\n--不使用变量--\n#223344\n2\n颜色的文本值，格式支持：#223344,#FF223344(ARGB顺序)， Red rgb(200,200,200), rgba(200,200,200,0.5)\n输出文本格←\n十六进制RGB: #6496C8\n式\n输出的颜色文本值格式，用以转换颜色值的格式\n失败后停止\n失败后是否停止动作\n输出\n是否成功\n操作是否成功\n透明度值→\n123 A\nAlpha值(0-255)0表示透明\n红色值→\n123 R\nR值(0-255)\n绿色值→\n123G\nG值(0-255)\n蓝色值→\n123 B\nB值(0-255)\n色相\n123 H\nHue值 (0-360)\nHSL.S\n123 HSL_S\nHSL颜色空间的饱和度S\nHSLL\n123 HSL_L\nHSL颜色空间的亮度值\nHSV.S→\n123 HSV_S\nHSV颜色空间的饱和度S\nHSV.V\n→\n123 HSV_V\nHSV颜色空间的明度V\n文本值→\ne context 默认的文本变量\n输出颜色的文本值，格式请在输入参数中选择\n其他\n注释\n□停用此步骤\n保存(S)\n取消",
+  "kind": "step-param",
+  "confidence": "high",
+  "cues": [
+    "保存(S)",
+    "停用此步骤",
+    "取消"
+  ]
+}

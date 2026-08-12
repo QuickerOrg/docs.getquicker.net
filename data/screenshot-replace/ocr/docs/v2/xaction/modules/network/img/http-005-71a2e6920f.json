@@ -1,0 +1,14 @@
+{
+  "image": "docs/v2/xaction/modules/network/img/http-005-71a2e6920f.png",
+  "model": "D:\\source\\repos\\quicker\\quickerorg\\qk-ocr-lite\\models\\ppocrv6\\tiny",
+  "source": "ocr",
+  "generatedAt": "2026-08-12T09:35:41.516Z",
+  "blockCount": 62,
+  "fullText": " HTTP请求\n发送HTTP请求，并获取返回结果\n0查\n常规\n网址\nhttps://dashscope.aliyuncs.com/api/v1/services/aigc/text-generation/generation\n要打开的网页地址\n方法\nPOST\nHttp请求的类型\n请求头\n$$Authorization:Bearer {apiKey}\nx-Dashscope-SSE: enable\n7\nV\n发送的HttpHeader。每行一个header，格式为Name:Value\nCookie\n2\nV\n请求的cookie内容\n请求体类型\nJSON\nHttp请求体的内容\n请求体\n$${\n\"model\": \"qwen-turbo\",\n\"input\":{\n\"messages\":[\n\"role\": \"system\",\n\"content\": \"You are a helpful assistant.\"\n\"role\": \"user\"\nHttp请求BODY。格式要求详见模块帮助。\n内容类型\nV\n选填。上传内容的ContentType，适用于”单个文件或图片变量(二进制)\"或”纯文本\"请求体类型。\n结果类型\n文本\nHtp请求的结果类型\nUserAgent\nMozilla/5.0 (Windows NT 10.0; Win64; x64) ApplewebKit/537.36 (KHTML, like Gecko)\nChrome/112.0.0.0 Safari/537.36\nv\n超时时间\n100\n请求超时时间（秒数)\n禁止重定向\n是否禁止自动跳转\n显示进度条\n是否显示上传下载进度条\n忽略HTTPS证书验证\n強制使用代理\n即使系统设置中未启用代理，本步骤仍然使用代理访问。\n失败后停止\n失败后是否停止动作\n√高级\n启用SSE流式响应\n调用AI接口时使用，通过子程序处理接收到的流式响应内容\nSSE流式响应处理子\nsse\nV\n程序\n用于处理接收到的流式响应消息，每次收到调用一次，通过data输入变量接收内容。",
+  "kind": "step-param",
+  "confidence": "low",
+  "cues": [
+    "常规",
+    "高级"
+  ]
+}

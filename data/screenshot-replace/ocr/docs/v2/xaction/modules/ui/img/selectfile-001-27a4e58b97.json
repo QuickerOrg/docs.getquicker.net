@@ -1,0 +1,15 @@
+{
+  "image": "docs/v2/xaction/modules/ui/img/selectfile-001-27a4e58b97.png",
+  "model": "D:\\source\\repos\\quicker\\quickerorg\\qk-ocr-lite\\models\\ppocrv6\\tiny",
+  "source": "ocr",
+  "generatedAt": "2026-08-12T09:35:33.821Z",
+  "blockCount": 38,
+  "fullText": "选择文件\n0查看帮助\n参数\n操作类型\n保存文件\n打开文件：选择一个已存在的文件。保存文件:选择文件要保存的目标位置。\n文件类型筛\n--不使用变量-\n选器\n文本文件|*.txt|所有文件|*.*\n文件类型筛选器，格式为：类型1扩展名1类型2扩展名2。如:文本文件(.bxt)].xtC#文件序.s)所有文件*\n默认扩展名一\n-不使用变量-\n.txt\n默认的文件扩展名，应该是筛选器里的\n初始路径\n-不使用变量-\n初始文件夹路径\n初始文件名←\n-不使用变量-\n预选选择或设置的文件名\n对话框标题←\n--不使用变量-\n选择窗口的标题\n输出\n是否成功\n→\nisSuccess\n是否成功选择了路径。\n路径\n→\n context 默认的文本变量\n选择的文件路径。\n其他\n注释\n□停用此步骤\n保存(S)\n取消",
+  "kind": "step-param",
+  "confidence": "high",
+  "cues": [
+    "保存(S)",
+    "停用此步骤",
+    "取消"
+  ]
+}

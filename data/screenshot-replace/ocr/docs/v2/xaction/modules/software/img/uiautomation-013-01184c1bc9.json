@@ -1,0 +1,13 @@
+{
+  "image": "docs/v2/xaction/modules/software/img/uiautomation-013-01184c1bc9.png",
+  "model": "D:\\source\\repos\\quicker\\quickerorg\\qk-ocr-lite\\models\\ppocrv6\\tiny",
+  "source": "ocr",
+  "generatedAt": "2026-08-12T09:35:52.807Z",
+  "blockCount": 33,
+  "fullText": "Snippi\n品\n主程序步骤:\n窗口界面控制(laUI)\n触发Windows窗口的菜单/按钮等控件(通过FlaUI库实现)。\n常规\n操作类型\n触发窗口控件\n操作类型。按下和怡起需要配对使用。\n窗口句柄\n要操作哪个窗口的控件。不填写=使用前台窗口；或窗口句柄菱\n控件XPath或Name\n/Pane[1]/ComboBox[2]\n控件的XPath或Name。XPath以开始。\n口\n控件类型\n●*任意类型*0\n可选。当有多个名称相同但类型不同的控件时区分。\n动作\n设置值\n对控件执行的操作。\n值\n网页，全部-(*.htm;*.html)\n仅用于”设置值”操作。\n失败后停止\n文件名(N):\n测试12345 2023-06-3011_02_44.html\n失败后是否停止动作\n保存类型(T):网页，仅HTML (t.html;*.htm)\n输出到变量\n隐藏文件夹\n是否成功\n操作是",
+  "kind": "step-param",
+  "confidence": "low",
+  "cues": [
+    "常规"
+  ]
+}

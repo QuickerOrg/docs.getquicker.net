@@ -1,0 +1,13 @@
+{
+  "image": "docs/v2/xaction/modules/flow/img/if-010-40c9938ea4.png",
+  "model": "D:\\source\\repos\\quicker\\quickerorg\\qk-ocr-lite\\models\\ppocrv6\\tiny",
+  "source": "ocr",
+  "generatedAt": "2026-08-12T09:34:30.616Z",
+  "blockCount": 14,
+  "fullText": "▼C7重复重复1次，循环间隔:1\n如果判断条件：$= 条件} = 1\n一些步票\n→跳出循环(break)\n如果判断条件：$= 條件 = 2\n一些步源\n→跳出循环(break)\n不满足所有条件情况下的一些步署封\n使用「重复」模块：\n·重复次数填1\n·每个if分支放到「如果」模块中\n·每个「如果」模块并排放到「重复」模块中\n·不符合所有分支的 else 部分，放到所有「如果」模块后面\n●每个if分支达到条件，就使用「跳出循环」模块跳出重复",
+  "kind": "steps",
+  "confidence": "low",
+  "cues": [
+    "如果"
+  ]
+}

@@ -1,0 +1,19 @@
+{
+  "image": "docs/v2/xaction/modules/software/img/chromecontrol-018-0f2e94fc16.png",
+  "model": "D:\\source\\repos\\quicker\\quickerorg\\qk-ocr-lite\\models\\ppocrv6\\tiny",
+  "source": "ocr",
+  "generatedAt": "2026-08-12T09:35:52.770Z",
+  "blockCount": 60,
+  "fullText": "9\n浏览器控制-编辑步骤\nD\n与Chrome/Edge/Firefox等浏览器通信，控制网页或浏览器。\n0查看帮助\n常规\n操作类型\n获取元素信息\n操作类型\n标签页ld\n留空表示当前活动标签页\n选择器\n#content-well-in-this-article-list > li:nth-child(1) > a\nv\n要操作的元素选择器，请参考文档。\n元素信息类型\n某Property属性\n属性名\nhref\n设置或读取Attribute属性/Property属性时，置顶Attribute或Property的名称。\n运行脚本的框架\n●顶层框架0\nV\nall:所有框架，0：顶层框架，其它数字:框架id\n失败后停止\n失败后是否停止动作\n√高级\n修正选择器文本\n自动\n仅MV2版本扩展有效。\n超时时间(ms)\n3000\nv\n超时等待时间，毫秒数\n<输出到变量\n是否成功\nV\n操作是否成功\n第一个值\nABC output\nV\n获取的第一个元素的信息结果\n所有值的列表\nV\n所有元素信息结果的列表\n原始返回结果\nresult\nV\n从插件返回的原始jToken对象\n错误消息\nV\n步骤执行出错时的消息\n√其它\n步骤注释\n自动返回结果\n停用此步骤\n运行后延迟:\n0\n保存(S)\n取消",
+  "kind": "step-param",
+  "confidence": "high",
+  "cues": [
+    "保存(S)",
+    "编辑步骤",
+    "停用此步骤",
+    "运行后延迟",
+    "常规",
+    "高级",
+    "取消"
+  ]
+}

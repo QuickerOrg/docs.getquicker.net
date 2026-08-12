@@ -1,0 +1,19 @@
+{
+  "image": "docs/v2/xaction/modules/software/img/chromecontrol-030-12f2e1bdc0.png",
+  "model": "D:\\source\\repos\\quicker\\quickerorg\\qk-ocr-lite\\models\\ppocrv6\\tiny",
+  "source": "ocr",
+  "generatedAt": "2026-08-12T09:35:52.776Z",
+  "blockCount": 47,
+  "fullText": "9\n浏览器控制-编辑步骤\nD\nX\n与Chrome/Edge/Firefox等浏览器通信，控制网页或浏览器。\n0查看帮助\n√常规\n操作类型\n浏览器:运行后台命令(MV3版扩展)\n操作类型\n命令\n●查询标签页 api_tabs_query\nv\n请参考模块文档获取支持的命令列表。需MV3版浏览器扩展与Chrome135+版本。\n命令参数\nv\n后台脚本命令的参数。每个命令参数不同，详情请参考模块文档。\n返回值过滤器\nurl\n2\n用于从API返回的结果中提取单个属性。格式为属性名，多个时使用分号隔开。\n等待操作完成\n失败后停止\n失败后是否停止动作\n√高级\n超时时间(ms)\n3000\n超时等待时间，毫秒数\n√输出到变量\n是否成功\nV\n操作是否成功\n原始返回结果\n0\nresult\nV\n从插件返回的原始jToken对象\n错误消息\n步骤执行出错时的消息\n√其它\n步骤注释\n自动返回结果\n停用此步骤\n运行后延迟:\n0\n保存(S)\n取消",
+  "kind": "step-param",
+  "confidence": "high",
+  "cues": [
+    "保存(S)",
+    "编辑步骤",
+    "停用此步骤",
+    "运行后延迟",
+    "常规",
+    "高级",
+    "取消"
+  ]
+}

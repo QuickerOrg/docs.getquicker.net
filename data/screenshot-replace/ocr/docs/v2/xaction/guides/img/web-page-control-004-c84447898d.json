@@ -1,0 +1,17 @@
+{
+  "image": "docs/v2/xaction/guides/img/web-page-control-004-c84447898d.png",
+  "model": "D:\\source\\repos\\quicker\\quickerorg\\qk-ocr-lite\\models\\ppocrv6\\tiny",
+  "source": "ocr",
+  "generatedAt": "2026-08-12T09:33:41.435Z",
+  "blockCount": 33,
+  "fullText": "浏览器控制\n0\nX\n与Chrome/Edge/Firefox等浏览器通信，控制网页或浏览器。\n0查看帮助\n常规\n操作类型\n更新元素信息\n操作类型\n标签页ld\n留空表示当前活动标签页\n选择器\n#demo-john\n单个检查框或单选按钮的选择器\n要操作的元素选择器，请参考文档。\n元素信息类型\n某Property属性\n属性名\nchecked\n更新checked属性\n设置或读取Attribute属性/Property属性时，置顶Atribute或Property的名称。\n信\ntruel\n值为true或false\n要更新的元素信息值\n运行脚本的框架\n●全部框架al\nall:所有框架，0：顶层框架，其它数字：框架id\n失败后停止\n失败后是否停止动作\n停用此步骤 运行后延迟:\n保存(S)\n取消",
+  "kind": "step-param",
+  "confidence": "high",
+  "cues": [
+    "保存(S)",
+    "停用此步骤",
+    "运行后延迟",
+    "常规",
+    "取消"
+  ]
+}

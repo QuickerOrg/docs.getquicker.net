@@ -1,16 +1,22 @@
 #!/usr/bin/env node
 /**
- * OCR docs screenshots via qk-ocr-lite, then guess screenshot kind for
- * image → MDX component replacement.
+ * Classify docs screenshots for image → MDX replacement.
  *
+ * Sources (auto, preferred order):
+ *   1. Live OCR via qk-ocr-lite (ppocrv6 tiny) when env is available
+ *   2. Committed OCR cache under data/screenshot-replace/ocr/
+ *   3. vision-needed → agent Read() the image and --record the text
+ *
+ *   node tools/screenshot-replace/ocr-classify.mjs --probe
  *   node tools/screenshot-replace/ocr-classify.mjs <image.png> [...]
- *   node tools/screenshot-replace/ocr-classify.mjs --dir docs/v2/xaction/modules/basic/img --limit 20
- *   node tools/screenshot-replace/ocr-classify.mjs --from-md docs/v2/xaction/modules/basic/mouse.md
- *   node tools/screenshot-replace/ocr-classify.mjs --from-inventory tools/temp/xaction-inventory.json
+ *   node tools/screenshot-replace/ocr-classify.mjs --from-md docs/.../page.md
+ *   node tools/screenshot-replace/ocr-classify.mjs --cache-only --from-md ...
+ *   node tools/screenshot-replace/ocr-classify.mjs --record <image.png> --full-text "..."
  *
  * Env:
  *   QK_OCR_LITE_ROOT   default D:\source\repos\quicker\quickerorg\qk-ocr-lite
  *   QK_OCR_MODELS      override models dir (det.onnx + rec.onnx + dict)
+ *   QK_OCR_CACHE_DIR   override cache root (default data/screenshot-replace/ocr)
  */
 import {spawnSync} from 'node:child_process';
 import {
@@ -33,10 +39,12 @@ import {fileURLToPath} from 'node:url';
 const repoRoot = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..', '..');
 
 const DEFAULT_OCR_ROOT = 'D:\\source\\repos\\quicker\\quickerorg\\qk-ocr-lite';
+const DEFAULT_CACHE_DIR = path.join(repoRoot, 'data', 'screenshot-replace', 'ocr');
 const IMAGE_EXT = new Set(['.png', '.jpg', '.jpeg', '.bmp', '.webp']);
 
 /** @typedef {'step-param'|'var-def'|'steps'|'editor-chrome'|'runtime-dialog'|'runtime-toast'|'choice-list'|'user-input'|'context-menu'|'diagram'|'decorative'|'unknown'} Kind */
 /** @typedef {'replace'|'keep'|'review'} Action */
+/** @typedef {'ocr'|'cache'|'vision'|'record'} Source */
 
 /**
  * @typedef {{kind: Kind, weight: number, re: RegExp, cue?: string}} Rule
@@ -53,10 +61,11 @@ const RULES = [
   {kind: 'step-param', weight: 1, re: /(?<![一-龥])常规(?![一-龥])/, cue: '常规'},
   {kind: 'step-param', weight: 1, re: /(?<![一-龥])高级(?![一-龥])/, cue: '高级'},
 
-  {kind: 'var-def', weight: 4, re: /添加变量|编辑变量/, cue: '变量对话框'},
+  {kind: 'var-def', weight: 4, re: /添加\/编辑变量|添加变量|编辑变量/, cue: '变量对话框'},
   {kind: 'var-def', weight: 2, re: /变量名/, cue: '变量名'},
   {kind: 'var-def', weight: 2, re: /数据类型|变量类型/, cue: '类型'},
   {kind: 'var-def', weight: 2, re: /默认值/, cue: '默认值'},
+  {kind: 'var-def', weight: 2, re: /作为状态使用/, cue: '作为状态使用'},
 
   {kind: 'steps', weight: 3, re: /添加步骤/, cue: '添加步骤'},
   {kind: 'steps', weight: 2, re: /(?<![一-龥])否则(?![一-龥])/, cue: '否则'},
@@ -94,7 +103,6 @@ const KIND_MAP = {
   'var-def': {component: 'VariableDefPreview', action: 'replace'},
   steps: {component: 'StepProgramView', action: 'review'},
   'editor-chrome': {component: 'StepProgramView', action: 'review'},
-  // Planned components: keep action=review until implemented in MDXComponents
   'runtime-dialog': {component: 'MsgBoxPreview', action: 'replace'},
   'runtime-toast': {component: 'NotifyToastPreview', action: 'replace'},
   'choice-list': {component: 'ChoiceListPreview', action: 'replace'},
@@ -106,19 +114,28 @@ const KIND_MAP = {
 };
 
 function parseArgs(argv) {
-  /** @type {{images: string[], dirs: string[], fromMds: string[], inventories: string[], limit: number, json: boolean, out: string, text: boolean, models: string, ocrRoot: string, corpusOut: string, help: boolean}} */
+  /** @type {Record<string, any>} */
   const out = {
-    images: [],
-    dirs: [],
-    fromMds: [],
-    inventories: [],
+    images: /** @type {string[]} */ ([]),
+    dirs: /** @type {string[]} */ ([]),
+    fromMds: /** @type {string[]} */ ([]),
+    inventories: /** @type {string[]} */ ([]),
     limit: 0,
     json: true,
     out: '',
     text: false,
     models: process.env.QK_OCR_MODELS ?? '',
     ocrRoot: process.env.QK_OCR_LITE_ROOT ?? DEFAULT_OCR_ROOT,
+    cacheDir: process.env.QK_OCR_CACHE_DIR ?? DEFAULT_CACHE_DIR,
     corpusOut: '',
+    probe: false,
+    cacheOnly: false,
+    preferCache: false,
+    writeCache: true,
+    noWriteCache: false,
+    record: '',
+    fullText: '',
+    blockCount: 0,
     help: false,
   };
   for (let i = 0; i < argv.length; i += 1) {
@@ -130,16 +147,31 @@ function parseArgs(argv) {
     else if (a === '--out') out.out = argv[++i] ?? '';
     else if (a === '--models') out.models = argv[++i] ?? '';
     else if (a === '--ocr-root') out.ocrRoot = argv[++i] ?? '';
+    else if (a === '--cache-dir') out.cacheDir = argv[++i] ?? '';
     else if (a === '--corpus-out') out.corpusOut = argv[++i] ?? '';
+    else if (a === '--record') out.record = argv[++i] ?? '';
+    else if (a === '--full-text') out.fullText = argv[++i] ?? '';
+    else if (a === '--block-count') out.blockCount = Number(argv[++i] ?? 0) || 0;
+    else if (a === '--probe') out.probe = true;
+    else if (a === '--cache-only') out.cacheOnly = true;
+    else if (a === '--prefer-cache') out.preferCache = true;
+    else if (a === '--write-cache') out.writeCache = true;
+    else if (a === '--no-write-cache') out.noWriteCache = true;
     else if (a === '--text') out.text = true;
     else if (a === '--no-json') out.json = false;
     else if (a === '-h' || a === '--help') out.help = true;
     else if (!a.startsWith('-')) out.images.push(a);
   }
+  if (out.noWriteCache) out.writeCache = false;
   return out;
 }
 
-function resolveModels(ocrRoot, explicit) {
+/**
+ * @param {string} ocrRoot
+ * @param {string} explicit
+ * @returns {{ok: true, models: string} | {ok: false, reason: string}}
+ */
+function tryResolveModels(ocrRoot, explicit) {
   const candidates = [
     explicit,
     path.join(ocrRoot, 'models', 'ppocrv6', 'tiny'),
@@ -154,20 +186,125 @@ function resolveModels(ocrRoot, explicit) {
   ].filter(Boolean);
   for (const dir of candidates) {
     if (existsSync(path.join(dir, 'det.onnx')) && existsSync(path.join(dir, 'rec.onnx'))) {
-      return path.resolve(dir);
+      return {ok: true, models: path.resolve(dir)};
     }
   }
-  throw new Error(
-    `OCR models not found. Set QK_OCR_MODELS or put det.onnx under ${ocrRoot}\\models\\ppocrv6\\tiny`,
-  );
+  return {
+    ok: false,
+    reason: `OCR models not found under ${ocrRoot}\\models\\ppocrv6\\tiny (set QK_OCR_MODELS)`,
+  };
 }
 
-function resolveCliProject(ocrRoot) {
+/**
+ * @param {string} ocrRoot
+ * @returns {{ok: true, csproj: string} | {ok: false, reason: string}}
+ */
+function tryResolveCliProject(ocrRoot) {
   const csproj = path.join(ocrRoot, 'src', 'QuickerOcrLite.Cli', 'QuickerOcrLite.Cli.csproj');
   if (!existsSync(csproj)) {
-    throw new Error(`QuickerOcrLite.Cli not found at ${csproj}. Set QK_OCR_LITE_ROOT.`);
+    return {
+      ok: false,
+      reason: `QuickerOcrLite.Cli not found at ${csproj} (set QK_OCR_LITE_ROOT)`,
+    };
   }
-  return csproj;
+  return {ok: true, csproj};
+}
+
+/**
+ * Soft probe: never throws.
+ * @param {{ocrRoot: string, models: string}} args
+ */
+function probeOcrEnv(args) {
+  const ocrRoot = path.resolve(args.ocrRoot);
+  const cli = tryResolveCliProject(ocrRoot);
+  if (!cli.ok) {
+    return {ocrAvailable: false, ocrRoot, models: null, csproj: null, reason: cli.reason};
+  }
+  const models = tryResolveModels(ocrRoot, args.models);
+  if (!models.ok) {
+    return {
+      ocrAvailable: false,
+      ocrRoot,
+      models: null,
+      csproj: cli.csproj,
+      reason: models.reason,
+    };
+  }
+  const dotnet = spawnSync('dotnet', ['--version'], {
+    encoding: 'utf8',
+    windowsHide: true,
+  });
+  if (dotnet.status !== 0) {
+    return {
+      ocrAvailable: false,
+      ocrRoot,
+      models: models.models,
+      csproj: cli.csproj,
+      reason: 'dotnet CLI not available on PATH',
+    };
+  }
+  return {
+    ocrAvailable: true,
+    ocrRoot,
+    models: models.models,
+    csproj: cli.csproj,
+    reason: null,
+    dotnetVersion: (dotnet.stdout || '').trim(),
+  };
+}
+
+function toRepoRel(absPath) {
+  return path.relative(repoRoot, absPath).replaceAll('\\', '/');
+}
+
+function cachePathForImage(cacheDir, absImagePath) {
+  const rel = toRepoRel(absImagePath);
+  const withoutExt = rel.replace(/\.[^.]+$/, '');
+  return path.join(path.resolve(cacheDir), `${withoutExt}.json`);
+}
+
+/**
+ * @param {string} cacheFile
+ * @returns {{fullText: string, blockCount: number, model?: string, generatedAt?: string, sourceHint?: string}|null}
+ */
+function readCacheEntry(cacheFile) {
+  if (!existsSync(cacheFile)) return null;
+  try {
+    const raw = JSON.parse(readFileSync(cacheFile, 'utf8'));
+    if (typeof raw.fullText !== 'string') return null;
+    return {
+      fullText: raw.fullText,
+      blockCount:
+        typeof raw.blockCount === 'number'
+          ? raw.blockCount
+          : raw.fullText.split(/\n/).filter(Boolean).length,
+      model: raw.model,
+      generatedAt: raw.generatedAt,
+      sourceHint: raw.source,
+    };
+  } catch {
+    return null;
+  }
+}
+
+/**
+ * @param {string} cacheFile
+ * @param {{image: string, fullText: string, blockCount: number, model?: string|null, source: Source, kind?: string, confidence?: string, cues?: string[]}} entry
+ */
+function writeCacheEntry(cacheFile, entry) {
+  mkdirSync(path.dirname(cacheFile), {recursive: true});
+  const payload = {
+    image: entry.image,
+    model: entry.model ?? null,
+    source: entry.source,
+    generatedAt: new Date().toISOString(),
+    blockCount: entry.blockCount,
+    fullText: entry.fullText,
+    kind: entry.kind ?? null,
+    confidence: entry.confidence ?? null,
+    cues: entry.cues ?? [],
+  };
+  writeFileSync(cacheFile, `${JSON.stringify(payload, null, 2)}\n`, 'utf8');
 }
 
 function collectFromDir(dir) {
@@ -188,11 +325,18 @@ function collectFromMd(mdPath) {
   const base = path.dirname(abs);
   /** @type {string[]} */
   const files = [];
-  for (const m of text.matchAll(/!\[[^\]]*\]\((\.\/img\/[^)]+)\)/g)) {
-    const full = path.resolve(base, m[1]);
-    if (existsSync(full)) files.push(full);
+  const patterns = [
+    /!\[[^\]]*\]\((\.\/img\/[^)]+)\)/g,
+    /src=\{\s*require\(\s*['"](\.\/img\/[^'"]+)['"]\s*\)/g,
+    /src=["'](\.\/img\/[^"']+)["']/g,
+  ];
+  for (const re of patterns) {
+    for (const m of text.matchAll(re)) {
+      const full = path.resolve(base, m[1]);
+      if (existsSync(full)) files.push(full);
+    }
   }
-  return files;
+  return [...new Set(files)];
 }
 
 function collectFromInventory(inventoryPath) {
@@ -227,7 +371,13 @@ function classifyText(fullText, blockCount) {
   }
 
   const compact = fullText.replace(/\s+/g, '');
-  if (blockCount <= 4 && compact.length > 0 && compact.length < 80 && !scores['step-param'] && !scores['var-def']) {
+  if (
+    blockCount <= 4 &&
+    compact.length > 0 &&
+    compact.length < 80 &&
+    !scores['step-param'] &&
+    !scores['var-def']
+  ) {
     scores['runtime-toast'] = (scores['runtime-toast'] ?? 0) + 3;
     if (!cues.includes('短文案')) cues.push('短文案');
   }
@@ -245,7 +395,6 @@ function classifyText(fullText, blockCount) {
   let top = ranked[0]?.[1] ?? 0;
   const second = ranked[1]?.[1] ?? 0;
 
-  // Prefer choice-list over generic runtime-dialog when picker chrome is present
   if (
     (scores['choice-list'] ?? 0) >= 4 &&
     (scores['step-param'] ?? 0) < 3 &&
@@ -256,22 +405,16 @@ function classifyText(fullText, blockCount) {
     top = scores['choice-list'];
   }
 
-  // User-input window: 确认(S) + Enter tip, not a numbered choice list
-  if (
-    (scores['user-input'] ?? 0) >= 4 &&
-    (scores['step-param'] ?? 0) < 3
-  ) {
+  if ((scores['user-input'] ?? 0) >= 4 && (scores['step-param'] ?? 0) < 3) {
     kind = 'user-input';
     top = scores['user-input'];
   }
 
-  // Runtime dialog without step-param chrome
   if (kind === 'runtime-dialog' && (scores['step-param'] ?? 0) >= 3) {
     kind = 'step-param';
     top = scores['step-param'];
   }
 
-  // Context menu: many short items, no save chrome
   if (
     (scores['context-menu'] ?? 0) >= 3 &&
     (scores['step-param'] ?? 0) === 0 &&
@@ -295,7 +438,7 @@ function classifyText(fullText, blockCount) {
   /** @type {Action} */
   let action = map.action;
   if (kind === 'step-param' && confidence === 'low') action = 'review';
-  if (kind === 'steps' && confidence === 'high') action = 'review'; // still need wire data
+  if (kind === 'steps' && confidence === 'high') action = 'review';
 
   return {
     kind,
@@ -359,7 +502,6 @@ function runOcrBatch(csproj, models, images, corpusOut) {
   try {
     for (const img of images) {
       const dest = path.join(tmp, path.basename(img));
-      // Avoid collisions when same basename from different folders
       const unique = existsSync(dest)
         ? path.join(tmp, `${path.parse(img).name}__${hashSuffix(img)}${path.extname(img)}`)
         : dest;
@@ -410,7 +552,11 @@ function runOcrBatch(csproj, models, images, corpusOut) {
         filePath: path.resolve(orig),
         fileName: path.basename(orig),
         fullText: c.Text ?? c.Result?.FullText ?? '',
-        blockCount: Array.isArray(c.Result?.Blocks) ? c.Result.Blocks.length : (c.Text ? c.Text.split(/\n/).length : 0),
+        blockCount: Array.isArray(c.Result?.Blocks)
+          ? c.Result.Blocks.length
+          : c.Text
+            ? c.Text.split(/\n/).length
+            : 0,
         isSuccess: Boolean(c.IsSuccess),
         error: c.Error ?? null,
       };
@@ -435,24 +581,146 @@ function extractJsonObject(stdout) {
 
 function printHelp() {
   console.log(`Usage:
+  node tools/screenshot-replace/ocr-classify.mjs --probe
   node tools/screenshot-replace/ocr-classify.mjs <image...>
   node tools/screenshot-replace/ocr-classify.mjs --dir <img-dir> [--limit N]
   node tools/screenshot-replace/ocr-classify.mjs --from-md <page.md>
-  node tools/screenshot-replace/ocr-classify.mjs --from-inventory <inventory.json>
+  node tools/screenshot-replace/ocr-classify.mjs --cache-only --from-md <page.md>
+  node tools/screenshot-replace/ocr-classify.mjs --record <image.png> --full-text "OCR or vision text"
 
 Options:
+  --probe            only check whether live OCR env is available (JSON)
+  --cache-only       never call OCR; use committed cache or mark vision-needed
+  --prefer-cache     use cache when present even if OCR is available
+  --no-write-cache   do not update data/screenshot-replace/ocr/ after OCR/record
+  --cache-dir <dir>  cache root (default data/screenshot-replace/ocr)
+  --record <image>   write vision/OCR text into cache (agent fallback)
+  --full-text <text> required with --record (use \\n for newlines)
+  --block-count <n>  optional with --record
   --models <dir>     PP-OCRv6 model folder (det.onnx + rec.onnx)
   --ocr-root <dir>   qk-ocr-lite repo root
   --out <file.json>  write results JSON
-  --text             also print fullText lines to stderr
+  --text             include fullText in stdout JSON / stderr dump
   --no-json          table output only
 `);
+}
+
+/**
+ * @param {string} absPath
+ * @param {{fullText: string, blockCount: number, isSuccess?: boolean, error?: string|null}} row
+ * @param {Source} source
+ * @param {boolean} includeFullText
+ * @param {string|null} model
+ */
+function buildResult(absPath, row, source, includeFullText, model) {
+  const cls = classifyText(row.fullText, row.blockCount);
+  const rel = toRepoRel(absPath);
+  /** @type {Record<string, unknown>} */
+  const base = {
+    image: rel,
+    absPath,
+    source,
+    kind: cls.kind,
+    confidence: cls.confidence,
+    action: cls.action,
+    component: cls.component,
+    score: cls.score,
+    cues: cls.cues,
+    blockCount: row.blockCount,
+    isSuccess: row.isSuccess !== false,
+    error: row.error ?? null,
+    model: model ?? null,
+    cachePath: toRepoRel(cachePathForImage(DEFAULT_CACHE_DIR, absPath)),
+  };
+  if (includeFullText) {
+    base.fullText = row.fullText;
+  } else {
+    base.fullTextPreview = row.fullText.split(/\n/).slice(0, 12).join('\n');
+  }
+  if (source === 'vision') {
+    base.action = 'review';
+    base.kind = 'unknown';
+    base.confidence = 'low';
+    base.component = null;
+    base.agentHint =
+      'OCR env unavailable and no cache. Read the image with the Read tool, classify with the skill kind table, then: node tools/screenshot-replace/ocr-classify.mjs --record <image> --full-text "..."';
+  }
+  return {result: base, cls, fullText: row.fullText};
 }
 
 function main() {
   const args = parseArgs(process.argv.slice(2));
   if (args.help) {
     printHelp();
+    process.exit(0);
+  }
+
+  const cacheDir = path.resolve(args.cacheDir);
+  const probe = probeOcrEnv(args);
+
+  if (args.probe) {
+    const payload = {
+      ocrAvailable: probe.ocrAvailable,
+      ocrRoot: probe.ocrRoot,
+      models: probe.models,
+      csproj: probe.csproj,
+      reason: probe.reason,
+      cacheDir: toRepoRel(cacheDir),
+      dotnetVersion: probe.dotnetVersion ?? null,
+    };
+    console.log(JSON.stringify(payload, null, 2));
+    process.exit(probe.ocrAvailable ? 0 : 2);
+  }
+
+  // Agent / local: record vision text into cache
+  if (args.record) {
+    const abs = path.resolve(repoRoot, args.record);
+    if (!existsSync(abs)) {
+      console.error(`missing: ${abs}`);
+      process.exit(1);
+    }
+    const fullText = String(args.fullText || '')
+      .replace(/\\n/g, '\n')
+      .replace(/\\t/g, '\t');
+    if (!fullText.trim()) {
+      console.error('--record requires --full-text');
+      process.exit(1);
+    }
+    const blockCount =
+      args.blockCount > 0 ? args.blockCount : fullText.split(/\n/).filter((l) => l.trim()).length;
+    const built = buildResult(
+      abs,
+      {fullText, blockCount, isSuccess: true, error: null},
+      'record',
+      true,
+      'vision/agent',
+    );
+    if (args.writeCache) {
+      writeCacheEntry(cachePathForImage(cacheDir, abs), {
+        image: toRepoRel(abs),
+        fullText,
+        blockCount,
+        model: 'vision/agent',
+        source: 'record',
+        kind: String(built.cls.kind),
+        confidence: String(built.cls.confidence),
+        cues: built.cls.cues,
+      });
+      console.error(`wrote cache ${toRepoRel(cachePathForImage(cacheDir, abs))}`);
+    }
+    const payload = {
+      generatedAt: new Date().toISOString(),
+      ocrAvailable: probe.ocrAvailable,
+      sourceMode: 'record',
+      count: 1,
+      results: [built.result],
+    };
+    if (args.out) {
+      const outPath = path.resolve(repoRoot, args.out);
+      mkdirSync(path.dirname(outPath), {recursive: true});
+      writeFileSync(outPath, JSON.stringify(payload, null, 2), 'utf8');
+    }
+    if (args.json) console.log(JSON.stringify(payload, null, 2));
     process.exit(0);
   }
 
@@ -475,54 +743,134 @@ function main() {
     process.exit(1);
   }
 
-  const ocrRoot = path.resolve(args.ocrRoot);
-  const models = resolveModels(ocrRoot, args.models);
-  const csproj = resolveCliProject(ocrRoot);
-
-  console.error(`ocr-root=${ocrRoot}`);
-  console.error(`models=${models}`);
+  const useLiveOcr = probe.ocrAvailable && !args.cacheOnly;
+  console.error(
+    `ocr=${useLiveOcr ? 'live' : 'off'} (${probe.ocrAvailable ? 'available' : probe.reason})`,
+  );
+  console.error(`cacheDir=${toRepoRel(cacheDir)}`);
   console.error(`images=${images.length}`);
 
-  const ocrRows = runOcrBatch(csproj, models, images, args.corpusOut);
-  const results = ocrRows.map((row) => {
-    const cls = classifyText(row.fullText, row.blockCount);
-    const rel = path.relative(repoRoot, row.filePath).replaceAll('\\', '/');
-    return {
-      image: rel,
-      absPath: row.filePath,
-      kind: cls.kind,
-      confidence: cls.confidence,
-      action: cls.action,
-      component: cls.component,
-      score: cls.score,
-      cues: cls.cues,
-      blockCount: row.blockCount,
-      isSuccess: row.isSuccess,
-      error: row.error,
-      fullText: row.fullText,
-    };
-  });
+  /** @type {Map<string, {fullText: string, blockCount: number, isSuccess: boolean, error: string|null, source: Source}>} */
+  const rowsByPath = new Map();
 
-  if (args.text) {
-    for (const r of results) {
-      console.error(`---- ${r.image} [${r.kind}/${r.action}] ----`);
-      console.error(r.fullText);
+  // Prefer cache when asked
+  if (args.preferCache || !useLiveOcr) {
+    for (const img of images) {
+      const cached = readCacheEntry(cachePathForImage(cacheDir, img));
+      if (cached) {
+        rowsByPath.set(img, {
+          fullText: cached.fullText,
+          blockCount: cached.blockCount,
+          isSuccess: true,
+          error: null,
+          source: 'cache',
+        });
+      }
     }
   }
 
-  // Human table on stderr
-  console.error('image\tkind\taction\tconf\tcues');
-  for (const r of results) {
-    console.error(`${r.image}\t${r.kind}\t${r.action}\t${r.confidence}\t${r.cues.join(',')}`);
+  const needOcr = useLiveOcr
+    ? images.filter((img) => !(args.preferCache && rowsByPath.has(img)))
+    : [];
+
+  if (needOcr.length > 0) {
+    try {
+      const ocrRows = runOcrBatch(probe.csproj, probe.models, needOcr, args.corpusOut);
+      for (const row of ocrRows) {
+        rowsByPath.set(row.filePath, {
+          fullText: row.fullText,
+          blockCount: row.blockCount,
+          isSuccess: Boolean(row.isSuccess),
+          error: row.error ?? null,
+          source: 'ocr',
+        });
+        if (args.writeCache) {
+          const cls = classifyText(row.fullText, row.blockCount);
+          writeCacheEntry(cachePathForImage(cacheDir, row.filePath), {
+            image: toRepoRel(row.filePath),
+            fullText: row.fullText,
+            blockCount: row.blockCount,
+            model: probe.models,
+            source: 'ocr',
+            kind: cls.kind,
+            confidence: cls.confidence,
+            cues: cls.cues,
+          });
+        }
+      }
+    } catch (err) {
+      console.error(`live OCR failed: ${err instanceof Error ? err.message : String(err)}`);
+      // Fall through: use cache / vision for remaining
+    }
   }
+
+  // Fill remaining from cache, else vision-needed
+  for (const img of images) {
+    if (rowsByPath.has(img)) continue;
+    const cached = readCacheEntry(cachePathForImage(cacheDir, img));
+    if (cached) {
+      rowsByPath.set(img, {
+        fullText: cached.fullText,
+        blockCount: cached.blockCount,
+        isSuccess: true,
+        error: null,
+        source: 'cache',
+      });
+    } else {
+      rowsByPath.set(img, {
+        fullText: '',
+        blockCount: 0,
+        isSuccess: false,
+        error: 'vision-needed',
+        source: 'vision',
+      });
+    }
+  }
+
+  const results = [];
+  let visionNeeded = 0;
+  let fromCache = 0;
+  let fromOcr = 0;
+  for (const img of images) {
+    const row = rowsByPath.get(img);
+    if (!row) continue;
+    if (row.source === 'vision') visionNeeded += 1;
+    if (row.source === 'cache') fromCache += 1;
+    if (row.source === 'ocr') fromOcr += 1;
+    const built = buildResult(
+      img,
+      row,
+      row.source,
+      args.text,
+      row.source === 'ocr' ? probe.models : row.source === 'cache' ? 'cache' : null,
+    );
+    // Fix cachePath to actual cacheDir
+    built.result.cachePath = toRepoRel(cachePathForImage(cacheDir, img));
+    results.push(built.result);
+    if (args.text && row.fullText) {
+      console.error(`---- ${built.result.image} [${built.result.kind}/${built.result.action}/${row.source}] ----`);
+      console.error(row.fullText);
+    }
+  }
+
+  console.error('image\tkind\taction\tsource\tconf\tcues');
+  for (const r of results) {
+    console.error(
+      `${r.image}\t${r.kind}\t${r.action}\t${r.source}\t${r.confidence}\t${(r.cues || []).join(',')}`,
+    );
+  }
+  console.error(`summary ocr=${fromOcr} cache=${fromCache} vision-needed=${visionNeeded}`);
 
   const payload = {
     generatedAt: new Date().toISOString(),
-    models,
+    ocrAvailable: probe.ocrAvailable,
+    ocrReason: probe.reason,
+    models: probe.models,
+    cacheDir: toRepoRel(cacheDir),
+    sourceMode: useLiveOcr ? (args.preferCache ? 'ocr+prefer-cache' : 'ocr') : 'cache-or-vision',
     count: results.length,
-    results: results.map(({fullText, ...rest}) =>
-      args.text ? {fullText, ...rest} : {...rest, fullTextPreview: fullText.split(/\n/).slice(0, 12).join('\n')},
-    ),
+    visionNeeded,
+    results,
   };
 
   if (args.out) {
@@ -535,6 +883,9 @@ function main() {
   if (args.json) {
     console.log(JSON.stringify(payload, null, 2));
   }
+
+  // Non-zero when agent must visually inspect some images
+  if (visionNeeded > 0 && !useLiveOcr) process.exitCode = 3;
 }
 
 main();

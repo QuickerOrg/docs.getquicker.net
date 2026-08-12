@@ -1,0 +1,13 @@
+{
+  "image": "docs/v2/xaction/modules/ui/img/custompanel-004-672d17580d.png",
+  "model": "D:\\source\\repos\\quicker\\quickerorg\\qk-ocr-lite\\models\\ppocrv6\\tiny",
+  "source": "ocr",
+  "generatedAt": "2026-08-12T09:35:33.765Z",
+  "blockCount": 24,
+  "fullText": "三自定义操作窗\n0\nX\n自定义悬浮操作窗口，点击后直接执行操作，不隐藏。\n0查看帮助\n常规\n操作类型\n显示操作窗并等待关闭\n2级：按钮。增加|表示data为空，此时点击主按钮可直接展开子项菜单。\n操作项定义\nCAD命令\n【1]对象特性\n设计中心loperation=sp&spname=发送命令&data=ADCENTER\n1级：分组\n修改特性Ioperation=sp&spname-发送命令&data-PROPERTIES\n3级：子项\n二级菜单\n属性匹配loperation=sp&spname=发送命令&data=MATCHPROP\n文字样式loperation=sp&spname=发送命令&data=STYLE\n设置颜色loperation=sp&spname=发送命令&data=COLOR\n又一级子菜单\n图二操作 operation-sp&spnane 发送命&data LAYER\n线形Ioperation=sp&spname=发送命令&data-LINETYPE\n可以为Json/菜单文本格式/List<CommonOperationltem>对象，详情请参考文档",
+  "kind": "step-param",
+  "confidence": "low",
+  "cues": [
+    "常规"
+  ]
+}

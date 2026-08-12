@@ -1,0 +1,18 @@
+{
+  "image": "docs/v2/xaction/modules/ui/img/custompanel-001-bf8bac5196.png",
+  "model": "D:\\source\\repos\\quicker\\quickerorg\\qk-ocr-lite\\models\\ppocrv6\\tiny",
+  "source": "ocr",
+  "generatedAt": "2026-08-12T09:35:33.760Z",
+  "blockCount": 55,
+  "fullText": "三自定义操作窗\nX\n自定义悬浮操作窗口，点击后直接执行操作，不隐藏。\n0查看帮助\n常规\n操作类型\n显示操作窗\n操作项定义\n[fa:Light_Play]执行动作|operation=action&data=Hel10&action=自定义操作窗示例\n[fa:Light_Pen]子程序|operation=sp&data=Hello&spname=testsp&num=100\n[fa:Light_Penj记事本joperation=run&data=notepad\n[fa:Light_Penjbaidu|operation=open&data=http://baidu.com\n[fa:Light_PenjHelloIoperation=sendkeys&data=Hello\n可以为Json/菜单文本格式/IList<SimpleOperationltem>对象，详情请参考文档\n空隙\n5\n按钮之间的间隔\n背景颜色\n窗口背景颜色\n列数\n0\n按钮排列方式为固定列数时，指定列数。0表示自动。\n列宽\n-1\n固定列宽时使用。0表示自动列宽，-1表示不对齐宽度，各子项根据内容自动调整宽度。\n分组方式\n●标签页-左侧tab-left\n当包含子项时，第一级节点作为分组，第二级节点作为按钮。\n操作窗标题\n显示操作窗\n窗口标识\nhello_world\n如需单独的步骤关闭窗口，需使用标识查找窗口。\n失败后停止\n失败后是否停止动作\n√高级\n窗口位置\n屏幕中间CenterScreen\n在哪里显示选择窗口\n窗口尺寸/位置\n30%,30%\nC3\n设置选择窗口的最大尺寸，格式为：宽度,高度。支持像素数值或屏幕宽高百分比，详情请参考模块文档。\n“窗口位置”类型为“自定义位置\"时用于指定显示位置，格式为：left,top,right,bottom\n输出到变量\n是否成功\n操作是否成功\n窗口句柄\n进程的主窗口句柄\n其它\n步骤注释\n停用此步骤运行后延迟:\n1000\n保存(S)\n取消",
+  "kind": "step-param",
+  "confidence": "high",
+  "cues": [
+    "保存(S)",
+    "停用此步骤",
+    "运行后延迟",
+    "常规",
+    "高级",
+    "取消"
+  ]
+}

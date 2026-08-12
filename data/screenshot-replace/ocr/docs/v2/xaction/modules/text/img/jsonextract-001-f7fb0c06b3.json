@@ -1,0 +1,15 @@
+{
+  "image": "docs/v2/xaction/modules/text/img/jsonextract-001-f7fb0c06b3.png",
+  "model": "D:\\source\\repos\\quicker\\quickerorg\\qk-ocr-lite\\models\\ppocrv6\\tiny",
+  "source": "ocr",
+  "generatedAt": "2026-08-12T09:34:57.226Z",
+  "blockCount": 44,
+  "fullText": "提取JSON内容\n提取Json文本中的信息\n0查看帮助\n参数\n输入\nT\n-不使用变量-\n'stores':\n'Lambton\nQuay\nWitonsereet:\n要从中提取内容的Json文本或JToken对象\n提取路径0\nManufacturers\n2\n提取路径1\nManufacturers[*].Name\n2\n提取路径2\n全\n提取路径3\n7\n提取路径4\n输出\n值0\nlist\n提取到的内容，和提取路径对应\n值1\nnameList\n提取到的内容，和提取路径对应\n值2\n提取到的内容，和提取路径对应\n值3\n提取到的内容，和提取路径对应\n值4\n提取到的内容，和提取路径对应\n根对象\n rootToken\n整个输入内容解析后获得的Token对象。可用于后续使用。\n其他\n注释\n停用此步骤\n保存(S)\n取消",
+  "kind": "step-param",
+  "confidence": "high",
+  "cues": [
+    "保存(S)",
+    "停用此步骤",
+    "取消"
+  ]
+}

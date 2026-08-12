@@ -1,0 +1,18 @@
+{
+  "image": "docs/v2/xaction/modules/image/img/readqrcode-001-54a151a6ee.png",
+  "model": "D:\\source\\repos\\quicker\\quickerorg\\qk-ocr-lite\\models\\ppocrv6\\tiny",
+  "source": "ocr",
+  "generatedAt": "2026-08-12T09:35:28.021Z",
+  "blockCount": 34,
+  "fullText": "识别二维码-编辑步骤\n□\n识别图片中的二维码\n0查看帮助\n常规\n输入图片\n img\nv\n要识别二维码的图片\n本地识别失败后尝试在线识别服务\n在线服务拥有更强识别能力(频率限制2秒/次，仅专业版提供)。\n失败后停止\n失败后是否停止动作\n√输出到变量\n是否成功\n操作是否成功\n值\nABC code\nV\n识别出的二维码内容\n全部二维码值\n当一个图片含有多个二维码，且需要返回所有结果时使用。\n条码类型\nABc aaa\n识别出的条码类型，如\"EAN-13\"\n错误消息\n步骤执行出错时的消息\n√其它\n步骤注释\n停用此步骤\n运行后延迟:\n0\n保存(S)\n取消",
+  "kind": "step-param",
+  "confidence": "high",
+  "cues": [
+    "保存(S)",
+    "编辑步骤",
+    "停用此步骤",
+    "运行后延迟",
+    "常规",
+    "取消"
+  ]
+}

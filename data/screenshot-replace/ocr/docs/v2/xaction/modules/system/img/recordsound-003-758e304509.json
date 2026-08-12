@@ -1,0 +1,17 @@
+{
+  "image": "docs/v2/xaction/modules/system/img/recordsound-003-758e304509.png",
+  "model": "D:\\source\\repos\\quicker\\quickerorg\\qk-ocr-lite\\models\\ppocrv6\\tiny",
+  "source": "ocr",
+  "generatedAt": "2026-08-12T09:34:57.355Z",
+  "blockCount": 27,
+  "fullText": "Q录制声音/语音识别\n0\nX\n录制音频到文件或识别语音\n0查看帮助\n√常规\n操作类型\n录制正在播放的声音\n文件保存路径\n可选。可以为：1) 留空(自动保存到TEMP目录中)。2) 完整的文件路径。3) 保存目录(自动生成文件名)。\n静音停止秒数\n2\n检测到音量较低多长时间后自动停止录音，<1 表示不检测。\n失败后停止\n失败后是否停止动作\n输出到变量\n是否成功\n操作是否成功\n文件保存路径\nABC outputFilePath\n音频文件的完整路径。\n√其它\n步骤注释\n停用此步骤 运行后延迟：\n0\n保存(S)\n取消",
+  "kind": "step-param",
+  "confidence": "high",
+  "cues": [
+    "保存(S)",
+    "停用此步骤",
+    "运行后延迟",
+    "常规",
+    "取消"
+  ]
+}

@@ -1,0 +1,17 @@
+{
+  "image": "docs/v2/xaction/modules/text/img/charinfo-001-df6405de7e.png",
+  "model": "D:\\source\\repos\\quicker\\quickerorg\\qk-ocr-lite\\models\\ppocrv6\\tiny",
+  "source": "ocr",
+  "generatedAt": "2026-08-12T09:34:57.185Z",
+  "blockCount": 34,
+  "fullText": "A 获取字符信息\n0\nX\n获取字符信息\n0查看帮助\n常规\n字符\n曾\n要获取编码的字符，如果是多个字符，则取第一个。\n√输出到变量\nUnicode编码(数字)\n123 unicodeNum\n字符的Unicode编码数字\nUnicode编码(十六\nABC unicodeHex\n字符的Unicode编码数字的十六进制，如\"中”的Unicode编码十六进制为”4E2D\"\n进制)\n拼音首字母\nABc pinyinFirstChar\n字母的拼音首字母(仅第一个常用读音)\n拼音\nABc pinyin\n字母的拼音(多音字只输出第一个常用读音)\n拼音首字母(全部)\nABc pinyinFirstCharall\n字母的拼音首字母(多音字输出所有读音)\n拼音(全部)\nABc pinyinAll\n字母的拼音(多音字输出所有读音，空格分隔)\n其它\n步骤注释\n停用此步骤 运行后延迟:\n保存(S)\n取消",
+  "kind": "step-param",
+  "confidence": "high",
+  "cues": [
+    "保存(S)",
+    "停用此步骤",
+    "运行后延迟",
+    "常规",
+    "取消"
+  ]
+}

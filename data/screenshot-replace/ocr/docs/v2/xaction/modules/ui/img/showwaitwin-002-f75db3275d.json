@@ -1,0 +1,16 @@
+{
+  "image": "docs/v2/xaction/modules/ui/img/showwaitwin-002-f75db3275d.png",
+  "model": "D:\\source\\repos\\quicker\\quickerorg\\qk-ocr-lite\\models\\ppocrv6\\tiny",
+  "source": "ocr",
+  "generatedAt": "2026-08-12T09:35:33.828Z",
+  "blockCount": 34,
+  "fullText": "2)等待窗口\nx\n显示一个等待用户完成某个操作的提示窗口。\n0查看帮助\n参数\n撤作个\n显示窗口\n请选择操作类型\n窗口标题\n完成后继续\n提示文字←\n这里是一个循环，可以点击按钮提前中止\n提示文字内容\n默认按钮的\n--不使用变量\n好\n结束循环\n显示在默认按钮上的文字\n窗口位置←\n屏幕中下\n在哪里显示选择窗口\n进度条参数\n${count/100\n请以当前值/总数的格式传入(可使用插值方式）。比如：40/80\n附加操作按\n百停\n最\n每行定义一个按钮，格式为“文本”或“显示文本值”。显示在默认按钮的左侧。\n输出\n其他\n汪释\n□停用此步骤\n保存(S)\n取消",
+  "kind": "step-param",
+  "confidence": "high",
+  "cues": [
+    "保存(S)",
+    "停用此步骤",
+    "请选择",
+    "取消"
+  ]
+}

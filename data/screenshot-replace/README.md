@@ -9,7 +9,16 @@
 
 每条决策必须填写 `page`、`image`、`status`、`reason` 和 `updatedAt`；可补充 OCR `kind`、替代组件和证据来源。
 
+## OCR 跨环境
+
+分类脚本会自动探测本机 `qk-ocr-lite`；不可用时读 `ocr/` 缓存；仍无缓存则返回 `source: vision-needed`，由 agent 用 Read 看图后再 `--record`。
+
+详见 [ocr/README.md](./ocr/README.md)。
+
 ```powershell
+npm run docs:ocr-probe
+npm run docs:ocr-classify -- --from-md docs/v2/xaction/modules/files/statestorage.md
+npm run docs:ocr-cache -- --from-md docs/v2/xaction/modules/files/statestorage.md
 npm run docs:screenshot:tasks
 npm run docs:screenshot:check
 node tools/screenshot-replace/task-ledger.mjs --dir docs/v2/xaction/modules --status pending

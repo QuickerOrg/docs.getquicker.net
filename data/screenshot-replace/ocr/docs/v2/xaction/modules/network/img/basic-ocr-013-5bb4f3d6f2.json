@@ -1,0 +1,17 @@
+{
+  "image": "docs/v2/xaction/modules/network/img/basic-ocr-013-5bb4f3d6f2.png",
+  "model": "D:\\source\\repos\\quicker\\quickerorg\\qk-ocr-lite\\models\\ppocrv6\\tiny",
+  "source": "ocr",
+  "generatedAt": "2026-08-12T09:35:41.504Z",
+  "blockCount": 33,
+  "fullText": "[]基础OCR\nX\n获取图片中的文字\n0查看帮助\n常规\n接口/月引|擎\n百度自定义接口识别（自定义帐号)\nOCR接口或引|擎。离线弓引|擎安装方式请参考模块文档。\nApiKey\n请填写OCR帐号的ApiKey\nSecretKey\n请填写OCR帐号的SecretKey\n图片变量\n曰img\n从指定变量中加载图片\n接口名称或网址\n接口的完整网址，或 https://aip.baidubce.com/rest/2.0/ocr/v1/后面的部分\n附加参数\n请参考百度官方/Quicker服务接口说明。每行一个参数，使用option:value的格式。\n失败后停止\n失败后是否停止动作\n输出到变量\n是否成功\n操作是否成功\n原始结果\nAPI接口返回的完整内容\n原始结果J0bject对\n返回结果的JObject对象\n象\n√它\n停用此步骤运行后延迟:\n保存(S)\n取消",
+  "kind": "step-param",
+  "confidence": "high",
+  "cues": [
+    "保存(S)",
+    "停用此步骤",
+    "运行后延迟",
+    "常规",
+    "取消"
+  ]
+}

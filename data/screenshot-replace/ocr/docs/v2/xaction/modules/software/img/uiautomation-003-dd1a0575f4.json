@@ -1,0 +1,15 @@
+{
+  "image": "docs/v2/xaction/modules/software/img/uiautomation-003-dd1a0575f4.png",
+  "model": "D:\\source\\repos\\quicker\\quickerorg\\qk-ocr-lite\\models\\ppocrv6\\tiny",
+  "source": "ocr",
+  "generatedAt": "2026-08-12T09:35:52.802Z",
+  "blockCount": 29,
+  "fullText": "窗口界面控制\nX\n触发Windows窗口的菜单/按钮等控件。\n查看帮助\n参数\n操作类型个触发窗口菜单\n操作类型。按下和抬起需要配对使用。\n窗口个\n--不使用变量-\nV\n要操作哪个窗口的控件。不填写=使用前台窗口；或窗口句柄数字。\n菜单路径个\n--不使用变量\nV\n视图(V)\n详情(D)\n菜单的展开路径。每行写一个级别的菜单名（需完全匹配)\n展开延时个200\n等待下级菜单展开的时间(ms)\n 失败后停止\n失败后是否停止动作\n输出\n是否成功→\n操作是否成功\n其他\n注释\n停用此步骤\n保存(S)\n取消",
+  "kind": "step-param",
+  "confidence": "high",
+  "cues": [
+    "保存(S)",
+    "停用此步骤",
+    "取消"
+  ]
+}

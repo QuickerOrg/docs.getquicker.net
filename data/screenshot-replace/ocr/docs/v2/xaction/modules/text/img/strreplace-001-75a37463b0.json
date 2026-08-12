@@ -1,0 +1,15 @@
+{
+  "image": "docs/v2/xaction/modules/text/img/strreplace-001-75a37463b0.png",
+  "model": "D:\\source\\repos\\quicker\\quickerorg\\qk-ocr-lite\\models\\ppocrv6\\tiny",
+  "source": "ocr",
+  "generatedAt": "2026-08-12T09:34:57.248Z",
+  "blockCount": 68,
+  "fullText": "替换文本\nX\n替换文本\nX\n替换文本中的指定内容\n查看帮助\n替换文本中的指定内容\n0查看帮助\n参数\n参数\n操作类型个普通（替换一种内容)\n操作类型个批量（替换多种内容)\n输入个\n--不使用变量\n输入\n--不使用变量\naaa\naaa\nbbb\nbbb\ncCC\nccc\n要提取内容的文本\n要提取内容的文本\n查找内容个\n--不使用变量\n查找和替换个\n--不使用变量\na\n内容\na|A\nbIB\nIc\n要替换的内容\n每行一对查找和替换内容，中间使用分隔。例如将a替换成A，写作:a|A\n替换为个\n--不使用变量\n转义\"查找内容”\n替换“查找内容\"中的转义字符(r,\\n,\\t)\nA\nD\n转义“替换为\"\n替换“替换为\"中的转义字符(∧r,\\n,\\t)\n使用正则替换\n替换成的内容\n□正则选项：忽略大小写\n转义“查找内容\"\n替换\"查找内容”中的转义字符(r,\\n,\\t)\n正则选项：单行\n转义“替换为”\n□正则选项：多行\n替换“替换为“中的转义字符(r,\\n,\\t)\n使用正则替换\n输出\n正则选项：忽略大小写\n正则选项：单行\n结果→Ccontext 默认的文本变量\n替换后的文本\n□正则选项：多行\n其他\n输出\n注释\n结果→C context 默认的文本变量\n替换后的文本\n停用此步骤\n其他\n保存(S)\n取消",
+  "kind": "step-param",
+  "confidence": "high",
+  "cues": [
+    "保存(S)",
+    "停用此步骤",
+    "取消"
+  ]
+}

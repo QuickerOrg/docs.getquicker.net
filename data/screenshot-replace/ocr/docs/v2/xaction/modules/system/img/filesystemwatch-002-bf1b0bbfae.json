@@ -1,0 +1,16 @@
+{
+  "image": "docs/v2/xaction/modules/system/img/filesystemwatch-002-bf1b0bbfae.png",
+  "model": "D:\\source\\repos\\quicker\\quickerorg\\qk-ocr-lite\\models\\ppocrv6\\tiny",
+  "source": "ocr",
+  "generatedAt": "2026-08-12T09:34:57.320Z",
+  "blockCount": 37,
+  "fullText": "文件系统监控\nX\n监控文件创建/变更/删除等事件。\n0查看帮助\n√常规\n操作类型\n持续监控，发生后调用子程序\n时间数据来源\n文件夹路径\nABC path\n要监控的文件夹路径\n包含子文件夹\n文件筛选\n筛选要监控的文件。可指定文件名(如foo.txt)，或使用通配符(如*.txt)\n通知筛选\n可选，可选值请参考文档。留空表示默认设置(LastWrite,FileName,DirectoryName)。\n[创建]处理子程序\nOnCreated\n文件或文件创建时调用的子程序\n[变更]处理子程序\nOnchanged\n文件或文件夹变更时调用的子程序\n[删除]处理子程序\nOnDeleted\n文件或文件被删除时调用的子程序\n[重命名]处理子程序\nOnRenamed\n文件或文件重命名时调用的子程序\n输出到变量\n是否成功\n isSuccess\n操作是否成功\n其它\n步骤注释\n停用此步骤 运行延迟:\n保存(S)\n取消",
+  "kind": "step-param",
+  "confidence": "high",
+  "cues": [
+    "保存(S)",
+    "停用此步骤",
+    "常规",
+    "取消"
+  ]
+}

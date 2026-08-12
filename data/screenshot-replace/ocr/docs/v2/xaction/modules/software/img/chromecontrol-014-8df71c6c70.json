@@ -1,0 +1,19 @@
+{
+  "image": "docs/v2/xaction/modules/software/img/chromecontrol-014-8df71c6c70.png",
+  "model": "D:\\source\\repos\\quicker\\quickerorg\\qk-ocr-lite\\models\\ppocrv6\\tiny",
+  "source": "ocr",
+  "generatedAt": "2026-08-12T09:35:52.769Z",
+  "blockCount": 71,
+  "fullText": "9浏览器控制-编辑步骤\nX\n与Chrome/Edge/Firefox等浏览器通信，控制网页或浏览器。\n0查看帮助\n常规\n操作类型\n获得标签页信息\n操作类型\n标签页ld\nV\n留空表示当前活动标签页\nv\n失败后停止\n失败后是否停止动作\n√高级\n超时时间(ms)\n3000\n7\n超时等待时间，毫秒数\n√输出到变量\n是否成功\nV\n操作是否成功\n标签页ID\n123 tabld\nV\n网页所在标签页ID\n窗口ID\n123 windowld\nV\n网页所在窗口的ID\n分组ID\n123 groupld\nV\n标签页所属分组ID\n网址\nABC url\nV\n标签页当前网址\n网页标题\nABCtext 默认的文本变量\nv\n标签页网页标题\nFavicon图标网址\nABC favicon\n标签页网页图标网址\n浏览器\nABC browser\nV\n当前访问的浏览器\n插件版本\nABc extVersion\nV\n浏览器插件版本号\nManifest版本\nABc manifestVersion\n浏览器插件的Manifest版本号\n原始返回结果\nABc rawResponse\nV\n从插件返回的原始jToken对象\n错误消息\nV\n步骤执行出错时的消息\n√其它\n步骤注释\n停用此步骤\n运行后延迟:\n0\n保存(S)\n取消",
+  "kind": "step-param",
+  "confidence": "high",
+  "cues": [
+    "保存(S)",
+    "编辑步骤",
+    "停用此步骤",
+    "运行后延迟",
+    "常规",
+    "高级",
+    "取消"
+  ]
+}

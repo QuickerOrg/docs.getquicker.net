@@ -1,0 +1,13 @@
+{
+  "image": "docs/v2/xaction/guides/img/web-page-control-006-e68da8533f.png",
+  "model": "D:\\source\\repos\\quicker\\quickerorg\\qk-ocr-lite\\models\\ppocrv6\\tiny",
+  "source": "ocr",
+  "generatedAt": "2026-08-12T09:33:41.437Z",
+  "blockCount": 29,
+  "fullText": "浏览器控制\n0\nX\n与Chrome/Edge/Firefox等浏览器通信，控制网页或浏览器。\n0查看帮助\n√常规\n操作类型\n更新元素信息\n操作类型\n标签页ld\n留空表示当前活动标签页\n选择器\n#VPcontent > div > div > div.content > main > div > div > div:nth-child(52) > select\n要操作的元素选择器，请参考文档。\n元素信息类型\n数组值\n选择数组值类型\n属性名\n设置或读取Atribute属性/Property属性时，置顶Atribute或Property的名称。\n值\n方式1：每行一个值；\n方式2：使用JSON数组，如：\n要更新的元素信息值\n[\"A'\"B”]，注意要使用双引号。\n运行脚本的框架\n全部框架al\nall所有框架，0：顶层框架，其它数字：框架id\n失败后停止\n失败后是否停止动作",
+  "kind": "step-param",
+  "confidence": "low",
+  "cues": [
+    "常规"
+  ]
+}

@@ -1,0 +1,17 @@
+{
+  "image": "docs/v2/xaction/modules/network/img/httpserver-001-cf67b0326e.png",
+  "model": "D:\\source\\repos\\quicker\\quickerorg\\qk-ocr-lite\\models\\ppocrv6\\tiny",
+  "source": "ocr",
+  "generatedAt": "2026-08-12T09:35:41.516Z",
+  "blockCount": 49,
+  "fullText": "曰HTTP服务器\nX\n创建临时的本地HTTP服务器，从而可以从移动端或其它设备访问。\n0查看帮助\n√常规\n操作类型\n创建文件服务器\n端口号\n810\n000\n服务端口号。值为0时自动生成端口号。\n启用HTTPS\n否\n0\n文件夹路径\nABC path\n服务的文件夹完整路径。不支持磁盘根目录。\n默认文档\n可选，如index.html。\n基础验证密码\nBasic验证的密码，账号固定为quicker\n服务ID\ndefault\n通过服务ID启动或关闭服务\n闲置自动关闭\n0\n可选。一定时间(秒)没有请求后自动关闭服务。\n失败后停止\n失败后是否停止动作\n高级\nHEAD插入代码\n000\n向目录HTML文档的Head中插入代码，可用于自定义风格。\nBODY插入代码\n向目录HTML文档的BODY中插入代码，可用于自定义脚本。\n输出到变量\n是否成功\n操作是否成功\n服务地址\nABC urlWithoutAccount 不带\n服务网址\n带账号的地址\nABc urlWithAccount 带有账\n带有账号密码的地址。可用于扫码后自动登录。\n其它\n步骤注释\n停用此步骤 运行延迟:\n保存(S)\n取消",
+  "kind": "step-param",
+  "confidence": "high",
+  "cues": [
+    "保存(S)",
+    "停用此步骤",
+    "常规",
+    "高级",
+    "取消"
+  ]
+}

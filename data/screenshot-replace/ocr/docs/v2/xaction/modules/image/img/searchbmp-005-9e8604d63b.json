@@ -1,0 +1,17 @@
+{
+  "image": "docs/v2/xaction/modules/image/img/searchbmp-005-9e8604d63b.png",
+  "model": "D:\\source\\repos\\quicker\\quickerorg\\qk-ocr-lite\\models\\ppocrv6\\tiny",
+  "source": "ocr",
+  "generatedAt": "2026-08-12T09:35:28.035Z",
+  "blockCount": 43,
+  "fullText": "屏幕找图/找色/找字\nX\n在屏幕上查找图片里的内容出现的位置\n0查看帮助\n√常规\n类型\n查找颜色\n操作类型\n颜色\n#352559\n要查找的颜色，如#FF0000\n查找范围\n所有屏幕\n位图查找范围\n查找坐标范围\n可选。当”查找范围“为”坐标范围\"时有效，格式为：left,top,right,bottom\n偏移\n0\n定位点水平坐标偏移量 (正值向右)\nY偏移\n0\n7\n定位点垂直坐标偏移量 (正值向下)\n颜色容差\n0\n2\n匹配像素时允许每个颜色通道的偏差值0-100，0表示精确匹配，速度最快。\n重试次数\n1\n未找到位图时的重试次数。每次重试间隔300ms。\n失败后中止动作\n获取位置失败后，是否停止后续动作的执行。\n输出到变量\n是否成功\nisSuccess\n第一个匹配点\nABc position\n第一个匹配点坐标，格式为：x坐标,y坐标\n其它\n步骤注释\n停用此步骤 运行后延迟:\n保存(S)\n取消",
+  "kind": "step-param",
+  "confidence": "high",
+  "cues": [
+    "保存(S)",
+    "停用此步骤",
+    "运行后延迟",
+    "常规",
+    "取消"
+  ]
+}

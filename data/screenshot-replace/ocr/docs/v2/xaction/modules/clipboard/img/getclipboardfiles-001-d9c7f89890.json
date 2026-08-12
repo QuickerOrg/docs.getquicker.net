@@ -1,0 +1,15 @@
+{
+  "image": "docs/v2/xaction/modules/clipboard/img/getclipboardfiles-001-d9c7f89890.png",
+  "model": "D:\\source\\repos\\quicker\\quickerorg\\qk-ocr-lite\\models\\ppocrv6\\tiny",
+  "source": "ocr",
+  "generatedAt": "2026-08-12T09:35:20.228Z",
+  "blockCount": 15,
+  "fullText": " 获取剪贴板文件列表\n获取剪贴板中复制的文件(或文件夹)的路径列表\n参数\n失败后中止动作\n获取选中的文本失败后，是否停止后续动作的执行。\n输出\n文件列表→\n从剪贴板获取的文件路径列表\n是否成功\n是否成功获得文件列表\n其他\n注释\n停用此步骤\n保存(S)\n取消",
+  "kind": "step-param",
+  "confidence": "high",
+  "cues": [
+    "保存(S)",
+    "停用此步骤",
+    "取消"
+  ]
+}

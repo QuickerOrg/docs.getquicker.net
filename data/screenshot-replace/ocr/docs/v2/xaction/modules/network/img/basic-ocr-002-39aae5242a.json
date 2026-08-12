@@ -1,0 +1,17 @@
+{
+  "image": "docs/v2/xaction/modules/network/img/basic-ocr-002-39aae5242a.png",
+  "model": "D:\\source\\repos\\quicker\\quickerorg\\qk-ocr-lite\\models\\ppocrv6\\tiny",
+  "source": "ocr",
+  "generatedAt": "2026-08-12T09:35:41.495Z",
+  "blockCount": 41,
+  "fullText": "[基础OCR\nX\n获取图片中的文字\n0查看帮助\n√常规\n接口/引擎\nQuicker OCR引|擎\nOCR接口或|擎。离线|擎安装方式请参考模块文档。\n图片变量\n团 img\n从指定变量中加载图片\n转换标点符号\n●不转换no\n合并文本时，是否转换标点符号\n合并段落\n●不合并no\n是否智能合并段落。\n语言\n●中英混合 CHN_ENG\n待识别内容的语言。表格识别仅支持中英混合和英文。\n离线模式\n自动\n是否使用离线引|擎。自动：安装离线引擎时使用离线，否则使用在线。\n失败后停止\n失败后是否停止动作\n<输出到变量\n是否成功\nV\n操作是否成功\n合并后结果\nABC text 默认的文本变量\n合并在一起的的文本内容\n行列表\nOCR识别结果，列表格式，每行一项。\n原始结果\nAPI接口返回的完整内容\n其它\n步骤注释\n停用此步骤运行后延迟:\n保存(S)\n取消",
+  "kind": "step-param",
+  "confidence": "high",
+  "cues": [
+    "保存(S)",
+    "停用此步骤",
+    "运行后延迟",
+    "常规",
+    "取消"
+  ]
+}

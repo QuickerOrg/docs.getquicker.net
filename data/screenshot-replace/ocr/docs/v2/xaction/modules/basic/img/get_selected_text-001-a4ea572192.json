@@ -1,0 +1,17 @@
+{
+  "image": "docs/v2/xaction/modules/basic/img/get_selected_text-001-a4ea572192.png",
+  "model": "D:\\source\\repos\\quicker\\quickerorg\\qk-ocr-lite\\models\\ppocrv6\\tiny",
+  "source": "ocr",
+  "generatedAt": "2026-08-12T09:34:20.745Z",
+  "blockCount": 38,
+  "fullText": "王获取选中的文本\n0\nX\n获取选中的文字\n0查看帮助\n常规\n文本数据格式\n纯文本(默认)\n需要读取的剪贴板文本内容格式。通常请使用Unicode纯文本格式。\n等待剪贴板时间\n250\n模拟复制键后，等待剪贴板变化的最长时间毫秒数。\n重试次数\n【已过时，仅为兼容性保留】失败后重试的次数。\n去除前后的空白\n去除内容前后的空白(包括空行）。\n尝试不通过剪贴板的方式获取\n通过UIAutomation方式获取(某些情况可能出现无法完整获取文字、失去换行信息等问题)\n如果为动作传递了参数，使用参数值作为获取的结果\n没有传递参数时仍尝试获取选中的文本。\n失败后中止动作\n获取选中的文本失败后，是否停止后续动作的执行。\n输出到变量\n是否成功\n是否成功获取了文本\n内容\nABC content\n将获得的文本写入到变量\nURL编码的内容\n对选中的内容进行URL编码处理后的结果，通常用于拼接网址。\n来源网址\n从网页中复制内容时，可能会携带网址信息。\n√其它\n步骤注释\n停用此步骤 运行后延迟:\n0\n保存(S)\n取消",
+  "kind": "step-param",
+  "confidence": "high",
+  "cues": [
+    "保存(S)",
+    "停用此步骤",
+    "运行后延迟",
+    "常规",
+    "取消"
+  ]
+}

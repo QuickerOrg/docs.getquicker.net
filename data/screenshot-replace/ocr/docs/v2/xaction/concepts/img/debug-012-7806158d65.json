@@ -1,0 +1,13 @@
+{
+  "image": "docs/v2/xaction/concepts/img/debug-012-7806158d65.png",
+  "model": "D:\\source\\repos\\quicker\\quickerorg\\qk-ocr-lite\\models\\ppocrv6\\tiny",
+  "source": "ocr",
+  "generatedAt": "2026-08-12T09:33:52.457Z",
+  "blockCount": 16,
+  "fullText": "215340,307 开始执行动作：百度搜索\n215340,307 获取选中的文本\n215340,317获取剪贴板文本\n[in] 失败后中止动作 False\n[in] 文本数据格式 UnicodeText\n[out] 结果内容=>剪贴板文本 Quicker教程\n[out] 是否成功=>剪贴板判断 True\n215340,318如果如果有选中文字则执行\n[in] 如果 True\n215340,318执行True分支,共1步骤\n215340,318打开网址\n[in] 网址 https://www.baidu.com/s?wd=Quicker教程\nJin] 浏览器 default\n实线表示步骤，黄色表示鼠标位置所在的步骤\n虚线表示一组步骤(如步骤组、如果模块的一个分支等)\n215340,345动作结束",
+  "kind": "steps",
+  "confidence": "low",
+  "cues": [
+    "如果"
+  ]
+}

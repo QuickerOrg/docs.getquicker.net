@@ -1,0 +1,18 @@
+{
+  "image": "docs/v2/xaction/modules/flow/img/runaction-005-216080f282.png",
+  "model": "D:\\source\\repos\\quicker\\quickerorg\\qk-ocr-lite\\models\\ppocrv6\\tiny",
+  "source": "ocr",
+  "generatedAt": "2026-08-12T09:34:30.625Z",
+  "blockCount": 19,
+  "fullText": "3运行或停止动作-编辑步骤\n0\n执行指定的其他动作\n0查看帮助\n常规\n运行当前动作(注意避免产生循环或递归)\n操作类型\n命令参数\n传递给目标动作的参数。存储在该动作的quicker_in_param变量中。\n等待运行结束\n是否等待此动作乍运行结束再执行后续动作(如需获取目标动作的输出，需选中此项)\n调试模式运行\n是否以调试模式运行动作\n失败后停止\n如果未找到目标动作，是否停止当前动作\n停用此步骤\n运行后延迟:0\n保存(S)\n取消",
+  "kind": "step-param",
+  "confidence": "high",
+  "cues": [
+    "保存(S)",
+    "编辑步骤",
+    "停用此步骤",
+    "运行后延迟",
+    "常规",
+    "取消"
+  ]
+}

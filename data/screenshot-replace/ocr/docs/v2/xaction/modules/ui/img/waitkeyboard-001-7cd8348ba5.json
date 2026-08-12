@@ -1,0 +1,18 @@
+{
+  "image": "docs/v2/xaction/modules/ui/img/waitkeyboard-001-7cd8348ba5.png",
+  "model": "D:\\source\\repos\\quicker\\quickerorg\\qk-ocr-lite\\models\\ppocrv6\\tiny",
+  "source": "ocr",
+  "generatedAt": "2026-08-12T09:35:33.831Z",
+  "blockCount": 46,
+  "fullText": "國等待按键\nX\n等待用户按下某个按键\n0查看帮助\n常规\n等待的按键\nA,B,C\n可选，留空表示任意键盘按键。格式请参考文档。\n修饰键\n00\n可选。逗号分隔的ctrl,shift,alt,win组合。仅用于等待组合快捷键。修饰键不会被拦截。\n最长等待秒数\n1\n0为永久超时超过等待时间，则结束等待。\n拦截原始按键事件\n避免按键输入到窗口中(仅对键盘按键有效)\n忽略模拟的按键\n是否忽略(不检测) 模拟的按键消息\n提示信息\n请按键...\n等待按键时显示的提示文字\n提示窗口位置\n屏幕中上\n在哪里显示提示窗口\n鼠标穿透\n鼠标是否可以穿透提示窗口点击下面的內容\n失败后停止\n失败后是否停止动作\n高级\n字体名称\n可选。设置字体名称。如有多个字体，使用逗号分隔。\nV\n输出到变量\n是否成功\n操作是否成功\n键名\nABC text 默认的文本变量\n按键名，具体请参考模块文档。\n键值\n123 handle\n按键数值，具体请参考模块文档。\n√其它\n步骤注释\n停用此步骤 运行后延迟:\n保存(S)\n取消",
+  "kind": "step-param",
+  "confidence": "high",
+  "cues": [
+    "保存(S)",
+    "停用此步骤",
+    "运行后延迟",
+    "常规",
+    "高级",
+    "取消"
+  ]
+}

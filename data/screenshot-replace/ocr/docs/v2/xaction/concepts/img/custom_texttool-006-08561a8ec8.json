@@ -1,0 +1,16 @@
+{
+  "image": "docs/v2/xaction/concepts/img/custom_texttool-006-08561a8ec8.png",
+  "model": "D:\\source\\repos\\quicker\\quickerorg\\qk-ocr-lite\\models\\ppocrv6\\tiny",
+  "source": "ocr",
+  "generatedAt": "2026-08-12T09:33:52.452Z",
+  "blockCount": 21,
+  "fullText": "测试文本工具替换模式ttmode\n不\n0\nX\ntext\n选择多个，会自动用分号隔开。\npathList\nD:\\Work\\QuickerlQuickerPclQuicker\\bin\\x64\\ReleaseTest\\Quicker.exe\nC: \\Program Files Google\\chrome \\Application\\chrome.exe\n巴\n会自动用换行隔开\n通过ttmode设置文本值的替换方式。\nttmode:all 替换全部\nttmode:selected 替换选中\nttmode:\\n 追加，每次使用新的一行\nttmode,追加，逗号分隔\n选择后，自动添加新的一行\nttmode;道加，分号分隔\n确定(S)\n取消(C)\n重置(R)",
+  "kind": "choice-list",
+  "confidence": "medium",
+  "cues": [
+    "确定(S)",
+    "取消(C)",
+    "确定",
+    "取消"
+  ]
+}

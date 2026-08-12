@@ -1,0 +1,14 @@
+{
+  "image": "docs/v2/xaction/concepts/img/store-settings-003-0fb91e2fb6.png",
+  "model": "D:\\source\\repos\\quicker\\quickerorg\\qk-ocr-lite\\models\\ppocrv6\\tiny",
+  "source": "ocr",
+  "generatedAt": "2026-08-12T09:33:52.474Z",
+  "blockCount": 41,
+  "fullText": "主程序步骤:\n①教程\n日\n变量定义·口1伶了\n百动作设置菜单处理\n0\nARC tavt\n▼如果判断条件：$= {quicker_in_param} == 'settings\"\n日ABGc vendor厂商类型\n多字段表单动作设置\n0\n日ABC srcLang源语言\nRABC dstLang 目标语言\n■停止(return) 默认:停止动作或从子程序返回(标记为出错:0)\n0\n日 autoPaste自动粘贴替\n百正常翻译处理\n0\nABC resultText\n王获取选中的文本=>ftext)\n0\nissuccess是否成功获\n如果判断条件:$= String.IsNullrEmpty(text)\n状态存储标记\n3 Quicker操作使用当前动作进行实时搜索\n停止(return) 默认：停止动作或从子程序返回(标记为出错:0)\n0\n机器翻译/词典单厂商文字翻译=>{resultText)\n0\n根据选项粘贴或仅复制\n0\n如果/否则判断条件:{autoPaste)\n外观选项\n关联\n发送文本到窗口 (resutText)\n0\n否则\n自写入剪贴板自动(纯文本或图片)=>剪具贴板\n0\n译\n结束（如果)",
+  "kind": "steps",
+  "confidence": "medium",
+  "cues": [
+    "否则",
+    "如果"
+  ]
+}

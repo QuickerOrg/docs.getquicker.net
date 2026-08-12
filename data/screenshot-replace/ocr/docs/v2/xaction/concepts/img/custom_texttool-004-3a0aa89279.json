@@ -1,0 +1,16 @@
+{
+  "image": "docs/v2/xaction/concepts/img/custom_texttool-004-3a0aa89279.png",
+  "model": "D:\\source\\repos\\quicker\\quickerorg\\qk-ocr-lite\\models\\ppocrv6\\tiny",
+  "source": "ocr",
+  "generatedAt": "2026-08-12T09:33:52.450Z",
+  "blockCount": 41,
+  "fullText": "创建/编辑表单字段\nX\n动作变量\nABC text 默认的文本变量\n请选择要编辑的变量。\n字段标题\ntext\n表单上显示的字段名。\n帮助提示\n默认的文本变量\n字段帮助文字。\n分组\n分标签页显示表单。\n输入方式\n单行文本框\n选择合适的输入方式\n字段的输入方法。\n验证表达式\n用于验证输入内容是否合法的正则表达式。\n最大长度\n0\n输入内容的最大长度。0为不限制。\n文本选择工具\n选择一个文件×\n多行文本框时，使用的文本内容选择工具。\n可见性表达式\n自定义文本选择工具以及其它内容\n示例：$={下拉选择字段==“某值”\n控件宽度\n逻辑像素值。\n扩展设置\ntexttool:[fa:Light_cog]直接填入内容(没有界面的)|填写日期\ntexttool:[fa:Light_Pen]输入内容(测试子程序中调用界面)输入内容\ntexttool:[fa:Light_Wifi]追加内容(在当前内容基础上添加一行)|追加内容\ntexttool:[fa:Light_Text]AAAA(为相同子程序传递不同参数)Ioperation=sp&spName=传递参数&content=AAAAA\ntexttool:[fa:Light_Text:#009900]BBBB(为相同子程序传递不同参数)|operation=sp&spName=传递参数&content=BBBBB\n扩展设置，请参考文档。\n其他选项\n不能为空\n保存(S)\n取消(C)",
+  "kind": "choice-list",
+  "confidence": "medium",
+  "cues": [
+    "保存(S)",
+    "请选择",
+    "取消(C)",
+    "取消"
+  ]
+}

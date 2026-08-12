@@ -1,0 +1,11 @@
+{
+  "image": "docs/v2/xaction/concepts/img/debug-010-32d9747588.png",
+  "model": "D:\\source\\repos\\quicker\\quickerorg\\qk-ocr-lite\\models\\ppocrv6\\tiny",
+  "source": "ocr",
+  "generatedAt": "2026-08-12T09:33:52.456Z",
+  "blockCount": 22,
+  "fullText": "3\n6\n1\n[in]列表\n【变量\nsearchUrlList】 0:\"https://www.baidu.com/s?wd={关键词}”\n1:\"https://www.google.com/search?&q=关键词}”\n2:\"https://cn.bing.com/search?q={关键词}\"\n3:https://www.zhihu.com/search?type=content&q={关键词}\n4:\"https://s.weibo.com/weibo/{关键词)\"\n5:\"https://weixin.sogou.com/weixin?type=28query={关键词}”\n6:\"{StartMenu}\\Programs\\Everything\\搜索 Everything.Ink\" -s \"{关键词}\n[in]操作类型\n【值/表达式】getAt\n[in] 序号【变量cuntNum】0\n[in] 长度【无输入】1\n[in]值【无输入】\n2\n[out] 结果=>searchUrl \"https:/www.baidu.com/s?wd={关键词”\n6\n7\n8",
+  "kind": "unknown",
+  "confidence": "low",
+  "cues": []
+}

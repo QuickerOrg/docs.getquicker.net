@@ -1,0 +1,17 @@
+{
+  "image": "docs/v2/xaction/modules/text/img/showtext-004-6c86dd1256.png",
+  "model": "D:\\source\\repos\\quicker\\quickerorg\\qk-ocr-lite\\models\\ppocrv6\\tiny",
+  "source": "ocr",
+  "generatedAt": "2026-08-12T09:34:57.232Z",
+  "blockCount": 44,
+  "fullText": "文本窗口\nX\n在独立的窗口中显示文本。\n0查看帮助\n常规\n等待方式\n等待关闭(用户关闭窗口后再执行后续步骤)\n是否等待窗口关闭后继续\n文本内容\n….\n要显示的文本内容\n窗口标题\n结果内容\n窗口标题文字\n置顶显示\n否false\n√高级\n工具栏操作\n用于显示在窗口工具栏。每行一个选项，格式为“文本”或“显示文本值”。\n文本窗口标识\n(仅必要时使用自动关闭之前耐打开的具有此标识的文本窗口。\n窗口位置\n屏幕中间\n在哪里显示选择窗口\n窗口尺寸/位置\n设置选择窗口的尺寸，格式为：宽度,高度。支持像素数值或屏幕宽高百分比，详情请参考模块文档。\n\"窗口位置\"类型为“自定义位置”时用于指定显示位置，格式为：left,top,right,bottom\n字体大小\n14\n默认的字体大小\n字体名称\n可选。设置字体名称。如有多个字体，使用逗号分隔。\n背景颜色\n可选。格式为#RRGGBB\n文字颜色\n可选。格式为#RRGGBB\n语法高亮\n自动保存到状态\n指定状态Key。文本内容将自动保存到状态中。\n失去焦点自动关闭\n否false\n停用此步骤 运行延迟:\n保存(S)\n取消",
+  "kind": "step-param",
+  "confidence": "high",
+  "cues": [
+    "保存(S)",
+    "停用此步骤",
+    "常规",
+    "高级",
+    "取消"
+  ]
+}

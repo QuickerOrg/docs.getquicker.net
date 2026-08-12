@@ -1,0 +1,18 @@
+{
+  "image": "docs/v2/xaction/modules/basic/img/mouse-009-b4f27cc34c.png",
+  "model": "D:\\source\\repos\\quicker\\quickerorg\\qk-ocr-lite\\models\\ppocrv6\\tiny",
+  "source": "ocr",
+  "generatedAt": "2026-08-12T09:34:20.756Z",
+  "blockCount": 25,
+  "fullText": "鼠标输入-\n编辑步骤\n0\n×\n模拟鼠标输入\n0查看帮助\n常规\n移动到窗口位置：xy一同指定\n操作类型\n窗口句柄\n目标窗口的句柄。留空或0表示操作前台窗口。\n相对坐标\n50%, 50%\n格式为：xy，如：100,200(相对于窗口左上角向右100，向下200)。也可以使用百分比表示，如：50%,50% 表示窗口中心。\n逐渐移动到目标\n逐渐移动而不是直接移动到目标位置。\n移动后操作\n无\n移动位置后，需要执行的动作\n操作完成后恢复鼠标位置\n√其它\n停用此步骤\n运行后延迟：\n保存(S)\n取消",
+  "kind": "step-param",
+  "confidence": "high",
+  "cues": [
+    "保存(S)",
+    "编辑步骤",
+    "停用此步骤",
+    "运行后延迟",
+    "常规",
+    "取消"
+  ]
+}

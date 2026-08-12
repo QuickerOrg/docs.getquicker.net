@@ -1,0 +1,15 @@
+{
+  "image": "docs/v2/xaction/modules/files/img/fileoperation-001-2f9a24c6c6.png",
+  "model": "D:\\source\\repos\\quicker\\quickerorg\\qk-ocr-lite\\models\\ppocrv6\\tiny",
+  "source": "ocr",
+  "generatedAt": "2026-08-12T09:34:16.352Z",
+  "blockCount": 30,
+  "fullText": "文件和目录操作\nx\n文件和目录操作。请确保路径是合法的。\n参数\n操作类型\nT\n复制文件(或文件夹)\n操作类型\n路径\n-不使用变量\nD:\\tEST\\source\\111.txt\n要操作的文件或文件夹路径\n目标路径\n--不使用变量--\nd:\\test\\dest\n复制/移动的目标路径\n覆盖已有\n如果目标位置已存在，是否覆盖?\n]失败后中止动作\n如果操作异常，是否终止动作\n输出\n是否成功\n→\nbool\n操作是否成功\n其他\n注释\n□停用此步骤\n保存(S)\n取消",
+  "kind": "step-param",
+  "confidence": "high",
+  "cues": [
+    "保存(S)",
+    "停用此步骤",
+    "取消"
+  ]
+}

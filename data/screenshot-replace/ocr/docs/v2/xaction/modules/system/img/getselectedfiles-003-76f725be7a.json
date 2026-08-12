@@ -1,0 +1,18 @@
+{
+  "image": "docs/v2/xaction/modules/system/img/getselectedfiles-003-76f725be7a.png",
+  "model": "D:\\source\\repos\\quicker\\quickerorg\\qk-ocr-lite\\models\\ppocrv6\\tiny",
+  "source": "ocr",
+  "generatedAt": "2026-08-12T09:34:57.328Z",
+  "blockCount": 31,
+  "fullText": "S获取选中的文件(夹)/选择特定文件\n0\nX\n获取资源管理器、桌面等位置选择的文件或文件夹的路径\n0查看帮助\n常规\n操作类型\n设置选择的文件\n路径或文件名\nfilename.txt\n…\nregexiexes\npinyin:1lq\n要选中的路径或文件名。支持使用regex:表达式”\"pinyin:筛选”选择匹配的文件。\n失败后中止动作\n获取失败后，是否停止后续动作的执行。\n高级\n指定窗口句柄\n团..\n指定要操作的资源管理器窗口，留空时表示前台窗口。\n(仅支持资源管理器)\n√输出到变量\n是否成功\n是否成功获得文件列表\n文件个数\nABc strValue\n选择的文件个数\n甘它\n停用此步骤 运行后延迟:\n保存(S)\n取消",
+  "kind": "step-param",
+  "confidence": "high",
+  "cues": [
+    "保存(S)",
+    "停用此步骤",
+    "运行后延迟",
+    "常规",
+    "高级",
+    "取消"
+  ]
+}

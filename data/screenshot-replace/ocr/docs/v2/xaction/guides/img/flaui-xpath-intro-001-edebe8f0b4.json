@@ -1,0 +1,14 @@
+{
+  "image": "docs/v2/xaction/guides/img/flaui-xpath-intro-001-edebe8f0b4.png",
+  "model": "D:\\source\\repos\\quicker\\quickerorg\\qk-ocr-lite\\models\\ppocrv6\\tiny",
+  "source": "ocr",
+  "generatedAt": "2026-08-12T09:33:41.411Z",
+  "blockCount": 23,
+  "fullText": "窗口界面控制(FlaUI) -编辑步骤\n0\n×\n触发Windows窗口的菜单/按钮等控件(通过FlaUI库实现)。\n0查看帮助\n常规\n操作类型\n触发窗口控件\n变\n操作类型。按下和抬起需要配对使用。\nABC\n窗口句柄\n要操作哪个窗口的控件。不填写=使用前台窗口；或窗口句柄数字。\n控件XPath或Name\n/Pane[@Name='MsoDockTop' L#4]/ToolBar/Pane/Pane/Pane/Pane/Pane/Group/Group[@Name=样式'\n|#4]//ListItem[@Name='无间隔']\n团…\n控件的XPath或Name、Automationld。XPath以/开始。(可写多个，每行一个，前一个查找失败时会自动尝试下7)\n控件类型\n0\n*任意类型*0\nV\n可选。当有多个名称相同但类型不同的控件时区分。",
+  "kind": "step-param",
+  "confidence": "medium",
+  "cues": [
+    "编辑步骤",
+    "常规"
+  ]
+}

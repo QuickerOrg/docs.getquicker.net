@@ -1,0 +1,16 @@
+{
+  "image": "docs/v2/xaction/modules/basic/img/runscript-001-05ddd7c149.png",
+  "model": "D:\\source\\repos\\quicker\\quickerorg\\qk-ocr-lite\\models\\ppocrv6\\tiny",
+  "source": "ocr",
+  "generatedAt": "2026-08-12T09:34:20.777Z",
+  "blockCount": 51,
+  "fullText": "口运行脚本\n□\nX\n运行脚本。\n0查看帮助\n常规\n脚本内容\nDim fso, wbpath,wbname ,xlapp\nSet fso = createObject(\"scripting.filesystemobject\")\nSet xlapp = Getobject(,\"Excel.Application\")\nwbname =xlapp.activeworkbook.name\nwbpath = xlapp.activeworkbook.path\nwbname = Replace(wbname, \".xlsx\",\nIf Not fso.fileexists(wbpath & \"I\"& wbname & \" xlsm\") Then\nIf Instr(wbname, \".xlsm\") = 0 Then\non error resume next\nxlapp.activeworkbook.SaveAs wbpath & \"\\\" & wbname & \".xlsm\", 52\n要运行的脚本内容\n脚本类型\n自定义脚本类型\n要执行的脚本类型\n扩展名\n.vbs\n自定义脚本文件的扩展名(如：-ps1)\n文件编码\nUnicode\n写入文件的编码格式\n使用指定软件\ncscript\n使用指定的程序运行脚本。如果双击脚本可以直接运行，则不需要指定。\n命令行参数模板\n\"%FILE%\"\n使用指定软件时指定命令行参数的格式。%FILE%代替脚本文件的路径。\n控制台输出编码\nOEM\n控制台输出编码。如果输出遇到乱码，尝试修改此选项。\n工作目录\n不填写(自动为资源管理器的当前目录或桌面目录) 或具体的工作目录路径。\n以管理员身份运行\n是否以管理员身份运行脚本。隐藏窗口或输出控制台内容时，不支持以管理员身份运行。\n等待进程结束\n等待此进程结束后再进行后续操作\n√输出到变量\n控制台输出\nABc stdout\n捕获控制台输出，会自动等待进程结束。输出此内容时，命令行窗口将不显示。\n√其它\n步骤注释\n停用此步骤 运行延迟:\n保存(S)\n取消",
+  "kind": "step-param",
+  "confidence": "high",
+  "cues": [
+    "保存(S)",
+    "停用此步骤",
+    "常规",
+    "取消"
+  ]
+}

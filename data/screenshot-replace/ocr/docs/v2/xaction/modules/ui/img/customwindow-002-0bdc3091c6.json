@@ -1,0 +1,14 @@
+{
+  "image": "docs/v2/xaction/modules/ui/img/customwindow-002-0bdc3091c6.png",
+  "model": "D:\\source\\repos\\quicker\\quickerorg\\qk-ocr-lite\\models\\ppocrv6\\tiny",
+  "source": "ocr",
+  "generatedAt": "2026-08-12T09:35:33.795Z",
+  "blockCount": 49,
+  "fullText": "主程序\nAdd x\nAdd\n子程序Add\n亦旦之V\nT会\n赋值 $\n2.3± number1\n常规\n2.3± number2\n2.3↑ total\n操作类型\n显示窗口并等待关闭\n窗口XAML代码\n<TextBox Margin=\"10\" Text=\"{Binding\n[number1]}\" />\n<TextBox Margin=\"10\" Text=\"{Binding\nÈnumber2j}\" />\n<wrapPanel orientation=\"Horizontal\">\n<Button, Name=\"BtnAdd\" Margin=\"10\">\n加(子程序)\n子程序的输入和输出变量\n</Button>\n<Button Margin=\"10\" qk:Att.Action=\"operation=sp&amp/s\n乘(声明式调用子程序)\n</Button>\n<Button Margin=\"10\" qk:Att.Action=\"compute=tyue\">\n窗口定义XAML代码\n数据映射\ntotal:{n\nLmber}\nnumberi:\nE(int)0\n子程序名称\nnumber2 :\n(int)0\ntotal:$=\nConvert.ToInt32(number1)\nconvert.ToInt32(number2)\nAdd\n将变量与窗口上\n数据进行映射。每行一个，\n格式为：“窗口数据项名称：动作变量名”\n说明\n窗口标识\n5555\n窗口数据\n子程序自动获取和更新对应的窗口数据\n如需单独的步骤关闭窗口，需使用标识查找窗口。",
+  "kind": "var-def",
+  "confidence": "low",
+  "cues": [
+    "常规",
+    "变量名"
+  ]
+}

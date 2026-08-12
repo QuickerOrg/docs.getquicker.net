@@ -1,0 +1,11 @@
+{
+  "image": "docs/v2/xaction/modules/ui/img/customwindow-003-0bfffdd71f.png",
+  "model": "D:\\source\\repos\\quicker\\quickerorg\\qk-ocr-lite\\models\\ppocrv6\\tiny",
+  "source": "ocr",
+  "generatedAt": "2026-08-12T09:35:33.796Z",
+  "blockCount": 27,
+  "fullText": "public static bool OnButtonclicked(string controlName, object controlTag, Window win,\nIDictionary<string, object> datantext,\nICustomWindowContext winContext){\n按钮点击回调函数\nif (controlName == \"btncompute\"){\n1/ 计算直角三角形斜边长度。\ndatacontext[\"total\"] =\nMath.Sqrt(\nConvert.ToDouble(dataContext[\"number1\"])*Convert.ToDouble(dataContext[\"number1\"])\n+ Convert.ToDoubie(dataContext[\"number2\"])*Convert.ToDouble(dataContext[\"number2\"])\n);\nreturn true;\n}else if (controlName == \"btnCallsp\")f\n/调用子程序\nvar result = winContext.Runsp(\"Add\",\n调用子程序并传入词典形式参数\nnew Dictionary<string,object>{\n{\"number1\", datacontext[\"number1\"]},\n{\"number2\",datacontext[\"number2\"]}\n//new {number1 = dataContext[\"number1\"], number2 = dataContext[\"number2\"]}\n);\ndatacontext[\"total\"] = result[\"total\"];\nreturn true;\n从结果词典中取数据更新到窗口中。\n//dataContext[\"number\"] = 100;\n//MessageBox.Show(\"Buttonclicked\");\nreturn false;",
+  "kind": "unknown",
+  "confidence": "low",
+  "cues": []
+}

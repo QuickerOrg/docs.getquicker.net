@@ -1,0 +1,16 @@
+{
+  "image": "docs/v2/xaction/modules/system/img/filesystemwatch-001-a840b8c14b.png",
+  "model": "D:\\source\\repos\\quicker\\quickerorg\\qk-ocr-lite\\models\\ppocrv6\\tiny",
+  "source": "ocr",
+  "generatedAt": "2026-08-12T09:34:57.319Z",
+  "blockCount": 35,
+  "fullText": "文件系统监控\n监控文件创建/变更/删除等事件。\n0查看帮助\n√常规\n操作类型\n等待事件发生，然后继续下一步动作\n时间数据来源\n文件夹路径\nD:\\Dump\n要监控的文件夹路径\n包含子文件夹\n文件筛选\n筛选要监控的文件。可指定文件名(如foo.txt)，或使用通配符(如*.txt)\n通知筛选\n可选，可选值请参考文档。留空表示默认设置(LastWrite,FileName,DirectoryName)。\n等待的事件\n等待秒数\n0\n最长等待时间。0表示不限时间。\n∨\n输出到变量\n是否成功\nisSuccess\n操作是否成功\n变更的路径\n发生变更的文件(夹)路径，或重命名后的新路径\n变更类型\n变更类型\n|旧路径\n重命名时的原始路径\n其它\n步骤注释\n停用此步骤 运行延迟:\n保存(S)\n取消",
+  "kind": "step-param",
+  "confidence": "high",
+  "cues": [
+    "保存(S)",
+    "停用此步骤",
+    "常规",
+    "取消"
+  ]
+}

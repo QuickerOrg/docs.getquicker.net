@@ -1,0 +1,18 @@
+{
+  "image": "docs/v2/xaction/modules/network/img/basic-ocr-010-8529b7185c.png",
+  "model": "D:\\source\\repos\\quicker\\quickerorg\\qk-ocr-lite\\models\\ppocrv6\\tiny",
+  "source": "ocr",
+  "generatedAt": "2026-08-12T09:35:41.502Z",
+  "blockCount": 43,
+  "fullText": "[基础OCR\nX\n获取图片中的文字\n0查看帮助\n√常规\n接口/3引|擎\n百度通用文字识别（自定义帐号)\nOCR接口或|擎。离线|擎安装方式请参考模块文档。\nApiKey\n请填写OCR帐号的ApiKey\nSecretKey\n7\n请填写OCR帐号的SecretKey\n图片变量\n img\n从指定变量中加载图片\n转换标点符号\n●不转换no\n合并文本时，是否转换标点符号\n合并段落\n●不合并no\n是否智能合并段落。\n失败后停止\n失败后是否停止动作\n输出到变量\n是否成功\n操作是否成功\n合并后结果\nABC text 默认的文本变量\n合并在一起的的文本内容\n行列表\nOCR识别结果，列表格式，每行一项。\n原始结果\nAPI接口返回的完整内容\n原始结果JObject对\n返回结果的JObject对象\n象\n其它\n止瞰士双\n停用此步骤 运行后延迟:\n0\n保存(S)\n取消",
+  "kind": "step-param",
+  "confidence": "high",
+  "cues": [
+    "保存(S)",
+    "停用此步骤",
+    "运行后延迟",
+    "常规",
+    "识别子菜单",
+    "取消"
+  ]
+}

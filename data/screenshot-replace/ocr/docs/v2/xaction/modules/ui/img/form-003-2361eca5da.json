@@ -1,0 +1,13 @@
+{
+  "image": "docs/v2/xaction/modules/ui/img/form-003-2361eca5da.png",
+  "model": "D:\\source\\repos\\quicker\\quickerorg\\qk-ocr-lite\\models\\ppocrv6\\tiny",
+  "source": "ocr",
+  "generatedAt": "2026-08-12T09:35:33.798Z",
+  "blockCount": 32,
+  "fullText": "多字段表单\n0\nX\n使用表单窗口编辑多个变量的值。\n0查看帮助\n常规\n工作模式\n编辑词典数据(动态)\n工作模式:编辑某个词典的值，或编辑一些变量的值\n词典变量\n userlnfo\n设定要编辑数据的词典变量\n表单需要编輯的词典变量\n窗口标题\n填写表单\n000\n表单窗口标题文字\n表单定义(词典)\n$=new List<Quicker.Public.Forms.FormField>{\n团...\nnew Quicker.Public.Forms .FormField(){\nFieldKey = \"name\",\nLabel\n\"姓名”，\n表单定义数据\nDictvarType = Quicker.Public.Actions.VarType.Text,\nInputMethod = Quicker .Public.Forms.InputMethod.TextBox,\nGroup =“基本信息\"\nnew Quicker.Public.Forms.FormField(){\nFieldKey =\n\"age\",\nJSON格式的表单定义数据。格式说明请参考模块文档。",
+  "kind": "step-param",
+  "confidence": "low",
+  "cues": [
+    "常规"
+  ]
+}

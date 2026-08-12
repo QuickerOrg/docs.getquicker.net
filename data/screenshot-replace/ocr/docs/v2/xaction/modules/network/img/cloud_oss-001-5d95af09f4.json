@@ -1,0 +1,17 @@
+{
+  "image": "docs/v2/xaction/modules/network/img/cloud_oss-001-5d95af09f4.png",
+  "model": "D:\\source\\repos\\quicker\\quickerorg\\qk-ocr-lite\\models\\ppocrv6\\tiny",
+  "source": "ocr",
+  "generatedAt": "2026-08-12T09:35:41.507Z",
+  "blockCount": 48,
+  "fullText": "第三方云存储/图床\nX\n使用第三方云服务上传文件。\ne查看帮助\n√常规\n操作类型\n上传\n服务商\n阿里云OSS\n服务商参数\nEndpoint:https://oss-cn-beijing.aliyuncs.com\n7\nAccessKey:LTAI5tB7XhF55\nAccessKeySecret:ByzjAaq\nBucketName:quickertest\n设置相关\n对象名\n2\n可选。留空时自动生成对象名。如果以/结尾，则在此基础上自动生成对象名。\n上传内容\n content\n要上传的文件路径、其它文本内容或图片变量。\n自定义域名\n如\"https://files.example.com\"。\n额外的请求头\n可选。设置厂商相关的特定http头。\n超时时间\n180\n请求超时时间(秒数)\n失败后停止\n失败后是否停止动作\n输出到变量\n是否成功\n isSuccess\n操作是否成功\n服务商网址\nABC url\n自定义域名网址\nABC cdnUrl\n设置了自定义域名时会生成此网址。\n错误信息\nABC err\n出错时输出的错误信息。\n其它\n步骤注释\n停用此步骤运行后延迟:\n保存(S)\n取消",
+  "kind": "step-param",
+  "confidence": "high",
+  "cues": [
+    "保存(S)",
+    "停用此步骤",
+    "运行后延迟",
+    "常规",
+    "取消"
+  ]
+}

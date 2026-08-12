@@ -1,0 +1,16 @@
+{
+  "image": "docs/v2/xaction/modules/flow/img/csscript-002-353c839112.png",
+  "model": "D:\\source\\repos\\quicker\\quickerorg\\qk-ocr-lite\\models\\ppocrv6\\tiny",
+  "source": "ocr",
+  "generatedAt": "2026-08-12T09:34:30.603Z",
+  "blockCount": 40,
+  "fullText": "口运行C#代码\nX\n执行C#代码片段。代码中应包含主函数Exec(stepContext)，请参考文档说明。\n0查看帮助\n常规\n运行模式\n低权限模式\n普通模式：在Quicker进程中执行；低权限模式：在单独的进程中执行，可用于Com操作。\n脚本内容\n//.cs 文件类型，便于外部编辑时使用\n000\n/引用必要的命名空间\n// Quicker将会调用的函数\npubiic static string Exec(string paramValue)\nreturn param\\alue;l\n参数值\"输入到Exec()的 paramValue参数中\n要运行的脚本内容\n参数值\nHello World!\n7\n传递给Exec的参数\n引用DLL库\n要用的DLL文件，每行\n个。\n等待返回\n是否等待脚本返回结果\n失败后停止\n失败后是否停止动作\nExec的返回值，从“返回内容“中输出\n输出到变量\n是否成功\n操作是否成功\n返回内容\nABc output\n脚本执行返回的结果文本\n√其它\n步骤注释\n停用此步骤 运行延迟:\n保存(S)\n取消",
+  "kind": "step-param",
+  "confidence": "high",
+  "cues": [
+    "保存(S)",
+    "停用此步骤",
+    "常规",
+    "取消"
+  ]
+}

@@ -1,0 +1,19 @@
+{
+  "image": "docs/v2/xaction/modules/basic/img/msgbox-003-8c09dbb65c.png",
+  "model": "D:\\source\\repos\\quicker\\quickerorg\\qk-ocr-lite\\models\\ppocrv6\\tiny",
+  "source": "ocr",
+  "generatedAt": "2026-08-12T09:34:20.765Z",
+  "blockCount": 63,
+  "fullText": "弹窗提示或确认\nX\n标题栏\n弹窗显示提示或确认对话框\n0\n查看帮助\n常规\n动作图标\n变量定义\n模式\n自定义\nABC content\nABc rawData\n内容\n你好，这是一条自定义弹窗提示消息。\n第\n行。\nX\n官保存信息\n弹窗显示的消息內容\n标题\n保存信息\n你好，这是一条自定义弹窗提示消息。\n消息窗口标题。留空时自动使用动作名称。\n第二行。\n图标\nfa:Solid_Infocircle:#FF0000\n消息窗口图标。\n是(V)\n×否(N)\n5取消(C)\n按钮\n[fa:Light_Check:#28a745]是(_Y)\nYes\n[fa:Light_Times:#dc3545]否\nNo\n[fa:Light_Undo:#28a74sj城消(_c)lcancel\n@t1\n每行定义一个按钮格式为“文本”或“图标显示文本(提示内容)值”。\nissuccess\n默认按钮\nYes\nisWindowEx\n指定默认按钮的值。默认按钮以高亮颜色显示，可直接回车选择。\n外观 选项\n关\n恢复活动窗口\n关闭单窗后，是否将焦点还原到之前的活动窗口\n√输出到变量\n选择的按钮\nABc result\n点击的按钮，标准模式下结果可能为OK,Cancel,Yes,No，自定义模式下为\n标题\n测试12345\n√其它\n功能/用途说明\n张三李四王五张\n步骤注释\n保\n停用此步骤 运行后延迟:\n0\n保存(S)\n取消",
+  "kind": "step-param",
+  "confidence": "high",
+  "cues": [
+    "保存(S)",
+    "停用此步骤",
+    "运行后延迟",
+    "常规",
+    "取消(C)",
+    "否",
+    "取消"
+  ]
+}

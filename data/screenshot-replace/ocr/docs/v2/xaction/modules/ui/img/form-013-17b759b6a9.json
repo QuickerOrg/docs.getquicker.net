@@ -1,0 +1,16 @@
+{
+  "image": "docs/v2/xaction/modules/ui/img/form-013-17b759b6a9.png",
+  "model": "D:\\source\\repos\\quicker\\quickerorg\\qk-ocr-lite\\models\\ppocrv6\\tiny",
+  "source": "ocr",
+  "generatedAt": "2026-08-12T09:35:33.806Z",
+  "blockCount": 30,
+  "fullText": "创建/编辑表单字段\n0\nX\n动作变量\n123 height\n请选择要编辑的变量。\n字段标题\n平方\n表单上显示的字段名。\n帮助提示\n字段帮助文字。\n分组\n分标签页显示表单。\n输入方式\n数字输入框\n字段的输入方法。\n数值范围\n最小值和最大值\n可见性表达式\n示例：$={下拉选择字段==\"某值”\n控件宽度\n扩展设置\ncompute:Convert.ToInt32({code})*2\ndepd:code,selection\n扩展设置，请参考文档。\n其他选项\n不能为空\n只读模式\n保存(S)\n取消(C)",
+  "kind": "choice-list",
+  "confidence": "medium",
+  "cues": [
+    "保存(S)",
+    "请选择",
+    "取消(C)",
+    "取消"
+  ]
+}

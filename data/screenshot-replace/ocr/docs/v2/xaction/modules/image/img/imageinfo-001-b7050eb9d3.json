@@ -1,0 +1,15 @@
+{
+  "image": "docs/v2/xaction/modules/image/img/imageinfo-001-b7050eb9d3.png",
+  "model": "D:\\source\\repos\\quicker\\quickerorg\\qk-ocr-lite\\models\\ppocrv6\\tiny",
+  "source": "ocr",
+  "generatedAt": "2026-08-12T09:35:28.010Z",
+  "blockCount": 31,
+  "fullText": "四读取图片信息\nX\n获取图片的尺寸或exif信息\n0查看帮助\n参数\n图片来源←\n图片文件\n文件路径←\n--不使用变量-\nE:\\Pictures\\2017-9-25\\Dsc00002.JPG\n图片文件的完整路径\n输出\n宽度\n→\n123 width\n高度一\n123 height\n拍摄时间\n photoTime\nExif数据\n日 dict\n转换为文本格式的exif数据(词典格式，请参考模块文档)\n原始属性数\nl dictRaw\n原始Exif数据(词典格式，请参考模块文档)\n据\n其他\n注释\n□停用此步骤\n保存(S)\n取消",
+  "kind": "step-param",
+  "confidence": "high",
+  "cues": [
+    "保存(S)",
+    "停用此步骤",
+    "取消"
+  ]
+}

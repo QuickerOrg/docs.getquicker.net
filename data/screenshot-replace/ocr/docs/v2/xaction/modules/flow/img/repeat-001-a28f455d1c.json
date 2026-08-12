@@ -1,0 +1,15 @@
+{
+  "image": "docs/v2/xaction/modules/flow/img/repeat-001-a28f455d1c.png",
+  "model": "D:\\source\\repos\\quicker\\quickerorg\\qk-ocr-lite\\models\\ppocrv6\\tiny",
+  "source": "ocr",
+  "generatedAt": "2026-08-12T09:34:30.619Z",
+  "blockCount": 30,
+  "fullText": "約重复\nX\n循环指定的次数，或符合某个条件时中止\n0查看帮助\n参数\n次数\n-不使用变量-\n-1\n循环次数，-1表示永久循环\n重复次数，除非符合条件提前中止。-1表示无限循环。\n中止条件←\n-不使用变量一\n$=\n{选择内容}\n\"退出\"\n可选，设定中止循环的判断表达式\n选填。条件满足时停止循环（每次循环开始时检查)\n计数开始值\n--不使用变量-\n0\n计数序号的开始值，通常应该为0。\n输出\n计数\n计数序号，表示第几次循环。\n当前循环到第几次了\n其他\n注释\n□停用此步骤\n保存(S)\n取消",
+  "kind": "step-param",
+  "confidence": "high",
+  "cues": [
+    "保存(S)",
+    "停用此步骤",
+    "取消"
+  ]
+}

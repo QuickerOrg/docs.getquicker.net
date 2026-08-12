@@ -1,45 +1,1071 @@
 {
   "schemaVersion": 1,
   "baselineCreated": false,
-  "fromGeneratedAt": "2026-08-03 20:08:03",
-  "toGeneratedAt": "2026-08-12 20:29:09",
+  "fromGeneratedAt": "2026-08-12 20:29:09",
+  "toGeneratedAt": "2026-08-12 21:38:57",
   "summary": {
-    "addedModules": 5,
+    "addedModules": 2,
     "removedModules": 0,
-    "changedModules": 0
+    "changedModules": 149
   },
   "addedModules": [
     {
-      "key": "sys:aiText",
-      "name": "AI 文本处理",
-      "slug": "ai-text",
-      "category": "Text"
+      "key": "sys:pdf",
+      "name": "PDF 文件处理",
+      "slug": "pdf",
+      "category": "Files"
     },
     {
-      "key": "sys:aiVision",
-      "name": "AI 图片理解",
-      "slug": "ai-vision",
-      "category": "Image"
-    },
-    {
-      "key": "sys:aiClassify",
-      "name": "AI 文本分类",
-      "slug": "ai-classify",
-      "category": "Text"
-    },
-    {
-      "key": "sys:aiExtract",
-      "name": "AI 结构化提取",
-      "slug": "ai-extract",
-      "category": "Text"
-    },
-    {
-      "key": "sys:aiChat",
-      "name": "AI 交互对话",
-      "slug": "ai-chat",
+      "key": "sys:mobileNotification",
+      "name": "发送手机通知",
+      "slug": "mobilenotification",
       "category": "Network"
     }
   ],
   "removedModules": [],
-  "changedModules": []
+  "changedModules": [
+    {
+      "key": "sys:openUrl",
+      "name": "打开网址",
+      "changes": [
+        "helpLink"
+      ]
+    },
+    {
+      "key": "sys:MsgBox",
+      "name": "弹窗提示或确认",
+      "changes": [
+        "helpLink"
+      ]
+    },
+    {
+      "key": "sys:delay",
+      "name": "等待时间",
+      "changes": [
+        "helpLink"
+      ]
+    },
+    {
+      "key": "sys:outputText",
+      "name": "发送文本到窗口",
+      "changes": [
+        "helpLink"
+      ]
+    },
+    {
+      "key": "sys:getSelectedText",
+      "name": "获取选中的文本",
+      "changes": [
+        "helpLink"
+      ]
+    },
+    {
+      "key": "sys:keyInput",
+      "name": "模拟按键A（录入）",
+      "changes": [
+        "helpLink"
+      ]
+    },
+    {
+      "key": "sys:sendKeys",
+      "name": "模拟按键B（参数）",
+      "changes": [
+        "helpLink"
+      ]
+    },
+    {
+      "key": "sys:mouse",
+      "name": "鼠标输入",
+      "changes": [
+        "helpLink"
+      ]
+    },
+    {
+      "key": "sys:notify",
+      "name": "提示消息",
+      "changes": [
+        "helpLink"
+      ]
+    },
+    {
+      "key": "sys:userInput",
+      "name": "用户输入",
+      "changes": [
+        "helpLink"
+      ]
+    },
+    {
+      "key": "sys:select",
+      "name": "用户选择",
+      "changes": [
+        "helpLink"
+      ]
+    },
+    {
+      "key": "sys:run",
+      "name": "运行或打开",
+      "changes": [
+        "helpLink"
+      ]
+    },
+    {
+      "key": "sys:runScript",
+      "name": "运行脚本",
+      "changes": [
+        "helpLink"
+      ]
+    },
+    {
+      "key": "sys:comment",
+      "name": "注释",
+      "changes": [
+        "helpLink"
+      ]
+    },
+    {
+      "key": "sys:waitClipboardChange",
+      "name": "等待剪贴板内容改变",
+      "changes": [
+        "helpLink"
+      ]
+    },
+    {
+      "key": "sys:getClipboardImage",
+      "name": "获取剪贴板图片",
+      "changes": [
+        "helpLink"
+      ]
+    },
+    {
+      "key": "sys:getClipboardText",
+      "name": "获取剪贴板文本",
+      "changes": [
+        "helpLink"
+      ]
+    },
+    {
+      "key": "sys:getClipboardFiles",
+      "name": "获取剪贴板文件列表",
+      "changes": [
+        "helpLink"
+      ]
+    },
+    {
+      "key": "sys:fileToClipboard",
+      "name": "文件放入剪贴板",
+      "changes": [
+        "helpLink"
+      ]
+    },
+    {
+      "key": "sys:writeClipboard",
+      "name": "写入剪贴板",
+      "changes": [
+        "helpLink"
+      ]
+    },
+    {
+      "key": "sys:numCompare",
+      "name": "比较数字",
+      "changes": [
+        "helpLink"
+      ]
+    },
+    {
+      "key": "sys:strCompare",
+      "name": "比较文本",
+      "changes": [
+        "helpLink"
+      ]
+    },
+    {
+      "key": "sys:tableoperation",
+      "name": "表格数据操作",
+      "changes": [
+        "helpLink"
+      ]
+    },
+    {
+      "key": "sys:dictOperations",
+      "name": "词典操作",
+      "changes": [
+        "helpLink"
+      ]
+    },
+    {
+      "key": "sys:assign",
+      "name": "赋值",
+      "changes": [
+        "helpLink"
+      ]
+    },
+    {
+      "key": "sys:manageList",
+      "name": "管理和排序列表",
+      "changes": [
+        "helpLink"
+      ]
+    },
+    {
+      "key": "sys:compute",
+      "name": "计算",
+      "changes": [
+        "helpLink"
+      ]
+    },
+    {
+      "key": "sys:computeTime",
+      "name": "计算时间",
+      "changes": [
+        "helpLink"
+      ]
+    },
+    {
+      "key": "sys:listOperations",
+      "name": "列表操作",
+      "changes": [
+        "helpLink"
+      ]
+    },
+    {
+      "key": "sys:color",
+      "name": "屏幕取色/颜色转换与计算",
+      "changes": [
+        "helpLink"
+      ]
+    },
+    {
+      "key": "sys:randomNum",
+      "name": "生成随机数",
+      "changes": [
+        "helpLink"
+      ]
+    },
+    {
+      "key": "sys:newGuid",
+      "name": "生成Guid",
+      "changes": [
+        "helpLink"
+      ]
+    },
+    {
+      "key": "sys:dboperation",
+      "name": "数据库查询",
+      "changes": [
+        "helpLink"
+      ]
+    },
+    {
+      "key": "sys:numberprocess",
+      "name": "数字转换与处理",
+      "changes": [
+        "helpLink"
+      ]
+    },
+    {
+      "key": "sys:readFile",
+      "name": "读取文件",
+      "changes": [
+        "helpLink"
+      ]
+    },
+    {
+      "key": "sys:checkPathExists",
+      "name": "检查路径/获取文件信息",
+      "changes": [
+        "helpLink"
+      ]
+    },
+    {
+      "key": "sys:GenTempFilePath",
+      "name": "生成临时文件路径",
+      "changes": [
+        "helpLink"
+      ]
+    },
+    {
+      "key": "sys:everythingsearch",
+      "name": "使用Everything搜索文件",
+      "changes": [
+        "helpLink"
+      ]
+    },
+    {
+      "key": "sys:pathExtraction",
+      "name": "提取文件路径信息/生成路径",
+      "changes": [
+        "helpLink"
+      ]
+    },
+    {
+      "key": "sys:fileOperation",
+      "name": "文件和目录操作",
+      "changes": [
+        "helpLink"
+      ]
+    },
+    {
+      "key": "sys:WriteImageFile",
+      "name": "写入图片文件",
+      "changes": [
+        "helpLink"
+      ]
+    },
+    {
+      "key": "sys:WriteTextFile",
+      "name": "写入文本文件",
+      "changes": [
+        "helpLink"
+      ]
+    },
+    {
+      "key": "sys:stateStorage",
+      "name": "状态存取",
+      "changes": [
+        "helpLink"
+      ]
+    },
+    {
+      "key": "sys:zip",
+      "name": "Zip压缩打包",
+      "changes": [
+        "helpLink"
+      ]
+    },
+    {
+      "key": "sys:group",
+      "name": "步骤组",
+      "changes": [
+        "helpLink"
+      ]
+    },
+    {
+      "key": "sys:dependencycheck",
+      "name": "检查和下载依赖",
+      "changes": [
+        "helpLink"
+      ]
+    },
+    {
+      "key": "sys:each",
+      "name": "每个",
+      "changes": [
+        "helpLink"
+      ]
+    },
+    {
+      "key": "sys:simpleIf",
+      "name": "如果",
+      "changes": [
+        "helpLink"
+      ]
+    },
+    {
+      "key": "sys:if",
+      "name": "如果/否则",
+      "changes": [
+        "helpLink"
+      ]
+    },
+    {
+      "key": "sys:break",
+      "name": "跳出循环(break)",
+      "changes": [
+        "helpLink"
+      ]
+    },
+    {
+      "key": "sys:continue",
+      "name": "跳过后续步骤(continue)",
+      "changes": [
+        "helpLink"
+      ]
+    },
+    {
+      "key": "sys:stop",
+      "name": "停止(return)",
+      "changes": [
+        "helpLink"
+      ]
+    },
+    {
+      "key": "sys:runAction",
+      "name": "运行或停止动作",
+      "changes": [
+        "helpLink"
+      ]
+    },
+    {
+      "key": "sys:subprogram",
+      "name": "运行子程序",
+      "changes": [
+        "helpLink"
+      ]
+    },
+    {
+      "key": "sys:csscript",
+      "name": "运行C#代码",
+      "changes": [
+        "helpLink"
+      ]
+    },
+    {
+      "key": "sys:csharpFileApp",
+      "name": "运行C#文件应用",
+      "changes": [
+        "helpLink"
+      ]
+    },
+    {
+      "key": "sys:jsscript",
+      "name": "运行Javascript代码",
+      "changes": [
+        "helpLink"
+      ]
+    },
+    {
+      "key": "sys:pythonscript",
+      "name": "运行Python代码",
+      "changes": [
+        "helpLink"
+      ]
+    },
+    {
+      "key": "sys:repeat",
+      "name": "重复",
+      "changes": [
+        "helpLink"
+      ]
+    },
+    {
+      "key": "sys:imageinfo",
+      "name": "读取图片信息",
+      "changes": [
+        "helpLink"
+      ]
+    },
+    {
+      "key": "sys:screenRecording",
+      "name": "后台屏幕录制",
+      "changes": [
+        "helpLink"
+      ]
+    },
+    {
+      "key": "sys:screenCapturePro",
+      "name": "截图 Pro",
+      "changes": [
+        "helpLink"
+      ]
+    },
+    {
+      "key": "sys:tempImgBed",
+      "name": "临时图床",
+      "changes": [
+        "helpLink"
+      ]
+    },
+    {
+      "key": "sys:screenCapture",
+      "name": "屏幕截图",
+      "changes": [
+        "helpLink"
+      ]
+    },
+    {
+      "key": "sys:screenRecordingUI",
+      "name": "屏幕录制",
+      "changes": [
+        "helpLink"
+      ]
+    },
+    {
+      "key": "sys:searchBmp",
+      "name": "屏幕找图/找色/找字",
+      "changes": [
+        "helpLink"
+      ]
+    },
+    {
+      "key": "sys:createQrCode",
+      "name": "生成二维码",
+      "changes": [
+        "helpLink"
+      ]
+    },
+    {
+      "key": "sys:readQrCode",
+      "name": "识别二维码",
+      "changes": [
+        "helpLink"
+      ]
+    },
+    {
+      "key": "sys:whiteboard",
+      "name": "手写板",
+      "changes": [
+        "helpLink"
+      ]
+    },
+    {
+      "key": "sys:imgToBase64",
+      "name": "图片/Base64 转换",
+      "changes": [
+        "helpLink"
+      ]
+    },
+    {
+      "key": "sys:imgProcess",
+      "name": "图片处理",
+      "changes": [
+        "helpLink"
+      ]
+    },
+    {
+      "key": "sys:showImage",
+      "name": "显示图片",
+      "changes": [
+        "helpLink"
+      ]
+    },
+    {
+      "key": "sys:longScreenshot",
+      "name": "长截图",
+      "changes": [
+        "helpLink"
+      ]
+    },
+    {
+      "key": "sys:inputScript",
+      "name": "多步骤输入",
+      "changes": [
+        "helpLink"
+      ]
+    },
+    {
+      "key": "sys:cloud_oss",
+      "name": "第三方云存储/图床",
+      "changes": [
+        "helpLink"
+      ]
+    },
+    {
+      "key": "sys:mathocr",
+      "name": "公式识别",
+      "changes": [
+        "helpLink"
+      ]
+    },
+    {
+      "key": "sys:translation",
+      "name": "机器翻译/词典",
+      "changes": [
+        "helpLink"
+      ]
+    },
+    {
+      "key": "sys:basic-ocr",
+      "name": "基础OCR",
+      "changes": [
+        "helpLink"
+      ]
+    },
+    {
+      "key": "sys:tempcloudstore",
+      "name": "临时云存储",
+      "changes": [
+        "helpLink"
+      ]
+    },
+    {
+      "key": "sys:htmlExtract",
+      "name": "提取HTML内容",
+      "changes": [
+        "helpLink"
+      ]
+    },
+    {
+      "key": "sys:download",
+      "name": "下载文件",
+      "changes": [
+        "helpLink"
+      ]
+    },
+    {
+      "key": "sys:clouddata",
+      "name": "云状态存取",
+      "changes": [
+        "helpLink"
+      ]
+    },
+    {
+      "key": "sys:ai",
+      "name": "AI 调用",
+      "changes": [
+        "helpLink"
+      ]
+    },
+    {
+      "key": "sys:httpserver",
+      "name": "HTTP服务器",
+      "changes": [
+        "helpLink"
+      ]
+    },
+    {
+      "key": "sys:http",
+      "name": "HTTP请求",
+      "changes": [
+        "helpLink"
+      ]
+    },
+    {
+      "key": "sys:smtp",
+      "name": "SMTP发送邮件",
+      "changes": [
+        "helpLink"
+      ]
+    },
+    {
+      "key": "sys:websocket",
+      "name": "Websocket",
+      "changes": [
+        "helpLink"
+      ]
+    },
+    {
+      "key": "sys:uiautomation",
+      "name": "窗口界面控制",
+      "changes": [
+        "helpLink"
+      ]
+    },
+    {
+      "key": "sys:flauiautomation",
+      "name": "窗口界面控制(FlaUI)",
+      "changes": [
+        "helpLink"
+      ]
+    },
+    {
+      "key": "sys:getChromeUrl",
+      "name": "获取浏览器网址",
+      "changes": [
+        "helpLink"
+      ]
+    },
+    {
+      "key": "sys:chromecontrol",
+      "name": "浏览器控制",
+      "changes": [
+        "helpLink"
+      ]
+    },
+    {
+      "key": "sys:adobesoftscontrol",
+      "name": "Adobe系列软件控制",
+      "changes": [
+        "helpLink"
+      ]
+    },
+    {
+      "key": "sys:autocadcontrol",
+      "name": "AutoCAD控制",
+      "changes": [
+        "helpLink"
+      ]
+    },
+    {
+      "key": "sys:excelObjects",
+      "name": "Excel对象操作",
+      "changes": [
+        "helpLink"
+      ]
+    },
+    {
+      "key": "sys:excelRange",
+      "name": "Excel区域操作",
+      "changes": [
+        "helpLink"
+      ]
+    },
+    {
+      "key": "sys:excelreadwrite",
+      "name": "Excel文件读写",
+      "changes": [
+        "helpLink"
+      ]
+    },
+    {
+      "key": "sys:officehelper",
+      "name": "Office软件辅助",
+      "changes": [
+        "helpLink"
+      ]
+    },
+    {
+      "key": "sys:rhinocontrol",
+      "name": "Rhino软件控制",
+      "changes": [
+        "helpLink"
+      ]
+    },
+    {
+      "key": "sys:keyoperation",
+      "name": "按键操作",
+      "changes": [
+        "helpLink"
+      ]
+    },
+    {
+      "key": "sys:playSound",
+      "name": "播放声音",
+      "changes": [
+        "helpLink"
+      ]
+    },
+    {
+      "key": "sys:windowOperations",
+      "name": "窗口操作",
+      "changes": [
+        "helpLink"
+      ]
+    },
+    {
+      "key": "sys:restoreActiveWindow",
+      "name": "恢复活动窗口",
+      "changes": [
+        "helpLink"
+      ]
+    },
+    {
+      "key": "sys:getWindowTitle",
+      "name": "获取窗口信息/查找窗口",
+      "changes": [
+        "helpLink"
+      ]
+    },
+    {
+      "key": "sys:getActiveProcessInfo",
+      "name": "获取前台进程信息",
+      "changes": [
+        "helpLink"
+      ]
+    },
+    {
+      "key": "sys:getCurrentTime",
+      "name": "获取日期时间",
+      "changes": [
+        "helpLink"
+      ]
+    },
+    {
+      "key": "sys:getSysInfo",
+      "name": "获取系统或动作信息",
+      "changes": [
+        "helpLink"
+      ]
+    },
+    {
+      "key": "sys:getFolderPath",
+      "name": "获取系统路径",
+      "changes": [
+        "helpLink"
+      ]
+    },
+    {
+      "key": "sys:getSelectedFiles",
+      "name": "获取选择的文件(夹)/选择特定文件",
+      "changes": [
+        "helpLink"
+      ]
+    },
+    {
+      "key": "sys:getExplorerPath",
+      "name": "获取资源管理器路径/跳转路径",
+      "changes": [
+        "helpLink"
+      ]
+    },
+    {
+      "key": "sys:activateProcessMainWindow",
+      "name": "激活进程主窗口",
+      "changes": [
+        "helpLink"
+      ]
+    },
+    {
+      "key": "sys:checkProcessExists",
+      "name": "检查程序已启动/获取进程信息",
+      "changes": [
+        "helpLink"
+      ]
+    },
+    {
+      "key": "sys:recordSound",
+      "name": "录制声音/语音识别",
+      "changes": [
+        "helpLink"
+      ]
+    },
+    {
+      "key": "sys:imeControl",
+      "name": "输入法状态",
+      "changes": [
+        "helpLink"
+      ]
+    },
+    {
+      "key": "sys:fileSystemWatch",
+      "name": "文件系统监控",
+      "changes": [
+        "helpLink"
+      ]
+    },
+    {
+      "key": "sys:sendMessage",
+      "name": "向窗口发送消息",
+      "changes": [
+        "helpLink"
+      ]
+    },
+    {
+      "key": "sys:audioControl",
+      "name": "音频设备",
+      "changes": [
+        "helpLink"
+      ]
+    },
+    {
+      "key": "sys:SelectFileInExplorer",
+      "name": "在资源管理器中定位文件",
+      "changes": [
+        "helpLink"
+      ]
+    },
+    {
+      "key": "sys:quickeroperations",
+      "name": "Quicker操作",
+      "changes": [
+        "helpLink"
+      ]
+    },
+    {
+      "key": "sys:shelloperation",
+      "name": "Shell文件操作",
+      "changes": [
+        "helpLink"
+      ]
+    },
+    {
+      "key": "sys:winservice",
+      "name": "Windows服务和注册表",
+      "changes": [
+        "helpLink"
+      ]
+    },
+    {
+      "key": "sys:splitString",
+      "name": "拆分文本为列表",
+      "changes": [
+        "helpLink"
+      ]
+    },
+    {
+      "key": "sys:charInfo",
+      "name": "获取字符信息",
+      "changes": [
+        "helpLink"
+      ]
+    },
+    {
+      "key": "sys:enc",
+      "name": "加密/解密/哈希",
+      "changes": [
+        "helpLink"
+      ]
+    },
+    {
+      "key": "sys:joinList",
+      "name": "列表合并成文本",
+      "changes": [
+        "helpLink"
+      ]
+    },
+    {
+      "key": "sys:jsonExtract",
+      "name": "提取JSON内容",
+      "changes": [
+        "helpLink"
+      ]
+    },
+    {
+      "key": "sys:strReplace",
+      "name": "替换文本",
+      "changes": [
+        "helpLink"
+      ]
+    },
+    {
+      "key": "sys:stringProcess",
+      "name": "文本处理",
+      "changes": [
+        "helpLink"
+      ]
+    },
+    {
+      "key": "sys:showText",
+      "name": "文本窗口",
+      "changes": [
+        "helpLink"
+      ]
+    },
+    {
+      "key": "sys:regexExtract",
+      "name": "正则提取",
+      "changes": [
+        "helpLink"
+      ]
+    },
+    {
+      "key": "sys:textCounter",
+      "name": "字数统计",
+      "changes": [
+        "helpLink"
+      ]
+    },
+    {
+      "key": "sys:formatString",
+      "name": "组合成文本",
+      "changes": [
+        "helpLink"
+      ]
+    },
+    {
+      "key": "sys:waitKeyboard",
+      "name": "等待按键",
+      "changes": [
+        "helpLink"
+      ]
+    },
+    {
+      "key": "sys:form",
+      "name": "多字段表单",
+      "changes": [
+        "helpLink"
+      ]
+    },
+    {
+      "key": "sys:textSelectTools",
+      "name": "辅助选择工具",
+      "changes": [
+        "helpLink"
+      ]
+    },
+    {
+      "key": "sys:record",
+      "name": "录制键鼠操作",
+      "changes": [
+        "helpLink"
+      ]
+    },
+    {
+      "key": "sys:showmenu",
+      "name": "显示菜单",
+      "changes": [
+        "helpLink"
+      ]
+    },
+    {
+      "key": "sys:showWaitWin",
+      "name": "显示等待窗口",
+      "changes": [
+        "helpLink"
+      ]
+    },
+    {
+      "key": "sys:reportProgress",
+      "name": "显示进度条",
+      "changes": [
+        "helpLink"
+      ]
+    },
+    {
+      "key": "sys:selectFile",
+      "name": "选择文件",
+      "changes": [
+        "helpLink"
+      ]
+    },
+    {
+      "key": "sys:selectFolder",
+      "name": "选择文件夹",
+      "changes": [
+        "helpLink"
+      ]
+    },
+    {
+      "key": "sys:playRecords",
+      "name": "重放键鼠操作",
+      "changes": [
+        "helpLink"
+      ]
+    },
+    {
+      "key": "sys:custompanel",
+      "name": "自定义操作窗",
+      "changes": [
+        "helpLink"
+      ]
+    },
+    {
+      "key": "sys:customwindow",
+      "name": "自定义窗口",
+      "changes": [
+        "helpLink"
+      ]
+    },
+    {
+      "key": "sys:webview2",
+      "name": "WebView2浏览器窗口",
+      "changes": [
+        "helpLink"
+      ]
+    },
+    {
+      "key": "sys:aiText",
+      "name": "AI 文本处理",
+      "changes": [
+        "helpLink"
+      ]
+    },
+    {
+      "key": "sys:aiVision",
+      "name": "AI 图片理解",
+      "changes": [
+        "helpLink"
+      ]
+    },
+    {
+      "key": "sys:aiClassify",
+      "name": "AI 文本分类",
+      "changes": [
+        "helpLink"
+      ]
+    },
+    {
+      "key": "sys:aiExtract",
+      "name": "AI 结构化提取",
+      "changes": [
+        "helpLink"
+      ]
+    },
+    {
+      "key": "sys:aiChat",
+      "name": "AI 交互对话",
+      "changes": [
+        "helpLink"
+      ]
+    }
+  ]
 }

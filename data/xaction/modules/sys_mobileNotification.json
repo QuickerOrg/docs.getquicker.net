@@ -1,0 +1,231 @@
+{
+  "key": "sys:mobileNotification",
+  "slug": "mobilenotification",
+  "legacySlug": "mobilenotification",
+  "ownsLegacyContent": true,
+  "name": "发送手机通知",
+  "description": "向已授权并在线的 Android 设备发送可响应通知。",
+  "category": "Network",
+  "categoryName": "网络服务",
+  "stepType": "Action",
+  "isRisky": true,
+  "isProOnly": false,
+  "helpLink": "https://docs.getquicker.net/v2/xaction/modules/mobilenotification",
+  "inputs": [
+    {
+      "key": "operation",
+      "name": "操作",
+      "type": "Enum",
+      "defaultValue": "SendAndWait",
+      "required": true,
+      "variableMode": "Input",
+      "condition": "",
+      "description": ""
+    },
+    {
+      "key": "deviceId",
+      "name": "设备 ID",
+      "type": "Text",
+      "defaultValue": "",
+      "required": true,
+      "variableMode": "UseVarOrInput",
+      "condition": "",
+      "description": "Remote 设置页已授权 Android 设备的 ID。"
+    },
+    {
+      "key": "notificationId",
+      "name": "通知 ID",
+      "type": "Text",
+      "defaultValue": "",
+      "required": false,
+      "variableMode": "UseVarOrInput",
+      "condition": "",
+      "description": "幂等标识；发送时留空会自动生成。等待或撤销时必须填写。"
+    },
+    {
+      "key": "title",
+      "name": "标题",
+      "type": "Text",
+      "defaultValue": "",
+      "required": true,
+      "variableMode": "UseVarOrInput",
+      "condition": "仅：SendAndWait, Send",
+      "description": ""
+    },
+    {
+      "key": "body",
+      "name": "正文",
+      "type": "Text",
+      "defaultValue": "",
+      "required": false,
+      "variableMode": "UseVarOrInput",
+      "condition": "仅：SendAndWait, Send",
+      "description": ""
+    },
+    {
+      "key": "expiresInSeconds",
+      "name": "过期秒数",
+      "type": "Integer",
+      "defaultValue": "300",
+      "required": false,
+      "variableMode": "UseVarOrInput",
+      "condition": "仅：SendAndWait, Send",
+      "description": "通知等待响应的时间，范围 1 到 86400 秒。"
+    },
+    {
+      "key": "action1Id",
+      "name": "按钮 1 ID",
+      "type": "Text",
+      "defaultValue": "confirm",
+      "required": false,
+      "variableMode": "UseVarOrInput",
+      "condition": "仅：SendAndWait, Send",
+      "description": ""
+    },
+    {
+      "key": "action1Title",
+      "name": "按钮 1 标题",
+      "type": "Text",
+      "defaultValue": "",
+      "required": false,
+      "variableMode": "UseVarOrInput",
+      "condition": "仅：SendAndWait, Send",
+      "description": ""
+    },
+    {
+      "key": "action1Reply",
+      "name": "按钮 1 接受文本回复",
+      "type": "Boolean",
+      "defaultValue": "false",
+      "required": false,
+      "variableMode": "UseVarOrInput",
+      "condition": "仅：SendAndWait, Send",
+      "description": ""
+    },
+    {
+      "key": "action2Id",
+      "name": "按钮 2 ID",
+      "type": "Text",
+      "defaultValue": "cancel",
+      "required": false,
+      "variableMode": "UseVarOrInput",
+      "condition": "仅：SendAndWait, Send",
+      "description": ""
+    },
+    {
+      "key": "action2Title",
+      "name": "按钮 2 标题",
+      "type": "Text",
+      "defaultValue": "",
+      "required": false,
+      "variableMode": "UseVarOrInput",
+      "condition": "仅：SendAndWait, Send",
+      "description": ""
+    },
+    {
+      "key": "action2Reply",
+      "name": "按钮 2 接受文本回复",
+      "type": "Boolean",
+      "defaultValue": "false",
+      "required": false,
+      "variableMode": "UseVarOrInput",
+      "condition": "仅：SendAndWait, Send",
+      "description": ""
+    },
+    {
+      "key": "action3Id",
+      "name": "按钮 3 ID",
+      "type": "Text",
+      "defaultValue": "reply",
+      "required": false,
+      "variableMode": "UseVarOrInput",
+      "condition": "仅：SendAndWait, Send",
+      "description": ""
+    },
+    {
+      "key": "action3Title",
+      "name": "按钮 3 标题",
+      "type": "Text",
+      "defaultValue": "",
+      "required": false,
+      "variableMode": "UseVarOrInput",
+      "condition": "仅：SendAndWait, Send",
+      "description": ""
+    },
+    {
+      "key": "action3Reply",
+      "name": "按钮 3 接受文本回复",
+      "type": "Boolean",
+      "defaultValue": "false",
+      "required": false,
+      "variableMode": "UseVarOrInput",
+      "condition": "仅：SendAndWait, Send",
+      "description": ""
+    }
+  ],
+  "outputs": [
+    {
+      "key": "resultNotificationId",
+      "name": "通知 ID",
+      "type": "Text",
+      "condition": "",
+      "description": ""
+    },
+    {
+      "key": "status",
+      "name": "状态",
+      "type": "Text",
+      "condition": "",
+      "description": ""
+    },
+    {
+      "key": "selectedActionId",
+      "name": "点击按钮 ID",
+      "type": "Text",
+      "condition": "",
+      "description": ""
+    },
+    {
+      "key": "replyText",
+      "name": "回复文本",
+      "type": "Text",
+      "condition": "",
+      "description": ""
+    },
+    {
+      "key": "errorCode",
+      "name": "状态码",
+      "type": "Text",
+      "condition": "",
+      "description": ""
+    }
+  ],
+  "selections": {
+    "operation": {
+      "name": "操作",
+      "items": [
+        {
+          "value": "SendAndWait",
+          "name": "发送并等待响应",
+          "description": ""
+        },
+        {
+          "value": "Send",
+          "name": "异步发送",
+          "description": ""
+        },
+        {
+          "value": "Wait",
+          "name": "等待已有通知",
+          "description": ""
+        },
+        {
+          "value": "Cancel",
+          "name": "撤销已有通知",
+          "description": ""
+        }
+      ]
+    }
+  },
+  "sourceFileName": "sys_mobileNotification_发送手机通知.md"
+}

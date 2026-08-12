@@ -1,0 +1,931 @@
+{
+  "key": "sys:pdf",
+  "slug": "pdf",
+  "legacySlug": "pdf",
+  "ownsLegacyContent": true,
+  "name": "PDF 文件处理",
+  "description": "创建、合并、拆分、调整、保护或在 PDF 页面上叠加内容。",
+  "category": "Files",
+  "categoryName": "系统操作",
+  "stepType": "Action",
+  "isRisky": false,
+  "isProOnly": false,
+  "helpLink": "https://docs.getquicker.net/v2/xaction/modules/pdf",
+  "inputs": [
+    {
+      "key": "operation",
+      "name": "操作",
+      "type": "Enum",
+      "defaultValue": "merge",
+      "required": true,
+      "variableMode": "Input",
+      "condition": "",
+      "description": ""
+    },
+    {
+      "key": "pdfSource",
+      "name": "PDF 来源",
+      "type": "Any",
+      "defaultValue": "",
+      "required": true,
+      "variableMode": "UseVarOrInput",
+      "condition": "仅：merge, split, keepSequence, delete, rotatePages, readInfo, setInfoField, setPassword, removePassword, overlayText, watermark, pageNumber, overlayImage, drawLine, drawRectangle, drawEllipse",
+      "description": "PDF 文件路径。合并时可传入路径列表或换行分隔的路径。"
+    },
+    {
+      "key": "imageSource",
+      "name": "图片来源",
+      "type": "Any",
+      "defaultValue": "",
+      "required": true,
+      "variableMode": "UseVarOrInput",
+      "condition": "仅：imagesToPdf, overlayImage",
+      "description": "图片对象、图片路径或图片路径列表。"
+    },
+    {
+      "key": "password",
+      "name": "输入密码",
+      "type": "Text",
+      "defaultValue": "",
+      "required": false,
+      "variableMode": "UseVarOrInput",
+      "condition": "仅：merge, split, keepSequence, delete, rotatePages, readInfo, setInfoField, setPassword, removePassword, overlayText, watermark, pageNumber, overlayImage, drawLine, drawRectangle, drawEllipse",
+      "description": "用于打开输入 PDF。直接填写会随动作保存，敏感密码建议使用变量。"
+    },
+    {
+      "key": "pages",
+      "name": "页面",
+      "type": "Text",
+      "defaultValue": "all",
+      "required": false,
+      "variableMode": "UseVarOrInput",
+      "condition": "仅：split, keepSequence, delete, rotatePages, overlayText, watermark, pageNumber, overlayImage, drawLine, drawRectangle, drawEllipse",
+      "description": "1-based 页码表达式，如 1,3-5,odd,even,first,last。"
+    },
+    {
+      "key": "pageRotation",
+      "name": "旋转角度",
+      "type": "Enum",
+      "defaultValue": "90",
+      "required": false,
+      "variableMode": "UseVarOrInput",
+      "condition": "仅：rotatePages",
+      "description": ""
+    },
+    {
+      "key": "outputPath",
+      "name": "输出路径",
+      "type": "Text",
+      "defaultValue": "",
+      "required": false,
+      "variableMode": "UseVarOrInput",
+      "condition": "仅：createBlank, imagesToPdf, merge, keepSequence, delete, rotatePages, setInfoField, setPassword, removePassword, overlayText, watermark, pageNumber, overlayImage, drawLine, drawRectangle, drawEllipse",
+      "description": "单文件输出路径。创建操作留空时生成临时 PDF。"
+    },
+    {
+      "key": "outputFolder",
+      "name": "输出文件夹",
+      "type": "Text",
+      "defaultValue": "",
+      "required": false,
+      "variableMode": "UseVarOrInput",
+      "condition": "仅：split",
+      "description": "留空时使用“源文件名_pages”文件夹。"
+    },
+    {
+      "key": "overwrite",
+      "name": "覆盖已有",
+      "type": "Boolean",
+      "defaultValue": "false",
+      "required": false,
+      "variableMode": "UseVarOrInput",
+      "condition": "仅：createBlank, imagesToPdf, merge, split, keepSequence, delete, rotatePages, setInfoField, setPassword, removePassword, overlayText, watermark, pageNumber, overlayImage, drawLine, drawRectangle, drawEllipse",
+      "description": ""
+    },
+    {
+      "key": "allowUnencryptedOutput",
+      "name": "允许生成未加密输出",
+      "type": "Boolean",
+      "defaultValue": "false",
+      "required": false,
+      "variableMode": "UseVarOrInput",
+      "condition": "仅：merge, split, keepSequence, delete, rotatePages, setInfoField, overlayText, watermark, pageNumber, overlayImage, drawLine, drawRectangle, drawEllipse",
+      "description": "受保护输入另存为未加密 PDF 时必须显式允许。"
+    },
+    {
+      "key": "blankPageCount",
+      "name": "页数",
+      "type": "Integer",
+      "defaultValue": "1",
+      "required": false,
+      "variableMode": "UseVarOrInput",
+      "condition": "仅：createBlank",
+      "description": ""
+    },
+    {
+      "key": "pageSize",
+      "name": "页面尺寸",
+      "type": "Enum",
+      "defaultValue": "a4",
+      "required": false,
+      "variableMode": "UseVarOrInput",
+      "condition": "仅：createBlank, imagesToPdf",
+      "description": ""
+    },
+    {
+      "key": "orientation",
+      "name": "页面方向",
+      "type": "Enum",
+      "defaultValue": "auto",
+      "required": false,
+      "variableMode": "UseVarOrInput",
+      "condition": "仅：createBlank, imagesToPdf",
+      "description": ""
+    },
+    {
+      "key": "customPageWidthMm",
+      "name": "自定义宽度（毫米）",
+      "type": "Number",
+      "defaultValue": "210.0",
+      "required": false,
+      "variableMode": "UseVarOrInput",
+      "condition": "仅：createBlank, imagesToPdf",
+      "description": ""
+    },
+    {
+      "key": "customPageHeightMm",
+      "name": "自定义高度（毫米）",
+      "type": "Number",
+      "defaultValue": "297.0",
+      "required": false,
+      "variableMode": "UseVarOrInput",
+      "condition": "仅：createBlank, imagesToPdf",
+      "description": ""
+    },
+    {
+      "key": "imageLayout",
+      "name": "图片布局",
+      "type": "Enum",
+      "defaultValue": "contain",
+      "required": false,
+      "variableMode": "UseVarOrInput",
+      "condition": "仅：imagesToPdf, overlayImage",
+      "description": ""
+    },
+    {
+      "key": "pageMarginMm",
+      "name": "页边距（毫米）",
+      "type": "Number",
+      "defaultValue": "0.0",
+      "required": false,
+      "variableMode": "UseVarOrInput",
+      "condition": "仅：imagesToPdf",
+      "description": ""
+    },
+    {
+      "key": "preventUpscale",
+      "name": "不放大小图",
+      "type": "Boolean",
+      "defaultValue": "false",
+      "required": false,
+      "variableMode": "UseVarOrInput",
+      "condition": "仅：imagesToPdf",
+      "description": ""
+    },
+    {
+      "key": "infoField",
+      "name": "信息字段",
+      "type": "Enum",
+      "defaultValue": "title",
+      "required": false,
+      "variableMode": "UseVarOrInput",
+      "condition": "仅：setInfoField",
+      "description": ""
+    },
+    {
+      "key": "infoValue",
+      "name": "字段值",
+      "type": "Text",
+      "defaultValue": "",
+      "required": false,
+      "variableMode": "UseVarOrInput",
+      "condition": "仅：setInfoField",
+      "description": ""
+    },
+    {
+      "key": "outputUserPassword",
+      "name": "输出用户密码",
+      "type": "Text",
+      "defaultValue": "",
+      "required": false,
+      "variableMode": "UseVarOrInput",
+      "condition": "仅：setPassword",
+      "description": ""
+    },
+    {
+      "key": "outputOwnerPassword",
+      "name": "输出 owner 密码",
+      "type": "Text",
+      "defaultValue": "",
+      "required": false,
+      "variableMode": "UseVarOrInput",
+      "condition": "仅：setPassword",
+      "description": ""
+    },
+    {
+      "key": "encryptionMode",
+      "name": "加密方式",
+      "type": "Enum",
+      "defaultValue": "aes128",
+      "required": false,
+      "variableMode": "UseVarOrInput",
+      "condition": "仅：setPassword",
+      "description": ""
+    },
+    {
+      "key": "permitAnnotations",
+      "name": "允许注释",
+      "type": "Boolean",
+      "defaultValue": "true",
+      "required": false,
+      "variableMode": "UseVarOrInput",
+      "condition": "仅：setPassword",
+      "description": ""
+    },
+    {
+      "key": "permitAssembleDocument",
+      "name": "允许组合文档",
+      "type": "Boolean",
+      "defaultValue": "true",
+      "required": false,
+      "variableMode": "UseVarOrInput",
+      "condition": "仅：setPassword",
+      "description": ""
+    },
+    {
+      "key": "permitExtractContent",
+      "name": "允许复制或提取内容",
+      "type": "Boolean",
+      "defaultValue": "true",
+      "required": false,
+      "variableMode": "UseVarOrInput",
+      "condition": "仅：setPassword",
+      "description": ""
+    },
+    {
+      "key": "permitFormsFill",
+      "name": "允许填写表单",
+      "type": "Boolean",
+      "defaultValue": "true",
+      "required": false,
+      "variableMode": "UseVarOrInput",
+      "condition": "仅：setPassword",
+      "description": ""
+    },
+    {
+      "key": "permitFullQualityPrint",
+      "name": "允许高质量打印",
+      "type": "Boolean",
+      "defaultValue": "true",
+      "required": false,
+      "variableMode": "UseVarOrInput",
+      "condition": "仅：setPassword",
+      "description": ""
+    },
+    {
+      "key": "permitModifyDocument",
+      "name": "允许修改文档",
+      "type": "Boolean",
+      "defaultValue": "true",
+      "required": false,
+      "variableMode": "UseVarOrInput",
+      "condition": "仅：setPassword",
+      "description": ""
+    },
+    {
+      "key": "permitPrint",
+      "name": "允许打印",
+      "type": "Boolean",
+      "defaultValue": "true",
+      "required": false,
+      "variableMode": "UseVarOrInput",
+      "condition": "仅：setPassword",
+      "description": ""
+    },
+    {
+      "key": "layer",
+      "name": "图层",
+      "type": "Enum",
+      "defaultValue": "append",
+      "required": false,
+      "variableMode": "UseVarOrInput",
+      "condition": "仅：overlayText, watermark, pageNumber, overlayImage, drawLine, drawRectangle, drawEllipse",
+      "description": ""
+    },
+    {
+      "key": "text",
+      "name": "文字",
+      "type": "Text",
+      "defaultValue": "",
+      "required": false,
+      "variableMode": "UseVarOrInput",
+      "condition": "仅：overlayText, watermark, pageNumber",
+      "description": ""
+    },
+    {
+      "key": "fontFamily",
+      "name": "字体",
+      "type": "Text",
+      "defaultValue": "Microsoft YaHei",
+      "required": false,
+      "variableMode": "UseVarOrInput",
+      "condition": "仅：overlayText, watermark, pageNumber",
+      "description": ""
+    },
+    {
+      "key": "fontSize",
+      "name": "字号（磅）",
+      "type": "Number",
+      "defaultValue": "24.0",
+      "required": false,
+      "variableMode": "UseVarOrInput",
+      "condition": "仅：overlayText, watermark, pageNumber",
+      "description": ""
+    },
+    {
+      "key": "bold",
+      "name": "粗体",
+      "type": "Boolean",
+      "defaultValue": "false",
+      "required": false,
+      "variableMode": "UseVarOrInput",
+      "condition": "仅：overlayText, watermark, pageNumber",
+      "description": ""
+    },
+    {
+      "key": "italic",
+      "name": "斜体",
+      "type": "Boolean",
+      "defaultValue": "false",
+      "required": false,
+      "variableMode": "UseVarOrInput",
+      "condition": "仅：overlayText, watermark, pageNumber",
+      "description": ""
+    },
+    {
+      "key": "textColor",
+      "name": "文字颜色",
+      "type": "Text",
+      "defaultValue": "#000000",
+      "required": false,
+      "variableMode": "UseVarOrInput",
+      "condition": "仅：overlayText, watermark, pageNumber",
+      "description": ""
+    },
+    {
+      "key": "opacity",
+      "name": "透明度",
+      "type": "Number",
+      "defaultValue": "1.0",
+      "required": false,
+      "variableMode": "UseVarOrInput",
+      "condition": "仅：overlayText, watermark, overlayImage, pageNumber",
+      "description": ""
+    },
+    {
+      "key": "xMm",
+      "name": "X（毫米）",
+      "type": "Number",
+      "defaultValue": "0.0",
+      "required": false,
+      "variableMode": "UseVarOrInput",
+      "condition": "仅：overlayText, overlayImage, drawLine, drawRectangle, drawEllipse",
+      "description": ""
+    },
+    {
+      "key": "yMm",
+      "name": "Y（毫米）",
+      "type": "Number",
+      "defaultValue": "0.0",
+      "required": false,
+      "variableMode": "UseVarOrInput",
+      "condition": "仅：overlayText, overlayImage, drawLine, drawRectangle, drawEllipse",
+      "description": ""
+    },
+    {
+      "key": "x2Mm",
+      "name": "终点 X（毫米）",
+      "type": "Number",
+      "defaultValue": "10.0",
+      "required": false,
+      "variableMode": "UseVarOrInput",
+      "condition": "仅：drawLine",
+      "description": ""
+    },
+    {
+      "key": "y2Mm",
+      "name": "终点 Y（毫米）",
+      "type": "Number",
+      "defaultValue": "10.0",
+      "required": false,
+      "variableMode": "UseVarOrInput",
+      "condition": "仅：drawLine",
+      "description": ""
+    },
+    {
+      "key": "widthMm",
+      "name": "宽度（毫米）",
+      "type": "Number",
+      "defaultValue": "50.0",
+      "required": false,
+      "variableMode": "UseVarOrInput",
+      "condition": "仅：overlayText, overlayImage, drawRectangle, drawEllipse",
+      "description": ""
+    },
+    {
+      "key": "heightMm",
+      "name": "高度（毫米）",
+      "type": "Number",
+      "defaultValue": "30.0",
+      "required": false,
+      "variableMode": "UseVarOrInput",
+      "condition": "仅：overlayText, overlayImage, drawRectangle, drawEllipse",
+      "description": ""
+    },
+    {
+      "key": "horizontalAlignment",
+      "name": "水平对齐",
+      "type": "Enum",
+      "defaultValue": "left",
+      "required": false,
+      "variableMode": "UseVarOrInput",
+      "condition": "仅：overlayText",
+      "description": ""
+    },
+    {
+      "key": "verticalAlignment",
+      "name": "垂直对齐",
+      "type": "Enum",
+      "defaultValue": "top",
+      "required": false,
+      "variableMode": "UseVarOrInput",
+      "condition": "仅：overlayText",
+      "description": ""
+    },
+    {
+      "key": "rotationDegrees",
+      "name": "旋转角度",
+      "type": "Number",
+      "defaultValue": "0.0",
+      "required": false,
+      "variableMode": "UseVarOrInput",
+      "condition": "仅：overlayText, watermark, overlayImage",
+      "description": ""
+    },
+    {
+      "key": "positionPreset",
+      "name": "位置",
+      "type": "Enum",
+      "defaultValue": "center",
+      "required": false,
+      "variableMode": "UseVarOrInput",
+      "condition": "仅：watermark, pageNumber",
+      "description": ""
+    },
+    {
+      "key": "positionMarginMm",
+      "name": "位置边距（毫米）",
+      "type": "Number",
+      "defaultValue": "10.0",
+      "required": false,
+      "variableMode": "UseVarOrInput",
+      "condition": "仅：pageNumber",
+      "description": ""
+    },
+    {
+      "key": "strokeColor",
+      "name": "描边颜色",
+      "type": "Text",
+      "defaultValue": "#000000",
+      "required": false,
+      "variableMode": "UseVarOrInput",
+      "condition": "仅：drawLine, drawRectangle, drawEllipse",
+      "description": ""
+    },
+    {
+      "key": "strokeWidth",
+      "name": "线宽（磅）",
+      "type": "Number",
+      "defaultValue": "1.0",
+      "required": false,
+      "variableMode": "UseVarOrInput",
+      "condition": "仅：drawLine, drawRectangle, drawEllipse",
+      "description": ""
+    },
+    {
+      "key": "fillColor",
+      "name": "填充颜色",
+      "type": "Text",
+      "defaultValue": "#FFFFFF",
+      "required": false,
+      "variableMode": "UseVarOrInput",
+      "condition": "仅：drawRectangle, drawEllipse",
+      "description": ""
+    },
+    {
+      "key": "fillOpacity",
+      "name": "填充透明度",
+      "type": "Number",
+      "defaultValue": "0.0",
+      "required": false,
+      "variableMode": "UseVarOrInput",
+      "condition": "仅：drawRectangle, drawEllipse",
+      "description": ""
+    },
+    {
+      "key": "cornerRadiusMm",
+      "name": "圆角半径（毫米）",
+      "type": "Number",
+      "defaultValue": "0.0",
+      "required": false,
+      "variableMode": "UseVarOrInput",
+      "condition": "仅：drawRectangle",
+      "description": ""
+    },
+    {
+      "key": "stopIfFail",
+      "name": "失败后中止动作",
+      "type": "Boolean",
+      "defaultValue": "true",
+      "required": false,
+      "variableMode": "Input",
+      "condition": "",
+      "description": "失败后是否停止动作"
+    }
+  ],
+  "outputs": [
+    {
+      "key": "isSuccess",
+      "name": "是否成功",
+      "type": "Boolean",
+      "condition": "",
+      "description": "操作是否成功"
+    },
+    {
+      "key": "resultPath",
+      "name": "结果路径",
+      "type": "Text",
+      "condition": "仅：createBlank, imagesToPdf, merge, keepSequence, delete, rotatePages, setInfoField, setPassword, removePassword, overlayText, watermark, pageNumber, overlayImage, drawLine, drawRectangle, drawEllipse",
+      "description": ""
+    },
+    {
+      "key": "resultPaths",
+      "name": "结果路径列表",
+      "type": "List",
+      "condition": "仅：split",
+      "description": ""
+    },
+    {
+      "key": "pageCount",
+      "name": "页数",
+      "type": "Integer",
+      "condition": "",
+      "description": ""
+    },
+    {
+      "key": "documentInfo",
+      "name": "文档信息",
+      "type": "Dict",
+      "condition": "仅：readInfo",
+      "description": ""
+    }
+  ],
+  "selections": {
+    "operation": {
+      "name": "操作",
+      "items": [
+        {
+          "value": "createBlank",
+          "name": "创建：空白 PDF",
+          "description": ""
+        },
+        {
+          "value": "imagesToPdf",
+          "name": "创建：图片转 PDF",
+          "description": ""
+        },
+        {
+          "value": "merge",
+          "name": "页面：合并 PDF",
+          "description": ""
+        },
+        {
+          "value": "split",
+          "name": "页面：按页拆分",
+          "description": ""
+        },
+        {
+          "value": "keepSequence",
+          "name": "页面：提取/复制/重排",
+          "description": ""
+        },
+        {
+          "value": "delete",
+          "name": "页面：删除",
+          "description": ""
+        },
+        {
+          "value": "rotatePages",
+          "name": "页面：旋转",
+          "description": ""
+        },
+        {
+          "value": "readInfo",
+          "name": "信息：读取文档信息",
+          "description": ""
+        },
+        {
+          "value": "setInfoField",
+          "name": "信息：设置字段",
+          "description": ""
+        },
+        {
+          "value": "setPassword",
+          "name": "安全：设置密码",
+          "description": ""
+        },
+        {
+          "value": "removePassword",
+          "name": "安全：移除密码",
+          "description": ""
+        },
+        {
+          "value": "overlayText",
+          "name": "叠加：文字",
+          "description": ""
+        },
+        {
+          "value": "watermark",
+          "name": "叠加：文字水印",
+          "description": ""
+        },
+        {
+          "value": "pageNumber",
+          "name": "叠加：页码",
+          "description": ""
+        },
+        {
+          "value": "overlayImage",
+          "name": "叠加：图片",
+          "description": ""
+        },
+        {
+          "value": "drawLine",
+          "name": "叠加：线条",
+          "description": ""
+        },
+        {
+          "value": "drawRectangle",
+          "name": "叠加：矩形",
+          "description": ""
+        },
+        {
+          "value": "drawEllipse",
+          "name": "叠加：椭圆",
+          "description": ""
+        }
+      ]
+    },
+    "pageRotation": {
+      "name": "旋转角度",
+      "items": [
+        {
+          "value": "90",
+          "name": "顺时针 90°",
+          "description": ""
+        },
+        {
+          "value": "180",
+          "name": "顺时针 180°",
+          "description": ""
+        },
+        {
+          "value": "270",
+          "name": "顺时针 270°",
+          "description": ""
+        }
+      ]
+    },
+    "pageSize": {
+      "name": "页面尺寸",
+      "items": [
+        {
+          "value": "image",
+          "name": "图片原尺寸",
+          "description": ""
+        },
+        {
+          "value": "a4",
+          "name": "A4",
+          "description": ""
+        },
+        {
+          "value": "a3",
+          "name": "A3",
+          "description": ""
+        },
+        {
+          "value": "letter",
+          "name": "Letter",
+          "description": ""
+        },
+        {
+          "value": "custom",
+          "name": "自定义",
+          "description": ""
+        }
+      ]
+    },
+    "orientation": {
+      "name": "页面方向",
+      "items": [
+        {
+          "value": "auto",
+          "name": "自动",
+          "description": ""
+        },
+        {
+          "value": "portrait",
+          "name": "纵向",
+          "description": ""
+        },
+        {
+          "value": "landscape",
+          "name": "横向",
+          "description": ""
+        }
+      ]
+    },
+    "imageLayout": {
+      "name": "图片布局",
+      "items": [
+        {
+          "value": "contain",
+          "name": "包含",
+          "description": ""
+        },
+        {
+          "value": "cover",
+          "name": "填充裁剪",
+          "description": ""
+        },
+        {
+          "value": "stretch",
+          "name": "拉伸",
+          "description": ""
+        }
+      ]
+    },
+    "infoField": {
+      "name": "信息字段",
+      "items": [
+        {
+          "value": "title",
+          "name": "标题",
+          "description": ""
+        },
+        {
+          "value": "author",
+          "name": "作者",
+          "description": ""
+        },
+        {
+          "value": "subject",
+          "name": "主题",
+          "description": ""
+        },
+        {
+          "value": "keywords",
+          "name": "关键词",
+          "description": ""
+        },
+        {
+          "value": "creator",
+          "name": "创建者",
+          "description": ""
+        }
+      ]
+    },
+    "encryptionMode": {
+      "name": "加密方式",
+      "items": [
+        {
+          "value": "aes128",
+          "name": "AES-128（兼容性优先）",
+          "description": ""
+        },
+        {
+          "value": "aes256",
+          "name": "AES-256（PDF 2.0）",
+          "description": ""
+        }
+      ]
+    },
+    "layer": {
+      "name": "图层",
+      "items": [
+        {
+          "value": "append",
+          "name": "前景",
+          "description": ""
+        },
+        {
+          "value": "prepend",
+          "name": "背景",
+          "description": ""
+        }
+      ]
+    },
+    "horizontalAlignment": {
+      "name": "水平对齐",
+      "items": [
+        {
+          "value": "left",
+          "name": "左对齐",
+          "description": ""
+        },
+        {
+          "value": "center",
+          "name": "居中",
+          "description": ""
+        },
+        {
+          "value": "right",
+          "name": "右对齐",
+          "description": ""
+        }
+      ]
+    },
+    "verticalAlignment": {
+      "name": "垂直对齐",
+      "items": [
+        {
+          "value": "top",
+          "name": "顶部",
+          "description": ""
+        },
+        {
+          "value": "center",
+          "name": "居中",
+          "description": ""
+        },
+        {
+          "value": "bottom",
+          "name": "底部",
+          "description": ""
+        }
+      ]
+    },
+    "positionPreset": {
+      "name": "位置",
+      "items": [
+        {
+          "value": "topLeft",
+          "name": "左上",
+          "description": ""
+        },
+        {
+          "value": "topCenter",
+          "name": "顶部居中",
+          "description": ""
+        },
+        {
+          "value": "topRight",
+          "name": "右上",
+          "description": ""
+        },
+        {
+          "value": "center",
+          "name": "居中",
+          "description": ""
+        },
+        {
+          "value": "bottomLeft",
+          "name": "左下",
+          "description": ""
+        },
+        {
+          "value": "bottomCenter",
+          "name": "底部居中",
+          "description": ""
+        },
+        {
+          "value": "bottomRight",
+          "name": "右下",
+          "description": ""
+        }
+      ]
+    }
+  },
+  "sourceFileName": "sys_pdf_PDF 文件处理.md"
+}

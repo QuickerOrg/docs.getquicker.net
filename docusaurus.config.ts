@@ -1,6 +1,7 @@
 import fs from 'fs';
 import path from 'path';
 import {themes as prismThemes} from 'prism-react-renderer';
+import {GlobExcludeDefault} from '@docusaurus/utils';
 import type {Config} from '@docusaurus/types';
 import type * as Preset from '@docusaurus/preset-classic';
 import type {PluginOptions as LocalSearchOptions} from '@easyops-cn/docusaurus-search-local';
@@ -129,6 +130,12 @@ const config: Config = {
             'https://github.com/QuickerOrg/docs.getquicker.net/tree/main/',
         },
         blog: false,
+        pages: {
+          exclude: [
+            ...GlobExcludeDefault,
+            ...(isProd ? ['**/lab/screenshot-review/**'] : []),
+          ],
+        },
         theme: {
           customCss: './src/css/custom.css',
         },
@@ -156,16 +163,20 @@ const config: Config = {
           label: '文档',
         },
         {to: '/release-notes', label: '更新记录', position: 'left'},
-    {
-      to: '/lab/screenshot-review',
-      label: '截图审核',
-      position: 'right',
-    },
-    {
-      href: 'https://getquicker.net',
-      label: 'Quicker 官网',
-      position: 'right',
-    },
+        ...(!isProd
+          ? [
+              {
+                to: '/lab/screenshot-review',
+                label: '截图审核',
+                position: 'right' as const,
+              },
+            ]
+          : []),
+        {
+          href: 'https://getquicker.net',
+          label: 'Quicker 官网',
+          position: 'right',
+        },
         {
           href: 'https://github.com/QuickerOrg/docs.getquicker.net',
           label: 'GitHub',
@@ -200,8 +211,10 @@ const config: Config = {
     // 后续 QuickerWeb 提供评论挂载页后，填入例如：
     // https://getquicker.net/V2Docs/Comments
     quickerCommentsBaseUrl: '',
-    // 本地截图审核 API（tools/screenshot-replace/review-api.mjs）
-    screenshotReviewApiBase: 'http://127.0.0.1:3920',
+    // Local screenshot-review API (tools/screenshot-replace/review-api.mjs). Dev only.
+    ...(isProd
+      ? {}
+      : {screenshotReviewApiBase: 'http://127.0.0.1:3920'}),
   },
 };
 

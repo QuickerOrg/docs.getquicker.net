@@ -1,15 +1,39 @@
 {
   "version": 1,
-  "updatedAt": "2026-08-12T05:28:00+08:00",
+  "updatedAt": "2026-08-12T12:40:00+08:00",
   "items": [
     {
-      "image": "docs/v2/xaction/concepts/img/xaction-intro-002-2d7a7d0eb7.png",
-      "kind": "steps",
-      "action": "replaced",
-      "component": "StepProgramView",
-      "confidence": "medium",
-      "page": "docs/v2/xaction/concepts/xaction-intro.md",
-      "notes": "OCR steps: getSelectedText→if selectSuccess→openUrl $$google search else google home. Restored as StepProgramView, not full editor."
+      "image": "docs/v2/xaction/concepts/img/action-custom-context-menu-001-8e5e2322bf.png",
+      "page": "docs/v2/xaction/concepts/action-custom-context-menu.md",
+      "status": "converted",
+      "reason": "已用实时 MDX 预览替换；原图文件保留供审核。",
+      "evidence": "campaign-rewrite",
+      "updatedAt": "2026-08-12T12:30:00+08:00",
+      "component": "ContextMenuPreview"
+    },
+    {
+      "image": "docs/v2/xaction/concepts/img/action-custom-context-menu-002-1d103a1a05.png",
+      "page": "docs/v2/xaction/concepts/action-custom-context-menu.md",
+      "status": "kept",
+      "reason": "外观/选项区自定义菜单输入框尚未抽进 ActionEditorPreview。",
+      "evidence": "campaign-rewrite",
+      "updatedAt": "2026-08-12T12:30:00+08:00"
+    },
+    {
+      "image": "docs/v2/xaction/concepts/img/action-custom-context-menu-003-9072d6bb7e.png",
+      "page": "docs/v2/xaction/concepts/action-custom-context-menu.md",
+      "status": "kept",
+      "reason": "「在编辑器中修改」溢出编辑菜单，无对应预览。",
+      "evidence": "campaign-rewrite",
+      "updatedAt": "2026-08-12T12:30:00+08:00"
+    },
+    {
+      "image": "docs/v2/xaction/concepts/img/action-custom-context-menu-004-747e28cefc.png",
+      "page": "docs/v2/xaction/concepts/action-custom-context-menu.md",
+      "status": "kept",
+      "reason": "插入图标名菜单，无图标库选择器组件。",
+      "evidence": "campaign-rewrite",
+      "updatedAt": "2026-08-12T12:30:00+08:00"
     },
     {
       "image": "docs/v2/xaction/concepts/img/action-custom-context-menu-005-268e6fc45d.png",
@@ -22,6 +46,15 @@
       "updatedAt": "2026-08-11T19:17:14+08:00"
     },
     {
+      "image": "docs/v2/xaction/concepts/img/action-custom-context-menu-006-5610f9f6b6.png",
+      "page": "docs/v2/xaction/concepts/action-custom-context-menu.md",
+      "status": "converted",
+      "reason": "已用实时 MDX 预览替换；原图文件保留供审核。",
+      "evidence": "campaign-rewrite",
+      "updatedAt": "2026-08-12T12:30:00+08:00",
+      "component": "ContextMenuPreview"
+    },
+    {
       "image": "docs/v2/xaction/concepts/img/action-custom-context-menu-007-bd149697b2.png",
       "page": "docs/v2/xaction/concepts/action-custom-context-menu.md",
       "status": "converted",
@@ -32,6 +65,24 @@
       "updatedAt": "2026-08-11T19:17:14+08:00"
     },
     {
+      "image": "docs/v2/xaction/concepts/img/action-custom-context-menu-008-1d7066caf4.png",
+      "page": "docs/v2/xaction/concepts/action-custom-context-menu.md",
+      "status": "converted",
+      "reason": "已用实时 MDX 预览替换；原图文件保留供审核。",
+      "evidence": "campaign-rewrite",
+      "updatedAt": "2026-08-12T12:30:00+08:00",
+      "component": "ContextMenuPreview"
+    },
+    {
+      "image": "docs/v2/xaction/concepts/img/action-custom-context-menu-009-fdb648dc2c.png",
+      "page": "docs/v2/xaction/concepts/action-custom-context-menu.md",
+      "status": "converted",
+      "reason": "已用实时 MDX 预览替换；原图文件保留供审核。",
+      "evidence": "campaign-rewrite",
+      "updatedAt": "2026-08-12T12:30:00+08:00",
+      "component": "ModuleParamPreview"
+    },
+    {
       "image": "docs/v2/xaction/concepts/img/basic-001-c40d950f42.png",
       "page": "docs/v2/xaction/concepts/basic.md",
       "status": "converted",
@@ -39,6 +90,752 @@
       "evidence": "git-diff",
       "commit": "4fa032b",
       "updatedAt": "2026-08-11T19:17:14+08:00"
+    },
+    {
+      "image": "docs/v2/xaction/concepts/img/basic-002-78337a6691.png",
+      "page": "docs/v2/xaction/concepts/basic.md",
+      "status": "converted",
+      "reason": "已用实时 MDX 预览替换；原图文件保留供审核。",
+      "evidence": "campaign-rewrite",
+      "updatedAt": "2026-08-12T12:30:00+08:00",
+      "component": "ModuleParamPreview"
+    },
+    {
+      "image": "docs/v2/xaction/concepts/img/basic-003-0070711069.png",
+      "page": "docs/v2/xaction/concepts/basic.md",
+      "status": "converted",
+      "reason": "已用实时 MDX 预览替换；原图文件保留供审核。",
+      "evidence": "campaign-rewrite",
+      "updatedAt": "2026-08-12T12:30:00+08:00",
+      "component": "ModuleParamPreview"
+    },
+    {
+      "image": "docs/v2/xaction/concepts/img/basic-004-d4a9d6203e.png",
+      "page": "docs/v2/xaction/concepts/basic.md",
+      "status": "converted",
+      "reason": "已用实时 MDX 预览替换；原图文件保留供审核。",
+      "evidence": "campaign-rewrite",
+      "updatedAt": "2026-08-12T12:30:00+08:00",
+      "component": "ModuleParamPreview"
+    },
+    {
+      "image": "docs/v2/xaction/concepts/img/basic-005-e6ac642021.png",
+      "page": "docs/v2/xaction/concepts/basic.md",
+      "status": "converted",
+      "reason": "已用实时 MDX 预览替换；原图文件保留供审核。",
+      "evidence": "campaign-rewrite",
+      "updatedAt": "2026-08-12T12:30:00+08:00",
+      "component": "ModuleParamPreview"
+    },
+    {
+      "image": "docs/v2/xaction/concepts/img/basic-006-1562ff92d9.png",
+      "page": "docs/v2/xaction/concepts/basic.md",
+      "status": "converted",
+      "reason": "已用实时 MDX 预览替换；原图文件保留供审核。",
+      "evidence": "campaign-rewrite",
+      "updatedAt": "2026-08-12T12:30:00+08:00",
+      "component": "ModuleParamPreview"
+    },
+    {
+      "image": "docs/v2/xaction/concepts/img/basic-007-6801d8e6d7.png",
+      "page": "docs/v2/xaction/concepts/basic.md",
+      "status": "converted",
+      "reason": "已用实时 MDX 预览替换；原图文件保留供审核。",
+      "evidence": "campaign-rewrite",
+      "updatedAt": "2026-08-12T12:30:00+08:00",
+      "component": "ModuleParamPreview"
+    },
+    {
+      "image": "docs/v2/xaction/concepts/img/custom_texttool-001-346073d209.png",
+      "page": "docs/v2/xaction/concepts/custom_texttool.md",
+      "status": "converted",
+      "reason": "示例动作自定义工具条 + 悬停提示；用 UserInputPreview + PreviewMarks 还原（表单窗体 chrome 近似）。",
+      "evidence": "example d08bf039 ExtraSettings icons/tooltips",
+      "updatedAt": "2026-08-12T11:30:00+08:00",
+      "component": "UserInputPreview"
+    },
+    {
+      "image": "docs/v2/xaction/concepts/img/custom_texttool-002-7b0cb68490.png",
+      "page": "docs/v2/xaction/concepts/custom_texttool.md",
+      "status": "converted",
+      "reason": "已用实时 MDX 预览替换；原图文件保留供审核。",
+      "evidence": "campaign-rewrite",
+      "updatedAt": "2026-08-12T12:30:00+08:00",
+      "component": "ModuleParamPreview"
+    },
+    {
+      "image": "docs/v2/xaction/concepts/img/custom_texttool-003-2d46bae681.png",
+      "page": "docs/v2/xaction/concepts/custom_texttool.md",
+      "status": "converted",
+      "reason": "已用实时 MDX 预览替换；原图文件保留供审核。",
+      "evidence": "campaign-rewrite",
+      "updatedAt": "2026-08-12T12:30:00+08:00",
+      "component": "ActionEditorPreview"
+    },
+    {
+      "image": "docs/v2/xaction/concepts/img/custom_texttool-004-3a0aa89279.png",
+      "page": "docs/v2/xaction/concepts/custom_texttool.md",
+      "status": "converted",
+      "reason": "已用实时 MDX 预览替换；原图文件保留供审核。",
+      "evidence": "campaign-rewrite",
+      "updatedAt": "2026-08-12T12:30:00+08:00",
+      "component": "ModuleParamPreview"
+    },
+    {
+      "image": "docs/v2/xaction/concepts/img/custom_texttool-005-dcb2d017ba.png",
+      "page": "docs/v2/xaction/concepts/custom_texttool.md",
+      "status": "kept",
+      "reason": "扩展设置 + 结果追加场景，无表单运行时预览。",
+      "evidence": "campaign-rewrite",
+      "updatedAt": "2026-08-12T12:30:00+08:00"
+    },
+    {
+      "image": "docs/v2/xaction/concepts/img/custom_texttool-006-08561a8ec8.png",
+      "page": "docs/v2/xaction/concepts/custom_texttool.md",
+      "status": "kept",
+      "reason": "文本工具写回输入框的运行结果截图。",
+      "evidence": "campaign-rewrite",
+      "updatedAt": "2026-08-12T12:30:00+08:00"
+    },
+    {
+      "image": "docs/v2/xaction/concepts/img/debug-001-509735dba5.png",
+      "page": "docs/v2/xaction/concepts/debug.md",
+      "status": "converted",
+      "reason": "已用实时 MDX 预览替换；原图文件保留供审核。",
+      "evidence": "campaign-rewrite",
+      "updatedAt": "2026-08-12T12:30:00+08:00",
+      "component": "ContextMenuPreview"
+    },
+    {
+      "image": "docs/v2/xaction/concepts/img/debug-002-68cb660064.png",
+      "page": "docs/v2/xaction/concepts/debug.md",
+      "status": "converted",
+      "reason": "已用实时 MDX 预览替换；原图文件保留供审核。",
+      "evidence": "campaign-rewrite",
+      "updatedAt": "2026-08-12T12:30:00+08:00",
+      "component": "ModuleParamPreview"
+    },
+    {
+      "image": "docs/v2/xaction/concepts/img/debug-003-072f9e9e4f.png",
+      "page": "docs/v2/xaction/concepts/debug.md",
+      "status": "kept",
+      "reason": "「自动调试」动作菜单标记，非整窗可还原。",
+      "evidence": "campaign-rewrite",
+      "updatedAt": "2026-08-12T12:30:00+08:00"
+    },
+    {
+      "image": "docs/v2/xaction/concepts/img/debug-004-4defe88012.png",
+      "page": "docs/v2/xaction/concepts/debug.md",
+      "status": "converted",
+      "reason": "已用实时 MDX 预览替换；原图文件保留供审核。",
+      "evidence": "campaign-rewrite",
+      "updatedAt": "2026-08-12T12:30:00+08:00",
+      "component": "ActionEditorPreview"
+    },
+    {
+      "image": "docs/v2/xaction/concepts/img/debug-005-a4ffee21b4.png",
+      "page": "docs/v2/xaction/concepts/debug.md",
+      "status": "converted",
+      "reason": "已用实时 MDX 预览替换；原图文件保留供审核。",
+      "evidence": "campaign-rewrite",
+      "updatedAt": "2026-08-12T12:30:00+08:00",
+      "component": "ContextMenuPreview"
+    },
+    {
+      "image": "docs/v2/xaction/concepts/img/debug-006-8b12230f68.png",
+      "page": "docs/v2/xaction/concepts/debug.md",
+      "status": "kept",
+      "reason": "HTML 调试日志整页 chrome，战役约定 keep。",
+      "evidence": "campaign-rewrite",
+      "updatedAt": "2026-08-12T12:30:00+08:00"
+    },
+    {
+      "image": "docs/v2/xaction/concepts/img/debug-007-41dce12a8b.png",
+      "page": "docs/v2/xaction/concepts/debug.md",
+      "status": "kept",
+      "reason": "调试日志文件头交互，战役约定 keep。",
+      "evidence": "campaign-rewrite",
+      "updatedAt": "2026-08-12T12:30:00+08:00"
+    },
+    {
+      "image": "docs/v2/xaction/concepts/img/debug-008-e542943bcb.png",
+      "page": "docs/v2/xaction/concepts/debug.md",
+      "status": "converted",
+      "reason": "已用实时 MDX 预览替换；原图文件保留供审核。",
+      "evidence": "campaign-rewrite",
+      "updatedAt": "2026-08-12T12:30:00+08:00",
+      "component": "ActionEditorPreview"
+    },
+    {
+      "image": "docs/v2/xaction/concepts/img/debug-009-938add2b0c.png",
+      "page": "docs/v2/xaction/concepts/debug.md",
+      "status": "kept",
+      "reason": "调试日志步骤头，战役约定 keep。",
+      "evidence": "campaign-rewrite",
+      "updatedAt": "2026-08-12T12:30:00+08:00"
+    },
+    {
+      "image": "docs/v2/xaction/concepts/img/debug-010-32d9747588.png",
+      "page": "docs/v2/xaction/concepts/debug.md",
+      "status": "kept",
+      "reason": "调试日志 [in]/[out] 详情，战役约定 keep。",
+      "evidence": "campaign-rewrite",
+      "updatedAt": "2026-08-12T12:30:00+08:00"
+    },
+    {
+      "image": "docs/v2/xaction/concepts/img/debug-011-8492086325.png",
+      "page": "docs/v2/xaction/concepts/debug.md",
+      "status": "converted",
+      "reason": "已用实时 MDX 预览替换；原图文件保留供审核。",
+      "evidence": "campaign-rewrite",
+      "updatedAt": "2026-08-12T12:30:00+08:00"
+    },
+    {
+      "image": "docs/v2/xaction/concepts/img/debug-012-7806158d65.png",
+      "page": "docs/v2/xaction/concepts/debug.md",
+      "status": "converted",
+      "reason": "已用实时 MDX 预览替换；原图文件保留供审核。",
+      "evidence": "campaign-rewrite",
+      "updatedAt": "2026-08-12T12:30:00+08:00"
+    },
+    {
+      "image": "docs/v2/xaction/concepts/img/debug-013-7bac30c0d7.png",
+      "page": "docs/v2/xaction/concepts/debug.md",
+      "status": "kept",
+      "reason": "调试日志折叠态，战役约定 keep。",
+      "evidence": "campaign-rewrite",
+      "updatedAt": "2026-08-12T12:30:00+08:00"
+    },
+    {
+      "image": "docs/v2/xaction/concepts/img/debug-014-00a3d05396.png",
+      "page": "docs/v2/xaction/concepts/debug.md",
+      "status": "converted",
+      "reason": "已用实时 MDX 预览替换；原图文件保留供审核。",
+      "evidence": "campaign-rewrite",
+      "updatedAt": "2026-08-12T12:30:00+08:00"
+    },
+    {
+      "image": "docs/v2/xaction/concepts/img/debug-015-56fe860209.png",
+      "page": "docs/v2/xaction/concepts/debug.md",
+      "status": "kept",
+      "reason": "步骤组跳过调试输出勾选，无对应预览。",
+      "evidence": "campaign-rewrite",
+      "updatedAt": "2026-08-12T12:30:00+08:00"
+    },
+    {
+      "image": "docs/v2/xaction/concepts/img/debug-016-79fb9b6ae8.png",
+      "page": "docs/v2/xaction/concepts/debug.md",
+      "status": "kept",
+      "reason": "运行子程序跳过调试输出勾选，无对应预览。",
+      "evidence": "campaign-rewrite",
+      "updatedAt": "2026-08-12T12:30:00+08:00"
+    },
+    {
+      "image": "docs/v2/xaction/concepts/img/expression-001-bb23f82940.png",
+      "page": "docs/v2/xaction/concepts/expression.md",
+      "status": "converted",
+      "reason": "已用实时 MDX 预览替换；原图文件保留供审核。",
+      "evidence": "campaign-rewrite",
+      "updatedAt": "2026-08-12T12:30:00+08:00",
+      "component": "ModuleParamPreview"
+    },
+    {
+      "image": "docs/v2/xaction/concepts/img/expression-002-c5fecf5fda.png",
+      "page": "docs/v2/xaction/concepts/expression.md",
+      "status": "converted",
+      "reason": "已用实时 MDX 预览替换；原图文件保留供审核。",
+      "evidence": "campaign-rewrite",
+      "updatedAt": "2026-08-12T12:30:00+08:00",
+      "component": "ModuleParamPreview"
+    },
+    {
+      "image": "docs/v2/xaction/concepts/img/expression-003-e22f5b5332.png",
+      "page": "docs/v2/xaction/concepts/expression.md",
+      "status": "converted",
+      "reason": "已用实时 MDX 预览替换；原图文件保留供审核。",
+      "evidence": "campaign-rewrite",
+      "updatedAt": "2026-08-12T12:30:00+08:00",
+      "component": "ModuleParamPreview"
+    },
+    {
+      "image": "docs/v2/xaction/concepts/img/expression-004-572224d4cf.png",
+      "page": "docs/v2/xaction/concepts/expression.md",
+      "status": "converted",
+      "reason": "已用实时 MDX 预览替换；原图文件保留供审核。",
+      "evidence": "campaign-rewrite",
+      "updatedAt": "2026-08-12T12:30:00+08:00",
+      "component": "ModuleParamPreview"
+    },
+    {
+      "image": "docs/v2/xaction/concepts/img/expression-005-edd3399b08.png",
+      "page": "docs/v2/xaction/concepts/expression.md",
+      "status": "converted",
+      "reason": "已用实时 MDX 预览替换；原图文件保留供审核。",
+      "evidence": "campaign-rewrite",
+      "updatedAt": "2026-08-12T12:30:00+08:00",
+      "component": "ModuleParamPreview"
+    },
+    {
+      "image": "docs/v2/xaction/concepts/img/expression-006-db11b75b08.gif",
+      "page": "docs/v2/xaction/concepts/expression.md",
+      "status": "converted",
+      "reason": "已用实时 MDX 预览替换；原图文件保留供审核。",
+      "evidence": "campaign-rewrite",
+      "updatedAt": "2026-08-12T12:30:00+08:00"
+    },
+    {
+      "image": "docs/v2/xaction/concepts/img/expression-007-d7ef2211e1.png",
+      "page": "docs/v2/xaction/concepts/expression.md",
+      "status": "converted",
+      "reason": "已用实时 MDX 预览替换；原图文件保留供审核。",
+      "evidence": "campaign-rewrite",
+      "updatedAt": "2026-08-12T12:30:00+08:00",
+      "component": "ModuleParamPreview"
+    },
+    {
+      "image": "docs/v2/xaction/concepts/img/expression-adv-001-e21604f457.gif",
+      "page": "docs/v2/xaction/concepts/expression-adv.md",
+      "status": "kept",
+      "reason": "表达式补全连续 GIF，战役约定 keep。",
+      "evidence": "campaign-rewrite",
+      "updatedAt": "2026-08-12T12:30:00+08:00"
+    },
+    {
+      "image": "docs/v2/xaction/concepts/img/expression-adv-002-7e8a5da993.png",
+      "page": "docs/v2/xaction/concepts/expression-adv.md",
+      "status": "kept",
+      "reason": "补全列表静态截图，无 ExpressionAssist 组件。",
+      "evidence": "campaign-rewrite",
+      "updatedAt": "2026-08-12T12:30:00+08:00"
+    },
+    {
+      "image": "docs/v2/xaction/concepts/img/expression-adv-003-93f06d88cb.png",
+      "page": "docs/v2/xaction/concepts/expression-adv.md",
+      "status": "kept",
+      "reason": "表达式测试器 chrome，战役约定 keep。",
+      "evidence": "campaign-rewrite",
+      "updatedAt": "2026-08-12T12:30:00+08:00"
+    },
+    {
+      "image": "docs/v2/xaction/concepts/img/expression-adv-004-c7b4eb9f24.gif",
+      "page": "docs/v2/xaction/concepts/expression-adv.md",
+      "status": "kept",
+      "reason": "测试器交互 GIF，战役约定 keep。",
+      "evidence": "campaign-rewrite",
+      "updatedAt": "2026-08-12T12:30:00+08:00"
+    },
+    {
+      "image": "docs/v2/xaction/concepts/img/expression-adv-005-6e6b36ac6c.png",
+      "page": "docs/v2/xaction/concepts/expression-adv.md",
+      "status": "kept",
+      "reason": "表达式测试设置窗，战役约定 keep。",
+      "evidence": "campaign-rewrite",
+      "updatedAt": "2026-08-12T12:30:00+08:00"
+    },
+    {
+      "image": "docs/v2/xaction/concepts/img/expression-adv-006-7d646baacf.png",
+      "page": "docs/v2/xaction/concepts/expression-adv.md",
+      "status": "kept",
+      "reason": "表达式上下文变量列表截图，战役约定 keep。",
+      "evidence": "campaign-rewrite",
+      "updatedAt": "2026-08-12T12:30:00+08:00"
+    },
+    {
+      "image": "docs/v2/xaction/concepts/img/interpolation-001-2c97fb9e75.png",
+      "page": "docs/v2/xaction/concepts/interpolation.md",
+      "status": "converted",
+      "reason": "已用实时 MDX 预览替换；原图文件保留供审核。",
+      "evidence": "campaign-rewrite",
+      "updatedAt": "2026-08-12T12:30:00+08:00",
+      "component": "ModuleParamPreview"
+    },
+    {
+      "image": "docs/v2/xaction/concepts/img/parameters-001-d0458de728.png",
+      "page": "docs/v2/xaction/concepts/parameters.md",
+      "status": "converted",
+      "reason": "已用实时 MDX 预览替换；原图文件保留供审核。",
+      "evidence": "campaign-rewrite",
+      "updatedAt": "2026-08-12T12:30:00+08:00"
+    },
+    {
+      "image": "docs/v2/xaction/concepts/img/parameters-002-e0976223bb.png",
+      "page": "docs/v2/xaction/concepts/parameters.md",
+      "status": "converted",
+      "reason": "已用实时 MDX 预览替换；原图文件保留供审核。",
+      "evidence": "campaign-rewrite",
+      "updatedAt": "2026-08-12T12:30:00+08:00",
+      "component": "ModuleParamPreview"
+    },
+    {
+      "image": "docs/v2/xaction/concepts/img/parameters-003-a108a6063d.png",
+      "page": "docs/v2/xaction/concepts/parameters.md",
+      "status": "converted",
+      "reason": "已用实时 MDX 预览替换；原图文件保留供审核。",
+      "evidence": "campaign-rewrite",
+      "updatedAt": "2026-08-12T12:30:00+08:00",
+      "component": "ModuleParamPreview"
+    },
+    {
+      "image": "docs/v2/xaction/concepts/img/parameters-004-e09c7a161c.png",
+      "page": "docs/v2/xaction/concepts/parameters.md",
+      "status": "converted",
+      "reason": "已用实时 MDX 预览替换；原图文件保留供审核。",
+      "evidence": "campaign-rewrite",
+      "updatedAt": "2026-08-12T12:30:00+08:00",
+      "component": "ModuleParamPreview"
+    },
+    {
+      "image": "docs/v2/xaction/concepts/img/parameters-005-6e15f9b983.png",
+      "page": "docs/v2/xaction/concepts/parameters.md",
+      "status": "converted",
+      "reason": "已用实时 MDX 预览替换；原图文件保留供审核。",
+      "evidence": "campaign-rewrite",
+      "updatedAt": "2026-08-12T12:30:00+08:00",
+      "component": "ModuleParamPreview"
+    },
+    {
+      "image": "docs/v2/xaction/concepts/img/quicker_in_param-001-73c9b3df3d.png",
+      "page": "docs/v2/xaction/concepts/quicker_in_param.md",
+      "status": "converted",
+      "reason": "已用实时 MDX 预览替换；原图文件保留供审核。",
+      "evidence": "campaign-rewrite",
+      "updatedAt": "2026-08-12T12:30:00+08:00",
+      "component": "ModuleParamPreview"
+    },
+    {
+      "image": "docs/v2/xaction/concepts/img/quicker_in_param-002-32105dc4b6.png",
+      "page": "docs/v2/xaction/concepts/quicker_in_param.md",
+      "status": "converted",
+      "reason": "已用实时 MDX 预览替换；原图文件保留供审核。",
+      "evidence": "campaign-rewrite",
+      "updatedAt": "2026-08-12T12:30:00+08:00",
+      "component": "ModuleParamPreview"
+    },
+    {
+      "image": "docs/v2/xaction/concepts/img/quicker_in_param-003-884be56d4b.png",
+      "page": "docs/v2/xaction/concepts/quicker_in_param.md",
+      "status": "converted",
+      "reason": "已用实时 MDX 预览替换；原图文件保留供审核。",
+      "evidence": "campaign-rewrite",
+      "updatedAt": "2026-08-12T12:30:00+08:00",
+      "component": "ModuleParamPreview"
+    },
+    {
+      "image": "docs/v2/xaction/concepts/img/quicker_in_param-004-0eb4e7da8f.png",
+      "page": "docs/v2/xaction/concepts/quicker_in_param.md",
+      "status": "converted",
+      "reason": "已用实时 MDX 预览替换；原图文件保留供审核。",
+      "evidence": "campaign-rewrite",
+      "updatedAt": "2026-08-12T12:30:00+08:00",
+      "component": "ModuleParamPreview"
+    },
+    {
+      "image": "docs/v2/xaction/concepts/img/quicker_in_param-005-322ca8548e.png",
+      "page": "docs/v2/xaction/concepts/quicker_in_param.md",
+      "status": "converted",
+      "reason": "已用实时 MDX 预览替换；原图文件保留供审核。",
+      "evidence": "campaign-rewrite",
+      "updatedAt": "2026-08-12T12:30:00+08:00",
+      "component": "ModuleParamPreview"
+    },
+    {
+      "image": "docs/v2/xaction/concepts/img/quicker_in_param-006-3fc3c17f33.png",
+      "page": "docs/v2/xaction/concepts/quicker_in_param.md",
+      "status": "converted",
+      "reason": "已用实时 MDX 预览替换；原图文件保留供审核。",
+      "evidence": "campaign-rewrite",
+      "updatedAt": "2026-08-12T12:30:00+08:00",
+      "component": "ModuleParamPreview"
+    },
+    {
+      "image": "docs/v2/xaction/concepts/img/quicker_in_param-007-3327d3cd50.png",
+      "page": "docs/v2/xaction/concepts/quicker_in_param.md",
+      "status": "converted",
+      "reason": "已用实时 MDX 预览替换；原图文件保留供审核。",
+      "evidence": "campaign-rewrite",
+      "updatedAt": "2026-08-12T12:30:00+08:00",
+      "component": "ModuleParamPreview"
+    },
+    {
+      "image": "docs/v2/xaction/concepts/img/standard-001-1158dea522.png",
+      "page": "docs/v2/xaction/concepts/standard.md",
+      "status": "converted",
+      "reason": "已用实时 MDX 预览替换；原图文件保留供审核。",
+      "evidence": "campaign-rewrite",
+      "updatedAt": "2026-08-12T12:30:00+08:00",
+      "component": "ModuleParamPreview"
+    },
+    {
+      "image": "docs/v2/xaction/concepts/img/store-settings-001-0281424444.png",
+      "page": "docs/v2/xaction/concepts/store-settings.md",
+      "status": "converted",
+      "reason": "已用实时 MDX 预览替换；原图文件保留供审核。",
+      "evidence": "campaign-rewrite",
+      "updatedAt": "2026-08-12T12:30:00+08:00",
+      "component": "VariableDefPreview"
+    },
+    {
+      "image": "docs/v2/xaction/concepts/img/store-settings-002-c681c2b63e.png",
+      "page": "docs/v2/xaction/concepts/store-settings.md",
+      "status": "converted",
+      "reason": "已用实时 MDX 预览替换；原图文件保留供审核。",
+      "evidence": "campaign-rewrite",
+      "updatedAt": "2026-08-12T12:30:00+08:00",
+      "component": "VariableDefPreview"
+    },
+    {
+      "image": "docs/v2/xaction/concepts/img/store-settings-003-0fb91e2fb6.png",
+      "page": "docs/v2/xaction/concepts/store-settings.md",
+      "status": "converted",
+      "reason": "已用实时 MDX 预览替换；原图文件保留供审核。",
+      "evidence": "campaign-rewrite",
+      "updatedAt": "2026-08-12T12:30:00+08:00",
+      "component": "StepProgramView"
+    },
+    {
+      "image": "docs/v2/xaction/concepts/img/store-settings-004-91bb89d0f3.png",
+      "page": "docs/v2/xaction/concepts/store-settings.md",
+      "status": "converted",
+      "reason": "已用实时 MDX 预览替换；原图文件保留供审核。",
+      "evidence": "campaign-rewrite",
+      "updatedAt": "2026-08-12T12:30:00+08:00",
+      "component": "ContextMenuPreview"
+    },
+    {
+      "image": "docs/v2/xaction/concepts/img/store-settings-005-ca57828a00.png",
+      "page": "docs/v2/xaction/concepts/store-settings.md",
+      "status": "converted",
+      "reason": "已用实时 MDX 预览替换；原图文件保留供审核。",
+      "evidence": "campaign-rewrite",
+      "updatedAt": "2026-08-12T12:30:00+08:00",
+      "component": "ModuleParamPreview"
+    },
+    {
+      "image": "docs/v2/xaction/concepts/img/store-settings-006-c36b8ff027.png",
+      "page": "docs/v2/xaction/concepts/store-settings.md",
+      "status": "converted",
+      "reason": "已用实时 MDX 预览替换；原图文件保留供审核。",
+      "evidence": "campaign-rewrite",
+      "updatedAt": "2026-08-12T12:30:00+08:00",
+      "component": "ModuleParamPreview"
+    },
+    {
+      "image": "docs/v2/xaction/concepts/img/store-settings-007-5971d060ee.png",
+      "page": "docs/v2/xaction/concepts/store-settings.md",
+      "status": "converted",
+      "reason": "已用实时 MDX 预览替换；原图文件保留供审核。",
+      "evidence": "campaign-rewrite",
+      "updatedAt": "2026-08-12T12:30:00+08:00",
+      "component": "StepProgramView"
+    },
+    {
+      "image": "docs/v2/xaction/concepts/img/store-settings-008-03c3bd91c7.png",
+      "page": "docs/v2/xaction/concepts/store-settings.md",
+      "status": "converted",
+      "reason": "已用实时 MDX 预览替换；原图文件保留供审核。",
+      "evidence": "campaign-rewrite",
+      "updatedAt": "2026-08-12T12:30:00+08:00",
+      "component": "ModuleParamPreview"
+    },
+    {
+      "image": "docs/v2/xaction/concepts/img/store-settings-009-c4d5e78df2.png",
+      "page": "docs/v2/xaction/concepts/store-settings.md",
+      "status": "converted",
+      "reason": "已用实时 MDX 预览替换；原图文件保留供审核。",
+      "evidence": "campaign-rewrite",
+      "updatedAt": "2026-08-12T12:30:00+08:00",
+      "component": "ModuleParamPreview"
+    },
+    {
+      "image": "docs/v2/xaction/concepts/img/store-settings-010-f364f6f48b.png",
+      "page": "docs/v2/xaction/concepts/store-settings.md",
+      "status": "converted",
+      "reason": "已用实时 MDX 预览替换；原图文件保留供审核。",
+      "evidence": "campaign-rewrite",
+      "updatedAt": "2026-08-12T12:30:00+08:00",
+      "component": "ShareLinkCard"
+    },
+    {
+      "image": "docs/v2/xaction/concepts/img/subprogram-001-1b76aae5f7.png",
+      "page": "docs/v2/xaction/concepts/subprogram.md",
+      "status": "kept",
+      "reason": "子程序概念总览图，非步骤列表。",
+      "evidence": "campaign-rewrite",
+      "updatedAt": "2026-08-12T12:30:00+08:00"
+    },
+    {
+      "image": "docs/v2/xaction/concepts/img/subprogram-002-6f4fc9d808.gif",
+      "page": "docs/v2/xaction/concepts/subprogram.md",
+      "status": "kept",
+      "reason": "拖入子程序连续 GIF，战役约定 keep。",
+      "evidence": "campaign-rewrite",
+      "updatedAt": "2026-08-12T12:30:00+08:00"
+    },
+    {
+      "image": "docs/v2/xaction/concepts/img/subprogram-003-cb795a4acc.png",
+      "page": "docs/v2/xaction/concepts/subprogram.md",
+      "status": "converted",
+      "reason": "已用实时 MDX 预览替换；原图文件保留供审核。",
+      "evidence": "campaign-rewrite",
+      "updatedAt": "2026-08-12T12:30:00+08:00",
+      "component": "ModuleParamPreview"
+    },
+    {
+      "image": "docs/v2/xaction/concepts/img/subprogram-004-501759bafb.png",
+      "page": "docs/v2/xaction/concepts/subprogram.md",
+      "status": "converted",
+      "reason": "已用实时 MDX 预览替换；原图文件保留供审核。",
+      "evidence": "campaign-rewrite",
+      "updatedAt": "2026-08-12T12:30:00+08:00",
+      "component": "ActionEditorPreview"
+    },
+    {
+      "image": "docs/v2/xaction/concepts/img/subprogram-005-74b01bf559.png",
+      "page": "docs/v2/xaction/concepts/subprogram.md",
+      "status": "converted",
+      "reason": "已用实时 MDX 预览替换；原图文件保留供审核。",
+      "evidence": "campaign-rewrite",
+      "updatedAt": "2026-08-12T12:30:00+08:00",
+      "component": "ActionEditorPreview"
+    },
+    {
+      "image": "docs/v2/xaction/concepts/img/subprogram-006-91ac05bd3e.png",
+      "page": "docs/v2/xaction/concepts/subprogram.md",
+      "status": "converted",
+      "reason": "已用实时 MDX 预览替换；原图文件保留供审核。",
+      "evidence": "campaign-rewrite",
+      "updatedAt": "2026-08-12T12:30:00+08:00",
+      "component": "VariableDefPreview"
+    },
+    {
+      "image": "docs/v2/xaction/concepts/img/subprogram-007-b3d54a2eb5.png",
+      "page": "docs/v2/xaction/concepts/subprogram.md",
+      "status": "converted",
+      "reason": "已用实时 MDX 预览替换；原图文件保留供审核。",
+      "evidence": "campaign-rewrite",
+      "updatedAt": "2026-08-12T12:30:00+08:00",
+      "component": "VariableDefPreview"
+    },
+    {
+      "image": "docs/v2/xaction/concepts/img/subprogram-008-86881f079c.png",
+      "page": "docs/v2/xaction/concepts/subprogram.md",
+      "status": "kept",
+      "reason": "动作内子程序树/列表 chrome，战役约定 keep。",
+      "evidence": "campaign-rewrite",
+      "updatedAt": "2026-08-12T12:30:00+08:00"
+    },
+    {
+      "image": "docs/v2/xaction/concepts/img/subprogram-009-177340a46e.png",
+      "page": "docs/v2/xaction/concepts/subprogram.md",
+      "status": "converted",
+      "reason": "已用实时 MDX 预览替换；原图文件保留供审核。",
+      "evidence": "campaign-rewrite",
+      "updatedAt": "2026-08-12T12:30:00+08:00",
+      "component": "ContextMenuPreview"
+    },
+    {
+      "image": "docs/v2/xaction/concepts/img/subprogram-010-57e5689682.png",
+      "page": "docs/v2/xaction/concepts/subprogram.md",
+      "status": "converted",
+      "reason": "已用实时 MDX 预览替换；原图文件保留供审核。",
+      "evidence": "campaign-rewrite",
+      "updatedAt": "2026-08-12T12:30:00+08:00",
+      "component": "ActionEditorPreview"
+    },
+    {
+      "image": "docs/v2/xaction/concepts/img/subprogram-011-6c50d8b647.png",
+      "page": "docs/v2/xaction/concepts/subprogram.md",
+      "status": "converted",
+      "reason": "已用实时 MDX 预览替换；原图文件保留供审核。",
+      "evidence": "campaign-rewrite",
+      "updatedAt": "2026-08-12T12:30:00+08:00",
+      "component": "ActionEditorPreview"
+    },
+    {
+      "image": "docs/v2/xaction/concepts/img/subprogram-012-7b2f20667b.png",
+      "page": "docs/v2/xaction/concepts/subprogram.md",
+      "status": "converted",
+      "reason": "已用实时 MDX 预览替换；原图文件保留供审核。",
+      "evidence": "campaign-rewrite",
+      "updatedAt": "2026-08-12T12:30:00+08:00",
+      "component": "ActionEditorPreview"
+    },
+    {
+      "image": "docs/v2/xaction/concepts/img/subprogram-013-65abbf25f5.png",
+      "page": "docs/v2/xaction/concepts/subprogram.md",
+      "status": "converted",
+      "reason": "已用实时 MDX 预览替换；原图文件保留供审核。",
+      "evidence": "campaign-rewrite",
+      "updatedAt": "2026-08-12T12:30:00+08:00",
+      "component": "ActionEditorPreview"
+    },
+    {
+      "image": "docs/v2/xaction/concepts/img/subprogram-014-17c23f40f9.png",
+      "page": "docs/v2/xaction/concepts/subprogram.md",
+      "status": "converted",
+      "reason": "已用实时 MDX 预览替换；原图文件保留供审核。",
+      "evidence": "campaign-rewrite",
+      "updatedAt": "2026-08-12T12:30:00+08:00",
+      "component": "ActionEditorPreview"
+    },
+    {
+      "image": "docs/v2/xaction/concepts/img/subprogram-015-f0ca20a03e.png",
+      "page": "docs/v2/xaction/concepts/subprogram.md",
+      "status": "converted",
+      "reason": "已用实时 MDX 预览替换；原图文件保留供审核。",
+      "evidence": "campaign-rewrite",
+      "updatedAt": "2026-08-12T12:30:00+08:00",
+      "component": "ActionEditorPreview"
+    },
+    {
+      "image": "docs/v2/xaction/concepts/img/subprogram-016-08d43a7149.png",
+      "page": "docs/v2/xaction/concepts/subprogram.md",
+      "status": "converted",
+      "reason": "已用实时 MDX 预览替换；原图文件保留供审核。",
+      "evidence": "campaign-rewrite",
+      "updatedAt": "2026-08-12T12:30:00+08:00"
+    },
+    {
+      "image": "docs/v2/xaction/concepts/img/subprogram-017-df90c860c5.png",
+      "page": "docs/v2/xaction/concepts/subprogram.md",
+      "status": "converted",
+      "reason": "已用实时 MDX 预览替换；原图文件保留供审核。",
+      "evidence": "campaign-rewrite",
+      "updatedAt": "2026-08-12T12:30:00+08:00"
+    },
+    {
+      "image": "docs/v2/xaction/concepts/img/subprogram-018-895314019a.png",
+      "page": "docs/v2/xaction/concepts/subprogram.md",
+      "status": "kept",
+      "reason": "网络共享子程序搜索列表，战役约定 keep。",
+      "evidence": "campaign-rewrite",
+      "updatedAt": "2026-08-12T12:30:00+08:00"
+    },
+    {
+      "image": "docs/v2/xaction/concepts/img/subprogram-019-73b82928ba.png",
+      "page": "docs/v2/xaction/concepts/subprogram.md",
+      "status": "converted",
+      "reason": "已用实时 MDX 预览替换；原图文件保留供审核。",
+      "evidence": "campaign-rewrite",
+      "updatedAt": "2026-08-12T12:30:00+08:00"
+    },
+    {
+      "image": "docs/v2/xaction/concepts/img/tablevar-001-a2185810a0.png",
+      "page": "docs/v2/xaction/concepts/tablevar.md",
+      "status": "converted",
+      "reason": "已用实时 MDX 预览替换；原图文件保留供审核。",
+      "evidence": "campaign-rewrite",
+      "updatedAt": "2026-08-12T12:30:00+08:00",
+      "component": "TableDataPreview"
+    },
+    {
+      "image": "docs/v2/xaction/concepts/img/tablevar-002-fd03282792.png",
+      "page": "docs/v2/xaction/concepts/tablevar.md",
+      "status": "converted",
+      "reason": "已用实时 MDX 预览替换；原图文件保留供审核。",
+      "evidence": "campaign-rewrite",
+      "updatedAt": "2026-08-12T12:30:00+08:00",
+      "component": "TableFieldPreview"
     },
     {
       "image": "docs/v2/xaction/concepts/img/tablevar-003-dc327fcdaa.png",
@@ -61,6 +858,16 @@
       "updatedAt": "2026-08-11T19:17:14+08:00"
     },
     {
+      "image": "docs/v2/xaction/concepts/img/tablevar-005-e62f5a2e9f.png",
+      "page": "docs/v2/xaction/concepts/tablevar.md",
+      "status": "converted",
+      "component": "TableDataPreview",
+      "kind": "table-data",
+      "reason": "OCR unknown/review；人工为表格数据窗+红字「双击查看大图」。TableDataPreview 增加 image:50 缩略图，PreviewMarks 还原标注；双击打开大图。原图保留供审核。",
+      "evidence": "ocr+manual",
+      "updatedAt": "2026-08-12T11:20:00+08:00"
+    },
+    {
       "image": "docs/v2/xaction/concepts/img/tablevar-006-4585a7d600.png",
       "page": "docs/v2/xaction/concepts/tablevar.md",
       "status": "converted",
@@ -69,6 +876,41 @@
       "evidence": "git-diff",
       "commit": "4fa032b",
       "updatedAt": "2026-08-11T19:17:14+08:00"
+    },
+    {
+      "image": "docs/v2/xaction/concepts/img/tablevar-007-57a7d4f97d.png",
+      "page": "docs/v2/xaction/concepts/tablevar.md",
+      "status": "converted",
+      "reason": "已用实时 MDX 预览替换；原图文件保留供审核。",
+      "evidence": "campaign-rewrite",
+      "updatedAt": "2026-08-12T12:30:00+08:00",
+      "component": "ModuleParamPreview"
+    },
+    {
+      "image": "docs/v2/xaction/concepts/img/use-icon-in-actions-001-d45c5e4cf8.png",
+      "page": "docs/v2/xaction/concepts/use-icon-in-actions.md",
+      "status": "converted",
+      "reason": "已用实时 MDX 预览替换；原图文件保留供审核。",
+      "evidence": "campaign-rewrite",
+      "updatedAt": "2026-08-12T12:30:00+08:00",
+      "component": "ContextMenuPreview"
+    },
+    {
+      "image": "docs/v2/xaction/concepts/img/use-icon-in-actions-002-2dad114ee9.png",
+      "page": "docs/v2/xaction/concepts/use-icon-in-actions.md",
+      "status": "converted",
+      "reason": "已用实时 MDX 预览替换；原图文件保留供审核。",
+      "evidence": "campaign-rewrite",
+      "updatedAt": "2026-08-12T12:30:00+08:00",
+      "component": "ContextMenuPreview"
+    },
+    {
+      "image": "docs/v2/xaction/concepts/img/use-icon-in-actions-003-9ae71d6c53.png",
+      "page": "docs/v2/xaction/concepts/use-icon-in-actions.md",
+      "status": "kept",
+      "reason": "图标库整页，无组件。",
+      "evidence": "campaign-rewrite",
+      "updatedAt": "2026-08-12T12:30:00+08:00"
     },
     {
       "image": "docs/v2/xaction/concepts/img/var-dict-001-489d4973bd.png",
@@ -121,6 +963,639 @@
       "updatedAt": "2026-08-11T19:17:14+08:00"
     },
     {
+      "image": "docs/v2/xaction/concepts/img/variables-001-38217dee5a.png",
+      "page": "docs/v2/xaction/concepts/variables.md",
+      "status": "converted",
+      "reason": "已用实时 MDX 预览替换；原图文件保留供审核。",
+      "evidence": "campaign-rewrite",
+      "updatedAt": "2026-08-12T12:30:00+08:00",
+      "component": "ActionEditorPreview"
+    },
+    {
+      "image": "docs/v2/xaction/concepts/img/variables-002-c28ae27407.png",
+      "page": "docs/v2/xaction/concepts/variables.md",
+      "status": "converted",
+      "reason": "已用实时 MDX 预览替换；原图文件保留供审核。",
+      "evidence": "campaign-rewrite",
+      "updatedAt": "2026-08-12T12:30:00+08:00",
+      "component": "VariableListPane"
+    },
+    {
+      "image": "docs/v2/xaction/concepts/img/variables-003-21aebb2562.png",
+      "page": "docs/v2/xaction/concepts/variables.md",
+      "status": "converted",
+      "reason": "已用实时 MDX 预览替换；原图文件保留供审核。",
+      "evidence": "campaign-rewrite",
+      "updatedAt": "2026-08-12T12:30:00+08:00",
+      "component": "VariableDefPreview"
+    },
+    {
+      "image": "docs/v2/xaction/concepts/img/variables-004-a314ededaf.png",
+      "page": "docs/v2/xaction/concepts/variables.md",
+      "status": "converted",
+      "reason": "已用实时 MDX 预览替换；原图文件保留供审核。",
+      "evidence": "campaign-rewrite",
+      "updatedAt": "2026-08-12T12:30:00+08:00",
+      "component": "VariableDefPreview"
+    },
+    {
+      "image": "docs/v2/xaction/concepts/img/variables-005-a0c69ffecf.png",
+      "page": "docs/v2/xaction/concepts/variables.md",
+      "status": "converted",
+      "reason": "已用实时 MDX 预览替换；原图文件保留供审核。",
+      "evidence": "campaign-rewrite",
+      "updatedAt": "2026-08-12T12:30:00+08:00",
+      "component": "ActionEditorPreview"
+    },
+    {
+      "image": "docs/v2/xaction/concepts/img/variables-006-1b92faccf8.png",
+      "page": "docs/v2/xaction/concepts/variables.md",
+      "status": "converted",
+      "reason": "已用实时 MDX 预览替换；原图文件保留供审核。",
+      "evidence": "campaign-rewrite",
+      "updatedAt": "2026-08-12T12:30:00+08:00",
+      "component": "ModuleParamPreview"
+    },
+    {
+      "image": "docs/v2/xaction/concepts/img/variables-007-622d364231.png",
+      "page": "docs/v2/xaction/concepts/variables.md",
+      "status": "converted",
+      "reason": "已用实时 MDX 预览替换；原图文件保留供审核。",
+      "evidence": "campaign-rewrite",
+      "updatedAt": "2026-08-12T12:30:00+08:00",
+      "component": "ModuleParamPreview"
+    },
+    {
+      "image": "docs/v2/xaction/concepts/img/variables-008-b2cc638dfc.png",
+      "page": "docs/v2/xaction/concepts/variables.md",
+      "status": "converted",
+      "reason": "已用实时 MDX 预览替换；原图文件保留供审核。",
+      "evidence": "campaign-rewrite",
+      "updatedAt": "2026-08-12T12:30:00+08:00",
+      "component": "ModuleParamPreview"
+    },
+    {
+      "image": "docs/v2/xaction/concepts/img/variables-009-782832c78b.png",
+      "page": "docs/v2/xaction/concepts/variables.md",
+      "status": "converted",
+      "reason": "已用实时 MDX 预览替换；原图文件保留供审核。",
+      "evidence": "campaign-rewrite",
+      "updatedAt": "2026-08-12T12:30:00+08:00",
+      "component": "ModuleParamPreview"
+    },
+    {
+      "image": "docs/v2/xaction/concepts/img/variables-010-ac981f5aa2.png",
+      "page": "docs/v2/xaction/concepts/variables.md",
+      "status": "converted",
+      "reason": "已用实时 MDX 预览替换；原图文件保留供审核。",
+      "evidence": "campaign-rewrite",
+      "updatedAt": "2026-08-12T12:30:00+08:00",
+      "component": "ModuleParamPreview"
+    },
+    {
+      "image": "docs/v2/xaction/concepts/img/variables-011-e49106bca6.png",
+      "page": "docs/v2/xaction/concepts/variables.md",
+      "status": "converted",
+      "reason": "已用实时 MDX 预览替换；原图文件保留供审核。",
+      "evidence": "campaign-rewrite",
+      "updatedAt": "2026-08-12T12:30:00+08:00",
+      "component": "ModuleParamPreview"
+    },
+    {
+      "image": "docs/v2/xaction/concepts/img/visibility-expression-001-a2ad45e573.gif",
+      "page": "docs/v2/xaction/concepts/visibility-expression.md",
+      "status": "kept",
+      "reason": "子程序参数显隐 GIF，战役约定 keep。",
+      "evidence": "campaign-rewrite",
+      "updatedAt": "2026-08-12T12:30:00+08:00"
+    },
+    {
+      "image": "docs/v2/xaction/concepts/img/visibility-expression-002-97e38c5544.png",
+      "page": "docs/v2/xaction/concepts/visibility-expression.md",
+      "status": "kept",
+      "reason": "可见性表达式字段截图，无表单运行时预览。",
+      "evidence": "campaign-rewrite",
+      "updatedAt": "2026-08-12T12:30:00+08:00"
+    },
+    {
+      "image": "docs/v2/xaction/concepts/img/visibility-expression-003-dae8a727c3.gif",
+      "page": "docs/v2/xaction/concepts/visibility-expression.md",
+      "status": "kept",
+      "reason": "表单显隐 GIF，战役约定 keep。",
+      "evidence": "campaign-rewrite",
+      "updatedAt": "2026-08-12T12:30:00+08:00"
+    },
+    {
+      "image": "docs/v2/xaction/concepts/img/visibility-expression-004-21c006aa72.png",
+      "page": "docs/v2/xaction/concepts/visibility-expression.md",
+      "status": "kept",
+      "reason": "表单可见性设置截图，战役约定 keep。",
+      "evidence": "campaign-rewrite",
+      "updatedAt": "2026-08-12T12:30:00+08:00"
+    },
+    {
+      "image": "docs/v2/xaction/concepts/img/xaction-editor-001-de25c2f7a6.png",
+      "kind": "editor-chrome",
+      "action": "replaced",
+      "component": "ActionEditorPreview",
+      "confidence": "medium",
+      "page": "docs/v2/xaction/concepts/xaction-editor.md",
+      "notes": "Full three-column chrome: toolbox + steps + variables.",
+      "status": "converted",
+      "reason": "Full three-column chrome: toolbox + steps + variables.",
+      "updatedAt": "2026-08-12T12:30:00+08:00",
+      "evidence": "campaign-rewrite"
+    },
+    {
+      "image": "docs/v2/xaction/concepts/img/xaction-editor-002-e5331d74b6.png",
+      "kind": "editor-chrome",
+      "action": "replaced",
+      "component": "ActionEditorPreview",
+      "confidence": "medium",
+      "page": "docs/v2/xaction/concepts/xaction-editor.md",
+      "notes": "Toolbox column via focus=toolbox.",
+      "status": "converted",
+      "reason": "Toolbox column via focus=toolbox.",
+      "updatedAt": "2026-08-12T12:30:00+08:00",
+      "evidence": "campaign-rewrite"
+    },
+    {
+      "image": "docs/v2/xaction/concepts/img/xaction-editor-003-869ae21623.png",
+      "kind": "icon",
+      "action": "replaced",
+      "component": "ActionEditorPreview",
+      "confidence": "low",
+      "page": "docs/v2/xaction/concepts/xaction-editor.md",
+      "notes": "Tiny all-tab glyph; described in toolbox chrome.",
+      "status": "converted",
+      "reason": "Tiny all-tab glyph; described in toolbox chrome.",
+      "updatedAt": "2026-08-12T12:30:00+08:00",
+      "evidence": "campaign-rewrite"
+    },
+    {
+      "image": "docs/v2/xaction/concepts/img/xaction-editor-004-83ccddb9c8.png",
+      "kind": "icon",
+      "action": "replaced",
+      "component": "ActionEditorPreview",
+      "confidence": "low",
+      "page": "docs/v2/xaction/concepts/xaction-editor.md",
+      "notes": "Tiny favorites glyph; described in toolbox chrome.",
+      "status": "converted",
+      "reason": "Tiny favorites glyph; described in toolbox chrome.",
+      "updatedAt": "2026-08-12T12:30:00+08:00",
+      "evidence": "campaign-rewrite"
+    },
+    {
+      "image": "docs/v2/xaction/concepts/img/xaction-editor-005-dece20e1a6.png",
+      "kind": "toolbox",
+      "action": "deferred",
+      "component": "ActionEditorPreview",
+      "confidence": "low",
+      "page": "docs/v2/xaction/concepts/xaction-editor.md",
+      "notes": "Module hover help icon; no hover overlay component yet.",
+      "status": "converted",
+      "reason": "正文已不再引用；已用实时 MDX 或文字说明替代，原图保留供审核。",
+      "updatedAt": "2026-08-12T12:40:00+08:00",
+      "evidence": "campaign-rewrite"
+    },
+    {
+      "image": "docs/v2/xaction/concepts/img/xaction-editor-006-064278e27a.png",
+      "kind": "editor-chrome",
+      "action": "replaced",
+      "component": "ActionEditorPreview",
+      "confidence": "medium",
+      "page": "docs/v2/xaction/concepts/xaction-editor.md",
+      "notes": "Toolbox search via toolboxSearch.",
+      "status": "converted",
+      "reason": "Toolbox search via toolboxSearch.",
+      "updatedAt": "2026-08-12T12:30:00+08:00",
+      "evidence": "campaign-rewrite"
+    },
+    {
+      "image": "docs/v2/xaction/concepts/img/xaction-editor-007-bd4e26dbf2.png",
+      "kind": "context-menu",
+      "action": "replaced",
+      "component": "ContextMenuPreview",
+      "confidence": "medium",
+      "page": "docs/v2/xaction/concepts/xaction-editor.md",
+      "notes": "Sort/favorites toolbox menu.",
+      "status": "converted",
+      "reason": "Sort/favorites toolbox menu.",
+      "updatedAt": "2026-08-12T12:30:00+08:00",
+      "evidence": "campaign-rewrite"
+    },
+    {
+      "image": "docs/v2/xaction/concepts/img/xaction-editor-008-df23795390.png",
+      "kind": "context-menu",
+      "action": "deferred",
+      "component": "ContextMenuPreview",
+      "confidence": "low",
+      "page": "docs/v2/xaction/concepts/xaction-editor.md",
+      "notes": "Per-module favorite context menu on toolbox row; no toolbox-row menu host yet.",
+      "status": "converted",
+      "reason": "正文已不再引用；已用实时 MDX 或文字说明替代，原图保留供审核。",
+      "updatedAt": "2026-08-12T12:40:00+08:00",
+      "evidence": "campaign-rewrite"
+    },
+    {
+      "image": "docs/v2/xaction/concepts/img/xaction-editor-009-a8527cc100.png",
+      "kind": "context-menu",
+      "action": "replaced",
+      "component": "ContextMenuPreview",
+      "confidence": "medium",
+      "page": "docs/v2/xaction/concepts/xaction-editor.md",
+      "notes": "Same sort menu as 007.",
+      "status": "converted",
+      "reason": "Same sort menu as 007.",
+      "updatedAt": "2026-08-12T12:30:00+08:00",
+      "evidence": "campaign-rewrite"
+    },
+    {
+      "image": "docs/v2/xaction/concepts/img/xaction-editor-010-6f0baf23fe.png",
+      "kind": "editor-chrome",
+      "action": "replaced",
+      "component": "ActionEditorPreview",
+      "confidence": "medium",
+      "page": "docs/v2/xaction/concepts/xaction-editor.md",
+      "notes": "Steps column via focus=steps.",
+      "status": "converted",
+      "reason": "Steps column via focus=steps.",
+      "updatedAt": "2026-08-12T12:30:00+08:00",
+      "evidence": "campaign-rewrite"
+    },
+    {
+      "image": "docs/v2/xaction/concepts/img/xaction-editor-011-ba7240afe2.gif",
+      "kind": "gesture-gif",
+      "action": "kept",
+      "component": null,
+      "confidence": "high",
+      "page": "docs/v2/xaction/concepts/xaction-editor.md",
+      "notes": "Continuous drag-from-toolbox GIF.",
+      "status": "kept",
+      "reason": "Continuous drag-from-toolbox GIF.",
+      "updatedAt": "2026-08-12T12:30:00+08:00",
+      "evidence": "campaign-rewrite"
+    },
+    {
+      "image": "docs/v2/xaction/concepts/img/xaction-editor-012-143f93970a.png",
+      "kind": "context-menu",
+      "action": "replaced",
+      "component": "ContextMenuPreview",
+      "confidence": "medium",
+      "page": "docs/v2/xaction/concepts/xaction-editor.md",
+      "notes": "Copy on step list.",
+      "status": "converted",
+      "reason": "Copy on step list.",
+      "updatedAt": "2026-08-12T12:30:00+08:00",
+      "evidence": "campaign-rewrite"
+    },
+    {
+      "image": "docs/v2/xaction/concepts/img/xaction-editor-013-bfda07d933.png",
+      "kind": "context-menu",
+      "action": "replaced",
+      "component": "ContextMenuPreview",
+      "confidence": "medium",
+      "page": "docs/v2/xaction/concepts/xaction-editor.md",
+      "notes": "Paste covered by same step menu scene.",
+      "status": "converted",
+      "reason": "Paste covered by same step menu scene.",
+      "updatedAt": "2026-08-12T12:30:00+08:00",
+      "evidence": "campaign-rewrite"
+    },
+    {
+      "image": "docs/v2/xaction/concepts/img/xaction-editor-014-5f926d0205.png",
+      "kind": "context-menu",
+      "action": "replaced",
+      "component": "ContextMenuPreview",
+      "confidence": "low",
+      "page": "docs/v2/xaction/concepts/xaction-editor.md",
+      "notes": "Paste before/after; same menu.",
+      "status": "converted",
+      "reason": "Paste before/after; same menu.",
+      "updatedAt": "2026-08-12T12:30:00+08:00",
+      "evidence": "campaign-rewrite"
+    },
+    {
+      "image": "docs/v2/xaction/concepts/img/xaction-editor-015-31437b5586.png",
+      "kind": "icon",
+      "action": "replaced",
+      "component": "StepProgramView",
+      "confidence": "low",
+      "page": "docs/v2/xaction/concepts/xaction-editor.md",
+      "notes": "Pencil icon described in prose.",
+      "status": "converted",
+      "reason": "Pencil icon described in prose.",
+      "updatedAt": "2026-08-12T12:30:00+08:00",
+      "evidence": "campaign-rewrite"
+    },
+    {
+      "image": "docs/v2/xaction/concepts/img/xaction-editor-016-2b8668f746.png",
+      "kind": "icon",
+      "action": "replaced",
+      "component": "StepProgramView",
+      "confidence": "low",
+      "page": "docs/v2/xaction/concepts/xaction-editor.md",
+      "notes": "Delete X icon described in prose.",
+      "status": "converted",
+      "reason": "Delete X icon described in prose.",
+      "updatedAt": "2026-08-12T12:30:00+08:00",
+      "evidence": "campaign-rewrite"
+    },
+    {
+      "image": "docs/v2/xaction/concepts/img/xaction-editor-017-b3362d83e6.png",
+      "kind": "context-menu",
+      "action": "replaced",
+      "component": "ContextMenuPreview",
+      "confidence": "medium",
+      "page": "docs/v2/xaction/concepts/xaction-editor.md",
+      "notes": "Delete via step menu.",
+      "status": "converted",
+      "reason": "Delete via step menu.",
+      "updatedAt": "2026-08-12T12:30:00+08:00",
+      "evidence": "campaign-rewrite"
+    },
+    {
+      "image": "docs/v2/xaction/concepts/img/xaction-editor-018-9a017c1339.png",
+      "kind": "step-param",
+      "action": "replaced",
+      "component": "ModuleParamPreview",
+      "confidence": "medium",
+      "page": "docs/v2/xaction/concepts/xaction-editor.md",
+      "notes": "Disable checkbox on if step.",
+      "status": "converted",
+      "reason": "Disable checkbox on if step.",
+      "updatedAt": "2026-08-12T12:30:00+08:00",
+      "evidence": "campaign-rewrite"
+    },
+    {
+      "image": "docs/v2/xaction/concepts/img/xaction-editor-019-ce51ceec7a.png",
+      "kind": "context-menu",
+      "action": "replaced",
+      "component": "ContextMenuPreview",
+      "confidence": "medium",
+      "page": "docs/v2/xaction/concepts/xaction-editor.md",
+      "notes": "Disable via step menu.",
+      "status": "converted",
+      "reason": "Disable via step menu.",
+      "updatedAt": "2026-08-12T12:30:00+08:00",
+      "evidence": "campaign-rewrite"
+    },
+    {
+      "image": "docs/v2/xaction/concepts/img/xaction-editor-020-6758a86918.png",
+      "kind": "steps",
+      "action": "replaced",
+      "component": "StepProgramView",
+      "confidence": "low",
+      "page": "docs/v2/xaction/concepts/xaction-editor.md",
+      "notes": "Expand chevron described; no extra chrome.",
+      "status": "converted",
+      "reason": "Expand chevron described; no extra chrome.",
+      "updatedAt": "2026-08-12T12:30:00+08:00",
+      "evidence": "campaign-rewrite"
+    },
+    {
+      "image": "docs/v2/xaction/concepts/img/xaction-editor-021-f385168728.png",
+      "kind": "context-menu",
+      "action": "replaced",
+      "component": "ContextMenuPreview",
+      "confidence": "medium",
+      "page": "docs/v2/xaction/concepts/xaction-editor.md",
+      "notes": "Expand/collapse on step menu.",
+      "status": "converted",
+      "reason": "Expand/collapse on step menu.",
+      "updatedAt": "2026-08-12T12:30:00+08:00",
+      "evidence": "campaign-rewrite"
+    },
+    {
+      "image": "docs/v2/xaction/concepts/img/xaction-editor-022-056955d546.png",
+      "kind": "overflow-menu",
+      "action": "kept",
+      "component": null,
+      "confidence": "low",
+      "page": "docs/v2/xaction/concepts/xaction-editor.md",
+      "notes": "WPF list overflow: expand all / export; Headless toolbar differs.",
+      "status": "converted",
+      "reason": "正文已不再引用；已用实时 MDX 或文字说明替代，原图保留供审核。",
+      "updatedAt": "2026-08-12T12:40:00+08:00",
+      "evidence": "campaign-rewrite"
+    },
+    {
+      "image": "docs/v2/xaction/concepts/img/xaction-editor-023-bfe7cf380f.gif",
+      "kind": "gesture-gif",
+      "action": "replaced",
+      "component": "StepProgramView",
+      "confidence": "medium",
+      "page": "docs/v2/xaction/concepts/xaction-editor.md",
+      "notes": "Ctrl+wheel delay -> wheelDelay demo.",
+      "status": "converted",
+      "reason": "Ctrl+wheel delay -> wheelDelay demo.",
+      "updatedAt": "2026-08-12T12:30:00+08:00",
+      "evidence": "campaign-rewrite"
+    },
+    {
+      "image": "docs/v2/xaction/concepts/img/xaction-editor-024-04549b7522.gif",
+      "kind": "gesture-gif",
+      "action": "kept",
+      "component": null,
+      "confidence": "high",
+      "page": "docs/v2/xaction/concepts/xaction-editor.md",
+      "notes": "Continuous insert-delay GIF.",
+      "status": "kept",
+      "reason": "Continuous insert-delay GIF.",
+      "updatedAt": "2026-08-12T12:30:00+08:00",
+      "evidence": "campaign-rewrite"
+    },
+    {
+      "image": "docs/v2/xaction/concepts/img/xaction-editor-025-603170d9ee.gif",
+      "kind": "gesture-gif",
+      "action": "replaced",
+      "component": "StepProgramView",
+      "confidence": "medium",
+      "page": "docs/v2/xaction/concepts/xaction-editor.md",
+      "notes": "Ctrl+wheel on delay step -> wheelDelay.",
+      "status": "converted",
+      "reason": "Ctrl+wheel on delay step -> wheelDelay.",
+      "updatedAt": "2026-08-12T12:30:00+08:00",
+      "evidence": "campaign-rewrite"
+    },
+    {
+      "image": "docs/v2/xaction/concepts/img/xaction-editor-026-5920707e12.gif",
+      "kind": "gesture-gif",
+      "action": "kept",
+      "component": null,
+      "confidence": "high",
+      "page": "docs/v2/xaction/concepts/xaction-editor.md",
+      "notes": "Continuous wrap-into-parent GIF.",
+      "status": "kept",
+      "reason": "Continuous wrap-into-parent GIF.",
+      "updatedAt": "2026-08-12T12:30:00+08:00",
+      "evidence": "campaign-rewrite"
+    },
+    {
+      "image": "docs/v2/xaction/concepts/img/xaction-editor-027-1c58937251.png",
+      "kind": "overflow-menu",
+      "action": "kept",
+      "component": null,
+      "confidence": "low",
+      "page": "docs/v2/xaction/concepts/xaction-editor.md",
+      "notes": "Pro history save/restore WPF chrome.",
+      "status": "converted",
+      "reason": "正文已不再引用；已用实时 MDX 或文字说明替代，原图保留供审核。",
+      "updatedAt": "2026-08-12T12:40:00+08:00",
+      "evidence": "campaign-rewrite"
+    },
+    {
+      "image": "docs/v2/xaction/concepts/img/xaction-editor-028-c9fa328f41.png",
+      "kind": "overflow-menu",
+      "action": "kept",
+      "component": null,
+      "confidence": "low",
+      "page": "docs/v2/xaction/concepts/xaction-editor.md",
+      "notes": "Export/import definition WPF menu.",
+      "status": "converted",
+      "reason": "正文已不再引用；已用实时 MDX 或文字说明替代，原图保留供审核。",
+      "updatedAt": "2026-08-12T12:40:00+08:00",
+      "evidence": "campaign-rewrite"
+    },
+    {
+      "image": "docs/v2/xaction/concepts/img/xaction-editor-029-de9cddd40f.png",
+      "kind": "overflow-menu",
+      "action": "kept",
+      "component": null,
+      "confidence": "low",
+      "page": "docs/v2/xaction/concepts/xaction-editor.md",
+      "notes": "Clear action WPF menu.",
+      "status": "converted",
+      "reason": "正文已不再引用；已用实时 MDX 或文字说明替代，原图保留供审核。",
+      "updatedAt": "2026-08-12T12:40:00+08:00",
+      "evidence": "campaign-rewrite"
+    },
+    {
+      "image": "docs/v2/xaction/concepts/img/xaction-editor-030-371651195c.gif",
+      "kind": "gesture-gif",
+      "action": "kept",
+      "component": null,
+      "confidence": "high",
+      "page": "docs/v2/xaction/concepts/xaction-editor.md",
+      "notes": "Continuous undo/redo GIF.",
+      "status": "kept",
+      "reason": "Continuous undo/redo GIF.",
+      "updatedAt": "2026-08-12T12:30:00+08:00",
+      "evidence": "campaign-rewrite"
+    },
+    {
+      "image": "docs/v2/xaction/concepts/img/xaction-editor-031-9d1c6cdb70.png",
+      "kind": "context-menu",
+      "action": "replaced",
+      "component": "ContextMenuPreview",
+      "confidence": "medium",
+      "page": "docs/v2/xaction/concepts/xaction-editor.md",
+      "notes": "Run button context menu.",
+      "status": "converted",
+      "reason": "Run button context menu.",
+      "updatedAt": "2026-08-12T12:30:00+08:00",
+      "evidence": "campaign-rewrite"
+    },
+    {
+      "image": "docs/v2/xaction/concepts/img/xaction-editor-032-dbdb0de4e0.png",
+      "kind": "context-menu",
+      "action": "replaced",
+      "component": "ContextMenuPreview",
+      "confidence": "medium",
+      "page": "docs/v2/xaction/concepts/xaction-editor.md",
+      "notes": "Run selected steps.",
+      "status": "converted",
+      "reason": "Run selected steps.",
+      "updatedAt": "2026-08-12T12:30:00+08:00",
+      "evidence": "campaign-rewrite"
+    },
+    {
+      "image": "docs/v2/xaction/concepts/img/xaction-editor-033-49789289d6.png",
+      "kind": "editor-chrome",
+      "action": "replaced",
+      "component": "ActionEditorPreview",
+      "confidence": "medium",
+      "page": "docs/v2/xaction/concepts/xaction-editor.md",
+      "notes": "Appearance pane.",
+      "status": "converted",
+      "reason": "Appearance pane.",
+      "updatedAt": "2026-08-12T12:30:00+08:00",
+      "evidence": "campaign-rewrite"
+    },
+    {
+      "image": "docs/v2/xaction/concepts/img/xaction-editor-034-e7cb7511c6.png",
+      "kind": "context-menu",
+      "action": "deferred",
+      "component": "ContextMenuPreview",
+      "confidence": "low",
+      "page": "docs/v2/xaction/concepts/xaction-editor.md",
+      "notes": "Paste icon on preview button; no appearance-button menu host.",
+      "status": "converted",
+      "reason": "正文已不再引用；已用实时 MDX 或文字说明替代，原图保留供审核。",
+      "updatedAt": "2026-08-12T12:40:00+08:00",
+      "evidence": "campaign-rewrite"
+    },
+    {
+      "image": "docs/v2/xaction/concepts/img/xaction-editor-035-fc3de08997.png",
+      "kind": "context-menu",
+      "action": "kept",
+      "component": null,
+      "confidence": "low",
+      "page": "docs/v2/xaction/concepts/xaction-editor.md",
+      "notes": "Action-list copy icon URL; panel chrome not ported.",
+      "status": "converted",
+      "reason": "正文已不再引用；已用实时 MDX 或文字说明替代，原图保留供审核。",
+      "updatedAt": "2026-08-12T12:40:00+08:00",
+      "evidence": "campaign-rewrite"
+    },
+    {
+      "image": "docs/v2/xaction/concepts/img/xaction-editor-036-c2eaa4166c.png",
+      "kind": "options",
+      "action": "replaced",
+      "component": null,
+      "confidence": "medium",
+      "page": "docs/v2/xaction/concepts/xaction-editor.md",
+      "notes": "Action options as table.",
+      "status": "converted",
+      "reason": "Action options as table.",
+      "updatedAt": "2026-08-12T12:30:00+08:00",
+      "evidence": "campaign-rewrite"
+    },
+    {
+      "image": "docs/v2/xaction/concepts/img/xaction-editor-037-6427831871.png",
+      "kind": "subprogram-tree",
+      "action": "kept",
+      "component": null,
+      "confidence": "high",
+      "page": "docs/v2/xaction/concepts/xaction-editor.md",
+      "notes": "Subprogram tree; campaign keeps until subprogram page.",
+      "status": "kept",
+      "reason": "Subprogram tree; campaign keeps until subprogram page.",
+      "updatedAt": "2026-08-12T12:30:00+08:00",
+      "evidence": "campaign-rewrite"
+    },
+    {
+      "image": "docs/v2/xaction/concepts/img/xaction-intro-001-e8ef16a2e3.png",
+      "page": "docs/v2/xaction/concepts/xaction-intro.md",
+      "status": "converted",
+      "reason": "已用实时 MDX 预览替换；原图文件保留供审核。",
+      "evidence": "campaign-rewrite",
+      "updatedAt": "2026-08-12T12:30:00+08:00"
+    },
+    {
+      "image": "docs/v2/xaction/concepts/img/xaction-intro-002-2d7a7d0eb7.png",
+      "kind": "steps",
+      "action": "replaced",
+      "component": "StepProgramView",
+      "confidence": "medium",
+      "page": "docs/v2/xaction/concepts/xaction-intro.md",
+      "notes": "OCR steps: getSelectedText→if selectSuccess→openUrl $$google search else google home. Restored as StepProgramView, not full editor.",
+      "status": "converted",
+      "reason": "OCR steps: getSelectedText→if selectSuccess→openUrl $$google search else google home. Restored as StepProgramView, not full editor.",
+      "updatedAt": "2026-08-12T12:30:00+08:00",
+      "evidence": "campaign-rewrite"
+    },
+    {
       "image": "docs/v2/xaction/modules/basic/img/comment-001-351d29a6a6.png",
       "page": "docs/v2/xaction/modules/basic/comment.md",
       "status": "converted",
@@ -161,6 +1636,24 @@
       "updatedAt": "2026-08-11T19:17:14+08:00"
     },
     {
+      "image": "docs/v2/xaction/modules/basic/img/delay-002-98f9e35ed4.png",
+      "page": "docs/v2/xaction/modules/basic/delay.md",
+      "status": "converted",
+      "component": "ContextMenuPreview",
+      "reason": "OCR kind=context-menu。步骤列表右键「插入延时」及官方 tooltip，用 ContextMenuPreview 替代 890px 宽截图；菜单文案按当前 WPF StepListControl.ContextMenu。",
+      "evidence": "ocr",
+      "updatedAt": "2026-08-12T02:25:00+08:00"
+    },
+    {
+      "image": "docs/v2/xaction/modules/basic/img/delay-003-d2cf99fe72.gif",
+      "page": "docs/v2/xaction/modules/basic/delay.md",
+      "status": "converted",
+      "component": "StepProgramView",
+      "reason": "Ctrl+滚轮调延时 GIF 改为 StepProgramView wheelDelay 自动往返（WPF ±50ms），原图保留供审核。",
+      "evidence": "manual",
+      "updatedAt": "2026-08-12T03:24:00+08:00"
+    },
+    {
       "image": "docs/v2/xaction/modules/basic/img/get_selected_text-001-a4ea572192.png",
       "page": "docs/v2/xaction/modules/basic/get_selected_text.md",
       "status": "converted",
@@ -191,6 +1684,16 @@
       "updatedAt": "2026-08-11T19:17:14+08:00"
     },
     {
+      "image": "docs/v2/xaction/modules/basic/img/mouse-002-db0cd3c6f1.png",
+      "page": "docs/v2/xaction/modules/basic/mouse.md",
+      "status": "converted",
+      "kind": "diagram",
+      "component": "CoordDiagram",
+      "reason": "OCR kind=diagram。主屏原点与 X/Y 正向改为可交互坐标系示意；原图文件保留供审核。",
+      "evidence": "ocr+manual",
+      "updatedAt": "2026-08-12T04:18:00+08:00"
+    },
+    {
       "image": "docs/v2/xaction/modules/basic/img/mouse-003-259e1ab9ce.png",
       "page": "docs/v2/xaction/modules/basic/mouse.md",
       "status": "converted",
@@ -209,6 +1712,16 @@
       "evidence": "git-diff",
       "commit": "4fa032b",
       "updatedAt": "2026-08-11T19:17:14+08:00"
+    },
+    {
+      "image": "docs/v2/xaction/modules/basic/img/mouse-005-29eee7b0a8.png",
+      "page": "docs/v2/xaction/modules/basic/mouse.md",
+      "status": "converted",
+      "kind": "annotated",
+      "component": "PreviewMarks+ModuleParamPreview",
+      "reason": "OCR kind=step-param。红箭头「选取坐标」改为 PreviewMarks 钉在 xy；type=moveToXy，xy=2429,762。",
+      "evidence": "ocr",
+      "updatedAt": "2026-08-12T04:05:00+08:00"
     },
     {
       "image": "docs/v2/xaction/modules/basic/img/mouse-006-a1da1407df.png",
@@ -271,36 +1784,6 @@
       "updatedAt": "2026-08-11T19:17:14+08:00"
     },
     {
-      "image": "docs/v2/xaction/modules/basic/img/mouse-013-94a0f61e30.png",
-      "page": "docs/v2/xaction/modules/basic/mouse.md",
-      "status": "converted",
-      "component": "ModuleParamPreview",
-      "reason": "已在提交 4fa032b 中用实时 MDX 预览替换；原图文件保留供审核。",
-      "evidence": "git-diff",
-      "commit": "4fa032b",
-      "updatedAt": "2026-08-11T19:17:14+08:00"
-    },
-    {
-      "image": "docs/v2/xaction/modules/basic/img/mouse-002-db0cd3c6f1.png",
-      "page": "docs/v2/xaction/modules/basic/mouse.md",
-      "status": "converted",
-      "kind": "diagram",
-      "component": "CoordDiagram",
-      "reason": "OCR kind=diagram。主屏原点与 X/Y 正向改为可交互坐标系示意；原图文件保留供审核。",
-      "evidence": "ocr+manual",
-      "updatedAt": "2026-08-12T04:18:00+08:00"
-    },
-    {
-      "image": "docs/v2/xaction/modules/basic/img/mouse-005-29eee7b0a8.png",
-      "page": "docs/v2/xaction/modules/basic/mouse.md",
-      "status": "converted",
-      "kind": "annotated",
-      "component": "PreviewMarks+ModuleParamPreview",
-      "reason": "OCR kind=step-param。红箭头「选取坐标」改为 PreviewMarks 钉在 xy；type=moveToXy，xy=2429,762。",
-      "evidence": "ocr",
-      "updatedAt": "2026-08-12T04:05:00+08:00"
-    },
-    {
       "image": "docs/v2/xaction/modules/basic/img/mouse-012-b16078e96c.png",
       "page": "docs/v2/xaction/modules/basic/mouse.md",
       "status": "converted",
@@ -309,6 +1792,16 @@
       "reason": "OCR 只认出圆圈。对照 ClickIndicator.ShowIndicator(150, Red)：0.4s 由 20% 放大并淡出。",
       "evidence": "ocr+source",
       "updatedAt": "2026-08-12T04:23:00+08:00"
+    },
+    {
+      "image": "docs/v2/xaction/modules/basic/img/mouse-013-94a0f61e30.png",
+      "page": "docs/v2/xaction/modules/basic/mouse.md",
+      "status": "converted",
+      "component": "ModuleParamPreview",
+      "reason": "已在提交 4fa032b 中用实时 MDX 预览替换；原图文件保留供审核。",
+      "evidence": "git-diff",
+      "commit": "4fa032b",
+      "updatedAt": "2026-08-11T19:17:14+08:00"
     },
     {
       "image": "docs/v2/xaction/modules/basic/img/mouse-014-efb9812e0a.png",
@@ -608,6 +2101,15 @@
       "updatedAt": "2026-08-11T20:06:13+08:00"
     },
     {
+      "image": "docs/v2/xaction/modules/clipboard/img/getclipboardtext-002-493ba546c2.png",
+      "page": "docs/v2/xaction/modules/clipboard/getclipboardtext.md",
+      "status": "kept",
+      "kind": "ui-other",
+      "reason": "第三方 Free Clipboard Viewer 界面，用来对照自定义格式名；不是 Quicker 参数窗，无对应预览组件。",
+      "evidence": "ocr+manual",
+      "updatedAt": "2026-08-12T05:20:00+08:00"
+    },
+    {
       "image": "docs/v2/xaction/modules/clipboard/img/waitclipboardchange-001-2c1947c6de.png",
       "page": "docs/v2/xaction/modules/clipboard/waitclipboardchange.md",
       "status": "converted",
@@ -674,6 +2176,33 @@
       "evidence": "git-diff",
       "commit": "4fa032b",
       "updatedAt": "2026-08-11T19:17:14+08:00"
+    },
+    {
+      "image": "docs/v2/xaction/modules/compute/img/color-002-efae8e7c2b.gif",
+      "page": "docs/v2/xaction/modules/compute/color.md",
+      "status": "kept",
+      "kind": "decorative",
+      "reason": "连续桌面录屏：调色板与吸管取色，无法用组件还原。",
+      "evidence": "manual",
+      "updatedAt": "2026-08-12T05:20:00+08:00"
+    },
+    {
+      "image": "docs/v2/xaction/modules/compute/img/color-003-6bd4fc7342.gif",
+      "page": "docs/v2/xaction/modules/compute/color.md",
+      "status": "kept",
+      "kind": "decorative",
+      "reason": "连续桌面录屏：从屏幕点选颜色，无法用组件还原。",
+      "evidence": "manual",
+      "updatedAt": "2026-08-12T05:20:00+08:00"
+    },
+    {
+      "image": "docs/v2/xaction/modules/compute/img/compute-002-5c8245e243.png",
+      "page": "docs/v2/xaction/modules/compute/compute.md",
+      "status": "kept",
+      "kind": "annotated",
+      "reason": "增强模式参数窗带箭头指向变量下拉，属下拉/字段教学；OCR 误判为 var-def（低置信），keep。",
+      "evidence": "ocr+manual",
+      "updatedAt": "2026-08-12T05:20:00+08:00"
     },
     {
       "image": "docs/v2/xaction/modules/compute/img/computetime-001-96bc28002f.png",
@@ -786,6 +2315,15 @@
       "updatedAt": "2026-08-11T19:17:14+08:00"
     },
     {
+      "image": "docs/v2/xaction/modules/compute/img/managelist-001-040cc435a4.png",
+      "page": "docs/v2/xaction/modules/compute/managelist.md",
+      "status": "kept",
+      "kind": "annotated",
+      "reason": "运行态「管理列表」+「编辑菜单项」叠窗，带编号注记；无 ManageListPreview，OCR 误判 step-param。",
+      "evidence": "ocr+manual",
+      "updatedAt": "2026-08-12T05:20:00+08:00"
+    },
+    {
       "image": "docs/v2/xaction/modules/compute/img/managelist-002-1f5433f27e.png",
       "page": "docs/v2/xaction/modules/compute/managelist.md",
       "status": "converted",
@@ -794,6 +2332,24 @@
       "evidence": "git-diff",
       "commit": "4fa032b",
       "updatedAt": "2026-08-11T19:17:14+08:00"
+    },
+    {
+      "image": "docs/v2/xaction/modules/compute/img/managelist-003-1875478276.png",
+      "page": "docs/v2/xaction/modules/compute/managelist.md",
+      "status": "kept",
+      "kind": "ui-other",
+      "reason": "运行态「编辑菜单项」窗口，暂无对应预览组件。",
+      "evidence": "ocr+manual",
+      "updatedAt": "2026-08-12T05:20:00+08:00"
+    },
+    {
+      "image": "docs/v2/xaction/modules/compute/img/managelist-004-c987d208d3.png",
+      "page": "docs/v2/xaction/modules/compute/managelist.md",
+      "status": "kept",
+      "kind": "ui-other",
+      "reason": "运行态普通文本编辑列表项；OCR 误判 user-input，UserInputPreview 不能还原管理列表场景。",
+      "evidence": "ocr+manual",
+      "updatedAt": "2026-08-12T05:20:00+08:00"
     },
     {
       "image": "docs/v2/xaction/modules/compute/img/numberprocess-001-a789c8f93a.png",
@@ -953,6 +2509,15 @@
       "updatedAt": "2026-08-11T19:17:14+08:00"
     },
     {
+      "image": "docs/v2/xaction/modules/files/img/checkpathexists-002-9beb7a6335.png",
+      "page": "docs/v2/xaction/modules/files/checkpathexists.md",
+      "status": "kept",
+      "kind": "unknown",
+      "reason": "OCR kind=unknown。Quicker「显示文本」运行态（标题「结果内容」+ 行号），展示文件扩展信息词典；暂无对应预览组件，且内容是教学示例。",
+      "evidence": "ocr+manual",
+      "updatedAt": "2026-08-12T05:15:00+08:00"
+    },
+    {
       "image": "docs/v2/xaction/modules/files/img/everythingsearch-001-7265e3ee1c.png",
       "page": "docs/v2/xaction/modules/files/everythingsearch.md",
       "status": "converted",
@@ -961,6 +2526,42 @@
       "evidence": "git-diff",
       "commit": "4fa032b",
       "updatedAt": "2026-08-11T19:17:14+08:00"
+    },
+    {
+      "image": "docs/v2/xaction/modules/files/img/everythingsearch-002-607633654c.png",
+      "page": "docs/v2/xaction/modules/files/everythingsearch.md",
+      "status": "kept",
+      "kind": "annotated",
+      "reason": "Everything 搜索框红框教学：限定目录写成带末尾反斜杠的引号路径。第三方软件 UI，不是 Quicker 参数窗。",
+      "evidence": "ocr+manual",
+      "updatedAt": "2026-08-12T05:15:00+08:00"
+    },
+    {
+      "image": "docs/v2/xaction/modules/files/img/everythingsearch-003-5318c9c1a8.png",
+      "page": "docs/v2/xaction/modules/files/everythingsearch.md",
+      "status": "kept",
+      "kind": "annotated",
+      "reason": "Everything 安装向导红箭头教学「选中安装 Everything 服务」。第三方安装程序，OCR 误判为 choice-list，不替换。",
+      "evidence": "ocr+manual",
+      "updatedAt": "2026-08-12T05:15:00+08:00"
+    },
+    {
+      "image": "docs/v2/xaction/modules/files/img/everythingsearch-004-7c1e07ae2e.png",
+      "page": "docs/v2/xaction/modules/files/everythingsearch.md",
+      "status": "kept",
+      "kind": "annotated",
+      "reason": "Everything 安装向导红箭头教学「开机自动启动」。第三方安装程序，OCR 误判为 choice-list，不替换。",
+      "evidence": "ocr+manual",
+      "updatedAt": "2026-08-12T05:15:00+08:00"
+    },
+    {
+      "image": "docs/v2/xaction/modules/files/img/everythingsearch-005-eafe303e17.png",
+      "page": "docs/v2/xaction/modules/files/everythingsearch.md",
+      "status": "kept",
+      "kind": "annotated",
+      "reason": "Everything 选项窗红箭头教学：随系统自启动 + Everything 服务。第三方设置窗，OCR 误判为 runtime-dialog，不替换。",
+      "evidence": "ocr+manual",
+      "updatedAt": "2026-08-12T05:15:00+08:00"
     },
     {
       "image": "docs/v2/xaction/modules/files/img/fileoperation-001-2f9a24c6c6.png",
@@ -2693,6 +4294,33 @@
       "updatedAt": "2026-08-11T19:17:14+08:00"
     },
     {
+      "image": "docs/v2/xaction/modules/text/img/charinfo-002-b3a1d422d8.png",
+      "page": "docs/v2/xaction/modules/text/charinfo.md",
+      "status": "converted",
+      "component": "ModuleParamPreview",
+      "reason": "OCR 为步骤检查输出（曾字 Unicode/拼音）；用 ModuleParamPreview + outputVars 还原。",
+      "evidence": "ocr+manual",
+      "updatedAt": "2026-08-12T06:00:00+08:00"
+    },
+    {
+      "image": "docs/v2/xaction/modules/text/img/enc-001-b26613fd58.png",
+      "page": "docs/v2/xaction/modules/text/enc.md",
+      "status": "kept",
+      "kind": "annotated",
+      "reason": "操作类型下拉展开教学；页内已另附全貌 ModuleParamPreview。",
+      "evidence": "ocr+manual",
+      "updatedAt": "2026-08-12T06:00:00+08:00"
+    },
+    {
+      "image": "docs/v2/xaction/modules/text/img/enc-002-5a262d846c.png",
+      "page": "docs/v2/xaction/modules/text/enc.md",
+      "status": "kept",
+      "kind": "annotated",
+      "reason": "输入内容类型下拉展开教学。",
+      "evidence": "ocr+manual",
+      "updatedAt": "2026-08-12T06:00:00+08:00"
+    },
+    {
       "image": "docs/v2/xaction/modules/text/img/enc-003-ba5eae7780.png",
       "page": "docs/v2/xaction/modules/text/enc.md",
       "status": "converted",
@@ -2701,6 +4329,42 @@
       "evidence": "git-diff",
       "commit": "4fa032b",
       "updatedAt": "2026-08-11T19:17:14+08:00"
+    },
+    {
+      "image": "docs/v2/xaction/modules/text/img/enc-004-79f3b7b5bf.png",
+      "page": "docs/v2/xaction/modules/text/enc.md",
+      "status": "converted",
+      "component": "ModuleParamPreview",
+      "reason": "OCR step-param/replace：HMAC 参数窗 → focusKeys operation/hmacAlgorithm。",
+      "evidence": "ocr",
+      "updatedAt": "2026-08-12T06:00:00+08:00"
+    },
+    {
+      "image": "docs/v2/xaction/modules/text/img/enc-005-2ee7f69184.png",
+      "page": "docs/v2/xaction/modules/text/enc.md",
+      "status": "converted",
+      "component": "ModuleParamPreview",
+      "reason": "哈希算法参数窗 → focusKeys operation/hashType。",
+      "evidence": "ocr+manual",
+      "updatedAt": "2026-08-12T06:00:00+08:00"
+    },
+    {
+      "image": "docs/v2/xaction/modules/text/img/formatstring-001-082ec3ecc2.png",
+      "page": "docs/v2/xaction/modules/text/formatstring.md",
+      "status": "converted",
+      "component": "ModuleParamPreview",
+      "reason": "OCR step-param：格式化字符串参数窗 → ModuleParamPreview。",
+      "evidence": "ocr",
+      "updatedAt": "2026-08-12T06:00:00+08:00"
+    },
+    {
+      "image": "docs/v2/xaction/modules/text/img/formatstring-002-04d6173976.png",
+      "page": "docs/v2/xaction/modules/text/formatstring.md",
+      "status": "kept",
+      "kind": "diagram",
+      "reason": "对齐效果示意（左/右补空格），页内已改用文字说明；原图未再引用。",
+      "evidence": "manual",
+      "updatedAt": "2026-08-12T06:00:00+08:00"
     },
     {
       "image": "docs/v2/xaction/modules/text/img/jsonextract-001-f7fb0c06b3.png",
@@ -2721,6 +4385,22 @@
       "evidence": "git-diff",
       "commit": "4fa032b",
       "updatedAt": "2026-08-11T19:17:14+08:00"
+    },
+    {
+      "image": "docs/v2/xaction/modules/text/img/showtext-001-e7813dac79.png",
+      "page": "docs/v2/xaction/modules/text/showtext.md",
+      "status": "deferred",
+      "reason": "文本窗口运行态，缺 TextWindowPreview；未 port。",
+      "evidence": "manual",
+      "updatedAt": "2026-08-12T06:00:00+08:00"
+    },
+    {
+      "image": "docs/v2/xaction/modules/text/img/showtext-002-66210e1245.png",
+      "page": "docs/v2/xaction/modules/text/showtext.md",
+      "status": "deferred",
+      "reason": "文本窗口右键菜单运行态，缺对应组件。",
+      "evidence": "manual",
+      "updatedAt": "2026-08-12T06:00:00+08:00"
     },
     {
       "image": "docs/v2/xaction/modules/text/img/showtext-003-638303e144.png",
@@ -3006,132 +4686,6 @@
       "evidence": "git-diff",
       "commit": "4fa032b",
       "updatedAt": "2026-08-11T19:17:14+08:00"
-    },
-    {
-      "image": "docs/v2/xaction/modules/basic/img/delay-002-98f9e35ed4.png",
-      "page": "docs/v2/xaction/modules/basic/delay.md",
-      "status": "converted",
-      "component": "ContextMenuPreview",
-      "reason": "OCR kind=context-menu。步骤列表右键「插入延时」及官方 tooltip，用 ContextMenuPreview 替代 890px 宽截图；菜单文案按当前 WPF StepListControl.ContextMenu。",
-      "evidence": "ocr",
-      "updatedAt": "2026-08-12T02:25:00+08:00"
-    },
-    {
-      "image": "docs/v2/xaction/modules/basic/img/delay-003-d2cf99fe72.gif",
-      "page": "docs/v2/xaction/modules/basic/delay.md",
-      "status": "converted",
-      "component": "StepProgramView",
-      "reason": "Ctrl+滚轮调延时 GIF 改为 StepProgramView wheelDelay 自动往返（WPF ±50ms），原图保留供审核。",
-      "evidence": "manual",
-      "updatedAt": "2026-08-12T03:24:00+08:00"
-    },
-    {
-      "image": "docs/v2/xaction/modules/clipboard/img/getclipboardtext-002-493ba546c2.png",
-      "page": "docs/v2/xaction/modules/clipboard/getclipboardtext.md",
-      "status": "kept",
-      "kind": "ui-other",
-      "reason": "第三方 Free Clipboard Viewer 界面，用来对照自定义格式名；不是 Quicker 参数窗，无对应预览组件。",
-      "evidence": "ocr+manual",
-      "updatedAt": "2026-08-12T05:20:00+08:00"
-    },
-    {
-      "image": "docs/v2/xaction/modules/files/img/checkpathexists-002-9beb7a6335.png",
-      "page": "docs/v2/xaction/modules/files/checkpathexists.md",
-      "status": "kept",
-      "kind": "unknown",
-      "reason": "OCR kind=unknown。Quicker「显示文本」运行态（标题「结果内容」+ 行号），展示文件扩展信息词典；暂无对应预览组件，且内容是教学示例。",
-      "evidence": "ocr+manual",
-      "updatedAt": "2026-08-12T05:15:00+08:00"
-    },
-    {
-      "image": "docs/v2/xaction/modules/files/img/everythingsearch-002-607633654c.png",
-      "page": "docs/v2/xaction/modules/files/everythingsearch.md",
-      "status": "kept",
-      "kind": "annotated",
-      "reason": "Everything 搜索框红框教学：限定目录写成带末尾反斜杠的引号路径。第三方软件 UI，不是 Quicker 参数窗。",
-      "evidence": "ocr+manual",
-      "updatedAt": "2026-08-12T05:15:00+08:00"
-    },
-    {
-      "image": "docs/v2/xaction/modules/files/img/everythingsearch-003-5318c9c1a8.png",
-      "page": "docs/v2/xaction/modules/files/everythingsearch.md",
-      "status": "kept",
-      "kind": "annotated",
-      "reason": "Everything 安装向导红箭头教学「选中安装 Everything 服务」。第三方安装程序，OCR 误判为 choice-list，不替换。",
-      "evidence": "ocr+manual",
-      "updatedAt": "2026-08-12T05:15:00+08:00"
-    },
-    {
-      "image": "docs/v2/xaction/modules/files/img/everythingsearch-004-7c1e07ae2e.png",
-      "page": "docs/v2/xaction/modules/files/everythingsearch.md",
-      "status": "kept",
-      "kind": "annotated",
-      "reason": "Everything 安装向导红箭头教学「开机自动启动」。第三方安装程序，OCR 误判为 choice-list，不替换。",
-      "evidence": "ocr+manual",
-      "updatedAt": "2026-08-12T05:15:00+08:00"
-    },
-    {
-      "image": "docs/v2/xaction/modules/files/img/everythingsearch-005-eafe303e17.png",
-      "page": "docs/v2/xaction/modules/files/everythingsearch.md",
-      "status": "kept",
-      "kind": "annotated",
-      "reason": "Everything 选项窗红箭头教学：随系统自启动 + Everything 服务。第三方设置窗，OCR 误判为 runtime-dialog，不替换。",
-      "evidence": "ocr+manual",
-      "updatedAt": "2026-08-12T05:15:00+08:00"
-    },
-    {
-      "image": "docs/v2/xaction/modules/compute/img/compute-002-5c8245e243.png",
-      "page": "docs/v2/xaction/modules/compute/compute.md",
-      "status": "kept",
-      "kind": "annotated",
-      "reason": "增强模式参数窗带箭头指向变量下拉，属下拉/字段教学；OCR 误判为 var-def（低置信），keep。",
-      "evidence": "ocr+manual",
-      "updatedAt": "2026-08-12T05:20:00+08:00"
-    },
-    {
-      "image": "docs/v2/xaction/modules/compute/img/color-002-efae8e7c2b.gif",
-      "page": "docs/v2/xaction/modules/compute/color.md",
-      "status": "kept",
-      "kind": "decorative",
-      "reason": "连续桌面录屏：调色板与吸管取色，无法用组件还原。",
-      "evidence": "manual",
-      "updatedAt": "2026-08-12T05:20:00+08:00"
-    },
-    {
-      "image": "docs/v2/xaction/modules/compute/img/color-003-6bd4fc7342.gif",
-      "page": "docs/v2/xaction/modules/compute/color.md",
-      "status": "kept",
-      "kind": "decorative",
-      "reason": "连续桌面录屏：从屏幕点选颜色，无法用组件还原。",
-      "evidence": "manual",
-      "updatedAt": "2026-08-12T05:20:00+08:00"
-    },
-    {
-      "image": "docs/v2/xaction/modules/compute/img/managelist-001-040cc435a4.png",
-      "page": "docs/v2/xaction/modules/compute/managelist.md",
-      "status": "kept",
-      "kind": "annotated",
-      "reason": "运行态「管理列表」+「编辑菜单项」叠窗，带编号注记；无 ManageListPreview，OCR 误判 step-param。",
-      "evidence": "ocr+manual",
-      "updatedAt": "2026-08-12T05:20:00+08:00"
-    },
-    {
-      "image": "docs/v2/xaction/modules/compute/img/managelist-003-1875478276.png",
-      "page": "docs/v2/xaction/modules/compute/managelist.md",
-      "status": "kept",
-      "kind": "ui-other",
-      "reason": "运行态「编辑菜单项」窗口，暂无对应预览组件。",
-      "evidence": "ocr+manual",
-      "updatedAt": "2026-08-12T05:20:00+08:00"
-    },
-    {
-      "image": "docs/v2/xaction/modules/compute/img/managelist-004-c987d208d3.png",
-      "page": "docs/v2/xaction/modules/compute/managelist.md",
-      "status": "kept",
-      "kind": "ui-other",
-      "reason": "运行态普通文本编辑列表项；OCR 误判 user-input，UserInputPreview 不能还原管理列表场景。",
-      "evidence": "ocr+manual",
-      "updatedAt": "2026-08-12T05:20:00+08:00"
     }
   ]
 }

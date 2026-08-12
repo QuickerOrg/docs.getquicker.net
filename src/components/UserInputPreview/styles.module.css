@@ -180,7 +180,15 @@
   color: var(--uip-fg);
   font-size: 12px;
   line-height: 1.4;
-  white-space: nowrap;
+  white-space: pre-line;
+  text-align: left;
+}
+
+.hint {
+  margin: 4px 0 0;
+  color: var(--ifm-color-emphasis-600, #6b7280);
+  font-size: 12px;
+  line-height: 1.4;
 }
 
 .footer {

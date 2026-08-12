@@ -1,31 +1,59 @@
 ---
 title: "动态对象变量"
-description: "动态对象变量的 Quicker 2.0 使用说明。"
+description: "动态对象可存任意 C# 对象，在表达式里按原类型调用属性和方法。"
 slug: "/v2/xaction/concepts/object"
 sidebar_position: 90
 quickerDocKey: "xaction/concepts/object"
 comments: true
-docStatus: "migrated-unreviewed"
+docStatus: reviewed
 legacyDocId: 4590697
 legacyContentUpdatedAt: "2025-12-05T02:18:41.000Z"
 ---
 
-## 使用说明
+# 动态对象变量
 
-动态对象可以用于存储任何一个类型的值。无论是简单的数字，还是复杂的类型（class）。
+动态对象可以存任意类型：简单数字，或复杂的 class。Quicker 用 C# 编写，内部就是 `object`。C# 里所有类型都能赋给 `object`。
 
+处理复杂结果时用它，例如从 JSON 里取出一个节点（`JToken`），放进动态对象，再在 [表达式](/v2/xaction/concepts/expression) 里用该类型的属性和方法。
 
+<VariableDefPreview
+  name="token"
+  typeLabel="对象"
+  remark="JSON 节点"
+/>
 
+<StepProgramView example="05d33931-477a-4c18-a917-08d7b30d7779" />
 
+<ShareLinkCard
+  code="05d33931-477a-4c18-a917-08d7b30d7779"
+  title="示例：Json提取"
+  description="需1.4.21版"
+  author="CL"
+/>
 
-Quicker使用C#语言编写，动态对象在内部表示为一个Object类型的变量。
+## 限制与排障
 
-在C#语言中，所有对象都可以看做Object类型的派生类型，所以任何对象都可以赋值给Object类型的变量。
+- 对象没有通用的「默认值」填写格式。需要的值在步骤里赋进去。
+- 表达式里要用原类型的成员。不确定类型时，先 `.GetType()` 或转成文本看一眼。
 
+## 相关链接
 
-
-在需要处理复杂对象类型的时候（如从json数据中提取一个复杂节点，此时返回JToken对象类型），可以使用动态对象变量来保存它们，并在[表达式](/v2/xaction/concepts/expression)中使用其原始对象类型（如JToken）的属性、方法函数等获取信息。
-
-
-
-请参考示例动作：[https://getquicker.net/Sharedaction?code=05d33931-477a-4c18-a917-08d7b30d7779](https://getquicker.net/Sharedaction?code=05d33931-477a-4c18-a917-08d7b30d7779)
+<RelatedDocs
+  items={[
+    {
+      href: '/v2/xaction/concepts/expression',
+      label: '表达式',
+      description: '调用对象方法和属性',
+    },
+    {
+      href: '/v2/xaction/concepts/var-dict',
+      label: '词典类型',
+      description: '键值对够用时不必上对象',
+    },
+    {
+      href: '/v2/xaction/concepts/variables',
+      label: '变量',
+      description: '类型总览和创建对话框',
+    },
+  ]}
+/>

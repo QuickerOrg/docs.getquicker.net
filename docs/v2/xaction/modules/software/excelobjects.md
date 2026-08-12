@@ -1,13 +1,13 @@
 ---
 title: "Excel对象操作"
-description: "操作Excel的某个对象"
+description: "打开、创建、保存 Excel 工作簿，并取出 Application / 工作簿 / 工作表对象。"
 slug: "/v2/xaction/modules/excelobjects"
 sidebar_label: "Excel对象操作"
 sidebar_position: 70
 quickerDocKey: "xaction/module/sys:excelObjects"
 comments: true
 moduleKey: "sys:excelObjects"
-docStatus: "migrated-unreviewed"
+docStatus: "reviewed"
 metadataGeneratedAt: "2026-08-03 20:08:03"
 legacyDocId: 9257561
 legacyContentUpdatedAt: "2023-02-16T07:33:45.000Z"
@@ -15,141 +15,134 @@ legacyContentUpdatedAt: "2023-02-16T07:33:45.000Z"
 
 # Excel对象操作
 
-操作Excel的某个对象
+打开、创建、保存已由本模块启动的 Excel 工作簿，并取出 Application、工作簿、工作表对象，供后续步骤或表达式使用。只读写文件、不启动 Excel 用 [Excel文件读写](/v2/xaction/modules/excelreadwrite)；对已打开窗口里的区域赋值用 [Excel区域操作](/v2/xaction/modules/excelrange)。两边的工作簿 / 工作表对象互不通用。
 
 ## 当前模块定义
 
 <XActionModuleMeta moduleKey="sys:excelObjects" />
 
-用于打开或创建工作簿。
+## 概述
 
-注：
-
--   本模块仍在开发中，目前为预览状态。
--   因为权限原因，Quicker的Excel相关模块不支持对资源管理器或开始菜单中打开的Excel窗口进行操作。
-    需要使用本模块“打开工作簿”或“创建工作簿”操作得到的Excel窗口才能进行其他自动化控制。
-    可使用此动作：[https://getquicker.net/Sharedaction?code=efa8a4af-4a87-4d52-d718-08d827485760](https://getquicker.net/Sharedaction?code=efa8a4af-4a87-4d52-d718-08d827485760)
--   通过编程方式修改Excel工作簿后，将无法撤销修改。
--   可能需要一定的c#和VBA知识才能方便的使用本模块。
-
-## 各操作类型
-
-### 获取当前Excel应用信息
-
-获取当前打开的Excel软件窗口的信息。
-
-（由于权限不同的原因，只能访问到通过本模块打开的Excel窗口）
-
-在内部使用 `(Excel.Application)Marshal.GetActiveObject("Excel.Application")` 得到相关信息。
+本模块仍是预览状态。权限原因下，不能操作从资源管理器或开始菜单打开的 Excel 窗口，必须先用「打开工作簿」或「创建工作簿」得到窗口。编程改过的内容无法撤销。熟悉 C# / VBA 会更好用。
 
 <ModuleParamPreview moduleKey="sys:excelObjects" />
 
-**输入**
+## 参数说明
 
-【参数】不适用于本操作。
+**操作类型**：获取当前 Excel 应用信息；打开 / 保存 / 关闭 / 创建工作簿；选择工作表。
 
-**输出**
+**工作簿对象**：保存、关闭、选择工作表时指定目标工作簿。留空表示当前活动工作簿。
 
-【是否成功】操作是否成功。
+**参数**：按操作类型填写，每行一条 `名称=值`。各操作支持的键见下文。
 
-【活动工作簿】当前活动的Workbook对象（[Application.ActiveWorkbook](https://docs.microsoft.com/en-us/dotnet/api/microsoft.office.interop.excel._application.activeworkbook?view=excel-pia)）。
+**文件/模板路径**：打开、保存时的完整路径；创建工作簿时用来指定模板文件。
 
-【活动工作表】当前活动的WorkSheet对象（[Application.ActiveSheet](https://docs.microsoft.com/en-us/dotnet/api/microsoft.office.interop.excel._application.activesheet?view=excel-pia)）。
+**失败后停止**：出错后是否中止动作。默认开启。
 
-【工作表列表】当前工作簿的WorkSheet对象列表（[\_Application.Worksheets](https://docs.microsoft.com/en-us/dotnet/api/microsoft.office.interop.excel._application.worksheets)）。
+## 获取当前Excel应用信息
 
-【工作簿路径】当前窗口的文件路径（通过\_Application.ActiveWorkbook.FullName得到）。
-
-【Application对象】Marshal.GetActiveObject("Excel.Application")得到的对象本身。
-
-### 打开工作簿
-
-打开指定的excel文件。
+获取当前打开的 Excel 窗口信息。内部用 `(Excel.Application)Marshal.GetActiveObject("Excel.Application")`。只能访问到由本模块打开的窗口。
 
 <ModuleParamPreview
   moduleKey="sys:excelObjects"
-  focusKeys={['operation', 'path', 'params', 'activeWorkbook', 'activeSheet', 'worksheets', 'application']}
+  focusKeys={['operation', 'params', 'stopIfFail', 'isSuccess', 'application', 'activeWorkbook', 'activeSheet', 'worksheets', 'worksheetNames', 'workbookPath']}
+  values={{operation: 'ApplicationInfo', stopIfFail: 'true'}}
+/>
+
+**参数**：本操作不使用。
+
+### 输出
+
+- **是否成功**
+- **活动工作簿**：[Application.ActiveWorkbook](https://docs.microsoft.com/en-us/dotnet/api/microsoft.office.interop.excel._application.activeworkbook?view=excel-pia)
+- **活动工作表**：[Application.ActiveSheet](https://docs.microsoft.com/en-us/dotnet/api/microsoft.office.interop.excel._application.activesheet?view=excel-pia)
+- **工作表对象列表**：[Application.Worksheets](https://docs.microsoft.com/en-us/dotnet/api/microsoft.office.interop.excel._application.worksheets)
+- **工作表名称的列表**：各工作表名称
+- **工作簿路径**：`ActiveWorkbook.FullName`
+- **Application对象**：`GetActiveObject("Excel.Application")` 得到的对象本身
+
+## 打开工作簿
+
+打开指定的 Excel 文件。浏览器未启动时，Quicker 会尝试启动 Excel。
+
+<ModuleParamPreview
+  moduleKey="sys:excelObjects"
+  focusKeys={['operation', 'path', 'params', 'stopIfFail', 'isSuccess', 'activeWorkbook', 'activeSheet', 'worksheets', 'worksheetNames', 'application']}
   values={{operation: 'OpenFile'}}
   outputVars={{activeSheet: 'sheet'}}
 />
 
-**输入**
+**文件/模板路径**：要打开的完整路径。
 
-【文件路径】要打开的Excel文件完整路径。
+**参数**：可选，每行一个，只写需要的项：
 
-【参数】可选。每行一个参数（仅提供必要的参数内容），格式为“参数名=参数值”，支持的参数如下：
+- `Visible=true/false`：窗口是否可见
+- `Password=`：文件密码
+- `Readonly=true/false`：是否只读打开
+- `Format=`：打开文本文件时的分隔字符，数字：`1` Tab、`2` 逗号、`3` 空格、`4` 分号、`5` 无
 
--   Visible=窗口是否可见 可选值：true/false
--   Password=文件密码
--   Readonly=是否以只读方式打开 可选值：true/false
--   Format=格式。用于打开文本文件时指定分隔字符。可选值为下列数字之一：
+### 输出
 
--   1 Tabs
--   2 Commas
--   3 Spaces
--   4 Semicolons
--   5 Nothing
+与「获取当前 Excel 应用信息」相同，另输出 **Application对象**：打开此文件的 Application。若已有实例则复用，否则新建。通常每个 Application 对应一个 Excel 进程。本操作不输出 **工作簿路径**。
 
-**输出**
+## 保存工作簿
 
-【活动工作簿】当前活动的Workbook对象（[Application.ActiveWorkbook](https://docs.microsoft.com/en-us/dotnet/api/microsoft.office.interop.excel._application.activeworkbook?view=excel-pia)）。
-
-【活动工作表】当前活动的WorkSheet对象（[Application.ActiveSheet](https://docs.microsoft.com/en-us/dotnet/api/microsoft.office.interop.excel._application.activesheet?view=excel-pia)）。
-
-【工作表列表】当前工作簿的WorkSheet对象列表（[\_Application.Worksheets](https://docs.microsoft.com/en-us/dotnet/api/microsoft.office.interop.excel._application.worksheets)）。
-
-【工作簿路径】当前窗口的文件路径（通过\_Application.ActiveWorkbook.FullName得到）。
-
-【Application对象】打开此文件的Application对象。如果之前已经存在Application对象，则使用已存在的，否则创建一个新的Application对象。通常每个Application对象对应一个Excel进程。
-
-### 保存工作簿
-
-保存当前工作簿。
+保存当前或指定的工作簿。
 
 <ModuleParamPreview
   moduleKey="sys:excelObjects"
-  focusKeys={['operation', 'workbook', 'path', 'params', 'isSuccess']}
+  focusKeys={['operation', 'workbook', 'path', 'params', 'stopIfFail', 'isSuccess']}
   values={{operation: 'SaveWorkbook'}}
   outputVars={{isSuccess: 'isSuccess'}}
 />
 
-输入
+**工作簿对象**（1.9.5+）：要保存的工作簿。未指定则保存当前活动工作簿。
 
-【工作簿】（1.9.5）要保存的工作簿，如果未指定，则保存当前活动工作簿。
+**文件/模板路径**：保存位置。留空相当于按 Excel 的保存按钮。
 
-【文件路径】要保存到的位置。如果路径为空，则效果类似于按下Excel的保存按钮。
+**参数**：每行 `名称=值`：
 
-【参数】使用“参数=值”的形式设置保存参数，每行一个。支持的参数如下：
+- `SaveCopy=true/false`：是否保存副本。保存副本时不支持其他参数。
+- `CloseWorkbook=true/false`：是否关闭工作簿。
+- `CloseApplication=true/false`：是否关闭 Excel。
+- `Password=`：密码。
+- `FileFormat=`：保存格式，见 [XlFileFormat](https://docs.microsoft.com/en-us/dotnet/api/microsoft.office.interop.excel.xlfileformat?view=excel-pia)。
 
--   SaveCopy=是否保存副本。 可选值为true/false。保存副本时不支持其他参数。
--   CloseWorkbook=是否关闭工作簿。可选值true/false。
--   CloseApplication=是否关闭Excel。可选值true/false。
--   Password=密码。
--   FileFormat=保存文件格式，可选值请参考：[https://docs.microsoft.com/en-us/dotnet/api/microsoft.office.interop.excel.xlfileformat?view=excel-pia](https://docs.microsoft.com/en-us/dotnet/api/microsoft.office.interop.excel.xlfileformat?view=excel-pia)
+## 关闭工作簿
 
-### 创建工作簿
+关闭指定或当前活动工作簿。若该 Excel 进程里已经没有其他工作簿，会一并退出 Excel。
+
+<ModuleParamPreview
+  moduleKey="sys:excelObjects"
+  focusKeys={['operation', 'workbook', 'stopIfFail', 'isSuccess']}
+  values={{operation: 'CloseWorkbook'}}
+/>
+
+**工作簿对象**：要关闭的工作簿。留空表示当前活动工作簿。
+
+## 创建工作簿
 
 创建一个新的工作簿。
 
 <ModuleParamPreview
   moduleKey="sys:excelObjects"
-  focusKeys={['operation', 'path', 'params', 'isSuccess', 'activeWorkbook', 'activeSheet']}
+  focusKeys={['operation', 'path', 'params', 'stopIfFail', 'isSuccess', 'activeWorkbook', 'activeSheet']}
   values={{operation: 'CreateWorkbook'}}
   outputVars={{isSuccess: 'isSuccess', activeSheet: 'worksheet'}}
 />
 
-输入
+**文件/模板路径**：可选。需要时填写模板文件的完整路径。
 
-【文件路径】可选。在需要时指定模板文件完整路径。
+**参数**（1.9.5+）：不指定模板时，设定初始工作表名称。每行一条 `+:工作表名称`，例如：
 
-【参数】（需1.9.5+）在不指定模板文件的情况下，设定初始创建的工作表名称。每行一个，格式为“+:工作表名称”，例如：
-
+```text
 +:工作表1
 +:工作表2
+```
 
-### 选择工作表
+## 选择工作表
 
-（1.9.5+）选择（激活）某个工作表。
+（1.9.5+）激活某个工作表。请确保工作表存在。
 
 <ModuleParamPreview
   moduleKey="sys:excelObjects"
@@ -157,19 +150,61 @@ legacyContentUpdatedAt: "2023-02-16T07:33:45.000Z"
   values={{operation: 'SelectWorksheet', params: 'name=工作表2'}}
 />
 
-输入
+**工作簿对象**：要操作的工作簿。留空表示当前活动工作簿。
 
-【工作簿对象】指定要激活哪个工作簿对象的工作表。留空表示操作当前活动工作簿。
+**参数**：任选一种：
 
-【参数】指定激活的工作表，可以使用如下方式：
-
--   index=工作表序号（从1开始）
--   name=工作表名称
-
-请确保工作表是存在的。
+- `index=` 工作表序号（从 1 开始）
+- `name=` 工作表名称
 
 ## 示例动作
 
--   自动生成乘法口诀，写入d:\\test.xlsx文件。[https://getquicker.net/sharedaction?code=8a38e78c-2edf-4c8b-1506-08d8255d6cc9](https://getquicker.net/sharedaction?code=8a38e78c-2edf-4c8b-1506-08d8255d6cc9)
--   打开Excel文件：[https://getquicker.net/sharedaction?code=efa8a4af-4a87-4d52-d718-08d827485760](https://getquicker.net/sharedaction?code=efa8a4af-4a87-4d52-d718-08d827485760)
--   选择工作表：[https://getquicker.net/sharedaction?code=5a3e75ce-5a1c-4d1d-d71a-08d827485760](https://getquicker.net/sharedaction?code=5a3e75ce-5a1c-4d1d-d71a-08d827485760)
+这些动作步骤较多，用卡片打开即可。
+
+<ShareLinkCard
+  code="efa8a4af-4a87-4d52-d718-08d827485760"
+  title="用Excel打开"
+  description="选择 Excel 文件并用 Quicker 打开，以便后续模块控制"
+  author="CL"
+/>
+
+<ShareLinkCard
+  code="8a38e78c-2edf-4c8b-1506-08d8255d6cc9"
+  title="自动生成乘法口诀"
+  description="写入 d:\\test.xlsx"
+  author="CL"
+/>
+
+<ShareLinkCard
+  code="5a3e75ce-5a1c-4d1d-d71a-08d827485760"
+  title="选择工作表"
+  author="CL"
+/>
+
+## 限制与排障
+
+- 只能操作本模块打开或创建的 Excel 窗口，不能操作资源管理器 / 开始菜单启动的窗口。
+- 编程修改无法撤销，改之前先保存。
+- 本模块为预览状态，欢迎反馈。
+
+## 相关链接
+
+<RelatedDocs
+  items={[
+    {
+      href: '/v2/xaction/modules/excelrange',
+      label: 'Excel区域操作',
+      description: '对已打开窗口里的区域赋值、设格式。',
+    },
+    {
+      href: '/v2/xaction/modules/excelreadwrite',
+      label: 'Excel文件读写',
+      description: '不启动 Excel，用 NPOI 读写文件。',
+    },
+    {
+      href: '/v2/xaction/modules/officehelper',
+      label: 'Office软件辅助',
+      description: 'VBA 和功能区命令。',
+    },
+  ]}
+/>

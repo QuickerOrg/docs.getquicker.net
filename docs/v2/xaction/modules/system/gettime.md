@@ -25,6 +25,8 @@ legacyContentUpdatedAt: "2025-01-20T00:48:35.000Z"
 
 分三步：选时间来源 → 按需加减 → 设定文本格式。
 
+![](./img/gettime-001-55f804be61.png)
+
 <ModuleParamPreview moduleKey="sys:getCurrentTime" />
 
 ## 参数说明

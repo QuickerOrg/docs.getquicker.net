@@ -103,6 +103,24 @@ html[data-theme="dark"] .qk-sr-program {
   --qk-step-tint-gray-fg: #d6d6d6;
 }
 
+.qk-sr-program--embedded {
+  margin: 0;
+  border: none;
+  border-radius: 0;
+  height: 100%;
+  min-height: 0;
+}
+
+.qk-sr-program--embedded .qk-sr-program__body,
+.qk-sr-program--embedded .qk-sr-program__steps {
+  height: 100%;
+  min-height: 0;
+}
+
+.qk-sr-program .variable-row--selected {
+  background: var(--ad-bg-selected-row);
+}
+
 .qk-sr-program__caption {
   padding: 6px 10px;
   border-bottom: 1px solid var(--ad-border-panel);
@@ -127,8 +145,25 @@ html[data-theme="dark"] .qk-sr-program {
   min-width: 0;
 }
 
+/* Hit target uses the 4px grid track; hairline via ::after. */
 .qk-sr-program__gutter {
-  background: var(--ad-border-panel);
+  position: relative;
+  z-index: 4;
+  background: transparent;
+  cursor: col-resize;
+}
+
+.qk-sr-program__gutter::after {
+  content: '';
+  position: absolute;
+  left: 50%;
+  top: 0;
+  bottom: 0;
+  width: 1px;
+  transform: translateX(-50%) scaleX(0.7);
+  transform-origin: center;
+  background: var(--ad-border-default, var(--ad-border-panel));
+  pointer-events: none;
 }
 
 .qk-sr-varlist {
@@ -185,6 +220,29 @@ html[data-theme="dark"] .qk-sr-program {
   gap: 3px;
   flex-shrink: 0;
   line-height: 1;
+}
+
+.qk-sr-program .variable-row-icon,
+.qk-ad-editor .variable-row-icon {
+  display: inline-flex;
+  width: 10px;
+  height: 10px;
+  flex-shrink: 0;
+}
+
+.qk-sr-program .variable-row-icon--in,
+.qk-ad-editor .variable-row-icon--in {
+  color: var(--ad-fg-variable-in, #2e7d32);
+}
+
+.qk-sr-program .variable-row-icon--out,
+.qk-ad-editor .variable-row-icon--out {
+  color: var(--ad-fg-variable-output, #c62828);
+}
+
+.qk-sr-program .variable-row-icon--state,
+.qk-ad-editor .variable-row-icon--state {
+  color: var(--ad-fg-variable-state, #1565c0);
 }
 
 .qk-sr-program .variable-row-type-icon {

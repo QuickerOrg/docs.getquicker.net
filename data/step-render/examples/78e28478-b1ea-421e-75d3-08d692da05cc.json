@@ -1,0 +1,66 @@
+{
+  "code": "78e28478-b1ea-421e-75d3-08d692da05cc",
+  "title": "原尺寸图片",
+  "description": "用于查看原始尺寸的图片。将图片复制到剪贴板后，贴图显示。",
+  "author": "CL",
+  "revision": 0,
+  "source": "https://getquicker.net/sharedaction?code=78e28478-b1ea-421e-75d3-08d692da05cc",
+  "pulledAt": "2026-08-11T21:42:33.871Z",
+  "variables": [
+    {
+      "name": "context",
+      "type": "Text",
+      "remark": "默认的文本变量"
+    },
+    {
+      "name": "img",
+      "type": "Image",
+      "remark": "默认的图片变量"
+    },
+    {
+      "name": "imageUrl",
+      "type": "Text",
+      "remark": "图片网址"
+    }
+  ],
+  "steps": [
+    {
+      "key": "sys:mouse",
+      "inputs": {
+        "type": "restore",
+        "btn": "left",
+        "x": "0",
+        "y": "0",
+        "extAction": "right",
+        "stopIfFail": "1"
+      }
+    },
+    {
+      "key": "sys:delay",
+      "inputs": {
+        "delayMs": "100"
+      }
+    },
+    {
+      "key": "sys:keyInput",
+      "inputs": {
+        "keys": "{\"CtrlKeys\":[],\"Keys\":[89]}"
+      },
+      "note": "选择右键菜单：复制图片网址"
+    },
+    {
+      "key": "sys:delay",
+      "inputs": {
+        "delayMs": "200"
+      }
+    },
+    {
+      "key": "sys:showImage",
+      "inputs": {
+        "source": "clipboard",
+        "path": "{imageUrl}",
+        "imgVar": "{img}"
+      }
+    }
+  ]
+}

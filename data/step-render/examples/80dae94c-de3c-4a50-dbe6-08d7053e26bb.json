@@ -1,0 +1,111 @@
+{
+  "code": "80dae94c-de3c-4a50-dbe6-08d7053e26bb",
+  "title": "示例：状态操作/切换执行",
+  "description": "首次输入两个软件的路径或命令，然后每次会执行其中一个，下次执行另一个",
+  "author": "CL",
+  "revision": 2,
+  "source": "https://getquicker.net/sharedaction?code=80dae94c-de3c-4a50-dbe6-08d7053e26bb",
+  "pulledAt": "2026-08-11T21:42:32.712Z",
+  "variables": [
+    {
+      "name": "count",
+      "type": "Integer"
+    }
+  ],
+  "steps": [
+    {
+      "key": "sys:comment",
+      "inputs": {
+        "note": "右键菜单处理"
+      }
+    },
+    {
+      "key": "sys:simpleIf",
+      "inputs": {
+        "condition": "$={quicker_in_param} == \"reset\""
+      },
+      "ifSteps": [
+        {
+          "key": "sys:assign",
+          "inputs": {
+            "input": "0",
+            "stopIfFail": "1"
+          },
+          "outputs": {
+            "output": "count"
+          }
+        },
+        {
+          "key": "sys:stop",
+          "inputs": {
+            "method": "default",
+            "isError": "0",
+            "showMessage": "已重置计数"
+          }
+        }
+      ]
+    },
+    {
+      "key": "sys:comment",
+      "inputs": {
+        "note": "每次运行，将计数器加1"
+      }
+    },
+    {
+      "key": "sys:assign",
+      "inputs": {
+        "input": "$= {count} + 1",
+        "stopIfFail": "1"
+      },
+      "outputs": {
+        "output": "count"
+      }
+    },
+    {
+      "key": "sys:comment",
+      "inputs": {
+        "note": "判断是奇数还是偶数"
+      }
+    },
+    {
+      "key": "sys:if",
+      "inputs": {
+        "condition": "$= {count} % 2 == 1"
+      },
+      "ifSteps": [
+        {
+          "key": "sys:comment",
+          "inputs": {
+            "note": "奇数时执行"
+          }
+        },
+        {
+          "key": "sys:notify",
+          "inputs": {
+            "msg": "张三",
+            "maxLines": "0",
+            "type": "Info",
+            "style": "Default"
+          }
+        }
+      ],
+      "elseSteps": [
+        {
+          "key": "sys:comment",
+          "inputs": {
+            "note": "偶数时执行"
+          }
+        },
+        {
+          "key": "sys:notify",
+          "inputs": {
+            "msg": "李四",
+            "maxLines": "0",
+            "type": "Info",
+            "style": "Default"
+          }
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,54 @@
+{
+  "code": "8e49c374-062d-4824-979c-08db3d4a9dcd",
+  "title": "关闭所有图片窗口",
+  "description": "关闭所有的显示图片窗口",
+  "author": "CL",
+  "revision": 0,
+  "source": "https://getquicker.net/sharedaction?code=8e49c374-062d-4824-979c-08db3d4a9dcd",
+  "pulledAt": "2026-08-11T21:42:33.778Z",
+  "variables": [
+    {
+      "name": "text",
+      "type": "Text",
+      "remark": "默认的文本变量"
+    },
+    {
+      "name": "selectedText",
+      "type": "Text"
+    },
+    {
+      "name": "list",
+      "type": "List"
+    }
+  ],
+  "steps": [
+    {
+      "key": "sys:showImage",
+      "inputs": {
+        "source": "getImageWindows"
+      },
+      "outputs": {
+        "windowIdList": "list"
+      }
+    },
+    {
+      "key": "sys:each",
+      "inputs": {
+        "input": "{list}",
+        "useMultiThread": "0"
+      },
+      "outputs": {
+        "item": "selectedText"
+      },
+      "ifSteps": [
+        {
+          "key": "sys:showImage",
+          "inputs": {
+            "source": "closeWindow",
+            "autoCloseKey": "{selectedText}"
+          }
+        }
+      ]
+    }
+  ]
+}

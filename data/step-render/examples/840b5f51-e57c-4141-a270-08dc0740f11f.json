@@ -1,0 +1,120 @@
+{
+  "code": "840b5f51-e57c-4141-a270-08dc0740f11f",
+  "title": "示例：修改列表每一项",
+  "description": "通过两种方式修改列表项的内容",
+  "author": "CL",
+  "revision": 2,
+  "source": "https://getquicker.net/sharedaction?code=840b5f51-e57c-4141-a270-08dc0740f11f",
+  "pulledAt": "2026-08-12T02:56:26.446Z",
+  "variables": [
+    {
+      "name": "text",
+      "type": "Text",
+      "remark": "默认的文本变量"
+    },
+    {
+      "name": "list",
+      "type": "List"
+    },
+    {
+      "name": "index",
+      "type": "Integer"
+    },
+    {
+      "name": "item",
+      "type": "Text"
+    }
+  ],
+  "steps": [
+    {
+      "key": "sys:comment",
+      "inputs": {
+        "note": "方法1：对列表的每一项循环。\r\n因为要修改列表的内容本身，需要通过 $= {列表变量}.ToList() 创建副本，并对副本进行循环。"
+      }
+    },
+    {
+      "key": "sys:each",
+      "inputs": {
+        "input": "$={list}.ToList()",
+        "useMultiThread": "0",
+        "stopIfFail": "1"
+      },
+      "outputs": {
+        "item": "item",
+        "count": "index"
+      },
+      "ifSteps": [
+        {
+          "key": "sys:listOperations",
+          "inputs": {
+            "list": "{list}",
+            "type": "setAt",
+            "pos": "{index}",
+            "item": "$=\"AAA\" + {item} + \"BBB\""
+          }
+        }
+      ]
+    },
+    {
+      "key": "sys:comment",
+      "inputs": {
+        "note": "显示结果"
+      }
+    },
+    {
+      "key": "sys:showText",
+      "inputs": {
+        "type": "WAIT",
+        "text": "{list}",
+        "title": "为每一项增加前缀AAA和后缀BBB",
+        "autoCloseKey": "=",
+        "topMost": "false",
+        "stopIfFail": "1",
+        "winLocation": "CenterScreen",
+        "fontsize": "14",
+        "closeWhenLostFocus": "false",
+        "showLineNum": "true",
+        "autoWrap": "true",
+        "showBuildInToolbar": "true",
+        "copyWholeLine": "false",
+        "caretPosition": "0"
+      }
+    },
+    {
+      "key": "sys:comment",
+      "inputs": {
+        "note": "方法2：直接使用表达式"
+      }
+    },
+    {
+      "key": "sys:assign",
+      "inputs": {
+        "input": "$={list}.Select(item => item + \" -- 2\")",
+        "stopIfFail": "1"
+      },
+      "outputs": {
+        "output": "list"
+      }
+    },
+    {
+      "key": "sys:showText",
+      "inputs": {
+        "type": "NO_WAIT",
+        "text": "{list}",
+        "title": "使用表达式为每一项增加文字",
+        "autoCloseKey": "=",
+        "topMost": "false",
+        "stopIfFail": "1",
+        "winLocation": "CenterScreen",
+        "fontsize": "14",
+        "closeWhenLostFocus": "false",
+        "showLineNum": "true",
+        "autoWrap": "true",
+        "showBuildInToolbar": "true",
+        "copyWholeLine": "false",
+        "caretPosition": "0",
+        "updateIfExists": "0"
+      }
+    }
+  ]
+}

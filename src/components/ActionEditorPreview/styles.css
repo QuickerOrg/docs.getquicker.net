@@ -1,0 +1,619 @@
+/**
+ * Sliced from Quicker.Headless/Web/src/styles.css
+ * (toolbox-* / x-program-editor-* / variable-toolbar* / filter-box).
+ * Tokens from theme.css. Light values on the root; dark via html[data-theme="dark"].
+ * Prefer re-sync from Headless over hand-tuning.
+ */
+
+.qk-ad-editor {
+  --ad-font-sans: "Segoe UI", "Microsoft YaHei UI", sans-serif;
+  --ad-bg-panel: #ffffff;
+  --ad-bg-workspace: #ffffff;
+  --ad-bg-step-list: #d3d3d3;
+  --ad-bg-input: #ffffff;
+  --ad-border-panel: #d0d0d0;
+  --ad-border-strong: #bdbdbd;
+  --ad-border-subtle: #c4c4c4;
+  --ad-border-tab-sep: #ececec;
+  --ad-editor-tab-row-border: #e8e8e8;
+  --ad-fg-primary: #1a1a1a;
+  --ad-fg-secondary: #303030;
+  --ad-fg-muted: #6e6e6e;
+  --ad-fg-list-body: #303030;
+  --ad-fg-step-title: #454a50;
+  --ad-fg-subtitle: #404040;
+  --ad-fg-section: #333333;
+  --ad-fg-expand-muted: #5a5a5a;
+  --ad-fg-icon-btn: #1a5a94;
+  --ad-fg-tab-active: #1a5a94;
+  --ad-fg-danger: #c62828;
+  --ad-accent: #2b7abf;
+  --ad-accent-bright: #1f6fad;
+  --ad-bg-hover-soft: #ebebeb;
+  --ad-bg-tab: #ffffff;
+  --ad-bg-tab-active: #e8f2fc;
+  --ad-bg-tree-selected: #d6e8f7;
+  --ad-bg-icon-btn: #ffffff;
+  --ad-bg-selected-row: #d6e8f7;
+  --ad-bg-variable-list-well: #d3d3d3;
+  --ad-bg-variable-list-item: #ffffff;
+  --ad-fg-variable-key: #1a1a1a;
+  --ad-bg-menu-hover: #e8e8e8;
+  --ad-bg-menu: #ffffff;
+
+  margin: 1rem 0 1.5rem;
+  border: 1px solid var(--ad-border-panel);
+  border-radius: 6px;
+  overflow: hidden;
+  background: var(--ad-bg-workspace);
+  color: var(--ad-fg-secondary);
+  font-family: var(--ad-font-sans);
+  font-size: 13px;
+  line-height: 1.45;
+}
+
+html[data-theme="dark"] .qk-ad-editor {
+  --ad-bg-panel: #23272f;
+  --ad-bg-workspace: #1a1d23;
+  --ad-bg-step-list: #14171c;
+  --ad-bg-input: #252a33;
+  --ad-border-panel: #3a4150;
+  --ad-border-strong: #5c6b82;
+  --ad-border-subtle: #3a4150;
+  --ad-border-tab-sep: #2a303a;
+  --ad-editor-tab-row-border: #161920;
+  --ad-fg-primary: #e8eaed;
+  --ad-fg-secondary: #d4d8e0;
+  --ad-fg-muted: #9aa3b2;
+  --ad-fg-list-body: #d4d8e0;
+  --ad-fg-step-title: #d4d8e0;
+  --ad-fg-subtitle: #cfd6e0;
+  --ad-fg-section: #cfd6e0;
+  --ad-fg-expand-muted: #9aa3b2;
+  --ad-fg-icon-btn: #9bc4ef;
+  --ad-fg-tab-active: #7ab8ff;
+  --ad-fg-danger: #f48771;
+  --ad-accent: #4d9fff;
+  --ad-accent-bright: #7ab8ff;
+  --ad-bg-hover-soft: #2a303a;
+  --ad-bg-tab: #1e222a;
+  --ad-bg-tab-active: #1a2a3d;
+  --ad-bg-tree-selected: #243044;
+  --ad-bg-icon-btn: #1e2228;
+  --ad-bg-selected-row: #243044;
+  --ad-bg-variable-list-well: #14171c;
+  --ad-bg-variable-list-item: #1e2228;
+  --ad-fg-variable-key: #e8eaed;
+  --ad-bg-menu-hover: #323844;
+  --ad-bg-menu: #2a2f38;
+}
+
+.qk-ad-editor__caption {
+  padding: 6px 10px;
+  border-bottom: 1px solid var(--ad-border-panel);
+  background: var(--ad-bg-panel);
+  color: var(--ad-fg-muted);
+  font-size: 12px;
+}
+
+.qk-ad-editor__body {
+  display: grid;
+  grid-template-columns: 220px minmax(0, 1fr);
+  min-height: 360px;
+  max-height: 480px;
+  background: var(--ad-bg-workspace);
+}
+
+.qk-ad-editor__toolbox {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  min-width: 0;
+  min-height: 0;
+  padding: 6px;
+  border-right: 1px solid var(--ad-border-panel);
+  background: var(--ad-bg-workspace);
+}
+
+.qk-ad-editor__program {
+  min-width: 0;
+  min-height: 0;
+}
+
+.qk-ad-editor--focus-toolbox .qk-ad-editor__toolbox,
+.qk-ad-editor--focus-steps .x-program-editor-steps,
+.qk-ad-editor--focus-variables .x-program-editor-variables,
+.qk-ad-editor--focus-appearance .x-program-editor-variables {
+  box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--ad-accent) 55%, transparent);
+}
+
+/* Variables / appearance / steps focus: collapse toolbox to the icon tab rail. */
+.qk-ad-editor--focus-variables .qk-ad-editor__body,
+.qk-ad-editor--focus-appearance .qk-ad-editor__body,
+.qk-ad-editor--focus-steps .qk-ad-editor__body {
+  grid-template-columns: 36px minmax(0, 1fr);
+}
+
+.qk-ad-editor--focus-variables .qk-ad-editor__toolbox,
+.qk-ad-editor--focus-appearance .qk-ad-editor__toolbox,
+.qk-ad-editor--focus-steps .qk-ad-editor__toolbox {
+  gap: 0;
+  padding: 0;
+}
+
+.qk-ad-editor--focus-variables .qk-ad-editor__toolbox .toolbox-toolbar,
+.qk-ad-editor--focus-appearance .qk-ad-editor__toolbox .toolbox-toolbar,
+.qk-ad-editor--focus-steps .qk-ad-editor__toolbox .toolbox-toolbar,
+.qk-ad-editor--focus-variables .qk-ad-editor__toolbox .toolbox-tree,
+.qk-ad-editor--focus-appearance .qk-ad-editor__toolbox .toolbox-tree,
+.qk-ad-editor--focus-steps .qk-ad-editor__toolbox .toolbox-tree {
+  display: none;
+}
+
+.qk-ad-editor--focus-variables .qk-ad-editor__toolbox .toolbox-body,
+.qk-ad-editor--focus-appearance .qk-ad-editor__toolbox .toolbox-body,
+.qk-ad-editor--focus-steps .qk-ad-editor__toolbox .toolbox-body {
+  grid-template-columns: 36px;
+  border: 0;
+  border-radius: 0;
+}
+
+.qk-ad-editor--focus-variables .qk-ad-editor__toolbox .toolbox-tabs,
+.qk-ad-editor--focus-appearance .qk-ad-editor__toolbox .toolbox-tabs,
+.qk-ad-editor--focus-steps .qk-ad-editor__toolbox .toolbox-tabs {
+  border-right: 0;
+}
+
+/* Variables / appearance focus: give the right pane more room than empty steps. */
+.qk-ad-editor--focus-variables .x-program-editor,
+.qk-ad-editor--focus-appearance .x-program-editor {
+  grid-template-columns: minmax(120px, 0.55fr) 4px minmax(240px, 1fr);
+}
+
+.qk-ad-editor--focus-variables .qk-sr-program--empty,
+.qk-ad-editor--focus-appearance .qk-sr-program--empty {
+  min-height: 0;
+  justify-content: flex-start;
+  padding-top: 20px;
+}
+
+.qk-ad-editor--focus-variables .qk-sr-program__empty,
+.qk-ad-editor--focus-appearance .qk-sr-program__empty {
+  font-size: 12px;
+  opacity: 0.72;
+}
+
+.toolbox-toolbar {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 4px;
+  min-width: 0;
+}
+
+.filter-box {
+  box-sizing: border-box;
+  height: 28px;
+  border: 1px solid var(--ad-border-subtle);
+  background: var(--ad-bg-input);
+  color: var(--ad-fg-list-body);
+  padding: 0 8px;
+  outline: none;
+  border-radius: 6px;
+  font: inherit;
+  font-size: 12px;
+}
+
+.toolbox-toolbar .filter-box::placeholder {
+  font-size: 11px;
+  letter-spacing: -0.01em;
+}
+
+.toolbox-icon-btn {
+  box-sizing: border-box;
+  height: 28px;
+  width: 28px;
+  padding: 0;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  border: 1px solid var(--ad-border-subtle);
+  border-radius: 6px;
+  background: var(--ad-bg-icon-btn);
+  color: var(--ad-fg-icon-btn);
+}
+
+.toolbox-body {
+  position: relative;
+  min-height: 0;
+  min-width: 0;
+  flex: 1;
+  display: grid;
+  grid-template-columns: 30px minmax(0, 1fr);
+  border: 1px solid var(--ad-border-subtle);
+  overflow: hidden;
+}
+
+.toolbox-tabs {
+  border-right: 1px solid var(--ad-border-subtle);
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  overflow: auto;
+}
+
+.toolbox-tab {
+  height: 28px;
+  min-width: 28px;
+  padding: 0;
+  border: 0;
+  border-bottom: 1px solid var(--ad-border-tab-sep);
+  background: var(--ad-bg-tab);
+  color: var(--ad-fg-muted);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.toolbox-tab-icon {
+  color: inherit;
+}
+
+.toolbox-tab-icon svg {
+  display: block;
+}
+
+.toolbox-tab.active {
+  background: var(--ad-bg-tab-active);
+  color: var(--ad-fg-tab-active);
+}
+
+.toolbox-tree {
+  min-height: 0;
+  min-width: 0;
+  padding: 4px 2px;
+  overflow-x: hidden;
+  overflow-y: auto;
+}
+
+.toolbox-tree-empty {
+  padding: 10px 8px;
+  font-size: 12px;
+  color: var(--ad-fg-muted);
+}
+
+.toolbox-node {
+  min-height: 24px;
+  min-width: 0;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  padding: 2px 4px;
+  border-radius: 2px;
+}
+
+.toolbox-node.selected {
+  background: var(--ad-bg-tree-selected);
+}
+
+.toolbox-expand {
+  width: 14px;
+  min-width: 14px;
+  height: 17px;
+  flex-shrink: 0;
+}
+
+.toolbox-expand.hidden {
+  visibility: hidden;
+}
+
+.toolbox-node-icon {
+  color: var(--ad-accent-bright);
+  font-size: 11px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  line-height: 0;
+  flex-shrink: 0;
+  transform: translateY(0.5px);
+}
+
+.toolbox-node-icon svg {
+  display: block;
+}
+
+.toolbox-node-name {
+  flex: 1 1 auto;
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  font-size: 12px;
+  color: var(--ad-fg-step-title);
+}
+
+.x-program-editor {
+  flex: 1;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 4px 200px;
+  grid-template-rows: auto minmax(0, 1fr);
+  gap: 0;
+  min-height: 0;
+  min-width: 0;
+  overflow: hidden;
+}
+
+.x-program-editor-toolbar {
+  grid-column: 1;
+  grid-row: 1;
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  height: 32px;
+  min-height: 32px;
+  max-height: 32px;
+  gap: 3px;
+  padding: 0 8px;
+  border-bottom: 1px solid var(--ad-editor-tab-row-border);
+  flex-shrink: 0;
+  background: var(--ad-bg-workspace);
+}
+
+.x-program-editor-toolbar-spacer {
+  flex: 1 1 auto;
+  min-width: 8px;
+}
+
+.x-program-editor-toolbar-run {
+  display: inline-flex;
+  align-items: center;
+  gap: 2px;
+  margin-left: 6px;
+  padding-left: 6px;
+  border-left: 1px solid color-mix(in srgb, var(--ad-border-subtle) 80%, transparent);
+}
+
+.x-program-editor-toolbar-save {
+  appearance: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+  height: 22px;
+  margin: 0 2px 0 0;
+  padding: 0 8px;
+  gap: 4px;
+  border: 1px solid color-mix(in srgb, var(--ad-accent) 55%, transparent);
+  border-radius: 5px;
+  background: transparent;
+  color: var(--ad-accent-bright);
+  font: inherit;
+  font-size: 11px;
+  font-weight: 600;
+  line-height: 1;
+  white-space: nowrap;
+}
+
+.x-program-editor-steps {
+  grid-column: 1;
+  grid-row: 2;
+  min-width: 0;
+  min-height: 0;
+  overflow: auto;
+  display: flex;
+  flex-direction: column;
+  background: var(--ad-bg-step-list);
+}
+
+/* Hit target 4px; hairline drawn by ::after (Headless .workspace-gutter). */
+.x-program-editor-gutter,
+.qk-ad-editor .workspace-gutter {
+  grid-column: 2;
+  grid-row: 1 / -1;
+  position: relative;
+  width: 4px;
+  margin: 0;
+  z-index: 4;
+  background: transparent;
+  cursor: col-resize;
+}
+
+.x-program-editor-gutter::after,
+.qk-ad-editor .workspace-gutter::after {
+  content: '';
+  position: absolute;
+  left: 50%;
+  top: 0;
+  bottom: 0;
+  width: 1px;
+  transform: translateX(-50%) scaleX(0.7);
+  transform-origin: center;
+  background: var(--ad-border-default, var(--ad-border-panel));
+  pointer-events: none;
+}
+
+.x-program-editor-variables {
+  grid-column: 3;
+  grid-row: 1 / -1;
+  min-width: 0;
+  min-height: 0;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  background: var(--ad-bg-workspace);
+}
+
+.variable-editor {
+  flex: 1;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.variable-toolbar {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  box-sizing: border-box;
+  height: 32px;
+  min-height: 32px;
+  max-height: 32px;
+  padding: 0 4px 0 6px;
+  border-bottom: 1px solid var(--ad-editor-tab-row-border);
+  background: var(--ad-bg-workspace);
+}
+
+.variable-toolbar-main {
+  display: flex;
+  flex-wrap: nowrap;
+  align-items: center;
+  gap: 4px;
+  height: 100%;
+  min-height: 0;
+}
+
+.variable-toolbar-group {
+  display: inline-flex;
+  align-items: center;
+  gap: 1px;
+}
+
+.variable-editor .variable-toolbar-group + .variable-toolbar-group {
+  padding-left: 6px;
+  margin-left: 2px;
+  border-left: 1px solid color-mix(in srgb, var(--ad-border-subtle) 80%, transparent);
+}
+
+.variable-toolbar-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+  min-width: 22px;
+  width: 22px;
+  height: 22px;
+  padding: 0;
+  font-size: 12px;
+  line-height: 1;
+  border: none;
+  background: transparent;
+  border-radius: 4px;
+  color: var(--ad-fg-muted);
+}
+
+.variable-toolbar-btn--primary {
+  color: color-mix(in srgb, var(--ad-accent) 82%, var(--ad-fg-muted));
+}
+
+.variable-toolbar-btn--danger {
+  color: var(--ad-fg-muted);
+}
+
+.variable-toolbar-btn.x-program-editor-toolbar-run-btn--run {
+  color: #39b54d;
+}
+
+.variable-toolbar-btn.x-program-editor-toolbar-run-btn--debug {
+  color: #d49a28;
+}
+
+.variable-filter-row {
+  display: flex;
+  align-items: center;
+  flex: 1 1 auto;
+  min-width: 56px;
+  margin-left: 4px;
+}
+
+.variable-filter-row .variable-filter-box {
+  flex: 1;
+  min-width: 0;
+  width: 100%;
+  height: 22px;
+  padding: 0 7px;
+  font-size: 11px;
+  line-height: 20px;
+  border-radius: 4px;
+  border: 1px solid color-mix(in srgb, var(--ad-border-subtle) 70%, transparent);
+  background: transparent;
+  color: var(--ad-fg-muted);
+  box-shadow: none;
+}
+
+.qk-ad-editor .qk-sr-varlist {
+  flex: 1;
+  min-height: 0;
+}
+
+.qk-ad-editor .listbox-item.variable-row {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  margin: 0;
+  padding: 3px 5px;
+  border: 1px solid transparent;
+  background: var(--ad-bg-variable-list-item);
+  color: var(--ad-fg-variable-key);
+  font: inherit;
+}
+
+.qk-ad-editor .variable-row--selected {
+  background: var(--ad-bg-selected-row);
+}
+
+.qk-ad-editor .variable-row-key {
+  display: block;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  font-size: 11px;
+  line-height: 1.25;
+}
+
+.qk-ad-editor .qk-sr-varlist__head {
+  display: none;
+}
+
+.qk-ad-editor__appearance {
+  flex: 1;
+  min-height: 0;
+  padding: 10px 8px 8px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  overflow: auto;
+}
+
+.qk-ad-editor__appearance-title {
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--ad-fg-section);
+}
+
+.qk-ad-editor__appearance-hint {
+  font-size: 11px;
+  color: var(--ad-fg-muted);
+}
+
+.qk-ad-editor__field {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  font-size: 11px;
+  color: var(--ad-fg-muted);
+}
+
+.qk-ad-editor__field-value {
+  box-sizing: border-box;
+  min-height: 24px;
+  padding: 4px 8px;
+  border: 1px solid var(--ad-border-subtle);
+  border-radius: 4px;
+  background: var(--ad-bg-input);
+  color: var(--ad-fg-list-body);
+  font-size: 12px;
+}
+
+.qk-ad-editor__field-value--multi {
+  min-height: 52px;
+}

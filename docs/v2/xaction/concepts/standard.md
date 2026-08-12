@@ -1,31 +1,53 @@
 ---
 title: "复杂动作的编程约定"
-description: "复杂动作的编程约定的 Quicker 2.0 使用说明。"
+description: "用户数据放在「文档\\Quicker\\动作名」下，用获取系统路径拿到文档目录。"
 slug: "/v2/xaction/concepts/standard"
 sidebar_position: 180
 quickerDocKey: "xaction/concepts/standard"
 comments: true
-docStatus: "migrated-unreviewed"
+docStatus: reviewed
 legacyDocId: 30775973
 legacyContentUpdatedAt: "2021-01-27T03:04:42.000Z"
 ---
 
-## 用户数据和依赖文件的存储
+# 复杂动作的编程约定
 
+动作若要保存用户产生的数据，请放到：
 
+**Windows 个人文档目录 `\Quicker\动作名\`**
 
-如果动作需要保存和使用用户产生的数据，请将数据保存在这个位置：
+需要时再分子目录。文件夹名不必和动作标题完全一样，可以加后缀避免冲突。
 
+用 [获取系统路径](/v2/xaction/modules/getfolderpath) 拿「我的文档」的实际路径：
 
+<ModuleParamPreview
+  moduleKey="sys:getFolderPath"
+  values={{folder: 'MyDocuments'}}
+  outputVars={{path: 'docsRoot'}}
+  focusKeys={['folder', 'path']}
+/>
 
-**用户的Windows个人文档目录\\Quicker\\动作名\\**
+然后拼 `$$\Quicker\你的动作名\`。
 
+## 限制与排障
 
+- 不要把用户数据写进 Quicker 安装目录，更新或重装会丢。
+- 动作名做文件夹时避开 `\ / : * ? " < > |`。
+- 分享动作时提醒用户：数据在他们自己的文档目录里，不会跟着动作走。
 
-可以根据需要再细分子目录用于保存不同的文件。
+## 相关链接
 
-动作名不需要完全和实际动作名称一致，可以增加额外的后缀以避免冲突。
-
-可以通过这个模块获得“个人文档目录”的实际路径。
-
-![image.png](./img/standard-001-1158dea522.png "image.png")
+<RelatedDocs
+  items={[
+    {
+      href: '/v2/xaction/modules/getfolderpath',
+      label: '获取系统路径',
+      description: 'MyDocuments 等特殊目录',
+    },
+    {
+      href: '/v2/xaction/concepts/store-settings',
+      label: '在动作中存储用户设置',
+      description: '少量选项用状态，而不是文件',
+    },
+  ]}
+/>

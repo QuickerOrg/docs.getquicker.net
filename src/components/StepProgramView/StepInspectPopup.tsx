@@ -23,11 +23,17 @@ export function StepInspectPopup({
   const dialogRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    const prevOverflow = document.body.style.overflow;
+    const doc = document.documentElement;
+    const scrollbar = Math.max(0, window.innerWidth - doc.clientWidth);
     const prevFocus =
       document.activeElement instanceof HTMLElement ? document.activeElement : null;
-    document.body.style.overflow = 'hidden';
-    dialogRef.current?.focus();
+
+    // One class toggles overflow. Do not also pad .navbar: Infima navbar is
+    // sticky, so body/html lock already keeps its width; extra padding makes
+    // the right cluster (search / GitHub) jump.
+    doc.style.setProperty('--qk-sr-popup-scrollbar', `${scrollbar}px`);
+    doc.classList.add('qk-sr-popup-open');
+    dialogRef.current?.focus({preventScroll: true});
 
     const onKey = (event: KeyboardEvent): void => {
       if (event.key !== 'Escape') {
@@ -42,9 +48,10 @@ export function StepInspectPopup({
     };
     document.addEventListener('keydown', onKey);
     return () => {
-      document.body.style.overflow = prevOverflow;
+      doc.classList.remove('qk-sr-popup-open');
+      doc.style.removeProperty('--qk-sr-popup-scrollbar');
       document.removeEventListener('keydown', onKey);
-      prevFocus?.focus();
+      prevFocus?.focus({preventScroll: true});
     };
   }, [onClose]);
 
@@ -54,7 +61,7 @@ export function StepInspectPopup({
 
   return createPortal(
     <div
-      className="qk-sr-param-form-backdrop qk-docs-preview"
+      className="qk-sr-param-form-backdrop"
       role="presentation"
       onMouseDown={(event) => {
         if (event.target === event.currentTarget) {
@@ -64,6 +71,7 @@ export function StepInspectPopup({
     >
       <div
         ref={dialogRef}
+        className="qk-sr-param-form-dialog"
         tabIndex={-1}
         onMouseDown={(event) => event.stopPropagation()}
       >

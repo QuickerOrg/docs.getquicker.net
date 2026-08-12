@@ -1,0 +1,123 @@
+{
+  "code": "20d89403-3c40-480d-394f-08d98bd92463",
+  "title": "菜单示例",
+  "description": "区分菜单功能和正常运行的功能",
+  "author": "瓜皮之牙",
+  "revision": 0,
+  "source": "https://getquicker.net/sharedaction?code=20d89403-3c40-480d-394f-08d98bd92463",
+  "pulledAt": "2026-08-12T03:00:10.133Z",
+  "variables": [
+    {
+      "name": "menu",
+      "type": "Text"
+    }
+  ],
+  "steps": [
+    {
+      "key": "sys:comment"
+    },
+    {
+      "key": "sys:group",
+      "inputs": {
+        "skipErr": "0",
+        "skipWhenDebugging": "0",
+        "useMultiThread": "0"
+      },
+      "note": "自定义菜单",
+      "ifSteps": [
+        {
+          "key": "sys:simpleIf",
+          "inputs": {
+            "condition": "$={quicker_in_param} == \"1号菜单\""
+          },
+          "ifSteps": [
+            {
+              "key": "sys:notify",
+              "inputs": {
+                "msg": "1号菜单",
+                "maxLines": "0",
+                "type": "Success",
+                "style": "Default"
+              }
+            },
+            {
+              "key": "sys:stop",
+              "inputs": {
+                "method": "default",
+                "isError": "0"
+              }
+            }
+          ]
+        },
+        {
+          "key": "sys:simpleIf",
+          "inputs": {
+            "condition": "$={quicker_in_param} == \"2号菜单\""
+          },
+          "ifSteps": [
+            {
+              "key": "sys:notify",
+              "inputs": {
+                "msg": "2号菜单",
+                "maxLines": "0",
+                "type": "Success",
+                "style": "Default"
+              }
+            },
+            {
+              "key": "sys:stop",
+              "inputs": {
+                "method": "default",
+                "isError": "0"
+              }
+            }
+          ]
+        },
+        {
+          "key": "sys:simpleIf",
+          "inputs": {
+            "condition": "$={quicker_in_param} == \"3号菜单\""
+          },
+          "ifSteps": [
+            {
+              "key": "sys:notify",
+              "inputs": {
+                "msg": "3号菜单",
+                "maxLines": "0",
+                "type": "Success",
+                "style": "Default"
+              }
+            },
+            {
+              "key": "sys:stop",
+              "inputs": {
+                "method": "default",
+                "isError": "0"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "key": "sys:group",
+      "inputs": {
+        "skipErr": "0",
+        "skipWhenDebugging": "0",
+        "useMultiThread": "0"
+      },
+      "note": "正常使用",
+      "ifSteps": [
+        {
+          "key": "sys:notify",
+          "inputs": {
+            "msg": "正常运行动作",
+            "maxLines": "0",
+            "type": "Info",
+            "style": "Default"
+          }
+        }
+      ]
+    }
+  ]
+}

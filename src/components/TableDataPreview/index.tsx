@@ -1,7 +1,13 @@
-import type {ReactNode} from 'react';
+import {useCallback, useEffect, useState, type ReactNode} from 'react';
 import styles from './styles.module.css';
 
-export type TableDataValue = string | number | boolean | null;
+export type TableDataImageCell = {
+  image: string;
+  width?: number;
+  alt?: string;
+};
+
+export type TableDataValue = string | number | boolean | null | TableDataImageCell;
 
 export type TableDataPreviewProps = {
   title?: string;
@@ -14,7 +20,18 @@ export type TableDataPreviewProps = {
   className?: string;
 };
 
-function renderValue(value: TableDataValue): string {
+function isImageCell(value: TableDataValue): value is TableDataImageCell {
+  return typeof value === 'object' && value !== null && 'image' in value;
+}
+
+function cellKey(value: TableDataValue): string {
+  if (isImageCell(value)) return `img:${value.image}`;
+  if (value == null) return '';
+  return String(value);
+}
+
+function renderText(value: TableDataValue): string {
+  if (isImageCell(value)) return value.alt ?? '';
   if (value == null) return '';
   if (typeof value === 'boolean') return value ? '是' : '否';
   return String(value);
@@ -23,6 +40,7 @@ function renderValue(value: TableDataValue): string {
 /**
  * Read-only docs sketch of Quicker's TableManageWindow/DataGrid.
  * Sources: Domain/Tables/TableManageWindow.xaml and App.xaml AppDataGridStyle.
+ * image:N extra setting → TableDataImageCell (WPF Image.Width/Height = N, Stretch.Uniform).
  */
 export default function TableDataPreview({
   title = '表格数据',
@@ -36,6 +54,18 @@ export default function TableDataPreview({
 }: TableDataPreviewProps): ReactNode {
   const withActions = showActions ?? editable;
   const withAddRow = showAddRow ?? editable;
+  const [lightbox, setLightbox] = useState<TableDataImageCell | null>(null);
+
+  const closeLightbox = useCallback((): void => setLightbox(null), []);
+
+  useEffect(() => {
+    if (!lightbox) return undefined;
+    const onKey = (event: KeyboardEvent): void => {
+      if (event.key === 'Escape') closeLightbox();
+    };
+    document.addEventListener('keydown', onKey);
+    return () => document.removeEventListener('keydown', onKey);
+  }, [lightbox, closeLightbox]);
 
   return (
     <div
@@ -68,10 +98,36 @@ export default function TableDataPreview({
             </thead>
             <tbody>
               {rows.map((row, rowIndex) => (
-                <tr key={`${rowIndex}-${row.map(renderValue).join('|')}`}>
-                  {columns.map((_, columnIndex) => (
-                    <td key={columnIndex}>{renderValue(row[columnIndex] ?? null)}</td>
-                  ))}
+                <tr key={`${rowIndex}-${row.map(cellKey).join('|')}`}>
+                  {columns.map((column, columnIndex) => {
+                    const value = row[columnIndex] ?? null;
+                    if (isImageCell(value)) {
+                      const size = value.width ?? 50;
+                      return (
+                        <td
+                          key={column}
+                          data-preview-from={column}
+                        >
+                          <button
+                            type="button"
+                            className={styles.thumbButton}
+                            data-preview-handle="from"
+                            title="双击查看大图"
+                            onDoubleClick={() => setLightbox(value)}
+                          >
+                            <img
+                              className={styles.thumb}
+                              src={value.image}
+                              alt={value.alt ?? ''}
+                              width={size}
+                              height={size}
+                            />
+                          </button>
+                        </td>
+                      );
+                    }
+                    return <td key={column}>{renderText(value)}</td>;
+                  })}
                   {withActions ? (
                     <td className={styles.actions}>
                       <span className={styles.editButton}>编辑</span>
@@ -102,6 +158,22 @@ export default function TableDataPreview({
           </div>
         ) : null}
       </div>
+
+      {lightbox ? (
+        <div
+          className={styles.lightbox}
+          role="dialog"
+          aria-modal="true"
+          aria-label="查看大图"
+          onClick={closeLightbox}
+        >
+          <img
+            src={lightbox.image}
+            alt={lightbox.alt ?? ''}
+            onClick={(event) => event.stopPropagation()}
+          />
+        </div>
+      ) : null}
     </div>
   );
 }

@@ -1,0 +1,123 @@
+{
+  "code": "4aaaaf6c-1883-4c3a-9ed6-08d85d9ed340",
+  "title": "右键菜单测试",
+  "description": "动态更新右键菜单测试",
+  "author": "CL",
+  "revision": 1,
+  "source": "https://getquicker.net/sharedaction?code=4aaaaf6c-1883-4c3a-9ed6-08d85d9ed340",
+  "pulledAt": "2026-08-11T21:42:33.008Z",
+  "variables": [
+    {
+      "name": "text",
+      "type": "Text",
+      "remark": "默认的文本变量"
+    },
+    {
+      "name": "optionIsEnabled",
+      "type": "Boolean",
+      "remark": "选项是否启用"
+    }
+  ],
+  "steps": [
+    {
+      "key": "sys:comment",
+      "inputs": {
+        "note": "选择了菜单，判断条件：动作参数以“config_”开始"
+      }
+    },
+    {
+      "key": "sys:simpleIf",
+      "inputs": {
+        "condition": "$= {quicker_in_param}.StartsWith(\"config_\")"
+      },
+      "ifSteps": [
+        {
+          "key": "sys:if",
+          "inputs": {
+            "condition": "$= {quicker_in_param} == \"config_enable\""
+          },
+          "ifSteps": [
+            {
+              "key": "sys:comment",
+              "inputs": {
+                "note": "选择了“启用”菜单"
+              }
+            },
+            {
+              "key": "sys:assign",
+              "inputs": {
+                "input": "true",
+                "stopIfFail": "1"
+              },
+              "outputs": {
+                "output": "optionIsEnabled"
+              }
+            }
+          ],
+          "elseSteps": [
+            {
+              "key": "sys:comment",
+              "inputs": {
+                "note": "选择了“禁用”菜单"
+              }
+            },
+            {
+              "key": "sys:assign",
+              "inputs": {
+                "input": "false",
+                "stopIfFail": "1"
+              },
+              "outputs": {
+                "output": "optionIsEnabled"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "key": "sys:comment",
+      "inputs": {
+        "note": "根据变量值更新菜单。"
+      }
+    },
+    {
+      "key": "sys:if",
+      "inputs": {
+        "condition": "{optionIsEnabled}"
+      },
+      "ifSteps": [
+        {
+          "key": "sys:stateStorage",
+          "inputs": {
+            "type": "UpdateContextMenu",
+            "actionContextMenu": "禁用选项|config_disable"
+          }
+        }
+      ],
+      "elseSteps": [
+        {
+          "key": "sys:stateStorage",
+          "inputs": {
+            "type": "UpdateContextMenu",
+            "actionContextMenu": "启用选项|config_enable"
+          }
+        }
+      ]
+    },
+    {
+      "key": "sys:comment",
+      "inputs": {
+        "note": "显示变量的当前值"
+      }
+    },
+    {
+      "key": "sys:notify",
+      "inputs": {
+        "msg": "$$ 选项值：{optionIsEnabled}",
+        "maxLines": "0",
+        "type": "Info"
+      }
+    }
+  ]
+}

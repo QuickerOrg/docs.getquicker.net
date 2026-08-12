@@ -1,39 +1,24 @@
 ---
 title: "词典类型"
-description: "词典类型的 Quicker 2.0 使用说明。"
+description: "词典存键值对；默认值可用每行 Key:Value 或 JSON；比较值时要先转成同一类型。"
 slug: "/v2/xaction/concepts/var-dict"
 sidebar_position: 70
 quickerDocKey: "xaction/concepts/var-dict"
 comments: true
-docStatus: "migrated-unreviewed"
+docStatus: reviewed
 legacyDocId: 1402045
 legacyContentUpdatedAt: "2025-09-28T15:04:27.000Z"
 ---
 
-词典类型用于存储 “键-值”对 类型的数据。
+# 词典类型
 
+词典存「键 → 值」。键是文本，值可以是任意类型。
 
+内部对应 C# `Dictionary<string, object>`。
 
+## 默认值
 
-
-**参考**
-
-*词典类型在内部使用 Dictionary&lt;string, Object&gt; 实现。*
-
-*键（Key）：为C#的String类型*
-
-*值（Value）：为C#的Object类型。Object为所有c#类型的基类，可以存储任何类型的内容。*
-
-
-
-
-## 变量定义
-
-### 默认值的定义/赋值操作里的文本写法
-
-词典变量默认值可以使用两种方式写：
-
--   简单模式：每行一个键值对， 格式为 Key:Value，例如：
+**简单模式**：每行一个 `键:值`。
 
 <VariableDefPreview
   name="词典变量"
@@ -41,11 +26,9 @@ legacyContentUpdatedAt: "2025-09-28T15:04:27.000Z"
   defaultValue={"a:aaaa\nb:bbbb\nc:cccc"}
 />
 
-定义了一个词典变量，初始化后包含3个“键-值”对。第一个键为“a”，值为“aaaa”；第二个键为“**b**”，值为“bbbb”；第一个键为“c”，值为“cccc”。
+上面初始化了三对：`a`→`aaaa`，`b`→`bbbb`，`c`→`cccc`。
 
-
-
--   Json格式：
+**JSON**：
 
 <VariableDefPreview
   name="dict"
@@ -53,7 +36,7 @@ legacyContentUpdatedAt: "2025-09-28T15:04:27.000Z"
   defaultValue={'{\n  "Name": "张三",\n  "Age": 30\n}'}
 />
 
-也可用「赋值」模块把 JSON 文本写入词典变量（示意）：
+也可以用 [赋值](/v2/xaction/modules/assign) 把 JSON 文本写入词典：
 
 <ModuleParamPreview
   moduleKey="sys:assign"
@@ -62,14 +45,9 @@ legacyContentUpdatedAt: "2025-09-28T15:04:27.000Z"
   outputVars={{output: 'dict'}}
 />
 
+## 转成 JSON 文本
 
-
-
-## 转换
-
-### 将词典转换为Json文本
-
-（1）使用“赋值”模块将词典变量赋值给文本变量即可自动转换。
+把词典赋给文本变量会自动序列化：
 
 <ModuleParamPreview
   moduleKey="sys:assign"
@@ -78,29 +56,36 @@ legacyContentUpdatedAt: "2025-09-28T15:04:27.000Z"
   outputVars={{output: 'text'}}
 />
 
-（2）使用表达式:
+或表达式：
 
-```csharp
+```text
 $= JsonConvert.SerializeObject({词典变量})
 ```
 
+增删改键用 [词典操作](/v2/xaction/modules/dictoperations)。
 
+## 限制与排障
 
+比较两个键的值时，不要写 `$= {dict}["key1"] == {dict}["key2"]`。值是 `object`，这是引用比较，两个相同字符串也会得到假。先转成同一类型，或两边都 `.ToString()`。
 
+## 相关链接
 
-
-## 相关操作模块
-
--   [词典操作](/v2/xaction/modules/dictoperations)
-
-
-
-
-## 注意事项
-
--   关于比较两个词典键值对的值：
-    词典变量类型在内部对应于C#的Dictionary&lt;string, object&gt;类型。值类型为object，可以保存各类对象。因此，不能直接比较词典的两个值是否相同，如 $= &#123;dict&#125;\["key1"\] == &#123;dict&#125;\["key2"\] ，这种情况下是两个object类型的比较，会使用引用比较，即使两个值是相同的字符串，也会得到False的结果。应强制转换类型或使用ToString()方法统一转换为文本后进行比较。 [参考](https://github.com/cuiliang/Quicker/issues/2231)
-
-## 更新历史
-
--   20250928 增加注意事项内容。
+<RelatedDocs
+  items={[
+    {
+      href: '/v2/xaction/modules/dictoperations',
+      label: '词典操作',
+      description: '读、写、删键',
+    },
+    {
+      href: '/v2/xaction/concepts/expression',
+      label: '表达式',
+      description: '用 ["键"] 取值',
+    },
+    {
+      href: '/v2/xaction/concepts/var-list',
+      label: '列表类型',
+      description: '只要一组字符串时用列表',
+    },
+  ]}
+/>

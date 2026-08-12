@@ -1,13 +1,13 @@
 ---
 title: "Quicker操作"
-description: "调用Quicker的某个功能"
+description: "在动作里调用 Quicker 自身功能：面板、搜索、轮盘、设置、动作页等。"
 slug: "/v2/xaction/modules/quickeroperations"
 sidebar_label: "Quicker操作"
 sidebar_position: 200
 quickerDocKey: "xaction/module/sys:quickeroperations"
 comments: true
 moduleKey: "sys:quickeroperations"
-docStatus: "migrated-unreviewed"
+docStatus: "reviewed"
 metadataGeneratedAt: "2026-08-03 20:08:03"
 legacyDocId: 3884756
 legacyContentUpdatedAt: "2024-08-20T01:16:01.000Z"
@@ -15,23 +15,27 @@ legacyContentUpdatedAt: "2024-08-20T01:16:01.000Z"
 
 # Quicker操作
 
-调用Quicker的某个功能
+在动作里调用 Quicker 自己的功能（面板、搜索框、轮盘、设置、加载动作页等）。要弹出自定义界面，用 [多字段表单](/v2/xaction/modules/form)、[自定义操作窗](/v2/xaction/modules/custompanel)、[自定义窗口](/v2/xaction/modules/customwindow) 或 [WebView2浏览器窗口](/v2/xaction/modules/webview2)。
 
 ## 当前模块定义
 
 <XActionModuleMeta moduleKey="sys:quickeroperations" />
 
-在动作中调用Quicker功能。从而方便的使用轮盘菜单、扩展热键等操作Quicker。
+## 概述
+
+换 **类型** 后只显示该操作需要的参数。常见组合：先 **显示面板**，稍等再 **加载动作页**，把面板切到指定页。
 
 <ModuleParamPreview moduleKey="sys:quickeroperations" />
 
-可以结合使用“显示面板”和“加载动作页”实现用动作切换到某个特定的动作页上的目的。
+## 参数说明
 
-## 部分操作类型的说明
+**类型**：要调用的 Quicker 功能，见下面各节。
+
+**失败后停止**：失败是否中止动作。默认开启。
 
 ### 显示面板
 
-显示面板窗口。可指定是否自动激活鼠标位置窗口、是否跟随鼠标。
+显示面板窗口。
 
 <ModuleParamPreview
   moduleKey="sys:quickeroperations"
@@ -44,64 +48,81 @@ legacyContentUpdatedAt: "2024-08-20T01:16:01.000Z"
   }}
 />
 
-### 显示搜索框
+**自动激活鼠标位置窗口**：是否先激活指针下的窗口。默认关闭。
 
-用于触发搜索框，并自动填入特定的搜索词（通常填写某个[搜索功能](https://getquicker.net/kc/manual/doc/searching)的触发词）。
+**跟随鼠标位置**：面板是否跟到指针附近。默认开启。
+
+### 显示搜索框 / 关闭搜索框
+
+**显示搜索框** 弹出搜索框，并可预填搜索词（常填某个搜索功能的触发词）。详见 [从搜索框给动作传递参数](/v2/xaction/guides/search-adv)。
+
+<ModuleParamPreview
+  moduleKey="sys:quickeroperations"
+  focusKeys={['type', 'searchText', 'stopIfFail']}
+  values={{type: 'showSearch', searchText: '', stopIfFail: 'true'}}
+/>
+
+**预置的搜索内容**：预先放入搜索框的文字。仅 **显示搜索框**、**使用当前动作进行实时搜索**、**使用指定动作进行实时搜索** 时出现。
 
 ![](./img/quickeroperations-003-4b3b4dfd7e.png)
 
-### 关闭搜索框
+**关闭搜索框**：关掉已经打开的搜索框。
 
-关闭已经显示的搜索框。
+### 显示轮盘菜单 (点击)
 
-### 显示轮盘菜单（点击）
+以点击模式显示轮盘：出现后要点选动作，而不是滑动选择。若轮盘设置里开启了「非滑动方式触发式显示扩展圈」，这样触发的轮盘会把扩展圈铺在屏幕上。轮盘本身的说明见 [轮盘菜单](/v2/what's-new/others/circle-menu)。
 
 ![](./img/quickeroperations-004-267fc8d535.png)
 
-以点击模式显示轮盘菜单：显示轮盘后需要**点击**选择动作，而不是普通的滑动触发选择。
+**场景标识**：可指定场景关联的 exe 文件名（场景与动作管理左侧列表）。留空则按当前场景。
 
-如果在轮盘设置中开启“非滑动方式触发式显示扩展圈”，使用此方式触发的轮盘会将扩展圈显示在屏幕上。
+<ShareLinkCard
+  code="7efc668c-a749-4a8c-fc16-08d978b0ec35"
+  title="显示轮盘菜单"
+  description="以点击模式打开轮盘"
+  author="CL"
+/>
 
-示例动作：[显示轮盘菜单 - by CL - 动作信息 - Quicker](https://getquicker.net/Sharedaction?code=7efc668c-a749-4a8c-fc16-08d978b0ec35)
+### 显示选中文本工具条
+
+让 [选中文本工具条](/v2/features/triggers/text-selection-toolbar) 按当前选区弹出。2.x 用它替代 1.x 的文本悬浮窗；托盘或设置里若仍看到旧入口，对应的就是本操作。
+
+![](./img/quickeroperations-008-67f551cba7.png)
 
 ### 禁用/启用
 
-切换是否禁用Quicker功能触发。
+切换是否暂停 Quicker 的功能触发。等同于：
 
-该功能等同于：
-
--   点击托盘菜单的“暂停”“恢复”菜单项；
-    ![](./img/quickeroperations-005-2e2c5ff3db.png)
--   双击托盘图标；
--   按下“暂停/恢复Quicker”的快捷键；
+- 托盘菜单的「暂停」「恢复」；
+  ![](./img/quickeroperations-005-2e2c5ff3db.png)
+- 双击托盘图标；
+- 「暂停/恢复 Quicker」快捷键。
 
 ### 运行最后使用的动作
 
-不建议使用此功能，“最后使用的动作”可能会意外变化。
+再跑一次「最后使用的动作」。不建议依赖：这个记录可能被别的操作改掉。
 
-### 启用App语音输入
+### 启动App语音输入
 
-【已过时】安卓客户端已不再维护。
+已过时。安卓客户端已不再维护。
 
 ### 停止运行中的动作
 
-停止所有运行中的动作，功能等同于“停止运行动作”快捷键。
+停掉所有正在跑的动作，等同于「停止运行动作」快捷键。
 
 ### 重新加载键鼠挂钩
 
-重新加载键盘和鼠标挂钩，功能等同于“重新加载键盘和鼠标挂钩”托盘菜单或对应的功能快捷键。
+重新加载键盘和鼠标挂钩，等同于托盘菜单或对应功能快捷键。
 
 ### 重置键盘状态
 
-当键盘状态和实际状态不统一时，用于清除处于按下状态的按键。等同于对应托盘菜单的功能。
-
-可以使用“键盘状态”窗口查看键盘状态。
+键盘状态和实际按键不一致时，清掉仍显示为按下的键。等同于对应托盘菜单。可用「键盘状态」窗口查看。
 
 ![](./img/quickeroperations-006-96636ee68f.png)
 
-### 显示仪表盘窗口
+### 显示仪表盘窗口 / 显示设置窗口
 
-显示仪表盘窗口，如果需要可以指定特定场景的仪表盘窗口。
+**显示仪表盘窗口**：打开仪表盘。需要时可填 **场景标识**，打开该场景的仪表盘。
 
 <ModuleParamPreview
   moduleKey="sys:quickeroperations"
@@ -109,25 +130,15 @@ legacyContentUpdatedAt: "2024-08-20T01:16:01.000Z"
   values={{type: 'showDashboardWindow', exe: '', stopIfFail: 'true'}}
 />
 
-### 开启/关闭文本悬浮窗功能
-
-功能等同于对应托盘菜单：
-
-![](./img/quickeroperations-008-67f551cba7.png)
-
-### 显示配置窗口
-
-打开设置窗口，功能等同于
+**显示设置窗口**：打开设置。等同于主界面入口或托盘菜单。
 
 ![](./img/quickeroperations-009-d9d483b170.png)
-
-或托盘菜单：
 
 ![](./img/quickeroperations-010-79b445d8dc.png)
 
 ### 显示场景与动作管理窗口
 
-显示场景与动作管理窗口，必要时可以指定场景标识以自动切换到特定场景的设置界面。
+打开场景与动作管理。需要时可填 **场景标识**，自动切到该场景。
 
 <ModuleParamPreview
   moduleKey="sys:quickeroperations"
@@ -135,64 +146,55 @@ legacyContentUpdatedAt: "2024-08-20T01:16:01.000Z"
   values={{type: 'showExeSettingWindow', exe: '', stopIfFail: 'true'}}
 />
 
-功能等同于
-
 ![](./img/quickeroperations-012-67df0b89e5.png)
 
 ### 关闭所有悬浮按钮
 
-关闭所有悬浮动作和动作页。
+关掉所有悬浮动作和动作页。
 
 ### 加载动作页
 
-加载特定的动作页到当前面板中。
-
-可以在场景与动作管理中复制动作页id。
+把指定动作页加载到当前面板。在场景与动作管理里复制动作页 ID。
 
 ![](./img/quickeroperations-013-c3c5bfffb5.png)
 
-### 加载指定应用程序的所有动作页（锁定切换）
+**动作页ID**：必填。
+
+### 加载场景动作（锁定切换）
+
+手动切到某个应用程序（或自定义虚拟应用），加载它的动作页并锁定。锁定等同于按下锁定按钮。
+
+<ModuleParamPreview
+  moduleKey="sys:quickeroperations"
+  focusKeys={['type', 'exe', 'sceneGroup', 'stopIfFail']}
+  values={{type: 'loadExeProfiles', exe: '', sceneGroup: '', stopIfFail: 'true'}}
+/>
+
+**场景标识**：场景关联的 exe 文件名。
+
+**切换到分组**：加载后在新版面板里切到此分组。留空按场景默认；填「未分组」切到未分组。仅锁定 / 不锁定这两种加载场景动作时出现。
 
 ![](./img/quickeroperations-014-2c2294b4ab.png)
 
-以手动方式切换到某个应用程序（或自定义虚拟应用），加载对其设置的动作页并锁定。
-
-用于在某些场景下固定所使用的动作页。
-
-锁定切换等同于按下锁定按钮。
-
 ![](./img/quickeroperations-015-6e7f1a2a63.png)
 
-#### 如何使加载动作页时，面板窗口跟随鼠标？
-
-（1）先显示面板，里面可以设置是否跟随鼠标；
-
-（2）然后延迟一点时间；
-
-（3）再加载动作页、或加载场景的所有动作页。
+要让加载动作页时面板跟着鼠标：先 **显示面板**（可开 **跟随鼠标位置**）→ 稍等 → 再加载动作页或场景动作。
 
 ![](./img/quickeroperations-016-78395b31e8.png)
 
-### 加载指定应用程序的所有动作页（不锁定切换）
+### 加载场景动作（不锁定切换）
 
-加载动作页，但不锁定切换。
+同样加载场景动作页，但不锁定切换。参数与上一节相同（**场景标识**、**切换到分组**）。
 
 ### 锁定/解锁 动作页自动切换
 
-等同于按下面板窗口的锁定切换按钮。
+等同于面板上的锁定切换按钮。
 
 ![](./img/quickeroperations-015-6e7f1a2a63.png)
 
 ### 编辑动作
 
-编辑特定的动作或公共子程序。
-
-动作ID或名称参数可填写：
-
--   动作ID
--   动作名称（确保动作名唯一存在）
--   %%公共子程序id（1.43.18+版本）
--   %%公共子程序名称（1.43.18+版本）
+打开指定动作或公共子程序的编辑窗口。
 
 <ModuleParamPreview
   moduleKey="sys:quickeroperations"
@@ -200,21 +202,32 @@ legacyContentUpdatedAt: "2024-08-20T01:16:01.000Z"
   values={{type: 'editAction', actionId: '测试动作20240108', stopIfFail: 'true'}}
 />
 
-### 重启Quicker
+**动作ID或名称** 可填：
 
-重启Quicker软件。
+- 动作 ID
+- 动作名称（名称必须唯一）
+- `%%` 公共子程序 id（1.43.18+）
+- `%%` 公共子程序名称（1.43.18+）
+
+右键动作 → 信息 可查看 ID。用名称时不能有重名。
+
+### 重启Quicker / 退出Quicker
+
+**重启Quicker**：重启软件。
+
+**退出Quicker**：关闭软件。
 
 ### 推送服务：设置为活动客户端
 
-当多个电脑连接推送服务时，将当前电脑设置为默认客户端。
+多台电脑连同一推送服务时，把当前电脑设为默认客户端。
 
 ### 使用当前动作进行实时搜索
 
-当编写具有实时搜索功能的动作时，用于触发搜索功能或更新搜索词。
+编写带实时搜索的动作时，用来触发搜索或更新搜索词。可填 **预置的搜索内容**。
 
 ### 使用指定动作进行实时搜索
 
-触发使用另外的动作进行时搜索的功能并填入指定的搜索词。
+用另一个动作做实时搜索，并填入搜索词。
 
 <ModuleParamPreview
   moduleKey="sys:quickeroperations"
@@ -227,15 +240,17 @@ legacyContentUpdatedAt: "2024-08-20T01:16:01.000Z"
   }}
 />
 
+**动作ID或名称**：要用来搜索的动作。
+
+**预置的搜索内容**：放入搜索框的词。
+
 ### 显示剪贴板上下文菜单
 
-触发显示[内容上下文菜单](https://getquicker.net/kc/manual/doc/content-contextmenu)，该菜单根据当前剪贴板中的内容加载菜单项。
+按当前剪贴板内容弹出内容上下文菜单。
 
-### 加载外观/切换主题
+### 加载外观/切换主题(专业版功能)
 
-加载特定的外观，以及切换主题模式。本功能需要专业版。
-
-仅切换主题模式时，可不填写外观ID。
+加载指定外观，并可切换浅色 / 暗色。需要专业版。只改主题时，**外观ID** 可留空。
 
 <ModuleParamPreview
   moduleKey="sys:quickeroperations"
@@ -247,17 +262,15 @@ legacyContentUpdatedAt: "2024-08-20T01:16:01.000Z"
   }}
 />
 
-外观ID可从外观库中点击某个外观打开的外观详情页面中复制。
+**外观ID**：在外观库详情页复制。
 
 ![](./img/quickeroperations-021-c3af82bff7.png)
 
-### 退出Quicker
+**主题模式**：不改变、跟随 Windows、浅色、暗色、切换浅色和暗色。
 
-关闭Quicker软件。
+### 悬浮动作(专业版功能)
 
-### 悬浮动作
-
-将指定动作悬浮到特定位置。
+把指定动作悬浮到某个位置。需要专业版。
 
 <ModuleParamPreview
   moduleKey="sys:quickeroperations"
@@ -265,9 +278,15 @@ legacyContentUpdatedAt: "2024-08-20T01:16:01.000Z"
   values={{type: 'FloatAction', actionId: '', position: '200,200', stopIfFail: 'true'}}
 />
 
+**动作ID或名称**：要悬浮的动作。
+
+**位置**：`left,top` 坐标，默认 `200,200`。
+
+输出 **窗口句柄**：悬浮窗口的句柄。
+
 ### 切换所有悬浮按钮显示
 
-切换悬浮动作的显示状态，可全部隐藏、全部显示或切换为默认的按活动进程显示的状态。
+统一改悬浮动作的显示：全部隐藏、全部显示，或按活动进程自动切换。
 
 <ModuleParamPreview
   moduleKey="sys:quickeroperations"
@@ -275,18 +294,61 @@ legacyContentUpdatedAt: "2024-08-20T01:16:01.000Z"
   values={{type: 'ToggleFloatButtons', viewMode: 'ByProcess'}}
 />
 
+**显示状态**：隐藏全部、自动(按关联进程切换)、显示全部、切换隐藏和自动。默认「自动(按关联进程切换)」。
+
 ### 显示或隐藏所有图片窗口
 
-用于特定情况下隐藏所有的图片窗口。
+在需要时隐藏或恢复所有图片窗口。
 
 ### 删除当前动作
 
-删除当前动作，可以用于结合右键菜单设计自定义的删除功能（如在删除动作前清理本地数据）。
+删除当前动作。可配合右键菜单做自定义删除（例如先清本地数据再删）。
 
 ### 根据ID获取动作信息
 
-获取指定动作的信息。
+按动作 ID 读取动作信息。此时 **动作ID或名称** 只能填动作 ID，不能填名称。
+
+## 输出
+
+- **步骤是否成功**：本步是否完成。
+- **动作标题** / **动作图标** / **动作描述**：仅 **根据ID获取动作信息**。
+- **窗口句柄**：仅 **悬浮动作(专业版功能)**。
+
+## 限制与排障
+
+- **运行最后使用的动作** 的目标可能被其它操作改掉，不要当稳定入口。
+- **启动App语音输入** 已过时。
+- 加载动作页后面板不跟鼠标：先显示面板并打开 **跟随鼠标位置**，稍等再加载。
+- 用名称编辑或搜索动作时，名称必须唯一；获取动作信息只能填 ID。
+- **加载外观/切换主题**、**悬浮动作** 需要专业版。
+
+## 相关链接
+
+<RelatedDocs
+  items={[
+    {
+      href: '/v2/xaction/guides/search-adv',
+      label: '从搜索框给动作传递参数',
+      description: '搜索框预填词、把参数交给动作。',
+    },
+    {
+      href: '/v2/features/triggers/text-selection-toolbar',
+      label: '选中文本工具条',
+      description: '2.x 替代文本悬浮窗的选区工具条。',
+    },
+    {
+      href: "/v2/what's-new/others/circle-menu",
+      label: '轮盘菜单',
+      description: '点击模式与扩展圈的说明。',
+    },
+    {
+      href: '/v2/xaction/modules/runaction',
+      label: '运行动作',
+      description: '直接跑另一个动作，而不是调 Quicker 界面。',
+    },
+  ]}
+/>
 
 ## 更新历史
 
--   20240820 完善文档。
+- 20240820 完善文档。

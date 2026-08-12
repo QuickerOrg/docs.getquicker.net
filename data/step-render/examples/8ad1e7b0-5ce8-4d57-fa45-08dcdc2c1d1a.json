@@ -1,0 +1,42 @@
+{
+  "code": "8ad1e7b0-5ce8-4d57-fa45-08dcdc2c1d1a",
+  "title": "表格示例:图片和链接",
+  "description": "演示图片列、链接列",
+  "author": "CL",
+  "revision": 2,
+  "source": "https://getquicker.net/sharedaction?code=8ad1e7b0-5ce8-4d57-fa45-08dcdc2c1d1a",
+  "pulledAt": "2026-08-12T02:56:27.534Z",
+  "variables": [
+    {
+      "name": "text",
+      "type": "Text",
+      "remark": "默认的文本变量"
+    },
+    {
+      "name": "table",
+      "type": "Table"
+    }
+  ],
+  "steps": [
+    {
+      "key": "sys:tableoperation",
+      "inputs": {
+        "table": "{table}",
+        "type": "addRow",
+        "rowData": "Name:张三\r\nAge:20\r\nImage:https://files.getquicker.net/_icons/3405578BB0D5022376C8A4D9DD6B9F92C28585C6.png\r\nLink:https://getquicker.net\r\nicon:fa:Light_Cog:#FF0000\r\nMessage:Hello Quicker",
+        "stopIfFail": "1"
+      }
+    },
+    {
+      "key": "sys:tableoperation",
+      "inputs": {
+        "table": "{table}",
+        "type": "manage",
+        "gridSelectionMode": "Cells",
+        "isReadOnly": "0",
+        "windowTitle": "表格数据",
+        "stopIfFail": "1"
+      }
+    }
+  ]
+}

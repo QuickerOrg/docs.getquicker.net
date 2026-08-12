@@ -1,0 +1,30 @@
+{
+  "code": "ea84295f-a89f-4eed-2181-08d87f35f7db",
+  "title": "动作调试器",
+  "description": "方便快速调试动作",
+  "author": "Cea",
+  "revision": 12,
+  "source": "https://getquicker.net/sharedaction?code=ea84295f-a89f-4eed-2181-08d87f35f7db",
+  "pulledAt": "2026-08-12T03:00:10.032Z",
+  "variables": [
+    {
+      "name": "actionParams",
+      "type": "Text"
+    }
+  ],
+  "steps": [
+    {
+      "key": "sys:subprogram",
+      "inputs": {
+        "subProgram": "窗体_动作信息面板",
+        "stopIfFail": "1",
+        "var:打开时读取剪贴板": "true",
+        "var:actionTitle": "*临时动作",
+        "var:actionParams": "{actionParams}"
+      },
+      "outputs": {
+        "var:actionParams": "actionParams"
+      }
+    }
+  ]
+}

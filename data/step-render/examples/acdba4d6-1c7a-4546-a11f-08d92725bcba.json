@@ -1,0 +1,48 @@
+{
+  "code": "acdba4d6-1c7a-4546-a11f-08d92725bcba",
+  "title": "计数器",
+  "description": "每次点击加1。演示变量作为状态使用。",
+  "author": "CL",
+  "revision": 1,
+  "source": "https://getquicker.net/sharedaction?code=acdba4d6-1c7a-4546-a11f-08d92725bcba",
+  "pulledAt": "2026-08-11T21:42:32.892Z",
+  "variables": [
+    {
+      "name": "number",
+      "type": "Integer"
+    }
+  ],
+  "steps": [
+    {
+      "key": "sys:comment",
+      "inputs": {
+        "note": "显示变量的当前值"
+      }
+    },
+    {
+      "key": "sys:notify",
+      "inputs": {
+        "msg": "$${number}",
+        "maxLines": "0",
+        "type": "Info",
+        "style": "Default"
+      }
+    },
+    {
+      "key": "sys:comment",
+      "inputs": {
+        "note": "将变量值加1"
+      }
+    },
+    {
+      "key": "sys:assign",
+      "inputs": {
+        "input": "$={number}+1",
+        "stopIfFail": "1"
+      },
+      "outputs": {
+        "output": "number"
+      }
+    }
+  ]
+}

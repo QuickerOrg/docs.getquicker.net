@@ -1,13 +1,13 @@
 ---
 title: "浏览器控制"
-description: "与Chrome/Edge/Firefox等浏览器通信，控制网页或浏览器。"
+description: "与 Chrome / Edge / Firefox 等浏览器通信，控制网页或浏览器。"
 slug: "/v2/xaction/modules/chromecontrol"
 sidebar_label: "浏览器控制"
 sidebar_position: 40
 quickerDocKey: "xaction/module/sys:chromecontrol"
 comments: true
 moduleKey: "sys:chromecontrol"
-docStatus: "migrated-unreviewed"
+docStatus: "reviewed"
 metadataGeneratedAt: "2026-08-03 20:08:03"
 legacyDocId: 9024629
 legacyContentUpdatedAt: "2025-10-28T06:17:46.000Z"
@@ -15,124 +15,99 @@ legacyContentUpdatedAt: "2025-10-28T06:17:46.000Z"
 
 # 浏览器控制
 
-与Chrome/Edge/Firefox等浏览器通信，控制网页或浏览器。
+通过 Quicker 动作控制 Chrome / Edge / Firefox 等浏览器或当前网页。灵活使用需要一定的 HTML / CSS / JavaScript / jQuery 知识。只要读取当前标签网址，用 [获取浏览器网址](/v2/xaction/modules/getchromeurl)。
 
 ## 当前模块定义
 
 <XActionModuleMeta moduleKey="sys:chromecontrol" />
 
-通过Quicker动作控制浏览器或网页。
-
-注：
-
--   您可能需要了解Html/CSS/Javascript/JQuery等相关知识才能灵活的使用本模块。
-
 ## 概述
 
-### 关于MV3版本的浏览器扩展
+### MV3 版本浏览器扩展
 
 目前进展：
 
--   Chrome/Edge 均已发布1.0.0版扩展。
--   1.0.1版已提交审核，主要解决xpath支持问题和网页浮标不能保存位置的问题。
+- Chrome / Edge 均已发布 1.0.0 版扩展。
+- 1.0.1 已提交审核，主要解决 XPath 支持和网页浮标不能保存位置。
 
-参考文档：
+参考：
 
--   [浏览器扩展升级的相关问题](https://mp.weixin.qq.com/s/iKq88JGN8CrSUYX3n457dg)（公众号文章）
--   [什么是MV3？升级MV3有哪些影响？](https://getquicker.net/KC/Kb/Article/1156)
+- [浏览器扩展升级的相关问题](https://mp.weixin.qq.com/s/iKq88JGN8CrSUYX3n457dg)（公众号）
+- [什么是 MV3？升级有哪些影响？](https://getquicker.net/KC/Kb/Article/1156)
 
-🚨MV3版本浏览器扩展的重要变化：
+MV3 的重要变化：
 
--   不再支持“运行后台脚本”功能。（已通过PC端解析脚本方式兼容了后台脚本功能）
--   “对标签页运行脚本”功能，需要开启浏览器的开发者模式(chrome 138之前的版本)，或在扩展详情页面中开启“允许运行用户脚本”选项（chrome/edge 138及以后的版本）。
--   Chrome/Edge 135+版本。 目前不支持firefox。
--   Quicker 1.44.5+版本。
+- 不再支持「运行后台脚本」（已通过 PC 端解析脚本兼容）。
+- 「对标签页运行脚本」需要开启浏览器开发者模式（Chrome 138 之前），或在扩展详情里开启「允许运行用户脚本」（Chrome / Edge 138 及以后）。设置步骤见 [设置浏览器扩展](/v2/xaction/guides/chrome-ext-settings)。
+- 需要 Chrome / Edge 135+。目前不支持 Firefox。
+- 需要 Quicker 1.44.5+。
 
-✨MV3版本扩展新增的功能：
+MV3 新增：
 
--   **后台命令**：用以实现之前“运行后台脚本”的部分功能。 包含2个部分，一部分是对常用浏览器API的封装，一部分是一些常用功能的封装。可以在[这里](https://quickerconnectortests.getquicker.cn/docs/commands.html)查看命令列表，后续可根据需求增加新的命令。
--   **激活标签页**：激活指定网址或id的标签页。如果不存在，则自动打开网址。
--   **等待网页变化**：等待动态网页中发生某个变化，如元素出现、消失；文字出现、消失等。
--   对标签页运行脚本：可选择“MAIN”执行环境，访问网页js 变量。
--   增加标签页分组API支持；
+- **后台命令**：替代部分「运行后台脚本」。包含常用浏览器 API 封装和常用功能。命令列表见 [后台命令参考](https://quickerconnectortests.getquicker.cn/docs/commands.html)。
+- **激活标签页**：按网址或 ID 激活；不存在则自动打开。
+- **等待网页变化**：等元素或文字出现、消失等。
+- 对标签页运行脚本可选 `MAIN` 执行环境，访问网页 JS 变量。
+- 增加标签页分组 API。
 
-**延期MV2版本扩展的使用**
+**延期使用 MV2**
 
-目前Chrome已经开始禁用MV2版本扩展。 如果需要，可以通过注册表开启对MV2的扩展支持（预计有1年有效期），尝试点击此按钮导入注册表条目后重启浏览器：
-![](./img/chromecontrol-001-6e3a713cb6.png)![](./img/chromecontrol-002-f47aa09d7f.png)
+Chrome 已开始禁用 MV2。如需继续使用，可通过注册表开启（预计约 1 年有效期）。点击下面按钮导入注册表后重启浏览器：
+
+![](./img/chromecontrol-001-6e3a713cb6.png)
+
+![](./img/chromecontrol-002-f47aa09d7f.png)
 
 ### 安装浏览器扩展
 
-请从[网站下载页面](https://getquicker.net/Download)获取各浏览器的扩展网址或crx下载链接。
+请从 [网站下载页面](https://getquicker.net/Download) 获取各浏览器的扩展地址或 crx。方便的话请在商店给扩展评分，有助于更新审核。
 
-方便的话，请在扩展商店中为扩展评分⭐⭐⭐⭐⭐哦，这样有助于更新版本时更快通过审核💖。
-
-注：“紫鸟”浏览器，请自行联系紫鸟客服，申请加白名单后才能使用Quicker扩展。
+「紫鸟」浏览器需自行联系客服加白名单后才能用 Quicker 扩展。
 
 ### 界面说明
 
-点击扩展图标会显示一个弹窗。
+点击扩展图标会显示弹窗。
 
 ![](./img/chromecontrol-003-990530dadb.png)
 
-**连接状态**：显示当前是否正常连接到消息代理和Quicker。
+**连接状态**：是否连上消息代理和 Quicker。
 
--   两个已连接：正常状态。
--   消息代理已连接，Quicker未连接：可能Quicker未启动或版本太老（请确认使用了1.29.3+版本）。
--   消息代理和Quicker都未连接：未安装Quicker或版本太老。
+- 两个已连接：正常。
+- 消息代理已连接、Quicker 未连接：可能 Quicker 未启动或版本过旧（需 1.29.3+）。
+- 两者都未连接：未安装 Quicker 或版本过旧。
 
-**功能选项：**
+**功能选项**
 
--   开启网址同步：此选项为后期增加基于网址的动作页功能预留，目前请不要开启。
+- **开启网址同步**：为后期基于网址的动作页预留，目前不要开启。
 
-**可选权限：**
+**可选权限**
 
--   如果要运行使用到特殊权限的后台脚本，可以在此处开启。（后台脚本是指直接通过chrome API控制浏览器自身的脚本，如获取浏览历史、查看网页cookie等）
+- 要跑需要特殊权限的后台脚本时，在这里开启（直接通过 chrome API 控制浏览器自身，如浏览历史、Cookie）。
 
-**文档**：点击可打开浏览器扩展的文档。 MV3版本扩展将部分文档嵌入到了扩展内部，方便随时查看，包括“后台命令参考”、“更新历史”等。
+**文档**：打开扩展文档。MV3 把部分文档嵌进扩展，包括「后台命令参考」「更新历史」。
 
-获取元素选择器：点击后可在网页中选择一个元素，然后自动复制该元素的css选择器。
+**获取元素选择器**：在网页里点选一个元素，自动复制它的 CSS 选择器。
 
-重置网页浮标位置：将网页浮标恢复到默认位置。
-
-### 脚本限制
-
-1.  因为浏览器本身的限制，在浏览器本身的功能页面中（以chrome://开始或chrome应用商店页面）通常无法工作。
-
-![](./img/chromecontrol-004-59fc33fb67.png)
-
-2.  无痕模式（隐身模式）下默认不可使用。如需使用，请尝试在浏览器扩展设置页面中开启允许选项。
-
-![](./img/chromecontrol-005-2bf1d8426c.png)
-
-3.  文件网址下默认不可用。如需使用，请在浏览器扩展设置界面中开启选项。
-4.  浏览器有各类安全限制，可能导致：
-
-1.  部分网页交互需要人工操作才能触发，如文件上传、document.execCommand脚本。（部分操作可能在人工点击页面一次之后可以通过脚本触发）
-2.  有些脚本在iframe框架中无法正常执行。
-
-4.  消息传递需要转换成文本，可能有部分内容无法正常传输。
+**重置网页浮标位置**：把浮标恢复到默认位置。
 
 ### 多浏览器支持
 
--   Quicker可以同时连接不同类型的浏览器程序（根据进程名判断），如同时连接Chrome/Edge/Firefox/Vivaldi等。
--   暂不支持同时运行一个浏览器的多个副本（通过--user-data-dir方式使用多个账号）。
+- Quicker 可同时连接不同类型的浏览器（按进程名判断），如同时连 Chrome / Edge / Firefox / Vivaldi。
+- 暂不支持同一个浏览器用 `--user-data-dir` 跑多个副本。多 Profile 的区分见 [一个浏览器多个 Profile](/v2/xaction/guides/browser-multiprofile)。
 
-在某个动作中第一次使用“浏览器控制”模块时，Quicker会根据前台窗口进程判断要连接的浏览器，并且在后续的操作步骤中持续连接此浏览器。
+动作里第一次跑到「浏览器控制」时，Quicker 按前台窗口进程决定连接哪个浏览器，后续步骤沿用。
 
-如果在第一次运行到“浏览器控制”模块时，前台窗口不是已连接的浏览器，则使用配置中设定的“默认连接的浏览器”。
+若第一次运行时前台不是已连接的浏览器，则使用配置里的「默认连接的浏览器」。
 
 ![](./img/chromecontrol-006-2d38802d84.png)
 
-也可以通过在动作中添加“设置连接的浏览器”操作（添加到其他浏览器操作步骤之前），设置此动作要连接的浏览器。
+也可在其它浏览器步骤之前加一步「设置连接的浏览器」。
 
 ![](./img/chromecontrol-007-96fe07bd39.png)
 
-可能还有其他无法正常工作的情况，如有遇到欢迎反馈。
-
 ## 通用参数
 
-根据要执行的操作类型不同，参数也会有所变化。
+操作类型不同，显示的参数也不同。
 
 <ModuleParamPreview
   moduleKey="sys:chromecontrol"
@@ -158,7 +133,7 @@ legacyContentUpdatedAt: "2025-10-28T06:17:46.000Z"
   }}
 />
 
-【操作类型】此步骤的目的。
+**操作类型**：此步骤要做的事。
 
 <ModuleParamPreview
   moduleKey="sys:chromecontrol"
@@ -166,37 +141,35 @@ legacyContentUpdatedAt: "2025-10-28T06:17:46.000Z"
   values={{operation: 'BackgroundCommand'}}
 />
 
-【**标签页ID**】指定要操作的标签页，如果留空，则表示操作当前活动标签页。
+**标签页Id**：要操作的标签页。留空表示当前活动标签页。连续多步操作同一标签时使用（例如前面刚打开的新标签）。
 
-在连续多个步骤操作同一个标签页时使用（如：前面的步骤打开了新的标签页，后面的步骤操作此标签页）。
+**选择器**：要操作的网页元素的 [CSS 选择器](https://www.runoob.com/cssref/css-selectors.html)。同一个元素可以有多种写法，选一种即可。获取方式见文末「如何获取 CSS 选择器」。
 
-【**选择器**】用于指定要操作的网页元素的[CSS选择器](https://www.runoob.com/cssref/css-selectors.html)。
-
-选择器对于操作网页是极其基础和重要的知识，请务必了解：[https://www.runoob.com/cssref/css-selectors.html](https://www.runoob.com/cssref/css-selectors.html) 同一个元素有多个CSS选择器可以表示，选择其中的一种即可。
-
-获取选择器的方式请参考本文[后面的章节](/v2/xaction/modules/chromecontrol)。
-
-如果需要通过xpath的方式指定元素，以`xpath:`开始，如：
+若用 XPath，以 `xpath:` 开头，例如：
 
 ```text
 xpath://*[@id="lark-text-editor"]/div/div/div[2]/div[1]/div[2]/div[1]/a[11]
 ```
 
-如果要选择一类元素，比如所有的链接或图片，就需要手写选择器了。
+要选一类元素（所有链接、所有图片）需要手写选择器。
 
-【修正选择器文本】(1.10.3版本提供)从Chrome中复制的选择器文本，如果含有\\字符，需要将其替换成\\\\才能正常定位。此参数可选：
+**修正选择器文本**（1.10.3+，仅 MV2）：从 Chrome 复制的选择器若含 `\`，需要换成 `\\` 才能定位。
 
--   自动：自动判断是否需要将\\替换为\\\\。
--   不修正：不替换\\字符。
--   替换\\为\\\\：将\\替换为\\\\。
+- **自动**：自行判断是否替换
+- **不修正**
+- **\\替换为\\\\**
 
-MV3版本浏览器不再需要此功能。
+MV3 不再需要此项。
+
+**失败后停止**：失败后是否中止动作。默认开启。
+
+**超时时间(ms)**：等待上限，默认 `3000`。
+
+**原始返回结果**：插件返回的原始 [JToken](https://www.newtonsoft.com/json/help/html/T_Newtonsoft_Json_Linq_JToken.htm)。提取方法见文末。
 
 ## 打开网址
 
-打开一个网址，并获得其“标签页id”，以方便后续对此标签页进行其他自动化操作。
-
-如果浏览器未启动，quicker会尝试运行浏览器名称启动浏览器，请确保浏览器程序所在目录已经加入PATH环境变量中。
+打开一个网址，并得到 **标签页ID**，方便后续操作该标签。浏览器未启动时，Quicker 会按浏览器名称尝试启动，请确保浏览器目录已加入 PATH。
 
 <ModuleParamPreview
   moduleKey="sys:chromecontrol"
@@ -232,93 +205,73 @@ MV3版本浏览器不再需要此功能。
   outputVars={{tabId: 'tabId', windowId: 'windowId', rawResponse: 'rawResponse'}}
 />
 
-【网址】要打开的完整网址。需要带有协议头（http://或https://）。
+**网址**：完整网址，需带 `http://` 或 `https://`。
 
-【窗口ID】使用哪个窗口打开网址。可选值：
+**窗口Id**：在哪个窗口打开。可选 **新窗口**、**当前窗口**，或填之前打开的窗口 id。
 
--   新窗口；
--   当前窗口；
--   也可以通过指定窗口id，使用之前打开的窗口。
+**窗口/标签参数**：可选。
 
-【窗口/标签参数】可选。
-
--   使用新窗口时，指定`chrome.windows.create()`方法的参数（除去url属性）。参数请参考Chrome API 文档[chrome.windows.create 的 createData参数](https://developer.chrome.com/extensions/windows#method-create)。示例(所有字段都是可选的)：
+- 新窗口时，对应 `chrome.windows.create()` 的参数（不含 url）。见 [chrome.windows.create](https://developer.chrome.com/extensions/windows#method-create)。示例（字段都可选）：
 
 ```json
 {
-    "left": 100,
-    "top": 100,
-    "width": 400,
-    "height": 400,
-    "incognito": true,
-    "type": "popup"
+  "left": 100,
+  "top": 100,
+  "width": 400,
+  "height": 400,
+  "incognito": true,
+  "type": "popup"
 }
 ```
 
--   不使用新窗口时，指定`chrome.tabs.create()`方法的参数（除去url属性），[参考文档](https://developer.chrome.com/docs/extensions/reference/api/tabs#method-create)。
+- 不使用新窗口时，对应 `chrome.tabs.create()` 的参数（不含 url），见 [tabs.create](https://developer.chrome.com/docs/extensions/reference/api/tabs#method-create)。
 
-【等待操作完成】等待网页加载完成（标签页前面不转圈了）。资源比较多的网页加载时间会比较长，有的带有长连接的网页，会一直是加载不完成的状态，后续的操作不一定要等待加载完成。
+**等待操作完成或返回数据**：等待网页加载完成（标签页不再转圈）。资源多的页面会较久；有的长连接页面会一直处于加载中，后续步骤不一定要等完。
 
 ![](./img/chromecontrol-011-5aa11799a0.png)
 
-【超时时间】等待网页加载的时间。
+**超时时间(ms)**：等待网页加载的上限。
 
-**输出**
+### 输出
 
-【是否成功】操作是否出错。
+- **是否成功**
+- **标签页ID**：新标签的数字 ID，后续操作该页时传入。
+- **窗口ID**：打开新窗口时，新窗口的编号。
+- **原始返回结果**
 
-【标签页ID】新打开的标签页ID号数字。后续如果需要对打开的网页进行操作，需要提供此标签页ID。
+MV3 也可用后台命令创建标签或窗口：[api_tabs_create](https://quickerconnectortests.getquicker.cn/docs/commands.html#api_tabs_create)、[api_windows_create](https://quickerconnectortests.getquicker.cn/docs/commands.html#api_windows_create)、[scripts_createNewWindowWithUrls](https://quickerconnectortests.getquicker.cn/docs/commands.html#scripts_createNewWindowWithUrls)。
 
-【窗口ID】打开新窗口时，输出新打开的窗口的编号。
-
-【原始返回结果】从浏览器插件返回的原始结果反序列化后的[JToken](https://www.newtonsoft.com/json/help/html/T_Newtonsoft_Json_Linq_JToken.htm)对象。JToken可以用来方便的访问Json内容。
-
-**相关后台命令**
-
-对MV3版本扩展，您也可以通过“后台命令”功能创建标签页或窗口。
-
--   [api\_tabs\_create](https://quickerconnectortests.getquicker.cn/docs/commands.html#api_tabs_create)
--   [api\_windows\_create](https://quickerconnectortests.getquicker.cn/docs/commands.html#api_windows_create)
--   [scripts\_createNewWindowWithUrls](https://quickerconnectortests.getquicker.cn/docs/commands.html#scripts_createNewWindowWithUrls) 创建窗口并打开多个网址
-
-**相关子程序**
-
--   [切换标签或打开网址](https://getquicker.net/subprogram?id=2e862e5b-3a0e-45ee-b3fc-08db05106307) 如果浏览器中已经打开此网址，则不再打开新的标签页，而是将已有标签页激活。
+<ShareLinkCard
+  href="https://getquicker.net/subprogram?id=2e862e5b-3a0e-45ee-b3fc-08db05106307"
+  title="切换标签或打开网址"
+  description="已打开则激活，否则新开标签。"
+/>
 
 ## 等待加载完成
 
-等待某个标签页的内容加载完成。（标签页的status变为‘**complete**’）
-
-通常用于使用脚本提交了表单等造成页面刷新或表单提交的情况。根据网页资源的多少，加载完成时间可能比较长。
+等待某个标签页的 `status` 变为 **complete**。常用于脚本提交表单、页面刷新之后。
 
 ![](./img/chromecontrol-012-771112c601.png)
 
-**参数**
+**标签页Id**：留空表示当前活动标签页。
 
-【标签页Id】要操作的标签页编号。如果为空，表示当前活动标签页。
+**超时时间(ms)**：等到加载完成的上限。
 
-【超时时间】等待网页状态变为加载完成状态。
+**失败后停止**：超时后是否中止。不是所有操作都必须等彻底加载完。
 
-【失败后停止】超时后是否停止动作。注：不是所有的操作都需要彻底加载完成才能继续。
-
-**输出**
-
-【原始返回结果】空。
+**原始返回结果**：空。
 
 ## 激活标签页
 
-（需MV3版本扩展）
+需 MV3 扩展。激活指定标签并返回信息。定位方式：
 
-激活（切换到）Chrome浏览器中的特定标签页，并返回标签页信息。它有两种主要的定位标签页的方式：
+1. **标签页Id**：有有效 ID 时直接激活。
+2. **网址**：
+   - 含通配符 `*`（如 `https://*.google.com/foo*bar`）按 [网址匹配模式](https://developer.chrome.com/docs/extensions/develop/concepts/match-patterns) 查找。
+   - 不含通配符则查找实际网址包含该值的标签。
+   - 找不到且参数是常规网址时，自动新建标签打开它。
 
-1.  通过标签ID（`tabId`）：如果提供了有效的标签ID，会直接查找并激活该标签页。
-2.  通过【网址】查找标签页并激活。可以传入两种值：
-
--   如果参数值包含通配符（\*），如`https://*.google.com/foo*bar`，表示是一个[网址匹配模式](https://developer.chrome.com/docs/extensions/develop/concepts/match-patterns)，使用Chrome API的URL匹配功能查找。
--   如果不包含通配符，则查找实际网址包含参数值的标签页。
--   如如果未找到，且参数值是一个常规网址，则会自动创建一个标签页打开此网址。
-
-函数执行成功后，会激活找到的标签页（使其成为当前活动标签）并使其所在的窗口获得焦点。
+成功后会激活该标签，并让所在窗口获得焦点。
 
 <ModuleParamPreview
   moduleKey="sys:chromecontrol"
@@ -340,9 +293,9 @@ MV3版本浏览器不再需要此功能。
 
 ## 获得标签页信息
 
-获得某个标签页的信息。不指定标签页ID时，获取当前活动标签页的信息和扩展本身的信息。
+获得某个标签页的信息。不指定 **标签页Id** 时，取当前活动标签和扩展本身的信息。
 
-MV3版本扩展中新增输出Manifest版本，可以用以判断是否为新版本扩展、是否支持运行后台脚本。
+MV3 新增输出 **Manifest版本**，可判断是否为新版扩展、是否还支持后台脚本。
 
 <ModuleParamPreview
   moduleKey="sys:chromecontrol"
@@ -360,6 +313,7 @@ MV3版本扩展中新增输出Manifest版本，可以用以判断是否为新版
     'browser',
     'extVersion',
     'manifestVersion',
+    'envName',
     'rawResponse',
   ]}
   values={{operation: 'GetTabInfo', tabId: '', stopIfFail: 'true', timeoutMs: '3000'}}
@@ -377,48 +331,36 @@ MV3版本扩展中新增输出Manifest版本，可以用以判断是否为新版
   }}
 />
 
-**输入**
+**标签页Id**：不填表示当前活动标签。
 
-【标签页Id】要获取信息的标签页序号。 不填写时表示获取当前活动标签页的信息。
+### 输出
 
-**输出**
-
-【标签页Id】在获取当前活动标签页信息时，得到标签页的Id。
-
-【窗口Id】标签页所在窗口的Id。
-
-【网址】标签页所打开的网址。
-
-【网页标题】网页的标题文字。
-
-【Favicon图标网址】网页图标的网址。
-
-【浏览器】当前连接的浏览器名称，支持chrome/msedge。
-
-【插件版本】浏览器扩展的版本号。
-
-【Manifest版本】返回浏览器扩展的Manifest版本号，值为2或3。
-
-【原始返回结果】当前标签页的[Tab对象信息](https://developer.chrome.com/extensions/tabs#type-Tab)。
+- **标签页ID**：当前活动标签的 Id
+- **窗口ID**
+- **分组ID**：标签所属分组
+- **网址**
+- **网页标题**
+- **Favicon图标网址**
+- **浏览器**：当前连接的浏览器名，如 chrome / msedge
+- **插件版本**
+- **Manifest版本**：`2` 或 `3`
+- **环境名称**：浏览器 Profile 的自定义环境名
+- **原始返回结果**：当前标签的 [Tab 对象](https://developer.chrome.com/extensions/tabs#type-Tab)
 
 ## 关闭标签页
 
-关闭指定的标签页。
+关闭指定标签。未指定 **标签页Id** 时关闭当前活动标签。
 
 ![](./img/chromecontrol-015-9ab26a6de3.png)
 
-**输入**
-
-【标签页Id】要关闭的标签页。未指定标签页Id时，关闭当前活动标签页。
-
 ## 对标签页运行脚本
 
-对指定的标签页网页运行js脚本。
+对指定标签的网页运行 JS。
 
-📢MV3版本扩展的重要变化：
+MV3 注意：
 
--   需要在浏览器扩展设置中开启**开发者模式**或在扩展详情设置中开启**“允许运行用户脚本”**选项（浏览器138以后的版本）才能使用此功能。
--   新增支持“运行环境”参数。使用`MAIN`时，可访问网页中的js变量。
+- 需在浏览器扩展设置中开启**开发者模式**，或在扩展详情开启**允许运行用户脚本**（浏览器 138 以后）。
+- 新增 **执行环境**。值为 `MAIN` 时可访问网页里的 JS 变量。
 
 <ModuleParamPreview
   moduleKey="sys:chromecontrol"
@@ -447,19 +389,15 @@ MV3版本扩展中新增输出Manifest版本，可以用以判断是否为新版
   outputVars={{rawResponse: 'rawResponse'}}
 />
 
-**输入**
+**标签页Id**：未指定则对当前活动标签运行。
 
-【标签页Id】要运行脚本的标签页，未指定时，对当前活动标签页运行脚本。
+**脚本内容**：要运行的 JS。
 
-【脚本内容】要运行的js脚本内容。
+- 脚本里可用 jQuery，如 `$('#input')`。
+- 最后一个语句的结果作为返回值。不要写 `return`。
+- 可用异步方法或返回 Promise，会等 Promise 解析后再返回。
 
--   脚本中可以使用jquery库，如`$('#input')`。
--   最后一个语句的结果将作为值返回。不要写`return`关键词。
--   可使用异步方法或返回Promise。代码将会在Promise得到解析后返回。
-
-js脚本的值通常是脚本中最后一个语句的返回值。
-
-如下面的脚本返回网页的文本内容：
+返回网页文本：
 
 ```javascript
 document.body.innerText;
@@ -473,60 +411,56 @@ let result = {name: '张三', age: 20};
 result;
 ```
 
-使用异步方法示例：
+异步示例：
 
 ```javascript
 //.js
-// 定义一个等待指定毫秒数的函数，返回一个 Promise
 function wait(ms) {
   return new Promise(resolve => setTimeout(resolve, ms));
 }
 
-// 异步函数，等待 2 秒后返回字符串
 async function fetchValue() {
   console.log('开始等待 2 秒…');
-  await wait(2000);  // 暂停 2 秒
+  await wait(2000);
   return '这是异步返回的值';
 }
 
 fetchValue();
 ```
 
-【从脚本手动返回数据】有的情况运行脚本不能直接得到结果，需要等到回调函数执行/元素更新等情况，这时候可以开启“从脚本手动返回数据”选项，并在脚本中调用sendReplyToQuicker方法手动返回数据。也可以考虑使用上面的异步方法直接返回结果。
+**从脚本手动返回数据**：结果要等回调或元素更新时，开启此项，并在脚本里调用 `sendReplyToQuicker`。也可改用上面的异步写法。
 
 ```javascript
-// 参数中需要启用“从脚本手动返回数据”选项。
+// 参数中需要启用「从脚本手动返回数据」。
 // sendReplyToQuicker(是否成功, '失败时提示消息', 数据对象, 回复的消息序号qk_msg_serial宏)
 
-setTimeout(function(){
+setTimeout(function () {
   sendReplyToQuicker(
     true,
     'ok',
-    {'key':'value','name':'zhangsan'},
+    {key: 'value', name: 'zhangsan'},
     qk_msg_serial
   );
 }, 1000);
 ```
 
-注：脚本中的 `qk_msg_serial` 会被自动替换成消息编号数字。
+脚本里的 `qk_msg_serial` 会被自动替换成消息编号。
 
-【超时时间】等待返回结果的最长时间（毫秒数）。
+**超时时间(ms)**：等待返回的最长时间。
 
-【运行脚本的框架】在哪些frame中运行此脚本。`all`表示所有框架。`0`表示主页面框架。其他数字表示对应的框架序号。
+**运行脚本的框架**：在哪些 frame 里跑。`all` 表示所有框架（默认），`0` 表示主框架，其它数字是框架序号。有的框架有保护会导致超时，可改成 `0` 只跑主框架。
 
-注：默认框架为all。有时候运行脚本超时，可能是有一些框架增加了保护，这时候可以尝试将运行脚本的框架改为0，限制在主框架中运行。
+**执行环境**：可选，默认 `USER_SCRIPT`。`MAIN` 表示用网页自身上下文执行，可访问网页全局变量。仅 MV3。
 
-【运行环境】可选，默认为`USER_SCRIPT`。指代码执行的上下文，可选值为`USER_SCRIPT`或`MAIN`。值为`MAIN`时，使用网页自身的上下文执行js代码，此时可访问网页中的全局变量信息。
+### 输出
 
-**输出**
+**原始返回结果**：JS 返回值的 JToken。输出给文本变量可得到原始 JSON。
 
-【原始返回结果】js脚本的返回值JToken对象。可以输出给文本变量获得原始json。
-
-实际值是一个数组（JAarry类型），表示每个Frame的运行结果。如果网页只有一个Frame，则该数组只有一项。
+实际值是数组（JArray），每一项是一个 Frame 的结果。网页只有一个 Frame 时数组只有一项。
 
 ## 选择元素
 
-从网页中选择一个HTML元素，返回这个元素的css选择器。通常用于在后续步骤中使用此选择器对目标元素执行操作。
+从网页里选一个 HTML 元素，返回它的 CSS 选择器，供后续步骤使用。
 
 <ModuleParamPreview
   moduleKey="sys:chromecontrol"
@@ -535,11 +469,7 @@ setTimeout(function(){
   outputVars={{selector: 'selector'}}
 />
 
-**输出**
-
-【CSS选择器】目标元素的css选择器。
-
-注意：如果网页是变化的，css选择器可能会失效。
+**CSS选择器**：目标元素的选择器。网页结构一变，选择器可能失效。
 
 ## 获取元素信息
 
@@ -576,50 +506,45 @@ setTimeout(function(){
   outputVars={{firstValue: 'output', rawResponse: 'result'}}
 />
 
-**输入**
+**标签页Id**：未指定则取当前活动标签。
 
-【标签页ID】要获取信息的标签页，未指定时，获取前活动标签页中的网页元素。
+**选择器**：要操作元素的 CSS 选择器。
 
-【选择器】用于选择要操作元素的[CSS选择器](https://www.runoob.com/cssref/css-selectors.html)。
+**元素信息类型**：
 
-【元素信息类型】要获取元素哪方面的信息。
+- **值**：jQuery [val()](https://api.jquery.com/val())。主要用于 input、select、textarea。取选中的 radio / checkbox 时，选择器要加 `:checked`，例如：
+  - `select#foo option:checked` 下拉框选中项
+  - `select#foo` 下拉框的值
+  - `input[type=checkbox][name=bar]:checked` 选中的复选框
+  - `input[type=radio][name=baz]:checked` 选中的单选按钮
+- **某Attribute属性**：jQuery [attr()](https://api.jquery.com/attr())，一般是源码里写的值。
+- **某Property属性**：jQuery [prop()](https://api.jquery.com/prop())，一般是运行时的值。例如 `href='/index'` 时，attr 得到 `/index`，prop 得到按当前网址算出的完整地址。
+- **innerText 内部文本**：jQuery [text()](https://api.jquery.com/text())
+- **innerHTML 内部HTML**：jQuery [html()](https://api.jquery.com/html())
+- **outerHTML 全部HTML**：DOM [outerHTML](https://developer.mozilla.org/zh-CN/docs/Web/API/Element/outerHTML)
 
-支持的类型有：
+**属性名**：类型为 Attribute / Property 时填写，如链接的 `href`。
 
--   值：通过jquery的[val()](https://api.jquery.com/val/)方法获取元素的值。主要用于获取input、select和textarea类型元素的值。要获取选中的radio button或 checkbox的值，需要在选择器中使用**:checked**修饰符，如：
+### 输出
 
--   select#foo option:checked 获得一个下拉框的选中项的值
--   select#foo 获得一个下拉框的值
--   input\[type=checkbox\]\[name=bar\]:checked 获得某个选中的检查框的值
--   input\[type=radio\]\[name=baz\]:checked 获得某个选中的单选按钮的值
+- **第一个值**：第一个匹配元素的信息。
+- **所有值的列表**：所有匹配元素的值列表。
 
--   某个Attribute属性：通过jquery的[attr()](https://api.jquery.com/attr/)方法获取元素的属性值。attr通常是网页代码里设置的属性值。
--   某个Property属性：通过jquery的[prop()](https://api.jquery.com/prop/)方法获取元素的属性值。prop通常是属性运行时的值，如果链接的网址，在href='/index'的情况下，attr得到的是'/index'，prop得到的是根据当前网址计算得到的完整网址。
--   innerText：元素节点及其后代（子节点）的“渲染”文本内容。此信息通过jquery的[text()](https://api.jquery.com/text/)方法获取。
--   innerHTML：元素内的HTML内容。此信息通过jquery的[html()](https://api.jquery.com/html/)方法获取。
--   outerHTML：包含元素自身的HTML内容。此方法通过DOM元素的[outerHTML](https://developer.mozilla.org/zh-CN/docs/Web/API/Element/outerHTML)属性获得。
-
-【属性名】当要获取的元素信息类型位“某个Attribute”或“某个Property”时，指定属性名。如链接的网址属性为“href”。
-
-**输出**
-
-【第一个值】获取第一个符合选择器条件的元素的指定信息。一般用于取某一个特定元素的信息。
-
-【所有的值】所有符合选择器条件的元素的值的列表。一般用于取某一类元素的信息。
-
-**示例动作**
-
--   获取网页里的所有链接地址和图片网址：[https://getquicker.net/sharedaction?code=68da9f93-57ee-4465-058e-08d823a26917](https://getquicker.net/sharedaction?code=68da9f93-57ee-4465-058e-08d823a26917)
+<ShareLinkCard
+  code="68da9f93-57ee-4465-058e-08d823a26917"
+  title="获取网页里的所有链接和图片网址"
+/>
 
 ## 更新元素信息
 
-更新元素某方面的信息。参数输入请参考“[获取元素信息](/v2/xaction/modules/chromecontrol)”。
+更新元素某方面的信息。输入参数请参考「获取元素信息」。所有匹配 **选择器** 的元素都会被更新。
 
-更新元素时，所有符合“选择器”条件的元素的对应信息都会被更新。
+示例见 [使用浏览器控制的一些示例](/v2/xaction/guides/web-page-control)。
 
-参考文档：[使用浏览器控制的一些示例](/v2/xaction/guides/web-page-control)
-
-示例动作：[用百度特定搜索关键词](https://getquicker.net/Sharedaction?code=9e70fb7f-b85e-4b21-1b7a-08da8ae0e8b9)
+<ShareLinkCard
+  code="9e70fb7f-b85e-4b21-1b7a-08da8ae0e8b9"
+  title="用百度特定搜索关键词"
+/>
 
 <ModuleParamPreview
   moduleKey="sys:chromecontrol"
@@ -648,40 +573,38 @@ setTimeout(function(){
   outputVars={{rawResponse: 'result'}}
 />
 
-**对于input、textarea等元素**
+**元素信息类型**（更新）：值、数组值、某 Attribute、某 Property、InnerText、InnerHtml。
 
-【元素信息类型】选择“值”，然后在【值】参数中填写目标值即可。
+**值**：要写入的内容。
 
-**更新下拉框select元素的值**
+对 input、textarea 等：类型选「值」，在 **值** 里填写目标内容。
 
-首先请确定要设置的选项的值（value）
+更新下拉框：先确认选项的 value：
 
 ![](./img/chromecontrol-020-4148cd9875.png)
 
-然后使用“更新元素信息”操作，元素信息类型为“值”
+再用「更新元素信息」，类型为「值」：
 
 ![](./img/chromecontrol-021-fc85a8ee73.png)
 
-**更新选择检查框和单选框的选择状态**
-
-可以通过更新**checked** 的属性（Property）选择或取消选择checkbox 或 radio 的选择状态。
+更新复选框 / 单选框：改 **checked** 的 Property。
 
 ![](./img/chromecontrol-022-fa35f00fd8.png)
 
-更早的版本，可以使用在对标签页运行js代码：
+更早版本可对标签页跑 JS：
 
 ```javascript
-$('选择器').prop('checked', true);  //选择检查框
-$('选择器').prop('checked', false);  //取消选择
+$('选择器').prop('checked', true);  // 选中
+$('选择器').prop('checked', false); // 取消
 ```
 
-需要使用input元素本身的选择器来更新选中状态。
+要用 input 元素本身的选择器，不要选到外层。
 
 ![](./img/chromecontrol-023-abe2e52a9a.png)
 
 ## 触发事件
 
-对指定的元素触发事件，如实现点击按钮、设置焦点、提交表单、触发变更等功能。
+对指定元素触发事件，如点击、聚焦、提交表单、触发变更。
 
 <ModuleParamPreview
   moduleKey="sys:chromecontrol"
@@ -706,13 +629,11 @@ $('选择器').prop('checked', false);  //取消选择
   outputVars={{rawResponse: 'result'}}
 />
 
-**输入**
+**标签页Id**：未指定则操作当前活动标签。
 
-【标签页ID】要操作的标签页，未指定时表示操作当前活动标签页。
+**选择器**：要操作的元素。
 
-【选择器】要操作的网页元素。
-
-【触发事件类型】要触发的事件。可以选择预置的事件，也可以直接写事件名称。
+**触发事件类型**：可选预置项，也可直接写事件名。
 
 <ModuleParamPreview
   moduleKey="sys:chromecontrol"
@@ -720,23 +641,19 @@ $('选择器').prop('checked', false);  //取消选择
   values={{operation: 'TriggerEvent', triggerEventType: 'click'}}
 />
 
-或指定自定义的事件类型。
+或指定自定义事件：
 
 ![](./img/chromecontrol-026-3ae0b9ccb9.png)
 
--   支持以`native.`前缀表示使用javascript原生`dispatchEvent`方式触发事件。如`native.focus`表示`.dispatchEvent(new Event('focus') )`。
--   `change`事件使用`dispatchEvent`方式触发。
--   `click`事件直接调用DOM的[click()方法](https://developer.mozilla.org/zh-CN/docs/Web/API/HTMLElement/click) 实现。
--   其它事件通过[jquery.trigger()](https://api.jquery.com/trigger/)方法实现。
--   提交表单时，需要使用form元素本身的选择器。
+- 以 `native.` 前缀表示用原生 `dispatchEvent`，如 `native.focus` 相当于 `.dispatchEvent(new Event('focus'))`。
+- `change` 用 `dispatchEvent`。
+- `click` 直接调 DOM [click()](https://developer.mozilla.org/zh-CN/docs/Web/API/HTMLElement/click)。
+- 其它事件用 [jquery.trigger()](https://api.jquery.com/trigger/)。
+- 提交表单要用 form 元素本身的选择器。
 
 ## 等待网页变化
 
-(MV3版本扩展新增功能）
-
-等待动态网页发生特定的变化，比如某个元素出现或消失、某个文字出现或消失等。
-
-本功能仅适用于不会跳转到新页面的网页（因为新页面会造成嵌入的js代码丢失）。
+MV3 新增。等待动态网页发生特定变化（元素出现 / 消失、文字出现 / 消失等）。只适用于不会跳到新页面的网页（跳转会丢掉嵌入的 JS）。
 
 <ModuleParamPreview
   moduleKey="sys:chromecontrol"
@@ -761,63 +678,72 @@ $('选择器').prop('checked', false);  //取消选择
   outputVars={{rawResponse: 'result'}}
 />
 
-【选择器】所需要判断的目标元素。
+**选择器**：要判断的目标元素。
 
-【事件类型】要等待的事件类型，见下表。
+**事件类型**：见下表。
 
-【参数】对于某些事件，需要指定参数。
+**参数**：部分事件需要额外参数。
 
-| 事件名称 | 事件说明 | 参数说明 | 示例参数 |
+| 事件名称 | 说明 | 参数 | 示例 |
 | --- | --- | --- | --- |
-| elementExists | 元素存在 | 不需要参数 | \- |
-| elementNotExists | 元素不存在 | 不需要参数 | \- |
-| elementVisible | 元素在网页可见 | 不需要参数 | \- |
-| elementNotVisible | 元素在网页不可见 | 不需要参数 | \- |
-| elementClickable | 元素可点击 | 不需要参数 | \- |
-| elementNotClickable | 元素不可点击 | 不需要参数 | \- |
-| textContains | 包含文本 | 字符串类型，表示要查找的文本内容 | `登录` |
-| textNotContains | 不包含文本 | 字符串类型，表示不应包含的文本内容 | `错误` |
-| textMatches | 文本匹配表达式 | 正则表达式字符串 | `用户\d+` |
-| textNotMatches | 文本不匹配表达式 | 正则表达式字符串 | `error\s:` |
-| urlMatches | 网址匹配表达式(PWA应用) | 正则表达式字符串 | `login\.html` |
-| urlNotMatches | 网址不匹配表达式(PWA应用) | 正则表达式字符串 | `error\.html` |
-| titleMatches | 标题匹配表达式(PWA应用) | 正则表达式字符串 | `主页\s-` |
-| titleNotMatches | 标题不匹配表达式(PWA应用) | 正则表达式字符串 | `加载中` |
-| attributeMatches | 属性匹配表达式 | 格式为"属性名:正则表达式" | `data-status:success` |
-| attributeNotMatches | 属性不匹配表达式 | 格式为"属性名:正则表达式" | `aria-disabled:true` |
-| elementHasClass | 元素包含类名 | 字符串，表示要检查的类名 | `active` |
-| elementNotHasClass | 元素不包含类名 | 字符串，表示不应存在的类名 | `disabled` |
-| elementHasAttribute | 元素包含属性 | 字符串，表示要检查的属性名 | `checked` |
-| elementNotHasAttribute | 元素不包含属性 | 字符串，表示不应存在的属性名 | `disabled` |
-| elementCountGt | 元素数量大于 | 数字，表示元素数量的下限 | `5` |
-| elementCountLt | 元素数量小于 | 数字，表示元素数量的上限 | `10` |
-| elementCountEq | 元素数量等于 | 数字，表示期望的确切元素数量 | `3` |
-| elementEvent | 元素事件触发 | 字符串类型，表示要监听的事件名称 | `click` |
+| elementExists | 元素存在 | 无 | - |
+| elementNotExists | 元素不存在 | 无 | - |
+| elementVisible | 元素在网页可见 | 无 | - |
+| elementNotVisible | 元素在网页不可见 | 无 | - |
+| elementClickable | 元素可点击 | 无 | - |
+| elementNotClickable | 元素不可点击 | 无 | - |
+| textContains | 包含文本 | 要查找的文本 | `登录` |
+| textNotContains | 不包含文本 | 不应包含的文本 | `错误` |
+| textMatches | 文本匹配表达式 | 正则 | `用户\d+` |
+| textNotMatches | 文本不匹配表达式 | 正则 | `error\s:` |
+| urlMatches | 网址匹配（PWA） | 正则 | `login\.html` |
+| urlNotMatches | 网址不匹配（PWA） | 正则 | `error\.html` |
+| titleMatches | 标题匹配（PWA） | 正则 | `主页\s-` |
+| titleNotMatches | 标题不匹配（PWA） | 正则 | `加载中` |
+| attributeMatches | 属性匹配 | `属性名:正则` | `data-status:success` |
+| attributeNotMatches | 属性不匹配 | `属性名:正则` | `aria-disabled:true` |
+| elementHasClass | 包含类名 | 类名 | `active` |
+| elementNotHasClass | 不包含类名 | 类名 | `disabled` |
+| elementHasAttribute | 包含属性 | 属性名 | `checked` |
+| elementNotHasAttribute | 不包含属性 | 属性名 | `disabled` |
+| elementCountGt | 元素数量大于 | 下限 | `5` |
+| elementCountLt | 元素数量小于 | 上限 | `10` |
+| elementCountEq | 元素数量等于 | 期望数量 | `3` |
+| elementEvent | 元素事件触发 | 事件名 | `click` |
 
-【超时时间】最长等待时间。
+**超时时间(ms)**：最长等待时间。
 
 ## 设置连接的浏览器
 
-设置当前动作要控制的浏览器。后续步骤的浏览器控制将会使用此浏览器。
+设置当前动作要控制的浏览器。后续浏览器控制步骤都走这个连接。如果总是操作前台窗口浏览器，不必加这一步。多 Profile 见 [一个浏览器多个 Profile](/v2/xaction/guides/browser-multiprofile)。
 
-如果总是操作前台窗口浏览器，不需要使用此步骤。
+<ModuleParamPreview
+  moduleKey="sys:chromecontrol"
+  focusKeys={['operation', 'browser', 'mainProcessId', 'envName', 'stopIfFail']}
+  values={{operation: 'SetBrowser', browser: 'auto', mainProcessId: '0', envName: '*'}}
+/>
+
+**浏览器**：要连接的浏览器进程名（需已安装 Quicker 扩展）。默认 `auto`。
+
+**主进程ID**：可选。同一个浏览器用 `user-data-dir` 跑多个实例时，指定主进程 ID。默认 `0`。
+
+**自定义环境名**：扩展里设置的环境名，用来区分同一浏览器的不同 Profile。`*` 表示不判断环境名。
 
 ## 运行后台命令
 
-通过调用浏览器API，实现对浏览器自身的控制。
+通过浏览器 API 控制浏览器自身。需 MV3 扩展与 Chrome 135+。
 
-分为两个大类：
+两类命令：
 
--   以`api_`前缀开始的命令，是对浏览器API的封装。如`api_tabs_create`对应于`chrome.tabs.create()`方法。
--   以`scripts_`前缀开始的命令，是一些预先写好的后台脚本。
+- `api_` 前缀：对浏览器 API 的封装，如 `api_tabs_create` 对应 `chrome.tabs.create()`。
+- `scripts_` 前缀：预先写好的后台脚本。
 
 后台命令参考：
 
--   [在线文档](https://quickerconnectortests.getquicker.cn/docs/commands.html)
--   扩展内置文档：1）点击浏览器扩展图标；2）点击“文档”；3）进入后点击“后台命令参考”链接。
-    ![](./img/chromecontrol-028-e258c8cee8.png)
+- [在线文档](https://quickerconnectortests.getquicker.cn/docs/commands.html)
+- 扩展内置：点扩展图标 → 文档 → 后台命令参考
 
-步骤截图：
+![](./img/chromecontrol-028-e258c8cee8.png)
 
 <ModuleParamPreview
   moduleKey="sys:chromecontrol"
@@ -852,19 +778,14 @@ $('选择器').prop('checked', false);  //取消选择
   outputVars={{rawResponse: 'rawResponse'}}
 />
 
-**参数**
+**命令**：要执行的后台命令。
 
-【命令】要执行的后台命令。
+**命令参数**：传给该命令的参数。需要 `tabId` / `tabIds` / `windowId` / `groupId` 的命令通常可省略，表示当前标签、所在窗口、所在分组。
 
-【命令参数】根据需要填写给该命令传入的参数。
+指定参数：
 
--   对于需要`tabId``tabIds``windowId``groupId`参数的命令，通常可以**省略**这些参数，表示当前标签页id、当前标签页所在窗口id、当前标签页所在分组id。
-
-指定参数值的方法：
-
-1）直接传递json文本。
-
-2）使用表达式创建匿名c#对象，如：
+1. 直接写 JSON 文本。
+2. 用表达式创建匿名 C# 对象：
 
 ```csharp
 $= new {
@@ -875,9 +796,9 @@ $= new {
 }
 ```
 
-【等待操作完成】如果需要返回值，请选择此项。
+**等待操作完成或返回数据**：需要返回值时请勾选。
 
-【返回值过滤器】对于命令返回的数据，如果仅需要其中一部分属性，可以设置本参数。参数值为分号隔开的属性名。如，下面的步骤返回所有打开的网址：
+**返回值过滤器**：只要结果里的部分属性时填写。多个属性名用分号分隔。下面返回所有打开的网址：
 
 <ModuleParamPreview
   moduleKey="sys:chromecontrol"
@@ -904,42 +825,44 @@ $= new {
   outputVars={{rawResponse: 'result'}}
 />
 
-示例动作：
+<ShareLinkCard
+  code="64f1cc94-8261-4e3e-d379-08dd85c4ca35"
+  title="测试后台命令"
+  author="CL"
+/>
 
--   [测试后台命令 - by CL - 动作信息 - Quicker](https://getquicker.net/Sharedaction?code=64f1cc94-8261-4e3e-d379-08dd85c4ca35)
+### 后台命令与后台脚本
 
-### 使用后台命令实现后台脚本相关功能
-
-后台脚本与后台命令的区别如下：
-
--   后台脚本可以多次调用浏览器API，实现完整的自定义逻辑。
--   后台命令每次只能调用一个API，可以看做使用了一次`await`方式调用API，因此可能需要多次调用后台命令实现原有单个后台脚本的功能。
+- 后台脚本可多次调用浏览器 API，写完整自定义逻辑。
+- 后台命令每次只调一个 API（相当于一次 `await`），原来一个后台脚本可能要拆成多步命令。
 
 ## 运行后台脚本
 
-🚨 MV3版本浏览器扩展已不支持此功能。相关需求请使用“运行后台命令”功能实现。
-
-1.44.10+版本实现了在MV3扩展上执行后台脚本的功能，此功能可继续使用。如果您在使用后台脚本的时候遇到了问题，欢迎在讨论区反馈，谢谢！
+MV3 扩展已不支持直接跑自定义后台脚本，相关需求请改用「运行后台命令」。1.44.10+ 在 MV3 上用兼容方式继续支持后台脚本；遇到问题欢迎在讨论区反馈。
 
 ### 迁移后台脚本动作
 
-可以在Quicker 1.44.5+版本搜索框搜索“CONTAINS:BackgroundScript”查找使用后台脚本功能的动作。
+在 Quicker 1.44.5+ 搜索框搜 `CONTAINS:BackgroundScript`，可找出仍使用后台脚本的动作。
 
 ![](./img/chromecontrol-031-cea86b3997.png)
 
-如需兼容MV2版本扩展，可通过“获取标签页信息”得到Manifest版本号。 然后判断如果Manifest版本为3，则使用后台命令，否则使用后台脚本。
+要兼容 MV2，可先「获得标签页信息」取 Manifest 版本：为 3 则走后台命令，否则走后台脚本。
 
 ![](./img/chromecontrol-032-b59dd50bd7.png)
 
-示例动作：[查看Cookie - by CL - 动作信息 - Quicker](https://getquicker.net/Sharedaction?code=287ef444-8487-471d-e118-08d82862a3c3)
+<ShareLinkCard
+  code="287ef444-8487-471d-e118-08d82862a3c3"
+  title="查看 Cookie"
+  author="CL"
+/>
 
 ### 后台脚本的编写
 
-#### MV2版本扩展(0.7.4版本，即将不被支持)
+#### MV2 扩展（0.7.4，即将不被支持）
 
-使用回调方式调用chrome API，完成对浏览器的控制。具体API，请参考[官方文档](https://developer.chrome.com/docs/extensions/mv2/reference)。
+用回调调用 chrome API。API 见 [官方文档](https://developer.chrome.com/docs/extensions/mv2/reference)。
 
-下面的示例用于获取当前标签页中网址的cookie。
+获取当前标签网址的 Cookie：
 
 ```javascript
 chrome.tabs.query({ lastFocusedWindow: true, active: true }, function (tabs) {
@@ -958,11 +881,11 @@ chrome.tabs.query({ lastFocusedWindow: true, active: true }, function (tabs) {
 });
 ```
 
-#### MV3版本扩展(1.0.0+版本)
+#### MV3 扩展（1.0.0+）
 
-由于MV3已经不支持直接运行自定义的后台脚本，MV3版本的扩展通过兼容方式实现后台脚本功能。其原理是，在quicker进程解析脚本，在遇到API调用时，转换成后台命令发送到浏览器执行并返回数据。
+MV3 不能直接跑自定义后台脚本。兼容方式是：在 Quicker 进程里解析脚本，遇到 API 调用时转成后台命令发给浏览器。
 
-在MV3版本中，除了支持MV2中的回调模式，自Quicker **1.44.12+**版本，也支持异步方式调用。用异步模式可以大幅简化代码。上述获取cookie的脚本可使用异步方式编写：
+除 MV2 的回调模式外，Quicker **1.44.12+** 也支持异步。上面的 Cookie 示例可写成：
 
 ```javascript
 //.js
@@ -974,266 +897,285 @@ if (tabs.length < 1) {
 
 const url = tabs[0].url;
 
-// 获取cookies
 return await chrome.cookies.getAll({ url: url });
 ```
 
-此时，不需要再调用`sendReplyToQuicker`方法，直接在末尾return目标值即可。
+此时不必再调 `sendReplyToQuicker`，末尾 `return` 目标值即可。
 
-MV3版浏览器API请参考[官方文档](https://developer.chrome.com/docs/extensions/reference/api)。
+MV3 API 见 [官方文档](https://developer.chrome.com/docs/extensions/reference/api)。
 
 注意：
 
--   Quicker浏览器扩展仅申请了一些常用功能的权限，通过后台命令封装了一部分API，因此不是所有的API都可以调用。具体可参考后台命令了解可使用的API。
--   由于quicker的内置js环境，可能会缺少一些浏览器中支持的类型，因此，不一定所有脚本都可以正常运行，如果您遇到问题，请反馈。
--   异步方式时，请确保代码内不包含`sendReplyToQuicker`方法。
+- 扩展只申请了部分常用权限，不是所有 API 都能调。可调用的范围以后台命令为准。
+- Quicker 内置 JS 环境可能缺少浏览器里的某些类型，不是所有脚本都能跑。遇到问题请反馈。
+- 异步方式时，代码里不要包含 `sendReplyToQuicker`。
 
 ### 从后台脚本返回内容
 
-**1）选中“等待操作完成”选项。**
+**1）选中「等待操作完成或返回数据」。**
 
 ![](./img/chromecontrol-033-5fc09ea522.png)
 
 **2）返回结果**
 
-【使用异步方式async/await时】，请直接在代码末尾return 目标值。遇到错误时可throw new Error('message')。
+异步 `async/await`：在代码末尾 `return` 目标值；出错时 `throw new Error('message')`。
 
-【使用回调方式时】在脚本内容中使用`sendReplyToQuicker(isSuccess, message, data, qk_msg_serial)` 返回自定义内容（0.3.0版本插件+1.9.3版本Quicker）。
+回调方式：在脚本里用 `sendReplyToQuicker(isSuccess, message, data, qk_msg_serial)` 返回（扩展 0.3.0 + Quicker 1.9.3）。
 
--   isSuccess：表示操作是否成功，布尔类型，可选值true/false。
--   message：消息内容。在操作失败时返回错误消息。
--   data：返回的数据内容。
--   qk\_msg\_serial：quicker的消息序号。在执行脚本时会被添加到window窗口，所以在脚本中直接写此变量名即可。
+- **isSuccess**：是否成功
+- **message**：失败时的错误消息
+- **data**：返回数据
+- **qk_msg_serial**：Quicker 消息序号，脚本里直接写这个名字即可
 
 ```javascript
-//.js  获取当前窗口的所有网址。动作网址：
+//.js  获取当前窗口的所有网址
 chrome.windows.getLastFocused({populate:true}, function(win){
     var urlList = win.tabs.map(x=>x.url);
     sendReplyToQuicker(true, "ok", urlList, qk_msg_serial)
 });
 ```
 
-返回数据的示例动作：
-
--   返回当前窗口的所有标签页网址 [https://getquicker.net/sharedaction?code=e0e854ea-5d36-4dd9-14fc-08d8255d6cc9](https://getquicker.net/sharedaction?code=e0e854ea-5d36-4dd9-14fc-08d8255d6cc9)
--   返回TopSites（常用网址。需开通topSites权限）：[https://getquicker.net/sharedaction?code=a17f1c61-26b5-4013-14ff-08d8255d6cc9](https://getquicker.net/sharedaction?code=a17f1c61-26b5-4013-14ff-08d8255d6cc9)
+<ShareLinkCard
+  items={[
+    {
+      code: 'e0e854ea-5d36-4dd9-14fc-08d8255d6cc9',
+      title: '返回当前窗口的所有标签页网址',
+    },
+    {
+      code: 'a17f1c61-26b5-4013-14ff-08d8255d6cc9',
+      title: '返回 TopSites（需开通 topSites 权限）',
+    },
+  ]}
+/>
 
 **3）输出返回结果**
 
-在脚本中使用sendReplyToQuicker返回的data参数，如果是object类型，将会直接返回；
-
-如果对象是简单类型（如数字、字符串等），会封装为一个对象返回（MV3版本扩展不再封装，而是直接返回）：
+`sendReplyToQuicker` 的 `data` 若是 object，会直接返回；若是数字、字符串等简单类型，会封装后再返回（MV3 不再封装，直接返回）：
 
 ```json
 {
-  "data":qk_bgmsg_result
+  "data": "qk_bgmsg_result"
 }
 ```
 
-输出结果为JToken对象。请参考后面的“从JToken提取数据”章节。
+输出是 JToken，见下文「从 JToken 提取信息」。
 
-其他后台脚本示例动作：
-
--   关闭左侧标签页：[https://getquicker.net/sharedaction?code=315a8235-e00a-4b89-8236-08d8246a94ad](https://getquicker.net/sharedaction?code=315a8235-e00a-4b89-8236-08d8246a94ad)
--   弹出此页：[https://getquicker.net/sharedaction?code=bed4a309-2d20-47cb-8238-08d8246a94ad](https://getquicker.net/sharedaction?code=bed4a309-2d20-47cb-8238-08d8246a94ad)
+<ShareLinkCard
+  items={[
+    {
+      code: '315a8235-e00a-4b89-8236-08d8246a94ad',
+      title: '关闭左侧标签页',
+    },
+    {
+      code: 'bed4a309-2d20-47cb-8238-08d8246a94ad',
+      title: '弹出此页',
+    },
+  ]}
+/>
 
 ## 将动作关联到浏览器右键菜单
 
--   浏览器右键菜单不支持显示图标。
--   本功能使用了[chrome.contextMenus API](https://developer.chrome.com/docs/extensions/reference/contextMenus/)，更多信息可参考谷歌官方文档。
+- 浏览器右键菜单不支持显示图标。
+- 使用 [chrome.contextMenus API](https://developer.chrome.com/docs/extensions/reference/contextMenus/)。
 
-可以将动作关联到浏览器右键菜单中，效果如下图所示：
+效果：
 
 ![](./img/chromecontrol-034-3800f6b8b5.png)
 
 **设置方法**
 
--   编辑动作。
--   在动作的“关联”标签页中，点击“浏览器右键菜单”下面的“设置...”按钮（1）。
--   在弹出的窗口设置各项参数：
-
--   【关联上下文】设置什么地方的右键菜单出现此项（[官方文档](https://developer.chrome.com/docs/extensions/reference/contextMenus/#type-ContextType)），如`selection`是指在选中的内容上的右键菜单中出现此项，`all`表示在大部分情况下都出现此此项。
--   【匹配网址】设置匹配的网址条件。`*://*/*`表示不限制。注意这里的匹配不是正则匹配，具体可参考[官方文档](https://developer.chrome.com/docs/extensions/mv3/match_patterns/)。
--   【匹配目标地址】匹配img、video、audio的src，或者链接的href地址。匹配方式同上。
--   【动作参数】需要传递给动作的参数内容。使用`%s`可以表示浏览器中选择的文本内容。
+1. 编辑动作。
+2. 在「关联」标签页点击「浏览器右键菜单」下的「设置...」。
+3. 在弹出窗口里设置：
+   - **关联上下文**：在什么地方出现此项（[ContextType](https://developer.chrome.com/docs/extensions/reference/contextMenus/#type-ContextType)）。`selection` 表示选中内容上的右键，`all` 表示大多数情况。
+   - **匹配网址**：网址条件。`*://*/*` 表示不限制。这里不是正则，见 [match patterns](https://developer.chrome.com/docs/extensions/mv3/match_patterns/)。
+   - **匹配目标地址**：匹配 img / video / audio 的 src，或链接的 href。匹配方式同上。
+   - **动作参数**：传给动作的内容。`%s` 表示浏览器里选中的文本。
 
 ![](./img/chromecontrol-035-4d0f0d987b.png)
 
-设置完成后需重新连接浏览器方可生效。可重启浏览器或Quicker，或在“修复浏览器扩展连接”窗口中点击“更新右键菜单”按钮。
+设置后需重新连接浏览器才生效。可重启浏览器或 Quicker，或在「修复浏览器扩展连接」里点「更新右键菜单」。
 
 ![](./img/chromecontrol-036-49233cb66c.png)
 
-动作关联到浏览器右键菜单时，通过菜单触发动作，可以在表达式中通过\_context.ExtraData.BrowserMenuClickData 获取菜单点击上下文信息。能获取到的数据可参考[chrome API文档](https://developer.chrome.com/docs/extensions/reference/contextMenus/#type-OnClickData)。 使用场景：获取右键点击的图片、视频、链接的网址等。
+由菜单触发动作时，表达式里可通过 `_context.ExtraData.BrowserMenuClickData` 取得点击上下文，字段见 [OnClickData](https://developer.chrome.com/docs/extensions/reference/contextMenus/#type-OnClickData)。可用来取右键点击的图片、视频、链接网址。
 
-示例动作：[https://getquicker.net/Sharedaction?code=d1650c2d-f913-4959-3931-08d9f928b257](https://getquicker.net/Sharedaction?code=d1650c2d-f913-4959-3931-08d9f928b257)
+<ShareLinkCard
+  code="d1650c2d-f913-4959-3931-08d9f928b257"
+  title="浏览器右键菜单示例"
+/>
 
-## 排错
+## 如何获取页面元素的 CSS 选择器或 XPath
 
-### 查看日志
+同一个元素可以有多种 CSS 选择器。
 
-#### 查看背景页面控制台信息
+**（1）通过浏览器获取**
 
-在浏览器扩展页面中开启“开发者模式”。然后点击扩展的“背景页”
-
-![](./img/chromecontrol-037-9ee8e6673d.png)
-
-在背景页的控制台可以看到一些log输出。
-
-![](./img/chromecontrol-038-66534d8dbb.png)
-
-#### 查看ChromeAgent日志
-
-ChromeAgent.exe是与浏览器通信的中间件程序，由浏览器启动。ChromeAgent启动后会主动连接Quicker。
-
-为避免更新Quicker软件时文件被锁定，ChromeAgent.exe将会在Quicker安装后首次启动时，由Quicker程序复制到应用数据文件夹下并注册。位置为：`Quicker应用数据文件夹\bin\NativeMessageHost`（一般为：C:\\Users\\用户名\\AppData\\Local\\Quicker\\bin\\NativeMessageHost）
-
-log文件的存储位置为`Quicker应用数据文件夹\logs`，文件名为`quickerhost_浏览器名称.log`
-
-![](./img/chromecontrol-039-caee917160.png)
-
-## 扩展连接问题排查
-
-![](./img/chromecontrol-040-2d0fd66297.png)
-
-如果消息代理未连接，请参考如下顺序排查：
-
-0）请确保浏览器已开启开发者模式。
-
-1）确认您的扩展是从官方商店安装。 如果以crx方式安装，请直接拖动到扩展管理界面中完成安装，不要解压缩。
-
-2）确认Quicker未使用管理员身份方式运行。
-
--   确认未设置Quicker.exe等相关程序使用兼容模式，未选择以管理员身份运行选项。
-    ![](./img/chromecontrol-041-912ea53680.png)
--   确认系统UAC为默认状态。
-    ![](./img/chromecontrol-042-f00586ae82.png)
-
-3）确认环境变量ComSpec存在
-
-![](./img/chromecontrol-043-64f5051bde.png)
-
-4）确认C:\\Windows\\System32\\cmd.exe文件存在，通过Win+R可正常运行cmd.exe命令。
-
-![](./img/chromecontrol-044-baca91f0e1.png)
-
-5）尝试修复扩展连接：
-
-![](./img/chromecontrol-045-b6a5067bd0.png)
-
-6）控制台的默认代码页为正常值。（现象：消息代理一会儿可以连上又马上自动断开）
-
-![](./img/chromecontrol-046-9cd16914e2.png)
-
-7）如果有任何安全、管家类软件，彻底退出后测试排查。
-
-[腾讯管家](https://getquicker.net/KC/Kb/Article/1118)的某些版本可能会影响扩展正常链接，卸载管家后测试。（正常后可重新下载安装管家最新版解决。）
-
-8）如果仍然无法连接，请联系CL。
-
-## 其它信息
-
-### 如何获取页面元素的CSS选择器或XPATH
-
-注：同一个元素可以有多种CSS选择器表示方式。
-
-有很多获取CSS选择器的方法：
-
-（1）通过浏览器获取
-
-在网页中安Ctrl+Shift+C开启选择模式(F12关闭)，选择节点后，在开发工具窗格中元素上右键，复制选择器。
+在网页里按 Ctrl+Shift+C 开启选择模式（F12 关闭），选中节点后，在开发工具里对元素右键 → 复制选择器。
 
 ![](./img/chromecontrol-047-04b8232480.png)
 
-（2）Quicker扩展右键菜单
+**（2）Quicker 扩展右键菜单**
 
 ![](./img/chromecontrol-048-1842d1decf.png)
 
-（3）第三方浏览器扩展，如ChroPath、SelectorsHub。
+**（3）第三方扩展**，如 ChroPath、SelectorsHub。
 
-### 组件构成
+## 从 JToken 中提取信息
 
-**Quicker**：发送指令并获取返回结果；
+- 对标签页运行脚本返回的是数组，每一项是一个 Frame 的结果。
+- 运行后台脚本返回的是 `qk_bgmsg_result` 对应的 object，或封装后的简单值。
 
-**ChromeAgent.exe**：消息代理程序，连接Quicker和浏览器插件。会在Quicker安装或升级版本后首次启动时拷贝到“应用数据文件夹\\bin\\NativeMessageHost”子文件夹下。
+JToken 可在表达式里用 **\[数组序号\]** 和 **\[对象属性名\]** 取值，再 `.ToString()` 得到文本。
 
-**Chrome浏览器插件**：负责接收指令、执行指令，并返回结果。
-
-### 从JToken中提取信息
-
-注意：
-
--   对标签页运行脚本，返回的结果是数组，表示每个Frame框架中的运行结果。
--   运行后台脚本返回的是通过qk\_bgmsg\_result变量设置的object类型的结果或者封装的&#123;data: qk\_bgmsg\_result&#125;封装的简单值结果。
-
-[JToken](https://www.newtonsoft.com/json/help/html/T_Newtonsoft_Json_Linq_JToken.htm)可以在表达式中使用 **\[数组的序号\]** 和 **\[对象的属性名\]** 访问到某个值，然后通过.ToString() 方法得到文本。
-
-下图的表达式，得到了返回结果数组第0个对象的title属性的值。
+下图得到返回数组第 0 项的 `title`：
 
 ![](./img/chromecontrol-049-20515dd711.png)
 
-也可以使用[SelectToken](https://www.newtonsoft.com/json/help/html/SelectToken.htm)获取对象（或SelectTokens获取数组）。
+也可用 [SelectToken](https://www.newtonsoft.com/json/help/html/SelectToken.htm)（或 SelectTokens 取数组）：
 
 ![](./img/chromecontrol-050-2ba9eddef9.png)
 
-也可以获取其原始类型的值（根据实际的类型），下面的表达式得到 "val" 属性的整数值：
+也可取原始类型。下图得到 `val` 的整数值：
 
 ![](./img/chromecontrol-051-8e056fd888.png)
 
-### 如何开启浏览器的开发者模式
+## 如何开启浏览器的开发者模式
 
-“对标签页运行脚本”需要开启浏览器开发者模式(浏览器138之前版本)或对扩展开启“允许运行用户脚本”(浏览器138之后的版本)。
+「对标签页运行脚本」需要开发者模式（浏览器 138 之前）或扩展的「允许运行用户脚本」（138 之后）。完整步骤见 [设置浏览器扩展](/v2/xaction/guides/chrome-ext-settings)。
 
-开启“允许运行用户脚本”选项的步骤：
+开启「允许运行用户脚本」：
 
-1）打开扩展详情页面：在扩展按钮上右键，选择“管理扩展程序”
+1. 打开扩展详情：在扩展按钮上右键 → 管理扩展程序
 
 ![](./img/chrome-ext-settings-002-44dcd34bea.png)
 
-2）开启选项
+2. 开启选项
 
 ![](./img/chromecontrol-053-6c39f8ee16.png)
 
-开启开发者模式请参考如下步骤设置：
+开启开发者模式：
 
-1）打开浏览器扩展管理页面。
+1. 打开浏览器扩展管理页面。
 
 ![](./img/chromecontrol-054-5061e12321.png)
 
-2）在右上角，点击打开开发者模式。
+2. 在右上角打开开发者模式。
 
 ![](./img/chromecontrol-055-450b97ca6d.png)
 
-3） 重启Quicker Connector扩展。
+3. 重启 Quicker Connector 扩展。
 
 ![](./img/chromecontrol-056-d1d065ec74.png)
 
+## 限制与排障
+
+### 脚本限制
+
+1. 浏览器自身功能页（`chrome://` 开头或应用商店页）通常无法工作。
+
+![](./img/chromecontrol-004-59fc33fb67.png)
+
+2. 无痕模式默认不可用。如需使用，在扩展设置里开启允许。
+
+![](./img/chromecontrol-005-2bf1d8426c.png)
+
+3. 文件网址默认不可用，同样要在扩展设置里开启。
+4. 浏览器安全限制还可能导致：
+   - 部分交互必须人工触发，如文件上传、`document.execCommand`（有的操作在人工点一次页面后就能用脚本触发）。
+   - 有些脚本在 iframe 里无法执行。
+5. 消息传递会转成文本，部分内容可能传不过去。
+
+### 查看日志
+
+**背景页控制台**
+
+在扩展管理页开启开发者模式，再点扩展的「背景页」：
+
+![](./img/chromecontrol-037-9ee8e6673d.png)
+
+控制台里可以看到部分 log。
+
+![](./img/chromecontrol-038-66534d8dbb.png)
+
+**ChromeAgent 日志**
+
+ChromeAgent.exe 是浏览器和 Quicker 之间的消息代理，由浏览器启动后主动连接 Quicker。
+
+为避免更新时文件被锁，Quicker 会在安装后首次启动时把 ChromeAgent 复制到应用数据目录并注册，路径一般为 `Quicker应用数据文件夹\bin\NativeMessageHost`（如 `C:\Users\用户名\AppData\Local\Quicker\bin\NativeMessageHost`）。
+
+日志在 `Quicker应用数据文件夹\logs`，文件名 `quickerhost_浏览器名称.log`。
+
+![](./img/chromecontrol-039-caee917160.png)
+
+### 扩展连接问题排查
+
+![](./img/chromecontrol-040-2d0fd66297.png)
+
+消息代理未连接时，按这个顺序查：
+
+0. 浏览器已开启开发者模式。
+1. 扩展来自官方商店。若用 crx，请拖到扩展管理页安装，不要解压。
+2. Quicker 不要用管理员身份运行。
+   - 未给 Quicker.exe 等勾选兼容模式或以管理员身份运行。
+     ![](./img/chromecontrol-041-912ea53680.png)
+   - 系统 UAC 保持默认。
+     ![](./img/chromecontrol-042-f00586ae82.png)
+3. 环境变量 `ComSpec` 存在。
+   ![](./img/chromecontrol-043-64f5051bde.png)
+4. `C:\Windows\System32\cmd.exe` 存在，Win+R 能打开 cmd。
+   ![](./img/chromecontrol-044-baca91f0e1.png)
+5. 尝试修复扩展连接：
+   ![](./img/chromecontrol-045-b6a5067bd0.png)
+6. 控制台默认代码页正常（现象：消息代理连上又马上断开）。
+   ![](./img/chromecontrol-046-9cd16914e2.png)
+7. 彻底退出安全 / 管家类软件后再试。[腾讯管家](https://getquicker.net/KC/Kb/Article/1118) 某些版本会影响连接，可卸载后测试，正常后再装最新版。
+8. 仍无法连接请联系 CL。
+
+### 组件构成
+
+- **Quicker**：发指令并取回结果。
+- **ChromeAgent.exe**：消息代理，连接 Quicker 和浏览器扩展。安装或升级后首次启动时拷到「应用数据文件夹\bin\NativeMessageHost」。
+- **浏览器扩展**：收指令、执行、返回结果。
+
+## 相关链接
+
+<RelatedDocs
+  items={[
+    {
+      href: '/v2/xaction/modules/getchromeurl',
+      label: '获取浏览器网址',
+      description: '只读当前标签网址。',
+    },
+    {
+      href: '/v2/xaction/guides/web-page-control',
+      label: '网页控制示例',
+      description: '填表、勾选、多选列表。',
+    },
+    {
+      href: '/v2/xaction/guides/chrome-ext-settings',
+      label: '设置浏览器扩展',
+      description: '开发者模式与允许运行用户脚本。',
+    },
+    {
+      href: '/v2/xaction/guides/browser-multiprofile',
+      label: '多个 Profile',
+      description: '同一浏览器多个账号时怎么连。',
+    },
+  ]}
+/>
+
 ### 参考文档
 
--   HTML教程：[https://www.w3school.com.cn/html/index.asp](https://www.w3school.com.cn/html/index.asp)
--   CSS选择器：[https://www.w3school.com.cn/cssref/css\_selectors.asp](https://www.w3school.com.cn/cssref/css_selectors.asp)
--   Javascript教程：
-
--   [https://www.w3school.com.cn/js/index.asp](https://www.w3school.com.cn/js/index.asp)
--   [https://www.runoob.com/js/js-tutorial.html](https://www.runoob.com/js/js-tutorial.html)
--   [https://www.liaoxuefeng.com/wiki/1022910821149312](https://www.liaoxuefeng.com/wiki/1022910821149312)
-
--   JQuery教程：
-
--   [https://www.runoob.com/jquery/jquery-tutorial.html](https://www.runoob.com/jquery/jquery-tutorial.html)
--   [https://www.liaoxuefeng.com/wiki/1022910821149312/1023022609723552](https://www.liaoxuefeng.com/wiki/1022910821149312/1023022609723552)
-
--   Chrome开发文档：
-
--   API：[https://developer.chrome.com/extensions/api\_index](https://developer.chrome.com/extensions/api_index)
--   API文档国内镜像：[http://docs.getquicker.cn/chrome/developer.chrome.com/extensions.html](http://docs.getquicker.cn/chrome/developer.chrome.com/extensions.html)
+- HTML：[W3School](https://www.w3school.com.cn/html/index.asp)
+- CSS 选择器：[W3School](https://www.w3school.com.cn/cssref/css_selectors.asp)
+- JavaScript：[W3School](https://www.w3school.com.cn/js/index.asp)、[菜鸟教程](https://www.runoob.com/js/js-tutorial.html)、[廖雪峰](https://www.liaoxuefeng.com/wiki/1022910821149312)
+- jQuery：[菜鸟教程](https://www.runoob.com/jquery/jquery-tutorial.html)
+- Chrome API：[官方](https://developer.chrome.com/extensions/api_index)、[国内镜像](http://docs.getquicker.cn/chrome/developer.chrome.com/extensions.html)
 
 ## 更新说明
 
--   20230207 增加无法连接问题排查。
--   20230203 增加切换标签或打开网址的子程序链接。
--   20230316 增加触发事件支持native方式的说明。
--   20231015 去除创建新窗口时的实例参数中active字段（浏览器不支持）。
--   20231203 更新显示在浏览器右键菜单的匹配网址说明。
--   20240529 修正拼写。
--   20250203 完善连接排查中Quicker未使用管理员身份运行的检查说明。
--   202505 更新MV3版本浏览器扩展。
+- 20230207 增加无法连接问题排查。
+- 20230316 触发事件支持 native 方式。
+- 20231015 去除创建新窗口实例参数中的 active 字段（浏览器不支持）。
+- 202505 更新 MV3 版本浏览器扩展。

@@ -1,27 +1,24 @@
 ---
 title: "表达式高级话题"
-description: "表达式高级话题的 Quicker 2.0 使用说明。"
+description: "复杂表达式、F1 切换、补全与测试、布尔助手，以及 _context / _eval。"
 slug: "/v2/xaction/concepts/expression-adv"
 sidebar_position: 130
 quickerDocKey: "xaction/concepts/expression-adv"
 comments: true
-docStatus: "migrated-unreviewed"
+docStatus: reviewed
 legacyDocId: 49033656
 legacyContentUpdatedAt: "2023-10-07T00:29:12.000Z"
 ---
 
-## 概要
+# 表达式高级话题
 
+基础语法见 [表达式](/v2/xaction/concepts/expression)。本页讲复杂写法、编辑辅助和内置对象。
 
+## 简单 vs 复杂
 
-### 简单表达式与复杂表达式
+**简单表达式**：相当于赋值语句等号右边，如 `$= {数字变量} + 1`、`$= {数字变量} > 10`。
 
-**简单表达式**：相当于一个C#赋值语句的等号后面的部分。例如：
-
--   返回变量值加1的结果：`$= {数字变量} +1`
--   判断变量值是否大于10：`$= {数字变量} > 10`
-
-**复杂表达式**：相当于一个返回特定内容的C#方法。例如：判断两个数字之中的较大值：
+**复杂表达式**：相当于一个会 `return` 的方法：
 
 ```csharp
 $=
@@ -35,121 +32,68 @@ if ({number1} > {number2})
 
 ## 辅助编写
 
+参数框里按 **F1** 在原始值、`$$`、`$=` 之间切换，见 [选择或输入步骤参数](/v2/xaction/concepts/edit-step-param)。
 
+### 补全与验证
 
-### 快速切换到表达式模式
-
-在参数输入框中按F1，可在表达式模式、插值模式、普通值模式之间快速切换。
-
-
-
-### 表达式补全提示与验证
-
-补全功能用于自动提示关键词、变量所支持的方法等内容。
+补全会提示关键词和变量方法。在服务器端算，需要能上网。提示仅供参考：有的补全项表达式里不能用，有的能用的类型没有补全。
 
 ![](./img/expression-adv-001-e21604f457.gif)
 
-**注意事项：**
-
--   补全功能在服务器端实现，需要您的电脑能正常访问网络。
--   补全内容与验证提示仅供参考。
-
--   表达式引擎不是一个完整的C#环境，有些补全提示的方法或关键词在表达式中不支持。
--   有一些在表达式中可以使用的类型，没有对应的补全提示。
-
-
-
-**开启补全：**
+开启补全：
 
 ![](./img/expression-adv-002-7e8a5da993.png)
 
 ### 表达式测试
 
-在代码编辑窗口中编写表达式时，会自动开启“表达式测试”功能。
+在代码编辑窗口写表达式时，右侧会列出用到的变量和当前计算结果，可改变量值看结果变化。
 
 ![](./img/expression-adv-003-93f06d88cb.png)
 
-开启时，窗口右侧会显示表达式中所使用的变量的列表和表达式的计算结果。
-
-可以修改变量的值，观察计算结果的变化。
-
-
-
 ### 布尔表达式助手
 
-对于“[如果](/v2/xaction/modules/if)”等模块中需要判断条件的参数（布尔类型），Quicker提供了一个“布尔表达式助手”功能。
+「如果」等布尔参数右侧的铅笔可打开助手。
 
 ![](./img/expression-adv-004-c7b4eb9f24.gif)
 
-点击布尔参数右侧的铅笔图标即可打开。
-
 ![](./img/expression-adv-005-6e6b36ac6c.png)
 
+## 内置对象
 
+### `_context`：动作上下文
 
-## 在表达式中使用内置对象
-
-### \_context：动作上下文对象
-
-可以用于在表达式中访问动作信息。
-
-在需要的时候也可以进行一些hack处理，比如通过表达式更新变量的值等。
-
-注：除非特别必要，不要在表达式中更新变量值。通过表达式更新的内容无法调试观察，在遇到问题时不好定位。
+用来读动作信息；必要时也能改变量，但不建议——改了的值不好调试。
 
 ![](./img/expression-adv-006-7d646baacf.png)
 
-属性：
+属性：`ActionId`、`ActionTitle`、`IsRootContext`（是否主程序上下文；每个子程序运行时有自己的上下文）。
 
--   ActionId：当前动作ID
--   ActionTitle：当前动作标题
--   IsRootContext：当前是否为主程序的动作上下文。（每个子程序在运行时会有自己的上下文对象）
+| 方法 | 作用 |
+| --- | --- |
+| SetVarValue / GetVarValue | 写 / 读变量 |
+| TryGetValue | 没有该变量时返回默认值 |
+| IsVarExists | 变量是否存在 |
+| GetRootContext | 主程序上下文 |
+| GetParentContext | 上一级子程序或主程序（1.37.24+） |
+| RunSp | 跑子程序 |
+| WriteState / ReadState | 动作状态 |
+| WriteCache / ReadCache | 对象缓存（动作结束后仍留在内存，退出 Quicker 失效） |
+| UpdateVariablesFromDict | 用词典更新变量，键是变量名（1.26.0+） |
+| UpdateVariablesFromJson | 用 JSON 键值更新变量（1.26.0+） |
 
-方法：
+搜索框触发的动作可用 `$=_context.ExtraData?.ActiveWindowBeforeSearch` 取搜索窗出现前的活动窗口句柄（1.39.10+）。
 
--   SetVarValue：更新变量值
--   GetVarValue：获取变量值
--   TryGetValue：尝试获取变量值，如果不存在则返回指定的默认值
--   IsVarExists：变量是否存在
--   GetRootContext：获取主程序的上下文对象
--   GetParentContext：获取上一级子程序（或主程序）的上下文对象，自1.37.24版本提供。
--   RunSp：执行子程序
--   WriteState：写入动作状态
--   ReadState：读取动作状态
--   WriteCache：写入对象缓存。缓存对象在动作结束的时候仍然会保留在内存，可以在下次运行动作时取出。Quicker退出后缓存失效。
--   ReadCache：读取对象缓存。
--   UpdateVariablesFromDict：使用指定的词典对象更新变量。词典里key对应于变量名。(1.26.0+)
--   UpdateVariablesFromJson：根据Json文本中的键值对更新变量。方便使用json文本格式的动作参数更新多个变量的值。(1.26.0+)
+### `_eval`
 
-搜索框触发的动作，可以在表达式中使用 $=\_context.ExtraData?.ActiveWindowBeforeSearch 获取搜索窗显示之前的活动窗口句柄。(1.39.10+)
+用来注册表达式里额外的类型，见 [Eval-expression 文档](https://eval-expression.net/)。要单独一步先注册，后面的步骤才能用。
 
+### `_qk`
 
+内置功能封装。
 
-### \_eval：表达式引擎对象
+## 引擎已注册的类型
 
-可用于在必要的时候注册在表达式中使用的其它类型。请参考表达式组件的[官方文档](https://eval-expression.net/)。
-
-注意：
-
--   需要单独的步骤注册类型后，在后面的步骤里才可以使用这些类型。
-
-
-
-### \_qk: 一些内置功能的封装
-
-
-
-
-
-
-
-## 其它信息
-
-
-
-### 表达式中支持的类型
-
-表达式引擎初始注册的类型：
+初始注册：
 
 ```csharp
 EvalManager.DefaultContext.RegisterType(
@@ -165,22 +109,32 @@ EvalManager.DefaultContext.RegisterType(
                 );
 ```
 
-还有一些表达式引擎内部注册的类型可以使用（部分）：
+另外还能用一部分引擎内部类型，例如 `System.IO.File` / `Directory`、`StringBuilder`、`Process`、`Encoding`、`DataTable` / `DataRow` 等。
 
--   System.IO.Directory
--   System.Globalization.CultureInfo
--   System.Linq.Expressions.Expression
--   System.IO.FileInfo
--   System.IO.DirectoryInfo
--   System.IO.File
--   System.Text.RegularExpressions.Match
--   System.Collections.ArrayList
--   System.Text.StringBuilder
--   System.Linq.Enumerable
--   System.Collections.IEnumerable
--   System.Diagnostics.Process
--   System.Text.Encoding
--   System.Dynamic.ExpandoObject
--   DataSet、DataTable、DataRow、SqlDataReader、DataColumn、SqlDataAdapter、DbDataReader、DataView、SqlConnection
+## 限制与排障
 
-注：可以在VisualStudio调试环境中通过EvalContext对象的AliasTypes、AliasExtensionMethods等信息了解表达式中所支持的内容。
+- 补全失败先检查网络，再以实际运行为准。
+- 不要在表达式里改变量，除非没有别的办法。
+- `_eval` 注册的类型只对后续步骤生效。
+
+## 相关链接
+
+<RelatedDocs
+  items={[
+    {
+      href: '/v2/xaction/concepts/expression',
+      label: '表达式',
+      description: '基础语法和运算符',
+    },
+    {
+      href: '/v2/xaction/concepts/edit-step-param',
+      label: '选择或输入步骤参数',
+      description: 'F1 切换模式',
+    },
+    {
+      href: '/v2/xaction/concepts/subprogram',
+      label: '子程序',
+      description: '_context 在子程序里各有一份',
+    },
+  ]}
+/>

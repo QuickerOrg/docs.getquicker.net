@@ -137,10 +137,33 @@ html[data-theme="dark"] .qk-sr-param-form {
   align-items: center;
   justify-content: center;
   padding: 24px;
+  overscroll-behavior: contain;
 }
 
 html[data-theme="dark"] .qk-sr-param-form-backdrop {
   --ad-backdrop-popup: rgba(0, 0, 0, 0.55);
+}
+
+/* Shrink-wrap the focus target so the browser ring is not a full-width frame. */
+.qk-sr-param-form-dialog {
+  max-width: 100%;
+  outline: none;
+}
+
+.qk-sr-param-form-dialog:focus,
+.qk-sr-param-form-dialog:focus-visible {
+  outline: none;
+}
+
+html.qk-sr-popup-open,
+html.qk-sr-popup-open body {
+  overflow: hidden;
+}
+
+/* Sticky navbar lives in the body box. Pad body only — extra .navbar
+   padding-right was shifting the right cluster (search / GitHub) twice. */
+html.qk-sr-popup-open body {
+  padding-right: var(--qk-sr-popup-scrollbar, 0px);
 }
 
 .qk-sr-param-form.qk-sr-param-form--dialog {
@@ -148,10 +171,14 @@ html[data-theme="dark"] .qk-sr-param-form-backdrop {
   width: min(600px, 100%);
   max-height: min(86vh, 720px);
   overflow: hidden;
+  outline: none;
+  /* Overlay already frames the card; the light in-page border reads as a white halo. */
+  border-color: color-mix(in srgb, var(--ad-border-panel) 70%, transparent);
 }
 
 .qk-sr-param-form--dialog .step-editor-popup-body {
   overflow: auto;
+  overscroll-behavior: contain;
 }
 
 .qk-sr-param-form .step-editor-popup-close {

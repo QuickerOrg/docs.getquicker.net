@@ -1,0 +1,156 @@
+{
+  "code": "862a746e-35d8-4d6f-3efe-08d97ef43193",
+  "title": "菜单定义心得",
+  "author": "瓜皮之牙",
+  "revision": 1,
+  "source": "https://getquicker.net/sharedaction?code=862a746e-35d8-4d6f-3efe-08d97ef43193",
+  "pulledAt": "2026-08-12T03:00:10.081Z",
+  "variables": [],
+  "steps": [
+    {
+      "key": "sys:group",
+      "inputs": {
+        "skipErr": "0",
+        "skipWhenDebugging": "0",
+        "useMultiThread": "0"
+      },
+      "note": "各项右键菜单",
+      "ifSteps": [
+        {
+          "key": "sys:simpleIf",
+          "inputs": {
+            "condition": "$={quicker_in_param} == \"外观库\""
+          },
+          "ifSteps": [
+            {
+              "key": "sys:openUrl",
+              "inputs": {
+                "url": "https://getquicker.net/Skins/MySkins",
+                "stopIfFail": "1"
+              },
+              "note": "外观库"
+            },
+            {
+              "key": "sys:stop",
+              "inputs": {
+                "method": "default",
+                "isError": "0"
+              }
+            }
+          ]
+        },
+        {
+          "key": "sys:simpleIf",
+          "inputs": {
+            "condition": "$={quicker_in_param} == \"讨论区\""
+          },
+          "ifSteps": [
+            {
+              "key": "sys:openUrl",
+              "inputs": {
+                "url": "https://getquicker.net/QA",
+                "stopIfFail": "1"
+              },
+              "note": "讨论区"
+            },
+            {
+              "key": "sys:stop",
+              "inputs": {
+                "method": "default",
+                "isError": "0"
+              }
+            }
+          ]
+        },
+        {
+          "key": "sys:simpleIf",
+          "inputs": {
+            "condition": "$={quicker_in_param} == \"动作库\""
+          },
+          "ifSteps": [
+            {
+              "key": "sys:openUrl",
+              "inputs": {
+                "url": "https://getquicker.net/Share/Actions",
+                "stopIfFail": "1"
+              },
+              "note": "动作库"
+            },
+            {
+              "key": "sys:stop",
+              "inputs": {
+                "method": "default",
+                "isError": "0"
+              }
+            }
+          ]
+        },
+        {
+          "key": "sys:simpleIf",
+          "inputs": {
+            "condition": "$={quicker_in_param} == \"子程序\""
+          },
+          "ifSteps": [
+            {
+              "key": "sys:openUrl",
+              "inputs": {
+                "url": "https://getquicker.net/Share/SubPrograms",
+                "stopIfFail": "1"
+              },
+              "note": "子程序"
+            },
+            {
+              "key": "sys:stop",
+              "inputs": {
+                "method": "default",
+                "isError": "0"
+              }
+            }
+          ]
+        },
+        {
+          "key": "sys:simpleIf",
+          "inputs": {
+            "condition": "$={quicker_in_param} == \"菜单教程\""
+          },
+          "ifSteps": [
+            {
+              "key": "sys:openUrl",
+              "inputs": {
+                "url": "https://www.yuque.com/gpzy/quicker/quicker-menu-maker",
+                "stopIfFail": "1"
+              },
+              "note": "菜单教程"
+            },
+            {
+              "key": "sys:stop",
+              "inputs": {
+                "method": "default",
+                "isError": "0"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "key": "sys:group",
+      "inputs": {
+        "skipErr": "0",
+        "skipWhenDebugging": "0",
+        "useMultiThread": "0"
+      },
+      "note": "正常点击动作，会运行的内容",
+      "ifSteps": [
+        {
+          "key": "sys:openUrl",
+          "inputs": {
+            "url": "https://getquicker.net/Member/MyShare",
+            "stopIfFail": "1"
+          },
+          "note": "我的分享"
+        }
+      ]
+    }
+  ]
+}

@@ -27,6 +27,8 @@ export type UserInputPreviewProps = {
   /** Highlight the value like SelectTextOnFocus after the window loads. */
   selectValue?: boolean;
   type?: 'text' | 'multiline' | 'number';
+  /** Gray help text under the field (form HelpText / similar). */
+  hint?: string;
   /** Catalog `texttools`: comma-separated TextToolType names. */
   texttools?: string;
   tools?: UserInputTool[];
@@ -38,6 +40,8 @@ export type UserInputPreviewProps = {
   /** Catalog `help`: any non-empty markdown shows the 帮助 button. */
   help?: string;
   showHelp?: boolean;
+  /** Footer Enter tip (UserInputWindow); hide for form-like scenes. */
+  showEnterTip?: boolean;
   submitWithReturn?: boolean;
   className?: string;
 };
@@ -196,6 +200,7 @@ export default function UserInputPreview(props: UserInputPreviewProps): ReactNod
     value = '',
     selectValue = true,
     type = 'text',
+    hint,
     texttools,
     tools,
     showTools,
@@ -203,6 +208,7 @@ export default function UserInputPreview(props: UserInputPreviewProps): ReactNod
     showToolTooltip = true,
     help,
     showHelp,
+    showEnterTip = true,
     submitWithReturn = false,
     className,
   } = bound;
@@ -219,6 +225,11 @@ export default function UserInputPreview(props: UserInputPreviewProps): ReactNod
   const selected = selectValue && value !== '';
   const active = visibleTools.find((tool) => tool.key === activeTool) ?? visibleTools[0];
   const showTooltip = toolsVisible && showToolTooltip && Boolean(active?.tooltip);
+  const tooltipText = active?.tooltip
+    ? /[\r\n]/.test(active.tooltip) || active.tooltip.endsWith('。')
+      ? active.tooltip.replace(/\r\n/g, '\n')
+      : `${active.tooltip}。`
+    : '';
 
   return (
     <div
@@ -266,7 +277,7 @@ export default function UserInputPreview(props: UserInputPreviewProps): ReactNod
             <div className={styles.tools}>
               {showTooltip && active ? (
                 <span className={styles.tooltip} role="tooltip">
-                  {active.tooltip.endsWith('。') ? active.tooltip : `${active.tooltip}。`}
+                  {tooltipText}
                 </span>
               ) : null}
               <div data-preview-from="texttools" data-preview-to="texttools">
@@ -293,6 +304,7 @@ export default function UserInputPreview(props: UserInputPreviewProps): ReactNod
             </div>
           ) : null}
         </div>
+        {hint ? <div className={styles.hint}>{hint}</div> : null}
         <div className={styles.footer}>
           <div className={styles.footerStart}>
             {helpVisible ? (
@@ -314,12 +326,14 @@ export default function UserInputPreview(props: UserInputPreviewProps): ReactNod
             )}
           </div>
           <div className={styles.footerEnd}>
-            <span className={styles.tip} aria-hidden>
-              <span className={styles.tipIcon}>
-                <LightbulbIcon />
+            {showEnterTip ? (
+              <span className={styles.tip} aria-hidden>
+                <span className={styles.tipIcon}>
+                  <LightbulbIcon />
+                </span>
+                {tip}
               </span>
-              {tip}
-            </span>
+            ) : null}
             <span className={styles.btnPrimary}>确认(S)</span>
             <span className={styles.btn}>取消(C)</span>
           </div>

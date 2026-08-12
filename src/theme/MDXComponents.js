@@ -22,6 +22,7 @@ import XActionLanding from '@site/src/components/XActionLanding';
 import CoordDiagram from '@site/src/components/CoordDiagram';
 import ClickIndicatorPreview from '@site/src/components/ClickIndicatorPreview';
 import UserInputPreview from '@site/src/components/UserInputPreview';
+import ActionEditorPreview from '@site/src/components/ActionEditorPreview';
 import NativeImg from '@site/src/theme/MDXComponents/NativeImg';
 
 export default {
@@ -52,4 +53,5 @@ export default {
   CoordDiagram,
   ClickIndicatorPreview,
   UserInputPreview,
+  ActionEditorPreview,
 };

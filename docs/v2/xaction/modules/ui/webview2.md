@@ -1,13 +1,13 @@
 ---
 title: "WebView2浏览器窗口"
-description: "基于微软Edge浏览器内核的组件，需要安装Edge最新预览版方可使用。"
+description: "用 Edge WebView2 打开网页或 HTML，并可与动作变量、子程序交互。"
 slug: "/v2/xaction/modules/webview2"
 sidebar_label: "WebView2浏览器窗口"
 sidebar_position: 130
 quickerDocKey: "xaction/module/sys:webview2"
 comments: true
 moduleKey: "sys:webview2"
-docStatus: "migrated-unreviewed"
+docStatus: "reviewed"
 metadataGeneratedAt: "2026-08-03 20:08:03"
 legacyDocId: 13009021
 legacyContentUpdatedAt: "2026-03-22T03:26:04.000Z"
@@ -15,96 +15,96 @@ legacyContentUpdatedAt: "2026-03-22T03:26:04.000Z"
 
 # WebView2浏览器窗口
 
-基于微软Edge浏览器内核的组件，需要安装Edge最新预览版方可使用。
+用微软 Edge [WebView2](https://docs.microsoft.com/en-us/microsoft-edge/webview2/) 打开网址或 HTML，并可读写动作变量、调用子程序。要自己画 WPF 界面，用 [自定义窗口](/v2/xaction/modules/customwindow)。只是用系统浏览器打开一个地址，用 [打开网址](/v2/xaction/modules/openurl)。
+
+Win11 自带运行时。其它系统可到 [WebView2 下载页](https://developer.microsoft.com/zh-cn/microsoft-edge/webview2/) 安装。动作里改变量名时，网页 JS 里写死的变量名不会跟着改。
 
 ## 当前模块定义
 
 <XActionModuleMeta moduleKey="sys:webview2" />
 
-提示：
+## 概述
 
--   本模块使用了微软[WebView2](https://docs.microsoft.com/en-us/microsoft-edge/webview2/)组件。
--   组件安装地址：[https://developer.microsoft.com/zh-cn/microsoft-edge/webview2/](https://developer.microsoft.com/zh-cn/microsoft-edge/webview2/) （Win11操作系统会自带WebView2）
--   在Quicker动作中修改变量名时，JS脚本中使用的Quicker变量名可能无法自动更改。
+换 **操作类型** 后显示对应参数。同一 **窗口标识** 可对已打开的窗口发消息、跑脚本或关掉它。
 
-## 基础
+<ModuleParamPreview moduleKey="sys:webview2" />
 
-操作类型：
+## 参数说明
 
--   打开网址：打开一个指定的网址或HTML网页内容，然后继续运行后面的模块。如果指定了“窗口标识”并且之前已经打开了窗口，则使用已打开的窗口打开网址。
--   打开网址并加载完成：打开一个指定的网址，等待加载完成，然后继续运行后面的模块。
--   打开网址并等待窗口关闭：打开指定的网址，等待用户关闭窗口后再继续运行后面的模块。
--   发送消息：使用[PostWebMessageAsJson](https://learn.microsoft.com/en-us/dotnet/api/microsoft.web.webview2.core.corewebview2.postwebmessageasjson?view=webview2-dotnet-1.0.2045.28)接口向网页发送消息。需要预先在网页中引入处理消息接收的代码。可用于动态更新网页的某些内容。
--   执行脚本：在网页上下文中执行js代码。使用[ExecuteScriptAsync](https://learn.microsoft.com/en-us/dotnet/api/microsoft.web.webview2.core.corewebview2.executescriptasync?source=recommendations&view=webview2-dotnet-1.0.1587.40)接口。仅在顶层文档中执行（不对iframe执行）
--   获取窗口状态：获取当前的网址、标题、是否加载完成等信息。
--   关闭窗口：根据“唯一性标识”关闭之前已打开的窗口。
--   重新加载/刷新：刷新网页。
--   停止加载：停止加载网页。
--   检查是否安装WebView2。
--   【多标签】打开网址：使用多标签页窗口同时打开多个网址。方便打开一组相关的窗口并一起关闭。
--   【多列】打开网址：使用多列布局方式同时打开多个网址。
+**操作类型**：
 
-### 参数
+- **打开网页**：打开网址或 HTML，然后继续。若填了 **窗口标识** 且窗口已在，按 **如果窗口已存在** 处理。
+- **打开网页并等待加载完成**：打开后等到加载完再继续。
+- **打开网页并等待窗口关闭**：等到用户关窗再继续。
+- **发送消息**：用 [PostWebMessageAsJson](https://learn.microsoft.com/en-us/dotnet/api/microsoft.web.webview2.core.corewebview2.postwebmessageasjson?view=webview2-dotnet-1.0.2045.28) 给网页发 JSON。网页里要先写接收代码。
+- **执行脚本**：在网页上下文跑 JS，用 [ExecuteScriptAsync](https://learn.microsoft.com/en-us/dotnet/api/microsoft.web.webview2.core.corewebview2.executescriptasync?view=webview2-dotnet-1.0.2045.28)。只在顶层文档执行，不进 iframe。
+- **获取窗口状态**：取当前网址、标题、是否加载完等。
+- **关闭窗口(如果尚未关闭)**：按 **窗口标识** 关掉已打开的窗口。
+- **重新加载/刷新** / **停止加载**
+- **检查是否安装WebView2**
+- **【多标签】打开网址** / **【多列】打开网址**：同时打开一组相关网页，方便一起关。这两种布局不和动作其它部分交互。
 
-#### 操作类型：打开网页
+**失败后停止**：失败是否中止。默认开启。除「检查是否安装WebView2」外都有 **窗口标识**。
 
-【网址或HTML内容】需要打开的网址或HTML代码。
+### 打开网页
 
-【附加的浏览器参数】[参考文档](https://learn.microsoft.com/en-us/dotnet/api/microsoft.web.webview2.core.corewebview2environmentoptions.additionalbrowserarguments?view=webview2-dotnet-1.0.2045.28)。 非必要请勿设置此参数，此参数可能造成无法同时开启多个WebView2窗口。
+下面参数出现在「打开网页」「打开网页并等待加载完成」「打开网页并等待窗口关闭」（部分也用于多标签 / 多列）。
 
-如：设置代理服务器参数，可使用类似于这样的参数： `--proxy-server=http://127.0.0.1:8888`。
+**网址或HTML内容**：网址、本地文件路径或 HTML。
 
-【虚拟主机映射】将本地目录映射为一个服务器域名。 如`myserver|d:\folder`，将`d:\folder`映射为一个名为`myserver`的服务器，可以在网页中使用`https://myserver/file.png`这样的网址加载目录中的文件。需确保此目录在电脑上存在。
+**附加的浏览器参数**：见 [AdditionalBrowserArguments](https://learn.microsoft.com/en-us/dotnet/api/microsoft.web.webview2.core.corewebview2environmentoptions.additionalbrowserarguments?view=webview2-dotnet-1.0.2045.28)。非必要不要填，可能造成无法同时开多个 WebView2。设代理可写 `--proxy-server=http://127.0.0.1:8888`。
 
-【UserAgent】必要时用于自定义浏览器UserAgent参数。
+**虚拟主机映射**：把本地目录映射成主机名。如 `myserver|d:\folder`，网页里可用 `https://myserver/file.png` 访问该目录文件。目录必须存在。多条时每行一个。
 
-可以在[这里查看](https://tools.getquicker.cn/browser/useragent)您当前使用的浏览器的UserAgent。
+**User Agent**：自定义 UA。可在 [这里查看](https://tools.getquicker.cn/browser/useragent) 当前浏览器 UA，或查 [常见设备 UA](https://www.whatismybrowser.com/guides/the-latest-user-agent/)。
 
-可以在这里查看最新的其它设备UserAgent：[https://www.whatismybrowser.com/guides/the-latest-user-agent/](https://www.whatismybrowser.com/guides/the-latest-user-agent/)
+**窗口标题**：未填时用网页标题。
 
-【窗口标题】
+**窗口图标**：左上角图标。支持 `fa:内置图标名:#RRGGBB` 或图标网址。
 
-【窗口图标】
+**默认背景色**：窗口默认背景。
 
-【默认背景色】
+**窗口标识**：相同标识避免开多个窗。再用本模块打开时，会在已有窗口里更新。`=` 表示用当前动作 ID。默认 `=`。
 
-【窗口标识】可以通过相同的标识避免打开多个窗口。 再次使用模块打开网址时，会自动在已经打开的窗口中更新。`=`表示使用当前动作的ID作为窗口标识（用以避免重复）。
+**如果窗口已存在**：仅「打开网页」「打开网页并等待加载完成」。可选跳过此步骤、更新网址、更新网址和窗口位置、关闭并重建窗口、激活窗口。默认跳过此步骤。
 
-【如果窗口已存在】打开网址时，如果已经打开了具有相同标识的窗口，则进行何种操作。
+**JS脚本**：网页加载后注入，走 [AddScriptToExecuteOnDocumentCreatedAsync](https://learn.microsoft.com/en-us/dotnet/api/microsoft.web.webview2.core.corewebview2.addscripttoexecuteondocumentcreatedasync?view=webview2-dotnet-1.0.2045.28)。「执行脚本」时则是本次要跑的代码。
 
-【js脚本】在网页加载后执行的js脚本内容。将通过 [AddScriptToExecuteOnDocumentCreatedAsync](https://learn.microsoft.com/en-us/dotnet/api/microsoft.web.webview2.core.corewebview2.addscripttoexecuteondocumentcreatedasync?view=webview2-dotnet-1.0.2045.28) 方法注入。
+**窗口位置**：跟随鼠标、屏幕各方位、全屏、最大化、自定义位置。默认屏幕中间。
 
-【窗口位置】设定显示窗口的位置类型。
+**窗口尺寸/位置**：自定义位置时写 `left,top,right,bottom`（像素或百分比，如 `981,608,2610,1143`、`25%,25%,75%,75%`）。其它位置写 `width,height`，如 `400,700`、`50%,50%`。
 
-【窗口尺寸/位置】当“窗口位置”参数为自定义位置时，可以设定窗口的坐标，格式为`left,top,right,bottom`，可以直接写逻辑像素值或相对于屏幕的百分比数值，如 `981,608,2610,1143`、`25%,25%,75%,75%` 。窗口位置为其它类型时，可用于设定窗口尺寸，格式为`width,height`，可以使用逻辑像素值或屏幕百分比数值，如`400,700`、`50%,50%`。
+**默认下载文件夹**：默认保存位置。对同一 Profile 下的 WebView 窗口都生效。
 
-【默认下载文件夹】设定默认下载到的文件夹。 此选项对所有相同Profile下的WebView窗口生效。
+**Profile**：同一网站要登多个账号时，用独立 Profile 存各自用户数据。通常写一个单词或拼音，不要写文件夹路径。
 
-【Profile】当需要使用多个账号登录同一网站时，可以创建独立的Profile 来存储单独的一套用户数据。通常使用一个单词或拼音来作为Profile名称。
+**置顶显示**：默认关闭。
 
-【置顶显示】略。
+**显示任务栏图标**：默认开启。
 
-【显示任务栏图标】略。
+**不占用焦点**：开启后也不能在窗口里输入文字。默认关闭。
 
-【不占用焦点】略。
+**失去焦点后**：不执行操作、关闭窗口、隐藏窗口、最小化窗口，以及「如果未置顶」时的关闭 / 隐藏 / 最小化。
 
-【失去焦点自动关闭】略。
+**按Esc关闭窗口**：默认关闭。
 
-【按Esc关闭窗口】略。
+**显示工具栏**：前进、后退、刷新、地址栏。默认关闭。
 
-【显示工具栏】是否显示工具栏：前进、后退、刷新、地址栏。
+**添加DevTools桥**：给页面加 DevTools 桥接。默认关闭。
 
-【窗口风格】可选普通窗口或无边框窗口。
+**窗口风格**：正常，或无边框。
 
-【关闭窗口时清理cookie】关闭窗口时，清理最后显示网页的cookie数据（用于自动退出网页账号。）
+**关闭窗口时清理Cookie**：关掉时清最后打开网页的 Cookie，便于退出账号。
 
-#### 操作类型：发送消息
+### 发送消息
 
-【窗口标识】目标WebViw窗口的标识。
+**窗口标识**：目标窗口。
 
-【消息内容】json格式的文本内容，通过 [PostWebMessageAsJson](https://learn.microsoft.com/en-us/dotnet/api/microsoft.web.webview2.core.corewebview2.postwebmessageasjson?view=webview2-dotnet-1.0.2045.28) 方法发送到WebView2控件。
+**消息内容**：JSON 文本，经 PostWebMessageAsJson 发出。词典变量会自动转成 JSON。
 
-在网页中需要有代码接受消息并进行处理。示例：
+**附加对象**：PostWebMessageAsJson 的附加对象列表，目前支持路径列表。
+
+网页里要先接收：
 
 ```javascript
 window.chrome.webview.addEventListener('message', event =>
@@ -112,39 +112,28 @@ window.chrome.webview.addEventListener('message', event =>
   console.log('recv message:', event.data);
 
   document.getElementById('js_fanyi_input').innerText = event.data.keyword;
-  //模拟一个输入，才会真正去翻译。
   document.getElementById('js_fanyi_input').dispatchEvent(new Event('input',{bubbles:true}));
 
 });
 ```
 
-#### 操作类型：执行脚本
+### 执行脚本
 
-【窗口标识】目标WebViw窗口的标识。
+**窗口标识**：目标窗口。
 
-【JS脚本】要执行的脚本内容。将通过[ExecuteScriptAsync](https://learn.microsoft.com/en-us/dotnet/api/microsoft.web.webview2.core.corewebview2.executescriptasync?view=webview2-dotnet-1.0.2045.28) 方法执行。
+**JS脚本**：要执行的代码，走 ExecuteScriptAsync。输出 **脚本运行结果** 为 JSON 编码的返回值。
 
-### 附加的视图类型
+### 多标签 / 多列
 
-这两个布局窗口主要为了方便同时打开多个相关的网页，没有和动作其它部分进行交互的功能。
+这两种布局方便同时打开一组相关网页，没有和动作其它部分交互的能力，参数也相同。
 
-两个方式的参数设置也相同。
-
-#### 多标签页
-
-使用多标签页窗口同时打开多个网址。
-
-示例场景：使用多个搜索引擎搜索相同关键词。
+**多标签**：适合用多个搜索引擎搜同一个词。
 
 ![](./img/webview2-001-9a98ada9d2.png)
 
-#### 多列
-
-使用多列布局同时打开网站。这种布局因为每列比较窄，比较适合访问移动端网页（通常需要通过设置UserAgent来模拟移动浏览器）。
+**多列**：每列较窄，适合移动端页面（通常要改 **User Agent**）。
 
 ![](./img/webview2-002-90b37278ae.png)
-
-#### 参数设置
 
 <ModuleParamPreview
   moduleKey="sys:webview2"
@@ -177,188 +166,160 @@ Baidu|https://baidu.com`,
   }}
 />
 
-【网址列表】定义要打开的网址，每行一个，可以为下列格式之一：
+**网址列表**：每行一个，可以是：
 
--   `网址` 直接写网址，此时标签页标题自动使用网页标题。
--   `标题|网址` 此时使用固定的标题。
--   `标题(ProfileName)|网址` 谨慎使用。当需要同时使用多个账号登录相同的网站时，可以为每个账号设定单独的Profile，此时每个账号的cookie等数据会保存在对应的Profile中。
+- `网址`：标签标题用网页标题
+- `标题|网址`：固定标题
+- `标题(ProfileName)|网址`：谨慎使用。同一网站多账号时，给每个账号单独 Profile，Cookie 分开放
 
-【窗口标题】略。
+也支持 `[图标]标题|网址`。
 
-【窗口标识】可以通过相同的标识避免打开多个窗口。 再次使用模块打开网址时，会自动在已经打开的窗口中更新。
-
-【窗口位置】设定显示窗口的位置类型。
-
-【窗口尺寸/位置】当“窗口位置”参数为自定义位置时，可以设定窗口的坐标，格式为`left,top,right,bottom`，可以直接写逻辑像素值或相对于屏幕的百分比数值。
-
-【UserAgent】必要时设定需要模拟的浏览器UserAgent类型。可以在[这里查看](https://tools.getquicker.cn/browser/useragent)您当前使用的浏览器的UserAgent。
-
-【默认下载文件夹】下载文件的默认保存位置。
-
-【置顶显示】是否将窗口置顶显示。
+**窗口标题** / **窗口标识** / **窗口位置** / **窗口尺寸/位置** / **User Agent** / **默认下载文件夹** / **置顶显示**：含义与打开网页相同。
 
 ## 动作交互
 
 ### 桥接对象
 
-桥接对象用于同动作的其它部分交互，如访问动作中的变量、调用子程序等。
+用来访问动作变量、调用子程序。
 
-可以通过 `window.chrome.webview.hostObjects.v` 对象以异步方式访问桥接对象，或者通过 `window.chrome.webview.hostObjects.sync.v` 以同步方式访问桥接对象。
+- 异步：`window.chrome.webview.hostObjects.v`，或 1.23.5+ 的 `$quicker`
+- 同步：`window.chrome.webview.hostObjects.sync.v`，或 `$quickerSync`
 
-更多信息可参考微软[官方文档](https://docs.microsoft.com/en-us/dotnet/api/microsoft.web.webview2.core.corewebview2.addhostobjecttoscript?view=webview2-dotnet-1.0.774.44#Microsoft_Web_WebView2_Core_CoreWebView2_AddHostObjectToScript_System_String_System_Object_)。
-
-自1.23.5 版本起，可以在js中通过 `$quicker` 异步方式访问桥接对象，通过 `$quickerSync` 同步方式访问桥接对象。
+详见微软 [AddHostObjectToScript](https://docs.microsoft.com/en-us/dotnet/api/microsoft.web.webview2.core.corewebview2.addhostobjecttoscript?view=webview2-dotnet-1.0.774.44#Microsoft_Web_WebView2_Core_CoreWebView2_AddHostObjectToScript_System_String_System_Object_)。
 
 ### 读写动作变量
 
-Quicker中使用WebView2组件的[AddHostObjectToScript](https://docs.microsoft.com/en-us/microsoft-edge/webview2/reference/win32/0-9-488/icorewebview2#addhostobjecttoscript)接口注入“**v**" （v表示variables，变量）
+注入对象名为 **v**（variables）。
 
-异步操作方式：
+异步：
 
 ```javascript
 async function func(){
-  // 注入的对象
   let v = await $quicker;
-  // 读取变量
   let varValue = await v.getVar("变量名");
-  // 写入变量
   await v.setVar("变量名", newValue);
 }
 ```
 
-同步操作方式：
+同步：
 
 ```javascript
 function funcSync(){
-  // 读取变量
   let varValue = $quickerSync.getVar("text");
-  // 写入变量
   $quickerSync.setVar("text", "Hello world from js code");
 }
 ```
 
-示例动作：
+支持数字、文本和列表。词典读取时自动变成 JSON 文本，不能用 `setVar` 写回词典。
 
--   [https://getquicker.net/sharedaction?code=c501debe-7e80-408c-d791-08d856359351](https://getquicker.net/sharedaction?code=c501debe-7e80-408c-d791-08d856359351)
+### 词典变量
 
-读写变量操作支持简单变量（数字/文本以及列表变量）。
-
-词典变量在读取时自动转换为json文本数据。词典变量不支持通过setVar方法写入。
-
-### 词典变量的操作
-
-在js中无法直接操作词典变量。
-
-为词典变量赋予一个完整的新值
+不能直接当 JS 对象改。整本替换：
 
 ```javascript
-//setDictByJson(变量名, json内容)
 $quickerSync.setDictByJson("dict", "{a: 1, b: 2}");
 ```
 
-为词典的某个key赋值：
+改某个键：
 
 ```javascript
-//setDictItemValue(词典变量名,键名,值)
 $quickerSync.setDictItemValue("dict", "c", 3);
 ```
 
-获取词典的某个键的值：
+读某个键：
 
 ```javascript
-// 返回词典的某个键的值getDictItemValue(词典变量名,键名)
 var value = $quickerSync.getDictItemValue("dict","c");
 ```
 
-### 调用子程序并返回结果
+### 调用子程序
 
-*需****1.23.15+****版本。*
+1.23.15+ 推荐：`await $quickerSp(spName, dataObj)`。
 
-通过 `await $quickerSp(spName, dataObj)` 方法调用动作中定义的子程序。
+- `spName`：子程序名称
+- `dataObj`：输入对象，每个 key 对应子程序的一个输入变量
 
-参数：
-
--   spName: 子程序名称
--   dataObj: 子程序输入参数对象。每个key对应于子程序中作为输入参数的变量名。
-
-注意：传入子程序的输入参数dataObj，和回调的输出参数outputObj都是**对象类型**。
-
-示例：
+输入和输出都是**对象**，不是 JSON 字符串。
 
 ```javascript
-// 调用子程序：返回原始输入值
 async function testSubprogram(){
-  //子程序输入参数，每个key对应子程序的输入变量。 input为子程序的一个输入变量。
   var obj = {input:'Hello Quicker!', age:3};
-  // 调用子程序
   var data = await $quickerSp('subprogram1', obj);
-  //处理子程序返回结果
-  alert('success: ' + data.output); //output为子程序的一个输出变量
+  alert('success: ' + data.output);
 }
 ```
 
-【以下方法不建议使用】
+下面这种方式不建议再用：`await $quicker.subprogram(spName, dataJson, boolParam, callback)`。第三个参数请传 `false`；回调里成功时 `data` 是输出变量的 JSON **文本**。复杂操作请用异步，同步等待容易把界面卡死。
 
-也可通过 `await $quicker.subprogram(spName, dataJson, boolParam, callback)` 方法调用动作中定义的子程序（不推荐）。
+## 输出
 
-参数：
+- **是否成功**：本步是否完成。获取窗口信息时表示窗口是否存在。
+- **是否安装WebView2**：仅检查安装。
+- **窗口句柄** / **WebView2对象**：打开网页、等待加载、获取状态。对象可在 C# 脚本里用，须在 UI 线程，避免循环引用。
+- **窗口位置**：`left,top,right,bottom`。等待加载、获取状态、等待关窗。
+- **当前网址** / **网页标题** / **网页代码** / **Cookie**：等待加载、获取状态。
+- **脚本运行结果**：仅执行脚本。
+- **预览图** / **导航是否已结束**：仅获取状态。
 
--   子程序名
--   json序列化后的输入参数值对象。输入参数js对象的每个key对应于子程序中作为输入参数的变量名。
--   布尔类型的备用参数，请传入false值。
--   回调函数：function(success, data)。success参数表示是否成功，data参数表示成功时返回的结果（Json序列化后的子程序输出变量的值），出错时返回错误消息。
+## 限制与排障
 
--   data为子程序各个输出变量名和对应的值的词典的JSON序列化**文本**。
-
-```javascript
-async function testSubprogram() {
-  // 为子程序的输入参数构造对象
-  var inputParam = { input: "text to process", prop1: 3, prop2: "value" };
-  // 调用: $quicker.subprogram(子程序名, 输入参数对象的Json序列化文本值, 布尔类型备用参数,回调函数)
-  await $quicker.subprogram(
-    "子程序名",
-    JSON.stringify(inputParam),
-    false,
-    (success, data) => {
-      //回调函数，处理
-      if (success) {
-        // 子程序调用成功, data = 子程序输出参数的Json序列化后的文本
-        alert(data);
-      } else {
-        // 子程序调用失败
-        alert("error:" + data);
-      }
-    } //end of callback
-  ); //end of subprogram
-}
-```
-
-注意：进行复杂操作时，请使用**异步调用方式**（await $quicker.subprogram()...)。同步调用时js会等待结果，可能会造成界面死锁。
-
-示例动作：[https://getquicker.net/sharedaction?code=c501debe-7e80-408c-d791-08d856359351](https://getquicker.net/sharedaction?code=c501debe-7e80-408c-d791-08d856359351)
-
-## 推荐资源
-
-### WebView2相关
-
--   [WebView2 官方文档](https://docs.microsoft.com/en-us/microsoft-edge/webview2/)
-
-### 前端技术相关
-
--   [现代JavaScript教程](https://zh.javascript.info/)
+- 未装运行时时，先用「检查是否安装WebView2」，或到官网安装。
+- **附加的浏览器参数** 可能导致无法同时开多个窗口。
+- 改动作变量名不会改网页里写死的名字。
+- 词典不能 `setVar`，用 `setDictByJson` / `setDictItemValue`。
+- 同步调子程序可能死锁，用 `$quickerSp` 异步。
+- 虚拟主机映射格式是 `主机名|文件夹路径`，主机名在前。
 
 ## 示例
 
-参数传递与子程序调用
+<ShareLinkCard
+  items={[
+    {
+      code: 'c501debe-7e80-408c-d791-08d856359351',
+      title: '参数传递与子程序调用',
+      description: 'JS 读写变量并调用子程序',
+    },
+    {
+      code: 'a6fd6ca9-b6d8-4fbf-afe2-08d8f6743496',
+      title: '搜索 Quicker 网站',
+      description: '用发送消息更新已打开的窗口',
+    },
+    {
+      code: '0b13fc42-ada7-4bb0-afe3-08d8f6743496',
+      title: '有道翻译',
+      description: '向已打开的翻译页发送消息',
+    },
+  ]}
+/>
 
--   [https://getquicker.net/sharedaction?code=c501debe-7e80-408c-d791-08d856359351](https://getquicker.net/sharedaction?code=c501debe-7e80-408c-d791-08d856359351)
+## 相关链接
 
-通过发送消息更新已打开的WebView窗口
-
--   [https://getquicker.net/sharedaction?code=a6fd6ca9-b6d8-4fbf-afe2-08d8f6743496](https://getquicker.net/sharedaction?code=a6fd6ca9-b6d8-4fbf-afe2-08d8f6743496) （搜索Quicker网站）
--   [https://getquicker.net/sharedaction?code=0b13fc42-ada7-4bb0-afe3-08d8f6743496](https://getquicker.net/sharedaction?code=0b13fc42-ada7-4bb0-afe3-08d8f6743496) (有道翻译）
+<RelatedDocs
+  items={[
+    {
+      href: '/v2/xaction/modules/customwindow',
+      label: '自定义窗口',
+      description: 'WPF/XAML 窗口，不是网页。',
+    },
+    {
+      href: '/v2/xaction/modules/openurl',
+      label: '打开网址',
+      description: '用系统浏览器打开，不嵌在动作里。',
+    },
+    {
+      href: '/v2/xaction/modules/jsscript',
+      label: '运行Javascript代码',
+      description: '在动作里跑 JS，不是网页上下文。',
+    },
+    {
+      href: '/v2/xaction/modules/httpserver',
+      label: 'HTTP服务器',
+      description: '本地起服务再给 WebView 打开。',
+    },
+  ]}
+/>
 
 ## 更新历史
 
--   20230929 完善文档。 增加多标签、多列等内容的说明。
--   20240426 修正虚拟主机映射的错误（主机名应该在前面）。
+- 20230929 完善文档。增加多标签、多列说明。
+- 20240426 修正虚拟主机映射（主机名在前）。

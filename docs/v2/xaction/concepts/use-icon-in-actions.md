@@ -1,105 +1,89 @@
 ---
 title: "在动作中使用图标"
-description: "在动作中使用图标的 Quicker 2.0 使用说明。"
+description: "界面项可用 [fa:…]、[icon:…]、[url:…] 等前缀加上标题和可选 tooltip。"
 slug: "/v2/xaction/concepts/use-icon-in-actions"
 sidebar_position: 210
 quickerDocKey: "xaction/concepts/use-icon-in-actions"
 comments: true
-docStatus: "migrated-unreviewed"
+docStatus: reviewed
 legacyDocId: 34158424
 legacyContentUpdatedAt: "2023-12-28T00:34:49.000Z"
 ---
 
-![](./img/use-icon-in-actions-001-d45c5e4cf8.png)![](./img/use-icon-in-actions-002-2dad114ee9.png)
+# 在动作中使用图标
 
-在Quicker的许多地方，可以为界面元素添加图标：
+很多界面可以给条目加图标：自定义右键菜单、文本窗口菜单、用户选择的选项、搜索结果等。
 
--   动作的自定义右键菜单（如上图所示）
--   文本窗口的自定义操作和菜单
--   用户选择模块的选项
--   搜索结果项
--   等
+<ContextMenuPreview
+  openPath={['复制']}
+  items={[
+    {label: '复制', icon: 'fa:Light_Copy:#6aaded'},
+    {label: '剪切', icon: 'fa:Light_Cut:#6aaded'},
+    {type: 'separator'},
+    {label: '用百度搜索', icon: 'fa:Solid_Search:#2b7abf'},
+    {label: '打开网址', icon: 'fa:Light_Globe:#39b54d'},
+  ]}
+/>
 
+常见格式：`[图标]标题文字(Tooltip内容)`。`[图标]` 和 `(Tooltip)` 都可省略。
 
+## 内置矢量图标
 
-在这些地方，通常使用`[图标]标题文字(Tooltip内容）`的格式定义相关信息。其中`[图标]`和`(Tooltip文字)`为可选内容。
+- 系统颜色：`[fa:图标名]`，如 `[fa:Solid_Pen]`，颜色跟外观里的「默认矢量图标颜色」。
+- 自定义颜色：`[fa:图标名:#RRGGBB]`，如 `[fa:Solid_Pen:#FF0000]`。
 
-
-
-可以使用如下的内容定义图标：
-
-
-
-## 使用内置矢量图标
-
-
-
-**格式1，使用系统颜色：\[fa:图标名\]**
-
-如：\[**fa:**Solid\_Pen\] 此时图标的颜色使用系统外观中设置的“默认矢量图标颜色”。
-
-
-
-可以在面板窗口腰栏上的工具菜单中打开图标库，然后选择并复制图标名称。
+面板腰栏工具菜单可打开图标库，复制图标名。
 
 ![](./img/use-icon-in-actions-003-9ae71d6c53.png)
 
-**格式2，使用自定义颜色：\[fa:图****标****名:#RRGGBB\]**
+## Windows 系统图标
 
-如：\[**fa:**Solid\_Pen**:#FF0000**\]
+格式 `[icon:path]`，`path` 可以是：
 
-给图标设定固定的颜色值，格式为#RRGGBB。
+- 扩展名：`[icon:.docx]`
+- 文件名（不必真实存在）：`[icon:一个可能不存在的文件.docx]`
+- 文件或文件夹完整路径
+- exe / lnk 完整路径
+- DLL 里的图标：`[icon:%windir%\system32\mmres.dll,-3017]`
 
+## 网络或本地图片
 
+建议不超过 64×64，以免拖慢界面。本地路径只在你这台电脑上有效，换机或分享后会丢。
 
-## 使用Windows系统图标
+格式：`[url:图片网址或本地路径]`。
 
-可用于显示文件类型图标、文件夹图标，或exe程序、快捷方式的图标。
+## 其它
 
+| 写法 | 版本 | 说明 |
+| --- | --- | --- |
+| `[previmg:图片完整路径]` | 1.28.12+ | 预览较大图，也不锁文件 |
+| `[action:动作名称或ID]` | 1.36.17+ | 用动作图标；按名称时不能重名，名称里不能有 `[]` |
+| `[text:字符:#RRGGBB:字体]` | 1.40.29+ | 如 `[text:Aa:#FF0000:Arial]`；字体图标用 HTML 编码。只能用在动作内部，不兼容旧版。可省略字体：`[text:Xy:#FF0000]` |
 
+## 限制与排障
 
-格式为：\[icon:*path*\]
+- 本地 `[url:…]` / `[previmg:…]` 分享后别人看不到。
+- `[text:…]` 不能当动作本身的图标。
+- 矢量名写错会变成空白或回退字形。
 
-path可以为：
+## 相关链接
 
--   扩展名，如：\[icon:**.docx**\]
--   文件名（不需要一定存在），如：\[icon:**一个可能不存在的文件.docx**\]
--   文件、文件夹的完整路径，如：\[icon:**C:\\Users\\me\\documents\\\_个人\\UI设计草图模版.pdf**\]
--   exe或lnk(快捷方式)文件的完整路径，如：\[icon:**C:\\Program Files\\Quicker\\Quicker.exe**\]
--   DLL文件中的图标，如：\[icon:**%windir%\\system32\\mmres.dll,-3017**\]
-
-## 使用网络图标或本地文件图标
-
-💡 建议图片分辨率不高于64\*64，避免文件太大影响性能。
-
-💡 本地文件图标仅在特殊情况下使用（图标路径仅在您的电脑上存在，更换电脑或分享动作后将无法显示）。
-
-
-
-格式为：\[url:**图片网址或本地图标文件路径**\]
-
-例如：\[url:[https://files.getquicker.net/\_icons/16931C1879F45F2388D394803788F8A55287A1E2.png](https://files.getquicker.net/_icons/16931C1879F45F2388D394803788F8A55287A1E2.png)\]
-
-\[url:C:\\Users\\cuili\\AppData\\Local\\Quicker\\ImageCache\\2D1F29BACD274FB67D9BAD7A094407C9841374D4.png\]
-
-## 预览图片文件
-
-（1.28.12+）
-
-格式为：`[previmg:图片文件完整路径]`
-
-此方式可用于预览较大尺寸的图片，也可以避免锁定图片文件。
-
-## 显示动作图标
-
-(1.36.17+)
-
-格式为：`[action:动作名称或ID]`
-
-使用动作名称时，不能存在有重复名称的动作。名称中间不能存在中括号字符。
-
-## 使用文字图标
-
-(1.40.29+)
-
-格式为：`[text:字符:#RRGGBB:字体名称]`，例如`[text:Aa:#FF0000:Arial]`。使用字体图标时，用HTML编码指定图标字符，例如：`[text:&#xE703;:#FF0000:Segoe MDL2 Assets]`。 注意：(1)只能在动作内部使用，不能给动作设置这样的图标；(2)不兼容旧版本Quicker；（3）可忽略字体名称部分，如`[text:Xy:#FF0000]`。
+<RelatedDocs
+  items={[
+    {
+      href: '/v2/xaction/concepts/action-custom-context-menu',
+      label: '为动作设计自定义右键菜单',
+      description: '菜单项就用这种图标写法',
+    },
+    {
+      href: '/v2/xaction/modules/userselect',
+      label: '用户选择',
+      description: '选项也可以带图标',
+    },
+    {
+      href: '/v2/xaction/concepts/public-api',
+      label: '公共API',
+      description: 'fa: 转 PNG 的辅助服务',
+    },
+  ]}
+/>

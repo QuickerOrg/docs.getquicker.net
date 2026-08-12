@@ -5,7 +5,14 @@
  */
 import type {JSX} from 'react';
 import {VarTypeIcon, varTypeZhLabel} from '@site/src/components/VarTypeIcon';
+import {DocsStepIcon} from './DocsStepIcon';
 import type {ProgramVar} from './types';
+
+const USAGE_ICON: Record<'in' | 'out' | 'state', {spec: string; title: string}> = {
+  in: {spec: 'fa:Solid_ArrowToBottom', title: '子程序输入'},
+  out: {spec: 'fa:Solid_ArrowFromBottom', title: '子程序输出'},
+  state: {spec: 'fa:Solid_Save', title: '作为状态使用'},
+};
 
 function rowTitle(item: ProgramVar): string {
   const type = item.type?.trim();
@@ -18,8 +25,11 @@ function rowTitle(item: ProgramVar): string {
 
 export function VariableListPane({
   variables,
+  selected,
 }: {
   variables: readonly ProgramVar[];
+  /** Highlight this variable name (docs chrome). */
+  selected?: string;
 }): JSX.Element {
   return (
     <aside className="qk-sr-varlist" aria-label="变量列表">
@@ -31,11 +41,26 @@ export function VariableListPane({
           variables.map((item) => (
             <div
               key={item.name}
-              className="listbox-item variable-row"
+              className={[
+                'listbox-item',
+                'variable-row',
+                selected === item.name ? 'variable-row--selected' : '',
+              ]
+                .filter(Boolean)
+                .join(' ')}
               title={rowTitle(item)}
               role="option"
-              aria-selected="false">
+              aria-selected={selected === item.name}>
               <span className="variable-row-leading" aria-hidden="true">
+                {(item.usage ?? []).map((flag) => (
+                  <DocsStepIcon
+                    key={flag}
+                    className={`variable-row-icon variable-row-icon--${flag}`}
+                    spec={USAGE_ICON[flag].spec}
+                    size={10}
+                    title={USAGE_ICON[flag].title}
+                  />
+                ))}
                 <VarTypeIcon
                   className="variable-row-type-icon"
                   type={item.type ?? 'Any'}

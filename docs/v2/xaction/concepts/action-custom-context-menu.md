@@ -1,84 +1,69 @@
 ---
 title: "为动作设计自定义右键菜单"
-description: "为动作设计自定义右键菜单的 Quicker 2.0 使用说明。"
+description: "给动作加右键菜单：点一项等于运行该动作并传入该项的参数。"
 slug: "/v2/xaction/concepts/action-custom-context-menu"
 sidebar_position: 220
 quickerDocKey: "xaction/concepts/action-custom-context-menu"
 comments: true
-docStatus: "migrated-unreviewed"
+docStatus: reviewed
 legacyDocId: 8110269
 legacyContentUpdatedAt: "2024-04-28T03:06:29.000Z"
 ---
 
-注：Quicker1.8.3以后的版本支持此功能。
+# 为动作设计自定义右键菜单
 
+1.8.3+ 可为动作自定义右键菜单，用来解决两件事：
 
+1. 怎么进配置界面，让使用者改个性化设置。
+2. 一个动作有多种模式时，启动时怎么选定。
 
-## 概述
+更早的做法是：在动作自己的窗口里加菜单，或启动时看有没有按 `Ctrl`。自定义右键菜单的原理更直接：
 
-当动作功能变得更强大之后，通常会面临2个设计问题：
+- 点菜单项 = 运行该动作，并传入该项写死的参数。
+- 动作里读 `{quicker_in_param}`，按参数走对应分支。
 
-1.  如何进入配置界面，让使用者方便的自定义一些个性化信息？
-2.  动作提供多个功能或模式，如何在启动动作时确定运行哪个功能？
-
-
-
-在1.8.3版本之前，动作作者大概会使用这些办法：
-
--   在动作操作界面的菜单中增加功能选项。（如文本窗口的菜单、用户选择的选项或菜单等）
--   在启动时检查键盘状态，根据是否按下了某个控制键（如ctrl），决定进入参数配置功能还是正常运行动作。
-
-
-
-在1.8.3版本中，Quicker增加了给动作自定义右键菜单的功能。基本原理是这样：
-
--   点击菜单时，运行动作并给动作传递某个特定的参数。
--   在动作中判断参数变量quicker\_in\_param的值，根据对应的菜单项执行某个操作。
-
-![](./img/action-custom-context-menu-001-8e5e2322bf.png)
-
-
+<ContextMenuPreview
+  openPath={['动作设置']}
+  items={[
+    {label: '运行', icon: 'fa:Light_Play:#39b54d'},
+    {label: '调试运行', icon: 'fa:Light_Bug:#f5b042'},
+    {type: 'separator'},
+    {label: '动作设置', icon: 'fa:Light_Cog:#FF0000'},
+    {label: '编辑'},
+    {label: '分享'},
+  ]}
+/>
 
 ## 定义菜单
 
-菜单数据在动作编辑窗口的“选项”区域。
+菜单文本写在编辑器右侧「选项 / 外观」里。输入框偏小，内容多时在框上右键选「在编辑器中修改」。
 
 ![](./img/action-custom-context-menu-002-1d103a1a05.png)
 
-输入框比较小，如果需要输入较多内容，可以在输入框上右键，选择“在编辑器中修改”。
-
 ![](./img/action-custom-context-menu-003-9072d6bb7e.png)
 
+### 格式
 
+- 一行一项。
+- `////` 开头当注释。
+- `----` 是分割线。
+- 竖线 `|` 左边是外观，右边是传给动作的参数。
 
-### 格式说明
+例子：`[fa:Light_Flag]菜单标题(tooltip内容)|_qk_menu_icon_menu`
 
-1.  每行定义一个菜单项；
-2.  4个斜线开始的内容（////），作为注释忽略；
-3.  使用4个半角短横线（----）添加分割线；
-4.  每个菜单项的内容分为2个主要部分，中间使用竖线“|”分隔。
+外观可含图标、标题、Tooltip（后两项可选）：
 
-1.  前半部分定义菜单的外观；
-2.  后半部分定义要给动作传递的参数；
-3.  例子：\[fa:Light\_Flag\]菜单标题(tooltip内容)**|**\_qk\_menu\_icon\_menu
+- `[fa:图标名称]`：默认色（动作菜单默认偏绿，和内置菜单区分）。
+- `[fa:图标名:#RRGGBB]`：自定义颜色，给有风险或要强调的项用。
+- 图标名可在编辑器右键「插入图标名菜单」里挑。见 [在动作中使用图标](/v2/xaction/concepts/use-icon-in-actions)。
 
-5.  外观部分可以包含图标、标题和鼠标悬浮在菜单上时显示的Tooltip信息。其中图标信息和tooltip信息是可选的。
+![](./img/action-custom-context-menu-004-747e28cefc.png)
 
-1.  图标信息：**\[fa:*****图标名称*****\]** 图标将以默认颜色显示（为和quicker内置右键菜单区别，动作图标默认使用绿色显示）。
-2.  如果需要对某些具有一定风险或需要突出显示的图标指定自定义颜色，也可以使用 **\[fa:图标名:#RRGGBB\]** 这样的格式。
-3.  图标名称可以在编辑器中右键选择“插入图标名菜单”后选择。 ![](./img/action-custom-context-menu-004-747e28cefc.png)
+参数尽量用不容易撞车的值。多项时可加同一前缀，动作里按前缀分支。
 
-6.  动作参数尽量使用较为特殊的内容，避免和正常使用动作时传入的参数冲突。如果有多个菜单项，也可以考虑为参数加入相同的前缀，从而方便在动作中根据前缀执行某个分支的步骤。
+### 多级菜单
 
-
-
-#### 多级菜单
-
-**缩进方式设置**（自1.36.7版本支持）
-
-使用空格或tab缩进表示子菜单（空格或tab不能混用，同一级别对齐）。
-
-示例：
+**缩进**（1.36.7+）：空格或 Tab 表示子菜单。同一级对齐，两种空白不要混用。
 
 ```text
 [fa:Light_Cog:#FF0000]设置
@@ -87,8 +72,6 @@ legacyContentUpdatedAt: "2024-04-28T03:06:29.000Z"
   [fa:Light_Cog:#FF0000]设置项2|参数值2
     [fa:Light_Cog:#FF0000]设置项21|参数值21
 ```
-
-对应的菜单：
 
 <ContextMenuPreview
   openPath={['设置', '设置项1']}
@@ -104,7 +87,11 @@ legacyContentUpdatedAt: "2024-04-28T03:06:29.000Z"
           icon: 'fa:Light_Cog:#FF0000',
           children: [{label: '设置项11', icon: 'fa:Light_Cog:#FF0000'}],
         },
-        {label: '设置项2', icon: 'fa:Light_Cog:#FF0000', children: [{label: '设置项21'}]},
+        {
+          label: '设置项2',
+          icon: 'fa:Light_Cog:#FF0000',
+          children: [{label: '设置项21', icon: 'fa:Light_Cog:#FF0000'}],
+        },
       ],
     },
     {label: '悬浮', icon: 'fa:Light_UfoBeam', iconColor: '#2b7abf', children: [{label: '…'}]},
@@ -112,16 +99,7 @@ legacyContentUpdatedAt: "2024-04-28T03:06:29.000Z"
   ]}
 />
 
-**符号标记格式**
-
-【1.36.7之前版本】如果需要定义二级菜单：
-
-1.  在父菜单的最前面加入 **\[+\]**
-2.  在该父菜单下面的子菜单项的最前面加入 **\[-\]**
-
-
-
-例子（网址[https://getquicker.net/sharedaction?code=85e2fa76-4bfb-4e1b-aa78-08d80d33b91a](https://getquicker.net/sharedaction?code=85e2fa76-4bfb-4e1b-aa78-08d80d33b91a)）：
+**符号标记**（1.36.7 之前）：父项前加 `[+]`，子项前加 `[-]`。
 
 ```text
 ////注释内容
@@ -133,21 +111,14 @@ legacyContentUpdatedAt: "2024-04-28T03:06:29.000Z"
 [fa:Light_Wrench:#f57e42]危险动作菜单(tooltip内容)|_qk_menu_sample
 ```
 
-对应的菜单：
+<ShareLinkCard
+  code="85e2fa76-4bfb-4e1b-aa78-08d80d33b91a"
+  title="右键菜单示例"
+/>
 
-![](./img/action-custom-context-menu-006-5610f9f6b6.png)
+### 在动作里判断
 
-
-
-
-
-
-
-
-
-### 在动作中判断菜单
-
-使用“如果”模块，判断动作参数的值是否为某个菜单项的参数值：
+用 [如果](/v2/xaction/modules/if) 比较 `{quicker_in_param}` 和菜单参数：
 
 <ModuleParamPreview
   moduleKey="sys:if"
@@ -155,80 +126,90 @@ legacyContentUpdatedAt: "2024-04-28T03:06:29.000Z"
   values={{condition: '$= {quicker_in_param} == "_qk_menu_no_icon"'}}
 />
 
-如果是的话，就执行对应的操作即可。
+命中就走对应步骤。
 
+## 会变的菜单项
 
+菜单文案要随工作模式变时，用 [状态存取](/v2/xaction/modules/statestorage) 改。
 
+## 调试菜单项
 
+**方式 1**：按 **右侧 Shift** 再点菜单项，走调试运行。
 
-## 定义变化的右键菜单项
+**方式 2**：另建一个动作，用 [运行其他动作](/v2/xaction/modules/runaction) 填目标和参数，勾选调试。
 
-如果有些右键菜单项需要根据动作的工作模式变化，可以通过“[状态存取](/v2/xaction/modules/statestorage)”模块来设置。
+<ModuleParamPreview
+  moduleKey="sys:runAction"
+  values={{debug: 'true', inputParam: '_qk_menu_no_icon'}}
+  focusKeys={['actionId', 'inputParam', 'debug']}
+/>
 
+连续改的话，编辑器里 **Ctrl + 点击保存** 只存不关窗。
 
+<ShareLinkCard
+  code="ea84295f-a89f-4eed-2181-08d87f35f7db"
+  title="动作调试器"
+/>
 
+## 使用
 
+在动作上右键点对应项即可。右侧 Shift + 点击该项则调试运行。
 
-## 调试右键菜单项
+## 更多示例
 
-**方式1**：按右侧Shift键点击菜单项，可以启动调试运行模式。
+来自 @瓜皮之牙：
 
-![](./img/action-custom-context-menu-008-1d7066caf4.png)
+<ShareLinkCard
+  code="862a746e-35d8-4d6f-3efe-08d97ef43193"
+  title="菜单定义心得"
+/>
 
+<ShareLinkCard
+  code="20d89403-3c40-480d-394f-08d98bd92463"
+  title="菜单示例"
+/>
 
+入门教程：[瓜皮的自定义右键菜单](https://getquicker.net/Guides/Guide?id=9260b229-c617-42f5-378b-08da75b5e519&step=54f7f144-58a1-43c5-a41d-08da7756e1a7)
 
+## 限制与排障
 
+- 参数要足够特殊，避免和正常传入的数据撞车。
+- 缩进子菜单不要把空格和 Tab 混在同一份定义里。
+- 改了菜单参数却没改动作里的判断，点菜单会落到默认分支。
 
-**方式2**：创建一个新的动作，在动作中使用“运行其他动作”模块，指定要传递的参数内容和是否启动调试模式。
+## 相关链接
 
-![](./img/action-custom-context-menu-009-fdb648dc2c.png)
-
-
-
-如果需要连续编辑调试，可以在动作编辑窗口中 按Ctrl+点击保存，可以只保存不关闭编辑窗口。
-
-[
-](https://getquicker.net/sharedaction?code=ea84295f-a89f-4eed-2181-08d87f35f7db)
-
-
-
-## 使用菜单
-
-在动作上右键，选择对应菜单项即可。
-
-按**右侧Shift**的同时点击菜单项，可以使用调试模式运行。
-
-
-
-
-
-
-
-## 相关内容
-
--   状态存储：在用户计算机保存状态信息
-
--   [状态存取模块](/v2/xaction/modules/statestorage)
--   将变量设置为作为状态使用：保存变量的值到本地，下次运行时自动加载。
-
--   [云状态存取](/v2/xaction/modules/clouddata)：将内容保存到网络，在需要的时候读取。
--   [多字段表单](/v2/xaction/modules/form)：通常用于设计动作参数设置界面。
-
-
-
-来自网友@瓜皮之牙的右键菜单示例：
-
-[https://getquicker.net/Sharedaction?code=862a746e-35d8-4d6f-3efe-08d97ef43193](https://getquicker.net/Sharedaction?code=862a746e-35d8-4d6f-3efe-08d97ef43193)
-
-[https://getquicker.net/Sharedaction?code=20d89403-3c40-480d-394f-08d98bd92463](https://getquicker.net/Sharedaction?code=20d89403-3c40-480d-394f-08d98bd92463)
-
-瓜皮的自定义右键菜单入门教程（通俗易懂）：[https://getquicker.net/Guides/Guide?id=9260b229-c617-42f5-378b-08da75b5e519&step=54f7f144-58a1-43c5-a41d-08da7756e1a7](https://getquicker.net/Guides/Guide?id=9260b229-c617-42f5-378b-08da75b5e519&step=54f7f144-58a1-43c5-a41d-08da7756e1a7)
-
-
-
-
-
-## 更新历史
-
--   1.36.7 支持缩进方式。
--   增加瓜皮分享的入门教程网址和示例动作。
+<RelatedDocs
+  items={[
+    {
+      href: '/v2/xaction/concepts/quicker_in_param',
+      label: '为动作传递参数',
+      description: '菜单项就是在传参',
+    },
+    {
+      href: '/v2/xaction/concepts/store-settings',
+      label: '在动作中存储用户设置',
+      description: '设置菜单 + 状态变量',
+    },
+    {
+      href: '/v2/xaction/modules/statestorage',
+      label: '状态存取',
+      description: '动态改菜单文案',
+    },
+    {
+      href: '/v2/xaction/modules/form',
+      label: '多字段表单',
+      description: '设置界面',
+    },
+    {
+      href: '/v2/xaction/modules/clouddata',
+      label: '云状态存取',
+      description: '把设置存到网上',
+    },
+    {
+      href: '/v2/xaction/concepts/use-icon-in-actions',
+      label: '在动作中使用图标',
+      description: '菜单图标写法',
+    },
+  ]}
+/>

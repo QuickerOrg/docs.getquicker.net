@@ -1,0 +1,412 @@
+{
+  "code": "3eba3790-6c37-41c7-7aff-08d9bf67e5c4",
+  "title": "数据库操作测试",
+  "description": "数据库操作示例动作，使用SQLite，默认保存在d盘根目录",
+  "author": "CL",
+  "revision": 3,
+  "source": "https://getquicker.net/sharedaction?code=3eba3790-6c37-41c7-7aff-08d9bf67e5c4",
+  "pulledAt": "2026-08-11T21:42:31.964Z",
+  "variables": [
+    {
+      "name": "dataTableResult",
+      "type": "Table"
+    },
+    {
+      "name": "firstItem",
+      "type": "Dict"
+    },
+    {
+      "name": "item",
+      "type": "Any"
+    },
+    {
+      "name": "listResult",
+      "type": "Any"
+    },
+    {
+      "name": "path",
+      "type": "Text"
+    },
+    {
+      "name": "rowCount",
+      "type": "Integer"
+    },
+    {
+      "name": "rowsAffected",
+      "type": "Integer"
+    },
+    {
+      "name": "scalarResult",
+      "type": "Text"
+    },
+    {
+      "name": "table1",
+      "type": "Table",
+      "remark": "表格测试"
+    },
+    {
+      "name": "tableRow",
+      "type": "Any",
+      "remark": "DataTable的一行数据"
+    },
+    {
+      "name": "temp",
+      "type": "Boolean"
+    },
+    {
+      "name": "text",
+      "type": "Text",
+      "remark": "默认的文本变量"
+    }
+  ],
+  "steps": [
+    {
+      "key": "sys:comment",
+      "inputs": {
+        "note": "创建数据库"
+      }
+    },
+    {
+      "key": "sys:fileOperation",
+      "inputs": {
+        "type": "deleteFile",
+        "path": "{path}",
+        "stopIfFail": "0"
+      },
+      "outputs": {
+        "isSuccess": "temp"
+      }
+    },
+    {
+      "key": "sys:subprogram",
+      "inputs": {
+        "subProgram": "创建SQLite数据库文件",
+        "stopIfFail": "1",
+        "var:path": "{path}",
+        "summary": "{path}"
+      }
+    },
+    {
+      "key": "sys:comment",
+      "inputs": {
+        "note": "创建表"
+      }
+    },
+    {
+      "key": "sys:dboperation",
+      "inputs": {
+        "dbType": "sqlite",
+        "connectionString": "{path}",
+        "sql": "CREATE TABLE IF NOT EXISTS contacts (\r\n\tcontact_id INTEGER PRIMARY KEY,\r\n\tfirst_name TEXT NOT NULL,\r\n\tlast_name TEXT NOT NULL,\r\n\temail TEXT NOT NULL UNIQUE,\r\n\tphone TEXT NOT NULL UNIQUE\r\n);",
+        "operationType": "Execute",
+        "stopIfFail": "1"
+      }
+    },
+    {
+      "key": "sys:comment",
+      "inputs": {
+        "note": "插入一行数据，词典格式"
+      }
+    },
+    {
+      "key": "sys:dboperation",
+      "inputs": {
+        "dbType": "sqlite",
+        "connectionString": "{path}",
+        "sql": "insert into contacts (first_name, last_name, email, phone) \r\nvalues(@FirstName, @LastName, @Email, @Phone)",
+        "sqlParam": "FirstName:李\r\nLastName:四 \r\nEmail:lisi@getquicker.net\r\nPhone:13888889999",
+        "operationType": "Execute",
+        "stopIfFail": "1"
+      },
+      "outputs": {
+        "rowsAffected": "rowsAffected"
+      }
+    },
+    {
+      "key": "sys:comment",
+      "inputs": {
+        "note": "插入一行数据，匿名对象"
+      }
+    },
+    {
+      "key": "sys:dboperation",
+      "inputs": {
+        "dbType": "sqlite",
+        "connectionString": "{path}",
+        "sql": "insert into contacts (first_name, last_name, email, phone) \r\nvalues(@FirstName, @LastName, @Email, @Phone)",
+        "sqlParam": "$= new {FirstName = \"王\", LastName=\"五\", Email=\"wangwu@getquicker.net\", Phone=\"13866666666\"}",
+        "operationType": "Execute",
+        "stopIfFail": "1"
+      },
+      "outputs": {
+        "rowsAffected": "rowsAffected"
+      }
+    },
+    {
+      "key": "sys:comment",
+      "inputs": {
+        "note": "查询数据：全部。输出首项到一个词典变量。"
+      }
+    },
+    {
+      "key": "sys:dboperation",
+      "inputs": {
+        "dbType": "sqlite",
+        "connectionString": "{path}",
+        "sql": "select * from contacts ",
+        "operationType": "Query",
+        "stopIfFail": "1"
+      },
+      "outputs": {
+        "dataTableResult": "table1",
+        "listResult": "listResult",
+        "firstItem": "firstItem",
+        "rowCount": "rowCount"
+      }
+    },
+    {
+      "key": "sys:notify",
+      "inputs": {
+        "msg": "$=\r\n\"第一项结果的:\" + {firstItem}[\"first_name\"] + {firstItem}[\"last_name\"]",
+        "maxLines": "0",
+        "type": "Info",
+        "style": "Default"
+      },
+      "disabled": true
+    },
+    {
+      "key": "sys:showText",
+      "inputs": {
+        "type": "WAIT",
+        "text": "$=\r\n\"第一项结果的:\" + {firstItem}[\"first_name\"] + {firstItem}[\"last_name\"]",
+        "title": "首项结果信息",
+        "topMost": "false",
+        "winLocation": "CenterScreen",
+        "fontsize": "14",
+        "closeWhenLostFocus": "false",
+        "showLineNum": "true",
+        "autoWrap": "true",
+        "showBuildInToolbar": "true",
+        "copyWholeLine": "false"
+      }
+    },
+    {
+      "key": "sys:showText",
+      "inputs": {
+        "type": "WAIT",
+        "text": "{table1}",
+        "title": "表格赋值给文本",
+        "topMost": "false",
+        "winLocation": "CenterScreen",
+        "fontsize": "14",
+        "closeWhenLostFocus": "false",
+        "showLineNum": "true",
+        "autoWrap": "true",
+        "showBuildInToolbar": "true",
+        "copyWholeLine": "false"
+      }
+    },
+    {
+      "key": "sys:showText",
+      "inputs": {
+        "type": "WAIT",
+        "text": "{listResult}",
+        "title": "动态对象列表赋值给文本",
+        "topMost": "false",
+        "winLocation": "CenterScreen",
+        "fontsize": "14",
+        "closeWhenLostFocus": "false",
+        "showLineNum": "true",
+        "autoWrap": "true",
+        "showBuildInToolbar": "true",
+        "copyWholeLine": "false"
+      }
+    },
+    {
+      "key": "sys:tableoperation",
+      "inputs": {
+        "table": "{table1}",
+        "type": "manage",
+        "isReadOnly": "1",
+        "stopIfFail": "1"
+      },
+      "outputs": {
+        "rowCount": "item"
+      }
+    },
+    {
+      "key": "sys:comment",
+      "inputs": {
+        "note": "循环获取每一项的信息：方式一，对表格变量的行进行循环"
+      }
+    },
+    {
+      "key": "sys:each",
+      "inputs": {
+        "input": "$= {table1}.Rows",
+        "useMultiThread": "0"
+      },
+      "outputs": {
+        "item": "tableRow"
+      },
+      "ifSteps": [
+        {
+          "key": "sys:notify",
+          "inputs": {
+            "msg": "$= \"表格行：\"  + $\"({{tableRow}.GetType().Name}) \" + \r\n{tableRow}[\"first_name\"] + {tableRow}[\"last_name\"]",
+            "maxLines": "0",
+            "type": "Info",
+            "style": "Default"
+          }
+        }
+      ]
+    },
+    {
+      "key": "sys:each",
+      "inputs": {
+        "input": "$= {table1}.Rows",
+        "useMultiThread": "0"
+      },
+      "outputs": {
+        "item": "firstItem"
+      },
+      "disabled": true,
+      "ifSteps": [
+        {
+          "key": "sys:notify",
+          "inputs": {
+            "msg": "$= \"表格行：\" + $\"({{firstItem}.GetType().Name}) \" + \r\n{firstItem}[\"first_name\"] + {firstItem}[\"last_name\"]\r\n//{tableRow}.GetType().Name",
+            "maxLines": "0",
+            "type": "Info",
+            "style": "Default"
+          }
+        }
+      ]
+    },
+    {
+      "key": "sys:comment",
+      "inputs": {
+        "note": "循环获取每一项的信息：方式二，对对象列表的每项进行循环"
+      }
+    },
+    {
+      "key": "sys:each",
+      "inputs": {
+        "input": "{listResult}",
+        "useMultiThread": "0"
+      },
+      "outputs": {
+        "item": "item"
+      },
+      "ifSteps": [
+        {
+          "key": "sys:notify",
+          "inputs": {
+            "msg": "$= \"动态对象列表结果条目：\" +\r\n{item}.first_name + {item}.last_name",
+            "maxLines": "0",
+            "type": "Info",
+            "style": "Default"
+          }
+        }
+      ]
+    },
+    {
+      "key": "sys:showText",
+      "inputs": {
+        "type": "WAIT",
+        "text": "{table1}",
+        "title": "所有结果内容",
+        "topMost": "false",
+        "winLocation": "CenterScreen",
+        "fontsize": "14",
+        "closeWhenLostFocus": "false",
+        "showLineNum": "true",
+        "autoWrap": "true",
+        "showBuildInToolbar": "true",
+        "copyWholeLine": "false"
+      },
+      "disabled": true
+    },
+    {
+      "key": "sys:comment",
+      "inputs": {
+        "note": "查询数据：条件"
+      }
+    },
+    {
+      "key": "sys:dboperation",
+      "inputs": {
+        "dbType": "sqlite",
+        "connectionString": "{path}",
+        "sql": "select * from contacts Where first_name = @FirstName",
+        "sqlParam": "FirstName:李",
+        "operationType": "Query",
+        "stopIfFail": "1"
+      },
+      "outputs": {
+        "dataTableResult": "table1",
+        "listResult": "listResult",
+        "firstItem": "firstItem"
+      }
+    },
+    {
+      "key": "sys:showText",
+      "inputs": {
+        "type": "WAIT",
+        "text": "{table1}",
+        "title": "条件查询结果内容",
+        "topMost": "false",
+        "winLocation": "CenterScreen",
+        "fontsize": "14",
+        "closeWhenLostFocus": "false",
+        "showLineNum": "true",
+        "autoWrap": "true",
+        "showBuildInToolbar": "true",
+        "copyWholeLine": "false"
+      }
+    },
+    {
+      "key": "sys:comment",
+      "inputs": {
+        "note": "ExecuteScalar"
+      }
+    },
+    {
+      "key": "sys:dboperation",
+      "inputs": {
+        "dbType": "sqlite",
+        "connectionString": "{path}",
+        "sql": "select COUNT(1) from contacts",
+        "sqlParam": "FirstName:李",
+        "operationType": "ExecuteScalar",
+        "stopIfFail": "1"
+      },
+      "outputs": {
+        "scalarResult": "scalarResult"
+      }
+    },
+    {
+      "key": "sys:notify",
+      "inputs": {
+        "msg": "$$ ExecuteScalar：共有 {scalarResult} 行数据。",
+        "maxLines": "0",
+        "type": "Info",
+        "style": "Default"
+      }
+    },
+    {
+      "key": "sys:comment",
+      "inputs": {
+        "note": "删除数据库文件"
+      }
+    },
+    {
+      "key": "sys:fileOperation",
+      "inputs": {
+        "type": "deleteFile",
+        "path": "{path}",
+        "stopIfFail": "1"
+      }
+    }
+  ]
+}

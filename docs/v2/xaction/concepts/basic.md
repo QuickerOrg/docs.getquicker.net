@@ -1,46 +1,116 @@
 ---
 title: "模块和步骤"
-description: "模块和步骤的 Quicker 2.0 使用说明。"
+description: "步骤对应模块；输入可绑变量、写固定值，或用 $$ / $= ；输出写入变量。"
 slug: "/v2/xaction/concepts/basic"
 sidebar_position: 30
 quickerDocKey: "xaction/concepts/basic"
 comments: true
-docStatus: "migrated-unreviewed"
+docStatus: reviewed
 legacyDocId: 1402268
 legacyContentUpdatedAt: "2024-01-07T02:36:12.000Z"
 ---
 
-## 使用说明
+# 模块和步骤
 
-### 步骤列表
+组合动作由一串步骤组成。每一步调用一个模块：从变量或固定值取出输入，处理后把结果写回变量。
 
-我们通过定义一系列的步骤来实现组合动作的功能。
-
-从左侧的步骤工具箱中拖放需要的模块到步骤列表中的合适位置即可添加新的步骤。
-
-中间「步骤定义」区域示意（只读组件，不是完整编辑器窗口）：
+从左侧工具箱把模块拖进步骤列表即可添加。完整窗口见 [动作编辑器](/v2/xaction/concepts/xaction-editor)。中间步骤区示意：
 
 <StepProgramView
-  showParams
   data={{
     steps: [
       {
-        key: "sys:getSelectedText",
-        outputs: {output: "selectedText", isSuccess: "selectSuccess"},
+        key: 'sys:getSelectedText',
+        outputs: {output: 'selectedText', isSuccess: 'selectSuccess'},
       },
       {
-        key: "sys:if",
-        inputs: {condition: "{selectSuccess}"},
+        key: 'sys:if',
+        inputs: {condition: '{selectSuccess}'},
         ifSteps: [
           {
-            key: "sys:openUrl",
-            inputs: {url: "$$https://www.google.com/search?q={selectedText}"},
+            key: 'sys:openUrl',
+            inputs: {url: '$$https://www.google.com/search?q={selectedText}'},
           },
         ],
         elseSteps: [
+          {key: 'sys:openUrl', inputs: {url: 'https://www.google.com'}},
+        ],
+      },
+    ],
+  }}
+/>
+
+## 模块
+
+下面这个「文本处理」把待处理内容转成大写，结果写入 `context`。
+
+<ModuleParamPreview
+  moduleKey="sys:stringProcess"
+  inputVars={{data: 'selectedText'}}
+  values={{method: 'toUpper'}}
+  outputVars={{output: 'context'}}
+  focusKeys={['data', 'method', 'output']}
+/>
+
+## 输入参数
+
+输入可以用变量，也可以写固定值、插值或表达式。
+
+**使用变量**：在参数的变量下拉里选一个已有变量。
+
+<ModuleParamPreview
+  moduleKey="sys:stringProcess"
+  inputVars={{data: 'context'}}
+  values={{method: 'toUpper'}}
+  focusKeys={['data']}
+/>
+
+**固定值 / 插值 / 表达式**：在变量下拉里选「固定值或使用插值、表达式」（旧版叫「不使用变量」），下面出现输入框：
+
+- 直接写要赋给参数的内容。
+- 以 `$$` 开头：[文本插值](/v2/xaction/concepts/interpolation)。
+- 以 `$=` 开头：[表达式](/v2/xaction/concepts/expression)。
+
+切换这三种写法见 [选择或输入步骤参数](/v2/xaction/concepts/edit-step-param)。
+
+输入框还支持：
+
+- 右键 **在编辑器中修改**：弹出代码窗，适合较长内容。
+- 右键 **在外部编辑器中修改**：写入临时文件，用第三方编辑器改。第一行用注释加扩展名（如 `//.js`、`//.cs`、`##.ps1`），方便系统选编辑器和语法高亮。
+- 扩展菜单：**插入变量**，以及选取内容的文本工具。
+
+## 输出
+
+一步可能有多个输出，只把要用的写入变量即可。
+
+<ModuleParamPreview
+  moduleKey="sys:getSelectedText"
+  outputVars={{output: 'selectedText', isSuccess: 'selectSuccess'}}
+  focusKeys={['output', 'isSuccess']}
+/>
+
+## 限制与排障
+
+步骤失败时，后面的输出是否仍会写入变量并不固定：有的会改掉变量，有的保持原值。后续还要读这些变量时，先用 [赋值](/v2/xaction/modules/assign) 给一个明确初值，并判断「是否成功」。
+
+例如循环找图：循环开头把 `point` 赋成空字符串，避免沿用上一轮找到的点。
+
+<StepProgramView
+  data={{
+    steps: [
+      {
+        key: 'sys:repeat',
+        inputs: {count: '10'},
+        ifSteps: [
+          {key: 'sys:assign', inputs: {input: ''}, outputs: {output: 'point'}},
           {
-            key: "sys:openUrl",
-            inputs: {url: "https://www.google.com"},
+            key: 'sys:searchBmp',
+            outputs: {firstPoint: 'point', isSuccess: 'found'},
+          },
+          {
+            key: 'sys:if',
+            inputs: {condition: '{found}'},
+            ifSteps: [{key: 'sys:break'}],
           },
         ],
       },
@@ -48,83 +118,34 @@ legacyContentUpdatedAt: "2024-01-07T02:36:12.000Z"
   }}
 />
 
-### 模块
+## 相关链接
 
-模块通常会接收一些输入（从变量中读取或直接指定固定的参数值），进行某种处理后，再把结果输出到变量里。
-
-比如下面的 “文本处理” 模块，将待处理的文本转换为大写后，再输出到context变量中。
-
-![](./img/basic-002-78337a6691.png)
-
-
-
-#### 输入参数值的指定
-
-可以使用两种方式为输入参数赋值：
-
-
-
-**1） 使用变量**
-
-![](./img/basic-003-0070711069.png)
-
-
-
-**2）指定固定值，或使用文本插值/表达式。**
-
-在变量下拉框中选择“--固定值或使用插值、表达式--”（旧版为“不使用变量”），这时会在下拉框下面显示一个输入框。可以在这里直接输入以下三种类型的内容：
-
--   要赋值给参数的内容。
--   使用**$$**开始使用[插值方式拼接文本](/v2/xaction/concepts/interpolation)。
--   使用**$=**开始使用[表达式进行计算](/v2/xaction/concepts/expression)。
-
-
-
-参数输入框支持一些辅助输入的功能：
-
-
-
-**右键菜单：**
-
--   在编辑器中修改：弹出代码编辑窗口以输入较多的内容。
--   在外部编辑器中修改：使用第三方编辑器修改参数内容。
-    编辑的内容会自动写入一个临时文件，并请用户选择使用什么编辑器打开。在参数内容第一行使用注释+扩展名可以指定生成的临时文件扩展名(从第三个字符判断，如`//.js`、`//.cs`、`##.ps1`等)，方便windows自动选择编辑器、在编辑器中自动启用语法高亮。
-
-![](./img/basic-004-d4a9d6203e.png)
-
-
-
-**扩展菜单：**
-
--   在编辑器中修改：同上
--   插入变量：在参数内容中插入变量的名称。
--   用于选取内容的其他工具菜单。
-
-
-
-![](./img/basic-005-e6ac642021.png)
-
-
-
-
-
-#### 输出内容
-
-![](./img/basic-006-1562ff92d9.png)
-
-一个步骤可能会输出比较多的内容，但不是所有都需要使用。
-
-只要输出需要的内容到合适的变量中即可。
-
-**高级话题**
-
-注意：对于步骤执行失败的情况，后面的输出是否会执行是不确定的，因此可能存在两种情况：
-
--   输出被执行，变量内容会被修改。
--   输出不被执行，变量内容保持不变。
-
-因此，在有可能执行失败的情况下，如果后续步骤需要根据模块输出到的变量的内容做处理，请在前面使用“赋值”模块预先给变量赋值，并且在判断“是否成功”。
-
-如下图一个循环找图的步骤。在循环开始处，给point变量赋值空字符串，以避免在循环的其它步骤中使用到前一次循环得到的point结果。
-
-![](./img/basic-007-6801d8e6d7.png)
+<RelatedDocs
+  items={[
+    {
+      href: '/v2/xaction/concepts/xaction-editor',
+      label: '动作编辑器的使用',
+      description: '工具箱、步骤列表和保存',
+    },
+    {
+      href: '/v2/xaction/concepts/edit-step-param',
+      label: '选择或输入步骤参数',
+      description: 'F1 切换原始值、插值和表达式',
+    },
+    {
+      href: '/v2/xaction/concepts/interpolation',
+      label: '文本插值',
+      description: '$$ 把变量嵌进文本',
+    },
+    {
+      href: '/v2/xaction/concepts/expression',
+      label: '表达式',
+      description: '$= 做计算和判断',
+    },
+    {
+      href: '/v2/xaction/modules/stringprocess',
+      label: '文本处理',
+      description: '上例转大写用的模块',
+    },
+  ]}
+/>

@@ -1,0 +1,117 @@
+{
+  "code": "acf2fc09-3753-4b67-d714-08d827485760",
+  "title": "示例：Lambda表达式",
+  "description": "1.9.5+版本的表达式功能",
+  "author": "CL",
+  "revision": 3,
+  "source": "https://getquicker.net/sharedaction?code=acf2fc09-3753-4b67-d714-08d827485760",
+  "pulledAt": "2026-08-12T02:56:25.285Z",
+  "variables": [
+    {
+      "name": "list",
+      "type": "List"
+    },
+    {
+      "name": "dict",
+      "type": "Dict"
+    }
+  ],
+  "steps": [
+    {
+      "key": "sys:MsgBox",
+      "inputs": {
+        "message": "$$列表内容：\r\n{list}",
+        "title": "Quicker",
+        "buttons": "OK"
+      }
+    },
+    {
+      "key": "sys:comment",
+      "inputs": {
+        "note": "Lambda表达式筛选非空的条目并转换大写"
+      }
+    },
+    {
+      "key": "sys:assign",
+      "inputs": {
+        "input": "$= {list}.Where(x => !String.IsNullOrWhiteSpace(x))\r\n.Select(x => x.ToUpper().Trim() + \"_后缀\")\r\n.ToList()"
+      },
+      "outputs": {
+        "output": "list"
+      }
+    },
+    {
+      "key": "sys:MsgBox",
+      "inputs": {
+        "message": "$$去除空行/去除空白/变大写字母：\r\n{list}",
+        "title": "Quicker",
+        "buttons": "OK"
+      }
+    },
+    {
+      "key": "sys:comment",
+      "inputs": {
+        "note": "Lambda表达式：调用其他方法"
+      }
+    },
+    {
+      "key": "sys:MsgBox",
+      "inputs": {
+        "message": "$= \"是否含有“AAA_后缀”项: \" + {list}.Any(x => x == \"AAA_后缀\")",
+        "title": "Quicker",
+        "buttons": "OK"
+      }
+    },
+    {
+      "key": "sys:comment",
+      "inputs": {
+        "note": "Lambda表达式：列表项序号"
+      }
+    },
+    {
+      "key": "sys:assign",
+      "inputs": {
+        "input": "$= {list}\r\n.Select( (x,index) => {\r\n  var temp = x.ToUpper().Trim();\r\n  temp = index.ToString() + \": \" + temp;\r\n  return temp;\r\n})\r\n.ToList()"
+      },
+      "outputs": {
+        "output": "list"
+      }
+    },
+    {
+      "key": "sys:MsgBox",
+      "inputs": {
+        "message": "$$添加序号：\r\n{list}",
+        "title": "Quicker",
+        "buttons": "OK"
+      }
+    },
+    {
+      "key": "sys:comment",
+      "inputs": {
+        "note": "将词典转换为用户选择的数据格式"
+      }
+    },
+    {
+      "key": "sys:notify",
+      "inputs": {
+        "msg": "$= {dict}.Select(x => x.Value.ToString() + \"|\" + x.Key).ToList()",
+        "maxLines": "0",
+        "type": "Info"
+      }
+    },
+    {
+      "key": "sys:comment",
+      "inputs": {
+        "note": "将词典转换为用户cookie格式"
+      }
+    },
+    {
+      "key": "sys:notify",
+      "inputs": {
+        "msg": "$= String.Join(\" \", {dict}.Select(x => x.Key+ \"=\" + x.Value +\";\"))",
+        "maxLines": "0",
+        "type": "Info"
+      }
+    }
+  ]
+}

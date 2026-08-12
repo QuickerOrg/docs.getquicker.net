@@ -1,13 +1,13 @@
 ---
 title: "自定义窗口"
-description: "创建和显示自定义窗口"
+description: "用 XAML 创建 WPF 窗口，做数据绑定和简单事件。"
 slug: "/v2/xaction/modules/customwindow"
 sidebar_label: "自定义窗口"
 sidebar_position: 120
 quickerDocKey: "xaction/module/sys:customwindow"
 comments: true
 moduleKey: "sys:customwindow"
-docStatus: "migrated-unreviewed"
+docStatus: "reviewed"
 metadataGeneratedAt: "2026-08-03 20:08:03"
 legacyDocId: 45787871
 legacyContentUpdatedAt: "2025-12-22T08:33:42.000Z"
@@ -15,33 +15,30 @@ legacyContentUpdatedAt: "2025-12-22T08:33:42.000Z"
 
 # 自定义窗口
 
-创建和显示自定义窗口
+用 XAML 画出 WPF 窗口，并做简单的数据绑定和事件。此功能仍是预览，可能有 bug 或改动。只要填表，用 [多字段表单](/v2/xaction/modules/form)。只要常驻按钮，用 [自定义操作窗](/v2/xaction/modules/custompanel)。要嵌网页，用 [WebView2浏览器窗口](/v2/xaction/modules/webview2)。
+
+需要基本的 WPF 知识。界面较复杂时，建议先在 Visual Studio 里调通再迁到 Quicker。
 
 ## 当前模块定义
 
 <XActionModuleMeta moduleKey="sys:customwindow" />
 
-此功能为预览状态，可能存在bug或随时改动。
+## 概述
 
-根据给定的XAML代码创建和显示窗口，并提供简单的数据绑定与事件处理功能。
+换 **操作类型** 后显示对应参数。显示类操作要提供 XAML、数据映射和事件。
 
-注：
+<ModuleParamPreview moduleKey="sys:customwindow" />
 
--   难度等级++++，如果不是特别必要，不需要了解此模块。
--   需要您对WPF编程有基本的了解。
--   如果功能相对复杂，可以在VisualStudio中调试好后再迁移到Quicker中。
+## 参数说明
 
-## 参数
+**操作类型**：
 
-【操作类型】
+- **显示窗口并等待关闭**：关掉窗口后再跑后面的步骤。默认。
+- **显示窗口**：弹出后立刻继续。
+- **关闭窗口**：按 **窗口标识** 关掉已打开的自定义窗口。
+- **获取窗口列表**：取出当前自定义窗口对象列表。
 
--   显示窗口并等待关闭：窗口关闭后再运行后续的动作步骤。
--   显示窗口：显示窗口后，不等待关闭就继续运行后续的动作步骤。
--   关闭窗口：关闭之前打开的自定义窗口（根据\[窗口标识\]参数确定要关闭的窗口）。
-
-【窗口XAML代码】
-
-示例代码：
+**窗口XAML代码**：仅显示两类操作。示例：
 
 ```markup
 <Window xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
@@ -96,21 +93,19 @@ legacyContentUpdatedAt: "2025-12-22T08:33:42.000Z"
 </Window>
 ```
 
-注意事项：
+注意：
 
--   需要去掉x:Class属性。
--   XAML中不支持指定事件处理方法。
--   注册命名空间xmlns:qk="https://getquicker.net"
+- 去掉 `x:Class`。
+- XAML 里不能指定事件处理方法。
+- 注册命名空间 `xmlns:qk="https://getquicker.net"`。
 
-【数据映射】
+**数据映射**：把动作变量引进窗口。窗口数据存在一个词典里。
 
-设置从动作变量引入到窗口的数据。
+**情况 1**：关联动作变量，格式 `窗口数据:{动作变量}`。打开时从变量读入，关掉时写回。
 
-**情况1**：关联动作变量，格式：窗口数据:&#123;动作变量&#125;。窗口建立时，从动作变量取值放入窗口数据。窗口结束时，将窗口数据中的内容写回动作变量。（如下面示例中1、2行）
+**情况 2**：初始化一个内部数据项。
 
-**情况2**：初始化一个内部数据项。（下面示例中3、4行）
-
-**情况3**：动态计算一个内部数据项。（下面示例中5）。
+**情况 3**：用表达式动态计算内部数据项。
 
 ```text
 # 情况1：关联动作变量
@@ -129,29 +124,19 @@ total:$= Convert.ToInt32(number1) +  Convert.ToInt32(number2)
 
 注意：
 
--   窗口数据保存在一个词典中。
--   数据项值的类型可能会改变（如将数据绑定到文本框，文本框内容改变后，会将数据更新为文本类型）。
--   预先规划好数据项名称（后期修改起来会比较困难）。
+- 绑到文本框后，用户一改，该项往往会变成文本类型。
+- 事先定好数据项名称，后期改名很麻烦。
 
-【窗口标识】
+**窗口标识**：内部 ID。单独一步「关闭窗口」时靠它查找。标识可以重复（相当于分组），新建同标识窗口时旧窗口不会自动关。需要时先用「关闭窗口」关掉旧的。
 
-给窗口指定的内部ID。在使用单独的步骤关闭窗口时，通过此信息查找要关闭的窗口。
+**辅助C#代码**：可选。回调参数：
 
-自定义窗口的标识可以重复（相对于一个分组或分类ID），在创建新的窗口时，具有相同标识的旧窗口不会自动关闭。如有必要，请先通过“关闭窗口”操作关闭旧窗口。
-
-【辅助C#代码】
-
-可选。
-
-可以在代码中编写回调函数。传入的参数：
-
--   win：当前的自定义窗口对象。
--   dataContext：存储窗口数据的词典对象。
--   controlName：被点击的按钮名称（Name属性值）。
--   controlTag：被点击的按钮的Tag属性值。
+- `win`：当前窗口
+- `dataContext`：窗口数据词典
+- `controlName`：被点按钮的 Name
+- `controlTag`：被点按钮的 Tag
 
 ```csharp
-//
 using System.Text;
 using System.Windows;
 using System.Windows.Forms;
@@ -162,21 +147,17 @@ using Quicker.Public;
 public static void OnWindowCreated(Window win, IDictionary<string, object> dataContext,
   ICustomWindowContext winContext
   ){
-  //MessageBox.Show("WinodwCreated");
   dataContext["number1"] = 0;
   dataContext["number2"] = 0;
 }
 
 public static void OnWindowLoaded(Window win, IDictionary<string, object> dataContext,
   ICustomWindowContext winContext){
-  //MessageBox.Show("WinodwLoaded");
 }
 
 public static bool OnButtonClicked(string controlName, object controlTag, Window win,  	IDictionary<string, object> dataContext,
   ICustomWindowContext winContext){
   if (controlName == "btnCompute"){
-    // 计算直角三角形斜边长度。
-
     dataContext["total"] =
     Math.Sqrt(
       Convert.ToDouble(dataContext["number1"])*Convert.ToDouble(dataContext["number1"])
@@ -185,20 +166,17 @@ public static bool OnButtonClicked(string controlName, object controlTag, Window
 
     return true;
   }else if (controlName == "btnCallSp"){
-        // 调用子程序
     var result = winContext.RunSp("Add", new Dictionary<string,object>{{"number1", dataContext["number1"]}, {"number2",dataContext["number2"]}});
     dataContext["total"] = result["total"];
         return true;
   }
-  //dataContext["number"] = 100;
-  //MessageBox.Show("ButtonClicked");
   return false;
 }
 ```
 
-【事件】
+**辅助C#引用DLL库**：辅助代码要引用的 DLL，每行一个。也可以在代码里用 `#r`。
 
-为按钮设定执行的操作。格式为：
+**事件**：给按钮或数据项挂操作。格式：
 
 ```text
 按钮名称.click:操作内容
@@ -206,67 +184,55 @@ public static bool OnButtonClicked(string controlName, object controlTag, Window
 窗口数据项.change:操作内容
 ```
 
-操作内容的格式请下面的章节。
+操作内容见 [按钮点击的操作内容代码](#按钮点击的操作内容代码)。数据项变化可能连着触发，不要在里面做重活，也要避免循环改数据。
 
-注意：
+<ModuleParamPreview
+  moduleKey="sys:customwindow"
+  focusKeys={['type', 'events']}
+  values={{
+    type: 'ShowAndWaitClose',
+    events: 'BtnAdd.click:operation=sp&spname=Add',
+  }}
+/>
 
--   数据项的改变可能会迅速连续发生，避免在其中触发复杂的操作。
--   数据项的改变可能会改变其它数据项，从而造成连续触发。需避免产生循环的情况。
+**自动关闭时间(S)**：多少秒后自动关。`0` 不自动关。需大于 0.5 秒才生效。适合纯提示窗。
 
-【自动关闭时间】
+**激活模式**：
 
-设定需要自动关闭窗口的秒数，0为不自动关闭。 在仅用于提示用途的情况下，可以使用此选项关闭窗口。
+- **支持激活，打开时抢占焦点**：显示后立刻抢焦点。默认。
+- **支持激活，打开时不抢占焦点**：显示时不抢，点到窗口后可以输入。
+- **不支持激活（不占用焦点，仅能使用鼠标操作）**：不占焦点。要往别的软件发按键、取选中文本时常用。这种窗口不能在输入框里打字。
+- **不支持激活，鼠标穿透**：不占焦点，鼠标点穿到后面。
 
-【激活模式】
+不支持激活的窗口若抢了 Quicker 自己的焦点，可给要点的控件加 `Focusable="False"`。
 
-窗口占用焦点的方式。可选值：
+**窗口位置**：跟随鼠标、屏幕各方位、全屏、最大化、自定义位置、系统默认。默认屏幕中间。
 
--   不支持激活(不占用焦点)。当窗口上触发的操作需要和其他软件交互时，可能需要避免占用焦点。（否则会无法获取其它窗中选中的文本，也无法发送按键、文本到其它窗口）。
+**窗口尺寸/位置**：与 **窗口位置** 配合。自定义位置时写坐标；其它情况写尺寸。可用百分比或像素，写法与 [自定义操作窗](/v2/xaction/modules/custompanel) 相同。
 
--   不支持激活的窗口只能通过鼠标操作，不能在窗口中的输入框输入文字。
+**失去焦点后关闭窗口**：仅窗口支持激活时有效。可选是、否，或「在未置顶时」。
 
--   不自动激活：显示窗口时不抢占焦点，但是鼠标点击窗口后，窗口可以获得焦点。
--   自动激活：显示窗口后自动抢占焦点。
+**失败后停止**：失败是否中止。默认开启。
 
-如果要避免不支持激活的窗口抢占Quicker进程的窗口，可以尝试为要点击的控件（按钮）增加`Focusable="False"`属性设置。
+## 按钮事件
 
-【窗口位置】
+### 注册按钮事件
 
-设置窗口的显示位置。
-
-【窗口尺寸/位置】
-
-与“窗口位置”参数结合使用。在“窗口位置”参数选择“自定义位置”时，指定窗口的坐标。其他情况指定窗口的尺寸。
-
-可以使用百分比或像素值。如：
-
--   50%,50%：设定窗口尺寸为屏幕的一半宽一半高。
--   300,50%：宽度为300像素，高度为屏幕一半。
--   600,300：宽度为600像素，高度为300像素。
--   10%,10%,50%,50%：指定窗口的左、顶、右、底边在屏幕上的位置（百分比位置）
--   100,100,50%,50%：指定窗口的左、顶、右、底边在屏幕上的位置（百分比单位和像素单位结合）
-
-### 按钮事件
-
-#### 注册按钮事件
-
-可以通过如下的几种方式为按钮点击添加基本的触发事件：
-
-1.  在【事件】参数中，为按钮设置操作内容代码。格式为：`按钮名称.click:操作内容代码`。此时按钮必须设置Name属性。
-2.  在【辅助代码】中定义`OnButtonClicked`回调函数。按钮被点击时，会触发回调函数。可以在函数中根据`controlName`得到控件名称，`controlTag`得到控件的Tag属性，并根据这两个属性值区分点击的控件以及相关的其他信息，判断并执行自定义操作。
-3.  在【辅助代码】中，`OnWindowCreated`或`OnWindowLoaded`回调函数中，找到控件并注册事件消息。
+1. 在 **事件** 里写 `按钮名称.click:操作内容代码`。按钮必须有 Name。
+2. 在 **辅助C#代码** 里写 `OnButtonClicked`，用 `controlName` / `controlTag` 区分控件。
+3. 在 `OnWindowCreated` 或 `OnWindowLoaded` 里找到控件再挂事件：
 
 ```csharp
 public static void OnWindowLoaded(Window win, IDictionary<string, object> dataContext,
   ICustomWindowContext winContext){
   var btnOk = (Button)win.FindName("BtnOK");
   btnOk.Click += (sender, args) => {
-      // 处理按钮点击事件。
+      // Handle the click.
   };
 }
 ```
 
-4.  在XAML代码中，为按钮添加附加属性`qk:Att.Action="操作内容代码"`。例如：
+4. 在 XAML 里加附加属性 `qk:Att.Action="操作内容代码"`：
 
 ```markup
 <Button Margin="10" qk:Att.Action="close:ok">
@@ -274,61 +240,58 @@ public static void OnWindowLoaded(Window win, IDictionary<string, object> dataCo
 </Button>
 ```
 
-注：xaml属性值里有些字符需要用转义方式写(重点注意&字符)。
+XAML 属性值里的特殊字符要转义（尤其是 `&`）：
 
-|  | 特殊字符 | 字符实体 |
-| --- | --- | --- |
-|  | 小于号(&lt;) | &lt; |
-|  | 大于号(&gt;) | &gt; |
-|  | **&符号(&)** | **&amp;** |
-|  | 引号(") | &quot; |
+| 特殊字符 | 字符实体 |
+| --- | --- |
+| 小于号 (`<`) | `&lt;` |
+| 大于号 (`>`) | `&gt;` |
+| **& 符号** | **`&amp;`** |
+| 引号 (`"`) | `&quot;` |
 
-#### 按钮点击的操作内容代码
+### 按钮点击的操作内容代码
 
-在上述注册按钮事件的方法1和方法2中，可以直接通过声明方式添加按钮“操作内容代码”。支持代码内容有：
+上面第 1、4 种写法可直接声明操作。
 
 **关闭窗口**
 
--   关闭窗口`close:` 此时【窗口结果】返回内容为空。
--   关闭窗口并返回结果：`close:result` 其中result替换为实际要返回到【窗口结果】的值。
+- `close:`：关掉，**窗口结果** 为空。
+- `close:result`：关掉并把 `result` 写到 **窗口结果**（换成你要返回的值）。
 
-**其他操作**
+**其它操作**
 
--   通过构建一个查询字符串指定较为复杂的操作。格式与推送服务参数、连续搜索参数类似。
--   格式（所有参数均可选，根据实际目的提供参数值）：`**operation**=操作类型&**data**=URL编码后的内容&**action**=动作名称或id&**close**=是否关闭窗口&**compute**=是否更新计算字段&**spname**=子程序名`
+用查询字符串，格式接近推送服务 / 连续搜索：
 
-各参数说明：
+`operation=操作类型&data=URL编码后的内容&action=动作名称或id&close=是否关闭窗口&compute=是否更新计算字段&spname=子程序名`
 
--   operation：操作类型，支持：
+各参数均可选。
 
--   copy：将data参数中的内容写入剪贴板
--   paste：将data参数中的内容粘贴到目标窗口（需要当前的自定义窗口不占用焦点）
--   action：运行动作。此时在action参数中指定动作id或动作名称。
--   open：打开data中的路径或网址。
--   input sendkeys：使用模拟按键B的语法，模拟键入data中的内容到目标窗口（需要当前的自定义窗口不占用焦点）为统一operation的值，1.27.3 以后的版本请使用sendkeys作为模拟按键B操作的类型。
--   inputtext：使用模拟键入方式输入data中的文本。（需要当前的自定义窗口不占用焦点）
--   sp：运行子程序。此时通过spname参数传递要运行的子程序。子程序的输入参数将从窗口数据中获取（通过【数据映射】参数定义）。子程序的输出，会根据参数名更新到窗口数据中。
+- **operation**：
+  - `copy`：把 data 写入剪贴板
+  - `paste`：把 data 粘贴到目标窗口（当前自定义窗口不能占焦点）
+  - `action`：跑动作，用 **action** 指定 ID 或名称
+  - `open`：打开 data 里的路径或网址
+  - `sendkeys`：按模拟按键 B 语法把 data 打到目标窗口（窗口不能占焦点）。1.27.3 前曾用 `input`，请改用 `sendkeys`
+  - `inputtext`：模拟键入 data 文本（窗口不能占焦点）
+  - `sp`：跑子程序，用 **spname** 指定名称。输入从窗口数据取（见 **数据映射**），输出按参数名写回窗口数据
+- **data**：URL 编码后的待处理数据
+- **action**：operation 为 `action` 时的动作 ID 或名称
+- **close**：`true` / `false`，点完是否关窗
+- **compute**：`true` / `false`，点完是否重算 **数据映射** 里的表达式
 
--   data：URL编码后的待处理数据。
--   action：当operation为action时，通过此参数指定要执行的动作id或名称。
--   close：值为true或false，用于指定点击按钮后是否关闭当前自定义窗口。
--   compute：值为true或false，用于指定点击按钮后是否更新窗口的计算数据（在【数据映射】参数中指定表达式）
+## 数据绑定
 
-### 数据绑定
+窗口的 DataContext 就是保存窗口数据的词典。控件属性可写成：
 
-在xaml中可以绑定窗口数据。窗口的DataContext为保存窗口数据的词典对象。
+```markup
+<TextBox Margin="10" Text="{Binding [number1]}" />
+```
 
-可以使用如下的方式将窗口数据项绑定到控件的属性：
+## 如何运行子程序
 
-&lt;TextBox Margin="10" Text="**&#123;Binding \[number1\]&#125;**" /&gt;
+### 声明式调用
 
-### 如何运行子程序
-
-#### 声明式调用子程序
-
-##### 触发子程序
-
-**方式1：声明按钮事件**
+**方式 1：按钮附加属性**
 
 ```markup
 <Button  Margin="10" qk:Att.Action="operation=sp&amp;spname=Multiply&amp;param1=value1">
@@ -336,57 +299,86 @@ public static void OnWindowLoaded(Window win, IDictionary<string, object> dataCo
         </Button>
 ```
 
-operation=sp&amp;spname=Multiply
+- `operation=sp`：点完跑子程序
+- `&amp;`：XAML 里的 `&`
+- `spname=Multiply`：子程序名
+- `param1=value1`：给子程序输入 `param1`
 
--   operation=sp：表示点击按钮之后的操作是运行子程序。
--   &amp;：在xaml中表示&符号。
--   spname=Multiply：执行的子程序名称为Multiply
--   param1=value1：为子程序输入参数传递内容(param1为子程序的输入参数变量名)。
+`qk:Att.Action` 调子程序时，还会传入 `__sender`、`__e`、`__control`，对应 click 的 sender、事件参数和 OriginSource。
 
-qk:Attr.action中调用子程序时，为子程序传递\_\_sender, \_\_e, \_\_control 参数，分别对应click事件的sender、事件参数和OriginSource对象。
+**方式 2：在事件里写**
 
-**方式2：在【事件】参数中设定按钮执行子程序**
+`BtnAdd.click:operation=sp&spname=Add` 表示点名为 BtnAdd 的按钮时跑 Add。
 
-![](./img/customwindow-001-0546d279fe.png)
-
-BtnAdd.click: 表示点击名称为BtnAdd的按钮时执行的操作。
-
-operation=sp&spname=Add：表示点击后执行名称为Add的子程序。
-
-##### 参数传递
-
-使用声明式调用时，子程序的输入直接取自窗口数据，输出直接更新到对应的窗口数据中。
+声明式调用时，子程序输入直接取自窗口数据，输出直接写回同名窗口数据。
 
 ![](./img/customwindow-002-0bdc3091c6.png)
 
-上图中可以看到：
+上图里：窗口有 `number1`、`number2`、`total`；子程序 Add 对前两个求和写到 `total`；调用时 Quicker 从窗口取输入、把输出写回。
 
--   窗口中定义了number1、number2和total三个数据。
--   在子程序Add中，对number1和number2变量求和得到的数据输出到total变量中。
--   调用Add子程序时，Quicker从窗口中取number1和number2放入子程序参数，从子程序的total输出结果到窗口数据total中。
+### 在 C# 里调用
 
-#### 在C#代码中调用子程序
-
-在【辅助c#代码】参数中，可以添加OnButtonClicked回调函数，有按钮点击时，可以通过判断按钮名称识别点击的哪个按钮，并做相应的处理。
+在 **辅助C#代码** 的 `OnButtonClicked` 里按按钮名分支，再用 `winContext.RunSp`。
 
 ![](./img/customwindow-003-0bfffdd71f.png)
 
-在上图所示例子中，点击btnCallSp后，通过winContext.RunSp调用子程序。如果子程序中涉及显示用户界面，可以尝试使用RunSpAsync(string spName, object inputParams)、RunSpAsync(string spName, IDictionary&lt;string, object&gt; inputParams) 方法，避免程序死锁。
+子程序会显示界面时，改用 `RunSpAsync(string spName, object inputParams)` 或 `RunSpAsync(string spName, IDictionary<string, object> inputParams)`，避免死锁。
 
--   第一个参数：子程序名称
--   第二个参数：词典类型的对象。Key为子程序的参数名，Value为要给参数传入的值。（这里不一定需要对应到特定的窗口数据）。从1.24.28版本之后将支持以匿名对象的形式传入参数。
--   输出数据为词典类型的对象。
+- 第一个参数：子程序名称
+- 第二个参数：词典。Key 是子程序参数名，Value 是要传入的值（不必对应某个窗口数据）。1.24.28+ 也可用匿名对象。
+- 返回值是词典。
 
-## 输出参数
+## 输出
 
-【是否成功】操作是否成功。
+- **是否成功**：操作是否成功。
+- **窗口结果**：仅「显示窗口并等待关闭」「关闭窗口」。由 `close:result` 带回。
+- **窗口对象列表**：仅「获取窗口列表」，类型为 `IList<Window>`。
+- **窗口句柄**：仅「显示窗口」。
+- **关闭时窗口位置**：仅「显示窗口并等待关闭」。
 
-【窗口结果】通过按钮参数关闭窗口并返回指定的结果。
+## 限制与排障
 
-## 示例动作
+- 预览功能，接口可能变。
+- 不占焦点的窗口不能在输入框里打字；要往其它软件发按键时，不要用「打开时抢占焦点」。
+- 数据项 `.change` 可能连着触发，避免循环更新。
+- 同标识旧窗口不会自动关，先关再开。
+- 子程序要出界面时用 `RunSpAsync`，同步 `RunSp` 可能死锁。
 
--   自定义窗体测试：[https://getquicker.net/sharedaction?code=3a524540-5fdb-4be9-aaef-08d920f42d24](https://getquicker.net/sharedaction?code=3a524540-5fdb-4be9-aaef-08d920f42d24)
+## 示例
+
+<ShareLinkCard
+  code="3a524540-5fdb-4be9-aaef-08d920f42d24"
+  title="自定义窗体测试"
+  description="XAML 窗口、数据映射与子程序"
+/>
+
+## 相关链接
+
+<RelatedDocs
+  items={[
+    {
+      href: '/v2/xaction/modules/custompanel',
+      label: '自定义操作窗',
+      description: '常驻按钮窗，不用写 XAML。',
+    },
+    {
+      href: '/v2/xaction/modules/form',
+      label: '多字段表单',
+      description: '填多项，不必自己画控件。',
+    },
+    {
+      href: '/v2/xaction/modules/webview2',
+      label: 'WebView2浏览器窗口',
+      description: '嵌网页而不是 WPF。',
+    },
+    {
+      href: '/v2/xaction/modules/csscript',
+      label: '运行C#代码',
+      description: '辅助 C# 之外的脚本步骤。',
+    },
+  ]}
+/>
 
 ## 更新历史
 
--   20240909 修改错别字。
+- 20240909 修改错别字。

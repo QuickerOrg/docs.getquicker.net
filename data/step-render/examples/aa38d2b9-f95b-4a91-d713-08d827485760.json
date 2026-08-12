@@ -1,0 +1,46 @@
+{
+  "code": "aa38d2b9-f95b-4a91-d713-08d827485760",
+  "title": "插值测试",
+  "description": "测试1.9.5版本的插值功能",
+  "author": "CL",
+  "revision": 1,
+  "source": "https://getquicker.net/sharedaction?code=aa38d2b9-f95b-4a91-d713-08d827485760",
+  "pulledAt": "2026-08-12T02:56:24.349Z",
+  "variables": [
+    {
+      "name": "list",
+      "type": "List"
+    },
+    {
+      "name": "dict",
+      "type": "Dict"
+    },
+    {
+      "name": "test",
+      "type": "Text"
+    },
+    {
+      "name": "url",
+      "type": "Text"
+    },
+    {
+      "name": "num",
+      "type": "Number"
+    }
+  ],
+  "steps": [
+    {
+      "key": "sys:showText",
+      "inputs": {
+        "type": "NO_WAIT",
+        "text": "$$\r\n3+3={3+3=}\r\n当前日期：{DateTime.Now.ToString(\"yyyy-MM-dd\")=}\r\n列表长度：{list.Count()}\r\n列表首项：{list[0]}\r\n列表首项（旧语法）：{list.0}\r\n词典项：{dict[\"a\"]}\r\n词典项（旧语法）：{dict.a}\r\n列表首项大写：{list[0].ToUpper()}\r\nURL编码：{url.UrlEncode()}\r\n数字格式化：{num.ToString(\"00000000.##\")}\r\n剪贴板内容：{[cliptext]}\r\n\r\n------------------------------------------------------------\r\n不应该被插值处理的情况：\r\n不存在的变量：{none_var}\r\n有空格：{ list} {list }  \r\n不解析的表达式：{1+1}\r\n不存在的方法调用：{list.SomeFunc()}\r\n",
+        "title": "结果内容",
+        "winLocation": "CenterScreen",
+        "fontsize": "14",
+        "topMost": "0",
+        "closeWhenLostFocus": "0",
+        "showLineNum": "1"
+      }
+    }
+  ]
+}

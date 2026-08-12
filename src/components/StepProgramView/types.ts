@@ -68,4 +68,6 @@ export type ProgramVar = {
   /** Catalog type, e.g. Text / Boolean / Image. */
   type?: string;
   remark?: string;
+  /** WPF/Headless usage glyphs on the row leading edge. */
+  usage?: readonly ('in' | 'out' | 'state')[];
 };

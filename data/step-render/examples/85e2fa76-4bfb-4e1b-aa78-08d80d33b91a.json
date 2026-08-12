@@ -1,0 +1,128 @@
+{
+  "code": "85e2fa76-4bfb-4e1b-aa78-08d80d33b91a",
+  "title": "右键菜单示例",
+  "description": "在动作上点右键显示的",
+  "author": "CL",
+  "revision": 0,
+  "source": "https://getquicker.net/sharedaction?code=85e2fa76-4bfb-4e1b-aa78-08d80d33b91a",
+  "pulledAt": "2026-08-12T03:00:09.982Z",
+  "variables": [
+    {
+      "name": "text",
+      "type": "Text",
+      "remark": "默认的文本变量"
+    }
+  ],
+  "steps": [
+    {
+      "key": "sys:comment",
+      "inputs": {
+        "note": "判断是否是菜单调用。\r\n建议使用统一的前缀方便把相关代码组织在一起"
+      }
+    },
+    {
+      "key": "sys:if",
+      "inputs": {
+        "condition": "$= {quicker_in_param}.StartsWith(\"_qk_menu\")"
+      },
+      "ifSteps": [
+        {
+          "key": "sys:comment",
+          "inputs": {
+            "note": "根据传入的参数，判断点击的哪个菜单，执行对应的动作"
+          }
+        },
+        {
+          "key": "sys:simpleIf",
+          "inputs": {
+            "condition": "$= {quicker_in_param} == \"_qk_menu_no_icon\""
+          },
+          "ifSteps": [
+            {
+              "key": "sys:MsgBox",
+              "inputs": {
+                "message": "无图标菜单|_qk_menu_no_icon",
+                "title": "Quicker",
+                "buttons": "OK"
+              }
+            }
+          ]
+        },
+        {
+          "key": "sys:simpleIf",
+          "inputs": {
+            "condition": "$= {quicker_in_param} == \"_qk_menu_tooltip\""
+          },
+          "ifSteps": [
+            {
+              "key": "sys:MsgBox",
+              "inputs": {
+                "message": "带Tooltip的菜单(tooltip内容)|_qk_menu_tooltip",
+                "title": "Quicker",
+                "buttons": "OK"
+              }
+            }
+          ]
+        },
+        {
+          "key": "sys:simpleIf",
+          "inputs": {
+            "condition": "$= {quicker_in_param} == \"_qk_menu_icon_menu\""
+          },
+          "ifSteps": [
+            {
+              "key": "sys:MsgBox",
+              "inputs": {
+                "message": "[fa:Light_Flag]带图标的菜单(tooltip内容)|_qk_menu_icon_menu",
+                "title": "Quicker",
+                "buttons": "OK"
+              }
+            }
+          ]
+        },
+        {
+          "key": "sys:simpleIf",
+          "inputs": {
+            "condition": "$= {quicker_in_param} == \"_qk_menu_submenu\""
+          },
+          "ifSteps": [
+            {
+              "key": "sys:MsgBox",
+              "inputs": {
+                "message": "[-][fa:Light_UserCircle]子菜单|_qk_menu_submenu",
+                "title": "Quicker",
+                "buttons": "OK"
+              }
+            }
+          ]
+        },
+        {
+          "key": "sys:simpleIf",
+          "inputs": {
+            "condition": "$= {quicker_in_param} == \"_qk_menu_sample\""
+          },
+          "ifSteps": [
+            {
+              "key": "sys:MsgBox",
+              "inputs": {
+                "message": "[fa:Light_Times:#f57e42]危险动作菜单(tooltip内容)|_qk_menu_sample",
+                "title": "Quicker",
+                "buttons": "OK"
+              }
+            }
+          ]
+        }
+      ],
+      "elseSteps": [
+        {
+          "key": "sys:MsgBox",
+          "inputs": {
+            "message": "正常运行动作",
+            "title": "Quicker",
+            "buttons": "OK"
+          }
+        }
+      ]
+    }
+  ]
+}

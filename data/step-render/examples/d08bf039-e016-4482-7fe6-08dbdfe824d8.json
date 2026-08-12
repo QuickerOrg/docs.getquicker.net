@@ -1,0 +1,92 @@
+{
+  "code": "d08bf039-e016-4482-7fe6-08dbdfe824d8",
+  "title": "示例：自定义文本工具",
+  "description": "测试表单输入框自定义选择工具",
+  "author": "CL",
+  "revision": 3,
+  "source": "https://getquicker.net/sharedaction?code=d08bf039-e016-4482-7fe6-08dbdfe824d8",
+  "pulledAt": "2026-08-12T03:00:09.941Z",
+  "variables": [
+    {
+      "name": "text",
+      "type": "Text",
+      "remark": "默认的文本变量"
+    },
+    {
+      "name": "dict",
+      "type": "Dict"
+    },
+    {
+      "name": "pathList",
+      "type": "Text"
+    }
+  ],
+  "steps": [
+    {
+      "key": "sys:form",
+      "inputs": {
+        "operation": "variables",
+        "title": "填写表单",
+        "formDef": "{\"Fields\":[{\"FieldKey\":\"text\",\"DictVarType\":null,\"Label\":\"text\",\"HelpText\":\"默认的文本变量\",\"HelpLink\":null,\"InputMethod\":1,\"SelectionItems\":\"\",\"IsRequired\":false,\"MinValue\":\"\",\"MaxValue\":\"\",\"Pattern\":\"\",\"InputWidth\":\"\",\"MaxLength\":0,\"ImeState\":null,\"TextTools\":\"\",\"ExtraSettings\":\"texttool:[fa:Light_Cog]直接填入内容(没有界面的)|填写日期\\r\\ntexttool:[fa:Light_Pen]选择内容(测试子程序中调用界面)|输入内容\\r\\ntexttool:[fa:Light_Wifi]追加内容(在当前内容基础上添加一行)|追加内容\\r\\ntexttool:[fa:Light_Text]AAAA(为相同子程序传递不同参数)|operation=sp&spName=传递参数&content=AAAAA\\r\\ntexttool:[fa:Light_Text:#009900]BBBB(为相同子程序传递不同参数)|operation=sp&spName=传递参数&content=BBBBB\",\"VisibleExpression\":\"\",\"DefaultValue\":null,\"ColumnWidth\":0.0,\"OnlyDate\":false,\"Group\":\"\"}]}",
+        "titleColumnWidth": "100",
+        "windowWidth": "500",
+        "windowHeight": "0",
+        "restoreFocus": "0",
+        "topMost": "false",
+        "disableEnterSubmit": "0",
+        "stopIfFail": "1",
+        "defaultInputWidth": "0"
+      }
+    },
+    {
+      "key": "sys:form",
+      "inputs": {
+        "operation": "dict",
+        "dictVar": "{dict}",
+        "title": "词典表单测试",
+        "formForDictDef": "{\"Fields\":[{\"FieldKey\":\"name\",\"DictVarType\":0,\"Label\":\"名称\",\"HelpText\":\"\",\"HelpLink\":null,\"InputMethod\":1,\"SelectionItems\":\"\",\"IsRequired\":false,\"MinValue\":\"\",\"MaxValue\":\"\",\"Pattern\":\"\",\"InputWidth\":\"\",\"MaxLength\":0,\"ImeState\":null,\"TextTools\":\"\",\"ExtraSettings\":\"texttool:[fa:Light_Sheep:#009900]Help|填写日期\",\"VisibleExpression\":\"\",\"DefaultValue\":null,\"ColumnWidth\":0.0,\"OnlyDate\":false,\"Group\":\"\"}]}",
+        "titleColumnWidth": "100",
+        "windowWidth": "500",
+        "windowHeight": "0",
+        "restoreFocus": "0",
+        "topMost": "false",
+        "disableEnterSubmit": "0",
+        "stopIfFail": "1",
+        "defaultInputWidth": "0"
+      }
+    },
+    {
+      "key": "sys:userInput",
+      "inputs": {
+        "type": "text",
+        "prompt": "用户输入模块",
+        "isRequired": "0",
+        "restoreFocus": "1",
+        "closeOnDeactivated": "0",
+        "topMost": "0",
+        "stopIfFail": "1",
+        "extraSettings": "texttool:[fa:Light_Cog]直接填入内容(没有界面的)|填写日期\r\ntexttool:[fa:Light_Pen]测试(其它的提示文字)|输入内容\r\ntexttool:[fa:Light_Wifi]追加内容(其它的提示文字)|追加内容",
+        "fontsize": "14",
+        "winLocation": "CenterScreen",
+        "imeState": "NO_CONTROL"
+      }
+    },
+    {
+      "key": "sys:form",
+      "inputs": {
+        "operation": "variables",
+        "title": "测试文本工具替换模式ttmode",
+        "formDef": "{\"Fields\":[{\"FieldKey\":\"text\",\"DictVarType\":null,\"Label\":\"text\",\"HelpText\":\"选择多个，会自动用分号隔开。\",\"HelpLink\":null,\"InputMethod\":1,\"SelectionItems\":\"\",\"IsRequired\":false,\"MinValue\":\"\",\"MaxValue\":\"\",\"Pattern\":\"\",\"InputWidth\":\"\",\"MaxLength\":0,\"ImeState\":null,\"TextTools\":\"SelectProcessName\",\"ExtraSettings\":\"ttmode:,\",\"VisibleExpression\":\"\",\"DefaultValue\":null,\"ColumnWidth\":0.0,\"OnlyDate\":false,\"Group\":\"\"},{\"FieldKey\":\"pathList\",\"DictVarType\":null,\"Label\":\"pathList\",\"HelpText\":\"会自动用换行隔开\",\"HelpLink\":null,\"InputMethod\":2,\"SelectionItems\":\"\",\"IsRequired\":false,\"MinValue\":\"\",\"MaxValue\":\"\",\"Pattern\":\"\",\"InputWidth\":\"\",\"MaxLength\":0,\"ImeState\":null,\"TextTools\":\"SelectProcessPath\",\"ExtraSettings\":\"ttmode:\\\\n\",\"VisibleExpression\":\"\",\"DefaultValue\":null,\"ColumnWidth\":0.0,\"OnlyDate\":false,\"Group\":\"\"}]}",
+        "help": "通过ttmode设置文本值的替换方式。\r\nttmode:all  替换全部\r\nttmode:selected 替换选中\r\nttmode:\\n  追加，每次使用新的一行\r\nttmode:,  追加，逗号分隔\r\nttmode:;  追加，分号分隔",
+        "titleColumnWidth": "100",
+        "windowWidth": "700",
+        "windowHeight": "0",
+        "restoreFocus": "0",
+        "topMost": "false",
+        "disableEnterSubmit": "0",
+        "stopIfFail": "1",
+        "defaultInputWidth": "0"
+      }
+    }
+  ]
+}

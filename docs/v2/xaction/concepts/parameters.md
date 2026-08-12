@@ -1,87 +1,104 @@
 ---
 title: "参数传递"
-description: "参数传递的 Quicker 2.0 使用说明。"
+description: "步骤参数先取变量或计算 $$ / $= ，再转成目标类型；输出写入变量。"
 slug: "/v2/xaction/concepts/parameters"
 sidebar_position: 100
 quickerDocKey: "xaction/concepts/parameters"
 comments: true
-docStatus: "migrated-unreviewed"
+docStatus: reviewed
 legacyDocId: 1462164
 legacyContentUpdatedAt: "2025-12-05T02:03:20.000Z"
 ---
 
-动作模块的作用通常是接受参数后，经过某个操作，将结果输出。
+# 参数传递
 
-![](./img/parameters-001-d0458de728.png)
+模块先收输入，做完操作再把结果写到输出。窗口里通常分成「（输入）参数」和「输出」。
 
+```mermaid
+flowchart LR
+  src[变量或输入框] --> calc[计算中间结果]
+  calc --> conv[转成参数类型]
+  conv --> step[模块执行]
+  step --> out[写入输出变量]
+```
 
+<ModuleParamPreview
+  moduleKey="sys:openUrl"
+  values={{url: '$$https://www.google.com/search?q={selectedText}'}}
+  outputVars={{isSuccess: 'ok'}}
+  focusKeys={['url', 'isSuccess']}
+/>
 
-模块的设置窗口通常也是下面这样包含“（输入）参数”和“输出”部分。
+## 输入
 
-![](./img/parameters-002-e0976223bb.png)
+两种指定方式：
 
+- **变量**：在下拉里选。
+- **输入框**：固定值，或 [$$ 插值](/v2/xaction/concepts/interpolation)、[$= 表达式](/v2/xaction/concepts/expression)。F1 切换见 [选择或输入步骤参数](/v2/xaction/concepts/edit-step-param)。
 
+<ModuleParamPreview
+  moduleKey="sys:openUrl"
+  inputVars={{url: 'homeUrl'}}
+  focusKeys={['url']}
+/>
 
+### 计算顺序（1.4.22+）
 
+1. 用了变量：取变量的值。
+2. 用了输入框：
+   - 以 `$$` 开头：先插值。若结果仍以 `$$` 或 `$=` 开头，再做一次插值或表达式，得到中间结果。
+   - 以 `$=` 开头：做表达式，得到中间结果。
+   - 都不是：框里的内容就是中间结果。
+3. 布尔（如「如果」）和数字（如「重复」次数）必要时把中间结果再当公式解析。
+4. 转成目标参数类型后交给模块。
 
+```mermaid
+flowchart TD
+  start[输入框内容] --> q1{"以 $$ 开头?"}
+  q1 -->|是| interp[插值]
+  interp --> q2{"结果仍以 $$ 或 $= 开头?"}
+  q2 -->|是| second[再插值或再算表达式]
+  q2 -->|否| mid[中间结果]
+  q1 -->|否| q3{"以 $= 开头?"}
+  q3 -->|是| expr[表达式]
+  q3 -->|否| mid
+  expr --> mid
+  second --> mid
+  mid --> typed[转成参数类型]
+```
 
+`$$` 得到的中间结果是文本；`$=` 可以是任意类型。
 
-## 输入参数
+## 输出
 
-输入参数是提供给模块要处理的数据或控制模块执行的选项。
+选一个变量接收结果。不需要的输出可以不选。
 
+带「失败后中止动作」的模块通常还有「是否成功」。要自己处理失败、不要弹错，可关掉中止，改看这个布尔输出。
 
+## 限制与排障
 
-可以通过两种方式指定参数值：
+- `$$` 必须写在整段最前面，不是每一行前面。
+- 插值结果若还以 `$$` / `$=` 开头，只会再处理一次。
+- 布尔/数字参数里写了「看起来像公式」的中间结果，会被再解析一遍。只想当纯文本时不要用这类参数。
 
--   使用变量：直接在变量下拉框中选择即可。
--   在输入框中指定：直接指定参数的值，支持 [$$插值（变量值代入）](/v2/xaction/concepts/interpolation)或 [$=表达式（计算结果）](/v2/xaction/concepts/expression)写法。
+## 相关链接
 
-![](./img/parameters-003-a108a6063d.png)
-
-
-
-### 输入参数的计算过程
-
-以下的参数计算过程适用于1.4.22以上版本。
-
-
-
--   如果使用变量，则取变量的值。
--   如果在输入框中指定，则进行如下处理：
-
--   如果指定的值以“**$$**”开始：进行插值处理。如果插值处理后的结果仍然以“**$$**”或“**$=**”开始，则进行二次插值或表达式解析。得到**中间结果**。
--   如果指定的值以“**$=**”开始：则进行表达式解析处理。得到**中间结果**。
--   没有以“$$”和“$=”开始，则此内容本身即为**中间结果**。
--   对于**布尔类型**（如“如果”模块的判断条件）**数字类型**（如“重复”模块的循环次数）的参数，则根据情况将中间结果当作计算公式解析。
--   将中间结果转换为目标参数的类型，赋值给参数。
-
-
-
-![](./img/parameters-004-e09c7a161c.png)
-
-
-
-提示：使用$$插值方式得到的中间结果是文本类型，$=表达式计算方式可以是任何类型。
-
-
-
-
-
-## 输出参数
-
-通常将步骤的结果输出到变量中。
-
-直接选择目标变量即可。如果对某个输出不感兴趣，可以直接忽略（不选任何变量）。
-
-![](./img/parameters-005-6e15f9b983.png)
-
-
-
-在带有“失败后中止动作”参数的模块中，通常有“是否成功”的输出参数。结合这两个参数可以屏蔽出错时的提示消息，可参考：[https://getquicker.net/KC/Kb/Article/250](https://getquicker.net/KC/Kb/Article/250)
-
-
-
-## 更新历史
-
--   修复暗色模式下文字颜色问题。
+<RelatedDocs
+  items={[
+    {
+      href: '/v2/xaction/concepts/edit-step-param',
+      label: '选择或输入步骤参数',
+      description: 'F1 切换三种输入模式',
+    },
+    {
+      href: '/v2/xaction/concepts/interpolation',
+      label: '文本插值',
+      description: '$$ 替换规则',
+    },
+    {
+      href: '/v2/xaction/concepts/expression',
+      label: '表达式',
+      description: '$= 计算和比较',
+    },
+  ]}
+/>

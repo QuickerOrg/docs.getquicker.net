@@ -1,34 +1,30 @@
 ---
 title: "表达式"
-description: "表达式的 Quicker 2.0 使用说明。"
+description: "参数以 $= 开头时按表达式计算或比较；插值只负责拼文本。"
 slug: "/v2/xaction/concepts/expression"
 sidebar_position: 120
 quickerDocKey: "xaction/concepts/expression"
 comments: true
-docStatus: "migrated-unreviewed"
+docStatus: reviewed
 legacyDocId: 3932143
 legacyContentUpdatedAt: "2023-10-08T07:46:06.000Z"
 ---
 
-## 概述
+# 表达式
 
-可以使用表达式进行比较或运算，将结果作为参数值输入到动作模块中。
+在输入框**最前面**写 `$=`，后面就是表达式。用来比较、运算，把结果交给参数。
 
-在输入框的**开始**使用**$=**表示后面的内容是一个表达式。
+<ModuleParamPreview
+  moduleKey="sys:if"
+  values={{condition: '$= {count} > 2'}}
+  focusKeys={['condition']}
+/>
 
-![](./img/expression-001-bb23f82940.png)
+拼接文本用 [$$ 插值](/v2/xaction/concepts/interpolation)；要计算或比较，用 `$=`。
 
-表达式可以用于各种**通过输入框指定参数值**的地方。
+1.9.5 起内部是 [Eval-expression](https://eval-expression.net/)（支持 Lambda）；更早版本是 DynamicExpresso。
 
-
-
-插值（以**$$**开始）应该只用于拼接文本；所有需要计算、比较的地方，应该使用表达式（以**$**\=开始）简化操作并提升性能。
-
-自1.9.5版本开始，表达式在内部使用[Eval-expression](https://eval-expression.net/)引擎实现，支持更多语法（如Lambda表达式，详见本页内同名章节），1.9.5之前的版本通过[DynamicExpresso](https://github.com/davideicardi/DynamicExpresso)引擎实现。
-
-注：
-
--   如果希望输出结果为`$=`开始的文本内容（而不是进行表达式运算），可以使用表达式`$="$=ABC"`的形式，通过表达式返回内容为`$=ABC`的文本。请参考[此帖子](https://getquicker.net/QA/Question/10264)。
+若要输出以 `$=` 开头的纯文本，写 `$="$=ABC"`。
 
 
 
@@ -76,9 +72,13 @@ legacyContentUpdatedAt: "2023-10-08T07:46:06.000Z"
 
 ### 启用表达式
 
-在输入框的开始处写**$=** （且只在开始处写）作为启用表达式的开关，后面写表达式的内容。
+在输入框的开始处写 `$=`（且只在开始处写）作为开关，后面写表达式。
 
-![](./img/expression-002-c5fecf5fda.png)
+<ModuleParamPreview
+  moduleKey="sys:if"
+  values={{condition: '$= {选项} == "选项1"'}}
+  focusKeys={['condition']}
+/>
 
 
 
@@ -86,9 +86,7 @@ legacyContentUpdatedAt: "2023-10-08T07:46:06.000Z"
 
 与插值写法类似，表达式中使用 **&#123;变量名&#125;** 的方式表示动作中的变量。注意变量名需要以英文字母或汉字开始，不能以数字开始，不能包含特殊符号。
 
-表达式编辑框，在输入**&#123;**后会自动显示当前动作内的变量列表，此时输入变量名的一部分或拼音的一部分，可以筛选变量名，按tab、回车或空格可以自动填入选中的（蓝色高亮）变量名。
-
-![](./img/expression-003-e22f5b5332.png)
+表达式编辑框里输入 `{` 后会列出当前动作的变量；可按名字或拼音筛选，用 Tab、回车或空格填入高亮项。补全动画见 [表达式高级话题](/v2/xaction/concepts/expression-adv)。
 
 
 
@@ -385,7 +383,12 @@ $= {list1}.Select((x,index) => x + {list2}[index]).ToList()
 
 
 
-示例动作：[https://getquicker.net/sharedaction?code=acf2fc09-3753-4b67-d714-08d827485760](https://getquicker.net/sharedaction?code=acf2fc09-3753-4b67-d714-08d827485760)
+<StepProgramView example="acf2fc09-3753-4b67-d714-08d827485760" />
+
+<ShareLinkCard
+  code="acf2fc09-3753-4b67-d714-08d827485760"
+  title="示例：Lambda表达式"
+/>
 
 关于Lambda，请参考：[https://docs.microsoft.com/zh-cn/dotnet/csharp/programming-guide/statements-expressions-operators/lambda-expressions](https://docs.microsoft.com/zh-cn/dotnet/csharp/programming-guide/statements-expressions-operators/lambda-expressions)
 
@@ -405,12 +408,13 @@ Select()/Where()/ToList() 是C#中[System.Linq.Enumerable](https://docs.microsof
 
 
 
-![](./img/expression-004-572224d4cf.png)
+- 使用表达式时，变量名不要加单引号；文本常量用英文双引号。
 
--   使用表达式时，变量名不需要使用单引号包围，文本常量需要使用双引号包围。
-
-
-![](./img/expression-005-edd3399b08.png)
+<ModuleParamPreview
+  moduleKey="sys:if"
+  values={{condition: '$= {选项} == "选项1"'}}
+  focusKeys={['condition']}
+/>
 
 
 
@@ -440,31 +444,33 @@ Select()/Where()/ToList() 是C#中[System.Linq.Enumerable](https://docs.microsof
 
 ## 表达式的辅助编写
 
-自1.24.27版本开始提供表达式自动补全和语法校验功能。
+自 1.24.27 起提供自动补全和语法校验。补全出现后用方向键选择，`Tab` 或回车确认。需联网；提示仅供参考，以实际运行为准。补全录屏与设置开关见 [表达式高级话题](/v2/xaction/concepts/expression-adv)。
 
-![](./img/expression-006-db11b75b08.gif)
+## 限制与排障
 
-补全窗口显示后，可以按方向键选择目标条目，然后通过`tab`或`回车`选择。
+- `$=` 必须在整段最前面。
+- 想输出字面 `$=` 时写 `$="$=ABC"`，不要指望关掉表达式。
+- 词典值是 `object`，比较前先转成同一类型。
+- 列表下标用整数变量时要 `(int){序号}`。
 
+## 相关链接
 
-
-您可以在配置中开启此功能：
-
-![](./img/expression-007-d7ef2211e1.png)
-
-
-
-**请注意：**
-
--   需要联网从服务器端获取补全信息。
--   基于技术限制，补全信息不能完全准确的反应表达式中可以使用的方法或关键词。您还需要实际运行动作来验证表达式是否可以正常工作。
-
-## 表达式的高级话题
-
-
-
-更多关于表达式的内容，请参考：[表达式高级话题](/v2/xaction/concepts/expression-adv)
-
-## 更新历史
-
--   20230202：修复StartsWith/EndsWith错误。
+<RelatedDocs
+  items={[
+    {
+      href: '/v2/xaction/concepts/expression-adv',
+      label: '表达式高级话题',
+      description: '复杂表达式、补全、_context',
+    },
+    {
+      href: '/v2/xaction/concepts/interpolation',
+      label: '文本插值',
+      description: '只拼文本时用 $$',
+    },
+    {
+      href: '/v2/xaction/concepts/edit-step-param',
+      label: '选择或输入步骤参数',
+      description: 'F1 切到 $=',
+    },
+  ]}
+/>

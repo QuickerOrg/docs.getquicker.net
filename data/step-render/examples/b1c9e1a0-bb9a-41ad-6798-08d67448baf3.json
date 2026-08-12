@@ -1,0 +1,103 @@
+{
+  "code": "b1c9e1a0-bb9a-41ad-6798-08d67448baf3",
+  "title": "批量贴图",
+  "description": "选择图片后贴到屏幕上，未选择则贴剪贴板",
+  "author": "xiuluoc",
+  "revision": 0,
+  "source": "https://getquicker.net/sharedaction?code=b1c9e1a0-bb9a-41ad-6798-08d67448baf3",
+  "pulledAt": "2026-08-11T21:42:33.917Z",
+  "variables": [
+    {
+      "name": "context",
+      "type": "Text",
+      "remark": "默认的文本变量"
+    },
+    {
+      "name": "img",
+      "type": "Image",
+      "remark": "默认的图片变量"
+    },
+    {
+      "name": "piclist",
+      "type": "List"
+    },
+    {
+      "name": "select",
+      "type": "Boolean"
+    }
+  ],
+  "steps": [
+    {
+      "key": "sys:delay",
+      "inputs": {
+        "delayMs": "100"
+      }
+    },
+    {
+      "key": "sys:getSelectedFiles",
+      "inputs": {
+        "stopIfFail": "0"
+      },
+      "outputs": {
+        "files": "piclist",
+        "isSuccess": "select"
+      }
+    },
+    {
+      "key": "sys:if",
+      "inputs": {
+        "condition": "{select}"
+      },
+      "ifSteps": [
+        {
+          "key": "sys:each",
+          "inputs": {
+            "input": "{piclist}"
+          },
+          "outputs": {
+            "item": "context"
+          },
+          "ifSteps": [
+            {
+              "key": "sys:showImage",
+              "inputs": {
+                "source": "file",
+                "path": "{context}"
+              }
+            }
+          ]
+        }
+      ],
+      "elseSteps": [
+        {
+          "key": "sys:getClipboardFiles",
+          "inputs": {
+            "stopIfFail": "1"
+          },
+          "outputs": {
+            "output": "piclist"
+          }
+        },
+        {
+          "key": "sys:each",
+          "inputs": {
+            "input": "{piclist}"
+          },
+          "outputs": {
+            "item": "context"
+          },
+          "ifSteps": [
+            {
+              "key": "sys:showImage",
+              "inputs": {
+                "source": "file",
+                "path": "{context}",
+                "imgVar": "{img}"
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

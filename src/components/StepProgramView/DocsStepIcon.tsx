@@ -61,6 +61,21 @@ function faGlyphFallback(spec: string): string {
   return leaf.slice(0, 2).toUpperCase();
 }
 
+/** Prefer exact enum; Solid/Light share names so a missing weight can still paint. */
+function lookupFaGlyph(name: string): FaGlyph | undefined {
+  const exact = FA_GLYPHS[name];
+  if (exact?.path) return exact;
+  const alt = name.startsWith('Solid_')
+    ? `Light_${name.slice(6)}`
+    : name.startsWith('Light_')
+      ? `Solid_${name.slice(6)}`
+      : name.startsWith('Regular_')
+        ? `Light_${name.slice(8)}`
+        : '';
+  const fallback = alt ? FA_GLYPHS[alt] : undefined;
+  return fallback?.path ? fallback : undefined;
+}
+
 /**
  * Host-free icon slot: local FA SVG paths (extracted from Quicker), else data/http img.
  */
@@ -79,8 +94,7 @@ export function DocsStepIcon({
     display: 'inline-flex',
     alignItems: 'center',
     justifyContent: 'center',
-    flex: '0 0 auto',
-    overflow: 'hidden',
+    flexShrink: 0,
     lineHeight: 1,
   };
 
@@ -93,7 +107,7 @@ export function DocsStepIcon({
   }
 
   const fa = parseFaSpec(raw);
-  const glyph = fa ? FA_GLYPHS[fa.name] : undefined;
+  const glyph = fa ? lookupFaGlyph(fa.name) : undefined;
   if (fa && glyph?.path) {
     const w = glyph.width > 0 ? glyph.width : 512;
     const h = glyph.height > 0 ? glyph.height : 512;

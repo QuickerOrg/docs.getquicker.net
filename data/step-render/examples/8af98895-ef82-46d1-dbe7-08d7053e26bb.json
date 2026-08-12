@@ -1,0 +1,96 @@
+{
+  "code": "8af98895-ef82-46d1-dbe7-08d7053e26bb",
+  "title": "示例：循环切换",
+  "description": "循环切换",
+  "author": "治钧",
+  "revision": 1,
+  "source": "https://getquicker.net/sharedaction?code=8af98895-ef82-46d1-dbe7-08d7053e26bb",
+  "pulledAt": "2026-08-11T21:42:32.771Z",
+  "variables": [
+    {
+      "name": "列表",
+      "type": "List"
+    },
+    {
+      "name": "序号",
+      "type": "Number"
+    },
+    {
+      "name": "内容",
+      "type": "Text"
+    },
+    {
+      "name": "列表长度",
+      "type": "Number"
+    }
+  ],
+  "steps": [
+    {
+      "key": "sys:listOperations",
+      "inputs": {
+        "list": "{列表}",
+        "type": "none",
+        "pos": "0",
+        "length": "1"
+      },
+      "outputs": {
+        "length": "列表长度"
+      },
+      "note": "获取列表长度"
+    },
+    {
+      "key": "sys:stateStorage",
+      "inputs": {
+        "type": "readActionState",
+        "key": "序号",
+        "defaultValue": "0",
+        "inputIfEmpty": "0"
+      },
+      "outputs": {
+        "value": "序号"
+      },
+      "note": "读取状态中的序号"
+    },
+    {
+      "key": "sys:listOperations",
+      "inputs": {
+        "list": "{列表}",
+        "type": "getAt",
+        "pos": "{序号}",
+        "length": "1"
+      },
+      "outputs": {
+        "value": "内容"
+      },
+      "note": "获取内容"
+    },
+    {
+      "key": "sys:notify",
+      "inputs": {
+        "msg": "{内容}",
+        "type": "Info"
+      },
+      "note": "显示内容"
+    },
+    {
+      "key": "sys:compute",
+      "inputs": {
+        "expression": "$$({序号}+1)%{列表长度}"
+      },
+      "outputs": {
+        "output": "序号"
+      },
+      "note": "计算下一个序号"
+    },
+    {
+      "key": "sys:stateStorage",
+      "inputs": {
+        "type": "saveActionState",
+        "key": "序号",
+        "value": "{序号}",
+        "inputIfEmpty": "0"
+      },
+      "note": "将下一个序号写入状态"
+    }
+  ]
+}

@@ -1,6 +1,7 @@
 /**
- * Build DocCard gallery data during start/build and inject it via globalData.
- * Cover images land in static/img/doc-gallery/ (gitignored). No generated JSON in src/.
+ * Precompute DocCard covers/descriptions during start/build.
+ * The client only reads this JSON — it must not import target docs or live previews.
+ * Cover images land in static/img/doc-gallery/ (gitignored).
  */
 module.exports = function docGalleryPlugin(context) {
   return {

@@ -1,6 +1,6 @@
 /**
- * Extract the first compact runtime preview from MDX for DocCard live covers.
- * Only widgets that read well at ~300×148 (dialogs / toast / input).
+ * Parse compact preview tags from MDX. Kept for snapshot tooling.
+ * DocCard must not mount these widgets — covers are precomputed images/text.
  */
 
 export const LIVE_COVER_TAGS = [

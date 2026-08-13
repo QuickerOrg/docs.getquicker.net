@@ -1,21 +1,20 @@
 /**
- * Scan docs/ for DocCard gallery covers + descriptions.
+ * Scan docs/ for DocCard gallery covers + descriptions at build time.
  * Copies first images to static/img/doc-gallery/ (gitignored).
- * Returns the gallery map for the Docusaurus plugin to inject at runtime.
+ * The client only renders this map — never live preview widgets or MDX.
  */
 import crypto from "node:crypto";
 import fs from "node:fs";
 import path from "node:path";
 import {fileURLToPath} from "node:url";
 import {isStructuralHint} from "./hints.mjs";
-import {extractLiveCover} from "./live-cover.mjs";
 import {snapshotAbs} from "./previews.mjs";
 
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "../..");
 const DOCS_DIR = path.join(ROOT, "docs");
 const COVER_DIR = path.join(ROOT, "static/img/doc-gallery");
 
-/** @typedef {{href: string, title: string, description: string, covers: string[], dir: string, kind: "doc" | "category", position: number, excerpt: string, hints: string[], liveCover: {name: string, props: Record<string, unknown>} | null}} GallerySource */
+/** @typedef {{href: string, title: string, description: string, covers: string[], dir: string, kind: "doc" | "category", position: number, excerpt: string, hints: string[]}} GallerySource */
 
 function walkFiles(dir, acc = []) {
   if (!fs.existsSync(dir)) return acc;
@@ -65,6 +64,22 @@ function stripMd(text) {
     .trim();
 }
 
+function isJsxOrCodeLine(raw) {
+  if (
+    raw.startsWith("<") ||
+    raw.startsWith(">") ||
+    raw.startsWith("/>") ||
+    raw.startsWith("{") ||
+    raw.startsWith("}") ||
+    raw.startsWith("[")
+  ) {
+    return true;
+  }
+  if (/^[A-Za-z_][\w]*(\s*[=:{])/.test(raw)) return true;
+  if (/^[A-Za-z_][\w]*$/.test(raw) && raw.length < 24) return true;
+  return /^[{}\[\],;]+$/.test(raw);
+}
+
 function extractExcerpt(body, title, description) {
   const skip = new Set([title, description].filter(Boolean).map((value) => value.trim()));
   const chunks = [];
@@ -74,17 +89,18 @@ function extractExcerpt(body, title, description) {
     if (
       raw.startsWith("#") ||
       raw.startsWith("!") ||
-      raw.startsWith("<") ||
       raw.startsWith("```") ||
       raw.startsWith(":::") ||
       raw.startsWith("import ") ||
       raw.startsWith("|") ||
-      /^【[^】]+】/.test(raw)
+      /^【[^】]+】/.test(raw) ||
+      isJsxOrCodeLine(raw)
     ) {
       continue;
     }
     const text = stripMd(raw.replace(/^[-*]\s+/, ""));
     if (!text || text.length < 4 || skip.has(text)) continue;
+    if (!/[\u3400-\u9fff]/.test(text)) continue;
     chunks.push(text);
     if (chunks.length >= 2 || chunks.join("").length >= 90) break;
   }
@@ -133,13 +149,13 @@ function firstParagraph(body) {
     if (
       text.startsWith("#") ||
       text.startsWith("!") ||
-      text.startsWith("<") ||
       text.startsWith("```") ||
       text.startsWith(":::") ||
       text.startsWith("import ") ||
       text.startsWith("|") ||
       text.startsWith("- ") ||
-      text.startsWith("* ")
+      text.startsWith("* ") ||
+      isJsxOrCodeLine(text)
     ) {
       if (chunks.length > 0) break;
       continue;
@@ -221,7 +237,6 @@ function collectDocs() {
       position: Number(fm.sidebar_position ?? 9999),
       excerpt: extractExcerpt(body, title, description),
       hints: extractHints(body),
-      liveCover: extractLiveCover(body),
     });
   }
   return docs;
@@ -269,7 +284,6 @@ function collectCategories(docs) {
       position: Number(json.position ?? 9999),
       excerpt: "",
       hints: children.slice(0, 4).map((child) => child.title),
-      liveCover: null,
     });
   }
   return categories;
@@ -278,7 +292,7 @@ function collectCategories(docs) {
 export function buildDocGallery() {
   const docs = collectDocs();
   const categories = collectCategories(docs);
-  /** @type {Record<string, {description?: string, covers?: string[], excerpt?: string, hints?: string[], liveCover?: {name: string, props: Record<string, unknown>}}>} */
+  /** @type {Record<string, {description?: string, covers?: string[], excerpt?: string, hints?: string[]}>} */
   const gallery = {};
   const usedNames = new Set();
 
@@ -292,14 +306,13 @@ export function buildDocGallery() {
     }
     const entry = {};
     if (item.description) entry.description = item.description;
-    if (item.liveCover) entry.liveCover = item.liveCover;
     if (covers.length > 0) {
       entry.covers = covers;
     } else {
       if (item.excerpt) entry.excerpt = item.excerpt;
       if (item.hints.length > 0) entry.hints = item.hints;
     }
-    if (entry.description || entry.covers || entry.excerpt || entry.hints || entry.liveCover) {
+    if (entry.description || entry.covers || entry.excerpt || entry.hints) {
       gallery[item.href] = entry;
     }
   }

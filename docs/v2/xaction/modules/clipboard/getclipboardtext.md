@@ -35,7 +35,14 @@ legacyContentUpdatedAt: "2019-08-21T01:42:45.000Z"
 - **Rtf** / **Html** / **逗号分隔的值（csv）**：对应格式存在时再选。
 - **自定义格式名**：读某个软件自己的剪贴板格式。
 
-**格式名称**：仅 **自定义格式名**。填实际格式名，必须和剪贴板里的一致，且内容本身是文本。可用 [Free Clipboard Viewer](http://www.freeclipboardviewer.com/) 左侧列表查看。
+**格式名称**：仅 **自定义格式名**。填实际格式名，必须和剪贴板里的一致，且内容本身是文本。先复制目标内容，再用下面的动作查看左侧格式列表；也可以用 [Free Clipboard Viewer](http://www.freeclipboardviewer.com/)。
+
+<ShareLinkCard
+  code="fe33cf74-7834-45d8-dd42-08deaef5f4fb"
+  title="剪贴板查看器"
+  description="查看剪贴板数据，支持查看拖拽数据"
+  author="Cea"
+/>
 
 ![Free Clipboard Viewer 中同时存在多种剪贴板格式](./img/getclipboardtext-002-493ba546c2.png)
 

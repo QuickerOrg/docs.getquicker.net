@@ -1,5 +1,5 @@
 import type {ReactNode} from 'react';
-import {getModuleDef} from '@site/data/xaction/modules-index';
+import {useModuleDef} from '@site/src/components/xaction/useModuleDef';
 import {
   StepParamFormPreview,
   type StepParamFormModule,
@@ -61,7 +61,17 @@ export default function ModuleParamPreview({
   onClose,
   className,
 }: ModuleParamPreviewProps): ReactNode {
-  const module = getModuleDef(moduleKey);
+  const {module, ready} = useModuleDef(moduleKey);
+  if (!ready) {
+    return (
+      <div
+        className="qk-docs-preview-fallback"
+        data-qk-preview="heavy"
+        role="status"
+        aria-label="正在加载模块参数"
+      />
+    );
+  }
   if (!module) {
     return (
       <div

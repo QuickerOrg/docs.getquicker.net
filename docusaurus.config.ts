@@ -109,8 +109,11 @@ const config: Config = {
       } satisfies LocalSearchOptions,
     ],
   ],
-  plugins: ['./plugins/doc-gallery', './plugins/dev-local-search'],
-  clientModules: ['./src/clientModules/prefetchSearchIndex.ts'],
+  plugins: ['./plugins/doc-gallery', './plugins/dev-local-search', './plugins/prefetch-previews'],
+  clientModules: [
+    './src/clientModules/prefetchSearchIndex.ts',
+    './src/clientModules/prefetchDocPreviews.ts',
+  ],
   staticDirectories: isProd
     ? ['static']
     : ['static', '.cache/dev-local-search'],

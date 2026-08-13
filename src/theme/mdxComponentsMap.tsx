@@ -60,7 +60,13 @@ const mdxComponentsMap = {
   UserInputPreview: lazyMdx(
     () => import('@site/src/components/UserInputPreview'),
   ),
-  ActionEditorPreview: lazyHeavy('ActionEditorPreview'),
+  ActionEditorPreview: lazyMdx(
+    () =>
+      import(
+        /* webpackChunkName: "qk-action-editor-preview" */
+        '@site/src/components/ActionEditorPreview'
+      ),
+  ),
   TextWindowPreview: lazyMdx(
     () => import('@site/src/components/TextWindowPreview'),
   ),

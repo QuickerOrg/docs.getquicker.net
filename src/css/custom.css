@@ -831,6 +831,39 @@ body,
   border: 1px solid var(--quicker-border-subtle);
   border-radius: var(--ifm-global-radius);
   background: var(--quicker-surface-subtle);
+  background-image: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgb(255 255 255 / 35%) 50%,
+    transparent 100%
+  );
+  background-size: 200% 100%;
+  animation: qk-preview-wait 1.1s ease-in-out infinite;
+}
+
+html[data-theme='dark'] .qk-docs-preview-fallback {
+  background-image: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgb(255 255 255 / 8%) 50%,
+    transparent 100%
+  );
+}
+
+@keyframes qk-preview-wait {
+  from {
+    background-position: 100% 0;
+  }
+  to {
+    background-position: -100% 0;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .qk-docs-preview-fallback {
+    animation: none;
+    background-image: none;
+  }
 }
 
 .qk-docs-preview::-webkit-scrollbar,

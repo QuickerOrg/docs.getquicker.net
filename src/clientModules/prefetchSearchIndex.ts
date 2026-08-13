@@ -16,9 +16,30 @@ function scheduleIdle(task: () => void): void {
 }
 
 if (ExecutionEnvironment.canUseDOM && process.env.NODE_ENV === 'production') {
-  scheduleIdle(() => {
+  const startSearchPrefetch = (): void => {
     void import('@easyops-cn/docusaurus-search-local/dist/client/client/theme/searchByWorker.js')
       .then(({fetchIndexesByWorker}) => fetchIndexesByWorker('/', ''))
       .catch(() => undefined);
-  });
+  };
+
+  const waitForPreviews = (task: () => void): void => {
+    const root = document.getElementById('__docusaurus') ?? document.body;
+    if (!document.querySelector('.qk-docs-preview-fallback')) {
+      task();
+      return;
+    }
+    const observer = new MutationObserver(() => {
+      if (!document.querySelector('.qk-docs-preview-fallback')) {
+        observer.disconnect();
+        task();
+      }
+    });
+    observer.observe(root, {childList: true, subtree: true});
+    window.setTimeout(() => {
+      observer.disconnect();
+      task();
+    }, 8000);
+  };
+
+  scheduleIdle(() => waitForPreviews(startSearchPrefetch));
 }

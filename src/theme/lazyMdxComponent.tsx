@@ -6,13 +6,27 @@ import React, {
   type ReactNode,
 } from 'react';
 
+export type PreviewKind = 'heavy' | 'light';
+
+type PreviewFallbackProps = {
+  kind?: PreviewKind;
+  label?: string;
+  moduleKey?: string;
+};
+
 /** Placeholder while a docs preview chunk downloads. */
-export function PreviewFallback(): ReactNode {
+export function PreviewFallback({
+  kind = 'light',
+  label = '正在加载预览',
+  moduleKey,
+}: PreviewFallbackProps): ReactNode {
   return (
     <div
       className="qk-docs-preview-fallback"
+      data-qk-preview={kind}
+      data-qk-module={moduleKey || undefined}
       role="status"
-      aria-label="正在加载预览"
+      aria-label={label}
     />
   );
 }
@@ -31,10 +45,10 @@ export function lazyMdx<P extends object>(
 
   function LazyMdxComponent(props: P): ReactNode {
     if (!ExecutionEnvironment.canUseDOM) {
-      return <PreviewFallback />;
+      return <PreviewFallback kind="light" />;
     }
     return (
-      <Suspense fallback={<PreviewFallback />}>
+      <Suspense fallback={<PreviewFallback kind="light" />}>
         <LazyComp {...props} />
       </Suspense>
     );
@@ -45,18 +59,36 @@ export function lazyMdx<P extends object>(
 
 type HeavyHostProps = {component: string} & Record<string, unknown>;
 
-/** One lazy() so catalog-coupled previews share a single async chunk. */
+/** Named chunk so HTML preload / client prefetch share one file. */
+export function loadHeavyPreviewHost(): Promise<{
+  default: ComponentType<HeavyHostProps>;
+}> {
+  return import(
+    /* webpackChunkName: "qk-heavy-preview" */
+    './mdxHeavyPreviewHost'
+  ) as Promise<{default: ComponentType<HeavyHostProps>}>;
+}
+
+/** One lazy() so step/param previews share a single async chunk. */
 const HeavyPreviewHost = lazy(
-  () => import('./mdxHeavyPreviewHost'),
+  loadHeavyPreviewHost,
 ) as ComponentType<HeavyHostProps>;
 
 export function lazyHeavy<P extends object>(name: string): ComponentType<P> {
   function LazyHeavyComponent(props: P): ReactNode {
+    const moduleKey =
+      props &&
+      typeof props === 'object' &&
+      'moduleKey' in props &&
+      typeof (props as {moduleKey?: unknown}).moduleKey === 'string'
+        ? (props as {moduleKey: string}).moduleKey
+        : undefined;
+    const fallback = <PreviewFallback kind="heavy" moduleKey={moduleKey} />;
     if (!ExecutionEnvironment.canUseDOM) {
-      return <PreviewFallback />;
+      return fallback;
     }
     return (
-      <Suspense fallback={<PreviewFallback />}>
+      <Suspense fallback={fallback}>
         <HeavyPreviewHost
           component={name}
           {...(props as Record<string, unknown>)}

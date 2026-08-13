@@ -31,16 +31,16 @@ type FeaturedItem = {
 
 const PATHS: PathItem[] = [
   {
-    href: '/v2/xaction/concepts/xaction-intro',
-    kicker: '入门',
-    title: '组合动作基础',
-    description: '步骤怎样按顺序执行，以及一个完整动作是怎么构成的。',
+    href: '/v2/xaction/guides/how-to-learn',
+    kicker: '动手',
+    title: '组合动作入门',
+    description: '三条动手课：弹出提示、处理选中文字、按条件打开搜索。',
   },
   {
-    href: '/v2/xaction/concepts/xaction-editor',
-    kicker: '编辑',
-    title: '动作编辑器',
-    description: '添加步骤、填写参数，并在编辑器里调试运行。',
+    href: '/v2/xaction/concepts/xaction-intro',
+    kicker: '概念',
+    title: '组合动作基础',
+    description: '步骤怎样按顺序执行，以及一个完整动作是怎么构成的。',
   },
   {
     href: '/v2/xaction/modules',
@@ -52,7 +52,7 @@ const PATHS: PathItem[] = [
     href: '/v2/xaction/guides',
     kicker: '实践',
     title: '教程与实践',
-    description: '从 Hello World 到文本、网页和窗口自动化。',
+    description: '文本、网页、窗口和浏览器等专题练习。',
   },
 ];
 
@@ -134,8 +134,8 @@ const CATEGORIES: CategoryItem[] = [
 const FEATURED: FeaturedItem[] = [
   {href: '/v2/xaction/modules/openurl', title: '打开网址'},
   {href: '/v2/xaction/modules/notify', title: '提示消息'},
-  {href: '/v2/xaction/modules/get_selected_text', title: '获取选择的文本'},
-  {href: '/v2/xaction/modules/if', title: '如果'},
+  {href: '/v2/xaction/modules/get_selected_text', title: '获取选中的文本'},
+  {href: '/v2/xaction/modules/if', title: '如果/否则'},
   {href: '/v2/xaction/modules/stringprocess', title: '文本处理'},
   {href: '/v2/xaction/modules/screen-capture-pro', title: '截图 Pro'},
 ];

@@ -1,176 +1,151 @@
 ---
-title: "第一个组合动作Hello World!"
-description: "第一个组合动作Hello World!的 Quicker 2.0 使用说明。"
+title: 第一个组合动作
+description: 新建组合动作，用「提示消息」在桌面显示 Hello, World!，并保存后从面板运行。
 slug: "/v2/xaction/guides/helloworld"
-sidebar_position: 30
+sidebar_label: 第 1 课：弹出提示
+sidebar_position: 20
 quickerDocKey: "xaction/guides/helloworld"
 comments: true
-docStatus: "migrated-unreviewed"
+docStatus: reviewed
 legacyDocId: 2097579
 legacyContentUpdatedAt: "2021-12-30T10:41:30.000Z"
 ---
 
-## 使用说明
+# 第一个组合动作
 
-**Hello, World**是指在电脑上显示“Hello, World!”（你好，世界！）字符串的程序。因为写法简单可见，是很多初学者首次接触编程时会撰写的程序。下面一起来学习Quicker的“Hello, World!”是怎么实现的。
+这一课只做一件事：运行动作后，桌面出现 **Hello, World!**。不涉及变量和分支。做完你就知道：新建、拖模块、填参数、保存、运行。
 
+## 新建组合动作
 
+1. 用鼠标中键弹出面板（默认方式；可在设置里更改）。
+2. 切到**全局区**，或上下文区末尾的 **通用**，这样在哪个程序里都能点到这个练习动作。
+3. 点 **创建动作** 磁贴，或点区域右上角的加号；也可以在空白处右键。
+4. 选 **新建组合动作**。
 
-#### 1\. 新建动作
+<ContextMenuPreview
+  openPath={['新建组合动作']}
+  items={[
+    {label: '运行其它动作', icon: 'fa:Light_PlayCircle:#6aaded'},
+    {label: '新建组合动作', icon: 'fa:Light_ProjectDiagram:#6aaded'},
+    {type: 'separator'},
+    {label: '模拟输入', icon: 'fa:Light_Keyboard:#6aaded', children: [{label: '…'}]},
+    {label: '运行或打开', icon: 'fa:Light_FolderOpen:#6aaded', children: [{label: '…'}]},
+    {label: '常用功能', icon: 'fa:Light_Star:#6aaded', children: [{label: '…'}]},
+  ]}
+/>
 
-按下鼠标中间键（滚轮），弹出Quicker面板。中键是软件默认的弹出面板方式，更多弹出方式请[点此了解弹出和隐藏面板](https://www.yuque.com/quicker/help/activate)。
+会打开组合动作编辑器：左栏是模块工具箱，中间是步骤列表，右侧是变量和动作外观。完整说明见 [动作编辑器](/v2/xaction/concepts/xaction-editor)。
 
-点击Quicker面板上的空白动作按钮，选择“**新建组合动作**”。
+还没想好放哪个场景，可以先把动作放到左侧 [暂存区](/v2/what's-new/new-main-win/action-drafts.md)，确认后再保留到场景。
 
-![](./img/helloworld-001-805bc90dca.png)
+## 加上「提示消息」
 
-
-
-
-
-#### 2\. 显示文本输出“Hello World!”
-
-[文本窗口模块](/v2/xaction/modules/showtext)的功能是使用窗口的形式显示一段文本。
-
--   **在左边的动作模块区域找到“文本处理”（图标是一个A字母）→“文本窗口”。**
-
-![](./img/helloworld-002-1518577b4d.png)
-
--   **将“文本窗口”拖动到步骤定义区域，自动弹出设置窗口。**
+1. 在左侧工具箱找到 **基础** 分类，或按 `Ctrl+F` 搜索「提示」。
+2. 把 **提示消息** 拖到中间的步骤列表（也可以双击模块，加到列表末尾）。
+3. 在 **消息内容** 里填写 `Hello, World!`，点步骤窗口的保存。
 
 <ActionEditorPreview
   focus="toolbox"
-  toolboxTab="text"
-  toolboxSearch="文本窗口"
-  toolboxSelected="sys:showText"
-  actionTitle="我的第一个Quicker动作"
-  actionDescription="Hello World"
-  caption="将「文本窗口」拖到步骤列表（示意，悬停可暂停）"
+  toolboxTab="basic"
+  toolboxSearch="提示"
+  toolboxSelected="sys:notify"
+  actionTitle="Hello World"
+  actionDescription="桌面提示 Hello, World!"
+  caption="将「提示消息」拖到步骤列表（示意，悬停可暂停）"
   data={{steps: []}}
   dragDemo={{
-    moduleKey: 'sys:showText',
+    moduleKey: 'sys:notify',
     targetSlot: 'steps',
     afterData: {
       steps: [
         {
-          key: 'sys:showText',
-          inputs: {text: 'Hello World！', title: '我的第一个Quicker动作'},
+          key: 'sys:notify',
+          inputs: {msg: 'Hello, World!', type: 'Info'},
         },
       ],
     },
   }}
 />
 
-
--   **填写文本内容。**
-
-在文本内容处填写：**Hello World！**
-
-在窗口标题处填写：**我的第一个Quicker动作**
-
-填写完成后点击**“保存”**。
-
-![](./img/helloworld-004-7da74d1eeb.png)
-
-
-
-
-
-#### 3\. 保存动作
-
-在右下角“标题”处给动作取一个名字，填写：**Hello World**
-
-点击**“保存”。**
-
-![](./img/helloworld-005-210d44e29d.png)
-
-#### 4\. 运行动作
-
-保存后动作会自动保存到刚才新建组合动作的地方，按下中键弹出面板，点击**Hello World**动作。
-
-![](./img/helloworld-006-a091bd4152.png)
-
-
-
-
-
-运行后你将会看到如下标题是**我的第一个Quicker动作**，内容是**Hello World**！的文本显示窗口，说明动作编写 成功。
-
-![](./img/helloworld-007-78e6fd441b.png)
-
-
-
-这正是Quicker的强大之处，你不需要像编程语言一样学习复杂的语法和代码，Quicker用模块化的方式，只需要拖动模块再填写关键信息，即可实现很多强大的程序功能。
-
-#### 5\. 提示消息输出“Hello World！”
-
-除了窗口显示文本之外，还可以使用**“提示消息”、“弹窗提示”**等方式输出文本，下面学习**“提示消息”**。
-
-
-
--   **按下中键弹出面板，右击****Hello World→点击编辑，****进入编辑界面。**
-
-![](./img/helloworld-008-cdf26ab7c2.png)
-
-
-
--   **在左边的动作模块区域找到“基础”****（图标是一个齿轮）****→“提示消息”。**
--   **将“****提示消息****”拖动到步骤定义区域，自动弹出设置窗口。**
-
-![](./img/helloworld-009-e3707ac6dc.png)
-
-
-
--   **在消息内容处填写：****Hello World！，填写完成后点击“保存”编辑。**
-
-![](./img/helloworld-010-21395e9b71.png)
-
-
-
--   **点击动作编辑窗口右下角“保存”****动作****。**
-
-![](./img/helloworld-011-dfc470e8fe.png)
-
-
-
-
-
-#### 6\. 完成效果
-
-重复第4步学习的动作运行方法，启动**Hello World**。
-
-动作运行后你将会看到标题是**我的第一个Quicker动作**，内容是**Hello World**！的文本显示窗口，和一个蓝色背景带感叹号的提示消息。文本窗口需要手动关闭，提示消息会在3秒内自动关闭。
-
-![](./img/helloworld-012-7fcd82cc55.png)
-
-
-
-
-
-#### 7\. 提交作业
-
--   **右击刚才编写好的动作，选择“分享”。**
-
-![](./img/helloworld-013-f346c830f3.png)    
-
-
-
--   **填写分享信息**
-
-提示填写：**我的第一个Quicker动作**
-
-备注填写：**作业**
-
-分类选择：**其他**
-
-其他选项保持默认即可。
-
-填写完成后点击**“分享”**。
-
-![](./img/helloworld-014-60779e61ed.png)
-
-
-
-分享成功后，会出现“复制链接”和“打开页面”按钮，其他人可以通过动作链接下载使用动作。
-
-![](./img/helloworld-015-f54894cd77.png)
+参数窗里主要看这两项即可：
+
+<ModuleParamPreview
+  moduleKey="sys:notify"
+  values={{type: 'Info', msg: 'Hello, World!'}}
+  focusKeys={['type', 'msg']}
+/>
+
+**类型** 选 **信息**（默认）。其它类型只是颜色不同；需要用户点「是 / 否」时才用 [弹窗提示或确认](/v2/xaction/modules/msgbox)，不要用提示消息。
+
+## 保存并运行
+
+1. 在编辑器里给动作起名，例如 `Hello World`。
+2. 点工具条 **保存**。
+3. 关掉编辑器，弹出面板，单击这个动作。
+
+桌面底部居中会出现一条提示，几秒后自己消失：
+
+<NotifyToastPreview message="Hello, World!" />
+
+也可以不关编辑器，直接点中间工具条的 **运行**。适合改完马上试；涉及往窗口打字或改文件时，注意当前前台窗口是不是你想操作的那个。
+
+完成后的步骤就是这一条：
+
+<StepProgramView
+  caption="Hello World"
+  data={{
+    steps: [
+      {
+        key: 'sys:notify',
+        inputs: {msg: 'Hello, World!', type: 'Info'},
+      },
+    ],
+  }}
+/>
+
+## 还可以：用文本窗口显示
+
+提示消息会自己消失。若希望文字留在一个窗口里，到 **文本处理** 分类把 **文本窗口** 再拖进来。
+
+窗口里的文本填 `Hello, World!`，标题填动作名。
+
+<TextWindowPreview
+  title="Hello World"
+  text="Hello, World!"
+  showLineNum={false}
+/>
+
+文本窗口适合看较长结果；提示消息适合「已经做完了」这类短反馈。两个模块可以同时放在一个动作里，按步骤顺序先后出现。
+
+## 限制与排障
+
+- 拖入模块后如果没弹出参数窗，双击步骤再打开。
+- 运行了但看不到提示：确认步骤没有被停用；个别情况下提示会不出现，重启 Quicker 后再试。说明见 [提示消息](/v2/xaction/modules/notify)。
+- 面板上找不到刚保存的动作：看它是在当前场景、暂存区，还是别的分组。V2 里「放在哪个场景」和「动作内容」是分开的。
+
+## 相关链接
+
+<RelatedDocs
+  items={[
+    {
+      href: '/v2/xaction/guides/selected-text',
+      label: '第 2 课：处理选中文字',
+      description: '取词、转大写、写回窗口',
+    },
+    {
+      href: '/v2/xaction/modules/notify',
+      label: '提示消息',
+      description: '类型、位置、保持秒数',
+    },
+    {
+      href: '/v2/xaction/modules/showtext',
+      label: '文本窗口',
+      description: '用独立窗口显示较长文本',
+    },
+    {
+      href: '/v2/xaction/concepts/xaction-editor',
+      label: '动作编辑器',
+      description: '工具箱、搜索和保存',
+    },
+  ]}
+/>

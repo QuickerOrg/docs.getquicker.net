@@ -15,20 +15,20 @@ hide_table_of_contents: true
 第一次编写请从 [怎样学会组合动作](/v2/xaction/guides/how-to-learn) 开始。
 
 <XActionLanding
-  moduleCount={149}
-  generatedAt="2026-08-03 20:08:03"
+  moduleCount={150}
+  generatedAt="2026-08-13 19:01:10"
   counts={{
     Basic: 14,
-    Text: 11,
-    Image: 14,
+    Text: 14,
+    Image: 15,
     Clipboard: 6,
     Flow: 15,
     System: 22,
     Files: 10,
     Compute: 14,
-    Network: 13,
+    Network: 14,
     Ui: 13,
     SoftInteraction: 11,
-    Input: 1,
+    Input: 2,
   }}
 />

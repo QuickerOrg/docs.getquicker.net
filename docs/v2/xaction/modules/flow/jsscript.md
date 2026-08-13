@@ -90,6 +90,11 @@ quickerSetVar('动作里的变量名', 新的值);
 <RelatedDocs
   items={[
     {
+      href: '/v2/xaction/modules/automationscript',
+      label: '自动化脚本',
+      description: '使用受限 JavaScript 安全地编排鼠标和键盘操作。',
+    },
+    {
       href: '/v2/xaction/modules/csscript',
       label: '运行C#代码',
       description: '需要 .NET API 或更完整类型时用 C#。',

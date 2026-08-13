@@ -91,6 +91,11 @@ legacyContentUpdatedAt: "2025-02-20T23:53:47.000Z"
 <RelatedDocs
   items={[
     {
+      href: '/v2/xaction/modules/automationscript',
+      label: '自动化脚本',
+      description: '需要循环、坐标数组、热键或批量输入时使用。',
+    },
+    {
       href: '/v2/xaction/modules/sendkeys',
       label: '模拟按键B',
       description: 'sendkeys 命令用同一套语法。',

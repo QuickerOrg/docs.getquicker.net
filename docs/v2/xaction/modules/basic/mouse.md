@@ -285,6 +285,11 @@ legacyContentUpdatedAt: "2025-01-20T02:00:01.000Z"
 <RelatedDocs
   items={[
     {
+      href: '/v2/xaction/modules/automationscript',
+      label: '自动化脚本',
+      description: '用 JavaScript 编排坐标、鼠标和键盘操作。',
+    },
+    {
       href: '/v2/xaction/modules/searchbmp',
       label: '屏幕找图',
       description: '只定位图片或颜色，不强制移动鼠标。',

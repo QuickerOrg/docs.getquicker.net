@@ -29,6 +29,7 @@ import ReportProgressPreview from '@site/src/components/ReportProgressPreview';
 import ExpressionAssistPreview from '@site/src/components/ExpressionAssistPreview';
 import SearchBoxPreview from '@site/src/components/SearchBoxPreview';
 import ScreenshotSelectionDemo from '@site/src/components/ScreenshotSelectionDemo';
+import GestureTriggerDemo from '@site/src/components/GestureTriggerDemo';
 import FlowChart from '@site/src/components/FlowChart';
 import NativeImg from '@site/src/theme/MDXComponents/NativeImg';
 
@@ -67,6 +68,7 @@ const components = {
   ExpressionAssistPreview,
   SearchBoxPreview,
   ScreenshotSelectionDemo,
+  GestureTriggerDemo,
   FlowChart,
 } as MDXComponentsType;
 

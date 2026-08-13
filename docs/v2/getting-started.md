@@ -58,6 +58,7 @@ Quicker 把一件重复的事做成一个**动作**。动作可以出现在面�
 ## 还可以先用这些
 
 - [截图 Pro](./features/screenshot/capture-pro.md)：选区、标注、复制、贴图。
+- [快速触发概览](./features/triggers/index.md)：手势、轮盘、快捷键、选中文本工具条等入口怎么选。
 - [选中文本工具条](./features/triggers/text-selection-toolbar.md)：划词后出现一排动作。
 - [动作与动作面板](./features/actions.md)：运行、整理和引用关系。
 

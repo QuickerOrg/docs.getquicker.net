@@ -825,6 +825,14 @@ body,
   background: var(--qk-scrollbar-thumb-hover);
 }
 
+.qk-docs-preview-fallback {
+  min-height: 96px;
+  margin: 0.75rem 0 1.25rem;
+  border: 1px solid var(--quicker-border-subtle);
+  border-radius: var(--ifm-global-radius);
+  background: var(--quicker-surface-subtle);
+}
+
 .qk-docs-preview::-webkit-scrollbar,
 .qk-docs-preview *::-webkit-scrollbar,
 .qk-sr-param-form::-webkit-scrollbar,

@@ -1,3 +1,7 @@
 # Hashed search indexes are content-addressed; let browsers keep them.
 /search-index-*.json
   Cache-Control: public, max-age=31536000, immutable
+
+# Docusaurus content-hashes /assets/*; skip revalidation on every visit.
+/assets/*
+  Cache-Control: public, max-age=31536000, immutable

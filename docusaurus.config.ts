@@ -97,16 +97,20 @@ const config: Config = {
     [
       '@easyops-cn/docusaurus-search-local',
       {
-        hashed: true,
+        hashed: 'filename',
         language: ['en', 'zh'],
         // docs-only mode: docs are served from `/`, not `/docs`.
         docsRouteBasePath: '/',
         indexBlog: false,
         indexPages: false,
+        // Live UI previews dump param tables / enums into HTML; skip them so
+        // the lunr index stays small and first search stays fast.
+        ignoreCssSelectors: ['.qk-docs-preview', '.docusaurus-mermaid-container'],
       } satisfies LocalSearchOptions,
     ],
   ],
   plugins: ['./plugins/doc-gallery', './plugins/dev-local-search'],
+  clientModules: ['./src/clientModules/prefetchSearchIndex.ts'],
   staticDirectories: isProd
     ? ['static']
     : ['static', '.cache/dev-local-search'],

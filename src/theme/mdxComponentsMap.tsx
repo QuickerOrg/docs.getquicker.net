@@ -31,6 +31,9 @@ const mdxComponentsMap = {
   NotifyToastPreview: lazyMdx(
     () => import('@site/src/components/NotifyToastPreview'),
   ),
+  MobileNotificationPreview: lazyMdx(
+    () => import('@site/src/components/MobileNotificationPreview'),
+  ),
   MsgBoxPreview: lazyMdx(() => import('@site/src/components/MsgBoxPreview')),
   ChoiceListPreview: lazyMdx(
     () => import('@site/src/components/ChoiceListPreview'),

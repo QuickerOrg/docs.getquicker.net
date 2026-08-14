@@ -146,6 +146,26 @@ function sanitize(source: Element, pageUrl: string, title: string): string {
   return root.innerHTML.trim();
 }
 
+const FETCH_TIMEOUT_MS = 8000;
+
+async function fetchWithTimeout(url: string): Promise<Response> {
+  const controller = new AbortController();
+  const timer = window.setTimeout(() => controller.abort(), FETCH_TIMEOUT_MS);
+  try {
+    return await fetch(url, {
+      headers: {Accept: 'text/html'},
+      signal: controller.signal,
+    });
+  } catch (error) {
+    if (error instanceof DOMException && error.name === 'AbortError') {
+      throw new Error(`Preview fetch timed out (${FETCH_TIMEOUT_MS}ms)`);
+    }
+    throw error;
+  } finally {
+    window.clearTimeout(timer);
+  }
+}
+
 async function fetchPageHtml(pathname: string, search: string): Promise<string> {
   const paths = [pathname];
   const alt =
@@ -156,9 +176,7 @@ async function fetchPageHtml(pathname: string, search: string): Promise<string> 
 
   let lastStatus = 0;
   for (const path of paths) {
-    const res = await fetch(`${path}${search}`, {
-      headers: {Accept: 'text/html'},
-    });
+    const res = await fetchWithTimeout(`${path}${search}`);
     lastStatus = res.status;
     if (res.ok) return res.text();
   }

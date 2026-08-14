@@ -841,6 +841,11 @@ body,
   animation: qk-preview-wait 1.1s ease-in-out infinite;
 }
 
+.qk-docs-preview-fallback--error {
+  animation: none;
+  background-image: none;
+}
+
 html[data-theme='dark'] .qk-docs-preview-fallback {
   background-image: linear-gradient(
     90deg,

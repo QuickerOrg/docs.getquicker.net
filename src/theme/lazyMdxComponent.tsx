@@ -1,7 +1,9 @@
-import ExecutionEnvironment from '@docusaurus/ExecutionEnvironment';
 import React, {
+  Component,
   lazy,
   Suspense,
+  useEffect,
+  useState,
   type ComponentType,
   type ReactNode,
 } from 'react';
@@ -12,6 +14,7 @@ type PreviewFallbackProps = {
   kind?: PreviewKind;
   label?: string;
   moduleKey?: string;
+  failed?: boolean;
 };
 
 /** Placeholder while a docs preview chunk downloads. */
@@ -19,24 +22,76 @@ export function PreviewFallback({
   kind = 'light',
   label = '正在加载预览',
   moduleKey,
+  failed = false,
 }: PreviewFallbackProps): ReactNode {
   return (
     <div
-      className="qk-docs-preview-fallback"
+      className={
+        failed
+          ? 'qk-docs-preview-fallback qk-docs-preview-fallback--error'
+          : 'qk-docs-preview-fallback'
+      }
       data-qk-preview={kind}
       data-qk-module={moduleKey || undefined}
-      role="status"
-      aria-label={label}
+      role={failed ? 'alert' : 'status'}
+      aria-label={failed ? '预览加载失败' : label}
     />
+  );
+}
+
+class LazyPreviewErrorBoundary extends Component<
+  {fallback: ReactNode; children: ReactNode},
+  {hasError: boolean}
+> {
+  state = {hasError: false};
+
+  static getDerivedStateFromError(): {hasError: boolean} {
+    return {hasError: true};
+  }
+
+  render(): ReactNode {
+    if (this.state.hasError) {
+      return this.props.fallback;
+    }
+    return this.props.children;
+  }
+}
+
+/**
+ * SSR and the hydration pass must render the same tree. `canUseDOM` is true
+ * during hydration, so branching on it (fallback vs Suspense) trips React 19
+ * error #418 and can leave the article empty. HTML preload can also resolve
+ * `React.lazy` before hydrate; rendering the real component then mismatches
+ * the SSR fallback. Mount first, then open the Suspense boundary.
+ */
+function AfterHydrate({
+  fallback,
+  errorFallback,
+  children,
+}: {
+  fallback: ReactNode;
+  errorFallback: ReactNode;
+  children: ReactNode;
+}): ReactNode {
+  const [mounted, setMounted] = useState(false);
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+  if (!mounted) {
+    return fallback;
+  }
+  return (
+    <Suspense fallback={fallback}>
+      <LazyPreviewErrorBoundary fallback={errorFallback}>
+        {children}
+      </LazyPreviewErrorBoundary>
+    </Suspense>
   );
 }
 
 /**
  * Theme-level MDX components stay named globally, but their implementation
  * is an async chunk. Pages that never render the tag never download it.
- *
- * SSR emits the same fallback as the first client paint to avoid hydration
- * mismatch (Docusaurus uses renderToString, which cannot wait on React.lazy).
  */
 export function lazyMdx<P extends object>(
   importer: () => Promise<{default: ComponentType<P>}>,
@@ -44,13 +99,12 @@ export function lazyMdx<P extends object>(
   const LazyComp = lazy(importer);
 
   function LazyMdxComponent(props: P): ReactNode {
-    if (!ExecutionEnvironment.canUseDOM) {
-      return <PreviewFallback kind="light" />;
-    }
+    const fallback = <PreviewFallback kind="light" />;
+    const errorFallback = <PreviewFallback kind="light" failed />;
     return (
-      <Suspense fallback={<PreviewFallback kind="light" />}>
+      <AfterHydrate fallback={fallback} errorFallback={errorFallback}>
         <LazyComp {...props} />
-      </Suspense>
+      </AfterHydrate>
     );
   }
 
@@ -84,16 +138,16 @@ export function lazyHeavy<P extends object>(name: string): ComponentType<P> {
         ? (props as {moduleKey: string}).moduleKey
         : undefined;
     const fallback = <PreviewFallback kind="heavy" moduleKey={moduleKey} />;
-    if (!ExecutionEnvironment.canUseDOM) {
-      return fallback;
-    }
+    const errorFallback = (
+      <PreviewFallback kind="heavy" moduleKey={moduleKey} failed />
+    );
     return (
-      <Suspense fallback={fallback}>
+      <AfterHydrate fallback={fallback} errorFallback={errorFallback}>
         <HeavyPreviewHost
           component={name}
           {...(props as Record<string, unknown>)}
         />
-      </Suspense>
+      </AfterHydrate>
     );
   }
   return LazyHeavyComponent;

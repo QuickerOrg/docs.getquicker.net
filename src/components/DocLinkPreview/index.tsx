@@ -158,11 +158,8 @@ export default function DocLinkPreview(): ReactNode {
       setOpen(true);
       setPlaced(false);
 
-      try {
-        window.docusaurus?.prefetch?.(path.to);
-      } catch {
-        /* prefetch is optional */
-      }
+      // HTML fetch only. `docusaurus.prefetch` would download the target
+      // page's JS graph (heavy preview chunks) and starve this request.
 
       const cached = cacheGet(cacheKey(href));
       if (cached) {

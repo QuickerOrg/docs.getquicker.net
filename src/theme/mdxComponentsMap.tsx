@@ -2,8 +2,10 @@ import type {ComponentProps} from 'react';
 import type {MDXProvider} from '@mdx-js/react';
 import ThemeMDXComponents from '@theme-original/MDXComponents';
 import NativeImg from '@site/src/theme/MDXComponents/NativeImg';
+import FlowChart from '@site/src/components/FlowChart';
 import RelatedDocs from '@site/src/components/RelatedDocs';
 import ShareLinkCard from '@site/src/components/ShareLinkCard';
+import XActionLanding from '@site/src/components/XActionLanding';
 import {lazyHeavy, lazyMdx} from './lazyMdxComponent';
 
 type MDXComponentsType = NonNullable<
@@ -11,9 +13,9 @@ type MDXComponentsType = NonNullable<
 >;
 
 /**
- * Lightweight pieces stay eager (every docs page). Heavy live previews are
- * React.lazy so homepage / prose pages do not download catalog.json, example
- * actions, or editor chrome.
+ * Page-body / tiny teaching UI stays eager so SSR HTML is real content.
+ * Live previews stay React.lazy so homepage / prose pages do not download
+ * catalog.json, example actions, or editor chrome.
  */
 const mdxComponentsMap = {
   ...ThemeMDXComponents,
@@ -22,6 +24,8 @@ const mdxComponentsMap = {
   img: NativeImg,
   RelatedDocs,
   ShareLinkCard,
+  XActionLanding,
+  FlowChart,
   XActionModuleMeta: lazyHeavy('XActionModuleMeta'),
   StepProgramView: lazyHeavy('StepProgramView'),
   VariableDefPreview: lazyMdx(
@@ -52,7 +56,6 @@ const mdxComponentsMap = {
   PreviewCompare: lazyMdx(() => import('@site/src/components/PreviewCompare')),
   PreviewMap: lazyMdx(() => import('@site/src/components/PreviewMap')),
   PreviewMarks: lazyMdx(() => import('@site/src/components/PreviewMarks')),
-  XActionLanding: lazyMdx(() => import('@site/src/components/XActionLanding')),
   CoordDiagram: lazyMdx(() => import('@site/src/components/CoordDiagram')),
   ClickIndicatorPreview: lazyMdx(
     () => import('@site/src/components/ClickIndicatorPreview'),
@@ -85,7 +88,6 @@ const mdxComponentsMap = {
   GestureTriggerDemo: lazyMdx(
     () => import('@site/src/components/GestureTriggerDemo'),
   ),
-  FlowChart: lazyMdx(() => import('@site/src/components/FlowChart')),
 } as MDXComponentsType;
 
 export default mdxComponentsMap;

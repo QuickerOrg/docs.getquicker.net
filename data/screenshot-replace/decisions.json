@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updatedAt": "2026-08-13T01:40:00+08:00",
+  "updatedAt": "2026-08-14T20:30:00+08:00",
   "items": [
     {
       "image": "docs/v2/xaction/concepts/img/action-custom-context-menu-001-8e5e2322bf.png",
@@ -4998,6 +4998,26 @@
       "status": "deferred",
       "kind": "gesture-gif",
       "reason": "需 CustomPanelPreview（拖窗）；与 018 同阻塞。"
+    },
+    {
+      "image": "docs/v2/xaction/guides/img/date-time-process-001-f05b4b2111.png",
+      "page": "docs/v2/xaction/guides/date-time-process.md",
+      "status": "converted",
+      "kind": "step-param",
+      "reason": "已用 ModuleParamPreview（sys:getCurrentTime）替换；原图保留供审核。",
+      "evidence": "ocr+manual",
+      "updatedAt": "2026-08-14T20:30:00+08:00",
+      "component": "ModuleParamPreview"
+    },
+    {
+      "image": "docs/v2/xaction/guides/img/date-time-process-002-6c368c9aed.png",
+      "page": "docs/v2/xaction/guides/date-time-process.md",
+      "status": "converted",
+      "kind": "annotated",
+      "reason": "红箭头教学改为 PreviewMarks + ModuleParamPreview（sys:formatString）；原图保留供审核。",
+      "evidence": "ocr+manual",
+      "updatedAt": "2026-08-14T20:30:00+08:00",
+      "component": "PreviewMarks"
     }
   ]
 }

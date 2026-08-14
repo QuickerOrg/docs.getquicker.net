@@ -7,8 +7,9 @@ import React, {
   type ComponentType,
   type ReactNode,
 } from 'react';
+import ExecutionEnvironment from '@docusaurus/ExecutionEnvironment';
 
-export type PreviewKind = 'heavy' | 'light';
+export type PreviewKind = 'heavy' | 'light' | 'editor';
 
 type PreviewFallbackProps = {
   kind?: PreviewKind;
@@ -58,11 +59,9 @@ class LazyPreviewErrorBoundary extends Component<
 }
 
 /**
- * SSR and the hydration pass must render the same tree. `canUseDOM` is true
- * during hydration, so branching on it (fallback vs Suspense) trips React 19
- * error #418 and can leave the article empty. HTML preload can also resolve
- * `React.lazy` before hydrate; rendering the real component then mismatches
- * the SSR fallback. Mount first, then open the Suspense boundary.
+ * SSR and the hydration pass must render the same fallback. After mount,
+ * open Suspense. Chunk download is kicked separately (see `warm`) so it
+ * overlaps hydration instead of waiting for this effect.
  */
 function AfterHydrate({
   fallback,
@@ -89,18 +88,37 @@ function AfterHydrate({
   );
 }
 
+function cachedImporter<T>(
+  importer: () => Promise<T>,
+): () => Promise<T> {
+  let promise: Promise<T> | null = null;
+  return () => {
+    if (!promise) {
+      promise = importer();
+    }
+    return promise;
+  };
+}
+
 /**
  * Theme-level MDX components stay named globally, but their implementation
  * is an async chunk. Pages that never render the tag never download it.
  */
 export function lazyMdx<P extends object>(
   importer: () => Promise<{default: ComponentType<P>}>,
+  options?: {kind?: Exclude<PreviewKind, 'heavy'>},
 ): ComponentType<P> {
-  const LazyComp = lazy(importer);
+  const kind = options?.kind ?? 'light';
+  const load = cachedImporter(importer);
+  const LazyComp = lazy(load);
 
   function LazyMdxComponent(props: P): ReactNode {
-    const fallback = <PreviewFallback kind="light" />;
-    const errorFallback = <PreviewFallback kind="light" failed />;
+    // Start the chunk during the hydration paint; do not wait for useEffect.
+    if (ExecutionEnvironment.canUseDOM) {
+      void load();
+    }
+    const fallback = <PreviewFallback kind={kind} />;
+    const errorFallback = <PreviewFallback kind={kind} failed />;
     return (
       <AfterHydrate fallback={fallback} errorFallback={errorFallback}>
         <LazyComp {...props} />
@@ -117,16 +135,36 @@ type HeavyHostProps = {component: string} & Record<string, unknown>;
 export function loadHeavyPreviewHost(): Promise<{
   default: ComponentType<HeavyHostProps>;
 }> {
-  return import(
-    /* webpackChunkName: "qk-heavy-preview" */
-    './mdxHeavyPreviewHost'
-  ) as Promise<{default: ComponentType<HeavyHostProps>}>;
+  return loadHeavy();
 }
 
+const loadHeavy = cachedImporter(() =>
+  import(
+    /* webpackChunkName: "qk-heavy-preview" */
+    './mdxHeavyPreviewHost'
+  ) as Promise<{default: ComponentType<HeavyHostProps>}>,
+);
+
+/** Named chunk for the action-editor preview (catalog lives inside). */
+export function loadActionEditorPreview(): Promise<{
+  default: ComponentType<Record<string, unknown>>;
+}> {
+  return loadEditor();
+}
+
+const loadEditor = cachedImporter(() =>
+  import(
+    /* webpackChunkName: "qk-action-editor-preview" */
+    '@site/src/components/ActionEditorPreview'
+  ) as Promise<{default: ComponentType<Record<string, unknown>>}>,
+);
+
 /** One lazy() so step/param previews share a single async chunk. */
-const HeavyPreviewHost = lazy(
-  loadHeavyPreviewHost,
-) as ComponentType<HeavyHostProps>;
+const HeavyPreviewHost = lazy(loadHeavy) as ComponentType<HeavyHostProps>;
+
+const LazyActionEditor = lazy(loadEditor) as ComponentType<
+  Record<string, unknown>
+>;
 
 export function lazyHeavy<P extends object>(name: string): ComponentType<P> {
   function LazyHeavyComponent(props: P): ReactNode {
@@ -137,6 +175,9 @@ export function lazyHeavy<P extends object>(name: string): ComponentType<P> {
       typeof (props as {moduleKey?: unknown}).moduleKey === 'string'
         ? (props as {moduleKey: string}).moduleKey
         : undefined;
+    if (ExecutionEnvironment.canUseDOM) {
+      void loadHeavy();
+    }
     const fallback = <PreviewFallback kind="heavy" moduleKey={moduleKey} />;
     const errorFallback = (
       <PreviewFallback kind="heavy" moduleKey={moduleKey} failed />
@@ -151,4 +192,21 @@ export function lazyHeavy<P extends object>(name: string): ComponentType<P> {
     );
   }
   return LazyHeavyComponent;
+}
+
+/** Action editor preview: own chunk + early warm + HTML preload marker. */
+export function lazyActionEditor<P extends object>(): ComponentType<P> {
+  function LazyEditorComponent(props: P): ReactNode {
+    if (ExecutionEnvironment.canUseDOM) {
+      void loadEditor();
+    }
+    const fallback = <PreviewFallback kind="editor" />;
+    const errorFallback = <PreviewFallback kind="editor" failed />;
+    return (
+      <AfterHydrate fallback={fallback} errorFallback={errorFallback}>
+        <LazyActionEditor {...(props as Record<string, unknown>)} />
+      </AfterHydrate>
+    );
+  }
+  return LazyEditorComponent;
 }

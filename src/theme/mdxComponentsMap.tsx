@@ -6,7 +6,7 @@ import FlowChart from '@site/src/components/FlowChart';
 import RelatedDocs from '@site/src/components/RelatedDocs';
 import ShareLinkCard from '@site/src/components/ShareLinkCard';
 import XActionLanding from '@site/src/components/XActionLanding';
-import {lazyHeavy, lazyMdx} from './lazyMdxComponent';
+import {lazyActionEditor, lazyHeavy, lazyMdx} from './lazyMdxComponent';
 
 type MDXComponentsType = NonNullable<
   ComponentProps<typeof MDXProvider>['components']
@@ -63,13 +63,7 @@ const mdxComponentsMap = {
   UserInputPreview: lazyMdx(
     () => import('@site/src/components/UserInputPreview'),
   ),
-  ActionEditorPreview: lazyMdx(
-    () =>
-      import(
-        /* webpackChunkName: "qk-action-editor-preview" */
-        '@site/src/components/ActionEditorPreview'
-      ),
-  ),
+  ActionEditorPreview: lazyActionEditor(),
   TextWindowPreview: lazyMdx(
     () => import('@site/src/components/TextWindowPreview'),
   ),

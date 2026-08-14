@@ -1,12 +1,14 @@
 /**
- * Kick the heavy preview chunk as soon as main.js runs when the SSR HTML
- * already contains a heavy fallback (do not wait for React.lazy to mount).
- * Also start the matching module JSON so param forms do not wait on a second
- * waterfall after the host chunk.
+ * Kick preview chunks as soon as main.js runs when the SSR HTML already
+ * contains fallback markers (do not wait for React.lazy / AfterHydrate).
+ * Also start matching module JSON so param forms avoid a second waterfall.
  */
 import ExecutionEnvironment from '@docusaurus/ExecutionEnvironment';
 import {loadModuleDef} from '@site/data/xaction/modules-index';
-import {loadHeavyPreviewHost} from '@site/src/theme/lazyMdxComponent';
+import {
+  loadActionEditorPreview,
+  loadHeavyPreviewHost,
+} from '@site/src/theme/lazyMdxComponent';
 
 function prefetchIfNeeded(): void {
   if (!ExecutionEnvironment.canUseDOM) {
@@ -14,6 +16,9 @@ function prefetchIfNeeded(): void {
   }
   if (document.querySelector('[data-qk-preview="heavy"]')) {
     void loadHeavyPreviewHost();
+  }
+  if (document.querySelector('[data-qk-preview="editor"]')) {
+    void loadActionEditorPreview();
   }
   document.querySelectorAll('[data-qk-module]').forEach((node) => {
     const key = node.getAttribute('data-qk-module');

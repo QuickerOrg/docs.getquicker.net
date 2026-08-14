@@ -12,7 +12,6 @@ import {
   type CSSProperties,
   type ReactNode,
 } from 'react';
-import catalogJson from '@site/data/xaction/catalog.json';
 import stepCatalog from '@site/data/step-render/catalog.json';
 import {DocsStepIcon} from '@site/src/components/StepProgramView/DocsStepIcon';
 import StepProgramView from '@site/src/components/StepProgramView';
@@ -104,6 +103,30 @@ type GhostPose = {
 
 const STEP_CATALOG = stepCatalog as StepCatalogShape;
 
+let catalogModulesPromise: Promise<CatalogModule[]> | null = null;
+
+/** Full xaction catalog is ~860KB — only load when the toolbox is visible. */
+function loadCatalogModules(): Promise<CatalogModule[]> {
+  if (!catalogModulesPromise) {
+    catalogModulesPromise = import(
+      /* webpackChunkName: "qk-xaction-catalog" */
+      '@site/data/xaction/catalog.json'
+    ).then((mod) => {
+      const data = (mod as {default?: {modules: CatalogModule[]}}).default ??
+        (mod as {modules: CatalogModule[]});
+      return data.modules ?? [];
+    });
+  }
+  return catalogModulesPromise;
+}
+
+function needsToolboxModules(
+  focus: EditorFocus,
+  dragDemo: ActionEditorDragDemoConfig | undefined,
+): boolean {
+  return focus === 'full' || focus === 'toolbox' || Boolean(dragDemo);
+}
+
 const TOOLBOX_TABS: {key: ToolboxTabKey; label: string; icon: string; category?: string}[] =
   [
     {key: 'all', label: '所有', icon: 'fa:Solid_Bars'},
@@ -175,10 +198,6 @@ export type ActionEditorPreviewProps = {
   historyDemo?: ActionEditorHistoryDemoConfig;
   className?: string;
 };
-
-function listModules(): CatalogModule[] {
-  return (catalogJson as {modules: CatalogModule[]}).modules;
-}
 
 function prefersReducedMotion(): boolean {
   return (
@@ -271,6 +290,23 @@ export default function ActionEditorPreview({
   const [historyPress, setHistoryPress] = useState<'undo' | 'redo' | null>(null);
   const [cursor, setCursor] = useState<{x: number; y: number} | null>(null);
   const timersRef = useRef<number[]>([]);
+  const [catalogModules, setCatalogModules] = useState<CatalogModule[]>([]);
+
+  useEffect(() => {
+    if (!needsToolboxModules(focus, dragDemo)) {
+      setCatalogModules([]);
+      return undefined;
+    }
+    let cancelled = false;
+    void loadCatalogModules().then((modules) => {
+      if (!cancelled) {
+        setCatalogModules(modules);
+      }
+    });
+    return () => {
+      cancelled = true;
+    };
+  }, [focus, dragDemo]);
 
   const historyFrames = historyDemo?.frames ?? [];
   const historyFrame = historyFrames[historyIndex] ?? historyFrames[0];
@@ -292,7 +328,7 @@ export default function ActionEditorPreview({
   const tab = TOOLBOX_TABS.find((item) => item.key === toolboxTab) ?? TOOLBOX_TABS[0];
   const query = toolboxSearch.trim().toLowerCase();
   const modules = useMemo(() => {
-    const all = listModules();
+    const all = catalogModules;
     const byTab = tab.category
       ? all.filter((item) => item.category === tab.category)
       : all;
@@ -311,12 +347,19 @@ export default function ActionEditorPreview({
       }
     }
     return list;
-  }, [tab.category, query, dragDemo?.moduleKey, toolboxSelected]);
+  }, [
+    catalogModules,
+    tab.category,
+    query,
+    dragDemo?.moduleKey,
+    toolboxSelected,
+  ]);
 
   const dragModuleKey = dragDemo?.moduleKey ?? toolboxSelected ?? modules[0]?.key;
   const selectedKey = toolboxSelected ?? dragModuleKey ?? modules[0]?.key;
-  const dragModule = modules.find((m) => m.key === dragModuleKey) ??
-    listModules().find((m) => m.key === dragModuleKey);
+  const dragModule =
+    modules.find((m) => m.key === dragModuleKey) ??
+    catalogModules.find((m) => m.key === dragModuleKey);
   const dragIcon = dragModuleKey
     ? STEP_CATALOG.runners?.[dragModuleKey]?.icon
     : undefined;

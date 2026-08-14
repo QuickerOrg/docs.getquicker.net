@@ -1,6 +1,6 @@
 ---
 title: "自动化脚本"
-description: "使用受限 JavaScript 编排坐标计算、鼠标、键盘等桌面自动化操作。"
+description: "使用受限 JavaScript 编排鼠标、键盘、Quicker 提示消息和文本剪贴板等自动化操作。"
 slug: "/v2/xaction/modules/automationscript"
 sidebar_label: "自动化脚本"
 sidebar_position: 20
@@ -13,11 +13,11 @@ metadataGeneratedAt: "2026-08-13 19:01:10"
 
 # 自动化脚本
 
-使用 JavaScript 编排鼠标移动、点击、滚动、拖拽、按键、热键和文本输入。适合坐标数组、循环、网格、批量点击以及键鼠组合操作这类用普通步骤不方便表达的自动化。
+使用 JavaScript 编排鼠标、键盘、Quicker 提示消息和文本剪贴板操作。适合坐标数组、循环、网格、批量点击、键鼠组合以及根据运行结果显示消息或读写文本这类用普通步骤不方便表达的自动化。
 
 :::warning 安全提示
 
-本模块会操作真实鼠标和键盘。首次运行相关能力时需要确认桌面控制权限；脚本运行期间，用户操作键盘或鼠标会接管并取消脚本。请先用少量输入测试，不要一开始就对重要数据执行大量点击、按键或文本输入。
+导入 `mouse` 或 `key` 时，本模块会操作真实鼠标和键盘。首次运行相关能力时需要确认桌面控制权限；脚本运行期间，用户操作键盘或鼠标会接管并取消脚本。导入 `clipboard` 时也需要确认本机剪贴板权限。请先用少量输入测试，不要一开始就对重要数据执行大量点击、按键、剪贴板写入或文本输入。
 
 :::
 
@@ -25,10 +25,10 @@ metadataGeneratedAt: "2026-08-13 19:01:10"
 
 - 只做一次移动、点击或找图定位：使用[鼠标输入](/v2/xaction/modules/mouse)。
 - 执行很短的键盘、鼠标指令串：使用[多步骤输入](/v2/xaction/modules/inputscript)。
-- 需要循环、数组、条件判断、坐标计算、热键或键鼠组合操作：使用本模块。
+- 需要循环、数组、条件判断、坐标计算、热键、键鼠组合、提示消息或文本剪贴板操作：使用本模块。
 - 需要通用 JavaScript、动作变量读写或可选 CLR：使用[运行 Javascript 代码](/v2/xaction/modules/jsscript)。它与本模块的语法和安全边界不同。
 
-本模块专门提供受控的桌面自动化能力，不是可任意访问系统资源的通用 JavaScript 环境，也不会替换已有的 JavaScript 模块。后续可在同一个 `"quicker"` 模块中扩展窗口 API，但当前版本尚未导出 `window`。
+本模块专门提供受控的桌面自动化能力，不是可任意访问系统资源的通用 JavaScript 环境，也不会替换已有的 JavaScript 模块。后续可在同一个 `"quicker"` 模块中扩展对话框和窗口 API，但当前版本尚未导出 `dialog` 或 `window`。
 
 ## 当前模块定义
 
@@ -53,12 +53,12 @@ export default mouse.position();
 
 ### 导入方式
 
-`"quicker"` 是 Quicker 在内存中提供的模块，不是 npm 包或本地文件。当前提供 `mouse`、`key`、`screen`、`sleep`、`input` 五个命名导出。
+`"quicker"` 是 Quicker 在内存中提供的模块，不是 npm 包或本地文件。当前提供 `mouse`、`key`、`screen`、`sleep`、`input`、`notify`、`clipboard` 七个命名导出。
 
 按需导入：
 
 ```javascript
-import { mouse, key, screen, sleep, input } from "quicker";
+import { mouse, key, screen, sleep, input, notify, clipboard } from "quicker";
 ```
 
 导入整个命名空间：
@@ -386,6 +386,76 @@ console.log(budget.heldKeys);
 
 一次 `down` 或 `up` 消耗一个按键边沿；一次 `press` 消耗两个。额度由宿主固定，脚本不能提高。
 
+## `notify` API
+
+`notify` 显示 Quicker 自己的非阻塞提示消息。它不会暂停脚本等待用户操作，也不会创建 Windows 系统通知。
+
+```javascript
+import { notify } from "quicker";
+
+notify.info("任务开始");
+notify.success("处理完成", {
+  title: "批量处理",
+  durationMs: 5000,
+  placement: "bottomRight"
+});
+```
+
+| API | 用途 |
+| --- | --- |
+| `notify.show(message, options?)` | 显示消息；默认类型为 `info`，可通过 `options.kind` 指定类型。 |
+| `notify.info(message, options?)` | 显示信息消息。 |
+| `notify.success(message, options?)` | 显示成功消息。 |
+| `notify.warning(message, options?)` | 显示警告消息。 |
+| `notify.error(message, options?)` | 显示错误消息。 |
+
+消息必须是字符串，最长 4096 个字符。便捷方法的消息类型已经固定，不能再传 `kind`；需要动态选择类型时使用 `notify.show()`。
+
+### 提示选项
+
+```javascript
+notify.show("正在同步", {
+  kind: "info",              // info | success | warning | error
+  title: "同步任务",         // 省略时使用动作标题；null 表示不显示标题
+  durationMs: 0,              // 0 使用 Quicker 默认时长，或 2000..30000
+  placement: "bottomCenter", // 见下方位置列表
+  key: "sync-progress",      // 可选；同一动作内用于识别重复消息
+  duplicate: "replace"       // replace | count | ignore；使用时必须同时提供 key
+});
+```
+
+`placement` 支持 `bottomCenter`、`bottomLeft`、`bottomRight`、`topCenter`、`topLeft`、`topRight`，默认 `bottomCenter`。`title` 最长 128 个字符，`key` 最长 64 个字符且不能全是空白。
+
+相同 `key` 只在当前动作范围内参与去重：`replace` 替换已有消息，`count` 合并并累计次数，`ignore` 忽略新的重复消息。每次脚本最多显示 20 条提示，每秒最多 5 条；超过限制返回 `NOTIFY_LIMIT_EXCEEDED`。
+
+提示消息不支持按钮、点击动作、激活回调或 JavaScript 回调，也不会进入 Windows 通知中心。脚本不能通过提示消息获得新的执行入口。
+
+## `clipboard` API
+
+`clipboard` 只处理 Windows 剪贴板中的纯文本，不读取或写入图片、文件列表、HTML 等其它格式。
+
+```javascript
+import { clipboard, notify } from "quicker";
+
+const text = clipboard.readText();
+if (text === null) {
+  notify.warning("剪贴板中没有文本");
+} else {
+  clipboard.writeText(text.trim(), { hideFromHistory: true });
+}
+```
+
+| API | 用途 |
+| --- | --- |
+| `clipboard.hasText()` | 剪贴板当前是否包含文本。 |
+| `clipboard.readText()` | 读取文本；没有文本格式时返回 `null`。 |
+| `clipboard.writeText(text, options?)` | 写入文本；传入空字符串等同于清空剪贴板。 |
+| `clipboard.clear()` | 清空剪贴板。 |
+
+`readText()` 会区分“没有文本”和“文本为空”：前者返回 `null`，后者返回 `""`。`writeText()` 的 `text` 必须是字符串；唯一选项 `hideFromHistory` 是布尔值，默认为 `false`，设为 `true` 时请求 Windows 不把这次写入保留到剪贴板历史。
+
+单次读出或写入的文本最多包含 1,048,576 个 UTF-16 代码单元。每次脚本最多执行 64 次剪贴板操作，其中写入或清空最多 32 次。剪贴板正被其它程序占用或暂时不可用时返回 `CLIPBOARD_UNAVAILABLE`；文本或次数超过限制时返回 `CLIPBOARD_LIMIT_EXCEEDED`。
+
 ## `screen` API
 
 `screen` 是脚本开始时取得的只读屏幕快照：
@@ -487,10 +557,13 @@ export default {
 
 ## 权限、用户接管和输入安全
 
-- Quicker 会先静态分析从 `"quicker"` 导入的能力。使用 `mouse`、`key` 或两者时，首次真实运行会分别请求鼠标、键盘或键鼠桌面自动化权限；权限确认前不会执行脚本或注入输入。
-- `import * as qk from "quicker"` 可以访问全部当前导出，因此会按鼠标和键盘两种能力请求权限。只想申请必要能力时请使用命名导入。
+- Quicker 会先静态分析从 `"quicker"` 导入的能力。使用 `mouse`、`key` 或 `clipboard` 时，首次真实运行会请求对应的本机权限；权限确认前不会执行脚本。
+- 当前 `clipboard` 是一个整体导出。即使脚本只调用读取或只调用写入方法，`import { clipboard }` 也会保守地同时申请“读取剪贴板文本”和“写入或清空剪贴板文本”权限。
+- `notify` 只发布受限的 Quicker 提示消息，不需要持久授权。它仍受消息长度、次数和速率限制。
+- `import * as qk from "quicker"` 可以访问全部当前导出，因此会按鼠标、键盘、剪贴板读取和剪贴板写入能力请求权限。只想申请必要能力时请使用命名导入。
 - 授权绑定动作、脚本、超时、恢复位置选项和固定配额策略；这些内容变化后需要重新确认。
 - 授权只保存在当前账号的本机数据中，不随动作导出、分享、状态备份或同步到其它设备。
+- 只有脚本导入 `mouse` 或 `key` 时才会建立输入接管会话和占用输入互斥。仅使用 `notify`、`clipboard`、`screen`、`sleep` 或 `input` 的脚本不会占用鼠标键盘输入接管。
 - 锁屏、UAC / 安全桌面下不会注入输入。鼠标操作会核对目标坐标下的窗口，键盘操作会核对当前前台窗口；管理员权限或高完整性目标一律拒绝，其它权限高于 Quicker 或权限无法确认的目标也会被拒绝。
 - 启动时已经按住的动作触发键或鼠标按钮，需要在 1 秒内松开；新的按键、鼠标按钮或滚轮输入会立即由用户接管。
 - 真实鼠标在 200 毫秒内累计移动约 5 个物理像素也会接管；极小的传感器抖动不会立刻中止。
@@ -526,6 +599,10 @@ export default {
 | `clickAll` 点数 | 100 |
 | 单次 `sleep` | 10 秒 |
 | 日志 | 100 条、总计 32,000 字符 |
+| Quicker 提示消息 | 每次运行 20 条、每秒 5 条 |
+| 单条提示正文 / 标题 / 去重键 | 4096 / 128 / 64 个字符 |
+| 剪贴板操作 | 每次运行 64 次，其中写入或清空 32 次 |
+| 单次剪贴板文本 | 1,048,576 个 UTF-16 代码单元 |
 
 双击消耗 2 次鼠标按压额度，拖拽消耗 1 次。每次键盘 API 调用消耗 1 个键盘事务；`down` / `up` 各消耗 1 个边沿，`press` 消耗 2 个。节流等待仍计入步骤的总超时。
 
@@ -534,7 +611,9 @@ export default {
 - `async` / `await`、Promise、`setTimeout` 和后台任务
 - 动态 `import()`、其它静态模块、`require()`、npm 和 Node.js 模块
 - `eval()`、`new Function()`、CLR、反射和程序集访问
-- HTTP、文件、进程、剪贴板、浏览器 DOM、动作变量写回和子程序调用
+- HTTP、文件、进程、浏览器 DOM、动作变量写回和子程序调用
+- 剪贴板图片、文件列表、HTML 等非文本格式
+- 阻塞式对话框、消息按钮、点击动作、JavaScript 回调和 Windows 系统通知；当前尚未导出 `dialog`
 - 独立 `mouse.down()` / `mouse.up()`、原始键码、扫描码和任意键盘布局映射
 - 录制回放、图片定位、窗口句柄和窗口相对坐标；当前尚未导出 `window`
 - 水平滚轮、X1 / X2 按钮和任意点击次数
@@ -562,6 +641,10 @@ export default {
 | `WINDOWS_LOCKED`、`SECURE_DESKTOP`、`UNSAFE_DESKTOP` | 解锁 Windows，关闭 UAC / 安全桌面后再运行。 |
 | `ELEVATED_TARGET_DENIED`、`TARGET_PERMISSION_UNKNOWN` | 管理员权限或高完整性目标一律不支持；其它目标也不能高于 Quicker，且必须能确认权限。 |
 | `INPUT_LIMIT_EXCEEDED`、`LIMIT_EXCEEDED` | 减少点击、滚轮、按键、文本、循环、源码规模或复杂度。 |
+| `NOTIFY_LIMIT_EXCEEDED` | 减少提示消息数量或发送频率；每次运行最多 20 条、每秒最多 5 条。 |
+| `NOTIFY_FAILED` | Quicker 提示消息发布失败；检查应用状态后重试。 |
+| `CLIPBOARD_LIMIT_EXCEEDED` | 减少剪贴板操作次数或文本长度。 |
+| `CLIPBOARD_UNAVAILABLE` | Windows 剪贴板正被其它程序占用或暂时不可用；稍后重试。 |
 | `TIMEOUT` | 减少工作量，或谨慎提高步骤的超时时间。 |
 | `INPUT_INJECTION_FAILED`、`INPUT_OPERATION_FAILED`、`HOST_OPERATION_FAILED` | 输入未能完整发送；检查系统状态和目标窗口，再从安全位置重试。 |
 | `INPUT_CLEANUP_FAILED` | Quicker 无法确认本次脚本持有的按键已完全释放；先人工松开相关按键并检查系统输入状态。 |
@@ -596,4 +679,5 @@ export default {
 
 ## 更新历史
 
+- 2026-08-14 新增 Quicker 提示消息和文本剪贴板 API，并按导入能力建立宿主。
 - 2026-08-13 首次加入自动化脚本模块文档，提供受控的鼠标和键盘 API。

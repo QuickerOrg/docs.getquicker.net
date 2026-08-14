@@ -92,7 +92,7 @@ quickerSetVar('动作里的变量名', 新的值);
     {
       href: '/v2/xaction/modules/automationscript',
       label: '自动化脚本',
-      description: '使用受限 JavaScript 安全地编排鼠标和键盘操作。',
+      description: '使用受限 JavaScript 编排鼠标、键盘、提示消息和文本剪贴板操作。',
     },
     {
       href: '/v2/xaction/modules/csscript',

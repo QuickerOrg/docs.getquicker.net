@@ -287,7 +287,7 @@ legacyContentUpdatedAt: "2025-01-20T02:00:01.000Z"
     {
       href: '/v2/xaction/modules/automationscript',
       label: '自动化脚本',
-      description: '用 JavaScript 编排坐标、鼠标和键盘操作。',
+      description: '用 JavaScript 编排鼠标、键盘、提示消息和文本剪贴板操作。',
     },
     {
       href: '/v2/xaction/modules/searchbmp',

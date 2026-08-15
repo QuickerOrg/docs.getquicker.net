@@ -93,7 +93,7 @@ legacyContentUpdatedAt: "2025-02-20T23:53:47.000Z"
     {
       href: '/v2/xaction/modules/automationscript',
       label: '自动化脚本',
-      description: '需要循环、坐标数组、热键或批量输入时使用。',
+      description: '需要循环、坐标数组、热键、提示消息或文本剪贴板时使用。',
     },
     {
       href: '/v2/xaction/modules/sendkeys',

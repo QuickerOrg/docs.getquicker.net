@@ -1,6 +1,6 @@
 ---
 title: 内置工具
-description: Quicker V2 内置的截图、AI 等工具入口。
+description: Quicker V2 已有说明的截图、AI、搜索、选中文本和更新入口。
 sidebar_position: 50
 quickerDocKey: v2/features/tools
 comments: true
@@ -8,7 +8,7 @@ comments: true
 
 # 内置工具
 
-Quicker V2 内置了一批可直接使用或在动作中调用的工具。截图相关能力已单独成章，其它工具说明会陆续补充。
+下面只列出本站已经写清的工具入口，不暗示还有一份未完成的「全部内置工具」清单。
 
 ## 截图与贴图
 
@@ -17,10 +17,13 @@ Quicker V2 内置了一批可直接使用或在动作中调用的工具。截图
 - [图片翻译](./screenshot/image-translate.md)：截图 / 贴图图到图翻译与百度 / 有道 API 配置
 - [JS 自定义工具栏](./screenshot/toolbar-script.md)：用脚本定制工具栏，并调用子程序或启动动作
 
-## AI 设置
+## AI
 
-- [统一 AI 服务与模型设置](../what's-new/ai-services-and-models.md)：配置服务连接、模型能力、用途优选和本机凭据
+- [统一 AI 服务与模型设置](/v2/what's-new/ai-services-and-models.md)：服务连接、模型能力和用途优选
+- [AI 与 Agent 现状](./ai-and-agent.md)：普通用户现在能用什么，以及 Agent / 计算机控制尚未普遍开放
 
-## 待补充
+## 搜索、选中文本与更新
 
-- 其它内置小工具
+- 面板内筛选和跨场景搜索：见 [工具与使用体验](/v2/what's-new/tools-and-experience.md)
+- [选中文本工具条](./triggers/text-selection-toolbar.md)
+- [更新 Quicker V2](/v2/install/update.md)：应用内下载、校验和静默安装

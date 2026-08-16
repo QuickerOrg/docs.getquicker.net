@@ -8,7 +8,11 @@ comments: true
 
 # 安装 Quicker V2
 
-从官网下载安装包，在受支持的 64 位 Windows 上安装。V2 与 1.x 使用不同的运行平台和数据目录，不能当成同一个程序的换皮升级。
+:::caution[Preview · 仅专业版]
+当前 V2 是 **Preview 体验版**，仅面向专业版用户。免费版数据迁移仍在开发，免费账号目前无法登录 2.0。不建议用它替换无法中断的 1.x 关键环境。体验前请先读 [体验前必读](/important-notice)。
+:::
+
+从官网 **V2 页面**下载安装包，在受支持的 64 位 Windows 上安装。V2 与 1.x 使用不同的运行平台和数据目录，不能当成同一个程序的换皮升级，也**不能同时安装**。
 
 ## 系统要求
 
@@ -20,11 +24,13 @@ comments: true
 
 ## 下载和安装
 
-1. 打开官网下载页：[https://getquicker.net/Download](https://getquicker.net/Download)。
-2. 下载当前 V2 安装包，按向导完成安装。
+1. 打开官网 V2 页：[https://getquicker.net/V2](https://getquicker.net/V2)，下载当前 2.0 安装包。
+2. 按向导完成安装。若提示缺少 [.NET 10 桌面运行时](https://dotnet.microsoft.com/download/dotnet/10.0)，按提示安装后再打开 Quicker。
 3. 若 Windows SmartScreen 或浏览器拦截，先确认文件来自上述官网，再选择保留并继续。
 
-不要从不明镜像或转发网盘下载。安装完成后从开始菜单或桌面快捷方式启动。
+**不要**从 [https://getquicker.net/Download](https://getquicker.net/Download) 下载。那个页面目前提供的是 Quicker **1.x**（例如 1.45.5），不是 V2。
+
+不要从不明镜像或转发网盘下载。本机若已安装 1.x，先按 [从 V1 迁移](/v2/migration/from-v1.md) 备份并卸载，再装 V2。安装完成后从开始菜单或桌面快捷方式启动。
 
 ## 首次启动
 
@@ -38,7 +44,7 @@ comments: true
 
 - 装不上：先核对 Windows 版本和是否为 64 位。1.x 能运行，不代表这台电脑能跑 V2。
 - 装完打不开：确认没有用 32 位兼容方式启动，并查看是否被安全软件隔离。
-- 1.x 与 V2 不要同时改同一批动作。V2 不会把旧的 `quicker.db` 当作日常存储继续写入。
+- 1.x 与 V2 不能同时安装（浏览器扩展会冲突）。V2 不会把旧的 `quicker.db` 当作日常存储继续写入。
 - 动作会在 Quicker 进程内加载 DLL、COM 或 Office 组件时，这些依赖也必须提供 x64 版本。
 
 ## 相关链接

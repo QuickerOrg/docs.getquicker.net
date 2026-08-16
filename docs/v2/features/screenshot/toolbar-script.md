@@ -13,22 +13,62 @@ comments: true
 脚本在打开截图会话前求值一次，决定按钮（或整栏布局）；点击后再执行对应逻辑。
 
 :::info[步骤参数]
-后续会在组合动作的 **截图 Pro** 步骤中增加一个输入参数，用于填写本页所述的工具栏脚本。参数名称与编辑器界面以正式版本为准；本文先固定脚本写法，便于提前编写与验证。
+在组合动作的 **截图 Pro** 步骤中填写工具栏脚本（参数名以软件界面为准，常见为工具栏脚本 / `toolbarScript`）。
 :::
 
-## 怎么写
+## 怎么写（推荐：压缩写法）
 
-1. **加按钮**：最后 `return [ 增强, 发送 ]`。默认工具栏不动，固定位置出一个下拉。
-2. **处理、不关窗**：`await ctx.runSp(名字, { strength: 0.8 })` 跑子程序，再用 `post.keep({ replace: r.outputs.image })` 写回新图。当前图可省略。
-3. **交给动作、关窗**：`post.confirm({ launchAction: 动作Id })` 先结束截图（等同点勾），再打开动作；当前图由宿主自动带上。
+多数情况不必手写 `async run`：
 
-`runSp` 第二个对象的每个键对应子程序的一个输入变量，名字必须一致。当前截图可省略（宿主自动带上）；要写明进了哪个参数时再写 `image: ctx.image`。`post` 的动词决定截图窗：`keep` 不关，`confirm` 确认关闭，`close` 取消关闭。
+1. **调子程序（不关窗、默认换图）**：`sp('子程序名', 入参对象?, { title, icon, post })`
+2. **开动作（确认关窗）**：`act('动作名或ID', { title, icon, post })`
+3. **最后**：`return [ …按钮… ]`
 
-没有 `runAction`：结构化处理用子程序，命令型移交用 `launchAction`。
+入参对象的每个键对应子程序的一个输入变量。当前截图默认自动带上；若子程序图片变量不叫 `image`，写成 `photo: $image`（`$image` 表示当前截图，不要写成字符串 `'$image'`）。
+
+后处理写在 **`post: { … }`** 里，字段与完整写法的 `post.keep` / `post.confirm` 相同（例如 `clipboard: true`）。
+
+需要 if / 多步时，再写带 `async run` 的完整按钮（见下文「完整写法」）。
 
 ## 最短完整示例
 
-两个自定义按钮。可直接复制后改子程序名和动作 ID：
+```js
+return [
+  sp('增强图片', { strength: 0.8 }, {
+    title: '增强',
+    icon: 'fa:Light_WandMagic',
+    post: { clipboard: true },
+  }),
+  act('这里换成动作ID', {
+    title: '发送',
+    icon: 'fa:Light_PlayCircle',
+  }),
+];
+```
+
+说明：
+
+- `增强图片` 是**当前动作内**的子程序名称（或 ID）。公共子程序在名字前加 `%%`。
+- `{ strength: 0.8 }` 的键必须与子程序**输入变量同名**。
+- 处理型子程序请把结果图输出到 **`image`**（可用 `post: { replaceFrom: '其它输出名' }` 改）。
+- `act(...)` 里换成要启动的动作 ID（或名称）。
+- 也可写成声明对象（与以后可视化编辑同构）：`{ sp: '增强图片', inputs: { strength: 0.8 }, title: '增强' }`。
+
+### 图片入参不叫 image
+
+```js
+return [
+  sp('增强图片', { photo: $image, strength: 0.8 }, { title: '增强' }),
+];
+```
+
+## 完整写法（需要分支时）
+
+1. **加按钮**：最后 `return [ 增强, 发送 ]`。
+2. **处理、不关窗**：`await ctx.runSp(名字, { strength: 0.8 })`，再用 `post.keep({ replace: r.outputs.image })`。
+3. **交给动作、关窗**：`post.confirm({ launchAction: 动作Id })`。
+
+`runSp` 第二个对象的每个键对应子程序输入变量。当前图可省略；要写明时用 `image: ctx.image`（与 `$image` 同值）。`post` 的动词决定截图窗：`keep` 不关，`confirm` 确认关闭，`close` 取消关闭。
 
 ```js
 const 增强 = {
@@ -52,14 +92,7 @@ const 发送 = {
 return [增强, 发送];
 ```
 
-说明：
-
-- 上例未写 `image`：宿主会自动带上当前图。子程序用输入变量 **`image`**，或用 **获取Quicker信息** 的 **图片上下文参数** 都能读到。需要写明时：`runSp('增强图片', { image: ctx.image, strength: 0.8 })`，与省略等价。
-- `增强图片` 是**当前动作内**的子程序名称（或 ID）。公共子程序在名字前加 `%%`。
-- `{ strength: 0.8 }` 的键必须与子程序**输入变量同名**。
-- 处理型子程序请把结果图输出到 **`image`**，脚本里用 `r.outputs.image`。
-- `launchAction` 换成要启动的动作 ID（或名称）。
-- 返回数组里放**命令对象本身**，不要写字符串 `'增强'`。
+没有 `runAction`：结构化处理用子程序，命令型移交用 `launchAction` / `act(...)`。
 
 ## 常见写法
 

@@ -8,7 +8,7 @@ comments: true
 
 # 内置工具
 
-Quicker V2 内置了一批可直接使用或在动作中调用的工具。截图相关能力已单独成章，其它工具说明会陆续补充。
+Quicker V2 内置了一批可直接使用或在动作中调用的工具。截图、贴图、选中文本、AI 设置和应用更新已有独立说明，可以从本页进入。
 
 ## 截图与贴图
 
@@ -19,8 +19,15 @@ Quicker V2 内置了一批可直接使用或在动作中调用的工具。截图
 
 ## AI 设置
 
+- [AI 与 Agent 当前状态](./ai-and-agent.md)：普通用户当前可用的 AI 范围，以及 Agent 相关入口的开放状态
 - [统一 AI 服务与模型设置](../what's-new/ai-services-and-models.md)：配置服务连接、模型能力、用途优选和本机凭据
 
-## 待补充
+## 选中文本与搜索
 
-- 其它内置小工具
+- [选中文本工具条](./triggers/text-selection-toolbar.md)：划词后显示常用操作，并可按场景追加、替换或禁用
+- [工具与使用体验](../what's-new/tools-and-experience.md)：动作搜索、文件搜索、提示交互和应用更新等变化
+
+## 更新与体验风险
+
+- [更新 Quicker V2](/v2/install/update)：应用内下载、校验和静默更新入口说明
+- [体验前必读](/important-notice)：Preview、专业版、免费账号、并存限制和降级风险

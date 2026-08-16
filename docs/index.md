@@ -14,14 +14,22 @@ Quicker 是 Windows 上的效率工具：把重复操作做成**动作**，用�
 
 V2 把动作内容和它出现的位置分开，组合动作用模块拼步骤，参数、变量和调试都按当前程序定义来写。
 
+:::caution 先确认 V2 Preview 范围
+
+Quicker V2 目前是 Preview，官方 V2 页面标注为「仅专业版」；免费账号数据迁移仍在进行，当前不能登录 2.0。请不要把 V2 当作关键 1.x 环境的直接替换，体验前先阅读 [体验前必读](./important-notice.md)。
+
+:::
+
 ## 从这里开始
 
 | 你想… | 去这篇 |
 | --- | --- |
+| 先确认 V2 是否适合当前账号和环境 | [体验前必读](./important-notice.md) |
 | 第一次打开 Quicker | [开始使用](./v2/getting-started.md) |
 | 安装或确认系统要求 | [安装 Quicker V2](./v2/install/windows.md) |
 | 自己写一个动作 | [怎样学会组合动作](./v2/xaction/guides/how-to-learn.md) |
 | 从 1.x 升级 | [从 V1 迁移](./v2/migration/from-v1.md) |
+| 了解 AI 设置和 Agent 开放状态 | [AI 与 Agent 当前状态](./v2/features/ai-and-agent.md) |
 | 截图、标注、贴图 | [截图 Pro](./v2/features/screenshot/capture-pro.md) |
 | 面板、场景、分组 | [新面板窗口](./v2/what's-new/new-main-win/usage.md) |
 | 查某个步骤的参数 | [组合动作模块参考](./v2/xaction/modules) |
@@ -46,6 +54,11 @@ V2 把动作内容和它出现的位置分开，组合动作用模块拼步骤�
       href: '/v2/xaction/guides/how-to-learn',
       label: '学习路径',
       description: '组合动作怎么学',
+    },
+    {
+      href: '/important-notice',
+      label: '体验前必读',
+      description: 'Preview、账号和回退风险',
     },
     {
       href: "/v2/what's-new",

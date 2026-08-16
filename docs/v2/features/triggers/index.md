@@ -40,18 +40,18 @@ flowchart LR
 | --- | --- | --- |
 | 鼠标手势 | 按住键并移动画出轨迹，匹配后执行动作 | [使用说明](./mouse-gestures.md) |
 | 选中文本工具条 | 划词后在指针附近显示候选操作 | [使用说明](./text-selection-toolbar.md) |
-| 动作快捷键 | 全局或按场景绑定组合键到动作 | [2.x 变化](/v2/what's-new/others/action-hotkeys)（使用说明即将补充） |
-| 扩展热键 | 引导键 + 第二键，适合字母键扩展 | [2.x 变化](/v2/what's-new/others/powerkeys)（使用说明即将补充） |
-| 热键联动 | 监听一段或两段快捷键再执行 | [2.x 变化](/v2/what's-new/others/hotkey-watchers)（使用说明即将补充） |
-| 文本指令 | 输入缩写或正则匹配后执行 | [2.x 变化](/v2/what's-new/others/text-commands)（使用说明即将补充） |
-| 按键双击 | 双击某键触发 | [2.x 变化](/v2/what's-new/others/key-double-click)（使用说明即将补充） |
-| 左键辅助 | 按住左键再配合其它键或滚轮 | [2.x 变化](/v2/what's-new/others/left-button-plus)（使用说明即将补充） |
-| 轮盘菜单 | 在指针周围用方向选动作 | [2.x 变化](/v2/what's-new/others/circle-menu)（使用说明即将补充） |
-| 高级鼠标触发 | 短按、长按、划动、角落、边界摩擦等 | [2.x 变化](/v2/what's-new/others/advanced-mouse-triggers)（使用说明即将补充） |
+| 动作快捷键 | 全局或按场景绑定组合键到动作 | [设置与变化](/v2/what's-new/others/action-hotkeys) |
+| 扩展热键 | 引导键 + 第二键，适合字母键扩展 | [设置与变化](/v2/what's-new/others/powerkeys) |
+| 热键联动 | 监听一段或两段快捷键再执行 | [变化说明](/v2/what's-new/others/hotkey-watchers) |
+| 文本指令 | 输入缩写或正则匹配后执行 | [设置与变化](/v2/what's-new/others/text-commands) |
+| 按键双击 | 双击某键触发 | [变化说明](/v2/what's-new/others/key-double-click) |
+| 左键辅助 | 按住左键再配合其它键或滚轮 | [变化说明](/v2/what's-new/others/left-button-plus) |
+| 轮盘菜单 | 在指针周围用方向选动作 | [设置与变化](/v2/what's-new/others/circle-menu) |
+| 高级鼠标触发 | 短按、长按、划动、角落、边界摩擦等 | [变化说明](/v2/what's-new/others/advanced-mouse-triggers) |
 | 动作面板 | 弹出面板再点动作 | [开始使用](/v2/getting-started)、[新面板](/v2/what's-new/new-main-win/usage) |
 | 滚轮触发动作 | 在悬浮按钮等位置用滚轮连续调用 | [教程](/v2/xaction/guides/scroll-trigger) |
 
-「使用说明即将补充」的条目目前只有相对 1.x 的改进说明；配置路径仍以软件里 **场景与动作管理** 为准。
+按键双击、左键辅助和高级鼠标触发目前只有相对 1.x 的变化说明，完整操作页仍待整理；配置路径以软件里 **场景与动作管理** 为准。
 
 ## 统一管理与排障
 

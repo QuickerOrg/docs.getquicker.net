@@ -10,9 +10,19 @@ comments: true
 
 先对照现象看下面几条。组合动作的参数和限制以各 [模块页](/v2/xaction/modules) 为准。
 
+:::caution 先确认 V2 Preview 范围
+
+Quicker V2 目前是 Preview，官方 V2 页面标注为「仅专业版」；免费账号数据迁移仍在进行，当前不能登录 2.0。请不要把 V2 当作关键 1.x 环境的直接替换，体验前先阅读 [体验前必读](/important-notice)。
+
+:::
+
 ## 安装和启动
 
 **装不上或打不开**：V2 只提供 x64，并且只能跑在 [.NET 10 支持的 Windows](https://github.com/dotnet/core/blob/main/release-notes/10.0/supported-os.md) 上。1.x 能用，不代表这台电脑能跑 V2。见 [安装](/v2/install/windows.md) 和 [运行平台](/v2/what's-new/platform-and-compatibility.md)。
+
+**免费账号无法登录 V2**：V2 当前是 Preview，官方 V2 页面标注为「仅专业版」。免费账号数据迁移仍在进行，当前不能登录 2.0。
+
+**能不能同时装 1.x 和 V2**：不建议。两代客户端的浏览器扩展等组件会冲突；迁移体验应先备份并卸载 1.x，再安装 V2。需要回退时重新安装 1.x。
 
 **1.x 的数据去哪了**：V2 使用按账号隔离的新存储，不会把旧的 `quicker.db` 当作日常库继续写入。迁移步骤见 [从 V1 迁移](/v2/migration/from-v1.md)。
 

@@ -195,9 +195,11 @@ const config: Config = {
       style: 'light',
       links: [
         {label: 'Quicker V2', to: '/v2/getting-started'},
+        {label: 'V2 官网', href: 'https://getquicker.net/V2'},
         {label: '更新记录', to: '/release-notes'},
+        {label: '官方版本记录', href: 'https://getquicker.net/v2/versions'},
         {label: '官网', href: 'https://getquicker.net'},
-        {label: '文档中心', href: 'https://getquicker.net/KC'},
+        {label: '1.x 文档', href: 'https://getquicker.net/KC'},
         {label: '讨论区', href: 'https://getquicker.net/QA'},
         {
           label: 'GitHub',

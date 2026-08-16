@@ -18,17 +18,18 @@ comments: true
 
 ## 怎么写（推荐：压缩写法）
 
-多数情况不必手写 `async run`：
+多数情况不必手写 `async run`，只记 `sp` / `act`：
 
 1. **调子程序（不关窗、默认换图）**：`sp('子程序名', 入参对象?, { title, icon, post })`
-2. **开动作（确认关窗）**：`act('动作名或ID', { title, icon, post })`
+2. **开动作（确认关窗）**：`act('动作名或ID', 启动参数?, { title, icon, post })`
 3. **最后**：`return [ …按钮… ]`
 
-入参对象的每个键对应子程序的一个输入变量。当前截图默认自动带上；若子程序图片变量不叫 `image`，写成 `photo: $image`（`$image` 表示当前截图，不要写成字符串 `'$image'`）。
+第二参是「给目标的参数」，第三参才是按钮标题 / 图标 / 后处理。
 
-后处理写在 **`post: { … }`** 里，字段与完整写法的 `post.keep` / `post.confirm` 相同（例如 `clipboard: true`）。
+- `sp` 第二参：子程序输入变量对象（键名与变量同名）。当前图默认自动带上；若图片变量不叫 `image`，写成 `photo: $image`（不要写成字符串 `'$image'`）。
+- `act` 第二参：动作启动参数（字符串）。无参数可省略；只要标题时写 `act(id, null, { title: '…' })`。
 
-需要 if / 多步时，再写带 `async run` 的完整按钮（见下文「完整写法」）。
+后处理写在第三参的 **`post: { … }`** 里（例如 `clipboard: true`）。需要 if / 多步时，再写带 `async run` 的完整按钮（见下文）。
 
 ## 最短完整示例
 
@@ -39,7 +40,7 @@ return [
     icon: 'fa:Light_WandMagic',
     post: { clipboard: true },
   }),
-  act('这里换成动作ID', {
+  act('这里换成动作ID', '可选启动参数', {
     title: '发送',
     icon: 'fa:Light_PlayCircle',
   }),
@@ -51,8 +52,7 @@ return [
 - `增强图片` 是**当前动作内**的子程序名称（或 ID）。公共子程序在名字前加 `%%`。
 - `{ strength: 0.8 }` 的键必须与子程序**输入变量同名**。
 - 处理型子程序请把结果图输出到 **`image`**（可用 `post: { replaceFrom: '其它输出名' }` 改）。
-- `act(...)` 里换成要启动的动作 ID（或名称）。
-- 也可写成声明对象（与以后可视化编辑同构）：`{ sp: '增强图片', inputs: { strength: 0.8 }, title: '增强' }`。
+- `act(...)` 第一参换成动作 ID（或名称）；第二参是启动参数（可省略）。
 
 ### 图片入参不叫 image
 

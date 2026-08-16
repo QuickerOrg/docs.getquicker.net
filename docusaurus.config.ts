@@ -143,6 +143,19 @@ const config: Config = {
             ...(isProd ? ['**/lab/screenshot-review/**'] : []),
           ],
         },
+        // Encode apostrophes in loc. The what's-new/ directory is not renamed
+        // in this change; raw "'" in <loc> can break XML consumers / some edges.
+        sitemap: {
+          lastmod: 'date',
+          createSitemapItems: async (params) => {
+            const {defaultCreateSitemapItems, ...rest} = params;
+            const items = await defaultCreateSitemapItems(rest);
+            return items.map((item) => ({
+              ...item,
+              url: item.url.replaceAll("'", '%27'),
+            }));
+          },
+        },
         theme: {
           customCss: './src/css/custom.css',
         },
@@ -194,10 +207,10 @@ const config: Config = {
     footer: {
       style: 'light',
       links: [
-        {label: 'Quicker V2', to: '/v2/getting-started'},
+        {label: 'Quicker V2', to: '/v2'},
         {label: '更新记录', to: '/release-notes'},
-        {label: '官网', href: 'https://getquicker.net'},
-        {label: '文档中心', href: 'https://getquicker.net/KC'},
+        {label: '官网 V2', href: 'https://getquicker.net/V2'},
+        {label: '1.x 文档', href: 'https://getquicker.net/KC'},
         {label: '讨论区', href: 'https://getquicker.net/QA'},
         {
           label: 'GitHub',

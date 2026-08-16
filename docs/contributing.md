@@ -2,6 +2,7 @@
 title: 文档编写约定
 description: Quicker 文档站的 Markdown 编写和维护约定。
 sidebar_position: 50
+unlisted: true
 quickerDocKey: docs/contributing
 comments: false
 ---

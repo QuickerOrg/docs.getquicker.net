@@ -8,7 +8,7 @@ comments: true
 
 # 账号、登录与数据同步
 
-:::caution Preview · 仅专业版
+:::caution[Preview · 仅专业版]
 免费版数据迁移仍在开发，免费账号目前无法登录 2.0。完整限制见 [体验前必读](/important-notice)。
 :::
 

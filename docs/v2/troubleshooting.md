@@ -8,7 +8,7 @@ comments: true
 
 # 常见问题
 
-:::caution Preview · 仅专业版
+:::caution[Preview · 仅专业版]
 当前 V2 是 **Preview 体验版**，仅面向专业版用户。免费版数据迁移仍在开发，免费账号目前无法登录 2.0。不建议用它替换无法中断的 1.x 关键环境。体验前请先读 [体验前必读](/important-notice)。
 :::
 

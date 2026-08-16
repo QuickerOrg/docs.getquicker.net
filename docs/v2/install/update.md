@@ -8,7 +8,7 @@ comments: true
 
 # 更新 Quicker V2
 
-:::caution Preview · 仅专业版
+:::caution[Preview · 仅专业版]
 当前 V2 是 **Preview 体验版**，仅面向专业版用户。回退到更早版本前，先看 [体验前必读](/important-notice) 和 [官网版本记录](https://getquicker.net/v2/versions) 里该版本的注意项。
 :::
 

@@ -21,8 +21,8 @@ V2 重做了数据存储、同步、动作模型和主面板。动作内容和�
 | 下载安装 | [安装 Quicker V2](./install/windows.md) |
 | 从 1.x 过来 | [从 V1 迁移](./migration/from-v1.md) |
 | 相对 1.x 改了什么 | [V2 重要变化](./what's-new/index.md) |
-| 面板、触发、截图、账号 | [功能使用](./features) |
-| 自己写组合动作 | [组合动作](./xaction) |
+| 面板、触发、截图、账号 | [功能使用](/v2/features) |
+| 自己写组合动作 | [组合动作](/v2/xaction) |
 | 运行出问题 | [常见问题](./troubleshooting.md) |
 
 安装包只从 [https://getquicker.net/V2](https://getquicker.net/V2) 下载。`https://getquicker.net/Download` 目前提供的是 1.x，不要从那里装 V2。

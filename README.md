@@ -1,5 +1,7 @@
 # docs.getquicker.net
 
+**在线文档：<https://docs.getquicker.net>**
+
 Quicker 文档站，使用 [Docusaurus](https://docusaurus.io/) 生成静态网站。
 
 ## 安装

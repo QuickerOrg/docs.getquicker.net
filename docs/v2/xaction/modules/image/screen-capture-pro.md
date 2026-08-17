@@ -15,13 +15,17 @@ metadataGeneratedAt: "2026-08-03 20:08:03"
 
 渐进式选区截图：进入后出现全屏遮罩，光标附近给出初始选区；可拖拽框选、吸附控件，再复制、保存或贴图。Esc 取消。
 
+:::info[完整操作说明]
+本页是组合动作步骤的参数参考。选区、吸附、标注、OCR、贴图、长截图、录屏和快捷键等操作说明，见 [截图 Pro 功能说明](/v2/features/screenshot/capture-pro)。
+:::
+
 ## 当前模块定义
 
 <XActionModuleMeta moduleKey="sys:screenCapturePro" />
 
 ## 概述
 
-选区、标注、OCR、贴图、长截图与录屏入口见 [截图 Pro](/v2/features/screenshot/capture-pro)。本页只写组合动作步骤自己的参数。
+本页只写组合动作步骤自己的参数。
 
 <ModuleParamPreview moduleKey="sys:screenCapturePro" />
 
@@ -34,6 +38,8 @@ metadataGeneratedAt: "2026-08-03 20:08:03"
 **截图后贴图**：截完后在选区位置弹出贴图窗口。走「保存」结束时不贴图。默认关闭。
 
 **贴图后显示工具栏**：贴图窗口打开后是否自动显示标注工具栏。默认关闭；需要时可按空格再显示。
+
+**自定义工具栏脚本**：给截图 Pro 工具栏添加自定义按钮，或在进阶场景下重排工具栏。写法见 [JS 自定义工具栏](/v2/features/screenshot/toolbar-script)。
 
 **自动吸附**：开启后悬停自动吸附到控件；关闭时（默认）只跟随窗口范围，滚轮再触发 UIA 精细选区。
 
@@ -52,8 +58,23 @@ metadataGeneratedAt: "2026-08-03 20:08:03"
   items={[
     {
       href: '/v2/features/screenshot/capture-pro',
-      label: '截图 Pro（功能说明）',
-      description: '选区、吸附、标注、OCR 与结束方式。',
+      label: '截图 Pro 功能说明',
+      description: '选区、吸附、标注、OCR、贴图、快捷键与常见问题。',
+    },
+    {
+      href: '/v2/features/screenshot/toolbar-script',
+      label: 'JS 自定义工具栏',
+      description: '用 toolbarScript 给截图 Pro 工具栏加按钮或调整布局。',
+    },
+    {
+      href: '/v2/features/screenshot/image-translate',
+      label: '图片翻译',
+      description: '在截图 Pro 或贴图中调用图片翻译，并配置服务商凭证。',
+    },
+    {
+      href: '/v2/xaction/modules/long-screenshot',
+      label: '长截图',
+      description: '框选范围后滚动拼接成长图。',
     },
     {
       href: '/v2/xaction/modules/screencapture',

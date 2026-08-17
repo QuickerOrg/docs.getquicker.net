@@ -73,7 +73,14 @@ legacyContentUpdatedAt: "2019-07-08T13:55:08.000Z"
 
 **快速模式**：仅 **图片**。图片没有透明通道、不需要处理透明度时勾选。默认关闭。
 
-**格式名**：仅 **自定义格式**。目标程序认识的剪贴板格式名。可用 [Free Clipboard Viewer](http://www.freeclipboardviewer.com/) 核对。
+**格式名**：仅 **自定义格式**。目标程序认识的剪贴板格式名。可用下面的动作核对，也可以用 [Free Clipboard Viewer](http://www.freeclipboardviewer.com/)。
+
+<ShareLinkCard
+  code="fe33cf74-7834-45d8-dd42-08deaef5f4fb"
+  title="剪贴板查看器"
+  description="查看剪贴板数据，支持查看拖拽数据"
+  author="Cea"
+/>
 
 **成功后提示**：可选。写入成功后弹出的提示，例如「已写入剪贴板」。旧稿未写。
 

@@ -1,0 +1,252 @@
+/**
+ * Sketch of Android Notification.Builder expanded shade card.
+ * Accent from QuickerAndroid styles.xml `android:colorAccent` #FF845E.
+ * Shade / card surfaces follow common AOSP notification colors, not Infima.
+ */
+
+.root {
+  --mn-accent: #ff845e;
+  --mn-shade: #e8eaed;
+  --mn-card: #fff;
+  --mn-fg: #1c1b1f;
+  --mn-muted: #5f6368;
+  --mn-action: #ff845e;
+  --mn-radius: 16px;
+  margin: 1rem 0 1.25rem;
+}
+
+html[data-theme='dark'] .root {
+  --mn-shade: #121212;
+  --mn-card: #2c2c2c;
+  --mn-fg: #e3e3e3;
+  --mn-muted: #9aa0a6;
+  --mn-action: #ff9b7a;
+}
+
+.caption {
+  margin: 0 0 10px;
+  color: var(--ifm-color-emphasis-700, #4b5563);
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+.shade {
+  padding: 14px 12px 16px;
+  border-radius: 12px;
+  background: var(--mn-shade);
+}
+
+.shadeLabel {
+  margin: 0 4px 10px;
+  color: var(--mn-muted);
+  font-size: 11px;
+  letter-spacing: 0.04em;
+}
+
+.card {
+  overflow: hidden;
+  border-radius: var(--mn-radius);
+  background: var(--mn-card);
+  box-shadow: 0 1px 3px rgb(0 0 0 / 18%);
+  color: var(--mn-fg);
+}
+
+.cardResponded {
+  box-shadow: 0 0 0 1px color-mix(in srgb, var(--mn-accent) 45%, transparent);
+}
+
+.cardHit {
+  display: block;
+  width: 100%;
+  margin: 0;
+  padding: 12px 16px 10px;
+  border: 0;
+  background: transparent;
+  color: inherit;
+  text-align: left;
+  cursor: pointer;
+}
+
+.cardHit:focus-visible {
+  outline: 2px solid var(--mn-accent);
+  outline-offset: -2px;
+}
+
+.appRow {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin-bottom: 8px;
+  color: var(--mn-muted);
+  font-size: 12px;
+  line-height: 1.2;
+}
+
+.appIcon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 18px;
+  height: 18px;
+  border-radius: 4px;
+  background: var(--mn-accent);
+}
+
+.iconGlyph {
+  width: 12px;
+  height: 12px;
+  fill: #fff;
+}
+
+.appName {
+  font-weight: 600;
+  color: var(--mn-fg);
+}
+
+.dot {
+  opacity: 0.7;
+}
+
+.time {
+  color: var(--mn-muted);
+}
+
+.title {
+  margin: 0 0 4px;
+  color: var(--mn-fg);
+  font-size: 15px;
+  font-weight: 600;
+  line-height: 1.35;
+}
+
+.body {
+  margin: 0;
+  color: var(--mn-muted);
+  font-size: 14px;
+  line-height: 1.45;
+  white-space: pre-wrap;
+}
+
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px 8px;
+  padding: 0 8px 8px 8px;
+}
+
+.action {
+  min-height: 36px;
+  padding: 6px 12px;
+  border: 0;
+  border-radius: 8px;
+  background: transparent;
+  color: var(--mn-action);
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.action:hover,
+.action:focus-visible {
+  background: color-mix(in srgb, var(--mn-action) 12%, transparent);
+}
+
+.action:focus-visible {
+  outline: 2px solid var(--mn-action);
+  outline-offset: 1px;
+}
+
+.actionActive {
+  background: color-mix(in srgb, var(--mn-action) 18%, transparent);
+}
+
+.replyRow {
+  display: flex;
+  gap: 8px;
+  padding: 0 12px 12px;
+}
+
+.replyInput {
+  flex: 1 1 auto;
+  min-width: 0;
+  height: 36px;
+  padding: 0 10px;
+  border: 1px solid color-mix(in srgb, var(--mn-muted) 35%, transparent);
+  border-radius: 8px;
+  background: color-mix(in srgb, var(--mn-shade) 55%, var(--mn-card));
+  color: var(--mn-fg);
+  font-size: 14px;
+}
+
+.replyInput:focus-visible {
+  outline: 2px solid var(--mn-accent);
+  outline-offset: 1px;
+}
+
+.replySend {
+  flex: 0 0 auto;
+  height: 36px;
+  padding: 0 12px;
+  border: 0;
+  border-radius: 8px;
+  background: var(--mn-accent);
+  color: #fff;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.replySend:disabled {
+  opacity: 0.45;
+  cursor: default;
+}
+
+.srOnly {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.outputs {
+  width: 100%;
+  margin: 12px 0 0;
+  border-collapse: collapse;
+  font-size: 13px;
+}
+
+.outputs caption {
+  caption-side: top;
+  margin: 0 0 6px;
+  color: var(--ifm-color-emphasis-700, #4b5563);
+  font-size: 13px;
+  font-weight: 600;
+  text-align: left;
+}
+
+.outputs th,
+.outputs td {
+  padding: 5px 8px;
+  border-bottom: 1px solid var(--ifm-color-emphasis-200, #e5e7eb);
+  text-align: left;
+  vertical-align: top;
+}
+
+.outputs th {
+  width: 7.5rem;
+  color: var(--ifm-color-emphasis-700, #4b5563);
+  font-weight: 500;
+}
+
+.outputs code {
+  font-size: 12px;
+}
+
+.empty {
+  color: var(--ifm-color-emphasis-600, #6b7280);
+}

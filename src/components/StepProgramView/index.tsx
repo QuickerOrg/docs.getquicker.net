@@ -1,6 +1,6 @@
-import type {ReactNode} from 'react';
+import {useEffect, useState, type ReactNode} from 'react';
 import defaultCatalog from '@site/data/step-render/catalog.json';
-import {getExampleAction} from './exampleRegistry';
+import {loadExampleAction, type ExampleAction} from './exampleRegistry';
 import {
   StepProgramView as StepProgramViewInner,
   type StepProgramViewProps,
@@ -48,12 +48,46 @@ export default function StepProgramView({
   showVariables,
   ...rest
 }: Props): ReactNode {
-  const loaded = example ? getExampleAction(example) : null;
+  const skipExampleLoad = Boolean(data);
+  const [loaded, setLoaded] = useState<ExampleAction | null>(null);
+  const [exampleReady, setExampleReady] = useState(!example || skipExampleLoad);
+
+  useEffect(() => {
+    if (!example || skipExampleLoad) {
+      setLoaded(null);
+      setExampleReady(true);
+      return;
+    }
+    setExampleReady(false);
+    let cancelled = false;
+    void loadExampleAction(example).then((next) => {
+      if (cancelled) {
+        return;
+      }
+      setLoaded(next);
+      setExampleReady(true);
+    });
+    return () => {
+      cancelled = true;
+    };
+  }, [example, skipExampleLoad]);
+
+  if (!exampleReady) {
+    return (
+      <div
+        className="qk-docs-preview-fallback"
+        role="status"
+        aria-label="正在加载示例动作"
+      />
+    );
+  }
+
+  const resolved = data ?? loaded;
   return (
     <StepProgramViewInner
       {...rest}
       catalog={catalog}
-      data={data ?? loaded ?? {steps: []}}
+      data={resolved ?? {steps: []}}
       caption={caption ?? loaded?.title}
       variables={variables ?? loaded?.variables}
       showVariables={showVariables ?? Boolean(loaded?.variables?.length)}

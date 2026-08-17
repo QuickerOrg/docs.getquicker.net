@@ -197,7 +197,12 @@ Quicker 提供两个模块：
 
 需要写表达式时，可点输入框后面的铅笔图标，打开布尔表达式助手。
 
-![](./img/if-008-264686b097.gif)
+<ExpressionAssistPreview
+  variable="count"
+  operation="大于"
+  paramTitle="比较值"
+  paramValue="10"
+/>
 
 #### 常用判断语句
 

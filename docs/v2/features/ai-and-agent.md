@@ -1,0 +1,31 @@
+---
+title: AI 与 Agent 现状
+description: Quicker V2 当前对普通用户开放的 AI 能力，以及尚未普遍开放的 Agent 范围。
+sidebar_position: 55
+quickerDocKey: v2/features/ai-and-agent
+comments: true
+---
+
+# AI 与 Agent 现状
+
+这页只说明**现在普通用户能用什么**。不是 Agent、浏览器控制或桌面操控的教程。
+
+## 现在可以用
+
+- **统一 AI 设置**：设置里的「AI 服务」和「用途与模型」，用来管理连接、模型和用途优选。说明见 [统一 AI 服务与模型设置](/v2/what's-new/ai-services-and-models.md)。
+- **五个组合动作模块**，共用上面的全局设置，不必在每个步骤里重填地址和 Key：
+  - [AI 文本处理](/v2/xaction/modules/ai-text)
+  - [AI 图片理解](/v2/xaction/modules/ai-vision)
+  - [AI 文本分类](/v2/xaction/modules/ai-classify)
+  - [AI 结构化提取](/v2/xaction/modules/ai-extract)
+  - [AI 交互对话](/v2/xaction/modules/ai-chat)
+
+API Key 只在本机加密保存，不随动作分享，也不随普通设置文件拷到另一台电脑。
+
+## 还没有对普通用户普遍开放
+
+- **Agent**、**隔离的浏览器控制**、**桌面 / Computer Use** 仍处于门控或开发中。
+- 设置里看到「Agent 与工具调用」这种**模型用途**，只表示可以给这类用途选模型，**不等于**这些界面已经对普通用户开放。
+- 不要把 1.x 的手机遥控或 Android 局域网遥控当成 V2 已有能力。V2 已移除手机 App 遥控器，目前也没有承诺替代方案。见 [不再支持的功能](/v2/what's-new/not-supported.md)。
+
+具体功能是否已经改用统一候选模型，以该功能自己的页面和软件界面为准。

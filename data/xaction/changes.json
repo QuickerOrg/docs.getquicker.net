@@ -2,9 +2,9 @@
   "schemaVersion": 1,
   "baselineCreated": false,
   "fromGeneratedAt": "2026-08-12 20:29:09",
-  "toGeneratedAt": "2026-08-12 21:38:57",
+  "toGeneratedAt": "2026-08-13 19:01:10",
   "summary": {
-    "addedModules": 2,
+    "addedModules": 3,
     "removedModules": 0,
     "changedModules": 149
   },
@@ -20,6 +20,12 @@
       "name": "发送手机通知",
       "slug": "mobilenotification",
       "category": "Network"
+    },
+    {
+      "key": "sys:automationScript",
+      "name": "自动化脚本",
+      "slug": "automationscript",
+      "category": "Input"
     }
   ],
   "removedModules": [],

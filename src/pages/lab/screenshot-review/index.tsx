@@ -16,6 +16,13 @@ import UserInputPreview from '@site/src/components/UserInputPreview';
 import TableFieldPreview, {
   type TableFieldDefinition,
 } from '@site/src/components/TableFieldPreview';
+import ActionEditorPreview from '@site/src/components/ActionEditorPreview';
+import TextWindowPreview from '@site/src/components/TextWindowPreview';
+import ReportProgressPreview from '@site/src/components/ReportProgressPreview';
+import ExpressionAssistPreview from '@site/src/components/ExpressionAssistPreview';
+import SearchBoxPreview from '@site/src/components/SearchBoxPreview';
+import ElseToggleMenuDemo from '@site/src/components/ContextMenuPreview/ElseToggleMenuDemo';
+import PreviewMarks from '@site/src/components/PreviewMarks';
 import styles from './styles.module.css';
 type ReviewItem = {
   id: string;
@@ -28,7 +35,14 @@ type ReviewItem = {
   image: string;
   imageName: string;
   component: string;
+  decidedComponent?: string;
+  /** How the orphan was paired to a page preview. */
+  pairConfidence?: string;
+  /** preview = safe to render; page-ref = open real doc (avoid wrong props). */
+  renderMode?: 'preview' | 'page-ref' | 'direct';
   props: Record<string, string>;
+  /** Ambiguous page-ref: live props from same-type instances on the page. */
+  candidates?: Array<{props: Record<string, string>; snippet: string}>;
   sourceSnippet: string;
 };
 
@@ -50,10 +64,25 @@ const DEFAULT_API = 'http://127.0.0.1:3920';
 
 type FilterMode = 'pending' | 'collapsed' | 'all';
 type SourceMode = 'all' | 'orphan' | 'direct';
+type MediaMode = 'all' | 'gif' | 'static';
 
 function itemSource(item: ReviewItem): 'orphan' | 'direct' {
   if (item.source === 'direct' || !item.image) return 'direct';
   return 'orphan';
+}
+
+function itemMedia(item: ReviewItem): 'gif' | 'static' | 'none' {
+  if (!item.image) return 'none';
+  return /\.gif$/i.test(item.image) || /\.gif$/i.test(item.imageName) ? 'gif' : 'static';
+}
+
+/** Directory chips: docs/v2/xaction/{concepts|guides|modules/...} */
+function dirKeyForItem(item: ReviewItem): string {
+  const p = (item.page || item.image || '').replaceAll('\\', '/');
+  const m = /^(docs\/v2\/xaction\/(?:concepts|guides|modules(?:\/[^/]+)?))/i.exec(p);
+  if (m) return m[1]!;
+  const docs = /^(docs\/[^/]+)/i.exec(p);
+  return docs?.[1] || '其它';
 }
 
 function resolveApiBase(configured?: string): string {
@@ -62,8 +91,95 @@ function resolveApiBase(configured?: string): string {
   return params.get('api') || configured || DEFAULT_API;
 }
 
+function readUrlFilters(): {media: MediaMode; dir: string; query: string} {
+  if (typeof window === 'undefined') {
+    return {media: 'all', dir: '', query: ''};
+  }
+  const params = new URLSearchParams(window.location.search);
+  const mediaRaw = params.get('media');
+  const media: MediaMode =
+    mediaRaw === 'gif' || mediaRaw === 'static' ? mediaRaw : 'all';
+  return {
+    media,
+    dir: params.get('dir') || '',
+    query: params.get('q') || '',
+  };
+}
+
+function writeUrlFilters(next: {media: MediaMode; dir: string; query: string}): void {
+  if (typeof window === 'undefined') return;
+  const params = new URLSearchParams(window.location.search);
+  if (next.media === 'all') params.delete('media');
+  else params.set('media', next.media);
+  if (!next.dir) params.delete('dir');
+  else params.set('dir', next.dir);
+  if (!next.query.trim()) params.delete('q');
+  else params.set('q', next.query.trim());
+  const qs = params.toString();
+  const url = `${window.location.pathname}${qs ? `?${qs}` : ''}${window.location.hash}`;
+  window.history.replaceState(null, '', url);
+}
+
 function imgUrl(api: string, imagePath: string): string {
   return `${api}/api/img?path=${encodeURIComponent(imagePath)}`;
+}
+
+function PageRefPane({item}: {item: ReviewItem}): ReactNode {
+  const candidates = item.candidates || [];
+  const [idx, setIdx] = useState(0);
+  const active = candidates[idx];
+  const previewItem: ReviewItem = {
+    ...item,
+    props: active?.props || item.props || {},
+    sourceSnippet: active?.snippet || '',
+    renderMode: 'preview',
+  };
+
+  return (
+    <div className={styles.pageRefBox}>
+      <p>
+        同页有多份同类型组件，账本无法唯一配对。请对照左侧原图，在下方候选里点选匹配项（或打开文档）。
+      </p>
+      {candidates.length > 0 ? (
+        <>
+          <div className={styles.candidateBar} role="tablist" aria-label="同页候选组件">
+            {candidates.map((_, i) => (
+              <button
+                key={i}
+                type="button"
+                role="tab"
+                aria-selected={i === idx}
+                className={i === idx ? styles.candidateActive : styles.candidateBtn}
+                onClick={() => setIdx(i)}
+              >
+                候选 {i + 1}
+              </button>
+            ))}
+          </div>
+          <div className={styles.preview}>
+            <PreviewForItem item={previewItem} />
+          </div>
+          {active?.snippet ? (
+            <details className={styles.snippetDetails}>
+              <summary>候选 MDX</summary>
+              <pre className={styles.snippet}>{active.snippet}</pre>
+            </details>
+          ) : null}
+        </>
+      ) : (
+        <p className={styles.muted}>本页未解析到同类型实例 props，请直接打开文档对照。</p>
+      )}
+      <a className={styles.link} href={item.pageUrl} target="_blank" rel="noreferrer">
+        打开 {item.pageUrl}
+      </a>
+      <iframe
+        className={styles.pageFrame}
+        src={item.pageUrl}
+        title={`${item.title} 文档页`}
+        loading="lazy"
+      />
+    </div>
+  );
 }
 
 function PreviewForItem({item}: {item: ReviewItem}): ReactNode {
@@ -183,6 +299,13 @@ function PreviewForItem({item}: {item: ReviewItem}): ReactNode {
           showParams={p.showParams === 'true'}
           showIndex={p.showIndex === 'true'}
           showKey={p.showKey === 'true'}
+          wheelDelay={
+            p.wheelDelay === 'true'
+              ? true
+              : (safeParseJson(p.wheelDelay) as
+                  | {from?: number; to?: number; step?: number}
+                  | undefined)
+          }
           data={
             safeParseJson(p.data) ?? [
               {key: item.moduleKey || 'sys:assign', note: '示意（catalog 未带完整 wire）'},
@@ -190,6 +313,80 @@ function PreviewForItem({item}: {item: ReviewItem}): ReactNode {
           }
         />
       );
+    case 'ActionEditorPreview':
+      return (
+        <ActionEditorPreview
+          caption={p.caption}
+          focus={(p.focus as 'full' | 'toolbox' | 'steps' | 'variables' | 'appearance') || 'full'}
+          toolboxTab={p.toolboxTab as never}
+          toolboxSearch={p.toolboxSearch}
+          toolboxSelected={p.toolboxSelected}
+          actionTitle={p.actionTitle}
+          actionDescription={p.actionDescription}
+          showRun={p.showRun !== 'false'}
+          data={safeParseJson(p.data) ?? {steps: []}}
+          dragDemo={safeParseJson(p.dragDemo)}
+          historyDemo={safeParseJson(p.historyDemo)}
+        />
+      );
+    case 'TextWindowPreview':
+      return (
+        <TextWindowPreview
+          title={p.title}
+          text={p.text || '（无文案）'}
+          showLineNum={p.showLineNum !== 'false'}
+          showToolbar={p.showToolbar !== 'false'}
+        />
+      );
+    case 'ReportProgressPreview':
+      return (
+        <ReportProgressPreview
+          items={safeParseJson(p.items)}
+          animate={p.animate !== 'false'}
+        />
+      );
+    case 'ExpressionAssistPreview':
+      return (
+        <ExpressionAssistPreview
+          variable={p.variable}
+          operation={p.operation}
+          paramTitle={p.paramTitle}
+          paramValue={p.paramValue}
+          tab={(p.tab as 'generate' | 'operators') || 'generate'}
+        />
+      );
+    case 'SearchBoxPreview':
+      return (
+        <SearchBoxPreview
+          mode={(p.mode as 'pick' | 'param' | 'live') || 'pick'}
+          query={p.query}
+          selectedAction={p.selectedAction}
+          selectedIcon={p.selectedIcon}
+          results={safeParseJson(p.results)}
+          selectedIndex={p.selectedIndex != null ? Number(p.selectedIndex) : undefined}
+          animate={p.animate !== 'false'}
+        />
+      );
+    case 'ElseToggleMenuDemo':
+      return <ElseToggleMenuDemo caption={p.caption} />;
+    case 'PreviewMarks': {
+      const marks =
+        safeParseJson<Array<{key: string; label: string}>>(p.marks) ?? [];
+      const childKey = p.moduleKey || item.moduleKey;
+      return (
+        <PreviewMarks marks={marks} caption={p.caption}>
+          {childKey ? (
+            <ModuleParamPreview
+              moduleKey={childKey}
+              values={safeParseJson<Record<string, string>>(p.values)}
+              focusKeys={safeParseJson<string[]>(p.focusKeys)}
+            />
+          ) : (
+            <p className={styles.muted}>PreviewMarks 缺内层 moduleKey（账本未记 imageRef/props）</p>
+          )}
+        </PreviewMarks>
+      );
+    }
     default:
       return <p className={styles.muted}>未知组件：{item.component}</p>;
   }
@@ -241,12 +438,15 @@ export default function ScreenshotReviewPage(): ReactNode {
   const {siteConfig} = useDocusaurusContext();
   const configuredApi = siteConfig.customFields?.screenshotReviewApiBase as string | undefined;
   const api = resolveApiBase(configuredApi);
+  const initialFilters = readUrlFilters();
   const [catalog, setCatalog] = useState<Catalog | null>(null);
   const [state, setState] = useState<ReviewState>({updatedAt: '', collapsed: {}});
   const [apiOk, setApiOk] = useState<boolean | null>(null);
   const [filter, setFilter] = useState<FilterMode>('pending');
   const [sourceMode, setSourceMode] = useState<SourceMode>('all');
-  const [query, setQuery] = useState('');
+  const [mediaMode, setMediaMode] = useState<MediaMode>(initialFilters.media);
+  const [dirFilter, setDirFilter] = useState(initialFilters.dir);
+  const [query, setQuery] = useState(initialFilters.query);
   const [busyId, setBusyId] = useState<string | null>(null);
   const [error, setError] = useState('');
 
@@ -273,6 +473,10 @@ export default function ScreenshotReviewPage(): ReactNode {
   useEffect(() => {
     void load();
   }, [load]);
+
+  useEffect(() => {
+    writeUrlFilters({media: mediaMode, dir: dirFilter, query});
+  }, [mediaMode, dirFilter, query]);
 
   const setCollapsed = useCallback(
     async (id: string, collapsed: boolean) => {
@@ -308,6 +512,17 @@ export default function ScreenshotReviewPage(): ReactNode {
   }, [api]);
 
   const collapsedCount = Object.keys(state.collapsed || {}).length;
+  const dirOptions = useMemo(() => {
+    const counts = new Map<string, number>();
+    for (const it of catalog?.items || []) {
+      const key = dirKeyForItem(it);
+      counts.set(key, (counts.get(key) || 0) + 1);
+    }
+    return [...counts.entries()]
+      .sort((a, b) => a[0].localeCompare(b[0], 'en'))
+      .map(([key, count]) => ({key, count}));
+  }, [catalog]);
+
   const filtered = useMemo(() => {
     const items = catalog?.items || [];
     const q = query.trim().toLowerCase();
@@ -316,11 +531,15 @@ export default function ScreenshotReviewPage(): ReactNode {
       if (filter === 'pending' && isCollapsed) return false;
       if (filter === 'collapsed' && !isCollapsed) return false;
       if (sourceMode !== 'all' && itemSource(it) !== sourceMode) return false;
+      if (mediaMode === 'gif' && itemMedia(it) !== 'gif') return false;
+      if (mediaMode === 'static' && itemMedia(it) !== 'static') return false;
+      if (dirFilter && dirKeyForItem(it) !== dirFilter) return false;
       if (!q) return true;
-      const hay = `${it.title} ${it.page} ${it.pageUrl} ${it.moduleKey} ${it.imageName} ${it.component} ${itemSource(it)}`.toLowerCase();
+      const hay =
+        `${it.title} ${it.page} ${it.pageUrl} ${it.moduleKey} ${it.image} ${it.imageName} ${it.component} ${itemSource(it)}`.toLowerCase();
       return hay.includes(q);
     });
-  }, [catalog, state.collapsed, filter, sourceMode, query]);
+  }, [catalog, state.collapsed, filter, sourceMode, mediaMode, dirFilter, query]);
 
   return (
     <Layout title="截图 → 组件审核" description="原图与 MDX 组件并排对比">
@@ -329,8 +548,8 @@ export default function ScreenshotReviewPage(): ReactNode {
           <div>
             <h1 className={styles.h1}>截图 → 组件审核</h1>
             <p className={styles.lead}>
-              有原图时左右对比；无原图（文档里直接写的组件，如{' '}
-              <code>StepProgramView</code>）则左侧显示文档 URL。勾选「已审核」写入{' '}
+              左侧原图；右侧仅在能<strong>唯一</strong>对应到页内实例时渲染组件（或缺省打开文档页对照）。
+              同页多实例且账本无 <code>sourceSnippet</code> 时不再猜测配对——避免错配。勾选「已审核」写入{' '}
               <code>data/screenshot-review/state.json</code>。
             </p>
           </div>
@@ -386,6 +605,38 @@ export default function ScreenshotReviewPage(): ReactNode {
               </button>
             ))}
           </div>
+          <div className={styles.filters}>
+            {(
+              [
+                ['all', '全部媒体'],
+                ['gif', '仅 GIF'],
+                ['static', '静态图'],
+              ] as const
+            ).map(([mode, label]) => (
+              <button
+                key={mode}
+                type="button"
+                className={mediaMode === mode ? styles.chipActive : styles.chip}
+                onClick={() => setMediaMode(mode)}>
+                {label}
+              </button>
+            ))}
+          </div>
+          <label className={styles.dirFilter}>
+            <span className={styles.dirLabel}>目录</span>
+            <select
+              className={styles.dirSelect}
+              value={dirFilter}
+              onChange={(e) => setDirFilter(e.target.value)}
+              aria-label="按目录筛选">
+              <option value="">全部目录</option>
+              {dirOptions.map(({key, count}) => (
+                <option key={key} value={key}>
+                  {key.replace(/^docs\/v2\/xaction\//, '')} ({count})
+                </option>
+              ))}
+            </select>
+          </label>
           <input
             className={styles.search}
             placeholder="筛选页面 / moduleKey / 文件名…"
@@ -398,6 +649,8 @@ export default function ScreenshotReviewPage(): ReactNode {
               ? ` · 原图 ${catalog.bySource.orphan} · 直接写 ${catalog.bySource.direct}`
               : ''}{' '}
             · 已折叠 {collapsedCount} · 当前列表 {filtered.length}
+            {mediaMode === 'gif' ? ' · GIF' : ''}
+            {dirFilter ? ` · ${dirFilter.replace(/^docs\/v2\/xaction\//, '')}` : ''}
           </div>
         </div>
 
@@ -449,7 +702,18 @@ export default function ScreenshotReviewPage(): ReactNode {
                       {item.component}
                       {item.moduleKey ? ` · ${item.moduleKey}` : ''}
                       {itemSource(item) === 'direct' ? ' · 直接写组件' : ''}
+                      {item.pairConfidence && item.pairConfidence !== 'direct'
+                        ? ` · 配对:${item.pairConfidence}`
+                        : ''}
                     </span>
+                    {item.pairConfidence === 'page-ref' ? (
+                      <span
+                        className={styles.warnBadge}
+                        title="同页多实例且无法唯一配对；右侧提供候选预览与文档 iframe"
+                      >
+                        请选候选或打开文档
+                      </span>
+                    ) : null}
                     <a className={styles.link} href={item.pageUrl}>
                       {item.pageUrl}
                     </a>
@@ -481,9 +745,17 @@ export default function ScreenshotReviewPage(): ReactNode {
                     )}
                   </div>
                   <div className={styles.pane}>
-                    <div className={styles.paneLabel}>组件 · {item.component}</div>
+                    <div className={styles.paneLabel}>
+                      {item.renderMode === 'page-ref'
+                        ? `文档页对照 · 账本类型 ${item.component}`
+                        : `组件 · ${item.component}`}
+                    </div>
                     <div className={styles.preview}>
-                      <PreviewForItem item={item} />
+                      {item.renderMode === 'page-ref' ? (
+                        <PageRefPane item={item} />
+                      ) : (
+                        <PreviewForItem item={item} />
+                      )}
                     </div>
                     {item.sourceSnippet ? (
                       <details className={styles.snippetDetails}>

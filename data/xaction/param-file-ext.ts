@@ -7,6 +7,7 @@
  */
 export const PARAM_FILE_EXT: Readonly<Record<string, Readonly<Record<string, string>>>> = {
   'sys:jsscript': {script: '.js'},
+  'sys:automationScript': {script: '.js'},
   'sys:csscript': {
     script: '.cs',
     scriptForLp: '.cs',

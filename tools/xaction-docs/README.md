@@ -5,7 +5,7 @@
 ## 内容边界
 
 - `data/xaction/` 保存结构化模块数据（`catalog.json`、`modules/*.json`）。**参数事实只在这里。**
-- `data/xaction/modules-index.ts` 供站点组件按 `moduleKey` 读取定义（由 sync 写入）。
+- `data/xaction/modules-index.ts` 供站点组件按 `moduleKey` 异步读取单个模块 JSON（由 sync 写入）。不要静态 import 整份 `catalog.json`。
 - `docs/v2/xaction/modules/` 是用户页：正文手写；参数 UI 用一行组件挂上即可：
 
   ```md

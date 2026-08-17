@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-08-12 21:38:57",
-  "moduleCount": 151,
+  "generatedAt": "2026-08-13 19:01:10",
+  "moduleCount": 152,
   "legacyMappedModuleCount": 143,
   "migratedLegacyModuleCount": 137,
   "categories": [
@@ -63,7 +63,7 @@
     {
       "key": "Input",
       "name": "键鼠输入",
-      "moduleCount": 1
+      "moduleCount": 2
     }
   ],
   "modules": [
@@ -29874,6 +29874,104 @@
         }
       },
       "sourceFileName": "sys_pdf_PDF 文件处理.md"
+    },
+    {
+      "key": "sys:automationScript",
+      "slug": "automationscript",
+      "legacySlug": "automationscript",
+      "ownsLegacyContent": true,
+      "name": "自动化脚本",
+      "description": "使用 JavaScript 编排鼠标、键盘等桌面自动化操作。",
+      "category": "Input",
+      "categoryName": "键鼠输入",
+      "stepType": "Action",
+      "isRisky": true,
+      "isProOnly": false,
+      "helpLink": "",
+      "inputs": [
+        {
+          "key": "script",
+          "name": "脚本内容",
+          "type": "Text",
+          "defaultValue": "import { mouse, key } from \"quicker\";\n\nmouse.moveTo(100, 200);\nmouse.click();\nkey.press(\"enter\");\n\nexport default mouse.position();",
+          "required": true,
+          "variableMode": "Input",
+          "condition": "",
+          "description": "要执行的桌面自动化 JavaScript。可使用 export default 导出结果。"
+        },
+        {
+          "key": "input",
+          "name": "输入",
+          "type": "Any",
+          "defaultValue": "",
+          "required": false,
+          "variableMode": "UseVarOrInput",
+          "condition": "",
+          "description": "传入脚本的受支持数据。脚本可从 quicker 模块导入 input 读取。"
+        },
+        {
+          "key": "timeoutMs",
+          "name": "超时时间（毫秒）",
+          "type": "Integer",
+          "defaultValue": "30000",
+          "required": false,
+          "variableMode": "Input",
+          "condition": "",
+          "description": "脚本最长运行时间，范围 100 到 120000 毫秒。"
+        },
+        {
+          "key": "restoreMousePosition",
+          "name": "结束后恢复鼠标位置",
+          "type": "Boolean",
+          "defaultValue": "false",
+          "required": false,
+          "variableMode": "Input",
+          "condition": "",
+          "description": "脚本正常结束或失败时恢复开始前的鼠标位置；用户接管或主动取消时不恢复。"
+        },
+        {
+          "key": "stopIfFail",
+          "name": "失败后停止",
+          "type": "Boolean",
+          "defaultValue": "true",
+          "required": false,
+          "variableMode": "Input",
+          "condition": "",
+          "description": "失败后是否停止动作"
+        }
+      ],
+      "outputs": [
+        {
+          "key": "isSuccess",
+          "name": "是否成功",
+          "type": "Boolean",
+          "condition": "",
+          "description": "操作是否成功"
+        },
+        {
+          "key": "result",
+          "name": "结果",
+          "type": "Any",
+          "condition": "",
+          "description": "脚本 export default 导出的受支持值。"
+        },
+        {
+          "key": "errorCode",
+          "name": "错误码",
+          "type": "Text",
+          "condition": "",
+          "description": "稳定的机器可读错误码。"
+        },
+        {
+          "key": "errMessage",
+          "name": "错误消息",
+          "type": "Text",
+          "condition": "",
+          "description": "脚本执行失败时的错误消息。"
+        }
+      ],
+      "selections": {},
+      "sourceFileName": "sys_automationScript_自动化脚本.md"
     }
   ]
 }

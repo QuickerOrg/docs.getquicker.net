@@ -1,0 +1,207 @@
+.popup {
+  position: fixed;
+  z-index: 350;
+  display: flex;
+  flex-direction: column;
+  width: min(32rem, calc(100vw - 24px));
+  max-height: min(70vh, 36rem);
+  overflow: hidden;
+  border: 1px solid var(--quicker-border-subtle);
+  border-radius: 10px;
+  background: var(--ifm-background-surface-color, var(--ifm-background-color));
+  box-shadow:
+    0 12px 32px rgba(15, 23, 42, 0.14),
+    0 0 0 1px color-mix(in srgb, var(--quicker-border-subtle) 70%, transparent);
+  color: var(--ifm-font-color-base);
+  font-size: 0.88rem;
+  line-height: 1.55;
+  cursor: default;
+  animation: qk-link-preview-in 0.14s ease-out;
+}
+
+.popup[data-placed='false'] {
+  opacity: 0;
+  pointer-events: none;
+  animation: none;
+}
+
+.popup[data-placement='below']::before,
+.popup[data-placement='above']::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  height: 12px;
+}
+
+.popup[data-placement='below']::before {
+  top: -12px;
+}
+
+.popup[data-placement='above']::after {
+  bottom: -12px;
+}
+
+:global(html[data-theme='dark']) .popup {
+  box-shadow:
+    0 16px 40px rgba(0, 0, 0, 0.45),
+    0 0 0 1px color-mix(in srgb, var(--quicker-border-subtle) 80%, transparent);
+}
+
+.header {
+  display: flex;
+  flex: 0 0 auto;
+  align-items: center;
+  gap: 0.75rem;
+  min-height: 2.5rem;
+  padding: 0.45rem 0.85rem;
+  border-bottom: 1px solid var(--quicker-border-subtle);
+  background: var(--ifm-background-surface-color, var(--ifm-background-color));
+}
+
+.title {
+  flex: 1 1 auto;
+  min-width: 0;
+  color: inherit;
+  font-weight: 650;
+  font-size: 0.92rem;
+  line-height: 1.35;
+  text-decoration: none !important;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.title:hover {
+  color: var(--ifm-color-primary);
+}
+
+.open {
+  flex: 0 0 auto;
+  color: var(--quicker-text-muted);
+  font-size: 0.75rem;
+  text-decoration: none !important;
+  white-space: nowrap;
+}
+
+.open:hover {
+  color: var(--ifm-color-primary);
+}
+
+.body {
+  flex: 1 1 auto;
+  min-height: 0;
+  overflow: auto;
+  overscroll-behavior: contain;
+  padding: 0.7rem 0.95rem 1rem;
+  scrollbar-width: thin;
+  scrollbar-color: color-mix(in srgb, var(--quicker-text-muted) 50%, transparent)
+    transparent;
+}
+
+.body::-webkit-scrollbar {
+  width: 8px;
+}
+
+.body::-webkit-scrollbar-thumb {
+  background: color-mix(in srgb, var(--quicker-text-muted) 42%, transparent);
+  border-radius: 4px;
+}
+
+.body :global(h1),
+.body :global(h2),
+.body :global(h3) {
+  scroll-margin-top: 0.5rem;
+}
+
+.body :global(h1) {
+  margin-top: 0;
+  font-size: 1.2rem;
+}
+
+.body :global(h2) {
+  font-size: 1.05rem;
+}
+
+.body :global(img) {
+  max-width: 100%;
+  height: auto;
+}
+
+.body :global(img.qk-native-img) {
+  max-width: calc(100% * var(--qk-dpr, 1));
+}
+
+.body :global(.qk-docs-preview-fallback),
+.body :global(.theme-doc-toc-mobile),
+.body :global(.hash-link) {
+  display: none;
+}
+
+.body :global(.qk-link-preview-target) {
+  border-radius: 4px;
+  outline: 2px solid color-mix(in srgb, var(--ifm-color-primary) 40%, transparent);
+  outline-offset: 4px;
+  background: color-mix(in srgb, var(--ifm-color-primary) 10%, transparent);
+}
+
+.skeleton {
+  display: flex;
+  flex-direction: column;
+  gap: 0.55rem;
+  padding: 0.9rem 0.95rem 1.15rem;
+}
+
+.skeleton span {
+  display: block;
+  height: 0.7rem;
+  border-radius: 4px;
+  background: color-mix(in srgb, var(--quicker-text-muted) 18%, transparent);
+  animation: qk-link-preview-pulse 1s ease-in-out infinite;
+}
+
+.skeleton span:nth-child(1) {
+  width: 88%;
+}
+
+.skeleton span:nth-child(2) {
+  width: 100%;
+}
+
+.skeleton span:nth-child(3) {
+  width: 64%;
+}
+
+.message {
+  margin: 0;
+  padding: 0.85rem 0.95rem 1.1rem;
+  color: var(--quicker-text-muted);
+}
+
+@keyframes qk-link-preview-in {
+  from {
+    opacity: 0;
+    transform: translateY(4px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes qk-link-preview-pulse {
+  0%,
+  100% {
+    opacity: 0.55;
+  }
+  50% {
+    opacity: 1;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .popup,
+  .skeleton span {
+    animation: none;
+  }
+}

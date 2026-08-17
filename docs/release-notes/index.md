@@ -1,6 +1,6 @@
 ---
 title: 更新记录
-description: Quicker V2 的版本更新记录。
+description: Quicker V2 各版本说明在官网，本页是文档站入口。
 sidebar_position: 1
 quickerDocKey: v2/release-notes
 comments: true
@@ -8,10 +8,12 @@ comments: true
 
 # 更新记录
 
-这里记录 Quicker V2 对用户可见的重要变化。
+逐版本的新增、修复、校验值和注意事项写在官网，不在本站逐条转载：
 
-## 编写建议
+**[https://getquicker.net/v2/versions](https://getquicker.net/v2/versions)**
 
-- 优先写用户可感知变化
-- 明确试用版风险和兼容性提示
-- 避免只贴内部技术 diff
+请以官网记录为准（至少已更新到 2.1.18）。安装包也从 [https://getquicker.net/V2](https://getquicker.net/V2) 下载，不要使用仍提供 1.x 的 `/Download` 页。
+
+本站补充的是安装、迁移、功能说明和相对 1.x 的结构变化，例如 [V2 重要变化](/v2/what's-new/)。文档会随版本抽查修订，但不会在每次发版时完整复述官网 changelog。
+
+体验、降级和回退风险见 [体验前必读](/important-notice)。

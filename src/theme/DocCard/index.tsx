@@ -1,10 +1,7 @@
 import React, {type ReactNode} from "react";
 import clsx from "clsx";
 import Link from "@docusaurus/Link";
-import {
-  findFirstSidebarItemLink,
-  useDocById,
-} from "@docusaurus/plugin-content-docs/client";
+import {findFirstSidebarItemLink} from "@docusaurus/plugin-content-docs/client";
 import {useDocCardDescriptionCategoryItemsPlural} from "@docusaurus/theme-common/internal";
 import {ThemeClassNames} from "@docusaurus/theme-common";
 import type {Props} from "@theme/DocCard";
@@ -12,13 +9,7 @@ import type {
   PropSidebarItemCategory,
   PropSidebarItemLink,
 } from "@docusaurus/plugin-content-docs";
-import {
-  isStructuralHint,
-  lookupDocGallery,
-  useDocGallery,
-  type DocGalleryLiveCover,
-} from "@site/src/data/docGallery";
-import LiveCover from "./LiveCover";
+import {lookupDocGallery, useDocGallery} from "@site/src/data/docGallery";
 
 function isBoilerplateDescription(text: string | undefined, title: string): boolean {
   const value = (text ?? "").trim();
@@ -41,17 +32,12 @@ function Cover({
   title,
   excerpt,
   hints,
-  liveCover,
 }: {
   covers: string[];
   title: string;
   excerpt?: string;
   hints?: string[];
-  liveCover?: DocGalleryLiveCover;
 }): ReactNode {
-  if (liveCover) {
-    return <LiveCover cover={liveCover} />;
-  }
   const shown = covers.slice(0, 4);
   if (shown.length > 0) {
     return (
@@ -69,7 +55,7 @@ function Cover({
     );
   }
 
-  const chips = (hints ?? []).filter((hint) => !isStructuralHint(hint)).slice(0, 4);
+  const chips = (hints ?? []).slice(0, 4);
   const blurb = (excerpt ?? "").trim();
   if (blurb || chips.length > 0) {
     return (
@@ -106,15 +92,13 @@ function GalleryCard({
   description?: string;
   className?: string;
 }): ReactNode {
-  const galleryMap = useDocGallery();
-  const gallery = lookupDocGallery(galleryMap, href);
+  const gallery = lookupDocGallery(useDocGallery(), href);
   const covers = gallery?.covers ?? [];
-  const text =
-    gallery?.description && !isBoilerplateDescription(gallery.description, title)
-      ? gallery.description
-      : description && !isBoilerplateDescription(description, title)
-        ? description
-        : undefined;
+  const text = gallery?.description
+    ? gallery.description
+    : description && !isBoilerplateDescription(description, title)
+      ? description
+      : undefined;
   return (
     <Link
       href={href}
@@ -130,7 +114,6 @@ function GalleryCard({
         title={title}
         excerpt={gallery?.excerpt}
         hints={gallery?.hints}
-        liveCover={gallery?.liveCover}
       />
       <div className="theme-doc-card__body">
         <h2 className={clsx("theme-doc-card-heading", ThemeClassNames.docs.docCard.heading)}>
@@ -161,12 +144,11 @@ function CardCategory({item}: {item: PropSidebarItemCategory}): ReactNode {
 }
 
 function CardLink({item}: {item: PropSidebarItemLink}): ReactNode {
-  const doc = useDocById(item.docId ?? undefined);
   return (
     <GalleryCard
       href={item.href}
       title={item.label}
-      description={item.description ?? doc?.description}
+      description={item.description}
       className={item.className}
     />
   );

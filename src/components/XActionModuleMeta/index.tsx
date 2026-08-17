@@ -1,11 +1,11 @@
 import type {ReactNode} from 'react';
 import {
-  getModuleDef,
   type XActionModuleDef,
   type XActionOutput,
   type XActionParam,
   type XActionSelection,
 } from '@site/data/xaction/modules-index';
+import {useModuleDef} from '@site/src/components/xaction/useModuleDef';
 import styles from './styles.module.css';
 
 type Props = {
@@ -242,7 +242,19 @@ function ModuleBody({module}: {module: XActionModuleDef}): ReactNode {
 }
 
 export default function XActionModuleMeta({moduleKey}: Props): ReactNode {
-  const module = getModuleDef(moduleKey);
+  const {module, ready} = useModuleDef(moduleKey);
+
+  if (!ready) {
+    return (
+      <div
+        className="qk-docs-preview-fallback"
+        data-qk-preview="heavy"
+        role="status"
+        aria-label="正在加载模块定义"
+        data-gallery-skip=""
+      />
+    );
+  }
 
   if (!module) {
     return (

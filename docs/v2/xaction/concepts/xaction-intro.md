@@ -86,6 +86,11 @@ legacyContentUpdatedAt: "2023-10-14T02:18:19.000Z"
 <RelatedDocs
   items={[
     {
+      href: '/v2/xaction/guides/how-to-learn',
+      label: '怎样学会组合动作',
+      description: '三条动手课：提示、转大写、按条件搜索',
+    },
+    {
       href: '/v2/xaction/concepts/xaction-editor',
       label: '组合动作设计窗口',
       description: '步骤列表、参数区和调试入口',

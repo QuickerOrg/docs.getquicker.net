@@ -482,13 +482,12 @@ function stripLegacyMetadataMarkers(content) {
 }
 
 function writeModulesIndex() {
-  // Thin typed wrapper; component loads full defs from catalog.json.
   const content = `/**
- * Build-time index of combo-action modules for docs UI.
- * Prefer catalog.json (full defs) over per-file imports.
+ * Combo-action module defs for docs UI.
+ * Full catalogs stay on disk; each page loads only the module JSON it renders.
  * Kept in sync with docs:xaction:sync (do not hand-edit).
  */
-import catalog from './catalog.json';
+import {PARAM_FILE_EXT} from './param-file-ext';
 
 export type XActionParam = {
   key: string;
@@ -499,6 +498,8 @@ export type XActionParam = {
   variableMode?: string;
   condition?: string;
   description?: string;
+  /** Step-runner fileExt (e.g. \`.js\`) for param-field syntax highlight. */
+  fileExt?: string;
 };
 
 export type XActionOutput = {
@@ -534,18 +535,81 @@ export type XActionModuleDef = {
   selections?: Record<string, XActionSelection>;
 };
 
-type CatalogShape = {
-  modules: XActionModuleDef[];
-};
+const MODULE_FILE = /^[A-Za-z0-9_]+$/;
 
-const typedCatalog = catalog as CatalogShape;
+const moduleCache = new Map<string, XActionModuleDef>();
+const inflight = new Map<string, Promise<XActionModuleDef | undefined>>();
 
-export const modulesByKey: Record<string, XActionModuleDef> = Object.fromEntries(
-  typedCatalog.modules.map((module) => [module.key, module]),
-);
+function toModuleFileName(moduleKey: string): string | null {
+  const name = moduleKey.trim().replace(/:/g, '_');
+  return MODULE_FILE.test(name) ? name : null;
+}
 
+function applyParamFileExt(module: XActionModuleDef): XActionModuleDef {
+  const byKey = PARAM_FILE_EXT[module.key];
+  if (!byKey) {
+    return module;
+  }
+  let changed = false;
+  const inputs = module.inputs.map((input) => {
+    const fileExt = input.fileExt ?? byKey[input.key];
+    if (!fileExt || input.fileExt === fileExt) {
+      return input;
+    }
+    changed = true;
+    return {...input, fileExt};
+  });
+  return changed ? {...module, inputs} : module;
+}
+
+function remember(module: XActionModuleDef): XActionModuleDef {
+  const next = applyParamFileExt(module);
+  moduleCache.set(next.key, next);
+  return next;
+}
+
+/** Sync cache lookup. Does not download; use \`loadModuleDef\` to fill the cache. */
 export function getModuleDef(moduleKey: string): XActionModuleDef | undefined {
-  return modulesByKey[moduleKey];
+  return moduleCache.get(moduleKey);
+}
+
+/**
+ * Load one \`data/xaction/modules/<key>.json\` async chunk.
+ * Webpack emits a separate file per module; pages only download what they render.
+ */
+export function loadModuleDef(
+  moduleKey: string,
+): Promise<XActionModuleDef | undefined> {
+  const cached = moduleCache.get(moduleKey);
+  if (cached) {
+    return Promise.resolve(cached);
+  }
+  const pending = inflight.get(moduleKey);
+  if (pending) {
+    return pending;
+  }
+  const fileName = toModuleFileName(moduleKey);
+  if (!fileName) {
+    return Promise.resolve(undefined);
+  }
+  const task = import(
+    /* webpackChunkName: "xaction-mod-[request]" */
+    \`./modules/\${fileName}.json\`
+  )
+    .then((mod: {default?: XActionModuleDef} & XActionModuleDef) => {
+      const data = mod.default ?? mod;
+      inflight.delete(moduleKey);
+      if (!data || typeof data.key !== 'string') {
+        return undefined;
+      }
+      return remember(data);
+    })
+    .catch(() => {
+      inflight.delete(moduleKey);
+      return undefined;
+    });
+  inflight.set(moduleKey, task);
+  return task;
 }
 `;
   writeText(path.join(dataRoot, 'modules-index.ts'), content);

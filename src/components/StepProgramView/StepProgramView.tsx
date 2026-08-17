@@ -543,9 +543,14 @@ export function StepProgramView({
 
   if (steps.length === 0) {
     return (
-      <div className={`${rootClass} qk-sr-program--empty`}>
+      <div ref={rootRef} className={`${rootClass} qk-sr-program--empty`}>
         {caption ? <div className="qk-sr-program__caption">{caption}</div> : null}
-        {empty ?? <div className="qk-sr-program__empty">无步骤数据</div>}
+        <div
+          className="qk-sr-program__steps qk-sr-program__steps--empty-drop"
+          data-qk-drop-slot="steps">
+          <div className="step-listbox-drop-placeholder" aria-hidden />
+          {empty ?? <div className="qk-sr-program__empty">无步骤数据</div>}
+        </div>
       </div>
     );
   }
@@ -561,7 +566,7 @@ export function StepProgramView({
       }>
       {caption ? <div className="qk-sr-program__caption">{caption}</div> : null}
       <div className="qk-sr-program__body">
-        <div className="qk-sr-program__steps">
+        <div className="qk-sr-program__steps" data-qk-drop-slot="steps">
           <StepListInner
             steps={displaySteps}
             catalog={resolvedCatalog}
@@ -577,6 +582,7 @@ export function StepProgramView({
             wheelTick={wheelTick}
             onInspect={stepPopup ? openInspect : undefined}
           />
+          <div className="step-listbox-drop-placeholder qk-sr-steps-end-drop" aria-hidden />
         </div>
         {showVarPane ? (
           <>

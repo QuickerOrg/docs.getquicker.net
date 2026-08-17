@@ -16,7 +16,7 @@ Quicker 2.0 将动作内容与使用位置分开。同一个动作可以出现�
 
 组合动作通过多个步骤完成较复杂的工作，例如读取剪贴板、处理文本、调用网络接口、控制窗口，再把结果发送到目标软件。
 
-- 第一次创建组合动作，请从[组合动作基础](/v2/xaction/concepts/xaction-intro)开始。
+- 第一次创建组合动作，请从[怎样学会组合动作](/v2/xaction/guides/how-to-learn)开始，三条动手课之后再读[组合动作基础](/v2/xaction/concepts/xaction-intro)。
 - 需要查找步骤参数时，进入[组合动作模块参考](/v2/xaction/modules)。
 - 需要了解变量、表达式和子程序时，查看[基础与进阶概念](/v2/xaction/concepts)。
 - 需要参考完整场景时，查看[教程与实践](/v2/xaction/guides)。

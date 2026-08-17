@@ -25,7 +25,12 @@ legacyContentUpdatedAt: "2025-12-05T02:25:20.000Z"
 
 窗口默认半透明，鼠标移上去变不透明，可同时叠多条。每条由标题、进度、说明文字组成。
 
-![](./img/reportprogress-001-0a53ad12b4.gif)
+<ReportProgressPreview
+  items={[
+    {title: '测试进度条', percent: 42, text: '第 42/100 项'},
+    {title: '下载文件', percent: 68, text: '正在写入缓存…'},
+  ]}
+/>
 
 ![](./img/reportprogress-002-1351e8abb3.png)
 

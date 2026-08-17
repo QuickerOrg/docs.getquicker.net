@@ -46,7 +46,23 @@ legacyContentUpdatedAt: "2025-06-06T03:33:32.000Z"
 
 和普通模块一样：找到目标子程序，按住拖到步骤列表的合适位置。
 
-![](./img/subprogram-002-6f4fc9d808.gif)
+<ActionEditorPreview
+  focus="toolbox"
+  toolboxTab="flow"
+  toolboxSearch="子程序"
+  toolboxSelected="sys:subprogram"
+  actionTitle="调用子程序"
+  actionDescription="从工具箱拖入运行子程序"
+  caption="将「运行子程序」拖到步骤列表（示意，悬停可暂停）"
+  data={{steps: []}}
+  dragDemo={{
+    moduleKey: 'sys:subprogram',
+    targetSlot: 'steps',
+    afterData: {
+      steps: [{key: 'sys:subprogram'}],
+    },
+  }}
+/>
 
 再在步骤参数窗口里设定输入和输出。选好子程序后，窗口里还会出现该子程序标记为输入 / 输出的变量。
 

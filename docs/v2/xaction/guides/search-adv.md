@@ -17,7 +17,7 @@ legacyContentUpdatedAt: "2022-11-16T14:20:44.000Z"
 -   输入动作关键词，找到动作后按Tab键选定动作
 -   输入要传递给动作的参数，按回车运行动作。
 
-![](./img/search-adv-001-9bb455763a.gif)
+<SearchBoxPreview mode="pick" selectedAction="翻译" query="翻译" animate />
 
 在动作中：
 
@@ -38,7 +38,17 @@ legacyContentUpdatedAt: "2022-11-16T14:20:44.000Z"
 
 [示例动作](https://getquicker.net/sharedaction?code=98b9522b-b97e-48ed-afd8-08d8f6743496)
 
-![](./img/search-adv-002-358598021a.gif)
+<SearchBoxPreview
+  mode="live"
+  query="h"
+  results={[
+    {title: '大写', description: '转为大写', icon: 'fa:Solid_Font:#2b7abf'},
+    {title: '复制', description: '复制到剪贴板', icon: 'fa:Light_Copy:#6aaded'},
+    {title: '粘贴', description: '粘贴剪贴板', icon: 'fa:Light_Paste:#6aaded'},
+    {title: '运行', description: '运行匹配项', icon: 'fa:Light_Play:#39b54d'},
+  ]}
+  animate
+/>
 
 ### 实现步骤
 

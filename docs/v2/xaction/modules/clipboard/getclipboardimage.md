@@ -39,7 +39,14 @@ legacyContentUpdatedAt: "2020-05-28T06:41:20.000Z"
 
 ## 限制与排障
 
-剪贴板里没有图片（只复制了文字、文件，或还是空的）会失败。等第三方截图工具写完再取，可先用 [等待剪贴板内容改变](/v2/xaction/modules/waitclipboardchange)。
+剪贴板里没有图片（只复制了文字、文件，或还是空的）会失败。等第三方截图工具写完再取，可先用 [等待剪贴板内容改变](/v2/xaction/modules/waitclipboardchange)。不确定里面有没有图时，用下面的动作确认是否存在 Bitmap、DIB 等图像格式。
+
+<ShareLinkCard
+  code="fe33cf74-7834-45d8-dd42-08deaef5f4fb"
+  title="剪贴板查看器"
+  description="查看剪贴板数据，支持查看拖拽数据"
+  author="Cea"
+/>
 
 ## 相关链接
 

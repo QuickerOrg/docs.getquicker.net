@@ -16,6 +16,8 @@ V2 将截图、贴图、长截图和录屏整理为更完整的工作流。
 
 截图 Pro 支持窗口与 UI 元素选区、手动框选、标注、OCR、智能马赛克、贴图、长截图和录屏入口。动作步骤也能返回图片、截图区域和保存路径。
 
+步骤还可配置 **自定义工具栏脚本**（JavaScript）：用压缩写法 `sp` / `act` 给默认工具栏加「调子程序 / 开动作」按钮，需要分支时再写完整 `run`。说明见 [JS 自定义工具栏](../features/screenshot/toolbar-script.md)。
+
 贴图支持缩略图视口、图像处理、标注、透明度和拖出图片。截图及录屏历史使用统一的本机目录和历史管理入口。
 
 详情见[截图与贴图概览](../features/screenshot/index.md)和[截图 Pro](../features/screenshot/capture-pro.md)。

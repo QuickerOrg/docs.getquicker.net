@@ -2,9 +2,9 @@
   "image": "docs/v2/xaction/guides/img/date-time-process-001-f05b4b2111.png",
   "model": "D:\\source\\repos\\quicker\\quickerorg\\qk-ocr-lite\\models\\ppocrv6\\tiny",
   "source": "ocr",
-  "generatedAt": "2026-08-12T09:33:41.410Z",
+  "generatedAt": "2026-08-14T12:30:21.223Z",
   "blockCount": 39,
-  "fullText": "①获取当前时间\nx\n获取当前的日期时间\n参数\n文本值格式\n--不使用变量-\nyyy-MM-dd H:mm:ss, ddd\n文本值的输出格式，请参考c#语言DateTime.ToString0的参数文档。\n]使用UTC\n是表示使用UTC时间，否表示使用本地时间(电脑的当前时间)\n输出\n原始值\n→\n文本值\n{x} context 默认的文本变量\nUNIX时间戳→\n{x} tmStamp\n年\n{x} year\n月\n{x} month\n日\n{x} day\n时\n{x} hour\n分\n{x} minute\n秒\n→\n{x} seconds\n周第几天\n{x} dayOfWeek\n年第几天\n{x} dayOfYear\n其他\n汪释\n□停用此步骤\n保存\n取消",
+  "fullText": "①获取当前时间\n获取当前的日期时间\n参数\n文本值格式\n--不使用变量-\nyyy-MM-dd H:mm:ss, ddd\n文本值的输出格式，请参考c#语言DateTime.ToString0的参数文档。\n]使用UTC\n是表示使用UTC时间，否表示使用本地时间(电脑的当前时间)\n输出\n原始值\n→\n文本值\n{x} context 默认的文本变量\nUNIX时间戳→\n{x} tmStamp\n年\n{x} year\n月\n{x} month\n日\n{x} day\n时\n{x} hour\n分\n{x} minute\n秒\n→\n{x} seconds\n周第几天\n{x} dayOfWeek\n年第几天\n{x} dayOfYear\n其他\n汪释\n□停用此步骤\n保存\nx\n取消",
   "kind": "step-param",
   "confidence": "low",
   "cues": [

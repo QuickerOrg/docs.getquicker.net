@@ -62,7 +62,11 @@ legacyContentUpdatedAt: "2022-11-16T14:20:44.000Z"
 
 表达式：`**$=** **{quicker\_in\_param}**.**StartsWith**("search:")`    
 
-![](./img/search-adv-004-1898f812d4.png)
+<ModuleParamPreview
+  moduleKey="sys:if"
+  focusKeys={['condition']}
+  values={{condition: '$= {quicker_in_param}.StartsWith("search:")'}}
+/>
 
 ![](./img/search-adv-005-fb6eb7e318.png)
 
@@ -161,7 +165,11 @@ $=new CustomSearchResult()&#123;
 
 可以在动作中增加“Quicker操作”模块，类型选择“使用当前动作进行实时搜索”操作类型。
 
-![](./img/search-adv-009-9ece21b8a3.png)
+<ModuleParamPreview
+  moduleKey="sys:quickeroperations"
+  focusKeys={['type', 'searchText', 'stopIfFail']}
+  values={{type: 'StartSearchWithAction', searchText: '', stopIfFail: 'true'}}
+/>
 
 在动作中可以使用这样的判断过程：
 
@@ -178,7 +186,36 @@ $=new CustomSearchResult()&#123;
 
 可以另外创建一个组合动作，在其中使用“运行或停止其它动作”模块。
 
-![](./img/search-adv-011-1a89585e80.png)
+<PreviewMarks
+  marks={[
+    {key: 'actionId', label: '要调试的动作'},
+    {key: 'inputParam', label: '传递参数 search:搜索内容'},
+    {key: 'debug', label: '开启调试模式'},
+  ]}
+>
+  <ModuleParamPreview
+    moduleKey="sys:runAction"
+    focusKeys={[
+      'type',
+      'actionId',
+      'inputParam',
+      'wait',
+      'debug',
+      'stopIfFail',
+      'isSuccess',
+      'actionTitle',
+      'output',
+    ]}
+    values={{
+      type: 'StartAction',
+      actionId: '查询',
+      inputParam: 'search:hello',
+      wait: 'true',
+      debug: 'true',
+      stopIfFail: 'true',
+    }}
+  />
+</PreviewMarks>
 
 
 

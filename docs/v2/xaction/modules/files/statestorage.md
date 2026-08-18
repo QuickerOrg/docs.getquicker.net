@@ -322,7 +322,11 @@ legacyContentUpdatedAt: "2024-01-11T04:51:48.000Z"
 
 点击后可输入备份说明。
 
-![](./img/statestorage-015-7f9521c8c4.png)
+<UserInputPreview
+  title="备份动作数据"
+  prompt="请输入备份说明"
+  value="配置数据1"
+/>
 
 **恢复历史备份**
 

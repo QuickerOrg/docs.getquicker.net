@@ -239,15 +239,15 @@ Quicker 提供两套窗口界面控制：
 
 ## 窗口界面控制 FlaUI 版
 
-![](./img/uiautomation-012-9d0efe644f.png)
-
 基本原理与本模块相同，参数以 [窗口界面控制(FlaUI)](/v2/xaction/modules/flauiautomation) 为准。XPath 语法见 [窗口界面控制的 XPATH 简介](/v2/xaction/guides/flaui-xpath-intro)。
 
-<ModuleParamPreview
-  moduleKey="sys:flauiautomation"
-  focusKeys={['type', 'window', 'control', 'controlOperation']}
-  values={{type: 'TriggerControl'}}
-/>
+<PreviewMarks marks={[{key: 'control', label: '点击右侧按钮获取控件 XPath'}]}>
+  <ModuleParamPreview
+    moduleKey="sys:flauiautomation"
+    focusKeys={['type', 'window', 'control', 'controlOperation']}
+    values={{type: 'TriggerControl'}}
+  />
+</PreviewMarks>
 
 **控件XPath或Name**：相对窗口的 XPath，或控件名 / AutomationId。XPath 以 `/` 开头。可写多行，前一个找不到时自动试下一行。用名称遍历查找时，限制与基础版相同。
 

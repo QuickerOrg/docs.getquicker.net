@@ -44,7 +44,19 @@ xpath表示如何抵达一个控件的路径。
 
 如果在设计动作时需要获取控件的XPATH，可以直接点击xpath参数输入框中的按钮。
 
-![](./img/flaui-xpath-intro-001-edebe8f0b4.png)
+<PreviewMarks marks={[{key: 'control', label: '点右侧按钮选取控件 XPath'}]}>
+  <ModuleParamPreview
+    moduleKey="sys:flauiautomation"
+    focusKeys={['type', 'window', 'control', 'controlType']}
+    values={{
+      type: 'TriggerControl',
+      window: '',
+      control:
+        "/Pane[@Name='MsoDockTop' | #4]/Toolbar/Pane/Pane/Pane/Pane/Group/Group[@Name='样式' | #4]//ListItem[@Name='无间隔']",
+      controlType: '0',
+    }}
+  />
+</PreviewMarks>
 
 
 
@@ -56,4 +68,9 @@ xpath表示如何抵达一个控件的路径。
 
 如果在运行动作中需要动态获取控件的XPATH，可以使用此步骤（也支持右键选择控件后显示“界面检查器”窗口）：
 
-![](./img/flaui-xpath-intro-003-c8e6030fb4.png)
+<ModuleParamPreview
+  moduleKey="sys:textSelectTools"
+  focusKeys={['operation', 'stopIfFail', 'isSuccess', 'output']}
+  values={{operation: 'SelectControlXPath', stopIfFail: 'true'}}
+  outputVars={{output: 'xpath'}}
+/>

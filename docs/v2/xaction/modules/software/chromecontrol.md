@@ -251,7 +251,12 @@ MV3 也可用后台命令创建标签或窗口：[api_tabs_create](https://quick
 
 等待某个标签页的 `status` 变为 **complete**。常用于脚本提交表单、页面刷新之后。
 
-![](./img/chromecontrol-012-771112c601.png)
+<ModuleParamPreview
+  moduleKey="sys:chromecontrol"
+  focusKeys={['operation', 'tabId', 'timeoutMs', 'stopIfFail', 'isSuccess', 'rawResponse']}
+  values={{operation: 'WaitTabComplete', tabId: '', timeoutMs: '2000', stopIfFail: 'true'}}
+  outputVars={{isSuccess: 'isSuccess', rawResponse: 'rtn'}}
+/>
 
 **标签页Id**：留空表示当前活动标签页。
 
@@ -351,7 +356,12 @@ MV3 新增输出 **Manifest版本**，可判断是否为新版扩展、是否还
 
 关闭指定标签。未指定 **标签页Id** 时关闭当前活动标签。
 
-![](./img/chromecontrol-015-9ab26a6de3.png)
+<ModuleParamPreview
+  moduleKey="sys:chromecontrol"
+  focusKeys={['operation', 'tabId', 'stopIfFail', 'isSuccess', 'rawResponse']}
+  values={{operation: 'CloseTab', tabId: '', stopIfFail: 'true'}}
+  outputVars={{isSuccess: 'isSuccess', rawResponse: 'rtn'}}
+/>
 
 ## 对标签页运行脚本
 

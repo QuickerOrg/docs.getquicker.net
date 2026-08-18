@@ -145,13 +145,19 @@ legacyContentUpdatedAt: "2024-05-18T08:56:35.000Z"
 
 把「第一个匹配点」交给鼠标输入，移动并点击：
 
-![](./img/searchbmp-006-14fe2e9696.png)
-
-<ModuleParamPreview
-  moduleKey="sys:mouse"
-  focusKeys={['type', 'xy', 'slowMove', 'extAction']}
-  values={{type: 'moveToXy', xy: '{firstPoint}', slowMove: 'false', extAction: 'left'}}
-/>
+<PreviewMarks
+  marks={[
+    {key: 'type', label: '移动到(x,y 一同指定)'},
+    {key: 'xy', label: '使用 firstPoint'},
+    {key: 'extAction', label: '移动后左键单击'},
+  ]}
+>
+  <ModuleParamPreview
+    moduleKey="sys:mouse"
+    focusKeys={['type', 'xy', 'slowMove', 'extAction']}
+    values={{type: 'moveToXy', xy: '{firstPoint}', slowMove: 'false', extAction: 'left'}}
+  />
+</PreviewMarks>
 
 ## 屏幕找字
 

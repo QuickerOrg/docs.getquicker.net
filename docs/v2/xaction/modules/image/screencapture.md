@@ -108,16 +108,16 @@ legacyContentUpdatedAt: "2025-12-21T14:14:54.000Z"
 
 ## 固定区域
 
-![](./img/screencapture-006-8c2c04523b.png)
-
 红箭头指向的是「在屏幕上框选坐标」按钮。
 
-<ModuleParamPreview
-  moduleKey="sys:screenCapture"
-  focusKeys={['type', 'area', 'delay', 'toClip', 'stopIfFail', 'img', 'rect']}
-  values={{type: 'fixed_area', area: '1521,851,2306,1277', delay: '0', toClip: 'false', stopIfFail: 'true'}}
-  outputVars={{img: 'img', rect: 'rect'}}
-/>
+<PreviewMarks marks={[{key: 'area', label: '点击右侧按钮选择坐标范围'}]}>
+  <ModuleParamPreview
+    moduleKey="sys:screenCapture"
+    focusKeys={['type', 'area', 'delay', 'toClip', 'stopIfFail', 'img', 'rect']}
+    values={{type: 'fixed_area', area: '1521,851,2306,1277', delay: '0', toClip: 'false', stopIfFail: 'true'}}
+    outputVars={{img: 'img', rect: 'rect'}}
+  />
+</PreviewMarks>
 
 ## 窗口
 

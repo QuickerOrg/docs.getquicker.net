@@ -64,7 +64,13 @@ legacyContentUpdatedAt: "2024-08-20T01:16:01.000Z"
 
 **预置的搜索内容**：预先放入搜索框的文字。仅 **显示搜索框**、**使用当前动作进行实时搜索**、**使用指定动作进行实时搜索** 时出现。
 
-![](./img/quickeroperations-003-4b3b4dfd7e.png)
+<PreviewMarks marks={[{key: 'searchText', label: '预置搜索词'}]}>
+  <ModuleParamPreview
+    moduleKey="sys:quickeroperations"
+    focusKeys={['type', 'searchText', 'stopIfFail', 'isSuccess']}
+    values={{type: 'showSearch', searchText: 'ff', stopIfFail: 'true'}}
+  />
+</PreviewMarks>
 
 **关闭搜索框**：关掉已经打开的搜索框。
 
@@ -72,7 +78,17 @@ legacyContentUpdatedAt: "2024-08-20T01:16:01.000Z"
 
 以点击模式显示轮盘：出现后要点选动作，而不是滑动选择。若轮盘设置里开启了「非滑动方式触发式显示扩展圈」，这样触发的轮盘会把扩展圈铺在屏幕上。轮盘本身的说明见 [轮盘菜单](/v2/what's-new/others/circle-menu)。
 
-![](./img/quickeroperations-004-267fc8d535.png)
+<PreviewMarks
+  marks={[
+    {key: 'exe', label: '场景标识；可点右侧按钮选择，留空时加载前台窗口场景'},
+  ]}
+>
+  <ModuleParamPreview
+    moduleKey="sys:quickeroperations"
+    focusKeys={['type', 'exe', 'stopIfFail', 'isSuccess']}
+    values={{type: 'showCircleMenu', exe: '', stopIfFail: 'true'}}
+  />
+</PreviewMarks>
 
 **场景标识**：可指定场景关联的 exe 文件名（场景与动作管理左侧列表）。留空则按当前场景。
 

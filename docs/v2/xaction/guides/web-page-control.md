@@ -32,7 +32,38 @@ legacyContentUpdatedAt: "2023-03-11T12:42:09.000Z"
 
 对应的HTML元素类型&lt;input type='checkbox'&gt;和&lt;input type='radio'&gt;，需更新其checked属性为true或false。
 
-![](./img/web-page-control-004-c84447898d.png)
+<PreviewMarks
+  marks={[
+    {key: 'selector', label: '单个检查框或单选按钮的选择器'},
+    {key: 'updateElementInfo', label: '更新 checked 属性'},
+    {key: 'attrName', label: '属性名 checked'},
+    {key: 'updateElementValue', label: '值为 true 或 false'},
+  ]}
+>
+  <ModuleParamPreview
+    moduleKey="sys:chromecontrol"
+    focusKeys={[
+      'operation',
+      'tabId',
+      'selector',
+      'updateElementInfo',
+      'attrName',
+      'updateElementValue',
+      'frame',
+      'stopIfFail',
+    ]}
+    values={{
+      operation: 'UpdateElement',
+      tabId: '',
+      selector: '#demo-john',
+      updateElementInfo: 'Property',
+      attrName: 'checked',
+      updateElementValue: 'true',
+      frame: 'all',
+      stopIfFail: 'true',
+    }}
+  />
+</PreviewMarks>
 
 
 

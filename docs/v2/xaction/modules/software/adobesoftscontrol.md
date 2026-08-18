@@ -92,7 +92,38 @@ legacyContentUpdatedAt: "2025-12-15T02:38:05.000Z"
 
 PS 尚未提供执行 psjs 的接口。可用「运行脚本」步骤，把脚本类型设成自定义并指定扩展名：
 
-![](./img/adobesoftscontrol-005-d07b486340.png)
+<PreviewMarks
+  marks={[
+    {key: 'script', label: '脚本内容'},
+    {key: 'type', label: '自定义脚本类型'},
+    {key: 'ext', label: '扩展名 .psjs'},
+    {key: 'encoding', label: '文件编码 UTF8 (有 BOM)'},
+  ]}
+>
+  <ModuleParamPreview
+    moduleKey="sys:runScript"
+    focusKeys={[
+      'script',
+      'type',
+      'ext',
+      'encoding',
+      'runner',
+      'argTemplate',
+      'outputEncoding',
+      'workingDir',
+    ]}
+    values={{
+      script: '//脚本内容',
+      type: 'CUSTOM',
+      ext: '.psjs',
+      encoding: 'utf-8',
+      runner: '',
+      argTemplate: '%FILE%',
+      outputEncoding: 'oem',
+      workingDir: '',
+    }}
+  />
+</PreviewMarks>
 
 ## 相关链接
 

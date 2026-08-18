@@ -173,7 +173,18 @@ legacyContentUpdatedAt: "2021-12-27T07:35:08.000Z"
 
 此时「项」应输出到动态对象变量。循环里用 `{行对象}.列名` 访问某一列。
 
-![](./img/dboperation-007-ccd2839f7e.png)
+<PreviewMarks marks={[{key: 'msg', label: '用列名访问每一行的字段'}]}>
+  <ModuleParamPreview
+    moduleKey="sys:notify"
+    focusKeys={['msg', 'maxLines', 'type', 'placement']}
+    values={{
+      msg: '$= "动态对象列表结果条目：" + {item}.first_name + {item}.last_name',
+      maxLines: '0',
+      type: 'Info',
+      placement: 'BottomCenter',
+    }}
+  />
+</PreviewMarks>
 
 ## 限制与排障
 

@@ -66,7 +66,24 @@ Quicker 1.44.48 版本，结合浏览器扩展 1.1.0 版本，可允许设定“
 
 #### 2）在“浏览器控制模块”中指定浏览器和目标环境名。
 
-![](./img/browser-multiprofile-005-45f072decf.png)
+<PreviewMarks
+  marks={[
+    {key: 'browser', label: '选择要连接的浏览器'},
+    {key: 'envName', label: '填写扩展环境名'},
+  ]}
+>
+  <ModuleParamPreview
+    moduleKey="sys:chromecontrol"
+    focusKeys={['operation', 'browser', 'mainProcessId', 'envName', 'stopIfFail']}
+    values={{
+      operation: 'SetBrowser',
+      browser: 'msedge',
+      mainProcessId: '0',
+      envName: '用户1',
+      stopIfFail: 'true',
+    }}
+  />
+</PreviewMarks>
 
 在【自定义环境名】参数中填写要连接的Profile中所设置的“环境名”。留空表示“空”的环境名，通常用在浏览器的默认Profile中。填写`*`表示可连接任意环境名（这时候可以结合主进程id）等信息判断。
 

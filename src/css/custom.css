@@ -341,13 +341,13 @@
 }
 
 /*
- * 1x screenshots: 1 bitmap pixel = 1 device pixel.
- * zoom shrinks layout; raise max-width so a column-fitting image still
- * fills 100% after zoom (visual = min(natural/dpr, 100% of container)).
+ * 1x screenshots: NativeImg sets width to min(100%, natural/dpr).
+ * Do not use zoom — zoom + HTML width overflows the doc column.
  */
 img.qk-native-img {
-  zoom: calc(1 / var(--qk-dpr, 1));
-  max-width: calc(100% * var(--qk-dpr, 1));
+  display: block;
+  max-width: 100%;
+  min-width: 0;
   height: auto;
 }
 
@@ -899,4 +899,44 @@ html[data-theme='dark'] .qk-docs-preview-fallback {
 .docusaurus-mermaid-container .edgeLabel {
   font-family: var(--ifm-font-family-base);
   font-size: 13px;
+}
+
+/* Compact chrome when framed by Quicker (html[data-qk-embed] from ssr / ?embed=1). */
+html[data-qk-embed] {
+  --ifm-navbar-height: 0px;
+  --doc-sidebar-width: 0px;
+  --ifm-h1-font-size: 1.2rem;
+  --ifm-h2-font-size: 1.05rem;
+}
+
+html[data-qk-embed] .navbar,
+html[data-qk-embed] .navbar-sidebar,
+html[data-qk-embed] .theme-doc-sidebar-container,
+html[data-qk-embed] .theme-doc-toc-desktop,
+html[data-qk-embed] .theme-doc-toc-mobile,
+html[data-qk-embed] .theme-doc-breadcrumbs,
+html[data-qk-embed] .theme-doc-footer,
+html[data-qk-embed] .pagination-nav,
+html[data-qk-embed] .footer,
+html[data-qk-embed] .quicker-comments {
+  display: none !important;
+}
+
+html[data-qk-embed] [class*='docMainContainer'] {
+  max-width: none;
+}
+
+html[data-qk-embed] .markdown > h1:first-child {
+  margin-top: 0.1rem;
+  margin-bottom: 0.45rem;
+}
+
+@layer docusaurus.infima {
+  html[data-qk-embed] main .container.padding-top--md {
+    padding-top: 0.4rem !important;
+  }
+
+  html[data-qk-embed] .markdown h1 {
+    font-size: 1.2rem !important;
+  }
 }

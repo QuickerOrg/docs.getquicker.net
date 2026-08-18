@@ -36,6 +36,13 @@ const config: Config = {
     <script>
       (function () {
         var root = document.documentElement;
+        try {
+          if (window.self !== window.top || /(?:^|[?&])embed=1(?:&|$)/.test(location.search)) {
+            root.setAttribute('data-qk-embed', '');
+          }
+        } catch (e) {
+          root.setAttribute('data-qk-embed', '');
+        }
         function apply() {
           root.style.setProperty('--qk-dpr', String(window.devicePixelRatio || 1));
         }
@@ -111,6 +118,7 @@ const config: Config = {
   ],
   plugins: ['./plugins/doc-gallery', './plugins/dev-local-search', './plugins/prefetch-previews'],
   clientModules: [
+    './src/clientModules/quickerEmbedChrome.ts',
     './src/clientModules/prefetchSearchIndex.ts',
     './src/clientModules/prefetchDocPreviews.ts',
   ],

@@ -129,7 +129,7 @@
 }
 
 .body :global(img.qk-native-img) {
-  max-width: calc(100% * var(--qk-dpr, 1));
+  max-width: 100%;
 }
 
 .body :global(.qk-docs-preview-fallback),

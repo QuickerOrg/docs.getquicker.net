@@ -102,5 +102,24 @@ Quicker 的「验证图片翻译」会真实调用图片翻译接口。验证成
 
 ## 相关链接
 
-- [截图 Pro](./capture-pro.md)
-- [截图与贴图概览](./index.md)
+<RelatedDocs
+  layout="cards"
+  items={[
+    {
+      href: '/v2/features/screenshot/capture-pro',
+      label: '截图 Pro 功能说明',
+      description: '确认选区后打开工具栏，即可使用图片翻译。',
+      featured: true,
+    },
+    {
+      href: '/v2/xaction/modules/showimage',
+      label: '贴图（显示图片）',
+      description: '贴图右键菜单也可以调用图片翻译。',
+    },
+    {
+      href: '/v2/features/screenshot',
+      label: '截图与贴图概览',
+      description: '截图、贴图、长截图与录屏入口。',
+    },
+  ]}
+/>

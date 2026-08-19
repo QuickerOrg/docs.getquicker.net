@@ -21,7 +21,24 @@ metadataGeneratedAt: "2026-08-03 20:08:03"
 
 ## 概述
 
-本模块没有选区 UI。开始录制时指定范围；之后用同一个会话 ID 暂停、继续或结束。界面与历史说明见 [截图与贴图概览](/v2/features/screenshot)。
+本模块没有选区 UI。开始录制时指定范围；之后用同一个会话 ID 暂停、继续或结束。需要框选界面时请用下面的 **屏幕录制**。
+
+<RelatedDocs
+  layout="cards"
+  items={[
+    {
+      href: '/v2/xaction/modules/screen-recording-ui',
+      label: '屏幕录制',
+      description: '弹出选区界面，可视化开录、停录。',
+      featured: true,
+    },
+    {
+      href: '/v2/features/screenshot',
+      label: '截图与贴图概览',
+      description: '录屏历史与相关功能入口。',
+    },
+  ]}
+/>
 
 <ModuleParamPreview moduleKey="sys:screenRecording" />
 
@@ -74,24 +91,20 @@ metadataGeneratedAt: "2026-08-03 20:08:03"
 - **录制区域**：实际录到的范围，格式 `left,top,right,bottom`。
 - **错误消息**：失败时的说明。
 
-## 相关链接
+## 相关步骤
 
 <RelatedDocs
+  layout="cards"
   items={[
-    {
-      href: '/v2/xaction/modules/screen-recording-ui',
-      label: '屏幕录制',
-      description: '弹出选区界面，可视化开录、停录。',
-    },
     {
       href: '/v2/xaction/modules/screencapture',
       label: '屏幕截图',
       description: '只要一张静图，不用录视频。',
     },
     {
-      href: '/v2/features/screenshot',
-      label: '截图与贴图概览',
-      description: '录屏历史与相关功能入口。',
+      href: '/v2/xaction/modules/screen-capture-pro',
+      label: '截图 Pro',
+      description: '选区界面里也可以进入录屏。',
     },
   ]}
 />

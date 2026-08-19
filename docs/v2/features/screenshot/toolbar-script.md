@@ -13,7 +13,7 @@ comments: true
 脚本在打开截图会话前求值一次，决定按钮（或整栏布局）；点击后再执行对应逻辑。
 
 :::info[步骤参数]
-在组合动作的 **截图 Pro** 步骤中填写 **自定义工具栏脚本**（参数 Key：`toolbarScript`）。可内联粘贴，也可外置为动作包内文件。
+在组合动作的 **截图 Pro** 步骤中填写 **自定义工具栏**（参数 Key：`toolbarScript`）。可内联粘贴，也可外置为动作包内文件。
 :::
 
 ## 怎么写（推荐：压缩写法）
@@ -572,7 +572,26 @@ declare const post: {
 
 首版不支持用本 API 做自定义实时画笔或替换 OCR 交互；这类能力仍走内置工具。本页默认覆盖**加处理型 / 命令型按钮**；整栏重排是进阶选项。
 
-## 相关文档
+## 相关链接
 
-- [截图 Pro](./capture-pro.md)
-- [截图与贴图概览](./index.md)
+<RelatedDocs
+  layout="cards"
+  items={[
+    {
+      href: '/v2/features/screenshot/capture-pro',
+      label: '截图 Pro 功能说明',
+      description: '选区、标注、OCR、贴图与快捷键。',
+      featured: true,
+    },
+    {
+      href: '/v2/xaction/modules/screen-capture-pro',
+      label: '截图 Pro 步骤参数',
+      description: '在步骤里填写自定义工具栏。',
+    },
+    {
+      href: '/v2/features/screenshot',
+      label: '截图与贴图概览',
+      description: '截图、贴图、长截图与录屏入口。',
+    },
+  ]}
+/>

@@ -21,7 +21,24 @@ metadataGeneratedAt: "2026-08-03 20:08:03"
 
 ## 概述
 
-选区操作与 [屏幕截图](/v2/xaction/modules/screencapture) 相近。界面与历史说明见 [截图与贴图概览](/v2/features/screenshot)。本页只写本模块自己的参数。
+选区操作与「屏幕截图」相近。完整界面说明见下面的入口；本页只写本模块自己的参数。
+
+<RelatedDocs
+  layout="cards"
+  items={[
+    {
+      href: '/v2/features/screenshot/capture-pro',
+      label: '截图 Pro 功能说明',
+      description: '同一套选区界面里也可以进入录屏。',
+      featured: true,
+    },
+    {
+      href: '/v2/features/screenshot',
+      label: '截图与贴图概览',
+      description: '录屏历史与相关功能入口。',
+    },
+  ]}
+/>
 
 <ModuleParamPreview moduleKey="sys:screenRecordingUI" />
 
@@ -43,9 +60,10 @@ metadataGeneratedAt: "2026-08-03 20:08:03"
 - **录制区域**：实际录到的范围，格式 `left,top,right,bottom`。
 - **错误消息**：失败时的说明。
 
-## 相关链接
+## 相关步骤
 
 <RelatedDocs
+  layout="cards"
   items={[
     {
       href: '/v2/xaction/modules/screen-recording',
@@ -53,14 +71,14 @@ metadataGeneratedAt: "2026-08-03 20:08:03"
       description: '无选区界面，用会话 ID 跨步骤控制。',
     },
     {
+      href: '/v2/xaction/modules/screen-capture-pro',
+      label: '截图 Pro',
+      description: '选区界面里也可以进入录屏。',
+    },
+    {
       href: '/v2/xaction/modules/screencapture',
       label: '屏幕截图',
       description: '只要一张静图。',
-    },
-    {
-      href: '/v2/features/screenshot',
-      label: '截图与贴图概览',
-      description: '录屏历史与相关功能入口。',
     },
   ]}
 />

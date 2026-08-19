@@ -217,11 +217,23 @@ legacyContentUpdatedAt: "2025-05-11T08:37:04.000Z"
 ## 相关链接
 
 <RelatedDocs
+  layout="cards"
   items={[
+    {
+      href: '/v2/features/screenshot/capture-pro',
+      label: '截图 Pro 功能说明',
+      description: '截图完成后也可以直接贴图；贴图操作与本模块相近。',
+      featured: true,
+    },
+    {
+      href: '/v2/xaction/modules/screen-capture-pro',
+      label: '截图 Pro 步骤',
+      description: '截完再交给本模块，或直接勾选「截图后贴图」。',
+    },
     {
       href: '/v2/xaction/modules/screencapture',
       label: '屏幕截图',
-      description: '截完再交给本模块贴到屏幕上。',
+      description: '经典截图步骤，截完再贴到屏幕上。',
     },
     {
       href: '/v2/xaction/modules/imgprocess',

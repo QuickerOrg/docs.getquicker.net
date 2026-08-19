@@ -1,6 +1,6 @@
-/* Markdown `## 相关链接` stays in the TOC; visually shrink it. */
-:global(.markdown h2:has(+ .qk-related-docs)),
-:global(.markdown h3:has(+ .qk-related-docs)) {
+/* Markdown `## 相关链接` stays in the TOC; visually shrink it for chips only. */
+:global(.markdown h2:has(+ .qk-related-docs[data-layout='chips'])),
+:global(.markdown h3:has(+ .qk-related-docs[data-layout='chips'])) {
   margin: 1.15rem 0 8px;
   padding-bottom: 0;
   border-bottom: none;
@@ -71,4 +71,87 @@
   -webkit-box-orient: vertical;
   -webkit-line-clamp: 2;
   overflow: hidden;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 10px;
+  margin: 0.15rem 0 0.35rem;
+}
+
+.card {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  min-width: 0;
+  padding: 14px 16px;
+  border: 1px solid var(--quicker-border-subtle, #e4e9f0);
+  border-radius: 10px;
+  background: var(--ifm-background-surface-color, #fff);
+  box-shadow: 0 1px 2px rgb(0 0 0 / 4%);
+  color: inherit;
+  text-decoration: none !important;
+  transition:
+    border-color 0.15s ease,
+    box-shadow 0.15s ease,
+    transform 0.15s ease,
+    background 0.15s ease;
+}
+
+.card[data-featured='true'] {
+  grid-column: 1 / -1;
+  padding: 16px 18px;
+}
+
+.card:hover {
+  border-color: color-mix(in srgb, var(--ifm-color-primary) 50%, var(--quicker-border-subtle));
+  box-shadow: 0 8px 20px rgb(0 0 0 / 8%);
+  transform: translateY(-1px);
+  color: inherit;
+}
+
+.cardBody {
+  display: grid;
+  gap: 4px;
+  min-width: 0;
+  flex: 1 1 auto;
+}
+
+.cardTitle {
+  font-size: 15px;
+  font-weight: 650;
+  line-height: 1.35;
+}
+
+.card[data-featured='true'] .cardTitle {
+  font-size: 16px;
+}
+
+.cardDescription {
+  color: var(--quicker-text-muted, #5f6b7a);
+  font-size: 13px;
+  line-height: 1.45;
+}
+
+.cardArrow {
+  flex: 0 0 auto;
+  color: var(--ifm-color-emphasis-600, #6b7280);
+  font-size: 16px;
+  line-height: 1;
+}
+
+.card:hover .cardArrow {
+  color: var(--ifm-color-primary);
+}
+
+@media (max-width: 640px) {
+  .grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+html[data-theme='dark'] .card {
+  background: var(--ifm-background-surface-color, #1b1f24);
+  box-shadow: none;
 }

@@ -316,3 +316,31 @@ comments: true
 ### 与「屏幕截图」步骤有何不同
 
 **截图 Pro** 面向交互式选区：控件吸附、标注、OCR、贴图、长截图和录屏入口更完整。传统屏幕截图步骤适合更简单的截取需求。新动作优先使用截图 Pro。
+
+## 相关链接
+
+<RelatedDocs
+  layout="cards"
+  items={[
+    {
+      href: '/v2/features/screenshot/toolbar-script',
+      label: 'JS 自定义工具栏',
+      description: '给截图 Pro 工具栏加自定义按钮，或进阶重排整栏。',
+    },
+    {
+      href: '/v2/features/screenshot/image-translate',
+      label: '图片翻译',
+      description: '截图 / 贴图图到图翻译，配置百度或有道 Key。',
+    },
+    {
+      href: '/v2/xaction/modules/screen-capture-pro',
+      label: '截图 Pro 步骤参数',
+      description: '组合动作步骤的延迟、剪贴板、贴图、吸附与自定义工具栏。',
+    },
+    {
+      href: '/v2/features/screenshot',
+      label: '截图与贴图概览',
+      description: '长截图、录屏、贴图与采集历史入口。',
+    },
+  ]}
+/>

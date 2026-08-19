@@ -15,7 +15,24 @@ legacyContentUpdatedAt: "2025-12-21T14:14:54.000Z"
 
 # 屏幕截图
 
-截取一块屏幕，存进图片变量，也可同时写入剪贴板。渐进式选区、标注、贴图用 [截图 Pro](/v2/xaction/modules/screen-capture-pro)。
+截取一块屏幕，存进图片变量，也可同时写入剪贴板。需要渐进式选区、标注或贴图时，请用 **截图 Pro**：
+
+<RelatedDocs
+  layout="cards"
+  items={[
+    {
+      href: '/v2/features/screenshot/capture-pro',
+      label: '截图 Pro 功能说明',
+      description: '选区、吸附、标注、OCR 与贴图。',
+      featured: true,
+    },
+    {
+      href: '/v2/xaction/modules/screen-capture-pro',
+      label: '截图 Pro 步骤参数',
+      description: '组合动作里的截图 Pro 步骤。',
+    },
+  ]}
+/>
 
 ## 当前模块定义
 
@@ -182,15 +199,11 @@ legacyContentUpdatedAt: "2025-12-21T14:14:54.000Z"
 - 第三方工具超时或取消：内置选区更稳；输出了坐标范围时本来就不会走第三方。
 - 只要剪贴板里的图：用 [获取剪贴板图片](/v2/xaction/modules/getclipboardimage)，可先 [等待剪贴板内容改变](/v2/xaction/modules/waitclipboardchange)。
 
-## 相关链接
+## 相关步骤
 
 <RelatedDocs
+  layout="cards"
   items={[
-    {
-      href: '/v2/xaction/modules/screen-capture-pro',
-      label: '截图 Pro',
-      description: '渐进选区、吸附控件、标注和贴图。',
-    },
     {
       href: '/v2/xaction/modules/showimage',
       label: '显示图片',
@@ -205,6 +218,11 @@ legacyContentUpdatedAt: "2025-12-21T14:14:54.000Z"
       href: '/v2/xaction/modules/searchbmp',
       label: '屏幕找图/找色/找字',
       description: '在截到的画面或屏幕上定位目标。',
+    },
+    {
+      href: '/v2/features/screenshot',
+      label: '截图与贴图概览',
+      description: '截图、贴图、长截图与录屏入口。',
     },
   ]}
 />

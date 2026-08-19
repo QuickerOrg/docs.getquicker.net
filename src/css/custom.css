@@ -901,12 +901,11 @@ html[data-theme='dark'] .qk-docs-preview-fallback {
   font-size: 13px;
 }
 
-/* Compact chrome when framed by Quicker (html[data-qk-embed] from ssr / ?embed=1). */
+/* Compact site chrome for Quicker module-help iframe (?embed=1 only).
+   Keep article title and prev/next so "open in browser" and in-page nav stay normal. */
 html[data-qk-embed] {
   --ifm-navbar-height: 0px;
   --doc-sidebar-width: 0px;
-  --ifm-h1-font-size: 1.2rem;
-  --ifm-h2-font-size: 1.05rem;
 }
 
 html[data-qk-embed] .navbar,
@@ -915,8 +914,6 @@ html[data-qk-embed] .theme-doc-sidebar-container,
 html[data-qk-embed] .theme-doc-toc-desktop,
 html[data-qk-embed] .theme-doc-toc-mobile,
 html[data-qk-embed] .theme-doc-breadcrumbs,
-html[data-qk-embed] .theme-doc-footer,
-html[data-qk-embed] .pagination-nav,
 html[data-qk-embed] .footer,
 html[data-qk-embed] .quicker-comments {
   display: none !important;
@@ -926,17 +923,8 @@ html[data-qk-embed] [class*='docMainContainer'] {
   max-width: none;
 }
 
-html[data-qk-embed] .markdown > h1:first-child {
-  margin-top: 0.1rem;
-  margin-bottom: 0.45rem;
-}
-
 @layer docusaurus.infima {
   html[data-qk-embed] main .container.padding-top--md {
     padding-top: 0.4rem !important;
-  }
-
-  html[data-qk-embed] .markdown h1 {
-    font-size: 1.2rem !important;
   }
 }

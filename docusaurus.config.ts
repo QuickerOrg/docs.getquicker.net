@@ -37,12 +37,12 @@ const config: Config = {
       (function () {
         var root = document.documentElement;
         try {
-          if (window.self !== window.top || /(?:^|[?&])embed=1(?:&|$)/.test(location.search)) {
+          // Only the explicit query. Do not key off iframe: Cursor / in-app
+          // browsers also have window.self !== window.top.
+          if (/(?:^|[?&])embed=1(?:&|$)/.test(location.search)) {
             root.setAttribute('data-qk-embed', '');
           }
-        } catch (e) {
-          root.setAttribute('data-qk-embed', '');
-        }
+        } catch (e) {}
         function apply() {
           root.style.setProperty('--qk-dpr', String(window.devicePixelRatio || 1));
         }

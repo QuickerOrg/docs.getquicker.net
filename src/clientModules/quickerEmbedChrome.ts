@@ -1,17 +1,14 @@
 /**
- * Compact chrome when docs are shown inside Quicker (iframe or ?embed=1).
- * The same flag is applied in ssrTemplate before first paint.
+ * Compact site chrome only when the URL has ?embed=1 (Quicker module-help iframe).
+ * Do not key off iframe: Cursor / in-app browsers also have window.self !== top.
  */
 import ExecutionEnvironment from '@docusaurus/ExecutionEnvironment';
 
 function shouldUseEmbedChrome(): boolean {
   try {
-    if (window.self !== window.top) {
-      return true;
-    }
     return new URLSearchParams(window.location.search).get('embed') === '1';
   } catch {
-    return true;
+    return false;
   }
 }
 

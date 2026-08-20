@@ -21,11 +21,15 @@ Quicker 2.x 在保持已有组合动作兼容的基础上，增加了一批面�
 - [新增：屏幕录制模块](./new-screen-recording-ui.md)：框选区域，通过录屏工具栏交互式完成录制。
 - [新增：后台屏幕录制模块](./new-background-screen-recording.md)：通过会话 ID 自动开始、查询和停止录制。
 - [新增：运行C#文件应用模块](./new-csharp-file-app.md)：使用 .NET SDK 编译运行支持现代 SDK 功能的单文件应用。
+- [新增：自动化脚本模块](/v2/xaction/modules/automationscript)：使用受限 JavaScript 编排鼠标、键盘、窗口、剪贴板、选择、截图识别等桌面自动化操作；首次使用相关能力时会请求本机授权。
+
+[官网 2.1.21 记录](https://getquicker.net/V2/Versions)中还新增了 **贴图** 步骤，可从图片变量、剪贴板、文本、HTML、公式和 OCR 原始结果创建贴图。当前 `data/xaction` 暂无该步骤的独立模块定义，因此本站先在[截图与贴图概览](/v2/features/screenshot)中说明能力，参数页待结构化数据同步后再补。
 
 ## 改进模块
 
 - [提示消息模块](./notify.md)：增加显示位置、持续时间、重复消息处理和交互按钮。
 - [屏幕截图模块](./screen-capture.md)：增加 UI 元素检测、截图历史，并接入新版截图后工具。
+- [屏幕找图/找色/找字模块](/v2/xaction/modules/searchbmp)：找图新增相似度匹配模式，适合界面轻微缩放、抗锯齿或颜色变化时提高容错。
 - [基础OCR模块](./basic-ocr.md)：增加独立本地引擎、模型档位和本地表格识别。
 - [图片处理模块](./image-process.md)：为缩放和图标生成增加多种采样算法。
 - [读取文件模块](./read-file.md)：改进 BOM、UTF-8 和 Windows ANSI 自动编码识别。

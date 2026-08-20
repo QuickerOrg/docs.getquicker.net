@@ -12,7 +12,7 @@ comments: true
 
 **[https://getquicker.net/v2/versions](https://getquicker.net/v2/versions)**
 
-请以官网记录为准（至少已更新到 2.1.18）。安装包也从 [https://getquicker.net/V2](https://getquicker.net/V2) 下载，不要使用仍提供 1.x 的 `/Download` 页。
+请以官网记录为准（至少已更新到 2.1.22）。安装包也从 [https://getquicker.net/V2](https://getquicker.net/V2) 下载，不要使用仍提供 1.x 的 `/Download` 页。
 
 本站补充的是安装、迁移、功能说明和相对 1.x 的结构变化，例如 [V2 重要变化](/v2/what's-new/)。文档会随版本抽查修订，但不会在每次发版时完整复述官网 changelog。
 

@@ -49,7 +49,7 @@
       "defaultValue": "",
       "required": true,
       "variableMode": "UseVarOrInput",
-      "condition": "仅：GetTabInfo, CloseTab, RunScript, WaitTabComplete, GetElementInfo, UpdateElement, TriggerEvent, PickElement, Wait, ActivateTab",
+      "condition": "仅：GetTabInfo, CloseTab, RunScript, WaitTabComplete, GetElementInfo, UpdateElement, TriggerEvent, PickElement, Wait, ActivateTab, PageAction, UploadFiles, DropFiles, ExtractList, FillForm",
       "description": "留空表示当前活动标签页。"
     },
     {
@@ -150,7 +150,7 @@
       "required": false,
       "variableMode": "UseVarOrInput",
       "condition": "仅：BackgroundCommand",
-      "description": "请参考模块文档获取支持的命令列表。需MV3版浏览器扩展与Chrome135+版本。"
+      "description": "请参考模块文档获取支持的命令列表。page.*语义命令需1.2.0+的MV3版浏览器扩展。"
     },
     {
       "key": "commandParams",
@@ -179,7 +179,7 @@
       "defaultValue": "3000",
       "required": true,
       "variableMode": "Input",
-      "condition": "仅：OpenUrl, WaitTabComplete, BackgroundScript, GetTabInfo, RunScript, GetElementInfo, UpdateElement, TriggerEvent, PickElement, BackgroundCommand, Wait",
+      "condition": "仅：OpenUrl, WaitTabComplete, BackgroundScript, GetTabInfo, RunScript, GetElementInfo, UpdateElement, TriggerEvent, PickElement, BackgroundCommand, Wait, PageAction, UploadFiles, DropFiles",
       "description": "超时等待时间，毫秒数"
     },
     {
@@ -281,6 +281,236 @@
       "variableMode": "UseVarOrInput",
       "condition": "仅：Wait",
       "description": "不同事件的参数不同，请参考模块文档。"
+    },
+    {
+      "key": "pageUrlPattern",
+      "name": "页面地址约束",
+      "type": "Text",
+      "defaultValue": "",
+      "required": false,
+      "variableMode": "UseVarOrInput",
+      "condition": "仅：PageAction, UploadFiles, DropFiles",
+      "description": "可选。填写后只允许在完整匹配的页面执行，例如 https://example.com/orders/*；留空表示不限制页面地址。"
+    },
+    {
+      "key": "pageLocator",
+      "name": "定位方式",
+      "type": "Enum",
+      "defaultValue": "role",
+      "required": true,
+      "variableMode": "Input",
+      "condition": "仅：PageAction",
+      "description": ""
+    },
+    {
+      "key": "pageLocatorRole",
+      "name": "元素角色",
+      "type": "Text",
+      "defaultValue": "",
+      "required": false,
+      "variableMode": "UseVarOrInput",
+      "condition": "仅：PageAction",
+      "description": "例如 button、link、textbox。"
+    },
+    {
+      "key": "pageLocatorValue",
+      "name": "定位值",
+      "type": "Text",
+      "defaultValue": "",
+      "required": true,
+      "variableMode": "UseVarOrInput",
+      "condition": "仅：PageAction",
+      "description": "角色定位时填写 accessible name；文本定位填写文本；CSS 定位填写选择器。"
+    },
+    {
+      "key": "pageExact",
+      "name": "文本精确匹配",
+      "type": "Boolean",
+      "defaultValue": "true",
+      "required": false,
+      "variableMode": "UseVarOrInput",
+      "condition": "仅：PageAction",
+      "description": ""
+    },
+    {
+      "key": "pageOperation",
+      "name": "页面操作",
+      "type": "Enum",
+      "defaultValue": "click",
+      "required": true,
+      "variableMode": "Input",
+      "condition": "仅：PageAction",
+      "description": ""
+    },
+    {
+      "key": "pageValue",
+      "name": "操作值",
+      "type": "Text",
+      "defaultValue": "",
+      "required": false,
+      "variableMode": "UseVarOrInput",
+      "condition": "仅：PageAction",
+      "description": "输入和选择操作使用；敏感值应通过变量传入。"
+    },
+    {
+      "key": "pageFrameId",
+      "name": "Frame ID",
+      "type": "Integer",
+      "defaultValue": "0",
+      "required": false,
+      "variableMode": "UseVarOrInput",
+      "condition": "仅：PageAction, UploadFiles, DropFiles",
+      "description": ""
+    },
+    {
+      "key": "pageFileTarget",
+      "name": "文件目标定位",
+      "type": "Enum",
+      "defaultValue": "css",
+      "required": true,
+      "variableMode": "Input",
+      "condition": "仅：UploadFiles, DropFiles",
+      "description": ""
+    },
+    {
+      "key": "pageDocumentId",
+      "name": "快照 Document ID",
+      "type": "Text",
+      "defaultValue": "",
+      "required": false,
+      "variableMode": "UseVarOrInput",
+      "condition": "仅：UploadFiles, DropFiles",
+      "description": "与元素 Ref 一起使用，必须来自当前页面的最新语义快照。"
+    },
+    {
+      "key": "pageElementRef",
+      "name": "元素 Ref",
+      "type": "Text",
+      "defaultValue": "",
+      "required": false,
+      "variableMode": "UseVarOrInput",
+      "condition": "仅：UploadFiles, DropFiles",
+      "description": "语义快照返回的元素 Ref。"
+    },
+    {
+      "key": "pageFileSelector",
+      "name": "目标 CSS 选择器",
+      "type": "Text",
+      "defaultValue": "",
+      "required": false,
+      "variableMode": "UseVarOrInput",
+      "condition": "仅：UploadFiles, DropFiles",
+      "description": "必须唯一匹配一个元素；上传文件时目标必须是 input[type=file]。"
+    },
+    {
+      "key": "pageFiles",
+      "name": "文件路径",
+      "type": "Text",
+      "defaultValue": "",
+      "required": true,
+      "variableMode": "UseVarOrInput",
+      "condition": "仅：UploadFiles, DropFiles",
+      "description": "每行一个本机文件的完整路径，作为本次调用的精确文件白名单。模块不会内置弹窗；如需确认，请在前面添加 Quicker 确认步骤。路径不会写入网页 DOM 或扩展日志。"
+    },
+    {
+      "key": "listTemplate",
+      "name": "列表模板",
+      "type": "Text",
+      "defaultValue": "",
+      "required": true,
+      "variableMode": "UseVarOrInput",
+      "condition": "仅：ExtractList",
+      "description": "从浏览器扩展的列表设计器复制后粘贴。模板决定网页范围、行和固定输出列。"
+    },
+    {
+      "key": "listCollectionScope",
+      "name": "采集范围",
+      "type": "Enum",
+      "defaultValue": "CurrentPage",
+      "required": false,
+      "variableMode": "Input",
+      "condition": "仅：ExtractList",
+      "description": "“当前页”只读取当前页面；“连续翻页”按模板中的多页设置采集并汇总。"
+    },
+    {
+      "key": "listMaxRows",
+      "name": "最大行数",
+      "type": "Integer",
+      "defaultValue": "500",
+      "required": true,
+      "variableMode": "Input",
+      "condition": "仅：ExtractList",
+      "description": "最多返回的行数，范围 1 到 2000。模板自身的上限仍然有效。"
+    },
+    {
+      "key": "listAllowEmpty",
+      "name": "允许空结果",
+      "type": "Boolean",
+      "defaultValue": "false",
+      "required": false,
+      "variableMode": "Input",
+      "condition": "仅：ExtractList",
+      "description": "开启后，页面没有匹配行时返回带固定列的空表格；其它模板或页面错误仍会失败。"
+    },
+    {
+      "key": "listTimeoutMs",
+      "name": "端到端超时(ms)",
+      "type": "Integer",
+      "defaultValue": "30000",
+      "required": true,
+      "variableMode": "Input",
+      "condition": "仅：ExtractList",
+      "description": "解析标签页、校验页面和提取数据共享这一总预算，范围 1000 到 300000 毫秒。"
+    },
+    {
+      "key": "formTemplate",
+      "name": "表单模板",
+      "type": "Text",
+      "defaultValue": "",
+      "required": true,
+      "variableMode": "UseVarOrInput",
+      "condition": "仅：FillForm",
+      "description": "从浏览器扩展的表单设计器复制后粘贴；模板不保存本次填写值。"
+    },
+    {
+      "key": "formData",
+      "name": "表单数据",
+      "type": "Dict",
+      "defaultValue": "",
+      "required": true,
+      "variableMode": "UseVarOrInput",
+      "condition": "仅：FillForm",
+      "description": "可直接输入每行 key:value 或 JSON，也可使用词典变量、返回词典或匿名对象的表达式；key 与模板字段 key 精确对应，空字符串表示清空，null 按未提供处理。"
+    },
+    {
+      "key": "formDryRun",
+      "name": "仅检查，不填写",
+      "type": "Boolean",
+      "defaultValue": "false",
+      "required": false,
+      "variableMode": "Input",
+      "condition": "仅：FillForm",
+      "description": "只检查字段定位和数据，不修改网页。"
+    },
+    {
+      "key": "formFailurePolicy",
+      "name": "失败策略",
+      "type": "Enum",
+      "defaultValue": "RequiredField",
+      "required": false,
+      "variableMode": "Input",
+      "condition": "仅：FillForm",
+      "description": "默认仅在必填字段失败时让步骤失败。模板、本地数据校验和命令级错误不受此选项影响。"
+    },
+    {
+      "key": "formTimeoutMs",
+      "name": "端到端超时(ms)",
+      "type": "Integer",
+      "defaultValue": "30000",
+      "required": true,
+      "variableMode": "Input",
+      "condition": "仅：FillForm",
+      "description": "解析标签页和填写表单共享这一总预算，范围 1000 到 300000 毫秒。"
     }
   ],
   "outputs": [
@@ -383,6 +613,104 @@
       "description": "所选择元素的CSS选择器"
     },
     {
+      "key": "listTable",
+      "name": "列表数据表",
+      "type": "Table",
+      "condition": "仅：ExtractList",
+      "description": "列名使用模板中的稳定 key，列标题保存在 Caption；缺失值为 DBNull。"
+    },
+    {
+      "key": "listRowCount",
+      "name": "提取行数",
+      "type": "Integer",
+      "condition": "仅：ExtractList",
+      "description": ""
+    },
+    {
+      "key": "listTotalMatchedRows",
+      "name": "网页匹配总行数",
+      "type": "Integer",
+      "condition": "仅：ExtractList",
+      "description": ""
+    },
+    {
+      "key": "listTruncated",
+      "name": "结果是否截断",
+      "type": "Boolean",
+      "condition": "仅：ExtractList",
+      "description": ""
+    },
+    {
+      "key": "listWarnings",
+      "name": "提取警告",
+      "type": "List",
+      "condition": "仅：ExtractList",
+      "description": "可选列缺值、去重或截断等扩展返回的警告。"
+    },
+    {
+      "key": "listPagesCollected",
+      "name": "采集页数",
+      "type": "Integer",
+      "condition": "仅：ExtractList",
+      "description": "实际成功提取的页面轮次。"
+    },
+    {
+      "key": "listCompleted",
+      "name": "结果是否完整",
+      "type": "Boolean",
+      "condition": "仅：ExtractList",
+      "description": "连续翻页是否正常到达末页；当前页提取成功时为 true。"
+    },
+    {
+      "key": "listStopReason",
+      "name": "停止原因",
+      "type": "Text",
+      "condition": "仅：ExtractList",
+      "description": "当前页、空结果、正常末页、页数/行数限制、页面无变化或中途错误。"
+    },
+    {
+      "key": "formAllRequiredSucceeded",
+      "name": "必填字段是否全部成功",
+      "type": "Boolean",
+      "condition": "仅：FillForm",
+      "description": ""
+    },
+    {
+      "key": "formFilledCount",
+      "name": "已填写数量",
+      "type": "Integer",
+      "condition": "仅：FillForm",
+      "description": ""
+    },
+    {
+      "key": "formFailedCount",
+      "name": "失败数量",
+      "type": "Integer",
+      "condition": "仅：FillForm",
+      "description": ""
+    },
+    {
+      "key": "formResults",
+      "name": "逐字段结果",
+      "type": "Table",
+      "condition": "仅：FillForm",
+      "description": "包含 key、显示名、必填、状态和定位诊断。"
+    },
+    {
+      "key": "formCheckStatus",
+      "name": "检查状态",
+      "type": "Text",
+      "condition": "仅：FillForm",
+      "description": "正常或需要检查。"
+    },
+    {
+      "key": "formWarnings",
+      "name": "表单警告",
+      "type": "List",
+      "condition": "仅：FillForm",
+      "description": "包含数据词典中的未知 key 等非字段失败提示。"
+    },
+    {
       "key": "rawResponse",
       "name": "原始返回结果",
       "type": "Any",
@@ -431,17 +759,17 @@
         },
         {
           "value": "GetElementInfo",
-          "name": "获取元素信息",
+          "name": "读取元素属性/内容（低层）",
           "description": ""
         },
         {
           "value": "UpdateElement",
-          "name": "更新元素信息",
+          "name": "修改元素属性/内容（低层）",
           "description": ""
         },
         {
           "value": "TriggerEvent",
-          "name": "触发事件",
+          "name": "触发 DOM 事件（低层）",
           "description": ""
         },
         {
@@ -462,6 +790,31 @@
         {
           "value": "BackgroundCommand",
           "name": "浏览器：运行后台命令 (MV3版扩展)",
+          "description": ""
+        },
+        {
+          "value": "PageAction",
+          "name": "操作网页元素（推荐）",
+          "description": ""
+        },
+        {
+          "value": "UploadFiles",
+          "name": "上传文件到网页（安全）",
+          "description": ""
+        },
+        {
+          "value": "DropFiles",
+          "name": "向网页拖放文件（安全）",
+          "description": ""
+        },
+        {
+          "value": "ExtractList",
+          "name": "提取网页列表数据",
+          "description": ""
+        },
+        {
+          "value": "FillForm",
+          "name": "填写网页表单",
           "description": ""
         }
       ]
@@ -609,6 +962,41 @@
     "command": {
       "name": "命令",
       "items": [
+        {
+          "value": "page.extract",
+          "name": "网页: 提取正文和结构化内容",
+          "description": ""
+        },
+        {
+          "value": "page.verify",
+          "name": "网页: 等待并验证页面条件",
+          "description": ""
+        },
+        {
+          "value": "page.find",
+          "name": "网页: 按语义或CSS查找元素",
+          "description": ""
+        },
+        {
+          "value": "page.highlight",
+          "name": "网页: 高亮快照元素",
+          "description": ""
+        },
+        {
+          "value": "page.scroll",
+          "name": "网页: 滚动页面或滚动到条件满足",
+          "description": ""
+        },
+        {
+          "value": "trace.start",
+          "name": "诊断: 开始记录后台命令轨迹",
+          "description": ""
+        },
+        {
+          "value": "trace.stop",
+          "name": "诊断: 停止并返回后台命令轨迹",
+          "description": ""
+        },
         {
           "value": "api_bookmarks_getTree",
           "name": "API: 获取书签树",
@@ -1622,6 +2010,136 @@
         {
           "value": "elementEvent",
           "name": "元素事件触发",
+          "description": ""
+        }
+      ]
+    },
+    "pageLocator": {
+      "name": "定位方式",
+      "items": [
+        {
+          "value": "role",
+          "name": "角色和名称",
+          "description": ""
+        },
+        {
+          "value": "text",
+          "name": "可见文本",
+          "description": ""
+        },
+        {
+          "value": "css",
+          "name": "CSS 选择器",
+          "description": ""
+        }
+      ]
+    },
+    "pageOperation": {
+      "name": "页面操作",
+      "items": [
+        {
+          "value": "click",
+          "name": "点击",
+          "description": ""
+        },
+        {
+          "value": "fill",
+          "name": "填充值",
+          "description": ""
+        },
+        {
+          "value": "type",
+          "name": "逐键输入",
+          "description": ""
+        },
+        {
+          "value": "insertText",
+          "name": "插入文本",
+          "description": ""
+        },
+        {
+          "value": "paste",
+          "name": "合成粘贴",
+          "description": ""
+        },
+        {
+          "value": "clear",
+          "name": "清空",
+          "description": ""
+        },
+        {
+          "value": "select",
+          "name": "选择选项",
+          "description": ""
+        },
+        {
+          "value": "check",
+          "name": "勾选",
+          "description": ""
+        },
+        {
+          "value": "uncheck",
+          "name": "取消勾选",
+          "description": ""
+        },
+        {
+          "value": "hover",
+          "name": "悬停",
+          "description": ""
+        },
+        {
+          "value": "scrollIntoView",
+          "name": "滚动到元素",
+          "description": ""
+        }
+      ]
+    },
+    "pageFileTarget": {
+      "name": "文件目标定位",
+      "items": [
+        {
+          "value": "ref",
+          "name": "快照元素 Ref",
+          "description": ""
+        },
+        {
+          "value": "css",
+          "name": "CSS 选择器（唯一匹配）",
+          "description": ""
+        }
+      ]
+    },
+    "listCollectionScope": {
+      "name": "采集范围",
+      "items": [
+        {
+          "value": "CurrentPage",
+          "name": "当前页",
+          "description": ""
+        },
+        {
+          "value": "Continuous",
+          "name": "连续翻页",
+          "description": ""
+        }
+      ]
+    },
+    "formFailurePolicy": {
+      "name": "失败策略",
+      "items": [
+        {
+          "value": "RequiredField",
+          "name": "必填字段失败时失败",
+          "description": ""
+        },
+        {
+          "value": "AnyField",
+          "name": "任一字段失败时失败",
+          "description": ""
+        },
+        {
+          "value": "Never",
+          "name": "始终返回结果",
           "description": ""
         }
       ]

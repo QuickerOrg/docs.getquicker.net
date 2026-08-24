@@ -8,7 +8,7 @@ quickerDocKey: "xaction/module/sys:chromecontrol"
 comments: true
 moduleKey: "sys:chromecontrol"
 docStatus: "reviewed"
-metadataGeneratedAt: "2026-08-24 20:01:39"
+metadataGeneratedAt: "2026-08-24 20:52:41"
 legacyDocId: 9024629
 legacyContentUpdatedAt: "2025-10-28T06:17:46.000Z"
 ---
@@ -25,10 +25,7 @@ legacyContentUpdatedAt: "2025-10-28T06:17:46.000Z"
 
 ### MV3 版本浏览器扩展
 
-目前进展：
-
-- Chrome / Edge 均已发布 1.0.0 版扩展。
-- 1.0.1 已提交审核，主要解决 XPath 支持和网页浮标不能保存位置。
+当前扩展版本为 1.2.0，提供 Chrome、Edge 和 Firefox 构建。各商店的审核和上架时间可能不同，请以[下载页面](https://getquicker.net/Download)显示的版本为准。
 
 参考：
 
@@ -39,24 +36,17 @@ MV3 的重要变化：
 
 - 不再支持「运行后台脚本」（已通过 PC 端解析脚本兼容）。
 - 「对标签页运行脚本」需要开启浏览器开发者模式（Chrome 138 之前），或在扩展详情里开启「允许运行用户脚本」（Chrome / Edge 138 及以后）。设置步骤见 [设置浏览器扩展](/v2/xaction/guides/chrome-ext-settings)。
-- 需要 Chrome / Edge 135+。目前不支持 Firefox。
-- 需要 Quicker 1.44.5+。
+- Chrome / Edge 需要 135 或更高版本。
+- 扩展基础连接需要 Quicker 1.44.12 或更高版本；本页新增的结构化列表和表单操作还需要包含相应操作的 Quicker V2 版本。
 
 MV3 新增：
 
+- **网页工具侧边栏**：可视化发现网页列表、配置连续翻页、预览结果、扫描表单并生成 Quicker 模板。详见[网页列表提取与表单填写](/v2/xaction/guides/web-data-and-form-automation)。
 - **后台命令**：替代部分「运行后台脚本」。包含常用浏览器 API 封装和常用功能。命令列表见 [后台命令参考](https://quickerconnectortests.getquicker.cn/docs/commands.html)。
 - **激活标签页**：按网址或 ID 激活；不存在则自动打开。
 - **等待网页变化**：等元素或文字出现、消失等。
 - 对标签页运行脚本可选 `MAIN` 执行环境，访问网页 JS 变量。
 - 增加标签页分组 API。
-
-**延期使用 MV2**
-
-Chrome 已开始禁用 MV2。如需继续使用，可通过注册表开启（预计约 1 年有效期）。点击下面按钮导入注册表后重启浏览器：
-
-![](./img/chromecontrol-001-6e3a713cb6.png)
-
-![](./img/chromecontrol-002-f47aa09d7f.png)
 
 ### 安装浏览器扩展
 
@@ -66,7 +56,7 @@ Chrome 已开始禁用 MV2。如需继续使用，可通过注册表开启（预
 
 ### 界面说明
 
-点击扩展图标会显示弹窗。
+点击扩展图标会显示弹窗。需要设计列表或表单模板时，点击右下角的“Quicker 网页工具”按钮打开侧边栏。
 
 ![](./img/chromecontrol-003-990530dadb.png)
 
@@ -84,9 +74,9 @@ Chrome 已开始禁用 MV2。如需继续使用，可通过注册表开启（预
 
 - 要跑需要特殊权限的后台脚本时，在这里开启（直接通过 chrome API 控制浏览器自身，如浏览历史、Cookie）。
 
-**文档**：打开扩展文档。MV3 把部分文档嵌进扩展，包括「后台命令参考」「更新历史」。
+**文档**：打开扩展内置文档，包括「更新说明」「后台命令参考」和「侧边栏使用指南」。
 
-**获取元素选择器**：在网页里点选一个元素，自动复制它的 CSS 选择器。
+**获取元素选择器**：在网页里点选一个元素，自动复制它的 CSS 选择器。扩展按钮和浏览器右键菜单使用同一套选择方式。
 
 **重置网页浮标位置**：把浮标恢复到默认位置。
 
@@ -166,6 +156,179 @@ MV3 不再需要此项。
 **超时时间(ms)**：等待上限，默认 `3000`。
 
 **原始返回结果**：插件返回的原始 [JToken](https://www.newtonsoft.com/json/help/html/T_Newtonsoft_Json_Linq_JToken.htm)。提取方法见文末。
+
+## 提取网页列表数据
+
+这是从重复的表格、卡片或文章列表中获取结构化数据的推荐方式。先在扩展的“Quicker 网页工具”侧边栏中发现列表、编辑字段并测试结果，再复制模板到此操作。完整流程见[网页列表提取与表单填写](/v2/xaction/guides/web-data-and-form-automation)。
+
+<ModuleParamPreview
+  moduleKey="sys:chromecontrol"
+  focusKeys={[
+    'operation',
+    'tabId',
+    'listTemplate',
+    'listCollectionScope',
+    'listMaxRows',
+    'listAllowEmpty',
+    'listTimeoutMs',
+    'listTable',
+    'listRowCount',
+    'listTotalMatchedRows',
+    'listTruncated',
+    'listWarnings',
+    'listPagesCollected',
+    'listCompleted',
+    'listStopReason',
+    'rawResponse',
+  ]}
+  values={{
+    operation: 'ExtractList',
+    tabId: '',
+    listTemplate: '{ /* 从扩展复制的列表模板 */ }',
+    listCollectionScope: 'CurrentPage',
+    listMaxRows: '500',
+    listAllowEmpty: 'false',
+    listTimeoutMs: '30000',
+  }}
+  outputVars={{
+    listTable: '列表数据',
+    listRowCount: '提取行数',
+    listWarnings: '提取警告',
+    listCompleted: '结果完整',
+    listStopReason: '停止原因',
+  }}
+/>
+
+**采集范围**：
+
+- **当前页**：只读取当前页面，不操作翻页按钮。
+- **连续翻页**：按模板中的“下一页”或“加载更多”设置逐页采集，并把结果合并到同一张表中。模板没有多页设置时不能使用。
+
+**最大行数**：限制最终返回的总行数，范围为 1～2000。模板自身设置的上限仍然有效。
+
+**允许空结果**：打开后，网页没有匹配记录时返回一张具有固定列的空表。模板错误、网址不匹配和通信失败仍会正常报错。
+
+输出表格的列名取自模板中的稳定 key，字段标题保存在 DataColumn 的 `Caption` 中。某些记录缺少字段时会使用 `DBNull`，不会改变整张表的列结构。
+
+连续翻页后应同时检查“结果是否完整”和“停止原因”。达到页数或行数限制、页面点击后没有变化、或中途发生错误时，已经采集的数据仍可能有用，但不能视为完整结果。
+
+## 填写网页表单
+
+这是一次填写多个表单字段的推荐方式。表单模板负责描述字段，表单数据单独传入，因此同一模板可反复填写不同内容。
+
+<ModuleParamPreview
+  moduleKey="sys:chromecontrol"
+  focusKeys={[
+    'operation',
+    'tabId',
+    'formTemplate',
+    'formData',
+    'formDryRun',
+    'formFailurePolicy',
+    'formTimeoutMs',
+    'formAllRequiredSucceeded',
+    'formFilledCount',
+    'formFailedCount',
+    'formResults',
+    'formCheckStatus',
+    'formWarnings',
+    'rawResponse',
+  ]}
+  values={{
+    operation: 'FillForm',
+    tabId: '',
+    formTemplate: '{ /* 从扩展复制的表单模板 */ }',
+    formData: `customerName: 张三
+city: 北京`,
+    formDryRun: 'true',
+    formFailurePolicy: 'RequiredField',
+    formTimeoutMs: '30000',
+  }}
+  outputVars={{
+    formAllRequiredSucceeded: '必填字段成功',
+    formFilledCount: '填写数量',
+    formFailedCount: '失败数量',
+    formResults: '逐字段结果',
+    formWarnings: '表单警告',
+  }}
+/>
+
+**表单模板**：从扩展的表单设计器复制。模板不包含本次填写值。
+
+**表单数据**支持直接输入每行 `key:value`、JSON、词典变量，或返回词典/匿名对象的表达式。key 必须与模板字段 key 精确对应；空字符串表示清空字段，`null` 表示没有提供该字段。
+
+第一次使用新模板时，建议打开“仅检查，不填写”。检查会验证字段定位和数据，但不修改网页。确认逐字段结果后再正式填写。
+
+默认失败策略为“必填字段失败时失败”。“始终返回结果”不会忽略模板或通信错误，只是把字段填写结果交给后续步骤自行判断。
+
+## 操作网页元素
+
+“操作网页元素（推荐）”适合点击、填写、选择、勾选、悬停等单元素操作。与传统“修改元素属性/内容”和“触发 DOM 事件”相比，它优先按网页可访问性角色、可见文本或 CSS 选择器定位，并执行更接近真实用户的操作。
+
+<ModuleParamPreview
+  moduleKey="sys:chromecontrol"
+  focusKeys={[
+    'operation',
+    'tabId',
+    'pageUrlPattern',
+    'pageLocator',
+    'pageLocatorRole',
+    'pageLocatorValue',
+    'pageExact',
+    'pageOperation',
+    'pageValue',
+    'pageFrameId',
+    'isSuccess',
+    'rawResponse',
+  ]}
+  values={{
+    operation: 'PageAction',
+    tabId: '',
+    pageUrlPattern: '',
+    pageLocator: 'role',
+    pageLocatorRole: 'button',
+    pageLocatorValue: '提交',
+    pageOperation: 'click',
+  }}
+/>
+
+**页面地址约束**可留空。对于会修改网页的共享动作，建议填写允许的网址模式，避免动作在错误页面执行，例如 `https://example.com/orders/*`。
+
+定位方式的优先选择：
+
+1. **角色和名称**：适合按钮、链接、输入框等有明确语义的元素，通常最容易理解。
+2. **可见文本**：适合文本稳定且唯一的页面。
+3. **CSS 选择器**：适合前两种方式无法唯一定位的情况。
+
+## 上传或拖放文件
+
+文件控件不会进入表单模板。需要上传本机文件时，使用“上传文件到网页（安全）”；网页只接受拖放时，使用“向网页拖放文件（安全）”。
+
+<ModuleParamPreview
+  moduleKey="sys:chromecontrol"
+  focusKeys={[
+    'operation',
+    'tabId',
+    'pageUrlPattern',
+    'pageFileTarget',
+    'pageFileSelector',
+    'pageFiles',
+    'pageFrameId',
+    'isSuccess',
+    'rawResponse',
+  ]}
+  values={{
+    operation: 'UploadFiles',
+    tabId: '',
+    pageUrlPattern: 'https://example.com/upload/*',
+    pageFileTarget: 'css',
+    pageFileSelector: 'input[type="file"]',
+    pageFiles: `D:\\Files\\report.pdf
+D:\\Files\\image.png`,
+  }}
+/>
+
+使用 CSS 定位时，目标必须唯一匹配；“上传文件”要求目标是 `input[type=file]`。文件路径每行一个，必须是本机完整路径。模块只允许本次参数列出的文件，不会把本机路径写入网页 DOM 或扩展日志。
 
 ## 打开网址
 
@@ -1153,14 +1316,19 @@ ChromeAgent.exe 是浏览器和 Quicker 之间的消息代理，由浏览器启�
 <RelatedDocs
   items={[
     {
+      href: '/v2/xaction/guides/web-data-and-form-automation',
+      label: '网页列表提取与表单填写',
+      description: '使用侧边栏设计模板，在 Quicker 中提取、翻页或填写。',
+    },
+    {
       href: '/v2/xaction/modules/getchromeurl',
       label: '获取浏览器网址',
       description: '只读当前标签网址。',
     },
     {
       href: '/v2/xaction/guides/web-page-control',
-      label: '网页控制示例',
-      description: '填表、勾选、多选列表。',
+      label: '网页控制示例（传统方式）',
+      description: '适合单个元素和旧动作的底层控制示例。',
     },
     {
       href: '/v2/xaction/guides/chrome-ext-settings',
@@ -1189,3 +1357,4 @@ ChromeAgent.exe 是浏览器和 Quicker 之间的消息代理，由浏览器启�
 - 20230316 触发事件支持 native 方式。
 - 20231015 去除创建新窗口实例参数中的 active 字段（浏览器不支持）。
 - 202505 更新 MV3 版本浏览器扩展。
+- 202608 增加结构化列表提取、连续翻页、表单填写、语义化网页操作和安全文件操作。

@@ -26,7 +26,7 @@ legacyContentUpdatedAt: "2023-03-11T12:42:09.000Z"
 
 ![](./img/web-page-control-002-531408c7de.png)
 
-在获取选择器的时候，务必选择input元素本身的选择器，不要选到它的外层元素。
+在获取选择器的时候，务必选择input元素本身的选择器，不要选到它的外层元素。2.1.27 起，使用 Quicker Connector 获取 CSS 选择器时，选中后可滚动鼠标滚轮切换上级 / 下级元素，按 `Enter` 确认。
 
 
 

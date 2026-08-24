@@ -8,7 +8,7 @@ quickerDocKey: "xaction/module/sys:mathocr"
 comments: true
 moduleKey: "sys:mathocr"
 docStatus: "reviewed"
-metadataGeneratedAt: "2026-08-03 20:08:03"
+metadataGeneratedAt: "2026-08-24 20:01:39"
 legacyDocId: 49850606
 legacyContentUpdatedAt: "2026-03-20T00:32:28.000Z"
 ---

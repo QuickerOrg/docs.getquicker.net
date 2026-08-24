@@ -1,6 +1,6 @@
 ---
 title: "读取图片信息"
-description: "读取图片的宽高、旋转角度、拍摄时间和 Exif。"
+description: "获取图片的尺寸或exif信息"
 slug: "/v2/xaction/modules/imageinfo"
 sidebar_label: "读取图片信息"
 sidebar_position: 10
@@ -8,7 +8,7 @@ quickerDocKey: "xaction/module/sys:imageinfo"
 comments: true
 moduleKey: "sys:imageinfo"
 docStatus: "reviewed"
-metadataGeneratedAt: "2026-08-03 20:08:03"
+metadataGeneratedAt: "2026-08-24 20:01:39"
 legacyDocId: 5711058
 legacyContentUpdatedAt: "2020-03-31T00:36:08.000Z"
 ---

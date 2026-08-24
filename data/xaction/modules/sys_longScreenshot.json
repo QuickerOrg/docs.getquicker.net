@@ -1,8 +1,8 @@
 {
   "key": "sys:longScreenshot",
   "slug": "long-screenshot",
-  "legacySlug": "screencapture",
-  "ownsLegacyContent": false,
+  "legacySlug": "long-screenshot",
+  "ownsLegacyContent": true,
   "name": "长截图",
   "description": "先使用屏幕选区工具选择范围，再进行长截图。",
   "category": "Image",
@@ -57,7 +57,5 @@
     }
   ],
   "selections": {},
-  "sharedDocumentationKey": "sys:screenCapture",
-  "sharedDocumentationSlug": "screencapture",
   "sourceFileName": "sys_longScreenshot_长截图.md"
 }

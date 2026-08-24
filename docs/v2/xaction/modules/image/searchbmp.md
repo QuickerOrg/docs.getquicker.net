@@ -8,7 +8,7 @@ quickerDocKey: "xaction/module/sys:searchBmp"
 comments: true
 moduleKey: "sys:searchBmp"
 docStatus: "reviewed"
-metadataGeneratedAt: "2026-08-03 20:08:03"
+metadataGeneratedAt: "2026-08-24 20:01:39"
 legacyDocId: 2521318
 legacyContentUpdatedAt: "2024-05-18T08:56:35.000Z"
 ---

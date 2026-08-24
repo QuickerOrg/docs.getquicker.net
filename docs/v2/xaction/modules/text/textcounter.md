@@ -1,6 +1,6 @@
 ---
 title: "字数统计"
-description: "统计文本的行数、字符数、可见字符数和汉字数。"
+description: "统计文本行数、字符数等"
 slug: "/v2/xaction/modules/textcounter"
 sidebar_label: "字数统计"
 sidebar_position: 100
@@ -8,7 +8,7 @@ quickerDocKey: "xaction/module/sys:textCounter"
 comments: true
 moduleKey: "sys:textCounter"
 docStatus: "reviewed"
-metadataGeneratedAt: "2026-08-03 20:08:03"
+metadataGeneratedAt: "2026-08-24 20:01:39"
 legacyDocId: 2115546
 legacyContentUpdatedAt: "2019-07-15T00:53:30.000Z"
 ---

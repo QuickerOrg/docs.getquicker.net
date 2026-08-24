@@ -1,6 +1,6 @@
 ---
 title: "文件和目录操作"
-description: "复制、移动、删除、创建文件或文件夹，以及列举目录内容。"
+description: "文件和目录操作。请确保路径是合法的。"
 slug: "/v2/xaction/modules/fileoperation"
 sidebar_label: "文件和目录操作"
 sidebar_position: 60
@@ -8,7 +8,7 @@ quickerDocKey: "xaction/module/sys:fileOperation"
 comments: true
 moduleKey: "sys:fileOperation"
 docStatus: "reviewed"
-metadataGeneratedAt: "2026-08-03 20:08:03"
+metadataGeneratedAt: "2026-08-24 20:01:39"
 legacyDocId: 1461249
 legacyContentUpdatedAt: "2023-08-28T14:27:16.000Z"
 ---

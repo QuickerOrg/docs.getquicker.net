@@ -1,6 +1,6 @@
 ---
 title: "检查路径/获取文件信息"
-description: "检查文件或文件夹是否存在，并读取大小、时间、哈希和扩展信息。"
+description: "检查指定的文件或文件夹是否存在。"
 slug: "/v2/xaction/modules/checkpathexists"
 sidebar_label: "检查路径/获取文件信息"
 sidebar_position: 20
@@ -8,7 +8,7 @@ quickerDocKey: "xaction/module/sys:checkPathExists"
 comments: true
 moduleKey: "sys:checkPathExists"
 docStatus: "reviewed"
-metadataGeneratedAt: "2026-08-03 20:08:03"
+metadataGeneratedAt: "2026-08-24 20:01:39"
 legacyDocId: 2116341
 legacyContentUpdatedAt: "2025-01-20T00:45:55.000Z"
 ---

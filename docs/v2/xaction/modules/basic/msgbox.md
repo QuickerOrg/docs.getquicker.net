@@ -8,7 +8,7 @@ quickerDocKey: "xaction/module/sys:MsgBox"
 comments: true
 moduleKey: "sys:MsgBox"
 docStatus: "reviewed"
-metadataGeneratedAt: "2026-08-03 20:08:03"
+metadataGeneratedAt: "2026-08-24 20:01:39"
 legacyDocId: 1529960
 legacyContentUpdatedAt: "2024-10-29T00:01:11.000Z"
 ---

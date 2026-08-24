@@ -1,6 +1,6 @@
 ---
 title: "窗口界面控制"
-description: "用 UI Automation 触发 Windows 窗口的菜单、按钮等控件。"
+description: "触发Windows窗口的菜单/按钮等控件。"
 slug: "/v2/xaction/modules/uiautomation"
 sidebar_label: "窗口界面控制"
 sidebar_position: 10
@@ -8,7 +8,7 @@ quickerDocKey: "xaction/module/sys:uiautomation"
 comments: true
 moduleKey: "sys:uiautomation"
 docStatus: "reviewed"
-metadataGeneratedAt: "2026-08-03 20:08:03"
+metadataGeneratedAt: "2026-08-24 20:01:39"
 legacyDocId: 7949007
 legacyContentUpdatedAt: "2023-06-30T03:08:04.000Z"
 ---

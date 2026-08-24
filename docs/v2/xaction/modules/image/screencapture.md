@@ -1,6 +1,6 @@
 ---
 title: "屏幕截图"
-description: "截取屏幕区域到图片变量，可选写入剪贴板。支持框选、全屏、固定区域和窗口。"
+description: "截取屏幕区域"
 slug: "/v2/xaction/modules/screencapture"
 sidebar_label: "屏幕截图"
 sidebar_position: 50
@@ -8,7 +8,7 @@ quickerDocKey: "xaction/module/sys:screenCapture"
 comments: true
 moduleKey: "sys:screenCapture"
 docStatus: "reviewed"
-metadataGeneratedAt: "2026-08-03 20:08:03"
+metadataGeneratedAt: "2026-08-24 20:01:39"
 legacyDocId: 1454333
 legacyContentUpdatedAt: "2025-12-21T14:14:54.000Z"
 ---

@@ -1,8 +1,8 @@
 {
   "key": "sys:screenCapturePro",
   "slug": "screen-capture-pro",
-  "legacySlug": "screencapture",
-  "ownsLegacyContent": false,
+  "legacySlug": "screen-capture-pro",
+  "ownsLegacyContent": true,
   "name": "截图 Pro",
   "description": "渐进式选区截图：全屏 overlay，光标处初始选区，支持控件跟踪，双击确认。Esc 取消。",
   "category": "Image",
@@ -63,6 +63,16 @@
       "description": "开启后悬停自动吸附到控件元素；关闭时（默认）仅跟随窗口范围，滚轮再触发 UIA 精细选区。"
     },
     {
+      "key": "toolbarScript",
+      "name": "自定义工具栏",
+      "type": "Text",
+      "defaultValue": "",
+      "required": false,
+      "variableMode": "UseVarOrInput",
+      "condition": "",
+      "description": "可视化编辑严格 JSON 声明（挂子程序/动作）。可改用动作变量，变量内容为完整 JSON/JS。写成 JS（sp/act/run）后可视化禁用。整栏插值须以 $$ 开头，只替换 {变量名}；不要写 JS 对象简写 {foo}。推荐外置：toolbarScript → file: files/toolbar.js。留空则用默认工具栏。"
+    },
+    {
       "key": "stopIfFail",
       "name": "失败后停止",
       "type": "Boolean",
@@ -104,7 +114,5 @@
     }
   ],
   "selections": {},
-  "sharedDocumentationKey": "sys:screenCapture",
-  "sharedDocumentationSlug": "screencapture",
   "sourceFileName": "sys_screenCapturePro_截图 Pro.md"
 }

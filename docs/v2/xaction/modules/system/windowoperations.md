@@ -8,7 +8,7 @@ quickerDocKey: "xaction/module/sys:windowOperations"
 comments: true
 moduleKey: "sys:windowOperations"
 docStatus: "reviewed"
-metadataGeneratedAt: "2026-08-03 20:08:03"
+metadataGeneratedAt: "2026-08-24 20:01:39"
 legacyDocId: 2117672
 legacyContentUpdatedAt: "2024-08-15T08:31:00.000Z"
 ---

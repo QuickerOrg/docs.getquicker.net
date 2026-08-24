@@ -1,6 +1,6 @@
 ---
 title: "文本窗口"
-description: "在独立窗口中显示或编辑较长文本，也可追加、关闭或读取已打开的窗口。"
+description: "在独立的窗口中显示文本。"
 slug: "/v2/xaction/modules/showtext"
 sidebar_label: "文本窗口"
 sidebar_position: 80
@@ -8,7 +8,7 @@ quickerDocKey: "xaction/module/sys:showText"
 comments: true
 moduleKey: "sys:showText"
 docStatus: "reviewed"
-metadataGeneratedAt: "2026-08-03 20:08:03"
+metadataGeneratedAt: "2026-08-24 20:01:39"
 legacyDocId: 1548914
 legacyContentUpdatedAt: "2025-06-04T23:29:00.000Z"
 ---

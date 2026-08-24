@@ -1,6 +1,6 @@
 ---
 title: "数字转换与处理"
-description: "把数字转成文本、取整，或做进制转换。"
+description: "数字转换为文本等相关处理"
 slug: "/v2/xaction/modules/numberprocess"
 sidebar_label: "数字转换与处理"
 sidebar_position: 140
@@ -8,7 +8,7 @@ quickerDocKey: "xaction/module/sys:numberprocess"
 comments: true
 moduleKey: "sys:numberprocess"
 docStatus: "reviewed"
-metadataGeneratedAt: "2026-08-03 20:08:03"
+metadataGeneratedAt: "2026-08-24 20:01:39"
 legacyDocId: 67836513
 legacyContentUpdatedAt: "2022-03-01T01:54:50.000Z"
 ---

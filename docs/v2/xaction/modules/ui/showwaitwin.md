@@ -1,6 +1,6 @@
 ---
 title: "显示等待窗口"
-description: "弹出等待窗口，让用户点按钮继续、看进度或中止动作。"
+description: "显示一个等待用户完成某个操作的提示窗口。"
 slug: "/v2/xaction/modules/showwaitwin"
 sidebar_label: "显示等待窗口"
 sidebar_position: 60
@@ -8,7 +8,7 @@ quickerDocKey: "xaction/module/sys:showWaitWin"
 comments: true
 moduleKey: "sys:showWaitWin"
 docStatus: "reviewed"
-metadataGeneratedAt: "2026-08-03 20:08:03"
+metadataGeneratedAt: "2026-08-24 20:01:39"
 legacyDocId: 1377039
 legacyContentUpdatedAt: "2025-03-13T03:07:54.000Z"
 ---

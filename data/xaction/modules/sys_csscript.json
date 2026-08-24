@@ -4,7 +4,7 @@
   "legacySlug": "csscript",
   "ownsLegacyContent": true,
   "name": "运行C#代码",
-  "description": "执行C#代码片段。代码中应包含主函数Exec(stepContext)，请参考文档说明。",
+  "description": "执行C#代码。可写完整 Exec(context)，或纯脚本（末行表达式即返回值；可用 context 读写变量）。async Task 由宿主等待。",
   "category": "Flow",
   "categoryName": "程序流程",
   "stepType": "Action",
@@ -26,7 +26,7 @@
       "key": "script",
       "name": "脚本内容",
       "type": "Text",
-      "defaultValue": "//.cs  文件类型，便于外部编辑时使用\n// 引用必要的命名空间\nusing System.Windows.Forms;\n\n// Quicker将会调用的函数。可以根据需要修改返回值类型。\npublic static void Exec(Quicker.Public.IStepContext context)\n{\n    //var oldValue = context.GetVarValue(\"varName\");  // 读取动作里的变量值\n    //MessageBox.Show(oldValue as string);\n    //context.SetVarValue(\"varName\", \"从脚本输出的内容。\"); // 向变量里输出值\n    MessageBox.Show(\"Hello World!\");\n}",
+      "defaultValue": "//.cs  文件类型，便于外部编辑时使用\n// 引用必要的命名空间\nusing System.Windows.Forms;\n\n// 纯脚本：末行表达式即返回值；可用 context 读写动作变量。\n// 也可写完整 public static void Exec(Quicker.Public.IStepContext context) { ... }\n// var old = context.GetVarValue(\"varName\");\n// context.SetVarValue(\"varName\", \"from script\");\nMessageBox.Show(\"Hello World!\");\n\"done\"",
       "required": true,
       "variableMode": "UseVarOrInput",
       "condition": "仅：normal_roslyn",
@@ -143,7 +143,7 @@
       "name": "返回内容",
       "type": "Any",
       "condition": "仅：normal_roslyn",
-      "description": "Exec方法的返回值"
+      "description": "Exec 方法的返回值；若返回 Task/ValueTask，则为等待完成后的解包结果"
     },
     {
       "key": "rtnAssembly",

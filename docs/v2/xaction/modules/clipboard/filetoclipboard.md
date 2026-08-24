@@ -8,7 +8,7 @@ quickerDocKey: "xaction/module/sys:fileToClipboard"
 comments: true
 moduleKey: "sys:fileToClipboard"
 docStatus: "reviewed"
-metadataGeneratedAt: "2026-08-03 20:08:03"
+metadataGeneratedAt: "2026-08-24 20:01:39"
 legacyDocId: 2067561
 legacyContentUpdatedAt: "2019-07-08T14:02:45.000Z"
 ---

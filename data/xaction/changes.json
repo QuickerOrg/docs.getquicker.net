@@ -1,1077 +1,2900 @@
 {
   "schemaVersion": 1,
   "baselineCreated": false,
-  "fromGeneratedAt": "2026-08-12 20:29:09",
-  "toGeneratedAt": "2026-08-13 19:01:10",
+  "fromGeneratedAt": "2026-08-13 19:01:10",
+  "toGeneratedAt": "2026-08-24 20:01:39",
   "summary": {
-    "addedModules": 3,
+    "addedModules": 2,
     "removedModules": 0,
-    "changedModules": 149
+    "changedModules": 25
   },
   "addedModules": [
     {
-      "key": "sys:pdf",
-      "name": "PDF 文件处理",
-      "slug": "pdf",
-      "category": "Files"
+      "key": "sys:pinImage",
+      "name": "贴图",
+      "slug": "pinimage",
+      "category": "Image"
     },
     {
-      "key": "sys:mobileNotification",
-      "name": "发送手机通知",
-      "slug": "mobilenotification",
-      "category": "Network"
-    },
-    {
-      "key": "sys:automationScript",
-      "name": "自动化脚本",
-      "slug": "automationscript",
-      "category": "Input"
+      "key": "sys:reactui",
+      "name": "React 界面",
+      "slug": "reactui",
+      "category": "Ui"
     }
   ],
   "removedModules": [],
   "changedModules": [
     {
-      "key": "sys:openUrl",
-      "name": "打开网址",
-      "changes": [
-        "helpLink"
-      ]
-    },
-    {
-      "key": "sys:MsgBox",
-      "name": "弹窗提示或确认",
-      "changes": [
-        "helpLink"
-      ]
-    },
-    {
-      "key": "sys:delay",
-      "name": "等待时间",
-      "changes": [
-        "helpLink"
-      ]
-    },
-    {
-      "key": "sys:outputText",
-      "name": "发送文本到窗口",
-      "changes": [
-        "helpLink"
-      ]
-    },
-    {
-      "key": "sys:getSelectedText",
-      "name": "获取选中的文本",
-      "changes": [
-        "helpLink"
-      ]
-    },
-    {
-      "key": "sys:keyInput",
-      "name": "模拟按键A（录入）",
-      "changes": [
-        "helpLink"
-      ]
-    },
-    {
-      "key": "sys:sendKeys",
-      "name": "模拟按键B（参数）",
-      "changes": [
-        "helpLink"
-      ]
-    },
-    {
-      "key": "sys:mouse",
-      "name": "鼠标输入",
-      "changes": [
-        "helpLink"
-      ]
-    },
-    {
-      "key": "sys:notify",
-      "name": "提示消息",
-      "changes": [
-        "helpLink"
-      ]
-    },
-    {
-      "key": "sys:userInput",
-      "name": "用户输入",
-      "changes": [
-        "helpLink"
-      ]
-    },
-    {
-      "key": "sys:select",
-      "name": "用户选择",
-      "changes": [
-        "helpLink"
-      ]
-    },
-    {
-      "key": "sys:run",
-      "name": "运行或打开",
-      "changes": [
-        "helpLink"
-      ]
-    },
-    {
-      "key": "sys:runScript",
-      "name": "运行脚本",
-      "changes": [
-        "helpLink"
-      ]
-    },
-    {
-      "key": "sys:comment",
-      "name": "注释",
-      "changes": [
-        "helpLink"
-      ]
-    },
-    {
-      "key": "sys:waitClipboardChange",
-      "name": "等待剪贴板内容改变",
-      "changes": [
-        "helpLink"
-      ]
-    },
-    {
-      "key": "sys:getClipboardImage",
-      "name": "获取剪贴板图片",
-      "changes": [
-        "helpLink"
-      ]
-    },
-    {
-      "key": "sys:getClipboardText",
-      "name": "获取剪贴板文本",
-      "changes": [
-        "helpLink"
-      ]
-    },
-    {
-      "key": "sys:getClipboardFiles",
-      "name": "获取剪贴板文件列表",
-      "changes": [
-        "helpLink"
-      ]
-    },
-    {
-      "key": "sys:fileToClipboard",
-      "name": "文件放入剪贴板",
-      "changes": [
-        "helpLink"
-      ]
-    },
-    {
-      "key": "sys:writeClipboard",
-      "name": "写入剪贴板",
-      "changes": [
-        "helpLink"
-      ]
-    },
-    {
-      "key": "sys:numCompare",
-      "name": "比较数字",
-      "changes": [
-        "helpLink"
-      ]
-    },
-    {
-      "key": "sys:strCompare",
-      "name": "比较文本",
-      "changes": [
-        "helpLink"
-      ]
-    },
-    {
-      "key": "sys:tableoperation",
-      "name": "表格数据操作",
-      "changes": [
-        "helpLink"
-      ]
-    },
-    {
-      "key": "sys:dictOperations",
-      "name": "词典操作",
-      "changes": [
-        "helpLink"
-      ]
-    },
-    {
-      "key": "sys:assign",
-      "name": "赋值",
-      "changes": [
-        "helpLink"
-      ]
-    },
-    {
-      "key": "sys:manageList",
-      "name": "管理和排序列表",
-      "changes": [
-        "helpLink"
-      ]
-    },
-    {
-      "key": "sys:compute",
-      "name": "计算",
-      "changes": [
-        "helpLink"
-      ]
-    },
-    {
-      "key": "sys:computeTime",
-      "name": "计算时间",
-      "changes": [
-        "helpLink"
-      ]
-    },
-    {
-      "key": "sys:listOperations",
-      "name": "列表操作",
-      "changes": [
-        "helpLink"
-      ]
-    },
-    {
-      "key": "sys:color",
-      "name": "屏幕取色/颜色转换与计算",
-      "changes": [
-        "helpLink"
-      ]
-    },
-    {
-      "key": "sys:randomNum",
-      "name": "生成随机数",
-      "changes": [
-        "helpLink"
-      ]
-    },
-    {
-      "key": "sys:newGuid",
-      "name": "生成Guid",
-      "changes": [
-        "helpLink"
-      ]
-    },
-    {
-      "key": "sys:dboperation",
-      "name": "数据库查询",
-      "changes": [
-        "helpLink"
-      ]
-    },
-    {
-      "key": "sys:numberprocess",
-      "name": "数字转换与处理",
-      "changes": [
-        "helpLink"
-      ]
-    },
-    {
-      "key": "sys:readFile",
-      "name": "读取文件",
-      "changes": [
-        "helpLink"
-      ]
-    },
-    {
-      "key": "sys:checkPathExists",
-      "name": "检查路径/获取文件信息",
-      "changes": [
-        "helpLink"
-      ]
-    },
-    {
-      "key": "sys:GenTempFilePath",
-      "name": "生成临时文件路径",
-      "changes": [
-        "helpLink"
-      ]
-    },
-    {
-      "key": "sys:everythingsearch",
-      "name": "使用Everything搜索文件",
-      "changes": [
-        "helpLink"
-      ]
-    },
-    {
-      "key": "sys:pathExtraction",
-      "name": "提取文件路径信息/生成路径",
-      "changes": [
-        "helpLink"
-      ]
-    },
-    {
-      "key": "sys:fileOperation",
-      "name": "文件和目录操作",
-      "changes": [
-        "helpLink"
-      ]
-    },
-    {
-      "key": "sys:WriteImageFile",
-      "name": "写入图片文件",
-      "changes": [
-        "helpLink"
-      ]
-    },
-    {
-      "key": "sys:WriteTextFile",
-      "name": "写入文本文件",
-      "changes": [
-        "helpLink"
-      ]
-    },
-    {
-      "key": "sys:stateStorage",
-      "name": "状态存取",
-      "changes": [
-        "helpLink"
-      ]
-    },
-    {
-      "key": "sys:zip",
-      "name": "Zip压缩打包",
-      "changes": [
-        "helpLink"
-      ]
-    },
-    {
-      "key": "sys:group",
-      "name": "步骤组",
-      "changes": [
-        "helpLink"
-      ]
-    },
-    {
-      "key": "sys:dependencycheck",
-      "name": "检查和下载依赖",
-      "changes": [
-        "helpLink"
-      ]
-    },
-    {
-      "key": "sys:each",
-      "name": "每个",
-      "changes": [
-        "helpLink"
-      ]
-    },
-    {
-      "key": "sys:simpleIf",
-      "name": "如果",
-      "changes": [
-        "helpLink"
-      ]
-    },
-    {
-      "key": "sys:if",
-      "name": "如果/否则",
-      "changes": [
-        "helpLink"
-      ]
-    },
-    {
-      "key": "sys:break",
-      "name": "跳出循环(break)",
-      "changes": [
-        "helpLink"
-      ]
-    },
-    {
-      "key": "sys:continue",
-      "name": "跳过后续步骤(continue)",
-      "changes": [
-        "helpLink"
-      ]
-    },
-    {
-      "key": "sys:stop",
-      "name": "停止(return)",
-      "changes": [
-        "helpLink"
-      ]
-    },
-    {
-      "key": "sys:runAction",
-      "name": "运行或停止动作",
-      "changes": [
-        "helpLink"
-      ]
-    },
-    {
-      "key": "sys:subprogram",
-      "name": "运行子程序",
-      "changes": [
-        "helpLink"
-      ]
-    },
-    {
-      "key": "sys:csscript",
-      "name": "运行C#代码",
-      "changes": [
-        "helpLink"
-      ]
-    },
-    {
-      "key": "sys:csharpFileApp",
-      "name": "运行C#文件应用",
-      "changes": [
-        "helpLink"
-      ]
-    },
-    {
-      "key": "sys:jsscript",
-      "name": "运行Javascript代码",
-      "changes": [
-        "helpLink"
-      ]
-    },
-    {
-      "key": "sys:pythonscript",
-      "name": "运行Python代码",
-      "changes": [
-        "helpLink"
-      ]
-    },
-    {
-      "key": "sys:repeat",
-      "name": "重复",
-      "changes": [
-        "helpLink"
-      ]
-    },
-    {
-      "key": "sys:imageinfo",
-      "name": "读取图片信息",
-      "changes": [
-        "helpLink"
-      ]
-    },
-    {
-      "key": "sys:screenRecording",
-      "name": "后台屏幕录制",
-      "changes": [
-        "helpLink"
-      ]
-    },
-    {
-      "key": "sys:screenCapturePro",
-      "name": "截图 Pro",
-      "changes": [
-        "helpLink"
-      ]
-    },
-    {
-      "key": "sys:tempImgBed",
-      "name": "临时图床",
-      "changes": [
-        "helpLink"
-      ]
-    },
-    {
-      "key": "sys:screenCapture",
-      "name": "屏幕截图",
-      "changes": [
-        "helpLink"
-      ]
-    },
-    {
-      "key": "sys:screenRecordingUI",
-      "name": "屏幕录制",
-      "changes": [
-        "helpLink"
-      ]
-    },
-    {
-      "key": "sys:searchBmp",
-      "name": "屏幕找图/找色/找字",
-      "changes": [
-        "helpLink"
-      ]
-    },
-    {
-      "key": "sys:createQrCode",
-      "name": "生成二维码",
-      "changes": [
-        "helpLink"
-      ]
-    },
-    {
-      "key": "sys:readQrCode",
-      "name": "识别二维码",
-      "changes": [
-        "helpLink"
-      ]
-    },
-    {
-      "key": "sys:whiteboard",
-      "name": "手写板",
-      "changes": [
-        "helpLink"
-      ]
-    },
-    {
-      "key": "sys:imgToBase64",
-      "name": "图片/Base64 转换",
-      "changes": [
-        "helpLink"
-      ]
-    },
-    {
-      "key": "sys:imgProcess",
-      "name": "图片处理",
-      "changes": [
-        "helpLink"
-      ]
-    },
-    {
-      "key": "sys:showImage",
-      "name": "显示图片",
-      "changes": [
-        "helpLink"
-      ]
-    },
-    {
-      "key": "sys:longScreenshot",
-      "name": "长截图",
-      "changes": [
-        "helpLink"
-      ]
-    },
-    {
-      "key": "sys:inputScript",
-      "name": "多步骤输入",
-      "changes": [
-        "helpLink"
-      ]
-    },
-    {
-      "key": "sys:cloud_oss",
-      "name": "第三方云存储/图床",
-      "changes": [
-        "helpLink"
-      ]
-    },
-    {
-      "key": "sys:mathocr",
-      "name": "公式识别",
-      "changes": [
-        "helpLink"
-      ]
-    },
-    {
-      "key": "sys:translation",
-      "name": "机器翻译/词典",
-      "changes": [
-        "helpLink"
-      ]
-    },
-    {
-      "key": "sys:basic-ocr",
-      "name": "基础OCR",
-      "changes": [
-        "helpLink"
-      ]
-    },
-    {
-      "key": "sys:tempcloudstore",
-      "name": "临时云存储",
-      "changes": [
-        "helpLink"
-      ]
-    },
-    {
-      "key": "sys:htmlExtract",
-      "name": "提取HTML内容",
-      "changes": [
-        "helpLink"
-      ]
-    },
-    {
-      "key": "sys:download",
-      "name": "下载文件",
-      "changes": [
-        "helpLink"
-      ]
-    },
-    {
-      "key": "sys:clouddata",
-      "name": "云状态存取",
-      "changes": [
-        "helpLink"
-      ]
-    },
-    {
       "key": "sys:ai",
       "name": "AI 调用",
-      "changes": [
-        "helpLink"
-      ]
-    },
-    {
-      "key": "sys:httpserver",
-      "name": "HTTP服务器",
-      "changes": [
-        "helpLink"
-      ]
-    },
-    {
-      "key": "sys:http",
-      "name": "HTTP请求",
-      "changes": [
-        "helpLink"
-      ]
-    },
-    {
-      "key": "sys:smtp",
-      "name": "SMTP发送邮件",
-      "changes": [
-        "helpLink"
-      ]
-    },
-    {
-      "key": "sys:websocket",
-      "name": "Websocket",
-      "changes": [
-        "helpLink"
-      ]
-    },
-    {
-      "key": "sys:uiautomation",
-      "name": "窗口界面控制",
-      "changes": [
-        "helpLink"
-      ]
-    },
-    {
-      "key": "sys:flauiautomation",
-      "name": "窗口界面控制(FlaUI)",
-      "changes": [
-        "helpLink"
-      ]
-    },
-    {
-      "key": "sys:getChromeUrl",
-      "name": "获取浏览器网址",
-      "changes": [
-        "helpLink"
-      ]
-    },
-    {
-      "key": "sys:chromecontrol",
-      "name": "浏览器控制",
-      "changes": [
-        "helpLink"
-      ]
-    },
-    {
-      "key": "sys:adobesoftscontrol",
-      "name": "Adobe系列软件控制",
-      "changes": [
-        "helpLink"
-      ]
-    },
-    {
-      "key": "sys:autocadcontrol",
-      "name": "AutoCAD控制",
-      "changes": [
-        "helpLink"
-      ]
-    },
-    {
-      "key": "sys:excelObjects",
-      "name": "Excel对象操作",
-      "changes": [
-        "helpLink"
-      ]
-    },
-    {
-      "key": "sys:excelRange",
-      "name": "Excel区域操作",
-      "changes": [
-        "helpLink"
-      ]
-    },
-    {
-      "key": "sys:excelreadwrite",
-      "name": "Excel文件读写",
-      "changes": [
-        "helpLink"
-      ]
-    },
-    {
-      "key": "sys:officehelper",
-      "name": "Office软件辅助",
-      "changes": [
-        "helpLink"
-      ]
-    },
-    {
-      "key": "sys:rhinocontrol",
-      "name": "Rhino软件控制",
-      "changes": [
-        "helpLink"
-      ]
-    },
-    {
-      "key": "sys:keyoperation",
-      "name": "按键操作",
-      "changes": [
-        "helpLink"
-      ]
-    },
-    {
-      "key": "sys:playSound",
-      "name": "播放声音",
-      "changes": [
-        "helpLink"
-      ]
-    },
-    {
-      "key": "sys:windowOperations",
-      "name": "窗口操作",
-      "changes": [
-        "helpLink"
-      ]
-    },
-    {
-      "key": "sys:restoreActiveWindow",
-      "name": "恢复活动窗口",
-      "changes": [
-        "helpLink"
-      ]
-    },
-    {
-      "key": "sys:getWindowTitle",
-      "name": "获取窗口信息/查找窗口",
-      "changes": [
-        "helpLink"
-      ]
-    },
-    {
-      "key": "sys:getActiveProcessInfo",
-      "name": "获取前台进程信息",
-      "changes": [
-        "helpLink"
-      ]
-    },
-    {
-      "key": "sys:getCurrentTime",
-      "name": "获取日期时间",
-      "changes": [
-        "helpLink"
-      ]
-    },
-    {
-      "key": "sys:getSysInfo",
-      "name": "获取系统或动作信息",
-      "changes": [
-        "helpLink"
-      ]
-    },
-    {
-      "key": "sys:getFolderPath",
-      "name": "获取系统路径",
-      "changes": [
-        "helpLink"
-      ]
-    },
-    {
-      "key": "sys:getSelectedFiles",
-      "name": "获取选择的文件(夹)/选择特定文件",
-      "changes": [
-        "helpLink"
-      ]
-    },
-    {
-      "key": "sys:getExplorerPath",
-      "name": "获取资源管理器路径/跳转路径",
-      "changes": [
-        "helpLink"
-      ]
-    },
-    {
-      "key": "sys:activateProcessMainWindow",
-      "name": "激活进程主窗口",
-      "changes": [
-        "helpLink"
-      ]
-    },
-    {
-      "key": "sys:checkProcessExists",
-      "name": "检查程序已启动/获取进程信息",
-      "changes": [
-        "helpLink"
-      ]
-    },
-    {
-      "key": "sys:recordSound",
-      "name": "录制声音/语音识别",
-      "changes": [
-        "helpLink"
-      ]
-    },
-    {
-      "key": "sys:imeControl",
-      "name": "输入法状态",
-      "changes": [
-        "helpLink"
-      ]
-    },
-    {
-      "key": "sys:fileSystemWatch",
-      "name": "文件系统监控",
-      "changes": [
-        "helpLink"
-      ]
-    },
-    {
-      "key": "sys:sendMessage",
-      "name": "向窗口发送消息",
-      "changes": [
-        "helpLink"
-      ]
-    },
-    {
-      "key": "sys:audioControl",
-      "name": "音频设备",
-      "changes": [
-        "helpLink"
-      ]
-    },
-    {
-      "key": "sys:SelectFileInExplorer",
-      "name": "在资源管理器中定位文件",
-      "changes": [
-        "helpLink"
-      ]
-    },
-    {
-      "key": "sys:quickeroperations",
-      "name": "Quicker操作",
-      "changes": [
-        "helpLink"
-      ]
-    },
-    {
-      "key": "sys:shelloperation",
-      "name": "Shell文件操作",
-      "changes": [
-        "helpLink"
-      ]
-    },
-    {
-      "key": "sys:winservice",
-      "name": "Windows服务和注册表",
-      "changes": [
-        "helpLink"
-      ]
-    },
-    {
-      "key": "sys:splitString",
-      "name": "拆分文本为列表",
-      "changes": [
-        "helpLink"
-      ]
-    },
-    {
-      "key": "sys:charInfo",
-      "name": "获取字符信息",
-      "changes": [
-        "helpLink"
-      ]
-    },
-    {
-      "key": "sys:enc",
-      "name": "加密/解密/哈希",
-      "changes": [
-        "helpLink"
-      ]
-    },
-    {
-      "key": "sys:joinList",
-      "name": "列表合并成文本",
-      "changes": [
-        "helpLink"
-      ]
-    },
-    {
-      "key": "sys:jsonExtract",
-      "name": "提取JSON内容",
-      "changes": [
-        "helpLink"
-      ]
-    },
-    {
-      "key": "sys:strReplace",
-      "name": "替换文本",
-      "changes": [
-        "helpLink"
-      ]
-    },
-    {
-      "key": "sys:stringProcess",
-      "name": "文本处理",
-      "changes": [
-        "helpLink"
-      ]
-    },
-    {
-      "key": "sys:showText",
-      "name": "文本窗口",
-      "changes": [
-        "helpLink"
-      ]
-    },
-    {
-      "key": "sys:regexExtract",
-      "name": "正则提取",
-      "changes": [
-        "helpLink"
-      ]
-    },
-    {
-      "key": "sys:textCounter",
-      "name": "字数统计",
-      "changes": [
-        "helpLink"
-      ]
-    },
-    {
-      "key": "sys:formatString",
-      "name": "组合成文本",
-      "changes": [
-        "helpLink"
-      ]
-    },
-    {
-      "key": "sys:waitKeyboard",
-      "name": "等待按键",
-      "changes": [
-        "helpLink"
-      ]
-    },
-    {
-      "key": "sys:form",
-      "name": "多字段表单",
-      "changes": [
-        "helpLink"
-      ]
-    },
-    {
-      "key": "sys:textSelectTools",
-      "name": "辅助选择工具",
-      "changes": [
-        "helpLink"
-      ]
-    },
-    {
-      "key": "sys:record",
-      "name": "录制键鼠操作",
-      "changes": [
-        "helpLink"
-      ]
-    },
-    {
-      "key": "sys:showmenu",
-      "name": "显示菜单",
-      "changes": [
-        "helpLink"
-      ]
-    },
-    {
-      "key": "sys:showWaitWin",
-      "name": "显示等待窗口",
-      "changes": [
-        "helpLink"
-      ]
-    },
-    {
-      "key": "sys:reportProgress",
-      "name": "显示进度条",
-      "changes": [
-        "helpLink"
-      ]
-    },
-    {
-      "key": "sys:selectFile",
-      "name": "选择文件",
-      "changes": [
-        "helpLink"
-      ]
-    },
-    {
-      "key": "sys:selectFolder",
-      "name": "选择文件夹",
-      "changes": [
-        "helpLink"
-      ]
-    },
-    {
-      "key": "sys:playRecords",
-      "name": "重放键鼠操作",
-      "changes": [
-        "helpLink"
-      ]
-    },
-    {
-      "key": "sys:custompanel",
-      "name": "自定义操作窗",
-      "changes": [
-        "helpLink"
-      ]
-    },
-    {
-      "key": "sys:customwindow",
-      "name": "自定义窗口",
-      "changes": [
-        "helpLink"
-      ]
-    },
-    {
-      "key": "sys:webview2",
-      "name": "WebView2浏览器窗口",
-      "changes": [
-        "helpLink"
-      ]
-    },
-    {
-      "key": "sys:aiText",
-      "name": "AI 文本处理",
-      "changes": [
-        "helpLink"
-      ]
-    },
-    {
-      "key": "sys:aiVision",
-      "name": "AI 图片理解",
-      "changes": [
-        "helpLink"
-      ]
-    },
-    {
-      "key": "sys:aiClassify",
-      "name": "AI 文本分类",
-      "changes": [
-        "helpLink"
-      ]
-    },
-    {
-      "key": "sys:aiExtract",
-      "name": "AI 结构化提取",
-      "changes": [
-        "helpLink"
-      ]
+      "changedFields": [
+        "category",
+        "categoryName"
+      ],
+      "inputs": {
+        "added": [
+          {
+            "key": "modelSource",
+            "name": "模型来源",
+            "type": "Enum",
+            "defaultValue": "custom",
+            "required": true,
+            "variableMode": "Input",
+            "condition": "",
+            "description": "使用步骤内配置的 API，或复用设置中的全局连接、模型和凭据。"
+          },
+          {
+            "key": "globalUseCaseId",
+            "name": "AI 任务场景",
+            "type": "Text",
+            "defaultValue": "text.general",
+            "required": false,
+            "variableMode": "UseVarOrInput",
+            "condition": "仅：global",
+            "description": "选择“模型分配”中的任务场景；未指定模型时按场景配置的顺序选择和回退。"
+          }
+        ],
+        "removed": [],
+        "changed": [
+          {
+            "key": "endpoint",
+            "before": {
+              "key": "endpoint",
+              "name": "接口端点",
+              "type": "Enum",
+              "defaultValue": "chat",
+              "required": true,
+              "variableMode": "Input",
+              "condition": "",
+              "description": ""
+            },
+            "after": {
+              "key": "endpoint",
+              "name": "接口端点",
+              "type": "Enum",
+              "defaultValue": "chat",
+              "required": true,
+              "variableMode": "Input",
+              "condition": "排除：global",
+              "description": ""
+            }
+          },
+          {
+            "key": "model",
+            "before": {
+              "key": "model",
+              "name": "模型",
+              "type": "Text",
+              "defaultValue": "",
+              "required": false,
+              "variableMode": "Input",
+              "condition": "",
+              "description": "适用于可能适用于不同的端点，请参考官方文档使用。"
+            },
+            "after": {
+              "key": "model",
+              "name": "模型",
+              "type": "Text",
+              "defaultValue": "",
+              "required": false,
+              "variableMode": "Input",
+              "condition": "排除：global",
+              "description": "适用于可能适用于不同的端点，请参考官方文档使用。"
+            }
+          },
+          {
+            "key": "apiUrlFormat",
+            "before": {
+              "key": "apiUrlFormat",
+              "name": "API网址",
+              "type": "Text",
+              "defaultValue": "",
+              "required": false,
+              "variableMode": "Input",
+              "condition": "",
+              "description": "可选，使用自定义的API服务器时使用。请参考模块文档了解如何设置。"
+            },
+            "after": {
+              "key": "apiUrlFormat",
+              "name": "API网址",
+              "type": "Text",
+              "defaultValue": "",
+              "required": false,
+              "variableMode": "Input",
+              "condition": "排除：global",
+              "description": "可选，使用自定义的API服务器时使用。请参考模块文档了解如何设置。"
+            }
+          },
+          {
+            "key": "apiKey",
+            "before": {
+              "key": "apiKey",
+              "name": "APIKey",
+              "type": "Text",
+              "defaultValue": "",
+              "required": false,
+              "variableMode": "Input",
+              "condition": "",
+              "description": ""
+            },
+            "after": {
+              "key": "apiKey",
+              "name": "APIKey",
+              "type": "Text",
+              "defaultValue": "",
+              "required": false,
+              "variableMode": "Input",
+              "condition": "排除：global",
+              "description": ""
+            }
+          },
+          {
+            "key": "apiOrg",
+            "before": {
+              "key": "apiOrg",
+              "name": "Orgnization",
+              "type": "Text",
+              "defaultValue": "",
+              "required": false,
+              "variableMode": "Input",
+              "condition": "",
+              "description": "可选"
+            },
+            "after": {
+              "key": "apiOrg",
+              "name": "Orgnization",
+              "type": "Text",
+              "defaultValue": "",
+              "required": false,
+              "variableMode": "Input",
+              "condition": "排除：global",
+              "description": "可选"
+            }
+          },
+          {
+            "key": "sessionId",
+            "before": {
+              "key": "sessionId",
+              "name": "会话ID",
+              "type": "Text",
+              "defaultValue": "",
+              "required": false,
+              "variableMode": "Input",
+              "condition": "仅：chat",
+              "description": "可选。每次会话请生成新的GUID格式会话ID，设置后将自动保存会话历史。"
+            },
+            "after": {
+              "key": "sessionId",
+              "name": "会话ID",
+              "type": "Text",
+              "defaultValue": "",
+              "required": false,
+              "variableMode": "Input",
+              "condition": "仅：chat; 排除：global",
+              "description": "可选。每次会话请生成新的GUID格式会话ID，设置后将自动保存会话历史。"
+            }
+          },
+          {
+            "key": "historyMessages",
+            "before": {
+              "key": "historyMessages",
+              "name": "历史消息",
+              "type": "Text",
+              "defaultValue": "",
+              "required": false,
+              "variableMode": "Input",
+              "condition": "仅：chat",
+              "description": "可选。存放历史消息的json数组，格式请参考文档说明。设定会话ID后，也可直接写发送的历史会话条数。"
+            },
+            "after": {
+              "key": "historyMessages",
+              "name": "历史消息",
+              "type": "Text",
+              "defaultValue": "",
+              "required": false,
+              "variableMode": "Input",
+              "condition": "仅：chat; 排除：global",
+              "description": "可选。存放历史消息的json数组，格式请参考文档说明。设定会话ID后，也可直接写发送的历史会话条数。"
+            }
+          },
+          {
+            "key": "topP",
+            "before": {
+              "key": "topP",
+              "name": "top_p",
+              "type": "Number",
+              "defaultValue": "1",
+              "required": false,
+              "variableMode": "Input",
+              "condition": "仅：chat, completions",
+              "description": ""
+            },
+            "after": {
+              "key": "topP",
+              "name": "top_p",
+              "type": "Number",
+              "defaultValue": "1",
+              "required": false,
+              "variableMode": "Input",
+              "condition": "仅：chat, completions; 排除：global",
+              "description": ""
+            }
+          },
+          {
+            "key": "n",
+            "before": {
+              "key": "n",
+              "name": "n",
+              "type": "Integer",
+              "defaultValue": "1",
+              "required": false,
+              "variableMode": "Input",
+              "condition": "",
+              "description": "对每个问题生成几个结果，将会耗费更多token。"
+            },
+            "after": {
+              "key": "n",
+              "name": "n",
+              "type": "Integer",
+              "defaultValue": "1",
+              "required": false,
+              "variableMode": "Input",
+              "condition": "排除：global",
+              "description": "对每个问题生成几个结果，将会耗费更多token。"
+            }
+          },
+          {
+            "key": "expireSeconds",
+            "before": {
+              "key": "expireSeconds",
+              "name": "超时秒数",
+              "type": "Number",
+              "defaultValue": "120",
+              "required": false,
+              "variableMode": "Input",
+              "condition": "",
+              "description": "最长等待秒数"
+            },
+            "after": {
+              "key": "expireSeconds",
+              "name": "超时秒数",
+              "type": "Number",
+              "defaultValue": "120",
+              "required": false,
+              "variableMode": "Input",
+              "condition": "排除：global",
+              "description": "最长等待秒数"
+            }
+          },
+          {
+            "key": "stop",
+            "before": {
+              "key": "stop",
+              "name": "停止符stop",
+              "type": "Text",
+              "defaultValue": "",
+              "required": false,
+              "variableMode": "Input",
+              "condition": "",
+              "description": "遇到指定的内容时自动停止生成。可使用\\r,\\n,\\t等表示特殊字符。输入多行时，表示多个停止符。"
+            },
+            "after": {
+              "key": "stop",
+              "name": "停止符stop",
+              "type": "Text",
+              "defaultValue": "",
+              "required": false,
+              "variableMode": "Input",
+              "condition": "排除：global",
+              "description": "遇到指定的内容时自动停止生成。可使用\\r,\\n,\\t等表示特殊字符。输入多行时，表示多个停止符。"
+            }
+          },
+          {
+            "key": "forceProxy",
+            "before": {
+              "key": "forceProxy",
+              "name": "强制使用代理",
+              "type": "Boolean",
+              "defaultValue": "false",
+              "required": false,
+              "variableMode": "Input",
+              "condition": "",
+              "description": "即使系统设置中未启用代理，本步骤仍然使用代理访问。"
+            },
+            "after": {
+              "key": "forceProxy",
+              "name": "强制使用代理",
+              "type": "Boolean",
+              "defaultValue": "false",
+              "required": false,
+              "variableMode": "Input",
+              "condition": "排除：global",
+              "description": "即使系统设置中未启用代理，本步骤仍然使用代理访问。"
+            }
+          },
+          {
+            "key": "respFormat",
+            "before": {
+              "key": "respFormat",
+              "name": "响应格式",
+              "type": "Text",
+              "defaultValue": "",
+              "required": false,
+              "variableMode": "UseVarOrInput",
+              "condition": "仅：chat",
+              "description": "留空，或使用\"json_object\"表示json格式响应，或json格式的完整的response_format内容。"
+            },
+            "after": {
+              "key": "respFormat",
+              "name": "响应格式",
+              "type": "Text",
+              "defaultValue": "",
+              "required": false,
+              "variableMode": "UseVarOrInput",
+              "condition": "仅：chat; 排除：global",
+              "description": "留空，或使用\"json_object\"表示json格式响应，或json格式的完整的response_format内容。"
+            }
+          },
+          {
+            "key": "extraProps",
+            "before": {
+              "key": "extraProps",
+              "name": "附加参数",
+              "type": "Dict",
+              "defaultValue": "",
+              "required": false,
+              "variableMode": "Input",
+              "condition": "仅：chat",
+              "description": "用于添加额外的请求参数。请参考文档"
+            },
+            "after": {
+              "key": "extraProps",
+              "name": "附加参数",
+              "type": "Dict",
+              "defaultValue": "",
+              "required": false,
+              "variableMode": "Input",
+              "condition": "仅：chat; 排除：global",
+              "description": "用于添加额外的请求参数。请参考文档"
+            }
+          }
+        ]
+      },
+      "outputs": {
+        "added": [
+          {
+            "key": "actualModel",
+            "name": "实际模型",
+            "type": "Text",
+            "condition": "仅：global",
+            "description": "全局 AI 配置模式实际使用的服务商和 API 模型。"
+          },
+          {
+            "key": "invocationId",
+            "name": "调用标识",
+            "type": "Text",
+            "condition": "仅：global",
+            "description": "全局 AI 配置模式生成的调用标识。"
+          }
+        ],
+        "removed": [],
+        "changed": []
+      },
+      "selectionsChanged": true,
+      "selections": {
+        "before": {
+          "endpoint": {
+            "name": "接口端点",
+            "items": [
+              {
+                "value": "chat",
+                "name": "Chat",
+                "description": ""
+              },
+              {
+                "value": "completions",
+                "name": "Completions",
+                "description": ""
+              }
+            ]
+          },
+          "respFormat": {
+            "name": "响应格式",
+            "items": [
+              {
+                "value": "",
+                "name": "文本",
+                "description": ""
+              },
+              {
+                "value": "json_object",
+                "name": "JSON对象",
+                "description": ""
+              }
+            ]
+          }
+        },
+        "after": {
+          "modelSource": {
+            "name": "模型来源",
+            "items": [
+              {
+                "value": "custom",
+                "name": "步骤内自定义 API",
+                "description": ""
+              },
+              {
+                "value": "global",
+                "name": "全局 AI 配置",
+                "description": ""
+              }
+            ]
+          },
+          "globalUseCaseId": {
+            "name": "AI 任务场景",
+            "items": [
+              {
+                "value": "text.general",
+                "name": "日常文本处理与翻译",
+                "description": ""
+              }
+            ]
+          },
+          "endpoint": {
+            "name": "接口端点",
+            "items": [
+              {
+                "value": "chat",
+                "name": "Chat",
+                "description": ""
+              },
+              {
+                "value": "completions",
+                "name": "Completions",
+                "description": ""
+              }
+            ]
+          },
+          "respFormat": {
+            "name": "响应格式",
+            "items": [
+              {
+                "value": "",
+                "name": "文本",
+                "description": ""
+              },
+              {
+                "value": "json_object",
+                "name": "JSON对象",
+                "description": ""
+              }
+            ]
+          }
+        }
+      }
     },
     {
       "key": "sys:aiChat",
       "name": "AI 交互对话",
-      "changes": [
+      "changedFields": [
+        "category",
+        "categoryName"
+      ],
+      "inputs": {
+        "added": [],
+        "removed": [],
+        "changed": []
+      },
+      "outputs": {
+        "added": [],
+        "removed": [],
+        "changed": []
+      },
+      "selectionsChanged": false
+    },
+    {
+      "key": "sys:aiExtract",
+      "name": "AI 结构化提取",
+      "changedFields": [
+        "category",
+        "categoryName"
+      ],
+      "inputs": {
+        "added": [],
+        "removed": [],
+        "changed": []
+      },
+      "outputs": {
+        "added": [],
+        "removed": [],
+        "changed": []
+      },
+      "selectionsChanged": false
+    },
+    {
+      "key": "sys:aiVision",
+      "name": "AI 图片理解",
+      "changedFields": [
+        "category",
+        "categoryName"
+      ],
+      "inputs": {
+        "added": [],
+        "removed": [],
+        "changed": []
+      },
+      "outputs": {
+        "added": [],
+        "removed": [],
+        "changed": []
+      },
+      "selectionsChanged": false
+    },
+    {
+      "key": "sys:aiText",
+      "name": "AI 文本处理",
+      "changedFields": [
+        "category",
+        "categoryName"
+      ],
+      "inputs": {
+        "added": [],
+        "removed": [],
+        "changed": []
+      },
+      "outputs": {
+        "added": [],
+        "removed": [],
+        "changed": []
+      },
+      "selectionsChanged": false
+    },
+    {
+      "key": "sys:aiClassify",
+      "name": "AI 文本分类",
+      "changedFields": [
+        "category",
+        "categoryName"
+      ],
+      "inputs": {
+        "added": [],
+        "removed": [],
+        "changed": []
+      },
+      "outputs": {
+        "added": [],
+        "removed": [],
+        "changed": []
+      },
+      "selectionsChanged": false
+    },
+    {
+      "key": "sys:writeClipboard",
+      "name": "写入剪贴板",
+      "changedFields": [],
+      "inputs": {
+        "added": [],
+        "removed": [],
+        "changed": []
+      },
+      "outputs": {
+        "added": [],
+        "removed": [],
+        "changed": []
+      },
+      "selectionsChanged": true,
+      "selections": {
+        "before": {
+          "type": {
+            "name": "类型",
+            "items": [
+              {
+                "value": "auto",
+                "name": "自动（纯文本或图片）",
+                "description": ""
+              },
+              {
+                "value": "html",
+                "name": "HTML片段",
+                "description": ""
+              },
+              {
+                "value": "text",
+                "name": "纯文本",
+                "description": ""
+              },
+              {
+                "value": "image",
+                "name": "图片",
+                "description": ""
+              },
+              {
+                "value": "rtf",
+                "name": "Rtf",
+                "description": ""
+              },
+              {
+                "value": "csv",
+                "name": "Csv",
+                "description": ""
+              },
+              {
+                "value": "custom",
+                "name": "自定义格式",
+                "description": ""
+              },
+              {
+                "value": "clear",
+                "name": "清空剪贴板",
+                "description": ""
+              },
+              {
+                "value": "clearHistory",
+                "name": "清空剪贴板历史(Win10+)",
+                "description": ""
+              }
+            ]
+          }
+        },
+        "after": {
+          "type": {
+            "name": "类型",
+            "items": [
+              {
+                "value": "auto",
+                "name": "自动（纯文本或图片）",
+                "description": ""
+              },
+              {
+                "value": "html",
+                "name": "HTML片段",
+                "description": ""
+              },
+              {
+                "value": "text",
+                "name": "纯文本",
+                "description": ""
+              },
+              {
+                "value": "image",
+                "name": "图片",
+                "description": ""
+              },
+              {
+                "value": "rtf",
+                "name": "Rtf",
+                "description": ""
+              },
+              {
+                "value": "csv",
+                "name": "Csv",
+                "description": ""
+              },
+              {
+                "value": "custom",
+                "name": "自定义格式",
+                "description": ""
+              },
+              {
+                "value": "clear",
+                "name": "清空当前剪贴板",
+                "description": ""
+              },
+              {
+                "value": "clearHistory",
+                "name": "清空剪贴板历史(Win10+)",
+                "description": ""
+              }
+            ]
+          }
+        }
+      }
+    },
+    {
+      "key": "sys:simpleIf",
+      "name": "如果",
+      "changedFields": [
+        "legacySlug",
+        "ownsLegacyContent",
+        "sharedDocumentationKey"
+      ],
+      "inputs": {
+        "added": [],
+        "removed": [],
+        "changed": []
+      },
+      "outputs": {
+        "added": [],
+        "removed": [],
+        "changed": []
+      },
+      "selectionsChanged": false
+    },
+    {
+      "key": "sys:csscript",
+      "name": "运行C#代码",
+      "changedFields": [
+        "description"
+      ],
+      "inputs": {
+        "added": [],
+        "removed": [],
+        "changed": [
+          {
+            "key": "script",
+            "before": {
+              "key": "script",
+              "name": "脚本内容",
+              "type": "Text",
+              "defaultValue": "//.cs  文件类型，便于外部编辑时使用\n// 引用必要的命名空间\nusing System.Windows.Forms;\n\n// Quicker将会调用的函数。可以根据需要修改返回值类型。\npublic static void Exec(Quicker.Public.IStepContext context)\n{\n    //var oldValue = context.GetVarValue(\"varName\");  // 读取动作里的变量值\n    //MessageBox.Show(oldValue as string);\n    //context.SetVarValue(\"varName\", \"从脚本输出的内容。\"); // 向变量里输出值\n    MessageBox.Show(\"Hello World!\");\n}",
+              "required": true,
+              "variableMode": "UseVarOrInput",
+              "condition": "仅：normal_roslyn",
+              "description": "要运行的脚本内容"
+            },
+            "after": {
+              "key": "script",
+              "name": "脚本内容",
+              "type": "Text",
+              "defaultValue": "//.cs  文件类型，便于外部编辑时使用\n// 引用必要的命名空间\nusing System.Windows.Forms;\n\n// 纯脚本：末行表达式即返回值；可用 context 读写动作变量。\n// 也可写完整 public static void Exec(Quicker.Public.IStepContext context) { ... }\n// var old = context.GetVarValue(\"varName\");\n// context.SetVarValue(\"varName\", \"from script\");\nMessageBox.Show(\"Hello World!\");\n\"done\"",
+              "required": true,
+              "variableMode": "UseVarOrInput",
+              "condition": "仅：normal_roslyn",
+              "description": "要运行的脚本内容"
+            }
+          }
+        ]
+      },
+      "outputs": {
+        "added": [],
+        "removed": [],
+        "changed": [
+          {
+            "key": "rtn",
+            "before": {
+              "key": "rtn",
+              "name": "返回内容",
+              "type": "Any",
+              "condition": "仅：normal_roslyn",
+              "description": "Exec方法的返回值"
+            },
+            "after": {
+              "key": "rtn",
+              "name": "返回内容",
+              "type": "Any",
+              "condition": "仅：normal_roslyn",
+              "description": "Exec 方法的返回值；若返回 Task/ValueTask，则为等待完成后的解包结果"
+            }
+          }
+        ]
+      },
+      "selectionsChanged": false
+    },
+    {
+      "key": "sys:csharpFileApp",
+      "name": "运行C#文件应用",
+      "changedFields": [],
+      "inputs": {
+        "added": [
+          {
+            "key": "reference",
+            "name": "引用DLL库",
+            "type": "Text",
+            "defaultValue": "",
+            "required": false,
+            "variableMode": "Input",
+            "condition": "",
+            "description": "要引用的托管DLL文件，每行一个，必须使用绝对路径。相关依赖DLL也需要一并添加。"
+          },
+          {
+            "key": "outputEncoding",
+            "name": "输出编码",
+            "type": "Enum",
+            "defaultValue": "auto",
+            "required": false,
+            "variableMode": "Input",
+            "condition": "",
+            "description": "标准输出和错误输出的文本编码。自动模式优先识别BOM和UTF-8，无效UTF-8时回退到系统控制台编码；遇到可被误判的旧编码内容时可显式选择。"
+          },
+          {
+            "key": "executionPermission",
+            "name": "运行权限",
+            "type": "Enum",
+            "defaultValue": "normal",
+            "required": false,
+            "variableMode": "Input",
+            "condition": "",
+            "description": "控制SDK构建、SDK回退和最终应用的进程权限。默认使用普通中完整性、非UIAccess权限；Quicker已提权时，以当前桌面的交互登录用户身份运行。需要跨权限界面自动化时可选择继承Quicker权限。"
+          }
+        ],
+        "removed": [],
+        "changed": [
+          {
+            "key": "code",
+            "before": {
+              "key": "code",
+              "name": "C#代码",
+              "type": "Text",
+              "defaultValue": "#:property PublishAot=false\n#:property TargetFramework=net10.0-windows\n#:property UseWpf=true\n\nusing System.Windows;\n\nMessageBox.Show(args.Length > 0 ? args[0] : \"Hello from Quicker!\");",
+              "required": true,
+              "variableMode": "UseVarOrInput",
+              "condition": "",
+              "description": "完整的C# file-based app源码。可使用#:property、#:package、#:project等指令。"
+            },
+            "after": {
+              "key": "code",
+              "name": "C#代码",
+              "type": "Text",
+              "defaultValue": "#:property PublishAot=false\n#:property TargetFramework=net10.0-windows\n#:property UseWpf=true\n\nusing System;\nusing System.Text;\nusing System.Windows;\n\nConsole.OutputEncoding = new UTF8Encoding(false);\n\nMessageBox.Show(args.Length > 0 ? args[0] : \"Hello from Quicker!\");",
+              "required": true,
+              "variableMode": "UseVarOrInput",
+              "condition": "",
+              "description": "完整的C# file-based app源码。可使用#:property、#:package、#:project等指令。"
+            }
+          }
+        ]
+      },
+      "outputs": {
+        "added": [],
+        "removed": [],
+        "changed": [
+          {
+            "key": "stdout",
+            "before": {
+              "key": "stdout",
+              "name": "标准输出",
+              "type": "Text",
+              "condition": "",
+              "description": "应用写入stdout的内容。"
+            },
+            "after": {
+              "key": "stdout",
+              "name": "标准输出",
+              "type": "Text",
+              "condition": "",
+              "description": "应用写入stdout的内容；构建失败时为空。"
+            }
+          },
+          {
+            "key": "stderr",
+            "before": {
+              "key": "stderr",
+              "name": "错误输出",
+              "type": "Text",
+              "condition": "",
+              "description": "SDK和应用写入stderr的内容。"
+            },
+            "after": {
+              "key": "stderr",
+              "name": "错误输出",
+              "type": "Text",
+              "condition": "",
+              "description": "应用写入stderr的内容；构建失败时包含dotnet build的stdout和stderr诊断。"
+            }
+          },
+          {
+            "key": "exitCode",
+            "before": {
+              "key": "exitCode",
+              "name": "退出代码",
+              "type": "Integer",
+              "condition": "",
+              "description": "dotnet进程的退出代码。"
+            },
+            "after": {
+              "key": "exitCode",
+              "name": "退出代码",
+              "type": "Integer",
+              "condition": "",
+              "description": "应用进程的退出代码；构建失败时为dotnet build进程的退出代码。"
+            }
+          }
+        ]
+      },
+      "selectionsChanged": true,
+      "selections": {
+        "before": {},
+        "after": {
+          "outputEncoding": {
+            "name": "输出编码",
+            "items": [
+              {
+                "value": "auto",
+                "name": "自动",
+                "description": ""
+              },
+              {
+                "value": "utf8",
+                "name": "UTF-8",
+                "description": ""
+              },
+              {
+                "value": "system",
+                "name": "系统控制台编码",
+                "description": ""
+              }
+            ]
+          },
+          "executionPermission": {
+            "name": "运行权限",
+            "items": [
+              {
+                "value": "normal",
+                "name": "普通权限",
+                "description": ""
+              },
+              {
+                "value": "inherit",
+                "name": "继承Quicker权限",
+                "description": ""
+              }
+            ]
+          }
+        }
+      }
+    },
+    {
+      "key": "sys:screenRecording",
+      "name": "后台屏幕录制",
+      "changedFields": [
+        "legacySlug",
+        "ownsLegacyContent",
+        "sharedDocumentationKey"
+      ],
+      "inputs": {
+        "added": [
+          {
+            "key": "outputDirectory",
+            "name": "输出文件夹路径",
+            "type": "Text",
+            "defaultValue": "",
+            "required": false,
+            "variableMode": "UseVarOrInput",
+            "condition": "仅：start",
+            "description": "成品写入该目录，文件名为 Recording_时间戳。留空且未指定旧「输出文件路径」时使用默认位置。"
+          }
+        ],
+        "removed": [],
+        "changed": [
+          {
+            "key": "regionType",
+            "before": {
+              "key": "regionType",
+              "name": "录制范围",
+              "type": "Enum",
+              "defaultValue": "fixed_area",
+              "required": true,
+              "variableMode": "Input",
+              "condition": "仅：start",
+              "description": "要录制的屏幕区域类型。"
+            },
+            "after": {
+              "key": "regionType",
+              "name": "录制范围",
+              "type": "Enum",
+              "defaultValue": "primary_screen",
+              "required": true,
+              "variableMode": "Input",
+              "condition": "仅：start",
+              "description": "要录制的屏幕区域类型。"
+            }
+          },
+          {
+            "key": "area",
+            "before": {
+              "key": "area",
+              "name": "录制区域",
+              "type": "Text",
+              "defaultValue": "",
+              "required": false,
+              "variableMode": "UseVarOrInput",
+              "condition": "仅：start, fixed_area",
+              "description": "固定区域坐标，格式：left,top,right,bottom。默认不包含右边和底边像素。"
+            },
+            "after": {
+              "key": "area",
+              "name": "录制区域",
+              "type": "Text",
+              "defaultValue": "",
+              "required": false,
+              "variableMode": "UseVarOrInput",
+              "condition": "仅：fixed_area; 排除：pause, resume, stop",
+              "description": "固定区域坐标，格式：left,top,right,bottom。默认不包含右边和底边像素。"
+            }
+          },
+          {
+            "key": "includeRightBottomBorder",
+            "before": {
+              "key": "includeRightBottomBorder",
+              "name": "包含右下边像素",
+              "type": "Boolean",
+              "defaultValue": "true",
+              "required": false,
+              "variableMode": "Input",
+              "condition": "仅：start, fixed_area",
+              "description": "包含时，0,0,2,2 表示 3×3 区域；否则为 2×2。"
+            },
+            "after": {
+              "key": "includeRightBottomBorder",
+              "name": "包含右下边像素",
+              "type": "Boolean",
+              "defaultValue": "true",
+              "required": false,
+              "variableMode": "Input",
+              "condition": "仅：fixed_area; 排除：pause, resume, stop",
+              "description": "包含时，0,0,2,2 表示 3×3 区域；否则为 2×2。"
+            }
+          },
+          {
+            "key": "outputFilePath",
+            "before": {
+              "key": "outputFilePath",
+              "name": "输出文件路径",
+              "type": "Text",
+              "defaultValue": "",
+              "required": false,
+              "variableMode": "UseVarOrInput",
+              "condition": "仅：start",
+              "description": "留空时使用 Quicker 临时目录下的时间戳文件名。"
+            },
+            "after": {
+              "key": "outputFilePath",
+              "name": "输出文件路径",
+              "type": "Text",
+              "defaultValue": "",
+              "required": false,
+              "variableMode": "UseVarOrInput",
+              "condition": "仅：start",
+              "description": "旧动作兼容：始终按文件规整，无扩展名仍是 clip.mp4。新动作请用「输出文件夹路径」。"
+            }
+          }
+        ]
+      },
+      "outputs": {
+        "added": [],
+        "removed": [],
+        "changed": []
+      },
+      "selectionsChanged": false
+    },
+    {
+      "key": "sys:screenCapturePro",
+      "name": "截图 Pro",
+      "changedFields": [
+        "legacySlug",
+        "ownsLegacyContent",
+        "sharedDocumentationKey"
+      ],
+      "inputs": {
+        "added": [
+          {
+            "key": "toolbarScript",
+            "name": "自定义工具栏",
+            "type": "Text",
+            "defaultValue": "",
+            "required": false,
+            "variableMode": "UseVarOrInput",
+            "condition": "",
+            "description": "可视化编辑严格 JSON 声明（挂子程序/动作）。可改用动作变量，变量内容为完整 JSON/JS。写成 JS（sp/act/run）后可视化禁用。整栏插值须以 $$ 开头，只替换 {变量名}；不要写 JS 对象简写 {foo}。推荐外置：toolbarScript → file: files/toolbar.js。留空则用默认工具栏。"
+          }
+        ],
+        "removed": [],
+        "changed": []
+      },
+      "outputs": {
+        "added": [],
+        "removed": [],
+        "changed": []
+      },
+      "selectionsChanged": false
+    },
+    {
+      "key": "sys:screenCapture",
+      "name": "屏幕截图",
+      "changedFields": [],
+      "inputs": {
+        "added": [
+          {
+            "key": "enableUiElementDetect",
+            "name": "启用 UI 元素检测",
+            "type": "Boolean",
+            "defaultValue": "false",
+            "required": false,
+            "variableMode": "Input",
+            "condition": "仅：select",
+            "description": "开启后悬停自动吸附控件区域，滚轮切换父/子控件；关闭时仅智能检测窗口范围。"
+          }
+        ],
+        "removed": [],
+        "changed": []
+      },
+      "outputs": {
+        "added": [],
+        "removed": [],
+        "changed": []
+      },
+      "selectionsChanged": false
+    },
+    {
+      "key": "sys:screenRecordingUI",
+      "name": "屏幕录制",
+      "changedFields": [
+        "legacySlug",
+        "ownsLegacyContent",
+        "sharedDocumentationKey"
+      ],
+      "inputs": {
+        "added": [
+          {
+            "key": "saveDirectory",
+            "name": "保存文件夹",
+            "type": "Text",
+            "defaultValue": "",
+            "required": false,
+            "variableMode": "UseVarOrInput",
+            "condition": "",
+            "description": "录制文件保存目录。留空时仍使用当前默认位置，不影响已有动作。"
+          }
+        ],
+        "removed": [],
+        "changed": []
+      },
+      "outputs": {
+        "added": [],
+        "removed": [],
+        "changed": []
+      },
+      "selectionsChanged": false
+    },
+    {
+      "key": "sys:searchBmp",
+      "name": "屏幕找图/找色/找字",
+      "changedFields": [],
+      "inputs": {
+        "added": [
+          {
+            "key": "windowHandle",
+            "name": "窗口句柄",
+            "type": "Integer",
+            "defaultValue": "0",
+            "required": false,
+            "variableMode": "UseVarOrInput",
+            "condition": "",
+            "description": "指定要查找的窗口句柄。窗口被遮挡时仍尝试从窗口自身获取内容。"
+          },
+          {
+            "key": "returnWindowRelativeCoordinates",
+            "name": "返回相对于窗口左上角的坐标",
+            "type": "Boolean",
+            "defaultValue": "false",
+            "required": false,
+            "variableMode": "UseVarOrInput",
+            "condition": "仅：CurrentWindow, SpecifiedWindow",
+            "description": "启用后，匹配点以实际捕获窗口图像的左上角为原点（包含标题栏和边框）；否则返回屏幕绝对坐标。"
+          },
+          {
+            "key": "targetBitmap",
+            "name": "目标图片",
+            "type": "Any",
+            "defaultValue": "",
+            "required": true,
+            "variableMode": "UseVarOrInput",
+            "condition": "",
+            "description": "作为查找范围的图片路径或图片变量。匹配坐标以图片左上角为原点。"
+          },
+          {
+            "key": "bitmapMatchMode",
+            "name": "匹配方式",
+            "type": "Enum",
+            "defaultValue": "colorTolerance",
+            "required": true,
+            "variableMode": "Input",
+            "condition": "仅：locateByBitmapFile, locateByBitmapVar",
+            "description": "图片匹配算法。颜色容差与旧动作行为一致；相似度允许少量像素和渲染差异。"
+          },
+          {
+            "key": "minSimilarity",
+            "name": "最低相似度",
+            "type": "Integer",
+            "defaultValue": "90",
+            "required": false,
+            "variableMode": "Input",
+            "condition": "仅：locateByBitmapFile, locateByBitmapVar",
+            "description": "仅用于相似度匹配。范围0-100，越大要求越接近；90表示允许总体平均存在少量颜色差异。"
+          }
+        ],
+        "removed": [],
+        "changed": [
+          {
+            "key": "searchRect",
+            "before": {
+              "key": "searchRect",
+              "name": "查找坐标范围",
+              "type": "Text",
+              "defaultValue": "",
+              "required": false,
+              "variableMode": "UseVarOrInput",
+              "condition": "",
+              "description": "可选。当\"查找范围\"为\"坐标范围\"时有效，格式为：left,top,right,bottom"
+            },
+            "after": {
+              "key": "searchRect",
+              "name": "查找坐标范围",
+              "type": "Text",
+              "defaultValue": "",
+              "required": false,
+              "variableMode": "UseVarOrInput",
+              "condition": "仅：Rect",
+              "description": "可选。当\"查找范围\"为\"坐标范围\"时有效，格式为：left,top,right,bottom"
+            }
+          },
+          {
+            "key": "bmpColorError",
+            "before": {
+              "key": "bmpColorError",
+              "name": "颜色容差",
+              "type": "Integer",
+              "defaultValue": "10",
+              "required": false,
+              "variableMode": "Input",
+              "condition": "仅：locateByBitmapFile, locateByBitmapVar, locateByColor",
+              "description": "匹配像素时允许每个颜色通道的偏差值0-100，0表示精确匹配，速度最快。"
+            },
+            "after": {
+              "key": "bmpColorError",
+              "name": "颜色容差",
+              "type": "Integer",
+              "defaultValue": "10",
+              "required": false,
+              "variableMode": "Input",
+              "condition": "仅：locateByBitmapFile, locateByBitmapVar, locateByColor",
+              "description": "找色或颜色容差匹配时，允许每个颜色通道的偏差值0-100；0表示精确匹配，速度最快。相似度匹配不使用此参数。"
+            }
+          }
+        ]
+      },
+      "outputs": {
+        "added": [
+          {
+            "key": "bestSimilarity",
+            "name": "最佳相似度",
+            "type": "Number",
+            "condition": "仅：locateByBitmapFile, locateByBitmapVar",
+            "description": "最佳成功匹配的相似度（0-100）。颜色容差匹配成功时为100，未找到时为0。"
+          }
+        ],
+        "removed": [],
+        "changed": []
+      },
+      "selectionsChanged": true,
+      "selections": {
+        "before": {
+          "type": {
+            "name": "类型",
+            "items": [
+              {
+                "value": "locateByBitmapFile",
+                "name": "查找图片(文件)",
+                "description": ""
+              },
+              {
+                "value": "locateByBitmapVar",
+                "name": "查找图片(变量)",
+                "description": ""
+              },
+              {
+                "value": "locateByColor",
+                "name": "查找颜色",
+                "description": ""
+              },
+              {
+                "value": "locateByText",
+                "name": "查找文字",
+                "description": ""
+              }
+            ]
+          },
+          "bmpTargetType": {
+            "name": "查找范围",
+            "items": [
+              {
+                "value": "MainScreen",
+                "name": "主屏幕",
+                "description": ""
+              },
+              {
+                "value": "CurrentWindow",
+                "name": "当前窗口",
+                "description": ""
+              },
+              {
+                "value": "Rect",
+                "name": "坐标范围",
+                "description": ""
+              },
+              {
+                "value": "AllScreens",
+                "name": "所有屏幕",
+                "description": ""
+              }
+            ]
+          },
+          "bmpPosition": {
+            "name": "定位位置",
+            "items": [
+              {
+                "value": "Center",
+                "name": "位图中间",
+                "description": ""
+              },
+              {
+                "value": "TopLeft",
+                "name": "左上角",
+                "description": ""
+              },
+              {
+                "value": "TopRight",
+                "name": "右上角",
+                "description": ""
+              },
+              {
+                "value": "BottomLeft",
+                "name": "左下角",
+                "description": ""
+              },
+              {
+                "value": "BottomRight",
+                "name": "右下角",
+                "description": ""
+              }
+            ]
+          }
+        },
+        "after": {
+          "type": {
+            "name": "类型",
+            "items": [
+              {
+                "value": "locateByBitmapFile",
+                "name": "查找图片(文件)",
+                "description": ""
+              },
+              {
+                "value": "locateByBitmapVar",
+                "name": "查找图片(变量)",
+                "description": ""
+              },
+              {
+                "value": "locateByColor",
+                "name": "查找颜色",
+                "description": ""
+              },
+              {
+                "value": "locateByText",
+                "name": "查找文字",
+                "description": ""
+              }
+            ]
+          },
+          "bmpTargetType": {
+            "name": "查找范围",
+            "items": [
+              {
+                "value": "MainScreen",
+                "name": "主屏幕",
+                "description": ""
+              },
+              {
+                "value": "CurrentWindow",
+                "name": "当前窗口",
+                "description": ""
+              },
+              {
+                "value": "Rect",
+                "name": "坐标范围",
+                "description": ""
+              },
+              {
+                "value": "AllScreens",
+                "name": "所有屏幕",
+                "description": ""
+              },
+              {
+                "value": "SpecifiedWindow",
+                "name": "指定窗口",
+                "description": ""
+              },
+              {
+                "value": "SpecifiedBitmap",
+                "name": "指定图片",
+                "description": ""
+              }
+            ]
+          },
+          "bmpPosition": {
+            "name": "定位位置",
+            "items": [
+              {
+                "value": "Center",
+                "name": "位图中间",
+                "description": ""
+              },
+              {
+                "value": "TopLeft",
+                "name": "左上角",
+                "description": ""
+              },
+              {
+                "value": "TopRight",
+                "name": "右上角",
+                "description": ""
+              },
+              {
+                "value": "BottomLeft",
+                "name": "左下角",
+                "description": ""
+              },
+              {
+                "value": "BottomRight",
+                "name": "右下角",
+                "description": ""
+              }
+            ]
+          },
+          "bitmapMatchMode": {
+            "name": "匹配方式",
+            "items": [
+              {
+                "value": "colorTolerance",
+                "name": "颜色容差（快速）",
+                "description": ""
+              },
+              {
+                "value": "similarity",
+                "name": "相似度",
+                "description": ""
+              }
+            ]
+          }
+        }
+      }
+    },
+    {
+      "key": "sys:imgProcess",
+      "name": "图片处理",
+      "changedFields": [],
+      "inputs": {
+        "added": [],
+        "removed": [],
+        "changed": [
+          {
+            "key": "maxWidth",
+            "before": {
+              "key": "maxWidth",
+              "name": "最大宽度",
+              "type": "Integer",
+              "defaultValue": "0",
+              "required": false,
+              "variableMode": "UseVarOrInput",
+              "condition": "仅：resize_pixel",
+              "description": "最大宽度(像素数)，0表示自动"
+            },
+            "after": {
+              "key": "maxWidth",
+              "name": "宽度",
+              "type": "Integer",
+              "defaultValue": "0",
+              "required": false,
+              "variableMode": "UseVarOrInput",
+              "condition": "仅：resize_pixel, scale_pixel",
+              "description": "宽度（像素数），0 表示按高度自动计算；缩小时作为最大宽度，缩放时作为目标宽度"
+            }
+          },
+          {
+            "key": "maxHeight",
+            "before": {
+              "key": "maxHeight",
+              "name": "最大高度",
+              "type": "Integer",
+              "defaultValue": "0",
+              "required": false,
+              "variableMode": "UseVarOrInput",
+              "condition": "仅：resize_pixel",
+              "description": "最大高度(像素数)，0表示自动"
+            },
+            "after": {
+              "key": "maxHeight",
+              "name": "高度",
+              "type": "Integer",
+              "defaultValue": "0",
+              "required": false,
+              "variableMode": "UseVarOrInput",
+              "condition": "仅：resize_pixel, scale_pixel",
+              "description": "高度（像素数），0 表示按宽度自动计算；缩小时作为最大高度，缩放时作为目标高度"
+            }
+          },
+          {
+            "key": "iconScaling",
+            "before": {
+              "key": "iconScaling",
+              "name": "缩放采样",
+              "type": "Enum",
+              "defaultValue": "HighQualityBicubic",
+              "required": false,
+              "variableMode": "Input",
+              "condition": "仅：GenerateIco",
+              "description": "自动：整数倍放大使用邻近采样，大比例缩小使用 Lanczos，其余使用高质量双三次"
+            },
+            "after": {
+              "key": "iconScaling",
+              "name": "缩放采样",
+              "type": "Enum",
+              "defaultValue": "HighQualityBicubic",
+              "required": false,
+              "variableMode": "Input",
+              "condition": "仅：resize_percent, resize_pixel, scale_pixel, GenerateIco",
+              "description": "自动：大比例缩小使用 Lanczos；生成图标时整数倍放大使用邻近采样；其余使用高质量双三次"
+            }
+          }
+        ]
+      },
+      "outputs": {
+        "added": [],
+        "removed": [],
+        "changed": [
+          {
+            "key": "result",
+            "before": {
+              "key": "result",
+              "name": "结果图片",
+              "type": "Image",
+              "condition": "仅：Clone, resize_percent, resize_pixel, Filters",
+              "description": "处理后的图片"
+            },
+            "after": {
+              "key": "result",
+              "name": "结果图片",
+              "type": "Image",
+              "condition": "仅：Clone, resize_percent, resize_pixel, scale_pixel, Filters",
+              "description": "处理后的图片"
+            }
+          }
+        ]
+      },
+      "selectionsChanged": true,
+      "selections": {
+        "before": {
+          "type": {
+            "name": "操作类型",
+            "items": [
+              {
+                "value": "resize_percent",
+                "name": "缩放图片(指定比例)",
+                "description": ""
+              },
+              {
+                "value": "resize_pixel",
+                "name": "缩小图片(指定像素)",
+                "description": ""
+              },
+              {
+                "value": "Clone",
+                "name": "复制图片",
+                "description": ""
+              },
+              {
+                "value": "Invert",
+                "name": "反色",
+                "description": ""
+              },
+              {
+                "value": "GrayScale",
+                "name": "灰度",
+                "description": ""
+              },
+              {
+                "value": "Rotate",
+                "name": "旋转",
+                "description": ""
+              },
+              {
+                "value": "Filters",
+                "name": "组合处理",
+                "description": ""
+              },
+              {
+                "value": "GenerateIco",
+                "name": "生成图标文件(.ico)",
+                "description": ""
+              }
+            ]
+          },
+          "iconScaling": {
+            "name": "缩放采样",
+            "items": [
+              {
+                "value": "Auto",
+                "name": "自动",
+                "description": ""
+              },
+              {
+                "value": "NearestNeighbor",
+                "name": "像素化（邻近采样）",
+                "description": ""
+              },
+              {
+                "value": "HighQualityBilinear",
+                "name": "清晰（高质量双线性）",
+                "description": ""
+              },
+              {
+                "value": "HighQualityBicubic",
+                "name": "平滑（高质量双三次）",
+                "description": ""
+              },
+              {
+                "value": "Lanczos",
+                "name": "锐利（Lanczos）",
+                "description": ""
+              },
+              {
+                "value": "Box",
+                "name": "区域平均（Box）",
+                "description": ""
+              }
+            ]
+          }
+        },
+        "after": {
+          "type": {
+            "name": "操作类型",
+            "items": [
+              {
+                "value": "resize_percent",
+                "name": "缩放图片(指定比例)",
+                "description": ""
+              },
+              {
+                "value": "resize_pixel",
+                "name": "缩小图片（按边长像素）",
+                "description": ""
+              },
+              {
+                "value": "Clone",
+                "name": "复制图片",
+                "description": ""
+              },
+              {
+                "value": "Invert",
+                "name": "反色",
+                "description": ""
+              },
+              {
+                "value": "GrayScale",
+                "name": "灰度",
+                "description": ""
+              },
+              {
+                "value": "Rotate",
+                "name": "旋转",
+                "description": ""
+              },
+              {
+                "value": "Filters",
+                "name": "组合处理",
+                "description": ""
+              },
+              {
+                "value": "GenerateIco",
+                "name": "生成图标文件(.ico)",
+                "description": ""
+              },
+              {
+                "value": "scale_pixel",
+                "name": "缩放图片（按边长像素）",
+                "description": ""
+              }
+            ]
+          },
+          "iconScaling": {
+            "name": "缩放采样",
+            "items": [
+              {
+                "value": "Auto",
+                "name": "自动",
+                "description": ""
+              },
+              {
+                "value": "NearestNeighbor",
+                "name": "像素化（邻近采样）",
+                "description": ""
+              },
+              {
+                "value": "HighQualityBilinear",
+                "name": "清晰（高质量双线性）",
+                "description": ""
+              },
+              {
+                "value": "HighQualityBicubic",
+                "name": "平滑（高质量双三次）",
+                "description": ""
+              },
+              {
+                "value": "Lanczos",
+                "name": "锐利（Lanczos）",
+                "description": ""
+              },
+              {
+                "value": "Box",
+                "name": "区域平均（Box）",
+                "description": ""
+              }
+            ]
+          }
+        }
+      }
+    },
+    {
+      "key": "sys:longScreenshot",
+      "name": "长截图",
+      "changedFields": [
+        "legacySlug",
+        "ownsLegacyContent",
+        "sharedDocumentationKey"
+      ],
+      "inputs": {
+        "added": [],
+        "removed": [],
+        "changed": []
+      },
+      "outputs": {
+        "added": [],
+        "removed": [],
+        "changed": []
+      },
+      "selectionsChanged": false
+    },
+    {
+      "key": "sys:automationScript",
+      "name": "自动化脚本",
+      "changedFields": [
         "helpLink"
-      ]
+      ],
+      "inputs": {
+        "added": [],
+        "removed": [],
+        "changed": []
+      },
+      "outputs": {
+        "added": [],
+        "removed": [],
+        "changed": []
+      },
+      "selectionsChanged": false
+    },
+    {
+      "key": "sys:basic-ocr",
+      "name": "基础OCR",
+      "changedFields": [],
+      "inputs": {
+        "added": [
+          {
+            "key": "modelTier",
+            "name": "模型",
+            "type": "Enum",
+            "defaultValue": "small",
+            "required": false,
+            "variableMode": "Input",
+            "condition": "仅：LocalOcr, table_quicker",
+            "description": "标准=small（更准更大，默认）；快速=tiny（更快更小）。切换后如未安装会下载对应模型包。"
+          }
+        ],
+        "removed": [],
+        "changed": [
+          {
+            "key": "offlineMode",
+            "before": {
+              "key": "offlineMode",
+              "name": "离线模式",
+              "type": "Enum",
+              "defaultValue": "Auto",
+              "required": false,
+              "variableMode": "Input",
+              "condition": "仅：QuickerServerOcr",
+              "description": "旧版兼容参数。Quicker OCR 当前固定使用在线服务；旧动作选择“仅使用离线引擎”时转为本地 OCR。新动作请直接选择“本地 OCR（中英）”。"
+            },
+            "after": {
+              "key": "offlineMode",
+              "name": "离线模式",
+              "type": "Enum",
+              "defaultValue": "Auto",
+              "required": false,
+              "variableMode": "Input",
+              "condition": "仅：QuickerServerOcr",
+              "description": "旧版兼容参数。Quicker OCR 当前固定使用在线服务；旧动作选择“仅使用离线引擎”时转为本地 OCR。新动作请直接选择“本地 OCR”。"
+            }
+          }
+        ]
+      },
+      "outputs": {
+        "added": [],
+        "removed": [],
+        "changed": [
+          {
+            "key": "rawData",
+            "before": {
+              "key": "rawData",
+              "name": "原始结果",
+              "type": "Text",
+              "condition": "",
+              "description": "API接口返回的完整内容"
+            },
+            "after": {
+              "key": "rawData",
+              "name": "原始结果",
+              "type": "Text",
+              "condition": "",
+              "description": "原始结果。表格识别为 ApiResult JSON（Data.Html / Data.Tsv）；其它引擎为接口原始内容。"
+            }
+          }
+        ]
+      },
+      "selectionsChanged": true,
+      "selections": {
+        "before": {
+          "operation": {
+            "name": "接口/引擎",
+            "items": [
+              {
+                "value": "QuickerServerOcr",
+                "name": "Quicker OCR引擎",
+                "description": ""
+              },
+              {
+                "value": "WindowsOcr",
+                "name": "Windows10/11 内置OCR引擎",
+                "description": ""
+              },
+              {
+                "value": "baidu-basic",
+                "name": "百度通用文字识别（自定义帐号）",
+                "description": ""
+              },
+              {
+                "value": "baidu-quicker",
+                "name": "百度通用文字识别（Quicker帐号）",
+                "description": ""
+              },
+              {
+                "value": "baidu-custom",
+                "name": "百度自定义接口识别（自定义帐号）",
+                "description": ""
+              },
+              {
+                "value": "table_quicker",
+                "name": "表格识别（Quicker服务）",
+                "description": ""
+              },
+              {
+                "value": "LocalOcr",
+                "name": "本地 OCR（中英）",
+                "description": ""
+              }
+            ]
+          },
+          "punctuationType": {
+            "name": "转换标点符号",
+            "items": [
+              {
+                "value": "no",
+                "name": "不转换",
+                "description": ""
+              },
+              {
+                "value": "sbc",
+                "name": "全角符号",
+                "description": ""
+              },
+              {
+                "value": "dbc",
+                "name": "半角符号",
+                "description": ""
+              }
+            ]
+          },
+          "mergeChapter": {
+            "name": "合并段落",
+            "items": [
+              {
+                "value": "no",
+                "name": "不合并",
+                "description": ""
+              },
+              {
+                "value": "merge",
+                "name": "合并",
+                "description": ""
+              }
+            ]
+          },
+          "interface": {
+            "name": "接口名称或网址",
+            "items": [
+              {
+                "value": "general_basic",
+                "name": "通用文字识别（标准版）",
+                "description": ""
+              },
+              {
+                "value": "general",
+                "name": "通用文字识别（标准含位置版）",
+                "description": ""
+              },
+              {
+                "value": "accurate_basic",
+                "name": "通用文字识别（高精度版）",
+                "description": ""
+              },
+              {
+                "value": "accurate",
+                "name": "通用文字识别（高精度含位置版）",
+                "description": ""
+              },
+              {
+                "value": "handwriting",
+                "name": "手写文字识别",
+                "description": ""
+              },
+              {
+                "value": "numbers",
+                "name": "数字识别",
+                "description": ""
+              },
+              {
+                "value": "doc_analysis_office",
+                "name": "办公文档识别",
+                "description": ""
+              },
+              {
+                "value": "form",
+                "name": "表格文字识别(同步接口)",
+                "description": ""
+              },
+              {
+                "value": "qrcode",
+                "name": "二维码识别",
+                "description": ""
+              }
+            ]
+          },
+          "lang": {
+            "name": "语言",
+            "items": [
+              {
+                "value": "CHN_ENG",
+                "name": "中英混合",
+                "description": ""
+              },
+              {
+                "value": "ENG",
+                "name": "英语",
+                "description": ""
+              },
+              {
+                "value": "KOR",
+                "name": "韩语",
+                "description": ""
+              },
+              {
+                "value": "JAP",
+                "name": "日语",
+                "description": ""
+              },
+              {
+                "value": "CHT",
+                "name": "繁体中文",
+                "description": ""
+              },
+              {
+                "value": "LAT",
+                "name": "拉丁语",
+                "description": ""
+              },
+              {
+                "value": "ARA",
+                "name": "阿拉伯语",
+                "description": ""
+              }
+            ]
+          },
+          "offlineMode": {
+            "name": "离线模式",
+            "items": [
+              {
+                "value": "Auto",
+                "name": "自动",
+                "description": ""
+              },
+              {
+                "value": "OnlineOnly",
+                "name": "仅使用在线服务",
+                "description": ""
+              },
+              {
+                "value": "OfflineOnly",
+                "name": "仅使用离线引擎",
+                "description": ""
+              }
+            ]
+          }
+        },
+        "after": {
+          "operation": {
+            "name": "接口/引擎",
+            "items": [
+              {
+                "value": "QuickerServerOcr",
+                "name": "Quicker OCR引擎",
+                "description": ""
+              },
+              {
+                "value": "WindowsOcr",
+                "name": "Windows10/11 内置OCR引擎",
+                "description": ""
+              },
+              {
+                "value": "baidu-basic",
+                "name": "百度通用文字识别（自定义帐号）",
+                "description": ""
+              },
+              {
+                "value": "baidu-quicker",
+                "name": "百度通用文字识别（Quicker帐号）",
+                "description": ""
+              },
+              {
+                "value": "baidu-custom",
+                "name": "百度自定义接口识别（自定义帐号）",
+                "description": ""
+              },
+              {
+                "value": "table_quicker",
+                "name": "表格识别（本地）",
+                "description": ""
+              },
+              {
+                "value": "LocalOcr",
+                "name": "本地 OCR",
+                "description": ""
+              }
+            ]
+          },
+          "punctuationType": {
+            "name": "转换标点符号",
+            "items": [
+              {
+                "value": "no",
+                "name": "不转换",
+                "description": ""
+              },
+              {
+                "value": "sbc",
+                "name": "全角符号",
+                "description": ""
+              },
+              {
+                "value": "dbc",
+                "name": "半角符号",
+                "description": ""
+              }
+            ]
+          },
+          "mergeChapter": {
+            "name": "合并段落",
+            "items": [
+              {
+                "value": "no",
+                "name": "不合并",
+                "description": ""
+              },
+              {
+                "value": "merge",
+                "name": "合并",
+                "description": ""
+              }
+            ]
+          },
+          "interface": {
+            "name": "接口名称或网址",
+            "items": [
+              {
+                "value": "general_basic",
+                "name": "通用文字识别（标准版）",
+                "description": ""
+              },
+              {
+                "value": "general",
+                "name": "通用文字识别（标准含位置版）",
+                "description": ""
+              },
+              {
+                "value": "accurate_basic",
+                "name": "通用文字识别（高精度版）",
+                "description": ""
+              },
+              {
+                "value": "accurate",
+                "name": "通用文字识别（高精度含位置版）",
+                "description": ""
+              },
+              {
+                "value": "handwriting",
+                "name": "手写文字识别",
+                "description": ""
+              },
+              {
+                "value": "numbers",
+                "name": "数字识别",
+                "description": ""
+              },
+              {
+                "value": "doc_analysis_office",
+                "name": "办公文档识别",
+                "description": ""
+              },
+              {
+                "value": "form",
+                "name": "表格文字识别(同步接口)",
+                "description": ""
+              },
+              {
+                "value": "qrcode",
+                "name": "二维码识别",
+                "description": ""
+              }
+            ]
+          },
+          "lang": {
+            "name": "语言",
+            "items": [
+              {
+                "value": "CHN_ENG",
+                "name": "中英混合",
+                "description": ""
+              },
+              {
+                "value": "ENG",
+                "name": "英语",
+                "description": ""
+              },
+              {
+                "value": "KOR",
+                "name": "韩语",
+                "description": ""
+              },
+              {
+                "value": "JAP",
+                "name": "日语",
+                "description": ""
+              },
+              {
+                "value": "CHT",
+                "name": "繁体中文",
+                "description": ""
+              },
+              {
+                "value": "LAT",
+                "name": "拉丁语",
+                "description": ""
+              },
+              {
+                "value": "ARA",
+                "name": "阿拉伯语",
+                "description": ""
+              }
+            ]
+          },
+          "offlineMode": {
+            "name": "离线模式",
+            "items": [
+              {
+                "value": "Auto",
+                "name": "自动",
+                "description": ""
+              },
+              {
+                "value": "OnlineOnly",
+                "name": "仅使用在线服务",
+                "description": ""
+              },
+              {
+                "value": "OfflineOnly",
+                "name": "仅使用离线引擎",
+                "description": ""
+              }
+            ]
+          },
+          "modelTier": {
+            "name": "模型",
+            "items": [
+              {
+                "value": "tiny",
+                "name": "快速",
+                "description": ""
+              },
+              {
+                "value": "small",
+                "name": "标准",
+                "description": ""
+              }
+            ]
+          }
+        }
+      }
+    },
+    {
+      "key": "sys:flauiautomation",
+      "name": "窗口界面控制(FlaUI)",
+      "changedFields": [
+        "legacySlug",
+        "ownsLegacyContent",
+        "sharedDocumentationKey"
+      ],
+      "inputs": {
+        "added": [],
+        "removed": [],
+        "changed": []
+      },
+      "outputs": {
+        "added": [],
+        "removed": [],
+        "changed": []
+      },
+      "selectionsChanged": false
+    },
+    {
+      "key": "sys:chromecontrol",
+      "name": "浏览器控制",
+      "changedFields": [],
+      "inputs": {
+        "added": [],
+        "removed": [],
+        "changed": [
+          {
+            "key": "waitManualReturn",
+            "before": {
+              "key": "waitManualReturn",
+              "name": "从脚本手动返回数据",
+              "type": "Boolean",
+              "defaultValue": "false",
+              "required": false,
+              "variableMode": "Input",
+              "condition": "仅：RunScript",
+              "description": "在脚本中使用sendReplyToQuicker函数手动返回数据"
+            },
+            "after": {
+              "key": "waitManualReturn",
+              "name": "从脚本手动返回数据",
+              "type": "Boolean",
+              "defaultValue": "false",
+              "required": false,
+              "variableMode": "Input",
+              "condition": "仅：RunScript",
+              "description": "开启后等待脚本内异步逻辑完成再返回输出。MV3 推荐 async/await 并在末尾 return（或返回 Promise），通常保持关闭。"
+            }
+          }
+        ]
+      },
+      "outputs": {
+        "added": [],
+        "removed": [],
+        "changed": []
+      },
+      "selectionsChanged": false
+    },
+    {
+      "key": "sys:windowOperations",
+      "name": "窗口操作",
+      "changedFields": [],
+      "inputs": {
+        "added": [],
+        "removed": [],
+        "changed": []
+      },
+      "outputs": {
+        "added": [],
+        "removed": [],
+        "changed": []
+      },
+      "selectionsChanged": true,
+      "selections": {
+        "before": {
+          "type": {
+            "name": "类型",
+            "items": [
+              {
+                "value": "move",
+                "name": "移动窗口",
+                "description": ""
+              },
+              {
+                "value": "move_ex",
+                "name": "移动窗口(增强)",
+                "description": ""
+              },
+              {
+                "value": "setTopmost",
+                "name": "置顶窗口",
+                "description": ""
+              },
+              {
+                "value": "toggleTopMost",
+                "name": "切换置顶状态",
+                "description": ""
+              },
+              {
+                "value": "removeTopmost",
+                "name": "取消置顶窗口",
+                "description": ""
+              },
+              {
+                "value": "setBottom",
+                "name": "置底窗口",
+                "description": ""
+              },
+              {
+                "value": "show",
+                "name": "设置显示状态",
+                "description": ""
+              },
+              {
+                "value": "SET_FOREGROUND",
+                "name": "设置为前台窗口",
+                "description": ""
+              },
+              {
+                "value": "close",
+                "name": "关闭",
+                "description": ""
+              },
+              {
+                "value": "kill",
+                "name": "强制关闭",
+                "description": ""
+              },
+              {
+                "value": "set_trans",
+                "name": "设置或更新透明度",
+                "description": ""
+              },
+              {
+                "value": "setBorderColor",
+                "name": "设置边框颜色",
+                "description": ""
+              }
+            ]
+          },
+          "showCmd": {
+            "name": "显示状态",
+            "items": [
+              {
+                "value": "3",
+                "name": "最大化(SW_MAXIMIZE)",
+                "description": ""
+              },
+              {
+                "value": "6",
+                "name": "最小化(SW_MINIMIZE)",
+                "description": ""
+              },
+              {
+                "value": "9",
+                "name": "显示并恢复大小(SW_RESTORE)",
+                "description": ""
+              },
+              {
+                "value": "0",
+                "name": "隐藏(SW_HIDE)",
+                "description": ""
+              },
+              {
+                "value": "5",
+                "name": "显示(SW_SHOW)",
+                "description": ""
+              },
+              {
+                "value": "TOGGLE_MAXMIZE",
+                "name": "切换最大化/恢复",
+                "description": ""
+              }
+            ]
+          }
+        },
+        "after": {
+          "type": {
+            "name": "类型",
+            "items": [
+              {
+                "value": "move",
+                "name": "移动窗口",
+                "description": ""
+              },
+              {
+                "value": "move_ex",
+                "name": "移动窗口(增强)",
+                "description": ""
+              },
+              {
+                "value": "setTopmost",
+                "name": "置顶窗口",
+                "description": ""
+              },
+              {
+                "value": "toggleTopMost",
+                "name": "切换置顶状态",
+                "description": ""
+              },
+              {
+                "value": "removeTopmost",
+                "name": "取消置顶窗口",
+                "description": ""
+              },
+              {
+                "value": "setBottom",
+                "name": "置底窗口",
+                "description": ""
+              },
+              {
+                "value": "show",
+                "name": "设置显示状态",
+                "description": ""
+              },
+              {
+                "value": "SET_FOREGROUND",
+                "name": "设置为前台窗口",
+                "description": ""
+              },
+              {
+                "value": "close",
+                "name": "关闭",
+                "description": ""
+              },
+              {
+                "value": "kill",
+                "name": "强制关闭",
+                "description": ""
+              },
+              {
+                "value": "set_trans",
+                "name": "设置或更新透明度",
+                "description": ""
+              },
+              {
+                "value": "setBorderColor",
+                "name": "设置边框颜色",
+                "description": ""
+              },
+              {
+                "value": "test",
+                "name": "TEST",
+                "description": ""
+              }
+            ]
+          },
+          "showCmd": {
+            "name": "显示状态",
+            "items": [
+              {
+                "value": "3",
+                "name": "最大化(SW_MAXIMIZE)",
+                "description": ""
+              },
+              {
+                "value": "6",
+                "name": "最小化(SW_MINIMIZE)",
+                "description": ""
+              },
+              {
+                "value": "9",
+                "name": "显示并恢复大小(SW_RESTORE)",
+                "description": ""
+              },
+              {
+                "value": "0",
+                "name": "隐藏(SW_HIDE)",
+                "description": ""
+              },
+              {
+                "value": "5",
+                "name": "显示(SW_SHOW)",
+                "description": ""
+              },
+              {
+                "value": "TOGGLE_MAXMIZE",
+                "name": "切换最大化/恢复",
+                "description": ""
+              }
+            ]
+          }
+        }
+      }
+    },
+    {
+      "key": "sys:quickeroperations",
+      "name": "Quicker操作",
+      "changedFields": [],
+      "inputs": {
+        "added": [],
+        "removed": [],
+        "changed": [
+          {
+            "key": "exe",
+            "before": {
+              "key": "exe",
+              "name": "场景标识",
+              "type": "Text",
+              "defaultValue": "",
+              "required": true,
+              "variableMode": "UseVarOrInput",
+              "condition": "仅：loadExeProfiles, loadExeProfilesNoLock, showCircleMenu, GetActionList, showExeSettingWindow, showDashboardWindow",
+              "description": "场景关联的exe文件名。请参考场景与动作管理窗口左侧应用列表。"
+            },
+            "after": {
+              "key": "exe",
+              "name": "场景标识",
+              "type": "Text",
+              "defaultValue": "",
+              "required": true,
+              "variableMode": "UseVarOrInput",
+              "condition": "仅：loadExeProfiles, loadExeProfilesNoLock, showCircleMenu, GetActionList, showExeSettingWindow, showDashboardWindow",
+              "description": "场景关联的exe文件名。请参考场景与动作管理窗口左侧应用列表；打开轮盘或场景管理时可填写 _curr 表示当前程序场景。"
+            }
+          }
+        ]
+      },
+      "outputs": {
+        "added": [],
+        "removed": [],
+        "changed": []
+      },
+      "selectionsChanged": false
+    },
+    {
+      "key": "sys:waitKeyboard",
+      "name": "等待按键",
+      "changedFields": [],
+      "inputs": {
+        "added": [],
+        "removed": [],
+        "changed": [
+          {
+            "key": "ignoreSimulated",
+            "before": {
+              "key": "ignoreSimulated",
+              "name": "忽略模拟的按键",
+              "type": "Boolean",
+              "defaultValue": "false",
+              "required": false,
+              "variableMode": "Input",
+              "condition": "",
+              "description": "是否忽略（不检测）模拟的按键消息"
+            },
+            "after": {
+              "key": "ignoreSimulated",
+              "name": "忽略模拟的按键",
+              "type": "Boolean",
+              "defaultValue": "false",
+              "required": false,
+              "variableMode": "Input",
+              "condition": "",
+              "description": "是否忽略（不检测）模拟的键盘和鼠标按键消息"
+            }
+          }
+        ]
+      },
+      "outputs": {
+        "added": [],
+        "removed": [],
+        "changed": []
+      },
+      "selectionsChanged": false
+    },
+    {
+      "key": "sys:textSelectTools",
+      "name": "辅助选择工具",
+      "changedFields": [],
+      "inputs": {
+        "added": [],
+        "removed": [],
+        "changed": []
+      },
+      "outputs": {
+        "added": [],
+        "removed": [],
+        "changed": []
+      },
+      "selectionsChanged": true,
+      "selections": {
+        "before": {
+          "operation": {
+            "name": "选择器",
+            "items": [
+              {
+                "value": "SelectSingleFile",
+                "name": "选取文件",
+                "description": ""
+              },
+              {
+                "value": "SelectMultiFile",
+                "name": "选取(多个)文件",
+                "description": ""
+              },
+              {
+                "value": "SelectSingleFolder",
+                "name": "选取文件夹",
+                "description": ""
+              },
+              {
+                "value": "SelectSavePath",
+                "name": "选择保存路径",
+                "description": ""
+              },
+              {
+                "value": "SelectProcessPath",
+                "name": "选择窗口的进程路径",
+                "description": ""
+              },
+              {
+                "value": "SelectProcessName",
+                "name": "选择进程名",
+                "description": ""
+              },
+              {
+                "value": "SelectProfileExe",
+                "name": "选择场景标识",
+                "description": ""
+              },
+              {
+                "value": "SelectWindowHandle",
+                "name": "选择窗口句柄",
+                "description": ""
+              },
+              {
+                "value": "SelectKeyName",
+                "name": "从键盘输入键名",
+                "description": ""
+              },
+              {
+                "value": "SelectSendKeysData",
+                "name": "从键盘输入模拟按键B的内容",
+                "description": ""
+              },
+              {
+                "value": "SelectKeyCode",
+                "name": "从键盘输入键码数字",
+                "description": ""
+              },
+              {
+                "value": "SelectLocationArea",
+                "name": "选取区域",
+                "description": ""
+              },
+              {
+                "value": "SelectLocationPoint",
+                "name": "选取坐标位置",
+                "description": ""
+              },
+              {
+                "value": "SelectRelativePoint",
+                "name": "选取窗口坐标位置",
+                "description": ""
+              },
+              {
+                "value": "CaptureToFile",
+                "name": "截图并获取路径",
+                "description": ""
+              },
+              {
+                "value": "SelectIcon",
+                "name": "选取矢量图标",
+                "description": ""
+              },
+              {
+                "value": "SelectActionId",
+                "name": "选取动作ID",
+                "description": ""
+              },
+              {
+                "value": "SelectActionName",
+                "name": "选取动作名称",
+                "description": ""
+              },
+              {
+                "value": "SelectControlXPath",
+                "name": "选择窗口控件，获取其XPath",
+                "description": ""
+              },
+              {
+                "value": "OperationItemEditor",
+                "name": "操作项编辑器",
+                "description": ""
+              },
+              {
+                "value": "SelectBluetoothDevice",
+                "name": "已配对的蓝牙设备",
+                "description": ""
+              },
+              {
+                "value": "SelectBluetoothLEDevice",
+                "name": "低功耗蓝牙设备",
+                "description": ""
+              },
+              {
+                "value": "SelectNetworkProfile",
+                "name": "网络连接",
+                "description": ""
+              },
+              {
+                "value": "SelectWebElementSelector",
+                "name": "网页元素的CSS选择器",
+                "description": ""
+              }
+            ]
+          }
+        },
+        "after": {
+          "operation": {
+            "name": "选择器",
+            "items": [
+              {
+                "value": "SelectSingleFile",
+                "name": "选取文件",
+                "description": ""
+              },
+              {
+                "value": "SelectMultiFile",
+                "name": "选取(多个)文件",
+                "description": ""
+              },
+              {
+                "value": "SelectSingleFolder",
+                "name": "选取文件夹",
+                "description": ""
+              },
+              {
+                "value": "SelectSavePath",
+                "name": "选择保存路径",
+                "description": ""
+              },
+              {
+                "value": "SelectProcessPath",
+                "name": "选择窗口的进程路径",
+                "description": ""
+              },
+              {
+                "value": "SelectProcessName",
+                "name": "选择进程名",
+                "description": ""
+              },
+              {
+                "value": "SelectProfileExe",
+                "name": "选择场景标识",
+                "description": ""
+              },
+              {
+                "value": "SelectWindowHandle",
+                "name": "选择窗口句柄",
+                "description": ""
+              },
+              {
+                "value": "SelectKeyName",
+                "name": "从键盘输入键名",
+                "description": ""
+              },
+              {
+                "value": "SelectSendKeysData",
+                "name": "从键盘输入模拟按键B的内容",
+                "description": ""
+              },
+              {
+                "value": "SelectKeyCode",
+                "name": "从键盘输入键码数字",
+                "description": ""
+              },
+              {
+                "value": "SelectLocationArea",
+                "name": "选取区域",
+                "description": ""
+              },
+              {
+                "value": "SelectLocationPoint",
+                "name": "选取坐标位置",
+                "description": ""
+              },
+              {
+                "value": "SelectRelativePoint",
+                "name": "选取窗口坐标位置",
+                "description": ""
+              },
+              {
+                "value": "CaptureToFile",
+                "name": "截图并获取路径",
+                "description": ""
+              },
+              {
+                "value": "SelectIcon",
+                "name": "选取矢量图标",
+                "description": ""
+              },
+              {
+                "value": "SelectActionId",
+                "name": "选取动作ID",
+                "description": ""
+              },
+              {
+                "value": "SelectActionName",
+                "name": "选取动作名称",
+                "description": ""
+              },
+              {
+                "value": "SelectControlXPath",
+                "name": "选择窗口控件，获取其XPath",
+                "description": ""
+              },
+              {
+                "value": "OperationItemEditor",
+                "name": "操作项编辑器",
+                "description": ""
+              },
+              {
+                "value": "SelectBluetoothDevice",
+                "name": "已配对的蓝牙设备",
+                "description": ""
+              },
+              {
+                "value": "SelectBluetoothLEDevice",
+                "name": "低功耗蓝牙设备",
+                "description": ""
+              },
+              {
+                "value": "SelectNetworkProfile",
+                "name": "网络连接",
+                "description": ""
+              },
+              {
+                "value": "SelectWebElementSelector",
+                "name": "网页元素的CSS选择器",
+                "description": ""
+              },
+              {
+                "value": "SelectFontFamily",
+                "name": "选择字体名称",
+                "description": ""
+              }
+            ]
+          }
+        }
+      }
     }
   ]
 }

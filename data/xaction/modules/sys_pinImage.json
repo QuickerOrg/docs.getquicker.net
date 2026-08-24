@@ -1,0 +1,370 @@
+{
+  "key": "sys:pinImage",
+  "slug": "pinimage",
+  "legacySlug": "pinimage",
+  "ownsLegacyContent": true,
+  "name": "贴图",
+  "description": "在屏幕指定位置浮动贴图（与截图 Pro 贴图窗口一致）。按来源自动识别图片、HTML、公式、OCR 原始结果或文本。",
+  "category": "Image",
+  "categoryName": "图片处理",
+  "stepType": "Action",
+  "isRisky": false,
+  "isProOnly": false,
+  "helpLink": "https://docs.getquicker.net/v2/xaction/modules/pinimage",
+  "inputs": [
+    {
+      "key": "mode",
+      "name": "内容来源",
+      "type": "Enum",
+      "defaultValue": "variable",
+      "required": true,
+      "variableMode": "Input",
+      "condition": "",
+      "description": "变量：自动识别图片、HTML、公式（$ / $$ / LaTeX）、OCR 原始结果或文本。剪贴板：按富文本 HTML、图片、图片文件、公式、文本自动处理；屏幕位置为「自动」或自定义坐标仍为默认 0,0 时，有 PixPin/Quicker 位置元数据则贴回截图原位置。"
+    },
+    {
+      "key": "content",
+      "name": "内容",
+      "type": "Any",
+      "defaultValue": "",
+      "required": true,
+      "variableMode": "UseVarOrInput",
+      "condition": "仅：variable",
+      "description": "图片变量、图片路径，或文本（HTML / LaTeX / $公式$ / OCR 原始结果 / 纯文本）。自动判断类型并渲染。"
+    },
+    {
+      "key": "screenPlacement",
+      "name": "屏幕位置",
+      "type": "Enum",
+      "defaultValue": "manual",
+      "required": true,
+      "variableMode": "Input",
+      "condition": "",
+      "description": "「自动」：剪贴板有 QuickerPinData / PixPinData 时贴回截图原位置，否则屏幕中间。其余预设相对鼠标所在显示器工作区定位（图片左上角）。「截图原位置」没有元数据时落到当前光标。来源为剪贴板且本项为「自定义坐标」且坐标为默认 0,0 时，有位置元数据也按原位置。未保存过此参数的旧动作仍是「自定义坐标」；新建步骤默认「自动」。"
+    },
+    {
+      "key": "rect",
+      "name": "自定义坐标",
+      "type": "Text",
+      "defaultValue": "0,0",
+      "required": false,
+      "variableMode": "UseVarOrInput",
+      "condition": "仅：manual",
+      "description": "仅当「屏幕位置」为自定义时有效。图片内容左上角的屏幕像素坐标：left,top 或 left,top,right,bottom（四元组时仅取 left、top）。"
+    },
+    {
+      "key": "fontName",
+      "name": "字体名称",
+      "type": "Text",
+      "defaultValue": "Microsoft YaHei UI",
+      "required": false,
+      "variableMode": "UseVarOrInput",
+      "condition": "仅：variable, clipboard, text",
+      "description": "纯文本贴图使用的本机字体。"
+    },
+    {
+      "key": "fontSize",
+      "name": "字号",
+      "type": "Number",
+      "defaultValue": "16.0",
+      "required": false,
+      "variableMode": "UseVarOrInput",
+      "condition": "仅：variable, clipboard, text, formula",
+      "description": ""
+    },
+    {
+      "key": "textColor",
+      "name": "文字颜色",
+      "type": "Text",
+      "defaultValue": "#FF000000",
+      "required": false,
+      "variableMode": "UseVarOrInput",
+      "condition": "仅：variable, clipboard, text",
+      "description": "#AARRGGBB"
+    },
+    {
+      "key": "backgroundColor",
+      "name": "背景颜色",
+      "type": "Text",
+      "defaultValue": "#FFFFFFFF",
+      "required": false,
+      "variableMode": "UseVarOrInput",
+      "condition": "仅：variable, clipboard, text, html, formula",
+      "description": "#AARRGGBB。文本 / HTML / 公式画布背景。透明请用带透明通道的颜色（如 #00FFFFFF）。"
+    },
+    {
+      "key": "maxTextWidth",
+      "name": "最大宽度",
+      "type": "Integer",
+      "defaultValue": "0",
+      "required": false,
+      "variableMode": "UseVarOrInput",
+      "condition": "仅：variable, clipboard, text, html, formula",
+      "description": "像素。0 表示按内容自动扩展。纯文本大于 0 时自动换行；HTML / 公式上限 2400。"
+    },
+    {
+      "key": "text",
+      "name": "文本",
+      "type": "Text",
+      "defaultValue": "",
+      "required": false,
+      "variableMode": "UseVarOrInput",
+      "condition": "仅：text",
+      "description": "要渲染为图片并贴图的多行文本。"
+    },
+    {
+      "key": "imgVar",
+      "name": "图片",
+      "type": "Image",
+      "defaultValue": "",
+      "required": true,
+      "variableMode": "UseVar",
+      "condition": "仅：image",
+      "description": "要贴图的图片变量。"
+    },
+    {
+      "key": "html",
+      "name": "HTML",
+      "type": "Text",
+      "defaultValue": "",
+      "required": false,
+      "variableMode": "UseVarOrInput",
+      "condition": "仅：html",
+      "description": "完整 HTML 文档或片段。由隐藏 WebView2 渲染后贴图。"
+    },
+    {
+      "key": "htmlMaxWidth",
+      "name": "HTML 最大宽度",
+      "type": "Integer",
+      "defaultValue": "0",
+      "required": false,
+      "variableMode": "UseVarOrInput",
+      "condition": "仅：html",
+      "description": "像素。0 表示按内容自动扩展（上限 2400）。"
+    },
+    {
+      "key": "htmlBackground",
+      "name": "HTML 背景",
+      "type": "Text",
+      "defaultValue": "#FFFFFFFF",
+      "required": false,
+      "variableMode": "UseVarOrInput",
+      "condition": "仅：html, formula",
+      "description": "#AARRGGBB。公式与 HTML 贴图的画布背景。"
+    },
+    {
+      "key": "latex",
+      "name": "LaTeX",
+      "type": "Text",
+      "defaultValue": "",
+      "required": false,
+      "variableMode": "UseVarOrInput",
+      "condition": "仅：formula",
+      "description": "数学公式，如 E=mc^2 或 \\frac{a}{b}。使用本地 KaTeX 渲染。"
+    },
+    {
+      "key": "formulaLayout",
+      "name": "公式版式",
+      "type": "Enum",
+      "defaultValue": "display",
+      "required": false,
+      "variableMode": "UseVarOrInput",
+      "condition": "仅：formula",
+      "description": ""
+    },
+    {
+      "key": "formulaFontSize",
+      "name": "公式字号",
+      "type": "Number",
+      "defaultValue": "22.0",
+      "required": false,
+      "variableMode": "UseVarOrInput",
+      "condition": "仅：formula",
+      "description": ""
+    },
+    {
+      "key": "ocrJson",
+      "name": "OCR 原始结果",
+      "type": "Text",
+      "defaultValue": "",
+      "required": false,
+      "variableMode": "UseVarOrInput",
+      "condition": "仅：baiduOcrJson",
+      "description": "通常为「基础 OCR」步骤输出的「原始结果」(rawData)。支持 words_result/location 与 Result/Regions/Rect；无位置信息时纵向排列。"
+    },
+    {
+      "key": "ocrCanvasWidth",
+      "name": "画布宽度",
+      "type": "Integer",
+      "defaultValue": "0",
+      "required": false,
+      "variableMode": "UseVarOrInput",
+      "condition": "仅：baiduOcrJson",
+      "description": "0 表示根据识别框自动推算（含边距）。"
+    },
+    {
+      "key": "ocrCanvasHeight",
+      "name": "画布高度",
+      "type": "Integer",
+      "defaultValue": "0",
+      "required": false,
+      "variableMode": "UseVarOrInput",
+      "condition": "仅：baiduOcrJson",
+      "description": "0 表示根据识别框自动推算（含边距）。"
+    },
+    {
+      "key": "ocrFontName",
+      "name": "OCR 绘制字体",
+      "type": "Text",
+      "defaultValue": "Microsoft YaHei UI",
+      "required": false,
+      "variableMode": "UseVarOrInput",
+      "condition": "仅：baiduOcrJson",
+      "description": ""
+    },
+    {
+      "key": "ocrTextColor",
+      "name": "OCR 文字颜色",
+      "type": "Text",
+      "defaultValue": "#FF000000",
+      "required": false,
+      "variableMode": "UseVarOrInput",
+      "condition": "仅：baiduOcrJson",
+      "description": ""
+    },
+    {
+      "key": "ocrBackgroundColor",
+      "name": "OCR 画布背景",
+      "type": "Text",
+      "defaultValue": "#FFFFFFFF",
+      "required": false,
+      "variableMode": "UseVarOrInput",
+      "condition": "仅：baiduOcrJson",
+      "description": ""
+    },
+    {
+      "key": "stopIfFail",
+      "name": "失败后停止",
+      "type": "Boolean",
+      "defaultValue": "true",
+      "required": false,
+      "variableMode": "Input",
+      "condition": "",
+      "description": "失败后是否停止动作"
+    }
+  ],
+  "outputs": [
+    {
+      "key": "img",
+      "name": "贴图位图",
+      "type": "Image",
+      "condition": "",
+      "description": "本次生成或用于贴图的位图（与窗口显示内容一致）。"
+    },
+    {
+      "key": "isSuccess",
+      "name": "是否成功",
+      "type": "Boolean",
+      "condition": "",
+      "description": "操作是否成功"
+    }
+  ],
+  "selections": {
+    "mode": {
+      "name": "内容来源",
+      "items": [
+        {
+          "value": "clipboard",
+          "name": "剪贴板（自动）",
+          "description": ""
+        },
+        {
+          "value": "variable",
+          "name": "变量（自动）",
+          "description": ""
+        }
+      ]
+    },
+    "screenPlacement": {
+      "name": "屏幕位置",
+      "items": [
+        {
+          "value": "manual",
+          "name": "自定义坐标",
+          "description": ""
+        },
+        {
+          "value": "center",
+          "name": "屏幕中间",
+          "description": ""
+        },
+        {
+          "value": "topLeft",
+          "name": "屏幕左上",
+          "description": ""
+        },
+        {
+          "value": "topCenter",
+          "name": "屏幕中上",
+          "description": ""
+        },
+        {
+          "value": "topRight",
+          "name": "屏幕右上",
+          "description": ""
+        },
+        {
+          "value": "leftCenter",
+          "name": "屏幕左中",
+          "description": ""
+        },
+        {
+          "value": "rightCenter",
+          "name": "屏幕右中",
+          "description": ""
+        },
+        {
+          "value": "bottomLeft",
+          "name": "屏幕左下",
+          "description": ""
+        },
+        {
+          "value": "bottomCenter",
+          "name": "屏幕中下",
+          "description": ""
+        },
+        {
+          "value": "bottomRight",
+          "name": "屏幕右下",
+          "description": ""
+        },
+        {
+          "value": "captureOrigin",
+          "name": "截图原位置",
+          "description": ""
+        },
+        {
+          "value": "auto",
+          "name": "自动",
+          "description": ""
+        }
+      ]
+    },
+    "formulaLayout": {
+      "name": "公式版式",
+      "items": [
+        {
+          "value": "display",
+          "name": "独立公式",
+          "description": ""
+        },
+        {
+          "value": "inline",
+          "name": "行内公式",
+          "description": ""
+        }
+      ]
+    }
+  },
+  "sourceFileName": "sys_pinImage_贴图.md"
+}

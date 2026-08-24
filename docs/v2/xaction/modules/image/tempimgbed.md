@@ -1,6 +1,6 @@
 ---
 title: "临时图床"
-description: "把图片上传到约 1 分钟后删除的临时图床，换取公网地址。勿上传非法内容。"
+description: "将图片上传到临时（1分钟后删除）的图床，用以搜图等场景。勿上传非法内容。"
 slug: "/v2/xaction/modules/tempimgbed"
 sidebar_label: "临时图床"
 sidebar_position: 40
@@ -8,7 +8,7 @@ quickerDocKey: "xaction/module/sys:tempImgBed"
 comments: true
 moduleKey: "sys:tempImgBed"
 docStatus: "reviewed"
-metadataGeneratedAt: "2026-08-03 20:08:03"
+metadataGeneratedAt: "2026-08-24 20:01:39"
 legacyDocId: 7612384
 legacyContentUpdatedAt: "2023-04-30T04:24:10.000Z"
 ---

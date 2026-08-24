@@ -1,6 +1,6 @@
 ---
 title: "长截图"
-description: "先用屏幕选区工具框出范围，再在选区内滚动拼接成长图。"
+description: "先使用屏幕选区工具选择范围，再进行长截图。"
 slug: "/v2/xaction/modules/long-screenshot"
 sidebar_label: "长截图"
 sidebar_position: 140
@@ -8,7 +8,7 @@ quickerDocKey: "xaction/module/sys:longScreenshot"
 comments: true
 moduleKey: "sys:longScreenshot"
 docStatus: "generated"
-metadataGeneratedAt: "2026-08-03 20:08:03"
+metadataGeneratedAt: "2026-08-24 20:01:39"
 ---
 
 # 长截图

@@ -1,6 +1,6 @@
 ---
 title: "词典操作"
-description: "对词典取值、设置、删除，或和查询字符串互转。"
+description: "对词典变量进行添加、删除等操作"
 slug: "/v2/xaction/modules/dictoperations"
 sidebar_label: "词典操作"
 sidebar_position: 40
@@ -8,7 +8,7 @@ quickerDocKey: "xaction/module/sys:dictOperations"
 comments: true
 moduleKey: "sys:dictOperations"
 docStatus: "reviewed"
-metadataGeneratedAt: "2026-08-03 20:08:03"
+metadataGeneratedAt: "2026-08-24 20:01:39"
 legacyDocId: 2131924
 legacyContentUpdatedAt: "2022-04-24T09:36:46.000Z"
 ---

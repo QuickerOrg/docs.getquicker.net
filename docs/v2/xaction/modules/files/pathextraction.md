@@ -1,6 +1,6 @@
 ---
 title: "提取文件路径信息/生成路径"
-description: "从路径里取出文件名、扩展名，或拼出一条新路径。"
+description: "从文件路径中提取文件名、文件夹等信息"
 slug: "/v2/xaction/modules/pathextraction"
 sidebar_label: "提取文件路径信息/生成路径"
 sidebar_position: 50
@@ -8,7 +8,7 @@ quickerDocKey: "xaction/module/sys:pathExtraction"
 comments: true
 moduleKey: "sys:pathExtraction"
 docStatus: "reviewed"
-metadataGeneratedAt: "2026-08-03 20:08:03"
+metadataGeneratedAt: "2026-08-24 20:01:39"
 legacyDocId: 2117073
 legacyContentUpdatedAt: "2022-06-14T01:38:52.000Z"
 ---

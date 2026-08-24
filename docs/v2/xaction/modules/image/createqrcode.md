@@ -1,6 +1,6 @@
 ---
 title: "生成二维码"
-description: "把文本做成二维码图片，可加中心图标，也可输出 SVG / ASCII / PDF。"
+description: "将文本转换为二维码"
 slug: "/v2/xaction/modules/createqrcode"
 sidebar_label: "生成二维码"
 sidebar_position: 80
@@ -8,7 +8,7 @@ quickerDocKey: "xaction/module/sys:createQrCode"
 comments: true
 moduleKey: "sys:createQrCode"
 docStatus: "reviewed"
-metadataGeneratedAt: "2026-08-03 20:08:03"
+metadataGeneratedAt: "2026-08-24 20:01:39"
 legacyDocId: 2115658
 legacyContentUpdatedAt: "2021-03-17T12:26:25.000Z"
 ---

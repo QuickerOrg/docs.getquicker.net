@@ -1,6 +1,6 @@
 ---
 title: "Rhino软件控制"
-description: "向已启动的 Rhino 发送命令或脚本。"
+description: "向Rhino发送命令或脚本"
 slug: "/v2/xaction/modules/rhinocontrol"
 sidebar_label: "Rhino软件控制"
 sidebar_position: 110
@@ -8,7 +8,7 @@ quickerDocKey: "xaction/module/sys:rhinocontrol"
 comments: true
 moduleKey: "sys:rhinocontrol"
 docStatus: "reviewed"
-metadataGeneratedAt: "2026-08-03 20:08:03"
+metadataGeneratedAt: "2026-08-24 20:01:39"
 legacyDocId: 80629667
 legacyContentUpdatedAt: "2022-06-17T01:44:17.000Z"
 ---

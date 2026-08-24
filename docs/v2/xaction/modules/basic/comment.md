@@ -8,7 +8,7 @@ quickerDocKey: "xaction/module/sys:comment"
 comments: true
 moduleKey: "sys:comment"
 docStatus: "reviewed"
-metadataGeneratedAt: "2026-08-03 20:08:03"
+metadataGeneratedAt: "2026-08-24 20:01:39"
 legacyDocId: 1530519
 legacyContentUpdatedAt: "2023-04-02T13:16:49.000Z"
 ---

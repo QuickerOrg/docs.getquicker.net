@@ -1,6 +1,6 @@
 ---
 title: "AutoCAD控制"
-description: "向已启动的 AutoCAD 发送命令，或读取文档变量。"
+description: "向AutoCAD发送命令"
 slug: "/v2/xaction/modules/autocadcontrol"
 sidebar_label: "AutoCAD控制"
 sidebar_position: 60
@@ -8,7 +8,7 @@ quickerDocKey: "xaction/module/sys:autocadcontrol"
 comments: true
 moduleKey: "sys:autocadcontrol"
 docStatus: "reviewed"
-metadataGeneratedAt: "2026-08-03 20:08:03"
+metadataGeneratedAt: "2026-08-24 20:01:39"
 legacyDocId: 80627663
 legacyContentUpdatedAt: "2025-01-20T00:50:55.000Z"
 ---

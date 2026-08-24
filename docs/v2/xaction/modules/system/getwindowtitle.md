@@ -8,7 +8,7 @@ quickerDocKey: "xaction/module/sys:getWindowTitle"
 comments: true
 moduleKey: "sys:getWindowTitle"
 docStatus: "reviewed"
-metadataGeneratedAt: "2026-08-03 20:08:03"
+metadataGeneratedAt: "2026-08-24 20:01:39"
 legacyDocId: 2118011
 legacyContentUpdatedAt: "2023-02-04T13:19:28.000Z"
 ---

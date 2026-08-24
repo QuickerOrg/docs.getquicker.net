@@ -1,6 +1,6 @@
 ---
 title: "使用Everything搜索文件"
-description: "调用本机 Everything 接口，按关键词、目录和扩展名搜索文件。"
+description: "调用Everything提供的接口搜索文件"
 slug: "/v2/xaction/modules/everythingsearch"
 sidebar_label: "使用Everything搜索文件"
 sidebar_position: 40
@@ -8,7 +8,7 @@ quickerDocKey: "xaction/module/sys:everythingsearch"
 comments: true
 moduleKey: "sys:everythingsearch"
 docStatus: "reviewed"
-metadataGeneratedAt: "2026-08-03 20:08:03"
+metadataGeneratedAt: "2026-08-24 20:01:39"
 legacyDocId: 10636154
 legacyContentUpdatedAt: "2024-06-19T03:24:46.000Z"
 ---

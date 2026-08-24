@@ -1,6 +1,6 @@
 ---
 title: "窗口界面控制(FlaUI)"
-description: "用 FlaUI 触发 Windows 窗口的菜单、按钮等控件。"
+description: "触发Windows窗口的菜单/按钮等控件(通过FlaUI库实现)。"
 slug: "/v2/xaction/modules/flauiautomation"
 sidebar_label: "窗口界面控制(FlaUI)"
 sidebar_position: 20
@@ -8,7 +8,7 @@ quickerDocKey: "xaction/module/sys:flauiautomation"
 comments: true
 moduleKey: "sys:flauiautomation"
 docStatus: "generated"
-metadataGeneratedAt: "2026-08-03 20:08:03"
+metadataGeneratedAt: "2026-08-24 20:01:39"
 ---
 
 # 窗口界面控制(FlaUI)

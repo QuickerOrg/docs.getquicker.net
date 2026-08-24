@@ -1,6 +1,6 @@
 ---
 title: "图片/Base64 转换"
-description: "把图片编成 Base64 文本，或把 Base64 文本还原成图片。"
+description: "图片和Base64转换"
 slug: "/v2/xaction/modules/imgtobase64"
 sidebar_label: "图片/Base64 转换"
 sidebar_position: 110
@@ -8,7 +8,7 @@ quickerDocKey: "xaction/module/sys:imgToBase64"
 comments: true
 moduleKey: "sys:imgToBase64"
 docStatus: "reviewed"
-metadataGeneratedAt: "2026-08-03 20:08:03"
+metadataGeneratedAt: "2026-08-24 20:01:39"
 legacyDocId: 2115687
 legacyContentUpdatedAt: "2019-07-29T14:23:39.000Z"
 ---

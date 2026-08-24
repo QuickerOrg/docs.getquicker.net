@@ -8,7 +8,7 @@ quickerDocKey: "xaction/module/sys:getSelectedFiles"
 comments: true
 moduleKey: "sys:getSelectedFiles"
 docStatus: "reviewed"
-metadataGeneratedAt: "2026-08-03 20:08:03"
+metadataGeneratedAt: "2026-08-24 20:01:39"
 legacyDocId: 2130801
 legacyContentUpdatedAt: "2022-11-12T11:46:07.000Z"
 ---

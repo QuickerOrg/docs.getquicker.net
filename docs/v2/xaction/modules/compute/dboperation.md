@@ -8,7 +8,7 @@ quickerDocKey: "xaction/module/sys:dboperation"
 comments: true
 moduleKey: "sys:dboperation"
 docStatus: "reviewed"
-metadataGeneratedAt: "2026-08-03 20:08:03"
+metadataGeneratedAt: "2026-08-24 20:01:39"
 legacyDocId: 62743498
 legacyContentUpdatedAt: "2021-12-27T07:35:08.000Z"
 ---

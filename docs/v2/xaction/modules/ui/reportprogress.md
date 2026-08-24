@@ -1,6 +1,6 @@
 ---
 title: "显示进度条"
-description: "在桌面右下角创建、更新或去掉进度条。"
+description: "显示/更新进度条"
 slug: "/v2/xaction/modules/reportprogress"
 sidebar_label: "显示进度条"
 sidebar_position: 70
@@ -8,7 +8,7 @@ quickerDocKey: "xaction/module/sys:reportProgress"
 comments: true
 moduleKey: "sys:reportProgress"
 docStatus: "reviewed"
-metadataGeneratedAt: "2026-08-03 20:08:03"
+metadataGeneratedAt: "2026-08-24 20:01:39"
 legacyDocId: 12796417
 legacyContentUpdatedAt: "2025-12-05T02:25:20.000Z"
 ---

@@ -1,6 +1,6 @@
 ---
 title: "运行C#代码"
-description: "执行C#代码。普通模式可写纯脚本（末行表达式即返回值，可用 context 读写变量）；也可写完整 Exec(context)。"
+description: "执行C#代码。可写完整 Exec(context)，或纯脚本（末行表达式即返回值；可用 context 读写变量）。async Task 由宿主等待。"
 slug: "/v2/xaction/modules/csscript"
 sidebar_label: "运行C#代码"
 sidebar_position: 110
@@ -8,7 +8,7 @@ quickerDocKey: "xaction/module/sys:csscript"
 comments: true
 moduleKey: "sys:csscript"
 docStatus: "reviewed"
-metadataGeneratedAt: "2026-08-03 20:08:03"
+metadataGeneratedAt: "2026-08-24 20:01:39"
 legacyDocId: 2571327
 legacyContentUpdatedAt: "2025-01-20T01:01:01.000Z"
 ---

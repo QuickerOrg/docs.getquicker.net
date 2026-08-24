@@ -1,6 +1,6 @@
 ---
 title: "模拟按键B（参数）"
-description: "用文本参数向当前窗口发送按键序列，可用变量或插值。"
+description: "发送按键和文本"
 slug: "/v2/xaction/modules/sendkeys"
 sidebar_label: "模拟按键B（参数）"
 sidebar_position: 70
@@ -8,7 +8,7 @@ quickerDocKey: "xaction/module/sys:sendKeys"
 comments: true
 moduleKey: "sys:sendKeys"
 docStatus: "reviewed"
-metadataGeneratedAt: "2026-08-03 20:08:03"
+metadataGeneratedAt: "2026-08-24 20:01:39"
 legacyDocId: 1986707
 legacyContentUpdatedAt: "2025-09-19T04:54:11.000Z"
 ---

@@ -1,6 +1,6 @@
 ---
 title: "文本处理"
-description: "对一段文本做截取、编解码、排序、补齐等处理。"
+description: "各种文本处理功能"
 slug: "/v2/xaction/modules/stringprocess"
 sidebar_label: "文本处理"
 sidebar_position: 70
@@ -8,7 +8,7 @@ quickerDocKey: "xaction/module/sys:stringProcess"
 comments: true
 moduleKey: "sys:stringProcess"
 docStatus: "reviewed"
-metadataGeneratedAt: "2026-08-03 20:08:03"
+metadataGeneratedAt: "2026-08-24 20:01:39"
 legacyDocId: 2114367
 legacyContentUpdatedAt: "2025-06-10T03:28:24.000Z"
 ---

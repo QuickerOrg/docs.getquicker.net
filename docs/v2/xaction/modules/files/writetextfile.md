@@ -1,6 +1,6 @@
 ---
 title: "写入文本文件"
-description: "把文本写入指定路径，可选择编码、追加和换行处理。"
+description: "将内容写入文本文件"
 slug: "/v2/xaction/modules/writetextfile"
 sidebar_label: "写入文本文件"
 sidebar_position: 80
@@ -8,7 +8,7 @@ quickerDocKey: "xaction/module/sys:WriteTextFile"
 comments: true
 moduleKey: "sys:WriteTextFile"
 docStatus: "reviewed"
-metadataGeneratedAt: "2026-08-03 20:08:03"
+metadataGeneratedAt: "2026-08-24 20:01:39"
 legacyDocId: 2117245
 legacyContentUpdatedAt: "2019-12-20T02:52:44.000Z"
 ---

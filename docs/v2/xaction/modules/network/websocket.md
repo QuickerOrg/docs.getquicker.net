@@ -8,7 +8,7 @@ quickerDocKey: "xaction/module/sys:websocket"
 comments: true
 moduleKey: "sys:websocket"
 docStatus: "reviewed"
-metadataGeneratedAt: "2026-08-03 20:08:03"
+metadataGeneratedAt: "2026-08-24 20:01:39"
 legacyDocId: 66932334
 legacyContentUpdatedAt: "2022-02-25T12:22:45.000Z"
 ---

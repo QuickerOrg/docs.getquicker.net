@@ -1,6 +1,6 @@
 ---
 title: "发送文本到窗口"
-description: "把一段文字发到当前活动窗口：粘贴或模拟键入。"
+description: "将文本输出到活动窗口中"
 slug: "/v2/xaction/modules/outputtext"
 sidebar_label: "发送文本到窗口"
 sidebar_position: 40
@@ -8,7 +8,7 @@ quickerDocKey: "xaction/module/sys:outputText"
 comments: true
 moduleKey: "sys:outputText"
 docStatus: "reviewed"
-metadataGeneratedAt: "2026-08-03 20:08:03"
+metadataGeneratedAt: "2026-08-24 20:01:39"
 legacyDocId: 1530559
 legacyContentUpdatedAt: "2025-01-20T02:53:53.000Z"
 ---

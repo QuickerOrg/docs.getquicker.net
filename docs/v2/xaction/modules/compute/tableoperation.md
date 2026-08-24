@@ -1,6 +1,6 @@
 ---
 title: "表格数据操作"
-description: "对表格变量做读写、筛选、导入导出。"
+description: "表格变量的相关处理操作"
 slug: "/v2/xaction/modules/tableoperation"
 sidebar_label: "表格数据操作"
 sidebar_position: 30
@@ -8,7 +8,7 @@ quickerDocKey: "xaction/module/sys:tableoperation"
 comments: true
 moduleKey: "sys:tableoperation"
 docStatus: "reviewed"
-metadataGeneratedAt: "2026-08-03 20:08:03"
+metadataGeneratedAt: "2026-08-24 20:01:39"
 legacyDocId: 62743542
 legacyContentUpdatedAt: "2024-05-14T08:26:31.000Z"
 ---

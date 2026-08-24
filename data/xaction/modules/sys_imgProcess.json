@@ -44,23 +44,23 @@
     },
     {
       "key": "maxWidth",
-      "name": "最大宽度",
+      "name": "宽度",
       "type": "Integer",
       "defaultValue": "0",
       "required": false,
       "variableMode": "UseVarOrInput",
-      "condition": "仅：resize_pixel",
-      "description": "最大宽度(像素数)，0表示自动"
+      "condition": "仅：resize_pixel, scale_pixel",
+      "description": "宽度（像素数），0 表示按高度自动计算；缩小时作为最大宽度，缩放时作为目标宽度"
     },
     {
       "key": "maxHeight",
-      "name": "最大高度",
+      "name": "高度",
       "type": "Integer",
       "defaultValue": "0",
       "required": false,
       "variableMode": "UseVarOrInput",
-      "condition": "仅：resize_pixel",
-      "description": "最大高度(像素数)，0表示自动"
+      "condition": "仅：resize_pixel, scale_pixel",
+      "description": "高度（像素数），0 表示按宽度自动计算；缩小时作为最大高度，缩放时作为目标高度"
     },
     {
       "key": "rotation",
@@ -109,8 +109,8 @@
       "defaultValue": "HighQualityBicubic",
       "required": false,
       "variableMode": "Input",
-      "condition": "仅：GenerateIco",
-      "description": "自动：整数倍放大使用邻近采样，大比例缩小使用 Lanczos，其余使用高质量双三次"
+      "condition": "仅：resize_percent, resize_pixel, scale_pixel, GenerateIco",
+      "description": "自动：大比例缩小使用 Lanczos；生成图标时整数倍放大使用邻近采样；其余使用高质量双三次"
     },
     {
       "key": "stopIfFail",
@@ -135,7 +135,7 @@
       "key": "result",
       "name": "结果图片",
       "type": "Image",
-      "condition": "仅：Clone, resize_percent, resize_pixel, Filters",
+      "condition": "仅：Clone, resize_percent, resize_pixel, scale_pixel, Filters",
       "description": "处理后的图片"
     }
   ],
@@ -150,7 +150,7 @@
         },
         {
           "value": "resize_pixel",
-          "name": "缩小图片(指定像素)",
+          "name": "缩小图片（按边长像素）",
           "description": ""
         },
         {
@@ -181,6 +181,11 @@
         {
           "value": "GenerateIco",
           "name": "生成图标文件(.ico)",
+          "description": ""
+        },
+        {
+          "value": "scale_pixel",
+          "name": "缩放图片（按边长像素）",
           "description": ""
         }
       ]

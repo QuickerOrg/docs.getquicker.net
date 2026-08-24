@@ -1,6 +1,6 @@
 ---
 title: "Zip压缩打包"
-description: "把文件夹或文件打成 zip，或把 zip 解压到指定目录。"
+description: "Zip压缩或解压缩"
 slug: "/v2/xaction/modules/zip"
 sidebar_label: "Zip压缩打包"
 sidebar_position: 100
@@ -8,7 +8,7 @@ quickerDocKey: "xaction/module/sys:zip"
 comments: true
 moduleKey: "sys:zip"
 docStatus: "reviewed"
-metadataGeneratedAt: "2026-08-03 20:08:03"
+metadataGeneratedAt: "2026-08-24 20:01:39"
 legacyDocId: 8014488
 legacyContentUpdatedAt: "2025-12-18T13:17:15.000Z"
 ---

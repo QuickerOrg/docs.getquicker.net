@@ -1,6 +1,6 @@
 ---
 title: "录制键鼠操作"
-description: "录制键盘和鼠标操作，输出可供重放的数据。"
+description: "录制键鼠操作过程"
 slug: "/v2/xaction/modules/record"
 sidebar_label: "录制键鼠操作"
 sidebar_position: 40
@@ -8,7 +8,7 @@ quickerDocKey: "xaction/module/sys:record"
 comments: true
 moduleKey: "sys:record"
 docStatus: "reviewed"
-metadataGeneratedAt: "2026-08-03 20:08:03"
+metadataGeneratedAt: "2026-08-24 20:01:39"
 legacyDocId: 3817030
 legacyContentUpdatedAt: "2025-02-28T06:42:02.000Z"
 ---

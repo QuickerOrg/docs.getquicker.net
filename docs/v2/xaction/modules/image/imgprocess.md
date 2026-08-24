@@ -1,6 +1,6 @@
 ---
 title: "图片处理"
-description: "缩放、复制、反色、灰度、旋转，或按命令组合处理；也可生成 ico。"
+description: "图片处理和变换"
 slug: "/v2/xaction/modules/imgprocess"
 sidebar_label: "图片处理"
 sidebar_position: 120
@@ -8,7 +8,7 @@ quickerDocKey: "xaction/module/sys:imgProcess"
 comments: true
 moduleKey: "sys:imgProcess"
 docStatus: "reviewed"
-metadataGeneratedAt: "2026-08-03 20:08:03"
+metadataGeneratedAt: "2026-08-24 20:01:39"
 legacyDocId: 2213317
 legacyContentUpdatedAt: "2024-08-26T12:05:06.000Z"
 ---

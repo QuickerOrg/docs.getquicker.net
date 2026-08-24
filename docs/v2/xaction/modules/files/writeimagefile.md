@@ -1,6 +1,6 @@
 ---
 title: "写入图片文件"
-description: "把图片变量保存到指定路径，JPG 可调质量。"
+description: "将图片内容写入文件"
 slug: "/v2/xaction/modules/writeimagefile"
 sidebar_label: "写入图片文件"
 sidebar_position: 70
@@ -8,7 +8,7 @@ quickerDocKey: "xaction/module/sys:WriteImageFile"
 comments: true
 moduleKey: "sys:WriteImageFile"
 docStatus: "reviewed"
-metadataGeneratedAt: "2026-08-03 20:08:03"
+metadataGeneratedAt: "2026-08-24 20:01:39"
 legacyDocId: 2115755
 legacyContentUpdatedAt: "2020-10-26T11:02:29.000Z"
 ---

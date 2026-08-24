@@ -210,7 +210,7 @@
       "required": false,
       "variableMode": "Input",
       "condition": "仅：RunScript",
-      "description": "在脚本中使用sendReplyToQuicker函数手动返回数据"
+      "description": "开启后等待脚本内异步逻辑完成再返回输出。MV3 推荐 async/await 并在末尾 return（或返回 Promise），通常保持关闭。"
     },
     {
       "key": "waitComplete",

@@ -1,6 +1,6 @@
 ---
 title: "手写板"
-description: "弹出绘图窗口，手写或勾画后得到图片对象。"
+description: "手写内容，生成图片对象。"
 slug: "/v2/xaction/modules/whiteboard"
 sidebar_label: "手写板"
 sidebar_position: 100
@@ -8,7 +8,7 @@ quickerDocKey: "xaction/module/sys:whiteboard"
 comments: true
 moduleKey: "sys:whiteboard"
 docStatus: "reviewed"
-metadataGeneratedAt: "2026-08-03 20:08:03"
+metadataGeneratedAt: "2026-08-24 20:01:39"
 legacyDocId: 12799039
 legacyContentUpdatedAt: "2023-05-24T12:42:58.000Z"
 ---

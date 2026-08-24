@@ -1,6 +1,6 @@
 ---
 title: "WebView2浏览器窗口"
-description: "用 Edge WebView2 打开网页或 HTML，并可与动作变量、子程序交互。"
+description: "基于微软Edge浏览器内核的组件，需要安装Edge最新预览版方可使用。"
 slug: "/v2/xaction/modules/webview2"
 sidebar_label: "WebView2浏览器窗口"
 sidebar_position: 130
@@ -8,7 +8,7 @@ quickerDocKey: "xaction/module/sys:webview2"
 comments: true
 moduleKey: "sys:webview2"
 docStatus: "reviewed"
-metadataGeneratedAt: "2026-08-03 20:08:03"
+metadataGeneratedAt: "2026-08-24 20:01:39"
 legacyDocId: 13009021
 legacyContentUpdatedAt: "2026-03-22T03:26:04.000Z"
 ---

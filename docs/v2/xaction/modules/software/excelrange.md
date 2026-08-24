@@ -1,6 +1,6 @@
 ---
 title: "Excel区域操作"
-description: "对已打开的 Excel 区域赋值、设格式、调用方法或读取信息。"
+description: "操作Excel的某个区域或单元格"
 slug: "/v2/xaction/modules/excelrange"
 sidebar_label: "Excel区域操作"
 sidebar_position: 80
@@ -8,7 +8,7 @@ quickerDocKey: "xaction/module/sys:excelRange"
 comments: true
 moduleKey: "sys:excelRange"
 docStatus: "reviewed"
-metadataGeneratedAt: "2026-08-03 20:08:03"
+metadataGeneratedAt: "2026-08-24 20:01:39"
 legacyDocId: 8579675
 legacyContentUpdatedAt: "2024-04-15T14:39:52.000Z"
 ---

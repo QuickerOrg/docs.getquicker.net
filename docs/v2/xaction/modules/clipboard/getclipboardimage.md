@@ -8,7 +8,7 @@ quickerDocKey: "xaction/module/sys:getClipboardImage"
 comments: true
 moduleKey: "sys:getClipboardImage"
 docStatus: "reviewed"
-metadataGeneratedAt: "2026-08-03 20:08:03"
+metadataGeneratedAt: "2026-08-24 20:01:39"
 legacyDocId: 2064749
 legacyContentUpdatedAt: "2020-05-28T06:41:20.000Z"
 ---

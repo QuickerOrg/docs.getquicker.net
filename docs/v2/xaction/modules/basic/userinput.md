@@ -1,6 +1,6 @@
 ---
 title: "用户输入"
-description: "弹出输入框，请用户填写一段内容后再继续动作。"
+description: "请用户输入内容。"
 slug: "/v2/xaction/modules/userinput"
 sidebar_label: "用户输入"
 sidebar_position: 100
@@ -8,7 +8,7 @@ quickerDocKey: "xaction/module/sys:userInput"
 comments: true
 moduleKey: "sys:userInput"
 docStatus: "reviewed"
-metadataGeneratedAt: "2026-08-03 20:08:03"
+metadataGeneratedAt: "2026-08-24 20:01:39"
 legacyDocId: 1460412
 legacyContentUpdatedAt: "2024-10-29T00:17:04.000Z"
 ---

@@ -1,6 +1,6 @@
 ---
 title: "等待时间"
-description: "暂停指定毫秒数，再继续后面的步骤。"
+description: "等待指定的毫秒数"
 slug: "/v2/xaction/modules/delay"
 sidebar_label: "等待时间"
 sidebar_position: 30
@@ -8,7 +8,7 @@ quickerDocKey: "xaction/module/sys:delay"
 comments: true
 moduleKey: "sys:delay"
 docStatus: "reviewed"
-metadataGeneratedAt: "2026-08-03 20:08:03"
+metadataGeneratedAt: "2026-08-24 20:01:39"
 legacyDocId: 1465639
 legacyContentUpdatedAt: "2025-12-05T02:21:38.000Z"
 ---

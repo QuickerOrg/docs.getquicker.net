@@ -1,6 +1,6 @@
 ---
 title: "比较文本"
-description: "比较两段文本是否符合指定关系，得到真或假。"
+description: "文本比较"
 slug: "/v2/xaction/modules/strcompare"
 sidebar_label: "比较文本"
 sidebar_position: 20
@@ -8,7 +8,7 @@ quickerDocKey: "xaction/module/sys:strCompare"
 comments: true
 moduleKey: "sys:strCompare"
 docStatus: "reviewed"
-metadataGeneratedAt: "2026-08-03 20:08:03"
+metadataGeneratedAt: "2026-08-24 20:01:39"
 legacyDocId: 2113504
 legacyContentUpdatedAt: "2019-07-14T10:39:54.000Z"
 ---

@@ -1,6 +1,6 @@
 ---
 title: "读取文件"
-description: "读取文本或图片文件，把内容写入变量。"
+description: "将读取的文本或图片内容写入变量。"
 slug: "/v2/xaction/modules/readfile"
 sidebar_label: "读取文件"
 sidebar_position: 10
@@ -8,7 +8,7 @@ quickerDocKey: "xaction/module/sys:readFile"
 comments: true
 moduleKey: "sys:readFile"
 docStatus: "reviewed"
-metadataGeneratedAt: "2026-08-03 20:08:03"
+metadataGeneratedAt: "2026-08-24 20:01:39"
 legacyDocId: 2115863
 legacyContentUpdatedAt: "2020-10-26T11:03:34.000Z"
 ---

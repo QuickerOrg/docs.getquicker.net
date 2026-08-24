@@ -1,6 +1,6 @@
 ---
 title: "后台屏幕录制"
-description: "后台录制屏幕区域为视频文件，用会话 ID 跨步骤控制开始、暂停、继续和结束。"
+description: "后台录制屏幕区域为视频文件，通过会话 ID 跨步骤控制录制生命周期。"
 slug: "/v2/xaction/modules/screen-recording"
 sidebar_label: "后台屏幕录制"
 sidebar_position: 20
@@ -8,7 +8,7 @@ quickerDocKey: "xaction/module/sys:screenRecording"
 comments: true
 moduleKey: "sys:screenRecording"
 docStatus: "generated"
-metadataGeneratedAt: "2026-08-03 20:08:03"
+metadataGeneratedAt: "2026-08-24 20:01:39"
 ---
 
 # 后台屏幕录制

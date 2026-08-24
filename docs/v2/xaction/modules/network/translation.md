@@ -8,7 +8,7 @@ quickerDocKey: "xaction/module/sys:translation"
 comments: true
 moduleKey: "sys:translation"
 docStatus: "reviewed"
-metadataGeneratedAt: "2026-08-03 20:08:03"
+metadataGeneratedAt: "2026-08-24 20:01:39"
 legacyDocId: 49614304
 legacyContentUpdatedAt: "2025-03-17T14:58:05.000Z"
 ---

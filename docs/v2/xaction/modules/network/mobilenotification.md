@@ -8,7 +8,7 @@ quickerDocKey: "xaction/module/sys:mobileNotification"
 comments: true
 moduleKey: "sys:mobileNotification"
 docStatus: "reviewed"
-metadataGeneratedAt: "2026-08-12 21:38:57"
+metadataGeneratedAt: "2026-08-24 20:01:39"
 ---
 
 # 发送手机通知

@@ -1,6 +1,6 @@
 ---
 title: "打开网址"
-description: "用指定浏览器打开一个网页地址。"
+description: "打开指定的网址"
 slug: "/v2/xaction/modules/openurl"
 sidebar_label: "打开网址"
 sidebar_position: 10
@@ -8,7 +8,7 @@ quickerDocKey: "xaction/module/sys:openUrl"
 comments: true
 moduleKey: "sys:openUrl"
 docStatus: "reviewed"
-metadataGeneratedAt: "2026-08-03 20:08:03"
+metadataGeneratedAt: "2026-08-24 20:01:39"
 legacyDocId: 1465706
 legacyContentUpdatedAt: "2025-12-05T02:22:28.000Z"
 ---

@@ -43,16 +43,6 @@
       "description": "不显示编辑、复制等菜单"
     },
     {
-      "key": "wait",
-      "name": "等待运行结束",
-      "type": "Boolean",
-      "defaultValue": "true",
-      "required": false,
-      "variableMode": "Input",
-      "condition": "仅：StartAction, StartCurrentAction",
-      "description": "是否等待此动作运行结束再执行后续动作（如需获取目标动作的输出，需选中此项）"
-    },
-    {
       "key": "inputParam",
       "name": "命令参数",
       "type": "Text",
@@ -71,6 +61,16 @@
       "variableMode": "Input",
       "condition": "仅：StartAction, StartCurrentAction",
       "description": "是否以调试模式运行动作"
+    },
+    {
+      "key": "wait",
+      "name": "等待运行结束",
+      "type": "Boolean",
+      "defaultValue": "true",
+      "required": false,
+      "variableMode": "Input",
+      "condition": "仅：StartAction, StartCurrentAction",
+      "description": "是否等待此动作运行结束再执行后续动作（如需获取目标动作的输出，需选中此项）"
     },
     {
       "key": "hideMessage",

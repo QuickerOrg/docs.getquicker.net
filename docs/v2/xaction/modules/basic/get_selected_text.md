@@ -1,6 +1,6 @@
 ---
 title: "获取选中的文本"
-description: "获取当前选中的文字；也可在开启选项后改用动作参数作为结果。"
+description: "获取选中的文字"
 slug: "/v2/xaction/modules/get_selected_text"
 sidebar_label: "获取选中的文本"
 sidebar_position: 50
@@ -8,7 +8,7 @@ quickerDocKey: "xaction/module/sys:getSelectedText"
 comments: true
 moduleKey: "sys:getSelectedText"
 docStatus: "reviewed"
-metadataGeneratedAt: "2026-08-03 20:08:03"
+metadataGeneratedAt: "2026-08-24 20:01:39"
 legacyDocId: 1400233
 legacyContentUpdatedAt: "2023-06-17T15:02:36.000Z"
 ---

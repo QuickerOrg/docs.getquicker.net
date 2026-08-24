@@ -1,6 +1,6 @@
 ---
 title: "Adobe系列软件控制"
-description: "向已启动的 Photoshop、Illustrator 或 After Effects 运行 JSX 脚本。"
+description: "Adobe系列软件控制模块的参数、输出与使用说明。"
 slug: "/v2/xaction/modules/adobesoftscontrol"
 sidebar_label: "Adobe系列软件控制"
 sidebar_position: 50
@@ -8,7 +8,7 @@ quickerDocKey: "xaction/module/sys:adobesoftscontrol"
 comments: true
 moduleKey: "sys:adobesoftscontrol"
 docStatus: "reviewed"
-metadataGeneratedAt: "2026-08-03 20:08:03"
+metadataGeneratedAt: "2026-08-24 20:01:39"
 legacyDocId: 80638336
 legacyContentUpdatedAt: "2025-12-15T02:38:05.000Z"
 ---

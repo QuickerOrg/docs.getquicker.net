@@ -1,6 +1,6 @@
 ---
 title: "屏幕取色/颜色转换与计算"
-description: "从文本、屏幕或调色板取得颜色，并输出各通道和指定格式的文本。"
+description: "转换颜色值及相关计算处理"
 slug: "/v2/xaction/modules/color"
 sidebar_label: "屏幕取色/颜色转换与计算"
 sidebar_position: 100
@@ -8,7 +8,7 @@ quickerDocKey: "xaction/module/sys:color"
 comments: true
 moduleKey: "sys:color"
 docStatus: "reviewed"
-metadataGeneratedAt: "2026-08-03 20:08:03"
+metadataGeneratedAt: "2026-08-24 20:01:39"
 legacyDocId: 3996714
 legacyContentUpdatedAt: "2020-04-02T03:19:32.000Z"
 ---

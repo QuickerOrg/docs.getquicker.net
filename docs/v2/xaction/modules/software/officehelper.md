@@ -1,6 +1,6 @@
 ---
 title: "Office软件辅助"
-description: "对当前 Office / WPS 窗口执行 VBA、改格式，或触发功能区命令。"
+description: "辅助控制Office软件"
 slug: "/v2/xaction/modules/officehelper"
 sidebar_label: "Office软件辅助"
 sidebar_position: 100
@@ -8,7 +8,7 @@ quickerDocKey: "xaction/module/sys:officehelper"
 comments: true
 moduleKey: "sys:officehelper"
 docStatus: "reviewed"
-metadataGeneratedAt: "2026-08-03 20:08:03"
+metadataGeneratedAt: "2026-08-24 20:01:39"
 legacyDocId: 105089178
 legacyContentUpdatedAt: "2024-08-08T13:46:01.000Z"
 ---

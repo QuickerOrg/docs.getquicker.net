@@ -60,7 +60,7 @@
       "required": true,
       "variableMode": "UseVarOrInput",
       "condition": "仅：loadExeProfiles, loadExeProfilesNoLock, showCircleMenu, GetActionList, showExeSettingWindow, showDashboardWindow",
-      "description": "场景关联的exe文件名。请参考场景与动作管理窗口左侧应用列表。"
+      "description": "场景关联的exe文件名。请参考场景与动作管理窗口左侧应用列表；打开轮盘或场景管理时可填写 _curr 表示当前程序场景。"
     },
     {
       "key": "sceneGroup",

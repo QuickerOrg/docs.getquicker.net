@@ -1,6 +1,6 @@
 ---
 title: "运行或打开"
-description: "启动进程：运行软件或命令，打开文件、文件夹或网址。类似 Win+R。"
+description: "运行软件或命令，打开文件、文件夹或网址。效果类似于在Windows\"运行\"对话框中执行命令。"
 slug: "/v2/xaction/modules/run"
 sidebar_label: "运行或打开"
 sidebar_position: 120
@@ -8,7 +8,7 @@ quickerDocKey: "xaction/module/sys:run"
 comments: true
 moduleKey: "sys:run"
 docStatus: "reviewed"
-metadataGeneratedAt: "2026-08-03 20:08:03"
+metadataGeneratedAt: "2026-08-24 20:01:39"
 legacyDocId: 1530304
 legacyContentUpdatedAt: "2025-01-20T02:30:50.000Z"
 ---

@@ -8,7 +8,7 @@ quickerDocKey: "xaction/module/sys:winservice"
 comments: true
 moduleKey: "sys:winservice"
 docStatus: "reviewed"
-metadataGeneratedAt: "2026-08-03 20:08:03"
+metadataGeneratedAt: "2026-08-24 20:01:39"
 legacyDocId: 88864932
 legacyContentUpdatedAt: "2022-08-08T08:45:27.000Z"
 ---

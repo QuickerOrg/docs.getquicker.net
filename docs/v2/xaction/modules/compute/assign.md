@@ -1,6 +1,6 @@
 ---
 title: "赋值"
-description: "把内容写进变量，也可用来做类型转换。"
+description: "为变量赋值。"
 slug: "/v2/xaction/modules/assign"
 sidebar_label: "赋值"
 sidebar_position: 50
@@ -8,7 +8,7 @@ quickerDocKey: "xaction/module/sys:assign"
 comments: true
 moduleKey: "sys:assign"
 docStatus: "reviewed"
-metadataGeneratedAt: "2026-08-03 20:08:03"
+metadataGeneratedAt: "2026-08-24 20:01:39"
 legacyDocId: 2131959
 legacyContentUpdatedAt: "2023-11-01T08:49:47.000Z"
 ---

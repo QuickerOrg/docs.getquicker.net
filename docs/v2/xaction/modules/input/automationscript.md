@@ -1,6 +1,6 @@
 ---
 title: "自动化脚本"
-description: "使用受限 JavaScript 编排鼠标、键盘、Quicker 提示消息和文本剪贴板等自动化操作。"
+description: "使用 JavaScript 编排鼠标、键盘等桌面自动化操作。"
 slug: "/v2/xaction/modules/automationscript"
 sidebar_label: "自动化脚本"
 sidebar_position: 20
@@ -8,7 +8,7 @@ quickerDocKey: "xaction/module/sys:automationScript"
 comments: true
 moduleKey: "sys:automationScript"
 docStatus: "reviewed"
-metadataGeneratedAt: "2026-08-13 19:01:10"
+metadataGeneratedAt: "2026-08-24 20:01:39"
 ---
 
 # 自动化脚本

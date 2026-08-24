@@ -53,6 +53,16 @@
       "description": "包含时，当指定 0,0,2,2 的时候，截图的大小为3*3, 否则为2*2"
     },
     {
+      "key": "enableUiElementDetect",
+      "name": "启用 UI 元素检测",
+      "type": "Boolean",
+      "defaultValue": "false",
+      "required": false,
+      "variableMode": "Input",
+      "condition": "仅：select",
+      "description": "开启后悬停自动吸附控件区域，滚轮切换父/子控件；关闭时仅智能检测窗口范围。"
+    },
+    {
       "key": "windowHandle",
       "name": "窗口句柄",
       "type": "Integer",

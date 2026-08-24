@@ -110,7 +110,17 @@
       "required": false,
       "variableMode": "Input",
       "condition": "仅：QuickerServerOcr",
-      "description": "旧版兼容参数。Quicker OCR 当前固定使用在线服务；旧动作选择“仅使用离线引擎”时转为本地 OCR。新动作请直接选择“本地 OCR（中英）”。"
+      "description": "旧版兼容参数。Quicker OCR 当前固定使用在线服务；旧动作选择“仅使用离线引擎”时转为本地 OCR。新动作请直接选择“本地 OCR”。"
+    },
+    {
+      "key": "modelTier",
+      "name": "模型",
+      "type": "Enum",
+      "defaultValue": "small",
+      "required": false,
+      "variableMode": "Input",
+      "condition": "仅：LocalOcr, table_quicker",
+      "description": "标准=small（更准更大，默认）；快速=tiny（更快更小）。切换后如未安装会下载对应模型包。"
     },
     {
       "key": "stopIfFail",
@@ -150,7 +160,7 @@
       "name": "原始结果",
       "type": "Text",
       "condition": "",
-      "description": "API接口返回的完整内容"
+      "description": "原始结果。表格识别为 ApiResult JSON（Data.Html / Data.Tsv）；其它引擎为接口原始内容。"
     },
     {
       "key": "rawObject",
@@ -191,12 +201,12 @@
         },
         {
           "value": "table_quicker",
-          "name": "表格识别（Quicker服务）",
+          "name": "表格识别（本地）",
           "description": ""
         },
         {
           "value": "LocalOcr",
-          "name": "本地 OCR（中英）",
+          "name": "本地 OCR",
           "description": ""
         }
       ]
@@ -342,6 +352,21 @@
         {
           "value": "OfflineOnly",
           "name": "仅使用离线引擎",
+          "description": ""
+        }
+      ]
+    },
+    "modelTier": {
+      "name": "模型",
+      "items": [
+        {
+          "value": "tiny",
+          "name": "快速",
+          "description": ""
+        },
+        {
+          "value": "small",
+          "name": "标准",
           "description": ""
         }
       ]

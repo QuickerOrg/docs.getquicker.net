@@ -1,6 +1,6 @@
 ---
 title: "加密/解密/哈希"
-description: "DES / AES / RSA、哈希、HMAC，以及仅本机账号能解开的自用加解密。"
+description: "加密、解密，以及哈希计算"
 slug: "/v2/xaction/modules/enc"
 sidebar_label: "加密/解密/哈希"
 sidebar_position: 30
@@ -8,7 +8,7 @@ quickerDocKey: "xaction/module/sys:enc"
 comments: true
 moduleKey: "sys:enc"
 docStatus: "reviewed"
-metadataGeneratedAt: "2026-08-03 20:08:03"
+metadataGeneratedAt: "2026-08-24 20:01:39"
 legacyDocId: 127131509
 legacyContentUpdatedAt: "2023-06-09T12:24:24.000Z"
 ---

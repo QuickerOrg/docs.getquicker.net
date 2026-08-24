@@ -1,6 +1,6 @@
 ---
 title: "获取浏览器网址"
-description: "读取当前浏览器标签页的网址。"
+description: "获取当前浏览器网址。"
 slug: "/v2/xaction/modules/getchromeurl"
 sidebar_label: "获取浏览器网址"
 sidebar_position: 30
@@ -8,7 +8,7 @@ quickerDocKey: "xaction/module/sys:getChromeUrl"
 comments: true
 moduleKey: "sys:getChromeUrl"
 docStatus: "reviewed"
-metadataGeneratedAt: "2026-08-03 20:08:03"
+metadataGeneratedAt: "2026-08-24 20:01:39"
 legacyDocId: 2118114
 legacyContentUpdatedAt: "2021-10-06T14:07:29.000Z"
 ---

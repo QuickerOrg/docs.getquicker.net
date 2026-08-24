@@ -1,6 +1,6 @@
 ---
 title: "提示消息"
-description: "在桌面显示一条可自动消失的提示，不打断动作。"
+description: "显示可以自动消失的消息提示。"
 slug: "/v2/xaction/modules/notify"
 sidebar_label: "提示消息"
 sidebar_position: 90
@@ -8,7 +8,7 @@ quickerDocKey: "xaction/module/sys:notify"
 comments: true
 moduleKey: "sys:notify"
 docStatus: "reviewed"
-metadataGeneratedAt: "2026-08-03 20:08:03"
+metadataGeneratedAt: "2026-08-24 20:01:39"
 legacyDocId: 1530071
 legacyContentUpdatedAt: "2022-07-01T09:39:34.000Z"
 ---

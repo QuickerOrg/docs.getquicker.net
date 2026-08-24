@@ -1,0 +1,101 @@
+{
+  "key": "sys:reactui",
+  "slug": "reactui",
+  "legacySlug": "reactui",
+  "ownsLegacyContent": true,
+  "name": "React 界面",
+  "description": "用单文件 TSX 显示可交互窗口，通过 Quicker.close 把结果写回动作。",
+  "category": "Ui",
+  "categoryName": "界面组件",
+  "stepType": "Action",
+  "isRisky": false,
+  "isProOnly": false,
+  "helpLink": "https://docs.getquicker.net/v2/xaction/modules/reactui",
+  "inputs": [
+    {
+      "key": "source",
+      "name": "TSX 源码",
+      "type": "Text",
+      "defaultValue": "import Quicker from \"Quicker\";\nimport { Button, Field, Panel, Stack, TextField, useQuickerStorage } from \"QuickerUi\";\n\nexport default function App() {\n  const input = Quicker.getInput() ?? {};\n  const [name, setName] = useQuickerStorage(\"name\", input.name ?? \"\");\n\n  return (\n    <main className=\"qk-ui-page\">\n      <Panel\n        title={input.title ?? \"React 界面\"}\n        footer={\n          <>\n            <Button onClick={() => Quicker.cancel()}>取消</Button>\n            <Button\n              variant=\"primary\"\n              disabled={!String(name).trim()}\n              onClick={() => Quicker.close({ name: String(name).trim() })}\n            >\n              确定\n            </Button>\n          </>\n        }\n      >\n        <Stack>\n          <Field label=\"名称\">\n            <TextField value={name} wide onChange={(e) => setName(e.target.value)} />\n          </Field>\n        </Stack>\n      </Panel>\n    </main>\n  );\n}",
+      "required": true,
+      "variableMode": "UseVarOrInput",
+      "condition": "",
+      "description": "单文件 TSX，必须 export default 一个 React 组件。可从 react / QuickerUi / Quicker 导入。"
+    },
+    {
+      "key": "input",
+      "name": "输入数据",
+      "type": "Any",
+      "defaultValue": "",
+      "required": false,
+      "variableMode": "UseVarOrInput",
+      "condition": "",
+      "description": "传给界面 Quicker.getInput() 的数据，可以是词典、JSON 文本或其它值。"
+    },
+    {
+      "key": "title",
+      "name": "窗口标题",
+      "type": "Text",
+      "defaultValue": "React 界面",
+      "required": false,
+      "variableMode": "UseVarOrInput",
+      "condition": "",
+      "description": "React 界面窗口标题。"
+    },
+    {
+      "key": "width",
+      "name": "窗口宽度",
+      "type": "Number",
+      "defaultValue": "440",
+      "required": false,
+      "variableMode": "UseVarOrInput",
+      "condition": "",
+      "description": "窗口最大宽度（像素）。内容更小时会按卡片收缩。"
+    },
+    {
+      "key": "height",
+      "name": "窗口高度",
+      "type": "Number",
+      "defaultValue": "300",
+      "required": false,
+      "variableMode": "UseVarOrInput",
+      "condition": "",
+      "description": "窗口最大高度（像素）。内容更小时会按卡片收缩。"
+    },
+    {
+      "key": "stopIfFail",
+      "name": "取消后停止",
+      "type": "Boolean",
+      "defaultValue": "true",
+      "required": false,
+      "variableMode": "Input",
+      "condition": "",
+      "description": "用户取消或关闭窗口后是否停止动作"
+    }
+  ],
+  "outputs": [
+    {
+      "key": "isSuccess",
+      "name": "是否成功",
+      "type": "Boolean",
+      "condition": "",
+      "description": "操作是否成功"
+    },
+    {
+      "key": "result",
+      "name": "返回结果",
+      "type": "Any",
+      "condition": "",
+      "description": "界面调用 Quicker.close(result) 时返回的数据。"
+    },
+    {
+      "key": "cancelled",
+      "name": "已取消",
+      "type": "Boolean",
+      "condition": "",
+      "description": "用户取消、关闭窗口或动作中止时为真。"
+    }
+  ],
+  "selections": {},
+  "sourceFileName": "sys_reactui_React 界面.md"
+}

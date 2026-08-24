@@ -1,6 +1,6 @@
 ---
 title: "辅助选择工具"
-description: "直接弹出选文件、窗口、坐标等拾取界面，返回对应文本。"
+description: "一些常用的选择内容并获取文本的工具"
 slug: "/v2/xaction/modules/textselecttools"
 sidebar_label: "辅助选择工具"
 sidebar_position: 30
@@ -8,7 +8,7 @@ quickerDocKey: "xaction/module/sys:textSelectTools"
 comments: true
 moduleKey: "sys:textSelectTools"
 docStatus: "reviewed"
-metadataGeneratedAt: "2026-08-03 20:08:03"
+metadataGeneratedAt: "2026-08-24 20:01:39"
 legacyDocId: 55498152
 legacyContentUpdatedAt: "2023-03-26T05:50:32.000Z"
 ---

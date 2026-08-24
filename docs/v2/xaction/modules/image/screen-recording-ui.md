@@ -1,6 +1,6 @@
 ---
 title: "屏幕录制"
-description: "弹出选区界面框选范围，打开录屏工具栏可视化录制，结束后返回文件路径。"
+description: "弹出选区 UI 让用户框选录制范围，打开录屏工具栏进行可视化录制，录完后返回文件路径。"
 slug: "/v2/xaction/modules/screen-recording-ui"
 sidebar_label: "屏幕录制"
 sidebar_position: 60
@@ -8,7 +8,7 @@ quickerDocKey: "xaction/module/sys:screenRecordingUI"
 comments: true
 moduleKey: "sys:screenRecordingUI"
 docStatus: "generated"
-metadataGeneratedAt: "2026-08-03 20:08:03"
+metadataGeneratedAt: "2026-08-24 20:01:39"
 ---
 
 # 屏幕录制

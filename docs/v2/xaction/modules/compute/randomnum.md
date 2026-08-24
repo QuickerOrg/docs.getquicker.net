@@ -1,6 +1,6 @@
 ---
 title: "生成随机数"
-description: "在最小值（含）和最大值（不含）之间生成一个整数。"
+description: "生成随机数"
 slug: "/v2/xaction/modules/randomnum"
 sidebar_label: "生成随机数"
 sidebar_position: 110
@@ -8,7 +8,7 @@ quickerDocKey: "xaction/module/sys:randomNum"
 comments: true
 moduleKey: "sys:randomNum"
 docStatus: "reviewed"
-metadataGeneratedAt: "2026-08-03 20:08:03"
+metadataGeneratedAt: "2026-08-24 20:01:39"
 legacyDocId: 2132854
 legacyContentUpdatedAt: "2019-07-17T00:48:53.000Z"
 ---

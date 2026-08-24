@@ -1,8 +1,8 @@
 {
   "key": "sys:screenRecording",
   "slug": "screen-recording",
-  "legacySlug": "screencapture",
-  "ownsLegacyContent": false,
+  "legacySlug": "screen-recording",
+  "ownsLegacyContent": true,
   "name": "后台屏幕录制",
   "description": "后台录制屏幕区域为视频文件，通过会话 ID 跨步骤控制录制生命周期。",
   "category": "Image",
@@ -46,7 +46,7 @@
       "key": "regionType",
       "name": "录制范围",
       "type": "Enum",
-      "defaultValue": "fixed_area",
+      "defaultValue": "primary_screen",
       "required": true,
       "variableMode": "Input",
       "condition": "仅：start",
@@ -59,7 +59,7 @@
       "defaultValue": "",
       "required": false,
       "variableMode": "UseVarOrInput",
-      "condition": "仅：start, fixed_area",
+      "condition": "仅：fixed_area; 排除：pause, resume, stop",
       "description": "固定区域坐标，格式：left,top,right,bottom。默认不包含右边和底边像素。"
     },
     {
@@ -69,8 +69,18 @@
       "defaultValue": "true",
       "required": false,
       "variableMode": "Input",
-      "condition": "仅：start, fixed_area",
+      "condition": "仅：fixed_area; 排除：pause, resume, stop",
       "description": "包含时，0,0,2,2 表示 3×3 区域；否则为 2×2。"
+    },
+    {
+      "key": "outputDirectory",
+      "name": "输出文件夹路径",
+      "type": "Text",
+      "defaultValue": "",
+      "required": false,
+      "variableMode": "UseVarOrInput",
+      "condition": "仅：start",
+      "description": "成品写入该目录，文件名为 Recording_时间戳。留空且未指定旧「输出文件路径」时使用默认位置。"
     },
     {
       "key": "outputFilePath",
@@ -80,7 +90,7 @@
       "required": false,
       "variableMode": "UseVarOrInput",
       "condition": "仅：start",
-      "description": "留空时使用 Quicker 临时目录下的时间戳文件名。"
+      "description": "旧动作兼容：始终按文件规整，无扩展名仍是 clip.mp4。新动作请用「输出文件夹路径」。"
     },
     {
       "key": "outputFormat",
@@ -329,7 +339,5 @@
       ]
     }
   },
-  "sharedDocumentationKey": "sys:screenCapture",
-  "sharedDocumentationSlug": "screencapture",
   "sourceFileName": "sys_screenRecording_后台屏幕录制.md"
 }

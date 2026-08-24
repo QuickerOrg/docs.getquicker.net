@@ -1,6 +1,6 @@
 ---
 title: "选择文件"
-description: "弹出打开或保存文件对话框，拿到用户选中的路径。"
+description: "用文件选择对话框选择要打开或保存的文件"
 slug: "/v2/xaction/modules/selectfile"
 sidebar_label: "选择文件"
 sidebar_position: 80
@@ -8,7 +8,7 @@ quickerDocKey: "xaction/module/sys:selectFile"
 comments: true
 moduleKey: "sys:selectFile"
 docStatus: "reviewed"
-metadataGeneratedAt: "2026-08-03 20:08:03"
+metadataGeneratedAt: "2026-08-24 20:01:39"
 legacyDocId: 1981266
 legacyContentUpdatedAt: "2021-11-15T11:23:11.000Z"
 ---

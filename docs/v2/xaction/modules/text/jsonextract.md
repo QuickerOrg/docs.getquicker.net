@@ -1,6 +1,6 @@
 ---
 title: "提取JSON内容"
-description: "按路径从 JSON 文本或 JToken 里取出最多 5 项。"
+description: "提取Json文本中的信息"
 slug: "/v2/xaction/modules/jsonextract"
 sidebar_label: "提取JSON内容"
 sidebar_position: 50
@@ -8,7 +8,7 @@ quickerDocKey: "xaction/module/sys:jsonExtract"
 comments: true
 moduleKey: "sys:jsonExtract"
 docStatus: "reviewed"
-metadataGeneratedAt: "2026-08-03 20:08:03"
+metadataGeneratedAt: "2026-08-24 20:01:39"
 legacyDocId: 2113782
 legacyContentUpdatedAt: "2022-03-11T14:45:55.000Z"
 ---

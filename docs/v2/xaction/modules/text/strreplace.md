@@ -1,6 +1,6 @@
 ---
 title: "替换文本"
-description: "按字面量或正则，替换一段文本里的一种或多种内容。"
+description: "替换文本中的指定内容"
 slug: "/v2/xaction/modules/strreplace"
 sidebar_label: "替换文本"
 sidebar_position: 60
@@ -8,7 +8,7 @@ quickerDocKey: "xaction/module/sys:strReplace"
 comments: true
 moduleKey: "sys:strReplace"
 docStatus: "reviewed"
-metadataGeneratedAt: "2026-08-03 20:08:03"
+metadataGeneratedAt: "2026-08-24 20:01:39"
 legacyDocId: 2114156
 legacyContentUpdatedAt: "2024-06-05T02:30:46.000Z"
 ---

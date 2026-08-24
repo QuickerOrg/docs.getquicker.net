@@ -1,6 +1,6 @@
 ---
 title: "重放键鼠操作"
-description: "按指定速度回放录制好的键鼠操作数据。"
+description: "重放录制好的键鼠操作数据。"
 slug: "/v2/xaction/modules/playrecord"
 sidebar_label: "重放键鼠操作"
 sidebar_position: 100
@@ -8,7 +8,7 @@ quickerDocKey: "xaction/module/sys:playRecords"
 comments: true
 moduleKey: "sys:playRecords"
 docStatus: "reviewed"
-metadataGeneratedAt: "2026-08-03 20:08:03"
+metadataGeneratedAt: "2026-08-24 20:01:39"
 legacyDocId: 3817323
 legacyContentUpdatedAt: "2024-07-11T01:19:39.000Z"
 ---

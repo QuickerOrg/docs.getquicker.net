@@ -1,6 +1,6 @@
 ---
 title: "显示菜单"
-description: "在指针位置弹出纵向菜单，点选后执行操作或返回数据。"
+description: "显示一个菜单"
 slug: "/v2/xaction/modules/showmenu"
 sidebar_label: "显示菜单"
 sidebar_position: 50
@@ -8,7 +8,7 @@ quickerDocKey: "xaction/module/sys:showmenu"
 comments: true
 moduleKey: "sys:showmenu"
 docStatus: "reviewed"
-metadataGeneratedAt: "2026-08-03 20:08:03"
+metadataGeneratedAt: "2026-08-24 20:01:39"
 legacyDocId: 55509182
 legacyContentUpdatedAt: "2024-12-02T01:31:54.000Z"
 ---

@@ -1,6 +1,6 @@
 ---
 title: "多字段表单"
-description: "弹出表单窗口，一次编辑多个动作变量或词典键。"
+description: "使用表单窗口编辑多个变量的值。"
 slug: "/v2/xaction/modules/form"
 sidebar_label: "多字段表单"
 sidebar_position: 20
@@ -8,7 +8,7 @@ quickerDocKey: "xaction/module/sys:form"
 comments: true
 moduleKey: "sys:form"
 docStatus: "reviewed"
-metadataGeneratedAt: "2026-08-03 20:08:03"
+metadataGeneratedAt: "2026-08-24 20:01:39"
 legacyDocId: 3878886
 legacyContentUpdatedAt: "2025-04-26T13:46:14.000Z"
 ---

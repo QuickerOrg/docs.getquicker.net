@@ -5,13 +5,33 @@
   "ownsLegacyContent": true,
   "name": "AI 调用",
   "description": "调用第三方AI服务",
-  "category": "Network",
-  "categoryName": "网络服务",
+  "category": "Ai",
+  "categoryName": "AI",
   "stepType": "Action",
   "isRisky": false,
   "isProOnly": false,
   "helpLink": "https://docs.getquicker.net/v2/xaction/modules/ai",
   "inputs": [
+    {
+      "key": "modelSource",
+      "name": "模型来源",
+      "type": "Enum",
+      "defaultValue": "custom",
+      "required": true,
+      "variableMode": "Input",
+      "condition": "",
+      "description": "使用步骤内配置的 API，或复用设置中的全局连接、模型和凭据。"
+    },
+    {
+      "key": "globalUseCaseId",
+      "name": "AI 任务场景",
+      "type": "Text",
+      "defaultValue": "text.general",
+      "required": false,
+      "variableMode": "UseVarOrInput",
+      "condition": "仅：global",
+      "description": "选择“模型分配”中的任务场景；未指定模型时按场景配置的顺序选择和回退。"
+    },
     {
       "key": "endpoint",
       "name": "接口端点",
@@ -19,7 +39,7 @@
       "defaultValue": "chat",
       "required": true,
       "variableMode": "Input",
-      "condition": "",
+      "condition": "排除：global",
       "description": ""
     },
     {
@@ -29,7 +49,7 @@
       "defaultValue": "",
       "required": false,
       "variableMode": "Input",
-      "condition": "",
+      "condition": "排除：global",
       "description": "适用于可能适用于不同的端点，请参考官方文档使用。"
     },
     {
@@ -39,7 +59,7 @@
       "defaultValue": "",
       "required": false,
       "variableMode": "Input",
-      "condition": "",
+      "condition": "排除：global",
       "description": "可选，使用自定义的API服务器时使用。请参考模块文档了解如何设置。"
     },
     {
@@ -49,7 +69,7 @@
       "defaultValue": "",
       "required": false,
       "variableMode": "Input",
-      "condition": "",
+      "condition": "排除：global",
       "description": ""
     },
     {
@@ -59,7 +79,7 @@
       "defaultValue": "",
       "required": false,
       "variableMode": "Input",
-      "condition": "",
+      "condition": "排除：global",
       "description": "可选"
     },
     {
@@ -79,7 +99,7 @@
       "defaultValue": "",
       "required": false,
       "variableMode": "Input",
-      "condition": "仅：chat",
+      "condition": "仅：chat; 排除：global",
       "description": "可选。每次会话请生成新的GUID格式会话ID，设置后将自动保存会话历史。"
     },
     {
@@ -89,7 +109,7 @@
       "defaultValue": "",
       "required": false,
       "variableMode": "Input",
-      "condition": "仅：chat",
+      "condition": "仅：chat; 排除：global",
       "description": "可选。存放历史消息的json数组，格式请参考文档说明。设定会话ID后，也可直接写发送的历史会话条数。"
     },
     {
@@ -129,7 +149,7 @@
       "defaultValue": "1",
       "required": false,
       "variableMode": "Input",
-      "condition": "仅：chat, completions",
+      "condition": "仅：chat, completions; 排除：global",
       "description": ""
     },
     {
@@ -139,7 +159,7 @@
       "defaultValue": "1",
       "required": false,
       "variableMode": "Input",
-      "condition": "",
+      "condition": "排除：global",
       "description": "对每个问题生成几个结果，将会耗费更多token。"
     },
     {
@@ -149,7 +169,7 @@
       "defaultValue": "120",
       "required": false,
       "variableMode": "Input",
-      "condition": "",
+      "condition": "排除：global",
       "description": "最长等待秒数"
     },
     {
@@ -179,7 +199,7 @@
       "defaultValue": "",
       "required": false,
       "variableMode": "Input",
-      "condition": "",
+      "condition": "排除：global",
       "description": "遇到指定的内容时自动停止生成。可使用\\r,\\n,\\t等表示特殊字符。输入多行时，表示多个停止符。"
     },
     {
@@ -189,7 +209,7 @@
       "defaultValue": "false",
       "required": false,
       "variableMode": "Input",
-      "condition": "",
+      "condition": "排除：global",
       "description": "即使系统设置中未启用代理，本步骤仍然使用代理访问。"
     },
     {
@@ -199,7 +219,7 @@
       "defaultValue": "",
       "required": false,
       "variableMode": "UseVarOrInput",
-      "condition": "仅：chat",
+      "condition": "仅：chat; 排除：global",
       "description": "留空，或使用\"json_object\"表示json格式响应，或json格式的完整的response_format内容。"
     },
     {
@@ -209,7 +229,7 @@
       "defaultValue": "",
       "required": false,
       "variableMode": "Input",
-      "condition": "仅：chat",
+      "condition": "仅：chat; 排除：global",
       "description": "用于添加额外的请求参数。请参考文档"
     },
     {
@@ -281,6 +301,20 @@
       "description": ""
     },
     {
+      "key": "actualModel",
+      "name": "实际模型",
+      "type": "Text",
+      "condition": "仅：global",
+      "description": "全局 AI 配置模式实际使用的服务商和 API 模型。"
+    },
+    {
+      "key": "invocationId",
+      "name": "调用标识",
+      "type": "Text",
+      "condition": "仅：global",
+      "description": "全局 AI 配置模式生成的调用标识。"
+    },
+    {
       "key": "historyMessages",
       "name": "历史消息",
       "type": "Object",
@@ -289,6 +323,31 @@
     }
   ],
   "selections": {
+    "modelSource": {
+      "name": "模型来源",
+      "items": [
+        {
+          "value": "custom",
+          "name": "步骤内自定义 API",
+          "description": ""
+        },
+        {
+          "value": "global",
+          "name": "全局 AI 配置",
+          "description": ""
+        }
+      ]
+    },
+    "globalUseCaseId": {
+      "name": "AI 任务场景",
+      "items": [
+        {
+          "value": "text.general",
+          "name": "日常文本处理与翻译",
+          "description": ""
+        }
+      ]
+    },
     "endpoint": {
       "name": "接口端点",
       "items": [

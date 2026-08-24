@@ -8,7 +8,7 @@ quickerDocKey: "xaction/module/sys:getFolderPath"
 comments: true
 moduleKey: "sys:getFolderPath"
 docStatus: "reviewed"
-metadataGeneratedAt: "2026-08-03 20:08:03"
+metadataGeneratedAt: "2026-08-24 20:01:39"
 legacyDocId: 2121294
 legacyContentUpdatedAt: "2019-07-15T08:30:07.000Z"
 ---

@@ -1,6 +1,6 @@
 ---
 title: "选择文件夹"
-description: "弹出文件夹选择对话框，拿到完整路径。"
+description: "文件夹选择对话框"
 slug: "/v2/xaction/modules/selectfolder"
 sidebar_label: "选择文件夹"
 sidebar_position: 90
@@ -8,7 +8,7 @@ quickerDocKey: "xaction/module/sys:selectFolder"
 comments: true
 moduleKey: "sys:selectFolder"
 docStatus: "reviewed"
-metadataGeneratedAt: "2026-08-03 20:08:03"
+metadataGeneratedAt: "2026-08-24 20:01:39"
 legacyDocId: 13909162
 legacyContentUpdatedAt: "2022-01-14T14:50:43.000Z"
 ---

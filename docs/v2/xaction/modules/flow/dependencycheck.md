@@ -8,7 +8,7 @@ quickerDocKey: "xaction/module/sys:dependencycheck"
 comments: true
 moduleKey: "sys:dependencycheck"
 docStatus: "reviewed"
-metadataGeneratedAt: "2026-08-03 20:08:03"
+metadataGeneratedAt: "2026-08-24 20:01:39"
 legacyDocId: 88859521
 legacyContentUpdatedAt: "2022-08-09T02:54:40.000Z"
 ---

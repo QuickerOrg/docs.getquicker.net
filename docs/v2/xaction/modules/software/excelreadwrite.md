@@ -1,6 +1,6 @@
 ---
 title: "Excel文件读写"
-description: "不启动 Excel，用 NPOI 直接读写 xls / xlsx 文件。"
+description: "读取Excel文件内容或写入Excel文件"
 slug: "/v2/xaction/modules/excelreadwrite"
 sidebar_label: "Excel文件读写"
 sidebar_position: 90
@@ -8,7 +8,7 @@ quickerDocKey: "xaction/module/sys:excelreadwrite"
 comments: true
 moduleKey: "sys:excelreadwrite"
 docStatus: "reviewed"
-metadataGeneratedAt: "2026-08-03 20:08:03"
+metadataGeneratedAt: "2026-08-24 20:01:39"
 legacyDocId: 71635402
 legacyContentUpdatedAt: "2026-04-22T00:22:41.000Z"
 ---

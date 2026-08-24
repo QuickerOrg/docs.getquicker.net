@@ -8,7 +8,7 @@ quickerDocKey: "xaction/module/sys:restoreActiveWindow"
 comments: true
 moduleKey: "sys:restoreActiveWindow"
 docStatus: "reviewed"
-metadataGeneratedAt: "2026-08-03 20:08:03"
+metadataGeneratedAt: "2026-08-24 20:01:39"
 legacyDocId: 2117977
 legacyContentUpdatedAt: "2019-07-15T04:10:14.000Z"
 ---

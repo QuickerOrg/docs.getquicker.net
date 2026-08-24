@@ -8,7 +8,7 @@ quickerDocKey: "xaction/module/sys:pdf"
 comments: true
 moduleKey: "sys:pdf"
 docStatus: "reviewed"
-metadataGeneratedAt: "2026-08-12 21:38:57"
+metadataGeneratedAt: "2026-08-24 20:01:39"
 ---
 
 # PDF 文件处理

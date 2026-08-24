@@ -8,7 +8,7 @@ quickerDocKey: "xaction/module/sys:shelloperation"
 comments: true
 moduleKey: "sys:shelloperation"
 docStatus: "reviewed"
-metadataGeneratedAt: "2026-08-03 20:08:03"
+metadataGeneratedAt: "2026-08-24 20:01:39"
 legacyDocId: 48150818
 legacyContentUpdatedAt: "2023-08-17T06:49:24.000Z"
 ---

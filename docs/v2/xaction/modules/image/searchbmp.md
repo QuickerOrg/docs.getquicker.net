@@ -1,6 +1,6 @@
 ---
 title: "屏幕找图/找色/找字"
-description: "在屏幕或窗口上查找图片、颜色或文字，返回匹配点坐标。"
+description: "在屏幕上查找图片里的内容出现的位置"
 slug: "/v2/xaction/modules/searchbmp"
 sidebar_label: "屏幕找图/找色/找字"
 sidebar_position: 70
@@ -8,7 +8,7 @@ quickerDocKey: "xaction/module/sys:searchBmp"
 comments: true
 moduleKey: "sys:searchBmp"
 docStatus: "reviewed"
-metadataGeneratedAt: "2026-08-03 20:08:03"
+metadataGeneratedAt: "2026-08-24 20:01:39"
 legacyDocId: 2521318
 legacyContentUpdatedAt: "2024-05-18T08:56:35.000Z"
 ---

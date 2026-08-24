@@ -1,6 +1,6 @@
 ---
 title: "自定义窗口"
-description: "用 XAML 创建 WPF 窗口，做数据绑定和简单事件。"
+description: "创建和显示自定义窗口"
 slug: "/v2/xaction/modules/customwindow"
 sidebar_label: "自定义窗口"
 sidebar_position: 120
@@ -8,7 +8,7 @@ quickerDocKey: "xaction/module/sys:customwindow"
 comments: true
 moduleKey: "sys:customwindow"
 docStatus: "reviewed"
-metadataGeneratedAt: "2026-08-03 20:08:03"
+metadataGeneratedAt: "2026-08-24 20:01:39"
 legacyDocId: 45787871
 legacyContentUpdatedAt: "2025-12-22T08:33:42.000Z"
 ---

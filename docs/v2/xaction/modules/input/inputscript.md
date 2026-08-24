@@ -1,6 +1,6 @@
 ---
 title: "多步骤输入"
-description: "用脚本连续模拟键盘、鼠标和粘贴，适合短串操作。"
+description: "多步骤键盘组合输入"
 slug: "/v2/xaction/modules/inputscript"
 sidebar_label: "多步骤输入"
 sidebar_position: 10
@@ -8,7 +8,7 @@ quickerDocKey: "xaction/module/sys:inputScript"
 comments: true
 moduleKey: "sys:inputScript"
 docStatus: "reviewed"
-metadataGeneratedAt: "2026-08-03 20:08:03"
+metadataGeneratedAt: "2026-08-24 20:01:39"
 legacyDocId: 60667217
 legacyContentUpdatedAt: "2025-02-20T23:53:47.000Z"
 ---

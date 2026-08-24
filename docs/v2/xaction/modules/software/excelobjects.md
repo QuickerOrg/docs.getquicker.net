@@ -1,6 +1,6 @@
 ---
 title: "Excel对象操作"
-description: "打开、创建、保存 Excel 工作簿，并取出 Application / 工作簿 / 工作表对象。"
+description: "操作Excel的某个对象"
 slug: "/v2/xaction/modules/excelobjects"
 sidebar_label: "Excel对象操作"
 sidebar_position: 70
@@ -8,7 +8,7 @@ quickerDocKey: "xaction/module/sys:excelObjects"
 comments: true
 moduleKey: "sys:excelObjects"
 docStatus: "reviewed"
-metadataGeneratedAt: "2026-08-03 20:08:03"
+metadataGeneratedAt: "2026-08-24 20:01:39"
 legacyDocId: 9257561
 legacyContentUpdatedAt: "2023-02-16T07:33:45.000Z"
 ---

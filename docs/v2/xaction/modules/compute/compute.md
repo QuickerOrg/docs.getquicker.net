@@ -1,6 +1,6 @@
 ---
 title: "计算"
-description: "把一段文本当成公式或表达式来计算。"
+description: "对表达式进行计算。"
 slug: "/v2/xaction/modules/compute"
 sidebar_label: "计算"
 sidebar_position: 70
@@ -8,7 +8,7 @@ quickerDocKey: "xaction/module/sys:compute"
 comments: true
 moduleKey: "sys:compute"
 docStatus: "reviewed"
-metadataGeneratedAt: "2026-08-03 20:08:03"
+metadataGeneratedAt: "2026-08-24 20:01:39"
 legacyDocId: 1402290
 legacyContentUpdatedAt: "2021-04-11T23:43:30.000Z"
 ---

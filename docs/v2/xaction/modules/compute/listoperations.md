@@ -1,6 +1,6 @@
 ---
 title: "列表操作"
-description: "对列表做添加、删除、排序、筛选等操作。"
+description: "对列表变量进行添加、删除等操作"
 slug: "/v2/xaction/modules/listoperations"
 sidebar_label: "列表操作"
 sidebar_position: 90
@@ -8,7 +8,7 @@ quickerDocKey: "xaction/module/sys:listOperations"
 comments: true
 moduleKey: "sys:listOperations"
 docStatus: "reviewed"
-metadataGeneratedAt: "2026-08-03 20:08:03"
+metadataGeneratedAt: "2026-08-24 20:01:39"
 legacyDocId: 2132007
 legacyContentUpdatedAt: "2022-07-06T05:37:04.000Z"
 ---

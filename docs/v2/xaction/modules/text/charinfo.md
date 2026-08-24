@@ -1,6 +1,6 @@
 ---
 title: "获取字符信息"
-description: "取一个字符的 Unicode 编码和汉字拼音。"
+description: "获取字符信息"
 slug: "/v2/xaction/modules/charinfo"
 sidebar_label: "获取字符信息"
 sidebar_position: 20
@@ -8,7 +8,7 @@ quickerDocKey: "xaction/module/sys:charInfo"
 comments: true
 moduleKey: "sys:charInfo"
 docStatus: "reviewed"
-metadataGeneratedAt: "2026-08-03 20:08:03"
+metadataGeneratedAt: "2026-08-24 20:01:39"
 legacyDocId: 2113737
 legacyContentUpdatedAt: "2023-02-07T00:57:07.000Z"
 ---

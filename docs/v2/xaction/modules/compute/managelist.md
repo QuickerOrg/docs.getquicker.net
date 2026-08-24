@@ -1,6 +1,6 @@
 ---
 title: "管理和排序列表"
-description: "弹出窗口，让用户手工排序、添加、修改或删除列表项。"
+description: "对列表内容进行手工排序、添加、删除等操作"
 slug: "/v2/xaction/modules/managelist"
 sidebar_label: "管理和排序列表"
 sidebar_position: 60
@@ -8,7 +8,7 @@ quickerDocKey: "xaction/module/sys:manageList"
 comments: true
 moduleKey: "sys:manageList"
 docStatus: "reviewed"
-metadataGeneratedAt: "2026-08-03 20:08:03"
+metadataGeneratedAt: "2026-08-24 20:01:39"
 legacyDocId: 5350953
 legacyContentUpdatedAt: "2024-10-23T06:02:52.000Z"
 ---

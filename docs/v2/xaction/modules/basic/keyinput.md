@@ -1,6 +1,6 @@
 ---
 title: "模拟按键A（录入）"
-description: "向当前窗口发送一组固定的键盘按键或快捷键。"
+description: "模拟键盘输入"
 slug: "/v2/xaction/modules/keyinput"
 sidebar_label: "模拟按键A（录入）"
 sidebar_position: 60
@@ -8,7 +8,7 @@ quickerDocKey: "xaction/module/sys:keyInput"
 comments: true
 moduleKey: "sys:keyInput"
 docStatus: "reviewed"
-metadataGeneratedAt: "2026-08-03 20:08:03"
+metadataGeneratedAt: "2026-08-24 20:01:39"
 legacyDocId: 1529913
 legacyContentUpdatedAt: "2024-11-20T14:47:06.000Z"
 ---

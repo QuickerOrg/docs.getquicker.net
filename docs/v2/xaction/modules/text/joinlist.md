@@ -1,6 +1,6 @@
 ---
 title: "列表合并成文本"
-description: "把列表各项拼成一段文本，中间可插入分隔符。"
+description: "将列表拼接为一段文本"
 slug: "/v2/xaction/modules/joinlist"
 sidebar_label: "列表合并成文本"
 sidebar_position: 40
@@ -8,7 +8,7 @@ quickerDocKey: "xaction/module/sys:joinList"
 comments: true
 moduleKey: "sys:joinList"
 docStatus: "reviewed"
-metadataGeneratedAt: "2026-08-03 20:08:03"
+metadataGeneratedAt: "2026-08-24 20:01:39"
 legacyDocId: 2113748
 legacyContentUpdatedAt: "2020-04-02T03:01:27.000Z"
 ---

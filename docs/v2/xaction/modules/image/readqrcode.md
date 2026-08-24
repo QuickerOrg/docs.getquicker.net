@@ -1,6 +1,6 @@
 ---
 title: "识别二维码"
-description: "识别图片里的二维码或条码，返回内容和类型。"
+description: "识别图片中的二维码"
 slug: "/v2/xaction/modules/readqrcode"
 sidebar_label: "识别二维码"
 sidebar_position: 90
@@ -8,7 +8,7 @@ quickerDocKey: "xaction/module/sys:readQrCode"
 comments: true
 moduleKey: "sys:readQrCode"
 docStatus: "reviewed"
-metadataGeneratedAt: "2026-08-03 20:08:03"
+metadataGeneratedAt: "2026-08-24 20:01:39"
 legacyDocId: 2115777
 legacyContentUpdatedAt: "2025-10-20T12:43:43.000Z"
 ---

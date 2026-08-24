@@ -1,6 +1,6 @@
 ---
 title: "正则提取"
-description: "用正则从文本里取出匹配项或捕获组。"
+description: "使用正则表达式提取指定内容"
 slug: "/v2/xaction/modules/regexextract"
 sidebar_label: "正则提取"
 sidebar_position: 90
@@ -8,7 +8,7 @@ quickerDocKey: "xaction/module/sys:regexExtract"
 comments: true
 moduleKey: "sys:regexExtract"
 docStatus: "reviewed"
-metadataGeneratedAt: "2026-08-03 20:08:03"
+metadataGeneratedAt: "2026-08-24 20:01:39"
 legacyDocId: 2115456
 legacyContentUpdatedAt: "2023-05-25T23:24:40.000Z"
 ---

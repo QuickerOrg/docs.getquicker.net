@@ -1,6 +1,6 @@
 ---
 title: "等待按键"
-description: "等到用户按下指定按键，或等到全部按键抬起。"
+description: "等待用户按下某个按键"
 slug: "/v2/xaction/modules/waitkeyboard"
 sidebar_label: "等待按键"
 sidebar_position: 10
@@ -8,7 +8,7 @@ quickerDocKey: "xaction/module/sys:waitKeyboard"
 comments: true
 moduleKey: "sys:waitKeyboard"
 docStatus: "reviewed"
-metadataGeneratedAt: "2026-08-03 20:08:03"
+metadataGeneratedAt: "2026-08-24 20:01:39"
 legacyDocId: 2746710
 legacyContentUpdatedAt: "2024-10-23T03:42:21.000Z"
 ---

@@ -1,6 +1,6 @@
 ---
 title: "组合成文本"
-description: "用 C# String.Format 语法，把最多 5 个参数插进一段模板。"
+description: "将（多个）变量组合成一段文本。"
 slug: "/v2/xaction/modules/formatstring"
 sidebar_label: "组合成文本"
 sidebar_position: 110
@@ -8,7 +8,7 @@ quickerDocKey: "xaction/module/sys:formatString"
 comments: true
 moduleKey: "sys:formatString"
 docStatus: "reviewed"
-metadataGeneratedAt: "2026-08-03 20:08:03"
+metadataGeneratedAt: "2026-08-24 20:01:39"
 legacyDocId: 1499448
 legacyContentUpdatedAt: "2020-04-10T07:55:41.000Z"
 ---

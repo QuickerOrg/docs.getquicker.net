@@ -1,6 +1,6 @@
 ---
 title: "鼠标输入"
-description: "移动指针、点击、滚动，或按窗口/找图结果定位鼠标。"
+description: "模拟鼠标输入"
 slug: "/v2/xaction/modules/mouse"
 sidebar_label: "鼠标输入"
 sidebar_position: 80
@@ -8,7 +8,7 @@ quickerDocKey: "xaction/module/sys:mouse"
 comments: true
 moduleKey: "sys:mouse"
 docStatus: "reviewed"
-metadataGeneratedAt: "2026-08-03 20:08:03"
+metadataGeneratedAt: "2026-08-24 20:01:39"
 legacyDocId: 1453657
 legacyContentUpdatedAt: "2025-01-20T02:00:01.000Z"
 ---

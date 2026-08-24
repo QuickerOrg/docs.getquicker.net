@@ -8,7 +8,7 @@ quickerDocKey: "xaction/module/sys:simpleIf"
 comments: true
 moduleKey: "sys:simpleIf"
 docStatus: "generated"
-metadataGeneratedAt: "2026-08-03 20:08:03"
+metadataGeneratedAt: "2026-08-24 20:01:39"
 ---
 
 # 如果

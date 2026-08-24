@@ -1,6 +1,6 @@
 ---
 title: "浏览器控制"
-description: "与 Chrome / Edge / Firefox 等浏览器通信，控制网页或浏览器。"
+description: "与Chrome/Edge/Firefox等浏览器通信，控制网页或浏览器。"
 slug: "/v2/xaction/modules/chromecontrol"
 sidebar_label: "浏览器控制"
 sidebar_position: 40
@@ -8,7 +8,7 @@ quickerDocKey: "xaction/module/sys:chromecontrol"
 comments: true
 moduleKey: "sys:chromecontrol"
 docStatus: "reviewed"
-metadataGeneratedAt: "2026-08-03 20:08:03"
+metadataGeneratedAt: "2026-08-24 20:01:39"
 legacyDocId: 9024629
 legacyContentUpdatedAt: "2025-10-28T06:17:46.000Z"
 ---

@@ -1,6 +1,6 @@
 ---
 title: "生成Guid"
-description: "生成一个新的 Guid，并按指定格式转成文本。"
+description: "生成一个新的Guid(全局唯一ID标示符)，并转换为文本格式。"
 slug: "/v2/xaction/modules/newguid"
 sidebar_label: "生成Guid"
 sidebar_position: 120
@@ -8,7 +8,7 @@ quickerDocKey: "xaction/module/sys:newGuid"
 comments: true
 moduleKey: "sys:newGuid"
 docStatus: "reviewed"
-metadataGeneratedAt: "2026-08-03 20:08:03"
+metadataGeneratedAt: "2026-08-24 20:01:39"
 legacyDocId: 2132850
 legacyContentUpdatedAt: "2019-07-17T00:36:55.000Z"
 ---

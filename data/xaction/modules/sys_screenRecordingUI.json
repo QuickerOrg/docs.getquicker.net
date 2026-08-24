@@ -1,8 +1,8 @@
 {
   "key": "sys:screenRecordingUI",
   "slug": "screen-recording-ui",
-  "legacySlug": "screencapture",
-  "ownsLegacyContent": false,
+  "legacySlug": "screen-recording-ui",
+  "ownsLegacyContent": true,
   "name": "屏幕录制",
   "description": "弹出选区 UI 让用户框选录制范围，打开录屏工具栏进行可视化录制，录完后返回文件路径。",
   "category": "Image",
@@ -31,6 +31,16 @@
       "variableMode": "Input",
       "condition": "",
       "description": "默认关闭：框选完成后自动确认并进入录屏。勾选后可先调整选区，再确认开录。"
+    },
+    {
+      "key": "saveDirectory",
+      "name": "保存文件夹",
+      "type": "Text",
+      "defaultValue": "",
+      "required": false,
+      "variableMode": "UseVarOrInput",
+      "condition": "",
+      "description": "录制文件保存目录。留空时仍使用当前默认位置，不影响已有动作。"
     },
     {
       "key": "addToHistory",
@@ -91,7 +101,5 @@
     }
   ],
   "selections": {},
-  "sharedDocumentationKey": "sys:screenCapture",
-  "sharedDocumentationSlug": "screencapture",
   "sourceFileName": "sys_screenRecordingUI_屏幕录制.md"
 }

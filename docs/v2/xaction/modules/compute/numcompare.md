@@ -1,6 +1,6 @@
 ---
 title: "比较数字"
-description: "比较两个数字，得到真或假。"
+description: "比较数字大小。"
 slug: "/v2/xaction/modules/numcompare"
 sidebar_label: "比较数字"
 sidebar_position: 10
@@ -8,7 +8,7 @@ quickerDocKey: "xaction/module/sys:numCompare"
 comments: true
 moduleKey: "sys:numCompare"
 docStatus: "reviewed"
-metadataGeneratedAt: "2026-08-03 20:08:03"
+metadataGeneratedAt: "2026-08-24 20:01:39"
 legacyDocId: 2131885
 legacyContentUpdatedAt: "2019-07-16T13:50:22.000Z"
 ---

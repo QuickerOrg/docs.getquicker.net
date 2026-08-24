@@ -8,7 +8,7 @@ quickerDocKey: "xaction/module/sys:showImage"
 comments: true
 moduleKey: "sys:showImage"
 docStatus: "reviewed"
-metadataGeneratedAt: "2026-08-03 20:08:03"
+metadataGeneratedAt: "2026-08-24 20:01:39"
 legacyDocId: 2113283
 legacyContentUpdatedAt: "2025-05-11T08:37:04.000Z"
 ---

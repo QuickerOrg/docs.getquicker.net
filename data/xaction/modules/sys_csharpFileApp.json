@@ -16,11 +16,21 @@
       "key": "code",
       "name": "C#代码",
       "type": "Text",
-      "defaultValue": "#:property PublishAot=false\n#:property TargetFramework=net10.0-windows\n#:property UseWpf=true\n\nusing System.Windows;\n\nMessageBox.Show(args.Length > 0 ? args[0] : \"Hello from Quicker!\");",
+      "defaultValue": "#:property PublishAot=false\n#:property TargetFramework=net10.0-windows\n#:property UseWpf=true\n\nusing System;\nusing System.Text;\nusing System.Windows;\n\nConsole.OutputEncoding = new UTF8Encoding(false);\n\nMessageBox.Show(args.Length > 0 ? args[0] : \"Hello from Quicker!\");",
       "required": true,
       "variableMode": "UseVarOrInput",
       "condition": "",
       "description": "完整的C# file-based app源码。可使用#:property、#:package、#:project等指令。"
+    },
+    {
+      "key": "reference",
+      "name": "引用DLL库",
+      "type": "Text",
+      "defaultValue": "",
+      "required": false,
+      "variableMode": "Input",
+      "condition": "",
+      "description": "要引用的托管DLL文件，每行一个，必须使用绝对路径。相关依赖DLL也需要一并添加。"
     },
     {
       "key": "arguments",
@@ -53,6 +63,26 @@
       "description": "dotnet可执行文件路径。留空时从PATH查找dotnet。"
     },
     {
+      "key": "outputEncoding",
+      "name": "输出编码",
+      "type": "Enum",
+      "defaultValue": "auto",
+      "required": false,
+      "variableMode": "Input",
+      "condition": "",
+      "description": "标准输出和错误输出的文本编码。自动模式优先识别BOM和UTF-8，无效UTF-8时回退到系统控制台编码；遇到可被误判的旧编码内容时可显式选择。"
+    },
+    {
+      "key": "executionPermission",
+      "name": "运行权限",
+      "type": "Enum",
+      "defaultValue": "normal",
+      "required": false,
+      "variableMode": "Input",
+      "condition": "",
+      "description": "控制SDK构建、SDK回退和最终应用的进程权限。默认使用普通中完整性、非UIAccess权限；Quicker已提权时，以当前桌面的交互登录用户身份运行。需要跨权限界面自动化时可选择继承Quicker权限。"
+    },
+    {
       "key": "stopIfFail",
       "name": "失败后停止",
       "type": "Boolean",
@@ -76,21 +106,21 @@
       "name": "标准输出",
       "type": "Text",
       "condition": "",
-      "description": "应用写入stdout的内容。"
+      "description": "应用写入stdout的内容；构建失败时为空。"
     },
     {
       "key": "stderr",
       "name": "错误输出",
       "type": "Text",
       "condition": "",
-      "description": "SDK和应用写入stderr的内容。"
+      "description": "应用写入stderr的内容；构建失败时包含dotnet build的stdout和stderr诊断。"
     },
     {
       "key": "exitCode",
       "name": "退出代码",
       "type": "Integer",
       "condition": "",
-      "description": "dotnet进程的退出代码。"
+      "description": "应用进程的退出代码；构建失败时为dotnet build进程的退出代码。"
     },
     {
       "key": "sourceFile",
@@ -107,6 +137,42 @@
       "description": "步骤执行出错时的消息"
     }
   ],
-  "selections": {},
+  "selections": {
+    "outputEncoding": {
+      "name": "输出编码",
+      "items": [
+        {
+          "value": "auto",
+          "name": "自动",
+          "description": ""
+        },
+        {
+          "value": "utf8",
+          "name": "UTF-8",
+          "description": ""
+        },
+        {
+          "value": "system",
+          "name": "系统控制台编码",
+          "description": ""
+        }
+      ]
+    },
+    "executionPermission": {
+      "name": "运行权限",
+      "items": [
+        {
+          "value": "normal",
+          "name": "普通权限",
+          "description": ""
+        },
+        {
+          "value": "inherit",
+          "name": "继承Quicker权限",
+          "description": ""
+        }
+      ]
+    }
+  },
   "sourceFileName": "sys_csharpFileApp_运行C#文件应用.md"
 }

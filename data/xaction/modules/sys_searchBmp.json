@@ -73,13 +73,43 @@
       "description": "位图查找范围"
     },
     {
+      "key": "windowHandle",
+      "name": "窗口句柄",
+      "type": "Integer",
+      "defaultValue": "0",
+      "required": false,
+      "variableMode": "UseVarOrInput",
+      "condition": "",
+      "description": "指定要查找的窗口句柄。窗口被遮挡时仍尝试从窗口自身获取内容。"
+    },
+    {
+      "key": "returnWindowRelativeCoordinates",
+      "name": "返回相对于窗口左上角的坐标",
+      "type": "Boolean",
+      "defaultValue": "false",
+      "required": false,
+      "variableMode": "UseVarOrInput",
+      "condition": "仅：CurrentWindow, SpecifiedWindow",
+      "description": "启用后，匹配点以实际捕获窗口图像的左上角为原点（包含标题栏和边框）；否则返回屏幕绝对坐标。"
+    },
+    {
+      "key": "targetBitmap",
+      "name": "目标图片",
+      "type": "Any",
+      "defaultValue": "",
+      "required": true,
+      "variableMode": "UseVarOrInput",
+      "condition": "",
+      "description": "作为查找范围的图片路径或图片变量。匹配坐标以图片左上角为原点。"
+    },
+    {
       "key": "searchRect",
       "name": "查找坐标范围",
       "type": "Text",
       "defaultValue": "",
       "required": false,
       "variableMode": "UseVarOrInput",
-      "condition": "",
+      "condition": "仅：Rect",
       "description": "可选。当\"查找范围\"为\"坐标范围\"时有效，格式为：left,top,right,bottom"
     },
     {
@@ -113,6 +143,16 @@
       "description": "定位点垂直坐标偏移量（正值向下）"
     },
     {
+      "key": "bitmapMatchMode",
+      "name": "匹配方式",
+      "type": "Enum",
+      "defaultValue": "colorTolerance",
+      "required": true,
+      "variableMode": "Input",
+      "condition": "仅：locateByBitmapFile, locateByBitmapVar",
+      "description": "图片匹配算法。颜色容差与旧动作行为一致；相似度允许少量像素和渲染差异。"
+    },
+    {
       "key": "bmpColorError",
       "name": "颜色容差",
       "type": "Integer",
@@ -120,7 +160,17 @@
       "required": false,
       "variableMode": "Input",
       "condition": "仅：locateByBitmapFile, locateByBitmapVar, locateByColor",
-      "description": "匹配像素时允许每个颜色通道的偏差值0-100，0表示精确匹配，速度最快。"
+      "description": "找色或颜色容差匹配时，允许每个颜色通道的偏差值0-100；0表示精确匹配，速度最快。相似度匹配不使用此参数。"
+    },
+    {
+      "key": "minSimilarity",
+      "name": "最低相似度",
+      "type": "Integer",
+      "defaultValue": "90",
+      "required": false,
+      "variableMode": "Input",
+      "condition": "仅：locateByBitmapFile, locateByBitmapVar",
+      "description": "仅用于相似度匹配。范围0-100，越大要求越接近；90表示允许总体平均存在少量颜色差异。"
     },
     {
       "key": "maxFindCount",
@@ -201,6 +251,13 @@
       "type": "List",
       "condition": "仅：locateByBitmapFile, locateByBitmapVar, locateByText",
       "description": "所有的匹配点列表"
+    },
+    {
+      "key": "bestSimilarity",
+      "name": "最佳相似度",
+      "type": "Number",
+      "condition": "仅：locateByBitmapFile, locateByBitmapVar",
+      "description": "最佳成功匹配的相似度（0-100）。颜色容差匹配成功时为100，未找到时为0。"
     }
   ],
   "selections": {
@@ -251,6 +308,16 @@
           "value": "AllScreens",
           "name": "所有屏幕",
           "description": ""
+        },
+        {
+          "value": "SpecifiedWindow",
+          "name": "指定窗口",
+          "description": ""
+        },
+        {
+          "value": "SpecifiedBitmap",
+          "name": "指定图片",
+          "description": ""
         }
       ]
     },
@@ -280,6 +347,21 @@
         {
           "value": "BottomRight",
           "name": "右下角",
+          "description": ""
+        }
+      ]
+    },
+    "bitmapMatchMode": {
+      "name": "匹配方式",
+      "items": [
+        {
+          "value": "colorTolerance",
+          "name": "颜色容差（快速）",
+          "description": ""
+        },
+        {
+          "value": "similarity",
+          "name": "相似度",
           "description": ""
         }
       ]

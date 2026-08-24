@@ -1,6 +1,6 @@
 ---
 title: "计算时间"
-description: "取日期、算时间差、加减时长，或在本地时间与 UTC 之间转换。"
+description: "时间相关的计算操作"
 slug: "/v2/xaction/modules/computetime"
 sidebar_label: "计算时间"
 sidebar_position: 80
@@ -8,7 +8,7 @@ quickerDocKey: "xaction/module/sys:computeTime"
 comments: true
 moduleKey: "sys:computeTime"
 docStatus: "reviewed"
-metadataGeneratedAt: "2026-08-03 20:08:03"
+metadataGeneratedAt: "2026-08-24 20:01:39"
 legacyDocId: 3981717
 legacyContentUpdatedAt: "2023-04-03T01:29:56.000Z"
 ---

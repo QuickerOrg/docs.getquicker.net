@@ -1,6 +1,6 @@
 ---
 title: "Quicker操作"
-description: "在动作里调用 Quicker 自身功能：面板、搜索、轮盘、设置、动作页等。"
+description: "调用Quicker的某个功能"
 slug: "/v2/xaction/modules/quickeroperations"
 sidebar_label: "Quicker操作"
 sidebar_position: 200
@@ -8,7 +8,7 @@ quickerDocKey: "xaction/module/sys:quickeroperations"
 comments: true
 moduleKey: "sys:quickeroperations"
 docStatus: "reviewed"
-metadataGeneratedAt: "2026-08-03 20:08:03"
+metadataGeneratedAt: "2026-08-24 20:01:39"
 legacyDocId: 3884756
 legacyContentUpdatedAt: "2024-08-20T01:16:01.000Z"
 ---

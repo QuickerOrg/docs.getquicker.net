@@ -1,8 +1,8 @@
 {
   "key": "sys:flauiautomation",
   "slug": "flauiautomation",
-  "legacySlug": "uiautomation",
-  "ownsLegacyContent": false,
+  "legacySlug": "flauiautomation",
+  "ownsLegacyContent": true,
   "name": "窗口界面控制(FlaUI)",
   "description": "触发Windows窗口的菜单/按钮等控件(通过FlaUI库实现)。",
   "category": "SoftInteraction",
@@ -546,7 +546,5 @@
       ]
     }
   },
-  "sharedDocumentationKey": "sys:uiautomation",
-  "sharedDocumentationSlug": "uiautomation",
   "sourceFileName": "sys_flauiautomation_窗口界面控制(FlaUI).md"
 }

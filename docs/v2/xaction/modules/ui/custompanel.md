@@ -1,6 +1,6 @@
 ---
 title: "自定义操作窗"
-description: "弹出常驻悬浮操作窗，点按钮直接执行，默认不关闭。"
+description: "自定义悬浮操作窗口，点击后直接执行操作，不隐藏。"
 slug: "/v2/xaction/modules/custompanel"
 sidebar_label: "自定义操作窗"
 sidebar_position: 110
@@ -8,7 +8,7 @@ quickerDocKey: "xaction/module/sys:custompanel"
 comments: true
 moduleKey: "sys:custompanel"
 docStatus: "reviewed"
-metadataGeneratedAt: "2026-08-03 20:08:03"
+metadataGeneratedAt: "2026-08-24 20:01:39"
 legacyDocId: 110076830
 legacyContentUpdatedAt: "2025-12-23T08:07:51.000Z"
 ---

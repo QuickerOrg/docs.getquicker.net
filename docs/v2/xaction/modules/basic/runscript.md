@@ -1,6 +1,6 @@
 ---
 title: "运行脚本"
-description: "把一段脚本写成临时文件后执行，或直接跑 CMD 命令。"
+description: "运行脚本。"
 slug: "/v2/xaction/modules/runscript"
 sidebar_label: "运行脚本"
 sidebar_position: 130
@@ -8,7 +8,7 @@ quickerDocKey: "xaction/module/sys:runScript"
 comments: true
 moduleKey: "sys:runScript"
 docStatus: "reviewed"
-metadataGeneratedAt: "2026-08-03 20:08:03"
+metadataGeneratedAt: "2026-08-24 20:01:39"
 legacyDocId: 1530436
 legacyContentUpdatedAt: "2022-02-13T05:45:37.000Z"
 ---

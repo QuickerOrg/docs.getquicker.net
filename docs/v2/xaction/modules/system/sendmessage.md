@@ -8,7 +8,7 @@ quickerDocKey: "xaction/module/sys:sendMessage"
 comments: true
 moduleKey: "sys:sendMessage"
 docStatus: "reviewed"
-metadataGeneratedAt: "2026-08-03 20:08:03"
+metadataGeneratedAt: "2026-08-24 20:01:39"
 legacyDocId: 1627562
 legacyContentUpdatedAt: "2024-08-09T13:50:24.000Z"
 ---

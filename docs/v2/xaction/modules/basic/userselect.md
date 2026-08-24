@@ -1,6 +1,6 @@
 ---
 title: "用户选择"
-description: "弹出列表，请用户选一个或多个选项后再继续动作。"
+description: "请用户选择一个选项。"
 slug: "/v2/xaction/modules/userselect"
 sidebar_label: "用户选择"
 sidebar_position: 110
@@ -8,7 +8,7 @@ quickerDocKey: "xaction/module/sys:select"
 comments: true
 moduleKey: "sys:select"
 docStatus: "reviewed"
-metadataGeneratedAt: "2026-08-03 20:08:03"
+metadataGeneratedAt: "2026-08-24 20:01:39"
 legacyDocId: 1402298
 legacyContentUpdatedAt: "2025-11-21T01:17:26.000Z"
 ---

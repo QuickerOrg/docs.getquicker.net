@@ -8,7 +8,7 @@ quickerDocKey: "xaction/module/sys:basic-ocr"
 comments: true
 moduleKey: "sys:basic-ocr"
 docStatus: "reviewed"
-metadataGeneratedAt: "2026-08-03 20:08:03"
+metadataGeneratedAt: "2026-08-24 20:01:39"
 legacyDocId: 3602224
 legacyContentUpdatedAt: "2024-12-06T01:38:30.000Z"
 ---

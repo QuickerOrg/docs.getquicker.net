@@ -1,6 +1,6 @@
 ---
 title: "拆分文本为列表"
-description: "按分隔符把一段文本拆成列表，再交给「每个」逐项处理。"
+description: "将文本拆分为列表"
 slug: "/v2/xaction/modules/splitstring"
 sidebar_label: "拆分文本为列表"
 sidebar_position: 10
@@ -8,7 +8,7 @@ quickerDocKey: "xaction/module/sys:splitString"
 comments: true
 moduleKey: "sys:splitString"
 docStatus: "reviewed"
-metadataGeneratedAt: "2026-08-03 20:08:03"
+metadataGeneratedAt: "2026-08-24 20:01:39"
 legacyDocId: 2113554
 legacyContentUpdatedAt: "2022-12-29T05:29:28.000Z"
 ---

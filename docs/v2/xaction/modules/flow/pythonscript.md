@@ -8,7 +8,7 @@ quickerDocKey: "xaction/module/sys:pythonscript"
 comments: true
 moduleKey: "sys:pythonscript"
 docStatus: "reviewed"
-metadataGeneratedAt: "2026-08-03 20:08:03"
+metadataGeneratedAt: "2026-08-24 20:01:39"
 legacyDocId: 84031885
 legacyContentUpdatedAt: "2025-06-24T01:29:03.000Z"
 ---

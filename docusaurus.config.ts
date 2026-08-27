@@ -191,6 +191,7 @@ const config: Config = {
           label: '文档',
         },
         {to: '/release-notes', label: '更新记录', position: 'left'},
+        {type: 'search', position: 'left'},
         ...(!isProd
           ? [
               {

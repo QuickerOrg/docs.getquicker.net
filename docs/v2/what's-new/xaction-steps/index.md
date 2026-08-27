@@ -21,7 +21,7 @@ Quicker 2.x 在保持已有组合动作兼容的基础上，增加了一批面�
 - [新增：屏幕录制模块](./new-screen-recording-ui.md)：框选区域，通过录屏工具栏交互式完成录制。
 - [新增：后台屏幕录制模块](./new-background-screen-recording.md)：通过会话 ID 自动开始、查询和停止录制。
 - [新增：运行C#文件应用模块](./new-csharp-file-app.md)：使用 .NET SDK 编译运行支持现代 SDK 功能的单文件应用。
-- [新增：自动化脚本模块](/v2/xaction/modules/automationscript)：使用受限 JavaScript 编排鼠标、键盘、窗口、剪贴板、选择、截图识别等桌面自动化操作；首次使用相关能力时会请求本机授权。
+- [新增：自动化脚本模块](/v2/xaction/modules/automationscript)：使用受限 JavaScript 编排鼠标、键盘、剪贴板和识别定位等桌面自动化操作；2.1.29 起可面向窗口和区域执行 OCR、找图、找色与目标相对点击，窗口移动后仍按最新位置执行。完整 API 以软件界面与后续结构化同步为准。
 
 [官网 2.1.21 记录](https://getquicker.net/V2/Versions)中还新增了 **贴图** 步骤，可从图片变量、剪贴板、文本、HTML、公式和 OCR 原始结果创建贴图。[官网 2.1.23 记录](https://getquicker.net/V2/Versions)补充了「自动」和「截图原位置」贴图位置，Quicker 或 PixPin 复制的图片可贴回原处，旧动作仍保持原有自定义坐标。当前 `data/xaction` 暂无该步骤的独立模块定义，因此本站先在[截图与贴图概览](/v2/features/screenshot)中说明能力，参数页待结构化数据同步后再补。
 
@@ -31,6 +31,7 @@ Quicker 2.x 在保持已有组合动作兼容的基础上，增加了一批面�
 - [浏览器控制模块](/v2/xaction/modules/chromecontrol)：2.1.27 配合 Quicker Connector 1.2.0，可通过侧边栏生成列表提取、连续翻页和表单填写模板；文件上传 / 拖放使用专用文件操作，参数以当前编辑器为准。
 - [屏幕截图模块](./screen-capture.md)：增加 UI 元素检测、截图历史，并接入新版截图后工具。
 - [获取窗口信息/查找窗口模块](/v2/xaction/modules/getwindowtitle)：2.1.27 起，“选择一个窗口”可正确命中部分透明顶层弹窗。
+- [窗口操作模块](/v2/xaction/modules/windowoperations)：2.2.0 起新增任意窗口贴边自动隐藏、关闭类似窗口、在类似窗口中切换。当前 `data/xaction` 尚未同步新增类型 Key，因此模块页只写能力说明，参数以当前编辑器选项为准。
 - [窗口界面控制(FlaUI)](/v2/xaction/modules/flauiautomation)：2.1.28 起可提取窗口界面信息、观察可交互元素，并批量返回控件树、定位信息和坐标范围。当前 `data/xaction` 尚未同步新版操作 Key，因此模块页只写能力说明。
 - [屏幕录制模块](./new-screen-recording-ui.md) / [后台屏幕录制模块](./new-background-screen-recording.md)：2.1.23 起可选择保存文件夹；自定义目录中的成品只建立历史索引，不再额外复制一份。当前 `data/xaction` 尚未同步对应参数 Key，因此模块页只写能力说明。
 - [屏幕找图/找色/找字模块](/v2/xaction/modules/searchbmp)：找图新增相似度匹配模式；2.1.25 起查找范围还支持指定窗口和指定图片，适合在被遮挡窗口或本地图片中定位目标。2.1.26 起，指定图片可使用图片路径或图片变量；指定窗口可选择返回窗口相对坐标。2.1.25 里已经配过指定图片的动作，升级后需要重新打开步骤编辑一次。当前 `data/xaction` 尚未同步新增选项的参数 Key，因此模块页只写能力说明。

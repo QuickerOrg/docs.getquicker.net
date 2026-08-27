@@ -41,7 +41,11 @@ legacyContentUpdatedAt: "2023-06-23T14:05:51.000Z"
   />
 </PreviewMarks>
 
-演示视频：[在组合动作中使用循环](https://www.bilibili.com/video/BV1ty4y1S7AK)
+<BilibiliPlayer
+  bvid="BV1ty4y1S7AK"
+  title="在组合动作中使用循环"
+  caption="演示视频：在组合动作中使用循环"
+/>
 
 ## 参数说明
 

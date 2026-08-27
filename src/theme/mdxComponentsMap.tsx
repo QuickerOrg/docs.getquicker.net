@@ -2,6 +2,7 @@ import type {ComponentProps} from 'react';
 import type {MDXProvider} from '@mdx-js/react';
 import ThemeMDXComponents from '@theme-original/MDXComponents';
 import NativeImg from '@site/src/theme/MDXComponents/NativeImg';
+import BilibiliPlayer from '@site/src/components/BilibiliPlayer';
 import FlowChart from '@site/src/components/FlowChart';
 import RelatedDocs from '@site/src/components/RelatedDocs';
 import ShareLinkCard from '@site/src/components/ShareLinkCard';
@@ -25,6 +26,7 @@ const mdxComponentsMap = {
   RelatedDocs,
   ShareLinkCard,
   XActionLanding,
+  BilibiliPlayer,
   FlowChart,
   XActionModuleMeta: lazyHeavy('XActionModuleMeta'),
   StepProgramView: lazyHeavy('StepProgramView'),

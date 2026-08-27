@@ -253,7 +253,7 @@ Quicker 提供两套窗口界面控制：
 
 点右侧定位按钮，可从窗口拾取控件并得到 XPath。
 
-[视频演示](https://player.bilibili.com/player.html?bvid=BV1S54y1J79d)
+<BilibiliPlayer bvid="BV1S54y1J79d" title="视频演示" />
 
 更新另存窗口的文件类型：
 

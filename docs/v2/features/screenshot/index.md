@@ -22,7 +22,7 @@ Quicker 提供一套完整的屏幕截取与后续处理能力，可在动作中
     {
       href: '/v2/features/screenshot/image-translate',
       label: '图片翻译',
-      description: '截图 / 贴图图到图翻译；配置百度或有道图片翻译 API（本机 Key）。',
+      description: '截图 / 贴图图到图翻译；选择百度或有道，本机填写 API，设置页可直接申请。',
     },
     {
       href: '/v2/features/screenshot/toolbar-script',

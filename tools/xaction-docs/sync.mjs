@@ -11,6 +11,7 @@ const dataRoot = path.join(repositoryRoot, 'data', 'xaction');
 
 const categoryDefinitions = [
   {key: 'Basic', directory: 'basic', label: '基础', position: 10},
+  {key: 'Waiting', directory: 'waiting', label: '等待', position: 15},
   {key: 'Text', directory: 'text', label: '文本处理', position: 20},
   {key: 'Image', directory: 'image', label: '图片处理', position: 30},
   {key: 'Clipboard', directory: 'clipboard', label: '剪贴板操作', position: 40},

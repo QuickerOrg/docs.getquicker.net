@@ -1,0 +1,247 @@
+{
+  "key": "sys:waitWindow",
+  "slug": "waitwindow",
+  "legacySlug": "waitwindow",
+  "ownsLegacyContent": true,
+  "name": "等待窗口",
+  "description": "等待窗口出现、消失、成为前台、最小化或恢复。",
+  "category": "Waiting",
+  "categoryName": "等待",
+  "stepType": "Action",
+  "isRisky": false,
+  "isProOnly": false,
+  "helpLink": "https://docs.getquicker.net/v2/xaction/modules/waitwindow",
+  "inputs": [
+    {
+      "key": "waitFor",
+      "name": "等待条件",
+      "type": "Enum",
+      "defaultValue": "appeared",
+      "required": false,
+      "variableMode": "Input",
+      "condition": "",
+      "description": ""
+    },
+    {
+      "key": "targetType",
+      "name": "目标类型",
+      "type": "Enum",
+      "defaultValue": "query",
+      "required": true,
+      "variableMode": "Input",
+      "condition": "",
+      "description": ""
+    },
+    {
+      "key": "hWnd",
+      "name": "窗口句柄",
+      "type": "Integer",
+      "defaultValue": "0",
+      "required": false,
+      "variableMode": "UseVarOrInput",
+      "condition": "",
+      "description": "指定顶层窗口的句柄。固定句柄模式会识别等待期间的句柄失效和复用；等待“出现”只要求该句柄有效，不要求窗口可见。低权限 Quicker 可能无法为管理员窗口建立稳定身份标记。"
+    },
+    {
+      "key": "titleContains",
+      "name": "窗口标题包含",
+      "type": "Text",
+      "defaultValue": "",
+      "required": false,
+      "variableMode": "UseVarOrInput",
+      "condition": "",
+      "description": "忽略大小写；和进程名、窗口类名同时填写时按 AND 组合。"
+    },
+    {
+      "key": "processName",
+      "name": "进程名",
+      "type": "Text",
+      "defaultValue": "",
+      "required": false,
+      "variableMode": "UseVarOrInput",
+      "condition": "",
+      "description": "程序文件名，可填写或省略 .exe，不接受完整路径。"
+    },
+    {
+      "key": "className",
+      "name": "窗口类名",
+      "type": "Text",
+      "defaultValue": "",
+      "required": false,
+      "variableMode": "UseVarOrInput",
+      "condition": "",
+      "description": "忽略大小写精确匹配。"
+    },
+    {
+      "key": "includeHidden",
+      "name": "包含隐藏窗口",
+      "type": "Boolean",
+      "defaultValue": "false",
+      "required": false,
+      "variableMode": "Input",
+      "condition": "",
+      "description": "未启用时，仅在可见顶层窗口中查找。"
+    },
+    {
+      "key": "timeoutSeconds",
+      "name": "最长等待秒数",
+      "type": "Number",
+      "defaultValue": "10.0",
+      "required": true,
+      "variableMode": "UseVarOrInput",
+      "condition": "",
+      "description": "0 表示无限等待；无限等待仍可被动作中止或 WaitAny 分支取消。"
+    },
+    {
+      "key": "stopIfFail",
+      "name": "失败后停止",
+      "type": "Boolean",
+      "defaultValue": "true",
+      "required": false,
+      "variableMode": "Input",
+      "condition": "",
+      "description": "失败后是否停止动作"
+    }
+  ],
+  "outputs": [
+    {
+      "key": "isSuccess",
+      "name": "是否成功",
+      "type": "Boolean",
+      "condition": "",
+      "description": "操作是否成功"
+    },
+    {
+      "key": "outcome",
+      "name": "等待结果",
+      "type": "Text",
+      "condition": "",
+      "description": "matched、timedOut、canceled、invalidTarget、targetLost 或 error。"
+    },
+    {
+      "key": "hWnd",
+      "name": "窗口句柄",
+      "type": "Integer",
+      "condition": "",
+      "description": ""
+    },
+    {
+      "key": "matchedCount",
+      "name": "匹配窗口数",
+      "type": "Integer",
+      "condition": "",
+      "description": ""
+    },
+    {
+      "key": "title",
+      "name": "窗口标题",
+      "type": "Text",
+      "condition": "",
+      "description": ""
+    },
+    {
+      "key": "processName",
+      "name": "进程名",
+      "type": "Text",
+      "condition": "",
+      "description": ""
+    },
+    {
+      "key": "className",
+      "name": "窗口类名",
+      "type": "Text",
+      "condition": "",
+      "description": ""
+    },
+    {
+      "key": "isVisible",
+      "name": "是否可见",
+      "type": "Boolean",
+      "condition": "",
+      "description": ""
+    },
+    {
+      "key": "isForeground",
+      "name": "是否为前台窗口",
+      "type": "Boolean",
+      "condition": "",
+      "description": ""
+    },
+    {
+      "key": "isMinimized",
+      "name": "是否最小化",
+      "type": "Boolean",
+      "condition": "",
+      "description": ""
+    },
+    {
+      "key": "elapsedMs",
+      "name": "等待耗时（毫秒）",
+      "type": "Integer",
+      "condition": "",
+      "description": ""
+    },
+    {
+      "key": "attemptCount",
+      "name": "状态检查次数",
+      "type": "Integer",
+      "condition": "",
+      "description": ""
+    },
+    {
+      "key": "message",
+      "name": "结果消息",
+      "type": "Text",
+      "condition": "",
+      "description": "超时、取消、目标失效或查询错误的诊断消息。"
+    }
+  ],
+  "selections": {
+    "waitFor": {
+      "name": "等待条件",
+      "items": [
+        {
+          "value": "appeared",
+          "name": "出现",
+          "description": ""
+        },
+        {
+          "value": "disappeared",
+          "name": "消失",
+          "description": ""
+        },
+        {
+          "value": "foreground",
+          "name": "成为前台窗口",
+          "description": ""
+        },
+        {
+          "value": "minimized",
+          "name": "最小化",
+          "description": ""
+        },
+        {
+          "value": "restored",
+          "name": "恢复（非最小化）",
+          "description": ""
+        }
+      ]
+    },
+    "targetType": {
+      "name": "目标类型",
+      "items": [
+        {
+          "value": "query",
+          "name": "按条件查找",
+          "description": ""
+        },
+        {
+          "value": "handle",
+          "name": "指定窗口句柄",
+          "description": ""
+        }
+      ]
+    }
+  },
+  "sourceFileName": "sys_waitWindow_等待窗口.md"
+}

@@ -8,7 +8,7 @@ quickerDocKey: "xaction/module/sys:custompanel"
 comments: true
 moduleKey: "sys:custompanel"
 docStatus: "reviewed"
-metadataGeneratedAt: "2026-08-24 20:01:39"
+metadataGeneratedAt: "2026-08-29 16:36:01"
 legacyDocId: 110076830
 legacyContentUpdatedAt: "2025-12-23T08:07:51.000Z"
 ---

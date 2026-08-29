@@ -30,7 +30,7 @@
       "required": false,
       "variableMode": "Input",
       "condition": "",
-      "description": "截屏图片是否写入到剪贴板中"
+      "description": "仅对默认确认（打勾 / 双击）生效：结束后把截图写入剪贴板。保存、复制、自定义工具栏 post.confirm 等其它出口不叠此设置，由各自工具自行处理。"
     },
     {
       "key": "pinImage",
@@ -40,7 +40,7 @@
       "required": false,
       "variableMode": "Input",
       "condition": "",
-      "description": "截图完成后在选区位置显示贴图窗口（浮动显示截取的图片）。保存结束时不贴图。"
+      "description": "仅对默认确认（打勾 / 双击）生效：结束后在选区位置贴图。其它工具栏出口（含自定义 post.confirm / post.pin）不叠此设置。"
     },
     {
       "key": "showToolbarAfterPin",

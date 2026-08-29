@@ -109,8 +109,68 @@
       "defaultValue": "",
       "required": false,
       "variableMode": "UseVarOrInput",
-      "condition": "仅：setBorderColor",
-      "description": "颜色格式：#RRGGBB。留空表示去除边框颜色。"
+      "condition": "仅：setBorderColor, edgeAutoHide",
+      "description": "颜色格式：#RRGGBB；兼容既有 #AARRGGBB 输入，但透明度会被忽略。设置边框颜色时，留空表示恢复系统默认；贴边隐藏时，留空使用默认高亮蓝 #468FFC。输入 none 表示隐藏边框或关闭贴边隐藏的边框反馈。"
+    },
+    {
+      "key": "edgeAutoHideAction",
+      "name": "操作",
+      "type": "Enum",
+      "defaultValue": "toggle",
+      "required": false,
+      "variableMode": "Input",
+      "condition": "仅：edgeAutoHide",
+      "description": "启用后可再把窗口拖到屏幕外沿；贴边后自动置顶并开始隐藏。"
+    },
+    {
+      "key": "edgeAutoHideEdge",
+      "name": "边缘",
+      "type": "Enum",
+      "defaultValue": "auto",
+      "required": false,
+      "variableMode": "Input",
+      "condition": "仅：edgeAutoHide",
+      "description": "自动检测或指定以后要吸附的屏幕外沿。"
+    },
+    {
+      "key": "edgeAutoHideRevealDip",
+      "name": "保留宽度",
+      "type": "Integer",
+      "defaultValue": "4",
+      "required": false,
+      "variableMode": "UseVarOrInput",
+      "condition": "仅：edgeAutoHide",
+      "description": "隐藏后保留的可见宽度（DIP，2～16）。"
+    },
+    {
+      "key": "edgeAutoHideDelayMs",
+      "name": "隐藏延迟",
+      "type": "Integer",
+      "defaultValue": "600",
+      "required": false,
+      "variableMode": "UseVarOrInput",
+      "condition": "仅：edgeAutoHide",
+      "description": "鼠标离开后的隐藏延迟（毫秒，100～5000）。"
+    },
+    {
+      "key": "closeSimilarKeepCurrent",
+      "name": "保留当前窗口",
+      "type": "Boolean",
+      "defaultValue": "false",
+      "required": false,
+      "variableMode": "UseVarOrInput",
+      "condition": "仅：closeSimilar",
+      "description": "默认关闭包含当前窗口在内的全部类似窗口；勾选后只关闭其它类似窗口。"
+    },
+    {
+      "key": "switchSimilarDirection",
+      "name": "切换方向",
+      "type": "Enum",
+      "defaultValue": "next",
+      "required": false,
+      "variableMode": "Input",
+      "condition": "仅：switchSimilar",
+      "description": "在同一应用的类似窗口之间按稳定环序向前或向后切换。"
     },
     {
       "key": "stopIfFail",
@@ -137,6 +197,62 @@
       "type": "Boolean",
       "condition": "仅：toggleTopMost",
       "description": "操作后窗口是否为置顶"
+    },
+    {
+      "key": "isEdgeAutoHideEnabled",
+      "name": "是否已启用贴边隐藏",
+      "type": "Boolean",
+      "condition": "仅：edgeAutoHide",
+      "description": ""
+    },
+    {
+      "key": "matchedCount",
+      "name": "匹配窗口数",
+      "type": "Integer",
+      "condition": "仅：closeSimilar, switchSimilar, minimizeSimilar, restoreSimilar",
+      "description": ""
+    },
+    {
+      "key": "requestedCount",
+      "name": "已投递关闭请求数",
+      "type": "Integer",
+      "condition": "仅：closeSimilar",
+      "description": ""
+    },
+    {
+      "key": "requestFailedCount",
+      "name": "关闭请求失败数",
+      "type": "Integer",
+      "condition": "仅：closeSimilar",
+      "description": ""
+    },
+    {
+      "key": "permissionDeniedCount",
+      "name": "权限拒绝数",
+      "type": "Integer",
+      "condition": "仅：closeSimilar",
+      "description": ""
+    },
+    {
+      "key": "skippedCount",
+      "name": "跳过窗口数",
+      "type": "Integer",
+      "condition": "仅：closeSimilar, switchSimilar, minimizeSimilar, restoreSimilar",
+      "description": ""
+    },
+    {
+      "key": "affectedCount",
+      "name": "已处理窗口数",
+      "type": "Integer",
+      "condition": "仅：minimizeSimilar, restoreSimilar",
+      "description": ""
+    },
+    {
+      "key": "failedCount",
+      "name": "操作失败数",
+      "type": "Integer",
+      "condition": "仅：minimizeSimilar, restoreSimilar",
+      "description": ""
     }
   ],
   "selections": {
@@ -186,6 +302,31 @@
         {
           "value": "close",
           "name": "关闭",
+          "description": ""
+        },
+        {
+          "value": "switchSimilar",
+          "name": "切换到下一个类似窗口",
+          "description": ""
+        },
+        {
+          "value": "closeSimilar",
+          "name": "关闭类似窗口",
+          "description": ""
+        },
+        {
+          "value": "minimizeSimilar",
+          "name": "最小化类似窗口",
+          "description": ""
+        },
+        {
+          "value": "restoreSimilar",
+          "name": "恢复类似窗口",
+          "description": ""
+        },
+        {
+          "value": "edgeAutoHide",
+          "name": "贴边隐藏",
           "description": ""
         },
         {
@@ -241,6 +382,71 @@
         {
           "value": "TOGGLE_MAXMIZE",
           "name": "切换最大化/恢复",
+          "description": ""
+        }
+      ]
+    },
+    "edgeAutoHideAction": {
+      "name": "操作",
+      "items": [
+        {
+          "value": "toggle",
+          "name": "切换",
+          "description": ""
+        },
+        {
+          "value": "enable",
+          "name": "启用",
+          "description": ""
+        },
+        {
+          "value": "disable",
+          "name": "停用并恢复",
+          "description": ""
+        }
+      ]
+    },
+    "edgeAutoHideEdge": {
+      "name": "边缘",
+      "items": [
+        {
+          "value": "auto",
+          "name": "自动",
+          "description": ""
+        },
+        {
+          "value": "left",
+          "name": "左侧",
+          "description": ""
+        },
+        {
+          "value": "top",
+          "name": "顶部",
+          "description": ""
+        },
+        {
+          "value": "right",
+          "name": "右侧",
+          "description": ""
+        },
+        {
+          "value": "bottom",
+          "name": "底部",
+          "description": ""
+        }
+      ]
+    },
+    "switchSimilarDirection": {
+      "name": "切换方向",
+      "items": [
+        {
+          "value": "next",
+          "name": "下一个",
+          "description": ""
+        },
+        {
+          "value": "previous",
+          "name": "上一个",
           "description": ""
         }
       ]

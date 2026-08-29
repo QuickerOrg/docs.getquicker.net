@@ -29,7 +29,7 @@
       "defaultValue": "",
       "required": false,
       "variableMode": "UseVarOrInput",
-      "condition": "仅：TriggerMenu, TriggerControl, GetControlInfo",
+      "condition": "仅：TriggerMenu, TriggerControl, GetControlInfo, GetControlTree, ObserveInteractiveControls",
       "description": "要操作哪个窗口的控件。不填写=使用前台窗口；或窗口句柄数字。"
     },
     {
@@ -59,7 +59,7 @@
       "defaultValue": "",
       "required": false,
       "variableMode": "UseVarOrInput",
-      "condition": "仅：TriggerControl, GetControlInfo",
+      "condition": "仅：TriggerControl, GetControlInfo, GetControlTree, ObserveInteractiveControls",
       "description": "控件的XPath或Name、AutomationId。XPath以/开始。(可写多个，每行一个，前一个查找失败时会自动尝试下一个)"
     },
     {
@@ -69,8 +69,38 @@
       "defaultValue": "0",
       "required": false,
       "variableMode": "UseVarOrInput",
-      "condition": "仅：TriggerControl, GetControlInfo",
+      "condition": "仅：TriggerControl, GetControlInfo, GetControlTree, ObserveInteractiveControls",
       "description": "可选。当有多个名称相同但类型不同的控件时区分。"
+    },
+    {
+      "key": "maxDepth",
+      "name": "最大深度",
+      "type": "Integer",
+      "defaultValue": "12",
+      "required": false,
+      "variableMode": "UseVarOrInput",
+      "condition": "仅：GetControlTree, ObserveInteractiveControls",
+      "description": "返回控件树的最大层级深度。根控件深度为 0。"
+    },
+    {
+      "key": "maxNodes",
+      "name": "最大节点数",
+      "type": "Integer",
+      "defaultValue": "512",
+      "required": false,
+      "variableMode": "UseVarOrInput",
+      "condition": "仅：GetControlTree, ObserveInteractiveControls",
+      "description": "返回控件树的最大节点数。"
+    },
+    {
+      "key": "timeoutMs",
+      "name": "超时时间",
+      "type": "Integer",
+      "defaultValue": "6000",
+      "required": false,
+      "variableMode": "UseVarOrInput",
+      "condition": "仅：GetControlTree, ObserveInteractiveControls",
+      "description": "定位起始控件和遍历控件树共用的软超时时间（毫秒）。"
     },
     {
       "key": "controlOperation",
@@ -120,6 +150,48 @@
       "type": "Boolean",
       "condition": "",
       "description": "操作是否成功"
+    },
+    {
+      "key": "controlTreeJson",
+      "name": "控件树JSON",
+      "type": "Text",
+      "condition": "仅：GetControlTree",
+      "description": "紧凑的树形界面信息，适合 JSONPath 或脚本按层级提取。"
+    },
+    {
+      "key": "controlTreeTable",
+      "name": "控件树表格",
+      "type": "Table",
+      "condition": "仅：GetControlTree",
+      "description": "同一次采集的平铺节点表格，适合筛选和循环处理。"
+    },
+    {
+      "key": "interactiveElementsJson",
+      "name": "可交互元素JSON",
+      "type": "Text",
+      "condition": "仅：ObserveInteractiveControls",
+      "description": "精简的可交互元素列表；locator 可直接传给“触发窗口控件”。"
+    },
+    {
+      "key": "nodeCount",
+      "name": "节点数",
+      "type": "Integer",
+      "condition": "仅：GetControlTree, ObserveInteractiveControls",
+      "description": ""
+    },
+    {
+      "key": "isComplete",
+      "name": "是否完整",
+      "type": "Boolean",
+      "condition": "仅：GetControlTree, ObserveInteractiveControls",
+      "description": ""
+    },
+    {
+      "key": "truncationReason",
+      "name": "截断原因",
+      "type": "Text",
+      "condition": "仅：GetControlTree, ObserveInteractiveControls",
+      "description": ""
     },
     {
       "key": "value",
@@ -231,6 +303,16 @@
         {
           "value": "GetFocusedControlInfo",
           "name": "获取焦点控件信息",
+          "description": ""
+        },
+        {
+          "value": "GetControlTree",
+          "name": "提取窗口界面信息",
+          "description": ""
+        },
+        {
+          "value": "ObserveInteractiveControls",
+          "name": "观察可交互元素",
           "description": ""
         }
       ]
@@ -541,6 +623,11 @@
         {
           "value": "SetValue",
           "name": "设置值",
+          "description": ""
+        },
+        {
+          "value": "ScrollIntoView",
+          "name": "滚动到可见区域",
           "description": ""
         }
       ]

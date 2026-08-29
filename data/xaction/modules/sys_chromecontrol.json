@@ -230,7 +230,7 @@
       "required": true,
       "variableMode": "UseVarOrInput",
       "condition": "仅：SetBrowser",
-      "description": "设置本动作连接的浏览器进程名（需安装Quicker浏览器扩展）"
+      "description": "设置本动作连接的浏览器进程名（需安装Quicker浏览器扩展）。除auto外，进程名通常为程序文件名去掉.exe后缀。"
     },
     {
       "key": "mainProcessId",
@@ -988,6 +988,36 @@
           "description": ""
         },
         {
+          "value": "page.drop",
+          "name": "网页: 拖放文件到页面元素",
+          "description": ""
+        },
+        {
+          "value": "page.fillForm",
+          "name": "网页: 按模板填写表单",
+          "description": ""
+        },
+        {
+          "value": "page.form.describe",
+          "name": "网页: 描述页面表单字段",
+          "description": ""
+        },
+        {
+          "value": "page.list.collect",
+          "name": "网页: 按模板采集列表",
+          "description": ""
+        },
+        {
+          "value": "page.list.discover",
+          "name": "网页: 发现页面列表结构",
+          "description": ""
+        },
+        {
+          "value": "page.upload",
+          "name": "网页: 上传文件到页面控件",
+          "description": ""
+        },
+        {
           "value": "trace.start",
           "name": "诊断: 开始记录后台命令轨迹",
           "description": ""
@@ -1258,8 +1288,18 @@
           "description": ""
         },
         {
-          "value": "api_pageCapture_saveAsMHTML",
-          "name": "API: 保存为MHTML",
+          "value": "api_storage_local_get",
+          "name": "API: 读取扩展本地存储",
+          "description": ""
+        },
+        {
+          "value": "api_storage_local_set",
+          "name": "API: 写入扩展本地存储",
+          "description": ""
+        },
+        {
+          "value": "api_storage_local_remove",
+          "name": "API: 删除扩展本地存储项",
           "description": ""
         },
         {
@@ -1728,6 +1768,11 @@
           "description": ""
         },
         {
+          "value": "scripts_downloadFile",
+          "name": "脚本: 下载文件",
+          "description": ""
+        },
+        {
           "value": "scripts_openHistoryPage",
           "name": "脚本: 打开历史记录页面",
           "description": ""
@@ -1778,6 +1823,11 @@
           "description": ""
         },
         {
+          "value": "scripts_mergeWindowsAndGroupTabsByDomain",
+          "name": "脚本: 合并窗口并按域名分组标签页",
+          "description": ""
+        },
+        {
           "value": "scripts_dismissGroup",
           "name": "脚本: 解散当前标签页所属分组",
           "description": ""
@@ -1790,6 +1840,11 @@
         {
           "value": "scripts_moveSameDomainTabsToCurrentWindow",
           "name": "脚本: 将相同域名网页移动到当前窗口",
+          "description": ""
+        },
+        {
+          "value": "scripts_moveSameDomainTabsToCurrentWindowAndGroup",
+          "name": "脚本: 将相同域名网页移动到当前窗口并分组",
           "description": ""
         },
         {
@@ -1820,6 +1875,11 @@
         {
           "value": "scripts_captureFullPage",
           "name": "脚本: 截图整页",
+          "description": ""
+        },
+        {
+          "value": "scripts_savePageArchive",
+          "name": "脚本: 保存完整页面归档",
           "description": ""
         },
         {

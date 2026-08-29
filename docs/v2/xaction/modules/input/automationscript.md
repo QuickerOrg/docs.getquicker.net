@@ -28,7 +28,7 @@ metadataGeneratedAt: "2026-08-24 20:01:39"
 - 需要循环、数组、条件判断、坐标计算、热键、键鼠组合、提示消息、文本剪贴板或脚本化识别定位：使用本模块。
 - 需要通用 JavaScript、动作变量读写或可选 CLR：使用[运行 Javascript 代码](/v2/xaction/modules/jsscript)。它与本模块的语法和安全边界不同。
 
-本模块专门提供受控的桌面自动化能力，不是可任意访问系统资源的通用 JavaScript 环境，也不会替换已有的 JavaScript 模块。2.1.29 起，自动化脚本可面向窗口和区域做 OCR、找图、找色，并对识别或定位到的目标执行相对点击；目标窗口移动后，仍可按最新位置执行。完整 API 以软件编辑器当前提示与后续 `data/xaction` 同步为准，本页不编写尚未同步的方法名和参数。
+本模块专门提供受控的桌面自动化能力，不是可任意访问系统资源的通用 JavaScript 环境，也不会替换已有的 JavaScript 模块。2.1.29 起，自动化脚本可面向窗口和区域做 OCR、找图、找色，并对识别或定位到的目标执行相对点击；目标窗口移动后，仍可按最新位置执行。
 
 ## 当前模块定义
 
@@ -53,7 +53,7 @@ export default mouse.position();
 
 ### 导入方式
 
-`"quicker"` 是 Quicker 在内存中提供的模块，不是 npm 包或本地文件。下方先列出当前结构化定义已覆盖的 `mouse`、`key`、`screen`、`sleep`、`input`、`notify`、`clipboard` 七个命名导出。
+`"quicker"` 是 Quicker 在内存中提供的模块，不是 npm 包或本地文件。基础键鼠 API 从 `"quicker"` 导入；窗口 API 从 `"quicker/window"` 导入；识别、截图和目标坐标 API 从 `"quicker/vision"` 导入。
 
 按需导入：
 
@@ -86,6 +86,29 @@ import qk from "quicker";            // quicker 没有 default export
 ```
 
 除全局 `console` 外，这些 API 不会自动变成全局变量；漏写 `import` 会运行失败。
+
+### 窗口、识别与目标相对坐标
+
+```javascript
+import { mouse } from "quicker";
+import { window } from "quicker/window";
+import { target, vision } from "quicker/vision";
+
+const app = window.one({ processName: "notepad" });
+if (app === null) throw new Error("未找到记事本窗口");
+
+// 在窗口当前范围内找文字。返回点携带窗口目标信息。
+const match = vision.findText("保存", app);
+if (match !== null) {
+  mouse.click(target.point(match.target, match.x, match.y));
+}
+```
+
+- `window.foreground()` 取得前台窗口；`window.list(query)` 返回多个窗口；`window.one(query)` 返回一个窗口或 `null`；`window.refresh(ref)` 刷新窗口快照。
+- `target.screen` 表示虚拟桌面；`target.from(value)` 取得目标；`target.region(ref, bounds)` 建立子区域；`target.point(ref, x, y)` 建立目标相对点；`target.toScreen(point)` 显式换算为屏幕坐标。
+- `vision.ocr(target?)`、`findText(text, target?, options?)`、`findTexts(...)`、`findImage(template, target?, options?)`、`findColors(color, target?, options?)` 和 `readQr(target?)` 可直接对屏幕、窗口、区域或图片执行识别。
+- 返回的文字、图片和颜色匹配项含 `x`、`y`、`bounds`、`target`。把目标相对点交给 `mouse.click()` 时，Quicker 会在输入前重新解析窗口位置；窗口移动后仍点击新的屏幕位置，窗口身份变化或目标越界时则失败关闭。
+- 需要复用图片时，可从 `"quicker/vision"` 导入 `capture`、`image`、`ocr`：`capture.screen()` / `capture.window(app)` 截图，`image.crop()`、`image.findColor()`、`image.findTemplate()` 处理图片，完成后用 `image.dispose()` 释放。
 
 ## 坐标和点
 
@@ -618,8 +641,6 @@ export default {
 - 录制回放
 - 水平滚轮、X1 / X2 按钮和任意点击次数
 - 游戏级、驱动级或硬实时鼠标轨迹
-
-2.1.29 新增的窗口 / 区域 OCR、找图、找色和相对点击能力，请以软件界面中的脚本提示为准；结构化定义同步前，本页暂不列新增导出、参数名或返回形状。
 
 需要上述仍未支持的能力时，请组合使用对应的 Quicker 步骤，不要试图从脚本绕过限制。
 

@@ -8,7 +8,7 @@ quickerDocKey: "xaction/module/sys:activateProcessMainWindow"
 comments: true
 moduleKey: "sys:activateProcessMainWindow"
 docStatus: "reviewed"
-metadataGeneratedAt: "2026-08-24 20:01:39"
+metadataGeneratedAt: "2026-08-29 16:36:01"
 legacyDocId: 2131596
 legacyContentUpdatedAt: "2022-06-14T05:58:37.000Z"
 ---

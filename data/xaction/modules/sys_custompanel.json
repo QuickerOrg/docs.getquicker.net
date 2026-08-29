@@ -240,7 +240,7 @@
       "required": true,
       "variableMode": "UseVarOrInput",
       "condition": "仅：show_fixed_panel, show_fixed_panel_wait_close",
-      "description": "要关联的进程名称，输入\"-\"禁用此功能。当该进程为前台时显示操作窗，否则自动隐藏。"
+      "description": "要关联的进程名，输入\"-\"禁用此功能。当该进程为前台时显示操作窗，否则自动隐藏。进程名通常为程序文件名去掉.exe后缀。"
     },
     {
       "key": "autoCollapse",

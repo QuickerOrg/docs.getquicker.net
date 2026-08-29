@@ -60,7 +60,7 @@
       "required": false,
       "variableMode": "UseVarOrInput",
       "condition": "仅：findWindow, top_windows",
-      "description": "要查找窗口所属的进程名或pid，为空时不检查此项。"
+      "description": "要查找窗口所属的进程名或pid，为空时不检查此项。进程名通常为程序文件名去掉.exe后缀。"
     },
     {
       "key": "onlyVisible",
@@ -154,7 +154,7 @@
       "name": "进程名",
       "type": "Text",
       "condition": "排除：top_windows, findChildWindow, child_windows",
-      "description": "进程名称"
+      "description": "进程名通常为程序文件名去掉.exe后缀，大小写不确定。"
     },
     {
       "key": "path",

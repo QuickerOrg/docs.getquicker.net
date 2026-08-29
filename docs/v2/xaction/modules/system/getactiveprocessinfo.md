@@ -8,7 +8,7 @@ quickerDocKey: "xaction/module/sys:getActiveProcessInfo"
 comments: true
 moduleKey: "sys:getActiveProcessInfo"
 docStatus: "reviewed"
-metadataGeneratedAt: "2026-08-24 20:01:39"
+metadataGeneratedAt: "2026-08-29 16:36:01"
 legacyDocId: 2118185
 legacyContentUpdatedAt: "2019-07-15T04:33:57.000Z"
 ---

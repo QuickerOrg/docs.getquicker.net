@@ -8,7 +8,7 @@ quickerDocKey: "xaction/module/sys:chromecontrol"
 comments: true
 moduleKey: "sys:chromecontrol"
 docStatus: "reviewed"
-metadataGeneratedAt: "2026-08-24 20:52:41"
+metadataGeneratedAt: "2026-08-29 16:36:01"
 legacyDocId: 9024629
 legacyContentUpdatedAt: "2025-10-28T06:17:46.000Z"
 ---

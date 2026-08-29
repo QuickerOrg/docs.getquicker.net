@@ -7,8 +7,8 @@ sidebar_position: 30
 quickerDocKey: "xaction/module/sys:screenCapturePro"
 comments: true
 moduleKey: "sys:screenCapturePro"
-docStatus: "generated"
-metadataGeneratedAt: "2026-08-24 20:01:39"
+docStatus: "reviewed"
+metadataGeneratedAt: "2026-08-29 16:36:01"
 ---
 
 # 截图 Pro
@@ -56,9 +56,9 @@ metadataGeneratedAt: "2026-08-24 20:01:39"
 
 **截图前延迟时间**：等多少毫秒再进入截图。从面板或轮盘触发时，可垫一点延时，避免截到 Quicker 自己。
 
-**写入剪贴板**：结果是否写入剪贴板。默认关闭。
+**写入剪贴板**：仅在默认确认出口（打勾、双击或 `Enter`）结束后，把结果写入剪贴板。复制出口本身会写剪贴板；保存、工具栏直接贴图以及自定义工具栏的 `post.confirm` / `post.pin` 不会再叠加此参数。默认关闭。
 
-**截图后贴图**：截完后在选区位置弹出贴图窗口。走「保存」结束时不贴图。默认关闭。
+**截图后贴图**：仅在默认确认出口结束后，在选区位置弹出贴图窗口。保存、复制、工具栏直接贴图以及自定义工具栏的 `post.confirm` / `post.pin` 不会再叠加此参数。默认关闭。
 
 **贴图后显示工具栏**：贴图窗口打开后是否自动显示标注工具栏。默认关闭；需要时可按空格再显示。
 

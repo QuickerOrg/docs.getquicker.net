@@ -71,7 +71,66 @@ legacyContentUpdatedAt: "2022-07-01T09:39:34.000Z"
 
 **重复控制**：留空则每次都出一条新的。填标识可复用同一条：`replace:标识` 换内容，`count:标识` 累计次数，`ignore:标识` 忽略后续重复。只写标识时按 `replace` 处理。
 
-**点击操作**：普通文本当作整卡点击命令（要能在 Win+R 里执行，常用来打开网址）。以独立首行 `@button` / `@buttons` 开头时定义一到两个按钮。留空则点击复制正文。
+### 点击操作
+
+这个参数有三种填写方式：
+
+1. **留空**：对于“成功 / 信息 / 告警 / 错误”通知，点击通知会复制“消息内容”。Windows 通知留空时没有点击操作。
+2. **填写普通文本**：点击整条通知时执行该文本。写法与在 Windows 的“运行”（Win+R）中输入命令相同，可填写网址、文件或文件夹路径、程序路径、系统命令等。例如：
+
+   ```text
+   https://getquicker.net
+   ```
+
+   如果填写多行，每个非空行都会作为一条命令执行。
+
+3. **显示操作按钮**：第一行单独填写 `@button` 或 `@buttons`，从第二行开始每行定义一个按钮。两个标记的效果相同，均可定义 **1～2 个**按钮；使用按钮模式后，只有按钮可以操作，点击通知卡片本身不会再执行命令或复制正文。
+
+按钮行的基本格式为：
+
+```text
+按钮文字|operation=操作类型&data=操作数据
+```
+
+例如，显示“复制”和“取消”两个按钮：
+
+```text
+@buttons
+复制|operation=copy&data=复制成功
+取消|operation=none
+```
+
+常用填写示例：
+
+| 目的 | 按钮行 |
+| --- | --- |
+| 复制文字 | `复制\|operation=copy&data=要复制的文字` |
+| 打开网址或文件 | `查看详情\|operation=open&data=https://getquicker.net` |
+| 运行命令 | `打开记事本\|operation=run&data=notepad.exe` |
+| 运行当前动作 | `再次运行\|operation=action&action=_this_` |
+| 运行其他动作 | `运行清理动作\|operation=action&action=动作ID或动作名称` |
+| 只关闭通知 | `取消\|operation=none` |
+
+`data`、`action` 等参数采用 URL 查询字符串格式。如果内容中包含 `&`、`=`、`+` 等特殊字符，应先进行 URL 编码。例如要复制 `a&b`，可填写：
+
+```text
+复制|operation=copy&data=a%26b
+```
+
+按钮还支持 `paste`（粘贴文字）、`pastefile`（粘贴文件）、`pasteimage`（粘贴图片）、`sendkeys`（模拟按键）、`inputtext`（键入文字）、`selectfile`（在资源管理器中定位）和 `inputscript`（多步骤输入）。按钮不支持子程序 `sp`、分隔线、子菜单或第三个及更多按钮；配置不合法时该步骤会报错。
+
+也可以在标记后填写 `CommonOperationItem` 的 JSON 数组，但一般使用上面的逐行格式更直观：
+
+```text
+@button
+[{"Title":"再次运行","Operation":"action","Action":"_this_"}]
+```
+
+:::note Windows 通知
+
+“Windows 通知 (win10+)”支持普通文本形式的整卡点击命令，但不支持 `@button` / `@buttons` 按钮模式；使用按钮格式时，Quicker 会忽略点击操作并显示普通通知。
+
+:::
 
 ## 限制与排障
 

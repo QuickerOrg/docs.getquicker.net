@@ -259,6 +259,8 @@ legacyContentUpdatedAt: "2024-12-06T01:38:30.000Z"
 
 抽出图中的表格，**合并后结果** 是 HTML。2.x 改为本地识别。旧版在线额度：免费版约 10 分钟一次，专业版约 10 秒一次。
 
+2.2.3 起，本地表格识别固定使用准确率更高的 **small** 文字模型，界面不再显示模型选项。旧动作中保存的 **tiny** 设置会被忽略；首次使用时如果尚未下载 small 模型，会先提示下载。
+
 <ModuleParamPreview
   moduleKey="sys:basic-ocr"
   focusKeys={['operation', 'imgVar', 'lang', 'stopIfFail', 'isSuccess', 'content', 'rawData']}

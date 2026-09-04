@@ -17,6 +17,10 @@ legacyContentUpdatedAt: "2025-12-15T02:38:05.000Z"
 
 向已启动的 Photoshop、Illustrator 或 After Effects 运行 JSX 脚本。软件必须先打开。
 
+这里的 JS / JSX 指 **ExtendScript**，不是 Photoshop Bridge 使用的 UXP JavaScript。对 Photoshop，本模块通过已有低权限代理调用 Windows COM 的 `DoJavaScript` / `DoJavaScriptFile`，不需要安装 Bridge。原有 `app.activeDocument`、`UnitValue`、`doc.width.as("px")` 等 JSX 写法应放在这里运行；不要直接粘贴使用 `require("photoshop")` 或 async/await 的 UXP 代码。
+
+两种执行环境、输入要求与示例见[Photoshop：JavaScript 与 JSX](/v2/features/software-connections/software/photoshop#javascript-与-jsx选择正确的执行方式)。粘贴脚本时只复制代码正文，不要复制 Markdown 的三反引号或语言标记。
+
 ## 当前模块定义
 
 <XActionModuleMeta moduleKey="sys:adobesoftscontrol" />
@@ -90,7 +94,9 @@ legacyContentUpdatedAt: "2025-12-15T02:38:05.000Z"
 
 ### 执行 psjs
 
-PS 尚未提供执行 psjs 的接口。可用「运行脚本」步骤，把脚本类型设成自定义并指定扩展名：
+本模块的 COM 脚本入口执行的是 ExtendScript，不能把 `.psjs` 当作 JSX 运行。若希望直接执行 UXP 代码文本，可使用[Photoshop控制](/v2/xaction/modules/photoshopcontrol)的 Bridge 脚本入口，并遵守其模态与异步要求；它不是 `.psjs` 文件执行入口。
+
+使用独立 `.psjs` 文件时，可用「运行脚本」步骤，把脚本类型设成自定义并指定扩展名；这种方式还依赖本机文件关联，不能按 COM 脚本输出理解：
 
 <PreviewMarks
   marks={[

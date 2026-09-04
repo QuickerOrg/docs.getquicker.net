@@ -31,6 +31,12 @@ metadataGeneratedAt: "2026-09-04 07:37:19"
 
 自定义调用选择 **[高级] 发送自定义 Bridge 命令**，从命令工具复制实际命令名与参数模板。参数 JSON 必须是对象，路径中的反斜杠需要转义。不要把其他软件的参数直接套用到本模块。
 
+## 脚本运行环境
+
+此模块的“[脚本] 执行任意 JavaScript”使用 **UXP JavaScript**，不能直接运行 JSX / ExtendScript，也不接收 `.jsx` 或 `.psjs` 文件路径。已有 JSX 请用[Adobe系列软件控制](/v2/xaction/modules/adobesoftscontrol)，不需要 Bridge。
+
+UXP 中 `doc.width` / `doc.height` 已是像素数值，不使用 `.as("px")` 或 `UnitValue`。修改文档需自行调用 `core.executeAsModal()`；异步脚本可使用 async 自执行函数，Bridge 会等待求值返回的 Promise。不要在脚本中加入 `#target photoshop` 或 Markdown 代码围栏。完整对照与缩图示例见[两种 JavaScript 的要求](/v2/features/software-connections/software/photoshop#javascript-与-jsx选择正确的执行方式)。
+
 ## 最小示例：测试连接
 
 这是不修改文档或文件的配置示例。先在命令工具确认 `bridge.ping` 可用，再新建组合动作，添加本模块并填写：

@@ -15,16 +15,16 @@ Bridge 是安装在第三方软件中的连接插件。Quicker 通过它读取�
 
 ```mermaid
 flowchart TD
-  A[Quicker 主菜单 → 工具 → Quicker组件安装器] --> B[软件 Bridge → 选择软件并安装]
+  A[Quicker 设置 → 软件连接] --> B[选择软件卡片 → 安装或管理 Bridge]
   B --> C[重启宿主并完成首次启用]
-  C --> D[Quicker 设置 → 软件连接 → 确认在线实例]
+  C --> D[确认在线实例]
   D --> E[命令工具 → bridge.ping → 选择命令并立即调用]
   E --> F[生成动作或使用对应软件控制模块]
   F --> G[运行时按宿主能力选择目标]
 ```
 
-1. [安装、更新、修复与卸载](./install-and-manage.md)：安装器管理插件。
-2. [连接状态与命令工具](./command-tool.md)：设置页查看连接，工具选择实例并测试命令。
+1. [安装、更新、修复与卸载](./install-and-manage.md)：在 **设置 → 软件连接** 的软件卡片中安装、更新、修复或卸载 Bridge。
+2. [连接状态与命令工具](./command-tool.md)：设置页查看连接，工具选择实例并测试命令；软件卡片上的文档链接可打开对应指南。
 3. 选择下表中的软件指南和模块参考，创建可重复运行的动作。
 4. 遇到问题，从[通用排障](./troubleshooting.md)定位失败环节。
 
@@ -32,27 +32,30 @@ WPS 使用官方网页管理，是上述普通安装路径的例外，目前正�
 
 [模兔云](./software/motuyun.md) 则直接使用其在 SketchUp 中提供的本机服务，无需安装 Quicker Bridge；支持搜索插件命令、按插件名筛选和生成动作，目标窗口由模兔云分派。
 
+旧版本文档或界面可能还提到 **Quicker组件安装器**。2.2.5 起，普通 Bridge 的安装与管理优先从设置页的软件卡片进入；如果当前版本仍提供安装器入口，可把它作为备选路径处理。
+
 ## 支持的软件
 
-下表的验证记录来自已完成的宿主安装与回连验收，不表示所有小版本或全部业务命令均已验证。每篇软件指南列出兼容范围及特有限制；实际可安装版本以安装器为准。
+下表的验证记录来自已完成的宿主安装与回连验收，不表示所有小版本或全部业务命令均已验证。每篇软件指南列出兼容范围及特有限制；实际可安装版本以设置页检测与软件卡片显示为准。
 
 | 软件 | 用途 | 当前可用／验证状态 | 管理方式 | 动作目标方式 | 模块 | 指南 |
 | --- | --- | --- | --- | --- | --- | --- |
-| 3ds Max | 三维与动画 | 已有安装与连接验证记录 | 统一安装器 | 前台进程精确路由 | [3ds Max控制](/v2/xaction/modules/3dsmaxcontrol) | [查看指南](./software/3ds-max.md) |
-| After Effects | 视频与动效 | 已有安装与连接验证记录 | 统一安装器 | 前台类型 + 唯一会话 | [After Effects控制](/v2/xaction/modules/aftereffectscontrol) | [查看指南](./software/after-effects.md) |
-| AutoCAD | CAD | 已有安装与连接验证记录 | 统一安装器 | 前台进程精确路由 | [AutoCAD控制](/v2/xaction/modules/autocadcontrol) | [查看指南](./software/autocad.md) |
-| Blender | 三维与动画 | 已有安装与连接验证记录 | 统一安装器 | 前台进程精确路由 | [Blender控制](/v2/xaction/modules/blendercontrol) | [查看指南](./software/blender.md) |
-| Cinema 4D | 三维与动画 | 已有安装与连接验证记录 | 统一安装器 | 前台进程精确路由 | [Cinema 4D控制](/v2/xaction/modules/cinema4dcontrol) | [查看指南](./software/cinema-4d.md) |
-| CorelDRAW | 平面设计 | 已有安装与连接验证记录 | 统一安装器 | 前台进程精确路由 | [CorelDRAW控制](/v2/xaction/modules/coreldrawcontrol) | [查看指南](./software/coreldraw.md) |
-| Illustrator | 平面设计 | 已有安装与连接验证记录 | 统一安装器 | 唯一在线会话 | [Illustrator控制](/v2/xaction/modules/illustratorcontrol) | [查看指南](./software/illustrator.md) |
-| InDesign | 排版 | 已有安装与连接验证记录 | 统一安装器 | 唯一在线会话 | [InDesign控制](/v2/xaction/modules/indesigncontrol) | [查看指南](./software/indesign.md) |
-| Maya | 三维与动画 | 已有安装与连接验证记录 | 统一安装器 | 前台进程精确路由 | [Maya控制](/v2/xaction/modules/mayacontrol) | [查看指南](./software/maya.md) |
-| Photoshop | 图像处理 | 已有安装与连接验证记录 | 统一安装器 | 前台类型 + 唯一会话 | [Photoshop控制](/v2/xaction/modules/photoshopcontrol) | [查看指南](./software/photoshop.md) |
-| Premiere Pro | 视频与动效 | 已有安装与连接验证记录 | 统一安装器 | 前台类型 + 唯一会话 | [Premiere Pro控制](/v2/xaction/modules/premierecontrol) | [查看指南](./software/premiere-pro.md) |
-| Revit | 建筑与 BIM | 已有安装与连接验证记录 | 统一安装器 | 前台进程精确路由 | [Revit控制](/v2/xaction/modules/revitcontrol) | [查看指南](./software/revit.md) |
-| Rhino | CAD 与三维 | 已有安装与连接验证记录 | 统一安装器 | 前台进程精确路由 | [Rhino软件控制](/v2/xaction/modules/rhinocontrol) | [查看指南](./software/rhino.md) |
-| SketchUp | 建筑与三维 | 已有安装与连接验证记录 | 统一安装器 | 前台进程精确路由 | [SketchUp控制](/v2/xaction/modules/sketchupcontrol) | [查看指南](./software/sketchup.md) |
-| SOLIDWORKS | 机械 CAD | 已有安装与连接验证记录 | 统一安装器 | 前台进程精确路由 | [SOLIDWORKS控制](/v2/xaction/modules/solidworkscontrol) | [查看指南](./software/solidworks.md) |
+| 3ds Max | 三维与动画 | 已有安装与连接验证记录 | 设置页软件卡片 | 前台进程精确路由 | [3ds Max控制](/v2/xaction/modules/3dsmaxcontrol) | [查看指南](./software/3ds-max.md) |
+| After Effects | 视频与动效 | 已有安装与连接验证记录 | 设置页软件卡片 | 前台类型 + 唯一会话 | [After Effects控制](/v2/xaction/modules/aftereffectscontrol) | [查看指南](./software/after-effects.md) |
+| AutoCAD | CAD | 已有安装与连接验证记录 | 设置页软件卡片 | 前台进程精确路由 | [AutoCAD控制](/v2/xaction/modules/autocadcontrol) | [查看指南](./software/autocad.md) |
+| Blender | 三维与动画 | 已有安装与连接验证记录 | 设置页软件卡片 | 前台进程精确路由 | [Blender控制](/v2/xaction/modules/blendercontrol) | [查看指南](./software/blender.md) |
+| Cinema 4D | 三维与动画 | 已有安装与连接验证记录 | 设置页软件卡片 | 前台进程精确路由 | [Cinema 4D控制](/v2/xaction/modules/cinema4dcontrol) | [查看指南](./software/cinema-4d.md) |
+| CorelDRAW | 平面设计 | 已有安装与连接验证记录 | 设置页软件卡片 | 前台进程精确路由 | [CorelDRAW控制](/v2/xaction/modules/coreldrawcontrol) | [查看指南](./software/coreldraw.md) |
+| Illustrator | 平面设计 | 已有安装与连接验证记录 | 设置页软件卡片 | 唯一在线会话 | [Illustrator控制](/v2/xaction/modules/illustratorcontrol) | [查看指南](./software/illustrator.md) |
+| InDesign | 排版 | 已有安装与连接验证记录 | 设置页软件卡片 | 唯一在线会话 | [InDesign控制](/v2/xaction/modules/indesigncontrol) | [查看指南](./software/indesign.md) |
+| Maya | 三维与动画 | 已有安装与连接验证记录 | 设置页软件卡片 | 前台进程精确路由 | [Maya控制](/v2/xaction/modules/mayacontrol) | [查看指南](./software/maya.md) |
+| Photoshop | 图像处理 | 已有安装与连接验证记录 | 设置页软件卡片 | 前台类型 + 唯一会话 | [Photoshop控制](/v2/xaction/modules/photoshopcontrol) | [查看指南](./software/photoshop.md) |
+| Premiere Pro | 视频与动效 | 已有安装与连接验证记录 | 设置页软件卡片 | 前台类型 + 唯一会话 | [Premiere Pro控制](/v2/xaction/modules/premierecontrol) | [查看指南](./software/premiere-pro.md) |
+| Revit | 建筑与 BIM | 已有安装与连接验证记录 | 设置页软件卡片 | 前台进程精确路由 | [Revit控制](/v2/xaction/modules/revitcontrol) | [查看指南](./software/revit.md) |
+| Rhino | CAD 与三维 | 已有安装与连接验证记录 | 设置页软件卡片 | 前台进程精确路由 | [Rhino软件控制](/v2/xaction/modules/rhinocontrol) | [查看指南](./software/rhino.md) |
+| SketchUp | 建筑与三维 | 已有安装与连接验证记录 | 设置页软件卡片 | 前台进程精确路由 | [SketchUp控制](/v2/xaction/modules/sketchupcontrol) | [查看指南](./software/sketchup.md) |
+| 模兔云 | SketchUp 插件命令 | 已有设置页入口 | 模兔云卡片（不安装 Bridge） | 由模兔云分派 | 模兔云控制 | [查看指南](./software/motuyun.md) |
+| SOLIDWORKS | 机械 CAD | 已有安装与连接验证记录 | 设置页软件卡片 | 前台进程精确路由 | [SOLIDWORKS控制](/v2/xaction/modules/solidworkscontrol) | [查看指南](./software/solidworks.md) |
 | WPS Office | 办公 | 预览／分发闭环未完成 | 官方管理页（预览） | 前台窗口 + WPS 组件 | [WPS Office控制](/v2/xaction/modules/wpscontrol) | [查看指南](./software/wps-office.md) |
 
 :::caution[WPS 正式分发仍未完成闭环]

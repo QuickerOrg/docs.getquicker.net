@@ -11,13 +11,13 @@ comments: true
 
 ## 适用范围
 
-25.0 及以上；已有 2026（27.1）真机记录。面向 Windows x64。支持范围不等于所有小版本均已真机测试；实际可安装的版本组合以安装器检测与选择结果为准。
+25.0 及以上；已有 2026（27.1）真机记录。面向 Windows x64。支持范围不等于所有小版本均已真机测试；实际可安装的版本组合以设置页检测与选择结果为准。
 
 ## 安装前准备与首次启用
 
 安装机制：**Adobe UPIA 管理的 UXP 插件**。
 
-退出 Photoshop，确认 Adobe Creative Cloud 提供的 UPIA 可用，再使用统一安装器。生产使用无需 UXP Developer Tool。
+退出 Photoshop，确认 Adobe Creative Cloud 提供的 UPIA 可用，再通过设置页软件卡片安装。生产使用无需 UXP Developer Tool。
 
 启动 Photoshop，从“增效工具”打开 Quicker Bridge Status 状态面板，确认连接；保持插件容器正常运行。
 

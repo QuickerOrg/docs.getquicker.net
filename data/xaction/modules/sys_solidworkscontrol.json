@@ -1,0 +1,610 @@
+{
+  "key": "sys:solidworkscontrol",
+  "slug": "solidworkscontrol",
+  "legacySlug": "solidworkscontrol",
+  "ownsLegacyContent": true,
+  "name": "SOLIDWORKS控制",
+  "description": "通过 SOLIDWORKS Add-in 向动作触发时的前台实例发送命令。",
+  "category": "SoftInteraction",
+  "categoryName": "第三方软件交互",
+  "stepType": "Action",
+  "isRisky": false,
+  "isProOnly": false,
+  "helpLink": "https://docs.getquicker.net/v2/xaction/modules/solidworkscontrol",
+  "inputs": [
+    {
+      "key": "operation",
+      "name": "操作类型",
+      "type": "Enum",
+      "defaultValue": "document.get_context",
+      "required": true,
+      "variableMode": "Input",
+      "condition": "",
+      "description": ""
+    },
+    {
+      "key": "searchQuery",
+      "name": "搜索文字",
+      "type": "Text",
+      "defaultValue": "zoom",
+      "required": false,
+      "variableMode": "UseVarOrInput",
+      "condition": "",
+      "description": ""
+    },
+    {
+      "key": "searchLimit",
+      "name": "最多返回数量",
+      "type": "Integer",
+      "defaultValue": "50",
+      "required": false,
+      "variableMode": "Input",
+      "condition": "",
+      "description": ""
+    },
+    {
+      "key": "solidWorksCommandId",
+      "name": "命令 ID",
+      "type": "Integer",
+      "defaultValue": "0",
+      "required": false,
+      "variableMode": "Input",
+      "condition": "",
+      "description": "可先用“搜索 SOLIDWORKS 命令”获取 ID。"
+    },
+    {
+      "key": "documentPath",
+      "name": "文档路径",
+      "type": "Text",
+      "defaultValue": "",
+      "required": false,
+      "variableMode": "UseVarOrInput",
+      "condition": "",
+      "description": "打开文档时填写 .SLDPRT、.SLDASM 或 .SLDDRW 的绝对路径；激活文档时也可填写已打开文档的完整路径。"
+    },
+    {
+      "key": "documentTitle",
+      "name": "文档标题",
+      "type": "Text",
+      "defaultValue": "",
+      "required": false,
+      "variableMode": "UseVarOrInput",
+      "condition": "",
+      "description": "激活文档时路径为空才使用。建议包含扩展名，以免同名零件、装配体或工程图产生歧义。"
+    },
+    {
+      "key": "readOnly",
+      "name": "只读打开",
+      "type": "Boolean",
+      "defaultValue": "false",
+      "required": false,
+      "variableMode": "Input",
+      "condition": "",
+      "description": ""
+    },
+    {
+      "key": "openConfiguration",
+      "name": "打开配置",
+      "type": "Text",
+      "defaultValue": "",
+      "required": false,
+      "variableMode": "UseVarOrInput",
+      "condition": "",
+      "description": "可选；仅打开指定配置，留空使用文档默认配置。"
+    },
+    {
+      "key": "activateRebuild",
+      "name": "激活时重建",
+      "type": "Boolean",
+      "defaultValue": "false",
+      "required": false,
+      "variableMode": "Input",
+      "condition": "",
+      "description": ""
+    },
+    {
+      "key": "filePath",
+      "name": "输出文件路径",
+      "type": "Text",
+      "defaultValue": "",
+      "required": true,
+      "variableMode": "UseVarOrInput",
+      "condition": "",
+      "description": "使用绝对路径，文件扩展名决定 SOLIDWORKS 保存或导出格式。"
+    },
+    {
+      "key": "overwriteFile",
+      "name": "允许覆盖已有文件",
+      "type": "Boolean",
+      "defaultValue": "false",
+      "required": false,
+      "variableMode": "Input",
+      "condition": "",
+      "description": ""
+    },
+    {
+      "key": "exportScope",
+      "name": "导出范围",
+      "type": "Text",
+      "defaultValue": "entire",
+      "required": false,
+      "variableMode": "UseVarOrInput",
+      "condition": "",
+      "description": "entire 导出整个模型并先清空选择；selection 只导出当前选择。"
+    },
+    {
+      "key": "topOnly",
+      "name": "仅重建顶层装配体",
+      "type": "Boolean",
+      "defaultValue": "false",
+      "required": false,
+      "variableMode": "Input",
+      "condition": "",
+      "description": ""
+    },
+    {
+      "key": "undoSteps",
+      "name": "撤销步数",
+      "type": "Integer",
+      "defaultValue": "1",
+      "required": false,
+      "variableMode": "Input",
+      "condition": "",
+      "description": ""
+    },
+    {
+      "key": "selectionName",
+      "name": "对象名称",
+      "type": "Text",
+      "defaultValue": "",
+      "required": true,
+      "variableMode": "UseVarOrInput",
+      "condition": "",
+      "description": ""
+    },
+    {
+      "key": "selectionType",
+      "name": "对象类型",
+      "type": "Text",
+      "defaultValue": "",
+      "required": false,
+      "variableMode": "UseVarOrInput",
+      "condition": "",
+      "description": "例如 COMPONENT、BODYFEATURE、FACE；留空时由 SOLIDWORKS 尝试匹配。"
+    },
+    {
+      "key": "appendSelection",
+      "name": "追加到当前选择",
+      "type": "Boolean",
+      "defaultValue": "false",
+      "required": false,
+      "variableMode": "Input",
+      "condition": "",
+      "description": ""
+    },
+    {
+      "key": "includeSuppressed",
+      "name": "包含抑制特征",
+      "type": "Boolean",
+      "defaultValue": "true",
+      "required": false,
+      "variableMode": "Input",
+      "condition": "",
+      "description": ""
+    },
+    {
+      "key": "featureNamesJson",
+      "name": "特征名称(JSON 数组)",
+      "type": "Text",
+      "defaultValue": "[]",
+      "required": true,
+      "variableMode": "UseVarOrInput",
+      "condition": "",
+      "description": "例如 [\"Boss-Extrude1\",\"Cut-Extrude1\"]；会先确认所有目标唯一存在，再开始修改。"
+    },
+    {
+      "key": "suppressionState",
+      "name": "目标状态",
+      "type": "Text",
+      "defaultValue": "suppressed",
+      "required": false,
+      "variableMode": "UseVarOrInput",
+      "condition": "",
+      "description": "suppressed 或 resolved。"
+    },
+    {
+      "key": "suppressionScope",
+      "name": "配置范围",
+      "type": "Text",
+      "defaultValue": "current",
+      "required": false,
+      "variableMode": "UseVarOrInput",
+      "condition": "",
+      "description": "current 仅当前配置；all 作用于全部配置。"
+    },
+    {
+      "key": "configurationName",
+      "name": "配置名称",
+      "type": "Text",
+      "defaultValue": "",
+      "required": true,
+      "variableMode": "UseVarOrInput",
+      "condition": "",
+      "description": ""
+    },
+    {
+      "key": "propertyConfiguration",
+      "name": "属性配置",
+      "type": "Text",
+      "defaultValue": "",
+      "required": false,
+      "variableMode": "UseVarOrInput",
+      "condition": "",
+      "description": "留空表示文档级属性；填写配置名称表示配置专用属性。"
+    },
+    {
+      "key": "propertyName",
+      "name": "属性名称",
+      "type": "Text",
+      "defaultValue": "Description",
+      "required": true,
+      "variableMode": "UseVarOrInput",
+      "condition": "",
+      "description": ""
+    },
+    {
+      "key": "propertyValue",
+      "name": "属性值",
+      "type": "Text",
+      "defaultValue": "",
+      "required": false,
+      "variableMode": "UseVarOrInput",
+      "condition": "",
+      "description": ""
+    },
+    {
+      "key": "topLevelOnly",
+      "name": "仅顶层零部件",
+      "type": "Boolean",
+      "defaultValue": "false",
+      "required": false,
+      "variableMode": "Input",
+      "condition": "",
+      "description": ""
+    },
+    {
+      "key": "drawingSheetName",
+      "name": "图纸页名称",
+      "type": "Text",
+      "defaultValue": "Sheet1",
+      "required": true,
+      "variableMode": "UseVarOrInput",
+      "condition": "",
+      "description": ""
+    },
+    {
+      "key": "drawingSheets",
+      "name": "PDF 图纸页范围",
+      "type": "Text",
+      "defaultValue": "all",
+      "required": false,
+      "variableMode": "UseVarOrInput",
+      "condition": "",
+      "description": "all、current，或 JSON 名称数组，例如 [\"Sheet1\",\"Sheet2\"]。"
+    },
+    {
+      "key": "standardView",
+      "name": "标准视图",
+      "type": "Text",
+      "defaultValue": "isometric",
+      "required": false,
+      "variableMode": "UseVarOrInput",
+      "condition": "",
+      "description": "front、back、left、right、top、bottom、isometric、trimetric 或 dimetric。"
+    },
+    {
+      "key": "macroPath",
+      "name": "宏文件路径",
+      "type": "Text",
+      "defaultValue": "",
+      "required": true,
+      "variableMode": "UseVarOrInput",
+      "condition": "",
+      "description": "支持 SOLIDWORKS VBA .swp 或编译后的 VSTA 宏 DLL。"
+    },
+    {
+      "key": "macroModule",
+      "name": "宏模块",
+      "type": "Text",
+      "defaultValue": "Module1",
+      "required": true,
+      "variableMode": "UseVarOrInput",
+      "condition": "",
+      "description": ""
+    },
+    {
+      "key": "macroProcedure",
+      "name": "宏过程",
+      "type": "Text",
+      "defaultValue": "main",
+      "required": true,
+      "variableMode": "UseVarOrInput",
+      "condition": "",
+      "description": ""
+    },
+    {
+      "key": "scriptCode",
+      "name": "C# 代码",
+      "type": "Text",
+      "defaultValue": "return document == null ? null : document.GetTitle();",
+      "required": true,
+      "variableMode": "UseVarOrInput",
+      "condition": "",
+      "description": "在 SOLIDWORKS 进程内执行；可使用 application（SldWorks）和 document（当前 ModelDoc2，可为空）。不提供安全沙箱，只运行可信代码。"
+    },
+    {
+      "key": "vbaCode",
+      "name": "VBA 宏代码",
+      "type": "Text",
+      "defaultValue": "Option Explicit\nDim swApp As SldWorks.SldWorks\nSub main()\n    Set swApp = Application.SldWorks\n    swApp.SendMsgToUser2 \"Hello from Quicker\", 0, 0\nEnd Sub",
+      "required": true,
+      "variableMode": "UseVarOrInput",
+      "condition": "",
+      "description": "完整 VBA 模块代码。Bridge 会写入临时 .swb 文本宏，由 SOLIDWORKS 转换并执行；不提供安全沙箱。"
+    },
+    {
+      "key": "vbaModule",
+      "name": "VBA 模块名称",
+      "type": "Text",
+      "defaultValue": "",
+      "required": false,
+      "variableMode": "UseVarOrInput",
+      "condition": "",
+      "description": "通常留空，由 Bridge 自动读取临时宏的入口模块；仅兼容性排查时手动指定。"
+    },
+    {
+      "key": "vbaProcedure",
+      "name": "VBA 过程名称",
+      "type": "Text",
+      "defaultValue": "main",
+      "required": true,
+      "variableMode": "UseVarOrInput",
+      "condition": "",
+      "description": "只能执行无参数 Sub。"
+    },
+    {
+      "key": "commandName",
+      "name": "Bridge 命令名称",
+      "type": "Text",
+      "defaultValue": "",
+      "required": true,
+      "variableMode": "UseVarOrInput",
+      "condition": "",
+      "description": ""
+    },
+    {
+      "key": "argumentsJson",
+      "name": "参数(JSON 对象)",
+      "type": "Text",
+      "defaultValue": "{}",
+      "required": false,
+      "variableMode": "UseVarOrInput",
+      "condition": "",
+      "description": ""
+    },
+    {
+      "key": "waitMs",
+      "name": "最长等待时间(ms)",
+      "type": "Number",
+      "defaultValue": "30000",
+      "required": true,
+      "variableMode": "Input",
+      "condition": "",
+      "description": ""
+    },
+    {
+      "key": "stopIfFail",
+      "name": "失败后停止",
+      "type": "Boolean",
+      "defaultValue": "true",
+      "required": false,
+      "variableMode": "Input",
+      "condition": "",
+      "description": "失败后是否停止动作"
+    }
+  ],
+  "outputs": [
+    {
+      "key": "isSuccess",
+      "name": "是否成功",
+      "type": "Boolean",
+      "condition": "",
+      "description": "操作是否成功"
+    },
+    {
+      "key": "output",
+      "name": "命令结果",
+      "type": "Text",
+      "condition": "",
+      "description": "SOLIDWORKS 返回的 JSON 结果。"
+    }
+  ],
+  "selections": {
+    "operation": {
+      "name": "操作类型",
+      "items": [
+        {
+          "value": "bridge.ping",
+          "name": "[Bridge] 测试连接",
+          "description": ""
+        },
+        {
+          "value": "command.search",
+          "name": "[命令] 搜索 SOLIDWORKS 命令",
+          "description": ""
+        },
+        {
+          "value": "command.call",
+          "name": "[命令] 调用 SOLIDWORKS 命令",
+          "description": ""
+        },
+        {
+          "value": "document.get_context",
+          "name": "[文档] 读取当前文档上下文",
+          "description": ""
+        },
+        {
+          "value": "document.list",
+          "name": "[文档] 列出已打开文档",
+          "description": ""
+        },
+        {
+          "value": "document.open",
+          "name": "[文档] 打开文档",
+          "description": ""
+        },
+        {
+          "value": "document.activate",
+          "name": "[文档] 激活已打开文档",
+          "description": ""
+        },
+        {
+          "value": "document.save",
+          "name": "[文档] 保存当前文档",
+          "description": ""
+        },
+        {
+          "value": "document.save_as",
+          "name": "[文档] 当前文档另存为",
+          "description": ""
+        },
+        {
+          "value": "document.export",
+          "name": "[文档] 导出当前文档",
+          "description": ""
+        },
+        {
+          "value": "document.rebuild",
+          "name": "[文档] 重建当前文档",
+          "description": ""
+        },
+        {
+          "value": "document.undo",
+          "name": "[文档] 撤销操作",
+          "description": ""
+        },
+        {
+          "value": "selection.get_info",
+          "name": "[选择] 读取选择详情",
+          "description": ""
+        },
+        {
+          "value": "selection.clear",
+          "name": "[选择] 清空选择",
+          "description": ""
+        },
+        {
+          "value": "selection.select_by_name",
+          "name": "[选择] 按名称选择对象",
+          "description": ""
+        },
+        {
+          "value": "feature.list",
+          "name": "[特征] 列出特征",
+          "description": ""
+        },
+        {
+          "value": "feature.set_suppression",
+          "name": "[特征] 设置抑制状态",
+          "description": ""
+        },
+        {
+          "value": "configuration.list",
+          "name": "[配置] 列出配置",
+          "description": ""
+        },
+        {
+          "value": "configuration.activate",
+          "name": "[配置] 激活配置",
+          "description": ""
+        },
+        {
+          "value": "property.list",
+          "name": "[属性] 列出自定义属性",
+          "description": ""
+        },
+        {
+          "value": "property.set",
+          "name": "[属性] 设置自定义属性",
+          "description": ""
+        },
+        {
+          "value": "property.delete",
+          "name": "[属性] 删除自定义属性",
+          "description": ""
+        },
+        {
+          "value": "assembly.list_components",
+          "name": "[装配体] 列出零部件",
+          "description": ""
+        },
+        {
+          "value": "drawing.list_sheets",
+          "name": "[工程图] 列出图纸页",
+          "description": ""
+        },
+        {
+          "value": "drawing.activate_sheet",
+          "name": "[工程图] 激活图纸页",
+          "description": ""
+        },
+        {
+          "value": "drawing.export_pdf",
+          "name": "[工程图] 导出 PDF",
+          "description": ""
+        },
+        {
+          "value": "model.get_mass_properties",
+          "name": "[模型] 读取质量属性",
+          "description": ""
+        },
+        {
+          "value": "view.zoom_fit",
+          "name": "[视图] 缩放至合适大小",
+          "description": ""
+        },
+        {
+          "value": "view.zoom_selection",
+          "name": "[视图] 缩放至选择对象",
+          "description": ""
+        },
+        {
+          "value": "view.standard",
+          "name": "[视图] 切换标准视图",
+          "description": ""
+        },
+        {
+          "value": "macro.run",
+          "name": "[脚本] 运行 VBA/VSTA 宏",
+          "description": ""
+        },
+        {
+          "value": "script.evaluate",
+          "name": "[脚本] 执行内联 C#（高风险）",
+          "description": ""
+        },
+        {
+          "value": "script.evaluate_vba",
+          "name": "[脚本] 执行内联 VBA（高风险/实验性）",
+          "description": ""
+        },
+        {
+          "value": "command.custom",
+          "name": "[高级] 发送自定义 Bridge 命令",
+          "description": ""
+        }
+      ]
+    }
+  },
+  "sourceFileName": "sys_solidworkscontrol_SOLIDWORKS控制.md"
+}

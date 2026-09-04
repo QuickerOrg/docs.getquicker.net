@@ -119,8 +119,8 @@
       "defaultValue": "small",
       "required": false,
       "variableMode": "Input",
-      "condition": "仅：LocalOcr, table_quicker",
-      "description": "标准=small（更准更大，默认）；快速=tiny（更快更小）。切换后如未安装会下载对应模型包。"
+      "condition": "仅：LocalOcr",
+      "description": "标准=small（更准更大，默认）；快速=tiny（更快更小）。切换后如未安装会下载对应模型包。表格识别固定用 small，不出现此参数。"
     },
     {
       "key": "stopIfFail",

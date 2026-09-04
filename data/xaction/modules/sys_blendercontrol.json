@@ -1,0 +1,240 @@
+{
+  "key": "sys:blendercontrol",
+  "slug": "blendercontrol",
+  "legacySlug": "blendercontrol",
+  "ownsLegacyContent": true,
+  "name": "Blender控制",
+  "description": "通过 Blender Python Extension 向动作触发时的前台实例发送命令。",
+  "category": "SoftInteraction",
+  "categoryName": "第三方软件交互",
+  "stepType": "Action",
+  "isRisky": false,
+  "isProOnly": false,
+  "helpLink": "https://docs.getquicker.net/v2/xaction/modules/blendercontrol",
+  "inputs": [
+    {
+      "key": "operation",
+      "name": "操作类型",
+      "type": "Enum",
+      "defaultValue": "model.get_context",
+      "required": true,
+      "variableMode": "Input",
+      "condition": "",
+      "description": ""
+    },
+    {
+      "key": "includeDetails",
+      "name": "返回对象变换与集合信息",
+      "type": "Boolean",
+      "defaultValue": "true",
+      "required": false,
+      "variableMode": "Input",
+      "condition": "",
+      "description": ""
+    },
+    {
+      "key": "operatorQuery",
+      "name": "搜索内容",
+      "type": "Text",
+      "defaultValue": "",
+      "required": false,
+      "variableMode": "UseVarOrInput",
+      "condition": "",
+      "description": "按 Operator ID 或本地标题筛选；留空返回前若干项。"
+    },
+    {
+      "key": "maxCount",
+      "name": "最多返回数量",
+      "type": "Integer",
+      "defaultValue": "100",
+      "required": false,
+      "variableMode": "Input",
+      "condition": "",
+      "description": ""
+    },
+    {
+      "key": "operatorId",
+      "name": "Operator ID",
+      "type": "Text",
+      "defaultValue": "object.select_all",
+      "required": false,
+      "variableMode": "UseVarOrInput",
+      "condition": "",
+      "description": "例如 object.select_all；也可填写第三方插件注册的 Operator。"
+    },
+    {
+      "key": "executionContext",
+      "name": "执行上下文",
+      "type": "Text",
+      "defaultValue": "EXEC_DEFAULT",
+      "required": false,
+      "variableMode": "UseVarOrInput",
+      "condition": "",
+      "description": "通常使用 EXEC_DEFAULT；需要交互操作时可改为 INVOKE_DEFAULT。"
+    },
+    {
+      "key": "operatorAreaType",
+      "name": "界面区域类型",
+      "type": "Text",
+      "defaultValue": "VIEW_3D",
+      "required": false,
+      "variableMode": "UseVarOrInput",
+      "condition": "",
+      "description": "为依赖界面上下文的 Operator 提供区域，例如 VIEW_3D、NODE_EDITOR；留空仅提供窗口上下文。"
+    },
+    {
+      "key": "operatorPropertiesJson",
+      "name": "Operator 参数(JSON 对象)",
+      "type": "Text",
+      "defaultValue": "{}",
+      "required": false,
+      "variableMode": "UseVarOrInput",
+      "condition": "",
+      "description": ""
+    },
+    {
+      "key": "pythonCode",
+      "name": "Python 代码",
+      "type": "Text",
+      "defaultValue": "",
+      "required": true,
+      "variableMode": "UseVarOrInput",
+      "condition": "",
+      "description": "表达式直接返回值；脚本可把返回值赋给 result。"
+    },
+    {
+      "key": "filePath",
+      "name": "文件路径",
+      "type": "Text",
+      "defaultValue": "",
+      "required": true,
+      "variableMode": "UseVarOrInput",
+      "condition": "",
+      "description": "Python 文件或要导入的模型文件绝对路径。"
+    },
+    {
+      "key": "commandName",
+      "name": "Bridge 命令名称",
+      "type": "Text",
+      "defaultValue": "",
+      "required": true,
+      "variableMode": "UseVarOrInput",
+      "condition": "",
+      "description": ""
+    },
+    {
+      "key": "argumentsJson",
+      "name": "参数(JSON 对象)",
+      "type": "Text",
+      "defaultValue": "{}",
+      "required": false,
+      "variableMode": "UseVarOrInput",
+      "condition": "",
+      "description": ""
+    },
+    {
+      "key": "waitMs",
+      "name": "最长等待时间(ms)",
+      "type": "Number",
+      "defaultValue": "30000",
+      "required": true,
+      "variableMode": "Input",
+      "condition": "",
+      "description": ""
+    },
+    {
+      "key": "stopIfFail",
+      "name": "失败后停止",
+      "type": "Boolean",
+      "defaultValue": "true",
+      "required": false,
+      "variableMode": "Input",
+      "condition": "",
+      "description": "失败后是否停止动作"
+    }
+  ],
+  "outputs": [
+    {
+      "key": "isSuccess",
+      "name": "是否成功",
+      "type": "Boolean",
+      "condition": "",
+      "description": "操作是否成功"
+    },
+    {
+      "key": "output",
+      "name": "命令结果",
+      "type": "Text",
+      "condition": "",
+      "description": "Blender 返回的 JSON 结果。"
+    }
+  ],
+  "selections": {
+    "operation": {
+      "name": "操作类型",
+      "items": [
+        {
+          "value": "bridge.ping",
+          "name": "[Bridge] 测试连接",
+          "description": ""
+        },
+        {
+          "value": "model.get_context",
+          "name": "[工程] 读取当前工程上下文",
+          "description": ""
+        },
+        {
+          "value": "selection.get_info",
+          "name": "[选择] 读取选择详情",
+          "description": ""
+        },
+        {
+          "value": "selection.select_all",
+          "name": "[选择] 全选对象",
+          "description": ""
+        },
+        {
+          "value": "selection.clear",
+          "name": "[选择] 清空选择",
+          "description": ""
+        },
+        {
+          "value": "operator.list",
+          "name": "[操作器] 搜索 Blender Operator",
+          "description": ""
+        },
+        {
+          "value": "operator.invoke",
+          "name": "[操作器] 调用任意 Blender Operator",
+          "description": ""
+        },
+        {
+          "value": "python.evaluate",
+          "name": "[脚本] 计算任意 Python 表达式",
+          "description": ""
+        },
+        {
+          "value": "python.execute",
+          "name": "[脚本] 执行任意 Python 脚本",
+          "description": ""
+        },
+        {
+          "value": "python.run_file",
+          "name": "[脚本] 运行 Python 文件",
+          "description": ""
+        },
+        {
+          "value": "model.import_file",
+          "name": "[文件] 导入模型文件",
+          "description": ""
+        },
+        {
+          "value": "command.custom",
+          "name": "[高级] 发送自定义 Bridge 命令",
+          "description": ""
+        }
+      ]
+    }
+  },
+  "sourceFileName": "sys_blendercontrol_Blender控制.md"
+}

@@ -1,0 +1,1029 @@
+{
+  "key": "sys:sketchupcontrol",
+  "slug": "sketchupcontrol",
+  "legacySlug": "sketchupcontrol",
+  "ownsLegacyContent": true,
+  "name": "SketchUp控制",
+  "description": "通过 SketchUp Ruby 扩展向动作触发时的前台实例发送命令。",
+  "category": "SoftInteraction",
+  "categoryName": "第三方软件交互",
+  "stepType": "Action",
+  "isRisky": false,
+  "isProOnly": false,
+  "helpLink": "https://docs.getquicker.net/v2/xaction/modules/sketchupcontrol",
+  "inputs": [
+    {
+      "key": "operation",
+      "name": "操作类型",
+      "type": "Enum",
+      "defaultValue": "common",
+      "required": true,
+      "variableMode": "Input",
+      "condition": "",
+      "description": "发送给动作触发时前台 SketchUp 实例的命令。"
+    },
+    {
+      "key": "commonCategory",
+      "name": "功能分类",
+      "type": "Enum",
+      "defaultValue": "selection",
+      "required": true,
+      "variableMode": "Input",
+      "condition": "仅：common",
+      "description": ""
+    },
+    {
+      "key": "selectionOperation",
+      "name": "选择功能",
+      "type": "Enum",
+      "defaultValue": "selection.get_info",
+      "required": true,
+      "variableMode": "Input",
+      "condition": "",
+      "description": ""
+    },
+    {
+      "key": "viewOperation",
+      "name": "视图功能",
+      "type": "Enum",
+      "defaultValue": "view.zoom_selection",
+      "required": true,
+      "variableMode": "Input",
+      "condition": "",
+      "description": ""
+    },
+    {
+      "key": "sceneOperation",
+      "name": "场景功能",
+      "type": "Enum",
+      "defaultValue": "scene.list",
+      "required": true,
+      "variableMode": "Input",
+      "condition": "",
+      "description": ""
+    },
+    {
+      "key": "organizeOperation",
+      "name": "整理功能",
+      "type": "Enum",
+      "defaultValue": "tag.list",
+      "required": true,
+      "variableMode": "Input",
+      "condition": "",
+      "description": ""
+    },
+    {
+      "key": "transformOperation",
+      "name": "变换功能",
+      "type": "Enum",
+      "defaultValue": "selection.move",
+      "required": true,
+      "variableMode": "Input",
+      "condition": "",
+      "description": ""
+    },
+    {
+      "key": "fileOperation",
+      "name": "文件功能",
+      "type": "Enum",
+      "defaultValue": "model.save",
+      "required": true,
+      "variableMode": "Input",
+      "condition": "",
+      "description": ""
+    },
+    {
+      "key": "persistentIds",
+      "name": "持久ID列表",
+      "type": "List",
+      "defaultValue": "",
+      "required": false,
+      "variableMode": "UseVarOrInput",
+      "condition": "",
+      "description": ""
+    },
+    {
+      "key": "selectionMode",
+      "name": "选择模式",
+      "type": "Enum",
+      "defaultValue": "replace",
+      "required": true,
+      "variableMode": "Input",
+      "condition": "",
+      "description": ""
+    },
+    {
+      "key": "includeHidden",
+      "name": "包含隐藏对象",
+      "type": "Boolean",
+      "defaultValue": "false",
+      "required": false,
+      "variableMode": "Input",
+      "condition": "",
+      "description": ""
+    },
+    {
+      "key": "includeLocked",
+      "name": "包含锁定对象",
+      "type": "Boolean",
+      "defaultValue": "false",
+      "required": false,
+      "variableMode": "Input",
+      "condition": "",
+      "description": ""
+    },
+    {
+      "key": "fullDetails",
+      "name": "返回完整详情",
+      "type": "Boolean",
+      "defaultValue": "false",
+      "required": false,
+      "variableMode": "Input",
+      "condition": "",
+      "description": ""
+    },
+    {
+      "key": "hidden",
+      "name": "隐藏对象",
+      "type": "Boolean",
+      "defaultValue": "true",
+      "required": false,
+      "variableMode": "Input",
+      "condition": "",
+      "description": ""
+    },
+    {
+      "key": "locked",
+      "name": "锁定对象",
+      "type": "Boolean",
+      "defaultValue": "true",
+      "required": false,
+      "variableMode": "Input",
+      "condition": "",
+      "description": ""
+    },
+    {
+      "key": "standardView",
+      "name": "标准视图",
+      "type": "Enum",
+      "defaultValue": "isometric",
+      "required": true,
+      "variableMode": "Input",
+      "condition": "",
+      "description": ""
+    },
+    {
+      "key": "zoomExtentsAfterView",
+      "name": "切换后缩放到全部",
+      "type": "Boolean",
+      "defaultValue": "true",
+      "required": false,
+      "variableMode": "Input",
+      "condition": "",
+      "description": ""
+    },
+    {
+      "key": "eye",
+      "name": "相机位置 X,Y,Z",
+      "type": "Text",
+      "defaultValue": "1000,1000,1000",
+      "required": false,
+      "variableMode": "UseVarOrInput",
+      "condition": "",
+      "description": ""
+    },
+    {
+      "key": "target",
+      "name": "观察目标 X,Y,Z",
+      "type": "Text",
+      "defaultValue": "0,0,0",
+      "required": false,
+      "variableMode": "UseVarOrInput",
+      "condition": "",
+      "description": ""
+    },
+    {
+      "key": "up",
+      "name": "向上向量 X,Y,Z",
+      "type": "Text",
+      "defaultValue": "0,0,1",
+      "required": false,
+      "variableMode": "UseVarOrInput",
+      "condition": "",
+      "description": ""
+    },
+    {
+      "key": "perspective",
+      "name": "透视投影",
+      "type": "Boolean",
+      "defaultValue": "true",
+      "required": false,
+      "variableMode": "Input",
+      "condition": "",
+      "description": ""
+    },
+    {
+      "key": "fieldOfView",
+      "name": "视野角度",
+      "type": "Number",
+      "defaultValue": "35.0",
+      "required": false,
+      "variableMode": "Input",
+      "condition": "",
+      "description": ""
+    },
+    {
+      "key": "sceneName",
+      "name": "场景名称",
+      "type": "Text",
+      "defaultValue": "",
+      "required": false,
+      "variableMode": "UseVarOrInput",
+      "condition": "",
+      "description": ""
+    },
+    {
+      "key": "newName",
+      "name": "新名称",
+      "type": "Text",
+      "defaultValue": "",
+      "required": false,
+      "variableMode": "UseVarOrInput",
+      "condition": "",
+      "description": ""
+    },
+    {
+      "key": "newIndex",
+      "name": "新位置（从0开始）",
+      "type": "Integer",
+      "defaultValue": "0",
+      "required": false,
+      "variableMode": "Input",
+      "condition": "",
+      "description": ""
+    },
+    {
+      "key": "tagName",
+      "name": "标签名称",
+      "type": "Text",
+      "defaultValue": "",
+      "required": false,
+      "variableMode": "UseVarOrInput",
+      "condition": "",
+      "description": ""
+    },
+    {
+      "key": "visible",
+      "name": "可见",
+      "type": "Boolean",
+      "defaultValue": "true",
+      "required": false,
+      "variableMode": "Input",
+      "condition": "",
+      "description": ""
+    },
+    {
+      "key": "materialName",
+      "name": "材质名称",
+      "type": "Text",
+      "defaultValue": "",
+      "required": false,
+      "variableMode": "UseVarOrInput",
+      "condition": "",
+      "description": ""
+    },
+    {
+      "key": "clearMaterial",
+      "name": "清除材质",
+      "type": "Boolean",
+      "defaultValue": "false",
+      "required": false,
+      "variableMode": "Input",
+      "condition": "",
+      "description": ""
+    },
+    {
+      "key": "entityName",
+      "name": "对象名称",
+      "type": "Text",
+      "defaultValue": "",
+      "required": false,
+      "variableMode": "UseVarOrInput",
+      "condition": "",
+      "description": ""
+    },
+    {
+      "key": "attributeDictionary",
+      "name": "属性字典",
+      "type": "Text",
+      "defaultValue": "Quicker",
+      "required": false,
+      "variableMode": "UseVarOrInput",
+      "condition": "",
+      "description": ""
+    },
+    {
+      "key": "attributeKey",
+      "name": "属性名称",
+      "type": "Text",
+      "defaultValue": "",
+      "required": false,
+      "variableMode": "UseVarOrInput",
+      "condition": "",
+      "description": ""
+    },
+    {
+      "key": "attributeValueJson",
+      "name": "属性值(JSON)",
+      "type": "Text",
+      "defaultValue": "null",
+      "required": false,
+      "variableMode": "UseVarOrInput",
+      "condition": "",
+      "description": ""
+    },
+    {
+      "key": "vector",
+      "name": "移动向量 X,Y,Z",
+      "type": "Text",
+      "defaultValue": "0,0,0",
+      "required": false,
+      "variableMode": "UseVarOrInput",
+      "condition": "",
+      "description": ""
+    },
+    {
+      "key": "origin",
+      "name": "变换原点 X,Y,Z（留空使用选择中心）",
+      "type": "Text",
+      "defaultValue": "",
+      "required": false,
+      "variableMode": "UseVarOrInput",
+      "condition": "",
+      "description": ""
+    },
+    {
+      "key": "axis",
+      "name": "旋转轴 X,Y,Z",
+      "type": "Text",
+      "defaultValue": "0,0,1",
+      "required": false,
+      "variableMode": "UseVarOrInput",
+      "condition": "",
+      "description": ""
+    },
+    {
+      "key": "angleDegrees",
+      "name": "旋转角度（度）",
+      "type": "Number",
+      "defaultValue": "90.0",
+      "required": false,
+      "variableMode": "Input",
+      "condition": "",
+      "description": ""
+    },
+    {
+      "key": "scaleFactors",
+      "name": "缩放比例 X,Y,Z",
+      "type": "Text",
+      "defaultValue": "1,1,1",
+      "required": false,
+      "variableMode": "UseVarOrInput",
+      "condition": "",
+      "description": ""
+    },
+    {
+      "key": "lengthUnit",
+      "name": "坐标与长度单位",
+      "type": "Enum",
+      "defaultValue": "mm",
+      "required": true,
+      "variableMode": "Input",
+      "condition": "",
+      "description": ""
+    },
+    {
+      "key": "commonFilePath",
+      "name": "文件路径",
+      "type": "Text",
+      "defaultValue": "",
+      "required": false,
+      "variableMode": "UseVarOrInput",
+      "condition": "",
+      "description": ""
+    },
+    {
+      "key": "imageWidth",
+      "name": "图片宽度",
+      "type": "Integer",
+      "defaultValue": "1920",
+      "required": false,
+      "variableMode": "Input",
+      "condition": "",
+      "description": ""
+    },
+    {
+      "key": "imageHeight",
+      "name": "图片高度",
+      "type": "Integer",
+      "defaultValue": "1080",
+      "required": false,
+      "variableMode": "Input",
+      "condition": "",
+      "description": ""
+    },
+    {
+      "key": "exportOptionsJson",
+      "name": "导出选项(JSON object)",
+      "type": "Text",
+      "defaultValue": "{}",
+      "required": false,
+      "variableMode": "UseVarOrInput",
+      "condition": "",
+      "description": ""
+    },
+    {
+      "key": "pluginMenuText",
+      "name": "插件命令菜单文字",
+      "type": "Text",
+      "defaultValue": "",
+      "required": true,
+      "variableMode": "UseVarOrInput",
+      "condition": "仅：extension_command.invoke",
+      "description": ""
+    },
+    {
+      "key": "pluginExtensionName",
+      "name": "所属扩展名称",
+      "type": "Text",
+      "defaultValue": "",
+      "required": false,
+      "variableMode": "UseVarOrInput",
+      "condition": "仅：extension_command.invoke",
+      "description": ""
+    },
+    {
+      "key": "pluginTooltip",
+      "name": "命令提示文字",
+      "type": "Text",
+      "defaultValue": "",
+      "required": false,
+      "variableMode": "UseVarOrInput",
+      "condition": "仅：extension_command.invoke",
+      "description": ""
+    },
+    {
+      "key": "pluginLocatorJson",
+      "name": "高级定位信息(JSON object)",
+      "type": "Text",
+      "defaultValue": "{}",
+      "required": false,
+      "variableMode": "UseVarOrInput",
+      "condition": "仅：extension_command.invoke",
+      "description": "命令工具生成动作时自动保留状态栏文字和图标等定位信息；手工配置通常留空即可。"
+    },
+    {
+      "key": "rubyCode",
+      "name": "Ruby 代码",
+      "type": "Text",
+      "defaultValue": "",
+      "required": true,
+      "variableMode": "UseVarOrInput",
+      "condition": "仅：script.evaluate",
+      "description": "直接在目标 SketchUp 的 Ruby 上下文中执行。可使用 model、selection、view 和 args。"
+    },
+    {
+      "key": "filePath",
+      "name": "Ruby 文件路径",
+      "type": "Text",
+      "defaultValue": "",
+      "required": true,
+      "variableMode": "UseVarOrInput",
+      "condition": "仅：script.run_file, script.load_file",
+      "description": "要运行或加载的 Ruby 文件绝对路径。"
+    },
+    {
+      "key": "action",
+      "name": "Action 字符串或数字 ID",
+      "type": "Text",
+      "defaultValue": "",
+      "required": true,
+      "variableMode": "UseVarOrInput",
+      "condition": "仅：host_action.send",
+      "description": "原样传给 Sketchup.send_action，不限制 action 内容。"
+    },
+    {
+      "key": "commandName",
+      "name": "Bridge 命令名称",
+      "type": "Text",
+      "defaultValue": "",
+      "required": true,
+      "variableMode": "UseVarOrInput",
+      "condition": "仅：command.custom",
+      "description": "发送任意命令名称，供第三方插件或后续 Bridge handler 使用。"
+    },
+    {
+      "key": "argumentsJson",
+      "name": "参数(JSON object)",
+      "type": "Text",
+      "defaultValue": "{}",
+      "required": false,
+      "variableMode": "UseVarOrInput",
+      "condition": "仅：script.evaluate, script.run_file, command.custom",
+      "description": "传入 Ruby 脚本或自定义命令的参数。"
+    },
+    {
+      "key": "wrapLoad",
+      "name": "在匿名模块中加载",
+      "type": "Boolean",
+      "defaultValue": "false",
+      "required": false,
+      "variableMode": "Input",
+      "condition": "仅：script.load_file",
+      "description": "对应 Ruby load(path, true) 的 wrap 参数。"
+    },
+    {
+      "key": "waitMs",
+      "name": "最长等待时间(ms)",
+      "type": "Number",
+      "defaultValue": "5000",
+      "required": true,
+      "variableMode": "Input",
+      "condition": "",
+      "description": "等待目标 SketchUp 实例返回结果的最长时间。"
+    },
+    {
+      "key": "stopIfFail",
+      "name": "失败后停止",
+      "type": "Boolean",
+      "defaultValue": "true",
+      "required": false,
+      "variableMode": "Input",
+      "condition": "",
+      "description": "失败后是否停止动作"
+    }
+  ],
+  "outputs": [
+    {
+      "key": "isSuccess",
+      "name": "是否成功",
+      "type": "Boolean",
+      "condition": "",
+      "description": "操作是否成功"
+    },
+    {
+      "key": "output",
+      "name": "命令结果",
+      "type": "Text",
+      "condition": "",
+      "description": "SketchUp 返回的 JSON 结果。"
+    },
+    {
+      "key": "count",
+      "name": "数量",
+      "type": "Integer",
+      "condition": "",
+      "description": ""
+    },
+    {
+      "key": "persistentIdsOutput",
+      "name": "实体ID列表",
+      "type": "List",
+      "condition": "",
+      "description": ""
+    }
+  ],
+  "selections": {
+    "operation": {
+      "name": "操作类型",
+      "items": [
+        {
+          "value": "common",
+          "name": "[常用] 常用功能",
+          "description": ""
+        },
+        {
+          "value": "extension_command.invoke",
+          "name": "[插件] 调用第三方插件命令",
+          "description": ""
+        },
+        {
+          "value": "model.get_context",
+          "name": "[模型] 获取模型上下文",
+          "description": ""
+        },
+        {
+          "value": "script.evaluate",
+          "name": "[脚本] 执行任意 Ruby",
+          "description": ""
+        },
+        {
+          "value": "script.run_file",
+          "name": "[脚本] 运行 Ruby 文件",
+          "description": ""
+        },
+        {
+          "value": "script.load_file",
+          "name": "[脚本] 加载 Ruby 文件",
+          "description": ""
+        },
+        {
+          "value": "host_action.send",
+          "name": "[命令] 发送任意 SketchUp Action",
+          "description": ""
+        },
+        {
+          "value": "command.custom",
+          "name": "[高级] 发送自定义 Bridge 命令",
+          "description": ""
+        }
+      ]
+    },
+    "commonCategory": {
+      "name": "功能分类",
+      "items": [
+        {
+          "value": "selection",
+          "name": "选择对象",
+          "description": ""
+        },
+        {
+          "value": "view",
+          "name": "视图与相机",
+          "description": ""
+        },
+        {
+          "value": "scene",
+          "name": "场景",
+          "description": ""
+        },
+        {
+          "value": "organize",
+          "name": "标签、材质与对象",
+          "description": ""
+        },
+        {
+          "value": "transform",
+          "name": "几何变换",
+          "description": ""
+        },
+        {
+          "value": "file",
+          "name": "文件与导出",
+          "description": ""
+        }
+      ]
+    },
+    "selectionOperation": {
+      "name": "选择功能",
+      "items": [
+        {
+          "value": "selection.get_info",
+          "name": "读取选择详情",
+          "description": ""
+        },
+        {
+          "value": "selection.select_by_ids",
+          "name": "按持久ID选择",
+          "description": ""
+        },
+        {
+          "value": "selection.select_all",
+          "name": "选择当前上下文全部对象",
+          "description": ""
+        },
+        {
+          "value": "selection.invert",
+          "name": "反选",
+          "description": ""
+        },
+        {
+          "value": "selection.select_same_type",
+          "name": "选择相同类型",
+          "description": ""
+        },
+        {
+          "value": "selection.select_same_component",
+          "name": "选择相同组件",
+          "description": ""
+        },
+        {
+          "value": "selection.select_same_tag",
+          "name": "选择相同标签",
+          "description": ""
+        },
+        {
+          "value": "selection.clear",
+          "name": "清空选择",
+          "description": ""
+        },
+        {
+          "value": "entity.visibility.set",
+          "name": "隐藏/显示对象",
+          "description": ""
+        },
+        {
+          "value": "selection.lock",
+          "name": "锁定/解锁对象",
+          "description": ""
+        }
+      ]
+    },
+    "viewOperation": {
+      "name": "视图功能",
+      "items": [
+        {
+          "value": "view.zoom_selection",
+          "name": "缩放到选择对象",
+          "description": ""
+        },
+        {
+          "value": "view.zoom_extents",
+          "name": "缩放到全部",
+          "description": ""
+        },
+        {
+          "value": "view.standard",
+          "name": "切换标准视图",
+          "description": ""
+        },
+        {
+          "value": "view.get_camera",
+          "name": "读取相机",
+          "description": ""
+        },
+        {
+          "value": "view.set_camera",
+          "name": "设置相机",
+          "description": ""
+        },
+        {
+          "value": "view.projection.set",
+          "name": "设置投影方式",
+          "description": ""
+        },
+        {
+          "value": "view.write_image",
+          "name": "输出视图图片",
+          "description": ""
+        }
+      ]
+    },
+    "sceneOperation": {
+      "name": "场景功能",
+      "items": [
+        {
+          "value": "scene.list",
+          "name": "列出场景",
+          "description": ""
+        },
+        {
+          "value": "scene.activate",
+          "name": "激活场景",
+          "description": ""
+        },
+        {
+          "value": "scene.create",
+          "name": "新建场景",
+          "description": ""
+        },
+        {
+          "value": "scene.update",
+          "name": "更新场景",
+          "description": ""
+        },
+        {
+          "value": "scene.rename",
+          "name": "重命名场景",
+          "description": ""
+        },
+        {
+          "value": "scene.delete",
+          "name": "删除场景",
+          "description": ""
+        },
+        {
+          "value": "scene.reorder",
+          "name": "调整场景顺序",
+          "description": ""
+        },
+        {
+          "value": "scene.next",
+          "name": "下一个场景",
+          "description": ""
+        },
+        {
+          "value": "scene.previous",
+          "name": "上一个场景",
+          "description": ""
+        }
+      ]
+    },
+    "organizeOperation": {
+      "name": "整理功能",
+      "items": [
+        {
+          "value": "tag.list",
+          "name": "列出标签",
+          "description": ""
+        },
+        {
+          "value": "tag.set_visibility",
+          "name": "设置标签可见性",
+          "description": ""
+        },
+        {
+          "value": "selection.assign_tag",
+          "name": "为选择对象分配标签",
+          "description": ""
+        },
+        {
+          "value": "material.list",
+          "name": "列出材质",
+          "description": ""
+        },
+        {
+          "value": "selection.assign_material",
+          "name": "为选择对象分配材质",
+          "description": ""
+        },
+        {
+          "value": "entity.rename",
+          "name": "重命名选择对象",
+          "description": ""
+        },
+        {
+          "value": "entity.get_attributes",
+          "name": "读取对象属性",
+          "description": ""
+        },
+        {
+          "value": "entity.set_attribute",
+          "name": "设置对象属性",
+          "description": ""
+        }
+      ]
+    },
+    "transformOperation": {
+      "name": "变换功能",
+      "items": [
+        {
+          "value": "selection.move",
+          "name": "移动",
+          "description": ""
+        },
+        {
+          "value": "selection.rotate",
+          "name": "旋转",
+          "description": ""
+        },
+        {
+          "value": "selection.scale",
+          "name": "缩放",
+          "description": ""
+        },
+        {
+          "value": "selection.center_to_origin",
+          "name": "中心移动到原点",
+          "description": ""
+        },
+        {
+          "value": "selection.drop_to_ground",
+          "name": "落到Z=0平面",
+          "description": ""
+        },
+        {
+          "value": "selection.make_group",
+          "name": "创建组",
+          "description": ""
+        },
+        {
+          "value": "selection.make_component",
+          "name": "创建组件",
+          "description": ""
+        },
+        {
+          "value": "selection.explode",
+          "name": "炸开组或组件",
+          "description": ""
+        }
+      ]
+    },
+    "fileOperation": {
+      "name": "文件功能",
+      "items": [
+        {
+          "value": "model.save",
+          "name": "保存当前模型",
+          "description": ""
+        },
+        {
+          "value": "model.save_as",
+          "name": "模型另存为",
+          "description": ""
+        },
+        {
+          "value": "model.export",
+          "name": "导出模型",
+          "description": ""
+        }
+      ]
+    },
+    "selectionMode": {
+      "name": "选择模式",
+      "items": [
+        {
+          "value": "replace",
+          "name": "替换当前选择",
+          "description": ""
+        },
+        {
+          "value": "add",
+          "name": "添加到选择",
+          "description": ""
+        },
+        {
+          "value": "remove",
+          "name": "从选择中移除",
+          "description": ""
+        },
+        {
+          "value": "toggle",
+          "name": "切换选择状态",
+          "description": ""
+        }
+      ]
+    },
+    "standardView": {
+      "name": "标准视图",
+      "items": [
+        {
+          "value": "front",
+          "name": "前视图",
+          "description": ""
+        },
+        {
+          "value": "back",
+          "name": "后视图",
+          "description": ""
+        },
+        {
+          "value": "left",
+          "name": "左视图",
+          "description": ""
+        },
+        {
+          "value": "right",
+          "name": "右视图",
+          "description": ""
+        },
+        {
+          "value": "top",
+          "name": "顶视图",
+          "description": ""
+        },
+        {
+          "value": "bottom",
+          "name": "底视图",
+          "description": ""
+        },
+        {
+          "value": "isometric",
+          "name": "等轴测",
+          "description": ""
+        }
+      ]
+    },
+    "lengthUnit": {
+      "name": "坐标与长度单位",
+      "items": [
+        {
+          "value": "mm",
+          "name": "毫米",
+          "description": ""
+        },
+        {
+          "value": "cm",
+          "name": "厘米",
+          "description": ""
+        },
+        {
+          "value": "m",
+          "name": "米",
+          "description": ""
+        },
+        {
+          "value": "inch",
+          "name": "英寸",
+          "description": ""
+        },
+        {
+          "value": "foot",
+          "name": "英尺",
+          "description": ""
+        }
+      ]
+    }
+  },
+  "sourceFileName": "sys_sketchupcontrol_SketchUp控制.md"
+}

@@ -29,7 +29,7 @@
       "defaultValue": "",
       "required": false,
       "variableMode": "UseVarOrInput",
-      "condition": "仅：RunScript",
+      "condition": "仅：RunScript, command.run",
       "description": "命令或脚本内容。"
     },
     {
@@ -40,6 +40,136 @@
       "required": false,
       "variableMode": "UseVarOrInput",
       "condition": "仅：RunScript",
+      "description": ""
+    },
+    {
+      "key": "filePath",
+      "name": "文件路径",
+      "type": "Text",
+      "defaultValue": "",
+      "required": true,
+      "variableMode": "UseVarOrInput",
+      "condition": "仅：document.save_as, python.run_file",
+      "description": ""
+    },
+    {
+      "key": "idsJson",
+      "name": "对象 ID（JSON 数组）",
+      "type": "Text",
+      "defaultValue": "[]",
+      "required": false,
+      "variableMode": "UseVarOrInput",
+      "condition": "仅：selection.select_by_ids, object.delete, object.hide, object.show, object.lock, object.unlock",
+      "description": ""
+    },
+    {
+      "key": "clearSelection",
+      "name": "先清除原选择",
+      "type": "Boolean",
+      "defaultValue": "true",
+      "required": false,
+      "variableMode": "UseVarOrInput",
+      "condition": "仅：selection.select_by_ids",
+      "description": ""
+    },
+    {
+      "key": "name",
+      "name": "图层名称、路径或 ID（新建仅名称）",
+      "type": "Text",
+      "defaultValue": "新图层",
+      "required": false,
+      "variableMode": "UseVarOrInput",
+      "condition": "仅：layer.create, layer.set_current, layer.set_visible, layer.set_locked",
+      "description": ""
+    },
+    {
+      "key": "boolValue",
+      "name": "启用",
+      "type": "Boolean",
+      "defaultValue": "true",
+      "required": false,
+      "variableMode": "UseVarOrInput",
+      "condition": "仅：layer.set_visible, layer.set_locked",
+      "description": ""
+    },
+    {
+      "key": "pointJson",
+      "name": "点坐标（JSON）",
+      "type": "Text",
+      "defaultValue": "[0,0,0]",
+      "required": false,
+      "variableMode": "UseVarOrInput",
+      "condition": "仅：geometry.add_point, geometry.add_sphere",
+      "description": ""
+    },
+    {
+      "key": "fromJson",
+      "name": "起点（JSON）",
+      "type": "Text",
+      "defaultValue": "[0,0,0]",
+      "required": false,
+      "variableMode": "UseVarOrInput",
+      "condition": "仅：geometry.add_line",
+      "description": ""
+    },
+    {
+      "key": "toJson",
+      "name": "终点（JSON）",
+      "type": "Text",
+      "defaultValue": "[100,0,0]",
+      "required": false,
+      "variableMode": "UseVarOrInput",
+      "condition": "仅：geometry.add_line",
+      "description": ""
+    },
+    {
+      "key": "sizeJson",
+      "name": "尺寸（JSON）",
+      "type": "Text",
+      "defaultValue": "[100,100,100]",
+      "required": false,
+      "variableMode": "UseVarOrInput",
+      "condition": "仅：geometry.add_box",
+      "description": ""
+    },
+    {
+      "key": "radius",
+      "name": "半径",
+      "type": "Number",
+      "defaultValue": "50",
+      "required": false,
+      "variableMode": "UseVarOrInput",
+      "condition": "仅：geometry.add_sphere",
+      "description": ""
+    },
+    {
+      "key": "echo",
+      "name": "回显命令",
+      "type": "Boolean",
+      "defaultValue": "false",
+      "required": false,
+      "variableMode": "UseVarOrInput",
+      "condition": "仅：command.run",
+      "description": ""
+    },
+    {
+      "key": "bridgeCommandName",
+      "name": "Bridge 命令名称",
+      "type": "Text",
+      "defaultValue": "",
+      "required": true,
+      "variableMode": "UseVarOrInput",
+      "condition": "仅：BridgeCustom",
+      "description": ""
+    },
+    {
+      "key": "bridgeArgumentsJson",
+      "name": "参数（JSON 对象）",
+      "type": "Text",
+      "defaultValue": "{}",
+      "required": false,
+      "variableMode": "UseVarOrInput",
+      "condition": "仅：BridgeCustom",
       "description": ""
     },
     {
@@ -85,7 +215,152 @@
       "items": [
         {
           "value": "RunScript",
-          "name": "执行脚本",
+          "name": "[兼容] 执行脚本",
+          "description": ""
+        },
+        {
+          "value": "bridge.ping",
+          "name": "[Bridge] 测试连接",
+          "description": ""
+        },
+        {
+          "value": "command.list",
+          "name": "[Bridge] 读取命令目录",
+          "description": ""
+        },
+        {
+          "value": "document.get_context",
+          "name": "[文档] 获取文档上下文",
+          "description": ""
+        },
+        {
+          "value": "document.list",
+          "name": "[文档] 列出文档",
+          "description": ""
+        },
+        {
+          "value": "document.save",
+          "name": "[文档] 保存文档",
+          "description": ""
+        },
+        {
+          "value": "document.save_as",
+          "name": "[文档] 文档另存为",
+          "description": ""
+        },
+        {
+          "value": "selection.get_info",
+          "name": "[选择] 读取选择详情",
+          "description": ""
+        },
+        {
+          "value": "selection.select_all",
+          "name": "[选择] 全选对象",
+          "description": ""
+        },
+        {
+          "value": "selection.clear",
+          "name": "[选择] 清除选择",
+          "description": ""
+        },
+        {
+          "value": "selection.select_by_ids",
+          "name": "[选择] 按 ID 选择",
+          "description": ""
+        },
+        {
+          "value": "object.delete",
+          "name": "[对象] 删除对象",
+          "description": ""
+        },
+        {
+          "value": "object.hide",
+          "name": "[对象] 隐藏对象",
+          "description": ""
+        },
+        {
+          "value": "object.show",
+          "name": "[对象] 显示对象",
+          "description": ""
+        },
+        {
+          "value": "object.lock",
+          "name": "[对象] 锁定对象",
+          "description": ""
+        },
+        {
+          "value": "object.unlock",
+          "name": "[对象] 解锁对象",
+          "description": ""
+        },
+        {
+          "value": "layer.list",
+          "name": "[图层] 列出图层",
+          "description": ""
+        },
+        {
+          "value": "layer.create",
+          "name": "[图层] 新建图层",
+          "description": ""
+        },
+        {
+          "value": "layer.set_current",
+          "name": "[图层] 设为当前图层",
+          "description": ""
+        },
+        {
+          "value": "layer.set_visible",
+          "name": "[图层] 设置图层可见性",
+          "description": ""
+        },
+        {
+          "value": "layer.set_locked",
+          "name": "[图层] 设置图层锁定",
+          "description": ""
+        },
+        {
+          "value": "view.zoom_extents",
+          "name": "[视图] 缩放到全部",
+          "description": ""
+        },
+        {
+          "value": "view.zoom_selection",
+          "name": "[视图] 缩放到选择",
+          "description": ""
+        },
+        {
+          "value": "geometry.add_point",
+          "name": "[几何] 创建点",
+          "description": ""
+        },
+        {
+          "value": "geometry.add_line",
+          "name": "[几何] 创建直线",
+          "description": ""
+        },
+        {
+          "value": "geometry.add_box",
+          "name": "[几何] 创建长方体",
+          "description": ""
+        },
+        {
+          "value": "geometry.add_sphere",
+          "name": "[几何] 创建球体",
+          "description": ""
+        },
+        {
+          "value": "command.run",
+          "name": "[命令] 运行任意 Rhino 命令",
+          "description": ""
+        },
+        {
+          "value": "python.run_file",
+          "name": "[脚本] 运行 Python 文件",
+          "description": ""
+        },
+        {
+          "value": "BridgeCustom",
+          "name": "[高级] 发送自定义 Bridge 命令",
           "description": ""
         }
       ]

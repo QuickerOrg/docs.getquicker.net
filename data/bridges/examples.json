@@ -1,0 +1,139 @@
+{
+  "schemaVersion": 1,
+  "examples": [
+    {
+      "moduleKey": "sys:3dsmaxcontrol",
+      "command": "bridge.ping",
+      "inputs": {
+        "operation": "bridge.ping"
+      },
+      "outputKey": "output"
+    },
+    {
+      "moduleKey": "sys:aftereffectscontrol",
+      "command": "bridge.ping",
+      "inputs": {
+        "operation": "bridge.ping"
+      },
+      "outputKey": "output"
+    },
+    {
+      "moduleKey": "sys:autocadcontrol",
+      "command": "bridge.ping",
+      "inputs": {
+        "connection": "bridge",
+        "bridgeOperation": "bridge.ping"
+      },
+      "outputKey": "output"
+    },
+    {
+      "moduleKey": "sys:blendercontrol",
+      "command": "bridge.ping",
+      "inputs": {
+        "operation": "bridge.ping"
+      },
+      "outputKey": "output"
+    },
+    {
+      "moduleKey": "sys:cinema4dcontrol",
+      "command": "bridge.ping",
+      "inputs": {
+        "operation": "bridge.ping"
+      },
+      "outputKey": "output"
+    },
+    {
+      "moduleKey": "sys:coreldrawcontrol",
+      "command": "bridge.ping",
+      "inputs": {
+        "operation": "bridge.ping",
+        "argumentsJson": "{}"
+      },
+      "outputKey": "output"
+    },
+    {
+      "moduleKey": "sys:illustratorcontrol",
+      "command": "bridge.ping",
+      "inputs": {
+        "operation": "bridge.ping"
+      },
+      "outputKey": "output"
+    },
+    {
+      "moduleKey": "sys:indesigncontrol",
+      "command": "bridge.ping",
+      "inputs": {
+        "operation": "bridge.ping"
+      },
+      "outputKey": "output"
+    },
+    {
+      "moduleKey": "sys:mayacontrol",
+      "command": "bridge.ping",
+      "inputs": {
+        "operation": "bridge.ping"
+      },
+      "outputKey": "output"
+    },
+    {
+      "moduleKey": "sys:photoshopcontrol",
+      "command": "bridge.ping",
+      "inputs": {
+        "operation": "bridge.ping"
+      },
+      "outputKey": "output"
+    },
+    {
+      "moduleKey": "sys:premierecontrol",
+      "command": "bridge.ping",
+      "inputs": {
+        "operation": "bridge.ping"
+      },
+      "outputKey": "output"
+    },
+    {
+      "moduleKey": "sys:revitcontrol",
+      "command": "bridge.ping",
+      "inputs": {
+        "operation": "bridge.ping",
+        "argumentsJson": "{}"
+      },
+      "outputKey": "output"
+    },
+    {
+      "moduleKey": "sys:rhinocontrol",
+      "command": "bridge.ping",
+      "inputs": {
+        "operation": "bridge.ping"
+      },
+      "outputKey": "output"
+    },
+    {
+      "moduleKey": "sys:sketchupcontrol",
+      "command": "bridge.ping",
+      "inputs": {
+        "operation": "command.custom",
+        "commandName": "bridge.ping",
+        "argumentsJson": "{}"
+      },
+      "outputKey": "output"
+    },
+    {
+      "moduleKey": "sys:solidworkscontrol",
+      "command": "bridge.ping",
+      "inputs": {
+        "operation": "bridge.ping"
+      },
+      "outputKey": "output"
+    },
+    {
+      "moduleKey": "sys:wpscontrol",
+      "command": "bridge.ping",
+      "inputs": {
+        "operation": "bridge.ping",
+        "targetComponent": "wps"
+      },
+      "outputKey": "output"
+    }
+  ]
+}

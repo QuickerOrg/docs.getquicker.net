@@ -1,0 +1,385 @@
+{
+  "key": "sys:cinema4dcontrol",
+  "slug": "cinema4dcontrol",
+  "legacySlug": "cinema4dcontrol",
+  "ownsLegacyContent": true,
+  "name": "Cinema 4D控制",
+  "description": "通过 Cinema 4D Python 插件向动作触发时的前台实例发送命令。",
+  "category": "SoftInteraction",
+  "categoryName": "第三方软件交互",
+  "stepType": "Action",
+  "isRisky": false,
+  "isProOnly": false,
+  "helpLink": "https://docs.getquicker.net/v2/xaction/modules/cinema4dcontrol",
+  "inputs": [
+    {
+      "key": "operation",
+      "name": "操作类型",
+      "type": "Enum",
+      "defaultValue": "document.get_context",
+      "required": true,
+      "variableMode": "Input",
+      "condition": "",
+      "description": ""
+    },
+    {
+      "key": "recursive",
+      "name": "递归读取子对象",
+      "type": "Boolean",
+      "defaultValue": "true",
+      "required": false,
+      "variableMode": "Input",
+      "condition": "",
+      "description": ""
+    },
+    {
+      "key": "maxDepth",
+      "name": "最大层级深度",
+      "type": "Integer",
+      "defaultValue": "20",
+      "required": false,
+      "variableMode": "Input",
+      "condition": "",
+      "description": ""
+    },
+    {
+      "key": "includeTransform",
+      "name": "返回对象变换",
+      "type": "Boolean",
+      "defaultValue": "false",
+      "required": false,
+      "variableMode": "Input",
+      "condition": "",
+      "description": ""
+    },
+    {
+      "key": "includeChildren",
+      "name": "包含层级中的子对象",
+      "type": "Boolean",
+      "defaultValue": "true",
+      "required": false,
+      "variableMode": "Input",
+      "condition": "",
+      "description": ""
+    },
+    {
+      "key": "objectRefsJson",
+      "name": "对象引用(JSON 数组)",
+      "type": "Text",
+      "defaultValue": "[]",
+      "required": false,
+      "variableMode": "UseVarOrInput",
+      "condition": "",
+      "description": "引用可从读取对象层级或选择详情的 ref 字段取得。"
+    },
+    {
+      "key": "selectionMode",
+      "name": "选择方式",
+      "type": "Text",
+      "defaultValue": "replace",
+      "required": false,
+      "variableMode": "UseVarOrInput",
+      "condition": "",
+      "description": "replace、add 或 remove。"
+    },
+    {
+      "key": "primitiveType",
+      "name": "对象类型",
+      "type": "Text",
+      "defaultValue": "cube",
+      "required": false,
+      "variableMode": "UseVarOrInput",
+      "condition": "",
+      "description": "首版支持 cube、sphere、cylinder、cone、plane、torus。"
+    },
+    {
+      "key": "objectName",
+      "name": "对象名称",
+      "type": "Text",
+      "defaultValue": "Quicker Object",
+      "required": false,
+      "variableMode": "UseVarOrInput",
+      "condition": "",
+      "description": ""
+    },
+    {
+      "key": "renamePattern",
+      "name": "重命名模板",
+      "type": "Text",
+      "defaultValue": "{oldName}_{index:02d}",
+      "required": false,
+      "variableMode": "UseVarOrInput",
+      "condition": "",
+      "description": "支持 {oldName} 和 {index}，例如 Obj_{index:03d}。"
+    },
+    {
+      "key": "startIndex",
+      "name": "起始编号",
+      "type": "Integer",
+      "defaultValue": "1",
+      "required": false,
+      "variableMode": "Input",
+      "condition": "",
+      "description": ""
+    },
+    {
+      "key": "offsetX",
+      "name": "移动 X",
+      "type": "Number",
+      "defaultValue": "100",
+      "required": false,
+      "variableMode": "Input",
+      "condition": "",
+      "description": ""
+    },
+    {
+      "key": "offsetY",
+      "name": "移动 Y",
+      "type": "Number",
+      "defaultValue": "0",
+      "required": false,
+      "variableMode": "Input",
+      "condition": "",
+      "description": ""
+    },
+    {
+      "key": "offsetZ",
+      "name": "移动 Z",
+      "type": "Number",
+      "defaultValue": "0",
+      "required": false,
+      "variableMode": "Input",
+      "condition": "",
+      "description": ""
+    },
+    {
+      "key": "coordinateSpace",
+      "name": "坐标空间",
+      "type": "Text",
+      "defaultValue": "global",
+      "required": false,
+      "variableMode": "UseVarOrInput",
+      "condition": "",
+      "description": "global 使用世界坐标；local 使用父级坐标。"
+    },
+    {
+      "key": "commandQuery",
+      "name": "搜索内容",
+      "type": "Text",
+      "defaultValue": "",
+      "required": false,
+      "variableMode": "UseVarOrInput",
+      "condition": "",
+      "description": "按命令 ID、本地标题或帮助文本筛选；留空返回前若干项。"
+    },
+    {
+      "key": "maxCount",
+      "name": "最多返回数量",
+      "type": "Integer",
+      "defaultValue": "100",
+      "required": false,
+      "variableMode": "Input",
+      "condition": "",
+      "description": ""
+    },
+    {
+      "key": "commandIdentifier",
+      "name": "命令 ID 或标题",
+      "type": "Text",
+      "defaultValue": "13957",
+      "required": false,
+      "variableMode": "UseVarOrInput",
+      "condition": "",
+      "description": "可填写数字 ID，或 command.search 返回的本地化标题；标题不唯一时会返回候选 ID。"
+    },
+    {
+      "key": "pythonCode",
+      "name": "Python 代码",
+      "type": "Text",
+      "defaultValue": "",
+      "required": true,
+      "variableMode": "UseVarOrInput",
+      "condition": "",
+      "description": "表达式直接返回 value；脚本可把返回值赋给 result。"
+    },
+    {
+      "key": "filePath",
+      "name": "Python 文件路径",
+      "type": "Text",
+      "defaultValue": "",
+      "required": true,
+      "variableMode": "UseVarOrInput",
+      "condition": "",
+      "description": ""
+    },
+    {
+      "key": "commandName",
+      "name": "Bridge 命令名称",
+      "type": "Text",
+      "defaultValue": "",
+      "required": true,
+      "variableMode": "UseVarOrInput",
+      "condition": "",
+      "description": ""
+    },
+    {
+      "key": "argumentsJson",
+      "name": "参数(JSON 对象)",
+      "type": "Text",
+      "defaultValue": "{}",
+      "required": false,
+      "variableMode": "UseVarOrInput",
+      "condition": "",
+      "description": ""
+    },
+    {
+      "key": "waitMs",
+      "name": "最长等待时间(ms)",
+      "type": "Number",
+      "defaultValue": "30000",
+      "required": true,
+      "variableMode": "Input",
+      "condition": "",
+      "description": ""
+    },
+    {
+      "key": "stopIfFail",
+      "name": "失败后停止",
+      "type": "Boolean",
+      "defaultValue": "true",
+      "required": false,
+      "variableMode": "Input",
+      "condition": "",
+      "description": "失败后是否停止动作"
+    }
+  ],
+  "outputs": [
+    {
+      "key": "isSuccess",
+      "name": "是否成功",
+      "type": "Boolean",
+      "condition": "",
+      "description": "操作是否成功"
+    },
+    {
+      "key": "output",
+      "name": "命令结果",
+      "type": "Text",
+      "condition": "",
+      "description": "Cinema 4D 返回的 JSON 结果。"
+    }
+  ],
+  "selections": {
+    "operation": {
+      "name": "操作类型",
+      "items": [
+        {
+          "value": "bridge.ping",
+          "name": "[Bridge] 测试连接",
+          "description": ""
+        },
+        {
+          "value": "document.get_context",
+          "name": "[文档] 读取当前文档上下文",
+          "description": ""
+        },
+        {
+          "value": "object.list",
+          "name": "[对象] 读取对象层级",
+          "description": ""
+        },
+        {
+          "value": "selection.get_info",
+          "name": "[选择] 读取选择详情",
+          "description": ""
+        },
+        {
+          "value": "selection.select_all",
+          "name": "[选择] 全选对象",
+          "description": ""
+        },
+        {
+          "value": "selection.clear",
+          "name": "[选择] 清空选择",
+          "description": ""
+        },
+        {
+          "value": "selection.invert",
+          "name": "[选择] 反选对象",
+          "description": ""
+        },
+        {
+          "value": "selection.select_by_refs",
+          "name": "[选择] 按对象引用选择",
+          "description": ""
+        },
+        {
+          "value": "object.create_primitive",
+          "name": "[对象] 创建基础对象",
+          "description": ""
+        },
+        {
+          "value": "object.rename_selected",
+          "name": "[对象] 批量重命名选择对象",
+          "description": ""
+        },
+        {
+          "value": "object.delete_selected",
+          "name": "[对象] 删除选择对象",
+          "description": ""
+        },
+        {
+          "value": "object.move_selected",
+          "name": "[对象] 移动选择对象",
+          "description": ""
+        },
+        {
+          "value": "view.frame_selection",
+          "name": "[视图] 聚焦选择对象",
+          "description": ""
+        },
+        {
+          "value": "view.frame_all",
+          "name": "[视图] 显示全部对象",
+          "description": ""
+        },
+        {
+          "value": "command.search",
+          "name": "[命令] 搜索 Cinema 4D 命令",
+          "description": ""
+        },
+        {
+          "value": "command.get_info",
+          "name": "[命令] 读取 Cinema 4D 命令信息",
+          "description": ""
+        },
+        {
+          "value": "command.call",
+          "name": "[命令] 调用 Cinema 4D 命令",
+          "description": ""
+        },
+        {
+          "value": "python.evaluate",
+          "name": "[脚本] 计算任意 Python 表达式",
+          "description": ""
+        },
+        {
+          "value": "python.execute",
+          "name": "[脚本] 执行任意 Python 脚本",
+          "description": ""
+        },
+        {
+          "value": "python.run_file",
+          "name": "[脚本] 运行 Python 文件",
+          "description": ""
+        },
+        {
+          "value": "command.custom",
+          "name": "[高级] 发送自定义 Bridge 命令",
+          "description": ""
+        }
+      ]
+    }
+  },
+  "sourceFileName": "sys_cinema4dcontrol_Cinema 4D控制.md"
+}

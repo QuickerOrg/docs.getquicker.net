@@ -1,6 +1,6 @@
 ---
 title: "Rhino软件控制"
-description: "向Rhino发送命令或脚本"
+description: "通过 Rhino Bridge 调用宿主能力，包含连接验证、目标规则和使用限制。"
 slug: "/v2/xaction/modules/rhinocontrol"
 sidebar_label: "Rhino软件控制"
 sidebar_position: 110
@@ -8,74 +8,64 @@ quickerDocKey: "xaction/module/sys:rhinocontrol"
 comments: true
 moduleKey: "sys:rhinocontrol"
 docStatus: "reviewed"
-metadataGeneratedAt: "2026-08-24 20:01:39"
+metadataGeneratedAt: "2026-09-04 07:37:19"
 legacyDocId: 80629667
 legacyContentUpdatedAt: "2022-06-17T01:44:17.000Z"
 ---
 
 # Rhino软件控制
 
-向已启动的 Rhino 发送命令或脚本。
+使用前先[安装并连接 Rhino Bridge](/v2/features/software-connections/software/rhino)。本模块用于文档、选择、对象和图层、视图、基础几何、Rhino 命令与 Python 文件；根据任务选择对应操作，或发送当前实例支持的自定义命令。
 
 ## 当前模块定义
 
 <XActionModuleMeta moduleKey="sys:rhinocontrol" />
 
-## 概述
+## 目标与使用前提
 
-<ModuleParamPreview moduleKey="sys:rhinocontrol" />
+动作根据触发时前台窗口对应的 PID 与进程启动时间精确定位宿主进程。该实例未连接时失败，不回退到其他在线实例。同一进程内的活动文档仍由具体命令决定。
 
-## 参数说明
+动作不保存命令工具选择的临时 session。详细区别见[命令工具的目标规则](/v2/features/software-connections/command-tool#动作怎样选择目标)。以下说明以 Bridge 操作为前提。
 
-**操作类型**：目前只有「执行脚本」。
+## 选择操作与输入
 
-**命令内容**：要执行的命令或脚本。仅「执行脚本」。
+文档、选择、对象和图层、视图、基础几何、Rhino 命令与 Python 文件是常见使用方向。选择操作后填写对应字段；字段名称、默认值、枚举和条件以上方当前模块定义为准。
 
-**等待命令结束**：是否等命令跑完再继续。仅「执行脚本」。默认开启。
+自定义调用选择 **[高级] 发送自定义 Bridge 命令**，从命令工具复制实际命令名与参数模板。参数 JSON 必须是对象，路径中的反斜杠需要转义。不要把其他软件的参数直接套用到本模块。
 
-**最长等待时间(ms)**：等待上限，默认 10000。
+## 最小示例：测试连接
 
-**失败后停止**：失败后是否中止动作。默认开启。
+这是不修改文档或文件的配置示例。先在命令工具确认 `bridge.ping` 可用，再新建组合动作，添加本模块并填写：
 
-## 输出
+| 字段 | 设置 |
+| --- | --- |
+| 操作类型 | [Bridge] 测试连接（`bridge.ping`） |
+| 脚本输出（输出） | 绑定一个文本变量，例如 `bridgeResult` |
 
-- **是否成功**：命令是否执行成功。
-- **脚本输出**：仅通过接口执行时可能有返回。
+回到已连接的 Rhino 窗口，再通过面板或配置好的快捷键触发动作。
 
-## 示例动作
+在调试器查看是否成功及 `bridgeResult`；正常结果应包含 `pong: true`，其余字段随宿主版本和文档状态变化。若失败，先检查在线实例与触发目标，不要改成发送模型修改命令来测试。
 
-<StepProgramView example="4e40c634-8eca-4515-6b7e-08da4f3f8574" />
+## 输出与失败处理
 
-<ShareLinkCard
-  code="4e40c634-8eca-4515-6b7e-08da4f3f8574"
-  title="示例：Rhino画线"
-  description="绘制一条从 0,0,0 到 100,100,100 的线"
-  author="CL"
-/>
+“是否成功”表示本次步骤是否成功；**脚本输出** 在 Bridge 路径中接收宿主返回的 JSON 文本，可交给后续步骤解析。
 
-## 通过手势、轮盘执行
+宿主忙碌、目标断开或参数错误可能导致失败。等待超时不保证宿主操作已撤销；修改命令重试前先核对实际状态。
 
-轮盘等快速触发不能直接向 Rhino 发命令，需要一个中转动作：先安装 [参数传递Rhino命令](https://getquicker.net/Sharedaction?code=ff3309da-7c30-4655-6b7d-08da4f3f8574)，再在轮盘里「运行 Quicker 动作」，动作名填「参数传递Rhino命令」，动作参数填要执行的命令。
+## 限制
 
-<StepProgramView example="ff3309da-7c30-4655-6b7d-08da4f3f8574" />
+插件依赖目标 Rhino 版本的运行环境。原“执行脚本”仍走旧低权限代理；选择 Bridge 操作后才使用本文的连接与路由方式。
 
-<ShareLinkCard
-  code="ff3309da-7c30-4655-6b7d-08da4f3f8574"
-  title="参数传递Rhino命令"
-  description="从参数传递要执行的命令，方便在轮盘等触发方式中使用"
-  author="CL"
-/>
+保存、导出、删除和脚本命令可能改变设计内容或文件。连接示例只验证通信；业务命令请先在副本中测试，不要假定任意脚本都能撤销。
 
-![](./img/rhinocontrol-002-c58000d477.png)
+## 旧版兼容
 
-## 相关链接
+“执行脚本”（`RunScript`）仍使用低权限代理，保留旧动作的命令内容、等待返回与脚本输出语义。其他 Bridge 操作使用连接插件。本页的精确前台路由说明针对 Bridge，不应套用到旧代理通道。
 
-<RelatedDocs
-  items={[
-    {
-      href: '/v2/xaction/modules/autocadcontrol',
-      label: 'AutoCAD控制',
-      description: '同类：向 CAD 发命令。',
-    },
-  ]}
-/>
+旧版轮盘中转动作不是 Bridge 的必要前置条件；新动作请按本页最小示例选择 Bridge 操作。
+
+## 相关页面
+
+- [Rhino 安装与使用指南](/v2/features/software-connections/software/rhino)
+- [命令工具与生成动作](/v2/features/software-connections/command-tool)
+- [通用排障](/v2/features/software-connections/troubleshooting)

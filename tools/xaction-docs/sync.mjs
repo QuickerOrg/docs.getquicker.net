@@ -890,6 +890,7 @@ function createChangeReport(previousCatalog, nextCatalog) {
 }
 
 export {
+  isUserModule,
   parseArguments,
   createChangeReport,
   createLandingPage,
@@ -897,6 +898,11 @@ export {
   ensureModuleMetaComponent,
   stripLegacyMetadataMarkers,
 };
+
+// Debug 构建注册的内部测试模块不属于用户模块目录。
+function isUserModule(module) {
+  return module.key !== 'sys:test';
+}
 
 function findExistingModulePages() {
   const pages = new Map();
@@ -925,6 +931,7 @@ function main() {
 
   const modules = collectFiles(generatedModulesRoot, (value) => value.endsWith('.md'))
     .map(parseGeneratedModule)
+    .filter(isUserModule)
     .sort((left, right) =>
       left.category === right.category
         ? left.name.localeCompare(right.name, 'zh-Hans-CN')

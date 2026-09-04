@@ -1,0 +1,715 @@
+{
+  "key": "sys:3dsmaxcontrol",
+  "slug": "3dsmaxcontrol",
+  "legacySlug": "3dsmaxcontrol",
+  "ownsLegacyContent": true,
+  "name": "3ds Max控制",
+  "description": "通过 3ds Max Python 插件向动作触发时的前台实例发送命令。",
+  "category": "SoftInteraction",
+  "categoryName": "第三方软件交互",
+  "stepType": "Action",
+  "isRisky": false,
+  "isProOnly": false,
+  "helpLink": "https://docs.getquicker.net/v2/xaction/modules/3dsmaxcontrol",
+  "inputs": [
+    {
+      "key": "operation",
+      "name": "操作类型",
+      "type": "Enum",
+      "defaultValue": "scene.get_context",
+      "required": true,
+      "variableMode": "Input",
+      "condition": "",
+      "description": ""
+    },
+    {
+      "key": "includeTransform",
+      "name": "返回对象变换",
+      "type": "Boolean",
+      "defaultValue": "false",
+      "required": false,
+      "variableMode": "Input",
+      "condition": "",
+      "description": ""
+    },
+    {
+      "key": "sceneFilePath",
+      "name": "场景文件路径",
+      "type": "Text",
+      "defaultValue": "",
+      "required": true,
+      "variableMode": "UseVarOrInput",
+      "condition": "",
+      "description": "使用 .max 文件的绝对路径。"
+    },
+    {
+      "key": "objectRefsJson",
+      "name": "对象句柄(JSON 数组)",
+      "type": "Text",
+      "defaultValue": "[]",
+      "required": false,
+      "variableMode": "UseVarOrInput",
+      "condition": "",
+      "description": "句柄可从列出对象或选择详情的 handle 字段取得。"
+    },
+    {
+      "key": "selectionMode",
+      "name": "选择方式",
+      "type": "Text",
+      "defaultValue": "replace",
+      "required": false,
+      "variableMode": "UseVarOrInput",
+      "condition": "",
+      "description": "replace、add 或 remove。"
+    },
+    {
+      "key": "primitiveType",
+      "name": "对象类型",
+      "type": "Text",
+      "defaultValue": "box",
+      "required": false,
+      "variableMode": "UseVarOrInput",
+      "condition": "",
+      "description": "支持 box、sphere、cylinder、cone、plane、torus、teapot。"
+    },
+    {
+      "key": "objectName",
+      "name": "对象名称",
+      "type": "Text",
+      "defaultValue": "Quicker Object",
+      "required": false,
+      "variableMode": "UseVarOrInput",
+      "condition": "",
+      "description": ""
+    },
+    {
+      "key": "renamePattern",
+      "name": "重命名模板",
+      "type": "Text",
+      "defaultValue": "{oldName}_{index:02d}",
+      "required": false,
+      "variableMode": "UseVarOrInput",
+      "condition": "",
+      "description": "支持 {oldName} 和 {index}，例如 Obj_{index:03d}。"
+    },
+    {
+      "key": "startIndex",
+      "name": "起始编号",
+      "type": "Integer",
+      "defaultValue": "1",
+      "required": false,
+      "variableMode": "Input",
+      "condition": "",
+      "description": ""
+    },
+    {
+      "key": "offsetX",
+      "name": "移动 X",
+      "type": "Number",
+      "defaultValue": "100",
+      "required": false,
+      "variableMode": "Input",
+      "condition": "",
+      "description": ""
+    },
+    {
+      "key": "offsetY",
+      "name": "移动 Y",
+      "type": "Number",
+      "defaultValue": "0",
+      "required": false,
+      "variableMode": "Input",
+      "condition": "",
+      "description": ""
+    },
+    {
+      "key": "offsetZ",
+      "name": "移动 Z",
+      "type": "Number",
+      "defaultValue": "0",
+      "required": false,
+      "variableMode": "Input",
+      "condition": "",
+      "description": ""
+    },
+    {
+      "key": "coordinateSpace",
+      "name": "坐标空间",
+      "type": "Text",
+      "defaultValue": "global",
+      "required": false,
+      "variableMode": "UseVarOrInput",
+      "condition": "",
+      "description": "global 使用世界坐标；local 使用父级坐标。"
+    },
+    {
+      "key": "cloneCount",
+      "name": "每个对象复制份数",
+      "type": "Integer",
+      "defaultValue": "1",
+      "required": false,
+      "variableMode": "Input",
+      "condition": "",
+      "description": ""
+    },
+    {
+      "key": "clonePattern",
+      "name": "复制对象命名模板",
+      "type": "Text",
+      "defaultValue": "{oldName}_copy{index}",
+      "required": false,
+      "variableMode": "UseVarOrInput",
+      "condition": "",
+      "description": "支持 {oldName} 和 {index}。"
+    },
+    {
+      "key": "cloneOffsetX",
+      "name": "每份偏移 X",
+      "type": "Number",
+      "defaultValue": "20",
+      "required": false,
+      "variableMode": "Input",
+      "condition": "",
+      "description": ""
+    },
+    {
+      "key": "cloneOffsetY",
+      "name": "每份偏移 Y",
+      "type": "Number",
+      "defaultValue": "0",
+      "required": false,
+      "variableMode": "Input",
+      "condition": "",
+      "description": ""
+    },
+    {
+      "key": "cloneOffsetZ",
+      "name": "每份偏移 Z",
+      "type": "Number",
+      "defaultValue": "0",
+      "required": false,
+      "variableMode": "Input",
+      "condition": "",
+      "description": ""
+    },
+    {
+      "key": "rotationX",
+      "name": "旋转 X(度)",
+      "type": "Number",
+      "defaultValue": "0",
+      "required": false,
+      "variableMode": "Input",
+      "condition": "",
+      "description": ""
+    },
+    {
+      "key": "rotationY",
+      "name": "旋转 Y(度)",
+      "type": "Number",
+      "defaultValue": "0",
+      "required": false,
+      "variableMode": "Input",
+      "condition": "",
+      "description": ""
+    },
+    {
+      "key": "rotationZ",
+      "name": "旋转 Z(度)",
+      "type": "Number",
+      "defaultValue": "90",
+      "required": false,
+      "variableMode": "Input",
+      "condition": "",
+      "description": ""
+    },
+    {
+      "key": "rotationSpace",
+      "name": "旋转坐标空间",
+      "type": "Text",
+      "defaultValue": "world",
+      "required": false,
+      "variableMode": "UseVarOrInput",
+      "condition": "",
+      "description": "world、local 或 parent；每个对象围绕自身轴心旋转。"
+    },
+    {
+      "key": "scaleX",
+      "name": "缩放 X 倍率",
+      "type": "Number",
+      "defaultValue": "2",
+      "required": false,
+      "variableMode": "Input",
+      "condition": "",
+      "description": ""
+    },
+    {
+      "key": "scaleY",
+      "name": "缩放 Y 倍率",
+      "type": "Number",
+      "defaultValue": "2",
+      "required": false,
+      "variableMode": "Input",
+      "condition": "",
+      "description": ""
+    },
+    {
+      "key": "scaleZ",
+      "name": "缩放 Z 倍率",
+      "type": "Number",
+      "defaultValue": "2",
+      "required": false,
+      "variableMode": "Input",
+      "condition": "",
+      "description": ""
+    },
+    {
+      "key": "hiddenState",
+      "name": "隐藏",
+      "type": "Boolean",
+      "defaultValue": "true",
+      "required": false,
+      "variableMode": "Input",
+      "condition": "",
+      "description": ""
+    },
+    {
+      "key": "frozenState",
+      "name": "冻结",
+      "type": "Boolean",
+      "defaultValue": "true",
+      "required": false,
+      "variableMode": "Input",
+      "condition": "",
+      "description": ""
+    },
+    {
+      "key": "layerName",
+      "name": "图层名称",
+      "type": "Text",
+      "defaultValue": "Quicker Layer",
+      "required": true,
+      "variableMode": "UseVarOrInput",
+      "condition": "",
+      "description": ""
+    },
+    {
+      "key": "createLayerIfMissing",
+      "name": "图层不存在时创建",
+      "type": "Boolean",
+      "defaultValue": "true",
+      "required": false,
+      "variableMode": "Input",
+      "condition": "",
+      "description": ""
+    },
+    {
+      "key": "currentFrame",
+      "name": "当前帧",
+      "type": "Number",
+      "defaultValue": "0",
+      "required": false,
+      "variableMode": "Input",
+      "condition": "",
+      "description": ""
+    },
+    {
+      "key": "animationStart",
+      "name": "开始帧",
+      "type": "Number",
+      "defaultValue": "0",
+      "required": false,
+      "variableMode": "Input",
+      "condition": "",
+      "description": ""
+    },
+    {
+      "key": "animationEnd",
+      "name": "结束帧",
+      "type": "Number",
+      "defaultValue": "100",
+      "required": false,
+      "variableMode": "Input",
+      "condition": "",
+      "description": ""
+    },
+    {
+      "key": "renderFilePath",
+      "name": "渲染输出路径",
+      "type": "Text",
+      "defaultValue": "",
+      "required": true,
+      "variableMode": "UseVarOrInput",
+      "condition": "",
+      "description": "扩展名决定图片格式，例如 .png、.jpg 或 .exr。"
+    },
+    {
+      "key": "renderWidth",
+      "name": "渲染宽度",
+      "type": "Integer",
+      "defaultValue": "1920",
+      "required": false,
+      "variableMode": "Input",
+      "condition": "",
+      "description": ""
+    },
+    {
+      "key": "renderHeight",
+      "name": "渲染高度",
+      "type": "Integer",
+      "defaultValue": "1080",
+      "required": false,
+      "variableMode": "Input",
+      "condition": "",
+      "description": ""
+    },
+    {
+      "key": "showRenderWindow",
+      "name": "显示渲染窗口",
+      "type": "Boolean",
+      "defaultValue": "false",
+      "required": false,
+      "variableMode": "Input",
+      "condition": "",
+      "description": ""
+    },
+    {
+      "key": "overwriteFile",
+      "name": "允许覆盖已有文件",
+      "type": "Boolean",
+      "defaultValue": "false",
+      "required": false,
+      "variableMode": "Input",
+      "condition": "",
+      "description": ""
+    },
+    {
+      "key": "commandQuery",
+      "name": "搜索内容",
+      "type": "Text",
+      "defaultValue": "",
+      "required": false,
+      "variableMode": "UseVarOrInput",
+      "condition": "",
+      "description": "按命令 ID、本地标题或帮助文本筛选；留空返回前若干项。"
+    },
+    {
+      "key": "maxCount",
+      "name": "最多返回数量",
+      "type": "Integer",
+      "defaultValue": "100",
+      "required": false,
+      "variableMode": "Input",
+      "condition": "",
+      "description": ""
+    },
+    {
+      "key": "commandIdentifier",
+      "name": "Action 标识或标题",
+      "type": "Text",
+      "defaultValue": "",
+      "required": false,
+      "variableMode": "UseVarOrInput",
+      "condition": "",
+      "description": "填写 action.search 返回的 tableId:actionId，或本地化标题；标题不唯一时返回候选项。"
+    },
+    {
+      "key": "maxScriptCode",
+      "name": "MAXScript 代码",
+      "type": "Text",
+      "defaultValue": "",
+      "required": true,
+      "variableMode": "UseVarOrInput",
+      "condition": "",
+      "description": "表达式直接返回 value；脚本返回最后一个表达式的值。"
+    },
+    {
+      "key": "maxScriptFilePath",
+      "name": "MAXScript 文件路径",
+      "type": "Text",
+      "defaultValue": "",
+      "required": true,
+      "variableMode": "UseVarOrInput",
+      "condition": "",
+      "description": ""
+    },
+    {
+      "key": "pythonCode",
+      "name": "Python 代码",
+      "type": "Text",
+      "defaultValue": "",
+      "required": true,
+      "variableMode": "UseVarOrInput",
+      "condition": "",
+      "description": "表达式直接返回 value；脚本可把返回值赋给 result。"
+    },
+    {
+      "key": "filePath",
+      "name": "Python 文件路径",
+      "type": "Text",
+      "defaultValue": "",
+      "required": true,
+      "variableMode": "UseVarOrInput",
+      "condition": "",
+      "description": ""
+    },
+    {
+      "key": "commandName",
+      "name": "Bridge 命令名称",
+      "type": "Text",
+      "defaultValue": "",
+      "required": true,
+      "variableMode": "UseVarOrInput",
+      "condition": "",
+      "description": ""
+    },
+    {
+      "key": "argumentsJson",
+      "name": "参数(JSON 对象)",
+      "type": "Text",
+      "defaultValue": "{}",
+      "required": false,
+      "variableMode": "UseVarOrInput",
+      "condition": "",
+      "description": ""
+    },
+    {
+      "key": "waitMs",
+      "name": "最长等待时间(ms)",
+      "type": "Number",
+      "defaultValue": "30000",
+      "required": true,
+      "variableMode": "Input",
+      "condition": "",
+      "description": "普通命令建议 30000；渲染等耗时操作请按场景复杂度增大。"
+    },
+    {
+      "key": "stopIfFail",
+      "name": "失败后停止",
+      "type": "Boolean",
+      "defaultValue": "true",
+      "required": false,
+      "variableMode": "Input",
+      "condition": "",
+      "description": "失败后是否停止动作"
+    }
+  ],
+  "outputs": [
+    {
+      "key": "isSuccess",
+      "name": "是否成功",
+      "type": "Boolean",
+      "condition": "",
+      "description": "操作是否成功"
+    },
+    {
+      "key": "output",
+      "name": "命令结果",
+      "type": "Text",
+      "condition": "",
+      "description": "3ds Max 返回的 JSON 结果。"
+    }
+  ],
+  "selections": {
+    "operation": {
+      "name": "操作类型",
+      "items": [
+        {
+          "value": "bridge.ping",
+          "name": "[Bridge] 测试连接",
+          "description": ""
+        },
+        {
+          "value": "scene.get_context",
+          "name": "[场景] 读取当前场景上下文",
+          "description": ""
+        },
+        {
+          "value": "scene.save",
+          "name": "[场景] 保存当前场景",
+          "description": ""
+        },
+        {
+          "value": "scene.save_as",
+          "name": "[场景] 场景另存为",
+          "description": ""
+        },
+        {
+          "value": "object.list",
+          "name": "[对象] 列出场景对象",
+          "description": ""
+        },
+        {
+          "value": "selection.get_info",
+          "name": "[选择] 读取选择详情",
+          "description": ""
+        },
+        {
+          "value": "selection.select_all",
+          "name": "[选择] 全选对象",
+          "description": ""
+        },
+        {
+          "value": "selection.clear",
+          "name": "[选择] 清空选择",
+          "description": ""
+        },
+        {
+          "value": "selection.invert",
+          "name": "[选择] 反选对象",
+          "description": ""
+        },
+        {
+          "value": "selection.select_by_handles",
+          "name": "[选择] 按句柄选择对象",
+          "description": ""
+        },
+        {
+          "value": "object.create_primitive",
+          "name": "[对象] 创建基础对象",
+          "description": ""
+        },
+        {
+          "value": "object.rename_selected",
+          "name": "[对象] 批量重命名选择对象",
+          "description": ""
+        },
+        {
+          "value": "object.delete_selected",
+          "name": "[对象] 删除选择对象",
+          "description": ""
+        },
+        {
+          "value": "object.move_selected",
+          "name": "[对象] 移动选择对象",
+          "description": ""
+        },
+        {
+          "value": "object.clone_selected",
+          "name": "[对象] 复制选择对象",
+          "description": ""
+        },
+        {
+          "value": "object.rotate_selected",
+          "name": "[对象] 旋转选择对象",
+          "description": ""
+        },
+        {
+          "value": "object.scale_selected",
+          "name": "[对象] 缩放选择对象",
+          "description": ""
+        },
+        {
+          "value": "object.set_hidden",
+          "name": "[对象] 设置选择对象隐藏状态",
+          "description": ""
+        },
+        {
+          "value": "object.set_frozen",
+          "name": "[对象] 设置选择对象冻结状态",
+          "description": ""
+        },
+        {
+          "value": "object.unhide_all",
+          "name": "[对象] 取消隐藏全部对象",
+          "description": ""
+        },
+        {
+          "value": "object.unfreeze_all",
+          "name": "[对象] 取消冻结全部对象",
+          "description": ""
+        },
+        {
+          "value": "layer.list",
+          "name": "[图层] 列出图层",
+          "description": ""
+        },
+        {
+          "value": "layer.create",
+          "name": "[图层] 新建图层",
+          "description": ""
+        },
+        {
+          "value": "layer.assign_selected",
+          "name": "[图层] 将选择对象移到图层",
+          "description": ""
+        },
+        {
+          "value": "animation.set_time",
+          "name": "[动画] 设置当前帧",
+          "description": ""
+        },
+        {
+          "value": "animation.set_range",
+          "name": "[动画] 设置动画范围",
+          "description": ""
+        },
+        {
+          "value": "view.frame_selection",
+          "name": "[视图] 聚焦选择对象",
+          "description": ""
+        },
+        {
+          "value": "view.frame_all",
+          "name": "[视图] 显示全部对象",
+          "description": ""
+        },
+        {
+          "value": "render.current_frame",
+          "name": "[渲染] 渲染当前帧到文件",
+          "description": ""
+        },
+        {
+          "value": "action.search",
+          "name": "[Action] 搜索 3ds Max Action",
+          "description": ""
+        },
+        {
+          "value": "action.get_info",
+          "name": "[Action] 读取 3ds Max Action 信息",
+          "description": ""
+        },
+        {
+          "value": "action.execute",
+          "name": "[Action] 调用 3ds Max Action",
+          "description": ""
+        },
+        {
+          "value": "maxscript.evaluate",
+          "name": "[MAXScript] 计算任意表达式",
+          "description": ""
+        },
+        {
+          "value": "maxscript.execute",
+          "name": "[MAXScript] 执行任意脚本",
+          "description": ""
+        },
+        {
+          "value": "maxscript.run_file",
+          "name": "[MAXScript] 运行脚本文件",
+          "description": ""
+        },
+        {
+          "value": "python.evaluate",
+          "name": "[脚本] 计算任意 Python 表达式",
+          "description": ""
+        },
+        {
+          "value": "python.execute",
+          "name": "[脚本] 执行任意 Python 脚本",
+          "description": ""
+        },
+        {
+          "value": "python.run_file",
+          "name": "[脚本] 运行 Python 文件",
+          "description": ""
+        },
+        {
+          "value": "command.custom",
+          "name": "[高级] 发送自定义 Bridge 命令",
+          "description": ""
+        }
+      ]
+    }
+  },
+  "sourceFileName": "sys_3dsmaxcontrol_3ds Max控制.md"
+}

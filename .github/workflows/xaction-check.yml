@@ -5,8 +5,14 @@ on:
   pull_request:
     paths:
       - 'data/xaction/**'
+      - 'data/bridges/**'
       - 'docs/v2/xaction/**'
+      - 'docs/v2/features/software-connections/**'
+      - 'docs/index.md'
+      - 'docs/v2/index.md'
       - 'tools/xaction-docs/**'
+      - 'tools/bridge-docs/**'
+      - 'package.json'
       - 'src/components/XActionModuleMeta/**'
       - 'src/components/XActionLanding/**'
       - '.github/workflows/xaction-check.yml'
@@ -40,3 +46,5 @@ jobs:
         run: |
           npm run docs:xaction:check
           npm run docs:xaction:test
+          npm run docs:bridges:check
+          npm run docs:bridges:test

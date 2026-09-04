@@ -1,0 +1,275 @@
+{
+  "key": "sys:photoshopcontrol",
+  "slug": "photoshopcontrol",
+  "legacySlug": "photoshopcontrol",
+  "ownsLegacyContent": true,
+  "name": "Photoshop控制",
+  "description": "通过 Photoshop UXP 插件调用文档、图层、选择、图像与脚本能力。",
+  "category": "SoftInteraction",
+  "categoryName": "第三方软件交互",
+  "stepType": "Action",
+  "isRisky": false,
+  "isProOnly": false,
+  "helpLink": "https://docs.getquicker.net/v2/xaction/modules/photoshopcontrol",
+  "inputs": [
+    {
+      "key": "operation",
+      "name": "操作类型",
+      "type": "Enum",
+      "defaultValue": "document.get_context",
+      "required": true,
+      "variableMode": "Input",
+      "condition": "",
+      "description": ""
+    },
+    {
+      "key": "layerId",
+      "name": "图层 ID",
+      "type": "Number",
+      "defaultValue": "0",
+      "required": false,
+      "variableMode": "UseVarOrInput",
+      "condition": "",
+      "description": ""
+    },
+    {
+      "key": "layerName",
+      "name": "图层名称",
+      "type": "Text",
+      "defaultValue": "新名称",
+      "required": true,
+      "variableMode": "UseVarOrInput",
+      "condition": "",
+      "description": ""
+    },
+    {
+      "key": "visible",
+      "name": "可见",
+      "type": "Boolean",
+      "defaultValue": "true",
+      "required": false,
+      "variableMode": "Input",
+      "condition": "",
+      "description": ""
+    },
+    {
+      "key": "append",
+      "name": "追加选择",
+      "type": "Boolean",
+      "defaultValue": "false",
+      "required": false,
+      "variableMode": "Input",
+      "condition": "",
+      "description": ""
+    },
+    {
+      "key": "width",
+      "name": "宽度",
+      "type": "Number",
+      "defaultValue": "1920",
+      "required": false,
+      "variableMode": "UseVarOrInput",
+      "condition": "",
+      "description": ""
+    },
+    {
+      "key": "height",
+      "name": "高度",
+      "type": "Number",
+      "defaultValue": "1080",
+      "required": false,
+      "variableMode": "UseVarOrInput",
+      "condition": "",
+      "description": ""
+    },
+    {
+      "key": "angle",
+      "name": "旋转角度",
+      "type": "Number",
+      "defaultValue": "90",
+      "required": false,
+      "variableMode": "UseVarOrInput",
+      "condition": "",
+      "description": ""
+    },
+    {
+      "key": "scriptCode",
+      "name": "JavaScript 表达式",
+      "type": "Text",
+      "defaultValue": "photoshop.app.activeDocument.title",
+      "required": true,
+      "variableMode": "UseVarOrInput",
+      "condition": "",
+      "description": ""
+    },
+    {
+      "key": "batchPlayJson",
+      "name": "BatchPlay 命令（JSON 数组）",
+      "type": "Text",
+      "defaultValue": "[]",
+      "required": false,
+      "variableMode": "UseVarOrInput",
+      "condition": "",
+      "description": ""
+    },
+    {
+      "key": "commandName",
+      "name": "Bridge 命令名称",
+      "type": "Text",
+      "defaultValue": "",
+      "required": true,
+      "variableMode": "UseVarOrInput",
+      "condition": "",
+      "description": ""
+    },
+    {
+      "key": "argumentsJson",
+      "name": "参数（JSON 对象）",
+      "type": "Text",
+      "defaultValue": "{}",
+      "required": false,
+      "variableMode": "UseVarOrInput",
+      "condition": "",
+      "description": ""
+    },
+    {
+      "key": "waitMs",
+      "name": "最长等待时间(ms)",
+      "type": "Number",
+      "defaultValue": "30000",
+      "required": true,
+      "variableMode": "Input",
+      "condition": "",
+      "description": ""
+    },
+    {
+      "key": "stopIfFail",
+      "name": "失败后停止",
+      "type": "Boolean",
+      "defaultValue": "true",
+      "required": false,
+      "variableMode": "Input",
+      "condition": "",
+      "description": "失败后是否停止动作"
+    }
+  ],
+  "outputs": [
+    {
+      "key": "isSuccess",
+      "name": "是否成功",
+      "type": "Boolean",
+      "condition": "",
+      "description": "操作是否成功"
+    },
+    {
+      "key": "output",
+      "name": "命令结果",
+      "type": "Text",
+      "condition": "",
+      "description": ""
+    }
+  ],
+  "selections": {
+    "operation": {
+      "name": "操作类型",
+      "items": [
+        {
+          "value": "bridge.ping",
+          "name": "[Bridge] 测试连接",
+          "description": ""
+        },
+        {
+          "value": "document.get_context",
+          "name": "[文档] 获取文档上下文",
+          "description": ""
+        },
+        {
+          "value": "document.list",
+          "name": "[文档] 列出文档",
+          "description": ""
+        },
+        {
+          "value": "document.save",
+          "name": "[文档] 保存当前文档",
+          "description": ""
+        },
+        {
+          "value": "layer.list",
+          "name": "[图层] 列出图层",
+          "description": ""
+        },
+        {
+          "value": "layer.get_active",
+          "name": "[图层] 读取活动图层",
+          "description": ""
+        },
+        {
+          "value": "layer.select",
+          "name": "[图层] 选择图层",
+          "description": ""
+        },
+        {
+          "value": "layer.rename",
+          "name": "[图层] 重命名图层",
+          "description": ""
+        },
+        {
+          "value": "layer.set_visibility",
+          "name": "[图层] 设置图层可见性",
+          "description": ""
+        },
+        {
+          "value": "layer.duplicate",
+          "name": "[图层] 复制图层",
+          "description": ""
+        },
+        {
+          "value": "layer.delete",
+          "name": "[图层] 删除图层",
+          "description": ""
+        },
+        {
+          "value": "selection.select_all",
+          "name": "[选择] 全选画布",
+          "description": ""
+        },
+        {
+          "value": "selection.clear",
+          "name": "[选择] 取消选择",
+          "description": ""
+        },
+        {
+          "value": "selection.inverse",
+          "name": "[选择] 反选",
+          "description": ""
+        },
+        {
+          "value": "image.resize",
+          "name": "[图像] 调整图像尺寸",
+          "description": ""
+        },
+        {
+          "value": "image.rotate",
+          "name": "[图像] 旋转画布",
+          "description": ""
+        },
+        {
+          "value": "batch_play.execute",
+          "name": "[脚本] 执行任意 BatchPlay",
+          "description": ""
+        },
+        {
+          "value": "script.evaluate",
+          "name": "[脚本] 执行任意 JavaScript",
+          "description": ""
+        },
+        {
+          "value": "command.custom",
+          "name": "[高级] 发送自定义 Bridge 命令",
+          "description": ""
+        }
+      ]
+    }
+  },
+  "sourceFileName": "sys_photoshopcontrol_Photoshop控制.md"
+}

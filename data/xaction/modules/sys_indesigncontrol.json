@@ -1,0 +1,580 @@
+{
+  "key": "sys:indesigncontrol",
+  "slug": "indesigncontrol",
+  "legacySlug": "indesigncontrol",
+  "ownsLegacyContent": true,
+  "name": "InDesign控制",
+  "description": "通过 InDesign UXP 启动脚本调用文档、页面、对象、图层、文本、样式和 ExtendScript 能力。",
+  "category": "SoftInteraction",
+  "categoryName": "第三方软件交互",
+  "stepType": "Action",
+  "isRisky": false,
+  "isProOnly": false,
+  "helpLink": "https://docs.getquicker.net/v2/xaction/modules/indesigncontrol",
+  "inputs": [
+    {
+      "key": "operation",
+      "name": "操作类型",
+      "type": "Enum",
+      "defaultValue": "document.get_context",
+      "required": true,
+      "variableMode": "Input",
+      "condition": "",
+      "description": ""
+    },
+    {
+      "key": "filePath",
+      "name": "InDesign 文件路径",
+      "type": "Text",
+      "defaultValue": "T:\\TEMP\\Quicker-InDesign.indd",
+      "required": false,
+      "variableMode": "UseVarOrInput",
+      "condition": "",
+      "description": ""
+    },
+    {
+      "key": "exportPath",
+      "name": "PDF 输出路径",
+      "type": "Text",
+      "defaultValue": "T:\\TEMP\\Quicker-InDesign.pdf",
+      "required": false,
+      "variableMode": "UseVarOrInput",
+      "condition": "",
+      "description": ""
+    },
+    {
+      "key": "imagePath",
+      "name": "图片路径",
+      "type": "Text",
+      "defaultValue": "T:\\TEMP\\Quicker-InDesign.png",
+      "required": false,
+      "variableMode": "UseVarOrInput",
+      "condition": "",
+      "description": ""
+    },
+    {
+      "key": "scriptFilePath",
+      "name": "脚本文件路径",
+      "type": "Text",
+      "defaultValue": "T:\\TEMP\\indesign-script.jsx",
+      "required": false,
+      "variableMode": "UseVarOrInput",
+      "condition": "",
+      "description": ""
+    },
+    {
+      "key": "pageCount",
+      "name": "页数",
+      "type": "Number",
+      "defaultValue": "1",
+      "required": false,
+      "variableMode": "UseVarOrInput",
+      "condition": "",
+      "description": ""
+    },
+    {
+      "key": "facingPages",
+      "name": "对页",
+      "type": "Boolean",
+      "defaultValue": "true",
+      "required": false,
+      "variableMode": "UseVarOrInput",
+      "condition": "",
+      "description": ""
+    },
+    {
+      "key": "width",
+      "name": "页面宽度",
+      "type": "Text",
+      "defaultValue": "210mm",
+      "required": false,
+      "variableMode": "UseVarOrInput",
+      "condition": "",
+      "description": ""
+    },
+    {
+      "key": "height",
+      "name": "页面高度",
+      "type": "Text",
+      "defaultValue": "297mm",
+      "required": false,
+      "variableMode": "UseVarOrInput",
+      "condition": "",
+      "description": ""
+    },
+    {
+      "key": "preset",
+      "name": "PDF 预设名称（留空使用当前设置）",
+      "type": "Text",
+      "defaultValue": "",
+      "required": false,
+      "variableMode": "UseVarOrInput",
+      "condition": "",
+      "description": ""
+    },
+    {
+      "key": "saveMode",
+      "name": "关闭时保存（prompt/save/discard）",
+      "type": "Text",
+      "defaultValue": "prompt",
+      "required": false,
+      "variableMode": "UseVarOrInput",
+      "condition": "",
+      "description": ""
+    },
+    {
+      "key": "afterIndex",
+      "name": "在页面序号之后（-1 表示末尾）",
+      "type": "Number",
+      "defaultValue": "-1",
+      "required": false,
+      "variableMode": "UseVarOrInput",
+      "condition": "",
+      "description": ""
+    },
+    {
+      "key": "index",
+      "name": "页面序号（从 0 开始）",
+      "type": "Number",
+      "defaultValue": "0",
+      "required": false,
+      "variableMode": "UseVarOrInput",
+      "condition": "",
+      "description": ""
+    },
+    {
+      "key": "pageIndex",
+      "name": "页面序号（从 0 开始）",
+      "type": "Number",
+      "defaultValue": "0",
+      "required": false,
+      "variableMode": "UseVarOrInput",
+      "condition": "",
+      "description": ""
+    },
+    {
+      "key": "offsetX",
+      "name": "复制水平偏移",
+      "type": "Text",
+      "defaultValue": "10mm",
+      "required": false,
+      "variableMode": "UseVarOrInput",
+      "condition": "",
+      "description": ""
+    },
+    {
+      "key": "offsetY",
+      "name": "复制垂直偏移",
+      "type": "Text",
+      "defaultValue": "10mm",
+      "required": false,
+      "variableMode": "UseVarOrInput",
+      "condition": "",
+      "description": ""
+    },
+    {
+      "key": "deltaX",
+      "name": "水平移动",
+      "type": "Text",
+      "defaultValue": "10mm",
+      "required": false,
+      "variableMode": "UseVarOrInput",
+      "condition": "",
+      "description": ""
+    },
+    {
+      "key": "deltaY",
+      "name": "垂直移动",
+      "type": "Text",
+      "defaultValue": "0mm",
+      "required": false,
+      "variableMode": "UseVarOrInput",
+      "condition": "",
+      "description": ""
+    },
+    {
+      "key": "boundsJson",
+      "name": "边界（JSON：上、左、下、右）",
+      "type": "Text",
+      "defaultValue": "[\"20mm\",\"20mm\",\"80mm\",\"180mm\"]",
+      "required": false,
+      "variableMode": "UseVarOrInput",
+      "condition": "",
+      "description": ""
+    },
+    {
+      "key": "name",
+      "name": "名称",
+      "type": "Text",
+      "defaultValue": "新图层",
+      "required": false,
+      "variableMode": "UseVarOrInput",
+      "condition": "",
+      "description": ""
+    },
+    {
+      "key": "newName",
+      "name": "新名称",
+      "type": "Text",
+      "defaultValue": "重命名图层",
+      "required": false,
+      "variableMode": "UseVarOrInput",
+      "condition": "",
+      "description": ""
+    },
+    {
+      "key": "boolValue",
+      "name": "启用",
+      "type": "Boolean",
+      "defaultValue": "true",
+      "required": false,
+      "variableMode": "UseVarOrInput",
+      "condition": "",
+      "description": ""
+    },
+    {
+      "key": "contents",
+      "name": "文本内容",
+      "type": "Text",
+      "defaultValue": "来自 Quicker 的文字",
+      "required": false,
+      "variableMode": "UseVarOrInput",
+      "condition": "",
+      "description": ""
+    },
+    {
+      "key": "findText",
+      "name": "查找文本",
+      "type": "Text",
+      "defaultValue": "旧文字",
+      "required": false,
+      "variableMode": "UseVarOrInput",
+      "condition": "",
+      "description": ""
+    },
+    {
+      "key": "replaceText",
+      "name": "替换为",
+      "type": "Text",
+      "defaultValue": "新文字",
+      "required": false,
+      "variableMode": "UseVarOrInput",
+      "condition": "",
+      "description": ""
+    },
+    {
+      "key": "caseSensitive",
+      "name": "区分大小写",
+      "type": "Boolean",
+      "defaultValue": "false",
+      "required": false,
+      "variableMode": "UseVarOrInput",
+      "condition": "",
+      "description": ""
+    },
+    {
+      "key": "wholeWord",
+      "name": "全字匹配",
+      "type": "Boolean",
+      "defaultValue": "false",
+      "required": false,
+      "variableMode": "UseVarOrInput",
+      "condition": "",
+      "description": ""
+    },
+    {
+      "key": "fit",
+      "name": "图片适配方式",
+      "type": "Text",
+      "defaultValue": "proportionally",
+      "required": false,
+      "variableMode": "UseVarOrInput",
+      "condition": "",
+      "description": ""
+    },
+    {
+      "key": "clearOverrides",
+      "name": "清除局部覆盖",
+      "type": "Boolean",
+      "defaultValue": "false",
+      "required": false,
+      "variableMode": "UseVarOrInput",
+      "condition": "",
+      "description": ""
+    },
+    {
+      "key": "scriptCode",
+      "name": "ExtendScript 代码",
+      "type": "Text",
+      "defaultValue": "app.documents.length",
+      "required": false,
+      "variableMode": "UseVarOrInput",
+      "condition": "",
+      "description": ""
+    },
+    {
+      "key": "undoName",
+      "name": "撤销名称",
+      "type": "Text",
+      "defaultValue": "Quicker InDesign 脚本",
+      "required": false,
+      "variableMode": "UseVarOrInput",
+      "condition": "",
+      "description": ""
+    },
+    {
+      "key": "commandName",
+      "name": "Bridge 命令名称",
+      "type": "Text",
+      "defaultValue": "",
+      "required": true,
+      "variableMode": "UseVarOrInput",
+      "condition": "",
+      "description": ""
+    },
+    {
+      "key": "argumentsJson",
+      "name": "参数（JSON 对象）",
+      "type": "Text",
+      "defaultValue": "{}",
+      "required": false,
+      "variableMode": "UseVarOrInput",
+      "condition": "",
+      "description": ""
+    },
+    {
+      "key": "waitMs",
+      "name": "最长等待时间(ms)",
+      "type": "Number",
+      "defaultValue": "30000",
+      "required": true,
+      "variableMode": "Input",
+      "condition": "",
+      "description": ""
+    },
+    {
+      "key": "stopIfFail",
+      "name": "失败后停止",
+      "type": "Boolean",
+      "defaultValue": "true",
+      "required": false,
+      "variableMode": "Input",
+      "condition": "",
+      "description": "失败后是否停止动作"
+    }
+  ],
+  "outputs": [
+    {
+      "key": "isSuccess",
+      "name": "是否成功",
+      "type": "Boolean",
+      "condition": "",
+      "description": "操作是否成功"
+    },
+    {
+      "key": "output",
+      "name": "命令结果",
+      "type": "Text",
+      "condition": "",
+      "description": ""
+    }
+  ],
+  "selections": {
+    "operation": {
+      "name": "操作类型",
+      "items": [
+        {
+          "value": "bridge.ping",
+          "name": "[Bridge] 测试连接",
+          "description": ""
+        },
+        {
+          "value": "command.list",
+          "name": "[Bridge] 读取命令目录",
+          "description": ""
+        },
+        {
+          "value": "document.get_context",
+          "name": "[文档] 获取文档上下文",
+          "description": ""
+        },
+        {
+          "value": "document.list",
+          "name": "[文档] 列出文档",
+          "description": ""
+        },
+        {
+          "value": "document.new",
+          "name": "[文档] 新建文档",
+          "description": ""
+        },
+        {
+          "value": "document.open",
+          "name": "[文档] 打开文档",
+          "description": ""
+        },
+        {
+          "value": "document.save",
+          "name": "[文档] 保存文档",
+          "description": ""
+        },
+        {
+          "value": "document.save_as",
+          "name": "[文档] 文档另存为",
+          "description": ""
+        },
+        {
+          "value": "document.export_pdf",
+          "name": "[导出] 导出 PDF",
+          "description": ""
+        },
+        {
+          "value": "document.close",
+          "name": "[文档] 关闭文档",
+          "description": ""
+        },
+        {
+          "value": "page.list",
+          "name": "[页面] 列出页面",
+          "description": ""
+        },
+        {
+          "value": "page.add",
+          "name": "[页面] 新增页面",
+          "description": ""
+        },
+        {
+          "value": "page.goto",
+          "name": "[页面] 跳转到页面",
+          "description": ""
+        },
+        {
+          "value": "selection.get_info",
+          "name": "[选择] 读取选择详情",
+          "description": ""
+        },
+        {
+          "value": "selection.select_all",
+          "name": "[选择] 全选当前跨页对象",
+          "description": ""
+        },
+        {
+          "value": "selection.clear",
+          "name": "[选择] 清除选择",
+          "description": ""
+        },
+        {
+          "value": "object.duplicate",
+          "name": "[对象] 复制选择对象",
+          "description": ""
+        },
+        {
+          "value": "object.remove",
+          "name": "[对象] 删除选择对象",
+          "description": ""
+        },
+        {
+          "value": "object.move",
+          "name": "[对象] 移动选择对象",
+          "description": ""
+        },
+        {
+          "value": "object.set_bounds",
+          "name": "[对象] 设置选择对象边界",
+          "description": ""
+        },
+        {
+          "value": "layer.list",
+          "name": "[图层] 列出图层",
+          "description": ""
+        },
+        {
+          "value": "layer.create",
+          "name": "[图层] 新建图层",
+          "description": ""
+        },
+        {
+          "value": "layer.activate",
+          "name": "[图层] 激活图层",
+          "description": ""
+        },
+        {
+          "value": "layer.rename",
+          "name": "[图层] 重命名图层",
+          "description": ""
+        },
+        {
+          "value": "layer.set_visible",
+          "name": "[图层] 设置图层可见性",
+          "description": ""
+        },
+        {
+          "value": "layer.set_locked",
+          "name": "[图层] 设置图层锁定",
+          "description": ""
+        },
+        {
+          "value": "text.frame_list",
+          "name": "[文本] 列出文本框",
+          "description": ""
+        },
+        {
+          "value": "text.frame_create",
+          "name": "[文本] 新建文本框",
+          "description": ""
+        },
+        {
+          "value": "text.set_contents",
+          "name": "[文本] 设置选择文本内容",
+          "description": ""
+        },
+        {
+          "value": "text.find_replace",
+          "name": "[文本] 全文查找替换",
+          "description": ""
+        },
+        {
+          "value": "image.place",
+          "name": "[图片] 置入图片",
+          "description": ""
+        },
+        {
+          "value": "style.paragraph_list",
+          "name": "[样式] 列出段落样式",
+          "description": ""
+        },
+        {
+          "value": "style.character_list",
+          "name": "[样式] 列出字符样式",
+          "description": ""
+        },
+        {
+          "value": "style.apply_paragraph",
+          "name": "[样式] 应用段落样式",
+          "description": ""
+        },
+        {
+          "value": "style.apply_character",
+          "name": "[样式] 应用字符样式",
+          "description": ""
+        },
+        {
+          "value": "script.evaluate",
+          "name": "[脚本] 执行任意 ExtendScript",
+          "description": ""
+        },
+        {
+          "value": "script.run_file",
+          "name": "[脚本] 运行脚本文件",
+          "description": ""
+        },
+        {
+          "value": "command.custom",
+          "name": "[高级] 发送自定义 Bridge 命令",
+          "description": ""
+        }
+      ]
+    }
+  },
+  "sourceFileName": "sys_indesigncontrol_InDesign控制.md"
+}

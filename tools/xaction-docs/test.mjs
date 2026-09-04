@@ -4,7 +4,11 @@ import {
   createLandingPage,
   createReference,
   parseArguments,
+  isUserModule,
 } from './sync.mjs';
+
+assert.equal(isUserModule({key: 'sys:test'}), false);
+assert.equal(isUserModule({key: 'sys:autocadcontrol'}), true);
 
 const generatedOnly = parseArguments(['--generated', process.cwd()]);
 assert.ok(generatedOnly.generated);

@@ -1,0 +1,300 @@
+{
+  "key": "sys:premierecontrol",
+  "slug": "premierecontrol",
+  "legacySlug": "premierecontrol",
+  "ownsLegacyContent": true,
+  "name": "Premiere Pro控制",
+  "description": "通过 Premiere UXP 插件调用项目、序列、时间线、媒体、标记和脚本能力。",
+  "category": "SoftInteraction",
+  "categoryName": "第三方软件交互",
+  "stepType": "Action",
+  "isRisky": false,
+  "isProOnly": false,
+  "helpLink": "https://docs.getquicker.net/v2/xaction/modules/premierecontrol",
+  "inputs": [
+    {
+      "key": "operation",
+      "name": "操作类型",
+      "type": "Enum",
+      "defaultValue": "project.get_context",
+      "required": true,
+      "variableMode": "Input",
+      "condition": "",
+      "description": ""
+    },
+    {
+      "key": "filePath",
+      "name": "文件路径",
+      "type": "Text",
+      "defaultValue": "",
+      "required": true,
+      "variableMode": "UseVarOrInput",
+      "condition": "",
+      "description": "项目另存为的 .prproj 绝对路径。"
+    },
+    {
+      "key": "sequence",
+      "name": "序列名称或 GUID",
+      "type": "Text",
+      "defaultValue": "",
+      "required": true,
+      "variableMode": "UseVarOrInput",
+      "condition": "",
+      "description": "名称重复时请使用 sequence.list 返回的 GUID。"
+    },
+    {
+      "key": "seconds",
+      "name": "位置（秒）",
+      "type": "Number",
+      "defaultValue": "0",
+      "required": false,
+      "variableMode": "UseVarOrInput",
+      "condition": "",
+      "description": ""
+    },
+    {
+      "key": "inSeconds",
+      "name": "入点（秒）",
+      "type": "Number",
+      "defaultValue": "0",
+      "required": false,
+      "variableMode": "UseVarOrInput",
+      "condition": "",
+      "description": ""
+    },
+    {
+      "key": "outSeconds",
+      "name": "出点（秒）",
+      "type": "Number",
+      "defaultValue": "10",
+      "required": false,
+      "variableMode": "UseVarOrInput",
+      "condition": "",
+      "description": ""
+    },
+    {
+      "key": "fileList",
+      "name": "媒体文件列表",
+      "type": "Text",
+      "defaultValue": "",
+      "required": true,
+      "variableMode": "UseVarOrInput",
+      "condition": "",
+      "description": "每行一个媒体文件绝对路径。"
+    },
+    {
+      "key": "asNumberedStills",
+      "name": "按编号静帧导入",
+      "type": "Boolean",
+      "defaultValue": "false",
+      "required": false,
+      "variableMode": "Input",
+      "condition": "",
+      "description": ""
+    },
+    {
+      "key": "binName",
+      "name": "素材箱名称",
+      "type": "Text",
+      "defaultValue": "Quicker 导入",
+      "required": true,
+      "variableMode": "UseVarOrInput",
+      "condition": "",
+      "description": ""
+    },
+    {
+      "key": "markerName",
+      "name": "标记名称",
+      "type": "Text",
+      "defaultValue": "Quicker 标记",
+      "required": false,
+      "variableMode": "UseVarOrInput",
+      "condition": "",
+      "description": ""
+    },
+    {
+      "key": "markerSeconds",
+      "name": "标记位置（秒）",
+      "type": "Number",
+      "defaultValue": "0",
+      "required": false,
+      "variableMode": "UseVarOrInput",
+      "condition": "",
+      "description": ""
+    },
+    {
+      "key": "markerDurationSeconds",
+      "name": "标记时长（秒）",
+      "type": "Number",
+      "defaultValue": "0",
+      "required": false,
+      "variableMode": "UseVarOrInput",
+      "condition": "",
+      "description": ""
+    },
+    {
+      "key": "markerComments",
+      "name": "标记备注",
+      "type": "Text",
+      "defaultValue": "",
+      "required": false,
+      "variableMode": "UseVarOrInput",
+      "condition": "",
+      "description": ""
+    },
+    {
+      "key": "scriptCode",
+      "name": "JavaScript 表达式",
+      "type": "Text",
+      "defaultValue": "",
+      "required": true,
+      "variableMode": "UseVarOrInput",
+      "condition": "",
+      "description": "可直接使用 ppro；返回 Promise 时会自动等待。"
+    },
+    {
+      "key": "commandName",
+      "name": "Bridge 命令名称",
+      "type": "Text",
+      "defaultValue": "",
+      "required": true,
+      "variableMode": "UseVarOrInput",
+      "condition": "",
+      "description": ""
+    },
+    {
+      "key": "argumentsJson",
+      "name": "参数（JSON 对象）",
+      "type": "Text",
+      "defaultValue": "{}",
+      "required": false,
+      "variableMode": "UseVarOrInput",
+      "condition": "",
+      "description": ""
+    },
+    {
+      "key": "waitMs",
+      "name": "最长等待时间(ms)",
+      "type": "Number",
+      "defaultValue": "30000",
+      "required": true,
+      "variableMode": "Input",
+      "condition": "",
+      "description": ""
+    },
+    {
+      "key": "stopIfFail",
+      "name": "失败后停止",
+      "type": "Boolean",
+      "defaultValue": "true",
+      "required": false,
+      "variableMode": "Input",
+      "condition": "",
+      "description": "失败后是否停止动作"
+    }
+  ],
+  "outputs": [
+    {
+      "key": "isSuccess",
+      "name": "是否成功",
+      "type": "Boolean",
+      "condition": "",
+      "description": "操作是否成功"
+    },
+    {
+      "key": "output",
+      "name": "命令结果",
+      "type": "Text",
+      "condition": "",
+      "description": "Premiere 返回的 JSON 结果。"
+    }
+  ],
+  "selections": {
+    "operation": {
+      "name": "操作类型",
+      "items": [
+        {
+          "value": "bridge.ping",
+          "name": "[Bridge] 测试连接",
+          "description": ""
+        },
+        {
+          "value": "project.get_context",
+          "name": "[项目] 获取项目上下文",
+          "description": ""
+        },
+        {
+          "value": "project.save",
+          "name": "[项目] 保存当前项目",
+          "description": ""
+        },
+        {
+          "value": "project.save_as",
+          "name": "[项目] 项目另存为",
+          "description": ""
+        },
+        {
+          "value": "sequence.list",
+          "name": "[序列] 列出项目序列",
+          "description": ""
+        },
+        {
+          "value": "sequence.activate",
+          "name": "[序列] 激活指定序列",
+          "description": ""
+        },
+        {
+          "value": "timeline.get_selection",
+          "name": "[时间线] 读取时间线选择",
+          "description": ""
+        },
+        {
+          "value": "timeline.get_playhead",
+          "name": "[时间线] 读取播放头位置",
+          "description": ""
+        },
+        {
+          "value": "timeline.set_playhead",
+          "name": "[时间线] 设置播放头位置",
+          "description": ""
+        },
+        {
+          "value": "timeline.set_in_out",
+          "name": "[时间线] 设置序列入点和出点",
+          "description": ""
+        },
+        {
+          "value": "media.import_files",
+          "name": "[媒体] 导入媒体文件",
+          "description": ""
+        },
+        {
+          "value": "media.create_bin",
+          "name": "[媒体] 创建素材箱",
+          "description": ""
+        },
+        {
+          "value": "marker.list",
+          "name": "[标记] 列出序列标记",
+          "description": ""
+        },
+        {
+          "value": "marker.add",
+          "name": "[标记] 添加序列标记",
+          "description": ""
+        },
+        {
+          "value": "script.evaluate",
+          "name": "[脚本] 执行任意 JavaScript",
+          "description": ""
+        },
+        {
+          "value": "command.custom",
+          "name": "[高级] 发送自定义 Bridge 命令",
+          "description": ""
+        }
+      ]
+    }
+  },
+  "sourceFileName": "sys_premierecontrol_Premiere Pro控制.md"
+}

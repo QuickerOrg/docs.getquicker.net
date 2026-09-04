@@ -23,13 +23,43 @@
       "description": "等待多少毫秒后弹出选区界面。"
     },
     {
+      "key": "regionType",
+      "name": "录制范围",
+      "type": "Enum",
+      "defaultValue": "none",
+      "required": true,
+      "variableMode": "Input",
+      "condition": "",
+      "description": "默认手动框选。选择主屏幕、所有屏幕或固定区域时跳过框选，直接打开录屏工具栏。"
+    },
+    {
+      "key": "area",
+      "name": "录制区域",
+      "type": "Text",
+      "defaultValue": "",
+      "required": false,
+      "variableMode": "UseVarOrInput",
+      "condition": "仅：fixed_area",
+      "description": "固定区域坐标，格式：left,top,right,bottom。默认不包含右边和底边像素。"
+    },
+    {
+      "key": "includeRightBottomBorder",
+      "name": "包含右下边像素",
+      "type": "Boolean",
+      "defaultValue": "true",
+      "required": false,
+      "variableMode": "Input",
+      "condition": "仅：fixed_area",
+      "description": "包含时，0,0,2,2 表示 3×3 区域；否则为 2×2。"
+    },
+    {
       "key": "manualAdjustSelection",
       "name": "手动调整选区",
       "type": "Boolean",
       "defaultValue": "false",
       "required": false,
       "variableMode": "Input",
-      "condition": "",
+      "condition": "仅：none",
       "description": "默认关闭：框选完成后自动确认并进入录屏。勾选后可先调整选区，再确认开录。"
     },
     {
@@ -100,6 +130,32 @@
       "description": "步骤执行出错时的消息"
     }
   ],
-  "selections": {},
+  "selections": {
+    "regionType": {
+      "name": "录制范围",
+      "items": [
+        {
+          "value": "none",
+          "name": "手动框选",
+          "description": ""
+        },
+        {
+          "value": "primary_screen",
+          "name": "主屏幕",
+          "description": ""
+        },
+        {
+          "value": "full_screen",
+          "name": "所有屏幕",
+          "description": ""
+        },
+        {
+          "value": "fixed_area",
+          "name": "固定区域",
+          "description": ""
+        }
+      ]
+    }
+  },
   "sourceFileName": "sys_screenRecordingUI_屏幕录制.md"
 }

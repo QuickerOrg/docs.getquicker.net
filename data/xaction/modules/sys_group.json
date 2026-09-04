@@ -50,7 +50,7 @@
       "required": false,
       "variableMode": "Input",
       "condition": "",
-      "description": "任意一个线程结束即可。"
+      "description": "任意一个线程结束后，本步骤不再等待其它线程，并继续执行后续步骤；其它未完成的线程仍会运行，但不会被等待。"
     },
     {
       "key": "cancelRemainingOnWaitAny",

@@ -1,0 +1,825 @@
+{
+  "key": "sys:mayacontrol",
+  "slug": "mayacontrol",
+  "legacySlug": "mayacontrol",
+  "ownsLegacyContent": true,
+  "name": "Maya控制",
+  "description": "通过 Maya Python 插件向动作触发时的前台实例发送命令。",
+  "category": "SoftInteraction",
+  "categoryName": "第三方软件交互",
+  "stepType": "Action",
+  "isRisky": false,
+  "isProOnly": false,
+  "helpLink": "https://docs.getquicker.net/v2/xaction/modules/mayacontrol",
+  "inputs": [
+    {
+      "key": "operation",
+      "name": "操作类型",
+      "type": "Enum",
+      "defaultValue": "scene.get_context",
+      "required": true,
+      "variableMode": "Input",
+      "condition": "",
+      "description": ""
+    },
+    {
+      "key": "includeTransform",
+      "name": "返回对象变换",
+      "type": "Boolean",
+      "defaultValue": "false",
+      "required": false,
+      "variableMode": "Input",
+      "condition": "",
+      "description": ""
+    },
+    {
+      "key": "sceneFilePath",
+      "name": "场景文件路径",
+      "type": "Text",
+      "defaultValue": "",
+      "required": true,
+      "variableMode": "UseVarOrInput",
+      "condition": "",
+      "description": "使用 .ma 或 .mb 文件的绝对路径。"
+    },
+    {
+      "key": "sourceFilePath",
+      "name": "源文件路径",
+      "type": "Text",
+      "defaultValue": "",
+      "required": true,
+      "variableMode": "UseVarOrInput",
+      "condition": "",
+      "description": "要导入或引用的文件绝对路径。"
+    },
+    {
+      "key": "fileNamespace",
+      "name": "命名空间",
+      "type": "Text",
+      "defaultValue": "",
+      "required": false,
+      "variableMode": "UseVarOrInput",
+      "condition": "",
+      "description": "留空时导入不增加命名空间；引用会根据文件名自动生成。"
+    },
+    {
+      "key": "exportFilePath",
+      "name": "导出文件路径",
+      "type": "Text",
+      "defaultValue": "",
+      "required": true,
+      "variableMode": "UseVarOrInput",
+      "condition": "",
+      "description": "仅支持 .ma 或 .mb 文件。"
+    },
+    {
+      "key": "objectRefsJson",
+      "name": "对象名称(JSON 数组)",
+      "type": "Text",
+      "defaultValue": "[]",
+      "required": false,
+      "variableMode": "UseVarOrInput",
+      "condition": "",
+      "description": "名称可从列出对象或选择详情的 name 字段取得。"
+    },
+    {
+      "key": "selectionMode",
+      "name": "选择方式",
+      "type": "Text",
+      "defaultValue": "replace",
+      "required": false,
+      "variableMode": "UseVarOrInput",
+      "condition": "",
+      "description": "replace、add 或 remove。"
+    },
+    {
+      "key": "primitiveType",
+      "name": "对象类型",
+      "type": "Text",
+      "defaultValue": "cube",
+      "required": false,
+      "variableMode": "UseVarOrInput",
+      "condition": "",
+      "description": "支持 cube、box、sphere、cylinder、cone、plane、torus。"
+    },
+    {
+      "key": "objectName",
+      "name": "对象名称",
+      "type": "Text",
+      "defaultValue": "Quicker Object",
+      "required": false,
+      "variableMode": "UseVarOrInput",
+      "condition": "",
+      "description": ""
+    },
+    {
+      "key": "renamePattern",
+      "name": "重命名模板",
+      "type": "Text",
+      "defaultValue": "{oldName}_{index:02d}",
+      "required": false,
+      "variableMode": "UseVarOrInput",
+      "condition": "",
+      "description": "支持 {oldName} 和 {index}，例如 Obj_{index:03d}。"
+    },
+    {
+      "key": "startIndex",
+      "name": "起始编号",
+      "type": "Integer",
+      "defaultValue": "1",
+      "required": false,
+      "variableMode": "Input",
+      "condition": "",
+      "description": ""
+    },
+    {
+      "key": "offsetX",
+      "name": "移动 X",
+      "type": "Number",
+      "defaultValue": "1",
+      "required": false,
+      "variableMode": "Input",
+      "condition": "",
+      "description": ""
+    },
+    {
+      "key": "offsetY",
+      "name": "移动 Y",
+      "type": "Number",
+      "defaultValue": "0",
+      "required": false,
+      "variableMode": "Input",
+      "condition": "",
+      "description": ""
+    },
+    {
+      "key": "offsetZ",
+      "name": "移动 Z",
+      "type": "Number",
+      "defaultValue": "0",
+      "required": false,
+      "variableMode": "Input",
+      "condition": "",
+      "description": ""
+    },
+    {
+      "key": "coordinateSpace",
+      "name": "坐标空间",
+      "type": "Text",
+      "defaultValue": "world",
+      "required": false,
+      "variableMode": "UseVarOrInput",
+      "condition": "",
+      "description": "world 使用世界坐标；object 使用对象坐标。"
+    },
+    {
+      "key": "cloneCount",
+      "name": "每个对象复制份数",
+      "type": "Integer",
+      "defaultValue": "1",
+      "required": false,
+      "variableMode": "Input",
+      "condition": "",
+      "description": ""
+    },
+    {
+      "key": "clonePattern",
+      "name": "复制对象命名模板",
+      "type": "Text",
+      "defaultValue": "{oldName}_copy{index}",
+      "required": false,
+      "variableMode": "UseVarOrInput",
+      "condition": "",
+      "description": "支持 {oldName} 和 {index}。"
+    },
+    {
+      "key": "cloneOffsetX",
+      "name": "每份偏移 X",
+      "type": "Number",
+      "defaultValue": "1",
+      "required": false,
+      "variableMode": "Input",
+      "condition": "",
+      "description": ""
+    },
+    {
+      "key": "cloneOffsetY",
+      "name": "每份偏移 Y",
+      "type": "Number",
+      "defaultValue": "0",
+      "required": false,
+      "variableMode": "Input",
+      "condition": "",
+      "description": ""
+    },
+    {
+      "key": "cloneOffsetZ",
+      "name": "每份偏移 Z",
+      "type": "Number",
+      "defaultValue": "0",
+      "required": false,
+      "variableMode": "Input",
+      "condition": "",
+      "description": ""
+    },
+    {
+      "key": "rotationX",
+      "name": "旋转 X(度)",
+      "type": "Number",
+      "defaultValue": "0",
+      "required": false,
+      "variableMode": "Input",
+      "condition": "",
+      "description": ""
+    },
+    {
+      "key": "rotationY",
+      "name": "旋转 Y(度)",
+      "type": "Number",
+      "defaultValue": "0",
+      "required": false,
+      "variableMode": "Input",
+      "condition": "",
+      "description": ""
+    },
+    {
+      "key": "rotationZ",
+      "name": "旋转 Z(度)",
+      "type": "Number",
+      "defaultValue": "90",
+      "required": false,
+      "variableMode": "Input",
+      "condition": "",
+      "description": ""
+    },
+    {
+      "key": "rotationSpace",
+      "name": "旋转坐标空间",
+      "type": "Text",
+      "defaultValue": "world",
+      "required": false,
+      "variableMode": "UseVarOrInput",
+      "condition": "",
+      "description": "world 或 object；每个对象围绕自身轴心旋转。"
+    },
+    {
+      "key": "scaleX",
+      "name": "缩放 X 倍率",
+      "type": "Number",
+      "defaultValue": "2",
+      "required": false,
+      "variableMode": "Input",
+      "condition": "",
+      "description": ""
+    },
+    {
+      "key": "scaleY",
+      "name": "缩放 Y 倍率",
+      "type": "Number",
+      "defaultValue": "2",
+      "required": false,
+      "variableMode": "Input",
+      "condition": "",
+      "description": ""
+    },
+    {
+      "key": "scaleZ",
+      "name": "缩放 Z 倍率",
+      "type": "Number",
+      "defaultValue": "2",
+      "required": false,
+      "variableMode": "Input",
+      "condition": "",
+      "description": ""
+    },
+    {
+      "key": "visibleState",
+      "name": "可见",
+      "type": "Boolean",
+      "defaultValue": "false",
+      "required": false,
+      "variableMode": "Input",
+      "condition": "",
+      "description": ""
+    },
+    {
+      "key": "lockedState",
+      "name": "锁定",
+      "type": "Boolean",
+      "defaultValue": "true",
+      "required": false,
+      "variableMode": "Input",
+      "condition": "",
+      "description": ""
+    },
+    {
+      "key": "groupName",
+      "name": "组名称",
+      "type": "Text",
+      "defaultValue": "Quicker_Group",
+      "required": true,
+      "variableMode": "UseVarOrInput",
+      "condition": "",
+      "description": ""
+    },
+    {
+      "key": "freezeTranslate",
+      "name": "冻结位移",
+      "type": "Boolean",
+      "defaultValue": "true",
+      "required": false,
+      "variableMode": "Input",
+      "condition": "",
+      "description": ""
+    },
+    {
+      "key": "freezeRotate",
+      "name": "冻结旋转",
+      "type": "Boolean",
+      "defaultValue": "true",
+      "required": false,
+      "variableMode": "Input",
+      "condition": "",
+      "description": ""
+    },
+    {
+      "key": "freezeScale",
+      "name": "冻结缩放",
+      "type": "Boolean",
+      "defaultValue": "true",
+      "required": false,
+      "variableMode": "Input",
+      "condition": "",
+      "description": ""
+    },
+    {
+      "key": "layerName",
+      "name": "显示层名称",
+      "type": "Text",
+      "defaultValue": "Quicker_Layer",
+      "required": true,
+      "variableMode": "UseVarOrInput",
+      "condition": "",
+      "description": ""
+    },
+    {
+      "key": "createLayerIfMissing",
+      "name": "图层不存在时创建",
+      "type": "Boolean",
+      "defaultValue": "true",
+      "required": false,
+      "variableMode": "Input",
+      "condition": "",
+      "description": ""
+    },
+    {
+      "key": "currentFrame",
+      "name": "当前帧",
+      "type": "Number",
+      "defaultValue": "1",
+      "required": false,
+      "variableMode": "Input",
+      "condition": "",
+      "description": ""
+    },
+    {
+      "key": "animationStart",
+      "name": "开始帧",
+      "type": "Number",
+      "defaultValue": "1",
+      "required": false,
+      "variableMode": "Input",
+      "condition": "",
+      "description": ""
+    },
+    {
+      "key": "animationEnd",
+      "name": "结束帧",
+      "type": "Number",
+      "defaultValue": "120",
+      "required": false,
+      "variableMode": "Input",
+      "condition": "",
+      "description": ""
+    },
+    {
+      "key": "playForward",
+      "name": "正向播放",
+      "type": "Boolean",
+      "defaultValue": "true",
+      "required": false,
+      "variableMode": "Input",
+      "condition": "",
+      "description": ""
+    },
+    {
+      "key": "keyframeTime",
+      "name": "关键帧时间",
+      "type": "Text",
+      "defaultValue": "",
+      "required": false,
+      "variableMode": "UseVarOrInput",
+      "condition": "",
+      "description": "留空使用当前帧，也可填写帧编号。"
+    },
+    {
+      "key": "keyframeAttributesJson",
+      "name": "属性名称(JSON 数组)",
+      "type": "Text",
+      "defaultValue": "[]",
+      "required": false,
+      "variableMode": "UseVarOrInput",
+      "condition": "",
+      "description": "留空数组时为对象所有可设关键帧的属性设置关键帧。"
+    },
+    {
+      "key": "cameraName",
+      "name": "摄像机名称",
+      "type": "Text",
+      "defaultValue": "persp",
+      "required": true,
+      "variableMode": "UseVarOrInput",
+      "condition": "",
+      "description": "可从“列出摄像机”返回的 name 字段取得。"
+    },
+    {
+      "key": "captureFilePath",
+      "name": "截图输出路径",
+      "type": "Text",
+      "defaultValue": "",
+      "required": true,
+      "variableMode": "UseVarOrInput",
+      "condition": "",
+      "description": "建议使用 .png、.jpg 等图片扩展名。"
+    },
+    {
+      "key": "captureWidth",
+      "name": "截图宽度",
+      "type": "Integer",
+      "defaultValue": "1920",
+      "required": false,
+      "variableMode": "Input",
+      "condition": "",
+      "description": ""
+    },
+    {
+      "key": "captureHeight",
+      "name": "截图高度",
+      "type": "Integer",
+      "defaultValue": "1080",
+      "required": false,
+      "variableMode": "Input",
+      "condition": "",
+      "description": ""
+    },
+    {
+      "key": "overwriteFile",
+      "name": "允许覆盖已有文件",
+      "type": "Boolean",
+      "defaultValue": "false",
+      "required": false,
+      "variableMode": "Input",
+      "condition": "",
+      "description": ""
+    },
+    {
+      "key": "melCode",
+      "name": "MEL 代码",
+      "type": "Text",
+      "defaultValue": "",
+      "required": true,
+      "variableMode": "UseVarOrInput",
+      "condition": "",
+      "description": "表达式直接返回 value；脚本返回最后一个表达式的值。"
+    },
+    {
+      "key": "melFilePath",
+      "name": "MEL 文件路径",
+      "type": "Text",
+      "defaultValue": "",
+      "required": true,
+      "variableMode": "UseVarOrInput",
+      "condition": "",
+      "description": ""
+    },
+    {
+      "key": "pythonCode",
+      "name": "Python 代码",
+      "type": "Text",
+      "defaultValue": "",
+      "required": true,
+      "variableMode": "UseVarOrInput",
+      "condition": "",
+      "description": "表达式直接返回 value；脚本可把返回值赋给 result。"
+    },
+    {
+      "key": "filePath",
+      "name": "Python 文件路径",
+      "type": "Text",
+      "defaultValue": "",
+      "required": true,
+      "variableMode": "UseVarOrInput",
+      "condition": "",
+      "description": ""
+    },
+    {
+      "key": "commandName",
+      "name": "Bridge 命令名称",
+      "type": "Text",
+      "defaultValue": "",
+      "required": true,
+      "variableMode": "UseVarOrInput",
+      "condition": "",
+      "description": ""
+    },
+    {
+      "key": "argumentsJson",
+      "name": "参数(JSON 对象)",
+      "type": "Text",
+      "defaultValue": "{}",
+      "required": false,
+      "variableMode": "UseVarOrInput",
+      "condition": "",
+      "description": ""
+    },
+    {
+      "key": "waitMs",
+      "name": "最长等待时间(ms)",
+      "type": "Number",
+      "defaultValue": "30000",
+      "required": true,
+      "variableMode": "Input",
+      "condition": "",
+      "description": "普通命令建议 30000；复杂脚本等耗时操作请按实际情况增大。"
+    },
+    {
+      "key": "stopIfFail",
+      "name": "失败后停止",
+      "type": "Boolean",
+      "defaultValue": "true",
+      "required": false,
+      "variableMode": "Input",
+      "condition": "",
+      "description": "失败后是否停止动作"
+    }
+  ],
+  "outputs": [
+    {
+      "key": "isSuccess",
+      "name": "是否成功",
+      "type": "Boolean",
+      "condition": "",
+      "description": "操作是否成功"
+    },
+    {
+      "key": "output",
+      "name": "命令结果",
+      "type": "Text",
+      "condition": "",
+      "description": "Maya 返回的 JSON 结果。"
+    }
+  ],
+  "selections": {
+    "operation": {
+      "name": "操作类型",
+      "items": [
+        {
+          "value": "bridge.ping",
+          "name": "[Bridge] 测试连接",
+          "description": ""
+        },
+        {
+          "value": "scene.get_context",
+          "name": "[场景] 读取当前场景上下文",
+          "description": ""
+        },
+        {
+          "value": "scene.save",
+          "name": "[场景] 保存当前场景",
+          "description": ""
+        },
+        {
+          "value": "scene.save_as",
+          "name": "[场景] 场景另存为",
+          "description": ""
+        },
+        {
+          "value": "scene.import_file",
+          "name": "[场景] 导入文件",
+          "description": ""
+        },
+        {
+          "value": "scene.reference_file",
+          "name": "[场景] 引用文件",
+          "description": ""
+        },
+        {
+          "value": "object.list",
+          "name": "[对象] 列出场景对象",
+          "description": ""
+        },
+        {
+          "value": "selection.get_info",
+          "name": "[选择] 读取选择详情",
+          "description": ""
+        },
+        {
+          "value": "selection.select_all",
+          "name": "[选择] 全选对象",
+          "description": ""
+        },
+        {
+          "value": "selection.clear",
+          "name": "[选择] 清空选择",
+          "description": ""
+        },
+        {
+          "value": "selection.invert",
+          "name": "[选择] 反选对象",
+          "description": ""
+        },
+        {
+          "value": "selection.select_by_names",
+          "name": "[选择] 按名称选择对象",
+          "description": ""
+        },
+        {
+          "value": "selection.export",
+          "name": "[选择] 导出选择对象",
+          "description": ""
+        },
+        {
+          "value": "object.create_primitive",
+          "name": "[对象] 创建基础对象",
+          "description": ""
+        },
+        {
+          "value": "object.rename_selected",
+          "name": "[对象] 批量重命名选择对象",
+          "description": ""
+        },
+        {
+          "value": "object.delete_selected",
+          "name": "[对象] 删除选择对象",
+          "description": ""
+        },
+        {
+          "value": "object.move_selected",
+          "name": "[对象] 移动选择对象",
+          "description": ""
+        },
+        {
+          "value": "object.duplicate_selected",
+          "name": "[对象] 复制选择对象",
+          "description": ""
+        },
+        {
+          "value": "object.rotate_selected",
+          "name": "[对象] 旋转选择对象",
+          "description": ""
+        },
+        {
+          "value": "object.scale_selected",
+          "name": "[对象] 缩放选择对象",
+          "description": ""
+        },
+        {
+          "value": "object.set_visibility",
+          "name": "[对象] 设置选择对象可见性",
+          "description": ""
+        },
+        {
+          "value": "object.set_locked",
+          "name": "[对象] 设置选择对象锁定状态",
+          "description": ""
+        },
+        {
+          "value": "object.unhide_all",
+          "name": "[对象] 显示全部对象",
+          "description": ""
+        },
+        {
+          "value": "object.unlock_all",
+          "name": "[对象] 解锁全部对象",
+          "description": ""
+        },
+        {
+          "value": "object.group_selected",
+          "name": "[对象] 将选择对象成组",
+          "description": ""
+        },
+        {
+          "value": "object.freeze_transforms",
+          "name": "[对象] 冻结选择对象变换",
+          "description": ""
+        },
+        {
+          "value": "object.delete_history",
+          "name": "[对象] 删除选择对象历史",
+          "description": ""
+        },
+        {
+          "value": "display_layer.list",
+          "name": "[显示层] 列出显示层",
+          "description": ""
+        },
+        {
+          "value": "display_layer.create",
+          "name": "[显示层] 新建显示层",
+          "description": ""
+        },
+        {
+          "value": "display_layer.assign_selected",
+          "name": "[显示层] 将选择对象加入显示层",
+          "description": ""
+        },
+        {
+          "value": "animation.set_time",
+          "name": "[动画] 设置当前帧",
+          "description": ""
+        },
+        {
+          "value": "animation.set_range",
+          "name": "[动画] 设置动画范围",
+          "description": ""
+        },
+        {
+          "value": "animation.play",
+          "name": "[动画] 开始播放",
+          "description": ""
+        },
+        {
+          "value": "animation.stop",
+          "name": "[动画] 停止播放",
+          "description": ""
+        },
+        {
+          "value": "animation.set_keyframe",
+          "name": "[动画] 为选择对象设置关键帧",
+          "description": ""
+        },
+        {
+          "value": "camera.list",
+          "name": "[摄像机] 列出摄像机",
+          "description": ""
+        },
+        {
+          "value": "camera.activate",
+          "name": "[摄像机] 切换活动摄像机",
+          "description": ""
+        },
+        {
+          "value": "view.frame_selection",
+          "name": "[视图] 聚焦选择对象",
+          "description": ""
+        },
+        {
+          "value": "view.frame_all",
+          "name": "[视图] 显示全部对象",
+          "description": ""
+        },
+        {
+          "value": "viewport.capture",
+          "name": "[视图] 保存当前视口截图",
+          "description": ""
+        },
+        {
+          "value": "mel.evaluate",
+          "name": "[MEL] 计算任意表达式",
+          "description": ""
+        },
+        {
+          "value": "mel.execute",
+          "name": "[MEL] 执行任意脚本",
+          "description": ""
+        },
+        {
+          "value": "mel.run_file",
+          "name": "[MEL] 运行脚本文件",
+          "description": ""
+        },
+        {
+          "value": "python.evaluate",
+          "name": "[脚本] 计算任意 Python 表达式",
+          "description": ""
+        },
+        {
+          "value": "python.execute",
+          "name": "[脚本] 执行任意 Python 脚本",
+          "description": ""
+        },
+        {
+          "value": "python.run_file",
+          "name": "[脚本] 运行 Python 文件",
+          "description": ""
+        },
+        {
+          "value": "command.custom",
+          "name": "[高级] 发送自定义 Bridge 命令",
+          "description": ""
+        }
+      ]
+    }
+  },
+  "sourceFileName": "sys_mayacontrol_Maya控制.md"
+}

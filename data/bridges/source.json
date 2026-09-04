@@ -1,0 +1,457 @@
+{
+  "schemaVersion": 1,
+  "quickerCommit": "883ad659cd1663868c980016543c8965b03ce1e2",
+  "installerCommit": "3a9d9196dbf84aeefefce30df0219fe5691eb764",
+  "generatedAt": "2026-09-04 07:37:19",
+  "exportTest": "FullyQualifiedName~ExportStepMetadataDocuments",
+  "excludedInternalModules": [
+    "sys:test"
+  ],
+  "hosts": [
+    {
+      "connectionId": "3dsmax",
+      "routing": "pid-start-time",
+      "execute": "QuickerPc/Quicker/Actions/XActions/BuildinRunners/SoftwareControl/ThreeDsMaxControlStepV2.Execute.cs",
+      "adapter": "QuickerPc/Quicker/Modules/ThirdPartyConnections/ThreeDsMax/ThreeDsMaxConnectionAdapter.cs",
+      "package": "Tools/ThreeDsMaxBridge/package-qbridge.ps1",
+      "installer": "src/QuickerInstaller.Core/Bridge/Transactions/ThreeDsMaxBridgeInstallService.cs"
+    },
+    {
+      "connectionId": "aftereffects",
+      "routing": "foreground-unique",
+      "execute": "QuickerPc/Quicker/Actions/XActions/BuildinRunners/SoftwareControl/AfterEffectsControlStepV2.Execute.cs",
+      "adapter": "QuickerPc/Quicker/Modules/ThirdPartyConnections/AfterEffects/AfterEffectsConnectionAdapter.cs",
+      "package": "Tools/AfterEffectsBridge/package-qbridge.ps1",
+      "installer": "src/QuickerInstaller.App/ViewModels/MainViewModel.cs"
+    },
+    {
+      "connectionId": "autocad",
+      "routing": "pid-start-time",
+      "execute": "QuickerPc/Quicker/Actions/XActions/BuildinRunners/SoftwareControl/AutoCADControlStepV2.Execute.cs",
+      "adapter": "QuickerPc/Quicker/Modules/ThirdPartyConnections/AutoCAD/AutoCadConnectionAdapter.cs",
+      "package": "Tools/AutoCADBridge/package-qbridge.ps1",
+      "installer": "src/QuickerInstaller.Core/Bridge/Transactions/AutoCadBridgeInstallService.cs"
+    },
+    {
+      "connectionId": "blender",
+      "routing": "pid-start-time",
+      "execute": "QuickerPc/Quicker/Actions/XActions/BuildinRunners/SoftwareControl/BlenderControlStepV2.Execute.cs",
+      "adapter": "QuickerPc/Quicker/Modules/ThirdPartyConnections/Blender/BlenderConnectionAdapter.cs",
+      "package": "Tools/BlenderBridge/package-qbridge.ps1",
+      "installer": "src/QuickerInstaller.Core/Bridge/Transactions/BlenderBridgeInstallService.cs"
+    },
+    {
+      "connectionId": "cinema4d",
+      "routing": "pid-start-time",
+      "execute": "QuickerPc/Quicker/Actions/XActions/BuildinRunners/SoftwareControl/Cinema4DControlStepV2.Execute.cs",
+      "adapter": "QuickerPc/Quicker/Modules/ThirdPartyConnections/Cinema4D/Cinema4DConnectionAdapter.cs",
+      "package": "Tools/Cinema4DBridge/package-qbridge.ps1",
+      "installer": "src/QuickerInstaller.Core/Bridge/Transactions/Cinema4DBridgeInstallService.cs"
+    },
+    {
+      "connectionId": "coreldraw",
+      "routing": "pid-start-time",
+      "execute": "QuickerPc/Quicker/Actions/XActions/BuildinRunners/SoftwareControl/CorelDrawControlStepV2.Execute.cs",
+      "adapter": "QuickerPc/Quicker/Modules/ThirdPartyConnections/CorelDraw/CorelDrawConnectionAdapter.cs",
+      "package": "Tools/CorelDrawBridge/package-qbridge.ps1",
+      "installer": "src/QuickerInstaller.Core/Bridge/Transactions/CorelDrawBridgeInstallService.cs"
+    },
+    {
+      "connectionId": "illustrator",
+      "routing": "unique-session",
+      "execute": "QuickerPc/Quicker/Actions/XActions/BuildinRunners/SoftwareControl/IllustratorControlStepV2.Execute.cs",
+      "adapter": "QuickerPc/Quicker/Modules/ThirdPartyConnections/Illustrator/IllustratorConnectionAdapter.cs",
+      "package": "Tools/IllustratorBridge/package-qbridge.ps1",
+      "installer": "src/QuickerInstaller.App/ViewModels/MainViewModel.cs"
+    },
+    {
+      "connectionId": "indesign",
+      "routing": "unique-session",
+      "execute": "QuickerPc/Quicker/Actions/XActions/BuildinRunners/SoftwareControl/InDesignControlStepV2.Execute.cs",
+      "adapter": "QuickerPc/Quicker/Modules/ThirdPartyConnections/InDesign/InDesignConnectionAdapter.cs",
+      "package": "Tools/InDesignBridge/package-qbridge.ps1",
+      "installer": "src/QuickerInstaller.Core/Bridge/Transactions/InDesignBridgeInstallService.cs"
+    },
+    {
+      "connectionId": "maya",
+      "routing": "pid-start-time",
+      "execute": "QuickerPc/Quicker/Actions/XActions/BuildinRunners/SoftwareControl/MayaControlStepV2.Execute.cs",
+      "adapter": "QuickerPc/Quicker/Modules/ThirdPartyConnections/Maya/MayaConnectionAdapter.cs",
+      "package": "Tools/MayaBridge/package-qbridge.ps1",
+      "installer": "src/QuickerInstaller.Core/Bridge/Transactions/MayaBridgeInstallService.cs"
+    },
+    {
+      "connectionId": "photoshop",
+      "routing": "foreground-unique",
+      "execute": "QuickerPc/Quicker/Actions/XActions/BuildinRunners/SoftwareControl/PhotoshopControlStepV2.Execute.cs",
+      "adapter": "QuickerPc/Quicker/Modules/ThirdPartyConnections/Photoshop/PhotoshopConnectionAdapter.cs",
+      "package": "Tools/PhotoshopBridge/package-qbridge.ps1",
+      "installer": "src/QuickerInstaller.App/ViewModels/MainViewModel.cs"
+    },
+    {
+      "connectionId": "premiere",
+      "routing": "foreground-unique",
+      "execute": "QuickerPc/Quicker/Actions/XActions/BuildinRunners/SoftwareControl/PremiereControlStepV2.Execute.cs",
+      "adapter": "QuickerPc/Quicker/Modules/ThirdPartyConnections/Premiere/PremiereConnectionAdapter.cs",
+      "package": "Tools/PremiereBridge/package-qbridge.ps1",
+      "installer": "src/QuickerInstaller.App/ViewModels/MainViewModel.cs"
+    },
+    {
+      "connectionId": "revit",
+      "routing": "pid-start-time",
+      "execute": "QuickerPc/Quicker/Actions/XActions/BuildinRunners/SoftwareControl/RevitControlStepV2.Execute.cs",
+      "adapter": "QuickerPc/Quicker/Modules/ThirdPartyConnections/Revit/RevitConnectionAdapter.cs",
+      "package": "Tools/RevitBridge/package-qbridge.ps1",
+      "installer": "src/QuickerInstaller.Core/Bridge/Transactions/RevitBridgeInstallService.cs"
+    },
+    {
+      "connectionId": "rhino",
+      "routing": "pid-start-time",
+      "execute": "QuickerPc/Quicker/Actions/XActions/BuildinRunners/SoftwareControl/RhinoControlStepV2.Execute.cs",
+      "adapter": "QuickerPc/Quicker/Modules/ThirdPartyConnections/Rhino/RhinoConnectionAdapter.cs",
+      "package": "Tools/RhinoBridge/package-qbridge.ps1",
+      "installer": "src/QuickerInstaller.Core/Bridge/Transactions/RhinoBridgeInstallService.cs"
+    },
+    {
+      "connectionId": "sketchup",
+      "routing": "pid-start-time",
+      "execute": "QuickerPc/Quicker/Actions/XActions/BuildinRunners/SoftwareControl/SketchUpControlStepV2.Execute.cs",
+      "adapter": "QuickerPc/Quicker/Modules/ThirdPartyConnections/SketchUp/SketchUpConnectionAdapter.cs",
+      "package": "Tools/SketchUpBridge/package-qbridge.ps1",
+      "installer": "src/QuickerInstaller.Core/Bridge/Transactions/SketchUpBridgeInstallService.cs"
+    },
+    {
+      "connectionId": "solidworks",
+      "routing": "pid-start-time",
+      "execute": "QuickerPc/Quicker/Actions/XActions/BuildinRunners/SoftwareControl/SolidWorksControlStepV2.Execute.cs",
+      "adapter": "QuickerPc/Quicker/Modules/ThirdPartyConnections/SolidWorks/SolidWorksConnectionAdapter.cs",
+      "package": "Tools/SolidWorksBridge/package-qbridge.ps1",
+      "installer": "src/QuickerInstaller.Core/Bridge/Transactions/SolidWorksBridgeInstallService.cs"
+    },
+    {
+      "connectionId": "wps",
+      "routing": "hwnd-component",
+      "execute": "QuickerPc/Quicker/Actions/XActions/BuildinRunners/SoftwareControl/WpsControlStepV2.Execute.cs",
+      "adapter": "QuickerPc/Quicker/Modules/ThirdPartyConnections/Wps/WpsConnectionAdapter.cs",
+      "package": null,
+      "installer": "src/QuickerInstaller.App/ViewModels/BridgeManagementViewModel.cs"
+    }
+  ],
+  "files": [
+    {
+      "repository": "Quicker",
+      "path": "QuickerPc/Quicker/Actions/XActions/BuildinRunners/SoftwareControl/ThreeDsMaxControlStepV2.Execute.cs",
+      "sha256": "3cd0bf3216e773f06d1130c4de2291b4999d9cef48d79a3c72e11bd0ff0e4f43"
+    },
+    {
+      "repository": "Quicker",
+      "path": "QuickerPc/Quicker/Modules/ThirdPartyConnections/ThreeDsMax/ThreeDsMaxConnectionAdapter.cs",
+      "sha256": "4ebdbc5dd92460d77e570be9123acc2de3774e6bc9f842dd4376e5843cef562f"
+    },
+    {
+      "repository": "Quicker",
+      "path": "Tools/ThreeDsMaxBridge/package-qbridge.ps1",
+      "sha256": "fc0c9d8a1ed3a202932308818b6270192acccc99981826e471e9f04c1cb8bcf2"
+    },
+    {
+      "repository": "QuickerInstaller",
+      "path": "src/QuickerInstaller.Core/Bridge/Transactions/ThreeDsMaxBridgeInstallService.cs",
+      "sha256": "2568fb585f33b9c2fac67803083700466dfe0eb1232a7a2bbae23e449fdcae3f"
+    },
+    {
+      "repository": "Quicker",
+      "path": "QuickerPc/Quicker/Actions/XActions/BuildinRunners/SoftwareControl/AfterEffectsControlStepV2.Execute.cs",
+      "sha256": "ea515cd9f3c337b5e499b1f38e19d71ee03bb6fbe3d97d33a48928824030c54c"
+    },
+    {
+      "repository": "Quicker",
+      "path": "QuickerPc/Quicker/Modules/ThirdPartyConnections/AfterEffects/AfterEffectsConnectionAdapter.cs",
+      "sha256": "f7a192ea8600de1a45cbbca58feeb3ea6aec1a4f5c066ee9652af6240c869693"
+    },
+    {
+      "repository": "Quicker",
+      "path": "Tools/AfterEffectsBridge/package-qbridge.ps1",
+      "sha256": "281c41b8b4aa182936192c03314671d4c91929de67ffdd0413e6b8a1a3cc7eca"
+    },
+    {
+      "repository": "QuickerInstaller",
+      "path": "src/QuickerInstaller.App/ViewModels/MainViewModel.cs",
+      "sha256": "201b8f139e77e4b198ea9bb126093410da1de1363f4c8017d9fbbc656db8c6fa"
+    },
+    {
+      "repository": "Quicker",
+      "path": "QuickerPc/Quicker/Actions/XActions/BuildinRunners/SoftwareControl/AutoCADControlStepV2.Execute.cs",
+      "sha256": "462df11726089b0c7f063b564823d81354c44a4438c460182a41bf7a92be16c7"
+    },
+    {
+      "repository": "Quicker",
+      "path": "QuickerPc/Quicker/Modules/ThirdPartyConnections/AutoCAD/AutoCadConnectionAdapter.cs",
+      "sha256": "6fed239c79065107f9e04b03e09e07794fc41c133112befa8a1b83b34a3b4348"
+    },
+    {
+      "repository": "Quicker",
+      "path": "Tools/AutoCADBridge/package-qbridge.ps1",
+      "sha256": "4c0c23b1a90f8b17314d26499701cd865cf0894815f2f86abdecf3e4a1158648"
+    },
+    {
+      "repository": "QuickerInstaller",
+      "path": "src/QuickerInstaller.Core/Bridge/Transactions/AutoCadBridgeInstallService.cs",
+      "sha256": "b7b52abb70f02a25e62b5c62db4c7bc089f43a0dfd5041d0d9bbe06383f929a0"
+    },
+    {
+      "repository": "Quicker",
+      "path": "QuickerPc/Quicker/Actions/XActions/BuildinRunners/SoftwareControl/BlenderControlStepV2.Execute.cs",
+      "sha256": "3deac01355f2abb692831190319bf466e2fadb18407492ca99caecd0218a5dc6"
+    },
+    {
+      "repository": "Quicker",
+      "path": "QuickerPc/Quicker/Modules/ThirdPartyConnections/Blender/BlenderConnectionAdapter.cs",
+      "sha256": "50079bff119d1a969dbffd745c2294a1e959233828d9cf6c7adf511766ffaa37"
+    },
+    {
+      "repository": "Quicker",
+      "path": "Tools/BlenderBridge/package-qbridge.ps1",
+      "sha256": "356ff2bdf18d8c5393390d03f3a454c1895909215a847a20234ff4ae045c0f32"
+    },
+    {
+      "repository": "QuickerInstaller",
+      "path": "src/QuickerInstaller.Core/Bridge/Transactions/BlenderBridgeInstallService.cs",
+      "sha256": "a8921b77299d2c4e52b2954c378fb653af1f8dba8884171aae2a4517f0437c31"
+    },
+    {
+      "repository": "Quicker",
+      "path": "QuickerPc/Quicker/Actions/XActions/BuildinRunners/SoftwareControl/Cinema4DControlStepV2.Execute.cs",
+      "sha256": "ae5b444102687190aa381d372878e03617e224a3b5741c1bae7efd2dd7c20b62"
+    },
+    {
+      "repository": "Quicker",
+      "path": "QuickerPc/Quicker/Modules/ThirdPartyConnections/Cinema4D/Cinema4DConnectionAdapter.cs",
+      "sha256": "53b5cb13998e19b534d9295d64c94bddd07cb207ac7ef295d8e12cc3d0f62167"
+    },
+    {
+      "repository": "Quicker",
+      "path": "Tools/Cinema4DBridge/package-qbridge.ps1",
+      "sha256": "d05aafe93c1ae1b43042d28d919f0c313527346f9b081427677e4e14c88c7fdd"
+    },
+    {
+      "repository": "QuickerInstaller",
+      "path": "src/QuickerInstaller.Core/Bridge/Transactions/Cinema4DBridgeInstallService.cs",
+      "sha256": "bfb5b563a0e43ac46e45a6c68483baf28896762841b8c6f5174afc14975f9abc"
+    },
+    {
+      "repository": "Quicker",
+      "path": "QuickerPc/Quicker/Actions/XActions/BuildinRunners/SoftwareControl/CorelDrawControlStepV2.Execute.cs",
+      "sha256": "0496d09c47548cf19b1505a53106acaed0ab5170389b44e8950c9ba22353beca"
+    },
+    {
+      "repository": "Quicker",
+      "path": "QuickerPc/Quicker/Modules/ThirdPartyConnections/CorelDraw/CorelDrawConnectionAdapter.cs",
+      "sha256": "77a4c18815030b80cbe9482d1105541e0d50eb1edfa58aeb1591aee2e9deb4ec"
+    },
+    {
+      "repository": "Quicker",
+      "path": "Tools/CorelDrawBridge/package-qbridge.ps1",
+      "sha256": "6deb7b9f60d56581e2a95c9a15b65c4f9fb08bd078467f689f4e03ffc8e4dfed"
+    },
+    {
+      "repository": "QuickerInstaller",
+      "path": "src/QuickerInstaller.Core/Bridge/Transactions/CorelDrawBridgeInstallService.cs",
+      "sha256": "a24058670cefc41d789c18a0a619385b99e69f068c151e4a98d335119e061ab5"
+    },
+    {
+      "repository": "Quicker",
+      "path": "QuickerPc/Quicker/Actions/XActions/BuildinRunners/SoftwareControl/IllustratorControlStepV2.Execute.cs",
+      "sha256": "8e1592a36cc497cb0c4e1b10cb3755853b94c9ed761d09f984c0a888feb0ba60"
+    },
+    {
+      "repository": "Quicker",
+      "path": "QuickerPc/Quicker/Modules/ThirdPartyConnections/Illustrator/IllustratorConnectionAdapter.cs",
+      "sha256": "615403ffb0ee633ddd2c80fdd57389ec1221a9668276deb9c1e48b3124dbd16b"
+    },
+    {
+      "repository": "Quicker",
+      "path": "Tools/IllustratorBridge/package-qbridge.ps1",
+      "sha256": "5950ab14e6cc68151ef63f73281fcef47929bb3e477fb8959c64afa16bc8f430"
+    },
+    {
+      "repository": "Quicker",
+      "path": "QuickerPc/Quicker/Actions/XActions/BuildinRunners/SoftwareControl/InDesignControlStepV2.Execute.cs",
+      "sha256": "dc6fecaf94d66deac8666ecf95ff56eceaeff8fb2bd20e278c1190eb0033d32e"
+    },
+    {
+      "repository": "Quicker",
+      "path": "QuickerPc/Quicker/Modules/ThirdPartyConnections/InDesign/InDesignConnectionAdapter.cs",
+      "sha256": "7f26e601b78f59d25100f0d3febd131054ba068df9701bfcc91094a7ae85a705"
+    },
+    {
+      "repository": "Quicker",
+      "path": "Tools/InDesignBridge/package-qbridge.ps1",
+      "sha256": "9333c229712a70bb319d40cb5e81691833e57f586e17769ddb50d9ed5b5eebcb"
+    },
+    {
+      "repository": "QuickerInstaller",
+      "path": "src/QuickerInstaller.Core/Bridge/Transactions/InDesignBridgeInstallService.cs",
+      "sha256": "f84190c639a6f19f6219ddca0921da3263e8636748689d3a0993d08f4ea4c387"
+    },
+    {
+      "repository": "Quicker",
+      "path": "QuickerPc/Quicker/Actions/XActions/BuildinRunners/SoftwareControl/MayaControlStepV2.Execute.cs",
+      "sha256": "3d3d0ee09f6b2eb54e695c679160a4f6eca9f39bec13d62f3cd3b86f8ace9184"
+    },
+    {
+      "repository": "Quicker",
+      "path": "QuickerPc/Quicker/Modules/ThirdPartyConnections/Maya/MayaConnectionAdapter.cs",
+      "sha256": "9c22e43a28e6cc1e1b166e373f0629b82977eea2f68a78dcde5b8204fd85bd0b"
+    },
+    {
+      "repository": "Quicker",
+      "path": "Tools/MayaBridge/package-qbridge.ps1",
+      "sha256": "d4b3558fc2a57cb1dfed8e126d51369e23ff8b1e902c20cc2499a532c80980e5"
+    },
+    {
+      "repository": "QuickerInstaller",
+      "path": "src/QuickerInstaller.Core/Bridge/Transactions/MayaBridgeInstallService.cs",
+      "sha256": "60dd6f0c8c14068e39dfa484c4c1765d25f2555a648d963260596da748f6d10b"
+    },
+    {
+      "repository": "Quicker",
+      "path": "QuickerPc/Quicker/Actions/XActions/BuildinRunners/SoftwareControl/PhotoshopControlStepV2.Execute.cs",
+      "sha256": "a211137f05c1e89f01db367a84d5d42a136767a583526fecc9abc8344ec79dfe"
+    },
+    {
+      "repository": "Quicker",
+      "path": "QuickerPc/Quicker/Modules/ThirdPartyConnections/Photoshop/PhotoshopConnectionAdapter.cs",
+      "sha256": "6bc74389c201678192e47a770a93797e19e010b0b6546492727101a1490021f7"
+    },
+    {
+      "repository": "Quicker",
+      "path": "Tools/PhotoshopBridge/package-qbridge.ps1",
+      "sha256": "1a5c7968968ab4f35df690366c328c7a0194593fbbebaa5b9a98f2945bc421ae"
+    },
+    {
+      "repository": "Quicker",
+      "path": "QuickerPc/Quicker/Actions/XActions/BuildinRunners/SoftwareControl/PremiereControlStepV2.Execute.cs",
+      "sha256": "7611c0de8b97295c56a46984a92d2e6a2c76659bef875a89b36e0ad255e7f770"
+    },
+    {
+      "repository": "Quicker",
+      "path": "QuickerPc/Quicker/Modules/ThirdPartyConnections/Premiere/PremiereConnectionAdapter.cs",
+      "sha256": "413bb202b95d2f841ded6041244d2525479952e0689f6aee34c5a43a9d89871f"
+    },
+    {
+      "repository": "Quicker",
+      "path": "Tools/PremiereBridge/package-qbridge.ps1",
+      "sha256": "12896511ef86502b7935e4f35128f54941a2811621b1c215d3bbafb5320d4e18"
+    },
+    {
+      "repository": "Quicker",
+      "path": "QuickerPc/Quicker/Actions/XActions/BuildinRunners/SoftwareControl/RevitControlStepV2.Execute.cs",
+      "sha256": "6695a741ad552e4ea289df81f64f91dd695e386c9c54f427fdb72c72a6ace591"
+    },
+    {
+      "repository": "Quicker",
+      "path": "QuickerPc/Quicker/Modules/ThirdPartyConnections/Revit/RevitConnectionAdapter.cs",
+      "sha256": "2ca8c53572ab74e127299d4b16f5f0ab9f8706382e6aea2661fe0112cde91968"
+    },
+    {
+      "repository": "Quicker",
+      "path": "Tools/RevitBridge/package-qbridge.ps1",
+      "sha256": "de9ec096cadd93e3979e497ce42cfd79c69f9e3d19bab5a573cdbc7c5db07b47"
+    },
+    {
+      "repository": "QuickerInstaller",
+      "path": "src/QuickerInstaller.Core/Bridge/Transactions/RevitBridgeInstallService.cs",
+      "sha256": "ede4171c2d66ec2ea2dc33bfa9c490a29fa6a311246a3e84228f525e8eb42ce4"
+    },
+    {
+      "repository": "Quicker",
+      "path": "QuickerPc/Quicker/Actions/XActions/BuildinRunners/SoftwareControl/RhinoControlStepV2.Execute.cs",
+      "sha256": "0a392c072d6ac8ef7580cd9fe219e3d4f42dbaf2731f64a94008458f5ece635b"
+    },
+    {
+      "repository": "Quicker",
+      "path": "QuickerPc/Quicker/Modules/ThirdPartyConnections/Rhino/RhinoConnectionAdapter.cs",
+      "sha256": "f6ebd774d1718a8de339a2f41a7132db15d1d5fb1ed509b84d13e07670bee0d7"
+    },
+    {
+      "repository": "Quicker",
+      "path": "Tools/RhinoBridge/package-qbridge.ps1",
+      "sha256": "8717906d0be3ece1ba2882eae5b862c083429a6040f499dbb9aebff57f19266b"
+    },
+    {
+      "repository": "QuickerInstaller",
+      "path": "src/QuickerInstaller.Core/Bridge/Transactions/RhinoBridgeInstallService.cs",
+      "sha256": "84e6bd820a75b98fbe01a7a41986158d74b49a99cc2119348d82d3d231b63ddb"
+    },
+    {
+      "repository": "Quicker",
+      "path": "QuickerPc/Quicker/Actions/XActions/BuildinRunners/SoftwareControl/SketchUpControlStepV2.Execute.cs",
+      "sha256": "d8728fe9bda41c13a6a0ce3b1242a9fc5d46f21cee5d12dd51785554beb49c3c"
+    },
+    {
+      "repository": "Quicker",
+      "path": "QuickerPc/Quicker/Modules/ThirdPartyConnections/SketchUp/SketchUpConnectionAdapter.cs",
+      "sha256": "cbb8015a81cdedb2ff2a920e5cac7e89c9fb83beca73469ddf6204a07675ca0d"
+    },
+    {
+      "repository": "Quicker",
+      "path": "Tools/SketchUpBridge/package-qbridge.ps1",
+      "sha256": "a3d8245e3a6b8ea353ebcbcd1bc3c596fc78e97451b6582d165b56934da4ff7c"
+    },
+    {
+      "repository": "QuickerInstaller",
+      "path": "src/QuickerInstaller.Core/Bridge/Transactions/SketchUpBridgeInstallService.cs",
+      "sha256": "bfdd05d42a7ff7a3d0256aa187d58f399d255890e1fd94ea972ae66d2f9975b3"
+    },
+    {
+      "repository": "Quicker",
+      "path": "QuickerPc/Quicker/Actions/XActions/BuildinRunners/SoftwareControl/SolidWorksControlStepV2.Execute.cs",
+      "sha256": "66b9c756007bbe4e8b9098c62b0f54570a47e575483e314712ad7cbd61d8e004"
+    },
+    {
+      "repository": "Quicker",
+      "path": "QuickerPc/Quicker/Modules/ThirdPartyConnections/SolidWorks/SolidWorksConnectionAdapter.cs",
+      "sha256": "93f0a04013200cc168c48a45c50a613e1f968bd427e4bf4b1214786eb8a7053f"
+    },
+    {
+      "repository": "Quicker",
+      "path": "Tools/SolidWorksBridge/package-qbridge.ps1",
+      "sha256": "5a60f8ec6c7c8b72859b645655e80c8c2f50b4d74760ecceee15b57c2373fde4"
+    },
+    {
+      "repository": "QuickerInstaller",
+      "path": "src/QuickerInstaller.Core/Bridge/Transactions/SolidWorksBridgeInstallService.cs",
+      "sha256": "690b0a74c4e1cac32e76af6446bf08b2533a2c9d1dd2906b3c492a6ac7719d0b"
+    },
+    {
+      "repository": "Quicker",
+      "path": "QuickerPc/Quicker/Actions/XActions/BuildinRunners/SoftwareControl/WpsControlStepV2.Execute.cs",
+      "sha256": "f0a3b2e7fa424d08c2fbe4da0a2949e8b2acb5c1c2698f48a6c52c4fe1a27a34"
+    },
+    {
+      "repository": "Quicker",
+      "path": "QuickerPc/Quicker/Modules/ThirdPartyConnections/Wps/WpsConnectionAdapter.cs",
+      "sha256": "cec9b6670666be88e5b9f64893e2dc4f3ba5fad3ad0852b1a4c37059b665bbae"
+    },
+    {
+      "repository": "QuickerInstaller",
+      "path": "src/QuickerInstaller.App/ViewModels/BridgeManagementViewModel.cs",
+      "sha256": "3196a02b969f269a26eb97e099e00007f93207cff15f7dd003584778358a86bb"
+    },
+    {
+      "repository": "QuickerInstaller",
+      "path": "docs/Bridge统一安装实施状态.md",
+      "sha256": "47dfcd30ce90801dad2864421267c0a6b60c930c1be968e19f84da9d5407eff6"
+    },
+    {
+      "repository": "Quicker",
+      "path": "Tools/docs/Export-StepMetadataDocs.ps1",
+      "sha256": "1e8a2c4010ced1136d9d3166db7097b840fe6ba762011ddd14240344c95cde0b"
+    },
+    {
+      "repository": "Quicker",
+      "path": "QuickerPc/Quicker/Settings/Pages/ThirdPartyConnections/ThirdPartyConnectionsSettingsPage.xaml",
+      "sha256": "23106ac4429761a894102922f6eebdbd8b5d5d9025f143fcd954a88e8e13ba4f"
+    }
+  ]
+}

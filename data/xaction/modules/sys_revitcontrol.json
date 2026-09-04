@@ -1,0 +1,320 @@
+{
+  "key": "sys:revitcontrol",
+  "slug": "revitcontrol",
+  "legacySlug": "revitcontrol",
+  "ownsLegacyContent": true,
+  "name": "Revit控制",
+  "description": "通过 Revit Add-in 调用项目、选择、元素、参数、视图和 C# 脚本能力",
+  "category": "SoftInteraction",
+  "categoryName": "第三方软件交互",
+  "stepType": "Action",
+  "isRisky": false,
+  "isProOnly": false,
+  "helpLink": "https://docs.getquicker.net/v2/xaction/modules/revitcontrol",
+  "inputs": [
+    {
+      "key": "operation",
+      "name": "操作类型",
+      "type": "Enum",
+      "defaultValue": "document.get_context",
+      "required": true,
+      "variableMode": "Input",
+      "condition": "",
+      "description": ""
+    },
+    {
+      "key": "argumentsJson",
+      "name": "参数(JSON 对象)",
+      "type": "Text",
+      "defaultValue": "{}",
+      "required": false,
+      "variableMode": "UseVarOrInput",
+      "condition": "",
+      "description": "命令参数。Windows 路径中的反斜杠需要写成 \\。"
+    },
+    {
+      "key": "commandName",
+      "name": "Bridge 命令名称",
+      "type": "Text",
+      "defaultValue": "",
+      "required": true,
+      "variableMode": "UseVarOrInput",
+      "condition": "",
+      "description": ""
+    },
+    {
+      "key": "waitMs",
+      "name": "最长等待时间(ms)",
+      "type": "Number",
+      "defaultValue": "30000",
+      "required": true,
+      "variableMode": "Input",
+      "condition": "",
+      "description": ""
+    },
+    {
+      "key": "stopIfFail",
+      "name": "失败后停止",
+      "type": "Boolean",
+      "defaultValue": "true",
+      "required": false,
+      "variableMode": "Input",
+      "condition": "",
+      "description": "失败后是否停止动作"
+    }
+  ],
+  "outputs": [
+    {
+      "key": "isSuccess",
+      "name": "是否成功",
+      "type": "Boolean",
+      "condition": "",
+      "description": "操作是否成功"
+    },
+    {
+      "key": "output",
+      "name": "命令结果",
+      "type": "Text",
+      "condition": "",
+      "description": "Revit 返回的 JSON 结果。"
+    }
+  ],
+  "selections": {
+    "operation": {
+      "name": "操作类型",
+      "items": [
+        {
+          "value": "bridge.ping",
+          "name": "[Bridge] 测试连接",
+          "description": ""
+        },
+        {
+          "value": "bridge.self_test",
+          "name": "[Bridge] 安全自检（自动回滚）",
+          "description": ""
+        },
+        {
+          "value": "command.list",
+          "name": "[Bridge] 读取命令目录",
+          "description": ""
+        },
+        {
+          "value": "application.get_context",
+          "name": "[应用] 读取 Revit 上下文",
+          "description": ""
+        },
+        {
+          "value": "application.post_command",
+          "name": "[应用] 调用 Revit 内置命令",
+          "description": ""
+        },
+        {
+          "value": "document.get_context",
+          "name": "[文档] 读取当前文档上下文",
+          "description": ""
+        },
+        {
+          "value": "document.list",
+          "name": "[文档] 列出已打开文档",
+          "description": ""
+        },
+        {
+          "value": "document.save",
+          "name": "[文档] 保存当前文档",
+          "description": ""
+        },
+        {
+          "value": "document.save_as",
+          "name": "[文档] 当前文档另存为",
+          "description": ""
+        },
+        {
+          "value": "document.export_pdf",
+          "name": "[文档] 导出视图/图纸为 PDF",
+          "description": ""
+        },
+        {
+          "value": "document.export_dwg",
+          "name": "[文档] 导出视图/图纸为 DWG",
+          "description": ""
+        },
+        {
+          "value": "document.get_warnings",
+          "name": "[文档] 读取项目警告",
+          "description": ""
+        },
+        {
+          "value": "selection.get",
+          "name": "[选择] 读取当前选择",
+          "description": ""
+        },
+        {
+          "value": "selection.set",
+          "name": "[选择] 按元素 ID 设置选择",
+          "description": ""
+        },
+        {
+          "value": "selection.clear",
+          "name": "[选择] 清空选择",
+          "description": ""
+        },
+        {
+          "value": "selection.delete",
+          "name": "[选择] 删除所选元素",
+          "description": ""
+        },
+        {
+          "value": "element.get",
+          "name": "[元素] 读取元素详情",
+          "description": ""
+        },
+        {
+          "value": "element.list",
+          "name": "[元素] 搜索项目元素",
+          "description": ""
+        },
+        {
+          "value": "element.get_parameters",
+          "name": "[元素] 读取元素参数",
+          "description": ""
+        },
+        {
+          "value": "element.set_parameter",
+          "name": "[元素] 设置元素参数",
+          "description": ""
+        },
+        {
+          "value": "element.set_parameters",
+          "name": "[元素] 批量设置元素参数",
+          "description": ""
+        },
+        {
+          "value": "element.change_type",
+          "name": "[元素] 更改元素类型",
+          "description": ""
+        },
+        {
+          "value": "element.pin",
+          "name": "[元素] 固定元素",
+          "description": ""
+        },
+        {
+          "value": "element.unpin",
+          "name": "[元素] 取消固定元素",
+          "description": ""
+        },
+        {
+          "value": "category.list",
+          "name": "[类别] 列出项目类别",
+          "description": ""
+        },
+        {
+          "value": "view.get_context",
+          "name": "[视图] 读取当前视图",
+          "description": ""
+        },
+        {
+          "value": "view.list",
+          "name": "[视图] 列出项目视图",
+          "description": ""
+        },
+        {
+          "value": "view.activate",
+          "name": "[视图] 激活指定视图",
+          "description": ""
+        },
+        {
+          "value": "view.duplicate",
+          "name": "[视图] 复制视图",
+          "description": ""
+        },
+        {
+          "value": "view.zoom_fit",
+          "name": "[视图] 缩放至适合窗口",
+          "description": ""
+        },
+        {
+          "value": "view.show_elements",
+          "name": "[视图] 定位并显示元素",
+          "description": ""
+        },
+        {
+          "value": "view.hide_elements",
+          "name": "[视图] 隐藏元素",
+          "description": ""
+        },
+        {
+          "value": "view.unhide_elements",
+          "name": "[视图] 取消隐藏元素",
+          "description": ""
+        },
+        {
+          "value": "view.isolate_elements",
+          "name": "[视图] 临时隔离元素",
+          "description": ""
+        },
+        {
+          "value": "view.reset_temporary",
+          "name": "[视图] 重置临时隐藏与隔离",
+          "description": ""
+        },
+        {
+          "value": "view.export_image",
+          "name": "[视图] 导出当前视图图像",
+          "description": ""
+        },
+        {
+          "value": "project.list_levels",
+          "name": "[项目] 列出标高",
+          "description": ""
+        },
+        {
+          "value": "project.list_sheets",
+          "name": "[项目] 列出图纸",
+          "description": ""
+        },
+        {
+          "value": "project.list_rooms",
+          "name": "[项目] 列出房间",
+          "description": ""
+        },
+        {
+          "value": "family.load",
+          "name": "[族] 载入族文件",
+          "description": ""
+        },
+        {
+          "value": "family.list_types",
+          "name": "[族] 搜索族类型",
+          "description": ""
+        },
+        {
+          "value": "sheet.create",
+          "name": "[图纸] 新建图纸",
+          "description": ""
+        },
+        {
+          "value": "sheet.place_view",
+          "name": "[图纸] 将视图放置到图纸",
+          "description": ""
+        },
+        {
+          "value": "script.evaluate_csharp",
+          "name": "[脚本] 执行内联 C#（高风险）",
+          "description": ""
+        },
+        {
+          "value": "script.run_csharp_file",
+          "name": "[脚本] 运行 C# 代码文件（高风险）",
+          "description": ""
+        },
+        {
+          "value": "BridgeCustom",
+          "name": "[高级] 发送自定义 Bridge 命令",
+          "description": ""
+        }
+      ]
+    }
+  },
+  "sourceFileName": "sys_revitcontrol_Revit控制.md"
+}

@@ -1,0 +1,350 @@
+{
+  "key": "sys:wpscontrol",
+  "slug": "wpscontrol",
+  "legacySlug": "wpscontrol",
+  "ownsLegacyContent": true,
+  "name": "WPS Office控制",
+  "description": "通过 WPS JavaScript 加载项调用文字、表格、演示、宏和脚本能力。",
+  "category": "SoftInteraction",
+  "categoryName": "第三方软件交互",
+  "stepType": "Action",
+  "isRisky": false,
+  "isProOnly": false,
+  "helpLink": "https://docs.getquicker.net/v2/xaction/modules/wpscontrol",
+  "inputs": [
+    {
+      "key": "operation",
+      "name": "操作类型",
+      "type": "Enum",
+      "defaultValue": "context.get",
+      "required": true,
+      "variableMode": "Input",
+      "condition": "",
+      "description": ""
+    },
+    {
+      "key": "targetComponent",
+      "name": "目标组件",
+      "type": "Enum",
+      "defaultValue": "auto",
+      "required": false,
+      "variableMode": "UseVarOrInput",
+      "condition": "",
+      "description": "同一 WPS 窗口同时承载文字、表格或演示时用于精确定位；组件专用命令会自动判断。"
+    },
+    {
+      "key": "filePath",
+      "name": "文件路径",
+      "type": "Text",
+      "defaultValue": "",
+      "required": true,
+      "variableMode": "UseVarOrInput",
+      "condition": "",
+      "description": "文档另存为的绝对路径，扩展名应与当前 WPS 组件匹配。"
+    },
+    {
+      "key": "sheetName",
+      "name": "工作表名称",
+      "type": "Text",
+      "defaultValue": "Sheet1",
+      "required": true,
+      "variableMode": "UseVarOrInput",
+      "condition": "",
+      "description": ""
+    },
+    {
+      "key": "rangeAddress",
+      "name": "单元格区域",
+      "type": "Text",
+      "defaultValue": "A1:C10",
+      "required": true,
+      "variableMode": "UseVarOrInput",
+      "condition": "",
+      "description": ""
+    },
+    {
+      "key": "valuesJson",
+      "name": "二维数据（JSON）",
+      "type": "Text",
+      "defaultValue": "[[\"名称\",\"数量\"],[\"示例\",1]]",
+      "required": true,
+      "variableMode": "UseVarOrInput",
+      "condition": "",
+      "description": ""
+    },
+    {
+      "key": "text",
+      "name": "文字",
+      "type": "Text",
+      "defaultValue": "来自 Quicker 的文字",
+      "required": true,
+      "variableMode": "UseVarOrInput",
+      "condition": "",
+      "description": ""
+    },
+    {
+      "key": "findText",
+      "name": "查找文字",
+      "type": "Text",
+      "defaultValue": "",
+      "required": true,
+      "variableMode": "UseVarOrInput",
+      "condition": "",
+      "description": ""
+    },
+    {
+      "key": "replaceText",
+      "name": "替换为",
+      "type": "Text",
+      "defaultValue": "",
+      "required": false,
+      "variableMode": "UseVarOrInput",
+      "condition": "",
+      "description": ""
+    },
+    {
+      "key": "replaceAll",
+      "name": "替换全部",
+      "type": "Boolean",
+      "defaultValue": "true",
+      "required": false,
+      "variableMode": "Input",
+      "condition": "",
+      "description": ""
+    },
+    {
+      "key": "slideIndex",
+      "name": "幻灯片序号",
+      "type": "Number",
+      "defaultValue": "1",
+      "required": false,
+      "variableMode": "UseVarOrInput",
+      "condition": "",
+      "description": ""
+    },
+    {
+      "key": "slideLayout",
+      "name": "版式 ID",
+      "type": "Number",
+      "defaultValue": "12",
+      "required": false,
+      "variableMode": "UseVarOrInput",
+      "condition": "",
+      "description": ""
+    },
+    {
+      "key": "macroName",
+      "name": "宏名称",
+      "type": "Text",
+      "defaultValue": "模块名.函数名",
+      "required": true,
+      "variableMode": "UseVarOrInput",
+      "condition": "",
+      "description": ""
+    },
+    {
+      "key": "macroArgumentsJson",
+      "name": "宏参数（JSON 数组）",
+      "type": "Text",
+      "defaultValue": "[]",
+      "required": false,
+      "variableMode": "UseVarOrInput",
+      "condition": "",
+      "description": ""
+    },
+    {
+      "key": "scriptCode",
+      "name": "JavaScript 表达式",
+      "type": "Text",
+      "defaultValue": "({ app: Application.Name, version: Application.Version })",
+      "required": true,
+      "variableMode": "UseVarOrInput",
+      "condition": "",
+      "description": "在当前 WPS 加载项上下文执行，可直接访问 Application。"
+    },
+    {
+      "key": "commandName",
+      "name": "Bridge 命令名称",
+      "type": "Text",
+      "defaultValue": "",
+      "required": true,
+      "variableMode": "UseVarOrInput",
+      "condition": "",
+      "description": ""
+    },
+    {
+      "key": "argumentsJson",
+      "name": "参数（JSON 对象）",
+      "type": "Text",
+      "defaultValue": "{}",
+      "required": false,
+      "variableMode": "UseVarOrInput",
+      "condition": "",
+      "description": ""
+    },
+    {
+      "key": "waitMs",
+      "name": "最长等待时间(ms)",
+      "type": "Number",
+      "defaultValue": "30000",
+      "required": true,
+      "variableMode": "Input",
+      "condition": "",
+      "description": ""
+    },
+    {
+      "key": "stopIfFail",
+      "name": "失败后停止",
+      "type": "Boolean",
+      "defaultValue": "true",
+      "required": false,
+      "variableMode": "Input",
+      "condition": "",
+      "description": "失败后是否停止动作"
+    }
+  ],
+  "outputs": [
+    {
+      "key": "isSuccess",
+      "name": "是否成功",
+      "type": "Boolean",
+      "condition": "",
+      "description": "操作是否成功"
+    },
+    {
+      "key": "output",
+      "name": "命令结果",
+      "type": "Text",
+      "condition": "",
+      "description": "WPS 返回的 JSON 结果。"
+    }
+  ],
+  "selections": {
+    "operation": {
+      "name": "操作类型",
+      "items": [
+        {
+          "value": "bridge.ping",
+          "name": "[Bridge] 测试连接",
+          "description": ""
+        },
+        {
+          "value": "context.get",
+          "name": "[上下文] 读取当前上下文",
+          "description": ""
+        },
+        {
+          "value": "document.get_info",
+          "name": "[文档] 读取文档信息",
+          "description": ""
+        },
+        {
+          "value": "document.save",
+          "name": "[文档] 保存当前文档",
+          "description": ""
+        },
+        {
+          "value": "document.save_as",
+          "name": "[文档] 文档另存为",
+          "description": ""
+        },
+        {
+          "value": "selection.get",
+          "name": "[选择] 读取当前选择",
+          "description": ""
+        },
+        {
+          "value": "sheet.list",
+          "name": "[表格] 列出工作表",
+          "description": ""
+        },
+        {
+          "value": "sheet.activate",
+          "name": "[表格] 激活工作表",
+          "description": ""
+        },
+        {
+          "value": "range.read",
+          "name": "[表格] 读取区域",
+          "description": ""
+        },
+        {
+          "value": "range.write",
+          "name": "[表格] 写入区域",
+          "description": ""
+        },
+        {
+          "value": "range.clear",
+          "name": "[表格] 清空区域",
+          "description": ""
+        },
+        {
+          "value": "text.insert",
+          "name": "[文字] 插入文字",
+          "description": ""
+        },
+        {
+          "value": "text.replace",
+          "name": "[文字] 全文替换",
+          "description": ""
+        },
+        {
+          "value": "slide.list",
+          "name": "[演示] 列出幻灯片",
+          "description": ""
+        },
+        {
+          "value": "slide.activate",
+          "name": "[演示] 激活幻灯片",
+          "description": ""
+        },
+        {
+          "value": "slide.add",
+          "name": "[演示] 新增幻灯片",
+          "description": ""
+        },
+        {
+          "value": "macro.run",
+          "name": "[宏] 运行已有宏",
+          "description": ""
+        },
+        {
+          "value": "script.evaluate",
+          "name": "[脚本] 执行任意 JavaScript",
+          "description": ""
+        },
+        {
+          "value": "command.custom",
+          "name": "[高级] 发送自定义 Bridge 命令",
+          "description": ""
+        }
+      ]
+    },
+    "targetComponent": {
+      "name": "目标组件",
+      "items": [
+        {
+          "value": "auto",
+          "name": "自动判断",
+          "description": ""
+        },
+        {
+          "value": "wps",
+          "name": "WPS 文字",
+          "description": ""
+        },
+        {
+          "value": "et",
+          "name": "WPS 表格",
+          "description": ""
+        },
+        {
+          "value": "wpp",
+          "name": "WPS 演示",
+          "description": ""
+        }
+      ]
+    }
+  },
+  "sourceFileName": "sys_wpscontrol_WPS Office控制.md"
+}

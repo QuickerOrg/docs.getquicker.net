@@ -1,0 +1,335 @@
+{
+  "key": "sys:coreldrawcontrol",
+  "slug": "coreldrawcontrol",
+  "legacySlug": "coreldrawcontrol",
+  "ownsLegacyContent": true,
+  "name": "CorelDRAW控制",
+  "description": "通过 CorelDRAW Add-on 调用文档、页面、选择、对象、图层、视图和脚本能力",
+  "category": "SoftInteraction",
+  "categoryName": "第三方软件交互",
+  "stepType": "Action",
+  "isRisky": false,
+  "isProOnly": false,
+  "helpLink": "https://docs.getquicker.net/v2/xaction/modules/coreldrawcontrol",
+  "inputs": [
+    {
+      "key": "operation",
+      "name": "操作类型",
+      "type": "Enum",
+      "defaultValue": "document.get_context",
+      "required": true,
+      "variableMode": "Input",
+      "condition": "",
+      "description": ""
+    },
+    {
+      "key": "argumentsJson",
+      "name": "参数(JSON 对象)",
+      "type": "Text",
+      "defaultValue": "{}",
+      "required": false,
+      "variableMode": "UseVarOrInput",
+      "condition": "",
+      "description": "命令参数。Windows 路径中的反斜杠需要写成 \\\\。"
+    },
+    {
+      "key": "commandName",
+      "name": "Bridge 命令名称",
+      "type": "Text",
+      "defaultValue": "",
+      "required": true,
+      "variableMode": "UseVarOrInput",
+      "condition": "",
+      "description": ""
+    },
+    {
+      "key": "waitMs",
+      "name": "最长等待时间(ms)",
+      "type": "Number",
+      "defaultValue": "30000",
+      "required": true,
+      "variableMode": "Input",
+      "condition": "",
+      "description": ""
+    },
+    {
+      "key": "stopIfFail",
+      "name": "失败后停止",
+      "type": "Boolean",
+      "defaultValue": "true",
+      "required": false,
+      "variableMode": "Input",
+      "condition": "",
+      "description": "失败后是否停止动作"
+    }
+  ],
+  "outputs": [
+    {
+      "key": "isSuccess",
+      "name": "是否成功",
+      "type": "Boolean",
+      "condition": "",
+      "description": "操作是否成功"
+    },
+    {
+      "key": "output",
+      "name": "命令结果",
+      "type": "Text",
+      "condition": "",
+      "description": "CorelDRAW 返回的 JSON 结果。"
+    }
+  ],
+  "selections": {
+    "operation": {
+      "name": "操作类型",
+      "items": [
+        {
+          "value": "bridge.ping",
+          "name": "[Bridge] 测试连接",
+          "description": ""
+        },
+        {
+          "value": "command.list",
+          "name": "[Bridge] 读取命令目录",
+          "description": ""
+        },
+        {
+          "value": "document.get_context",
+          "name": "[文档] 读取当前文档上下文",
+          "description": ""
+        },
+        {
+          "value": "document.list",
+          "name": "[文档] 列出已打开文档",
+          "description": ""
+        },
+        {
+          "value": "document.new",
+          "name": "[文档] 新建文档",
+          "description": ""
+        },
+        {
+          "value": "document.open",
+          "name": "[文档] 打开文档",
+          "description": ""
+        },
+        {
+          "value": "document.save",
+          "name": "[文档] 保存当前文档",
+          "description": ""
+        },
+        {
+          "value": "document.save_as",
+          "name": "[文档] 当前文档另存为",
+          "description": ""
+        },
+        {
+          "value": "document.export_pdf",
+          "name": "[文档] 导出 PDF",
+          "description": ""
+        },
+        {
+          "value": "document.import",
+          "name": "[文档] 导入文件到当前图层",
+          "description": ""
+        },
+        {
+          "value": "document.export",
+          "name": "[文档] 导出页面或所选对象",
+          "description": ""
+        },
+        {
+          "value": "document.undo",
+          "name": "[文档] 撤销操作",
+          "description": ""
+        },
+        {
+          "value": "document.redo",
+          "name": "[文档] 重做操作",
+          "description": ""
+        },
+        {
+          "value": "page.list",
+          "name": "[页面] 列出页面",
+          "description": ""
+        },
+        {
+          "value": "page.activate",
+          "name": "[页面] 激活页面",
+          "description": ""
+        },
+        {
+          "value": "page.add",
+          "name": "[页面] 添加页面",
+          "description": ""
+        },
+        {
+          "value": "page.set_size",
+          "name": "[页面] 设置当前页面尺寸",
+          "description": ""
+        },
+        {
+          "value": "selection.get_info",
+          "name": "[选择] 读取选择详情",
+          "description": ""
+        },
+        {
+          "value": "selection.select_all",
+          "name": "[选择] 全选对象",
+          "description": ""
+        },
+        {
+          "value": "selection.clear",
+          "name": "[选择] 清空选择",
+          "description": ""
+        },
+        {
+          "value": "selection.delete",
+          "name": "[选择] 删除所选对象",
+          "description": ""
+        },
+        {
+          "value": "selection.duplicate",
+          "name": "[选择] 复制所选对象",
+          "description": ""
+        },
+        {
+          "value": "selection.group",
+          "name": "[选择] 组合所选对象",
+          "description": ""
+        },
+        {
+          "value": "selection.ungroup",
+          "name": "[选择] 取消组合",
+          "description": ""
+        },
+        {
+          "value": "selection.transform",
+          "name": "[选择] 移动/缩放/旋转",
+          "description": ""
+        },
+        {
+          "value": "selection.align",
+          "name": "[选择] 对齐所选对象",
+          "description": ""
+        },
+        {
+          "value": "selection.distribute",
+          "name": "[选择] 均匀分布所选对象",
+          "description": ""
+        },
+        {
+          "value": "selection.flip",
+          "name": "[选择] 翻转所选对象",
+          "description": ""
+        },
+        {
+          "value": "selection.move_to_layer",
+          "name": "[选择] 移动所选对象到图层",
+          "description": ""
+        },
+        {
+          "value": "selection.convert_to_curves",
+          "name": "[选择] 所选对象转换为曲线",
+          "description": ""
+        },
+        {
+          "value": "selection.set_fill",
+          "name": "[选择] 设置所选对象填充色",
+          "description": ""
+        },
+        {
+          "value": "selection.set_outline",
+          "name": "[选择] 设置所选对象轮廓",
+          "description": ""
+        },
+        {
+          "value": "object.create_rectangle",
+          "name": "[对象] 创建矩形",
+          "description": ""
+        },
+        {
+          "value": "object.create_ellipse",
+          "name": "[对象] 创建椭圆",
+          "description": ""
+        },
+        {
+          "value": "object.create_text",
+          "name": "[对象] 创建美术字",
+          "description": ""
+        },
+        {
+          "value": "object.select_by_name",
+          "name": "[对象] 按名称选择对象",
+          "description": ""
+        },
+        {
+          "value": "text.get_selected",
+          "name": "[文本] 读取所选文本",
+          "description": ""
+        },
+        {
+          "value": "text.replace",
+          "name": "[文本] 替换当前页面文本",
+          "description": ""
+        },
+        {
+          "value": "layer.list",
+          "name": "[图层] 列出图层",
+          "description": ""
+        },
+        {
+          "value": "layer.create",
+          "name": "[图层] 新建图层",
+          "description": ""
+        },
+        {
+          "value": "layer.activate",
+          "name": "[图层] 激活图层",
+          "description": ""
+        },
+        {
+          "value": "layer.set_visibility",
+          "name": "[图层] 设置图层可见性",
+          "description": ""
+        },
+        {
+          "value": "view.zoom_fit",
+          "name": "[视图] 缩放至全部对象",
+          "description": ""
+        },
+        {
+          "value": "view.zoom_selection",
+          "name": "[视图] 缩放至选择对象",
+          "description": ""
+        },
+        {
+          "value": "macro.list",
+          "name": "[脚本] 列出 VBA/VSTA 宏项目",
+          "description": ""
+        },
+        {
+          "value": "macro.run",
+          "name": "[脚本] 运行 VBA/VSTA 宏",
+          "description": ""
+        },
+        {
+          "value": "script.evaluate_vba",
+          "name": "[脚本] 执行内联 VBA（高风险）",
+          "description": ""
+        },
+        {
+          "value": "script.evaluate",
+          "name": "[脚本] 执行内联 C#（高风险）",
+          "description": ""
+        },
+        {
+          "value": "BridgeCustom",
+          "name": "[高级] 发送自定义 Bridge 命令",
+          "description": ""
+        }
+      ]
+    }
+  },
+  "sourceFileName": "sys_coreldrawcontrol_CorelDRAW控制.md"
+}

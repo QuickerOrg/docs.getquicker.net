@@ -26,6 +26,8 @@
     "docs:gallery:snapshot": "npx --yes -p playwright node tools/doc-gallery/snapshot.mjs",
     "docs:review:api": "node tools/screenshot-replace/review-api.mjs",
     "docs:xaction:test": "node tools/xaction-docs/test.mjs",
+    "docs:bridges:check": "node tools/bridge-docs/check.mjs",
+    "docs:bridges:test": "node tools/bridge-docs/test.mjs",
     "write-translations": "docusaurus write-translations",
     "write-heading-ids": "docusaurus write-heading-ids",
     "typecheck": "tsc"

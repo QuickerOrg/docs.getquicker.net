@@ -1,0 +1,900 @@
+{
+  "key": "sys:aftereffectscontrol",
+  "slug": "aftereffectscontrol",
+  "legacySlug": "aftereffectscontrol",
+  "ownsLegacyContent": true,
+  "name": "After Effects控制",
+  "description": "通过 After Effects CEP 扩展调用工程、合成和 ExtendScript 能力。",
+  "category": "SoftInteraction",
+  "categoryName": "第三方软件交互",
+  "stepType": "Action",
+  "isRisky": false,
+  "isProOnly": false,
+  "helpLink": "https://docs.getquicker.net/v2/xaction/modules/aftereffectscontrol",
+  "inputs": [
+    {
+      "key": "operation",
+      "name": "操作类型",
+      "type": "Enum",
+      "defaultValue": "project.get_context",
+      "required": true,
+      "variableMode": "Input",
+      "condition": "",
+      "description": ""
+    },
+    {
+      "key": "compositionName",
+      "name": "合成名称",
+      "type": "Text",
+      "defaultValue": "Quicker 合成",
+      "required": true,
+      "variableMode": "UseVarOrInput",
+      "condition": "",
+      "description": ""
+    },
+    {
+      "key": "targetCompositionName",
+      "name": "目标合成名称（留空使用活动合成）",
+      "type": "Text",
+      "defaultValue": "",
+      "required": false,
+      "variableMode": "UseVarOrInput",
+      "condition": "",
+      "description": ""
+    },
+    {
+      "key": "width",
+      "name": "宽度",
+      "type": "Number",
+      "defaultValue": "1920",
+      "required": false,
+      "variableMode": "UseVarOrInput",
+      "condition": "",
+      "description": ""
+    },
+    {
+      "key": "height",
+      "name": "高度",
+      "type": "Number",
+      "defaultValue": "1080",
+      "required": false,
+      "variableMode": "UseVarOrInput",
+      "condition": "",
+      "description": ""
+    },
+    {
+      "key": "pixelAspect",
+      "name": "像素长宽比",
+      "type": "Number",
+      "defaultValue": "1",
+      "required": false,
+      "variableMode": "UseVarOrInput",
+      "condition": "",
+      "description": ""
+    },
+    {
+      "key": "duration",
+      "name": "时长（秒）",
+      "type": "Number",
+      "defaultValue": "10",
+      "required": false,
+      "variableMode": "UseVarOrInput",
+      "condition": "",
+      "description": ""
+    },
+    {
+      "key": "frameRate",
+      "name": "帧率",
+      "type": "Number",
+      "defaultValue": "25",
+      "required": false,
+      "variableMode": "UseVarOrInput",
+      "condition": "",
+      "description": ""
+    },
+    {
+      "key": "filePath",
+      "name": "文件路径",
+      "type": "Text",
+      "defaultValue": "",
+      "required": false,
+      "variableMode": "UseVarOrInput",
+      "condition": "",
+      "description": ""
+    },
+    {
+      "key": "filePathsJson",
+      "name": "文件路径数组（JSON）",
+      "type": "Text",
+      "defaultValue": "[]",
+      "required": false,
+      "variableMode": "UseVarOrInput",
+      "condition": "",
+      "description": ""
+    },
+    {
+      "key": "itemId",
+      "name": "工程项/素材 ID",
+      "type": "Number",
+      "defaultValue": "0",
+      "required": false,
+      "variableMode": "UseVarOrInput",
+      "condition": "",
+      "description": ""
+    },
+    {
+      "key": "sequence",
+      "name": "按图像序列替换",
+      "type": "Boolean",
+      "defaultValue": "false",
+      "required": false,
+      "variableMode": "UseVarOrInput",
+      "condition": "",
+      "description": ""
+    },
+    {
+      "key": "itemIdsJson",
+      "name": "工程项 ID 数组（JSON）",
+      "type": "Text",
+      "defaultValue": "[]",
+      "required": false,
+      "variableMode": "UseVarOrInput",
+      "condition": "",
+      "description": ""
+    },
+    {
+      "key": "folderId",
+      "name": "目标文件夹 ID",
+      "type": "Number",
+      "defaultValue": "0",
+      "required": false,
+      "variableMode": "UseVarOrInput",
+      "condition": "",
+      "description": ""
+    },
+    {
+      "key": "parentFolderId",
+      "name": "父文件夹 ID（0 表示根目录）",
+      "type": "Number",
+      "defaultValue": "0",
+      "required": false,
+      "variableMode": "UseVarOrInput",
+      "condition": "",
+      "description": ""
+    },
+    {
+      "key": "name",
+      "name": "名称（留空使用软件默认值）",
+      "type": "Text",
+      "defaultValue": "",
+      "required": false,
+      "variableMode": "UseVarOrInput",
+      "condition": "",
+      "description": ""
+    },
+    {
+      "key": "compositionId",
+      "name": "合成 ID（0 使用活动合成）",
+      "type": "Number",
+      "defaultValue": "0",
+      "required": false,
+      "variableMode": "UseVarOrInput",
+      "condition": "",
+      "description": ""
+    },
+    {
+      "key": "queueIndex",
+      "name": "渲染队列序号",
+      "type": "Number",
+      "defaultValue": "1",
+      "required": false,
+      "variableMode": "UseVarOrInput",
+      "condition": "",
+      "description": ""
+    },
+    {
+      "key": "renderSettingsTemplate",
+      "name": "渲染设置模板",
+      "type": "Text",
+      "defaultValue": "",
+      "required": false,
+      "variableMode": "UseVarOrInput",
+      "condition": "",
+      "description": ""
+    },
+    {
+      "key": "outputModuleTemplate",
+      "name": "输出模块模板",
+      "type": "Text",
+      "defaultValue": "",
+      "required": false,
+      "variableMode": "UseVarOrInput",
+      "condition": "",
+      "description": ""
+    },
+    {
+      "key": "renderEnabled",
+      "name": "启用队列项（留空不修改，true/false）",
+      "type": "Text",
+      "defaultValue": "",
+      "required": false,
+      "variableMode": "UseVarOrInput",
+      "condition": "",
+      "description": ""
+    },
+    {
+      "key": "layerId",
+      "name": "图层 ID（0 时使用序号）",
+      "type": "Number",
+      "defaultValue": "0",
+      "required": false,
+      "variableMode": "UseVarOrInput",
+      "condition": "",
+      "description": ""
+    },
+    {
+      "key": "layerIndex",
+      "name": "图层序号",
+      "type": "Number",
+      "defaultValue": "1",
+      "required": false,
+      "variableMode": "UseVarOrInput",
+      "condition": "",
+      "description": ""
+    },
+    {
+      "key": "layerIdsJson",
+      "name": "图层 ID 数组（JSON）",
+      "type": "Text",
+      "defaultValue": "[]",
+      "required": false,
+      "variableMode": "UseVarOrInput",
+      "condition": "",
+      "description": ""
+    },
+    {
+      "key": "layerIndicesJson",
+      "name": "图层序号数组（JSON）",
+      "type": "Text",
+      "defaultValue": "[1]",
+      "required": false,
+      "variableMode": "UseVarOrInput",
+      "condition": "",
+      "description": ""
+    },
+    {
+      "key": "moveAllAttributes",
+      "name": "把全部属性移入新合成",
+      "type": "Boolean",
+      "defaultValue": "true",
+      "required": false,
+      "variableMode": "UseVarOrInput",
+      "condition": "",
+      "description": ""
+    },
+    {
+      "key": "layerPlacement",
+      "name": "移动方式",
+      "type": "Enum",
+      "defaultValue": "top",
+      "required": true,
+      "variableMode": "Input",
+      "condition": "",
+      "description": ""
+    },
+    {
+      "key": "referenceLayerId",
+      "name": "参照图层 ID（0 时使用序号）",
+      "type": "Number",
+      "defaultValue": "0",
+      "required": false,
+      "variableMode": "UseVarOrInput",
+      "condition": "",
+      "description": ""
+    },
+    {
+      "key": "referenceLayerIndex",
+      "name": "参照图层序号",
+      "type": "Number",
+      "defaultValue": "1",
+      "required": false,
+      "variableMode": "UseVarOrInput",
+      "condition": "",
+      "description": ""
+    },
+    {
+      "key": "text",
+      "name": "文本",
+      "type": "Text",
+      "defaultValue": "Quicker 文本",
+      "required": false,
+      "variableMode": "UseVarOrInput",
+      "condition": "",
+      "description": ""
+    },
+    {
+      "key": "findText",
+      "name": "查找文本",
+      "type": "Text",
+      "defaultValue": "",
+      "required": false,
+      "variableMode": "UseVarOrInput",
+      "condition": "",
+      "description": ""
+    },
+    {
+      "key": "replaceText",
+      "name": "替换为",
+      "type": "Text",
+      "defaultValue": "",
+      "required": false,
+      "variableMode": "UseVarOrInput",
+      "condition": "",
+      "description": ""
+    },
+    {
+      "key": "allCompositions",
+      "name": "处理全部合成",
+      "type": "Boolean",
+      "defaultValue": "false",
+      "required": false,
+      "variableMode": "UseVarOrInput",
+      "condition": "",
+      "description": ""
+    },
+    {
+      "key": "font",
+      "name": "字体 PostScript 名称",
+      "type": "Text",
+      "defaultValue": "",
+      "required": false,
+      "variableMode": "UseVarOrInput",
+      "condition": "",
+      "description": ""
+    },
+    {
+      "key": "fontSize",
+      "name": "字号（0 表示不修改）",
+      "type": "Number",
+      "defaultValue": "0",
+      "required": false,
+      "variableMode": "UseVarOrInput",
+      "condition": "",
+      "description": ""
+    },
+    {
+      "key": "colorJson",
+      "name": "颜色（JSON，null 表示不修改）",
+      "type": "Text",
+      "defaultValue": "null",
+      "required": false,
+      "variableMode": "UseVarOrInput",
+      "condition": "",
+      "description": ""
+    },
+    {
+      "key": "solidColorJson",
+      "name": "纯色颜色（JSON，0~1）",
+      "type": "Text",
+      "defaultValue": "[1,0,0]",
+      "required": false,
+      "variableMode": "UseVarOrInput",
+      "condition": "",
+      "description": ""
+    },
+    {
+      "key": "positionJson",
+      "name": "位置（JSON，null 表示不修改）",
+      "type": "Text",
+      "defaultValue": "null",
+      "required": false,
+      "variableMode": "UseVarOrInput",
+      "condition": "",
+      "description": ""
+    },
+    {
+      "key": "scaleJson",
+      "name": "缩放（JSON，null 表示不修改）",
+      "type": "Text",
+      "defaultValue": "null",
+      "required": false,
+      "variableMode": "UseVarOrInput",
+      "condition": "",
+      "description": ""
+    },
+    {
+      "key": "anchorPointJson",
+      "name": "锚点（JSON，null 表示不修改）",
+      "type": "Text",
+      "defaultValue": "null",
+      "required": false,
+      "variableMode": "UseVarOrInput",
+      "condition": "",
+      "description": ""
+    },
+    {
+      "key": "rotation",
+      "name": "旋转角度（留空不修改）",
+      "type": "Text",
+      "defaultValue": "",
+      "required": false,
+      "variableMode": "UseVarOrInput",
+      "condition": "",
+      "description": ""
+    },
+    {
+      "key": "opacity",
+      "name": "不透明度（留空不修改）",
+      "type": "Text",
+      "defaultValue": "",
+      "required": false,
+      "variableMode": "UseVarOrInput",
+      "condition": "",
+      "description": ""
+    },
+    {
+      "key": "seconds",
+      "name": "时间（秒）",
+      "type": "Number",
+      "defaultValue": "0",
+      "required": false,
+      "variableMode": "UseVarOrInput",
+      "condition": "",
+      "description": ""
+    },
+    {
+      "key": "propertyWriteMode",
+      "name": "属性写入方式",
+      "type": "Enum",
+      "defaultValue": "static",
+      "required": true,
+      "variableMode": "Input",
+      "condition": "",
+      "description": ""
+    },
+    {
+      "key": "startTime",
+      "name": "开始时间（留空不修改）",
+      "type": "Text",
+      "defaultValue": "",
+      "required": false,
+      "variableMode": "UseVarOrInput",
+      "condition": "",
+      "description": ""
+    },
+    {
+      "key": "inPoint",
+      "name": "入点（留空不修改）",
+      "type": "Text",
+      "defaultValue": "",
+      "required": false,
+      "variableMode": "UseVarOrInput",
+      "condition": "",
+      "description": ""
+    },
+    {
+      "key": "outPoint",
+      "name": "出点（留空不修改）",
+      "type": "Text",
+      "defaultValue": "",
+      "required": false,
+      "variableMode": "UseVarOrInput",
+      "condition": "",
+      "description": ""
+    },
+    {
+      "key": "stretch",
+      "name": "伸缩百分比（留空不修改）",
+      "type": "Text",
+      "defaultValue": "",
+      "required": false,
+      "variableMode": "UseVarOrInput",
+      "condition": "",
+      "description": ""
+    },
+    {
+      "key": "propertyPathJson",
+      "name": "属性 matchName 路径（JSON）",
+      "type": "Text",
+      "defaultValue": "[\"ADBE Transform Group\",\"ADBE Position\"]",
+      "required": false,
+      "variableMode": "UseVarOrInput",
+      "condition": "",
+      "description": ""
+    },
+    {
+      "key": "propertyValueJson",
+      "name": "属性值（JSON）",
+      "type": "Text",
+      "defaultValue": "[960,540]",
+      "required": false,
+      "variableMode": "UseVarOrInput",
+      "condition": "",
+      "description": ""
+    },
+    {
+      "key": "timesJson",
+      "name": "关键帧时间数组（JSON）",
+      "type": "Text",
+      "defaultValue": "[0,1]",
+      "required": false,
+      "variableMode": "UseVarOrInput",
+      "condition": "",
+      "description": ""
+    },
+    {
+      "key": "valuesJson",
+      "name": "关键帧值数组（JSON）",
+      "type": "Text",
+      "defaultValue": "[]",
+      "required": false,
+      "variableMode": "UseVarOrInput",
+      "condition": "",
+      "description": ""
+    },
+    {
+      "key": "keyIndicesJson",
+      "name": "关键帧序号数组（空数组表示全部）",
+      "type": "Text",
+      "defaultValue": "[]",
+      "required": false,
+      "variableMode": "UseVarOrInput",
+      "condition": "",
+      "description": ""
+    },
+    {
+      "key": "influence",
+      "name": "缓动影响",
+      "type": "Number",
+      "defaultValue": "33.333",
+      "required": false,
+      "variableMode": "UseVarOrInput",
+      "condition": "",
+      "description": ""
+    },
+    {
+      "key": "expression",
+      "name": "表达式",
+      "type": "Text",
+      "defaultValue": "wiggle(2,20)",
+      "required": false,
+      "variableMode": "UseVarOrInput",
+      "condition": "",
+      "description": ""
+    },
+    {
+      "key": "expressionEnabled",
+      "name": "启用表达式",
+      "type": "Boolean",
+      "defaultValue": "true",
+      "required": false,
+      "variableMode": "UseVarOrInput",
+      "condition": "",
+      "description": ""
+    },
+    {
+      "key": "scriptCode",
+      "name": "ExtendScript 代码",
+      "type": "Text",
+      "defaultValue": "app.project.numItems",
+      "required": true,
+      "variableMode": "UseVarOrInput",
+      "condition": "",
+      "description": ""
+    },
+    {
+      "key": "undoName",
+      "name": "撤销操作名称",
+      "type": "Text",
+      "defaultValue": "",
+      "required": false,
+      "variableMode": "UseVarOrInput",
+      "condition": "",
+      "description": "非空时用一个 AE Undo Group 包装脚本。"
+    },
+    {
+      "key": "scriptFilePath",
+      "name": "JSX 文件路径",
+      "type": "Text",
+      "defaultValue": "",
+      "required": true,
+      "variableMode": "UseVarOrInput",
+      "condition": "",
+      "description": ""
+    },
+    {
+      "key": "commandName",
+      "name": "Bridge 命令名称",
+      "type": "Text",
+      "defaultValue": "",
+      "required": true,
+      "variableMode": "UseVarOrInput",
+      "condition": "",
+      "description": ""
+    },
+    {
+      "key": "argumentsJson",
+      "name": "参数（JSON 对象）",
+      "type": "Text",
+      "defaultValue": "{}",
+      "required": false,
+      "variableMode": "UseVarOrInput",
+      "condition": "",
+      "description": ""
+    },
+    {
+      "key": "waitMs",
+      "name": "最长等待时间(ms)",
+      "type": "Number",
+      "defaultValue": "30000",
+      "required": true,
+      "variableMode": "Input",
+      "condition": "",
+      "description": ""
+    },
+    {
+      "key": "stopIfFail",
+      "name": "失败后停止",
+      "type": "Boolean",
+      "defaultValue": "true",
+      "required": false,
+      "variableMode": "Input",
+      "condition": "",
+      "description": "失败后是否停止动作"
+    }
+  ],
+  "outputs": [
+    {
+      "key": "isSuccess",
+      "name": "是否成功",
+      "type": "Boolean",
+      "condition": "",
+      "description": "操作是否成功"
+    },
+    {
+      "key": "output",
+      "name": "命令结果",
+      "type": "Text",
+      "condition": "",
+      "description": "After Effects 返回的 JSON 结果。"
+    }
+  ],
+  "selections": {
+    "operation": {
+      "name": "操作类型",
+      "items": [
+        {
+          "value": "bridge.ping",
+          "name": "[Bridge] 测试连接",
+          "description": ""
+        },
+        {
+          "value": "project.get_context",
+          "name": "[工程] 获取工程上下文",
+          "description": ""
+        },
+        {
+          "value": "composition.list",
+          "name": "[合成] 列出合成",
+          "description": ""
+        },
+        {
+          "value": "composition.create",
+          "name": "[合成] 新建合成",
+          "description": ""
+        },
+        {
+          "value": "project.item_list",
+          "name": "[工程] 列出工程项",
+          "description": ""
+        },
+        {
+          "value": "project.import_files",
+          "name": "[工程] 批量导入素材",
+          "description": ""
+        },
+        {
+          "value": "project.folder_create",
+          "name": "[工程] 新建文件夹",
+          "description": ""
+        },
+        {
+          "value": "project.item_move_to_folder",
+          "name": "[工程] 移动工程项",
+          "description": ""
+        },
+        {
+          "value": "footage.list",
+          "name": "[素材] 列出素材",
+          "description": ""
+        },
+        {
+          "value": "footage.replace",
+          "name": "[素材] 替换素材",
+          "description": ""
+        },
+        {
+          "value": "footage.reload",
+          "name": "[素材] 重新载入",
+          "description": ""
+        },
+        {
+          "value": "render_queue.template_list",
+          "name": "[渲染] 列出模板",
+          "description": ""
+        },
+        {
+          "value": "render_queue.configure",
+          "name": "[渲染] 配置输出",
+          "description": ""
+        },
+        {
+          "value": "render_queue.remove",
+          "name": "[渲染] 移除队列项",
+          "description": ""
+        },
+        {
+          "value": "layer.add_text",
+          "name": "[文本] 新建文本图层",
+          "description": ""
+        },
+        {
+          "value": "text.get",
+          "name": "[文本] 读取文本",
+          "description": ""
+        },
+        {
+          "value": "text.set",
+          "name": "[文本] 设置文本",
+          "description": ""
+        },
+        {
+          "value": "text.replace",
+          "name": "[文本] 批量替换",
+          "description": ""
+        },
+        {
+          "value": "layer.duplicate",
+          "name": "[图层] 复制图层",
+          "description": ""
+        },
+        {
+          "value": "layer.set_timing",
+          "name": "[图层] 设置时间",
+          "description": ""
+        },
+        {
+          "value": "layer.set_transform",
+          "name": "[图层] 设置变换",
+          "description": ""
+        },
+        {
+          "value": "layer.move",
+          "name": "[图层] 移动顺序",
+          "description": ""
+        },
+        {
+          "value": "layer.precompose",
+          "name": "[图层] 预合成",
+          "description": ""
+        },
+        {
+          "value": "layer.add_solid",
+          "name": "[图层] 新建纯色",
+          "description": ""
+        },
+        {
+          "value": "layer.add_null",
+          "name": "[图层] 新建空对象",
+          "description": ""
+        },
+        {
+          "value": "layer.add_shape",
+          "name": "[图层] 新建形状",
+          "description": ""
+        },
+        {
+          "value": "layer.add_camera",
+          "name": "[图层] 新建摄像机",
+          "description": ""
+        },
+        {
+          "value": "layer.add_light",
+          "name": "[图层] 新建灯光",
+          "description": ""
+        },
+        {
+          "value": "composition.save_frame_png",
+          "name": "[合成] 保存当前帧 PNG",
+          "description": ""
+        },
+        {
+          "value": "property.get",
+          "name": "[动画] 读取属性",
+          "description": ""
+        },
+        {
+          "value": "property.set_value",
+          "name": "[动画] 设置属性值",
+          "description": ""
+        },
+        {
+          "value": "property.set_keyframes",
+          "name": "[动画] 设置关键帧",
+          "description": ""
+        },
+        {
+          "value": "property.remove_keyframes",
+          "name": "[动画] 移除关键帧",
+          "description": ""
+        },
+        {
+          "value": "property.easy_ease",
+          "name": "[动画] 应用 Easy Ease",
+          "description": ""
+        },
+        {
+          "value": "property.set_expression",
+          "name": "[动画] 设置表达式",
+          "description": ""
+        },
+        {
+          "value": "script.evaluate",
+          "name": "[脚本] 执行任意 ExtendScript",
+          "description": ""
+        },
+        {
+          "value": "script.run_file",
+          "name": "[脚本] 运行 JSX 文件",
+          "description": ""
+        },
+        {
+          "value": "command.custom",
+          "name": "[高级] 发送自定义 Bridge 命令",
+          "description": ""
+        }
+      ]
+    },
+    "layerPlacement": {
+      "name": "移动方式",
+      "items": [
+        {
+          "value": "top",
+          "name": "移到顶部",
+          "description": ""
+        },
+        {
+          "value": "bottom",
+          "name": "移到底部",
+          "description": ""
+        },
+        {
+          "value": "before",
+          "name": "移到指定图层之前",
+          "description": ""
+        },
+        {
+          "value": "after",
+          "name": "移到指定图层之后",
+          "description": ""
+        }
+      ]
+    },
+    "propertyWriteMode": {
+      "name": "属性写入方式",
+      "items": [
+        {
+          "value": "static",
+          "name": "设置静态值",
+          "description": ""
+        },
+        {
+          "value": "at_time",
+          "name": "在指定时间设置关键帧",
+          "description": ""
+        }
+      ]
+    }
+  },
+  "sourceFileName": "sys_aftereffectscontrol_After Effects控制.md"
+}

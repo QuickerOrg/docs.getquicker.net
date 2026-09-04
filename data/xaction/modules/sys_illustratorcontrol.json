@@ -1,0 +1,535 @@
+{
+  "key": "sys:illustratorcontrol",
+  "slug": "illustratorcontrol",
+  "legacySlug": "illustratorcontrol",
+  "ownsLegacyContent": true,
+  "name": "Illustrator控制",
+  "description": "通过 Illustrator CEP 扩展调用文档、选择、图层、画板、文本和 ExtendScript 能力。",
+  "category": "SoftInteraction",
+  "categoryName": "第三方软件交互",
+  "stepType": "Action",
+  "isRisky": false,
+  "isProOnly": false,
+  "helpLink": "https://docs.getquicker.net/v2/xaction/modules/illustratorcontrol",
+  "inputs": [
+    {
+      "key": "operation",
+      "name": "操作类型",
+      "type": "Enum",
+      "defaultValue": "document.get_context",
+      "required": true,
+      "variableMode": "Input",
+      "condition": "",
+      "description": ""
+    },
+    {
+      "key": "filePath",
+      "name": "文件路径",
+      "type": "Text",
+      "defaultValue": "T:\\TEMP\\Quicker-Illustrator.png",
+      "required": false,
+      "variableMode": "UseVarOrInput",
+      "condition": "",
+      "description": ""
+    },
+    {
+      "key": "format",
+      "name": "格式",
+      "type": "Text",
+      "defaultValue": "png",
+      "required": false,
+      "variableMode": "UseVarOrInput",
+      "condition": "",
+      "description": ""
+    },
+    {
+      "key": "width",
+      "name": "宽度（点）",
+      "type": "Number",
+      "defaultValue": "1920",
+      "required": false,
+      "variableMode": "UseVarOrInput",
+      "condition": "",
+      "description": ""
+    },
+    {
+      "key": "height",
+      "name": "高度（点）",
+      "type": "Number",
+      "defaultValue": "1080",
+      "required": false,
+      "variableMode": "UseVarOrInput",
+      "condition": "",
+      "description": ""
+    },
+    {
+      "key": "colorSpace",
+      "name": "颜色空间（rgb/cmyk）",
+      "type": "Text",
+      "defaultValue": "rgb",
+      "required": false,
+      "variableMode": "UseVarOrInput",
+      "condition": "",
+      "description": ""
+    },
+    {
+      "key": "scale",
+      "name": "导出缩放百分比",
+      "type": "Number",
+      "defaultValue": "100",
+      "required": false,
+      "variableMode": "UseVarOrInput",
+      "condition": "",
+      "description": ""
+    },
+    {
+      "key": "quality",
+      "name": "JPEG 质量",
+      "type": "Number",
+      "defaultValue": "80",
+      "required": false,
+      "variableMode": "UseVarOrInput",
+      "condition": "",
+      "description": ""
+    },
+    {
+      "key": "artboardClipping",
+      "name": "裁剪到画板",
+      "type": "Boolean",
+      "defaultValue": "true",
+      "required": false,
+      "variableMode": "UseVarOrInput",
+      "condition": "",
+      "description": ""
+    },
+    {
+      "key": "boolValue",
+      "name": "启用",
+      "type": "Boolean",
+      "defaultValue": "true",
+      "required": false,
+      "variableMode": "UseVarOrInput",
+      "condition": "",
+      "description": ""
+    },
+    {
+      "key": "deltaX",
+      "name": "水平移动（点）",
+      "type": "Number",
+      "defaultValue": "10",
+      "required": false,
+      "variableMode": "UseVarOrInput",
+      "condition": "",
+      "description": ""
+    },
+    {
+      "key": "deltaY",
+      "name": "垂直移动（点）",
+      "type": "Number",
+      "defaultValue": "0",
+      "required": false,
+      "variableMode": "UseVarOrInput",
+      "condition": "",
+      "description": ""
+    },
+    {
+      "key": "angle",
+      "name": "旋转角度",
+      "type": "Number",
+      "defaultValue": "15",
+      "required": false,
+      "variableMode": "UseVarOrInput",
+      "condition": "",
+      "description": ""
+    },
+    {
+      "key": "scaleX",
+      "name": "水平缩放百分比",
+      "type": "Number",
+      "defaultValue": "120",
+      "required": false,
+      "variableMode": "UseVarOrInput",
+      "condition": "",
+      "description": ""
+    },
+    {
+      "key": "scaleY",
+      "name": "垂直缩放百分比",
+      "type": "Number",
+      "defaultValue": "120",
+      "required": false,
+      "variableMode": "UseVarOrInput",
+      "condition": "",
+      "description": ""
+    },
+    {
+      "key": "changeLineWidths",
+      "name": "线宽缩放百分比",
+      "type": "Number",
+      "defaultValue": "120",
+      "required": false,
+      "variableMode": "UseVarOrInput",
+      "condition": "",
+      "description": ""
+    },
+    {
+      "key": "opacity",
+      "name": "透明度（0~100）",
+      "type": "Number",
+      "defaultValue": "50",
+      "required": false,
+      "variableMode": "UseVarOrInput",
+      "condition": "",
+      "description": ""
+    },
+    {
+      "key": "index",
+      "name": "图层/画板序号（从 0 开始）",
+      "type": "Number",
+      "defaultValue": "0",
+      "required": false,
+      "variableMode": "UseVarOrInput",
+      "condition": "",
+      "description": ""
+    },
+    {
+      "key": "name",
+      "name": "名称",
+      "type": "Text",
+      "defaultValue": "Quicker 图层",
+      "required": false,
+      "variableMode": "UseVarOrInput",
+      "condition": "",
+      "description": ""
+    },
+    {
+      "key": "text",
+      "name": "文本",
+      "type": "Text",
+      "defaultValue": "Quicker 文本",
+      "required": false,
+      "variableMode": "UseVarOrInput",
+      "condition": "",
+      "description": ""
+    },
+    {
+      "key": "positionJson",
+      "name": "位置（JSON）",
+      "type": "Text",
+      "defaultValue": "[100,100]",
+      "required": false,
+      "variableMode": "UseVarOrInput",
+      "condition": "",
+      "description": ""
+    },
+    {
+      "key": "fontSize",
+      "name": "字号",
+      "type": "Number",
+      "defaultValue": "24",
+      "required": false,
+      "variableMode": "UseVarOrInput",
+      "condition": "",
+      "description": ""
+    },
+    {
+      "key": "findText",
+      "name": "查找文本",
+      "type": "Text",
+      "defaultValue": "旧文字",
+      "required": false,
+      "variableMode": "UseVarOrInput",
+      "condition": "",
+      "description": ""
+    },
+    {
+      "key": "replaceText",
+      "name": "替换为",
+      "type": "Text",
+      "defaultValue": "新文字",
+      "required": false,
+      "variableMode": "UseVarOrInput",
+      "condition": "",
+      "description": ""
+    },
+    {
+      "key": "menuCommand",
+      "name": "菜单命令字符串",
+      "type": "Text",
+      "defaultValue": "Fit Artboard to selected Art",
+      "required": false,
+      "variableMode": "UseVarOrInput",
+      "condition": "",
+      "description": ""
+    },
+    {
+      "key": "scriptCode",
+      "name": "ExtendScript 代码",
+      "type": "Text",
+      "defaultValue": "app.documents.length",
+      "required": false,
+      "variableMode": "UseVarOrInput",
+      "condition": "",
+      "description": ""
+    },
+    {
+      "key": "scriptFilePath",
+      "name": "JSX 文件路径",
+      "type": "Text",
+      "defaultValue": "T:\\TEMP\\illustrator-script.jsx",
+      "required": false,
+      "variableMode": "UseVarOrInput",
+      "condition": "",
+      "description": ""
+    },
+    {
+      "key": "commandName",
+      "name": "Bridge 命令名称",
+      "type": "Text",
+      "defaultValue": "",
+      "required": true,
+      "variableMode": "UseVarOrInput",
+      "condition": "",
+      "description": ""
+    },
+    {
+      "key": "argumentsJson",
+      "name": "参数（JSON 对象）",
+      "type": "Text",
+      "defaultValue": "{}",
+      "required": false,
+      "variableMode": "UseVarOrInput",
+      "condition": "",
+      "description": ""
+    },
+    {
+      "key": "waitMs",
+      "name": "最长等待时间(ms)",
+      "type": "Number",
+      "defaultValue": "30000",
+      "required": true,
+      "variableMode": "Input",
+      "condition": "",
+      "description": ""
+    },
+    {
+      "key": "stopIfFail",
+      "name": "失败后停止",
+      "type": "Boolean",
+      "defaultValue": "true",
+      "required": false,
+      "variableMode": "Input",
+      "condition": "",
+      "description": "失败后是否停止动作"
+    }
+  ],
+  "outputs": [
+    {
+      "key": "isSuccess",
+      "name": "是否成功",
+      "type": "Boolean",
+      "condition": "",
+      "description": "操作是否成功"
+    },
+    {
+      "key": "output",
+      "name": "命令结果",
+      "type": "Text",
+      "condition": "",
+      "description": ""
+    }
+  ],
+  "selections": {
+    "operation": {
+      "name": "操作类型",
+      "items": [
+        {
+          "value": "bridge.ping",
+          "name": "[Bridge] 测试连接",
+          "description": ""
+        },
+        {
+          "value": "document.get_context",
+          "name": "[文档] 获取文档上下文",
+          "description": ""
+        },
+        {
+          "value": "document.list",
+          "name": "[文档] 列出文档",
+          "description": ""
+        },
+        {
+          "value": "document.new",
+          "name": "[文档] 新建文档",
+          "description": ""
+        },
+        {
+          "value": "document.open",
+          "name": "[文档] 打开文档",
+          "description": ""
+        },
+        {
+          "value": "document.save",
+          "name": "[文档] 保存文档",
+          "description": ""
+        },
+        {
+          "value": "document.save_as",
+          "name": "[文档] 文档另存为",
+          "description": ""
+        },
+        {
+          "value": "document.export",
+          "name": "[导出] 导出 PNG/JPEG/SVG",
+          "description": ""
+        },
+        {
+          "value": "selection.get_info",
+          "name": "[选择] 读取选择详情",
+          "description": ""
+        },
+        {
+          "value": "selection.select_all",
+          "name": "[选择] 全选对象",
+          "description": ""
+        },
+        {
+          "value": "selection.clear",
+          "name": "[选择] 清除选择",
+          "description": ""
+        },
+        {
+          "value": "object.duplicate",
+          "name": "[对象] 复制对象",
+          "description": ""
+        },
+        {
+          "value": "object.remove",
+          "name": "[对象] 删除对象",
+          "description": ""
+        },
+        {
+          "value": "object.group",
+          "name": "[对象] 编组对象",
+          "description": ""
+        },
+        {
+          "value": "object.ungroup",
+          "name": "[对象] 取消编组",
+          "description": ""
+        },
+        {
+          "value": "object.set_hidden",
+          "name": "[对象] 隐藏或显示对象",
+          "description": ""
+        },
+        {
+          "value": "object.set_locked",
+          "name": "[对象] 锁定或解锁对象",
+          "description": ""
+        },
+        {
+          "value": "object.translate",
+          "name": "[对象] 移动对象",
+          "description": ""
+        },
+        {
+          "value": "object.rotate",
+          "name": "[对象] 旋转对象",
+          "description": ""
+        },
+        {
+          "value": "object.resize",
+          "name": "[对象] 缩放对象",
+          "description": ""
+        },
+        {
+          "value": "object.set_opacity",
+          "name": "[对象] 设置对象透明度",
+          "description": ""
+        },
+        {
+          "value": "layer.list",
+          "name": "[图层] 列出图层",
+          "description": ""
+        },
+        {
+          "value": "layer.create",
+          "name": "[图层] 新建图层",
+          "description": ""
+        },
+        {
+          "value": "layer.activate",
+          "name": "[图层] 激活图层",
+          "description": ""
+        },
+        {
+          "value": "layer.rename",
+          "name": "[图层] 重命名图层",
+          "description": ""
+        },
+        {
+          "value": "layer.set_visible",
+          "name": "[图层] 设置图层可见性",
+          "description": ""
+        },
+        {
+          "value": "layer.set_locked",
+          "name": "[图层] 设置图层锁定",
+          "description": ""
+        },
+        {
+          "value": "artboard.list",
+          "name": "[画板] 列出画板",
+          "description": ""
+        },
+        {
+          "value": "artboard.activate",
+          "name": "[画板] 激活画板",
+          "description": ""
+        },
+        {
+          "value": "artboard.fit_selection",
+          "name": "[画板] 画板适配选择对象",
+          "description": ""
+        },
+        {
+          "value": "text.list",
+          "name": "[文本] 列出文本",
+          "description": ""
+        },
+        {
+          "value": "text.create",
+          "name": "[文本] 新建文本",
+          "description": ""
+        },
+        {
+          "value": "text.replace",
+          "name": "[文本] 批量替换文本",
+          "description": ""
+        },
+        {
+          "value": "menu.execute",
+          "name": "[命令] 执行菜单命令",
+          "description": ""
+        },
+        {
+          "value": "script.evaluate",
+          "name": "[脚本] 执行任意 ExtendScript",
+          "description": ""
+        },
+        {
+          "value": "script.run_file",
+          "name": "[脚本] 运行 JSX 文件",
+          "description": ""
+        },
+        {
+          "value": "command.custom",
+          "name": "[高级] 发送自定义 Bridge 命令",
+          "description": ""
+        }
+      ]
+    }
+  },
+  "sourceFileName": "sys_illustratorcontrol_Illustrator控制.md"
+}

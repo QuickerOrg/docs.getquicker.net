@@ -1,0 +1,135 @@
+{
+  "key": "sys:motuyuncontrol",
+  "slug": "motuyuncontrol",
+  "legacySlug": "motuyuncontrol",
+  "ownsLegacyContent": true,
+  "name": "模兔云控制",
+  "description": "通过模兔云本机服务搜索并执行 SketchUp 插件命令。",
+  "category": "SoftInteraction",
+  "categoryName": "第三方软件交互",
+  "stepType": "Action",
+  "isRisky": false,
+  "isProOnly": false,
+  "helpLink": "https://docs.getquicker.net/v2/xaction/modules/motuyuncontrol",
+  "inputs": [
+    {
+      "key": "operation",
+      "name": "操作类型",
+      "type": "Enum",
+      "defaultValue": "command.activate",
+      "required": true,
+      "variableMode": "Input",
+      "condition": "",
+      "description": ""
+    },
+    {
+      "key": "keyword",
+      "name": "搜索词",
+      "type": "Text",
+      "defaultValue": "",
+      "required": false,
+      "variableMode": "UseVarOrInput",
+      "condition": "",
+      "description": ""
+    },
+    {
+      "key": "limit",
+      "name": "最大数量",
+      "type": "Number",
+      "defaultValue": "100",
+      "required": false,
+      "variableMode": "UseVarOrInput",
+      "condition": "",
+      "description": ""
+    },
+    {
+      "key": "needIcon",
+      "name": "返回图标",
+      "type": "Boolean",
+      "defaultValue": "true",
+      "required": false,
+      "variableMode": "Input",
+      "condition": "",
+      "description": ""
+    },
+    {
+      "key": "commandId",
+      "name": "命令 ID",
+      "type": "Text",
+      "defaultValue": "",
+      "required": true,
+      "variableMode": "UseVarOrInput",
+      "condition": "",
+      "description": ""
+    },
+    {
+      "key": "projectId",
+      "name": "插件 ID",
+      "type": "Text",
+      "defaultValue": "0",
+      "required": true,
+      "variableMode": "UseVarOrInput",
+      "condition": "",
+      "description": ""
+    },
+    {
+      "key": "waitMs",
+      "name": "最长等待时间(ms)",
+      "type": "Number",
+      "defaultValue": "30000",
+      "required": true,
+      "variableMode": "Input",
+      "condition": "",
+      "description": ""
+    },
+    {
+      "key": "stopIfFail",
+      "name": "失败后停止",
+      "type": "Boolean",
+      "defaultValue": "true",
+      "required": false,
+      "variableMode": "Input",
+      "condition": "",
+      "description": "失败后是否停止动作"
+    }
+  ],
+  "outputs": [
+    {
+      "key": "isSuccess",
+      "name": "是否成功",
+      "type": "Boolean",
+      "condition": "",
+      "description": "操作是否成功"
+    },
+    {
+      "key": "output",
+      "name": "返回结果",
+      "type": "Text",
+      "condition": "",
+      "description": "模兔云返回的 JSON。"
+    }
+  ],
+  "selections": {
+    "operation": {
+      "name": "操作类型",
+      "items": [
+        {
+          "value": "command.search",
+          "name": "[命令] 搜索命令",
+          "description": ""
+        },
+        {
+          "value": "command.activate",
+          "name": "[命令] 执行命令",
+          "description": ""
+        },
+        {
+          "value": "tool.list",
+          "name": "[高级] 读取工具列表",
+          "description": ""
+        }
+      ]
+    }
+  },
+  "sourceFileName": "sys_motuyuncontrol_模兔云控制.md"
+}

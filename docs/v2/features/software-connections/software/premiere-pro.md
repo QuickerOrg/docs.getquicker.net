@@ -11,13 +11,13 @@ comments: true
 
 ## 适用范围
 
-25.6 及以上；已有 2026（26.3）真机记录。面向 Windows x64。支持范围不等于所有小版本均已真机测试；实际可安装的版本组合以安装器检测与选择结果为准。
+25.6 及以上；已有 2026（26.3）真机记录。面向 Windows x64。支持范围不等于所有小版本均已真机测试；实际可安装的版本组合以设置页检测与选择结果为准。
 
 ## 安装前准备与首次启用
 
 安装机制：**Adobe UPIA 管理的 UXP 插件**。
 
-退出 Premiere Pro，确认 Adobe Creative Cloud 提供的 UPIA 可用，再使用统一安装器；无需启用开发者模式。
+退出 Premiere Pro，确认 Adobe Creative Cloud 提供的 UPIA 可用，再通过设置页软件卡片安装；无需启用开发者模式。
 
 从“窗口 → UXP 插件”打开“Quicker Bridge 状态”。看到已连接状态后，再到 Quicker 命令工具选择实例。
 

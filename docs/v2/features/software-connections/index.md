@@ -49,6 +49,7 @@ WPS 使用官方网页管理，是上述普通安装路径的例外，目前正�
 | Illustrator | 平面设计 | 已有安装与连接验证记录 | 设置页软件卡片 | 唯一在线会话 | [Illustrator控制](/v2/xaction/modules/illustratorcontrol) | [查看指南](./software/illustrator.md) |
 | InDesign | 排版 | 已有安装与连接验证记录 | 设置页软件卡片 | 唯一在线会话 | [InDesign控制](/v2/xaction/modules/indesigncontrol) | [查看指南](./software/indesign.md) |
 | Maya | 三维与动画 | 已有安装与连接验证记录 | 设置页软件卡片 | 前台进程精确路由 | [Maya控制](/v2/xaction/modules/mayacontrol) | [查看指南](./software/maya.md) |
+| Mastercam | CAM / 数控 | 2.2.6 起支持 2024 / 2027 | 设置页软件卡片（分年度） | 前台进程精确路由 | Mastercam 控制（由命令工具生成；模块参考待同步） | [查看指南](./software/mastercam.md) |
 | Photoshop | 图像处理 | 已有安装与连接验证记录 | 设置页软件卡片 | 前台类型 + 唯一会话 | [Photoshop控制](/v2/xaction/modules/photoshopcontrol) | [查看指南](./software/photoshop.md) |
 | Premiere Pro | 视频与动效 | 已有安装与连接验证记录 | 设置页软件卡片 | 前台类型 + 唯一会话 | [Premiere Pro控制](/v2/xaction/modules/premierecontrol) | [查看指南](./software/premiere-pro.md) |
 | Revit | 建筑与 BIM | 已有安装与连接验证记录 | 设置页软件卡片 | 前台进程精确路由 | [Revit控制](/v2/xaction/modules/revitcontrol) | [查看指南](./software/revit.md) |

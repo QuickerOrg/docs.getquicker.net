@@ -19,6 +19,8 @@ comments: true
 
 退出 Photoshop，确认 Adobe Creative Cloud 提供的 UPIA 可用，再通过设置页软件卡片安装。生产使用无需 UXP Developer Tool。
 
+2.2.7 起，可在设置中手动选择并记住 Photoshop 程序路径；安装 Adobe 连接组件前，Quicker 会检查所需依赖并在缺少时提示修复方法。
+
 启动 Photoshop，从“增效工具”打开 Quicker Bridge Status 状态面板，确认连接；保持插件容器正常运行。
 
 ## 确认连接

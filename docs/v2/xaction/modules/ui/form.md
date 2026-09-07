@@ -25,6 +25,8 @@ legacyContentUpdatedAt: "2025-04-26T13:46:14.000Z"
 
 每一行是一个**字段**，对应一个动作变量，或词典里的一个键。打开时加载当前值，保存后写回。常和「作为状态使用」的变量一起做 [设置界面](/v2/xaction/concepts/store-settings)。
 
+2.2.7 起，若某个字段绑定了不存在的变量，Quicker 会在打开表单前明确提示缺失变量，而不是进入表单后再异常中断。
+
 ![](./img/form-001-1b317aa5a9.png)
 
 <ModuleParamPreview moduleKey="sys:form" />

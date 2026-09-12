@@ -23,9 +23,11 @@ flowchart LR
 
 | 习惯 | 更合适的入口 |
 | --- | --- |
-| 鼠标不离开当前窗口，画一下就执行 | [鼠标手势](./mouse-gestures.md)、[轮盘菜单](/v2/what's-new/others/circle-menu) |
-| 键盘不离手 | [动作快捷键](/v2/what's-new/others/action-hotkeys)、[扩展热键](/v2/what's-new/others/powerkeys)、[文本指令](/v2/what's-new/others/text-commands) |
+| 鼠标不离开当前窗口，画一下就执行 | [鼠标手势](./mouse-gestures.md)、[轮盘菜单](./circle-menu.md) |
+| 键盘不离手 | [动作快捷键](./action-hotkeys.md)、[扩展热键](./powerkeys.md)、[文本指令](./text-commands.md) |
 | 划词后立刻处理 | [选中文本工具条](./text-selection-toolbar.md) |
+| 按住左键再配合其它键 | [左键辅助](./left-button-plus.md) |
+| 短按、划动、角落或边界 | [高级鼠标触发](./advanced-mouse-triggers.md) |
 | 弹出一排动作再点 | [动作面板](/v2/getting-started)（默认中键等） |
 
 下面这段演示是鼠标手势的运行时画面：移入可自己画，移出后自动播放几条常见轨迹。
@@ -40,18 +42,18 @@ flowchart LR
 | --- | --- | --- |
 | 鼠标手势 | 按住键并移动画出轨迹，匹配后执行动作 | [使用说明](./mouse-gestures.md) |
 | 选中文本工具条 | 划词后在指针附近显示候选操作 | [使用说明](./text-selection-toolbar.md) |
-| 动作快捷键 | 全局或按场景绑定组合键到动作 | [使用说明](/v2/what's-new/others/action-hotkeys) |
-| 扩展热键 | 引导键 + 第二键，适合字母键扩展 | [使用说明](/v2/what's-new/others/powerkeys) |
-| 热键联动 | 监听一段或两段快捷键再执行 | [2.x 变化](/v2/what's-new/others/hotkey-watchers) |
-| 文本指令 | 输入缩写或正则匹配后执行 | [使用说明](/v2/what's-new/others/text-commands) |
-| 按键双击 | 双击某键触发 | [2.x 变化](/v2/what's-new/others/key-double-click)（尚无独立使用说明） |
-| 左键辅助 | 按住左键再配合其它键或滚轮 | [2.x 变化](/v2/what's-new/others/left-button-plus)（尚无独立使用说明） |
-| 轮盘菜单 | 在指针周围用方向选动作 | [使用说明](/v2/what's-new/others/circle-menu) |
-| 高级鼠标触发 | 短按、长按、划动、角落、边界摩擦等 | [2.x 变化](/v2/what's-new/others/advanced-mouse-triggers)（尚无独立使用说明） |
+| 动作快捷键 | 全局或按场景绑定组合键到动作 | [使用说明](./action-hotkeys.md) |
+| 扩展热键 | 引导键 + 第二键，适合字母键扩展 | [使用说明](./powerkeys.md) |
+| 热键联动 | 监听一段或两段快捷键再执行 | [使用说明](./hotkey-watchers.md) |
+| 文本指令 | 输入缩写或正则匹配后执行 | [使用说明](./text-commands.md) |
+| 按键双击 | 双击某键触发 | [使用说明](./key-double-click.md) |
+| 左键辅助 | 按住左键再配合其它键或滚轮 | [使用说明](./left-button-plus.md) |
+| 轮盘菜单 | 在指针周围用方向选动作 | [使用说明](./circle-menu.md) |
+| 高级鼠标触发 | 短按、长按、划动、角落、边界摩擦等 | [使用说明](./advanced-mouse-triggers.md) |
 | 动作面板 | 弹出面板再点动作 | [开始使用](/v2/getting-started)、[新面板](/v2/what's-new/new-main-win/usage) |
 | 滚轮触发动作 | 在悬浮按钮等位置用滚轮连续调用 | [教程](/v2/xaction/guides/scroll-trigger) |
 
-快捷键、扩展热键、轮盘和文本指令已有相对完整的说明（含配置路径）。**按键双击、左键辅助、高级鼠标触发**目前只有相对 1.x 的变化说明，还没有单独的使用说明；配置仍以软件里 **场景与动作管理** 为准。
+上表「使用说明」均指向本目录下的功能页。相对 1.x 的改进清单见各功能页中的「2.x 变化」链接。配置入口以软件里 **场景与动作管理** 为准。
 
 ## 统一管理与排障
 
@@ -72,9 +74,49 @@ flowchart LR
       description: '轨迹、场景绑定与常见协作',
     },
     {
+      href: '/v2/features/triggers/circle-menu',
+      label: '轮盘菜单',
+      description: '圈层、可视子动作与来源切换',
+    },
+    {
       href: '/v2/features/triggers/text-selection-toolbar',
       label: '选中文本工具条',
       description: '划词后显示候选操作',
+    },
+    {
+      href: '/v2/features/triggers/action-hotkeys',
+      label: '动作快捷键',
+      description: '按场景绑定系统组合键',
+    },
+    {
+      href: '/v2/features/triggers/powerkeys',
+      label: '扩展热键',
+      description: '引导键策略、校准与诊断',
+    },
+    {
+      href: '/v2/features/triggers/hotkey-watchers',
+      label: '热键联动',
+      description: '单段或两段按键序列',
+    },
+    {
+      href: '/v2/features/triggers/text-commands',
+      label: '文本指令',
+      description: '缩写或正则匹配后执行',
+    },
+    {
+      href: '/v2/features/triggers/key-double-click',
+      label: '按键双击',
+      description: '不拦截原键的双击触发',
+    },
+    {
+      href: '/v2/features/triggers/advanced-mouse-triggers',
+      label: '高级鼠标触发',
+      description: '短按、划动、角落，以及启动轮盘/手势',
+    },
+    {
+      href: '/v2/features/triggers/left-button-plus',
+      label: '左键辅助',
+      description: '按住左键再配合其它键',
     },
     {
       href: "/v2/what's-new/scenes-and-triggers",

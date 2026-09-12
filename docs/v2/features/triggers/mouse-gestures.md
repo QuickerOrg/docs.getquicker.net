@@ -65,7 +65,7 @@ comments: true
 - 按住右键并移动 → 可进入轮盘或手势
 - 扩展热键一旦确定触发，同一次按住不会再误转成轮盘或手势
 
-细节见 [扩展热键（2.x 变化）](/v2/what's-new/others/powerkeys) 与 [轮盘菜单（2.x 变化）](/v2/what's-new/others/circle-menu)。
+日常配置见 [扩展热键](/v2/features/triggers/powerkeys) 与 [轮盘菜单](/v2/features/triggers/circle-menu)；2.x 协作变化见 [扩展热键（2.x 变化）](/v2/what's-new/others/powerkeys) 与 [轮盘菜单（2.x 变化）](/v2/what's-new/others/circle-menu)。
 
 ## 运行时快速进设置
 
@@ -98,9 +98,24 @@ comments: true
       description: '收笔、长轨迹、场景继承等改进',
     },
     {
-      href: "/v2/what's-new/others/advanced-mouse-triggers",
+      href: '/v2/features/triggers/advanced-mouse-triggers',
       label: '高级鼠标触发',
       description: '用短按/划动启动手势会话',
+    },
+    {
+      href: '/v2/features/triggers/circle-menu',
+      label: '轮盘菜单',
+      description: '与手势共用右键时的方向选择',
+    },
+    {
+      href: '/v2/features/triggers/powerkeys',
+      label: '扩展热键',
+      description: '与手势共用右键时的字母组合',
+    },
+    {
+      href: "/v2/what's-new/others/advanced-mouse-triggers",
+      label: '高级鼠标触发 2.x 变化',
+      description: '场景解析、筛选与协作改进',
     },
   ]}
 />

@@ -1,14 +1,12 @@
 ---
 title: 本机动作暂存区
-description: 介绍 Quicker V2 如何在本机暂存、试运行、调试和保留动作，以及暂存动作与正式动作、云同步之间的区别。
-sidebar_position: 15
-quickerDocKey: v2/what's-new/new-main-win/action-drafts
+description: 在本机暂存、试运行、调试和保留动作，以及暂存动作与正式动作、云同步的区别。
+sidebar_position: 20
+quickerDocKey: v2/features/action-panel/action-drafts
 comments: true
 ---
 
 # 本机动作暂存区
-
-> 日常使用见 [功能说明](/v2/features/action-panel/action-drafts)。本文保留相对 1.x / 迁移相关说明。
 
 Quicker V2 新增了本机动作暂存区。它适合保存尚未确定放置位置、仍需试验，或暂时不希望进入正式动作库的动作。
 
@@ -64,3 +62,30 @@ Quicker V2 新增了本机动作暂存区。它适合保存尚未确定放置位
 “丢弃”会删除该暂存动作及其本机版本历史。“全部删除”会清空当前账号的整个暂存区。这些操作不会把内容移入正式动作回收站，确认后无法从暂存区恢复。
 
 暂存动作尚未正式保存时没有云端副本。删除前如果仍可能需要，请先复制动作，或先保留到一个临时场景。
+
+## 相关链接
+
+<RelatedDocs
+  items={[
+    {
+      href: '/v2/features/action-panel',
+      label: '动作面板概览',
+      description: '何时用、入口总览',
+    },
+    {
+      href: '/v2/features/action-panel/usage',
+      label: '使用说明',
+      description: '启用、结构与整理',
+    },
+    {
+      href: '/v2/features/action-panel/faq',
+      label: '常见问题',
+      description: '暂存同步与删除边界',
+    },
+    {
+      href: "/v2/what's-new/new-main-win/action-drafts",
+      label: '本机动作暂存区（2.x 变化）',
+      description: '相对 1.x 的增量说明',
+    },
+  ]}
+/>

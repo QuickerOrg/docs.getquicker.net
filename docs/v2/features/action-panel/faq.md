@@ -1,15 +1,14 @@
 ---
-title: 常见问题
-description: 解答从 Quicker 1.x 迁移到 2.0 新面板窗口时，动作页、分组、批量转移和数据保留等常见问题。
-sidebar_position: 20
-quickerDocKey: v2/what's-new/new-main-win/faq
+title: 动作面板常见问题
+description: 新面板的启用、分组、批量转移、置顶、查找与数据同步等常见问题。
+sidebar_position: 30
+quickerDocKey: v2/features/action-panel/faq
 comments: true
 ---
-# 新面板窗口常见问题
 
-> 日常使用见 [功能说明 · 常见问题](/v2/features/action-panel/faq)。本文保留相对 1.x / 迁移相关说明。
+# 动作面板常见问题
 
-本页主要解答 Quicker 1.x 用户切换到新面板窗口时常见的迁移问题。基本操作请先参阅[新面板窗口的使用](./usage.md)。
+本页解答新面板日常使用与从 1.x 迁移时的常见问题。基本操作请先参阅[动作面板使用说明](./usage.md)。
 
 ## 暂存动作会同步到其它电脑吗？
 
@@ -213,3 +212,30 @@ Quicker 2.0 将动作本体与使用位置分开。一个动作可以同时位�
 新面板的场景动作位置和分组属于账号数据，会通过 Quicker 2.0 的数据同步机制保存和同步。窗口尺寸、场景树宽度、当前选中标签、滚动位置等界面状态可能只保存在本机或当前会话，不应把它们视为跨设备一致的数据。
 
 首次迁移和大量整理后，建议执行一次“更多菜单 → 数据同步 → 立即同步”，并在其它设备完成同步后再继续编辑，减少两台设备同时改同一场景带来的冲突。
+
+## 相关链接
+
+<RelatedDocs
+  items={[
+    {
+      href: '/v2/features/action-panel',
+      label: '动作面板概览',
+      description: '何时用、入口总览',
+    },
+    {
+      href: '/v2/features/action-panel/usage',
+      label: '使用说明',
+      description: '启用、结构与整理',
+    },
+    {
+      href: '/v2/features/action-panel/action-drafts',
+      label: '本机动作暂存区',
+      description: '试运行与保留到场景',
+    },
+    {
+      href: "/v2/what's-new/new-main-win/faq",
+      label: '新面板常见问题（更新说明）',
+      description: '相对 1.x / 迁移相关说明',
+    },
+  ]}
+/>

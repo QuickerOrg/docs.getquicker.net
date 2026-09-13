@@ -50,7 +50,7 @@ flowchart LR
 | 左键辅助 | 按住左键再配合其它键或滚轮 | [使用说明](./left-button-plus.md) |
 | 轮盘菜单 | 在指针周围用方向选动作 | [使用说明](./circle-menu.md) |
 | 高级鼠标触发 | 短按、长按、划动、角落、边界摩擦等 | [使用说明](./advanced-mouse-triggers.md) |
-| 动作面板 | 弹出面板再点动作 | [开始使用](/v2/getting-started)、[新面板](/v2/what's-new/new-main-win/usage) |
+| 动作面板 | 弹出面板再点动作 | [开始使用](/v2/getting-started)、[新面板](/v2/features/action-panel/usage) |
 | 滚轮触发动作 | 在悬浮按钮等位置用滚轮连续调用 | [教程](/v2/xaction/guides/scroll-trigger) |
 
 上表「使用说明」均指向本目录下的功能页。相对 1.x 的改进清单见各功能页中的「2.x 变化」链接。配置入口以软件里 **场景与动作管理** 为准。

@@ -1,13 +1,12 @@
 ---
-title: 新面板窗口的使用
-description: 介绍 Quicker 2.0 新面板窗口的启用方法、界面结构、动作整理、批量移动和场景管理方式。
+title: 动作面板使用说明
+description: Quicker V2 新面板的启用、界面结构、查找运行、双击导航、整理分组与显示方式。
 sidebar_position: 10
-quickerDocKey: v2/what's-new/new-main-win/usage
+quickerDocKey: v2/features/action-panel/usage
 comments: true
 ---
-# 新面板窗口的使用
 
-> 日常使用见 [功能说明](/v2/features/action-panel/usage)。本文保留相对 1.x / 迁移相关说明。
+# 动作面板使用说明
 
 新面板窗口是 Quicker 2.0 的主要动作入口。它不再要求把动作固定放在二维动作页中，而是按“场景 → 分组 → 动作”组织；同一个动作也可以出现在多个场景或其它触发入口中。
 
@@ -205,3 +204,30 @@ comments: true
 2.1.23 起，动作管理页增加 **动作回收站** 和 **批量更新动作** 快捷入口，并提示可以把动作直接拖到面板。从动作管理列表拖到新面板目标场景或分组时，会建立该动作的面板入口；这和“移动到…”一样处理的是动作位置，不会复制动作内容本体。
 
 排查最近运行失败的动作时，可从面板工具菜单打开 **最近动作错误**，查看最近 10 条失败记录和错误详情。
+
+## 相关链接
+
+<RelatedDocs
+  items={[
+    {
+      href: '/v2/features/action-panel',
+      label: '动作面板概览',
+      description: '何时用、入口总览',
+    },
+    {
+      href: '/v2/features/action-panel/action-drafts',
+      label: '本机动作暂存区',
+      description: '试运行、用 AI 写、保留到场景',
+    },
+    {
+      href: '/v2/features/action-panel/faq',
+      label: '常见问题',
+      description: '迁移、批量整理与排障',
+    },
+    {
+      href: "/v2/what's-new/new-main-win/usage",
+      label: '新面板窗口（2.x 变化）',
+      description: '相对 1.x / 迁移相关说明',
+    },
+  ]}
+/>

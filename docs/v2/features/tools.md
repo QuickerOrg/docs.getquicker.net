@@ -24,6 +24,6 @@ comments: true
 
 ## 搜索、选中文本与更新
 
-- 面板内筛选和跨场景搜索：见 [工具与使用体验](/v2/what's-new/tools-and-experience.md)
+- 面板内筛选和跨场景搜索：日常操作见 [动作面板使用说明](/v2/features/action-panel/usage)；2.x 体验变化见 [工具与使用体验](/v2/what's-new/tools-and-experience.md)
 - [选中文本工具条](./triggers/text-selection-toolbar.md)
 - [更新 Quicker V2](/v2/install/update.md)：应用内下载、校验和静默安装

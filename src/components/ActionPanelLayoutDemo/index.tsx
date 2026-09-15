@@ -1,8 +1,12 @@
 /**
- * Docs demo: interactive layout map of Quicker V2 新面板.
- * Hotspot captions cite menu paths / gestures from action-panel docs only.
+ * Docs sketch of Quicker V2 新面板 chrome.
+ * Source:
+ *   QuickerPc/Quicker/Modules/MainWindow/NewMainWindow/QuickerMainWin.xaml
+ *   QuickerPc/Quicker/Modules/MainWindow/NewMainWindow/ActionsPanel/ActionsPanelView.xaml
+ * Prefer re-sync from those XAML files over hand-tuning.
  */
 import Link from '@docusaurus/Link';
+import {DocsStepIcon} from '@site/src/components/StepProgramView/DocsStepIcon';
 import {
   useCallback,
   useId,
@@ -44,8 +48,8 @@ const HOTSPOTS: readonly Hotspot[] = [
     id: 'enable',
     label: '启用',
     title: '启用新面板窗口',
-    body: '登录账号后，可从旧面板右上角菜单选择「切换至新版主窗口」，或在设置中开启新版面板。关闭该设置可临时切回旧面板，不会删除动作。本机离线账号固定使用新面板。',
-    settingPath: '设置 → 基础设置 → 新版面板窗口；或旧面板菜单 → 切换至新版主窗口',
+    body: '登录账号后，可从旧面板右上角菜单选择「切换至新版主窗口」，或点标题栏齿轮打开设置后开启新版面板。关闭该设置可临时切回旧面板，不会删除动作。本机离线账号固定使用新面板。',
+    settingPath: '标题栏齿轮 → 基础设置 → 新版面板窗口；或旧面板菜单 → 切换至新版主窗口',
     href: '/v2/features/action-panel/usage#启用新面板窗口',
     hrefLabel: '启用说明',
   },
@@ -53,8 +57,8 @@ const HOTSPOTS: readonly Hotspot[] = [
     id: 'titleSearch',
     label: '搜索',
     title: '标题栏搜索',
-    body: '点击标题栏搜索入口会打开全局搜索窗口，适合跨场景和其它搜索来源查找。面板悬停时直接键入名称或拼音，则筛选当前动作区域中的动作。',
-    settingPath: '标题栏搜索入口 → 全局搜索',
+    body: '标题栏默认只显示搜索图标；点开后出现搜索框。点击会打开全局搜索窗口，适合跨场景查找。面板悬停时直接键入名称或拼音，则筛选当前动作区域中的动作。',
+    settingPath: '标题栏右侧搜索图标 → 全局搜索',
     href: '/v2/features/action-panel/usage#查找和运行动作',
     hrefLabel: '查找和运行',
   },
@@ -62,8 +66,8 @@ const HOTSPOTS: readonly Hotspot[] = [
     id: 'moreMenu',
     label: '更多',
     title: '标题栏更多菜单',
-    body: '跨场景整理用「场景与动作」；按程序 / 动作页筛选用「动作管理」。还可打开最近动作错误、工具（如当前场景诊断）等入口。',
-    settingPath: '标题栏更多菜单 → 场景与动作 / 动作管理 / 最近动作错误',
+    body: '省略号按钮打开更多菜单。跨场景整理用「场景与动作」；按程序 / 动作页筛选用「动作管理」。导航栏宽窄、快捷按钮和窗口尺寸都在「面板窗口」子菜单里。',
+    settingPath: '标题栏「更多」→ 场景与动作 / 动作管理 / 面板窗口 / 工具',
     href: '/v2/features/action-panel/usage#管理多个场景和大量动作',
     hrefLabel: '管理场景与动作',
   },
@@ -71,8 +75,8 @@ const HOTSPOTS: readonly Hotspot[] = [
     id: 'windowSize',
     label: '尺寸',
     title: '窗口尺寸预设',
-    body: '窗口支持拖动和缩放。标题栏菜单中的「窗口尺寸」可保存和切换多个尺寸预设；双击标题栏也可恢复或切换尺寸。',
-    settingPath: '标题栏菜单 → 窗口尺寸（亦可双击标题栏）',
+    body: '窗口支持拖动和缩放。「窗口尺寸」不在标题栏上单独成按钮，而在更多菜单的「面板窗口」里；双击标题栏也可恢复或切换尺寸。',
+    settingPath: '标题栏「更多」→ 面板窗口 → 窗口尺寸（亦可双击标题栏）',
     href: '/v2/features/action-panel/usage#窗口尺寸',
     hrefLabel: '窗口尺寸',
   },
@@ -80,8 +84,8 @@ const HOTSPOTS: readonly Hotspot[] = [
     id: 'drafts',
     label: '暂存区',
     title: '左侧暂存区',
-    body: '暂存区保存尚未放入正式场景的本机动作。顶部可直接「新建动作」或「用 AI 写」；确认后再保留到场景。暂存内容不参与云同步。',
-    settingPath: '新面板左侧导航 → 暂存区',
+    body: '左侧导航里，「动作」和「暂存区」是两个图标按钮。点「暂存区」后，右侧内容换成暂存列表（不是再画一条带文字的侧栏）。顶部可「新建动作」或「用 AI 写」；确认后再保留到场景。暂存内容不参与云同步。',
+    settingPath: '左侧导航「暂存区」图标（收件箱）',
     href: '/v2/features/action-panel/action-drafts',
     hrefLabel: '本机动作暂存区',
   },
@@ -89,8 +93,8 @@ const HOTSPOTS: readonly Hotspot[] = [
     id: 'sidebarButtons',
     label: '快捷按钮',
     title: '侧边栏快捷按钮',
-    body: '2.1.29 起可自定义。除默认「截图 Pro」外，还可放入设置、场景与动作管理、公共子程序管理，或添加常用动作并调整顺序。',
-    settingPath: '快捷按钮设置（侧边栏相关入口）',
+    body: '导航栏底部默认只有「截图 Pro」。2.1.29 起可自定义，还可放入设置、场景与动作管理、公共子程序管理，或添加常用动作并调整顺序。',
+    settingPath: '标题栏「更多」→ 面板窗口 → 快捷按钮设置…',
     href: '/v2/features/action-panel/usage#侧边栏快捷按钮',
     hrefLabel: '侧边栏说明',
   },
@@ -99,7 +103,7 @@ const HOTSPOTS: readonly Hotspot[] = [
     label: '全局区',
     title: '全局区',
     body: '放置不依赖当前程序、希望随时使用的动作。可添加全局场景、通用场景或自定义场景标签。可用 Ctrl + 滚轮切换该区域场景标签。',
-    settingPath: '视图选项 → 同时显示「全局 + 上下文区」或只显示其一',
+    settingPath: '视图选项 → 布局 → 「全局 + 上下文区」或只显示其一',
     href: '/v2/features/action-panel/usage#全局区',
     hrefLabel: '全局区',
   },
@@ -107,7 +111,7 @@ const HOTSPOTS: readonly Hotspot[] = [
     id: 'contextArea',
     label: '上下文区',
     title: '上下文区',
-    body: '随当前前台程序或网址变化，优先显示匹配场景；「通用」标签始终保留在末尾。「视图选项」可只显示上下文区或与全局区同显。',
+    body: '随当前前台程序或网址变化，优先显示匹配场景；「通用」标签始终保留在末尾。默认与全局区上下同显，中间可用分隔条调整高度。',
     settingPath: '视图选项 → 布局（全局 + 上下文 / 仅其一）',
     href: '/v2/features/action-panel/usage#上下文区',
     hrefLabel: '上下文区',
@@ -116,8 +120,8 @@ const HOTSPOTS: readonly Hotspot[] = [
     id: 'lock',
     label: '锁定',
     title: '上下文锁定',
-    body: '点击上下文区右上角锁定按钮，可停止上下文自动切换；再次点击恢复。右键该按钮还可选择要加载并锁定的应用场景。',
-    settingPath: '上下文区右上角「锁定」按钮（单击 / 右键）',
+    body: '上下文区右上角是锁形图标（未锁定时为开锁）。单击停止上下文自动切换；再次点击恢复。右键还可选择要加载并锁定的应用场景。',
+    settingPath: '上下文区右上角锁形按钮（单击 / 右键）',
     href: '/v2/features/action-panel/usage#上下文区',
     hrefLabel: '上下文区',
   },
@@ -126,7 +130,7 @@ const HOTSPOTS: readonly Hotspot[] = [
     label: '场景标签',
     title: '场景标签',
     body: '单击切换场景；双击在「场景与动作管理」中打开该场景；右键可新建 / 导入动作、从旧动作页引入，以及打开场景管理。全局区标签可拖动排序并自动保存。',
-    settingPath: '全局区 / 上下文区场景标签条（单击 / 双击 / 右键）',
+    settingPath: '全局区 / 上下文区顶部场景标签条（单击 / 双击 / 右键）',
     href: '/v2/features/action-panel/usage#场景标签和分组',
     hrefLabel: '场景标签和分组',
   },
@@ -134,8 +138,8 @@ const HOTSPOTS: readonly Hotspot[] = [
     id: 'viewOptions',
     label: '视图选项',
     title: '视图选项',
-    body: '控制全局与上下文的显示、磁贴 / 列表样式、分组模式、最近动作、创建按钮、执行后是否回到列表开头，以及动作排序方式等。',
-    settingPath: '动作区右上角「视图选项」',
+    body: '上下文区右上角的滑块图标。默认「全局 + 上下文」时只出现在上下文区；仅显示全局区时改到全局区右上角。可切换布局、磁贴 / 列表、分组方式、底部最新动作和排序等。',
+    settingPath: '上下文区右上角「视图选项」滑块图标',
     href: '/v2/features/action-panel/usage#视图选项',
     hrefLabel: '视图选项',
   },
@@ -143,35 +147,35 @@ const HOTSPOTS: readonly Hotspot[] = [
     id: 'createButton',
     label: '创建',
     title: '创建动作入口',
-    body: '区域右上角「+」、创建动作磁贴，或空白处右键，都可新建 / 粘贴 / 导入动作。是否显示创建动作按钮可在视图选项中开关。',
-    settingPath: '动作区右上角「+」；视图选项 → 是否显示创建动作按钮',
+    body: '默认连续显示分组时，用分组里的「创建动作」磁贴；把指针移到分组标题旁也会出现 +。只有「每次单个分组（上）」时，加号才固定出现在标题行。是否显示创建磁贴可在视图选项中开关。',
+    settingPath: '分组内创建动作磁贴；或视图选项 → 其它显示内容 → 创建动作磁贴',
     href: '/v2/features/action-panel/usage#新建粘贴和导入动作',
     hrefLabel: '新建与导入',
   },
   {
     id: 'groupNav',
     label: '分组导航',
-    title: '右侧分组导航',
-    body: '开启「显示分组」且连续显示全部分组时，右侧分组导航可快速定位；存在置顶动作时顶部还会出现带图钉的「置顶」分组。导航位置可在视图选项中调整。',
-    settingPath: '视图选项 → 分组显示 / 分组快速滚动区域',
+    title: '分组导航',
+    body: '连续显示分组时，导航是动作区左侧约 16 DIP 的圆点条（置顶分组略高），不是右侧文字列表。悬停圆点会弹出分组名。「每次单个分组（上）」时改到标题行；「每次单个分组（左）」时仍在左侧。',
+    settingPath: '视图选项 → 分组显示（连续 / 单个左 / 单个上 / 不分组）',
     href: '/v2/features/action-panel/usage#视图选项',
     hrefLabel: '视图选项',
   },
   {
     id: 'recentActions',
-    label: '最近动作',
-    title: '底部最近动作',
-    body: '快速再次运行近期使用过的动作。是否显示该区域由视图选项控制。',
-    settingPath: '视图选项 → 是否显示底部最近动作',
+    label: '最新动作',
+    title: '底部最新动作',
+    body: '窗口最底下一行只有图标、没有「最近」标题，用来再次运行刚用过的动作。是否显示由视图选项「底部最新动作」控制。',
+    settingPath: '视图选项 → 布局 → 底部最新动作',
     href: '/v2/features/action-panel/usage#查找和运行动作',
     hrefLabel: '查找和运行',
   },
   {
     id: 'navBar',
     label: '导航栏',
-    title: '导航栏显隐与宽窄',
-    body: '2.2.10 起：双击面板内容空白处可显示或隐藏导航栏；双击导航栏空白处可在宽导航与窄导航之间切换。请点在空白处，避免点到标签或磁贴。',
-    settingPath: '双击内容空白显隐；双击导航栏空白切换宽窄（2.2.10）',
+    title: '左侧导航栏',
+    body: '导航栏在窗口最左侧：上端是 Quicker 标志，中间是「动作」「暂存区」，底部是快捷按钮。标准宽度约 50 DIP，紧凑约 38 DIP。双击内容空白可显隐；双击导航栏空白可在标准与紧凑之间切换。',
+    settingPath: '更多 → 面板窗口 → 左侧导航栏（标准 / 紧凑 / 关闭）；或双击空白处',
     href: '/v2/features/action-panel/usage#双击导航栏',
     hrefLabel: '双击导航栏',
   },
@@ -179,12 +183,39 @@ const HOTSPOTS: readonly Hotspot[] = [
 
 const DEFAULT_ID: HotspotId = 'viewOptions';
 
-const TILES_GLOBAL = ['剪贴板', '截图', '置顶窗', '计算器'] as const;
-const TILES_CONTEXT = ['复制路径', '新建文件夹', '压缩', '打开终端', '属性'] as const;
-const RECENT = ['剪贴板', '截图', '复制路径'] as const;
+const TILES_GLOBAL = [
+  {name: '剪贴板', color: '#2b7abf'},
+  {name: '截图', color: '#39b54d'},
+  {name: '置顶窗', color: '#ed6c02'},
+  {name: '计算器', color: '#7b61ff', pinned: true},
+] as const;
+
+const TILES_CONTEXT = [
+  {name: '复制路径', color: '#2b7abf'},
+  {name: '新建文件夹', color: '#39b54d'},
+  {name: '压缩', color: '#6aaded'},
+  {name: '打开终端', color: '#303d48'},
+] as const;
+
+const RECENT = [
+  {name: '剪贴板', color: '#2b7abf'},
+  {name: '截图', color: '#39b54d'},
+  {name: '复制路径', color: '#2b7abf'},
+] as const;
+
+const GROUPS = [
+  {id: 'pin', pinned: true, active: false},
+  {id: 'common', pinned: false, active: true},
+  {id: 'file', pinned: false, active: false},
+  {id: 'win', pinned: false, active: false},
+] as const;
 
 function hotspotById(id: HotspotId): Hotspot {
-  return HOTSPOTS.find((h) => h.id === id) ?? HOTSPOTS[0]!;
+  return HOTSPOTS.find((item) => item.id === id) ?? HOTSPOTS[0]!;
+}
+
+function cx(...parts: Array<string | false | undefined>): string {
+  return parts.filter(Boolean).join(' ');
 }
 
 function HotspotButton({
@@ -201,9 +232,9 @@ function HotspotButton({
   children?: ReactNode;
 }): ReactNode {
   const onKeyDown = useCallback(
-    (e: KeyboardEvent<HTMLButtonElement>) => {
-      if (e.key === 'Enter' || e.key === ' ') {
-        e.preventDefault();
+    (event: KeyboardEvent<HTMLButtonElement>) => {
+      if (event.key === 'Enter' || event.key === ' ') {
+        event.preventDefault();
         onSelect(hotspot.id);
       }
     },
@@ -213,26 +244,119 @@ function HotspotButton({
   return (
     <button
       type="button"
-      className={[
-        styles.hotspot,
-        selected ? styles.hotspotSelected : '',
-        className ?? '',
-      ]
-        .filter(Boolean)
-        .join(' ')}
+      className={cx(styles.hotspot, selected && styles.hotspotSelected, className)}
       aria-pressed={selected}
       aria-label={hotspot.title}
       title={hotspot.title}
       onClick={() => onSelect(hotspot.id)}
       onKeyDown={onKeyDown}
     >
-      {children ?? <span className={styles.hotspotLabel}>{hotspot.label}</span>}
+      {children !== undefined ? (
+        children
+      ) : (
+        <span className={styles.hotspotLabel}>{hotspot.label}</span>
+      )}
     </button>
   );
 }
 
+function QuickerLogo(): ReactNode {
+  return (
+    <svg
+      className={styles.logo}
+      viewBox="0 0 32 32"
+      width="24"
+      height="24"
+      aria-hidden
+    >
+      <path
+        className={styles.logoHighlight}
+        d="M5.8,29.5 l8.4,-13 c0.2,-0.2 0.1,-0.6 -0.1,-0.7 l-8.2,-5.6 c-0.3,-0.2 -0.3,-0.6 0,-0.8 l10.8,-8.8 v0 l6,6.5 c0.2,0.3 0.2,0.7 -0.1,0.8 l-3.3,1.5 c-0.4,0.2 -0.4,0.7 -0.1,0.9 l7.8,5.3 c0.3,0.2 0.3,0.7 0,0.9 L6.5,30.2 C6,30.5 5.5,30 5.8,29.5 z"
+      />
+      <path
+        className={styles.logoFill}
+        d="M5.8,29.5 l8.4,-13 c0.2,-0.2 0.1,-0.6 -0.1,-0.7 l-8.2,-5.6 c-0.3,-0.2 -0.3,-0.6 0,-0.8 l10.8,-8.8 v0 l6,6.5 c0.2,0.3 0.2,0.7 -0.1,0.8 l-3.3,1.5 c-0.4,0.2 -0.4,0.7 -0.1,0.9 l7.8,5.3 c0.3,0.2 0.3,0.7 0,0.9 L6.5,30.2 C6,30.5 5.5,30 5.8,29.5 z"
+      />
+    </svg>
+  );
+}
+
+function IconGlyph({
+  name,
+  size = 16,
+}: {
+  name:
+    | 'cog'
+    | 'more'
+    | 'search'
+    | 'user'
+    | 'pin'
+    | 'close'
+    | 'sliders'
+    | 'unlock'
+    | 'plus'
+    | 'grid'
+    | 'inbox';
+  size?: number;
+}): ReactNode {
+  const spec: Record<typeof name, string> = {
+    cog: 'fa:Light_Cog',
+    more: 'fa:Light_Bars',
+    search: 'fa:Light_Search',
+    user: 'fa:Light_UserCircle',
+    pin: 'fa:Light_Thumbtack',
+    close: 'fa:Light_Times',
+    sliders: 'fa:Light_SlidersH',
+    unlock: 'fa:Light_Unlock',
+    plus: 'fa:Light_Plus',
+    grid: 'fa:Solid_Th',
+    inbox: 'fa:Light_Inbox',
+  };
+  const fallback: Record<typeof name, string> = {
+    cog: '⚙',
+    more: '⋯',
+    search: '⌕',
+    user: '○',
+    pin: '📌',
+    close: '×',
+    sliders: '≡',
+    unlock: '🔓',
+    plus: '+',
+    grid: '田',
+    inbox: '☐',
+  };
+  return (
+    <DocsStepIcon spec={spec[name]} size={size} fallback={fallback[name]} />
+  );
+}
+
+function ActionTile({
+  name,
+  color,
+  pinned,
+  create,
+}: {
+  name: string;
+  color?: string;
+  pinned?: boolean;
+  create?: boolean;
+}): ReactNode {
+  return (
+    <span className={cx(styles.tile, create && styles.tileCreate)}>
+      {pinned ? <span className={styles.tilePin} aria-hidden /> : null}
+      <span
+        className={styles.tileIcon}
+        style={create ? undefined : {background: color}}
+        aria-hidden
+      >
+        {create ? <IconGlyph name="plus" size={13} /> : name.slice(0, 1)}
+      </span>
+      <span className={styles.tileLabel}>{create ? '创建动作' : name}</span>
+    </span>
+  );
+}
+
 export type ActionPanelLayoutDemoProps = {
-  /** Optional intro line above the stage. */
   caption?: ReactNode;
 };
 
@@ -242,11 +366,11 @@ export default function ActionPanelLayoutDemo({
   const [selectedId, setSelectedId] = useState<HotspotId>(DEFAULT_ID);
   const selected = hotspotById(selectedId);
   const captionId = useId();
-  const listId = useId();
-
   const onSelect = useCallback((id: HotspotId) => {
     setSelectedId(id);
   }, []);
+
+  const moreSelected = selectedId === 'moreMenu' || selectedId === 'windowSize';
 
   return (
     <div className={styles.root}>
@@ -258,208 +382,232 @@ export default function ActionPanelLayoutDemo({
 
       <div className={styles.layout}>
         <div
-          className={styles.stage}
+          className={cx(styles.stage, 'qk-docs-preview')}
           role="group"
           aria-label="新面板布局示意"
           aria-describedby={captionId}
         >
           <div className={styles.panel}>
-            <div className={styles.titleBar}>
+            <aside
+              className={cx(styles.nav, selectedId === 'navBar' && styles.navSelected)}
+            >
               <HotspotButton
-                hotspot={hotspotById('enable')}
-                selected={selectedId === 'enable'}
+                hotspot={hotspotById('navBar')}
+                selected={selectedId === 'navBar'}
                 onSelect={onSelect}
-                className={styles.hsBrand}
+                className={styles.logoWrap}
               >
-                <span className={styles.brandMark} aria-hidden="true" />
-                <span>Quicker</span>
+                <QuickerLogo />
               </HotspotButton>
-              <HotspotButton
-                hotspot={hotspotById('titleSearch')}
-                selected={selectedId === 'titleSearch'}
-                onSelect={onSelect}
-                className={styles.hsSearch}
-              >
-                <span className={styles.searchIcon} aria-hidden="true">
-                  ⌕
-                </span>
-                <span>搜索</span>
-              </HotspotButton>
-              <div className={styles.titleSpacer} />
-              <HotspotButton
-                hotspot={hotspotById('windowSize')}
-                selected={selectedId === 'windowSize'}
-                onSelect={onSelect}
-                className={styles.hsChip}
-              >
-                窗口尺寸
-              </HotspotButton>
-              <HotspotButton
-                hotspot={hotspotById('moreMenu')}
-                selected={selectedId === 'moreMenu'}
-                onSelect={onSelect}
-                className={styles.hsChip}
-              >
-                更多 ▾
-              </HotspotButton>
-            </div>
-
-            <div className={styles.body}>
-              <aside className={styles.sidebar}>
-                <HotspotButton
-                  hotspot={hotspotById('drafts')}
-                  selected={selectedId === 'drafts'}
-                  onSelect={onSelect}
-                  className={styles.hsSidebarItem}
-                >
-                  <span className={styles.sideIcon} aria-hidden="true">
-                    ✎
-                  </span>
-                  暂存区
-                </HotspotButton>
-                <HotspotButton
-                  hotspot={hotspotById('sidebarButtons')}
-                  selected={selectedId === 'sidebarButtons'}
-                  onSelect={onSelect}
-                  className={styles.hsSidebarStack}
-                >
-                  <span className={styles.sideBtn}>截图</span>
-                  <span className={styles.sideBtn}>设置</span>
-                  <span className={styles.sideBtn}>场景</span>
-                </HotspotButton>
+              <div className={styles.navMid}>
                 <HotspotButton
                   hotspot={hotspotById('navBar')}
                   selected={selectedId === 'navBar'}
                   onSelect={onSelect}
-                  className={styles.hsNavHint}
+                  className={cx(styles.navBtn, styles.navBtnActive)}
                 >
-                  导航
+                  <span className={styles.navMarker} aria-hidden />
+                  <IconGlyph name="grid" size={20} />
                 </HotspotButton>
-              </aside>
+                <HotspotButton
+                  hotspot={hotspotById('drafts')}
+                  selected={selectedId === 'drafts'}
+                  onSelect={onSelect}
+                  className={styles.navBtn}
+                >
+                  <IconGlyph name="inbox" size={20} />
+                </HotspotButton>
+              </div>
+              <HotspotButton
+                hotspot={hotspotById('navBar')}
+                selected={selectedId === 'navBar'}
+                onSelect={onSelect}
+                className={styles.navGrow}
+              >
+                {null}
+              </HotspotButton>
+              <HotspotButton
+                hotspot={hotspotById('sidebarButtons')}
+                selected={selectedId === 'sidebarButtons'}
+                onSelect={onSelect}
+                className={styles.navBtn}
+              >
+                <DocsStepIcon spec="fa:Light_ExpandWide" size={16} fallback="截" />
+              </HotspotButton>
+            </aside>
 
-              <div className={styles.main}>
-                <section className={styles.area}>
-                  <div className={styles.areaHeader}>
-                    <HotspotButton
-                      hotspot={hotspotById('sceneTabs')}
-                      selected={selectedId === 'sceneTabs'}
-                      onSelect={onSelect}
-                      className={styles.hsTabs}
-                    >
-                      <span className={styles.tabActive}>全局</span>
-                      <span className={styles.tab}>常用</span>
-                      <span className={styles.tab}>工具</span>
-                    </HotspotButton>
-                    <span className={styles.areaTag}>全局区</span>
-                  </div>
+            <div className={styles.content}>
+              <div className={styles.titleBar}>
+                <span className={styles.titleBrand}>Quicker</span>
+                <HotspotButton
+                  hotspot={hotspotById('enable')}
+                  selected={selectedId === 'enable'}
+                  onSelect={onSelect}
+                  className={styles.iconBtn}
+                >
+                  <IconGlyph name="cog" size={16} />
+                </HotspotButton>
+                <HotspotButton
+                  hotspot={hotspotById('moreMenu')}
+                  selected={moreSelected}
+                  onSelect={onSelect}
+                  className={styles.iconBtn}
+                >
+                  <span className={styles.moreDots} aria-hidden>
+                    ···
+                  </span>
+                </HotspotButton>
+                <span className={styles.titleSpacer} />
+                <HotspotButton
+                  hotspot={hotspotById('titleSearch')}
+                  selected={selectedId === 'titleSearch'}
+                  onSelect={onSelect}
+                  className={styles.iconBtn}
+                >
+                  <IconGlyph name="search" size={15} />
+                </HotspotButton>
+                <span className={styles.iconGhost} title="账号" aria-hidden>
+                  <IconGlyph name="user" size={16} />
+                </span>
+                <span className={styles.iconGhost} title="钉住" aria-hidden>
+                  <IconGlyph name="pin" size={16} />
+                </span>
+                <span className={styles.iconGhost} title="关闭" aria-hidden>
+                  <IconGlyph name="close" size={16} />
+                </span>
+              </div>
+
+              <section className={styles.section}>
+                <div className={styles.sectionHeader}>
                   <HotspotButton
-                    hotspot={hotspotById('globalArea')}
-                    selected={selectedId === 'globalArea'}
+                    hotspot={hotspotById('sceneTabs')}
+                    selected={selectedId === 'sceneTabs'}
                     onSelect={onSelect}
-                    className={styles.hsTiles}
+                    className={styles.tabs}
                   >
-                    <div className={styles.tileGrid}>
-                      {TILES_GLOBAL.map((name) => (
-                        <span key={name} className={styles.tile}>
-                          {name}
-                        </span>
-                      ))}
-                    </div>
+                    <span className={styles.tabActive}>全局</span>
+                    <span className={styles.tab}>常用</span>
+                    <span className={styles.tab}>工具</span>
                   </HotspotButton>
-                </section>
+                </div>
+                <HotspotButton
+                  hotspot={hotspotById('globalArea')}
+                  selected={selectedId === 'globalArea'}
+                  onSelect={onSelect}
+                  className={styles.tilesHotspot}
+                >
+                  <div className={styles.groupHead}>
+                    <span className={styles.groupBar} aria-hidden />
+                    <span>常用</span>
+                  </div>
+                  <div className={styles.tileGrid}>
+                    {TILES_GLOBAL.map((tile) => (
+                      <ActionTile key={tile.name} {...tile} />
+                    ))}
+                  </div>
+                </HotspotButton>
+              </section>
 
-                <section className={styles.area}>
-                  <div className={styles.areaHeader}>
+              <div className={styles.splitter} aria-hidden />
+
+              <section className={cx(styles.section, styles.sectionContext)}>
+                <div className={styles.sectionHeader}>
+                  <HotspotButton
+                    hotspot={hotspotById('sceneTabs')}
+                    selected={selectedId === 'sceneTabs'}
+                    onSelect={onSelect}
+                    className={styles.tabs}
+                  >
+                    <span className={styles.tabActive}>资源管理器</span>
+                    <span className={styles.tab}>通用</span>
+                  </HotspotButton>
+                  <span className={styles.headerTools}>
                     <HotspotButton
-                      hotspot={hotspotById('sceneTabs')}
-                      selected={selectedId === 'sceneTabs'}
+                      hotspot={hotspotById('viewOptions')}
+                      selected={selectedId === 'viewOptions'}
                       onSelect={onSelect}
-                      className={styles.hsTabs}
+                      className={styles.iconBtn}
                     >
-                      <span className={styles.tabActive}>资源管理器</span>
-                      <span className={styles.tab}>通用</span>
+                      <IconGlyph name="sliders" size={16} />
                     </HotspotButton>
-                    <div className={styles.areaTools}>
+                    <HotspotButton
+                      hotspot={hotspotById('lock')}
+                      selected={selectedId === 'lock'}
+                      onSelect={onSelect}
+                      className={styles.iconBtn}
+                    >
+                      <IconGlyph name="unlock" size={16} />
+                    </HotspotButton>
+                  </span>
+                </div>
+                <div className={styles.contextBody}>
+                  <HotspotButton
+                    hotspot={hotspotById('groupNav')}
+                    selected={selectedId === 'groupNav'}
+                    onSelect={onSelect}
+                    className={styles.groupNav}
+                  >
+                    {GROUPS.map((group) => (
+                      <span
+                        key={group.id}
+                        className={cx(
+                          styles.groupDot,
+                          group.pinned && styles.groupDotPinned,
+                          group.active && styles.groupDotActive,
+                        )}
+                      />
+                    ))}
+                    <span className={styles.groupAdd} aria-hidden>
+                      +
+                    </span>
+                  </HotspotButton>
+                  <div className={styles.tilesHotspot}>
+                    <div className={styles.groupHead}>
+                      <span className={styles.groupBar} aria-hidden />
+                      <span>文件</span>
+                    </div>
+                    <div className={styles.tileGrid}>
                       <HotspotButton
-                        hotspot={hotspotById('lock')}
-                        selected={selectedId === 'lock'}
+                        hotspot={hotspotById('contextArea')}
+                        selected={selectedId === 'contextArea'}
                         onSelect={onSelect}
-                        className={styles.hsIconBtn}
+                        className={styles.tilesCluster}
                       >
-                        锁定
-                      </HotspotButton>
-                      <HotspotButton
-                        hotspot={hotspotById('viewOptions')}
-                        selected={selectedId === 'viewOptions'}
-                        onSelect={onSelect}
-                        className={styles.hsIconBtn}
-                      >
-                        视图选项
+                        {TILES_CONTEXT.map((tile) => (
+                          <ActionTile key={tile.name} {...tile} />
+                        ))}
                       </HotspotButton>
                       <HotspotButton
                         hotspot={hotspotById('createButton')}
                         selected={selectedId === 'createButton'}
                         onSelect={onSelect}
-                        className={styles.hsIconBtn}
+                        className={styles.createWrap}
                       >
-                        +
+                        <ActionTile name="创建动作" create />
                       </HotspotButton>
                     </div>
-                    <span className={styles.areaTag}>上下文区</span>
                   </div>
-                  <HotspotButton
-                    hotspot={hotspotById('contextArea')}
-                    selected={selectedId === 'contextArea'}
-                    onSelect={onSelect}
-                    className={styles.hsTiles}
-                  >
-                    <div className={styles.tileGrid}>
-                      {TILES_CONTEXT.map((name) => (
-                        <span key={name} className={styles.tile}>
-                          {name}
-                        </span>
-                      ))}
-                    </div>
-                  </HotspotButton>
-                </section>
-              </div>
+                </div>
+              </section>
 
               <HotspotButton
-                hotspot={hotspotById('groupNav')}
-                selected={selectedId === 'groupNav'}
+                hotspot={hotspotById('recentActions')}
+                selected={selectedId === 'recentActions'}
                 onSelect={onSelect}
-                className={styles.hsGroupNav}
+                className={styles.recent}
               >
-                <span className={styles.groupItemActive}>常用</span>
-                <span className={styles.groupItem}>文件</span>
-                <span className={styles.groupItem}>窗口</span>
+                {RECENT.map((item) => (
+                  <span
+                    key={item.name}
+                    className={styles.recentIcon}
+                    style={{background: item.color}}
+                    title={item.name}
+                  >
+                    {item.name.slice(0, 1)}
+                  </span>
+                ))}
               </HotspotButton>
             </div>
-
-            <HotspotButton
-              hotspot={hotspotById('recentActions')}
-              selected={selectedId === 'recentActions'}
-              onSelect={onSelect}
-              className={styles.hsRecent}
-            >
-              <span className={styles.recentLabel}>最近</span>
-              {RECENT.map((name) => (
-                <span key={name} className={styles.recentChip}>
-                  {name}
-                </span>
-              ))}
-            </HotspotButton>
-
-            <HotspotButton
-              hotspot={hotspotById('navBar')}
-              selected={selectedId === 'navBar'}
-              onSelect={onSelect}
-              className={styles.hsBottomNav}
-            >
-              <span className={styles.bottomNavText}>
-                导航栏 · 双击空白显隐 / 切换宽窄
-              </span>
-            </HotspotButton>
           </div>
         </div>
 
@@ -484,27 +632,17 @@ export default function ActionPanelLayoutDemo({
         </aside>
       </div>
 
-      <div
-        className={styles.chipRow}
-        role="listbox"
-        aria-label="面板分区"
-        id={listId}
-      >
-        {HOTSPOTS.map((h) => (
+      <div className={styles.chipRow} role="listbox" aria-label="面板分区">
+        {HOTSPOTS.map((item) => (
           <button
-            key={h.id}
+            key={item.id}
             type="button"
             role="option"
-            aria-selected={selectedId === h.id}
-            className={[
-              styles.chip,
-              selectedId === h.id ? styles.chipSelected : '',
-            ]
-              .filter(Boolean)
-              .join(' ')}
-            onClick={() => onSelect(h.id)}
+            aria-selected={selectedId === item.id}
+            className={cx(styles.chip, selectedId === item.id && styles.chipSelected)}
+            onClick={() => onSelect(item.id)}
           >
-            {h.label}
+            {item.label}
           </button>
         ))}
       </div>

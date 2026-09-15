@@ -133,6 +133,11 @@
   color: var(--ap-text);
 }
 
+.glyph {
+  display: block;
+  flex-shrink: 0;
+}
+
 .navBtnActive {
   background: var(--ap-selected);
 }

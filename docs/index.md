@@ -28,7 +28,7 @@ V2 把动作内容和它出现的位置分开，组合动作用模块拼步骤�
 | 自己写一个动作 | [怎样学会组合动作](./v2/xaction/guides/how-to-learn.md) |
 | 从 1.x 升级 | [从 V1 迁移](./v2/migration/from-v1.md) |
 | 截图、标注、贴图 | [截图 Pro](./v2/features/screenshot/capture-pro.md) |
-| 面板、场景、分组 | [新面板窗口](./v2/what's-new/new-main-win/usage.md) |
+| 面板、场景、分组 | [动作面板（新面板）](./v2/features/action-panel/index.md) |
 | 查某个步骤的参数 | [组合动作模块参考](./v2/xaction/modules) |
 | 现在能用哪些 AI | [AI 与 Agent 现状](./v2/features/ai-and-agent.md) |
 | 连接设计、建模或办公软件 | [软件连接与 Bridge](./v2/features/software-connections/index.md) |

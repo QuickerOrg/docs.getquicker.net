@@ -66,7 +66,7 @@ const HOTSPOTS: readonly Hotspot[] = [
     id: 'moreMenu',
     label: '更多',
     title: '标题栏更多菜单',
-    body: '省略号按钮打开更多菜单。跨场景整理用「场景与动作」；按程序 / 动作页筛选用「动作管理」。导航栏宽窄、快捷按钮和窗口尺寸都在「面板窗口」子菜单里。',
+    body: '省略号按钮打开更多菜单。跨场景整理用「场景与动作」；按程序 / 动作页筛选用「动作管理」。导航栏宽窄、快捷按钮和窗口尺寸都在「面板窗口」子菜单里。排查失败记录走「工具」→「动作运行与触发记录」。',
     settingPath: '标题栏「更多」→ 场景与动作 / 动作管理 / 面板窗口 / 工具',
     href: '/v2/features/action-panel/usage#管理多个场景和大量动作',
     hrefLabel: '管理场景与动作',
@@ -281,53 +281,142 @@ function QuickerLogo(): ReactNode {
   );
 }
 
+type ChromeIconName =
+  | 'cog'
+  | 'search'
+  | 'user'
+  | 'pin'
+  | 'close'
+  | 'sliders'
+  | 'unlock'
+  | 'plus'
+  | 'grid'
+  | 'inbox';
+
+const FA_CHROME: Partial<Record<ChromeIconName, string>> = {
+  cog: 'fa:Light_Cog',
+  search: 'fa:Light_Search',
+  user: 'fa:Light_UserCircle',
+  close: 'fa:Light_Times',
+  plus: 'fa:Light_Plus',
+};
+
+function ChromeSvg({
+  name,
+  size,
+}: {
+  name: ChromeIconName;
+  size: number;
+}): ReactNode {
+  const common = {
+    className: styles.glyph,
+    width: size,
+    height: size,
+    viewBox: '0 0 16 16',
+    fill: 'none',
+    'aria-hidden': true as const,
+  };
+  switch (name) {
+    case 'grid':
+      return (
+        <svg {...common}>
+          <rect x="1.75" y="1.75" width="4.1" height="4.1" rx="0.7" fill="currentColor" />
+          <rect x="5.95" y="1.75" width="4.1" height="4.1" rx="0.7" fill="currentColor" />
+          <rect x="10.15" y="1.75" width="4.1" height="4.1" rx="0.7" fill="currentColor" />
+          <rect x="1.75" y="5.95" width="4.1" height="4.1" rx="0.7" fill="currentColor" />
+          <rect x="5.95" y="5.95" width="4.1" height="4.1" rx="0.7" fill="currentColor" />
+          <rect x="10.15" y="5.95" width="4.1" height="4.1" rx="0.7" fill="currentColor" />
+          <rect x="1.75" y="10.15" width="4.1" height="4.1" rx="0.7" fill="currentColor" />
+          <rect x="5.95" y="10.15" width="4.1" height="4.1" rx="0.7" fill="currentColor" />
+          <rect x="10.15" y="10.15" width="4.1" height="4.1" rx="0.7" fill="currentColor" />
+        </svg>
+      );
+    case 'inbox':
+      return (
+        <svg {...common}>
+          <path
+            d="M2.2 6.1 4 10.2h8L13.8 6.1H2.2Z"
+            stroke="currentColor"
+            strokeWidth="1.2"
+            strokeLinejoin="round"
+          />
+          <path
+            d="M2.4 6.1V3.6h11.2v2.5M6.1 10.2v1.6h3.8V10.2"
+            stroke="currentColor"
+            strokeWidth="1.2"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+          />
+        </svg>
+      );
+    case 'sliders':
+      return (
+        <svg {...common}>
+          <path
+            d="M2 4h12M2 8h12M2 12h12"
+            stroke="currentColor"
+            strokeWidth="1.2"
+            strokeLinecap="round"
+          />
+          <circle cx="11" cy="4" r="1.45" fill="currentColor" />
+          <circle cx="5" cy="8" r="1.45" fill="currentColor" />
+          <circle cx="9.2" cy="12" r="1.45" fill="currentColor" />
+        </svg>
+      );
+    case 'unlock':
+      return (
+        <svg {...common}>
+          <rect
+            x="3.2"
+            y="7.2"
+            width="9.6"
+            height="6.2"
+            rx="1.3"
+            stroke="currentColor"
+            strokeWidth="1.2"
+          />
+          <path
+            d="M5.4 7.2V4.9a2.6 2.6 0 0 1 5.2 0"
+            stroke="currentColor"
+            strokeWidth="1.2"
+            strokeLinecap="round"
+          />
+        </svg>
+      );
+    case 'pin':
+      return (
+        <svg {...common}>
+          <path
+            d="M6.1 1.8h3.8l.7 3.4 1.8.9v1.3H3.6V6.1l1.8-.9.7-3.4Z"
+            stroke="currentColor"
+            strokeWidth="1.2"
+            strokeLinejoin="round"
+          />
+          <path
+            d="M8 7.4v6.6"
+            stroke="currentColor"
+            strokeWidth="1.2"
+            strokeLinecap="round"
+          />
+        </svg>
+      );
+    default:
+      return null;
+  }
+}
+
 function IconGlyph({
   name,
   size = 16,
 }: {
-  name:
-    | 'cog'
-    | 'more'
-    | 'search'
-    | 'user'
-    | 'pin'
-    | 'close'
-    | 'sliders'
-    | 'unlock'
-    | 'plus'
-    | 'grid'
-    | 'inbox';
+  name: ChromeIconName;
   size?: number;
 }): ReactNode {
-  const spec: Record<typeof name, string> = {
-    cog: 'fa:Light_Cog',
-    more: 'fa:Light_Bars',
-    search: 'fa:Light_Search',
-    user: 'fa:Light_UserCircle',
-    pin: 'fa:Light_Thumbtack',
-    close: 'fa:Light_Times',
-    sliders: 'fa:Light_SlidersH',
-    unlock: 'fa:Light_Unlock',
-    plus: 'fa:Light_Plus',
-    grid: 'fa:Solid_Th',
-    inbox: 'fa:Light_Inbox',
-  };
-  const fallback: Record<typeof name, string> = {
-    cog: '⚙',
-    more: '⋯',
-    search: '⌕',
-    user: '○',
-    pin: '📌',
-    close: '×',
-    sliders: '≡',
-    unlock: '🔓',
-    plus: '+',
-    grid: '田',
-    inbox: '☐',
-  };
-  return (
-    <DocsStepIcon spec={spec[name]} size={size} fallback={fallback[name]} />
-  );
+  const fa = FA_CHROME[name];
+  if (fa) {
+    return <DocsStepIcon spec={fa} size={size} fallback="" />;
+  }
+  return <ChromeSvg name={name} size={size} />;
 }
 
 function ActionTile({

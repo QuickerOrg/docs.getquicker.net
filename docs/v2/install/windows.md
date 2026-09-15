@@ -36,7 +36,7 @@ comments: true
 
 1. 启动 Quicker，按提示登录或使用本机离线账号。
 2. 默认用**鼠标中键**弹出面板。弹出方式在 **设置 → 基础设置 → 弹出面板**。
-3. 已登录账号若仍看到旧面板，按 [新面板窗口](/v2/what's-new/new-main-win/usage.md) 切到新版主窗口。
+3. 已登录账号若仍看到旧面板，按 [动作面板使用说明](/v2/features/action-panel/usage#启用新面板窗口) 切到新版主窗口。
 
 接着看 [开始使用](/v2/getting-started.md)。要从 1.x 迁数据，先完成 1.x 同步和备份，再安装 V2，步骤见 [从 V1 迁移](/v2/migration/from-v1.md)。
 

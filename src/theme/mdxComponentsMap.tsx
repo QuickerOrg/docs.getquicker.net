@@ -84,6 +84,9 @@ const mdxComponentsMap = {
   GestureTriggerDemo: lazyMdx(
     () => import('@site/src/components/GestureTriggerDemo'),
   ),
+  ActionPanelLayoutDemo: lazyMdx(
+    () => import('@site/src/components/ActionPanelLayoutDemo'),
+  ),
 } as MDXComponentsType;
 
 export default mdxComponentsMap;

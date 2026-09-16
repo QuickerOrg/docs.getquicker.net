@@ -12,7 +12,7 @@ comments: true
 
 **[https://getquicker.net/v2/versions](https://getquicker.net/v2/versions)**
 
-本站功能说明已按 2.2.13 补充；版本是否已开放下载、完整条目及安装包校验值，以官网为准。
+本站功能说明已按 2.2.14 补充；版本是否已开放下载、完整条目及安装包校验值，以官网为准。
 
 安装包也从 [https://getquicker.net/V2](https://getquicker.net/V2) 下载，不要使用仍提供 1.x 的 `/Download` 页。
 
@@ -25,6 +25,8 @@ comments: true
 2.2.12 新增 [动作运行数据批量本地备份](/v2/features/account-and-sync#动作运行数据的本地备份)、[HTTP API](/v2/features/http-websocket)、[规则父场景](/v2/features/scenes#规则父场景)、[悬浮动作双击](/v2/features/floating-actions#单击与双击)和 [截图荧光笔及“截图+复制”](/v2/features/screenshot)，同时补充了场景拖放、左键辅助分组筛选、录屏工具栏排除与[按动作及调用链查看日志](/v2/features/tools#动作运行与触发记录)。
 
 2.2.13 新增 [长截图裁剪与删段](/v2/features/screenshot/capture-pro#长截图编辑)、[新面板自由格子布局](/v2/features/action-panel/usage#自由格子布局)、[多字段表单的单选按钮与表达式校验](/v2/xaction/modules/form)、[逐行打开网址、文件和文件夹](/v2/xaction/modules/openurl)，并补充了[动作运行状态提示](/v2/features/action-panel/usage#查找和运行动作)、[Ctrl 拖动分别调整全局/上下文区高度](/v2/features/action-panel/usage#窗口尺寸)、[悬浮分组显示模式](/v2/features/floating-actions#紧凑半透明和名称显示)、[动作更新策略集中管理](/v2/features/action-sharing#安装和检查更新)与 [Illustrator 2023 支持](/v2/features/software-connections/software/illustrator)。多设备或可能回退时，先阅读 [规则父场景与面板自由布局注意](/important-notice#2212-规则父场景与-2213-面板自由布局)。
+
+2.2.14 补充了 [自由格子触发键](/v2/features/action-panel/usage#触发键)、[用动作控制悬浮分组](/v2/features/floating-actions#用动作控制悬浮分组)、[轮盘继承动作预览](/v2/features/triggers/circle-menu#按场景覆盖与来源切换)、[表单扩展选项与 `$=` 校验](/v2/xaction/modules/form) 与 [截图文件名模板 `{date:格式}`](/v2/features/screenshot/capture-pro#截图-pro-设置页)，并顺带提到面板分组导航与确认/复制按钮等交互调整。回退注意见 [截图文件名模板与悬浮分组动作](/important-notice#2214-截图文件名模板与悬浮分组动作)。
 
 升级到 2.1.23 或更高版本时仍需特别检查：**后台屏幕录制**步骤的默认录制范围改为“主屏幕”。已明确保存录制范围的动作不受影响；其它旧动作升级后请打开动作确认录制范围，避免原本依赖旧默认值的动作录到不符合预期的屏幕区域。
 

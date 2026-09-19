@@ -12,7 +12,7 @@ comments: true
 
 **[https://getquicker.net/v2/versions](https://getquicker.net/v2/versions)**
 
-本站功能说明已按 2.2.15 补充；版本是否已开放下载、完整条目及安装包校验值，以官网为准。
+本站功能说明已按 2.2.16 补充；版本是否已开放下载、完整条目及安装包校验值，以官网为准。
 
 安装包也从 [https://getquicker.net/V2](https://getquicker.net/V2) 下载，不要使用仍提供 1.x 的 `/Download` 页。
 
@@ -29,6 +29,8 @@ comments: true
 2.2.14 补充了 [自由格子触发键](/v2/features/action-panel/usage#触发键)、[用动作控制悬浮分组](/v2/features/floating-actions#用动作控制悬浮分组)、[轮盘继承动作预览](/v2/features/triggers/circle-menu#按场景覆盖与来源切换)、[表单扩展选项与 `$=` 校验](/v2/xaction/modules/form) 与 [截图文件名模板 `{date:格式}`](/v2/features/screenshot/capture-pro#截图-pro-设置页)，并顺带提到面板分组导航与确认/复制按钮等交互调整。回退注意见 [截图文件名模板与悬浮分组动作](/important-notice#2214-截图文件名模板与悬浮分组动作)。
 
 2.2.15 补充了 [分组圆点颜色与上方居中](/v2/features/action-panel/usage#创建和管理分组)、[减少面板弹出闪烁（软隐藏）](/v2/features/action-panel/usage#减少面板弹出闪烁)、[截图 Pro 反引号切换原始鼠标指针](/v2/features/screenshot/capture-pro#快捷键一览)、[HTML 贴图换行与屏幕内定位](/v2/features/screenshot/capture-pro#贴图窗口截图后)，以及 [仅有一个匹配在线连接时软件控制步骤不再强制从目标窗口触发](/v2/features/software-connections/command-tool#动作怎样选择目标)；并修了自由格子跨分组拖放落点、截图光标闪烁与快捷键提示样式、表单单选列表与字段标题对齐。
+
+2.2.16 补充了 [悬浮分组受控合并与中间拆分](/v2/features/floating-actions#移动和整理)、[搜索引擎 JSON 批量导入导出](/v2/features/tools#自定义搜索引擎的导入导出)，以及 [截图 Pro 自定义工具栏可视化编排](/v2/features/screenshot/capture-pro#标注)（拖动排序、添加子程序或动作、图标大小）；并修了网络路径图标探测卡顿、表单多行高度、提示消息悬停消失、录屏结束与缩略图等。
 
 升级到 2.1.23 或更高版本时仍需特别检查：**后台屏幕录制**步骤的默认录制范围改为“主屏幕”。已明确保存录制范围的动作不受影响；其它旧动作升级后请打开动作确认录制范围，避免原本依赖旧默认值的动作录到不符合预期的屏幕区域。
 

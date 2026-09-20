@@ -17,6 +17,9 @@ legacyContentUpdatedAt: "2024-06-19T03:24:46.000Z"
 
 调用本机 [Everything](https://www.voidtools.com/zh-cn/) 的接口搜索文件。需要已安装并正在运行 Everything 1.4.1.969 或更高版本。
 
+2.2.17 起，文件搜索也兼容提供 Everything 通信接口的替代服务（只要实现兼容的 IPC）。本机仍需有可用的搜索服务在运行；具体兼容范围以客户端实际探测为准。
+
+
 2022-09-08 有传闻称 Everything 更新服务疑似被劫持，参见 [V2EX 讨论](https://www.v2ex.com/t/878475)。请关闭「启动时检查更新」，需要时到官网手动下载。
 
 ## 当前模块定义

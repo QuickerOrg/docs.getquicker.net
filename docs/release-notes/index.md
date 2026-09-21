@@ -12,7 +12,7 @@ comments: true
 
 **[https://getquicker.net/v2/versions](https://getquicker.net/v2/versions)**
 
-本站功能说明已按 2.2.17 补充；版本是否已开放下载、完整条目及安装包校验值，以官网为准。
+本站功能说明已按 2.2.18 补充；版本是否已开放下载、完整条目及安装包校验值，以官网为准。
 
 安装包也从 [https://getquicker.net/V2](https://getquicker.net/V2) 下载，不要使用仍提供 1.x 的 `/Download` 页。
 
@@ -32,7 +32,9 @@ comments: true
 
 2.2.16 补充了 [悬浮分组受控合并与中间拆分](/v2/features/floating-actions#移动和整理)、[搜索引擎 JSON 批量导入导出](/v2/features/tools#自定义搜索引擎的导入导出)，以及 [截图 Pro 自定义工具栏可视化编排](/v2/features/screenshot/capture-pro#标注)（拖动排序、添加子程序或动作、图标大小）；并修了网络路径图标探测卡顿、表单多行高度、提示消息悬停消失、录屏结束与缩略图等。
 
-2.2.17 补充了 [贴图鼠标穿透与独立工具条](/v2/features/screenshot/capture-pro#贴图窗口截图后)、[录屏预览焦点与播放速度](/v2/features/screenshot/capture-pro#确认复制保存与其它出口)、[本机 ffmpeg 实时录屏](/v2/features/screenshot/capture-pro#截图-pro-设置页)、[提示消息保持 1 秒](/v2/xaction/modules/notify)、[Everything 通信接口替代服务](/v2/xaction/modules/everythingsearch)、[浏览器父场景归属纳入父场景管理与同步](/v2/features/scenes#作为浏览器程序与父场景归属)、[动作日志并入运行记录窗口](/v2/features/tools#动作运行与触发记录)，以及 [Mastercam 第三方 FT 命令筛选](/v2/features/software-connections/software/mastercam)；截图 Pro 步骤可在框选后直接走截图 / 复制 / 贴图 / 保存 / 识别等出口（参数页待 `data/xaction` 同步后再补，详见[官网版本记录](https://getquicker.net/V2/Versions)）。选择窗口会跳过鼠标穿透覆盖层；并修了 Windows 应用拖放启动参数、显示菜单子程序生命周期等。
+2.2.17 补充了 [贴图鼠标穿透与独立工具条](/v2/features/screenshot/capture-pro#贴图窗口截图后)、[录屏预览焦点与播放速度](/v2/features/screenshot/capture-pro#结束方式)、[本机 ffmpeg 实时录屏](/v2/features/screenshot/capture-pro#截图-pro-设置页)、[提示消息保持 1 秒](/v2/xaction/modules/notify)、[Everything 通信接口替代服务](/v2/xaction/modules/everythingsearch)、[浏览器父场景归属纳入父场景管理与同步](/v2/features/scenes#作为浏览器程序与父场景归属)、[动作日志并入运行记录窗口](/v2/features/tools#动作运行与触发记录)，以及 [Mastercam 第三方 FT 命令筛选](/v2/features/software-connections/software/mastercam)；截图 Pro 步骤可在框选后直接走截图 / 复制 / 贴图 / 保存 / 识别等出口（参数页待 `data/xaction` 同步后再补，详见[官网版本记录](https://getquicker.net/V2/Versions)）。选择窗口会跳过鼠标穿透覆盖层；并修了 Windows 应用拖放启动参数、显示菜单子程序生命周期等。
+
+2.2.18 补充了 [远程文件（WebDAV）步骤能力与本机账号限制](/v2/xaction)、[远程文件账号入口和 HTTP / WebSocket 设置迁移](/v2/features/software-connections)、[主面板自由格子边缘插队、工具菜单和未配置程序提示](/v2/features/action-panel/usage)、[软件桥接命令工具生成动作拖放与 Photoshop 分类筛选](/v2/features/software-connections/command-tool)、[触发规则粘贴到选中项之后及批量删除](/v2/features/triggers/advanced-mouse-triggers#规则列表筛选)、[AI 助手正式版工作区选择、历史对话目录恢复和导出后打开文件夹](/v2/features/ai-and-agent)，以及 [贴图穿透模式下通过工具栏拖动和定位修正](/v2/features/screenshot/capture-pro#贴图窗口截图后)。回退和跨设备注意见 [2.2.18 远程文件账号与 AI 助手工作区](/important-notice#2218-远程文件账号与-ai-助手工作区)；新版网络子程序搜索 / 更新检查、焦点切换瞬间窗口信息获取、贴图工具栏空格和右键遮挡等修复以官网完整记录为准。
 
 升级到 2.1.23 或更高版本时仍需特别检查：**后台屏幕录制**步骤的默认录制范围改为“主屏幕”。已明确保存录制范围的动作不受影响；其它旧动作升级后请打开动作确认录制范围，避免原本依赖旧默认值的动作录到不符合预期的屏幕区域。
 

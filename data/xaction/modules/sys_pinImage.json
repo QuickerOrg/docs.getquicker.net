@@ -267,6 +267,13 @@
       "type": "Image",
       "condition": "",
       "description": "本次生成或用于贴图的位图（与窗口显示内容一致）。"
+    },
+    {
+      "key": "hwnd",
+      "name": "窗口句柄",
+      "type": "Integer",
+      "condition": "",
+      "description": "本次创建的贴图窗口句柄，可用于后续窗口操作。窗口关闭后失效。"
     }
   ],
   "selections": {

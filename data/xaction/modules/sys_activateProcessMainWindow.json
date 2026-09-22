@@ -20,7 +20,7 @@
       "required": true,
       "variableMode": "UseVarOrInput",
       "condition": "",
-      "description": "请输入要激活的进程名或pid。进程名通常为程序文件名去掉.exe后缀。"
+      "description": "请输入当前登录会话中的进程名、PID或完整exe路径。进程名可带.exe后缀。"
     },
     {
       "key": "hotkey",
@@ -40,7 +40,7 @@
       "required": false,
       "variableMode": "UseVarOrInput",
       "condition": "",
-      "description": "选填。未能获取主窗口时（如窗口隐藏），可以尝试根据类名查找窗口，支持正则。"
+      "description": "选填。按类名筛选窗口，支持正则；热键和已有前台窗口也必须满足条件。隐藏窗口必须唯一。"
     },
     {
       "key": "windowTitle",
@@ -50,7 +50,7 @@
       "required": false,
       "variableMode": "UseVarOrInput",
       "condition": "",
-      "description": "选填。未能获取主窗口时，根据窗口标题查找，支持正则。"
+      "description": "选填。按标题筛选窗口，支持正则；所有成功路径均验证此条件和真实前台状态。"
     },
     {
       "key": "path",

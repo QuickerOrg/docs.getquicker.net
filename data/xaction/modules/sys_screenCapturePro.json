@@ -23,6 +23,16 @@
       "description": "这次截图怎么结束，不受设置中“直接截图的完成操作”影响。"
     },
     {
+      "key": "preSelectArea",
+      "name": "预选截图区域",
+      "type": "Text",
+      "defaultValue": "",
+      "required": false,
+      "variableMode": "UseVarOrInput",
+      "condition": "仅：capture, quick_save",
+      "description": "留空时手动选择；指定物理屏幕坐标 left,top,right,bottom（右、下边界不包含）时，从该区域进入可调整、可标注状态。"
+    },
+    {
       "key": "delay",
       "name": "截图前延迟时间",
       "type": "Integer",

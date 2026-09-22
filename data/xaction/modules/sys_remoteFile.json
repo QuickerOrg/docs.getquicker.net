@@ -1,0 +1,606 @@
+{
+  "key": "sys:remoteFile",
+  "slug": "remotefile",
+  "legacySlug": "remotefile",
+  "ownsLegacyContent": true,
+  "name": "远程文件",
+  "description": "通过 WebDAV / S3 读写文本和图片、复制文件、批量读取或传输文件夹，也支持列目录、查询、删除和移动。账号在设置中管理。",
+  "category": "Network",
+  "categoryName": "网络服务",
+  "stepType": "Action",
+  "isRisky": false,
+  "isProOnly": false,
+  "helpLink": "https://docs.getquicker.net/v2/xaction/modules/remotefile",
+  "inputs": [
+    {
+      "key": "account",
+      "name": "账号",
+      "type": "Text",
+      "defaultValue": "",
+      "required": true,
+      "variableMode": "UseVarOrInput",
+      "condition": "",
+      "description": "远程文件账号的引用名。账号与密码只保存在本机，在“设置 → 软件连接 → 远程文件账号”中管理。"
+    },
+    {
+      "key": "operation",
+      "name": "操作",
+      "type": "Enum",
+      "defaultValue": "upload",
+      "required": true,
+      "variableMode": "Input",
+      "condition": "",
+      "description": ""
+    },
+    {
+      "key": "remotePath",
+      "name": "远端路径",
+      "type": "Text",
+      "defaultValue": "",
+      "required": true,
+      "variableMode": "UseVarOrInput",
+      "condition": "",
+      "description": "相对账号根目录的路径，开头的 / 表示账号根；不能越出账号根。列目录、新建目录时为目录，移动/复制时为源文件；批量下载时为远端基准目录；文件夹传输时为远端目录。"
+    },
+    {
+      "key": "targetPath",
+      "name": "目标路径",
+      "type": "Text",
+      "defaultValue": "",
+      "required": true,
+      "variableMode": "UseVarOrInput",
+      "condition": "仅：copyFile, moveFile",
+      "description": "移动/重命名或复制后的远端路径（相对账号根目录）。S3 移动通过复制后删除完成，非原子操作；移动和复制当前限 5 GiB。"
+    },
+    {
+      "key": "remotePaths",
+      "name": "远端文件列表",
+      "type": "List",
+      "defaultValue": "",
+      "required": true,
+      "variableMode": "UseVarOrInput",
+      "condition": "仅：batchRead, batchDownload",
+      "description": ""
+    },
+    {
+      "key": "uploadSource",
+      "name": "上传内容",
+      "type": "Enum",
+      "defaultValue": "file",
+      "required": false,
+      "variableMode": "Input",
+      "condition": "仅：upload",
+      "description": ""
+    },
+    {
+      "key": "localFolder",
+      "name": "本地文件夹",
+      "type": "Text",
+      "defaultValue": "",
+      "required": true,
+      "variableMode": "UseVarOrInput",
+      "condition": "仅：batchDownload, uploadFolder, downloadFolder",
+      "description": ""
+    },
+    {
+      "key": "localFile",
+      "name": "本地文件",
+      "type": "Text",
+      "defaultValue": "",
+      "required": true,
+      "variableMode": "UseVarOrInput",
+      "condition": "",
+      "description": "要上传的本地文件路径。文件以流方式上传，不限大小。"
+    },
+    {
+      "key": "batchContent",
+      "name": "读取内容",
+      "type": "Enum",
+      "defaultValue": "text",
+      "required": false,
+      "variableMode": "UseVarOrInput",
+      "condition": "仅：batchRead",
+      "description": ""
+    },
+    {
+      "key": "uploadText",
+      "name": "文本内容",
+      "type": "Text",
+      "defaultValue": "",
+      "required": false,
+      "variableMode": "UseVarOrInput",
+      "condition": "",
+      "description": "要上传的文本，按所选编码写入，不添加 BOM；默认 UTF-8。"
+    },
+    {
+      "key": "uploadBytes",
+      "name": "字节数组",
+      "type": "Any",
+      "defaultValue": "",
+      "required": true,
+      "variableMode": "UseVar",
+      "condition": "",
+      "description": "要上传的字节数组（byte[]）变量。"
+    },
+    {
+      "key": "uploadImage",
+      "name": "图片",
+      "type": "Image",
+      "defaultValue": "",
+      "required": true,
+      "variableMode": "UseVar",
+      "condition": "",
+      "description": ""
+    },
+    {
+      "key": "downloadMode",
+      "name": "下载方式",
+      "type": "Enum",
+      "defaultValue": "file",
+      "required": false,
+      "variableMode": "Input",
+      "condition": "仅：download",
+      "description": ""
+    },
+    {
+      "key": "imageFormat",
+      "name": "图片格式",
+      "type": "Enum",
+      "defaultValue": "png",
+      "required": false,
+      "variableMode": "UseVarOrInput",
+      "condition": "",
+      "description": ""
+    },
+    {
+      "key": "savePath",
+      "name": "保存到",
+      "type": "Text",
+      "defaultValue": "",
+      "required": true,
+      "variableMode": "UseVarOrInput",
+      "condition": "",
+      "description": "下载保存的本地文件完整路径。先写入同目录临时文件，完成后再替换目标。"
+    },
+    {
+      "key": "jpegQuality",
+      "name": "JPEG 质量",
+      "type": "Number",
+      "defaultValue": "90",
+      "required": false,
+      "variableMode": "UseVarOrInput",
+      "condition": "",
+      "description": "1–100；透明部分使用白色背景。"
+    },
+    {
+      "key": "existsPolicy",
+      "name": "已存在时",
+      "type": "Enum",
+      "defaultValue": "fail",
+      "required": false,
+      "variableMode": "UseVarOrInput",
+      "condition": "仅：upload, download, copyFile, batchDownload, uploadFolder, downloadFolder",
+      "description": "上传：远端目标已存在时的处理，选“覆盖”还需账号允许覆盖。下载：本机文件已存在时的处理，“覆盖”只覆盖本机文件，不受账号“允许覆盖”限制。"
+    },
+    {
+      "key": "moveExistsPolicy",
+      "name": "目标已存在时",
+      "type": "Enum",
+      "defaultValue": "fail",
+      "required": false,
+      "variableMode": "UseVarOrInput",
+      "condition": "仅：moveFile",
+      "description": "远端目标已存在时的处理。选“覆盖”还需账号允许覆盖。"
+    },
+    {
+      "key": "createParents",
+      "name": "自动创建上级目录",
+      "type": "Boolean",
+      "defaultValue": "true",
+      "required": false,
+      "variableMode": "UseVarOrInput",
+      "condition": "仅：upload",
+      "description": "WebDAV：远端上级目录不存在时逐级创建。S3 上传无需创建上级目录。"
+    },
+    {
+      "key": "recursive",
+      "name": "包含子目录",
+      "type": "Boolean",
+      "defaultValue": "false",
+      "required": false,
+      "variableMode": "UseVarOrInput",
+      "condition": "仅：list",
+      "description": "包含子目录内容。WebDAV 最多 32 层；S3 按对象前缀列举。"
+    },
+    {
+      "key": "includeSubdirectories",
+      "name": "包含子目录",
+      "type": "Boolean",
+      "defaultValue": "true",
+      "required": false,
+      "variableMode": "UseVarOrInput",
+      "condition": "仅：uploadFolder, downloadFolder",
+      "description": ""
+    },
+    {
+      "key": "listFilter",
+      "name": "列出",
+      "type": "Enum",
+      "defaultValue": "all",
+      "required": false,
+      "variableMode": "UseVarOrInput",
+      "condition": "仅：list",
+      "description": ""
+    },
+    {
+      "key": "keepEmptyDirectories",
+      "name": "保留空目录",
+      "type": "Boolean",
+      "defaultValue": "false",
+      "required": false,
+      "variableMode": "UseVarOrInput",
+      "condition": "仅：uploadFolder, downloadFolder",
+      "description": ""
+    },
+    {
+      "key": "maxSizeMb",
+      "name": "内容上限(MB)",
+      "type": "Number",
+      "defaultValue": "20",
+      "required": false,
+      "variableMode": "UseVarOrInput",
+      "condition": "",
+      "description": "读取为文本/图片/字节时的大小上限，默认 20，最大 100。超过上限时失败，不返回截断的内容。"
+    },
+    {
+      "key": "textEncoding",
+      "name": "文本编码",
+      "type": "Text",
+      "defaultValue": "utf-8",
+      "required": false,
+      "variableMode": "UseVarOrInput",
+      "condition": "",
+      "description": "如 utf-8、gbk、utf-16。读取优先识别 BOM；上传不添加 BOM。"
+    },
+    {
+      "key": "totalSizeMb",
+      "name": "总内容上限(MB)",
+      "type": "Number",
+      "defaultValue": "50",
+      "required": false,
+      "variableMode": "UseVarOrInput",
+      "condition": "仅：batchRead",
+      "description": "所有文件累计读取上限，最大 100 MB；超限停止，不输出截断内容。"
+    },
+    {
+      "key": "continueOnError",
+      "name": "失败或结果未知后继续",
+      "type": "Boolean",
+      "defaultValue": "false",
+      "required": false,
+      "variableMode": "UseVarOrInput",
+      "condition": "仅：batchRead, batchDownload, uploadFolder, downloadFolder",
+      "description": "关闭时停止派发剩余项，已经开始的项仍会结束。"
+    },
+    {
+      "key": "stopIfFail",
+      "name": "失败后停止",
+      "type": "Boolean",
+      "defaultValue": "true",
+      "required": false,
+      "variableMode": "Input",
+      "condition": "",
+      "description": "失败后是否停止动作"
+    }
+  ],
+  "outputs": [
+    {
+      "key": "imageContent",
+      "name": "图片内容",
+      "type": "Image",
+      "condition": "",
+      "description": ""
+    },
+    {
+      "key": "batchSummary",
+      "name": "批量汇总",
+      "type": "Object",
+      "condition": "仅：batchRead, batchDownload, uploadFolder, downloadFolder",
+      "description": ""
+    },
+    {
+      "key": "isSuccess",
+      "name": "是否成功",
+      "type": "Boolean",
+      "condition": "",
+      "description": "操作是否成功"
+    },
+    {
+      "key": "status",
+      "name": "状态",
+      "type": "Text",
+      "condition": "",
+      "description": "completed（完成）/ skipped（跳过）/ failed（失败）/ unknown（结果未知）。跳过算成功；失败与结果未知按“失败时”设置处理。"
+    },
+    {
+      "key": "message",
+      "name": "消息",
+      "type": "Text",
+      "condition": "",
+      "description": ""
+    },
+    {
+      "key": "details",
+      "name": "详情",
+      "type": "Text",
+      "condition": "",
+      "description": "写入类操作出错时的相关远端路径、临时文件路径、服务器状态码等，供核实。"
+    },
+    {
+      "key": "savedPath",
+      "name": "本地文件路径",
+      "type": "Text",
+      "condition": "仅：download",
+      "description": "下载保存的本地文件路径。"
+    },
+    {
+      "key": "textContent",
+      "name": "文本内容",
+      "type": "Text",
+      "condition": "仅：download",
+      "description": "读取为文本时的内容。"
+    },
+    {
+      "key": "bytesContent",
+      "name": "字节内容",
+      "type": "Object",
+      "condition": "仅：download",
+      "description": "读取为字节数组时的内容（byte[]）。"
+    },
+    {
+      "key": "items",
+      "name": "条目列表",
+      "type": "Object",
+      "condition": "仅：list, batchRead, batchDownload, uploadFolder, downloadFolder",
+      "description": "列目录每项为词典：name、path、isDirectory、size、lastModified；批量每项含 index、source、target、status、message、bytes、localPath，读取成功项另含 text/bytesContent。"
+    },
+    {
+      "key": "paths",
+      "name": "路径列表",
+      "type": "List",
+      "condition": "仅：list, batchDownload, downloadFolder",
+      "description": "列出条目的远端路径（相对账号根，以 / 开头）。"
+    },
+    {
+      "key": "exists",
+      "name": "是否存在",
+      "type": "Boolean",
+      "condition": "仅：query",
+      "description": ""
+    },
+    {
+      "key": "isDirectory",
+      "name": "是否目录",
+      "type": "Boolean",
+      "condition": "仅：query",
+      "description": ""
+    },
+    {
+      "key": "size",
+      "name": "大小(字节)",
+      "type": "Integer",
+      "condition": "仅：query",
+      "description": "文件大小；目录或未知时为 -1。"
+    },
+    {
+      "key": "lastModified",
+      "name": "修改时间",
+      "type": "DateTime",
+      "condition": "仅：query",
+      "description": ""
+    }
+  ],
+  "selections": {
+    "operation": {
+      "name": "操作",
+      "items": [
+        {
+          "value": "upload",
+          "name": "上传",
+          "description": ""
+        },
+        {
+          "value": "download",
+          "name": "下载/读取内容",
+          "description": ""
+        },
+        {
+          "value": "list",
+          "name": "列目录",
+          "description": ""
+        },
+        {
+          "value": "query",
+          "name": "查询",
+          "description": ""
+        },
+        {
+          "value": "createDirectory",
+          "name": "新建目录",
+          "description": ""
+        },
+        {
+          "value": "deleteFile",
+          "name": "删除文件",
+          "description": ""
+        },
+        {
+          "value": "moveFile",
+          "name": "移动/重命名文件",
+          "description": ""
+        },
+        {
+          "value": "copyFile",
+          "name": "复制文件",
+          "description": ""
+        },
+        {
+          "value": "batchRead",
+          "name": "批量读取内容",
+          "description": ""
+        },
+        {
+          "value": "batchDownload",
+          "name": "批量下载文件",
+          "description": ""
+        },
+        {
+          "value": "uploadFolder",
+          "name": "上传文件夹",
+          "description": ""
+        },
+        {
+          "value": "downloadFolder",
+          "name": "下载文件夹",
+          "description": ""
+        }
+      ]
+    },
+    "uploadSource": {
+      "name": "上传内容",
+      "items": [
+        {
+          "value": "file",
+          "name": "本地文件",
+          "description": ""
+        },
+        {
+          "value": "text",
+          "name": "文本",
+          "description": ""
+        },
+        {
+          "value": "bytes",
+          "name": "字节数组",
+          "description": ""
+        },
+        {
+          "value": "image",
+          "name": "图片",
+          "description": ""
+        }
+      ]
+    },
+    "batchContent": {
+      "name": "读取内容",
+      "items": [
+        {
+          "value": "text",
+          "name": "文本",
+          "description": ""
+        },
+        {
+          "value": "bytes",
+          "name": "字节数组",
+          "description": ""
+        }
+      ]
+    },
+    "downloadMode": {
+      "name": "下载方式",
+      "items": [
+        {
+          "value": "file",
+          "name": "保存为本地文件",
+          "description": ""
+        },
+        {
+          "value": "text",
+          "name": "读取为文本",
+          "description": ""
+        },
+        {
+          "value": "bytes",
+          "name": "读取为字节数组",
+          "description": ""
+        },
+        {
+          "value": "image",
+          "name": "图片",
+          "description": ""
+        }
+      ]
+    },
+    "imageFormat": {
+      "name": "图片格式",
+      "items": [
+        {
+          "value": "png",
+          "name": "PNG",
+          "description": ""
+        },
+        {
+          "value": "jpeg",
+          "name": "JPEG",
+          "description": ""
+        }
+      ]
+    },
+    "existsPolicy": {
+      "name": "已存在时",
+      "items": [
+        {
+          "value": "fail",
+          "name": "失败",
+          "description": ""
+        },
+        {
+          "value": "skip",
+          "name": "跳过",
+          "description": ""
+        },
+        {
+          "value": "overwrite",
+          "name": "覆盖",
+          "description": ""
+        }
+      ]
+    },
+    "moveExistsPolicy": {
+      "name": "目标已存在时",
+      "items": [
+        {
+          "value": "fail",
+          "name": "失败",
+          "description": ""
+        },
+        {
+          "value": "overwrite",
+          "name": "覆盖",
+          "description": ""
+        }
+      ]
+    },
+    "listFilter": {
+      "name": "列出",
+      "items": [
+        {
+          "value": "all",
+          "name": "全部",
+          "description": ""
+        },
+        {
+          "value": "files",
+          "name": "只列文件",
+          "description": ""
+        },
+        {
+          "value": "directories",
+          "name": "只列目录",
+          "description": ""
+        }
+      ]
+    }
+  },
+  "sourceFileName": "sys_remoteFile_远程文件.md"
+}

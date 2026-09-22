@@ -248,6 +248,13 @@
       "description": "词典值，Key为窗口句柄，Value为窗口标题"
     },
     {
+      "key": "childWindowDetails",
+      "name": "匹配子窗口详情",
+      "type": "Dict",
+      "condition": "仅：child_windows",
+      "description": "词典值。Key为子窗口句柄，Value为包含 Handle、ClassName、Title、ParentHandle、位置、可见性、层级和序号的动态对象；Depth从直接子窗口的1开始，Index为匹配结果中从0开始的序号。"
+    },
+    {
       "key": "topLevelWindows",
       "name": "所有顶层窗口",
       "type": "Dict",

@@ -1,4 +1,4 @@
-import type {ReactNode} from 'react';
+import {useState, type ReactNode} from 'react';
 import {
   type XActionModuleDef,
   type XActionOutput,
@@ -6,6 +6,7 @@ import {
   type XActionSelection,
 } from '@site/data/xaction/modules-index';
 import {useModuleDef} from '@site/src/components/xaction/useModuleDef';
+import {isStepParamVisible} from '@site/src/components/xaction/conditionVisibility';
 import styles from './styles.module.css';
 
 type Props = {
@@ -47,14 +48,34 @@ function cleanOptionLabel(name: string): string {
 function SelectionOptions({
   selection,
   defaultValue,
+  currentValue,
+  onChange,
 }: {
   selection: XActionSelection;
   defaultValue: string;
+  currentValue: string;
+  onChange: (value: string) => void;
 }): ReactNode {
   const items = selection.items;
   if (items.length === 0) {
     return null;
   }
+
+  const control = (
+    <label className={styles.selectionControl}>
+      <span className={styles.selectionControlLabel}>当前选择</span>
+      <select
+        className={styles.selectionSelect}
+        value={currentValue}
+        onChange={(event) => onChange(event.target.value)}>
+        {items.map((item) => (
+          <option key={item.value} value={item.value}>
+            {cleanOptionLabel(item.name)}
+          </option>
+        ))}
+      </select>
+    </label>
+  );
 
   const table = (
     <div className={styles.optionTable} role="list">
@@ -79,7 +100,12 @@ function SelectionOptions({
   );
 
   if (items.length <= INLINE_SELECTION_LIMIT) {
-    return <div className={styles.selectionInline}>{table}</div>;
+    return (
+      <div className={styles.selectionInline}>
+        {control}
+        {table}
+      </div>
+    );
   }
 
   const preview = items
@@ -88,25 +114,32 @@ function SelectionOptions({
     .join('、');
 
   return (
-    <details className={styles.selectionDetails}>
-      <summary className={styles.selectionSummary}>
-        <span className={styles.selectionCount}>{items.length} 个选项</span>
-        <span className={styles.selectionPreview}>
-          {preview}
-          <span aria-hidden="true">…</span>
-        </span>
-      </summary>
-      {table}
-    </details>
+    <div className={styles.selectionDetails}>
+      {control}
+      <details>
+        <summary className={styles.selectionSummary}>
+          <span className={styles.selectionCount}>{items.length} 个选项</span>
+          <span className={styles.selectionPreview}>
+            {preview}
+            <span aria-hidden="true">…</span>
+          </span>
+        </summary>
+        {table}
+      </details>
+    </div>
   );
 }
 
 function ParamItem({
   param,
   selection,
+  currentValue,
+  onValueChange,
 }: {
   param: XActionParam;
   selection?: XActionSelection;
+  currentValue: string;
+  onValueChange: (value: string) => void;
 }): ReactNode {
   const defaultValue = param.defaultValue?.trim() ?? '';
   const hasDefault = defaultValue.length > 0;
@@ -153,7 +186,12 @@ function ParamItem({
         </details>
       ) : null}
       {selection ? (
-        <SelectionOptions selection={selection} defaultValue={defaultValue} />
+        <SelectionOptions
+          selection={selection}
+          defaultValue={defaultValue}
+          currentValue={currentValue}
+          onChange={onValueChange}
+        />
       ) : null}
     </li>
   );
@@ -180,12 +218,24 @@ function OutputItem({output}: {output: XActionOutput}): ReactNode {
 }
 
 function ModuleBody({module}: {module: XActionModuleDef}): ReactNode {
-  const inputCount = module.inputs?.length ?? 0;
-  const outputCount = module.outputs?.length ?? 0;
+  const [currentValues, setCurrentValues] = useState<Record<string, string>>(() =>
+    Object.fromEntries(
+      (module.inputs ?? []).map((param) => [
+        param.key,
+        param.defaultValue ?? module.selections?.[param.key]?.items[0]?.value ?? '',
+      ]),
+    ),
+  );
+  const inputs = module.inputs ?? [];
+  const outputs = module.outputs ?? [];
+  const visibleInputs = inputs.filter((param) => isStepParamVisible(param, currentValues));
+  const visibleOutputs = outputs.filter((output) => isStepParamVisible(output, currentValues));
+  const inputCount = inputs.length;
+  const outputCount = outputs.length;
   const selectionEntries = Object.entries(module.selections ?? {});
   const summaryParts = [
-    `输入 ${inputCount}`,
-    `输出 ${outputCount}`,
+    `输入 ${visibleInputs.length}/${inputCount}`,
+    `输出 ${visibleOutputs.length}/${outputCount}`,
     selectionEntries.length > 0 ? `枚举 ${selectionEntries.length}` : null,
   ].filter(Boolean);
 
@@ -214,11 +264,15 @@ function ModuleBody({module}: {module: XActionModuleDef}): ReactNode {
             <section className={styles.section}>
               <h3 className={styles.sectionTitle}>输入参数</h3>
               <ul className={styles.list}>
-                {module.inputs.map((param) => (
+                {visibleInputs.map((param) => (
                   <ParamItem
                     key={param.key}
                     param={param}
                     selection={module.selections?.[param.key]}
+                    currentValue={currentValues[param.key] ?? ''}
+                    onValueChange={(value) =>
+                      setCurrentValues((current) => ({...current, [param.key]: value}))
+                    }
                   />
                 ))}
               </ul>
@@ -229,7 +283,7 @@ function ModuleBody({module}: {module: XActionModuleDef}): ReactNode {
             <section className={styles.section}>
               <h3 className={styles.sectionTitle}>输出参数</h3>
               <ul className={styles.list}>
-                {module.outputs.map((output) => (
+                {visibleOutputs.map((output) => (
                   <OutputItem key={output.key} output={output} />
                 ))}
               </ul>

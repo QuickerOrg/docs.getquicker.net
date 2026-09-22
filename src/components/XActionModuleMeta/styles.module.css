@@ -240,6 +240,32 @@
   margin-top: 0.55rem;
 }
 
+.selectionControl {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  margin-bottom: 0.5rem;
+}
+
+.selectionControlLabel {
+  flex: 0 0 auto;
+  color: var(--quicker-text-muted);
+  font-size: 0.8rem;
+  font-weight: 600;
+}
+
+.selectionSelect {
+  min-width: 10rem;
+  max-width: 100%;
+  padding: 0.35rem 1.8rem 0.35rem 0.55rem;
+  border: 1px solid var(--quicker-border-subtle);
+  border-radius: 5px;
+  background: var(--ifm-background-color);
+  color: var(--ifm-font-color-base);
+  font: inherit;
+  font-size: 0.84rem;
+}
+
 .selectionDetails {
   margin-top: 0.55rem;
 }
@@ -271,7 +297,7 @@
   translate: 0 -1px;
 }
 
-.selectionDetails[open] > .selectionSummary::before {
+.selectionDetails details[open] > .selectionSummary::before {
   transform: rotate(45deg);
 }
 

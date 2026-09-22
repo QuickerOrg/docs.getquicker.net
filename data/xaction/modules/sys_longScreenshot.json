@@ -13,6 +13,16 @@
   "helpLink": "https://docs.getquicker.net/v2/xaction/modules/long-screenshot",
   "inputs": [
     {
+      "key": "preSelectArea",
+      "name": "预选截图区域",
+      "type": "Text",
+      "defaultValue": "",
+      "required": false,
+      "variableMode": "UseVarOrInput",
+      "condition": "",
+      "description": "留空时手动选择；指定物理屏幕坐标 left,top,right,bottom（右、下边界不包含）时，将跳过首次框选并直接开始长截图。"
+    },
+    {
       "key": "toClip",
       "name": "写入剪贴板",
       "type": "Boolean",

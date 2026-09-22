@@ -28,6 +28,7 @@ import {
   usePreviewLiveReporter,
 } from "@site/src/components/PreviewLive";
 import {DocsStepIcon} from "@site/src/components/StepProgramView/DocsStepIcon";
+import {isStepParamVisible} from "@site/src/components/xaction/conditionVisibility";
 import {KeyboardParamControl} from "./KeyboardParamControl";
 import {
   canBindVariable,
@@ -131,24 +132,6 @@ function paramValuesEqual(
     if ((a[key] ?? "") !== (b[key] ?? "")) return false;
   }
   return true;
-}
-
-/** Catalog `condition` like `仅：custom` / `仅：move, moveTo`. */
-export function isStepParamVisible(
-  param: { condition?: string },
-  currentValues: Readonly<Record<string, string>>,
-  showHidden: boolean,
-): boolean {
-  const raw = param.condition?.trim() ?? "";
-  if (!raw || showHidden) return true;
-  const only = /^仅[：:]\s*(.+)$/.exec(raw);
-  if (!only) return true;
-  const wanted = only[1]
-    .split(/[,，]/)
-    .map((s) => s.trim())
-    .filter(Boolean);
-  if (wanted.length === 0) return true;
-  return Object.values(currentValues).some((v) => wanted.includes(v));
 }
 
 function ParamSection({

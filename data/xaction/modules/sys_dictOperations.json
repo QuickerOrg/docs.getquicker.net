@@ -29,7 +29,7 @@
       "defaultValue": "",
       "required": false,
       "variableMode": "UseVar",
-      "condition": "排除：queryStringToDict",
+      "condition": "仅：get, set, setOriginValue, remove, clear, keyList, valueList, reverse, dictToQueryString, dictToQueryStringNoEncode",
       "description": "要操作的词典变量"
     },
     {
@@ -49,7 +49,7 @@
       "defaultValue": "",
       "required": false,
       "variableMode": "UseVarOrInput",
-      "condition": "仅：get, set, remove, setOriginValue",
+      "condition": "仅：get, set, setOriginValue, remove",
       "description": "要操作元素的键值。"
     },
     {
@@ -79,7 +79,7 @@
       "defaultValue": "false",
       "required": false,
       "variableMode": "Input",
-      "condition": "仅：set, get, remove, setOriginValue",
+      "condition": "仅：get, set, setOriginValue, remove",
       "description": ""
     },
     {

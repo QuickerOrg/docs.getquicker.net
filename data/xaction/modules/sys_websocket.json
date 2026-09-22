@@ -89,7 +89,7 @@
       "defaultValue": "",
       "required": false,
       "variableMode": "UseVarOrInput",
-      "condition": "仅：CreateClient, SendTextToClient, SendFileToClient, SendFileToClientBase64, SendMsgToServer",
+      "condition": "仅：CreateClient, SendMsgToServer, SendTextToClient, SendFileToClient, SendFileToClientBase64",
       "description": "文本内容。发送文件时为文件的完整路径。"
     },
     {

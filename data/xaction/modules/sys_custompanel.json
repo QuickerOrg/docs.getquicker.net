@@ -140,7 +140,7 @@
       "required": false,
       "variableMode": "Input",
       "condition": "仅：show_fixed_panel, show_fixed_panel_wait_close",
-      "description": "设置选择窗口的最大尺寸，格式为：宽度,高度。支持像素数值或屏幕宽高百分比，详情请参考模块文档。\n\"窗口位置\" 类型为 \"自定义位置\" 时用于指定显示位置，格式为：left,top,right,bottom"
+      "description": "宽度,高度：逻辑像素或屏幕工作区百分比；自定义位置填坐标。"
     },
     {
       "key": "horzAlign",

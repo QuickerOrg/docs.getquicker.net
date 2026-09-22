@@ -29,7 +29,7 @@
       "defaultValue": "完成后继续",
       "required": true,
       "variableMode": "Input",
-      "condition": "仅：show, update, showAndWaitClose",
+      "condition": "仅：show, showAndWaitClose, update",
       "description": ""
     },
     {
@@ -39,7 +39,7 @@
       "defaultValue": "请在完成操作后点下面的按钮",
       "required": true,
       "variableMode": "Input",
-      "condition": "仅：show, update, showAndWaitClose",
+      "condition": "仅：show, showAndWaitClose, update",
       "description": "提示文字内容"
     },
     {
@@ -49,7 +49,7 @@
       "defaultValue": "完成",
       "required": true,
       "variableMode": "UseVarOrInput",
-      "condition": "仅：show, update, showAndWaitClose",
+      "condition": "仅：show, showAndWaitClose, update",
       "description": "默认按键仅用于关闭窗口。文字内容为空时隐藏默认按钮。"
     },
     {
@@ -69,7 +69,7 @@
       "defaultValue": "",
       "required": false,
       "variableMode": "Input",
-      "condition": "仅：show, update, showAndWaitClose",
+      "condition": "仅：show, showAndWaitClose, update",
       "description": "请以 当前值/总数 的格式传入（可使用插值方式）。 比如：40/80"
     },
     {
@@ -79,7 +79,7 @@
       "defaultValue": "",
       "required": true,
       "variableMode": "Input",
-      "condition": "仅：show, update, showAndWaitClose",
+      "condition": "仅：show, showAndWaitClose, update",
       "description": "每行定义一个按钮，格式为 \"文本\" 或 \"显示文本|值\"。显示在默认按钮的左侧。"
     },
     {
@@ -89,7 +89,7 @@
       "defaultValue": "16.0",
       "required": true,
       "variableMode": "UseVarOrInput",
-      "condition": "仅：show, update, showAndWaitClose",
+      "condition": "仅：show, showAndWaitClose",
       "description": "按钮上图标的大小，单位为逻辑像素。"
     },
     {
@@ -99,7 +99,7 @@
       "defaultValue": "12.0",
       "required": true,
       "variableMode": "UseVarOrInput",
-      "condition": "仅：show, update, showAndWaitClose",
+      "condition": "仅：show, showAndWaitClose",
       "description": "按钮上文字的大小，单位为逻辑像素。"
     },
     {
@@ -155,7 +155,7 @@
       "key": "selectedOperation",
       "name": "选择的按钮",
       "type": "Text",
-      "condition": "仅：check, waitClose, showAndWaitClose",
+      "condition": "仅：showAndWaitClose, check, waitClose",
       "description": "选择的后续操作项"
     }
   ],

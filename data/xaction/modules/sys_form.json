@@ -90,7 +90,7 @@
       "required": false,
       "variableMode": "UseVarOrInput",
       "condition": "",
-      "description": "左侧字段标题区域的宽度(逻辑像素)。负值，如-200表示自适应列宽且最大宽度为200。"
+      "description": "逻辑像素；负数表示自适应列宽的上限。"
     },
     {
       "key": "windowWidth",
@@ -210,7 +210,7 @@
       "required": false,
       "variableMode": "Input",
       "condition": "",
-      "description": "当 \"窗口位置\" 类型为 \"自定义位置\" 时用于指定显示位置，格式为：left,top,right,bottom"
+      "description": "自定义位置：left,top,right,bottom；物理像素或屏幕工作区百分比。"
     },
     {
       "key": "stopIfFail",

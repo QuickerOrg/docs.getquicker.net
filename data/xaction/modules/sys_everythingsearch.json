@@ -60,7 +60,7 @@
       "required": false,
       "variableMode": "UseVarOrInput",
       "condition": "",
-      "description": "匹配整个单词。如 quicker.exe 将会匹配：quicker.exe, quicker.exe.config等。0表示否，1表示是。"
+      "description": "要求每个搜索词的前后是空格、标点或路径分隔符等单词边界，不匹配较长名称中的局部文本。0表示否，1表示是。"
     },
     {
       "key": "matchPath",

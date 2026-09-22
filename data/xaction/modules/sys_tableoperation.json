@@ -59,7 +59,7 @@
       "defaultValue": "",
       "required": false,
       "variableMode": "UseVarOrInput",
-      "condition": "仅：select, exportExcel, export_text, deleteRows, update",
+      "condition": "仅：update, select, deleteRows, export_text, exportExcel",
       "description": ""
     },
     {
@@ -79,7 +79,7 @@
       "defaultValue": "",
       "required": false,
       "variableMode": "UseVarOrInput",
-      "condition": "仅：select, exportExcel, export_text, manage",
+      "condition": "仅：manage, select, export_text, exportExcel",
       "description": ""
     },
     {
@@ -89,7 +89,7 @@
       "defaultValue": "",
       "required": false,
       "variableMode": "UseVarOrInput",
-      "condition": "仅：exportExcel, export_text",
+      "condition": "仅：export_text, exportExcel",
       "description": "可选。逗号','或分号';'隔开的列名。留空时导出所有列。"
     },
     {
@@ -179,7 +179,7 @@
       "defaultValue": "false",
       "required": false,
       "variableMode": "Input",
-      "condition": "仅：exportExcel, export_text",
+      "condition": "仅：export_text, exportExcel",
       "description": ""
     },
     {
@@ -189,7 +189,7 @@
       "defaultValue": ",",
       "required": false,
       "variableMode": "Input",
-      "condition": "仅：export_text, importCsv",
+      "condition": "仅：importCsv, export_text",
       "description": "导出或导入CSV数据时使用的字段分隔符。使用'\\t'表示Tab。"
     },
     {
@@ -200,7 +200,7 @@
       "required": false,
       "variableMode": "Input",
       "condition": "仅：manage",
-      "description": "设置选择窗口的最大尺寸，格式为：宽度,高度。支持像素数值或屏幕宽高百分比，详情请参考模块文档。"
+      "description": "宽度,高度：逻辑像素或屏幕工作区百分比。"
     },
     {
       "key": "topMost",
@@ -242,14 +242,14 @@
       "key": "affectedRowCount",
       "name": "影响行数",
       "type": "Integer",
-      "condition": "仅：exportExcel, export_text, deleteRows, update",
+      "condition": "仅：update, deleteRows, export_text, exportExcel",
       "description": "更新或删除、筛选的行数"
     },
     {
       "key": "rows",
       "name": "行列表",
       "type": "Object",
-      "condition": "仅：select, info",
+      "condition": "仅：info, select",
       "description": "符合条件的行的数组"
     },
     {
@@ -263,7 +263,7 @@
       "key": "firstRow",
       "name": "第一行/结果行",
       "type": "Object",
-      "condition": "仅：select, addRow",
+      "condition": "仅：addRow, select",
       "description": "第一个符合条件的行或新添加的行，可输出为词典对象"
     },
     {

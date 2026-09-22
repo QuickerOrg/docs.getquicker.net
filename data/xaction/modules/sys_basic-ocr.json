@@ -59,7 +59,7 @@
       "defaultValue": "no",
       "required": true,
       "variableMode": "UseVarOrInput",
-      "condition": "仅：baidu-basic, baidu-quicker, QuickerServerOcr",
+      "condition": "仅：QuickerServerOcr, baidu-basic, baidu-quicker",
       "description": "合并文本时，是否转换标点符号"
     },
     {
@@ -69,7 +69,7 @@
       "defaultValue": "no",
       "required": true,
       "variableMode": "UseVarOrInput",
-      "condition": "仅：baidu-basic, baidu-quicker, QuickerServerOcr",
+      "condition": "仅：QuickerServerOcr, baidu-basic, baidu-quicker",
       "description": "是否智能合并段落。"
     },
     {
@@ -145,14 +145,14 @@
       "key": "textList",
       "name": "行列表",
       "type": "List",
-      "condition": "仅：baidu-basic, baidu-quicker, QuickerServerOcr, LocalOcr, WindowsOcr",
+      "condition": "仅：QuickerServerOcr, LocalOcr, WindowsOcr, baidu-basic, baidu-quicker",
       "description": "OCR识别结果，列表格式，每行一项。"
     },
     {
       "key": "content",
       "name": "合并后结果",
       "type": "Text",
-      "condition": "仅：baidu-basic, baidu-quicker, QuickerServerOcr, LocalOcr, WindowsOcr, table_quicker",
+      "condition": "仅：QuickerServerOcr, LocalOcr, WindowsOcr, baidu-basic, baidu-quicker, table_quicker",
       "description": "合并在一起的的文本内容"
     },
     {

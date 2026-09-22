@@ -50,6 +50,7 @@
 | `Integer` | 12 |
 | `Table` | 13 |
 | `FormForDict` | 14 |
+| `Specified` | 97 |
 | `Object` | 98 |
 | `Any` | 99 |
 | `NA` | 100 |

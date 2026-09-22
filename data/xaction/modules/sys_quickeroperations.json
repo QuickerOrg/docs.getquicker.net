@@ -59,7 +59,7 @@
       "defaultValue": "",
       "required": true,
       "variableMode": "UseVarOrInput",
-      "condition": "仅：loadExeProfiles, loadExeProfilesNoLock, showCircleMenu, GetActionList, showExeSettingWindow, showDashboardWindow",
+      "condition": "仅：showCircleMenu, showDashboardWindow, showExeSettingWindow, loadExeProfiles, loadExeProfilesNoLock, GetActionList",
       "description": "场景关联的exe文件名。请参考场景与动作管理窗口左侧应用列表；打开轮盘或场景管理时可填写 _curr 表示当前程序场景。"
     },
     {
@@ -99,7 +99,7 @@
       "defaultValue": "",
       "required": false,
       "variableMode": "UseVarOrInput",
-      "condition": "仅：StartSearchWithAction, showSearch, SearchWithCertainAction",
+      "condition": "仅：showSearch, StartSearchWithAction, SearchWithCertainAction",
       "description": "预先放入搜索框的内容"
     },
     {
@@ -185,6 +185,13 @@
       "type": "Integer",
       "condition": "仅：FloatAction",
       "description": ""
+    },
+    {
+      "key": "contextMenuData",
+      "name": "右键菜单数据",
+      "type": "Text",
+      "condition": "仅：GetActionInfo",
+      "description": "动作配置中的右键菜单原始文本；未配置时输出空文本。"
     }
   ],
   "selections": {

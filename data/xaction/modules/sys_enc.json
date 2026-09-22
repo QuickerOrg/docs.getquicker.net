@@ -49,7 +49,7 @@
       "defaultValue": "text",
       "required": false,
       "variableMode": "Input",
-      "condition": "仅：dec_des, dec_aes, enc_aes, enc_des, hash_hmac",
+      "condition": "仅：enc_des, dec_des, enc_aes, dec_aes, hash_hmac",
       "description": ""
     },
     {
@@ -59,7 +59,7 @@
       "defaultValue": "",
       "required": true,
       "variableMode": "UseVarOrInput",
-      "condition": "仅：dec_des, dec_aes, enc_aes, enc_des, hash_hmac",
+      "condition": "仅：enc_des, dec_des, enc_aes, dec_aes, hash_hmac",
       "description": ""
     },
     {
@@ -69,7 +69,7 @@
       "defaultValue": "text",
       "required": false,
       "variableMode": "Input",
-      "condition": "仅：dec_des, dec_aes, enc_aes, enc_des",
+      "condition": "仅：enc_des, dec_des, enc_aes, dec_aes",
       "description": ""
     },
     {
@@ -79,7 +79,7 @@
       "defaultValue": "",
       "required": true,
       "variableMode": "UseVarOrInput",
-      "condition": "仅：dec_des, dec_aes, enc_aes, enc_des",
+      "condition": "仅：enc_des, dec_des, enc_aes, dec_aes",
       "description": ""
     },
     {
@@ -119,7 +119,7 @@
       "defaultValue": "CBC",
       "required": true,
       "variableMode": "UseVarOrInput",
-      "condition": "仅：dec_aes, enc_aes, dec_des, enc_des",
+      "condition": "仅：enc_des, dec_des, enc_aes, dec_aes",
       "description": ""
     },
     {
@@ -129,7 +129,7 @@
       "defaultValue": "PKCS7",
       "required": true,
       "variableMode": "UseVarOrInput",
-      "condition": "仅：dec_aes, enc_aes, dec_des, enc_des",
+      "condition": "仅：enc_des, dec_des, enc_aes, dec_aes",
       "description": ""
     },
     {
@@ -155,7 +155,7 @@
       "key": "resultText",
       "name": "文本结果",
       "type": "Text",
-      "condition": "仅：dec_aes, dec_des, dec_rsa, local_dec",
+      "condition": "仅：dec_des, dec_aes, dec_rsa, local_dec",
       "description": ""
     },
     {

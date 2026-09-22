@@ -4,7 +4,7 @@
   "legacySlug": "screen-capture-pro",
   "ownsLegacyContent": true,
   "name": "截图 Pro",
-  "description": "渐进式选区截图：全屏 overlay，光标处初始选区，支持控件跟踪，双击确认。Esc 取消。",
+  "description": "框选截图、标注、贴图或识别。默认自动吸附，可关闭后用滚轮手动调整选区。",
   "category": "Image",
   "categoryName": "图片处理",
   "stepType": "Action",
@@ -12,6 +12,16 @@
   "isProOnly": false,
   "helpLink": "https://docs.getquicker.net/v2/xaction/modules/screen-capture-pro",
   "inputs": [
+    {
+      "key": "operation",
+      "name": "操作",
+      "type": "Enum",
+      "defaultValue": "capture",
+      "required": true,
+      "variableMode": "Input",
+      "condition": "",
+      "description": "这次截图怎么结束，不受设置中“直接截图的完成操作”影响。"
+    },
     {
       "key": "delay",
       "name": "截图前延迟时间",
@@ -23,14 +33,24 @@
       "description": "等待多少毫秒后开始截图"
     },
     {
+      "key": "addToHistory",
+      "name": "加入截图历史",
+      "type": "Boolean",
+      "defaultValue": "true",
+      "required": false,
+      "variableMode": "Input",
+      "condition": "",
+      "description": "遵循全局截图历史开关；取消勾选可排除本次截图，不会打开全局历史。"
+    },
+    {
       "key": "toClip",
       "name": "写入剪贴板",
       "type": "Boolean",
       "defaultValue": "false",
       "required": false,
       "variableMode": "Input",
-      "condition": "",
-      "description": "仅对默认确认（打勾 / 双击）生效：结束后把截图写入剪贴板。保存、复制、自定义工具栏 post.confirm 等其它出口不叠此设置，由各自工具自行处理。"
+      "condition": "仅：capture",
+      "description": "打勾或双击后写入剪贴板。"
     },
     {
       "key": "pinImage",
@@ -39,8 +59,8 @@
       "defaultValue": "false",
       "required": false,
       "variableMode": "Input",
-      "condition": "",
-      "description": "仅对默认确认（打勾 / 双击）生效：结束后在选区位置贴图。其它工具栏出口（含自定义 post.confirm / post.pin）不叠此设置。"
+      "condition": "仅：capture",
+      "description": "打勾或双击后贴到原位置。"
     },
     {
       "key": "showToolbarAfterPin",
@@ -49,18 +69,18 @@
       "defaultValue": "false",
       "required": false,
       "variableMode": "Input",
-      "condition": "",
-      "description": "贴图窗口打开后是否自动显示标注工具栏。默认关闭（贴图前通常已标注）；需要时可按空格再显示。"
+      "condition": "仅：capture, pin",
+      "description": ""
     },
     {
       "key": "autoAdsorb",
-      "name": "自动吸附",
+      "name": "自动吸附UI元素",
       "type": "Boolean",
       "defaultValue": "false",
       "required": false,
       "variableMode": "Input",
       "condition": "",
-      "description": "开启后悬停自动吸附到控件元素；关闭时（默认）仅跟随窗口范围，滚轮再触发 UIA 精细选区。"
+      "description": "自动吸附鼠标下的界面元素。关闭后可用滚轮手动缩小或扩大选区。"
     },
     {
       "key": "toolbarScript",
@@ -69,8 +89,8 @@
       "defaultValue": "",
       "required": false,
       "variableMode": "UseVarOrInput",
-      "condition": "",
-      "description": "可视化编辑严格 JSON 声明（挂子程序/动作）。可改用动作变量，变量内容为完整 JSON/JS。写成 JS（sp/act/run）后可视化禁用。整栏插值须以 $$ 开头，只替换 {变量名}；不要写 JS 对象简写 {foo}。推荐外置：toolbarScript → file: files/toolbar.js。留空则用默认工具栏。"
+      "condition": "仅：capture, quick_save",
+      "description": "留空则用默认工具栏。"
     },
     {
       "key": "stopIfFail",
@@ -81,6 +101,16 @@
       "variableMode": "Input",
       "condition": "",
       "description": "失败后是否停止动作"
+    },
+    {
+      "key": "saveDirectory",
+      "name": "保存目录",
+      "type": "Text",
+      "defaultValue": "",
+      "required": false,
+      "variableMode": "UseVarOrInput",
+      "condition": "仅：quick_save",
+      "description": "留空用全局目录，只改本次。"
     }
   ],
   "outputs": [
@@ -96,7 +126,7 @@
       "name": "图片",
       "type": "Image",
       "condition": "",
-      "description": "截图的图片"
+      "description": ""
     },
     {
       "key": "rect",
@@ -110,9 +140,77 @@
       "name": "保存路径",
       "type": "Text",
       "condition": "",
-      "description": "用户点击保存并写入磁盘后的文件路径；通过确认按钮结束时为空。"
+      "description": "保存后的路径；未保存时为空。"
+    },
+    {
+      "key": "text",
+      "name": "识别文本",
+      "type": "Text",
+      "condition": "仅：ocr_copy",
+      "description": ""
     }
   ],
-  "selections": {},
+  "selections": {
+    "operation": {
+      "name": "操作",
+      "items": [
+        {
+          "value": "capture",
+          "name": "截图",
+          "description": ""
+        },
+        {
+          "value": "capture_now",
+          "name": "框选即出图",
+          "description": ""
+        },
+        {
+          "value": "copy",
+          "name": "立刻复制",
+          "description": ""
+        },
+        {
+          "value": "pin",
+          "name": "立刻贴图",
+          "description": ""
+        },
+        {
+          "value": "ocr_copy",
+          "name": "识别并复制",
+          "description": ""
+        },
+        {
+          "value": "ocr",
+          "name": "文本识别",
+          "description": ""
+        },
+        {
+          "value": "table",
+          "name": "表格识别",
+          "description": ""
+        },
+        {
+          "value": "formula",
+          "name": "公式识别",
+          "description": ""
+        },
+        {
+          "value": "translate",
+          "name": "文本翻译",
+          "description": ""
+        },
+        {
+          "value": "image_translate",
+          "name": "图片翻译",
+          "description": ""
+        },
+        {
+          "value": "quick_save",
+          "name": "快速保存",
+          "description": ""
+        }
+      ]
+    }
+  },
   "sourceFileName": "sys_screenCapturePro_截图 Pro.md"
 }

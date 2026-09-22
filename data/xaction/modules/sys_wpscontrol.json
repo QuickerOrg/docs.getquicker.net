@@ -39,7 +39,7 @@
       "defaultValue": "",
       "required": true,
       "variableMode": "UseVarOrInput",
-      "condition": "",
+      "condition": "仅：document.save_as",
       "description": "文档另存为的绝对路径，扩展名应与当前 WPS 组件匹配。"
     },
     {
@@ -49,7 +49,7 @@
       "defaultValue": "Sheet1",
       "required": true,
       "variableMode": "UseVarOrInput",
-      "condition": "",
+      "condition": "仅：sheet.activate",
       "description": ""
     },
     {
@@ -59,7 +59,7 @@
       "defaultValue": "A1:C10",
       "required": true,
       "variableMode": "UseVarOrInput",
-      "condition": "",
+      "condition": "仅：range.read, range.clear, range.write",
       "description": ""
     },
     {
@@ -69,7 +69,7 @@
       "defaultValue": "[[\"名称\",\"数量\"],[\"示例\",1]]",
       "required": true,
       "variableMode": "UseVarOrInput",
-      "condition": "",
+      "condition": "仅：range.write",
       "description": ""
     },
     {
@@ -79,7 +79,7 @@
       "defaultValue": "来自 Quicker 的文字",
       "required": true,
       "variableMode": "UseVarOrInput",
-      "condition": "",
+      "condition": "仅：text.insert",
       "description": ""
     },
     {
@@ -89,7 +89,7 @@
       "defaultValue": "",
       "required": true,
       "variableMode": "UseVarOrInput",
-      "condition": "",
+      "condition": "仅：text.replace",
       "description": ""
     },
     {
@@ -99,7 +99,7 @@
       "defaultValue": "",
       "required": false,
       "variableMode": "UseVarOrInput",
-      "condition": "",
+      "condition": "仅：text.replace",
       "description": ""
     },
     {
@@ -109,7 +109,7 @@
       "defaultValue": "true",
       "required": false,
       "variableMode": "Input",
-      "condition": "",
+      "condition": "仅：text.replace",
       "description": ""
     },
     {
@@ -119,7 +119,7 @@
       "defaultValue": "1",
       "required": false,
       "variableMode": "UseVarOrInput",
-      "condition": "",
+      "condition": "仅：slide.activate",
       "description": ""
     },
     {
@@ -129,7 +129,7 @@
       "defaultValue": "12",
       "required": false,
       "variableMode": "UseVarOrInput",
-      "condition": "",
+      "condition": "仅：slide.add",
       "description": ""
     },
     {
@@ -139,7 +139,7 @@
       "defaultValue": "模块名.函数名",
       "required": true,
       "variableMode": "UseVarOrInput",
-      "condition": "",
+      "condition": "仅：macro.run",
       "description": ""
     },
     {
@@ -149,7 +149,7 @@
       "defaultValue": "[]",
       "required": false,
       "variableMode": "UseVarOrInput",
-      "condition": "",
+      "condition": "仅：macro.run",
       "description": ""
     },
     {
@@ -159,7 +159,7 @@
       "defaultValue": "({ app: Application.Name, version: Application.Version })",
       "required": true,
       "variableMode": "UseVarOrInput",
-      "condition": "",
+      "condition": "仅：script.evaluate",
       "description": "在当前 WPS 加载项上下文执行，可直接访问 Application。"
     },
     {
@@ -169,7 +169,7 @@
       "defaultValue": "",
       "required": true,
       "variableMode": "UseVarOrInput",
-      "condition": "",
+      "condition": "仅：command.custom",
       "description": ""
     },
     {
@@ -179,7 +179,7 @@
       "defaultValue": "{}",
       "required": false,
       "variableMode": "UseVarOrInput",
-      "condition": "",
+      "condition": "仅：command.custom",
       "description": ""
     },
     {

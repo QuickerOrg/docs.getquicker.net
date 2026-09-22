@@ -30,7 +30,7 @@
       "required": false,
       "variableMode": "UseVarOrInput",
       "condition": "仅：TriggerMenu, TriggerControl, GetControlInfo",
-      "description": "要操作哪个窗口的控件。不填写=使用前台窗口；或窗口句柄数字。"
+      "description": "要操作哪个窗口的控件。不填写或填写0=使用前台窗口；或窗口句柄数字。"
     },
     {
       "key": "menuPath",
@@ -81,6 +81,16 @@
       "variableMode": "Input",
       "condition": "仅：TriggerControl",
       "description": "对控件执行的操作。"
+    },
+    {
+      "key": "noWait",
+      "name": "不等待操作完成",
+      "type": "Boolean",
+      "defaultValue": "false",
+      "required": false,
+      "variableMode": "UseVarOrInput",
+      "condition": "仅：TriggerControl",
+      "description": "提交后立即执行后续步骤，不保证控件操作已完成。是否成功仅表示提交成功；后台失败只记录日志，不触发失败后停止。涉及鼠标、键盘或焦点的操作可能与后续步骤互相影响，请按需等待目标状态。"
     },
     {
       "key": "value",

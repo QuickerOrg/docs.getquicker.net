@@ -1,6 +1,6 @@
 ---
 title: "Rhino软件控制"
-description: "通过 Rhino Bridge 调用宿主能力，包含连接验证、目标规则和使用限制。"
+description: "向Rhino发送命令或脚本"
 slug: "/v2/xaction/modules/rhinocontrol"
 sidebar_label: "Rhino软件控制"
 sidebar_position: 110
@@ -8,7 +8,7 @@ quickerDocKey: "xaction/module/sys:rhinocontrol"
 comments: true
 moduleKey: "sys:rhinocontrol"
 docStatus: "reviewed"
-metadataGeneratedAt: "2026-09-04 07:37:19"
+metadataGeneratedAt: "2026-09-20 15:25:17"
 legacyDocId: 80629667
 legacyContentUpdatedAt: "2022-06-17T01:44:17.000Z"
 ---

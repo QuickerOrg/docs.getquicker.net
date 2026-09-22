@@ -49,7 +49,7 @@
       "defaultValue": "false",
       "required": false,
       "variableMode": "Input",
-      "condition": "排除：pinyinMatch",
+      "condition": "仅：>, =, <, contains, startsWith, endsWith, match",
       "description": "是否区分大小写"
     }
   ],

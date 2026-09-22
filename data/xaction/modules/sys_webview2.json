@@ -109,7 +109,7 @@
       "defaultValue": "=",
       "required": false,
       "variableMode": "UseVarOrInput",
-      "condition": "排除：CheckInstalled",
+      "condition": "仅：OpenUrl, OpenAndWaitLoad, OpenUrlAndWaitClose, SendMessage, ExecuteScript, CheckWindowState, Close, Reload, Stop, MultiTab_OpenUrl, MultiColumn_OpenUrl",
       "description": "(仅必要时使用)用于关闭之前打开的具有此标识的WebView2窗口。使用=表示当前动作ID。"
     },
     {
@@ -170,7 +170,7 @@
       "required": false,
       "variableMode": "Input",
       "condition": "仅：OpenUrl, OpenAndWaitLoad, OpenUrlAndWaitClose, MultiTab_OpenUrl, MultiColumn_OpenUrl",
-      "description": "设置选择窗口的尺寸，格式为：宽度,高度。支持像素数值或屏幕宽高百分比，详情请参考模块文档。\n\"窗口位置\" 类型为 \"自定义位置\" 时用于指定显示位置，格式为：left,top,right,bottom"
+      "description": "宽度,高度：逻辑像素或屏幕工作区百分比；自定义位置填坐标。"
     },
     {
       "key": "defaultDownloadFolderPath",
@@ -320,13 +320,13 @@
       "name": "WebView2对象",
       "type": "Object",
       "condition": "仅：OpenUrl, OpenAndWaitLoad, CheckWindowState",
-      "description": "可用于在C#脚本中使用，需运行在UI线程中。注意避免循环引用。"
+      "description": "可用于在C#脚本中使用，需运行在UI线程中。打开窗口时若绑定此输出，会等待浏览器初始化完成，但不额外等待网页加载。注意避免循环引用。"
     },
     {
       "key": "lastLocation",
       "name": "窗口位置",
       "type": "Text",
-      "condition": "仅：OpenAndWaitLoad, CheckWindowState, OpenUrlAndWaitClose",
+      "condition": "仅：OpenAndWaitLoad, OpenUrlAndWaitClose, CheckWindowState",
       "description": "返回窗口坐标范围。格式为：left,top,right,bottom"
     },
     {

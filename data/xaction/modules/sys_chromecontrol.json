@@ -49,7 +49,7 @@
       "defaultValue": "",
       "required": true,
       "variableMode": "UseVarOrInput",
-      "condition": "仅：GetTabInfo, CloseTab, RunScript, WaitTabComplete, GetElementInfo, UpdateElement, TriggerEvent, PickElement, Wait, ActivateTab, PageAction, UploadFiles, DropFiles, ExtractList, FillForm",
+      "condition": "仅：WaitTabComplete, ActivateTab, CloseTab, GetTabInfo, RunScript, PickElement, GetElementInfo, UpdateElement, TriggerEvent, Wait, PageAction, UploadFiles, DropFiles, ExtractList, FillForm",
       "description": "留空表示当前活动标签页。"
     },
     {
@@ -179,7 +179,7 @@
       "defaultValue": "3000",
       "required": true,
       "variableMode": "Input",
-      "condition": "仅：OpenUrl, WaitTabComplete, BackgroundScript, GetTabInfo, RunScript, GetElementInfo, UpdateElement, TriggerEvent, PickElement, BackgroundCommand, Wait, PageAction, UploadFiles, DropFiles",
+      "condition": "仅：OpenUrl, WaitTabComplete, GetTabInfo, RunScript, PickElement, GetElementInfo, UpdateElement, TriggerEvent, Wait, BackgroundScript, BackgroundCommand, PageAction, UploadFiles, DropFiles",
       "description": "超时等待时间，毫秒数"
     },
     {
@@ -320,7 +320,7 @@
       "required": true,
       "variableMode": "UseVarOrInput",
       "condition": "仅：PageAction",
-      "description": "角色定位时填写 accessible name；文本定位填写文本；CSS 定位填写选择器。"
+      "description": "角色定位填写 accessible name；文本定位填写文本；CSS 定位填写选择器；XPath 定位填写表达式（可带 xpath: 前缀，需要新版扩展）。"
     },
     {
       "key": "pageExact",
@@ -525,42 +525,42 @@
       "key": "tabId",
       "name": "标签页ID",
       "type": "Integer",
-      "condition": "仅：OpenUrl, GetTabInfo, ActivateTab",
+      "condition": "仅：OpenUrl, ActivateTab, GetTabInfo",
       "description": "网页所在标签页ID"
     },
     {
       "key": "windowId",
       "name": "窗口ID",
       "type": "Integer",
-      "condition": "仅：OpenUrl, GetTabInfo, ActivateTab",
+      "condition": "仅：OpenUrl, ActivateTab, GetTabInfo",
       "description": "网页所在窗口的ID"
     },
     {
       "key": "groupId",
       "name": "分组ID",
       "type": "Integer",
-      "condition": "仅：GetTabInfo, ActivateTab",
+      "condition": "仅：ActivateTab, GetTabInfo",
       "description": "标签页所属分组ID"
     },
     {
       "key": "url",
       "name": "网址",
       "type": "Text",
-      "condition": "仅：GetTabInfo, ActivateTab",
+      "condition": "仅：ActivateTab, GetTabInfo",
       "description": "标签页当前网址"
     },
     {
       "key": "title",
       "name": "网页标题",
       "type": "Text",
-      "condition": "仅：GetTabInfo, ActivateTab",
+      "condition": "仅：ActivateTab, GetTabInfo",
       "description": "标签页网页标题"
     },
     {
       "key": "favicon",
       "name": "Favicon图标网址",
       "type": "Text",
-      "condition": "仅：GetTabInfo, ActivateTab",
+      "condition": "仅：ActivateTab, GetTabInfo",
       "description": "标签页网页图标网址"
     },
     {
@@ -2090,6 +2090,11 @@
         {
           "value": "css",
           "name": "CSS 选择器",
+          "description": ""
+        },
+        {
+          "value": "xpath",
+          "name": "XPath",
           "description": ""
         }
       ]

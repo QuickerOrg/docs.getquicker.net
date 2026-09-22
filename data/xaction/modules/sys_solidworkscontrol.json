@@ -4,7 +4,7 @@
   "legacySlug": "solidworkscontrol",
   "ownsLegacyContent": true,
   "name": "SOLIDWORKS控制",
-  "description": "通过 SOLIDWORKS Add-in 向动作触发时的前台实例发送命令。",
+  "description": "通过 SOLIDWORKS Add-in 发送命令；仅有一个在线连接时直接使用，多个连接时按动作触发窗口定位。",
   "category": "SoftInteraction",
   "categoryName": "第三方软件交互",
   "stepType": "Action",
@@ -29,7 +29,7 @@
       "defaultValue": "zoom",
       "required": false,
       "variableMode": "UseVarOrInput",
-      "condition": "",
+      "condition": "仅：command.search",
       "description": ""
     },
     {
@@ -39,7 +39,7 @@
       "defaultValue": "50",
       "required": false,
       "variableMode": "Input",
-      "condition": "",
+      "condition": "仅：command.search",
       "description": ""
     },
     {
@@ -49,7 +49,7 @@
       "defaultValue": "0",
       "required": false,
       "variableMode": "Input",
-      "condition": "",
+      "condition": "仅：command.call",
       "description": "可先用“搜索 SOLIDWORKS 命令”获取 ID。"
     },
     {
@@ -59,7 +59,7 @@
       "defaultValue": "",
       "required": false,
       "variableMode": "UseVarOrInput",
-      "condition": "",
+      "condition": "仅：document.open, document.activate",
       "description": "打开文档时填写 .SLDPRT、.SLDASM 或 .SLDDRW 的绝对路径；激活文档时也可填写已打开文档的完整路径。"
     },
     {
@@ -69,7 +69,7 @@
       "defaultValue": "",
       "required": false,
       "variableMode": "UseVarOrInput",
-      "condition": "",
+      "condition": "仅：document.activate",
       "description": "激活文档时路径为空才使用。建议包含扩展名，以免同名零件、装配体或工程图产生歧义。"
     },
     {
@@ -79,7 +79,7 @@
       "defaultValue": "false",
       "required": false,
       "variableMode": "Input",
-      "condition": "",
+      "condition": "仅：document.open",
       "description": ""
     },
     {
@@ -89,7 +89,7 @@
       "defaultValue": "",
       "required": false,
       "variableMode": "UseVarOrInput",
-      "condition": "",
+      "condition": "仅：document.open",
       "description": "可选；仅打开指定配置，留空使用文档默认配置。"
     },
     {
@@ -99,7 +99,7 @@
       "defaultValue": "false",
       "required": false,
       "variableMode": "Input",
-      "condition": "",
+      "condition": "仅：document.activate",
       "description": ""
     },
     {
@@ -109,7 +109,7 @@
       "defaultValue": "",
       "required": true,
       "variableMode": "UseVarOrInput",
-      "condition": "",
+      "condition": "仅：document.save_as, document.export, drawing.export_pdf",
       "description": "使用绝对路径，文件扩展名决定 SOLIDWORKS 保存或导出格式。"
     },
     {
@@ -119,7 +119,7 @@
       "defaultValue": "false",
       "required": false,
       "variableMode": "Input",
-      "condition": "",
+      "condition": "仅：document.save_as, document.export, drawing.export_pdf",
       "description": ""
     },
     {
@@ -129,7 +129,7 @@
       "defaultValue": "entire",
       "required": false,
       "variableMode": "UseVarOrInput",
-      "condition": "",
+      "condition": "仅：document.export",
       "description": "entire 导出整个模型并先清空选择；selection 只导出当前选择。"
     },
     {
@@ -139,7 +139,7 @@
       "defaultValue": "false",
       "required": false,
       "variableMode": "Input",
-      "condition": "",
+      "condition": "仅：document.rebuild",
       "description": ""
     },
     {
@@ -149,7 +149,7 @@
       "defaultValue": "1",
       "required": false,
       "variableMode": "Input",
-      "condition": "",
+      "condition": "仅：document.undo",
       "description": ""
     },
     {
@@ -159,7 +159,7 @@
       "defaultValue": "",
       "required": true,
       "variableMode": "UseVarOrInput",
-      "condition": "",
+      "condition": "仅：selection.select_by_name",
       "description": ""
     },
     {
@@ -169,7 +169,7 @@
       "defaultValue": "",
       "required": false,
       "variableMode": "UseVarOrInput",
-      "condition": "",
+      "condition": "仅：selection.select_by_name",
       "description": "例如 COMPONENT、BODYFEATURE、FACE；留空时由 SOLIDWORKS 尝试匹配。"
     },
     {
@@ -179,7 +179,7 @@
       "defaultValue": "false",
       "required": false,
       "variableMode": "Input",
-      "condition": "",
+      "condition": "仅：selection.select_by_name",
       "description": ""
     },
     {
@@ -189,7 +189,7 @@
       "defaultValue": "true",
       "required": false,
       "variableMode": "Input",
-      "condition": "",
+      "condition": "仅：feature.list",
       "description": ""
     },
     {
@@ -199,7 +199,7 @@
       "defaultValue": "[]",
       "required": true,
       "variableMode": "UseVarOrInput",
-      "condition": "",
+      "condition": "仅：feature.set_suppression",
       "description": "例如 [\"Boss-Extrude1\",\"Cut-Extrude1\"]；会先确认所有目标唯一存在，再开始修改。"
     },
     {
@@ -209,7 +209,7 @@
       "defaultValue": "suppressed",
       "required": false,
       "variableMode": "UseVarOrInput",
-      "condition": "",
+      "condition": "仅：feature.set_suppression",
       "description": "suppressed 或 resolved。"
     },
     {
@@ -219,7 +219,7 @@
       "defaultValue": "current",
       "required": false,
       "variableMode": "UseVarOrInput",
-      "condition": "",
+      "condition": "仅：feature.set_suppression",
       "description": "current 仅当前配置；all 作用于全部配置。"
     },
     {
@@ -229,7 +229,7 @@
       "defaultValue": "",
       "required": true,
       "variableMode": "UseVarOrInput",
-      "condition": "",
+      "condition": "仅：configuration.activate",
       "description": ""
     },
     {
@@ -239,7 +239,7 @@
       "defaultValue": "",
       "required": false,
       "variableMode": "UseVarOrInput",
-      "condition": "",
+      "condition": "仅：property.list, property.set, property.delete",
       "description": "留空表示文档级属性；填写配置名称表示配置专用属性。"
     },
     {
@@ -249,7 +249,7 @@
       "defaultValue": "Description",
       "required": true,
       "variableMode": "UseVarOrInput",
-      "condition": "",
+      "condition": "仅：property.set, property.delete",
       "description": ""
     },
     {
@@ -259,7 +259,7 @@
       "defaultValue": "",
       "required": false,
       "variableMode": "UseVarOrInput",
-      "condition": "",
+      "condition": "仅：property.set",
       "description": ""
     },
     {
@@ -269,7 +269,7 @@
       "defaultValue": "false",
       "required": false,
       "variableMode": "Input",
-      "condition": "",
+      "condition": "仅：assembly.list_components",
       "description": ""
     },
     {
@@ -279,7 +279,7 @@
       "defaultValue": "Sheet1",
       "required": true,
       "variableMode": "UseVarOrInput",
-      "condition": "",
+      "condition": "仅：drawing.activate_sheet",
       "description": ""
     },
     {
@@ -289,7 +289,7 @@
       "defaultValue": "all",
       "required": false,
       "variableMode": "UseVarOrInput",
-      "condition": "",
+      "condition": "仅：drawing.export_pdf",
       "description": "all、current，或 JSON 名称数组，例如 [\"Sheet1\",\"Sheet2\"]。"
     },
     {
@@ -299,7 +299,7 @@
       "defaultValue": "isometric",
       "required": false,
       "variableMode": "UseVarOrInput",
-      "condition": "",
+      "condition": "仅：view.standard",
       "description": "front、back、left、right、top、bottom、isometric、trimetric 或 dimetric。"
     },
     {
@@ -309,7 +309,7 @@
       "defaultValue": "",
       "required": true,
       "variableMode": "UseVarOrInput",
-      "condition": "",
+      "condition": "仅：macro.run",
       "description": "支持 SOLIDWORKS VBA .swp 或编译后的 VSTA 宏 DLL。"
     },
     {
@@ -319,7 +319,7 @@
       "defaultValue": "Module1",
       "required": true,
       "variableMode": "UseVarOrInput",
-      "condition": "",
+      "condition": "仅：macro.run",
       "description": ""
     },
     {
@@ -329,7 +329,7 @@
       "defaultValue": "main",
       "required": true,
       "variableMode": "UseVarOrInput",
-      "condition": "",
+      "condition": "仅：macro.run",
       "description": ""
     },
     {
@@ -339,7 +339,7 @@
       "defaultValue": "return document == null ? null : document.GetTitle();",
       "required": true,
       "variableMode": "UseVarOrInput",
-      "condition": "",
+      "condition": "仅：script.evaluate",
       "description": "在 SOLIDWORKS 进程内执行；可使用 application（SldWorks）和 document（当前 ModelDoc2，可为空）。不提供安全沙箱，只运行可信代码。"
     },
     {
@@ -349,7 +349,7 @@
       "defaultValue": "Option Explicit\nDim swApp As SldWorks.SldWorks\nSub main()\n    Set swApp = Application.SldWorks\n    swApp.SendMsgToUser2 \"Hello from Quicker\", 0, 0\nEnd Sub",
       "required": true,
       "variableMode": "UseVarOrInput",
-      "condition": "",
+      "condition": "仅：script.evaluate_vba",
       "description": "完整 VBA 模块代码。Bridge 会写入临时 .swb 文本宏，由 SOLIDWORKS 转换并执行；不提供安全沙箱。"
     },
     {
@@ -359,7 +359,7 @@
       "defaultValue": "",
       "required": false,
       "variableMode": "UseVarOrInput",
-      "condition": "",
+      "condition": "仅：script.evaluate_vba",
       "description": "通常留空，由 Bridge 自动读取临时宏的入口模块；仅兼容性排查时手动指定。"
     },
     {
@@ -369,7 +369,7 @@
       "defaultValue": "main",
       "required": true,
       "variableMode": "UseVarOrInput",
-      "condition": "",
+      "condition": "仅：script.evaluate_vba",
       "description": "只能执行无参数 Sub。"
     },
     {
@@ -379,7 +379,7 @@
       "defaultValue": "",
       "required": true,
       "variableMode": "UseVarOrInput",
-      "condition": "",
+      "condition": "仅：command.custom",
       "description": ""
     },
     {
@@ -389,7 +389,7 @@
       "defaultValue": "{}",
       "required": false,
       "variableMode": "UseVarOrInput",
-      "condition": "",
+      "condition": "仅：command.custom",
       "description": ""
     },
     {

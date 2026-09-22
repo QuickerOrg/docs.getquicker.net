@@ -69,7 +69,7 @@
       "defaultValue": "MainScreen",
       "required": false,
       "variableMode": "Input",
-      "condition": "仅：locateByBitmapFile, locateByBitmapVar, locateByColor, locateByText",
+      "condition": "仅：locateByText, locateByColor, locateByBitmapFile, locateByBitmapVar",
       "description": "位图查找范围"
     },
     {
@@ -189,7 +189,7 @@
       "defaultValue": "0",
       "required": false,
       "variableMode": "Input",
-      "condition": "仅：locateByBitmapFile, locateByBitmapVar, locateByColor, locateByText",
+      "condition": "仅：locateByText, locateByColor, locateByBitmapFile, locateByBitmapVar",
       "description": "未找到位图时的重试次数。每次重试间隔300ms。"
     },
     {
@@ -242,14 +242,14 @@
       "key": "imgIndex",
       "name": "匹配序号",
       "type": "Integer",
-      "condition": "仅：locateByBitmapFile, locateByText",
+      "condition": "仅：locateByText, locateByBitmapFile",
       "description": "从多个图片或多组文字中查找时，返回匹配到的图片或文字组序号，从0开始。"
     },
     {
       "key": "allPoints",
       "name": "所有匹配点",
       "type": "List",
-      "condition": "仅：locateByBitmapFile, locateByBitmapVar, locateByText",
+      "condition": "仅：locateByText, locateByBitmapFile, locateByBitmapVar",
       "description": "所有的匹配点列表"
     },
     {

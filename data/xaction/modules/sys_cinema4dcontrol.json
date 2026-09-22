@@ -4,7 +4,7 @@
   "legacySlug": "cinema4dcontrol",
   "ownsLegacyContent": true,
   "name": "Cinema 4D控制",
-  "description": "通过 Cinema 4D Python 插件向动作触发时的前台实例发送命令。",
+  "description": "通过 Cinema 4D Python 插件发送命令；仅有一个在线连接时直接使用，多个连接时按动作触发窗口定位。",
   "category": "SoftInteraction",
   "categoryName": "第三方软件交互",
   "stepType": "Action",
@@ -29,7 +29,7 @@
       "defaultValue": "true",
       "required": false,
       "variableMode": "Input",
-      "condition": "",
+      "condition": "仅：object.list",
       "description": ""
     },
     {
@@ -39,7 +39,7 @@
       "defaultValue": "20",
       "required": false,
       "variableMode": "Input",
-      "condition": "",
+      "condition": "仅：object.list",
       "description": ""
     },
     {
@@ -49,7 +49,7 @@
       "defaultValue": "false",
       "required": false,
       "variableMode": "Input",
-      "condition": "",
+      "condition": "仅：object.list",
       "description": ""
     },
     {
@@ -59,7 +59,7 @@
       "defaultValue": "true",
       "required": false,
       "variableMode": "Input",
-      "condition": "",
+      "condition": "仅：selection.select_all, selection.invert",
       "description": ""
     },
     {
@@ -69,7 +69,7 @@
       "defaultValue": "[]",
       "required": false,
       "variableMode": "UseVarOrInput",
-      "condition": "",
+      "condition": "仅：selection.select_by_refs",
       "description": "引用可从读取对象层级或选择详情的 ref 字段取得。"
     },
     {
@@ -79,7 +79,7 @@
       "defaultValue": "replace",
       "required": false,
       "variableMode": "UseVarOrInput",
-      "condition": "",
+      "condition": "仅：selection.select_by_refs",
       "description": "replace、add 或 remove。"
     },
     {
@@ -89,7 +89,7 @@
       "defaultValue": "cube",
       "required": false,
       "variableMode": "UseVarOrInput",
-      "condition": "",
+      "condition": "仅：object.create_primitive",
       "description": "首版支持 cube、sphere、cylinder、cone、plane、torus。"
     },
     {
@@ -99,7 +99,7 @@
       "defaultValue": "Quicker Object",
       "required": false,
       "variableMode": "UseVarOrInput",
-      "condition": "",
+      "condition": "仅：object.create_primitive",
       "description": ""
     },
     {
@@ -109,7 +109,7 @@
       "defaultValue": "{oldName}_{index:02d}",
       "required": false,
       "variableMode": "UseVarOrInput",
-      "condition": "",
+      "condition": "仅：object.rename_selected",
       "description": "支持 {oldName} 和 {index}，例如 Obj_{index:03d}。"
     },
     {
@@ -119,7 +119,7 @@
       "defaultValue": "1",
       "required": false,
       "variableMode": "Input",
-      "condition": "",
+      "condition": "仅：object.rename_selected",
       "description": ""
     },
     {
@@ -129,7 +129,7 @@
       "defaultValue": "100",
       "required": false,
       "variableMode": "Input",
-      "condition": "",
+      "condition": "仅：object.move_selected",
       "description": ""
     },
     {
@@ -139,7 +139,7 @@
       "defaultValue": "0",
       "required": false,
       "variableMode": "Input",
-      "condition": "",
+      "condition": "仅：object.move_selected",
       "description": ""
     },
     {
@@ -149,7 +149,7 @@
       "defaultValue": "0",
       "required": false,
       "variableMode": "Input",
-      "condition": "",
+      "condition": "仅：object.move_selected",
       "description": ""
     },
     {
@@ -159,7 +159,7 @@
       "defaultValue": "global",
       "required": false,
       "variableMode": "UseVarOrInput",
-      "condition": "",
+      "condition": "仅：object.move_selected",
       "description": "global 使用世界坐标；local 使用父级坐标。"
     },
     {
@@ -169,7 +169,7 @@
       "defaultValue": "",
       "required": false,
       "variableMode": "UseVarOrInput",
-      "condition": "",
+      "condition": "仅：command.search",
       "description": "按命令 ID、本地标题或帮助文本筛选；留空返回前若干项。"
     },
     {
@@ -179,7 +179,7 @@
       "defaultValue": "100",
       "required": false,
       "variableMode": "Input",
-      "condition": "",
+      "condition": "仅：command.search",
       "description": ""
     },
     {
@@ -189,7 +189,7 @@
       "defaultValue": "13957",
       "required": false,
       "variableMode": "UseVarOrInput",
-      "condition": "",
+      "condition": "仅：command.get_info, command.call",
       "description": "可填写数字 ID，或 command.search 返回的本地化标题；标题不唯一时会返回候选 ID。"
     },
     {
@@ -199,7 +199,7 @@
       "defaultValue": "",
       "required": true,
       "variableMode": "UseVarOrInput",
-      "condition": "",
+      "condition": "仅：python.evaluate, python.execute",
       "description": "表达式直接返回 value；脚本可把返回值赋给 result。"
     },
     {
@@ -209,7 +209,7 @@
       "defaultValue": "",
       "required": true,
       "variableMode": "UseVarOrInput",
-      "condition": "",
+      "condition": "仅：python.run_file",
       "description": ""
     },
     {
@@ -219,7 +219,7 @@
       "defaultValue": "",
       "required": true,
       "variableMode": "UseVarOrInput",
-      "condition": "",
+      "condition": "仅：command.custom",
       "description": ""
     },
     {
@@ -229,7 +229,7 @@
       "defaultValue": "{}",
       "required": false,
       "variableMode": "UseVarOrInput",
-      "condition": "",
+      "condition": "仅：command.custom",
       "description": ""
     },
     {

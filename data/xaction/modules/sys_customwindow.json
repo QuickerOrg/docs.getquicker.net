@@ -29,7 +29,7 @@
       "defaultValue": "<Window xmlns=\"http://schemas.microsoft.com/winfx/2006/xaml/presentation\"\n        xmlns:d=\"http://schemas.microsoft.com/expression/blend/2008\"\n        xmlns:x=\"http://schemas.microsoft.com/winfx/2006/xaml\"\n        xmlns:hc=\"https://handyorg.github.io/handycontrol\"\n        xmlns:mc=\"http://schemas.openxmlformats.org/markup-compatibility/2006\"\n        xmlns:qk=\"https://getquicker.net\"\n        Width=\"637\"\n        Height=\"556\"\n        Title=\"Test Window\"\n        mc:Ignorable=\"d\">\n  <Grid Margin=\"10\">\n    <StackPanel>\n      <TextBlock Margin=\"10,50,10,50\" Text=\"Hello World！\" FontSize=\"20\" />\n     \n      <Button Margin=\"10\" qk:Att.Action=\"close:result\" Style=\"{StaticResource ButtonPrimary}\" Width=\"50\">\n        关闭\n      </Button>\n    </StackPanel>\n  </Grid>\n</Window>",
       "required": true,
       "variableMode": "UseVarOrInput",
-      "condition": "仅：Show, ShowAndWaitClose",
+      "condition": "仅：ShowAndWaitClose, Show",
       "description": "窗口定义XAML代码"
     },
     {
@@ -39,7 +39,7 @@
       "defaultValue": "",
       "required": true,
       "variableMode": "UseVarOrInput",
-      "condition": "仅：Show, ShowAndWaitClose",
+      "condition": "仅：ShowAndWaitClose, Show",
       "description": "将变量与窗口上下文数据进行映射。每行一个，格式为:\"窗口数据项名称:{动作变量名}\" 或 \"窗口数据项:=表达式\""
     },
     {
@@ -49,7 +49,7 @@
       "defaultValue": "",
       "required": true,
       "variableMode": "UseVarOrInput",
-      "condition": "仅：Show, ShowAndWaitClose",
+      "condition": "仅：ShowAndWaitClose, Show",
       "description": "详细说明请参考模块文档"
     },
     {
@@ -59,7 +59,7 @@
       "defaultValue": "",
       "required": false,
       "variableMode": "UseVarOrInput",
-      "condition": "仅：Show, ShowAndWaitClose",
+      "condition": "仅：ShowAndWaitClose, Show",
       "description": "辅助处理窗口事件的代码，详见文档。"
     },
     {
@@ -69,7 +69,7 @@
       "defaultValue": "",
       "required": false,
       "variableMode": "UseVarOrInput",
-      "condition": "仅：Show, ShowAndWaitClose",
+      "condition": "仅：ShowAndWaitClose, Show",
       "description": "辅助 C# 代码要引用的 DLL 文件，每行一个。也可以在代码中使用 #r 指令。"
     },
     {
@@ -89,7 +89,7 @@
       "defaultValue": "0",
       "required": true,
       "variableMode": "UseVarOrInput",
-      "condition": "仅：Show, ShowAndWaitClose",
+      "condition": "仅：ShowAndWaitClose, Show",
       "description": "自动关闭窗口的时间（秒数）。需大于0.5秒。"
     },
     {
@@ -99,8 +99,18 @@
       "defaultValue": "CenterScreen",
       "required": false,
       "variableMode": "UseVarOrInput",
-      "condition": "仅：Show, ShowAndWaitClose",
-      "description": "在哪里显示选择窗口"
+      "condition": "仅：ShowAndWaitClose, Show",
+      "description": "窗口显示的位置"
+    },
+    {
+      "key": "mouseOffset",
+      "name": "鼠标定位偏移",
+      "type": "Text",
+      "defaultValue": "",
+      "required": false,
+      "variableMode": "UseVarOrInput",
+      "condition": "仅：ShowAndWaitClose, Show",
+      "description": "仅用于跟随鼠标。填写水平、垂直偏移（逻辑像素），如 10,10 表示向右、向下各偏移 10；负数反向，留空使用默认位置。"
     },
     {
       "key": "winSize",
@@ -109,8 +119,8 @@
       "defaultValue": "",
       "required": false,
       "variableMode": "Input",
-      "condition": "仅：Show, ShowAndWaitClose",
-      "description": "设置选择窗口的最大尺寸，格式为：宽度,高度。支持像素数值或屏幕宽高百分比，详情请参考模块文档。\n\"窗口位置\" 类型为 \"自定义位置\" 时用于指定显示位置，格式为：left,top,right,bottom"
+      "condition": "仅：ShowAndWaitClose, Show",
+      "description": "最大宽度,高度：逻辑像素或屏幕工作区百分比；自定义位置填坐标。"
     },
     {
       "key": "activateMode",
@@ -119,7 +129,7 @@
       "defaultValue": "AutoActivate",
       "required": false,
       "variableMode": "UseVarOrInput",
-      "condition": "仅：Show, ShowAndWaitClose",
+      "condition": "仅：ShowAndWaitClose, Show",
       "description": ""
     },
     {
@@ -129,7 +139,7 @@
       "defaultValue": "false",
       "required": false,
       "variableMode": "UseVarOrInput",
-      "condition": "仅：Show, ShowAndWaitClose",
+      "condition": "仅：ShowAndWaitClose, Show",
       "description": "仅在窗口支持激活（获取焦点）的情况下有效。"
     },
     {
@@ -217,6 +227,11 @@
         {
           "value": "WithMouse2",
           "name": "跟随鼠标（指针右下）",
+          "description": ""
+        },
+        {
+          "value": "WithMouseTopRight",
+          "name": "跟随鼠标（指针右上）",
           "description": ""
         },
         {

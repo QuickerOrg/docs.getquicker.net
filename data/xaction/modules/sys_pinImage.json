@@ -255,18 +255,18 @@
   ],
   "outputs": [
     {
-      "key": "img",
-      "name": "贴图位图",
-      "type": "Image",
-      "condition": "",
-      "description": "本次生成或用于贴图的位图（与窗口显示内容一致）。"
-    },
-    {
       "key": "isSuccess",
       "name": "是否成功",
       "type": "Boolean",
       "condition": "",
       "description": "操作是否成功"
+    },
+    {
+      "key": "img",
+      "name": "贴图位图",
+      "type": "Image",
+      "condition": "",
+      "description": "本次生成或用于贴图的位图（与窗口显示内容一致）。"
     }
   ],
   "selections": {

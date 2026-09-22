@@ -1,6 +1,6 @@
 ---
 title: "SketchUp控制"
-description: "通过 SketchUp Bridge 调用宿主能力，包含连接验证、目标规则和使用限制。"
+description: "通过 SketchUp Ruby 扩展发送命令；仅有一个在线连接时直接使用，多个连接时按动作触发窗口定位。"
 slug: "/v2/xaction/modules/sketchupcontrol"
 sidebar_label: "SketchUp控制"
 sidebar_position: 230
@@ -8,7 +8,7 @@ quickerDocKey: "xaction/module/sys:sketchupcontrol"
 comments: true
 moduleKey: "sys:sketchupcontrol"
 docStatus: "reviewed"
-metadataGeneratedAt: "2026-09-04 07:37:19"
+metadataGeneratedAt: "2026-09-20 15:25:17"
 ---
 
 # SketchUp控制

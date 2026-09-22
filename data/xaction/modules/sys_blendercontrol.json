@@ -4,7 +4,7 @@
   "legacySlug": "blendercontrol",
   "ownsLegacyContent": true,
   "name": "Blender控制",
-  "description": "通过 Blender Python Extension 向动作触发时的前台实例发送命令。",
+  "description": "通过 Blender Python Extension 发送命令；仅有一个在线连接时直接使用，多个连接时按动作触发窗口定位。",
   "category": "SoftInteraction",
   "categoryName": "第三方软件交互",
   "stepType": "Action",
@@ -29,7 +29,7 @@
       "defaultValue": "true",
       "required": false,
       "variableMode": "Input",
-      "condition": "",
+      "condition": "仅：selection.get_info",
       "description": ""
     },
     {
@@ -39,7 +39,7 @@
       "defaultValue": "",
       "required": false,
       "variableMode": "UseVarOrInput",
-      "condition": "",
+      "condition": "仅：operator.list",
       "description": "按 Operator ID 或本地标题筛选；留空返回前若干项。"
     },
     {
@@ -49,7 +49,7 @@
       "defaultValue": "100",
       "required": false,
       "variableMode": "Input",
-      "condition": "",
+      "condition": "仅：operator.list",
       "description": ""
     },
     {
@@ -59,7 +59,7 @@
       "defaultValue": "object.select_all",
       "required": false,
       "variableMode": "UseVarOrInput",
-      "condition": "",
+      "condition": "仅：operator.invoke",
       "description": "例如 object.select_all；也可填写第三方插件注册的 Operator。"
     },
     {
@@ -69,7 +69,7 @@
       "defaultValue": "EXEC_DEFAULT",
       "required": false,
       "variableMode": "UseVarOrInput",
-      "condition": "",
+      "condition": "仅：operator.invoke",
       "description": "通常使用 EXEC_DEFAULT；需要交互操作时可改为 INVOKE_DEFAULT。"
     },
     {
@@ -79,7 +79,7 @@
       "defaultValue": "VIEW_3D",
       "required": false,
       "variableMode": "UseVarOrInput",
-      "condition": "",
+      "condition": "仅：operator.invoke",
       "description": "为依赖界面上下文的 Operator 提供区域，例如 VIEW_3D、NODE_EDITOR；留空仅提供窗口上下文。"
     },
     {
@@ -89,7 +89,7 @@
       "defaultValue": "{}",
       "required": false,
       "variableMode": "UseVarOrInput",
-      "condition": "",
+      "condition": "仅：operator.invoke",
       "description": ""
     },
     {
@@ -99,7 +99,7 @@
       "defaultValue": "",
       "required": true,
       "variableMode": "UseVarOrInput",
-      "condition": "",
+      "condition": "仅：python.evaluate, python.execute",
       "description": "表达式直接返回值；脚本可把返回值赋给 result。"
     },
     {
@@ -109,7 +109,7 @@
       "defaultValue": "",
       "required": true,
       "variableMode": "UseVarOrInput",
-      "condition": "",
+      "condition": "仅：python.run_file, model.import_file",
       "description": "Python 文件或要导入的模型文件绝对路径。"
     },
     {
@@ -119,7 +119,7 @@
       "defaultValue": "",
       "required": true,
       "variableMode": "UseVarOrInput",
-      "condition": "",
+      "condition": "仅：command.custom",
       "description": ""
     },
     {
@@ -129,7 +129,7 @@
       "defaultValue": "{}",
       "required": false,
       "variableMode": "UseVarOrInput",
-      "condition": "",
+      "condition": "仅：command.custom",
       "description": ""
     },
     {

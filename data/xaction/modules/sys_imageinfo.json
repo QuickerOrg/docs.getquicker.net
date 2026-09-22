@@ -53,6 +53,16 @@
       "description": "如果Exif中包含旋转角度信息，则获取旋转后的宽高"
     },
     {
+      "key": "missingExifDateFallback",
+      "name": "无 EXIF 日期时",
+      "type": "Enum",
+      "defaultValue": "creationTime",
+      "required": false,
+      "variableMode": "UseVarOrInput",
+      "condition": "",
+      "description": "Exif拍摄时间和普通日期均缺失时的处理方式。文件日期只是估算；图片变量没有文件日期，始终返回时间最小值（1年1月1日）。"
+    },
+    {
       "key": "stopIfFail",
       "name": "失败后停止",
       "type": "Boolean",
@@ -97,7 +107,7 @@
       "name": "拍摄时间",
       "type": "DateTime",
       "condition": "",
-      "description": ""
+      "description": "优先读取Exif拍摄时间，其次读取Exif普通日期；均缺失时按“无 EXIF 日期时”选项处理。图片变量无日期或日期解析失败时返回时间最小值。"
     },
     {
       "key": "exifData",
@@ -119,6 +129,13 @@
       "type": "Text",
       "condition": "仅：file",
       "description": "根据文件内容判断的文件格式（可能不准确），用于在无法根据扩展名得到图片格式的情况下使用。"
+    },
+    {
+      "key": "isTakenDateTimeEmpty",
+      "name": "拍摄时间为空",
+      "type": "Boolean",
+      "condition": "",
+      "description": "Exif拍摄时间（DateTimeOriginal）缺失或无法解析时为true；不把Exif普通日期或文件日期视为拍摄时间。“拍摄时间”输出此时可能返回回退值。"
     }
   ],
   "selections": {
@@ -133,6 +150,31 @@
         {
           "value": "file",
           "name": "图片文件",
+          "description": ""
+        }
+      ]
+    },
+    "missingExifDateFallback": {
+      "name": "无 EXIF 日期时",
+      "items": [
+        {
+          "value": "creationTime",
+          "name": "使用文件创建时间",
+          "description": ""
+        },
+        {
+          "value": "earlierFileTime",
+          "name": "使用创建、修改时间的较早值",
+          "description": ""
+        },
+        {
+          "value": "lastWriteTime",
+          "name": "使用文件修改时间",
+          "description": ""
+        },
+        {
+          "value": "minValue",
+          "name": "返回时间最小值",
           "description": ""
         }
       ]

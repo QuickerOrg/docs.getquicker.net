@@ -59,7 +59,7 @@
       "defaultValue": "=",
       "required": false,
       "variableMode": "Input",
-      "condition": "排除：GET_ALL_WINDOWS, GET_ACTION_WINDOWS",
+      "condition": "仅：WAIT, NO_WAIT, CLOSE_WINDOW, GET_WIN_INFO, APPEND_TEXT, ACTIVATE_WINDOW, WAIT_CLOSE",
       "description": "可选。自动更新或关闭之前打开的具有此标识的文本窗口。使用'='表示当前动作id。"
     },
     {
@@ -80,7 +80,7 @@
       "required": false,
       "variableMode": "Input",
       "condition": "仅：WAIT, NO_WAIT",
-      "description": "设置选择窗口的尺寸，格式为：宽度,高度。支持逻辑像素数值或屏幕宽高百分比，详情请参考模块文档。\n\"窗口位置\" 类型为 \"自定义位置\" 时用于指定显示位置，格式为：left,top,right,bottom"
+      "description": "宽度,高度：逻辑像素或屏幕工作区百分比；自定义位置填坐标。"
     },
     {
       "key": "topMost",

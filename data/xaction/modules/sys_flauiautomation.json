@@ -30,7 +30,7 @@
       "required": false,
       "variableMode": "UseVarOrInput",
       "condition": "仅：TriggerMenu, TriggerControl, GetControlInfo, GetControlTree, ObserveInteractiveControls",
-      "description": "要操作哪个窗口的控件。不填写=使用前台窗口；或窗口句柄数字。"
+      "description": "要操作哪个窗口的控件。不填写或填写0=使用前台窗口；或窗口句柄数字。"
     },
     {
       "key": "menuPath",
@@ -111,6 +111,16 @@
       "variableMode": "Input",
       "condition": "仅：TriggerControl",
       "description": "对控件执行的操作。"
+    },
+    {
+      "key": "noWait",
+      "name": "不等待操作完成",
+      "type": "Boolean",
+      "defaultValue": "false",
+      "required": false,
+      "variableMode": "UseVarOrInput",
+      "condition": "仅：TriggerControl",
+      "description": "提交后立即执行后续步骤，不保证控件操作已完成。是否成功仅表示提交成功；后台失败只记录日志，不触发失败后停止。涉及鼠标、键盘或焦点的操作可能与后续步骤互相影响，请按需等待目标状态。"
     },
     {
       "key": "value",
@@ -327,207 +337,207 @@
         },
         {
           "value": "AppBar",
-          "name": "AppBar",
+          "name": "应用栏",
           "description": ""
         },
         {
           "value": "Button",
-          "name": "Button",
+          "name": "按钮",
           "description": ""
         },
         {
           "value": "Calendar",
-          "name": "Calendar",
+          "name": "日历",
           "description": ""
         },
         {
           "value": "CheckBox",
-          "name": "CheckBox",
+          "name": "复选框",
           "description": ""
         },
         {
           "value": "ComboBox",
-          "name": "ComboBox",
+          "name": "组合框",
           "description": ""
         },
         {
           "value": "Custom",
-          "name": "Custom",
+          "name": "自定义控件",
           "description": ""
         },
         {
           "value": "DataGrid",
-          "name": "DataGrid",
+          "name": "数据网格",
           "description": ""
         },
         {
           "value": "DataItem",
-          "name": "DataItem",
+          "name": "数据项",
           "description": ""
         },
         {
           "value": "Document",
-          "name": "Document",
+          "name": "文档",
           "description": ""
         },
         {
           "value": "Edit",
-          "name": "Edit",
+          "name": "编辑框",
           "description": ""
         },
         {
           "value": "Group",
-          "name": "Group",
+          "name": "分组",
           "description": ""
         },
         {
           "value": "Header",
-          "name": "Header",
+          "name": "表头",
           "description": ""
         },
         {
           "value": "HeaderItem",
-          "name": "HeaderItem",
+          "name": "表头项",
           "description": ""
         },
         {
           "value": "Hyperlink",
-          "name": "Hyperlink",
+          "name": "超链接",
           "description": ""
         },
         {
           "value": "Image",
-          "name": "Image",
+          "name": "图像",
           "description": ""
         },
         {
           "value": "List",
-          "name": "List",
+          "name": "列表",
           "description": ""
         },
         {
           "value": "ListItem",
-          "name": "ListItem",
+          "name": "列表项",
           "description": ""
         },
         {
           "value": "Menu",
-          "name": "Menu",
+          "name": "菜单",
           "description": ""
         },
         {
           "value": "MenuBar",
-          "name": "MenuBar",
+          "name": "菜单栏",
           "description": ""
         },
         {
           "value": "MenuItem",
-          "name": "MenuItem",
+          "name": "菜单项",
           "description": ""
         },
         {
           "value": "Pane",
-          "name": "Pane",
+          "name": "面板",
           "description": ""
         },
         {
           "value": "ProgressBar",
-          "name": "ProgressBar",
+          "name": "进度条",
           "description": ""
         },
         {
           "value": "RadioButton",
-          "name": "RadioButton",
+          "name": "单选按钮",
           "description": ""
         },
         {
           "value": "ScrollBar",
-          "name": "ScrollBar",
+          "name": "滚动条",
           "description": ""
         },
         {
           "value": "SemanticZoom",
-          "name": "SemanticZoom",
+          "name": "语义缩放",
           "description": ""
         },
         {
           "value": "Separator",
-          "name": "Separator",
+          "name": "分隔符",
           "description": ""
         },
         {
           "value": "Slider",
-          "name": "Slider",
+          "name": "滑块",
           "description": ""
         },
         {
           "value": "Spinner",
-          "name": "Spinner",
+          "name": "微调框",
           "description": ""
         },
         {
           "value": "SplitButton",
-          "name": "SplitButton",
+          "name": "拆分按钮",
           "description": ""
         },
         {
           "value": "StatusBar",
-          "name": "StatusBar",
+          "name": "状态栏",
           "description": ""
         },
         {
           "value": "Tab",
-          "name": "Tab",
+          "name": "选项卡",
           "description": ""
         },
         {
           "value": "TabItem",
-          "name": "TabItem",
+          "name": "选项卡项",
           "description": ""
         },
         {
           "value": "Table",
-          "name": "Table",
+          "name": "表格",
           "description": ""
         },
         {
           "value": "Text",
-          "name": "Text",
+          "name": "文本",
           "description": ""
         },
         {
           "value": "Thumb",
-          "name": "Thumb",
+          "name": "拖动柄",
           "description": ""
         },
         {
           "value": "TitleBar",
-          "name": "TitleBar",
+          "name": "标题栏",
           "description": ""
         },
         {
           "value": "ToolBar",
-          "name": "ToolBar",
+          "name": "工具栏",
           "description": ""
         },
         {
           "value": "ToolTip",
-          "name": "ToolTip",
+          "name": "工具提示",
           "description": ""
         },
         {
           "value": "Tree",
-          "name": "Tree",
+          "name": "树形控件",
           "description": ""
         },
         {
           "value": "TreeItem",
-          "name": "TreeItem",
+          "name": "树节点",
           "description": ""
         },
         {
           "value": "Window",
-          "name": "Window",
+          "name": "窗口",
           "description": ""
         }
       ]

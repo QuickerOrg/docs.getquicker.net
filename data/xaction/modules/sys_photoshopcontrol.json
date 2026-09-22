@@ -29,7 +29,7 @@
       "defaultValue": "0",
       "required": false,
       "variableMode": "UseVarOrInput",
-      "condition": "",
+      "condition": "仅：layer.select, layer.rename, layer.set_visibility, layer.duplicate, layer.delete",
       "description": ""
     },
     {
@@ -39,7 +39,7 @@
       "defaultValue": "新名称",
       "required": true,
       "variableMode": "UseVarOrInput",
-      "condition": "",
+      "condition": "仅：layer.rename",
       "description": ""
     },
     {
@@ -49,7 +49,7 @@
       "defaultValue": "true",
       "required": false,
       "variableMode": "Input",
-      "condition": "",
+      "condition": "仅：layer.set_visibility",
       "description": ""
     },
     {
@@ -59,7 +59,7 @@
       "defaultValue": "false",
       "required": false,
       "variableMode": "Input",
-      "condition": "",
+      "condition": "仅：layer.select",
       "description": ""
     },
     {
@@ -69,7 +69,7 @@
       "defaultValue": "1920",
       "required": false,
       "variableMode": "UseVarOrInput",
-      "condition": "",
+      "condition": "仅：image.resize",
       "description": ""
     },
     {
@@ -79,7 +79,7 @@
       "defaultValue": "1080",
       "required": false,
       "variableMode": "UseVarOrInput",
-      "condition": "",
+      "condition": "仅：image.resize",
       "description": ""
     },
     {
@@ -89,7 +89,7 @@
       "defaultValue": "90",
       "required": false,
       "variableMode": "UseVarOrInput",
-      "condition": "",
+      "condition": "仅：image.rotate",
       "description": ""
     },
     {
@@ -99,7 +99,7 @@
       "defaultValue": "photoshop.app.activeDocument.title",
       "required": true,
       "variableMode": "UseVarOrInput",
-      "condition": "",
+      "condition": "仅：script.evaluate",
       "description": ""
     },
     {
@@ -109,7 +109,7 @@
       "defaultValue": "[]",
       "required": false,
       "variableMode": "UseVarOrInput",
-      "condition": "",
+      "condition": "仅：batch_play.execute",
       "description": ""
     },
     {
@@ -119,7 +119,7 @@
       "defaultValue": "",
       "required": true,
       "variableMode": "UseVarOrInput",
-      "condition": "",
+      "condition": "仅：command.custom",
       "description": ""
     },
     {
@@ -129,7 +129,7 @@
       "defaultValue": "{}",
       "required": false,
       "variableMode": "UseVarOrInput",
-      "condition": "",
+      "condition": "仅：command.custom",
       "description": ""
     },
     {

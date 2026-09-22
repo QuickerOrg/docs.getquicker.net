@@ -1,6 +1,6 @@
 ---
 title: "Maya控制"
-description: "通过 Maya Bridge 调用宿主能力，包含连接验证、目标规则和使用限制。"
+description: "通过 Maya Python 插件发送命令；仅有一个在线连接时直接使用，多个连接时按动作触发窗口定位。"
 slug: "/v2/xaction/modules/mayacontrol"
 sidebar_label: "Maya控制"
 sidebar_position: 170
@@ -8,7 +8,7 @@ quickerDocKey: "xaction/module/sys:mayacontrol"
 comments: true
 moduleKey: "sys:mayacontrol"
 docStatus: "reviewed"
-metadataGeneratedAt: "2026-09-04 07:37:19"
+metadataGeneratedAt: "2026-09-20 15:25:17"
 ---
 
 # Maya控制

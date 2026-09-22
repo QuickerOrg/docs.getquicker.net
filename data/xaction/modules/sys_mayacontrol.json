@@ -4,7 +4,7 @@
   "legacySlug": "mayacontrol",
   "ownsLegacyContent": true,
   "name": "Maya控制",
-  "description": "通过 Maya Python 插件向动作触发时的前台实例发送命令。",
+  "description": "通过 Maya Python 插件发送命令；仅有一个在线连接时直接使用，多个连接时按动作触发窗口定位。",
   "category": "SoftInteraction",
   "categoryName": "第三方软件交互",
   "stepType": "Action",
@@ -29,7 +29,7 @@
       "defaultValue": "false",
       "required": false,
       "variableMode": "Input",
-      "condition": "",
+      "condition": "仅：object.list",
       "description": ""
     },
     {
@@ -39,7 +39,7 @@
       "defaultValue": "",
       "required": true,
       "variableMode": "UseVarOrInput",
-      "condition": "",
+      "condition": "仅：scene.save_as",
       "description": "使用 .ma 或 .mb 文件的绝对路径。"
     },
     {
@@ -49,7 +49,7 @@
       "defaultValue": "",
       "required": true,
       "variableMode": "UseVarOrInput",
-      "condition": "",
+      "condition": "仅：scene.import_file, scene.reference_file",
       "description": "要导入或引用的文件绝对路径。"
     },
     {
@@ -59,7 +59,7 @@
       "defaultValue": "",
       "required": false,
       "variableMode": "UseVarOrInput",
-      "condition": "",
+      "condition": "仅：scene.import_file, scene.reference_file",
       "description": "留空时导入不增加命名空间；引用会根据文件名自动生成。"
     },
     {
@@ -69,7 +69,7 @@
       "defaultValue": "",
       "required": true,
       "variableMode": "UseVarOrInput",
-      "condition": "",
+      "condition": "仅：selection.export",
       "description": "仅支持 .ma 或 .mb 文件。"
     },
     {
@@ -79,7 +79,7 @@
       "defaultValue": "[]",
       "required": false,
       "variableMode": "UseVarOrInput",
-      "condition": "",
+      "condition": "仅：selection.select_by_names",
       "description": "名称可从列出对象或选择详情的 name 字段取得。"
     },
     {
@@ -89,7 +89,7 @@
       "defaultValue": "replace",
       "required": false,
       "variableMode": "UseVarOrInput",
-      "condition": "",
+      "condition": "仅：selection.select_by_names",
       "description": "replace、add 或 remove。"
     },
     {
@@ -99,7 +99,7 @@
       "defaultValue": "cube",
       "required": false,
       "variableMode": "UseVarOrInput",
-      "condition": "",
+      "condition": "仅：object.create_primitive",
       "description": "支持 cube、box、sphere、cylinder、cone、plane、torus。"
     },
     {
@@ -109,7 +109,7 @@
       "defaultValue": "Quicker Object",
       "required": false,
       "variableMode": "UseVarOrInput",
-      "condition": "",
+      "condition": "仅：object.create_primitive",
       "description": ""
     },
     {
@@ -119,7 +119,7 @@
       "defaultValue": "{oldName}_{index:02d}",
       "required": false,
       "variableMode": "UseVarOrInput",
-      "condition": "",
+      "condition": "仅：object.rename_selected",
       "description": "支持 {oldName} 和 {index}，例如 Obj_{index:03d}。"
     },
     {
@@ -129,7 +129,7 @@
       "defaultValue": "1",
       "required": false,
       "variableMode": "Input",
-      "condition": "",
+      "condition": "仅：object.rename_selected",
       "description": ""
     },
     {
@@ -139,7 +139,7 @@
       "defaultValue": "1",
       "required": false,
       "variableMode": "Input",
-      "condition": "",
+      "condition": "仅：object.move_selected",
       "description": ""
     },
     {
@@ -149,7 +149,7 @@
       "defaultValue": "0",
       "required": false,
       "variableMode": "Input",
-      "condition": "",
+      "condition": "仅：object.move_selected",
       "description": ""
     },
     {
@@ -159,7 +159,7 @@
       "defaultValue": "0",
       "required": false,
       "variableMode": "Input",
-      "condition": "",
+      "condition": "仅：object.move_selected",
       "description": ""
     },
     {
@@ -169,7 +169,7 @@
       "defaultValue": "world",
       "required": false,
       "variableMode": "UseVarOrInput",
-      "condition": "",
+      "condition": "仅：object.move_selected",
       "description": "world 使用世界坐标；object 使用对象坐标。"
     },
     {
@@ -179,7 +179,7 @@
       "defaultValue": "1",
       "required": false,
       "variableMode": "Input",
-      "condition": "",
+      "condition": "仅：object.duplicate_selected",
       "description": ""
     },
     {
@@ -189,7 +189,7 @@
       "defaultValue": "{oldName}_copy{index}",
       "required": false,
       "variableMode": "UseVarOrInput",
-      "condition": "",
+      "condition": "仅：object.duplicate_selected",
       "description": "支持 {oldName} 和 {index}。"
     },
     {
@@ -199,7 +199,7 @@
       "defaultValue": "1",
       "required": false,
       "variableMode": "Input",
-      "condition": "",
+      "condition": "仅：object.duplicate_selected",
       "description": ""
     },
     {
@@ -209,7 +209,7 @@
       "defaultValue": "0",
       "required": false,
       "variableMode": "Input",
-      "condition": "",
+      "condition": "仅：object.duplicate_selected",
       "description": ""
     },
     {
@@ -219,7 +219,7 @@
       "defaultValue": "0",
       "required": false,
       "variableMode": "Input",
-      "condition": "",
+      "condition": "仅：object.duplicate_selected",
       "description": ""
     },
     {
@@ -229,7 +229,7 @@
       "defaultValue": "0",
       "required": false,
       "variableMode": "Input",
-      "condition": "",
+      "condition": "仅：object.rotate_selected",
       "description": ""
     },
     {
@@ -239,7 +239,7 @@
       "defaultValue": "0",
       "required": false,
       "variableMode": "Input",
-      "condition": "",
+      "condition": "仅：object.rotate_selected",
       "description": ""
     },
     {
@@ -249,7 +249,7 @@
       "defaultValue": "90",
       "required": false,
       "variableMode": "Input",
-      "condition": "",
+      "condition": "仅：object.rotate_selected",
       "description": ""
     },
     {
@@ -259,7 +259,7 @@
       "defaultValue": "world",
       "required": false,
       "variableMode": "UseVarOrInput",
-      "condition": "",
+      "condition": "仅：object.rotate_selected",
       "description": "world 或 object；每个对象围绕自身轴心旋转。"
     },
     {
@@ -269,7 +269,7 @@
       "defaultValue": "2",
       "required": false,
       "variableMode": "Input",
-      "condition": "",
+      "condition": "仅：object.scale_selected",
       "description": ""
     },
     {
@@ -279,7 +279,7 @@
       "defaultValue": "2",
       "required": false,
       "variableMode": "Input",
-      "condition": "",
+      "condition": "仅：object.scale_selected",
       "description": ""
     },
     {
@@ -289,7 +289,7 @@
       "defaultValue": "2",
       "required": false,
       "variableMode": "Input",
-      "condition": "",
+      "condition": "仅：object.scale_selected",
       "description": ""
     },
     {
@@ -299,7 +299,7 @@
       "defaultValue": "false",
       "required": false,
       "variableMode": "Input",
-      "condition": "",
+      "condition": "仅：object.set_visibility",
       "description": ""
     },
     {
@@ -309,7 +309,7 @@
       "defaultValue": "true",
       "required": false,
       "variableMode": "Input",
-      "condition": "",
+      "condition": "仅：object.set_locked",
       "description": ""
     },
     {
@@ -319,7 +319,7 @@
       "defaultValue": "Quicker_Group",
       "required": true,
       "variableMode": "UseVarOrInput",
-      "condition": "",
+      "condition": "仅：object.group_selected",
       "description": ""
     },
     {
@@ -329,7 +329,7 @@
       "defaultValue": "true",
       "required": false,
       "variableMode": "Input",
-      "condition": "",
+      "condition": "仅：object.freeze_transforms",
       "description": ""
     },
     {
@@ -339,7 +339,7 @@
       "defaultValue": "true",
       "required": false,
       "variableMode": "Input",
-      "condition": "",
+      "condition": "仅：object.freeze_transforms",
       "description": ""
     },
     {
@@ -349,7 +349,7 @@
       "defaultValue": "true",
       "required": false,
       "variableMode": "Input",
-      "condition": "",
+      "condition": "仅：object.freeze_transforms",
       "description": ""
     },
     {
@@ -359,7 +359,7 @@
       "defaultValue": "Quicker_Layer",
       "required": true,
       "variableMode": "UseVarOrInput",
-      "condition": "",
+      "condition": "仅：display_layer.create, display_layer.assign_selected",
       "description": ""
     },
     {
@@ -369,7 +369,7 @@
       "defaultValue": "true",
       "required": false,
       "variableMode": "Input",
-      "condition": "",
+      "condition": "仅：display_layer.assign_selected",
       "description": ""
     },
     {
@@ -379,7 +379,7 @@
       "defaultValue": "1",
       "required": false,
       "variableMode": "Input",
-      "condition": "",
+      "condition": "仅：animation.set_time",
       "description": ""
     },
     {
@@ -389,7 +389,7 @@
       "defaultValue": "1",
       "required": false,
       "variableMode": "Input",
-      "condition": "",
+      "condition": "仅：animation.set_range",
       "description": ""
     },
     {
@@ -399,7 +399,7 @@
       "defaultValue": "120",
       "required": false,
       "variableMode": "Input",
-      "condition": "",
+      "condition": "仅：animation.set_range",
       "description": ""
     },
     {
@@ -409,7 +409,7 @@
       "defaultValue": "true",
       "required": false,
       "variableMode": "Input",
-      "condition": "",
+      "condition": "仅：animation.play",
       "description": ""
     },
     {
@@ -419,7 +419,7 @@
       "defaultValue": "",
       "required": false,
       "variableMode": "UseVarOrInput",
-      "condition": "",
+      "condition": "仅：animation.set_keyframe",
       "description": "留空使用当前帧，也可填写帧编号。"
     },
     {
@@ -429,7 +429,7 @@
       "defaultValue": "[]",
       "required": false,
       "variableMode": "UseVarOrInput",
-      "condition": "",
+      "condition": "仅：animation.set_keyframe",
       "description": "留空数组时为对象所有可设关键帧的属性设置关键帧。"
     },
     {
@@ -439,7 +439,7 @@
       "defaultValue": "persp",
       "required": true,
       "variableMode": "UseVarOrInput",
-      "condition": "",
+      "condition": "仅：camera.activate",
       "description": "可从“列出摄像机”返回的 name 字段取得。"
     },
     {
@@ -449,7 +449,7 @@
       "defaultValue": "",
       "required": true,
       "variableMode": "UseVarOrInput",
-      "condition": "",
+      "condition": "仅：viewport.capture",
       "description": "建议使用 .png、.jpg 等图片扩展名。"
     },
     {
@@ -459,7 +459,7 @@
       "defaultValue": "1920",
       "required": false,
       "variableMode": "Input",
-      "condition": "",
+      "condition": "仅：viewport.capture",
       "description": ""
     },
     {
@@ -469,7 +469,7 @@
       "defaultValue": "1080",
       "required": false,
       "variableMode": "Input",
-      "condition": "",
+      "condition": "仅：viewport.capture",
       "description": ""
     },
     {
@@ -479,7 +479,7 @@
       "defaultValue": "false",
       "required": false,
       "variableMode": "Input",
-      "condition": "",
+      "condition": "仅：scene.save_as, selection.export, viewport.capture",
       "description": ""
     },
     {
@@ -489,7 +489,7 @@
       "defaultValue": "",
       "required": true,
       "variableMode": "UseVarOrInput",
-      "condition": "",
+      "condition": "仅：mel.evaluate, mel.execute",
       "description": "表达式直接返回 value；脚本返回最后一个表达式的值。"
     },
     {
@@ -499,7 +499,7 @@
       "defaultValue": "",
       "required": true,
       "variableMode": "UseVarOrInput",
-      "condition": "",
+      "condition": "仅：mel.run_file",
       "description": ""
     },
     {
@@ -509,7 +509,7 @@
       "defaultValue": "",
       "required": true,
       "variableMode": "UseVarOrInput",
-      "condition": "",
+      "condition": "仅：python.evaluate, python.execute",
       "description": "表达式直接返回 value；脚本可把返回值赋给 result。"
     },
     {
@@ -519,7 +519,7 @@
       "defaultValue": "",
       "required": true,
       "variableMode": "UseVarOrInput",
-      "condition": "",
+      "condition": "仅：python.run_file",
       "description": ""
     },
     {
@@ -529,7 +529,7 @@
       "defaultValue": "",
       "required": true,
       "variableMode": "UseVarOrInput",
-      "condition": "",
+      "condition": "仅：command.custom",
       "description": ""
     },
     {
@@ -539,7 +539,7 @@
       "defaultValue": "{}",
       "required": false,
       "variableMode": "UseVarOrInput",
-      "condition": "",
+      "condition": "仅：command.custom",
       "description": ""
     },
     {

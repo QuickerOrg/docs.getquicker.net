@@ -39,7 +39,7 @@
       "defaultValue": "chat",
       "required": true,
       "variableMode": "Input",
-      "condition": "排除：global",
+      "condition": "仅：custom",
       "description": ""
     },
     {
@@ -49,7 +49,7 @@
       "defaultValue": "",
       "required": false,
       "variableMode": "Input",
-      "condition": "排除：global",
+      "condition": "仅：custom",
       "description": "适用于可能适用于不同的端点，请参考官方文档使用。"
     },
     {
@@ -59,7 +59,7 @@
       "defaultValue": "",
       "required": false,
       "variableMode": "Input",
-      "condition": "排除：global",
+      "condition": "仅：custom",
       "description": "可选，使用自定义的API服务器时使用。请参考模块文档了解如何设置。"
     },
     {
@@ -69,7 +69,7 @@
       "defaultValue": "",
       "required": false,
       "variableMode": "Input",
-      "condition": "排除：global",
+      "condition": "仅：custom",
       "description": ""
     },
     {
@@ -79,7 +79,7 @@
       "defaultValue": "",
       "required": false,
       "variableMode": "Input",
-      "condition": "排除：global",
+      "condition": "仅：custom",
       "description": "可选"
     },
     {
@@ -159,7 +159,7 @@
       "defaultValue": "1",
       "required": false,
       "variableMode": "Input",
-      "condition": "排除：global",
+      "condition": "仅：custom",
       "description": "对每个问题生成几个结果，将会耗费更多token。"
     },
     {
@@ -169,7 +169,7 @@
       "defaultValue": "120",
       "required": false,
       "variableMode": "Input",
-      "condition": "排除：global",
+      "condition": "仅：custom",
       "description": "最长等待秒数"
     },
     {
@@ -199,7 +199,7 @@
       "defaultValue": "",
       "required": false,
       "variableMode": "Input",
-      "condition": "排除：global",
+      "condition": "仅：custom",
       "description": "遇到指定的内容时自动停止生成。可使用\\r,\\n,\\t等表示特殊字符。输入多行时，表示多个停止符。"
     },
     {
@@ -209,7 +209,7 @@
       "defaultValue": "false",
       "required": false,
       "variableMode": "Input",
-      "condition": "排除：global",
+      "condition": "仅：custom",
       "description": "即使系统设置中未启用代理，本步骤仍然使用代理访问。"
     },
     {

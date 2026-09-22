@@ -8,7 +8,7 @@ quickerDocKey: "xaction/module/sys:flauiautomation"
 comments: true
 moduleKey: "sys:flauiautomation"
 docStatus: "reviewed"
-metadataGeneratedAt: "2026-08-29 16:36:01"
+metadataGeneratedAt: "2026-09-20 15:25:17"
 ---
 
 # 窗口界面控制(FlaUI)
@@ -30,7 +30,6 @@ metadataGeneratedAt: "2026-08-29 16:36:01"
 ### 触发控件
 
 选择 **触发窗口控件** 后，可对目标执行自动操作、鼠标单击 / 双击、调用、展开 / 折叠、选中、切换、聚焦、滚动到可见区域、滚动、设置值等操作。优先使用“自动操作”或控件自身支持的模式；自绘控件、游戏、远程桌面等无法暴露 UI Automation 信息时，再改用坐标点击。
-
 
 ### 不等待操作完成
 

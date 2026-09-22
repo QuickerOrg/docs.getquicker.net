@@ -39,7 +39,7 @@
       "defaultValue": "",
       "required": false,
       "variableMode": "UseVarOrInput",
-      "condition": "仅：copyFile, copyInto, copyTo, copyIntoWithShell, moveIntoWithShell, moveFile, moveInto, rename, moveTo",
+      "condition": "仅：copyInto, copyIntoWithShell, copyTo, moveInto, moveIntoWithShell, rename, moveTo, copyFile, moveFile",
       "description": "复制/移动的目标路径或新文件、文件名。详情请参考文档。"
     },
     {
@@ -49,7 +49,7 @@
       "defaultValue": "false",
       "required": false,
       "variableMode": "Input",
-      "condition": "仅：copyFile, copyInto, copyTo, moveFile, moveInto, rename, moveTo",
+      "condition": "仅：copyInto, copyTo, moveInto, rename, moveTo, copyFile, moveFile",
       "description": "如果目标位置已存在文件，是否覆盖？"
     },
     {
@@ -71,6 +71,16 @@
       "variableMode": "UseVarOrInput",
       "condition": "仅：enumFiles, enumDirs",
       "description": "包含子目录中的(否则只搜索顶层目录)"
+    },
+    {
+      "key": "timeoutSeconds",
+      "name": "超时时间（秒）",
+      "type": "Integer",
+      "defaultValue": "0",
+      "required": false,
+      "variableMode": "UseVarOrInput",
+      "condition": "仅：enumFiles, enumDirs",
+      "description": "获取列表的最长等待时间，0表示不限时。超时返回失败；网络盘底层读取可能仍在后台等待恢复。"
     },
     {
       "key": "stopIfFail",
@@ -102,7 +112,7 @@
       "key": "resultPath",
       "name": "结果路径",
       "type": "Text",
-      "condition": "仅：copyTo, rename, copyInto",
+      "condition": "仅：copyInto, copyTo, rename",
       "description": "结果文件路径"
     }
   ],

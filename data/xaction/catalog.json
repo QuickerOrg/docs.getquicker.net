@@ -1,14 +1,14 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-09-05 22:23:16",
-  "moduleCount": 170,
+  "generatedAt": "2026-09-20 15:25:17",
+  "moduleCount": 172,
   "legacyMappedModuleCount": 0,
   "migratedLegacyModuleCount": 0,
   "categories": [
     {
       "key": "Basic",
       "name": "基础",
-      "moduleCount": 13
+      "moduleCount": 14
     },
     {
       "key": "Waiting",
@@ -63,7 +63,7 @@
     {
       "key": "SoftInteraction",
       "name": "第三方软件交互",
-      "moduleCount": 26
+      "moduleCount": 27
     },
     {
       "key": "Input",
@@ -113,7 +113,7 @@
           "defaultValue": "chat",
           "required": true,
           "variableMode": "Input",
-          "condition": "排除：global",
+          "condition": "仅：custom",
           "description": ""
         },
         {
@@ -123,7 +123,7 @@
           "defaultValue": "",
           "required": false,
           "variableMode": "Input",
-          "condition": "排除：global",
+          "condition": "仅：custom",
           "description": "适用于可能适用于不同的端点，请参考官方文档使用。"
         },
         {
@@ -133,7 +133,7 @@
           "defaultValue": "",
           "required": false,
           "variableMode": "Input",
-          "condition": "排除：global",
+          "condition": "仅：custom",
           "description": "可选，使用自定义的API服务器时使用。请参考模块文档了解如何设置。"
         },
         {
@@ -143,7 +143,7 @@
           "defaultValue": "",
           "required": false,
           "variableMode": "Input",
-          "condition": "排除：global",
+          "condition": "仅：custom",
           "description": ""
         },
         {
@@ -153,7 +153,7 @@
           "defaultValue": "",
           "required": false,
           "variableMode": "Input",
-          "condition": "排除：global",
+          "condition": "仅：custom",
           "description": "可选"
         },
         {
@@ -233,7 +233,7 @@
           "defaultValue": "1",
           "required": false,
           "variableMode": "Input",
-          "condition": "排除：global",
+          "condition": "仅：custom",
           "description": "对每个问题生成几个结果，将会耗费更多token。"
         },
         {
@@ -243,7 +243,7 @@
           "defaultValue": "120",
           "required": false,
           "variableMode": "Input",
-          "condition": "排除：global",
+          "condition": "仅：custom",
           "description": "最长等待秒数"
         },
         {
@@ -273,7 +273,7 @@
           "defaultValue": "",
           "required": false,
           "variableMode": "Input",
-          "condition": "排除：global",
+          "condition": "仅：custom",
           "description": "遇到指定的内容时自动停止生成。可使用\\r,\\n,\\t等表示特殊字符。输入多行时，表示多个停止符。"
         },
         {
@@ -283,7 +283,7 @@
           "defaultValue": "false",
           "required": false,
           "variableMode": "Input",
-          "condition": "排除：global",
+          "condition": "仅：custom",
           "description": "即使系统设置中未启用代理，本步骤仍然使用代理访问。"
         },
         {
@@ -1172,7 +1172,7 @@
           "defaultValue": "",
           "required": false,
           "variableMode": "UseVarOrInput",
-          "condition": "排除：custom",
+          "condition": "仅：translate, summarize, rewrite, shorten, expand, proofread, tone, title, keywords",
           "description": "追加到内置任务模板后的要求，例如“控制在 100 字内”。自定义操作时不使用。"
         },
         {
@@ -2362,6 +2362,71 @@
       "sourceFileName": "sys_sendKeys_模拟按键B（参数）.md"
     },
     {
+      "key": "sys:log",
+      "slug": "log",
+      "legacySlug": "log",
+      "ownsLegacyContent": true,
+      "name": "输出日志",
+      "description": "记录动作运行中的信息，供后续查看和排查问题。通常只需填写内容，时间、动作和步骤信息由 Quicker 自动补充并统一管理。",
+      "category": "Basic",
+      "categoryName": "基础",
+      "stepType": "Action",
+      "isRisky": false,
+      "isProOnly": false,
+      "helpLink": "",
+      "inputs": [
+        {
+          "key": "message",
+          "name": "内容",
+          "type": "Text",
+          "defaultValue": "",
+          "required": true,
+          "variableMode": "UseVarOrInput",
+          "condition": "",
+          "description": "要记录的内容，支持变量、表达式和插值文本。无需拼接时间或动作信息。"
+        },
+        {
+          "key": "level",
+          "name": "级别",
+          "type": "Enum",
+          "defaultValue": "info",
+          "required": false,
+          "variableMode": "UseVarOrInput",
+          "condition": "",
+          "description": "默认记录信息。警告和错误只标记日志级别，不会中止动作；调试日志仅在调试运行时记录，普通运行时不计算内容。"
+        }
+      ],
+      "outputs": [],
+      "selections": {
+        "level": {
+          "name": "级别",
+          "items": [
+            {
+              "value": "info",
+              "name": "信息",
+              "description": ""
+            },
+            {
+              "value": "warning",
+              "name": "警告",
+              "description": ""
+            },
+            {
+              "value": "error",
+              "name": "错误",
+              "description": ""
+            },
+            {
+              "value": "debug",
+              "name": "调试",
+              "description": ""
+            }
+          ]
+        }
+      },
+      "sourceFileName": "sys_log_输出日志.md"
+    },
+    {
       "key": "sys:mouse",
       "slug": "mouse",
       "legacySlug": "mouse",
@@ -2919,7 +2984,7 @@
           "required": false,
           "variableMode": "UseVarOrInput",
           "condition": "仅：Success, Info, Warning, Error",
-          "description": "0 使用默认时长，-1 持续显示，或填写 2 到 30 秒"
+          "description": "0 使用默认时长，-1 持续显示，或填写 1 到 30 秒"
         },
         {
           "key": "showTime",
@@ -3445,7 +3510,7 @@
           "required": false,
           "variableMode": "Input",
           "condition": "",
-          "description": "可选。设置选择窗口的最大尺寸，格式为：宽度,高度。支持像素数值或屏幕宽高百分比，详情请参考模块文档。\\n\"窗口位置\" 类型为 \"自定义位置\" 时用于指定显示位置，格式为：left,top,right,bottom"
+          "description": "最大宽度,高度：逻辑像素或屏幕工作区百分比；自定义位置填坐标。"
         },
         {
           "key": "keepLastPos",
@@ -4225,7 +4290,7 @@
           "defaultValue": "",
           "required": false,
           "variableMode": "UseVarOrInput",
-          "condition": "排除：CUSTOM, CMD_C, CMD_H, CMD_K",
+          "condition": "仅：BAT, CMD_F, PS, AHK",
           "description": "为脚本传递的参数。将会被追加到运行脚本的命令行中。"
         },
         {
@@ -5089,7 +5154,7 @@
           "defaultValue": "false",
           "required": false,
           "variableMode": "Input",
-          "condition": "排除：pinyinMatch",
+          "condition": "仅：>, =, <, contains, startsWith, endsWith, match",
           "description": "是否区分大小写"
         }
       ],
@@ -5212,7 +5277,7 @@
           "defaultValue": "",
           "required": false,
           "variableMode": "UseVarOrInput",
-          "condition": "仅：select, exportExcel, export_text, deleteRows, update",
+          "condition": "仅：update, select, deleteRows, export_text, exportExcel",
           "description": ""
         },
         {
@@ -5232,7 +5297,7 @@
           "defaultValue": "",
           "required": false,
           "variableMode": "UseVarOrInput",
-          "condition": "仅：select, exportExcel, export_text, manage",
+          "condition": "仅：manage, select, export_text, exportExcel",
           "description": ""
         },
         {
@@ -5242,7 +5307,7 @@
           "defaultValue": "",
           "required": false,
           "variableMode": "UseVarOrInput",
-          "condition": "仅：exportExcel, export_text",
+          "condition": "仅：export_text, exportExcel",
           "description": "可选。逗号','或分号';'隔开的列名。留空时导出所有列。"
         },
         {
@@ -5332,7 +5397,7 @@
           "defaultValue": "false",
           "required": false,
           "variableMode": "Input",
-          "condition": "仅：exportExcel, export_text",
+          "condition": "仅：export_text, exportExcel",
           "description": ""
         },
         {
@@ -5342,7 +5407,7 @@
           "defaultValue": ",",
           "required": false,
           "variableMode": "Input",
-          "condition": "仅：export_text, importCsv",
+          "condition": "仅：importCsv, export_text",
           "description": "导出或导入CSV数据时使用的字段分隔符。使用'\\t'表示Tab。"
         },
         {
@@ -5353,7 +5418,7 @@
           "required": false,
           "variableMode": "Input",
           "condition": "仅：manage",
-          "description": "设置选择窗口的最大尺寸，格式为：宽度,高度。支持像素数值或屏幕宽高百分比，详情请参考模块文档。"
+          "description": "宽度,高度：逻辑像素或屏幕工作区百分比。"
         },
         {
           "key": "topMost",
@@ -5395,14 +5460,14 @@
           "key": "affectedRowCount",
           "name": "影响行数",
           "type": "Integer",
-          "condition": "仅：exportExcel, export_text, deleteRows, update",
+          "condition": "仅：update, deleteRows, export_text, exportExcel",
           "description": "更新或删除、筛选的行数"
         },
         {
           "key": "rows",
           "name": "行列表",
           "type": "Object",
-          "condition": "仅：select, info",
+          "condition": "仅：info, select",
           "description": "符合条件的行的数组"
         },
         {
@@ -5416,7 +5481,7 @@
           "key": "firstRow",
           "name": "第一行/结果行",
           "type": "Object",
-          "condition": "仅：select, addRow",
+          "condition": "仅：addRow, select",
           "description": "第一个符合条件的行或新添加的行，可输出为词典对象"
         },
         {
@@ -5583,7 +5648,7 @@
           "defaultValue": "",
           "required": false,
           "variableMode": "UseVar",
-          "condition": "排除：queryStringToDict",
+          "condition": "仅：get, set, setOriginValue, remove, clear, keyList, valueList, reverse, dictToQueryString, dictToQueryStringNoEncode",
           "description": "要操作的词典变量"
         },
         {
@@ -5603,7 +5668,7 @@
           "defaultValue": "",
           "required": false,
           "variableMode": "UseVarOrInput",
-          "condition": "仅：get, set, remove, setOriginValue",
+          "condition": "仅：get, set, setOriginValue, remove",
           "description": "要操作元素的键值。"
         },
         {
@@ -5633,7 +5698,7 @@
           "defaultValue": "false",
           "required": false,
           "variableMode": "Input",
-          "condition": "仅：set, get, remove, setOriginValue",
+          "condition": "仅：get, set, setOriginValue, remove",
           "description": ""
         },
         {
@@ -6312,7 +6377,7 @@
           "key": "value",
           "name": "结果",
           "type": "Any",
-          "condition": "仅：getAt, sortAsc, sortAscNature, sortDesc, sub, concat, distinct, filterByRegex, filterByDefault, filterByContains, filterByStarts, filterByEnds, FileSizeAsc, FileSizeDesc, CreationTimeDesc, CreationTimeAsc, LastAccessTimeDesc, LastAccessTimeAsc, LastWriteTimeDesc, LastWriteTimeAsc",
+          "condition": "仅：getAt, sortAsc, sortDesc, sortAscNature, FileSizeAsc, FileSizeDesc, CreationTimeDesc, CreationTimeAsc, LastAccessTimeDesc, LastAccessTimeAsc, LastWriteTimeDesc, LastWriteTimeAsc, sub, concat, distinct, filterByRegex, filterByDefault, filterByContains, filterByStarts, filterByEnds",
           "description": "操作后的输出（取的元素值、排序、切片或拼接后的列表等）"
         },
         {
@@ -7690,7 +7755,7 @@
           "required": false,
           "variableMode": "UseVarOrInput",
           "condition": "",
-          "description": "匹配整个单词。如 quicker.exe 将会匹配：quicker.exe, quicker.exe.config等。0表示否，1表示是。"
+          "description": "要求每个搜索词的前后是空格、标点或路径分隔符等单词边界，不匹配较长名称中的局部文本。0表示否，1表示是。"
         },
         {
           "key": "matchPath",
@@ -8079,7 +8144,7 @@
           "key": "resultPath",
           "name": "结果路径",
           "type": "Text",
-          "condition": "仅：changeExt, changeDir, changeName, changeNameWithoutExt, combine",
+          "condition": "仅：changeExt, changeName, changeNameWithoutExt, changeDir, combine",
           "description": "生成的结果路径"
         },
         {
@@ -8191,7 +8256,7 @@
           "defaultValue": "",
           "required": false,
           "variableMode": "UseVarOrInput",
-          "condition": "仅：copyFile, copyInto, copyTo, copyIntoWithShell, moveIntoWithShell, moveFile, moveInto, rename, moveTo",
+          "condition": "仅：copyInto, copyIntoWithShell, copyTo, moveInto, moveIntoWithShell, rename, moveTo, copyFile, moveFile",
           "description": "复制/移动的目标路径或新文件、文件名。详情请参考文档。"
         },
         {
@@ -8201,7 +8266,7 @@
           "defaultValue": "false",
           "required": false,
           "variableMode": "Input",
-          "condition": "仅：copyFile, copyInto, copyTo, moveFile, moveInto, rename, moveTo",
+          "condition": "仅：copyInto, copyTo, moveInto, rename, moveTo, copyFile, moveFile",
           "description": "如果目标位置已存在文件，是否覆盖？"
         },
         {
@@ -8223,6 +8288,16 @@
           "variableMode": "UseVarOrInput",
           "condition": "仅：enumFiles, enumDirs",
           "description": "包含子目录中的(否则只搜索顶层目录)"
+        },
+        {
+          "key": "timeoutSeconds",
+          "name": "超时时间（秒）",
+          "type": "Integer",
+          "defaultValue": "0",
+          "required": false,
+          "variableMode": "UseVarOrInput",
+          "condition": "仅：enumFiles, enumDirs",
+          "description": "获取列表的最长等待时间，0表示不限时。超时返回失败；网络盘底层读取可能仍在后台等待恢复。"
         },
         {
           "key": "stopIfFail",
@@ -8254,7 +8329,7 @@
           "key": "resultPath",
           "name": "结果路径",
           "type": "Text",
-          "condition": "仅：copyTo, rename, copyInto",
+          "condition": "仅：copyInto, copyTo, rename",
           "description": "结果文件路径"
         }
       ],
@@ -9180,7 +9255,7 @@
           "defaultValue": "1.0",
           "required": false,
           "variableMode": "UseVarOrInput",
-          "condition": "仅：overlayText, watermark, overlayImage, pageNumber",
+          "condition": "仅：overlayText, watermark, pageNumber, overlayImage",
           "description": ""
         },
         {
@@ -11252,6 +11327,16 @@
           "description": "如果Exif中包含旋转角度信息，则获取旋转后的宽高"
         },
         {
+          "key": "missingExifDateFallback",
+          "name": "无 EXIF 日期时",
+          "type": "Enum",
+          "defaultValue": "creationTime",
+          "required": false,
+          "variableMode": "UseVarOrInput",
+          "condition": "",
+          "description": "Exif拍摄时间和普通日期均缺失时的处理方式。文件日期只是估算；图片变量没有文件日期，始终返回时间最小值（1年1月1日）。"
+        },
+        {
           "key": "stopIfFail",
           "name": "失败后停止",
           "type": "Boolean",
@@ -11296,7 +11381,7 @@
           "name": "拍摄时间",
           "type": "DateTime",
           "condition": "",
-          "description": ""
+          "description": "优先读取Exif拍摄时间，其次读取Exif普通日期；均缺失时按“无 EXIF 日期时”选项处理。图片变量无日期或日期解析失败时返回时间最小值。"
         },
         {
           "key": "exifData",
@@ -11318,6 +11403,13 @@
           "type": "Text",
           "condition": "仅：file",
           "description": "根据文件内容判断的文件格式（可能不准确），用于在无法根据扩展名得到图片格式的情况下使用。"
+        },
+        {
+          "key": "isTakenDateTimeEmpty",
+          "name": "拍摄时间为空",
+          "type": "Boolean",
+          "condition": "",
+          "description": "Exif拍摄时间（DateTimeOriginal）缺失或无法解析时为true；不把Exif普通日期或文件日期视为拍摄时间。“拍摄时间”输出此时可能返回回退值。"
         }
       ],
       "selections": {
@@ -11332,6 +11424,31 @@
             {
               "value": "file",
               "name": "图片文件",
+              "description": ""
+            }
+          ]
+        },
+        "missingExifDateFallback": {
+          "name": "无 EXIF 日期时",
+          "items": [
+            {
+              "value": "creationTime",
+              "name": "使用文件创建时间",
+              "description": ""
+            },
+            {
+              "value": "earlierFileTime",
+              "name": "使用创建、修改时间的较早值",
+              "description": ""
+            },
+            {
+              "value": "lastWriteTime",
+              "name": "使用文件修改时间",
+              "description": ""
+            },
+            {
+              "value": "minValue",
+              "name": "返回时间最小值",
               "description": ""
             }
           ]
@@ -11688,7 +11805,7 @@
       "legacySlug": "screen-capture-pro",
       "ownsLegacyContent": true,
       "name": "截图 Pro",
-      "description": "渐进式选区截图：全屏 overlay，光标处初始选区，支持控件跟踪，双击确认。Esc 取消。",
+      "description": "框选截图、标注、贴图或识别。默认自动吸附，可关闭后用滚轮手动调整选区。",
       "category": "Image",
       "categoryName": "图片处理",
       "stepType": "Action",
@@ -11696,6 +11813,16 @@
       "isProOnly": false,
       "helpLink": "https://docs.getquicker.net/v2/xaction/modules/screen-capture-pro",
       "inputs": [
+        {
+          "key": "operation",
+          "name": "操作",
+          "type": "Enum",
+          "defaultValue": "capture",
+          "required": true,
+          "variableMode": "Input",
+          "condition": "",
+          "description": "这次截图怎么结束，不受设置中“直接截图的完成操作”影响。"
+        },
         {
           "key": "delay",
           "name": "截图前延迟时间",
@@ -11707,14 +11834,24 @@
           "description": "等待多少毫秒后开始截图"
         },
         {
+          "key": "addToHistory",
+          "name": "加入截图历史",
+          "type": "Boolean",
+          "defaultValue": "true",
+          "required": false,
+          "variableMode": "Input",
+          "condition": "",
+          "description": "遵循全局截图历史开关；取消勾选可排除本次截图，不会打开全局历史。"
+        },
+        {
           "key": "toClip",
           "name": "写入剪贴板",
           "type": "Boolean",
           "defaultValue": "false",
           "required": false,
           "variableMode": "Input",
-          "condition": "",
-          "description": "仅对默认确认（打勾 / 双击）生效：结束后把截图写入剪贴板。保存、复制、自定义工具栏 post.confirm 等其它出口不叠此设置，由各自工具自行处理。"
+          "condition": "仅：capture",
+          "description": "打勾或双击后写入剪贴板。"
         },
         {
           "key": "pinImage",
@@ -11723,8 +11860,8 @@
           "defaultValue": "false",
           "required": false,
           "variableMode": "Input",
-          "condition": "",
-          "description": "仅对默认确认（打勾 / 双击）生效：结束后在选区位置贴图。其它工具栏出口（含自定义 post.confirm / post.pin）不叠此设置。"
+          "condition": "仅：capture",
+          "description": "打勾或双击后贴到原位置。"
         },
         {
           "key": "showToolbarAfterPin",
@@ -11733,18 +11870,18 @@
           "defaultValue": "false",
           "required": false,
           "variableMode": "Input",
-          "condition": "",
-          "description": "贴图窗口打开后是否自动显示标注工具栏。默认关闭（贴图前通常已标注）；需要时可按空格再显示。"
+          "condition": "仅：capture, pin",
+          "description": ""
         },
         {
           "key": "autoAdsorb",
-          "name": "自动吸附",
+          "name": "自动吸附UI元素",
           "type": "Boolean",
           "defaultValue": "false",
           "required": false,
           "variableMode": "Input",
           "condition": "",
-          "description": "开启后悬停自动吸附到控件元素；关闭时（默认）仅跟随窗口范围，滚轮再触发 UIA 精细选区。"
+          "description": "自动吸附鼠标下的界面元素。关闭后可用滚轮手动缩小或扩大选区。"
         },
         {
           "key": "toolbarScript",
@@ -11753,8 +11890,8 @@
           "defaultValue": "",
           "required": false,
           "variableMode": "UseVarOrInput",
-          "condition": "",
-          "description": "可视化编辑严格 JSON 声明（挂子程序/动作）。可改用动作变量，变量内容为完整 JSON/JS。写成 JS（sp/act/run）后可视化禁用。整栏插值须以 $$ 开头，只替换 {变量名}；不要写 JS 对象简写 {foo}。推荐外置：toolbarScript → file: files/toolbar.js。留空则用默认工具栏。"
+          "condition": "仅：capture, quick_save",
+          "description": "留空则用默认工具栏。"
         },
         {
           "key": "stopIfFail",
@@ -11765,6 +11902,16 @@
           "variableMode": "Input",
           "condition": "",
           "description": "失败后是否停止动作"
+        },
+        {
+          "key": "saveDirectory",
+          "name": "保存目录",
+          "type": "Text",
+          "defaultValue": "",
+          "required": false,
+          "variableMode": "UseVarOrInput",
+          "condition": "仅：quick_save",
+          "description": "留空用全局目录，只改本次。"
         }
       ],
       "outputs": [
@@ -11780,7 +11927,7 @@
           "name": "图片",
           "type": "Image",
           "condition": "",
-          "description": "截图的图片"
+          "description": ""
         },
         {
           "key": "rect",
@@ -11794,10 +11941,78 @@
           "name": "保存路径",
           "type": "Text",
           "condition": "",
-          "description": "用户点击保存并写入磁盘后的文件路径；通过确认按钮结束时为空。"
+          "description": "保存后的路径；未保存时为空。"
+        },
+        {
+          "key": "text",
+          "name": "识别文本",
+          "type": "Text",
+          "condition": "仅：ocr_copy",
+          "description": ""
         }
       ],
-      "selections": {},
+      "selections": {
+        "operation": {
+          "name": "操作",
+          "items": [
+            {
+              "value": "capture",
+              "name": "截图",
+              "description": ""
+            },
+            {
+              "value": "capture_now",
+              "name": "框选即出图",
+              "description": ""
+            },
+            {
+              "value": "copy",
+              "name": "立刻复制",
+              "description": ""
+            },
+            {
+              "value": "pin",
+              "name": "立刻贴图",
+              "description": ""
+            },
+            {
+              "value": "ocr_copy",
+              "name": "识别并复制",
+              "description": ""
+            },
+            {
+              "value": "ocr",
+              "name": "文本识别",
+              "description": ""
+            },
+            {
+              "value": "table",
+              "name": "表格识别",
+              "description": ""
+            },
+            {
+              "value": "formula",
+              "name": "公式识别",
+              "description": ""
+            },
+            {
+              "value": "translate",
+              "name": "文本翻译",
+              "description": ""
+            },
+            {
+              "value": "image_translate",
+              "name": "图片翻译",
+              "description": ""
+            },
+            {
+              "value": "quick_save",
+              "name": "快速保存",
+              "description": ""
+            }
+          ]
+        }
+      },
       "sourceFileName": "sys_screenCapturePro_截图 Pro.md"
     },
     {
@@ -11905,7 +12120,7 @@
           "defaultValue": "true",
           "required": false,
           "variableMode": "Input",
-          "condition": "仅：fixed_area, select",
+          "condition": "仅：select, fixed_area",
           "description": "包含时，当指定 0,0,2,2 的时候，截图的大小为3*3, 否则为2*2"
         },
         {
@@ -12263,7 +12478,7 @@
           "defaultValue": "MainScreen",
           "required": false,
           "variableMode": "Input",
-          "condition": "仅：locateByBitmapFile, locateByBitmapVar, locateByColor, locateByText",
+          "condition": "仅：locateByText, locateByColor, locateByBitmapFile, locateByBitmapVar",
           "description": "位图查找范围"
         },
         {
@@ -12383,7 +12598,7 @@
           "defaultValue": "0",
           "required": false,
           "variableMode": "Input",
-          "condition": "仅：locateByBitmapFile, locateByBitmapVar, locateByColor, locateByText",
+          "condition": "仅：locateByText, locateByColor, locateByBitmapFile, locateByBitmapVar",
           "description": "未找到位图时的重试次数。每次重试间隔300ms。"
         },
         {
@@ -12436,14 +12651,14 @@
           "key": "imgIndex",
           "name": "匹配序号",
           "type": "Integer",
-          "condition": "仅：locateByBitmapFile, locateByText",
+          "condition": "仅：locateByText, locateByBitmapFile",
           "description": "从多个图片或多组文字中查找时，返回匹配到的图片或文字组序号，从0开始。"
         },
         {
           "key": "allPoints",
           "name": "所有匹配点",
           "type": "List",
-          "condition": "仅：locateByBitmapFile, locateByBitmapVar, locateByText",
+          "condition": "仅：locateByText, locateByBitmapFile, locateByBitmapVar",
           "description": "所有的匹配点列表"
         },
         {
@@ -13140,18 +13355,18 @@
       ],
       "outputs": [
         {
-          "key": "img",
-          "name": "贴图位图",
-          "type": "Image",
-          "condition": "",
-          "description": "本次生成或用于贴图的位图（与窗口显示内容一致）。"
-        },
-        {
           "key": "isSuccess",
           "name": "是否成功",
           "type": "Boolean",
           "condition": "",
           "description": "操作是否成功"
+        },
+        {
+          "key": "img",
+          "name": "贴图位图",
+          "type": "Image",
+          "condition": "",
+          "description": "本次生成或用于贴图的位图（与窗口显示内容一致）。"
         }
       ],
       "selections": {
@@ -14524,7 +14739,7 @@
           "defaultValue": "",
           "required": true,
           "variableMode": "UseVarOrInput",
-          "condition": "排除：MathpixStrokes",
+          "condition": "仅：Mathpix",
           "description": "指定待识别的图片变量、图片文件的路径或网址(通过表达式传入)。"
         },
         {
@@ -14656,7 +14871,7 @@
           "defaultValue": "Auto",
           "required": false,
           "variableMode": "UseVarOrInput",
-          "condition": "排除：en2zh_dict",
+          "condition": "仅：single, multiple",
           "description": "待翻译内容的语言"
         },
         {
@@ -14666,7 +14881,7 @@
           "defaultValue": "Auto",
           "required": false,
           "variableMode": "UseVarOrInput",
-          "condition": "排除：en2zh_dict",
+          "condition": "仅：single, multiple",
           "description": "翻译的结果语言"
         },
         {
@@ -14939,7 +15154,7 @@
           "defaultValue": "no",
           "required": true,
           "variableMode": "UseVarOrInput",
-          "condition": "仅：baidu-basic, baidu-quicker, QuickerServerOcr",
+          "condition": "仅：QuickerServerOcr, baidu-basic, baidu-quicker",
           "description": "合并文本时，是否转换标点符号"
         },
         {
@@ -14949,7 +15164,7 @@
           "defaultValue": "no",
           "required": true,
           "variableMode": "UseVarOrInput",
-          "condition": "仅：baidu-basic, baidu-quicker, QuickerServerOcr",
+          "condition": "仅：QuickerServerOcr, baidu-basic, baidu-quicker",
           "description": "是否智能合并段落。"
         },
         {
@@ -15025,14 +15240,14 @@
           "key": "textList",
           "name": "行列表",
           "type": "List",
-          "condition": "仅：baidu-basic, baidu-quicker, QuickerServerOcr, LocalOcr, WindowsOcr",
+          "condition": "仅：QuickerServerOcr, LocalOcr, WindowsOcr, baidu-basic, baidu-quicker",
           "description": "OCR识别结果，列表格式，每行一项。"
         },
         {
           "key": "content",
           "name": "合并后结果",
           "type": "Text",
-          "condition": "仅：baidu-basic, baidu-quicker, QuickerServerOcr, LocalOcr, WindowsOcr, table_quicker",
+          "condition": "仅：QuickerServerOcr, LocalOcr, WindowsOcr, baidu-basic, baidu-quicker, table_quicker",
           "description": "合并在一起的的文本内容"
         },
         {
@@ -16151,7 +16366,7 @@
           "defaultValue": "JSON",
           "required": false,
           "variableMode": "Input",
-          "condition": "排除：GET, HEAD, OPTIONS",
+          "condition": "仅：POST, PUT, DELETE, PATCH",
           "description": "Http 请求体的内容"
         },
         {
@@ -16161,7 +16376,7 @@
           "defaultValue": "",
           "required": false,
           "variableMode": "UseVarOrInput",
-          "condition": "排除：GET, HEAD, OPTIONS",
+          "condition": "仅：POST, PUT, DELETE, PATCH",
           "description": "Http 请求 BODY。格式要求详见模块帮助。"
         },
         {
@@ -16171,7 +16386,7 @@
           "defaultValue": "",
           "required": false,
           "variableMode": "UseVarOrInput",
-          "condition": "排除：GET, HEAD, OPTIONS",
+          "condition": "仅：POST, PUT, DELETE, PATCH",
           "description": "选填。上传内容的ContentType，适用于\"单个文件或图片变量（二进制）\"或\"纯文本\" 请求体类型。"
         },
         {
@@ -16681,7 +16896,7 @@
           "defaultValue": "",
           "required": false,
           "variableMode": "UseVarOrInput",
-          "condition": "仅：CreateClient, SendTextToClient, SendFileToClient, SendFileToClientBase64, SendMsgToServer",
+          "condition": "仅：CreateClient, SendMsgToServer, SendTextToClient, SendFileToClient, SendFileToClientBase64",
           "description": "文本内容。发送文件时为文件的完整路径。"
         },
         {
@@ -16771,7 +16986,7 @@
       "legacySlug": "3dsmaxcontrol",
       "ownsLegacyContent": true,
       "name": "3ds Max控制",
-      "description": "通过 3ds Max Python 插件向动作触发时的前台实例发送命令。",
+      "description": "通过 3ds Max Python 插件发送命令；仅有一个在线连接时直接使用，多个连接时按动作触发窗口定位。",
       "category": "SoftInteraction",
       "categoryName": "第三方软件交互",
       "stepType": "Action",
@@ -16796,7 +17011,7 @@
           "defaultValue": "false",
           "required": false,
           "variableMode": "Input",
-          "condition": "",
+          "condition": "仅：object.list",
           "description": ""
         },
         {
@@ -16806,7 +17021,7 @@
           "defaultValue": "",
           "required": true,
           "variableMode": "UseVarOrInput",
-          "condition": "",
+          "condition": "仅：scene.save_as",
           "description": "使用 .max 文件的绝对路径。"
         },
         {
@@ -16816,7 +17031,7 @@
           "defaultValue": "[]",
           "required": false,
           "variableMode": "UseVarOrInput",
-          "condition": "",
+          "condition": "仅：selection.select_by_handles",
           "description": "句柄可从列出对象或选择详情的 handle 字段取得。"
         },
         {
@@ -16826,7 +17041,7 @@
           "defaultValue": "replace",
           "required": false,
           "variableMode": "UseVarOrInput",
-          "condition": "",
+          "condition": "仅：selection.select_by_handles",
           "description": "replace、add 或 remove。"
         },
         {
@@ -16836,7 +17051,7 @@
           "defaultValue": "box",
           "required": false,
           "variableMode": "UseVarOrInput",
-          "condition": "",
+          "condition": "仅：object.create_primitive",
           "description": "支持 box、sphere、cylinder、cone、plane、torus、teapot。"
         },
         {
@@ -16846,7 +17061,7 @@
           "defaultValue": "Quicker Object",
           "required": false,
           "variableMode": "UseVarOrInput",
-          "condition": "",
+          "condition": "仅：object.create_primitive",
           "description": ""
         },
         {
@@ -16856,7 +17071,7 @@
           "defaultValue": "{oldName}_{index:02d}",
           "required": false,
           "variableMode": "UseVarOrInput",
-          "condition": "",
+          "condition": "仅：object.rename_selected",
           "description": "支持 {oldName} 和 {index}，例如 Obj_{index:03d}。"
         },
         {
@@ -16866,7 +17081,7 @@
           "defaultValue": "1",
           "required": false,
           "variableMode": "Input",
-          "condition": "",
+          "condition": "仅：object.rename_selected",
           "description": ""
         },
         {
@@ -16876,7 +17091,7 @@
           "defaultValue": "100",
           "required": false,
           "variableMode": "Input",
-          "condition": "",
+          "condition": "仅：object.move_selected",
           "description": ""
         },
         {
@@ -16886,7 +17101,7 @@
           "defaultValue": "0",
           "required": false,
           "variableMode": "Input",
-          "condition": "",
+          "condition": "仅：object.move_selected",
           "description": ""
         },
         {
@@ -16896,7 +17111,7 @@
           "defaultValue": "0",
           "required": false,
           "variableMode": "Input",
-          "condition": "",
+          "condition": "仅：object.move_selected",
           "description": ""
         },
         {
@@ -16906,7 +17121,7 @@
           "defaultValue": "global",
           "required": false,
           "variableMode": "UseVarOrInput",
-          "condition": "",
+          "condition": "仅：object.move_selected",
           "description": "global 使用世界坐标；local 使用父级坐标。"
         },
         {
@@ -16916,7 +17131,7 @@
           "defaultValue": "1",
           "required": false,
           "variableMode": "Input",
-          "condition": "",
+          "condition": "仅：object.clone_selected",
           "description": ""
         },
         {
@@ -16926,7 +17141,7 @@
           "defaultValue": "{oldName}_copy{index}",
           "required": false,
           "variableMode": "UseVarOrInput",
-          "condition": "",
+          "condition": "仅：object.clone_selected",
           "description": "支持 {oldName} 和 {index}。"
         },
         {
@@ -16936,7 +17151,7 @@
           "defaultValue": "20",
           "required": false,
           "variableMode": "Input",
-          "condition": "",
+          "condition": "仅：object.clone_selected",
           "description": ""
         },
         {
@@ -16946,7 +17161,7 @@
           "defaultValue": "0",
           "required": false,
           "variableMode": "Input",
-          "condition": "",
+          "condition": "仅：object.clone_selected",
           "description": ""
         },
         {
@@ -16956,7 +17171,7 @@
           "defaultValue": "0",
           "required": false,
           "variableMode": "Input",
-          "condition": "",
+          "condition": "仅：object.clone_selected",
           "description": ""
         },
         {
@@ -16966,7 +17181,7 @@
           "defaultValue": "0",
           "required": false,
           "variableMode": "Input",
-          "condition": "",
+          "condition": "仅：object.rotate_selected",
           "description": ""
         },
         {
@@ -16976,7 +17191,7 @@
           "defaultValue": "0",
           "required": false,
           "variableMode": "Input",
-          "condition": "",
+          "condition": "仅：object.rotate_selected",
           "description": ""
         },
         {
@@ -16986,7 +17201,7 @@
           "defaultValue": "90",
           "required": false,
           "variableMode": "Input",
-          "condition": "",
+          "condition": "仅：object.rotate_selected",
           "description": ""
         },
         {
@@ -16996,7 +17211,7 @@
           "defaultValue": "world",
           "required": false,
           "variableMode": "UseVarOrInput",
-          "condition": "",
+          "condition": "仅：object.rotate_selected",
           "description": "world、local 或 parent；每个对象围绕自身轴心旋转。"
         },
         {
@@ -17006,7 +17221,7 @@
           "defaultValue": "2",
           "required": false,
           "variableMode": "Input",
-          "condition": "",
+          "condition": "仅：object.scale_selected",
           "description": ""
         },
         {
@@ -17016,7 +17231,7 @@
           "defaultValue": "2",
           "required": false,
           "variableMode": "Input",
-          "condition": "",
+          "condition": "仅：object.scale_selected",
           "description": ""
         },
         {
@@ -17026,7 +17241,7 @@
           "defaultValue": "2",
           "required": false,
           "variableMode": "Input",
-          "condition": "",
+          "condition": "仅：object.scale_selected",
           "description": ""
         },
         {
@@ -17036,7 +17251,7 @@
           "defaultValue": "true",
           "required": false,
           "variableMode": "Input",
-          "condition": "",
+          "condition": "仅：object.set_hidden",
           "description": ""
         },
         {
@@ -17046,7 +17261,7 @@
           "defaultValue": "true",
           "required": false,
           "variableMode": "Input",
-          "condition": "",
+          "condition": "仅：object.set_frozen",
           "description": ""
         },
         {
@@ -17056,7 +17271,7 @@
           "defaultValue": "Quicker Layer",
           "required": true,
           "variableMode": "UseVarOrInput",
-          "condition": "",
+          "condition": "仅：layer.create, layer.assign_selected",
           "description": ""
         },
         {
@@ -17066,7 +17281,7 @@
           "defaultValue": "true",
           "required": false,
           "variableMode": "Input",
-          "condition": "",
+          "condition": "仅：layer.assign_selected",
           "description": ""
         },
         {
@@ -17076,7 +17291,7 @@
           "defaultValue": "0",
           "required": false,
           "variableMode": "Input",
-          "condition": "",
+          "condition": "仅：animation.set_time",
           "description": ""
         },
         {
@@ -17086,7 +17301,7 @@
           "defaultValue": "0",
           "required": false,
           "variableMode": "Input",
-          "condition": "",
+          "condition": "仅：animation.set_range",
           "description": ""
         },
         {
@@ -17096,7 +17311,7 @@
           "defaultValue": "100",
           "required": false,
           "variableMode": "Input",
-          "condition": "",
+          "condition": "仅：animation.set_range",
           "description": ""
         },
         {
@@ -17106,7 +17321,7 @@
           "defaultValue": "",
           "required": true,
           "variableMode": "UseVarOrInput",
-          "condition": "",
+          "condition": "仅：render.current_frame",
           "description": "扩展名决定图片格式，例如 .png、.jpg 或 .exr。"
         },
         {
@@ -17116,7 +17331,7 @@
           "defaultValue": "1920",
           "required": false,
           "variableMode": "Input",
-          "condition": "",
+          "condition": "仅：render.current_frame",
           "description": ""
         },
         {
@@ -17126,7 +17341,7 @@
           "defaultValue": "1080",
           "required": false,
           "variableMode": "Input",
-          "condition": "",
+          "condition": "仅：render.current_frame",
           "description": ""
         },
         {
@@ -17136,7 +17351,7 @@
           "defaultValue": "false",
           "required": false,
           "variableMode": "Input",
-          "condition": "",
+          "condition": "仅：render.current_frame",
           "description": ""
         },
         {
@@ -17146,7 +17361,7 @@
           "defaultValue": "false",
           "required": false,
           "variableMode": "Input",
-          "condition": "",
+          "condition": "仅：scene.save_as, render.current_frame",
           "description": ""
         },
         {
@@ -17156,7 +17371,7 @@
           "defaultValue": "",
           "required": false,
           "variableMode": "UseVarOrInput",
-          "condition": "",
+          "condition": "仅：action.search",
           "description": "按命令 ID、本地标题或帮助文本筛选；留空返回前若干项。"
         },
         {
@@ -17166,7 +17381,7 @@
           "defaultValue": "100",
           "required": false,
           "variableMode": "Input",
-          "condition": "",
+          "condition": "仅：action.search",
           "description": ""
         },
         {
@@ -17176,7 +17391,7 @@
           "defaultValue": "",
           "required": false,
           "variableMode": "UseVarOrInput",
-          "condition": "",
+          "condition": "仅：action.get_info, action.execute",
           "description": "填写 action.search 返回的 tableId:actionId，或本地化标题；标题不唯一时返回候选项。"
         },
         {
@@ -17186,7 +17401,7 @@
           "defaultValue": "",
           "required": true,
           "variableMode": "UseVarOrInput",
-          "condition": "",
+          "condition": "仅：maxscript.evaluate, maxscript.execute",
           "description": "表达式直接返回 value；脚本返回最后一个表达式的值。"
         },
         {
@@ -17196,8 +17411,8 @@
           "defaultValue": "",
           "required": true,
           "variableMode": "UseVarOrInput",
-          "condition": "",
-          "description": ""
+          "condition": "仅：maxscript.run_file",
+          "description": "每行一个路径；单个直接运行，多个弹出菜单选择。默认显示文件名，也可填写 显示名称|路径。"
         },
         {
           "key": "pythonCode",
@@ -17206,7 +17421,7 @@
           "defaultValue": "",
           "required": true,
           "variableMode": "UseVarOrInput",
-          "condition": "",
+          "condition": "仅：python.evaluate, python.execute",
           "description": "表达式直接返回 value；脚本可把返回值赋给 result。"
         },
         {
@@ -17216,7 +17431,7 @@
           "defaultValue": "",
           "required": true,
           "variableMode": "UseVarOrInput",
-          "condition": "",
+          "condition": "仅：python.run_file",
           "description": ""
         },
         {
@@ -17226,7 +17441,7 @@
           "defaultValue": "",
           "required": true,
           "variableMode": "UseVarOrInput",
-          "condition": "",
+          "condition": "仅：command.custom",
           "description": ""
         },
         {
@@ -17236,7 +17451,7 @@
           "defaultValue": "{}",
           "required": false,
           "variableMode": "UseVarOrInput",
-          "condition": "",
+          "condition": "仅：command.custom",
           "description": ""
         },
         {
@@ -17512,7 +17727,7 @@
           "required": false,
           "variableMode": "UseVarOrInput",
           "condition": "仅：TriggerMenu, TriggerControl, GetControlInfo",
-          "description": "要操作哪个窗口的控件。不填写=使用前台窗口；或窗口句柄数字。"
+          "description": "要操作哪个窗口的控件。不填写或填写0=使用前台窗口；或窗口句柄数字。"
         },
         {
           "key": "menuPath",
@@ -17563,6 +17778,16 @@
           "variableMode": "Input",
           "condition": "仅：TriggerControl",
           "description": "对控件执行的操作。"
+        },
+        {
+          "key": "noWait",
+          "name": "不等待操作完成",
+          "type": "Boolean",
+          "defaultValue": "false",
+          "required": false,
+          "variableMode": "UseVarOrInput",
+          "condition": "仅：TriggerControl",
+          "description": "提交后立即执行后续步骤，不保证控件操作已完成。是否成功仅表示提交成功；后台失败只记录日志，不触发失败后停止。涉及鼠标、键盘或焦点的操作可能与后续步骤互相影响，请按需等待目标状态。"
         },
         {
           "key": "value",
@@ -18083,7 +18308,7 @@
           "required": false,
           "variableMode": "UseVarOrInput",
           "condition": "仅：TriggerMenu, TriggerControl, GetControlInfo, GetControlTree, ObserveInteractiveControls",
-          "description": "要操作哪个窗口的控件。不填写=使用前台窗口；或窗口句柄数字。"
+          "description": "要操作哪个窗口的控件。不填写或填写0=使用前台窗口；或窗口句柄数字。"
         },
         {
           "key": "menuPath",
@@ -18164,6 +18389,16 @@
           "variableMode": "Input",
           "condition": "仅：TriggerControl",
           "description": "对控件执行的操作。"
+        },
+        {
+          "key": "noWait",
+          "name": "不等待操作完成",
+          "type": "Boolean",
+          "defaultValue": "false",
+          "required": false,
+          "variableMode": "UseVarOrInput",
+          "condition": "仅：TriggerControl",
+          "description": "提交后立即执行后续步骤，不保证控件操作已完成。是否成功仅表示提交成功；后台失败只记录日志，不触发失败后停止。涉及鼠标、键盘或焦点的操作可能与后续步骤互相影响，请按需等待目标状态。"
         },
         {
           "key": "value",
@@ -18380,207 +18615,207 @@
             },
             {
               "value": "AppBar",
-              "name": "AppBar",
+              "name": "应用栏",
               "description": ""
             },
             {
               "value": "Button",
-              "name": "Button",
+              "name": "按钮",
               "description": ""
             },
             {
               "value": "Calendar",
-              "name": "Calendar",
+              "name": "日历",
               "description": ""
             },
             {
               "value": "CheckBox",
-              "name": "CheckBox",
+              "name": "复选框",
               "description": ""
             },
             {
               "value": "ComboBox",
-              "name": "ComboBox",
+              "name": "组合框",
               "description": ""
             },
             {
               "value": "Custom",
-              "name": "Custom",
+              "name": "自定义控件",
               "description": ""
             },
             {
               "value": "DataGrid",
-              "name": "DataGrid",
+              "name": "数据网格",
               "description": ""
             },
             {
               "value": "DataItem",
-              "name": "DataItem",
+              "name": "数据项",
               "description": ""
             },
             {
               "value": "Document",
-              "name": "Document",
+              "name": "文档",
               "description": ""
             },
             {
               "value": "Edit",
-              "name": "Edit",
+              "name": "编辑框",
               "description": ""
             },
             {
               "value": "Group",
-              "name": "Group",
+              "name": "分组",
               "description": ""
             },
             {
               "value": "Header",
-              "name": "Header",
+              "name": "表头",
               "description": ""
             },
             {
               "value": "HeaderItem",
-              "name": "HeaderItem",
+              "name": "表头项",
               "description": ""
             },
             {
               "value": "Hyperlink",
-              "name": "Hyperlink",
+              "name": "超链接",
               "description": ""
             },
             {
               "value": "Image",
-              "name": "Image",
+              "name": "图像",
               "description": ""
             },
             {
               "value": "List",
-              "name": "List",
+              "name": "列表",
               "description": ""
             },
             {
               "value": "ListItem",
-              "name": "ListItem",
+              "name": "列表项",
               "description": ""
             },
             {
               "value": "Menu",
-              "name": "Menu",
+              "name": "菜单",
               "description": ""
             },
             {
               "value": "MenuBar",
-              "name": "MenuBar",
+              "name": "菜单栏",
               "description": ""
             },
             {
               "value": "MenuItem",
-              "name": "MenuItem",
+              "name": "菜单项",
               "description": ""
             },
             {
               "value": "Pane",
-              "name": "Pane",
+              "name": "面板",
               "description": ""
             },
             {
               "value": "ProgressBar",
-              "name": "ProgressBar",
+              "name": "进度条",
               "description": ""
             },
             {
               "value": "RadioButton",
-              "name": "RadioButton",
+              "name": "单选按钮",
               "description": ""
             },
             {
               "value": "ScrollBar",
-              "name": "ScrollBar",
+              "name": "滚动条",
               "description": ""
             },
             {
               "value": "SemanticZoom",
-              "name": "SemanticZoom",
+              "name": "语义缩放",
               "description": ""
             },
             {
               "value": "Separator",
-              "name": "Separator",
+              "name": "分隔符",
               "description": ""
             },
             {
               "value": "Slider",
-              "name": "Slider",
+              "name": "滑块",
               "description": ""
             },
             {
               "value": "Spinner",
-              "name": "Spinner",
+              "name": "微调框",
               "description": ""
             },
             {
               "value": "SplitButton",
-              "name": "SplitButton",
+              "name": "拆分按钮",
               "description": ""
             },
             {
               "value": "StatusBar",
-              "name": "StatusBar",
+              "name": "状态栏",
               "description": ""
             },
             {
               "value": "Tab",
-              "name": "Tab",
+              "name": "选项卡",
               "description": ""
             },
             {
               "value": "TabItem",
-              "name": "TabItem",
+              "name": "选项卡项",
               "description": ""
             },
             {
               "value": "Table",
-              "name": "Table",
+              "name": "表格",
               "description": ""
             },
             {
               "value": "Text",
-              "name": "Text",
+              "name": "文本",
               "description": ""
             },
             {
               "value": "Thumb",
-              "name": "Thumb",
+              "name": "拖动柄",
               "description": ""
             },
             {
               "value": "TitleBar",
-              "name": "TitleBar",
+              "name": "标题栏",
               "description": ""
             },
             {
               "value": "ToolBar",
-              "name": "ToolBar",
+              "name": "工具栏",
               "description": ""
             },
             {
               "value": "ToolTip",
-              "name": "ToolTip",
+              "name": "工具提示",
               "description": ""
             },
             {
               "value": "Tree",
-              "name": "Tree",
+              "name": "树形控件",
               "description": ""
             },
             {
               "value": "TreeItem",
-              "name": "TreeItem",
+              "name": "树节点",
               "description": ""
             },
             {
               "value": "Window",
-              "name": "Window",
+              "name": "窗口",
               "description": ""
             }
           ]
@@ -18783,7 +19018,7 @@
           "defaultValue": "",
           "required": true,
           "variableMode": "UseVarOrInput",
-          "condition": "仅：GetTabInfo, CloseTab, RunScript, WaitTabComplete, GetElementInfo, UpdateElement, TriggerEvent, PickElement, Wait, ActivateTab, PageAction, UploadFiles, DropFiles, ExtractList, FillForm",
+          "condition": "仅：WaitTabComplete, ActivateTab, CloseTab, GetTabInfo, RunScript, PickElement, GetElementInfo, UpdateElement, TriggerEvent, Wait, PageAction, UploadFiles, DropFiles, ExtractList, FillForm",
           "description": "留空表示当前活动标签页。"
         },
         {
@@ -18913,7 +19148,7 @@
           "defaultValue": "3000",
           "required": true,
           "variableMode": "Input",
-          "condition": "仅：OpenUrl, WaitTabComplete, BackgroundScript, GetTabInfo, RunScript, GetElementInfo, UpdateElement, TriggerEvent, PickElement, BackgroundCommand, Wait, PageAction, UploadFiles, DropFiles",
+          "condition": "仅：OpenUrl, WaitTabComplete, GetTabInfo, RunScript, PickElement, GetElementInfo, UpdateElement, TriggerEvent, Wait, BackgroundScript, BackgroundCommand, PageAction, UploadFiles, DropFiles",
           "description": "超时等待时间，毫秒数"
         },
         {
@@ -19054,7 +19289,7 @@
           "required": true,
           "variableMode": "UseVarOrInput",
           "condition": "仅：PageAction",
-          "description": "角色定位时填写 accessible name；文本定位填写文本；CSS 定位填写选择器。"
+          "description": "角色定位填写 accessible name；文本定位填写文本；CSS 定位填写选择器；XPath 定位填写表达式（可带 xpath: 前缀，需要新版扩展）。"
         },
         {
           "key": "pageExact",
@@ -19259,42 +19494,42 @@
           "key": "tabId",
           "name": "标签页ID",
           "type": "Integer",
-          "condition": "仅：OpenUrl, GetTabInfo, ActivateTab",
+          "condition": "仅：OpenUrl, ActivateTab, GetTabInfo",
           "description": "网页所在标签页ID"
         },
         {
           "key": "windowId",
           "name": "窗口ID",
           "type": "Integer",
-          "condition": "仅：OpenUrl, GetTabInfo, ActivateTab",
+          "condition": "仅：OpenUrl, ActivateTab, GetTabInfo",
           "description": "网页所在窗口的ID"
         },
         {
           "key": "groupId",
           "name": "分组ID",
           "type": "Integer",
-          "condition": "仅：GetTabInfo, ActivateTab",
+          "condition": "仅：ActivateTab, GetTabInfo",
           "description": "标签页所属分组ID"
         },
         {
           "key": "url",
           "name": "网址",
           "type": "Text",
-          "condition": "仅：GetTabInfo, ActivateTab",
+          "condition": "仅：ActivateTab, GetTabInfo",
           "description": "标签页当前网址"
         },
         {
           "key": "title",
           "name": "网页标题",
           "type": "Text",
-          "condition": "仅：GetTabInfo, ActivateTab",
+          "condition": "仅：ActivateTab, GetTabInfo",
           "description": "标签页网页标题"
         },
         {
           "key": "favicon",
           "name": "Favicon图标网址",
           "type": "Text",
-          "condition": "仅：GetTabInfo, ActivateTab",
+          "condition": "仅：ActivateTab, GetTabInfo",
           "description": "标签页网页图标网址"
         },
         {
@@ -20825,6 +21060,11 @@
               "value": "css",
               "name": "CSS 选择器",
               "description": ""
+            },
+            {
+              "value": "xpath",
+              "name": "XPath",
+              "description": ""
             }
           ]
         },
@@ -20940,6 +21180,141 @@
         }
       },
       "sourceFileName": "sys_chromecontrol_浏览器控制.md"
+    },
+    {
+      "key": "sys:motuyuncontrol",
+      "slug": "motuyuncontrol",
+      "legacySlug": "motuyuncontrol",
+      "ownsLegacyContent": true,
+      "name": "模兔云控制",
+      "description": "通过模兔云本机服务搜索并执行 SketchUp 插件命令。",
+      "category": "SoftInteraction",
+      "categoryName": "第三方软件交互",
+      "stepType": "Action",
+      "isRisky": false,
+      "isProOnly": false,
+      "helpLink": "https://docs.getquicker.net/v2/xaction/modules/motuyuncontrol",
+      "inputs": [
+        {
+          "key": "operation",
+          "name": "操作类型",
+          "type": "Enum",
+          "defaultValue": "command.activate",
+          "required": true,
+          "variableMode": "Input",
+          "condition": "",
+          "description": ""
+        },
+        {
+          "key": "keyword",
+          "name": "搜索词",
+          "type": "Text",
+          "defaultValue": "",
+          "required": false,
+          "variableMode": "UseVarOrInput",
+          "condition": "仅：command.search",
+          "description": ""
+        },
+        {
+          "key": "limit",
+          "name": "最大数量",
+          "type": "Number",
+          "defaultValue": "100",
+          "required": false,
+          "variableMode": "UseVarOrInput",
+          "condition": "仅：command.search",
+          "description": ""
+        },
+        {
+          "key": "needIcon",
+          "name": "返回图标",
+          "type": "Boolean",
+          "defaultValue": "true",
+          "required": false,
+          "variableMode": "Input",
+          "condition": "仅：command.search",
+          "description": ""
+        },
+        {
+          "key": "commandId",
+          "name": "命令 ID",
+          "type": "Text",
+          "defaultValue": "",
+          "required": true,
+          "variableMode": "UseVarOrInput",
+          "condition": "仅：command.activate",
+          "description": ""
+        },
+        {
+          "key": "projectId",
+          "name": "插件 ID",
+          "type": "Text",
+          "defaultValue": "0",
+          "required": true,
+          "variableMode": "UseVarOrInput",
+          "condition": "仅：command.activate",
+          "description": ""
+        },
+        {
+          "key": "waitMs",
+          "name": "最长等待时间(ms)",
+          "type": "Number",
+          "defaultValue": "30000",
+          "required": true,
+          "variableMode": "Input",
+          "condition": "",
+          "description": ""
+        },
+        {
+          "key": "stopIfFail",
+          "name": "失败后停止",
+          "type": "Boolean",
+          "defaultValue": "true",
+          "required": false,
+          "variableMode": "Input",
+          "condition": "",
+          "description": "失败后是否停止动作"
+        }
+      ],
+      "outputs": [
+        {
+          "key": "isSuccess",
+          "name": "是否成功",
+          "type": "Boolean",
+          "condition": "",
+          "description": "操作是否成功"
+        },
+        {
+          "key": "output",
+          "name": "返回结果",
+          "type": "Text",
+          "condition": "",
+          "description": "模兔云返回的 JSON。"
+        }
+      ],
+      "selections": {
+        "operation": {
+          "name": "操作类型",
+          "items": [
+            {
+              "value": "command.search",
+              "name": "[命令] 搜索命令",
+              "description": ""
+            },
+            {
+              "value": "command.activate",
+              "name": "[命令] 执行命令",
+              "description": ""
+            },
+            {
+              "value": "tool.list",
+              "name": "[高级] 读取工具列表",
+              "description": ""
+            }
+          ]
+        }
+      },
+      "sourceFileName": "sys_motuyuncontrol_模兔云控制.md"
     },
     {
       "key": "sys:adobesoftscontrol",
@@ -21122,7 +21497,7 @@
           "defaultValue": "Quicker 合成",
           "required": true,
           "variableMode": "UseVarOrInput",
-          "condition": "",
+          "condition": "仅：composition.create",
           "description": ""
         },
         {
@@ -21132,7 +21507,7 @@
           "defaultValue": "",
           "required": false,
           "variableMode": "UseVarOrInput",
-          "condition": "",
+          "condition": "仅：layer.add_text, text.replace, composition.save_frame_png",
           "description": ""
         },
         {
@@ -21142,7 +21517,7 @@
           "defaultValue": "1920",
           "required": false,
           "variableMode": "UseVarOrInput",
-          "condition": "",
+          "condition": "仅：composition.create, layer.add_solid",
           "description": ""
         },
         {
@@ -21152,7 +21527,7 @@
           "defaultValue": "1080",
           "required": false,
           "variableMode": "UseVarOrInput",
-          "condition": "",
+          "condition": "仅：composition.create, layer.add_solid",
           "description": ""
         },
         {
@@ -21162,7 +21537,7 @@
           "defaultValue": "1",
           "required": false,
           "variableMode": "UseVarOrInput",
-          "condition": "",
+          "condition": "仅：composition.create, layer.add_solid",
           "description": ""
         },
         {
@@ -21172,7 +21547,7 @@
           "defaultValue": "10",
           "required": false,
           "variableMode": "UseVarOrInput",
-          "condition": "",
+          "condition": "仅：composition.create, layer.add_solid, layer.add_null",
           "description": ""
         },
         {
@@ -21182,7 +21557,7 @@
           "defaultValue": "25",
           "required": false,
           "variableMode": "UseVarOrInput",
-          "condition": "",
+          "condition": "仅：composition.create",
           "description": ""
         },
         {
@@ -21192,7 +21567,7 @@
           "defaultValue": "",
           "required": false,
           "variableMode": "UseVarOrInput",
-          "condition": "",
+          "condition": "仅：footage.replace, render_queue.configure, composition.save_frame_png",
           "description": ""
         },
         {
@@ -21202,7 +21577,7 @@
           "defaultValue": "[]",
           "required": false,
           "variableMode": "UseVarOrInput",
-          "condition": "",
+          "condition": "仅：project.import_files",
           "description": ""
         },
         {
@@ -21212,7 +21587,7 @@
           "defaultValue": "0",
           "required": false,
           "variableMode": "UseVarOrInput",
-          "condition": "",
+          "condition": "仅：footage.replace, footage.reload",
           "description": ""
         },
         {
@@ -21222,7 +21597,7 @@
           "defaultValue": "false",
           "required": false,
           "variableMode": "UseVarOrInput",
-          "condition": "",
+          "condition": "仅：footage.replace",
           "description": ""
         },
         {
@@ -21232,7 +21607,7 @@
           "defaultValue": "[]",
           "required": false,
           "variableMode": "UseVarOrInput",
-          "condition": "",
+          "condition": "仅：project.item_move_to_folder",
           "description": ""
         },
         {
@@ -21242,7 +21617,7 @@
           "defaultValue": "0",
           "required": false,
           "variableMode": "UseVarOrInput",
-          "condition": "",
+          "condition": "仅：project.item_move_to_folder",
           "description": ""
         },
         {
@@ -21252,7 +21627,7 @@
           "defaultValue": "0",
           "required": false,
           "variableMode": "UseVarOrInput",
-          "condition": "",
+          "condition": "仅：project.folder_create",
           "description": ""
         },
         {
@@ -21262,7 +21637,7 @@
           "defaultValue": "",
           "required": false,
           "variableMode": "UseVarOrInput",
-          "condition": "",
+          "condition": "仅：project.folder_create, layer.add_text, layer.duplicate, layer.precompose, layer.add_solid, layer.add_null, layer.add_shape, layer.add_camera, layer.add_light",
           "description": ""
         },
         {
@@ -21272,7 +21647,7 @@
           "defaultValue": "0",
           "required": false,
           "variableMode": "UseVarOrInput",
-          "condition": "",
+          "condition": "仅：layer.add_text, text.replace, composition.save_frame_png",
           "description": ""
         },
         {
@@ -21282,7 +21657,7 @@
           "defaultValue": "1",
           "required": false,
           "variableMode": "UseVarOrInput",
-          "condition": "",
+          "condition": "仅：render_queue.template_list, render_queue.configure, render_queue.remove",
           "description": ""
         },
         {
@@ -21292,7 +21667,7 @@
           "defaultValue": "",
           "required": false,
           "variableMode": "UseVarOrInput",
-          "condition": "",
+          "condition": "仅：render_queue.configure",
           "description": ""
         },
         {
@@ -21302,7 +21677,7 @@
           "defaultValue": "",
           "required": false,
           "variableMode": "UseVarOrInput",
-          "condition": "",
+          "condition": "仅：render_queue.configure",
           "description": ""
         },
         {
@@ -21312,7 +21687,7 @@
           "defaultValue": "",
           "required": false,
           "variableMode": "UseVarOrInput",
-          "condition": "",
+          "condition": "仅：render_queue.configure",
           "description": ""
         },
         {
@@ -21322,7 +21697,7 @@
           "defaultValue": "0",
           "required": false,
           "variableMode": "UseVarOrInput",
-          "condition": "",
+          "condition": "仅：text.get, text.set, layer.duplicate, layer.set_timing, layer.set_transform, layer.move, property.get, property.set_value, property.set_keyframes, property.remove_keyframes, property.easy_ease, property.set_expression",
           "description": ""
         },
         {
@@ -21332,7 +21707,7 @@
           "defaultValue": "1",
           "required": false,
           "variableMode": "UseVarOrInput",
-          "condition": "",
+          "condition": "仅：text.get, text.set, layer.duplicate, layer.set_timing, layer.set_transform, layer.move, property.get, property.set_value, property.set_keyframes, property.remove_keyframes, property.easy_ease, property.set_expression",
           "description": ""
         },
         {
@@ -21342,7 +21717,7 @@
           "defaultValue": "[]",
           "required": false,
           "variableMode": "UseVarOrInput",
-          "condition": "",
+          "condition": "仅：layer.precompose",
           "description": ""
         },
         {
@@ -21352,7 +21727,7 @@
           "defaultValue": "[1]",
           "required": false,
           "variableMode": "UseVarOrInput",
-          "condition": "",
+          "condition": "仅：layer.precompose",
           "description": ""
         },
         {
@@ -21362,7 +21737,7 @@
           "defaultValue": "true",
           "required": false,
           "variableMode": "UseVarOrInput",
-          "condition": "",
+          "condition": "仅：layer.precompose",
           "description": ""
         },
         {
@@ -21382,7 +21757,7 @@
           "defaultValue": "0",
           "required": false,
           "variableMode": "UseVarOrInput",
-          "condition": "",
+          "condition": "仅：layer.move",
           "description": ""
         },
         {
@@ -21392,7 +21767,7 @@
           "defaultValue": "1",
           "required": false,
           "variableMode": "UseVarOrInput",
-          "condition": "",
+          "condition": "仅：layer.move",
           "description": ""
         },
         {
@@ -21402,7 +21777,7 @@
           "defaultValue": "Quicker 文本",
           "required": false,
           "variableMode": "UseVarOrInput",
-          "condition": "",
+          "condition": "仅：layer.add_text, text.set",
           "description": ""
         },
         {
@@ -21412,7 +21787,7 @@
           "defaultValue": "",
           "required": false,
           "variableMode": "UseVarOrInput",
-          "condition": "",
+          "condition": "仅：text.replace",
           "description": ""
         },
         {
@@ -21422,7 +21797,7 @@
           "defaultValue": "",
           "required": false,
           "variableMode": "UseVarOrInput",
-          "condition": "",
+          "condition": "仅：text.replace",
           "description": ""
         },
         {
@@ -21432,7 +21807,7 @@
           "defaultValue": "false",
           "required": false,
           "variableMode": "UseVarOrInput",
-          "condition": "",
+          "condition": "仅：text.replace",
           "description": ""
         },
         {
@@ -21442,7 +21817,7 @@
           "defaultValue": "",
           "required": false,
           "variableMode": "UseVarOrInput",
-          "condition": "",
+          "condition": "仅：layer.add_text, text.set",
           "description": ""
         },
         {
@@ -21452,7 +21827,7 @@
           "defaultValue": "0",
           "required": false,
           "variableMode": "UseVarOrInput",
-          "condition": "",
+          "condition": "仅：layer.add_text, text.set",
           "description": ""
         },
         {
@@ -21462,7 +21837,7 @@
           "defaultValue": "null",
           "required": false,
           "variableMode": "UseVarOrInput",
-          "condition": "",
+          "condition": "仅：layer.add_text, text.set",
           "description": ""
         },
         {
@@ -21472,7 +21847,7 @@
           "defaultValue": "[1,0,0]",
           "required": false,
           "variableMode": "UseVarOrInput",
-          "condition": "",
+          "condition": "仅：layer.add_solid",
           "description": ""
         },
         {
@@ -21482,7 +21857,7 @@
           "defaultValue": "null",
           "required": false,
           "variableMode": "UseVarOrInput",
-          "condition": "",
+          "condition": "仅：layer.add_text, layer.set_transform, layer.add_camera, layer.add_light",
           "description": ""
         },
         {
@@ -21492,7 +21867,7 @@
           "defaultValue": "null",
           "required": false,
           "variableMode": "UseVarOrInput",
-          "condition": "",
+          "condition": "仅：layer.set_transform",
           "description": ""
         },
         {
@@ -21502,7 +21877,7 @@
           "defaultValue": "null",
           "required": false,
           "variableMode": "UseVarOrInput",
-          "condition": "",
+          "condition": "仅：layer.set_transform",
           "description": ""
         },
         {
@@ -21512,7 +21887,7 @@
           "defaultValue": "",
           "required": false,
           "variableMode": "UseVarOrInput",
-          "condition": "",
+          "condition": "仅：layer.set_transform",
           "description": ""
         },
         {
@@ -21522,7 +21897,7 @@
           "defaultValue": "",
           "required": false,
           "variableMode": "UseVarOrInput",
-          "condition": "",
+          "condition": "仅：layer.set_transform",
           "description": ""
         },
         {
@@ -21532,7 +21907,7 @@
           "defaultValue": "0",
           "required": false,
           "variableMode": "UseVarOrInput",
-          "condition": "",
+          "condition": "仅：layer.set_transform, composition.save_frame_png, property.set_value",
           "description": ""
         },
         {
@@ -21552,7 +21927,7 @@
           "defaultValue": "",
           "required": false,
           "variableMode": "UseVarOrInput",
-          "condition": "",
+          "condition": "仅：layer.set_timing",
           "description": ""
         },
         {
@@ -21562,7 +21937,7 @@
           "defaultValue": "",
           "required": false,
           "variableMode": "UseVarOrInput",
-          "condition": "",
+          "condition": "仅：layer.set_timing",
           "description": ""
         },
         {
@@ -21572,7 +21947,7 @@
           "defaultValue": "",
           "required": false,
           "variableMode": "UseVarOrInput",
-          "condition": "",
+          "condition": "仅：layer.set_timing",
           "description": ""
         },
         {
@@ -21582,7 +21957,7 @@
           "defaultValue": "",
           "required": false,
           "variableMode": "UseVarOrInput",
-          "condition": "",
+          "condition": "仅：layer.set_timing",
           "description": ""
         },
         {
@@ -21592,7 +21967,7 @@
           "defaultValue": "[\"ADBE Transform Group\",\"ADBE Position\"]",
           "required": false,
           "variableMode": "UseVarOrInput",
-          "condition": "",
+          "condition": "仅：property.get, property.set_value, property.set_keyframes, property.remove_keyframes, property.easy_ease, property.set_expression",
           "description": ""
         },
         {
@@ -21602,7 +21977,7 @@
           "defaultValue": "[960,540]",
           "required": false,
           "variableMode": "UseVarOrInput",
-          "condition": "",
+          "condition": "仅：property.set_value",
           "description": ""
         },
         {
@@ -21612,7 +21987,7 @@
           "defaultValue": "[0,1]",
           "required": false,
           "variableMode": "UseVarOrInput",
-          "condition": "",
+          "condition": "仅：property.set_keyframes",
           "description": ""
         },
         {
@@ -21622,7 +21997,7 @@
           "defaultValue": "[]",
           "required": false,
           "variableMode": "UseVarOrInput",
-          "condition": "",
+          "condition": "仅：property.set_keyframes",
           "description": ""
         },
         {
@@ -21632,7 +22007,7 @@
           "defaultValue": "[]",
           "required": false,
           "variableMode": "UseVarOrInput",
-          "condition": "",
+          "condition": "仅：property.remove_keyframes, property.easy_ease",
           "description": ""
         },
         {
@@ -21642,7 +22017,7 @@
           "defaultValue": "33.333",
           "required": false,
           "variableMode": "UseVarOrInput",
-          "condition": "",
+          "condition": "仅：property.easy_ease",
           "description": ""
         },
         {
@@ -21652,7 +22027,7 @@
           "defaultValue": "wiggle(2,20)",
           "required": false,
           "variableMode": "UseVarOrInput",
-          "condition": "",
+          "condition": "仅：property.set_expression",
           "description": ""
         },
         {
@@ -21662,7 +22037,7 @@
           "defaultValue": "true",
           "required": false,
           "variableMode": "UseVarOrInput",
-          "condition": "",
+          "condition": "仅：property.set_expression",
           "description": ""
         },
         {
@@ -21672,7 +22047,7 @@
           "defaultValue": "app.project.numItems",
           "required": true,
           "variableMode": "UseVarOrInput",
-          "condition": "",
+          "condition": "仅：script.evaluate",
           "description": ""
         },
         {
@@ -21682,7 +22057,7 @@
           "defaultValue": "",
           "required": false,
           "variableMode": "UseVarOrInput",
-          "condition": "",
+          "condition": "仅：script.evaluate",
           "description": "非空时用一个 AE Undo Group 包装脚本。"
         },
         {
@@ -21692,7 +22067,7 @@
           "defaultValue": "",
           "required": true,
           "variableMode": "UseVarOrInput",
-          "condition": "",
+          "condition": "仅：script.run_file",
           "description": ""
         },
         {
@@ -21702,7 +22077,7 @@
           "defaultValue": "",
           "required": true,
           "variableMode": "UseVarOrInput",
-          "condition": "",
+          "condition": "仅：command.custom",
           "description": ""
         },
         {
@@ -21712,7 +22087,7 @@
           "defaultValue": "{}",
           "required": false,
           "variableMode": "UseVarOrInput",
-          "condition": "",
+          "condition": "仅：command.custom",
           "description": ""
         },
         {
@@ -22022,7 +22397,7 @@
           "defaultValue": "SendCommand",
           "required": true,
           "variableMode": "Input",
-          "condition": "",
+          "condition": "仅：agent",
           "description": "低权限代理操作。"
         },
         {
@@ -22032,8 +22407,8 @@
           "defaultValue": "bridge.ping",
           "required": true,
           "variableMode": "Input",
-          "condition": "",
-          "description": "向动作触发时的前台 AutoCAD 实例发送结构化命令。"
+          "condition": "仅：bridge",
+          "description": "向在线 AutoCAD 连接发送结构化命令；多个连接时按动作触发窗口定位。"
         },
         {
           "key": "command",
@@ -22072,7 +22447,7 @@
           "defaultValue": "",
           "required": false,
           "variableMode": "UseVarOrInput",
-          "condition": "",
+          "condition": "仅：document.send_command",
           "description": "不限制命令字符串；末尾没有空白时会自动补一个空格开始执行。"
         },
         {
@@ -22082,7 +22457,7 @@
           "defaultValue": "DWGNAME",
           "required": false,
           "variableMode": "UseVarOrInput",
-          "condition": "",
+          "condition": "仅：system_variables.get",
           "description": "每行一个系统变量名称。"
         },
         {
@@ -22092,7 +22467,7 @@
           "defaultValue": "0,0,0",
           "required": false,
           "variableMode": "UseVarOrInput",
-          "condition": "",
+          "condition": "仅：geometry.create_line",
           "description": "AutoCAD 图形单位坐标。"
         },
         {
@@ -22102,7 +22477,7 @@
           "defaultValue": "100,0,0",
           "required": false,
           "variableMode": "UseVarOrInput",
-          "condition": "",
+          "condition": "仅：geometry.create_line",
           "description": "AutoCAD 图形单位坐标。"
         },
         {
@@ -22112,7 +22487,7 @@
           "defaultValue": "",
           "required": false,
           "variableMode": "UseVarOrInput",
-          "condition": "",
+          "condition": "仅：document.open, document.save_as, lisp.list_commands, lisp.load_file, script.run_file, plugin.load_dotnet, plugin.load_arx, plot.export_pdf, document.export_dxf, plugin.load_and_run",
           "description": "必须是 AutoCAD 所在电脑上的绝对路径。插件加载仍受 SECURELOAD 和 TRUSTEDPATHS 限制。"
         },
         {
@@ -22122,7 +22497,7 @@
           "defaultValue": "0",
           "required": false,
           "variableMode": "UseVarOrInput",
-          "condition": "",
+          "condition": "仅：layer.set_current, selection.assign_layer",
           "description": ""
         },
         {
@@ -22132,7 +22507,7 @@
           "defaultValue": "Model",
           "required": false,
           "variableMode": "UseVarOrInput",
-          "condition": "",
+          "condition": "仅：layout.activate, plot.export_pdf",
           "description": ""
         },
         {
@@ -22142,7 +22517,7 @@
           "defaultValue": "DWG To PDF.pc3",
           "required": false,
           "variableMode": "UseVarOrInput",
-          "condition": "",
+          "condition": "仅：plot.export_pdf",
           "description": ""
         },
         {
@@ -22152,7 +22527,7 @@
           "defaultValue": "16",
           "required": false,
           "variableMode": "UseVarOrInput",
-          "condition": "",
+          "condition": "仅：document.export_dxf",
           "description": "小数位数，范围 0 到 16。"
         },
         {
@@ -22162,7 +22537,7 @@
           "defaultValue": "(princ \"Hello from Quicker\")",
           "required": false,
           "variableMode": "UseVarOrInput",
-          "condition": "",
+          "condition": "仅：lisp.evaluate",
           "description": ""
         },
         {
@@ -22172,7 +22547,7 @@
           "defaultValue": "",
           "required": false,
           "variableMode": "UseVarOrInput",
-          "condition": "",
+          "condition": "仅：plugin.load_and_run",
           "description": "可留空；LSP 只定义一个 c: 命令时自动识别。多个命令或编译插件必须填写。"
         },
         {
@@ -22182,7 +22557,7 @@
           "defaultValue": "",
           "required": false,
           "variableMode": "UseVarOrInput",
-          "condition": "",
+          "condition": "仅：plugin.load_and_run",
           "description": "追加到命令后的 AutoCAD 命令行文本；可留空。"
         },
         {
@@ -22192,7 +22567,7 @@
           "defaultValue": "",
           "required": false,
           "variableMode": "UseVarOrInput",
-          "condition": "",
+          "condition": "仅：command.custom",
           "description": ""
         },
         {
@@ -22202,7 +22577,7 @@
           "defaultValue": "{}",
           "required": false,
           "variableMode": "UseVarOrInput",
-          "condition": "",
+          "condition": "仅：command.custom",
           "description": ""
         },
         {
@@ -22442,7 +22817,7 @@
       "legacySlug": "blendercontrol",
       "ownsLegacyContent": true,
       "name": "Blender控制",
-      "description": "通过 Blender Python Extension 向动作触发时的前台实例发送命令。",
+      "description": "通过 Blender Python Extension 发送命令；仅有一个在线连接时直接使用，多个连接时按动作触发窗口定位。",
       "category": "SoftInteraction",
       "categoryName": "第三方软件交互",
       "stepType": "Action",
@@ -22467,7 +22842,7 @@
           "defaultValue": "true",
           "required": false,
           "variableMode": "Input",
-          "condition": "",
+          "condition": "仅：selection.get_info",
           "description": ""
         },
         {
@@ -22477,7 +22852,7 @@
           "defaultValue": "",
           "required": false,
           "variableMode": "UseVarOrInput",
-          "condition": "",
+          "condition": "仅：operator.list",
           "description": "按 Operator ID 或本地标题筛选；留空返回前若干项。"
         },
         {
@@ -22487,7 +22862,7 @@
           "defaultValue": "100",
           "required": false,
           "variableMode": "Input",
-          "condition": "",
+          "condition": "仅：operator.list",
           "description": ""
         },
         {
@@ -22497,7 +22872,7 @@
           "defaultValue": "object.select_all",
           "required": false,
           "variableMode": "UseVarOrInput",
-          "condition": "",
+          "condition": "仅：operator.invoke",
           "description": "例如 object.select_all；也可填写第三方插件注册的 Operator。"
         },
         {
@@ -22507,7 +22882,7 @@
           "defaultValue": "EXEC_DEFAULT",
           "required": false,
           "variableMode": "UseVarOrInput",
-          "condition": "",
+          "condition": "仅：operator.invoke",
           "description": "通常使用 EXEC_DEFAULT；需要交互操作时可改为 INVOKE_DEFAULT。"
         },
         {
@@ -22517,7 +22892,7 @@
           "defaultValue": "VIEW_3D",
           "required": false,
           "variableMode": "UseVarOrInput",
-          "condition": "",
+          "condition": "仅：operator.invoke",
           "description": "为依赖界面上下文的 Operator 提供区域，例如 VIEW_3D、NODE_EDITOR；留空仅提供窗口上下文。"
         },
         {
@@ -22527,7 +22902,7 @@
           "defaultValue": "{}",
           "required": false,
           "variableMode": "UseVarOrInput",
-          "condition": "",
+          "condition": "仅：operator.invoke",
           "description": ""
         },
         {
@@ -22537,7 +22912,7 @@
           "defaultValue": "",
           "required": true,
           "variableMode": "UseVarOrInput",
-          "condition": "",
+          "condition": "仅：python.evaluate, python.execute",
           "description": "表达式直接返回值；脚本可把返回值赋给 result。"
         },
         {
@@ -22547,7 +22922,7 @@
           "defaultValue": "",
           "required": true,
           "variableMode": "UseVarOrInput",
-          "condition": "",
+          "condition": "仅：python.run_file, model.import_file",
           "description": "Python 文件或要导入的模型文件绝对路径。"
         },
         {
@@ -22557,7 +22932,7 @@
           "defaultValue": "",
           "required": true,
           "variableMode": "UseVarOrInput",
-          "condition": "",
+          "condition": "仅：command.custom",
           "description": ""
         },
         {
@@ -22567,7 +22942,7 @@
           "defaultValue": "{}",
           "required": false,
           "variableMode": "UseVarOrInput",
-          "condition": "",
+          "condition": "仅：command.custom",
           "description": ""
         },
         {
@@ -22682,7 +23057,7 @@
       "legacySlug": "cinema4dcontrol",
       "ownsLegacyContent": true,
       "name": "Cinema 4D控制",
-      "description": "通过 Cinema 4D Python 插件向动作触发时的前台实例发送命令。",
+      "description": "通过 Cinema 4D Python 插件发送命令；仅有一个在线连接时直接使用，多个连接时按动作触发窗口定位。",
       "category": "SoftInteraction",
       "categoryName": "第三方软件交互",
       "stepType": "Action",
@@ -22707,7 +23082,7 @@
           "defaultValue": "true",
           "required": false,
           "variableMode": "Input",
-          "condition": "",
+          "condition": "仅：object.list",
           "description": ""
         },
         {
@@ -22717,7 +23092,7 @@
           "defaultValue": "20",
           "required": false,
           "variableMode": "Input",
-          "condition": "",
+          "condition": "仅：object.list",
           "description": ""
         },
         {
@@ -22727,7 +23102,7 @@
           "defaultValue": "false",
           "required": false,
           "variableMode": "Input",
-          "condition": "",
+          "condition": "仅：object.list",
           "description": ""
         },
         {
@@ -22737,7 +23112,7 @@
           "defaultValue": "true",
           "required": false,
           "variableMode": "Input",
-          "condition": "",
+          "condition": "仅：selection.select_all, selection.invert",
           "description": ""
         },
         {
@@ -22747,7 +23122,7 @@
           "defaultValue": "[]",
           "required": false,
           "variableMode": "UseVarOrInput",
-          "condition": "",
+          "condition": "仅：selection.select_by_refs",
           "description": "引用可从读取对象层级或选择详情的 ref 字段取得。"
         },
         {
@@ -22757,7 +23132,7 @@
           "defaultValue": "replace",
           "required": false,
           "variableMode": "UseVarOrInput",
-          "condition": "",
+          "condition": "仅：selection.select_by_refs",
           "description": "replace、add 或 remove。"
         },
         {
@@ -22767,7 +23142,7 @@
           "defaultValue": "cube",
           "required": false,
           "variableMode": "UseVarOrInput",
-          "condition": "",
+          "condition": "仅：object.create_primitive",
           "description": "首版支持 cube、sphere、cylinder、cone、plane、torus。"
         },
         {
@@ -22777,7 +23152,7 @@
           "defaultValue": "Quicker Object",
           "required": false,
           "variableMode": "UseVarOrInput",
-          "condition": "",
+          "condition": "仅：object.create_primitive",
           "description": ""
         },
         {
@@ -22787,7 +23162,7 @@
           "defaultValue": "{oldName}_{index:02d}",
           "required": false,
           "variableMode": "UseVarOrInput",
-          "condition": "",
+          "condition": "仅：object.rename_selected",
           "description": "支持 {oldName} 和 {index}，例如 Obj_{index:03d}。"
         },
         {
@@ -22797,7 +23172,7 @@
           "defaultValue": "1",
           "required": false,
           "variableMode": "Input",
-          "condition": "",
+          "condition": "仅：object.rename_selected",
           "description": ""
         },
         {
@@ -22807,7 +23182,7 @@
           "defaultValue": "100",
           "required": false,
           "variableMode": "Input",
-          "condition": "",
+          "condition": "仅：object.move_selected",
           "description": ""
         },
         {
@@ -22817,7 +23192,7 @@
           "defaultValue": "0",
           "required": false,
           "variableMode": "Input",
-          "condition": "",
+          "condition": "仅：object.move_selected",
           "description": ""
         },
         {
@@ -22827,7 +23202,7 @@
           "defaultValue": "0",
           "required": false,
           "variableMode": "Input",
-          "condition": "",
+          "condition": "仅：object.move_selected",
           "description": ""
         },
         {
@@ -22837,7 +23212,7 @@
           "defaultValue": "global",
           "required": false,
           "variableMode": "UseVarOrInput",
-          "condition": "",
+          "condition": "仅：object.move_selected",
           "description": "global 使用世界坐标；local 使用父级坐标。"
         },
         {
@@ -22847,7 +23222,7 @@
           "defaultValue": "",
           "required": false,
           "variableMode": "UseVarOrInput",
-          "condition": "",
+          "condition": "仅：command.search",
           "description": "按命令 ID、本地标题或帮助文本筛选；留空返回前若干项。"
         },
         {
@@ -22857,7 +23232,7 @@
           "defaultValue": "100",
           "required": false,
           "variableMode": "Input",
-          "condition": "",
+          "condition": "仅：command.search",
           "description": ""
         },
         {
@@ -22867,7 +23242,7 @@
           "defaultValue": "13957",
           "required": false,
           "variableMode": "UseVarOrInput",
-          "condition": "",
+          "condition": "仅：command.get_info, command.call",
           "description": "可填写数字 ID，或 command.search 返回的本地化标题；标题不唯一时会返回候选 ID。"
         },
         {
@@ -22877,7 +23252,7 @@
           "defaultValue": "",
           "required": true,
           "variableMode": "UseVarOrInput",
-          "condition": "",
+          "condition": "仅：python.evaluate, python.execute",
           "description": "表达式直接返回 value；脚本可把返回值赋给 result。"
         },
         {
@@ -22887,7 +23262,7 @@
           "defaultValue": "",
           "required": true,
           "variableMode": "UseVarOrInput",
-          "condition": "",
+          "condition": "仅：python.run_file",
           "description": ""
         },
         {
@@ -22897,7 +23272,7 @@
           "defaultValue": "",
           "required": true,
           "variableMode": "UseVarOrInput",
-          "condition": "",
+          "condition": "仅：command.custom",
           "description": ""
         },
         {
@@ -22907,7 +23282,7 @@
           "defaultValue": "{}",
           "required": false,
           "variableMode": "UseVarOrInput",
-          "condition": "",
+          "condition": "仅：command.custom",
           "description": ""
         },
         {
@@ -23102,7 +23477,7 @@
           "defaultValue": "",
           "required": true,
           "variableMode": "UseVarOrInput",
-          "condition": "",
+          "condition": "仅：BridgeCustom",
           "description": ""
         },
         {
@@ -23954,7 +24329,7 @@
           "defaultValue": "",
           "required": false,
           "variableMode": "UseVarOnly",
-          "condition": "仅：getSheetByIndex, getSheetByName, getSheet, createSheet, save, readData, addNames",
+          "condition": "仅：save, getSheet, getSheetByIndex, getSheetByName, createSheet, readData, addNames",
           "description": "需要操作的工作簿对象"
         },
         {
@@ -23964,7 +24339,7 @@
           "defaultValue": "",
           "required": false,
           "variableMode": "UseVarOrInput",
-          "condition": "仅：getSheetByIndex, getSheet",
+          "condition": "仅：getSheet, getSheetByIndex",
           "description": "以0开始计算的序号或名称"
         },
         {
@@ -24034,7 +24409,7 @@
           "defaultValue": "",
           "required": false,
           "variableMode": "UseVarOnly",
-          "condition": "仅：getRow, getCell, batchReplace, setCell, writeData, mergeCells, setStyle, freezePane, autoFilter, getCellByValue",
+          "condition": "仅：getRow, getCellByValue, getCell, setCell, writeData, mergeCells, freezePane, autoFilter, setStyle, batchReplace",
           "description": "需要操作或读写的工作表对象"
         },
         {
@@ -24054,7 +24429,7 @@
           "defaultValue": "",
           "required": false,
           "variableMode": "UseVarOrInput",
-          "condition": "仅：mergeCells, setStyle, autoFilter",
+          "condition": "仅：mergeCells, autoFilter, setStyle",
           "description": "类似于\"A1:B5\"格式，或\"开始行号,结束行号,开始列号,结束列号\"方式(从0开始的序号)。"
         },
         {
@@ -24104,7 +24479,7 @@
           "defaultValue": "",
           "required": false,
           "variableMode": "UseVarOrInput",
-          "condition": "仅：setCell, getCellByValue",
+          "condition": "仅：getCellByValue, setCell",
           "description": "设置单元格的值"
         },
         {
@@ -24191,21 +24566,21 @@
           "key": "sheet",
           "name": "工作表对象",
           "type": "Object",
-          "condition": "仅：load, getSheetByIndex, getSheetByName, getSheet, createSheet",
+          "condition": "仅：load, getSheet, getSheetByIndex, getSheetByName, createSheet",
           "description": "返回指定的工作表。加载文件时返回工作簿中的第一个工作表对象"
         },
         {
           "key": "firstRow",
           "name": "首行序号",
           "type": "Integer",
-          "condition": "仅：load, getSheetByIndex, getSheetByName, getSheet, getCellByValue",
+          "condition": "仅：load, getSheet, getSheetByIndex, getSheetByName, getCellByValue",
           "description": "工作表首行序号（从0开始）。"
         },
         {
           "key": "lastRow",
           "name": "末行序号",
           "type": "Integer",
-          "condition": "仅：load, getSheetByIndex, getSheetByName, getSheet",
+          "condition": "仅：load, getSheet, getSheetByIndex, getSheetByName",
           "description": "工作表有内容的最后一行序号（从0开始）。"
         },
         {
@@ -24233,7 +24608,7 @@
           "key": "maxColumnNum",
           "name": "最大列序号",
           "type": "Integer",
-          "condition": "仅：load, getSheetByIndex, getSheetByName, getSheet",
+          "condition": "仅：load, getSheet, getSheetByIndex, getSheetByName",
           "description": "工作表的最大列序号（从0开始）。"
         },
         {
@@ -24470,7 +24845,7 @@
           "defaultValue": "T:\\TEMP\\Quicker-Illustrator.png",
           "required": false,
           "variableMode": "UseVarOrInput",
-          "condition": "",
+          "condition": "仅：document.open, document.save_as, document.export",
           "description": ""
         },
         {
@@ -24480,7 +24855,7 @@
           "defaultValue": "png",
           "required": false,
           "variableMode": "UseVarOrInput",
-          "condition": "",
+          "condition": "仅：document.save_as, document.export",
           "description": ""
         },
         {
@@ -24490,7 +24865,7 @@
           "defaultValue": "1920",
           "required": false,
           "variableMode": "UseVarOrInput",
-          "condition": "",
+          "condition": "仅：document.new",
           "description": ""
         },
         {
@@ -24500,7 +24875,7 @@
           "defaultValue": "1080",
           "required": false,
           "variableMode": "UseVarOrInput",
-          "condition": "",
+          "condition": "仅：document.new",
           "description": ""
         },
         {
@@ -24510,7 +24885,7 @@
           "defaultValue": "rgb",
           "required": false,
           "variableMode": "UseVarOrInput",
-          "condition": "",
+          "condition": "仅：document.new",
           "description": ""
         },
         {
@@ -24520,7 +24895,7 @@
           "defaultValue": "100",
           "required": false,
           "variableMode": "UseVarOrInput",
-          "condition": "",
+          "condition": "仅：document.export",
           "description": ""
         },
         {
@@ -24530,7 +24905,7 @@
           "defaultValue": "80",
           "required": false,
           "variableMode": "UseVarOrInput",
-          "condition": "",
+          "condition": "仅：document.export",
           "description": ""
         },
         {
@@ -24540,7 +24915,7 @@
           "defaultValue": "true",
           "required": false,
           "variableMode": "UseVarOrInput",
-          "condition": "",
+          "condition": "仅：document.export",
           "description": ""
         },
         {
@@ -24550,7 +24925,7 @@
           "defaultValue": "true",
           "required": false,
           "variableMode": "UseVarOrInput",
-          "condition": "",
+          "condition": "仅：object.set_hidden, object.set_locked, layer.set_visible, layer.set_locked",
           "description": ""
         },
         {
@@ -24560,7 +24935,7 @@
           "defaultValue": "10",
           "required": false,
           "variableMode": "UseVarOrInput",
-          "condition": "",
+          "condition": "仅：object.translate",
           "description": ""
         },
         {
@@ -24570,7 +24945,7 @@
           "defaultValue": "0",
           "required": false,
           "variableMode": "UseVarOrInput",
-          "condition": "",
+          "condition": "仅：object.translate",
           "description": ""
         },
         {
@@ -24580,7 +24955,7 @@
           "defaultValue": "15",
           "required": false,
           "variableMode": "UseVarOrInput",
-          "condition": "",
+          "condition": "仅：object.rotate",
           "description": ""
         },
         {
@@ -24590,7 +24965,7 @@
           "defaultValue": "120",
           "required": false,
           "variableMode": "UseVarOrInput",
-          "condition": "",
+          "condition": "仅：object.resize",
           "description": ""
         },
         {
@@ -24600,7 +24975,7 @@
           "defaultValue": "120",
           "required": false,
           "variableMode": "UseVarOrInput",
-          "condition": "",
+          "condition": "仅：object.resize",
           "description": ""
         },
         {
@@ -24610,7 +24985,7 @@
           "defaultValue": "120",
           "required": false,
           "variableMode": "UseVarOrInput",
-          "condition": "",
+          "condition": "仅：object.resize",
           "description": ""
         },
         {
@@ -24620,7 +24995,7 @@
           "defaultValue": "50",
           "required": false,
           "variableMode": "UseVarOrInput",
-          "condition": "",
+          "condition": "仅：object.set_opacity",
           "description": ""
         },
         {
@@ -24630,7 +25005,7 @@
           "defaultValue": "0",
           "required": false,
           "variableMode": "UseVarOrInput",
-          "condition": "",
+          "condition": "仅：layer.activate, layer.rename, layer.set_visible, layer.set_locked, artboard.activate, artboard.fit_selection",
           "description": ""
         },
         {
@@ -24640,7 +25015,7 @@
           "defaultValue": "Quicker 图层",
           "required": false,
           "variableMode": "UseVarOrInput",
-          "condition": "",
+          "condition": "仅：layer.create, layer.rename",
           "description": ""
         },
         {
@@ -24650,7 +25025,7 @@
           "defaultValue": "Quicker 文本",
           "required": false,
           "variableMode": "UseVarOrInput",
-          "condition": "",
+          "condition": "仅：text.create",
           "description": ""
         },
         {
@@ -24660,7 +25035,7 @@
           "defaultValue": "[100,100]",
           "required": false,
           "variableMode": "UseVarOrInput",
-          "condition": "",
+          "condition": "仅：text.create",
           "description": ""
         },
         {
@@ -24670,7 +25045,7 @@
           "defaultValue": "24",
           "required": false,
           "variableMode": "UseVarOrInput",
-          "condition": "",
+          "condition": "仅：text.create",
           "description": ""
         },
         {
@@ -24680,7 +25055,7 @@
           "defaultValue": "旧文字",
           "required": false,
           "variableMode": "UseVarOrInput",
-          "condition": "",
+          "condition": "仅：text.replace",
           "description": ""
         },
         {
@@ -24690,7 +25065,7 @@
           "defaultValue": "新文字",
           "required": false,
           "variableMode": "UseVarOrInput",
-          "condition": "",
+          "condition": "仅：text.replace",
           "description": ""
         },
         {
@@ -24700,7 +25075,7 @@
           "defaultValue": "Fit Artboard to selected Art",
           "required": false,
           "variableMode": "UseVarOrInput",
-          "condition": "",
+          "condition": "仅：menu.execute",
           "description": ""
         },
         {
@@ -24710,7 +25085,7 @@
           "defaultValue": "app.documents.length",
           "required": false,
           "variableMode": "UseVarOrInput",
-          "condition": "",
+          "condition": "仅：script.evaluate",
           "description": ""
         },
         {
@@ -24720,7 +25095,7 @@
           "defaultValue": "T:\\TEMP\\illustrator-script.jsx",
           "required": false,
           "variableMode": "UseVarOrInput",
-          "condition": "",
+          "condition": "仅：script.run_file",
           "description": ""
         },
         {
@@ -24730,7 +25105,7 @@
           "defaultValue": "",
           "required": true,
           "variableMode": "UseVarOrInput",
-          "condition": "",
+          "condition": "仅：command.custom",
           "description": ""
         },
         {
@@ -24740,7 +25115,7 @@
           "defaultValue": "{}",
           "required": false,
           "variableMode": "UseVarOrInput",
-          "condition": "",
+          "condition": "仅：command.custom",
           "description": ""
         },
         {
@@ -25005,7 +25380,7 @@
           "defaultValue": "T:\\TEMP\\Quicker-InDesign.indd",
           "required": false,
           "variableMode": "UseVarOrInput",
-          "condition": "",
+          "condition": "仅：document.open, document.save_as",
           "description": ""
         },
         {
@@ -25015,7 +25390,7 @@
           "defaultValue": "T:\\TEMP\\Quicker-InDesign.pdf",
           "required": false,
           "variableMode": "UseVarOrInput",
-          "condition": "",
+          "condition": "仅：document.export_pdf",
           "description": ""
         },
         {
@@ -25025,7 +25400,7 @@
           "defaultValue": "T:\\TEMP\\Quicker-InDesign.png",
           "required": false,
           "variableMode": "UseVarOrInput",
-          "condition": "",
+          "condition": "仅：image.place",
           "description": ""
         },
         {
@@ -25035,7 +25410,7 @@
           "defaultValue": "T:\\TEMP\\indesign-script.jsx",
           "required": false,
           "variableMode": "UseVarOrInput",
-          "condition": "",
+          "condition": "仅：script.run_file",
           "description": ""
         },
         {
@@ -25045,7 +25420,7 @@
           "defaultValue": "1",
           "required": false,
           "variableMode": "UseVarOrInput",
-          "condition": "",
+          "condition": "仅：document.new",
           "description": ""
         },
         {
@@ -25055,7 +25430,7 @@
           "defaultValue": "true",
           "required": false,
           "variableMode": "UseVarOrInput",
-          "condition": "",
+          "condition": "仅：document.new",
           "description": ""
         },
         {
@@ -25065,7 +25440,7 @@
           "defaultValue": "210mm",
           "required": false,
           "variableMode": "UseVarOrInput",
-          "condition": "",
+          "condition": "仅：document.new",
           "description": ""
         },
         {
@@ -25075,7 +25450,7 @@
           "defaultValue": "297mm",
           "required": false,
           "variableMode": "UseVarOrInput",
-          "condition": "",
+          "condition": "仅：document.new",
           "description": ""
         },
         {
@@ -25085,7 +25460,7 @@
           "defaultValue": "",
           "required": false,
           "variableMode": "UseVarOrInput",
-          "condition": "",
+          "condition": "仅：document.export_pdf",
           "description": ""
         },
         {
@@ -25095,7 +25470,7 @@
           "defaultValue": "prompt",
           "required": false,
           "variableMode": "UseVarOrInput",
-          "condition": "",
+          "condition": "仅：document.close",
           "description": ""
         },
         {
@@ -25105,7 +25480,7 @@
           "defaultValue": "-1",
           "required": false,
           "variableMode": "UseVarOrInput",
-          "condition": "",
+          "condition": "仅：page.add",
           "description": ""
         },
         {
@@ -25115,7 +25490,7 @@
           "defaultValue": "0",
           "required": false,
           "variableMode": "UseVarOrInput",
-          "condition": "",
+          "condition": "仅：page.goto",
           "description": ""
         },
         {
@@ -25125,7 +25500,7 @@
           "defaultValue": "0",
           "required": false,
           "variableMode": "UseVarOrInput",
-          "condition": "",
+          "condition": "仅：text.frame_create, image.place",
           "description": ""
         },
         {
@@ -25135,7 +25510,7 @@
           "defaultValue": "10mm",
           "required": false,
           "variableMode": "UseVarOrInput",
-          "condition": "",
+          "condition": "仅：object.duplicate",
           "description": ""
         },
         {
@@ -25145,7 +25520,7 @@
           "defaultValue": "10mm",
           "required": false,
           "variableMode": "UseVarOrInput",
-          "condition": "",
+          "condition": "仅：object.duplicate",
           "description": ""
         },
         {
@@ -25155,7 +25530,7 @@
           "defaultValue": "10mm",
           "required": false,
           "variableMode": "UseVarOrInput",
-          "condition": "",
+          "condition": "仅：object.move",
           "description": ""
         },
         {
@@ -25165,7 +25540,7 @@
           "defaultValue": "0mm",
           "required": false,
           "variableMode": "UseVarOrInput",
-          "condition": "",
+          "condition": "仅：object.move",
           "description": ""
         },
         {
@@ -25175,7 +25550,7 @@
           "defaultValue": "[\"20mm\",\"20mm\",\"80mm\",\"180mm\"]",
           "required": false,
           "variableMode": "UseVarOrInput",
-          "condition": "",
+          "condition": "仅：object.set_bounds, text.frame_create, image.place",
           "description": ""
         },
         {
@@ -25185,7 +25560,7 @@
           "defaultValue": "新图层",
           "required": false,
           "variableMode": "UseVarOrInput",
-          "condition": "",
+          "condition": "仅：layer.create, layer.activate, layer.rename, layer.set_visible, layer.set_locked, style.apply_paragraph, style.apply_character",
           "description": ""
         },
         {
@@ -25195,7 +25570,7 @@
           "defaultValue": "重命名图层",
           "required": false,
           "variableMode": "UseVarOrInput",
-          "condition": "",
+          "condition": "仅：layer.rename",
           "description": ""
         },
         {
@@ -25205,7 +25580,7 @@
           "defaultValue": "true",
           "required": false,
           "variableMode": "UseVarOrInput",
-          "condition": "",
+          "condition": "仅：layer.set_visible, layer.set_locked",
           "description": ""
         },
         {
@@ -25215,7 +25590,7 @@
           "defaultValue": "来自 Quicker 的文字",
           "required": false,
           "variableMode": "UseVarOrInput",
-          "condition": "",
+          "condition": "仅：text.frame_create, text.set_contents",
           "description": ""
         },
         {
@@ -25225,7 +25600,7 @@
           "defaultValue": "旧文字",
           "required": false,
           "variableMode": "UseVarOrInput",
-          "condition": "",
+          "condition": "仅：text.find_replace",
           "description": ""
         },
         {
@@ -25235,7 +25610,7 @@
           "defaultValue": "新文字",
           "required": false,
           "variableMode": "UseVarOrInput",
-          "condition": "",
+          "condition": "仅：text.find_replace",
           "description": ""
         },
         {
@@ -25245,7 +25620,7 @@
           "defaultValue": "false",
           "required": false,
           "variableMode": "UseVarOrInput",
-          "condition": "",
+          "condition": "仅：text.find_replace",
           "description": ""
         },
         {
@@ -25255,7 +25630,7 @@
           "defaultValue": "false",
           "required": false,
           "variableMode": "UseVarOrInput",
-          "condition": "",
+          "condition": "仅：text.find_replace",
           "description": ""
         },
         {
@@ -25265,7 +25640,7 @@
           "defaultValue": "proportionally",
           "required": false,
           "variableMode": "UseVarOrInput",
-          "condition": "",
+          "condition": "仅：image.place",
           "description": ""
         },
         {
@@ -25275,7 +25650,7 @@
           "defaultValue": "false",
           "required": false,
           "variableMode": "UseVarOrInput",
-          "condition": "",
+          "condition": "仅：style.apply_paragraph, style.apply_character",
           "description": ""
         },
         {
@@ -25285,7 +25660,7 @@
           "defaultValue": "app.documents.length",
           "required": false,
           "variableMode": "UseVarOrInput",
-          "condition": "",
+          "condition": "仅：script.evaluate",
           "description": ""
         },
         {
@@ -25295,7 +25670,7 @@
           "defaultValue": "Quicker InDesign 脚本",
           "required": false,
           "variableMode": "UseVarOrInput",
-          "condition": "",
+          "condition": "仅：script.evaluate",
           "description": ""
         },
         {
@@ -25305,7 +25680,7 @@
           "defaultValue": "",
           "required": true,
           "variableMode": "UseVarOrInput",
-          "condition": "",
+          "condition": "仅：command.custom",
           "description": ""
         },
         {
@@ -25315,7 +25690,7 @@
           "defaultValue": "{}",
           "required": false,
           "variableMode": "UseVarOrInput",
-          "condition": "",
+          "condition": "仅：command.custom",
           "description": ""
         },
         {
@@ -25555,12 +25930,986 @@
       "sourceFileName": "sys_indesigncontrol_InDesign控制.md"
     },
     {
+      "key": "sys:mastercamcontrol",
+      "slug": "mastercamcontrol",
+      "legacySlug": "mastercamcontrol",
+      "ownsLegacyContent": true,
+      "name": "Mastercam控制",
+      "description": "通过 Mastercam 2024/2027 NET-Hook 发送命令；仅有一个在线连接时直接使用，多个连接时按动作触发窗口定位。",
+      "category": "SoftInteraction",
+      "categoryName": "第三方软件交互",
+      "stepType": "Action",
+      "isRisky": false,
+      "isProOnly": false,
+      "helpLink": "https://docs.getquicker.net/v2/xaction/modules/mastercamcontrol",
+      "inputs": [
+        {
+          "key": "operation",
+          "name": "操作类型",
+          "type": "Enum",
+          "defaultValue": "common",
+          "required": true,
+          "variableMode": "Input",
+          "condition": "",
+          "description": ""
+        },
+        {
+          "key": "commonCategory",
+          "name": "功能分类",
+          "type": "Enum",
+          "defaultValue": "document",
+          "required": true,
+          "variableMode": "Input",
+          "condition": "仅：common",
+          "description": ""
+        },
+        {
+          "key": "documentOperation",
+          "name": "文档功能",
+          "type": "Enum",
+          "defaultValue": "document.get_context",
+          "required": true,
+          "variableMode": "Input",
+          "condition": "",
+          "description": ""
+        },
+        {
+          "key": "selectionOperation",
+          "name": "选择功能",
+          "type": "Enum",
+          "defaultValue": "selection.get_summary",
+          "required": true,
+          "variableMode": "Input",
+          "condition": "",
+          "description": ""
+        },
+        {
+          "key": "viewOperation",
+          "name": "视图功能",
+          "type": "Enum",
+          "defaultValue": "view.fit",
+          "required": true,
+          "variableMode": "Input",
+          "condition": "",
+          "description": ""
+        },
+        {
+          "key": "levelOperation",
+          "name": "图层功能",
+          "type": "Enum",
+          "defaultValue": "level.list",
+          "required": true,
+          "variableMode": "Input",
+          "condition": "",
+          "description": ""
+        },
+        {
+          "key": "geometryOperation",
+          "name": "几何功能",
+          "type": "Enum",
+          "defaultValue": "geometry.get_summary",
+          "required": true,
+          "variableMode": "Input",
+          "condition": "",
+          "description": ""
+        },
+        {
+          "key": "camOperation",
+          "name": "CAM 功能",
+          "type": "Enum",
+          "defaultValue": "cam.get_summary",
+          "required": true,
+          "variableMode": "Input",
+          "condition": "",
+          "description": ""
+        },
+        {
+          "key": "uiOperation",
+          "name": "界面功能",
+          "type": "Enum",
+          "defaultValue": "ui.ft.list",
+          "required": true,
+          "variableMode": "Input",
+          "condition": "",
+          "description": ""
+        },
+        {
+          "key": "commonDocumentPath",
+          "name": "文档路径",
+          "type": "Text",
+          "defaultValue": "",
+          "required": true,
+          "variableMode": "UseVarOrInput",
+          "condition": "",
+          "description": "打开或另存为的绝对文件路径。"
+        },
+        {
+          "key": "commonOverwriteFile",
+          "name": "允许覆盖已有文件",
+          "type": "Boolean",
+          "defaultValue": "false",
+          "required": false,
+          "variableMode": "Input",
+          "condition": "",
+          "description": ""
+        },
+        {
+          "key": "acknowledgeDiscard",
+          "name": "确认已保存或允许放弃当前修改",
+          "type": "Boolean",
+          "defaultValue": "false",
+          "required": false,
+          "variableMode": "Input",
+          "condition": "",
+          "description": ""
+        },
+        {
+          "key": "commonCapturePath",
+          "name": "图片路径",
+          "type": "Text",
+          "defaultValue": "",
+          "required": true,
+          "variableMode": "UseVarOrInput",
+          "condition": "",
+          "description": "保存图形区图片的绝对 .bmp 路径。"
+        },
+        {
+          "key": "commonCaptureOverwrite",
+          "name": "允许覆盖已有图片",
+          "type": "Boolean",
+          "defaultValue": "false",
+          "required": false,
+          "variableMode": "Input",
+          "condition": "",
+          "description": ""
+        },
+        {
+          "key": "selectionLevelNumber",
+          "name": "图层编号",
+          "type": "Integer",
+          "defaultValue": "1",
+          "required": true,
+          "variableMode": "Input",
+          "condition": "",
+          "description": ""
+        },
+        {
+          "key": "geometryType",
+          "name": "几何类型",
+          "type": "Enum",
+          "defaultValue": "Lines",
+          "required": true,
+          "variableMode": "Input",
+          "condition": "",
+          "description": ""
+        },
+        {
+          "key": "clearExistingSelection",
+          "name": "替换当前选择",
+          "type": "Boolean",
+          "defaultValue": "true",
+          "required": false,
+          "variableMode": "Input",
+          "condition": "",
+          "description": ""
+        },
+        {
+          "key": "commonLevelNumber",
+          "name": "图层编号",
+          "type": "Integer",
+          "defaultValue": "1",
+          "required": true,
+          "variableMode": "Input",
+          "condition": "",
+          "description": ""
+        },
+        {
+          "key": "commonLevelVisible",
+          "name": "图层可见",
+          "type": "Boolean",
+          "defaultValue": "true",
+          "required": false,
+          "variableMode": "Input",
+          "condition": "",
+          "description": ""
+        },
+        {
+          "key": "levelName",
+          "name": "图层名称",
+          "type": "Text",
+          "defaultValue": "",
+          "required": true,
+          "variableMode": "UseVarOrInput",
+          "condition": "",
+          "description": ""
+        },
+        {
+          "key": "commonX1",
+          "name": "起点 X",
+          "type": "Number",
+          "defaultValue": "0",
+          "required": false,
+          "variableMode": "UseVarOrInput",
+          "condition": "",
+          "description": ""
+        },
+        {
+          "key": "commonY1",
+          "name": "起点 Y",
+          "type": "Number",
+          "defaultValue": "0",
+          "required": false,
+          "variableMode": "UseVarOrInput",
+          "condition": "",
+          "description": ""
+        },
+        {
+          "key": "commonZ1",
+          "name": "起点 Z",
+          "type": "Number",
+          "defaultValue": "0",
+          "required": false,
+          "variableMode": "UseVarOrInput",
+          "condition": "",
+          "description": ""
+        },
+        {
+          "key": "commonX2",
+          "name": "终点 X",
+          "type": "Number",
+          "defaultValue": "10",
+          "required": false,
+          "variableMode": "UseVarOrInput",
+          "condition": "",
+          "description": ""
+        },
+        {
+          "key": "commonY2",
+          "name": "终点 Y",
+          "type": "Number",
+          "defaultValue": "0",
+          "required": false,
+          "variableMode": "UseVarOrInput",
+          "condition": "",
+          "description": ""
+        },
+        {
+          "key": "commonZ2",
+          "name": "终点 Z",
+          "type": "Number",
+          "defaultValue": "0",
+          "required": false,
+          "variableMode": "UseVarOrInput",
+          "condition": "",
+          "description": ""
+        },
+        {
+          "key": "commonX",
+          "name": "原点/圆心 X",
+          "type": "Number",
+          "defaultValue": "0",
+          "required": false,
+          "variableMode": "UseVarOrInput",
+          "condition": "",
+          "description": ""
+        },
+        {
+          "key": "commonY",
+          "name": "原点/圆心 Y",
+          "type": "Number",
+          "defaultValue": "0",
+          "required": false,
+          "variableMode": "UseVarOrInput",
+          "condition": "",
+          "description": ""
+        },
+        {
+          "key": "commonZ",
+          "name": "原点/圆心 Z",
+          "type": "Number",
+          "defaultValue": "0",
+          "required": false,
+          "variableMode": "UseVarOrInput",
+          "condition": "",
+          "description": ""
+        },
+        {
+          "key": "circleRadius",
+          "name": "半径",
+          "type": "Number",
+          "defaultValue": "10",
+          "required": false,
+          "variableMode": "UseVarOrInput",
+          "condition": "",
+          "description": ""
+        },
+        {
+          "key": "moveX",
+          "name": "移动 X",
+          "type": "Number",
+          "defaultValue": "10",
+          "required": false,
+          "variableMode": "UseVarOrInput",
+          "condition": "",
+          "description": ""
+        },
+        {
+          "key": "moveY",
+          "name": "移动 Y",
+          "type": "Number",
+          "defaultValue": "0",
+          "required": false,
+          "variableMode": "UseVarOrInput",
+          "condition": "",
+          "description": ""
+        },
+        {
+          "key": "moveZ",
+          "name": "移动 Z",
+          "type": "Number",
+          "defaultValue": "0",
+          "required": false,
+          "variableMode": "UseVarOrInput",
+          "condition": "",
+          "description": ""
+        },
+        {
+          "key": "angleDegrees",
+          "name": "旋转角度（度）",
+          "type": "Number",
+          "defaultValue": "90",
+          "required": false,
+          "variableMode": "UseVarOrInput",
+          "condition": "",
+          "description": ""
+        },
+        {
+          "key": "scaleFactor",
+          "name": "缩放比例",
+          "type": "Number",
+          "defaultValue": "2",
+          "required": false,
+          "variableMode": "UseVarOrInput",
+          "condition": "",
+          "description": ""
+        },
+        {
+          "key": "ftQuery",
+          "name": "搜索文字",
+          "type": "Text",
+          "defaultValue": "",
+          "required": false,
+          "variableMode": "UseVarOrInput",
+          "condition": "",
+          "description": "按命令名、界面名称或分类搜索；留空返回前 100 项。"
+        },
+        {
+          "key": "ftCommand",
+          "name": "Function Table 命令",
+          "type": "Text",
+          "defaultValue": "GSUnSelectAll",
+          "required": true,
+          "variableMode": "UseVarOrInput",
+          "condition": "",
+          "description": "先用“搜索可调用命令”查找命令名；部分命令会让 Mastercam 进入必须人工完成或取消的交互任务。"
+        },
+        {
+          "key": "waitForFtReturn",
+          "name": "等待界面命令完成",
+          "type": "Boolean",
+          "defaultValue": "false",
+          "required": false,
+          "variableMode": "Input",
+          "condition": "",
+          "description": "会打开窗口或进入交互状态的命令应关闭此项。"
+        },
+        {
+          "key": "acknowledgeUiRisk",
+          "name": "我确认执行该界面命令",
+          "type": "Boolean",
+          "defaultValue": "false",
+          "required": false,
+          "variableMode": "Input",
+          "condition": "",
+          "description": ""
+        },
+        {
+          "key": "ribbonPath",
+          "name": "Ribbon 命令路径",
+          "type": "Text",
+          "defaultValue": "FileTab.Save",
+          "required": true,
+          "variableMode": "UseVarOrInput",
+          "condition": "仅：ui.ribbon.run",
+          "description": "仅 Mastercam 2027，例如 FileTab.Save、Selection.SelectAllEntities。"
+        },
+        {
+          "key": "acknowledgeRibbonRisk",
+          "name": "我确认执行该 Ribbon 命令",
+          "type": "Boolean",
+          "defaultValue": "false",
+          "required": false,
+          "variableMode": "Input",
+          "condition": "仅：ui.ribbon.run",
+          "description": ""
+        },
+        {
+          "key": "filePath",
+          "name": "文件路径",
+          "type": "Text",
+          "defaultValue": "",
+          "required": true,
+          "variableMode": "UseVarOrInput",
+          "condition": "仅：document.save_as, view.capture_bitmap, script.run_net_file",
+          "description": "另存为使用 .mcam，图形区图片使用 .bmp，NET-Script 使用 .csx；均须填写绝对路径。"
+        },
+        {
+          "key": "overwriteFile",
+          "name": "允许覆盖已有文件",
+          "type": "Boolean",
+          "defaultValue": "false",
+          "required": false,
+          "variableMode": "Input",
+          "condition": "仅：document.save_as, view.capture_bitmap",
+          "description": ""
+        },
+        {
+          "key": "captureColor",
+          "name": "彩色图片",
+          "type": "Boolean",
+          "defaultValue": "true",
+          "required": false,
+          "variableMode": "Input",
+          "condition": "仅：view.capture_bitmap",
+          "description": ""
+        },
+        {
+          "key": "showViewAxes",
+          "name": "显示视图坐标轴",
+          "type": "Boolean",
+          "defaultValue": "true",
+          "required": false,
+          "variableMode": "Input",
+          "condition": "仅：view.capture_bitmap",
+          "description": ""
+        },
+        {
+          "key": "showWcsAxes",
+          "name": "显示 WCS 坐标轴",
+          "type": "Boolean",
+          "defaultValue": "true",
+          "required": false,
+          "variableMode": "Input",
+          "condition": "仅：view.capture_bitmap",
+          "description": ""
+        },
+        {
+          "key": "levelNumber",
+          "name": "图层编号",
+          "type": "Integer",
+          "defaultValue": "1",
+          "required": true,
+          "variableMode": "Input",
+          "condition": "仅：level.set_active, level.set_visible",
+          "description": ""
+        },
+        {
+          "key": "levelVisible",
+          "name": "图层可见",
+          "type": "Boolean",
+          "defaultValue": "true",
+          "required": false,
+          "variableMode": "Input",
+          "condition": "仅：level.set_visible",
+          "description": ""
+        },
+        {
+          "key": "scriptCode",
+          "name": "C# NET-Script",
+          "type": "Text",
+          "defaultValue": "// 使用当前 Mastercam 自带 NET-Scripting 支持的 .csx 语法",
+          "required": true,
+          "variableMode": "UseVarOrInput",
+          "condition": "仅：script.evaluate_net",
+          "description": "在目标 Mastercam 进程主线程执行，不提供安全沙箱，也不能强制中断已经开始运行的脚本；只运行可信代码。"
+        },
+        {
+          "key": "acknowledgeScriptRisk",
+          "name": "我确认脚本可信",
+          "type": "Boolean",
+          "defaultValue": "false",
+          "required": false,
+          "variableMode": "Input",
+          "condition": "仅：script.evaluate_net, script.run_net_file",
+          "description": "脚本拥有当前用户权限并可调用 Mastercam API；执行脚本前必须明确启用。"
+        },
+        {
+          "key": "x1",
+          "name": "起点 X",
+          "type": "Number",
+          "defaultValue": "0",
+          "required": false,
+          "variableMode": "UseVarOrInput",
+          "condition": "仅：geometry.create_line",
+          "description": ""
+        },
+        {
+          "key": "y1",
+          "name": "起点 Y",
+          "type": "Number",
+          "defaultValue": "0",
+          "required": false,
+          "variableMode": "UseVarOrInput",
+          "condition": "仅：geometry.create_line",
+          "description": ""
+        },
+        {
+          "key": "z1",
+          "name": "起点 Z",
+          "type": "Number",
+          "defaultValue": "0",
+          "required": false,
+          "variableMode": "UseVarOrInput",
+          "condition": "仅：geometry.create_line",
+          "description": ""
+        },
+        {
+          "key": "x2",
+          "name": "终点 X",
+          "type": "Number",
+          "defaultValue": "10",
+          "required": false,
+          "variableMode": "UseVarOrInput",
+          "condition": "仅：geometry.create_line",
+          "description": ""
+        },
+        {
+          "key": "y2",
+          "name": "终点 Y",
+          "type": "Number",
+          "defaultValue": "0",
+          "required": false,
+          "variableMode": "UseVarOrInput",
+          "condition": "仅：geometry.create_line",
+          "description": ""
+        },
+        {
+          "key": "z2",
+          "name": "终点 Z",
+          "type": "Number",
+          "defaultValue": "0",
+          "required": false,
+          "variableMode": "UseVarOrInput",
+          "condition": "仅：geometry.create_line",
+          "description": ""
+        },
+        {
+          "key": "commandName",
+          "name": "Bridge 命令名称",
+          "type": "Text",
+          "defaultValue": "",
+          "required": true,
+          "variableMode": "UseVarOrInput",
+          "condition": "仅：command.custom",
+          "description": ""
+        },
+        {
+          "key": "argumentsJson",
+          "name": "参数(JSON 对象)",
+          "type": "Text",
+          "defaultValue": "{}",
+          "required": false,
+          "variableMode": "UseVarOrInput",
+          "condition": "仅：command.custom",
+          "description": ""
+        },
+        {
+          "key": "waitMs",
+          "name": "最长等待时间(ms)",
+          "type": "Number",
+          "defaultValue": "30000",
+          "required": true,
+          "variableMode": "Input",
+          "condition": "",
+          "description": ""
+        },
+        {
+          "key": "stopIfFail",
+          "name": "失败后停止",
+          "type": "Boolean",
+          "defaultValue": "true",
+          "required": false,
+          "variableMode": "Input",
+          "condition": "",
+          "description": "失败后是否停止动作"
+        }
+      ],
+      "outputs": [
+        {
+          "key": "isSuccess",
+          "name": "是否成功",
+          "type": "Boolean",
+          "condition": "",
+          "description": "操作是否成功"
+        },
+        {
+          "key": "output",
+          "name": "命令结果",
+          "type": "Text",
+          "condition": "",
+          "description": "Mastercam 返回的 JSON 结果。"
+        },
+        {
+          "key": "count",
+          "name": "数量",
+          "type": "Integer",
+          "condition": "",
+          "description": ""
+        },
+        {
+          "key": "entityIds",
+          "name": "实体 ID 列表",
+          "type": "List",
+          "condition": "",
+          "description": ""
+        }
+      ],
+      "selections": {
+        "operation": {
+          "name": "操作类型",
+          "items": [
+            {
+              "value": "script.evaluate_net",
+              "name": "[脚本] 执行内联 NET-Script（高风险）",
+              "description": ""
+            },
+            {
+              "value": "script.run_net_file",
+              "name": "[脚本] 运行 NET-Script 文件（高风险）",
+              "description": ""
+            },
+            {
+              "value": "command.custom",
+              "name": "[高级] 发送自定义 Bridge 命令",
+              "description": ""
+            },
+            {
+              "value": "ui.ribbon.run",
+              "name": "[界面] 执行 Ribbon 命令（仅 2027，高风险）",
+              "description": ""
+            },
+            {
+              "value": "common",
+              "name": "[常用] 常用功能",
+              "description": ""
+            }
+          ]
+        },
+        "commonCategory": {
+          "name": "功能分类",
+          "items": [
+            {
+              "value": "document",
+              "name": "Bridge 与文档",
+              "description": ""
+            },
+            {
+              "value": "selection",
+              "name": "选择对象",
+              "description": ""
+            },
+            {
+              "value": "view",
+              "name": "视图",
+              "description": ""
+            },
+            {
+              "value": "level",
+              "name": "图层",
+              "description": ""
+            },
+            {
+              "value": "geometry",
+              "name": "几何创建与变换",
+              "description": ""
+            },
+            {
+              "value": "cam",
+              "name": "CAM 刀路",
+              "description": ""
+            },
+            {
+              "value": "ui",
+              "name": "菜单与按钮",
+              "description": ""
+            }
+          ]
+        },
+        "documentOperation": {
+          "name": "文档功能",
+          "items": [
+            {
+              "value": "bridge.ping",
+              "name": "测试连接",
+              "description": ""
+            },
+            {
+              "value": "command.list",
+              "name": "读取命令目录",
+              "description": ""
+            },
+            {
+              "value": "document.get_context",
+              "name": "读取当前文档",
+              "description": ""
+            },
+            {
+              "value": "document.save",
+              "name": "保存当前文档",
+              "description": ""
+            },
+            {
+              "value": "document.save_as",
+              "name": "另存为",
+              "description": ""
+            },
+            {
+              "value": "document.open",
+              "name": "打开文档",
+              "description": ""
+            },
+            {
+              "value": "document.new",
+              "name": "新建文档",
+              "description": ""
+            }
+          ]
+        },
+        "selectionOperation": {
+          "name": "选择功能",
+          "items": [
+            {
+              "value": "selection.get_summary",
+              "name": "读取选择摘要",
+              "description": ""
+            },
+            {
+              "value": "selection.get_details",
+              "name": "读取选择详情",
+              "description": ""
+            },
+            {
+              "value": "selection.select_all",
+              "name": "选择全部几何",
+              "description": ""
+            },
+            {
+              "value": "selection.select_level",
+              "name": "按图层选择",
+              "description": ""
+            },
+            {
+              "value": "selection.select_type",
+              "name": "按类型选择",
+              "description": ""
+            },
+            {
+              "value": "selection.clear",
+              "name": "清除选择",
+              "description": ""
+            },
+            {
+              "value": "geometry.delete_selected",
+              "name": "删除选中对象",
+              "description": ""
+            }
+          ]
+        },
+        "viewOperation": {
+          "name": "视图功能",
+          "items": [
+            {
+              "value": "view.fit",
+              "name": "适合屏幕",
+              "description": ""
+            },
+            {
+              "value": "view.repaint",
+              "name": "刷新图形区",
+              "description": ""
+            },
+            {
+              "value": "view.unzoom",
+              "name": "缩小视图",
+              "description": ""
+            },
+            {
+              "value": "view.previous",
+              "name": "恢复上一视图",
+              "description": ""
+            },
+            {
+              "value": "view.capture_bitmap",
+              "name": "保存图形区图片",
+              "description": ""
+            }
+          ]
+        },
+        "levelOperation": {
+          "name": "图层功能",
+          "items": [
+            {
+              "value": "level.list",
+              "name": "列出图层",
+              "description": ""
+            },
+            {
+              "value": "level.set_active",
+              "name": "设置活动图层",
+              "description": ""
+            },
+            {
+              "value": "level.set_visible",
+              "name": "设置图层可见性",
+              "description": ""
+            },
+            {
+              "value": "level.rename",
+              "name": "重命名图层",
+              "description": ""
+            }
+          ]
+        },
+        "geometryOperation": {
+          "name": "几何功能",
+          "items": [
+            {
+              "value": "geometry.count",
+              "name": "统计几何对象",
+              "description": ""
+            },
+            {
+              "value": "geometry.get_summary",
+              "name": "读取几何摘要",
+              "description": ""
+            },
+            {
+              "value": "geometry.create_line",
+              "name": "创建直线",
+              "description": ""
+            },
+            {
+              "value": "geometry.create_point",
+              "name": "创建点",
+              "description": ""
+            },
+            {
+              "value": "geometry.create_circle",
+              "name": "创建圆",
+              "description": ""
+            },
+            {
+              "value": "geometry.move_selected",
+              "name": "移动选中对象",
+              "description": ""
+            },
+            {
+              "value": "geometry.rotate_selected",
+              "name": "旋转选中对象",
+              "description": ""
+            },
+            {
+              "value": "geometry.scale_selected",
+              "name": "缩放选中对象",
+              "description": ""
+            }
+          ]
+        },
+        "camOperation": {
+          "name": "CAM 功能",
+          "items": [
+            {
+              "value": "cam.get_summary",
+              "name": "读取 CAM 摘要",
+              "description": ""
+            },
+            {
+              "value": "cam.list_operations",
+              "name": "列出加工操作",
+              "description": ""
+            }
+          ]
+        },
+        "uiOperation": {
+          "name": "界面功能",
+          "items": [
+            {
+              "value": "ui.ft.list",
+              "name": "搜索可调用命令",
+              "description": ""
+            },
+            {
+              "value": "ui.ft.run",
+              "name": "执行 Function Table 命令（2024/2027）",
+              "description": ""
+            }
+          ]
+        },
+        "geometryType": {
+          "name": "几何类型",
+          "items": [
+            {
+              "value": "Lines",
+              "name": "直线",
+              "description": ""
+            },
+            {
+              "value": "Arcs",
+              "name": "圆弧和圆",
+              "description": ""
+            },
+            {
+              "value": "Points",
+              "name": "点",
+              "description": ""
+            },
+            {
+              "value": "Splines",
+              "name": "样条曲线",
+              "description": ""
+            },
+            {
+              "value": "Surfaces",
+              "name": "曲面",
+              "description": ""
+            },
+            {
+              "value": "Solids",
+              "name": "实体",
+              "description": ""
+            },
+            {
+              "value": "Wireframe",
+              "name": "全部线框",
+              "description": ""
+            },
+            {
+              "value": "PolygonalMeshes",
+              "name": "网格",
+              "description": ""
+            }
+          ]
+        }
+      },
+      "sourceFileName": "sys_mastercamcontrol_Mastercam控制.md"
+    },
+    {
       "key": "sys:mayacontrol",
       "slug": "mayacontrol",
       "legacySlug": "mayacontrol",
       "ownsLegacyContent": true,
       "name": "Maya控制",
-      "description": "通过 Maya Python 插件向动作触发时的前台实例发送命令。",
+      "description": "通过 Maya Python 插件发送命令；仅有一个在线连接时直接使用，多个连接时按动作触发窗口定位。",
       "category": "SoftInteraction",
       "categoryName": "第三方软件交互",
       "stepType": "Action",
@@ -25585,7 +26934,7 @@
           "defaultValue": "false",
           "required": false,
           "variableMode": "Input",
-          "condition": "",
+          "condition": "仅：object.list",
           "description": ""
         },
         {
@@ -25595,7 +26944,7 @@
           "defaultValue": "",
           "required": true,
           "variableMode": "UseVarOrInput",
-          "condition": "",
+          "condition": "仅：scene.save_as",
           "description": "使用 .ma 或 .mb 文件的绝对路径。"
         },
         {
@@ -25605,7 +26954,7 @@
           "defaultValue": "",
           "required": true,
           "variableMode": "UseVarOrInput",
-          "condition": "",
+          "condition": "仅：scene.import_file, scene.reference_file",
           "description": "要导入或引用的文件绝对路径。"
         },
         {
@@ -25615,7 +26964,7 @@
           "defaultValue": "",
           "required": false,
           "variableMode": "UseVarOrInput",
-          "condition": "",
+          "condition": "仅：scene.import_file, scene.reference_file",
           "description": "留空时导入不增加命名空间；引用会根据文件名自动生成。"
         },
         {
@@ -25625,7 +26974,7 @@
           "defaultValue": "",
           "required": true,
           "variableMode": "UseVarOrInput",
-          "condition": "",
+          "condition": "仅：selection.export",
           "description": "仅支持 .ma 或 .mb 文件。"
         },
         {
@@ -25635,7 +26984,7 @@
           "defaultValue": "[]",
           "required": false,
           "variableMode": "UseVarOrInput",
-          "condition": "",
+          "condition": "仅：selection.select_by_names",
           "description": "名称可从列出对象或选择详情的 name 字段取得。"
         },
         {
@@ -25645,7 +26994,7 @@
           "defaultValue": "replace",
           "required": false,
           "variableMode": "UseVarOrInput",
-          "condition": "",
+          "condition": "仅：selection.select_by_names",
           "description": "replace、add 或 remove。"
         },
         {
@@ -25655,7 +27004,7 @@
           "defaultValue": "cube",
           "required": false,
           "variableMode": "UseVarOrInput",
-          "condition": "",
+          "condition": "仅：object.create_primitive",
           "description": "支持 cube、box、sphere、cylinder、cone、plane、torus。"
         },
         {
@@ -25665,7 +27014,7 @@
           "defaultValue": "Quicker Object",
           "required": false,
           "variableMode": "UseVarOrInput",
-          "condition": "",
+          "condition": "仅：object.create_primitive",
           "description": ""
         },
         {
@@ -25675,7 +27024,7 @@
           "defaultValue": "{oldName}_{index:02d}",
           "required": false,
           "variableMode": "UseVarOrInput",
-          "condition": "",
+          "condition": "仅：object.rename_selected",
           "description": "支持 {oldName} 和 {index}，例如 Obj_{index:03d}。"
         },
         {
@@ -25685,7 +27034,7 @@
           "defaultValue": "1",
           "required": false,
           "variableMode": "Input",
-          "condition": "",
+          "condition": "仅：object.rename_selected",
           "description": ""
         },
         {
@@ -25695,7 +27044,7 @@
           "defaultValue": "1",
           "required": false,
           "variableMode": "Input",
-          "condition": "",
+          "condition": "仅：object.move_selected",
           "description": ""
         },
         {
@@ -25705,7 +27054,7 @@
           "defaultValue": "0",
           "required": false,
           "variableMode": "Input",
-          "condition": "",
+          "condition": "仅：object.move_selected",
           "description": ""
         },
         {
@@ -25715,7 +27064,7 @@
           "defaultValue": "0",
           "required": false,
           "variableMode": "Input",
-          "condition": "",
+          "condition": "仅：object.move_selected",
           "description": ""
         },
         {
@@ -25725,7 +27074,7 @@
           "defaultValue": "world",
           "required": false,
           "variableMode": "UseVarOrInput",
-          "condition": "",
+          "condition": "仅：object.move_selected",
           "description": "world 使用世界坐标；object 使用对象坐标。"
         },
         {
@@ -25735,7 +27084,7 @@
           "defaultValue": "1",
           "required": false,
           "variableMode": "Input",
-          "condition": "",
+          "condition": "仅：object.duplicate_selected",
           "description": ""
         },
         {
@@ -25745,7 +27094,7 @@
           "defaultValue": "{oldName}_copy{index}",
           "required": false,
           "variableMode": "UseVarOrInput",
-          "condition": "",
+          "condition": "仅：object.duplicate_selected",
           "description": "支持 {oldName} 和 {index}。"
         },
         {
@@ -25755,7 +27104,7 @@
           "defaultValue": "1",
           "required": false,
           "variableMode": "Input",
-          "condition": "",
+          "condition": "仅：object.duplicate_selected",
           "description": ""
         },
         {
@@ -25765,7 +27114,7 @@
           "defaultValue": "0",
           "required": false,
           "variableMode": "Input",
-          "condition": "",
+          "condition": "仅：object.duplicate_selected",
           "description": ""
         },
         {
@@ -25775,7 +27124,7 @@
           "defaultValue": "0",
           "required": false,
           "variableMode": "Input",
-          "condition": "",
+          "condition": "仅：object.duplicate_selected",
           "description": ""
         },
         {
@@ -25785,7 +27134,7 @@
           "defaultValue": "0",
           "required": false,
           "variableMode": "Input",
-          "condition": "",
+          "condition": "仅：object.rotate_selected",
           "description": ""
         },
         {
@@ -25795,7 +27144,7 @@
           "defaultValue": "0",
           "required": false,
           "variableMode": "Input",
-          "condition": "",
+          "condition": "仅：object.rotate_selected",
           "description": ""
         },
         {
@@ -25805,7 +27154,7 @@
           "defaultValue": "90",
           "required": false,
           "variableMode": "Input",
-          "condition": "",
+          "condition": "仅：object.rotate_selected",
           "description": ""
         },
         {
@@ -25815,7 +27164,7 @@
           "defaultValue": "world",
           "required": false,
           "variableMode": "UseVarOrInput",
-          "condition": "",
+          "condition": "仅：object.rotate_selected",
           "description": "world 或 object；每个对象围绕自身轴心旋转。"
         },
         {
@@ -25825,7 +27174,7 @@
           "defaultValue": "2",
           "required": false,
           "variableMode": "Input",
-          "condition": "",
+          "condition": "仅：object.scale_selected",
           "description": ""
         },
         {
@@ -25835,7 +27184,7 @@
           "defaultValue": "2",
           "required": false,
           "variableMode": "Input",
-          "condition": "",
+          "condition": "仅：object.scale_selected",
           "description": ""
         },
         {
@@ -25845,7 +27194,7 @@
           "defaultValue": "2",
           "required": false,
           "variableMode": "Input",
-          "condition": "",
+          "condition": "仅：object.scale_selected",
           "description": ""
         },
         {
@@ -25855,7 +27204,7 @@
           "defaultValue": "false",
           "required": false,
           "variableMode": "Input",
-          "condition": "",
+          "condition": "仅：object.set_visibility",
           "description": ""
         },
         {
@@ -25865,7 +27214,7 @@
           "defaultValue": "true",
           "required": false,
           "variableMode": "Input",
-          "condition": "",
+          "condition": "仅：object.set_locked",
           "description": ""
         },
         {
@@ -25875,7 +27224,7 @@
           "defaultValue": "Quicker_Group",
           "required": true,
           "variableMode": "UseVarOrInput",
-          "condition": "",
+          "condition": "仅：object.group_selected",
           "description": ""
         },
         {
@@ -25885,7 +27234,7 @@
           "defaultValue": "true",
           "required": false,
           "variableMode": "Input",
-          "condition": "",
+          "condition": "仅：object.freeze_transforms",
           "description": ""
         },
         {
@@ -25895,7 +27244,7 @@
           "defaultValue": "true",
           "required": false,
           "variableMode": "Input",
-          "condition": "",
+          "condition": "仅：object.freeze_transforms",
           "description": ""
         },
         {
@@ -25905,7 +27254,7 @@
           "defaultValue": "true",
           "required": false,
           "variableMode": "Input",
-          "condition": "",
+          "condition": "仅：object.freeze_transforms",
           "description": ""
         },
         {
@@ -25915,7 +27264,7 @@
           "defaultValue": "Quicker_Layer",
           "required": true,
           "variableMode": "UseVarOrInput",
-          "condition": "",
+          "condition": "仅：display_layer.create, display_layer.assign_selected",
           "description": ""
         },
         {
@@ -25925,7 +27274,7 @@
           "defaultValue": "true",
           "required": false,
           "variableMode": "Input",
-          "condition": "",
+          "condition": "仅：display_layer.assign_selected",
           "description": ""
         },
         {
@@ -25935,7 +27284,7 @@
           "defaultValue": "1",
           "required": false,
           "variableMode": "Input",
-          "condition": "",
+          "condition": "仅：animation.set_time",
           "description": ""
         },
         {
@@ -25945,7 +27294,7 @@
           "defaultValue": "1",
           "required": false,
           "variableMode": "Input",
-          "condition": "",
+          "condition": "仅：animation.set_range",
           "description": ""
         },
         {
@@ -25955,7 +27304,7 @@
           "defaultValue": "120",
           "required": false,
           "variableMode": "Input",
-          "condition": "",
+          "condition": "仅：animation.set_range",
           "description": ""
         },
         {
@@ -25965,7 +27314,7 @@
           "defaultValue": "true",
           "required": false,
           "variableMode": "Input",
-          "condition": "",
+          "condition": "仅：animation.play",
           "description": ""
         },
         {
@@ -25975,7 +27324,7 @@
           "defaultValue": "",
           "required": false,
           "variableMode": "UseVarOrInput",
-          "condition": "",
+          "condition": "仅：animation.set_keyframe",
           "description": "留空使用当前帧，也可填写帧编号。"
         },
         {
@@ -25985,7 +27334,7 @@
           "defaultValue": "[]",
           "required": false,
           "variableMode": "UseVarOrInput",
-          "condition": "",
+          "condition": "仅：animation.set_keyframe",
           "description": "留空数组时为对象所有可设关键帧的属性设置关键帧。"
         },
         {
@@ -25995,7 +27344,7 @@
           "defaultValue": "persp",
           "required": true,
           "variableMode": "UseVarOrInput",
-          "condition": "",
+          "condition": "仅：camera.activate",
           "description": "可从“列出摄像机”返回的 name 字段取得。"
         },
         {
@@ -26005,7 +27354,7 @@
           "defaultValue": "",
           "required": true,
           "variableMode": "UseVarOrInput",
-          "condition": "",
+          "condition": "仅：viewport.capture",
           "description": "建议使用 .png、.jpg 等图片扩展名。"
         },
         {
@@ -26015,7 +27364,7 @@
           "defaultValue": "1920",
           "required": false,
           "variableMode": "Input",
-          "condition": "",
+          "condition": "仅：viewport.capture",
           "description": ""
         },
         {
@@ -26025,7 +27374,7 @@
           "defaultValue": "1080",
           "required": false,
           "variableMode": "Input",
-          "condition": "",
+          "condition": "仅：viewport.capture",
           "description": ""
         },
         {
@@ -26035,7 +27384,7 @@
           "defaultValue": "false",
           "required": false,
           "variableMode": "Input",
-          "condition": "",
+          "condition": "仅：scene.save_as, selection.export, viewport.capture",
           "description": ""
         },
         {
@@ -26045,7 +27394,7 @@
           "defaultValue": "",
           "required": true,
           "variableMode": "UseVarOrInput",
-          "condition": "",
+          "condition": "仅：mel.evaluate, mel.execute",
           "description": "表达式直接返回 value；脚本返回最后一个表达式的值。"
         },
         {
@@ -26055,7 +27404,7 @@
           "defaultValue": "",
           "required": true,
           "variableMode": "UseVarOrInput",
-          "condition": "",
+          "condition": "仅：mel.run_file",
           "description": ""
         },
         {
@@ -26065,7 +27414,7 @@
           "defaultValue": "",
           "required": true,
           "variableMode": "UseVarOrInput",
-          "condition": "",
+          "condition": "仅：python.evaluate, python.execute",
           "description": "表达式直接返回 value；脚本可把返回值赋给 result。"
         },
         {
@@ -26075,7 +27424,7 @@
           "defaultValue": "",
           "required": true,
           "variableMode": "UseVarOrInput",
-          "condition": "",
+          "condition": "仅：python.run_file",
           "description": ""
         },
         {
@@ -26085,7 +27434,7 @@
           "defaultValue": "",
           "required": true,
           "variableMode": "UseVarOrInput",
-          "condition": "",
+          "condition": "仅：command.custom",
           "description": ""
         },
         {
@@ -26095,7 +27444,7 @@
           "defaultValue": "{}",
           "required": false,
           "variableMode": "UseVarOrInput",
-          "condition": "",
+          "condition": "仅：command.custom",
           "description": ""
         },
         {
@@ -26622,7 +27971,7 @@
           "defaultValue": "0",
           "required": false,
           "variableMode": "UseVarOrInput",
-          "condition": "",
+          "condition": "仅：layer.select, layer.rename, layer.set_visibility, layer.duplicate, layer.delete",
           "description": ""
         },
         {
@@ -26632,7 +27981,7 @@
           "defaultValue": "新名称",
           "required": true,
           "variableMode": "UseVarOrInput",
-          "condition": "",
+          "condition": "仅：layer.rename",
           "description": ""
         },
         {
@@ -26642,7 +27991,7 @@
           "defaultValue": "true",
           "required": false,
           "variableMode": "Input",
-          "condition": "",
+          "condition": "仅：layer.set_visibility",
           "description": ""
         },
         {
@@ -26652,7 +28001,7 @@
           "defaultValue": "false",
           "required": false,
           "variableMode": "Input",
-          "condition": "",
+          "condition": "仅：layer.select",
           "description": ""
         },
         {
@@ -26662,7 +28011,7 @@
           "defaultValue": "1920",
           "required": false,
           "variableMode": "UseVarOrInput",
-          "condition": "",
+          "condition": "仅：image.resize",
           "description": ""
         },
         {
@@ -26672,7 +28021,7 @@
           "defaultValue": "1080",
           "required": false,
           "variableMode": "UseVarOrInput",
-          "condition": "",
+          "condition": "仅：image.resize",
           "description": ""
         },
         {
@@ -26682,7 +28031,7 @@
           "defaultValue": "90",
           "required": false,
           "variableMode": "UseVarOrInput",
-          "condition": "",
+          "condition": "仅：image.rotate",
           "description": ""
         },
         {
@@ -26692,7 +28041,7 @@
           "defaultValue": "photoshop.app.activeDocument.title",
           "required": true,
           "variableMode": "UseVarOrInput",
-          "condition": "",
+          "condition": "仅：script.evaluate",
           "description": ""
         },
         {
@@ -26702,7 +28051,7 @@
           "defaultValue": "[]",
           "required": false,
           "variableMode": "UseVarOrInput",
-          "condition": "",
+          "condition": "仅：batch_play.execute",
           "description": ""
         },
         {
@@ -26712,7 +28061,7 @@
           "defaultValue": "",
           "required": true,
           "variableMode": "UseVarOrInput",
-          "condition": "",
+          "condition": "仅：command.custom",
           "description": ""
         },
         {
@@ -26722,7 +28071,7 @@
           "defaultValue": "{}",
           "required": false,
           "variableMode": "UseVarOrInput",
-          "condition": "",
+          "condition": "仅：command.custom",
           "description": ""
         },
         {
@@ -26897,7 +28246,7 @@
           "defaultValue": "",
           "required": true,
           "variableMode": "UseVarOrInput",
-          "condition": "",
+          "condition": "仅：project.save_as",
           "description": "项目另存为的 .prproj 绝对路径。"
         },
         {
@@ -26907,7 +28256,7 @@
           "defaultValue": "",
           "required": true,
           "variableMode": "UseVarOrInput",
-          "condition": "",
+          "condition": "仅：sequence.activate",
           "description": "名称重复时请使用 sequence.list 返回的 GUID。"
         },
         {
@@ -26917,7 +28266,7 @@
           "defaultValue": "0",
           "required": false,
           "variableMode": "UseVarOrInput",
-          "condition": "",
+          "condition": "仅：timeline.set_playhead",
           "description": ""
         },
         {
@@ -26927,7 +28276,7 @@
           "defaultValue": "0",
           "required": false,
           "variableMode": "UseVarOrInput",
-          "condition": "",
+          "condition": "仅：timeline.set_in_out",
           "description": ""
         },
         {
@@ -26937,7 +28286,7 @@
           "defaultValue": "10",
           "required": false,
           "variableMode": "UseVarOrInput",
-          "condition": "",
+          "condition": "仅：timeline.set_in_out",
           "description": ""
         },
         {
@@ -26947,7 +28296,7 @@
           "defaultValue": "",
           "required": true,
           "variableMode": "UseVarOrInput",
-          "condition": "",
+          "condition": "仅：media.import_files",
           "description": "每行一个媒体文件绝对路径。"
         },
         {
@@ -26957,7 +28306,7 @@
           "defaultValue": "false",
           "required": false,
           "variableMode": "Input",
-          "condition": "",
+          "condition": "仅：media.import_files",
           "description": ""
         },
         {
@@ -26967,7 +28316,7 @@
           "defaultValue": "Quicker 导入",
           "required": true,
           "variableMode": "UseVarOrInput",
-          "condition": "",
+          "condition": "仅：media.create_bin",
           "description": ""
         },
         {
@@ -26977,7 +28326,7 @@
           "defaultValue": "Quicker 标记",
           "required": false,
           "variableMode": "UseVarOrInput",
-          "condition": "",
+          "condition": "仅：marker.add",
           "description": ""
         },
         {
@@ -26987,7 +28336,7 @@
           "defaultValue": "0",
           "required": false,
           "variableMode": "UseVarOrInput",
-          "condition": "",
+          "condition": "仅：marker.add",
           "description": ""
         },
         {
@@ -26997,7 +28346,7 @@
           "defaultValue": "0",
           "required": false,
           "variableMode": "UseVarOrInput",
-          "condition": "",
+          "condition": "仅：marker.add",
           "description": ""
         },
         {
@@ -27007,7 +28356,7 @@
           "defaultValue": "",
           "required": false,
           "variableMode": "UseVarOrInput",
-          "condition": "",
+          "condition": "仅：marker.add",
           "description": ""
         },
         {
@@ -27017,7 +28366,7 @@
           "defaultValue": "",
           "required": true,
           "variableMode": "UseVarOrInput",
-          "condition": "",
+          "condition": "仅：script.evaluate",
           "description": "可直接使用 ppro；返回 Promise 时会自动等待。"
         },
         {
@@ -27027,7 +28376,7 @@
           "defaultValue": "",
           "required": true,
           "variableMode": "UseVarOrInput",
-          "condition": "",
+          "condition": "仅：command.custom",
           "description": ""
         },
         {
@@ -27037,7 +28386,7 @@
           "defaultValue": "{}",
           "required": false,
           "variableMode": "UseVarOrInput",
-          "condition": "",
+          "condition": "仅：command.custom",
           "description": ""
         },
         {
@@ -27207,7 +28556,7 @@
           "defaultValue": "",
           "required": true,
           "variableMode": "UseVarOrInput",
-          "condition": "",
+          "condition": "仅：BridgeCustom",
           "description": ""
         },
         {
@@ -27862,7 +29211,7 @@
       "legacySlug": "sketchupcontrol",
       "ownsLegacyContent": true,
       "name": "SketchUp控制",
-      "description": "通过 SketchUp Ruby 扩展向动作触发时的前台实例发送命令。",
+      "description": "通过 SketchUp Ruby 扩展发送命令；仅有一个在线连接时直接使用，多个连接时按动作触发窗口定位。",
       "category": "SoftInteraction",
       "categoryName": "第三方软件交互",
       "stepType": "Action",
@@ -27878,7 +29227,7 @@
           "required": true,
           "variableMode": "Input",
           "condition": "",
-          "description": "发送给动作触发时前台 SketchUp 实例的命令。"
+          "description": "发送给选定 SketchUp 连接的命令；多个连接时按动作触发窗口定位。"
         },
         {
           "key": "commonCategory",
@@ -28891,7 +30240,7 @@
       "legacySlug": "solidworkscontrol",
       "ownsLegacyContent": true,
       "name": "SOLIDWORKS控制",
-      "description": "通过 SOLIDWORKS Add-in 向动作触发时的前台实例发送命令。",
+      "description": "通过 SOLIDWORKS Add-in 发送命令；仅有一个在线连接时直接使用，多个连接时按动作触发窗口定位。",
       "category": "SoftInteraction",
       "categoryName": "第三方软件交互",
       "stepType": "Action",
@@ -28916,7 +30265,7 @@
           "defaultValue": "zoom",
           "required": false,
           "variableMode": "UseVarOrInput",
-          "condition": "",
+          "condition": "仅：command.search",
           "description": ""
         },
         {
@@ -28926,7 +30275,7 @@
           "defaultValue": "50",
           "required": false,
           "variableMode": "Input",
-          "condition": "",
+          "condition": "仅：command.search",
           "description": ""
         },
         {
@@ -28936,7 +30285,7 @@
           "defaultValue": "0",
           "required": false,
           "variableMode": "Input",
-          "condition": "",
+          "condition": "仅：command.call",
           "description": "可先用“搜索 SOLIDWORKS 命令”获取 ID。"
         },
         {
@@ -28946,7 +30295,7 @@
           "defaultValue": "",
           "required": false,
           "variableMode": "UseVarOrInput",
-          "condition": "",
+          "condition": "仅：document.open, document.activate",
           "description": "打开文档时填写 .SLDPRT、.SLDASM 或 .SLDDRW 的绝对路径；激活文档时也可填写已打开文档的完整路径。"
         },
         {
@@ -28956,7 +30305,7 @@
           "defaultValue": "",
           "required": false,
           "variableMode": "UseVarOrInput",
-          "condition": "",
+          "condition": "仅：document.activate",
           "description": "激活文档时路径为空才使用。建议包含扩展名，以免同名零件、装配体或工程图产生歧义。"
         },
         {
@@ -28966,7 +30315,7 @@
           "defaultValue": "false",
           "required": false,
           "variableMode": "Input",
-          "condition": "",
+          "condition": "仅：document.open",
           "description": ""
         },
         {
@@ -28976,7 +30325,7 @@
           "defaultValue": "",
           "required": false,
           "variableMode": "UseVarOrInput",
-          "condition": "",
+          "condition": "仅：document.open",
           "description": "可选；仅打开指定配置，留空使用文档默认配置。"
         },
         {
@@ -28986,7 +30335,7 @@
           "defaultValue": "false",
           "required": false,
           "variableMode": "Input",
-          "condition": "",
+          "condition": "仅：document.activate",
           "description": ""
         },
         {
@@ -28996,7 +30345,7 @@
           "defaultValue": "",
           "required": true,
           "variableMode": "UseVarOrInput",
-          "condition": "",
+          "condition": "仅：document.save_as, document.export, drawing.export_pdf",
           "description": "使用绝对路径，文件扩展名决定 SOLIDWORKS 保存或导出格式。"
         },
         {
@@ -29006,7 +30355,7 @@
           "defaultValue": "false",
           "required": false,
           "variableMode": "Input",
-          "condition": "",
+          "condition": "仅：document.save_as, document.export, drawing.export_pdf",
           "description": ""
         },
         {
@@ -29016,7 +30365,7 @@
           "defaultValue": "entire",
           "required": false,
           "variableMode": "UseVarOrInput",
-          "condition": "",
+          "condition": "仅：document.export",
           "description": "entire 导出整个模型并先清空选择；selection 只导出当前选择。"
         },
         {
@@ -29026,7 +30375,7 @@
           "defaultValue": "false",
           "required": false,
           "variableMode": "Input",
-          "condition": "",
+          "condition": "仅：document.rebuild",
           "description": ""
         },
         {
@@ -29036,7 +30385,7 @@
           "defaultValue": "1",
           "required": false,
           "variableMode": "Input",
-          "condition": "",
+          "condition": "仅：document.undo",
           "description": ""
         },
         {
@@ -29046,7 +30395,7 @@
           "defaultValue": "",
           "required": true,
           "variableMode": "UseVarOrInput",
-          "condition": "",
+          "condition": "仅：selection.select_by_name",
           "description": ""
         },
         {
@@ -29056,7 +30405,7 @@
           "defaultValue": "",
           "required": false,
           "variableMode": "UseVarOrInput",
-          "condition": "",
+          "condition": "仅：selection.select_by_name",
           "description": "例如 COMPONENT、BODYFEATURE、FACE；留空时由 SOLIDWORKS 尝试匹配。"
         },
         {
@@ -29066,7 +30415,7 @@
           "defaultValue": "false",
           "required": false,
           "variableMode": "Input",
-          "condition": "",
+          "condition": "仅：selection.select_by_name",
           "description": ""
         },
         {
@@ -29076,7 +30425,7 @@
           "defaultValue": "true",
           "required": false,
           "variableMode": "Input",
-          "condition": "",
+          "condition": "仅：feature.list",
           "description": ""
         },
         {
@@ -29086,7 +30435,7 @@
           "defaultValue": "[]",
           "required": true,
           "variableMode": "UseVarOrInput",
-          "condition": "",
+          "condition": "仅：feature.set_suppression",
           "description": "例如 [\"Boss-Extrude1\",\"Cut-Extrude1\"]；会先确认所有目标唯一存在，再开始修改。"
         },
         {
@@ -29096,7 +30445,7 @@
           "defaultValue": "suppressed",
           "required": false,
           "variableMode": "UseVarOrInput",
-          "condition": "",
+          "condition": "仅：feature.set_suppression",
           "description": "suppressed 或 resolved。"
         },
         {
@@ -29106,7 +30455,7 @@
           "defaultValue": "current",
           "required": false,
           "variableMode": "UseVarOrInput",
-          "condition": "",
+          "condition": "仅：feature.set_suppression",
           "description": "current 仅当前配置；all 作用于全部配置。"
         },
         {
@@ -29116,7 +30465,7 @@
           "defaultValue": "",
           "required": true,
           "variableMode": "UseVarOrInput",
-          "condition": "",
+          "condition": "仅：configuration.activate",
           "description": ""
         },
         {
@@ -29126,7 +30475,7 @@
           "defaultValue": "",
           "required": false,
           "variableMode": "UseVarOrInput",
-          "condition": "",
+          "condition": "仅：property.list, property.set, property.delete",
           "description": "留空表示文档级属性；填写配置名称表示配置专用属性。"
         },
         {
@@ -29136,7 +30485,7 @@
           "defaultValue": "Description",
           "required": true,
           "variableMode": "UseVarOrInput",
-          "condition": "",
+          "condition": "仅：property.set, property.delete",
           "description": ""
         },
         {
@@ -29146,7 +30495,7 @@
           "defaultValue": "",
           "required": false,
           "variableMode": "UseVarOrInput",
-          "condition": "",
+          "condition": "仅：property.set",
           "description": ""
         },
         {
@@ -29156,7 +30505,7 @@
           "defaultValue": "false",
           "required": false,
           "variableMode": "Input",
-          "condition": "",
+          "condition": "仅：assembly.list_components",
           "description": ""
         },
         {
@@ -29166,7 +30515,7 @@
           "defaultValue": "Sheet1",
           "required": true,
           "variableMode": "UseVarOrInput",
-          "condition": "",
+          "condition": "仅：drawing.activate_sheet",
           "description": ""
         },
         {
@@ -29176,7 +30525,7 @@
           "defaultValue": "all",
           "required": false,
           "variableMode": "UseVarOrInput",
-          "condition": "",
+          "condition": "仅：drawing.export_pdf",
           "description": "all、current，或 JSON 名称数组，例如 [\"Sheet1\",\"Sheet2\"]。"
         },
         {
@@ -29186,7 +30535,7 @@
           "defaultValue": "isometric",
           "required": false,
           "variableMode": "UseVarOrInput",
-          "condition": "",
+          "condition": "仅：view.standard",
           "description": "front、back、left、right、top、bottom、isometric、trimetric 或 dimetric。"
         },
         {
@@ -29196,7 +30545,7 @@
           "defaultValue": "",
           "required": true,
           "variableMode": "UseVarOrInput",
-          "condition": "",
+          "condition": "仅：macro.run",
           "description": "支持 SOLIDWORKS VBA .swp 或编译后的 VSTA 宏 DLL。"
         },
         {
@@ -29206,7 +30555,7 @@
           "defaultValue": "Module1",
           "required": true,
           "variableMode": "UseVarOrInput",
-          "condition": "",
+          "condition": "仅：macro.run",
           "description": ""
         },
         {
@@ -29216,7 +30565,7 @@
           "defaultValue": "main",
           "required": true,
           "variableMode": "UseVarOrInput",
-          "condition": "",
+          "condition": "仅：macro.run",
           "description": ""
         },
         {
@@ -29226,7 +30575,7 @@
           "defaultValue": "return document == null ? null : document.GetTitle();",
           "required": true,
           "variableMode": "UseVarOrInput",
-          "condition": "",
+          "condition": "仅：script.evaluate",
           "description": "在 SOLIDWORKS 进程内执行；可使用 application（SldWorks）和 document（当前 ModelDoc2，可为空）。不提供安全沙箱，只运行可信代码。"
         },
         {
@@ -29236,7 +30585,7 @@
           "defaultValue": "Option Explicit\nDim swApp As SldWorks.SldWorks\nSub main()\n    Set swApp = Application.SldWorks\n    swApp.SendMsgToUser2 \"Hello from Quicker\", 0, 0\nEnd Sub",
           "required": true,
           "variableMode": "UseVarOrInput",
-          "condition": "",
+          "condition": "仅：script.evaluate_vba",
           "description": "完整 VBA 模块代码。Bridge 会写入临时 .swb 文本宏，由 SOLIDWORKS 转换并执行；不提供安全沙箱。"
         },
         {
@@ -29246,7 +30595,7 @@
           "defaultValue": "",
           "required": false,
           "variableMode": "UseVarOrInput",
-          "condition": "",
+          "condition": "仅：script.evaluate_vba",
           "description": "通常留空，由 Bridge 自动读取临时宏的入口模块；仅兼容性排查时手动指定。"
         },
         {
@@ -29256,7 +30605,7 @@
           "defaultValue": "main",
           "required": true,
           "variableMode": "UseVarOrInput",
-          "condition": "",
+          "condition": "仅：script.evaluate_vba",
           "description": "只能执行无参数 Sub。"
         },
         {
@@ -29266,7 +30615,7 @@
           "defaultValue": "",
           "required": true,
           "variableMode": "UseVarOrInput",
-          "condition": "",
+          "condition": "仅：command.custom",
           "description": ""
         },
         {
@@ -29276,7 +30625,7 @@
           "defaultValue": "{}",
           "required": false,
           "variableMode": "UseVarOrInput",
-          "condition": "",
+          "condition": "仅：command.custom",
           "description": ""
         },
         {
@@ -29536,7 +30885,7 @@
           "defaultValue": "",
           "required": true,
           "variableMode": "UseVarOrInput",
-          "condition": "",
+          "condition": "仅：document.save_as",
           "description": "文档另存为的绝对路径，扩展名应与当前 WPS 组件匹配。"
         },
         {
@@ -29546,7 +30895,7 @@
           "defaultValue": "Sheet1",
           "required": true,
           "variableMode": "UseVarOrInput",
-          "condition": "",
+          "condition": "仅：sheet.activate",
           "description": ""
         },
         {
@@ -29556,7 +30905,7 @@
           "defaultValue": "A1:C10",
           "required": true,
           "variableMode": "UseVarOrInput",
-          "condition": "",
+          "condition": "仅：range.read, range.clear, range.write",
           "description": ""
         },
         {
@@ -29566,7 +30915,7 @@
           "defaultValue": "[[\"名称\",\"数量\"],[\"示例\",1]]",
           "required": true,
           "variableMode": "UseVarOrInput",
-          "condition": "",
+          "condition": "仅：range.write",
           "description": ""
         },
         {
@@ -29576,7 +30925,7 @@
           "defaultValue": "来自 Quicker 的文字",
           "required": true,
           "variableMode": "UseVarOrInput",
-          "condition": "",
+          "condition": "仅：text.insert",
           "description": ""
         },
         {
@@ -29586,7 +30935,7 @@
           "defaultValue": "",
           "required": true,
           "variableMode": "UseVarOrInput",
-          "condition": "",
+          "condition": "仅：text.replace",
           "description": ""
         },
         {
@@ -29596,7 +30945,7 @@
           "defaultValue": "",
           "required": false,
           "variableMode": "UseVarOrInput",
-          "condition": "",
+          "condition": "仅：text.replace",
           "description": ""
         },
         {
@@ -29606,7 +30955,7 @@
           "defaultValue": "true",
           "required": false,
           "variableMode": "Input",
-          "condition": "",
+          "condition": "仅：text.replace",
           "description": ""
         },
         {
@@ -29616,7 +30965,7 @@
           "defaultValue": "1",
           "required": false,
           "variableMode": "UseVarOrInput",
-          "condition": "",
+          "condition": "仅：slide.activate",
           "description": ""
         },
         {
@@ -29626,7 +30975,7 @@
           "defaultValue": "12",
           "required": false,
           "variableMode": "UseVarOrInput",
-          "condition": "",
+          "condition": "仅：slide.add",
           "description": ""
         },
         {
@@ -29636,7 +30985,7 @@
           "defaultValue": "模块名.函数名",
           "required": true,
           "variableMode": "UseVarOrInput",
-          "condition": "",
+          "condition": "仅：macro.run",
           "description": ""
         },
         {
@@ -29646,7 +30995,7 @@
           "defaultValue": "[]",
           "required": false,
           "variableMode": "UseVarOrInput",
-          "condition": "",
+          "condition": "仅：macro.run",
           "description": ""
         },
         {
@@ -29656,7 +31005,7 @@
           "defaultValue": "({ app: Application.Name, version: Application.Version })",
           "required": true,
           "variableMode": "UseVarOrInput",
-          "condition": "",
+          "condition": "仅：script.evaluate",
           "description": "在当前 WPS 加载项上下文执行，可直接访问 Application。"
         },
         {
@@ -29666,7 +31015,7 @@
           "defaultValue": "",
           "required": true,
           "variableMode": "UseVarOrInput",
-          "condition": "",
+          "condition": "仅：command.custom",
           "description": ""
         },
         {
@@ -29676,7 +31025,7 @@
           "defaultValue": "{}",
           "required": false,
           "variableMode": "UseVarOrInput",
-          "condition": "",
+          "condition": "仅：command.custom",
           "description": ""
         },
         {
@@ -29876,7 +31225,7 @@
           "defaultValue": "",
           "required": false,
           "variableMode": "UseVarOrInput",
-          "condition": "排除：key_keydown_v1, key_keyup_v1",
+          "condition": "仅：get_key_state, key_down, key_up",
           "description": "要操作或检查状态的按键(单个)。获取状态可使用鼠标键；如需发送真实鼠标事件，请使用“鼠标输入”步骤。"
         },
         {
@@ -30638,7 +31987,7 @@
           "defaultValue": "default",
           "required": false,
           "variableMode": "Input",
-          "condition": "仅：top_windows, findWindow",
+          "condition": "仅：findWindow, top_windows",
           "description": ""
         },
         {
@@ -30648,7 +31997,7 @@
           "defaultValue": "true",
           "required": false,
           "variableMode": "Input",
-          "condition": "仅：top_windows, findWindow",
+          "condition": "仅：findWindow, top_windows",
           "description": ""
         },
         {
@@ -30668,7 +32017,7 @@
           "defaultValue": "false",
           "required": false,
           "variableMode": "Input",
-          "condition": "排除：top_windows, findChildWindow, child_windows",
+          "condition": "仅：foreground, selectWindow, pointing, pointing_root, pointing_now, pointing_now_root, fromHwnd, findWindow",
           "description": ""
         },
         {
@@ -30694,126 +32043,126 @@
           "key": "output",
           "name": "窗口标题",
           "type": "Text",
-          "condition": "排除：top_windows, findChildWindow, child_windows",
+          "condition": "仅：foreground, selectWindow, pointing, pointing_root, pointing_now, pointing_now_root, fromHwnd, findWindow",
           "description": "窗口的标题文字"
         },
         {
           "key": "className",
           "name": "类名",
           "type": "Text",
-          "condition": "排除：top_windows, findChildWindow, child_windows",
+          "condition": "仅：foreground, selectWindow, pointing, pointing_root, pointing_now, pointing_now_root, fromHwnd, findWindow",
           "description": "窗口的 Class Name"
         },
         {
           "key": "handle",
           "name": "句柄",
           "type": "Integer",
-          "condition": "排除：top_windows, child_windows",
+          "condition": "仅：foreground, selectWindow, pointing, pointing_root, pointing_now, pointing_now_root, fromHwnd, findWindow, findChildWindow",
           "description": "窗口的句柄"
         },
         {
           "key": "pid",
           "name": "进程ID",
           "type": "Integer",
-          "condition": "排除：top_windows, findChildWindow, child_windows",
+          "condition": "仅：foreground, selectWindow, pointing, pointing_root, pointing_now, pointing_now_root, fromHwnd, findWindow",
           "description": "窗口所属进程的ID"
         },
         {
           "key": "procName",
           "name": "进程名",
           "type": "Text",
-          "condition": "排除：top_windows, findChildWindow, child_windows",
+          "condition": "仅：foreground, selectWindow, pointing, pointing_root, pointing_now, pointing_now_root, fromHwnd, findWindow",
           "description": "进程名通常为程序文件名去掉.exe后缀，大小写不确定。"
         },
         {
           "key": "path",
           "name": "程序路径",
           "type": "Text",
-          "condition": "排除：top_windows, findChildWindow, child_windows",
+          "condition": "仅：foreground, selectWindow, pointing, pointing_root, pointing_now, pointing_now_root, fromHwnd, findWindow",
           "description": "获得的进程路径"
         },
         {
           "key": "parent",
           "name": "父窗口句柄",
           "type": "Integer",
-          "condition": "排除：top_windows, findChildWindow, child_windows",
+          "condition": "仅：foreground, selectWindow, pointing, pointing_root, pointing_now, pointing_now_root, fromHwnd, findWindow",
           "description": ""
         },
         {
           "key": "root",
           "name": "根窗口句柄",
           "type": "Integer",
-          "condition": "排除：top_windows, findChildWindow, child_windows",
+          "condition": "仅：foreground, selectWindow, pointing, pointing_root, pointing_now, pointing_now_root, fromHwnd, findWindow",
           "description": ""
         },
         {
           "key": "rootOwner",
           "name": "根所有者窗口句柄",
           "type": "Integer",
-          "condition": "排除：top_windows, findChildWindow, child_windows",
+          "condition": "仅：foreground, selectWindow, pointing, pointing_root, pointing_now, pointing_now_root, fromHwnd, findWindow",
           "description": ""
         },
         {
           "key": "rect",
           "name": "窗口位置",
           "type": "Text",
-          "condition": "排除：top_windows, findChildWindow, child_windows",
+          "condition": "仅：foreground, selectWindow, pointing, pointing_root, pointing_now, pointing_now_root, fromHwnd, findWindow",
           "description": "文本值，格式为:Left,Top,Right,Bottom,Width,Height。"
         },
         {
           "key": "rectNoSize",
           "name": "窗口位置(不含尺寸)",
           "type": "Text",
-          "condition": "排除：top_windows, child_windows",
+          "condition": "仅：foreground, selectWindow, pointing, pointing_root, pointing_now, pointing_now_root, fromHwnd, findWindow, findChildWindow",
           "description": "文本值，格式为:Left,Top,Right,Bottom。如:0,0,100,100"
         },
         {
           "key": "rectDict",
           "name": "窗口位置(词典值)",
           "type": "Dict",
-          "condition": "排除：top_windows, child_windows",
+          "condition": "仅：foreground, selectWindow, pointing, pointing_root, pointing_now, pointing_now_root, fromHwnd, findWindow, findChildWindow",
           "description": "词典值，属性为:Left,Top,Right,Bottom,Width,Height"
         },
         {
           "key": "isTopmost",
           "name": "是否置顶",
           "type": "Boolean",
-          "condition": "排除：top_windows, findChildWindow, child_windows",
+          "condition": "仅：foreground, selectWindow, pointing, pointing_root, pointing_now, pointing_now_root, fromHwnd, findWindow",
           "description": ""
         },
         {
           "key": "isVisible",
           "name": "是否可见",
           "type": "Boolean",
-          "condition": "排除：top_windows, findChildWindow, child_windows",
+          "condition": "仅：foreground, selectWindow, pointing, pointing_root, pointing_now, pointing_now_root, fromHwnd, findWindow",
           "description": ""
         },
         {
           "key": "showState",
           "name": "显示状态",
           "type": "Integer",
-          "condition": "排除：top_windows, findChildWindow, child_windows",
+          "condition": "仅：foreground, selectWindow, pointing, pointing_root, pointing_now, pointing_now_root, fromHwnd, findWindow",
           "description": "1:普通，2:最小化，3:最大化。"
         },
         {
           "key": "alpha",
           "name": "不透明度",
           "type": "Integer",
-          "condition": "排除：top_windows, findChildWindow, child_windows",
+          "condition": "仅：foreground, selectWindow, pointing, pointing_root, pointing_now, pointing_now_root, fromHwnd, findWindow",
           "description": "窗口的透明度，范围为0-255。0表示全透明"
         },
         {
           "key": "borderColor",
           "name": "边框颜色",
           "type": "Text",
-          "condition": "排除：top_windows, findChildWindow, child_windows",
+          "condition": "仅：foreground, selectWindow, pointing, pointing_root, pointing_now, pointing_now_root, fromHwnd, findWindow",
           "description": "窗口的边框颜色，格式为#RRGGBB，或空字符串表示未设置颜色。（仅支持通过Quicker设置的边框颜色）"
         },
         {
           "key": "allChildWindows",
           "name": "所有子窗口",
           "type": "Dict",
-          "condition": "排除：top_windows, findChildWindow",
+          "condition": "仅：foreground, selectWindow, pointing, pointing_root, pointing_now, pointing_now_root, fromHwnd, findWindow, child_windows",
           "description": "词典值，Key为窗口句柄，Value为窗口标题"
         },
         {
@@ -32920,7 +34269,7 @@
           "defaultValue": "0",
           "required": false,
           "variableMode": "UseVarOrInput",
-          "condition": "排除：SendMessageTextLParam",
+          "condition": "仅：SendMessage, PostMessage",
           "description": ""
         },
         {
@@ -33325,7 +34674,7 @@
           "defaultValue": "",
           "required": true,
           "variableMode": "UseVarOrInput",
-          "condition": "仅：loadExeProfiles, loadExeProfilesNoLock, showCircleMenu, GetActionList, showExeSettingWindow, showDashboardWindow",
+          "condition": "仅：showCircleMenu, showDashboardWindow, showExeSettingWindow, loadExeProfiles, loadExeProfilesNoLock, GetActionList",
           "description": "场景关联的exe文件名。请参考场景与动作管理窗口左侧应用列表；打开轮盘或场景管理时可填写 _curr 表示当前程序场景。"
         },
         {
@@ -33365,7 +34714,7 @@
           "defaultValue": "",
           "required": false,
           "variableMode": "UseVarOrInput",
-          "condition": "仅：StartSearchWithAction, showSearch, SearchWithCertainAction",
+          "condition": "仅：showSearch, StartSearchWithAction, SearchWithCertainAction",
           "description": "预先放入搜索框的内容"
         },
         {
@@ -33451,6 +34800,13 @@
           "type": "Integer",
           "condition": "仅：FloatAction",
           "description": ""
+        },
+        {
+          "key": "contextMenuData",
+          "name": "右键菜单数据",
+          "type": "Text",
+          "condition": "仅：GetActionInfo",
+          "description": "动作配置中的右键菜单原始文本；未配置时输出空文本。"
         }
       ],
       "selections": {
@@ -34200,7 +35556,7 @@
           "defaultValue": "text",
           "required": false,
           "variableMode": "Input",
-          "condition": "仅：dec_des, dec_aes, enc_aes, enc_des, hash_hmac",
+          "condition": "仅：enc_des, dec_des, enc_aes, dec_aes, hash_hmac",
           "description": ""
         },
         {
@@ -34210,7 +35566,7 @@
           "defaultValue": "",
           "required": true,
           "variableMode": "UseVarOrInput",
-          "condition": "仅：dec_des, dec_aes, enc_aes, enc_des, hash_hmac",
+          "condition": "仅：enc_des, dec_des, enc_aes, dec_aes, hash_hmac",
           "description": ""
         },
         {
@@ -34220,7 +35576,7 @@
           "defaultValue": "text",
           "required": false,
           "variableMode": "Input",
-          "condition": "仅：dec_des, dec_aes, enc_aes, enc_des",
+          "condition": "仅：enc_des, dec_des, enc_aes, dec_aes",
           "description": ""
         },
         {
@@ -34230,7 +35586,7 @@
           "defaultValue": "",
           "required": true,
           "variableMode": "UseVarOrInput",
-          "condition": "仅：dec_des, dec_aes, enc_aes, enc_des",
+          "condition": "仅：enc_des, dec_des, enc_aes, dec_aes",
           "description": ""
         },
         {
@@ -34270,7 +35626,7 @@
           "defaultValue": "CBC",
           "required": true,
           "variableMode": "UseVarOrInput",
-          "condition": "仅：dec_aes, enc_aes, dec_des, enc_des",
+          "condition": "仅：enc_des, dec_des, enc_aes, dec_aes",
           "description": ""
         },
         {
@@ -34280,7 +35636,7 @@
           "defaultValue": "PKCS7",
           "required": true,
           "variableMode": "UseVarOrInput",
-          "condition": "仅：dec_aes, enc_aes, dec_des, enc_des",
+          "condition": "仅：enc_des, dec_des, enc_aes, dec_aes",
           "description": ""
         },
         {
@@ -34306,7 +35662,7 @@
           "key": "resultText",
           "name": "文本结果",
           "type": "Text",
-          "condition": "仅：dec_aes, dec_des, dec_rsa, local_dec",
+          "condition": "仅：dec_des, dec_aes, dec_rsa, local_dec",
           "description": ""
         },
         {
@@ -34975,7 +36331,7 @@
           "defaultValue": "utf-8",
           "required": false,
           "variableMode": "UseVarOrInput",
-          "condition": "仅：convertEncoding, urlEncode, urlDecode",
+          "condition": "仅：urlEncode, urlDecode, convertEncoding",
           "description": ""
         },
         {
@@ -35400,7 +36756,7 @@
           "defaultValue": "=",
           "required": false,
           "variableMode": "Input",
-          "condition": "排除：GET_ALL_WINDOWS, GET_ACTION_WINDOWS",
+          "condition": "仅：WAIT, NO_WAIT, CLOSE_WINDOW, GET_WIN_INFO, APPEND_TEXT, ACTIVATE_WINDOW, WAIT_CLOSE",
           "description": "可选。自动更新或关闭之前打开的具有此标识的文本窗口。使用'='表示当前动作id。"
         },
         {
@@ -35421,7 +36777,7 @@
           "required": false,
           "variableMode": "Input",
           "condition": "仅：WAIT, NO_WAIT",
-          "description": "设置选择窗口的尺寸，格式为：宽度,高度。支持逻辑像素数值或屏幕宽高百分比，详情请参考模块文档。\n\"窗口位置\" 类型为 \"自定义位置\" 时用于指定显示位置，格式为：left,top,right,bottom"
+          "description": "宽度,高度：逻辑像素或屏幕工作区百分比；自定义位置填坐标。"
         },
         {
           "key": "topMost",
@@ -36389,7 +37745,7 @@
           "required": false,
           "variableMode": "UseVarOrInput",
           "condition": "",
-          "description": "左侧字段标题区域的宽度(逻辑像素)。负值，如-200表示自适应列宽且最大宽度为200。"
+          "description": "逻辑像素；负数表示自适应列宽的上限。"
         },
         {
           "key": "windowWidth",
@@ -36509,7 +37865,7 @@
           "required": false,
           "variableMode": "Input",
           "condition": "",
-          "description": "当 \"窗口位置\" 类型为 \"自定义位置\" 时用于指定显示位置，格式为：left,top,right,bottom"
+          "description": "自定义位置：left,top,right,bottom；物理像素或屏幕工作区百分比。"
         },
         {
           "key": "stopIfFail",
@@ -37052,7 +38408,7 @@
           "defaultValue": "完成后继续",
           "required": true,
           "variableMode": "Input",
-          "condition": "仅：show, update, showAndWaitClose",
+          "condition": "仅：show, showAndWaitClose, update",
           "description": ""
         },
         {
@@ -37062,7 +38418,7 @@
           "defaultValue": "请在完成操作后点下面的按钮",
           "required": true,
           "variableMode": "Input",
-          "condition": "仅：show, update, showAndWaitClose",
+          "condition": "仅：show, showAndWaitClose, update",
           "description": "提示文字内容"
         },
         {
@@ -37072,7 +38428,7 @@
           "defaultValue": "完成",
           "required": true,
           "variableMode": "UseVarOrInput",
-          "condition": "仅：show, update, showAndWaitClose",
+          "condition": "仅：show, showAndWaitClose, update",
           "description": "默认按键仅用于关闭窗口。文字内容为空时隐藏默认按钮。"
         },
         {
@@ -37092,7 +38448,7 @@
           "defaultValue": "",
           "required": false,
           "variableMode": "Input",
-          "condition": "仅：show, update, showAndWaitClose",
+          "condition": "仅：show, showAndWaitClose, update",
           "description": "请以 当前值/总数 的格式传入（可使用插值方式）。 比如：40/80"
         },
         {
@@ -37102,7 +38458,7 @@
           "defaultValue": "",
           "required": true,
           "variableMode": "Input",
-          "condition": "仅：show, update, showAndWaitClose",
+          "condition": "仅：show, showAndWaitClose, update",
           "description": "每行定义一个按钮，格式为 \"文本\" 或 \"显示文本|值\"。显示在默认按钮的左侧。"
         },
         {
@@ -37112,7 +38468,7 @@
           "defaultValue": "16.0",
           "required": true,
           "variableMode": "UseVarOrInput",
-          "condition": "仅：show, update, showAndWaitClose",
+          "condition": "仅：show, showAndWaitClose",
           "description": "按钮上图标的大小，单位为逻辑像素。"
         },
         {
@@ -37122,7 +38478,7 @@
           "defaultValue": "12.0",
           "required": true,
           "variableMode": "UseVarOrInput",
-          "condition": "仅：show, update, showAndWaitClose",
+          "condition": "仅：show, showAndWaitClose",
           "description": "按钮上文字的大小，单位为逻辑像素。"
         },
         {
@@ -37178,7 +38534,7 @@
           "key": "selectedOperation",
           "name": "选择的按钮",
           "type": "Text",
-          "condition": "仅：check, waitClose, showAndWaitClose",
+          "condition": "仅：showAndWaitClose, check, waitClose",
           "description": "选择的后续操作项"
         }
       ],
@@ -37801,7 +39157,7 @@
           "required": false,
           "variableMode": "Input",
           "condition": "仅：show_fixed_panel, show_fixed_panel_wait_close",
-          "description": "设置选择窗口的最大尺寸，格式为：宽度,高度。支持像素数值或屏幕宽高百分比，详情请参考模块文档。\n\"窗口位置\" 类型为 \"自定义位置\" 时用于指定显示位置，格式为：left,top,right,bottom"
+          "description": "宽度,高度：逻辑像素或屏幕工作区百分比；自定义位置填坐标。"
         },
         {
           "key": "horzAlign",
@@ -38304,7 +39660,7 @@
           "defaultValue": "<Window xmlns=\"http://schemas.microsoft.com/winfx/2006/xaml/presentation\"\n        xmlns:d=\"http://schemas.microsoft.com/expression/blend/2008\"\n        xmlns:x=\"http://schemas.microsoft.com/winfx/2006/xaml\"\n        xmlns:hc=\"https://handyorg.github.io/handycontrol\"\n        xmlns:mc=\"http://schemas.openxmlformats.org/markup-compatibility/2006\"\n        xmlns:qk=\"https://getquicker.net\"\n        Width=\"637\"\n        Height=\"556\"\n        Title=\"Test Window\"\n        mc:Ignorable=\"d\">\n  <Grid Margin=\"10\">\n    <StackPanel>\n      <TextBlock Margin=\"10,50,10,50\" Text=\"Hello World！\" FontSize=\"20\" />\n     \n      <Button Margin=\"10\" qk:Att.Action=\"close:result\" Style=\"{StaticResource ButtonPrimary}\" Width=\"50\">\n        关闭\n      </Button>\n    </StackPanel>\n  </Grid>\n</Window>",
           "required": true,
           "variableMode": "UseVarOrInput",
-          "condition": "仅：Show, ShowAndWaitClose",
+          "condition": "仅：ShowAndWaitClose, Show",
           "description": "窗口定义XAML代码"
         },
         {
@@ -38314,7 +39670,7 @@
           "defaultValue": "",
           "required": true,
           "variableMode": "UseVarOrInput",
-          "condition": "仅：Show, ShowAndWaitClose",
+          "condition": "仅：ShowAndWaitClose, Show",
           "description": "将变量与窗口上下文数据进行映射。每行一个，格式为:\"窗口数据项名称:{动作变量名}\" 或 \"窗口数据项:=表达式\""
         },
         {
@@ -38324,7 +39680,7 @@
           "defaultValue": "",
           "required": true,
           "variableMode": "UseVarOrInput",
-          "condition": "仅：Show, ShowAndWaitClose",
+          "condition": "仅：ShowAndWaitClose, Show",
           "description": "详细说明请参考模块文档"
         },
         {
@@ -38334,7 +39690,7 @@
           "defaultValue": "",
           "required": false,
           "variableMode": "UseVarOrInput",
-          "condition": "仅：Show, ShowAndWaitClose",
+          "condition": "仅：ShowAndWaitClose, Show",
           "description": "辅助处理窗口事件的代码，详见文档。"
         },
         {
@@ -38344,7 +39700,7 @@
           "defaultValue": "",
           "required": false,
           "variableMode": "UseVarOrInput",
-          "condition": "仅：Show, ShowAndWaitClose",
+          "condition": "仅：ShowAndWaitClose, Show",
           "description": "辅助 C# 代码要引用的 DLL 文件，每行一个。也可以在代码中使用 #r 指令。"
         },
         {
@@ -38364,7 +39720,7 @@
           "defaultValue": "0",
           "required": true,
           "variableMode": "UseVarOrInput",
-          "condition": "仅：Show, ShowAndWaitClose",
+          "condition": "仅：ShowAndWaitClose, Show",
           "description": "自动关闭窗口的时间（秒数）。需大于0.5秒。"
         },
         {
@@ -38374,8 +39730,18 @@
           "defaultValue": "CenterScreen",
           "required": false,
           "variableMode": "UseVarOrInput",
-          "condition": "仅：Show, ShowAndWaitClose",
-          "description": "在哪里显示选择窗口"
+          "condition": "仅：ShowAndWaitClose, Show",
+          "description": "窗口显示的位置"
+        },
+        {
+          "key": "mouseOffset",
+          "name": "鼠标定位偏移",
+          "type": "Text",
+          "defaultValue": "",
+          "required": false,
+          "variableMode": "UseVarOrInput",
+          "condition": "仅：ShowAndWaitClose, Show",
+          "description": "仅用于跟随鼠标。填写水平、垂直偏移（逻辑像素），如 10,10 表示向右、向下各偏移 10；负数反向，留空使用默认位置。"
         },
         {
           "key": "winSize",
@@ -38384,8 +39750,8 @@
           "defaultValue": "",
           "required": false,
           "variableMode": "Input",
-          "condition": "仅：Show, ShowAndWaitClose",
-          "description": "设置选择窗口的最大尺寸，格式为：宽度,高度。支持像素数值或屏幕宽高百分比，详情请参考模块文档。\n\"窗口位置\" 类型为 \"自定义位置\" 时用于指定显示位置，格式为：left,top,right,bottom"
+          "condition": "仅：ShowAndWaitClose, Show",
+          "description": "最大宽度,高度：逻辑像素或屏幕工作区百分比；自定义位置填坐标。"
         },
         {
           "key": "activateMode",
@@ -38394,7 +39760,7 @@
           "defaultValue": "AutoActivate",
           "required": false,
           "variableMode": "UseVarOrInput",
-          "condition": "仅：Show, ShowAndWaitClose",
+          "condition": "仅：ShowAndWaitClose, Show",
           "description": ""
         },
         {
@@ -38404,7 +39770,7 @@
           "defaultValue": "false",
           "required": false,
           "variableMode": "UseVarOrInput",
-          "condition": "仅：Show, ShowAndWaitClose",
+          "condition": "仅：ShowAndWaitClose, Show",
           "description": "仅在窗口支持激活（获取焦点）的情况下有效。"
         },
         {
@@ -38492,6 +39858,11 @@
             {
               "value": "WithMouse2",
               "name": "跟随鼠标（指针右下）",
+              "description": ""
+            },
+            {
+              "value": "WithMouseTopRight",
+              "name": "跟随鼠标（指针右上）",
               "description": ""
             },
             {
@@ -38821,7 +40192,7 @@
           "defaultValue": "=",
           "required": false,
           "variableMode": "UseVarOrInput",
-          "condition": "排除：CheckInstalled",
+          "condition": "仅：OpenUrl, OpenAndWaitLoad, OpenUrlAndWaitClose, SendMessage, ExecuteScript, CheckWindowState, Close, Reload, Stop, MultiTab_OpenUrl, MultiColumn_OpenUrl",
           "description": "(仅必要时使用)用于关闭之前打开的具有此标识的WebView2窗口。使用=表示当前动作ID。"
         },
         {
@@ -38882,7 +40253,7 @@
           "required": false,
           "variableMode": "Input",
           "condition": "仅：OpenUrl, OpenAndWaitLoad, OpenUrlAndWaitClose, MultiTab_OpenUrl, MultiColumn_OpenUrl",
-          "description": "设置选择窗口的尺寸，格式为：宽度,高度。支持像素数值或屏幕宽高百分比，详情请参考模块文档。\n\"窗口位置\" 类型为 \"自定义位置\" 时用于指定显示位置，格式为：left,top,right,bottom"
+          "description": "宽度,高度：逻辑像素或屏幕工作区百分比；自定义位置填坐标。"
         },
         {
           "key": "defaultDownloadFolderPath",
@@ -39032,13 +40403,13 @@
           "name": "WebView2对象",
           "type": "Object",
           "condition": "仅：OpenUrl, OpenAndWaitLoad, CheckWindowState",
-          "description": "可用于在C#脚本中使用，需运行在UI线程中。注意避免循环引用。"
+          "description": "可用于在C#脚本中使用，需运行在UI线程中。打开窗口时若绑定此输出，会等待浏览器初始化完成，但不额外等待网页加载。注意避免循环引用。"
         },
         {
           "key": "lastLocation",
           "name": "窗口位置",
           "type": "Text",
-          "condition": "仅：OpenAndWaitLoad, CheckWindowState, OpenUrlAndWaitClose",
+          "condition": "仅：OpenAndWaitLoad, OpenUrlAndWaitClose, CheckWindowState",
           "description": "返回窗口坐标范围。格式为：left,top,right,bottom"
         },
         {
@@ -39906,141 +41277,6 @@
       "outputs": [],
       "selections": {},
       "sourceFileName": "sys_delay_等待时间.md"
-    },
-    {
-      "key": "sys:motuyuncontrol",
-      "slug": "motuyuncontrol",
-      "legacySlug": "motuyuncontrol",
-      "ownsLegacyContent": true,
-      "name": "模兔云控制",
-      "description": "通过模兔云本机服务搜索并执行 SketchUp 插件命令。",
-      "category": "SoftInteraction",
-      "categoryName": "第三方软件交互",
-      "stepType": "Action",
-      "isRisky": false,
-      "isProOnly": false,
-      "helpLink": "https://docs.getquicker.net/v2/xaction/modules/motuyuncontrol",
-      "inputs": [
-        {
-          "key": "operation",
-          "name": "操作类型",
-          "type": "Enum",
-          "defaultValue": "command.activate",
-          "required": true,
-          "variableMode": "Input",
-          "condition": "",
-          "description": ""
-        },
-        {
-          "key": "keyword",
-          "name": "搜索词",
-          "type": "Text",
-          "defaultValue": "",
-          "required": false,
-          "variableMode": "UseVarOrInput",
-          "condition": "",
-          "description": ""
-        },
-        {
-          "key": "limit",
-          "name": "最大数量",
-          "type": "Number",
-          "defaultValue": "100",
-          "required": false,
-          "variableMode": "UseVarOrInput",
-          "condition": "",
-          "description": ""
-        },
-        {
-          "key": "needIcon",
-          "name": "返回图标",
-          "type": "Boolean",
-          "defaultValue": "true",
-          "required": false,
-          "variableMode": "Input",
-          "condition": "",
-          "description": ""
-        },
-        {
-          "key": "commandId",
-          "name": "命令 ID",
-          "type": "Text",
-          "defaultValue": "",
-          "required": true,
-          "variableMode": "UseVarOrInput",
-          "condition": "",
-          "description": ""
-        },
-        {
-          "key": "projectId",
-          "name": "插件 ID",
-          "type": "Text",
-          "defaultValue": "0",
-          "required": true,
-          "variableMode": "UseVarOrInput",
-          "condition": "",
-          "description": ""
-        },
-        {
-          "key": "waitMs",
-          "name": "最长等待时间(ms)",
-          "type": "Number",
-          "defaultValue": "30000",
-          "required": true,
-          "variableMode": "Input",
-          "condition": "",
-          "description": ""
-        },
-        {
-          "key": "stopIfFail",
-          "name": "失败后停止",
-          "type": "Boolean",
-          "defaultValue": "true",
-          "required": false,
-          "variableMode": "Input",
-          "condition": "",
-          "description": "失败后是否停止动作"
-        }
-      ],
-      "outputs": [
-        {
-          "key": "isSuccess",
-          "name": "是否成功",
-          "type": "Boolean",
-          "condition": "",
-          "description": "操作是否成功"
-        },
-        {
-          "key": "output",
-          "name": "返回结果",
-          "type": "Text",
-          "condition": "",
-          "description": "模兔云返回的 JSON。"
-        }
-      ],
-      "selections": {
-        "operation": {
-          "name": "操作类型",
-          "items": [
-            {
-              "value": "command.search",
-              "name": "[命令] 搜索命令",
-              "description": ""
-            },
-            {
-              "value": "command.activate",
-              "name": "[命令] 执行命令",
-              "description": ""
-            },
-            {
-              "value": "tool.list",
-              "name": "[高级] 读取工具列表",
-              "description": ""
-            }
-          ]
-        }
-      },
-      "sourceFileName": "sys_motuyuncontrol_模兔云控制.md"
     }
   ]
 }

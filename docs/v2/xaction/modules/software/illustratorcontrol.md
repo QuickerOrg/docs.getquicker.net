@@ -1,6 +1,6 @@
 ---
 title: "Illustrator控制"
-description: "通过 Illustrator Bridge 调用宿主能力，包含连接验证、目标规则和使用限制。"
+description: "通过 Illustrator CEP 扩展调用文档、选择、图层、画板、文本和 ExtendScript 能力。"
 slug: "/v2/xaction/modules/illustratorcontrol"
 sidebar_label: "Illustrator控制"
 sidebar_position: 150
@@ -8,7 +8,7 @@ quickerDocKey: "xaction/module/sys:illustratorcontrol"
 comments: true
 moduleKey: "sys:illustratorcontrol"
 docStatus: "reviewed"
-metadataGeneratedAt: "2026-09-04 07:37:19"
+metadataGeneratedAt: "2026-09-20 15:25:17"
 ---
 
 # Illustrator控制

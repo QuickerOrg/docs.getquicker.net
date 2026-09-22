@@ -8,7 +8,7 @@ quickerDocKey: "xaction/module/sys:screenRecordingUI"
 comments: true
 moduleKey: "sys:screenRecordingUI"
 docStatus: "generated"
-metadataGeneratedAt: "2026-08-24 20:01:39"
+metadataGeneratedAt: "2026-09-20 15:25:17"
 ---
 
 # 屏幕录制
@@ -47,6 +47,8 @@ metadataGeneratedAt: "2026-08-24 20:01:39"
 <ModuleParamPreview moduleKey="sys:screenRecordingUI" />
 
 ## 参数说明
+
+2.2.17 起，录屏结束预览自动获得焦点，可按空格暂停或继续，并在预览工具条调整播放速度。需要以本机 ffmpeg 编码 MP4 时，在截图设置中启用并检测路径；配置方法见[截图 Pro 设置页](/v2/features/screenshot/capture-pro#截图-pro-设置页)。
 
 **开始前延迟**：等多少毫秒再弹出选区。
 

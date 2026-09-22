@@ -29,7 +29,7 @@
       "defaultValue": "T:\\TEMP\\Quicker-Illustrator.png",
       "required": false,
       "variableMode": "UseVarOrInput",
-      "condition": "",
+      "condition": "仅：document.open, document.save_as, document.export",
       "description": ""
     },
     {
@@ -39,7 +39,7 @@
       "defaultValue": "png",
       "required": false,
       "variableMode": "UseVarOrInput",
-      "condition": "",
+      "condition": "仅：document.save_as, document.export",
       "description": ""
     },
     {
@@ -49,7 +49,7 @@
       "defaultValue": "1920",
       "required": false,
       "variableMode": "UseVarOrInput",
-      "condition": "",
+      "condition": "仅：document.new",
       "description": ""
     },
     {
@@ -59,7 +59,7 @@
       "defaultValue": "1080",
       "required": false,
       "variableMode": "UseVarOrInput",
-      "condition": "",
+      "condition": "仅：document.new",
       "description": ""
     },
     {
@@ -69,7 +69,7 @@
       "defaultValue": "rgb",
       "required": false,
       "variableMode": "UseVarOrInput",
-      "condition": "",
+      "condition": "仅：document.new",
       "description": ""
     },
     {
@@ -79,7 +79,7 @@
       "defaultValue": "100",
       "required": false,
       "variableMode": "UseVarOrInput",
-      "condition": "",
+      "condition": "仅：document.export",
       "description": ""
     },
     {
@@ -89,7 +89,7 @@
       "defaultValue": "80",
       "required": false,
       "variableMode": "UseVarOrInput",
-      "condition": "",
+      "condition": "仅：document.export",
       "description": ""
     },
     {
@@ -99,7 +99,7 @@
       "defaultValue": "true",
       "required": false,
       "variableMode": "UseVarOrInput",
-      "condition": "",
+      "condition": "仅：document.export",
       "description": ""
     },
     {
@@ -109,7 +109,7 @@
       "defaultValue": "true",
       "required": false,
       "variableMode": "UseVarOrInput",
-      "condition": "",
+      "condition": "仅：object.set_hidden, object.set_locked, layer.set_visible, layer.set_locked",
       "description": ""
     },
     {
@@ -119,7 +119,7 @@
       "defaultValue": "10",
       "required": false,
       "variableMode": "UseVarOrInput",
-      "condition": "",
+      "condition": "仅：object.translate",
       "description": ""
     },
     {
@@ -129,7 +129,7 @@
       "defaultValue": "0",
       "required": false,
       "variableMode": "UseVarOrInput",
-      "condition": "",
+      "condition": "仅：object.translate",
       "description": ""
     },
     {
@@ -139,7 +139,7 @@
       "defaultValue": "15",
       "required": false,
       "variableMode": "UseVarOrInput",
-      "condition": "",
+      "condition": "仅：object.rotate",
       "description": ""
     },
     {
@@ -149,7 +149,7 @@
       "defaultValue": "120",
       "required": false,
       "variableMode": "UseVarOrInput",
-      "condition": "",
+      "condition": "仅：object.resize",
       "description": ""
     },
     {
@@ -159,7 +159,7 @@
       "defaultValue": "120",
       "required": false,
       "variableMode": "UseVarOrInput",
-      "condition": "",
+      "condition": "仅：object.resize",
       "description": ""
     },
     {
@@ -169,7 +169,7 @@
       "defaultValue": "120",
       "required": false,
       "variableMode": "UseVarOrInput",
-      "condition": "",
+      "condition": "仅：object.resize",
       "description": ""
     },
     {
@@ -179,7 +179,7 @@
       "defaultValue": "50",
       "required": false,
       "variableMode": "UseVarOrInput",
-      "condition": "",
+      "condition": "仅：object.set_opacity",
       "description": ""
     },
     {
@@ -189,7 +189,7 @@
       "defaultValue": "0",
       "required": false,
       "variableMode": "UseVarOrInput",
-      "condition": "",
+      "condition": "仅：layer.activate, layer.rename, layer.set_visible, layer.set_locked, artboard.activate, artboard.fit_selection",
       "description": ""
     },
     {
@@ -199,7 +199,7 @@
       "defaultValue": "Quicker 图层",
       "required": false,
       "variableMode": "UseVarOrInput",
-      "condition": "",
+      "condition": "仅：layer.create, layer.rename",
       "description": ""
     },
     {
@@ -209,7 +209,7 @@
       "defaultValue": "Quicker 文本",
       "required": false,
       "variableMode": "UseVarOrInput",
-      "condition": "",
+      "condition": "仅：text.create",
       "description": ""
     },
     {
@@ -219,7 +219,7 @@
       "defaultValue": "[100,100]",
       "required": false,
       "variableMode": "UseVarOrInput",
-      "condition": "",
+      "condition": "仅：text.create",
       "description": ""
     },
     {
@@ -229,7 +229,7 @@
       "defaultValue": "24",
       "required": false,
       "variableMode": "UseVarOrInput",
-      "condition": "",
+      "condition": "仅：text.create",
       "description": ""
     },
     {
@@ -239,7 +239,7 @@
       "defaultValue": "旧文字",
       "required": false,
       "variableMode": "UseVarOrInput",
-      "condition": "",
+      "condition": "仅：text.replace",
       "description": ""
     },
     {
@@ -249,7 +249,7 @@
       "defaultValue": "新文字",
       "required": false,
       "variableMode": "UseVarOrInput",
-      "condition": "",
+      "condition": "仅：text.replace",
       "description": ""
     },
     {
@@ -259,7 +259,7 @@
       "defaultValue": "Fit Artboard to selected Art",
       "required": false,
       "variableMode": "UseVarOrInput",
-      "condition": "",
+      "condition": "仅：menu.execute",
       "description": ""
     },
     {
@@ -269,7 +269,7 @@
       "defaultValue": "app.documents.length",
       "required": false,
       "variableMode": "UseVarOrInput",
-      "condition": "",
+      "condition": "仅：script.evaluate",
       "description": ""
     },
     {
@@ -279,7 +279,7 @@
       "defaultValue": "T:\\TEMP\\illustrator-script.jsx",
       "required": false,
       "variableMode": "UseVarOrInput",
-      "condition": "",
+      "condition": "仅：script.run_file",
       "description": ""
     },
     {
@@ -289,7 +289,7 @@
       "defaultValue": "",
       "required": true,
       "variableMode": "UseVarOrInput",
-      "condition": "",
+      "condition": "仅：command.custom",
       "description": ""
     },
     {
@@ -299,7 +299,7 @@
       "defaultValue": "{}",
       "required": false,
       "variableMode": "UseVarOrInput",
-      "condition": "",
+      "condition": "仅：command.custom",
       "description": ""
     },
     {

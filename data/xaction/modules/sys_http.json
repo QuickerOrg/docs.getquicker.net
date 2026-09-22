@@ -59,7 +59,7 @@
       "defaultValue": "JSON",
       "required": false,
       "variableMode": "Input",
-      "condition": "排除：GET, HEAD, OPTIONS",
+      "condition": "仅：POST, PUT, DELETE, PATCH",
       "description": "Http 请求体的内容"
     },
     {
@@ -69,7 +69,7 @@
       "defaultValue": "",
       "required": false,
       "variableMode": "UseVarOrInput",
-      "condition": "排除：GET, HEAD, OPTIONS",
+      "condition": "仅：POST, PUT, DELETE, PATCH",
       "description": "Http 请求 BODY。格式要求详见模块帮助。"
     },
     {
@@ -79,7 +79,7 @@
       "defaultValue": "",
       "required": false,
       "variableMode": "UseVarOrInput",
-      "condition": "排除：GET, HEAD, OPTIONS",
+      "condition": "仅：POST, PUT, DELETE, PATCH",
       "description": "选填。上传内容的ContentType，适用于\"单个文件或图片变量（二进制）\"或\"纯文本\" 请求体类型。"
     },
     {

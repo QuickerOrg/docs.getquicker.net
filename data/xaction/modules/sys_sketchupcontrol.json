@@ -4,7 +4,7 @@
   "legacySlug": "sketchupcontrol",
   "ownsLegacyContent": true,
   "name": "SketchUp控制",
-  "description": "通过 SketchUp Ruby 扩展向动作触发时的前台实例发送命令。",
+  "description": "通过 SketchUp Ruby 扩展发送命令；仅有一个在线连接时直接使用，多个连接时按动作触发窗口定位。",
   "category": "SoftInteraction",
   "categoryName": "第三方软件交互",
   "stepType": "Action",
@@ -20,7 +20,7 @@
       "required": true,
       "variableMode": "Input",
       "condition": "",
-      "description": "发送给动作触发时前台 SketchUp 实例的命令。"
+      "description": "发送给选定 SketchUp 连接的命令；多个连接时按动作触发窗口定位。"
     },
     {
       "key": "commonCategory",

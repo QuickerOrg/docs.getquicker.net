@@ -1,6 +1,6 @@
 ---
 title: "Premiere Pro控制"
-description: "通过 Premiere Pro Bridge 调用宿主能力，包含连接验证、目标规则和使用限制。"
+description: "通过 Premiere UXP 插件调用项目、序列、时间线、媒体、标记和脚本能力。"
 slug: "/v2/xaction/modules/premierecontrol"
 sidebar_label: "Premiere Pro控制"
 sidebar_position: 200
@@ -8,7 +8,7 @@ quickerDocKey: "xaction/module/sys:premierecontrol"
 comments: true
 moduleKey: "sys:premierecontrol"
 docStatus: "reviewed"
-metadataGeneratedAt: "2026-09-04 07:37:19"
+metadataGeneratedAt: "2026-09-20 15:25:17"
 ---
 
 # Premiere Pro控制

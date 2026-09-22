@@ -1,0 +1,65 @@
+{
+  "key": "sys:log",
+  "slug": "log",
+  "legacySlug": "log",
+  "ownsLegacyContent": true,
+  "name": "输出日志",
+  "description": "记录动作运行中的信息，供后续查看和排查问题。通常只需填写内容，时间、动作和步骤信息由 Quicker 自动补充并统一管理。",
+  "category": "Basic",
+  "categoryName": "基础",
+  "stepType": "Action",
+  "isRisky": false,
+  "isProOnly": false,
+  "helpLink": "",
+  "inputs": [
+    {
+      "key": "message",
+      "name": "内容",
+      "type": "Text",
+      "defaultValue": "",
+      "required": true,
+      "variableMode": "UseVarOrInput",
+      "condition": "",
+      "description": "要记录的内容，支持变量、表达式和插值文本。无需拼接时间或动作信息。"
+    },
+    {
+      "key": "level",
+      "name": "级别",
+      "type": "Enum",
+      "defaultValue": "info",
+      "required": false,
+      "variableMode": "UseVarOrInput",
+      "condition": "",
+      "description": "默认记录信息。警告和错误只标记日志级别，不会中止动作；调试日志仅在调试运行时记录，普通运行时不计算内容。"
+    }
+  ],
+  "outputs": [],
+  "selections": {
+    "level": {
+      "name": "级别",
+      "items": [
+        {
+          "value": "info",
+          "name": "信息",
+          "description": ""
+        },
+        {
+          "value": "warning",
+          "name": "警告",
+          "description": ""
+        },
+        {
+          "value": "error",
+          "name": "错误",
+          "description": ""
+        },
+        {
+          "value": "debug",
+          "name": "调试",
+          "description": ""
+        }
+      ]
+    }
+  },
+  "sourceFileName": "sys_log_输出日志.md"
+}

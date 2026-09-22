@@ -89,7 +89,7 @@
       "defaultValue": "",
       "required": false,
       "variableMode": "UseVarOrInput",
-      "condition": "排除：CUSTOM, CMD_C, CMD_H, CMD_K",
+      "condition": "仅：BAT, CMD_F, PS, AHK",
       "description": "为脚本传递的参数。将会被追加到运行脚本的命令行中。"
     },
     {

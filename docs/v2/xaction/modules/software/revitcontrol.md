@@ -1,6 +1,6 @@
 ---
 title: "Revit控制"
-description: "通过 Revit Bridge 调用宿主能力，包含连接验证、目标规则和使用限制。"
+description: "通过 Revit Add-in 调用项目、选择、元素、参数、视图和 C# 脚本能力"
 slug: "/v2/xaction/modules/revitcontrol"
 sidebar_label: "Revit控制"
 sidebar_position: 210
@@ -8,7 +8,7 @@ quickerDocKey: "xaction/module/sys:revitcontrol"
 comments: true
 moduleKey: "sys:revitcontrol"
 docStatus: "reviewed"
-metadataGeneratedAt: "2026-09-04 07:37:19"
+metadataGeneratedAt: "2026-09-20 15:25:17"
 ---
 
 # Revit控制

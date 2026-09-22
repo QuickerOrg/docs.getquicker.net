@@ -29,7 +29,7 @@
       "defaultValue": "",
       "required": false,
       "variableMode": "UseVarOrInput",
-      "condition": "排除：key_keydown_v1, key_keyup_v1",
+      "condition": "仅：get_key_state, key_down, key_up",
       "description": "要操作或检查状态的按键(单个)。获取状态可使用鼠标键；如需发送真实鼠标事件，请使用“鼠标输入”步骤。"
     },
     {

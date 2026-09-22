@@ -1,6 +1,6 @@
 ---
 title: "CorelDRAW控制"
-description: "通过 CorelDRAW Bridge 调用宿主能力，包含连接验证、目标规则和使用限制。"
+description: "通过 CorelDRAW Add-on 调用文档、页面、选择、对象、图层、视图和脚本能力"
 slug: "/v2/xaction/modules/coreldrawcontrol"
 sidebar_label: "CorelDRAW控制"
 sidebar_position: 110
@@ -8,7 +8,7 @@ quickerDocKey: "xaction/module/sys:coreldrawcontrol"
 comments: true
 moduleKey: "sys:coreldrawcontrol"
 docStatus: "reviewed"
-metadataGeneratedAt: "2026-09-04 07:37:19"
+metadataGeneratedAt: "2026-09-20 15:25:17"
 ---
 
 # CorelDRAW控制

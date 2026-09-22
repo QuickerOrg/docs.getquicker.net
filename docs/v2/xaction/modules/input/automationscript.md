@@ -110,6 +110,32 @@ if (match !== null) {
 - 返回的文字、图片和颜色匹配项含 `x`、`y`、`bounds`、`target`。把目标相对点交给 `mouse.click()` 时，Quicker 会在输入前重新解析窗口位置；窗口移动后仍点击新的屏幕位置，窗口身份变化或目标越界时则失败关闭。
 - 需要复用图片时，可从 `"quicker/vision"` 导入 `capture`、`image`、`ocr`：`capture.screen()` / `capture.window(app)` 截图，`image.crop()`、`image.findColor()`、`image.findTemplate()` 处理图片，完成后用 `image.dispose()` 释放。
 
+### 打开截图 Pro
+
+2.2.19 起，可从 `"quicker/capture"` 导入 `capturePro`，打开交互式截图 Pro 并同步等待结束：
+
+```javascript
+import { capturePro } from "quicker/capture";
+
+const result = capturePro.open({
+  region: { left: 100, top: 100, width: 800, height: 500 }
+});
+
+export default result === null
+  ? { cancelled: true }
+  : {
+      cancelled: false,
+      rect: result.rect,
+      endKind: result.endKind,
+      savedPath: result.savedPath
+    };
+```
+
+- 省略 `region` 时正常手动选区；指定物理像素区域时，直接进入可调整和标注状态。
+- 用户按 Esc 或关闭截图层时返回 `null`。
+- 成功时返回最终区域 `rect`、结束方式 `endKind` 及可能的 `savedPath`；不直接返回图片对象。
+- 脚本超时包含用户交互时间。需要手动选区或标注时，建议把步骤超时设为约 120 秒或按实际流程调整。
+
 ## 坐标和点
 
 坐标使用整个 Windows 虚拟桌面的物理像素：主屏左上角通常是 `(0, 0)`，左侧或上方的副屏可能出现负坐标。X 向右增大，Y 向下增大。

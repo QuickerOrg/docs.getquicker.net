@@ -29,7 +29,7 @@
       "defaultValue": "Quicker 合成",
       "required": true,
       "variableMode": "UseVarOrInput",
-      "condition": "",
+      "condition": "仅：composition.create",
       "description": ""
     },
     {
@@ -39,7 +39,7 @@
       "defaultValue": "",
       "required": false,
       "variableMode": "UseVarOrInput",
-      "condition": "",
+      "condition": "仅：layer.add_text, text.replace, composition.save_frame_png",
       "description": ""
     },
     {
@@ -49,7 +49,7 @@
       "defaultValue": "1920",
       "required": false,
       "variableMode": "UseVarOrInput",
-      "condition": "",
+      "condition": "仅：composition.create, layer.add_solid",
       "description": ""
     },
     {
@@ -59,7 +59,7 @@
       "defaultValue": "1080",
       "required": false,
       "variableMode": "UseVarOrInput",
-      "condition": "",
+      "condition": "仅：composition.create, layer.add_solid",
       "description": ""
     },
     {
@@ -69,7 +69,7 @@
       "defaultValue": "1",
       "required": false,
       "variableMode": "UseVarOrInput",
-      "condition": "",
+      "condition": "仅：composition.create, layer.add_solid",
       "description": ""
     },
     {
@@ -79,7 +79,7 @@
       "defaultValue": "10",
       "required": false,
       "variableMode": "UseVarOrInput",
-      "condition": "",
+      "condition": "仅：composition.create, layer.add_solid, layer.add_null",
       "description": ""
     },
     {
@@ -89,7 +89,7 @@
       "defaultValue": "25",
       "required": false,
       "variableMode": "UseVarOrInput",
-      "condition": "",
+      "condition": "仅：composition.create",
       "description": ""
     },
     {
@@ -99,7 +99,7 @@
       "defaultValue": "",
       "required": false,
       "variableMode": "UseVarOrInput",
-      "condition": "",
+      "condition": "仅：footage.replace, render_queue.configure, composition.save_frame_png",
       "description": ""
     },
     {
@@ -109,7 +109,7 @@
       "defaultValue": "[]",
       "required": false,
       "variableMode": "UseVarOrInput",
-      "condition": "",
+      "condition": "仅：project.import_files",
       "description": ""
     },
     {
@@ -119,7 +119,7 @@
       "defaultValue": "0",
       "required": false,
       "variableMode": "UseVarOrInput",
-      "condition": "",
+      "condition": "仅：footage.replace, footage.reload",
       "description": ""
     },
     {
@@ -129,7 +129,7 @@
       "defaultValue": "false",
       "required": false,
       "variableMode": "UseVarOrInput",
-      "condition": "",
+      "condition": "仅：footage.replace",
       "description": ""
     },
     {
@@ -139,7 +139,7 @@
       "defaultValue": "[]",
       "required": false,
       "variableMode": "UseVarOrInput",
-      "condition": "",
+      "condition": "仅：project.item_move_to_folder",
       "description": ""
     },
     {
@@ -149,7 +149,7 @@
       "defaultValue": "0",
       "required": false,
       "variableMode": "UseVarOrInput",
-      "condition": "",
+      "condition": "仅：project.item_move_to_folder",
       "description": ""
     },
     {
@@ -159,7 +159,7 @@
       "defaultValue": "0",
       "required": false,
       "variableMode": "UseVarOrInput",
-      "condition": "",
+      "condition": "仅：project.folder_create",
       "description": ""
     },
     {
@@ -169,7 +169,7 @@
       "defaultValue": "",
       "required": false,
       "variableMode": "UseVarOrInput",
-      "condition": "",
+      "condition": "仅：project.folder_create, layer.add_text, layer.duplicate, layer.precompose, layer.add_solid, layer.add_null, layer.add_shape, layer.add_camera, layer.add_light",
       "description": ""
     },
     {
@@ -179,7 +179,7 @@
       "defaultValue": "0",
       "required": false,
       "variableMode": "UseVarOrInput",
-      "condition": "",
+      "condition": "仅：layer.add_text, text.replace, composition.save_frame_png",
       "description": ""
     },
     {
@@ -189,7 +189,7 @@
       "defaultValue": "1",
       "required": false,
       "variableMode": "UseVarOrInput",
-      "condition": "",
+      "condition": "仅：render_queue.template_list, render_queue.configure, render_queue.remove",
       "description": ""
     },
     {
@@ -199,7 +199,7 @@
       "defaultValue": "",
       "required": false,
       "variableMode": "UseVarOrInput",
-      "condition": "",
+      "condition": "仅：render_queue.configure",
       "description": ""
     },
     {
@@ -209,7 +209,7 @@
       "defaultValue": "",
       "required": false,
       "variableMode": "UseVarOrInput",
-      "condition": "",
+      "condition": "仅：render_queue.configure",
       "description": ""
     },
     {
@@ -219,7 +219,7 @@
       "defaultValue": "",
       "required": false,
       "variableMode": "UseVarOrInput",
-      "condition": "",
+      "condition": "仅：render_queue.configure",
       "description": ""
     },
     {
@@ -229,7 +229,7 @@
       "defaultValue": "0",
       "required": false,
       "variableMode": "UseVarOrInput",
-      "condition": "",
+      "condition": "仅：text.get, text.set, layer.duplicate, layer.set_timing, layer.set_transform, layer.move, property.get, property.set_value, property.set_keyframes, property.remove_keyframes, property.easy_ease, property.set_expression",
       "description": ""
     },
     {
@@ -239,7 +239,7 @@
       "defaultValue": "1",
       "required": false,
       "variableMode": "UseVarOrInput",
-      "condition": "",
+      "condition": "仅：text.get, text.set, layer.duplicate, layer.set_timing, layer.set_transform, layer.move, property.get, property.set_value, property.set_keyframes, property.remove_keyframes, property.easy_ease, property.set_expression",
       "description": ""
     },
     {
@@ -249,7 +249,7 @@
       "defaultValue": "[]",
       "required": false,
       "variableMode": "UseVarOrInput",
-      "condition": "",
+      "condition": "仅：layer.precompose",
       "description": ""
     },
     {
@@ -259,7 +259,7 @@
       "defaultValue": "[1]",
       "required": false,
       "variableMode": "UseVarOrInput",
-      "condition": "",
+      "condition": "仅：layer.precompose",
       "description": ""
     },
     {
@@ -269,7 +269,7 @@
       "defaultValue": "true",
       "required": false,
       "variableMode": "UseVarOrInput",
-      "condition": "",
+      "condition": "仅：layer.precompose",
       "description": ""
     },
     {
@@ -289,7 +289,7 @@
       "defaultValue": "0",
       "required": false,
       "variableMode": "UseVarOrInput",
-      "condition": "",
+      "condition": "仅：layer.move",
       "description": ""
     },
     {
@@ -299,7 +299,7 @@
       "defaultValue": "1",
       "required": false,
       "variableMode": "UseVarOrInput",
-      "condition": "",
+      "condition": "仅：layer.move",
       "description": ""
     },
     {
@@ -309,7 +309,7 @@
       "defaultValue": "Quicker 文本",
       "required": false,
       "variableMode": "UseVarOrInput",
-      "condition": "",
+      "condition": "仅：layer.add_text, text.set",
       "description": ""
     },
     {
@@ -319,7 +319,7 @@
       "defaultValue": "",
       "required": false,
       "variableMode": "UseVarOrInput",
-      "condition": "",
+      "condition": "仅：text.replace",
       "description": ""
     },
     {
@@ -329,7 +329,7 @@
       "defaultValue": "",
       "required": false,
       "variableMode": "UseVarOrInput",
-      "condition": "",
+      "condition": "仅：text.replace",
       "description": ""
     },
     {
@@ -339,7 +339,7 @@
       "defaultValue": "false",
       "required": false,
       "variableMode": "UseVarOrInput",
-      "condition": "",
+      "condition": "仅：text.replace",
       "description": ""
     },
     {
@@ -349,7 +349,7 @@
       "defaultValue": "",
       "required": false,
       "variableMode": "UseVarOrInput",
-      "condition": "",
+      "condition": "仅：layer.add_text, text.set",
       "description": ""
     },
     {
@@ -359,7 +359,7 @@
       "defaultValue": "0",
       "required": false,
       "variableMode": "UseVarOrInput",
-      "condition": "",
+      "condition": "仅：layer.add_text, text.set",
       "description": ""
     },
     {
@@ -369,7 +369,7 @@
       "defaultValue": "null",
       "required": false,
       "variableMode": "UseVarOrInput",
-      "condition": "",
+      "condition": "仅：layer.add_text, text.set",
       "description": ""
     },
     {
@@ -379,7 +379,7 @@
       "defaultValue": "[1,0,0]",
       "required": false,
       "variableMode": "UseVarOrInput",
-      "condition": "",
+      "condition": "仅：layer.add_solid",
       "description": ""
     },
     {
@@ -389,7 +389,7 @@
       "defaultValue": "null",
       "required": false,
       "variableMode": "UseVarOrInput",
-      "condition": "",
+      "condition": "仅：layer.add_text, layer.set_transform, layer.add_camera, layer.add_light",
       "description": ""
     },
     {
@@ -399,7 +399,7 @@
       "defaultValue": "null",
       "required": false,
       "variableMode": "UseVarOrInput",
-      "condition": "",
+      "condition": "仅：layer.set_transform",
       "description": ""
     },
     {
@@ -409,7 +409,7 @@
       "defaultValue": "null",
       "required": false,
       "variableMode": "UseVarOrInput",
-      "condition": "",
+      "condition": "仅：layer.set_transform",
       "description": ""
     },
     {
@@ -419,7 +419,7 @@
       "defaultValue": "",
       "required": false,
       "variableMode": "UseVarOrInput",
-      "condition": "",
+      "condition": "仅：layer.set_transform",
       "description": ""
     },
     {
@@ -429,7 +429,7 @@
       "defaultValue": "",
       "required": false,
       "variableMode": "UseVarOrInput",
-      "condition": "",
+      "condition": "仅：layer.set_transform",
       "description": ""
     },
     {
@@ -439,7 +439,7 @@
       "defaultValue": "0",
       "required": false,
       "variableMode": "UseVarOrInput",
-      "condition": "",
+      "condition": "仅：layer.set_transform, composition.save_frame_png, property.set_value",
       "description": ""
     },
     {
@@ -459,7 +459,7 @@
       "defaultValue": "",
       "required": false,
       "variableMode": "UseVarOrInput",
-      "condition": "",
+      "condition": "仅：layer.set_timing",
       "description": ""
     },
     {
@@ -469,7 +469,7 @@
       "defaultValue": "",
       "required": false,
       "variableMode": "UseVarOrInput",
-      "condition": "",
+      "condition": "仅：layer.set_timing",
       "description": ""
     },
     {
@@ -479,7 +479,7 @@
       "defaultValue": "",
       "required": false,
       "variableMode": "UseVarOrInput",
-      "condition": "",
+      "condition": "仅：layer.set_timing",
       "description": ""
     },
     {
@@ -489,7 +489,7 @@
       "defaultValue": "",
       "required": false,
       "variableMode": "UseVarOrInput",
-      "condition": "",
+      "condition": "仅：layer.set_timing",
       "description": ""
     },
     {
@@ -499,7 +499,7 @@
       "defaultValue": "[\"ADBE Transform Group\",\"ADBE Position\"]",
       "required": false,
       "variableMode": "UseVarOrInput",
-      "condition": "",
+      "condition": "仅：property.get, property.set_value, property.set_keyframes, property.remove_keyframes, property.easy_ease, property.set_expression",
       "description": ""
     },
     {
@@ -509,7 +509,7 @@
       "defaultValue": "[960,540]",
       "required": false,
       "variableMode": "UseVarOrInput",
-      "condition": "",
+      "condition": "仅：property.set_value",
       "description": ""
     },
     {
@@ -519,7 +519,7 @@
       "defaultValue": "[0,1]",
       "required": false,
       "variableMode": "UseVarOrInput",
-      "condition": "",
+      "condition": "仅：property.set_keyframes",
       "description": ""
     },
     {
@@ -529,7 +529,7 @@
       "defaultValue": "[]",
       "required": false,
       "variableMode": "UseVarOrInput",
-      "condition": "",
+      "condition": "仅：property.set_keyframes",
       "description": ""
     },
     {
@@ -539,7 +539,7 @@
       "defaultValue": "[]",
       "required": false,
       "variableMode": "UseVarOrInput",
-      "condition": "",
+      "condition": "仅：property.remove_keyframes, property.easy_ease",
       "description": ""
     },
     {
@@ -549,7 +549,7 @@
       "defaultValue": "33.333",
       "required": false,
       "variableMode": "UseVarOrInput",
-      "condition": "",
+      "condition": "仅：property.easy_ease",
       "description": ""
     },
     {
@@ -559,7 +559,7 @@
       "defaultValue": "wiggle(2,20)",
       "required": false,
       "variableMode": "UseVarOrInput",
-      "condition": "",
+      "condition": "仅：property.set_expression",
       "description": ""
     },
     {
@@ -569,7 +569,7 @@
       "defaultValue": "true",
       "required": false,
       "variableMode": "UseVarOrInput",
-      "condition": "",
+      "condition": "仅：property.set_expression",
       "description": ""
     },
     {
@@ -579,7 +579,7 @@
       "defaultValue": "app.project.numItems",
       "required": true,
       "variableMode": "UseVarOrInput",
-      "condition": "",
+      "condition": "仅：script.evaluate",
       "description": ""
     },
     {
@@ -589,7 +589,7 @@
       "defaultValue": "",
       "required": false,
       "variableMode": "UseVarOrInput",
-      "condition": "",
+      "condition": "仅：script.evaluate",
       "description": "非空时用一个 AE Undo Group 包装脚本。"
     },
     {
@@ -599,7 +599,7 @@
       "defaultValue": "",
       "required": true,
       "variableMode": "UseVarOrInput",
-      "condition": "",
+      "condition": "仅：script.run_file",
       "description": ""
     },
     {
@@ -609,7 +609,7 @@
       "defaultValue": "",
       "required": true,
       "variableMode": "UseVarOrInput",
-      "condition": "",
+      "condition": "仅：command.custom",
       "description": ""
     },
     {
@@ -619,7 +619,7 @@
       "defaultValue": "{}",
       "required": false,
       "variableMode": "UseVarOrInput",
-      "condition": "",
+      "condition": "仅：command.custom",
       "description": ""
     },
     {

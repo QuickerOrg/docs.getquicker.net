@@ -59,7 +59,7 @@
       "defaultValue": "",
       "required": false,
       "variableMode": "UseVarOnly",
-      "condition": "仅：getSheetByIndex, getSheetByName, getSheet, createSheet, save, readData, addNames",
+      "condition": "仅：save, getSheet, getSheetByIndex, getSheetByName, createSheet, readData, addNames",
       "description": "需要操作的工作簿对象"
     },
     {
@@ -69,7 +69,7 @@
       "defaultValue": "",
       "required": false,
       "variableMode": "UseVarOrInput",
-      "condition": "仅：getSheetByIndex, getSheet",
+      "condition": "仅：getSheet, getSheetByIndex",
       "description": "以0开始计算的序号或名称"
     },
     {
@@ -139,7 +139,7 @@
       "defaultValue": "",
       "required": false,
       "variableMode": "UseVarOnly",
-      "condition": "仅：getRow, getCell, batchReplace, setCell, writeData, mergeCells, setStyle, freezePane, autoFilter, getCellByValue",
+      "condition": "仅：getRow, getCellByValue, getCell, setCell, writeData, mergeCells, freezePane, autoFilter, setStyle, batchReplace",
       "description": "需要操作或读写的工作表对象"
     },
     {
@@ -159,7 +159,7 @@
       "defaultValue": "",
       "required": false,
       "variableMode": "UseVarOrInput",
-      "condition": "仅：mergeCells, setStyle, autoFilter",
+      "condition": "仅：mergeCells, autoFilter, setStyle",
       "description": "类似于\"A1:B5\"格式，或\"开始行号,结束行号,开始列号,结束列号\"方式(从0开始的序号)。"
     },
     {
@@ -209,7 +209,7 @@
       "defaultValue": "",
       "required": false,
       "variableMode": "UseVarOrInput",
-      "condition": "仅：setCell, getCellByValue",
+      "condition": "仅：getCellByValue, setCell",
       "description": "设置单元格的值"
     },
     {
@@ -296,21 +296,21 @@
       "key": "sheet",
       "name": "工作表对象",
       "type": "Object",
-      "condition": "仅：load, getSheetByIndex, getSheetByName, getSheet, createSheet",
+      "condition": "仅：load, getSheet, getSheetByIndex, getSheetByName, createSheet",
       "description": "返回指定的工作表。加载文件时返回工作簿中的第一个工作表对象"
     },
     {
       "key": "firstRow",
       "name": "首行序号",
       "type": "Integer",
-      "condition": "仅：load, getSheetByIndex, getSheetByName, getSheet, getCellByValue",
+      "condition": "仅：load, getSheet, getSheetByIndex, getSheetByName, getCellByValue",
       "description": "工作表首行序号（从0开始）。"
     },
     {
       "key": "lastRow",
       "name": "末行序号",
       "type": "Integer",
-      "condition": "仅：load, getSheetByIndex, getSheetByName, getSheet",
+      "condition": "仅：load, getSheet, getSheetByIndex, getSheetByName",
       "description": "工作表有内容的最后一行序号（从0开始）。"
     },
     {
@@ -338,7 +338,7 @@
       "key": "maxColumnNum",
       "name": "最大列序号",
       "type": "Integer",
-      "condition": "仅：load, getSheetByIndex, getSheetByName, getSheet",
+      "condition": "仅：load, getSheet, getSheetByIndex, getSheetByName",
       "description": "工作表的最大列序号（从0开始）。"
     },
     {

@@ -1,0 +1,974 @@
+{
+  "key": "sys:mastercamcontrol",
+  "slug": "mastercamcontrol",
+  "legacySlug": "mastercamcontrol",
+  "ownsLegacyContent": true,
+  "name": "Mastercam控制",
+  "description": "通过 Mastercam 2024/2027 NET-Hook 发送命令；仅有一个在线连接时直接使用，多个连接时按动作触发窗口定位。",
+  "category": "SoftInteraction",
+  "categoryName": "第三方软件交互",
+  "stepType": "Action",
+  "isRisky": false,
+  "isProOnly": false,
+  "helpLink": "https://docs.getquicker.net/v2/xaction/modules/mastercamcontrol",
+  "inputs": [
+    {
+      "key": "operation",
+      "name": "操作类型",
+      "type": "Enum",
+      "defaultValue": "common",
+      "required": true,
+      "variableMode": "Input",
+      "condition": "",
+      "description": ""
+    },
+    {
+      "key": "commonCategory",
+      "name": "功能分类",
+      "type": "Enum",
+      "defaultValue": "document",
+      "required": true,
+      "variableMode": "Input",
+      "condition": "仅：common",
+      "description": ""
+    },
+    {
+      "key": "documentOperation",
+      "name": "文档功能",
+      "type": "Enum",
+      "defaultValue": "document.get_context",
+      "required": true,
+      "variableMode": "Input",
+      "condition": "",
+      "description": ""
+    },
+    {
+      "key": "selectionOperation",
+      "name": "选择功能",
+      "type": "Enum",
+      "defaultValue": "selection.get_summary",
+      "required": true,
+      "variableMode": "Input",
+      "condition": "",
+      "description": ""
+    },
+    {
+      "key": "viewOperation",
+      "name": "视图功能",
+      "type": "Enum",
+      "defaultValue": "view.fit",
+      "required": true,
+      "variableMode": "Input",
+      "condition": "",
+      "description": ""
+    },
+    {
+      "key": "levelOperation",
+      "name": "图层功能",
+      "type": "Enum",
+      "defaultValue": "level.list",
+      "required": true,
+      "variableMode": "Input",
+      "condition": "",
+      "description": ""
+    },
+    {
+      "key": "geometryOperation",
+      "name": "几何功能",
+      "type": "Enum",
+      "defaultValue": "geometry.get_summary",
+      "required": true,
+      "variableMode": "Input",
+      "condition": "",
+      "description": ""
+    },
+    {
+      "key": "camOperation",
+      "name": "CAM 功能",
+      "type": "Enum",
+      "defaultValue": "cam.get_summary",
+      "required": true,
+      "variableMode": "Input",
+      "condition": "",
+      "description": ""
+    },
+    {
+      "key": "uiOperation",
+      "name": "界面功能",
+      "type": "Enum",
+      "defaultValue": "ui.ft.list",
+      "required": true,
+      "variableMode": "Input",
+      "condition": "",
+      "description": ""
+    },
+    {
+      "key": "commonDocumentPath",
+      "name": "文档路径",
+      "type": "Text",
+      "defaultValue": "",
+      "required": true,
+      "variableMode": "UseVarOrInput",
+      "condition": "",
+      "description": "打开或另存为的绝对文件路径。"
+    },
+    {
+      "key": "commonOverwriteFile",
+      "name": "允许覆盖已有文件",
+      "type": "Boolean",
+      "defaultValue": "false",
+      "required": false,
+      "variableMode": "Input",
+      "condition": "",
+      "description": ""
+    },
+    {
+      "key": "acknowledgeDiscard",
+      "name": "确认已保存或允许放弃当前修改",
+      "type": "Boolean",
+      "defaultValue": "false",
+      "required": false,
+      "variableMode": "Input",
+      "condition": "",
+      "description": ""
+    },
+    {
+      "key": "commonCapturePath",
+      "name": "图片路径",
+      "type": "Text",
+      "defaultValue": "",
+      "required": true,
+      "variableMode": "UseVarOrInput",
+      "condition": "",
+      "description": "保存图形区图片的绝对 .bmp 路径。"
+    },
+    {
+      "key": "commonCaptureOverwrite",
+      "name": "允许覆盖已有图片",
+      "type": "Boolean",
+      "defaultValue": "false",
+      "required": false,
+      "variableMode": "Input",
+      "condition": "",
+      "description": ""
+    },
+    {
+      "key": "selectionLevelNumber",
+      "name": "图层编号",
+      "type": "Integer",
+      "defaultValue": "1",
+      "required": true,
+      "variableMode": "Input",
+      "condition": "",
+      "description": ""
+    },
+    {
+      "key": "geometryType",
+      "name": "几何类型",
+      "type": "Enum",
+      "defaultValue": "Lines",
+      "required": true,
+      "variableMode": "Input",
+      "condition": "",
+      "description": ""
+    },
+    {
+      "key": "clearExistingSelection",
+      "name": "替换当前选择",
+      "type": "Boolean",
+      "defaultValue": "true",
+      "required": false,
+      "variableMode": "Input",
+      "condition": "",
+      "description": ""
+    },
+    {
+      "key": "commonLevelNumber",
+      "name": "图层编号",
+      "type": "Integer",
+      "defaultValue": "1",
+      "required": true,
+      "variableMode": "Input",
+      "condition": "",
+      "description": ""
+    },
+    {
+      "key": "commonLevelVisible",
+      "name": "图层可见",
+      "type": "Boolean",
+      "defaultValue": "true",
+      "required": false,
+      "variableMode": "Input",
+      "condition": "",
+      "description": ""
+    },
+    {
+      "key": "levelName",
+      "name": "图层名称",
+      "type": "Text",
+      "defaultValue": "",
+      "required": true,
+      "variableMode": "UseVarOrInput",
+      "condition": "",
+      "description": ""
+    },
+    {
+      "key": "commonX1",
+      "name": "起点 X",
+      "type": "Number",
+      "defaultValue": "0",
+      "required": false,
+      "variableMode": "UseVarOrInput",
+      "condition": "",
+      "description": ""
+    },
+    {
+      "key": "commonY1",
+      "name": "起点 Y",
+      "type": "Number",
+      "defaultValue": "0",
+      "required": false,
+      "variableMode": "UseVarOrInput",
+      "condition": "",
+      "description": ""
+    },
+    {
+      "key": "commonZ1",
+      "name": "起点 Z",
+      "type": "Number",
+      "defaultValue": "0",
+      "required": false,
+      "variableMode": "UseVarOrInput",
+      "condition": "",
+      "description": ""
+    },
+    {
+      "key": "commonX2",
+      "name": "终点 X",
+      "type": "Number",
+      "defaultValue": "10",
+      "required": false,
+      "variableMode": "UseVarOrInput",
+      "condition": "",
+      "description": ""
+    },
+    {
+      "key": "commonY2",
+      "name": "终点 Y",
+      "type": "Number",
+      "defaultValue": "0",
+      "required": false,
+      "variableMode": "UseVarOrInput",
+      "condition": "",
+      "description": ""
+    },
+    {
+      "key": "commonZ2",
+      "name": "终点 Z",
+      "type": "Number",
+      "defaultValue": "0",
+      "required": false,
+      "variableMode": "UseVarOrInput",
+      "condition": "",
+      "description": ""
+    },
+    {
+      "key": "commonX",
+      "name": "原点/圆心 X",
+      "type": "Number",
+      "defaultValue": "0",
+      "required": false,
+      "variableMode": "UseVarOrInput",
+      "condition": "",
+      "description": ""
+    },
+    {
+      "key": "commonY",
+      "name": "原点/圆心 Y",
+      "type": "Number",
+      "defaultValue": "0",
+      "required": false,
+      "variableMode": "UseVarOrInput",
+      "condition": "",
+      "description": ""
+    },
+    {
+      "key": "commonZ",
+      "name": "原点/圆心 Z",
+      "type": "Number",
+      "defaultValue": "0",
+      "required": false,
+      "variableMode": "UseVarOrInput",
+      "condition": "",
+      "description": ""
+    },
+    {
+      "key": "circleRadius",
+      "name": "半径",
+      "type": "Number",
+      "defaultValue": "10",
+      "required": false,
+      "variableMode": "UseVarOrInput",
+      "condition": "",
+      "description": ""
+    },
+    {
+      "key": "moveX",
+      "name": "移动 X",
+      "type": "Number",
+      "defaultValue": "10",
+      "required": false,
+      "variableMode": "UseVarOrInput",
+      "condition": "",
+      "description": ""
+    },
+    {
+      "key": "moveY",
+      "name": "移动 Y",
+      "type": "Number",
+      "defaultValue": "0",
+      "required": false,
+      "variableMode": "UseVarOrInput",
+      "condition": "",
+      "description": ""
+    },
+    {
+      "key": "moveZ",
+      "name": "移动 Z",
+      "type": "Number",
+      "defaultValue": "0",
+      "required": false,
+      "variableMode": "UseVarOrInput",
+      "condition": "",
+      "description": ""
+    },
+    {
+      "key": "angleDegrees",
+      "name": "旋转角度（度）",
+      "type": "Number",
+      "defaultValue": "90",
+      "required": false,
+      "variableMode": "UseVarOrInput",
+      "condition": "",
+      "description": ""
+    },
+    {
+      "key": "scaleFactor",
+      "name": "缩放比例",
+      "type": "Number",
+      "defaultValue": "2",
+      "required": false,
+      "variableMode": "UseVarOrInput",
+      "condition": "",
+      "description": ""
+    },
+    {
+      "key": "ftQuery",
+      "name": "搜索文字",
+      "type": "Text",
+      "defaultValue": "",
+      "required": false,
+      "variableMode": "UseVarOrInput",
+      "condition": "",
+      "description": "按命令名、界面名称或分类搜索；留空返回前 100 项。"
+    },
+    {
+      "key": "ftCommand",
+      "name": "Function Table 命令",
+      "type": "Text",
+      "defaultValue": "GSUnSelectAll",
+      "required": true,
+      "variableMode": "UseVarOrInput",
+      "condition": "",
+      "description": "先用“搜索可调用命令”查找命令名；部分命令会让 Mastercam 进入必须人工完成或取消的交互任务。"
+    },
+    {
+      "key": "waitForFtReturn",
+      "name": "等待界面命令完成",
+      "type": "Boolean",
+      "defaultValue": "false",
+      "required": false,
+      "variableMode": "Input",
+      "condition": "",
+      "description": "会打开窗口或进入交互状态的命令应关闭此项。"
+    },
+    {
+      "key": "acknowledgeUiRisk",
+      "name": "我确认执行该界面命令",
+      "type": "Boolean",
+      "defaultValue": "false",
+      "required": false,
+      "variableMode": "Input",
+      "condition": "",
+      "description": ""
+    },
+    {
+      "key": "ribbonPath",
+      "name": "Ribbon 命令路径",
+      "type": "Text",
+      "defaultValue": "FileTab.Save",
+      "required": true,
+      "variableMode": "UseVarOrInput",
+      "condition": "仅：ui.ribbon.run",
+      "description": "仅 Mastercam 2027，例如 FileTab.Save、Selection.SelectAllEntities。"
+    },
+    {
+      "key": "acknowledgeRibbonRisk",
+      "name": "我确认执行该 Ribbon 命令",
+      "type": "Boolean",
+      "defaultValue": "false",
+      "required": false,
+      "variableMode": "Input",
+      "condition": "仅：ui.ribbon.run",
+      "description": ""
+    },
+    {
+      "key": "filePath",
+      "name": "文件路径",
+      "type": "Text",
+      "defaultValue": "",
+      "required": true,
+      "variableMode": "UseVarOrInput",
+      "condition": "仅：document.save_as, view.capture_bitmap, script.run_net_file",
+      "description": "另存为使用 .mcam，图形区图片使用 .bmp，NET-Script 使用 .csx；均须填写绝对路径。"
+    },
+    {
+      "key": "overwriteFile",
+      "name": "允许覆盖已有文件",
+      "type": "Boolean",
+      "defaultValue": "false",
+      "required": false,
+      "variableMode": "Input",
+      "condition": "仅：document.save_as, view.capture_bitmap",
+      "description": ""
+    },
+    {
+      "key": "captureColor",
+      "name": "彩色图片",
+      "type": "Boolean",
+      "defaultValue": "true",
+      "required": false,
+      "variableMode": "Input",
+      "condition": "仅：view.capture_bitmap",
+      "description": ""
+    },
+    {
+      "key": "showViewAxes",
+      "name": "显示视图坐标轴",
+      "type": "Boolean",
+      "defaultValue": "true",
+      "required": false,
+      "variableMode": "Input",
+      "condition": "仅：view.capture_bitmap",
+      "description": ""
+    },
+    {
+      "key": "showWcsAxes",
+      "name": "显示 WCS 坐标轴",
+      "type": "Boolean",
+      "defaultValue": "true",
+      "required": false,
+      "variableMode": "Input",
+      "condition": "仅：view.capture_bitmap",
+      "description": ""
+    },
+    {
+      "key": "levelNumber",
+      "name": "图层编号",
+      "type": "Integer",
+      "defaultValue": "1",
+      "required": true,
+      "variableMode": "Input",
+      "condition": "仅：level.set_active, level.set_visible",
+      "description": ""
+    },
+    {
+      "key": "levelVisible",
+      "name": "图层可见",
+      "type": "Boolean",
+      "defaultValue": "true",
+      "required": false,
+      "variableMode": "Input",
+      "condition": "仅：level.set_visible",
+      "description": ""
+    },
+    {
+      "key": "scriptCode",
+      "name": "C# NET-Script",
+      "type": "Text",
+      "defaultValue": "// 使用当前 Mastercam 自带 NET-Scripting 支持的 .csx 语法",
+      "required": true,
+      "variableMode": "UseVarOrInput",
+      "condition": "仅：script.evaluate_net",
+      "description": "在目标 Mastercam 进程主线程执行，不提供安全沙箱，也不能强制中断已经开始运行的脚本；只运行可信代码。"
+    },
+    {
+      "key": "acknowledgeScriptRisk",
+      "name": "我确认脚本可信",
+      "type": "Boolean",
+      "defaultValue": "false",
+      "required": false,
+      "variableMode": "Input",
+      "condition": "仅：script.evaluate_net, script.run_net_file",
+      "description": "脚本拥有当前用户权限并可调用 Mastercam API；执行脚本前必须明确启用。"
+    },
+    {
+      "key": "x1",
+      "name": "起点 X",
+      "type": "Number",
+      "defaultValue": "0",
+      "required": false,
+      "variableMode": "UseVarOrInput",
+      "condition": "仅：geometry.create_line",
+      "description": ""
+    },
+    {
+      "key": "y1",
+      "name": "起点 Y",
+      "type": "Number",
+      "defaultValue": "0",
+      "required": false,
+      "variableMode": "UseVarOrInput",
+      "condition": "仅：geometry.create_line",
+      "description": ""
+    },
+    {
+      "key": "z1",
+      "name": "起点 Z",
+      "type": "Number",
+      "defaultValue": "0",
+      "required": false,
+      "variableMode": "UseVarOrInput",
+      "condition": "仅：geometry.create_line",
+      "description": ""
+    },
+    {
+      "key": "x2",
+      "name": "终点 X",
+      "type": "Number",
+      "defaultValue": "10",
+      "required": false,
+      "variableMode": "UseVarOrInput",
+      "condition": "仅：geometry.create_line",
+      "description": ""
+    },
+    {
+      "key": "y2",
+      "name": "终点 Y",
+      "type": "Number",
+      "defaultValue": "0",
+      "required": false,
+      "variableMode": "UseVarOrInput",
+      "condition": "仅：geometry.create_line",
+      "description": ""
+    },
+    {
+      "key": "z2",
+      "name": "终点 Z",
+      "type": "Number",
+      "defaultValue": "0",
+      "required": false,
+      "variableMode": "UseVarOrInput",
+      "condition": "仅：geometry.create_line",
+      "description": ""
+    },
+    {
+      "key": "commandName",
+      "name": "Bridge 命令名称",
+      "type": "Text",
+      "defaultValue": "",
+      "required": true,
+      "variableMode": "UseVarOrInput",
+      "condition": "仅：command.custom",
+      "description": ""
+    },
+    {
+      "key": "argumentsJson",
+      "name": "参数(JSON 对象)",
+      "type": "Text",
+      "defaultValue": "{}",
+      "required": false,
+      "variableMode": "UseVarOrInput",
+      "condition": "仅：command.custom",
+      "description": ""
+    },
+    {
+      "key": "waitMs",
+      "name": "最长等待时间(ms)",
+      "type": "Number",
+      "defaultValue": "30000",
+      "required": true,
+      "variableMode": "Input",
+      "condition": "",
+      "description": ""
+    },
+    {
+      "key": "stopIfFail",
+      "name": "失败后停止",
+      "type": "Boolean",
+      "defaultValue": "true",
+      "required": false,
+      "variableMode": "Input",
+      "condition": "",
+      "description": "失败后是否停止动作"
+    }
+  ],
+  "outputs": [
+    {
+      "key": "isSuccess",
+      "name": "是否成功",
+      "type": "Boolean",
+      "condition": "",
+      "description": "操作是否成功"
+    },
+    {
+      "key": "output",
+      "name": "命令结果",
+      "type": "Text",
+      "condition": "",
+      "description": "Mastercam 返回的 JSON 结果。"
+    },
+    {
+      "key": "count",
+      "name": "数量",
+      "type": "Integer",
+      "condition": "",
+      "description": ""
+    },
+    {
+      "key": "entityIds",
+      "name": "实体 ID 列表",
+      "type": "List",
+      "condition": "",
+      "description": ""
+    }
+  ],
+  "selections": {
+    "operation": {
+      "name": "操作类型",
+      "items": [
+        {
+          "value": "script.evaluate_net",
+          "name": "[脚本] 执行内联 NET-Script（高风险）",
+          "description": ""
+        },
+        {
+          "value": "script.run_net_file",
+          "name": "[脚本] 运行 NET-Script 文件（高风险）",
+          "description": ""
+        },
+        {
+          "value": "command.custom",
+          "name": "[高级] 发送自定义 Bridge 命令",
+          "description": ""
+        },
+        {
+          "value": "ui.ribbon.run",
+          "name": "[界面] 执行 Ribbon 命令（仅 2027，高风险）",
+          "description": ""
+        },
+        {
+          "value": "common",
+          "name": "[常用] 常用功能",
+          "description": ""
+        }
+      ]
+    },
+    "commonCategory": {
+      "name": "功能分类",
+      "items": [
+        {
+          "value": "document",
+          "name": "Bridge 与文档",
+          "description": ""
+        },
+        {
+          "value": "selection",
+          "name": "选择对象",
+          "description": ""
+        },
+        {
+          "value": "view",
+          "name": "视图",
+          "description": ""
+        },
+        {
+          "value": "level",
+          "name": "图层",
+          "description": ""
+        },
+        {
+          "value": "geometry",
+          "name": "几何创建与变换",
+          "description": ""
+        },
+        {
+          "value": "cam",
+          "name": "CAM 刀路",
+          "description": ""
+        },
+        {
+          "value": "ui",
+          "name": "菜单与按钮",
+          "description": ""
+        }
+      ]
+    },
+    "documentOperation": {
+      "name": "文档功能",
+      "items": [
+        {
+          "value": "bridge.ping",
+          "name": "测试连接",
+          "description": ""
+        },
+        {
+          "value": "command.list",
+          "name": "读取命令目录",
+          "description": ""
+        },
+        {
+          "value": "document.get_context",
+          "name": "读取当前文档",
+          "description": ""
+        },
+        {
+          "value": "document.save",
+          "name": "保存当前文档",
+          "description": ""
+        },
+        {
+          "value": "document.save_as",
+          "name": "另存为",
+          "description": ""
+        },
+        {
+          "value": "document.open",
+          "name": "打开文档",
+          "description": ""
+        },
+        {
+          "value": "document.new",
+          "name": "新建文档",
+          "description": ""
+        }
+      ]
+    },
+    "selectionOperation": {
+      "name": "选择功能",
+      "items": [
+        {
+          "value": "selection.get_summary",
+          "name": "读取选择摘要",
+          "description": ""
+        },
+        {
+          "value": "selection.get_details",
+          "name": "读取选择详情",
+          "description": ""
+        },
+        {
+          "value": "selection.select_all",
+          "name": "选择全部几何",
+          "description": ""
+        },
+        {
+          "value": "selection.select_level",
+          "name": "按图层选择",
+          "description": ""
+        },
+        {
+          "value": "selection.select_type",
+          "name": "按类型选择",
+          "description": ""
+        },
+        {
+          "value": "selection.clear",
+          "name": "清除选择",
+          "description": ""
+        },
+        {
+          "value": "geometry.delete_selected",
+          "name": "删除选中对象",
+          "description": ""
+        }
+      ]
+    },
+    "viewOperation": {
+      "name": "视图功能",
+      "items": [
+        {
+          "value": "view.fit",
+          "name": "适合屏幕",
+          "description": ""
+        },
+        {
+          "value": "view.repaint",
+          "name": "刷新图形区",
+          "description": ""
+        },
+        {
+          "value": "view.unzoom",
+          "name": "缩小视图",
+          "description": ""
+        },
+        {
+          "value": "view.previous",
+          "name": "恢复上一视图",
+          "description": ""
+        },
+        {
+          "value": "view.capture_bitmap",
+          "name": "保存图形区图片",
+          "description": ""
+        }
+      ]
+    },
+    "levelOperation": {
+      "name": "图层功能",
+      "items": [
+        {
+          "value": "level.list",
+          "name": "列出图层",
+          "description": ""
+        },
+        {
+          "value": "level.set_active",
+          "name": "设置活动图层",
+          "description": ""
+        },
+        {
+          "value": "level.set_visible",
+          "name": "设置图层可见性",
+          "description": ""
+        },
+        {
+          "value": "level.rename",
+          "name": "重命名图层",
+          "description": ""
+        }
+      ]
+    },
+    "geometryOperation": {
+      "name": "几何功能",
+      "items": [
+        {
+          "value": "geometry.count",
+          "name": "统计几何对象",
+          "description": ""
+        },
+        {
+          "value": "geometry.get_summary",
+          "name": "读取几何摘要",
+          "description": ""
+        },
+        {
+          "value": "geometry.create_line",
+          "name": "创建直线",
+          "description": ""
+        },
+        {
+          "value": "geometry.create_point",
+          "name": "创建点",
+          "description": ""
+        },
+        {
+          "value": "geometry.create_circle",
+          "name": "创建圆",
+          "description": ""
+        },
+        {
+          "value": "geometry.move_selected",
+          "name": "移动选中对象",
+          "description": ""
+        },
+        {
+          "value": "geometry.rotate_selected",
+          "name": "旋转选中对象",
+          "description": ""
+        },
+        {
+          "value": "geometry.scale_selected",
+          "name": "缩放选中对象",
+          "description": ""
+        }
+      ]
+    },
+    "camOperation": {
+      "name": "CAM 功能",
+      "items": [
+        {
+          "value": "cam.get_summary",
+          "name": "读取 CAM 摘要",
+          "description": ""
+        },
+        {
+          "value": "cam.list_operations",
+          "name": "列出加工操作",
+          "description": ""
+        }
+      ]
+    },
+    "uiOperation": {
+      "name": "界面功能",
+      "items": [
+        {
+          "value": "ui.ft.list",
+          "name": "搜索可调用命令",
+          "description": ""
+        },
+        {
+          "value": "ui.ft.run",
+          "name": "执行 Function Table 命令（2024/2027）",
+          "description": ""
+        }
+      ]
+    },
+    "geometryType": {
+      "name": "几何类型",
+      "items": [
+        {
+          "value": "Lines",
+          "name": "直线",
+          "description": ""
+        },
+        {
+          "value": "Arcs",
+          "name": "圆弧和圆",
+          "description": ""
+        },
+        {
+          "value": "Points",
+          "name": "点",
+          "description": ""
+        },
+        {
+          "value": "Splines",
+          "name": "样条曲线",
+          "description": ""
+        },
+        {
+          "value": "Surfaces",
+          "name": "曲面",
+          "description": ""
+        },
+        {
+          "value": "Solids",
+          "name": "实体",
+          "description": ""
+        },
+        {
+          "value": "Wireframe",
+          "name": "全部线框",
+          "description": ""
+        },
+        {
+          "value": "PolygonalMeshes",
+          "name": "网格",
+          "description": ""
+        }
+      ]
+    }
+  },
+  "sourceFileName": "sys_mastercamcontrol_Mastercam控制.md"
+}

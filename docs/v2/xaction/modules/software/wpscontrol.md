@@ -1,6 +1,6 @@
 ---
 title: "WPS Office控制"
-description: "通过 WPS Office Bridge 调用宿主能力，包含连接验证、目标规则和使用限制。"
+description: "通过 WPS JavaScript 加载项调用文字、表格、演示、宏和脚本能力。"
 slug: "/v2/xaction/modules/wpscontrol"
 sidebar_label: "WPS Office控制"
 sidebar_position: 250
@@ -8,7 +8,7 @@ quickerDocKey: "xaction/module/sys:wpscontrol"
 comments: true
 moduleKey: "sys:wpscontrol"
 docStatus: "reviewed"
-metadataGeneratedAt: "2026-09-04 07:37:19"
+metadataGeneratedAt: "2026-09-20 15:25:17"
 ---
 
 # WPS Office控制

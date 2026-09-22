@@ -12,7 +12,7 @@ comments: true
 
 **[https://getquicker.net/v2/versions](https://getquicker.net/v2/versions)**
 
-本站功能说明已按 2.2.18 补充；版本是否已开放下载、完整条目及安装包校验值，以官网为准。
+本站功能说明已按 2.2.19 补充，新增了[远程文件](/v2/features/remote-files)、[自动化脚本调用截图 Pro](/v2/xaction/modules/automationscript#打开截图-pro)、[贴图窗口句柄](/v2/xaction/modules/pinimage)和[匹配子窗口详情](/v2/xaction/modules/getwindowtitle#输出)等说明。版本是否已开放下载、完整条目及安装包校验值，以官网为准。
 
 安装包也从 [https://getquicker.net/V2](https://getquicker.net/V2) 下载，不要使用仍提供 1.x 的 `/Download` 页。
 

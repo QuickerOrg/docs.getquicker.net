@@ -29,7 +29,7 @@
       "defaultValue": "T:\\TEMP\\Quicker-InDesign.indd",
       "required": false,
       "variableMode": "UseVarOrInput",
-      "condition": "",
+      "condition": "仅：document.open, document.save_as",
       "description": ""
     },
     {
@@ -39,7 +39,7 @@
       "defaultValue": "T:\\TEMP\\Quicker-InDesign.pdf",
       "required": false,
       "variableMode": "UseVarOrInput",
-      "condition": "",
+      "condition": "仅：document.export_pdf",
       "description": ""
     },
     {
@@ -49,7 +49,7 @@
       "defaultValue": "T:\\TEMP\\Quicker-InDesign.png",
       "required": false,
       "variableMode": "UseVarOrInput",
-      "condition": "",
+      "condition": "仅：image.place",
       "description": ""
     },
     {
@@ -59,7 +59,7 @@
       "defaultValue": "T:\\TEMP\\indesign-script.jsx",
       "required": false,
       "variableMode": "UseVarOrInput",
-      "condition": "",
+      "condition": "仅：script.run_file",
       "description": ""
     },
     {
@@ -69,7 +69,7 @@
       "defaultValue": "1",
       "required": false,
       "variableMode": "UseVarOrInput",
-      "condition": "",
+      "condition": "仅：document.new",
       "description": ""
     },
     {
@@ -79,7 +79,7 @@
       "defaultValue": "true",
       "required": false,
       "variableMode": "UseVarOrInput",
-      "condition": "",
+      "condition": "仅：document.new",
       "description": ""
     },
     {
@@ -89,7 +89,7 @@
       "defaultValue": "210mm",
       "required": false,
       "variableMode": "UseVarOrInput",
-      "condition": "",
+      "condition": "仅：document.new",
       "description": ""
     },
     {
@@ -99,7 +99,7 @@
       "defaultValue": "297mm",
       "required": false,
       "variableMode": "UseVarOrInput",
-      "condition": "",
+      "condition": "仅：document.new",
       "description": ""
     },
     {
@@ -109,7 +109,7 @@
       "defaultValue": "",
       "required": false,
       "variableMode": "UseVarOrInput",
-      "condition": "",
+      "condition": "仅：document.export_pdf",
       "description": ""
     },
     {
@@ -119,7 +119,7 @@
       "defaultValue": "prompt",
       "required": false,
       "variableMode": "UseVarOrInput",
-      "condition": "",
+      "condition": "仅：document.close",
       "description": ""
     },
     {
@@ -129,7 +129,7 @@
       "defaultValue": "-1",
       "required": false,
       "variableMode": "UseVarOrInput",
-      "condition": "",
+      "condition": "仅：page.add",
       "description": ""
     },
     {
@@ -139,7 +139,7 @@
       "defaultValue": "0",
       "required": false,
       "variableMode": "UseVarOrInput",
-      "condition": "",
+      "condition": "仅：page.goto",
       "description": ""
     },
     {
@@ -149,7 +149,7 @@
       "defaultValue": "0",
       "required": false,
       "variableMode": "UseVarOrInput",
-      "condition": "",
+      "condition": "仅：text.frame_create, image.place",
       "description": ""
     },
     {
@@ -159,7 +159,7 @@
       "defaultValue": "10mm",
       "required": false,
       "variableMode": "UseVarOrInput",
-      "condition": "",
+      "condition": "仅：object.duplicate",
       "description": ""
     },
     {
@@ -169,7 +169,7 @@
       "defaultValue": "10mm",
       "required": false,
       "variableMode": "UseVarOrInput",
-      "condition": "",
+      "condition": "仅：object.duplicate",
       "description": ""
     },
     {
@@ -179,7 +179,7 @@
       "defaultValue": "10mm",
       "required": false,
       "variableMode": "UseVarOrInput",
-      "condition": "",
+      "condition": "仅：object.move",
       "description": ""
     },
     {
@@ -189,7 +189,7 @@
       "defaultValue": "0mm",
       "required": false,
       "variableMode": "UseVarOrInput",
-      "condition": "",
+      "condition": "仅：object.move",
       "description": ""
     },
     {
@@ -199,7 +199,7 @@
       "defaultValue": "[\"20mm\",\"20mm\",\"80mm\",\"180mm\"]",
       "required": false,
       "variableMode": "UseVarOrInput",
-      "condition": "",
+      "condition": "仅：object.set_bounds, text.frame_create, image.place",
       "description": ""
     },
     {
@@ -209,7 +209,7 @@
       "defaultValue": "新图层",
       "required": false,
       "variableMode": "UseVarOrInput",
-      "condition": "",
+      "condition": "仅：layer.create, layer.activate, layer.rename, layer.set_visible, layer.set_locked, style.apply_paragraph, style.apply_character",
       "description": ""
     },
     {
@@ -219,7 +219,7 @@
       "defaultValue": "重命名图层",
       "required": false,
       "variableMode": "UseVarOrInput",
-      "condition": "",
+      "condition": "仅：layer.rename",
       "description": ""
     },
     {
@@ -229,7 +229,7 @@
       "defaultValue": "true",
       "required": false,
       "variableMode": "UseVarOrInput",
-      "condition": "",
+      "condition": "仅：layer.set_visible, layer.set_locked",
       "description": ""
     },
     {
@@ -239,7 +239,7 @@
       "defaultValue": "来自 Quicker 的文字",
       "required": false,
       "variableMode": "UseVarOrInput",
-      "condition": "",
+      "condition": "仅：text.frame_create, text.set_contents",
       "description": ""
     },
     {
@@ -249,7 +249,7 @@
       "defaultValue": "旧文字",
       "required": false,
       "variableMode": "UseVarOrInput",
-      "condition": "",
+      "condition": "仅：text.find_replace",
       "description": ""
     },
     {
@@ -259,7 +259,7 @@
       "defaultValue": "新文字",
       "required": false,
       "variableMode": "UseVarOrInput",
-      "condition": "",
+      "condition": "仅：text.find_replace",
       "description": ""
     },
     {
@@ -269,7 +269,7 @@
       "defaultValue": "false",
       "required": false,
       "variableMode": "UseVarOrInput",
-      "condition": "",
+      "condition": "仅：text.find_replace",
       "description": ""
     },
     {
@@ -279,7 +279,7 @@
       "defaultValue": "false",
       "required": false,
       "variableMode": "UseVarOrInput",
-      "condition": "",
+      "condition": "仅：text.find_replace",
       "description": ""
     },
     {
@@ -289,7 +289,7 @@
       "defaultValue": "proportionally",
       "required": false,
       "variableMode": "UseVarOrInput",
-      "condition": "",
+      "condition": "仅：image.place",
       "description": ""
     },
     {
@@ -299,7 +299,7 @@
       "defaultValue": "false",
       "required": false,
       "variableMode": "UseVarOrInput",
-      "condition": "",
+      "condition": "仅：style.apply_paragraph, style.apply_character",
       "description": ""
     },
     {
@@ -309,7 +309,7 @@
       "defaultValue": "app.documents.length",
       "required": false,
       "variableMode": "UseVarOrInput",
-      "condition": "",
+      "condition": "仅：script.evaluate",
       "description": ""
     },
     {
@@ -319,7 +319,7 @@
       "defaultValue": "Quicker InDesign 脚本",
       "required": false,
       "variableMode": "UseVarOrInput",
-      "condition": "",
+      "condition": "仅：script.evaluate",
       "description": ""
     },
     {
@@ -329,7 +329,7 @@
       "defaultValue": "",
       "required": true,
       "variableMode": "UseVarOrInput",
-      "condition": "",
+      "condition": "仅：command.custom",
       "description": ""
     },
     {
@@ -339,7 +339,7 @@
       "defaultValue": "{}",
       "required": false,
       "variableMode": "UseVarOrInput",
-      "condition": "",
+      "condition": "仅：command.custom",
       "description": ""
     },
     {

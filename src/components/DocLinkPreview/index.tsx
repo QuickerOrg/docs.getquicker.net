@@ -6,6 +6,7 @@ import {
   useCallback,
   useEffect,
   useLayoutEffect,
+  useMemo,
   useRef,
   useState,
   type MouseEvent,
@@ -16,7 +17,12 @@ import {useHistory, useLocation} from '@docusaurus/router';
 import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
 import Link from '@docusaurus/Link';
 import {observeResize} from '@site/src/components/observeResize';
-import {fetchDocPreview, PREVIEW_ID_PREFIX} from './extract';
+import {fetchDocPreview} from './extract';
+import {
+  bindPreviewHashScroll,
+  extractSection,
+  scrollPreviewToHash,
+} from './hash';
 import {
   cacheKey,
   canUseHoverPreview,
@@ -108,6 +114,37 @@ export default function DocLinkPreview(): ReactNode {
   const pendingAnchorRef = useRef<HTMLAnchorElement | null>(null);
   const showTimerRef = useRef(0);
   const hideTimerRef = useRef(0);
+  const autoScrollRef = useRef(true);
+
+  const view = useMemo(() => {
+    if (!preview || preview.status !== 'ready') {
+      return {
+        html: '',
+        title: preview?.title ?? '',
+        sectionTitle: null as string | null,
+        sectioned: false,
+      };
+    }
+    if (!preview.hash || typeof document === 'undefined') {
+      return {
+        html: preview.html,
+        title: preview.title,
+        sectionTitle: null as string | null,
+        sectioned: false,
+      };
+    }
+    const section = extractSection(preview.html, preview.hash);
+    return {
+      html: section.html,
+      title: preview.title,
+      sectionTitle: section.found ? section.sectionTitle : null,
+      sectioned: section.found,
+    };
+  }, [preview]);
+
+  const dialogLabel = view.sectionTitle
+    ? `${view.title} · ${view.sectionTitle}`
+    : view.title || '页面预览';
 
   const closeNow = useCallback((): void => {
     window.clearTimeout(showTimerRef.current);
@@ -155,6 +192,7 @@ export default function DocLinkPreview(): ReactNode {
       const gen = ++genRef.current;
       anchorRef.current = anchor;
       openRef.current = true;
+      autoScrollRef.current = true;
       setOpen(true);
       setPlaced(false);
 
@@ -295,6 +333,7 @@ export default function DocLinkPreview(): ReactNode {
       if (!overAnchor && !overPopup) return;
 
       if (overPopup) {
+        autoScrollRef.current = false;
         let node: HTMLElement | null =
           target instanceof HTMLElement ? target : target.parentElement;
         while (node && node !== body) {
@@ -309,6 +348,7 @@ export default function DocLinkPreview(): ReactNode {
         return;
       }
 
+      autoScrollRef.current = false;
       event.preventDefault();
       body.scrollTop += event.deltaY;
     };
@@ -332,7 +372,7 @@ export default function DocLinkPreview(): ReactNode {
       return;
     }
     updatePosition();
-  }, [open, preview?.status, preview?.html, preview?.title, updatePosition]);
+  }, [open, preview?.status, preview?.html, preview?.title, view.html, updatePosition]);
 
   useEffect(() => {
     if (!open) return;
@@ -343,21 +383,9 @@ export default function DocLinkPreview(): ReactNode {
     if (!open || preview?.status !== 'ready' || !preview.hash) return;
     const body = bodyRef.current;
     if (!body) return;
-    let raw = preview.hash.slice(1);
-    try {
-      raw = decodeURIComponent(raw);
-    } catch {
-      /* keep raw hash */
-    }
-    const targetId = PREVIEW_ID_PREFIX + raw;
-    const heading = [...body.querySelectorAll('[id]')].find(
-      (node) => node.id === targetId,
-    );
-    if (heading instanceof HTMLElement) {
-      heading.classList.add('qk-link-preview-target');
-      heading.scrollIntoView({block: 'start'});
-    }
-  }, [open, preview?.status, preview?.html, preview?.hash]);
+    autoScrollRef.current = true;
+    return bindPreviewHashScroll(body, preview.hash, () => autoScrollRef.current);
+  }, [open, preview?.status, preview?.hash, view.html]);
 
   const onPreviewClick = (event: MouseEvent<HTMLDivElement>): void => {
     const target = event.target;
@@ -368,13 +396,9 @@ export default function DocLinkPreview(): ReactNode {
     if (!href) return;
     if (href.startsWith('#')) {
       event.preventDefault();
-      const id = href.slice(1);
-      const heading = [...(bodyRef.current?.querySelectorAll('[id]') ?? [])].find(
-        (node) => node.id === id,
-      );
-      if (heading instanceof HTMLElement) {
-        heading.scrollIntoView({block: 'start'});
-      }
+      autoScrollRef.current = false;
+      const body = bodyRef.current;
+      if (body) scrollPreviewToHash(body, href);
       return;
     }
     try {
@@ -398,6 +422,7 @@ export default function DocLinkPreview(): ReactNode {
       className={`qk-link-preview ${styles.popup}`}
       data-placement={coords?.placement ?? 'below'}
       data-placed={placed ? 'true' : 'false'}
+      data-section={view.sectioned ? 'true' : 'false'}
       style={
         coords
           ? {top: coords.top, left: coords.left}
@@ -405,12 +430,20 @@ export default function DocLinkPreview(): ReactNode {
       }
       role="dialog"
       aria-modal="false"
-      aria-label={preview.title || '页面预览'}
+      aria-label={dialogLabel}
       aria-busy={preview.status === 'loading'}
     >
       <div className={styles.header}>
-        <Link className={styles.title} to={preview.to} title={preview.title}>
-          {preview.title}
+        <Link className={styles.title} to={preview.to} title={dialogLabel}>
+          <span className={styles.pageTitle}>{preview.title}</span>
+          {view.sectionTitle ? (
+            <>
+              <span className={styles.titleSep} aria-hidden="true">
+                ·
+              </span>
+              <span className={styles.sectionTitle}>{view.sectionTitle}</span>
+            </>
+          ) : null}
         </Link>
         <Link className={styles.open} to={preview.to}>
           查看全文
@@ -428,8 +461,12 @@ export default function DocLinkPreview(): ReactNode {
         <div
           ref={bodyRef}
           className={`${styles.body} markdown theme-doc-markdown`}
+          data-section={view.sectioned ? 'true' : 'false'}
           onClick={onPreviewClick}
-          dangerouslySetInnerHTML={{__html: preview.html}}
+          onPointerDown={() => {
+            autoScrollRef.current = false;
+          }}
+          dangerouslySetInnerHTML={{__html: view.html}}
         />
       )}
     </div>,

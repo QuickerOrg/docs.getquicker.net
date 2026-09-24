@@ -126,7 +126,7 @@ legacyContentUpdatedAt: "2022-07-01T09:39:34.000Z"
 [{"Title":"再次运行","Operation":"action","Action":"_this_"}]
 ```
 
-:::note Windows 通知
+:::note[Windows 通知]
 
 “Windows 通知 (win10+)”支持普通文本形式的整卡点击命令，但不支持 `@button` / `@buttons` 按钮模式；使用按钮格式时，Quicker 会忽略点击操作并显示普通通知。
 

@@ -1,6 +1,7 @@
+import {PREVIEW_ID_PREFIX, previewFragmentId} from './hash';
 import {titleFromPath} from './isPreviewable';
 
-export const PREVIEW_ID_PREFIX = 'qk-lp-';
+export {PREVIEW_ID_PREFIX};
 
 export type PreviewContent = {
   title: string;
@@ -23,6 +24,8 @@ const ARTICLE_REMOVE = [
   '.theme-doc-version-banner',
   '.theme-doc-footer',
   '.doc-legacy-updated',
+  '.qk-docs-preview-fallback',
+  '[data-qk-preview]',
 ].join(',');
 
 function escapeRegExp(value: string): string {
@@ -134,12 +137,16 @@ function sanitize(source: Element, pageUrl: string, title: string): string {
   }
 
   root.querySelectorAll('[id]').forEach((el) => {
-    el.id = PREVIEW_ID_PREFIX + el.id;
+    const id = el.id || el.getAttribute('id') || '';
+    if (!id || id.startsWith(PREVIEW_ID_PREFIX)) return;
+    el.id = PREVIEW_ID_PREFIX + id;
   });
   root.querySelectorAll('a[href^="#"]').forEach((anchor) => {
     const href = anchor.getAttribute('href');
-    if (href && href.length > 1 && !href.startsWith(`#${PREVIEW_ID_PREFIX}`)) {
-      anchor.setAttribute('href', `#${PREVIEW_ID_PREFIX}${href.slice(1)}`);
+    if (!href || href.length <= 1) return;
+    const next = previewFragmentId(href);
+    if (next) {
+      anchor.setAttribute('href', `#${next}`);
     }
   });
 

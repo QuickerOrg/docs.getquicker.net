@@ -4,7 +4,7 @@
   "legacySlug": "remotefile",
   "ownsLegacyContent": true,
   "name": "远程文件",
-  "description": "通过 WebDAV / S3 读写文本和图片、复制文件、批量读取或传输文件夹，也支持列目录、查询、删除和移动。账号在设置中管理。",
+  "description": "通过 WebDAV / S3 读写文本和图片、复制文件、批量读取或传输文件夹，也支持列目录、查询、删除和移动；可获取本机账号列表供选择窗口使用。账号在设置中管理。",
   "category": "Network",
   "categoryName": "网络服务",
   "stepType": "Action",
@@ -12,16 +12,6 @@
   "isProOnly": false,
   "helpLink": "https://docs.getquicker.net/v2/xaction/modules/remotefile",
   "inputs": [
-    {
-      "key": "account",
-      "name": "账号",
-      "type": "Text",
-      "defaultValue": "",
-      "required": true,
-      "variableMode": "UseVarOrInput",
-      "condition": "",
-      "description": "远程文件账号的引用名。账号与密码只保存在本机，在“设置 → 软件连接 → 远程文件账号”中管理。"
-    },
     {
       "key": "operation",
       "name": "操作",
@@ -31,6 +21,16 @@
       "variableMode": "Input",
       "condition": "",
       "description": ""
+    },
+    {
+      "key": "account",
+      "name": "账号",
+      "type": "Text",
+      "defaultValue": "",
+      "required": true,
+      "variableMode": "UseVarOrInput",
+      "condition": "",
+      "description": "远程文件账号的引用名。账号与密码只保存在本机，在“设置 → 软件连接 → 远程文件账号”中管理。"
     },
     {
       "key": "remotePath",
@@ -337,6 +337,13 @@
       "description": "写入类操作出错时的相关远端路径、临时文件路径、服务器状态码等，供核实。"
     },
     {
+      "key": "accountList",
+      "name": "账号列表",
+      "type": "List",
+      "condition": "仅：listAccounts",
+      "description": "本机远程文件账号，每项为“显示名（引用名）|引用名”；可直接作为“选择窗口”的选项。"
+    },
+    {
       "key": "savedPath",
       "name": "本地文件路径",
       "type": "Text",
@@ -404,6 +411,11 @@
     "operation": {
       "name": "操作",
       "items": [
+        {
+          "value": "listAccounts",
+          "name": "获取账号列表",
+          "description": ""
+        },
         {
           "value": "upload",
           "name": "上传",

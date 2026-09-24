@@ -1,0 +1,302 @@
+{
+  "key": "sys:virtualDesktop",
+  "slug": "virtualdesktop",
+  "legacySlug": "virtualdesktop",
+  "ownsLegacyContent": true,
+  "name": "虚拟桌面",
+  "description": "查询和管理 Windows 虚拟桌面，移动窗口或将窗口固定到所有桌面。支持范围取决于 Windows 完整版本。",
+  "category": "System",
+  "categoryName": "Windows系统",
+  "stepType": "Action",
+  "isRisky": false,
+  "isProOnly": false,
+  "helpLink": "",
+  "inputs": [
+    {
+      "key": "operation",
+      "name": "操作",
+      "type": "Enum",
+      "defaultValue": "listDesktops",
+      "required": true,
+      "variableMode": "Input",
+      "condition": "",
+      "description": ""
+    },
+    {
+      "key": "target",
+      "name": "目标桌面",
+      "type": "Enum",
+      "defaultValue": "current",
+      "required": false,
+      "variableMode": "UseVarOrInput",
+      "condition": "仅：switchDesktop, removeDesktop, renameDesktop, reorderDesktop, moveWindow",
+      "description": ""
+    },
+    {
+      "key": "desktopId",
+      "name": "桌面标识",
+      "type": "Text",
+      "defaultValue": "",
+      "required": true,
+      "variableMode": "UseVarOrInput",
+      "condition": "仅：id",
+      "description": "选择本机桌面 GUID；桌面删除或换电脑后须重新选择，目标缺失不会改用其它桌面。"
+    },
+    {
+      "key": "desktopIndex",
+      "name": "桌面编号",
+      "type": "Integer",
+      "defaultValue": "1",
+      "required": false,
+      "variableMode": "UseVarOrInput",
+      "condition": "仅：index",
+      "description": "从 1 开始，按本次执行时的桌面顺序定位。"
+    },
+    {
+      "key": "desktopName",
+      "name": "目标名称",
+      "type": "Text",
+      "defaultValue": "",
+      "required": true,
+      "variableMode": "UseVarOrInput",
+      "condition": "仅：name",
+      "description": "精确匹配；同名桌面多于一个时失败，请改用编号或标识。"
+    },
+    {
+      "key": "name",
+      "name": "新名称",
+      "type": "Text",
+      "defaultValue": "",
+      "required": false,
+      "variableMode": "UseVarOrInput",
+      "condition": "仅：createDesktop, renameDesktop",
+      "description": "创建时可留空使用系统默认名称；重命名时不能为空。"
+    },
+    {
+      "key": "fallbackId",
+      "name": "窗口迁移到",
+      "type": "Text",
+      "defaultValue": "",
+      "required": true,
+      "variableMode": "UseVarOrInput",
+      "condition": "仅：removeDesktop",
+      "description": "删除时必须指定另一个仍存在的桌面 GUID。不能删除最后一个桌面。"
+    },
+    {
+      "key": "position",
+      "name": "目标位置",
+      "type": "Integer",
+      "defaultValue": "1",
+      "required": false,
+      "variableMode": "UseVarOrInput",
+      "condition": "仅：reorderDesktop",
+      "description": "从 1 开始。"
+    },
+    {
+      "key": "wrap",
+      "name": "循环切换",
+      "type": "Boolean",
+      "defaultValue": "false",
+      "required": false,
+      "variableMode": "UseVarOrInput",
+      "condition": "仅：previousDesktop, nextDesktop",
+      "description": "关闭时到边界不再切换，返回成功且未改变。"
+    },
+    {
+      "key": "follow",
+      "name": "完成后切换到目标桌面",
+      "type": "Boolean",
+      "defaultValue": "false",
+      "required": false,
+      "variableMode": "UseVarOrInput",
+      "condition": "仅：createDesktop, moveWindow",
+      "description": "创建或移动完成后再切换；后续切换失败会保留已完成结果。"
+    },
+    {
+      "key": "hwnd",
+      "name": "窗口句柄",
+      "type": "Integer",
+      "defaultValue": "0",
+      "required": false,
+      "variableMode": "UseVarOrInput",
+      "condition": "仅：getWindowDesktop, getWindowPin, moveWindow, setWindowPin",
+      "description": "0 使用步骤开始时的前台窗口；不操作桌面窗口或 Quicker 自身窗口。"
+    },
+    {
+      "key": "pinned",
+      "name": "固定到所有桌面",
+      "type": "Boolean",
+      "defaultValue": "true",
+      "required": false,
+      "variableMode": "UseVarOrInput",
+      "condition": "仅：setWindowPin",
+      "description": "仅设置单个窗口的固定状态；若应用整体被固定，解除窗口固定后仍会跨桌面显示。"
+    },
+    {
+      "key": "stopIfFail",
+      "name": "失败后停止动作",
+      "type": "Boolean",
+      "defaultValue": "true",
+      "required": false,
+      "variableMode": "Input",
+      "condition": "",
+      "description": "失败后是否停止动作"
+    }
+  ],
+  "outputs": [
+    {
+      "key": "desktopId",
+      "name": "桌面标识",
+      "type": "Text",
+      "condition": "仅：getCurrentDesktop, createDesktop, getWindowDesktop",
+      "description": "查询到的桌面或新建桌面的 GUID；创建部分完成时仍保留已创建标识。窗口归属未知时为空。"
+    },
+    {
+      "key": "index",
+      "name": "桌面编号",
+      "type": "Integer",
+      "condition": "仅：getCurrentDesktop, getWindowDesktop",
+      "description": "从 1 开始；未读到时保留旧变量值，窗口归属未知时请先检查桌面标识是否为空。"
+    },
+    {
+      "key": "name",
+      "name": "桌面名称",
+      "type": "Text",
+      "condition": "仅：getCurrentDesktop, getWindowDesktop",
+      "description": "未读到时保留旧变量值，窗口归属未知时请先检查桌面标识是否为空。"
+    },
+    {
+      "key": "results",
+      "name": "桌面列表",
+      "type": "Table",
+      "condition": "仅：listDesktops",
+      "description": "每行一个桌面，列：desktopId（标识）、index（编号，从 1 开始）、name（名称）、isCurrent（是否当前桌面）。"
+    },
+    {
+      "key": "isWindowPinned",
+      "name": "窗口已固定",
+      "type": "Boolean",
+      "condition": "仅：getWindowPin",
+      "description": "窗口是否单独固定到所有桌面。读取失败时不更新变量，请检查是否成功。"
+    },
+    {
+      "key": "isApplicationPinned",
+      "name": "应用已固定",
+      "type": "Boolean",
+      "condition": "仅：getWindowPin",
+      "description": "窗口所属应用是否整体固定到所有桌面；为是时，解除单个窗口固定后仍会跨桌面显示。读取失败时不更新变量。"
+    },
+    {
+      "key": "isSuccess",
+      "name": "是否成功",
+      "type": "Boolean",
+      "condition": "",
+      "description": "操作是否成功"
+    },
+    {
+      "key": "errMessage",
+      "name": "错误信息",
+      "type": "Text",
+      "condition": "",
+      "description": "步骤执行出错时的消息"
+    }
+  ],
+  "selections": {
+    "operation": {
+      "name": "操作",
+      "items": [
+        {
+          "value": "listDesktops",
+          "name": "获取虚拟桌面列表",
+          "description": ""
+        },
+        {
+          "value": "getCurrentDesktop",
+          "name": "获取当前桌面",
+          "description": ""
+        },
+        {
+          "value": "switchDesktop",
+          "name": "切换桌面",
+          "description": ""
+        },
+        {
+          "value": "previousDesktop",
+          "name": "切换到上一个桌面",
+          "description": ""
+        },
+        {
+          "value": "nextDesktop",
+          "name": "切换到下一个桌面",
+          "description": ""
+        },
+        {
+          "value": "createDesktop",
+          "name": "创建桌面",
+          "description": ""
+        },
+        {
+          "value": "removeDesktop",
+          "name": "删除桌面",
+          "description": ""
+        },
+        {
+          "value": "renameDesktop",
+          "name": "重命名桌面",
+          "description": ""
+        },
+        {
+          "value": "reorderDesktop",
+          "name": "调整桌面顺序",
+          "description": ""
+        },
+        {
+          "value": "getWindowDesktop",
+          "name": "查询窗口所属桌面",
+          "description": ""
+        },
+        {
+          "value": "moveWindow",
+          "name": "移动窗口到桌面",
+          "description": ""
+        },
+        {
+          "value": "getWindowPin",
+          "name": "查询窗口固定状态",
+          "description": ""
+        },
+        {
+          "value": "setWindowPin",
+          "name": "设置窗口固定状态",
+          "description": ""
+        }
+      ]
+    },
+    "target": {
+      "name": "目标桌面",
+      "items": [
+        {
+          "value": "current",
+          "name": "当前桌面",
+          "description": ""
+        },
+        {
+          "value": "id",
+          "name": "指定标识",
+          "description": ""
+        },
+        {
+          "value": "index",
+          "name": "指定编号",
+          "description": ""
+        },
+        {
+          "value": "name",
+          "name": "指定名称",
+          "description": ""
+        }
+      ]
+    }
+  },
+  "sourceFileName": "sys_virtualDesktop_虚拟桌面.md"
+}

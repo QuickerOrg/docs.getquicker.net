@@ -73,6 +73,26 @@
       "description": "录制文件保存目录。留空时仍使用当前默认位置，不影响已有动作。"
     },
     {
+      "key": "encodingPreset",
+      "name": "编码方案",
+      "type": "Enum",
+      "defaultValue": "default",
+      "required": false,
+      "variableMode": "UseVarOrInput",
+      "condition": "",
+      "description": "可选快捷配置，默认沿用原有画质；FFmpeg 参数可覆盖方案。"
+    },
+    {
+      "key": "encodingParameters",
+      "name": "FFmpeg 参数",
+      "type": "Text",
+      "defaultValue": "",
+      "required": false,
+      "variableMode": "UseVarOrInput",
+      "condition": "",
+      "description": "直接传给本机 FFmpeg，覆盖预设；留空沿用默认。例：-crf 20 -preset veryfast。"
+    },
+    {
       "key": "addToHistory",
       "name": "加入录屏历史",
       "type": "Boolean",
@@ -152,6 +172,36 @@
         {
           "value": "fixed_area",
           "name": "固定区域",
+          "description": ""
+        }
+      ]
+    },
+    "encodingPreset": {
+      "name": "编码方案",
+      "items": [
+        {
+          "value": "default",
+          "name": "沿用原有画质",
+          "description": ""
+        },
+        {
+          "value": "balanced",
+          "name": "均衡",
+          "description": ""
+        },
+        {
+          "value": "text",
+          "name": "文字清晰",
+          "description": ""
+        },
+        {
+          "value": "compact",
+          "name": "小体积",
+          "description": ""
+        },
+        {
+          "value": "lowCpu",
+          "name": "低 CPU 占用",
           "description": ""
         }
       ]

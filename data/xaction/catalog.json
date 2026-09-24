@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-09-22 21:47:06",
-  "moduleCount": 173,
+  "generatedAt": "2026-09-24 08:30:46",
+  "moduleCount": 175,
   "legacyMappedModuleCount": 0,
   "migratedLegacyModuleCount": 0,
   "categories": [
@@ -38,7 +38,7 @@
     {
       "key": "System",
       "name": "Windows 系统",
-      "moduleCount": 22
+      "moduleCount": 24
     },
     {
       "key": "Files",
@@ -11571,6 +11571,26 @@
           "description": "录屏导出画质：标准、高清或原始。"
         },
         {
+          "key": "encodingPreset",
+          "name": "编码方案",
+          "type": "Enum",
+          "defaultValue": "default",
+          "required": false,
+          "variableMode": "UseVarOrInput",
+          "condition": "",
+          "description": "可选快捷配置，默认沿用原有画质；FFmpeg 参数可覆盖方案。"
+        },
+        {
+          "key": "encodingParameters",
+          "name": "FFmpeg 参数",
+          "type": "Text",
+          "defaultValue": "",
+          "required": false,
+          "variableMode": "UseVarOrInput",
+          "condition": "",
+          "description": "直接传给本机 FFmpeg，覆盖预设；留空沿用默认。例：-crf 20 -preset veryfast。"
+        },
+        {
           "key": "framesPerSecond",
           "name": "帧率",
           "type": "Integer",
@@ -11777,6 +11797,36 @@
             {
               "value": "original",
               "name": "原始",
+              "description": ""
+            }
+          ]
+        },
+        "encodingPreset": {
+          "name": "编码方案",
+          "items": [
+            {
+              "value": "default",
+              "name": "沿用原有画质",
+              "description": ""
+            },
+            {
+              "value": "balanced",
+              "name": "均衡",
+              "description": ""
+            },
+            {
+              "value": "text",
+              "name": "文字清晰",
+              "description": ""
+            },
+            {
+              "value": "compact",
+              "name": "小体积",
+              "description": ""
+            },
+            {
+              "value": "lowCpu",
+              "name": "低 CPU 占用",
               "description": ""
             }
           ]
@@ -12331,6 +12381,26 @@
           "description": "录制文件保存目录。留空时仍使用当前默认位置，不影响已有动作。"
         },
         {
+          "key": "encodingPreset",
+          "name": "编码方案",
+          "type": "Enum",
+          "defaultValue": "default",
+          "required": false,
+          "variableMode": "UseVarOrInput",
+          "condition": "",
+          "description": "可选快捷配置，默认沿用原有画质；FFmpeg 参数可覆盖方案。"
+        },
+        {
+          "key": "encodingParameters",
+          "name": "FFmpeg 参数",
+          "type": "Text",
+          "defaultValue": "",
+          "required": false,
+          "variableMode": "UseVarOrInput",
+          "condition": "",
+          "description": "直接传给本机 FFmpeg，覆盖预设；留空沿用默认。例：-crf 20 -preset veryfast。"
+        },
+        {
           "key": "addToHistory",
           "name": "加入录屏历史",
           "type": "Boolean",
@@ -12410,6 +12480,36 @@
             {
               "value": "fixed_area",
               "name": "固定区域",
+              "description": ""
+            }
+          ]
+        },
+        "encodingPreset": {
+          "name": "编码方案",
+          "items": [
+            {
+              "value": "default",
+              "name": "沿用原有画质",
+              "description": ""
+            },
+            {
+              "value": "balanced",
+              "name": "均衡",
+              "description": ""
+            },
+            {
+              "value": "text",
+              "name": "文字清晰",
+              "description": ""
+            },
+            {
+              "value": "compact",
+              "name": "小体积",
+              "description": ""
+            },
+            {
+              "value": "lowCpu",
+              "name": "低 CPU 占用",
               "description": ""
             }
           ]
@@ -16004,7 +16104,7 @@
       "legacySlug": "remotefile",
       "ownsLegacyContent": true,
       "name": "远程文件",
-      "description": "通过 WebDAV / S3 读写文本和图片、复制文件、批量读取或传输文件夹，也支持列目录、查询、删除和移动。账号在设置中管理。",
+      "description": "通过 WebDAV / S3 读写文本和图片、复制文件、批量读取或传输文件夹，也支持列目录、查询、删除和移动；可获取本机账号列表供选择窗口使用。账号在设置中管理。",
       "category": "Network",
       "categoryName": "网络服务",
       "stepType": "Action",
@@ -16012,16 +16112,6 @@
       "isProOnly": false,
       "helpLink": "https://docs.getquicker.net/v2/xaction/modules/remotefile",
       "inputs": [
-        {
-          "key": "account",
-          "name": "账号",
-          "type": "Text",
-          "defaultValue": "",
-          "required": true,
-          "variableMode": "UseVarOrInput",
-          "condition": "",
-          "description": "远程文件账号的引用名。账号与密码只保存在本机，在“设置 → 软件连接 → 远程文件账号”中管理。"
-        },
         {
           "key": "operation",
           "name": "操作",
@@ -16031,6 +16121,16 @@
           "variableMode": "Input",
           "condition": "",
           "description": ""
+        },
+        {
+          "key": "account",
+          "name": "账号",
+          "type": "Text",
+          "defaultValue": "",
+          "required": true,
+          "variableMode": "UseVarOrInput",
+          "condition": "",
+          "description": "远程文件账号的引用名。账号与密码只保存在本机，在“设置 → 软件连接 → 远程文件账号”中管理。"
         },
         {
           "key": "remotePath",
@@ -16337,6 +16437,13 @@
           "description": "写入类操作出错时的相关远端路径、临时文件路径、服务器状态码等，供核实。"
         },
         {
+          "key": "accountList",
+          "name": "账号列表",
+          "type": "List",
+          "condition": "仅：listAccounts",
+          "description": "本机远程文件账号，每项为“显示名（引用名）|引用名”；可直接作为“选择窗口”的选项。"
+        },
+        {
           "key": "savedPath",
           "name": "本地文件路径",
           "type": "Text",
@@ -16404,6 +16511,11 @@
         "operation": {
           "name": "操作",
           "items": [
+            {
+              "value": "listAccounts",
+              "name": "获取账号列表",
+              "description": ""
+            },
             {
               "value": "upload",
               "name": "上传",
@@ -34849,6 +34961,197 @@
       "sourceFileName": "sys_fileSystemWatch_文件系统监控.md"
     },
     {
+      "key": "sys:monitorBrightness",
+      "slug": "monitorbrightness",
+      "legacySlug": "monitorbrightness",
+      "ownsLegacyContent": true,
+      "name": "显示器",
+      "description": "获取显示器列表、读取显示器坐标与工作区，获取或调整指定显示器的硬件亮度。",
+      "category": "System",
+      "categoryName": "Windows系统",
+      "stepType": "Action",
+      "isRisky": false,
+      "isProOnly": false,
+      "helpLink": "",
+      "inputs": [
+        {
+          "key": "operation",
+          "name": "操作",
+          "type": "Enum",
+          "defaultValue": "get",
+          "required": true,
+          "variableMode": "Input",
+          "condition": "",
+          "description": ""
+        },
+        {
+          "key": "target",
+          "name": "目标显示器",
+          "type": "Enum",
+          "defaultValue": "mouse",
+          "required": false,
+          "variableMode": "UseVarOrInput",
+          "condition": "仅：get, set, increase, decrease, getMonitor, showBrightnessOsd",
+          "description": "在本步骤开始时确定目标。所有显示器逐块处理；复制显示无法唯一确定物理显示器时，请指定显示器。"
+        },
+        {
+          "key": "screenId",
+          "name": "指定显示器",
+          "type": "Text",
+          "defaultValue": "",
+          "required": true,
+          "variableMode": "UseVarOrInput",
+          "condition": "仅：specified",
+          "description": "通过显示器选择器选择设备，或传入先前输出的显示器标识。显示器不存在时不会自动改用另一块。"
+        },
+        {
+          "key": "targetBrightness",
+          "name": "目标亮度",
+          "type": "Number",
+          "defaultValue": "50.0",
+          "required": false,
+          "variableMode": "UseVarOrInput",
+          "condition": "仅：set",
+          "description": "目标亮度百分比，越界限制到 0–100。设备只支持部分档位时取最接近的档位；0 不表示关闭显示器。"
+        },
+        {
+          "key": "step",
+          "name": "调节幅度",
+          "type": "Integer",
+          "defaultValue": "5",
+          "required": false,
+          "variableMode": "UseVarOrInput",
+          "condition": "仅：increase, decrease",
+          "description": "1–100 的整数，单位为百分点。所有显示器分别根据各自当前亮度增减。"
+        },
+        {
+          "key": "showOsd",
+          "name": "显示亮度 OSD",
+          "type": "Boolean",
+          "defaultValue": "false",
+          "required": false,
+          "variableMode": "UseVarOrInput",
+          "condition": "仅：set, increase, decrease",
+          "description": "显示实际回读亮度，可拖动滑块继续调节。选择单个显示器时在其上显示；选择多个时，在鼠标所在显示器合并显示。闲置 2 秒后消失，交互和写入期间暂停计时；后续拖动不修改本步骤输出变量。"
+        },
+        {
+          "key": "stopIfFail",
+          "name": "失败后停止动作",
+          "type": "Boolean",
+          "defaultValue": "true",
+          "required": false,
+          "variableMode": "Input",
+          "condition": "",
+          "description": "所有显示器处理完成后再汇总失败；已完成的修改不会回滚。"
+        }
+      ],
+      "outputs": [
+        {
+          "key": "brightness",
+          "name": "当前亮度",
+          "type": "Number",
+          "condition": "",
+          "description": "实际读到的亮度，0–100。读取失败时不更新目标变量，请检查是否成功或各显示器结果。修改操作返回回读值。"
+        },
+        {
+          "key": "screenId",
+          "name": "显示器标识",
+          "type": "Text",
+          "condition": "仅：mouse, primary, specified",
+          "description": "本次实际选择的设备标识，可保存后传给后续步骤的指定显示器参数。"
+        },
+        {
+          "key": "results",
+          "name": "各显示器结果",
+          "type": "Table",
+          "condition": "",
+          "description": "亮度操作列：screenId、displayName、previousBrightness、targetBrightness、brightness、status、message。显示器信息列：screenId、displayName、logicalName、isPrimary、x、y、width、height、workX、workY、workWidth、workHeight、dpiX、dpiY。坐标为显示器像素，可能为负；未知数值为空。获取列表不会读取硬件亮度。"
+        },
+        {
+          "key": "isSuccess",
+          "name": "是否成功",
+          "type": "Boolean",
+          "condition": "",
+          "description": "至少有一个目标，且全部目标均成功时为是。"
+        },
+        {
+          "key": "errMessage",
+          "name": "错误信息",
+          "type": "Text",
+          "condition": "",
+          "description": "步骤执行出错时的消息"
+        }
+      ],
+      "selections": {
+        "operation": {
+          "name": "操作",
+          "items": [
+            {
+              "value": "get",
+              "name": "获取亮度",
+              "description": ""
+            },
+            {
+              "value": "set",
+              "name": "设置亮度",
+              "description": ""
+            },
+            {
+              "value": "increase",
+              "name": "增加亮度",
+              "description": ""
+            },
+            {
+              "value": "decrease",
+              "name": "降低亮度",
+              "description": ""
+            },
+            {
+              "value": "listMonitors",
+              "name": "获取显示器列表",
+              "description": ""
+            },
+            {
+              "value": "getMonitor",
+              "name": "获取显示器信息",
+              "description": ""
+            },
+            {
+              "value": "showBrightnessOsd",
+              "name": "显示亮度 OSD",
+              "description": ""
+            }
+          ]
+        },
+        "target": {
+          "name": "目标显示器",
+          "items": [
+            {
+              "value": "mouse",
+              "name": "鼠标所在显示器",
+              "description": ""
+            },
+            {
+              "value": "primary",
+              "name": "主显示器",
+              "description": ""
+            },
+            {
+              "value": "specified",
+              "name": "指定显示器",
+              "description": ""
+            },
+            {
+              "value": "all",
+              "name": "所有显示器",
+              "description": ""
+            }
+          ]
+        }
+      },
+      "sourceFileName": "sys_monitorBrightness_显示器.md"
+    },
+    {
       "key": "sys:sendMessage",
       "slug": "sendmessage",
       "legacySlug": "sendmessage",
@@ -34972,6 +35275,308 @@
         }
       },
       "sourceFileName": "sys_sendMessage_向窗口发送消息.md"
+    },
+    {
+      "key": "sys:virtualDesktop",
+      "slug": "virtualdesktop",
+      "legacySlug": "virtualdesktop",
+      "ownsLegacyContent": true,
+      "name": "虚拟桌面",
+      "description": "查询和管理 Windows 虚拟桌面，移动窗口或将窗口固定到所有桌面。支持范围取决于 Windows 完整版本。",
+      "category": "System",
+      "categoryName": "Windows系统",
+      "stepType": "Action",
+      "isRisky": false,
+      "isProOnly": false,
+      "helpLink": "",
+      "inputs": [
+        {
+          "key": "operation",
+          "name": "操作",
+          "type": "Enum",
+          "defaultValue": "listDesktops",
+          "required": true,
+          "variableMode": "Input",
+          "condition": "",
+          "description": ""
+        },
+        {
+          "key": "target",
+          "name": "目标桌面",
+          "type": "Enum",
+          "defaultValue": "current",
+          "required": false,
+          "variableMode": "UseVarOrInput",
+          "condition": "仅：switchDesktop, removeDesktop, renameDesktop, reorderDesktop, moveWindow",
+          "description": ""
+        },
+        {
+          "key": "desktopId",
+          "name": "桌面标识",
+          "type": "Text",
+          "defaultValue": "",
+          "required": true,
+          "variableMode": "UseVarOrInput",
+          "condition": "仅：id",
+          "description": "选择本机桌面 GUID；桌面删除或换电脑后须重新选择，目标缺失不会改用其它桌面。"
+        },
+        {
+          "key": "desktopIndex",
+          "name": "桌面编号",
+          "type": "Integer",
+          "defaultValue": "1",
+          "required": false,
+          "variableMode": "UseVarOrInput",
+          "condition": "仅：index",
+          "description": "从 1 开始，按本次执行时的桌面顺序定位。"
+        },
+        {
+          "key": "desktopName",
+          "name": "目标名称",
+          "type": "Text",
+          "defaultValue": "",
+          "required": true,
+          "variableMode": "UseVarOrInput",
+          "condition": "仅：name",
+          "description": "精确匹配；同名桌面多于一个时失败，请改用编号或标识。"
+        },
+        {
+          "key": "name",
+          "name": "新名称",
+          "type": "Text",
+          "defaultValue": "",
+          "required": false,
+          "variableMode": "UseVarOrInput",
+          "condition": "仅：createDesktop, renameDesktop",
+          "description": "创建时可留空使用系统默认名称；重命名时不能为空。"
+        },
+        {
+          "key": "fallbackId",
+          "name": "窗口迁移到",
+          "type": "Text",
+          "defaultValue": "",
+          "required": true,
+          "variableMode": "UseVarOrInput",
+          "condition": "仅：removeDesktop",
+          "description": "删除时必须指定另一个仍存在的桌面 GUID。不能删除最后一个桌面。"
+        },
+        {
+          "key": "position",
+          "name": "目标位置",
+          "type": "Integer",
+          "defaultValue": "1",
+          "required": false,
+          "variableMode": "UseVarOrInput",
+          "condition": "仅：reorderDesktop",
+          "description": "从 1 开始。"
+        },
+        {
+          "key": "wrap",
+          "name": "循环切换",
+          "type": "Boolean",
+          "defaultValue": "false",
+          "required": false,
+          "variableMode": "UseVarOrInput",
+          "condition": "仅：previousDesktop, nextDesktop",
+          "description": "关闭时到边界不再切换，返回成功且未改变。"
+        },
+        {
+          "key": "follow",
+          "name": "完成后切换到目标桌面",
+          "type": "Boolean",
+          "defaultValue": "false",
+          "required": false,
+          "variableMode": "UseVarOrInput",
+          "condition": "仅：createDesktop, moveWindow",
+          "description": "创建或移动完成后再切换；后续切换失败会保留已完成结果。"
+        },
+        {
+          "key": "hwnd",
+          "name": "窗口句柄",
+          "type": "Integer",
+          "defaultValue": "0",
+          "required": false,
+          "variableMode": "UseVarOrInput",
+          "condition": "仅：getWindowDesktop, getWindowPin, moveWindow, setWindowPin",
+          "description": "0 使用步骤开始时的前台窗口；不操作桌面窗口或 Quicker 自身窗口。"
+        },
+        {
+          "key": "pinned",
+          "name": "固定到所有桌面",
+          "type": "Boolean",
+          "defaultValue": "true",
+          "required": false,
+          "variableMode": "UseVarOrInput",
+          "condition": "仅：setWindowPin",
+          "description": "仅设置单个窗口的固定状态；若应用整体被固定，解除窗口固定后仍会跨桌面显示。"
+        },
+        {
+          "key": "stopIfFail",
+          "name": "失败后停止动作",
+          "type": "Boolean",
+          "defaultValue": "true",
+          "required": false,
+          "variableMode": "Input",
+          "condition": "",
+          "description": "失败后是否停止动作"
+        }
+      ],
+      "outputs": [
+        {
+          "key": "desktopId",
+          "name": "桌面标识",
+          "type": "Text",
+          "condition": "仅：getCurrentDesktop, createDesktop, getWindowDesktop",
+          "description": "查询到的桌面或新建桌面的 GUID；创建部分完成时仍保留已创建标识。窗口归属未知时为空。"
+        },
+        {
+          "key": "index",
+          "name": "桌面编号",
+          "type": "Integer",
+          "condition": "仅：getCurrentDesktop, getWindowDesktop",
+          "description": "从 1 开始；未读到时保留旧变量值，窗口归属未知时请先检查桌面标识是否为空。"
+        },
+        {
+          "key": "name",
+          "name": "桌面名称",
+          "type": "Text",
+          "condition": "仅：getCurrentDesktop, getWindowDesktop",
+          "description": "未读到时保留旧变量值，窗口归属未知时请先检查桌面标识是否为空。"
+        },
+        {
+          "key": "results",
+          "name": "桌面列表",
+          "type": "Table",
+          "condition": "仅：listDesktops",
+          "description": "每行一个桌面，列：desktopId（标识）、index（编号，从 1 开始）、name（名称）、isCurrent（是否当前桌面）。"
+        },
+        {
+          "key": "isWindowPinned",
+          "name": "窗口已固定",
+          "type": "Boolean",
+          "condition": "仅：getWindowPin",
+          "description": "窗口是否单独固定到所有桌面。读取失败时不更新变量，请检查是否成功。"
+        },
+        {
+          "key": "isApplicationPinned",
+          "name": "应用已固定",
+          "type": "Boolean",
+          "condition": "仅：getWindowPin",
+          "description": "窗口所属应用是否整体固定到所有桌面；为是时，解除单个窗口固定后仍会跨桌面显示。读取失败时不更新变量。"
+        },
+        {
+          "key": "isSuccess",
+          "name": "是否成功",
+          "type": "Boolean",
+          "condition": "",
+          "description": "操作是否成功"
+        },
+        {
+          "key": "errMessage",
+          "name": "错误信息",
+          "type": "Text",
+          "condition": "",
+          "description": "步骤执行出错时的消息"
+        }
+      ],
+      "selections": {
+        "operation": {
+          "name": "操作",
+          "items": [
+            {
+              "value": "listDesktops",
+              "name": "获取虚拟桌面列表",
+              "description": ""
+            },
+            {
+              "value": "getCurrentDesktop",
+              "name": "获取当前桌面",
+              "description": ""
+            },
+            {
+              "value": "switchDesktop",
+              "name": "切换桌面",
+              "description": ""
+            },
+            {
+              "value": "previousDesktop",
+              "name": "切换到上一个桌面",
+              "description": ""
+            },
+            {
+              "value": "nextDesktop",
+              "name": "切换到下一个桌面",
+              "description": ""
+            },
+            {
+              "value": "createDesktop",
+              "name": "创建桌面",
+              "description": ""
+            },
+            {
+              "value": "removeDesktop",
+              "name": "删除桌面",
+              "description": ""
+            },
+            {
+              "value": "renameDesktop",
+              "name": "重命名桌面",
+              "description": ""
+            },
+            {
+              "value": "reorderDesktop",
+              "name": "调整桌面顺序",
+              "description": ""
+            },
+            {
+              "value": "getWindowDesktop",
+              "name": "查询窗口所属桌面",
+              "description": ""
+            },
+            {
+              "value": "moveWindow",
+              "name": "移动窗口到桌面",
+              "description": ""
+            },
+            {
+              "value": "getWindowPin",
+              "name": "查询窗口固定状态",
+              "description": ""
+            },
+            {
+              "value": "setWindowPin",
+              "name": "设置窗口固定状态",
+              "description": ""
+            }
+          ]
+        },
+        "target": {
+          "name": "目标桌面",
+          "items": [
+            {
+              "value": "current",
+              "name": "当前桌面",
+              "description": ""
+            },
+            {
+              "value": "id",
+              "name": "指定标识",
+              "description": ""
+            },
+            {
+              "value": "index",
+              "name": "指定编号",
+              "description": ""
+            },
+            {
+              "value": "name",
+              "name": "指定名称",
+              "description": ""
+            }
+          ]
+        }
+      },
+      "sourceFileName": "sys_virtualDesktop_虚拟桌面.md"
     },
     {
       "key": "sys:audioControl",
@@ -38818,6 +39423,16 @@
             {
               "value": "SelectFontFamily",
               "name": "选择字体名称",
+              "description": ""
+            },
+            {
+              "value": "SelectMonitor",
+              "name": "选择显示器设备标识",
+              "description": ""
+            },
+            {
+              "value": "SelectVirtualDesktop",
+              "name": "选择虚拟桌面标识",
               "description": ""
             }
           ]

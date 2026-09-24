@@ -12,7 +12,7 @@ comments: true
 
 **[https://getquicker.net/v2/versions](https://getquicker.net/v2/versions)**
 
-本站功能说明已按 2.2.20 补充，新增了[显示器与虚拟桌面步骤能力](/v2/xaction)、[子程序输入参数设置](/v2/xaction/modules/subprogram#输入参数)、[录屏 FFmpeg 参数](/v2/xaction/modules/screen-recording-ui#参数说明)和[贴图窗口阴影快捷键](/v2/features/screenshot/capture-pro#移动模式)等说明。版本是否已开放下载、完整条目及安装包校验值，以官网为准。
+本站功能说明已按 2.2.20 补充，新增了[显示器与虚拟桌面步骤](/v2/features/displays-and-desktops)及其参数页、[子程序输入参数设置](/v2/xaction/modules/subprogram#输入参数)、[录屏 FFmpeg 参数](/v2/xaction/modules/screen-recording-ui#参数说明)、[AI 对话导入导出](/v2/features/ai-and-agent)和[贴图窗口阴影快捷键](/v2/features/screenshot/capture-pro#移动模式)等说明。版本是否已开放下载、完整条目及安装包校验值，以官网为准。
 
 安装包也从 [https://getquicker.net/V2](https://getquicker.net/V2) 下载，不要使用仍提供 1.x 的 `/Download` 页。
 
@@ -36,7 +36,7 @@ comments: true
 
 2.2.18 补充了 [远程文件（WebDAV）步骤能力与本机账号限制](/v2/xaction)、[远程文件账号入口和 HTTP / WebSocket 设置迁移](/v2/features/software-connections)、[主面板自由格子边缘插队、工具菜单和未配置程序提示](/v2/features/action-panel/usage)、[软件桥接命令工具生成动作拖放与 Photoshop 分类筛选](/v2/features/software-connections/command-tool)、[触发规则粘贴到选中项之后及批量删除](/v2/features/triggers/advanced-mouse-triggers#规则列表筛选)、[AI 助手正式版工作区选择、历史对话目录恢复和导出后打开文件夹](/v2/features/ai-and-agent)，以及 [贴图穿透模式下通过工具栏拖动和定位修正](/v2/features/screenshot/capture-pro#贴图窗口截图后)。回退和跨设备注意见 [2.2.18 远程文件账号与 AI 助手工作区](/important-notice#2218-远程文件账号与-ai-助手工作区)；新版网络子程序搜索 / 更新检查、焦点切换瞬间窗口信息获取、贴图工具栏空格和右键遮挡等修复以官网完整记录为准。
 
-2.2.20 补充了 [显示器与虚拟桌面步骤能力](/v2/xaction)（参数页待 `data/xaction` 同步后再补）、[子程序输入参数的代码语言和高级分组](/v2/xaction/modules/subprogram#输入参数)、[屏幕录制](/v2/xaction/modules/screen-recording-ui#参数说明)与[后台屏幕录制](/v2/xaction/modules/screen-recording#参数说明)可填写 FFmpeg 编码参数，以及[贴图窗口按 `Y` 切换阴影、右键菜单常用窗口操作上移](/v2/features/screenshot/capture-pro#移动模式)。含显示器或虚拟桌面步骤的动作需要 2.2.20 或更高版本客户端，见 [体验前必读](/important-notice#2220-显示器与虚拟桌面步骤)；完整条目仍以[官网版本记录](https://getquicker.net/V2/Versions)为准。
+2.2.20 补充了 [显示器与虚拟桌面步骤](/v2/features/displays-and-desktops)及其参数页、[子程序输入参数的代码语言和高级分组](/v2/xaction/modules/subprogram#输入参数)、[屏幕录制](/v2/xaction/modules/screen-recording-ui#参数说明)与[后台屏幕录制](/v2/xaction/modules/screen-recording#参数说明)可填写 FFmpeg 编码参数、[AI 对话导入导出和侧边设计器](/v2/features/ai-and-agent)，以及[贴图窗口按 `Y` 切换阴影、右键菜单常用窗口操作上移](/v2/features/screenshot/capture-pro#移动模式)。含显示器或虚拟桌面步骤的动作需要 2.2.20 或更高版本客户端，见 [体验前必读](/important-notice#2220-显示器与虚拟桌面步骤)；完整条目仍以[官网版本记录](https://getquicker.net/V2/Versions)为准。
 
 升级到 2.1.23 或更高版本时仍需特别检查：**后台屏幕录制**步骤的默认录制范围改为“主屏幕”。已明确保存录制范围的动作不受影响；其它旧动作升级后请打开动作确认录制范围，避免原本依赖旧默认值的动作录到不符合预期的屏幕区域。
 

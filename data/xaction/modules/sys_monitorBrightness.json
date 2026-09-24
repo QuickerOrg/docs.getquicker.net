@@ -1,0 +1,191 @@
+{
+  "key": "sys:monitorBrightness",
+  "slug": "monitorbrightness",
+  "legacySlug": "monitorbrightness",
+  "ownsLegacyContent": true,
+  "name": "显示器",
+  "description": "获取显示器列表、读取显示器坐标与工作区，获取或调整指定显示器的硬件亮度。",
+  "category": "System",
+  "categoryName": "Windows系统",
+  "stepType": "Action",
+  "isRisky": false,
+  "isProOnly": false,
+  "helpLink": "",
+  "inputs": [
+    {
+      "key": "operation",
+      "name": "操作",
+      "type": "Enum",
+      "defaultValue": "get",
+      "required": true,
+      "variableMode": "Input",
+      "condition": "",
+      "description": ""
+    },
+    {
+      "key": "target",
+      "name": "目标显示器",
+      "type": "Enum",
+      "defaultValue": "mouse",
+      "required": false,
+      "variableMode": "UseVarOrInput",
+      "condition": "仅：get, set, increase, decrease, getMonitor, showBrightnessOsd",
+      "description": "在本步骤开始时确定目标。所有显示器逐块处理；复制显示无法唯一确定物理显示器时，请指定显示器。"
+    },
+    {
+      "key": "screenId",
+      "name": "指定显示器",
+      "type": "Text",
+      "defaultValue": "",
+      "required": true,
+      "variableMode": "UseVarOrInput",
+      "condition": "仅：specified",
+      "description": "通过显示器选择器选择设备，或传入先前输出的显示器标识。显示器不存在时不会自动改用另一块。"
+    },
+    {
+      "key": "targetBrightness",
+      "name": "目标亮度",
+      "type": "Number",
+      "defaultValue": "50.0",
+      "required": false,
+      "variableMode": "UseVarOrInput",
+      "condition": "仅：set",
+      "description": "目标亮度百分比，越界限制到 0–100。设备只支持部分档位时取最接近的档位；0 不表示关闭显示器。"
+    },
+    {
+      "key": "step",
+      "name": "调节幅度",
+      "type": "Integer",
+      "defaultValue": "5",
+      "required": false,
+      "variableMode": "UseVarOrInput",
+      "condition": "仅：increase, decrease",
+      "description": "1–100 的整数，单位为百分点。所有显示器分别根据各自当前亮度增减。"
+    },
+    {
+      "key": "showOsd",
+      "name": "显示亮度 OSD",
+      "type": "Boolean",
+      "defaultValue": "false",
+      "required": false,
+      "variableMode": "UseVarOrInput",
+      "condition": "仅：set, increase, decrease",
+      "description": "显示实际回读亮度，可拖动滑块继续调节。选择单个显示器时在其上显示；选择多个时，在鼠标所在显示器合并显示。闲置 2 秒后消失，交互和写入期间暂停计时；后续拖动不修改本步骤输出变量。"
+    },
+    {
+      "key": "stopIfFail",
+      "name": "失败后停止动作",
+      "type": "Boolean",
+      "defaultValue": "true",
+      "required": false,
+      "variableMode": "Input",
+      "condition": "",
+      "description": "所有显示器处理完成后再汇总失败；已完成的修改不会回滚。"
+    }
+  ],
+  "outputs": [
+    {
+      "key": "brightness",
+      "name": "当前亮度",
+      "type": "Number",
+      "condition": "",
+      "description": "实际读到的亮度，0–100。读取失败时不更新目标变量，请检查是否成功或各显示器结果。修改操作返回回读值。"
+    },
+    {
+      "key": "screenId",
+      "name": "显示器标识",
+      "type": "Text",
+      "condition": "仅：mouse, primary, specified",
+      "description": "本次实际选择的设备标识，可保存后传给后续步骤的指定显示器参数。"
+    },
+    {
+      "key": "results",
+      "name": "各显示器结果",
+      "type": "Table",
+      "condition": "",
+      "description": "亮度操作列：screenId、displayName、previousBrightness、targetBrightness、brightness、status、message。显示器信息列：screenId、displayName、logicalName、isPrimary、x、y、width、height、workX、workY、workWidth、workHeight、dpiX、dpiY。坐标为显示器像素，可能为负；未知数值为空。获取列表不会读取硬件亮度。"
+    },
+    {
+      "key": "isSuccess",
+      "name": "是否成功",
+      "type": "Boolean",
+      "condition": "",
+      "description": "至少有一个目标，且全部目标均成功时为是。"
+    },
+    {
+      "key": "errMessage",
+      "name": "错误信息",
+      "type": "Text",
+      "condition": "",
+      "description": "步骤执行出错时的消息"
+    }
+  ],
+  "selections": {
+    "operation": {
+      "name": "操作",
+      "items": [
+        {
+          "value": "get",
+          "name": "获取亮度",
+          "description": ""
+        },
+        {
+          "value": "set",
+          "name": "设置亮度",
+          "description": ""
+        },
+        {
+          "value": "increase",
+          "name": "增加亮度",
+          "description": ""
+        },
+        {
+          "value": "decrease",
+          "name": "降低亮度",
+          "description": ""
+        },
+        {
+          "value": "listMonitors",
+          "name": "获取显示器列表",
+          "description": ""
+        },
+        {
+          "value": "getMonitor",
+          "name": "获取显示器信息",
+          "description": ""
+        },
+        {
+          "value": "showBrightnessOsd",
+          "name": "显示亮度 OSD",
+          "description": ""
+        }
+      ]
+    },
+    "target": {
+      "name": "目标显示器",
+      "items": [
+        {
+          "value": "mouse",
+          "name": "鼠标所在显示器",
+          "description": ""
+        },
+        {
+          "value": "primary",
+          "name": "主显示器",
+          "description": ""
+        },
+        {
+          "value": "specified",
+          "name": "指定显示器",
+          "description": ""
+        },
+        {
+          "value": "all",
+          "name": "所有显示器",
+          "description": ""
+        }
+      ]
+    }
+  },
+  "sourceFileName": "sys_monitorBrightness_显示器.md"
+}

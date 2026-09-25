@@ -928,3 +928,60 @@ html[data-qk-embed] [class*='docMainContainer'] {
     padding-top: 0.4rem !important;
   }
 }
+
+/* Release notes: make the authoritative version history and V2 download easy to find. */
+.release-notes-hero {
+  margin: 1.25rem 0 1.5rem;
+  padding: clamp(1.1rem, 3vw, 1.75rem);
+  border: 1px solid var(--quicker-border-subtle);
+  border-radius: 12px;
+  background: linear-gradient(
+    135deg,
+    color-mix(in srgb, var(--ifm-color-primary) 10%, var(--ifm-background-color)),
+    var(--ifm-background-color) 75%
+  );
+}
+
+.release-notes-hero__eyebrow {
+  margin: 0 0 0.55rem;
+  color: var(--ifm-color-primary);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+}
+
+.release-notes-hero__lead {
+  max-width: 42rem;
+  margin-bottom: 1rem;
+  font-size: 1.05rem;
+  font-weight: 500;
+  line-height: 1.7;
+}
+
+.release-notes-hero__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.65rem;
+  margin-bottom: 0.8rem;
+}
+
+.release-notes-hero__actions .button {
+  white-space: normal;
+  text-align: center;
+}
+
+.release-notes-hero__footnote {
+  margin: 0;
+  color: var(--quicker-text-muted);
+  font-size: 0.82rem;
+}
+
+@media (max-width: 600px) {
+  .release-notes-hero__actions {
+    flex-direction: column;
+  }
+
+  .release-notes-hero__actions .button {
+    width: 100%;
+  }
+}

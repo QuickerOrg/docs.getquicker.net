@@ -174,18 +174,33 @@ async function fetchWithTimeout(url: string): Promise<Response> {
 }
 
 async function fetchPageHtml(pathname: string, search: string): Promise<string> {
-  const paths = [pathname];
-  const alt =
+  // Prefer the trailing-slash URL first. Production nginx redirects bare paths
+  // to `http://docs.getquicker.net/.../` (scheme downgrade). fetch() from an
+  // https page then fails as mixed content, and the old loop never reached the
+  // slash candidate because the first attempt threw.
+  const withSlash = pathname.endsWith('/') ? pathname : `${pathname}/`;
+  const withoutSlash =
     pathname.endsWith('/') && pathname.length > 1
       ? pathname.slice(0, -1)
-      : `${pathname}/`;
-  if (alt !== pathname) paths.push(alt);
+      : pathname;
+  const paths =
+    withSlash === withoutSlash ? [withSlash] : [withSlash, withoutSlash];
 
   let lastStatus = 0;
+  let lastError: unknown;
   for (const path of paths) {
-    const res = await fetchWithTimeout(`${path}${search}`);
-    lastStatus = res.status;
-    if (res.ok) return res.text();
+    try {
+      const res = await fetchWithTimeout(`${path}${search}`);
+      lastStatus = res.status;
+      if (res.ok) {
+        return res.text();
+      }
+    } catch (error) {
+      lastError = error;
+    }
+  }
+  if (lastError) {
+    throw lastError;
   }
   throw new Error(`Preview fetch failed (${lastStatus})`);
 }

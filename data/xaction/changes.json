@@ -1,327 +1,212 @@
 {
   "schemaVersion": 1,
   "baselineCreated": false,
-  "fromGeneratedAt": "2026-09-22 21:47:06",
-  "toGeneratedAt": "2026-09-24 08:30:46",
+  "fromGeneratedAt": "2026-09-24 08:30:46",
+  "toGeneratedAt": "2026-09-25 22:26:23",
   "summary": {
-    "addedModules": 2,
-    "removedModules": 0,
-    "changedModules": 4
+    "addedModules": 1,
+    "removedModules": 1,
+    "changedModules": 3
   },
   "addedModules": [
+    {
+      "key": "sys:monitor",
+      "name": "显示器",
+      "slug": "monitor",
+      "category": "System"
+    }
+  ],
+  "removedModules": [
     {
       "key": "sys:monitorBrightness",
       "name": "显示器",
       "slug": "monitorbrightness",
       "category": "System"
-    },
-    {
-      "key": "sys:virtualDesktop",
-      "name": "虚拟桌面",
-      "slug": "virtualdesktop",
-      "category": "System"
     }
   ],
-  "removedModules": [],
   "changedModules": [
     {
-      "key": "sys:screenRecording",
-      "name": "后台屏幕录制",
+      "key": "sys:notify",
+      "name": "提示消息",
+      "changedFields": [],
+      "inputs": {
+        "added": [],
+        "removed": [],
+        "changed": []
+      },
+      "outputs": {
+        "added": [],
+        "removed": [],
+        "changed": []
+      },
+      "selectionsChanged": true,
+      "selections": {
+        "before": {
+          "type": {
+            "name": "类型",
+            "items": [
+              {
+                "value": "Success",
+                "name": "成功",
+                "description": ""
+              },
+              {
+                "value": "Info",
+                "name": "信息",
+                "description": ""
+              },
+              {
+                "value": "Warning",
+                "name": "告警",
+                "description": ""
+              },
+              {
+                "value": "Error",
+                "name": "错误",
+                "description": ""
+              },
+              {
+                "value": "WindowsToast",
+                "name": "Windows 通知 (win10+)",
+                "description": ""
+              }
+            ]
+          },
+          "placement": {
+            "name": "显示位置",
+            "items": [
+              {
+                "value": "BottomCenter",
+                "name": "默认位置（底部居中）",
+                "description": ""
+              },
+              {
+                "value": "TopLeft",
+                "name": "左上角",
+                "description": ""
+              },
+              {
+                "value": "TopCenter",
+                "name": "顶部居中",
+                "description": ""
+              },
+              {
+                "value": "TopRight",
+                "name": "右上角",
+                "description": ""
+              },
+              {
+                "value": "BottomLeft",
+                "name": "左下角",
+                "description": ""
+              },
+              {
+                "value": "BottomRight",
+                "name": "右下角",
+                "description": ""
+              }
+            ]
+          }
+        },
+        "after": {
+          "type": {
+            "name": "类型",
+            "items": [
+              {
+                "value": "Success",
+                "name": "成功",
+                "description": ""
+              },
+              {
+                "value": "Info",
+                "name": "信息",
+                "description": ""
+              },
+              {
+                "value": "Warning",
+                "name": "告警",
+                "description": ""
+              },
+              {
+                "value": "Error",
+                "name": "错误",
+                "description": ""
+              },
+              {
+                "value": "WindowsToast",
+                "name": "Windows 通知 (win10+)",
+                "description": ""
+              }
+            ]
+          },
+          "placement": {
+            "name": "显示位置",
+            "items": [
+              {
+                "value": "BottomCenter",
+                "name": "默认位置（使用全局设置）",
+                "description": ""
+              },
+              {
+                "value": "TopLeft",
+                "name": "左上角",
+                "description": ""
+              },
+              {
+                "value": "TopCenter",
+                "name": "顶部居中",
+                "description": ""
+              },
+              {
+                "value": "TopRight",
+                "name": "右上角",
+                "description": ""
+              },
+              {
+                "value": "BottomLeft",
+                "name": "左下角",
+                "description": ""
+              },
+              {
+                "value": "BottomRight",
+                "name": "右下角",
+                "description": ""
+              },
+              {
+                "value": "FixedBottomCenter",
+                "name": "底部居中",
+                "description": ""
+              }
+            ]
+          }
+        }
+      }
+    },
+    {
+      "key": "sys:manageList",
+      "name": "管理和排序列表",
       "changedFields": [],
       "inputs": {
         "added": [
           {
-            "key": "encodingPreset",
-            "name": "编码方案",
-            "type": "Enum",
-            "defaultValue": "default",
-            "required": false,
-            "variableMode": "UseVarOrInput",
-            "condition": "",
-            "description": "可选快捷配置，默认沿用原有画质；FFmpeg 参数可覆盖方案。"
-          },
-          {
-            "key": "encodingParameters",
-            "name": "FFmpeg 参数",
+            "key": "addSubprogram",
+            "name": "添加项子程序",
             "type": "Text",
             "defaultValue": "",
             "required": false,
-            "variableMode": "UseVarOrInput",
+            "variableMode": "Input",
             "condition": "",
-            "description": "直接传给本机 FFmpeg，覆盖预设；留空沿用默认。例：-crf 20 -preset veryfast。"
-          }
-        ],
-        "removed": [],
-        "changed": []
-      },
-      "outputs": {
-        "added": [],
-        "removed": [],
-        "changed": []
-      },
-      "selectionsChanged": true,
-      "selections": {
-        "before": {
-          "operation": {
-            "name": "操作",
-            "items": [
-              {
-                "value": "start",
-                "name": "开始录屏",
-                "description": ""
-              },
-              {
-                "value": "pause",
-                "name": "暂停录屏",
-                "description": ""
-              },
-              {
-                "value": "resume",
-                "name": "继续录屏",
-                "description": ""
-              },
-              {
-                "value": "stop",
-                "name": "结束录屏",
-                "description": ""
-              }
-            ]
-          },
-          "regionType": {
-            "name": "录制范围",
-            "items": [
-              {
-                "value": "fixed_area",
-                "name": "固定区域",
-                "description": ""
-              },
-              {
-                "value": "primary_screen",
-                "name": "主屏幕",
-                "description": ""
-              },
-              {
-                "value": "full_screen",
-                "name": "所有屏幕",
-                "description": ""
-              }
-            ]
-          },
-          "outputFormat": {
-            "name": "输出格式",
-            "items": [
-              {
-                "value": "mp4",
-                "name": "MP4",
-                "description": ""
-              },
-              {
-                "value": "gif",
-                "name": "GIF",
-                "description": ""
-              },
-              {
-                "value": "avi",
-                "name": "AVI",
-                "description": ""
-              }
-            ]
-          },
-          "exportQuality": {
-            "name": "导出画质",
-            "items": [
-              {
-                "value": "standard",
-                "name": "标准",
-                "description": ""
-              },
-              {
-                "value": "high",
-                "name": "高清",
-                "description": ""
-              },
-              {
-                "value": "original",
-                "name": "原始",
-                "description": ""
-              }
-            ]
-          },
-          "encodingStrategy": {
-            "name": "编码策略",
-            "items": [
-              {
-                "value": "encodeWhileRecording",
-                "name": "实时编码",
-                "description": ""
-              },
-              {
-                "value": "recordThenEncode",
-                "name": "录制结束后转码",
-                "description": ""
-              }
-            ]
-          }
-        },
-        "after": {
-          "operation": {
-            "name": "操作",
-            "items": [
-              {
-                "value": "start",
-                "name": "开始录屏",
-                "description": ""
-              },
-              {
-                "value": "pause",
-                "name": "暂停录屏",
-                "description": ""
-              },
-              {
-                "value": "resume",
-                "name": "继续录屏",
-                "description": ""
-              },
-              {
-                "value": "stop",
-                "name": "结束录屏",
-                "description": ""
-              }
-            ]
-          },
-          "regionType": {
-            "name": "录制范围",
-            "items": [
-              {
-                "value": "fixed_area",
-                "name": "固定区域",
-                "description": ""
-              },
-              {
-                "value": "primary_screen",
-                "name": "主屏幕",
-                "description": ""
-              },
-              {
-                "value": "full_screen",
-                "name": "所有屏幕",
-                "description": ""
-              }
-            ]
-          },
-          "outputFormat": {
-            "name": "输出格式",
-            "items": [
-              {
-                "value": "mp4",
-                "name": "MP4",
-                "description": ""
-              },
-              {
-                "value": "gif",
-                "name": "GIF",
-                "description": ""
-              },
-              {
-                "value": "avi",
-                "name": "AVI",
-                "description": ""
-              }
-            ]
-          },
-          "exportQuality": {
-            "name": "导出画质",
-            "items": [
-              {
-                "value": "standard",
-                "name": "标准",
-                "description": ""
-              },
-              {
-                "value": "high",
-                "name": "高清",
-                "description": ""
-              },
-              {
-                "value": "original",
-                "name": "原始",
-                "description": ""
-              }
-            ]
-          },
-          "encodingPreset": {
-            "name": "编码方案",
-            "items": [
-              {
-                "value": "default",
-                "name": "沿用原有画质",
-                "description": ""
-              },
-              {
-                "value": "balanced",
-                "name": "均衡",
-                "description": ""
-              },
-              {
-                "value": "text",
-                "name": "文字清晰",
-                "description": ""
-              },
-              {
-                "value": "compact",
-                "name": "小体积",
-                "description": ""
-              },
-              {
-                "value": "lowCpu",
-                "name": "低 CPU 占用",
-                "description": ""
-              }
-            ]
-          },
-          "encodingStrategy": {
-            "name": "编码策略",
-            "items": [
-              {
-                "value": "encodeWhileRecording",
-                "name": "实时编码",
-                "description": ""
-              },
-              {
-                "value": "recordThenEncode",
-                "name": "录制结束后转码",
-                "description": ""
-              }
-            ]
-          }
-        }
-      }
-    },
-    {
-      "key": "sys:screenRecordingUI",
-      "name": "屏幕录制",
-      "changedFields": [],
-      "inputs": {
-        "added": [
-          {
-            "key": "encodingPreset",
-            "name": "编码方案",
-            "type": "Enum",
-            "defaultValue": "default",
-            "required": false,
-            "variableMode": "UseVarOrInput",
-            "condition": "",
-            "description": "可选快捷配置，默认沿用原有画质；FFmpeg 参数可覆盖方案。"
+            "description": "可选，留空使用内置编辑器。输入：_item（文本，空串）、_index（数字，0起始插入位置）、_isNew（布尔，true）。输出：_confirmed（布尔）为true时，使用_item（文本）添加一项。"
           },
           {
-            "key": "encodingParameters",
-            "name": "FFmpeg 参数",
+            "key": "editSubprogram",
+            "name": "编辑项子程序",
             "type": "Text",
             "defaultValue": "",
             "required": false,
-            "variableMode": "UseVarOrInput",
+            "variableMode": "Input",
             "condition": "",
-            "description": "直接传给本机 FFmpeg，覆盖预设；留空沿用默认。例：-crf 20 -preset veryfast。"
+            "description": "可选，留空使用内置编辑器。输入：_item（原始文本）、_index（数字，0起始索引）、_isNew（布尔，false）。输出：_confirmed（布尔）为true时，使用_item（文本）替换当前项；取消不修改列表。"
           }
         ],
         "removed": [],
@@ -332,537 +217,25 @@
         "removed": [],
         "changed": []
       },
-      "selectionsChanged": true,
-      "selections": {
-        "before": {
-          "regionType": {
-            "name": "录制范围",
-            "items": [
-              {
-                "value": "none",
-                "name": "手动框选",
-                "description": ""
-              },
-              {
-                "value": "primary_screen",
-                "name": "主屏幕",
-                "description": ""
-              },
-              {
-                "value": "full_screen",
-                "name": "所有屏幕",
-                "description": ""
-              },
-              {
-                "value": "fixed_area",
-                "name": "固定区域",
-                "description": ""
-              }
-            ]
-          }
-        },
-        "after": {
-          "regionType": {
-            "name": "录制范围",
-            "items": [
-              {
-                "value": "none",
-                "name": "手动框选",
-                "description": ""
-              },
-              {
-                "value": "primary_screen",
-                "name": "主屏幕",
-                "description": ""
-              },
-              {
-                "value": "full_screen",
-                "name": "所有屏幕",
-                "description": ""
-              },
-              {
-                "value": "fixed_area",
-                "name": "固定区域",
-                "description": ""
-              }
-            ]
-          },
-          "encodingPreset": {
-            "name": "编码方案",
-            "items": [
-              {
-                "value": "default",
-                "name": "沿用原有画质",
-                "description": ""
-              },
-              {
-                "value": "balanced",
-                "name": "均衡",
-                "description": ""
-              },
-              {
-                "value": "text",
-                "name": "文字清晰",
-                "description": ""
-              },
-              {
-                "value": "compact",
-                "name": "小体积",
-                "description": ""
-              },
-              {
-                "value": "lowCpu",
-                "name": "低 CPU 占用",
-                "description": ""
-              }
-            ]
-          }
-        }
-      }
+      "selectionsChanged": false
     },
     {
-      "key": "sys:remoteFile",
-      "name": "远程文件",
-      "changedFields": [
-        "description"
-      ],
-      "inputs": {
-        "added": [],
-        "removed": [],
-        "changed": []
-      },
-      "outputs": {
-        "added": [
-          {
-            "key": "accountList",
-            "name": "账号列表",
-            "type": "List",
-            "condition": "仅：listAccounts",
-            "description": "本机远程文件账号，每项为“显示名（引用名）|引用名”；可直接作为“选择窗口”的选项。"
-          }
-        ],
-        "removed": [],
-        "changed": []
-      },
-      "selectionsChanged": true,
-      "selections": {
-        "before": {
-          "operation": {
-            "name": "操作",
-            "items": [
-              {
-                "value": "upload",
-                "name": "上传",
-                "description": ""
-              },
-              {
-                "value": "download",
-                "name": "下载/读取内容",
-                "description": ""
-              },
-              {
-                "value": "list",
-                "name": "列目录",
-                "description": ""
-              },
-              {
-                "value": "query",
-                "name": "查询",
-                "description": ""
-              },
-              {
-                "value": "createDirectory",
-                "name": "新建目录",
-                "description": ""
-              },
-              {
-                "value": "deleteFile",
-                "name": "删除文件",
-                "description": ""
-              },
-              {
-                "value": "moveFile",
-                "name": "移动/重命名文件",
-                "description": ""
-              },
-              {
-                "value": "copyFile",
-                "name": "复制文件",
-                "description": ""
-              },
-              {
-                "value": "batchRead",
-                "name": "批量读取内容",
-                "description": ""
-              },
-              {
-                "value": "batchDownload",
-                "name": "批量下载文件",
-                "description": ""
-              },
-              {
-                "value": "uploadFolder",
-                "name": "上传文件夹",
-                "description": ""
-              },
-              {
-                "value": "downloadFolder",
-                "name": "下载文件夹",
-                "description": ""
-              }
-            ]
-          },
-          "uploadSource": {
-            "name": "上传内容",
-            "items": [
-              {
-                "value": "file",
-                "name": "本地文件",
-                "description": ""
-              },
-              {
-                "value": "text",
-                "name": "文本",
-                "description": ""
-              },
-              {
-                "value": "bytes",
-                "name": "字节数组",
-                "description": ""
-              },
-              {
-                "value": "image",
-                "name": "图片",
-                "description": ""
-              }
-            ]
-          },
-          "batchContent": {
-            "name": "读取内容",
-            "items": [
-              {
-                "value": "text",
-                "name": "文本",
-                "description": ""
-              },
-              {
-                "value": "bytes",
-                "name": "字节数组",
-                "description": ""
-              }
-            ]
-          },
-          "downloadMode": {
-            "name": "下载方式",
-            "items": [
-              {
-                "value": "file",
-                "name": "保存为本地文件",
-                "description": ""
-              },
-              {
-                "value": "text",
-                "name": "读取为文本",
-                "description": ""
-              },
-              {
-                "value": "bytes",
-                "name": "读取为字节数组",
-                "description": ""
-              },
-              {
-                "value": "image",
-                "name": "图片",
-                "description": ""
-              }
-            ]
-          },
-          "imageFormat": {
-            "name": "图片格式",
-            "items": [
-              {
-                "value": "png",
-                "name": "PNG",
-                "description": ""
-              },
-              {
-                "value": "jpeg",
-                "name": "JPEG",
-                "description": ""
-              }
-            ]
-          },
-          "existsPolicy": {
-            "name": "已存在时",
-            "items": [
-              {
-                "value": "fail",
-                "name": "失败",
-                "description": ""
-              },
-              {
-                "value": "skip",
-                "name": "跳过",
-                "description": ""
-              },
-              {
-                "value": "overwrite",
-                "name": "覆盖",
-                "description": ""
-              }
-            ]
-          },
-          "moveExistsPolicy": {
-            "name": "目标已存在时",
-            "items": [
-              {
-                "value": "fail",
-                "name": "失败",
-                "description": ""
-              },
-              {
-                "value": "overwrite",
-                "name": "覆盖",
-                "description": ""
-              }
-            ]
-          },
-          "listFilter": {
-            "name": "列出",
-            "items": [
-              {
-                "value": "all",
-                "name": "全部",
-                "description": ""
-              },
-              {
-                "value": "files",
-                "name": "只列文件",
-                "description": ""
-              },
-              {
-                "value": "directories",
-                "name": "只列目录",
-                "description": ""
-              }
-            ]
-          }
-        },
-        "after": {
-          "operation": {
-            "name": "操作",
-            "items": [
-              {
-                "value": "listAccounts",
-                "name": "获取账号列表",
-                "description": ""
-              },
-              {
-                "value": "upload",
-                "name": "上传",
-                "description": ""
-              },
-              {
-                "value": "download",
-                "name": "下载/读取内容",
-                "description": ""
-              },
-              {
-                "value": "list",
-                "name": "列目录",
-                "description": ""
-              },
-              {
-                "value": "query",
-                "name": "查询",
-                "description": ""
-              },
-              {
-                "value": "createDirectory",
-                "name": "新建目录",
-                "description": ""
-              },
-              {
-                "value": "deleteFile",
-                "name": "删除文件",
-                "description": ""
-              },
-              {
-                "value": "moveFile",
-                "name": "移动/重命名文件",
-                "description": ""
-              },
-              {
-                "value": "copyFile",
-                "name": "复制文件",
-                "description": ""
-              },
-              {
-                "value": "batchRead",
-                "name": "批量读取内容",
-                "description": ""
-              },
-              {
-                "value": "batchDownload",
-                "name": "批量下载文件",
-                "description": ""
-              },
-              {
-                "value": "uploadFolder",
-                "name": "上传文件夹",
-                "description": ""
-              },
-              {
-                "value": "downloadFolder",
-                "name": "下载文件夹",
-                "description": ""
-              }
-            ]
-          },
-          "uploadSource": {
-            "name": "上传内容",
-            "items": [
-              {
-                "value": "file",
-                "name": "本地文件",
-                "description": ""
-              },
-              {
-                "value": "text",
-                "name": "文本",
-                "description": ""
-              },
-              {
-                "value": "bytes",
-                "name": "字节数组",
-                "description": ""
-              },
-              {
-                "value": "image",
-                "name": "图片",
-                "description": ""
-              }
-            ]
-          },
-          "batchContent": {
-            "name": "读取内容",
-            "items": [
-              {
-                "value": "text",
-                "name": "文本",
-                "description": ""
-              },
-              {
-                "value": "bytes",
-                "name": "字节数组",
-                "description": ""
-              }
-            ]
-          },
-          "downloadMode": {
-            "name": "下载方式",
-            "items": [
-              {
-                "value": "file",
-                "name": "保存为本地文件",
-                "description": ""
-              },
-              {
-                "value": "text",
-                "name": "读取为文本",
-                "description": ""
-              },
-              {
-                "value": "bytes",
-                "name": "读取为字节数组",
-                "description": ""
-              },
-              {
-                "value": "image",
-                "name": "图片",
-                "description": ""
-              }
-            ]
-          },
-          "imageFormat": {
-            "name": "图片格式",
-            "items": [
-              {
-                "value": "png",
-                "name": "PNG",
-                "description": ""
-              },
-              {
-                "value": "jpeg",
-                "name": "JPEG",
-                "description": ""
-              }
-            ]
-          },
-          "existsPolicy": {
-            "name": "已存在时",
-            "items": [
-              {
-                "value": "fail",
-                "name": "失败",
-                "description": ""
-              },
-              {
-                "value": "skip",
-                "name": "跳过",
-                "description": ""
-              },
-              {
-                "value": "overwrite",
-                "name": "覆盖",
-                "description": ""
-              }
-            ]
-          },
-          "moveExistsPolicy": {
-            "name": "目标已存在时",
-            "items": [
-              {
-                "value": "fail",
-                "name": "失败",
-                "description": ""
-              },
-              {
-                "value": "overwrite",
-                "name": "覆盖",
-                "description": ""
-              }
-            ]
-          },
-          "listFilter": {
-            "name": "列出",
-            "items": [
-              {
-                "value": "all",
-                "name": "全部",
-                "description": ""
-              },
-              {
-                "value": "files",
-                "name": "只列文件",
-                "description": ""
-              },
-              {
-                "value": "directories",
-                "name": "只列目录",
-                "description": ""
-              }
-            ]
-          }
-        }
-      }
-    },
-    {
-      "key": "sys:textSelectTools",
-      "name": "辅助选择工具",
+      "key": "sys:showText",
+      "name": "文本窗口",
       "changedFields": [],
       "inputs": {
-        "added": [],
+        "added": [
+          {
+            "key": "rememberWindowPlacement",
+            "name": "记住上次位置和大小",
+            "type": "Boolean",
+            "defaultValue": "false",
+            "required": false,
+            "variableMode": "Input",
+            "condition": "仅：WAIT, NO_WAIT",
+            "description": "关闭窗口后保存位置和大小，下次运行此动作时恢复。按文本窗口标识分别记忆；全屏或最大化的位置类型不使用记忆位置。"
+          }
+        ],
         "removed": [],
         "changed": []
       },
@@ -871,283 +244,7 @@
         "removed": [],
         "changed": []
       },
-      "selectionsChanged": true,
-      "selections": {
-        "before": {
-          "operation": {
-            "name": "选择器",
-            "items": [
-              {
-                "value": "SelectSingleFile",
-                "name": "选取文件",
-                "description": ""
-              },
-              {
-                "value": "SelectMultiFile",
-                "name": "选取(多个)文件",
-                "description": ""
-              },
-              {
-                "value": "SelectSingleFolder",
-                "name": "选取文件夹",
-                "description": ""
-              },
-              {
-                "value": "SelectSavePath",
-                "name": "选择保存路径",
-                "description": ""
-              },
-              {
-                "value": "SelectProcessPath",
-                "name": "选择窗口的进程路径",
-                "description": ""
-              },
-              {
-                "value": "SelectProcessName",
-                "name": "选择进程名",
-                "description": ""
-              },
-              {
-                "value": "SelectProfileExe",
-                "name": "选择场景标识",
-                "description": ""
-              },
-              {
-                "value": "SelectWindowHandle",
-                "name": "选择窗口句柄",
-                "description": ""
-              },
-              {
-                "value": "SelectKeyName",
-                "name": "从键盘输入键名",
-                "description": ""
-              },
-              {
-                "value": "SelectSendKeysData",
-                "name": "从键盘输入模拟按键B的内容",
-                "description": ""
-              },
-              {
-                "value": "SelectKeyCode",
-                "name": "从键盘输入键码数字",
-                "description": ""
-              },
-              {
-                "value": "SelectLocationArea",
-                "name": "选取区域",
-                "description": ""
-              },
-              {
-                "value": "SelectLocationPoint",
-                "name": "选取坐标位置",
-                "description": ""
-              },
-              {
-                "value": "SelectRelativePoint",
-                "name": "选取窗口坐标位置",
-                "description": ""
-              },
-              {
-                "value": "CaptureToFile",
-                "name": "截图并获取路径",
-                "description": ""
-              },
-              {
-                "value": "SelectIcon",
-                "name": "选取矢量图标",
-                "description": ""
-              },
-              {
-                "value": "SelectActionId",
-                "name": "选取动作ID",
-                "description": ""
-              },
-              {
-                "value": "SelectActionName",
-                "name": "选取动作名称",
-                "description": ""
-              },
-              {
-                "value": "SelectControlXPath",
-                "name": "选择窗口控件，获取其XPath",
-                "description": ""
-              },
-              {
-                "value": "OperationItemEditor",
-                "name": "操作项编辑器",
-                "description": ""
-              },
-              {
-                "value": "SelectBluetoothDevice",
-                "name": "已配对的蓝牙设备",
-                "description": ""
-              },
-              {
-                "value": "SelectBluetoothLEDevice",
-                "name": "低功耗蓝牙设备",
-                "description": ""
-              },
-              {
-                "value": "SelectNetworkProfile",
-                "name": "网络连接",
-                "description": ""
-              },
-              {
-                "value": "SelectWebElementSelector",
-                "name": "网页元素的CSS选择器",
-                "description": ""
-              },
-              {
-                "value": "SelectFontFamily",
-                "name": "选择字体名称",
-                "description": ""
-              }
-            ]
-          }
-        },
-        "after": {
-          "operation": {
-            "name": "选择器",
-            "items": [
-              {
-                "value": "SelectSingleFile",
-                "name": "选取文件",
-                "description": ""
-              },
-              {
-                "value": "SelectMultiFile",
-                "name": "选取(多个)文件",
-                "description": ""
-              },
-              {
-                "value": "SelectSingleFolder",
-                "name": "选取文件夹",
-                "description": ""
-              },
-              {
-                "value": "SelectSavePath",
-                "name": "选择保存路径",
-                "description": ""
-              },
-              {
-                "value": "SelectProcessPath",
-                "name": "选择窗口的进程路径",
-                "description": ""
-              },
-              {
-                "value": "SelectProcessName",
-                "name": "选择进程名",
-                "description": ""
-              },
-              {
-                "value": "SelectProfileExe",
-                "name": "选择场景标识",
-                "description": ""
-              },
-              {
-                "value": "SelectWindowHandle",
-                "name": "选择窗口句柄",
-                "description": ""
-              },
-              {
-                "value": "SelectKeyName",
-                "name": "从键盘输入键名",
-                "description": ""
-              },
-              {
-                "value": "SelectSendKeysData",
-                "name": "从键盘输入模拟按键B的内容",
-                "description": ""
-              },
-              {
-                "value": "SelectKeyCode",
-                "name": "从键盘输入键码数字",
-                "description": ""
-              },
-              {
-                "value": "SelectLocationArea",
-                "name": "选取区域",
-                "description": ""
-              },
-              {
-                "value": "SelectLocationPoint",
-                "name": "选取坐标位置",
-                "description": ""
-              },
-              {
-                "value": "SelectRelativePoint",
-                "name": "选取窗口坐标位置",
-                "description": ""
-              },
-              {
-                "value": "CaptureToFile",
-                "name": "截图并获取路径",
-                "description": ""
-              },
-              {
-                "value": "SelectIcon",
-                "name": "选取矢量图标",
-                "description": ""
-              },
-              {
-                "value": "SelectActionId",
-                "name": "选取动作ID",
-                "description": ""
-              },
-              {
-                "value": "SelectActionName",
-                "name": "选取动作名称",
-                "description": ""
-              },
-              {
-                "value": "SelectControlXPath",
-                "name": "选择窗口控件，获取其XPath",
-                "description": ""
-              },
-              {
-                "value": "OperationItemEditor",
-                "name": "操作项编辑器",
-                "description": ""
-              },
-              {
-                "value": "SelectBluetoothDevice",
-                "name": "已配对的蓝牙设备",
-                "description": ""
-              },
-              {
-                "value": "SelectBluetoothLEDevice",
-                "name": "低功耗蓝牙设备",
-                "description": ""
-              },
-              {
-                "value": "SelectNetworkProfile",
-                "name": "网络连接",
-                "description": ""
-              },
-              {
-                "value": "SelectWebElementSelector",
-                "name": "网页元素的CSS选择器",
-                "description": ""
-              },
-              {
-                "value": "SelectFontFamily",
-                "name": "选择字体名称",
-                "description": ""
-              },
-              {
-                "value": "SelectMonitor",
-                "name": "选择显示器设备标识",
-                "description": ""
-              },
-              {
-                "value": "SelectVirtualDesktop",
-                "name": "选择虚拟桌面标识",
-                "description": ""
-              }
-            ]
-          }
-        }
-      }
+      "selectionsChanged": false
     }
   ]
 }

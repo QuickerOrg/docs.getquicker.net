@@ -364,7 +364,7 @@ function PreviewForItem({item}: {item: ReviewItem}): ReactNode {
           selectedIcon={p.selectedIcon}
           results={safeParseJson(p.results)}
           selectedIndex={p.selectedIndex != null ? Number(p.selectedIndex) : undefined}
-          animate={p.animate !== 'false'}
+          animate={p.animate === 'true'}
         />
       );
     case 'ElseToggleMenuDemo':

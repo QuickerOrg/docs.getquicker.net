@@ -30,6 +30,13 @@ comments: true
 
 ## 近期文档补充
 
+### 2.2.22 · 列表编辑、提示消息与 Agent
+
+- 补充[列表项自定义子程序编辑](/v2/xaction/modules/managelist#自定义添加和编辑)的变量约定、表单示例和取消行为。
+- 补充[提示消息默认位置与时长同步](/v2/xaction/modules/notify#全局默认位置和时长)，以及[键鼠脚本提示选项](/v2/xaction/modules/automationscript#提示选项)的默认值规则。
+- 更新[Agent 对话文件导入导出和步骤加入对话](/v2/features/ai-and-agent)、[最近动作的编辑访问记录](/v2/features/action-panel/usage#调整动作顺序)。
+- 补充[长截图重来](/v2/features/screenshot/capture-pro#长截图编辑)，并更新截图、贴图和录屏标注快捷键。同步设置、旧客户端和快捷键变化见[升级注意](/important-notice#2222-提示设置与编辑操作)。
+
 ### 2.2.21 · 代码补全与动作面板
 
 - [代码补全服务](/v2/xaction/concepts/xaction-editor#代码补全服务)默认在线提供，也可在「设置 → 动作设计」安装本地组件。在线补全会向服务器发送编辑中的代码等信息，详见[升级注意](/important-notice#2221-代码补全服务)。

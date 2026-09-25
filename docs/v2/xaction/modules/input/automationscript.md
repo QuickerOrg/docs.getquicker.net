@@ -8,7 +8,7 @@ quickerDocKey: "xaction/module/sys:automationScript"
 comments: true
 moduleKey: "sys:automationScript"
 docStatus: "reviewed"
-metadataGeneratedAt: "2026-08-24 20:01:39"
+metadataGeneratedAt: "2026-09-25 22:26:23"
 ---
 
 # 自动化脚本
@@ -473,7 +473,7 @@ notify.show("正在同步", {
 });
 ```
 
-`placement` 支持 `bottomCenter`、`bottomLeft`、`bottomRight`、`topCenter`、`topLeft`、`topRight`，默认 `bottomCenter`。`title` 最长 128 个字符，`key` 最长 64 个字符且不能全是空白。
+`placement` 支持 `bottomCenter`、`bottomLeft`、`bottomRight`、`topCenter`、`topLeft`、`topRight`。2.2.22 起，省略 `placement` 时跟随[提示消息的全局默认位置](/v2/xaction/modules/notify#全局默认位置和时长)；明确传入 `bottomCenter` 则固定在底部居中。省略 `durationMs` 或设为 `0` 时使用全局默认时长。`title` 最长 128 个字符，`key` 最长 64 个字符且不能全是空白。
 
 相同 `key` 只在当前动作范围内参与去重：`replace` 替换已有消息，`count` 合并并累计次数，`ignore` 忽略新的重复消息。每次脚本最多显示 20 条提示，每秒最多 5 条；超过限制返回 `NOTIFY_LIMIT_EXCEEDED`。
 

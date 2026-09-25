@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-09-24 08:30:46",
+  "generatedAt": "2026-09-25 22:26:23",
   "moduleCount": 175,
   "legacyMappedModuleCount": 0,
   "migratedLegacyModuleCount": 0,
@@ -3054,7 +3054,7 @@
           "items": [
             {
               "value": "BottomCenter",
-              "name": "默认位置（底部居中）",
+              "name": "默认位置（使用全局设置）",
               "description": ""
             },
             {
@@ -3080,6 +3080,11 @@
             {
               "value": "BottomRight",
               "name": "右下角",
+              "description": ""
+            },
+            {
+              "value": "FixedBottomCenter",
+              "name": "底部居中",
               "description": ""
             }
           ]
@@ -5979,6 +5984,26 @@
           "variableMode": "Input",
           "condition": "",
           "description": "点击弹出显示帮助内容，MarkDown格式"
+        },
+        {
+          "key": "addSubprogram",
+          "name": "添加项子程序",
+          "type": "Text",
+          "defaultValue": "",
+          "required": false,
+          "variableMode": "Input",
+          "condition": "",
+          "description": "可选，留空使用内置编辑器。输入：_item（文本，空串）、_index（数字，0起始插入位置）、_isNew（布尔，true）。输出：_confirmed（布尔）为true时，使用_item（文本）添加一项。"
+        },
+        {
+          "key": "editSubprogram",
+          "name": "编辑项子程序",
+          "type": "Text",
+          "defaultValue": "",
+          "required": false,
+          "variableMode": "Input",
+          "condition": "",
+          "description": "可选，留空使用内置编辑器。输入：_item（原始文本）、_index（数字，0起始索引）、_isNew（布尔，false）。输出：_confirmed（布尔）为true时，使用_item（文本）替换当前项；取消不修改列表。"
         }
       ],
       "outputs": [
@@ -34961,9 +34986,9 @@
       "sourceFileName": "sys_fileSystemWatch_文件系统监控.md"
     },
     {
-      "key": "sys:monitorBrightness",
-      "slug": "monitorbrightness",
-      "legacySlug": "monitorbrightness",
+      "key": "sys:monitor",
+      "slug": "monitor",
+      "legacySlug": "monitor",
       "ownsLegacyContent": true,
       "name": "显示器",
       "description": "获取显示器列表、读取显示器坐标与工作区，获取或调整指定显示器的硬件亮度。",
@@ -35149,7 +35174,7 @@
           ]
         }
       },
-      "sourceFileName": "sys_monitorBrightness_显示器.md"
+      "sourceFileName": "sys_monitor_显示器.md"
     },
     {
       "key": "sys:sendMessage",
@@ -38023,6 +38048,16 @@
           "variableMode": "Input",
           "condition": "仅：WAIT, NO_WAIT",
           "description": "宽度,高度：逻辑像素或屏幕工作区百分比；自定义位置填坐标。"
+        },
+        {
+          "key": "rememberWindowPlacement",
+          "name": "记住上次位置和大小",
+          "type": "Boolean",
+          "defaultValue": "false",
+          "required": false,
+          "variableMode": "Input",
+          "condition": "仅：WAIT, NO_WAIT",
+          "description": "关闭窗口后保存位置和大小，下次运行此动作时恢复。按文本窗口标识分别记忆；全屏或最大化的位置类型不使用记忆位置。"
         },
         {
           "key": "topMost",

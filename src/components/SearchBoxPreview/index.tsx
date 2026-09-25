@@ -27,7 +27,10 @@ export type SearchBoxPreviewProps = {
   selectedIcon?: string;
   results?: readonly SearchBoxResultItem[];
   selectedIndex?: number;
-  /** Cycle pick → param (or live query growth) when motion allowed. */
+  /**
+   * Cycle pick → param (or live query growth) when motion allowed.
+   * Off by default: pick/param differ in height, so looping shakes the page.
+   */
   animate?: boolean;
   className?: string;
 };
@@ -75,7 +78,7 @@ export default function SearchBoxPreview({
   selectedIcon = 'fa:Solid_Language:#7b61ff',
   results,
   selectedIndex = 0,
-  animate = true,
+  animate = false,
   className,
 }: SearchBoxPreviewProps): ReactNode {
   const [phase, setPhase] = useState(0);

@@ -17,7 +17,13 @@ legacyContentUpdatedAt: "2022-11-16T14:20:44.000Z"
 -   输入动作关键词，找到动作后按Tab键选定动作
 -   输入要传递给动作的参数，按回车运行动作。
 
-<SearchBoxPreview mode="pick" selectedAction="翻译" query="翻译" animate />
+第一步，输入关键词找到动作，按 Tab 选定：
+
+<SearchBoxPreview mode="pick" query="翻译" />
+
+第二步，输入参数后按回车运行：
+
+<SearchBoxPreview mode="param" selectedAction="翻译" query="Quick" />
 
 在动作中：
 
@@ -47,7 +53,6 @@ legacyContentUpdatedAt: "2022-11-16T14:20:44.000Z"
     {title: '粘贴', description: '粘贴剪贴板', icon: 'fa:Light_Paste:#6aaded'},
     {title: '运行', description: '运行匹配项', icon: 'fa:Light_Play:#39b54d'},
   ]}
-  animate
 />
 
 ### 实现步骤

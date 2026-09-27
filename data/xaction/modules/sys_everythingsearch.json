@@ -8,8 +8,6 @@
   "category": "Files",
   "categoryName": "系统操作",
   "stepType": "Action",
-  "isRisky": false,
-  "isProOnly": false,
   "helpLink": "https://docs.getquicker.net/v2/xaction/modules/everythingsearch",
   "inputs": [
     {
@@ -17,163 +15,99 @@
       "name": "搜索内容",
       "type": "Text",
       "description": "要搜索的内容，格式与直接在everything软件中搜索时相同。",
-      "isAdvanced": false,
-      "validForList": [],
-      "invalidForList": [],
-      "condition": "",
       "defaultValue": "",
       "required": true,
-      "variableMode": "UseVarOrInput",
-      "isControlField": false
+      "variableMode": "UseVarOrInput"
     },
     {
       "key": "folder",
       "name": "限定目录",
       "type": "Text",
       "description": "可选。在指定目录下搜索（包含子目录）。",
-      "isAdvanced": false,
-      "validForList": [],
-      "invalidForList": [],
-      "condition": "",
       "defaultValue": "",
-      "required": false,
-      "variableMode": "UseVarOrInput",
-      "isControlField": false
+      "variableMode": "UseVarOrInput"
     },
     {
       "key": "ext",
       "name": "扩展名",
       "type": "Text",
       "description": "可选。半角分号分隔的扩展名列表。如\"txt;docx;xlsx;\"",
-      "isAdvanced": false,
-      "validForList": [],
-      "invalidForList": [],
-      "condition": "",
       "defaultValue": "",
-      "required": false,
-      "variableMode": "UseVarOrInput",
-      "isControlField": false
+      "variableMode": "UseVarOrInput"
     },
     {
       "key": "matchWholeFilename",
       "name": "匹配完整文件名",
       "type": "Boolean",
       "description": "匹配整个文件名。0表示否，1表示是。",
-      "isAdvanced": false,
-      "validForList": [],
-      "invalidForList": [],
-      "condition": "",
       "defaultValue": "false",
       "defaultValueRaw": false,
-      "required": false,
-      "variableMode": "UseVarOrInput",
-      "isControlField": false
+      "variableMode": "UseVarOrInput"
     },
     {
       "key": "matchWholeWord",
       "name": "匹配整个单词",
       "type": "Boolean",
       "description": "要求每个搜索词的前后是空格、标点或路径分隔符等单词边界，不匹配较长名称中的局部文本。0表示否，1表示是。",
-      "isAdvanced": false,
-      "validForList": [],
-      "invalidForList": [],
-      "condition": "",
       "defaultValue": "true",
       "defaultValueRaw": true,
       "newStepDefaultValue": "false",
-      "required": false,
-      "variableMode": "UseVarOrInput",
-      "isControlField": false
+      "variableMode": "UseVarOrInput"
     },
     {
       "key": "matchPath",
       "name": "匹配路径",
       "type": "Boolean",
       "description": "匹配路径的不同部分，而不仅是文件名。",
-      "isAdvanced": false,
-      "validForList": [],
-      "invalidForList": [],
-      "condition": "",
       "defaultValue": "false",
       "defaultValueRaw": false,
-      "required": false,
-      "variableMode": "UseVarOrInput",
-      "isControlField": false
+      "variableMode": "UseVarOrInput"
     },
     {
       "key": "matchCase",
       "name": "匹配大小写",
       "type": "Boolean",
       "description": "是否大小写敏感。0表示否，1表示是。",
-      "isAdvanced": false,
-      "validForList": [],
-      "invalidForList": [],
-      "condition": "",
       "defaultValue": "false",
       "defaultValueRaw": false,
-      "required": false,
-      "variableMode": "UseVarOrInput",
-      "isControlField": false
+      "variableMode": "UseVarOrInput"
     },
     {
       "key": "useRegex",
       "name": "使用正则匹配",
       "type": "Boolean",
       "description": "是否使用正则匹配。0表示否，1表示是。",
-      "isAdvanced": false,
-      "validForList": [],
-      "invalidForList": [],
-      "condition": "",
       "defaultValue": "false",
       "defaultValueRaw": false,
-      "required": false,
-      "variableMode": "UseVarOrInput",
-      "isControlField": false
+      "variableMode": "UseVarOrInput"
     },
     {
       "key": "maxCount",
       "name": "最大结果数量",
       "type": "Integer",
       "description": "-1表示不限制",
-      "isAdvanced": false,
-      "validForList": [],
-      "invalidForList": [],
-      "condition": "",
       "defaultValue": "100",
       "defaultValueRaw": 100,
       "required": true,
-      "variableMode": "UseVarOrInput",
-      "isControlField": false
+      "variableMode": "UseVarOrInput"
     },
     {
       "key": "sort",
       "name": "排序方式",
       "type": "Enum",
-      "description": "",
-      "isAdvanced": false,
-      "validForList": [],
-      "invalidForList": [],
-      "condition": "",
       "defaultValue": "1",
       "defaultValueRaw": 1,
       "required": true,
-      "variableMode": "UseVarOrInput",
-      "isControlField": false
+      "variableMode": "UseVarOrInput"
     },
     {
       "key": "stopIfFail",
       "name": "失败后停止",
       "type": "Boolean",
       "description": "失败后是否停止动作",
-      "isAdvanced": false,
-      "validForList": [],
-      "invalidForList": [],
-      "condition": "",
       "defaultValue": "true",
       "defaultValueRaw": true,
-      "required": false,
-      "variableMode": "Input",
-      "isControlField": false
+      "variableMode": "Input"
     }
   ],
   "outputs": [
@@ -181,41 +115,22 @@
       "key": "isSuccess",
       "name": "是否成功",
       "type": "Boolean",
-      "description": "操作是否成功",
-      "isAdvanced": false,
-      "validForList": [],
-      "invalidForList": [],
-      "condition": ""
+      "description": "操作是否成功"
     },
     {
       "key": "pathList",
       "name": "路径列表",
-      "type": "List",
-      "description": "",
-      "isAdvanced": false,
-      "validForList": [],
-      "invalidForList": [],
-      "condition": ""
+      "type": "List"
     },
     {
       "key": "resultCount",
       "name": "结果个数",
-      "type": "Integer",
-      "description": "",
-      "isAdvanced": false,
-      "validForList": [],
-      "invalidForList": [],
-      "condition": ""
+      "type": "Integer"
     },
     {
       "key": "rawResult",
       "name": "原始结果",
-      "type": "Object",
-      "description": "",
-      "isAdvanced": false,
-      "validForList": [],
-      "invalidForList": [],
-      "condition": ""
+      "type": "Object"
     }
   ],
   "selections": {
@@ -224,28 +139,23 @@
       "items": [
         {
           "value": "bat;cmd;exe;msi;msp;scr;cpl",
-          "name": "可执行文件",
-          "description": ""
+          "name": "可执行文件"
         },
         {
           "value": "c;chm;cpp;csv;cxx;doc;docm;docx;dot;dotm;dotx;h;hpp;htm;html;hxx;ini;java;lua;mht;mhtml;odt;pdf;potx;potm;ppam;ppsm;ppsx;pps;ppt;pptm;pptx;rtf;sldm;sldx;thmx;txt;vsd;wpd;wps;wri;xlam;xls;xlsb;xlsm;xlsx;xltm;xltx;xml",
-          "name": "文档",
-          "description": ""
+          "name": "文档"
         },
         {
           "value": "ani;bmp;gif;ico;jpe;jpeg;jpg;pcx;png;psd;tga;tif;tiff;webp;wmf",
-          "name": "图片",
-          "description": ""
+          "name": "图片"
         },
         {
           "value": "3g2;3gp;3gp2;3gpp;amr;amv;asf;avi;bdmv;bik;d2v;divx;drc;dsa;dsm;dss;dsv;evo;f4v;flc;fli;flic;flv;hdmov;ifo;ivf;m1v;m2p;m2t;m2ts;m2v;m4b;m4p;m4v;mkv;mp2v;mp4;mp4v;mpe;mpeg;mpg;mpls;mpv2;mpv4;mov;mts;ogm;ogv;pss;pva;qt;ram;ratdvd;rm;rmm;rmvb;roq;rpm;smil;smk;swf;tp;tpr;ts;vob;vp6;webm;wm;wmp;wmv",
-          "name": "视频文件",
-          "description": ""
+          "name": "视频文件"
         },
         {
           "value": "aac;ac3;aif;aifc;aiff;au;cda;dts;fla;flac;it;m1a;m2a;m3u;m4a;mid;midi;mka;mod;mp2;mp3;mpa;ogg;ra;rmi;spc;rmi;snd;umx;voc;wav;wma;xm",
-          "name": "音频文件",
-          "description": ""
+          "name": "音频文件"
         }
       ]
     },
@@ -254,133 +164,107 @@
       "items": [
         {
           "value": "1",
-          "name": "名称顺序 NAME_ASCENDING",
-          "description": ""
+          "name": "名称顺序 NAME_ASCENDING"
         },
         {
           "value": "2",
-          "name": "名称倒序 NAME_DESCENDING",
-          "description": ""
+          "name": "名称倒序 NAME_DESCENDING"
         },
         {
           "value": "3",
-          "name": "路径顺序 PATH_ASCENDING",
-          "description": ""
+          "name": "路径顺序 PATH_ASCENDING"
         },
         {
           "value": "4",
-          "name": "路径倒序 PATH_DESCENDING",
-          "description": ""
+          "name": "路径倒序 PATH_DESCENDING"
         },
         {
           "value": "5",
-          "name": "大小顺序 SIZE_ASCENDING",
-          "description": ""
+          "name": "大小顺序 SIZE_ASCENDING"
         },
         {
           "value": "6",
-          "name": "大小倒序 SIZE_DESCENDING",
-          "description": ""
+          "name": "大小倒序 SIZE_DESCENDING"
         },
         {
           "value": "7",
-          "name": "扩展名顺序 EXTENSION_ASCENDING",
-          "description": ""
+          "name": "扩展名顺序 EXTENSION_ASCENDING"
         },
         {
           "value": "8",
-          "name": "扩展名倒序 EXTENSION_DESCENDING",
-          "description": ""
+          "name": "扩展名倒序 EXTENSION_DESCENDING"
         },
         {
           "value": "9",
-          "name": "类型名顺序 TYPE_NAME_ASCENDING",
-          "description": ""
+          "name": "类型名顺序 TYPE_NAME_ASCENDING"
         },
         {
           "value": "10",
-          "name": "类型名倒序 TYPE_NAME_DESCENDING",
-          "description": ""
+          "name": "类型名倒序 TYPE_NAME_DESCENDING"
         },
         {
           "value": "11",
-          "name": "创建时间顺序 DATE_CREATED_ASCENDING",
-          "description": ""
+          "name": "创建时间顺序 DATE_CREATED_ASCENDING"
         },
         {
           "value": "12",
-          "name": "创建时间倒序 DATE_CREATED_DESCENDING",
-          "description": ""
+          "name": "创建时间倒序 DATE_CREATED_DESCENDING"
         },
         {
           "value": "13",
-          "name": "修改时间顺序 DATE_MODIFIED_ASCENDING",
-          "description": ""
+          "name": "修改时间顺序 DATE_MODIFIED_ASCENDING"
         },
         {
           "value": "14",
-          "name": "修改时间倒序 DATE_MODIFIED_DESCENDING",
-          "description": ""
+          "name": "修改时间倒序 DATE_MODIFIED_DESCENDING"
         },
         {
           "value": "15",
-          "name": "属性顺序 ATTRIBUTES_ASCENDING",
-          "description": ""
+          "name": "属性顺序 ATTRIBUTES_ASCENDING"
         },
         {
           "value": "16",
-          "name": "属性倒序 ATTRIBUTES_DESCENDING",
-          "description": ""
+          "name": "属性倒序 ATTRIBUTES_DESCENDING"
         },
         {
           "value": "17",
-          "name": "文件列表文件名顺序 FILE_LIST_FILENAME_ASCENDING",
-          "description": ""
+          "name": "文件列表文件名顺序 FILE_LIST_FILENAME_ASCENDING"
         },
         {
           "value": "18",
-          "name": "文件列表文件名倒序 FILE_LIST_FILENAME_DESCENDING",
-          "description": ""
+          "name": "文件列表文件名倒序 FILE_LIST_FILENAME_DESCENDING"
         },
         {
           "value": "19",
-          "name": "运行次数顺序 RUN_COUNT_ASCENDING",
-          "description": ""
+          "name": "运行次数顺序 RUN_COUNT_ASCENDING"
         },
         {
           "value": "20",
-          "name": "运行次数倒序 RUN_COUNT_DESCENDING",
-          "description": ""
+          "name": "运行次数倒序 RUN_COUNT_DESCENDING"
         },
         {
           "value": "21",
-          "name": "最后变更时间顺序 DATE_RECENTLY_CHANGED_ASCENDING",
-          "description": ""
+          "name": "最后变更时间顺序 DATE_RECENTLY_CHANGED_ASCENDING"
         },
         {
           "value": "22",
-          "name": "最后变更时间倒序 DATE_RECENTLY_CHANGED_DESCENDING",
-          "description": ""
+          "name": "最后变更时间倒序 DATE_RECENTLY_CHANGED_DESCENDING"
         },
         {
           "value": "23",
-          "name": "最后访问时间顺序 DATE_ACCESSED_ASCENDING",
-          "description": ""
+          "name": "最后访问时间顺序 DATE_ACCESSED_ASCENDING"
         },
         {
           "value": "24",
-          "name": "最后访问时间倒序 DATE_ACCESSED_DESCENDING",
-          "description": ""
+          "name": "最后访问时间倒序 DATE_ACCESSED_DESCENDING"
         },
         {
           "value": "25",
-          "name": "最后运行时间顺序 DATE_RUN_ASCENDING",
-          "description": ""
+          "name": "最后运行时间顺序 DATE_RUN_ASCENDING"
         },
         {
           "value": "26",
-          "name": "最后运行时间倒序 DATE_RUN_DESCENDING",
-          "description": ""
+          "name": "最后运行时间倒序 DATE_RUN_DESCENDING"
         }
       ]
     }

@@ -8,8 +8,6 @@
   "category": "System",
   "categoryName": "Windows系统",
   "stepType": "Action",
-  "isRisky": false,
-  "isProOnly": false,
   "helpLink": "https://docs.getquicker.net/v2/xaction/modules/filesystemwatch",
   "inputs": [
     {
@@ -17,12 +15,7 @@
       "name": "操作类型",
       "type": "Enum",
       "description": "时间数据来源",
-      "isAdvanced": false,
-      "validForList": [],
-      "invalidForList": [],
-      "condition": "",
       "defaultValue": "wait",
-      "defaultValueRaw": "wait",
       "required": true,
       "variableMode": "Input",
       "isControlField": true
@@ -32,172 +25,113 @@
       "name": "文件夹路径",
       "type": "Text",
       "description": "要监控的文件夹路径",
-      "isAdvanced": false,
-      "validForList": [],
-      "invalidForList": [],
-      "condition": "",
       "defaultValue": "",
-      "required": false,
-      "variableMode": "UseVarOrInput",
-      "isControlField": false
+      "variableMode": "UseVarOrInput"
     },
     {
       "key": "filter",
       "name": "文件筛选",
       "type": "Text",
       "description": "筛选要监控的文件。可指定文件名（如foo.txt），或使用通配符（如*.txt）",
-      "isAdvanced": false,
-      "validForList": [],
-      "invalidForList": [],
-      "condition": "",
       "defaultValue": "*.*",
-      "defaultValueRaw": "*.*",
-      "required": false,
-      "variableMode": "UseVarOrInput",
-      "isControlField": false
+      "variableMode": "UseVarOrInput"
     },
     {
       "key": "notifyFilter",
       "name": "通知筛选",
       "type": "Text",
       "description": "可选，可选值请参考文档。留空表示默认设置(LastWrite,FileName,DirectoryName)。",
-      "isAdvanced": false,
-      "validForList": [],
-      "invalidForList": [],
-      "condition": "",
       "defaultValue": "",
-      "defaultValueRaw": "",
-      "required": false,
-      "variableMode": "UseVarOrInput",
-      "isControlField": false
+      "variableMode": "UseVarOrInput"
     },
     {
       "key": "includeSubdirectories",
       "name": "包含子文件夹",
       "type": "Boolean",
-      "description": "",
-      "isAdvanced": false,
-      "validForList": [],
-      "invalidForList": [],
-      "condition": "",
       "defaultValue": "true",
       "defaultValueRaw": true,
-      "required": false,
-      "variableMode": "Input",
-      "isControlField": false
+      "variableMode": "Input"
     },
     {
       "key": "waitEvents",
       "name": "等待的事件",
       "type": "Text",
-      "description": "",
-      "isAdvanced": false,
       "validForList": [
         "wait"
       ],
-      "invalidForList": [],
       "condition": "仅：wait",
       "defaultValue": "created",
-      "defaultValueRaw": "created",
-      "required": false,
-      "variableMode": "UseVarOrInput",
-      "isControlField": false
+      "variableMode": "UseVarOrInput"
     },
     {
       "key": "waitSeconds",
       "name": "等待秒数",
       "type": "Number",
       "description": "最长等待时间。0表示不限时间。",
-      "isAdvanced": false,
       "validForList": [
         "wait"
       ],
-      "invalidForList": [],
       "condition": "仅：wait",
       "defaultValue": "0.0",
       "defaultValueRaw": 0,
-      "required": false,
-      "variableMode": "UseVarOrInput",
-      "isControlField": false
+      "variableMode": "UseVarOrInput"
     },
     {
       "key": "createdCallback",
       "name": "[创建] 处理子程序",
       "type": "Text",
       "description": "文件或文件创建时调用的子程序",
-      "isAdvanced": false,
       "validForList": [
         "callback"
       ],
-      "invalidForList": [],
       "condition": "仅：callback",
       "defaultValue": "",
-      "required": false,
-      "variableMode": "UseVarOrInput",
-      "isControlField": false
+      "variableMode": "UseVarOrInput"
     },
     {
       "key": "changedCallback",
       "name": "[变更] 处理子程序",
       "type": "Text",
       "description": "文件或文件夹变更时调用的子程序",
-      "isAdvanced": false,
       "validForList": [
         "callback"
       ],
-      "invalidForList": [],
       "condition": "仅：callback",
       "defaultValue": "",
-      "required": false,
-      "variableMode": "UseVarOrInput",
-      "isControlField": false
+      "variableMode": "UseVarOrInput"
     },
     {
       "key": "deletedCallback",
       "name": "[删除] 处理子程序",
       "type": "Text",
       "description": "文件或文件被删除时调用的子程序",
-      "isAdvanced": false,
       "validForList": [
         "callback"
       ],
-      "invalidForList": [],
       "condition": "仅：callback",
       "defaultValue": "",
-      "required": false,
-      "variableMode": "UseVarOrInput",
-      "isControlField": false
+      "variableMode": "UseVarOrInput"
     },
     {
       "key": "renamedCallback",
       "name": "[重命名] 处理子程序",
       "type": "Text",
       "description": "文件或文件重命名时调用的子程序",
-      "isAdvanced": false,
       "validForList": [
         "callback"
       ],
-      "invalidForList": [],
       "condition": "仅：callback",
       "defaultValue": "",
-      "required": false,
-      "variableMode": "UseVarOrInput",
-      "isControlField": false
+      "variableMode": "UseVarOrInput"
     },
     {
       "key": "stopIfFail",
       "name": "失败后停止",
       "type": "Boolean",
       "description": "失败后是否停止动作",
-      "isAdvanced": false,
-      "validForList": [],
-      "invalidForList": [],
-      "condition": "",
       "defaultValue": "true",
       "defaultValueRaw": true,
-      "required": false,
-      "variableMode": "Input",
-      "isControlField": false
+      "variableMode": "Input"
     }
   ],
   "outputs": [
@@ -205,22 +139,16 @@
       "key": "isSuccess",
       "name": "是否成功",
       "type": "Boolean",
-      "description": "操作是否成功",
-      "isAdvanced": false,
-      "validForList": [],
-      "invalidForList": [],
-      "condition": ""
+      "description": "操作是否成功"
     },
     {
       "key": "fullPath",
       "name": "变更的路径",
       "type": "Text",
       "description": "发生变更的文件(夹)路径，或重命名后的新路径",
-      "isAdvanced": false,
       "validForList": [
         "wait"
       ],
-      "invalidForList": [],
       "condition": "仅：wait"
     },
     {
@@ -228,11 +156,9 @@
       "name": "变更类型",
       "type": "Text",
       "description": "变更类型",
-      "isAdvanced": false,
       "validForList": [
         "wait"
       ],
-      "invalidForList": [],
       "condition": "仅：wait"
     },
     {
@@ -240,11 +166,9 @@
       "name": "旧路径",
       "type": "Text",
       "description": "重命名时的原始路径",
-      "isAdvanced": false,
       "validForList": [
         "wait"
       ],
-      "invalidForList": [],
       "condition": "仅：wait"
     }
   ],
@@ -254,13 +178,11 @@
       "items": [
         {
           "value": "wait",
-          "name": "等待事件发生",
-          "description": ""
+          "name": "等待事件发生"
         },
         {
           "value": "callback",
-          "name": "持续监控（事件发生后调用子程序）",
-          "description": ""
+          "name": "持续监控（事件发生后调用子程序）"
         }
       ]
     }

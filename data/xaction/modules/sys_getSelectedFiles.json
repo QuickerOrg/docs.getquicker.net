@@ -8,21 +8,13 @@
   "category": "System",
   "categoryName": "Windows系统",
   "stepType": "Action",
-  "isRisky": false,
-  "isProOnly": false,
   "helpLink": "https://docs.getquicker.net/v2/xaction/modules/getselectedfiles",
   "inputs": [
     {
       "key": "operation",
       "name": "操作类型",
       "type": "Enum",
-      "description": "",
-      "isAdvanced": false,
-      "validForList": [],
-      "invalidForList": [],
-      "condition": "",
       "defaultValue": "getSelection",
-      "defaultValueRaw": "getSelection",
       "required": true,
       "variableMode": "Input",
       "isControlField": true
@@ -32,50 +24,37 @@
       "name": "等待剪贴板时间",
       "type": "Integer",
       "description": "通过复制方式获取选择文件时，等待剪贴板变化的最长时间毫秒数。",
-      "isAdvanced": false,
       "validForList": [
         "getSelection"
       ],
-      "invalidForList": [],
       "condition": "仅：getSelection",
       "defaultValue": "200",
       "defaultValueRaw": 200,
-      "required": false,
-      "variableMode": "UseVarOrInput",
-      "isControlField": false
+      "variableMode": "UseVarOrInput"
     },
     {
       "key": "sortType",
       "name": "排序文件列表",
       "type": "Enum",
       "description": "获取多个文件时，根据需要可以对文件列表进行排序。仅支持文件。",
-      "isAdvanced": false,
       "validForList": [
         "getSelection"
       ],
-      "invalidForList": [],
       "condition": "仅：getSelection",
       "defaultValue": "Default",
-      "defaultValueRaw": "Default",
-      "required": false,
-      "variableMode": "UseVarOrInput",
-      "isControlField": false
+      "variableMode": "UseVarOrInput"
     },
     {
       "key": "pathList",
       "name": "路径或文件名",
       "type": "Text",
       "description": "要选中的路径或文件名。支持使用 \"regex:表达式\" \"pinyin:筛选\" 选择匹配的文件。",
-      "isAdvanced": false,
       "validForList": [
         "setSelection"
       ],
-      "invalidForList": [],
       "condition": "仅：setSelection",
       "defaultValue": "",
-      "required": false,
-      "variableMode": "Input",
-      "isControlField": false
+      "variableMode": "Input"
     },
     {
       "key": "winHandle",
@@ -86,27 +65,18 @@
       "validForList": [
         "setSelection"
       ],
-      "invalidForList": [],
       "condition": "仅：setSelection",
       "defaultValue": "",
-      "required": false,
-      "variableMode": "UseVarOrInput",
-      "isControlField": false
+      "variableMode": "UseVarOrInput"
     },
     {
       "key": "stopIfFail",
       "name": "失败后中止动作",
       "type": "Boolean",
       "description": "获取失败后，是否停止后续动作的执行。",
-      "isAdvanced": false,
-      "validForList": [],
-      "invalidForList": [],
-      "condition": "",
       "defaultValue": "true",
       "defaultValueRaw": true,
-      "required": false,
-      "variableMode": "Input",
-      "isControlField": false
+      "variableMode": "Input"
     }
   ],
   "outputs": [
@@ -114,22 +84,16 @@
       "key": "isSuccess",
       "name": "是否成功",
       "type": "Boolean",
-      "description": "是否成功获得文件列表",
-      "isAdvanced": false,
-      "validForList": [],
-      "invalidForList": [],
-      "condition": ""
+      "description": "是否成功获得文件列表"
     },
     {
       "key": "files",
       "name": "路径列表",
       "type": "List",
       "description": "所有选中的文件和文件夹的路径列表",
-      "isAdvanced": false,
       "validForList": [
         "getSelection"
       ],
-      "invalidForList": [],
       "condition": "仅：getSelection"
     },
     {
@@ -137,11 +101,9 @@
       "name": "首个路径",
       "type": "Text",
       "description": "选择1个文件(夹)时，返回其路径；选择多个时，返回第一个的路径。",
-      "isAdvanced": false,
       "validForList": [
         "getSelection"
       ],
-      "invalidForList": [],
       "condition": "仅：getSelection"
     },
     {
@@ -149,11 +111,9 @@
       "name": "文件(夹)名列表",
       "type": "List",
       "description": "所有选中的文件和文件夹的名称的列表（不包含所在路径）",
-      "isAdvanced": false,
       "validForList": [
         "getSelection"
       ],
-      "invalidForList": [],
       "condition": "仅：getSelection"
     },
     {
@@ -161,11 +121,9 @@
       "name": "首个文件(夹)名",
       "type": "Text",
       "description": "选择1个文件(夹)时，返回其名称；选择多个时，返回第一个的名称。",
-      "isAdvanced": false,
       "validForList": [
         "getSelection"
       ],
-      "invalidForList": [],
       "condition": "仅：getSelection"
     },
     {
@@ -173,12 +131,10 @@
       "name": "文件个数",
       "type": "Integer",
       "description": "选择的文件个数",
-      "isAdvanced": false,
       "validForList": [
         "getSelection",
         "setSelection"
       ],
-      "invalidForList": [],
       "condition": "仅：getSelection, setSelection"
     }
   ],
@@ -188,13 +144,11 @@
       "items": [
         {
           "value": "getSelection",
-          "name": "获取选择的文件",
-          "description": ""
+          "name": "获取选择的文件"
         },
         {
           "value": "setSelection",
-          "name": "设置选择的文件",
-          "description": ""
+          "name": "设置选择的文件"
         }
       ]
     },
@@ -203,63 +157,51 @@
       "items": [
         {
           "value": "Default",
-          "name": "默认（文件名自然排序）",
-          "description": ""
+          "name": "默认（文件名自然排序）"
         },
         {
           "value": "Origin",
-          "name": "原始（系统返回顺序）",
-          "description": ""
+          "name": "原始（系统返回顺序）"
         },
         {
           "value": "FileName",
-          "name": "文件名（字母顺序）",
-          "description": ""
+          "name": "文件名（字母顺序）"
         },
         {
           "value": "FileNameNature",
-          "name": "文件名（自然顺序）",
-          "description": ""
+          "name": "文件名（自然顺序）"
         },
         {
           "value": "FileSizeAsc",
-          "name": "文件大小（从小到大）",
-          "description": ""
+          "name": "文件大小（从小到大）"
         },
         {
           "value": "FileSizeDesc",
-          "name": "文件大小（从大到小）",
-          "description": ""
+          "name": "文件大小（从大到小）"
         },
         {
           "value": "CreationTimeDesc",
-          "name": "创建时间（从新到旧）",
-          "description": ""
+          "name": "创建时间（从新到旧）"
         },
         {
           "value": "CreationTimeAsc",
-          "name": "创建时间（从旧到新）",
-          "description": ""
+          "name": "创建时间（从旧到新）"
         },
         {
           "value": "LastAccessTimeDesc",
-          "name": "最后访问时间（从晚到早）",
-          "description": ""
+          "name": "最后访问时间（从晚到早）"
         },
         {
           "value": "LastAccessTimeAsc",
-          "name": "最后访问时间（从早到晚）",
-          "description": ""
+          "name": "最后访问时间（从早到晚）"
         },
         {
           "value": "LastWriteTimeDesc",
-          "name": "最后写入时间（从晚到早）",
-          "description": ""
+          "name": "最后写入时间（从晚到早）"
         },
         {
           "value": "LastWriteTimeAsc",
-          "name": "最后写入时间（从早到晚）",
-          "description": ""
+          "name": "最后写入时间（从早到晚）"
         }
       ]
     }

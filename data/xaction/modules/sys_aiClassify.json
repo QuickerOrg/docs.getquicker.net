@@ -8,8 +8,6 @@
   "category": "Ai",
   "categoryName": "AI",
   "stepType": "Action",
-  "isRisky": false,
-  "isProOnly": false,
   "helpLink": "https://docs.getquicker.net/v2/xaction/modules/ai-classify",
   "inputs": [
     {
@@ -17,73 +15,42 @@
       "name": "文本",
       "type": "Text",
       "description": "要判断类别的文本，例如邮件正文或用户反馈。",
-      "isAdvanced": false,
-      "validForList": [],
-      "invalidForList": [],
-      "condition": "",
       "defaultValue": "",
       "required": true,
-      "variableMode": "UseVarOrInput",
-      "isControlField": false
+      "variableMode": "UseVarOrInput"
     },
     {
       "key": "categories",
       "name": "分类项",
       "type": "Dict",
       "description": "Key 是供后续分支使用的稳定结果，Value 是分类说明。例如 Spam=垃圾邮件。",
-      "isAdvanced": false,
-      "validForList": [],
-      "invalidForList": [],
-      "condition": "",
       "defaultValue": "",
       "required": true,
-      "variableMode": "UseVarOrInput",
-      "isControlField": false
+      "variableMode": "UseVarOrInput"
     },
     {
       "key": "defaultKey",
       "name": "无法判断时的默认 Key",
       "type": "Text",
       "description": "模型返回未知 Key 时使用的已有分类 Key；留空则步骤失败。",
-      "isAdvanced": false,
-      "validForList": [],
-      "invalidForList": [],
-      "condition": "",
       "defaultValue": "",
-      "defaultValueRaw": "",
-      "required": false,
-      "variableMode": "UseVarOrInput",
-      "isControlField": false
+      "variableMode": "UseVarOrInput"
     },
     {
       "key": "instructions",
       "name": "判断标准",
       "type": "Text",
       "description": "补充分类依据，例如“促销邮件也归为 Spam”。",
-      "isAdvanced": false,
-      "validForList": [],
-      "invalidForList": [],
-      "condition": "",
       "defaultValue": "",
-      "defaultValueRaw": "",
-      "required": false,
-      "variableMode": "UseVarOrInput",
-      "isControlField": false
+      "variableMode": "UseVarOrInput"
     },
     {
       "key": "useCaseId",
       "name": "AI 任务场景",
       "type": "Text",
       "description": "选择用于分类的文本任务场景；所选模型必须明确支持结构化输出。",
-      "isAdvanced": false,
-      "validForList": [],
-      "invalidForList": [],
-      "condition": "",
       "defaultValue": "text.general",
-      "defaultValueRaw": "text.general",
-      "required": false,
-      "variableMode": "UseVarOrInput",
-      "isControlField": false
+      "variableMode": "UseVarOrInput"
     },
     {
       "key": "missingUseCaseBehavior",
@@ -91,44 +58,26 @@
       "type": "Enum",
       "description": "自定义任务场景不存在时，使用内置文本任务场景或直接失败。",
       "isAdvanced": true,
-      "validForList": [],
-      "invalidForList": [],
-      "condition": "",
       "defaultValue": "UseBaseUseCase",
-      "defaultValueRaw": "UseBaseUseCase",
-      "required": false,
-      "variableMode": "UseVarOrInput",
-      "isControlField": false
+      "variableMode": "UseVarOrInput"
     },
     {
       "key": "maxOutputTokens",
       "name": "最大输出 Token",
       "type": "Integer",
-      "description": "",
       "isAdvanced": true,
-      "validForList": [],
-      "invalidForList": [],
-      "condition": "",
       "defaultValue": "512",
       "defaultValueRaw": 512,
-      "required": false,
-      "variableMode": "UseVarOrInput",
-      "isControlField": false
+      "variableMode": "UseVarOrInput"
     },
     {
       "key": "stopIfFail",
       "name": "失败后停止",
       "type": "Boolean",
       "description": "失败后是否停止动作",
-      "isAdvanced": false,
-      "validForList": [],
-      "invalidForList": [],
-      "condition": "",
       "defaultValue": "true",
       "defaultValueRaw": true,
-      "required": false,
-      "variableMode": "Input",
-      "isControlField": false
+      "variableMode": "Input"
     }
   ],
   "outputs": [
@@ -136,131 +85,77 @@
       "key": "isSuccess",
       "name": "是否成功",
       "type": "Boolean",
-      "description": "操作是否成功",
-      "isAdvanced": false,
-      "validForList": [],
-      "invalidForList": [],
-      "condition": ""
+      "description": "操作是否成功"
     },
     {
       "key": "categoryKey",
       "name": "分类 Key",
-      "type": "Text",
-      "description": "",
-      "isAdvanced": false,
-      "validForList": [],
-      "invalidForList": [],
-      "condition": ""
+      "type": "Text"
     },
     {
       "key": "reason",
       "name": "分类理由",
-      "type": "Text",
-      "description": "",
-      "isAdvanced": false,
-      "validForList": [],
-      "invalidForList": [],
-      "condition": ""
+      "type": "Text"
     },
     {
       "key": "resultJson",
       "name": "结果 JSON",
       "type": "Text",
-      "description": "",
-      "isAdvanced": true,
-      "validForList": [],
-      "invalidForList": [],
-      "condition": ""
+      "isAdvanced": true
     },
     {
       "key": "usedDefaultKey",
       "name": "是否使用默认 Key",
-      "type": "Boolean",
-      "description": "",
-      "isAdvanced": false,
-      "validForList": [],
-      "invalidForList": [],
-      "condition": ""
+      "type": "Boolean"
     },
     {
       "key": "model",
       "name": "实际模型",
       "type": "Text",
-      "description": "",
-      "isAdvanced": true,
-      "validForList": [],
-      "invalidForList": [],
-      "condition": ""
+      "isAdvanced": true
     },
     {
       "key": "inputTokens",
       "name": "输入 Token",
       "type": "Integer",
-      "description": "",
-      "isAdvanced": true,
-      "validForList": [],
-      "invalidForList": [],
-      "condition": ""
+      "isAdvanced": true
     },
     {
       "key": "cachedInputTokens",
       "name": "缓存输入 Token",
       "type": "Integer",
       "description": "服务商报告的缓存命中输入 Token；未提供时为 0。",
-      "isAdvanced": true,
-      "validForList": [],
-      "invalidForList": [],
-      "condition": ""
+      "isAdvanced": true
     },
     {
       "key": "outputTokens",
       "name": "输出 Token",
       "type": "Integer",
-      "description": "",
-      "isAdvanced": true,
-      "validForList": [],
-      "invalidForList": [],
-      "condition": ""
+      "isAdvanced": true
     },
     {
       "key": "totalTokens",
       "name": "总 Token",
       "type": "Integer",
-      "description": "",
-      "isAdvanced": true,
-      "validForList": [],
-      "invalidForList": [],
-      "condition": ""
+      "isAdvanced": true
     },
     {
       "key": "invocationId",
       "name": "调用标识",
       "type": "Text",
-      "description": "",
-      "isAdvanced": true,
-      "validForList": [],
-      "invalidForList": [],
-      "condition": ""
+      "isAdvanced": true
     },
     {
       "key": "resolvedUseCaseId",
       "name": "实际任务场景",
       "type": "Text",
-      "description": "",
-      "isAdvanced": true,
-      "validForList": [],
-      "invalidForList": [],
-      "condition": ""
+      "isAdvanced": true
     },
     {
       "key": "useCaseFallbackUsed",
       "name": "是否回退场景",
       "type": "Boolean",
-      "description": "",
-      "isAdvanced": true,
-      "validForList": [],
-      "invalidForList": [],
-      "condition": ""
+      "isAdvanced": true
     }
   ],
   "selections": {
@@ -269,8 +164,7 @@
       "items": [
         {
           "value": "text.general",
-          "name": "日常文本处理与翻译",
-          "description": ""
+          "name": "日常文本处理与翻译"
         }
       ]
     },
@@ -279,13 +173,11 @@
       "items": [
         {
           "value": "UseBaseUseCase",
-          "name": "使用基础场景",
-          "description": ""
+          "name": "使用基础场景"
         },
         {
           "value": "Fail",
-          "name": "执行失败",
-          "description": ""
+          "name": "执行失败"
         }
       ]
     }

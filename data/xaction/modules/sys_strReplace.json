@@ -8,21 +8,13 @@
   "category": "Text",
   "categoryName": "文本处理",
   "stepType": "Action",
-  "isRisky": false,
-  "isProOnly": false,
   "helpLink": "https://docs.getquicker.net/v2/xaction/modules/strreplace",
   "inputs": [
     {
       "key": "type",
       "name": "操作类型",
       "type": "Enum",
-      "description": "",
-      "isAdvanced": false,
-      "validForList": [],
-      "invalidForList": [],
-      "condition": "",
       "defaultValue": "single",
-      "defaultValueRaw": "single",
       "required": true,
       "variableMode": "Input",
       "isControlField": true
@@ -32,157 +24,101 @@
       "name": "输入",
       "type": "Text",
       "description": "要提取内容的文本",
-      "isAdvanced": false,
-      "validForList": [],
-      "invalidForList": [],
-      "condition": "",
       "defaultValue": "",
-      "defaultValueRaw": "",
       "required": true,
-      "variableMode": "UseVarOrInput",
-      "isControlField": false
+      "variableMode": "UseVarOrInput"
     },
     {
       "key": "old",
       "name": "查找内容",
       "type": "Text",
       "description": "要替换的内容",
-      "isAdvanced": false,
       "validForList": [
         "single"
       ],
-      "invalidForList": [],
       "condition": "仅：single",
       "defaultValue": "",
-      "defaultValueRaw": "",
       "required": true,
-      "variableMode": "UseVarOrInput",
-      "isControlField": false
+      "variableMode": "UseVarOrInput"
     },
     {
       "key": "new",
       "name": "替换为",
       "type": "Text",
       "description": "替换成的内容",
-      "isAdvanced": false,
       "validForList": [
         "single"
       ],
-      "invalidForList": [],
       "condition": "仅：single",
       "defaultValue": "",
-      "defaultValueRaw": "",
       "required": true,
-      "variableMode": "UseVarOrInput",
-      "isControlField": false
+      "variableMode": "UseVarOrInput"
     },
     {
       "key": "batchReplaceData",
       "name": "查找和替换内容",
       "type": "Text",
       "description": "每行一对查找和替换内容，中间使用|||或|分隔。例如将a替换成A，写作:a|A 或 a|||A",
-      "isAdvanced": false,
       "validForList": [
         "batch"
       ],
-      "invalidForList": [],
       "condition": "仅：batch",
       "defaultValue": "",
-      "defaultValueRaw": "",
       "required": true,
-      "variableMode": "UseVarOrInput",
-      "isControlField": false
+      "variableMode": "UseVarOrInput"
     },
     {
       "key": "escapeOld",
       "name": "转义“查找内容”",
       "type": "Boolean",
       "description": "替换\"查找内容\"中的转义字符（\\r,\\n,\\t）",
-      "isAdvanced": false,
-      "validForList": [],
-      "invalidForList": [],
-      "condition": "",
       "defaultValue": "false",
       "defaultValueRaw": false,
-      "required": false,
-      "variableMode": "UseVarOrInput",
-      "isControlField": false
+      "variableMode": "UseVarOrInput"
     },
     {
       "key": "replaceEscapes",
       "name": "转义“替换为”",
       "type": "Boolean",
       "description": "替换\"替换为\"中的转义字符（\\r,\\n,\\t）",
-      "isAdvanced": false,
-      "validForList": [],
-      "invalidForList": [],
-      "condition": "",
       "defaultValue": "true",
       "defaultValueRaw": true,
       "newStepDefaultValue": "false",
-      "required": false,
-      "variableMode": "UseVarOrInput",
-      "isControlField": false
+      "variableMode": "UseVarOrInput"
     },
     {
       "key": "useRegex",
       "name": "使用正则替换",
       "type": "Boolean",
-      "description": "",
-      "isAdvanced": false,
-      "validForList": [],
-      "invalidForList": [],
-      "condition": "",
       "defaultValue": "false",
       "defaultValueRaw": false,
-      "required": false,
-      "variableMode": "UseVarOrInput",
-      "isControlField": false
+      "variableMode": "UseVarOrInput"
     },
     {
       "key": "ignoreCase",
       "name": "忽略大小写",
       "type": "Boolean",
-      "description": "",
-      "isAdvanced": false,
-      "validForList": [],
-      "invalidForList": [],
-      "condition": "",
       "defaultValue": "false",
       "defaultValueRaw": false,
-      "required": false,
-      "variableMode": "UseVarOrInput",
-      "isControlField": false
+      "variableMode": "UseVarOrInput"
     },
     {
       "key": "singleLine",
       "name": "正则：单行",
       "type": "Boolean",
       "description": "此模式下\".\"能匹配任意字符，包括换行符。(否则匹配除了\\n外的任意字符)",
-      "isAdvanced": false,
-      "validForList": [],
-      "invalidForList": [],
-      "condition": "",
       "defaultValue": "true",
       "defaultValueRaw": true,
-      "required": false,
-      "variableMode": "UseVarOrInput",
-      "isControlField": false
+      "variableMode": "UseVarOrInput"
     },
     {
       "key": "multiLine",
       "name": "正则：多行",
       "type": "Boolean",
       "description": "此模式下^和$可以分别匹配行首和行尾。(否则匹配输入内容的开始和结束)",
-      "isAdvanced": false,
-      "validForList": [],
-      "invalidForList": [],
-      "condition": "",
       "defaultValue": "false",
       "defaultValueRaw": false,
-      "required": false,
-      "variableMode": "UseVarOrInput",
-      "isControlField": false
+      "variableMode": "UseVarOrInput"
     }
   ],
   "outputs": [
@@ -190,11 +126,7 @@
       "key": "output",
       "name": "结果",
       "type": "Text",
-      "description": "替换后的文本",
-      "isAdvanced": false,
-      "validForList": [],
-      "invalidForList": [],
-      "condition": ""
+      "description": "替换后的文本"
     }
   ],
   "selections": {
@@ -203,13 +135,11 @@
       "items": [
         {
           "value": "single",
-          "name": "普通（替换一种内容）",
-          "description": ""
+          "name": "普通（替换一种内容）"
         },
         {
           "value": "batch",
-          "name": "批量（替换多种内容）",
-          "description": ""
+          "name": "批量（替换多种内容）"
         }
       ]
     }

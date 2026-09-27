@@ -8,8 +8,6 @@
   "category": "Compute",
   "categoryName": "计算与比较",
   "stepType": "Action",
-  "isRisky": false,
-  "isProOnly": false,
   "helpLink": "https://docs.getquicker.net/v2/xaction/modules/managelist",
   "inputs": [
     {
@@ -17,149 +15,79 @@
       "name": "列表",
       "type": "List",
       "description": "要操作的列表变量。直接选择对应变量，不要使用表达式。",
-      "isAdvanced": false,
-      "validForList": [],
-      "invalidForList": [],
-      "condition": "",
       "defaultValue": "",
-      "required": false,
-      "variableMode": "UseVarOnly",
-      "isControlField": false
+      "variableMode": "UseVarOnly"
     },
     {
       "key": "winTitle",
       "name": "窗口标题",
       "type": "Text",
-      "description": "",
-      "isAdvanced": false,
-      "validForList": [],
-      "invalidForList": [],
-      "condition": "",
       "defaultValue": "",
-      "defaultValueRaw": "",
-      "required": false,
-      "variableMode": "UseVarOrInput",
-      "isControlField": false
+      "variableMode": "UseVarOrInput"
     },
     {
       "key": "note",
       "name": "提示信息",
       "type": "Text",
-      "description": "",
-      "isAdvanced": false,
-      "validForList": [],
-      "invalidForList": [],
-      "condition": "",
       "defaultValue": "",
-      "defaultValueRaw": "",
-      "required": false,
-      "variableMode": "UseVarOrInput",
-      "isControlField": false
+      "variableMode": "UseVarOrInput"
     },
     {
       "key": "allowAdd",
       "name": "允许添加项",
       "type": "Boolean",
-      "description": "",
-      "isAdvanced": false,
-      "validForList": [],
-      "invalidForList": [],
-      "condition": "",
       "defaultValue": "true",
       "defaultValueRaw": true,
-      "required": false,
-      "variableMode": "Input",
-      "isControlField": false
+      "variableMode": "Input"
     },
     {
       "key": "allowEdit",
       "name": "允许编辑项",
       "type": "Boolean",
-      "description": "",
-      "isAdvanced": false,
-      "validForList": [],
-      "invalidForList": [],
-      "condition": "",
       "defaultValue": "true",
       "defaultValueRaw": true,
-      "required": false,
-      "variableMode": "Input",
-      "isControlField": false
+      "variableMode": "Input"
     },
     {
       "key": "allowDelete",
       "name": "允许删除项",
       "type": "Boolean",
-      "description": "",
-      "isAdvanced": false,
-      "validForList": [],
-      "invalidForList": [],
-      "condition": "",
       "defaultValue": "true",
       "defaultValueRaw": true,
-      "required": false,
-      "variableMode": "Input",
-      "isControlField": false
+      "variableMode": "Input"
     },
     {
       "key": "stopIfFail",
       "name": "取消后停止动作",
       "type": "Boolean",
-      "description": "",
-      "isAdvanced": false,
-      "validForList": [],
-      "invalidForList": [],
-      "condition": "",
       "defaultValue": "false",
       "defaultValueRaw": false,
-      "required": false,
-      "variableMode": "Input",
-      "isControlField": false
+      "variableMode": "Input"
     },
     {
       "key": "parseData",
       "name": "解析菜单数据",
       "type": "Boolean",
       "description": "解析 \"[图标]标题(tooltip)|值\" 格式的数据并显示图标。",
-      "isAdvanced": false,
-      "validForList": [],
-      "invalidForList": [],
-      "condition": "",
       "defaultValue": "false",
       "defaultValueRaw": false,
-      "required": false,
-      "variableMode": "Input",
-      "isControlField": false
+      "variableMode": "Input"
     },
     {
       "key": "seperator",
       "name": "分隔符",
       "type": "Text",
       "description": "解析菜单数据时，显示内容与值之间的分隔符，默认为竖线'|'",
-      "isAdvanced": false,
-      "validForList": [],
-      "invalidForList": [],
-      "condition": "",
       "defaultValue": "|",
-      "defaultValueRaw": "|",
-      "required": false,
-      "variableMode": "Input",
-      "isControlField": false
+      "variableMode": "Input"
     },
     {
       "key": "windowSize",
       "name": "窗口宽度",
       "type": "Text",
       "description": "可选，在需要自定义窗口宽度的情况下使用。最小值为200。",
-      "isAdvanced": false,
-      "validForList": [],
-      "invalidForList": [],
-      "condition": "",
       "defaultValue": "",
-      "defaultValueRaw": "",
-      "required": false,
-      "variableMode": "Input",
-      "isControlField": false
+      "variableMode": "Input"
     },
     {
       "key": "titleDelegate",
@@ -167,14 +95,8 @@
       "type": "Text",
       "description": "可选，在不解析菜单数据时自定义每一项的显示内容。使用方式请参考模块文档。",
       "isAdvanced": true,
-      "validForList": [],
-      "invalidForList": [],
-      "condition": "",
       "defaultValue": "",
-      "defaultValueRaw": "",
-      "required": false,
-      "variableMode": "Input",
-      "isControlField": false
+      "variableMode": "Input"
     },
     {
       "key": "help",
@@ -182,14 +104,8 @@
       "type": "Text",
       "description": "点击弹出显示帮助内容，MarkDown格式",
       "isAdvanced": true,
-      "validForList": [],
-      "invalidForList": [],
-      "condition": "",
       "defaultValue": "",
-      "defaultValueRaw": "",
-      "required": false,
-      "variableMode": "Input",
-      "isControlField": false
+      "variableMode": "Input"
     },
     {
       "key": "addSubprogram",
@@ -197,14 +113,8 @@
       "type": "Text",
       "description": "可选，留空使用内置编辑器。输入：_item（文本，空串）、_index（数字，0起始插入位置）、_isNew（布尔，true）。输出：_confirmed（布尔）为true时，使用_item（文本）添加一项。",
       "isAdvanced": true,
-      "validForList": [],
-      "invalidForList": [],
-      "condition": "",
       "defaultValue": "",
-      "defaultValueRaw": "",
-      "required": false,
-      "variableMode": "Input",
-      "isControlField": false
+      "variableMode": "Input"
     },
     {
       "key": "editSubprogram",
@@ -212,14 +122,8 @@
       "type": "Text",
       "description": "可选，留空使用内置编辑器。输入：_item（原始文本）、_index（数字，0起始索引）、_isNew（布尔，false）。输出：_confirmed（布尔）为true时，使用_item（文本）替换当前项；取消不修改列表。",
       "isAdvanced": true,
-      "validForList": [],
-      "invalidForList": [],
-      "condition": "",
       "defaultValue": "",
-      "defaultValueRaw": "",
-      "required": false,
-      "variableMode": "Input",
-      "isControlField": false
+      "variableMode": "Input"
     }
   ],
   "outputs": [
@@ -227,13 +131,8 @@
       "key": "isSuccess",
       "name": "是否确认",
       "type": "Boolean",
-      "description": "是否点击了确认按钮",
-      "isAdvanced": false,
-      "validForList": [],
-      "invalidForList": [],
-      "condition": ""
+      "description": "是否点击了确认按钮"
     }
   ],
-  "selections": {},
   "sourceFileName": "catalog.json"
 }

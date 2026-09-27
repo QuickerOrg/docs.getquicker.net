@@ -8,8 +8,6 @@
   "category": "Flow",
   "categoryName": "程序流程",
   "stepType": "SubProgram",
-  "isRisky": false,
-  "isProOnly": false,
   "helpLink": "https://docs.getquicker.net/v2/xaction/modules/subprogram",
   "inputs": [
     {
@@ -17,31 +15,21 @@
       "name": "子程序",
       "type": "Text",
       "description": "调用哪个子程序",
-      "isAdvanced": false,
-      "validForList": [],
-      "invalidForList": [],
-      "condition": "",
       "defaultValue": "",
-      "defaultValueRaw": "",
       "required": true,
-      "variableMode": "UseVarOrInput",
-      "isControlField": false
+      "variableMode": "UseVarOrInput"
     },
     {
       "key": "summary",
       "name": "Summary",
       "type": "Text",
       "description": "内部使用",
-      "isAdvanced": false,
       "validForList": [
         "NO_SHOW"
       ],
-      "invalidForList": [],
       "condition": "仅：NO_SHOW",
       "defaultValue": "",
-      "required": false,
-      "variableMode": "UseVarOrInput",
-      "isControlField": false
+      "variableMode": "UseVarOrInput"
     },
     {
       "key": "skipDebugOutput",
@@ -49,29 +37,18 @@
       "type": "Boolean",
       "description": "调试运行动作时，不输出子程序内部调试信息",
       "isAdvanced": true,
-      "validForList": [],
-      "invalidForList": [],
-      "condition": "",
       "defaultValue": "false",
       "defaultValueRaw": false,
-      "required": false,
-      "variableMode": "UseVarOrInput",
-      "isControlField": false
+      "variableMode": "UseVarOrInput"
     },
     {
       "key": "stopIfFail",
       "name": "失败后停止",
       "type": "Boolean",
       "description": "子程序运行失败后是否停止动作",
-      "isAdvanced": false,
-      "validForList": [],
-      "invalidForList": [],
-      "condition": "",
       "defaultValue": "true",
       "defaultValueRaw": true,
-      "required": false,
-      "variableMode": "Input",
-      "isControlField": false
+      "variableMode": "Input"
     }
   ],
   "outputs": [
@@ -79,13 +56,8 @@
       "key": "isSuccess",
       "name": "是否成功",
       "type": "Boolean",
-      "description": "子程序是否运行成功",
-      "isAdvanced": false,
-      "validForList": [],
-      "invalidForList": [],
-      "condition": ""
+      "description": "子程序是否运行成功"
     }
   ],
-  "selections": {},
   "sourceFileName": "catalog.json"
 }

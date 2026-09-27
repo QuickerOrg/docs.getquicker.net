@@ -8,21 +8,13 @@
   "category": "Flow",
   "categoryName": "程序流程",
   "stepType": "Action",
-  "isRisky": false,
-  "isProOnly": false,
   "helpLink": "https://docs.getquicker.net/v2/xaction/modules/stop",
   "inputs": [
     {
       "key": "method",
       "name": "操作类型",
       "type": "Enum",
-      "description": "",
-      "isAdvanced": false,
-      "validForList": [],
-      "invalidForList": [],
-      "condition": "",
       "defaultValue": "default",
-      "defaultValueRaw": "default",
       "required": true,
       "variableMode": "Input",
       "isControlField": true
@@ -32,45 +24,25 @@
       "name": "标记为出错",
       "type": "Boolean",
       "description": "用作子程序或被其他动作调用时，返回出错状态。",
-      "isAdvanced": false,
-      "validForList": [],
-      "invalidForList": [],
-      "condition": "",
       "defaultValue": "false",
       "defaultValueRaw": false,
-      "required": false,
-      "variableMode": "Input",
-      "isControlField": false
+      "variableMode": "Input"
     },
     {
       "key": "return",
       "name": "返回值",
       "type": "Any",
       "description": "被其他动作调用时，返回的动作结果。",
-      "isAdvanced": false,
-      "validForList": [],
-      "invalidForList": [],
-      "condition": "",
       "defaultValue": "",
-      "defaultValueRaw": "",
-      "required": false,
-      "variableMode": "UseVarOrInput",
-      "isControlField": false
+      "variableMode": "UseVarOrInput"
     },
     {
       "key": "showMessage",
       "name": "提示消息",
       "type": "Text",
       "description": "显示的提示信息。",
-      "isAdvanced": false,
-      "validForList": [],
-      "invalidForList": [],
-      "condition": "",
       "defaultValue": "",
-      "defaultValueRaw": "",
-      "required": false,
-      "variableMode": "UseVarOrInput",
-      "isControlField": false
+      "variableMode": "UseVarOrInput"
     }
   ],
   "outputs": [],
@@ -80,13 +52,11 @@
       "items": [
         {
           "value": "default",
-          "name": "默认：停止动作或从子程序返回",
-          "description": ""
+          "name": "默认：停止动作或从子程序返回"
         },
         {
           "value": "forcestop",
-          "name": "停止动作：停止整个动作(即使在子程序中)",
-          "description": ""
+          "name": "停止动作：停止整个动作(即使在子程序中)"
         }
       ]
     }

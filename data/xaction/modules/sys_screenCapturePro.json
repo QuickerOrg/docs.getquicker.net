@@ -8,8 +8,6 @@
   "category": "Image",
   "categoryName": "图片处理",
   "stepType": "Action",
-  "isRisky": false,
-  "isProOnly": false,
   "helpLink": "https://docs.getquicker.net/v2/xaction/modules/screen-capture-pro",
   "inputs": [
     {
@@ -17,12 +15,7 @@
       "name": "操作",
       "type": "Enum",
       "description": "这次截图怎么结束，不受设置中“直接截图的完成操作”影响。",
-      "isAdvanced": false,
-      "validForList": [],
-      "invalidForList": [],
-      "condition": "",
       "defaultValue": "capture",
-      "defaultValueRaw": "capture",
       "required": true,
       "variableMode": "Input",
       "isControlField": true
@@ -37,28 +30,19 @@
         "capture",
         "quick_save"
       ],
-      "invalidForList": [],
       "condition": "仅：capture, quick_save",
       "defaultValue": "",
-      "defaultValueRaw": "",
-      "required": false,
-      "variableMode": "UseVarOrInput",
-      "isControlField": false
+      "variableMode": "UseVarOrInput"
     },
     {
       "key": "delay",
       "name": "截图前延迟时间",
       "type": "Integer",
       "description": "等待多少毫秒后开始截图",
-      "isAdvanced": false,
-      "validForList": [],
-      "invalidForList": [],
-      "condition": "",
       "defaultValue": "0",
       "defaultValueRaw": 0,
       "required": true,
-      "variableMode": "UseVarOrInput",
-      "isControlField": false
+      "variableMode": "UseVarOrInput"
     },
     {
       "key": "addToHistory",
@@ -66,66 +50,49 @@
       "type": "Boolean",
       "description": "遵循全局截图历史开关；取消勾选可排除本次截图，不会打开全局历史。",
       "isAdvanced": true,
-      "validForList": [],
-      "invalidForList": [],
-      "condition": "",
       "defaultValue": "true",
       "defaultValueRaw": true,
-      "required": false,
-      "variableMode": "Input",
-      "isControlField": false
+      "variableMode": "Input"
     },
     {
       "key": "toClip",
       "name": "写入剪贴板",
       "type": "Boolean",
       "description": "打勾或双击后写入剪贴板。",
-      "isAdvanced": false,
       "validForList": [
         "capture"
       ],
-      "invalidForList": [],
       "condition": "仅：capture",
       "defaultValue": "false",
       "defaultValueRaw": false,
-      "required": false,
-      "variableMode": "Input",
-      "isControlField": false
+      "variableMode": "Input"
     },
     {
       "key": "pinImage",
       "name": "截图后贴图",
       "type": "Boolean",
       "description": "打勾或双击后贴到原位置。",
-      "isAdvanced": false,
       "validForList": [
         "capture"
       ],
-      "invalidForList": [],
       "condition": "仅：capture",
       "defaultValue": "false",
       "defaultValueRaw": false,
-      "required": false,
-      "variableMode": "Input",
-      "isControlField": false
+      "variableMode": "Input"
     },
     {
       "key": "showToolbarAfterPin",
       "name": "贴图后显示工具栏",
       "type": "Boolean",
-      "description": "",
       "isAdvanced": true,
       "validForList": [
         "capture",
         "pin"
       ],
-      "invalidForList": [],
       "condition": "仅：capture, pin",
       "defaultValue": "false",
       "defaultValueRaw": false,
-      "required": false,
-      "variableMode": "Input",
-      "isControlField": false
+      "variableMode": "Input"
     },
     {
       "key": "autoAdsorb",
@@ -133,15 +100,10 @@
       "type": "Boolean",
       "description": "自动吸附鼠标下的界面元素。关闭后可用滚轮手动缩小或扩大选区。",
       "isAdvanced": true,
-      "validForList": [],
-      "invalidForList": [],
-      "condition": "",
       "defaultValue": "false",
       "defaultValueRaw": false,
       "newStepDefaultValue": "true",
-      "required": false,
-      "variableMode": "Input",
-      "isControlField": false
+      "variableMode": "Input"
     },
     {
       "key": "toolbarScript",
@@ -153,28 +115,18 @@
         "capture",
         "quick_save"
       ],
-      "invalidForList": [],
       "condition": "仅：capture, quick_save",
       "defaultValue": "",
-      "defaultValueRaw": "",
-      "required": false,
-      "variableMode": "UseVarOrInput",
-      "isControlField": false
+      "variableMode": "UseVarOrInput"
     },
     {
       "key": "stopIfFail",
       "name": "失败后停止",
       "type": "Boolean",
       "description": "失败后是否停止动作",
-      "isAdvanced": false,
-      "validForList": [],
-      "invalidForList": [],
-      "condition": "",
       "defaultValue": "true",
       "defaultValueRaw": true,
-      "required": false,
-      "variableMode": "Input",
-      "isControlField": false
+      "variableMode": "Input"
     },
     {
       "key": "saveDirectory",
@@ -185,13 +137,9 @@
       "validForList": [
         "quick_save"
       ],
-      "invalidForList": [],
       "condition": "仅：quick_save",
       "defaultValue": "",
-      "defaultValueRaw": "",
-      "required": false,
-      "variableMode": "UseVarOrInput",
-      "isControlField": false
+      "variableMode": "UseVarOrInput"
     }
   ],
   "outputs": [
@@ -199,52 +147,32 @@
       "key": "isSuccess",
       "name": "是否成功",
       "type": "Boolean",
-      "description": "操作是否成功",
-      "isAdvanced": false,
-      "validForList": [],
-      "invalidForList": [],
-      "condition": ""
+      "description": "操作是否成功"
     },
     {
       "key": "img",
       "name": "图片",
-      "type": "Image",
-      "description": "",
-      "isAdvanced": false,
-      "validForList": [],
-      "invalidForList": [],
-      "condition": ""
+      "type": "Image"
     },
     {
       "key": "rect",
       "name": "截图区域",
       "type": "Text",
-      "description": "图片的截取区域(left,top,right,bottom)。",
-      "isAdvanced": false,
-      "validForList": [],
-      "invalidForList": [],
-      "condition": ""
+      "description": "图片的截取区域(left,top,right,bottom)。"
     },
     {
       "key": "savedPath",
       "name": "保存路径",
       "type": "Text",
-      "description": "保存后的路径；未保存时为空。",
-      "isAdvanced": false,
-      "validForList": [],
-      "invalidForList": [],
-      "condition": ""
+      "description": "保存后的路径；未保存时为空。"
     },
     {
       "key": "text",
       "name": "识别文本",
       "type": "Text",
-      "description": "",
-      "isAdvanced": false,
       "validForList": [
         "ocr_copy"
       ],
-      "invalidForList": [],
       "condition": "仅：ocr_copy"
     }
   ],
@@ -254,58 +182,47 @@
       "items": [
         {
           "value": "capture",
-          "name": "截图",
-          "description": ""
+          "name": "截图"
         },
         {
           "value": "capture_now",
-          "name": "框选即出图",
-          "description": ""
+          "name": "框选即出图"
         },
         {
           "value": "copy",
-          "name": "立刻复制",
-          "description": ""
+          "name": "立刻复制"
         },
         {
           "value": "pin",
-          "name": "立刻贴图",
-          "description": ""
+          "name": "立刻贴图"
         },
         {
           "value": "ocr_copy",
-          "name": "识别并复制",
-          "description": ""
+          "name": "识别并复制"
         },
         {
           "value": "ocr",
-          "name": "文本识别",
-          "description": ""
+          "name": "文本识别"
         },
         {
           "value": "table",
-          "name": "表格识别",
-          "description": ""
+          "name": "表格识别"
         },
         {
           "value": "formula",
-          "name": "公式识别",
-          "description": ""
+          "name": "公式识别"
         },
         {
           "value": "translate",
-          "name": "文本翻译",
-          "description": ""
+          "name": "文本翻译"
         },
         {
           "value": "image_translate",
-          "name": "图片翻译",
-          "description": ""
+          "name": "图片翻译"
         },
         {
           "value": "quick_save",
-          "name": "快速保存",
-          "description": ""
+          "name": "快速保存"
         }
       ]
     }

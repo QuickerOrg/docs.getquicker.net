@@ -8,21 +8,13 @@
   "category": "Files",
   "categoryName": "系统操作",
   "stepType": "Action",
-  "isRisky": false,
-  "isProOnly": false,
   "helpLink": "https://docs.getquicker.net/v2/xaction/modules/statestorage",
   "inputs": [
     {
       "key": "type",
       "name": "操作类型",
       "type": "Enum",
-      "description": "",
-      "isAdvanced": false,
-      "validForList": [],
-      "invalidForList": [],
-      "condition": "",
       "defaultValue": "readActionState",
-      "defaultValueRaw": "readActionState",
       "required": true,
       "variableMode": "Input",
       "isControlField": true
@@ -32,192 +24,136 @@
       "name": "名称",
       "type": "Text",
       "description": "存储或读取的状态条目名称。",
-      "isAdvanced": false,
       "validForList": [
         "readActionState",
         "saveActionState",
         "readGlobalState",
         "saveGlobalState"
       ],
-      "invalidForList": [],
       "condition": "仅：readActionState, saveActionState, readGlobalState, saveGlobalState",
       "defaultValue": "",
-      "defaultValueRaw": "",
-      "required": false,
-      "variableMode": "Input",
-      "isControlField": false
+      "variableMode": "Input"
     },
     {
       "key": "value",
       "name": "值",
       "type": "Text",
       "description": "要保存的状态值。使用\"*NULL*\"删除此状态的存储。",
-      "isAdvanced": false,
       "validForList": [
         "saveActionState",
         "saveGlobalState"
       ],
-      "invalidForList": [],
       "condition": "仅：saveActionState, saveGlobalState",
       "defaultValue": "",
-      "defaultValueRaw": "",
-      "required": false,
-      "variableMode": "UseVarOrInput",
-      "isControlField": false
+      "variableMode": "UseVarOrInput"
     },
     {
       "key": "defaultValue",
       "name": "默认值",
       "type": "Text",
       "description": "读取失败的时候返回的值",
-      "isAdvanced": false,
       "validForList": [
         "readActionState",
         "readGlobalState"
       ],
-      "invalidForList": [],
       "condition": "仅：readActionState, readGlobalState",
       "defaultValue": "",
-      "defaultValueRaw": "",
-      "required": false,
-      "variableMode": "Input",
-      "isControlField": false
+      "variableMode": "Input"
     },
     {
       "key": "inputIfEmpty",
       "name": "为空时请用户输入",
       "type": "Boolean",
       "description": "如果读到的状态值为空，则弹出对话框请用户输入值。启用此选项时，请保持默认值为空。",
-      "isAdvanced": false,
       "validForList": [
         "readActionState",
         "readGlobalState"
       ],
-      "invalidForList": [],
       "condition": "仅：readActionState, readGlobalState",
       "defaultValue": "false",
       "defaultValueRaw": false,
-      "required": false,
-      "variableMode": "Input",
-      "isControlField": false
+      "variableMode": "Input"
     },
     {
       "key": "prompt",
       "name": "用户输入提示",
       "type": "Text",
       "description": "需要用户输入变量内容时，给用户的输入提示。",
-      "isAdvanced": false,
       "validForList": [
         "readActionState",
         "readGlobalState"
       ],
-      "invalidForList": [],
       "condition": "仅：readActionState, readGlobalState",
       "defaultValue": "",
-      "defaultValueRaw": "",
-      "required": false,
-      "variableMode": "UseVarOrInput",
-      "isControlField": false
+      "variableMode": "UseVarOrInput"
     },
     {
       "key": "overlayIcon",
       "name": "徽标图标",
       "type": "Text",
       "description": "使用内置矢量图标：\"fa:图标名称:图标颜色\"。如：\"fa:Solid_Circle:#FF0000\"",
-      "isAdvanced": false,
       "validForList": [
         "UpdateOverlyIcon"
       ],
-      "invalidForList": [],
       "condition": "仅：UpdateOverlyIcon",
       "defaultValue": "",
-      "defaultValueRaw": "",
-      "required": false,
-      "variableMode": "UseVarOrInput",
-      "isControlField": false
+      "variableMode": "UseVarOrInput"
     },
     {
       "key": "badgeText",
       "name": "徽标文字",
       "type": "Text",
       "description": "在动作右上角显示的提示文字",
-      "isAdvanced": false,
       "validForList": [
         "UpdateActionBadge"
       ],
-      "invalidForList": [],
       "condition": "仅：UpdateActionBadge",
       "defaultValue": "",
-      "defaultValueRaw": "",
-      "required": false,
-      "variableMode": "UseVarOrInput",
-      "isControlField": false
+      "variableMode": "UseVarOrInput"
     },
     {
       "key": "badgeColor",
       "name": "徽标颜色",
       "type": "Text",
       "description": "在动作右上角显示的徽标底色。留空表示透明。",
-      "isAdvanced": false,
       "validForList": [
         "UpdateActionBadge"
       ],
-      "invalidForList": [],
       "condition": "仅：UpdateActionBadge",
       "defaultValue": "",
-      "defaultValueRaw": "",
-      "required": false,
-      "variableMode": "UseVarOrInput",
-      "isControlField": false
+      "variableMode": "UseVarOrInput"
     },
     {
       "key": "badgeTextColor",
       "name": "徽标文字颜色",
       "type": "Text",
-      "description": "",
-      "isAdvanced": false,
       "validForList": [
         "UpdateActionBadge"
       ],
-      "invalidForList": [],
       "condition": "仅：UpdateActionBadge",
       "defaultValue": "",
-      "defaultValueRaw": "",
-      "required": false,
-      "variableMode": "UseVarOrInput",
-      "isControlField": false
+      "variableMode": "UseVarOrInput"
     },
     {
       "key": "actionContextMenu",
       "name": "附加的右键菜单项",
       "type": "Text",
       "description": "附加的动作右键菜单，格式请参考文档",
-      "isAdvanced": false,
       "validForList": [
         "UpdateContextMenu"
       ],
-      "invalidForList": [],
       "condition": "仅：UpdateContextMenu",
       "defaultValue": "",
-      "defaultValueRaw": "",
-      "required": false,
-      "variableMode": "UseVarOrInput",
-      "isControlField": false
+      "variableMode": "UseVarOrInput"
     },
     {
       "key": "stopIfFail",
       "name": "失败后停止",
       "type": "Boolean",
       "description": "失败后是否停止动作",
-      "isAdvanced": false,
-      "validForList": [],
-      "invalidForList": [],
-      "condition": "",
       "defaultValue": "true",
       "defaultValueRaw": true,
-      "required": false,
-      "variableMode": "Input",
-      "isControlField": false
+      "variableMode": "Input"
     }
   ],
   "outputs": [
@@ -226,12 +162,10 @@
       "name": "是否成功",
       "type": "Boolean",
       "description": "是否成功获取了値",
-      "isAdvanced": false,
       "validForList": [
         "readActionState",
         "readGlobalState"
       ],
-      "invalidForList": [],
       "condition": "仅：readActionState, readGlobalState"
     },
     {
@@ -239,12 +173,10 @@
       "name": "值",
       "type": "Any",
       "description": "读取到的值",
-      "isAdvanced": false,
       "validForList": [
         "readActionState",
         "readGlobalState"
       ],
-      "invalidForList": [],
       "condition": "仅：readActionState, readGlobalState"
     },
     {
@@ -252,12 +184,10 @@
       "name": "是否为空",
       "type": "Boolean",
       "description": "读取到的值是否为空",
-      "isAdvanced": false,
       "validForList": [
         "readActionState",
         "readGlobalState"
       ],
-      "invalidForList": [],
       "condition": "仅：readActionState, readGlobalState"
     }
   ],
@@ -267,38 +197,31 @@
       "items": [
         {
           "value": "readActionState",
-          "name": "读取动作状态",
-          "description": ""
+          "name": "读取动作状态"
         },
         {
           "value": "saveActionState",
-          "name": "写入动作状态",
-          "description": ""
+          "name": "写入动作状态"
         },
         {
           "value": "UpdateActionBadge",
-          "name": "设置徽标文字",
-          "description": ""
+          "name": "设置徽标文字"
         },
         {
           "value": "UpdateOverlyIcon",
-          "name": "设置徽标图标",
-          "description": ""
+          "name": "设置徽标图标"
         },
         {
           "value": "UpdateContextMenu",
-          "name": "设置附加的右键菜单项",
-          "description": ""
+          "name": "设置附加的右键菜单项"
         },
         {
           "value": "readGlobalState",
-          "name": "【谨慎使用】读取全局状态",
-          "description": ""
+          "name": "【谨慎使用】读取全局状态"
         },
         {
           "value": "saveGlobalState",
-          "name": "【谨慎使用】写入全局状态",
-          "description": ""
+          "name": "【谨慎使用】写入全局状态"
         }
       ]
     }

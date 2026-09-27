@@ -8,21 +8,13 @@
   "category": "System",
   "categoryName": "Windows系统",
   "stepType": "Action",
-  "isRisky": false,
-  "isProOnly": false,
   "helpLink": "https://docs.getquicker.net/v2/xaction/modules/audiocontrol",
   "inputs": [
     {
       "key": "operation",
       "name": "操作类型",
       "type": "Enum",
-      "description": "",
-      "isAdvanced": false,
-      "validForList": [],
-      "invalidForList": [],
-      "condition": "",
       "defaultValue": "GetOutputDeviceList",
-      "defaultValueRaw": "GetOutputDeviceList",
       "required": true,
       "variableMode": "Input",
       "isControlField": true
@@ -32,103 +24,77 @@
       "name": "设备ID",
       "type": "Text",
       "description": "要获取或更新信息的设备ID。",
-      "isAdvanced": false,
       "validForList": [
         "GetDeviceById",
         "SetDefaultDeviceById",
         "SetDeviceMute",
         "SetDeviceVolume"
       ],
-      "invalidForList": [],
       "condition": "仅：GetDeviceById, SetDefaultDeviceById, SetDeviceMute, SetDeviceVolume",
       "defaultValue": "",
-      "defaultValueRaw": "",
       "required": true,
-      "variableMode": "UseVarOrInput",
-      "isControlField": false
+      "variableMode": "UseVarOrInput"
     },
     {
       "key": "mute",
       "name": "静音状态",
       "type": "Text",
       "description": "可选值 true/false/toggle 静音、取消静音或切换状态。",
-      "isAdvanced": false,
       "validForList": [
         "SetDeviceMute"
       ],
-      "invalidForList": [],
       "condition": "仅：SetDeviceMute",
       "defaultValue": "true",
-      "defaultValueRaw": "true",
       "required": true,
-      "variableMode": "UseVarOrInput",
-      "isControlField": false
+      "variableMode": "UseVarOrInput"
     },
     {
       "key": "volume",
       "name": "音量",
       "type": "Number",
       "description": "0-1.0之间的小数数字。",
-      "isAdvanced": false,
       "validForList": [
         "SetDeviceVolume"
       ],
-      "invalidForList": [],
       "condition": "仅：SetDeviceVolume",
       "defaultValue": "0.1",
       "defaultValueRaw": 0.1,
       "required": true,
-      "variableMode": "UseVarOrInput",
-      "isControlField": false
+      "variableMode": "UseVarOrInput"
     },
     {
       "key": "returnAll",
       "name": "返回所有状态的设备",
       "type": "Boolean",
       "description": "否则只返回就绪状态 (Active) 的设备",
-      "isAdvanced": false,
       "validForList": [
         "GetOutputDeviceList",
         "GetInputDeviceList"
       ],
-      "invalidForList": [],
       "condition": "仅：GetOutputDeviceList, GetInputDeviceList",
       "defaultValue": "false",
       "defaultValueRaw": false,
-      "required": false,
-      "variableMode": "Input",
-      "isControlField": false
+      "variableMode": "Input"
     },
     {
       "key": "deviceName",
       "name": "蓝牙设备名称",
       "type": "Text",
-      "description": "",
-      "isAdvanced": false,
       "validForList": [
         "ConnectBluetoothDevice"
       ],
-      "invalidForList": [],
       "condition": "仅：ConnectBluetoothDevice",
       "defaultValue": "",
-      "required": false,
-      "variableMode": "UseVarOrInput",
-      "isControlField": false
+      "variableMode": "UseVarOrInput"
     },
     {
       "key": "stopIfFail",
       "name": "失败后停止动作",
       "type": "Boolean",
       "description": "失败后是否停止动作",
-      "isAdvanced": false,
-      "validForList": [],
-      "invalidForList": [],
-      "condition": "",
       "defaultValue": "true",
       "defaultValueRaw": true,
-      "required": false,
-      "variableMode": "Input",
-      "isControlField": false
+      "variableMode": "Input"
     }
   ],
   "outputs": [
@@ -136,120 +102,93 @@
       "key": "isSuccess",
       "name": "是否成功",
       "type": "Boolean",
-      "description": "操作是否成功",
-      "isAdvanced": false,
-      "validForList": [],
-      "invalidForList": [],
-      "condition": ""
+      "description": "操作是否成功"
     },
     {
       "key": "deviceList",
       "name": "设备信息列表",
       "type": "List",
       "description": "每项的格式为:[图标]名称(注释)|设备ID",
-      "isAdvanced": false,
       "validForList": [
         "GetOutputDeviceList",
         "GetInputDeviceList"
       ],
-      "invalidForList": [],
       "condition": "仅：GetOutputDeviceList, GetInputDeviceList"
     },
     {
       "key": "deviceId",
       "name": "设备ID",
       "type": "Text",
-      "description": "",
-      "isAdvanced": false,
       "validForList": [
         "GetOutputDefaultDevice",
         "GetInputDefaultDevice"
       ],
-      "invalidForList": [],
       "condition": "仅：GetOutputDefaultDevice, GetInputDefaultDevice"
     },
     {
       "key": "deviceName",
       "name": "设备名称",
       "type": "Text",
-      "description": "",
-      "isAdvanced": false,
       "validForList": [
         "GetOutputDefaultDevice",
         "GetInputDefaultDevice",
         "GetDeviceById"
       ],
-      "invalidForList": [],
       "condition": "仅：GetOutputDefaultDevice, GetInputDefaultDevice, GetDeviceById"
     },
     {
       "key": "deviceState",
       "name": "设备状态",
       "type": "Text",
-      "description": "",
-      "isAdvanced": false,
       "validForList": [
         "GetOutputDefaultDevice",
         "GetInputDefaultDevice",
         "GetDeviceById"
       ],
-      "invalidForList": [],
       "condition": "仅：GetOutputDefaultDevice, GetInputDefaultDevice, GetDeviceById"
     },
     {
       "key": "mute",
       "name": "是否静音",
       "type": "Boolean",
-      "description": "",
-      "isAdvanced": false,
       "validForList": [
         "GetOutputDefaultDevice",
         "GetInputDefaultDevice",
         "GetDeviceById"
       ],
-      "invalidForList": [],
       "condition": "仅：GetOutputDefaultDevice, GetInputDefaultDevice, GetDeviceById"
     },
     {
       "key": "isPlaying",
       "name": "是否正在播放",
       "type": "Boolean",
-      "description": "",
-      "isAdvanced": false,
       "validForList": [
         "GetOutputDefaultDevice",
         "GetInputDefaultDevice",
         "GetDeviceById"
       ],
-      "invalidForList": [],
       "condition": "仅：GetOutputDefaultDevice, GetInputDefaultDevice, GetDeviceById"
     },
     {
       "key": "volume",
       "name": "设置音量",
       "type": "Number",
-      "description": "",
-      "isAdvanced": false,
       "validForList": [
         "GetOutputDefaultDevice",
         "GetInputDefaultDevice",
         "GetDeviceById"
       ],
-      "invalidForList": [],
       "condition": "仅：GetOutputDefaultDevice, GetInputDefaultDevice, GetDeviceById"
     },
     {
       "key": "masterPeakValue",
       "name": "实时音量",
       "type": "Number",
-      "description": "",
-      "isAdvanced": false,
       "validForList": [
         "GetOutputDefaultDevice",
         "GetInputDefaultDevice",
         "GetDeviceById"
       ],
-      "invalidForList": [],
       "condition": "仅：GetOutputDefaultDevice, GetInputDefaultDevice, GetDeviceById"
     },
     {
@@ -263,7 +202,6 @@
         "GetInputDefaultDevice",
         "GetDeviceById"
       ],
-      "invalidForList": [],
       "condition": "仅：GetOutputDefaultDevice, GetInputDefaultDevice, GetDeviceById"
     },
     {
@@ -276,7 +214,6 @@
         "GetOutputDeviceList",
         "GetInputDeviceList"
       ],
-      "invalidForList": [],
       "condition": "仅：GetOutputDeviceList, GetInputDeviceList"
     }
   ],
@@ -286,43 +223,35 @@
       "items": [
         {
           "value": "GetOutputDeviceList",
-          "name": "获取输出设备列表",
-          "description": ""
+          "name": "获取输出设备列表"
         },
         {
           "value": "GetOutputDefaultDevice",
-          "name": "获取默认输出设备信息",
-          "description": ""
+          "name": "获取默认输出设备信息"
         },
         {
           "value": "GetInputDeviceList",
-          "name": "获取输入设备列表",
-          "description": ""
+          "name": "获取输入设备列表"
         },
         {
           "value": "GetInputDefaultDevice",
-          "name": "获取默认输入设备信息",
-          "description": ""
+          "name": "获取默认输入设备信息"
         },
         {
           "value": "GetDeviceById",
-          "name": "获取指定设备的信息",
-          "description": ""
+          "name": "获取指定设备的信息"
         },
         {
           "value": "SetDefaultDeviceById",
-          "name": "设置默认设备",
-          "description": ""
+          "name": "设置默认设备"
         },
         {
           "value": "SetDeviceMute",
-          "name": "设置静音",
-          "description": ""
+          "name": "设置静音"
         },
         {
           "value": "SetDeviceVolume",
-          "name": "设置音量",
-          "description": ""
+          "name": "设置音量"
         }
       ]
     },
@@ -331,18 +260,15 @@
       "items": [
         {
           "value": "true",
-          "name": "静音",
-          "description": ""
+          "name": "静音"
         },
         {
           "value": "false",
-          "name": "取消静音",
-          "description": ""
+          "name": "取消静音"
         },
         {
           "value": "toggle",
-          "name": "切换静音状态",
-          "description": ""
+          "name": "切换静音状态"
         }
       ]
     }

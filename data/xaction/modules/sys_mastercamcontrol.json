@@ -8,21 +8,13 @@
   "category": "SoftInteraction",
   "categoryName": "第三方软件交互",
   "stepType": "Action",
-  "isRisky": false,
-  "isProOnly": false,
   "helpLink": "https://docs.getquicker.net/v2/xaction/modules/mastercamcontrol",
   "inputs": [
     {
       "key": "operation",
       "name": "操作类型",
       "type": "Enum",
-      "description": "",
-      "isAdvanced": false,
-      "validForList": [],
-      "invalidForList": [],
-      "condition": "",
       "defaultValue": "common",
-      "defaultValueRaw": "common",
       "required": true,
       "variableMode": "Input",
       "isControlField": true
@@ -31,15 +23,11 @@
       "key": "commonCategory",
       "name": "功能分类",
       "type": "Enum",
-      "description": "",
-      "isAdvanced": false,
       "validForList": [
         "common"
       ],
-      "invalidForList": [],
       "condition": "仅：common",
       "defaultValue": "document",
-      "defaultValueRaw": "document",
       "required": true,
       "variableMode": "Input",
       "isControlField": true
@@ -48,10 +36,6 @@
       "key": "documentOperation",
       "name": "文档功能",
       "type": "Enum",
-      "description": "",
-      "isAdvanced": false,
-      "validForList": [],
-      "invalidForList": [],
       "visibleWhen": {
         "kind": "All",
         "conditions": [
@@ -75,7 +59,6 @@
       },
       "condition": "(operation 为 \"common\" 且 commonCategory 为 \"document\")",
       "defaultValue": "document.get_context",
-      "defaultValueRaw": "document.get_context",
       "required": true,
       "variableMode": "Input",
       "isControlField": true
@@ -84,10 +67,6 @@
       "key": "selectionOperation",
       "name": "选择功能",
       "type": "Enum",
-      "description": "",
-      "isAdvanced": false,
-      "validForList": [],
-      "invalidForList": [],
       "visibleWhen": {
         "kind": "All",
         "conditions": [
@@ -111,7 +90,6 @@
       },
       "condition": "(operation 为 \"common\" 且 commonCategory 为 \"selection\")",
       "defaultValue": "selection.get_summary",
-      "defaultValueRaw": "selection.get_summary",
       "required": true,
       "variableMode": "Input",
       "isControlField": true
@@ -120,10 +98,6 @@
       "key": "viewOperation",
       "name": "视图功能",
       "type": "Enum",
-      "description": "",
-      "isAdvanced": false,
-      "validForList": [],
-      "invalidForList": [],
       "visibleWhen": {
         "kind": "All",
         "conditions": [
@@ -147,7 +121,6 @@
       },
       "condition": "(operation 为 \"common\" 且 commonCategory 为 \"view\")",
       "defaultValue": "view.fit",
-      "defaultValueRaw": "view.fit",
       "required": true,
       "variableMode": "Input",
       "isControlField": true
@@ -156,10 +129,6 @@
       "key": "levelOperation",
       "name": "图层功能",
       "type": "Enum",
-      "description": "",
-      "isAdvanced": false,
-      "validForList": [],
-      "invalidForList": [],
       "visibleWhen": {
         "kind": "All",
         "conditions": [
@@ -183,7 +152,6 @@
       },
       "condition": "(operation 为 \"common\" 且 commonCategory 为 \"level\")",
       "defaultValue": "level.list",
-      "defaultValueRaw": "level.list",
       "required": true,
       "variableMode": "Input",
       "isControlField": true
@@ -192,10 +160,6 @@
       "key": "geometryOperation",
       "name": "几何功能",
       "type": "Enum",
-      "description": "",
-      "isAdvanced": false,
-      "validForList": [],
-      "invalidForList": [],
       "visibleWhen": {
         "kind": "All",
         "conditions": [
@@ -219,7 +183,6 @@
       },
       "condition": "(operation 为 \"common\" 且 commonCategory 为 \"geometry\")",
       "defaultValue": "geometry.get_summary",
-      "defaultValueRaw": "geometry.get_summary",
       "required": true,
       "variableMode": "Input",
       "isControlField": true
@@ -228,10 +191,6 @@
       "key": "camOperation",
       "name": "CAM 功能",
       "type": "Enum",
-      "description": "",
-      "isAdvanced": false,
-      "validForList": [],
-      "invalidForList": [],
       "visibleWhen": {
         "kind": "All",
         "conditions": [
@@ -255,7 +214,6 @@
       },
       "condition": "(operation 为 \"common\" 且 commonCategory 为 \"cam\")",
       "defaultValue": "cam.get_summary",
-      "defaultValueRaw": "cam.get_summary",
       "required": true,
       "variableMode": "Input",
       "isControlField": true
@@ -264,10 +222,6 @@
       "key": "uiOperation",
       "name": "界面功能",
       "type": "Enum",
-      "description": "",
-      "isAdvanced": false,
-      "validForList": [],
-      "invalidForList": [],
       "visibleWhen": {
         "kind": "All",
         "conditions": [
@@ -291,7 +245,6 @@
       },
       "condition": "(operation 为 \"common\" 且 commonCategory 为 \"ui\")",
       "defaultValue": "ui.ft.list",
-      "defaultValueRaw": "ui.ft.list",
       "required": true,
       "variableMode": "Input",
       "isControlField": true
@@ -301,9 +254,6 @@
       "name": "文档路径",
       "type": "Text",
       "description": "打开或另存为的绝对文件路径。",
-      "isAdvanced": false,
-      "validForList": [],
-      "invalidForList": [],
       "visibleWhen": {
         "kind": "All",
         "conditions": [
@@ -336,19 +286,13 @@
       },
       "condition": "(operation 为 \"common\" 且 commonCategory 为 \"document\" 且 documentOperation 为 \"document.save_as\"、\"document.open\")",
       "defaultValue": "",
-      "defaultValueRaw": "",
       "required": true,
-      "variableMode": "UseVarOrInput",
-      "isControlField": false
+      "variableMode": "UseVarOrInput"
     },
     {
       "key": "commonOverwriteFile",
       "name": "允许覆盖已有文件",
       "type": "Boolean",
-      "description": "",
-      "isAdvanced": false,
-      "validForList": [],
-      "invalidForList": [],
       "visibleWhen": {
         "kind": "All",
         "conditions": [
@@ -381,18 +325,12 @@
       "condition": "(operation 为 \"common\" 且 commonCategory 为 \"document\" 且 documentOperation 为 \"document.save_as\")",
       "defaultValue": "false",
       "defaultValueRaw": false,
-      "required": false,
-      "variableMode": "Input",
-      "isControlField": false
+      "variableMode": "Input"
     },
     {
       "key": "acknowledgeDiscard",
       "name": "确认已保存或允许放弃当前修改",
       "type": "Boolean",
-      "description": "",
-      "isAdvanced": false,
-      "validForList": [],
-      "invalidForList": [],
       "visibleWhen": {
         "kind": "All",
         "conditions": [
@@ -426,18 +364,13 @@
       "condition": "(operation 为 \"common\" 且 commonCategory 为 \"document\" 且 documentOperation 为 \"document.open\"、\"document.new\")",
       "defaultValue": "false",
       "defaultValueRaw": false,
-      "required": false,
-      "variableMode": "Input",
-      "isControlField": false
+      "variableMode": "Input"
     },
     {
       "key": "commonCapturePath",
       "name": "图片路径",
       "type": "Text",
       "description": "保存图形区图片的绝对 .bmp 路径。",
-      "isAdvanced": false,
-      "validForList": [],
-      "invalidForList": [],
       "visibleWhen": {
         "kind": "All",
         "conditions": [
@@ -469,19 +402,13 @@
       },
       "condition": "(operation 为 \"common\" 且 commonCategory 为 \"view\" 且 viewOperation 为 \"view.capture_bitmap\")",
       "defaultValue": "",
-      "defaultValueRaw": "",
       "required": true,
-      "variableMode": "UseVarOrInput",
-      "isControlField": false
+      "variableMode": "UseVarOrInput"
     },
     {
       "key": "commonCaptureOverwrite",
       "name": "允许覆盖已有图片",
       "type": "Boolean",
-      "description": "",
-      "isAdvanced": false,
-      "validForList": [],
-      "invalidForList": [],
       "visibleWhen": {
         "kind": "All",
         "conditions": [
@@ -514,18 +441,12 @@
       "condition": "(operation 为 \"common\" 且 commonCategory 为 \"view\" 且 viewOperation 为 \"view.capture_bitmap\")",
       "defaultValue": "false",
       "defaultValueRaw": false,
-      "required": false,
-      "variableMode": "Input",
-      "isControlField": false
+      "variableMode": "Input"
     },
     {
       "key": "selectionLevelNumber",
       "name": "图层编号",
       "type": "Integer",
-      "description": "",
-      "isAdvanced": false,
-      "validForList": [],
-      "invalidForList": [],
       "visibleWhen": {
         "kind": "All",
         "conditions": [
@@ -559,17 +480,12 @@
       "defaultValue": "1",
       "defaultValueRaw": 1,
       "required": true,
-      "variableMode": "Input",
-      "isControlField": false
+      "variableMode": "Input"
     },
     {
       "key": "geometryType",
       "name": "几何类型",
       "type": "Enum",
-      "description": "",
-      "isAdvanced": false,
-      "validForList": [],
-      "invalidForList": [],
       "visibleWhen": {
         "kind": "All",
         "conditions": [
@@ -601,7 +517,6 @@
       },
       "condition": "(operation 为 \"common\" 且 commonCategory 为 \"selection\" 且 selectionOperation 为 \"selection.select_type\")",
       "defaultValue": "Lines",
-      "defaultValueRaw": "Lines",
       "required": true,
       "variableMode": "Input",
       "isControlField": true
@@ -610,10 +525,6 @@
       "key": "clearExistingSelection",
       "name": "替换当前选择",
       "type": "Boolean",
-      "description": "",
-      "isAdvanced": false,
-      "validForList": [],
-      "invalidForList": [],
       "visibleWhen": {
         "kind": "All",
         "conditions": [
@@ -647,18 +558,12 @@
       "condition": "(operation 为 \"common\" 且 commonCategory 为 \"selection\" 且 selectionOperation 为 \"selection.select_level\"、\"selection.select_type\")",
       "defaultValue": "true",
       "defaultValueRaw": true,
-      "required": false,
-      "variableMode": "Input",
-      "isControlField": false
+      "variableMode": "Input"
     },
     {
       "key": "commonLevelNumber",
       "name": "图层编号",
       "type": "Integer",
-      "description": "",
-      "isAdvanced": false,
-      "validForList": [],
-      "invalidForList": [],
       "visibleWhen": {
         "kind": "All",
         "conditions": [
@@ -694,17 +599,12 @@
       "defaultValue": "1",
       "defaultValueRaw": 1,
       "required": true,
-      "variableMode": "Input",
-      "isControlField": false
+      "variableMode": "Input"
     },
     {
       "key": "commonLevelVisible",
       "name": "图层可见",
       "type": "Boolean",
-      "description": "",
-      "isAdvanced": false,
-      "validForList": [],
-      "invalidForList": [],
       "visibleWhen": {
         "kind": "All",
         "conditions": [
@@ -737,18 +637,12 @@
       "condition": "(operation 为 \"common\" 且 commonCategory 为 \"level\" 且 levelOperation 为 \"level.set_visible\")",
       "defaultValue": "true",
       "defaultValueRaw": true,
-      "required": false,
-      "variableMode": "Input",
-      "isControlField": false
+      "variableMode": "Input"
     },
     {
       "key": "levelName",
       "name": "图层名称",
       "type": "Text",
-      "description": "",
-      "isAdvanced": false,
-      "validForList": [],
-      "invalidForList": [],
       "visibleWhen": {
         "kind": "All",
         "conditions": [
@@ -780,19 +674,13 @@
       },
       "condition": "(operation 为 \"common\" 且 commonCategory 为 \"level\" 且 levelOperation 为 \"level.rename\")",
       "defaultValue": "",
-      "defaultValueRaw": "",
       "required": true,
-      "variableMode": "UseVarOrInput",
-      "isControlField": false
+      "variableMode": "UseVarOrInput"
     },
     {
       "key": "commonX1",
       "name": "起点 X",
       "type": "Number",
-      "description": "",
-      "isAdvanced": false,
-      "validForList": [],
-      "invalidForList": [],
       "visibleWhen": {
         "kind": "All",
         "conditions": [
@@ -825,18 +713,12 @@
       "condition": "(operation 为 \"common\" 且 commonCategory 为 \"geometry\" 且 geometryOperation 为 \"geometry.create_line\")",
       "defaultValue": "0",
       "defaultValueRaw": 0,
-      "required": false,
-      "variableMode": "UseVarOrInput",
-      "isControlField": false
+      "variableMode": "UseVarOrInput"
     },
     {
       "key": "commonY1",
       "name": "起点 Y",
       "type": "Number",
-      "description": "",
-      "isAdvanced": false,
-      "validForList": [],
-      "invalidForList": [],
       "visibleWhen": {
         "kind": "All",
         "conditions": [
@@ -869,18 +751,12 @@
       "condition": "(operation 为 \"common\" 且 commonCategory 为 \"geometry\" 且 geometryOperation 为 \"geometry.create_line\")",
       "defaultValue": "0",
       "defaultValueRaw": 0,
-      "required": false,
-      "variableMode": "UseVarOrInput",
-      "isControlField": false
+      "variableMode": "UseVarOrInput"
     },
     {
       "key": "commonZ1",
       "name": "起点 Z",
       "type": "Number",
-      "description": "",
-      "isAdvanced": false,
-      "validForList": [],
-      "invalidForList": [],
       "visibleWhen": {
         "kind": "All",
         "conditions": [
@@ -913,18 +789,12 @@
       "condition": "(operation 为 \"common\" 且 commonCategory 为 \"geometry\" 且 geometryOperation 为 \"geometry.create_line\")",
       "defaultValue": "0",
       "defaultValueRaw": 0,
-      "required": false,
-      "variableMode": "UseVarOrInput",
-      "isControlField": false
+      "variableMode": "UseVarOrInput"
     },
     {
       "key": "commonX2",
       "name": "终点 X",
       "type": "Number",
-      "description": "",
-      "isAdvanced": false,
-      "validForList": [],
-      "invalidForList": [],
       "visibleWhen": {
         "kind": "All",
         "conditions": [
@@ -957,18 +827,12 @@
       "condition": "(operation 为 \"common\" 且 commonCategory 为 \"geometry\" 且 geometryOperation 为 \"geometry.create_line\")",
       "defaultValue": "10",
       "defaultValueRaw": 10,
-      "required": false,
-      "variableMode": "UseVarOrInput",
-      "isControlField": false
+      "variableMode": "UseVarOrInput"
     },
     {
       "key": "commonY2",
       "name": "终点 Y",
       "type": "Number",
-      "description": "",
-      "isAdvanced": false,
-      "validForList": [],
-      "invalidForList": [],
       "visibleWhen": {
         "kind": "All",
         "conditions": [
@@ -1001,18 +865,12 @@
       "condition": "(operation 为 \"common\" 且 commonCategory 为 \"geometry\" 且 geometryOperation 为 \"geometry.create_line\")",
       "defaultValue": "0",
       "defaultValueRaw": 0,
-      "required": false,
-      "variableMode": "UseVarOrInput",
-      "isControlField": false
+      "variableMode": "UseVarOrInput"
     },
     {
       "key": "commonZ2",
       "name": "终点 Z",
       "type": "Number",
-      "description": "",
-      "isAdvanced": false,
-      "validForList": [],
-      "invalidForList": [],
       "visibleWhen": {
         "kind": "All",
         "conditions": [
@@ -1045,18 +903,12 @@
       "condition": "(operation 为 \"common\" 且 commonCategory 为 \"geometry\" 且 geometryOperation 为 \"geometry.create_line\")",
       "defaultValue": "0",
       "defaultValueRaw": 0,
-      "required": false,
-      "variableMode": "UseVarOrInput",
-      "isControlField": false
+      "variableMode": "UseVarOrInput"
     },
     {
       "key": "commonX",
       "name": "原点/圆心 X",
       "type": "Number",
-      "description": "",
-      "isAdvanced": false,
-      "validForList": [],
-      "invalidForList": [],
       "visibleWhen": {
         "kind": "All",
         "conditions": [
@@ -1092,18 +944,12 @@
       "condition": "(operation 为 \"common\" 且 commonCategory 为 \"geometry\" 且 geometryOperation 为 \"geometry.create_point\"、\"geometry.create_circle\"、\"geometry.rotate_selected\"、\"geometry.scale_selected\")",
       "defaultValue": "0",
       "defaultValueRaw": 0,
-      "required": false,
-      "variableMode": "UseVarOrInput",
-      "isControlField": false
+      "variableMode": "UseVarOrInput"
     },
     {
       "key": "commonY",
       "name": "原点/圆心 Y",
       "type": "Number",
-      "description": "",
-      "isAdvanced": false,
-      "validForList": [],
-      "invalidForList": [],
       "visibleWhen": {
         "kind": "All",
         "conditions": [
@@ -1139,18 +985,12 @@
       "condition": "(operation 为 \"common\" 且 commonCategory 为 \"geometry\" 且 geometryOperation 为 \"geometry.create_point\"、\"geometry.create_circle\"、\"geometry.rotate_selected\"、\"geometry.scale_selected\")",
       "defaultValue": "0",
       "defaultValueRaw": 0,
-      "required": false,
-      "variableMode": "UseVarOrInput",
-      "isControlField": false
+      "variableMode": "UseVarOrInput"
     },
     {
       "key": "commonZ",
       "name": "原点/圆心 Z",
       "type": "Number",
-      "description": "",
-      "isAdvanced": false,
-      "validForList": [],
-      "invalidForList": [],
       "visibleWhen": {
         "kind": "All",
         "conditions": [
@@ -1186,18 +1026,12 @@
       "condition": "(operation 为 \"common\" 且 commonCategory 为 \"geometry\" 且 geometryOperation 为 \"geometry.create_point\"、\"geometry.create_circle\"、\"geometry.rotate_selected\"、\"geometry.scale_selected\")",
       "defaultValue": "0",
       "defaultValueRaw": 0,
-      "required": false,
-      "variableMode": "UseVarOrInput",
-      "isControlField": false
+      "variableMode": "UseVarOrInput"
     },
     {
       "key": "circleRadius",
       "name": "半径",
       "type": "Number",
-      "description": "",
-      "isAdvanced": false,
-      "validForList": [],
-      "invalidForList": [],
       "visibleWhen": {
         "kind": "All",
         "conditions": [
@@ -1230,18 +1064,12 @@
       "condition": "(operation 为 \"common\" 且 commonCategory 为 \"geometry\" 且 geometryOperation 为 \"geometry.create_circle\")",
       "defaultValue": "10",
       "defaultValueRaw": 10,
-      "required": false,
-      "variableMode": "UseVarOrInput",
-      "isControlField": false
+      "variableMode": "UseVarOrInput"
     },
     {
       "key": "moveX",
       "name": "移动 X",
       "type": "Number",
-      "description": "",
-      "isAdvanced": false,
-      "validForList": [],
-      "invalidForList": [],
       "visibleWhen": {
         "kind": "All",
         "conditions": [
@@ -1274,18 +1102,12 @@
       "condition": "(operation 为 \"common\" 且 commonCategory 为 \"geometry\" 且 geometryOperation 为 \"geometry.move_selected\")",
       "defaultValue": "10",
       "defaultValueRaw": 10,
-      "required": false,
-      "variableMode": "UseVarOrInput",
-      "isControlField": false
+      "variableMode": "UseVarOrInput"
     },
     {
       "key": "moveY",
       "name": "移动 Y",
       "type": "Number",
-      "description": "",
-      "isAdvanced": false,
-      "validForList": [],
-      "invalidForList": [],
       "visibleWhen": {
         "kind": "All",
         "conditions": [
@@ -1318,18 +1140,12 @@
       "condition": "(operation 为 \"common\" 且 commonCategory 为 \"geometry\" 且 geometryOperation 为 \"geometry.move_selected\")",
       "defaultValue": "0",
       "defaultValueRaw": 0,
-      "required": false,
-      "variableMode": "UseVarOrInput",
-      "isControlField": false
+      "variableMode": "UseVarOrInput"
     },
     {
       "key": "moveZ",
       "name": "移动 Z",
       "type": "Number",
-      "description": "",
-      "isAdvanced": false,
-      "validForList": [],
-      "invalidForList": [],
       "visibleWhen": {
         "kind": "All",
         "conditions": [
@@ -1362,18 +1178,12 @@
       "condition": "(operation 为 \"common\" 且 commonCategory 为 \"geometry\" 且 geometryOperation 为 \"geometry.move_selected\")",
       "defaultValue": "0",
       "defaultValueRaw": 0,
-      "required": false,
-      "variableMode": "UseVarOrInput",
-      "isControlField": false
+      "variableMode": "UseVarOrInput"
     },
     {
       "key": "angleDegrees",
       "name": "旋转角度（度）",
       "type": "Number",
-      "description": "",
-      "isAdvanced": false,
-      "validForList": [],
-      "invalidForList": [],
       "visibleWhen": {
         "kind": "All",
         "conditions": [
@@ -1406,18 +1216,12 @@
       "condition": "(operation 为 \"common\" 且 commonCategory 为 \"geometry\" 且 geometryOperation 为 \"geometry.rotate_selected\")",
       "defaultValue": "90",
       "defaultValueRaw": 90,
-      "required": false,
-      "variableMode": "UseVarOrInput",
-      "isControlField": false
+      "variableMode": "UseVarOrInput"
     },
     {
       "key": "scaleFactor",
       "name": "缩放比例",
       "type": "Number",
-      "description": "",
-      "isAdvanced": false,
-      "validForList": [],
-      "invalidForList": [],
       "visibleWhen": {
         "kind": "All",
         "conditions": [
@@ -1450,18 +1254,13 @@
       "condition": "(operation 为 \"common\" 且 commonCategory 为 \"geometry\" 且 geometryOperation 为 \"geometry.scale_selected\")",
       "defaultValue": "2",
       "defaultValueRaw": 2,
-      "required": false,
-      "variableMode": "UseVarOrInput",
-      "isControlField": false
+      "variableMode": "UseVarOrInput"
     },
     {
       "key": "ftQuery",
       "name": "搜索文字",
       "type": "Text",
       "description": "按命令名、界面名称或分类搜索；留空返回前 100 项。",
-      "isAdvanced": false,
-      "validForList": [],
-      "invalidForList": [],
       "visibleWhen": {
         "kind": "All",
         "conditions": [
@@ -1493,19 +1292,13 @@
       },
       "condition": "(operation 为 \"common\" 且 commonCategory 为 \"ui\" 且 uiOperation 为 \"ui.ft.list\")",
       "defaultValue": "",
-      "defaultValueRaw": "",
-      "required": false,
-      "variableMode": "UseVarOrInput",
-      "isControlField": false
+      "variableMode": "UseVarOrInput"
     },
     {
       "key": "ftCommand",
       "name": "Function Table 命令",
       "type": "Text",
       "description": "先用“搜索可调用命令”查找命令名；部分命令会让 Mastercam 进入必须人工完成或取消的交互任务。",
-      "isAdvanced": false,
-      "validForList": [],
-      "invalidForList": [],
       "visibleWhen": {
         "kind": "All",
         "conditions": [
@@ -1537,19 +1330,14 @@
       },
       "condition": "(operation 为 \"common\" 且 commonCategory 为 \"ui\" 且 uiOperation 为 \"ui.ft.run\")",
       "defaultValue": "GSUnSelectAll",
-      "defaultValueRaw": "GSUnSelectAll",
       "required": true,
-      "variableMode": "UseVarOrInput",
-      "isControlField": false
+      "variableMode": "UseVarOrInput"
     },
     {
       "key": "waitForFtReturn",
       "name": "等待界面命令完成",
       "type": "Boolean",
       "description": "会打开窗口或进入交互状态的命令应关闭此项。",
-      "isAdvanced": false,
-      "validForList": [],
-      "invalidForList": [],
       "visibleWhen": {
         "kind": "All",
         "conditions": [
@@ -1582,18 +1370,12 @@
       "condition": "(operation 为 \"common\" 且 commonCategory 为 \"ui\" 且 uiOperation 为 \"ui.ft.run\")",
       "defaultValue": "false",
       "defaultValueRaw": false,
-      "required": false,
-      "variableMode": "Input",
-      "isControlField": false
+      "variableMode": "Input"
     },
     {
       "key": "acknowledgeUiRisk",
       "name": "我确认执行该界面命令",
       "type": "Boolean",
-      "description": "",
-      "isAdvanced": false,
-      "validForList": [],
-      "invalidForList": [],
       "visibleWhen": {
         "kind": "All",
         "conditions": [
@@ -1626,367 +1408,266 @@
       "condition": "(operation 为 \"common\" 且 commonCategory 为 \"ui\" 且 uiOperation 为 \"ui.ft.run\")",
       "defaultValue": "false",
       "defaultValueRaw": false,
-      "required": false,
-      "variableMode": "Input",
-      "isControlField": false
+      "variableMode": "Input"
     },
     {
       "key": "ribbonPath",
       "name": "Ribbon 命令路径",
       "type": "Text",
       "description": "仅 Mastercam 2027，例如 FileTab.Save、Selection.SelectAllEntities。",
-      "isAdvanced": false,
       "validForList": [
         "ui.ribbon.run"
       ],
-      "invalidForList": [],
       "condition": "仅：ui.ribbon.run",
       "defaultValue": "FileTab.Save",
-      "defaultValueRaw": "FileTab.Save",
       "required": true,
-      "variableMode": "UseVarOrInput",
-      "isControlField": false
+      "variableMode": "UseVarOrInput"
     },
     {
       "key": "acknowledgeRibbonRisk",
       "name": "我确认执行该 Ribbon 命令",
       "type": "Boolean",
-      "description": "",
-      "isAdvanced": false,
       "validForList": [
         "ui.ribbon.run"
       ],
-      "invalidForList": [],
       "condition": "仅：ui.ribbon.run",
       "defaultValue": "false",
       "defaultValueRaw": false,
-      "required": false,
-      "variableMode": "Input",
-      "isControlField": false
+      "variableMode": "Input"
     },
     {
       "key": "filePath",
       "name": "文件路径",
       "type": "Text",
       "description": "另存为使用 .mcam，图形区图片使用 .bmp，NET-Script 使用 .csx；均须填写绝对路径。",
-      "isAdvanced": false,
       "validForList": [
         "document.save_as",
         "view.capture_bitmap",
         "script.run_net_file"
       ],
-      "invalidForList": [],
       "condition": "仅：document.save_as, view.capture_bitmap, script.run_net_file",
       "defaultValue": "",
-      "defaultValueRaw": "",
       "required": true,
-      "variableMode": "UseVarOrInput",
-      "isControlField": false
+      "variableMode": "UseVarOrInput"
     },
     {
       "key": "overwriteFile",
       "name": "允许覆盖已有文件",
       "type": "Boolean",
-      "description": "",
-      "isAdvanced": false,
       "validForList": [
         "document.save_as",
         "view.capture_bitmap"
       ],
-      "invalidForList": [],
       "condition": "仅：document.save_as, view.capture_bitmap",
       "defaultValue": "false",
       "defaultValueRaw": false,
-      "required": false,
-      "variableMode": "Input",
-      "isControlField": false
+      "variableMode": "Input"
     },
     {
       "key": "captureColor",
       "name": "彩色图片",
       "type": "Boolean",
-      "description": "",
       "isAdvanced": true,
       "validForList": [
         "view.capture_bitmap"
       ],
-      "invalidForList": [],
       "condition": "仅：view.capture_bitmap",
       "defaultValue": "true",
       "defaultValueRaw": true,
-      "required": false,
-      "variableMode": "Input",
-      "isControlField": false
+      "variableMode": "Input"
     },
     {
       "key": "showViewAxes",
       "name": "显示视图坐标轴",
       "type": "Boolean",
-      "description": "",
       "isAdvanced": true,
       "validForList": [
         "view.capture_bitmap"
       ],
-      "invalidForList": [],
       "condition": "仅：view.capture_bitmap",
       "defaultValue": "true",
       "defaultValueRaw": true,
-      "required": false,
-      "variableMode": "Input",
-      "isControlField": false
+      "variableMode": "Input"
     },
     {
       "key": "showWcsAxes",
       "name": "显示 WCS 坐标轴",
       "type": "Boolean",
-      "description": "",
       "isAdvanced": true,
       "validForList": [
         "view.capture_bitmap"
       ],
-      "invalidForList": [],
       "condition": "仅：view.capture_bitmap",
       "defaultValue": "true",
       "defaultValueRaw": true,
-      "required": false,
-      "variableMode": "Input",
-      "isControlField": false
+      "variableMode": "Input"
     },
     {
       "key": "levelNumber",
       "name": "图层编号",
       "type": "Integer",
-      "description": "",
-      "isAdvanced": false,
       "validForList": [
         "level.set_active",
         "level.set_visible"
       ],
-      "invalidForList": [],
       "condition": "仅：level.set_active, level.set_visible",
       "defaultValue": "1",
       "defaultValueRaw": 1,
       "required": true,
-      "variableMode": "Input",
-      "isControlField": false
+      "variableMode": "Input"
     },
     {
       "key": "levelVisible",
       "name": "图层可见",
       "type": "Boolean",
-      "description": "",
-      "isAdvanced": false,
       "validForList": [
         "level.set_visible"
       ],
-      "invalidForList": [],
       "condition": "仅：level.set_visible",
       "defaultValue": "true",
       "defaultValueRaw": true,
-      "required": false,
-      "variableMode": "Input",
-      "isControlField": false
+      "variableMode": "Input"
     },
     {
       "key": "scriptCode",
       "name": "C# NET-Script",
       "type": "Text",
       "description": "在目标 Mastercam 进程主线程执行，不提供安全沙箱，也不能强制中断已经开始运行的脚本；只运行可信代码。",
-      "isAdvanced": false,
       "validForList": [
         "script.evaluate_net"
       ],
-      "invalidForList": [],
       "condition": "仅：script.evaluate_net",
       "defaultValue": "// 使用当前 Mastercam 自带 NET-Scripting 支持的 .csx 语法",
-      "defaultValueRaw": "// 使用当前 Mastercam 自带 NET-Scripting 支持的 .csx 语法",
       "required": true,
-      "variableMode": "UseVarOrInput",
-      "isControlField": false
+      "variableMode": "UseVarOrInput"
     },
     {
       "key": "acknowledgeScriptRisk",
       "name": "我确认脚本可信",
       "type": "Boolean",
       "description": "脚本拥有当前用户权限并可调用 Mastercam API；执行脚本前必须明确启用。",
-      "isAdvanced": false,
       "validForList": [
         "script.evaluate_net",
         "script.run_net_file"
       ],
-      "invalidForList": [],
       "condition": "仅：script.evaluate_net, script.run_net_file",
       "defaultValue": "false",
       "defaultValueRaw": false,
-      "required": false,
-      "variableMode": "Input",
-      "isControlField": false
+      "variableMode": "Input"
     },
     {
       "key": "x1",
       "name": "起点 X",
       "type": "Number",
-      "description": "",
-      "isAdvanced": false,
       "validForList": [
         "geometry.create_line"
       ],
-      "invalidForList": [],
       "condition": "仅：geometry.create_line",
       "defaultValue": "0",
       "defaultValueRaw": 0,
-      "required": false,
-      "variableMode": "UseVarOrInput",
-      "isControlField": false
+      "variableMode": "UseVarOrInput"
     },
     {
       "key": "y1",
       "name": "起点 Y",
       "type": "Number",
-      "description": "",
-      "isAdvanced": false,
       "validForList": [
         "geometry.create_line"
       ],
-      "invalidForList": [],
       "condition": "仅：geometry.create_line",
       "defaultValue": "0",
       "defaultValueRaw": 0,
-      "required": false,
-      "variableMode": "UseVarOrInput",
-      "isControlField": false
+      "variableMode": "UseVarOrInput"
     },
     {
       "key": "z1",
       "name": "起点 Z",
       "type": "Number",
-      "description": "",
-      "isAdvanced": false,
       "validForList": [
         "geometry.create_line"
       ],
-      "invalidForList": [],
       "condition": "仅：geometry.create_line",
       "defaultValue": "0",
       "defaultValueRaw": 0,
-      "required": false,
-      "variableMode": "UseVarOrInput",
-      "isControlField": false
+      "variableMode": "UseVarOrInput"
     },
     {
       "key": "x2",
       "name": "终点 X",
       "type": "Number",
-      "description": "",
-      "isAdvanced": false,
       "validForList": [
         "geometry.create_line"
       ],
-      "invalidForList": [],
       "condition": "仅：geometry.create_line",
       "defaultValue": "10",
       "defaultValueRaw": 10,
-      "required": false,
-      "variableMode": "UseVarOrInput",
-      "isControlField": false
+      "variableMode": "UseVarOrInput"
     },
     {
       "key": "y2",
       "name": "终点 Y",
       "type": "Number",
-      "description": "",
-      "isAdvanced": false,
       "validForList": [
         "geometry.create_line"
       ],
-      "invalidForList": [],
       "condition": "仅：geometry.create_line",
       "defaultValue": "0",
       "defaultValueRaw": 0,
-      "required": false,
-      "variableMode": "UseVarOrInput",
-      "isControlField": false
+      "variableMode": "UseVarOrInput"
     },
     {
       "key": "z2",
       "name": "终点 Z",
       "type": "Number",
-      "description": "",
-      "isAdvanced": false,
       "validForList": [
         "geometry.create_line"
       ],
-      "invalidForList": [],
       "condition": "仅：geometry.create_line",
       "defaultValue": "0",
       "defaultValueRaw": 0,
-      "required": false,
-      "variableMode": "UseVarOrInput",
-      "isControlField": false
+      "variableMode": "UseVarOrInput"
     },
     {
       "key": "commandName",
       "name": "Bridge 命令名称",
       "type": "Text",
-      "description": "",
-      "isAdvanced": false,
       "validForList": [
         "command.custom"
       ],
-      "invalidForList": [],
       "condition": "仅：command.custom",
       "defaultValue": "",
-      "defaultValueRaw": "",
       "required": true,
-      "variableMode": "UseVarOrInput",
-      "isControlField": false
+      "variableMode": "UseVarOrInput"
     },
     {
       "key": "argumentsJson",
       "name": "参数(JSON 对象)",
       "type": "Text",
-      "description": "",
-      "isAdvanced": false,
       "validForList": [
         "command.custom"
       ],
-      "invalidForList": [],
       "condition": "仅：command.custom",
       "defaultValue": "{}",
-      "defaultValueRaw": "{}",
-      "required": false,
-      "variableMode": "UseVarOrInput",
-      "isControlField": false
+      "variableMode": "UseVarOrInput"
     },
     {
       "key": "waitMs",
       "name": "最长等待时间(ms)",
       "type": "Number",
-      "description": "",
       "isAdvanced": true,
-      "validForList": [],
-      "invalidForList": [],
-      "condition": "",
       "defaultValue": "30000",
       "defaultValueRaw": 30000,
       "required": true,
-      "variableMode": "Input",
-      "isControlField": false
+      "variableMode": "Input"
     },
     {
       "key": "stopIfFail",
       "name": "失败后停止",
       "type": "Boolean",
       "description": "失败后是否停止动作",
-      "isAdvanced": false,
-      "validForList": [],
-      "invalidForList": [],
-      "condition": "",
       "defaultValue": "true",
       "defaultValueRaw": true,
-      "required": false,
-      "variableMode": "Input",
-      "isControlField": false
+      "variableMode": "Input"
     }
   ],
   "outputs": [
@@ -1994,41 +1675,23 @@
       "key": "isSuccess",
       "name": "是否成功",
       "type": "Boolean",
-      "description": "操作是否成功",
-      "isAdvanced": false,
-      "validForList": [],
-      "invalidForList": [],
-      "condition": ""
+      "description": "操作是否成功"
     },
     {
       "key": "output",
       "name": "命令结果",
       "type": "Text",
-      "description": "Mastercam 返回的 JSON 结果。",
-      "isAdvanced": false,
-      "validForList": [],
-      "invalidForList": [],
-      "condition": ""
+      "description": "Mastercam 返回的 JSON 结果。"
     },
     {
       "key": "count",
       "name": "数量",
-      "type": "Integer",
-      "description": "",
-      "isAdvanced": false,
-      "validForList": [],
-      "invalidForList": [],
-      "condition": ""
+      "type": "Integer"
     },
     {
       "key": "entityIds",
       "name": "实体 ID 列表",
-      "type": "List",
-      "description": "",
-      "isAdvanced": false,
-      "validForList": [],
-      "invalidForList": [],
-      "condition": ""
+      "type": "List"
     }
   ],
   "selections": {
@@ -2037,28 +1700,23 @@
       "items": [
         {
           "value": "script.evaluate_net",
-          "name": "[脚本] 执行内联 NET-Script（高风险）",
-          "description": ""
+          "name": "[脚本] 执行内联 NET-Script（高风险）"
         },
         {
           "value": "script.run_net_file",
-          "name": "[脚本] 运行 NET-Script 文件（高风险）",
-          "description": ""
+          "name": "[脚本] 运行 NET-Script 文件（高风险）"
         },
         {
           "value": "command.custom",
-          "name": "[高级] 发送自定义 Bridge 命令",
-          "description": ""
+          "name": "[高级] 发送自定义 Bridge 命令"
         },
         {
           "value": "ui.ribbon.run",
-          "name": "[界面] 执行 Ribbon 命令（仅 2027，高风险）",
-          "description": ""
+          "name": "[界面] 执行 Ribbon 命令（仅 2027，高风险）"
         },
         {
           "value": "common",
-          "name": "[常用] 常用功能",
-          "description": ""
+          "name": "[常用] 常用功能"
         }
       ]
     },
@@ -2067,38 +1725,31 @@
       "items": [
         {
           "value": "document",
-          "name": "Bridge 与文档",
-          "description": ""
+          "name": "Bridge 与文档"
         },
         {
           "value": "selection",
-          "name": "选择对象",
-          "description": ""
+          "name": "选择对象"
         },
         {
           "value": "view",
-          "name": "视图",
-          "description": ""
+          "name": "视图"
         },
         {
           "value": "level",
-          "name": "图层",
-          "description": ""
+          "name": "图层"
         },
         {
           "value": "geometry",
-          "name": "几何创建与变换",
-          "description": ""
+          "name": "几何创建与变换"
         },
         {
           "value": "cam",
-          "name": "CAM 刀路",
-          "description": ""
+          "name": "CAM 刀路"
         },
         {
           "value": "ui",
-          "name": "菜单与按钮",
-          "description": ""
+          "name": "菜单与按钮"
         }
       ]
     },
@@ -2107,38 +1758,31 @@
       "items": [
         {
           "value": "bridge.ping",
-          "name": "测试连接",
-          "description": ""
+          "name": "测试连接"
         },
         {
           "value": "command.list",
-          "name": "读取命令目录",
-          "description": ""
+          "name": "读取命令目录"
         },
         {
           "value": "document.get_context",
-          "name": "读取当前文档",
-          "description": ""
+          "name": "读取当前文档"
         },
         {
           "value": "document.save",
-          "name": "保存当前文档",
-          "description": ""
+          "name": "保存当前文档"
         },
         {
           "value": "document.save_as",
-          "name": "另存为",
-          "description": ""
+          "name": "另存为"
         },
         {
           "value": "document.open",
-          "name": "打开文档",
-          "description": ""
+          "name": "打开文档"
         },
         {
           "value": "document.new",
-          "name": "新建文档",
-          "description": ""
+          "name": "新建文档"
         }
       ]
     },
@@ -2147,38 +1791,31 @@
       "items": [
         {
           "value": "selection.get_summary",
-          "name": "读取选择摘要",
-          "description": ""
+          "name": "读取选择摘要"
         },
         {
           "value": "selection.get_details",
-          "name": "读取选择详情",
-          "description": ""
+          "name": "读取选择详情"
         },
         {
           "value": "selection.select_all",
-          "name": "选择全部几何",
-          "description": ""
+          "name": "选择全部几何"
         },
         {
           "value": "selection.select_level",
-          "name": "按图层选择",
-          "description": ""
+          "name": "按图层选择"
         },
         {
           "value": "selection.select_type",
-          "name": "按类型选择",
-          "description": ""
+          "name": "按类型选择"
         },
         {
           "value": "selection.clear",
-          "name": "清除选择",
-          "description": ""
+          "name": "清除选择"
         },
         {
           "value": "geometry.delete_selected",
-          "name": "删除选中对象",
-          "description": ""
+          "name": "删除选中对象"
         }
       ]
     },
@@ -2187,28 +1824,23 @@
       "items": [
         {
           "value": "view.fit",
-          "name": "适合屏幕",
-          "description": ""
+          "name": "适合屏幕"
         },
         {
           "value": "view.repaint",
-          "name": "刷新图形区",
-          "description": ""
+          "name": "刷新图形区"
         },
         {
           "value": "view.unzoom",
-          "name": "缩小视图",
-          "description": ""
+          "name": "缩小视图"
         },
         {
           "value": "view.previous",
-          "name": "恢复上一视图",
-          "description": ""
+          "name": "恢复上一视图"
         },
         {
           "value": "view.capture_bitmap",
-          "name": "保存图形区图片",
-          "description": ""
+          "name": "保存图形区图片"
         }
       ]
     },
@@ -2217,23 +1849,19 @@
       "items": [
         {
           "value": "level.list",
-          "name": "列出图层",
-          "description": ""
+          "name": "列出图层"
         },
         {
           "value": "level.set_active",
-          "name": "设置活动图层",
-          "description": ""
+          "name": "设置活动图层"
         },
         {
           "value": "level.set_visible",
-          "name": "设置图层可见性",
-          "description": ""
+          "name": "设置图层可见性"
         },
         {
           "value": "level.rename",
-          "name": "重命名图层",
-          "description": ""
+          "name": "重命名图层"
         }
       ]
     },
@@ -2242,43 +1870,35 @@
       "items": [
         {
           "value": "geometry.count",
-          "name": "统计几何对象",
-          "description": ""
+          "name": "统计几何对象"
         },
         {
           "value": "geometry.get_summary",
-          "name": "读取几何摘要",
-          "description": ""
+          "name": "读取几何摘要"
         },
         {
           "value": "geometry.create_line",
-          "name": "创建直线",
-          "description": ""
+          "name": "创建直线"
         },
         {
           "value": "geometry.create_point",
-          "name": "创建点",
-          "description": ""
+          "name": "创建点"
         },
         {
           "value": "geometry.create_circle",
-          "name": "创建圆",
-          "description": ""
+          "name": "创建圆"
         },
         {
           "value": "geometry.move_selected",
-          "name": "移动选中对象",
-          "description": ""
+          "name": "移动选中对象"
         },
         {
           "value": "geometry.rotate_selected",
-          "name": "旋转选中对象",
-          "description": ""
+          "name": "旋转选中对象"
         },
         {
           "value": "geometry.scale_selected",
-          "name": "缩放选中对象",
-          "description": ""
+          "name": "缩放选中对象"
         }
       ]
     },
@@ -2287,13 +1907,11 @@
       "items": [
         {
           "value": "cam.get_summary",
-          "name": "读取 CAM 摘要",
-          "description": ""
+          "name": "读取 CAM 摘要"
         },
         {
           "value": "cam.list_operations",
-          "name": "列出加工操作",
-          "description": ""
+          "name": "列出加工操作"
         }
       ]
     },
@@ -2302,13 +1920,11 @@
       "items": [
         {
           "value": "ui.ft.list",
-          "name": "搜索可调用命令",
-          "description": ""
+          "name": "搜索可调用命令"
         },
         {
           "value": "ui.ft.run",
-          "name": "执行 Function Table 命令（2024/2027）",
-          "description": ""
+          "name": "执行 Function Table 命令（2024/2027）"
         }
       ]
     },
@@ -2317,43 +1933,35 @@
       "items": [
         {
           "value": "Lines",
-          "name": "直线",
-          "description": ""
+          "name": "直线"
         },
         {
           "value": "Arcs",
-          "name": "圆弧和圆",
-          "description": ""
+          "name": "圆弧和圆"
         },
         {
           "value": "Points",
-          "name": "点",
-          "description": ""
+          "name": "点"
         },
         {
           "value": "Splines",
-          "name": "样条曲线",
-          "description": ""
+          "name": "样条曲线"
         },
         {
           "value": "Surfaces",
-          "name": "曲面",
-          "description": ""
+          "name": "曲面"
         },
         {
           "value": "Solids",
-          "name": "实体",
-          "description": ""
+          "name": "实体"
         },
         {
           "value": "Wireframe",
-          "name": "全部线框",
-          "description": ""
+          "name": "全部线框"
         },
         {
           "value": "PolygonalMeshes",
-          "name": "网格",
-          "description": ""
+          "name": "网格"
         }
       ]
     }

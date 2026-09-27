@@ -8,21 +8,13 @@
   "category": "SoftInteraction",
   "categoryName": "第三方软件交互",
   "stepType": "Action",
-  "isRisky": false,
-  "isProOnly": false,
   "helpLink": "https://docs.getquicker.net/v2/xaction/modules/photoshopcontrol",
   "inputs": [
     {
       "key": "operation",
       "name": "操作类型",
       "type": "Enum",
-      "description": "",
-      "isAdvanced": false,
-      "validForList": [],
-      "invalidForList": [],
-      "condition": "",
       "defaultValue": "document.get_context",
-      "defaultValueRaw": "document.get_context",
       "required": true,
       "variableMode": "Input",
       "isControlField": true
@@ -31,8 +23,6 @@
       "key": "layerId",
       "name": "图层 ID",
       "type": "Number",
-      "description": "",
-      "isAdvanced": false,
       "validForList": [
         "layer.select",
         "layer.rename",
@@ -40,213 +30,147 @@
         "layer.duplicate",
         "layer.delete"
       ],
-      "invalidForList": [],
       "condition": "仅：layer.select, layer.rename, layer.set_visibility, layer.duplicate, layer.delete",
       "defaultValue": "0",
       "defaultValueRaw": 0,
-      "required": false,
-      "variableMode": "UseVarOrInput",
-      "isControlField": false
+      "variableMode": "UseVarOrInput"
     },
     {
       "key": "layerName",
       "name": "图层名称",
       "type": "Text",
-      "description": "",
-      "isAdvanced": false,
       "validForList": [
         "layer.rename"
       ],
-      "invalidForList": [],
       "condition": "仅：layer.rename",
       "defaultValue": "新名称",
-      "defaultValueRaw": "新名称",
       "required": true,
-      "variableMode": "UseVarOrInput",
-      "isControlField": false
+      "variableMode": "UseVarOrInput"
     },
     {
       "key": "visible",
       "name": "可见",
       "type": "Boolean",
-      "description": "",
-      "isAdvanced": false,
       "validForList": [
         "layer.set_visibility"
       ],
-      "invalidForList": [],
       "condition": "仅：layer.set_visibility",
       "defaultValue": "true",
       "defaultValueRaw": true,
-      "required": false,
-      "variableMode": "Input",
-      "isControlField": false
+      "variableMode": "Input"
     },
     {
       "key": "append",
       "name": "追加选择",
       "type": "Boolean",
-      "description": "",
-      "isAdvanced": false,
       "validForList": [
         "layer.select"
       ],
-      "invalidForList": [],
       "condition": "仅：layer.select",
       "defaultValue": "false",
       "defaultValueRaw": false,
-      "required": false,
-      "variableMode": "Input",
-      "isControlField": false
+      "variableMode": "Input"
     },
     {
       "key": "width",
       "name": "宽度",
       "type": "Number",
-      "description": "",
-      "isAdvanced": false,
       "validForList": [
         "image.resize"
       ],
-      "invalidForList": [],
       "condition": "仅：image.resize",
       "defaultValue": "1920",
       "defaultValueRaw": 1920,
-      "required": false,
-      "variableMode": "UseVarOrInput",
-      "isControlField": false
+      "variableMode": "UseVarOrInput"
     },
     {
       "key": "height",
       "name": "高度",
       "type": "Number",
-      "description": "",
-      "isAdvanced": false,
       "validForList": [
         "image.resize"
       ],
-      "invalidForList": [],
       "condition": "仅：image.resize",
       "defaultValue": "1080",
       "defaultValueRaw": 1080,
-      "required": false,
-      "variableMode": "UseVarOrInput",
-      "isControlField": false
+      "variableMode": "UseVarOrInput"
     },
     {
       "key": "angle",
       "name": "旋转角度",
       "type": "Number",
-      "description": "",
-      "isAdvanced": false,
       "validForList": [
         "image.rotate"
       ],
-      "invalidForList": [],
       "condition": "仅：image.rotate",
       "defaultValue": "90",
       "defaultValueRaw": 90,
-      "required": false,
-      "variableMode": "UseVarOrInput",
-      "isControlField": false
+      "variableMode": "UseVarOrInput"
     },
     {
       "key": "scriptCode",
       "name": "JavaScript 表达式",
       "type": "Text",
-      "description": "",
-      "isAdvanced": false,
       "validForList": [
         "script.evaluate"
       ],
-      "invalidForList": [],
       "condition": "仅：script.evaluate",
       "defaultValue": "photoshop.app.activeDocument.title",
-      "defaultValueRaw": "photoshop.app.activeDocument.title",
       "required": true,
-      "variableMode": "UseVarOrInput",
-      "isControlField": false
+      "variableMode": "UseVarOrInput"
     },
     {
       "key": "batchPlayJson",
       "name": "BatchPlay 命令（JSON 数组）",
       "type": "Text",
-      "description": "",
-      "isAdvanced": false,
       "validForList": [
         "batch_play.execute"
       ],
-      "invalidForList": [],
       "condition": "仅：batch_play.execute",
       "defaultValue": "[]",
-      "defaultValueRaw": "[]",
-      "required": false,
-      "variableMode": "UseVarOrInput",
-      "isControlField": false
+      "variableMode": "UseVarOrInput"
     },
     {
       "key": "commandName",
       "name": "Bridge 命令名称",
       "type": "Text",
-      "description": "",
-      "isAdvanced": false,
       "validForList": [
         "command.custom"
       ],
-      "invalidForList": [],
       "condition": "仅：command.custom",
       "defaultValue": "",
-      "defaultValueRaw": "",
       "required": true,
-      "variableMode": "UseVarOrInput",
-      "isControlField": false
+      "variableMode": "UseVarOrInput"
     },
     {
       "key": "argumentsJson",
       "name": "参数（JSON 对象）",
       "type": "Text",
-      "description": "",
-      "isAdvanced": false,
       "validForList": [
         "command.custom"
       ],
-      "invalidForList": [],
       "condition": "仅：command.custom",
       "defaultValue": "{}",
-      "defaultValueRaw": "{}",
-      "required": false,
-      "variableMode": "UseVarOrInput",
-      "isControlField": false
+      "variableMode": "UseVarOrInput"
     },
     {
       "key": "waitMs",
       "name": "最长等待时间(ms)",
       "type": "Number",
-      "description": "",
       "isAdvanced": true,
-      "validForList": [],
-      "invalidForList": [],
-      "condition": "",
       "defaultValue": "30000",
       "defaultValueRaw": 30000,
       "required": true,
-      "variableMode": "Input",
-      "isControlField": false
+      "variableMode": "Input"
     },
     {
       "key": "stopIfFail",
       "name": "失败后停止",
       "type": "Boolean",
       "description": "失败后是否停止动作",
-      "isAdvanced": false,
-      "validForList": [],
-      "invalidForList": [],
-      "condition": "",
       "defaultValue": "true",
       "defaultValueRaw": true,
-      "required": false,
-      "variableMode": "Input",
-      "isControlField": false
+      "variableMode": "Input"
     }
   ],
   "outputs": [
@@ -254,21 +178,12 @@
       "key": "isSuccess",
       "name": "是否成功",
       "type": "Boolean",
-      "description": "操作是否成功",
-      "isAdvanced": false,
-      "validForList": [],
-      "invalidForList": [],
-      "condition": ""
+      "description": "操作是否成功"
     },
     {
       "key": "output",
       "name": "命令结果",
-      "type": "Text",
-      "description": "",
-      "isAdvanced": false,
-      "validForList": [],
-      "invalidForList": [],
-      "condition": ""
+      "type": "Text"
     }
   ],
   "selections": {
@@ -277,98 +192,79 @@
       "items": [
         {
           "value": "bridge.ping",
-          "name": "[Bridge] 测试连接",
-          "description": ""
+          "name": "[Bridge] 测试连接"
         },
         {
           "value": "document.get_context",
-          "name": "[文档] 获取文档上下文",
-          "description": ""
+          "name": "[文档] 获取文档上下文"
         },
         {
           "value": "document.list",
-          "name": "[文档] 列出文档",
-          "description": ""
+          "name": "[文档] 列出文档"
         },
         {
           "value": "document.save",
-          "name": "[文档] 保存当前文档",
-          "description": ""
+          "name": "[文档] 保存当前文档"
         },
         {
           "value": "layer.list",
-          "name": "[图层] 列出图层",
-          "description": ""
+          "name": "[图层] 列出图层"
         },
         {
           "value": "layer.get_active",
-          "name": "[图层] 读取活动图层",
-          "description": ""
+          "name": "[图层] 读取活动图层"
         },
         {
           "value": "layer.select",
-          "name": "[图层] 选择图层",
-          "description": ""
+          "name": "[图层] 选择图层"
         },
         {
           "value": "layer.rename",
-          "name": "[图层] 重命名图层",
-          "description": ""
+          "name": "[图层] 重命名图层"
         },
         {
           "value": "layer.set_visibility",
-          "name": "[图层] 设置图层可见性",
-          "description": ""
+          "name": "[图层] 设置图层可见性"
         },
         {
           "value": "layer.duplicate",
-          "name": "[图层] 复制图层",
-          "description": ""
+          "name": "[图层] 复制图层"
         },
         {
           "value": "layer.delete",
-          "name": "[图层] 删除图层",
-          "description": ""
+          "name": "[图层] 删除图层"
         },
         {
           "value": "selection.select_all",
-          "name": "[选择] 全选画布",
-          "description": ""
+          "name": "[选择] 全选画布"
         },
         {
           "value": "selection.clear",
-          "name": "[选择] 取消选择",
-          "description": ""
+          "name": "[选择] 取消选择"
         },
         {
           "value": "selection.inverse",
-          "name": "[选择] 反选",
-          "description": ""
+          "name": "[选择] 反选"
         },
         {
           "value": "image.resize",
-          "name": "[图像] 调整图像尺寸",
-          "description": ""
+          "name": "[图像] 调整图像尺寸"
         },
         {
           "value": "image.rotate",
-          "name": "[图像] 旋转画布",
-          "description": ""
+          "name": "[图像] 旋转画布"
         },
         {
           "value": "batch_play.execute",
-          "name": "[脚本] 执行任意 BatchPlay",
-          "description": ""
+          "name": "[脚本] 执行任意 BatchPlay"
         },
         {
           "value": "script.evaluate",
-          "name": "[脚本] 执行任意 JavaScript",
-          "description": ""
+          "name": "[脚本] 执行任意 JavaScript"
         },
         {
           "value": "command.custom",
-          "name": "[高级] 发送自定义 Bridge 命令",
-          "description": ""
+          "name": "[高级] 发送自定义 Bridge 命令"
         }
       ]
     }

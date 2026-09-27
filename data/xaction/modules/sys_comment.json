@@ -8,8 +8,6 @@
   "category": "Basic",
   "categoryName": "基础",
   "stepType": "Comment",
-  "isRisky": false,
-  "isProOnly": false,
   "helpLink": "https://docs.getquicker.net/v2/xaction/modules/comment",
   "inputs": [
     {
@@ -17,17 +15,10 @@
       "name": "注释内容",
       "type": "Text",
       "description": "注释内容。若想设置注释步骤的背景色，请参考模块文档。",
-      "isAdvanced": false,
-      "validForList": [],
-      "invalidForList": [],
-      "condition": "",
       "defaultValue": "",
-      "required": false,
-      "variableMode": "Input",
-      "isControlField": false
+      "variableMode": "Input"
     }
   ],
   "outputs": [],
-  "selections": {},
   "sourceFileName": "catalog.json"
 }

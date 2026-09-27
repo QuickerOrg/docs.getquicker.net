@@ -8,8 +8,6 @@
   "category": "Clipboard",
   "categoryName": "剪贴板操作",
   "stepType": "Action",
-  "isRisky": false,
-  "isProOnly": false,
   "helpLink": "https://docs.getquicker.net/v2/xaction/modules/getclipboardtext",
   "inputs": [
     {
@@ -17,12 +15,7 @@
       "name": "文本数据格式",
       "type": "Enum",
       "description": "需要读取的剪贴板文本内容格式。通常请使用Unicode纯文本格式。",
-      "isAdvanced": false,
-      "validForList": [],
-      "invalidForList": [],
-      "condition": "",
       "defaultValue": "UnicodeText",
-      "defaultValueRaw": "UnicodeText",
       "required": true,
       "variableMode": "Input",
       "isControlField": true
@@ -32,63 +25,43 @@
       "name": "格式名称",
       "type": "Text",
       "description": "自定义的剪贴板格式名，请和实际剪贴板格式名一致。只支持实际为文本类型的内容。",
-      "isAdvanced": false,
       "validForList": [
         "Custom"
       ],
-      "invalidForList": [],
       "condition": "仅：Custom",
       "defaultValue": "",
-      "required": false,
-      "variableMode": "Input",
-      "isControlField": false
+      "variableMode": "Input"
     },
     {
       "key": "encoding",
       "name": "文本编码",
       "type": "Enum",
       "description": "读取自定义格式时候使用的编码类型",
-      "isAdvanced": false,
       "validForList": [
         "Custom"
       ],
-      "invalidForList": [],
       "condition": "仅：Custom",
       "defaultValue": "utf-8",
-      "defaultValueRaw": "utf-8",
       "required": true,
-      "variableMode": "Input",
-      "isControlField": false
+      "variableMode": "Input"
     },
     {
       "key": "waitMs",
       "name": "重试时间",
       "type": "Integer",
       "description": "每10ms重试一次，直到获取到文本。为0时不重试。",
-      "isAdvanced": false,
-      "validForList": [],
-      "invalidForList": [],
-      "condition": "",
       "defaultValue": "400",
       "defaultValueRaw": 400,
-      "required": false,
-      "variableMode": "UseVarOrInput",
-      "isControlField": false
+      "variableMode": "UseVarOrInput"
     },
     {
       "key": "stopIfFail",
       "name": "失败后中止动作",
       "type": "Boolean",
       "description": "获取剪贴板文本失败后，是否停止后续动作的执行。",
-      "isAdvanced": false,
-      "validForList": [],
-      "invalidForList": [],
-      "condition": "",
       "defaultValue": "true",
       "defaultValueRaw": true,
-      "required": false,
-      "variableMode": "Input",
-      "isControlField": false
+      "variableMode": "Input"
     }
   ],
   "outputs": [
@@ -96,32 +69,22 @@
       "key": "isSuccess",
       "name": "是否成功",
       "type": "Boolean",
-      "description": "是否成功获得文本",
-      "isAdvanced": false,
-      "validForList": [],
-      "invalidForList": [],
-      "condition": ""
+      "description": "是否成功获得文本"
     },
     {
       "key": "output",
       "name": "完整结果内容",
       "type": "Text",
-      "description": "将获得的文本内容写入到变量",
-      "isAdvanced": false,
-      "validForList": [],
-      "invalidForList": [],
-      "condition": ""
+      "description": "将获得的文本内容写入到变量"
     },
     {
       "key": "cleanHtml",
       "name": "主要HTML片段",
       "type": "Text",
       "description": "HTML的主要内容。<!--StartFragment-->和<!--EndFragment-->之间的部分",
-      "isAdvanced": false,
       "validForList": [
         "Html"
       ],
-      "invalidForList": [],
       "condition": "仅：Html"
     },
     {
@@ -129,32 +92,22 @@
       "name": "完整的HTML文档",
       "type": "Text",
       "description": "仅去除剪贴板头部信息的完整HTML文档内容。包含<html>等标签，可直接保存为.html文件。",
-      "isAdvanced": false,
       "validForList": [
         "Html"
       ],
-      "invalidForList": [],
       "condition": "仅：Html"
     },
     {
       "key": "url",
       "name": "来源网址",
       "type": "Text",
-      "description": "从网页中复制内容时，可能会携带网址信息。",
-      "isAdvanced": false,
-      "validForList": [],
-      "invalidForList": [],
-      "condition": ""
+      "description": "从网页中复制内容时，可能会携带网址信息。"
     },
     {
       "key": "elapsedMs",
       "name": "已更新时间",
       "type": "Integer",
-      "description": "剪贴板最后更新是在多少毫秒以前",
-      "isAdvanced": false,
-      "validForList": [],
-      "invalidForList": [],
-      "condition": ""
+      "description": "剪贴板最后更新是在多少毫秒以前"
     }
   ],
   "selections": {
@@ -163,28 +116,23 @@
       "items": [
         {
           "value": "UnicodeText",
-          "name": "纯文本（默认）",
-          "description": ""
+          "name": "纯文本（默认）"
         },
         {
           "value": "Rtf",
-          "name": "Rtf",
-          "description": ""
+          "name": "Rtf"
         },
         {
           "value": "Html",
-          "name": "Html",
-          "description": ""
+          "name": "Html"
         },
         {
           "value": "CommaSeparatedValue",
-          "name": "逗号分隔的值（csv）",
-          "description": ""
+          "name": "逗号分隔的值（csv）"
         },
         {
           "value": "Custom",
-          "name": "自定义格式名",
-          "description": ""
+          "name": "自定义格式名"
         }
       ]
     },
@@ -193,38 +141,31 @@
       "items": [
         {
           "value": "utf-8",
-          "name": "UTF8",
-          "description": ""
+          "name": "UTF8"
         },
         {
           "value": "utf-16",
-          "name": "UTF-16 LE",
-          "description": ""
+          "name": "UTF-16 LE"
         },
         {
           "value": "utf-16BE",
-          "name": "UTF-16 BE",
-          "description": ""
+          "name": "UTF-16 BE"
         },
         {
           "value": "us-ascii",
-          "name": "ASCII",
-          "description": ""
+          "name": "ASCII"
         },
         {
           "value": "utf-7",
-          "name": "UTF7",
-          "description": ""
+          "name": "UTF7"
         },
         {
           "value": "utf-32",
-          "name": "UTF32",
-          "description": ""
+          "name": "UTF32"
         },
         {
           "value": "default",
-          "name": "系统默认(gb2312)",
-          "description": ""
+          "name": "系统默认(gb2312)"
         }
       ]
     }

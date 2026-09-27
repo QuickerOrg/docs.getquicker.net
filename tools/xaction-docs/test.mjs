@@ -2,6 +2,7 @@ import assert from 'node:assert/strict';
 import fs from 'node:fs';
 import ts from 'typescript';
 import {parseGeneratedCatalog} from './read-generated-catalog.mjs';
+import {compactModule} from './compact-metadata.mjs';
 import {
   createChangeReport,
   createLandingPage,
@@ -81,6 +82,22 @@ assert.equal(report.changedModules[0].inputs.changed[0].key, 'value');
 const unchanged = createChangeReport(next, next);
 assert.deepEqual(unchanged.summary, {addedModules: 0, removedModules: 0, changedModules: 0});
 
+const dense = {...commonModule, inputs: [{...commonModule.inputs[0], defaultValue: 'value',
+  defaultValueRaw: 'value', isAdvanced: false, isControlField: false, validForList: [], invalidForList: []}],
+  selections: {value: {name: '值', items: [{value: '', name: '空选项', description: ''}]}}};
+const sparse = compactModule(dense);
+assert.deepEqual(sparse.inputs[0], {key: 'value', name: '值', type: 'Text', defaultValue: 'value', variableMode: 'Input'});
+assert.deepEqual(sparse.selections.value.items[0], {value: '', name: '空选项'});
+assert.ok(!Object.hasOwn(sparse, 'isRisky'));
+assert.deepEqual(createChangeReport({modules: [dense]}, {modules: [sparse]}).summary,
+  {addedModules: 0, removedModules: 0, changedModules: 0});
+assert.deepEqual(createChangeReport({modules: [sparse]}, {modules: [dense]}).summary,
+  {addedModules: 0, removedModules: 0, changedModules: 0});
+const realChange = createChangeReport({modules: [dense]}, {modules: [{...sparse, isRisky: true,
+  inputs: [{...sparse.inputs[0], required: true, newStepDefaultValue: ''}]}]});
+assert.deepEqual(realChange.changedModules[0].changedFields, ['isRisky']);
+assert.equal(realChange.changedModules[0].inputs.changed[0].after.newStepDefaultValue, '');
+
 const baseline = createChangeReport(null, next);
 assert.equal(baseline.baselineCreated, true);
 assert.deepEqual(baseline.summary, {addedModules: 0, removedModules: 0, changedModules: 0});
@@ -135,6 +152,30 @@ const [parsed] = parseGeneratedCatalog(exportFixture);
 assert.equal(parsed.inputs[0].defaultValue, originalText);
 assert.equal(parsed.inputs[0].description, originalText);
 assert.equal(parsed.inputs[1].defaultValueRaw, false);
+assert.equal(parsed.inputs[1].defaultValue, 'false');
+assert.ok(!Object.hasOwn(parsed.inputs[0], 'defaultValueRaw'));
+assert.ok(!Object.hasOwn(parsed.inputs[0], 'required'));
+assert.ok(!Object.hasOwn(parsed.inputs[1], 'validForList'));
+const compactExport = structuredClone(exportFixture);
+delete compactExport.Steps[0].IsRisky;
+delete compactExport.Steps[0].IsProOnly;
+for (const input of compactExport.Steps[0].Inputs) {
+  delete input.DefaultValueText;
+  delete input.IsRequired;
+}
+assert.deepEqual(parseGeneratedCatalog(compactExport), [parsed]);
+const [specialDefaults] = parseGeneratedCatalog({...exportFixture, Steps: [{...exportFixture.Steps[0],
+  Inputs: [{Key: 'zero', Name: '零', Type: 'Number', DefaultValue: 0},
+    {Key: 'empty', Name: '空覆盖', Type: 'Text', DefaultValue: 'value', NewStepDefaultValue: ''}], Outputs: []}]});
+assert.equal(specialDefaults.inputs[0].defaultValueRaw, 0);
+assert.equal(specialDefaults.inputs[0].defaultValue, '0');
+assert.equal(compactModule({...commonModule, inputs: [{key: 'large', defaultValue: '9007199254740993', defaultValueRaw: 9007199254740992}]}).inputs[0].defaultValue, '9007199254740993');
+assert.equal(compactModule({...commonModule, inputs: [{key: 'text', defaultValue: '0.0', defaultValueRaw: '0.0'}]}).inputs[0].defaultValue, '0.0');
+assert.equal(specialDefaults.inputs[1].newStepDefaultValue, '');
+assert.deepEqual(specialDefaults.outputs, []);
+assert.equal(compactModule({...commonModule, inputs: [{key: 'choice', defaultValue: '', defaultValueRaw: ''}],
+  selections: {choice: {items: [{value: 'first', name: '第一项'}]}}}).inputs[0].defaultValue, '',
+  '显式空默认值不能变为缺失，否则页面会回退到首个枚举选项');
 assert.equal(parsed.selections.content.items[0].description, '<br>');
 assert.deepEqual(parsed.inputs[0].visibleWhen.conditions.map((rule) => rule.fieldKey), ['connection', 'operation']);
 assert.equal(parsed.outputs[0].visibleWhen.fieldKey, 'operation');

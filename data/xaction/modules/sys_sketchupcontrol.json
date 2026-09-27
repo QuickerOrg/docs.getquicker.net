@@ -8,8 +8,6 @@
   "category": "SoftInteraction",
   "categoryName": "第三方软件交互",
   "stepType": "Action",
-  "isRisky": false,
-  "isProOnly": false,
   "helpLink": "https://docs.getquicker.net/v2/xaction/modules/sketchupcontrol",
   "inputs": [
     {
@@ -17,12 +15,7 @@
       "name": "操作类型",
       "type": "Enum",
       "description": "发送给选定 SketchUp 连接的命令；多个连接时按动作触发窗口定位。",
-      "isAdvanced": false,
-      "validForList": [],
-      "invalidForList": [],
-      "condition": "",
       "defaultValue": "common",
-      "defaultValueRaw": "common",
       "required": true,
       "variableMode": "Input",
       "isControlField": true
@@ -31,15 +24,11 @@
       "key": "commonCategory",
       "name": "功能分类",
       "type": "Enum",
-      "description": "",
-      "isAdvanced": false,
       "validForList": [
         "common"
       ],
-      "invalidForList": [],
       "condition": "仅：common",
       "defaultValue": "selection",
-      "defaultValueRaw": "selection",
       "required": true,
       "variableMode": "Input",
       "isControlField": true
@@ -48,10 +37,6 @@
       "key": "selectionOperation",
       "name": "选择功能",
       "type": "Enum",
-      "description": "",
-      "isAdvanced": false,
-      "validForList": [],
-      "invalidForList": [],
       "visibleWhen": {
         "kind": "All",
         "conditions": [
@@ -75,7 +60,6 @@
       },
       "condition": "(operation 为 \"common\" 且 commonCategory 为 \"selection\")",
       "defaultValue": "selection.get_info",
-      "defaultValueRaw": "selection.get_info",
       "required": true,
       "variableMode": "Input",
       "isControlField": true
@@ -84,10 +68,6 @@
       "key": "viewOperation",
       "name": "视图功能",
       "type": "Enum",
-      "description": "",
-      "isAdvanced": false,
-      "validForList": [],
-      "invalidForList": [],
       "visibleWhen": {
         "kind": "All",
         "conditions": [
@@ -111,7 +91,6 @@
       },
       "condition": "(operation 为 \"common\" 且 commonCategory 为 \"view\")",
       "defaultValue": "view.zoom_selection",
-      "defaultValueRaw": "view.zoom_selection",
       "required": true,
       "variableMode": "Input",
       "isControlField": true
@@ -120,10 +99,6 @@
       "key": "sceneOperation",
       "name": "场景功能",
       "type": "Enum",
-      "description": "",
-      "isAdvanced": false,
-      "validForList": [],
-      "invalidForList": [],
       "visibleWhen": {
         "kind": "All",
         "conditions": [
@@ -147,7 +122,6 @@
       },
       "condition": "(operation 为 \"common\" 且 commonCategory 为 \"scene\")",
       "defaultValue": "scene.list",
-      "defaultValueRaw": "scene.list",
       "required": true,
       "variableMode": "Input",
       "isControlField": true
@@ -156,10 +130,6 @@
       "key": "organizeOperation",
       "name": "整理功能",
       "type": "Enum",
-      "description": "",
-      "isAdvanced": false,
-      "validForList": [],
-      "invalidForList": [],
       "visibleWhen": {
         "kind": "All",
         "conditions": [
@@ -183,7 +153,6 @@
       },
       "condition": "(operation 为 \"common\" 且 commonCategory 为 \"organize\")",
       "defaultValue": "tag.list",
-      "defaultValueRaw": "tag.list",
       "required": true,
       "variableMode": "Input",
       "isControlField": true
@@ -192,10 +161,6 @@
       "key": "transformOperation",
       "name": "变换功能",
       "type": "Enum",
-      "description": "",
-      "isAdvanced": false,
-      "validForList": [],
-      "invalidForList": [],
       "visibleWhen": {
         "kind": "All",
         "conditions": [
@@ -219,7 +184,6 @@
       },
       "condition": "(operation 为 \"common\" 且 commonCategory 为 \"transform\")",
       "defaultValue": "selection.move",
-      "defaultValueRaw": "selection.move",
       "required": true,
       "variableMode": "Input",
       "isControlField": true
@@ -228,10 +192,6 @@
       "key": "fileOperation",
       "name": "文件功能",
       "type": "Enum",
-      "description": "",
-      "isAdvanced": false,
-      "validForList": [],
-      "invalidForList": [],
       "visibleWhen": {
         "kind": "All",
         "conditions": [
@@ -255,7 +215,6 @@
       },
       "condition": "(operation 为 \"common\" 且 commonCategory 为 \"file\")",
       "defaultValue": "model.save",
-      "defaultValueRaw": "model.save",
       "required": true,
       "variableMode": "Input",
       "isControlField": true
@@ -264,10 +223,6 @@
       "key": "persistentIds",
       "name": "持久ID列表",
       "type": "List",
-      "description": "",
-      "isAdvanced": false,
-      "validForList": [],
-      "invalidForList": [],
       "visibleWhen": {
         "kind": "All",
         "conditions": [
@@ -299,18 +254,12 @@
       },
       "condition": "(operation 为 \"common\" 且 commonCategory 为 \"selection\" 且 selectionOperation 为 \"selection.select_by_ids\")",
       "defaultValue": "",
-      "required": false,
-      "variableMode": "UseVarOrInput",
-      "isControlField": false
+      "variableMode": "UseVarOrInput"
     },
     {
       "key": "selectionMode",
       "name": "选择模式",
       "type": "Enum",
-      "description": "",
-      "isAdvanced": false,
-      "validForList": [],
-      "invalidForList": [],
       "visibleWhen": {
         "kind": "All",
         "conditions": [
@@ -346,7 +295,6 @@
       },
       "condition": "(operation 为 \"common\" 且 commonCategory 为 \"selection\" 且 selectionOperation 为 \"selection.select_by_ids\"、\"selection.select_all\"、\"selection.select_same_type\"、\"selection.select_same_component\"、\"selection.select_same_tag\")",
       "defaultValue": "replace",
-      "defaultValueRaw": "replace",
       "required": true,
       "variableMode": "Input",
       "isControlField": true
@@ -355,10 +303,6 @@
       "key": "includeHidden",
       "name": "包含隐藏对象",
       "type": "Boolean",
-      "description": "",
-      "isAdvanced": false,
-      "validForList": [],
-      "invalidForList": [],
       "visibleWhen": {
         "kind": "All",
         "conditions": [
@@ -395,18 +339,12 @@
       "condition": "(operation 为 \"common\" 且 commonCategory 为 \"selection\" 且 selectionOperation 为 \"selection.select_all\"、\"selection.invert\"、\"selection.select_same_type\"、\"selection.select_same_component\"、\"selection.select_same_tag\")",
       "defaultValue": "false",
       "defaultValueRaw": false,
-      "required": false,
-      "variableMode": "Input",
-      "isControlField": false
+      "variableMode": "Input"
     },
     {
       "key": "includeLocked",
       "name": "包含锁定对象",
       "type": "Boolean",
-      "description": "",
-      "isAdvanced": false,
-      "validForList": [],
-      "invalidForList": [],
       "visibleWhen": {
         "kind": "All",
         "conditions": [
@@ -443,18 +381,12 @@
       "condition": "(operation 为 \"common\" 且 commonCategory 为 \"selection\" 且 selectionOperation 为 \"selection.select_all\"、\"selection.invert\"、\"selection.select_same_type\"、\"selection.select_same_component\"、\"selection.select_same_tag\")",
       "defaultValue": "false",
       "defaultValueRaw": false,
-      "required": false,
-      "variableMode": "Input",
-      "isControlField": false
+      "variableMode": "Input"
     },
     {
       "key": "fullDetails",
       "name": "返回完整详情",
       "type": "Boolean",
-      "description": "",
-      "isAdvanced": false,
-      "validForList": [],
-      "invalidForList": [],
       "visibleWhen": {
         "kind": "All",
         "conditions": [
@@ -487,18 +419,12 @@
       "condition": "(operation 为 \"common\" 且 commonCategory 为 \"selection\" 且 selectionOperation 为 \"selection.get_info\")",
       "defaultValue": "false",
       "defaultValueRaw": false,
-      "required": false,
-      "variableMode": "Input",
-      "isControlField": false
+      "variableMode": "Input"
     },
     {
       "key": "hidden",
       "name": "隐藏对象",
       "type": "Boolean",
-      "description": "",
-      "isAdvanced": false,
-      "validForList": [],
-      "invalidForList": [],
       "visibleWhen": {
         "kind": "All",
         "conditions": [
@@ -531,18 +457,12 @@
       "condition": "(operation 为 \"common\" 且 commonCategory 为 \"selection\" 且 selectionOperation 为 \"entity.visibility.set\")",
       "defaultValue": "true",
       "defaultValueRaw": true,
-      "required": false,
-      "variableMode": "Input",
-      "isControlField": false
+      "variableMode": "Input"
     },
     {
       "key": "locked",
       "name": "锁定对象",
       "type": "Boolean",
-      "description": "",
-      "isAdvanced": false,
-      "validForList": [],
-      "invalidForList": [],
       "visibleWhen": {
         "kind": "All",
         "conditions": [
@@ -575,18 +495,12 @@
       "condition": "(operation 为 \"common\" 且 commonCategory 为 \"selection\" 且 selectionOperation 为 \"selection.lock\")",
       "defaultValue": "true",
       "defaultValueRaw": true,
-      "required": false,
-      "variableMode": "Input",
-      "isControlField": false
+      "variableMode": "Input"
     },
     {
       "key": "standardView",
       "name": "标准视图",
       "type": "Enum",
-      "description": "",
-      "isAdvanced": false,
-      "validForList": [],
-      "invalidForList": [],
       "visibleWhen": {
         "kind": "All",
         "conditions": [
@@ -618,7 +532,6 @@
       },
       "condition": "(operation 为 \"common\" 且 commonCategory 为 \"view\" 且 viewOperation 为 \"view.standard\")",
       "defaultValue": "isometric",
-      "defaultValueRaw": "isometric",
       "required": true,
       "variableMode": "Input",
       "isControlField": true
@@ -627,10 +540,6 @@
       "key": "zoomExtentsAfterView",
       "name": "切换后缩放到全部",
       "type": "Boolean",
-      "description": "",
-      "isAdvanced": false,
-      "validForList": [],
-      "invalidForList": [],
       "visibleWhen": {
         "kind": "All",
         "conditions": [
@@ -663,18 +572,12 @@
       "condition": "(operation 为 \"common\" 且 commonCategory 为 \"view\" 且 viewOperation 为 \"view.standard\")",
       "defaultValue": "true",
       "defaultValueRaw": true,
-      "required": false,
-      "variableMode": "Input",
-      "isControlField": false
+      "variableMode": "Input"
     },
     {
       "key": "eye",
       "name": "相机位置 X,Y,Z",
       "type": "Text",
-      "description": "",
-      "isAdvanced": false,
-      "validForList": [],
-      "invalidForList": [],
       "visibleWhen": {
         "kind": "All",
         "conditions": [
@@ -706,19 +609,12 @@
       },
       "condition": "(operation 为 \"common\" 且 commonCategory 为 \"view\" 且 viewOperation 为 \"view.set_camera\")",
       "defaultValue": "1000,1000,1000",
-      "defaultValueRaw": "1000,1000,1000",
-      "required": false,
-      "variableMode": "UseVarOrInput",
-      "isControlField": false
+      "variableMode": "UseVarOrInput"
     },
     {
       "key": "target",
       "name": "观察目标 X,Y,Z",
       "type": "Text",
-      "description": "",
-      "isAdvanced": false,
-      "validForList": [],
-      "invalidForList": [],
       "visibleWhen": {
         "kind": "All",
         "conditions": [
@@ -750,19 +646,12 @@
       },
       "condition": "(operation 为 \"common\" 且 commonCategory 为 \"view\" 且 viewOperation 为 \"view.set_camera\")",
       "defaultValue": "0,0,0",
-      "defaultValueRaw": "0,0,0",
-      "required": false,
-      "variableMode": "UseVarOrInput",
-      "isControlField": false
+      "variableMode": "UseVarOrInput"
     },
     {
       "key": "up",
       "name": "向上向量 X,Y,Z",
       "type": "Text",
-      "description": "",
-      "isAdvanced": false,
-      "validForList": [],
-      "invalidForList": [],
       "visibleWhen": {
         "kind": "All",
         "conditions": [
@@ -794,19 +683,12 @@
       },
       "condition": "(operation 为 \"common\" 且 commonCategory 为 \"view\" 且 viewOperation 为 \"view.set_camera\")",
       "defaultValue": "0,0,1",
-      "defaultValueRaw": "0,0,1",
-      "required": false,
-      "variableMode": "UseVarOrInput",
-      "isControlField": false
+      "variableMode": "UseVarOrInput"
     },
     {
       "key": "perspective",
       "name": "透视投影",
       "type": "Boolean",
-      "description": "",
-      "isAdvanced": false,
-      "validForList": [],
-      "invalidForList": [],
       "visibleWhen": {
         "kind": "All",
         "conditions": [
@@ -840,18 +722,12 @@
       "condition": "(operation 为 \"common\" 且 commonCategory 为 \"view\" 且 viewOperation 为 \"view.set_camera\"、\"view.projection.set\")",
       "defaultValue": "true",
       "defaultValueRaw": true,
-      "required": false,
-      "variableMode": "Input",
-      "isControlField": false
+      "variableMode": "Input"
     },
     {
       "key": "fieldOfView",
       "name": "视野角度",
       "type": "Number",
-      "description": "",
-      "isAdvanced": false,
-      "validForList": [],
-      "invalidForList": [],
       "visibleWhen": {
         "kind": "All",
         "conditions": [
@@ -885,18 +761,12 @@
       "condition": "(operation 为 \"common\" 且 commonCategory 为 \"view\" 且 viewOperation 为 \"view.set_camera\"、\"view.projection.set\")",
       "defaultValue": "35.0",
       "defaultValueRaw": 35,
-      "required": false,
-      "variableMode": "Input",
-      "isControlField": false
+      "variableMode": "Input"
     },
     {
       "key": "sceneName",
       "name": "场景名称",
       "type": "Text",
-      "description": "",
-      "isAdvanced": false,
-      "validForList": [],
-      "invalidForList": [],
       "visibleWhen": {
         "kind": "All",
         "conditions": [
@@ -933,19 +803,12 @@
       },
       "condition": "(operation 为 \"common\" 且 commonCategory 为 \"scene\" 且 sceneOperation 为 \"scene.activate\"、\"scene.create\"、\"scene.update\"、\"scene.rename\"、\"scene.delete\"、\"scene.reorder\")",
       "defaultValue": "",
-      "defaultValueRaw": "",
-      "required": false,
-      "variableMode": "UseVarOrInput",
-      "isControlField": false
+      "variableMode": "UseVarOrInput"
     },
     {
       "key": "newName",
       "name": "新名称",
       "type": "Text",
-      "description": "",
-      "isAdvanced": false,
-      "validForList": [],
-      "invalidForList": [],
       "visibleWhen": {
         "kind": "All",
         "conditions": [
@@ -977,19 +840,12 @@
       },
       "condition": "(operation 为 \"common\" 且 commonCategory 为 \"scene\" 且 sceneOperation 为 \"scene.rename\")",
       "defaultValue": "",
-      "defaultValueRaw": "",
-      "required": false,
-      "variableMode": "UseVarOrInput",
-      "isControlField": false
+      "variableMode": "UseVarOrInput"
     },
     {
       "key": "newIndex",
       "name": "新位置（从0开始）",
       "type": "Integer",
-      "description": "",
-      "isAdvanced": false,
-      "validForList": [],
-      "invalidForList": [],
       "visibleWhen": {
         "kind": "All",
         "conditions": [
@@ -1022,18 +878,12 @@
       "condition": "(operation 为 \"common\" 且 commonCategory 为 \"scene\" 且 sceneOperation 为 \"scene.reorder\")",
       "defaultValue": "0",
       "defaultValueRaw": 0,
-      "required": false,
-      "variableMode": "Input",
-      "isControlField": false
+      "variableMode": "Input"
     },
     {
       "key": "tagName",
       "name": "标签名称",
       "type": "Text",
-      "description": "",
-      "isAdvanced": false,
-      "validForList": [],
-      "invalidForList": [],
       "visibleWhen": {
         "kind": "All",
         "conditions": [
@@ -1066,19 +916,12 @@
       },
       "condition": "(operation 为 \"common\" 且 commonCategory 为 \"organize\" 且 organizeOperation 为 \"tag.set_visibility\"、\"selection.assign_tag\")",
       "defaultValue": "",
-      "defaultValueRaw": "",
-      "required": false,
-      "variableMode": "UseVarOrInput",
-      "isControlField": false
+      "variableMode": "UseVarOrInput"
     },
     {
       "key": "visible",
       "name": "可见",
       "type": "Boolean",
-      "description": "",
-      "isAdvanced": false,
-      "validForList": [],
-      "invalidForList": [],
       "visibleWhen": {
         "kind": "All",
         "conditions": [
@@ -1111,18 +954,12 @@
       "condition": "(operation 为 \"common\" 且 commonCategory 为 \"organize\" 且 organizeOperation 为 \"tag.set_visibility\")",
       "defaultValue": "true",
       "defaultValueRaw": true,
-      "required": false,
-      "variableMode": "Input",
-      "isControlField": false
+      "variableMode": "Input"
     },
     {
       "key": "materialName",
       "name": "材质名称",
       "type": "Text",
-      "description": "",
-      "isAdvanced": false,
-      "validForList": [],
-      "invalidForList": [],
       "visibleWhen": {
         "kind": "All",
         "conditions": [
@@ -1154,19 +991,12 @@
       },
       "condition": "(operation 为 \"common\" 且 commonCategory 为 \"organize\" 且 organizeOperation 为 \"selection.assign_material\")",
       "defaultValue": "",
-      "defaultValueRaw": "",
-      "required": false,
-      "variableMode": "UseVarOrInput",
-      "isControlField": false
+      "variableMode": "UseVarOrInput"
     },
     {
       "key": "clearMaterial",
       "name": "清除材质",
       "type": "Boolean",
-      "description": "",
-      "isAdvanced": false,
-      "validForList": [],
-      "invalidForList": [],
       "visibleWhen": {
         "kind": "All",
         "conditions": [
@@ -1199,18 +1029,12 @@
       "condition": "(operation 为 \"common\" 且 commonCategory 为 \"organize\" 且 organizeOperation 为 \"selection.assign_material\")",
       "defaultValue": "false",
       "defaultValueRaw": false,
-      "required": false,
-      "variableMode": "Input",
-      "isControlField": false
+      "variableMode": "Input"
     },
     {
       "key": "entityName",
       "name": "对象名称",
       "type": "Text",
-      "description": "",
-      "isAdvanced": false,
-      "validForList": [],
-      "invalidForList": [],
       "visibleWhen": {
         "kind": "All",
         "conditions": [
@@ -1274,19 +1098,12 @@
       },
       "condition": "(operation 为 \"common\" 且 ((commonCategory 为 \"organize\" 且 organizeOperation 为 \"entity.rename\") 或 (commonCategory 为 \"transform\" 且 transformOperation 为 \"selection.make_group\"、\"selection.make_component\")))",
       "defaultValue": "",
-      "defaultValueRaw": "",
-      "required": false,
-      "variableMode": "UseVarOrInput",
-      "isControlField": false
+      "variableMode": "UseVarOrInput"
     },
     {
       "key": "attributeDictionary",
       "name": "属性字典",
       "type": "Text",
-      "description": "",
-      "isAdvanced": false,
-      "validForList": [],
-      "invalidForList": [],
       "visibleWhen": {
         "kind": "All",
         "conditions": [
@@ -1318,19 +1135,12 @@
       },
       "condition": "(operation 为 \"common\" 且 commonCategory 为 \"organize\" 且 organizeOperation 为 \"entity.set_attribute\")",
       "defaultValue": "Quicker",
-      "defaultValueRaw": "Quicker",
-      "required": false,
-      "variableMode": "UseVarOrInput",
-      "isControlField": false
+      "variableMode": "UseVarOrInput"
     },
     {
       "key": "attributeKey",
       "name": "属性名称",
       "type": "Text",
-      "description": "",
-      "isAdvanced": false,
-      "validForList": [],
-      "invalidForList": [],
       "visibleWhen": {
         "kind": "All",
         "conditions": [
@@ -1362,19 +1172,12 @@
       },
       "condition": "(operation 为 \"common\" 且 commonCategory 为 \"organize\" 且 organizeOperation 为 \"entity.set_attribute\")",
       "defaultValue": "",
-      "defaultValueRaw": "",
-      "required": false,
-      "variableMode": "UseVarOrInput",
-      "isControlField": false
+      "variableMode": "UseVarOrInput"
     },
     {
       "key": "attributeValueJson",
       "name": "属性值(JSON)",
       "type": "Text",
-      "description": "",
-      "isAdvanced": false,
-      "validForList": [],
-      "invalidForList": [],
       "visibleWhen": {
         "kind": "All",
         "conditions": [
@@ -1406,19 +1209,12 @@
       },
       "condition": "(operation 为 \"common\" 且 commonCategory 为 \"organize\" 且 organizeOperation 为 \"entity.set_attribute\")",
       "defaultValue": "null",
-      "defaultValueRaw": "null",
-      "required": false,
-      "variableMode": "UseVarOrInput",
-      "isControlField": false
+      "variableMode": "UseVarOrInput"
     },
     {
       "key": "vector",
       "name": "移动向量 X,Y,Z",
       "type": "Text",
-      "description": "",
-      "isAdvanced": false,
-      "validForList": [],
-      "invalidForList": [],
       "visibleWhen": {
         "kind": "All",
         "conditions": [
@@ -1450,19 +1246,12 @@
       },
       "condition": "(operation 为 \"common\" 且 commonCategory 为 \"transform\" 且 transformOperation 为 \"selection.move\")",
       "defaultValue": "0,0,0",
-      "defaultValueRaw": "0,0,0",
-      "required": false,
-      "variableMode": "UseVarOrInput",
-      "isControlField": false
+      "variableMode": "UseVarOrInput"
     },
     {
       "key": "origin",
       "name": "变换原点 X,Y,Z（留空使用选择中心）",
       "type": "Text",
-      "description": "",
-      "isAdvanced": false,
-      "validForList": [],
-      "invalidForList": [],
       "visibleWhen": {
         "kind": "All",
         "conditions": [
@@ -1495,19 +1284,12 @@
       },
       "condition": "(operation 为 \"common\" 且 commonCategory 为 \"transform\" 且 transformOperation 为 \"selection.rotate\"、\"selection.scale\")",
       "defaultValue": "",
-      "defaultValueRaw": "",
-      "required": false,
-      "variableMode": "UseVarOrInput",
-      "isControlField": false
+      "variableMode": "UseVarOrInput"
     },
     {
       "key": "axis",
       "name": "旋转轴 X,Y,Z",
       "type": "Text",
-      "description": "",
-      "isAdvanced": false,
-      "validForList": [],
-      "invalidForList": [],
       "visibleWhen": {
         "kind": "All",
         "conditions": [
@@ -1539,19 +1321,12 @@
       },
       "condition": "(operation 为 \"common\" 且 commonCategory 为 \"transform\" 且 transformOperation 为 \"selection.rotate\")",
       "defaultValue": "0,0,1",
-      "defaultValueRaw": "0,0,1",
-      "required": false,
-      "variableMode": "UseVarOrInput",
-      "isControlField": false
+      "variableMode": "UseVarOrInput"
     },
     {
       "key": "angleDegrees",
       "name": "旋转角度（度）",
       "type": "Number",
-      "description": "",
-      "isAdvanced": false,
-      "validForList": [],
-      "invalidForList": [],
       "visibleWhen": {
         "kind": "All",
         "conditions": [
@@ -1584,18 +1359,12 @@
       "condition": "(operation 为 \"common\" 且 commonCategory 为 \"transform\" 且 transformOperation 为 \"selection.rotate\")",
       "defaultValue": "90.0",
       "defaultValueRaw": 90,
-      "required": false,
-      "variableMode": "Input",
-      "isControlField": false
+      "variableMode": "Input"
     },
     {
       "key": "scaleFactors",
       "name": "缩放比例 X,Y,Z",
       "type": "Text",
-      "description": "",
-      "isAdvanced": false,
-      "validForList": [],
-      "invalidForList": [],
       "visibleWhen": {
         "kind": "All",
         "conditions": [
@@ -1627,19 +1396,12 @@
       },
       "condition": "(operation 为 \"common\" 且 commonCategory 为 \"transform\" 且 transformOperation 为 \"selection.scale\")",
       "defaultValue": "1,1,1",
-      "defaultValueRaw": "1,1,1",
-      "required": false,
-      "variableMode": "UseVarOrInput",
-      "isControlField": false
+      "variableMode": "UseVarOrInput"
     },
     {
       "key": "lengthUnit",
       "name": "坐标与长度单位",
       "type": "Enum",
-      "description": "",
-      "isAdvanced": false,
-      "validForList": [],
-      "invalidForList": [],
       "visibleWhen": {
         "kind": "All",
         "conditions": [
@@ -1704,7 +1466,6 @@
       },
       "condition": "(operation 为 \"common\" 且 ((commonCategory 为 \"view\" 且 viewOperation 为 \"view.set_camera\") 或 (commonCategory 为 \"transform\" 且 transformOperation 为 \"selection.move\"、\"selection.rotate\"、\"selection.scale\")))",
       "defaultValue": "mm",
-      "defaultValueRaw": "mm",
       "required": true,
       "variableMode": "Input",
       "isControlField": true
@@ -1713,10 +1474,6 @@
       "key": "commonFilePath",
       "name": "文件路径",
       "type": "Text",
-      "description": "",
-      "isAdvanced": false,
-      "validForList": [],
-      "invalidForList": [],
       "visibleWhen": {
         "kind": "All",
         "conditions": [
@@ -1780,19 +1537,12 @@
       },
       "condition": "(operation 为 \"common\" 且 ((commonCategory 为 \"view\" 且 viewOperation 为 \"view.write_image\") 或 (commonCategory 为 \"file\" 且 fileOperation 为 \"model.save_as\"、\"model.export\")))",
       "defaultValue": "",
-      "defaultValueRaw": "",
-      "required": false,
-      "variableMode": "UseVarOrInput",
-      "isControlField": false
+      "variableMode": "UseVarOrInput"
     },
     {
       "key": "imageWidth",
       "name": "图片宽度",
       "type": "Integer",
-      "description": "",
-      "isAdvanced": false,
-      "validForList": [],
-      "invalidForList": [],
       "visibleWhen": {
         "kind": "All",
         "conditions": [
@@ -1825,18 +1575,12 @@
       "condition": "(operation 为 \"common\" 且 commonCategory 为 \"view\" 且 viewOperation 为 \"view.write_image\")",
       "defaultValue": "1920",
       "defaultValueRaw": 1920,
-      "required": false,
-      "variableMode": "Input",
-      "isControlField": false
+      "variableMode": "Input"
     },
     {
       "key": "imageHeight",
       "name": "图片高度",
       "type": "Integer",
-      "description": "",
-      "isAdvanced": false,
-      "validForList": [],
-      "invalidForList": [],
       "visibleWhen": {
         "kind": "All",
         "conditions": [
@@ -1869,18 +1613,12 @@
       "condition": "(operation 为 \"common\" 且 commonCategory 为 \"view\" 且 viewOperation 为 \"view.write_image\")",
       "defaultValue": "1080",
       "defaultValueRaw": 1080,
-      "required": false,
-      "variableMode": "Input",
-      "isControlField": false
+      "variableMode": "Input"
     },
     {
       "key": "exportOptionsJson",
       "name": "导出选项(JSON object)",
       "type": "Text",
-      "description": "",
-      "isAdvanced": false,
-      "validForList": [],
-      "invalidForList": [],
       "visibleWhen": {
         "kind": "All",
         "conditions": [
@@ -1912,183 +1650,133 @@
       },
       "condition": "(operation 为 \"common\" 且 commonCategory 为 \"file\" 且 fileOperation 为 \"model.export\")",
       "defaultValue": "{}",
-      "defaultValueRaw": "{}",
-      "required": false,
-      "variableMode": "UseVarOrInput",
-      "isControlField": false
+      "variableMode": "UseVarOrInput"
     },
     {
       "key": "pluginMenuText",
       "name": "插件命令菜单文字",
       "type": "Text",
-      "description": "",
-      "isAdvanced": false,
       "validForList": [
         "extension_command.invoke"
       ],
-      "invalidForList": [],
       "condition": "仅：extension_command.invoke",
       "defaultValue": "",
-      "defaultValueRaw": "",
       "required": true,
-      "variableMode": "UseVarOrInput",
-      "isControlField": false
+      "variableMode": "UseVarOrInput"
     },
     {
       "key": "pluginExtensionName",
       "name": "所属扩展名称",
       "type": "Text",
-      "description": "",
-      "isAdvanced": false,
       "validForList": [
         "extension_command.invoke"
       ],
-      "invalidForList": [],
       "condition": "仅：extension_command.invoke",
       "defaultValue": "",
-      "defaultValueRaw": "",
-      "required": false,
-      "variableMode": "UseVarOrInput",
-      "isControlField": false
+      "variableMode": "UseVarOrInput"
     },
     {
       "key": "pluginTooltip",
       "name": "命令提示文字",
       "type": "Text",
-      "description": "",
-      "isAdvanced": false,
       "validForList": [
         "extension_command.invoke"
       ],
-      "invalidForList": [],
       "condition": "仅：extension_command.invoke",
       "defaultValue": "",
-      "defaultValueRaw": "",
-      "required": false,
-      "variableMode": "UseVarOrInput",
-      "isControlField": false
+      "variableMode": "UseVarOrInput"
     },
     {
       "key": "pluginLocatorJson",
       "name": "高级定位信息(JSON object)",
       "type": "Text",
       "description": "命令工具生成动作时自动保留状态栏文字和图标等定位信息；手工配置通常留空即可。",
-      "isAdvanced": false,
       "validForList": [
         "extension_command.invoke"
       ],
-      "invalidForList": [],
       "condition": "仅：extension_command.invoke",
       "defaultValue": "{}",
-      "defaultValueRaw": "{}",
-      "required": false,
-      "variableMode": "UseVarOrInput",
-      "isControlField": false
+      "variableMode": "UseVarOrInput"
     },
     {
       "key": "rubyCode",
       "name": "Ruby 代码",
       "type": "Text",
       "description": "直接在目标 SketchUp 的 Ruby 上下文中执行。可使用 model、selection、view 和 args。",
-      "isAdvanced": false,
       "validForList": [
         "script.evaluate"
       ],
-      "invalidForList": [],
       "condition": "仅：script.evaluate",
       "defaultValue": "",
-      "defaultValueRaw": "",
       "required": true,
-      "variableMode": "UseVarOrInput",
-      "isControlField": false
+      "variableMode": "UseVarOrInput"
     },
     {
       "key": "filePath",
       "name": "Ruby 文件路径",
       "type": "Text",
       "description": "要运行或加载的 Ruby 文件绝对路径。",
-      "isAdvanced": false,
       "validForList": [
         "script.run_file",
         "script.load_file"
       ],
-      "invalidForList": [],
       "condition": "仅：script.run_file, script.load_file",
       "defaultValue": "",
-      "defaultValueRaw": "",
       "required": true,
-      "variableMode": "UseVarOrInput",
-      "isControlField": false
+      "variableMode": "UseVarOrInput"
     },
     {
       "key": "action",
       "name": "Action 字符串或数字 ID",
       "type": "Text",
       "description": "原样传给 Sketchup.send_action，不限制 action 内容。",
-      "isAdvanced": false,
       "validForList": [
         "host_action.send"
       ],
-      "invalidForList": [],
       "condition": "仅：host_action.send",
       "defaultValue": "",
-      "defaultValueRaw": "",
       "required": true,
-      "variableMode": "UseVarOrInput",
-      "isControlField": false
+      "variableMode": "UseVarOrInput"
     },
     {
       "key": "commandName",
       "name": "Bridge 命令名称",
       "type": "Text",
       "description": "发送任意命令名称，供第三方插件或后续 Bridge handler 使用。",
-      "isAdvanced": false,
       "validForList": [
         "command.custom"
       ],
-      "invalidForList": [],
       "condition": "仅：command.custom",
       "defaultValue": "",
-      "defaultValueRaw": "",
       "required": true,
-      "variableMode": "UseVarOrInput",
-      "isControlField": false
+      "variableMode": "UseVarOrInput"
     },
     {
       "key": "argumentsJson",
       "name": "参数(JSON object)",
       "type": "Text",
       "description": "传入 Ruby 脚本或自定义命令的参数。",
-      "isAdvanced": false,
       "validForList": [
         "script.evaluate",
         "script.run_file",
         "command.custom"
       ],
-      "invalidForList": [],
       "condition": "仅：script.evaluate, script.run_file, command.custom",
       "defaultValue": "{}",
-      "defaultValueRaw": "{}",
-      "required": false,
-      "variableMode": "UseVarOrInput",
-      "isControlField": false
+      "variableMode": "UseVarOrInput"
     },
     {
       "key": "wrapLoad",
       "name": "在匿名模块中加载",
       "type": "Boolean",
       "description": "对应 Ruby load(path, true) 的 wrap 参数。",
-      "isAdvanced": false,
       "validForList": [
         "script.load_file"
       ],
-      "invalidForList": [],
       "condition": "仅：script.load_file",
       "defaultValue": "false",
       "defaultValueRaw": false,
-      "required": false,
-      "variableMode": "Input",
-      "isControlField": false
+      "variableMode": "Input"
     },
     {
       "key": "waitMs",
@@ -2096,29 +1784,19 @@
       "type": "Number",
       "description": "等待目标 SketchUp 实例返回结果的最长时间。",
       "isAdvanced": true,
-      "validForList": [],
-      "invalidForList": [],
-      "condition": "",
       "defaultValue": "5000",
       "defaultValueRaw": 5000,
       "required": true,
-      "variableMode": "Input",
-      "isControlField": false
+      "variableMode": "Input"
     },
     {
       "key": "stopIfFail",
       "name": "失败后停止",
       "type": "Boolean",
       "description": "失败后是否停止动作",
-      "isAdvanced": false,
-      "validForList": [],
-      "invalidForList": [],
-      "condition": "",
       "defaultValue": "true",
       "defaultValueRaw": true,
-      "required": false,
-      "variableMode": "Input",
-      "isControlField": false
+      "variableMode": "Input"
     }
   ],
   "outputs": [
@@ -2126,41 +1804,23 @@
       "key": "isSuccess",
       "name": "是否成功",
       "type": "Boolean",
-      "description": "操作是否成功",
-      "isAdvanced": false,
-      "validForList": [],
-      "invalidForList": [],
-      "condition": ""
+      "description": "操作是否成功"
     },
     {
       "key": "output",
       "name": "命令结果",
       "type": "Text",
-      "description": "SketchUp 返回的 JSON 结果。",
-      "isAdvanced": false,
-      "validForList": [],
-      "invalidForList": [],
-      "condition": ""
+      "description": "SketchUp 返回的 JSON 结果。"
     },
     {
       "key": "count",
       "name": "数量",
-      "type": "Integer",
-      "description": "",
-      "isAdvanced": false,
-      "validForList": [],
-      "invalidForList": [],
-      "condition": ""
+      "type": "Integer"
     },
     {
       "key": "persistentIdsOutput",
       "name": "实体ID列表",
-      "type": "List",
-      "description": "",
-      "isAdvanced": false,
-      "validForList": [],
-      "invalidForList": [],
-      "condition": ""
+      "type": "List"
     }
   ],
   "selections": {
@@ -2169,43 +1829,35 @@
       "items": [
         {
           "value": "common",
-          "name": "[常用] 常用功能",
-          "description": ""
+          "name": "[常用] 常用功能"
         },
         {
           "value": "extension_command.invoke",
-          "name": "[插件] 调用第三方插件命令",
-          "description": ""
+          "name": "[插件] 调用第三方插件命令"
         },
         {
           "value": "model.get_context",
-          "name": "[模型] 获取模型上下文",
-          "description": ""
+          "name": "[模型] 获取模型上下文"
         },
         {
           "value": "script.evaluate",
-          "name": "[脚本] 执行任意 Ruby",
-          "description": ""
+          "name": "[脚本] 执行任意 Ruby"
         },
         {
           "value": "script.run_file",
-          "name": "[脚本] 运行 Ruby 文件",
-          "description": ""
+          "name": "[脚本] 运行 Ruby 文件"
         },
         {
           "value": "script.load_file",
-          "name": "[脚本] 加载 Ruby 文件",
-          "description": ""
+          "name": "[脚本] 加载 Ruby 文件"
         },
         {
           "value": "host_action.send",
-          "name": "[命令] 发送任意 SketchUp Action",
-          "description": ""
+          "name": "[命令] 发送任意 SketchUp Action"
         },
         {
           "value": "command.custom",
-          "name": "[高级] 发送自定义 Bridge 命令",
-          "description": ""
+          "name": "[高级] 发送自定义 Bridge 命令"
         }
       ]
     },
@@ -2214,33 +1866,27 @@
       "items": [
         {
           "value": "selection",
-          "name": "选择对象",
-          "description": ""
+          "name": "选择对象"
         },
         {
           "value": "view",
-          "name": "视图与相机",
-          "description": ""
+          "name": "视图与相机"
         },
         {
           "value": "scene",
-          "name": "场景",
-          "description": ""
+          "name": "场景"
         },
         {
           "value": "organize",
-          "name": "标签、材质与对象",
-          "description": ""
+          "name": "标签、材质与对象"
         },
         {
           "value": "transform",
-          "name": "几何变换",
-          "description": ""
+          "name": "几何变换"
         },
         {
           "value": "file",
-          "name": "文件与导出",
-          "description": ""
+          "name": "文件与导出"
         }
       ]
     },
@@ -2249,53 +1895,43 @@
       "items": [
         {
           "value": "selection.get_info",
-          "name": "读取选择详情",
-          "description": ""
+          "name": "读取选择详情"
         },
         {
           "value": "selection.select_by_ids",
-          "name": "按持久ID选择",
-          "description": ""
+          "name": "按持久ID选择"
         },
         {
           "value": "selection.select_all",
-          "name": "选择当前上下文全部对象",
-          "description": ""
+          "name": "选择当前上下文全部对象"
         },
         {
           "value": "selection.invert",
-          "name": "反选",
-          "description": ""
+          "name": "反选"
         },
         {
           "value": "selection.select_same_type",
-          "name": "选择相同类型",
-          "description": ""
+          "name": "选择相同类型"
         },
         {
           "value": "selection.select_same_component",
-          "name": "选择相同组件",
-          "description": ""
+          "name": "选择相同组件"
         },
         {
           "value": "selection.select_same_tag",
-          "name": "选择相同标签",
-          "description": ""
+          "name": "选择相同标签"
         },
         {
           "value": "selection.clear",
-          "name": "清空选择",
-          "description": ""
+          "name": "清空选择"
         },
         {
           "value": "entity.visibility.set",
-          "name": "隐藏/显示对象",
-          "description": ""
+          "name": "隐藏/显示对象"
         },
         {
           "value": "selection.lock",
-          "name": "锁定/解锁对象",
-          "description": ""
+          "name": "锁定/解锁对象"
         }
       ]
     },
@@ -2304,38 +1940,31 @@
       "items": [
         {
           "value": "view.zoom_selection",
-          "name": "缩放到选择对象",
-          "description": ""
+          "name": "缩放到选择对象"
         },
         {
           "value": "view.zoom_extents",
-          "name": "缩放到全部",
-          "description": ""
+          "name": "缩放到全部"
         },
         {
           "value": "view.standard",
-          "name": "切换标准视图",
-          "description": ""
+          "name": "切换标准视图"
         },
         {
           "value": "view.get_camera",
-          "name": "读取相机",
-          "description": ""
+          "name": "读取相机"
         },
         {
           "value": "view.set_camera",
-          "name": "设置相机",
-          "description": ""
+          "name": "设置相机"
         },
         {
           "value": "view.projection.set",
-          "name": "设置投影方式",
-          "description": ""
+          "name": "设置投影方式"
         },
         {
           "value": "view.write_image",
-          "name": "输出视图图片",
-          "description": ""
+          "name": "输出视图图片"
         }
       ]
     },
@@ -2344,48 +1973,39 @@
       "items": [
         {
           "value": "scene.list",
-          "name": "列出场景",
-          "description": ""
+          "name": "列出场景"
         },
         {
           "value": "scene.activate",
-          "name": "激活场景",
-          "description": ""
+          "name": "激活场景"
         },
         {
           "value": "scene.create",
-          "name": "新建场景",
-          "description": ""
+          "name": "新建场景"
         },
         {
           "value": "scene.update",
-          "name": "更新场景",
-          "description": ""
+          "name": "更新场景"
         },
         {
           "value": "scene.rename",
-          "name": "重命名场景",
-          "description": ""
+          "name": "重命名场景"
         },
         {
           "value": "scene.delete",
-          "name": "删除场景",
-          "description": ""
+          "name": "删除场景"
         },
         {
           "value": "scene.reorder",
-          "name": "调整场景顺序",
-          "description": ""
+          "name": "调整场景顺序"
         },
         {
           "value": "scene.next",
-          "name": "下一个场景",
-          "description": ""
+          "name": "下一个场景"
         },
         {
           "value": "scene.previous",
-          "name": "上一个场景",
-          "description": ""
+          "name": "上一个场景"
         }
       ]
     },
@@ -2394,43 +2014,35 @@
       "items": [
         {
           "value": "tag.list",
-          "name": "列出标签",
-          "description": ""
+          "name": "列出标签"
         },
         {
           "value": "tag.set_visibility",
-          "name": "设置标签可见性",
-          "description": ""
+          "name": "设置标签可见性"
         },
         {
           "value": "selection.assign_tag",
-          "name": "为选择对象分配标签",
-          "description": ""
+          "name": "为选择对象分配标签"
         },
         {
           "value": "material.list",
-          "name": "列出材质",
-          "description": ""
+          "name": "列出材质"
         },
         {
           "value": "selection.assign_material",
-          "name": "为选择对象分配材质",
-          "description": ""
+          "name": "为选择对象分配材质"
         },
         {
           "value": "entity.rename",
-          "name": "重命名选择对象",
-          "description": ""
+          "name": "重命名选择对象"
         },
         {
           "value": "entity.get_attributes",
-          "name": "读取对象属性",
-          "description": ""
+          "name": "读取对象属性"
         },
         {
           "value": "entity.set_attribute",
-          "name": "设置对象属性",
-          "description": ""
+          "name": "设置对象属性"
         }
       ]
     },
@@ -2439,43 +2051,35 @@
       "items": [
         {
           "value": "selection.move",
-          "name": "移动",
-          "description": ""
+          "name": "移动"
         },
         {
           "value": "selection.rotate",
-          "name": "旋转",
-          "description": ""
+          "name": "旋转"
         },
         {
           "value": "selection.scale",
-          "name": "缩放",
-          "description": ""
+          "name": "缩放"
         },
         {
           "value": "selection.center_to_origin",
-          "name": "中心移动到原点",
-          "description": ""
+          "name": "中心移动到原点"
         },
         {
           "value": "selection.drop_to_ground",
-          "name": "落到Z=0平面",
-          "description": ""
+          "name": "落到Z=0平面"
         },
         {
           "value": "selection.make_group",
-          "name": "创建组",
-          "description": ""
+          "name": "创建组"
         },
         {
           "value": "selection.make_component",
-          "name": "创建组件",
-          "description": ""
+          "name": "创建组件"
         },
         {
           "value": "selection.explode",
-          "name": "炸开组或组件",
-          "description": ""
+          "name": "炸开组或组件"
         }
       ]
     },
@@ -2484,18 +2088,15 @@
       "items": [
         {
           "value": "model.save",
-          "name": "保存当前模型",
-          "description": ""
+          "name": "保存当前模型"
         },
         {
           "value": "model.save_as",
-          "name": "模型另存为",
-          "description": ""
+          "name": "模型另存为"
         },
         {
           "value": "model.export",
-          "name": "导出模型",
-          "description": ""
+          "name": "导出模型"
         }
       ]
     },
@@ -2504,23 +2105,19 @@
       "items": [
         {
           "value": "replace",
-          "name": "替换当前选择",
-          "description": ""
+          "name": "替换当前选择"
         },
         {
           "value": "add",
-          "name": "添加到选择",
-          "description": ""
+          "name": "添加到选择"
         },
         {
           "value": "remove",
-          "name": "从选择中移除",
-          "description": ""
+          "name": "从选择中移除"
         },
         {
           "value": "toggle",
-          "name": "切换选择状态",
-          "description": ""
+          "name": "切换选择状态"
         }
       ]
     },
@@ -2529,38 +2126,31 @@
       "items": [
         {
           "value": "front",
-          "name": "前视图",
-          "description": ""
+          "name": "前视图"
         },
         {
           "value": "back",
-          "name": "后视图",
-          "description": ""
+          "name": "后视图"
         },
         {
           "value": "left",
-          "name": "左视图",
-          "description": ""
+          "name": "左视图"
         },
         {
           "value": "right",
-          "name": "右视图",
-          "description": ""
+          "name": "右视图"
         },
         {
           "value": "top",
-          "name": "顶视图",
-          "description": ""
+          "name": "顶视图"
         },
         {
           "value": "bottom",
-          "name": "底视图",
-          "description": ""
+          "name": "底视图"
         },
         {
           "value": "isometric",
-          "name": "等轴测",
-          "description": ""
+          "name": "等轴测"
         }
       ]
     },
@@ -2569,28 +2159,23 @@
       "items": [
         {
           "value": "mm",
-          "name": "毫米",
-          "description": ""
+          "name": "毫米"
         },
         {
           "value": "cm",
-          "name": "厘米",
-          "description": ""
+          "name": "厘米"
         },
         {
           "value": "m",
-          "name": "米",
-          "description": ""
+          "name": "米"
         },
         {
           "value": "inch",
-          "name": "英寸",
-          "description": ""
+          "name": "英寸"
         },
         {
           "value": "foot",
-          "name": "英尺",
-          "description": ""
+          "name": "英尺"
         }
       ]
     }

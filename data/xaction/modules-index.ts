@@ -57,8 +57,8 @@ export type XActionModuleDef = {
   category: string;
   categoryName: string;
   stepType: string;
-  isRisky: boolean;
-  isProOnly: boolean;
+  isRisky?: boolean;
+  isProOnly?: boolean;
   inputs: XActionParam[];
   outputs: XActionOutput[];
   selections?: Record<string, XActionSelection>;

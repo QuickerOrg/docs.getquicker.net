@@ -8,8 +8,6 @@
   "category": "Image",
   "categoryName": "图片处理",
   "stepType": "Action",
-  "isRisky": false,
-  "isProOnly": false,
   "helpLink": "https://docs.getquicker.net/v2/xaction/modules/createqrcode",
   "inputs": [
     {
@@ -17,148 +15,83 @@
       "name": "文本",
       "type": "Text",
       "description": "要转换为二维码的内容",
-      "isAdvanced": false,
-      "validForList": [],
-      "invalidForList": [],
-      "condition": "",
       "defaultValue": "",
       "required": true,
-      "variableMode": "UseVarOrInput",
-      "isControlField": false
+      "variableMode": "UseVarOrInput"
     },
     {
       "key": "pixelsPerModule",
       "name": "每模块像素数",
       "type": "Integer",
-      "description": "",
-      "isAdvanced": false,
-      "validForList": [],
-      "invalidForList": [],
-      "condition": "",
       "defaultValue": "4",
       "defaultValueRaw": 4,
-      "required": false,
-      "variableMode": "UseVarOrInput",
-      "isControlField": false
+      "variableMode": "UseVarOrInput"
     },
     {
       "key": "darkColor",
       "name": "暗色",
       "type": "Text",
       "description": "#AARRGGBB格式的颜色值",
-      "isAdvanced": false,
-      "validForList": [],
-      "invalidForList": [],
-      "condition": "",
       "defaultValue": "#FF000000",
-      "defaultValueRaw": "#FF000000",
-      "required": false,
-      "variableMode": "UseVarOrInput",
-      "isControlField": false
+      "variableMode": "UseVarOrInput"
     },
     {
       "key": "lightColor",
       "name": "亮色",
       "type": "Text",
       "description": "#AARRGGBB格式的颜色值",
-      "isAdvanced": false,
-      "validForList": [],
-      "invalidForList": [],
-      "condition": "",
       "defaultValue": "#FFFFFFFF",
-      "defaultValueRaw": "#FFFFFFFF",
-      "required": false,
-      "variableMode": "UseVarOrInput",
-      "isControlField": false
+      "variableMode": "UseVarOrInput"
     },
     {
       "key": "icon",
       "name": "图标",
       "type": "Image",
       "description": "图片变量或图标文件路径",
-      "isAdvanced": false,
-      "validForList": [],
-      "invalidForList": [],
-      "condition": "",
       "defaultValue": "",
-      "required": false,
-      "variableMode": "UseVarOrInput",
-      "isControlField": false
+      "variableMode": "UseVarOrInput"
     },
     {
       "key": "iconPercent",
       "name": "图标占比",
       "type": "Integer",
       "description": "百分比数字（只填数字，不写百分号）",
-      "isAdvanced": false,
-      "validForList": [],
-      "invalidForList": [],
-      "condition": "",
       "defaultValue": "15",
       "defaultValueRaw": 15,
-      "required": false,
-      "variableMode": "UseVarOrInput",
-      "isControlField": false
+      "variableMode": "UseVarOrInput"
     },
     {
       "key": "iconBorderWidth",
       "name": "图标边框宽度",
       "type": "Integer",
       "description": "最小为1",
-      "isAdvanced": false,
-      "validForList": [],
-      "invalidForList": [],
-      "condition": "",
       "defaultValue": "6",
       "defaultValueRaw": 6,
-      "required": false,
-      "variableMode": "UseVarOrInput",
-      "isControlField": false
+      "variableMode": "UseVarOrInput"
     },
     {
       "key": "drawQuietZones",
       "name": "绘制外框",
       "type": "Boolean",
-      "description": "",
-      "isAdvanced": false,
-      "validForList": [],
-      "invalidForList": [],
-      "condition": "",
       "defaultValue": "true",
       "defaultValueRaw": true,
-      "required": false,
-      "variableMode": "UseVarOrInput",
-      "isControlField": false
+      "variableMode": "UseVarOrInput"
     },
     {
       "key": "saveToPdfPath",
       "name": "输出pdf文件",
       "type": "Text",
-      "description": "",
-      "isAdvanced": false,
-      "validForList": [],
-      "invalidForList": [],
-      "condition": "",
       "defaultValue": "",
-      "defaultValueRaw": "",
-      "required": false,
-      "variableMode": "UseVarOrInput",
-      "isControlField": false
+      "variableMode": "UseVarOrInput"
     },
     {
       "key": "stopIfFail",
       "name": "失败后停止",
       "type": "Boolean",
       "description": "失败后是否停止动作",
-      "isAdvanced": false,
-      "validForList": [],
-      "invalidForList": [],
-      "condition": "",
       "defaultValue": "true",
       "defaultValueRaw": true,
-      "required": false,
-      "variableMode": "Input",
-      "isControlField": false
+      "variableMode": "Input"
     }
   ],
   "outputs": [
@@ -166,43 +99,26 @@
       "key": "isSuccess",
       "name": "是否成功",
       "type": "Boolean",
-      "description": "操作是否成功",
-      "isAdvanced": false,
-      "validForList": [],
-      "invalidForList": [],
-      "condition": ""
+      "description": "操作是否成功"
     },
     {
       "key": "img",
       "name": "二维码图片",
       "type": "Image",
-      "description": "生成的二维码图片对象",
-      "isAdvanced": false,
-      "validForList": [],
-      "invalidForList": [],
-      "condition": ""
+      "description": "生成的二维码图片对象"
     },
     {
       "key": "svg",
       "name": "SVG格式结果",
       "type": "Text",
-      "description": "Svg格式结果代码",
-      "isAdvanced": false,
-      "validForList": [],
-      "invalidForList": [],
-      "condition": ""
+      "description": "Svg格式结果代码"
     },
     {
       "key": "ascii",
       "name": "Ascii格式结果",
       "type": "Text",
-      "description": "Ascii字符格式结果代码",
-      "isAdvanced": false,
-      "validForList": [],
-      "invalidForList": [],
-      "condition": ""
+      "description": "Ascii字符格式结果代码"
     }
   ],
-  "selections": {},
   "sourceFileName": "catalog.json"
 }

@@ -8,8 +8,6 @@
   "category": "Ui",
   "categoryName": "界面组件",
   "stepType": "Action",
-  "isRisky": false,
-  "isProOnly": false,
   "helpLink": "https://docs.getquicker.net/v2/xaction/modules/playrecord",
   "inputs": [
     {
@@ -17,33 +15,21 @@
       "name": "录制数据",
       "type": "Text",
       "description": "录制的键鼠操作数据",
-      "isAdvanced": false,
-      "validForList": [],
-      "invalidForList": [],
-      "condition": "",
       "defaultValue": "",
-      "defaultValueRaw": "",
       "required": true,
-      "variableMode": "UseVarOrInput",
-      "isControlField": false
+      "variableMode": "UseVarOrInput"
     },
     {
       "key": "speed",
       "name": "重放速度",
       "type": "Number",
       "description": "重放操作的速度",
-      "isAdvanced": false,
-      "validForList": [],
-      "invalidForList": [],
-      "condition": "",
       "defaultValue": "2",
       "defaultValueRaw": 2,
       "required": true,
-      "variableMode": "UseVarOrInput",
-      "isControlField": false
+      "variableMode": "UseVarOrInput"
     }
   ],
   "outputs": [],
-  "selections": {},
   "sourceFileName": "catalog.json"
 }

@@ -8,8 +8,6 @@
   "category": "Network",
   "categoryName": "网络服务",
   "stepType": "Action",
-  "isRisky": false,
-  "isProOnly": false,
   "helpLink": "https://docs.getquicker.net/v2/xaction/modules/basic-ocr",
   "inputs": [
     {
@@ -17,12 +15,7 @@
       "name": "接口/引擎",
       "type": "Enum",
       "description": "OCR接口或引擎。离线引擎安装方式请参考模块文档。",
-      "isAdvanced": false,
-      "validForList": [],
-      "invalidForList": [],
-      "condition": "",
       "defaultValue": "QuickerServerOcr",
-      "defaultValueRaw": "QuickerServerOcr",
       "required": true,
       "variableMode": "Input",
       "isControlField": true
@@ -32,139 +25,104 @@
       "name": "ApiKey",
       "type": "Text",
       "description": "请填写OCR帐号的ApiKey",
-      "isAdvanced": false,
       "validForList": [
         "baidu-basic",
         "baidu-custom"
       ],
-      "invalidForList": [],
       "condition": "仅：baidu-basic, baidu-custom",
       "defaultValue": "",
-      "defaultValueRaw": "",
       "required": true,
-      "variableMode": "UseVarOrInput",
-      "isControlField": false
+      "variableMode": "UseVarOrInput"
     },
     {
       "key": "secretKey",
       "name": "SecretKey",
       "type": "Text",
       "description": "请填写OCR帐号的SecretKey",
-      "isAdvanced": false,
       "validForList": [
         "baidu-basic",
         "baidu-custom"
       ],
-      "invalidForList": [],
       "condition": "仅：baidu-basic, baidu-custom",
       "defaultValue": "",
-      "defaultValueRaw": "",
       "required": true,
-      "variableMode": "UseVarOrInput",
-      "isControlField": false
+      "variableMode": "UseVarOrInput"
     },
     {
       "key": "imgVar",
       "name": "图片变量",
       "type": "Image",
       "description": "从指定变量中加载图片",
-      "isAdvanced": false,
-      "validForList": [],
-      "invalidForList": [],
-      "condition": "",
       "defaultValue": "",
-      "defaultValueRaw": "",
       "required": true,
-      "variableMode": "UseVar",
-      "isControlField": false
+      "variableMode": "UseVar"
     },
     {
       "key": "punctuationType",
       "name": "转换标点符号",
       "type": "Enum",
       "description": "合并文本时，是否转换标点符号",
-      "isAdvanced": false,
       "validForList": [
         "QuickerServerOcr",
         "baidu-basic",
         "baidu-quicker"
       ],
-      "invalidForList": [],
       "condition": "仅：QuickerServerOcr, baidu-basic, baidu-quicker",
       "defaultValue": "no",
-      "defaultValueRaw": "no",
       "required": true,
-      "variableMode": "UseVarOrInput",
-      "isControlField": false
+      "variableMode": "UseVarOrInput"
     },
     {
       "key": "mergeChapter",
       "name": "合并段落",
       "type": "Enum",
       "description": "是否智能合并段落。",
-      "isAdvanced": false,
       "validForList": [
         "QuickerServerOcr",
         "baidu-basic",
         "baidu-quicker"
       ],
-      "invalidForList": [],
       "condition": "仅：QuickerServerOcr, baidu-basic, baidu-quicker",
       "defaultValue": "no",
-      "defaultValueRaw": "no",
       "required": true,
-      "variableMode": "UseVarOrInput",
-      "isControlField": false
+      "variableMode": "UseVarOrInput"
     },
     {
       "key": "interface",
       "name": "接口名称或网址",
       "type": "Text",
       "description": "接口的完整网址，或 https://aip.baidubce.com/rest/2.0/ocr/v1/ 后面的部分",
-      "isAdvanced": false,
       "validForList": [
         "baidu-custom"
       ],
-      "invalidForList": [],
       "condition": "仅：baidu-custom",
       "defaultValue": "",
-      "required": false,
-      "variableMode": "UseVarOrInput",
-      "isControlField": false
+      "variableMode": "UseVarOrInput"
     },
     {
       "key": "options",
       "name": "附加参数",
       "type": "Dict",
       "description": "请参考百度官方/Quicker服务接口说明。每行一个参数，使用option:value的格式。",
-      "isAdvanced": false,
       "validForList": [
         "baidu-custom"
       ],
-      "invalidForList": [],
       "condition": "仅：baidu-custom",
       "defaultValue": "",
-      "required": false,
-      "variableMode": "UseVarOrInput",
-      "isControlField": false
+      "variableMode": "UseVarOrInput"
     },
     {
       "key": "lang",
       "name": "语言",
       "type": "Text",
       "description": "待识别内容的语言。表格识别仅支持中英混合和英文。",
-      "isAdvanced": false,
       "validForList": [
         "QuickerServerOcr",
         "table_quicker"
       ],
-      "invalidForList": [],
       "condition": "仅：QuickerServerOcr, table_quicker",
       "defaultValue": "",
-      "defaultValueRaw": "",
-      "required": false,
-      "variableMode": "UseVarOrInput",
-      "isControlField": false
+      "variableMode": "UseVarOrInput"
     },
     {
       "key": "offlineMode",
@@ -175,45 +133,30 @@
       "validForList": [
         "QuickerServerOcr"
       ],
-      "invalidForList": [],
       "condition": "仅：QuickerServerOcr",
       "defaultValue": "Auto",
-      "defaultValueRaw": "Auto",
-      "required": false,
-      "variableMode": "Input",
-      "isControlField": false
+      "variableMode": "Input"
     },
     {
       "key": "modelTier",
       "name": "模型",
       "type": "Enum",
       "description": "标准=small（更准更大，默认）；快速=tiny（更快更小）。切换后如未安装会下载对应模型包。表格识别固定用 small，不出现此参数。",
-      "isAdvanced": false,
       "validForList": [
         "LocalOcr"
       ],
-      "invalidForList": [],
       "condition": "仅：LocalOcr",
       "defaultValue": "small",
-      "defaultValueRaw": "small",
-      "required": false,
-      "variableMode": "Input",
-      "isControlField": false
+      "variableMode": "Input"
     },
     {
       "key": "stopIfFail",
       "name": "失败后停止",
       "type": "Boolean",
       "description": "失败后是否停止动作",
-      "isAdvanced": false,
-      "validForList": [],
-      "invalidForList": [],
-      "condition": "",
       "defaultValue": "true",
       "defaultValueRaw": true,
-      "required": false,
-      "variableMode": "Input",
-      "isControlField": false
+      "variableMode": "Input"
     }
   ],
   "outputs": [
@@ -221,18 +164,13 @@
       "key": "isSuccess",
       "name": "是否成功",
       "type": "Boolean",
-      "description": "操作是否成功",
-      "isAdvanced": false,
-      "validForList": [],
-      "invalidForList": [],
-      "condition": ""
+      "description": "操作是否成功"
     },
     {
       "key": "textList",
       "name": "行列表",
       "type": "List",
       "description": "OCR识别结果，列表格式，每行一项。",
-      "isAdvanced": false,
       "validForList": [
         "QuickerServerOcr",
         "LocalOcr",
@@ -240,7 +178,6 @@
         "baidu-basic",
         "baidu-quicker"
       ],
-      "invalidForList": [],
       "condition": "仅：QuickerServerOcr, LocalOcr, WindowsOcr, baidu-basic, baidu-quicker"
     },
     {
@@ -248,7 +185,6 @@
       "name": "合并后结果",
       "type": "Text",
       "description": "合并在一起的的文本内容",
-      "isAdvanced": false,
       "validForList": [
         "QuickerServerOcr",
         "LocalOcr",
@@ -257,31 +193,24 @@
         "baidu-quicker",
         "table_quicker"
       ],
-      "invalidForList": [],
       "condition": "仅：QuickerServerOcr, LocalOcr, WindowsOcr, baidu-basic, baidu-quicker, table_quicker"
     },
     {
       "key": "rawData",
       "name": "原始结果",
       "type": "Text",
-      "description": "原始结果。表格识别为 ApiResult JSON（Data.Html / Data.Tsv）；其它引擎为接口原始内容。",
-      "isAdvanced": false,
-      "validForList": [],
-      "invalidForList": [],
-      "condition": ""
+      "description": "原始结果。表格识别为 ApiResult JSON（Data.Html / Data.Tsv）；其它引擎为接口原始内容。"
     },
     {
       "key": "rawObject",
       "name": "原始结果JObject对象",
       "type": "Object",
       "description": "返回结果的JObject对象",
-      "isAdvanced": false,
       "validForList": [
         "baidu-basic",
         "baidu-quicker",
         "baidu-custom"
       ],
-      "invalidForList": [],
       "condition": "仅：baidu-basic, baidu-quicker, baidu-custom"
     }
   ],
@@ -291,38 +220,31 @@
       "items": [
         {
           "value": "QuickerServerOcr",
-          "name": "Quicker OCR引擎",
-          "description": ""
+          "name": "Quicker OCR引擎"
         },
         {
           "value": "WindowsOcr",
-          "name": "Windows10/11 内置OCR引擎",
-          "description": ""
+          "name": "Windows10/11 内置OCR引擎"
         },
         {
           "value": "baidu-basic",
-          "name": "百度通用文字识别（自定义帐号）",
-          "description": ""
+          "name": "百度通用文字识别（自定义帐号）"
         },
         {
           "value": "baidu-quicker",
-          "name": "百度通用文字识别（Quicker帐号）",
-          "description": ""
+          "name": "百度通用文字识别（Quicker帐号）"
         },
         {
           "value": "baidu-custom",
-          "name": "百度自定义接口识别（自定义帐号）",
-          "description": ""
+          "name": "百度自定义接口识别（自定义帐号）"
         },
         {
           "value": "table_quicker",
-          "name": "表格识别（本地）",
-          "description": ""
+          "name": "表格识别（本地）"
         },
         {
           "value": "LocalOcr",
-          "name": "本地 OCR",
-          "description": ""
+          "name": "本地 OCR"
         }
       ]
     },
@@ -331,18 +253,15 @@
       "items": [
         {
           "value": "no",
-          "name": "不转换",
-          "description": ""
+          "name": "不转换"
         },
         {
           "value": "sbc",
-          "name": "全角符号",
-          "description": ""
+          "name": "全角符号"
         },
         {
           "value": "dbc",
-          "name": "半角符号",
-          "description": ""
+          "name": "半角符号"
         }
       ]
     },
@@ -351,13 +270,11 @@
       "items": [
         {
           "value": "no",
-          "name": "不合并",
-          "description": ""
+          "name": "不合并"
         },
         {
           "value": "merge",
-          "name": "合并",
-          "description": ""
+          "name": "合并"
         }
       ]
     },
@@ -366,48 +283,39 @@
       "items": [
         {
           "value": "general_basic",
-          "name": "通用文字识别（标准版）",
-          "description": ""
+          "name": "通用文字识别（标准版）"
         },
         {
           "value": "general",
-          "name": "通用文字识别（标准含位置版）",
-          "description": ""
+          "name": "通用文字识别（标准含位置版）"
         },
         {
           "value": "accurate_basic",
-          "name": "通用文字识别（高精度版）",
-          "description": ""
+          "name": "通用文字识别（高精度版）"
         },
         {
           "value": "accurate",
-          "name": "通用文字识别（高精度含位置版）",
-          "description": ""
+          "name": "通用文字识别（高精度含位置版）"
         },
         {
           "value": "handwriting",
-          "name": "手写文字识别",
-          "description": ""
+          "name": "手写文字识别"
         },
         {
           "value": "numbers",
-          "name": "数字识别",
-          "description": ""
+          "name": "数字识别"
         },
         {
           "value": "doc_analysis_office",
-          "name": "办公文档识别",
-          "description": ""
+          "name": "办公文档识别"
         },
         {
           "value": "form",
-          "name": "表格文字识别(同步接口)",
-          "description": ""
+          "name": "表格文字识别(同步接口)"
         },
         {
           "value": "qrcode",
-          "name": "二维码识别",
-          "description": ""
+          "name": "二维码识别"
         }
       ]
     },
@@ -416,38 +324,31 @@
       "items": [
         {
           "value": "CHN_ENG",
-          "name": "中英混合",
-          "description": ""
+          "name": "中英混合"
         },
         {
           "value": "ENG",
-          "name": "英语",
-          "description": ""
+          "name": "英语"
         },
         {
           "value": "KOR",
-          "name": "韩语",
-          "description": ""
+          "name": "韩语"
         },
         {
           "value": "JAP",
-          "name": "日语",
-          "description": ""
+          "name": "日语"
         },
         {
           "value": "CHT",
-          "name": "繁体中文",
-          "description": ""
+          "name": "繁体中文"
         },
         {
           "value": "LAT",
-          "name": "拉丁语",
-          "description": ""
+          "name": "拉丁语"
         },
         {
           "value": "ARA",
-          "name": "阿拉伯语",
-          "description": ""
+          "name": "阿拉伯语"
         }
       ]
     },
@@ -456,18 +357,15 @@
       "items": [
         {
           "value": "Auto",
-          "name": "自动",
-          "description": ""
+          "name": "自动"
         },
         {
           "value": "OnlineOnly",
-          "name": "仅使用在线服务",
-          "description": ""
+          "name": "仅使用在线服务"
         },
         {
           "value": "OfflineOnly",
-          "name": "仅使用离线引擎",
-          "description": ""
+          "name": "仅使用离线引擎"
         }
       ]
     },
@@ -476,13 +374,11 @@
       "items": [
         {
           "value": "tiny",
-          "name": "快速",
-          "description": ""
+          "name": "快速"
         },
         {
           "value": "small",
-          "name": "标准",
-          "description": ""
+          "name": "标准"
         }
       ]
     }

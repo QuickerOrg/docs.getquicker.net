@@ -8,21 +8,13 @@
   "category": "Network",
   "categoryName": "网络服务",
   "stepType": "Action",
-  "isRisky": false,
-  "isProOnly": false,
   "helpLink": "https://docs.getquicker.net/v2/xaction/modules/clouddata",
   "inputs": [
     {
       "key": "type",
       "name": "操作类型",
       "type": "Enum",
-      "description": "",
-      "isAdvanced": false,
-      "validForList": [],
-      "invalidForList": [],
-      "condition": "",
       "defaultValue": "readGlobalState",
-      "defaultValueRaw": "readGlobalState",
       "required": true,
       "variableMode": "Input",
       "isControlField": true
@@ -32,65 +24,43 @@
       "name": "状态名称",
       "type": "Text",
       "description": "存储或读取的数据条目名称(键)。",
-      "isAdvanced": false,
       "validForList": [
         "readGlobalState",
         "saveGlobalState"
       ],
-      "invalidForList": [],
       "condition": "仅：readGlobalState, saveGlobalState",
       "defaultValue": "",
-      "defaultValueRaw": "",
-      "required": false,
-      "variableMode": "Input",
-      "isControlField": false
+      "variableMode": "Input"
     },
     {
       "key": "value",
       "name": "内容",
       "type": "Text",
       "description": "要保存的数据值。使用\"*NULL*\"删除此状态的存储。",
-      "isAdvanced": false,
       "validForList": [
         "saveGlobalState"
       ],
-      "invalidForList": [],
       "condition": "仅：saveGlobalState",
       "defaultValue": "",
-      "defaultValueRaw": "",
-      "required": false,
-      "variableMode": "UseVarOrInput",
-      "isControlField": false
+      "variableMode": "UseVarOrInput"
     },
     {
       "key": "expireSeconds",
       "name": "超时时间",
       "type": "Number",
       "description": "请求超时时间（秒数）",
-      "isAdvanced": false,
-      "validForList": [],
-      "invalidForList": [],
-      "condition": "",
       "defaultValue": "2.5",
       "defaultValueRaw": 2.5,
-      "required": false,
-      "variableMode": "UseVarOrInput",
-      "isControlField": false
+      "variableMode": "UseVarOrInput"
     },
     {
       "key": "stopIfFail",
       "name": "失败后停止",
       "type": "Boolean",
       "description": "失败后是否停止动作",
-      "isAdvanced": false,
-      "validForList": [],
-      "invalidForList": [],
-      "condition": "",
       "defaultValue": "true",
       "defaultValueRaw": true,
-      "required": false,
-      "variableMode": "Input",
-      "isControlField": false
+      "variableMode": "Input"
     }
   ],
   "outputs": [
@@ -98,22 +68,16 @@
       "key": "isSuccess",
       "name": "是否成功",
       "type": "Boolean",
-      "description": "操作是否成功",
-      "isAdvanced": false,
-      "validForList": [],
-      "invalidForList": [],
-      "condition": ""
+      "description": "操作是否成功"
     },
     {
       "key": "value",
       "name": "内容",
       "type": "Any",
       "description": "读取到的状态内容",
-      "isAdvanced": false,
       "validForList": [
         "readGlobalState"
       ],
-      "invalidForList": [],
       "condition": "仅：readGlobalState"
     },
     {
@@ -121,11 +85,9 @@
       "name": "最后更新时间",
       "type": "DateTime",
       "description": "云状态对象在服务器上的最后更新时间，已转换为本机时区。",
-      "isAdvanced": false,
       "validForList": [
         "readGlobalState"
       ],
-      "invalidForList": [],
       "condition": "仅：readGlobalState"
     },
     {
@@ -133,33 +95,25 @@
       "name": "最后更新时间(UTC)",
       "type": "DateTime",
       "description": "云状态对象在服务器上的最后更新时间（UTC）。",
-      "isAdvanced": false,
       "validForList": [
         "readGlobalState"
       ],
-      "invalidForList": [],
       "condition": "仅：readGlobalState"
     },
     {
       "key": "err",
       "name": "错误信息",
       "type": "Text",
-      "description": "出错时输出的错误信息。",
-      "isAdvanced": false,
-      "validForList": [],
-      "invalidForList": [],
-      "condition": ""
+      "description": "出错时输出的错误信息。"
     },
     {
       "key": "errCode",
       "name": "错误代码",
       "type": "Text",
       "description": "从云服务商返回的错误代码。NoSuchKey=不存在此状态。",
-      "isAdvanced": false,
       "validForList": [
         "readGlobalState"
       ],
-      "invalidForList": [],
       "condition": "仅：readGlobalState"
     }
   ],
@@ -169,13 +123,11 @@
       "items": [
         {
           "value": "readGlobalState",
-          "name": "从网络读取数据",
-          "description": ""
+          "name": "从网络读取数据"
         },
         {
           "value": "saveGlobalState",
-          "name": "写入数据到网络",
-          "description": ""
+          "name": "写入数据到网络"
         }
       ]
     }

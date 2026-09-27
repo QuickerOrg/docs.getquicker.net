@@ -8,21 +8,13 @@
   "category": "System",
   "categoryName": "Windows系统",
   "stepType": "Action",
-  "isRisky": false,
-  "isProOnly": false,
   "helpLink": "https://docs.getquicker.net/v2/xaction/modules/getexplorerpath",
   "inputs": [
     {
       "key": "operation",
       "name": "操作类型",
       "type": "Enum",
-      "description": "",
-      "isAdvanced": false,
-      "validForList": [],
-      "invalidForList": [],
-      "condition": "",
       "defaultValue": "getPath",
-      "defaultValueRaw": "getPath",
       "required": true,
       "variableMode": "Input",
       "isControlField": true
@@ -31,33 +23,21 @@
       "key": "path",
       "name": "路径",
       "type": "Text",
-      "description": "",
-      "isAdvanced": false,
       "validForList": [
         "setPath"
       ],
-      "invalidForList": [],
       "condition": "仅：setPath",
       "defaultValue": "",
-      "defaultValueRaw": "",
-      "required": false,
-      "variableMode": "Input",
-      "isControlField": false
+      "variableMode": "Input"
     },
     {
       "key": "stopIfFail",
       "name": "失败后停止",
       "type": "Boolean",
       "description": "失败后是否停止动作",
-      "isAdvanced": false,
-      "validForList": [],
-      "invalidForList": [],
-      "condition": "",
       "defaultValue": "true",
       "defaultValueRaw": true,
-      "required": false,
-      "variableMode": "Input",
-      "isControlField": false
+      "variableMode": "Input"
     }
   ],
   "outputs": [
@@ -65,22 +45,16 @@
       "key": "isSuccess",
       "name": "是否成功",
       "type": "Boolean",
-      "description": "操作是否成功",
-      "isAdvanced": false,
-      "validForList": [],
-      "invalidForList": [],
-      "condition": ""
+      "description": "操作是否成功"
     },
     {
       "key": "output",
       "name": "当前窗口路径",
       "type": "Text",
       "description": "当前资源管理器窗口的路径",
-      "isAdvanced": false,
       "validForList": [
         "getPath"
       ],
-      "invalidForList": [],
       "condition": "仅：getPath"
     },
     {
@@ -88,11 +62,9 @@
       "name": "所有打开的路径",
       "type": "List",
       "description": "所有资源管理器窗口中打开的路径列表",
-      "isAdvanced": false,
       "validForList": [
         "getPath"
       ],
-      "invalidForList": [],
       "condition": "仅：getPath"
     },
     {
@@ -100,11 +72,9 @@
       "name": "最近访问的路径",
       "type": "Text",
       "description": "最近访问的资源管理器窗口的路径",
-      "isAdvanced": false,
       "validForList": [
         "getPath"
       ],
-      "invalidForList": [],
       "condition": "仅：getPath"
     }
   ],
@@ -114,13 +84,11 @@
       "items": [
         {
           "value": "getPath",
-          "name": "获取路径",
-          "description": ""
+          "name": "获取路径"
         },
         {
           "value": "setPath",
-          "name": "设置路径",
-          "description": ""
+          "name": "设置路径"
         }
       ]
     }

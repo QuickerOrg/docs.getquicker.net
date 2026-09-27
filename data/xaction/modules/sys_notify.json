@@ -8,8 +8,6 @@
   "category": "Basic",
   "categoryName": "基础",
   "stepType": "Action",
-  "isRisky": false,
-  "isProOnly": false,
   "helpLink": "https://docs.getquicker.net/v2/xaction/modules/notify",
   "inputs": [
     {
@@ -17,12 +15,7 @@
       "name": "类型",
       "type": "Enum",
       "description": "消息的类型",
-      "isAdvanced": false,
-      "validForList": [],
-      "invalidForList": [],
-      "condition": "",
       "defaultValue": "Info",
-      "defaultValueRaw": "Info",
       "required": true,
       "variableMode": "Input",
       "isControlField": true
@@ -32,48 +25,31 @@
       "name": "消息内容",
       "type": "Text",
       "description": "显示的消息内容",
-      "isAdvanced": false,
-      "validForList": [],
-      "invalidForList": [],
-      "condition": "",
       "defaultValue": "",
-      "required": false,
-      "variableMode": "UseVarOrInput",
-      "isControlField": false
+      "variableMode": "UseVarOrInput"
     },
     {
       "key": "title",
       "name": "标题",
       "type": "Text",
       "description": "留空使用动作名称，填写 - 不显示标题，其他内容原样显示",
-      "isAdvanced": false,
-      "validForList": [],
-      "invalidForList": [],
-      "condition": "",
       "defaultValue": "",
-      "required": false,
-      "variableMode": "UseVarOrInput",
-      "isControlField": false
+      "variableMode": "UseVarOrInput"
     },
     {
       "key": "placement",
       "name": "显示位置",
       "type": "Enum",
-      "description": "",
-      "isAdvanced": false,
       "validForList": [
         "Success",
         "Info",
         "Warning",
         "Error"
       ],
-      "invalidForList": [],
       "condition": "仅：Success, Info, Warning, Error",
       "defaultValue": "BottomCenter",
-      "defaultValueRaw": "BottomCenter",
       "required": true,
-      "variableMode": "UseVarOrInput",
-      "isControlField": false
+      "variableMode": "UseVarOrInput"
     },
     {
       "key": "maxLines",
@@ -81,14 +57,10 @@
       "type": "Integer",
       "description": "显示内容的最大行数，0表示不限",
       "isAdvanced": true,
-      "validForList": [],
-      "invalidForList": [],
-      "condition": "",
       "defaultValue": "0",
       "defaultValueRaw": 0,
       "required": true,
-      "variableMode": "UseVarOrInput",
-      "isControlField": false
+      "variableMode": "UseVarOrInput"
     },
     {
       "key": "durationSeconds",
@@ -102,13 +74,10 @@
         "Warning",
         "Error"
       ],
-      "invalidForList": [],
       "condition": "仅：Success, Info, Warning, Error",
       "defaultValue": "0",
       "defaultValueRaw": 0,
-      "required": false,
-      "variableMode": "UseVarOrInput",
-      "isControlField": false
+      "variableMode": "UseVarOrInput"
     },
     {
       "key": "showTime",
@@ -122,13 +91,10 @@
         "Warning",
         "Error"
       ],
-      "invalidForList": [],
       "condition": "仅：Success, Info, Warning, Error",
       "defaultValue": "false",
       "defaultValueRaw": false,
-      "required": false,
-      "variableMode": "UseVarOrInput",
-      "isControlField": false
+      "variableMode": "UseVarOrInput"
     },
     {
       "key": "duplicate",
@@ -142,12 +108,9 @@
         "Warning",
         "Error"
       ],
-      "invalidForList": [],
       "condition": "仅：Success, Info, Warning, Error",
       "defaultValue": "",
-      "required": false,
-      "variableMode": "UseVarOrInput",
-      "isControlField": false
+      "variableMode": "UseVarOrInput"
     },
     {
       "key": "clickAction",
@@ -155,13 +118,8 @@
       "type": "Text",
       "description": "普通文本表示整卡点击命令；以 @button 或 @buttons 独立首行开头时定义一到两个按钮。留空时点击复制正文。",
       "isAdvanced": true,
-      "validForList": [],
-      "invalidForList": [],
-      "condition": "",
       "defaultValue": "",
-      "required": false,
-      "variableMode": "UseVarOrInput",
-      "isControlField": false
+      "variableMode": "UseVarOrInput"
     }
   ],
   "outputs": [],
@@ -171,28 +129,23 @@
       "items": [
         {
           "value": "Success",
-          "name": "成功",
-          "description": ""
+          "name": "成功"
         },
         {
           "value": "Info",
-          "name": "信息",
-          "description": ""
+          "name": "信息"
         },
         {
           "value": "Warning",
-          "name": "告警",
-          "description": ""
+          "name": "告警"
         },
         {
           "value": "Error",
-          "name": "错误",
-          "description": ""
+          "name": "错误"
         },
         {
           "value": "WindowsToast",
-          "name": "Windows 通知 (win10+)",
-          "description": ""
+          "name": "Windows 通知 (win10+)"
         }
       ]
     },
@@ -201,38 +154,31 @@
       "items": [
         {
           "value": "BottomCenter",
-          "name": "默认位置（使用全局设置）",
-          "description": ""
+          "name": "默认位置（使用全局设置）"
         },
         {
           "value": "TopLeft",
-          "name": "左上角",
-          "description": ""
+          "name": "左上角"
         },
         {
           "value": "TopCenter",
-          "name": "顶部居中",
-          "description": ""
+          "name": "顶部居中"
         },
         {
           "value": "TopRight",
-          "name": "右上角",
-          "description": ""
+          "name": "右上角"
         },
         {
           "value": "BottomLeft",
-          "name": "左下角",
-          "description": ""
+          "name": "左下角"
         },
         {
           "value": "BottomRight",
-          "name": "右下角",
-          "description": ""
+          "name": "右下角"
         },
         {
           "value": "FixedBottomCenter",
-          "name": "底部居中",
-          "description": ""
+          "name": "底部居中"
         }
       ]
     }

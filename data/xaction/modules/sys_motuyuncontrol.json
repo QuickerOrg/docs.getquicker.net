@@ -8,21 +8,13 @@
   "category": "SoftInteraction",
   "categoryName": "第三方软件交互",
   "stepType": "Action",
-  "isRisky": false,
-  "isProOnly": false,
   "helpLink": "https://docs.getquicker.net/v2/xaction/modules/motuyuncontrol",
   "inputs": [
     {
       "key": "operation",
       "name": "操作类型",
       "type": "Enum",
-      "description": "",
-      "isAdvanced": false,
-      "validForList": [],
-      "invalidForList": [],
-      "condition": "",
       "defaultValue": "command.activate",
-      "defaultValueRaw": "command.activate",
       "required": true,
       "variableMode": "Input",
       "isControlField": true
@@ -31,116 +23,79 @@
       "key": "keyword",
       "name": "搜索词",
       "type": "Text",
-      "description": "",
-      "isAdvanced": false,
       "validForList": [
         "command.search"
       ],
-      "invalidForList": [],
       "condition": "仅：command.search",
       "defaultValue": "",
-      "defaultValueRaw": "",
-      "required": false,
-      "variableMode": "UseVarOrInput",
-      "isControlField": false
+      "variableMode": "UseVarOrInput"
     },
     {
       "key": "limit",
       "name": "最大数量",
       "type": "Number",
-      "description": "",
-      "isAdvanced": false,
       "validForList": [
         "command.search"
       ],
-      "invalidForList": [],
       "condition": "仅：command.search",
       "defaultValue": "100",
       "defaultValueRaw": 100,
-      "required": false,
-      "variableMode": "UseVarOrInput",
-      "isControlField": false
+      "variableMode": "UseVarOrInput"
     },
     {
       "key": "needIcon",
       "name": "返回图标",
       "type": "Boolean",
-      "description": "",
-      "isAdvanced": false,
       "validForList": [
         "command.search"
       ],
-      "invalidForList": [],
       "condition": "仅：command.search",
       "defaultValue": "true",
       "defaultValueRaw": true,
-      "required": false,
-      "variableMode": "Input",
-      "isControlField": false
+      "variableMode": "Input"
     },
     {
       "key": "commandId",
       "name": "命令 ID",
       "type": "Text",
-      "description": "",
-      "isAdvanced": false,
       "validForList": [
         "command.activate"
       ],
-      "invalidForList": [],
       "condition": "仅：command.activate",
       "defaultValue": "",
-      "defaultValueRaw": "",
       "required": true,
-      "variableMode": "UseVarOrInput",
-      "isControlField": false
+      "variableMode": "UseVarOrInput"
     },
     {
       "key": "projectId",
       "name": "插件 ID",
       "type": "Text",
-      "description": "",
-      "isAdvanced": false,
       "validForList": [
         "command.activate"
       ],
-      "invalidForList": [],
       "condition": "仅：command.activate",
       "defaultValue": "0",
-      "defaultValueRaw": "0",
       "required": true,
-      "variableMode": "UseVarOrInput",
-      "isControlField": false
+      "variableMode": "UseVarOrInput"
     },
     {
       "key": "waitMs",
       "name": "最长等待时间(ms)",
       "type": "Number",
-      "description": "",
       "isAdvanced": true,
-      "validForList": [],
-      "invalidForList": [],
-      "condition": "",
       "defaultValue": "30000",
       "defaultValueRaw": 30000,
       "required": true,
-      "variableMode": "Input",
-      "isControlField": false
+      "variableMode": "Input"
     },
     {
       "key": "stopIfFail",
       "name": "失败后停止",
       "type": "Boolean",
       "description": "失败后是否停止动作",
-      "isAdvanced": false,
-      "validForList": [],
-      "invalidForList": [],
-      "condition": "",
       "defaultValue": "true",
       "defaultValueRaw": true,
-      "required": false,
-      "variableMode": "Input",
-      "isControlField": false
+      "variableMode": "Input"
     }
   ],
   "outputs": [
@@ -148,21 +103,13 @@
       "key": "isSuccess",
       "name": "是否成功",
       "type": "Boolean",
-      "description": "操作是否成功",
-      "isAdvanced": false,
-      "validForList": [],
-      "invalidForList": [],
-      "condition": ""
+      "description": "操作是否成功"
     },
     {
       "key": "output",
       "name": "返回结果",
       "type": "Text",
-      "description": "模兔云返回的 JSON。",
-      "isAdvanced": false,
-      "validForList": [],
-      "invalidForList": [],
-      "condition": ""
+      "description": "模兔云返回的 JSON。"
     }
   ],
   "selections": {
@@ -171,18 +118,15 @@
       "items": [
         {
           "value": "command.search",
-          "name": "[命令] 搜索命令",
-          "description": ""
+          "name": "[命令] 搜索命令"
         },
         {
           "value": "command.activate",
-          "name": "[命令] 执行命令",
-          "description": ""
+          "name": "[命令] 执行命令"
         },
         {
           "value": "tool.list",
-          "name": "[高级] 读取工具列表",
-          "description": ""
+          "name": "[高级] 读取工具列表"
         }
       ]
     }

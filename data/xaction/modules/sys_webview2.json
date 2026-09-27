@@ -8,21 +8,13 @@
   "category": "Ui",
   "categoryName": "界面组件",
   "stepType": "Action",
-  "isRisky": false,
-  "isProOnly": false,
   "helpLink": "https://docs.getquicker.net/v2/xaction/modules/webview2",
   "inputs": [
     {
       "key": "type",
       "name": "操作类型",
       "type": "Enum",
-      "description": "",
-      "isAdvanced": false,
-      "validForList": [],
-      "invalidForList": [],
-      "condition": "",
       "defaultValue": "OpenUrl",
-      "defaultValueRaw": "OpenUrl",
       "required": true,
       "variableMode": "Input",
       "isControlField": true
@@ -32,82 +24,65 @@
       "name": "网址或HTML内容",
       "type": "Text",
       "description": "网页地址/文件路径或html代码内容",
-      "isAdvanced": false,
       "validForList": [
         "OpenUrl",
         "OpenAndWaitLoad",
         "OpenUrlAndWaitClose"
       ],
-      "invalidForList": [],
       "condition": "仅：OpenUrl, OpenAndWaitLoad, OpenUrlAndWaitClose",
       "defaultValue": "",
-      "defaultValueRaw": "",
       "required": true,
-      "variableMode": "UseVarOrInput",
-      "isControlField": false
+      "variableMode": "UseVarOrInput"
     },
     {
       "key": "urlList",
       "name": "网址列表",
       "type": "List",
       "description": "每行一个：网址，或\"标题|网址\"，或\"[图标]标题|网址\"格式。",
-      "isAdvanced": false,
       "validForList": [
         "MultiTab_OpenUrl",
         "MultiColumn_OpenUrl"
       ],
-      "invalidForList": [],
       "condition": "仅：MultiTab_OpenUrl, MultiColumn_OpenUrl",
       "defaultValue": "",
-      "defaultValueRaw": "",
       "required": true,
-      "variableMode": "UseVarOrInput",
-      "isControlField": false
+      "variableMode": "UseVarOrInput"
     },
     {
       "key": "additionalBrowserArguments",
       "name": "附加的浏览器参数",
       "type": "Text",
       "description": "用于设置代理等用途",
-      "isAdvanced": false,
       "validForList": [
         "OpenUrl",
         "OpenAndWaitLoad",
         "OpenUrlAndWaitClose"
       ],
-      "invalidForList": [],
       "condition": "仅：OpenUrl, OpenAndWaitLoad, OpenUrlAndWaitClose",
       "defaultValue": "",
-      "defaultValueRaw": "",
       "required": true,
-      "variableMode": "UseVarOrInput",
-      "isControlField": false
+      "variableMode": "UseVarOrInput"
     },
     {
       "key": "virtualHostToFolder",
       "name": "虚拟主机映射",
       "type": "Text",
       "description": "将文件夹映射为虚拟主机名。格式：主机名|文件夹路径。多个时，每行一个。\r\n在html中可以使用https://servername/path/to/file.png的格式访问文件。",
-      "isAdvanced": false,
       "validForList": [
         "OpenUrl",
         "OpenAndWaitLoad",
         "OpenUrlAndWaitClose"
       ],
-      "invalidForList": [],
       "condition": "仅：OpenUrl, OpenAndWaitLoad, OpenUrlAndWaitClose",
       "defaultValue": "",
-      "defaultValueRaw": "",
       "required": true,
-      "variableMode": "UseVarOrInput",
-      "isControlField": false
+      "variableMode": "UseVarOrInput"
     },
     {
       "key": "userAgent",
       "name": "User Agent",
       "type": "Text",
       "description": "可选。自定义UserAgent",
-      "isAdvanced": false,
       "validForList": [
         "OpenUrl",
         "OpenAndWaitLoad",
@@ -115,20 +90,15 @@
         "MultiTab_OpenUrl",
         "MultiColumn_OpenUrl"
       ],
-      "invalidForList": [],
       "condition": "仅：OpenUrl, OpenAndWaitLoad, OpenUrlAndWaitClose, MultiTab_OpenUrl, MultiColumn_OpenUrl",
       "defaultValue": "",
-      "defaultValueRaw": "",
-      "required": false,
-      "variableMode": "UseVarOrInput",
-      "isControlField": false
+      "variableMode": "UseVarOrInput"
     },
     {
       "key": "title",
       "name": "窗口标题",
       "type": "Text",
       "description": "窗口标题文字。未设置时，自动使用网页标题。",
-      "isAdvanced": false,
       "validForList": [
         "OpenUrl",
         "OpenAndWaitLoad",
@@ -136,58 +106,44 @@
         "MultiTab_OpenUrl",
         "MultiColumn_OpenUrl"
       ],
-      "invalidForList": [],
       "condition": "仅：OpenUrl, OpenAndWaitLoad, OpenUrlAndWaitClose, MultiTab_OpenUrl, MultiColumn_OpenUrl",
       "defaultValue": "",
-      "defaultValueRaw": "",
       "required": true,
-      "variableMode": "UseVarOrInput",
-      "isControlField": false
+      "variableMode": "UseVarOrInput"
     },
     {
       "key": "icon",
       "name": "窗口图标",
       "type": "Text",
       "description": "显示在窗口左上角的图标。支持fa:内置图报名:#RRGGBB或图标网址。",
-      "isAdvanced": false,
       "validForList": [
         "OpenUrl",
         "OpenAndWaitLoad",
         "OpenUrlAndWaitClose"
       ],
-      "invalidForList": [],
       "condition": "仅：OpenUrl, OpenAndWaitLoad, OpenUrlAndWaitClose",
       "defaultValue": "",
-      "defaultValueRaw": "",
-      "required": false,
-      "variableMode": "UseVarOrInput",
-      "isControlField": false
+      "variableMode": "UseVarOrInput"
     },
     {
       "key": "defaultBgColor",
       "name": "默认背景色",
       "type": "Text",
       "description": "可选。设置窗口的默认背景色。",
-      "isAdvanced": false,
       "validForList": [
         "OpenUrl",
         "OpenAndWaitLoad",
         "OpenUrlAndWaitClose"
       ],
-      "invalidForList": [],
       "condition": "仅：OpenUrl, OpenAndWaitLoad, OpenUrlAndWaitClose",
       "defaultValue": "",
-      "defaultValueRaw": "",
-      "required": false,
-      "variableMode": "UseVarOrInput",
-      "isControlField": false
+      "variableMode": "UseVarOrInput"
     },
     {
       "key": "autoCloseKey",
       "name": "窗口标识",
       "type": "Text",
       "description": "(仅必要时使用)用于关闭之前打开的具有此标识的WebView2窗口。使用=表示当前动作ID。",
-      "isAdvanced": false,
       "validForList": [
         "OpenUrl",
         "OpenAndWaitLoad",
@@ -201,91 +157,68 @@
         "MultiTab_OpenUrl",
         "MultiColumn_OpenUrl"
       ],
-      "invalidForList": [],
       "condition": "仅：OpenUrl, OpenAndWaitLoad, OpenUrlAndWaitClose, SendMessage, ExecuteScript, CheckWindowState, Close, Reload, Stop, MultiTab_OpenUrl, MultiColumn_OpenUrl",
       "defaultValue": "=",
-      "defaultValueRaw": "=",
-      "required": false,
-      "variableMode": "UseVarOrInput",
-      "isControlField": false
+      "variableMode": "UseVarOrInput"
     },
     {
       "key": "modeForExists",
       "name": "如果窗口已存在",
       "type": "Enum",
-      "description": "",
-      "isAdvanced": false,
       "validForList": [
         "OpenUrl",
         "OpenAndWaitLoad"
       ],
-      "invalidForList": [],
       "condition": "仅：OpenUrl, OpenAndWaitLoad",
       "defaultValue": "SkipThisStep",
-      "defaultValueRaw": "SkipThisStep",
-      "required": false,
-      "variableMode": "Input",
-      "isControlField": false
+      "variableMode": "Input"
     },
     {
       "key": "script",
       "name": "JS脚本",
       "type": "Text",
       "description": "可选。",
-      "isAdvanced": false,
       "validForList": [
         "OpenUrl",
         "OpenAndWaitLoad",
         "OpenUrlAndWaitClose",
         "ExecuteScript"
       ],
-      "invalidForList": [],
       "condition": "仅：OpenUrl, OpenAndWaitLoad, OpenUrlAndWaitClose, ExecuteScript",
       "defaultValue": "",
-      "defaultValueRaw": "",
       "required": true,
-      "variableMode": "UseVarOrInput",
-      "isControlField": false
+      "variableMode": "UseVarOrInput"
     },
     {
       "key": "sendMessage",
       "name": "消息内容",
       "type": "Text",
       "description": "Json格式的消息内容。词典变量会自动转换成json。",
-      "isAdvanced": false,
       "validForList": [
         "SendMessage"
       ],
-      "invalidForList": [],
       "condition": "仅：SendMessage",
       "defaultValue": "",
-      "defaultValueRaw": "",
       "required": true,
-      "variableMode": "UseVarOrInput",
-      "isControlField": false
+      "variableMode": "UseVarOrInput"
     },
     {
       "key": "additionalObjects",
       "name": "附加对象",
       "type": "List",
       "description": "PostWebMessageAsJson的附加对象列表参数内容。目前支持路径的列表",
-      "isAdvanced": false,
       "validForList": [
         "SendMessage"
       ],
-      "invalidForList": [],
       "condition": "仅：SendMessage",
       "defaultValue": "",
-      "required": false,
-      "variableMode": "UseVarOrInput",
-      "isControlField": false
+      "variableMode": "UseVarOrInput"
     },
     {
       "key": "winLocation",
       "name": "窗口位置",
       "type": "Enum",
       "description": "在哪里显示选择窗口",
-      "isAdvanced": false,
       "validForList": [
         "OpenUrl",
         "OpenAndWaitLoad",
@@ -293,20 +226,15 @@
         "MultiTab_OpenUrl",
         "MultiColumn_OpenUrl"
       ],
-      "invalidForList": [],
       "condition": "仅：OpenUrl, OpenAndWaitLoad, OpenUrlAndWaitClose, MultiTab_OpenUrl, MultiColumn_OpenUrl",
       "defaultValue": "CenterScreen",
-      "defaultValueRaw": "CenterScreen",
-      "required": false,
-      "variableMode": "UseVarOrInput",
-      "isControlField": false
+      "variableMode": "UseVarOrInput"
     },
     {
       "key": "winSize",
       "name": "窗口尺寸/位置",
       "type": "Text",
       "description": "宽度,高度：逻辑像素或屏幕工作区百分比；自定义位置填坐标。",
-      "isAdvanced": false,
       "validForList": [
         "OpenUrl",
         "OpenAndWaitLoad",
@@ -314,13 +242,9 @@
         "MultiTab_OpenUrl",
         "MultiColumn_OpenUrl"
       ],
-      "invalidForList": [],
       "condition": "仅：OpenUrl, OpenAndWaitLoad, OpenUrlAndWaitClose, MultiTab_OpenUrl, MultiColumn_OpenUrl",
       "defaultValue": "",
-      "defaultValueRaw": "",
-      "required": false,
-      "variableMode": "Input",
-      "isControlField": false
+      "variableMode": "Input"
     },
     {
       "key": "defaultDownloadFolderPath",
@@ -335,13 +259,9 @@
         "MultiTab_OpenUrl",
         "MultiColumn_OpenUrl"
       ],
-      "invalidForList": [],
       "condition": "仅：OpenUrl, OpenAndWaitLoad, OpenUrlAndWaitClose, MultiTab_OpenUrl, MultiColumn_OpenUrl",
       "defaultValue": "",
-      "defaultValueRaw": "",
-      "required": false,
-      "variableMode": "Input",
-      "isControlField": false
+      "variableMode": "Input"
     },
     {
       "key": "profileName",
@@ -354,19 +274,14 @@
         "OpenAndWaitLoad",
         "OpenUrlAndWaitClose"
       ],
-      "invalidForList": [],
       "condition": "仅：OpenUrl, OpenAndWaitLoad, OpenUrlAndWaitClose",
       "defaultValue": "",
-      "defaultValueRaw": "",
-      "required": false,
-      "variableMode": "Input",
-      "isControlField": false
+      "variableMode": "Input"
     },
     {
       "key": "topMost",
       "name": "置顶显示",
       "type": "Boolean",
-      "description": "",
       "isAdvanced": true,
       "validForList": [
         "OpenUrl",
@@ -375,32 +290,25 @@
         "MultiTab_OpenUrl",
         "MultiColumn_OpenUrl"
       ],
-      "invalidForList": [],
       "condition": "仅：OpenUrl, OpenAndWaitLoad, OpenUrlAndWaitClose, MultiTab_OpenUrl, MultiColumn_OpenUrl",
       "defaultValue": "false",
       "defaultValueRaw": false,
-      "required": false,
-      "variableMode": "UseVarOrInput",
-      "isControlField": false
+      "variableMode": "UseVarOrInput"
     },
     {
       "key": "showInTaskbar",
       "name": "显示任务栏图标",
       "type": "Boolean",
-      "description": "",
       "isAdvanced": true,
       "validForList": [
         "OpenUrl",
         "OpenAndWaitLoad",
         "OpenUrlAndWaitClose"
       ],
-      "invalidForList": [],
       "condition": "仅：OpenUrl, OpenAndWaitLoad, OpenUrlAndWaitClose",
       "defaultValue": "true",
       "defaultValueRaw": true,
-      "required": false,
-      "variableMode": "UseVarOrInput",
-      "isControlField": false
+      "variableMode": "UseVarOrInput"
     },
     {
       "key": "noActivate",
@@ -413,142 +321,107 @@
         "OpenAndWaitLoad",
         "OpenUrlAndWaitClose"
       ],
-      "invalidForList": [],
       "condition": "仅：OpenUrl, OpenAndWaitLoad, OpenUrlAndWaitClose",
       "defaultValue": "false",
       "defaultValueRaw": false,
-      "required": false,
-      "variableMode": "UseVarOrInput",
-      "isControlField": false
+      "variableMode": "UseVarOrInput"
     },
     {
       "key": "closeWhenLostFocus",
       "name": "失去焦点后",
       "type": "Enum",
-      "description": "",
       "isAdvanced": true,
       "validForList": [
         "OpenUrl",
         "OpenAndWaitLoad",
         "OpenUrlAndWaitClose"
       ],
-      "invalidForList": [],
       "condition": "仅：OpenUrl, OpenAndWaitLoad, OpenUrlAndWaitClose",
       "defaultValue": "false",
-      "defaultValueRaw": "false",
-      "required": false,
-      "variableMode": "UseVarOrInput",
-      "isControlField": false
+      "variableMode": "UseVarOrInput"
     },
     {
       "key": "escCloseWindow",
       "name": "按Esc关闭窗口",
       "type": "Boolean",
-      "description": "",
       "isAdvanced": true,
       "validForList": [
         "OpenUrl",
         "OpenAndWaitLoad",
         "OpenUrlAndWaitClose"
       ],
-      "invalidForList": [],
       "condition": "仅：OpenUrl, OpenAndWaitLoad, OpenUrlAndWaitClose",
       "defaultValue": "false",
       "defaultValueRaw": false,
-      "required": false,
-      "variableMode": "UseVarOrInput",
-      "isControlField": false
+      "variableMode": "UseVarOrInput"
     },
     {
       "key": "showToolbar",
       "name": "显示工具栏",
       "type": "Boolean",
-      "description": "",
       "isAdvanced": true,
       "validForList": [
         "OpenUrl",
         "OpenAndWaitLoad",
         "OpenUrlAndWaitClose"
       ],
-      "invalidForList": [],
       "condition": "仅：OpenUrl, OpenAndWaitLoad, OpenUrlAndWaitClose",
       "defaultValue": "false",
       "defaultValueRaw": false,
-      "required": false,
-      "variableMode": "UseVarOrInput",
-      "isControlField": false
+      "variableMode": "UseVarOrInput"
     },
     {
       "key": "addDevTool",
       "name": "添加DevTools桥",
       "type": "Boolean",
-      "description": "",
       "isAdvanced": true,
       "validForList": [
         "OpenUrl",
         "OpenAndWaitLoad",
         "OpenUrlAndWaitClose"
       ],
-      "invalidForList": [],
       "condition": "仅：OpenUrl, OpenAndWaitLoad, OpenUrlAndWaitClose",
       "defaultValue": "false",
       "defaultValueRaw": false,
-      "required": false,
-      "variableMode": "Input",
-      "isControlField": false
+      "variableMode": "Input"
     },
     {
       "key": "windowStyle",
       "name": "窗口风格",
       "type": "Enum",
-      "description": "",
       "isAdvanced": true,
       "validForList": [
         "OpenUrl",
         "OpenAndWaitLoad",
         "OpenUrlAndWaitClose"
       ],
-      "invalidForList": [],
       "condition": "仅：OpenUrl, OpenAndWaitLoad, OpenUrlAndWaitClose",
       "defaultValue": "normal",
-      "defaultValueRaw": "normal",
-      "required": false,
-      "variableMode": "UseVarOrInput",
-      "isControlField": false
+      "variableMode": "UseVarOrInput"
     },
     {
       "key": "clearCookies",
       "name": "关闭窗口时清理Cookie",
       "type": "Boolean",
-      "description": "",
       "isAdvanced": true,
       "validForList": [
         "OpenUrl",
         "OpenAndWaitLoad",
         "OpenUrlAndWaitClose"
       ],
-      "invalidForList": [],
       "condition": "仅：OpenUrl, OpenAndWaitLoad, OpenUrlAndWaitClose",
       "defaultValue": "false",
       "defaultValueRaw": false,
-      "required": false,
-      "variableMode": "Input",
-      "isControlField": false
+      "variableMode": "Input"
     },
     {
       "key": "stopIfFail",
       "name": "失败后停止",
       "type": "Boolean",
       "description": "失败后是否停止动作",
-      "isAdvanced": false,
-      "validForList": [],
-      "invalidForList": [],
-      "condition": "",
       "defaultValue": "true",
       "defaultValueRaw": true,
-      "required": false,
-      "variableMode": "Input",
-      "isControlField": false
+      "variableMode": "Input"
     }
   ],
   "outputs": [
@@ -556,36 +429,26 @@
       "key": "isSuccess",
       "name": "是否成功",
       "type": "Boolean",
-      "description": "操作是否成功。获取窗口信息时，窗口是否存在。",
-      "isAdvanced": false,
-      "validForList": [],
-      "invalidForList": [],
-      "condition": ""
+      "description": "操作是否成功。获取窗口信息时，窗口是否存在。"
     },
     {
       "key": "isInstalled",
       "name": "是否安装WebView2",
       "type": "Boolean",
-      "description": "",
-      "isAdvanced": false,
       "validForList": [
         "CheckInstalled"
       ],
-      "invalidForList": [],
       "condition": "仅：CheckInstalled"
     },
     {
       "key": "hWnd",
       "name": "窗口句柄",
       "type": "Integer",
-      "description": "",
-      "isAdvanced": false,
       "validForList": [
         "OpenUrl",
         "OpenAndWaitLoad",
         "CheckWindowState"
       ],
-      "invalidForList": [],
       "condition": "仅：OpenUrl, OpenAndWaitLoad, CheckWindowState"
     },
     {
@@ -593,13 +456,11 @@
       "name": "WebView2对象",
       "type": "Object",
       "description": "可用于在C#脚本中使用，需运行在UI线程中。打开窗口时若绑定此输出，会等待浏览器初始化完成，但不额外等待网页加载。注意避免循环引用。",
-      "isAdvanced": false,
       "validForList": [
         "OpenUrl",
         "OpenAndWaitLoad",
         "CheckWindowState"
       ],
-      "invalidForList": [],
       "condition": "仅：OpenUrl, OpenAndWaitLoad, CheckWindowState"
     },
     {
@@ -607,13 +468,11 @@
       "name": "窗口位置",
       "type": "Text",
       "description": "返回窗口坐标范围。格式为：left,top,right,bottom",
-      "isAdvanced": false,
       "validForList": [
         "OpenAndWaitLoad",
         "OpenUrlAndWaitClose",
         "CheckWindowState"
       ],
-      "invalidForList": [],
       "condition": "仅：OpenAndWaitLoad, OpenUrlAndWaitClose, CheckWindowState"
     },
     {
@@ -621,51 +480,40 @@
       "name": "当前网址",
       "type": "Text",
       "description": "浏览器当前网址",
-      "isAdvanced": false,
       "validForList": [
         "OpenAndWaitLoad",
         "CheckWindowState"
       ],
-      "invalidForList": [],
       "condition": "仅：OpenAndWaitLoad, CheckWindowState"
     },
     {
       "key": "docTitle",
       "name": "网页标题",
       "type": "Text",
-      "description": "",
-      "isAdvanced": false,
       "validForList": [
         "OpenAndWaitLoad",
         "CheckWindowState"
       ],
-      "invalidForList": [],
       "condition": "仅：OpenAndWaitLoad, CheckWindowState"
     },
     {
       "key": "sourceCode",
       "name": "网页代码",
       "type": "Text",
-      "description": "",
-      "isAdvanced": false,
       "validForList": [
         "OpenAndWaitLoad",
         "CheckWindowState"
       ],
-      "invalidForList": [],
       "condition": "仅：OpenAndWaitLoad, CheckWindowState"
     },
     {
       "key": "cookies",
       "name": "Cookie",
       "type": "Text",
-      "description": "",
-      "isAdvanced": false,
       "validForList": [
         "OpenAndWaitLoad",
         "CheckWindowState"
       ],
-      "invalidForList": [],
       "condition": "仅：OpenAndWaitLoad, CheckWindowState"
     },
     {
@@ -673,23 +521,18 @@
       "name": "脚本运行结果",
       "type": "Text",
       "description": "json编码的脚本运行结果内容",
-      "isAdvanced": false,
       "validForList": [
         "ExecuteScript"
       ],
-      "invalidForList": [],
       "condition": "仅：ExecuteScript"
     },
     {
       "key": "previewImage",
       "name": "预览图",
       "type": "Image",
-      "description": "",
-      "isAdvanced": false,
       "validForList": [
         "CheckWindowState"
       ],
-      "invalidForList": [],
       "condition": "仅：CheckWindowState"
     },
     {
@@ -697,11 +540,9 @@
       "name": "导航是否已结束",
       "type": "Boolean",
       "description": "是否已完成网页加载过程",
-      "isAdvanced": false,
       "validForList": [
         "CheckWindowState"
       ],
-      "invalidForList": [],
       "condition": "仅：CheckWindowState"
     }
   ],
@@ -711,63 +552,51 @@
       "items": [
         {
           "value": "OpenUrl",
-          "name": "打开网页",
-          "description": ""
+          "name": "打开网页"
         },
         {
           "value": "OpenAndWaitLoad",
-          "name": "打开网页并等待加载完成",
-          "description": ""
+          "name": "打开网页并等待加载完成"
         },
         {
           "value": "OpenUrlAndWaitClose",
-          "name": "打开网页并等待窗口关闭",
-          "description": ""
+          "name": "打开网页并等待窗口关闭"
         },
         {
           "value": "SendMessage",
-          "name": "发送消息",
-          "description": ""
+          "name": "发送消息"
         },
         {
           "value": "ExecuteScript",
-          "name": "执行脚本",
-          "description": ""
+          "name": "执行脚本"
         },
         {
           "value": "CheckWindowState",
-          "name": "获取窗口状态",
-          "description": ""
+          "name": "获取窗口状态"
         },
         {
           "value": "Close",
-          "name": "关闭窗口(如果尚未关闭)",
-          "description": ""
+          "name": "关闭窗口(如果尚未关闭)"
         },
         {
           "value": "Reload",
-          "name": "重新加载/刷新",
-          "description": ""
+          "name": "重新加载/刷新"
         },
         {
           "value": "Stop",
-          "name": "停止加载",
-          "description": ""
+          "name": "停止加载"
         },
         {
           "value": "CheckInstalled",
-          "name": "检查是否安装WebView2",
-          "description": ""
+          "name": "检查是否安装WebView2"
         },
         {
           "value": "MultiTab_OpenUrl",
-          "name": "【多标签】打开网址",
-          "description": ""
+          "name": "【多标签】打开网址"
         },
         {
           "value": "MultiColumn_OpenUrl",
-          "name": "【多列】打开网址",
-          "description": ""
+          "name": "【多列】打开网址"
         }
       ]
     },
@@ -776,28 +605,23 @@
       "items": [
         {
           "value": "SkipThisStep",
-          "name": "跳过此步骤",
-          "description": ""
+          "name": "跳过此步骤"
         },
         {
           "value": "UpdateUrl",
-          "name": "更新网址",
-          "description": ""
+          "name": "更新网址"
         },
         {
           "value": "UpdateUrlAndPosition",
-          "name": "更新网址和窗口位置",
-          "description": ""
+          "name": "更新网址和窗口位置"
         },
         {
           "value": "RecreateWindow",
-          "name": "关闭并重建窗口",
-          "description": ""
+          "name": "关闭并重建窗口"
         },
         {
           "value": "BringToFront",
-          "name": "激活窗口",
-          "description": ""
+          "name": "激活窗口"
         }
       ]
     },
@@ -806,73 +630,59 @@
       "items": [
         {
           "value": "WithMouse1",
-          "name": "跟随鼠标（指针周围）",
-          "description": ""
+          "name": "跟随鼠标（指针周围）"
         },
         {
           "value": "WithMouse2",
-          "name": "跟随鼠标（指针右下）",
-          "description": ""
+          "name": "跟随鼠标（指针右下）"
         },
         {
           "value": "CenterScreen",
-          "name": "屏幕中间",
-          "description": ""
+          "name": "屏幕中间"
         },
         {
           "value": "TopLeft",
-          "name": "屏幕左上",
-          "description": ""
+          "name": "屏幕左上"
         },
         {
           "value": "TopCenter",
-          "name": "屏幕中上",
-          "description": ""
+          "name": "屏幕中上"
         },
         {
           "value": "TopRight",
-          "name": "屏幕右上",
-          "description": ""
+          "name": "屏幕右上"
         },
         {
           "value": "LeftCenter",
-          "name": "屏幕左中",
-          "description": ""
+          "name": "屏幕左中"
         },
         {
           "value": "RightCenter",
-          "name": "屏幕右中",
-          "description": ""
+          "name": "屏幕右中"
         },
         {
           "value": "BottomLeft",
-          "name": "屏幕左下",
-          "description": ""
+          "name": "屏幕左下"
         },
         {
           "value": "BottomCenter",
-          "name": "屏幕中下",
-          "description": ""
+          "name": "屏幕中下"
         },
         {
           "value": "BottomRight",
-          "name": "屏幕右下",
-          "description": ""
+          "name": "屏幕右下"
         },
         {
           "value": "FullScreen",
-          "name": "全屏",
-          "description": ""
+          "name": "全屏"
         },
         {
           "value": "Maximized",
-          "name": "最大化",
-          "description": ""
+          "name": "最大化"
         },
         {
           "value": "Manual",
-          "name": "自定义位置",
-          "description": ""
+          "name": "自定义位置"
         }
       ]
     },
@@ -881,38 +691,31 @@
       "items": [
         {
           "value": "false",
-          "name": "不执行操作",
-          "description": ""
+          "name": "不执行操作"
         },
         {
           "value": "true",
-          "name": "关闭窗口",
-          "description": ""
+          "name": "关闭窗口"
         },
         {
           "value": "hide",
-          "name": "隐藏窗口",
-          "description": ""
+          "name": "隐藏窗口"
         },
         {
           "value": "minimize",
-          "name": "最小化窗口",
-          "description": ""
+          "name": "最小化窗口"
         },
         {
           "value": "close_if_not_topmost",
-          "name": "如果未置顶，关闭窗口",
-          "description": ""
+          "name": "如果未置顶，关闭窗口"
         },
         {
           "value": "hide_if_not_topmost",
-          "name": "如果未置顶，隐藏窗口",
-          "description": ""
+          "name": "如果未置顶，隐藏窗口"
         },
         {
           "value": "minimize_if_not_topmost",
-          "name": "如果未置顶，最小化窗口",
-          "description": ""
+          "name": "如果未置顶，最小化窗口"
         }
       ]
     },
@@ -921,13 +724,11 @@
       "items": [
         {
           "value": "normal",
-          "name": "正常",
-          "description": ""
+          "name": "正常"
         },
         {
           "value": "none",
-          "name": "无边框",
-          "description": ""
+          "name": "无边框"
         }
       ]
     }

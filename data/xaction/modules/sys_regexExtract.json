@@ -8,8 +8,6 @@
   "category": "Text",
   "categoryName": "文本处理",
   "stepType": "Action",
-  "isRisky": false,
-  "isProOnly": false,
   "helpLink": "https://docs.getquicker.net/v2/xaction/modules/regexextract",
   "inputs": [
     {
@@ -17,12 +15,7 @@
       "name": "提取方式",
       "type": "Enum",
       "description": "输出的内容根据提取内容有所不同，请参考模块文档。",
-      "isAdvanced": false,
-      "validForList": [],
-      "invalidForList": [],
-      "condition": "",
       "defaultValue": "0",
-      "defaultValueRaw": "0",
       "required": true,
       "variableMode": "Input",
       "isControlField": true
@@ -32,103 +25,63 @@
       "name": "输入",
       "type": "Text",
       "description": "要提取内容的文本",
-      "isAdvanced": false,
-      "validForList": [],
-      "invalidForList": [],
-      "condition": "",
       "defaultValue": "",
       "required": true,
-      "variableMode": "UseVarOrInput",
-      "isControlField": false
+      "variableMode": "UseVarOrInput"
     },
     {
       "key": "pattern",
       "name": "正则表达式",
       "type": "Text",
       "description": "用于提取内容的正则表达式",
-      "isAdvanced": false,
-      "validForList": [],
-      "invalidForList": [],
-      "condition": "",
       "defaultValue": "",
       "required": true,
-      "variableMode": "UseVarOrInput",
-      "isControlField": false
+      "variableMode": "UseVarOrInput"
     },
     {
       "key": "ignoreCase",
       "name": "忽略大小写",
       "type": "Boolean",
       "description": "不区分英文大小写",
-      "isAdvanced": false,
-      "validForList": [],
-      "invalidForList": [],
-      "condition": "",
       "defaultValue": "false",
       "defaultValueRaw": false,
-      "required": false,
-      "variableMode": "UseVarOrInput",
-      "isControlField": false
+      "variableMode": "UseVarOrInput"
     },
     {
       "key": "singleLine",
       "name": "单行模式",
       "type": "Boolean",
       "description": "此模式下\".\"能匹配任意字符，包括换行符。(否则匹配除了\\n外的任意字符)",
-      "isAdvanced": false,
-      "validForList": [],
-      "invalidForList": [],
-      "condition": "",
       "defaultValue": "false",
       "defaultValueRaw": false,
-      "required": false,
-      "variableMode": "UseVarOrInput",
-      "isControlField": false
+      "variableMode": "UseVarOrInput"
     },
     {
       "key": "multiLine",
       "name": "多行模式",
       "type": "Boolean",
       "description": "此模式下^和$可以分别匹配行首和行尾。(否则匹配输入内容的开始和结束)",
-      "isAdvanced": false,
-      "validForList": [],
-      "invalidForList": [],
-      "condition": "",
       "defaultValue": "false",
       "defaultValueRaw": false,
-      "required": false,
-      "variableMode": "UseVarOrInput",
-      "isControlField": false
+      "variableMode": "UseVarOrInput"
     },
     {
       "key": "rightToLeft",
       "name": "从右向左",
       "type": "Boolean",
       "description": "从右向左查找匹配内容",
-      "isAdvanced": false,
-      "validForList": [],
-      "invalidForList": [],
-      "condition": "",
       "defaultValue": "false",
       "defaultValueRaw": false,
-      "required": false,
-      "variableMode": "UseVarOrInput",
-      "isControlField": false
+      "variableMode": "UseVarOrInput"
     },
     {
       "key": "stopIfFail",
       "name": "失败后中止动作",
       "type": "Boolean",
       "description": "操作失败后，是否停止后续动作的执行。",
-      "isAdvanced": false,
-      "validForList": [],
-      "invalidForList": [],
-      "condition": "",
       "defaultValue": "true",
       "defaultValueRaw": true,
-      "required": false,
-      "variableMode": "Input",
-      "isControlField": false
+      "variableMode": "Input"
     }
   ],
   "outputs": [
@@ -136,82 +89,52 @@
       "key": "isSuccess",
       "name": "是否成功",
       "type": "Boolean",
-      "description": "是否匹配成功",
-      "isAdvanced": false,
-      "validForList": [],
-      "invalidForList": [],
-      "condition": ""
+      "description": "是否匹配成功"
     },
     {
       "key": "matches",
       "name": "所有匹配列表",
       "type": "List",
-      "description": "返回所有的匹配项",
-      "isAdvanced": false,
-      "validForList": [],
-      "invalidForList": [],
-      "condition": ""
+      "description": "返回所有的匹配项"
     },
     {
       "key": "match1 ",
       "name": "匹配1",
       "type": "Any",
-      "description": "第1个匹配项的值",
-      "isAdvanced": false,
-      "validForList": [],
-      "invalidForList": [],
-      "condition": ""
+      "description": "第1个匹配项的值"
     },
     {
       "key": "match2 ",
       "name": "匹配2",
       "type": "Any",
-      "description": "第2个匹配项的值",
-      "isAdvanced": false,
-      "validForList": [],
-      "invalidForList": [],
-      "condition": ""
+      "description": "第2个匹配项的值"
     },
     {
       "key": "match3 ",
       "name": "匹配3",
       "type": "Any",
-      "description": "第3个匹配项的值",
-      "isAdvanced": false,
-      "validForList": [],
-      "invalidForList": [],
-      "condition": ""
+      "description": "第3个匹配项的值"
     },
     {
       "key": "match4 ",
       "name": "匹配4",
       "type": "Any",
-      "description": "第4个匹配项的值",
-      "isAdvanced": false,
-      "validForList": [],
-      "invalidForList": [],
-      "condition": ""
+      "description": "第4个匹配项的值"
     },
     {
       "key": "match5 ",
       "name": "匹配5",
       "type": "Any",
-      "description": "第5个匹配项的值",
-      "isAdvanced": false,
-      "validForList": [],
-      "invalidForList": [],
-      "condition": ""
+      "description": "第5个匹配项的值"
     },
     {
       "key": "matchObj",
       "name": "Match对象",
       "type": "Object",
       "description": "首个匹配的原始的C#语言Match对象，可以在表达式中使用",
-      "isAdvanced": false,
       "validForList": [
         "1"
       ],
-      "invalidForList": [],
       "condition": "仅：1"
     },
     {
@@ -219,12 +142,10 @@
       "name": "Matches集合",
       "type": "Object",
       "description": "所有匹配的原始Match对象集合(MatchCollection)，可以在表达式中使用",
-      "isAdvanced": false,
       "validForList": [
         "0",
         "2"
       ],
-      "invalidForList": [],
       "condition": "仅：0, 2"
     }
   ],
@@ -234,18 +155,15 @@
       "items": [
         {
           "value": "0",
-          "name": "各匹配项的值",
-          "description": ""
+          "name": "各匹配项的值"
         },
         {
           "value": "1",
-          "name": "第一个匹配项的组",
-          "description": ""
+          "name": "第一个匹配项的组"
         },
         {
           "value": "2",
-          "name": "各匹配项的组",
-          "description": ""
+          "name": "各匹配项的组"
         }
       ]
     }

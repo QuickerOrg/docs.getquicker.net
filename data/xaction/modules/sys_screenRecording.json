@@ -8,8 +8,6 @@
   "category": "Image",
   "categoryName": "图片处理",
   "stepType": "Action",
-  "isRisky": false,
-  "isProOnly": false,
   "helpLink": "https://docs.getquicker.net/v2/xaction/modules/screen-recording",
   "inputs": [
     {
@@ -17,12 +15,7 @@
       "name": "操作",
       "type": "Enum",
       "description": "录屏会话操作类型。",
-      "isAdvanced": false,
-      "validForList": [],
-      "invalidForList": [],
-      "condition": "",
       "defaultValue": "start",
-      "defaultValueRaw": "start",
       "required": true,
       "variableMode": "Input",
       "isControlField": true
@@ -32,44 +25,28 @@
       "name": "会话 ID",
       "type": "Text",
       "description": "录屏会话标识（GUID）。开始录屏时留空将自动生成；暂停/继续/结束时必须提供。",
-      "isAdvanced": false,
-      "validForList": [],
-      "invalidForList": [],
-      "condition": "",
       "defaultValue": "",
-      "defaultValueRaw": "",
-      "required": false,
-      "variableMode": "UseVarOrInput",
-      "isControlField": false
+      "variableMode": "UseVarOrInput"
     },
     {
       "key": "stopIfFail",
       "name": "失败后停止",
       "type": "Boolean",
       "description": "失败后是否停止动作",
-      "isAdvanced": false,
-      "validForList": [],
-      "invalidForList": [],
-      "condition": "",
       "defaultValue": "true",
       "defaultValueRaw": true,
-      "required": false,
-      "variableMode": "Input",
-      "isControlField": false
+      "variableMode": "Input"
     },
     {
       "key": "regionType",
       "name": "录制范围",
       "type": "Enum",
       "description": "要录制的屏幕区域类型。",
-      "isAdvanced": false,
       "validForList": [
         "start"
       ],
-      "invalidForList": [],
       "condition": "仅：start",
       "defaultValue": "primary_screen",
-      "defaultValueRaw": "primary_screen",
       "required": true,
       "variableMode": "Input",
       "isControlField": true
@@ -79,7 +56,6 @@
       "name": "录制区域",
       "type": "Text",
       "description": "固定区域坐标，格式：left,top,right,bottom。默认不包含右边和底边像素。",
-      "isAdvanced": false,
       "validForList": [
         "fixed_area"
       ],
@@ -111,16 +87,13 @@
       },
       "condition": "(operation 为 \"start\" 且 regionType 为 \"fixed_area\")",
       "defaultValue": "",
-      "required": false,
-      "variableMode": "UseVarOrInput",
-      "isControlField": false
+      "variableMode": "UseVarOrInput"
     },
     {
       "key": "includeRightBottomBorder",
       "name": "包含右下边像素",
       "type": "Boolean",
       "description": "包含时，0,0,2,2 表示 3×3 区域；否则为 2×2。",
-      "isAdvanced": false,
       "validForList": [
         "fixed_area"
       ],
@@ -153,26 +126,19 @@
       "condition": "(operation 为 \"start\" 且 regionType 为 \"fixed_area\")",
       "defaultValue": "true",
       "defaultValueRaw": true,
-      "required": false,
-      "variableMode": "Input",
-      "isControlField": false
+      "variableMode": "Input"
     },
     {
       "key": "outputDirectory",
       "name": "输出文件夹路径",
       "type": "Text",
       "description": "成品写入该目录，文件名为 Recording_时间戳。留空且未指定旧「输出文件路径」时使用默认位置。",
-      "isAdvanced": false,
       "validForList": [
         "start"
       ],
-      "invalidForList": [],
       "condition": "仅：start",
       "defaultValue": "",
-      "defaultValueRaw": "",
-      "required": false,
-      "variableMode": "UseVarOrInput",
-      "isControlField": false
+      "variableMode": "UseVarOrInput"
     },
     {
       "key": "outputFilePath",
@@ -183,27 +149,20 @@
       "validForList": [
         "start"
       ],
-      "invalidForList": [],
       "condition": "仅：start",
       "defaultValue": "",
-      "defaultValueRaw": "",
-      "required": false,
-      "variableMode": "UseVarOrInput",
-      "isControlField": false
+      "variableMode": "UseVarOrInput"
     },
     {
       "key": "outputFormat",
       "name": "输出格式",
       "type": "Enum",
       "description": "录屏输出文件格式。",
-      "isAdvanced": false,
       "validForList": [
         "start"
       ],
-      "invalidForList": [],
       "condition": "仅：start",
       "defaultValue": "mp4",
-      "defaultValueRaw": "mp4",
       "required": true,
       "variableMode": "Input",
       "isControlField": true
@@ -213,14 +172,11 @@
       "name": "导出画质",
       "type": "Enum",
       "description": "录屏导出画质：标准、高清或原始。",
-      "isAdvanced": false,
       "validForList": [
         "start"
       ],
-      "invalidForList": [],
       "condition": "仅：start",
       "defaultValue": "standard",
-      "defaultValueRaw": "standard",
       "required": true,
       "variableMode": "Input",
       "isControlField": true
@@ -231,8 +187,6 @@
       "type": "Enum",
       "description": "可选快捷配置，默认沿用原有画质；FFmpeg 参数可覆盖方案。",
       "isAdvanced": true,
-      "validForList": [],
-      "invalidForList": [],
       "visibleWhen": {
         "kind": "All",
         "conditions": [
@@ -256,10 +210,7 @@
       },
       "condition": "(operation 为 \"start\" 且 outputFormat 为 \"mp4\")",
       "defaultValue": "default",
-      "defaultValueRaw": "default",
-      "required": false,
-      "variableMode": "UseVarOrInput",
-      "isControlField": false
+      "variableMode": "UseVarOrInput"
     },
     {
       "key": "encodingParameters",
@@ -267,8 +218,6 @@
       "type": "Text",
       "description": "直接传给本机 FFmpeg，覆盖预设；留空沿用默认。例：-crf 20 -preset veryfast。",
       "isAdvanced": true,
-      "validForList": [],
-      "invalidForList": [],
       "visibleWhen": {
         "kind": "All",
         "conditions": [
@@ -292,44 +241,33 @@
       },
       "condition": "(operation 为 \"start\" 且 outputFormat 为 \"mp4\")",
       "defaultValue": "",
-      "defaultValueRaw": "",
-      "required": false,
-      "variableMode": "UseVarOrInput",
-      "isControlField": false
+      "variableMode": "UseVarOrInput"
     },
     {
       "key": "framesPerSecond",
       "name": "帧率",
       "type": "Integer",
       "description": "录制帧率，将自动规整到 10/15/24/30/60。",
-      "isAdvanced": false,
       "validForList": [
         "start"
       ],
-      "invalidForList": [],
       "condition": "仅：start",
       "defaultValue": "30",
       "defaultValueRaw": 30,
-      "required": false,
-      "variableMode": "UseVarOrInput",
-      "isControlField": false
+      "variableMode": "UseVarOrInput"
     },
     {
       "key": "showCursor",
       "name": "显示鼠标光标",
       "type": "Boolean",
       "description": "是否在录制画面中显示鼠标光标。",
-      "isAdvanced": false,
       "validForList": [
         "start"
       ],
-      "invalidForList": [],
       "condition": "仅：start",
       "defaultValue": "true",
       "defaultValueRaw": true,
-      "required": false,
-      "variableMode": "Input",
-      "isControlField": false
+      "variableMode": "Input"
     },
     {
       "key": "encodingStrategy",
@@ -340,10 +278,8 @@
       "validForList": [
         "start"
       ],
-      "invalidForList": [],
       "condition": "仅：start",
       "defaultValue": "encodeWhileRecording",
-      "defaultValueRaw": "encodeWhileRecording",
       "required": true,
       "variableMode": "Input",
       "isControlField": true
@@ -353,68 +289,52 @@
       "name": "开始后立即返回",
       "type": "Boolean",
       "description": "启用后步骤在启动录制后立即成功返回；结束录屏请使用单独的结束步骤。",
-      "isAdvanced": false,
       "validForList": [
         "start"
       ],
-      "invalidForList": [],
       "condition": "仅：start",
       "defaultValue": "true",
       "defaultValueRaw": true,
-      "required": false,
-      "variableMode": "Input",
-      "isControlField": false
+      "variableMode": "Input"
     },
     {
       "key": "delay",
       "name": "开始前延迟",
       "type": "Integer",
       "description": "等待多少毫秒后开始录制。",
-      "isAdvanced": false,
       "validForList": [
         "start"
       ],
-      "invalidForList": [],
       "condition": "仅：start",
       "defaultValue": "0",
       "defaultValueRaw": 0,
-      "required": false,
-      "variableMode": "UseVarOrInput",
-      "isControlField": false
+      "variableMode": "UseVarOrInput"
     },
     {
       "key": "waitForCompletion",
       "name": "等待编码完成",
       "type": "Boolean",
       "description": "结束录屏时是否等待文件写入完成。",
-      "isAdvanced": false,
       "validForList": [
         "stop"
       ],
-      "invalidForList": [],
       "condition": "仅：stop",
       "defaultValue": "true",
       "defaultValueRaw": true,
-      "required": false,
-      "variableMode": "Input",
-      "isControlField": false
+      "variableMode": "Input"
     },
     {
       "key": "removeSessionAfterStop",
       "name": "结束后删除会话",
       "type": "Boolean",
       "description": "结束录屏成功后从会话注册表移除。",
-      "isAdvanced": false,
       "validForList": [
         "stop"
       ],
-      "invalidForList": [],
       "condition": "仅：stop",
       "defaultValue": "true",
       "defaultValueRaw": true,
-      "required": false,
-      "variableMode": "Input",
-      "isControlField": false
+      "variableMode": "Input"
     },
     {
       "key": "addToHistory",
@@ -425,13 +345,10 @@
       "validForList": [
         "stop"
       ],
-      "invalidForList": [],
       "condition": "仅：stop",
       "defaultValue": "false",
       "defaultValueRaw": false,
-      "required": false,
-      "variableMode": "Input",
-      "isControlField": false
+      "variableMode": "Input"
     }
   ],
   "outputs": [
@@ -439,61 +356,37 @@
       "key": "isSuccess",
       "name": "是否成功",
       "type": "Boolean",
-      "description": "操作是否成功",
-      "isAdvanced": false,
-      "validForList": [],
-      "invalidForList": [],
-      "condition": ""
+      "description": "操作是否成功"
     },
     {
       "key": "sessionIdOut",
       "name": "会话 ID",
       "type": "Text",
-      "description": "录屏会话标识，供后续暂停/继续/结束步骤使用。",
-      "isAdvanced": false,
-      "validForList": [],
-      "invalidForList": [],
-      "condition": ""
+      "description": "录屏会话标识，供后续暂停/继续/结束步骤使用。"
     },
     {
       "key": "filePath",
       "name": "文件路径",
       "type": "Text",
-      "description": "录制完成的视频文件路径。",
-      "isAdvanced": false,
-      "validForList": [],
-      "invalidForList": [],
-      "condition": ""
+      "description": "录制完成的视频文件路径。"
     },
     {
       "key": "durationSeconds",
       "name": "录制时长",
       "type": "Number",
-      "description": "录制时长（秒）。",
-      "isAdvanced": false,
-      "validForList": [],
-      "invalidForList": [],
-      "condition": ""
+      "description": "录制时长（秒）。"
     },
     {
       "key": "rect",
       "name": "录制区域",
       "type": "Text",
-      "description": "实际录制区域(left,top,right,bottom)。",
-      "isAdvanced": false,
-      "validForList": [],
-      "invalidForList": [],
-      "condition": ""
+      "description": "实际录制区域(left,top,right,bottom)。"
     },
     {
       "key": "errMessage",
       "name": "错误消息",
       "type": "Text",
-      "description": "步骤执行出错时的消息",
-      "isAdvanced": false,
-      "validForList": [],
-      "invalidForList": [],
-      "condition": ""
+      "description": "步骤执行出错时的消息"
     }
   ],
   "selections": {
@@ -502,23 +395,19 @@
       "items": [
         {
           "value": "start",
-          "name": "开始录屏",
-          "description": ""
+          "name": "开始录屏"
         },
         {
           "value": "pause",
-          "name": "暂停录屏",
-          "description": ""
+          "name": "暂停录屏"
         },
         {
           "value": "resume",
-          "name": "继续录屏",
-          "description": ""
+          "name": "继续录屏"
         },
         {
           "value": "stop",
-          "name": "结束录屏",
-          "description": ""
+          "name": "结束录屏"
         }
       ]
     },
@@ -527,18 +416,15 @@
       "items": [
         {
           "value": "fixed_area",
-          "name": "固定区域",
-          "description": ""
+          "name": "固定区域"
         },
         {
           "value": "primary_screen",
-          "name": "主屏幕",
-          "description": ""
+          "name": "主屏幕"
         },
         {
           "value": "full_screen",
-          "name": "所有屏幕",
-          "description": ""
+          "name": "所有屏幕"
         }
       ]
     },
@@ -547,18 +433,15 @@
       "items": [
         {
           "value": "mp4",
-          "name": "MP4",
-          "description": ""
+          "name": "MP4"
         },
         {
           "value": "gif",
-          "name": "GIF",
-          "description": ""
+          "name": "GIF"
         },
         {
           "value": "avi",
-          "name": "AVI",
-          "description": ""
+          "name": "AVI"
         }
       ]
     },
@@ -567,18 +450,15 @@
       "items": [
         {
           "value": "standard",
-          "name": "标准",
-          "description": ""
+          "name": "标准"
         },
         {
           "value": "high",
-          "name": "高清",
-          "description": ""
+          "name": "高清"
         },
         {
           "value": "original",
-          "name": "原始",
-          "description": ""
+          "name": "原始"
         }
       ]
     },
@@ -587,28 +467,23 @@
       "items": [
         {
           "value": "default",
-          "name": "沿用原有画质",
-          "description": ""
+          "name": "沿用原有画质"
         },
         {
           "value": "balanced",
-          "name": "均衡",
-          "description": ""
+          "name": "均衡"
         },
         {
           "value": "text",
-          "name": "文字清晰",
-          "description": ""
+          "name": "文字清晰"
         },
         {
           "value": "compact",
-          "name": "小体积",
-          "description": ""
+          "name": "小体积"
         },
         {
           "value": "lowCpu",
-          "name": "低 CPU 占用",
-          "description": ""
+          "name": "低 CPU 占用"
         }
       ]
     },
@@ -617,13 +492,11 @@
       "items": [
         {
           "value": "encodeWhileRecording",
-          "name": "实时编码",
-          "description": ""
+          "name": "实时编码"
         },
         {
           "value": "recordThenEncode",
-          "name": "录制结束后转码",
-          "description": ""
+          "name": "录制结束后转码"
         }
       ]
     }

@@ -8,8 +8,6 @@
   "category": "System",
   "categoryName": "Windows系统",
   "stepType": "Action",
-  "isRisky": false,
-  "isProOnly": false,
   "helpLink": "https://docs.getquicker.net/v2/xaction/modules/imecontrol",
   "inputs": [
     {
@@ -17,12 +15,7 @@
       "name": "操作类型",
       "type": "Enum",
       "description": "要执行的操作。所有操作仅在输入法启用的情况下有效。",
-      "isAdvanced": false,
-      "validForList": [],
-      "invalidForList": [],
-      "condition": "",
       "defaultValue": "GET_STATE",
-      "defaultValueRaw": "GET_STATE",
       "required": true,
       "variableMode": "Input",
       "isControlField": true
@@ -33,12 +26,9 @@
       "key": "isEnabled",
       "name": "是否为中文状态",
       "type": "Boolean",
-      "description": "",
-      "isAdvanced": false,
       "validForList": [
         "GET_STATE"
       ],
-      "invalidForList": [],
       "condition": "仅：GET_STATE"
     }
   ],
@@ -48,23 +38,19 @@
       "items": [
         {
           "value": "ENABLE",
-          "name": "切换为中文",
-          "description": ""
+          "name": "切换为中文"
         },
         {
           "value": "DISABLE",
-          "name": "切换为英文",
-          "description": ""
+          "name": "切换为英文"
         },
         {
           "value": "RESTORE",
-          "name": "恢复",
-          "description": ""
+          "name": "恢复"
         },
         {
           "value": "GET_STATE",
-          "name": "是否为中文状态？",
-          "description": ""
+          "name": "是否为中文状态？"
         }
       ]
     }

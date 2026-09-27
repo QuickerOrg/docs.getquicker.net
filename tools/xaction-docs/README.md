@@ -26,6 +26,8 @@
 
 Quicker 导出命令为 `Tools/docs/Export-StepMetadataDocs.ps1`，现在通过主仓 `Tools/dev/build.ps1` 隔离构建输出，并在全部导出测试成功后提供 `export-dir.txt`。输入参数的 `DefaultValue` 是运行时缺省值，`NewStepDefaultValue` 是新建步骤初始值，两者分别保存。`VisibleWhen` 按明确的字段 Key 判断，优先于旧的条件列表；页面不执行 `VisibleExpression`，无法判断的条件保持可见。
 
+导出及站点数据省略为 `false` 的元数据标志、空说明、空条件列表和重复的字符串默认值文本（数值文本仍保留精度）。缺失标志按 `false`、缺失列表按空列表读取；模块的 `inputs` / `outputs` 数组仍保留。实际参数默认值 `false` / `0` 保留类型，新建步骤默认值的空字符串仍保留（可能用于覆盖运行时默认值）。差异报告按相同规则归一化旧数据，精简格式本身不算模块变更。
+
 已有页面的人工标题、摘要和正文保留；`metadataGeneratedAt` 保留页面原始记录，当前参数导出时间以 `data/xaction/catalog.json` 的 `generatedAt` 为准。
 
 首页只更新 `XActionLanding` 的统计数据，已有分类摘要保留。已有模块按 Key 查找页面，分类变化不导致跳过或搬动正文；新分类和 Key 改名造成的页面冲突会在写入前报错。同一导出包重复同步不会清空上次差异报告。校验器会比对总目录与单模块 JSON 的完整内容，并报告改名后遗留的数据文件。

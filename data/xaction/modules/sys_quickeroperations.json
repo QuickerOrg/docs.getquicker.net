@@ -8,8 +8,6 @@
   "category": "System",
   "categoryName": "Windows系统",
   "stepType": "Action",
-  "isRisky": false,
-  "isProOnly": false,
   "helpLink": "https://docs.getquicker.net/v2/xaction/modules/quickeroperations",
   "inputs": [
     {
@@ -17,12 +15,7 @@
       "name": "类型",
       "type": "Enum",
       "description": "操作类型",
-      "isAdvanced": false,
-      "validForList": [],
-      "invalidForList": [],
-      "condition": "",
       "defaultValue": "showPanel",
-      "defaultValueRaw": "showPanel",
       "required": true,
       "variableMode": "UseVarOrInput",
       "isControlField": true
@@ -32,61 +25,48 @@
       "name": "动作页ID",
       "type": "Text",
       "description": "请在场景与动作管理中，查看动作页信息获取ID。",
-      "isAdvanced": false,
       "validForList": [
         "loadProfile"
       ],
-      "invalidForList": [],
       "condition": "仅：loadProfile",
       "defaultValue": "",
-      "defaultValueRaw": "",
       "required": true,
-      "variableMode": "UseVarOrInput",
-      "isControlField": false
+      "variableMode": "UseVarOrInput"
     },
     {
       "key": "actionId",
       "name": "动作ID或名称",
       "type": "Text",
       "description": "在动作上点右键->信息可以查看动作信息。使用名称时不能有重名动作。获取动作信息时仅可填写动作Id。编辑动作时，使用%%id或%%name格式，可用于编辑公共子程序。",
-      "isAdvanced": false,
       "validForList": [
         "editAction",
         "SearchWithCertainAction",
         "FloatAction",
         "GetActionInfo"
       ],
-      "invalidForList": [],
       "condition": "仅：editAction, SearchWithCertainAction, FloatAction, GetActionInfo",
       "defaultValue": "",
-      "defaultValueRaw": "",
       "required": true,
-      "variableMode": "UseVarOrInput",
-      "isControlField": false
+      "variableMode": "UseVarOrInput"
     },
     {
       "key": "position",
       "name": "位置",
       "type": "Text",
       "description": "坐标，格式为：left,top",
-      "isAdvanced": false,
       "validForList": [
         "FloatAction"
       ],
-      "invalidForList": [],
       "condition": "仅：FloatAction",
       "defaultValue": "200,200",
-      "defaultValueRaw": "200,200",
       "required": true,
-      "variableMode": "UseVarOrInput",
-      "isControlField": false
+      "variableMode": "UseVarOrInput"
     },
     {
       "key": "exe",
       "name": "场景标识",
       "type": "Text",
       "description": "场景关联的exe文件名。请参考场景与动作管理窗口左侧应用列表；打开轮盘或场景管理时可填写 _curr 表示当前程序场景。",
-      "isAdvanced": false,
       "validForList": [
         "showCircleMenu",
         "showDashboardWindow",
@@ -95,149 +75,106 @@
         "loadExeProfilesNoLock",
         "GetActionList"
       ],
-      "invalidForList": [],
       "condition": "仅：showCircleMenu, showDashboardWindow, showExeSettingWindow, loadExeProfiles, loadExeProfilesNoLock, GetActionList",
       "defaultValue": "",
-      "defaultValueRaw": "",
       "required": true,
-      "variableMode": "UseVarOrInput",
-      "isControlField": false
+      "variableMode": "UseVarOrInput"
     },
     {
       "key": "sceneGroup",
       "name": "切换到分组",
       "type": "Text",
       "description": "加载场景后，在新版面板中自动切换到此分组。留空时按场景默认逻辑显示；填写“未分组”可切换到未分组。",
-      "isAdvanced": false,
       "validForList": [
         "loadExeProfiles",
         "loadExeProfilesNoLock"
       ],
-      "invalidForList": [],
       "condition": "仅：loadExeProfiles, loadExeProfilesNoLock",
       "defaultValue": "",
-      "defaultValueRaw": "",
-      "required": false,
-      "variableMode": "UseVarOrInput",
-      "isControlField": false
+      "variableMode": "UseVarOrInput"
     },
     {
       "key": "activatePointWindow",
       "name": "自动激活鼠标位置窗口",
       "type": "Boolean",
-      "description": "",
-      "isAdvanced": false,
       "validForList": [
         "showPanel"
       ],
-      "invalidForList": [],
       "condition": "仅：showPanel",
       "defaultValue": "false",
       "defaultValueRaw": false,
-      "required": false,
-      "variableMode": "Input",
-      "isControlField": false
+      "variableMode": "Input"
     },
     {
       "key": "followMousePosition",
       "name": "跟随鼠标位置",
       "type": "Boolean",
-      "description": "",
-      "isAdvanced": false,
       "validForList": [
         "showPanel"
       ],
-      "invalidForList": [],
       "condition": "仅：showPanel",
       "defaultValue": "true",
       "defaultValueRaw": true,
-      "required": false,
-      "variableMode": "Input",
-      "isControlField": false
+      "variableMode": "Input"
     },
     {
       "key": "searchText",
       "name": "预置的搜索内容",
       "type": "Text",
       "description": "预先放入搜索框的内容",
-      "isAdvanced": false,
       "validForList": [
         "showSearch",
         "StartSearchWithAction",
         "SearchWithCertainAction"
       ],
-      "invalidForList": [],
       "condition": "仅：showSearch, StartSearchWithAction, SearchWithCertainAction",
       "defaultValue": "",
-      "required": false,
-      "variableMode": "UseVarOrInput",
-      "isControlField": false
+      "variableMode": "UseVarOrInput"
     },
     {
       "key": "skinId",
       "name": "外观ID",
       "type": "Text",
       "description": "请在外观网页中复制外观ID",
-      "isAdvanced": false,
       "validForList": [
         "LoadSkin"
       ],
-      "invalidForList": [],
       "condition": "仅：LoadSkin",
       "defaultValue": "",
-      "defaultValueRaw": "",
       "required": true,
-      "variableMode": "UseVarOrInput",
-      "isControlField": false
+      "variableMode": "UseVarOrInput"
     },
     {
       "key": "theme",
       "name": "主题模式",
       "type": "Enum",
       "description": "可选切换为浅色或暗色模式",
-      "isAdvanced": false,
       "validForList": [
         "LoadSkin"
       ],
-      "invalidForList": [],
       "condition": "仅：LoadSkin",
       "defaultValue": "",
-      "defaultValueRaw": "",
-      "required": false,
-      "variableMode": "Input",
-      "isControlField": false
+      "variableMode": "Input"
     },
     {
       "key": "viewMode",
       "name": "显示状态",
       "type": "Enum",
-      "description": "",
-      "isAdvanced": false,
       "validForList": [
         "ToggleFloatButtons"
       ],
-      "invalidForList": [],
       "condition": "仅：ToggleFloatButtons",
       "defaultValue": "ByProcess",
-      "defaultValueRaw": "ByProcess",
-      "required": false,
-      "variableMode": "Input",
-      "isControlField": false
+      "variableMode": "Input"
     },
     {
       "key": "stopIfFail",
       "name": "失败后停止",
       "type": "Boolean",
       "description": "失败后是否停止动作",
-      "isAdvanced": false,
-      "validForList": [],
-      "invalidForList": [],
-      "condition": "",
       "defaultValue": "true",
       "defaultValueRaw": true,
-      "required": false,
-      "variableMode": "Input",
-      "isControlField": false
+      "variableMode": "Input"
     }
   ],
   "outputs": [
@@ -245,70 +182,51 @@
       "key": "isSuccess",
       "name": "步骤是否成功",
       "type": "Boolean",
-      "description": "步骤是否成功完成",
-      "isAdvanced": false,
-      "validForList": [],
-      "invalidForList": [],
-      "condition": ""
+      "description": "步骤是否成功完成"
     },
     {
       "key": "actionList",
       "name": "动作列表",
       "type": "List",
-      "description": "",
-      "isAdvanced": false,
       "validForList": [
         "GetActionList"
       ],
-      "invalidForList": [],
       "condition": "仅：GetActionList"
     },
     {
       "key": "actionTitle",
       "name": "动作标题",
       "type": "Text",
-      "description": "",
-      "isAdvanced": false,
       "validForList": [
         "GetActionInfo"
       ],
-      "invalidForList": [],
       "condition": "仅：GetActionInfo"
     },
     {
       "key": "actionIcon",
       "name": "动作图标",
       "type": "Text",
-      "description": "",
-      "isAdvanced": false,
       "validForList": [
         "GetActionInfo"
       ],
-      "invalidForList": [],
       "condition": "仅：GetActionInfo"
     },
     {
       "key": "actionDescription",
       "name": "动作描述",
       "type": "Text",
-      "description": "",
-      "isAdvanced": false,
       "validForList": [
         "GetActionInfo"
       ],
-      "invalidForList": [],
       "condition": "仅：GetActionInfo"
     },
     {
       "key": "windowHandle",
       "name": "窗口句柄",
       "type": "Integer",
-      "description": "",
-      "isAdvanced": false,
       "validForList": [
         "FloatAction"
       ],
-      "invalidForList": [],
       "condition": "仅：FloatAction"
     },
     {
@@ -316,11 +234,9 @@
       "name": "右键菜单数据",
       "type": "Text",
       "description": "动作配置中的右键菜单原始文本；未配置时输出空文本。",
-      "isAdvanced": false,
       "validForList": [
         "GetActionInfo"
       ],
-      "invalidForList": [],
       "condition": "仅：GetActionInfo"
     }
   ],
@@ -330,163 +246,131 @@
       "items": [
         {
           "value": "showPanel",
-          "name": "显示面板",
-          "description": ""
+          "name": "显示面板"
         },
         {
           "value": "showSearch",
-          "name": "显示搜索框",
-          "description": ""
+          "name": "显示搜索框"
         },
         {
           "value": "closeSearch",
-          "name": "关闭搜索框",
-          "description": ""
+          "name": "关闭搜索框"
         },
         {
           "value": "showCircleMenu",
-          "name": "显示轮盘菜单 (点击)",
-          "description": ""
+          "name": "显示轮盘菜单 (点击)"
         },
         {
           "value": "showTextSelectionToolbar",
-          "name": "显示选中文本工具条",
-          "description": ""
+          "name": "显示选中文本工具条"
         },
         {
           "value": "togglePause",
-          "name": "禁用/启用",
-          "description": ""
+          "name": "禁用/启用"
         },
         {
           "value": "runLastAction",
-          "name": "运行最后使用的动作",
-          "description": ""
+          "name": "运行最后使用的动作"
         },
         {
           "value": "startAppVoiceInput",
-          "name": "启动App语音输入",
-          "description": ""
+          "name": "启动App语音输入"
         },
         {
           "value": "stopAllActions",
-          "name": "停止运行中的动作",
-          "description": ""
+          "name": "停止运行中的动作"
         },
         {
           "value": "reinstallMouseHook",
-          "name": "重新加载键鼠挂钩",
-          "description": ""
+          "name": "重新加载键鼠挂钩"
         },
         {
           "value": "ResetKeyboard",
-          "name": "重置键盘状态",
-          "description": ""
+          "name": "重置键盘状态"
         },
         {
           "value": "showDashboardWindow",
-          "name": "显示仪表盘窗口",
-          "description": ""
+          "name": "显示仪表盘窗口"
         },
         {
           "value": "showConfigWindow",
-          "name": "显示设置窗口",
-          "description": ""
+          "name": "显示设置窗口"
         },
         {
           "value": "showExeSettingWindow",
-          "name": "显示场景与动作管理窗口",
-          "description": ""
+          "name": "显示场景与动作管理窗口"
         },
         {
           "value": "closeAllFloatWindow",
-          "name": "关闭所有悬浮按钮",
-          "description": ""
+          "name": "关闭所有悬浮按钮"
         },
         {
           "value": "loadProfile",
-          "name": "加载动作页",
-          "description": ""
+          "name": "加载动作页"
         },
         {
           "value": "loadExeProfiles",
-          "name": "加载场景动作（锁定切换）",
-          "description": ""
+          "name": "加载场景动作（锁定切换）"
         },
         {
           "value": "loadExeProfilesNoLock",
-          "name": "加载场景动作（不锁定切换）",
-          "description": ""
+          "name": "加载场景动作（不锁定切换）"
         },
         {
           "value": "ToggleLockPanel",
-          "name": "锁定/解锁 动作页自动切换",
-          "description": ""
+          "name": "锁定/解锁 动作页自动切换"
         },
         {
           "value": "editAction",
-          "name": "编辑动作",
-          "description": ""
+          "name": "编辑动作"
         },
         {
           "value": "RestartQuicker",
-          "name": "重启Quicker",
-          "description": ""
+          "name": "重启Quicker"
         },
         {
           "value": "SetPushActiveClient",
-          "name": "推送服务：设置为活动客户端",
-          "description": ""
+          "name": "推送服务：设置为活动客户端"
         },
         {
           "value": "StartSearchWithAction",
-          "name": "使用当前动作进行实时搜索",
-          "description": ""
+          "name": "使用当前动作进行实时搜索"
         },
         {
           "value": "SearchWithCertainAction",
-          "name": "使用指定动作进行实时搜索",
-          "description": ""
+          "name": "使用指定动作进行实时搜索"
         },
         {
           "value": "operation_show_context_menu",
-          "name": "显示剪贴板上下文菜单",
-          "description": ""
+          "name": "显示剪贴板上下文菜单"
         },
         {
           "value": "LoadSkin",
-          "name": "加载外观/切换主题(专业版功能)",
-          "description": ""
+          "name": "加载外观/切换主题(专业版功能)"
         },
         {
           "value": "ExitQuicker",
-          "name": "退出Quicker",
-          "description": ""
+          "name": "退出Quicker"
         },
         {
           "value": "FloatAction",
-          "name": "悬浮动作(专业版功能)",
-          "description": ""
+          "name": "悬浮动作(专业版功能)"
         },
         {
           "value": "ToggleFloatButtons",
-          "name": "切换所有悬浮按钮显示",
-          "description": ""
+          "name": "切换所有悬浮按钮显示"
         },
         {
           "value": "ShowHideImageWindows",
-          "name": "显示或隐藏所有图片窗口",
-          "description": ""
+          "name": "显示或隐藏所有图片窗口"
         },
         {
           "value": "RemoveAction",
-          "name": "删除当前动作",
-          "description": ""
+          "name": "删除当前动作"
         },
         {
           "value": "GetActionInfo",
-          "name": "根据ID获取动作信息",
-          "description": ""
+          "name": "根据ID获取动作信息"
         }
       ]
     },
@@ -495,28 +379,23 @@
       "items": [
         {
           "value": "",
-          "name": "不改变",
-          "description": ""
+          "name": "不改变"
         },
         {
           "value": "auto",
-          "name": "跟随Windows",
-          "description": ""
+          "name": "跟随Windows"
         },
         {
           "value": "light",
-          "name": "浅色",
-          "description": ""
+          "name": "浅色"
         },
         {
           "value": "dark",
-          "name": "暗色",
-          "description": ""
+          "name": "暗色"
         },
         {
           "value": "toggle",
-          "name": "切换浅色和暗色",
-          "description": ""
+          "name": "切换浅色和暗色"
         }
       ]
     },
@@ -525,23 +404,19 @@
       "items": [
         {
           "value": "HideAll",
-          "name": "隐藏全部",
-          "description": ""
+          "name": "隐藏全部"
         },
         {
           "value": "ByProcess",
-          "name": "自动(按关联进程切换)",
-          "description": ""
+          "name": "自动(按关联进程切换)"
         },
         {
           "value": "ShowAll",
-          "name": "显示全部",
-          "description": ""
+          "name": "显示全部"
         },
         {
           "value": "ToggleHideAndAuto",
-          "name": "切换隐藏和自动",
-          "description": ""
+          "name": "切换隐藏和自动"
         }
       ]
     }

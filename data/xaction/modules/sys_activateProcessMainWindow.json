@@ -8,8 +8,6 @@
   "category": "System",
   "categoryName": "Windows系统",
   "stepType": "Action",
-  "isRisky": false,
-  "isProOnly": false,
   "helpLink": "https://docs.getquicker.net/v2/xaction/modules/activateprocessmainwindow",
   "inputs": [
     {
@@ -17,88 +15,51 @@
       "name": "进程名称/pid",
       "type": "Text",
       "description": "请输入当前登录会话中的进程名、PID或完整exe路径。进程名可带.exe后缀。",
-      "isAdvanced": false,
-      "validForList": [],
-      "invalidForList": [],
-      "condition": "",
       "defaultValue": "",
-      "defaultValueRaw": "",
       "required": true,
-      "variableMode": "UseVarOrInput",
-      "isControlField": false
+      "variableMode": "UseVarOrInput"
     },
     {
       "key": "hotkey",
       "name": "热键",
       "type": "Text",
       "description": "选填。软件最小化到托盘时，使用指定的全局热键激活窗口。",
-      "isAdvanced": false,
-      "validForList": [],
-      "invalidForList": [],
-      "condition": "",
       "defaultValue": "",
-      "defaultValueRaw": "",
-      "required": false,
-      "variableMode": "UseVarOrInput",
-      "isControlField": false
+      "variableMode": "UseVarOrInput"
     },
     {
       "key": "className",
       "name": "窗口类名",
       "type": "Text",
       "description": "选填。按类名筛选窗口，支持正则；热键和已有前台窗口也必须满足条件。隐藏窗口必须唯一。",
-      "isAdvanced": false,
-      "validForList": [],
-      "invalidForList": [],
-      "condition": "",
       "defaultValue": "",
-      "required": false,
-      "variableMode": "UseVarOrInput",
-      "isControlField": false
+      "variableMode": "UseVarOrInput"
     },
     {
       "key": "windowTitle",
       "name": "窗口标题",
       "type": "Text",
       "description": "选填。按标题筛选窗口，支持正则；所有成功路径均验证此条件和真实前台状态。",
-      "isAdvanced": false,
-      "validForList": [],
-      "invalidForList": [],
-      "condition": "",
       "defaultValue": "",
-      "required": false,
-      "variableMode": "UseVarOrInput",
-      "isControlField": false
+      "variableMode": "UseVarOrInput"
     },
     {
       "key": "path",
       "name": "程序路径",
       "type": "Text",
       "description": "选填。如果进程不存在，可以根据此路径启动程序。",
-      "isAdvanced": false,
-      "validForList": [],
-      "invalidForList": [],
-      "condition": "",
       "defaultValue": "",
-      "defaultValueRaw": "",
       "required": true,
-      "variableMode": "UseVarOrInput",
-      "isControlField": false
+      "variableMode": "UseVarOrInput"
     },
     {
       "key": "stopIfFail",
       "name": "失败后停止",
       "type": "Boolean",
       "description": "失败后是否停止动作",
-      "isAdvanced": false,
-      "validForList": [],
-      "invalidForList": [],
-      "condition": "",
       "defaultValue": "true",
       "defaultValueRaw": true,
-      "required": false,
-      "variableMode": "Input",
-      "isControlField": false
+      "variableMode": "Input"
     }
   ],
   "outputs": [
@@ -106,43 +67,25 @@
       "key": "isSuccess",
       "name": "是否成功",
       "type": "Boolean",
-      "description": "是否成功激活了进程主窗口",
-      "isAdvanced": false,
-      "validForList": [],
-      "invalidForList": [],
-      "condition": ""
+      "description": "是否成功激活了进程主窗口"
     },
     {
       "key": "pid",
       "name": "PID",
       "type": "Integer",
-      "description": "进程ID",
-      "isAdvanced": false,
-      "validForList": [],
-      "invalidForList": [],
-      "condition": ""
+      "description": "进程ID"
     },
     {
       "key": "mainWinHandle",
       "name": "主窗口句柄",
       "type": "Integer",
-      "description": "进程的主窗口句柄",
-      "isAdvanced": false,
-      "validForList": [],
-      "invalidForList": [],
-      "condition": ""
+      "description": "进程的主窗口句柄"
     },
     {
       "key": "mainWinTitle",
       "name": "主窗口标题",
-      "type": "Text",
-      "description": "",
-      "isAdvanced": false,
-      "validForList": [],
-      "invalidForList": [],
-      "condition": ""
+      "type": "Text"
     }
   ],
-  "selections": {},
   "sourceFileName": "catalog.json"
 }

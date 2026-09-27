@@ -8,21 +8,13 @@
   "category": "Ui",
   "categoryName": "界面组件",
   "stepType": "Action",
-  "isRisky": false,
-  "isProOnly": false,
   "helpLink": "https://docs.getquicker.net/v2/xaction/modules/textselecttools",
   "inputs": [
     {
       "key": "operation",
       "name": "选择器",
       "type": "Enum",
-      "description": "",
-      "isAdvanced": false,
-      "validForList": [],
-      "invalidForList": [],
-      "condition": "",
       "defaultValue": "",
-      "required": false,
       "variableMode": "UseVarOrInput",
       "isControlField": true
     },
@@ -30,32 +22,21 @@
       "key": "currValue",
       "name": "当前值",
       "type": "Text",
-      "description": "",
-      "isAdvanced": false,
       "validForList": [
         "OperationItemEditor"
       ],
-      "invalidForList": [],
       "condition": "仅：OperationItemEditor",
       "defaultValue": "",
-      "required": false,
-      "variableMode": "UseVarOrInput",
-      "isControlField": false
+      "variableMode": "UseVarOrInput"
     },
     {
       "key": "stopIfFail",
       "name": "失败后停止",
       "type": "Boolean",
       "description": "失败后是否停止动作",
-      "isAdvanced": false,
-      "validForList": [],
-      "invalidForList": [],
-      "condition": "",
       "defaultValue": "true",
       "defaultValueRaw": true,
-      "required": false,
-      "variableMode": "Input",
-      "isControlField": false
+      "variableMode": "Input"
     }
   ],
   "outputs": [
@@ -63,21 +44,13 @@
       "key": "isSuccess",
       "name": "是否成功",
       "type": "Boolean",
-      "description": "操作是否成功",
-      "isAdvanced": false,
-      "validForList": [],
-      "invalidForList": [],
-      "condition": ""
+      "description": "操作是否成功"
     },
     {
       "key": "output",
       "name": "结果文本",
       "type": "Text",
-      "description": "选择器的结果",
-      "isAdvanced": false,
-      "validForList": [],
-      "invalidForList": [],
-      "condition": ""
+      "description": "选择器的结果"
     }
   ],
   "selections": {
@@ -86,138 +59,111 @@
       "items": [
         {
           "value": "SelectSingleFile",
-          "name": "选取文件",
-          "description": ""
+          "name": "选取文件"
         },
         {
           "value": "SelectMultiFile",
-          "name": "选取(多个)文件",
-          "description": ""
+          "name": "选取(多个)文件"
         },
         {
           "value": "SelectSingleFolder",
-          "name": "选取文件夹",
-          "description": ""
+          "name": "选取文件夹"
         },
         {
           "value": "SelectSavePath",
-          "name": "选择保存路径",
-          "description": ""
+          "name": "选择保存路径"
         },
         {
           "value": "SelectProcessPath",
-          "name": "选择窗口的进程路径",
-          "description": ""
+          "name": "选择窗口的进程路径"
         },
         {
           "value": "SelectProcessName",
-          "name": "选择进程名",
-          "description": ""
+          "name": "选择进程名"
         },
         {
           "value": "SelectProfileExe",
-          "name": "选择场景标识",
-          "description": ""
+          "name": "选择场景标识"
         },
         {
           "value": "SelectWindowHandle",
-          "name": "选择窗口句柄",
-          "description": ""
+          "name": "选择窗口句柄"
         },
         {
           "value": "SelectKeyName",
-          "name": "从键盘输入键名",
-          "description": ""
+          "name": "从键盘输入键名"
         },
         {
           "value": "SelectSendKeysData",
-          "name": "从键盘输入模拟按键B的内容",
-          "description": ""
+          "name": "从键盘输入模拟按键B的内容"
         },
         {
           "value": "SelectKeyCode",
-          "name": "从键盘输入键码数字",
-          "description": ""
+          "name": "从键盘输入键码数字"
         },
         {
           "value": "SelectLocationArea",
-          "name": "选取区域",
-          "description": ""
+          "name": "选取区域"
         },
         {
           "value": "SelectLocationPoint",
-          "name": "选取坐标位置",
-          "description": ""
+          "name": "选取坐标位置"
         },
         {
           "value": "SelectRelativePoint",
-          "name": "选取窗口坐标位置",
-          "description": ""
+          "name": "选取窗口坐标位置"
         },
         {
           "value": "CaptureToFile",
-          "name": "截图并获取路径",
-          "description": ""
+          "name": "截图并获取路径"
         },
         {
           "value": "SelectIcon",
-          "name": "选取矢量图标",
-          "description": ""
+          "name": "选取矢量图标"
         },
         {
           "value": "SelectActionId",
-          "name": "选取动作ID",
-          "description": ""
+          "name": "选取动作ID"
         },
         {
           "value": "SelectActionName",
-          "name": "选取动作名称",
-          "description": ""
+          "name": "选取动作名称"
         },
         {
           "value": "SelectControlXPath",
-          "name": "选择窗口控件，获取其XPath",
-          "description": ""
+          "name": "选择窗口控件，获取其XPath"
         },
         {
           "value": "OperationItemEditor",
-          "name": "操作项编辑器",
-          "description": ""
+          "name": "操作项编辑器"
         },
         {
           "value": "SelectBluetoothDevice",
-          "name": "已配对的蓝牙设备",
-          "description": ""
+          "name": "已配对的蓝牙设备"
         },
         {
           "value": "SelectBluetoothLEDevice",
-          "name": "低功耗蓝牙设备",
-          "description": ""
+          "name": "低功耗蓝牙设备"
         },
         {
           "value": "SelectNetworkProfile",
-          "name": "网络连接",
-          "description": ""
+          "name": "网络连接"
         },
         {
           "value": "SelectWebElementSelector",
-          "name": "网页元素的CSS选择器",
-          "description": ""
+          "name": "网页元素的CSS选择器"
         },
         {
           "value": "SelectFontFamily",
-          "name": "选择字体名称",
-          "description": ""
+          "name": "选择字体名称"
         },
         {
           "value": "SelectMonitor",
-          "name": "选择显示器设备标识",
-          "description": ""
+          "name": "选择显示器设备标识"
         },
         {
           "value": "SelectVirtualDesktop",
-          "name": "选择虚拟桌面标识",
-          "description": ""
+          "name": "选择虚拟桌面标识"
         }
       ]
     }

@@ -8,8 +8,6 @@
   "category": "Compute",
   "categoryName": "计算与比较",
   "stepType": "Action",
-  "isRisky": false,
-  "isProOnly": false,
   "helpLink": "https://docs.getquicker.net/v2/xaction/modules/strcompare",
   "inputs": [
     {
@@ -17,27 +15,16 @@
       "name": "文本1",
       "type": "Text",
       "description": "被比较的文本",
-      "isAdvanced": false,
-      "validForList": [],
-      "invalidForList": [],
-      "condition": "",
       "defaultValue": "",
-      "defaultValueRaw": "",
       "required": true,
-      "variableMode": "UseVarOrInput",
-      "isControlField": false
+      "variableMode": "UseVarOrInput"
     },
     {
       "key": "type",
       "name": "类型",
       "type": "Enum",
       "description": "比较方式",
-      "isAdvanced": false,
-      "validForList": [],
-      "invalidForList": [],
-      "condition": "",
       "defaultValue": ">",
-      "defaultValueRaw": ">",
       "required": true,
       "variableMode": "Input",
       "isControlField": true
@@ -47,22 +34,15 @@
       "name": "文本2",
       "type": "Text",
       "description": "对比文本。拼音匹配时，也可用于指定拼音、拼音首字母。",
-      "isAdvanced": false,
-      "validForList": [],
-      "invalidForList": [],
-      "condition": "",
       "defaultValue": "",
-      "defaultValueRaw": "",
       "required": true,
-      "variableMode": "UseVarOrInput",
-      "isControlField": false
+      "variableMode": "UseVarOrInput"
     },
     {
       "key": "case",
       "name": "区分大小写",
       "type": "Boolean",
       "description": "是否区分大小写",
-      "isAdvanced": false,
       "validForList": [
         ">",
         "=",
@@ -72,13 +52,10 @@
         "endsWith",
         "match"
       ],
-      "invalidForList": [],
       "condition": "仅：>, =, <, contains, startsWith, endsWith, match",
       "defaultValue": "false",
       "defaultValueRaw": false,
-      "required": false,
-      "variableMode": "Input",
-      "isControlField": false
+      "variableMode": "Input"
     }
   ],
   "outputs": [
@@ -86,11 +63,7 @@
       "key": "value",
       "name": "值",
       "type": "Boolean",
-      "description": "比较结果是否为真",
-      "isAdvanced": false,
-      "validForList": [],
-      "invalidForList": [],
-      "condition": ""
+      "description": "比较结果是否为真"
     }
   ],
   "selections": {
@@ -99,43 +72,35 @@
       "items": [
         {
           "value": ">",
-          "name": ">",
-          "description": ""
+          "name": ">"
         },
         {
           "value": "=",
-          "name": "=",
-          "description": ""
+          "name": "="
         },
         {
           "value": "<",
-          "name": "<",
-          "description": ""
+          "name": "<"
         },
         {
           "value": "contains",
-          "name": "包含",
-          "description": ""
+          "name": "包含"
         },
         {
           "value": "startsWith",
-          "name": "以指定内容开始",
-          "description": ""
+          "name": "以指定内容开始"
         },
         {
           "value": "endsWith",
-          "name": "以指定内容结束",
-          "description": ""
+          "name": "以指定内容结束"
         },
         {
           "value": "match",
-          "name": "正则匹配",
-          "description": ""
+          "name": "正则匹配"
         },
         {
           "value": "pinyinMatch",
-          "name": "包含指定内容，或匹配拼音、拼音首字母",
-          "description": ""
+          "name": "包含指定内容，或匹配拼音、拼音首字母"
         }
       ]
     }

@@ -8,8 +8,6 @@
   "category": "Image",
   "categoryName": "图片处理",
   "stepType": "Action",
-  "isRisky": false,
-  "isProOnly": false,
   "helpLink": "https://docs.getquicker.net/v2/xaction/modules/whiteboard",
   "inputs": [
     {
@@ -17,90 +15,50 @@
       "name": "窗口位置",
       "type": "Text",
       "description": "可选。指定显示位置，格式为：left,top,right,bottom。支持像素数值或屏幕宽高百分比。",
-      "isAdvanced": false,
-      "validForList": [],
-      "invalidForList": [],
-      "condition": "",
       "defaultValue": "15%,30%,85%,70%",
-      "defaultValueRaw": "15%,30%,85%,70%",
-      "required": false,
-      "variableMode": "UseVarOrInput",
-      "isControlField": false
+      "variableMode": "UseVarOrInput"
     },
     {
       "key": "bgColor",
       "name": "绘图区背景颜色",
       "type": "Text",
       "description": "绘图窗口的背景颜色。格式为#AARRGGBB",
-      "isAdvanced": false,
-      "validForList": [],
-      "invalidForList": [],
-      "condition": "",
       "defaultValue": "#FFFFFFFF",
-      "defaultValueRaw": "#FFFFFFFF",
-      "required": false,
-      "variableMode": "UseVarOrInput",
-      "isControlField": false
+      "variableMode": "UseVarOrInput"
     },
     {
       "key": "penColor",
       "name": "画笔颜色",
       "type": "Text",
       "description": "画笔颜色。格式为#AARRGGBB",
-      "isAdvanced": false,
-      "validForList": [],
-      "invalidForList": [],
-      "condition": "",
       "defaultValue": "#FFFF0000",
-      "defaultValueRaw": "#FFFF0000",
-      "required": false,
-      "variableMode": "UseVarOrInput",
-      "isControlField": false
+      "variableMode": "UseVarOrInput"
     },
     {
       "key": "enableTransparent",
       "name": "使用透明无边框窗口",
       "type": "Boolean",
       "description": "不显示窗口标题栏，绘图区透明，可以看到底层窗口内容。",
-      "isAdvanced": false,
-      "validForList": [],
-      "invalidForList": [],
-      "condition": "",
       "defaultValue": "false",
       "defaultValueRaw": false,
-      "required": false,
-      "variableMode": "Input",
-      "isControlField": false
+      "variableMode": "Input"
     },
     {
       "key": "imageWithBackground",
       "name": "图片包含背景内容",
       "type": "Boolean",
       "description": "使用透明窗口时，结果图片是否包含背景内容。",
-      "isAdvanced": false,
-      "validForList": [],
-      "invalidForList": [],
-      "condition": "",
       "defaultValue": "false",
       "defaultValueRaw": false,
-      "required": false,
-      "variableMode": "Input",
-      "isControlField": false
+      "variableMode": "Input"
     },
     {
       "key": "stopIfFail",
       "name": "取消后停止动作",
       "type": "Boolean",
-      "description": "",
-      "isAdvanced": false,
-      "validForList": [],
-      "invalidForList": [],
-      "condition": "",
       "defaultValue": "true",
       "defaultValueRaw": true,
-      "required": false,
-      "variableMode": "Input",
-      "isControlField": false
+      "variableMode": "Input"
     }
   ],
   "outputs": [
@@ -108,23 +66,13 @@
       "key": "isSuccess",
       "name": "是否成功",
       "type": "Boolean",
-      "description": "操作是否成功",
-      "isAdvanced": false,
-      "validForList": [],
-      "invalidForList": [],
-      "condition": ""
+      "description": "操作是否成功"
     },
     {
       "key": "result",
       "name": "结果图片",
-      "type": "Image",
-      "description": "",
-      "isAdvanced": false,
-      "validForList": [],
-      "invalidForList": [],
-      "condition": ""
+      "type": "Image"
     }
   ],
-  "selections": {},
   "sourceFileName": "catalog.json"
 }

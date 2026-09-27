@@ -8,21 +8,13 @@
   "category": "SoftInteraction",
   "categoryName": "第三方软件交互",
   "stepType": "Action",
-  "isRisky": false,
-  "isProOnly": false,
   "helpLink": "https://docs.getquicker.net/v2/xaction/modules/premierecontrol",
   "inputs": [
     {
       "key": "operation",
       "name": "操作类型",
       "type": "Enum",
-      "description": "",
-      "isAdvanced": false,
-      "validForList": [],
-      "invalidForList": [],
-      "condition": "",
       "defaultValue": "project.get_context",
-      "defaultValueRaw": "project.get_context",
       "required": true,
       "variableMode": "Input",
       "isControlField": true
@@ -32,285 +24,200 @@
       "name": "文件路径",
       "type": "Text",
       "description": "项目另存为的 .prproj 绝对路径。",
-      "isAdvanced": false,
       "validForList": [
         "project.save_as"
       ],
-      "invalidForList": [],
       "condition": "仅：project.save_as",
       "defaultValue": "",
-      "defaultValueRaw": "",
       "required": true,
-      "variableMode": "UseVarOrInput",
-      "isControlField": false
+      "variableMode": "UseVarOrInput"
     },
     {
       "key": "sequence",
       "name": "序列名称或 GUID",
       "type": "Text",
       "description": "名称重复时请使用 sequence.list 返回的 GUID。",
-      "isAdvanced": false,
       "validForList": [
         "sequence.activate"
       ],
-      "invalidForList": [],
       "condition": "仅：sequence.activate",
       "defaultValue": "",
-      "defaultValueRaw": "",
       "required": true,
-      "variableMode": "UseVarOrInput",
-      "isControlField": false
+      "variableMode": "UseVarOrInput"
     },
     {
       "key": "seconds",
       "name": "位置（秒）",
       "type": "Number",
-      "description": "",
-      "isAdvanced": false,
       "validForList": [
         "timeline.set_playhead"
       ],
-      "invalidForList": [],
       "condition": "仅：timeline.set_playhead",
       "defaultValue": "0",
       "defaultValueRaw": 0,
-      "required": false,
-      "variableMode": "UseVarOrInput",
-      "isControlField": false
+      "variableMode": "UseVarOrInput"
     },
     {
       "key": "inSeconds",
       "name": "入点（秒）",
       "type": "Number",
-      "description": "",
-      "isAdvanced": false,
       "validForList": [
         "timeline.set_in_out"
       ],
-      "invalidForList": [],
       "condition": "仅：timeline.set_in_out",
       "defaultValue": "0",
       "defaultValueRaw": 0,
-      "required": false,
-      "variableMode": "UseVarOrInput",
-      "isControlField": false
+      "variableMode": "UseVarOrInput"
     },
     {
       "key": "outSeconds",
       "name": "出点（秒）",
       "type": "Number",
-      "description": "",
-      "isAdvanced": false,
       "validForList": [
         "timeline.set_in_out"
       ],
-      "invalidForList": [],
       "condition": "仅：timeline.set_in_out",
       "defaultValue": "10",
       "defaultValueRaw": 10,
-      "required": false,
-      "variableMode": "UseVarOrInput",
-      "isControlField": false
+      "variableMode": "UseVarOrInput"
     },
     {
       "key": "fileList",
       "name": "媒体文件列表",
       "type": "Text",
       "description": "每行一个媒体文件绝对路径。",
-      "isAdvanced": false,
       "validForList": [
         "media.import_files"
       ],
-      "invalidForList": [],
       "condition": "仅：media.import_files",
       "defaultValue": "",
-      "defaultValueRaw": "",
       "required": true,
-      "variableMode": "UseVarOrInput",
-      "isControlField": false
+      "variableMode": "UseVarOrInput"
     },
     {
       "key": "asNumberedStills",
       "name": "按编号静帧导入",
       "type": "Boolean",
-      "description": "",
-      "isAdvanced": false,
       "validForList": [
         "media.import_files"
       ],
-      "invalidForList": [],
       "condition": "仅：media.import_files",
       "defaultValue": "false",
       "defaultValueRaw": false,
-      "required": false,
-      "variableMode": "Input",
-      "isControlField": false
+      "variableMode": "Input"
     },
     {
       "key": "binName",
       "name": "素材箱名称",
       "type": "Text",
-      "description": "",
-      "isAdvanced": false,
       "validForList": [
         "media.create_bin"
       ],
-      "invalidForList": [],
       "condition": "仅：media.create_bin",
       "defaultValue": "Quicker 导入",
-      "defaultValueRaw": "Quicker 导入",
       "required": true,
-      "variableMode": "UseVarOrInput",
-      "isControlField": false
+      "variableMode": "UseVarOrInput"
     },
     {
       "key": "markerName",
       "name": "标记名称",
       "type": "Text",
-      "description": "",
-      "isAdvanced": false,
       "validForList": [
         "marker.add"
       ],
-      "invalidForList": [],
       "condition": "仅：marker.add",
       "defaultValue": "Quicker 标记",
-      "defaultValueRaw": "Quicker 标记",
-      "required": false,
-      "variableMode": "UseVarOrInput",
-      "isControlField": false
+      "variableMode": "UseVarOrInput"
     },
     {
       "key": "markerSeconds",
       "name": "标记位置（秒）",
       "type": "Number",
-      "description": "",
-      "isAdvanced": false,
       "validForList": [
         "marker.add"
       ],
-      "invalidForList": [],
       "condition": "仅：marker.add",
       "defaultValue": "0",
       "defaultValueRaw": 0,
-      "required": false,
-      "variableMode": "UseVarOrInput",
-      "isControlField": false
+      "variableMode": "UseVarOrInput"
     },
     {
       "key": "markerDurationSeconds",
       "name": "标记时长（秒）",
       "type": "Number",
-      "description": "",
-      "isAdvanced": false,
       "validForList": [
         "marker.add"
       ],
-      "invalidForList": [],
       "condition": "仅：marker.add",
       "defaultValue": "0",
       "defaultValueRaw": 0,
-      "required": false,
-      "variableMode": "UseVarOrInput",
-      "isControlField": false
+      "variableMode": "UseVarOrInput"
     },
     {
       "key": "markerComments",
       "name": "标记备注",
       "type": "Text",
-      "description": "",
-      "isAdvanced": false,
       "validForList": [
         "marker.add"
       ],
-      "invalidForList": [],
       "condition": "仅：marker.add",
       "defaultValue": "",
-      "defaultValueRaw": "",
-      "required": false,
-      "variableMode": "UseVarOrInput",
-      "isControlField": false
+      "variableMode": "UseVarOrInput"
     },
     {
       "key": "scriptCode",
       "name": "JavaScript 表达式",
       "type": "Text",
       "description": "可直接使用 ppro；返回 Promise 时会自动等待。",
-      "isAdvanced": false,
       "validForList": [
         "script.evaluate"
       ],
-      "invalidForList": [],
       "condition": "仅：script.evaluate",
       "defaultValue": "",
-      "defaultValueRaw": "",
       "required": true,
-      "variableMode": "UseVarOrInput",
-      "isControlField": false
+      "variableMode": "UseVarOrInput"
     },
     {
       "key": "commandName",
       "name": "Bridge 命令名称",
       "type": "Text",
-      "description": "",
-      "isAdvanced": false,
       "validForList": [
         "command.custom"
       ],
-      "invalidForList": [],
       "condition": "仅：command.custom",
       "defaultValue": "",
-      "defaultValueRaw": "",
       "required": true,
-      "variableMode": "UseVarOrInput",
-      "isControlField": false
+      "variableMode": "UseVarOrInput"
     },
     {
       "key": "argumentsJson",
       "name": "参数（JSON 对象）",
       "type": "Text",
-      "description": "",
-      "isAdvanced": false,
       "validForList": [
         "command.custom"
       ],
-      "invalidForList": [],
       "condition": "仅：command.custom",
       "defaultValue": "{}",
-      "defaultValueRaw": "{}",
-      "required": false,
-      "variableMode": "UseVarOrInput",
-      "isControlField": false
+      "variableMode": "UseVarOrInput"
     },
     {
       "key": "waitMs",
       "name": "最长等待时间(ms)",
       "type": "Number",
-      "description": "",
       "isAdvanced": true,
-      "validForList": [],
-      "invalidForList": [],
-      "condition": "",
       "defaultValue": "30000",
       "defaultValueRaw": 30000,
       "required": true,
-      "variableMode": "Input",
-      "isControlField": false
+      "variableMode": "Input"
     },
     {
       "key": "stopIfFail",
       "name": "失败后停止",
       "type": "Boolean",
       "description": "失败后是否停止动作",
-      "isAdvanced": false,
-      "validForList": [],
-      "invalidForList": [],
-      "condition": "",
       "defaultValue": "true",
       "defaultValueRaw": true,
-      "required": false,
-      "variableMode": "Input",
-      "isControlField": false
+      "variableMode": "Input"
     }
   ],
   "outputs": [
@@ -318,21 +225,13 @@
       "key": "isSuccess",
       "name": "是否成功",
       "type": "Boolean",
-      "description": "操作是否成功",
-      "isAdvanced": false,
-      "validForList": [],
-      "invalidForList": [],
-      "condition": ""
+      "description": "操作是否成功"
     },
     {
       "key": "output",
       "name": "命令结果",
       "type": "Text",
-      "description": "Premiere 返回的 JSON 结果。",
-      "isAdvanced": false,
-      "validForList": [],
-      "invalidForList": [],
-      "condition": ""
+      "description": "Premiere 返回的 JSON 结果。"
     }
   ],
   "selections": {
@@ -341,83 +240,67 @@
       "items": [
         {
           "value": "bridge.ping",
-          "name": "[Bridge] 测试连接",
-          "description": ""
+          "name": "[Bridge] 测试连接"
         },
         {
           "value": "project.get_context",
-          "name": "[项目] 获取项目上下文",
-          "description": ""
+          "name": "[项目] 获取项目上下文"
         },
         {
           "value": "project.save",
-          "name": "[项目] 保存当前项目",
-          "description": ""
+          "name": "[项目] 保存当前项目"
         },
         {
           "value": "project.save_as",
-          "name": "[项目] 项目另存为",
-          "description": ""
+          "name": "[项目] 项目另存为"
         },
         {
           "value": "sequence.list",
-          "name": "[序列] 列出项目序列",
-          "description": ""
+          "name": "[序列] 列出项目序列"
         },
         {
           "value": "sequence.activate",
-          "name": "[序列] 激活指定序列",
-          "description": ""
+          "name": "[序列] 激活指定序列"
         },
         {
           "value": "timeline.get_selection",
-          "name": "[时间线] 读取时间线选择",
-          "description": ""
+          "name": "[时间线] 读取时间线选择"
         },
         {
           "value": "timeline.get_playhead",
-          "name": "[时间线] 读取播放头位置",
-          "description": ""
+          "name": "[时间线] 读取播放头位置"
         },
         {
           "value": "timeline.set_playhead",
-          "name": "[时间线] 设置播放头位置",
-          "description": ""
+          "name": "[时间线] 设置播放头位置"
         },
         {
           "value": "timeline.set_in_out",
-          "name": "[时间线] 设置序列入点和出点",
-          "description": ""
+          "name": "[时间线] 设置序列入点和出点"
         },
         {
           "value": "media.import_files",
-          "name": "[媒体] 导入媒体文件",
-          "description": ""
+          "name": "[媒体] 导入媒体文件"
         },
         {
           "value": "media.create_bin",
-          "name": "[媒体] 创建素材箱",
-          "description": ""
+          "name": "[媒体] 创建素材箱"
         },
         {
           "value": "marker.list",
-          "name": "[标记] 列出序列标记",
-          "description": ""
+          "name": "[标记] 列出序列标记"
         },
         {
           "value": "marker.add",
-          "name": "[标记] 添加序列标记",
-          "description": ""
+          "name": "[标记] 添加序列标记"
         },
         {
           "value": "script.evaluate",
-          "name": "[脚本] 执行任意 JavaScript",
-          "description": ""
+          "name": "[脚本] 执行任意 JavaScript"
         },
         {
           "value": "command.custom",
-          "name": "[高级] 发送自定义 Bridge 命令",
-          "description": ""
+          "name": "[高级] 发送自定义 Bridge 命令"
         }
       ]
     }

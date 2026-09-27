@@ -8,8 +8,6 @@
   "category": "Files",
   "categoryName": "系统操作",
   "stepType": "Action",
-  "isRisky": false,
-  "isProOnly": false,
   "helpLink": "https://docs.getquicker.net/v2/xaction/modules/writetextfile",
   "inputs": [
     {
@@ -17,120 +15,71 @@
       "name": "内容",
       "type": "Text",
       "description": "要写入文件的内容",
-      "isAdvanced": false,
-      "validForList": [],
-      "invalidForList": [],
-      "condition": "",
       "defaultValue": "",
-      "defaultValueRaw": "",
       "required": true,
-      "variableMode": "UseVarOrInput",
-      "isControlField": false
+      "variableMode": "UseVarOrInput"
     },
     {
       "key": "filePath",
       "name": "文件路径",
       "type": "Text",
       "description": "要写入的完整文件路径（包含文件名）",
-      "isAdvanced": false,
-      "validForList": [],
-      "invalidForList": [],
-      "condition": "",
       "defaultValue": "",
-      "defaultValueRaw": "",
       "required": true,
-      "variableMode": "UseVarOrInput",
-      "isControlField": false
+      "variableMode": "UseVarOrInput"
     },
     {
       "key": "encoding",
       "name": "文件编码",
       "type": "Enum",
       "description": "写入文件的编码格式",
-      "isAdvanced": false,
-      "validForList": [],
-      "invalidForList": [],
-      "condition": "",
       "defaultValue": "utf-8",
-      "defaultValueRaw": "utf-8",
       "required": true,
-      "variableMode": "Input",
-      "isControlField": false
+      "variableMode": "Input"
     },
     {
       "key": "addUtf8Bom",
       "name": "添加UTF-BOM",
       "type": "Boolean",
       "description": "UTF8编码文件是否写入BOM标记",
-      "isAdvanced": false,
-      "validForList": [],
-      "invalidForList": [],
-      "condition": "",
       "defaultValue": "false",
       "defaultValueRaw": false,
-      "required": false,
-      "variableMode": "Input",
-      "isControlField": false
+      "variableMode": "Input"
     },
     {
       "key": "appendMode",
       "name": "添加到文件末尾",
       "type": "Boolean",
       "description": "如果文件已存在，则添加到文件的末尾",
-      "isAdvanced": false,
-      "validForList": [],
-      "invalidForList": [],
-      "condition": "",
       "defaultValue": "false",
       "defaultValueRaw": false,
-      "required": false,
-      "variableMode": "Input",
-      "isControlField": false
+      "variableMode": "Input"
     },
     {
       "key": "addNewLine",
       "name": "添加空行",
       "type": "Boolean",
       "description": "在文件末尾添加空行",
-      "isAdvanced": false,
-      "validForList": [],
-      "invalidForList": [],
-      "condition": "",
       "defaultValue": "false",
       "defaultValueRaw": false,
-      "required": false,
-      "variableMode": "Input",
-      "isControlField": false
+      "variableMode": "Input"
     },
     {
       "key": "newLineChars",
       "name": "统一换行字符",
       "type": "Enum",
-      "description": "",
-      "isAdvanced": false,
-      "validForList": [],
-      "invalidForList": [],
-      "condition": "",
       "defaultValue": "",
-      "defaultValueRaw": "",
       "required": true,
-      "variableMode": "Input",
-      "isControlField": false
+      "variableMode": "Input"
     },
     {
       "key": "stopIfFail",
       "name": "失败后停止",
       "type": "Boolean",
       "description": "失败后是否停止动作",
-      "isAdvanced": false,
-      "validForList": [],
-      "invalidForList": [],
-      "condition": "",
       "defaultValue": "true",
       "defaultValueRaw": true,
-      "required": false,
-      "variableMode": "Input",
-      "isControlField": false
+      "variableMode": "Input"
     }
   ],
   "outputs": [
@@ -138,11 +87,7 @@
       "key": "isSuccess",
       "name": "是否成功",
       "type": "Boolean",
-      "description": "操作是否成功",
-      "isAdvanced": false,
-      "validForList": [],
-      "invalidForList": [],
-      "condition": ""
+      "description": "操作是否成功"
     }
   ],
   "selections": {
@@ -151,38 +96,31 @@
       "items": [
         {
           "value": "utf-8",
-          "name": "UTF8",
-          "description": ""
+          "name": "UTF8"
         },
         {
           "value": "utf-16",
-          "name": "UTF-16 LE",
-          "description": ""
+          "name": "UTF-16 LE"
         },
         {
           "value": "utf-16BE",
-          "name": "UTF-16 BE",
-          "description": ""
+          "name": "UTF-16 BE"
         },
         {
           "value": "us-ascii",
-          "name": "ASCII",
-          "description": ""
+          "name": "ASCII"
         },
         {
           "value": "utf-7",
-          "name": "UTF7",
-          "description": ""
+          "name": "UTF7"
         },
         {
           "value": "utf-32",
-          "name": "UTF32",
-          "description": ""
+          "name": "UTF32"
         },
         {
           "value": "default",
-          "name": "系统默认(gb2312)",
-          "description": ""
+          "name": "系统默认(gb2312)"
         }
       ]
     },
@@ -191,8 +129,7 @@
       "items": [
         {
           "value": "",
-          "name": "默认（不处理）",
-          "description": ""
+          "name": "默认（不处理）"
         },
         {
           "value": "\r\n",

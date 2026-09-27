@@ -8,21 +8,13 @@
   "category": "Image",
   "categoryName": "图片处理",
   "stepType": "Action",
-  "isRisky": false,
-  "isProOnly": false,
   "helpLink": "https://docs.getquicker.net/v2/xaction/modules/imageinfo",
   "inputs": [
     {
       "key": "sourceType",
       "name": "图片来源",
       "type": "Enum",
-      "description": "",
-      "isAdvanced": false,
-      "validForList": [],
-      "invalidForList": [],
-      "condition": "",
       "defaultValue": "var",
-      "defaultValueRaw": "var",
       "required": true,
       "variableMode": "Input",
       "isControlField": true
@@ -32,80 +24,52 @@
       "name": "文件路径",
       "type": "Text",
       "description": "图片文件的完整路径",
-      "isAdvanced": false,
       "validForList": [
         "file"
       ],
-      "invalidForList": [],
       "condition": "仅：file",
       "defaultValue": "",
-      "defaultValueRaw": "",
       "required": true,
-      "variableMode": "UseVarOrInput",
-      "isControlField": false
+      "variableMode": "UseVarOrInput"
     },
     {
       "key": "bmpVar",
       "name": "图片变量",
       "type": "Image",
-      "description": "",
-      "isAdvanced": false,
       "validForList": [
         "var"
       ],
-      "invalidForList": [],
       "condition": "仅：var",
       "defaultValue": "",
-      "defaultValueRaw": "",
       "required": true,
-      "variableMode": "UseVar",
-      "isControlField": false
+      "variableMode": "UseVar"
     },
     {
       "key": "autoRotate",
       "name": "计算旋转后的宽高",
       "type": "Boolean",
       "description": "如果Exif中包含旋转角度信息，则获取旋转后的宽高",
-      "isAdvanced": false,
-      "validForList": [],
-      "invalidForList": [],
-      "condition": "",
       "defaultValue": "false",
       "defaultValueRaw": false,
-      "required": false,
-      "variableMode": "Input",
-      "isControlField": false
+      "variableMode": "Input"
     },
     {
       "key": "missingExifDateFallback",
       "name": "无 EXIF 日期时",
       "type": "Enum",
       "description": "Exif拍摄时间和普通日期均缺失时的处理方式。文件日期只是估算；图片变量没有文件日期，始终返回时间最小值（1年1月1日）。",
-      "isAdvanced": false,
-      "validForList": [],
-      "invalidForList": [],
-      "condition": "",
       "defaultValue": "creationTime",
-      "defaultValueRaw": "creationTime",
       "newStepDefaultValue": "earlierFileTime",
-      "required": false,
-      "variableMode": "UseVarOrInput",
-      "isControlField": false
+      "variableMode": "UseVarOrInput"
     },
     {
       "key": "stopIfFail",
       "name": "失败后停止",
       "type": "Boolean",
       "description": "失败后是否停止动作",
-      "isAdvanced": false,
-      "validForList": [],
-      "invalidForList": [],
-      "condition": "",
       "defaultValue": "true",
       "defaultValueRaw": true,
-      "required": false,
-      "variableMode": "Input",
-      "isControlField": false
+      "variableMode": "Input"
     }
   ],
   "outputs": [
@@ -113,93 +77,56 @@
       "key": "isSuccess",
       "name": "是否成功",
       "type": "Boolean",
-      "description": "操作是否成功",
-      "isAdvanced": false,
-      "validForList": [],
-      "invalidForList": [],
-      "condition": ""
+      "description": "操作是否成功"
     },
     {
       "key": "width",
       "name": "宽度",
-      "type": "Integer",
-      "description": "",
-      "isAdvanced": false,
-      "validForList": [],
-      "invalidForList": [],
-      "condition": ""
+      "type": "Integer"
     },
     {
       "key": "height",
       "name": "高度",
-      "type": "Integer",
-      "description": "",
-      "isAdvanced": false,
-      "validForList": [],
-      "invalidForList": [],
-      "condition": ""
+      "type": "Integer"
     },
     {
       "key": "rotateDegree",
       "name": "旋转角度",
-      "type": "Integer",
-      "description": "",
-      "isAdvanced": false,
-      "validForList": [],
-      "invalidForList": [],
-      "condition": ""
+      "type": "Integer"
     },
     {
       "key": "dateTimeOriginal",
       "name": "拍摄时间",
       "type": "DateTime",
-      "description": "优先读取Exif拍摄时间，其次读取Exif普通日期；均缺失时按“无 EXIF 日期时”选项处理。图片变量无日期或日期解析失败时返回时间最小值。",
-      "isAdvanced": false,
-      "validForList": [],
-      "invalidForList": [],
-      "condition": ""
+      "description": "优先读取Exif拍摄时间，其次读取Exif普通日期；均缺失时按“无 EXIF 日期时”选项处理。图片变量无日期或日期解析失败时返回时间最小值。"
     },
     {
       "key": "exifData",
       "name": "Exif数据",
       "type": "Dict",
-      "description": "转换为文本格式的exif数据（词典格式，请参考模块文档）",
-      "isAdvanced": false,
-      "validForList": [],
-      "invalidForList": [],
-      "condition": ""
+      "description": "转换为文本格式的exif数据（词典格式，请参考模块文档）"
     },
     {
       "key": "rawExifData",
       "name": "原始属性数据",
       "type": "Dict",
-      "description": "原始Exif数据(词典格式，请参考模块文档)",
-      "isAdvanced": false,
-      "validForList": [],
-      "invalidForList": [],
-      "condition": ""
+      "description": "原始Exif数据(词典格式，请参考模块文档)"
     },
     {
       "key": "fileTypeFromData",
       "name": "内容图片格式",
       "type": "Text",
       "description": "根据文件内容判断的文件格式（可能不准确），用于在无法根据扩展名得到图片格式的情况下使用。",
-      "isAdvanced": false,
       "validForList": [
         "file"
       ],
-      "invalidForList": [],
       "condition": "仅：file"
     },
     {
       "key": "isTakenDateTimeEmpty",
       "name": "拍摄时间为空",
       "type": "Boolean",
-      "description": "Exif拍摄时间（DateTimeOriginal）缺失或无法解析时为true；不把Exif普通日期或文件日期视为拍摄时间。“拍摄时间”输出此时可能返回回退值。",
-      "isAdvanced": false,
-      "validForList": [],
-      "invalidForList": [],
-      "condition": ""
+      "description": "Exif拍摄时间（DateTimeOriginal）缺失或无法解析时为true；不把Exif普通日期或文件日期视为拍摄时间。“拍摄时间”输出此时可能返回回退值。"
     }
   ],
   "selections": {
@@ -208,13 +135,11 @@
       "items": [
         {
           "value": "var",
-          "name": "图片变量",
-          "description": ""
+          "name": "图片变量"
         },
         {
           "value": "file",
-          "name": "图片文件",
-          "description": ""
+          "name": "图片文件"
         }
       ]
     },
@@ -223,23 +148,19 @@
       "items": [
         {
           "value": "creationTime",
-          "name": "使用文件创建时间",
-          "description": ""
+          "name": "使用文件创建时间"
         },
         {
           "value": "earlierFileTime",
-          "name": "使用创建、修改时间的较早值",
-          "description": ""
+          "name": "使用创建、修改时间的较早值"
         },
         {
           "value": "lastWriteTime",
-          "name": "使用文件修改时间",
-          "description": ""
+          "name": "使用文件修改时间"
         },
         {
           "value": "minValue",
-          "name": "返回时间最小值",
-          "description": ""
+          "name": "返回时间最小值"
         }
       ]
     }

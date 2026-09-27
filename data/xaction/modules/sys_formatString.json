@@ -8,8 +8,6 @@
   "category": "Text",
   "categoryName": "文本处理",
   "stepType": "Action",
-  "isRisky": false,
-  "isProOnly": false,
   "helpLink": "https://docs.getquicker.net/v2/xaction/modules/formatstring",
   "inputs": [
     {
@@ -17,90 +15,49 @@
       "name": "格式化字符串",
       "type": "Text",
       "description": "使用C#的String.Format语法。",
-      "isAdvanced": false,
-      "validForList": [],
-      "invalidForList": [],
-      "condition": "",
       "defaultValue": "{0}",
-      "defaultValueRaw": "{0}",
       "required": true,
-      "variableMode": "UseVarOrInput",
-      "isControlField": false
+      "variableMode": "UseVarOrInput"
     },
     {
       "key": "p0",
       "name": "参数0",
       "type": "Any",
       "description": "第 0 个参数",
-      "isAdvanced": false,
-      "validForList": [],
-      "invalidForList": [],
-      "condition": "",
       "defaultValue": "",
-      "defaultValueRaw": "",
-      "required": false,
-      "variableMode": "UseVarOrInput",
-      "isControlField": false
+      "variableMode": "UseVarOrInput"
     },
     {
       "key": "p1",
       "name": "参数1",
       "type": "Any",
       "description": "第 1 个参数",
-      "isAdvanced": false,
-      "validForList": [],
-      "invalidForList": [],
-      "condition": "",
       "defaultValue": "",
-      "defaultValueRaw": "",
-      "required": false,
-      "variableMode": "UseVarOrInput",
-      "isControlField": false
+      "variableMode": "UseVarOrInput"
     },
     {
       "key": "p2",
       "name": "参数2",
       "type": "Any",
       "description": "第 2 个参数",
-      "isAdvanced": false,
-      "validForList": [],
-      "invalidForList": [],
-      "condition": "",
       "defaultValue": "",
-      "defaultValueRaw": "",
-      "required": false,
-      "variableMode": "UseVarOrInput",
-      "isControlField": false
+      "variableMode": "UseVarOrInput"
     },
     {
       "key": "p3",
       "name": "参数3",
       "type": "Any",
       "description": "第 3 个参数",
-      "isAdvanced": false,
-      "validForList": [],
-      "invalidForList": [],
-      "condition": "",
       "defaultValue": "",
-      "defaultValueRaw": "",
-      "required": false,
-      "variableMode": "UseVarOrInput",
-      "isControlField": false
+      "variableMode": "UseVarOrInput"
     },
     {
       "key": "p4",
       "name": "参数4",
       "type": "Any",
       "description": "第 4 个参数",
-      "isAdvanced": false,
-      "validForList": [],
-      "invalidForList": [],
-      "condition": "",
       "defaultValue": "",
-      "defaultValueRaw": "",
-      "required": false,
-      "variableMode": "UseVarOrInput",
-      "isControlField": false
+      "variableMode": "UseVarOrInput"
     }
   ],
   "outputs": [
@@ -108,13 +65,8 @@
       "key": "output",
       "name": "结果",
       "type": "Text",
-      "description": "生成的文本内容",
-      "isAdvanced": false,
-      "validForList": [],
-      "invalidForList": [],
-      "condition": ""
+      "description": "生成的文本内容"
     }
   ],
-  "selections": {},
   "sourceFileName": "catalog.json"
 }

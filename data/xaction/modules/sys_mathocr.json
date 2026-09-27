@@ -8,8 +8,6 @@
   "category": "Network",
   "categoryName": "网络服务",
   "stepType": "Action",
-  "isRisky": false,
-  "isProOnly": false,
   "helpLink": "https://docs.getquicker.net/v2/xaction/modules/mathocr",
   "inputs": [
     {
@@ -17,12 +15,7 @@
       "name": "厂商接口",
       "type": "Enum",
       "description": "详情请参考文档。",
-      "isAdvanced": false,
-      "validForList": [],
-      "invalidForList": [],
-      "condition": "",
       "defaultValue": "Mathpix",
-      "defaultValueRaw": "Mathpix",
       "required": true,
       "variableMode": "Input",
       "isControlField": true
@@ -32,32 +25,22 @@
       "name": "公式图片",
       "type": "Image",
       "description": "指定待识别的图片变量、图片文件的路径或网址(通过表达式传入)。",
-      "isAdvanced": false,
       "validForList": [
         "Mathpix"
       ],
-      "invalidForList": [],
       "condition": "仅：Mathpix",
       "defaultValue": "",
-      "defaultValueRaw": "",
       "required": true,
-      "variableMode": "UseVarOrInput",
-      "isControlField": false
+      "variableMode": "UseVarOrInput"
     },
     {
       "key": "stopIfFail",
       "name": "失败后停止",
       "type": "Boolean",
       "description": "失败后是否停止动作",
-      "isAdvanced": false,
-      "validForList": [],
-      "invalidForList": [],
-      "condition": "",
       "defaultValue": "true",
       "defaultValueRaw": true,
-      "required": false,
-      "variableMode": "Input",
-      "isControlField": false
+      "variableMode": "Input"
     }
   ],
   "outputs": [
@@ -65,81 +48,44 @@
       "key": "isSuccess",
       "name": "是否成功",
       "type": "Boolean",
-      "description": "操作是否成功",
-      "isAdvanced": false,
-      "validForList": [],
-      "invalidForList": [],
-      "condition": ""
+      "description": "操作是否成功"
     },
     {
       "key": "mathpixMarkdown",
       "name": "Mathpix MD",
       "type": "Text",
-      "description": "Mathpix Markdown格式",
-      "isAdvanced": false,
-      "validForList": [],
-      "invalidForList": [],
-      "condition": ""
+      "description": "Mathpix Markdown格式"
     },
     {
       "key": "mathml",
       "name": "MathML",
-      "type": "Text",
-      "description": "",
-      "isAdvanced": false,
-      "validForList": [],
-      "invalidForList": [],
-      "condition": ""
+      "type": "Text"
     },
     {
       "key": "asciimath",
       "name": "AsciiMath",
-      "type": "Text",
-      "description": "",
-      "isAdvanced": false,
-      "validForList": [],
-      "invalidForList": [],
-      "condition": ""
+      "type": "Text"
     },
     {
       "key": "latex",
       "name": "Latex",
-      "type": "Text",
-      "description": "",
-      "isAdvanced": false,
-      "validForList": [],
-      "invalidForList": [],
-      "condition": ""
+      "type": "Text"
     },
     {
       "key": "latexEx1",
       "name": "Latex附加格式1",
-      "type": "Text",
-      "description": "",
-      "isAdvanced": false,
-      "validForList": [],
-      "invalidForList": [],
-      "condition": ""
+      "type": "Text"
     },
     {
       "key": "latexEx2",
       "name": "Latex附加格式2",
-      "type": "Text",
-      "description": "",
-      "isAdvanced": false,
-      "validForList": [],
-      "invalidForList": [],
-      "condition": ""
+      "type": "Text"
     },
     {
       "key": "rawData",
       "name": "原始响应",
       "type": "Text",
-      "description": "厂商接口返回的原始内容，通常为json格式。",
-      "isAdvanced": false,
-      "validForList": [],
-      "invalidForList": [],
-      "condition": ""
+      "description": "厂商接口返回的原始内容，通常为json格式。"
     }
   ],
   "selections": {
@@ -148,13 +94,11 @@
       "items": [
         {
           "value": "Mathpix",
-          "name": "图片识别(Mathpix)",
-          "description": ""
+          "name": "图片识别(Mathpix)"
         },
         {
           "value": "MathpixStrokes",
-          "name": "手写并识别(Mathpix)",
-          "description": ""
+          "name": "手写并识别(Mathpix)"
         }
       ]
     }

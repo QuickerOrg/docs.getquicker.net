@@ -8,8 +8,6 @@
   "category": "Compute",
   "categoryName": "计算与比较",
   "stepType": "Action",
-  "isRisky": false,
-  "isProOnly": false,
   "helpLink": "https://docs.getquicker.net/v2/xaction/modules/color",
   "inputs": [
     {
@@ -17,12 +15,7 @@
       "name": "类型",
       "type": "Enum",
       "description": "比较方式",
-      "isAdvanced": false,
-      "validForList": [],
-      "invalidForList": [],
-      "condition": "",
       "defaultValue": "fromString",
-      "defaultValueRaw": "fromString",
       "required": true,
       "variableMode": "Input",
       "isControlField": true
@@ -32,64 +25,45 @@
       "name": "颜色",
       "type": "Text",
       "description": "颜色的文本值, 格式支持：#223344, #FF223344(ARGB顺序), Red, rgb(200,200,200), rgba(200,200,200,0.5), CMYK(0,0,0,0)或CMYK:0,0,0,0",
-      "isAdvanced": false,
       "validForList": [
         "fromString",
         "editOrSelectColor"
       ],
-      "invalidForList": [],
       "condition": "仅：fromString, editOrSelectColor",
       "defaultValue": "",
       "required": true,
-      "variableMode": "UseVarOrInput",
-      "isControlField": false
+      "variableMode": "UseVarOrInput"
     },
     {
       "key": "location",
       "name": "坐标",
       "type": "Text",
       "description": "格式为:\"横坐标X,纵坐标Y\"",
-      "isAdvanced": false,
       "validForList": [
         "fromScreenPosition"
       ],
-      "invalidForList": [],
       "condition": "仅：fromScreenPosition",
       "defaultValue": "0,0",
-      "defaultValueRaw": "0,0",
       "required": true,
-      "variableMode": "UseVarOrInput",
-      "isControlField": false
+      "variableMode": "UseVarOrInput"
     },
     {
       "key": "format",
       "name": "输出文本格式",
       "type": "Enum",
       "description": "输出的颜色文本值格式，用以转换颜色值的格式",
-      "isAdvanced": false,
-      "validForList": [],
-      "invalidForList": [],
-      "condition": "",
       "defaultValue": "HEX_RGB",
-      "defaultValueRaw": "HEX_RGB",
       "required": true,
-      "variableMode": "UseVarOrInput",
-      "isControlField": false
+      "variableMode": "UseVarOrInput"
     },
     {
       "key": "stopIfFail",
       "name": "失败后停止",
       "type": "Boolean",
       "description": "失败后是否停止动作",
-      "isAdvanced": false,
-      "validForList": [],
-      "invalidForList": [],
-      "condition": "",
       "defaultValue": "true",
       "defaultValueRaw": true,
-      "required": false,
-      "variableMode": "Input",
-      "isControlField": false
+      "variableMode": "Input"
     }
   ],
   "outputs": [
@@ -97,111 +71,67 @@
       "key": "isSuccess",
       "name": "是否成功",
       "type": "Boolean",
-      "description": "操作是否成功",
-      "isAdvanced": false,
-      "validForList": [],
-      "invalidForList": [],
-      "condition": ""
+      "description": "操作是否成功"
     },
     {
       "key": "A",
       "name": "透明度值",
       "type": "Number",
-      "description": "Alpha值（0-255）0表示透明",
-      "isAdvanced": false,
-      "validForList": [],
-      "invalidForList": [],
-      "condition": ""
+      "description": "Alpha值（0-255）0表示透明"
     },
     {
       "key": "R",
       "name": "红色值",
       "type": "Number",
-      "description": "R值（0-255）",
-      "isAdvanced": false,
-      "validForList": [],
-      "invalidForList": [],
-      "condition": ""
+      "description": "R值（0-255）"
     },
     {
       "key": "G",
       "name": "绿色值",
       "type": "Number",
-      "description": "G值（0-255）",
-      "isAdvanced": false,
-      "validForList": [],
-      "invalidForList": [],
-      "condition": ""
+      "description": "G值（0-255）"
     },
     {
       "key": "B",
       "name": "蓝色值",
       "type": "Number",
-      "description": "B值（0-255）",
-      "isAdvanced": false,
-      "validForList": [],
-      "invalidForList": [],
-      "condition": ""
+      "description": "B值（0-255）"
     },
     {
       "key": "Hue",
       "name": "色相",
       "type": "Number",
-      "description": "Hue值（0-360）",
-      "isAdvanced": false,
-      "validForList": [],
-      "invalidForList": [],
-      "condition": ""
+      "description": "Hue值（0-360）"
     },
     {
       "key": "HslS",
       "name": "HSL.S",
       "type": "Number",
-      "description": "HSL颜色空间的饱和度S",
-      "isAdvanced": false,
-      "validForList": [],
-      "invalidForList": [],
-      "condition": ""
+      "description": "HSL颜色空间的饱和度S"
     },
     {
       "key": "HslL",
       "name": "HSL.L",
       "type": "Number",
-      "description": "HSL颜色空间的亮度值L",
-      "isAdvanced": false,
-      "validForList": [],
-      "invalidForList": [],
-      "condition": ""
+      "description": "HSL颜色空间的亮度值L"
     },
     {
       "key": "HsvS",
       "name": "HSV.S",
       "type": "Number",
-      "description": "HSV颜色空间的饱和度S",
-      "isAdvanced": false,
-      "validForList": [],
-      "invalidForList": [],
-      "condition": ""
+      "description": "HSV颜色空间的饱和度S"
     },
     {
       "key": "HsvV",
       "name": "HSV.V",
       "type": "Number",
-      "description": "HSV颜色空间的明度V",
-      "isAdvanced": false,
-      "validForList": [],
-      "invalidForList": [],
-      "condition": ""
+      "description": "HSV颜色空间的明度V"
     },
     {
       "key": "textValue",
       "name": "文本值",
       "type": "Text",
-      "description": "输出颜色的文本值，格式请在输入参数中选择",
-      "isAdvanced": false,
-      "validForList": [],
-      "invalidForList": [],
-      "condition": ""
+      "description": "输出颜色的文本值，格式请在输入参数中选择"
     }
   ],
   "selections": {
@@ -210,23 +140,19 @@
       "items": [
         {
           "value": "fromString",
-          "name": "通过文本指定颜色",
-          "description": ""
+          "name": "通过文本指定颜色"
         },
         {
           "value": "selectFromScreen",
-          "name": "从屏幕选取颜色",
-          "description": ""
+          "name": "从屏幕选取颜色"
         },
         {
           "value": "fromScreenPosition",
-          "name": "取屏幕指定位置颜色",
-          "description": ""
+          "name": "取屏幕指定位置颜色"
         },
         {
           "value": "editOrSelectColor",
-          "name": "编辑/选择颜色",
-          "description": ""
+          "name": "编辑/选择颜色"
         }
       ]
     },
@@ -235,68 +161,55 @@
       "items": [
         {
           "value": "HEX_RGB",
-          "name": "十六进制RGB: #6496C8",
-          "description": ""
+          "name": "十六进制RGB: #6496C8"
         },
         {
           "value": "HEX_ARGB",
-          "name": "十六进制ARGB: #FF6496C8",
-          "description": ""
+          "name": "十六进制ARGB: #FF6496C8"
         },
         {
           "value": "rgba",
-          "name": "HTML: rgba(100,150,200,1)",
-          "description": ""
+          "name": "HTML: rgba(100,150,200,1)"
         },
         {
           "value": "rgb",
-          "name": "HTML: rgb(100,150,200)",
-          "description": ""
+          "name": "HTML: rgb(100,150,200)"
         },
         {
           "value": "DOT_RGB",
-          "name": "RGB: 100,150,200",
-          "description": ""
+          "name": "RGB: 100,150,200"
         },
         {
           "value": "DOT_RGBA",
-          "name": "RGBA: 100,150,200,255",
-          "description": ""
+          "name": "RGBA: 100,150,200,255"
         },
         {
           "value": "DOT_ARGB",
-          "name": "ARGB: 255,100,150,200",
-          "description": ""
+          "name": "ARGB: 255,100,150,200"
         },
         {
           "value": "float_rgba",
-          "name": "浮点: 0.39f, 0.59f, 0.78f, 1.00f",
-          "description": ""
+          "name": "浮点: 0.39f, 0.59f, 0.78f, 1.00f"
         },
         {
           "value": "Swift",
-          "name": "Swift: UIColor(red:0.39, green:0.59, blue:0.78, alpha:1.00)",
-          "description": ""
+          "name": "Swift: UIColor(red:0.39, green:0.59, blue:0.78, alpha:1.00)"
         },
         {
           "value": "CMYK",
-          "name": "CMYK: 50,25,0,22",
-          "description": ""
+          "name": "CMYK: 50,25,0,22"
         },
         {
           "value": "HSL",
-          "name": "hsl(210,47.6%,58.8%)",
-          "description": ""
+          "name": "hsl(210,47.6%,58.8%)"
         },
         {
           "value": "hsla",
-          "name": "hsla(210,47.6%,58.8%,1)",
-          "description": ""
+          "name": "hsla(210,47.6%,58.8%,1)"
         },
         {
           "value": "HSV_HSB",
-          "name": "HSV/HSB: 210°,50,78.4",
-          "description": ""
+          "name": "HSV/HSB: 210°,50,78.4"
         }
       ]
     }

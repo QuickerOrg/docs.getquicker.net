@@ -8,21 +8,13 @@
   "category": "SoftInteraction",
   "categoryName": "第三方软件交互",
   "stepType": "Action",
-  "isRisky": false,
-  "isProOnly": false,
   "helpLink": "https://docs.getquicker.net/v2/xaction/modules/cinema4dcontrol",
   "inputs": [
     {
       "key": "operation",
       "name": "操作类型",
       "type": "Enum",
-      "description": "",
-      "isAdvanced": false,
-      "validForList": [],
-      "invalidForList": [],
-      "condition": "",
       "defaultValue": "document.get_context",
-      "defaultValueRaw": "document.get_context",
       "required": true,
       "variableMode": "Input",
       "isControlField": true
@@ -31,391 +23,274 @@
       "key": "recursive",
       "name": "递归读取子对象",
       "type": "Boolean",
-      "description": "",
-      "isAdvanced": false,
       "validForList": [
         "object.list"
       ],
-      "invalidForList": [],
       "condition": "仅：object.list",
       "defaultValue": "true",
       "defaultValueRaw": true,
-      "required": false,
-      "variableMode": "Input",
-      "isControlField": false
+      "variableMode": "Input"
     },
     {
       "key": "maxDepth",
       "name": "最大层级深度",
       "type": "Integer",
-      "description": "",
-      "isAdvanced": false,
       "validForList": [
         "object.list"
       ],
-      "invalidForList": [],
       "condition": "仅：object.list",
       "defaultValue": "20",
       "defaultValueRaw": 20,
-      "required": false,
-      "variableMode": "Input",
-      "isControlField": false
+      "variableMode": "Input"
     },
     {
       "key": "includeTransform",
       "name": "返回对象变换",
       "type": "Boolean",
-      "description": "",
-      "isAdvanced": false,
       "validForList": [
         "object.list"
       ],
-      "invalidForList": [],
       "condition": "仅：object.list",
       "defaultValue": "false",
       "defaultValueRaw": false,
-      "required": false,
-      "variableMode": "Input",
-      "isControlField": false
+      "variableMode": "Input"
     },
     {
       "key": "includeChildren",
       "name": "包含层级中的子对象",
       "type": "Boolean",
-      "description": "",
-      "isAdvanced": false,
       "validForList": [
         "selection.select_all",
         "selection.invert"
       ],
-      "invalidForList": [],
       "condition": "仅：selection.select_all, selection.invert",
       "defaultValue": "true",
       "defaultValueRaw": true,
-      "required": false,
-      "variableMode": "Input",
-      "isControlField": false
+      "variableMode": "Input"
     },
     {
       "key": "objectRefsJson",
       "name": "对象引用(JSON 数组)",
       "type": "Text",
       "description": "引用可从读取对象层级或选择详情的 ref 字段取得。",
-      "isAdvanced": false,
       "validForList": [
         "selection.select_by_refs"
       ],
-      "invalidForList": [],
       "condition": "仅：selection.select_by_refs",
       "defaultValue": "[]",
-      "defaultValueRaw": "[]",
-      "required": false,
-      "variableMode": "UseVarOrInput",
-      "isControlField": false
+      "variableMode": "UseVarOrInput"
     },
     {
       "key": "selectionMode",
       "name": "选择方式",
       "type": "Text",
       "description": "replace、add 或 remove。",
-      "isAdvanced": false,
       "validForList": [
         "selection.select_by_refs"
       ],
-      "invalidForList": [],
       "condition": "仅：selection.select_by_refs",
       "defaultValue": "replace",
-      "defaultValueRaw": "replace",
-      "required": false,
-      "variableMode": "UseVarOrInput",
-      "isControlField": false
+      "variableMode": "UseVarOrInput"
     },
     {
       "key": "primitiveType",
       "name": "对象类型",
       "type": "Text",
       "description": "首版支持 cube、sphere、cylinder、cone、plane、torus。",
-      "isAdvanced": false,
       "validForList": [
         "object.create_primitive"
       ],
-      "invalidForList": [],
       "condition": "仅：object.create_primitive",
       "defaultValue": "cube",
-      "defaultValueRaw": "cube",
-      "required": false,
-      "variableMode": "UseVarOrInput",
-      "isControlField": false
+      "variableMode": "UseVarOrInput"
     },
     {
       "key": "objectName",
       "name": "对象名称",
       "type": "Text",
-      "description": "",
-      "isAdvanced": false,
       "validForList": [
         "object.create_primitive"
       ],
-      "invalidForList": [],
       "condition": "仅：object.create_primitive",
       "defaultValue": "Quicker Object",
-      "defaultValueRaw": "Quicker Object",
-      "required": false,
-      "variableMode": "UseVarOrInput",
-      "isControlField": false
+      "variableMode": "UseVarOrInput"
     },
     {
       "key": "renamePattern",
       "name": "重命名模板",
       "type": "Text",
       "description": "支持 {oldName} 和 {index}，例如 Obj_{index:03d}。",
-      "isAdvanced": false,
       "validForList": [
         "object.rename_selected"
       ],
-      "invalidForList": [],
       "condition": "仅：object.rename_selected",
       "defaultValue": "{oldName}_{index:02d}",
-      "defaultValueRaw": "{oldName}_{index:02d}",
-      "required": false,
-      "variableMode": "UseVarOrInput",
-      "isControlField": false
+      "variableMode": "UseVarOrInput"
     },
     {
       "key": "startIndex",
       "name": "起始编号",
       "type": "Integer",
-      "description": "",
-      "isAdvanced": false,
       "validForList": [
         "object.rename_selected"
       ],
-      "invalidForList": [],
       "condition": "仅：object.rename_selected",
       "defaultValue": "1",
       "defaultValueRaw": 1,
-      "required": false,
-      "variableMode": "Input",
-      "isControlField": false
+      "variableMode": "Input"
     },
     {
       "key": "offsetX",
       "name": "移动 X",
       "type": "Number",
-      "description": "",
-      "isAdvanced": false,
       "validForList": [
         "object.move_selected"
       ],
-      "invalidForList": [],
       "condition": "仅：object.move_selected",
       "defaultValue": "100",
       "defaultValueRaw": 100,
-      "required": false,
-      "variableMode": "Input",
-      "isControlField": false
+      "variableMode": "Input"
     },
     {
       "key": "offsetY",
       "name": "移动 Y",
       "type": "Number",
-      "description": "",
-      "isAdvanced": false,
       "validForList": [
         "object.move_selected"
       ],
-      "invalidForList": [],
       "condition": "仅：object.move_selected",
       "defaultValue": "0",
       "defaultValueRaw": 0,
-      "required": false,
-      "variableMode": "Input",
-      "isControlField": false
+      "variableMode": "Input"
     },
     {
       "key": "offsetZ",
       "name": "移动 Z",
       "type": "Number",
-      "description": "",
-      "isAdvanced": false,
       "validForList": [
         "object.move_selected"
       ],
-      "invalidForList": [],
       "condition": "仅：object.move_selected",
       "defaultValue": "0",
       "defaultValueRaw": 0,
-      "required": false,
-      "variableMode": "Input",
-      "isControlField": false
+      "variableMode": "Input"
     },
     {
       "key": "coordinateSpace",
       "name": "坐标空间",
       "type": "Text",
       "description": "global 使用世界坐标；local 使用父级坐标。",
-      "isAdvanced": false,
       "validForList": [
         "object.move_selected"
       ],
-      "invalidForList": [],
       "condition": "仅：object.move_selected",
       "defaultValue": "global",
-      "defaultValueRaw": "global",
-      "required": false,
-      "variableMode": "UseVarOrInput",
-      "isControlField": false
+      "variableMode": "UseVarOrInput"
     },
     {
       "key": "commandQuery",
       "name": "搜索内容",
       "type": "Text",
       "description": "按命令 ID、本地标题或帮助文本筛选；留空返回前若干项。",
-      "isAdvanced": false,
       "validForList": [
         "command.search"
       ],
-      "invalidForList": [],
       "condition": "仅：command.search",
       "defaultValue": "",
-      "defaultValueRaw": "",
-      "required": false,
-      "variableMode": "UseVarOrInput",
-      "isControlField": false
+      "variableMode": "UseVarOrInput"
     },
     {
       "key": "maxCount",
       "name": "最多返回数量",
       "type": "Integer",
-      "description": "",
-      "isAdvanced": false,
       "validForList": [
         "command.search"
       ],
-      "invalidForList": [],
       "condition": "仅：command.search",
       "defaultValue": "100",
       "defaultValueRaw": 100,
-      "required": false,
-      "variableMode": "Input",
-      "isControlField": false
+      "variableMode": "Input"
     },
     {
       "key": "commandIdentifier",
       "name": "命令 ID 或标题",
       "type": "Text",
       "description": "可填写数字 ID，或 command.search 返回的本地化标题；标题不唯一时会返回候选 ID。",
-      "isAdvanced": false,
       "validForList": [
         "command.get_info",
         "command.call"
       ],
-      "invalidForList": [],
       "condition": "仅：command.get_info, command.call",
       "defaultValue": "13957",
-      "defaultValueRaw": "13957",
-      "required": false,
-      "variableMode": "UseVarOrInput",
-      "isControlField": false
+      "variableMode": "UseVarOrInput"
     },
     {
       "key": "pythonCode",
       "name": "Python 代码",
       "type": "Text",
       "description": "表达式直接返回 value；脚本可把返回值赋给 result。",
-      "isAdvanced": false,
       "validForList": [
         "python.evaluate",
         "python.execute"
       ],
-      "invalidForList": [],
       "condition": "仅：python.evaluate, python.execute",
       "defaultValue": "",
-      "defaultValueRaw": "",
       "required": true,
-      "variableMode": "UseVarOrInput",
-      "isControlField": false
+      "variableMode": "UseVarOrInput"
     },
     {
       "key": "filePath",
       "name": "Python 文件路径",
       "type": "Text",
-      "description": "",
-      "isAdvanced": false,
       "validForList": [
         "python.run_file"
       ],
-      "invalidForList": [],
       "condition": "仅：python.run_file",
       "defaultValue": "",
-      "defaultValueRaw": "",
       "required": true,
-      "variableMode": "UseVarOrInput",
-      "isControlField": false
+      "variableMode": "UseVarOrInput"
     },
     {
       "key": "commandName",
       "name": "Bridge 命令名称",
       "type": "Text",
-      "description": "",
-      "isAdvanced": false,
       "validForList": [
         "command.custom"
       ],
-      "invalidForList": [],
       "condition": "仅：command.custom",
       "defaultValue": "",
-      "defaultValueRaw": "",
       "required": true,
-      "variableMode": "UseVarOrInput",
-      "isControlField": false
+      "variableMode": "UseVarOrInput"
     },
     {
       "key": "argumentsJson",
       "name": "参数(JSON 对象)",
       "type": "Text",
-      "description": "",
-      "isAdvanced": false,
       "validForList": [
         "command.custom"
       ],
-      "invalidForList": [],
       "condition": "仅：command.custom",
       "defaultValue": "{}",
-      "defaultValueRaw": "{}",
-      "required": false,
-      "variableMode": "UseVarOrInput",
-      "isControlField": false
+      "variableMode": "UseVarOrInput"
     },
     {
       "key": "waitMs",
       "name": "最长等待时间(ms)",
       "type": "Number",
-      "description": "",
       "isAdvanced": true,
-      "validForList": [],
-      "invalidForList": [],
-      "condition": "",
       "defaultValue": "30000",
       "defaultValueRaw": 30000,
       "required": true,
-      "variableMode": "Input",
-      "isControlField": false
+      "variableMode": "Input"
     },
     {
       "key": "stopIfFail",
       "name": "失败后停止",
       "type": "Boolean",
       "description": "失败后是否停止动作",
-      "isAdvanced": false,
-      "validForList": [],
-      "invalidForList": [],
-      "condition": "",
       "defaultValue": "true",
       "defaultValueRaw": true,
-      "required": false,
-      "variableMode": "Input",
-      "isControlField": false
+      "variableMode": "Input"
     }
   ],
   "outputs": [
@@ -423,21 +298,13 @@
       "key": "isSuccess",
       "name": "是否成功",
       "type": "Boolean",
-      "description": "操作是否成功",
-      "isAdvanced": false,
-      "validForList": [],
-      "invalidForList": [],
-      "condition": ""
+      "description": "操作是否成功"
     },
     {
       "key": "output",
       "name": "命令结果",
       "type": "Text",
-      "description": "Cinema 4D 返回的 JSON 结果。",
-      "isAdvanced": false,
-      "validForList": [],
-      "invalidForList": [],
-      "condition": ""
+      "description": "Cinema 4D 返回的 JSON 结果。"
     }
   ],
   "selections": {
@@ -446,108 +313,87 @@
       "items": [
         {
           "value": "bridge.ping",
-          "name": "[Bridge] 测试连接",
-          "description": ""
+          "name": "[Bridge] 测试连接"
         },
         {
           "value": "document.get_context",
-          "name": "[文档] 读取当前文档上下文",
-          "description": ""
+          "name": "[文档] 读取当前文档上下文"
         },
         {
           "value": "object.list",
-          "name": "[对象] 读取对象层级",
-          "description": ""
+          "name": "[对象] 读取对象层级"
         },
         {
           "value": "selection.get_info",
-          "name": "[选择] 读取选择详情",
-          "description": ""
+          "name": "[选择] 读取选择详情"
         },
         {
           "value": "selection.select_all",
-          "name": "[选择] 全选对象",
-          "description": ""
+          "name": "[选择] 全选对象"
         },
         {
           "value": "selection.clear",
-          "name": "[选择] 清空选择",
-          "description": ""
+          "name": "[选择] 清空选择"
         },
         {
           "value": "selection.invert",
-          "name": "[选择] 反选对象",
-          "description": ""
+          "name": "[选择] 反选对象"
         },
         {
           "value": "selection.select_by_refs",
-          "name": "[选择] 按对象引用选择",
-          "description": ""
+          "name": "[选择] 按对象引用选择"
         },
         {
           "value": "object.create_primitive",
-          "name": "[对象] 创建基础对象",
-          "description": ""
+          "name": "[对象] 创建基础对象"
         },
         {
           "value": "object.rename_selected",
-          "name": "[对象] 批量重命名选择对象",
-          "description": ""
+          "name": "[对象] 批量重命名选择对象"
         },
         {
           "value": "object.delete_selected",
-          "name": "[对象] 删除选择对象",
-          "description": ""
+          "name": "[对象] 删除选择对象"
         },
         {
           "value": "object.move_selected",
-          "name": "[对象] 移动选择对象",
-          "description": ""
+          "name": "[对象] 移动选择对象"
         },
         {
           "value": "view.frame_selection",
-          "name": "[视图] 聚焦选择对象",
-          "description": ""
+          "name": "[视图] 聚焦选择对象"
         },
         {
           "value": "view.frame_all",
-          "name": "[视图] 显示全部对象",
-          "description": ""
+          "name": "[视图] 显示全部对象"
         },
         {
           "value": "command.search",
-          "name": "[命令] 搜索 Cinema 4D 命令",
-          "description": ""
+          "name": "[命令] 搜索 Cinema 4D 命令"
         },
         {
           "value": "command.get_info",
-          "name": "[命令] 读取 Cinema 4D 命令信息",
-          "description": ""
+          "name": "[命令] 读取 Cinema 4D 命令信息"
         },
         {
           "value": "command.call",
-          "name": "[命令] 调用 Cinema 4D 命令",
-          "description": ""
+          "name": "[命令] 调用 Cinema 4D 命令"
         },
         {
           "value": "python.evaluate",
-          "name": "[脚本] 计算任意 Python 表达式",
-          "description": ""
+          "name": "[脚本] 计算任意 Python 表达式"
         },
         {
           "value": "python.execute",
-          "name": "[脚本] 执行任意 Python 脚本",
-          "description": ""
+          "name": "[脚本] 执行任意 Python 脚本"
         },
         {
           "value": "python.run_file",
-          "name": "[脚本] 运行 Python 文件",
-          "description": ""
+          "name": "[脚本] 运行 Python 文件"
         },
         {
           "value": "command.custom",
-          "name": "[高级] 发送自定义 Bridge 命令",
-          "description": ""
+          "name": "[高级] 发送自定义 Bridge 命令"
         }
       ]
     }

@@ -8,8 +8,6 @@
   "category": "Flow",
   "categoryName": "程序流程",
   "stepType": "Action",
-  "isRisky": false,
-  "isProOnly": false,
   "helpLink": "https://docs.getquicker.net/v2/xaction/modules/runaction",
   "inputs": [
     {
@@ -17,12 +15,7 @@
       "name": "类型",
       "type": "Enum",
       "description": "操作类型",
-      "isAdvanced": false,
-      "validForList": [],
-      "invalidForList": [],
-      "condition": "",
       "defaultValue": "StartAction",
-      "defaultValueRaw": "StartAction",
       "required": true,
       "variableMode": "Input",
       "isControlField": true
@@ -32,121 +25,93 @@
       "name": "目标动作",
       "type": "Text",
       "description": "要运行的其他动作的ID或名称(使用名称时需要完全匹配且不能有重名动作)",
-      "isAdvanced": false,
       "validForList": [
         "StartAction",
         "StopAction",
         "ShowActionContextMenu",
         "GetRunningActionCount"
       ],
-      "invalidForList": [],
       "condition": "仅：StartAction, StopAction, ShowActionContextMenu, GetRunningActionCount",
       "defaultValue": "",
       "required": true,
-      "variableMode": "UseVarOrInput",
-      "isControlField": false
+      "variableMode": "UseVarOrInput"
     },
     {
       "key": "onlyCustomMenu",
       "name": "仅显示动作的自定义菜单",
       "type": "Boolean",
       "description": "不显示编辑、复制等菜单",
-      "isAdvanced": false,
       "validForList": [
         "ShowActionContextMenu"
       ],
-      "invalidForList": [],
       "condition": "仅：ShowActionContextMenu",
       "defaultValue": "false",
       "defaultValueRaw": false,
-      "required": false,
-      "variableMode": "Input",
-      "isControlField": false
+      "variableMode": "Input"
     },
     {
       "key": "inputParam",
       "name": "命令参数",
       "type": "Text",
       "description": "传递给目标动作的参数。存储在该动作的quicker_in_param变量中。",
-      "isAdvanced": false,
       "validForList": [
         "StartAction",
         "StartCurrentAction"
       ],
-      "invalidForList": [],
       "condition": "仅：StartAction, StartCurrentAction",
       "defaultValue": "",
       "required": true,
-      "variableMode": "UseVarOrInput",
-      "isControlField": false
+      "variableMode": "UseVarOrInput"
     },
     {
       "key": "debug",
       "name": "调试模式运行",
       "type": "Boolean",
       "description": "是否以调试模式运行动作",
-      "isAdvanced": false,
       "validForList": [
         "StartAction",
         "StartCurrentAction"
       ],
-      "invalidForList": [],
       "condition": "仅：StartAction, StartCurrentAction",
       "defaultValue": "false",
       "defaultValueRaw": false,
-      "required": false,
-      "variableMode": "Input",
-      "isControlField": false
+      "variableMode": "Input"
     },
     {
       "key": "wait",
       "name": "等待运行结束",
       "type": "Boolean",
       "description": "是否等待此动作运行结束再执行后续动作（如需获取目标动作的输出，需选中此项）",
-      "isAdvanced": false,
       "validForList": [
         "StartAction",
         "StartCurrentAction"
       ],
-      "invalidForList": [],
       "condition": "仅：StartAction, StartCurrentAction",
       "defaultValue": "true",
       "defaultValueRaw": true,
-      "required": false,
-      "variableMode": "Input",
-      "isControlField": false
+      "variableMode": "Input"
     },
     {
       "key": "hideMessage",
       "name": "不显示提示消息",
       "type": "Boolean",
       "description": "仅对非动作库安装的动作有效",
-      "isAdvanced": false,
       "validForList": [
         "StopAction"
       ],
-      "invalidForList": [],
       "condition": "仅：StopAction",
       "defaultValue": "false",
       "defaultValueRaw": false,
-      "required": false,
-      "variableMode": "Input",
-      "isControlField": false
+      "variableMode": "Input"
     },
     {
       "key": "stopIfFail",
       "name": "失败后停止",
       "type": "Boolean",
       "description": "如果未找到目标动作，是否停止当前动作",
-      "isAdvanced": false,
-      "validForList": [],
-      "invalidForList": [],
-      "condition": "",
       "defaultValue": "true",
       "defaultValueRaw": true,
-      "required": false,
-      "variableMode": "Input",
-      "isControlField": false
+      "variableMode": "Input"
     }
   ],
   "outputs": [
@@ -154,22 +119,16 @@
       "key": "isSuccess",
       "name": "是否成功",
       "type": "Boolean",
-      "description": "操作是否成功",
-      "isAdvanced": false,
-      "validForList": [],
-      "invalidForList": [],
-      "condition": ""
+      "description": "操作是否成功"
     },
     {
       "key": "actionTitle",
       "name": "动作名称",
       "type": "Text",
       "description": "运行的动作名称。",
-      "isAdvanced": false,
       "validForList": [
         "StartAction"
       ],
-      "invalidForList": [],
       "condition": "仅：StartAction"
     },
     {
@@ -177,12 +136,10 @@
       "name": "动作输出",
       "type": "Text",
       "description": "被调用动作的输出。",
-      "isAdvanced": false,
       "validForList": [
         "StartAction",
         "StartCurrentAction"
       ],
-      "invalidForList": [],
       "condition": "仅：StartAction, StartCurrentAction"
     },
     {
@@ -190,11 +147,9 @@
       "name": "运行个数",
       "type": "Number",
       "description": "动作正在运行的个数",
-      "isAdvanced": false,
       "validForList": [
         "GetRunningActionCount"
       ],
-      "invalidForList": [],
       "condition": "仅：GetRunningActionCount"
     }
   ],
@@ -204,33 +159,27 @@
       "items": [
         {
           "value": "StartAction",
-          "name": "运行动作",
-          "description": ""
+          "name": "运行动作"
         },
         {
           "value": "StopAction",
-          "name": "停止动作",
-          "description": ""
+          "name": "停止动作"
         },
         {
           "value": "ShowActionContextMenu",
-          "name": "显示动作右键菜单",
-          "description": ""
+          "name": "显示动作右键菜单"
         },
         {
           "value": "StartCurrentAction",
-          "name": "运行当前动作（注意避免产生循环或递归）",
-          "description": ""
+          "name": "运行当前动作（注意避免产生循环或递归）"
         },
         {
           "value": "StopOtherInstance",
-          "name": "停止当前动作的其它实例",
-          "description": ""
+          "name": "停止当前动作的其它实例"
         },
         {
           "value": "GetRunningActionCount",
-          "name": "获取动作运行个数（自己编写动作时可用）",
-          "description": ""
+          "name": "获取动作运行个数（自己编写动作时可用）"
         }
       ]
     }

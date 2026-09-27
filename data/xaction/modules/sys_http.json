@@ -8,8 +8,6 @@
   "category": "Network",
   "categoryName": "网络服务",
   "stepType": "Action",
-  "isRisky": false,
-  "isProOnly": false,
   "helpLink": "https://docs.getquicker.net/v2/xaction/modules/http",
   "inputs": [
     {
@@ -17,27 +15,16 @@
       "name": "网址",
       "type": "Text",
       "description": "要打开的网页地址",
-      "isAdvanced": false,
-      "validForList": [],
-      "invalidForList": [],
-      "condition": "",
       "defaultValue": "https://",
-      "defaultValueRaw": "https://",
       "required": true,
-      "variableMode": "UseVarOrInput",
-      "isControlField": false
+      "variableMode": "UseVarOrInput"
     },
     {
       "key": "method",
       "name": "方法",
       "type": "Enum",
       "description": "Http请求的类型",
-      "isAdvanced": false,
-      "validForList": [],
-      "invalidForList": [],
-      "condition": "",
       "defaultValue": "GET",
-      "defaultValueRaw": "GET",
       "required": true,
       "variableMode": "Input",
       "isControlField": true
@@ -47,194 +34,120 @@
       "name": "请求头",
       "type": "Text",
       "description": "发送的HttpHeader。每行一个header，格式为Name:Value",
-      "isAdvanced": false,
-      "validForList": [],
-      "invalidForList": [],
-      "condition": "",
       "defaultValue": "",
-      "defaultValueRaw": "",
-      "required": false,
-      "variableMode": "UseVarOrInput",
-      "isControlField": false
+      "variableMode": "UseVarOrInput"
     },
     {
       "key": "cookie",
       "name": "Cookie",
       "type": "Text",
       "description": "请求的cookie内容",
-      "isAdvanced": false,
-      "validForList": [],
-      "invalidForList": [],
-      "condition": "",
       "defaultValue": "",
-      "defaultValueRaw": "",
-      "required": false,
-      "variableMode": "UseVarOrInput",
-      "isControlField": false
+      "variableMode": "UseVarOrInput"
     },
     {
       "key": "bodyType",
       "name": "请求体类型",
       "type": "Enum",
       "description": "Http 请求体的内容",
-      "isAdvanced": false,
       "validForList": [
         "POST",
         "PUT",
         "DELETE",
         "PATCH"
       ],
-      "invalidForList": [],
       "condition": "仅：POST, PUT, DELETE, PATCH",
       "defaultValue": "JSON",
-      "defaultValueRaw": "JSON",
-      "required": false,
-      "variableMode": "Input",
-      "isControlField": false
+      "variableMode": "Input"
     },
     {
       "key": "body",
       "name": "请求体",
       "type": "Text",
       "description": "Http 请求 BODY。格式要求详见模块帮助。",
-      "isAdvanced": false,
       "validForList": [
         "POST",
         "PUT",
         "DELETE",
         "PATCH"
       ],
-      "invalidForList": [],
       "condition": "仅：POST, PUT, DELETE, PATCH",
       "defaultValue": "",
-      "defaultValueRaw": "",
-      "required": false,
-      "variableMode": "UseVarOrInput",
-      "isControlField": false
+      "variableMode": "UseVarOrInput"
     },
     {
       "key": "contentType",
       "name": "内容类型",
       "type": "Text",
       "description": "选填。上传内容的ContentType，适用于\"单个文件或图片变量（二进制）\"或\"纯文本\" 请求体类型。",
-      "isAdvanced": false,
       "validForList": [
         "POST",
         "PUT",
         "DELETE",
         "PATCH"
       ],
-      "invalidForList": [],
       "condition": "仅：POST, PUT, DELETE, PATCH",
       "defaultValue": "",
-      "required": false,
-      "variableMode": "UseVarOrInput",
-      "isControlField": false
+      "variableMode": "UseVarOrInput"
     },
     {
       "key": "resultType",
       "name": "结果类型",
       "type": "Enum",
       "description": "Http请求的结果类型",
-      "isAdvanced": false,
-      "validForList": [],
-      "invalidForList": [],
-      "condition": "",
       "defaultValue": "Text",
-      "defaultValueRaw": "Text",
-      "required": false,
-      "variableMode": "Input",
-      "isControlField": false
+      "variableMode": "Input"
     },
     {
       "key": "ua",
       "name": "UserAgent",
       "type": "Text",
-      "description": "",
-      "isAdvanced": false,
-      "validForList": [],
-      "invalidForList": [],
-      "condition": "",
       "defaultValue": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/112.0.0.0 Safari/537.36",
-      "defaultValueRaw": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/112.0.0.0 Safari/537.36",
-      "required": false,
-      "variableMode": "Input",
-      "isControlField": false
+      "variableMode": "Input"
     },
     {
       "key": "expireSeconds",
       "name": "超时时间",
       "type": "Number",
       "description": "请求超时时间（秒数）",
-      "isAdvanced": false,
-      "validForList": [],
-      "invalidForList": [],
-      "condition": "",
       "defaultValue": "100",
       "defaultValueRaw": 100,
-      "required": false,
-      "variableMode": "Input",
-      "isControlField": false
+      "variableMode": "Input"
     },
     {
       "key": "noAutoRedirect",
       "name": "禁止重定向",
       "type": "Boolean",
       "description": "是否禁止自动跳转",
-      "isAdvanced": false,
-      "validForList": [],
-      "invalidForList": [],
-      "condition": "",
       "defaultValue": "false",
       "defaultValueRaw": false,
-      "required": false,
-      "variableMode": "Input",
-      "isControlField": false
+      "variableMode": "Input"
     },
     {
       "key": "forceProxy",
       "name": "强制使用代理",
       "type": "Boolean",
       "description": "即使系统设置中未启用代理，本步骤仍然使用代理访问。",
-      "isAdvanced": false,
-      "validForList": [],
-      "invalidForList": [],
-      "condition": "",
       "defaultValue": "false",
       "defaultValueRaw": false,
-      "required": false,
-      "variableMode": "Input",
-      "isControlField": false
+      "variableMode": "Input"
     },
     {
       "key": "skipCertVerify",
       "name": "忽略HTTPS证书验证",
       "type": "Boolean",
-      "description": "",
-      "isAdvanced": false,
-      "validForList": [],
-      "invalidForList": [],
-      "condition": "",
       "defaultValue": "false",
       "defaultValueRaw": false,
-      "required": false,
-      "variableMode": "Input",
-      "isControlField": false
+      "variableMode": "Input"
     },
     {
       "key": "showProgress",
       "name": "显示进度条",
       "type": "Boolean",
       "description": "是否显示上传下载进度条",
-      "isAdvanced": false,
-      "validForList": [],
-      "invalidForList": [],
-      "condition": "",
       "defaultValue": "false",
       "defaultValueRaw": false,
-      "required": false,
-      "variableMode": "Input",
-      "isControlField": false
+      "variableMode": "Input"
     },
     {
       "key": "useSSE",
@@ -242,14 +155,9 @@
       "type": "Boolean",
       "description": "调用AI接口时使用，通过子程序处理接收到的流式响应内容",
       "isAdvanced": true,
-      "validForList": [],
-      "invalidForList": [],
-      "condition": "",
       "defaultValue": "false",
       "defaultValueRaw": false,
-      "required": false,
-      "variableMode": "Input",
-      "isControlField": false
+      "variableMode": "Input"
     },
     {
       "key": "sseSpName",
@@ -257,29 +165,17 @@
       "type": "Text",
       "description": "用于处理接收到的流式响应消息，每次收到调用一次，通过data输入变量接收内容。",
       "isAdvanced": true,
-      "validForList": [],
-      "invalidForList": [],
-      "condition": "",
       "defaultValue": "",
-      "defaultValueRaw": "",
-      "required": false,
-      "variableMode": "Input",
-      "isControlField": false
+      "variableMode": "Input"
     },
     {
       "key": "stopIfFail",
       "name": "失败后停止",
       "type": "Boolean",
       "description": "失败后是否停止动作",
-      "isAdvanced": false,
-      "validForList": [],
-      "invalidForList": [],
-      "condition": "",
       "defaultValue": "true",
       "defaultValueRaw": true,
-      "required": false,
-      "variableMode": "Input",
-      "isControlField": false
+      "variableMode": "Input"
     }
   ],
   "outputs": [
@@ -287,61 +183,37 @@
       "key": "isSuccess",
       "name": "是否成功",
       "type": "Boolean",
-      "description": "是否操作成功",
-      "isAdvanced": false,
-      "validForList": [],
-      "invalidForList": [],
-      "condition": ""
+      "description": "是否操作成功"
     },
     {
       "key": "statusCode",
       "name": "状态码",
       "type": "Integer",
-      "description": "返回的http请求状态码",
-      "isAdvanced": false,
-      "validForList": [],
-      "invalidForList": [],
-      "condition": ""
+      "description": "返回的http请求状态码"
     },
     {
       "key": "respHeaders",
       "name": "响应头",
       "type": "Dict",
-      "description": "返回的HTTP响应Headers",
-      "isAdvanced": false,
-      "validForList": [],
-      "invalidForList": [],
-      "condition": ""
+      "description": "返回的HTTP响应Headers"
     },
     {
       "key": "respCookies",
       "name": "响应Cookies",
       "type": "Dict",
-      "description": "返回的Cookies",
-      "isAdvanced": false,
-      "validForList": [],
-      "invalidForList": [],
-      "condition": ""
+      "description": "返回的Cookies"
     },
     {
       "key": "content",
       "name": "文本结果",
       "type": "Text",
-      "description": "返回的文本内容",
-      "isAdvanced": false,
-      "validForList": [],
-      "invalidForList": [],
-      "condition": ""
+      "description": "返回的文本内容"
     },
     {
       "key": "imgResult",
       "name": "图片结果",
       "type": "Image",
-      "description": "返回的图片内容",
-      "isAdvanced": false,
-      "validForList": [],
-      "invalidForList": [],
-      "condition": ""
+      "description": "返回的图片内容"
     }
   ],
   "selections": {
@@ -350,38 +222,31 @@
       "items": [
         {
           "value": "GET",
-          "name": "GET",
-          "description": ""
+          "name": "GET"
         },
         {
           "value": "POST",
-          "name": "POST",
-          "description": ""
+          "name": "POST"
         },
         {
           "value": "PUT",
-          "name": "PUT",
-          "description": ""
+          "name": "PUT"
         },
         {
           "value": "DELETE",
-          "name": "DELETE",
-          "description": ""
+          "name": "DELETE"
         },
         {
           "value": "PATCH",
-          "name": "PATCH",
-          "description": ""
+          "name": "PATCH"
         },
         {
           "value": "HEAD",
-          "name": "HEAD",
-          "description": ""
+          "name": "HEAD"
         },
         {
           "value": "OPTIONS",
-          "name": "OPTIONS",
-          "description": ""
+          "name": "OPTIONS"
         }
       ]
     },
@@ -390,28 +255,23 @@
       "items": [
         {
           "value": "JSON",
-          "name": "JSON",
-          "description": ""
+          "name": "JSON"
         },
         {
           "value": "FORM",
-          "name": "文本表单",
-          "description": ""
+          "name": "文本表单"
         },
         {
           "value": "FILE",
-          "name": "MultiPart表单",
-          "description": ""
+          "name": "MultiPart表单"
         },
         {
           "value": "BinaryFile",
-          "name": "单个文件或图片变量（二进制）",
-          "description": ""
+          "name": "单个文件或图片变量（二进制）"
         },
         {
           "value": "Text",
-          "name": "纯文本",
-          "description": ""
+          "name": "纯文本"
         }
       ]
     },
@@ -420,18 +280,15 @@
       "items": [
         {
           "value": "Text",
-          "name": "文本",
-          "description": ""
+          "name": "文本"
         },
         {
           "value": "Image",
-          "name": "图片",
-          "description": ""
+          "name": "图片"
         },
         {
           "value": "File",
-          "name": "文件",
-          "description": ""
+          "name": "文件"
         }
       ]
     }

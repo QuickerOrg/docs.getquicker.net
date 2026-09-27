@@ -8,21 +8,13 @@
   "category": "System",
   "categoryName": "Windows系统",
   "stepType": "Action",
-  "isRisky": false,
-  "isProOnly": false,
   "helpLink": "https://docs.getquicker.net/v2/xaction/modules/sendmessage",
   "inputs": [
     {
       "key": "operation",
       "name": "操作类型",
       "type": "Enum",
-      "description": "",
-      "isAdvanced": false,
-      "validForList": [],
-      "invalidForList": [],
-      "condition": "",
       "defaultValue": "SendMessage",
-      "defaultValueRaw": "SendMessage",
       "required": true,
       "variableMode": "Input",
       "isControlField": true
@@ -32,92 +24,57 @@
       "name": "窗口句柄hWnd",
       "type": "Integer",
       "description": "留空或0表示前台窗口",
-      "isAdvanced": false,
-      "validForList": [],
-      "invalidForList": [],
-      "condition": "",
       "defaultValue": "",
-      "required": false,
-      "variableMode": "UseVarOrInput",
-      "isControlField": false
+      "variableMode": "UseVarOrInput"
     },
     {
       "key": "wMsg",
       "name": "消息",
       "type": "Text",
       "description": "要发送的消息。",
-      "isAdvanced": false,
-      "validForList": [],
-      "invalidForList": [],
-      "condition": "",
       "defaultValue": "",
-      "required": false,
-      "variableMode": "UseVarOrInput",
-      "isControlField": false
+      "variableMode": "UseVarOrInput"
     },
     {
       "key": "wParam",
       "name": "wParam参数",
       "type": "Text",
-      "description": "",
-      "isAdvanced": false,
-      "validForList": [],
-      "invalidForList": [],
-      "condition": "",
       "defaultValue": "",
-      "required": false,
-      "variableMode": "UseVarOrInput",
-      "isControlField": false
+      "variableMode": "UseVarOrInput"
     },
     {
       "key": "lParam",
       "name": "lParam参数",
       "type": "Text",
-      "description": "",
-      "isAdvanced": false,
       "validForList": [
         "SendMessage",
         "PostMessage"
       ],
-      "invalidForList": [],
       "condition": "仅：SendMessage, PostMessage",
       "defaultValue": "0",
       "defaultValueRaw": 0,
-      "required": false,
-      "variableMode": "UseVarOrInput",
-      "isControlField": false
+      "variableMode": "UseVarOrInput"
     },
     {
       "key": "textLParam",
       "name": "lParam参数(文本)",
       "type": "Text",
       "description": "文本内容",
-      "isAdvanced": false,
       "validForList": [
         "SendMessageTextLParam"
       ],
-      "invalidForList": [],
       "condition": "仅：SendMessageTextLParam",
       "defaultValue": "",
-      "defaultValueRaw": "",
-      "required": false,
-      "variableMode": "UseVarOrInput",
-      "isControlField": false
+      "variableMode": "UseVarOrInput"
     },
     {
       "key": "stopIfFail",
       "name": "失败后停止",
       "type": "Boolean",
       "description": "失败后是否停止动作",
-      "isAdvanced": false,
-      "validForList": [],
-      "invalidForList": [],
-      "condition": "",
       "defaultValue": "true",
       "defaultValueRaw": true,
-      "required": false,
-      "variableMode": "Input",
-      "isControlField": false
+      "variableMode": "Input"
     }
   ],
   "outputs": [
@@ -125,23 +82,17 @@
       "key": "isSuccess",
       "name": "是否成功",
       "type": "Boolean",
-      "description": "操作是否成功",
-      "isAdvanced": false,
-      "validForList": [],
-      "invalidForList": [],
-      "condition": ""
+      "description": "操作是否成功"
     },
     {
       "key": "rtn",
       "name": "返回值",
       "type": "Integer",
       "description": "返回值，依据消息的不同具有不同的含义，请查询对应API的文档。",
-      "isAdvanced": false,
       "validForList": [
         "SendMessage",
         "SendMessageTextLParam"
       ],
-      "invalidForList": [],
       "condition": "仅：SendMessage, SendMessageTextLParam"
     }
   ],
@@ -151,18 +102,15 @@
       "items": [
         {
           "value": "SendMessage",
-          "name": "SendMessage(等待返回，LParam为数字)",
-          "description": ""
+          "name": "SendMessage(等待返回，LParam为数字)"
         },
         {
           "value": "SendMessageTextLParam",
-          "name": "SendMessage(等待返回，LParam为文本)",
-          "description": ""
+          "name": "SendMessage(等待返回，LParam为文本)"
         },
         {
           "value": "PostMessage",
-          "name": "PostMessage(不等待返回)",
-          "description": ""
+          "name": "PostMessage(不等待返回)"
         }
       ]
     }

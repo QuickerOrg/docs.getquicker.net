@@ -8,8 +8,6 @@
   "category": "Image",
   "categoryName": "图片处理",
   "stepType": "Action",
-  "isRisky": false,
-  "isProOnly": false,
   "helpLink": "https://docs.getquicker.net/v2/xaction/modules/searchbmp",
   "inputs": [
     {
@@ -17,12 +15,7 @@
       "name": "类型",
       "type": "Enum",
       "description": "操作类型",
-      "isAdvanced": false,
-      "validForList": [],
-      "invalidForList": [],
-      "condition": "",
       "defaultValue": "locateByBitmapFile",
-      "defaultValueRaw": "locateByBitmapFile",
       "required": true,
       "variableMode": "Input",
       "isControlField": true
@@ -32,97 +25,72 @@
       "name": "位图路径",
       "type": "Text",
       "description": "需要在屏幕中查找的位图路径。位图必须和屏幕图像完全匹配，不能压缩。此时X、Y的值为相对于搜索位图的左上角的偏移。",
-      "isAdvanced": false,
       "validForList": [
         "locateByBitmapFile"
       ],
-      "invalidForList": [],
       "condition": "仅：locateByBitmapFile",
       "defaultValue": "",
-      "defaultValueRaw": "",
       "required": true,
-      "variableMode": "UseVarOrInput",
-      "isControlField": false
+      "variableMode": "UseVarOrInput"
     },
     {
       "key": "bmpVar",
       "name": "位图变量",
       "type": "Image",
       "description": "需要在屏幕中查找的位图。位图必须和屏幕图像完全匹配，不能压缩。此时X、Y的值为相对于搜索位图的左上角的偏移。",
-      "isAdvanced": false,
       "validForList": [
         "locateByBitmapVar"
       ],
-      "invalidForList": [],
       "condition": "仅：locateByBitmapVar",
       "defaultValue": "",
-      "defaultValueRaw": "",
       "required": true,
-      "variableMode": "UseVar",
-      "isControlField": false
+      "variableMode": "UseVar"
     },
     {
       "key": "color",
       "name": "颜色",
       "type": "Text",
       "description": "要查找的颜色，如#FF0000",
-      "isAdvanced": false,
       "validForList": [
         "locateByColor"
       ],
-      "invalidForList": [],
       "condition": "仅：locateByColor",
       "defaultValue": "#FF0000",
-      "defaultValueRaw": "#FF0000",
       "required": true,
-      "variableMode": "UseVarOrInput",
-      "isControlField": false
+      "variableMode": "UseVarOrInput"
     },
     {
       "key": "searchText",
       "name": "文字",
       "type": "Text",
       "description": "要查找的文字。可使用多行指定多组可选文字，找到任意一组即可。",
-      "isAdvanced": false,
       "validForList": [
         "locateByText"
       ],
-      "invalidForList": [],
       "condition": "仅：locateByText",
       "defaultValue": "",
-      "defaultValueRaw": "",
-      "required": false,
-      "variableMode": "UseVarOrInput",
-      "isControlField": false
+      "variableMode": "UseVarOrInput"
     },
     {
       "key": "bmpTargetType",
       "name": "查找范围",
       "type": "Enum",
       "description": "位图查找范围",
-      "isAdvanced": false,
       "validForList": [
         "locateByText",
         "locateByColor",
         "locateByBitmapFile",
         "locateByBitmapVar"
       ],
-      "invalidForList": [],
       "condition": "仅：locateByText, locateByColor, locateByBitmapFile, locateByBitmapVar",
       "defaultValue": "MainScreen",
-      "defaultValueRaw": "MainScreen",
-      "required": false,
-      "variableMode": "Input",
-      "isControlField": false
+      "variableMode": "Input"
     },
     {
       "key": "windowHandle",
       "name": "窗口句柄",
       "type": "Integer",
       "description": "指定要查找的窗口句柄。窗口被遮挡时仍尝试从窗口自身获取内容。",
-      "isAdvanced": false,
-      "validForList": [],
-      "invalidForList": [],
       "visibleWhen": {
         "kind": "Field",
         "fieldKey": "bmpTargetType",
@@ -134,21 +102,17 @@
       "condition": "bmpTargetType 为 \"SpecifiedWindow\"",
       "defaultValue": "0",
       "defaultValueRaw": 0,
-      "required": false,
-      "variableMode": "UseVarOrInput",
-      "isControlField": false
+      "variableMode": "UseVarOrInput"
     },
     {
       "key": "returnWindowRelativeCoordinates",
       "name": "返回相对于窗口左上角的坐标",
       "type": "Boolean",
       "description": "启用后，匹配点以实际捕获窗口图像的左上角为原点（包含标题栏和边框）；否则返回屏幕绝对坐标。",
-      "isAdvanced": false,
       "validForList": [
         "CurrentWindow",
         "SpecifiedWindow"
       ],
-      "invalidForList": [],
       "visibleWhen": {
         "kind": "Field",
         "fieldKey": "bmpTargetType",
@@ -161,18 +125,13 @@
       "condition": "bmpTargetType 为 \"CurrentWindow\"、\"SpecifiedWindow\"",
       "defaultValue": "false",
       "defaultValueRaw": false,
-      "required": false,
-      "variableMode": "UseVarOrInput",
-      "isControlField": false
+      "variableMode": "UseVarOrInput"
     },
     {
       "key": "targetBitmap",
       "name": "目标图片",
       "type": "Any",
       "description": "作为查找范围的图片路径或图片变量。匹配坐标以图片左上角为原点。",
-      "isAdvanced": false,
-      "validForList": [],
-      "invalidForList": [],
       "visibleWhen": {
         "kind": "Field",
         "fieldKey": "bmpTargetType",
@@ -183,89 +142,65 @@
       },
       "condition": "bmpTargetType 为 \"SpecifiedBitmap\"",
       "defaultValue": "",
-      "defaultValueRaw": "",
       "required": true,
-      "variableMode": "UseVarOrInput",
-      "isControlField": false
+      "variableMode": "UseVarOrInput"
     },
     {
       "key": "searchRect",
       "name": "查找坐标范围",
       "type": "Text",
       "description": "可选。当\"查找范围\"为\"坐标范围\"时有效，格式为：left,top,right,bottom",
-      "isAdvanced": false,
       "validForList": [
         "Rect"
       ],
-      "invalidForList": [],
       "condition": "仅：Rect",
       "defaultValue": "",
-      "required": false,
-      "variableMode": "UseVarOrInput",
-      "isControlField": false
+      "variableMode": "UseVarOrInput"
     },
     {
       "key": "bmpPosition",
       "name": "定位位置",
       "type": "Enum",
       "description": "定位点相对位图的位置",
-      "isAdvanced": false,
       "validForList": [
         "locateByBitmapFile",
         "locateByBitmapVar"
       ],
-      "invalidForList": [],
       "condition": "仅：locateByBitmapFile, locateByBitmapVar",
       "defaultValue": "Center",
-      "defaultValueRaw": "Center",
-      "required": false,
-      "variableMode": "Input",
-      "isControlField": false
+      "variableMode": "Input"
     },
     {
       "key": "x",
       "name": "X偏移",
       "type": "Integer",
       "description": "定位点水平坐标偏移量（正值向右）",
-      "isAdvanced": false,
-      "validForList": [],
-      "invalidForList": [],
-      "condition": "",
       "defaultValue": "0",
       "defaultValueRaw": 0,
       "required": true,
-      "variableMode": "UseVarOrInput",
-      "isControlField": false
+      "variableMode": "UseVarOrInput"
     },
     {
       "key": "y",
       "name": "Y偏移",
       "type": "Integer",
       "description": "定位点垂直坐标偏移量（正值向下）",
-      "isAdvanced": false,
-      "validForList": [],
-      "invalidForList": [],
-      "condition": "",
       "defaultValue": "0",
       "defaultValueRaw": 0,
       "required": true,
-      "variableMode": "UseVarOrInput",
-      "isControlField": false
+      "variableMode": "UseVarOrInput"
     },
     {
       "key": "bitmapMatchMode",
       "name": "匹配方式",
       "type": "Enum",
       "description": "图片匹配算法。颜色容差与旧动作行为一致；相似度允许少量像素和渲染差异。",
-      "isAdvanced": false,
       "validForList": [
         "locateByBitmapFile",
         "locateByBitmapVar"
       ],
-      "invalidForList": [],
       "condition": "仅：locateByBitmapFile, locateByBitmapVar",
       "defaultValue": "colorTolerance",
-      "defaultValueRaw": "colorTolerance",
       "required": true,
       "variableMode": "Input",
       "isControlField": true
@@ -275,13 +210,11 @@
       "name": "颜色容差",
       "type": "Integer",
       "description": "找色或颜色容差匹配时，允许每个颜色通道的偏差值0-100；0表示精确匹配，速度最快。相似度匹配不使用此参数。",
-      "isAdvanced": false,
       "validForList": [
         "locateByBitmapFile",
         "locateByBitmapVar",
         "locateByColor"
       ],
-      "invalidForList": [],
       "visibleWhen": {
         "kind": "Any",
         "conditions": [
@@ -320,21 +253,17 @@
       "condition": "(type 为 \"locateByColor\" 或 (type 为 \"locateByBitmapFile\"、\"locateByBitmapVar\" 且 bitmapMatchMode 为 \"colorTolerance\"))",
       "defaultValue": "10",
       "defaultValueRaw": 10,
-      "required": false,
-      "variableMode": "Input",
-      "isControlField": false
+      "variableMode": "Input"
     },
     {
       "key": "minSimilarity",
       "name": "最低相似度",
       "type": "Integer",
       "description": "仅用于相似度匹配。范围0-100，越大要求越接近；90表示允许总体平均存在少量颜色差异。",
-      "isAdvanced": false,
       "validForList": [
         "locateByBitmapFile",
         "locateByBitmapVar"
       ],
-      "invalidForList": [],
       "visibleWhen": {
         "kind": "All",
         "conditions": [
@@ -360,97 +289,72 @@
       "condition": "(type 为 \"locateByBitmapFile\"、\"locateByBitmapVar\" 且 bitmapMatchMode 为 \"similarity\")",
       "defaultValue": "90",
       "defaultValueRaw": 90,
-      "required": false,
-      "variableMode": "Input",
-      "isControlField": false
+      "variableMode": "Input"
     },
     {
       "key": "maxFindCount",
       "name": "最大匹配",
       "type": "Integer",
       "description": "找图的最大匹配数量。将对每个查找到的目标执行附加动作。",
-      "isAdvanced": false,
       "validForList": [
         "locateByBitmapFile",
         "locateByBitmapVar"
       ],
-      "invalidForList": [],
       "condition": "仅：locateByBitmapFile, locateByBitmapVar",
       "defaultValue": "1",
       "defaultValueRaw": 1,
-      "required": false,
-      "variableMode": "Input",
-      "isControlField": false
+      "variableMode": "Input"
     },
     {
       "key": "retryCount",
       "name": "重试次数",
       "type": "Integer",
       "description": "未找到位图时的重试次数。每次重试间隔300ms。",
-      "isAdvanced": false,
       "validForList": [
         "locateByText",
         "locateByColor",
         "locateByBitmapFile",
         "locateByBitmapVar"
       ],
-      "invalidForList": [],
       "condition": "仅：locateByText, locateByColor, locateByBitmapFile, locateByBitmapVar",
       "defaultValue": "0",
       "defaultValueRaw": 0,
-      "required": false,
-      "variableMode": "Input",
-      "isControlField": false
+      "variableMode": "Input"
     },
     {
       "key": "ignoreWindowsOcr",
       "name": "跳过WindowsOCR引擎",
       "type": "Boolean",
-      "description": "",
-      "isAdvanced": false,
       "validForList": [
         "locateByText"
       ],
-      "invalidForList": [],
       "condition": "仅：locateByText",
       "defaultValue": "false",
       "defaultValueRaw": false,
-      "required": false,
-      "variableMode": "UseVarOrInput",
-      "isControlField": false
+      "variableMode": "UseVarOrInput"
     },
     {
       "key": "ignoreBgColor",
       "name": "忽略背景色",
       "type": "Boolean",
       "description": "如果查找图片的4个顶点颜色一致，则认为是背景色，找图时忽略此颜色。",
-      "isAdvanced": false,
       "validForList": [
         "locateByBitmapFile",
         "locateByBitmapVar"
       ],
-      "invalidForList": [],
       "condition": "仅：locateByBitmapFile, locateByBitmapVar",
       "defaultValue": "true",
       "defaultValueRaw": true,
-      "required": false,
-      "variableMode": "Input",
-      "isControlField": false
+      "variableMode": "Input"
     },
     {
       "key": "stopIfFail",
       "name": "失败后中止动作",
       "type": "Boolean",
       "description": "获取位置失败后，是否停止后续动作的执行。",
-      "isAdvanced": false,
-      "validForList": [],
-      "invalidForList": [],
-      "condition": "",
       "defaultValue": "true",
       "defaultValueRaw": true,
-      "required": false,
-      "variableMode": "Input",
-      "isControlField": false
+      "variableMode": "Input"
     }
   ],
   "outputs": [
@@ -458,33 +362,23 @@
       "key": "isSuccess",
       "name": "是否成功",
       "type": "Boolean",
-      "description": "操作是否成功",
-      "isAdvanced": false,
-      "validForList": [],
-      "invalidForList": [],
-      "condition": ""
+      "description": "操作是否成功"
     },
     {
       "key": "firstPoint",
       "name": "第一个匹配点",
       "type": "Text",
-      "description": "第一个匹配点坐标，格式为：x坐标,y坐标",
-      "isAdvanced": false,
-      "validForList": [],
-      "invalidForList": [],
-      "condition": ""
+      "description": "第一个匹配点坐标，格式为：x坐标,y坐标"
     },
     {
       "key": "imgIndex",
       "name": "匹配序号",
       "type": "Integer",
       "description": "从多个图片或多组文字中查找时，返回匹配到的图片或文字组序号，从0开始。",
-      "isAdvanced": false,
       "validForList": [
         "locateByText",
         "locateByBitmapFile"
       ],
-      "invalidForList": [],
       "condition": "仅：locateByText, locateByBitmapFile"
     },
     {
@@ -492,13 +386,11 @@
       "name": "所有匹配点",
       "type": "List",
       "description": "所有的匹配点列表",
-      "isAdvanced": false,
       "validForList": [
         "locateByText",
         "locateByBitmapFile",
         "locateByBitmapVar"
       ],
-      "invalidForList": [],
       "condition": "仅：locateByText, locateByBitmapFile, locateByBitmapVar"
     },
     {
@@ -506,12 +398,10 @@
       "name": "最佳相似度",
       "type": "Number",
       "description": "最佳成功匹配的相似度（0-100）。颜色容差匹配成功时为100，未找到时为0。",
-      "isAdvanced": false,
       "validForList": [
         "locateByBitmapFile",
         "locateByBitmapVar"
       ],
-      "invalidForList": [],
       "condition": "仅：locateByBitmapFile, locateByBitmapVar"
     }
   ],
@@ -521,23 +411,19 @@
       "items": [
         {
           "value": "locateByBitmapFile",
-          "name": "查找图片(文件)",
-          "description": ""
+          "name": "查找图片(文件)"
         },
         {
           "value": "locateByBitmapVar",
-          "name": "查找图片(变量)",
-          "description": ""
+          "name": "查找图片(变量)"
         },
         {
           "value": "locateByColor",
-          "name": "查找颜色",
-          "description": ""
+          "name": "查找颜色"
         },
         {
           "value": "locateByText",
-          "name": "查找文字",
-          "description": ""
+          "name": "查找文字"
         }
       ]
     },
@@ -546,33 +432,27 @@
       "items": [
         {
           "value": "MainScreen",
-          "name": "主屏幕",
-          "description": ""
+          "name": "主屏幕"
         },
         {
           "value": "CurrentWindow",
-          "name": "当前窗口",
-          "description": ""
+          "name": "当前窗口"
         },
         {
           "value": "Rect",
-          "name": "坐标范围",
-          "description": ""
+          "name": "坐标范围"
         },
         {
           "value": "AllScreens",
-          "name": "所有屏幕",
-          "description": ""
+          "name": "所有屏幕"
         },
         {
           "value": "SpecifiedWindow",
-          "name": "指定窗口",
-          "description": ""
+          "name": "指定窗口"
         },
         {
           "value": "SpecifiedBitmap",
-          "name": "指定图片",
-          "description": ""
+          "name": "指定图片"
         }
       ]
     },
@@ -581,28 +461,23 @@
       "items": [
         {
           "value": "Center",
-          "name": "位图中间",
-          "description": ""
+          "name": "位图中间"
         },
         {
           "value": "TopLeft",
-          "name": "左上角",
-          "description": ""
+          "name": "左上角"
         },
         {
           "value": "TopRight",
-          "name": "右上角",
-          "description": ""
+          "name": "右上角"
         },
         {
           "value": "BottomLeft",
-          "name": "左下角",
-          "description": ""
+          "name": "左下角"
         },
         {
           "value": "BottomRight",
-          "name": "右下角",
-          "description": ""
+          "name": "右下角"
         }
       ]
     },
@@ -611,13 +486,11 @@
       "items": [
         {
           "value": "colorTolerance",
-          "name": "颜色容差（快速）",
-          "description": ""
+          "name": "颜色容差（快速）"
         },
         {
           "value": "similarity",
-          "name": "相似度",
-          "description": ""
+          "name": "相似度"
         }
       ]
     }

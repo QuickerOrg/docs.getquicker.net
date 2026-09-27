@@ -8,8 +8,6 @@
   "category": "System",
   "categoryName": "Windows系统",
   "stepType": "Action",
-  "isRisky": false,
-  "isProOnly": false,
   "helpLink": "https://docs.getquicker.net/v2/xaction/modules/keyoperation",
   "inputs": [
     {
@@ -17,12 +15,7 @@
       "name": "类型",
       "type": "Enum",
       "description": "操作类型。按下和抬起需要配对使用。",
-      "isAdvanced": false,
-      "validForList": [],
-      "invalidForList": [],
-      "condition": "",
       "defaultValue": "get_key_state",
-      "defaultValueRaw": "get_key_state",
       "required": true,
       "variableMode": "Input",
       "isControlField": true
@@ -32,53 +25,39 @@
       "name": "按键",
       "type": "Text",
       "description": "要操作或检查状态的按键(单个)。获取状态可使用鼠标键；如需发送真实鼠标事件，请使用“鼠标输入”步骤。",
-      "isAdvanced": false,
       "validForList": [
         "get_key_state",
         "key_down",
         "key_up"
       ],
-      "invalidForList": [],
       "condition": "仅：get_key_state, key_down, key_up",
       "defaultValue": "",
-      "defaultValueRaw": "",
-      "required": false,
-      "variableMode": "UseVarOrInput",
-      "isControlField": false
+      "variableMode": "UseVarOrInput"
     },
     {
       "key": "getRealMouseState",
       "name": "获取按键的实际状态（在远程时无法获取）",
       "type": "Boolean",
-      "description": "",
-      "isAdvanced": false,
       "validForList": [
         "get_key_state"
       ],
-      "invalidForList": [],
       "condition": "仅：get_key_state",
       "defaultValue": "false",
       "defaultValueRaw": false,
-      "required": false,
-      "variableMode": "Input",
-      "isControlField": false
+      "variableMode": "Input"
     },
     {
       "key": "keepMs",
       "name": "保持按下时间",
       "type": "Integer",
       "description": "保持此虚拟键按下的时间（毫秒数），之后会自动抬起。",
-      "isAdvanced": false,
       "validForList": [
         "key_keydown_v1"
       ],
-      "invalidForList": [],
       "condition": "仅：key_keydown_v1",
       "defaultValue": "1000",
       "defaultValueRaw": 1000,
-      "required": false,
-      "variableMode": "UseVarOrInput",
-      "isControlField": false
+      "variableMode": "UseVarOrInput"
     }
   ],
   "outputs": [
@@ -87,11 +66,9 @@
       "name": "是否按下",
       "type": "Boolean",
       "description": "此按键是否为按下状态",
-      "isAdvanced": false,
       "validForList": [
         "get_key_state"
       ],
-      "invalidForList": [],
       "condition": "仅：get_key_state"
     },
     {
@@ -99,11 +76,9 @@
       "name": "是否锁定",
       "type": "Boolean",
       "description": "此按键是否为锁定状态，仅对CapsLock、NumLock等按键有效。",
-      "isAdvanced": false,
       "validForList": [
         "get_key_state"
       ],
-      "invalidForList": [],
       "condition": "仅：get_key_state"
     }
   ],
@@ -113,28 +88,23 @@
       "items": [
         {
           "value": "get_key_state",
-          "name": "获取按键状态",
-          "description": ""
+          "name": "获取按键状态"
         },
         {
           "value": "key_down",
-          "name": "按下按键",
-          "description": ""
+          "name": "按下按键"
         },
         {
           "value": "key_up",
-          "name": "抬起按键",
-          "description": ""
+          "name": "抬起按键"
         },
         {
           "value": "key_keydown_v1",
-          "name": "按下Quicker虚拟键V1",
-          "description": ""
+          "name": "按下Quicker虚拟键V1"
         },
         {
           "value": "key_keyup_v1",
-          "name": "抬起Quicker虚拟键V1",
-          "description": ""
+          "name": "抬起Quicker虚拟键V1"
         }
       ]
     }

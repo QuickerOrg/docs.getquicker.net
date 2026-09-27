@@ -8,21 +8,13 @@
   "category": "SoftInteraction",
   "categoryName": "第三方软件交互",
   "stepType": "Action",
-  "isRisky": false,
-  "isProOnly": false,
   "helpLink": "https://docs.getquicker.net/v2/xaction/modules/revitcontrol",
   "inputs": [
     {
       "key": "operation",
       "name": "操作类型",
       "type": "Enum",
-      "description": "",
-      "isAdvanced": false,
-      "validForList": [],
-      "invalidForList": [],
-      "condition": "",
       "defaultValue": "document.get_context",
-      "defaultValueRaw": "document.get_context",
       "required": true,
       "variableMode": "Input",
       "isControlField": true
@@ -32,62 +24,39 @@
       "name": "参数(JSON 对象)",
       "type": "Text",
       "description": "命令参数。Windows 路径中的反斜杠需要写成 \\。",
-      "isAdvanced": false,
-      "validForList": [],
-      "invalidForList": [],
-      "condition": "",
       "defaultValue": "{}",
-      "defaultValueRaw": "{}",
-      "required": false,
-      "variableMode": "UseVarOrInput",
-      "isControlField": false
+      "variableMode": "UseVarOrInput"
     },
     {
       "key": "commandName",
       "name": "Bridge 命令名称",
       "type": "Text",
-      "description": "",
-      "isAdvanced": false,
       "validForList": [
         "BridgeCustom"
       ],
-      "invalidForList": [],
       "condition": "仅：BridgeCustom",
       "defaultValue": "",
-      "defaultValueRaw": "",
       "required": true,
-      "variableMode": "UseVarOrInput",
-      "isControlField": false
+      "variableMode": "UseVarOrInput"
     },
     {
       "key": "waitMs",
       "name": "最长等待时间(ms)",
       "type": "Number",
-      "description": "",
       "isAdvanced": true,
-      "validForList": [],
-      "invalidForList": [],
-      "condition": "",
       "defaultValue": "30000",
       "defaultValueRaw": 30000,
       "required": true,
-      "variableMode": "Input",
-      "isControlField": false
+      "variableMode": "Input"
     },
     {
       "key": "stopIfFail",
       "name": "失败后停止",
       "type": "Boolean",
       "description": "失败后是否停止动作",
-      "isAdvanced": false,
-      "validForList": [],
-      "invalidForList": [],
-      "condition": "",
       "defaultValue": "true",
       "defaultValueRaw": true,
-      "required": false,
-      "variableMode": "Input",
-      "isControlField": false
+      "variableMode": "Input"
     }
   ],
   "outputs": [
@@ -95,21 +64,13 @@
       "key": "isSuccess",
       "name": "是否成功",
       "type": "Boolean",
-      "description": "操作是否成功",
-      "isAdvanced": false,
-      "validForList": [],
-      "invalidForList": [],
-      "condition": ""
+      "description": "操作是否成功"
     },
     {
       "key": "output",
       "name": "命令结果",
       "type": "Text",
-      "description": "Revit 返回的 JSON 结果。",
-      "isAdvanced": false,
-      "validForList": [],
-      "invalidForList": [],
-      "condition": ""
+      "description": "Revit 返回的 JSON 结果。"
     }
   ],
   "selections": {
@@ -118,233 +79,187 @@
       "items": [
         {
           "value": "bridge.ping",
-          "name": "[Bridge] 测试连接",
-          "description": ""
+          "name": "[Bridge] 测试连接"
         },
         {
           "value": "bridge.self_test",
-          "name": "[Bridge] 安全自检（自动回滚）",
-          "description": ""
+          "name": "[Bridge] 安全自检（自动回滚）"
         },
         {
           "value": "command.list",
-          "name": "[Bridge] 读取命令目录",
-          "description": ""
+          "name": "[Bridge] 读取命令目录"
         },
         {
           "value": "application.get_context",
-          "name": "[应用] 读取 Revit 上下文",
-          "description": ""
+          "name": "[应用] 读取 Revit 上下文"
         },
         {
           "value": "application.post_command",
-          "name": "[应用] 调用 Revit 内置命令",
-          "description": ""
+          "name": "[应用] 调用 Revit 内置命令"
         },
         {
           "value": "document.get_context",
-          "name": "[文档] 读取当前文档上下文",
-          "description": ""
+          "name": "[文档] 读取当前文档上下文"
         },
         {
           "value": "document.list",
-          "name": "[文档] 列出已打开文档",
-          "description": ""
+          "name": "[文档] 列出已打开文档"
         },
         {
           "value": "document.save",
-          "name": "[文档] 保存当前文档",
-          "description": ""
+          "name": "[文档] 保存当前文档"
         },
         {
           "value": "document.save_as",
-          "name": "[文档] 当前文档另存为",
-          "description": ""
+          "name": "[文档] 当前文档另存为"
         },
         {
           "value": "document.export_pdf",
-          "name": "[文档] 导出视图/图纸为 PDF",
-          "description": ""
+          "name": "[文档] 导出视图/图纸为 PDF"
         },
         {
           "value": "document.export_dwg",
-          "name": "[文档] 导出视图/图纸为 DWG",
-          "description": ""
+          "name": "[文档] 导出视图/图纸为 DWG"
         },
         {
           "value": "document.get_warnings",
-          "name": "[文档] 读取项目警告",
-          "description": ""
+          "name": "[文档] 读取项目警告"
         },
         {
           "value": "selection.get",
-          "name": "[选择] 读取当前选择",
-          "description": ""
+          "name": "[选择] 读取当前选择"
         },
         {
           "value": "selection.set",
-          "name": "[选择] 按元素 ID 设置选择",
-          "description": ""
+          "name": "[选择] 按元素 ID 设置选择"
         },
         {
           "value": "selection.clear",
-          "name": "[选择] 清空选择",
-          "description": ""
+          "name": "[选择] 清空选择"
         },
         {
           "value": "selection.delete",
-          "name": "[选择] 删除所选元素",
-          "description": ""
+          "name": "[选择] 删除所选元素"
         },
         {
           "value": "element.get",
-          "name": "[元素] 读取元素详情",
-          "description": ""
+          "name": "[元素] 读取元素详情"
         },
         {
           "value": "element.list",
-          "name": "[元素] 搜索项目元素",
-          "description": ""
+          "name": "[元素] 搜索项目元素"
         },
         {
           "value": "element.get_parameters",
-          "name": "[元素] 读取元素参数",
-          "description": ""
+          "name": "[元素] 读取元素参数"
         },
         {
           "value": "element.set_parameter",
-          "name": "[元素] 设置元素参数",
-          "description": ""
+          "name": "[元素] 设置元素参数"
         },
         {
           "value": "element.set_parameters",
-          "name": "[元素] 批量设置元素参数",
-          "description": ""
+          "name": "[元素] 批量设置元素参数"
         },
         {
           "value": "element.change_type",
-          "name": "[元素] 更改元素类型",
-          "description": ""
+          "name": "[元素] 更改元素类型"
         },
         {
           "value": "element.pin",
-          "name": "[元素] 固定元素",
-          "description": ""
+          "name": "[元素] 固定元素"
         },
         {
           "value": "element.unpin",
-          "name": "[元素] 取消固定元素",
-          "description": ""
+          "name": "[元素] 取消固定元素"
         },
         {
           "value": "category.list",
-          "name": "[类别] 列出项目类别",
-          "description": ""
+          "name": "[类别] 列出项目类别"
         },
         {
           "value": "view.get_context",
-          "name": "[视图] 读取当前视图",
-          "description": ""
+          "name": "[视图] 读取当前视图"
         },
         {
           "value": "view.list",
-          "name": "[视图] 列出项目视图",
-          "description": ""
+          "name": "[视图] 列出项目视图"
         },
         {
           "value": "view.activate",
-          "name": "[视图] 激活指定视图",
-          "description": ""
+          "name": "[视图] 激活指定视图"
         },
         {
           "value": "view.duplicate",
-          "name": "[视图] 复制视图",
-          "description": ""
+          "name": "[视图] 复制视图"
         },
         {
           "value": "view.zoom_fit",
-          "name": "[视图] 缩放至适合窗口",
-          "description": ""
+          "name": "[视图] 缩放至适合窗口"
         },
         {
           "value": "view.show_elements",
-          "name": "[视图] 定位并显示元素",
-          "description": ""
+          "name": "[视图] 定位并显示元素"
         },
         {
           "value": "view.hide_elements",
-          "name": "[视图] 隐藏元素",
-          "description": ""
+          "name": "[视图] 隐藏元素"
         },
         {
           "value": "view.unhide_elements",
-          "name": "[视图] 取消隐藏元素",
-          "description": ""
+          "name": "[视图] 取消隐藏元素"
         },
         {
           "value": "view.isolate_elements",
-          "name": "[视图] 临时隔离元素",
-          "description": ""
+          "name": "[视图] 临时隔离元素"
         },
         {
           "value": "view.reset_temporary",
-          "name": "[视图] 重置临时隐藏与隔离",
-          "description": ""
+          "name": "[视图] 重置临时隐藏与隔离"
         },
         {
           "value": "view.export_image",
-          "name": "[视图] 导出当前视图图像",
-          "description": ""
+          "name": "[视图] 导出当前视图图像"
         },
         {
           "value": "project.list_levels",
-          "name": "[项目] 列出标高",
-          "description": ""
+          "name": "[项目] 列出标高"
         },
         {
           "value": "project.list_sheets",
-          "name": "[项目] 列出图纸",
-          "description": ""
+          "name": "[项目] 列出图纸"
         },
         {
           "value": "project.list_rooms",
-          "name": "[项目] 列出房间",
-          "description": ""
+          "name": "[项目] 列出房间"
         },
         {
           "value": "family.load",
-          "name": "[族] 载入族文件",
-          "description": ""
+          "name": "[族] 载入族文件"
         },
         {
           "value": "family.list_types",
-          "name": "[族] 搜索族类型",
-          "description": ""
+          "name": "[族] 搜索族类型"
         },
         {
           "value": "sheet.create",
-          "name": "[图纸] 新建图纸",
-          "description": ""
+          "name": "[图纸] 新建图纸"
         },
         {
           "value": "sheet.place_view",
-          "name": "[图纸] 将视图放置到图纸",
-          "description": ""
+          "name": "[图纸] 将视图放置到图纸"
         },
         {
           "value": "script.evaluate_csharp",
-          "name": "[脚本] 执行内联 C#（高风险）",
-          "description": ""
+          "name": "[脚本] 执行内联 C#（高风险）"
         },
         {
           "value": "script.run_csharp_file",
-          "name": "[脚本] 运行 C# 代码文件（高风险）",
-          "description": ""
+          "name": "[脚本] 运行 C# 代码文件（高风险）"
         },
         {
           "value": "BridgeCustom",
-          "name": "[高级] 发送自定义 Bridge 命令",
-          "description": ""
+          "name": "[高级] 发送自定义 Bridge 命令"
         }
       ]
     }

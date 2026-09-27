@@ -8,8 +8,6 @@
   "category": "Ai",
   "categoryName": "AI",
   "stepType": "Action",
-  "isRisky": false,
-  "isProOnly": false,
   "helpLink": "https://docs.getquicker.net/v2/xaction/modules/ai-chat",
   "inputs": [
     {
@@ -17,12 +15,7 @@
       "name": "会话方式",
       "type": "Enum",
       "description": "新建本机会话，或继续当前设备上已有的会话。会话 ID 不会随动作分享。",
-      "isAdvanced": false,
-      "validForList": [],
-      "invalidForList": [],
-      "condition": "",
       "defaultValue": "new",
-      "defaultValueRaw": "new",
       "required": true,
       "variableMode": "Input",
       "isControlField": true
@@ -32,77 +25,50 @@
       "name": "会话 ID",
       "type": "Text",
       "description": "要继续的本机会话 ID；不存在时明确失败，不会创建空会话。",
-      "isAdvanced": false,
       "validForList": [
         "continue"
       ],
-      "invalidForList": [],
       "condition": "仅：continue",
       "defaultValue": "",
       "required": true,
-      "variableMode": "UseVarOrInput",
-      "isControlField": false
+      "variableMode": "UseVarOrInput"
     },
     {
       "key": "initialQuestion",
       "name": "初始问题",
       "type": "Text",
       "description": "打开窗口后立即发送的问题；之后可在窗口中继续追问。",
-      "isAdvanced": false,
-      "validForList": [],
-      "invalidForList": [],
-      "condition": "",
       "defaultValue": "",
       "required": true,
-      "variableMode": "UseVarOrInput",
-      "isControlField": false
+      "variableMode": "UseVarOrInput"
     },
     {
       "key": "systemPrompt",
       "name": "完整系统提示词",
       "type": "Text",
       "description": "新建会话的完整系统规则；继续会话时使用原会话记录。",
-      "isAdvanced": false,
       "validForList": [
         "new"
       ],
-      "invalidForList": [],
       "condition": "仅：new",
       "defaultValue": "",
-      "defaultValueRaw": "",
-      "required": false,
-      "variableMode": "UseVarOrInput",
-      "isControlField": false
+      "variableMode": "UseVarOrInput"
     },
     {
       "key": "useCaseId",
       "name": "AI 任务场景",
       "type": "Text",
       "description": "选择“模型分配”中的文本任务场景。每轮追问都会重新解析当前可用模型。",
-      "isAdvanced": false,
-      "validForList": [],
-      "invalidForList": [],
-      "condition": "",
       "defaultValue": "text.general",
-      "defaultValueRaw": "text.general",
-      "required": false,
-      "variableMode": "UseVarOrInput",
-      "isControlField": false
+      "variableMode": "UseVarOrInput"
     },
     {
       "key": "windowTitle",
       "name": "窗口标题",
       "type": "Text",
       "description": "对话窗口和新会话的标题。",
-      "isAdvanced": false,
-      "validForList": [],
-      "invalidForList": [],
-      "condition": "",
       "defaultValue": "AI 对话",
-      "defaultValueRaw": "AI 对话",
-      "required": false,
-      "variableMode": "UseVarOrInput",
-      "isControlField": false
+      "variableMode": "UseVarOrInput"
     },
     {
       "key": "maxRounds",
@@ -110,14 +76,9 @@
       "type": "Integer",
       "description": "首轮回答计为 1；达到上限后只能采用或取消。",
       "isAdvanced": true,
-      "validForList": [],
-      "invalidForList": [],
-      "condition": "",
       "defaultValue": "10",
       "defaultValueRaw": 10,
-      "required": false,
-      "variableMode": "UseVarOrInput",
-      "isControlField": false
+      "variableMode": "UseVarOrInput"
     },
     {
       "key": "maxOutputTokens",
@@ -125,14 +86,9 @@
       "type": "Integer",
       "description": "每轮输出限制；0 表示不由本步骤设置。",
       "isAdvanced": true,
-      "validForList": [],
-      "invalidForList": [],
-      "condition": "",
       "defaultValue": "0",
       "defaultValueRaw": 0,
-      "required": false,
-      "variableMode": "UseVarOrInput",
-      "isControlField": false
+      "variableMode": "UseVarOrInput"
     },
     {
       "key": "missingUseCaseBehavior",
@@ -140,29 +96,17 @@
       "type": "Enum",
       "description": "自定义任务场景不存在时，使用内置文本任务场景或直接失败。",
       "isAdvanced": true,
-      "validForList": [],
-      "invalidForList": [],
-      "condition": "",
       "defaultValue": "UseBaseUseCase",
-      "defaultValueRaw": "UseBaseUseCase",
-      "required": false,
-      "variableMode": "UseVarOrInput",
-      "isControlField": false
+      "variableMode": "UseVarOrInput"
     },
     {
       "key": "stopIfFail",
       "name": "失败后停止",
       "type": "Boolean",
       "description": "失败后是否停止动作",
-      "isAdvanced": false,
-      "validForList": [],
-      "invalidForList": [],
-      "condition": "",
       "defaultValue": "true",
       "defaultValueRaw": true,
-      "required": false,
-      "variableMode": "Input",
-      "isControlField": false
+      "variableMode": "Input"
     }
   ],
   "outputs": [
@@ -170,111 +114,68 @@
       "key": "isSuccess",
       "name": "是否成功",
       "type": "Boolean",
-      "description": "操作是否成功",
-      "isAdvanced": false,
-      "validForList": [],
-      "invalidForList": [],
-      "condition": ""
+      "description": "操作是否成功"
     },
     {
       "key": "result",
       "name": "采用的回答",
       "type": "Text",
-      "description": "用户明确点击“采用当前回答”时最后一条完整 Assistant 文本。",
-      "isAdvanced": false,
-      "validForList": [],
-      "invalidForList": [],
-      "condition": ""
+      "description": "用户明确点击“采用当前回答”时最后一条完整 Assistant 文本。"
     },
     {
       "key": "resultConversationId",
       "name": "会话 ID",
       "type": "Text",
-      "description": "当前设备上的本地会话 ID。",
-      "isAdvanced": false,
-      "validForList": [],
-      "invalidForList": [],
-      "condition": ""
+      "description": "当前设备上的本地会话 ID。"
     },
     {
       "key": "historyJson",
       "name": "完整消息历史 JSON",
       "type": "Text",
       "description": "版本化的本地消息历史，Reasoning 与 Text 分开。",
-      "isAdvanced": true,
-      "validForList": [],
-      "invalidForList": [],
-      "condition": ""
+      "isAdvanced": true
     },
     {
       "key": "roundCount",
       "name": "对话轮数",
       "type": "Integer",
-      "description": "",
-      "isAdvanced": true,
-      "validForList": [],
-      "invalidForList": [],
-      "condition": ""
+      "isAdvanced": true
     },
     {
       "key": "model",
       "name": "实际模型",
       "type": "Text",
-      "description": "",
-      "isAdvanced": true,
-      "validForList": [],
-      "invalidForList": [],
-      "condition": ""
+      "isAdvanced": true
     },
     {
       "key": "inputTokens",
       "name": "输入 Token",
       "type": "Integer",
-      "description": "",
-      "isAdvanced": true,
-      "validForList": [],
-      "invalidForList": [],
-      "condition": ""
+      "isAdvanced": true
     },
     {
       "key": "cachedInputTokens",
       "name": "缓存输入 Token",
       "type": "Integer",
-      "description": "",
-      "isAdvanced": true,
-      "validForList": [],
-      "invalidForList": [],
-      "condition": ""
+      "isAdvanced": true
     },
     {
       "key": "outputTokens",
       "name": "输出 Token",
       "type": "Integer",
-      "description": "",
-      "isAdvanced": true,
-      "validForList": [],
-      "invalidForList": [],
-      "condition": ""
+      "isAdvanced": true
     },
     {
       "key": "totalTokens",
       "name": "总 Token",
       "type": "Integer",
-      "description": "",
-      "isAdvanced": true,
-      "validForList": [],
-      "invalidForList": [],
-      "condition": ""
+      "isAdvanced": true
     },
     {
       "key": "invocationIdsJson",
       "name": "调用标识列表 JSON",
       "type": "Text",
-      "description": "",
-      "isAdvanced": true,
-      "validForList": [],
-      "invalidForList": [],
-      "condition": ""
+      "isAdvanced": true
     }
   ],
   "selections": {
@@ -283,13 +184,11 @@
       "items": [
         {
           "value": "new",
-          "name": "新建会话",
-          "description": ""
+          "name": "新建会话"
         },
         {
           "value": "continue",
-          "name": "继续指定会话",
-          "description": ""
+          "name": "继续指定会话"
         }
       ]
     },
@@ -298,8 +197,7 @@
       "items": [
         {
           "value": "text.general",
-          "name": "日常文本处理与翻译",
-          "description": ""
+          "name": "日常文本处理与翻译"
         }
       ]
     },
@@ -308,13 +206,11 @@
       "items": [
         {
           "value": "UseBaseUseCase",
-          "name": "使用基础场景",
-          "description": ""
+          "name": "使用基础场景"
         },
         {
           "value": "Fail",
-          "name": "执行失败",
-          "description": ""
+          "name": "执行失败"
         }
       ]
     }

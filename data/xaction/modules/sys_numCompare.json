@@ -8,8 +8,6 @@
   "category": "Compute",
   "categoryName": "计算与比较",
   "stepType": "Action",
-  "isRisky": false,
-  "isProOnly": false,
   "helpLink": "https://docs.getquicker.net/v2/xaction/modules/numcompare",
   "inputs": [
     {
@@ -17,45 +15,29 @@
       "name": "数字1",
       "type": "Number",
       "description": "左侧的数字",
-      "isAdvanced": false,
-      "validForList": [],
-      "invalidForList": [],
-      "condition": "",
       "defaultValue": "0",
       "defaultValueRaw": 0,
       "required": true,
-      "variableMode": "UseVarOrInput",
-      "isControlField": false
+      "variableMode": "UseVarOrInput"
     },
     {
       "key": "type",
       "name": "类型",
       "type": "Enum",
       "description": "比较方式",
-      "isAdvanced": false,
-      "validForList": [],
-      "invalidForList": [],
-      "condition": "",
       "defaultValue": ">",
-      "defaultValueRaw": ">",
       "required": true,
-      "variableMode": "Input",
-      "isControlField": false
+      "variableMode": "Input"
     },
     {
       "key": "param2",
       "name": "数字2",
       "type": "Number",
       "description": "右侧的数字",
-      "isAdvanced": false,
-      "validForList": [],
-      "invalidForList": [],
-      "condition": "",
       "defaultValue": "0",
       "defaultValueRaw": 0,
       "required": true,
-      "variableMode": "UseVarOrInput",
-      "isControlField": false
+      "variableMode": "UseVarOrInput"
     }
   ],
   "outputs": [
@@ -63,11 +45,7 @@
       "key": "value",
       "name": "值",
       "type": "Boolean",
-      "description": "比较结果是否为真",
-      "isAdvanced": false,
-      "validForList": [],
-      "invalidForList": [],
-      "condition": ""
+      "description": "比较结果是否为真"
     }
   ],
   "selections": {
@@ -76,28 +54,23 @@
       "items": [
         {
           "value": ">",
-          "name": ">",
-          "description": ""
+          "name": ">"
         },
         {
           "value": ">=",
-          "name": ">=",
-          "description": ""
+          "name": ">="
         },
         {
           "value": "=",
-          "name": "=",
-          "description": ""
+          "name": "="
         },
         {
           "value": "<",
-          "name": "<",
-          "description": ""
+          "name": "<"
         },
         {
           "value": "<=",
-          "name": "<=",
-          "description": ""
+          "name": "<="
         }
       ]
     }

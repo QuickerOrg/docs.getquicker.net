@@ -9,7 +9,6 @@
   "categoryName": "键鼠输入",
   "stepType": "Action",
   "isRisky": true,
-  "isProOnly": false,
   "helpLink": "https://docs.getquicker.net/v2/xaction/modules/automationscript",
   "inputs": [
     {
@@ -17,29 +16,17 @@
       "name": "脚本内容",
       "type": "Text",
       "description": "要执行的桌面自动化 JavaScript。可使用 export default 导出结果。",
-      "isAdvanced": false,
-      "validForList": [],
-      "invalidForList": [],
-      "condition": "",
       "defaultValue": "import { mouse, key } from \"quicker\";\r\n\r\nmouse.moveTo(100, 200);\r\nmouse.click();\r\nkey.press(\"enter\");\r\n\r\nexport default mouse.position();",
-      "defaultValueRaw": "import { mouse, key } from \"quicker\";\r\n\r\nmouse.moveTo(100, 200);\r\nmouse.click();\r\nkey.press(\"enter\");\r\n\r\nexport default mouse.position();",
       "required": true,
-      "variableMode": "Input",
-      "isControlField": false
+      "variableMode": "Input"
     },
     {
       "key": "input",
       "name": "输入",
       "type": "Any",
       "description": "传入脚本的受支持数据。脚本可从 quicker 模块导入 input 读取。",
-      "isAdvanced": false,
-      "validForList": [],
-      "invalidForList": [],
-      "condition": "",
       "defaultValue": "",
-      "required": false,
-      "variableMode": "UseVarOrInput",
-      "isControlField": false
+      "variableMode": "UseVarOrInput"
     },
     {
       "key": "timeoutMs",
@@ -47,14 +34,9 @@
       "type": "Integer",
       "description": "脚本最长运行时间，范围 100 到 120000 毫秒。",
       "isAdvanced": true,
-      "validForList": [],
-      "invalidForList": [],
-      "condition": "",
       "defaultValue": "30000",
       "defaultValueRaw": 30000,
-      "required": false,
-      "variableMode": "Input",
-      "isControlField": false
+      "variableMode": "Input"
     },
     {
       "key": "restoreMousePosition",
@@ -62,29 +44,18 @@
       "type": "Boolean",
       "description": "脚本正常结束或失败时恢复开始前的鼠标位置；用户接管或主动取消时不恢复。",
       "isAdvanced": true,
-      "validForList": [],
-      "invalidForList": [],
-      "condition": "",
       "defaultValue": "false",
       "defaultValueRaw": false,
-      "required": false,
-      "variableMode": "Input",
-      "isControlField": false
+      "variableMode": "Input"
     },
     {
       "key": "stopIfFail",
       "name": "失败后停止",
       "type": "Boolean",
       "description": "失败后是否停止动作",
-      "isAdvanced": false,
-      "validForList": [],
-      "invalidForList": [],
-      "condition": "",
       "defaultValue": "true",
       "defaultValueRaw": true,
-      "required": false,
-      "variableMode": "Input",
-      "isControlField": false
+      "variableMode": "Input"
     }
   ],
   "outputs": [
@@ -92,43 +63,27 @@
       "key": "isSuccess",
       "name": "是否成功",
       "type": "Boolean",
-      "description": "操作是否成功",
-      "isAdvanced": false,
-      "validForList": [],
-      "invalidForList": [],
-      "condition": ""
+      "description": "操作是否成功"
     },
     {
       "key": "result",
       "name": "结果",
       "type": "Any",
-      "description": "脚本 export default 导出的受支持值。",
-      "isAdvanced": false,
-      "validForList": [],
-      "invalidForList": [],
-      "condition": ""
+      "description": "脚本 export default 导出的受支持值。"
     },
     {
       "key": "errorCode",
       "name": "错误码",
       "type": "Text",
       "description": "稳定的机器可读错误码。",
-      "isAdvanced": true,
-      "validForList": [],
-      "invalidForList": [],
-      "condition": ""
+      "isAdvanced": true
     },
     {
       "key": "errMessage",
       "name": "错误消息",
       "type": "Text",
-      "description": "脚本执行失败时的错误消息。",
-      "isAdvanced": false,
-      "validForList": [],
-      "invalidForList": [],
-      "condition": ""
+      "description": "脚本执行失败时的错误消息。"
     }
   ],
-  "selections": {},
   "sourceFileName": "catalog.json"
 }

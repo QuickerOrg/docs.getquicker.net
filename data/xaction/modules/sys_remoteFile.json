@@ -8,21 +8,13 @@
   "category": "Network",
   "categoryName": "网络服务",
   "stepType": "Action",
-  "isRisky": false,
-  "isProOnly": false,
   "helpLink": "https://docs.getquicker.net/v2/xaction/modules/remotefile",
   "inputs": [
     {
       "key": "operation",
       "name": "操作",
       "type": "Enum",
-      "description": "",
-      "isAdvanced": false,
-      "validForList": [],
-      "invalidForList": [],
-      "condition": "",
       "defaultValue": "upload",
-      "defaultValueRaw": "upload",
       "required": true,
       "variableMode": "Input",
       "isControlField": true
@@ -32,9 +24,6 @@
       "name": "账号",
       "type": "Text",
       "description": "远程文件账号的引用名。账号与密码只保存在本机，在“设置 → 软件连接 → 远程文件账号”中管理。",
-      "isAdvanced": false,
-      "validForList": [],
-      "invalidForList": [],
       "visibleWhen": {
         "kind": "Field",
         "fieldKey": "operation",
@@ -46,17 +35,13 @@
       "condition": "operation 不为 \"listAccounts\"",
       "defaultValue": "",
       "required": true,
-      "variableMode": "UseVarOrInput",
-      "isControlField": false
+      "variableMode": "UseVarOrInput"
     },
     {
       "key": "remotePath",
       "name": "远端路径",
       "type": "Text",
       "description": "相对账号根目录的路径，开头的 / 表示账号根；不能越出账号根。列目录、新建目录时为目录，移动/复制时为源文件；批量下载时为远端基准目录；文件夹传输时为远端目录。",
-      "isAdvanced": false,
-      "validForList": [],
-      "invalidForList": [],
       "visibleWhen": {
         "kind": "Field",
         "fieldKey": "operation",
@@ -78,86 +63,65 @@
       "condition": "operation 为 \"upload\"、\"download\"、\"list\"、\"query\"、\"createDirectory\"、\"deleteFile\"、\"moveFile\"、\"copyFile\"、\"batchDownload\"、\"uploadFolder\"、\"downloadFolder\"",
       "defaultValue": "",
       "required": true,
-      "variableMode": "UseVarOrInput",
-      "isControlField": false
+      "variableMode": "UseVarOrInput"
     },
     {
       "key": "targetPath",
       "name": "目标路径",
       "type": "Text",
       "description": "移动/重命名或复制后的远端路径（相对账号根目录）。S3 移动通过复制后删除完成，非原子操作；移动和复制当前限 5 GiB。",
-      "isAdvanced": false,
       "validForList": [
         "copyFile",
         "moveFile"
       ],
-      "invalidForList": [],
       "condition": "仅：copyFile, moveFile",
       "defaultValue": "",
       "required": true,
-      "variableMode": "UseVarOrInput",
-      "isControlField": false
+      "variableMode": "UseVarOrInput"
     },
     {
       "key": "remotePaths",
       "name": "远端文件列表",
       "type": "List",
-      "description": "",
-      "isAdvanced": false,
       "validForList": [
         "batchRead",
         "batchDownload"
       ],
-      "invalidForList": [],
       "condition": "仅：batchRead, batchDownload",
       "defaultValue": "",
       "required": true,
-      "variableMode": "UseVarOrInput",
-      "isControlField": false
+      "variableMode": "UseVarOrInput"
     },
     {
       "key": "uploadSource",
       "name": "上传内容",
       "type": "Enum",
-      "description": "",
-      "isAdvanced": false,
       "validForList": [
         "upload"
       ],
-      "invalidForList": [],
       "condition": "仅：upload",
       "defaultValue": "file",
-      "defaultValueRaw": "file",
-      "required": false,
-      "variableMode": "Input",
-      "isControlField": false
+      "variableMode": "Input"
     },
     {
       "key": "localFolder",
       "name": "本地文件夹",
       "type": "Text",
-      "description": "",
-      "isAdvanced": false,
       "validForList": [
         "batchDownload",
         "uploadFolder",
         "downloadFolder"
       ],
-      "invalidForList": [],
       "condition": "仅：batchDownload, uploadFolder, downloadFolder",
       "defaultValue": "",
       "required": true,
-      "variableMode": "UseVarOrInput",
-      "isControlField": false
+      "variableMode": "UseVarOrInput"
     },
     {
       "key": "localFile",
       "name": "本地文件",
       "type": "Text",
       "description": "要上传的本地文件路径。文件以流方式上传，不限大小。",
-      "isAdvanced": false,
-      "validForList": [],
-      "invalidForList": [],
       "visibleWhen": {
         "kind": "All",
         "conditions": [
@@ -182,34 +146,24 @@
       "condition": "(operation 为 \"upload\" 且 uploadSource 为 \"file\")",
       "defaultValue": "",
       "required": true,
-      "variableMode": "UseVarOrInput",
-      "isControlField": false
+      "variableMode": "UseVarOrInput"
     },
     {
       "key": "batchContent",
       "name": "读取内容",
       "type": "Enum",
-      "description": "",
-      "isAdvanced": false,
       "validForList": [
         "batchRead"
       ],
-      "invalidForList": [],
       "condition": "仅：batchRead",
       "defaultValue": "text",
-      "defaultValueRaw": "text",
-      "required": false,
-      "variableMode": "UseVarOrInput",
-      "isControlField": false
+      "variableMode": "UseVarOrInput"
     },
     {
       "key": "uploadText",
       "name": "文本内容",
       "type": "Text",
       "description": "要上传的文本，按所选编码写入，不添加 BOM；默认 UTF-8。",
-      "isAdvanced": false,
-      "validForList": [],
-      "invalidForList": [],
       "visibleWhen": {
         "kind": "All",
         "conditions": [
@@ -233,18 +187,13 @@
       },
       "condition": "(operation 为 \"upload\" 且 uploadSource 为 \"text\")",
       "defaultValue": "",
-      "required": false,
-      "variableMode": "UseVarOrInput",
-      "isControlField": false
+      "variableMode": "UseVarOrInput"
     },
     {
       "key": "uploadBytes",
       "name": "字节数组",
       "type": "Any",
       "description": "要上传的字节数组（byte[]）变量。",
-      "isAdvanced": false,
-      "validForList": [],
-      "invalidForList": [],
       "visibleWhen": {
         "kind": "All",
         "conditions": [
@@ -269,17 +218,12 @@
       "condition": "(operation 为 \"upload\" 且 uploadSource 为 \"bytes\")",
       "defaultValue": "",
       "required": true,
-      "variableMode": "UseVar",
-      "isControlField": false
+      "variableMode": "UseVar"
     },
     {
       "key": "uploadImage",
       "name": "图片",
       "type": "Image",
-      "description": "",
-      "isAdvanced": false,
-      "validForList": [],
-      "invalidForList": [],
       "visibleWhen": {
         "kind": "All",
         "conditions": [
@@ -304,34 +248,23 @@
       "condition": "(operation 为 \"upload\" 且 uploadSource 为 \"image\")",
       "defaultValue": "",
       "required": true,
-      "variableMode": "UseVar",
-      "isControlField": false
+      "variableMode": "UseVar"
     },
     {
       "key": "downloadMode",
       "name": "下载方式",
       "type": "Enum",
-      "description": "",
-      "isAdvanced": false,
       "validForList": [
         "download"
       ],
-      "invalidForList": [],
       "condition": "仅：download",
       "defaultValue": "file",
-      "defaultValueRaw": "file",
-      "required": false,
-      "variableMode": "Input",
-      "isControlField": false
+      "variableMode": "Input"
     },
     {
       "key": "imageFormat",
       "name": "图片格式",
       "type": "Enum",
-      "description": "",
-      "isAdvanced": false,
-      "validForList": [],
-      "invalidForList": [],
       "visibleWhen": {
         "kind": "All",
         "conditions": [
@@ -355,19 +288,13 @@
       },
       "condition": "(operation 为 \"upload\" 且 uploadSource 为 \"image\")",
       "defaultValue": "png",
-      "defaultValueRaw": "png",
-      "required": false,
-      "variableMode": "UseVarOrInput",
-      "isControlField": false
+      "variableMode": "UseVarOrInput"
     },
     {
       "key": "savePath",
       "name": "保存到",
       "type": "Text",
       "description": "下载保存的本地文件完整路径。先写入同目录临时文件，完成后再替换目标。",
-      "isAdvanced": false,
-      "validForList": [],
-      "invalidForList": [],
       "visibleWhen": {
         "kind": "All",
         "conditions": [
@@ -392,17 +319,13 @@
       "condition": "(operation 为 \"download\" 且 downloadMode 为 \"file\")",
       "defaultValue": "",
       "required": true,
-      "variableMode": "UseVarOrInput",
-      "isControlField": false
+      "variableMode": "UseVarOrInput"
     },
     {
       "key": "jpegQuality",
       "name": "JPEG 质量",
       "type": "Number",
       "description": "1–100；透明部分使用白色背景。",
-      "isAdvanced": false,
-      "validForList": [],
-      "invalidForList": [],
       "visibleWhen": {
         "kind": "All",
         "conditions": [
@@ -435,16 +358,13 @@
       "condition": "(operation 为 \"upload\" 且 uploadSource 为 \"image\" 且 imageFormat 为 \"jpeg\")",
       "defaultValue": "90",
       "defaultValueRaw": 90,
-      "required": false,
-      "variableMode": "UseVarOrInput",
-      "isControlField": false
+      "variableMode": "UseVarOrInput"
     },
     {
       "key": "existsPolicy",
       "name": "已存在时",
       "type": "Enum",
       "description": "上传：远端目标已存在时的处理，选“覆盖”还需账号允许覆盖。下载：本机文件已存在时的处理，“覆盖”只覆盖本机文件，不受账号“允许覆盖”限制。",
-      "isAdvanced": false,
       "validForList": [
         "upload",
         "download",
@@ -453,117 +373,84 @@
         "uploadFolder",
         "downloadFolder"
       ],
-      "invalidForList": [],
       "condition": "仅：upload, download, copyFile, batchDownload, uploadFolder, downloadFolder",
       "defaultValue": "fail",
-      "defaultValueRaw": "fail",
-      "required": false,
-      "variableMode": "UseVarOrInput",
-      "isControlField": false
+      "variableMode": "UseVarOrInput"
     },
     {
       "key": "moveExistsPolicy",
       "name": "目标已存在时",
       "type": "Enum",
       "description": "远端目标已存在时的处理。选“覆盖”还需账号允许覆盖。",
-      "isAdvanced": false,
       "validForList": [
         "moveFile"
       ],
-      "invalidForList": [],
       "condition": "仅：moveFile",
       "defaultValue": "fail",
-      "defaultValueRaw": "fail",
-      "required": false,
-      "variableMode": "UseVarOrInput",
-      "isControlField": false
+      "variableMode": "UseVarOrInput"
     },
     {
       "key": "createParents",
       "name": "自动创建上级目录",
       "type": "Boolean",
       "description": "WebDAV：远端上级目录不存在时逐级创建。S3 上传无需创建上级目录。",
-      "isAdvanced": false,
       "validForList": [
         "upload"
       ],
-      "invalidForList": [],
       "condition": "仅：upload",
       "defaultValue": "true",
       "defaultValueRaw": true,
-      "required": false,
-      "variableMode": "UseVarOrInput",
-      "isControlField": false
+      "variableMode": "UseVarOrInput"
     },
     {
       "key": "recursive",
       "name": "包含子目录",
       "type": "Boolean",
       "description": "包含子目录内容。WebDAV 最多 32 层；S3 按对象前缀列举。",
-      "isAdvanced": false,
       "validForList": [
         "list"
       ],
-      "invalidForList": [],
       "condition": "仅：list",
       "defaultValue": "false",
       "defaultValueRaw": false,
-      "required": false,
-      "variableMode": "UseVarOrInput",
-      "isControlField": false
+      "variableMode": "UseVarOrInput"
     },
     {
       "key": "includeSubdirectories",
       "name": "包含子目录",
       "type": "Boolean",
-      "description": "",
-      "isAdvanced": false,
       "validForList": [
         "uploadFolder",
         "downloadFolder"
       ],
-      "invalidForList": [],
       "condition": "仅：uploadFolder, downloadFolder",
       "defaultValue": "true",
       "defaultValueRaw": true,
-      "required": false,
-      "variableMode": "UseVarOrInput",
-      "isControlField": false
+      "variableMode": "UseVarOrInput"
     },
     {
       "key": "listFilter",
       "name": "列出",
       "type": "Enum",
-      "description": "",
-      "isAdvanced": false,
       "validForList": [
         "list"
       ],
-      "invalidForList": [],
       "condition": "仅：list",
       "defaultValue": "all",
-      "defaultValueRaw": "all",
-      "required": false,
-      "variableMode": "UseVarOrInput",
-      "isControlField": false
+      "variableMode": "UseVarOrInput"
     },
     {
       "key": "keepEmptyDirectories",
       "name": "保留空目录",
       "type": "Boolean",
-      "description": "",
-      "isAdvanced": false,
       "validForList": [
         "uploadFolder",
         "downloadFolder"
       ],
-      "invalidForList": [],
       "condition": "仅：uploadFolder, downloadFolder",
       "defaultValue": "false",
       "defaultValueRaw": false,
-      "required": false,
-      "variableMode": "UseVarOrInput",
-      "isControlField": false
+      "variableMode": "UseVarOrInput"
     },
     {
       "key": "maxSizeMb",
@@ -571,8 +458,6 @@
       "type": "Number",
       "description": "读取为文本/图片/字节时的大小上限，默认 20，最大 100。超过上限时失败，不返回截断的内容。",
       "isAdvanced": true,
-      "validForList": [],
-      "invalidForList": [],
       "visibleWhen": {
         "kind": "All",
         "conditions": [
@@ -599,18 +484,13 @@
       "condition": "(operation 为 \"download\" 且 downloadMode 为 \"text\"、\"bytes\"、\"image\")",
       "defaultValue": "20",
       "defaultValueRaw": 20,
-      "required": false,
-      "variableMode": "UseVarOrInput",
-      "isControlField": false
+      "variableMode": "UseVarOrInput"
     },
     {
       "key": "textEncoding",
       "name": "文本编码",
       "type": "Text",
       "description": "如 utf-8、gbk、utf-16。读取优先识别 BOM；上传不添加 BOM。",
-      "isAdvanced": false,
-      "validForList": [],
-      "invalidForList": [],
       "visibleWhen": {
         "kind": "Any",
         "conditions": [
@@ -681,62 +561,45 @@
       },
       "condition": "((operation 为 \"upload\" 且 uploadSource 为 \"text\") 或 (operation 为 \"download\" 且 downloadMode 为 \"text\") 或 (operation 为 \"batchRead\" 且 batchContent 为 \"text\"))",
       "defaultValue": "utf-8",
-      "defaultValueRaw": "utf-8",
-      "required": false,
-      "variableMode": "UseVarOrInput",
-      "isControlField": false
+      "variableMode": "UseVarOrInput"
     },
     {
       "key": "totalSizeMb",
       "name": "总内容上限(MB)",
       "type": "Number",
       "description": "所有文件累计读取上限，最大 100 MB；超限停止，不输出截断内容。",
-      "isAdvanced": false,
       "validForList": [
         "batchRead"
       ],
-      "invalidForList": [],
       "condition": "仅：batchRead",
       "defaultValue": "50",
       "defaultValueRaw": 50,
-      "required": false,
-      "variableMode": "UseVarOrInput",
-      "isControlField": false
+      "variableMode": "UseVarOrInput"
     },
     {
       "key": "continueOnError",
       "name": "失败或结果未知后继续",
       "type": "Boolean",
       "description": "关闭时停止派发剩余项，已经开始的项仍会结束。",
-      "isAdvanced": false,
       "validForList": [
         "batchRead",
         "batchDownload",
         "uploadFolder",
         "downloadFolder"
       ],
-      "invalidForList": [],
       "condition": "仅：batchRead, batchDownload, uploadFolder, downloadFolder",
       "defaultValue": "false",
       "defaultValueRaw": false,
-      "required": false,
-      "variableMode": "UseVarOrInput",
-      "isControlField": false
+      "variableMode": "UseVarOrInput"
     },
     {
       "key": "stopIfFail",
       "name": "失败后停止",
       "type": "Boolean",
       "description": "失败后是否停止动作",
-      "isAdvanced": false,
-      "validForList": [],
-      "invalidForList": [],
-      "condition": "",
       "defaultValue": "true",
       "defaultValueRaw": true,
-      "required": false,
-      "variableMode": "Input",
-      "isControlField": false
+      "variableMode": "Input"
     }
   ],
   "outputs": [
@@ -744,10 +607,6 @@
       "key": "imageContent",
       "name": "图片内容",
       "type": "Image",
-      "description": "",
-      "isAdvanced": false,
-      "validForList": [],
-      "invalidForList": [],
       "visibleWhen": {
         "kind": "All",
         "conditions": [
@@ -775,35 +634,25 @@
       "key": "batchSummary",
       "name": "批量汇总",
       "type": "Object",
-      "description": "",
-      "isAdvanced": false,
       "validForList": [
         "batchRead",
         "batchDownload",
         "uploadFolder",
         "downloadFolder"
       ],
-      "invalidForList": [],
       "condition": "仅：batchRead, batchDownload, uploadFolder, downloadFolder"
     },
     {
       "key": "isSuccess",
       "name": "是否成功",
       "type": "Boolean",
-      "description": "操作是否成功",
-      "isAdvanced": false,
-      "validForList": [],
-      "invalidForList": [],
-      "condition": ""
+      "description": "操作是否成功"
     },
     {
       "key": "status",
       "name": "状态",
       "type": "Text",
       "description": "completed（完成）/ skipped（跳过）/ failed（失败）/ unknown（结果未知）。跳过算成功；失败与结果未知按“失败时”设置处理。",
-      "isAdvanced": false,
-      "validForList": [],
-      "invalidForList": [],
       "visibleWhen": {
         "kind": "Field",
         "fieldKey": "operation",
@@ -818,10 +667,6 @@
       "key": "message",
       "name": "消息",
       "type": "Text",
-      "description": "",
-      "isAdvanced": false,
-      "validForList": [],
-      "invalidForList": [],
       "visibleWhen": {
         "kind": "Field",
         "fieldKey": "operation",
@@ -838,8 +683,6 @@
       "type": "Text",
       "description": "写入类操作出错时的相关远端路径、临时文件路径、服务器状态码等，供核实。",
       "isAdvanced": true,
-      "validForList": [],
-      "invalidForList": [],
       "visibleWhen": {
         "kind": "Field",
         "fieldKey": "operation",
@@ -855,11 +698,9 @@
       "name": "账号列表",
       "type": "List",
       "description": "本机远程文件账号，每项为“显示名（引用名）|引用名”；可直接作为“选择窗口”的选项。",
-      "isAdvanced": false,
       "validForList": [
         "listAccounts"
       ],
-      "invalidForList": [],
       "condition": "仅：listAccounts"
     },
     {
@@ -867,11 +708,9 @@
       "name": "本地文件路径",
       "type": "Text",
       "description": "下载保存的本地文件路径。",
-      "isAdvanced": false,
       "validForList": [
         "download"
       ],
-      "invalidForList": [],
       "condition": "仅：download"
     },
     {
@@ -879,11 +718,9 @@
       "name": "文本内容",
       "type": "Text",
       "description": "读取为文本时的内容。",
-      "isAdvanced": false,
       "validForList": [
         "download"
       ],
-      "invalidForList": [],
       "condition": "仅：download"
     },
     {
@@ -891,11 +728,9 @@
       "name": "字节内容",
       "type": "Object",
       "description": "读取为字节数组时的内容（byte[]）。",
-      "isAdvanced": false,
       "validForList": [
         "download"
       ],
-      "invalidForList": [],
       "condition": "仅：download"
     },
     {
@@ -903,7 +738,6 @@
       "name": "条目列表",
       "type": "Object",
       "description": "列目录每项为词典：name、path、isDirectory、size、lastModified；批量每项含 index、source、target、status、message、bytes、localPath，读取成功项另含 text/bytesContent。",
-      "isAdvanced": false,
       "validForList": [
         "list",
         "batchRead",
@@ -911,7 +745,6 @@
         "uploadFolder",
         "downloadFolder"
       ],
-      "invalidForList": [],
       "condition": "仅：list, batchRead, batchDownload, uploadFolder, downloadFolder"
     },
     {
@@ -919,37 +752,29 @@
       "name": "路径列表",
       "type": "List",
       "description": "列出条目的远端路径（相对账号根，以 / 开头）。",
-      "isAdvanced": false,
       "validForList": [
         "list",
         "batchDownload",
         "downloadFolder"
       ],
-      "invalidForList": [],
       "condition": "仅：list, batchDownload, downloadFolder"
     },
     {
       "key": "exists",
       "name": "是否存在",
       "type": "Boolean",
-      "description": "",
-      "isAdvanced": false,
       "validForList": [
         "query"
       ],
-      "invalidForList": [],
       "condition": "仅：query"
     },
     {
       "key": "isDirectory",
       "name": "是否目录",
       "type": "Boolean",
-      "description": "",
-      "isAdvanced": false,
       "validForList": [
         "query"
       ],
-      "invalidForList": [],
       "condition": "仅：query"
     },
     {
@@ -957,23 +782,18 @@
       "name": "大小(字节)",
       "type": "Integer",
       "description": "文件大小；目录或未知时为 -1。",
-      "isAdvanced": false,
       "validForList": [
         "query"
       ],
-      "invalidForList": [],
       "condition": "仅：query"
     },
     {
       "key": "lastModified",
       "name": "修改时间",
       "type": "DateTime",
-      "description": "",
-      "isAdvanced": false,
       "validForList": [
         "query"
       ],
-      "invalidForList": [],
       "condition": "仅：query"
     }
   ],
@@ -983,68 +803,55 @@
       "items": [
         {
           "value": "listAccounts",
-          "name": "获取账号列表",
-          "description": ""
+          "name": "获取账号列表"
         },
         {
           "value": "upload",
-          "name": "上传",
-          "description": ""
+          "name": "上传"
         },
         {
           "value": "download",
-          "name": "下载/读取内容",
-          "description": ""
+          "name": "下载/读取内容"
         },
         {
           "value": "list",
-          "name": "列目录",
-          "description": ""
+          "name": "列目录"
         },
         {
           "value": "query",
-          "name": "查询",
-          "description": ""
+          "name": "查询"
         },
         {
           "value": "createDirectory",
-          "name": "新建目录",
-          "description": ""
+          "name": "新建目录"
         },
         {
           "value": "deleteFile",
-          "name": "删除文件",
-          "description": ""
+          "name": "删除文件"
         },
         {
           "value": "moveFile",
-          "name": "移动/重命名文件",
-          "description": ""
+          "name": "移动/重命名文件"
         },
         {
           "value": "copyFile",
-          "name": "复制文件",
-          "description": ""
+          "name": "复制文件"
         },
         {
           "value": "batchRead",
-          "name": "批量读取内容",
-          "description": ""
+          "name": "批量读取内容"
         },
         {
           "value": "batchDownload",
-          "name": "批量下载文件",
-          "description": ""
+          "name": "批量下载文件"
         },
         {
           "value": "uploadFolder",
-          "name": "上传文件夹",
-          "description": ""
+          "name": "上传文件夹"
         },
         {
           "value": "downloadFolder",
-          "name": "下载文件夹",
-          "description": ""
+          "name": "下载文件夹"
         }
       ]
     },
@@ -1053,23 +860,19 @@
       "items": [
         {
           "value": "file",
-          "name": "本地文件",
-          "description": ""
+          "name": "本地文件"
         },
         {
           "value": "text",
-          "name": "文本",
-          "description": ""
+          "name": "文本"
         },
         {
           "value": "bytes",
-          "name": "字节数组",
-          "description": ""
+          "name": "字节数组"
         },
         {
           "value": "image",
-          "name": "图片",
-          "description": ""
+          "name": "图片"
         }
       ]
     },
@@ -1078,13 +881,11 @@
       "items": [
         {
           "value": "text",
-          "name": "文本",
-          "description": ""
+          "name": "文本"
         },
         {
           "value": "bytes",
-          "name": "字节数组",
-          "description": ""
+          "name": "字节数组"
         }
       ]
     },
@@ -1093,23 +894,19 @@
       "items": [
         {
           "value": "file",
-          "name": "保存为本地文件",
-          "description": ""
+          "name": "保存为本地文件"
         },
         {
           "value": "text",
-          "name": "读取为文本",
-          "description": ""
+          "name": "读取为文本"
         },
         {
           "value": "bytes",
-          "name": "读取为字节数组",
-          "description": ""
+          "name": "读取为字节数组"
         },
         {
           "value": "image",
-          "name": "图片",
-          "description": ""
+          "name": "图片"
         }
       ]
     },
@@ -1118,13 +915,11 @@
       "items": [
         {
           "value": "png",
-          "name": "PNG",
-          "description": ""
+          "name": "PNG"
         },
         {
           "value": "jpeg",
-          "name": "JPEG",
-          "description": ""
+          "name": "JPEG"
         }
       ]
     },
@@ -1133,18 +928,15 @@
       "items": [
         {
           "value": "fail",
-          "name": "失败",
-          "description": ""
+          "name": "失败"
         },
         {
           "value": "skip",
-          "name": "跳过",
-          "description": ""
+          "name": "跳过"
         },
         {
           "value": "overwrite",
-          "name": "覆盖",
-          "description": ""
+          "name": "覆盖"
         }
       ]
     },
@@ -1153,13 +945,11 @@
       "items": [
         {
           "value": "fail",
-          "name": "失败",
-          "description": ""
+          "name": "失败"
         },
         {
           "value": "overwrite",
-          "name": "覆盖",
-          "description": ""
+          "name": "覆盖"
         }
       ]
     },
@@ -1168,18 +958,15 @@
       "items": [
         {
           "value": "all",
-          "name": "全部",
-          "description": ""
+          "name": "全部"
         },
         {
           "value": "files",
-          "name": "只列文件",
-          "description": ""
+          "name": "只列文件"
         },
         {
           "value": "directories",
-          "name": "只列目录",
-          "description": ""
+          "name": "只列目录"
         }
       ]
     }

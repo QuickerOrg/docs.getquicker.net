@@ -30,12 +30,14 @@ comments: true
 
 ## 近期文档补充
 
-### 2.2.22 · 列表编辑、提示消息与 Agent
+### 2.2.22 · 列表编辑、提示消息与长截图
 
-- 补充[列表项自定义子程序编辑](/v2/xaction/modules/managelist#自定义添加和编辑)的变量约定、表单示例和取消行为。
-- 补充[提示消息默认位置与时长同步](/v2/xaction/modules/notify#全局默认位置和时长)，以及[键鼠脚本提示选项](/v2/xaction/modules/automationscript#提示选项)的默认值规则。
-- 更新[Agent 对话文件导入导出和步骤加入对话](/v2/features/ai-and-agent)、[最近动作的编辑访问记录](/v2/features/action-panel/usage#调整动作顺序)。
-- 补充[长截图重来](/v2/features/screenshot/capture-pro#长截图编辑)，并更新截图、贴图和录屏标注快捷键。同步设置、旧客户端和快捷键变化见[升级注意](/important-notice#2222-提示设置与编辑操作)。
+- [管理和排序列表](/v2/xaction/modules/managelist#用子程序自定义添加和编辑)支持通过子程序自定义添加、编辑列表项，可用多字段表单处理复杂内容。使用该能力的动作需要 **2.2.22 或更高版本**，详见[升级注意](/important-notice#2222-列表项自定义子程序与提示消息默认设置)。
+- [提示消息](/v2/xaction/modules/notify#默认位置与停留时间)可在「设置 → 模块功能选项」配置默认显示位置和停留时间，并随账号同步；步骤里单独指定的位置或时长仍优先。
+- [表单多选列表](/v2/xaction/modules/form#多选列表已选标签图标)的已选标签会显示选项图标。
+- [长截图](/v2/features/screenshot/capture-pro#长截图编辑)支持「重来」；截图、贴图和录屏标注中 `Ctrl+Shift+Z` 改为重做，「清空全部标注」改用 `Shift+Delete`，详见[快捷键说明](/v2/features/screenshot/capture-pro#快捷键一览)。
+- 主面板「最新动作」会包含在编辑器中打开查看过的动作；更多对话框可用 `Esc` 取消。完整改动见[官网版本记录](https://getquicker.net/V2/Versions)。
+- 补充[列表自定义编辑的变量类型和表单示例](/v2/xaction/modules/managelist#用子程序自定义添加和编辑)、[键鼠脚本提示选项](/v2/xaction/modules/automationscript#提示选项)，以及[Agent 对话文件导入导出和步骤加入对话](/v2/features/ai-and-agent)。
 
 ### 2.2.21 · 代码补全与动作面板
 

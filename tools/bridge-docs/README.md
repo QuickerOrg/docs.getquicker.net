@@ -6,7 +6,7 @@
 
 - `data/bridges/catalog.json`：只保存连接 ID、安装组件 ID、模块 Key、软件名和指南 slug。WPS 的 `componentId` 为 `null`，由官方网页管理；不复制在线 Catalog 版本、下载地址或发布状态。
 - `data/bridges/examples.json`：16 个最小 `bridge.ping` 配置，用当前模块数据检查参数名、枚举和输出。它是步骤配置清单，不是可导入的 ActionItem2 或分享动作 JSON。
-- `data/bridges/source.json`：本轮源提交、导出时间、路由核验位置与源文件 SHA-256。哈希用于发现未提交代码漂移，不包含签名密钥、包哈希或连接凭据。
+- `data/bridges/source.json`：最近一次路由核验的源提交、导出时间、核验位置与源文件 SHA-256。哈希用于发现代码漂移，不包含签名密钥、包哈希或连接凭据。单独刷新步骤参数时保留这个历史快照；参数目录可以比它更新，但不能回退到它之前。当前参数、枚举、输出和示例仍逐项校验；源码核验是否过期由 `check-sources.mjs` 判断，不能用更新时间冒充重新核验。
 - `data/xaction/`：仍是唯一参数事实源。不要为了让示例通过而手改参数数据。
 
 ## 更新步骤

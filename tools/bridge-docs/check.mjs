@@ -30,6 +30,16 @@ export function validateExample(example, module) {
   if (module.key === 'sys:wpscontrol') assert.ok(['wps', 'et', 'wpp'].includes(example.inputs.targetComponent));
 }
 
+export function validateEvidenceDate(sourceGeneratedAt, catalogGeneratedAt) {
+  const parse = (value) => typeof value === 'string' && /^\d{4}-\d{2}-\d{2} \d{2}:\d{2}:\d{2}$/.test(value)
+    ? Date.parse(`${value.replace(' ', 'T')}Z`) : NaN;
+  const sourceTime = parse(sourceGeneratedAt);
+  const catalogTime = parse(catalogGeneratedAt);
+  assert.ok(Number.isFinite(sourceTime) && Number.isFinite(catalogTime), '导出或源码核验时间无效');
+  // source.json 记录路由核验快照；更新无关步骤或导出格式不意味着重新核验过路由。
+  assert.ok(sourceTime <= catalogTime, '参数 Catalog 早于路由核验使用的导出，需要重新同步');
+}
+
 export function check() {
   const {bridges} = json('data/bridges/catalog.json');
   const catalog = json('data/xaction/catalog.json');
@@ -37,7 +47,7 @@ export function check() {
   const source = json('data/bridges/source.json');
   assert.equal(bridges.length, 16, '首批应有 16 个宿主');
   assert.equal(examples.length, bridges.length);
-  assert.equal(source.generatedAt, catalog.generatedAt, '导出时间证据与 Catalog 不一致');
+  validateEvidenceDate(source.generatedAt, catalog.generatedAt);
   for (const key of ['quickerCommit', 'installerCommit']) assert.match(source[key], /^[0-9a-f]{40}$/);
   const modulePages = files(path.join(root, 'docs/v2/xaction/modules'), '.md').map((file) => ({file, body: fs.readFileSync(file, 'utf8')}));
   const uniqueFields = ['connectionId', 'moduleKey', 'docSlug'];

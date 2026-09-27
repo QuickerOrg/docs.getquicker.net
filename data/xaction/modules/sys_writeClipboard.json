@@ -16,91 +16,146 @@
       "key": "type",
       "name": "类型",
       "type": "Enum",
+      "description": "操作类型",
+      "isAdvanced": false,
+      "validForList": [],
+      "invalidForList": [],
+      "condition": "",
       "defaultValue": "auto",
+      "defaultValueRaw": "auto",
       "required": true,
       "variableMode": "Input",
-      "condition": "",
-      "description": "操作类型"
+      "isControlField": true
     },
     {
       "key": "customFormat",
       "name": "格式名",
       "type": "Text",
+      "description": "自定义的剪贴板格式名",
+      "isAdvanced": false,
+      "validForList": [
+        "custom"
+      ],
+      "invalidForList": [],
+      "condition": "仅：custom",
       "defaultValue": "",
       "required": true,
       "variableMode": "Input",
-      "condition": "仅：custom",
-      "description": "自定义的剪贴板格式名"
+      "isControlField": false
     },
     {
       "key": "input",
       "name": "输入",
       "type": "Any",
+      "description": "要写入剪贴板的数据",
+      "isAdvanced": false,
+      "validForList": [
+        "auto"
+      ],
+      "invalidForList": [],
+      "condition": "仅：auto",
       "defaultValue": "",
       "required": true,
       "variableMode": "UseVar",
-      "condition": "仅：auto",
-      "description": "要写入剪贴板的数据"
+      "isControlField": false
     },
     {
       "key": "html",
       "name": "HTML内容",
       "type": "Text",
+      "description": "HTML代码片段",
+      "isAdvanced": false,
+      "validForList": [
+        "html"
+      ],
+      "invalidForList": [],
+      "condition": "仅：html",
       "defaultValue": "",
       "required": true,
       "variableMode": "UseVarOrInput",
-      "condition": "仅：html",
-      "description": "HTML代码片段"
+      "isControlField": false
     },
     {
       "key": "text",
       "name": "文本内容",
       "type": "Text",
+      "description": "纯文本格式内容。",
+      "isAdvanced": false,
+      "validForList": [
+        "html",
+        "text",
+        "rtf",
+        "csv",
+        "custom"
+      ],
+      "invalidForList": [],
+      "condition": "仅：html, text, rtf, csv, custom",
       "defaultValue": "",
       "required": true,
       "variableMode": "UseVarOrInput",
-      "condition": "仅：html, text, rtf, csv, custom",
-      "description": "纯文本格式内容。"
+      "isControlField": false
     },
     {
       "key": "imageVar",
       "name": "图片(变量)",
       "type": "Image",
+      "description": "要写入剪贴板的图片内容",
+      "isAdvanced": false,
+      "validForList": [
+        "image"
+      ],
+      "invalidForList": [],
+      "condition": "仅：image",
       "defaultValue": "",
       "required": false,
       "variableMode": "UseVar",
-      "condition": "仅：image",
-      "description": "要写入剪贴板的图片内容"
+      "isControlField": false
     },
     {
       "key": "fastMode",
       "name": "快速模式",
       "type": "Boolean",
+      "description": "不需要处理图片中的透明通道时选择",
+      "isAdvanced": false,
+      "validForList": [
+        "image"
+      ],
+      "invalidForList": [],
+      "condition": "仅：image",
       "defaultValue": "false",
+      "defaultValueRaw": false,
       "required": false,
       "variableMode": "Input",
-      "condition": "仅：image",
-      "description": "不需要处理图片中的透明通道时选择"
+      "isControlField": false
     },
     {
       "key": "successMsg",
       "name": "成功后提示",
       "type": "Text",
+      "description": "可选。写入成功后提示消息，如\"XXX已写入剪贴板\"。",
+      "isAdvanced": false,
+      "validForList": [],
+      "invalidForList": [],
+      "condition": "",
       "defaultValue": "",
       "required": true,
       "variableMode": "Input",
-      "condition": "",
-      "description": "可选。写入成功后提示消息，如\"XXX已写入剪贴板\"。"
+      "isControlField": false
     },
     {
       "key": "stopIfFail",
       "name": "失败后停止",
       "type": "Boolean",
+      "description": "失败后是否停止动作",
+      "isAdvanced": false,
+      "validForList": [],
+      "invalidForList": [],
+      "condition": "",
       "defaultValue": "true",
+      "defaultValueRaw": true,
       "required": false,
       "variableMode": "Input",
-      "condition": "",
-      "description": "失败后是否停止动作"
+      "isControlField": false
     }
   ],
   "outputs": [
@@ -108,8 +163,11 @@
       "key": "isSuccess",
       "name": "是否成功",
       "type": "Boolean",
-      "condition": "",
-      "description": "操作是否成功"
+      "description": "操作是否成功",
+      "isAdvanced": false,
+      "validForList": [],
+      "invalidForList": [],
+      "condition": ""
     }
   ],
   "selections": {
@@ -164,5 +222,5 @@
       ]
     }
   },
-  "sourceFileName": "sys_writeClipboard_写入剪贴板.md"
+  "sourceFileName": "catalog.json"
 }

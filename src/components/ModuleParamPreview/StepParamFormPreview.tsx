@@ -29,6 +29,7 @@ import {
 } from "@site/src/components/PreviewLive";
 import {DocsStepIcon} from "@site/src/components/StepProgramView/DocsStepIcon";
 import {isStepParamVisible} from "@site/src/components/xaction/conditionVisibility";
+import type {XActionVisibility} from "@site/data/xaction/modules-index";
 import {KeyboardParamControl} from "./KeyboardParamControl";
 import {
   canBindVariable,
@@ -38,11 +39,13 @@ import {
 } from "./paramVarRender";
 import "./stepParamForm.css";
 
-export type StepParamFormInputDef = {
+export type StepParamFormInputDef = XActionVisibility & {
   key: string;
   name: string;
   type: string;
   defaultValue?: string;
+  newStepDefaultValue?: string;
+  isControlField?: boolean;
   variableMode?: string;
   description?: string;
   condition?: string;
@@ -50,7 +53,7 @@ export type StepParamFormInputDef = {
   fileExt?: string;
 };
 
-export type StepParamFormOutputDef = {
+export type StepParamFormOutputDef = XActionVisibility & {
   key: string;
   name: string;
   type?: string;
@@ -118,7 +121,7 @@ function buildInitialValues(
 ): Record<string, string> {
   const out: Record<string, string> = {};
   for (const param of module.inputs) {
-    out[param.key] = values?.[param.key] ?? param.defaultValue ?? "";
+    out[param.key] = values?.[param.key] ?? param.newStepDefaultValue ?? param.defaultValue ?? "";
   }
   return out;
 }
@@ -671,10 +674,10 @@ export function StepParamFormPreview({
   };
 
   const visibleInputs = module.inputs.filter((param) =>
-    isStepParamVisible(param, currentValues, showHidden),
+    isStepParamVisible(param, currentValues, showHidden, module),
   );
   const visibleOutputs = (module.outputs ?? []).filter((output) =>
-    isStepParamVisible(output, currentValues, showHidden),
+    isStepParamVisible(output, currentValues, showHidden, module),
   );
 
   const focusInputs = hasFocus

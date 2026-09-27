@@ -16,21 +16,31 @@
       "key": "min",
       "name": "最小值",
       "type": "Integer",
+      "description": "随机数范围的最小值（结果大于或等于此值）",
+      "isAdvanced": false,
+      "validForList": [],
+      "invalidForList": [],
+      "condition": "",
       "defaultValue": "0",
+      "defaultValueRaw": 0,
       "required": true,
       "variableMode": "UseVarOrInput",
-      "condition": "",
-      "description": "随机数范围的最小值（结果大于或等于此值）"
+      "isControlField": false
     },
     {
       "key": "max",
       "name": "最大值",
       "type": "Integer",
+      "description": "随机数范围的最大值（结果小于此值）",
+      "isAdvanced": false,
+      "validForList": [],
+      "invalidForList": [],
+      "condition": "",
       "defaultValue": "100",
+      "defaultValueRaw": 100,
       "required": true,
       "variableMode": "UseVarOrInput",
-      "condition": "",
-      "description": "随机数范围的最大值（结果小于此值）"
+      "isControlField": false
     }
   ],
   "outputs": [
@@ -38,10 +48,13 @@
       "key": "output",
       "name": "随机数",
       "type": "Integer",
-      "condition": "",
-      "description": "生成的随机数"
+      "description": "生成的随机数",
+      "isAdvanced": false,
+      "validForList": [],
+      "invalidForList": [],
+      "condition": ""
     }
   ],
   "selections": {},
-  "sourceFileName": "sys_randomNum_生成随机数.md"
+  "sourceFileName": "catalog.json"
 }

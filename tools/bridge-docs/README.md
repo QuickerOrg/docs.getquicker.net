@@ -12,7 +12,7 @@
 ## 更新步骤
 
 1. 阅读 Quicker 与 QuickerInstaller 当前规则、状态、Execute、Adapter、打包兼容范围、检测与安装逻辑、实施验证记录。
-2. 从当前 Quicker 构建执行 `Tools/docs/Export-StepMetadataDocs.ps1`。若需要遵守隔离构建输出约定，使用相同的 `ExportStepMetadataDocuments` 测试、相同环境变量及 `export-dir.txt` 协议，传入绝对 `--artifacts-path`。引用主项目时同时传入 `-p:RestoreLPAgentWithQuicker=true`。
+2. 从当前 Quicker 构建执行 `Tools/docs/Export-StepMetadataDocs.ps1`；该入口使用 `Tools/dev/build.ps1` 隔离输出并保留 `export-dir.txt` 协议，不覆盖运行中的版本。
 3. 导入前断言 `catalog.json` 映射的全部模块 Key 出现在原始导出中，再执行 `npm run docs:xaction:sync -- --generated <目录>`。同步器排除 Debug 专用 `sys:test`；不触发云端 workflow。
 4. 检查 `data/xaction/changes.json`。完整导出可能包含其他模块参数更新；保留一致的数据集，但去除无关页面的纯时间戳及人工摘要覆盖。不要回退用户既有改动。
 5. 人工更新正文和示例。软件指南讲安装差异、能力与目标限制，参数枚举仍留在模块组件中。AutoCAD、Rhino 保留原 slug、moduleKey、quickerDocKey 和兼容通道解释。

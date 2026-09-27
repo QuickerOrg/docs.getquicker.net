@@ -16,101 +16,183 @@
       "key": "which",
       "name": "目标窗口",
       "type": "Enum",
+      "description": "判断哪个窗口的信息",
+      "isAdvanced": false,
+      "validForList": [],
+      "invalidForList": [],
+      "condition": "",
       "defaultValue": "foreground",
+      "defaultValueRaw": "foreground",
       "required": true,
       "variableMode": "Input",
-      "condition": "",
-      "description": "判断哪个窗口的信息"
+      "isControlField": true
     },
     {
       "key": "hWnd",
       "name": "窗口句柄hWnd",
       "type": "Integer",
+      "description": "未指定时使用前台窗口句柄",
+      "isAdvanced": false,
+      "validForList": [
+        "fromHwnd",
+        "findChildWindow",
+        "child_windows"
+      ],
+      "invalidForList": [],
+      "condition": "仅：fromHwnd, findChildWindow, child_windows",
       "defaultValue": "",
       "required": false,
       "variableMode": "UseVarOrInput",
-      "condition": "仅：fromHwnd, findChildWindow, child_windows",
-      "description": "未指定时使用前台窗口句柄"
+      "isControlField": false
     },
     {
       "key": "className",
       "name": "窗口类名",
       "type": "Text",
+      "description": "要查找窗口的类名（ClassName），为空时不检查此项。",
+      "isAdvanced": false,
+      "validForList": [
+        "findWindow",
+        "top_windows",
+        "findChildWindow",
+        "child_windows"
+      ],
+      "invalidForList": [],
+      "condition": "仅：findWindow, top_windows, findChildWindow, child_windows",
       "defaultValue": "",
       "required": false,
       "variableMode": "UseVarOrInput",
-      "condition": "仅：findWindow, top_windows, findChildWindow, child_windows",
-      "description": "要查找窗口的类名（ClassName），为空时不检查此项。"
+      "isControlField": false
     },
     {
       "key": "windowName",
       "name": "窗口名称",
       "type": "Text",
+      "description": "要查找窗口的标题，为空时不检查此项。",
+      "isAdvanced": false,
+      "validForList": [
+        "findWindow",
+        "top_windows",
+        "findChildWindow",
+        "child_windows"
+      ],
+      "invalidForList": [],
+      "condition": "仅：findWindow, top_windows, findChildWindow, child_windows",
       "defaultValue": "",
       "required": false,
       "variableMode": "UseVarOrInput",
-      "condition": "仅：findWindow, top_windows, findChildWindow, child_windows",
-      "description": "要查找窗口的标题，为空时不检查此项。"
+      "isControlField": false
     },
     {
       "key": "procIdOrName",
       "name": "进程名/pid",
       "type": "Text",
+      "description": "要查找窗口所属的进程名或pid，为空时不检查此项。进程名通常为程序文件名去掉.exe后缀。",
+      "isAdvanced": false,
+      "validForList": [
+        "findWindow",
+        "top_windows"
+      ],
+      "invalidForList": [],
+      "condition": "仅：findWindow, top_windows",
       "defaultValue": "",
       "required": false,
       "variableMode": "UseVarOrInput",
-      "condition": "仅：findWindow, top_windows",
-      "description": "要查找窗口所属的进程名或pid，为空时不检查此项。进程名通常为程序文件名去掉.exe后缀。"
+      "isControlField": false
     },
     {
       "key": "onlyVisible",
       "name": "仅可见窗口",
       "type": "Enum",
+      "description": "",
+      "isAdvanced": false,
+      "validForList": [
+        "findWindow",
+        "top_windows"
+      ],
+      "invalidForList": [],
+      "condition": "仅：findWindow, top_windows",
       "defaultValue": "default",
+      "defaultValueRaw": "default",
       "required": false,
       "variableMode": "Input",
-      "condition": "仅：findWindow, top_windows",
-      "description": ""
+      "isControlField": false
     },
     {
       "key": "requireTitle",
       "name": "仅名称(标题)不为空的窗口",
       "type": "Boolean",
+      "description": "",
+      "isAdvanced": false,
+      "validForList": [
+        "findWindow",
+        "top_windows"
+      ],
+      "invalidForList": [],
+      "condition": "仅：findWindow, top_windows",
       "defaultValue": "true",
+      "defaultValueRaw": true,
       "required": false,
       "variableMode": "Input",
-      "condition": "仅：findWindow, top_windows",
-      "description": ""
+      "isControlField": false
     },
     {
       "key": "useRegex",
       "name": "使用正则匹配窗口类名和标题",
       "type": "Boolean",
+      "description": "",
+      "isAdvanced": false,
+      "validForList": [
+        "findWindow",
+        "top_windows",
+        "child_windows"
+      ],
+      "invalidForList": [],
+      "condition": "仅：findWindow, top_windows, child_windows",
       "defaultValue": "false",
+      "defaultValueRaw": false,
       "required": false,
       "variableMode": "Input",
-      "condition": "仅：findWindow, top_windows, child_windows",
-      "description": ""
+      "isControlField": false
     },
     {
       "key": "winRectIncludeInvisibleBorder",
       "name": "窗口位置包含不可见边框（阴影区域）",
       "type": "Boolean",
+      "description": "",
+      "isAdvanced": false,
+      "validForList": [
+        "foreground",
+        "selectWindow",
+        "pointing",
+        "pointing_root",
+        "pointing_now",
+        "pointing_now_root",
+        "fromHwnd",
+        "findWindow"
+      ],
+      "invalidForList": [],
+      "condition": "仅：foreground, selectWindow, pointing, pointing_root, pointing_now, pointing_now_root, fromHwnd, findWindow",
       "defaultValue": "false",
+      "defaultValueRaw": false,
       "required": false,
       "variableMode": "Input",
-      "condition": "仅：foreground, selectWindow, pointing, pointing_root, pointing_now, pointing_now_root, fromHwnd, findWindow",
-      "description": ""
+      "isControlField": false
     },
     {
       "key": "stopIfFail",
       "name": "失败后停止",
       "type": "Boolean",
+      "description": "失败后是否停止动作",
+      "isAdvanced": false,
+      "validForList": [],
+      "invalidForList": [],
+      "condition": "",
       "defaultValue": "true",
+      "defaultValueRaw": true,
       "required": false,
       "variableMode": "Input",
-      "condition": "",
-      "description": "失败后是否停止动作"
+      "isControlField": false
     }
   ],
   "outputs": [
@@ -118,148 +200,381 @@
       "key": "isSuccess",
       "name": "是否成功",
       "type": "Boolean",
-      "condition": "",
-      "description": "操作是否成功"
+      "description": "操作是否成功",
+      "isAdvanced": false,
+      "validForList": [],
+      "invalidForList": [],
+      "condition": ""
     },
     {
       "key": "output",
       "name": "窗口标题",
       "type": "Text",
-      "condition": "仅：foreground, selectWindow, pointing, pointing_root, pointing_now, pointing_now_root, fromHwnd, findWindow",
-      "description": "窗口的标题文字"
+      "description": "窗口的标题文字",
+      "isAdvanced": false,
+      "validForList": [
+        "foreground",
+        "selectWindow",
+        "pointing",
+        "pointing_root",
+        "pointing_now",
+        "pointing_now_root",
+        "fromHwnd",
+        "findWindow"
+      ],
+      "invalidForList": [],
+      "condition": "仅：foreground, selectWindow, pointing, pointing_root, pointing_now, pointing_now_root, fromHwnd, findWindow"
     },
     {
       "key": "className",
       "name": "类名",
       "type": "Text",
-      "condition": "仅：foreground, selectWindow, pointing, pointing_root, pointing_now, pointing_now_root, fromHwnd, findWindow",
-      "description": "窗口的 Class Name"
+      "description": "窗口的 Class Name",
+      "isAdvanced": false,
+      "validForList": [
+        "foreground",
+        "selectWindow",
+        "pointing",
+        "pointing_root",
+        "pointing_now",
+        "pointing_now_root",
+        "fromHwnd",
+        "findWindow"
+      ],
+      "invalidForList": [],
+      "condition": "仅：foreground, selectWindow, pointing, pointing_root, pointing_now, pointing_now_root, fromHwnd, findWindow"
     },
     {
       "key": "handle",
       "name": "句柄",
       "type": "Integer",
-      "condition": "仅：foreground, selectWindow, pointing, pointing_root, pointing_now, pointing_now_root, fromHwnd, findWindow, findChildWindow",
-      "description": "窗口的句柄"
+      "description": "窗口的句柄",
+      "isAdvanced": false,
+      "validForList": [
+        "foreground",
+        "selectWindow",
+        "pointing",
+        "pointing_root",
+        "pointing_now",
+        "pointing_now_root",
+        "fromHwnd",
+        "findWindow",
+        "findChildWindow"
+      ],
+      "invalidForList": [],
+      "condition": "仅：foreground, selectWindow, pointing, pointing_root, pointing_now, pointing_now_root, fromHwnd, findWindow, findChildWindow"
     },
     {
       "key": "pid",
       "name": "进程ID",
       "type": "Integer",
-      "condition": "仅：foreground, selectWindow, pointing, pointing_root, pointing_now, pointing_now_root, fromHwnd, findWindow",
-      "description": "窗口所属进程的ID"
+      "description": "窗口所属进程的ID",
+      "isAdvanced": false,
+      "validForList": [
+        "foreground",
+        "selectWindow",
+        "pointing",
+        "pointing_root",
+        "pointing_now",
+        "pointing_now_root",
+        "fromHwnd",
+        "findWindow"
+      ],
+      "invalidForList": [],
+      "condition": "仅：foreground, selectWindow, pointing, pointing_root, pointing_now, pointing_now_root, fromHwnd, findWindow"
     },
     {
       "key": "procName",
       "name": "进程名",
       "type": "Text",
-      "condition": "仅：foreground, selectWindow, pointing, pointing_root, pointing_now, pointing_now_root, fromHwnd, findWindow",
-      "description": "进程名通常为程序文件名去掉.exe后缀，大小写不确定。"
+      "description": "进程名通常为程序文件名去掉.exe后缀，大小写不确定。",
+      "isAdvanced": false,
+      "validForList": [
+        "foreground",
+        "selectWindow",
+        "pointing",
+        "pointing_root",
+        "pointing_now",
+        "pointing_now_root",
+        "fromHwnd",
+        "findWindow"
+      ],
+      "invalidForList": [],
+      "condition": "仅：foreground, selectWindow, pointing, pointing_root, pointing_now, pointing_now_root, fromHwnd, findWindow"
     },
     {
       "key": "path",
       "name": "程序路径",
       "type": "Text",
-      "condition": "仅：foreground, selectWindow, pointing, pointing_root, pointing_now, pointing_now_root, fromHwnd, findWindow",
-      "description": "获得的进程路径"
+      "description": "获得的进程路径",
+      "isAdvanced": false,
+      "validForList": [
+        "foreground",
+        "selectWindow",
+        "pointing",
+        "pointing_root",
+        "pointing_now",
+        "pointing_now_root",
+        "fromHwnd",
+        "findWindow"
+      ],
+      "invalidForList": [],
+      "condition": "仅：foreground, selectWindow, pointing, pointing_root, pointing_now, pointing_now_root, fromHwnd, findWindow"
     },
     {
       "key": "parent",
       "name": "父窗口句柄",
       "type": "Integer",
-      "condition": "仅：foreground, selectWindow, pointing, pointing_root, pointing_now, pointing_now_root, fromHwnd, findWindow",
-      "description": ""
+      "description": "",
+      "isAdvanced": false,
+      "validForList": [
+        "foreground",
+        "selectWindow",
+        "pointing",
+        "pointing_root",
+        "pointing_now",
+        "pointing_now_root",
+        "fromHwnd",
+        "findWindow"
+      ],
+      "invalidForList": [],
+      "condition": "仅：foreground, selectWindow, pointing, pointing_root, pointing_now, pointing_now_root, fromHwnd, findWindow"
     },
     {
       "key": "root",
       "name": "根窗口句柄",
       "type": "Integer",
-      "condition": "仅：foreground, selectWindow, pointing, pointing_root, pointing_now, pointing_now_root, fromHwnd, findWindow",
-      "description": ""
+      "description": "",
+      "isAdvanced": false,
+      "validForList": [
+        "foreground",
+        "selectWindow",
+        "pointing",
+        "pointing_root",
+        "pointing_now",
+        "pointing_now_root",
+        "fromHwnd",
+        "findWindow"
+      ],
+      "invalidForList": [],
+      "condition": "仅：foreground, selectWindow, pointing, pointing_root, pointing_now, pointing_now_root, fromHwnd, findWindow"
     },
     {
       "key": "rootOwner",
       "name": "根所有者窗口句柄",
       "type": "Integer",
-      "condition": "仅：foreground, selectWindow, pointing, pointing_root, pointing_now, pointing_now_root, fromHwnd, findWindow",
-      "description": ""
+      "description": "",
+      "isAdvanced": false,
+      "validForList": [
+        "foreground",
+        "selectWindow",
+        "pointing",
+        "pointing_root",
+        "pointing_now",
+        "pointing_now_root",
+        "fromHwnd",
+        "findWindow"
+      ],
+      "invalidForList": [],
+      "condition": "仅：foreground, selectWindow, pointing, pointing_root, pointing_now, pointing_now_root, fromHwnd, findWindow"
     },
     {
       "key": "rect",
       "name": "窗口位置",
       "type": "Text",
-      "condition": "仅：foreground, selectWindow, pointing, pointing_root, pointing_now, pointing_now_root, fromHwnd, findWindow",
-      "description": "文本值，格式为:Left,Top,Right,Bottom,Width,Height。"
+      "description": "文本值，格式为:Left,Top,Right,Bottom,Width,Height。",
+      "isAdvanced": false,
+      "validForList": [
+        "foreground",
+        "selectWindow",
+        "pointing",
+        "pointing_root",
+        "pointing_now",
+        "pointing_now_root",
+        "fromHwnd",
+        "findWindow"
+      ],
+      "invalidForList": [],
+      "condition": "仅：foreground, selectWindow, pointing, pointing_root, pointing_now, pointing_now_root, fromHwnd, findWindow"
     },
     {
       "key": "rectNoSize",
       "name": "窗口位置(不含尺寸)",
       "type": "Text",
-      "condition": "仅：foreground, selectWindow, pointing, pointing_root, pointing_now, pointing_now_root, fromHwnd, findWindow, findChildWindow",
-      "description": "文本值，格式为:Left,Top,Right,Bottom。如:0,0,100,100"
+      "description": "文本值，格式为:Left,Top,Right,Bottom。如:0,0,100,100",
+      "isAdvanced": false,
+      "validForList": [
+        "foreground",
+        "selectWindow",
+        "pointing",
+        "pointing_root",
+        "pointing_now",
+        "pointing_now_root",
+        "fromHwnd",
+        "findWindow",
+        "findChildWindow"
+      ],
+      "invalidForList": [],
+      "condition": "仅：foreground, selectWindow, pointing, pointing_root, pointing_now, pointing_now_root, fromHwnd, findWindow, findChildWindow"
     },
     {
       "key": "rectDict",
       "name": "窗口位置(词典值)",
       "type": "Dict",
-      "condition": "仅：foreground, selectWindow, pointing, pointing_root, pointing_now, pointing_now_root, fromHwnd, findWindow, findChildWindow",
-      "description": "词典值，属性为:Left,Top,Right,Bottom,Width,Height"
+      "description": "词典值，属性为:Left,Top,Right,Bottom,Width,Height",
+      "isAdvanced": false,
+      "validForList": [
+        "foreground",
+        "selectWindow",
+        "pointing",
+        "pointing_root",
+        "pointing_now",
+        "pointing_now_root",
+        "fromHwnd",
+        "findWindow",
+        "findChildWindow"
+      ],
+      "invalidForList": [],
+      "condition": "仅：foreground, selectWindow, pointing, pointing_root, pointing_now, pointing_now_root, fromHwnd, findWindow, findChildWindow"
     },
     {
       "key": "isTopmost",
       "name": "是否置顶",
       "type": "Boolean",
-      "condition": "仅：foreground, selectWindow, pointing, pointing_root, pointing_now, pointing_now_root, fromHwnd, findWindow",
-      "description": ""
+      "description": "",
+      "isAdvanced": false,
+      "validForList": [
+        "foreground",
+        "selectWindow",
+        "pointing",
+        "pointing_root",
+        "pointing_now",
+        "pointing_now_root",
+        "fromHwnd",
+        "findWindow"
+      ],
+      "invalidForList": [],
+      "condition": "仅：foreground, selectWindow, pointing, pointing_root, pointing_now, pointing_now_root, fromHwnd, findWindow"
     },
     {
       "key": "isVisible",
       "name": "是否可见",
       "type": "Boolean",
-      "condition": "仅：foreground, selectWindow, pointing, pointing_root, pointing_now, pointing_now_root, fromHwnd, findWindow",
-      "description": ""
+      "description": "",
+      "isAdvanced": false,
+      "validForList": [
+        "foreground",
+        "selectWindow",
+        "pointing",
+        "pointing_root",
+        "pointing_now",
+        "pointing_now_root",
+        "fromHwnd",
+        "findWindow"
+      ],
+      "invalidForList": [],
+      "condition": "仅：foreground, selectWindow, pointing, pointing_root, pointing_now, pointing_now_root, fromHwnd, findWindow"
     },
     {
       "key": "showState",
       "name": "显示状态",
       "type": "Integer",
-      "condition": "仅：foreground, selectWindow, pointing, pointing_root, pointing_now, pointing_now_root, fromHwnd, findWindow",
-      "description": "1:普通，2:最小化，3:最大化。"
+      "description": "1:普通，2:最小化，3:最大化。",
+      "isAdvanced": false,
+      "validForList": [
+        "foreground",
+        "selectWindow",
+        "pointing",
+        "pointing_root",
+        "pointing_now",
+        "pointing_now_root",
+        "fromHwnd",
+        "findWindow"
+      ],
+      "invalidForList": [],
+      "condition": "仅：foreground, selectWindow, pointing, pointing_root, pointing_now, pointing_now_root, fromHwnd, findWindow"
     },
     {
       "key": "alpha",
       "name": "不透明度",
       "type": "Integer",
-      "condition": "仅：foreground, selectWindow, pointing, pointing_root, pointing_now, pointing_now_root, fromHwnd, findWindow",
-      "description": "窗口的透明度，范围为0-255。0表示全透明"
+      "description": "窗口的透明度，范围为0-255。0表示全透明",
+      "isAdvanced": false,
+      "validForList": [
+        "foreground",
+        "selectWindow",
+        "pointing",
+        "pointing_root",
+        "pointing_now",
+        "pointing_now_root",
+        "fromHwnd",
+        "findWindow"
+      ],
+      "invalidForList": [],
+      "condition": "仅：foreground, selectWindow, pointing, pointing_root, pointing_now, pointing_now_root, fromHwnd, findWindow"
     },
     {
       "key": "borderColor",
       "name": "边框颜色",
       "type": "Text",
-      "condition": "仅：foreground, selectWindow, pointing, pointing_root, pointing_now, pointing_now_root, fromHwnd, findWindow",
-      "description": "窗口的边框颜色，格式为#RRGGBB，或空字符串表示未设置颜色。（仅支持通过Quicker设置的边框颜色）"
+      "description": "窗口的边框颜色，格式为#RRGGBB，或空字符串表示未设置颜色。（仅支持通过Quicker设置的边框颜色）",
+      "isAdvanced": false,
+      "validForList": [
+        "foreground",
+        "selectWindow",
+        "pointing",
+        "pointing_root",
+        "pointing_now",
+        "pointing_now_root",
+        "fromHwnd",
+        "findWindow"
+      ],
+      "invalidForList": [],
+      "condition": "仅：foreground, selectWindow, pointing, pointing_root, pointing_now, pointing_now_root, fromHwnd, findWindow"
     },
     {
       "key": "allChildWindows",
       "name": "所有子窗口",
       "type": "Dict",
-      "condition": "仅：foreground, selectWindow, pointing, pointing_root, pointing_now, pointing_now_root, fromHwnd, findWindow, child_windows",
-      "description": "词典值，Key为窗口句柄，Value为窗口标题"
+      "description": "词典值，Key为窗口句柄，Value为窗口标题",
+      "isAdvanced": false,
+      "validForList": [
+        "foreground",
+        "selectWindow",
+        "pointing",
+        "pointing_root",
+        "pointing_now",
+        "pointing_now_root",
+        "fromHwnd",
+        "findWindow",
+        "child_windows"
+      ],
+      "invalidForList": [],
+      "condition": "仅：foreground, selectWindow, pointing, pointing_root, pointing_now, pointing_now_root, fromHwnd, findWindow, child_windows"
     },
     {
       "key": "childWindowDetails",
       "name": "匹配子窗口详情",
       "type": "Dict",
-      "condition": "仅：child_windows",
-      "description": "词典值。Key为子窗口句柄，Value为包含 Handle、ClassName、Title、ParentHandle、位置、可见性、层级和序号的动态对象；Depth从直接子窗口的1开始，Index为匹配结果中从0开始的序号。"
+      "description": "词典值。Key为子窗口句柄，Value为包含 Handle、ClassName、Title、ParentHandle、位置、可见性、层级和序号的动态对象；Depth从直接子窗口的1开始，Index为匹配结果中从0开始的序号。",
+      "isAdvanced": false,
+      "validForList": [
+        "child_windows"
+      ],
+      "invalidForList": [],
+      "condition": "仅：child_windows"
     },
     {
       "key": "topLevelWindows",
       "name": "所有顶层窗口",
       "type": "Dict",
-      "condition": "仅：top_windows",
-      "description": "词典值，Key为窗口句柄，Value为窗口标题"
+      "description": "词典值，Key为窗口句柄，Value为窗口标题",
+      "isAdvanced": false,
+      "validForList": [
+        "top_windows"
+      ],
+      "invalidForList": [],
+      "condition": "仅：top_windows"
     }
   ],
   "selections": {
@@ -344,5 +659,5 @@
       ]
     }
   },
-  "sourceFileName": "sys_getWindowTitle_获取窗口信息_查找窗口.md"
+  "sourceFileName": "catalog.json"
 }

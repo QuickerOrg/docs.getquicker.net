@@ -16,31 +16,46 @@
       "key": "operation",
       "name": "选择器",
       "type": "Enum",
+      "description": "",
+      "isAdvanced": false,
+      "validForList": [],
+      "invalidForList": [],
+      "condition": "",
       "defaultValue": "",
       "required": false,
       "variableMode": "UseVarOrInput",
-      "condition": "",
-      "description": ""
+      "isControlField": true
     },
     {
       "key": "currValue",
       "name": "当前值",
       "type": "Text",
+      "description": "",
+      "isAdvanced": false,
+      "validForList": [
+        "OperationItemEditor"
+      ],
+      "invalidForList": [],
+      "condition": "仅：OperationItemEditor",
       "defaultValue": "",
       "required": false,
       "variableMode": "UseVarOrInput",
-      "condition": "仅：OperationItemEditor",
-      "description": ""
+      "isControlField": false
     },
     {
       "key": "stopIfFail",
       "name": "失败后停止",
       "type": "Boolean",
+      "description": "失败后是否停止动作",
+      "isAdvanced": false,
+      "validForList": [],
+      "invalidForList": [],
+      "condition": "",
       "defaultValue": "true",
+      "defaultValueRaw": true,
       "required": false,
       "variableMode": "Input",
-      "condition": "",
-      "description": "失败后是否停止动作"
+      "isControlField": false
     }
   ],
   "outputs": [
@@ -48,15 +63,21 @@
       "key": "isSuccess",
       "name": "是否成功",
       "type": "Boolean",
-      "condition": "",
-      "description": "操作是否成功"
+      "description": "操作是否成功",
+      "isAdvanced": false,
+      "validForList": [],
+      "invalidForList": [],
+      "condition": ""
     },
     {
       "key": "output",
       "name": "结果文本",
       "type": "Text",
-      "condition": "",
-      "description": "选择器的结果"
+      "description": "选择器的结果",
+      "isAdvanced": false,
+      "validForList": [],
+      "invalidForList": [],
+      "condition": ""
     }
   ],
   "selections": {
@@ -201,5 +222,5 @@
       ]
     }
   },
-  "sourceFileName": "sys_textSelectTools_辅助选择工具.md"
+  "sourceFileName": "catalog.json"
 }

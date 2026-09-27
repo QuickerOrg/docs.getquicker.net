@@ -16,101 +16,164 @@
       "key": "operation",
       "name": "操作类型",
       "type": "Enum",
+      "description": "",
+      "isAdvanced": false,
+      "validForList": [],
+      "invalidForList": [],
+      "condition": "",
       "defaultValue": "getInfo",
+      "defaultValueRaw": "getInfo",
       "required": true,
       "variableMode": "Input",
-      "condition": "",
-      "description": ""
+      "isControlField": true
     },
     {
       "key": "path",
       "name": "路径",
       "type": "Text",
+      "description": "待处理或拼接的路径",
+      "isAdvanced": false,
+      "validForList": [
+        "getInfo",
+        "changeExt",
+        "changeName",
+        "changeNameWithoutExt",
+        "changeDir",
+        "combine"
+      ],
+      "invalidForList": [],
+      "condition": "仅：getInfo, changeExt, changeName, changeNameWithoutExt, changeDir, combine",
       "defaultValue": "",
       "required": true,
       "variableMode": "UseVarOrInput",
-      "condition": "仅：getInfo, changeExt, changeName, changeNameWithoutExt, changeDir, combine",
-      "description": "待处理或拼接的路径"
+      "isControlField": false
     },
     {
       "key": "newExtension",
       "name": "新的扩展名",
       "type": "Text",
+      "description": "新的扩展名，如：.png",
+      "isAdvanced": false,
+      "validForList": [
+        "changeExt"
+      ],
+      "invalidForList": [],
+      "condition": "仅：changeExt",
       "defaultValue": "",
       "required": true,
       "variableMode": "UseVarOrInput",
-      "condition": "仅：changeExt",
-      "description": "新的扩展名，如：.png"
+      "isControlField": false
     },
     {
       "key": "newFileName",
       "name": "新的文件名",
       "type": "Text",
+      "description": "新的文件名，如：abcd.png",
+      "isAdvanced": false,
+      "validForList": [
+        "changeName"
+      ],
+      "invalidForList": [],
+      "condition": "仅：changeName",
       "defaultValue": "",
       "required": true,
       "variableMode": "UseVarOrInput",
-      "condition": "仅：changeName",
-      "description": "新的文件名，如：abcd.png"
+      "isControlField": false
     },
     {
       "key": "newFileNameWithoutExt",
       "name": "新的文件名",
       "type": "Text",
+      "description": "新的文件名(不包含扩展名），如：newfile",
+      "isAdvanced": false,
+      "validForList": [
+        "changeNameWithoutExt"
+      ],
+      "invalidForList": [],
+      "condition": "仅：changeNameWithoutExt",
       "defaultValue": "",
       "required": true,
       "variableMode": "UseVarOrInput",
-      "condition": "仅：changeNameWithoutExt",
-      "description": "新的文件名(不包含扩展名），如：newfile"
+      "isControlField": false
     },
     {
       "key": "newDir",
       "name": "目标目录路径",
       "type": "Text",
+      "description": "目标存储路径，如：d:\\Work\\Test",
+      "isAdvanced": false,
+      "validForList": [
+        "changeDir"
+      ],
+      "invalidForList": [],
+      "condition": "仅：changeDir",
       "defaultValue": "",
       "required": true,
       "variableMode": "UseVarOrInput",
-      "condition": "仅：changeDir",
-      "description": "目标存储路径，如：d:\\Work\\Test"
+      "isControlField": false
     },
     {
       "key": "path2",
       "name": "路径部分2",
       "type": "Text",
+      "description": "",
+      "isAdvanced": false,
+      "validForList": [
+        "combine"
+      ],
+      "invalidForList": [],
+      "condition": "仅：combine",
       "defaultValue": "",
       "required": true,
       "variableMode": "UseVarOrInput",
-      "condition": "仅：combine",
-      "description": ""
+      "isControlField": false
     },
     {
       "key": "path3",
       "name": "路径部分3",
       "type": "Text",
+      "description": "",
+      "isAdvanced": false,
+      "validForList": [
+        "combine"
+      ],
+      "invalidForList": [],
+      "condition": "仅：combine",
       "defaultValue": "",
       "required": true,
       "variableMode": "UseVarOrInput",
-      "condition": "仅：combine",
-      "description": ""
+      "isControlField": false
     },
     {
       "key": "path4",
       "name": "路径部分4",
       "type": "Text",
+      "description": "",
+      "isAdvanced": false,
+      "validForList": [
+        "combine"
+      ],
+      "invalidForList": [],
+      "condition": "仅：combine",
       "defaultValue": "",
       "required": true,
       "variableMode": "UseVarOrInput",
-      "condition": "仅：combine",
-      "description": ""
+      "isControlField": false
     },
     {
       "key": "stopIfFail",
       "name": "失败后停止",
       "type": "Boolean",
+      "description": "失败后是否停止动作",
+      "isAdvanced": false,
+      "validForList": [],
+      "invalidForList": [],
+      "condition": "",
       "defaultValue": "true",
+      "defaultValueRaw": true,
       "required": false,
       "variableMode": "Input",
-      "condition": "",
-      "description": "失败后是否停止动作"
+      "isControlField": false
     }
   ],
   "outputs": [
@@ -118,43 +181,75 @@
       "key": "isSuccess",
       "name": "是否成功",
       "type": "Boolean",
-      "condition": "",
-      "description": "提取过程是否没有遇到异常"
+      "description": "提取过程是否没有遇到异常",
+      "isAdvanced": false,
+      "validForList": [],
+      "invalidForList": [],
+      "condition": ""
     },
     {
       "key": "resultPath",
       "name": "结果路径",
       "type": "Text",
-      "condition": "仅：changeExt, changeName, changeNameWithoutExt, changeDir, combine",
-      "description": "生成的结果路径"
+      "description": "生成的结果路径",
+      "isAdvanced": false,
+      "validForList": [
+        "changeExt",
+        "changeName",
+        "changeNameWithoutExt",
+        "changeDir",
+        "combine"
+      ],
+      "invalidForList": [],
+      "condition": "仅：changeExt, changeName, changeNameWithoutExt, changeDir, combine"
     },
     {
       "key": "name",
       "name": "文件名",
       "type": "Text",
-      "condition": "仅：getInfo",
-      "description": "去除路径的文件名"
+      "description": "去除路径的文件名",
+      "isAdvanced": false,
+      "validForList": [
+        "getInfo"
+      ],
+      "invalidForList": [],
+      "condition": "仅：getInfo"
     },
     {
       "key": "nameNoExt",
       "name": "文件名(去掉扩展名)",
       "type": "Text",
-      "condition": "仅：getInfo",
-      "description": "去除扩展名的文件名"
+      "description": "去除扩展名的文件名",
+      "isAdvanced": false,
+      "validForList": [
+        "getInfo"
+      ],
+      "invalidForList": [],
+      "condition": "仅：getInfo"
     },
     {
       "key": "path",
       "name": "所在文件夹路径",
       "type": "Text",
-      "condition": "仅：getInfo",
-      "description": "父目录路径"
+      "description": "父目录路径",
+      "isAdvanced": false,
+      "validForList": [
+        "getInfo"
+      ],
+      "invalidForList": [],
+      "condition": "仅：getInfo"
     },
     {
       "key": "ext",
       "name": "扩展名",
       "type": "Text",
-      "condition": "仅：getInfo",
-      "description": "文件的扩展名"
+      "description": "文件的扩展名",
+      "isAdvanced": false,
+      "validForList": [
+        "getInfo"
+      ],
+      "invalidForList": [],
+      "condition": "仅：getInfo"
     }
   ],
   "selections": {
@@ -194,5 +289,5 @@
       ]
     }
   },
-  "sourceFileName": "sys_pathExtraction_提取文件路径信息_生成路径.md"
+  "sourceFileName": "catalog.json"
 }

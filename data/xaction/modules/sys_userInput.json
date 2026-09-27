@@ -16,171 +16,279 @@
       "key": "type",
       "name": "类型",
       "type": "Enum",
+      "description": "输入内容的类型",
+      "isAdvanced": false,
+      "validForList": [],
+      "invalidForList": [],
+      "condition": "",
       "defaultValue": "text",
+      "defaultValueRaw": "text",
       "required": true,
       "variableMode": "Input",
-      "condition": "",
-      "description": "输入内容的类型"
+      "isControlField": true
     },
     {
       "key": "prompt",
       "name": "提示文字",
       "type": "Text",
+      "description": "提示用户输入什么内容。显示在输入框上方。",
+      "isAdvanced": false,
+      "validForList": [],
+      "invalidForList": [],
+      "condition": "",
       "defaultValue": "请输入内容",
+      "defaultValueRaw": "请输入内容",
       "required": true,
       "variableMode": "UseVarOrInput",
-      "condition": "",
-      "description": "提示用户输入什么内容。显示在输入框上方。"
+      "isControlField": false
     },
     {
       "key": "defaultValue",
       "name": "默认值",
       "type": "Text",
+      "description": "默认填写到输入框中的内容",
+      "isAdvanced": false,
+      "validForList": [],
+      "invalidForList": [],
+      "condition": "",
       "defaultValue": "",
+      "defaultValueRaw": "",
       "required": false,
       "variableMode": "UseVarOrInput",
-      "condition": "",
-      "description": "默认填写到输入框中的内容"
+      "isControlField": false
     },
     {
       "key": "texttools",
       "name": "文本选择工具",
       "type": "Text",
+      "description": "鼠标悬浮在文本框上时显示的小工具",
+      "isAdvanced": true,
+      "validForList": [
+        "text",
+        "multiline"
+      ],
+      "invalidForList": [],
+      "condition": "仅：text, multiline",
       "defaultValue": "",
+      "defaultValueRaw": "",
       "required": false,
       "variableMode": "UseVarOrInput",
-      "condition": "仅：text, multiline",
-      "description": "鼠标悬浮在文本框上时显示的小工具"
+      "isControlField": false
     },
     {
       "key": "extraSettings",
       "name": "扩展设置",
       "type": "Text",
+      "description": "可用于自定义文本选择工具，详情请参考文档。",
+      "isAdvanced": true,
+      "validForList": [
+        "text",
+        "multiline"
+      ],
+      "invalidForList": [],
+      "condition": "仅：text, multiline",
       "defaultValue": "",
+      "defaultValueRaw": "",
       "required": false,
       "variableMode": "UseVarOrInput",
-      "condition": "仅：text, multiline",
-      "description": "可用于自定义文本选择工具，详情请参考文档。"
+      "isControlField": false
     },
     {
       "key": "pattern",
       "name": "验证表达式",
       "type": "Text",
+      "description": "正则验证表达式",
+      "isAdvanced": false,
+      "validForList": [
+        "text",
+        "multiline",
+        "number"
+      ],
+      "invalidForList": [],
+      "condition": "仅：text, multiline, number",
       "defaultValue": "",
+      "defaultValueRaw": "",
       "required": false,
       "variableMode": "Input",
-      "condition": "仅：text, multiline, number",
-      "description": "正则验证表达式"
+      "isControlField": false
     },
     {
       "key": "isRequired",
       "name": "必填",
       "type": "Boolean",
+      "description": "是否必须填写内容",
+      "isAdvanced": false,
+      "validForList": [],
+      "invalidForList": [],
+      "condition": "",
       "defaultValue": "false",
+      "defaultValueRaw": false,
       "required": false,
       "variableMode": "Input",
-      "condition": "",
-      "description": "是否必须填写内容"
+      "isControlField": false
     },
     {
       "key": "winLocation",
       "name": "窗口位置",
       "type": "Enum",
+      "description": "在哪里显示选择窗口",
+      "isAdvanced": true,
+      "validForList": [],
+      "invalidForList": [],
+      "condition": "",
       "defaultValue": "CenterScreen",
+      "defaultValueRaw": "CenterScreen",
       "required": false,
       "variableMode": "UseVarOrInput",
-      "condition": "",
-      "description": "在哪里显示选择窗口"
+      "isControlField": false
     },
     {
       "key": "restoreFocus",
       "name": "恢复活动窗口",
       "type": "Boolean",
+      "description": "用户输入后，是否将焦点还原到之前的活动窗口",
+      "isAdvanced": false,
+      "validForList": [],
+      "invalidForList": [],
+      "condition": "",
       "defaultValue": "true",
+      "defaultValueRaw": true,
       "required": false,
       "variableMode": "Input",
-      "condition": "",
-      "description": "用户输入后，是否将焦点还原到之前的活动窗口"
+      "isControlField": false
     },
     {
       "key": "closeOnDeactivated",
       "name": "失去焦点后关闭窗口",
       "type": "Boolean",
+      "description": "",
+      "isAdvanced": false,
+      "validForList": [],
+      "invalidForList": [],
+      "condition": "",
       "defaultValue": "false",
+      "defaultValueRaw": false,
       "required": false,
       "variableMode": "Input",
-      "condition": "",
-      "description": ""
+      "isControlField": false
     },
     {
       "key": "submitWithReturn",
       "name": "回车提交结果（Shift+回车换行）",
       "type": "Boolean",
+      "description": "",
+      "isAdvanced": false,
+      "validForList": [
+        "multiline"
+      ],
+      "invalidForList": [],
+      "condition": "仅：multiline",
       "defaultValue": "false",
+      "defaultValueRaw": false,
       "required": false,
       "variableMode": "Input",
-      "condition": "仅：multiline",
-      "description": ""
+      "isControlField": false
     },
     {
       "key": "fontfamily",
       "name": "字体名称",
       "type": "Text",
+      "description": "可选。设置字体名称。如有2个字体，使用逗号分隔。",
+      "isAdvanced": true,
+      "validForList": [
+        "text",
+        "multiline",
+        "number"
+      ],
+      "invalidForList": [],
+      "condition": "仅：text, multiline, number",
       "defaultValue": "",
+      "defaultValueRaw": "",
       "required": false,
       "variableMode": "UseVarOrInput",
-      "condition": "仅：text, multiline, number",
-      "description": "可选。设置字体名称。如有2个字体，使用逗号分隔。"
+      "isControlField": false
     },
     {
       "key": "fontsize",
       "name": "字体大小",
       "type": "Number",
+      "description": "",
+      "isAdvanced": true,
+      "validForList": [
+        "text",
+        "multiline",
+        "number"
+      ],
+      "invalidForList": [],
+      "condition": "仅：text, multiline, number",
       "defaultValue": "14.0",
+      "defaultValueRaw": 14,
       "required": true,
       "variableMode": "UseVarOrInput",
-      "condition": "仅：text, multiline, number",
-      "description": ""
+      "isControlField": false
     },
     {
       "key": "imeState",
       "name": "输入法状态",
       "type": "Enum",
+      "description": "",
+      "isAdvanced": true,
+      "validForList": [
+        "text",
+        "multiline"
+      ],
+      "invalidForList": [],
+      "condition": "仅：text, multiline",
       "defaultValue": "NO_CONTROL",
+      "defaultValueRaw": "NO_CONTROL",
       "required": false,
       "variableMode": "Input",
-      "condition": "仅：text, multiline",
-      "description": ""
+      "isControlField": false
     },
     {
       "key": "help",
       "name": "帮助按钮内容",
       "type": "Text",
+      "description": "点击弹出显示帮助内容，MarkDown格式",
+      "isAdvanced": true,
+      "validForList": [],
+      "invalidForList": [],
+      "condition": "",
       "defaultValue": "",
+      "defaultValueRaw": "",
       "required": false,
       "variableMode": "Input",
-      "condition": "",
-      "description": "点击弹出显示帮助内容，MarkDown格式"
+      "isControlField": false
     },
     {
       "key": "topMost",
       "name": "置顶显示",
       "type": "Boolean",
+      "description": "",
+      "isAdvanced": false,
+      "validForList": [],
+      "invalidForList": [],
+      "condition": "",
       "defaultValue": "false",
+      "defaultValueRaw": false,
       "required": false,
       "variableMode": "Input",
-      "condition": "",
-      "description": ""
+      "isControlField": false
     },
     {
       "key": "stopIfFail",
       "name": "失败后停止",
       "type": "Boolean",
+      "description": "用户取消后是否停止动作",
+      "isAdvanced": false,
+      "validForList": [],
+      "invalidForList": [],
+      "condition": "",
       "defaultValue": "true",
+      "defaultValueRaw": true,
       "required": false,
       "variableMode": "Input",
-      "condition": "",
-      "description": "用户取消后是否停止动作"
+      "isControlField": false
     }
   ],
   "outputs": [
@@ -188,36 +296,55 @@
       "key": "isSuccess",
       "name": "是否成功",
       "type": "Boolean",
-      "condition": "",
-      "description": "操作是否成功"
+      "description": "操作是否成功",
+      "isAdvanced": false,
+      "validForList": [],
+      "invalidForList": [],
+      "condition": ""
     },
     {
       "key": "textValue",
       "name": "文本值",
       "type": "Text",
-      "condition": "",
-      "description": "文本类型的输入值"
+      "description": "文本类型的输入值",
+      "isAdvanced": false,
+      "validForList": [],
+      "invalidForList": [],
+      "condition": ""
     },
     {
       "key": "numberValue",
       "name": "数字值",
       "type": "Number",
-      "condition": "仅：number",
-      "description": "数字类型的输入值"
+      "description": "数字类型的输入值",
+      "isAdvanced": false,
+      "validForList": [
+        "number"
+      ],
+      "invalidForList": [],
+      "condition": "仅：number"
     },
     {
       "key": "datetimeValue",
       "name": "日期时间值",
       "type": "DateTime",
-      "condition": "仅：date_time",
-      "description": ""
+      "description": "",
+      "isAdvanced": false,
+      "validForList": [
+        "date_time"
+      ],
+      "invalidForList": [],
+      "condition": "仅：date_time"
     },
     {
       "key": "isEmpty",
       "name": "是否为空",
       "type": "Boolean",
-      "condition": "",
-      "description": "用户是否没有输入内容"
+      "description": "用户是否没有输入内容",
+      "isAdvanced": false,
+      "validForList": [],
+      "invalidForList": [],
+      "condition": ""
     }
   ],
   "selections": {
@@ -327,5 +454,5 @@
       ]
     }
   },
-  "sourceFileName": "sys_userInput_用户输入.md"
+  "sourceFileName": "catalog.json"
 }

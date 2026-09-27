@@ -16,41 +16,61 @@
       "key": "method",
       "name": "操作类型",
       "type": "Enum",
+      "description": "",
+      "isAdvanced": false,
+      "validForList": [],
+      "invalidForList": [],
+      "condition": "",
       "defaultValue": "default",
+      "defaultValueRaw": "default",
       "required": true,
       "variableMode": "Input",
-      "condition": "",
-      "description": ""
+      "isControlField": true
     },
     {
       "key": "isError",
       "name": "标记为出错",
       "type": "Boolean",
+      "description": "用作子程序或被其他动作调用时，返回出错状态。",
+      "isAdvanced": false,
+      "validForList": [],
+      "invalidForList": [],
+      "condition": "",
       "defaultValue": "false",
+      "defaultValueRaw": false,
       "required": false,
       "variableMode": "Input",
-      "condition": "",
-      "description": "用作子程序或被其他动作调用时，返回出错状态。"
+      "isControlField": false
     },
     {
       "key": "return",
       "name": "返回值",
       "type": "Any",
+      "description": "被其他动作调用时，返回的动作结果。",
+      "isAdvanced": false,
+      "validForList": [],
+      "invalidForList": [],
+      "condition": "",
       "defaultValue": "",
+      "defaultValueRaw": "",
       "required": false,
       "variableMode": "UseVarOrInput",
-      "condition": "",
-      "description": "被其他动作调用时，返回的动作结果。"
+      "isControlField": false
     },
     {
       "key": "showMessage",
       "name": "提示消息",
       "type": "Text",
+      "description": "显示的提示信息。",
+      "isAdvanced": false,
+      "validForList": [],
+      "invalidForList": [],
+      "condition": "",
       "defaultValue": "",
+      "defaultValueRaw": "",
       "required": false,
       "variableMode": "UseVarOrInput",
-      "condition": "",
-      "description": "显示的提示信息。"
+      "isControlField": false
     }
   ],
   "outputs": [],
@@ -71,5 +91,5 @@
       ]
     }
   },
-  "sourceFileName": "sys_stop_停止(return).md"
+  "sourceFileName": "catalog.json"
 }

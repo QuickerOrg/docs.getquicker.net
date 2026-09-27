@@ -16,11 +16,16 @@
       "key": "stopIfFail",
       "name": "失败后中止动作",
       "type": "Boolean",
+      "description": "获取失败后，是否停止后续动作的执行。",
+      "isAdvanced": false,
+      "validForList": [],
+      "invalidForList": [],
+      "condition": "",
       "defaultValue": "true",
+      "defaultValueRaw": true,
       "required": false,
       "variableMode": "Input",
-      "condition": "",
-      "description": "获取失败后，是否停止后续动作的执行。"
+      "isControlField": false
     }
   ],
   "outputs": [
@@ -28,24 +33,33 @@
       "key": "isSuccess",
       "name": "是否成功",
       "type": "Boolean",
-      "condition": "",
-      "description": "是否成功获得剪贴板图片"
+      "description": "是否成功获得剪贴板图片",
+      "isAdvanced": false,
+      "validForList": [],
+      "invalidForList": [],
+      "condition": ""
     },
     {
       "key": "output",
       "name": "结果图片",
       "type": "Image",
-      "condition": "",
-      "description": "将获得的图片写入到变量"
+      "description": "将获得的图片写入到变量",
+      "isAdvanced": false,
+      "validForList": [],
+      "invalidForList": [],
+      "condition": ""
     },
     {
       "key": "elapsedMs",
       "name": "已更新时间",
       "type": "Integer",
-      "condition": "",
-      "description": "剪贴板最后更新是在多少毫秒以前"
+      "description": "剪贴板最后更新是在多少毫秒以前",
+      "isAdvanced": false,
+      "validForList": [],
+      "invalidForList": [],
+      "condition": ""
     }
   ],
   "selections": {},
-  "sourceFileName": "sys_getClipboardImage_获取剪贴板图片.md"
+  "sourceFileName": "catalog.json"
 }

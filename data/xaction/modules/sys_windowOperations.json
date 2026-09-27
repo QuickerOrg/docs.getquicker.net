@@ -16,171 +16,284 @@
       "key": "type",
       "name": "类型",
       "type": "Enum",
+      "description": "操作类型",
+      "isAdvanced": false,
+      "validForList": [],
+      "invalidForList": [],
+      "condition": "",
       "defaultValue": "move",
+      "defaultValueRaw": "move",
       "required": true,
       "variableMode": "Input",
-      "condition": "",
-      "description": "操作类型"
+      "isControlField": true
     },
     {
       "key": "hWnd",
       "name": "窗口句柄",
       "type": "Integer",
+      "description": "要操作的窗口句柄（数字）。0或留空表示操作前台窗口。",
+      "isAdvanced": false,
+      "validForList": [],
+      "invalidForList": [],
+      "condition": "",
       "defaultValue": "",
       "required": false,
       "variableMode": "UseVarOrInput",
-      "condition": "",
-      "description": "要操作的窗口句柄（数字）。0或留空表示操作前台窗口。"
+      "isControlField": false
     },
     {
       "key": "x",
       "name": "X坐标",
       "type": "Integer",
+      "description": "窗口左上角X坐标",
+      "isAdvanced": false,
+      "validForList": [
+        "move"
+      ],
+      "invalidForList": [],
+      "condition": "仅：move",
       "defaultValue": "100",
+      "defaultValueRaw": 100,
       "required": false,
       "variableMode": "UseVarOrInput",
-      "condition": "仅：move",
-      "description": "窗口左上角X坐标"
+      "isControlField": false
     },
     {
       "key": "y",
       "name": "Y坐标",
       "type": "Integer",
+      "description": "窗口左上角Y坐标",
+      "isAdvanced": false,
+      "validForList": [
+        "move"
+      ],
+      "invalidForList": [],
+      "condition": "仅：move",
       "defaultValue": "100",
+      "defaultValueRaw": 100,
       "required": false,
       "variableMode": "UseVarOrInput",
-      "condition": "仅：move",
-      "description": "窗口左上角Y坐标"
+      "isControlField": false
     },
     {
       "key": "width",
       "name": "宽度",
       "type": "Integer",
+      "description": "窗口宽度。-1时表示不更改窗口尺寸。",
+      "isAdvanced": false,
+      "validForList": [
+        "move"
+      ],
+      "invalidForList": [],
+      "condition": "仅：move",
       "defaultValue": "500",
+      "defaultValueRaw": 500,
       "required": false,
       "variableMode": "UseVarOrInput",
-      "condition": "仅：move",
-      "description": "窗口宽度。-1时表示不更改窗口尺寸。"
+      "isControlField": false
     },
     {
       "key": "height",
       "name": "高度",
       "type": "Integer",
+      "description": "窗口高度。-1时表示不更改窗口尺寸。",
+      "isAdvanced": false,
+      "validForList": [
+        "move"
+      ],
+      "invalidForList": [],
+      "condition": "仅：move",
       "defaultValue": "500",
+      "defaultValueRaw": 500,
       "required": false,
       "variableMode": "UseVarOrInput",
-      "condition": "仅：move",
-      "description": "窗口高度。-1时表示不更改窗口尺寸。"
+      "isControlField": false
     },
     {
       "key": "area",
       "name": "目标位置",
       "type": "Text",
+      "description": "窗口左,上,右,下的位置坐标",
+      "isAdvanced": false,
+      "validForList": [
+        "move_ex"
+      ],
+      "invalidForList": [],
+      "condition": "仅：move_ex",
       "defaultValue": "25%,25%,75%,75%",
+      "defaultValueRaw": "25%,25%,75%,75%",
       "required": false,
       "variableMode": "UseVarOrInput",
-      "condition": "仅：move_ex",
-      "description": "窗口左,上,右,下的位置坐标"
+      "isControlField": false
     },
     {
       "key": "showCmd",
       "name": "显示状态",
       "type": "Enum",
+      "description": "窗口显示状态，具体说明请参考Win32接口。",
+      "isAdvanced": false,
+      "validForList": [
+        "show"
+      ],
+      "invalidForList": [],
+      "condition": "仅：show",
       "defaultValue": "3",
+      "defaultValueRaw": "3",
       "required": true,
       "variableMode": "Input",
-      "condition": "仅：show",
-      "description": "窗口显示状态，具体说明请参考Win32接口。"
+      "isControlField": false
     },
     {
       "key": "alpha",
       "name": "不透明度Alpha",
       "type": "Text",
+      "description": "数字0-255：0为全透明，255为不透明。-数字：将当前透明度增加一些。+数字：将透明度减少一些。",
+      "isAdvanced": false,
+      "validForList": [
+        "set_trans"
+      ],
+      "invalidForList": [],
+      "condition": "仅：set_trans",
       "defaultValue": "128",
+      "defaultValueRaw": "128",
       "required": false,
       "variableMode": "UseVarOrInput",
-      "condition": "仅：set_trans",
-      "description": "数字0-255：0为全透明，255为不透明。-数字：将当前透明度增加一些。+数字：将透明度减少一些。"
+      "isControlField": false
     },
     {
       "key": "borderColor",
       "name": "窗口边框颜色",
       "type": "Text",
+      "description": "颜色格式：#RRGGBB；兼容既有 #AARRGGBB 输入，但透明度会被忽略。设置边框颜色时，留空表示恢复系统默认；贴边隐藏时，留空使用默认高亮蓝 #468FFC。输入 none 表示隐藏边框或关闭贴边隐藏的边框反馈。",
+      "isAdvanced": false,
+      "validForList": [
+        "setBorderColor",
+        "edgeAutoHide"
+      ],
+      "invalidForList": [],
+      "condition": "仅：setBorderColor, edgeAutoHide",
       "defaultValue": "",
+      "defaultValueRaw": "",
       "required": false,
       "variableMode": "UseVarOrInput",
-      "condition": "仅：setBorderColor, edgeAutoHide",
-      "description": "颜色格式：#RRGGBB；兼容既有 #AARRGGBB 输入，但透明度会被忽略。设置边框颜色时，留空表示恢复系统默认；贴边隐藏时，留空使用默认高亮蓝 #468FFC。输入 none 表示隐藏边框或关闭贴边隐藏的边框反馈。"
+      "isControlField": false
     },
     {
       "key": "edgeAutoHideAction",
       "name": "操作",
       "type": "Enum",
+      "description": "启用后可再把窗口拖到屏幕外沿；贴边后自动置顶并开始隐藏。",
+      "isAdvanced": false,
+      "validForList": [
+        "edgeAutoHide"
+      ],
+      "invalidForList": [],
+      "condition": "仅：edgeAutoHide",
       "defaultValue": "toggle",
+      "defaultValueRaw": "toggle",
       "required": false,
       "variableMode": "Input",
-      "condition": "仅：edgeAutoHide",
-      "description": "启用后可再把窗口拖到屏幕外沿；贴边后自动置顶并开始隐藏。"
+      "isControlField": false
     },
     {
       "key": "edgeAutoHideEdge",
       "name": "边缘",
       "type": "Enum",
+      "description": "自动检测或指定以后要吸附的屏幕外沿。",
+      "isAdvanced": false,
+      "validForList": [
+        "edgeAutoHide"
+      ],
+      "invalidForList": [],
+      "condition": "仅：edgeAutoHide",
       "defaultValue": "auto",
+      "defaultValueRaw": "auto",
       "required": false,
       "variableMode": "Input",
-      "condition": "仅：edgeAutoHide",
-      "description": "自动检测或指定以后要吸附的屏幕外沿。"
+      "isControlField": false
     },
     {
       "key": "edgeAutoHideRevealDip",
       "name": "保留宽度",
       "type": "Integer",
+      "description": "隐藏后保留的可见宽度（DIP，2～16）。",
+      "isAdvanced": false,
+      "validForList": [
+        "edgeAutoHide"
+      ],
+      "invalidForList": [],
+      "condition": "仅：edgeAutoHide",
       "defaultValue": "4",
+      "defaultValueRaw": 4,
       "required": false,
       "variableMode": "UseVarOrInput",
-      "condition": "仅：edgeAutoHide",
-      "description": "隐藏后保留的可见宽度（DIP，2～16）。"
+      "isControlField": false
     },
     {
       "key": "edgeAutoHideDelayMs",
       "name": "隐藏延迟",
       "type": "Integer",
+      "description": "鼠标离开后的隐藏延迟（毫秒，100～5000）。",
+      "isAdvanced": false,
+      "validForList": [
+        "edgeAutoHide"
+      ],
+      "invalidForList": [],
+      "condition": "仅：edgeAutoHide",
       "defaultValue": "600",
+      "defaultValueRaw": 600,
       "required": false,
       "variableMode": "UseVarOrInput",
-      "condition": "仅：edgeAutoHide",
-      "description": "鼠标离开后的隐藏延迟（毫秒，100～5000）。"
+      "isControlField": false
     },
     {
       "key": "closeSimilarKeepCurrent",
       "name": "保留当前窗口",
       "type": "Boolean",
+      "description": "默认关闭包含当前窗口在内的全部类似窗口；勾选后只关闭其它类似窗口。",
+      "isAdvanced": false,
+      "validForList": [
+        "closeSimilar"
+      ],
+      "invalidForList": [],
+      "condition": "仅：closeSimilar",
       "defaultValue": "false",
+      "defaultValueRaw": false,
       "required": false,
       "variableMode": "UseVarOrInput",
-      "condition": "仅：closeSimilar",
-      "description": "默认关闭包含当前窗口在内的全部类似窗口；勾选后只关闭其它类似窗口。"
+      "isControlField": false
     },
     {
       "key": "switchSimilarDirection",
       "name": "切换方向",
       "type": "Enum",
+      "description": "在同一应用的类似窗口之间按稳定环序向前或向后切换。",
+      "isAdvanced": false,
+      "validForList": [
+        "switchSimilar"
+      ],
+      "invalidForList": [],
+      "condition": "仅：switchSimilar",
       "defaultValue": "next",
+      "defaultValueRaw": "next",
       "required": false,
       "variableMode": "Input",
-      "condition": "仅：switchSimilar",
-      "description": "在同一应用的类似窗口之间按稳定环序向前或向后切换。"
+      "isControlField": false
     },
     {
       "key": "stopIfFail",
       "name": "失败后停止",
       "type": "Boolean",
+      "description": "失败后是否停止动作",
+      "isAdvanced": false,
+      "validForList": [],
+      "invalidForList": [],
+      "condition": "",
       "defaultValue": "true",
+      "defaultValueRaw": true,
       "required": false,
       "variableMode": "Input",
-      "condition": "",
-      "description": "失败后是否停止动作"
+      "isControlField": false
     }
   ],
   "outputs": [
@@ -188,71 +301,127 @@
       "key": "isSuccess",
       "name": "是否成功",
       "type": "Boolean",
-      "condition": "",
-      "description": "操作是否成功"
+      "description": "操作是否成功",
+      "isAdvanced": false,
+      "validForList": [],
+      "invalidForList": [],
+      "condition": ""
     },
     {
       "key": "isTopmost",
       "name": "是否置顶",
       "type": "Boolean",
-      "condition": "仅：toggleTopMost",
-      "description": "操作后窗口是否为置顶"
+      "description": "操作后窗口是否为置顶",
+      "isAdvanced": false,
+      "validForList": [
+        "toggleTopMost"
+      ],
+      "invalidForList": [],
+      "condition": "仅：toggleTopMost"
     },
     {
       "key": "isEdgeAutoHideEnabled",
       "name": "是否已启用贴边隐藏",
       "type": "Boolean",
-      "condition": "仅：edgeAutoHide",
-      "description": ""
+      "description": "",
+      "isAdvanced": false,
+      "validForList": [
+        "edgeAutoHide"
+      ],
+      "invalidForList": [],
+      "condition": "仅：edgeAutoHide"
     },
     {
       "key": "matchedCount",
       "name": "匹配窗口数",
       "type": "Integer",
-      "condition": "仅：closeSimilar, switchSimilar, minimizeSimilar, restoreSimilar",
-      "description": ""
+      "description": "",
+      "isAdvanced": false,
+      "validForList": [
+        "closeSimilar",
+        "switchSimilar",
+        "minimizeSimilar",
+        "restoreSimilar"
+      ],
+      "invalidForList": [],
+      "condition": "仅：closeSimilar, switchSimilar, minimizeSimilar, restoreSimilar"
     },
     {
       "key": "requestedCount",
       "name": "已投递关闭请求数",
       "type": "Integer",
-      "condition": "仅：closeSimilar",
-      "description": ""
+      "description": "",
+      "isAdvanced": false,
+      "validForList": [
+        "closeSimilar"
+      ],
+      "invalidForList": [],
+      "condition": "仅：closeSimilar"
     },
     {
       "key": "requestFailedCount",
       "name": "关闭请求失败数",
       "type": "Integer",
-      "condition": "仅：closeSimilar",
-      "description": ""
+      "description": "",
+      "isAdvanced": false,
+      "validForList": [
+        "closeSimilar"
+      ],
+      "invalidForList": [],
+      "condition": "仅：closeSimilar"
     },
     {
       "key": "permissionDeniedCount",
       "name": "权限拒绝数",
       "type": "Integer",
-      "condition": "仅：closeSimilar",
-      "description": ""
+      "description": "",
+      "isAdvanced": false,
+      "validForList": [
+        "closeSimilar"
+      ],
+      "invalidForList": [],
+      "condition": "仅：closeSimilar"
     },
     {
       "key": "skippedCount",
       "name": "跳过窗口数",
       "type": "Integer",
-      "condition": "仅：closeSimilar, switchSimilar, minimizeSimilar, restoreSimilar",
-      "description": ""
+      "description": "",
+      "isAdvanced": false,
+      "validForList": [
+        "closeSimilar",
+        "switchSimilar",
+        "minimizeSimilar",
+        "restoreSimilar"
+      ],
+      "invalidForList": [],
+      "condition": "仅：closeSimilar, switchSimilar, minimizeSimilar, restoreSimilar"
     },
     {
       "key": "affectedCount",
       "name": "已处理窗口数",
       "type": "Integer",
-      "condition": "仅：minimizeSimilar, restoreSimilar",
-      "description": ""
+      "description": "",
+      "isAdvanced": false,
+      "validForList": [
+        "minimizeSimilar",
+        "restoreSimilar"
+      ],
+      "invalidForList": [],
+      "condition": "仅：minimizeSimilar, restoreSimilar"
     },
     {
       "key": "failedCount",
       "name": "操作失败数",
       "type": "Integer",
-      "condition": "仅：minimizeSimilar, restoreSimilar",
-      "description": ""
+      "description": "",
+      "isAdvanced": false,
+      "validForList": [
+        "minimizeSimilar",
+        "restoreSimilar"
+      ],
+      "invalidForList": [],
+      "condition": "仅：minimizeSimilar, restoreSimilar"
     }
   ],
   "selections": {
@@ -452,5 +621,5 @@
       ]
     }
   },
-  "sourceFileName": "sys_windowOperations_窗口操作.md"
+  "sourceFileName": "catalog.json"
 }

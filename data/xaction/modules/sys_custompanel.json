@@ -16,261 +16,454 @@
       "key": "operation",
       "name": "操作类型",
       "type": "Enum",
+      "description": "",
+      "isAdvanced": false,
+      "validForList": [],
+      "invalidForList": [],
+      "condition": "",
       "defaultValue": "show_fixed_panel_wait_close",
+      "defaultValueRaw": "show_fixed_panel_wait_close",
       "required": true,
       "variableMode": "Input",
-      "condition": "",
-      "description": ""
+      "isControlField": true
     },
     {
       "key": "operationData",
       "name": "操作项定义",
       "type": "Text",
+      "description": "可以为Json/菜单文本格式/IList<CommonOperationItem>对象，详情请参考文档",
+      "isAdvanced": false,
+      "validForList": [
+        "show_fixed_panel",
+        "show_fixed_panel_wait_close"
+      ],
+      "invalidForList": [],
+      "condition": "仅：show_fixed_panel, show_fixed_panel_wait_close",
       "defaultValue": "",
       "required": true,
       "variableMode": "UseVarOrInput",
-      "condition": "仅：show_fixed_panel, show_fixed_panel_wait_close",
-      "description": "可以为Json/菜单文本格式/IList<CommonOperationItem>对象，详情请参考文档"
+      "isControlField": false
     },
     {
       "key": "defaultOperation",
       "name": "默认Operation",
       "type": "Text",
+      "description": "默认的Operation值或参数组合。提供此值时，操作项可以直接通过\"[图标]标题(提示)|data\"的形式定义。",
+      "isAdvanced": false,
+      "validForList": [
+        "show_fixed_panel",
+        "show_fixed_panel_wait_close"
+      ],
+      "invalidForList": [],
+      "condition": "仅：show_fixed_panel, show_fixed_panel_wait_close",
       "defaultValue": "",
       "required": false,
       "variableMode": "Input",
-      "condition": "仅：show_fixed_panel, show_fixed_panel_wait_close",
-      "description": "默认的Operation值或参数组合。提供此值时，操作项可以直接通过\"[图标]标题(提示)|data\"的形式定义。"
+      "isControlField": false
     },
     {
       "key": "spacingStr",
       "name": "按钮之间的间隔",
       "type": "Text",
+      "description": "可选格式1：5 => 四个边都是5；格式2：10,5 => 左右10，上下5; ",
+      "isAdvanced": false,
+      "validForList": [
+        "show_fixed_panel",
+        "show_fixed_panel_wait_close"
+      ],
+      "invalidForList": [],
+      "condition": "仅：show_fixed_panel, show_fixed_panel_wait_close",
       "defaultValue": "5",
+      "defaultValueRaw": "5",
       "required": true,
       "variableMode": "UseVarOrInput",
-      "condition": "仅：show_fixed_panel, show_fixed_panel_wait_close",
-      "description": "可选格式1：5 => 四个边都是5；格式2：10,5 => 左右10，上下5;"
+      "isControlField": false
     },
     {
       "key": "buttonPadding",
       "name": "按钮内边距",
       "type": "Text",
+      "description": "格式1：5 => 四个边都是5；格式2：10,5 => 左右10，上下5; 格式3：7,8,9,10 => 分别指定左上右下4边边距。",
+      "isAdvanced": false,
+      "validForList": [
+        "show_fixed_panel",
+        "show_fixed_panel_wait_close"
+      ],
+      "invalidForList": [],
+      "condition": "仅：show_fixed_panel, show_fixed_panel_wait_close",
       "defaultValue": "10,6",
+      "defaultValueRaw": "10,6",
       "required": true,
       "variableMode": "UseVarOrInput",
-      "condition": "仅：show_fixed_panel, show_fixed_panel_wait_close",
-      "description": "格式1：5 => 四个边都是5；格式2：10,5 => 左右10，上下5; 格式3：7,8,9,10 => 分别指定左上右下4边边距。"
+      "isControlField": false
     },
     {
       "key": "columnCount",
       "name": "列数",
       "type": "Integer",
+      "description": "按钮排列方式为固定列数时，指定列数。0表示自动。",
+      "isAdvanced": false,
+      "validForList": [
+        "show_fixed_panel",
+        "show_fixed_panel_wait_close"
+      ],
+      "invalidForList": [],
+      "condition": "仅：show_fixed_panel, show_fixed_panel_wait_close",
       "defaultValue": "2",
+      "defaultValueRaw": 2,
       "required": true,
       "variableMode": "UseVarOrInput",
-      "condition": "仅：show_fixed_panel, show_fixed_panel_wait_close",
-      "description": "按钮排列方式为固定列数时，指定列数。0表示自动。"
+      "isControlField": false
     },
     {
       "key": "columnWidth",
       "name": "列宽",
       "type": "Integer",
+      "description": "固定列宽时使用。0表示自动列宽，-1表示不对齐宽度，各子项根据内容自动调整宽度。",
+      "isAdvanced": false,
+      "validForList": [
+        "show_fixed_panel",
+        "show_fixed_panel_wait_close"
+      ],
+      "invalidForList": [],
+      "condition": "仅：show_fixed_panel, show_fixed_panel_wait_close",
       "defaultValue": "0",
+      "defaultValueRaw": 0,
       "required": true,
       "variableMode": "UseVarOrInput",
-      "condition": "仅：show_fixed_panel, show_fixed_panel_wait_close",
-      "description": "固定列宽时使用。0表示自动列宽，-1表示不对齐宽度，各子项根据内容自动调整宽度。"
+      "isControlField": false
     },
     {
       "key": "groupMode",
       "name": "分组方式",
       "type": "Enum",
+      "description": "当包含子项时，第一级节点作为分组，第二级节点作为按钮。",
+      "isAdvanced": false,
+      "validForList": [
+        "show_fixed_panel",
+        "show_fixed_panel_wait_close"
+      ],
+      "invalidForList": [],
+      "condition": "仅：show_fixed_panel, show_fixed_panel_wait_close",
       "defaultValue": "heading",
+      "defaultValueRaw": "heading",
       "required": false,
       "variableMode": "UseVarOrInput",
-      "condition": "仅：show_fixed_panel, show_fixed_panel_wait_close",
-      "description": "当包含子项时，第一级节点作为分组，第二级节点作为按钮。"
+      "isControlField": false
     },
     {
       "key": "selectGroup",
       "name": "选择标签分组",
       "type": "Text",
+      "description": "标签页分组时切换至设定的标签页标题，留空表示默认。",
+      "isAdvanced": false,
+      "validForList": [
+        "show_fixed_panel",
+        "show_fixed_panel_wait_close"
+      ],
+      "invalidForList": [],
+      "condition": "仅：show_fixed_panel, show_fixed_panel_wait_close",
       "defaultValue": "",
+      "defaultValueRaw": "",
       "required": false,
       "variableMode": "UseVarOrInput",
-      "condition": "仅：show_fixed_panel, show_fixed_panel_wait_close",
-      "description": "标签页分组时切换至设定的标签页标题，留空表示默认。"
+      "isControlField": false
     },
     {
       "key": "title",
       "name": "操作窗标题",
       "type": "Text",
+      "description": "标题文字，或\"[图标]标题\"格式。",
+      "isAdvanced": false,
+      "validForList": [
+        "show_fixed_panel",
+        "show_fixed_panel_wait_close"
+      ],
+      "invalidForList": [],
+      "condition": "仅：show_fixed_panel, show_fixed_panel_wait_close",
       "defaultValue": "",
       "required": true,
       "variableMode": "UseVarOrInput",
-      "condition": "仅：show_fixed_panel, show_fixed_panel_wait_close",
-      "description": "标题文字，或\"[图标]标题\"格式。"
+      "isControlField": false
     },
     {
       "key": "windowId",
       "name": "窗口标识",
       "type": "Text",
+      "description": "如需单独的步骤关闭窗口，需使用标识查找窗口。可使用\"=\"表示当前动作ID。",
+      "isAdvanced": false,
+      "validForList": [],
+      "invalidForList": [],
+      "condition": "",
       "defaultValue": "",
+      "defaultValueRaw": "",
       "required": true,
       "variableMode": "UseVarOrInput",
-      "condition": "",
-      "description": "如需单独的步骤关闭窗口，需使用标识查找窗口。可使用\"=\"表示当前动作ID。"
+      "isControlField": false
     },
     {
       "key": "winLocation",
       "name": "窗口位置",
       "type": "Enum",
+      "description": "在哪里显示选择窗口",
+      "isAdvanced": true,
+      "validForList": [
+        "show_fixed_panel",
+        "show_fixed_panel_wait_close"
+      ],
+      "invalidForList": [],
+      "condition": "仅：show_fixed_panel, show_fixed_panel_wait_close",
       "defaultValue": "CenterScreen",
+      "defaultValueRaw": "CenterScreen",
       "required": false,
       "variableMode": "UseVarOrInput",
-      "condition": "仅：show_fixed_panel, show_fixed_panel_wait_close",
-      "description": "在哪里显示选择窗口"
+      "isControlField": false
     },
     {
       "key": "winSize",
       "name": "窗口尺寸/位置",
       "type": "Text",
+      "description": "宽度,高度：逻辑像素或屏幕工作区百分比；自定义位置填坐标。",
+      "isAdvanced": true,
+      "validForList": [
+        "show_fixed_panel",
+        "show_fixed_panel_wait_close"
+      ],
+      "invalidForList": [],
+      "condition": "仅：show_fixed_panel, show_fixed_panel_wait_close",
       "defaultValue": "",
+      "defaultValueRaw": "",
       "required": false,
       "variableMode": "Input",
-      "condition": "仅：show_fixed_panel, show_fixed_panel_wait_close",
-      "description": "宽度,高度：逻辑像素或屏幕工作区百分比；自定义位置填坐标。"
+      "isControlField": false
     },
     {
       "key": "horzAlign",
       "name": "按钮内容对齐方式",
       "type": "Enum",
+      "description": "",
+      "isAdvanced": true,
+      "validForList": [
+        "show_fixed_panel",
+        "show_fixed_panel_wait_close"
+      ],
+      "invalidForList": [],
+      "condition": "仅：show_fixed_panel, show_fixed_panel_wait_close",
       "defaultValue": "Center",
+      "defaultValueRaw": "Center",
       "required": false,
       "variableMode": "UseVarOrInput",
-      "condition": "仅：show_fixed_panel, show_fixed_panel_wait_close",
-      "description": ""
+      "isControlField": false
     },
     {
       "key": "bgColor",
       "name": "背景颜色",
       "type": "Text",
+      "description": "",
+      "isAdvanced": true,
+      "validForList": [
+        "show_fixed_panel",
+        "show_fixed_panel_wait_close"
+      ],
+      "invalidForList": [],
+      "condition": "仅：show_fixed_panel, show_fixed_panel_wait_close",
       "defaultValue": "",
+      "defaultValueRaw": "",
       "required": true,
       "variableMode": "UseVarOrInput",
-      "condition": "仅：show_fixed_panel, show_fixed_panel_wait_close",
-      "description": ""
+      "isControlField": false
     },
     {
       "key": "btnColor",
       "name": "按钮颜色",
       "type": "Text",
+      "description": "",
+      "isAdvanced": true,
+      "validForList": [
+        "show_fixed_panel",
+        "show_fixed_panel_wait_close"
+      ],
+      "invalidForList": [],
+      "condition": "仅：show_fixed_panel, show_fixed_panel_wait_close",
       "defaultValue": "",
+      "defaultValueRaw": "",
       "required": false,
       "variableMode": "UseVarOrInput",
-      "condition": "仅：show_fixed_panel, show_fixed_panel_wait_close",
-      "description": ""
+      "isControlField": false
     },
     {
       "key": "btnBorderColor",
       "name": "按钮边框颜色",
       "type": "Text",
+      "description": "",
+      "isAdvanced": true,
+      "validForList": [
+        "show_fixed_panel",
+        "show_fixed_panel_wait_close"
+      ],
+      "invalidForList": [],
+      "condition": "仅：show_fixed_panel, show_fixed_panel_wait_close",
       "defaultValue": "",
+      "defaultValueRaw": "",
       "required": false,
       "variableMode": "UseVarOrInput",
-      "condition": "仅：show_fixed_panel, show_fixed_panel_wait_close",
-      "description": ""
+      "isControlField": false
     },
     {
       "key": "fontColor",
       "name": "字体颜色",
       "type": "Text",
+      "description": "",
+      "isAdvanced": true,
+      "validForList": [
+        "show_fixed_panel",
+        "show_fixed_panel_wait_close"
+      ],
+      "invalidForList": [],
+      "condition": "仅：show_fixed_panel, show_fixed_panel_wait_close",
       "defaultValue": "",
+      "defaultValueRaw": "",
       "required": false,
       "variableMode": "UseVarOrInput",
-      "condition": "仅：show_fixed_panel, show_fixed_panel_wait_close",
-      "description": ""
+      "isControlField": false
     },
     {
       "key": "fontsize",
       "name": "字体大小",
       "type": "Number",
+      "description": "",
+      "isAdvanced": true,
+      "validForList": [
+        "show_fixed_panel",
+        "show_fixed_panel_wait_close"
+      ],
+      "invalidForList": [],
+      "condition": "仅：show_fixed_panel, show_fixed_panel_wait_close",
       "defaultValue": "12",
+      "defaultValueRaw": 12,
       "required": true,
       "variableMode": "UseVarOrInput",
-      "condition": "仅：show_fixed_panel, show_fixed_panel_wait_close",
-      "description": ""
+      "isControlField": false
     },
     {
       "key": "iconsize",
       "name": "图标大小",
       "type": "Number",
+      "description": "图标的宽度/高度像素数",
+      "isAdvanced": true,
+      "validForList": [
+        "show_fixed_panel",
+        "show_fixed_panel_wait_close"
+      ],
+      "invalidForList": [],
+      "condition": "仅：show_fixed_panel, show_fixed_panel_wait_close",
       "defaultValue": "16",
+      "defaultValueRaw": 16,
       "required": true,
       "variableMode": "UseVarOrInput",
-      "condition": "仅：show_fixed_panel, show_fixed_panel_wait_close",
-      "description": "图标的宽度/高度像素数"
+      "isControlField": false
     },
     {
       "key": "contextMenuData",
       "name": "窗口右键菜单",
       "type": "Text",
+      "description": "可以为Json/菜单文本格式/IList<CommonOperationItem>对象，详情请参考文档",
+      "isAdvanced": true,
+      "validForList": [
+        "show_fixed_panel",
+        "show_fixed_panel_wait_close"
+      ],
+      "invalidForList": [],
+      "condition": "仅：show_fixed_panel, show_fixed_panel_wait_close",
       "defaultValue": "",
       "required": true,
       "variableMode": "UseVarOrInput",
-      "condition": "仅：show_fixed_panel, show_fixed_panel_wait_close",
-      "description": "可以为Json/菜单文本格式/IList<CommonOperationItem>对象，详情请参考文档"
+      "isControlField": false
     },
     {
       "key": "buttonContextMenuData",
       "name": "默认的按钮右键菜单",
       "type": "Text",
+      "description": "可以为Json/菜单文本格式/IList<CommonOperationItem>对象，详情请参考文档",
+      "isAdvanced": true,
+      "validForList": [
+        "show_fixed_panel",
+        "show_fixed_panel_wait_close"
+      ],
+      "invalidForList": [],
+      "condition": "仅：show_fixed_panel, show_fixed_panel_wait_close",
       "defaultValue": "",
       "required": true,
       "variableMode": "UseVarOrInput",
-      "condition": "仅：show_fixed_panel, show_fixed_panel_wait_close",
-      "description": "可以为Json/菜单文本格式/IList<CommonOperationItem>对象，详情请参考文档"
+      "isControlField": false
     },
     {
       "key": "bindProc",
       "name": "自动关联到进程",
       "type": "Enum",
+      "description": "要关联的进程名，输入\"-\"禁用此功能。当该进程为前台时显示操作窗，否则自动隐藏。进程名通常为程序文件名去掉.exe后缀。",
+      "isAdvanced": true,
+      "validForList": [
+        "show_fixed_panel",
+        "show_fixed_panel_wait_close"
+      ],
+      "invalidForList": [],
+      "condition": "仅：show_fixed_panel, show_fixed_panel_wait_close",
       "defaultValue": "",
       "required": true,
       "variableMode": "UseVarOrInput",
-      "condition": "仅：show_fixed_panel, show_fixed_panel_wait_close",
-      "description": "要关联的进程名，输入\"-\"禁用此功能。当该进程为前台时显示操作窗，否则自动隐藏。进程名通常为程序文件名去掉.exe后缀。"
+      "isControlField": false
     },
     {
       "key": "autoCollapse",
       "name": "自动折叠",
       "type": "Enum",
+      "description": "",
+      "isAdvanced": true,
+      "validForList": [
+        "show_fixed_panel",
+        "show_fixed_panel_wait_close"
+      ],
+      "invalidForList": [],
+      "condition": "仅：show_fixed_panel, show_fixed_panel_wait_close",
       "defaultValue": "0",
+      "defaultValueRaw": "0",
       "required": false,
       "variableMode": "Input",
-      "condition": "仅：show_fixed_panel, show_fixed_panel_wait_close",
-      "description": ""
+      "isControlField": false
     },
     {
       "key": "saveState",
       "name": "记忆位置等状态",
       "type": "Boolean",
+      "description": "多次使用操作窗时，保持上一次所在位置和分组",
+      "isAdvanced": true,
+      "validForList": [
+        "show_fixed_panel",
+        "show_fixed_panel_wait_close"
+      ],
+      "invalidForList": [],
+      "condition": "仅：show_fixed_panel, show_fixed_panel_wait_close",
       "defaultValue": "true",
+      "defaultValueRaw": true,
       "required": false,
       "variableMode": "Input",
-      "condition": "仅：show_fixed_panel, show_fixed_panel_wait_close",
-      "description": "多次使用操作窗时，保持上一次所在位置和分组"
+      "isControlField": false
     },
     {
       "key": "stopIfFail",
       "name": "失败后停止",
       "type": "Boolean",
+      "description": "失败后是否停止动作",
+      "isAdvanced": false,
+      "validForList": [],
+      "invalidForList": [],
+      "condition": "",
       "defaultValue": "true",
+      "defaultValueRaw": true,
       "required": false,
       "variableMode": "Input",
-      "condition": "",
-      "description": "失败后是否停止动作"
+      "isControlField": false
     }
   ],
   "outputs": [
@@ -278,64 +471,109 @@
       "key": "isSuccess",
       "name": "是否成功",
       "type": "Boolean",
-      "condition": "",
-      "description": "操作是否成功"
+      "description": "操作是否成功",
+      "isAdvanced": false,
+      "validForList": [],
+      "invalidForList": [],
+      "condition": ""
     },
     {
       "key": "selectedItemData",
       "name": "选择的操作项数据",
       "type": "Text",
-      "condition": "仅：show_fixed_panel_wait_close",
-      "description": "选择的操作项的data属性数据"
+      "description": "选择的操作项的data属性数据",
+      "isAdvanced": false,
+      "validForList": [
+        "show_fixed_panel_wait_close"
+      ],
+      "invalidForList": [],
+      "condition": "仅：show_fixed_panel_wait_close"
     },
     {
       "key": "selectedItem",
       "name": "选择的操作项",
       "type": "Object",
-      "condition": "仅：show_fixed_panel_wait_close",
-      "description": "选择的操作项的CommonOperationItem对象"
+      "description": "选择的操作项的CommonOperationItem对象",
+      "isAdvanced": false,
+      "validForList": [
+        "show_fixed_panel_wait_close"
+      ],
+      "invalidForList": [],
+      "condition": "仅：show_fixed_panel_wait_close"
     },
     {
       "key": "currentGroup",
       "name": "当前标签分组",
       "type": "Object",
-      "condition": "仅：show_fixed_panel_wait_close, get_panel_info",
-      "description": "当使用标签分组显示时，关闭窗口时所停留的标签分组名称。"
+      "description": "当使用标签分组显示时，关闭窗口时所停留的标签分组名称。",
+      "isAdvanced": false,
+      "validForList": [
+        "show_fixed_panel_wait_close",
+        "get_panel_info"
+      ],
+      "invalidForList": [],
+      "condition": "仅：show_fixed_panel_wait_close, get_panel_info"
     },
     {
       "key": "buttonItemData",
       "name": "按钮操作项数据",
       "type": "Text",
-      "condition": "仅：show_fixed_panel_wait_close",
-      "description": "点击的是按钮的菜单时，所对应按钮的操作项Data数据"
+      "description": "点击的是按钮的菜单时，所对应按钮的操作项Data数据",
+      "isAdvanced": false,
+      "validForList": [
+        "show_fixed_panel_wait_close"
+      ],
+      "invalidForList": [],
+      "condition": "仅：show_fixed_panel_wait_close"
     },
     {
       "key": "buttonItem",
       "name": "按钮操作项",
       "type": "Object",
-      "condition": "仅：show_fixed_panel_wait_close",
-      "description": "点击的是按钮的菜单时，所对应按钮的CommonOperationItem对象"
+      "description": "点击的是按钮的菜单时，所对应按钮的CommonOperationItem对象",
+      "isAdvanced": false,
+      "validForList": [
+        "show_fixed_panel_wait_close"
+      ],
+      "invalidForList": [],
+      "condition": "仅：show_fixed_panel_wait_close"
     },
     {
       "key": "winHandle",
       "name": "窗口句柄",
       "type": "Integer",
-      "condition": "仅：show_fixed_panel, get_panel_info",
-      "description": "操作窗的窗口句柄"
+      "description": "操作窗的窗口句柄",
+      "isAdvanced": false,
+      "validForList": [
+        "show_fixed_panel",
+        "get_panel_info"
+      ],
+      "invalidForList": [],
+      "condition": "仅：show_fixed_panel, get_panel_info"
     },
     {
       "key": "isWindowExpanded",
       "name": "窗口是否展开",
       "type": "Boolean",
-      "condition": "仅：get_panel_info",
-      "description": ""
+      "description": "",
+      "isAdvanced": false,
+      "validForList": [
+        "get_panel_info"
+      ],
+      "invalidForList": [],
+      "condition": "仅：get_panel_info"
     },
     {
       "key": "isWindowVisible",
       "name": "窗口是否可见",
       "type": "Boolean",
-      "condition": "仅：get_panel_info",
-      "description": "可能会因为关联进程而隐藏"
+      "description": "可能会因为关联进程而隐藏",
+      "isAdvanced": false,
+      "validForList": [
+        "get_panel_info"
+      ],
+      "invalidForList": [],
+      "condition": "仅：get_panel_info"
     }
   ],
   "selections": {
@@ -610,5 +848,5 @@
       ]
     }
   },
-  "sourceFileName": "sys_custompanel_自定义操作窗.md"
+  "sourceFileName": "catalog.json"
 }

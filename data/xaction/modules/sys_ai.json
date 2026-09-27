@@ -16,231 +16,392 @@
       "key": "modelSource",
       "name": "模型来源",
       "type": "Enum",
+      "description": "使用步骤内配置的 API，或复用设置中的全局连接、模型和凭据。",
+      "isAdvanced": false,
+      "validForList": [],
+      "invalidForList": [],
+      "condition": "",
       "defaultValue": "custom",
+      "defaultValueRaw": "custom",
       "required": true,
       "variableMode": "Input",
-      "condition": "",
-      "description": "使用步骤内配置的 API，或复用设置中的全局连接、模型和凭据。"
+      "isControlField": true
     },
     {
       "key": "globalUseCaseId",
       "name": "AI 任务场景",
       "type": "Text",
+      "description": "选择“模型分配”中的任务场景；未指定模型时按场景配置的顺序选择和回退。",
+      "isAdvanced": false,
+      "validForList": [
+        "global"
+      ],
+      "invalidForList": [],
+      "condition": "仅：global",
       "defaultValue": "text.general",
+      "defaultValueRaw": "text.general",
       "required": false,
       "variableMode": "UseVarOrInput",
-      "condition": "仅：global",
-      "description": "选择“模型分配”中的任务场景；未指定模型时按场景配置的顺序选择和回退。"
+      "isControlField": false
     },
     {
       "key": "endpoint",
       "name": "接口端点",
       "type": "Enum",
+      "description": "",
+      "isAdvanced": false,
+      "validForList": [
+        "custom"
+      ],
+      "invalidForList": [],
+      "condition": "仅：custom",
       "defaultValue": "chat",
+      "defaultValueRaw": "chat",
       "required": true,
       "variableMode": "Input",
-      "condition": "仅：custom",
-      "description": ""
+      "isControlField": true
     },
     {
       "key": "model",
       "name": "模型",
       "type": "Text",
+      "description": "适用于可能适用于不同的端点，请参考官方文档使用。",
+      "isAdvanced": false,
+      "validForList": [
+        "custom"
+      ],
+      "invalidForList": [],
+      "condition": "仅：custom",
       "defaultValue": "",
+      "defaultValueRaw": "",
       "required": false,
       "variableMode": "Input",
-      "condition": "仅：custom",
-      "description": "适用于可能适用于不同的端点，请参考官方文档使用。"
+      "isControlField": false
     },
     {
       "key": "apiUrlFormat",
       "name": "API网址",
       "type": "Text",
+      "description": "可选，使用自定义的API服务器时使用。请参考模块文档了解如何设置。",
+      "isAdvanced": false,
+      "validForList": [
+        "custom"
+      ],
+      "invalidForList": [],
+      "condition": "仅：custom",
       "defaultValue": "",
+      "defaultValueRaw": "",
       "required": false,
       "variableMode": "Input",
-      "condition": "仅：custom",
-      "description": "可选，使用自定义的API服务器时使用。请参考模块文档了解如何设置。"
+      "isControlField": false
     },
     {
       "key": "apiKey",
       "name": "APIKey",
       "type": "Text",
+      "description": "",
+      "isAdvanced": false,
+      "validForList": [
+        "custom"
+      ],
+      "invalidForList": [],
+      "condition": "仅：custom",
       "defaultValue": "",
+      "defaultValueRaw": "",
       "required": false,
       "variableMode": "Input",
-      "condition": "仅：custom",
-      "description": ""
+      "isControlField": false
     },
     {
       "key": "apiOrg",
       "name": "Orgnization",
       "type": "Text",
+      "description": "可选",
+      "isAdvanced": true,
+      "validForList": [
+        "custom"
+      ],
+      "invalidForList": [],
+      "condition": "仅：custom",
       "defaultValue": "",
+      "defaultValueRaw": "",
       "required": false,
       "variableMode": "Input",
-      "condition": "仅：custom",
-      "description": "可选"
+      "isControlField": false
     },
     {
       "key": "systemPrompt",
       "name": "系统提示词",
       "type": "Text",
+      "description": "告知AI所需要扮演的角色和要求。如\"你是一个专业的翻译助手\"。",
+      "isAdvanced": false,
+      "validForList": [
+        "chat"
+      ],
+      "invalidForList": [],
+      "condition": "仅：chat",
       "defaultValue": "",
+      "defaultValueRaw": "",
       "required": false,
       "variableMode": "Input",
-      "condition": "仅：chat",
-      "description": "告知AI所需要扮演的角色和要求。如\"你是一个专业的翻译助手\"。"
+      "isControlField": false
     },
     {
       "key": "sessionId",
       "name": "会话ID",
       "type": "Text",
+      "description": "可选。每次会话请生成新的GUID格式会话ID，设置后将自动保存会话历史。",
+      "isAdvanced": false,
+      "validForList": [
+        "chat"
+      ],
+      "invalidForList": [
+        "global"
+      ],
+      "condition": "仅：chat; 排除：global",
       "defaultValue": "",
+      "defaultValueRaw": "",
       "required": false,
       "variableMode": "Input",
-      "condition": "仅：chat; 排除：global",
-      "description": "可选。每次会话请生成新的GUID格式会话ID，设置后将自动保存会话历史。"
+      "isControlField": false
     },
     {
       "key": "historyMessages",
       "name": "历史消息",
       "type": "Text",
+      "description": "可选。存放历史消息的json数组，格式请参考文档说明。设定会话ID后，也可直接写发送的历史会话条数。",
+      "isAdvanced": false,
+      "validForList": [
+        "chat"
+      ],
+      "invalidForList": [
+        "global"
+      ],
+      "condition": "仅：chat; 排除：global",
       "defaultValue": "",
+      "defaultValueRaw": "",
       "required": false,
       "variableMode": "Input",
-      "condition": "仅：chat; 排除：global",
-      "description": "可选。存放历史消息的json数组，格式请参考文档说明。设定会话ID后，也可直接写发送的历史会话条数。"
+      "isControlField": false
     },
     {
       "key": "prompt",
       "name": "提示词",
       "type": "Text",
+      "description": "要为其生成补全的完整提示内容。",
+      "isAdvanced": false,
+      "validForList": [
+        "chat",
+        "completions"
+      ],
+      "invalidForList": [],
+      "condition": "仅：chat, completions",
       "defaultValue": "",
+      "defaultValueRaw": "",
       "required": false,
       "variableMode": "Input",
-      "condition": "仅：chat, completions",
-      "description": "要为其生成补全的完整提示内容。"
+      "isControlField": false
     },
     {
       "key": "maxTokens",
       "name": "最大响应Token数",
       "type": "Integer",
+      "description": "最大响应输出token数（max_completion_tokens）",
+      "isAdvanced": false,
+      "validForList": [],
+      "invalidForList": [],
+      "condition": "",
       "defaultValue": "0",
+      "defaultValueRaw": 0,
       "required": false,
       "variableMode": "Input",
-      "condition": "",
-      "description": "最大响应输出token数（max_completion_tokens）"
+      "isControlField": false
     },
     {
       "key": "temperature",
       "name": "温度",
       "type": "Number",
+      "description": "用于控制输出的随机性，请根据模型文档设置温度参数。",
+      "isAdvanced": false,
+      "validForList": [],
+      "invalidForList": [],
+      "condition": "",
       "defaultValue": "0.2",
+      "defaultValueRaw": 0.2,
       "required": false,
       "variableMode": "Input",
-      "condition": "",
-      "description": "用于控制输出的随机性，请根据模型文档设置温度参数。"
+      "isControlField": false
     },
     {
       "key": "topP",
       "name": "top_p",
       "type": "Number",
+      "description": "",
+      "isAdvanced": true,
+      "validForList": [
+        "chat",
+        "completions"
+      ],
+      "invalidForList": [
+        "global"
+      ],
+      "condition": "仅：chat, completions; 排除：global",
       "defaultValue": "1",
+      "defaultValueRaw": 1,
       "required": false,
       "variableMode": "Input",
-      "condition": "仅：chat, completions; 排除：global",
-      "description": ""
+      "isControlField": false
     },
     {
       "key": "n",
       "name": "n",
       "type": "Integer",
+      "description": "对每个问题生成几个结果，将会耗费更多token。",
+      "isAdvanced": true,
+      "validForList": [
+        "custom"
+      ],
+      "invalidForList": [],
+      "condition": "仅：custom",
       "defaultValue": "1",
+      "defaultValueRaw": 1,
       "required": false,
       "variableMode": "Input",
-      "condition": "仅：custom",
-      "description": "对每个问题生成几个结果，将会耗费更多token。"
+      "isControlField": false
     },
     {
       "key": "expireSeconds",
       "name": "超时秒数",
       "type": "Number",
+      "description": "最长等待秒数",
+      "isAdvanced": true,
+      "validForList": [
+        "custom"
+      ],
+      "invalidForList": [],
+      "condition": "仅：custom",
       "defaultValue": "120",
+      "defaultValueRaw": 120,
       "required": false,
       "variableMode": "Input",
-      "condition": "仅：custom",
-      "description": "最长等待秒数"
+      "isControlField": false
     },
     {
       "key": "stream",
       "name": "使用流式输出",
       "type": "Boolean",
+      "description": "即时输出结果，将结果输出到文本窗口，详见文档。此时将无法获得完整响应和token用量等信息。",
+      "isAdvanced": true,
+      "validForList": [],
+      "invalidForList": [],
+      "condition": "",
       "defaultValue": "false",
+      "defaultValueRaw": false,
       "required": false,
       "variableMode": "UseVarOrInput",
-      "condition": "",
-      "description": "即时输出结果，将结果输出到文本窗口，详见文档。此时将无法获得完整响应和token用量等信息。"
+      "isControlField": false
     },
     {
       "key": "streamTo",
       "name": "流式输出窗口标识",
       "type": "Text",
+      "description": "一个预先使用非等待模式显示的文本窗口的标识，流式输出时将结果显示在该窗口中。",
+      "isAdvanced": true,
+      "validForList": [],
+      "invalidForList": [],
+      "condition": "",
       "defaultValue": "",
+      "defaultValueRaw": "",
       "required": false,
       "variableMode": "Input",
-      "condition": "",
-      "description": "一个预先使用非等待模式显示的文本窗口的标识，流式输出时将结果显示在该窗口中。"
+      "isControlField": false
     },
     {
       "key": "stop",
       "name": "停止符stop",
       "type": "Text",
+      "description": "遇到指定的内容时自动停止生成。可使用\\r,\\n,\\t等表示特殊字符。输入多行时，表示多个停止符。",
+      "isAdvanced": true,
+      "validForList": [
+        "custom"
+      ],
+      "invalidForList": [],
+      "condition": "仅：custom",
       "defaultValue": "",
+      "defaultValueRaw": "",
       "required": false,
       "variableMode": "Input",
-      "condition": "仅：custom",
-      "description": "遇到指定的内容时自动停止生成。可使用\\r,\\n,\\t等表示特殊字符。输入多行时，表示多个停止符。"
+      "isControlField": false
     },
     {
       "key": "forceProxy",
       "name": "强制使用代理",
       "type": "Boolean",
+      "description": "即使系统设置中未启用代理，本步骤仍然使用代理访问。",
+      "isAdvanced": true,
+      "validForList": [
+        "custom"
+      ],
+      "invalidForList": [],
+      "condition": "仅：custom",
       "defaultValue": "false",
+      "defaultValueRaw": false,
       "required": false,
       "variableMode": "Input",
-      "condition": "仅：custom",
-      "description": "即使系统设置中未启用代理，本步骤仍然使用代理访问。"
+      "isControlField": false
     },
     {
       "key": "respFormat",
       "name": "响应格式",
       "type": "Text",
+      "description": "留空，或使用\"json_object\"表示json格式响应，或json格式的完整的response_format内容。",
+      "isAdvanced": true,
+      "validForList": [
+        "chat"
+      ],
+      "invalidForList": [
+        "global"
+      ],
+      "condition": "仅：chat; 排除：global",
       "defaultValue": "",
+      "defaultValueRaw": "",
       "required": false,
       "variableMode": "UseVarOrInput",
-      "condition": "仅：chat; 排除：global",
-      "description": "留空，或使用\"json_object\"表示json格式响应，或json格式的完整的response_format内容。"
+      "isControlField": false
     },
     {
       "key": "extraProps",
       "name": "附加参数",
       "type": "Dict",
+      "description": "用于添加额外的请求参数。请参考文档",
+      "isAdvanced": true,
+      "validForList": [
+        "chat"
+      ],
+      "invalidForList": [
+        "global"
+      ],
+      "condition": "仅：chat; 排除：global",
       "defaultValue": "",
+      "defaultValueRaw": "",
       "required": false,
       "variableMode": "Input",
-      "condition": "仅：chat; 排除：global",
-      "description": "用于添加额外的请求参数。请参考文档"
+      "isControlField": false
     },
     {
       "key": "stopIfFail",
       "name": "失败后停止",
       "type": "Boolean",
+      "description": "失败后是否停止动作",
+      "isAdvanced": false,
+      "validForList": [],
+      "invalidForList": [],
+      "condition": "",
       "defaultValue": "true",
+      "defaultValueRaw": true,
       "required": false,
       "variableMode": "Input",
-      "condition": "",
-      "description": "失败后是否停止动作"
+      "isControlField": false
     }
   ],
   "outputs": [
@@ -248,78 +409,117 @@
       "key": "isSuccess",
       "name": "是否成功",
       "type": "Boolean",
-      "condition": "",
-      "description": "操作是否成功"
+      "description": "操作是否成功",
+      "isAdvanced": false,
+      "validForList": [],
+      "invalidForList": [],
+      "condition": ""
     },
     {
       "key": "result",
       "name": "生成结果",
       "type": "Text",
-      "condition": "",
-      "description": "生成的结果文本"
+      "description": "生成的结果文本",
+      "isAdvanced": false,
+      "validForList": [],
+      "invalidForList": [],
+      "condition": ""
     },
     {
       "key": "reasoningContent",
       "name": "推理内容",
       "type": "Text",
-      "condition": "",
-      "description": "推理模型的reasoning_content"
+      "description": "推理模型的reasoning_content",
+      "isAdvanced": false,
+      "validForList": [],
+      "invalidForList": [],
+      "condition": ""
     },
     {
       "key": "rawResponse",
       "name": "原始响应内容",
       "type": "Text",
-      "condition": "",
-      "description": "接口返回的原始响应内容"
+      "description": "接口返回的原始响应内容",
+      "isAdvanced": false,
+      "validForList": [],
+      "invalidForList": [],
+      "condition": ""
     },
     {
       "key": "promptTokens",
       "name": "提示Token数",
       "type": "Integer",
-      "condition": "",
-      "description": "Prompt耗费的token数量"
+      "description": "Prompt耗费的token数量",
+      "isAdvanced": false,
+      "validForList": [],
+      "invalidForList": [],
+      "condition": ""
     },
     {
       "key": "completionTokens",
       "name": "响应Token数",
       "type": "Integer",
-      "condition": "",
-      "description": "响应耗费的token数量"
+      "description": "响应耗费的token数量",
+      "isAdvanced": false,
+      "validForList": [],
+      "invalidForList": [],
+      "condition": ""
     },
     {
       "key": "totalTokens",
       "name": "总Token数",
       "type": "Integer",
-      "condition": "",
-      "description": "总耗费的token数量"
+      "description": "总耗费的token数量",
+      "isAdvanced": false,
+      "validForList": [],
+      "invalidForList": [],
+      "condition": ""
     },
     {
       "key": "finishReason",
       "name": "结束原因",
       "type": "Text",
-      "condition": "",
-      "description": ""
+      "description": "",
+      "isAdvanced": false,
+      "validForList": [],
+      "invalidForList": [],
+      "condition": ""
     },
     {
       "key": "actualModel",
       "name": "实际模型",
       "type": "Text",
-      "condition": "仅：global",
-      "description": "全局 AI 配置模式实际使用的服务商和 API 模型。"
+      "description": "全局 AI 配置模式实际使用的服务商和 API 模型。",
+      "isAdvanced": true,
+      "validForList": [
+        "global"
+      ],
+      "invalidForList": [],
+      "condition": "仅：global"
     },
     {
       "key": "invocationId",
       "name": "调用标识",
       "type": "Text",
-      "condition": "仅：global",
-      "description": "全局 AI 配置模式生成的调用标识。"
+      "description": "全局 AI 配置模式生成的调用标识。",
+      "isAdvanced": true,
+      "validForList": [
+        "global"
+      ],
+      "invalidForList": [],
+      "condition": "仅：global"
     },
     {
       "key": "historyMessages",
       "name": "历史消息",
       "type": "Object",
-      "condition": "仅：chat",
-      "description": "消息类型列表对象"
+      "description": "消息类型列表对象",
+      "isAdvanced": false,
+      "validForList": [
+        "chat"
+      ],
+      "invalidForList": [],
+      "condition": "仅：chat"
     }
   ],
   "selections": {
@@ -379,5 +579,5 @@
       ]
     }
   },
-  "sourceFileName": "sys_ai_AI 调用.md"
+  "sourceFileName": "catalog.json"
 }

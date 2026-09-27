@@ -16,14 +16,18 @@
       "key": "condition",
       "name": "如果",
       "type": "Boolean",
+      "description": "是否符合指定的条件",
+      "isAdvanced": false,
+      "validForList": [],
+      "invalidForList": [],
+      "condition": "",
       "defaultValue": "",
       "required": false,
       "variableMode": "UseVarOrInput",
-      "condition": "",
-      "description": "是否符合指定的条件"
+      "isControlField": false
     }
   ],
   "outputs": [],
   "selections": {},
-  "sourceFileName": "sys_if_如果_否则.md"
+  "sourceFileName": "catalog.json"
 }

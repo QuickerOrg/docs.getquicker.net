@@ -16,131 +16,228 @@
       "key": "type",
       "name": "类型",
       "type": "Enum",
+      "description": "操作类型",
+      "isAdvanced": false,
+      "validForList": [],
+      "invalidForList": [],
+      "condition": "",
       "defaultValue": "showPanel",
+      "defaultValueRaw": "showPanel",
       "required": true,
       "variableMode": "UseVarOrInput",
-      "condition": "",
-      "description": "操作类型"
+      "isControlField": true
     },
     {
       "key": "profileId",
       "name": "动作页ID",
       "type": "Text",
+      "description": "请在场景与动作管理中，查看动作页信息获取ID。",
+      "isAdvanced": false,
+      "validForList": [
+        "loadProfile"
+      ],
+      "invalidForList": [],
+      "condition": "仅：loadProfile",
       "defaultValue": "",
+      "defaultValueRaw": "",
       "required": true,
       "variableMode": "UseVarOrInput",
-      "condition": "仅：loadProfile",
-      "description": "请在场景与动作管理中，查看动作页信息获取ID。"
+      "isControlField": false
     },
     {
       "key": "actionId",
       "name": "动作ID或名称",
       "type": "Text",
+      "description": "在动作上点右键->信息可以查看动作信息。使用名称时不能有重名动作。获取动作信息时仅可填写动作Id。编辑动作时，使用%%id或%%name格式，可用于编辑公共子程序。",
+      "isAdvanced": false,
+      "validForList": [
+        "editAction",
+        "SearchWithCertainAction",
+        "FloatAction",
+        "GetActionInfo"
+      ],
+      "invalidForList": [],
+      "condition": "仅：editAction, SearchWithCertainAction, FloatAction, GetActionInfo",
       "defaultValue": "",
+      "defaultValueRaw": "",
       "required": true,
       "variableMode": "UseVarOrInput",
-      "condition": "仅：editAction, SearchWithCertainAction, FloatAction, GetActionInfo",
-      "description": "在动作上点右键->信息可以查看动作信息。使用名称时不能有重名动作。获取动作信息时仅可填写动作Id。编辑动作时，使用%%id或%%name格式，可用于编辑公共子程序。"
+      "isControlField": false
     },
     {
       "key": "position",
       "name": "位置",
       "type": "Text",
+      "description": "坐标，格式为：left,top",
+      "isAdvanced": false,
+      "validForList": [
+        "FloatAction"
+      ],
+      "invalidForList": [],
+      "condition": "仅：FloatAction",
       "defaultValue": "200,200",
+      "defaultValueRaw": "200,200",
       "required": true,
       "variableMode": "UseVarOrInput",
-      "condition": "仅：FloatAction",
-      "description": "坐标，格式为：left,top"
+      "isControlField": false
     },
     {
       "key": "exe",
       "name": "场景标识",
       "type": "Text",
+      "description": "场景关联的exe文件名。请参考场景与动作管理窗口左侧应用列表；打开轮盘或场景管理时可填写 _curr 表示当前程序场景。",
+      "isAdvanced": false,
+      "validForList": [
+        "showCircleMenu",
+        "showDashboardWindow",
+        "showExeSettingWindow",
+        "loadExeProfiles",
+        "loadExeProfilesNoLock",
+        "GetActionList"
+      ],
+      "invalidForList": [],
+      "condition": "仅：showCircleMenu, showDashboardWindow, showExeSettingWindow, loadExeProfiles, loadExeProfilesNoLock, GetActionList",
       "defaultValue": "",
+      "defaultValueRaw": "",
       "required": true,
       "variableMode": "UseVarOrInput",
-      "condition": "仅：showCircleMenu, showDashboardWindow, showExeSettingWindow, loadExeProfiles, loadExeProfilesNoLock, GetActionList",
-      "description": "场景关联的exe文件名。请参考场景与动作管理窗口左侧应用列表；打开轮盘或场景管理时可填写 _curr 表示当前程序场景。"
+      "isControlField": false
     },
     {
       "key": "sceneGroup",
       "name": "切换到分组",
       "type": "Text",
+      "description": "加载场景后，在新版面板中自动切换到此分组。留空时按场景默认逻辑显示；填写“未分组”可切换到未分组。",
+      "isAdvanced": false,
+      "validForList": [
+        "loadExeProfiles",
+        "loadExeProfilesNoLock"
+      ],
+      "invalidForList": [],
+      "condition": "仅：loadExeProfiles, loadExeProfilesNoLock",
       "defaultValue": "",
+      "defaultValueRaw": "",
       "required": false,
       "variableMode": "UseVarOrInput",
-      "condition": "仅：loadExeProfiles, loadExeProfilesNoLock",
-      "description": "加载场景后，在新版面板中自动切换到此分组。留空时按场景默认逻辑显示；填写“未分组”可切换到未分组。"
+      "isControlField": false
     },
     {
       "key": "activatePointWindow",
       "name": "自动激活鼠标位置窗口",
       "type": "Boolean",
+      "description": "",
+      "isAdvanced": false,
+      "validForList": [
+        "showPanel"
+      ],
+      "invalidForList": [],
+      "condition": "仅：showPanel",
       "defaultValue": "false",
+      "defaultValueRaw": false,
       "required": false,
       "variableMode": "Input",
-      "condition": "仅：showPanel",
-      "description": ""
+      "isControlField": false
     },
     {
       "key": "followMousePosition",
       "name": "跟随鼠标位置",
       "type": "Boolean",
+      "description": "",
+      "isAdvanced": false,
+      "validForList": [
+        "showPanel"
+      ],
+      "invalidForList": [],
+      "condition": "仅：showPanel",
       "defaultValue": "true",
+      "defaultValueRaw": true,
       "required": false,
       "variableMode": "Input",
-      "condition": "仅：showPanel",
-      "description": ""
+      "isControlField": false
     },
     {
       "key": "searchText",
       "name": "预置的搜索内容",
       "type": "Text",
+      "description": "预先放入搜索框的内容",
+      "isAdvanced": false,
+      "validForList": [
+        "showSearch",
+        "StartSearchWithAction",
+        "SearchWithCertainAction"
+      ],
+      "invalidForList": [],
+      "condition": "仅：showSearch, StartSearchWithAction, SearchWithCertainAction",
       "defaultValue": "",
       "required": false,
       "variableMode": "UseVarOrInput",
-      "condition": "仅：showSearch, StartSearchWithAction, SearchWithCertainAction",
-      "description": "预先放入搜索框的内容"
+      "isControlField": false
     },
     {
       "key": "skinId",
       "name": "外观ID",
       "type": "Text",
+      "description": "请在外观网页中复制外观ID",
+      "isAdvanced": false,
+      "validForList": [
+        "LoadSkin"
+      ],
+      "invalidForList": [],
+      "condition": "仅：LoadSkin",
       "defaultValue": "",
+      "defaultValueRaw": "",
       "required": true,
       "variableMode": "UseVarOrInput",
-      "condition": "仅：LoadSkin",
-      "description": "请在外观网页中复制外观ID"
+      "isControlField": false
     },
     {
       "key": "theme",
       "name": "主题模式",
       "type": "Enum",
+      "description": "可选切换为浅色或暗色模式",
+      "isAdvanced": false,
+      "validForList": [
+        "LoadSkin"
+      ],
+      "invalidForList": [],
+      "condition": "仅：LoadSkin",
       "defaultValue": "",
+      "defaultValueRaw": "",
       "required": false,
       "variableMode": "Input",
-      "condition": "仅：LoadSkin",
-      "description": "可选切换为浅色或暗色模式"
+      "isControlField": false
     },
     {
       "key": "viewMode",
       "name": "显示状态",
       "type": "Enum",
+      "description": "",
+      "isAdvanced": false,
+      "validForList": [
+        "ToggleFloatButtons"
+      ],
+      "invalidForList": [],
+      "condition": "仅：ToggleFloatButtons",
       "defaultValue": "ByProcess",
+      "defaultValueRaw": "ByProcess",
       "required": false,
       "variableMode": "Input",
-      "condition": "仅：ToggleFloatButtons",
-      "description": ""
+      "isControlField": false
     },
     {
       "key": "stopIfFail",
       "name": "失败后停止",
       "type": "Boolean",
+      "description": "失败后是否停止动作",
+      "isAdvanced": false,
+      "validForList": [],
+      "invalidForList": [],
+      "condition": "",
       "defaultValue": "true",
+      "defaultValueRaw": true,
       "required": false,
       "variableMode": "Input",
-      "condition": "",
-      "description": "失败后是否停止动作"
+      "isControlField": false
     }
   ],
   "outputs": [
@@ -148,50 +245,83 @@
       "key": "isSuccess",
       "name": "步骤是否成功",
       "type": "Boolean",
-      "condition": "",
-      "description": "步骤是否成功完成"
+      "description": "步骤是否成功完成",
+      "isAdvanced": false,
+      "validForList": [],
+      "invalidForList": [],
+      "condition": ""
     },
     {
       "key": "actionList",
       "name": "动作列表",
       "type": "List",
-      "condition": "仅：GetActionList",
-      "description": ""
+      "description": "",
+      "isAdvanced": false,
+      "validForList": [
+        "GetActionList"
+      ],
+      "invalidForList": [],
+      "condition": "仅：GetActionList"
     },
     {
       "key": "actionTitle",
       "name": "动作标题",
       "type": "Text",
-      "condition": "仅：GetActionInfo",
-      "description": ""
+      "description": "",
+      "isAdvanced": false,
+      "validForList": [
+        "GetActionInfo"
+      ],
+      "invalidForList": [],
+      "condition": "仅：GetActionInfo"
     },
     {
       "key": "actionIcon",
       "name": "动作图标",
       "type": "Text",
-      "condition": "仅：GetActionInfo",
-      "description": ""
+      "description": "",
+      "isAdvanced": false,
+      "validForList": [
+        "GetActionInfo"
+      ],
+      "invalidForList": [],
+      "condition": "仅：GetActionInfo"
     },
     {
       "key": "actionDescription",
       "name": "动作描述",
       "type": "Text",
-      "condition": "仅：GetActionInfo",
-      "description": ""
+      "description": "",
+      "isAdvanced": false,
+      "validForList": [
+        "GetActionInfo"
+      ],
+      "invalidForList": [],
+      "condition": "仅：GetActionInfo"
     },
     {
       "key": "windowHandle",
       "name": "窗口句柄",
       "type": "Integer",
-      "condition": "仅：FloatAction",
-      "description": ""
+      "description": "",
+      "isAdvanced": false,
+      "validForList": [
+        "FloatAction"
+      ],
+      "invalidForList": [],
+      "condition": "仅：FloatAction"
     },
     {
       "key": "contextMenuData",
       "name": "右键菜单数据",
       "type": "Text",
-      "condition": "仅：GetActionInfo",
-      "description": "动作配置中的右键菜单原始文本；未配置时输出空文本。"
+      "description": "动作配置中的右键菜单原始文本；未配置时输出空文本。",
+      "isAdvanced": false,
+      "validForList": [
+        "GetActionInfo"
+      ],
+      "invalidForList": [],
+      "condition": "仅：GetActionInfo"
     }
   ],
   "selections": {
@@ -416,5 +546,5 @@
       ]
     }
   },
-  "sourceFileName": "sys_quickeroperations_Quicker操作.md"
+  "sourceFileName": "catalog.json"
 }

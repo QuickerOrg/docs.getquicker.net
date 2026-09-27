@@ -16,111 +16,182 @@
       "key": "operation",
       "name": "操作",
       "type": "Enum",
+      "description": "这次截图怎么结束，不受设置中“直接截图的完成操作”影响。",
+      "isAdvanced": false,
+      "validForList": [],
+      "invalidForList": [],
+      "condition": "",
       "defaultValue": "capture",
+      "defaultValueRaw": "capture",
       "required": true,
       "variableMode": "Input",
-      "condition": "",
-      "description": "这次截图怎么结束，不受设置中“直接截图的完成操作”影响。"
+      "isControlField": true
     },
     {
       "key": "preSelectArea",
       "name": "预选截图区域",
       "type": "Text",
+      "description": "留空时手动选择；指定物理屏幕坐标 left,top,right,bottom（右、下边界不包含）时，从该区域进入可调整、可标注状态。",
+      "isAdvanced": true,
+      "validForList": [
+        "capture",
+        "quick_save"
+      ],
+      "invalidForList": [],
+      "condition": "仅：capture, quick_save",
       "defaultValue": "",
+      "defaultValueRaw": "",
       "required": false,
       "variableMode": "UseVarOrInput",
-      "condition": "仅：capture, quick_save",
-      "description": "留空时手动选择；指定物理屏幕坐标 left,top,right,bottom（右、下边界不包含）时，从该区域进入可调整、可标注状态。"
+      "isControlField": false
     },
     {
       "key": "delay",
       "name": "截图前延迟时间",
       "type": "Integer",
+      "description": "等待多少毫秒后开始截图",
+      "isAdvanced": false,
+      "validForList": [],
+      "invalidForList": [],
+      "condition": "",
       "defaultValue": "0",
+      "defaultValueRaw": 0,
       "required": true,
       "variableMode": "UseVarOrInput",
-      "condition": "",
-      "description": "等待多少毫秒后开始截图"
+      "isControlField": false
     },
     {
       "key": "addToHistory",
       "name": "加入截图历史",
       "type": "Boolean",
+      "description": "遵循全局截图历史开关；取消勾选可排除本次截图，不会打开全局历史。",
+      "isAdvanced": true,
+      "validForList": [],
+      "invalidForList": [],
+      "condition": "",
       "defaultValue": "true",
+      "defaultValueRaw": true,
       "required": false,
       "variableMode": "Input",
-      "condition": "",
-      "description": "遵循全局截图历史开关；取消勾选可排除本次截图，不会打开全局历史。"
+      "isControlField": false
     },
     {
       "key": "toClip",
       "name": "写入剪贴板",
       "type": "Boolean",
+      "description": "打勾或双击后写入剪贴板。",
+      "isAdvanced": false,
+      "validForList": [
+        "capture"
+      ],
+      "invalidForList": [],
+      "condition": "仅：capture",
       "defaultValue": "false",
+      "defaultValueRaw": false,
       "required": false,
       "variableMode": "Input",
-      "condition": "仅：capture",
-      "description": "打勾或双击后写入剪贴板。"
+      "isControlField": false
     },
     {
       "key": "pinImage",
       "name": "截图后贴图",
       "type": "Boolean",
+      "description": "打勾或双击后贴到原位置。",
+      "isAdvanced": false,
+      "validForList": [
+        "capture"
+      ],
+      "invalidForList": [],
+      "condition": "仅：capture",
       "defaultValue": "false",
+      "defaultValueRaw": false,
       "required": false,
       "variableMode": "Input",
-      "condition": "仅：capture",
-      "description": "打勾或双击后贴到原位置。"
+      "isControlField": false
     },
     {
       "key": "showToolbarAfterPin",
       "name": "贴图后显示工具栏",
       "type": "Boolean",
+      "description": "",
+      "isAdvanced": true,
+      "validForList": [
+        "capture",
+        "pin"
+      ],
+      "invalidForList": [],
+      "condition": "仅：capture, pin",
       "defaultValue": "false",
+      "defaultValueRaw": false,
       "required": false,
       "variableMode": "Input",
-      "condition": "仅：capture, pin",
-      "description": ""
+      "isControlField": false
     },
     {
       "key": "autoAdsorb",
       "name": "自动吸附UI元素",
       "type": "Boolean",
+      "description": "自动吸附鼠标下的界面元素。关闭后可用滚轮手动缩小或扩大选区。",
+      "isAdvanced": true,
+      "validForList": [],
+      "invalidForList": [],
+      "condition": "",
       "defaultValue": "false",
+      "defaultValueRaw": false,
+      "newStepDefaultValue": "true",
       "required": false,
       "variableMode": "Input",
-      "condition": "",
-      "description": "自动吸附鼠标下的界面元素。关闭后可用滚轮手动缩小或扩大选区。"
+      "isControlField": false
     },
     {
       "key": "toolbarScript",
       "name": "自定义工具栏",
       "type": "Text",
+      "description": "留空则用默认工具栏。",
+      "isAdvanced": true,
+      "validForList": [
+        "capture",
+        "quick_save"
+      ],
+      "invalidForList": [],
+      "condition": "仅：capture, quick_save",
       "defaultValue": "",
+      "defaultValueRaw": "",
       "required": false,
       "variableMode": "UseVarOrInput",
-      "condition": "仅：capture, quick_save",
-      "description": "留空则用默认工具栏。"
+      "isControlField": false
     },
     {
       "key": "stopIfFail",
       "name": "失败后停止",
       "type": "Boolean",
+      "description": "失败后是否停止动作",
+      "isAdvanced": false,
+      "validForList": [],
+      "invalidForList": [],
+      "condition": "",
       "defaultValue": "true",
+      "defaultValueRaw": true,
       "required": false,
       "variableMode": "Input",
-      "condition": "",
-      "description": "失败后是否停止动作"
+      "isControlField": false
     },
     {
       "key": "saveDirectory",
       "name": "保存目录",
       "type": "Text",
+      "description": "留空用全局目录，只改本次。",
+      "isAdvanced": true,
+      "validForList": [
+        "quick_save"
+      ],
+      "invalidForList": [],
+      "condition": "仅：quick_save",
       "defaultValue": "",
+      "defaultValueRaw": "",
       "required": false,
       "variableMode": "UseVarOrInput",
-      "condition": "仅：quick_save",
-      "description": "留空用全局目录，只改本次。"
+      "isControlField": false
     }
   ],
   "outputs": [
@@ -128,36 +199,53 @@
       "key": "isSuccess",
       "name": "是否成功",
       "type": "Boolean",
-      "condition": "",
-      "description": "操作是否成功"
+      "description": "操作是否成功",
+      "isAdvanced": false,
+      "validForList": [],
+      "invalidForList": [],
+      "condition": ""
     },
     {
       "key": "img",
       "name": "图片",
       "type": "Image",
-      "condition": "",
-      "description": ""
+      "description": "",
+      "isAdvanced": false,
+      "validForList": [],
+      "invalidForList": [],
+      "condition": ""
     },
     {
       "key": "rect",
       "name": "截图区域",
       "type": "Text",
-      "condition": "",
-      "description": "图片的截取区域(left,top,right,bottom)。"
+      "description": "图片的截取区域(left,top,right,bottom)。",
+      "isAdvanced": false,
+      "validForList": [],
+      "invalidForList": [],
+      "condition": ""
     },
     {
       "key": "savedPath",
       "name": "保存路径",
       "type": "Text",
-      "condition": "",
-      "description": "保存后的路径；未保存时为空。"
+      "description": "保存后的路径；未保存时为空。",
+      "isAdvanced": false,
+      "validForList": [],
+      "invalidForList": [],
+      "condition": ""
     },
     {
       "key": "text",
       "name": "识别文本",
       "type": "Text",
-      "condition": "仅：ocr_copy",
-      "description": ""
+      "description": "",
+      "isAdvanced": false,
+      "validForList": [
+        "ocr_copy"
+      ],
+      "invalidForList": [],
+      "condition": "仅：ocr_copy"
     }
   ],
   "selections": {
@@ -222,5 +310,5 @@
       ]
     }
   },
-  "sourceFileName": "sys_screenCapturePro_截图 Pro.md"
+  "sourceFileName": "catalog.json"
 }

@@ -16,551 +16,2109 @@
       "key": "operation",
       "name": "操作类型",
       "type": "Enum",
+      "description": "发送给选定 SketchUp 连接的命令；多个连接时按动作触发窗口定位。",
+      "isAdvanced": false,
+      "validForList": [],
+      "invalidForList": [],
+      "condition": "",
       "defaultValue": "common",
+      "defaultValueRaw": "common",
       "required": true,
       "variableMode": "Input",
-      "condition": "",
-      "description": "发送给选定 SketchUp 连接的命令；多个连接时按动作触发窗口定位。"
+      "isControlField": true
     },
     {
       "key": "commonCategory",
       "name": "功能分类",
       "type": "Enum",
+      "description": "",
+      "isAdvanced": false,
+      "validForList": [
+        "common"
+      ],
+      "invalidForList": [],
+      "condition": "仅：common",
       "defaultValue": "selection",
+      "defaultValueRaw": "selection",
       "required": true,
       "variableMode": "Input",
-      "condition": "仅：common",
-      "description": ""
+      "isControlField": true
     },
     {
       "key": "selectionOperation",
       "name": "选择功能",
       "type": "Enum",
+      "description": "",
+      "isAdvanced": false,
+      "validForList": [],
+      "invalidForList": [],
+      "visibleWhen": {
+        "kind": "All",
+        "conditions": [
+          {
+            "kind": "Field",
+            "fieldKey": "operation",
+            "operator": "In",
+            "values": [
+              "common"
+            ]
+          },
+          {
+            "kind": "Field",
+            "fieldKey": "commonCategory",
+            "operator": "In",
+            "values": [
+              "selection"
+            ]
+          }
+        ]
+      },
+      "condition": "(operation 为 \"common\" 且 commonCategory 为 \"selection\")",
       "defaultValue": "selection.get_info",
+      "defaultValueRaw": "selection.get_info",
       "required": true,
       "variableMode": "Input",
-      "condition": "",
-      "description": ""
+      "isControlField": true
     },
     {
       "key": "viewOperation",
       "name": "视图功能",
       "type": "Enum",
+      "description": "",
+      "isAdvanced": false,
+      "validForList": [],
+      "invalidForList": [],
+      "visibleWhen": {
+        "kind": "All",
+        "conditions": [
+          {
+            "kind": "Field",
+            "fieldKey": "operation",
+            "operator": "In",
+            "values": [
+              "common"
+            ]
+          },
+          {
+            "kind": "Field",
+            "fieldKey": "commonCategory",
+            "operator": "In",
+            "values": [
+              "view"
+            ]
+          }
+        ]
+      },
+      "condition": "(operation 为 \"common\" 且 commonCategory 为 \"view\")",
       "defaultValue": "view.zoom_selection",
+      "defaultValueRaw": "view.zoom_selection",
       "required": true,
       "variableMode": "Input",
-      "condition": "",
-      "description": ""
+      "isControlField": true
     },
     {
       "key": "sceneOperation",
       "name": "场景功能",
       "type": "Enum",
+      "description": "",
+      "isAdvanced": false,
+      "validForList": [],
+      "invalidForList": [],
+      "visibleWhen": {
+        "kind": "All",
+        "conditions": [
+          {
+            "kind": "Field",
+            "fieldKey": "operation",
+            "operator": "In",
+            "values": [
+              "common"
+            ]
+          },
+          {
+            "kind": "Field",
+            "fieldKey": "commonCategory",
+            "operator": "In",
+            "values": [
+              "scene"
+            ]
+          }
+        ]
+      },
+      "condition": "(operation 为 \"common\" 且 commonCategory 为 \"scene\")",
       "defaultValue": "scene.list",
+      "defaultValueRaw": "scene.list",
       "required": true,
       "variableMode": "Input",
-      "condition": "",
-      "description": ""
+      "isControlField": true
     },
     {
       "key": "organizeOperation",
       "name": "整理功能",
       "type": "Enum",
+      "description": "",
+      "isAdvanced": false,
+      "validForList": [],
+      "invalidForList": [],
+      "visibleWhen": {
+        "kind": "All",
+        "conditions": [
+          {
+            "kind": "Field",
+            "fieldKey": "operation",
+            "operator": "In",
+            "values": [
+              "common"
+            ]
+          },
+          {
+            "kind": "Field",
+            "fieldKey": "commonCategory",
+            "operator": "In",
+            "values": [
+              "organize"
+            ]
+          }
+        ]
+      },
+      "condition": "(operation 为 \"common\" 且 commonCategory 为 \"organize\")",
       "defaultValue": "tag.list",
+      "defaultValueRaw": "tag.list",
       "required": true,
       "variableMode": "Input",
-      "condition": "",
-      "description": ""
+      "isControlField": true
     },
     {
       "key": "transformOperation",
       "name": "变换功能",
       "type": "Enum",
+      "description": "",
+      "isAdvanced": false,
+      "validForList": [],
+      "invalidForList": [],
+      "visibleWhen": {
+        "kind": "All",
+        "conditions": [
+          {
+            "kind": "Field",
+            "fieldKey": "operation",
+            "operator": "In",
+            "values": [
+              "common"
+            ]
+          },
+          {
+            "kind": "Field",
+            "fieldKey": "commonCategory",
+            "operator": "In",
+            "values": [
+              "transform"
+            ]
+          }
+        ]
+      },
+      "condition": "(operation 为 \"common\" 且 commonCategory 为 \"transform\")",
       "defaultValue": "selection.move",
+      "defaultValueRaw": "selection.move",
       "required": true,
       "variableMode": "Input",
-      "condition": "",
-      "description": ""
+      "isControlField": true
     },
     {
       "key": "fileOperation",
       "name": "文件功能",
       "type": "Enum",
+      "description": "",
+      "isAdvanced": false,
+      "validForList": [],
+      "invalidForList": [],
+      "visibleWhen": {
+        "kind": "All",
+        "conditions": [
+          {
+            "kind": "Field",
+            "fieldKey": "operation",
+            "operator": "In",
+            "values": [
+              "common"
+            ]
+          },
+          {
+            "kind": "Field",
+            "fieldKey": "commonCategory",
+            "operator": "In",
+            "values": [
+              "file"
+            ]
+          }
+        ]
+      },
+      "condition": "(operation 为 \"common\" 且 commonCategory 为 \"file\")",
       "defaultValue": "model.save",
+      "defaultValueRaw": "model.save",
       "required": true,
       "variableMode": "Input",
-      "condition": "",
-      "description": ""
+      "isControlField": true
     },
     {
       "key": "persistentIds",
       "name": "持久ID列表",
       "type": "List",
+      "description": "",
+      "isAdvanced": false,
+      "validForList": [],
+      "invalidForList": [],
+      "visibleWhen": {
+        "kind": "All",
+        "conditions": [
+          {
+            "kind": "Field",
+            "fieldKey": "operation",
+            "operator": "In",
+            "values": [
+              "common"
+            ]
+          },
+          {
+            "kind": "Field",
+            "fieldKey": "commonCategory",
+            "operator": "In",
+            "values": [
+              "selection"
+            ]
+          },
+          {
+            "kind": "Field",
+            "fieldKey": "selectionOperation",
+            "operator": "In",
+            "values": [
+              "selection.select_by_ids"
+            ]
+          }
+        ]
+      },
+      "condition": "(operation 为 \"common\" 且 commonCategory 为 \"selection\" 且 selectionOperation 为 \"selection.select_by_ids\")",
       "defaultValue": "",
       "required": false,
       "variableMode": "UseVarOrInput",
-      "condition": "",
-      "description": ""
+      "isControlField": false
     },
     {
       "key": "selectionMode",
       "name": "选择模式",
       "type": "Enum",
+      "description": "",
+      "isAdvanced": false,
+      "validForList": [],
+      "invalidForList": [],
+      "visibleWhen": {
+        "kind": "All",
+        "conditions": [
+          {
+            "kind": "Field",
+            "fieldKey": "operation",
+            "operator": "In",
+            "values": [
+              "common"
+            ]
+          },
+          {
+            "kind": "Field",
+            "fieldKey": "commonCategory",
+            "operator": "In",
+            "values": [
+              "selection"
+            ]
+          },
+          {
+            "kind": "Field",
+            "fieldKey": "selectionOperation",
+            "operator": "In",
+            "values": [
+              "selection.select_by_ids",
+              "selection.select_all",
+              "selection.select_same_type",
+              "selection.select_same_component",
+              "selection.select_same_tag"
+            ]
+          }
+        ]
+      },
+      "condition": "(operation 为 \"common\" 且 commonCategory 为 \"selection\" 且 selectionOperation 为 \"selection.select_by_ids\"、\"selection.select_all\"、\"selection.select_same_type\"、\"selection.select_same_component\"、\"selection.select_same_tag\")",
       "defaultValue": "replace",
+      "defaultValueRaw": "replace",
       "required": true,
       "variableMode": "Input",
-      "condition": "",
-      "description": ""
+      "isControlField": true
     },
     {
       "key": "includeHidden",
       "name": "包含隐藏对象",
       "type": "Boolean",
+      "description": "",
+      "isAdvanced": false,
+      "validForList": [],
+      "invalidForList": [],
+      "visibleWhen": {
+        "kind": "All",
+        "conditions": [
+          {
+            "kind": "Field",
+            "fieldKey": "operation",
+            "operator": "In",
+            "values": [
+              "common"
+            ]
+          },
+          {
+            "kind": "Field",
+            "fieldKey": "commonCategory",
+            "operator": "In",
+            "values": [
+              "selection"
+            ]
+          },
+          {
+            "kind": "Field",
+            "fieldKey": "selectionOperation",
+            "operator": "In",
+            "values": [
+              "selection.select_all",
+              "selection.invert",
+              "selection.select_same_type",
+              "selection.select_same_component",
+              "selection.select_same_tag"
+            ]
+          }
+        ]
+      },
+      "condition": "(operation 为 \"common\" 且 commonCategory 为 \"selection\" 且 selectionOperation 为 \"selection.select_all\"、\"selection.invert\"、\"selection.select_same_type\"、\"selection.select_same_component\"、\"selection.select_same_tag\")",
       "defaultValue": "false",
+      "defaultValueRaw": false,
       "required": false,
       "variableMode": "Input",
-      "condition": "",
-      "description": ""
+      "isControlField": false
     },
     {
       "key": "includeLocked",
       "name": "包含锁定对象",
       "type": "Boolean",
+      "description": "",
+      "isAdvanced": false,
+      "validForList": [],
+      "invalidForList": [],
+      "visibleWhen": {
+        "kind": "All",
+        "conditions": [
+          {
+            "kind": "Field",
+            "fieldKey": "operation",
+            "operator": "In",
+            "values": [
+              "common"
+            ]
+          },
+          {
+            "kind": "Field",
+            "fieldKey": "commonCategory",
+            "operator": "In",
+            "values": [
+              "selection"
+            ]
+          },
+          {
+            "kind": "Field",
+            "fieldKey": "selectionOperation",
+            "operator": "In",
+            "values": [
+              "selection.select_all",
+              "selection.invert",
+              "selection.select_same_type",
+              "selection.select_same_component",
+              "selection.select_same_tag"
+            ]
+          }
+        ]
+      },
+      "condition": "(operation 为 \"common\" 且 commonCategory 为 \"selection\" 且 selectionOperation 为 \"selection.select_all\"、\"selection.invert\"、\"selection.select_same_type\"、\"selection.select_same_component\"、\"selection.select_same_tag\")",
       "defaultValue": "false",
+      "defaultValueRaw": false,
       "required": false,
       "variableMode": "Input",
-      "condition": "",
-      "description": ""
+      "isControlField": false
     },
     {
       "key": "fullDetails",
       "name": "返回完整详情",
       "type": "Boolean",
+      "description": "",
+      "isAdvanced": false,
+      "validForList": [],
+      "invalidForList": [],
+      "visibleWhen": {
+        "kind": "All",
+        "conditions": [
+          {
+            "kind": "Field",
+            "fieldKey": "operation",
+            "operator": "In",
+            "values": [
+              "common"
+            ]
+          },
+          {
+            "kind": "Field",
+            "fieldKey": "commonCategory",
+            "operator": "In",
+            "values": [
+              "selection"
+            ]
+          },
+          {
+            "kind": "Field",
+            "fieldKey": "selectionOperation",
+            "operator": "In",
+            "values": [
+              "selection.get_info"
+            ]
+          }
+        ]
+      },
+      "condition": "(operation 为 \"common\" 且 commonCategory 为 \"selection\" 且 selectionOperation 为 \"selection.get_info\")",
       "defaultValue": "false",
+      "defaultValueRaw": false,
       "required": false,
       "variableMode": "Input",
-      "condition": "",
-      "description": ""
+      "isControlField": false
     },
     {
       "key": "hidden",
       "name": "隐藏对象",
       "type": "Boolean",
+      "description": "",
+      "isAdvanced": false,
+      "validForList": [],
+      "invalidForList": [],
+      "visibleWhen": {
+        "kind": "All",
+        "conditions": [
+          {
+            "kind": "Field",
+            "fieldKey": "operation",
+            "operator": "In",
+            "values": [
+              "common"
+            ]
+          },
+          {
+            "kind": "Field",
+            "fieldKey": "commonCategory",
+            "operator": "In",
+            "values": [
+              "selection"
+            ]
+          },
+          {
+            "kind": "Field",
+            "fieldKey": "selectionOperation",
+            "operator": "In",
+            "values": [
+              "entity.visibility.set"
+            ]
+          }
+        ]
+      },
+      "condition": "(operation 为 \"common\" 且 commonCategory 为 \"selection\" 且 selectionOperation 为 \"entity.visibility.set\")",
       "defaultValue": "true",
+      "defaultValueRaw": true,
       "required": false,
       "variableMode": "Input",
-      "condition": "",
-      "description": ""
+      "isControlField": false
     },
     {
       "key": "locked",
       "name": "锁定对象",
       "type": "Boolean",
+      "description": "",
+      "isAdvanced": false,
+      "validForList": [],
+      "invalidForList": [],
+      "visibleWhen": {
+        "kind": "All",
+        "conditions": [
+          {
+            "kind": "Field",
+            "fieldKey": "operation",
+            "operator": "In",
+            "values": [
+              "common"
+            ]
+          },
+          {
+            "kind": "Field",
+            "fieldKey": "commonCategory",
+            "operator": "In",
+            "values": [
+              "selection"
+            ]
+          },
+          {
+            "kind": "Field",
+            "fieldKey": "selectionOperation",
+            "operator": "In",
+            "values": [
+              "selection.lock"
+            ]
+          }
+        ]
+      },
+      "condition": "(operation 为 \"common\" 且 commonCategory 为 \"selection\" 且 selectionOperation 为 \"selection.lock\")",
       "defaultValue": "true",
+      "defaultValueRaw": true,
       "required": false,
       "variableMode": "Input",
-      "condition": "",
-      "description": ""
+      "isControlField": false
     },
     {
       "key": "standardView",
       "name": "标准视图",
       "type": "Enum",
+      "description": "",
+      "isAdvanced": false,
+      "validForList": [],
+      "invalidForList": [],
+      "visibleWhen": {
+        "kind": "All",
+        "conditions": [
+          {
+            "kind": "Field",
+            "fieldKey": "operation",
+            "operator": "In",
+            "values": [
+              "common"
+            ]
+          },
+          {
+            "kind": "Field",
+            "fieldKey": "commonCategory",
+            "operator": "In",
+            "values": [
+              "view"
+            ]
+          },
+          {
+            "kind": "Field",
+            "fieldKey": "viewOperation",
+            "operator": "In",
+            "values": [
+              "view.standard"
+            ]
+          }
+        ]
+      },
+      "condition": "(operation 为 \"common\" 且 commonCategory 为 \"view\" 且 viewOperation 为 \"view.standard\")",
       "defaultValue": "isometric",
+      "defaultValueRaw": "isometric",
       "required": true,
       "variableMode": "Input",
-      "condition": "",
-      "description": ""
+      "isControlField": true
     },
     {
       "key": "zoomExtentsAfterView",
       "name": "切换后缩放到全部",
       "type": "Boolean",
+      "description": "",
+      "isAdvanced": false,
+      "validForList": [],
+      "invalidForList": [],
+      "visibleWhen": {
+        "kind": "All",
+        "conditions": [
+          {
+            "kind": "Field",
+            "fieldKey": "operation",
+            "operator": "In",
+            "values": [
+              "common"
+            ]
+          },
+          {
+            "kind": "Field",
+            "fieldKey": "commonCategory",
+            "operator": "In",
+            "values": [
+              "view"
+            ]
+          },
+          {
+            "kind": "Field",
+            "fieldKey": "viewOperation",
+            "operator": "In",
+            "values": [
+              "view.standard"
+            ]
+          }
+        ]
+      },
+      "condition": "(operation 为 \"common\" 且 commonCategory 为 \"view\" 且 viewOperation 为 \"view.standard\")",
       "defaultValue": "true",
+      "defaultValueRaw": true,
       "required": false,
       "variableMode": "Input",
-      "condition": "",
-      "description": ""
+      "isControlField": false
     },
     {
       "key": "eye",
       "name": "相机位置 X,Y,Z",
       "type": "Text",
+      "description": "",
+      "isAdvanced": false,
+      "validForList": [],
+      "invalidForList": [],
+      "visibleWhen": {
+        "kind": "All",
+        "conditions": [
+          {
+            "kind": "Field",
+            "fieldKey": "operation",
+            "operator": "In",
+            "values": [
+              "common"
+            ]
+          },
+          {
+            "kind": "Field",
+            "fieldKey": "commonCategory",
+            "operator": "In",
+            "values": [
+              "view"
+            ]
+          },
+          {
+            "kind": "Field",
+            "fieldKey": "viewOperation",
+            "operator": "In",
+            "values": [
+              "view.set_camera"
+            ]
+          }
+        ]
+      },
+      "condition": "(operation 为 \"common\" 且 commonCategory 为 \"view\" 且 viewOperation 为 \"view.set_camera\")",
       "defaultValue": "1000,1000,1000",
+      "defaultValueRaw": "1000,1000,1000",
       "required": false,
       "variableMode": "UseVarOrInput",
-      "condition": "",
-      "description": ""
+      "isControlField": false
     },
     {
       "key": "target",
       "name": "观察目标 X,Y,Z",
       "type": "Text",
+      "description": "",
+      "isAdvanced": false,
+      "validForList": [],
+      "invalidForList": [],
+      "visibleWhen": {
+        "kind": "All",
+        "conditions": [
+          {
+            "kind": "Field",
+            "fieldKey": "operation",
+            "operator": "In",
+            "values": [
+              "common"
+            ]
+          },
+          {
+            "kind": "Field",
+            "fieldKey": "commonCategory",
+            "operator": "In",
+            "values": [
+              "view"
+            ]
+          },
+          {
+            "kind": "Field",
+            "fieldKey": "viewOperation",
+            "operator": "In",
+            "values": [
+              "view.set_camera"
+            ]
+          }
+        ]
+      },
+      "condition": "(operation 为 \"common\" 且 commonCategory 为 \"view\" 且 viewOperation 为 \"view.set_camera\")",
       "defaultValue": "0,0,0",
+      "defaultValueRaw": "0,0,0",
       "required": false,
       "variableMode": "UseVarOrInput",
-      "condition": "",
-      "description": ""
+      "isControlField": false
     },
     {
       "key": "up",
       "name": "向上向量 X,Y,Z",
       "type": "Text",
+      "description": "",
+      "isAdvanced": false,
+      "validForList": [],
+      "invalidForList": [],
+      "visibleWhen": {
+        "kind": "All",
+        "conditions": [
+          {
+            "kind": "Field",
+            "fieldKey": "operation",
+            "operator": "In",
+            "values": [
+              "common"
+            ]
+          },
+          {
+            "kind": "Field",
+            "fieldKey": "commonCategory",
+            "operator": "In",
+            "values": [
+              "view"
+            ]
+          },
+          {
+            "kind": "Field",
+            "fieldKey": "viewOperation",
+            "operator": "In",
+            "values": [
+              "view.set_camera"
+            ]
+          }
+        ]
+      },
+      "condition": "(operation 为 \"common\" 且 commonCategory 为 \"view\" 且 viewOperation 为 \"view.set_camera\")",
       "defaultValue": "0,0,1",
+      "defaultValueRaw": "0,0,1",
       "required": false,
       "variableMode": "UseVarOrInput",
-      "condition": "",
-      "description": ""
+      "isControlField": false
     },
     {
       "key": "perspective",
       "name": "透视投影",
       "type": "Boolean",
+      "description": "",
+      "isAdvanced": false,
+      "validForList": [],
+      "invalidForList": [],
+      "visibleWhen": {
+        "kind": "All",
+        "conditions": [
+          {
+            "kind": "Field",
+            "fieldKey": "operation",
+            "operator": "In",
+            "values": [
+              "common"
+            ]
+          },
+          {
+            "kind": "Field",
+            "fieldKey": "commonCategory",
+            "operator": "In",
+            "values": [
+              "view"
+            ]
+          },
+          {
+            "kind": "Field",
+            "fieldKey": "viewOperation",
+            "operator": "In",
+            "values": [
+              "view.set_camera",
+              "view.projection.set"
+            ]
+          }
+        ]
+      },
+      "condition": "(operation 为 \"common\" 且 commonCategory 为 \"view\" 且 viewOperation 为 \"view.set_camera\"、\"view.projection.set\")",
       "defaultValue": "true",
+      "defaultValueRaw": true,
       "required": false,
       "variableMode": "Input",
-      "condition": "",
-      "description": ""
+      "isControlField": false
     },
     {
       "key": "fieldOfView",
       "name": "视野角度",
       "type": "Number",
+      "description": "",
+      "isAdvanced": false,
+      "validForList": [],
+      "invalidForList": [],
+      "visibleWhen": {
+        "kind": "All",
+        "conditions": [
+          {
+            "kind": "Field",
+            "fieldKey": "operation",
+            "operator": "In",
+            "values": [
+              "common"
+            ]
+          },
+          {
+            "kind": "Field",
+            "fieldKey": "commonCategory",
+            "operator": "In",
+            "values": [
+              "view"
+            ]
+          },
+          {
+            "kind": "Field",
+            "fieldKey": "viewOperation",
+            "operator": "In",
+            "values": [
+              "view.set_camera",
+              "view.projection.set"
+            ]
+          }
+        ]
+      },
+      "condition": "(operation 为 \"common\" 且 commonCategory 为 \"view\" 且 viewOperation 为 \"view.set_camera\"、\"view.projection.set\")",
       "defaultValue": "35.0",
+      "defaultValueRaw": 35,
       "required": false,
       "variableMode": "Input",
-      "condition": "",
-      "description": ""
+      "isControlField": false
     },
     {
       "key": "sceneName",
       "name": "场景名称",
       "type": "Text",
+      "description": "",
+      "isAdvanced": false,
+      "validForList": [],
+      "invalidForList": [],
+      "visibleWhen": {
+        "kind": "All",
+        "conditions": [
+          {
+            "kind": "Field",
+            "fieldKey": "operation",
+            "operator": "In",
+            "values": [
+              "common"
+            ]
+          },
+          {
+            "kind": "Field",
+            "fieldKey": "commonCategory",
+            "operator": "In",
+            "values": [
+              "scene"
+            ]
+          },
+          {
+            "kind": "Field",
+            "fieldKey": "sceneOperation",
+            "operator": "In",
+            "values": [
+              "scene.activate",
+              "scene.create",
+              "scene.update",
+              "scene.rename",
+              "scene.delete",
+              "scene.reorder"
+            ]
+          }
+        ]
+      },
+      "condition": "(operation 为 \"common\" 且 commonCategory 为 \"scene\" 且 sceneOperation 为 \"scene.activate\"、\"scene.create\"、\"scene.update\"、\"scene.rename\"、\"scene.delete\"、\"scene.reorder\")",
       "defaultValue": "",
+      "defaultValueRaw": "",
       "required": false,
       "variableMode": "UseVarOrInput",
-      "condition": "",
-      "description": ""
+      "isControlField": false
     },
     {
       "key": "newName",
       "name": "新名称",
       "type": "Text",
+      "description": "",
+      "isAdvanced": false,
+      "validForList": [],
+      "invalidForList": [],
+      "visibleWhen": {
+        "kind": "All",
+        "conditions": [
+          {
+            "kind": "Field",
+            "fieldKey": "operation",
+            "operator": "In",
+            "values": [
+              "common"
+            ]
+          },
+          {
+            "kind": "Field",
+            "fieldKey": "commonCategory",
+            "operator": "In",
+            "values": [
+              "scene"
+            ]
+          },
+          {
+            "kind": "Field",
+            "fieldKey": "sceneOperation",
+            "operator": "In",
+            "values": [
+              "scene.rename"
+            ]
+          }
+        ]
+      },
+      "condition": "(operation 为 \"common\" 且 commonCategory 为 \"scene\" 且 sceneOperation 为 \"scene.rename\")",
       "defaultValue": "",
+      "defaultValueRaw": "",
       "required": false,
       "variableMode": "UseVarOrInput",
-      "condition": "",
-      "description": ""
+      "isControlField": false
     },
     {
       "key": "newIndex",
       "name": "新位置（从0开始）",
       "type": "Integer",
+      "description": "",
+      "isAdvanced": false,
+      "validForList": [],
+      "invalidForList": [],
+      "visibleWhen": {
+        "kind": "All",
+        "conditions": [
+          {
+            "kind": "Field",
+            "fieldKey": "operation",
+            "operator": "In",
+            "values": [
+              "common"
+            ]
+          },
+          {
+            "kind": "Field",
+            "fieldKey": "commonCategory",
+            "operator": "In",
+            "values": [
+              "scene"
+            ]
+          },
+          {
+            "kind": "Field",
+            "fieldKey": "sceneOperation",
+            "operator": "In",
+            "values": [
+              "scene.reorder"
+            ]
+          }
+        ]
+      },
+      "condition": "(operation 为 \"common\" 且 commonCategory 为 \"scene\" 且 sceneOperation 为 \"scene.reorder\")",
       "defaultValue": "0",
+      "defaultValueRaw": 0,
       "required": false,
       "variableMode": "Input",
-      "condition": "",
-      "description": ""
+      "isControlField": false
     },
     {
       "key": "tagName",
       "name": "标签名称",
       "type": "Text",
+      "description": "",
+      "isAdvanced": false,
+      "validForList": [],
+      "invalidForList": [],
+      "visibleWhen": {
+        "kind": "All",
+        "conditions": [
+          {
+            "kind": "Field",
+            "fieldKey": "operation",
+            "operator": "In",
+            "values": [
+              "common"
+            ]
+          },
+          {
+            "kind": "Field",
+            "fieldKey": "commonCategory",
+            "operator": "In",
+            "values": [
+              "organize"
+            ]
+          },
+          {
+            "kind": "Field",
+            "fieldKey": "organizeOperation",
+            "operator": "In",
+            "values": [
+              "tag.set_visibility",
+              "selection.assign_tag"
+            ]
+          }
+        ]
+      },
+      "condition": "(operation 为 \"common\" 且 commonCategory 为 \"organize\" 且 organizeOperation 为 \"tag.set_visibility\"、\"selection.assign_tag\")",
       "defaultValue": "",
+      "defaultValueRaw": "",
       "required": false,
       "variableMode": "UseVarOrInput",
-      "condition": "",
-      "description": ""
+      "isControlField": false
     },
     {
       "key": "visible",
       "name": "可见",
       "type": "Boolean",
+      "description": "",
+      "isAdvanced": false,
+      "validForList": [],
+      "invalidForList": [],
+      "visibleWhen": {
+        "kind": "All",
+        "conditions": [
+          {
+            "kind": "Field",
+            "fieldKey": "operation",
+            "operator": "In",
+            "values": [
+              "common"
+            ]
+          },
+          {
+            "kind": "Field",
+            "fieldKey": "commonCategory",
+            "operator": "In",
+            "values": [
+              "organize"
+            ]
+          },
+          {
+            "kind": "Field",
+            "fieldKey": "organizeOperation",
+            "operator": "In",
+            "values": [
+              "tag.set_visibility"
+            ]
+          }
+        ]
+      },
+      "condition": "(operation 为 \"common\" 且 commonCategory 为 \"organize\" 且 organizeOperation 为 \"tag.set_visibility\")",
       "defaultValue": "true",
+      "defaultValueRaw": true,
       "required": false,
       "variableMode": "Input",
-      "condition": "",
-      "description": ""
+      "isControlField": false
     },
     {
       "key": "materialName",
       "name": "材质名称",
       "type": "Text",
+      "description": "",
+      "isAdvanced": false,
+      "validForList": [],
+      "invalidForList": [],
+      "visibleWhen": {
+        "kind": "All",
+        "conditions": [
+          {
+            "kind": "Field",
+            "fieldKey": "operation",
+            "operator": "In",
+            "values": [
+              "common"
+            ]
+          },
+          {
+            "kind": "Field",
+            "fieldKey": "commonCategory",
+            "operator": "In",
+            "values": [
+              "organize"
+            ]
+          },
+          {
+            "kind": "Field",
+            "fieldKey": "organizeOperation",
+            "operator": "In",
+            "values": [
+              "selection.assign_material"
+            ]
+          }
+        ]
+      },
+      "condition": "(operation 为 \"common\" 且 commonCategory 为 \"organize\" 且 organizeOperation 为 \"selection.assign_material\")",
       "defaultValue": "",
+      "defaultValueRaw": "",
       "required": false,
       "variableMode": "UseVarOrInput",
-      "condition": "",
-      "description": ""
+      "isControlField": false
     },
     {
       "key": "clearMaterial",
       "name": "清除材质",
       "type": "Boolean",
+      "description": "",
+      "isAdvanced": false,
+      "validForList": [],
+      "invalidForList": [],
+      "visibleWhen": {
+        "kind": "All",
+        "conditions": [
+          {
+            "kind": "Field",
+            "fieldKey": "operation",
+            "operator": "In",
+            "values": [
+              "common"
+            ]
+          },
+          {
+            "kind": "Field",
+            "fieldKey": "commonCategory",
+            "operator": "In",
+            "values": [
+              "organize"
+            ]
+          },
+          {
+            "kind": "Field",
+            "fieldKey": "organizeOperation",
+            "operator": "In",
+            "values": [
+              "selection.assign_material"
+            ]
+          }
+        ]
+      },
+      "condition": "(operation 为 \"common\" 且 commonCategory 为 \"organize\" 且 organizeOperation 为 \"selection.assign_material\")",
       "defaultValue": "false",
+      "defaultValueRaw": false,
       "required": false,
       "variableMode": "Input",
-      "condition": "",
-      "description": ""
+      "isControlField": false
     },
     {
       "key": "entityName",
       "name": "对象名称",
       "type": "Text",
+      "description": "",
+      "isAdvanced": false,
+      "validForList": [],
+      "invalidForList": [],
+      "visibleWhen": {
+        "kind": "All",
+        "conditions": [
+          {
+            "kind": "Field",
+            "fieldKey": "operation",
+            "operator": "In",
+            "values": [
+              "common"
+            ]
+          },
+          {
+            "kind": "Any",
+            "conditions": [
+              {
+                "kind": "All",
+                "conditions": [
+                  {
+                    "kind": "Field",
+                    "fieldKey": "commonCategory",
+                    "operator": "In",
+                    "values": [
+                      "organize"
+                    ]
+                  },
+                  {
+                    "kind": "Field",
+                    "fieldKey": "organizeOperation",
+                    "operator": "In",
+                    "values": [
+                      "entity.rename"
+                    ]
+                  }
+                ]
+              },
+              {
+                "kind": "All",
+                "conditions": [
+                  {
+                    "kind": "Field",
+                    "fieldKey": "commonCategory",
+                    "operator": "In",
+                    "values": [
+                      "transform"
+                    ]
+                  },
+                  {
+                    "kind": "Field",
+                    "fieldKey": "transformOperation",
+                    "operator": "In",
+                    "values": [
+                      "selection.make_group",
+                      "selection.make_component"
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      "condition": "(operation 为 \"common\" 且 ((commonCategory 为 \"organize\" 且 organizeOperation 为 \"entity.rename\") 或 (commonCategory 为 \"transform\" 且 transformOperation 为 \"selection.make_group\"、\"selection.make_component\")))",
       "defaultValue": "",
+      "defaultValueRaw": "",
       "required": false,
       "variableMode": "UseVarOrInput",
-      "condition": "",
-      "description": ""
+      "isControlField": false
     },
     {
       "key": "attributeDictionary",
       "name": "属性字典",
       "type": "Text",
+      "description": "",
+      "isAdvanced": false,
+      "validForList": [],
+      "invalidForList": [],
+      "visibleWhen": {
+        "kind": "All",
+        "conditions": [
+          {
+            "kind": "Field",
+            "fieldKey": "operation",
+            "operator": "In",
+            "values": [
+              "common"
+            ]
+          },
+          {
+            "kind": "Field",
+            "fieldKey": "commonCategory",
+            "operator": "In",
+            "values": [
+              "organize"
+            ]
+          },
+          {
+            "kind": "Field",
+            "fieldKey": "organizeOperation",
+            "operator": "In",
+            "values": [
+              "entity.set_attribute"
+            ]
+          }
+        ]
+      },
+      "condition": "(operation 为 \"common\" 且 commonCategory 为 \"organize\" 且 organizeOperation 为 \"entity.set_attribute\")",
       "defaultValue": "Quicker",
+      "defaultValueRaw": "Quicker",
       "required": false,
       "variableMode": "UseVarOrInput",
-      "condition": "",
-      "description": ""
+      "isControlField": false
     },
     {
       "key": "attributeKey",
       "name": "属性名称",
       "type": "Text",
+      "description": "",
+      "isAdvanced": false,
+      "validForList": [],
+      "invalidForList": [],
+      "visibleWhen": {
+        "kind": "All",
+        "conditions": [
+          {
+            "kind": "Field",
+            "fieldKey": "operation",
+            "operator": "In",
+            "values": [
+              "common"
+            ]
+          },
+          {
+            "kind": "Field",
+            "fieldKey": "commonCategory",
+            "operator": "In",
+            "values": [
+              "organize"
+            ]
+          },
+          {
+            "kind": "Field",
+            "fieldKey": "organizeOperation",
+            "operator": "In",
+            "values": [
+              "entity.set_attribute"
+            ]
+          }
+        ]
+      },
+      "condition": "(operation 为 \"common\" 且 commonCategory 为 \"organize\" 且 organizeOperation 为 \"entity.set_attribute\")",
       "defaultValue": "",
+      "defaultValueRaw": "",
       "required": false,
       "variableMode": "UseVarOrInput",
-      "condition": "",
-      "description": ""
+      "isControlField": false
     },
     {
       "key": "attributeValueJson",
       "name": "属性值(JSON)",
       "type": "Text",
+      "description": "",
+      "isAdvanced": false,
+      "validForList": [],
+      "invalidForList": [],
+      "visibleWhen": {
+        "kind": "All",
+        "conditions": [
+          {
+            "kind": "Field",
+            "fieldKey": "operation",
+            "operator": "In",
+            "values": [
+              "common"
+            ]
+          },
+          {
+            "kind": "Field",
+            "fieldKey": "commonCategory",
+            "operator": "In",
+            "values": [
+              "organize"
+            ]
+          },
+          {
+            "kind": "Field",
+            "fieldKey": "organizeOperation",
+            "operator": "In",
+            "values": [
+              "entity.set_attribute"
+            ]
+          }
+        ]
+      },
+      "condition": "(operation 为 \"common\" 且 commonCategory 为 \"organize\" 且 organizeOperation 为 \"entity.set_attribute\")",
       "defaultValue": "null",
+      "defaultValueRaw": "null",
       "required": false,
       "variableMode": "UseVarOrInput",
-      "condition": "",
-      "description": ""
+      "isControlField": false
     },
     {
       "key": "vector",
       "name": "移动向量 X,Y,Z",
       "type": "Text",
+      "description": "",
+      "isAdvanced": false,
+      "validForList": [],
+      "invalidForList": [],
+      "visibleWhen": {
+        "kind": "All",
+        "conditions": [
+          {
+            "kind": "Field",
+            "fieldKey": "operation",
+            "operator": "In",
+            "values": [
+              "common"
+            ]
+          },
+          {
+            "kind": "Field",
+            "fieldKey": "commonCategory",
+            "operator": "In",
+            "values": [
+              "transform"
+            ]
+          },
+          {
+            "kind": "Field",
+            "fieldKey": "transformOperation",
+            "operator": "In",
+            "values": [
+              "selection.move"
+            ]
+          }
+        ]
+      },
+      "condition": "(operation 为 \"common\" 且 commonCategory 为 \"transform\" 且 transformOperation 为 \"selection.move\")",
       "defaultValue": "0,0,0",
+      "defaultValueRaw": "0,0,0",
       "required": false,
       "variableMode": "UseVarOrInput",
-      "condition": "",
-      "description": ""
+      "isControlField": false
     },
     {
       "key": "origin",
       "name": "变换原点 X,Y,Z（留空使用选择中心）",
       "type": "Text",
+      "description": "",
+      "isAdvanced": false,
+      "validForList": [],
+      "invalidForList": [],
+      "visibleWhen": {
+        "kind": "All",
+        "conditions": [
+          {
+            "kind": "Field",
+            "fieldKey": "operation",
+            "operator": "In",
+            "values": [
+              "common"
+            ]
+          },
+          {
+            "kind": "Field",
+            "fieldKey": "commonCategory",
+            "operator": "In",
+            "values": [
+              "transform"
+            ]
+          },
+          {
+            "kind": "Field",
+            "fieldKey": "transformOperation",
+            "operator": "In",
+            "values": [
+              "selection.rotate",
+              "selection.scale"
+            ]
+          }
+        ]
+      },
+      "condition": "(operation 为 \"common\" 且 commonCategory 为 \"transform\" 且 transformOperation 为 \"selection.rotate\"、\"selection.scale\")",
       "defaultValue": "",
+      "defaultValueRaw": "",
       "required": false,
       "variableMode": "UseVarOrInput",
-      "condition": "",
-      "description": ""
+      "isControlField": false
     },
     {
       "key": "axis",
       "name": "旋转轴 X,Y,Z",
       "type": "Text",
+      "description": "",
+      "isAdvanced": false,
+      "validForList": [],
+      "invalidForList": [],
+      "visibleWhen": {
+        "kind": "All",
+        "conditions": [
+          {
+            "kind": "Field",
+            "fieldKey": "operation",
+            "operator": "In",
+            "values": [
+              "common"
+            ]
+          },
+          {
+            "kind": "Field",
+            "fieldKey": "commonCategory",
+            "operator": "In",
+            "values": [
+              "transform"
+            ]
+          },
+          {
+            "kind": "Field",
+            "fieldKey": "transformOperation",
+            "operator": "In",
+            "values": [
+              "selection.rotate"
+            ]
+          }
+        ]
+      },
+      "condition": "(operation 为 \"common\" 且 commonCategory 为 \"transform\" 且 transformOperation 为 \"selection.rotate\")",
       "defaultValue": "0,0,1",
+      "defaultValueRaw": "0,0,1",
       "required": false,
       "variableMode": "UseVarOrInput",
-      "condition": "",
-      "description": ""
+      "isControlField": false
     },
     {
       "key": "angleDegrees",
       "name": "旋转角度（度）",
       "type": "Number",
+      "description": "",
+      "isAdvanced": false,
+      "validForList": [],
+      "invalidForList": [],
+      "visibleWhen": {
+        "kind": "All",
+        "conditions": [
+          {
+            "kind": "Field",
+            "fieldKey": "operation",
+            "operator": "In",
+            "values": [
+              "common"
+            ]
+          },
+          {
+            "kind": "Field",
+            "fieldKey": "commonCategory",
+            "operator": "In",
+            "values": [
+              "transform"
+            ]
+          },
+          {
+            "kind": "Field",
+            "fieldKey": "transformOperation",
+            "operator": "In",
+            "values": [
+              "selection.rotate"
+            ]
+          }
+        ]
+      },
+      "condition": "(operation 为 \"common\" 且 commonCategory 为 \"transform\" 且 transformOperation 为 \"selection.rotate\")",
       "defaultValue": "90.0",
+      "defaultValueRaw": 90,
       "required": false,
       "variableMode": "Input",
-      "condition": "",
-      "description": ""
+      "isControlField": false
     },
     {
       "key": "scaleFactors",
       "name": "缩放比例 X,Y,Z",
       "type": "Text",
+      "description": "",
+      "isAdvanced": false,
+      "validForList": [],
+      "invalidForList": [],
+      "visibleWhen": {
+        "kind": "All",
+        "conditions": [
+          {
+            "kind": "Field",
+            "fieldKey": "operation",
+            "operator": "In",
+            "values": [
+              "common"
+            ]
+          },
+          {
+            "kind": "Field",
+            "fieldKey": "commonCategory",
+            "operator": "In",
+            "values": [
+              "transform"
+            ]
+          },
+          {
+            "kind": "Field",
+            "fieldKey": "transformOperation",
+            "operator": "In",
+            "values": [
+              "selection.scale"
+            ]
+          }
+        ]
+      },
+      "condition": "(operation 为 \"common\" 且 commonCategory 为 \"transform\" 且 transformOperation 为 \"selection.scale\")",
       "defaultValue": "1,1,1",
+      "defaultValueRaw": "1,1,1",
       "required": false,
       "variableMode": "UseVarOrInput",
-      "condition": "",
-      "description": ""
+      "isControlField": false
     },
     {
       "key": "lengthUnit",
       "name": "坐标与长度单位",
       "type": "Enum",
+      "description": "",
+      "isAdvanced": false,
+      "validForList": [],
+      "invalidForList": [],
+      "visibleWhen": {
+        "kind": "All",
+        "conditions": [
+          {
+            "kind": "Field",
+            "fieldKey": "operation",
+            "operator": "In",
+            "values": [
+              "common"
+            ]
+          },
+          {
+            "kind": "Any",
+            "conditions": [
+              {
+                "kind": "All",
+                "conditions": [
+                  {
+                    "kind": "Field",
+                    "fieldKey": "commonCategory",
+                    "operator": "In",
+                    "values": [
+                      "view"
+                    ]
+                  },
+                  {
+                    "kind": "Field",
+                    "fieldKey": "viewOperation",
+                    "operator": "In",
+                    "values": [
+                      "view.set_camera"
+                    ]
+                  }
+                ]
+              },
+              {
+                "kind": "All",
+                "conditions": [
+                  {
+                    "kind": "Field",
+                    "fieldKey": "commonCategory",
+                    "operator": "In",
+                    "values": [
+                      "transform"
+                    ]
+                  },
+                  {
+                    "kind": "Field",
+                    "fieldKey": "transformOperation",
+                    "operator": "In",
+                    "values": [
+                      "selection.move",
+                      "selection.rotate",
+                      "selection.scale"
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      "condition": "(operation 为 \"common\" 且 ((commonCategory 为 \"view\" 且 viewOperation 为 \"view.set_camera\") 或 (commonCategory 为 \"transform\" 且 transformOperation 为 \"selection.move\"、\"selection.rotate\"、\"selection.scale\")))",
       "defaultValue": "mm",
+      "defaultValueRaw": "mm",
       "required": true,
       "variableMode": "Input",
-      "condition": "",
-      "description": ""
+      "isControlField": true
     },
     {
       "key": "commonFilePath",
       "name": "文件路径",
       "type": "Text",
+      "description": "",
+      "isAdvanced": false,
+      "validForList": [],
+      "invalidForList": [],
+      "visibleWhen": {
+        "kind": "All",
+        "conditions": [
+          {
+            "kind": "Field",
+            "fieldKey": "operation",
+            "operator": "In",
+            "values": [
+              "common"
+            ]
+          },
+          {
+            "kind": "Any",
+            "conditions": [
+              {
+                "kind": "All",
+                "conditions": [
+                  {
+                    "kind": "Field",
+                    "fieldKey": "commonCategory",
+                    "operator": "In",
+                    "values": [
+                      "view"
+                    ]
+                  },
+                  {
+                    "kind": "Field",
+                    "fieldKey": "viewOperation",
+                    "operator": "In",
+                    "values": [
+                      "view.write_image"
+                    ]
+                  }
+                ]
+              },
+              {
+                "kind": "All",
+                "conditions": [
+                  {
+                    "kind": "Field",
+                    "fieldKey": "commonCategory",
+                    "operator": "In",
+                    "values": [
+                      "file"
+                    ]
+                  },
+                  {
+                    "kind": "Field",
+                    "fieldKey": "fileOperation",
+                    "operator": "In",
+                    "values": [
+                      "model.save_as",
+                      "model.export"
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      "condition": "(operation 为 \"common\" 且 ((commonCategory 为 \"view\" 且 viewOperation 为 \"view.write_image\") 或 (commonCategory 为 \"file\" 且 fileOperation 为 \"model.save_as\"、\"model.export\")))",
       "defaultValue": "",
+      "defaultValueRaw": "",
       "required": false,
       "variableMode": "UseVarOrInput",
-      "condition": "",
-      "description": ""
+      "isControlField": false
     },
     {
       "key": "imageWidth",
       "name": "图片宽度",
       "type": "Integer",
+      "description": "",
+      "isAdvanced": false,
+      "validForList": [],
+      "invalidForList": [],
+      "visibleWhen": {
+        "kind": "All",
+        "conditions": [
+          {
+            "kind": "Field",
+            "fieldKey": "operation",
+            "operator": "In",
+            "values": [
+              "common"
+            ]
+          },
+          {
+            "kind": "Field",
+            "fieldKey": "commonCategory",
+            "operator": "In",
+            "values": [
+              "view"
+            ]
+          },
+          {
+            "kind": "Field",
+            "fieldKey": "viewOperation",
+            "operator": "In",
+            "values": [
+              "view.write_image"
+            ]
+          }
+        ]
+      },
+      "condition": "(operation 为 \"common\" 且 commonCategory 为 \"view\" 且 viewOperation 为 \"view.write_image\")",
       "defaultValue": "1920",
+      "defaultValueRaw": 1920,
       "required": false,
       "variableMode": "Input",
-      "condition": "",
-      "description": ""
+      "isControlField": false
     },
     {
       "key": "imageHeight",
       "name": "图片高度",
       "type": "Integer",
+      "description": "",
+      "isAdvanced": false,
+      "validForList": [],
+      "invalidForList": [],
+      "visibleWhen": {
+        "kind": "All",
+        "conditions": [
+          {
+            "kind": "Field",
+            "fieldKey": "operation",
+            "operator": "In",
+            "values": [
+              "common"
+            ]
+          },
+          {
+            "kind": "Field",
+            "fieldKey": "commonCategory",
+            "operator": "In",
+            "values": [
+              "view"
+            ]
+          },
+          {
+            "kind": "Field",
+            "fieldKey": "viewOperation",
+            "operator": "In",
+            "values": [
+              "view.write_image"
+            ]
+          }
+        ]
+      },
+      "condition": "(operation 为 \"common\" 且 commonCategory 为 \"view\" 且 viewOperation 为 \"view.write_image\")",
       "defaultValue": "1080",
+      "defaultValueRaw": 1080,
       "required": false,
       "variableMode": "Input",
-      "condition": "",
-      "description": ""
+      "isControlField": false
     },
     {
       "key": "exportOptionsJson",
       "name": "导出选项(JSON object)",
       "type": "Text",
+      "description": "",
+      "isAdvanced": false,
+      "validForList": [],
+      "invalidForList": [],
+      "visibleWhen": {
+        "kind": "All",
+        "conditions": [
+          {
+            "kind": "Field",
+            "fieldKey": "operation",
+            "operator": "In",
+            "values": [
+              "common"
+            ]
+          },
+          {
+            "kind": "Field",
+            "fieldKey": "commonCategory",
+            "operator": "In",
+            "values": [
+              "file"
+            ]
+          },
+          {
+            "kind": "Field",
+            "fieldKey": "fileOperation",
+            "operator": "In",
+            "values": [
+              "model.export"
+            ]
+          }
+        ]
+      },
+      "condition": "(operation 为 \"common\" 且 commonCategory 为 \"file\" 且 fileOperation 为 \"model.export\")",
       "defaultValue": "{}",
+      "defaultValueRaw": "{}",
       "required": false,
       "variableMode": "UseVarOrInput",
-      "condition": "",
-      "description": ""
+      "isControlField": false
     },
     {
       "key": "pluginMenuText",
       "name": "插件命令菜单文字",
       "type": "Text",
+      "description": "",
+      "isAdvanced": false,
+      "validForList": [
+        "extension_command.invoke"
+      ],
+      "invalidForList": [],
+      "condition": "仅：extension_command.invoke",
       "defaultValue": "",
+      "defaultValueRaw": "",
       "required": true,
       "variableMode": "UseVarOrInput",
-      "condition": "仅：extension_command.invoke",
-      "description": ""
+      "isControlField": false
     },
     {
       "key": "pluginExtensionName",
       "name": "所属扩展名称",
       "type": "Text",
+      "description": "",
+      "isAdvanced": false,
+      "validForList": [
+        "extension_command.invoke"
+      ],
+      "invalidForList": [],
+      "condition": "仅：extension_command.invoke",
       "defaultValue": "",
+      "defaultValueRaw": "",
       "required": false,
       "variableMode": "UseVarOrInput",
-      "condition": "仅：extension_command.invoke",
-      "description": ""
+      "isControlField": false
     },
     {
       "key": "pluginTooltip",
       "name": "命令提示文字",
       "type": "Text",
+      "description": "",
+      "isAdvanced": false,
+      "validForList": [
+        "extension_command.invoke"
+      ],
+      "invalidForList": [],
+      "condition": "仅：extension_command.invoke",
       "defaultValue": "",
+      "defaultValueRaw": "",
       "required": false,
       "variableMode": "UseVarOrInput",
-      "condition": "仅：extension_command.invoke",
-      "description": ""
+      "isControlField": false
     },
     {
       "key": "pluginLocatorJson",
       "name": "高级定位信息(JSON object)",
       "type": "Text",
+      "description": "命令工具生成动作时自动保留状态栏文字和图标等定位信息；手工配置通常留空即可。",
+      "isAdvanced": false,
+      "validForList": [
+        "extension_command.invoke"
+      ],
+      "invalidForList": [],
+      "condition": "仅：extension_command.invoke",
       "defaultValue": "{}",
+      "defaultValueRaw": "{}",
       "required": false,
       "variableMode": "UseVarOrInput",
-      "condition": "仅：extension_command.invoke",
-      "description": "命令工具生成动作时自动保留状态栏文字和图标等定位信息；手工配置通常留空即可。"
+      "isControlField": false
     },
     {
       "key": "rubyCode",
       "name": "Ruby 代码",
       "type": "Text",
+      "description": "直接在目标 SketchUp 的 Ruby 上下文中执行。可使用 model、selection、view 和 args。",
+      "isAdvanced": false,
+      "validForList": [
+        "script.evaluate"
+      ],
+      "invalidForList": [],
+      "condition": "仅：script.evaluate",
       "defaultValue": "",
+      "defaultValueRaw": "",
       "required": true,
       "variableMode": "UseVarOrInput",
-      "condition": "仅：script.evaluate",
-      "description": "直接在目标 SketchUp 的 Ruby 上下文中执行。可使用 model、selection、view 和 args。"
+      "isControlField": false
     },
     {
       "key": "filePath",
       "name": "Ruby 文件路径",
       "type": "Text",
+      "description": "要运行或加载的 Ruby 文件绝对路径。",
+      "isAdvanced": false,
+      "validForList": [
+        "script.run_file",
+        "script.load_file"
+      ],
+      "invalidForList": [],
+      "condition": "仅：script.run_file, script.load_file",
       "defaultValue": "",
+      "defaultValueRaw": "",
       "required": true,
       "variableMode": "UseVarOrInput",
-      "condition": "仅：script.run_file, script.load_file",
-      "description": "要运行或加载的 Ruby 文件绝对路径。"
+      "isControlField": false
     },
     {
       "key": "action",
       "name": "Action 字符串或数字 ID",
       "type": "Text",
+      "description": "原样传给 Sketchup.send_action，不限制 action 内容。",
+      "isAdvanced": false,
+      "validForList": [
+        "host_action.send"
+      ],
+      "invalidForList": [],
+      "condition": "仅：host_action.send",
       "defaultValue": "",
+      "defaultValueRaw": "",
       "required": true,
       "variableMode": "UseVarOrInput",
-      "condition": "仅：host_action.send",
-      "description": "原样传给 Sketchup.send_action，不限制 action 内容。"
+      "isControlField": false
     },
     {
       "key": "commandName",
       "name": "Bridge 命令名称",
       "type": "Text",
+      "description": "发送任意命令名称，供第三方插件或后续 Bridge handler 使用。",
+      "isAdvanced": false,
+      "validForList": [
+        "command.custom"
+      ],
+      "invalidForList": [],
+      "condition": "仅：command.custom",
       "defaultValue": "",
+      "defaultValueRaw": "",
       "required": true,
       "variableMode": "UseVarOrInput",
-      "condition": "仅：command.custom",
-      "description": "发送任意命令名称，供第三方插件或后续 Bridge handler 使用。"
+      "isControlField": false
     },
     {
       "key": "argumentsJson",
       "name": "参数(JSON object)",
       "type": "Text",
+      "description": "传入 Ruby 脚本或自定义命令的参数。",
+      "isAdvanced": false,
+      "validForList": [
+        "script.evaluate",
+        "script.run_file",
+        "command.custom"
+      ],
+      "invalidForList": [],
+      "condition": "仅：script.evaluate, script.run_file, command.custom",
       "defaultValue": "{}",
+      "defaultValueRaw": "{}",
       "required": false,
       "variableMode": "UseVarOrInput",
-      "condition": "仅：script.evaluate, script.run_file, command.custom",
-      "description": "传入 Ruby 脚本或自定义命令的参数。"
+      "isControlField": false
     },
     {
       "key": "wrapLoad",
       "name": "在匿名模块中加载",
       "type": "Boolean",
+      "description": "对应 Ruby load(path, true) 的 wrap 参数。",
+      "isAdvanced": false,
+      "validForList": [
+        "script.load_file"
+      ],
+      "invalidForList": [],
+      "condition": "仅：script.load_file",
       "defaultValue": "false",
+      "defaultValueRaw": false,
       "required": false,
       "variableMode": "Input",
-      "condition": "仅：script.load_file",
-      "description": "对应 Ruby load(path, true) 的 wrap 参数。"
+      "isControlField": false
     },
     {
       "key": "waitMs",
       "name": "最长等待时间(ms)",
       "type": "Number",
+      "description": "等待目标 SketchUp 实例返回结果的最长时间。",
+      "isAdvanced": true,
+      "validForList": [],
+      "invalidForList": [],
+      "condition": "",
       "defaultValue": "5000",
+      "defaultValueRaw": 5000,
       "required": true,
       "variableMode": "Input",
-      "condition": "",
-      "description": "等待目标 SketchUp 实例返回结果的最长时间。"
+      "isControlField": false
     },
     {
       "key": "stopIfFail",
       "name": "失败后停止",
       "type": "Boolean",
+      "description": "失败后是否停止动作",
+      "isAdvanced": false,
+      "validForList": [],
+      "invalidForList": [],
+      "condition": "",
       "defaultValue": "true",
+      "defaultValueRaw": true,
       "required": false,
       "variableMode": "Input",
-      "condition": "",
-      "description": "失败后是否停止动作"
+      "isControlField": false
     }
   ],
   "outputs": [
@@ -568,29 +2126,41 @@
       "key": "isSuccess",
       "name": "是否成功",
       "type": "Boolean",
-      "condition": "",
-      "description": "操作是否成功"
+      "description": "操作是否成功",
+      "isAdvanced": false,
+      "validForList": [],
+      "invalidForList": [],
+      "condition": ""
     },
     {
       "key": "output",
       "name": "命令结果",
       "type": "Text",
-      "condition": "",
-      "description": "SketchUp 返回的 JSON 结果。"
+      "description": "SketchUp 返回的 JSON 结果。",
+      "isAdvanced": false,
+      "validForList": [],
+      "invalidForList": [],
+      "condition": ""
     },
     {
       "key": "count",
       "name": "数量",
       "type": "Integer",
-      "condition": "",
-      "description": ""
+      "description": "",
+      "isAdvanced": false,
+      "validForList": [],
+      "invalidForList": [],
+      "condition": ""
     },
     {
       "key": "persistentIdsOutput",
       "name": "实体ID列表",
       "type": "List",
-      "condition": "",
-      "description": ""
+      "description": "",
+      "isAdvanced": false,
+      "validForList": [],
+      "invalidForList": [],
+      "condition": ""
     }
   ],
   "selections": {
@@ -1025,5 +2595,5 @@
       ]
     }
   },
-  "sourceFileName": "sys_sketchupcontrol_SketchUp控制.md"
+  "sourceFileName": "catalog.json"
 }

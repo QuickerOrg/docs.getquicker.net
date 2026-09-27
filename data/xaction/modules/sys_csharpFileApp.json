@@ -16,81 +16,121 @@
       "key": "code",
       "name": "C#代码",
       "type": "Text",
-      "defaultValue": "#:property PublishAot=false\n#:property TargetFramework=net10.0-windows\n#:property UseWpf=true\n\nusing System;\nusing System.Text;\nusing System.Windows;\n\nConsole.OutputEncoding = new UTF8Encoding(false);\n\nMessageBox.Show(args.Length > 0 ? args[0] : \"Hello from Quicker!\");",
+      "description": "完整的C# file-based app源码。可使用#:property、#:package、#:project等指令。",
+      "isAdvanced": false,
+      "validForList": [],
+      "invalidForList": [],
+      "condition": "",
+      "defaultValue": "#:property PublishAot=false\r\n#:property TargetFramework=net10.0-windows\r\n#:property UseWpf=true\r\n\r\nusing System;\r\nusing System.Text;\r\nusing System.Windows;\r\n\r\nConsole.OutputEncoding = new UTF8Encoding(false);\r\n\r\nMessageBox.Show(args.Length > 0 ? args[0] : \"Hello from Quicker!\");",
+      "defaultValueRaw": "#:property PublishAot=false\r\n#:property TargetFramework=net10.0-windows\r\n#:property UseWpf=true\r\n\r\nusing System;\r\nusing System.Text;\r\nusing System.Windows;\r\n\r\nConsole.OutputEncoding = new UTF8Encoding(false);\r\n\r\nMessageBox.Show(args.Length > 0 ? args[0] : \"Hello from Quicker!\");",
       "required": true,
       "variableMode": "UseVarOrInput",
-      "condition": "",
-      "description": "完整的C# file-based app源码。可使用#:property、#:package、#:project等指令。"
+      "isControlField": false
     },
     {
       "key": "reference",
       "name": "引用DLL库",
       "type": "Text",
+      "description": "要引用的托管DLL文件，每行一个，必须使用绝对路径。相关依赖DLL也需要一并添加。",
+      "isAdvanced": true,
+      "validForList": [],
+      "invalidForList": [],
+      "condition": "",
       "defaultValue": "",
+      "defaultValueRaw": "",
       "required": false,
       "variableMode": "Input",
-      "condition": "",
-      "description": "要引用的托管DLL文件，每行一个，必须使用绝对路径。相关依赖DLL也需要一并添加。"
+      "isControlField": false
     },
     {
       "key": "arguments",
       "name": "命令行参数",
       "type": "Any",
+      "description": "可直接填写常规命令行参数，如 --name \"hello world\"；也可选择列表变量，列表中的每一项将直接作为一个独立参数。其他类型会转换为文本并作为单个参数。C#代码通过args读取。",
+      "isAdvanced": false,
+      "validForList": [],
+      "invalidForList": [],
+      "condition": "",
       "defaultValue": "",
+      "defaultValueRaw": "",
       "required": false,
       "variableMode": "UseVarOrInput",
-      "condition": "",
-      "description": "可直接填写常规命令行参数，如 --name \"hello world\"；也可选择列表变量，列表中的每一项将直接作为一个独立参数。其他类型会转换为文本并作为单个参数。C#代码通过args读取。"
+      "isControlField": false
     },
     {
       "key": "workingDirectory",
       "name": "工作目录",
       "type": "Text",
+      "description": "应用运行时的工作目录。留空时使用C#源码所在的隔离临时目录。",
+      "isAdvanced": false,
+      "validForList": [],
+      "invalidForList": [],
+      "condition": "",
       "defaultValue": "",
+      "defaultValueRaw": "",
       "required": false,
       "variableMode": "UseVarOrInput",
-      "condition": "",
-      "description": "应用运行时的工作目录。留空时使用C#源码所在的隔离临时目录。"
+      "isControlField": false
     },
     {
       "key": "dotnetPath",
       "name": "dotnet路径",
       "type": "Text",
+      "description": "dotnet可执行文件路径。留空时从PATH查找dotnet。",
+      "isAdvanced": true,
+      "validForList": [],
+      "invalidForList": [],
+      "condition": "",
       "defaultValue": "",
+      "defaultValueRaw": "",
       "required": false,
       "variableMode": "UseVarOrInput",
-      "condition": "",
-      "description": "dotnet可执行文件路径。留空时从PATH查找dotnet。"
+      "isControlField": false
     },
     {
       "key": "outputEncoding",
       "name": "输出编码",
       "type": "Enum",
+      "description": "标准输出和错误输出的文本编码。自动模式优先识别BOM和UTF-8，无效UTF-8时回退到系统控制台编码；遇到可被误判的旧编码内容时可显式选择。",
+      "isAdvanced": true,
+      "validForList": [],
+      "invalidForList": [],
+      "condition": "",
       "defaultValue": "auto",
+      "defaultValueRaw": "auto",
       "required": false,
       "variableMode": "Input",
-      "condition": "",
-      "description": "标准输出和错误输出的文本编码。自动模式优先识别BOM和UTF-8，无效UTF-8时回退到系统控制台编码；遇到可被误判的旧编码内容时可显式选择。"
+      "isControlField": false
     },
     {
       "key": "executionPermission",
       "name": "运行权限",
       "type": "Enum",
+      "description": "控制SDK构建、SDK回退和最终应用的进程权限。默认使用普通中完整性、非UIAccess权限；Quicker已提权时，以当前桌面的交互登录用户身份运行。需要跨权限界面自动化时可选择继承Quicker权限。",
+      "isAdvanced": true,
+      "validForList": [],
+      "invalidForList": [],
+      "condition": "",
       "defaultValue": "normal",
+      "defaultValueRaw": "normal",
       "required": false,
       "variableMode": "Input",
-      "condition": "",
-      "description": "控制SDK构建、SDK回退和最终应用的进程权限。默认使用普通中完整性、非UIAccess权限；Quicker已提权时，以当前桌面的交互登录用户身份运行。需要跨权限界面自动化时可选择继承Quicker权限。"
+      "isControlField": false
     },
     {
       "key": "stopIfFail",
       "name": "失败后停止",
       "type": "Boolean",
+      "description": "失败后是否停止动作",
+      "isAdvanced": false,
+      "validForList": [],
+      "invalidForList": [],
+      "condition": "",
       "defaultValue": "true",
+      "defaultValueRaw": true,
       "required": false,
       "variableMode": "Input",
-      "condition": "",
-      "description": "失败后是否停止动作"
+      "isControlField": false
     }
   ],
   "outputs": [
@@ -98,43 +138,61 @@
       "key": "isSuccess",
       "name": "是否成功",
       "type": "Boolean",
-      "condition": "",
-      "description": "操作是否成功"
+      "description": "操作是否成功",
+      "isAdvanced": false,
+      "validForList": [],
+      "invalidForList": [],
+      "condition": ""
     },
     {
       "key": "stdout",
       "name": "标准输出",
       "type": "Text",
-      "condition": "",
-      "description": "应用写入stdout的内容；构建失败时为空。"
+      "description": "应用写入stdout的内容；构建失败时为空。",
+      "isAdvanced": false,
+      "validForList": [],
+      "invalidForList": [],
+      "condition": ""
     },
     {
       "key": "stderr",
       "name": "错误输出",
       "type": "Text",
-      "condition": "",
-      "description": "应用写入stderr的内容；构建失败时包含dotnet build的stdout和stderr诊断。"
+      "description": "应用写入stderr的内容；构建失败时包含dotnet build的stdout和stderr诊断。",
+      "isAdvanced": false,
+      "validForList": [],
+      "invalidForList": [],
+      "condition": ""
     },
     {
       "key": "exitCode",
       "name": "退出代码",
       "type": "Integer",
-      "condition": "",
-      "description": "应用进程的退出代码；构建失败时为dotnet build进程的退出代码。"
+      "description": "应用进程的退出代码；构建失败时为dotnet build进程的退出代码。",
+      "isAdvanced": false,
+      "validForList": [],
+      "invalidForList": [],
+      "condition": ""
     },
     {
       "key": "sourceFile",
       "name": "源码文件路径",
       "type": "Text",
-      "condition": "",
-      "description": "实际运行的临时C#源码文件路径，可用于诊断。"
+      "description": "实际运行的临时C#源码文件路径，可用于诊断。",
+      "isAdvanced": false,
+      "validForList": [],
+      "invalidForList": [],
+      "condition": ""
     },
     {
       "key": "errMessage",
       "name": "错误消息",
       "type": "Text",
-      "condition": "",
-      "description": "步骤执行出错时的消息"
+      "description": "步骤执行出错时的消息",
+      "isAdvanced": false,
+      "validForList": [],
+      "invalidForList": [],
+      "condition": ""
     }
   ],
   "selections": {
@@ -174,5 +232,5 @@
       ]
     }
   },
-  "sourceFileName": "sys_csharpFileApp_运行C#文件应用.md"
+  "sourceFileName": "catalog.json"
 }

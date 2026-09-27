@@ -16,61 +16,90 @@
       "key": "source",
       "name": "TSX 源码",
       "type": "Text",
-      "defaultValue": "import Quicker from \"Quicker\";\nimport { Button, Field, Panel, Stack, TextField, useQuickerStorage } from \"QuickerUi\";\n\nexport default function App() {\n  const input = Quicker.getInput() ?? {};\n  const [name, setName] = useQuickerStorage(\"name\", input.name ?? \"\");\n\n  return (\n    <main className=\"qk-ui-page\">\n      <Panel\n        title={input.title ?? \"React 界面\"}\n        footer={\n          <>\n            <Button onClick={() => Quicker.cancel()}>取消</Button>\n            <Button\n              variant=\"primary\"\n              disabled={!String(name).trim()}\n              onClick={() => Quicker.close({ name: String(name).trim() })}\n            >\n              确定\n            </Button>\n          </>\n        }\n      >\n        <Stack>\n          <Field label=\"名称\">\n            <TextField value={name} wide onChange={(e) => setName(e.target.value)} />\n          </Field>\n        </Stack>\n      </Panel>\n    </main>\n  );\n}",
+      "description": "单文件 TSX，必须 export default 一个 React 组件。可从 react / QuickerUi / Quicker 导入。",
+      "isAdvanced": false,
+      "validForList": [],
+      "invalidForList": [],
+      "condition": "",
+      "defaultValue": "import Quicker from \"Quicker\";\r\nimport { Button, Field, Panel, Stack, TextField, useQuickerStorage } from \"QuickerUi\";\r\n\r\nexport default function App() {\r\n  const input = Quicker.getInput() ?? {};\r\n  const [name, setName] = useQuickerStorage(\"name\", input.name ?? \"\");\r\n\r\n  return (\r\n    <main className=\"qk-ui-page\">\r\n      <Panel\r\n        title={input.title ?? \"React 界面\"}\r\n        footer={\r\n          <>\r\n            <Button onClick={() => Quicker.cancel()}>取消</Button>\r\n            <Button\r\n              variant=\"primary\"\r\n              disabled={!String(name).trim()}\r\n              onClick={() => Quicker.close({ name: String(name).trim() })}\r\n            >\r\n              确定\r\n            </Button>\r\n          </>\r\n        }\r\n      >\r\n        <Stack>\r\n          <Field label=\"名称\">\r\n            <TextField value={name} wide onChange={(e) => setName(e.target.value)} />\r\n          </Field>\r\n        </Stack>\r\n      </Panel>\r\n    </main>\r\n  );\r\n}",
+      "defaultValueRaw": "import Quicker from \"Quicker\";\r\nimport { Button, Field, Panel, Stack, TextField, useQuickerStorage } from \"QuickerUi\";\r\n\r\nexport default function App() {\r\n  const input = Quicker.getInput() ?? {};\r\n  const [name, setName] = useQuickerStorage(\"name\", input.name ?? \"\");\r\n\r\n  return (\r\n    <main className=\"qk-ui-page\">\r\n      <Panel\r\n        title={input.title ?? \"React 界面\"}\r\n        footer={\r\n          <>\r\n            <Button onClick={() => Quicker.cancel()}>取消</Button>\r\n            <Button\r\n              variant=\"primary\"\r\n              disabled={!String(name).trim()}\r\n              onClick={() => Quicker.close({ name: String(name).trim() })}\r\n            >\r\n              确定\r\n            </Button>\r\n          </>\r\n        }\r\n      >\r\n        <Stack>\r\n          <Field label=\"名称\">\r\n            <TextField value={name} wide onChange={(e) => setName(e.target.value)} />\r\n          </Field>\r\n        </Stack>\r\n      </Panel>\r\n    </main>\r\n  );\r\n}",
       "required": true,
       "variableMode": "UseVarOrInput",
-      "condition": "",
-      "description": "单文件 TSX，必须 export default 一个 React 组件。可从 react / QuickerUi / Quicker 导入。"
+      "isControlField": false
     },
     {
       "key": "input",
       "name": "输入数据",
       "type": "Any",
+      "description": "传给界面 Quicker.getInput() 的数据，可以是词典、JSON 文本或其它值。",
+      "isAdvanced": false,
+      "validForList": [],
+      "invalidForList": [],
+      "condition": "",
       "defaultValue": "",
       "required": false,
       "variableMode": "UseVarOrInput",
-      "condition": "",
-      "description": "传给界面 Quicker.getInput() 的数据，可以是词典、JSON 文本或其它值。"
+      "isControlField": false
     },
     {
       "key": "title",
       "name": "窗口标题",
       "type": "Text",
+      "description": "React 界面窗口标题。",
+      "isAdvanced": false,
+      "validForList": [],
+      "invalidForList": [],
+      "condition": "",
       "defaultValue": "React 界面",
+      "defaultValueRaw": "React 界面",
       "required": false,
       "variableMode": "UseVarOrInput",
-      "condition": "",
-      "description": "React 界面窗口标题。"
+      "isControlField": false
     },
     {
       "key": "width",
       "name": "窗口宽度",
       "type": "Number",
+      "description": "窗口最大宽度（像素）。内容更小时会按卡片收缩。",
+      "isAdvanced": false,
+      "validForList": [],
+      "invalidForList": [],
+      "condition": "",
       "defaultValue": "440",
+      "defaultValueRaw": 440,
       "required": false,
       "variableMode": "UseVarOrInput",
-      "condition": "",
-      "description": "窗口最大宽度（像素）。内容更小时会按卡片收缩。"
+      "isControlField": false
     },
     {
       "key": "height",
       "name": "窗口高度",
       "type": "Number",
+      "description": "窗口最大高度（像素）。内容更小时会按卡片收缩。",
+      "isAdvanced": false,
+      "validForList": [],
+      "invalidForList": [],
+      "condition": "",
       "defaultValue": "300",
+      "defaultValueRaw": 300,
       "required": false,
       "variableMode": "UseVarOrInput",
-      "condition": "",
-      "description": "窗口最大高度（像素）。内容更小时会按卡片收缩。"
+      "isControlField": false
     },
     {
       "key": "stopIfFail",
       "name": "取消后停止",
       "type": "Boolean",
+      "description": "用户取消或关闭窗口后是否停止动作",
+      "isAdvanced": false,
+      "validForList": [],
+      "invalidForList": [],
+      "condition": "",
       "defaultValue": "true",
+      "defaultValueRaw": true,
       "required": false,
       "variableMode": "Input",
-      "condition": "",
-      "description": "用户取消或关闭窗口后是否停止动作"
+      "isControlField": false
     }
   ],
   "outputs": [
@@ -78,24 +107,33 @@
       "key": "isSuccess",
       "name": "是否成功",
       "type": "Boolean",
-      "condition": "",
-      "description": "操作是否成功"
+      "description": "操作是否成功",
+      "isAdvanced": false,
+      "validForList": [],
+      "invalidForList": [],
+      "condition": ""
     },
     {
       "key": "result",
       "name": "返回结果",
       "type": "Any",
-      "condition": "",
-      "description": "界面调用 Quicker.close(result) 时返回的数据。"
+      "description": "界面调用 Quicker.close(result) 时返回的数据。",
+      "isAdvanced": false,
+      "validForList": [],
+      "invalidForList": [],
+      "condition": ""
     },
     {
       "key": "cancelled",
       "name": "已取消",
       "type": "Boolean",
-      "condition": "",
-      "description": "用户取消、关闭窗口或动作中止时为真。"
+      "description": "用户取消、关闭窗口或动作中止时为真。",
+      "isAdvanced": false,
+      "validForList": [],
+      "invalidForList": [],
+      "condition": ""
     }
   ],
   "selections": {},
-  "sourceFileName": "sys_reactui_React 界面.md"
+  "sourceFileName": "catalog.json"
 }

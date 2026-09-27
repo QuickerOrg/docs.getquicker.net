@@ -16,121 +16,192 @@
       "key": "script",
       "name": "脚本内容",
       "type": "Text",
+      "description": "要运行的脚本内容",
+      "isAdvanced": false,
+      "validForList": [],
+      "invalidForList": [],
+      "condition": "",
       "defaultValue": "",
+      "defaultValueRaw": "",
       "required": true,
       "variableMode": "UseVarOrInput",
-      "condition": "",
-      "description": "要运行的脚本内容"
+      "isControlField": false
     },
     {
       "key": "type",
       "name": "脚本类型",
       "type": "Enum",
+      "description": "要执行的脚本类型",
+      "isAdvanced": false,
+      "validForList": [],
+      "invalidForList": [],
+      "condition": "",
       "defaultValue": "CMD_K",
+      "defaultValueRaw": "CMD_K",
       "required": true,
       "variableMode": "Input",
-      "condition": "",
-      "description": "要执行的脚本类型"
+      "isControlField": true
     },
     {
       "key": "ext",
       "name": "扩展名",
       "type": "Text",
+      "description": "自定义脚本文件的扩展名(如: .ps1 )",
+      "isAdvanced": false,
+      "validForList": [
+        "CUSTOM"
+      ],
+      "invalidForList": [],
+      "condition": "仅：CUSTOM",
       "defaultValue": "",
+      "defaultValueRaw": "",
       "required": true,
       "variableMode": "Input",
-      "condition": "仅：CUSTOM",
-      "description": "自定义脚本文件的扩展名(如: .ps1 )"
+      "isControlField": false
     },
     {
       "key": "encoding",
       "name": "文件编码",
       "type": "Enum",
+      "description": "写入文件的编码格式",
+      "isAdvanced": false,
+      "validForList": [],
+      "invalidForList": [],
+      "condition": "",
       "defaultValue": "default",
+      "defaultValueRaw": "default",
       "required": true,
       "variableMode": "Input",
-      "condition": "",
-      "description": "写入文件的编码格式"
+      "isControlField": false
     },
     {
       "key": "runner",
       "name": "使用指定软件",
       "type": "Text",
+      "description": "使用指定的程序运行脚本。如果双击脚本可以直接运行，则不需要指定。",
+      "isAdvanced": false,
+      "validForList": [
+        "CUSTOM"
+      ],
+      "invalidForList": [],
+      "condition": "仅：CUSTOM",
       "defaultValue": "",
+      "defaultValueRaw": "",
       "required": true,
       "variableMode": "Input",
-      "condition": "仅：CUSTOM",
-      "description": "使用指定的程序运行脚本。如果双击脚本可以直接运行，则不需要指定。"
+      "isControlField": false
     },
     {
       "key": "argTemplate",
       "name": "命令行参数模板",
       "type": "Text",
+      "description": "使用指定软件时指定命令行参数的格式。%FILE% 代替脚本文件的路径。",
+      "isAdvanced": false,
+      "validForList": [
+        "CUSTOM"
+      ],
+      "invalidForList": [],
+      "condition": "仅：CUSTOM",
       "defaultValue": "%FILE%",
+      "defaultValueRaw": "%FILE%",
       "required": true,
       "variableMode": "Input",
-      "condition": "仅：CUSTOM",
-      "description": "使用指定软件时指定命令行参数的格式。%FILE% 代替脚本文件的路径。"
+      "isControlField": false
     },
     {
       "key": "workingDir",
       "name": "工作目录",
       "type": "Text",
+      "description": "不填写（自动为资源管理器的当前目录或桌面目录）或具体的工作目录路径。",
+      "isAdvanced": false,
+      "validForList": [],
+      "invalidForList": [],
+      "condition": "",
       "defaultValue": "",
+      "defaultValueRaw": "",
       "required": false,
       "variableMode": "UseVarOrInput",
-      "condition": "",
-      "description": "不填写（自动为资源管理器的当前目录或桌面目录）或具体的工作目录路径。"
+      "isControlField": false
     },
     {
       "key": "scriptParams",
       "name": "脚本参数",
       "type": "Text",
+      "description": "为脚本传递的参数。将会被追加到运行脚本的命令行中。",
+      "isAdvanced": false,
+      "validForList": [
+        "BAT",
+        "CMD_F",
+        "PS",
+        "AHK"
+      ],
+      "invalidForList": [],
+      "condition": "仅：BAT, CMD_F, PS, AHK",
       "defaultValue": "",
+      "defaultValueRaw": "",
       "required": false,
       "variableMode": "UseVarOrInput",
-      "condition": "仅：BAT, CMD_F, PS, AHK",
-      "description": "为脚本传递的参数。将会被追加到运行脚本的命令行中。"
+      "isControlField": false
     },
     {
       "key": "runAsAdmin",
       "name": "以管理员身份运行",
       "type": "Boolean",
+      "description": "是否以管理员身份运行脚本。隐藏窗口或输出控制台内容时，不支持以管理员身份运行。",
+      "isAdvanced": false,
+      "validForList": [],
+      "invalidForList": [],
+      "condition": "",
       "defaultValue": "false",
+      "defaultValueRaw": false,
       "required": false,
       "variableMode": "Input",
-      "condition": "",
-      "description": "是否以管理员身份运行脚本。隐藏窗口或输出控制台内容时，不支持以管理员身份运行。"
+      "isControlField": false
     },
     {
       "key": "waitToExit",
       "name": "等待进程结束",
       "type": "Boolean",
+      "description": "等待此进程结束后再进行后续操作",
+      "isAdvanced": false,
+      "validForList": [],
+      "invalidForList": [],
+      "condition": "",
       "defaultValue": "false",
+      "defaultValueRaw": false,
       "required": false,
       "variableMode": "Input",
-      "condition": "",
-      "description": "等待此进程结束后再进行后续操作"
+      "isControlField": false
     },
     {
       "key": "outputEncoding",
       "name": "控制台输出编码",
       "type": "Enum",
+      "description": "控制台输出编码。如果输出遇到乱码，尝试修改此选项。",
+      "isAdvanced": false,
+      "validForList": [],
+      "invalidForList": [],
+      "condition": "",
       "defaultValue": "oem",
+      "defaultValueRaw": "oem",
       "required": true,
       "variableMode": "Input",
-      "condition": "",
-      "description": "控制台输出编码。如果输出遇到乱码，尝试修改此选项。"
+      "isControlField": false
     },
     {
       "key": "stopIfFail",
       "name": "失败后停止",
       "type": "Boolean",
+      "description": "失败后是否停止动作",
+      "isAdvanced": false,
+      "validForList": [],
+      "invalidForList": [],
+      "condition": "",
       "defaultValue": "true",
+      "defaultValueRaw": true,
       "required": false,
       "variableMode": "Input",
-      "condition": "",
-      "description": "失败后是否停止动作"
+      "isControlField": false
     }
   ],
   "outputs": [
@@ -138,22 +209,31 @@
       "key": "stdout",
       "name": "控制台输出",
       "type": "Text",
-      "condition": "",
-      "description": "捕获控制台输出(输出stdout，为空时输出stderr)，会自动等待进程结束。输出此内容时，命令行窗口将不显示。"
+      "description": "捕获控制台输出(输出stdout，为空时输出stderr)，会自动等待进程结束。输出此内容时，命令行窗口将不显示。",
+      "isAdvanced": false,
+      "validForList": [],
+      "invalidForList": [],
+      "condition": ""
     },
     {
       "key": "stdoutOnly",
       "name": "标准输出",
       "type": "Text",
-      "condition": "",
-      "description": "捕获标准输出(stdout)，会自动等待进程结束。输出此内容时，命令行窗口将不显示。"
+      "description": "捕获标准输出(stdout)，会自动等待进程结束。输出此内容时，命令行窗口将不显示。",
+      "isAdvanced": false,
+      "validForList": [],
+      "invalidForList": [],
+      "condition": ""
     },
     {
       "key": "stderr",
       "name": "错误输出",
       "type": "Text",
-      "condition": "",
-      "description": "捕获错误输出(stderr)，会自动等待进程结束。输出此内容时，命令行窗口将不显示。"
+      "description": "捕获错误输出(stderr)，会自动等待进程结束。输出此内容时，命令行窗口将不显示。",
+      "isAdvanced": false,
+      "validForList": [],
+      "invalidForList": [],
+      "condition": ""
     }
   ],
   "selections": {
@@ -263,5 +343,5 @@
       ]
     }
   },
-  "sourceFileName": "sys_runScript_运行脚本.md"
+  "sourceFileName": "catalog.json"
 }

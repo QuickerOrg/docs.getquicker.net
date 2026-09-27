@@ -16,91 +16,146 @@
       "key": "operation",
       "name": "模式",
       "type": "Enum",
+      "description": "",
+      "isAdvanced": false,
+      "validForList": [],
+      "invalidForList": [],
+      "condition": "",
       "defaultValue": "default",
+      "defaultValueRaw": "default",
       "required": true,
       "variableMode": "Input",
-      "condition": "",
-      "description": ""
+      "isControlField": true
     },
     {
       "key": "message",
       "name": "消息内容",
       "type": "Text",
+      "description": "弹窗显示的消息内容。\"自定义\"模式时，也支持\"MD:Markdown内容\"。",
+      "isAdvanced": false,
+      "validForList": [],
+      "invalidForList": [],
+      "condition": "",
       "defaultValue": "Hello.",
+      "defaultValueRaw": "Hello.",
       "required": true,
       "variableMode": "UseVarOrInput",
-      "condition": "",
-      "description": "弹窗显示的消息内容。\"自定义\"模式时，也支持\"MD:Markdown内容\"。"
+      "isControlField": false
     },
     {
       "key": "title",
       "name": "标题",
       "type": "Text",
+      "description": "消息窗口标题。留空时自动使用动作名称。",
+      "isAdvanced": false,
+      "validForList": [],
+      "invalidForList": [],
+      "condition": "",
       "defaultValue": "Quicker",
+      "defaultValueRaw": "Quicker",
       "required": true,
       "variableMode": "Input",
-      "condition": "",
-      "description": "消息窗口标题。留空时自动使用动作名称。"
+      "isControlField": false
     },
     {
       "key": "icon",
       "name": "图标",
       "type": "Enum",
+      "description": "消息窗口图标",
+      "isAdvanced": false,
+      "validForList": [
+        "default"
+      ],
+      "invalidForList": [],
+      "condition": "仅：default",
       "defaultValue": "Information",
+      "defaultValueRaw": "Information",
       "required": true,
       "variableMode": "Input",
-      "condition": "仅：default",
-      "description": "消息窗口图标"
+      "isControlField": false
     },
     {
       "key": "customIcon",
       "name": "图标",
       "type": "Text",
+      "description": "消息窗口图标。",
+      "isAdvanced": false,
+      "validForList": [
+        "custom"
+      ],
+      "invalidForList": [],
+      "condition": "仅：custom",
       "defaultValue": "Information",
+      "defaultValueRaw": "Information",
       "required": true,
       "variableMode": "UseVarOrInput",
-      "condition": "仅：custom",
-      "description": "消息窗口图标。"
+      "isControlField": false
     },
     {
       "key": "buttons",
       "name": "按钮",
       "type": "Enum",
+      "description": "消息窗口图标",
+      "isAdvanced": false,
+      "validForList": [
+        "default"
+      ],
+      "invalidForList": [],
+      "condition": "仅：default",
       "defaultValue": "OK",
+      "defaultValueRaw": "OK",
       "required": true,
       "variableMode": "Input",
-      "condition": "仅：default",
-      "description": "消息窗口图标"
+      "isControlField": false
     },
     {
       "key": "customButtons",
       "name": "按钮",
       "type": "Text",
-      "defaultValue": "[fa:Regular_Check:#4caf50]是(_Y)|Yes\n[fa:Regular_Times:#dc3545]否(_N)|No\n[fa:Light_Undo:#444444]取消(_C)|Cancel",
+      "description": "每行定义一个按钮，格式为 \"文本\" 或 \"[图标]显示文本(提示内容)|值\"。",
+      "isAdvanced": false,
+      "validForList": [
+        "custom"
+      ],
+      "invalidForList": [],
+      "condition": "仅：custom",
+      "defaultValue": "[fa:Regular_Check:#4caf50]是(_Y)|Yes\r\n[fa:Regular_Times:#dc3545]否(_N)|No\r\n[fa:Light_Undo:#444444]取消(_C)|Cancel",
+      "defaultValueRaw": "[fa:Regular_Check:#4caf50]是(_Y)|Yes\r\n[fa:Regular_Times:#dc3545]否(_N)|No\r\n[fa:Light_Undo:#444444]取消(_C)|Cancel",
       "required": true,
       "variableMode": "Input",
-      "condition": "仅：custom",
-      "description": "每行定义一个按钮，格式为 \"文本\" 或 \"[图标]显示文本(提示内容)|值\"。"
+      "isControlField": false
     },
     {
       "key": "defaultButton",
       "name": "默认按钮",
       "type": "Text",
+      "description": "指定默认按钮的值。默认按钮以高亮颜色显示，可直接回车选择。",
+      "isAdvanced": false,
+      "validForList": [
+        "custom"
+      ],
+      "invalidForList": [],
+      "condition": "仅：custom",
       "defaultValue": "Yes",
+      "defaultValueRaw": "Yes",
       "required": true,
       "variableMode": "Input",
-      "condition": "仅：custom",
-      "description": "指定默认按钮的值。默认按钮以高亮颜色显示，可直接回车选择。"
+      "isControlField": false
     },
     {
       "key": "restoreFocus",
       "name": "恢复活动窗口",
       "type": "Boolean",
+      "description": "关闭弹窗后，是否将焦点还原到之前的活动窗口",
+      "isAdvanced": false,
+      "validForList": [],
+      "invalidForList": [],
+      "condition": "",
       "defaultValue": "true",
+      "defaultValueRaw": true,
       "required": false,
       "variableMode": "Input",
-      "condition": "",
-      "description": "关闭弹窗后，是否将焦点还原到之前的活动窗口"
+      "isControlField": false
     }
   ],
   "outputs": [
@@ -108,15 +163,23 @@
       "key": "result",
       "name": "选择的按钮",
       "type": "Text",
-      "condition": "",
-      "description": "点击的按钮，标准模式下结果可能为OK,Cancel,Yes,No，自定义模式下为按钮的值。"
+      "description": "点击的按钮，标准模式下结果可能为OK,Cancel,Yes,No，自定义模式下为按钮的值。",
+      "isAdvanced": false,
+      "validForList": [],
+      "invalidForList": [],
+      "condition": ""
     },
     {
       "key": "okOrYes",
       "name": "是否确认",
       "type": "Boolean",
-      "condition": "仅：default",
-      "description": "选择的按钮是否为\"确定\"或\"是\""
+      "description": "选择的按钮是否为\"确定\"或\"是\"",
+      "isAdvanced": false,
+      "validForList": [
+        "default"
+      ],
+      "invalidForList": [],
+      "condition": "仅：default"
     }
   ],
   "selections": {
@@ -216,5 +279,5 @@
       ]
     }
   },
-  "sourceFileName": "sys_MsgBox_弹窗提示或确认.md"
+  "sourceFileName": "catalog.json"
 }

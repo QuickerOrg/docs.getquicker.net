@@ -16,41 +16,62 @@
       "key": "subProgram",
       "name": "子程序",
       "type": "Text",
+      "description": "调用哪个子程序",
+      "isAdvanced": false,
+      "validForList": [],
+      "invalidForList": [],
+      "condition": "",
       "defaultValue": "",
+      "defaultValueRaw": "",
       "required": true,
       "variableMode": "UseVarOrInput",
-      "condition": "",
-      "description": "调用哪个子程序"
+      "isControlField": false
     },
     {
       "key": "summary",
       "name": "Summary",
       "type": "Text",
+      "description": "内部使用",
+      "isAdvanced": false,
+      "validForList": [
+        "NO_SHOW"
+      ],
+      "invalidForList": [],
+      "condition": "仅：NO_SHOW",
       "defaultValue": "",
       "required": false,
       "variableMode": "UseVarOrInput",
-      "condition": "仅：NO_SHOW",
-      "description": "内部使用"
+      "isControlField": false
     },
     {
       "key": "skipDebugOutput",
       "name": "跳过调试输出",
       "type": "Boolean",
+      "description": "调试运行动作时，不输出子程序内部调试信息",
+      "isAdvanced": true,
+      "validForList": [],
+      "invalidForList": [],
+      "condition": "",
       "defaultValue": "false",
+      "defaultValueRaw": false,
       "required": false,
       "variableMode": "UseVarOrInput",
-      "condition": "",
-      "description": "调试运行动作时，不输出子程序内部调试信息"
+      "isControlField": false
     },
     {
       "key": "stopIfFail",
       "name": "失败后停止",
       "type": "Boolean",
+      "description": "子程序运行失败后是否停止动作",
+      "isAdvanced": false,
+      "validForList": [],
+      "invalidForList": [],
+      "condition": "",
       "defaultValue": "true",
+      "defaultValueRaw": true,
       "required": false,
       "variableMode": "Input",
-      "condition": "",
-      "description": "子程序运行失败后是否停止动作"
+      "isControlField": false
     }
   ],
   "outputs": [
@@ -58,10 +79,13 @@
       "key": "isSuccess",
       "name": "是否成功",
       "type": "Boolean",
-      "condition": "",
-      "description": "子程序是否运行成功"
+      "description": "子程序是否运行成功",
+      "isAdvanced": false,
+      "validForList": [],
+      "invalidForList": [],
+      "condition": ""
     }
   ],
   "selections": {},
-  "sourceFileName": "sys_subprogram_运行子程序.md"
+  "sourceFileName": "catalog.json"
 }

@@ -16,121 +16,204 @@
       "key": "operation",
       "name": "接口/引擎",
       "type": "Enum",
+      "description": "OCR接口或引擎。离线引擎安装方式请参考模块文档。",
+      "isAdvanced": false,
+      "validForList": [],
+      "invalidForList": [],
+      "condition": "",
       "defaultValue": "QuickerServerOcr",
+      "defaultValueRaw": "QuickerServerOcr",
       "required": true,
       "variableMode": "Input",
-      "condition": "",
-      "description": "OCR接口或引擎。离线引擎安装方式请参考模块文档。"
+      "isControlField": true
     },
     {
       "key": "apiKey",
       "name": "ApiKey",
       "type": "Text",
+      "description": "请填写OCR帐号的ApiKey",
+      "isAdvanced": false,
+      "validForList": [
+        "baidu-basic",
+        "baidu-custom"
+      ],
+      "invalidForList": [],
+      "condition": "仅：baidu-basic, baidu-custom",
       "defaultValue": "",
+      "defaultValueRaw": "",
       "required": true,
       "variableMode": "UseVarOrInput",
-      "condition": "仅：baidu-basic, baidu-custom",
-      "description": "请填写OCR帐号的ApiKey"
+      "isControlField": false
     },
     {
       "key": "secretKey",
       "name": "SecretKey",
       "type": "Text",
+      "description": "请填写OCR帐号的SecretKey",
+      "isAdvanced": false,
+      "validForList": [
+        "baidu-basic",
+        "baidu-custom"
+      ],
+      "invalidForList": [],
+      "condition": "仅：baidu-basic, baidu-custom",
       "defaultValue": "",
+      "defaultValueRaw": "",
       "required": true,
       "variableMode": "UseVarOrInput",
-      "condition": "仅：baidu-basic, baidu-custom",
-      "description": "请填写OCR帐号的SecretKey"
+      "isControlField": false
     },
     {
       "key": "imgVar",
       "name": "图片变量",
       "type": "Image",
+      "description": "从指定变量中加载图片",
+      "isAdvanced": false,
+      "validForList": [],
+      "invalidForList": [],
+      "condition": "",
       "defaultValue": "",
+      "defaultValueRaw": "",
       "required": true,
       "variableMode": "UseVar",
-      "condition": "",
-      "description": "从指定变量中加载图片"
+      "isControlField": false
     },
     {
       "key": "punctuationType",
       "name": "转换标点符号",
       "type": "Enum",
+      "description": "合并文本时，是否转换标点符号",
+      "isAdvanced": false,
+      "validForList": [
+        "QuickerServerOcr",
+        "baidu-basic",
+        "baidu-quicker"
+      ],
+      "invalidForList": [],
+      "condition": "仅：QuickerServerOcr, baidu-basic, baidu-quicker",
       "defaultValue": "no",
+      "defaultValueRaw": "no",
       "required": true,
       "variableMode": "UseVarOrInput",
-      "condition": "仅：QuickerServerOcr, baidu-basic, baidu-quicker",
-      "description": "合并文本时，是否转换标点符号"
+      "isControlField": false
     },
     {
       "key": "mergeChapter",
       "name": "合并段落",
       "type": "Enum",
+      "description": "是否智能合并段落。",
+      "isAdvanced": false,
+      "validForList": [
+        "QuickerServerOcr",
+        "baidu-basic",
+        "baidu-quicker"
+      ],
+      "invalidForList": [],
+      "condition": "仅：QuickerServerOcr, baidu-basic, baidu-quicker",
       "defaultValue": "no",
+      "defaultValueRaw": "no",
       "required": true,
       "variableMode": "UseVarOrInput",
-      "condition": "仅：QuickerServerOcr, baidu-basic, baidu-quicker",
-      "description": "是否智能合并段落。"
+      "isControlField": false
     },
     {
       "key": "interface",
       "name": "接口名称或网址",
       "type": "Text",
+      "description": "接口的完整网址，或 https://aip.baidubce.com/rest/2.0/ocr/v1/ 后面的部分",
+      "isAdvanced": false,
+      "validForList": [
+        "baidu-custom"
+      ],
+      "invalidForList": [],
+      "condition": "仅：baidu-custom",
       "defaultValue": "",
       "required": false,
       "variableMode": "UseVarOrInput",
-      "condition": "仅：baidu-custom",
-      "description": "接口的完整网址，或 https://aip.baidubce.com/rest/2.0/ocr/v1/ 后面的部分"
+      "isControlField": false
     },
     {
       "key": "options",
       "name": "附加参数",
       "type": "Dict",
+      "description": "请参考百度官方/Quicker服务接口说明。每行一个参数，使用option:value的格式。",
+      "isAdvanced": false,
+      "validForList": [
+        "baidu-custom"
+      ],
+      "invalidForList": [],
+      "condition": "仅：baidu-custom",
       "defaultValue": "",
       "required": false,
       "variableMode": "UseVarOrInput",
-      "condition": "仅：baidu-custom",
-      "description": "请参考百度官方/Quicker服务接口说明。每行一个参数，使用option:value的格式。"
+      "isControlField": false
     },
     {
       "key": "lang",
       "name": "语言",
       "type": "Text",
+      "description": "待识别内容的语言。表格识别仅支持中英混合和英文。",
+      "isAdvanced": false,
+      "validForList": [
+        "QuickerServerOcr",
+        "table_quicker"
+      ],
+      "invalidForList": [],
+      "condition": "仅：QuickerServerOcr, table_quicker",
       "defaultValue": "",
+      "defaultValueRaw": "",
       "required": false,
       "variableMode": "UseVarOrInput",
-      "condition": "仅：QuickerServerOcr, table_quicker",
-      "description": "待识别内容的语言。表格识别仅支持中英混合和英文。"
+      "isControlField": false
     },
     {
       "key": "offlineMode",
       "name": "离线模式",
       "type": "Enum",
+      "description": "旧版兼容参数。Quicker OCR 当前固定使用在线服务；旧动作选择“仅使用离线引擎”时转为本地 OCR。新动作请直接选择“本地 OCR”。",
+      "isAdvanced": true,
+      "validForList": [
+        "QuickerServerOcr"
+      ],
+      "invalidForList": [],
+      "condition": "仅：QuickerServerOcr",
       "defaultValue": "Auto",
+      "defaultValueRaw": "Auto",
       "required": false,
       "variableMode": "Input",
-      "condition": "仅：QuickerServerOcr",
-      "description": "旧版兼容参数。Quicker OCR 当前固定使用在线服务；旧动作选择“仅使用离线引擎”时转为本地 OCR。新动作请直接选择“本地 OCR”。"
+      "isControlField": false
     },
     {
       "key": "modelTier",
       "name": "模型",
       "type": "Enum",
+      "description": "标准=small（更准更大，默认）；快速=tiny（更快更小）。切换后如未安装会下载对应模型包。表格识别固定用 small，不出现此参数。",
+      "isAdvanced": false,
+      "validForList": [
+        "LocalOcr"
+      ],
+      "invalidForList": [],
+      "condition": "仅：LocalOcr",
       "defaultValue": "small",
+      "defaultValueRaw": "small",
       "required": false,
       "variableMode": "Input",
-      "condition": "仅：LocalOcr",
-      "description": "标准=small（更准更大，默认）；快速=tiny（更快更小）。切换后如未安装会下载对应模型包。表格识别固定用 small，不出现此参数。"
+      "isControlField": false
     },
     {
       "key": "stopIfFail",
       "name": "失败后停止",
       "type": "Boolean",
+      "description": "失败后是否停止动作",
+      "isAdvanced": false,
+      "validForList": [],
+      "invalidForList": [],
+      "condition": "",
       "defaultValue": "true",
+      "defaultValueRaw": true,
       "required": false,
       "variableMode": "Input",
-      "condition": "",
-      "description": "失败后是否停止动作"
+      "isControlField": false
     }
   ],
   "outputs": [
@@ -138,36 +221,68 @@
       "key": "isSuccess",
       "name": "是否成功",
       "type": "Boolean",
-      "condition": "",
-      "description": "操作是否成功"
+      "description": "操作是否成功",
+      "isAdvanced": false,
+      "validForList": [],
+      "invalidForList": [],
+      "condition": ""
     },
     {
       "key": "textList",
       "name": "行列表",
       "type": "List",
-      "condition": "仅：QuickerServerOcr, LocalOcr, WindowsOcr, baidu-basic, baidu-quicker",
-      "description": "OCR识别结果，列表格式，每行一项。"
+      "description": "OCR识别结果，列表格式，每行一项。",
+      "isAdvanced": false,
+      "validForList": [
+        "QuickerServerOcr",
+        "LocalOcr",
+        "WindowsOcr",
+        "baidu-basic",
+        "baidu-quicker"
+      ],
+      "invalidForList": [],
+      "condition": "仅：QuickerServerOcr, LocalOcr, WindowsOcr, baidu-basic, baidu-quicker"
     },
     {
       "key": "content",
       "name": "合并后结果",
       "type": "Text",
-      "condition": "仅：QuickerServerOcr, LocalOcr, WindowsOcr, baidu-basic, baidu-quicker, table_quicker",
-      "description": "合并在一起的的文本内容"
+      "description": "合并在一起的的文本内容",
+      "isAdvanced": false,
+      "validForList": [
+        "QuickerServerOcr",
+        "LocalOcr",
+        "WindowsOcr",
+        "baidu-basic",
+        "baidu-quicker",
+        "table_quicker"
+      ],
+      "invalidForList": [],
+      "condition": "仅：QuickerServerOcr, LocalOcr, WindowsOcr, baidu-basic, baidu-quicker, table_quicker"
     },
     {
       "key": "rawData",
       "name": "原始结果",
       "type": "Text",
-      "condition": "",
-      "description": "原始结果。表格识别为 ApiResult JSON（Data.Html / Data.Tsv）；其它引擎为接口原始内容。"
+      "description": "原始结果。表格识别为 ApiResult JSON（Data.Html / Data.Tsv）；其它引擎为接口原始内容。",
+      "isAdvanced": false,
+      "validForList": [],
+      "invalidForList": [],
+      "condition": ""
     },
     {
       "key": "rawObject",
       "name": "原始结果JObject对象",
       "type": "Object",
-      "condition": "仅：baidu-basic, baidu-quicker, baidu-custom",
-      "description": "返回结果的JObject对象"
+      "description": "返回结果的JObject对象",
+      "isAdvanced": false,
+      "validForList": [
+        "baidu-basic",
+        "baidu-quicker",
+        "baidu-custom"
+      ],
+      "invalidForList": [],
+      "condition": "仅：baidu-basic, baidu-quicker, baidu-custom"
     }
   ],
   "selections": {
@@ -372,5 +487,5 @@
       ]
     }
   },
-  "sourceFileName": "sys_basic-ocr_基础OCR.md"
+  "sourceFileName": "catalog.json"
 }

@@ -16,41 +16,69 @@
       "key": "type",
       "name": "类型",
       "type": "Enum",
+      "description": "操作类型。按下和抬起需要配对使用。",
+      "isAdvanced": false,
+      "validForList": [],
+      "invalidForList": [],
+      "condition": "",
       "defaultValue": "get_key_state",
+      "defaultValueRaw": "get_key_state",
       "required": true,
       "variableMode": "Input",
-      "condition": "",
-      "description": "操作类型。按下和抬起需要配对使用。"
+      "isControlField": true
     },
     {
       "key": "key",
       "name": "按键",
       "type": "Text",
+      "description": "要操作或检查状态的按键(单个)。获取状态可使用鼠标键；如需发送真实鼠标事件，请使用“鼠标输入”步骤。",
+      "isAdvanced": false,
+      "validForList": [
+        "get_key_state",
+        "key_down",
+        "key_up"
+      ],
+      "invalidForList": [],
+      "condition": "仅：get_key_state, key_down, key_up",
       "defaultValue": "",
+      "defaultValueRaw": "",
       "required": false,
       "variableMode": "UseVarOrInput",
-      "condition": "仅：get_key_state, key_down, key_up",
-      "description": "要操作或检查状态的按键(单个)。获取状态可使用鼠标键；如需发送真实鼠标事件，请使用“鼠标输入”步骤。"
+      "isControlField": false
     },
     {
       "key": "getRealMouseState",
       "name": "获取按键的实际状态（在远程时无法获取）",
       "type": "Boolean",
+      "description": "",
+      "isAdvanced": false,
+      "validForList": [
+        "get_key_state"
+      ],
+      "invalidForList": [],
+      "condition": "仅：get_key_state",
       "defaultValue": "false",
+      "defaultValueRaw": false,
       "required": false,
       "variableMode": "Input",
-      "condition": "仅：get_key_state",
-      "description": ""
+      "isControlField": false
     },
     {
       "key": "keepMs",
       "name": "保持按下时间",
       "type": "Integer",
+      "description": "保持此虚拟键按下的时间（毫秒数），之后会自动抬起。",
+      "isAdvanced": false,
+      "validForList": [
+        "key_keydown_v1"
+      ],
+      "invalidForList": [],
+      "condition": "仅：key_keydown_v1",
       "defaultValue": "1000",
+      "defaultValueRaw": 1000,
       "required": false,
       "variableMode": "UseVarOrInput",
-      "condition": "仅：key_keydown_v1",
-      "description": "保持此虚拟键按下的时间（毫秒数），之后会自动抬起。"
+      "isControlField": false
     }
   ],
   "outputs": [
@@ -58,15 +86,25 @@
       "key": "isDown",
       "name": "是否按下",
       "type": "Boolean",
-      "condition": "仅：get_key_state",
-      "description": "此按键是否为按下状态"
+      "description": "此按键是否为按下状态",
+      "isAdvanced": false,
+      "validForList": [
+        "get_key_state"
+      ],
+      "invalidForList": [],
+      "condition": "仅：get_key_state"
     },
     {
       "key": "isToggled",
       "name": "是否锁定",
       "type": "Boolean",
-      "condition": "仅：get_key_state",
-      "description": "此按键是否为锁定状态，仅对CapsLock、NumLock等按键有效。"
+      "description": "此按键是否为锁定状态，仅对CapsLock、NumLock等按键有效。",
+      "isAdvanced": false,
+      "validForList": [
+        "get_key_state"
+      ],
+      "invalidForList": [],
+      "condition": "仅：get_key_state"
     }
   ],
   "selections": {
@@ -101,5 +139,5 @@
       ]
     }
   },
-  "sourceFileName": "sys_keyoperation_按键操作.md"
+  "sourceFileName": "catalog.json"
 }

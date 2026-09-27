@@ -16,101 +16,161 @@
       "key": "type",
       "name": "截图类型",
       "type": "Enum",
+      "description": "截取图片的屏幕区域类型",
+      "isAdvanced": false,
+      "validForList": [],
+      "invalidForList": [],
+      "condition": "",
       "defaultValue": "select",
+      "defaultValueRaw": "select",
       "required": true,
       "variableMode": "Input",
-      "condition": "",
-      "description": "截取图片的屏幕区域类型"
+      "isControlField": true
     },
     {
       "key": "area",
       "name": "截图区域",
       "type": "Text",
+      "description": "要截取的屏幕坐标位置（像素值），格式为：left,top,right,bottom。默认不包含右边和底边像素。",
+      "isAdvanced": false,
+      "validForList": [
+        "fixed_area"
+      ],
+      "invalidForList": [],
+      "condition": "仅：fixed_area",
       "defaultValue": "",
       "required": false,
       "variableMode": "UseVarOrInput",
-      "condition": "仅：fixed_area",
-      "description": "要截取的屏幕坐标位置（像素值），格式为：left,top,right,bottom。默认不包含右边和底边像素。"
+      "isControlField": false
     },
     {
       "key": "preSelectArea",
       "name": "预选截图区域",
       "type": "Text",
+      "description": "非必要请勿设置。预先选择的截图区域，格式为：left,top,right,bottom。默认不包含右边和底边像素。",
+      "isAdvanced": true,
+      "validForList": [
+        "select"
+      ],
+      "invalidForList": [],
+      "condition": "仅：select",
       "defaultValue": "",
       "required": false,
       "variableMode": "UseVarOrInput",
-      "condition": "仅：select",
-      "description": "非必要请勿设置。预先选择的截图区域，格式为：left,top,right,bottom。默认不包含右边和底边像素。"
+      "isControlField": false
     },
     {
       "key": "includeRightBottomBorder",
       "name": "预选截图区域包含右边和底边像素",
       "type": "Boolean",
+      "description": "包含时，当指定 0,0,2,2 的时候，截图的大小为3*3, 否则为2*2",
+      "isAdvanced": true,
+      "validForList": [
+        "select",
+        "fixed_area"
+      ],
+      "invalidForList": [],
+      "condition": "仅：select, fixed_area",
       "defaultValue": "true",
+      "defaultValueRaw": true,
       "required": false,
       "variableMode": "Input",
-      "condition": "仅：select, fixed_area",
-      "description": "包含时，当指定 0,0,2,2 的时候，截图的大小为3*3, 否则为2*2"
+      "isControlField": false
     },
     {
       "key": "enableUiElementDetect",
       "name": "启用 UI 元素检测",
       "type": "Boolean",
+      "description": "开启后悬停自动吸附控件区域，滚轮切换父/子控件；关闭时仅智能检测窗口范围。",
+      "isAdvanced": false,
+      "validForList": [
+        "select"
+      ],
+      "invalidForList": [],
+      "condition": "仅：select",
       "defaultValue": "false",
+      "defaultValueRaw": false,
       "required": false,
       "variableMode": "Input",
-      "condition": "仅：select",
-      "description": "开启后悬停自动吸附控件区域，滚轮切换父/子控件；关闭时仅智能检测窗口范围。"
+      "isControlField": false
     },
     {
       "key": "windowHandle",
       "name": "窗口句柄",
       "type": "Integer",
+      "description": "要截取的窗口句柄数字。0或留空表示截取前台窗口。",
+      "isAdvanced": false,
+      "validForList": [
+        "window",
+        "windowBackground"
+      ],
+      "invalidForList": [],
+      "condition": "仅：window, windowBackground",
       "defaultValue": "0",
+      "defaultValueRaw": 0,
       "required": false,
       "variableMode": "UseVarOrInput",
-      "condition": "仅：window, windowBackground",
-      "description": "要截取的窗口句柄数字。0或留空表示截取前台窗口。"
+      "isControlField": false
     },
     {
       "key": "delay",
       "name": "截图前延迟时间",
       "type": "Integer",
+      "description": "等待多少毫秒后开始截图",
+      "isAdvanced": false,
+      "validForList": [],
+      "invalidForList": [],
+      "condition": "",
       "defaultValue": "0",
+      "defaultValueRaw": 0,
       "required": true,
       "variableMode": "UseVarOrInput",
-      "condition": "",
-      "description": "等待多少毫秒后开始截图"
+      "isControlField": false
     },
     {
       "key": "toClip",
       "name": "写入剪贴板",
       "type": "Boolean",
+      "description": "截屏图片是否写入到剪贴板中",
+      "isAdvanced": false,
+      "validForList": [],
+      "invalidForList": [],
+      "condition": "",
       "defaultValue": "false",
+      "defaultValueRaw": false,
       "required": false,
       "variableMode": "Input",
-      "condition": "",
-      "description": "截屏图片是否写入到剪贴板中"
+      "isControlField": false
     },
     {
       "key": "addToHistory",
       "name": "加入截图历史",
       "type": "Boolean",
+      "description": "显式启用后将结果保存到本机截图历史；默认关闭，避免后台或循环动作持续留存画面。",
+      "isAdvanced": true,
+      "validForList": [],
+      "invalidForList": [],
+      "condition": "",
       "defaultValue": "false",
+      "defaultValueRaw": false,
       "required": false,
       "variableMode": "Input",
-      "condition": "",
-      "description": "显式启用后将结果保存到本机截图历史；默认关闭，避免后台或循环动作持续留存画面。"
+      "isControlField": false
     },
     {
       "key": "stopIfFail",
       "name": "失败后停止",
       "type": "Boolean",
+      "description": "失败后是否停止动作",
+      "isAdvanced": false,
+      "validForList": [],
+      "invalidForList": [],
+      "condition": "",
       "defaultValue": "true",
+      "defaultValueRaw": true,
       "required": false,
       "variableMode": "Input",
-      "condition": "",
-      "description": "失败后是否停止动作"
+      "isControlField": false
     }
   ],
   "outputs": [
@@ -118,22 +178,31 @@
       "key": "isSuccess",
       "name": "是否成功",
       "type": "Boolean",
-      "condition": "",
-      "description": "操作是否成功"
+      "description": "操作是否成功",
+      "isAdvanced": false,
+      "validForList": [],
+      "invalidForList": [],
+      "condition": ""
     },
     {
       "key": "img",
       "name": "图片",
       "type": "Image",
-      "condition": "",
-      "description": "截图的图片"
+      "description": "截图的图片",
+      "isAdvanced": false,
+      "validForList": [],
+      "invalidForList": [],
+      "condition": ""
     },
     {
       "key": "rect",
       "name": "截图区域",
       "type": "Text",
-      "condition": "",
-      "description": "图片的截取区域(left,top,right,bottom)。"
+      "description": "图片的截取区域(left,top,right,bottom)。",
+      "isAdvanced": false,
+      "validForList": [],
+      "invalidForList": [],
+      "condition": ""
     }
   ],
   "selections": {
@@ -173,5 +242,5 @@
       ]
     }
   },
-  "sourceFileName": "sys_screenCapture_屏幕截图.md"
+  "sourceFileName": "catalog.json"
 }

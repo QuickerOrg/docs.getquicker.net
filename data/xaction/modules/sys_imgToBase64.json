@@ -16,41 +16,65 @@
       "key": "type",
       "name": "操作类型",
       "type": "Enum",
+      "description": "转换操作类型",
+      "isAdvanced": false,
+      "validForList": [],
+      "invalidForList": [],
+      "condition": "",
       "defaultValue": "imgToBase64",
+      "defaultValueRaw": "imgToBase64",
       "required": true,
       "variableMode": "Input",
-      "condition": "",
-      "description": "转换操作类型"
+      "isControlField": true
     },
     {
       "key": "img",
       "name": "图片",
       "type": "Image",
+      "description": "要转换的图片（图片变量或文件路径）",
+      "isAdvanced": false,
+      "validForList": [
+        "imgToBase64"
+      ],
+      "invalidForList": [],
+      "condition": "仅：imgToBase64",
       "defaultValue": "",
       "required": true,
       "variableMode": "UseVar",
-      "condition": "仅：imgToBase64",
-      "description": "要转换的图片（图片变量或文件路径）"
+      "isControlField": false
     },
     {
       "key": "base64",
       "name": "Base64编码",
       "type": "Text",
+      "description": "要转换的编码文本",
+      "isAdvanced": false,
+      "validForList": [
+        "base64ToImg"
+      ],
+      "invalidForList": [],
+      "condition": "仅：base64ToImg",
       "defaultValue": "",
       "required": true,
       "variableMode": "UseVarOrInput",
-      "condition": "仅：base64ToImg",
-      "description": "要转换的编码文本"
+      "isControlField": false
     },
     {
       "key": "addHeader",
       "name": "添加data头",
       "type": "Boolean",
+      "description": "是否添加\"data:image/png;base64,\"头",
+      "isAdvanced": false,
+      "validForList": [
+        "imgToBase64"
+      ],
+      "invalidForList": [],
+      "condition": "仅：imgToBase64",
       "defaultValue": "false",
+      "defaultValueRaw": false,
       "required": false,
       "variableMode": "Input",
-      "condition": "仅：imgToBase64",
-      "description": "是否添加\"data:image/png;base64,\"头"
+      "isControlField": false
     }
   ],
   "outputs": [
@@ -58,15 +82,25 @@
       "key": "code",
       "name": "Base64编码",
       "type": "Text",
-      "condition": "仅：imgToBase64",
-      "description": "Base64编码结果"
+      "description": "Base64编码结果",
+      "isAdvanced": false,
+      "validForList": [
+        "imgToBase64"
+      ],
+      "invalidForList": [],
+      "condition": "仅：imgToBase64"
     },
     {
       "key": "img",
       "name": "图片",
       "type": "Image",
-      "condition": "仅：base64ToImg",
-      "description": "转换输出的图片"
+      "description": "转换输出的图片",
+      "isAdvanced": false,
+      "validForList": [
+        "base64ToImg"
+      ],
+      "invalidForList": [],
+      "condition": "仅：base64ToImg"
     }
   ],
   "selections": {
@@ -86,5 +120,5 @@
       ]
     }
   },
-  "sourceFileName": "sys_imgToBase64_图片_Base64 转换.md"
+  "sourceFileName": "catalog.json"
 }

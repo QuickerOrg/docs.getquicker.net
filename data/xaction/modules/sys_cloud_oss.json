@@ -16,91 +16,142 @@
       "key": "operation",
       "name": "操作类型",
       "type": "Enum",
+      "description": "",
+      "isAdvanced": false,
+      "validForList": [],
+      "invalidForList": [],
+      "condition": "",
       "defaultValue": "Upload",
+      "defaultValueRaw": "Upload",
       "required": true,
       "variableMode": "Input",
-      "condition": "",
-      "description": ""
+      "isControlField": true
     },
     {
       "key": "vendor",
       "name": "服务商",
       "type": "Enum",
+      "description": "",
+      "isAdvanced": false,
+      "validForList": [],
+      "invalidForList": [],
+      "condition": "",
       "defaultValue": "Aliyun",
+      "defaultValueRaw": "Aliyun",
       "required": true,
       "variableMode": "Input",
-      "condition": "",
-      "description": ""
+      "isControlField": false
     },
     {
       "key": "vendorSettings",
       "name": "服务商参数",
       "type": "Text",
+      "description": "设置相关",
+      "isAdvanced": false,
+      "validForList": [],
+      "invalidForList": [],
+      "condition": "",
       "defaultValue": "",
+      "defaultValueRaw": "",
       "required": true,
       "variableMode": "Input",
-      "condition": "",
-      "description": "设置相关"
+      "isControlField": false
     },
     {
       "key": "key",
       "name": "对象名",
       "type": "Text",
+      "description": "可选。留空时自动生成对象名。如果以'/'结尾，则在此基础上自动生成对象名。",
+      "isAdvanced": false,
+      "validForList": [
+        "Upload"
+      ],
+      "invalidForList": [],
+      "condition": "仅：Upload",
       "defaultValue": "",
+      "defaultValueRaw": "",
       "required": false,
       "variableMode": "Input",
-      "condition": "仅：Upload",
-      "description": "可选。留空时自动生成对象名。如果以'/'结尾，则在此基础上自动生成对象名。"
+      "isControlField": false
     },
     {
       "key": "content",
       "name": "上传内容",
       "type": "Any",
+      "description": "要上传的文件路径、其它文本内容或图片变量。",
+      "isAdvanced": false,
+      "validForList": [
+        "Upload"
+      ],
+      "invalidForList": [],
+      "condition": "仅：Upload",
       "defaultValue": "",
+      "defaultValueRaw": "",
       "required": false,
       "variableMode": "Input",
-      "condition": "仅：Upload",
-      "description": "要上传的文件路径、其它文本内容或图片变量。"
+      "isControlField": false
     },
     {
       "key": "customDomain",
       "name": "自定义域名",
       "type": "Text",
+      "description": "如\"https://files.example.com\"。",
+      "isAdvanced": false,
+      "validForList": [
+        "Upload"
+      ],
+      "invalidForList": [],
+      "condition": "仅：Upload",
       "defaultValue": "",
+      "defaultValueRaw": "",
       "required": false,
       "variableMode": "Input",
-      "condition": "仅：Upload",
-      "description": "如\"https://files.example.com\"。"
+      "isControlField": false
     },
     {
       "key": "extraHeaders",
       "name": "额外的请求头",
       "type": "Text",
+      "description": "可选。设置厂商相关的特定http头。",
+      "isAdvanced": false,
+      "validForList": [],
+      "invalidForList": [],
+      "condition": "",
       "defaultValue": "",
+      "defaultValueRaw": "",
       "required": true,
       "variableMode": "Input",
-      "condition": "",
-      "description": "可选。设置厂商相关的特定http头。"
+      "isControlField": false
     },
     {
       "key": "expireSeconds",
       "name": "超时时间",
       "type": "Number",
+      "description": "请求超时时间（秒数）",
+      "isAdvanced": false,
+      "validForList": [],
+      "invalidForList": [],
+      "condition": "",
       "defaultValue": "180",
+      "defaultValueRaw": 180,
       "required": false,
       "variableMode": "UseVarOrInput",
-      "condition": "",
-      "description": "请求超时时间（秒数）"
+      "isControlField": false
     },
     {
       "key": "stopIfFail",
       "name": "失败后停止",
       "type": "Boolean",
+      "description": "失败后是否停止动作",
+      "isAdvanced": false,
+      "validForList": [],
+      "invalidForList": [],
+      "condition": "",
       "defaultValue": "true",
+      "defaultValueRaw": true,
       "required": false,
       "variableMode": "Input",
-      "condition": "",
-      "description": "失败后是否停止动作"
+      "isControlField": false
     }
   ],
   "outputs": [
@@ -108,29 +159,45 @@
       "key": "isSuccess",
       "name": "是否成功",
       "type": "Boolean",
-      "condition": "",
-      "description": "操作是否成功"
+      "description": "操作是否成功",
+      "isAdvanced": false,
+      "validForList": [],
+      "invalidForList": [],
+      "condition": ""
     },
     {
       "key": "vendorUrl",
       "name": "服务商网址",
       "type": "Any",
-      "condition": "仅：Upload",
-      "description": ""
+      "description": "",
+      "isAdvanced": false,
+      "validForList": [
+        "Upload"
+      ],
+      "invalidForList": [],
+      "condition": "仅：Upload"
     },
     {
       "key": "customUrl",
       "name": "自定义域名网址",
       "type": "Any",
-      "condition": "仅：Upload",
-      "description": "设置了自定义域名时会生成此网址。"
+      "description": "设置了自定义域名时会生成此网址。",
+      "isAdvanced": false,
+      "validForList": [
+        "Upload"
+      ],
+      "invalidForList": [],
+      "condition": "仅：Upload"
     },
     {
       "key": "err",
       "name": "错误信息",
       "type": "Text",
-      "condition": "",
-      "description": "出错时输出的错误信息。"
+      "description": "出错时输出的错误信息。",
+      "isAdvanced": false,
+      "validForList": [],
+      "invalidForList": [],
+      "condition": ""
     }
   ],
   "selections": {
@@ -165,5 +232,5 @@
       ]
     }
   },
-  "sourceFileName": "sys_cloud_oss_第三方云存储_图床.md"
+  "sourceFileName": "catalog.json"
 }

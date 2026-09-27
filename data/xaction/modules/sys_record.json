@@ -16,41 +16,61 @@
       "key": "autoStart",
       "name": "自动开始录制",
       "type": "Boolean",
+      "description": "2秒后是否自动开始录制",
+      "isAdvanced": false,
+      "validForList": [],
+      "invalidForList": [],
+      "condition": "",
       "defaultValue": "true",
+      "defaultValueRaw": true,
       "required": false,
       "variableMode": "UseVarOrInput",
-      "condition": "",
-      "description": "2秒后是否自动开始录制"
+      "isControlField": false
     },
     {
       "key": "recordMouseMove",
       "name": "录制鼠标移动过程",
       "type": "Boolean",
+      "description": "是否录制鼠标的中间移动过程，仅必要时开启。关闭时仅记录点击位置。",
+      "isAdvanced": false,
+      "validForList": [],
+      "invalidForList": [],
+      "condition": "",
       "defaultValue": "true",
+      "defaultValueRaw": true,
       "required": false,
       "variableMode": "UseVarOrInput",
-      "condition": "",
-      "description": "是否录制鼠标的中间移动过程，仅必要时开启。关闭时仅记录点击位置。"
+      "isControlField": false
     },
     {
       "key": "prepareSeconds",
       "name": "准备时间",
       "type": "Number",
+      "description": "开始录制前的倒计时秒数（支持小数）",
+      "isAdvanced": false,
+      "validForList": [],
+      "invalidForList": [],
+      "condition": "",
       "defaultValue": "2",
+      "defaultValueRaw": 2,
       "required": false,
       "variableMode": "UseVarOrInput",
-      "condition": "",
-      "description": "开始录制前的倒计时秒数（支持小数）"
+      "isControlField": false
     },
     {
       "key": "stopIfFail",
       "name": "失败后停止",
       "type": "Boolean",
+      "description": "失败后是否停止动作",
+      "isAdvanced": false,
+      "validForList": [],
+      "invalidForList": [],
+      "condition": "",
       "defaultValue": "true",
+      "defaultValueRaw": true,
       "required": false,
       "variableMode": "Input",
-      "condition": "",
-      "description": "失败后是否停止动作"
+      "isControlField": false
     }
   ],
   "outputs": [
@@ -58,17 +78,23 @@
       "key": "isSuccess",
       "name": "是否成功",
       "type": "Boolean",
-      "condition": "",
-      "description": "操作是否成功"
+      "description": "操作是否成功",
+      "isAdvanced": false,
+      "validForList": [],
+      "invalidForList": [],
+      "condition": ""
     },
     {
       "key": "output",
       "name": "录制数据",
       "type": "Text",
-      "condition": "",
-      "description": "录制的结果数据"
+      "description": "录制的结果数据",
+      "isAdvanced": false,
+      "validForList": [],
+      "invalidForList": [],
+      "condition": ""
     }
   ],
   "selections": {},
-  "sourceFileName": "sys_record_录制键鼠操作.md"
+  "sourceFileName": "catalog.json"
 }

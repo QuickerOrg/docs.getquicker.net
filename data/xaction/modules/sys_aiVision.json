@@ -16,101 +16,148 @@
       "key": "image",
       "name": "图片",
       "type": "Image",
+      "description": "要理解的图片变量；上限 4000 万像素且 PNG 编码后不超过 10 MiB。",
+      "isAdvanced": false,
+      "validForList": [],
+      "invalidForList": [],
+      "condition": "",
       "defaultValue": "",
       "required": true,
       "variableMode": "UseVar",
-      "condition": "",
-      "description": "要理解的图片变量；上限 4000 万像素且 PNG 编码后不超过 10 MiB。"
+      "isControlField": false
     },
     {
       "key": "question",
       "name": "问题或任务",
       "type": "Text",
+      "description": "告诉 AI 要观察或回答什么，例如“提取图片中的全部文字”。",
+      "isAdvanced": false,
+      "validForList": [],
+      "invalidForList": [],
+      "condition": "",
       "defaultValue": "",
       "required": true,
       "variableMode": "UseVarOrInput",
-      "condition": "",
-      "description": "告诉 AI 要观察或回答什么，例如“提取图片中的全部文字”。"
+      "isControlField": false
     },
     {
       "key": "contextText",
       "name": "辅助文本",
       "type": "Text",
+      "description": "与图片一起提供的背景信息；不需要时留空。",
+      "isAdvanced": false,
+      "validForList": [],
+      "invalidForList": [],
+      "condition": "",
       "defaultValue": "",
+      "defaultValueRaw": "",
       "required": false,
       "variableMode": "UseVarOrInput",
-      "condition": "",
-      "description": "与图片一起提供的背景信息；不需要时留空。"
+      "isControlField": false
     },
     {
       "key": "systemPrompt",
       "name": "系统提示词",
       "type": "Text",
+      "description": "可选的全局回答规则，例如“只返回识别出的文字”。",
+      "isAdvanced": true,
+      "validForList": [],
+      "invalidForList": [],
+      "condition": "",
       "defaultValue": "",
+      "defaultValueRaw": "",
       "required": false,
       "variableMode": "UseVarOrInput",
-      "condition": "",
-      "description": "可选的全局回答规则，例如“只返回识别出的文字”。"
+      "isControlField": false
     },
     {
       "key": "useCaseId",
       "name": "AI 任务场景",
       "type": "Text",
+      "description": "选择支持图片输入的 AI 任务场景。动作只保存场景 ID。",
+      "isAdvanced": false,
+      "validForList": [],
+      "invalidForList": [],
+      "condition": "",
       "defaultValue": "image.understanding",
+      "defaultValueRaw": "image.understanding",
       "required": false,
       "variableMode": "UseVarOrInput",
-      "condition": "",
-      "description": "选择支持图片输入的 AI 任务场景。动作只保存场景 ID。"
+      "isControlField": false
     },
     {
       "key": "outputMode",
       "name": "输出方式",
       "type": "Enum",
+      "description": "直接返回适合后台流程；交互调整会打开 Markdown 窗口，可实时查看、继续追问并显式采用回答。",
+      "isAdvanced": false,
+      "validForList": [],
+      "invalidForList": [],
+      "condition": "",
       "defaultValue": "direct",
+      "defaultValueRaw": "direct",
       "required": false,
       "variableMode": "UseVarOrInput",
-      "condition": "",
-      "description": "直接返回适合后台流程；交互调整会打开 Markdown 窗口，可实时查看、继续追问并显式采用回答。"
+      "isControlField": false
     },
     {
       "key": "missingUseCaseBehavior",
       "name": "任务场景缺失时",
       "type": "Enum",
+      "description": "自定义任务场景不存在时，使用内置图片理解任务场景或直接失败。",
+      "isAdvanced": true,
+      "validForList": [],
+      "invalidForList": [],
+      "condition": "",
       "defaultValue": "UseBaseUseCase",
+      "defaultValueRaw": "UseBaseUseCase",
       "required": false,
       "variableMode": "UseVarOrInput",
-      "condition": "",
-      "description": "自定义任务场景不存在时，使用内置图片理解任务场景或直接失败。"
+      "isControlField": false
     },
     {
       "key": "temperature",
       "name": "温度",
       "type": "Number",
+      "description": "留空时不向模型发送 Temperature；仅在确认模型支持时填写。",
+      "isAdvanced": true,
+      "validForList": [],
+      "invalidForList": [],
+      "condition": "",
       "defaultValue": "",
       "required": false,
       "variableMode": "UseVarOrInput",
-      "condition": "",
-      "description": "留空时不向模型发送 Temperature；仅在确认模型支持时填写。"
+      "isControlField": false
     },
     {
       "key": "maxOutputTokens",
       "name": "最大输出 Token",
       "type": "Integer",
+      "description": "",
+      "isAdvanced": true,
+      "validForList": [],
+      "invalidForList": [],
+      "condition": "",
       "defaultValue": "0",
+      "defaultValueRaw": 0,
       "required": false,
       "variableMode": "UseVarOrInput",
-      "condition": "",
-      "description": ""
+      "isControlField": false
     },
     {
       "key": "stopIfFail",
       "name": "失败后停止",
       "type": "Boolean",
+      "description": "失败后是否停止动作",
+      "isAdvanced": false,
+      "validForList": [],
+      "invalidForList": [],
+      "condition": "",
       "defaultValue": "true",
+      "defaultValueRaw": true,
       "required": false,
       "variableMode": "Input",
-      "condition": "",
-      "description": "失败后是否停止动作"
+      "isControlField": false
     }
   ],
   "outputs": [
@@ -118,78 +165,111 @@
       "key": "isSuccess",
       "name": "是否成功",
       "type": "Boolean",
-      "condition": "",
-      "description": "操作是否成功"
+      "description": "操作是否成功",
+      "isAdvanced": false,
+      "validForList": [],
+      "invalidForList": [],
+      "condition": ""
     },
     {
       "key": "result",
       "name": "回答",
       "type": "Text",
-      "condition": "",
-      "description": ""
+      "description": "",
+      "isAdvanced": false,
+      "validForList": [],
+      "invalidForList": [],
+      "condition": ""
     },
     {
       "key": "model",
       "name": "实际模型",
       "type": "Text",
-      "condition": "",
-      "description": ""
+      "description": "",
+      "isAdvanced": true,
+      "validForList": [],
+      "invalidForList": [],
+      "condition": ""
     },
     {
       "key": "inputTokens",
       "name": "输入 Token",
       "type": "Integer",
-      "condition": "",
-      "description": ""
+      "description": "",
+      "isAdvanced": true,
+      "validForList": [],
+      "invalidForList": [],
+      "condition": ""
     },
     {
       "key": "cachedInputTokens",
       "name": "缓存输入 Token",
       "type": "Integer",
-      "condition": "",
-      "description": "服务商报告的缓存命中输入 Token；未提供时为 0。"
+      "description": "服务商报告的缓存命中输入 Token；未提供时为 0。",
+      "isAdvanced": true,
+      "validForList": [],
+      "invalidForList": [],
+      "condition": ""
     },
     {
       "key": "outputTokens",
       "name": "输出 Token",
       "type": "Integer",
-      "condition": "",
-      "description": ""
+      "description": "",
+      "isAdvanced": true,
+      "validForList": [],
+      "invalidForList": [],
+      "condition": ""
     },
     {
       "key": "totalTokens",
       "name": "总 Token",
       "type": "Integer",
-      "condition": "",
-      "description": ""
+      "description": "",
+      "isAdvanced": true,
+      "validForList": [],
+      "invalidForList": [],
+      "condition": ""
     },
     {
       "key": "finishReason",
       "name": "结束原因",
       "type": "Text",
-      "condition": "",
-      "description": ""
+      "description": "",
+      "isAdvanced": true,
+      "validForList": [],
+      "invalidForList": [],
+      "condition": ""
     },
     {
       "key": "invocationId",
       "name": "调用标识",
       "type": "Text",
-      "condition": "",
-      "description": ""
+      "description": "",
+      "isAdvanced": true,
+      "validForList": [],
+      "invalidForList": [],
+      "condition": ""
     },
     {
       "key": "resolvedUseCaseId",
       "name": "实际任务场景",
       "type": "Text",
-      "condition": "",
-      "description": ""
+      "description": "",
+      "isAdvanced": true,
+      "validForList": [],
+      "invalidForList": [],
+      "condition": ""
     },
     {
       "key": "useCaseFallbackUsed",
       "name": "是否回退场景",
       "type": "Boolean",
-      "condition": "",
-      "description": ""
+      "description": "",
+      "isAdvanced": true,
+      "validForList": [],
+      "invalidForList": [],
+      "condition": ""
     }
   ],
   "selections": {
@@ -234,5 +314,5 @@
       ]
     }
   },
-  "sourceFileName": "sys_aiVision_AI 图片理解.md"
+  "sourceFileName": "catalog.json"
 }

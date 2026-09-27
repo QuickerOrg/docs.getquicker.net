@@ -16,41 +16,63 @@
       "key": "url",
       "name": "网址",
       "type": "Text",
+      "description": "要打开的网页地址",
+      "isAdvanced": false,
+      "validForList": [],
+      "invalidForList": [],
+      "condition": "",
       "defaultValue": "https://",
+      "defaultValueRaw": "https://",
       "required": true,
       "variableMode": "UseVarOrInput",
-      "condition": "",
-      "description": "要打开的网页地址"
+      "isControlField": false
     },
     {
       "key": "browser",
       "name": "浏览器",
       "type": "Enum",
+      "description": "使用什么浏览器打开网址",
+      "isAdvanced": false,
+      "validForList": [],
+      "invalidForList": [],
+      "condition": "",
       "defaultValue": "default",
+      "defaultValueRaw": "default",
       "required": true,
       "variableMode": "UseVarOrInput",
-      "condition": "",
-      "description": "使用什么浏览器打开网址"
+      "isControlField": true
     },
     {
       "key": "exePath",
       "name": "浏览器程序路径",
       "type": "Text",
+      "description": "浏览器exe程序路径",
+      "isAdvanced": false,
+      "validForList": [
+        "custom"
+      ],
+      "invalidForList": [],
+      "condition": "仅：custom",
       "defaultValue": "",
+      "defaultValueRaw": "",
       "required": true,
       "variableMode": "UseVarOrInput",
-      "condition": "仅：custom",
-      "description": "浏览器exe程序路径"
+      "isControlField": false
     },
     {
       "key": "stopIfFail",
       "name": "失败后停止",
       "type": "Boolean",
+      "description": "失败后是否停止动作",
+      "isAdvanced": false,
+      "validForList": [],
+      "invalidForList": [],
+      "condition": "",
       "defaultValue": "true",
+      "defaultValueRaw": true,
       "required": false,
       "variableMode": "Input",
-      "condition": "",
-      "description": "失败后是否停止动作"
+      "isControlField": false
     }
   ],
   "outputs": [
@@ -58,8 +80,11 @@
       "key": "isSuccess",
       "name": "是否成功",
       "type": "Boolean",
-      "condition": "",
-      "description": "操作是否成功"
+      "description": "操作是否成功",
+      "isAdvanced": false,
+      "validForList": [],
+      "invalidForList": [],
+      "condition": ""
     }
   ],
   "selections": {
@@ -124,5 +149,5 @@
       ]
     }
   },
-  "sourceFileName": "sys_openUrl_打开网址.md"
+  "sourceFileName": "catalog.json"
 }

@@ -16,71 +16,106 @@
       "key": "dbType",
       "name": "数据库连接类型",
       "type": "Enum",
+      "description": "",
+      "isAdvanced": false,
+      "validForList": [],
+      "invalidForList": [],
+      "condition": "",
       "defaultValue": "",
+      "defaultValueRaw": "",
       "required": false,
       "variableMode": "Input",
-      "condition": "",
-      "description": ""
+      "isControlField": false
     },
     {
       "key": "connectionString",
       "name": "连接字符串",
       "type": "Text",
+      "description": "Connection string",
+      "isAdvanced": false,
+      "validForList": [],
+      "invalidForList": [],
+      "condition": "",
       "defaultValue": "",
+      "defaultValueRaw": "",
       "required": false,
       "variableMode": "UseVarOrInput",
-      "condition": "",
-      "description": "Connection string"
+      "isControlField": false
     },
     {
       "key": "sql",
       "name": "SQL语句",
       "type": "Text",
+      "description": "要执行的SQL语句内容",
+      "isAdvanced": false,
+      "validForList": [],
+      "invalidForList": [],
+      "condition": "",
       "defaultValue": "",
+      "defaultValueRaw": "",
       "required": false,
       "variableMode": "UseVarOrInput",
-      "condition": "",
-      "description": "要执行的SQL语句内容"
+      "isControlField": false
     },
     {
       "key": "sqlParam",
       "name": "参数",
       "type": "Object",
+      "description": "为SQL语句提供的参数",
+      "isAdvanced": false,
+      "validForList": [],
+      "invalidForList": [],
+      "condition": "",
       "defaultValue": "",
+      "defaultValueRaw": "",
       "required": false,
       "variableMode": "UseVarOrInput",
-      "condition": "",
-      "description": "为SQL语句提供的参数"
+      "isControlField": false
     },
     {
       "key": "timeoutSeconds",
       "name": "超时秒数",
       "type": "Integer",
+      "description": "留空或0表示默认。",
+      "isAdvanced": false,
+      "validForList": [],
+      "invalidForList": [],
+      "condition": "",
       "defaultValue": "",
+      "defaultValueRaw": "",
       "required": false,
       "variableMode": "UseVarOrInput",
-      "condition": "",
-      "description": "留空或0表示默认。"
+      "isControlField": false
     },
     {
       "key": "operationType",
       "name": "执行方式",
       "type": "Enum",
+      "description": "",
+      "isAdvanced": false,
+      "validForList": [],
+      "invalidForList": [],
+      "condition": "",
       "defaultValue": "Query",
+      "defaultValueRaw": "Query",
       "required": true,
       "variableMode": "Input",
-      "condition": "",
-      "description": ""
+      "isControlField": true
     },
     {
       "key": "stopIfFail",
       "name": "失败后停止",
       "type": "Boolean",
+      "description": "失败后是否停止动作",
+      "isAdvanced": false,
+      "validForList": [],
+      "invalidForList": [],
+      "condition": "",
       "defaultValue": "true",
+      "defaultValueRaw": true,
       "required": false,
       "variableMode": "Input",
-      "condition": "",
-      "description": "失败后是否停止动作"
+      "isControlField": false
     }
   ],
   "outputs": [
@@ -88,50 +123,83 @@
       "key": "isSuccess",
       "name": "是否成功",
       "type": "Boolean",
-      "condition": "",
-      "description": "操作是否成功"
+      "description": "操作是否成功",
+      "isAdvanced": false,
+      "validForList": [],
+      "invalidForList": [],
+      "condition": ""
     },
     {
       "key": "rowsAffected",
       "name": "影响行数",
       "type": "Integer",
-      "condition": "仅：Execute",
-      "description": ""
+      "description": "",
+      "isAdvanced": false,
+      "validForList": [
+        "Execute"
+      ],
+      "invalidForList": [],
+      "condition": "仅：Execute"
     },
     {
       "key": "scalarResult",
       "name": "单值结果",
       "type": "Any",
-      "condition": "仅：ExecuteScalar",
-      "description": ""
+      "description": "",
+      "isAdvanced": false,
+      "validForList": [
+        "ExecuteScalar"
+      ],
+      "invalidForList": [],
+      "condition": "仅：ExecuteScalar"
     },
     {
       "key": "dataTableResult",
       "name": "查询结果(表格)",
       "type": "Table",
-      "condition": "仅：Query",
-      "description": "获取表格类型的行结果"
+      "description": "获取表格类型的行结果",
+      "isAdvanced": false,
+      "validForList": [
+        "Query"
+      ],
+      "invalidForList": [],
+      "condition": "仅：Query"
     },
     {
       "key": "listResult",
       "name": "查询结果(对象列表)",
       "type": "Object",
-      "condition": "仅：Query",
-      "description": "获得动态对象列表类型的结果"
+      "description": "获得动态对象列表类型的结果",
+      "isAdvanced": false,
+      "validForList": [
+        "Query"
+      ],
+      "invalidForList": [],
+      "condition": "仅：Query"
     },
     {
       "key": "firstItem",
       "name": "首项结果",
       "type": "Object",
-      "condition": "仅：Query",
-      "description": "如果只需要返回结果的第一行，可以使用此项输出，支持词典或dynamic对象。没有结果时返回null。"
+      "description": "如果只需要返回结果的第一行，可以使用此项输出，支持词典或dynamic对象。没有结果时返回null。",
+      "isAdvanced": false,
+      "validForList": [
+        "Query"
+      ],
+      "invalidForList": [],
+      "condition": "仅：Query"
     },
     {
       "key": "rowCount",
       "name": "结果行数",
       "type": "Integer",
-      "condition": "仅：Query",
-      "description": ""
+      "description": "",
+      "isAdvanced": false,
+      "validForList": [
+        "Query"
+      ],
+      "invalidForList": [],
+      "condition": "仅：Query"
     }
   ],
   "selections": {
@@ -186,5 +254,5 @@
       ]
     }
   },
-  "sourceFileName": "sys_dboperation_数据库查询.md"
+  "sourceFileName": "catalog.json"
 }

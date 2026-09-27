@@ -16,31 +16,46 @@
       "key": "param1",
       "name": "数字1",
       "type": "Number",
+      "description": "左侧的数字",
+      "isAdvanced": false,
+      "validForList": [],
+      "invalidForList": [],
+      "condition": "",
       "defaultValue": "0",
+      "defaultValueRaw": 0,
       "required": true,
       "variableMode": "UseVarOrInput",
-      "condition": "",
-      "description": "左侧的数字"
+      "isControlField": false
     },
     {
       "key": "type",
       "name": "类型",
       "type": "Enum",
+      "description": "比较方式",
+      "isAdvanced": false,
+      "validForList": [],
+      "invalidForList": [],
+      "condition": "",
       "defaultValue": ">",
+      "defaultValueRaw": ">",
       "required": true,
       "variableMode": "Input",
-      "condition": "",
-      "description": "比较方式"
+      "isControlField": false
     },
     {
       "key": "param2",
       "name": "数字2",
       "type": "Number",
+      "description": "右侧的数字",
+      "isAdvanced": false,
+      "validForList": [],
+      "invalidForList": [],
+      "condition": "",
       "defaultValue": "0",
+      "defaultValueRaw": 0,
       "required": true,
       "variableMode": "UseVarOrInput",
-      "condition": "",
-      "description": "右侧的数字"
+      "isControlField": false
     }
   ],
   "outputs": [
@@ -48,8 +63,11 @@
       "key": "value",
       "name": "值",
       "type": "Boolean",
-      "condition": "",
-      "description": "比较结果是否为真"
+      "description": "比较结果是否为真",
+      "isAdvanced": false,
+      "validForList": [],
+      "invalidForList": [],
+      "condition": ""
     }
   ],
   "selections": {
@@ -84,5 +102,5 @@
       ]
     }
   },
-  "sourceFileName": "sys_numCompare_比较数字.md"
+  "sourceFileName": "catalog.json"
 }

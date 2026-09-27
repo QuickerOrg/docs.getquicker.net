@@ -222,14 +222,14 @@ function ModuleBody({module}: {module: XActionModuleDef}): ReactNode {
     Object.fromEntries(
       (module.inputs ?? []).map((param) => [
         param.key,
-        param.defaultValue ?? module.selections?.[param.key]?.items[0]?.value ?? '',
+        param.newStepDefaultValue ?? param.defaultValue ?? module.selections?.[param.key]?.items[0]?.value ?? '',
       ]),
     ),
   );
   const inputs = module.inputs ?? [];
   const outputs = module.outputs ?? [];
-  const visibleInputs = inputs.filter((param) => isStepParamVisible(param, currentValues));
-  const visibleOutputs = outputs.filter((output) => isStepParamVisible(output, currentValues));
+  const visibleInputs = inputs.filter((param) => isStepParamVisible(param, currentValues, false, module));
+  const visibleOutputs = outputs.filter((output) => isStepParamVisible(output, currentValues, false, module));
   const inputCount = inputs.length;
   const outputCount = outputs.length;
   const selectionEntries = Object.entries(module.selections ?? {});

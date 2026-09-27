@@ -16,101 +16,172 @@
       "key": "data",
       "name": "待处理内容",
       "type": "Text",
+      "description": "需要进行文本处理的内容",
+      "isAdvanced": false,
+      "validForList": [],
+      "invalidForList": [],
+      "condition": "",
       "defaultValue": "",
       "required": false,
       "variableMode": "UseVarOrInput",
-      "condition": "",
-      "description": "需要进行文本处理的内容"
+      "isControlField": false
     },
     {
       "key": "method",
       "name": "处理",
       "type": "Enum",
+      "description": "对文本进行什么处理",
+      "isAdvanced": false,
+      "validForList": [],
+      "invalidForList": [],
+      "condition": "",
       "defaultValue": "",
+      "defaultValueRaw": "",
       "required": true,
       "variableMode": "Input",
-      "condition": "",
-      "description": "对文本进行什么处理"
+      "isControlField": true
     },
     {
       "key": "srcEncoding",
       "name": "编码",
       "type": "Text",
+      "description": "",
+      "isAdvanced": false,
+      "validForList": [
+        "urlEncode",
+        "urlDecode",
+        "convertEncoding"
+      ],
+      "invalidForList": [],
+      "condition": "仅：urlEncode, urlDecode, convertEncoding",
       "defaultValue": "utf-8",
+      "defaultValueRaw": "utf-8",
       "required": false,
       "variableMode": "UseVarOrInput",
-      "condition": "仅：urlEncode, urlDecode, convertEncoding",
-      "description": ""
+      "isControlField": false
     },
     {
       "key": "dstEncoding",
       "name": "目标编码",
       "type": "Text",
+      "description": "",
+      "isAdvanced": false,
+      "validForList": [
+        "convertEncoding"
+      ],
+      "invalidForList": [],
+      "condition": "仅：convertEncoding",
       "defaultValue": "gbk",
+      "defaultValueRaw": "gbk",
       "required": false,
       "variableMode": "UseVarOrInput",
-      "condition": "仅：convertEncoding",
-      "description": ""
+      "isControlField": false
     },
     {
       "key": "start",
       "name": "开始位置",
       "type": "Integer",
+      "description": "开始截取/插入位置，从0开始。如果为负值，表示从文本末尾开始向前的字符数。",
+      "isAdvanced": false,
+      "validForList": [
+        "substring",
+        "insert",
+        "remove"
+      ],
+      "invalidForList": [],
+      "condition": "仅：substring, insert, remove",
       "defaultValue": "0",
+      "defaultValueRaw": 0,
       "required": false,
       "variableMode": "UseVarOrInput",
-      "condition": "仅：substring, insert, remove",
-      "description": "开始截取/插入位置，从0开始。如果为负值，表示从文本末尾开始向前的字符数。"
+      "isControlField": false
     },
     {
       "key": "value",
       "name": "内容",
       "type": "Text",
+      "description": "插入或追加的内容",
+      "isAdvanced": false,
+      "validForList": [
+        "insert",
+        "append"
+      ],
+      "invalidForList": [],
+      "condition": "仅：insert, append",
       "defaultValue": "",
+      "defaultValueRaw": "",
       "required": false,
       "variableMode": "UseVarOrInput",
-      "condition": "仅：insert, append",
-      "description": "插入或追加的内容"
+      "isControlField": false
     },
     {
       "key": "length",
       "name": "长度",
       "type": "Integer",
+      "description": "截取或移除字符个数。截取时，0表示开始位置以后的所有内容，负值表示截取到结束前的多少个字符。",
+      "isAdvanced": false,
+      "validForList": [
+        "substring",
+        "remove"
+      ],
+      "invalidForList": [],
+      "condition": "仅：substring, remove",
       "defaultValue": "0",
+      "defaultValueRaw": 0,
       "required": false,
       "variableMode": "UseVarOrInput",
-      "condition": "仅：substring, remove",
-      "description": "截取或移除字符个数。截取时，0表示开始位置以后的所有内容，负值表示截取到结束前的多少个字符。"
+      "isControlField": false
     },
     {
       "key": "totalWidth",
       "name": "总宽度",
       "type": "Integer",
+      "description": "补齐后的总字符数",
+      "isAdvanced": false,
+      "validForList": [
+        "padLeft",
+        "padRight"
+      ],
+      "invalidForList": [],
+      "condition": "仅：padLeft, padRight",
       "defaultValue": "10",
+      "defaultValueRaw": 10,
       "required": false,
       "variableMode": "UseVarOrInput",
-      "condition": "仅：padLeft, padRight",
-      "description": "补齐后的总字符数"
+      "isControlField": false
     },
     {
       "key": "paddingChar",
       "name": "填充字符",
       "type": "Text",
-      "defaultValue": "",
+      "description": "补齐时使用的填充字符，默认为空格。",
+      "isAdvanced": false,
+      "validForList": [
+        "padLeft",
+        "padRight"
+      ],
+      "invalidForList": [],
+      "condition": "仅：padLeft, padRight",
+      "defaultValue": " ",
+      "defaultValueRaw": " ",
       "required": false,
       "variableMode": "UseVarOrInput",
-      "condition": "仅：padLeft, padRight",
-      "description": "补齐时使用的填充字符，默认为空格。"
+      "isControlField": false
     },
     {
       "key": "stopIfFail",
       "name": "失败后停止",
       "type": "Boolean",
+      "description": "失败后是否停止动作",
+      "isAdvanced": false,
+      "validForList": [],
+      "invalidForList": [],
+      "condition": "",
       "defaultValue": "true",
+      "defaultValueRaw": true,
       "required": false,
       "variableMode": "Input",
-      "condition": "",
-      "description": "失败后是否停止动作"
+      "isControlField": false
     }
   ],
   "outputs": [
@@ -118,15 +189,21 @@
       "key": "isSuccess",
       "name": "是否成功",
       "type": "Boolean",
-      "condition": "",
-      "description": "操作是否成功"
+      "description": "操作是否成功",
+      "isAdvanced": false,
+      "validForList": [],
+      "invalidForList": [],
+      "condition": ""
     },
     {
       "key": "output",
       "name": "结果",
       "type": "Text",
-      "condition": "",
-      "description": "处理后的文本"
+      "description": "处理后的文本",
+      "isAdvanced": false,
+      "validForList": [],
+      "invalidForList": [],
+      "condition": ""
     }
   ],
   "selections": {
@@ -401,5 +478,5 @@
       ]
     }
   },
-  "sourceFileName": "sys_stringProcess_文本处理.md"
+  "sourceFileName": "catalog.json"
 }

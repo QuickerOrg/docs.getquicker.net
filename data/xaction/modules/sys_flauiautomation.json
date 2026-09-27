@@ -16,141 +16,243 @@
       "key": "type",
       "name": "操作类型",
       "type": "Enum",
+      "description": "操作类型。按下和抬起需要配对使用。",
+      "isAdvanced": false,
+      "validForList": [],
+      "invalidForList": [],
+      "condition": "",
       "defaultValue": "TriggerMenu",
+      "defaultValueRaw": "TriggerMenu",
       "required": true,
       "variableMode": "Input",
-      "condition": "",
-      "description": "操作类型。按下和抬起需要配对使用。"
+      "isControlField": true
     },
     {
       "key": "window",
       "name": "窗口句柄",
       "type": "Text",
+      "description": "要操作哪个窗口的控件。不填写或填写0=使用前台窗口；或窗口句柄数字。",
+      "isAdvanced": false,
+      "validForList": [
+        "TriggerMenu",
+        "TriggerControl",
+        "GetControlInfo",
+        "GetControlTree",
+        "ObserveInteractiveControls"
+      ],
+      "invalidForList": [],
+      "condition": "仅：TriggerMenu, TriggerControl, GetControlInfo, GetControlTree, ObserveInteractiveControls",
       "defaultValue": "",
       "required": false,
       "variableMode": "UseVarOrInput",
-      "condition": "仅：TriggerMenu, TriggerControl, GetControlInfo, GetControlTree, ObserveInteractiveControls",
-      "description": "要操作哪个窗口的控件。不填写或填写0=使用前台窗口；或窗口句柄数字。"
+      "isControlField": false
     },
     {
       "key": "menuPath",
       "name": "菜单路径",
       "type": "Text",
+      "description": "菜单的展开路径。每行写一个级别的菜单名（需完全匹配）",
+      "isAdvanced": false,
+      "validForList": [
+        "TriggerMenu"
+      ],
+      "invalidForList": [],
+      "condition": "仅：TriggerMenu",
       "defaultValue": "",
       "required": false,
       "variableMode": "UseVarOrInput",
-      "condition": "仅：TriggerMenu",
-      "description": "菜单的展开路径。每行写一个级别的菜单名（需完全匹配）"
+      "isControlField": false
     },
     {
       "key": "expandDelay",
       "name": "展开延时",
       "type": "Integer",
+      "description": "等待下级菜单展开的时间(ms)",
+      "isAdvanced": false,
+      "validForList": [
+        "TriggerMenu"
+      ],
+      "invalidForList": [],
+      "condition": "仅：TriggerMenu",
       "defaultValue": "200",
+      "defaultValueRaw": 200,
       "required": false,
       "variableMode": "Input",
-      "condition": "仅：TriggerMenu",
-      "description": "等待下级菜单展开的时间(ms)"
+      "isControlField": false
     },
     {
       "key": "control",
       "name": "控件XPath或Name",
       "type": "Text",
+      "description": "控件的XPath或Name、AutomationId。XPath以/开始。(可写多个，每行一个，前一个查找失败时会自动尝试下一个)",
+      "isAdvanced": false,
+      "validForList": [
+        "TriggerControl",
+        "GetControlInfo",
+        "GetControlTree",
+        "ObserveInteractiveControls"
+      ],
+      "invalidForList": [],
+      "condition": "仅：TriggerControl, GetControlInfo, GetControlTree, ObserveInteractiveControls",
       "defaultValue": "",
       "required": false,
       "variableMode": "UseVarOrInput",
-      "condition": "仅：TriggerControl, GetControlInfo, GetControlTree, ObserveInteractiveControls",
-      "description": "控件的XPath或Name、AutomationId。XPath以/开始。(可写多个，每行一个，前一个查找失败时会自动尝试下一个)"
+      "isControlField": false
     },
     {
       "key": "controlType",
       "name": "控件类型",
       "type": "Enum",
+      "description": "可选。当有多个名称相同但类型不同的控件时区分。",
+      "isAdvanced": false,
+      "validForList": [
+        "TriggerControl",
+        "GetControlInfo",
+        "GetControlTree",
+        "ObserveInteractiveControls"
+      ],
+      "invalidForList": [],
+      "condition": "仅：TriggerControl, GetControlInfo, GetControlTree, ObserveInteractiveControls",
       "defaultValue": "0",
+      "defaultValueRaw": "0",
       "required": false,
       "variableMode": "UseVarOrInput",
-      "condition": "仅：TriggerControl, GetControlInfo, GetControlTree, ObserveInteractiveControls",
-      "description": "可选。当有多个名称相同但类型不同的控件时区分。"
+      "isControlField": false
     },
     {
       "key": "maxDepth",
       "name": "最大深度",
       "type": "Integer",
+      "description": "返回控件树的最大层级深度。根控件深度为 0。",
+      "isAdvanced": false,
+      "validForList": [
+        "GetControlTree",
+        "ObserveInteractiveControls"
+      ],
+      "invalidForList": [],
+      "condition": "仅：GetControlTree, ObserveInteractiveControls",
       "defaultValue": "12",
+      "defaultValueRaw": 12,
       "required": false,
       "variableMode": "UseVarOrInput",
-      "condition": "仅：GetControlTree, ObserveInteractiveControls",
-      "description": "返回控件树的最大层级深度。根控件深度为 0。"
+      "isControlField": false
     },
     {
       "key": "maxNodes",
       "name": "最大节点数",
       "type": "Integer",
+      "description": "返回控件树的最大节点数。",
+      "isAdvanced": false,
+      "validForList": [
+        "GetControlTree",
+        "ObserveInteractiveControls"
+      ],
+      "invalidForList": [],
+      "condition": "仅：GetControlTree, ObserveInteractiveControls",
       "defaultValue": "512",
+      "defaultValueRaw": 512,
       "required": false,
       "variableMode": "UseVarOrInput",
-      "condition": "仅：GetControlTree, ObserveInteractiveControls",
-      "description": "返回控件树的最大节点数。"
+      "isControlField": false
     },
     {
       "key": "timeoutMs",
       "name": "超时时间",
       "type": "Integer",
+      "description": "定位起始控件和遍历控件树共用的软超时时间（毫秒）。",
+      "isAdvanced": false,
+      "validForList": [
+        "GetControlTree",
+        "ObserveInteractiveControls"
+      ],
+      "invalidForList": [],
+      "condition": "仅：GetControlTree, ObserveInteractiveControls",
       "defaultValue": "6000",
+      "defaultValueRaw": 6000,
       "required": false,
       "variableMode": "UseVarOrInput",
-      "condition": "仅：GetControlTree, ObserveInteractiveControls",
-      "description": "定位起始控件和遍历控件树共用的软超时时间（毫秒）。"
+      "isControlField": false
     },
     {
       "key": "controlOperation",
       "name": "动作",
       "type": "Enum",
+      "description": "对控件执行的操作。",
+      "isAdvanced": false,
+      "validForList": [
+        "TriggerControl"
+      ],
+      "invalidForList": [],
+      "condition": "仅：TriggerControl",
       "defaultValue": "Auto",
+      "defaultValueRaw": "Auto",
       "required": false,
       "variableMode": "Input",
-      "condition": "仅：TriggerControl",
-      "description": "对控件执行的操作。"
+      "isControlField": false
     },
     {
       "key": "noWait",
       "name": "不等待操作完成",
       "type": "Boolean",
+      "description": "提交后立即执行后续步骤，不保证控件操作已完成。是否成功仅表示提交成功；后台失败只记录日志，不触发失败后停止。涉及鼠标、键盘或焦点的操作可能与后续步骤互相影响，请按需等待目标状态。",
+      "isAdvanced": false,
+      "validForList": [
+        "TriggerControl"
+      ],
+      "invalidForList": [],
+      "condition": "仅：TriggerControl",
       "defaultValue": "false",
+      "defaultValueRaw": false,
       "required": false,
       "variableMode": "UseVarOrInput",
-      "condition": "仅：TriggerControl",
-      "description": "提交后立即执行后续步骤，不保证控件操作已完成。是否成功仅表示提交成功；后台失败只记录日志，不触发失败后停止。涉及鼠标、键盘或焦点的操作可能与后续步骤互相影响，请按需等待目标状态。"
+      "isControlField": false
     },
     {
       "key": "value",
       "name": "值",
       "type": "Text",
+      "description": "仅用于 \"设置值\" 操作。",
+      "isAdvanced": false,
+      "validForList": [
+        "TriggerControl"
+      ],
+      "invalidForList": [],
+      "condition": "仅：TriggerControl",
       "defaultValue": "",
       "required": false,
       "variableMode": "UseVarOrInput",
-      "condition": "仅：TriggerControl",
-      "description": "仅用于 \"设置值\" 操作。"
+      "isControlField": false
     },
     {
       "key": "pointLocation",
       "name": "坐标位置",
       "type": "Text",
+      "description": "指定要检查的控件的屏幕坐标位置，格式为\"x,y\"",
+      "isAdvanced": false,
+      "validForList": [
+        "GetControlInfoByPosition"
+      ],
+      "invalidForList": [],
+      "condition": "仅：GetControlInfoByPosition",
       "defaultValue": "",
       "required": false,
       "variableMode": "UseVarOrInput",
-      "condition": "仅：GetControlInfoByPosition",
-      "description": "指定要检查的控件的屏幕坐标位置，格式为\"x,y\""
+      "isControlField": false
     },
     {
       "key": "stopIfFail",
       "name": "失败后停止",
       "type": "Boolean",
+      "description": "失败后是否停止动作",
+      "isAdvanced": false,
+      "validForList": [],
+      "invalidForList": [],
+      "condition": "",
       "defaultValue": "true",
+      "defaultValueRaw": true,
       "required": false,
       "variableMode": "Input",
-      "condition": "",
-      "description": "失败后是否停止动作"
+      "isControlField": false
     }
   ],
   "outputs": [
@@ -158,127 +260,251 @@
       "key": "isSuccess",
       "name": "是否成功",
       "type": "Boolean",
-      "condition": "",
-      "description": "操作是否成功"
+      "description": "操作是否成功",
+      "isAdvanced": false,
+      "validForList": [],
+      "invalidForList": [],
+      "condition": ""
     },
     {
       "key": "controlTreeJson",
       "name": "控件树JSON",
       "type": "Text",
-      "condition": "仅：GetControlTree",
-      "description": "紧凑的树形界面信息，适合 JSONPath 或脚本按层级提取。"
+      "description": "紧凑的树形界面信息，适合 JSONPath 或脚本按层级提取。",
+      "isAdvanced": false,
+      "validForList": [
+        "GetControlTree"
+      ],
+      "invalidForList": [],
+      "condition": "仅：GetControlTree"
     },
     {
       "key": "controlTreeTable",
       "name": "控件树表格",
       "type": "Table",
-      "condition": "仅：GetControlTree",
-      "description": "同一次采集的平铺节点表格，适合筛选和循环处理。"
+      "description": "同一次采集的平铺节点表格，适合筛选和循环处理。",
+      "isAdvanced": false,
+      "validForList": [
+        "GetControlTree"
+      ],
+      "invalidForList": [],
+      "condition": "仅：GetControlTree"
     },
     {
       "key": "interactiveElementsJson",
       "name": "可交互元素JSON",
       "type": "Text",
-      "condition": "仅：ObserveInteractiveControls",
-      "description": "精简的可交互元素列表；locator 可直接传给“触发窗口控件”。"
+      "description": "精简的可交互元素列表；locator 可直接传给“触发窗口控件”。",
+      "isAdvanced": false,
+      "validForList": [
+        "ObserveInteractiveControls"
+      ],
+      "invalidForList": [],
+      "condition": "仅：ObserveInteractiveControls"
     },
     {
       "key": "nodeCount",
       "name": "节点数",
       "type": "Integer",
-      "condition": "仅：GetControlTree, ObserveInteractiveControls",
-      "description": ""
+      "description": "",
+      "isAdvanced": false,
+      "validForList": [
+        "GetControlTree",
+        "ObserveInteractiveControls"
+      ],
+      "invalidForList": [],
+      "condition": "仅：GetControlTree, ObserveInteractiveControls"
     },
     {
       "key": "isComplete",
       "name": "是否完整",
       "type": "Boolean",
-      "condition": "仅：GetControlTree, ObserveInteractiveControls",
-      "description": ""
+      "description": "",
+      "isAdvanced": false,
+      "validForList": [
+        "GetControlTree",
+        "ObserveInteractiveControls"
+      ],
+      "invalidForList": [],
+      "condition": "仅：GetControlTree, ObserveInteractiveControls"
     },
     {
       "key": "truncationReason",
       "name": "截断原因",
       "type": "Text",
-      "condition": "仅：GetControlTree, ObserveInteractiveControls",
-      "description": ""
+      "description": "",
+      "isAdvanced": false,
+      "validForList": [
+        "GetControlTree",
+        "ObserveInteractiveControls"
+      ],
+      "invalidForList": [],
+      "condition": "仅：GetControlTree, ObserveInteractiveControls"
     },
     {
       "key": "value",
       "name": "值",
       "type": "Text",
-      "condition": "仅：GetControlInfo, GetCursorPointControlInfo, GetFocusedControlInfo, GetControlInfoByPosition",
-      "description": "控件的值"
+      "description": "控件的值",
+      "isAdvanced": false,
+      "validForList": [
+        "GetControlInfo",
+        "GetCursorPointControlInfo",
+        "GetFocusedControlInfo",
+        "GetControlInfoByPosition"
+      ],
+      "invalidForList": [],
+      "condition": "仅：GetControlInfo, GetCursorPointControlInfo, GetFocusedControlInfo, GetControlInfoByPosition"
     },
     {
       "key": "controlText",
       "name": "文本",
       "type": "Text",
-      "condition": "仅：GetControlInfo, GetCursorPointControlInfo, GetFocusedControlInfo, GetControlInfoByPosition",
-      "description": "获取控件上的文本。根据控件不同，可能从Value、Text、Name等信息获取。"
+      "description": "获取控件上的文本。根据控件不同，可能从Value、Text、Name等信息获取。",
+      "isAdvanced": false,
+      "validForList": [
+        "GetControlInfo",
+        "GetCursorPointControlInfo",
+        "GetFocusedControlInfo",
+        "GetControlInfoByPosition"
+      ],
+      "invalidForList": [],
+      "condition": "仅：GetControlInfo, GetCursorPointControlInfo, GetFocusedControlInfo, GetControlInfoByPosition"
     },
     {
       "key": "rect",
       "name": "位置",
       "type": "Text",
-      "condition": "仅：GetControlInfo, GetCursorPointControlInfo, GetFocusedControlInfo, GetControlInfoByPosition",
-      "description": "控件坐标位置"
+      "description": "控件坐标位置",
+      "isAdvanced": false,
+      "validForList": [
+        "GetControlInfo",
+        "GetCursorPointControlInfo",
+        "GetFocusedControlInfo",
+        "GetControlInfoByPosition"
+      ],
+      "invalidForList": [],
+      "condition": "仅：GetControlInfo, GetCursorPointControlInfo, GetFocusedControlInfo, GetControlInfoByPosition"
     },
     {
       "key": "controlName",
       "name": "控件名称",
       "type": "Text",
-      "condition": "仅：GetControlInfo, GetCursorPointControlInfo, GetFocusedControlInfo, GetControlInfoByPosition",
-      "description": ""
+      "description": "",
+      "isAdvanced": false,
+      "validForList": [
+        "GetControlInfo",
+        "GetCursorPointControlInfo",
+        "GetFocusedControlInfo",
+        "GetControlInfoByPosition"
+      ],
+      "invalidForList": [],
+      "condition": "仅：GetControlInfo, GetCursorPointControlInfo, GetFocusedControlInfo, GetControlInfoByPosition"
     },
     {
       "key": "controlType",
       "name": "控件类型",
       "type": "Text",
-      "condition": "仅：GetControlInfo, GetCursorPointControlInfo, GetFocusedControlInfo, GetControlInfoByPosition",
-      "description": ""
+      "description": "",
+      "isAdvanced": false,
+      "validForList": [
+        "GetControlInfo",
+        "GetCursorPointControlInfo",
+        "GetFocusedControlInfo",
+        "GetControlInfoByPosition"
+      ],
+      "invalidForList": [],
+      "condition": "仅：GetControlInfo, GetCursorPointControlInfo, GetFocusedControlInfo, GetControlInfoByPosition"
     },
     {
       "key": "controlXPath",
       "name": "控件XPath",
       "type": "Text",
-      "condition": "仅：GetControlInfo, GetCursorPointControlInfo, GetFocusedControlInfo, GetControlInfoByPosition",
-      "description": ""
+      "description": "",
+      "isAdvanced": false,
+      "validForList": [
+        "GetControlInfo",
+        "GetCursorPointControlInfo",
+        "GetFocusedControlInfo",
+        "GetControlInfoByPosition"
+      ],
+      "invalidForList": [],
+      "condition": "仅：GetControlInfo, GetCursorPointControlInfo, GetFocusedControlInfo, GetControlInfoByPosition"
     },
     {
       "key": "controlTypeId",
       "name": "控件类型ID",
       "type": "Integer",
-      "condition": "仅：GetControlInfo, GetCursorPointControlInfo, GetFocusedControlInfo, GetControlInfoByPosition",
-      "description": ""
+      "description": "",
+      "isAdvanced": false,
+      "validForList": [
+        "GetControlInfo",
+        "GetCursorPointControlInfo",
+        "GetFocusedControlInfo",
+        "GetControlInfoByPosition"
+      ],
+      "invalidForList": [],
+      "condition": "仅：GetControlInfo, GetCursorPointControlInfo, GetFocusedControlInfo, GetControlInfoByPosition"
     },
     {
       "key": "controlInfo",
       "name": "其他信息",
       "type": "Dict",
-      "condition": "仅：GetControlInfo, GetCursorPointControlInfo, GetFocusedControlInfo, GetControlInfoByPosition",
-      "description": ""
+      "description": "",
+      "isAdvanced": false,
+      "validForList": [
+        "GetControlInfo",
+        "GetCursorPointControlInfo",
+        "GetFocusedControlInfo",
+        "GetControlInfoByPosition"
+      ],
+      "invalidForList": [],
+      "condition": "仅：GetControlInfo, GetCursorPointControlInfo, GetFocusedControlInfo, GetControlInfoByPosition"
     },
     {
       "key": "controlIsEnabled",
       "name": "是否启用",
       "type": "Boolean",
-      "condition": "仅：GetControlInfo, GetCursorPointControlInfo, GetFocusedControlInfo, GetControlInfoByPosition",
-      "description": "控件未处于禁用状态"
+      "description": "控件未处于禁用状态",
+      "isAdvanced": false,
+      "validForList": [
+        "GetControlInfo",
+        "GetCursorPointControlInfo",
+        "GetFocusedControlInfo",
+        "GetControlInfoByPosition"
+      ],
+      "invalidForList": [],
+      "condition": "仅：GetControlInfo, GetCursorPointControlInfo, GetFocusedControlInfo, GetControlInfoByPosition"
     },
     {
       "key": "controlIsVisible",
       "name": "是否可见",
       "type": "Boolean",
-      "condition": "仅：GetControlInfo, GetCursorPointControlInfo, GetFocusedControlInfo, GetControlInfoByPosition",
-      "description": "控件是否在屏幕上。"
+      "description": "控件是否在屏幕上。",
+      "isAdvanced": false,
+      "validForList": [
+        "GetControlInfo",
+        "GetCursorPointControlInfo",
+        "GetFocusedControlInfo",
+        "GetControlInfoByPosition"
+      ],
+      "invalidForList": [],
+      "condition": "仅：GetControlInfo, GetCursorPointControlInfo, GetFocusedControlInfo, GetControlInfoByPosition"
     },
     {
       "key": "element",
       "name": "原始对象",
       "type": "Object",
-      "condition": "仅：GetControlInfo, GetCursorPointControlInfo, GetFocusedControlInfo, GetControlInfoByPosition",
-      "description": "返回控件的AutomationElement对象"
+      "description": "返回控件的AutomationElement对象",
+      "isAdvanced": false,
+      "validForList": [
+        "GetControlInfo",
+        "GetCursorPointControlInfo",
+        "GetFocusedControlInfo",
+        "GetControlInfoByPosition"
+      ],
+      "invalidForList": [],
+      "condition": "仅：GetControlInfo, GetCursorPointControlInfo, GetFocusedControlInfo, GetControlInfoByPosition"
     }
   ],
   "selections": {
@@ -643,5 +869,5 @@
       ]
     }
   },
-  "sourceFileName": "sys_flauiautomation_窗口界面控制(FlaUI).md"
+  "sourceFileName": "catalog.json"
 }

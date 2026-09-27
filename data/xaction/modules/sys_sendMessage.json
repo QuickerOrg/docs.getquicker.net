@@ -16,71 +16,108 @@
       "key": "operation",
       "name": "操作类型",
       "type": "Enum",
+      "description": "",
+      "isAdvanced": false,
+      "validForList": [],
+      "invalidForList": [],
+      "condition": "",
       "defaultValue": "SendMessage",
+      "defaultValueRaw": "SendMessage",
       "required": true,
       "variableMode": "Input",
-      "condition": "",
-      "description": ""
+      "isControlField": true
     },
     {
       "key": "hWnd",
       "name": "窗口句柄hWnd",
       "type": "Integer",
+      "description": "留空或0表示前台窗口",
+      "isAdvanced": false,
+      "validForList": [],
+      "invalidForList": [],
+      "condition": "",
       "defaultValue": "",
       "required": false,
       "variableMode": "UseVarOrInput",
-      "condition": "",
-      "description": "留空或0表示前台窗口"
+      "isControlField": false
     },
     {
       "key": "wMsg",
       "name": "消息",
       "type": "Text",
+      "description": "要发送的消息。",
+      "isAdvanced": false,
+      "validForList": [],
+      "invalidForList": [],
+      "condition": "",
       "defaultValue": "",
       "required": false,
       "variableMode": "UseVarOrInput",
-      "condition": "",
-      "description": "要发送的消息。"
+      "isControlField": false
     },
     {
       "key": "wParam",
       "name": "wParam参数",
       "type": "Text",
+      "description": "",
+      "isAdvanced": false,
+      "validForList": [],
+      "invalidForList": [],
+      "condition": "",
       "defaultValue": "",
       "required": false,
       "variableMode": "UseVarOrInput",
-      "condition": "",
-      "description": ""
+      "isControlField": false
     },
     {
       "key": "lParam",
       "name": "lParam参数",
       "type": "Text",
+      "description": "",
+      "isAdvanced": false,
+      "validForList": [
+        "SendMessage",
+        "PostMessage"
+      ],
+      "invalidForList": [],
+      "condition": "仅：SendMessage, PostMessage",
       "defaultValue": "0",
+      "defaultValueRaw": 0,
       "required": false,
       "variableMode": "UseVarOrInput",
-      "condition": "仅：SendMessage, PostMessage",
-      "description": ""
+      "isControlField": false
     },
     {
       "key": "textLParam",
       "name": "lParam参数(文本)",
       "type": "Text",
+      "description": "文本内容",
+      "isAdvanced": false,
+      "validForList": [
+        "SendMessageTextLParam"
+      ],
+      "invalidForList": [],
+      "condition": "仅：SendMessageTextLParam",
       "defaultValue": "",
+      "defaultValueRaw": "",
       "required": false,
       "variableMode": "UseVarOrInput",
-      "condition": "仅：SendMessageTextLParam",
-      "description": "文本内容"
+      "isControlField": false
     },
     {
       "key": "stopIfFail",
       "name": "失败后停止",
       "type": "Boolean",
+      "description": "失败后是否停止动作",
+      "isAdvanced": false,
+      "validForList": [],
+      "invalidForList": [],
+      "condition": "",
       "defaultValue": "true",
+      "defaultValueRaw": true,
       "required": false,
       "variableMode": "Input",
-      "condition": "",
-      "description": "失败后是否停止动作"
+      "isControlField": false
     }
   ],
   "outputs": [
@@ -88,15 +125,24 @@
       "key": "isSuccess",
       "name": "是否成功",
       "type": "Boolean",
-      "condition": "",
-      "description": "操作是否成功"
+      "description": "操作是否成功",
+      "isAdvanced": false,
+      "validForList": [],
+      "invalidForList": [],
+      "condition": ""
     },
     {
       "key": "rtn",
       "name": "返回值",
       "type": "Integer",
-      "condition": "仅：SendMessage, SendMessageTextLParam",
-      "description": "返回值，依据消息的不同具有不同的含义，请查询对应API的文档。"
+      "description": "返回值，依据消息的不同具有不同的含义，请查询对应API的文档。",
+      "isAdvanced": false,
+      "validForList": [
+        "SendMessage",
+        "SendMessageTextLParam"
+      ],
+      "invalidForList": [],
+      "condition": "仅：SendMessage, SendMessageTextLParam"
     }
   ],
   "selections": {
@@ -121,5 +167,5 @@
       ]
     }
   },
-  "sourceFileName": "sys_sendMessage_向窗口发送消息.md"
+  "sourceFileName": "catalog.json"
 }

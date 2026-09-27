@@ -16,111 +16,178 @@
       "key": "operation",
       "name": "操作",
       "type": "Enum",
+      "description": "选择预定义文本任务；选择“自定义”时只使用完整系统提示词。",
+      "isAdvanced": false,
+      "validForList": [],
+      "invalidForList": [],
+      "condition": "",
       "defaultValue": "summarize",
+      "defaultValueRaw": "summarize",
       "required": true,
       "variableMode": "Input",
-      "condition": "",
-      "description": "选择预定义文本任务；选择“自定义”时只使用完整系统提示词。"
+      "isControlField": true
     },
     {
       "key": "text",
       "name": "文本",
       "type": "Text",
+      "description": "要处理的原始文本，例如邮件、文章或剪贴板内容。",
+      "isAdvanced": false,
+      "validForList": [],
+      "invalidForList": [],
+      "condition": "",
       "defaultValue": "",
       "required": true,
       "variableMode": "UseVarOrInput",
-      "condition": "",
-      "description": "要处理的原始文本，例如邮件、文章或剪贴板内容。"
+      "isControlField": false
     },
     {
       "key": "instructions",
       "name": "补充要求",
       "type": "Text",
+      "description": "追加到内置任务模板后的要求，例如“控制在 100 字内”。自定义操作时不使用。",
+      "isAdvanced": false,
+      "validForList": [
+        "translate",
+        "summarize",
+        "rewrite",
+        "shorten",
+        "expand",
+        "proofread",
+        "tone",
+        "title",
+        "keywords"
+      ],
+      "invalidForList": [],
+      "condition": "仅：translate, summarize, rewrite, shorten, expand, proofread, tone, title, keywords",
       "defaultValue": "",
+      "defaultValueRaw": "",
       "required": false,
       "variableMode": "UseVarOrInput",
-      "condition": "仅：translate, summarize, rewrite, shorten, expand, proofread, tone, title, keywords",
-      "description": "追加到内置任务模板后的要求，例如“控制在 100 字内”。自定义操作时不使用。"
+      "isControlField": false
     },
     {
       "key": "targetLanguage",
       "name": "目标语言",
       "type": "Text",
+      "description": "翻译结果使用的语言，例如“英语”或“日语”。仅翻译操作显示。",
+      "isAdvanced": false,
+      "validForList": [
+        "translate"
+      ],
+      "invalidForList": [],
+      "condition": "仅：translate",
       "defaultValue": "中文",
+      "defaultValueRaw": "中文",
       "required": false,
       "variableMode": "UseVarOrInput",
-      "condition": "仅：translate",
-      "description": "翻译结果使用的语言，例如“英语”或“日语”。仅翻译操作显示。"
+      "isControlField": false
     },
     {
       "key": "systemPrompt",
       "name": "完整系统提示词",
       "type": "Text",
+      "description": "完全定义 AI 的处理规则，不会与任何内置模板或补充要求拼接。",
+      "isAdvanced": false,
+      "validForList": [
+        "custom"
+      ],
+      "invalidForList": [],
+      "condition": "仅：custom",
       "defaultValue": "",
+      "defaultValueRaw": "",
       "required": true,
       "variableMode": "UseVarOrInput",
-      "condition": "仅：custom",
-      "description": "完全定义 AI 的处理规则，不会与任何内置模板或补充要求拼接。"
+      "isControlField": false
     },
     {
       "key": "useCaseId",
       "name": "AI 任务场景",
       "type": "Text",
+      "description": "选择“模型分配”中的任务场景。动作只保存场景 ID，可在其它设备匹配同步后的同一场景。",
+      "isAdvanced": false,
+      "validForList": [],
+      "invalidForList": [],
+      "condition": "",
       "defaultValue": "text.general",
+      "defaultValueRaw": "text.general",
       "required": false,
       "variableMode": "UseVarOrInput",
-      "condition": "",
-      "description": "选择“模型分配”中的任务场景。动作只保存场景 ID，可在其它设备匹配同步后的同一场景。"
+      "isControlField": false
     },
     {
       "key": "outputMode",
       "name": "输出方式",
       "type": "Enum",
+      "description": "直接返回适合后台流程；交互调整会打开 Markdown 窗口，可实时查看、继续追问并显式采用回答。",
+      "isAdvanced": false,
+      "validForList": [],
+      "invalidForList": [],
+      "condition": "",
       "defaultValue": "direct",
+      "defaultValueRaw": "direct",
       "required": false,
       "variableMode": "UseVarOrInput",
-      "condition": "",
-      "description": "直接返回适合后台流程；交互调整会打开 Markdown 窗口，可实时查看、继续追问并显式采用回答。"
+      "isControlField": false
     },
     {
       "key": "missingUseCaseBehavior",
       "name": "任务场景缺失时",
       "type": "Enum",
+      "description": "自定义任务场景不存在时，使用内置文本任务场景或直接失败。",
+      "isAdvanced": true,
+      "validForList": [],
+      "invalidForList": [],
+      "condition": "",
       "defaultValue": "UseBaseUseCase",
+      "defaultValueRaw": "UseBaseUseCase",
       "required": false,
       "variableMode": "UseVarOrInput",
-      "condition": "",
-      "description": "自定义任务场景不存在时，使用内置文本任务场景或直接失败。"
+      "isControlField": false
     },
     {
       "key": "temperature",
       "name": "温度",
       "type": "Number",
+      "description": "留空时不向模型发送 Temperature；仅在确认模型支持时填写，例如 0.2。",
+      "isAdvanced": true,
+      "validForList": [],
+      "invalidForList": [],
+      "condition": "",
       "defaultValue": "",
       "required": false,
       "variableMode": "UseVarOrInput",
-      "condition": "",
-      "description": "留空时不向模型发送 Temperature；仅在确认模型支持时填写，例如 0.2。"
+      "isControlField": false
     },
     {
       "key": "maxOutputTokens",
       "name": "最大输出 Token",
       "type": "Integer",
+      "description": "限制模型输出长度；0 表示不由本步骤设置。",
+      "isAdvanced": true,
+      "validForList": [],
+      "invalidForList": [],
+      "condition": "",
       "defaultValue": "0",
+      "defaultValueRaw": 0,
       "required": false,
       "variableMode": "UseVarOrInput",
-      "condition": "",
-      "description": "限制模型输出长度；0 表示不由本步骤设置。"
+      "isControlField": false
     },
     {
       "key": "stopIfFail",
       "name": "失败后停止",
       "type": "Boolean",
+      "description": "失败后是否停止动作",
+      "isAdvanced": false,
+      "validForList": [],
+      "invalidForList": [],
+      "condition": "",
       "defaultValue": "true",
+      "defaultValueRaw": true,
       "required": false,
       "variableMode": "Input",
-      "condition": "",
-      "description": "失败后是否停止动作"
+      "isControlField": false
     }
   ],
   "outputs": [
@@ -128,78 +195,111 @@
       "key": "isSuccess",
       "name": "是否成功",
       "type": "Boolean",
-      "condition": "",
-      "description": "操作是否成功"
+      "description": "操作是否成功",
+      "isAdvanced": false,
+      "validForList": [],
+      "invalidForList": [],
+      "condition": ""
     },
     {
       "key": "result",
       "name": "结果",
       "type": "Text",
-      "condition": "",
-      "description": "本次调用返回的完整文本。若结束原因不是 stop，结果可能被截断。"
+      "description": "本次调用返回的完整文本。若结束原因不是 stop，结果可能被截断。",
+      "isAdvanced": false,
+      "validForList": [],
+      "invalidForList": [],
+      "condition": ""
     },
     {
       "key": "model",
       "name": "实际模型",
       "type": "Text",
-      "condition": "",
-      "description": ""
+      "description": "",
+      "isAdvanced": true,
+      "validForList": [],
+      "invalidForList": [],
+      "condition": ""
     },
     {
       "key": "inputTokens",
       "name": "输入 Token",
       "type": "Integer",
-      "condition": "",
-      "description": ""
+      "description": "",
+      "isAdvanced": true,
+      "validForList": [],
+      "invalidForList": [],
+      "condition": ""
     },
     {
       "key": "cachedInputTokens",
       "name": "缓存输入 Token",
       "type": "Integer",
-      "condition": "",
-      "description": "服务商报告的缓存命中输入 Token；未提供时为 0。"
+      "description": "服务商报告的缓存命中输入 Token；未提供时为 0。",
+      "isAdvanced": true,
+      "validForList": [],
+      "invalidForList": [],
+      "condition": ""
     },
     {
       "key": "outputTokens",
       "name": "输出 Token",
       "type": "Integer",
-      "condition": "",
-      "description": ""
+      "description": "",
+      "isAdvanced": true,
+      "validForList": [],
+      "invalidForList": [],
+      "condition": ""
     },
     {
       "key": "totalTokens",
       "name": "总 Token",
       "type": "Integer",
-      "condition": "",
-      "description": ""
+      "description": "",
+      "isAdvanced": true,
+      "validForList": [],
+      "invalidForList": [],
+      "condition": ""
     },
     {
       "key": "finishReason",
       "name": "结束原因",
       "type": "Text",
-      "condition": "",
-      "description": ""
+      "description": "",
+      "isAdvanced": true,
+      "validForList": [],
+      "invalidForList": [],
+      "condition": ""
     },
     {
       "key": "invocationId",
       "name": "调用标识",
       "type": "Text",
-      "condition": "",
-      "description": ""
+      "description": "",
+      "isAdvanced": true,
+      "validForList": [],
+      "invalidForList": [],
+      "condition": ""
     },
     {
       "key": "resolvedUseCaseId",
       "name": "实际任务场景",
       "type": "Text",
-      "condition": "",
-      "description": ""
+      "description": "",
+      "isAdvanced": true,
+      "validForList": [],
+      "invalidForList": [],
+      "condition": ""
     },
     {
       "key": "useCaseFallbackUsed",
       "name": "是否回退场景",
       "type": "Boolean",
-      "condition": "",
-      "description": ""
+      "description": "",
+      "isAdvanced": true,
+      "validForList": [],
+      "invalidForList": [],
+      "condition": ""
     }
   ],
   "selections": {
@@ -299,5 +399,5 @@
       ]
     }
   },
-  "sourceFileName": "sys_aiText_AI 文本处理.md"
+  "sourceFileName": "catalog.json"
 }

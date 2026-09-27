@@ -16,251 +16,433 @@
       "key": "operation",
       "name": "操作类型",
       "type": "Enum",
+      "description": "",
+      "isAdvanced": false,
+      "validForList": [],
+      "invalidForList": [],
+      "condition": "",
       "defaultValue": "",
+      "defaultValueRaw": "",
       "required": true,
       "variableMode": "Input",
-      "condition": "",
-      "description": ""
+      "isControlField": true
     },
     {
       "key": "fileType",
       "name": "工作簿类型",
       "type": "Enum",
+      "description": "",
+      "isAdvanced": false,
+      "validForList": [
+        "newWorkbook"
+      ],
+      "invalidForList": [],
+      "condition": "仅：newWorkbook",
       "defaultValue": "XSSF",
+      "defaultValueRaw": "XSSF",
       "required": false,
       "variableMode": "Input",
-      "condition": "仅：newWorkbook",
-      "description": ""
+      "isControlField": false
     },
     {
       "key": "filePath",
       "name": "文件路径",
       "type": "Text",
+      "description": "要打开或写入的Excel文件路径",
+      "isAdvanced": false,
+      "validForList": [
+        "load",
+        "save"
+      ],
+      "invalidForList": [],
+      "condition": "仅：load, save",
       "defaultValue": "",
       "required": false,
       "variableMode": "UseVarOrInput",
-      "condition": "仅：load, save",
-      "description": "要打开或写入的Excel文件路径"
+      "isControlField": false
     },
     {
       "key": "readDataMap",
       "name": "提取数据定义",
       "type": "Text",
+      "description": "每行一条规则：\"字段:[工作表序号或名称]单元格地址\"，详情请参考模块文档。",
+      "isAdvanced": false,
+      "validForList": [
+        "readData"
+      ],
+      "invalidForList": [],
+      "condition": "仅：readData",
       "defaultValue": "",
       "required": false,
       "variableMode": "UseVarOrInput",
-      "condition": "仅：readData",
-      "description": "每行一条规则：\"字段:[工作表序号或名称]单元格地址\"，详情请参考模块文档。"
+      "isControlField": false
     },
     {
       "key": "workbook",
       "name": "工作簿对象",
       "type": "Object",
+      "description": "需要操作的工作簿对象",
+      "isAdvanced": false,
+      "validForList": [
+        "save",
+        "getSheet",
+        "getSheetByIndex",
+        "getSheetByName",
+        "createSheet",
+        "readData",
+        "addNames"
+      ],
+      "invalidForList": [],
+      "condition": "仅：save, getSheet, getSheetByIndex, getSheetByName, createSheet, readData, addNames",
       "defaultValue": "",
       "required": false,
       "variableMode": "UseVarOnly",
-      "condition": "仅：save, getSheet, getSheetByIndex, getSheetByName, createSheet, readData, addNames",
-      "description": "需要操作的工作簿对象"
+      "isControlField": false
     },
     {
       "key": "sheetIndex",
       "name": "工作表序号或名称",
       "type": "Text",
+      "description": "以0开始计算的序号或名称",
+      "isAdvanced": false,
+      "validForList": [
+        "getSheet",
+        "getSheetByIndex"
+      ],
+      "invalidForList": [],
+      "condition": "仅：getSheet, getSheetByIndex",
       "defaultValue": "",
       "required": false,
       "variableMode": "UseVarOrInput",
-      "condition": "仅：getSheet, getSheetByIndex",
-      "description": "以0开始计算的序号或名称"
+      "isControlField": false
     },
     {
       "key": "sheetName",
       "name": "工作表名称",
       "type": "Text",
+      "description": "要打开的工作表名称",
+      "isAdvanced": false,
+      "validForList": [
+        "getSheetByName",
+        "createSheet"
+      ],
+      "invalidForList": [],
+      "condition": "仅：getSheetByName, createSheet",
       "defaultValue": "",
       "required": false,
       "variableMode": "UseVarOrInput",
-      "condition": "仅：getSheetByName, createSheet",
-      "description": "要打开的工作表名称"
+      "isControlField": false
     },
     {
       "key": "createSheetIfNotExist",
       "name": "如果工作表不存在则创建一个",
       "type": "Boolean",
+      "description": "",
+      "isAdvanced": false,
+      "validForList": [
+        "getSheetByName"
+      ],
+      "invalidForList": [],
+      "condition": "仅：getSheetByName",
       "defaultValue": "false",
+      "defaultValueRaw": false,
       "required": false,
       "variableMode": "Input",
-      "condition": "仅：getSheetByName",
-      "description": ""
+      "isControlField": false
     },
     {
       "key": "sourceData",
       "name": "源数据",
       "type": "Object",
+      "description": "可以为工作表对象、表格变量或对象列表",
+      "isAdvanced": false,
+      "validForList": [
+        "writeData"
+      ],
+      "invalidForList": [],
+      "condition": "仅：writeData",
       "defaultValue": "",
       "required": false,
       "variableMode": "UseVarOnly",
-      "condition": "仅：writeData",
-      "description": "可以为工作表对象、表格变量或对象列表"
+      "isControlField": false
     },
     {
       "key": "columnMapping",
       "name": "字段映射",
       "type": "Text",
+      "description": "复制哪些字段信息到目标工作表。请参考文档了解使用方法。",
+      "isAdvanced": false,
+      "validForList": [
+        "writeData"
+      ],
+      "invalidForList": [],
+      "condition": "仅：writeData",
       "defaultValue": "",
       "required": false,
       "variableMode": "UseVarOrInput",
-      "condition": "仅：writeData",
-      "description": "复制哪些字段信息到目标工作表。请参考文档了解使用方法。"
+      "isControlField": false
     },
     {
       "key": "names",
       "name": "名称数据",
       "type": "Text",
+      "description": "JSON格式的名称数据定义，详细请参考文档。",
+      "isAdvanced": false,
+      "validForList": [
+        "addNames"
+      ],
+      "invalidForList": [],
+      "condition": "仅：addNames",
       "defaultValue": "",
       "required": false,
       "variableMode": "UseVarOrInput",
-      "condition": "仅：addNames",
-      "description": "JSON格式的名称数据定义，详细请参考文档。"
+      "isControlField": false
     },
     {
       "key": "writeTitleRow",
       "name": "写入标题行",
       "type": "Boolean",
+      "description": "是否输出标题行",
+      "isAdvanced": false,
+      "validForList": [
+        "writeData"
+      ],
+      "invalidForList": [],
+      "condition": "仅：writeData",
       "defaultValue": "true",
+      "defaultValueRaw": true,
       "required": false,
       "variableMode": "Input",
-      "condition": "仅：writeData",
-      "description": "是否输出标题行"
+      "isControlField": false
     },
     {
       "key": "worksheet",
       "name": "工作表对象",
       "type": "Object",
+      "description": "需要操作或读写的工作表对象",
+      "isAdvanced": false,
+      "validForList": [
+        "getRow",
+        "getCellByValue",
+        "getCell",
+        "setCell",
+        "writeData",
+        "mergeCells",
+        "freezePane",
+        "autoFilter",
+        "setStyle",
+        "batchReplace"
+      ],
+      "invalidForList": [],
+      "condition": "仅：getRow, getCellByValue, getCell, setCell, writeData, mergeCells, freezePane, autoFilter, setStyle, batchReplace",
       "defaultValue": "",
       "required": false,
       "variableMode": "UseVarOnly",
-      "condition": "仅：getRow, getCellByValue, getCell, setCell, writeData, mergeCells, freezePane, autoFilter, setStyle, batchReplace",
-      "description": "需要操作或读写的工作表对象"
+      "isControlField": false
     },
     {
       "key": "cellAddress",
       "name": "单元格地址",
       "type": "Text",
+      "description": "类似于\"D5\"这样的单元格位置名称。或在下方使用行序号和单元格序号指定（两种二选一）。",
+      "isAdvanced": false,
+      "validForList": [
+        "getCell",
+        "setCell"
+      ],
+      "invalidForList": [],
+      "condition": "仅：getCell, setCell",
       "defaultValue": "",
       "required": false,
       "variableMode": "UseVarOrInput",
-      "condition": "仅：getCell, setCell",
-      "description": "类似于\"D5\"这样的单元格位置名称。或在下方使用行序号和单元格序号指定（两种二选一）。"
+      "isControlField": false
     },
     {
       "key": "cellRange",
       "name": "单元格范围",
       "type": "Text",
+      "description": "类似于\"A1:B5\"格式，或\"开始行号,结束行号,开始列号,结束列号\"方式(从0开始的序号)。",
+      "isAdvanced": false,
+      "validForList": [
+        "mergeCells",
+        "autoFilter",
+        "setStyle"
+      ],
+      "invalidForList": [],
+      "condition": "仅：mergeCells, autoFilter, setStyle",
       "defaultValue": "",
       "required": false,
       "variableMode": "UseVarOrInput",
-      "condition": "仅：mergeCells, autoFilter, setStyle",
-      "description": "类似于\"A1:B5\"格式，或\"开始行号,结束行号,开始列号,结束列号\"方式(从0开始的序号)。"
+      "isControlField": false
     },
     {
       "key": "styleData",
       "name": "样式设置",
       "type": "Text",
+      "description": "请参考模块文档。",
+      "isAdvanced": false,
+      "validForList": [
+        "setStyle"
+      ],
+      "invalidForList": [],
+      "condition": "仅：setStyle",
       "defaultValue": "",
       "required": false,
       "variableMode": "UseVarOrInput",
-      "condition": "仅：setStyle",
-      "description": "请参考模块文档。"
+      "isControlField": false
     },
     {
       "key": "rowIndex",
       "name": "行序号",
       "type": "Integer",
+      "description": "以0开始计算的序号",
+      "isAdvanced": false,
+      "validForList": [
+        "getRow",
+        "getCell",
+        "setCell",
+        "writeData",
+        "freezePane"
+      ],
+      "invalidForList": [],
+      "condition": "仅：getRow, getCell, setCell, writeData, freezePane",
       "defaultValue": "0",
+      "defaultValueRaw": 0,
       "required": false,
       "variableMode": "UseVarOrInput",
-      "condition": "仅：getRow, getCell, setCell, writeData, freezePane",
-      "description": "以0开始计算的序号"
+      "isControlField": false
     },
     {
       "key": "cellIndex",
       "name": "列序号",
       "type": "Integer",
+      "description": "单元格在所在行里的序号，从0开始",
+      "isAdvanced": false,
+      "validForList": [
+        "getCell",
+        "setCell",
+        "freezePane"
+      ],
+      "invalidForList": [],
+      "condition": "仅：getCell, setCell, freezePane",
       "defaultValue": "0",
+      "defaultValueRaw": 0,
       "required": false,
       "variableMode": "UseVarOrInput",
-      "condition": "仅：getCell, setCell, freezePane",
-      "description": "单元格在所在行里的序号，从0开始"
+      "isControlField": false
     },
     {
       "key": "cellType",
       "name": "单元格类型",
       "type": "Text",
+      "description": "设置单元格类型",
+      "isAdvanced": false,
+      "validForList": [
+        "setCell"
+      ],
+      "invalidForList": [],
+      "condition": "仅：setCell",
       "defaultValue": "",
       "required": false,
       "variableMode": "UseVarOrInput",
-      "condition": "仅：setCell",
-      "description": "设置单元格类型"
+      "isControlField": false
     },
     {
       "key": "cellValue",
       "name": "值",
       "type": "Any",
+      "description": "设置单元格的值",
+      "isAdvanced": false,
+      "validForList": [
+        "getCellByValue",
+        "setCell"
+      ],
+      "invalidForList": [],
+      "condition": "仅：getCellByValue, setCell",
       "defaultValue": "",
       "required": false,
       "variableMode": "UseVarOrInput",
-      "condition": "仅：getCellByValue, setCell",
-      "description": "设置单元格的值"
+      "isControlField": false
     },
     {
       "key": "dataFormat",
       "name": "数据格式",
       "type": "Text",
+      "description": "设置单元格的DataFormat",
+      "isAdvanced": false,
+      "validForList": [
+        "setCell"
+      ],
+      "invalidForList": [],
+      "condition": "仅：setCell",
       "defaultValue": "",
       "required": false,
       "variableMode": "UseVarOrInput",
-      "condition": "仅：setCell",
-      "description": "设置单元格的DataFormat"
+      "isControlField": false
     },
     {
       "key": "cellLink",
       "name": "链接",
       "type": "Text",
+      "description": "可以为网址、邮件地址(mailto:who@domain.com)、工作表名称、文件路径",
+      "isAdvanced": false,
+      "validForList": [
+        "setCell"
+      ],
+      "invalidForList": [],
+      "condition": "仅：setCell",
       "defaultValue": "",
       "required": false,
       "variableMode": "UseVarOrInput",
-      "condition": "仅：setCell",
-      "description": "可以为网址、邮件地址(mailto:who@domain.com)、工作表名称、文件路径"
+      "isControlField": false
     },
     {
       "key": "replaceDict",
       "name": "替换数据词典",
       "type": "Dict",
+      "description": "词典格式数据。键为要查找的字段，值为要填充的内容。",
+      "isAdvanced": false,
+      "validForList": [
+        "batchReplace"
+      ],
+      "invalidForList": [],
+      "condition": "仅：batchReplace",
       "defaultValue": "",
       "required": false,
       "variableMode": "UseVarOrInput",
-      "condition": "仅：batchReplace",
-      "description": "词典格式数据。键为要查找的字段，值为要填充的内容。"
+      "isControlField": false
     },
     {
       "key": "replacePrefixSuffix",
       "name": "占位符前后缀",
       "type": "Text",
-      "defaultValue": "{{\n}}",
+      "description": "第一行写前缀，第二行写后缀。\"前缀+字段名+后缀\"组成要查找和替换的目标，如\"{{姓名}}\"。",
+      "isAdvanced": false,
+      "validForList": [
+        "batchReplace"
+      ],
+      "invalidForList": [],
+      "condition": "仅：batchReplace",
+      "defaultValue": "{{\r\n}}",
+      "defaultValueRaw": "{{\r\n}}",
       "required": false,
       "variableMode": "UseVarOrInput",
-      "condition": "仅：batchReplace",
-      "description": "第一行写前缀，第二行写后缀。\"前缀+字段名+后缀\"组成要查找和替换的目标，如\"{{姓名}}\"。"
+      "isControlField": false
     },
     {
       "key": "stopIfFail",
       "name": "失败后停止",
       "type": "Boolean",
+      "description": "失败后是否停止动作",
+      "isAdvanced": false,
+      "validForList": [],
+      "invalidForList": [],
+      "condition": "",
       "defaultValue": "true",
+      "defaultValueRaw": true,
       "required": false,
       "variableMode": "Input",
-      "condition": "",
-      "description": "失败后是否停止动作"
+      "isControlField": false
     }
   ],
   "outputs": [
@@ -268,141 +450,255 @@
       "key": "isSuccess",
       "name": "是否成功",
       "type": "Boolean",
-      "condition": "",
-      "description": "操作是否成功"
+      "description": "操作是否成功",
+      "isAdvanced": false,
+      "validForList": [],
+      "invalidForList": [],
+      "condition": ""
     },
     {
       "key": "workbook",
       "name": "工作簿对象",
       "type": "Object",
-      "condition": "仅：load, newWorkbook",
-      "description": "用于在后续步骤中继续操作工作簿。"
+      "description": "用于在后续步骤中继续操作工作簿。",
+      "isAdvanced": false,
+      "validForList": [
+        "load",
+        "newWorkbook"
+      ],
+      "invalidForList": [],
+      "condition": "仅：load, newWorkbook"
     },
     {
       "key": "worksheetNameList",
       "name": "工作表名称列表",
       "type": "List",
-      "condition": "仅：load",
-      "description": "工作簿中的工作表名列表。"
+      "description": "工作簿中的工作表名列表。",
+      "isAdvanced": false,
+      "validForList": [
+        "load"
+      ],
+      "invalidForList": [],
+      "condition": "仅：load"
     },
     {
       "key": "numberOfSheets",
       "name": "工作表个数",
       "type": "Integer",
-      "condition": "仅：load",
-      "description": "工作簿中的工作表个数。"
+      "description": "工作簿中的工作表个数。",
+      "isAdvanced": false,
+      "validForList": [
+        "load"
+      ],
+      "invalidForList": [],
+      "condition": "仅：load"
     },
     {
       "key": "sheet",
       "name": "工作表对象",
       "type": "Object",
-      "condition": "仅：load, getSheet, getSheetByIndex, getSheetByName, createSheet",
-      "description": "返回指定的工作表。加载文件时返回工作簿中的第一个工作表对象"
+      "description": "返回指定的工作表。加载文件时返回工作簿中的第一个工作表对象",
+      "isAdvanced": false,
+      "validForList": [
+        "load",
+        "getSheet",
+        "getSheetByIndex",
+        "getSheetByName",
+        "createSheet"
+      ],
+      "invalidForList": [],
+      "condition": "仅：load, getSheet, getSheetByIndex, getSheetByName, createSheet"
     },
     {
       "key": "firstRow",
       "name": "首行序号",
       "type": "Integer",
-      "condition": "仅：load, getSheet, getSheetByIndex, getSheetByName, getCellByValue",
-      "description": "工作表首行序号（从0开始）。"
+      "description": "工作表首行序号（从0开始）。",
+      "isAdvanced": false,
+      "validForList": [
+        "load",
+        "getSheet",
+        "getSheetByIndex",
+        "getSheetByName",
+        "getCellByValue"
+      ],
+      "invalidForList": [],
+      "condition": "仅：load, getSheet, getSheetByIndex, getSheetByName, getCellByValue"
     },
     {
       "key": "lastRow",
       "name": "末行序号",
       "type": "Integer",
-      "condition": "仅：load, getSheet, getSheetByIndex, getSheetByName",
-      "description": "工作表有内容的最后一行序号（从0开始）。"
+      "description": "工作表有内容的最后一行序号（从0开始）。",
+      "isAdvanced": false,
+      "validForList": [
+        "load",
+        "getSheet",
+        "getSheetByIndex",
+        "getSheetByName"
+      ],
+      "invalidForList": [],
+      "condition": "仅：load, getSheet, getSheetByIndex, getSheetByName"
     },
     {
       "key": "names",
       "name": "名称数据",
       "type": "Text",
-      "condition": "仅：load",
-      "description": "工作簿中定义的名称数据，返回json格式"
+      "description": "工作簿中定义的名称数据，返回json格式",
+      "isAdvanced": false,
+      "validForList": [
+        "load"
+      ],
+      "invalidForList": [],
+      "condition": "仅：load"
     },
     {
       "key": "firstCellNum",
       "name": "首个单元格的列序号",
       "type": "Integer",
-      "condition": "仅：getRow, getCellByValue",
-      "description": "一行的首列序号（从0开始）。获取工作表信息时，"
+      "description": "一行的首列序号（从0开始）。获取工作表信息时，",
+      "isAdvanced": false,
+      "validForList": [
+        "getRow",
+        "getCellByValue"
+      ],
+      "invalidForList": [],
+      "condition": "仅：getRow, getCellByValue"
     },
     {
       "key": "lastCellNum",
       "name": "末个单元格的列序号",
       "type": "Integer",
-      "condition": "仅：getRow",
-      "description": "一行的最后一个单元格的序号（从0开始）。"
+      "description": "一行的最后一个单元格的序号（从0开始）。",
+      "isAdvanced": false,
+      "validForList": [
+        "getRow"
+      ],
+      "invalidForList": [],
+      "condition": "仅：getRow"
     },
     {
       "key": "maxColumnNum",
       "name": "最大列序号",
       "type": "Integer",
-      "condition": "仅：load, getSheet, getSheetByIndex, getSheetByName",
-      "description": "工作表的最大列序号（从0开始）。"
+      "description": "工作表的最大列序号（从0开始）。",
+      "isAdvanced": false,
+      "validForList": [
+        "load",
+        "getSheet",
+        "getSheetByIndex",
+        "getSheetByName"
+      ],
+      "invalidForList": [],
+      "condition": "仅：load, getSheet, getSheetByIndex, getSheetByName"
     },
     {
       "key": "hasValue",
       "name": "是否有值",
       "type": "Boolean",
-      "condition": "仅：getCell",
-      "description": "单元格是否有值"
+      "description": "单元格是否有值",
+      "isAdvanced": false,
+      "validForList": [
+        "getCell"
+      ],
+      "invalidForList": [],
+      "condition": "仅：getCell"
     },
     {
       "key": "cellValue",
       "name": "值",
       "type": "Any",
-      "condition": "仅：getCell",
-      "description": "单元格的值"
+      "description": "单元格的值",
+      "isAdvanced": false,
+      "validForList": [
+        "getCell"
+      ],
+      "invalidForList": [],
+      "condition": "仅：getCell"
     },
     {
       "key": "cellTextValue",
       "name": "文本值",
       "type": "Text",
-      "condition": "仅：getCell",
-      "description": "文本格式的单元格内容"
+      "description": "文本格式的单元格内容",
+      "isAdvanced": false,
+      "validForList": [
+        "getCell"
+      ],
+      "invalidForList": [],
+      "condition": "仅：getCell"
     },
     {
       "key": "cellType",
       "name": "类型",
       "type": "Text",
-      "condition": "仅：getCell",
-      "description": "单元格的类型"
+      "description": "单元格的类型",
+      "isAdvanced": false,
+      "validForList": [
+        "getCell"
+      ],
+      "invalidForList": [],
+      "condition": "仅：getCell"
     },
     {
       "key": "cellFormula",
       "name": "公式",
       "type": "Text",
-      "condition": "仅：getCell",
-      "description": "单元格的公式值"
+      "description": "单元格的公式值",
+      "isAdvanced": false,
+      "validForList": [
+        "getCell"
+      ],
+      "invalidForList": [],
+      "condition": "仅：getCell"
     },
     {
       "key": "dictData",
       "name": "数据词典",
       "type": "Dict",
-      "condition": "仅：readData",
-      "description": "从工作簿加载的数据"
+      "description": "从工作簿加载的数据",
+      "isAdvanced": false,
+      "validForList": [
+        "readData"
+      ],
+      "invalidForList": [],
+      "condition": "仅：readData"
     },
     {
       "key": "cellDataFormatString",
       "name": "数据格式字符串",
       "type": "Text",
-      "condition": "仅：getCell",
-      "description": "数据格式的字符串表示"
+      "description": "数据格式的字符串表示",
+      "isAdvanced": false,
+      "validForList": [
+        "getCell"
+      ],
+      "invalidForList": [],
+      "condition": "仅：getCell"
     },
     {
       "key": "cellAddress",
       "name": "单元格地址",
       "type": "Object",
-      "condition": "仅：getCellByValue",
-      "description": "查找到的单元格地址"
+      "description": "查找到的单元格地址",
+      "isAdvanced": false,
+      "validForList": [
+        "getCellByValue"
+      ],
+      "invalidForList": [],
+      "condition": "仅：getCellByValue"
     },
     {
       "key": "cellAddressList",
       "name": "单元格地址列表",
       "type": "List",
-      "condition": "仅：getCellByValue",
-      "description": "查找到的单元格地址的列表（查找多个单元格的情况）"
+      "description": "查找到的单元格地址的列表（查找多个单元格的情况）",
+      "isAdvanced": false,
+      "validForList": [
+        "getCellByValue"
+      ],
+      "invalidForList": [],
+      "condition": "仅：getCellByValue"
     }
   ],
   "selections": {
@@ -542,5 +838,5 @@
       ]
     }
   },
-  "sourceFileName": "sys_excelreadwrite_Excel文件读写.md"
+  "sourceFileName": "catalog.json"
 }

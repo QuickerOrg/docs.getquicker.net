@@ -16,141 +16,235 @@
       "key": "operation",
       "name": "操作类型",
       "type": "Enum",
+      "description": "",
+      "isAdvanced": false,
+      "validForList": [],
+      "invalidForList": [],
+      "condition": "",
       "defaultValue": "model.get_context",
+      "defaultValueRaw": "model.get_context",
       "required": true,
       "variableMode": "Input",
-      "condition": "",
-      "description": ""
+      "isControlField": true
     },
     {
       "key": "includeDetails",
       "name": "返回对象变换与集合信息",
       "type": "Boolean",
+      "description": "",
+      "isAdvanced": false,
+      "validForList": [
+        "selection.get_info"
+      ],
+      "invalidForList": [],
+      "condition": "仅：selection.get_info",
       "defaultValue": "true",
+      "defaultValueRaw": true,
       "required": false,
       "variableMode": "Input",
-      "condition": "仅：selection.get_info",
-      "description": ""
+      "isControlField": false
     },
     {
       "key": "operatorQuery",
       "name": "搜索内容",
       "type": "Text",
+      "description": "按 Operator ID 或本地标题筛选；留空返回前若干项。",
+      "isAdvanced": false,
+      "validForList": [
+        "operator.list"
+      ],
+      "invalidForList": [],
+      "condition": "仅：operator.list",
       "defaultValue": "",
+      "defaultValueRaw": "",
       "required": false,
       "variableMode": "UseVarOrInput",
-      "condition": "仅：operator.list",
-      "description": "按 Operator ID 或本地标题筛选；留空返回前若干项。"
+      "isControlField": false
     },
     {
       "key": "maxCount",
       "name": "最多返回数量",
       "type": "Integer",
+      "description": "",
+      "isAdvanced": false,
+      "validForList": [
+        "operator.list"
+      ],
+      "invalidForList": [],
+      "condition": "仅：operator.list",
       "defaultValue": "100",
+      "defaultValueRaw": 100,
       "required": false,
       "variableMode": "Input",
-      "condition": "仅：operator.list",
-      "description": ""
+      "isControlField": false
     },
     {
       "key": "operatorId",
       "name": "Operator ID",
       "type": "Text",
+      "description": "例如 object.select_all；也可填写第三方插件注册的 Operator。",
+      "isAdvanced": false,
+      "validForList": [
+        "operator.invoke"
+      ],
+      "invalidForList": [],
+      "condition": "仅：operator.invoke",
       "defaultValue": "object.select_all",
+      "defaultValueRaw": "object.select_all",
       "required": false,
       "variableMode": "UseVarOrInput",
-      "condition": "仅：operator.invoke",
-      "description": "例如 object.select_all；也可填写第三方插件注册的 Operator。"
+      "isControlField": false
     },
     {
       "key": "executionContext",
       "name": "执行上下文",
       "type": "Text",
+      "description": "通常使用 EXEC_DEFAULT；需要交互操作时可改为 INVOKE_DEFAULT。",
+      "isAdvanced": false,
+      "validForList": [
+        "operator.invoke"
+      ],
+      "invalidForList": [],
+      "condition": "仅：operator.invoke",
       "defaultValue": "EXEC_DEFAULT",
+      "defaultValueRaw": "EXEC_DEFAULT",
       "required": false,
       "variableMode": "UseVarOrInput",
-      "condition": "仅：operator.invoke",
-      "description": "通常使用 EXEC_DEFAULT；需要交互操作时可改为 INVOKE_DEFAULT。"
+      "isControlField": false
     },
     {
       "key": "operatorAreaType",
       "name": "界面区域类型",
       "type": "Text",
+      "description": "为依赖界面上下文的 Operator 提供区域，例如 VIEW_3D、NODE_EDITOR；留空仅提供窗口上下文。",
+      "isAdvanced": false,
+      "validForList": [
+        "operator.invoke"
+      ],
+      "invalidForList": [],
+      "condition": "仅：operator.invoke",
       "defaultValue": "VIEW_3D",
+      "defaultValueRaw": "VIEW_3D",
       "required": false,
       "variableMode": "UseVarOrInput",
-      "condition": "仅：operator.invoke",
-      "description": "为依赖界面上下文的 Operator 提供区域，例如 VIEW_3D、NODE_EDITOR；留空仅提供窗口上下文。"
+      "isControlField": false
     },
     {
       "key": "operatorPropertiesJson",
       "name": "Operator 参数(JSON 对象)",
       "type": "Text",
+      "description": "",
+      "isAdvanced": false,
+      "validForList": [
+        "operator.invoke"
+      ],
+      "invalidForList": [],
+      "condition": "仅：operator.invoke",
       "defaultValue": "{}",
+      "defaultValueRaw": "{}",
       "required": false,
       "variableMode": "UseVarOrInput",
-      "condition": "仅：operator.invoke",
-      "description": ""
+      "isControlField": false
     },
     {
       "key": "pythonCode",
       "name": "Python 代码",
       "type": "Text",
+      "description": "表达式直接返回值；脚本可把返回值赋给 result。",
+      "isAdvanced": false,
+      "validForList": [
+        "python.evaluate",
+        "python.execute"
+      ],
+      "invalidForList": [],
+      "condition": "仅：python.evaluate, python.execute",
       "defaultValue": "",
+      "defaultValueRaw": "",
       "required": true,
       "variableMode": "UseVarOrInput",
-      "condition": "仅：python.evaluate, python.execute",
-      "description": "表达式直接返回值；脚本可把返回值赋给 result。"
+      "isControlField": false
     },
     {
       "key": "filePath",
       "name": "文件路径",
       "type": "Text",
+      "description": "Python 文件或要导入的模型文件绝对路径。",
+      "isAdvanced": false,
+      "validForList": [
+        "python.run_file",
+        "model.import_file"
+      ],
+      "invalidForList": [],
+      "condition": "仅：python.run_file, model.import_file",
       "defaultValue": "",
+      "defaultValueRaw": "",
       "required": true,
       "variableMode": "UseVarOrInput",
-      "condition": "仅：python.run_file, model.import_file",
-      "description": "Python 文件或要导入的模型文件绝对路径。"
+      "isControlField": false
     },
     {
       "key": "commandName",
       "name": "Bridge 命令名称",
       "type": "Text",
+      "description": "",
+      "isAdvanced": false,
+      "validForList": [
+        "command.custom"
+      ],
+      "invalidForList": [],
+      "condition": "仅：command.custom",
       "defaultValue": "",
+      "defaultValueRaw": "",
       "required": true,
       "variableMode": "UseVarOrInput",
-      "condition": "仅：command.custom",
-      "description": ""
+      "isControlField": false
     },
     {
       "key": "argumentsJson",
       "name": "参数(JSON 对象)",
       "type": "Text",
+      "description": "",
+      "isAdvanced": false,
+      "validForList": [
+        "command.custom"
+      ],
+      "invalidForList": [],
+      "condition": "仅：command.custom",
       "defaultValue": "{}",
+      "defaultValueRaw": "{}",
       "required": false,
       "variableMode": "UseVarOrInput",
-      "condition": "仅：command.custom",
-      "description": ""
+      "isControlField": false
     },
     {
       "key": "waitMs",
       "name": "最长等待时间(ms)",
       "type": "Number",
+      "description": "",
+      "isAdvanced": true,
+      "validForList": [],
+      "invalidForList": [],
+      "condition": "",
       "defaultValue": "30000",
+      "defaultValueRaw": 30000,
       "required": true,
       "variableMode": "Input",
-      "condition": "",
-      "description": ""
+      "isControlField": false
     },
     {
       "key": "stopIfFail",
       "name": "失败后停止",
       "type": "Boolean",
+      "description": "失败后是否停止动作",
+      "isAdvanced": false,
+      "validForList": [],
+      "invalidForList": [],
+      "condition": "",
       "defaultValue": "true",
+      "defaultValueRaw": true,
       "required": false,
       "variableMode": "Input",
-      "condition": "",
-      "description": "失败后是否停止动作"
+      "isControlField": false
     }
   ],
   "outputs": [
@@ -158,15 +252,21 @@
       "key": "isSuccess",
       "name": "是否成功",
       "type": "Boolean",
-      "condition": "",
-      "description": "操作是否成功"
+      "description": "操作是否成功",
+      "isAdvanced": false,
+      "validForList": [],
+      "invalidForList": [],
+      "condition": ""
     },
     {
       "key": "output",
       "name": "命令结果",
       "type": "Text",
-      "condition": "",
-      "description": "Blender 返回的 JSON 结果。"
+      "description": "Blender 返回的 JSON 结果。",
+      "isAdvanced": false,
+      "validForList": [],
+      "invalidForList": [],
+      "condition": ""
     }
   ],
   "selections": {
@@ -236,5 +336,5 @@
       ]
     }
   },
-  "sourceFileName": "sys_blendercontrol_Blender控制.md"
+  "sourceFileName": "catalog.json"
 }

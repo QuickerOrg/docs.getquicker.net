@@ -16,51 +16,80 @@
       "key": "type",
       "name": "类型",
       "type": "Enum",
+      "description": "比较方式",
+      "isAdvanced": false,
+      "validForList": [],
+      "invalidForList": [],
+      "condition": "",
       "defaultValue": "fromString",
+      "defaultValueRaw": "fromString",
       "required": true,
       "variableMode": "Input",
-      "condition": "",
-      "description": "比较方式"
+      "isControlField": true
     },
     {
       "key": "colorStr",
       "name": "颜色",
       "type": "Text",
+      "description": "颜色的文本值, 格式支持：#223344, #FF223344(ARGB顺序), Red, rgb(200,200,200), rgba(200,200,200,0.5), CMYK(0,0,0,0)或CMYK:0,0,0,0",
+      "isAdvanced": false,
+      "validForList": [
+        "fromString",
+        "editOrSelectColor"
+      ],
+      "invalidForList": [],
+      "condition": "仅：fromString, editOrSelectColor",
       "defaultValue": "",
       "required": true,
       "variableMode": "UseVarOrInput",
-      "condition": "仅：fromString, editOrSelectColor",
-      "description": "颜色的文本值, 格式支持：#223344, #FF223344(ARGB顺序), Red, rgb(200,200,200), rgba(200,200,200,0.5), CMYK(0,0,0,0)或CMYK:0,0,0,0"
+      "isControlField": false
     },
     {
       "key": "location",
       "name": "坐标",
       "type": "Text",
+      "description": "格式为:\"横坐标X,纵坐标Y\"",
+      "isAdvanced": false,
+      "validForList": [
+        "fromScreenPosition"
+      ],
+      "invalidForList": [],
+      "condition": "仅：fromScreenPosition",
       "defaultValue": "0,0",
+      "defaultValueRaw": "0,0",
       "required": true,
       "variableMode": "UseVarOrInput",
-      "condition": "仅：fromScreenPosition",
-      "description": "格式为:\"横坐标X,纵坐标Y\""
+      "isControlField": false
     },
     {
       "key": "format",
       "name": "输出文本格式",
       "type": "Enum",
+      "description": "输出的颜色文本值格式，用以转换颜色值的格式",
+      "isAdvanced": false,
+      "validForList": [],
+      "invalidForList": [],
+      "condition": "",
       "defaultValue": "HEX_RGB",
+      "defaultValueRaw": "HEX_RGB",
       "required": true,
       "variableMode": "UseVarOrInput",
-      "condition": "",
-      "description": "输出的颜色文本值格式，用以转换颜色值的格式"
+      "isControlField": false
     },
     {
       "key": "stopIfFail",
       "name": "失败后停止",
       "type": "Boolean",
+      "description": "失败后是否停止动作",
+      "isAdvanced": false,
+      "validForList": [],
+      "invalidForList": [],
+      "condition": "",
       "defaultValue": "true",
+      "defaultValueRaw": true,
       "required": false,
       "variableMode": "Input",
-      "condition": "",
-      "description": "失败后是否停止动作"
+      "isControlField": false
     }
   ],
   "outputs": [
@@ -68,78 +97,111 @@
       "key": "isSuccess",
       "name": "是否成功",
       "type": "Boolean",
-      "condition": "",
-      "description": "操作是否成功"
+      "description": "操作是否成功",
+      "isAdvanced": false,
+      "validForList": [],
+      "invalidForList": [],
+      "condition": ""
     },
     {
       "key": "A",
       "name": "透明度值",
       "type": "Number",
-      "condition": "",
-      "description": "Alpha值（0-255）0表示透明"
+      "description": "Alpha值（0-255）0表示透明",
+      "isAdvanced": false,
+      "validForList": [],
+      "invalidForList": [],
+      "condition": ""
     },
     {
       "key": "R",
       "name": "红色值",
       "type": "Number",
-      "condition": "",
-      "description": "R值（0-255）"
+      "description": "R值（0-255）",
+      "isAdvanced": false,
+      "validForList": [],
+      "invalidForList": [],
+      "condition": ""
     },
     {
       "key": "G",
       "name": "绿色值",
       "type": "Number",
-      "condition": "",
-      "description": "G值（0-255）"
+      "description": "G值（0-255）",
+      "isAdvanced": false,
+      "validForList": [],
+      "invalidForList": [],
+      "condition": ""
     },
     {
       "key": "B",
       "name": "蓝色值",
       "type": "Number",
-      "condition": "",
-      "description": "B值（0-255）"
+      "description": "B值（0-255）",
+      "isAdvanced": false,
+      "validForList": [],
+      "invalidForList": [],
+      "condition": ""
     },
     {
       "key": "Hue",
       "name": "色相",
       "type": "Number",
-      "condition": "",
-      "description": "Hue值（0-360）"
+      "description": "Hue值（0-360）",
+      "isAdvanced": false,
+      "validForList": [],
+      "invalidForList": [],
+      "condition": ""
     },
     {
       "key": "HslS",
       "name": "HSL.S",
       "type": "Number",
-      "condition": "",
-      "description": "HSL颜色空间的饱和度S"
+      "description": "HSL颜色空间的饱和度S",
+      "isAdvanced": false,
+      "validForList": [],
+      "invalidForList": [],
+      "condition": ""
     },
     {
       "key": "HslL",
       "name": "HSL.L",
       "type": "Number",
-      "condition": "",
-      "description": "HSL颜色空间的亮度值L"
+      "description": "HSL颜色空间的亮度值L",
+      "isAdvanced": false,
+      "validForList": [],
+      "invalidForList": [],
+      "condition": ""
     },
     {
       "key": "HsvS",
       "name": "HSV.S",
       "type": "Number",
-      "condition": "",
-      "description": "HSV颜色空间的饱和度S"
+      "description": "HSV颜色空间的饱和度S",
+      "isAdvanced": false,
+      "validForList": [],
+      "invalidForList": [],
+      "condition": ""
     },
     {
       "key": "HsvV",
       "name": "HSV.V",
       "type": "Number",
-      "condition": "",
-      "description": "HSV颜色空间的明度V"
+      "description": "HSV颜色空间的明度V",
+      "isAdvanced": false,
+      "validForList": [],
+      "invalidForList": [],
+      "condition": ""
     },
     {
       "key": "textValue",
       "name": "文本值",
       "type": "Text",
-      "condition": "",
-      "description": "输出颜色的文本值，格式请在输入参数中选择"
+      "description": "输出颜色的文本值，格式请在输入参数中选择",
+      "isAdvanced": false,
+      "validForList": [],
+      "invalidForList": [],
+      "condition": ""
     }
   ],
   "selections": {
@@ -239,5 +301,5 @@
       ]
     }
   },
-  "sourceFileName": "sys_color_屏幕取色_颜色转换与计算.md"
+  "sourceFileName": "catalog.json"
 }

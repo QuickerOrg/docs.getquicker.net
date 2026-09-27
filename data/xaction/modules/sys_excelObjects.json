@@ -16,51 +16,84 @@
       "key": "operation",
       "name": "操作类型",
       "type": "Enum",
+      "description": "操作类型",
+      "isAdvanced": false,
+      "validForList": [],
+      "invalidForList": [],
+      "condition": "",
       "defaultValue": "",
+      "defaultValueRaw": "",
       "required": true,
       "variableMode": "Input",
-      "condition": "",
-      "description": "操作类型"
+      "isControlField": true
     },
     {
       "key": "workbook",
       "name": "工作簿对象",
       "type": "Object",
+      "description": "根据具体操作，可用参数不同。请参考文档。",
+      "isAdvanced": false,
+      "validForList": [
+        "SaveWorkbook",
+        "CloseWorkbook",
+        "SelectWorksheet"
+      ],
+      "invalidForList": [],
+      "condition": "仅：SaveWorkbook, CloseWorkbook, SelectWorksheet",
       "defaultValue": "",
+      "defaultValueRaw": "",
       "required": false,
       "variableMode": "UseVarOrInput",
-      "condition": "仅：SaveWorkbook, CloseWorkbook, SelectWorksheet",
-      "description": "根据具体操作，可用参数不同。请参考文档。"
+      "isControlField": false
     },
     {
       "key": "params",
       "name": "参数",
       "type": "Text",
+      "description": "根据具体操作，可用参数不同。请参考文档。",
+      "isAdvanced": false,
+      "validForList": [],
+      "invalidForList": [],
+      "condition": "",
       "defaultValue": "",
+      "defaultValueRaw": "",
       "required": false,
       "variableMode": "UseVarOrInput",
-      "condition": "",
-      "description": "根据具体操作，可用参数不同。请参考文档。"
+      "isControlField": false
     },
     {
       "key": "path",
       "name": "文件/模板路径",
       "type": "Text",
+      "description": "完整路径。创建工作簿时，用于指定模板文件。",
+      "isAdvanced": false,
+      "validForList": [
+        "OpenFile",
+        "SaveWorkbook",
+        "CreateWorkbook"
+      ],
+      "invalidForList": [],
+      "condition": "仅：OpenFile, SaveWorkbook, CreateWorkbook",
       "defaultValue": "",
+      "defaultValueRaw": "",
       "required": false,
       "variableMode": "UseVarOrInput",
-      "condition": "仅：OpenFile, SaveWorkbook, CreateWorkbook",
-      "description": "完整路径。创建工作簿时，用于指定模板文件。"
+      "isControlField": false
     },
     {
       "key": "stopIfFail",
       "name": "失败后停止",
       "type": "Boolean",
+      "description": "失败后是否停止动作",
+      "isAdvanced": false,
+      "validForList": [],
+      "invalidForList": [],
+      "condition": "",
       "defaultValue": "true",
+      "defaultValueRaw": true,
       "required": false,
       "variableMode": "Input",
-      "condition": "",
-      "description": "失败后是否停止动作"
+      "isControlField": false
     }
   ],
   "outputs": [
@@ -68,50 +101,92 @@
       "key": "isSuccess",
       "name": "是否成功",
       "type": "Boolean",
-      "condition": "",
-      "description": "操作是否成功"
+      "description": "操作是否成功",
+      "isAdvanced": false,
+      "validForList": [],
+      "invalidForList": [],
+      "condition": ""
     },
     {
       "key": "application",
       "name": "Application对象",
       "type": "Object",
-      "condition": "仅：ApplicationInfo, OpenFile, CreateWorkbook",
-      "description": "Application对象的引用"
+      "description": "Application对象的引用",
+      "isAdvanced": false,
+      "validForList": [
+        "ApplicationInfo",
+        "OpenFile",
+        "CreateWorkbook"
+      ],
+      "invalidForList": [],
+      "condition": "仅：ApplicationInfo, OpenFile, CreateWorkbook"
     },
     {
       "key": "activeWorkbook",
       "name": "活动工作簿",
       "type": "Object",
-      "condition": "仅：ApplicationInfo, OpenFile, CreateWorkbook",
-      "description": "ActiveWorkbook"
+      "description": "ActiveWorkbook",
+      "isAdvanced": false,
+      "validForList": [
+        "ApplicationInfo",
+        "OpenFile",
+        "CreateWorkbook"
+      ],
+      "invalidForList": [],
+      "condition": "仅：ApplicationInfo, OpenFile, CreateWorkbook"
     },
     {
       "key": "activeSheet",
       "name": "活动工作表",
       "type": "Object",
-      "condition": "仅：ApplicationInfo, OpenFile, CreateWorkbook",
-      "description": "ActiveSheet"
+      "description": "ActiveSheet",
+      "isAdvanced": false,
+      "validForList": [
+        "ApplicationInfo",
+        "OpenFile",
+        "CreateWorkbook"
+      ],
+      "invalidForList": [],
+      "condition": "仅：ApplicationInfo, OpenFile, CreateWorkbook"
     },
     {
       "key": "worksheets",
       "name": "工作表对象列表",
       "type": "Object",
-      "condition": "仅：ApplicationInfo, OpenFile, CreateWorkbook",
-      "description": "Worksheets"
+      "description": "Worksheets",
+      "isAdvanced": false,
+      "validForList": [
+        "ApplicationInfo",
+        "OpenFile",
+        "CreateWorkbook"
+      ],
+      "invalidForList": [],
+      "condition": "仅：ApplicationInfo, OpenFile, CreateWorkbook"
     },
     {
       "key": "worksheetNames",
       "name": "工作表名称的列表",
       "type": "List",
-      "condition": "仅：ApplicationInfo, OpenFile",
-      "description": "Worksheets"
+      "description": "Worksheets",
+      "isAdvanced": false,
+      "validForList": [
+        "ApplicationInfo",
+        "OpenFile"
+      ],
+      "invalidForList": [],
+      "condition": "仅：ApplicationInfo, OpenFile"
     },
     {
       "key": "workbookPath",
       "name": "工作簿路径",
       "type": "Text",
-      "condition": "仅：ApplicationInfo",
-      "description": "Worksheets"
+      "description": "Worksheets",
+      "isAdvanced": false,
+      "validForList": [
+        "ApplicationInfo"
+      ],
+      "invalidForList": [],
+      "condition": "仅：ApplicationInfo"
     }
   ],
   "selections": {
@@ -151,5 +226,5 @@
       ]
     }
   },
-  "sourceFileName": "sys_excelObjects_Excel对象操作.md"
+  "sourceFileName": "catalog.json"
 }

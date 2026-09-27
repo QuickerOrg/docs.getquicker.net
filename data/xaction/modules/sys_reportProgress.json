@@ -16,51 +16,83 @@
       "key": "type",
       "name": "类型",
       "type": "Enum",
+      "description": "操作类型",
+      "isAdvanced": false,
+      "validForList": [],
+      "invalidForList": [],
+      "condition": "",
       "defaultValue": "REQUEST_ID",
+      "defaultValueRaw": "REQUEST_ID",
       "required": true,
       "variableMode": "Input",
-      "condition": "",
-      "description": "操作类型"
+      "isControlField": true
     },
     {
       "key": "progressId",
       "name": "进度条ID",
       "type": "Integer",
+      "description": "进度条的序号，用于后续更新或删除进度条",
+      "isAdvanced": false,
+      "validForList": [
+        "UPDATE_PROGRESS",
+        "REMOVE"
+      ],
+      "invalidForList": [],
+      "condition": "仅：UPDATE_PROGRESS, REMOVE",
       "defaultValue": "0",
+      "defaultValueRaw": 0,
       "required": false,
       "variableMode": "UseVarOrInput",
-      "condition": "仅：UPDATE_PROGRESS, REMOVE",
-      "description": "进度条的序号，用于后续更新或删除进度条"
+      "isControlField": false
     },
     {
       "key": "title",
       "name": "进度条标题",
       "type": "Text",
+      "description": "进度条的标题(显示在进度条上方)",
+      "isAdvanced": false,
+      "validForList": [
+        "UPDATE_PROGRESS"
+      ],
+      "invalidForList": [],
+      "condition": "仅：UPDATE_PROGRESS",
       "defaultValue": "",
       "required": false,
       "variableMode": "UseVarOrInput",
-      "condition": "仅：UPDATE_PROGRESS",
-      "description": "进度条的标题(显示在进度条上方)"
+      "isControlField": false
     },
     {
       "key": "percentage",
       "name": "进度百分比",
       "type": "Number",
+      "description": "0到100之间的数字",
+      "isAdvanced": false,
+      "validForList": [
+        "UPDATE_PROGRESS"
+      ],
+      "invalidForList": [],
+      "condition": "仅：UPDATE_PROGRESS",
       "defaultValue": "0.0",
+      "defaultValueRaw": 0,
       "required": false,
       "variableMode": "UseVarOrInput",
-      "condition": "仅：UPDATE_PROGRESS",
-      "description": "0到100之间的数字"
+      "isControlField": false
     },
     {
       "key": "text",
       "name": "说明文字",
       "type": "Text",
+      "description": "显示在进度条下方",
+      "isAdvanced": false,
+      "validForList": [
+        "UPDATE_PROGRESS"
+      ],
+      "invalidForList": [],
+      "condition": "仅：UPDATE_PROGRESS",
       "defaultValue": "",
       "required": false,
       "variableMode": "UseVarOrInput",
-      "condition": "仅：UPDATE_PROGRESS",
-      "description": "显示在进度条下方"
+      "isControlField": false
     }
   ],
   "outputs": [
@@ -68,8 +100,13 @@
       "key": "progressId",
       "name": "进度条ID",
       "type": "Integer",
-      "condition": "仅：REQUEST_ID",
-      "description": "进度条的序号，用于后续更新或删除进度条"
+      "description": "进度条的序号，用于后续更新或删除进度条",
+      "isAdvanced": false,
+      "validForList": [
+        "REQUEST_ID"
+      ],
+      "invalidForList": [],
+      "condition": "仅：REQUEST_ID"
     }
   ],
   "selections": {
@@ -94,5 +131,5 @@
       ]
     }
   },
-  "sourceFileName": "sys_reportProgress_显示进度条.md"
+  "sourceFileName": "catalog.json"
 }

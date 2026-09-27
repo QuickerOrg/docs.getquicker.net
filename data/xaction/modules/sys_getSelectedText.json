@@ -16,71 +16,106 @@
       "key": "format",
       "name": "文本数据格式",
       "type": "Enum",
+      "description": "需要读取的剪贴板文本内容格式。通常请使用Unicode纯文本格式。",
+      "isAdvanced": false,
+      "validForList": [],
+      "invalidForList": [],
+      "condition": "",
       "defaultValue": "UnicodeText",
+      "defaultValueRaw": "UnicodeText",
       "required": true,
       "variableMode": "Input",
-      "condition": "",
-      "description": "需要读取的剪贴板文本内容格式。通常请使用Unicode纯文本格式。"
+      "isControlField": true
     },
     {
       "key": "waitMs",
       "name": "等待剪贴板时间",
       "type": "Integer",
+      "description": "模拟复制键后，等待剪贴板变化的最长时间毫秒数。",
+      "isAdvanced": false,
+      "validForList": [],
+      "invalidForList": [],
+      "condition": "",
       "defaultValue": "250",
+      "defaultValueRaw": 250,
       "required": false,
       "variableMode": "UseVarOrInput",
-      "condition": "",
-      "description": "模拟复制键后，等待剪贴板变化的最长时间毫秒数。"
+      "isControlField": false
     },
     {
       "key": "repeat",
       "name": "重试次数",
       "type": "Integer",
+      "description": "【已过时，仅为兼容性保留】失败后重试的次数。",
+      "isAdvanced": false,
+      "validForList": [],
+      "invalidForList": [],
+      "condition": "",
       "defaultValue": "0",
+      "defaultValueRaw": 0,
       "required": false,
       "variableMode": "Input",
-      "condition": "",
-      "description": "【已过时，仅为兼容性保留】失败后重试的次数。"
+      "isControlField": false
     },
     {
       "key": "tryNoClipboard",
       "name": "尝试不通过剪贴板的方式获取",
       "type": "Boolean",
+      "description": "通过UIAutomation方式获取（某些情况可能出现无法完整获取文字、失去换行信息等问题）",
+      "isAdvanced": false,
+      "validForList": [],
+      "invalidForList": [],
+      "condition": "",
       "defaultValue": "false",
+      "defaultValueRaw": false,
       "required": false,
       "variableMode": "Input",
-      "condition": "",
-      "description": "通过UIAutomation方式获取（某些情况可能出现无法完整获取文字、失去换行信息等问题）"
+      "isControlField": false
     },
     {
       "key": "useActionParam",
       "name": "如果为动作传递了参数，使用参数值作为获取的结果",
       "type": "Boolean",
+      "description": "没有传递参数时仍尝试获取选中的文本。",
+      "isAdvanced": false,
+      "validForList": [],
+      "invalidForList": [],
+      "condition": "",
       "defaultValue": "false",
+      "defaultValueRaw": false,
       "required": false,
       "variableMode": "Input",
-      "condition": "",
-      "description": "没有传递参数时仍尝试获取选中的文本。"
+      "isControlField": false
     },
     {
       "key": "trim",
       "name": "去除前后的空白",
       "type": "Boolean",
+      "description": "去除内容前后的空白（包括空行）。",
+      "isAdvanced": false,
+      "validForList": [],
+      "invalidForList": [],
+      "condition": "",
       "defaultValue": "false",
+      "defaultValueRaw": false,
       "required": false,
       "variableMode": "Input",
-      "condition": "",
-      "description": "去除内容前后的空白（包括空行）。"
+      "isControlField": false
     },
     {
       "key": "stopIfFail",
       "name": "失败后中止动作",
       "type": "Boolean",
+      "description": "获取选中的文本失败后，是否停止后续动作的执行。",
+      "isAdvanced": false,
+      "validForList": [],
+      "invalidForList": [],
+      "condition": "",
       "defaultValue": "true",
+      "defaultValueRaw": true,
       "required": false,
       "variableMode": "Input",
-      "condition": "",
-      "description": "获取选中的文本失败后，是否停止后续动作的执行。"
+      "isControlField": false
     }
   ],
   "outputs": [
@@ -88,36 +123,53 @@
       "key": "isSuccess",
       "name": "是否成功",
       "type": "Boolean",
-      "condition": "",
-      "description": "是否成功获取了文本"
+      "description": "是否成功获取了文本",
+      "isAdvanced": false,
+      "validForList": [],
+      "invalidForList": [],
+      "condition": ""
     },
     {
       "key": "output",
       "name": "内容",
       "type": "Text",
-      "condition": "",
-      "description": "将获得的文本写入到变量"
+      "description": "将获得的文本写入到变量",
+      "isAdvanced": false,
+      "validForList": [],
+      "invalidForList": [],
+      "condition": ""
     },
     {
       "key": "cleanHtml",
       "name": "去除封装的HTML",
       "type": "Text",
-      "condition": "仅：Html",
-      "description": "剪贴板HTML的主要内容<!--StartFragment-->和<!--EndFragment-->之间的部分"
+      "description": "剪贴板HTML的主要内容<!--StartFragment-->和<!--EndFragment-->之间的部分",
+      "isAdvanced": false,
+      "validForList": [
+        "Html"
+      ],
+      "invalidForList": [],
+      "condition": "仅：Html"
     },
     {
       "key": "outputEncoded",
       "name": "URL编码的内容",
       "type": "Text",
-      "condition": "",
-      "description": "对选中的内容进行URL编码处理后的结果，通常用于拼接网址。"
+      "description": "对选中的内容进行URL编码处理后的结果，通常用于拼接网址。",
+      "isAdvanced": false,
+      "validForList": [],
+      "invalidForList": [],
+      "condition": ""
     },
     {
       "key": "url",
       "name": "来源网址",
       "type": "Text",
-      "condition": "",
-      "description": "从网页中复制内容时，可能会携带网址信息。"
+      "description": "从网页中复制内容时，可能会携带网址信息。",
+      "isAdvanced": false,
+      "validForList": [],
+      "invalidForList": [],
+      "condition": ""
     }
   ],
   "selections": {
@@ -147,5 +199,5 @@
       ]
     }
   },
-  "sourceFileName": "sys_getSelectedText_获取选中的文本.md"
+  "sourceFileName": "catalog.json"
 }

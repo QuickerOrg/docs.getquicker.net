@@ -16,91 +16,152 @@
       "key": "type",
       "name": "类型",
       "type": "Enum",
+      "description": "消息的类型",
+      "isAdvanced": false,
+      "validForList": [],
+      "invalidForList": [],
+      "condition": "",
       "defaultValue": "Info",
+      "defaultValueRaw": "Info",
       "required": true,
       "variableMode": "Input",
-      "condition": "",
-      "description": "消息的类型"
+      "isControlField": true
     },
     {
       "key": "msg",
       "name": "消息内容",
       "type": "Text",
+      "description": "显示的消息内容",
+      "isAdvanced": false,
+      "validForList": [],
+      "invalidForList": [],
+      "condition": "",
       "defaultValue": "",
       "required": false,
       "variableMode": "UseVarOrInput",
-      "condition": "",
-      "description": "显示的消息内容"
+      "isControlField": false
     },
     {
       "key": "title",
       "name": "标题",
       "type": "Text",
+      "description": "留空使用动作名称，填写 - 不显示标题，其他内容原样显示",
+      "isAdvanced": false,
+      "validForList": [],
+      "invalidForList": [],
+      "condition": "",
       "defaultValue": "",
       "required": false,
       "variableMode": "UseVarOrInput",
-      "condition": "",
-      "description": "留空使用动作名称，填写 - 不显示标题，其他内容原样显示"
+      "isControlField": false
     },
     {
       "key": "placement",
       "name": "显示位置",
       "type": "Enum",
+      "description": "",
+      "isAdvanced": false,
+      "validForList": [
+        "Success",
+        "Info",
+        "Warning",
+        "Error"
+      ],
+      "invalidForList": [],
+      "condition": "仅：Success, Info, Warning, Error",
       "defaultValue": "BottomCenter",
+      "defaultValueRaw": "BottomCenter",
       "required": true,
       "variableMode": "UseVarOrInput",
-      "condition": "仅：Success, Info, Warning, Error",
-      "description": ""
+      "isControlField": false
     },
     {
       "key": "maxLines",
       "name": "最大行数",
       "type": "Integer",
+      "description": "显示内容的最大行数，0表示不限",
+      "isAdvanced": true,
+      "validForList": [],
+      "invalidForList": [],
+      "condition": "",
       "defaultValue": "0",
+      "defaultValueRaw": 0,
       "required": true,
       "variableMode": "UseVarOrInput",
-      "condition": "",
-      "description": "显示内容的最大行数，0表示不限"
+      "isControlField": false
     },
     {
       "key": "durationSeconds",
       "name": "保持秒数",
       "type": "Integer",
+      "description": "0 使用默认时长，-1 持续显示，或填写 1 到 30 秒",
+      "isAdvanced": true,
+      "validForList": [
+        "Success",
+        "Info",
+        "Warning",
+        "Error"
+      ],
+      "invalidForList": [],
+      "condition": "仅：Success, Info, Warning, Error",
       "defaultValue": "0",
+      "defaultValueRaw": 0,
       "required": false,
       "variableMode": "UseVarOrInput",
-      "condition": "仅：Success, Info, Warning, Error",
-      "description": "0 使用默认时长，-1 持续显示，或填写 1 到 30 秒"
+      "isControlField": false
     },
     {
       "key": "showTime",
       "name": "显示时间",
       "type": "Boolean",
+      "description": "有标题时，在通知右上方显示消息发出时间；无标题的紧凑通知不显示时间。",
+      "isAdvanced": true,
+      "validForList": [
+        "Success",
+        "Info",
+        "Warning",
+        "Error"
+      ],
+      "invalidForList": [],
+      "condition": "仅：Success, Info, Warning, Error",
       "defaultValue": "false",
+      "defaultValueRaw": false,
       "required": false,
       "variableMode": "UseVarOrInput",
-      "condition": "仅：Success, Info, Warning, Error",
-      "description": "有标题时，在通知右上方显示消息发出时间；无标题的紧凑通知不显示时间。"
+      "isControlField": false
     },
     {
       "key": "duplicate",
       "name": "重复控制",
       "type": "Text",
+      "description": "留空时每次显示新通知。填写标识可复用同一通知：replace:标识 替换内容，count:标识 累计次数，ignore:标识 忽略后续重复；省略模式时按 replace 处理。",
+      "isAdvanced": true,
+      "validForList": [
+        "Success",
+        "Info",
+        "Warning",
+        "Error"
+      ],
+      "invalidForList": [],
+      "condition": "仅：Success, Info, Warning, Error",
       "defaultValue": "",
       "required": false,
       "variableMode": "UseVarOrInput",
-      "condition": "仅：Success, Info, Warning, Error",
-      "description": "留空时每次显示新通知。填写标识可复用同一通知：replace:标识 替换内容，count:标识 累计次数，ignore:标识 忽略后续重复；省略模式时按 replace 处理。"
+      "isControlField": false
     },
     {
       "key": "clickAction",
       "name": "点击操作",
       "type": "Text",
+      "description": "普通文本表示整卡点击命令；以 @button 或 @buttons 独立首行开头时定义一到两个按钮。留空时点击复制正文。",
+      "isAdvanced": true,
+      "validForList": [],
+      "invalidForList": [],
+      "condition": "",
       "defaultValue": "",
       "required": false,
       "variableMode": "UseVarOrInput",
-      "condition": "",
-      "description": "普通文本表示整卡点击命令；以 @button 或 @buttons 独立首行开头时定义一到两个按钮。留空时点击复制正文。"
+      "isControlField": false
     }
   ],
   "outputs": [],
@@ -176,5 +237,5 @@
       ]
     }
   },
-  "sourceFileName": "sys_notify_提示消息.md"
+  "sourceFileName": "catalog.json"
 }

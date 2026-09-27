@@ -16,101 +16,169 @@
       "key": "operation",
       "name": "操作类型",
       "type": "Enum",
+      "description": "",
+      "isAdvanced": false,
+      "validForList": [],
+      "invalidForList": [],
+      "condition": "",
       "defaultValue": "CreateClient",
+      "defaultValueRaw": "CreateClient",
       "required": true,
       "variableMode": "Input",
-      "condition": "",
-      "description": ""
+      "isControlField": true
     },
     {
       "key": "server",
       "name": "服务器地址",
       "type": "Text",
+      "description": "",
+      "isAdvanced": false,
+      "validForList": [
+        "CreateClient"
+      ],
+      "invalidForList": [],
+      "condition": "仅：CreateClient",
       "defaultValue": "",
       "required": false,
       "variableMode": "UseVarOrInput",
-      "condition": "仅：CreateClient",
-      "description": ""
+      "isControlField": false
     },
     {
       "key": "clientId",
       "name": "连接ID",
       "type": "Text",
+      "description": "用于区分不同的客户端连接。连接相同id的客户端时，前一个连接会被自动关闭。",
+      "isAdvanced": false,
+      "validForList": [
+        "CreateClient",
+        "SendMsgToServer",
+        "GetClientState",
+        "CloseClient"
+      ],
+      "invalidForList": [],
+      "condition": "仅：CreateClient, SendMsgToServer, GetClientState, CloseClient",
       "defaultValue": "",
       "required": false,
       "variableMode": "UseVarOrInput",
-      "condition": "仅：CreateClient, SendMsgToServer, GetClientState, CloseClient",
-      "description": "用于区分不同的客户端连接。连接相同id的客户端时，前一个连接会被自动关闭。"
+      "isControlField": false
     },
     {
       "key": "spName",
       "name": "消息处理子程序",
       "type": "Text",
+      "description": "使用子程序处理从websocket服务接收到的消息。详情请参考文档。",
+      "isAdvanced": false,
+      "validForList": [
+        "CreateClient"
+      ],
+      "invalidForList": [],
+      "condition": "仅：CreateClient",
       "defaultValue": "",
       "required": false,
       "variableMode": "UseVarOrInput",
-      "condition": "仅：CreateClient",
-      "description": "使用子程序处理从websocket服务接收到的消息。详情请参考文档。"
+      "isControlField": false
     },
     {
       "key": "account",
       "name": "账号密码",
       "type": "Text",
+      "description": "支持Basic和Digest认证方式。多行填写。第一行写账号，第二行写密码。",
+      "isAdvanced": false,
+      "validForList": [
+        "CreateClient"
+      ],
+      "invalidForList": [],
+      "condition": "仅：CreateClient",
       "defaultValue": "",
       "required": false,
       "variableMode": "UseVarOrInput",
-      "condition": "仅：CreateClient",
-      "description": "支持Basic和Digest认证方式。多行填写。第一行写账号，第二行写密码。"
+      "isControlField": false
     },
     {
       "key": "origin",
       "name": "Origin",
       "type": "Text",
+      "description": "仅需要时填写",
+      "isAdvanced": false,
+      "validForList": [
+        "CreateClient"
+      ],
+      "invalidForList": [],
+      "condition": "仅：CreateClient",
       "defaultValue": "",
       "required": false,
       "variableMode": "UseVarOrInput",
-      "condition": "仅：CreateClient",
-      "description": "仅需要时填写"
+      "isControlField": false
     },
     {
       "key": "cookie",
       "name": "Cookie",
       "type": "Text",
+      "description": "请求的cookie内容",
+      "isAdvanced": false,
+      "validForList": [
+        "CreateClient"
+      ],
+      "invalidForList": [],
+      "condition": "仅：CreateClient",
       "defaultValue": "",
+      "defaultValueRaw": "",
       "required": false,
       "variableMode": "UseVarOrInput",
-      "condition": "仅：CreateClient",
-      "description": "请求的cookie内容"
+      "isControlField": false
     },
     {
       "key": "content",
       "name": "消息内容",
       "type": "Text",
+      "description": "文本内容。发送文件时为文件的完整路径。",
+      "isAdvanced": false,
+      "validForList": [
+        "CreateClient",
+        "SendMsgToServer",
+        "SendTextToClient",
+        "SendFileToClient",
+        "SendFileToClientBase64"
+      ],
+      "invalidForList": [],
+      "condition": "仅：CreateClient, SendMsgToServer, SendTextToClient, SendFileToClient, SendFileToClientBase64",
       "defaultValue": "",
+      "defaultValueRaw": "",
       "required": false,
       "variableMode": "UseVarOrInput",
-      "condition": "仅：CreateClient, SendMsgToServer, SendTextToClient, SendFileToClient, SendFileToClientBase64",
-      "description": "文本内容。发送文件时为文件的完整路径。"
+      "isControlField": false
     },
     {
       "key": "callbackOnClose",
       "name": "服务断开时通知动作(调用动作并传入参数:websocket__closed)",
       "type": "Boolean",
+      "description": "是否等待服务器响应",
+      "isAdvanced": false,
+      "validForList": [
+        "CreateClient"
+      ],
+      "invalidForList": [],
+      "condition": "仅：CreateClient",
       "defaultValue": "true",
+      "defaultValueRaw": true,
       "required": false,
       "variableMode": "Input",
-      "condition": "仅：CreateClient",
-      "description": "是否等待服务器响应"
+      "isControlField": false
     },
     {
       "key": "stopIfFail",
       "name": "失败后停止",
       "type": "Boolean",
+      "description": "失败后是否停止动作",
+      "isAdvanced": false,
+      "validForList": [],
+      "invalidForList": [],
+      "condition": "",
       "defaultValue": "true",
+      "defaultValueRaw": true,
       "required": false,
       "variableMode": "Input",
-      "condition": "",
-      "description": "失败后是否停止动作"
+      "isControlField": false
     }
   ],
   "outputs": [
@@ -118,15 +186,23 @@
       "key": "isSuccess",
       "name": "是否成功",
       "type": "Boolean",
-      "condition": "",
-      "description": "操作是否成功"
+      "description": "操作是否成功",
+      "isAdvanced": false,
+      "validForList": [],
+      "invalidForList": [],
+      "condition": ""
     },
     {
       "key": "isConnected",
       "name": "是否连接",
       "type": "Boolean",
-      "condition": "仅：GetClientState",
-      "description": "指定客户端是否连接到远程服务器"
+      "description": "指定客户端是否连接到远程服务器",
+      "isAdvanced": false,
+      "validForList": [
+        "GetClientState"
+      ],
+      "invalidForList": [],
+      "condition": "仅：GetClientState"
     }
   ],
   "selections": {
@@ -171,5 +247,5 @@
       ]
     }
   },
-  "sourceFileName": "sys_websocket_Websocket.md"
+  "sourceFileName": "catalog.json"
 }

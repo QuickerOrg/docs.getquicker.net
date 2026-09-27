@@ -16,31 +16,46 @@
       "key": "packageName",
       "name": "依赖包名",
       "type": "Text",
+      "description": "已经在官网上发布的依赖包的名称",
+      "isAdvanced": false,
+      "validForList": [],
+      "invalidForList": [],
+      "condition": "",
       "defaultValue": "",
+      "defaultValueRaw": "",
       "required": true,
       "variableMode": "UseVarOrInput",
-      "condition": "",
-      "description": "已经在官网上发布的依赖包的名称"
+      "isControlField": false
     },
     {
       "key": "packageVersion",
       "name": "依赖包版本",
       "type": "Text",
+      "description": "留空：表示任意版本即可；或写具体版本，表示最低版本。格式为1.2.3",
+      "isAdvanced": false,
+      "validForList": [],
+      "invalidForList": [],
+      "condition": "",
       "defaultValue": "",
+      "defaultValueRaw": "",
       "required": true,
       "variableMode": "UseVarOrInput",
-      "condition": "",
-      "description": "留空：表示任意版本即可；或写具体版本，表示最低版本。格式为1.2.3"
+      "isControlField": false
     },
     {
       "key": "stopIfFail",
       "name": "失败后停止",
       "type": "Boolean",
+      "description": "失败后是否停止动作",
+      "isAdvanced": false,
+      "validForList": [],
+      "invalidForList": [],
+      "condition": "",
       "defaultValue": "true",
+      "defaultValueRaw": true,
       "required": false,
       "variableMode": "Input",
-      "condition": "",
-      "description": "失败后是否停止动作"
+      "isControlField": false
     }
   ],
   "outputs": [
@@ -48,17 +63,23 @@
       "key": "isSuccess",
       "name": "是否成功",
       "type": "Boolean",
-      "condition": "",
-      "description": "操作是否成功"
+      "description": "操作是否成功",
+      "isAdvanced": false,
+      "validForList": [],
+      "invalidForList": [],
+      "condition": ""
     },
     {
       "key": "packagePath",
       "name": "依赖包路径",
       "type": "Text",
-      "condition": "",
-      "description": "解压缩后的依赖包路径"
+      "description": "解压缩后的依赖包路径",
+      "isAdvanced": false,
+      "validForList": [],
+      "invalidForList": [],
+      "condition": ""
     }
   ],
   "selections": {},
-  "sourceFileName": "sys_dependencycheck_检查和下载依赖.md"
+  "sourceFileName": "catalog.json"
 }

@@ -16,21 +16,31 @@
       "key": "format",
       "name": "格式",
       "type": "Enum",
+      "description": "转换为文本时使用的格式",
+      "isAdvanced": false,
+      "validForList": [],
+      "invalidForList": [],
+      "condition": "",
       "defaultValue": "D",
+      "defaultValueRaw": "D",
       "required": false,
       "variableMode": "Input",
-      "condition": "",
-      "description": "转换为文本时使用的格式"
+      "isControlField": false
     },
     {
       "key": "upper",
       "name": "大写",
       "type": "Boolean",
+      "description": "字母输出为大写格式。",
+      "isAdvanced": false,
+      "validForList": [],
+      "invalidForList": [],
+      "condition": "",
       "defaultValue": "false",
+      "defaultValueRaw": false,
       "required": false,
       "variableMode": "Input",
-      "condition": "",
-      "description": "字母输出为大写格式。"
+      "isControlField": false
     }
   ],
   "outputs": [
@@ -38,8 +48,11 @@
       "key": "output",
       "name": "内容",
       "type": "Text",
-      "condition": "",
-      "description": "将获得的文本写入到变量"
+      "description": "将获得的文本写入到变量",
+      "isAdvanced": false,
+      "validForList": [],
+      "invalidForList": [],
+      "condition": ""
     }
   ],
   "selections": {
@@ -74,5 +87,5 @@
       ]
     }
   },
-  "sourceFileName": "sys_newGuid_生成Guid.md"
+  "sourceFileName": "catalog.json"
 }

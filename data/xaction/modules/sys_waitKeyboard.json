@@ -16,121 +16,181 @@
       "key": "operation",
       "name": "操作类型",
       "type": "Enum",
+      "description": "",
+      "isAdvanced": false,
+      "validForList": [],
+      "invalidForList": [],
+      "condition": "",
       "defaultValue": "waitKeyDown",
+      "defaultValueRaw": "waitKeyDown",
       "required": true,
       "variableMode": "Input",
-      "condition": "",
-      "description": ""
+      "isControlField": true
     },
     {
       "key": "waitingKeys",
       "name": "等待的按键",
       "type": "Text",
+      "description": "可选，留空表示任意键盘按键。格式请参考文档。",
+      "isAdvanced": false,
+      "validForList": [],
+      "invalidForList": [],
+      "condition": "",
       "defaultValue": "",
+      "defaultValueRaw": "",
       "required": false,
       "variableMode": "Input",
-      "condition": "",
-      "description": "可选，留空表示任意键盘按键。格式请参考文档。"
+      "isControlField": false
     },
     {
       "key": "modifierKeys",
       "name": "修饰键",
       "type": "Text",
+      "description": "可选。逗号分隔的ctrl,shift,alt,win组合。仅用于等待组合快捷键。修饰键不会被拦截。",
+      "isAdvanced": false,
+      "validForList": [],
+      "invalidForList": [],
+      "condition": "",
       "defaultValue": "",
+      "defaultValueRaw": "",
       "required": false,
       "variableMode": "Input",
-      "condition": "",
-      "description": "可选。逗号分隔的ctrl,shift,alt,win组合。仅用于等待组合快捷键。修饰键不会被拦截。"
+      "isControlField": false
     },
     {
       "key": "maxWaitSeconds",
       "name": "最长等待秒数",
       "type": "Number",
+      "description": "0为永久超时超过等待时间，则结束等待。",
+      "isAdvanced": false,
+      "validForList": [],
+      "invalidForList": [],
+      "condition": "",
       "defaultValue": "0",
+      "defaultValueRaw": 0,
       "required": true,
       "variableMode": "Input",
-      "condition": "",
-      "description": "0为永久超时超过等待时间，则结束等待。"
+      "isControlField": false
     },
     {
       "key": "filterEvent",
       "name": "拦截原始按键事件",
       "type": "Boolean",
+      "description": "避免按键输入到窗口中 (仅对键盘按键有效)",
+      "isAdvanced": false,
+      "validForList": [],
+      "invalidForList": [],
+      "condition": "",
       "defaultValue": "true",
+      "defaultValueRaw": true,
       "required": false,
       "variableMode": "Input",
-      "condition": "",
-      "description": "避免按键输入到窗口中 (仅对键盘按键有效)"
+      "isControlField": false
     },
     {
       "key": "waitKeyUp",
       "name": "等待按键抬起",
       "type": "Boolean",
+      "description": "等待按键抬起后再返回 (仅对键盘按键有效)",
+      "isAdvanced": false,
+      "validForList": [],
+      "invalidForList": [],
+      "condition": "",
       "defaultValue": "false",
+      "defaultValueRaw": false,
       "required": false,
       "variableMode": "Input",
-      "condition": "",
-      "description": "等待按键抬起后再返回 (仅对键盘按键有效)"
+      "isControlField": false
     },
     {
       "key": "ignoreSimulated",
       "name": "忽略模拟的按键",
       "type": "Boolean",
+      "description": "是否忽略（不检测）模拟的键盘和鼠标按键消息",
+      "isAdvanced": false,
+      "validForList": [],
+      "invalidForList": [],
+      "condition": "",
       "defaultValue": "false",
+      "defaultValueRaw": false,
       "required": false,
       "variableMode": "Input",
-      "condition": "",
-      "description": "是否忽略（不检测）模拟的键盘和鼠标按键消息"
+      "isControlField": false
     },
     {
       "key": "help",
       "name": "提示信息",
       "type": "Text",
+      "description": "等待按键时显示的提示文字",
+      "isAdvanced": false,
+      "validForList": [],
+      "invalidForList": [],
+      "condition": "",
       "defaultValue": "请按键...",
+      "defaultValueRaw": "请按键...",
       "required": false,
       "variableMode": "UseVarOrInput",
-      "condition": "",
-      "description": "等待按键时显示的提示文字"
+      "isControlField": false
     },
     {
       "key": "fontfamily",
       "name": "字体名称",
       "type": "Text",
+      "description": "可选。设置字体名称。如有多个字体，使用逗号分隔。",
+      "isAdvanced": true,
+      "validForList": [],
+      "invalidForList": [],
+      "condition": "",
       "defaultValue": "",
+      "defaultValueRaw": "",
       "required": false,
       "variableMode": "UseVarOrInput",
-      "condition": "",
-      "description": "可选。设置字体名称。如有多个字体，使用逗号分隔。"
+      "isControlField": false
     },
     {
       "key": "winLocation",
       "name": "提示窗口位置",
       "type": "Enum",
+      "description": "在哪里显示提示窗口",
+      "isAdvanced": false,
+      "validForList": [],
+      "invalidForList": [],
+      "condition": "",
       "defaultValue": "TopCenter",
+      "defaultValueRaw": "TopCenter",
       "required": false,
       "variableMode": "UseVarOrInput",
-      "condition": "",
-      "description": "在哪里显示提示窗口"
+      "isControlField": false
     },
     {
       "key": "mouseThrough",
       "name": "鼠标穿透",
       "type": "Boolean",
+      "description": "鼠标是否可以穿透提示窗口点击下面的内容",
+      "isAdvanced": false,
+      "validForList": [],
+      "invalidForList": [],
+      "condition": "",
       "defaultValue": "true",
+      "defaultValueRaw": true,
       "required": false,
       "variableMode": "Input",
-      "condition": "",
-      "description": "鼠标是否可以穿透提示窗口点击下面的内容"
+      "isControlField": false
     },
     {
       "key": "stopIfFail",
       "name": "失败后停止动作",
       "type": "Boolean",
+      "description": "失败后是否停止动作",
+      "isAdvanced": false,
+      "validForList": [],
+      "invalidForList": [],
+      "condition": "",
       "defaultValue": "true",
+      "defaultValueRaw": true,
       "required": false,
       "variableMode": "Input",
-      "condition": "",
-      "description": "失败后是否停止动作"
+      "isControlField": false
     }
   ],
   "outputs": [
@@ -138,29 +198,41 @@
       "key": "isSuccess",
       "name": "步骤执行是否成功",
       "type": "Boolean",
-      "condition": "",
-      "description": "步骤执行是否成功"
+      "description": "步骤执行是否成功",
+      "isAdvanced": false,
+      "validForList": [],
+      "invalidForList": [],
+      "condition": ""
     },
     {
       "key": "keyCode",
       "name": "键名",
       "type": "Text",
-      "condition": "",
-      "description": "按键名，具体请参考模块文档。"
+      "description": "按键名，具体请参考模块文档。",
+      "isAdvanced": false,
+      "validForList": [],
+      "invalidForList": [],
+      "condition": ""
     },
     {
       "key": "keyValue",
       "name": "键值",
       "type": "Integer",
-      "condition": "",
-      "description": "按键数值，具体请参考模块文档。"
+      "description": "按键数值，具体请参考模块文档。",
+      "isAdvanced": false,
+      "validForList": [],
+      "invalidForList": [],
+      "condition": ""
     },
     {
       "key": "holdTimeMs",
       "name": "按下保持时间",
       "type": "Integer",
-      "condition": "",
-      "description": "按下保持时间，单位毫秒。仅支持键盘按键。"
+      "description": "按下保持时间，单位毫秒。仅支持键盘按键。",
+      "isAdvanced": false,
+      "validForList": [],
+      "invalidForList": [],
+      "condition": ""
     }
   ],
   "selections": {
@@ -230,5 +302,5 @@
       ]
     }
   },
-  "sourceFileName": "sys_waitKeyboard_等待按键.md"
+  "sourceFileName": "catalog.json"
 }

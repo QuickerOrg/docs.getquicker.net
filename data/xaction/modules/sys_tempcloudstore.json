@@ -16,71 +16,109 @@
       "key": "dataType",
       "name": "数据类型",
       "type": "Enum",
+      "description": "",
+      "isAdvanced": false,
+      "validForList": [],
+      "invalidForList": [],
+      "condition": "",
       "defaultValue": "text",
+      "defaultValueRaw": "text",
       "required": true,
       "variableMode": "Input",
-      "condition": "",
-      "description": ""
+      "isControlField": true
     },
     {
       "key": "text",
       "name": "文本内容",
       "type": "Text",
+      "description": "要保存的文本内容",
+      "isAdvanced": false,
+      "validForList": [
+        "text"
+      ],
+      "invalidForList": [],
+      "condition": "仅：text",
       "defaultValue": "",
       "required": true,
       "variableMode": "UseVarOrInput",
-      "condition": "仅：text",
-      "description": "要保存的文本内容"
+      "isControlField": false
     },
     {
       "key": "imageVar",
       "name": "图片变量",
       "type": "Image",
+      "description": "要保存的图片变量",
+      "isAdvanced": false,
+      "validForList": [
+        "imageVar"
+      ],
+      "invalidForList": [],
+      "condition": "仅：imageVar",
       "defaultValue": "",
       "required": false,
       "variableMode": "UseVar",
-      "condition": "仅：imageVar",
-      "description": "要保存的图片变量"
+      "isControlField": false
     },
     {
       "key": "file",
       "name": "文件路径",
       "type": "Text",
+      "description": "要保存的文件路径",
+      "isAdvanced": false,
+      "validForList": [
+        "file"
+      ],
+      "invalidForList": [],
+      "condition": "仅：file",
       "defaultValue": "",
       "required": true,
       "variableMode": "UseVarOrInput",
-      "condition": "仅：file",
-      "description": "要保存的文件路径"
+      "isControlField": false
     },
     {
       "key": "expireSeconds",
       "name": "超时时间",
       "type": "Number",
+      "description": "请求超时时间（秒数）",
+      "isAdvanced": false,
+      "validForList": [],
+      "invalidForList": [],
+      "condition": "",
       "defaultValue": "2.5",
+      "defaultValueRaw": 2.5,
       "required": false,
       "variableMode": "UseVarOrInput",
-      "condition": "",
-      "description": "请求超时时间（秒数）"
+      "isControlField": false
     },
     {
       "key": "useRandomFileName",
       "name": "生成随机文件名",
       "type": "Boolean",
+      "description": "是否使用随机的文件名（仅适用于上传文件的情况）",
+      "isAdvanced": false,
+      "validForList": [],
+      "invalidForList": [],
+      "condition": "",
       "defaultValue": "false",
+      "defaultValueRaw": false,
       "required": false,
       "variableMode": "Input",
-      "condition": "",
-      "description": "是否使用随机的文件名（仅适用于上传文件的情况）"
+      "isControlField": false
     },
     {
       "key": "stopIfFail",
       "name": "失败后停止",
       "type": "Boolean",
+      "description": "失败后是否停止动作",
+      "isAdvanced": false,
+      "validForList": [],
+      "invalidForList": [],
+      "condition": "",
       "defaultValue": "true",
+      "defaultValueRaw": true,
       "required": false,
       "variableMode": "Input",
-      "condition": "",
-      "description": "失败后是否停止动作"
+      "isControlField": false
     }
   ],
   "outputs": [
@@ -88,15 +126,21 @@
       "key": "isSuccess",
       "name": "是否成功",
       "type": "Boolean",
-      "condition": "",
-      "description": "操作是否成功"
+      "description": "操作是否成功",
+      "isAdvanced": false,
+      "validForList": [],
+      "invalidForList": [],
+      "condition": ""
     },
     {
       "key": "url",
       "name": "网址",
       "type": "Text",
-      "condition": "",
-      "description": "生成的访问网址"
+      "description": "生成的访问网址",
+      "isAdvanced": false,
+      "validForList": [],
+      "invalidForList": [],
+      "condition": ""
     }
   ],
   "selections": {
@@ -121,5 +165,5 @@
       ]
     }
   },
-  "sourceFileName": "sys_tempcloudstore_临时云存储.md"
+  "sourceFileName": "catalog.json"
 }

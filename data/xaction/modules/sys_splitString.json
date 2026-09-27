@@ -16,51 +16,76 @@
       "key": "data",
       "name": "输入",
       "type": "Text",
+      "description": "要拆分为列表的文本",
+      "isAdvanced": false,
+      "validForList": [],
+      "invalidForList": [],
+      "condition": "",
       "defaultValue": "",
+      "defaultValueRaw": "",
       "required": true,
       "variableMode": "UseVarOrInput",
-      "condition": "",
-      "description": "要拆分为列表的文本"
+      "isControlField": false
     },
     {
       "key": "separator",
       "name": "分隔",
       "type": "Text",
+      "description": "拆分分隔符",
+      "isAdvanced": false,
+      "validForList": [],
+      "invalidForList": [],
+      "condition": "",
       "defaultValue": ",",
+      "defaultValueRaw": ",",
       "required": true,
       "variableMode": "Input",
-      "condition": "",
-      "description": "拆分分隔符"
+      "isControlField": false
     },
     {
       "key": "escapeSeparator",
       "name": "转义分隔符",
       "type": "Boolean",
+      "description": "转义分隔符\\r\\n\\t字符",
+      "isAdvanced": false,
+      "validForList": [],
+      "invalidForList": [],
+      "condition": "",
       "defaultValue": "false",
+      "defaultValueRaw": false,
       "required": false,
       "variableMode": "Input",
-      "condition": "",
-      "description": "转义分隔符\\r\\n\\t字符"
+      "isControlField": false
     },
     {
       "key": "multiSeparator",
       "name": "使用多个分隔符拆分列表",
       "type": "Boolean",
+      "description": "每行指定一个。",
+      "isAdvanced": false,
+      "validForList": [],
+      "invalidForList": [],
+      "condition": "",
       "defaultValue": "false",
+      "defaultValueRaw": false,
       "required": false,
       "variableMode": "Input",
-      "condition": "",
-      "description": "每行指定一个。"
+      "isControlField": false
     },
     {
       "key": "removeEmpty",
       "name": "滤除空值",
       "type": "Boolean",
+      "description": "滤除没有内容的文本",
+      "isAdvanced": false,
+      "validForList": [],
+      "invalidForList": [],
+      "condition": "",
       "defaultValue": "true",
+      "defaultValueRaw": true,
       "required": true,
       "variableMode": "Input",
-      "condition": "",
-      "description": "滤除没有内容的文本"
+      "isControlField": false
     }
   ],
   "outputs": [
@@ -68,10 +93,13 @@
       "key": "output",
       "name": "结果",
       "type": "List",
-      "condition": "",
-      "description": "生成的文本内容"
+      "description": "生成的文本内容",
+      "isAdvanced": false,
+      "validForList": [],
+      "invalidForList": [],
+      "condition": ""
     }
   ],
   "selections": {},
-  "sourceFileName": "sys_splitString_拆分文本为列表.md"
+  "sourceFileName": "catalog.json"
 }

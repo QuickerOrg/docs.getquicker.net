@@ -16,81 +16,125 @@
       "key": "software",
       "name": "软件名称",
       "type": "Enum",
+      "description": "要执行脚本的软件",
+      "isAdvanced": false,
+      "validForList": [],
+      "invalidForList": [],
+      "condition": "",
       "defaultValue": "Photoshop.Application",
+      "defaultValueRaw": "Photoshop.Application",
       "required": true,
       "variableMode": "Input",
-      "condition": "",
-      "description": "要执行脚本的软件"
+      "isControlField": false
     },
     {
       "key": "operation",
       "name": "操作类型",
       "type": "Enum",
+      "description": "操作类型",
+      "isAdvanced": false,
+      "validForList": [],
+      "invalidForList": [],
+      "condition": "",
       "defaultValue": "dojavascript",
+      "defaultValueRaw": "dojavascript",
       "required": true,
       "variableMode": "Input",
-      "condition": "",
-      "description": "操作类型"
+      "isControlField": true
     },
     {
       "key": "script",
       "name": "脚本内容",
       "type": "Text",
+      "description": "要执行的js脚本代码。",
+      "isAdvanced": false,
+      "validForList": [
+        "dojavascript"
+      ],
+      "invalidForList": [],
+      "condition": "仅：dojavascript",
       "defaultValue": "",
+      "defaultValueRaw": "",
       "required": false,
       "variableMode": "UseVarOrInput",
-      "condition": "仅：dojavascript",
-      "description": "要执行的js脚本代码。"
+      "isControlField": false
     },
     {
       "key": "scriptFile",
       "name": "脚本文件路径",
       "type": "Text",
+      "description": "js脚本文件的完整路径",
+      "isAdvanced": false,
+      "validForList": [
+        "dojavascriptfile"
+      ],
+      "invalidForList": [],
+      "condition": "仅：dojavascriptfile",
       "defaultValue": "",
+      "defaultValueRaw": "",
       "required": false,
       "variableMode": "UseVarOrInput",
-      "condition": "仅：dojavascriptfile",
-      "description": "js脚本文件的完整路径"
+      "isControlField": false
     },
     {
       "key": "waitResp",
       "name": "等待执行结束",
       "type": "Boolean",
+      "description": "",
+      "isAdvanced": false,
+      "validForList": [],
+      "invalidForList": [],
+      "condition": "",
       "defaultValue": "true",
+      "defaultValueRaw": true,
       "required": false,
       "variableMode": "UseVarOrInput",
-      "condition": "",
-      "description": ""
+      "isControlField": false
     },
     {
       "key": "waitMs",
       "name": "最长等待时间(ms)",
       "type": "Number",
+      "description": "最长的等待返回结果的，毫秒数",
+      "isAdvanced": true,
+      "validForList": [],
+      "invalidForList": [],
+      "condition": "",
       "defaultValue": "10000",
+      "defaultValueRaw": 10000,
       "required": true,
       "variableMode": "Input",
-      "condition": "",
-      "description": "最长的等待返回结果的，毫秒数"
+      "isControlField": false
     },
     {
       "key": "tryRunScriptUsingExe",
       "name": "接口失败后，尝试使用程序exe运行脚本文件",
       "type": "Boolean",
+      "description": "使用运行程序并将脚本路径作为参数的方式执行脚本。",
+      "isAdvanced": false,
+      "validForList": [],
+      "invalidForList": [],
+      "condition": "",
       "defaultValue": "false",
+      "defaultValueRaw": false,
       "required": false,
       "variableMode": "UseVarOrInput",
-      "condition": "",
-      "description": "使用运行程序并将脚本路径作为参数的方式执行脚本。"
+      "isControlField": false
     },
     {
       "key": "stopIfFail",
       "name": "失败后停止",
       "type": "Boolean",
+      "description": "失败后是否停止动作",
+      "isAdvanced": false,
+      "validForList": [],
+      "invalidForList": [],
+      "condition": "",
       "defaultValue": "true",
+      "defaultValueRaw": true,
       "required": false,
       "variableMode": "Input",
-      "condition": "",
-      "description": "失败后是否停止动作"
+      "isControlField": false
     }
   ],
   "outputs": [
@@ -98,15 +142,21 @@
       "key": "isSuccess",
       "name": "是否成功",
       "type": "Boolean",
-      "condition": "",
-      "description": "操作是否成功"
+      "description": "操作是否成功",
+      "isAdvanced": false,
+      "validForList": [],
+      "invalidForList": [],
+      "condition": ""
     },
     {
       "key": "output",
       "name": "脚本输出",
       "type": "Text",
-      "condition": "",
-      "description": "仅通过接口执行脚本时支持返回内容。"
+      "description": "仅通过接口执行脚本时支持返回内容。",
+      "isAdvanced": false,
+      "validForList": [],
+      "invalidForList": [],
+      "condition": ""
     }
   ],
   "selections": {
@@ -146,5 +196,5 @@
       ]
     }
   },
-  "sourceFileName": "sys_adobesoftscontrol_Adobe系列软件控制.md"
+  "sourceFileName": "catalog.json"
 }

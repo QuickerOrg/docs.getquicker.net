@@ -3,6 +3,7 @@ import fs from 'node:fs';
 import path from 'node:path';
 import process from 'node:process';
 import {fileURLToPath, pathToFileURL} from 'node:url';
+import {parseGeneratedCatalog} from './read-generated-catalog.mjs';
 
 const scriptDirectory = path.dirname(fileURLToPath(import.meta.url));
 const repositoryRoot = path.resolve(scriptDirectory, '..', '..');
@@ -471,6 +472,7 @@ function ensureModuleMetaComponent(content, moduleKey) {
 }
 
 function stripLegacyMetadataMarkers(content) {
+  if (!content.includes('xaction-metadata:')) return content;
   return content
     .replaceAll('{/* xaction-metadata:start */}', '')
     .replaceAll('{/* xaction-metadata:end */}', '')
@@ -489,12 +491,25 @@ function writeModulesIndex() {
  * Kept in sync with docs:xaction:sync (do not hand-edit).
  */
 import {PARAM_FILE_EXT} from './param-file-ext';
+import type {StepVisibilityCondition} from '@site/src/components/xaction/conditionVisibility';
 
-export type XActionParam = {
+export type XActionVisibility = {
+  condition?: string;
+  visibleWhen?: StepVisibilityCondition;
+  visibleExpression?: string;
+  validForList?: string[];
+  invalidForList?: string[];
+  isAdvanced?: boolean;
+};
+
+export type XActionParam = XActionVisibility & {
   key: string;
   name: string;
   type: string;
   defaultValue?: string;
+  defaultValueRaw?: unknown;
+  newStepDefaultValue?: string;
+  isControlField?: boolean;
   required?: boolean;
   variableMode?: string;
   condition?: string;
@@ -503,7 +518,7 @@ export type XActionParam = {
   fileExt?: string;
 };
 
-export type XActionOutput = {
+export type XActionOutput = XActionVisibility & {
   key: string;
   name: string;
   type: string;
@@ -641,21 +656,17 @@ function moduleFrontMatter(module, legacy, generatedAt, position) {
   return lines.join('\n');
 }
 
-function updateExistingModulePage(content, module, generatedAt) {
+function updateExistingModulePage(content, module, _generatedAt) {
   let updated = stripLegacyMetadataMarkers(content);
   updated = ensureModuleMetaComponent(updated, module.key);
   // Drop obsolete page-side hash of the old Markdown metadata block.
   updated = updated.replace(/^metadataHash: .*\n/m, '');
-  const replacements = [
-    [/^title: .*$/m, `title: ${jsonString(module.name)}`],
-    [/^description: .*$/m, `description: ${jsonString(module.description || `${module.name}模块的参数、输出与使用说明。`)}`],
-    [/^metadataGeneratedAt: .*$/m, `metadataGeneratedAt: ${jsonString(generatedAt)}`],
-  ];
-  for (const [pattern, replacement] of replacements) {
-    if (!pattern.test(updated)) {
+  // 参数组件直接读取 data/xaction；保留人工标题、摘要及页面原始时间戳。
+  // 最新导出时间只由 catalog.generatedAt 表示，避免每次同步改写全部正文页。
+  for (const key of ['title', 'description', 'moduleKey']) {
+    if (!new RegExp(`^${key}: .+$`, 'm').test(updated)) {
       throw new Error(`模块 ${module.key} 的页面 front matter 不完整，拒绝覆盖。`);
     }
-    updated = updated.replace(pattern, replacement);
   }
   return updated;
 }
@@ -763,6 +774,12 @@ ${formatLandingCounts(modules)}
   }}
 />
 `;
+}
+
+export function updateLandingPage(content, generatedPage) {
+  const component = /<XActionLanding\b[\s\S]*?\/>/;
+  if (!component.test(content)) throw new Error('组合动作首页缺少 XActionLanding，拒绝覆盖人工正文。');
+  return content.replace(component, () => generatedPage.match(component)[0]);
 }
 
 function extractGeneratedAt(generatedRoot) {
@@ -890,6 +907,7 @@ function createChangeReport(previousCatalog, nextCatalog) {
 }
 
 export {
+  updateExistingModulePage,
   isUserModule,
   parseArguments,
   createChangeReport,
@@ -919,18 +937,33 @@ function findExistingModulePages() {
   return pages;
 }
 
+export function resolveModulePage(module, existingPages) {
+  const existingPath = existingPages.get(module.key);
+  if (existingPath) return existingPath;
+  const category = categoryDefinitions.find((item) => item.key === module.category);
+  if (!category) throw new Error(`新模块分类尚未配置：${module.category} (${module.key})`);
+  const destination = path.join(docsRoot, 'modules', category.directory, `${module.slug}.md`);
+  if (fs.existsSync(destination)) {
+    throw new Error(`模块 ${module.key} 的目标页面已存在，可能发生 Key 改名；请先核对并保留原正文：${destination}`);
+  }
+  return destination;
+}
+
 function main() {
   const {generated, legacy} = parseArguments(process.argv.slice(2));
+  const generatedCatalogPath = path.join(generated, 'catalog.json');
+  const generatedCatalog = fs.existsSync(generatedCatalogPath)
+    ? JSON.parse(readText(generatedCatalogPath)) : null;
   const generatedModulesRoot = path.join(generated, 'modules');
-  if (!fs.existsSync(generatedModulesRoot)) {
+  if (!generatedCatalog && !fs.existsSync(generatedModulesRoot)) {
     throw new Error(`找不到模块目录：${generatedModulesRoot}`);
   }
   if (legacy && !fs.existsSync(path.join(legacy, 'images'))) {
     throw new Error(`找不到旧文档图片目录：${path.join(legacy, 'images')}`);
   }
 
-  const modules = collectFiles(generatedModulesRoot, (value) => value.endsWith('.md'))
-    .map(parseGeneratedModule)
+  const modules = (generatedCatalog ? parseGeneratedCatalog(generatedCatalog)
+    : collectFiles(generatedModulesRoot, (value) => value.endsWith('.md')).map(parseGeneratedModule))
     .filter(isUserModule)
     .sort((left, right) =>
       left.category === right.category
@@ -950,8 +983,12 @@ function main() {
     keys.add(module.key);
     slugs.add(module.slug);
   }
+  const existingPages = findExistingModulePages();
+  const destinations = new Map(modules.map((module) => [module.key, resolveModulePage(module, existingPages)]));
 
-  const generatedAt = extractGeneratedAt(generated);
+  const generatedAt = generatedCatalog
+    ? String(generatedCatalog.GeneratedAt).replace('T', ' ').slice(0, 19)
+    : extractGeneratedAt(generated);
   const legacyFiles = new Map(
     legacy
       ? fs
@@ -971,7 +1008,10 @@ function main() {
     }
   }
 
-  writeText(
+  const createIfMissing = (filePath, content) => {
+    if (!fs.existsSync(filePath)) writeText(filePath, content);
+  };
+  createIfMissing(
     path.join(docsRoot, '_category_.json'),
     `${JSON.stringify(
       {
@@ -983,12 +1023,12 @@ function main() {
       2,
     )}\n`,
   );
-  writeText(
+  createIfMissing(
     path.join(docsRoot, 'modules', '_category_.json'),
     createCategoryFile('模块参考', 20, '/v2/xaction/modules'),
   );
   for (const category of categoryDefinitions) {
-    writeText(
+    createIfMissing(
       path.join(docsRoot, 'modules', category.directory, '_category_.json'),
       createCategoryFile(
         category.label,
@@ -998,15 +1038,16 @@ function main() {
     );
   }
 
-  const existingPages = findExistingModulePages();
   let migratedCount = 0;
   const legacyMappedModuleCount = modules.filter((module) =>
     legacyFiles.has(module.legacySlug),
   ).length;
   let moduleImageCount = 0;
-  for (const category of categoryDefinitions) {
-    const categoryModules = modules.filter((module) => module.category === category.key);
-    categoryModules.forEach((module, index) => {
+  const categoryPositions = new Map();
+  modules.forEach((module) => {
+      const index = categoryPositions.get(module.category) ?? 0;
+      categoryPositions.set(module.category, index + 1);
+      const destination = destinations.get(module.key);
       const legacyPath = module.ownsLegacyContent
         ? legacyFiles.get(module.legacySlug)
         : null;
@@ -1016,20 +1057,19 @@ function main() {
         moduleImageCount += copyReferencedImages(
           legacyDocument.body,
           legacy,
-          path.join(docsRoot, 'modules', category.directory, 'img'),
+          path.join(path.dirname(destination), 'img'),
         );
       }
       const reference = createReference(module);
       const existingPath = existingPages.get(module.key);
-      const destination =
-        existingPath ?? path.join(docsRoot, 'modules', category.directory, `${module.slug}.md`);
       if (existingPath) {
+        const original = readText(existingPath);
         const updated = updateExistingModulePage(
-          readText(existingPath),
+          original,
           module,
           generatedAt,
         );
-        writeText(existingPath, updated);
+        if (updated !== original) writeText(existingPath, updated);
       } else {
         const manualBody = legacyDocument
           ? prepareLegacyBody(legacyDocument.body, routeByLegacySlug)
@@ -1049,16 +1089,15 @@ function main() {
         )}\n\n# ${module.name}\n\n${module.description}\n\n${reference}\n\n${manualBody}`;
         writeText(destination, content);
       }
-    });
-  }
+  });
 
   const supportingResult = legacy
     ? writeSupportingDocuments(legacy, routeByLegacySlug)
     : {pageCount: 0, imageCount: 0};
-  writeText(
-    path.join(docsRoot, 'index.md'),
-    createLandingPage(modules, migratedCount, legacyMappedModuleCount, generatedAt),
-  );
+  const landingPath = path.join(docsRoot, 'index.md');
+  const generatedLanding = createLandingPage(modules, migratedCount, legacyMappedModuleCount, generatedAt);
+  writeText(landingPath, fs.existsSync(landingPath)
+    ? updateLandingPage(readText(landingPath), generatedLanding) : generatedLanding);
 
   const previousCatalogPath = path.join(dataRoot, 'catalog.json');
   const previousCatalog = fs.existsSync(previousCatalogPath)
@@ -1082,8 +1121,12 @@ function main() {
     modules: normalizedModules,
   };
   const changes = createChangeReport(previousCatalog, catalog);
+  const changesPath = path.join(dataRoot, 'changes.json');
+  const isSameExport = JSON.stringify(previousCatalog) === JSON.stringify(catalog);
   writeText(path.join(dataRoot, 'catalog.json'), JSON.stringify(catalog, null, 2));
-  writeText(path.join(dataRoot, 'changes.json'), JSON.stringify(changes, null, 2));
+  if (!isSameExport || !fs.existsSync(changesPath)) {
+    writeText(changesPath, JSON.stringify(changes, null, 2));
+  }
   writeModulesIndex();
   for (const module of normalizedModules) {
     writeText(

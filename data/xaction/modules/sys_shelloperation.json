@@ -16,61 +16,102 @@
       "key": "operation",
       "name": "操作类型",
       "type": "Enum",
+      "description": "",
+      "isAdvanced": false,
+      "validForList": [],
+      "invalidForList": [],
+      "condition": "",
       "defaultValue": "getverb",
+      "defaultValueRaw": "getverb",
       "required": true,
       "variableMode": "Input",
-      "condition": "",
-      "description": ""
+      "isControlField": true
     },
     {
       "key": "pathOrExt",
       "name": "文件路径或扩展名",
       "type": "Text",
+      "description": "需要获取可用动词的文件类型，可使用扩展名如.txt或提供完整文件名。",
+      "isAdvanced": false,
+      "validForList": [
+        "getverb",
+        "gettitles"
+      ],
+      "invalidForList": [],
+      "condition": "仅：getverb, gettitles",
       "defaultValue": ".txt",
+      "defaultValueRaw": ".txt",
       "required": false,
       "variableMode": "UseVarOrInput",
-      "condition": "仅：getverb, gettitles",
-      "description": "需要获取可用动词的文件类型，可使用扩展名如.txt或提供完整文件名。"
+      "isControlField": false
     },
     {
       "key": "pathList",
       "name": "文件路径列表",
       "type": "List",
+      "description": "要操作文件的完整路径的列表。每个文件将会被依次调用。",
+      "isAdvanced": false,
+      "validForList": [
+        "execverb",
+        "showmenu",
+        "execbytitle"
+      ],
+      "invalidForList": [],
+      "condition": "仅：execverb, showmenu, execbytitle",
       "defaultValue": "",
+      "defaultValueRaw": "",
       "required": false,
       "variableMode": "UseVarOrInput",
-      "condition": "仅：execverb, showmenu, execbytitle",
-      "description": "要操作文件的完整路径的列表。每个文件将会被依次调用。"
+      "isControlField": false
     },
     {
       "key": "verb",
       "name": "动词",
       "type": "Text",
+      "description": "Shell操作动词，需要在当前电脑上支持才能正常运行。",
+      "isAdvanced": false,
+      "validForList": [
+        "execverb"
+      ],
+      "invalidForList": [],
+      "condition": "仅：execverb",
       "defaultValue": "",
+      "defaultValueRaw": "",
       "required": false,
       "variableMode": "UseVarOrInput",
-      "condition": "仅：execverb",
-      "description": "Shell操作动词，需要在当前电脑上支持才能正常运行。"
+      "isControlField": false
     },
     {
       "key": "title",
       "name": "菜单标题",
       "type": "Text",
+      "description": "菜单上的标题文字，需要准确匹配。",
+      "isAdvanced": false,
+      "validForList": [
+        "execbytitle"
+      ],
+      "invalidForList": [],
+      "condition": "仅：execbytitle",
       "defaultValue": "",
+      "defaultValueRaw": "",
       "required": false,
       "variableMode": "UseVarOrInput",
-      "condition": "仅：execbytitle",
-      "description": "菜单上的标题文字，需要准确匹配。"
+      "isControlField": false
     },
     {
       "key": "stopIfFail",
       "name": "失败后停止",
       "type": "Boolean",
+      "description": "失败后是否停止动作",
+      "isAdvanced": false,
+      "validForList": [],
+      "invalidForList": [],
+      "condition": "",
       "defaultValue": "true",
+      "defaultValueRaw": true,
       "required": false,
       "variableMode": "Input",
-      "condition": "",
-      "description": "失败后是否停止动作"
+      "isControlField": false
     }
   ],
   "outputs": [
@@ -78,22 +119,35 @@
       "key": "isSuccess",
       "name": "是否成功",
       "type": "Boolean",
-      "condition": "",
-      "description": "操作是否成功"
+      "description": "操作是否成功",
+      "isAdvanced": false,
+      "validForList": [],
+      "invalidForList": [],
+      "condition": ""
     },
     {
       "key": "verbs",
       "name": "动词列表",
       "type": "List",
-      "condition": "仅：getverb",
-      "description": "每项格式为：描述文字|动词"
+      "description": "每项格式为：描述文字|动词",
+      "isAdvanced": false,
+      "validForList": [
+        "getverb"
+      ],
+      "invalidForList": [],
+      "condition": "仅：getverb"
     },
     {
       "key": "titles",
       "name": "菜单标题列表",
       "type": "List",
-      "condition": "仅：gettitles",
-      "description": ""
+      "description": "",
+      "isAdvanced": false,
+      "validForList": [
+        "gettitles"
+      ],
+      "invalidForList": [],
+      "condition": "仅：gettitles"
     }
   ],
   "selections": {
@@ -193,5 +247,5 @@
       ]
     }
   },
-  "sourceFileName": "sys_shelloperation_Shell文件操作.md"
+  "sourceFileName": "catalog.json"
 }

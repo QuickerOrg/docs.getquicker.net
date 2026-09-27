@@ -16,81 +16,128 @@
       "key": "content",
       "name": "内容",
       "type": "Text",
+      "description": "要输出的内容",
+      "isAdvanced": false,
+      "validForList": [],
+      "invalidForList": [],
+      "condition": "",
       "defaultValue": "",
       "required": true,
       "variableMode": "UseVarOrInput",
-      "condition": "",
-      "description": "要输出的内容"
+      "isControlField": false
     },
     {
       "key": "method",
       "name": "方法",
       "type": "Enum",
+      "description": "发送内容使用的方法",
+      "isAdvanced": false,
+      "validForList": [],
+      "invalidForList": [],
+      "condition": "",
       "defaultValue": "paste",
+      "defaultValueRaw": "paste",
       "required": true,
       "variableMode": "Input",
-      "condition": "",
-      "description": "发送内容使用的方法"
+      "isControlField": true
     },
     {
       "key": "delayBeforePaste",
       "name": "粘贴前延时",
       "type": "Integer",
+      "description": "毫秒数。写入剪贴板以后，等待指定的时间后再发送粘贴按键(Ctrl+V)",
+      "isAdvanced": false,
+      "validForList": [
+        "paste"
+      ],
+      "invalidForList": [],
+      "condition": "仅：paste",
       "defaultValue": "50",
+      "defaultValueRaw": 50,
       "required": false,
       "variableMode": "Input",
-      "condition": "仅：paste",
-      "description": "毫秒数。写入剪贴板以后，等待指定的时间后再发送粘贴按键(Ctrl+V)"
+      "isControlField": false
     },
     {
       "key": "delayAfterPaste",
       "name": "粘贴后延时",
       "type": "Integer",
+      "description": "毫秒数。发送粘贴按键(Ctrl+V)之后等待的毫秒数",
+      "isAdvanced": false,
+      "validForList": [
+        "paste"
+      ],
+      "invalidForList": [],
+      "condition": "仅：paste",
       "defaultValue": "10",
+      "defaultValueRaw": 10,
       "required": false,
       "variableMode": "Input",
-      "condition": "仅：paste",
-      "description": "毫秒数。发送粘贴按键(Ctrl+V)之后等待的毫秒数"
+      "isControlField": false
     },
     {
       "key": "delayBetweenChar",
       "name": "字符间延迟",
       "type": "Integer",
+      "description": "模拟输入下一个字符之前等待的毫秒数。",
+      "isAdvanced": false,
+      "validForList": [
+        "input"
+      ],
+      "invalidForList": [],
+      "condition": "仅：input",
       "defaultValue": "0",
+      "defaultValueRaw": 0,
       "required": false,
       "variableMode": "Input",
-      "condition": "仅：input",
-      "description": "模拟输入下一个字符之前等待的毫秒数。"
+      "isControlField": false
     },
     {
       "key": "appendReturn",
       "name": "在末尾添加回车",
       "type": "Boolean",
+      "description": "发送内容后，在末尾输入回车",
+      "isAdvanced": false,
+      "validForList": [],
+      "invalidForList": [],
+      "condition": "",
       "defaultValue": "false",
+      "defaultValueRaw": false,
       "required": false,
       "variableMode": "Input",
-      "condition": "",
-      "description": "发送内容后，在末尾输入回车"
+      "isControlField": false
     },
     {
       "key": "hideInHistory",
       "name": "从剪贴板历史中隐藏",
       "type": "Boolean",
+      "description": "Win+v 是否允许看到本条历史",
+      "isAdvanced": false,
+      "validForList": [
+        "paste"
+      ],
+      "invalidForList": [],
+      "condition": "仅：paste",
       "defaultValue": "false",
+      "defaultValueRaw": false,
       "required": false,
       "variableMode": "Input",
-      "condition": "仅：paste",
-      "description": "Win+v 是否允许看到本条历史"
+      "isControlField": false
     },
     {
       "key": "stopIfFail",
       "name": "失败后停止",
       "type": "Boolean",
+      "description": "失败后是否停止动作",
+      "isAdvanced": false,
+      "validForList": [],
+      "invalidForList": [],
+      "condition": "",
       "defaultValue": "true",
+      "defaultValueRaw": true,
       "required": false,
       "variableMode": "Input",
-      "condition": "",
-      "description": "失败后是否停止动作"
+      "isControlField": false
     }
   ],
   "outputs": [
@@ -98,8 +145,11 @@
       "key": "isSuccess",
       "name": "步骤是否成功",
       "type": "Boolean",
-      "condition": "",
-      "description": "步骤是否成功完成"
+      "description": "步骤是否成功完成",
+      "isAdvanced": false,
+      "validForList": [],
+      "invalidForList": [],
+      "condition": ""
     }
   ],
   "selections": {
@@ -119,5 +169,5 @@
       ]
     }
   },
-  "sourceFileName": "sys_outputText_发送文本到窗口.md"
+  "sourceFileName": "catalog.json"
 }

@@ -16,91 +16,143 @@
       "key": "operation",
       "name": "操作类型",
       "type": "Enum",
+      "description": "",
+      "isAdvanced": false,
+      "validForList": [],
+      "invalidForList": [],
+      "condition": "",
       "defaultValue": "extractText",
+      "defaultValueRaw": "extractText",
       "required": true,
       "variableMode": "Input",
-      "condition": "",
-      "description": ""
+      "isControlField": true
     },
     {
       "key": "source",
       "name": "源HTML",
       "type": "Text",
+      "description": "原始HTML内容，或网址，或根节点对象",
+      "isAdvanced": false,
+      "validForList": [],
+      "invalidForList": [],
+      "condition": "",
       "defaultValue": "",
+      "defaultValueRaw": "",
       "required": true,
       "variableMode": "UseVarOrInput",
-      "condition": "",
-      "description": "原始HTML内容，或网址，或根节点对象"
+      "isControlField": false
     },
     {
       "key": "encoding",
       "name": "网页编码类型",
       "type": "Text",
+      "description": "通过网址加载内容时，使用指定的编码。留空时默认为UTF8。",
+      "isAdvanced": false,
+      "validForList": [],
+      "invalidForList": [],
+      "condition": "",
       "defaultValue": "",
+      "defaultValueRaw": "",
       "required": false,
       "variableMode": "UseVarOrInput",
-      "condition": "",
-      "description": "通过网址加载内容时，使用指定的编码。留空时默认为UTF8。"
+      "isControlField": false
     },
     {
       "key": "xpath",
       "name": "节点XPath",
       "type": "Text",
+      "description": "内容的XPath，详细说明请参考文档",
+      "isAdvanced": false,
+      "validForList": [],
+      "invalidForList": [],
+      "condition": "",
       "defaultValue": "",
+      "defaultValueRaw": "",
       "required": true,
       "variableMode": "UseVarOrInput",
-      "condition": "",
-      "description": "内容的XPath，详细说明请参考文档"
+      "isControlField": false
     },
     {
       "key": "selectTarget",
       "name": "提取方式",
       "type": "Enum",
+      "description": "提取单个节点还是符合条件的所有节点。",
+      "isAdvanced": false,
+      "validForList": [],
+      "invalidForList": [],
+      "condition": "",
       "defaultValue": "single",
+      "defaultValueRaw": "single",
       "required": false,
       "variableMode": "Input",
-      "condition": "",
-      "description": "提取单个节点还是符合条件的所有节点。"
+      "isControlField": false
     },
     {
       "key": "returnType",
       "name": "提取内容类型",
       "type": "Enum",
+      "description": "要提取的节点信息。",
+      "isAdvanced": false,
+      "validForList": [],
+      "invalidForList": [],
+      "condition": "",
       "defaultValue": "InnerHtml",
+      "defaultValueRaw": "InnerHtml",
       "required": false,
       "variableMode": "Input",
-      "condition": "",
-      "description": "要提取的节点信息。"
+      "isControlField": false
     },
     {
       "key": "attribute",
       "name": "属性名称",
       "type": "Text",
+      "description": "仅在提取节点属性时有效。指定属性的名称。",
+      "isAdvanced": false,
+      "validForList": [],
+      "invalidForList": [],
+      "visibleWhen": {
+        "kind": "Field",
+        "fieldKey": "returnType",
+        "operator": "In",
+        "values": [
+          "Attribute"
+        ]
+      },
+      "condition": "returnType 为 \"Attribute\"",
       "defaultValue": "",
+      "defaultValueRaw": "",
       "required": false,
       "variableMode": "UseVarOrInput",
-      "condition": "",
-      "description": "仅在提取节点属性时有效。指定属性的名称。"
+      "isControlField": false
     },
     {
       "key": "writeToSheet",
       "name": "写入工作表对象",
       "type": "Object",
+      "description": "将提取到的表格内容写入工作表对象中。",
+      "isAdvanced": false,
+      "validForList": [],
+      "invalidForList": [],
+      "condition": "",
       "defaultValue": "",
       "required": false,
       "variableMode": "UseVarOnly",
-      "condition": "",
-      "description": "将提取到的表格内容写入工作表对象中。"
+      "isControlField": false
     },
     {
       "key": "stopIfFail",
       "name": "失败后停止动作",
       "type": "Boolean",
+      "description": "失败后是否停止动作",
+      "isAdvanced": false,
+      "validForList": [],
+      "invalidForList": [],
+      "condition": "",
       "defaultValue": "true",
+      "defaultValueRaw": true,
       "required": false,
       "variableMode": "Input",
-      "condition": "",
-      "description": "失败后是否停止动作"
+      "isControlField": false
     }
   ],
   "outputs": [
@@ -108,22 +160,31 @@
       "key": "isSuccess",
       "name": "步骤执行是否成功",
       "type": "Boolean",
-      "condition": "",
-      "description": "步骤执行是否成功"
+      "description": "步骤执行是否成功",
+      "isAdvanced": false,
+      "validForList": [],
+      "invalidForList": [],
+      "condition": ""
     },
     {
       "key": "value",
       "name": "提取值",
       "type": "Any",
-      "condition": "",
-      "description": "提取的内容。请确保结果类型和变量类型匹配。"
+      "description": "提取的内容。请确保结果类型和变量类型匹配。",
+      "isAdvanced": false,
+      "validForList": [],
+      "invalidForList": [],
+      "condition": ""
     },
     {
       "key": "rootNode",
       "name": "根节点",
       "type": "Any",
-      "condition": "",
-      "description": "整个HTML源内容对应的HtmlNode节点对象，可用于后续处理使用。"
+      "description": "整个HTML源内容对应的HtmlNode节点对象，可用于后续处理使用。",
+      "isAdvanced": false,
+      "validForList": [],
+      "invalidForList": [],
+      "condition": ""
     }
   ],
   "selections": {
@@ -208,5 +269,5 @@
       ]
     }
   },
-  "sourceFileName": "sys_htmlExtract_提取HTML内容.md"
+  "sourceFileName": "catalog.json"
 }

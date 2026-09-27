@@ -16,41 +16,61 @@
       "key": "content",
       "name": "图片",
       "type": "Image",
+      "description": "要写入文件的图片（变量）",
+      "isAdvanced": false,
+      "validForList": [],
+      "invalidForList": [],
+      "condition": "",
       "defaultValue": "",
+      "defaultValueRaw": "",
       "required": true,
       "variableMode": "UseVar",
-      "condition": "",
-      "description": "要写入文件的图片（变量）"
+      "isControlField": false
     },
     {
       "key": "filePath",
       "name": "文件路径",
       "type": "Text",
+      "description": "要写入的文件完整路径（包含文件名）",
+      "isAdvanced": false,
+      "validForList": [],
+      "invalidForList": [],
+      "condition": "",
       "defaultValue": "",
+      "defaultValueRaw": "",
       "required": true,
       "variableMode": "UseVarOrInput",
-      "condition": "",
-      "description": "要写入的文件完整路径（包含文件名）"
+      "isControlField": false
     },
     {
       "key": "quality",
       "name": "图片质量",
       "type": "Text",
+      "description": "保存为JPG格式时的图片质量参数。范围10-100。",
+      "isAdvanced": false,
+      "validForList": [],
+      "invalidForList": [],
+      "condition": "",
       "defaultValue": "95",
+      "defaultValueRaw": 95,
       "required": true,
       "variableMode": "UseVarOrInput",
-      "condition": "",
-      "description": "保存为JPG格式时的图片质量参数。范围10-100。"
+      "isControlField": false
     },
     {
       "key": "stopIfFail",
       "name": "失败后停止",
       "type": "Boolean",
+      "description": "失败后是否停止动作",
+      "isAdvanced": false,
+      "validForList": [],
+      "invalidForList": [],
+      "condition": "",
       "defaultValue": "true",
+      "defaultValueRaw": true,
       "required": false,
       "variableMode": "Input",
-      "condition": "",
-      "description": "失败后是否停止动作"
+      "isControlField": false
     }
   ],
   "outputs": [
@@ -58,10 +78,13 @@
       "key": "isSuccess",
       "name": "是否成功",
       "type": "Boolean",
-      "condition": "",
-      "description": "操作是否成功"
+      "description": "操作是否成功",
+      "isAdvanced": false,
+      "validForList": [],
+      "invalidForList": [],
+      "condition": ""
     }
   ],
   "selections": {},
-  "sourceFileName": "sys_WriteImageFile_写入图片文件.md"
+  "sourceFileName": "catalog.json"
 }

@@ -16,11 +16,16 @@
       "key": "path",
       "name": "路径",
       "type": "Text",
+      "description": "文件或文件夹的完整路径。",
+      "isAdvanced": false,
+      "validForList": [],
+      "invalidForList": [],
+      "condition": "",
       "defaultValue": "",
+      "defaultValueRaw": "",
       "required": true,
       "variableMode": "UseVarOrInput",
-      "condition": "",
-      "description": "文件或文件夹的完整路径。"
+      "isControlField": false
     }
   ],
   "outputs": [
@@ -28,129 +33,183 @@
       "key": "isExists",
       "name": "路径是否存在",
       "type": "Boolean",
-      "condition": "",
-      "description": ""
+      "description": "",
+      "isAdvanced": false,
+      "validForList": [],
+      "invalidForList": [],
+      "condition": ""
     },
     {
       "key": "isFile",
       "name": "是否为文件",
       "type": "Boolean",
-      "condition": "",
-      "description": ""
+      "description": "",
+      "isAdvanced": false,
+      "validForList": [],
+      "invalidForList": [],
+      "condition": ""
     },
     {
       "key": "isFolder",
       "name": "是否为文件夹",
       "type": "Boolean",
-      "condition": "",
-      "description": ""
+      "description": "",
+      "isAdvanced": false,
+      "validForList": [],
+      "invalidForList": [],
+      "condition": ""
     },
     {
       "key": "isReadonly",
       "name": "是否只读",
       "type": "Boolean",
-      "condition": "",
-      "description": ""
+      "description": "",
+      "isAdvanced": false,
+      "validForList": [],
+      "invalidForList": [],
+      "condition": ""
     },
     {
       "key": "isHidden",
       "name": "是否隐藏",
       "type": "Boolean",
-      "condition": "",
-      "description": ""
+      "description": "",
+      "isAdvanced": false,
+      "validForList": [],
+      "invalidForList": [],
+      "condition": ""
     },
     {
       "key": "isSystem",
       "name": "是否为系统文件",
       "type": "Boolean",
-      "condition": "",
-      "description": ""
+      "description": "",
+      "isAdvanced": false,
+      "validForList": [],
+      "invalidForList": [],
+      "condition": ""
     },
     {
       "key": "fileLength",
       "name": "文件长度",
       "type": "Integer",
-      "condition": "",
-      "description": ""
+      "description": "",
+      "isAdvanced": false,
+      "validForList": [],
+      "invalidForList": [],
+      "condition": ""
     },
     {
       "key": "fileCount",
       "name": "文件夹内文件个数",
       "type": "Integer",
-      "condition": "",
-      "description": "仅对文件夹路径有效，输出时需要耗费一定时间扫描文件夹"
+      "description": "仅对文件夹路径有效，输出时需要耗费一定时间扫描文件夹",
+      "isAdvanced": false,
+      "validForList": [],
+      "invalidForList": [],
+      "condition": ""
     },
     {
       "key": "totalLength",
       "name": "文件夹大小",
       "type": "Integer",
-      "condition": "",
-      "description": "仅对文件夹路径有效，输出时需要耗费一定时间扫描文件夹"
+      "description": "仅对文件夹路径有效，输出时需要耗费一定时间扫描文件夹",
+      "isAdvanced": false,
+      "validForList": [],
+      "invalidForList": [],
+      "condition": ""
     },
     {
       "key": "createTime",
       "name": "创建时间",
       "type": "DateTime",
-      "condition": "",
-      "description": ""
+      "description": "",
+      "isAdvanced": false,
+      "validForList": [],
+      "invalidForList": [],
+      "condition": ""
     },
     {
       "key": "editTime",
       "name": "更新时间",
       "type": "DateTime",
-      "condition": "",
-      "description": ""
+      "description": "",
+      "isAdvanced": false,
+      "validForList": [],
+      "invalidForList": [],
+      "condition": ""
     },
     {
       "key": "metaData",
       "name": "文件扩展信息",
       "type": "Dict",
-      "condition": "",
-      "description": "获取文件的扩展信息，值为词典类型。"
+      "description": "获取文件的扩展信息，值为词典类型。",
+      "isAdvanced": false,
+      "validForList": [],
+      "invalidForList": [],
+      "condition": ""
     },
     {
       "key": "lnkTarget",
       "name": "lnk目标路径",
       "type": "Text",
-      "condition": "",
-      "description": "快捷方式文件的目标文件"
+      "description": "快捷方式文件的目标文件",
+      "isAdvanced": false,
+      "validForList": [],
+      "invalidForList": [],
+      "condition": ""
     },
     {
       "key": "lnkArguments",
       "name": "lnk命令行参数",
       "type": "Text",
-      "condition": "",
-      "description": "快捷方式中的命令行参数"
+      "description": "快捷方式中的命令行参数",
+      "isAdvanced": false,
+      "validForList": [],
+      "invalidForList": [],
+      "condition": ""
     },
     {
       "key": "md5hash",
       "name": "MD5 哈希值",
       "type": "Text",
-      "condition": "",
-      "description": "获取文件的MD5哈希值。仅对文件有效，大文件需要一些时间扫描。"
+      "description": "获取文件的MD5哈希值。仅对文件有效，大文件需要一些时间扫描。",
+      "isAdvanced": false,
+      "validForList": [],
+      "invalidForList": [],
+      "condition": ""
     },
     {
       "key": "sha1hash",
       "name": "SHA1 哈希值",
       "type": "Text",
-      "condition": "",
-      "description": "获取文件的SHA1哈希值。仅对文件有效，大文件需要一些时间扫描。"
+      "description": "获取文件的SHA1哈希值。仅对文件有效，大文件需要一些时间扫描。",
+      "isAdvanced": false,
+      "validForList": [],
+      "invalidForList": [],
+      "condition": ""
     },
     {
       "key": "sha256hash",
       "name": "SHA256 哈希值",
       "type": "Text",
-      "condition": "",
-      "description": "获取文件的SHA256哈希值。仅对文件有效，大文件需要一些时间扫描。"
+      "description": "获取文件的SHA256哈希值。仅对文件有效，大文件需要一些时间扫描。",
+      "isAdvanced": false,
+      "validForList": [],
+      "invalidForList": [],
+      "condition": ""
     },
     {
       "key": "crc32hash",
       "name": "CRC32 哈希值",
       "type": "Text",
-      "condition": "",
-      "description": "获取文件的CRC32哈希值。仅对文件有效，大文件需要一些时间扫描。"
+      "description": "获取文件的CRC32哈希值。仅对文件有效，大文件需要一些时间扫描。",
+      "isAdvanced": false,
+      "validForList": [],
+      "invalidForList": [],
+      "condition": ""
     }
   ],
   "selections": {},
-  "sourceFileName": "sys_checkPathExists_检查路径_获取文件信息.md"
+  "sourceFileName": "catalog.json"
 }

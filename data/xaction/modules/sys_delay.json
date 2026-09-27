@@ -16,24 +16,34 @@
       "key": "delayMs",
       "name": "等待时间",
       "type": "Integer",
+      "description": "等待时间毫秒数",
+      "isAdvanced": false,
+      "validForList": [],
+      "invalidForList": [],
+      "condition": "",
       "defaultValue": "100",
+      "defaultValueRaw": 100,
       "required": true,
       "variableMode": "UseVarOrInput",
-      "condition": "",
-      "description": "等待时间毫秒数"
+      "isControlField": false
     },
     {
       "key": "monitorWaitWin",
       "name": "等待窗口关闭时取消",
       "type": "Boolean",
+      "description": "结合\"等待窗口\"模块，如果等待窗口关闭，则停止等待。仅当等待时间超过1000ms时生效",
+      "isAdvanced": false,
+      "validForList": [],
+      "invalidForList": [],
+      "condition": "",
       "defaultValue": "false",
+      "defaultValueRaw": false,
       "required": false,
       "variableMode": "Input",
-      "condition": "",
-      "description": "结合\"等待窗口\"模块，如果等待窗口关闭，则停止等待。仅当等待时间超过1000ms时生效"
+      "isControlField": false
     }
   ],
   "outputs": [],
   "selections": {},
-  "sourceFileName": "sys_delay_等待时间.md"
+  "sourceFileName": "catalog.json"
 }

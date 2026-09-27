@@ -16,111 +16,184 @@
       "key": "mode",
       "name": "运行模式",
       "type": "Enum",
+      "description": "普通模式：在Quicker进程中执行；低权限模式：在单独的进程中执行，可用于COM操作。",
+      "isAdvanced": false,
+      "validForList": [],
+      "invalidForList": [],
+      "condition": "",
       "defaultValue": "normal_roslyn",
+      "defaultValueRaw": "normal_roslyn",
       "required": true,
       "variableMode": "Input",
-      "condition": "",
-      "description": "普通模式：在Quicker进程中执行；低权限模式：在单独的进程中执行，可用于COM操作。"
+      "isControlField": true
     },
     {
       "key": "script",
       "name": "脚本内容",
       "type": "Text",
-      "defaultValue": "//.cs  文件类型，便于外部编辑时使用\n// 引用必要的命名空间\nusing System.Windows.Forms;\n\n// 纯脚本：末行表达式即返回值；可用 context 读写动作变量。\n// 也可写完整 public static void Exec(Quicker.Public.IStepContext context) { ... }\n// var old = context.GetVarValue(\"varName\");\n// context.SetVarValue(\"varName\", \"from script\");\nMessageBox.Show(\"Hello World!\");\n\"done\"",
+      "description": "要运行的脚本内容",
+      "isAdvanced": false,
+      "validForList": [
+        "normal_roslyn"
+      ],
+      "invalidForList": [],
+      "condition": "仅：normal_roslyn",
+      "defaultValue": "//.cs  文件类型，便于外部编辑时使用\r\n// 引用必要的命名空间\r\nusing System.Windows.Forms;\r\n\r\n// 纯脚本：末行表达式即返回值；可用 context 读写动作变量。\r\n// 也可写完整 public static void Exec(Quicker.Public.IStepContext context) { ... }\r\n// var old = context.GetVarValue(\"varName\");\r\n// context.SetVarValue(\"varName\", \"from script\");\r\nMessageBox.Show(\"Hello World!\");\r\n\"done\"\r\n",
+      "defaultValueRaw": "//.cs  文件类型，便于外部编辑时使用\r\n// 引用必要的命名空间\r\nusing System.Windows.Forms;\r\n\r\n// 纯脚本：末行表达式即返回值；可用 context 读写动作变量。\r\n// 也可写完整 public static void Exec(Quicker.Public.IStepContext context) { ... }\r\n// var old = context.GetVarValue(\"varName\");\r\n// context.SetVarValue(\"varName\", \"from script\");\r\nMessageBox.Show(\"Hello World!\");\r\n\"done\"\r\n",
+      "newStepDefaultValue": "//.cs  文件类型，便于外部编辑时使用\r\n// 引用必要的命名空间\r\nusing System.Windows.Forms;\r\n\r\n// 纯脚本：直接写执行语句，使用 return 返回结果；可用 context 读写动作变量。\r\n// 兼容旧脚本的末行表达式返回方式，但新脚本建议显式使用 return。\r\n// 也可写完整 public static void Exec(Quicker.Public.IStepContext context) { ... }\r\n// var old = context.GetVarValue(\"varName\");\r\n// context.SetVarValue(\"varName\", \"from script\");\r\nMessageBox.Show(\"Hello World!\");\r\nreturn \"done\";\r\n",
       "required": true,
       "variableMode": "UseVarOrInput",
-      "condition": "仅：normal_roslyn",
-      "description": "要运行的脚本内容"
+      "isControlField": false
     },
     {
       "key": "scriptForLp",
       "name": "脚本内容",
       "type": "Text",
-      "defaultValue": "//.cs  文件类型，便于外部编辑时使用\n// 引用必要的命名空间\nusing System.Windows.Forms;\n\n// Quicker将会调用的函数\npublic static string Exec(string paramValue)\n{\n    System.Windows.Forms.MessageBox.Show(\"Hello World!\");\n    return \"Hello World!\";\n}",
+      "description": "要运行的脚本内容",
+      "isAdvanced": false,
+      "validForList": [
+        "low_permission_roslyn"
+      ],
+      "invalidForList": [],
+      "condition": "仅：low_permission_roslyn",
+      "defaultValue": "//.cs  文件类型，便于外部编辑时使用\r\n// 引用必要的命名空间\r\nusing System.Windows.Forms;\r\n\r\n// Quicker将会调用的函数\r\npublic static string Exec(string paramValue)\r\n{\r\n    System.Windows.Forms.MessageBox.Show(\"Hello World!\");\r\n    return \"Hello World!\";\r\n}\r\n",
+      "defaultValueRaw": "//.cs  文件类型，便于外部编辑时使用\r\n// 引用必要的命名空间\r\nusing System.Windows.Forms;\r\n\r\n// Quicker将会调用的函数\r\npublic static string Exec(string paramValue)\r\n{\r\n    System.Windows.Forms.MessageBox.Show(\"Hello World!\");\r\n    return \"Hello World!\";\r\n}\r\n",
       "required": true,
       "variableMode": "UseVarOrInput",
-      "condition": "仅：low_permission_roslyn",
-      "description": "要运行的脚本内容"
+      "isControlField": false
     },
     {
       "key": "scriptForAssembly",
       "name": "脚本内容",
       "type": "Text",
-      "defaultValue": "//.cs  文件类型，便于外部编辑时使用\n// 引用必要的命名空间\nusing System.Windows.Forms;\n\nnamespace MyNamespace\n{\n    // Quicker将会调用的函数\n    public static class MyClass\n    {\n        public static string Exec(string paramValue)\n        {\n            System.Windows.Forms.MessageBox.Show(\"Hello World!\");\n            return \"Hello World!\";\n        }\n    }\n}",
+      "description": "要运行的脚本内容",
+      "isAdvanced": false,
+      "validForList": [
+        "generate_assembly"
+      ],
+      "invalidForList": [],
+      "condition": "仅：generate_assembly",
+      "defaultValue": "//.cs  文件类型，便于外部编辑时使用\r\n// 引用必要的命名空间\r\nusing System.Windows.Forms;\r\n\r\nnamespace MyNamespace\r\n{\r\n    // Quicker将会调用的函数\r\n    public static class MyClass\r\n    {\r\n        public static string Exec(string paramValue)\r\n        {\r\n            System.Windows.Forms.MessageBox.Show(\"Hello World!\");\r\n            return \"Hello World!\";\r\n        }\r\n    }\r\n}\r\n",
+      "defaultValueRaw": "//.cs  文件类型，便于外部编辑时使用\r\n// 引用必要的命名空间\r\nusing System.Windows.Forms;\r\n\r\nnamespace MyNamespace\r\n{\r\n    // Quicker将会调用的函数\r\n    public static class MyClass\r\n    {\r\n        public static string Exec(string paramValue)\r\n        {\r\n            System.Windows.Forms.MessageBox.Show(\"Hello World!\");\r\n            return \"Hello World!\";\r\n        }\r\n    }\r\n}\r\n",
       "required": true,
       "variableMode": "UseVarOrInput",
-      "condition": "仅：generate_assembly",
-      "description": "要运行的脚本内容"
+      "isControlField": false
     },
     {
       "key": "paramValue",
       "name": "参数值",
       "type": "Text",
+      "description": "传递给Exec的参数",
+      "isAdvanced": false,
+      "validForList": [
+        "low_permission_roslyn"
+      ],
+      "invalidForList": [],
+      "condition": "仅：low_permission_roslyn",
       "defaultValue": "",
+      "defaultValueRaw": "",
       "required": true,
       "variableMode": "UseVarOrInput",
-      "condition": "仅：low_permission_roslyn",
-      "description": "传递给Exec的参数"
+      "isControlField": false
     },
     {
       "key": "reference",
       "name": "引用DLL库",
       "type": "Text",
+      "description": "要引用的DLL文件，每行一个。也可以在代码中使用 #r 指令。",
+      "isAdvanced": false,
+      "validForList": [],
+      "invalidForList": [],
+      "condition": "",
       "defaultValue": "",
+      "defaultValueRaw": "",
       "required": false,
       "variableMode": "Input",
-      "condition": "",
-      "description": "要引用的DLL文件，每行一个。也可以在代码中使用 #r 指令。"
+      "isControlField": false
     },
     {
       "key": "enableCache",
       "name": "开启磁盘缓存",
       "type": "Boolean",
+      "description": "是否将编译结果缓存到磁盘。关闭后仍会按最终脚本内容在当前进程内自动复用；脚本使用 $= 表达式或 $$ 插值动态生成时，会自动关闭磁盘缓存。",
+      "isAdvanced": false,
+      "validForList": [
+        "normal_roslyn",
+        "low_permission_roslyn"
+      ],
+      "invalidForList": [],
+      "condition": "仅：normal_roslyn, low_permission_roslyn",
       "defaultValue": "true",
+      "defaultValueRaw": true,
       "required": false,
       "variableMode": "Input",
-      "condition": "仅：normal_roslyn, low_permission_roslyn",
-      "description": "是否将编译结果缓存到磁盘。关闭后仍会按最终脚本内容在当前进程内自动复用；脚本使用 $= 表达式或 $$ 插值动态生成时，会自动关闭磁盘缓存。"
+      "isControlField": false
     },
     {
       "key": "runOnUiThread",
       "name": "执行线程",
       "type": "Enum",
+      "description": "是否在界面线程上运行代码。如果在脚本中使用了wpf窗口，请选中此项。",
+      "isAdvanced": false,
+      "validForList": [
+        "normal_roslyn"
+      ],
+      "invalidForList": [],
+      "condition": "仅：normal_roslyn",
       "defaultValue": "auto",
+      "defaultValueRaw": "auto",
       "required": false,
       "variableMode": "Input",
-      "condition": "仅：normal_roslyn",
-      "description": "是否在界面线程上运行代码。如果在脚本中使用了wpf窗口，请选中此项。"
+      "isControlField": false
     },
     {
       "key": "waitResp",
       "name": "等待返回",
       "type": "Boolean",
+      "description": "是否等待脚本返回结果",
+      "isAdvanced": false,
+      "validForList": [
+        "low_permission_roslyn"
+      ],
+      "invalidForList": [],
+      "condition": "仅：low_permission_roslyn",
       "defaultValue": "true",
+      "defaultValueRaw": true,
       "required": false,
       "variableMode": "Input",
-      "condition": "仅：low_permission_roslyn",
-      "description": "是否等待脚本返回结果"
+      "isControlField": false
     },
     {
       "key": "waitMs",
       "name": "最长等待时间(ms)",
       "type": "Number",
+      "description": "最长的等待返回结果的，毫秒数",
+      "isAdvanced": true,
+      "validForList": [
+        "low_permission_roslyn"
+      ],
+      "invalidForList": [],
+      "condition": "仅：low_permission_roslyn",
       "defaultValue": "10000",
+      "defaultValueRaw": 10000,
       "required": true,
       "variableMode": "Input",
-      "condition": "仅：low_permission_roslyn",
-      "description": "最长的等待返回结果的，毫秒数"
+      "isControlField": false
     },
     {
       "key": "stopIfFail",
       "name": "失败后停止",
       "type": "Boolean",
+      "description": "失败后是否停止动作",
+      "isAdvanced": false,
+      "validForList": [],
+      "invalidForList": [],
+      "condition": "",
       "defaultValue": "true",
+      "defaultValueRaw": true,
       "required": false,
       "variableMode": "Input",
-      "condition": "",
-      "description": "失败后是否停止动作"
+      "isControlField": false
     }
   ],
   "outputs": [
@@ -128,36 +201,59 @@
       "key": "isSuccess",
       "name": "是否成功",
       "type": "Boolean",
-      "condition": "",
-      "description": "操作是否成功"
+      "description": "操作是否成功",
+      "isAdvanced": false,
+      "validForList": [],
+      "invalidForList": [],
+      "condition": ""
     },
     {
       "key": "resp",
       "name": "返回内容",
       "type": "Text",
-      "condition": "仅：low_permission_roslyn",
-      "description": "脚本执行返回的结果文本"
+      "description": "脚本执行返回的结果文本",
+      "isAdvanced": false,
+      "validForList": [
+        "low_permission_roslyn"
+      ],
+      "invalidForList": [],
+      "condition": "仅：low_permission_roslyn"
     },
     {
       "key": "rtn",
       "name": "返回内容",
       "type": "Any",
-      "condition": "仅：normal_roslyn",
-      "description": "Exec 方法的返回值；若返回 Task/ValueTask，则为等待完成后的解包结果"
+      "description": "Exec 方法的返回值；若返回 Task/ValueTask，则为等待完成后的解包结果",
+      "isAdvanced": false,
+      "validForList": [
+        "normal_roslyn"
+      ],
+      "invalidForList": [],
+      "condition": "仅：normal_roslyn"
     },
     {
       "key": "rtnAssembly",
       "name": "程序集对象",
       "type": "Object",
-      "condition": "仅：generate_assembly",
-      "description": "生成的Assembly对象（已经加载）"
+      "description": "生成的Assembly对象（已经加载）",
+      "isAdvanced": false,
+      "validForList": [
+        "generate_assembly"
+      ],
+      "invalidForList": [],
+      "condition": "仅：generate_assembly"
     },
     {
       "key": "assemblyPath",
       "name": "程序集路径",
       "type": "Text",
-      "condition": "仅：generate_assembly",
-      "description": "生成的Assembly路径"
+      "description": "生成的Assembly路径",
+      "isAdvanced": false,
+      "validForList": [
+        "generate_assembly"
+      ],
+      "invalidForList": [],
+      "condition": "仅：generate_assembly"
     }
   ],
   "selections": {
@@ -212,5 +308,5 @@
       ]
     }
   },
-  "sourceFileName": "sys_csscript_运行C#代码.md"
+  "sourceFileName": "catalog.json"
 }

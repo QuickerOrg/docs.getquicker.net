@@ -16,61 +16,91 @@
       "key": "winPosition",
       "name": "窗口位置",
       "type": "Text",
+      "description": "可选。指定显示位置，格式为：left,top,right,bottom。支持像素数值或屏幕宽高百分比。",
+      "isAdvanced": false,
+      "validForList": [],
+      "invalidForList": [],
+      "condition": "",
       "defaultValue": "15%,30%,85%,70%",
+      "defaultValueRaw": "15%,30%,85%,70%",
       "required": false,
       "variableMode": "UseVarOrInput",
-      "condition": "",
-      "description": "可选。指定显示位置，格式为：left,top,right,bottom。支持像素数值或屏幕宽高百分比。"
+      "isControlField": false
     },
     {
       "key": "bgColor",
       "name": "绘图区背景颜色",
       "type": "Text",
+      "description": "绘图窗口的背景颜色。格式为#AARRGGBB",
+      "isAdvanced": false,
+      "validForList": [],
+      "invalidForList": [],
+      "condition": "",
       "defaultValue": "#FFFFFFFF",
+      "defaultValueRaw": "#FFFFFFFF",
       "required": false,
       "variableMode": "UseVarOrInput",
-      "condition": "",
-      "description": "绘图窗口的背景颜色。格式为#AARRGGBB"
+      "isControlField": false
     },
     {
       "key": "penColor",
       "name": "画笔颜色",
       "type": "Text",
+      "description": "画笔颜色。格式为#AARRGGBB",
+      "isAdvanced": false,
+      "validForList": [],
+      "invalidForList": [],
+      "condition": "",
       "defaultValue": "#FFFF0000",
+      "defaultValueRaw": "#FFFF0000",
       "required": false,
       "variableMode": "UseVarOrInput",
-      "condition": "",
-      "description": "画笔颜色。格式为#AARRGGBB"
+      "isControlField": false
     },
     {
       "key": "enableTransparent",
       "name": "使用透明无边框窗口",
       "type": "Boolean",
+      "description": "不显示窗口标题栏，绘图区透明，可以看到底层窗口内容。",
+      "isAdvanced": false,
+      "validForList": [],
+      "invalidForList": [],
+      "condition": "",
       "defaultValue": "false",
+      "defaultValueRaw": false,
       "required": false,
       "variableMode": "Input",
-      "condition": "",
-      "description": "不显示窗口标题栏，绘图区透明，可以看到底层窗口内容。"
+      "isControlField": false
     },
     {
       "key": "imageWithBackground",
       "name": "图片包含背景内容",
       "type": "Boolean",
+      "description": "使用透明窗口时，结果图片是否包含背景内容。",
+      "isAdvanced": false,
+      "validForList": [],
+      "invalidForList": [],
+      "condition": "",
       "defaultValue": "false",
+      "defaultValueRaw": false,
       "required": false,
       "variableMode": "Input",
-      "condition": "",
-      "description": "使用透明窗口时，结果图片是否包含背景内容。"
+      "isControlField": false
     },
     {
       "key": "stopIfFail",
       "name": "取消后停止动作",
       "type": "Boolean",
+      "description": "",
+      "isAdvanced": false,
+      "validForList": [],
+      "invalidForList": [],
+      "condition": "",
       "defaultValue": "true",
+      "defaultValueRaw": true,
       "required": false,
       "variableMode": "Input",
-      "condition": "",
-      "description": ""
+      "isControlField": false
     }
   ],
   "outputs": [
@@ -78,17 +108,23 @@
       "key": "isSuccess",
       "name": "是否成功",
       "type": "Boolean",
-      "condition": "",
-      "description": "操作是否成功"
+      "description": "操作是否成功",
+      "isAdvanced": false,
+      "validForList": [],
+      "invalidForList": [],
+      "condition": ""
     },
     {
       "key": "result",
       "name": "结果图片",
       "type": "Image",
-      "condition": "",
-      "description": ""
+      "description": "",
+      "isAdvanced": false,
+      "validForList": [],
+      "invalidForList": [],
+      "condition": ""
     }
   ],
   "selections": {},
-  "sourceFileName": "sys_whiteboard_手写板.md"
+  "sourceFileName": "catalog.json"
 }

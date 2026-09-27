@@ -16,91 +16,154 @@
       "key": "operation",
       "name": "操作类型",
       "type": "Enum",
+      "description": "",
+      "isAdvanced": false,
+      "validForList": [],
+      "invalidForList": [],
+      "condition": "",
       "defaultValue": "record",
+      "defaultValueRaw": "record",
       "required": true,
       "variableMode": "Input",
-      "condition": "",
-      "description": ""
+      "isControlField": true
     },
     {
       "key": "waveFormat",
       "name": "采样率和声道",
       "type": "Enum",
+      "description": "",
+      "isAdvanced": false,
+      "validForList": [
+        "record"
+      ],
+      "invalidForList": [],
+      "condition": "仅：record",
       "defaultValue": "16000|1",
+      "defaultValueRaw": "16000|1",
       "required": false,
       "variableMode": "Input",
-      "condition": "仅：record",
-      "description": ""
+      "isControlField": false
     },
     {
       "key": "filePath",
       "name": "文件保存路径",
       "type": "Text",
+      "description": "可选。可以为：1）留空(自动保存到TEMP目录中)。2）完整的文件路径。3）保存目录(自动生成文件名)。",
+      "isAdvanced": false,
+      "validForList": [
+        "record",
+        "record_internal"
+      ],
+      "invalidForList": [],
+      "condition": "仅：record, record_internal",
       "defaultValue": "",
+      "defaultValueRaw": "",
       "required": false,
       "variableMode": "Input",
-      "condition": "仅：record, record_internal",
-      "description": "可选。可以为：1）留空(自动保存到TEMP目录中)。2）完整的文件路径。3）保存目录(自动生成文件名)。"
+      "isControlField": false
     },
     {
       "key": "autoStartSeconds",
       "name": "自动开始录音",
       "type": "Number",
+      "description": "倒计时几秒开始录音，0：立即开始，-1：不自动开始；",
+      "isAdvanced": false,
+      "validForList": [
+        "record"
+      ],
+      "invalidForList": [],
+      "condition": "仅：record",
       "defaultValue": "0",
+      "defaultValueRaw": 0,
       "required": false,
       "variableMode": "Input",
-      "condition": "仅：record",
-      "description": "倒计时几秒开始录音，0：立即开始，-1：不自动开始；"
+      "isControlField": false
     },
     {
       "key": "silentStopSeconds",
       "name": "静音停止秒数",
       "type": "Number",
+      "description": "检测到音量较低多长时间后自动停止录音，<1 表示不检测。",
+      "isAdvanced": false,
+      "validForList": [
+        "record",
+        "record_internal",
+        "short_voice_input"
+      ],
+      "invalidForList": [],
+      "condition": "仅：record, record_internal, short_voice_input",
       "defaultValue": "3",
+      "defaultValueRaw": 3,
       "required": false,
       "variableMode": "Input",
-      "condition": "仅：record, record_internal, short_voice_input",
-      "description": "检测到音量较低多长时间后自动停止录音，<1 表示不检测。"
+      "isControlField": false
     },
     {
       "key": "helpText",
       "name": "提示文字",
       "type": "Text",
+      "description": "",
+      "isAdvanced": false,
+      "validForList": [
+        "record",
+        "short_voice_input"
+      ],
+      "invalidForList": [],
+      "condition": "仅：record, short_voice_input",
       "defaultValue": "",
+      "defaultValueRaw": "",
       "required": false,
       "variableMode": "Input",
-      "condition": "仅：record, short_voice_input",
-      "description": ""
+      "isControlField": false
     },
     {
       "key": "vendorAccount",
       "name": "服务商账号",
       "type": "Text",
+      "description": "专业版用户可不填。格式要求请参考模块文档",
+      "isAdvanced": false,
+      "validForList": [
+        "short_voice_input"
+      ],
+      "invalidForList": [],
+      "condition": "仅：short_voice_input",
       "defaultValue": "",
+      "defaultValueRaw": "",
       "required": false,
       "variableMode": "Input",
-      "condition": "仅：short_voice_input",
-      "description": "专业版用户可不填。格式要求请参考模块文档"
+      "isControlField": false
     },
     {
       "key": "volumeGain",
       "name": "音量增益倍率",
       "type": "Number",
+      "description": "录制时的音量放大倍数，1.0为原始音量，建议范围1.0-5.0，设置为0或负数则不进行增益处理",
+      "isAdvanced": false,
+      "validForList": [
+        "record_internal"
+      ],
+      "invalidForList": [],
+      "condition": "仅：record_internal",
       "defaultValue": "0",
+      "defaultValueRaw": 0,
       "required": false,
       "variableMode": "Input",
-      "condition": "仅：record_internal",
-      "description": "录制时的音量放大倍数，1.0为原始音量，建议范围1.0-5.0，设置为0或负数则不进行增益处理"
+      "isControlField": false
     },
     {
       "key": "stopIfFail",
       "name": "失败后停止",
       "type": "Boolean",
+      "description": "失败后是否停止动作",
+      "isAdvanced": false,
+      "validForList": [],
+      "invalidForList": [],
+      "condition": "",
       "defaultValue": "true",
+      "defaultValueRaw": true,
       "required": false,
       "variableMode": "Input",
-      "condition": "",
-      "description": "失败后是否停止动作"
+      "isControlField": false
     }
   ],
   "outputs": [
@@ -108,29 +171,48 @@
       "key": "isSuccess",
       "name": "是否成功",
       "type": "Boolean",
-      "condition": "",
-      "description": "操作是否成功"
+      "description": "操作是否成功",
+      "isAdvanced": false,
+      "validForList": [],
+      "invalidForList": [],
+      "condition": ""
     },
     {
       "key": "outputFilePath",
       "name": "文件保存路径",
       "type": "Text",
-      "condition": "仅：record, record_internal",
-      "description": "音频文件的完整路径。"
+      "description": "音频文件的完整路径。",
+      "isAdvanced": false,
+      "validForList": [
+        "record",
+        "record_internal"
+      ],
+      "invalidForList": [],
+      "condition": "仅：record, record_internal"
     },
     {
       "key": "speechContent",
       "name": "语音文字内容",
       "type": "Text",
-      "condition": "仅：short_voice_input",
-      "description": "获得的语音输入内容"
+      "description": "获得的语音输入内容",
+      "isAdvanced": false,
+      "validForList": [
+        "short_voice_input"
+      ],
+      "invalidForList": [],
+      "condition": "仅：short_voice_input"
     },
     {
       "key": "error",
       "name": "错误",
       "type": "Text",
-      "condition": "仅：short_voice_input",
-      "description": "失败原因提示消息"
+      "description": "失败原因提示消息",
+      "isAdvanced": false,
+      "validForList": [
+        "short_voice_input"
+      ],
+      "invalidForList": [],
+      "condition": "仅：short_voice_input"
     }
   ],
   "selections": {
@@ -210,5 +292,5 @@
       ]
     }
   },
-  "sourceFileName": "sys_recordSound_录制声音_语音识别.md"
+  "sourceFileName": "catalog.json"
 }

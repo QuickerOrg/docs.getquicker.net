@@ -16,41 +16,59 @@
       "key": "file",
       "name": "单个文件",
       "type": "Text",
+      "description": "要存入剪贴板的文件(夹)路径（与文件列表二选一）",
+      "isAdvanced": false,
+      "validForList": [],
+      "invalidForList": [],
+      "condition": "",
       "defaultValue": "",
       "required": false,
       "variableMode": "UseVarOrInput",
-      "condition": "",
-      "description": "要存入剪贴板的文件(夹)路径（与文件列表二选一）"
+      "isControlField": false
     },
     {
       "key": "list",
       "name": "文件列表",
       "type": "List",
+      "description": "要存入剪贴板的多个文件路径（与单个文件二选一）",
+      "isAdvanced": false,
+      "validForList": [],
+      "invalidForList": [],
+      "condition": "",
       "defaultValue": "",
       "required": false,
       "variableMode": "UseVarOrInput",
-      "condition": "",
-      "description": "要存入剪贴板的多个文件路径（与单个文件二选一）"
+      "isControlField": false
     },
     {
       "key": "useCut",
       "name": "剪切文件",
       "type": "Boolean",
+      "description": "是否剪切文件",
+      "isAdvanced": false,
+      "validForList": [],
+      "invalidForList": [],
+      "condition": "",
       "defaultValue": "false",
+      "defaultValueRaw": false,
       "required": false,
       "variableMode": "UseVarOrInput",
-      "condition": "",
-      "description": "是否剪切文件"
+      "isControlField": false
     },
     {
       "key": "stopIfFail",
       "name": "失败后停止",
       "type": "Boolean",
+      "description": "失败后是否停止动作",
+      "isAdvanced": false,
+      "validForList": [],
+      "invalidForList": [],
+      "condition": "",
       "defaultValue": "true",
+      "defaultValueRaw": true,
       "required": false,
       "variableMode": "Input",
-      "condition": "",
-      "description": "失败后是否停止动作"
+      "isControlField": false
     }
   ],
   "outputs": [
@@ -58,10 +76,13 @@
       "key": "isSuccess",
       "name": "是否成功",
       "type": "Boolean",
-      "condition": "",
-      "description": "操作是否成功"
+      "description": "操作是否成功",
+      "isAdvanced": false,
+      "validForList": [],
+      "invalidForList": [],
+      "condition": ""
     }
   ],
   "selections": {},
-  "sourceFileName": "sys_fileToClipboard_文件放入剪贴板.md"
+  "sourceFileName": "catalog.json"
 }

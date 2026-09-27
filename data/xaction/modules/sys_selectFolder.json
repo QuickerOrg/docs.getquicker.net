@@ -16,41 +16,61 @@
       "key": "prompt",
       "name": "提示文字",
       "type": "Text",
+      "description": "选择窗口的标题",
+      "isAdvanced": false,
+      "validForList": [],
+      "invalidForList": [],
+      "condition": "",
       "defaultValue": "请选择文件夹",
+      "defaultValueRaw": "请选择文件夹",
       "required": true,
       "variableMode": "Input",
-      "condition": "",
-      "description": "选择窗口的标题"
+      "isControlField": false
     },
     {
       "key": "initDir",
       "name": "初始路径",
       "type": "Text",
+      "description": "初始文件夹路径",
+      "isAdvanced": false,
+      "validForList": [],
+      "invalidForList": [],
+      "condition": "",
       "defaultValue": "",
+      "defaultValueRaw": "",
       "required": false,
       "variableMode": "UseVarOrInput",
-      "condition": "",
-      "description": "初始文件夹路径"
+      "isControlField": false
     },
     {
       "key": "showOpenedDirs",
       "name": "显示已打开的文件夹",
       "type": "Boolean",
+      "description": "显示当前在资源管理器窗口中打开的文件夹。",
+      "isAdvanced": false,
+      "validForList": [],
+      "invalidForList": [],
+      "condition": "",
       "defaultValue": "true",
+      "defaultValueRaw": true,
       "required": false,
       "variableMode": "Input",
-      "condition": "",
-      "description": "显示当前在资源管理器窗口中打开的文件夹。"
+      "isControlField": false
     },
     {
       "key": "stopIfFail",
       "name": "失败后停止",
       "type": "Boolean",
+      "description": "失败后是否停止动作",
+      "isAdvanced": false,
+      "validForList": [],
+      "invalidForList": [],
+      "condition": "",
       "defaultValue": "true",
+      "defaultValueRaw": true,
       "required": false,
       "variableMode": "Input",
-      "condition": "",
-      "description": "失败后是否停止动作"
+      "isControlField": false
     }
   ],
   "outputs": [
@@ -58,17 +78,23 @@
       "key": "isSuccess",
       "name": "是否成功",
       "type": "Boolean",
-      "condition": "",
-      "description": "是否成功选择了路径。"
+      "description": "是否成功选择了路径。",
+      "isAdvanced": false,
+      "validForList": [],
+      "invalidForList": [],
+      "condition": ""
     },
     {
       "key": "path",
       "name": "路径",
       "type": "Text",
-      "condition": "",
-      "description": "选择的文件夹路径。"
+      "description": "选择的文件夹路径。",
+      "isAdvanced": false,
+      "validForList": [],
+      "invalidForList": [],
+      "condition": ""
     }
   ],
   "selections": {},
-  "sourceFileName": "sys_selectFolder_选择文件夹.md"
+  "sourceFileName": "catalog.json"
 }

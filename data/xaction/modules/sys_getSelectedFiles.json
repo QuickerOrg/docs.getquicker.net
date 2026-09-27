@@ -16,61 +16,97 @@
       "key": "operation",
       "name": "操作类型",
       "type": "Enum",
+      "description": "",
+      "isAdvanced": false,
+      "validForList": [],
+      "invalidForList": [],
+      "condition": "",
       "defaultValue": "getSelection",
+      "defaultValueRaw": "getSelection",
       "required": true,
       "variableMode": "Input",
-      "condition": "",
-      "description": ""
+      "isControlField": true
     },
     {
       "key": "waitMs",
       "name": "等待剪贴板时间",
       "type": "Integer",
+      "description": "通过复制方式获取选择文件时，等待剪贴板变化的最长时间毫秒数。",
+      "isAdvanced": false,
+      "validForList": [
+        "getSelection"
+      ],
+      "invalidForList": [],
+      "condition": "仅：getSelection",
       "defaultValue": "200",
+      "defaultValueRaw": 200,
       "required": false,
       "variableMode": "UseVarOrInput",
-      "condition": "仅：getSelection",
-      "description": "通过复制方式获取选择文件时，等待剪贴板变化的最长时间毫秒数。"
+      "isControlField": false
     },
     {
       "key": "sortType",
       "name": "排序文件列表",
       "type": "Enum",
+      "description": "获取多个文件时，根据需要可以对文件列表进行排序。仅支持文件。",
+      "isAdvanced": false,
+      "validForList": [
+        "getSelection"
+      ],
+      "invalidForList": [],
+      "condition": "仅：getSelection",
       "defaultValue": "Default",
+      "defaultValueRaw": "Default",
       "required": false,
       "variableMode": "UseVarOrInput",
-      "condition": "仅：getSelection",
-      "description": "获取多个文件时，根据需要可以对文件列表进行排序。仅支持文件。"
+      "isControlField": false
     },
     {
       "key": "pathList",
       "name": "路径或文件名",
       "type": "Text",
+      "description": "要选中的路径或文件名。支持使用 \"regex:表达式\" \"pinyin:筛选\" 选择匹配的文件。",
+      "isAdvanced": false,
+      "validForList": [
+        "setSelection"
+      ],
+      "invalidForList": [],
+      "condition": "仅：setSelection",
       "defaultValue": "",
       "required": false,
       "variableMode": "Input",
-      "condition": "仅：setSelection",
-      "description": "要选中的路径或文件名。支持使用 \"regex:表达式\" \"pinyin:筛选\" 选择匹配的文件。"
+      "isControlField": false
     },
     {
       "key": "winHandle",
       "name": "指定窗口句柄",
       "type": "Integer",
+      "description": "指定要操作的资源管理器窗口，留空时表示前台窗口。（仅支持资源管理器）",
+      "isAdvanced": true,
+      "validForList": [
+        "setSelection"
+      ],
+      "invalidForList": [],
+      "condition": "仅：setSelection",
       "defaultValue": "",
       "required": false,
       "variableMode": "UseVarOrInput",
-      "condition": "仅：setSelection",
-      "description": "指定要操作的资源管理器窗口，留空时表示前台窗口。（仅支持资源管理器）"
+      "isControlField": false
     },
     {
       "key": "stopIfFail",
       "name": "失败后中止动作",
       "type": "Boolean",
+      "description": "获取失败后，是否停止后续动作的执行。",
+      "isAdvanced": false,
+      "validForList": [],
+      "invalidForList": [],
+      "condition": "",
       "defaultValue": "true",
+      "defaultValueRaw": true,
       "required": false,
       "variableMode": "Input",
-      "condition": "",
-      "description": "获取失败后，是否停止后续动作的执行。"
+      "isControlField": false
     }
   ],
   "outputs": [
@@ -78,43 +114,72 @@
       "key": "isSuccess",
       "name": "是否成功",
       "type": "Boolean",
-      "condition": "",
-      "description": "是否成功获得文件列表"
+      "description": "是否成功获得文件列表",
+      "isAdvanced": false,
+      "validForList": [],
+      "invalidForList": [],
+      "condition": ""
     },
     {
       "key": "files",
       "name": "路径列表",
       "type": "List",
-      "condition": "仅：getSelection",
-      "description": "所有选中的文件和文件夹的路径列表"
+      "description": "所有选中的文件和文件夹的路径列表",
+      "isAdvanced": false,
+      "validForList": [
+        "getSelection"
+      ],
+      "invalidForList": [],
+      "condition": "仅：getSelection"
     },
     {
       "key": "firstFile",
       "name": "首个路径",
       "type": "Text",
-      "condition": "仅：getSelection",
-      "description": "选择1个文件(夹)时，返回其路径；选择多个时，返回第一个的路径。"
+      "description": "选择1个文件(夹)时，返回其路径；选择多个时，返回第一个的路径。",
+      "isAdvanced": false,
+      "validForList": [
+        "getSelection"
+      ],
+      "invalidForList": [],
+      "condition": "仅：getSelection"
     },
     {
       "key": "fileNames",
       "name": "文件(夹)名列表",
       "type": "List",
-      "condition": "仅：getSelection",
-      "description": "所有选中的文件和文件夹的名称的列表（不包含所在路径）"
+      "description": "所有选中的文件和文件夹的名称的列表（不包含所在路径）",
+      "isAdvanced": false,
+      "validForList": [
+        "getSelection"
+      ],
+      "invalidForList": [],
+      "condition": "仅：getSelection"
     },
     {
       "key": "firstFileName",
       "name": "首个文件(夹)名",
       "type": "Text",
-      "condition": "仅：getSelection",
-      "description": "选择1个文件(夹)时，返回其名称；选择多个时，返回第一个的名称。"
+      "description": "选择1个文件(夹)时，返回其名称；选择多个时，返回第一个的名称。",
+      "isAdvanced": false,
+      "validForList": [
+        "getSelection"
+      ],
+      "invalidForList": [],
+      "condition": "仅：getSelection"
     },
     {
       "key": "fileCount",
       "name": "文件个数",
       "type": "Integer",
-      "condition": "仅：getSelection, setSelection",
-      "description": "选择的文件个数"
+      "description": "选择的文件个数",
+      "isAdvanced": false,
+      "validForList": [
+        "getSelection",
+        "setSelection"
+      ],
+      "invalidForList": [],
+      "condition": "仅：getSelection, setSelection"
     }
   ],
   "selections": {
@@ -199,5 +264,5 @@
       ]
     }
   },
-  "sourceFileName": "sys_getSelectedFiles_获取选择的文件(夹)_选择特定文件.md"
+  "sourceFileName": "catalog.json"
 }

@@ -16,71 +16,115 @@
       "key": "operation",
       "name": "操作类型",
       "type": "Enum",
+      "description": "",
+      "isAdvanced": false,
+      "validForList": [],
+      "invalidForList": [],
+      "condition": "",
       "defaultValue": "single",
+      "defaultValueRaw": "single",
       "required": true,
       "variableMode": "Input",
-      "condition": "",
-      "description": ""
+      "isControlField": true
     },
     {
       "key": "text",
       "name": "待翻译文本内容或单词。",
       "type": "Text",
+      "description": "",
+      "isAdvanced": false,
+      "validForList": [],
+      "invalidForList": [],
+      "condition": "",
       "defaultValue": "",
       "required": false,
       "variableMode": "UseVarOrInput",
-      "condition": "",
-      "description": ""
+      "isControlField": false
     },
     {
       "key": "srcLang",
       "name": "源语言",
       "type": "Text",
+      "description": "待翻译内容的语言",
+      "isAdvanced": false,
+      "validForList": [
+        "single",
+        "multiple"
+      ],
+      "invalidForList": [],
+      "condition": "仅：single, multiple",
       "defaultValue": "Auto",
+      "defaultValueRaw": "Auto",
       "required": false,
       "variableMode": "UseVarOrInput",
-      "condition": "仅：single, multiple",
-      "description": "待翻译内容的语言"
+      "isControlField": false
     },
     {
       "key": "dstLang",
       "name": "目标语言",
       "type": "Text",
+      "description": "翻译的结果语言",
+      "isAdvanced": false,
+      "validForList": [
+        "single",
+        "multiple"
+      ],
+      "invalidForList": [],
+      "condition": "仅：single, multiple",
       "defaultValue": "Auto",
+      "defaultValueRaw": "Auto",
       "required": false,
       "variableMode": "UseVarOrInput",
-      "condition": "仅：single, multiple",
-      "description": "翻译的结果语言"
+      "isControlField": false
     },
     {
       "key": "vendor",
       "name": "厂商",
       "type": "Enum",
+      "description": "不同厂商价格不同，详情请参考文档。",
+      "isAdvanced": false,
+      "validForList": [
+        "single"
+      ],
+      "invalidForList": [],
+      "condition": "仅：single",
       "defaultValue": "Youdao",
+      "defaultValueRaw": "Youdao",
       "required": false,
       "variableMode": "UseVarOrInput",
-      "condition": "仅：single",
-      "description": "不同厂商价格不同，详情请参考文档。"
+      "isControlField": false
     },
     {
       "key": "vendorList",
       "name": "厂商列表",
       "type": "Enum",
+      "description": "用逗号分割的厂商标识，详细信息请参考文档。",
+      "isAdvanced": false,
+      "validForList": [
+        "multiple"
+      ],
+      "invalidForList": [],
+      "condition": "仅：multiple",
       "defaultValue": "Youdao,Baidu,Tencent,Caiyun",
+      "defaultValueRaw": "Youdao,Baidu,Tencent,Caiyun",
       "required": false,
       "variableMode": "UseVarOrInput",
-      "condition": "仅：multiple",
-      "description": "用逗号分割的厂商标识，详细信息请参考文档。"
+      "isControlField": false
     },
     {
       "key": "stopIfFail",
       "name": "失败后停止",
       "type": "Boolean",
+      "description": "失败后是否停止动作",
+      "isAdvanced": false,
+      "validForList": [],
+      "invalidForList": [],
+      "condition": "",
       "defaultValue": "true",
+      "defaultValueRaw": true,
       "required": false,
       "variableMode": "Input",
-      "condition": "",
-      "description": "失败后是否停止动作"
+      "isControlField": false
     }
   ],
   "outputs": [
@@ -88,43 +132,71 @@
       "key": "isSuccess",
       "name": "是否成功",
       "type": "Boolean",
-      "condition": "",
-      "description": "操作是否成功"
+      "description": "操作是否成功",
+      "isAdvanced": false,
+      "validForList": [],
+      "invalidForList": [],
+      "condition": ""
     },
     {
       "key": "resultText",
       "name": "结果文本",
       "type": "Text",
-      "condition": "",
-      "description": "翻译结果文本。多厂商翻译时自动组合各厂商结果"
+      "description": "翻译结果文本。多厂商翻译时自动组合各厂商结果",
+      "isAdvanced": false,
+      "validForList": [],
+      "invalidForList": [],
+      "condition": ""
     },
     {
       "key": "rawData",
       "name": "原始响应",
       "type": "Text",
-      "condition": "仅：single, en2zh_dict",
-      "description": "厂商接口返回的原始内容，通常为json格式。"
+      "description": "厂商接口返回的原始内容，通常为json格式。",
+      "isAdvanced": false,
+      "validForList": [
+        "single",
+        "en2zh_dict"
+      ],
+      "invalidForList": [],
+      "condition": "仅：single, en2zh_dict"
     },
     {
       "key": "vendorResult",
       "name": "各厂商翻译结果",
       "type": "Dict",
-      "condition": "仅：multiple",
-      "description": "各厂商的翻译结果（词典）。key为厂商标识，value为翻译结果。"
+      "description": "各厂商的翻译结果（词典）。key为厂商标识，value为翻译结果。",
+      "isAdvanced": false,
+      "validForList": [
+        "multiple"
+      ],
+      "invalidForList": [],
+      "condition": "仅：multiple"
     },
     {
       "key": "vendorRawData",
       "name": "各厂商原始响应",
       "type": "Dict",
-      "condition": "仅：multiple",
-      "description": "各厂商的原始响应内容（词典）。key为厂商标识，value为厂商原始响应。"
+      "description": "各厂商的原始响应内容（词典）。key为厂商标识，value为厂商原始响应。",
+      "isAdvanced": false,
+      "validForList": [
+        "multiple"
+      ],
+      "invalidForList": [],
+      "condition": "仅：multiple"
     },
     {
       "key": "costPoints",
       "name": "消耗点数",
       "type": "Integer",
-      "condition": "仅：single, multiple",
-      "description": "此次翻译消耗的点数,单位为0.0001 Q豆。"
+      "description": "此次翻译消耗的点数,单位为0.0001 Q豆。",
+      "isAdvanced": false,
+      "validForList": [
+        "single",
+        "multiple"
+      ],
+      "invalidForList": [],
+      "condition": "仅：single, multiple"
     }
   ],
   "selections": {
@@ -259,5 +331,5 @@
       ]
     }
   },
-  "sourceFileName": "sys_translation_机器翻译_词典.md"
+  "sourceFileName": "catalog.json"
 }

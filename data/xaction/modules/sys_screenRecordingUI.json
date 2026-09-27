@@ -16,101 +16,180 @@
       "key": "delay",
       "name": "开始前延迟",
       "type": "Integer",
+      "description": "等待多少毫秒后弹出选区界面。",
+      "isAdvanced": false,
+      "validForList": [],
+      "invalidForList": [],
+      "condition": "",
       "defaultValue": "0",
+      "defaultValueRaw": 0,
       "required": false,
       "variableMode": "UseVarOrInput",
-      "condition": "",
-      "description": "等待多少毫秒后弹出选区界面。"
+      "isControlField": false
     },
     {
       "key": "regionType",
       "name": "录制范围",
       "type": "Enum",
+      "description": "默认手动框选。选择主屏幕、所有屏幕或固定区域时跳过框选，直接打开录屏工具栏。",
+      "isAdvanced": false,
+      "validForList": [],
+      "invalidForList": [],
+      "condition": "",
       "defaultValue": "none",
+      "defaultValueRaw": "none",
       "required": true,
       "variableMode": "Input",
-      "condition": "",
-      "description": "默认手动框选。选择主屏幕、所有屏幕或固定区域时跳过框选，直接打开录屏工具栏。"
+      "isControlField": true
     },
     {
       "key": "area",
       "name": "录制区域",
       "type": "Text",
+      "description": "固定区域坐标，格式：left,top,right,bottom。默认不包含右边和底边像素。",
+      "isAdvanced": false,
+      "validForList": [
+        "fixed_area"
+      ],
+      "invalidForList": [],
+      "visibleWhen": {
+        "kind": "Field",
+        "fieldKey": "regionType",
+        "operator": "In",
+        "values": [
+          "fixed_area"
+        ]
+      },
+      "condition": "regionType 为 \"fixed_area\"",
       "defaultValue": "",
       "required": false,
       "variableMode": "UseVarOrInput",
-      "condition": "仅：fixed_area",
-      "description": "固定区域坐标，格式：left,top,right,bottom。默认不包含右边和底边像素。"
+      "isControlField": false
     },
     {
       "key": "includeRightBottomBorder",
       "name": "包含右下边像素",
       "type": "Boolean",
+      "description": "包含时，0,0,2,2 表示 3×3 区域；否则为 2×2。",
+      "isAdvanced": false,
+      "validForList": [
+        "fixed_area"
+      ],
+      "invalidForList": [],
+      "visibleWhen": {
+        "kind": "Field",
+        "fieldKey": "regionType",
+        "operator": "In",
+        "values": [
+          "fixed_area"
+        ]
+      },
+      "condition": "regionType 为 \"fixed_area\"",
       "defaultValue": "true",
+      "defaultValueRaw": true,
       "required": false,
       "variableMode": "Input",
-      "condition": "仅：fixed_area",
-      "description": "包含时，0,0,2,2 表示 3×3 区域；否则为 2×2。"
+      "isControlField": false
     },
     {
       "key": "manualAdjustSelection",
       "name": "手动调整选区",
       "type": "Boolean",
+      "description": "默认关闭：框选完成后自动确认并进入录屏。勾选后可先调整选区，再确认开录。",
+      "isAdvanced": false,
+      "validForList": [
+        "none"
+      ],
+      "invalidForList": [],
+      "visibleWhen": {
+        "kind": "Field",
+        "fieldKey": "regionType",
+        "operator": "In",
+        "values": [
+          "none"
+        ]
+      },
+      "condition": "regionType 为 \"none\"",
       "defaultValue": "false",
+      "defaultValueRaw": false,
       "required": false,
       "variableMode": "Input",
-      "condition": "仅：none",
-      "description": "默认关闭：框选完成后自动确认并进入录屏。勾选后可先调整选区，再确认开录。"
+      "isControlField": false
     },
     {
       "key": "saveDirectory",
       "name": "保存文件夹",
       "type": "Text",
+      "description": "录制文件保存目录。留空时仍使用当前默认位置，不影响已有动作。",
+      "isAdvanced": false,
+      "validForList": [],
+      "invalidForList": [],
+      "condition": "",
       "defaultValue": "",
+      "defaultValueRaw": "",
       "required": false,
       "variableMode": "UseVarOrInput",
-      "condition": "",
-      "description": "录制文件保存目录。留空时仍使用当前默认位置，不影响已有动作。"
+      "isControlField": false
     },
     {
       "key": "encodingPreset",
       "name": "编码方案",
       "type": "Enum",
+      "description": "可选快捷配置，默认沿用原有画质；FFmpeg 参数可覆盖方案。",
+      "isAdvanced": true,
+      "validForList": [],
+      "invalidForList": [],
+      "condition": "",
       "defaultValue": "default",
+      "defaultValueRaw": "default",
       "required": false,
       "variableMode": "UseVarOrInput",
-      "condition": "",
-      "description": "可选快捷配置，默认沿用原有画质；FFmpeg 参数可覆盖方案。"
+      "isControlField": false
     },
     {
       "key": "encodingParameters",
       "name": "FFmpeg 参数",
       "type": "Text",
+      "description": "直接传给本机 FFmpeg，覆盖预设；留空沿用默认。例：-crf 20 -preset veryfast。",
+      "isAdvanced": true,
+      "validForList": [],
+      "invalidForList": [],
+      "condition": "",
       "defaultValue": "",
+      "defaultValueRaw": "",
       "required": false,
       "variableMode": "UseVarOrInput",
-      "condition": "",
-      "description": "直接传给本机 FFmpeg，覆盖预设；留空沿用默认。例：-crf 20 -preset veryfast。"
+      "isControlField": false
     },
     {
       "key": "addToHistory",
       "name": "加入录屏历史",
       "type": "Boolean",
+      "description": "显式启用后，将录制结果复制到本机录屏历史；默认关闭以保持既有动作的文件生命周期。",
+      "isAdvanced": true,
+      "validForList": [],
+      "invalidForList": [],
+      "condition": "",
       "defaultValue": "false",
+      "defaultValueRaw": false,
       "required": false,
       "variableMode": "Input",
-      "condition": "",
-      "description": "显式启用后，将录制结果复制到本机录屏历史；默认关闭以保持既有动作的文件生命周期。"
+      "isControlField": false
     },
     {
       "key": "stopIfFail",
       "name": "失败后停止",
       "type": "Boolean",
+      "description": "失败后是否停止动作",
+      "isAdvanced": false,
+      "validForList": [],
+      "invalidForList": [],
+      "condition": "",
       "defaultValue": "true",
+      "defaultValueRaw": true,
       "required": false,
       "variableMode": "Input",
-      "condition": "",
-      "description": "失败后是否停止动作"
+      "isControlField": false
     }
   ],
   "outputs": [
@@ -118,36 +197,51 @@
       "key": "isSuccess",
       "name": "是否成功",
       "type": "Boolean",
-      "condition": "",
-      "description": "操作是否成功"
+      "description": "操作是否成功",
+      "isAdvanced": false,
+      "validForList": [],
+      "invalidForList": [],
+      "condition": ""
     },
     {
       "key": "filePath",
       "name": "文件路径",
       "type": "Text",
-      "condition": "",
-      "description": "录制完成的视频文件路径；用户取消时为空。"
+      "description": "录制完成的视频文件路径；用户取消时为空。",
+      "isAdvanced": false,
+      "validForList": [],
+      "invalidForList": [],
+      "condition": ""
     },
     {
       "key": "durationSeconds",
       "name": "录制时长",
       "type": "Number",
-      "condition": "",
-      "description": "录制时长（秒）。"
+      "description": "录制时长（秒）。",
+      "isAdvanced": false,
+      "validForList": [],
+      "invalidForList": [],
+      "condition": ""
     },
     {
       "key": "rect",
       "name": "录制区域",
       "type": "Text",
-      "condition": "",
-      "description": "实际录制区域(left,top,right,bottom)。"
+      "description": "实际录制区域(left,top,right,bottom)。",
+      "isAdvanced": false,
+      "validForList": [],
+      "invalidForList": [],
+      "condition": ""
     },
     {
       "key": "errMessage",
       "name": "错误消息",
       "type": "Text",
-      "condition": "",
-      "description": "步骤执行出错时的消息"
+      "description": "步骤执行出错时的消息",
+      "isAdvanced": false,
+      "validForList": [],
+      "invalidForList": [],
+      "condition": ""
     }
   ],
   "selections": {
@@ -207,5 +301,5 @@
       ]
     }
   },
-  "sourceFileName": "sys_screenRecordingUI_屏幕录制.md"
+  "sourceFileName": "catalog.json"
 }

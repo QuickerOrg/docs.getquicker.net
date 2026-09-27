@@ -10,137 +10,309 @@
   "stepType": "Action",
   "isRisky": false,
   "isProOnly": false,
-  "helpLink": "",
+  "helpLink": "https://docs.getquicker.net/v2/xaction/modules/virtualdesktop",
   "inputs": [
     {
       "key": "operation",
       "name": "操作",
       "type": "Enum",
+      "description": "",
+      "isAdvanced": false,
+      "validForList": [],
+      "invalidForList": [],
+      "condition": "",
       "defaultValue": "listDesktops",
+      "defaultValueRaw": "listDesktops",
       "required": true,
       "variableMode": "Input",
-      "condition": "",
-      "description": ""
+      "isControlField": true
     },
     {
       "key": "target",
       "name": "目标桌面",
       "type": "Enum",
+      "description": "",
+      "isAdvanced": false,
+      "validForList": [
+        "switchDesktop",
+        "removeDesktop",
+        "renameDesktop",
+        "reorderDesktop",
+        "moveWindow"
+      ],
+      "invalidForList": [],
+      "condition": "仅：switchDesktop, removeDesktop, renameDesktop, reorderDesktop, moveWindow",
       "defaultValue": "current",
+      "defaultValueRaw": "current",
       "required": false,
       "variableMode": "UseVarOrInput",
-      "condition": "仅：switchDesktop, removeDesktop, renameDesktop, reorderDesktop, moveWindow",
-      "description": ""
+      "isControlField": false
     },
     {
       "key": "desktopId",
       "name": "桌面标识",
       "type": "Text",
+      "description": "选择本机桌面 GUID；桌面删除或换电脑后须重新选择，目标缺失不会改用其它桌面。",
+      "isAdvanced": false,
+      "validForList": [
+        "id"
+      ],
+      "invalidForList": [],
+      "visibleWhen": {
+        "kind": "All",
+        "conditions": [
+          {
+            "kind": "Field",
+            "fieldKey": "operation",
+            "operator": "In",
+            "values": [
+              "switchDesktop",
+              "removeDesktop",
+              "renameDesktop",
+              "reorderDesktop",
+              "moveWindow"
+            ]
+          },
+          {
+            "kind": "Field",
+            "fieldKey": "target",
+            "operator": "In",
+            "values": [
+              "id"
+            ]
+          }
+        ]
+      },
+      "condition": "(operation 为 \"switchDesktop\"、\"removeDesktop\"、\"renameDesktop\"、\"reorderDesktop\"、\"moveWindow\" 且 target 为 \"id\")",
       "defaultValue": "",
+      "defaultValueRaw": "",
       "required": true,
       "variableMode": "UseVarOrInput",
-      "condition": "仅：id",
-      "description": "选择本机桌面 GUID；桌面删除或换电脑后须重新选择，目标缺失不会改用其它桌面。"
+      "isControlField": false
     },
     {
       "key": "desktopIndex",
       "name": "桌面编号",
       "type": "Integer",
+      "description": "从 1 开始，按本次执行时的桌面顺序定位。",
+      "isAdvanced": false,
+      "validForList": [
+        "index"
+      ],
+      "invalidForList": [],
+      "visibleWhen": {
+        "kind": "All",
+        "conditions": [
+          {
+            "kind": "Field",
+            "fieldKey": "operation",
+            "operator": "In",
+            "values": [
+              "switchDesktop",
+              "removeDesktop",
+              "renameDesktop",
+              "reorderDesktop",
+              "moveWindow"
+            ]
+          },
+          {
+            "kind": "Field",
+            "fieldKey": "target",
+            "operator": "In",
+            "values": [
+              "index"
+            ]
+          }
+        ]
+      },
+      "condition": "(operation 为 \"switchDesktop\"、\"removeDesktop\"、\"renameDesktop\"、\"reorderDesktop\"、\"moveWindow\" 且 target 为 \"index\")",
       "defaultValue": "1",
+      "defaultValueRaw": 1,
       "required": false,
       "variableMode": "UseVarOrInput",
-      "condition": "仅：index",
-      "description": "从 1 开始，按本次执行时的桌面顺序定位。"
+      "isControlField": false
     },
     {
       "key": "desktopName",
       "name": "目标名称",
       "type": "Text",
+      "description": "精确匹配；同名桌面多于一个时失败，请改用编号或标识。",
+      "isAdvanced": false,
+      "validForList": [
+        "name"
+      ],
+      "invalidForList": [],
+      "visibleWhen": {
+        "kind": "All",
+        "conditions": [
+          {
+            "kind": "Field",
+            "fieldKey": "operation",
+            "operator": "In",
+            "values": [
+              "switchDesktop",
+              "removeDesktop",
+              "renameDesktop",
+              "reorderDesktop",
+              "moveWindow"
+            ]
+          },
+          {
+            "kind": "Field",
+            "fieldKey": "target",
+            "operator": "In",
+            "values": [
+              "name"
+            ]
+          }
+        ]
+      },
+      "condition": "(operation 为 \"switchDesktop\"、\"removeDesktop\"、\"renameDesktop\"、\"reorderDesktop\"、\"moveWindow\" 且 target 为 \"name\")",
       "defaultValue": "",
+      "defaultValueRaw": "",
       "required": true,
       "variableMode": "UseVarOrInput",
-      "condition": "仅：name",
-      "description": "精确匹配；同名桌面多于一个时失败，请改用编号或标识。"
+      "isControlField": false
     },
     {
       "key": "name",
       "name": "新名称",
       "type": "Text",
+      "description": "创建时可留空使用系统默认名称；重命名时不能为空。",
+      "isAdvanced": false,
+      "validForList": [
+        "createDesktop",
+        "renameDesktop"
+      ],
+      "invalidForList": [],
+      "condition": "仅：createDesktop, renameDesktop",
       "defaultValue": "",
+      "defaultValueRaw": "",
       "required": false,
       "variableMode": "UseVarOrInput",
-      "condition": "仅：createDesktop, renameDesktop",
-      "description": "创建时可留空使用系统默认名称；重命名时不能为空。"
+      "isControlField": false
     },
     {
       "key": "fallbackId",
       "name": "窗口迁移到",
       "type": "Text",
+      "description": "删除时必须指定另一个仍存在的桌面 GUID。不能删除最后一个桌面。",
+      "isAdvanced": false,
+      "validForList": [
+        "removeDesktop"
+      ],
+      "invalidForList": [],
+      "condition": "仅：removeDesktop",
       "defaultValue": "",
+      "defaultValueRaw": "",
       "required": true,
       "variableMode": "UseVarOrInput",
-      "condition": "仅：removeDesktop",
-      "description": "删除时必须指定另一个仍存在的桌面 GUID。不能删除最后一个桌面。"
+      "isControlField": false
     },
     {
       "key": "position",
       "name": "目标位置",
       "type": "Integer",
+      "description": "从 1 开始。",
+      "isAdvanced": false,
+      "validForList": [
+        "reorderDesktop"
+      ],
+      "invalidForList": [],
+      "condition": "仅：reorderDesktop",
       "defaultValue": "1",
+      "defaultValueRaw": 1,
       "required": false,
       "variableMode": "UseVarOrInput",
-      "condition": "仅：reorderDesktop",
-      "description": "从 1 开始。"
+      "isControlField": false
     },
     {
       "key": "wrap",
       "name": "循环切换",
       "type": "Boolean",
+      "description": "关闭时到边界不再切换，返回成功且未改变。",
+      "isAdvanced": false,
+      "validForList": [
+        "previousDesktop",
+        "nextDesktop"
+      ],
+      "invalidForList": [],
+      "condition": "仅：previousDesktop, nextDesktop",
       "defaultValue": "false",
+      "defaultValueRaw": false,
       "required": false,
       "variableMode": "UseVarOrInput",
-      "condition": "仅：previousDesktop, nextDesktop",
-      "description": "关闭时到边界不再切换，返回成功且未改变。"
+      "isControlField": false
     },
     {
       "key": "follow",
       "name": "完成后切换到目标桌面",
       "type": "Boolean",
+      "description": "创建或移动完成后再切换；后续切换失败会保留已完成结果。",
+      "isAdvanced": false,
+      "validForList": [
+        "createDesktop",
+        "moveWindow"
+      ],
+      "invalidForList": [],
+      "condition": "仅：createDesktop, moveWindow",
       "defaultValue": "false",
+      "defaultValueRaw": false,
       "required": false,
       "variableMode": "UseVarOrInput",
-      "condition": "仅：createDesktop, moveWindow",
-      "description": "创建或移动完成后再切换；后续切换失败会保留已完成结果。"
+      "isControlField": false
     },
     {
       "key": "hwnd",
       "name": "窗口句柄",
       "type": "Integer",
+      "description": "0 使用步骤开始时的前台窗口；不操作桌面窗口或 Quicker 自身窗口。",
+      "isAdvanced": false,
+      "validForList": [
+        "getWindowDesktop",
+        "getWindowPin",
+        "moveWindow",
+        "setWindowPin"
+      ],
+      "invalidForList": [],
+      "condition": "仅：getWindowDesktop, getWindowPin, moveWindow, setWindowPin",
       "defaultValue": "0",
+      "defaultValueRaw": 0,
       "required": false,
       "variableMode": "UseVarOrInput",
-      "condition": "仅：getWindowDesktop, getWindowPin, moveWindow, setWindowPin",
-      "description": "0 使用步骤开始时的前台窗口；不操作桌面窗口或 Quicker 自身窗口。"
+      "isControlField": false
     },
     {
       "key": "pinned",
       "name": "固定到所有桌面",
       "type": "Boolean",
+      "description": "仅设置单个窗口的固定状态；若应用整体被固定，解除窗口固定后仍会跨桌面显示。",
+      "isAdvanced": false,
+      "validForList": [
+        "setWindowPin"
+      ],
+      "invalidForList": [],
+      "condition": "仅：setWindowPin",
       "defaultValue": "true",
+      "defaultValueRaw": true,
       "required": false,
       "variableMode": "UseVarOrInput",
-      "condition": "仅：setWindowPin",
-      "description": "仅设置单个窗口的固定状态；若应用整体被固定，解除窗口固定后仍会跨桌面显示。"
+      "isControlField": false
     },
     {
       "key": "stopIfFail",
       "name": "失败后停止动作",
       "type": "Boolean",
+      "description": "失败后是否停止动作",
+      "isAdvanced": false,
+      "validForList": [],
+      "invalidForList": [],
+      "condition": "",
       "defaultValue": "true",
+      "defaultValueRaw": true,
       "required": false,
       "variableMode": "Input",
-      "condition": "",
-      "description": "失败后是否停止动作"
+      "isControlField": false
     }
   ],
   "outputs": [
@@ -148,57 +320,97 @@
       "key": "desktopId",
       "name": "桌面标识",
       "type": "Text",
-      "condition": "仅：getCurrentDesktop, createDesktop, getWindowDesktop",
-      "description": "查询到的桌面或新建桌面的 GUID；创建部分完成时仍保留已创建标识。窗口归属未知时为空。"
+      "description": "查询到的桌面或新建桌面的 GUID；创建部分完成时仍保留已创建标识。窗口归属未知时为空。",
+      "isAdvanced": false,
+      "validForList": [
+        "getCurrentDesktop",
+        "createDesktop",
+        "getWindowDesktop"
+      ],
+      "invalidForList": [],
+      "condition": "仅：getCurrentDesktop, createDesktop, getWindowDesktop"
     },
     {
       "key": "index",
       "name": "桌面编号",
       "type": "Integer",
-      "condition": "仅：getCurrentDesktop, getWindowDesktop",
-      "description": "从 1 开始；未读到时保留旧变量值，窗口归属未知时请先检查桌面标识是否为空。"
+      "description": "从 1 开始；未读到时保留旧变量值，窗口归属未知时请先检查桌面标识是否为空。",
+      "isAdvanced": false,
+      "validForList": [
+        "getCurrentDesktop",
+        "getWindowDesktop"
+      ],
+      "invalidForList": [],
+      "condition": "仅：getCurrentDesktop, getWindowDesktop"
     },
     {
       "key": "name",
       "name": "桌面名称",
       "type": "Text",
-      "condition": "仅：getCurrentDesktop, getWindowDesktop",
-      "description": "未读到时保留旧变量值，窗口归属未知时请先检查桌面标识是否为空。"
+      "description": "未读到时保留旧变量值，窗口归属未知时请先检查桌面标识是否为空。",
+      "isAdvanced": false,
+      "validForList": [
+        "getCurrentDesktop",
+        "getWindowDesktop"
+      ],
+      "invalidForList": [],
+      "condition": "仅：getCurrentDesktop, getWindowDesktop"
     },
     {
       "key": "results",
       "name": "桌面列表",
       "type": "Table",
-      "condition": "仅：listDesktops",
-      "description": "每行一个桌面，列：desktopId（标识）、index（编号，从 1 开始）、name（名称）、isCurrent（是否当前桌面）。"
+      "description": "每行一个桌面，列：desktopId（标识）、index（编号，从 1 开始）、name（名称）、isCurrent（是否当前桌面）。",
+      "isAdvanced": false,
+      "validForList": [
+        "listDesktops"
+      ],
+      "invalidForList": [],
+      "condition": "仅：listDesktops"
     },
     {
       "key": "isWindowPinned",
       "name": "窗口已固定",
       "type": "Boolean",
-      "condition": "仅：getWindowPin",
-      "description": "窗口是否单独固定到所有桌面。读取失败时不更新变量，请检查是否成功。"
+      "description": "窗口是否单独固定到所有桌面。读取失败时不更新变量，请检查是否成功。",
+      "isAdvanced": false,
+      "validForList": [
+        "getWindowPin"
+      ],
+      "invalidForList": [],
+      "condition": "仅：getWindowPin"
     },
     {
       "key": "isApplicationPinned",
       "name": "应用已固定",
       "type": "Boolean",
-      "condition": "仅：getWindowPin",
-      "description": "窗口所属应用是否整体固定到所有桌面；为是时，解除单个窗口固定后仍会跨桌面显示。读取失败时不更新变量。"
+      "description": "窗口所属应用是否整体固定到所有桌面；为是时，解除单个窗口固定后仍会跨桌面显示。读取失败时不更新变量。",
+      "isAdvanced": false,
+      "validForList": [
+        "getWindowPin"
+      ],
+      "invalidForList": [],
+      "condition": "仅：getWindowPin"
     },
     {
       "key": "isSuccess",
       "name": "是否成功",
       "type": "Boolean",
-      "condition": "",
-      "description": "操作是否成功"
+      "description": "操作是否成功",
+      "isAdvanced": false,
+      "validForList": [],
+      "invalidForList": [],
+      "condition": ""
     },
     {
       "key": "errMessage",
       "name": "错误信息",
       "type": "Text",
-      "condition": "",
-      "description": "步骤执行出错时的消息"
+      "description": "步骤执行出错时的消息",
+      "isAdvanced": false,
+      "validForList": [],
+      "invalidForList": [],
+      "condition": ""
     }
   ],
   "selections": {
@@ -298,5 +510,5 @@
       ]
     }
   },
-  "sourceFileName": "sys_virtualDesktop_虚拟桌面.md"
+  "sourceFileName": "catalog.json"
 }

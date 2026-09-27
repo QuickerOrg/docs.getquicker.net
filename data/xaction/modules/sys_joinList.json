@@ -16,31 +16,46 @@
       "key": "list",
       "name": "输入",
       "type": "List",
+      "description": "要拼接为文本的列表",
+      "isAdvanced": false,
+      "validForList": [],
+      "invalidForList": [],
+      "condition": "",
       "defaultValue": "",
+      "defaultValueRaw": "",
       "required": true,
       "variableMode": "UseVarOrInput",
-      "condition": "",
-      "description": "要拼接为文本的列表"
+      "isControlField": false
     },
     {
       "key": "separator",
       "name": "分隔文本",
       "type": "Text",
+      "description": "拼接内容时，两项之间的内容。",
+      "isAdvanced": false,
+      "validForList": [],
+      "invalidForList": [],
+      "condition": "",
       "defaultValue": ",",
+      "defaultValueRaw": ",",
       "required": true,
       "variableMode": "Input",
-      "condition": "",
-      "description": "拼接内容时，两项之间的内容。"
+      "isControlField": false
     },
     {
       "key": "escapeSeparator",
       "name": "转义“分隔文本”",
       "type": "Boolean",
+      "description": "替换\"分隔文本\"中的转义字符（\\r,\\n,\\t）",
+      "isAdvanced": false,
+      "validForList": [],
+      "invalidForList": [],
+      "condition": "",
       "defaultValue": "false",
+      "defaultValueRaw": false,
       "required": false,
       "variableMode": "Input",
-      "condition": "",
-      "description": "替换\"分隔文本\"中的转义字符（\\r,\\n,\\t）"
+      "isControlField": false
     }
   ],
   "outputs": [
@@ -48,10 +63,13 @@
       "key": "output",
       "name": "结果",
       "type": "Text",
-      "condition": "",
-      "description": "生成的文本内容"
+      "description": "生成的文本内容",
+      "isAdvanced": false,
+      "validForList": [],
+      "invalidForList": [],
+      "condition": ""
     }
   ],
   "selections": {},
-  "sourceFileName": "sys_joinList_列表合并成文本.md"
+  "sourceFileName": "catalog.json"
 }

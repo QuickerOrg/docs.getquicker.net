@@ -16,81 +16,146 @@
       "key": "type",
       "name": "操作类型",
       "type": "Enum",
+      "description": "操作类型",
+      "isAdvanced": false,
+      "validForList": [],
+      "invalidForList": [],
+      "condition": "",
       "defaultValue": "",
+      "defaultValueRaw": "",
       "required": true,
       "variableMode": "Input",
-      "condition": "",
-      "description": "操作类型"
+      "isControlField": true
     },
     {
       "key": "path",
       "name": "路径",
       "type": "Text",
+      "description": "要操作的文件或文件夹路径",
+      "isAdvanced": false,
+      "validForList": [],
+      "invalidForList": [],
+      "condition": "",
       "defaultValue": "",
       "required": false,
       "variableMode": "UseVarOrInput",
-      "condition": "",
-      "description": "要操作的文件或文件夹路径"
+      "isControlField": false
     },
     {
       "key": "dstPath",
       "name": "目标路径/名称",
       "type": "Text",
+      "description": "复制/移动的目标路径或新文件、文件名。详情请参考文档。",
+      "isAdvanced": false,
+      "validForList": [
+        "copyInto",
+        "copyIntoWithShell",
+        "copyTo",
+        "moveInto",
+        "moveIntoWithShell",
+        "rename",
+        "moveTo",
+        "copyFile",
+        "moveFile"
+      ],
+      "invalidForList": [],
+      "condition": "仅：copyInto, copyIntoWithShell, copyTo, moveInto, moveIntoWithShell, rename, moveTo, copyFile, moveFile",
       "defaultValue": "",
       "required": false,
       "variableMode": "UseVarOrInput",
-      "condition": "仅：copyInto, copyIntoWithShell, copyTo, moveInto, moveIntoWithShell, rename, moveTo, copyFile, moveFile",
-      "description": "复制/移动的目标路径或新文件、文件名。详情请参考文档。"
+      "isControlField": false
     },
     {
       "key": "overwrite",
       "name": "覆盖已有",
       "type": "Boolean",
+      "description": "如果目标位置已存在文件，是否覆盖？",
+      "isAdvanced": false,
+      "validForList": [
+        "copyInto",
+        "copyTo",
+        "moveInto",
+        "rename",
+        "moveTo",
+        "copyFile",
+        "moveFile"
+      ],
+      "invalidForList": [],
+      "condition": "仅：copyInto, copyTo, moveInto, rename, moveTo, copyFile, moveFile",
       "defaultValue": "false",
+      "defaultValueRaw": false,
       "required": false,
       "variableMode": "Input",
-      "condition": "仅：copyInto, copyTo, moveInto, rename, moveTo, copyFile, moveFile",
-      "description": "如果目标位置已存在文件，是否覆盖？"
+      "isControlField": false
     },
     {
       "key": "searchPattern",
       "name": "搜索内容",
       "type": "Text",
+      "description": "筛选文件或目录名。可以包含通配符*和?，或\"regex:正则表达式\"。搜索文件时也可以为分号隔开的多个后缀名如.jpg;.png;.bmp",
+      "isAdvanced": false,
+      "validForList": [
+        "enumFiles",
+        "enumDirs"
+      ],
+      "invalidForList": [],
+      "condition": "仅：enumFiles, enumDirs",
       "defaultValue": "*",
+      "defaultValueRaw": "*",
       "required": false,
       "variableMode": "UseVarOrInput",
-      "condition": "仅：enumFiles, enumDirs",
-      "description": "筛选文件或目录名。可以包含通配符*和?，或\"regex:正则表达式\"。搜索文件时也可以为分号隔开的多个后缀名如.jpg;.png;.bmp"
+      "isControlField": false
     },
     {
       "key": "isAll",
       "name": "包含子目录",
       "type": "Boolean",
+      "description": "包含子目录中的(否则只搜索顶层目录)",
+      "isAdvanced": false,
+      "validForList": [
+        "enumFiles",
+        "enumDirs"
+      ],
+      "invalidForList": [],
+      "condition": "仅：enumFiles, enumDirs",
       "defaultValue": "false",
+      "defaultValueRaw": false,
       "required": false,
       "variableMode": "UseVarOrInput",
-      "condition": "仅：enumFiles, enumDirs",
-      "description": "包含子目录中的(否则只搜索顶层目录)"
+      "isControlField": false
     },
     {
       "key": "timeoutSeconds",
       "name": "超时时间（秒）",
       "type": "Integer",
+      "description": "获取列表的最长等待时间，0表示不限时。超时返回失败；网络盘底层读取可能仍在后台等待恢复。",
+      "isAdvanced": false,
+      "validForList": [
+        "enumFiles",
+        "enumDirs"
+      ],
+      "invalidForList": [],
+      "condition": "仅：enumFiles, enumDirs",
       "defaultValue": "0",
+      "defaultValueRaw": 0,
       "required": false,
       "variableMode": "UseVarOrInput",
-      "condition": "仅：enumFiles, enumDirs",
-      "description": "获取列表的最长等待时间，0表示不限时。超时返回失败；网络盘底层读取可能仍在后台等待恢复。"
+      "isControlField": false
     },
     {
       "key": "stopIfFail",
       "name": "失败后中止动作",
       "type": "Boolean",
+      "description": "如果操作异常，是否终止动作",
+      "isAdvanced": false,
+      "validForList": [],
+      "invalidForList": [],
+      "condition": "",
       "defaultValue": "true",
+      "defaultValueRaw": true,
       "required": false,
       "variableMode": "Input",
-      "condition": "",
-      "description": "如果操作异常，是否终止动作"
+      "isControlField": false
     }
   ],
   "outputs": [
@@ -98,22 +163,38 @@
       "key": "isSuccess",
       "name": "是否成功",
       "type": "Boolean",
-      "condition": "",
-      "description": "操作是否成功"
+      "description": "操作是否成功",
+      "isAdvanced": false,
+      "validForList": [],
+      "invalidForList": [],
+      "condition": ""
     },
     {
       "key": "files",
       "name": "路径列表",
       "type": "List",
-      "condition": "仅：enumFiles, enumDirs",
-      "description": "搜索到的文件或文件夹列表"
+      "description": "搜索到的文件或文件夹列表",
+      "isAdvanced": false,
+      "validForList": [
+        "enumFiles",
+        "enumDirs"
+      ],
+      "invalidForList": [],
+      "condition": "仅：enumFiles, enumDirs"
     },
     {
       "key": "resultPath",
       "name": "结果路径",
       "type": "Text",
-      "condition": "仅：copyInto, copyTo, rename",
-      "description": "结果文件路径"
+      "description": "结果文件路径",
+      "isAdvanced": false,
+      "validForList": [
+        "copyInto",
+        "copyTo",
+        "rename"
+      ],
+      "invalidForList": [],
+      "condition": "仅：copyInto, copyTo, rename"
     }
   ],
   "selections": {
@@ -203,5 +284,5 @@
       ]
     }
   },
-  "sourceFileName": "sys_fileOperation_文件和目录操作.md"
+  "sourceFileName": "catalog.json"
 }

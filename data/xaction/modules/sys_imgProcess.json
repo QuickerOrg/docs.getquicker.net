@@ -16,111 +16,184 @@
       "key": "img",
       "name": "图片",
       "type": "Image",
+      "description": "要转换的图片",
+      "isAdvanced": false,
+      "validForList": [],
+      "invalidForList": [],
+      "condition": "",
       "defaultValue": "",
       "required": true,
       "variableMode": "UseVar",
-      "condition": "",
-      "description": "要转换的图片"
+      "isControlField": false
     },
     {
       "key": "type",
       "name": "操作类型",
       "type": "Enum",
+      "description": "对图片的转换操作类型",
+      "isAdvanced": false,
+      "validForList": [],
+      "invalidForList": [],
+      "condition": "",
       "defaultValue": "resize_percent",
+      "defaultValueRaw": "resize_percent",
       "required": true,
       "variableMode": "Input",
-      "condition": "",
-      "description": "对图片的转换操作类型"
+      "isControlField": true
     },
     {
       "key": "resizePercent",
       "name": "缩放比例",
       "type": "Number",
+      "description": "缩小或放大到原来的百分之多少",
+      "isAdvanced": false,
+      "validForList": [
+        "resize_percent"
+      ],
+      "invalidForList": [],
+      "condition": "仅：resize_percent",
       "defaultValue": "50",
+      "defaultValueRaw": 50,
       "required": false,
       "variableMode": "UseVarOrInput",
-      "condition": "仅：resize_percent",
-      "description": "缩小或放大到原来的百分之多少"
+      "isControlField": false
     },
     {
       "key": "maxWidth",
       "name": "宽度",
       "type": "Integer",
+      "description": "宽度（像素数），0 表示按高度自动计算；缩小时作为最大宽度，缩放时作为目标宽度",
+      "isAdvanced": false,
+      "validForList": [
+        "resize_pixel",
+        "scale_pixel"
+      ],
+      "invalidForList": [],
+      "condition": "仅：resize_pixel, scale_pixel",
       "defaultValue": "0",
+      "defaultValueRaw": 0,
       "required": false,
       "variableMode": "UseVarOrInput",
-      "condition": "仅：resize_pixel, scale_pixel",
-      "description": "宽度（像素数），0 表示按高度自动计算；缩小时作为最大宽度，缩放时作为目标宽度"
+      "isControlField": false
     },
     {
       "key": "maxHeight",
       "name": "高度",
       "type": "Integer",
+      "description": "高度（像素数），0 表示按宽度自动计算；缩小时作为最大高度，缩放时作为目标高度",
+      "isAdvanced": false,
+      "validForList": [
+        "resize_pixel",
+        "scale_pixel"
+      ],
+      "invalidForList": [],
+      "condition": "仅：resize_pixel, scale_pixel",
       "defaultValue": "0",
+      "defaultValueRaw": 0,
       "required": false,
       "variableMode": "UseVarOrInput",
-      "condition": "仅：resize_pixel, scale_pixel",
-      "description": "高度（像素数），0 表示按宽度自动计算；缩小时作为最大高度，缩放时作为目标高度"
+      "isControlField": false
     },
     {
       "key": "rotation",
       "name": "旋转方式",
       "type": "Integer",
+      "description": "顺时针角度。0:不旋转, 1:90°, 2:180°, 3:270°, 其他值请参考模块文档。",
+      "isAdvanced": false,
+      "validForList": [
+        "Rotate"
+      ],
+      "invalidForList": [],
+      "condition": "仅：Rotate",
       "defaultValue": "0",
+      "defaultValueRaw": 0,
       "required": false,
       "variableMode": "UseVarOrInput",
-      "condition": "仅：Rotate",
-      "description": "顺时针角度。0:不旋转, 1:90°, 2:180°, 3:270°, 其他值请参考模块文档。"
+      "isControlField": false
     },
     {
       "key": "filterParams",
       "name": "处理参数",
       "type": "Text",
+      "description": "每行设定一个处理步骤，具体设置请参考文档",
+      "isAdvanced": false,
+      "validForList": [
+        "Filters"
+      ],
+      "invalidForList": [],
+      "condition": "仅：Filters",
       "defaultValue": "",
       "required": false,
       "variableMode": "Input",
-      "condition": "仅：Filters",
-      "description": "每行设定一个处理步骤，具体设置请参考文档"
+      "isControlField": false
     },
     {
       "key": "iconFilePath",
       "name": "图标文件保存路径",
       "type": "Text",
+      "description": "保存图标文件(.ico)的完整路径",
+      "isAdvanced": false,
+      "validForList": [
+        "GenerateIco"
+      ],
+      "invalidForList": [],
+      "condition": "仅：GenerateIco",
       "defaultValue": "",
       "required": true,
       "variableMode": "UseVarOrInput",
-      "condition": "仅：GenerateIco",
-      "description": "保存图标文件(.ico)的完整路径"
+      "isControlField": false
     },
     {
       "key": "iconSize",
       "name": "图标大小",
       "type": "Text",
+      "description": "图标中的位图大小，单位为像素。多尺寸图标可用英文逗号风格",
+      "isAdvanced": false,
+      "validForList": [
+        "GenerateIco"
+      ],
+      "invalidForList": [],
+      "condition": "仅：GenerateIco",
       "defaultValue": "256,48,32,16",
+      "defaultValueRaw": "256,48,32,16",
       "required": true,
       "variableMode": "UseVarOrInput",
-      "condition": "仅：GenerateIco",
-      "description": "图标中的位图大小，单位为像素。多尺寸图标可用英文逗号风格"
+      "isControlField": false
     },
     {
       "key": "iconScaling",
       "name": "缩放采样",
       "type": "Enum",
+      "description": "自动：大比例缩小使用 Lanczos；生成图标时整数倍放大使用邻近采样；其余使用高质量双三次",
+      "isAdvanced": false,
+      "validForList": [
+        "resize_percent",
+        "resize_pixel",
+        "scale_pixel",
+        "GenerateIco"
+      ],
+      "invalidForList": [],
+      "condition": "仅：resize_percent, resize_pixel, scale_pixel, GenerateIco",
       "defaultValue": "HighQualityBicubic",
+      "defaultValueRaw": "HighQualityBicubic",
       "required": false,
       "variableMode": "Input",
-      "condition": "仅：resize_percent, resize_pixel, scale_pixel, GenerateIco",
-      "description": "自动：大比例缩小使用 Lanczos；生成图标时整数倍放大使用邻近采样；其余使用高质量双三次"
+      "isControlField": false
     },
     {
       "key": "stopIfFail",
       "name": "失败后停止",
       "type": "Boolean",
+      "description": "失败后是否停止动作",
+      "isAdvanced": false,
+      "validForList": [],
+      "invalidForList": [],
+      "condition": "",
       "defaultValue": "true",
+      "defaultValueRaw": true,
       "required": false,
       "variableMode": "Input",
-      "condition": "",
-      "description": "失败后是否停止动作"
+      "isControlField": false
     }
   ],
   "outputs": [
@@ -128,15 +201,27 @@
       "key": "isSuccess",
       "name": "是否成功",
       "type": "Boolean",
-      "condition": "",
-      "description": "操作是否成功"
+      "description": "操作是否成功",
+      "isAdvanced": false,
+      "validForList": [],
+      "invalidForList": [],
+      "condition": ""
     },
     {
       "key": "result",
       "name": "结果图片",
       "type": "Image",
-      "condition": "仅：Clone, resize_percent, resize_pixel, scale_pixel, Filters",
-      "description": "处理后的图片"
+      "description": "处理后的图片",
+      "isAdvanced": false,
+      "validForList": [
+        "Clone",
+        "resize_percent",
+        "resize_pixel",
+        "scale_pixel",
+        "Filters"
+      ],
+      "invalidForList": [],
+      "condition": "仅：Clone, resize_percent, resize_pixel, scale_pixel, Filters"
     }
   ],
   "selections": {
@@ -226,5 +311,5 @@
       ]
     }
   },
-  "sourceFileName": "sys_imgProcess_图片处理.md"
+  "sourceFileName": "catalog.json"
 }

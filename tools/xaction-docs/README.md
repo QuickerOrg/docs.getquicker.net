@@ -22,8 +22,16 @@
 
 `docs:xaction:sync` 的主要作用是**刷新 `data/xaction`**（以及新建缺页、迁入旧正文）。已有页面上的组件标签不会再被「参数表」覆盖。
 
+同步器优先读取导出包的 `catalog.json`，保留参数原文、默认值类型、控制字段和结构化显示条件；仅在旧导出包没有 JSON 时兼容 Markdown 导入。有 JSON 但存在导出错误、数量不符或未知版本时停止同步，不回退到可能不完整的 Markdown。
+
+Quicker 导出命令为 `Tools/docs/Export-StepMetadataDocs.ps1`，现在通过主仓 `Tools/dev/build.ps1` 隔离构建输出，并在全部导出测试成功后提供 `export-dir.txt`。输入参数的 `DefaultValue` 是运行时缺省值，`NewStepDefaultValue` 是新建步骤初始值，两者分别保存。`VisibleWhen` 按明确的字段 Key 判断，优先于旧的条件列表；页面不执行 `VisibleExpression`，无法判断的条件保持可见。
+
+已有页面的人工标题、摘要和正文保留；`metadataGeneratedAt` 保留页面原始记录，当前参数导出时间以 `data/xaction/catalog.json` 的 `generatedAt` 为准。
+
+首页只更新 `XActionLanding` 的统计数据，已有分类摘要保留。已有模块按 Key 查找页面，分类变化不导致跳过或搬动正文；新分类和 Key 改名造成的页面冲突会在写入前报错。同一导出包重复同步不会清空上次差异报告。校验器会比对总目录与单模块 JSON 的完整内容，并报告改名后遗留的数据文件。
+
 ```powershell
-npm run docs:xaction:sync -- `
+node tools/xaction-docs/sync.mjs `
   --generated "D:\path\to\Quicker模块文档_yyyyMMdd_HHmmss" `
   --legacy "D:\path\to\QuickerDocs\online\markdown\help"
 ```
@@ -31,7 +39,7 @@ npm run docs:xaction:sync -- `
 增量同步（只刷新 `data/xaction`、更新已有模块页、为缺页写 stub）可以省略 `--legacy`，此时不会覆盖概念/教程正文：
 
 ```powershell
-npm run docs:xaction:sync -- --generated "D:\path\to\Quicker模块文档_yyyyMMdd_HHmmss"
+node tools/xaction-docs/sync.mjs --generated "D:\path\to\Quicker模块文档_yyyyMMdd_HHmmss"
 ```
 
 从 Quicker 仓手动触发：Actions → **Docs xaction sync**（`check` 只对照漂移，`import` 向本仓开 PR，不推 `main`）。本仓 PR 会跑 `docs:xaction:check` / `docs:xaction:test`。

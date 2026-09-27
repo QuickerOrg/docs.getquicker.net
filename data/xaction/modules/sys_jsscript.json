@@ -16,31 +16,46 @@
       "key": "script",
       "name": "脚本内容",
       "type": "Text",
-      "defaultValue": "//.js 主函数 exec()\nfunction exec(){\n var localName = quickerGetVar('text');  // 读取text变量值, (text 是动作里的变量)\n quickerSetVar('text', 'Hello, ' + localName ); //输出修改后的值到text变量中。\n return 0; //返回0表示成功。返回其他数字表示失败。\n}",
+      "description": "要运行的脚本内容",
+      "isAdvanced": false,
+      "validForList": [],
+      "invalidForList": [],
+      "condition": "",
+      "defaultValue": "//.js 主函数 exec()\r\nfunction exec(){\r\n var localName = quickerGetVar('text');  // 读取text变量值, (text 是动作里的变量)\r\n quickerSetVar('text', 'Hello, ' + localName ); //输出修改后的值到text变量中。\r\n return 0; //返回0表示成功。返回其他数字表示失败。\r\n}\r\n",
+      "defaultValueRaw": "//.js 主函数 exec()\r\nfunction exec(){\r\n var localName = quickerGetVar('text');  // 读取text变量值, (text 是动作里的变量)\r\n quickerSetVar('text', 'Hello, ' + localName ); //输出修改后的值到text变量中。\r\n return 0; //返回0表示成功。返回其他数字表示失败。\r\n}\r\n",
       "required": true,
       "variableMode": "UseVarOrInput",
-      "condition": "",
-      "description": "要运行的脚本内容"
+      "isControlField": false
     },
     {
       "key": "allClr",
       "name": "允许访问.Net程序集",
       "type": "Boolean",
+      "description": "是否需要在js代码中访问.Net程序集",
+      "isAdvanced": false,
+      "validForList": [],
+      "invalidForList": [],
+      "condition": "",
       "defaultValue": "false",
+      "defaultValueRaw": false,
       "required": false,
       "variableMode": "Input",
-      "condition": "",
-      "description": "是否需要在js代码中访问.Net程序集"
+      "isControlField": false
     },
     {
       "key": "stopIfFail",
       "name": "失败后停止",
       "type": "Boolean",
+      "description": "失败后是否停止动作",
+      "isAdvanced": false,
+      "validForList": [],
+      "invalidForList": [],
+      "condition": "",
       "defaultValue": "true",
+      "defaultValueRaw": true,
       "required": false,
       "variableMode": "Input",
-      "condition": "",
-      "description": "失败后是否停止动作"
+      "isControlField": false
     }
   ],
   "outputs": [
@@ -48,17 +63,23 @@
       "key": "isSuccess",
       "name": "是否成功",
       "type": "Boolean",
-      "condition": "",
-      "description": "操作是否成功"
+      "description": "操作是否成功",
+      "isAdvanced": false,
+      "validForList": [],
+      "invalidForList": [],
+      "condition": ""
     },
     {
       "key": "return",
       "name": "返回值",
       "type": "Integer",
-      "condition": "",
-      "description": "脚本代码返回的数字值。"
+      "description": "脚本代码返回的数字值。",
+      "isAdvanced": false,
+      "validForList": [],
+      "invalidForList": [],
+      "condition": ""
     }
   ],
   "selections": {},
-  "sourceFileName": "sys_jsscript_运行Javascript代码.md"
+  "sourceFileName": "catalog.json"
 }

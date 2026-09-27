@@ -16,81 +16,121 @@
       "key": "type",
       "name": "操作类型",
       "type": "Enum",
+      "description": "打开文件：选择一个已存在的文件。保存文件：选择文件要保存的目标位置。",
+      "isAdvanced": false,
+      "validForList": [],
+      "invalidForList": [],
+      "condition": "",
       "defaultValue": "openFile",
+      "defaultValueRaw": "openFile",
       "required": true,
       "variableMode": "Input",
-      "condition": "",
-      "description": "打开文件：选择一个已存在的文件。保存文件：选择文件要保存的目标位置。"
+      "isControlField": true
     },
     {
       "key": "filter",
       "name": "文件类型筛选器",
       "type": "Text",
+      "description": "文件类型筛选器，格式为：类型1|扩展名1|类型2|扩展名2。如：文本文件(*.txt)|*.txt|C#文件|*.cs|所有文件|*.*",
+      "isAdvanced": false,
+      "validForList": [],
+      "invalidForList": [],
+      "condition": "",
       "defaultValue": "文本文件|*.txt|所有文件|*.*",
+      "defaultValueRaw": "文本文件|*.txt|所有文件|*.*",
       "required": false,
       "variableMode": "UseVarOrInput",
-      "condition": "",
-      "description": "文件类型筛选器，格式为：类型1|扩展名1|类型2|扩展名2。如：文本文件(*.txt)|*.txt|C#文件|*.cs|所有文件|*.*"
+      "isControlField": false
     },
     {
       "key": "defaultExt",
       "name": "默认扩展名",
       "type": "Text",
+      "description": "默认的文件扩展名，应该是筛选器里的一种",
+      "isAdvanced": false,
+      "validForList": [],
+      "invalidForList": [],
+      "condition": "",
       "defaultValue": ".txt",
+      "defaultValueRaw": ".txt",
       "required": false,
       "variableMode": "UseVarOrInput",
-      "condition": "",
-      "description": "默认的文件扩展名，应该是筛选器里的一种"
+      "isControlField": false
     },
     {
       "key": "initFileName",
       "name": "初始文件名",
       "type": "Text",
+      "description": "预选选择或设置的文件名",
+      "isAdvanced": false,
+      "validForList": [],
+      "invalidForList": [],
+      "condition": "",
       "defaultValue": "",
+      "defaultValueRaw": "",
       "required": false,
       "variableMode": "UseVarOrInput",
-      "condition": "",
-      "description": "预选选择或设置的文件名"
+      "isControlField": false
     },
     {
       "key": "initDir",
       "name": "初始路径",
       "type": "Text",
+      "description": "初始文件夹路径",
+      "isAdvanced": false,
+      "validForList": [],
+      "invalidForList": [],
+      "condition": "",
       "defaultValue": "",
+      "defaultValueRaw": "",
       "required": false,
       "variableMode": "UseVarOrInput",
-      "condition": "",
-      "description": "初始文件夹路径"
+      "isControlField": false
     },
     {
       "key": "title",
       "name": "对话框标题",
       "type": "Text",
+      "description": "选择窗口的标题",
+      "isAdvanced": false,
+      "validForList": [],
+      "invalidForList": [],
+      "condition": "",
       "defaultValue": "",
+      "defaultValueRaw": "",
       "required": false,
       "variableMode": "UseVarOrInput",
-      "condition": "",
-      "description": "选择窗口的标题"
+      "isControlField": false
     },
     {
       "key": "topMost",
       "name": "置顶显示",
       "type": "Boolean",
+      "description": "是否置置顶显示窗口。",
+      "isAdvanced": false,
+      "validForList": [],
+      "invalidForList": [],
+      "condition": "",
       "defaultValue": "true",
+      "defaultValueRaw": true,
       "required": false,
       "variableMode": "Input",
-      "condition": "",
-      "description": "是否置置顶显示窗口。"
+      "isControlField": false
     },
     {
       "key": "stopIfFail",
       "name": "失败后停止",
       "type": "Boolean",
+      "description": "失败后是否停止动作",
+      "isAdvanced": false,
+      "validForList": [],
+      "invalidForList": [],
+      "condition": "",
       "defaultValue": "true",
+      "defaultValueRaw": true,
       "required": false,
       "variableMode": "Input",
-      "condition": "",
-      "description": "失败后是否停止动作"
+      "isControlField": false
     }
   ],
   "outputs": [
@@ -98,22 +138,36 @@
       "key": "isSuccess",
       "name": "是否成功",
       "type": "Boolean",
-      "condition": "",
-      "description": "是否成功选择了路径。"
+      "description": "是否成功选择了路径。",
+      "isAdvanced": false,
+      "validForList": [],
+      "invalidForList": [],
+      "condition": ""
     },
     {
       "key": "path",
       "name": "路径",
       "type": "Text",
-      "condition": "仅：openFile, saveFile",
-      "description": "选择的文件路径。"
+      "description": "选择的文件路径。",
+      "isAdvanced": false,
+      "validForList": [
+        "openFile",
+        "saveFile"
+      ],
+      "invalidForList": [],
+      "condition": "仅：openFile, saveFile"
     },
     {
       "key": "pathList",
       "name": "路径列表",
       "type": "List",
-      "condition": "仅：openMultiFile",
-      "description": "选择的文件路径列表。"
+      "description": "选择的文件路径列表。",
+      "isAdvanced": false,
+      "validForList": [
+        "openMultiFile"
+      ],
+      "invalidForList": [],
+      "condition": "仅：openMultiFile"
     }
   ],
   "selections": {
@@ -138,5 +192,5 @@
       ]
     }
   },
-  "sourceFileName": "sys_selectFile_选择文件.md"
+  "sourceFileName": "catalog.json"
 }

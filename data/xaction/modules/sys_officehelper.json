@@ -16,81 +16,135 @@
       "key": "operation",
       "name": "操作类型",
       "type": "Enum",
+      "description": "",
+      "isAdvanced": false,
+      "validForList": [],
+      "invalidForList": [],
+      "condition": "",
       "defaultValue": "execVBA",
+      "defaultValueRaw": "execVBA",
       "required": true,
       "variableMode": "Input",
-      "condition": "",
-      "description": ""
+      "isControlField": true
     },
     {
       "key": "appType",
       "name": "应用程序",
       "type": "Enum",
+      "description": "",
+      "isAdvanced": false,
+      "validForList": [],
+      "invalidForList": [],
+      "condition": "",
       "defaultValue": "word_wps",
+      "defaultValueRaw": "word_wps",
       "required": false,
       "variableMode": "Input",
-      "condition": "",
-      "description": ""
+      "isControlField": false
     },
     {
       "key": "code",
       "name": "宏名称或VBA代码",
       "type": "Text",
-      "defaultValue": "Sub Hello()\nMsgBox \"Hello World\"\nEnd Sub",
+      "description": "宏的名称，或VBA代码（将执行第一个找到的Sub或Function）",
+      "isAdvanced": false,
+      "validForList": [
+        "execVBA"
+      ],
+      "invalidForList": [],
+      "condition": "仅：execVBA",
+      "defaultValue": "Sub Hello()\r\nMsgBox \"Hello World\"\r\nEnd Sub\r\n",
+      "defaultValueRaw": "Sub Hello()\r\nMsgBox \"Hello World\"\r\nEnd Sub\r\n",
       "required": false,
       "variableMode": "Input",
-      "condition": "仅：execVBA",
-      "description": "宏的名称，或VBA代码（将执行第一个找到的Sub或Function）"
+      "isControlField": false
     },
     {
       "key": "command",
       "name": "命令ID",
       "type": "Text",
+      "description": "界面按钮所对应的命令ID，请参考模块文档了解如何获取。",
+      "isAdvanced": false,
+      "validForList": [
+        "executeMsoCommand"
+      ],
+      "invalidForList": [],
+      "condition": "仅：executeMsoCommand",
       "defaultValue": "",
+      "defaultValueRaw": "",
       "required": false,
       "variableMode": "Input",
-      "condition": "仅：executeMsoCommand",
-      "description": "界面按钮所对应的命令ID，请参考模块文档了解如何获取。"
+      "isControlField": false
     },
     {
       "key": "formats",
       "name": "格式设置/属性赋值代码",
       "type": "Text",
+      "description": "请参考文档说明",
+      "isAdvanced": false,
+      "validForList": [
+        "setFormats"
+      ],
+      "invalidForList": [],
+      "condition": "仅：setFormats",
       "defaultValue": "",
+      "defaultValueRaw": "",
       "required": false,
       "variableMode": "Input",
-      "condition": "仅：setFormats",
-      "description": "请参考文档说明"
+      "isControlField": false
     },
     {
       "key": "waitResp",
       "name": "等待执行结束",
       "type": "Boolean",
+      "description": "不等待将立即继续后续步骤的执行，如果遇到异常情况无法获知。",
+      "isAdvanced": false,
+      "validForList": [
+        "execVBA",
+        "setFormats",
+        "executeMsoCommand"
+      ],
+      "invalidForList": [],
+      "condition": "仅：execVBA, setFormats, executeMsoCommand",
       "defaultValue": "true",
+      "defaultValueRaw": true,
       "required": false,
       "variableMode": "Input",
-      "condition": "仅：execVBA, setFormats, executeMsoCommand",
-      "description": "不等待将立即继续后续步骤的执行，如果遇到异常情况无法获知。"
+      "isControlField": false
     },
     {
       "key": "waitMs",
       "name": "最长等待时间(ms)",
       "type": "Number",
+      "description": "最长的等待返回结果的，毫秒数",
+      "isAdvanced": true,
+      "validForList": [
+        "execVBA",
+        "setFormats",
+        "executeMsoCommand"
+      ],
+      "invalidForList": [],
+      "condition": "仅：execVBA, setFormats, executeMsoCommand",
       "defaultValue": "10000",
+      "defaultValueRaw": 10000,
       "required": true,
       "variableMode": "Input",
-      "condition": "仅：execVBA, setFormats, executeMsoCommand",
-      "description": "最长的等待返回结果的，毫秒数"
+      "isControlField": false
     },
     {
       "key": "stopIfFail",
       "name": "失败后停止动作",
       "type": "Boolean",
+      "description": "失败后是否停止动作",
+      "isAdvanced": false,
+      "validForList": [],
+      "invalidForList": [],
+      "condition": "",
       "defaultValue": "true",
+      "defaultValueRaw": true,
       "required": false,
       "variableMode": "Input",
-      "condition": "",
-      "description": "失败后是否停止动作"
+      "isControlField": false
     }
   ],
   "outputs": [
@@ -98,22 +152,37 @@
       "key": "isSuccess",
       "name": "步骤执行是否成功",
       "type": "Boolean",
-      "condition": "",
-      "description": "步骤执行是否成功"
+      "description": "步骤执行是否成功",
+      "isAdvanced": false,
+      "validForList": [],
+      "invalidForList": [],
+      "condition": ""
     },
     {
       "key": "resp",
       "name": "返回内容",
       "type": "Text",
-      "condition": "仅：execVBA, setFormats, executeMsoCommand",
-      "description": ""
+      "description": "",
+      "isAdvanced": false,
+      "validForList": [
+        "execVBA",
+        "setFormats",
+        "executeMsoCommand"
+      ],
+      "invalidForList": [],
+      "condition": "仅：execVBA, setFormats, executeMsoCommand"
     },
     {
       "key": "progId",
       "name": "ProgId",
       "type": "Text",
-      "condition": "仅：getProgId",
-      "description": "获取程序的ProgId，可用于在C#里得到对应的Application对象。"
+      "description": "获取程序的ProgId，可用于在C#里得到对应的Application对象。",
+      "isAdvanced": false,
+      "validForList": [
+        "getProgId"
+      ],
+      "invalidForList": [],
+      "condition": "仅：getProgId"
     }
   ],
   "selections": {
@@ -208,5 +277,5 @@
       ]
     }
   },
-  "sourceFileName": "sys_officehelper_Office软件辅助.md"
+  "sourceFileName": "catalog.json"
 }

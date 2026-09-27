@@ -16,31 +16,46 @@
       "key": "script",
       "name": "脚本内容",
       "type": "Text",
-      "defaultValue": "##.py \nquicker.context.SetVarValue('text', 'hello world')",
+      "description": "要运行的脚本内容",
+      "isAdvanced": false,
+      "validForList": [],
+      "invalidForList": [],
+      "condition": "",
+      "defaultValue": "##.py \r\nquicker.context.SetVarValue('text', 'hello world')\r\n",
+      "defaultValueRaw": "##.py \r\nquicker.context.SetVarValue('text', 'hello world')\r\n",
       "required": true,
       "variableMode": "UseVarOrInput",
-      "condition": "",
-      "description": "要运行的脚本内容"
+      "isControlField": false
     },
     {
       "key": "pythonPath",
       "name": "Python环境路径",
       "type": "Text",
+      "description": "可选。Python环境(PythonXXX.dll)所在目录，留空时使用全局设置",
+      "isAdvanced": false,
+      "validForList": [],
+      "invalidForList": [],
+      "condition": "",
       "defaultValue": "",
+      "defaultValueRaw": "",
       "required": false,
       "variableMode": "UseVarOrInput",
-      "condition": "",
-      "description": "可选。Python环境(PythonXXX.dll)所在目录，留空时使用全局设置"
+      "isControlField": false
     },
     {
       "key": "stopIfFail",
       "name": "失败后停止",
       "type": "Boolean",
+      "description": "失败后是否停止动作",
+      "isAdvanced": false,
+      "validForList": [],
+      "invalidForList": [],
+      "condition": "",
       "defaultValue": "true",
+      "defaultValueRaw": true,
       "required": false,
       "variableMode": "Input",
-      "condition": "",
-      "description": "失败后是否停止动作"
+      "isControlField": false
     }
   ],
   "outputs": [
@@ -48,10 +63,13 @@
       "key": "isSuccess",
       "name": "是否成功",
       "type": "Boolean",
-      "condition": "",
-      "description": "操作是否成功"
+      "description": "操作是否成功",
+      "isAdvanced": false,
+      "validForList": [],
+      "invalidForList": [],
+      "condition": ""
     }
   ],
   "selections": {},
-  "sourceFileName": "sys_pythonscript_运行Python代码.md"
+  "sourceFileName": "catalog.json"
 }

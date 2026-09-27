@@ -16,601 +16,1977 @@
       "key": "operation",
       "name": "操作类型",
       "type": "Enum",
+      "description": "",
+      "isAdvanced": false,
+      "validForList": [],
+      "invalidForList": [],
+      "condition": "",
       "defaultValue": "common",
+      "defaultValueRaw": "common",
       "required": true,
       "variableMode": "Input",
-      "condition": "",
-      "description": ""
+      "isControlField": true
     },
     {
       "key": "commonCategory",
       "name": "功能分类",
       "type": "Enum",
+      "description": "",
+      "isAdvanced": false,
+      "validForList": [
+        "common"
+      ],
+      "invalidForList": [],
+      "condition": "仅：common",
       "defaultValue": "document",
+      "defaultValueRaw": "document",
       "required": true,
       "variableMode": "Input",
-      "condition": "仅：common",
-      "description": ""
+      "isControlField": true
     },
     {
       "key": "documentOperation",
       "name": "文档功能",
       "type": "Enum",
+      "description": "",
+      "isAdvanced": false,
+      "validForList": [],
+      "invalidForList": [],
+      "visibleWhen": {
+        "kind": "All",
+        "conditions": [
+          {
+            "kind": "Field",
+            "fieldKey": "operation",
+            "operator": "In",
+            "values": [
+              "common"
+            ]
+          },
+          {
+            "kind": "Field",
+            "fieldKey": "commonCategory",
+            "operator": "In",
+            "values": [
+              "document"
+            ]
+          }
+        ]
+      },
+      "condition": "(operation 为 \"common\" 且 commonCategory 为 \"document\")",
       "defaultValue": "document.get_context",
+      "defaultValueRaw": "document.get_context",
       "required": true,
       "variableMode": "Input",
-      "condition": "",
-      "description": ""
+      "isControlField": true
     },
     {
       "key": "selectionOperation",
       "name": "选择功能",
       "type": "Enum",
+      "description": "",
+      "isAdvanced": false,
+      "validForList": [],
+      "invalidForList": [],
+      "visibleWhen": {
+        "kind": "All",
+        "conditions": [
+          {
+            "kind": "Field",
+            "fieldKey": "operation",
+            "operator": "In",
+            "values": [
+              "common"
+            ]
+          },
+          {
+            "kind": "Field",
+            "fieldKey": "commonCategory",
+            "operator": "In",
+            "values": [
+              "selection"
+            ]
+          }
+        ]
+      },
+      "condition": "(operation 为 \"common\" 且 commonCategory 为 \"selection\")",
       "defaultValue": "selection.get_summary",
+      "defaultValueRaw": "selection.get_summary",
       "required": true,
       "variableMode": "Input",
-      "condition": "",
-      "description": ""
+      "isControlField": true
     },
     {
       "key": "viewOperation",
       "name": "视图功能",
       "type": "Enum",
+      "description": "",
+      "isAdvanced": false,
+      "validForList": [],
+      "invalidForList": [],
+      "visibleWhen": {
+        "kind": "All",
+        "conditions": [
+          {
+            "kind": "Field",
+            "fieldKey": "operation",
+            "operator": "In",
+            "values": [
+              "common"
+            ]
+          },
+          {
+            "kind": "Field",
+            "fieldKey": "commonCategory",
+            "operator": "In",
+            "values": [
+              "view"
+            ]
+          }
+        ]
+      },
+      "condition": "(operation 为 \"common\" 且 commonCategory 为 \"view\")",
       "defaultValue": "view.fit",
+      "defaultValueRaw": "view.fit",
       "required": true,
       "variableMode": "Input",
-      "condition": "",
-      "description": ""
+      "isControlField": true
     },
     {
       "key": "levelOperation",
       "name": "图层功能",
       "type": "Enum",
+      "description": "",
+      "isAdvanced": false,
+      "validForList": [],
+      "invalidForList": [],
+      "visibleWhen": {
+        "kind": "All",
+        "conditions": [
+          {
+            "kind": "Field",
+            "fieldKey": "operation",
+            "operator": "In",
+            "values": [
+              "common"
+            ]
+          },
+          {
+            "kind": "Field",
+            "fieldKey": "commonCategory",
+            "operator": "In",
+            "values": [
+              "level"
+            ]
+          }
+        ]
+      },
+      "condition": "(operation 为 \"common\" 且 commonCategory 为 \"level\")",
       "defaultValue": "level.list",
+      "defaultValueRaw": "level.list",
       "required": true,
       "variableMode": "Input",
-      "condition": "",
-      "description": ""
+      "isControlField": true
     },
     {
       "key": "geometryOperation",
       "name": "几何功能",
       "type": "Enum",
+      "description": "",
+      "isAdvanced": false,
+      "validForList": [],
+      "invalidForList": [],
+      "visibleWhen": {
+        "kind": "All",
+        "conditions": [
+          {
+            "kind": "Field",
+            "fieldKey": "operation",
+            "operator": "In",
+            "values": [
+              "common"
+            ]
+          },
+          {
+            "kind": "Field",
+            "fieldKey": "commonCategory",
+            "operator": "In",
+            "values": [
+              "geometry"
+            ]
+          }
+        ]
+      },
+      "condition": "(operation 为 \"common\" 且 commonCategory 为 \"geometry\")",
       "defaultValue": "geometry.get_summary",
+      "defaultValueRaw": "geometry.get_summary",
       "required": true,
       "variableMode": "Input",
-      "condition": "",
-      "description": ""
+      "isControlField": true
     },
     {
       "key": "camOperation",
       "name": "CAM 功能",
       "type": "Enum",
+      "description": "",
+      "isAdvanced": false,
+      "validForList": [],
+      "invalidForList": [],
+      "visibleWhen": {
+        "kind": "All",
+        "conditions": [
+          {
+            "kind": "Field",
+            "fieldKey": "operation",
+            "operator": "In",
+            "values": [
+              "common"
+            ]
+          },
+          {
+            "kind": "Field",
+            "fieldKey": "commonCategory",
+            "operator": "In",
+            "values": [
+              "cam"
+            ]
+          }
+        ]
+      },
+      "condition": "(operation 为 \"common\" 且 commonCategory 为 \"cam\")",
       "defaultValue": "cam.get_summary",
+      "defaultValueRaw": "cam.get_summary",
       "required": true,
       "variableMode": "Input",
-      "condition": "",
-      "description": ""
+      "isControlField": true
     },
     {
       "key": "uiOperation",
       "name": "界面功能",
       "type": "Enum",
+      "description": "",
+      "isAdvanced": false,
+      "validForList": [],
+      "invalidForList": [],
+      "visibleWhen": {
+        "kind": "All",
+        "conditions": [
+          {
+            "kind": "Field",
+            "fieldKey": "operation",
+            "operator": "In",
+            "values": [
+              "common"
+            ]
+          },
+          {
+            "kind": "Field",
+            "fieldKey": "commonCategory",
+            "operator": "In",
+            "values": [
+              "ui"
+            ]
+          }
+        ]
+      },
+      "condition": "(operation 为 \"common\" 且 commonCategory 为 \"ui\")",
       "defaultValue": "ui.ft.list",
+      "defaultValueRaw": "ui.ft.list",
       "required": true,
       "variableMode": "Input",
-      "condition": "",
-      "description": ""
+      "isControlField": true
     },
     {
       "key": "commonDocumentPath",
       "name": "文档路径",
       "type": "Text",
+      "description": "打开或另存为的绝对文件路径。",
+      "isAdvanced": false,
+      "validForList": [],
+      "invalidForList": [],
+      "visibleWhen": {
+        "kind": "All",
+        "conditions": [
+          {
+            "kind": "Field",
+            "fieldKey": "operation",
+            "operator": "In",
+            "values": [
+              "common"
+            ]
+          },
+          {
+            "kind": "Field",
+            "fieldKey": "commonCategory",
+            "operator": "In",
+            "values": [
+              "document"
+            ]
+          },
+          {
+            "kind": "Field",
+            "fieldKey": "documentOperation",
+            "operator": "In",
+            "values": [
+              "document.save_as",
+              "document.open"
+            ]
+          }
+        ]
+      },
+      "condition": "(operation 为 \"common\" 且 commonCategory 为 \"document\" 且 documentOperation 为 \"document.save_as\"、\"document.open\")",
       "defaultValue": "",
+      "defaultValueRaw": "",
       "required": true,
       "variableMode": "UseVarOrInput",
-      "condition": "",
-      "description": "打开或另存为的绝对文件路径。"
+      "isControlField": false
     },
     {
       "key": "commonOverwriteFile",
       "name": "允许覆盖已有文件",
       "type": "Boolean",
+      "description": "",
+      "isAdvanced": false,
+      "validForList": [],
+      "invalidForList": [],
+      "visibleWhen": {
+        "kind": "All",
+        "conditions": [
+          {
+            "kind": "Field",
+            "fieldKey": "operation",
+            "operator": "In",
+            "values": [
+              "common"
+            ]
+          },
+          {
+            "kind": "Field",
+            "fieldKey": "commonCategory",
+            "operator": "In",
+            "values": [
+              "document"
+            ]
+          },
+          {
+            "kind": "Field",
+            "fieldKey": "documentOperation",
+            "operator": "In",
+            "values": [
+              "document.save_as"
+            ]
+          }
+        ]
+      },
+      "condition": "(operation 为 \"common\" 且 commonCategory 为 \"document\" 且 documentOperation 为 \"document.save_as\")",
       "defaultValue": "false",
+      "defaultValueRaw": false,
       "required": false,
       "variableMode": "Input",
-      "condition": "",
-      "description": ""
+      "isControlField": false
     },
     {
       "key": "acknowledgeDiscard",
       "name": "确认已保存或允许放弃当前修改",
       "type": "Boolean",
+      "description": "",
+      "isAdvanced": false,
+      "validForList": [],
+      "invalidForList": [],
+      "visibleWhen": {
+        "kind": "All",
+        "conditions": [
+          {
+            "kind": "Field",
+            "fieldKey": "operation",
+            "operator": "In",
+            "values": [
+              "common"
+            ]
+          },
+          {
+            "kind": "Field",
+            "fieldKey": "commonCategory",
+            "operator": "In",
+            "values": [
+              "document"
+            ]
+          },
+          {
+            "kind": "Field",
+            "fieldKey": "documentOperation",
+            "operator": "In",
+            "values": [
+              "document.open",
+              "document.new"
+            ]
+          }
+        ]
+      },
+      "condition": "(operation 为 \"common\" 且 commonCategory 为 \"document\" 且 documentOperation 为 \"document.open\"、\"document.new\")",
       "defaultValue": "false",
+      "defaultValueRaw": false,
       "required": false,
       "variableMode": "Input",
-      "condition": "",
-      "description": ""
+      "isControlField": false
     },
     {
       "key": "commonCapturePath",
       "name": "图片路径",
       "type": "Text",
+      "description": "保存图形区图片的绝对 .bmp 路径。",
+      "isAdvanced": false,
+      "validForList": [],
+      "invalidForList": [],
+      "visibleWhen": {
+        "kind": "All",
+        "conditions": [
+          {
+            "kind": "Field",
+            "fieldKey": "operation",
+            "operator": "In",
+            "values": [
+              "common"
+            ]
+          },
+          {
+            "kind": "Field",
+            "fieldKey": "commonCategory",
+            "operator": "In",
+            "values": [
+              "view"
+            ]
+          },
+          {
+            "kind": "Field",
+            "fieldKey": "viewOperation",
+            "operator": "In",
+            "values": [
+              "view.capture_bitmap"
+            ]
+          }
+        ]
+      },
+      "condition": "(operation 为 \"common\" 且 commonCategory 为 \"view\" 且 viewOperation 为 \"view.capture_bitmap\")",
       "defaultValue": "",
+      "defaultValueRaw": "",
       "required": true,
       "variableMode": "UseVarOrInput",
-      "condition": "",
-      "description": "保存图形区图片的绝对 .bmp 路径。"
+      "isControlField": false
     },
     {
       "key": "commonCaptureOverwrite",
       "name": "允许覆盖已有图片",
       "type": "Boolean",
+      "description": "",
+      "isAdvanced": false,
+      "validForList": [],
+      "invalidForList": [],
+      "visibleWhen": {
+        "kind": "All",
+        "conditions": [
+          {
+            "kind": "Field",
+            "fieldKey": "operation",
+            "operator": "In",
+            "values": [
+              "common"
+            ]
+          },
+          {
+            "kind": "Field",
+            "fieldKey": "commonCategory",
+            "operator": "In",
+            "values": [
+              "view"
+            ]
+          },
+          {
+            "kind": "Field",
+            "fieldKey": "viewOperation",
+            "operator": "In",
+            "values": [
+              "view.capture_bitmap"
+            ]
+          }
+        ]
+      },
+      "condition": "(operation 为 \"common\" 且 commonCategory 为 \"view\" 且 viewOperation 为 \"view.capture_bitmap\")",
       "defaultValue": "false",
+      "defaultValueRaw": false,
       "required": false,
       "variableMode": "Input",
-      "condition": "",
-      "description": ""
+      "isControlField": false
     },
     {
       "key": "selectionLevelNumber",
       "name": "图层编号",
       "type": "Integer",
+      "description": "",
+      "isAdvanced": false,
+      "validForList": [],
+      "invalidForList": [],
+      "visibleWhen": {
+        "kind": "All",
+        "conditions": [
+          {
+            "kind": "Field",
+            "fieldKey": "operation",
+            "operator": "In",
+            "values": [
+              "common"
+            ]
+          },
+          {
+            "kind": "Field",
+            "fieldKey": "commonCategory",
+            "operator": "In",
+            "values": [
+              "selection"
+            ]
+          },
+          {
+            "kind": "Field",
+            "fieldKey": "selectionOperation",
+            "operator": "In",
+            "values": [
+              "selection.select_level"
+            ]
+          }
+        ]
+      },
+      "condition": "(operation 为 \"common\" 且 commonCategory 为 \"selection\" 且 selectionOperation 为 \"selection.select_level\")",
       "defaultValue": "1",
+      "defaultValueRaw": 1,
       "required": true,
       "variableMode": "Input",
-      "condition": "",
-      "description": ""
+      "isControlField": false
     },
     {
       "key": "geometryType",
       "name": "几何类型",
       "type": "Enum",
+      "description": "",
+      "isAdvanced": false,
+      "validForList": [],
+      "invalidForList": [],
+      "visibleWhen": {
+        "kind": "All",
+        "conditions": [
+          {
+            "kind": "Field",
+            "fieldKey": "operation",
+            "operator": "In",
+            "values": [
+              "common"
+            ]
+          },
+          {
+            "kind": "Field",
+            "fieldKey": "commonCategory",
+            "operator": "In",
+            "values": [
+              "selection"
+            ]
+          },
+          {
+            "kind": "Field",
+            "fieldKey": "selectionOperation",
+            "operator": "In",
+            "values": [
+              "selection.select_type"
+            ]
+          }
+        ]
+      },
+      "condition": "(operation 为 \"common\" 且 commonCategory 为 \"selection\" 且 selectionOperation 为 \"selection.select_type\")",
       "defaultValue": "Lines",
+      "defaultValueRaw": "Lines",
       "required": true,
       "variableMode": "Input",
-      "condition": "",
-      "description": ""
+      "isControlField": true
     },
     {
       "key": "clearExistingSelection",
       "name": "替换当前选择",
       "type": "Boolean",
+      "description": "",
+      "isAdvanced": false,
+      "validForList": [],
+      "invalidForList": [],
+      "visibleWhen": {
+        "kind": "All",
+        "conditions": [
+          {
+            "kind": "Field",
+            "fieldKey": "operation",
+            "operator": "In",
+            "values": [
+              "common"
+            ]
+          },
+          {
+            "kind": "Field",
+            "fieldKey": "commonCategory",
+            "operator": "In",
+            "values": [
+              "selection"
+            ]
+          },
+          {
+            "kind": "Field",
+            "fieldKey": "selectionOperation",
+            "operator": "In",
+            "values": [
+              "selection.select_level",
+              "selection.select_type"
+            ]
+          }
+        ]
+      },
+      "condition": "(operation 为 \"common\" 且 commonCategory 为 \"selection\" 且 selectionOperation 为 \"selection.select_level\"、\"selection.select_type\")",
       "defaultValue": "true",
+      "defaultValueRaw": true,
       "required": false,
       "variableMode": "Input",
-      "condition": "",
-      "description": ""
+      "isControlField": false
     },
     {
       "key": "commonLevelNumber",
       "name": "图层编号",
       "type": "Integer",
+      "description": "",
+      "isAdvanced": false,
+      "validForList": [],
+      "invalidForList": [],
+      "visibleWhen": {
+        "kind": "All",
+        "conditions": [
+          {
+            "kind": "Field",
+            "fieldKey": "operation",
+            "operator": "In",
+            "values": [
+              "common"
+            ]
+          },
+          {
+            "kind": "Field",
+            "fieldKey": "commonCategory",
+            "operator": "In",
+            "values": [
+              "level"
+            ]
+          },
+          {
+            "kind": "Field",
+            "fieldKey": "levelOperation",
+            "operator": "In",
+            "values": [
+              "level.set_active",
+              "level.set_visible",
+              "level.rename"
+            ]
+          }
+        ]
+      },
+      "condition": "(operation 为 \"common\" 且 commonCategory 为 \"level\" 且 levelOperation 为 \"level.set_active\"、\"level.set_visible\"、\"level.rename\")",
       "defaultValue": "1",
+      "defaultValueRaw": 1,
       "required": true,
       "variableMode": "Input",
-      "condition": "",
-      "description": ""
+      "isControlField": false
     },
     {
       "key": "commonLevelVisible",
       "name": "图层可见",
       "type": "Boolean",
+      "description": "",
+      "isAdvanced": false,
+      "validForList": [],
+      "invalidForList": [],
+      "visibleWhen": {
+        "kind": "All",
+        "conditions": [
+          {
+            "kind": "Field",
+            "fieldKey": "operation",
+            "operator": "In",
+            "values": [
+              "common"
+            ]
+          },
+          {
+            "kind": "Field",
+            "fieldKey": "commonCategory",
+            "operator": "In",
+            "values": [
+              "level"
+            ]
+          },
+          {
+            "kind": "Field",
+            "fieldKey": "levelOperation",
+            "operator": "In",
+            "values": [
+              "level.set_visible"
+            ]
+          }
+        ]
+      },
+      "condition": "(operation 为 \"common\" 且 commonCategory 为 \"level\" 且 levelOperation 为 \"level.set_visible\")",
       "defaultValue": "true",
+      "defaultValueRaw": true,
       "required": false,
       "variableMode": "Input",
-      "condition": "",
-      "description": ""
+      "isControlField": false
     },
     {
       "key": "levelName",
       "name": "图层名称",
       "type": "Text",
+      "description": "",
+      "isAdvanced": false,
+      "validForList": [],
+      "invalidForList": [],
+      "visibleWhen": {
+        "kind": "All",
+        "conditions": [
+          {
+            "kind": "Field",
+            "fieldKey": "operation",
+            "operator": "In",
+            "values": [
+              "common"
+            ]
+          },
+          {
+            "kind": "Field",
+            "fieldKey": "commonCategory",
+            "operator": "In",
+            "values": [
+              "level"
+            ]
+          },
+          {
+            "kind": "Field",
+            "fieldKey": "levelOperation",
+            "operator": "In",
+            "values": [
+              "level.rename"
+            ]
+          }
+        ]
+      },
+      "condition": "(operation 为 \"common\" 且 commonCategory 为 \"level\" 且 levelOperation 为 \"level.rename\")",
       "defaultValue": "",
+      "defaultValueRaw": "",
       "required": true,
       "variableMode": "UseVarOrInput",
-      "condition": "",
-      "description": ""
+      "isControlField": false
     },
     {
       "key": "commonX1",
       "name": "起点 X",
       "type": "Number",
+      "description": "",
+      "isAdvanced": false,
+      "validForList": [],
+      "invalidForList": [],
+      "visibleWhen": {
+        "kind": "All",
+        "conditions": [
+          {
+            "kind": "Field",
+            "fieldKey": "operation",
+            "operator": "In",
+            "values": [
+              "common"
+            ]
+          },
+          {
+            "kind": "Field",
+            "fieldKey": "commonCategory",
+            "operator": "In",
+            "values": [
+              "geometry"
+            ]
+          },
+          {
+            "kind": "Field",
+            "fieldKey": "geometryOperation",
+            "operator": "In",
+            "values": [
+              "geometry.create_line"
+            ]
+          }
+        ]
+      },
+      "condition": "(operation 为 \"common\" 且 commonCategory 为 \"geometry\" 且 geometryOperation 为 \"geometry.create_line\")",
       "defaultValue": "0",
+      "defaultValueRaw": 0,
       "required": false,
       "variableMode": "UseVarOrInput",
-      "condition": "",
-      "description": ""
+      "isControlField": false
     },
     {
       "key": "commonY1",
       "name": "起点 Y",
       "type": "Number",
+      "description": "",
+      "isAdvanced": false,
+      "validForList": [],
+      "invalidForList": [],
+      "visibleWhen": {
+        "kind": "All",
+        "conditions": [
+          {
+            "kind": "Field",
+            "fieldKey": "operation",
+            "operator": "In",
+            "values": [
+              "common"
+            ]
+          },
+          {
+            "kind": "Field",
+            "fieldKey": "commonCategory",
+            "operator": "In",
+            "values": [
+              "geometry"
+            ]
+          },
+          {
+            "kind": "Field",
+            "fieldKey": "geometryOperation",
+            "operator": "In",
+            "values": [
+              "geometry.create_line"
+            ]
+          }
+        ]
+      },
+      "condition": "(operation 为 \"common\" 且 commonCategory 为 \"geometry\" 且 geometryOperation 为 \"geometry.create_line\")",
       "defaultValue": "0",
+      "defaultValueRaw": 0,
       "required": false,
       "variableMode": "UseVarOrInput",
-      "condition": "",
-      "description": ""
+      "isControlField": false
     },
     {
       "key": "commonZ1",
       "name": "起点 Z",
       "type": "Number",
+      "description": "",
+      "isAdvanced": false,
+      "validForList": [],
+      "invalidForList": [],
+      "visibleWhen": {
+        "kind": "All",
+        "conditions": [
+          {
+            "kind": "Field",
+            "fieldKey": "operation",
+            "operator": "In",
+            "values": [
+              "common"
+            ]
+          },
+          {
+            "kind": "Field",
+            "fieldKey": "commonCategory",
+            "operator": "In",
+            "values": [
+              "geometry"
+            ]
+          },
+          {
+            "kind": "Field",
+            "fieldKey": "geometryOperation",
+            "operator": "In",
+            "values": [
+              "geometry.create_line"
+            ]
+          }
+        ]
+      },
+      "condition": "(operation 为 \"common\" 且 commonCategory 为 \"geometry\" 且 geometryOperation 为 \"geometry.create_line\")",
       "defaultValue": "0",
+      "defaultValueRaw": 0,
       "required": false,
       "variableMode": "UseVarOrInput",
-      "condition": "",
-      "description": ""
+      "isControlField": false
     },
     {
       "key": "commonX2",
       "name": "终点 X",
       "type": "Number",
+      "description": "",
+      "isAdvanced": false,
+      "validForList": [],
+      "invalidForList": [],
+      "visibleWhen": {
+        "kind": "All",
+        "conditions": [
+          {
+            "kind": "Field",
+            "fieldKey": "operation",
+            "operator": "In",
+            "values": [
+              "common"
+            ]
+          },
+          {
+            "kind": "Field",
+            "fieldKey": "commonCategory",
+            "operator": "In",
+            "values": [
+              "geometry"
+            ]
+          },
+          {
+            "kind": "Field",
+            "fieldKey": "geometryOperation",
+            "operator": "In",
+            "values": [
+              "geometry.create_line"
+            ]
+          }
+        ]
+      },
+      "condition": "(operation 为 \"common\" 且 commonCategory 为 \"geometry\" 且 geometryOperation 为 \"geometry.create_line\")",
       "defaultValue": "10",
+      "defaultValueRaw": 10,
       "required": false,
       "variableMode": "UseVarOrInput",
-      "condition": "",
-      "description": ""
+      "isControlField": false
     },
     {
       "key": "commonY2",
       "name": "终点 Y",
       "type": "Number",
+      "description": "",
+      "isAdvanced": false,
+      "validForList": [],
+      "invalidForList": [],
+      "visibleWhen": {
+        "kind": "All",
+        "conditions": [
+          {
+            "kind": "Field",
+            "fieldKey": "operation",
+            "operator": "In",
+            "values": [
+              "common"
+            ]
+          },
+          {
+            "kind": "Field",
+            "fieldKey": "commonCategory",
+            "operator": "In",
+            "values": [
+              "geometry"
+            ]
+          },
+          {
+            "kind": "Field",
+            "fieldKey": "geometryOperation",
+            "operator": "In",
+            "values": [
+              "geometry.create_line"
+            ]
+          }
+        ]
+      },
+      "condition": "(operation 为 \"common\" 且 commonCategory 为 \"geometry\" 且 geometryOperation 为 \"geometry.create_line\")",
       "defaultValue": "0",
+      "defaultValueRaw": 0,
       "required": false,
       "variableMode": "UseVarOrInput",
-      "condition": "",
-      "description": ""
+      "isControlField": false
     },
     {
       "key": "commonZ2",
       "name": "终点 Z",
       "type": "Number",
+      "description": "",
+      "isAdvanced": false,
+      "validForList": [],
+      "invalidForList": [],
+      "visibleWhen": {
+        "kind": "All",
+        "conditions": [
+          {
+            "kind": "Field",
+            "fieldKey": "operation",
+            "operator": "In",
+            "values": [
+              "common"
+            ]
+          },
+          {
+            "kind": "Field",
+            "fieldKey": "commonCategory",
+            "operator": "In",
+            "values": [
+              "geometry"
+            ]
+          },
+          {
+            "kind": "Field",
+            "fieldKey": "geometryOperation",
+            "operator": "In",
+            "values": [
+              "geometry.create_line"
+            ]
+          }
+        ]
+      },
+      "condition": "(operation 为 \"common\" 且 commonCategory 为 \"geometry\" 且 geometryOperation 为 \"geometry.create_line\")",
       "defaultValue": "0",
+      "defaultValueRaw": 0,
       "required": false,
       "variableMode": "UseVarOrInput",
-      "condition": "",
-      "description": ""
+      "isControlField": false
     },
     {
       "key": "commonX",
       "name": "原点/圆心 X",
       "type": "Number",
+      "description": "",
+      "isAdvanced": false,
+      "validForList": [],
+      "invalidForList": [],
+      "visibleWhen": {
+        "kind": "All",
+        "conditions": [
+          {
+            "kind": "Field",
+            "fieldKey": "operation",
+            "operator": "In",
+            "values": [
+              "common"
+            ]
+          },
+          {
+            "kind": "Field",
+            "fieldKey": "commonCategory",
+            "operator": "In",
+            "values": [
+              "geometry"
+            ]
+          },
+          {
+            "kind": "Field",
+            "fieldKey": "geometryOperation",
+            "operator": "In",
+            "values": [
+              "geometry.create_point",
+              "geometry.create_circle",
+              "geometry.rotate_selected",
+              "geometry.scale_selected"
+            ]
+          }
+        ]
+      },
+      "condition": "(operation 为 \"common\" 且 commonCategory 为 \"geometry\" 且 geometryOperation 为 \"geometry.create_point\"、\"geometry.create_circle\"、\"geometry.rotate_selected\"、\"geometry.scale_selected\")",
       "defaultValue": "0",
+      "defaultValueRaw": 0,
       "required": false,
       "variableMode": "UseVarOrInput",
-      "condition": "",
-      "description": ""
+      "isControlField": false
     },
     {
       "key": "commonY",
       "name": "原点/圆心 Y",
       "type": "Number",
+      "description": "",
+      "isAdvanced": false,
+      "validForList": [],
+      "invalidForList": [],
+      "visibleWhen": {
+        "kind": "All",
+        "conditions": [
+          {
+            "kind": "Field",
+            "fieldKey": "operation",
+            "operator": "In",
+            "values": [
+              "common"
+            ]
+          },
+          {
+            "kind": "Field",
+            "fieldKey": "commonCategory",
+            "operator": "In",
+            "values": [
+              "geometry"
+            ]
+          },
+          {
+            "kind": "Field",
+            "fieldKey": "geometryOperation",
+            "operator": "In",
+            "values": [
+              "geometry.create_point",
+              "geometry.create_circle",
+              "geometry.rotate_selected",
+              "geometry.scale_selected"
+            ]
+          }
+        ]
+      },
+      "condition": "(operation 为 \"common\" 且 commonCategory 为 \"geometry\" 且 geometryOperation 为 \"geometry.create_point\"、\"geometry.create_circle\"、\"geometry.rotate_selected\"、\"geometry.scale_selected\")",
       "defaultValue": "0",
+      "defaultValueRaw": 0,
       "required": false,
       "variableMode": "UseVarOrInput",
-      "condition": "",
-      "description": ""
+      "isControlField": false
     },
     {
       "key": "commonZ",
       "name": "原点/圆心 Z",
       "type": "Number",
+      "description": "",
+      "isAdvanced": false,
+      "validForList": [],
+      "invalidForList": [],
+      "visibleWhen": {
+        "kind": "All",
+        "conditions": [
+          {
+            "kind": "Field",
+            "fieldKey": "operation",
+            "operator": "In",
+            "values": [
+              "common"
+            ]
+          },
+          {
+            "kind": "Field",
+            "fieldKey": "commonCategory",
+            "operator": "In",
+            "values": [
+              "geometry"
+            ]
+          },
+          {
+            "kind": "Field",
+            "fieldKey": "geometryOperation",
+            "operator": "In",
+            "values": [
+              "geometry.create_point",
+              "geometry.create_circle",
+              "geometry.rotate_selected",
+              "geometry.scale_selected"
+            ]
+          }
+        ]
+      },
+      "condition": "(operation 为 \"common\" 且 commonCategory 为 \"geometry\" 且 geometryOperation 为 \"geometry.create_point\"、\"geometry.create_circle\"、\"geometry.rotate_selected\"、\"geometry.scale_selected\")",
       "defaultValue": "0",
+      "defaultValueRaw": 0,
       "required": false,
       "variableMode": "UseVarOrInput",
-      "condition": "",
-      "description": ""
+      "isControlField": false
     },
     {
       "key": "circleRadius",
       "name": "半径",
       "type": "Number",
+      "description": "",
+      "isAdvanced": false,
+      "validForList": [],
+      "invalidForList": [],
+      "visibleWhen": {
+        "kind": "All",
+        "conditions": [
+          {
+            "kind": "Field",
+            "fieldKey": "operation",
+            "operator": "In",
+            "values": [
+              "common"
+            ]
+          },
+          {
+            "kind": "Field",
+            "fieldKey": "commonCategory",
+            "operator": "In",
+            "values": [
+              "geometry"
+            ]
+          },
+          {
+            "kind": "Field",
+            "fieldKey": "geometryOperation",
+            "operator": "In",
+            "values": [
+              "geometry.create_circle"
+            ]
+          }
+        ]
+      },
+      "condition": "(operation 为 \"common\" 且 commonCategory 为 \"geometry\" 且 geometryOperation 为 \"geometry.create_circle\")",
       "defaultValue": "10",
+      "defaultValueRaw": 10,
       "required": false,
       "variableMode": "UseVarOrInput",
-      "condition": "",
-      "description": ""
+      "isControlField": false
     },
     {
       "key": "moveX",
       "name": "移动 X",
       "type": "Number",
+      "description": "",
+      "isAdvanced": false,
+      "validForList": [],
+      "invalidForList": [],
+      "visibleWhen": {
+        "kind": "All",
+        "conditions": [
+          {
+            "kind": "Field",
+            "fieldKey": "operation",
+            "operator": "In",
+            "values": [
+              "common"
+            ]
+          },
+          {
+            "kind": "Field",
+            "fieldKey": "commonCategory",
+            "operator": "In",
+            "values": [
+              "geometry"
+            ]
+          },
+          {
+            "kind": "Field",
+            "fieldKey": "geometryOperation",
+            "operator": "In",
+            "values": [
+              "geometry.move_selected"
+            ]
+          }
+        ]
+      },
+      "condition": "(operation 为 \"common\" 且 commonCategory 为 \"geometry\" 且 geometryOperation 为 \"geometry.move_selected\")",
       "defaultValue": "10",
+      "defaultValueRaw": 10,
       "required": false,
       "variableMode": "UseVarOrInput",
-      "condition": "",
-      "description": ""
+      "isControlField": false
     },
     {
       "key": "moveY",
       "name": "移动 Y",
       "type": "Number",
+      "description": "",
+      "isAdvanced": false,
+      "validForList": [],
+      "invalidForList": [],
+      "visibleWhen": {
+        "kind": "All",
+        "conditions": [
+          {
+            "kind": "Field",
+            "fieldKey": "operation",
+            "operator": "In",
+            "values": [
+              "common"
+            ]
+          },
+          {
+            "kind": "Field",
+            "fieldKey": "commonCategory",
+            "operator": "In",
+            "values": [
+              "geometry"
+            ]
+          },
+          {
+            "kind": "Field",
+            "fieldKey": "geometryOperation",
+            "operator": "In",
+            "values": [
+              "geometry.move_selected"
+            ]
+          }
+        ]
+      },
+      "condition": "(operation 为 \"common\" 且 commonCategory 为 \"geometry\" 且 geometryOperation 为 \"geometry.move_selected\")",
       "defaultValue": "0",
+      "defaultValueRaw": 0,
       "required": false,
       "variableMode": "UseVarOrInput",
-      "condition": "",
-      "description": ""
+      "isControlField": false
     },
     {
       "key": "moveZ",
       "name": "移动 Z",
       "type": "Number",
+      "description": "",
+      "isAdvanced": false,
+      "validForList": [],
+      "invalidForList": [],
+      "visibleWhen": {
+        "kind": "All",
+        "conditions": [
+          {
+            "kind": "Field",
+            "fieldKey": "operation",
+            "operator": "In",
+            "values": [
+              "common"
+            ]
+          },
+          {
+            "kind": "Field",
+            "fieldKey": "commonCategory",
+            "operator": "In",
+            "values": [
+              "geometry"
+            ]
+          },
+          {
+            "kind": "Field",
+            "fieldKey": "geometryOperation",
+            "operator": "In",
+            "values": [
+              "geometry.move_selected"
+            ]
+          }
+        ]
+      },
+      "condition": "(operation 为 \"common\" 且 commonCategory 为 \"geometry\" 且 geometryOperation 为 \"geometry.move_selected\")",
       "defaultValue": "0",
+      "defaultValueRaw": 0,
       "required": false,
       "variableMode": "UseVarOrInput",
-      "condition": "",
-      "description": ""
+      "isControlField": false
     },
     {
       "key": "angleDegrees",
       "name": "旋转角度（度）",
       "type": "Number",
+      "description": "",
+      "isAdvanced": false,
+      "validForList": [],
+      "invalidForList": [],
+      "visibleWhen": {
+        "kind": "All",
+        "conditions": [
+          {
+            "kind": "Field",
+            "fieldKey": "operation",
+            "operator": "In",
+            "values": [
+              "common"
+            ]
+          },
+          {
+            "kind": "Field",
+            "fieldKey": "commonCategory",
+            "operator": "In",
+            "values": [
+              "geometry"
+            ]
+          },
+          {
+            "kind": "Field",
+            "fieldKey": "geometryOperation",
+            "operator": "In",
+            "values": [
+              "geometry.rotate_selected"
+            ]
+          }
+        ]
+      },
+      "condition": "(operation 为 \"common\" 且 commonCategory 为 \"geometry\" 且 geometryOperation 为 \"geometry.rotate_selected\")",
       "defaultValue": "90",
+      "defaultValueRaw": 90,
       "required": false,
       "variableMode": "UseVarOrInput",
-      "condition": "",
-      "description": ""
+      "isControlField": false
     },
     {
       "key": "scaleFactor",
       "name": "缩放比例",
       "type": "Number",
+      "description": "",
+      "isAdvanced": false,
+      "validForList": [],
+      "invalidForList": [],
+      "visibleWhen": {
+        "kind": "All",
+        "conditions": [
+          {
+            "kind": "Field",
+            "fieldKey": "operation",
+            "operator": "In",
+            "values": [
+              "common"
+            ]
+          },
+          {
+            "kind": "Field",
+            "fieldKey": "commonCategory",
+            "operator": "In",
+            "values": [
+              "geometry"
+            ]
+          },
+          {
+            "kind": "Field",
+            "fieldKey": "geometryOperation",
+            "operator": "In",
+            "values": [
+              "geometry.scale_selected"
+            ]
+          }
+        ]
+      },
+      "condition": "(operation 为 \"common\" 且 commonCategory 为 \"geometry\" 且 geometryOperation 为 \"geometry.scale_selected\")",
       "defaultValue": "2",
+      "defaultValueRaw": 2,
       "required": false,
       "variableMode": "UseVarOrInput",
-      "condition": "",
-      "description": ""
+      "isControlField": false
     },
     {
       "key": "ftQuery",
       "name": "搜索文字",
       "type": "Text",
+      "description": "按命令名、界面名称或分类搜索；留空返回前 100 项。",
+      "isAdvanced": false,
+      "validForList": [],
+      "invalidForList": [],
+      "visibleWhen": {
+        "kind": "All",
+        "conditions": [
+          {
+            "kind": "Field",
+            "fieldKey": "operation",
+            "operator": "In",
+            "values": [
+              "common"
+            ]
+          },
+          {
+            "kind": "Field",
+            "fieldKey": "commonCategory",
+            "operator": "In",
+            "values": [
+              "ui"
+            ]
+          },
+          {
+            "kind": "Field",
+            "fieldKey": "uiOperation",
+            "operator": "In",
+            "values": [
+              "ui.ft.list"
+            ]
+          }
+        ]
+      },
+      "condition": "(operation 为 \"common\" 且 commonCategory 为 \"ui\" 且 uiOperation 为 \"ui.ft.list\")",
       "defaultValue": "",
+      "defaultValueRaw": "",
       "required": false,
       "variableMode": "UseVarOrInput",
-      "condition": "",
-      "description": "按命令名、界面名称或分类搜索；留空返回前 100 项。"
+      "isControlField": false
     },
     {
       "key": "ftCommand",
       "name": "Function Table 命令",
       "type": "Text",
+      "description": "先用“搜索可调用命令”查找命令名；部分命令会让 Mastercam 进入必须人工完成或取消的交互任务。",
+      "isAdvanced": false,
+      "validForList": [],
+      "invalidForList": [],
+      "visibleWhen": {
+        "kind": "All",
+        "conditions": [
+          {
+            "kind": "Field",
+            "fieldKey": "operation",
+            "operator": "In",
+            "values": [
+              "common"
+            ]
+          },
+          {
+            "kind": "Field",
+            "fieldKey": "commonCategory",
+            "operator": "In",
+            "values": [
+              "ui"
+            ]
+          },
+          {
+            "kind": "Field",
+            "fieldKey": "uiOperation",
+            "operator": "In",
+            "values": [
+              "ui.ft.run"
+            ]
+          }
+        ]
+      },
+      "condition": "(operation 为 \"common\" 且 commonCategory 为 \"ui\" 且 uiOperation 为 \"ui.ft.run\")",
       "defaultValue": "GSUnSelectAll",
+      "defaultValueRaw": "GSUnSelectAll",
       "required": true,
       "variableMode": "UseVarOrInput",
-      "condition": "",
-      "description": "先用“搜索可调用命令”查找命令名；部分命令会让 Mastercam 进入必须人工完成或取消的交互任务。"
+      "isControlField": false
     },
     {
       "key": "waitForFtReturn",
       "name": "等待界面命令完成",
       "type": "Boolean",
+      "description": "会打开窗口或进入交互状态的命令应关闭此项。",
+      "isAdvanced": false,
+      "validForList": [],
+      "invalidForList": [],
+      "visibleWhen": {
+        "kind": "All",
+        "conditions": [
+          {
+            "kind": "Field",
+            "fieldKey": "operation",
+            "operator": "In",
+            "values": [
+              "common"
+            ]
+          },
+          {
+            "kind": "Field",
+            "fieldKey": "commonCategory",
+            "operator": "In",
+            "values": [
+              "ui"
+            ]
+          },
+          {
+            "kind": "Field",
+            "fieldKey": "uiOperation",
+            "operator": "In",
+            "values": [
+              "ui.ft.run"
+            ]
+          }
+        ]
+      },
+      "condition": "(operation 为 \"common\" 且 commonCategory 为 \"ui\" 且 uiOperation 为 \"ui.ft.run\")",
       "defaultValue": "false",
+      "defaultValueRaw": false,
       "required": false,
       "variableMode": "Input",
-      "condition": "",
-      "description": "会打开窗口或进入交互状态的命令应关闭此项。"
+      "isControlField": false
     },
     {
       "key": "acknowledgeUiRisk",
       "name": "我确认执行该界面命令",
       "type": "Boolean",
+      "description": "",
+      "isAdvanced": false,
+      "validForList": [],
+      "invalidForList": [],
+      "visibleWhen": {
+        "kind": "All",
+        "conditions": [
+          {
+            "kind": "Field",
+            "fieldKey": "operation",
+            "operator": "In",
+            "values": [
+              "common"
+            ]
+          },
+          {
+            "kind": "Field",
+            "fieldKey": "commonCategory",
+            "operator": "In",
+            "values": [
+              "ui"
+            ]
+          },
+          {
+            "kind": "Field",
+            "fieldKey": "uiOperation",
+            "operator": "In",
+            "values": [
+              "ui.ft.run"
+            ]
+          }
+        ]
+      },
+      "condition": "(operation 为 \"common\" 且 commonCategory 为 \"ui\" 且 uiOperation 为 \"ui.ft.run\")",
       "defaultValue": "false",
+      "defaultValueRaw": false,
       "required": false,
       "variableMode": "Input",
-      "condition": "",
-      "description": ""
+      "isControlField": false
     },
     {
       "key": "ribbonPath",
       "name": "Ribbon 命令路径",
       "type": "Text",
+      "description": "仅 Mastercam 2027，例如 FileTab.Save、Selection.SelectAllEntities。",
+      "isAdvanced": false,
+      "validForList": [
+        "ui.ribbon.run"
+      ],
+      "invalidForList": [],
+      "condition": "仅：ui.ribbon.run",
       "defaultValue": "FileTab.Save",
+      "defaultValueRaw": "FileTab.Save",
       "required": true,
       "variableMode": "UseVarOrInput",
-      "condition": "仅：ui.ribbon.run",
-      "description": "仅 Mastercam 2027，例如 FileTab.Save、Selection.SelectAllEntities。"
+      "isControlField": false
     },
     {
       "key": "acknowledgeRibbonRisk",
       "name": "我确认执行该 Ribbon 命令",
       "type": "Boolean",
+      "description": "",
+      "isAdvanced": false,
+      "validForList": [
+        "ui.ribbon.run"
+      ],
+      "invalidForList": [],
+      "condition": "仅：ui.ribbon.run",
       "defaultValue": "false",
+      "defaultValueRaw": false,
       "required": false,
       "variableMode": "Input",
-      "condition": "仅：ui.ribbon.run",
-      "description": ""
+      "isControlField": false
     },
     {
       "key": "filePath",
       "name": "文件路径",
       "type": "Text",
+      "description": "另存为使用 .mcam，图形区图片使用 .bmp，NET-Script 使用 .csx；均须填写绝对路径。",
+      "isAdvanced": false,
+      "validForList": [
+        "document.save_as",
+        "view.capture_bitmap",
+        "script.run_net_file"
+      ],
+      "invalidForList": [],
+      "condition": "仅：document.save_as, view.capture_bitmap, script.run_net_file",
       "defaultValue": "",
+      "defaultValueRaw": "",
       "required": true,
       "variableMode": "UseVarOrInput",
-      "condition": "仅：document.save_as, view.capture_bitmap, script.run_net_file",
-      "description": "另存为使用 .mcam，图形区图片使用 .bmp，NET-Script 使用 .csx；均须填写绝对路径。"
+      "isControlField": false
     },
     {
       "key": "overwriteFile",
       "name": "允许覆盖已有文件",
       "type": "Boolean",
+      "description": "",
+      "isAdvanced": false,
+      "validForList": [
+        "document.save_as",
+        "view.capture_bitmap"
+      ],
+      "invalidForList": [],
+      "condition": "仅：document.save_as, view.capture_bitmap",
       "defaultValue": "false",
+      "defaultValueRaw": false,
       "required": false,
       "variableMode": "Input",
-      "condition": "仅：document.save_as, view.capture_bitmap",
-      "description": ""
+      "isControlField": false
     },
     {
       "key": "captureColor",
       "name": "彩色图片",
       "type": "Boolean",
+      "description": "",
+      "isAdvanced": true,
+      "validForList": [
+        "view.capture_bitmap"
+      ],
+      "invalidForList": [],
+      "condition": "仅：view.capture_bitmap",
       "defaultValue": "true",
+      "defaultValueRaw": true,
       "required": false,
       "variableMode": "Input",
-      "condition": "仅：view.capture_bitmap",
-      "description": ""
+      "isControlField": false
     },
     {
       "key": "showViewAxes",
       "name": "显示视图坐标轴",
       "type": "Boolean",
+      "description": "",
+      "isAdvanced": true,
+      "validForList": [
+        "view.capture_bitmap"
+      ],
+      "invalidForList": [],
+      "condition": "仅：view.capture_bitmap",
       "defaultValue": "true",
+      "defaultValueRaw": true,
       "required": false,
       "variableMode": "Input",
-      "condition": "仅：view.capture_bitmap",
-      "description": ""
+      "isControlField": false
     },
     {
       "key": "showWcsAxes",
       "name": "显示 WCS 坐标轴",
       "type": "Boolean",
+      "description": "",
+      "isAdvanced": true,
+      "validForList": [
+        "view.capture_bitmap"
+      ],
+      "invalidForList": [],
+      "condition": "仅：view.capture_bitmap",
       "defaultValue": "true",
+      "defaultValueRaw": true,
       "required": false,
       "variableMode": "Input",
-      "condition": "仅：view.capture_bitmap",
-      "description": ""
+      "isControlField": false
     },
     {
       "key": "levelNumber",
       "name": "图层编号",
       "type": "Integer",
+      "description": "",
+      "isAdvanced": false,
+      "validForList": [
+        "level.set_active",
+        "level.set_visible"
+      ],
+      "invalidForList": [],
+      "condition": "仅：level.set_active, level.set_visible",
       "defaultValue": "1",
+      "defaultValueRaw": 1,
       "required": true,
       "variableMode": "Input",
-      "condition": "仅：level.set_active, level.set_visible",
-      "description": ""
+      "isControlField": false
     },
     {
       "key": "levelVisible",
       "name": "图层可见",
       "type": "Boolean",
+      "description": "",
+      "isAdvanced": false,
+      "validForList": [
+        "level.set_visible"
+      ],
+      "invalidForList": [],
+      "condition": "仅：level.set_visible",
       "defaultValue": "true",
+      "defaultValueRaw": true,
       "required": false,
       "variableMode": "Input",
-      "condition": "仅：level.set_visible",
-      "description": ""
+      "isControlField": false
     },
     {
       "key": "scriptCode",
       "name": "C# NET-Script",
       "type": "Text",
+      "description": "在目标 Mastercam 进程主线程执行，不提供安全沙箱，也不能强制中断已经开始运行的脚本；只运行可信代码。",
+      "isAdvanced": false,
+      "validForList": [
+        "script.evaluate_net"
+      ],
+      "invalidForList": [],
+      "condition": "仅：script.evaluate_net",
       "defaultValue": "// 使用当前 Mastercam 自带 NET-Scripting 支持的 .csx 语法",
+      "defaultValueRaw": "// 使用当前 Mastercam 自带 NET-Scripting 支持的 .csx 语法",
       "required": true,
       "variableMode": "UseVarOrInput",
-      "condition": "仅：script.evaluate_net",
-      "description": "在目标 Mastercam 进程主线程执行，不提供安全沙箱，也不能强制中断已经开始运行的脚本；只运行可信代码。"
+      "isControlField": false
     },
     {
       "key": "acknowledgeScriptRisk",
       "name": "我确认脚本可信",
       "type": "Boolean",
+      "description": "脚本拥有当前用户权限并可调用 Mastercam API；执行脚本前必须明确启用。",
+      "isAdvanced": false,
+      "validForList": [
+        "script.evaluate_net",
+        "script.run_net_file"
+      ],
+      "invalidForList": [],
+      "condition": "仅：script.evaluate_net, script.run_net_file",
       "defaultValue": "false",
+      "defaultValueRaw": false,
       "required": false,
       "variableMode": "Input",
-      "condition": "仅：script.evaluate_net, script.run_net_file",
-      "description": "脚本拥有当前用户权限并可调用 Mastercam API；执行脚本前必须明确启用。"
+      "isControlField": false
     },
     {
       "key": "x1",
       "name": "起点 X",
       "type": "Number",
+      "description": "",
+      "isAdvanced": false,
+      "validForList": [
+        "geometry.create_line"
+      ],
+      "invalidForList": [],
+      "condition": "仅：geometry.create_line",
       "defaultValue": "0",
+      "defaultValueRaw": 0,
       "required": false,
       "variableMode": "UseVarOrInput",
-      "condition": "仅：geometry.create_line",
-      "description": ""
+      "isControlField": false
     },
     {
       "key": "y1",
       "name": "起点 Y",
       "type": "Number",
+      "description": "",
+      "isAdvanced": false,
+      "validForList": [
+        "geometry.create_line"
+      ],
+      "invalidForList": [],
+      "condition": "仅：geometry.create_line",
       "defaultValue": "0",
+      "defaultValueRaw": 0,
       "required": false,
       "variableMode": "UseVarOrInput",
-      "condition": "仅：geometry.create_line",
-      "description": ""
+      "isControlField": false
     },
     {
       "key": "z1",
       "name": "起点 Z",
       "type": "Number",
+      "description": "",
+      "isAdvanced": false,
+      "validForList": [
+        "geometry.create_line"
+      ],
+      "invalidForList": [],
+      "condition": "仅：geometry.create_line",
       "defaultValue": "0",
+      "defaultValueRaw": 0,
       "required": false,
       "variableMode": "UseVarOrInput",
-      "condition": "仅：geometry.create_line",
-      "description": ""
+      "isControlField": false
     },
     {
       "key": "x2",
       "name": "终点 X",
       "type": "Number",
+      "description": "",
+      "isAdvanced": false,
+      "validForList": [
+        "geometry.create_line"
+      ],
+      "invalidForList": [],
+      "condition": "仅：geometry.create_line",
       "defaultValue": "10",
+      "defaultValueRaw": 10,
       "required": false,
       "variableMode": "UseVarOrInput",
-      "condition": "仅：geometry.create_line",
-      "description": ""
+      "isControlField": false
     },
     {
       "key": "y2",
       "name": "终点 Y",
       "type": "Number",
+      "description": "",
+      "isAdvanced": false,
+      "validForList": [
+        "geometry.create_line"
+      ],
+      "invalidForList": [],
+      "condition": "仅：geometry.create_line",
       "defaultValue": "0",
+      "defaultValueRaw": 0,
       "required": false,
       "variableMode": "UseVarOrInput",
-      "condition": "仅：geometry.create_line",
-      "description": ""
+      "isControlField": false
     },
     {
       "key": "z2",
       "name": "终点 Z",
       "type": "Number",
+      "description": "",
+      "isAdvanced": false,
+      "validForList": [
+        "geometry.create_line"
+      ],
+      "invalidForList": [],
+      "condition": "仅：geometry.create_line",
       "defaultValue": "0",
+      "defaultValueRaw": 0,
       "required": false,
       "variableMode": "UseVarOrInput",
-      "condition": "仅：geometry.create_line",
-      "description": ""
+      "isControlField": false
     },
     {
       "key": "commandName",
       "name": "Bridge 命令名称",
       "type": "Text",
+      "description": "",
+      "isAdvanced": false,
+      "validForList": [
+        "command.custom"
+      ],
+      "invalidForList": [],
+      "condition": "仅：command.custom",
       "defaultValue": "",
+      "defaultValueRaw": "",
       "required": true,
       "variableMode": "UseVarOrInput",
-      "condition": "仅：command.custom",
-      "description": ""
+      "isControlField": false
     },
     {
       "key": "argumentsJson",
       "name": "参数(JSON 对象)",
       "type": "Text",
+      "description": "",
+      "isAdvanced": false,
+      "validForList": [
+        "command.custom"
+      ],
+      "invalidForList": [],
+      "condition": "仅：command.custom",
       "defaultValue": "{}",
+      "defaultValueRaw": "{}",
       "required": false,
       "variableMode": "UseVarOrInput",
-      "condition": "仅：command.custom",
-      "description": ""
+      "isControlField": false
     },
     {
       "key": "waitMs",
       "name": "最长等待时间(ms)",
       "type": "Number",
+      "description": "",
+      "isAdvanced": true,
+      "validForList": [],
+      "invalidForList": [],
+      "condition": "",
       "defaultValue": "30000",
+      "defaultValueRaw": 30000,
       "required": true,
       "variableMode": "Input",
-      "condition": "",
-      "description": ""
+      "isControlField": false
     },
     {
       "key": "stopIfFail",
       "name": "失败后停止",
       "type": "Boolean",
+      "description": "失败后是否停止动作",
+      "isAdvanced": false,
+      "validForList": [],
+      "invalidForList": [],
+      "condition": "",
       "defaultValue": "true",
+      "defaultValueRaw": true,
       "required": false,
       "variableMode": "Input",
-      "condition": "",
-      "description": "失败后是否停止动作"
+      "isControlField": false
     }
   ],
   "outputs": [
@@ -618,29 +1994,41 @@
       "key": "isSuccess",
       "name": "是否成功",
       "type": "Boolean",
-      "condition": "",
-      "description": "操作是否成功"
+      "description": "操作是否成功",
+      "isAdvanced": false,
+      "validForList": [],
+      "invalidForList": [],
+      "condition": ""
     },
     {
       "key": "output",
       "name": "命令结果",
       "type": "Text",
-      "condition": "",
-      "description": "Mastercam 返回的 JSON 结果。"
+      "description": "Mastercam 返回的 JSON 结果。",
+      "isAdvanced": false,
+      "validForList": [],
+      "invalidForList": [],
+      "condition": ""
     },
     {
       "key": "count",
       "name": "数量",
       "type": "Integer",
-      "condition": "",
-      "description": ""
+      "description": "",
+      "isAdvanced": false,
+      "validForList": [],
+      "invalidForList": [],
+      "condition": ""
     },
     {
       "key": "entityIds",
       "name": "实体 ID 列表",
       "type": "List",
-      "condition": "",
-      "description": ""
+      "description": "",
+      "isAdvanced": false,
+      "validForList": [],
+      "invalidForList": [],
+      "condition": ""
     }
   ],
   "selections": {
@@ -970,5 +2358,5 @@
       ]
     }
   },
-  "sourceFileName": "sys_mastercamcontrol_Mastercam控制.md"
+  "sourceFileName": "catalog.json"
 }

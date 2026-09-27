@@ -16,21 +16,31 @@
       "key": "process",
       "name": "进程名称/pid",
       "type": "Text",
+      "description": "请输入要检查的进程名或pid。进程名通常为程序文件名去掉.exe后缀。",
+      "isAdvanced": false,
+      "validForList": [],
+      "invalidForList": [],
+      "condition": "",
       "defaultValue": "",
+      "defaultValueRaw": "",
       "required": true,
       "variableMode": "UseVarOrInput",
-      "condition": "",
-      "description": "请输入要检查的进程名或pid。进程名通常为程序文件名去掉.exe后缀。"
+      "isControlField": false
     },
     {
       "key": "stopIfFail",
       "name": "失败后停止",
       "type": "Boolean",
+      "description": "失败后是否停止动作",
+      "isAdvanced": false,
+      "validForList": [],
+      "invalidForList": [],
+      "condition": "",
       "defaultValue": "true",
+      "defaultValueRaw": true,
       "required": false,
       "variableMode": "Input",
-      "condition": "",
-      "description": "失败后是否停止动作"
+      "isControlField": false
     }
   ],
   "outputs": [
@@ -38,59 +48,83 @@
       "key": "isSuccess",
       "name": "操作是否成功",
       "type": "Boolean",
-      "condition": "",
-      "description": "可能会因为无法访问高权限进程等原因而失败。进程未启动不会导致操作失败。"
+      "description": "可能会因为无法访问高权限进程等原因而失败。进程未启动不会导致操作失败。",
+      "isAdvanced": false,
+      "validForList": [],
+      "invalidForList": [],
+      "condition": ""
     },
     {
       "key": "isExists",
       "name": "是否运行",
       "type": "Boolean",
-      "condition": "",
-      "description": "指定的进程是否运行。如果已运行，返回True，否则返回False"
+      "description": "指定的进程是否运行。如果已运行，返回True，否则返回False",
+      "isAdvanced": false,
+      "validForList": [],
+      "invalidForList": [],
+      "condition": ""
     },
     {
       "key": "pid",
       "name": "进程ID",
       "type": "Integer",
-      "condition": "",
-      "description": "找到的第一个匹配进程的ID"
+      "description": "找到的第一个匹配进程的ID",
+      "isAdvanced": false,
+      "validForList": [],
+      "invalidForList": [],
+      "condition": ""
     },
     {
       "key": "pidList",
       "name": "所有进程ID列表",
       "type": "List",
-      "condition": "",
-      "description": "具有相同进程名的所有进程的ID列表"
+      "description": "具有相同进程名的所有进程的ID列表",
+      "isAdvanced": false,
+      "validForList": [],
+      "invalidForList": [],
+      "condition": ""
     },
     {
       "key": "path",
       "name": "程序路径",
       "type": "Text",
-      "condition": "",
-      "description": "进程的应用程序路径"
+      "description": "进程的应用程序路径",
+      "isAdvanced": false,
+      "validForList": [],
+      "invalidForList": [],
+      "condition": ""
     },
     {
       "key": "mainWinHandle",
       "name": "主窗口句柄",
       "type": "Integer",
-      "condition": "",
-      "description": ""
+      "description": "",
+      "isAdvanced": false,
+      "validForList": [],
+      "invalidForList": [],
+      "condition": ""
     },
     {
       "key": "mainwinTitle",
       "name": "主窗口标题",
       "type": "Text",
-      "condition": "",
-      "description": ""
+      "description": "",
+      "isAdvanced": false,
+      "validForList": [],
+      "invalidForList": [],
+      "condition": ""
     },
     {
       "key": "startTime",
       "name": "启动时间",
       "type": "DateTime",
-      "condition": "",
-      "description": ""
+      "description": "",
+      "isAdvanced": false,
+      "validForList": [],
+      "invalidForList": [],
+      "condition": ""
     }
   ],
   "selections": {},
-  "sourceFileName": "sys_checkProcessExists_检查程序已启动_获取进程信息.md"
+  "sourceFileName": "catalog.json"
 }

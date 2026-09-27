@@ -16,81 +16,134 @@
       "key": "operation",
       "name": "操作",
       "type": "Enum",
+      "description": "",
+      "isAdvanced": false,
+      "validForList": [],
+      "invalidForList": [],
+      "condition": "",
       "defaultValue": "toString",
+      "defaultValueRaw": "toString",
       "required": true,
       "variableMode": "Input",
-      "condition": "",
-      "description": ""
+      "isControlField": true
     },
     {
       "key": "srcNumber",
       "name": "原始数字",
       "type": "Number",
+      "description": "",
+      "isAdvanced": false,
+      "validForList": [
+        "toString",
+        "toInteger"
+      ],
+      "invalidForList": [],
+      "condition": "仅：toString, toInteger",
       "defaultValue": "0.0",
+      "defaultValueRaw": 0,
       "required": false,
       "variableMode": "UseVarOrInput",
-      "condition": "仅：toString, toInteger",
-      "description": ""
+      "isControlField": false
     },
     {
       "key": "decimalPlace",
       "name": "保留小数位",
       "type": "Integer",
+      "description": "",
+      "isAdvanced": false,
+      "validForList": [
+        "toString"
+      ],
+      "invalidForList": [],
+      "condition": "仅：toString",
       "defaultValue": "2",
+      "defaultValueRaw": 2,
       "required": false,
       "variableMode": "UseVarOrInput",
-      "condition": "仅：toString",
-      "description": ""
+      "isControlField": false
     },
     {
       "key": "roundingMethod",
       "name": "舍入方式",
       "type": "Enum",
+      "description": "",
+      "isAdvanced": false,
+      "validForList": [
+        "toString"
+      ],
+      "invalidForList": [],
+      "condition": "仅：toString",
       "defaultValue": "Round45",
+      "defaultValueRaw": "Round45",
       "required": false,
       "variableMode": "Input",
-      "condition": "仅：toString",
-      "description": ""
+      "isControlField": false
     },
     {
       "key": "toIntegerMethod",
       "name": "取整方式",
       "type": "Enum",
+      "description": "",
+      "isAdvanced": false,
+      "validForList": [
+        "toInteger"
+      ],
+      "invalidForList": [],
+      "condition": "仅：toInteger",
       "defaultValue": "Round45",
+      "defaultValueRaw": "Round45",
       "required": false,
       "variableMode": "Input",
-      "condition": "仅：toInteger",
-      "description": ""
+      "isControlField": false
     },
     {
       "key": "srcNumberStr",
       "name": "原始数字(文本)",
       "type": "Text",
+      "description": "",
+      "isAdvanced": false,
+      "validForList": [
+        "baseConversion"
+      ],
+      "invalidForList": [],
+      "condition": "仅：baseConversion",
       "defaultValue": "0",
+      "defaultValueRaw": "0",
       "required": false,
       "variableMode": "UseVarOrInput",
-      "condition": "仅：baseConversion",
-      "description": ""
+      "isControlField": false
     },
     {
       "key": "srcBase",
       "name": "原始数字进制",
       "type": "Integer",
+      "description": "可选0/2/8/16。0为自动判断：全由0、1构成判断为二进制，0x开始或包含A-D判断为16进制，其它判断为10进制。",
+      "isAdvanced": false,
+      "validForList": [
+        "baseConversion"
+      ],
+      "invalidForList": [],
+      "condition": "仅：baseConversion",
       "defaultValue": "0",
+      "defaultValueRaw": 0,
       "required": false,
       "variableMode": "UseVarOrInput",
-      "condition": "仅：baseConversion",
-      "description": "可选0/2/8/16。0为自动判断：全由0、1构成判断为二进制，0x开始或包含A-D判断为16进制，其它判断为10进制。"
+      "isControlField": false
     },
     {
       "key": "stopIfFail",
       "name": "失败后停止",
       "type": "Boolean",
+      "description": "失败后是否停止动作",
+      "isAdvanced": false,
+      "validForList": [],
+      "invalidForList": [],
+      "condition": "",
       "defaultValue": "true",
+      "defaultValueRaw": true,
       "required": false,
       "variableMode": "Input",
-      "condition": "",
-      "description": "失败后是否停止动作"
+      "isControlField": false
     }
   ],
   "outputs": [
@@ -98,57 +151,96 @@
       "key": "isSuccess",
       "name": "是否成功",
       "type": "Boolean",
-      "condition": "",
-      "description": "操作是否成功"
+      "description": "操作是否成功",
+      "isAdvanced": false,
+      "validForList": [],
+      "invalidForList": [],
+      "condition": ""
     },
     {
       "key": "rtnF",
       "name": "结果文本(不含逗号)",
       "type": "Text",
-      "condition": "仅：toString",
-      "description": "如1234.56"
+      "description": "如1234.56",
+      "isAdvanced": false,
+      "validForList": [
+        "toString"
+      ],
+      "invalidForList": [],
+      "condition": "仅：toString"
     },
     {
       "key": "rtnN",
       "name": "结果文本(含逗号)",
       "type": "Text",
-      "condition": "仅：toString",
-      "description": "如1,234.56"
+      "description": "如1,234.56",
+      "isAdvanced": false,
+      "validForList": [
+        "toString"
+      ],
+      "invalidForList": [],
+      "condition": "仅：toString"
     },
     {
       "key": "rtnPercent",
       "name": "结果文本(百分比)",
       "type": "Text",
-      "condition": "仅：toString",
-      "description": "如23.56%"
+      "description": "如23.56%",
+      "isAdvanced": false,
+      "validForList": [
+        "toString"
+      ],
+      "invalidForList": [],
+      "condition": "仅：toString"
     },
     {
       "key": "rtnInteger",
       "name": "结果整数",
       "type": "Integer",
-      "condition": "仅：toInteger, baseConversion",
-      "description": "十进制数"
+      "description": "十进制数",
+      "isAdvanced": false,
+      "validForList": [
+        "toInteger",
+        "baseConversion"
+      ],
+      "invalidForList": [],
+      "condition": "仅：toInteger, baseConversion"
     },
     {
       "key": "resultHex",
       "name": "十六进制",
       "type": "Text",
-      "condition": "仅：baseConversion",
-      "description": ""
+      "description": "",
+      "isAdvanced": false,
+      "validForList": [
+        "baseConversion"
+      ],
+      "invalidForList": [],
+      "condition": "仅：baseConversion"
     },
     {
       "key": "resultOctal",
       "name": "八进制",
       "type": "Text",
-      "condition": "仅：baseConversion",
-      "description": ""
+      "description": "",
+      "isAdvanced": false,
+      "validForList": [
+        "baseConversion"
+      ],
+      "invalidForList": [],
+      "condition": "仅：baseConversion"
     },
     {
       "key": "resultBin",
       "name": "二进制",
       "type": "Text",
-      "condition": "仅：baseConversion",
-      "description": ""
+      "description": "",
+      "isAdvanced": false,
+      "validForList": [
+        "baseConversion"
+      ],
+      "invalidForList": [],
+      "condition": "仅：baseConversion"
     }
   ],
   "selections": {
@@ -218,5 +310,5 @@
       ]
     }
   },
-  "sourceFileName": "sys_numberprocess_数字转换与处理.md"
+  "sourceFileName": "catalog.json"
 }

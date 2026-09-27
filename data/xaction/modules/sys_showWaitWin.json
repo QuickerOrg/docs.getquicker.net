@@ -16,131 +16,236 @@
       "key": "mode",
       "name": "操作",
       "type": "Enum",
+      "description": "请选择操作类型",
+      "isAdvanced": false,
+      "validForList": [],
+      "invalidForList": [],
+      "condition": "",
       "defaultValue": "show",
+      "defaultValueRaw": "show",
       "required": true,
       "variableMode": "Input",
-      "condition": "",
-      "description": "请选择操作类型"
+      "isControlField": true
     },
     {
       "key": "title",
       "name": "窗口标题",
       "type": "Text",
+      "description": "",
+      "isAdvanced": false,
+      "validForList": [
+        "show",
+        "showAndWaitClose",
+        "update"
+      ],
+      "invalidForList": [],
+      "condition": "仅：show, showAndWaitClose, update",
       "defaultValue": "完成后继续",
+      "defaultValueRaw": "完成后继续",
       "required": true,
       "variableMode": "Input",
-      "condition": "仅：show, showAndWaitClose, update",
-      "description": ""
+      "isControlField": false
     },
     {
       "key": "prompt",
       "name": "提示文字",
       "type": "Text",
+      "description": "提示文字内容",
+      "isAdvanced": false,
+      "validForList": [
+        "show",
+        "showAndWaitClose",
+        "update"
+      ],
+      "invalidForList": [],
+      "condition": "仅：show, showAndWaitClose, update",
       "defaultValue": "请在完成操作后点下面的按钮",
+      "defaultValueRaw": "请在完成操作后点下面的按钮",
       "required": true,
       "variableMode": "Input",
-      "condition": "仅：show, showAndWaitClose, update",
-      "description": "提示文字内容"
+      "isControlField": false
     },
     {
       "key": "btnText",
       "name": "默认按钮上的文字",
       "type": "Text",
+      "description": "默认按键仅用于关闭窗口。文字内容为空时隐藏默认按钮。",
+      "isAdvanced": false,
+      "validForList": [
+        "show",
+        "showAndWaitClose",
+        "update"
+      ],
+      "invalidForList": [],
+      "condition": "仅：show, showAndWaitClose, update",
       "defaultValue": "完成",
+      "defaultValueRaw": "完成",
       "required": true,
       "variableMode": "UseVarOrInput",
-      "condition": "仅：show, showAndWaitClose, update",
-      "description": "默认按键仅用于关闭窗口。文字内容为空时隐藏默认按钮。"
+      "isControlField": false
     },
     {
       "key": "winLocation",
       "name": "窗口位置",
       "type": "Enum",
+      "description": "在哪里显示选择窗口",
+      "isAdvanced": false,
+      "validForList": [
+        "show",
+        "showAndWaitClose"
+      ],
+      "invalidForList": [],
+      "condition": "仅：show, showAndWaitClose",
       "defaultValue": "BottomRight",
+      "defaultValueRaw": "BottomRight",
       "required": false,
       "variableMode": "UseVarOrInput",
-      "condition": "仅：show, showAndWaitClose",
-      "description": "在哪里显示选择窗口"
+      "isControlField": false
     },
     {
       "key": "progress",
       "name": "进度条参数",
       "type": "Text",
+      "description": "请以 当前值/总数 的格式传入（可使用插值方式）。 比如：40/80",
+      "isAdvanced": false,
+      "validForList": [
+        "show",
+        "showAndWaitClose",
+        "update"
+      ],
+      "invalidForList": [],
+      "condition": "仅：show, showAndWaitClose, update",
       "defaultValue": "",
       "required": false,
       "variableMode": "Input",
-      "condition": "仅：show, showAndWaitClose, update",
-      "description": "请以 当前值/总数 的格式传入（可使用插值方式）。 比如：40/80"
+      "isControlField": false
     },
     {
       "key": "operations",
       "name": "附加操作按钮",
       "type": "Text",
+      "description": "每行定义一个按钮，格式为 \"文本\" 或 \"显示文本|值\"。显示在默认按钮的左侧。",
+      "isAdvanced": false,
+      "validForList": [
+        "show",
+        "showAndWaitClose",
+        "update"
+      ],
+      "invalidForList": [],
+      "condition": "仅：show, showAndWaitClose, update",
       "defaultValue": "",
+      "defaultValueRaw": "",
       "required": true,
       "variableMode": "Input",
-      "condition": "仅：show, showAndWaitClose, update",
-      "description": "每行定义一个按钮，格式为 \"文本\" 或 \"显示文本|值\"。显示在默认按钮的左侧。"
+      "isControlField": false
     },
     {
       "key": "iconSize",
       "name": "图标大小",
       "type": "Number",
+      "description": "按钮上图标的大小，单位为逻辑像素。",
+      "isAdvanced": false,
+      "validForList": [
+        "show",
+        "showAndWaitClose"
+      ],
+      "invalidForList": [],
+      "condition": "仅：show, showAndWaitClose",
       "defaultValue": "16.0",
+      "defaultValueRaw": 16,
       "required": true,
       "variableMode": "UseVarOrInput",
-      "condition": "仅：show, showAndWaitClose",
-      "description": "按钮上图标的大小，单位为逻辑像素。"
+      "isControlField": false
     },
     {
       "key": "fontsize",
       "name": "文字大小",
       "type": "Number",
+      "description": "按钮上文字的大小，单位为逻辑像素。",
+      "isAdvanced": false,
+      "validForList": [
+        "show",
+        "showAndWaitClose"
+      ],
+      "invalidForList": [],
+      "condition": "仅：show, showAndWaitClose",
       "defaultValue": "12.0",
+      "defaultValueRaw": 12,
       "required": true,
       "variableMode": "UseVarOrInput",
-      "condition": "仅：show, showAndWaitClose",
-      "description": "按钮上文字的大小，单位为逻辑像素。"
+      "isControlField": false
     },
     {
       "key": "stopActionIfClose",
       "name": "关闭窗口时（点右上角x按钮）后停止动作",
       "type": "Boolean",
+      "description": "",
+      "isAdvanced": false,
+      "validForList": [
+        "show",
+        "showAndWaitClose"
+      ],
+      "invalidForList": [],
+      "condition": "仅：show, showAndWaitClose",
       "defaultValue": "true",
+      "defaultValueRaw": true,
       "required": false,
       "variableMode": "Input",
-      "condition": "仅：show, showAndWaitClose",
-      "description": ""
+      "isControlField": false
     },
     {
       "key": "autoCloseSeconds",
       "name": "自动关闭",
       "type": "Number",
+      "description": "几秒后自动关闭。0表示不自动关闭。",
+      "isAdvanced": true,
+      "validForList": [
+        "show",
+        "showAndWaitClose"
+      ],
+      "invalidForList": [],
+      "condition": "仅：show, showAndWaitClose",
       "defaultValue": "0.0",
+      "defaultValueRaw": 0,
       "required": false,
       "variableMode": "Input",
-      "condition": "仅：show, showAndWaitClose",
-      "description": "几秒后自动关闭。0表示不自动关闭。"
+      "isControlField": false
     },
     {
       "key": "activateMode",
       "name": "激活模式",
       "type": "Enum",
+      "description": "",
+      "isAdvanced": true,
+      "validForList": [
+        "show",
+        "showAndWaitClose"
+      ],
+      "invalidForList": [],
+      "condition": "仅：show, showAndWaitClose",
       "defaultValue": "NotActivatable",
+      "defaultValueRaw": "NotActivatable",
       "required": false,
       "variableMode": "Input",
-      "condition": "仅：show, showAndWaitClose",
-      "description": ""
+      "isControlField": false
     },
     {
       "key": "help",
       "name": "帮助按钮内容",
       "type": "Text",
+      "description": "点击弹出显示帮助内容，MarkDown格式",
+      "isAdvanced": true,
+      "validForList": [
+        "show",
+        "showAndWaitClose"
+      ],
+      "invalidForList": [],
+      "condition": "仅：show, showAndWaitClose",
       "defaultValue": "",
+      "defaultValueRaw": "",
       "required": false,
       "variableMode": "Input",
-      "condition": "仅：show, showAndWaitClose",
-      "description": "点击弹出显示帮助内容，MarkDown格式"
+      "isControlField": false
     }
   ],
   "outputs": [
@@ -148,15 +253,27 @@
       "key": "isClosed",
       "name": "是否已关闭",
       "type": "Boolean",
-      "condition": "仅：check",
-      "description": "等待窗口是否已经关闭了"
+      "description": "等待窗口是否已经关闭了",
+      "isAdvanced": false,
+      "validForList": [
+        "check"
+      ],
+      "invalidForList": [],
+      "condition": "仅：check"
     },
     {
       "key": "selectedOperation",
       "name": "选择的按钮",
       "type": "Text",
-      "condition": "仅：showAndWaitClose, check, waitClose",
-      "description": "选择的后续操作项"
+      "description": "选择的后续操作项",
+      "isAdvanced": false,
+      "validForList": [
+        "showAndWaitClose",
+        "check",
+        "waitClose"
+      ],
+      "invalidForList": [],
+      "condition": "仅：showAndWaitClose, check, waitClose"
     }
   ],
   "selections": {
@@ -281,5 +398,5 @@
       ]
     }
   },
-  "sourceFileName": "sys_showWaitWin_显示等待窗口.md"
+  "sourceFileName": "catalog.json"
 }

@@ -16,41 +16,62 @@
       "key": "path",
       "name": "文件路径",
       "type": "Text",
+      "description": "要读取的文件的完整路径。",
+      "isAdvanced": false,
+      "validForList": [],
+      "invalidForList": [],
+      "condition": "",
       "defaultValue": "",
       "required": true,
       "variableMode": "UseVarOrInput",
-      "condition": "",
-      "description": "要读取的文件的完整路径。"
+      "isControlField": false
     },
     {
       "key": "type",
       "name": "格式",
       "type": "Enum",
+      "description": "文件内容类型",
+      "isAdvanced": false,
+      "validForList": [],
+      "invalidForList": [],
+      "condition": "",
       "defaultValue": "text",
+      "defaultValueRaw": "text",
       "required": true,
       "variableMode": "Input",
-      "condition": "",
-      "description": "文件内容类型"
+      "isControlField": true
     },
     {
       "key": "encoding",
       "name": "文件编码",
       "type": "Enum",
+      "description": "文件的编码格式",
+      "isAdvanced": false,
+      "validForList": [
+        "text"
+      ],
+      "invalidForList": [],
+      "condition": "仅：text",
       "defaultValue": "utf-8",
+      "defaultValueRaw": "utf-8",
       "required": true,
       "variableMode": "Input",
-      "condition": "仅：text",
-      "description": "文件的编码格式"
+      "isControlField": false
     },
     {
       "key": "stopIfFail",
       "name": "失败后停止",
       "type": "Boolean",
+      "description": "失败后是否停止动作",
+      "isAdvanced": false,
+      "validForList": [],
+      "invalidForList": [],
+      "condition": "",
       "defaultValue": "true",
+      "defaultValueRaw": true,
       "required": false,
       "variableMode": "Input",
-      "condition": "",
-      "description": "失败后是否停止动作"
+      "isControlField": false
     }
   ],
   "outputs": [
@@ -58,22 +79,35 @@
       "key": "isSuccess",
       "name": "是否成功",
       "type": "Boolean",
-      "condition": "",
-      "description": "操作是否成功"
+      "description": "操作是否成功",
+      "isAdvanced": false,
+      "validForList": [],
+      "invalidForList": [],
+      "condition": ""
     },
     {
       "key": "txt",
       "name": "文本内容",
       "type": "Text",
-      "condition": "仅：text",
-      "description": "读取的文本文件的内容"
+      "description": "读取的文本文件的内容",
+      "isAdvanced": false,
+      "validForList": [
+        "text"
+      ],
+      "invalidForList": [],
+      "condition": "仅：text"
     },
     {
       "key": "image",
       "name": "图片内容",
       "type": "Image",
-      "condition": "仅：image",
-      "description": "读取的图片文件的内容"
+      "description": "读取的图片文件的内容",
+      "isAdvanced": false,
+      "validForList": [
+        "image"
+      ],
+      "invalidForList": [],
+      "condition": "仅：image"
     }
   ],
   "selections": {
@@ -138,5 +172,5 @@
       ]
     }
   },
-  "sourceFileName": "sys_readFile_读取文件.md"
+  "sourceFileName": "catalog.json"
 }

@@ -16,101 +16,163 @@
       "key": "input",
       "name": "列表",
       "type": "List",
+      "description": "要处理的列表",
+      "isAdvanced": false,
+      "validForList": [],
+      "invalidForList": [],
+      "condition": "",
       "defaultValue": "",
       "required": true,
       "variableMode": "UseVarOrInput",
-      "condition": "",
-      "description": "要处理的列表"
+      "isControlField": false
     },
     {
       "key": "useMultiThread",
       "name": "线程模式",
       "type": "Enum",
+      "description": "⚠通常不要选择! 请阅读文档详细了解后再使用。",
+      "isAdvanced": false,
+      "validForList": [],
+      "invalidForList": [],
+      "condition": "",
       "defaultValue": "0",
+      "defaultValueRaw": "0",
       "required": false,
       "variableMode": "Input",
-      "condition": "",
-      "description": "⚠通常不要选择! 请阅读文档详细了解后再使用。"
+      "isControlField": true
     },
     {
       "key": "threadDelay",
       "name": "线程启动间隔",
       "type": "Integer",
+      "description": "多线程运行时，每个线程之间的启动时间间隔毫秒数。",
+      "isAdvanced": false,
+      "validForList": [
+        "1"
+      ],
+      "invalidForList": [],
+      "condition": "仅：1",
       "defaultValue": "5",
+      "defaultValueRaw": 5,
       "required": false,
       "variableMode": "Input",
-      "condition": "仅：1",
-      "description": "多线程运行时，每个线程之间的启动时间间隔毫秒数。"
+      "isControlField": false
     },
     {
       "key": "concurrentThreadNum",
       "name": "同时线程数",
       "type": "Integer",
+      "description": "最多同时启动的线程数，请根据电脑配置和任务内容设置。",
+      "isAdvanced": false,
+      "validForList": [
+        "1"
+      ],
+      "invalidForList": [],
+      "condition": "仅：1",
       "defaultValue": "4",
+      "defaultValueRaw": 4,
       "required": false,
       "variableMode": "Input",
-      "condition": "仅：1",
-      "description": "最多同时启动的线程数，请根据电脑配置和任务内容设置。"
+      "isControlField": false
     },
     {
       "key": "timeoutMs",
       "name": "超时毫秒数",
       "type": "Integer",
+      "description": "所有线程开启后，等待的超时时间，单位：毫秒。-1:不设置超时时间",
+      "isAdvanced": false,
+      "validForList": [
+        "1"
+      ],
+      "invalidForList": [],
+      "condition": "仅：1",
       "defaultValue": "-1",
+      "defaultValueRaw": -1,
       "required": false,
       "variableMode": "Input",
-      "condition": "仅：1",
-      "description": "所有线程开启后，等待的超时时间，单位：毫秒。-1:不设置超时时间"
+      "isControlField": false
     },
     {
       "key": "waitAny",
       "name": "WaitAny模式",
       "type": "Boolean",
+      "description": "任意一个线程结束后，本步骤不再等待其它线程，并继续执行后续步骤；其它未完成的线程仍会运行，但不会被等待。",
+      "isAdvanced": false,
+      "validForList": [
+        "1"
+      ],
+      "invalidForList": [],
+      "condition": "仅：1",
       "defaultValue": "false",
+      "defaultValueRaw": false,
       "required": false,
       "variableMode": "Input",
-      "condition": "仅：1",
-      "description": "任意一个线程结束后，本步骤不再等待其它线程，并继续执行后续步骤；其它未完成的线程仍会运行，但不会被等待。"
+      "isControlField": false
     },
     {
       "key": "cancelRemainingOnWaitAny",
       "name": "WaitAny模式下自动取消其它分支",
       "type": "Boolean",
+      "description": "启用WaitAny时，任一分支完成后请求取消其它未完成分支，并阻止其执行后续步骤。取消为协作式取消，不保证立即终止正在执行的步骤。",
+      "isAdvanced": false,
+      "validForList": [
+        "1"
+      ],
+      "invalidForList": [],
+      "condition": "仅：1",
       "defaultValue": "false",
+      "defaultValueRaw": false,
       "required": false,
       "variableMode": "Input",
-      "condition": "仅：1",
-      "description": "启用WaitAny时，任一分支完成后请求取消其它未完成分支，并阻止其执行后续步骤。取消为协作式取消，不保证立即终止正在执行的步骤。"
+      "isControlField": false
     },
     {
       "key": "useLocalContext",
       "name": "为线程创建独立上下文",
       "type": "Boolean",
+      "description": "此时只能读取变量，不能更新变量（词典、列表等引用传递的除外）",
+      "isAdvanced": false,
+      "validForList": [
+        "1"
+      ],
+      "invalidForList": [],
+      "condition": "仅：1",
       "defaultValue": "false",
+      "defaultValueRaw": false,
       "required": false,
       "variableMode": "Input",
-      "condition": "仅：1",
-      "description": "此时只能读取变量，不能更新变量（词典、列表等引用传递的除外）"
+      "isControlField": false
     },
     {
       "key": "progressBarTitle",
       "name": "进度条标题",
       "type": "Text",
+      "description": "如果设置了此参数，则在循环过程中会显示一个进度条，标题为此参数的值。仅单线程支持。",
+      "isAdvanced": false,
+      "validForList": [
+        "0"
+      ],
+      "invalidForList": [],
+      "condition": "仅：0",
       "defaultValue": "",
       "required": false,
       "variableMode": "UseVarOrInput",
-      "condition": "仅：0",
-      "description": "如果设置了此参数，则在循环过程中会显示一个进度条，标题为此参数的值。仅单线程支持。"
+      "isControlField": false
     },
     {
       "key": "stopIfFail",
       "name": "失败后停止",
       "type": "Boolean",
+      "description": "失败后是否停止动作",
+      "isAdvanced": false,
+      "validForList": [],
+      "invalidForList": [],
+      "condition": "",
       "defaultValue": "true",
+      "defaultValueRaw": true,
       "required": false,
       "variableMode": "Input",
-      "condition": "",
-      "description": "失败后是否停止动作"
+      "isControlField": false
     }
   ],
   "outputs": [
@@ -118,22 +180,31 @@
       "key": "isSuccess",
       "name": "是否成功",
       "type": "Boolean",
-      "condition": "",
-      "description": "操作是否成功"
+      "description": "操作是否成功",
+      "isAdvanced": false,
+      "validForList": [],
+      "invalidForList": [],
+      "condition": ""
     },
     {
       "key": "item",
       "name": "项",
       "type": "Any",
-      "condition": "",
-      "description": "列表中的每项，每次循环赋予当前项的值。在子步骤中应该对本输出进行处理。"
+      "description": "列表中的每项，每次循环赋予当前项的值。在子步骤中应该对本输出进行处理。",
+      "isAdvanced": false,
+      "validForList": [],
+      "invalidForList": [],
+      "condition": ""
     },
     {
       "key": "count",
       "name": "计数",
       "type": "Integer",
-      "condition": "",
-      "description": "本次循环，处理到了第几项。"
+      "description": "本次循环，处理到了第几项。",
+      "isAdvanced": false,
+      "validForList": [],
+      "invalidForList": [],
+      "condition": ""
     }
   ],
   "selections": {
@@ -153,5 +224,5 @@
       ]
     }
   },
-  "sourceFileName": "sys_each_每个.md"
+  "sourceFileName": "catalog.json"
 }

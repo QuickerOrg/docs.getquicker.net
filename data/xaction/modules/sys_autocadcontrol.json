@@ -16,221 +16,748 @@
       "key": "connection",
       "name": "连接方式",
       "type": "Enum",
+      "description": "旧动作默认使用低权限代理；HTTP Bridge 需要安装并启用 AutoCAD 插件。",
+      "isAdvanced": false,
+      "validForList": [],
+      "invalidForList": [],
+      "condition": "",
       "defaultValue": "agent",
+      "defaultValueRaw": "agent",
       "required": true,
       "variableMode": "Input",
-      "condition": "",
-      "description": "旧动作默认使用低权限代理；HTTP Bridge 需要安装并启用 AutoCAD 插件。"
+      "isControlField": true
     },
     {
       "key": "operation",
       "name": "操作类型",
       "type": "Enum",
+      "description": "低权限代理操作。",
+      "isAdvanced": false,
+      "validForList": [
+        "agent"
+      ],
+      "invalidForList": [],
+      "condition": "仅：agent",
       "defaultValue": "SendCommand",
+      "defaultValueRaw": "SendCommand",
       "required": true,
       "variableMode": "Input",
-      "condition": "仅：agent",
-      "description": "低权限代理操作。"
+      "isControlField": true
     },
     {
       "key": "bridgeOperation",
       "name": "Bridge 操作",
       "type": "Enum",
+      "description": "向在线 AutoCAD 连接发送结构化命令；多个连接时按动作触发窗口定位。",
+      "isAdvanced": false,
+      "validForList": [
+        "bridge"
+      ],
+      "invalidForList": [],
+      "condition": "仅：bridge",
       "defaultValue": "bridge.ping",
+      "defaultValueRaw": "bridge.ping",
       "required": true,
       "variableMode": "Input",
-      "condition": "仅：bridge",
-      "description": "向在线 AutoCAD 连接发送结构化命令；多个连接时按动作触发窗口定位。"
+      "isControlField": true
     },
     {
       "key": "command",
       "name": "命令内容",
       "type": "Text",
+      "description": "发送到 CAD 执行的命令内容。通常以空格结尾开始执行。",
+      "isAdvanced": false,
+      "validForList": [
+        "SendCommand"
+      ],
+      "invalidForList": [],
+      "visibleWhen": {
+        "kind": "All",
+        "conditions": [
+          {
+            "kind": "Field",
+            "fieldKey": "connection",
+            "operator": "In",
+            "values": [
+              "agent"
+            ]
+          },
+          {
+            "kind": "Field",
+            "fieldKey": "operation",
+            "operator": "In",
+            "values": [
+              "SendCommand"
+            ]
+          }
+        ]
+      },
+      "condition": "(connection 为 \"agent\" 且 operation 为 \"SendCommand\")",
       "defaultValue": "",
+      "defaultValueRaw": "",
       "required": false,
       "variableMode": "UseVarOrInput",
-      "condition": "仅：SendCommand",
-      "description": "发送到 CAD 执行的命令内容。通常以空格结尾开始执行。"
+      "isControlField": false
     },
     {
       "key": "varList",
       "name": "变量列表",
       "type": "Text",
+      "description": "每行一个变量名称。",
+      "isAdvanced": false,
+      "validForList": [
+        "ReadVariable"
+      ],
+      "invalidForList": [],
+      "visibleWhen": {
+        "kind": "All",
+        "conditions": [
+          {
+            "kind": "Field",
+            "fieldKey": "connection",
+            "operator": "In",
+            "values": [
+              "agent"
+            ]
+          },
+          {
+            "kind": "Field",
+            "fieldKey": "operation",
+            "operator": "In",
+            "values": [
+              "ReadVariable"
+            ]
+          }
+        ]
+      },
+      "condition": "(connection 为 \"agent\" 且 operation 为 \"ReadVariable\")",
       "defaultValue": "",
+      "defaultValueRaw": "",
       "required": false,
       "variableMode": "UseVarOrInput",
-      "condition": "仅：ReadVariable",
-      "description": "每行一个变量名称。"
+      "isControlField": false
     },
     {
       "key": "waitResp",
       "name": "等待命令结束",
       "type": "Boolean",
+      "description": "",
+      "isAdvanced": false,
+      "validForList": [
+        "SendCommand"
+      ],
+      "invalidForList": [],
+      "visibleWhen": {
+        "kind": "All",
+        "conditions": [
+          {
+            "kind": "Field",
+            "fieldKey": "connection",
+            "operator": "In",
+            "values": [
+              "agent"
+            ]
+          },
+          {
+            "kind": "Field",
+            "fieldKey": "operation",
+            "operator": "In",
+            "values": [
+              "SendCommand"
+            ]
+          }
+        ]
+      },
+      "condition": "(connection 为 \"agent\" 且 operation 为 \"SendCommand\")",
       "defaultValue": "true",
+      "defaultValueRaw": true,
       "required": false,
       "variableMode": "UseVarOrInput",
-      "condition": "仅：SendCommand",
-      "description": ""
+      "isControlField": false
     },
     {
       "key": "bridgeCommand",
       "name": "AutoCAD 命令内容",
       "type": "Text",
+      "description": "不限制命令字符串；末尾没有空白时会自动补一个空格开始执行。",
+      "isAdvanced": false,
+      "validForList": [
+        "document.send_command"
+      ],
+      "invalidForList": [],
+      "visibleWhen": {
+        "kind": "All",
+        "conditions": [
+          {
+            "kind": "Field",
+            "fieldKey": "connection",
+            "operator": "In",
+            "values": [
+              "bridge"
+            ]
+          },
+          {
+            "kind": "Field",
+            "fieldKey": "bridgeOperation",
+            "operator": "In",
+            "values": [
+              "document.send_command"
+            ]
+          }
+        ]
+      },
+      "condition": "(connection 为 \"bridge\" 且 bridgeOperation 为 \"document.send_command\")",
       "defaultValue": "",
+      "defaultValueRaw": "",
       "required": false,
       "variableMode": "UseVarOrInput",
-      "condition": "仅：document.send_command",
-      "description": "不限制命令字符串；末尾没有空白时会自动补一个空格开始执行。"
+      "isControlField": false
     },
     {
       "key": "bridgeVariableList",
       "name": "系统变量列表",
       "type": "Text",
+      "description": "每行一个系统变量名称。",
+      "isAdvanced": false,
+      "validForList": [
+        "system_variables.get"
+      ],
+      "invalidForList": [],
+      "visibleWhen": {
+        "kind": "All",
+        "conditions": [
+          {
+            "kind": "Field",
+            "fieldKey": "connection",
+            "operator": "In",
+            "values": [
+              "bridge"
+            ]
+          },
+          {
+            "kind": "Field",
+            "fieldKey": "bridgeOperation",
+            "operator": "In",
+            "values": [
+              "system_variables.get"
+            ]
+          }
+        ]
+      },
+      "condition": "(connection 为 \"bridge\" 且 bridgeOperation 为 \"system_variables.get\")",
       "defaultValue": "DWGNAME",
+      "defaultValueRaw": "DWGNAME",
       "required": false,
       "variableMode": "UseVarOrInput",
-      "condition": "仅：system_variables.get",
-      "description": "每行一个系统变量名称。"
+      "isControlField": false
     },
     {
       "key": "lineStart",
       "name": "起点 (X,Y,Z)",
       "type": "Text",
+      "description": "AutoCAD 图形单位坐标。",
+      "isAdvanced": false,
+      "validForList": [
+        "geometry.create_line"
+      ],
+      "invalidForList": [],
+      "visibleWhen": {
+        "kind": "All",
+        "conditions": [
+          {
+            "kind": "Field",
+            "fieldKey": "connection",
+            "operator": "In",
+            "values": [
+              "bridge"
+            ]
+          },
+          {
+            "kind": "Field",
+            "fieldKey": "bridgeOperation",
+            "operator": "In",
+            "values": [
+              "geometry.create_line"
+            ]
+          }
+        ]
+      },
+      "condition": "(connection 为 \"bridge\" 且 bridgeOperation 为 \"geometry.create_line\")",
       "defaultValue": "0,0,0",
+      "defaultValueRaw": "0,0,0",
       "required": false,
       "variableMode": "UseVarOrInput",
-      "condition": "仅：geometry.create_line",
-      "description": "AutoCAD 图形单位坐标。"
+      "isControlField": false
     },
     {
       "key": "lineEnd",
       "name": "终点 (X,Y,Z)",
       "type": "Text",
+      "description": "AutoCAD 图形单位坐标。",
+      "isAdvanced": false,
+      "validForList": [
+        "geometry.create_line"
+      ],
+      "invalidForList": [],
+      "visibleWhen": {
+        "kind": "All",
+        "conditions": [
+          {
+            "kind": "Field",
+            "fieldKey": "connection",
+            "operator": "In",
+            "values": [
+              "bridge"
+            ]
+          },
+          {
+            "kind": "Field",
+            "fieldKey": "bridgeOperation",
+            "operator": "In",
+            "values": [
+              "geometry.create_line"
+            ]
+          }
+        ]
+      },
+      "condition": "(connection 为 \"bridge\" 且 bridgeOperation 为 \"geometry.create_line\")",
       "defaultValue": "100,0,0",
+      "defaultValueRaw": "100,0,0",
       "required": false,
       "variableMode": "UseVarOrInput",
-      "condition": "仅：geometry.create_line",
-      "description": "AutoCAD 图形单位坐标。"
+      "isControlField": false
     },
     {
       "key": "bridgeFilePath",
       "name": "文件路径",
       "type": "Text",
+      "description": "必须是 AutoCAD 所在电脑上的绝对路径。插件加载仍受 SECURELOAD 和 TRUSTEDPATHS 限制。",
+      "isAdvanced": false,
+      "validForList": [
+        "document.open",
+        "document.save_as",
+        "lisp.list_commands",
+        "lisp.load_file",
+        "script.run_file",
+        "plugin.load_dotnet",
+        "plugin.load_arx",
+        "plot.export_pdf",
+        "document.export_dxf",
+        "plugin.load_and_run"
+      ],
+      "invalidForList": [],
+      "visibleWhen": {
+        "kind": "All",
+        "conditions": [
+          {
+            "kind": "Field",
+            "fieldKey": "connection",
+            "operator": "In",
+            "values": [
+              "bridge"
+            ]
+          },
+          {
+            "kind": "Field",
+            "fieldKey": "bridgeOperation",
+            "operator": "In",
+            "values": [
+              "document.open",
+              "document.save_as",
+              "lisp.list_commands",
+              "lisp.load_file",
+              "script.run_file",
+              "plugin.load_dotnet",
+              "plugin.load_arx",
+              "plot.export_pdf",
+              "document.export_dxf",
+              "plugin.load_and_run"
+            ]
+          }
+        ]
+      },
+      "condition": "(connection 为 \"bridge\" 且 bridgeOperation 为 \"document.open\"、\"document.save_as\"、\"lisp.list_commands\"、\"lisp.load_file\"、\"script.run_file\"、\"plugin.load_dotnet\"、\"plugin.load_arx\"、\"plot.export_pdf\"、\"document.export_dxf\"、\"plugin.load_and_run\")",
       "defaultValue": "",
+      "defaultValueRaw": "",
       "required": false,
       "variableMode": "UseVarOrInput",
-      "condition": "仅：document.open, document.save_as, lisp.list_commands, lisp.load_file, script.run_file, plugin.load_dotnet, plugin.load_arx, plot.export_pdf, document.export_dxf, plugin.load_and_run",
-      "description": "必须是 AutoCAD 所在电脑上的绝对路径。插件加载仍受 SECURELOAD 和 TRUSTEDPATHS 限制。"
+      "isControlField": false
     },
     {
       "key": "bridgeLayerName",
       "name": "图层名称",
       "type": "Text",
+      "description": "",
+      "isAdvanced": false,
+      "validForList": [
+        "layer.set_current",
+        "selection.assign_layer"
+      ],
+      "invalidForList": [],
+      "visibleWhen": {
+        "kind": "All",
+        "conditions": [
+          {
+            "kind": "Field",
+            "fieldKey": "connection",
+            "operator": "In",
+            "values": [
+              "bridge"
+            ]
+          },
+          {
+            "kind": "Field",
+            "fieldKey": "bridgeOperation",
+            "operator": "In",
+            "values": [
+              "layer.set_current",
+              "selection.assign_layer"
+            ]
+          }
+        ]
+      },
+      "condition": "(connection 为 \"bridge\" 且 bridgeOperation 为 \"layer.set_current\"、\"selection.assign_layer\")",
       "defaultValue": "0",
+      "defaultValueRaw": "0",
       "required": false,
       "variableMode": "UseVarOrInput",
-      "condition": "仅：layer.set_current, selection.assign_layer",
-      "description": ""
+      "isControlField": false
     },
     {
       "key": "bridgeLayoutName",
       "name": "布局名称",
       "type": "Text",
+      "description": "",
+      "isAdvanced": false,
+      "validForList": [
+        "layout.activate",
+        "plot.export_pdf"
+      ],
+      "invalidForList": [],
+      "visibleWhen": {
+        "kind": "All",
+        "conditions": [
+          {
+            "kind": "Field",
+            "fieldKey": "connection",
+            "operator": "In",
+            "values": [
+              "bridge"
+            ]
+          },
+          {
+            "kind": "Field",
+            "fieldKey": "bridgeOperation",
+            "operator": "In",
+            "values": [
+              "layout.activate",
+              "plot.export_pdf"
+            ]
+          }
+        ]
+      },
+      "condition": "(connection 为 \"bridge\" 且 bridgeOperation 为 \"layout.activate\"、\"plot.export_pdf\")",
       "defaultValue": "Model",
+      "defaultValueRaw": "Model",
       "required": false,
       "variableMode": "UseVarOrInput",
-      "condition": "仅：layout.activate, plot.export_pdf",
-      "description": ""
+      "isControlField": false
     },
     {
       "key": "bridgePlotDevice",
       "name": "打印设备",
       "type": "Text",
+      "description": "",
+      "isAdvanced": false,
+      "validForList": [
+        "plot.export_pdf"
+      ],
+      "invalidForList": [],
+      "visibleWhen": {
+        "kind": "All",
+        "conditions": [
+          {
+            "kind": "Field",
+            "fieldKey": "connection",
+            "operator": "In",
+            "values": [
+              "bridge"
+            ]
+          },
+          {
+            "kind": "Field",
+            "fieldKey": "bridgeOperation",
+            "operator": "In",
+            "values": [
+              "plot.export_pdf"
+            ]
+          }
+        ]
+      },
+      "condition": "(connection 为 \"bridge\" 且 bridgeOperation 为 \"plot.export_pdf\")",
       "defaultValue": "DWG To PDF.pc3",
+      "defaultValueRaw": "DWG To PDF.pc3",
       "required": false,
       "variableMode": "UseVarOrInput",
-      "condition": "仅：plot.export_pdf",
-      "description": ""
+      "isControlField": false
     },
     {
       "key": "bridgeDxfPrecision",
       "name": "DXF 精度",
       "type": "Number",
+      "description": "小数位数，范围 0 到 16。",
+      "isAdvanced": false,
+      "validForList": [
+        "document.export_dxf"
+      ],
+      "invalidForList": [],
+      "visibleWhen": {
+        "kind": "All",
+        "conditions": [
+          {
+            "kind": "Field",
+            "fieldKey": "connection",
+            "operator": "In",
+            "values": [
+              "bridge"
+            ]
+          },
+          {
+            "kind": "Field",
+            "fieldKey": "bridgeOperation",
+            "operator": "In",
+            "values": [
+              "document.export_dxf"
+            ]
+          }
+        ]
+      },
+      "condition": "(connection 为 \"bridge\" 且 bridgeOperation 为 \"document.export_dxf\")",
       "defaultValue": "16",
+      "defaultValueRaw": 16,
       "required": false,
       "variableMode": "UseVarOrInput",
-      "condition": "仅：document.export_dxf",
-      "description": "小数位数，范围 0 到 16。"
+      "isControlField": false
     },
     {
       "key": "bridgeLispExpression",
       "name": "AutoLISP 表达式",
       "type": "Text",
+      "description": "",
+      "isAdvanced": false,
+      "validForList": [
+        "lisp.evaluate"
+      ],
+      "invalidForList": [],
+      "visibleWhen": {
+        "kind": "All",
+        "conditions": [
+          {
+            "kind": "Field",
+            "fieldKey": "connection",
+            "operator": "In",
+            "values": [
+              "bridge"
+            ]
+          },
+          {
+            "kind": "Field",
+            "fieldKey": "bridgeOperation",
+            "operator": "In",
+            "values": [
+              "lisp.evaluate"
+            ]
+          }
+        ]
+      },
+      "condition": "(connection 为 \"bridge\" 且 bridgeOperation 为 \"lisp.evaluate\")",
       "defaultValue": "(princ \"Hello from Quicker\")",
+      "defaultValueRaw": "(princ \"Hello from Quicker\")",
       "required": false,
       "variableMode": "UseVarOrInput",
-      "condition": "仅：lisp.evaluate",
-      "description": ""
+      "isControlField": false
     },
     {
       "key": "bridgePluginCommand",
       "name": "插件命令",
       "type": "Text",
+      "description": "可留空；LSP 只定义一个 c: 命令时自动识别。多个命令或编译插件必须填写。",
+      "isAdvanced": false,
+      "validForList": [
+        "plugin.load_and_run"
+      ],
+      "invalidForList": [],
+      "visibleWhen": {
+        "kind": "All",
+        "conditions": [
+          {
+            "kind": "Field",
+            "fieldKey": "connection",
+            "operator": "In",
+            "values": [
+              "bridge"
+            ]
+          },
+          {
+            "kind": "Field",
+            "fieldKey": "bridgeOperation",
+            "operator": "In",
+            "values": [
+              "plugin.load_and_run"
+            ]
+          }
+        ]
+      },
+      "condition": "(connection 为 \"bridge\" 且 bridgeOperation 为 \"plugin.load_and_run\")",
       "defaultValue": "",
+      "defaultValueRaw": "",
       "required": false,
       "variableMode": "UseVarOrInput",
-      "condition": "仅：plugin.load_and_run",
-      "description": "可留空；LSP 只定义一个 c: 命令时自动识别。多个命令或编译插件必须填写。"
+      "isControlField": false
     },
     {
       "key": "bridgePluginCommandArguments",
       "name": "命令参数",
       "type": "Text",
+      "description": "追加到命令后的 AutoCAD 命令行文本；可留空。",
+      "isAdvanced": false,
+      "validForList": [
+        "plugin.load_and_run"
+      ],
+      "invalidForList": [],
+      "visibleWhen": {
+        "kind": "All",
+        "conditions": [
+          {
+            "kind": "Field",
+            "fieldKey": "connection",
+            "operator": "In",
+            "values": [
+              "bridge"
+            ]
+          },
+          {
+            "kind": "Field",
+            "fieldKey": "bridgeOperation",
+            "operator": "In",
+            "values": [
+              "plugin.load_and_run"
+            ]
+          }
+        ]
+      },
+      "condition": "(connection 为 \"bridge\" 且 bridgeOperation 为 \"plugin.load_and_run\")",
       "defaultValue": "",
+      "defaultValueRaw": "",
       "required": false,
       "variableMode": "UseVarOrInput",
-      "condition": "仅：plugin.load_and_run",
-      "description": "追加到命令后的 AutoCAD 命令行文本；可留空。"
+      "isControlField": false
     },
     {
       "key": "bridgeCommandName",
       "name": "Bridge 命令名",
       "type": "Text",
+      "description": "",
+      "isAdvanced": false,
+      "validForList": [
+        "command.custom"
+      ],
+      "invalidForList": [],
+      "visibleWhen": {
+        "kind": "All",
+        "conditions": [
+          {
+            "kind": "Field",
+            "fieldKey": "connection",
+            "operator": "In",
+            "values": [
+              "bridge"
+            ]
+          },
+          {
+            "kind": "Field",
+            "fieldKey": "bridgeOperation",
+            "operator": "In",
+            "values": [
+              "command.custom"
+            ]
+          }
+        ]
+      },
+      "condition": "(connection 为 \"bridge\" 且 bridgeOperation 为 \"command.custom\")",
       "defaultValue": "",
+      "defaultValueRaw": "",
       "required": false,
       "variableMode": "UseVarOrInput",
-      "condition": "仅：command.custom",
-      "description": ""
+      "isControlField": false
     },
     {
       "key": "bridgeArgumentsJson",
       "name": "参数（JSON 对象）",
       "type": "Text",
+      "description": "",
+      "isAdvanced": false,
+      "validForList": [
+        "command.custom"
+      ],
+      "invalidForList": [],
+      "visibleWhen": {
+        "kind": "All",
+        "conditions": [
+          {
+            "kind": "Field",
+            "fieldKey": "connection",
+            "operator": "In",
+            "values": [
+              "bridge"
+            ]
+          },
+          {
+            "kind": "Field",
+            "fieldKey": "bridgeOperation",
+            "operator": "In",
+            "values": [
+              "command.custom"
+            ]
+          }
+        ]
+      },
+      "condition": "(connection 为 \"bridge\" 且 bridgeOperation 为 \"command.custom\")",
       "defaultValue": "{}",
+      "defaultValueRaw": "{}",
       "required": false,
       "variableMode": "UseVarOrInput",
-      "condition": "仅：command.custom",
-      "description": ""
+      "isControlField": false
     },
     {
       "key": "waitMs",
       "name": "最长等待时间(ms)",
       "type": "Number",
+      "description": "最长等待返回结果的毫秒数。",
+      "isAdvanced": true,
+      "validForList": [],
+      "invalidForList": [],
+      "condition": "",
       "defaultValue": "10000",
+      "defaultValueRaw": 10000,
       "required": true,
       "variableMode": "Input",
-      "condition": "",
-      "description": "最长等待返回结果的毫秒数。"
+      "isControlField": false
     },
     {
       "key": "stopIfFail",
       "name": "失败后停止",
       "type": "Boolean",
+      "description": "失败后是否停止动作",
+      "isAdvanced": false,
+      "validForList": [],
+      "invalidForList": [],
+      "condition": "",
       "defaultValue": "true",
+      "defaultValueRaw": true,
       "required": false,
       "variableMode": "Input",
-      "condition": "",
-      "description": "失败后是否停止动作"
+      "isControlField": false
     }
   ],
   "outputs": [
@@ -238,15 +765,21 @@
       "key": "isSuccess",
       "name": "是否成功",
       "type": "Boolean",
-      "condition": "",
-      "description": "操作是否成功"
+      "description": "操作是否成功",
+      "isAdvanced": false,
+      "validForList": [],
+      "invalidForList": [],
+      "condition": ""
     },
     {
       "key": "output",
       "name": "返回内容",
       "type": "Text",
-      "condition": "",
-      "description": "低权限代理读取的变量值，或 HTTP Bridge 返回的 JSON。"
+      "description": "低权限代理读取的变量值，或 HTTP Bridge 返回的 JSON。",
+      "isAdvanced": false,
+      "validForList": [],
+      "invalidForList": [],
+      "condition": ""
     }
   ],
   "selections": {
@@ -441,5 +974,5 @@
       ]
     }
   },
-  "sourceFileName": "sys_autocadcontrol_AutoCAD控制.md"
+  "sourceFileName": "catalog.json"
 }

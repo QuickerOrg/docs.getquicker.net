@@ -16,251 +16,446 @@
       "key": "type",
       "name": "操作类型",
       "type": "Enum",
+      "description": "是否等待窗口关闭后继续",
+      "isAdvanced": false,
+      "validForList": [],
+      "invalidForList": [],
+      "condition": "",
       "defaultValue": "NO_WAIT",
+      "defaultValueRaw": "NO_WAIT",
       "required": true,
       "variableMode": "Input",
-      "condition": "",
-      "description": "是否等待窗口关闭后继续"
+      "isControlField": true
     },
     {
       "key": "text",
       "name": "文本内容",
       "type": "Text",
+      "description": "要显示的文本内容",
+      "isAdvanced": false,
+      "validForList": [
+        "WAIT",
+        "NO_WAIT",
+        "APPEND_TEXT"
+      ],
+      "invalidForList": [],
+      "condition": "仅：WAIT, NO_WAIT, APPEND_TEXT",
       "defaultValue": "",
+      "defaultValueRaw": "",
       "required": true,
       "variableMode": "UseVarOrInput",
-      "condition": "仅：WAIT, NO_WAIT, APPEND_TEXT",
-      "description": "要显示的文本内容"
+      "isControlField": false
     },
     {
       "key": "title",
       "name": "窗口标题",
       "type": "Text",
+      "description": "窗口标题文字",
+      "isAdvanced": false,
+      "validForList": [
+        "WAIT",
+        "NO_WAIT"
+      ],
+      "invalidForList": [],
+      "condition": "仅：WAIT, NO_WAIT",
       "defaultValue": "文本窗口",
+      "defaultValueRaw": "文本窗口",
       "required": true,
       "variableMode": "UseVarOrInput",
-      "condition": "仅：WAIT, NO_WAIT",
-      "description": "窗口标题文字"
+      "isControlField": false
     },
     {
       "key": "operations",
       "name": "工具栏操作",
       "type": "Text",
+      "description": "用于显示在窗口工具栏。每行一个选项，格式为 \"文本\" 或 \"显示文本|值\"。",
+      "isAdvanced": true,
+      "validForList": [
+        "WAIT",
+        "NO_WAIT"
+      ],
+      "invalidForList": [],
+      "condition": "仅：WAIT, NO_WAIT",
       "defaultValue": "",
+      "defaultValueRaw": "",
       "required": true,
       "variableMode": "Input",
-      "condition": "仅：WAIT, NO_WAIT",
-      "description": "用于显示在窗口工具栏。每行一个选项，格式为 \"文本\" 或 \"显示文本|值\"。"
+      "isControlField": false
     },
     {
       "key": "autoCloseKey",
       "name": "文本窗口标识",
       "type": "Text",
+      "description": "可选。自动更新或关闭之前打开的具有此标识的文本窗口。使用'='表示当前动作id。",
+      "isAdvanced": false,
+      "validForList": [
+        "WAIT",
+        "NO_WAIT",
+        "CLOSE_WINDOW",
+        "GET_WIN_INFO",
+        "APPEND_TEXT",
+        "ACTIVATE_WINDOW",
+        "WAIT_CLOSE"
+      ],
+      "invalidForList": [],
+      "condition": "仅：WAIT, NO_WAIT, CLOSE_WINDOW, GET_WIN_INFO, APPEND_TEXT, ACTIVATE_WINDOW, WAIT_CLOSE",
       "defaultValue": "=",
+      "defaultValueRaw": "=",
       "required": false,
       "variableMode": "Input",
-      "condition": "仅：WAIT, NO_WAIT, CLOSE_WINDOW, GET_WIN_INFO, APPEND_TEXT, ACTIVATE_WINDOW, WAIT_CLOSE",
-      "description": "可选。自动更新或关闭之前打开的具有此标识的文本窗口。使用'='表示当前动作id。"
+      "isControlField": false
     },
     {
       "key": "winLocation",
       "name": "窗口位置类型",
       "type": "Enum",
+      "description": "在哪里显示选择窗口",
+      "isAdvanced": true,
+      "validForList": [
+        "WAIT",
+        "NO_WAIT"
+      ],
+      "invalidForList": [],
+      "condition": "仅：WAIT, NO_WAIT",
       "defaultValue": "CenterScreen",
+      "defaultValueRaw": "CenterScreen",
       "required": false,
       "variableMode": "UseVarOrInput",
-      "condition": "仅：WAIT, NO_WAIT",
-      "description": "在哪里显示选择窗口"
+      "isControlField": false
     },
     {
       "key": "winSize",
       "name": "窗口尺寸/位置",
       "type": "Text",
+      "description": "宽度,高度：逻辑像素或屏幕工作区百分比；自定义位置填坐标。",
+      "isAdvanced": true,
+      "validForList": [
+        "WAIT",
+        "NO_WAIT"
+      ],
+      "invalidForList": [],
+      "condition": "仅：WAIT, NO_WAIT",
       "defaultValue": "",
+      "defaultValueRaw": "",
       "required": false,
       "variableMode": "Input",
-      "condition": "仅：WAIT, NO_WAIT",
-      "description": "宽度,高度：逻辑像素或屏幕工作区百分比；自定义位置填坐标。"
+      "isControlField": false
     },
     {
       "key": "rememberWindowPlacement",
       "name": "记住上次位置和大小",
       "type": "Boolean",
+      "description": "关闭窗口后保存位置和大小，下次运行此动作时恢复。按文本窗口标识分别记忆；全屏或最大化的位置类型不使用记忆位置。",
+      "isAdvanced": true,
+      "validForList": [
+        "WAIT",
+        "NO_WAIT"
+      ],
+      "invalidForList": [],
+      "condition": "仅：WAIT, NO_WAIT",
       "defaultValue": "false",
+      "defaultValueRaw": false,
       "required": false,
       "variableMode": "Input",
-      "condition": "仅：WAIT, NO_WAIT",
-      "description": "关闭窗口后保存位置和大小，下次运行此动作时恢复。按文本窗口标识分别记忆；全屏或最大化的位置类型不使用记忆位置。"
+      "isControlField": false
     },
     {
       "key": "topMost",
       "name": "置顶显示",
       "type": "Boolean",
+      "description": "",
+      "isAdvanced": false,
+      "validForList": [
+        "WAIT",
+        "NO_WAIT"
+      ],
+      "invalidForList": [],
+      "condition": "仅：WAIT, NO_WAIT",
       "defaultValue": "false",
+      "defaultValueRaw": false,
       "required": false,
       "variableMode": "UseVarOrInput",
-      "condition": "仅：WAIT, NO_WAIT",
-      "description": ""
+      "isControlField": false
     },
     {
       "key": "fontsize",
       "name": "字体大小",
       "type": "Number",
+      "description": "默认的字体大小",
+      "isAdvanced": true,
+      "validForList": [
+        "WAIT",
+        "NO_WAIT"
+      ],
+      "invalidForList": [],
+      "condition": "仅：WAIT, NO_WAIT",
       "defaultValue": "14.0",
+      "defaultValueRaw": 14,
       "required": true,
       "variableMode": "UseVarOrInput",
-      "condition": "仅：WAIT, NO_WAIT",
-      "description": "默认的字体大小"
+      "isControlField": false
     },
     {
       "key": "fontfamily",
       "name": "字体名称",
       "type": "Text",
+      "description": "可选。设置字体名称。如有多个字体，使用逗号分隔。",
+      "isAdvanced": true,
+      "validForList": [
+        "WAIT",
+        "NO_WAIT"
+      ],
+      "invalidForList": [],
+      "condition": "仅：WAIT, NO_WAIT",
       "defaultValue": "",
+      "defaultValueRaw": "",
       "required": false,
       "variableMode": "UseVarOrInput",
-      "condition": "仅：WAIT, NO_WAIT",
-      "description": "可选。设置字体名称。如有多个字体，使用逗号分隔。"
+      "isControlField": false
     },
     {
       "key": "bgColor",
       "name": "背景颜色",
       "type": "Text",
+      "description": "可选。格式为#RRGGBB",
+      "isAdvanced": true,
+      "validForList": [
+        "WAIT",
+        "NO_WAIT"
+      ],
+      "invalidForList": [],
+      "condition": "仅：WAIT, NO_WAIT",
       "defaultValue": "",
+      "defaultValueRaw": "",
       "required": false,
       "variableMode": "UseVarOrInput",
-      "condition": "仅：WAIT, NO_WAIT",
-      "description": "可选。格式为#RRGGBB"
+      "isControlField": false
     },
     {
       "key": "textColor",
       "name": "文字颜色",
       "type": "Text",
+      "description": "可选。格式为#RRGGBB",
+      "isAdvanced": true,
+      "validForList": [
+        "WAIT",
+        "NO_WAIT"
+      ],
+      "invalidForList": [],
+      "condition": "仅：WAIT, NO_WAIT",
       "defaultValue": "",
+      "defaultValueRaw": "",
       "required": false,
       "variableMode": "UseVarOrInput",
-      "condition": "仅：WAIT, NO_WAIT",
-      "description": "可选。格式为#RRGGBB"
+      "isControlField": false
     },
     {
       "key": "highlight",
       "name": "语法高亮",
       "type": "Enum",
+      "description": "",
+      "isAdvanced": true,
+      "validForList": [
+        "WAIT",
+        "NO_WAIT"
+      ],
+      "invalidForList": [],
+      "condition": "仅：WAIT, NO_WAIT",
       "defaultValue": "",
+      "defaultValueRaw": "",
       "required": false,
       "variableMode": "UseVarOrInput",
-      "condition": "仅：WAIT, NO_WAIT",
-      "description": ""
+      "isControlField": false
     },
     {
       "key": "autoSaveToState",
       "name": "自动保存到状态",
       "type": "Text",
+      "description": "指定状态Key。文本内容将自动保存到状态中。",
+      "isAdvanced": true,
+      "validForList": [
+        "WAIT",
+        "NO_WAIT"
+      ],
+      "invalidForList": [],
+      "condition": "仅：WAIT, NO_WAIT",
       "defaultValue": "",
+      "defaultValueRaw": "",
       "required": false,
       "variableMode": "UseVarOrInput",
-      "condition": "仅：WAIT, NO_WAIT",
-      "description": "指定状态Key。文本内容将自动保存到状态中。"
+      "isControlField": false
     },
     {
       "key": "showLineNum",
       "name": "显示行号",
       "type": "Boolean",
+      "description": "",
+      "isAdvanced": true,
+      "validForList": [
+        "WAIT",
+        "NO_WAIT"
+      ],
+      "invalidForList": [],
+      "condition": "仅：WAIT, NO_WAIT",
       "defaultValue": "true",
+      "defaultValueRaw": true,
       "required": false,
       "variableMode": "UseVarOrInput",
-      "condition": "仅：WAIT, NO_WAIT",
-      "description": ""
+      "isControlField": false
     },
     {
       "key": "autoWrap",
       "name": "自动换行显示",
       "type": "Boolean",
+      "description": "",
+      "isAdvanced": true,
+      "validForList": [
+        "WAIT",
+        "NO_WAIT"
+      ],
+      "invalidForList": [],
+      "condition": "仅：WAIT, NO_WAIT",
       "defaultValue": "true",
+      "defaultValueRaw": true,
       "required": false,
       "variableMode": "UseVarOrInput",
-      "condition": "仅：WAIT, NO_WAIT",
-      "description": ""
+      "isControlField": false
     },
     {
       "key": "copyWholeLine",
       "name": "未选择内容时，复制或剪切整行",
       "type": "Boolean",
+      "description": "",
+      "isAdvanced": true,
+      "validForList": [
+        "WAIT",
+        "NO_WAIT"
+      ],
+      "invalidForList": [],
+      "condition": "仅：WAIT, NO_WAIT",
       "defaultValue": "false",
+      "defaultValueRaw": false,
       "required": false,
       "variableMode": "UseVarOrInput",
-      "condition": "仅：WAIT, NO_WAIT",
-      "description": ""
+      "isControlField": false
     },
     {
       "key": "closeWhenLostFocus",
       "name": "失去焦点自动关闭",
       "type": "Boolean",
+      "description": "",
+      "isAdvanced": true,
+      "validForList": [
+        "WAIT",
+        "NO_WAIT"
+      ],
+      "invalidForList": [],
+      "condition": "仅：WAIT, NO_WAIT",
       "defaultValue": "false",
+      "defaultValueRaw": false,
       "required": false,
       "variableMode": "UseVarOrInput",
-      "condition": "仅：WAIT, NO_WAIT",
-      "description": ""
+      "isControlField": false
     },
     {
       "key": "enableEscClose",
       "name": "Esc 键关闭窗口",
       "type": "Boolean",
+      "description": "",
+      "isAdvanced": true,
+      "validForList": [
+        "WAIT",
+        "NO_WAIT"
+      ],
+      "invalidForList": [],
+      "condition": "仅：WAIT, NO_WAIT",
       "defaultValue": "true",
+      "defaultValueRaw": true,
       "required": false,
       "variableMode": "UseVarOrInput",
-      "condition": "仅：WAIT, NO_WAIT",
-      "description": ""
+      "isControlField": false
     },
     {
       "key": "updateIfExists",
       "name": "如果窗口存在，则直接更新窗口内容（而不是关闭后打开新窗口）",
       "type": "Boolean",
+      "description": "",
+      "isAdvanced": true,
+      "validForList": [
+        "NO_WAIT"
+      ],
+      "invalidForList": [],
+      "condition": "仅：NO_WAIT",
       "defaultValue": "false",
+      "defaultValueRaw": false,
       "required": false,
       "variableMode": "Input",
-      "condition": "仅：NO_WAIT",
-      "description": ""
+      "isControlField": false
     },
     {
       "key": "showBuildInToolbar",
       "name": "显示内置工具栏",
       "type": "Boolean",
+      "description": "",
+      "isAdvanced": true,
+      "validForList": [
+        "WAIT",
+        "NO_WAIT"
+      ],
+      "invalidForList": [],
+      "condition": "仅：WAIT, NO_WAIT",
       "defaultValue": "true",
+      "defaultValueRaw": true,
       "required": false,
       "variableMode": "UseVarOrInput",
-      "condition": "仅：WAIT, NO_WAIT",
-      "description": ""
+      "isControlField": false
     },
     {
       "key": "caretPosition",
       "name": "光标位置",
       "type": "Integer",
+      "description": "0表示最前面，-1表示最后面，其它数字表示某个具体字符位置。",
+      "isAdvanced": true,
+      "validForList": [
+        "WAIT",
+        "NO_WAIT"
+      ],
+      "invalidForList": [],
+      "condition": "仅：WAIT, NO_WAIT",
       "defaultValue": "0",
+      "defaultValueRaw": 0,
       "required": true,
       "variableMode": "UseVarOrInput",
-      "condition": "仅：WAIT, NO_WAIT",
-      "description": "0表示最前面，-1表示最后面，其它数字表示某个具体字符位置。"
+      "isControlField": false
     },
     {
       "key": "advancedSettings",
       "name": "高级设置",
       "type": "Text",
+      "description": "请参考模块文档。",
+      "isAdvanced": true,
+      "validForList": [],
+      "invalidForList": [],
+      "condition": "",
       "defaultValue": "",
       "required": false,
       "variableMode": "Input",
-      "condition": "",
-      "description": "请参考模块文档。"
+      "isControlField": false
     },
     {
       "key": "stopIfFail",
       "name": "失败后停止",
       "type": "Boolean",
+      "description": "失败后是否停止动作",
+      "isAdvanced": false,
+      "validForList": [],
+      "invalidForList": [],
+      "condition": "",
       "defaultValue": "true",
+      "defaultValueRaw": true,
       "required": false,
       "variableMode": "Input",
-      "condition": "",
-      "description": "失败后是否停止动作"
+      "isControlField": false
     }
   ],
   "outputs": [
@@ -268,64 +463,117 @@
       "key": "isSuccess",
       "name": "是否成功",
       "type": "Boolean",
-      "condition": "",
-      "description": "操作是否成功"
+      "description": "操作是否成功",
+      "isAdvanced": false,
+      "validForList": [],
+      "invalidForList": [],
+      "condition": ""
     },
     {
       "key": "selectedOperation",
       "name": "选择的项",
       "type": "Text",
-      "condition": "仅：WAIT",
-      "description": "选择的后续操作项"
+      "description": "选择的后续操作项",
+      "isAdvanced": false,
+      "validForList": [
+        "WAIT"
+      ],
+      "invalidForList": [],
+      "condition": "仅：WAIT"
     },
     {
       "key": "resultText",
       "name": "结果文本",
       "type": "Text",
-      "condition": "仅：WAIT, CLOSE_WINDOW, GET_WIN_INFO",
-      "description": "文本框内的所有文本"
+      "description": "文本框内的所有文本",
+      "isAdvanced": false,
+      "validForList": [
+        "WAIT",
+        "CLOSE_WINDOW",
+        "GET_WIN_INFO"
+      ],
+      "invalidForList": [],
+      "condition": "仅：WAIT, CLOSE_WINDOW, GET_WIN_INFO"
     },
     {
       "key": "windowHandle",
       "name": "窗口句柄",
       "type": "Integer",
-      "condition": "仅：NO_WAIT, GET_WIN_INFO",
-      "description": ""
+      "description": "",
+      "isAdvanced": false,
+      "validForList": [
+        "NO_WAIT",
+        "GET_WIN_INFO"
+      ],
+      "invalidForList": [],
+      "condition": "仅：NO_WAIT, GET_WIN_INFO"
     },
     {
       "key": "selectedText",
       "name": "选中的文本",
       "type": "Text",
-      "condition": "仅：WAIT, CLOSE_WINDOW, GET_WIN_INFO",
-      "description": "文本框内选中的文本"
+      "description": "文本框内选中的文本",
+      "isAdvanced": false,
+      "validForList": [
+        "WAIT",
+        "CLOSE_WINDOW",
+        "GET_WIN_INFO"
+      ],
+      "invalidForList": [],
+      "condition": "仅：WAIT, CLOSE_WINDOW, GET_WIN_INFO"
     },
     {
       "key": "caretPosition",
       "name": "光标位置",
       "type": "Integer",
-      "condition": "仅：WAIT, CLOSE_WINDOW, GET_WIN_INFO",
-      "description": "插入符所在字符序号"
+      "description": "插入符所在字符序号",
+      "isAdvanced": false,
+      "validForList": [
+        "WAIT",
+        "CLOSE_WINDOW",
+        "GET_WIN_INFO"
+      ],
+      "invalidForList": [],
+      "condition": "仅：WAIT, CLOSE_WINDOW, GET_WIN_INFO"
     },
     {
       "key": "windowPosition",
       "name": "窗口位置",
       "type": "Text",
-      "condition": "仅：WAIT, CLOSE_WINDOW, GET_WIN_INFO",
-      "description": "窗口的最终显示位置"
+      "description": "窗口的最终显示位置",
+      "isAdvanced": false,
+      "validForList": [
+        "WAIT",
+        "CLOSE_WINDOW",
+        "GET_WIN_INFO"
+      ],
+      "invalidForList": [],
+      "condition": "仅：WAIT, CLOSE_WINDOW, GET_WIN_INFO"
     },
     {
       "key": "isWindowExists",
       "name": "窗口是否存在",
       "type": "Boolean",
-      "condition": "仅：GET_WIN_INFO",
-      "description": ""
+      "description": "",
+      "isAdvanced": false,
+      "validForList": [
+        "GET_WIN_INFO"
+      ],
+      "invalidForList": [],
+      "condition": "仅：GET_WIN_INFO"
     },
     {
       "key": "allWindows",
       "name": "所有窗口",
       "type": "Dict",
-      "condition": "仅：GET_ALL_WINDOWS, GET_ACTION_WINDOWS",
-      "description": "词典类型，key为窗口的句柄，value为窗口的标识。获取全部窗口时，为了安全，仅限自己开发的动作使用。"
+      "description": "词典类型，key为窗口的句柄，value为窗口的标识。获取全部窗口时，为了安全，仅限自己开发的动作使用。",
+      "isAdvanced": false,
+      "validForList": [
+        "GET_ALL_WINDOWS",
+        "GET_ACTION_WINDOWS"
+      ],
+      "invalidForList": [],
+      "condition": "仅：GET_ALL_WINDOWS, GET_ACTION_WINDOWS"
     }
   ],
   "selections": {
@@ -635,5 +883,5 @@
       ]
     }
   },
-  "sourceFileName": "sys_showText_文本窗口.md"
+  "sourceFileName": "catalog.json"
 }

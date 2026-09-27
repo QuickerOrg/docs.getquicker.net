@@ -16,11 +16,16 @@
       "key": "stopIfFail",
       "name": "失败后中止动作",
       "type": "Boolean",
+      "description": "获取进程信息失败后是否停止动作",
+      "isAdvanced": false,
+      "validForList": [],
+      "invalidForList": [],
+      "condition": "",
       "defaultValue": "true",
+      "defaultValueRaw": true,
       "required": false,
       "variableMode": "Input",
-      "condition": "",
-      "description": "获取进程信息失败后是否停止动作"
+      "isControlField": false
     }
   ],
   "outputs": [
@@ -28,31 +33,43 @@
       "key": "isSuccess",
       "name": "是否成功",
       "type": "Boolean",
-      "condition": "",
-      "description": "是否成功获得进程信息"
+      "description": "是否成功获得进程信息",
+      "isAdvanced": false,
+      "validForList": [],
+      "invalidForList": [],
+      "condition": ""
     },
     {
       "key": "path",
       "name": "程序路径",
       "type": "Text",
-      "condition": "",
-      "description": "获得的进程路径"
+      "description": "获得的进程路径",
+      "isAdvanced": false,
+      "validForList": [],
+      "invalidForList": [],
+      "condition": ""
     },
     {
       "key": "procName",
       "name": "进程名",
       "type": "Text",
-      "condition": "",
-      "description": "进程名通常为程序文件名去掉.exe后缀，大小写不确定。"
+      "description": "进程名通常为程序文件名去掉.exe后缀，大小写不确定。",
+      "isAdvanced": false,
+      "validForList": [],
+      "invalidForList": [],
+      "condition": ""
     },
     {
       "key": "pid",
       "name": "PID",
       "type": "Integer",
-      "condition": "",
-      "description": "进程ID"
+      "description": "进程ID",
+      "isAdvanced": false,
+      "validForList": [],
+      "invalidForList": [],
+      "condition": ""
     }
   ],
   "selections": {},
-  "sourceFileName": "sys_getActiveProcessInfo_获取前台进程信息.md"
+  "sourceFileName": "catalog.json"
 }

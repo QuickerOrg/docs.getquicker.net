@@ -16,14 +16,19 @@
       "key": "keys",
       "name": "按键序列",
       "type": "Text",
+      "description": "要发送的按键序列，使用C#语言SendKeys.Send()语法，具体请参考教程文档。",
+      "isAdvanced": false,
+      "validForList": [],
+      "invalidForList": [],
+      "condition": "",
       "defaultValue": "",
+      "defaultValueRaw": "",
       "required": false,
       "variableMode": "UseVarOrInput",
-      "condition": "",
-      "description": "要发送的按键序列，使用C#语言SendKeys.Send()语法，具体请参考教程文档。"
+      "isControlField": false
     }
   ],
   "outputs": [],
   "selections": {},
-  "sourceFileName": "sys_sendKeys_模拟按键B（参数）.md"
+  "sourceFileName": "catalog.json"
 }

@@ -16,31 +16,48 @@
       "key": "operation",
       "name": "操作类型",
       "type": "Enum",
+      "description": "",
+      "isAdvanced": false,
+      "validForList": [],
+      "invalidForList": [],
+      "condition": "",
       "defaultValue": "getPath",
+      "defaultValueRaw": "getPath",
       "required": true,
       "variableMode": "Input",
-      "condition": "",
-      "description": ""
+      "isControlField": true
     },
     {
       "key": "path",
       "name": "路径",
       "type": "Text",
+      "description": "",
+      "isAdvanced": false,
+      "validForList": [
+        "setPath"
+      ],
+      "invalidForList": [],
+      "condition": "仅：setPath",
       "defaultValue": "",
+      "defaultValueRaw": "",
       "required": false,
       "variableMode": "Input",
-      "condition": "仅：setPath",
-      "description": ""
+      "isControlField": false
     },
     {
       "key": "stopIfFail",
       "name": "失败后停止",
       "type": "Boolean",
+      "description": "失败后是否停止动作",
+      "isAdvanced": false,
+      "validForList": [],
+      "invalidForList": [],
+      "condition": "",
       "defaultValue": "true",
+      "defaultValueRaw": true,
       "required": false,
       "variableMode": "Input",
-      "condition": "",
-      "description": "失败后是否停止动作"
+      "isControlField": false
     }
   ],
   "outputs": [
@@ -48,29 +65,47 @@
       "key": "isSuccess",
       "name": "是否成功",
       "type": "Boolean",
-      "condition": "",
-      "description": "操作是否成功"
+      "description": "操作是否成功",
+      "isAdvanced": false,
+      "validForList": [],
+      "invalidForList": [],
+      "condition": ""
     },
     {
       "key": "output",
       "name": "当前窗口路径",
       "type": "Text",
-      "condition": "仅：getPath",
-      "description": "当前资源管理器窗口的路径"
+      "description": "当前资源管理器窗口的路径",
+      "isAdvanced": false,
+      "validForList": [
+        "getPath"
+      ],
+      "invalidForList": [],
+      "condition": "仅：getPath"
     },
     {
       "key": "allPathList",
       "name": "所有打开的路径",
       "type": "List",
-      "condition": "仅：getPath",
-      "description": "所有资源管理器窗口中打开的路径列表"
+      "description": "所有资源管理器窗口中打开的路径列表",
+      "isAdvanced": false,
+      "validForList": [
+        "getPath"
+      ],
+      "invalidForList": [],
+      "condition": "仅：getPath"
     },
     {
       "key": "lastPath",
       "name": "最近访问的路径",
       "type": "Text",
-      "condition": "仅：getPath",
-      "description": "最近访问的资源管理器窗口的路径"
+      "description": "最近访问的资源管理器窗口的路径",
+      "isAdvanced": false,
+      "validForList": [
+        "getPath"
+      ],
+      "invalidForList": [],
+      "condition": "仅：getPath"
     }
   ],
   "selections": {
@@ -90,5 +125,5 @@
       ]
     }
   },
-  "sourceFileName": "sys_getExplorerPath_获取资源管理器路径_跳转路径.md"
+  "sourceFileName": "catalog.json"
 }

@@ -16,31 +16,46 @@
       "key": "preSelectArea",
       "name": "预选截图区域",
       "type": "Text",
+      "description": "留空时手动选择；指定物理屏幕坐标 left,top,right,bottom（右、下边界不包含）时，将跳过首次框选并直接开始长截图。",
+      "isAdvanced": true,
+      "validForList": [],
+      "invalidForList": [],
+      "condition": "",
       "defaultValue": "",
+      "defaultValueRaw": "",
       "required": false,
       "variableMode": "UseVarOrInput",
-      "condition": "",
-      "description": "留空时手动选择；指定物理屏幕坐标 left,top,right,bottom（右、下边界不包含）时，将跳过首次框选并直接开始长截图。"
+      "isControlField": false
     },
     {
       "key": "toClip",
       "name": "写入剪贴板",
       "type": "Boolean",
+      "description": "长截图结果是否写入到剪贴板中。",
+      "isAdvanced": false,
+      "validForList": [],
+      "invalidForList": [],
+      "condition": "",
       "defaultValue": "true",
+      "defaultValueRaw": true,
       "required": false,
       "variableMode": "Input",
-      "condition": "",
-      "description": "长截图结果是否写入到剪贴板中。"
+      "isControlField": false
     },
     {
       "key": "stopIfFail",
       "name": "失败后停止",
       "type": "Boolean",
+      "description": "失败后是否停止动作",
+      "isAdvanced": false,
+      "validForList": [],
+      "invalidForList": [],
+      "condition": "",
       "defaultValue": "true",
+      "defaultValueRaw": true,
       "required": false,
       "variableMode": "Input",
-      "condition": "",
-      "description": "失败后是否停止动作"
+      "isControlField": false
     }
   ],
   "outputs": [
@@ -48,24 +63,33 @@
       "key": "isSuccess",
       "name": "是否成功",
       "type": "Boolean",
-      "condition": "",
-      "description": "操作是否成功"
+      "description": "操作是否成功",
+      "isAdvanced": false,
+      "validForList": [],
+      "invalidForList": [],
+      "condition": ""
     },
     {
       "key": "img",
       "name": "图片",
       "type": "Image",
-      "condition": "",
-      "description": "长截图结果图片。"
+      "description": "长截图结果图片。",
+      "isAdvanced": false,
+      "validForList": [],
+      "invalidForList": [],
+      "condition": ""
     },
     {
       "key": "rect",
       "name": "截图区域",
       "type": "Text",
-      "condition": "",
-      "description": "长截图起始选区(left,top,right,bottom)。"
+      "description": "长截图起始选区(left,top,right,bottom)。",
+      "isAdvanced": false,
+      "validForList": [],
+      "invalidForList": [],
+      "condition": ""
     }
   ],
   "selections": {},
-  "sourceFileName": "sys_longScreenshot_长截图.md"
+  "sourceFileName": "catalog.json"
 }

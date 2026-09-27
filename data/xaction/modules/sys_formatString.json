@@ -16,61 +16,91 @@
       "key": "formatString",
       "name": "格式化字符串",
       "type": "Text",
+      "description": "使用C#的String.Format语法。",
+      "isAdvanced": false,
+      "validForList": [],
+      "invalidForList": [],
+      "condition": "",
       "defaultValue": "{0}",
+      "defaultValueRaw": "{0}",
       "required": true,
       "variableMode": "UseVarOrInput",
-      "condition": "",
-      "description": "使用C#的String.Format语法。"
+      "isControlField": false
     },
     {
       "key": "p0",
       "name": "参数0",
       "type": "Any",
+      "description": "第 0 个参数",
+      "isAdvanced": false,
+      "validForList": [],
+      "invalidForList": [],
+      "condition": "",
       "defaultValue": "",
+      "defaultValueRaw": "",
       "required": false,
       "variableMode": "UseVarOrInput",
-      "condition": "",
-      "description": "第 0 个参数"
+      "isControlField": false
     },
     {
       "key": "p1",
       "name": "参数1",
       "type": "Any",
+      "description": "第 1 个参数",
+      "isAdvanced": false,
+      "validForList": [],
+      "invalidForList": [],
+      "condition": "",
       "defaultValue": "",
+      "defaultValueRaw": "",
       "required": false,
       "variableMode": "UseVarOrInput",
-      "condition": "",
-      "description": "第 1 个参数"
+      "isControlField": false
     },
     {
       "key": "p2",
       "name": "参数2",
       "type": "Any",
+      "description": "第 2 个参数",
+      "isAdvanced": false,
+      "validForList": [],
+      "invalidForList": [],
+      "condition": "",
       "defaultValue": "",
+      "defaultValueRaw": "",
       "required": false,
       "variableMode": "UseVarOrInput",
-      "condition": "",
-      "description": "第 2 个参数"
+      "isControlField": false
     },
     {
       "key": "p3",
       "name": "参数3",
       "type": "Any",
+      "description": "第 3 个参数",
+      "isAdvanced": false,
+      "validForList": [],
+      "invalidForList": [],
+      "condition": "",
       "defaultValue": "",
+      "defaultValueRaw": "",
       "required": false,
       "variableMode": "UseVarOrInput",
-      "condition": "",
-      "description": "第 3 个参数"
+      "isControlField": false
     },
     {
       "key": "p4",
       "name": "参数4",
       "type": "Any",
+      "description": "第 4 个参数",
+      "isAdvanced": false,
+      "validForList": [],
+      "invalidForList": [],
+      "condition": "",
       "defaultValue": "",
+      "defaultValueRaw": "",
       "required": false,
       "variableMode": "UseVarOrInput",
-      "condition": "",
-      "description": "第 4 个参数"
+      "isControlField": false
     }
   ],
   "outputs": [
@@ -78,10 +108,13 @@
       "key": "output",
       "name": "结果",
       "type": "Text",
-      "condition": "",
-      "description": "生成的文本内容"
+      "description": "生成的文本内容",
+      "isAdvanced": false,
+      "validForList": [],
+      "invalidForList": [],
+      "condition": ""
     }
   ],
   "selections": {},
-  "sourceFileName": "sys_formatString_组合成文本.md"
+  "sourceFileName": "catalog.json"
 }

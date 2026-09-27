@@ -16,14 +16,18 @@
       "key": "note",
       "name": "注释内容",
       "type": "Text",
+      "description": "注释内容。若想设置注释步骤的背景色，请参考模块文档。",
+      "isAdvanced": false,
+      "validForList": [],
+      "invalidForList": [],
+      "condition": "",
       "defaultValue": "",
       "required": false,
       "variableMode": "Input",
-      "condition": "",
-      "description": "注释内容。若想设置注释步骤的背景色，请参考模块文档。"
+      "isControlField": false
     }
   ],
   "outputs": [],
   "selections": {},
-  "sourceFileName": "sys_comment_注释.md"
+  "sourceFileName": "catalog.json"
 }

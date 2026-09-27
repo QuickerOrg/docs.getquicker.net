@@ -16,171 +16,315 @@
       "key": "source",
       "name": "操作/来源",
       "type": "Enum",
+      "description": "图片来源类型",
+      "isAdvanced": false,
+      "validForList": [],
+      "invalidForList": [],
+      "condition": "",
       "defaultValue": "var",
+      "defaultValueRaw": "var",
       "required": true,
       "variableMode": "Input",
-      "condition": "",
-      "description": "图片来源类型"
+      "isControlField": true
     },
     {
       "key": "path",
       "name": "路径/网址",
       "type": "Text",
+      "description": "图片文件的路径或网址。",
+      "isAdvanced": false,
+      "validForList": [
+        "file"
+      ],
+      "invalidForList": [],
+      "condition": "仅：file",
       "defaultValue": "",
       "required": true,
       "variableMode": "UseVarOrInput",
-      "condition": "仅：file",
-      "description": "图片文件的路径或网址。"
+      "isControlField": false
     },
     {
       "key": "imgVar",
       "name": "图片变量",
       "type": "Image",
+      "description": "从指定变量中加载图片",
+      "isAdvanced": false,
+      "validForList": [
+        "var"
+      ],
+      "invalidForList": [],
+      "condition": "仅：var",
       "defaultValue": "",
+      "defaultValueRaw": "",
       "required": true,
       "variableMode": "UseVar",
-      "condition": "仅：var",
-      "description": "从指定变量中加载图片"
+      "isControlField": false
     },
     {
       "key": "scale",
       "name": "初始缩放比例",
       "type": "Number",
+      "description": "可以为小数，1表示原始大小，-1表示对大图自动调整缩放比例",
+      "isAdvanced": false,
+      "validForList": [
+        "file",
+        "var",
+        "clipboard"
+      ],
+      "invalidForList": [],
+      "condition": "仅：file, var, clipboard",
       "defaultValue": "1",
+      "defaultValueRaw": 1,
       "required": true,
       "variableMode": "Input",
-      "condition": "仅：file, var, clipboard",
-      "description": "可以为小数，1表示原始大小，-1表示对大图自动调整缩放比例"
+      "isControlField": false
     },
     {
       "key": "autoCloseKey",
       "name": "唯一性标识",
       "type": "Text",
+      "description": "(仅必要时使用)自动关闭之前打开的具有此标识的图片窗口。",
+      "isAdvanced": false,
+      "validForList": [
+        "file",
+        "var",
+        "clipboard",
+        "closeWindow",
+        "getState"
+      ],
+      "invalidForList": [],
+      "condition": "仅：file, var, clipboard, closeWindow, getState",
       "defaultValue": "",
+      "defaultValueRaw": "",
       "required": false,
       "variableMode": "Input",
-      "condition": "仅：file, var, clipboard, closeWindow, getState",
-      "description": "(仅必要时使用)自动关闭之前打开的具有此标识的图片窗口。"
+      "isControlField": false
     },
     {
       "key": "autoCloseTime",
       "name": "自动关闭时间",
       "type": "Number",
+      "description": "几秒后自动关闭，可以为小数。0：不自动关闭。",
+      "isAdvanced": false,
+      "validForList": [
+        "file",
+        "var",
+        "clipboard"
+      ],
+      "invalidForList": [],
+      "condition": "仅：file, var, clipboard",
       "defaultValue": "0",
+      "defaultValueRaw": 0,
       "required": true,
       "variableMode": "Input",
-      "condition": "仅：file, var, clipboard",
-      "description": "几秒后自动关闭，可以为小数。0：不自动关闭。"
+      "isControlField": false
     },
     {
       "key": "opacity",
       "name": "不透明度",
       "type": "Number",
+      "description": "0-1之间的小数，1为完全不透明，0为完全透明。",
+      "isAdvanced": false,
+      "validForList": [
+        "file",
+        "var",
+        "clipboard"
+      ],
+      "invalidForList": [],
+      "condition": "仅：file, var, clipboard",
       "defaultValue": "1",
+      "defaultValueRaw": 1,
       "required": true,
       "variableMode": "UseVarOrInput",
-      "condition": "仅：file, var, clipboard",
-      "description": "0-1之间的小数，1为完全不透明，0为完全透明。"
+      "isControlField": false
     },
     {
       "key": "winLocation",
       "name": "显示位置",
       "type": "Enum",
+      "description": "图片显示位置",
+      "isAdvanced": false,
+      "validForList": [
+        "file",
+        "var",
+        "clipboard"
+      ],
+      "invalidForList": [],
+      "condition": "仅：file, var, clipboard",
       "defaultValue": "Auto",
+      "defaultValueRaw": "Auto",
       "required": false,
       "variableMode": "UseVarOrInput",
-      "condition": "仅：file, var, clipboard",
-      "description": "图片显示位置"
+      "isControlField": false
     },
     {
       "key": "winPosition",
       "name": "位置坐标",
       "type": "Text",
+      "description": "仅用于位置为\"自定义位置\"类型。格式为:left,top或left,top,right,bottom",
+      "isAdvanced": false,
+      "validForList": [
+        "file",
+        "var",
+        "clipboard"
+      ],
+      "invalidForList": [],
+      "condition": "仅：file, var, clipboard",
       "defaultValue": "",
+      "defaultValueRaw": "",
       "required": false,
       "variableMode": "UseVarOrInput",
-      "condition": "仅：file, var, clipboard",
-      "description": "仅用于位置为\"自定义位置\"类型。格式为:left,top或left,top,right,bottom"
+      "isControlField": false
     },
     {
       "key": "waitClose",
       "name": "等待图片关闭",
       "type": "Boolean",
+      "description": "是否等待图片关闭后再执行后续步骤",
+      "isAdvanced": false,
+      "validForList": [
+        "file",
+        "var",
+        "clipboard"
+      ],
+      "invalidForList": [],
+      "condition": "仅：file, var, clipboard",
       "defaultValue": "false",
+      "defaultValueRaw": false,
       "required": false,
       "variableMode": "UseVarOrInput",
-      "condition": "仅：file, var, clipboard",
-      "description": "是否等待图片关闭后再执行后续步骤"
+      "isControlField": false
     },
     {
       "key": "showDropShadow",
       "name": "显示阴影",
       "type": "Boolean",
+      "description": "是否显示边框阴影",
+      "isAdvanced": false,
+      "validForList": [
+        "file",
+        "var",
+        "clipboard"
+      ],
+      "invalidForList": [],
+      "condition": "仅：file, var, clipboard",
       "defaultValue": "true",
+      "defaultValueRaw": true,
       "required": false,
       "variableMode": "UseVarOrInput",
-      "condition": "仅：file, var, clipboard",
-      "description": "是否显示边框阴影"
+      "isControlField": false
     },
     {
       "key": "showTaskbarIcon",
       "name": "显示任务栏图标",
       "type": "Boolean",
+      "description": "是否显示任务栏图标",
+      "isAdvanced": false,
+      "validForList": [
+        "file",
+        "var",
+        "clipboard"
+      ],
+      "invalidForList": [],
+      "condition": "仅：file, var, clipboard",
       "defaultValue": "true",
+      "defaultValueRaw": true,
       "required": false,
       "variableMode": "UseVarOrInput",
-      "condition": "仅：file, var, clipboard",
-      "description": "是否显示任务栏图标"
+      "isControlField": false
     },
     {
       "key": "topMost",
       "name": "是否置顶显示",
       "type": "Boolean",
+      "description": "是否置顶显示图片",
+      "isAdvanced": false,
+      "validForList": [
+        "file",
+        "var",
+        "clipboard"
+      ],
+      "invalidForList": [],
+      "condition": "仅：file, var, clipboard",
       "defaultValue": "true",
+      "defaultValueRaw": true,
       "required": false,
       "variableMode": "UseVarOrInput",
-      "condition": "仅：file, var, clipboard",
-      "description": "是否置顶显示图片"
+      "isControlField": false
     },
     {
       "key": "noActivate",
       "name": "不激活窗口",
       "type": "Boolean",
+      "description": "图片窗口显示时不抢占焦点（无法通过Esc关闭）",
+      "isAdvanced": false,
+      "validForList": [
+        "file",
+        "var",
+        "clipboard"
+      ],
+      "invalidForList": [],
+      "condition": "仅：file, var, clipboard",
       "defaultValue": "false",
+      "defaultValueRaw": false,
       "required": false,
       "variableMode": "Input",
-      "condition": "仅：file, var, clipboard",
-      "description": "图片窗口显示时不抢占焦点（无法通过Esc关闭）"
+      "isControlField": false
     },
     {
       "key": "closeWhenLostFocus",
       "name": "丢失焦点时自动关闭",
       "type": "Boolean",
+      "description": "",
+      "isAdvanced": false,
+      "validForList": [
+        "file",
+        "var",
+        "clipboard"
+      ],
+      "invalidForList": [],
+      "condition": "仅：file, var, clipboard",
       "defaultValue": "false",
+      "defaultValueRaw": false,
       "required": false,
       "variableMode": "Input",
-      "condition": "仅：file, var, clipboard",
-      "description": ""
+      "isControlField": false
     },
     {
       "key": "tooltip",
       "name": "ToolTip提示文字",
       "type": "Text",
+      "description": "",
+      "isAdvanced": true,
+      "validForList": [
+        "file",
+        "var",
+        "clipboard"
+      ],
+      "invalidForList": [],
+      "condition": "仅：file, var, clipboard",
       "defaultValue": "",
       "required": false,
       "variableMode": "UseVarOrInput",
-      "condition": "仅：file, var, clipboard",
-      "description": ""
+      "isControlField": false
     },
     {
       "key": "closeCallbackParam",
       "name": "关闭窗口回调参数",
       "type": "Text",
+      "description": "关闭图片窗口时，运行当前动作，并传入指定参数。未指定参数时，不进行回调。",
+      "isAdvanced": true,
+      "validForList": [
+        "file",
+        "var",
+        "clipboard"
+      ],
+      "invalidForList": [],
+      "condition": "仅：file, var, clipboard",
       "defaultValue": "",
       "required": false,
       "variableMode": "UseVarOrInput",
-      "condition": "仅：file, var, clipboard",
-      "description": "关闭图片窗口时，运行当前动作，并传入指定参数。未指定参数时，不进行回调。"
+      "isControlField": false
     }
   ],
   "outputs": [
@@ -188,29 +332,55 @@
       "key": "isExists",
       "name": "是否存在",
       "type": "Boolean",
-      "condition": "仅：getState",
-      "description": "是否存在指定标识的窗口"
+      "description": "是否存在指定标识的窗口",
+      "isAdvanced": false,
+      "validForList": [
+        "getState"
+      ],
+      "invalidForList": [],
+      "condition": "仅：getState"
     },
     {
       "key": "hwnd",
       "name": "窗口句柄",
       "type": "Integer",
-      "condition": "仅：file, var, clipboard, getState",
-      "description": "新创建的图片窗口的句柄"
+      "description": "新创建的图片窗口的句柄",
+      "isAdvanced": false,
+      "validForList": [
+        "file",
+        "var",
+        "clipboard",
+        "getState"
+      ],
+      "invalidForList": [],
+      "condition": "仅：file, var, clipboard, getState"
     },
     {
       "key": "finalPosition",
       "name": "最终贴图位置",
       "type": "Text",
-      "condition": "仅：file, var, clipboard, getState",
-      "description": "移动窗口后的贴图位置格式为left,top,right,bottom。显示图片（开启\"等待图片关闭\" 选项）或获取当前打开的图片窗口信息时有效。"
+      "description": "移动窗口后的贴图位置格式为left,top,right,bottom。显示图片（开启\"等待图片关闭\" 选项）或获取当前打开的图片窗口信息时有效。",
+      "isAdvanced": false,
+      "validForList": [
+        "file",
+        "var",
+        "clipboard",
+        "getState"
+      ],
+      "invalidForList": [],
+      "condition": "仅：file, var, clipboard, getState"
     },
     {
       "key": "windowIdList",
       "name": "窗口标识列表",
       "type": "List",
-      "condition": "仅：getImageWindows",
-      "description": ""
+      "description": "",
+      "isAdvanced": false,
+      "validForList": [
+        "getImageWindows"
+      ],
+      "invalidForList": [],
+      "condition": "仅：getImageWindows"
     }
   ],
   "selections": {
@@ -310,5 +480,5 @@
       ]
     }
   },
-  "sourceFileName": "sys_showImage_显示图片.md"
+  "sourceFileName": "catalog.json"
 }

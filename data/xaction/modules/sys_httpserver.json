@@ -16,131 +16,215 @@
       "key": "operation",
       "name": "操作类型",
       "type": "Enum",
+      "description": "",
+      "isAdvanced": false,
+      "validForList": [],
+      "invalidForList": [],
+      "condition": "",
       "defaultValue": "CreateFileServer",
+      "defaultValueRaw": "CreateFileServer",
       "required": true,
       "variableMode": "Input",
-      "condition": "",
-      "description": ""
+      "isControlField": true
     },
     {
       "key": "port",
       "name": "端口号",
       "type": "Integer",
+      "description": "服务端口号。值为0时自动生成端口号。",
+      "isAdvanced": false,
+      "validForList": [
+        "CreateFileServer"
+      ],
+      "invalidForList": [],
+      "condition": "仅：CreateFileServer",
       "defaultValue": "8080",
+      "defaultValueRaw": 8080,
       "required": false,
       "variableMode": "UseVarOrInput",
-      "condition": "仅：CreateFileServer",
-      "description": "服务端口号。值为0时自动生成端口号。"
+      "isControlField": false
     },
     {
       "key": "enableHttps",
       "name": "启用HTTPS",
       "type": "Boolean",
+      "description": "",
+      "isAdvanced": false,
+      "validForList": [
+        "CreateFileServer"
+      ],
+      "invalidForList": [],
+      "condition": "仅：CreateFileServer",
       "defaultValue": "true",
+      "defaultValueRaw": true,
       "required": false,
       "variableMode": "UseVarOrInput",
-      "condition": "仅：CreateFileServer",
-      "description": ""
+      "isControlField": false
     },
     {
       "key": "docPath",
       "name": "文件夹路径",
       "type": "Text",
+      "description": "服务的文件夹完整路径。不支持磁盘根目录。",
+      "isAdvanced": false,
+      "validForList": [
+        "CreateFileServer"
+      ],
+      "invalidForList": [],
+      "condition": "仅：CreateFileServer",
       "defaultValue": "",
       "required": false,
       "variableMode": "UseVarOrInput",
-      "condition": "仅：CreateFileServer",
-      "description": "服务的文件夹完整路径。不支持磁盘根目录。"
+      "isControlField": false
     },
     {
       "key": "defaultDoc",
       "name": "默认文档",
       "type": "Text",
+      "description": "可选，如index.html。",
+      "isAdvanced": false,
+      "validForList": [
+        "CreateFileServer"
+      ],
+      "invalidForList": [],
+      "condition": "仅：CreateFileServer",
       "defaultValue": "",
+      "defaultValueRaw": "",
       "required": false,
       "variableMode": "UseVarOrInput",
-      "condition": "仅：CreateFileServer",
-      "description": "可选，如index.html。"
+      "isControlField": false
     },
     {
       "key": "password",
       "name": "基础验证密码",
       "type": "Text",
+      "description": "Basic验证的密码，账号固定为quicker",
+      "isAdvanced": false,
+      "validForList": [
+        "CreateFileServer"
+      ],
+      "invalidForList": [],
+      "condition": "仅：CreateFileServer",
       "defaultValue": "",
+      "defaultValueRaw": "",
       "required": false,
       "variableMode": "UseVarOrInput",
-      "condition": "仅：CreateFileServer",
-      "description": "Basic验证的密码，账号固定为quicker"
+      "isControlField": false
     },
     {
       "key": "serviceId",
       "name": "服务ID",
       "type": "Text",
+      "description": "通过服务ID启动或关闭服务。同一服务ID再次创建时会先关闭旧服务。",
+      "isAdvanced": false,
+      "validForList": [],
+      "invalidForList": [],
+      "condition": "",
       "defaultValue": "default",
+      "defaultValueRaw": "default",
       "required": false,
       "variableMode": "UseVarOrInput",
-      "condition": "",
-      "description": "通过服务ID启动或关闭服务。同一服务ID再次创建时会先关闭旧服务。"
+      "isControlField": false
     },
     {
       "key": "customRequest",
       "name": "自定义请求处理",
       "type": "Text",
+      "description": "每行一条规则，格式为：\"路径:HTTP方法:子程序名\"。详细信息请参考模块文档。",
+      "isAdvanced": true,
+      "validForList": [
+        "CreateFileServer"
+      ],
+      "invalidForList": [],
+      "condition": "仅：CreateFileServer",
       "defaultValue": "",
+      "defaultValueRaw": "",
       "required": false,
       "variableMode": "UseVarOrInput",
-      "condition": "仅：CreateFileServer",
-      "description": "每行一条规则，格式为：\"路径:HTTP方法:子程序名\"。详细信息请参考模块文档。"
+      "isControlField": false
     },
     {
       "key": "headCode",
       "name": "HEAD插入代码",
       "type": "Text",
+      "description": "向目录HTML文档的Head中插入代码，可用于自定义风格。",
+      "isAdvanced": true,
+      "validForList": [
+        "CreateFileServer"
+      ],
+      "invalidForList": [],
+      "condition": "仅：CreateFileServer",
       "defaultValue": "",
+      "defaultValueRaw": "",
       "required": false,
       "variableMode": "UseVarOrInput",
-      "condition": "仅：CreateFileServer",
-      "description": "向目录HTML文档的Head中插入代码，可用于自定义风格。"
+      "isControlField": false
     },
     {
       "key": "bodyCode",
       "name": "BODY插入代码",
       "type": "Text",
+      "description": "向目录HTML文档的BODY中插入代码，可用于自定义脚本。",
+      "isAdvanced": true,
+      "validForList": [
+        "CreateFileServer"
+      ],
+      "invalidForList": [],
+      "condition": "仅：CreateFileServer",
       "defaultValue": "",
+      "defaultValueRaw": "",
       "required": false,
       "variableMode": "UseVarOrInput",
-      "condition": "仅：CreateFileServer",
-      "description": "向目录HTML文档的BODY中插入代码，可用于自定义脚本。"
+      "isControlField": false
     },
     {
       "key": "autoShutdownSeconds",
       "name": "闲置自动关闭",
       "type": "Number",
+      "description": "可选。一定时间（秒）没有请求后自动关闭服务。",
+      "isAdvanced": false,
+      "validForList": [
+        "CreateFileServer"
+      ],
+      "invalidForList": [],
+      "condition": "仅：CreateFileServer",
       "defaultValue": "0",
+      "defaultValueRaw": 0,
       "required": false,
       "variableMode": "UseVarOrInput",
-      "condition": "仅：CreateFileServer",
-      "description": "可选。一定时间（秒）没有请求后自动关闭服务。"
+      "isControlField": false
     },
     {
       "key": "showNotifyWhenAutoClose",
       "name": "自动关闭时显示通知",
       "type": "Boolean",
+      "description": "闲置超时关闭时，是否显示通知。",
+      "isAdvanced": false,
+      "validForList": [
+        "CreateFileServer"
+      ],
+      "invalidForList": [],
+      "condition": "仅：CreateFileServer",
       "defaultValue": "false",
+      "defaultValueRaw": false,
       "required": false,
       "variableMode": "UseVarOrInput",
-      "condition": "仅：CreateFileServer",
-      "description": "闲置超时关闭时，是否显示通知。"
+      "isControlField": false
     },
     {
       "key": "stopIfFail",
       "name": "失败后停止",
       "type": "Boolean",
+      "description": "失败后是否停止动作",
+      "isAdvanced": false,
+      "validForList": [],
+      "invalidForList": [],
+      "condition": "",
       "defaultValue": "true",
+      "defaultValueRaw": true,
       "required": false,
       "variableMode": "Input",
-      "condition": "",
-      "description": "失败后是否停止动作"
+      "isControlField": false
     }
   ],
   "outputs": [
@@ -148,36 +232,59 @@
       "key": "isSuccess",
       "name": "是否成功",
       "type": "Boolean",
-      "condition": "",
-      "description": "操作是否成功"
+      "description": "操作是否成功",
+      "isAdvanced": false,
+      "validForList": [],
+      "invalidForList": [],
+      "condition": ""
     },
     {
       "key": "serverUrl",
       "name": "服务地址",
       "type": "Text",
-      "condition": "仅：CreateFileServer",
-      "description": "服务网址"
+      "description": "服务网址",
+      "isAdvanced": false,
+      "validForList": [
+        "CreateFileServer"
+      ],
+      "invalidForList": [],
+      "condition": "仅：CreateFileServer"
     },
     {
       "key": "serverUrlWithAccount",
       "name": "带账号的地址",
       "type": "Text",
-      "condition": "仅：CreateFileServer",
-      "description": "带有账号密码的地址。可用于扫码后自动登录。"
+      "description": "带有账号密码的地址。可用于扫码后自动登录。",
+      "isAdvanced": false,
+      "validForList": [
+        "CreateFileServer"
+      ],
+      "invalidForList": [],
+      "condition": "仅：CreateFileServer"
     },
     {
       "key": "isRunning",
       "name": "是否在运行",
       "type": "Boolean",
-      "condition": "仅：GetServerState",
-      "description": "指定ID的web服务是否在运行中"
+      "description": "指定ID的web服务是否在运行中",
+      "isAdvanced": false,
+      "validForList": [
+        "GetServerState"
+      ],
+      "invalidForList": [],
+      "condition": "仅：GetServerState"
     },
     {
       "key": "serverList",
       "name": "运行中的服务列表",
       "type": "List",
-      "condition": "仅：GetServerState",
-      "description": "所有运行中的服务的列表"
+      "description": "所有运行中的服务的列表",
+      "isAdvanced": false,
+      "validForList": [
+        "GetServerState"
+      ],
+      "invalidForList": [],
+      "condition": "仅：GetServerState"
     }
   ],
   "selections": {
@@ -202,5 +309,5 @@
       ]
     }
   },
-  "sourceFileName": "sys_httpserver_HTTP服务器.md"
+  "sourceFileName": "catalog.json"
 }

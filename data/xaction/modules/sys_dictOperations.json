@@ -16,81 +16,148 @@
       "key": "type",
       "name": "操作类型",
       "type": "Enum",
+      "description": "",
+      "isAdvanced": false,
+      "validForList": [],
+      "invalidForList": [],
+      "condition": "",
       "defaultValue": "setOriginValue",
+      "defaultValueRaw": "setOriginValue",
       "required": true,
       "variableMode": "Input",
-      "condition": "",
-      "description": ""
+      "isControlField": true
     },
     {
       "key": "dict",
       "name": "词典",
       "type": "Dict",
+      "description": "要操作的词典变量",
+      "isAdvanced": false,
+      "validForList": [
+        "get",
+        "set",
+        "setOriginValue",
+        "remove",
+        "clear",
+        "keyList",
+        "valueList",
+        "reverse",
+        "dictToQueryString",
+        "dictToQueryStringNoEncode"
+      ],
+      "invalidForList": [],
+      "condition": "仅：get, set, setOriginValue, remove, clear, keyList, valueList, reverse, dictToQueryString, dictToQueryStringNoEncode",
       "defaultValue": "",
       "required": false,
       "variableMode": "UseVar",
-      "condition": "仅：get, set, setOriginValue, remove, clear, keyList, valueList, reverse, dictToQueryString, dictToQueryStringNoEncode",
-      "description": "要操作的词典变量"
+      "isControlField": false
     },
     {
       "key": "queryString",
       "name": "查询字符串",
       "type": "Text",
+      "description": "要解析的查询字符串",
+      "isAdvanced": false,
+      "validForList": [
+        "queryStringToDict"
+      ],
+      "invalidForList": [],
+      "condition": "仅：queryStringToDict",
       "defaultValue": "",
+      "defaultValueRaw": "",
       "required": false,
       "variableMode": "UseVarOrInput",
-      "condition": "仅：queryStringToDict",
-      "description": "要解析的查询字符串"
+      "isControlField": false
     },
     {
       "key": "key",
       "name": "键",
       "type": "Text",
+      "description": "要操作元素的键值。",
+      "isAdvanced": false,
+      "validForList": [
+        "get",
+        "set",
+        "setOriginValue",
+        "remove"
+      ],
+      "invalidForList": [],
+      "condition": "仅：get, set, setOriginValue, remove",
       "defaultValue": "",
+      "defaultValueRaw": "",
       "required": false,
       "variableMode": "UseVarOrInput",
-      "condition": "仅：get, set, setOriginValue, remove",
-      "description": "要操作元素的键值。"
+      "isControlField": false
     },
     {
       "key": "value",
       "name": "值",
       "type": "Text",
+      "description": "要保存的内容",
+      "isAdvanced": false,
+      "validForList": [
+        "set",
+        "setOriginValue"
+      ],
+      "invalidForList": [],
+      "condition": "仅：set, setOriginValue",
       "defaultValue": "",
+      "defaultValueRaw": "",
       "required": false,
       "variableMode": "UseVarOrInput",
-      "condition": "仅：set, setOriginValue",
-      "description": "要保存的内容"
+      "isControlField": false
     },
     {
       "key": "returnEmptyIfKeyNotExist",
       "name": "键不存在时返回空值",
       "type": "Boolean",
+      "description": "此时不作为失败处理",
+      "isAdvanced": false,
+      "validForList": [
+        "get"
+      ],
+      "invalidForList": [],
+      "condition": "仅：get",
       "defaultValue": "false",
+      "defaultValueRaw": false,
       "required": false,
       "variableMode": "Input",
-      "condition": "仅：get",
-      "description": "此时不作为失败处理"
+      "isControlField": false
     },
     {
       "key": "ignoreCase",
       "name": "忽略键的大小写",
       "type": "Boolean",
+      "description": "",
+      "isAdvanced": false,
+      "validForList": [
+        "get",
+        "set",
+        "setOriginValue",
+        "remove"
+      ],
+      "invalidForList": [],
+      "condition": "仅：get, set, setOriginValue, remove",
       "defaultValue": "false",
+      "defaultValueRaw": false,
       "required": false,
       "variableMode": "Input",
-      "condition": "仅：get, set, setOriginValue, remove",
-      "description": ""
+      "isControlField": false
     },
     {
       "key": "stopIfFail",
       "name": "失败后停止",
       "type": "Boolean",
+      "description": "失败后是否停止动作",
+      "isAdvanced": false,
+      "validForList": [],
+      "invalidForList": [],
+      "condition": "",
       "defaultValue": "false",
+      "defaultValueRaw": false,
       "required": false,
       "variableMode": "Input",
-      "condition": "",
-      "description": "失败后是否停止动作"
+      "isControlField": false
     }
   ],
   "outputs": [
@@ -98,15 +165,29 @@
       "key": "isSuccess",
       "name": "是否成功",
       "type": "Boolean",
-      "condition": "",
-      "description": "操作是否成功"
+      "description": "操作是否成功",
+      "isAdvanced": false,
+      "validForList": [],
+      "invalidForList": [],
+      "condition": ""
     },
     {
       "key": "value",
       "name": "结果",
       "type": "Any",
-      "condition": "仅：get, keyList, valueList, reverse, queryStringToDict, dictToQueryString, dictToQueryStringNoEncode",
-      "description": "操作后的输出（取的元素值、键列表、值列表等）"
+      "description": "操作后的输出（取的元素值、键列表、值列表等）",
+      "isAdvanced": false,
+      "validForList": [
+        "get",
+        "keyList",
+        "valueList",
+        "reverse",
+        "queryStringToDict",
+        "dictToQueryString",
+        "dictToQueryStringNoEncode"
+      ],
+      "invalidForList": [],
+      "condition": "仅：get, keyList, valueList, reverse, queryStringToDict, dictToQueryString, dictToQueryStringNoEncode"
     }
   ],
   "selections": {
@@ -171,5 +252,5 @@
       ]
     }
   },
-  "sourceFileName": "sys_dictOperations_词典操作.md"
+  "sourceFileName": "catalog.json"
 }

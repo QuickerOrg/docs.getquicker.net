@@ -16,51 +16,76 @@
       "key": "skipErr",
       "name": "忽略错误",
       "type": "Boolean",
+      "description": "忽略内部步骤的错误，继续允许后续代码",
+      "isAdvanced": false,
+      "validForList": [],
+      "invalidForList": [],
+      "condition": "",
       "defaultValue": "false",
+      "defaultValueRaw": false,
       "required": false,
       "variableMode": "Input",
-      "condition": "",
-      "description": "忽略内部步骤的错误，继续允许后续代码"
+      "isControlField": false
     },
     {
       "key": "skipWhenDebugging",
       "name": "调试运行时不输出调试内容",
       "type": "Boolean",
+      "description": "用以减少不必要的调试输出",
+      "isAdvanced": false,
+      "validForList": [],
+      "invalidForList": [],
+      "condition": "",
       "defaultValue": "false",
+      "defaultValueRaw": false,
       "required": false,
       "variableMode": "Input",
-      "condition": "",
-      "description": "用以减少不必要的调试输出"
+      "isControlField": false
     },
     {
       "key": "useMultiThread",
       "name": "使用多线程",
       "type": "Boolean",
+      "description": "⚠通常不要选择! 请阅读文档详细了解后再使用。",
+      "isAdvanced": false,
+      "validForList": [],
+      "invalidForList": [],
+      "condition": "",
       "defaultValue": "false",
+      "defaultValueRaw": false,
       "required": false,
       "variableMode": "Input",
-      "condition": "",
-      "description": "⚠通常不要选择! 请阅读文档详细了解后再使用。"
+      "isControlField": false
     },
     {
       "key": "waitAny",
       "name": "多线程使用WaitAny模式",
       "type": "Boolean",
+      "description": "任意一个线程结束后，本步骤不再等待其它线程，并继续执行后续步骤；其它未完成的线程仍会运行，但不会被等待。",
+      "isAdvanced": false,
+      "validForList": [],
+      "invalidForList": [],
+      "condition": "",
       "defaultValue": "false",
+      "defaultValueRaw": false,
       "required": false,
       "variableMode": "Input",
-      "condition": "",
-      "description": "任意一个线程结束后，本步骤不再等待其它线程，并继续执行后续步骤；其它未完成的线程仍会运行，但不会被等待。"
+      "isControlField": false
     },
     {
       "key": "cancelRemainingOnWaitAny",
       "name": "WaitAny模式下自动取消其它分支",
       "type": "Boolean",
+      "description": "启用WaitAny时，任一分支完成后请求取消其它未完成分支，并阻止其执行后续步骤。取消为协作式取消，不保证立即终止正在执行的步骤。",
+      "isAdvanced": false,
+      "validForList": [],
+      "invalidForList": [],
+      "condition": "",
       "defaultValue": "false",
+      "defaultValueRaw": false,
       "required": false,
       "variableMode": "Input",
-      "condition": "",
-      "description": "启用WaitAny时，任一分支完成后请求取消其它未完成分支，并阻止其执行后续步骤。取消为协作式取消，不保证立即终止正在执行的步骤。"
+      "isControlField": false
     }
   ],
   "outputs": [
@@ -68,17 +93,23 @@
       "key": "isSuccess",
       "name": "是否成功",
       "type": "Boolean",
-      "condition": "",
-      "description": "内部步骤是否运行成功"
+      "description": "内部步骤是否运行成功",
+      "isAdvanced": false,
+      "validForList": [],
+      "invalidForList": [],
+      "condition": ""
     },
     {
       "key": "errorMessage",
       "name": "错误消息",
       "type": "Text",
-      "condition": "",
-      "description": ""
+      "description": "",
+      "isAdvanced": false,
+      "validForList": [],
+      "invalidForList": [],
+      "condition": ""
     }
   ],
   "selections": {},
-  "sourceFileName": "sys_group_步骤组.md"
+  "sourceFileName": "catalog.json"
 }

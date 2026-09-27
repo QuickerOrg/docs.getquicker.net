@@ -16,501 +16,1063 @@
       "key": "operation",
       "name": "操作类型",
       "type": "Enum",
+      "description": "操作类型",
+      "isAdvanced": false,
+      "validForList": [],
+      "invalidForList": [],
+      "condition": "",
       "defaultValue": "",
+      "defaultValueRaw": "",
       "required": true,
       "variableMode": "Input",
-      "condition": "",
-      "description": "操作类型"
+      "isControlField": true
     },
     {
       "key": "url",
       "name": "网址",
       "type": "Text",
+      "description": "要打开的网页地址。激活标签页时有多种使用方法，请参考模块文档。",
+      "isAdvanced": false,
+      "validForList": [
+        "OpenUrl",
+        "ActivateTab"
+      ],
+      "invalidForList": [],
+      "condition": "仅：OpenUrl, ActivateTab",
       "defaultValue": "",
+      "defaultValueRaw": "",
       "required": true,
       "variableMode": "UseVarOrInput",
-      "condition": "仅：OpenUrl, ActivateTab",
-      "description": "要打开的网页地址。激活标签页时有多种使用方法，请参考模块文档。"
+      "isControlField": false
     },
     {
       "key": "windowId",
       "name": "窗口Id",
       "type": "Number",
+      "description": "使用哪个窗口打开网址。可以使用选项或指定窗口id。",
+      "isAdvanced": false,
+      "validForList": [
+        "OpenUrl"
+      ],
+      "invalidForList": [],
+      "condition": "仅：OpenUrl",
       "defaultValue": "",
+      "defaultValueRaw": "",
       "required": true,
       "variableMode": "UseVarOrInput",
-      "condition": "仅：OpenUrl",
-      "description": "使用哪个窗口打开网址。可以使用选项或指定窗口id。"
+      "isControlField": false
     },
     {
       "key": "tabId",
       "name": "标签页Id",
       "type": "Text",
+      "description": "留空表示当前活动标签页。",
+      "isAdvanced": false,
+      "validForList": [
+        "WaitTabComplete",
+        "ActivateTab",
+        "CloseTab",
+        "GetTabInfo",
+        "RunScript",
+        "PickElement",
+        "GetElementInfo",
+        "UpdateElement",
+        "TriggerEvent",
+        "Wait",
+        "PageAction",
+        "UploadFiles",
+        "DropFiles",
+        "ExtractList",
+        "FillForm"
+      ],
+      "invalidForList": [],
+      "condition": "仅：WaitTabComplete, ActivateTab, CloseTab, GetTabInfo, RunScript, PickElement, GetElementInfo, UpdateElement, TriggerEvent, Wait, PageAction, UploadFiles, DropFiles, ExtractList, FillForm",
       "defaultValue": "",
       "required": true,
       "variableMode": "UseVarOrInput",
-      "condition": "仅：WaitTabComplete, ActivateTab, CloseTab, GetTabInfo, RunScript, PickElement, GetElementInfo, UpdateElement, TriggerEvent, Wait, PageAction, UploadFiles, DropFiles, ExtractList, FillForm",
-      "description": "留空表示当前活动标签页。"
+      "isControlField": false
     },
     {
       "key": "selector",
       "name": "选择器",
       "type": "Text",
+      "description": "要操作的元素选择器，请参考文档。",
+      "isAdvanced": false,
+      "validForList": [
+        "GetElementInfo",
+        "UpdateElement",
+        "TriggerEvent",
+        "Wait"
+      ],
+      "invalidForList": [],
+      "condition": "仅：GetElementInfo, UpdateElement, TriggerEvent, Wait",
       "defaultValue": "",
       "required": true,
       "variableMode": "UseVarOrInput",
-      "condition": "仅：GetElementInfo, UpdateElement, TriggerEvent, Wait",
-      "description": "要操作的元素选择器，请参考文档。"
+      "isControlField": false
     },
     {
       "key": "fixSelector",
       "name": "修正选择器文本",
       "type": "Enum",
+      "description": "仅MV2版本扩展有效。",
+      "isAdvanced": true,
+      "validForList": [
+        "GetElementInfo",
+        "UpdateElement",
+        "TriggerEvent"
+      ],
+      "invalidForList": [],
+      "condition": "仅：GetElementInfo, UpdateElement, TriggerEvent",
       "defaultValue": "auto",
+      "defaultValueRaw": "auto",
       "required": true,
       "variableMode": "Input",
-      "condition": "仅：GetElementInfo, UpdateElement, TriggerEvent",
-      "description": "仅MV2版本扩展有效。"
+      "isControlField": false
     },
     {
       "key": "elementInfo",
       "name": "元素信息类型",
       "type": "Enum",
+      "description": "",
+      "isAdvanced": false,
+      "validForList": [
+        "GetElementInfo"
+      ],
+      "invalidForList": [],
+      "condition": "仅：GetElementInfo",
       "defaultValue": "Value",
+      "defaultValueRaw": "Value",
       "required": true,
       "variableMode": "Input",
-      "condition": "仅：GetElementInfo",
-      "description": ""
+      "isControlField": false
     },
     {
       "key": "updateElementInfo",
       "name": "元素信息类型",
       "type": "Enum",
+      "description": "",
+      "isAdvanced": false,
+      "validForList": [
+        "UpdateElement"
+      ],
+      "invalidForList": [],
+      "condition": "仅：UpdateElement",
       "defaultValue": "Value",
+      "defaultValueRaw": "Value",
       "required": true,
       "variableMode": "Input",
-      "condition": "仅：UpdateElement",
-      "description": ""
+      "isControlField": false
     },
     {
       "key": "triggerEventType",
       "name": "触发事件类型",
       "type": "Enum",
+      "description": "",
+      "isAdvanced": false,
+      "validForList": [
+        "TriggerEvent"
+      ],
+      "invalidForList": [],
+      "condition": "仅：TriggerEvent",
       "defaultValue": "click",
+      "defaultValueRaw": "click",
       "required": true,
       "variableMode": "UseVarOrInput",
-      "condition": "仅：TriggerEvent",
-      "description": ""
+      "isControlField": false
     },
     {
       "key": "updateElementValue",
       "name": "值",
       "type": "Text",
+      "description": "要更新的元素信息值",
+      "isAdvanced": false,
+      "validForList": [
+        "UpdateElement"
+      ],
+      "invalidForList": [],
+      "condition": "仅：UpdateElement",
       "defaultValue": "",
       "required": true,
       "variableMode": "UseVarOrInput",
-      "condition": "仅：UpdateElement",
-      "description": "要更新的元素信息值"
+      "isControlField": false
     },
     {
       "key": "attrName",
       "name": "属性名",
       "type": "Text",
+      "description": "设置或读取Attribute属性/Property属性时，置顶Attribute或Property的名称。",
+      "isAdvanced": false,
+      "validForList": [
+        "GetElementInfo",
+        "UpdateElement"
+      ],
+      "invalidForList": [],
+      "visibleWhen": {
+        "kind": "Any",
+        "conditions": [
+          {
+            "kind": "All",
+            "conditions": [
+              {
+                "kind": "Field",
+                "fieldKey": "operation",
+                "operator": "In",
+                "values": [
+                  "GetElementInfo"
+                ]
+              },
+              {
+                "kind": "Field",
+                "fieldKey": "elementInfo",
+                "operator": "In",
+                "values": [
+                  "Attribute",
+                  "Property"
+                ]
+              }
+            ]
+          },
+          {
+            "kind": "All",
+            "conditions": [
+              {
+                "kind": "Field",
+                "fieldKey": "operation",
+                "operator": "In",
+                "values": [
+                  "UpdateElement"
+                ]
+              },
+              {
+                "kind": "Field",
+                "fieldKey": "updateElementInfo",
+                "operator": "In",
+                "values": [
+                  "Attribute",
+                  "Property"
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      "condition": "((operation 为 \"GetElementInfo\" 且 elementInfo 为 \"Attribute\"、\"Property\") 或 (operation 为 \"UpdateElement\" 且 updateElementInfo 为 \"Attribute\"、\"Property\"))",
       "defaultValue": "",
       "required": true,
       "variableMode": "UseVarOrInput",
-      "condition": "仅：GetElementInfo, UpdateElement",
-      "description": "设置或读取Attribute属性/Property属性时，置顶Attribute或Property的名称。"
+      "isControlField": false
     },
     {
       "key": "windowInfo",
       "name": "窗口/标签参数",
       "type": "Text",
+      "description": "创建窗口或标签时的额外参数（json格式）。",
+      "isAdvanced": false,
+      "validForList": [
+        "OpenUrl"
+      ],
+      "invalidForList": [],
+      "condition": "仅：OpenUrl",
       "defaultValue": "",
+      "defaultValueRaw": "",
       "required": false,
       "variableMode": "UseVarOrInput",
-      "condition": "仅：OpenUrl",
-      "description": "创建窗口或标签时的额外参数（json格式）。"
+      "isControlField": false
     },
     {
       "key": "script",
       "name": "脚本内容",
       "type": "Text",
-      "defaultValue": "//.js",
+      "description": "",
+      "isAdvanced": false,
+      "validForList": [
+        "RunScript",
+        "BackgroundScript"
+      ],
+      "invalidForList": [],
+      "condition": "仅：RunScript, BackgroundScript",
+      "defaultValue": "//.js \r\n",
+      "defaultValueRaw": "//.js \r\n",
       "required": false,
       "variableMode": "UseVarOrInput",
-      "condition": "仅：RunScript, BackgroundScript",
-      "description": ""
+      "isControlField": false
     },
     {
       "key": "command",
       "name": "命令",
       "type": "Text",
+      "description": "请参考模块文档获取支持的命令列表。page.*语义命令需1.2.0+的MV3版浏览器扩展。",
+      "isAdvanced": false,
+      "validForList": [
+        "BackgroundCommand"
+      ],
+      "invalidForList": [],
+      "condition": "仅：BackgroundCommand",
       "defaultValue": "",
+      "defaultValueRaw": "",
       "required": false,
       "variableMode": "UseVarOrInput",
-      "condition": "仅：BackgroundCommand",
-      "description": "请参考模块文档获取支持的命令列表。page.*语义命令需1.2.0+的MV3版浏览器扩展。"
+      "isControlField": false
     },
     {
       "key": "commandParams",
       "name": "命令参数",
       "type": "Object",
+      "description": "后台脚本命令的参数。每个命令参数不同，详情请参考模块文档。",
+      "isAdvanced": false,
+      "validForList": [
+        "BackgroundCommand"
+      ],
+      "invalidForList": [],
+      "condition": "仅：BackgroundCommand",
       "defaultValue": "",
+      "defaultValueRaw": "",
       "required": false,
       "variableMode": "UseVarOrInput",
-      "condition": "仅：BackgroundCommand",
-      "description": "后台脚本命令的参数。每个命令参数不同，详情请参考模块文档。"
+      "isControlField": false
     },
     {
       "key": "valueFilter",
       "name": "返回值过滤器",
       "type": "Text",
+      "description": "用于从API返回的结果中提取单个属性。格式为属性名，多个时使用分号隔开。",
+      "isAdvanced": false,
+      "validForList": [
+        "BackgroundCommand"
+      ],
+      "invalidForList": [],
+      "condition": "仅：BackgroundCommand",
       "defaultValue": "",
+      "defaultValueRaw": "",
       "required": false,
       "variableMode": "UseVarOrInput",
-      "condition": "仅：BackgroundCommand",
-      "description": "用于从API返回的结果中提取单个属性。格式为属性名，多个时使用分号隔开。"
+      "isControlField": false
     },
     {
       "key": "timeoutMs",
       "name": "超时时间(ms)",
       "type": "Number",
+      "description": "超时等待时间，毫秒数",
+      "isAdvanced": false,
+      "validForList": [
+        "OpenUrl",
+        "WaitTabComplete",
+        "GetTabInfo",
+        "RunScript",
+        "PickElement",
+        "GetElementInfo",
+        "UpdateElement",
+        "TriggerEvent",
+        "Wait",
+        "BackgroundScript",
+        "BackgroundCommand",
+        "PageAction",
+        "UploadFiles",
+        "DropFiles"
+      ],
+      "invalidForList": [],
+      "condition": "仅：OpenUrl, WaitTabComplete, GetTabInfo, RunScript, PickElement, GetElementInfo, UpdateElement, TriggerEvent, Wait, BackgroundScript, BackgroundCommand, PageAction, UploadFiles, DropFiles",
       "defaultValue": "3000",
+      "defaultValueRaw": 3000,
       "required": true,
       "variableMode": "Input",
-      "condition": "仅：OpenUrl, WaitTabComplete, GetTabInfo, RunScript, PickElement, GetElementInfo, UpdateElement, TriggerEvent, Wait, BackgroundScript, BackgroundCommand, PageAction, UploadFiles, DropFiles",
-      "description": "超时等待时间，毫秒数"
+      "isControlField": false
     },
     {
       "key": "frame",
       "name": "运行脚本的框架",
       "type": "Text",
+      "description": "all:所有框架，0：顶层框架，其它数字：框架id",
+      "isAdvanced": false,
+      "validForList": [
+        "RunScript",
+        "GetElementInfo",
+        "UpdateElement",
+        "TriggerEvent"
+      ],
+      "invalidForList": [],
+      "condition": "仅：RunScript, GetElementInfo, UpdateElement, TriggerEvent",
       "defaultValue": "all",
+      "defaultValueRaw": "all",
       "required": true,
       "variableMode": "Input",
-      "condition": "仅：RunScript, GetElementInfo, UpdateElement, TriggerEvent",
-      "description": "all:所有框架，0：顶层框架，其它数字：框架id"
+      "isControlField": false
     },
     {
       "key": "executionWorld",
       "name": "执行环境",
       "type": "Text",
+      "description": "自定义脚本的执行环境(ExecutionWorld)，默认为USER_SCRIPT。MAIN表示网页自身的执行环境。仅MV3版本扩展支持。",
+      "isAdvanced": false,
+      "validForList": [
+        "RunScript"
+      ],
+      "invalidForList": [],
+      "condition": "仅：RunScript",
       "defaultValue": "",
+      "defaultValueRaw": "",
       "required": true,
       "variableMode": "Input",
-      "condition": "仅：RunScript",
-      "description": "自定义脚本的执行环境(ExecutionWorld)，默认为USER_SCRIPT。MAIN表示网页自身的执行环境。仅MV3版本扩展支持。"
+      "isControlField": false
     },
     {
       "key": "waitManualReturn",
       "name": "从脚本手动返回数据",
       "type": "Boolean",
+      "description": "开启后等待脚本内异步逻辑完成再返回输出。MV3 推荐 async/await 并在末尾 return（或返回 Promise），通常保持关闭。",
+      "isAdvanced": false,
+      "validForList": [
+        "RunScript"
+      ],
+      "invalidForList": [],
+      "condition": "仅：RunScript",
       "defaultValue": "false",
+      "defaultValueRaw": false,
       "required": false,
       "variableMode": "Input",
-      "condition": "仅：RunScript",
-      "description": "开启后等待脚本内异步逻辑完成再返回输出。MV3 推荐 async/await 并在末尾 return（或返回 Promise），通常保持关闭。"
+      "isControlField": false
     },
     {
       "key": "waitComplete",
       "name": "等待操作完成或返回数据",
       "type": "Boolean",
+      "description": "",
+      "isAdvanced": false,
+      "validForList": [
+        "OpenUrl",
+        "BackgroundScript",
+        "BackgroundCommand"
+      ],
+      "invalidForList": [],
+      "condition": "仅：OpenUrl, BackgroundScript, BackgroundCommand",
       "defaultValue": "false",
+      "defaultValueRaw": false,
       "required": false,
       "variableMode": "Input",
-      "condition": "仅：OpenUrl, BackgroundScript, BackgroundCommand",
-      "description": ""
+      "isControlField": false
     },
     {
       "key": "browser",
       "name": "浏览器",
       "type": "Text",
+      "description": "设置本动作连接的浏览器进程名（需安装Quicker浏览器扩展）。除auto外，进程名通常为程序文件名去掉.exe后缀。",
+      "isAdvanced": false,
+      "validForList": [
+        "SetBrowser"
+      ],
+      "invalidForList": [],
+      "condition": "仅：SetBrowser",
       "defaultValue": "auto",
+      "defaultValueRaw": "auto",
       "required": true,
       "variableMode": "UseVarOrInput",
-      "condition": "仅：SetBrowser",
-      "description": "设置本动作连接的浏览器进程名（需安装Quicker浏览器扩展）。除auto外，进程名通常为程序文件名去掉.exe后缀。"
+      "isControlField": false
     },
     {
       "key": "mainProcessId",
       "name": "主进程ID",
       "type": "Integer",
+      "description": "可选。指定要连接的浏览器主进程ID。当同一个浏览器通过user-data-dir参数运行多个实例时使用。",
+      "isAdvanced": true,
+      "validForList": [
+        "SetBrowser"
+      ],
+      "invalidForList": [],
+      "condition": "仅：SetBrowser",
       "defaultValue": "0",
+      "defaultValueRaw": 0,
       "required": false,
       "variableMode": "UseVarOrInput",
-      "condition": "仅：SetBrowser",
-      "description": "可选。指定要连接的浏览器主进程ID。当同一个浏览器通过user-data-dir参数运行多个实例时使用。"
+      "isControlField": false
     },
     {
       "key": "envName",
       "name": "自定义环境名",
       "type": "Text",
+      "description": "指定要连接的浏览器扩展环境名称。用于区分同一个浏览器的不同Profile环境（需在扩展中设置环境名称）。*表示不判断环境名。",
+      "isAdvanced": true,
+      "validForList": [
+        "SetBrowser"
+      ],
+      "invalidForList": [],
+      "condition": "仅：SetBrowser",
       "defaultValue": "*",
+      "defaultValueRaw": "*",
       "required": false,
       "variableMode": "UseVarOrInput",
-      "condition": "仅：SetBrowser",
-      "description": "指定要连接的浏览器扩展环境名称。用于区分同一个浏览器的不同Profile环境（需在扩展中设置环境名称）。*表示不判断环境名。"
+      "isControlField": false
     },
     {
       "key": "stopIfFail",
       "name": "失败后停止",
       "type": "Boolean",
+      "description": "失败后是否停止动作",
+      "isAdvanced": false,
+      "validForList": [],
+      "invalidForList": [],
+      "condition": "",
       "defaultValue": "true",
+      "defaultValueRaw": true,
       "required": false,
       "variableMode": "Input",
-      "condition": "",
-      "description": "失败后是否停止动作"
+      "isControlField": false
     },
     {
       "key": "waitEventType",
       "name": "事件类型",
       "type": "Enum",
+      "description": "",
+      "isAdvanced": false,
+      "validForList": [
+        "Wait"
+      ],
+      "invalidForList": [],
+      "condition": "仅：Wait",
       "defaultValue": "",
+      "defaultValueRaw": "",
       "required": true,
       "variableMode": "UseVarOrInput",
-      "condition": "仅：Wait",
-      "description": ""
+      "isControlField": false
     },
     {
       "key": "waitEventParams",
       "name": "参数",
       "type": "Text",
+      "description": "不同事件的参数不同，请参考模块文档。",
+      "isAdvanced": false,
+      "validForList": [
+        "Wait"
+      ],
+      "invalidForList": [],
+      "condition": "仅：Wait",
       "defaultValue": "",
       "required": false,
       "variableMode": "UseVarOrInput",
-      "condition": "仅：Wait",
-      "description": "不同事件的参数不同，请参考模块文档。"
+      "isControlField": false
     },
     {
       "key": "pageUrlPattern",
       "name": "页面地址约束",
       "type": "Text",
+      "description": "可选。填写后只允许在完整匹配的页面执行，例如 https://example.com/orders/*；留空表示不限制页面地址。",
+      "isAdvanced": false,
+      "validForList": [
+        "PageAction",
+        "UploadFiles",
+        "DropFiles"
+      ],
+      "invalidForList": [],
+      "condition": "仅：PageAction, UploadFiles, DropFiles",
       "defaultValue": "",
       "required": false,
       "variableMode": "UseVarOrInput",
-      "condition": "仅：PageAction, UploadFiles, DropFiles",
-      "description": "可选。填写后只允许在完整匹配的页面执行，例如 https://example.com/orders/*；留空表示不限制页面地址。"
+      "isControlField": false
     },
     {
       "key": "pageLocator",
       "name": "定位方式",
       "type": "Enum",
+      "description": "",
+      "isAdvanced": false,
+      "validForList": [
+        "PageAction"
+      ],
+      "invalidForList": [],
+      "condition": "仅：PageAction",
       "defaultValue": "role",
+      "defaultValueRaw": "role",
       "required": true,
       "variableMode": "Input",
-      "condition": "仅：PageAction",
-      "description": ""
+      "isControlField": true
     },
     {
       "key": "pageLocatorRole",
       "name": "元素角色",
       "type": "Text",
+      "description": "例如 button、link、textbox。",
+      "isAdvanced": false,
+      "validForList": [
+        "PageAction"
+      ],
+      "invalidForList": [],
+      "visibleWhen": {
+        "kind": "All",
+        "conditions": [
+          {
+            "kind": "Field",
+            "fieldKey": "operation",
+            "operator": "In",
+            "values": [
+              "PageAction"
+            ]
+          },
+          {
+            "kind": "Field",
+            "fieldKey": "pageLocator",
+            "operator": "In",
+            "values": [
+              "role"
+            ]
+          }
+        ]
+      },
+      "condition": "(operation 为 \"PageAction\" 且 pageLocator 为 \"role\")",
       "defaultValue": "",
       "required": false,
       "variableMode": "UseVarOrInput",
-      "condition": "仅：PageAction",
-      "description": "例如 button、link、textbox。"
+      "isControlField": false
     },
     {
       "key": "pageLocatorValue",
       "name": "定位值",
       "type": "Text",
+      "description": "角色定位填写 accessible name；文本定位填写文本；CSS 定位填写选择器；XPath 定位填写表达式（可带 xpath: 前缀，需要新版扩展）。",
+      "isAdvanced": false,
+      "validForList": [
+        "PageAction"
+      ],
+      "invalidForList": [],
+      "condition": "仅：PageAction",
       "defaultValue": "",
       "required": true,
       "variableMode": "UseVarOrInput",
-      "condition": "仅：PageAction",
-      "description": "角色定位填写 accessible name；文本定位填写文本；CSS 定位填写选择器；XPath 定位填写表达式（可带 xpath: 前缀，需要新版扩展）。"
+      "isControlField": false
     },
     {
       "key": "pageExact",
       "name": "文本精确匹配",
       "type": "Boolean",
+      "description": "",
+      "isAdvanced": false,
+      "validForList": [
+        "PageAction"
+      ],
+      "invalidForList": [],
+      "visibleWhen": {
+        "kind": "All",
+        "conditions": [
+          {
+            "kind": "Field",
+            "fieldKey": "operation",
+            "operator": "In",
+            "values": [
+              "PageAction"
+            ]
+          },
+          {
+            "kind": "Field",
+            "fieldKey": "pageLocator",
+            "operator": "In",
+            "values": [
+              "text"
+            ]
+          }
+        ]
+      },
+      "condition": "(operation 为 \"PageAction\" 且 pageLocator 为 \"text\")",
       "defaultValue": "true",
+      "defaultValueRaw": true,
       "required": false,
       "variableMode": "UseVarOrInput",
-      "condition": "仅：PageAction",
-      "description": ""
+      "isControlField": false
     },
     {
       "key": "pageOperation",
       "name": "页面操作",
       "type": "Enum",
+      "description": "",
+      "isAdvanced": false,
+      "validForList": [
+        "PageAction"
+      ],
+      "invalidForList": [],
+      "condition": "仅：PageAction",
       "defaultValue": "click",
+      "defaultValueRaw": "click",
       "required": true,
       "variableMode": "Input",
-      "condition": "仅：PageAction",
-      "description": ""
+      "isControlField": true
     },
     {
       "key": "pageValue",
       "name": "操作值",
       "type": "Text",
+      "description": "输入和选择操作使用；敏感值应通过变量传入。",
+      "isAdvanced": false,
+      "validForList": [
+        "PageAction"
+      ],
+      "invalidForList": [],
+      "visibleWhen": {
+        "kind": "All",
+        "conditions": [
+          {
+            "kind": "Field",
+            "fieldKey": "operation",
+            "operator": "In",
+            "values": [
+              "PageAction"
+            ]
+          },
+          {
+            "kind": "Field",
+            "fieldKey": "pageOperation",
+            "operator": "In",
+            "values": [
+              "fill",
+              "type",
+              "insertText",
+              "paste",
+              "select"
+            ]
+          }
+        ]
+      },
+      "condition": "(operation 为 \"PageAction\" 且 pageOperation 为 \"fill\"、\"type\"、\"insertText\"、\"paste\"、\"select\")",
       "defaultValue": "",
+      "defaultValueRaw": "",
       "required": false,
       "variableMode": "UseVarOrInput",
-      "condition": "仅：PageAction",
-      "description": "输入和选择操作使用；敏感值应通过变量传入。"
+      "isControlField": false
     },
     {
       "key": "pageFrameId",
       "name": "Frame ID",
       "type": "Integer",
+      "description": "",
+      "isAdvanced": true,
+      "validForList": [
+        "PageAction",
+        "UploadFiles",
+        "DropFiles"
+      ],
+      "invalidForList": [],
+      "condition": "仅：PageAction, UploadFiles, DropFiles",
       "defaultValue": "0",
+      "defaultValueRaw": 0,
       "required": false,
       "variableMode": "UseVarOrInput",
-      "condition": "仅：PageAction, UploadFiles, DropFiles",
-      "description": ""
+      "isControlField": false
     },
     {
       "key": "pageFileTarget",
       "name": "文件目标定位",
       "type": "Enum",
+      "description": "",
+      "isAdvanced": false,
+      "validForList": [
+        "UploadFiles",
+        "DropFiles"
+      ],
+      "invalidForList": [],
+      "condition": "仅：UploadFiles, DropFiles",
       "defaultValue": "css",
+      "defaultValueRaw": "css",
       "required": true,
       "variableMode": "Input",
-      "condition": "仅：UploadFiles, DropFiles",
-      "description": ""
+      "isControlField": true
     },
     {
       "key": "pageDocumentId",
       "name": "快照 Document ID",
       "type": "Text",
+      "description": "与元素 Ref 一起使用，必须来自当前页面的最新语义快照。",
+      "isAdvanced": false,
+      "validForList": [
+        "UploadFiles",
+        "DropFiles"
+      ],
+      "invalidForList": [],
+      "visibleWhen": {
+        "kind": "All",
+        "conditions": [
+          {
+            "kind": "Field",
+            "fieldKey": "pageFileTarget",
+            "operator": "In",
+            "values": [
+              "ref"
+            ]
+          },
+          {
+            "kind": "Field",
+            "fieldKey": "operation",
+            "operator": "In",
+            "values": [
+              "UploadFiles",
+              "DropFiles"
+            ]
+          }
+        ]
+      },
+      "condition": "(pageFileTarget 为 \"ref\" 且 operation 为 \"UploadFiles\"、\"DropFiles\")",
       "defaultValue": "",
       "required": false,
       "variableMode": "UseVarOrInput",
-      "condition": "仅：UploadFiles, DropFiles",
-      "description": "与元素 Ref 一起使用，必须来自当前页面的最新语义快照。"
+      "isControlField": false
     },
     {
       "key": "pageElementRef",
       "name": "元素 Ref",
       "type": "Text",
+      "description": "语义快照返回的元素 Ref。",
+      "isAdvanced": false,
+      "validForList": [
+        "UploadFiles",
+        "DropFiles"
+      ],
+      "invalidForList": [],
+      "visibleWhen": {
+        "kind": "All",
+        "conditions": [
+          {
+            "kind": "Field",
+            "fieldKey": "pageFileTarget",
+            "operator": "In",
+            "values": [
+              "ref"
+            ]
+          },
+          {
+            "kind": "Field",
+            "fieldKey": "operation",
+            "operator": "In",
+            "values": [
+              "UploadFiles",
+              "DropFiles"
+            ]
+          }
+        ]
+      },
+      "condition": "(pageFileTarget 为 \"ref\" 且 operation 为 \"UploadFiles\"、\"DropFiles\")",
       "defaultValue": "",
       "required": false,
       "variableMode": "UseVarOrInput",
-      "condition": "仅：UploadFiles, DropFiles",
-      "description": "语义快照返回的元素 Ref。"
+      "isControlField": false
     },
     {
       "key": "pageFileSelector",
       "name": "目标 CSS 选择器",
       "type": "Text",
+      "description": "必须唯一匹配一个元素；上传文件时目标必须是 input[type=file]。",
+      "isAdvanced": false,
+      "validForList": [
+        "UploadFiles",
+        "DropFiles"
+      ],
+      "invalidForList": [],
+      "visibleWhen": {
+        "kind": "All",
+        "conditions": [
+          {
+            "kind": "Field",
+            "fieldKey": "pageFileTarget",
+            "operator": "In",
+            "values": [
+              "css"
+            ]
+          },
+          {
+            "kind": "Field",
+            "fieldKey": "operation",
+            "operator": "In",
+            "values": [
+              "UploadFiles",
+              "DropFiles"
+            ]
+          }
+        ]
+      },
+      "condition": "(pageFileTarget 为 \"css\" 且 operation 为 \"UploadFiles\"、\"DropFiles\")",
       "defaultValue": "",
       "required": false,
       "variableMode": "UseVarOrInput",
-      "condition": "仅：UploadFiles, DropFiles",
-      "description": "必须唯一匹配一个元素；上传文件时目标必须是 input[type=file]。"
+      "isControlField": false
     },
     {
       "key": "pageFiles",
       "name": "文件路径",
       "type": "Text",
+      "description": "每行一个本机文件的完整路径，作为本次调用的精确文件白名单。模块不会内置弹窗；如需确认，请在前面添加 Quicker 确认步骤。路径不会写入网页 DOM 或扩展日志。",
+      "isAdvanced": false,
+      "validForList": [
+        "UploadFiles",
+        "DropFiles"
+      ],
+      "invalidForList": [],
+      "condition": "仅：UploadFiles, DropFiles",
       "defaultValue": "",
       "required": true,
       "variableMode": "UseVarOrInput",
-      "condition": "仅：UploadFiles, DropFiles",
-      "description": "每行一个本机文件的完整路径，作为本次调用的精确文件白名单。模块不会内置弹窗；如需确认，请在前面添加 Quicker 确认步骤。路径不会写入网页 DOM 或扩展日志。"
+      "isControlField": false
     },
     {
       "key": "listTemplate",
       "name": "列表模板",
       "type": "Text",
+      "description": "从浏览器扩展的列表设计器复制后粘贴。模板决定网页范围、行和固定输出列。",
+      "isAdvanced": false,
+      "validForList": [
+        "ExtractList"
+      ],
+      "invalidForList": [],
+      "condition": "仅：ExtractList",
       "defaultValue": "",
       "required": true,
       "variableMode": "UseVarOrInput",
-      "condition": "仅：ExtractList",
-      "description": "从浏览器扩展的列表设计器复制后粘贴。模板决定网页范围、行和固定输出列。"
+      "isControlField": false
     },
     {
       "key": "listCollectionScope",
       "name": "采集范围",
       "type": "Enum",
+      "description": "“当前页”只读取当前页面；“连续翻页”按模板中的多页设置采集并汇总。",
+      "isAdvanced": false,
+      "validForList": [
+        "ExtractList"
+      ],
+      "invalidForList": [],
+      "condition": "仅：ExtractList",
       "defaultValue": "CurrentPage",
+      "defaultValueRaw": "CurrentPage",
       "required": false,
       "variableMode": "Input",
-      "condition": "仅：ExtractList",
-      "description": "“当前页”只读取当前页面；“连续翻页”按模板中的多页设置采集并汇总。"
+      "isControlField": false
     },
     {
       "key": "listMaxRows",
       "name": "最大行数",
       "type": "Integer",
+      "description": "最多返回的行数，范围 1 到 2000。模板自身的上限仍然有效。",
+      "isAdvanced": false,
+      "validForList": [
+        "ExtractList"
+      ],
+      "invalidForList": [],
+      "condition": "仅：ExtractList",
       "defaultValue": "500",
+      "defaultValueRaw": 500,
       "required": true,
       "variableMode": "Input",
-      "condition": "仅：ExtractList",
-      "description": "最多返回的行数，范围 1 到 2000。模板自身的上限仍然有效。"
+      "isControlField": false
     },
     {
       "key": "listAllowEmpty",
       "name": "允许空结果",
       "type": "Boolean",
+      "description": "开启后，页面没有匹配行时返回带固定列的空表格；其它模板或页面错误仍会失败。",
+      "isAdvanced": false,
+      "validForList": [
+        "ExtractList"
+      ],
+      "invalidForList": [],
+      "condition": "仅：ExtractList",
       "defaultValue": "false",
+      "defaultValueRaw": false,
       "required": false,
       "variableMode": "Input",
-      "condition": "仅：ExtractList",
-      "description": "开启后，页面没有匹配行时返回带固定列的空表格；其它模板或页面错误仍会失败。"
+      "isControlField": false
     },
     {
       "key": "listTimeoutMs",
       "name": "端到端超时(ms)",
       "type": "Integer",
+      "description": "解析标签页、校验页面和提取数据共享这一总预算，范围 1000 到 300000 毫秒。",
+      "isAdvanced": true,
+      "validForList": [
+        "ExtractList"
+      ],
+      "invalidForList": [],
+      "condition": "仅：ExtractList",
       "defaultValue": "30000",
+      "defaultValueRaw": 30000,
       "required": true,
       "variableMode": "Input",
-      "condition": "仅：ExtractList",
-      "description": "解析标签页、校验页面和提取数据共享这一总预算，范围 1000 到 300000 毫秒。"
+      "isControlField": false
     },
     {
       "key": "formTemplate",
       "name": "表单模板",
       "type": "Text",
+      "description": "从浏览器扩展的表单设计器复制后粘贴；模板不保存本次填写值。",
+      "isAdvanced": false,
+      "validForList": [
+        "FillForm"
+      ],
+      "invalidForList": [],
+      "condition": "仅：FillForm",
       "defaultValue": "",
       "required": true,
       "variableMode": "UseVarOrInput",
-      "condition": "仅：FillForm",
-      "description": "从浏览器扩展的表单设计器复制后粘贴；模板不保存本次填写值。"
+      "isControlField": false
     },
     {
       "key": "formData",
       "name": "表单数据",
       "type": "Dict",
+      "description": "可直接输入每行 key:value 或 JSON，也可使用词典变量、返回词典或匿名对象的表达式；key 与模板字段 key 精确对应，空字符串表示清空，null 按未提供处理。",
+      "isAdvanced": false,
+      "validForList": [
+        "FillForm"
+      ],
+      "invalidForList": [],
+      "condition": "仅：FillForm",
       "defaultValue": "",
       "required": true,
       "variableMode": "UseVarOrInput",
-      "condition": "仅：FillForm",
-      "description": "可直接输入每行 key:value 或 JSON，也可使用词典变量、返回词典或匿名对象的表达式；key 与模板字段 key 精确对应，空字符串表示清空，null 按未提供处理。"
+      "isControlField": false
     },
     {
       "key": "formDryRun",
       "name": "仅检查，不填写",
       "type": "Boolean",
+      "description": "只检查字段定位和数据，不修改网页。",
+      "isAdvanced": false,
+      "validForList": [
+        "FillForm"
+      ],
+      "invalidForList": [],
+      "condition": "仅：FillForm",
       "defaultValue": "false",
+      "defaultValueRaw": false,
       "required": false,
       "variableMode": "Input",
-      "condition": "仅：FillForm",
-      "description": "只检查字段定位和数据，不修改网页。"
+      "isControlField": false
     },
     {
       "key": "formFailurePolicy",
       "name": "失败策略",
       "type": "Enum",
+      "description": "默认仅在必填字段失败时让步骤失败。模板、本地数据校验和命令级错误不受此选项影响。",
+      "isAdvanced": true,
+      "validForList": [
+        "FillForm"
+      ],
+      "invalidForList": [],
+      "condition": "仅：FillForm",
       "defaultValue": "RequiredField",
+      "defaultValueRaw": "RequiredField",
       "required": false,
       "variableMode": "Input",
-      "condition": "仅：FillForm",
-      "description": "默认仅在必填字段失败时让步骤失败。模板、本地数据校验和命令级错误不受此选项影响。"
+      "isControlField": false
     },
     {
       "key": "formTimeoutMs",
       "name": "端到端超时(ms)",
       "type": "Integer",
+      "description": "解析标签页和填写表单共享这一总预算，范围 1000 到 300000 毫秒。",
+      "isAdvanced": true,
+      "validForList": [
+        "FillForm"
+      ],
+      "invalidForList": [],
+      "condition": "仅：FillForm",
       "defaultValue": "30000",
+      "defaultValueRaw": 30000,
       "required": true,
       "variableMode": "Input",
-      "condition": "仅：FillForm",
-      "description": "解析标签页和填写表单共享这一总预算，范围 1000 到 300000 毫秒。"
+      "isControlField": false
     }
   ],
   "outputs": [
@@ -518,204 +1080,353 @@
       "key": "isSuccess",
       "name": "是否成功",
       "type": "Boolean",
-      "condition": "",
-      "description": "操作是否成功"
+      "description": "操作是否成功",
+      "isAdvanced": false,
+      "validForList": [],
+      "invalidForList": [],
+      "condition": ""
     },
     {
       "key": "tabId",
       "name": "标签页ID",
       "type": "Integer",
-      "condition": "仅：OpenUrl, ActivateTab, GetTabInfo",
-      "description": "网页所在标签页ID"
+      "description": "网页所在标签页ID",
+      "isAdvanced": false,
+      "validForList": [
+        "OpenUrl",
+        "ActivateTab",
+        "GetTabInfo"
+      ],
+      "invalidForList": [],
+      "condition": "仅：OpenUrl, ActivateTab, GetTabInfo"
     },
     {
       "key": "windowId",
       "name": "窗口ID",
       "type": "Integer",
-      "condition": "仅：OpenUrl, ActivateTab, GetTabInfo",
-      "description": "网页所在窗口的ID"
+      "description": "网页所在窗口的ID",
+      "isAdvanced": false,
+      "validForList": [
+        "OpenUrl",
+        "ActivateTab",
+        "GetTabInfo"
+      ],
+      "invalidForList": [],
+      "condition": "仅：OpenUrl, ActivateTab, GetTabInfo"
     },
     {
       "key": "groupId",
       "name": "分组ID",
       "type": "Integer",
-      "condition": "仅：ActivateTab, GetTabInfo",
-      "description": "标签页所属分组ID"
+      "description": "标签页所属分组ID",
+      "isAdvanced": false,
+      "validForList": [
+        "ActivateTab",
+        "GetTabInfo"
+      ],
+      "invalidForList": [],
+      "condition": "仅：ActivateTab, GetTabInfo"
     },
     {
       "key": "url",
       "name": "网址",
       "type": "Text",
-      "condition": "仅：ActivateTab, GetTabInfo",
-      "description": "标签页当前网址"
+      "description": "标签页当前网址",
+      "isAdvanced": false,
+      "validForList": [
+        "ActivateTab",
+        "GetTabInfo"
+      ],
+      "invalidForList": [],
+      "condition": "仅：ActivateTab, GetTabInfo"
     },
     {
       "key": "title",
       "name": "网页标题",
       "type": "Text",
-      "condition": "仅：ActivateTab, GetTabInfo",
-      "description": "标签页网页标题"
+      "description": "标签页网页标题",
+      "isAdvanced": false,
+      "validForList": [
+        "ActivateTab",
+        "GetTabInfo"
+      ],
+      "invalidForList": [],
+      "condition": "仅：ActivateTab, GetTabInfo"
     },
     {
       "key": "favicon",
       "name": "Favicon图标网址",
       "type": "Text",
-      "condition": "仅：ActivateTab, GetTabInfo",
-      "description": "标签页网页图标网址"
+      "description": "标签页网页图标网址",
+      "isAdvanced": false,
+      "validForList": [
+        "ActivateTab",
+        "GetTabInfo"
+      ],
+      "invalidForList": [],
+      "condition": "仅：ActivateTab, GetTabInfo"
     },
     {
       "key": "firstValue",
       "name": "第一个值",
       "type": "Text",
-      "condition": "仅：GetElementInfo",
-      "description": "获取的第一个元素的信息结果"
+      "description": "获取的第一个元素的信息结果",
+      "isAdvanced": false,
+      "validForList": [
+        "GetElementInfo"
+      ],
+      "invalidForList": [],
+      "condition": "仅：GetElementInfo"
     },
     {
       "key": "allValues",
       "name": "所有值的列表",
       "type": "List",
-      "condition": "仅：GetElementInfo",
-      "description": "所有元素信息结果的列表"
+      "description": "所有元素信息结果的列表",
+      "isAdvanced": false,
+      "validForList": [
+        "GetElementInfo"
+      ],
+      "invalidForList": [],
+      "condition": "仅：GetElementInfo"
     },
     {
       "key": "browser",
       "name": "浏览器",
       "type": "Text",
-      "condition": "仅：GetTabInfo",
-      "description": "当前访问的浏览器"
+      "description": "当前访问的浏览器",
+      "isAdvanced": false,
+      "validForList": [
+        "GetTabInfo"
+      ],
+      "invalidForList": [],
+      "condition": "仅：GetTabInfo"
     },
     {
       "key": "extVersion",
       "name": "插件版本",
       "type": "Text",
-      "condition": "仅：GetTabInfo",
-      "description": "浏览器插件版本号"
+      "description": "浏览器插件版本号",
+      "isAdvanced": false,
+      "validForList": [
+        "GetTabInfo"
+      ],
+      "invalidForList": [],
+      "condition": "仅：GetTabInfo"
     },
     {
       "key": "manifestVersion",
       "name": "Manifest版本",
       "type": "Integer",
-      "condition": "仅：GetTabInfo",
-      "description": "浏览器插件的Manifest版本号"
+      "description": "浏览器插件的Manifest版本号",
+      "isAdvanced": false,
+      "validForList": [
+        "GetTabInfo"
+      ],
+      "invalidForList": [],
+      "condition": "仅：GetTabInfo"
     },
     {
       "key": "envName",
       "name": "环境名称",
       "type": "Text",
-      "condition": "仅：GetTabInfo",
-      "description": "浏览器Profile的自定义环境名称"
+      "description": "浏览器Profile的自定义环境名称",
+      "isAdvanced": false,
+      "validForList": [
+        "GetTabInfo"
+      ],
+      "invalidForList": [],
+      "condition": "仅：GetTabInfo"
     },
     {
       "key": "selector",
       "name": "CSS选择器",
       "type": "Text",
-      "condition": "仅：PickElement",
-      "description": "所选择元素的CSS选择器"
+      "description": "所选择元素的CSS选择器",
+      "isAdvanced": false,
+      "validForList": [
+        "PickElement"
+      ],
+      "invalidForList": [],
+      "condition": "仅：PickElement"
     },
     {
       "key": "listTable",
       "name": "列表数据表",
       "type": "Table",
-      "condition": "仅：ExtractList",
-      "description": "列名使用模板中的稳定 key，列标题保存在 Caption；缺失值为 DBNull。"
+      "description": "列名使用模板中的稳定 key，列标题保存在 Caption；缺失值为 DBNull。",
+      "isAdvanced": false,
+      "validForList": [
+        "ExtractList"
+      ],
+      "invalidForList": [],
+      "condition": "仅：ExtractList"
     },
     {
       "key": "listRowCount",
       "name": "提取行数",
       "type": "Integer",
-      "condition": "仅：ExtractList",
-      "description": ""
+      "description": "",
+      "isAdvanced": false,
+      "validForList": [
+        "ExtractList"
+      ],
+      "invalidForList": [],
+      "condition": "仅：ExtractList"
     },
     {
       "key": "listTotalMatchedRows",
       "name": "网页匹配总行数",
       "type": "Integer",
-      "condition": "仅：ExtractList",
-      "description": ""
+      "description": "",
+      "isAdvanced": false,
+      "validForList": [
+        "ExtractList"
+      ],
+      "invalidForList": [],
+      "condition": "仅：ExtractList"
     },
     {
       "key": "listTruncated",
       "name": "结果是否截断",
       "type": "Boolean",
-      "condition": "仅：ExtractList",
-      "description": ""
+      "description": "",
+      "isAdvanced": false,
+      "validForList": [
+        "ExtractList"
+      ],
+      "invalidForList": [],
+      "condition": "仅：ExtractList"
     },
     {
       "key": "listWarnings",
       "name": "提取警告",
       "type": "List",
-      "condition": "仅：ExtractList",
-      "description": "可选列缺值、去重或截断等扩展返回的警告。"
+      "description": "可选列缺值、去重或截断等扩展返回的警告。",
+      "isAdvanced": false,
+      "validForList": [
+        "ExtractList"
+      ],
+      "invalidForList": [],
+      "condition": "仅：ExtractList"
     },
     {
       "key": "listPagesCollected",
       "name": "采集页数",
       "type": "Integer",
-      "condition": "仅：ExtractList",
-      "description": "实际成功提取的页面轮次。"
+      "description": "实际成功提取的页面轮次。",
+      "isAdvanced": false,
+      "validForList": [
+        "ExtractList"
+      ],
+      "invalidForList": [],
+      "condition": "仅：ExtractList"
     },
     {
       "key": "listCompleted",
       "name": "结果是否完整",
       "type": "Boolean",
-      "condition": "仅：ExtractList",
-      "description": "连续翻页是否正常到达末页；当前页提取成功时为 true。"
+      "description": "连续翻页是否正常到达末页；当前页提取成功时为 true。",
+      "isAdvanced": false,
+      "validForList": [
+        "ExtractList"
+      ],
+      "invalidForList": [],
+      "condition": "仅：ExtractList"
     },
     {
       "key": "listStopReason",
       "name": "停止原因",
       "type": "Text",
-      "condition": "仅：ExtractList",
-      "description": "当前页、空结果、正常末页、页数/行数限制、页面无变化或中途错误。"
+      "description": "当前页、空结果、正常末页、页数/行数限制、页面无变化或中途错误。",
+      "isAdvanced": false,
+      "validForList": [
+        "ExtractList"
+      ],
+      "invalidForList": [],
+      "condition": "仅：ExtractList"
     },
     {
       "key": "formAllRequiredSucceeded",
       "name": "必填字段是否全部成功",
       "type": "Boolean",
-      "condition": "仅：FillForm",
-      "description": ""
+      "description": "",
+      "isAdvanced": false,
+      "validForList": [
+        "FillForm"
+      ],
+      "invalidForList": [],
+      "condition": "仅：FillForm"
     },
     {
       "key": "formFilledCount",
       "name": "已填写数量",
       "type": "Integer",
-      "condition": "仅：FillForm",
-      "description": ""
+      "description": "",
+      "isAdvanced": false,
+      "validForList": [
+        "FillForm"
+      ],
+      "invalidForList": [],
+      "condition": "仅：FillForm"
     },
     {
       "key": "formFailedCount",
       "name": "失败数量",
       "type": "Integer",
-      "condition": "仅：FillForm",
-      "description": ""
+      "description": "",
+      "isAdvanced": false,
+      "validForList": [
+        "FillForm"
+      ],
+      "invalidForList": [],
+      "condition": "仅：FillForm"
     },
     {
       "key": "formResults",
       "name": "逐字段结果",
       "type": "Table",
-      "condition": "仅：FillForm",
-      "description": "包含 key、显示名、必填、状态和定位诊断。"
+      "description": "包含 key、显示名、必填、状态和定位诊断。",
+      "isAdvanced": false,
+      "validForList": [
+        "FillForm"
+      ],
+      "invalidForList": [],
+      "condition": "仅：FillForm"
     },
     {
       "key": "formCheckStatus",
       "name": "检查状态",
       "type": "Text",
-      "condition": "仅：FillForm",
-      "description": "正常或需要检查。"
+      "description": "正常或需要检查。",
+      "isAdvanced": false,
+      "validForList": [
+        "FillForm"
+      ],
+      "invalidForList": [],
+      "condition": "仅：FillForm"
     },
     {
       "key": "formWarnings",
       "name": "表单警告",
       "type": "List",
-      "condition": "仅：FillForm",
-      "description": "包含数据词典中的未知 key 等非字段失败提示。"
+      "description": "包含数据词典中的未知 key 等非字段失败提示。",
+      "isAdvanced": false,
+      "validForList": [
+        "FillForm"
+      ],
+      "invalidForList": [],
+      "condition": "仅：FillForm"
     },
     {
       "key": "rawResponse",
       "name": "原始返回结果",
       "type": "Any",
-      "condition": "",
-      "description": "从插件返回的原始jToken对象"
+      "description": "从插件返回的原始jToken对象",
+      "isAdvanced": false,
+      "validForList": [],
+      "invalidForList": [],
+      "condition": ""
     }
   ],
   "selections": {
@@ -2210,5 +2921,5 @@
       ]
     }
   },
-  "sourceFileName": "sys_chromecontrol_浏览器控制.md"
+  "sourceFileName": "catalog.json"
 }

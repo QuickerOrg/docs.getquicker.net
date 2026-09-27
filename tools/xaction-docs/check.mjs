@@ -2,6 +2,7 @@ import crypto from 'node:crypto';
 import fs from 'node:fs';
 import path from 'node:path';
 import process from 'node:process';
+import {isDeepStrictEqual} from 'node:util';
 import {fileURLToPath} from 'node:url';
 
 const scriptDirectory = path.dirname(fileURLToPath(import.meta.url));
@@ -108,9 +109,15 @@ function main() {
       fail(errors, `缺少单模块机器数据：${module.key}`);
     } else {
       const single = JSON.parse(readText(moduleDataPath));
-      if (single.key !== module.key) {
-        fail(errors, `${path.relative(repositoryRoot, moduleDataPath)} 的模块 Key 不一致。`);
+      if (!isDeepStrictEqual(single, module)) {
+        fail(errors, `${path.relative(repositoryRoot, moduleDataPath)} 与 catalog 中的模块数据不一致。`);
       }
+    }
+  }
+  for (const filePath of collectFiles(path.join(dataRoot, 'modules'), (value) => value.endsWith('.json'))) {
+    const single = JSON.parse(readText(filePath));
+    if (!catalog.modules.some((module) => module.key === single.key)) {
+      fail(errors, `遗留单模块数据已不在 catalog 中：${path.relative(repositoryRoot, filePath)}`);
     }
   }
   for (const key of pageByKey.keys()) {

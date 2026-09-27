@@ -16,11 +16,16 @@
       "key": "operation",
       "name": "操作类型",
       "type": "Enum",
+      "description": "要执行的操作。所有操作仅在输入法启用的情况下有效。",
+      "isAdvanced": false,
+      "validForList": [],
+      "invalidForList": [],
+      "condition": "",
       "defaultValue": "GET_STATE",
+      "defaultValueRaw": "GET_STATE",
       "required": true,
       "variableMode": "Input",
-      "condition": "",
-      "description": "要执行的操作。所有操作仅在输入法启用的情况下有效。"
+      "isControlField": true
     }
   ],
   "outputs": [
@@ -28,8 +33,13 @@
       "key": "isEnabled",
       "name": "是否为中文状态",
       "type": "Boolean",
-      "condition": "仅：GET_STATE",
-      "description": ""
+      "description": "",
+      "isAdvanced": false,
+      "validForList": [
+        "GET_STATE"
+      ],
+      "invalidForList": [],
+      "condition": "仅：GET_STATE"
     }
   ],
   "selections": {
@@ -59,5 +69,5 @@
       ]
     }
   },
-  "sourceFileName": "sys_imeControl_输入法状态.md"
+  "sourceFileName": "catalog.json"
 }

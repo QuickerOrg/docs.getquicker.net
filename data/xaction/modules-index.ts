@@ -4,12 +4,25 @@
  * Kept in sync with docs:xaction:sync (do not hand-edit).
  */
 import {PARAM_FILE_EXT} from './param-file-ext';
+import type {StepVisibilityCondition} from '@site/src/components/xaction/conditionVisibility';
 
-export type XActionParam = {
+export type XActionVisibility = {
+  condition?: string;
+  visibleWhen?: StepVisibilityCondition;
+  visibleExpression?: string;
+  validForList?: string[];
+  invalidForList?: string[];
+  isAdvanced?: boolean;
+};
+
+export type XActionParam = XActionVisibility & {
   key: string;
   name: string;
   type: string;
   defaultValue?: string;
+  defaultValueRaw?: unknown;
+  newStepDefaultValue?: string;
+  isControlField?: boolean;
   required?: boolean;
   variableMode?: string;
   condition?: string;
@@ -18,7 +31,7 @@ export type XActionParam = {
   fileExt?: string;
 };
 
-export type XActionOutput = {
+export type XActionOutput = XActionVisibility & {
   key: string;
   name: string;
   type: string;

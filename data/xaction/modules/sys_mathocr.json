@@ -16,31 +16,48 @@
       "key": "vendor",
       "name": "厂商接口",
       "type": "Enum",
+      "description": "详情请参考文档。",
+      "isAdvanced": false,
+      "validForList": [],
+      "invalidForList": [],
+      "condition": "",
       "defaultValue": "Mathpix",
+      "defaultValueRaw": "Mathpix",
       "required": true,
       "variableMode": "Input",
-      "condition": "",
-      "description": "详情请参考文档。"
+      "isControlField": true
     },
     {
       "key": "image",
       "name": "公式图片",
       "type": "Image",
+      "description": "指定待识别的图片变量、图片文件的路径或网址(通过表达式传入)。",
+      "isAdvanced": false,
+      "validForList": [
+        "Mathpix"
+      ],
+      "invalidForList": [],
+      "condition": "仅：Mathpix",
       "defaultValue": "",
+      "defaultValueRaw": "",
       "required": true,
       "variableMode": "UseVarOrInput",
-      "condition": "仅：Mathpix",
-      "description": "指定待识别的图片变量、图片文件的路径或网址(通过表达式传入)。"
+      "isControlField": false
     },
     {
       "key": "stopIfFail",
       "name": "失败后停止",
       "type": "Boolean",
+      "description": "失败后是否停止动作",
+      "isAdvanced": false,
+      "validForList": [],
+      "invalidForList": [],
+      "condition": "",
       "defaultValue": "true",
+      "defaultValueRaw": true,
       "required": false,
       "variableMode": "Input",
-      "condition": "",
-      "description": "失败后是否停止动作"
+      "isControlField": false
     }
   ],
   "outputs": [
@@ -48,57 +65,81 @@
       "key": "isSuccess",
       "name": "是否成功",
       "type": "Boolean",
-      "condition": "",
-      "description": "操作是否成功"
+      "description": "操作是否成功",
+      "isAdvanced": false,
+      "validForList": [],
+      "invalidForList": [],
+      "condition": ""
     },
     {
       "key": "mathpixMarkdown",
       "name": "Mathpix MD",
       "type": "Text",
-      "condition": "",
-      "description": "Mathpix Markdown格式"
+      "description": "Mathpix Markdown格式",
+      "isAdvanced": false,
+      "validForList": [],
+      "invalidForList": [],
+      "condition": ""
     },
     {
       "key": "mathml",
       "name": "MathML",
       "type": "Text",
-      "condition": "",
-      "description": ""
+      "description": "",
+      "isAdvanced": false,
+      "validForList": [],
+      "invalidForList": [],
+      "condition": ""
     },
     {
       "key": "asciimath",
       "name": "AsciiMath",
       "type": "Text",
-      "condition": "",
-      "description": ""
+      "description": "",
+      "isAdvanced": false,
+      "validForList": [],
+      "invalidForList": [],
+      "condition": ""
     },
     {
       "key": "latex",
       "name": "Latex",
       "type": "Text",
-      "condition": "",
-      "description": ""
+      "description": "",
+      "isAdvanced": false,
+      "validForList": [],
+      "invalidForList": [],
+      "condition": ""
     },
     {
       "key": "latexEx1",
       "name": "Latex附加格式1",
       "type": "Text",
-      "condition": "",
-      "description": ""
+      "description": "",
+      "isAdvanced": false,
+      "validForList": [],
+      "invalidForList": [],
+      "condition": ""
     },
     {
       "key": "latexEx2",
       "name": "Latex附加格式2",
       "type": "Text",
-      "condition": "",
-      "description": ""
+      "description": "",
+      "isAdvanced": false,
+      "validForList": [],
+      "invalidForList": [],
+      "condition": ""
     },
     {
       "key": "rawData",
       "name": "原始响应",
       "type": "Text",
-      "condition": "",
-      "description": "厂商接口返回的原始内容，通常为json格式。"
+      "description": "厂商接口返回的原始内容，通常为json格式。",
+      "isAdvanced": false,
+      "validForList": [],
+      "invalidForList": [],
+      "condition": ""
     }
   ],
   "selections": {
@@ -118,5 +159,5 @@
       ]
     }
   },
-  "sourceFileName": "sys_mathocr_公式识别.md"
+  "sourceFileName": "catalog.json"
 }

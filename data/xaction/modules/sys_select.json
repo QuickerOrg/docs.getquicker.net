@@ -16,261 +16,397 @@
       "key": "type",
       "name": "类型",
       "type": "Enum",
+      "description": "",
+      "isAdvanced": false,
+      "validForList": [],
+      "invalidForList": [],
+      "condition": "",
       "defaultValue": "single",
+      "defaultValueRaw": "single",
       "required": true,
       "variableMode": "Input",
-      "condition": "",
-      "description": ""
+      "isControlField": true
     },
     {
       "key": "prompt",
       "name": "窗口标题",
       "type": "Text",
+      "description": "",
+      "isAdvanced": false,
+      "validForList": [],
+      "invalidForList": [],
+      "condition": "",
       "defaultValue": "请选择",
+      "defaultValueRaw": "请选择",
       "required": true,
       "variableMode": "Input",
-      "condition": "",
-      "description": ""
+      "isControlField": false
     },
     {
       "key": "note",
       "name": "提示信息",
       "type": "Text",
+      "description": "",
+      "isAdvanced": false,
+      "validForList": [],
+      "invalidForList": [],
+      "condition": "",
       "defaultValue": "",
+      "defaultValueRaw": "",
       "required": false,
       "variableMode": "Input",
-      "condition": "",
-      "description": ""
+      "isControlField": false
     },
     {
       "key": "items",
       "name": "选项",
       "type": "Text",
+      "description": "每行一个选项，格式为 \"文本\" 或 \"显示文本|值\"。如需显示图标，格式请参考文档。",
+      "isAdvanced": false,
+      "validForList": [],
+      "invalidForList": [],
+      "condition": "",
       "defaultValue": "",
+      "defaultValueRaw": "",
       "required": true,
       "variableMode": "UseVarOrInput",
-      "condition": "",
-      "description": "每行一个选项，格式为 \"文本\" 或 \"显示文本|值\"。如需显示图标，格式请参考文档。"
+      "isControlField": false
     },
     {
       "key": "defaultValue",
       "name": "默认值",
       "type": "Text",
+      "description": "预先选择的项",
+      "isAdvanced": false,
+      "validForList": [
+        "single"
+      ],
+      "invalidForList": [],
+      "condition": "仅：single",
       "defaultValue": "",
+      "defaultValueRaw": "",
       "required": false,
       "variableMode": "UseVarOrInput",
-      "condition": "仅：single",
-      "description": "预先选择的项"
+      "isControlField": false
     },
     {
       "key": "defaultValueMulti",
       "name": "默认值",
       "type": "Text",
+      "description": "多选时默认选项，每行一个",
+      "isAdvanced": false,
+      "validForList": [
+        "multi"
+      ],
+      "invalidForList": [],
+      "condition": "仅：multi",
       "defaultValue": "",
+      "defaultValueRaw": "",
       "required": false,
       "variableMode": "UseVarOrInput",
-      "condition": "仅：multi",
-      "description": "多选时默认选项，每行一个"
+      "isControlField": false
     },
     {
       "key": "winLocation",
       "name": "窗口位置",
       "type": "Enum",
+      "description": "在哪里显示选择窗口",
+      "isAdvanced": false,
+      "validForList": [],
+      "invalidForList": [],
+      "condition": "",
       "defaultValue": "WithMouse1",
+      "defaultValueRaw": "WithMouse1",
       "required": false,
       "variableMode": "UseVarOrInput",
-      "condition": "",
-      "description": "在哪里显示选择窗口"
+      "isControlField": false
     },
     {
       "key": "maxWinSize",
       "name": "最大尺寸/位置坐标",
       "type": "Text",
+      "description": "最大宽度,高度：逻辑像素或屏幕工作区百分比；自定义位置填坐标。",
+      "isAdvanced": false,
+      "validForList": [],
+      "invalidForList": [],
+      "condition": "",
       "defaultValue": "",
+      "defaultValueRaw": "",
       "required": false,
       "variableMode": "Input",
-      "condition": "",
-      "description": "最大宽度,高度：逻辑像素或屏幕工作区百分比；自定义位置填坐标。"
+      "isControlField": false
     },
     {
       "key": "keepLastPos",
       "name": "使用上次位置",
       "type": "Enum",
+      "description": "重复显示选择窗口时，保持上次的显示位置。",
+      "isAdvanced": false,
+      "validForList": [],
+      "invalidForList": [],
+      "condition": "",
       "defaultValue": "1",
+      "defaultValueRaw": "1",
       "required": false,
       "variableMode": "UseVarOrInput",
-      "condition": "",
-      "description": "重复显示选择窗口时，保持上次的显示位置。"
+      "isControlField": false
     },
     {
       "key": "autoCloseSeconds",
       "name": "自动关闭",
       "type": "Number",
+      "description": "几秒后自动关闭选择窗口。0表示不自动关闭。",
+      "isAdvanced": true,
+      "validForList": [],
+      "invalidForList": [],
+      "condition": "",
       "defaultValue": "0.0",
+      "defaultValueRaw": 0,
       "required": false,
       "variableMode": "Input",
-      "condition": "",
-      "description": "几秒后自动关闭选择窗口。0表示不自动关闭。"
+      "isControlField": false
     },
     {
       "key": "noKeyboard",
       "name": "不使用焦点",
       "type": "Boolean",
+      "description": "不抢占其他应用的焦点。此时无法使用键盘选择选项，只能用鼠标操作。",
+      "isAdvanced": true,
+      "validForList": [],
+      "invalidForList": [],
+      "condition": "",
       "defaultValue": "false",
+      "defaultValueRaw": false,
       "required": false,
       "variableMode": "UseVarOrInput",
-      "condition": "",
-      "description": "不抢占其他应用的焦点。此时无法使用键盘选择选项，只能用鼠标操作。"
+      "isControlField": false
     },
     {
       "key": "closeOnDeactivated",
       "name": "失去焦点后关闭窗口（仅在使用焦点时有效）",
       "type": "Boolean",
+      "description": "",
+      "isAdvanced": false,
+      "validForList": [],
+      "invalidForList": [],
+      "condition": "",
       "defaultValue": "false",
+      "defaultValueRaw": false,
       "required": false,
       "variableMode": "Input",
-      "condition": "",
-      "description": ""
+      "isControlField": false
     },
     {
       "key": "showFilter",
       "name": "启用筛选",
       "type": "Enum",
+      "description": "是否显示筛选框。仅在且使用焦点时有效。",
+      "isAdvanced": false,
+      "validForList": [],
+      "invalidForList": [],
+      "condition": "",
       "defaultValue": "auto",
+      "defaultValueRaw": "auto",
       "required": false,
       "variableMode": "UseVarOrInput",
-      "condition": "",
-      "description": "是否显示筛选框。仅在且使用焦点时有效。"
+      "isControlField": false
     },
     {
       "key": "filterContent",
       "name": "筛选内容",
       "type": "Text",
+      "description": "预先显示的筛选内容",
+      "isAdvanced": false,
+      "validForList": [],
+      "invalidForList": [],
+      "condition": "",
       "defaultValue": "",
+      "defaultValueRaw": "",
       "required": false,
       "variableMode": "UseVarOrInput",
-      "condition": "",
-      "description": "预先显示的筛选内容"
+      "isControlField": false
     },
     {
       "key": "imeState",
       "name": "输入法状态",
       "type": "Enum",
+      "description": "筛选框输入法状态",
+      "isAdvanced": true,
+      "validForList": [],
+      "invalidForList": [],
+      "condition": "",
       "defaultValue": "NO_CONTROL",
+      "defaultValueRaw": "NO_CONTROL",
       "required": false,
       "variableMode": "UseVarOrInput",
-      "condition": "",
-      "description": "筛选框输入法状态"
+      "isControlField": false
     },
     {
       "key": "restoreForeground",
       "name": "恢复活动窗口到弹出前",
       "type": "Boolean",
+      "description": "将前台窗口还原为弹窗前的活动窗口。否则将会还原到最后一个活动窗口上。",
+      "isAdvanced": false,
+      "validForList": [],
+      "invalidForList": [],
+      "condition": "",
       "defaultValue": "true",
+      "defaultValueRaw": true,
       "required": false,
       "variableMode": "Input",
-      "condition": "",
-      "description": "将前台窗口还原为弹窗前的活动窗口。否则将会还原到最后一个活动窗口上。"
+      "isControlField": false
     },
     {
       "key": "allowOkWhenEmpty",
       "name": "允许不选择任何选项时点击确定",
       "type": "Boolean",
+      "description": "",
+      "isAdvanced": false,
+      "validForList": [],
+      "invalidForList": [],
+      "condition": "",
       "defaultValue": "false",
+      "defaultValueRaw": false,
       "required": false,
       "variableMode": "Input",
-      "condition": "",
-      "description": ""
+      "isControlField": false
     },
     {
       "key": "enableQuickConfirm",
       "name": "启用快速确认（点击选项后立即确认选择并关闭窗口）",
       "type": "Boolean",
+      "description": "",
+      "isAdvanced": false,
+      "validForList": [
+        "single"
+      ],
+      "invalidForList": [],
+      "condition": "仅：single",
       "defaultValue": "true",
+      "defaultValueRaw": true,
       "required": false,
       "variableMode": "Input",
-      "condition": "仅：single",
-      "description": ""
+      "isControlField": false
     },
     {
       "key": "topMost",
       "name": "置顶显示",
       "type": "Boolean",
+      "description": "",
+      "isAdvanced": false,
+      "validForList": [],
+      "invalidForList": [],
+      "condition": "",
       "defaultValue": "true",
+      "defaultValueRaw": true,
       "required": false,
       "variableMode": "Input",
-      "condition": "",
-      "description": ""
+      "isControlField": false
     },
     {
       "key": "stopIfCancel",
       "name": "取消后停止",
       "type": "Boolean",
+      "description": "取消选择后是否停止动作",
+      "isAdvanced": false,
+      "validForList": [],
+      "invalidForList": [],
+      "condition": "",
       "defaultValue": "true",
+      "defaultValueRaw": true,
       "required": false,
       "variableMode": "Input",
-      "condition": "",
-      "description": "取消选择后是否停止动作"
+      "isControlField": false
     },
     {
       "key": "operations",
       "name": "右键/全局菜单",
       "type": "Text",
+      "description": "每行定义一个操作，具体格式请参考文档。",
+      "isAdvanced": true,
+      "validForList": [],
+      "invalidForList": [],
+      "condition": "",
       "defaultValue": "",
+      "defaultValueRaw": "",
       "required": false,
       "variableMode": "Input",
-      "condition": "",
-      "description": "每行定义一个操作，具体格式请参考文档。"
+      "isControlField": false
     },
     {
       "key": "fontsize",
       "name": "字体大小",
       "type": "Number",
+      "description": "",
+      "isAdvanced": true,
+      "validForList": [],
+      "invalidForList": [],
+      "condition": "",
       "defaultValue": "12.0",
+      "defaultValueRaw": 12,
       "required": true,
       "variableMode": "UseVarOrInput",
-      "condition": "",
-      "description": ""
+      "isControlField": false
     },
     {
       "key": "fontfamily",
       "name": "字体名称",
       "type": "Text",
+      "description": "可选。设置字体名称。如有多个字体，使用逗号分隔。",
+      "isAdvanced": true,
+      "validForList": [],
+      "invalidForList": [],
+      "condition": "",
       "defaultValue": "",
+      "defaultValueRaw": "",
       "required": false,
       "variableMode": "UseVarOrInput",
-      "condition": "",
-      "description": "可选。设置字体名称。如有多个字体，使用逗号分隔。"
+      "isControlField": false
     },
     {
       "key": "iconsize",
       "name": "图标大小",
       "type": "Number",
+      "description": "",
+      "isAdvanced": true,
+      "validForList": [],
+      "invalidForList": [],
+      "condition": "",
       "defaultValue": "16.0",
+      "defaultValueRaw": 16,
       "required": true,
       "variableMode": "UseVarOrInput",
-      "condition": "",
-      "description": ""
+      "isControlField": false
     },
     {
       "key": "windowKey",
       "name": "窗口标识",
       "type": "Text",
+      "description": "再次运行动作时，可根据标识自动关闭前一个窗口并在该位置显示新窗口。",
+      "isAdvanced": true,
+      "validForList": [],
+      "invalidForList": [],
+      "condition": "",
       "defaultValue": "",
+      "defaultValueRaw": "",
       "required": false,
       "variableMode": "UseVarOrInput",
-      "condition": "",
-      "description": "再次运行动作时，可根据标识自动关闭前一个窗口并在该位置显示新窗口。"
+      "isControlField": false
     },
     {
       "key": "help",
       "name": "帮助按钮内容",
       "type": "Text",
+      "description": "点击弹出显示帮助内容，MarkDown格式",
+      "isAdvanced": true,
+      "validForList": [],
+      "invalidForList": [],
+      "condition": "",
       "defaultValue": "",
+      "defaultValueRaw": "",
       "required": false,
       "variableMode": "Input",
-      "condition": "",
-      "description": "点击弹出显示帮助内容，MarkDown格式"
+      "isControlField": false
     }
   ],
   "outputs": [
@@ -278,64 +414,101 @@
       "key": "isSuccess",
       "name": "是否确认",
       "type": "Boolean",
-      "condition": "",
-      "description": "是否成功选择了选项/点击了保存按钮"
+      "description": "是否成功选择了选项/点击了保存按钮",
+      "isAdvanced": false,
+      "validForList": [],
+      "invalidForList": [],
+      "condition": ""
     },
     {
       "key": "textValue",
       "name": "选择的项(值)",
       "type": "Text",
-      "condition": "仅：single",
-      "description": "选中选项的值"
+      "description": "选中选项的值",
+      "isAdvanced": false,
+      "validForList": [
+        "single"
+      ],
+      "invalidForList": [],
+      "condition": "仅：single"
     },
     {
       "key": "selectedIndex",
       "name": "索引号",
       "type": "Integer",
-      "condition": "仅：single",
-      "description": "选择的项在列表里的序号数字，从0开始。"
+      "description": "选择的项在列表里的序号数字，从0开始。",
+      "isAdvanced": false,
+      "validForList": [
+        "single"
+      ],
+      "invalidForList": [],
+      "condition": "仅：single"
     },
     {
       "key": "selectedIndexList",
       "name": "索引号列表",
       "type": "List",
-      "condition": "仅：multi",
-      "description": "所有选择的项的序号列表"
+      "description": "所有选择的项的序号列表",
+      "isAdvanced": false,
+      "validForList": [
+        "multi"
+      ],
+      "invalidForList": [],
+      "condition": "仅：multi"
     },
     {
       "key": "multiSelected",
       "name": "选择的项值列表",
       "type": "List",
-      "condition": "仅：multi",
-      "description": "所有选择的项的值的列表"
+      "description": "所有选择的项的值的列表",
+      "isAdvanced": false,
+      "validForList": [
+        "multi"
+      ],
+      "invalidForList": [],
+      "condition": "仅：multi"
     },
     {
       "key": "extraOperation",
       "name": "选择的菜单",
       "type": "Text",
-      "condition": "",
-      "description": "选择的右键菜单或全局菜单项的值"
+      "description": "选择的右键菜单或全局菜单项的值",
+      "isAdvanced": false,
+      "validForList": [],
+      "invalidForList": [],
+      "condition": ""
     },
     {
       "key": "selectedFullItems",
       "name": "选择的完整选项",
       "type": "Any",
-      "condition": "",
-      "description": "选择选项的完整定义内容（不仅仅返回选项值）"
+      "description": "选择选项的完整定义内容（不仅仅返回选项值）",
+      "isAdvanced": false,
+      "validForList": [],
+      "invalidForList": [],
+      "condition": ""
     },
     {
       "key": "selectedItemTitle",
       "name": "选择的选项标题",
       "type": "Text",
-      "condition": "仅：single",
-      "description": "所选中选项的标题"
+      "description": "所选中选项的标题",
+      "isAdvanced": false,
+      "validForList": [
+        "single"
+      ],
+      "invalidForList": [],
+      "condition": "仅：single"
     },
     {
       "key": "filterContent",
       "name": "筛选内容",
       "type": "Text",
-      "condition": "",
-      "description": "最后使用的筛选词"
+      "description": "最后使用的筛选词",
+      "isAdvanced": false,
+      "validForList": [],
+      "invalidForList": [],
+      "condition": ""
     }
   ],
   "selections": {
@@ -510,5 +683,5 @@
       ]
     }
   },
-  "sourceFileName": "sys_select_用户选择.md"
+  "sourceFileName": "catalog.json"
 }

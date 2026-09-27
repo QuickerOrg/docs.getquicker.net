@@ -16,51 +16,79 @@
       "key": "operation",
       "name": "操作类型",
       "type": "Enum",
+      "description": "",
+      "isAdvanced": false,
+      "validForList": [],
+      "invalidForList": [],
+      "condition": "",
       "defaultValue": "getServiceInfo",
+      "defaultValueRaw": "getServiceInfo",
       "required": true,
       "variableMode": "Input",
-      "condition": "",
-      "description": ""
+      "isControlField": true
     },
     {
       "key": "name",
       "name": "服务名",
       "type": "Text",
+      "description": "服务名称（不是显示名称），大小写敏感。",
+      "isAdvanced": false,
+      "validForList": [
+        "getServiceInfo"
+      ],
+      "invalidForList": [],
+      "condition": "仅：getServiceInfo",
       "defaultValue": "",
       "required": false,
       "variableMode": "UseVarOrInput",
-      "condition": "仅：getServiceInfo",
-      "description": "服务名称（不是显示名称），大小写敏感。"
+      "isControlField": false
     },
     {
       "key": "regKeyPath",
       "name": "注册表项路径",
       "type": "Text",
+      "description": "如：HKEY_CURRENT_USER\\Software\\Quicker",
+      "isAdvanced": false,
+      "validForList": [
+        "getRegValue"
+      ],
+      "invalidForList": [],
+      "condition": "仅：getRegValue",
       "defaultValue": "",
       "required": false,
       "variableMode": "UseVarOrInput",
-      "condition": "仅：getRegValue",
-      "description": "如：HKEY_CURRENT_USER\\Software\\Quicker"
+      "isControlField": false
     },
     {
       "key": "regValueName",
       "name": "值名称",
       "type": "Text",
+      "description": "留空表示\"默认\"项",
+      "isAdvanced": false,
+      "validForList": [
+        "getRegValue"
+      ],
+      "invalidForList": [],
+      "condition": "仅：getRegValue",
       "defaultValue": "",
       "required": false,
       "variableMode": "UseVarOrInput",
-      "condition": "仅：getRegValue",
-      "description": "留空表示\"默认\"项"
+      "isControlField": false
     },
     {
       "key": "stopIfFail",
       "name": "失败后停止",
       "type": "Boolean",
+      "description": "失败后是否停止动作",
+      "isAdvanced": false,
+      "validForList": [],
+      "invalidForList": [],
+      "condition": "",
       "defaultValue": "true",
+      "defaultValueRaw": true,
       "required": false,
       "variableMode": "Input",
-      "condition": "",
-      "description": "失败后是否停止动作"
+      "isControlField": false
     }
   ],
   "outputs": [
@@ -68,36 +96,62 @@
       "key": "isExists",
       "name": "是否存在",
       "type": "Boolean",
-      "condition": "仅：getServiceInfo, getRegValue",
-      "description": "服务或注册表项是否存在"
+      "description": "服务或注册表项是否存在",
+      "isAdvanced": false,
+      "validForList": [
+        "getServiceInfo",
+        "getRegValue"
+      ],
+      "invalidForList": [],
+      "condition": "仅：getServiceInfo, getRegValue"
     },
     {
       "key": "displayName",
       "name": "显示名",
       "type": "Text",
-      "condition": "仅：getServiceInfo",
-      "description": "服务的显示名"
+      "description": "服务的显示名",
+      "isAdvanced": false,
+      "validForList": [
+        "getServiceInfo"
+      ],
+      "invalidForList": [],
+      "condition": "仅：getServiceInfo"
     },
     {
       "key": "state",
       "name": "服务状态",
       "type": "Integer",
-      "condition": "仅：getServiceInfo",
-      "description": "服务的当前状态。4:运行中，1:已停止。其它状态请参考文档。"
+      "description": "服务的当前状态。4:运行中，1:已停止。其它状态请参考文档。",
+      "isAdvanced": false,
+      "validForList": [
+        "getServiceInfo"
+      ],
+      "invalidForList": [],
+      "condition": "仅：getServiceInfo"
     },
     {
       "key": "regValue",
       "name": "值",
       "type": "Text",
-      "condition": "仅：getRegValue",
-      "description": "注册表项的值"
+      "description": "注册表项的值",
+      "isAdvanced": false,
+      "validForList": [
+        "getRegValue"
+      ],
+      "invalidForList": [],
+      "condition": "仅：getRegValue"
     },
     {
       "key": "serviceList",
       "name": "服务名列表",
       "type": "List",
-      "condition": "仅：getServiceList",
-      "description": ""
+      "description": "",
+      "isAdvanced": false,
+      "validForList": [
+        "getServiceList"
+      ],
+      "invalidForList": [],
+      "condition": "仅：getServiceList"
     }
   ],
   "selections": {
@@ -122,5 +176,5 @@
       ]
     }
   },
-  "sourceFileName": "sys_winservice_Windows服务和注册表.md"
+  "sourceFileName": "catalog.json"
 }

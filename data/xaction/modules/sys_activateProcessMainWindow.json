@@ -16,61 +16,89 @@
       "key": "process",
       "name": "进程名称/pid",
       "type": "Text",
+      "description": "请输入当前登录会话中的进程名、PID或完整exe路径。进程名可带.exe后缀。",
+      "isAdvanced": false,
+      "validForList": [],
+      "invalidForList": [],
+      "condition": "",
       "defaultValue": "",
+      "defaultValueRaw": "",
       "required": true,
       "variableMode": "UseVarOrInput",
-      "condition": "",
-      "description": "请输入当前登录会话中的进程名、PID或完整exe路径。进程名可带.exe后缀。"
+      "isControlField": false
     },
     {
       "key": "hotkey",
       "name": "热键",
       "type": "Text",
+      "description": "选填。软件最小化到托盘时，使用指定的全局热键激活窗口。",
+      "isAdvanced": false,
+      "validForList": [],
+      "invalidForList": [],
+      "condition": "",
       "defaultValue": "",
+      "defaultValueRaw": "",
       "required": false,
       "variableMode": "UseVarOrInput",
-      "condition": "",
-      "description": "选填。软件最小化到托盘时，使用指定的全局热键激活窗口。"
+      "isControlField": false
     },
     {
       "key": "className",
       "name": "窗口类名",
       "type": "Text",
+      "description": "选填。按类名筛选窗口，支持正则；热键和已有前台窗口也必须满足条件。隐藏窗口必须唯一。",
+      "isAdvanced": false,
+      "validForList": [],
+      "invalidForList": [],
+      "condition": "",
       "defaultValue": "",
       "required": false,
       "variableMode": "UseVarOrInput",
-      "condition": "",
-      "description": "选填。按类名筛选窗口，支持正则；热键和已有前台窗口也必须满足条件。隐藏窗口必须唯一。"
+      "isControlField": false
     },
     {
       "key": "windowTitle",
       "name": "窗口标题",
       "type": "Text",
+      "description": "选填。按标题筛选窗口，支持正则；所有成功路径均验证此条件和真实前台状态。",
+      "isAdvanced": false,
+      "validForList": [],
+      "invalidForList": [],
+      "condition": "",
       "defaultValue": "",
       "required": false,
       "variableMode": "UseVarOrInput",
-      "condition": "",
-      "description": "选填。按标题筛选窗口，支持正则；所有成功路径均验证此条件和真实前台状态。"
+      "isControlField": false
     },
     {
       "key": "path",
       "name": "程序路径",
       "type": "Text",
+      "description": "选填。如果进程不存在，可以根据此路径启动程序。",
+      "isAdvanced": false,
+      "validForList": [],
+      "invalidForList": [],
+      "condition": "",
       "defaultValue": "",
+      "defaultValueRaw": "",
       "required": true,
       "variableMode": "UseVarOrInput",
-      "condition": "",
-      "description": "选填。如果进程不存在，可以根据此路径启动程序。"
+      "isControlField": false
     },
     {
       "key": "stopIfFail",
       "name": "失败后停止",
       "type": "Boolean",
+      "description": "失败后是否停止动作",
+      "isAdvanced": false,
+      "validForList": [],
+      "invalidForList": [],
+      "condition": "",
       "defaultValue": "true",
+      "defaultValueRaw": true,
       "required": false,
       "variableMode": "Input",
-      "condition": "",
-      "description": "失败后是否停止动作"
+      "isControlField": false
     }
   ],
   "outputs": [
@@ -78,31 +106,43 @@
       "key": "isSuccess",
       "name": "是否成功",
       "type": "Boolean",
-      "condition": "",
-      "description": "是否成功激活了进程主窗口"
+      "description": "是否成功激活了进程主窗口",
+      "isAdvanced": false,
+      "validForList": [],
+      "invalidForList": [],
+      "condition": ""
     },
     {
       "key": "pid",
       "name": "PID",
       "type": "Integer",
-      "condition": "",
-      "description": "进程ID"
+      "description": "进程ID",
+      "isAdvanced": false,
+      "validForList": [],
+      "invalidForList": [],
+      "condition": ""
     },
     {
       "key": "mainWinHandle",
       "name": "主窗口句柄",
       "type": "Integer",
-      "condition": "",
-      "description": "进程的主窗口句柄"
+      "description": "进程的主窗口句柄",
+      "isAdvanced": false,
+      "validForList": [],
+      "invalidForList": [],
+      "condition": ""
     },
     {
       "key": "mainWinTitle",
       "name": "主窗口标题",
       "type": "Text",
-      "condition": "",
-      "description": ""
+      "description": "",
+      "isAdvanced": false,
+      "validForList": [],
+      "invalidForList": [],
+      "condition": ""
     }
   ],
   "selections": {},
-  "sourceFileName": "sys_activateProcessMainWindow_激活进程主窗口.md"
+  "sourceFileName": "catalog.json"
 }

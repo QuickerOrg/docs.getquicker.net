@@ -16,211 +16,321 @@
       "key": "operation",
       "name": "工作模式",
       "type": "Enum",
+      "description": "工作模式：编辑某个词典的值，或编辑一些变量的值",
+      "isAdvanced": false,
+      "validForList": [],
+      "invalidForList": [],
+      "condition": "",
       "defaultValue": "variables",
+      "defaultValueRaw": "variables",
       "required": true,
       "variableMode": "Input",
-      "condition": "",
-      "description": "工作模式：编辑某个词典的值，或编辑一些变量的值"
+      "isControlField": true
     },
     {
       "key": "dictVar",
       "name": "词典变量",
       "type": "Dict",
+      "description": "表单需要编辑的词典变量",
+      "isAdvanced": false,
+      "validForList": [
+        "dict",
+        "dict_dynamic"
+      ],
+      "invalidForList": [],
+      "condition": "仅：dict, dict_dynamic",
       "defaultValue": "",
       "required": false,
       "variableMode": "UseVarOnly",
-      "condition": "仅：dict, dict_dynamic",
-      "description": "表单需要编辑的词典变量"
+      "isControlField": false
     },
     {
       "key": "title",
       "name": "窗口标题",
       "type": "Text",
+      "description": "表单窗口标题文字",
+      "isAdvanced": false,
+      "validForList": [],
+      "invalidForList": [],
+      "condition": "",
       "defaultValue": "填写表单",
+      "defaultValueRaw": "填写表单",
       "required": true,
       "variableMode": "UseVarOrInput",
-      "condition": "",
-      "description": "表单窗口标题文字"
+      "isControlField": false
     },
     {
       "key": "formDef",
       "name": "表单定义",
       "type": "Form",
+      "description": "",
+      "isAdvanced": false,
+      "validForList": [
+        "variables"
+      ],
+      "invalidForList": [],
+      "condition": "仅：variables",
       "defaultValue": "",
       "required": true,
       "variableMode": "Input",
-      "condition": "仅：variables",
-      "description": ""
+      "isControlField": false
     },
     {
       "key": "formForDictDef",
       "name": "表单定义(词典)",
       "type": "FormForDict",
+      "description": "",
+      "isAdvanced": false,
+      "validForList": [
+        "dict"
+      ],
+      "invalidForList": [],
+      "condition": "仅：dict",
       "defaultValue": "",
       "required": true,
       "variableMode": "Input",
-      "condition": "仅：dict",
-      "description": ""
+      "isControlField": false
     },
     {
       "key": "dynamicFormForDictDef",
       "name": "表单定义(词典)",
       "type": "Text",
+      "description": "JSON格式的表单定义数据。格式说明请参考模块文档。",
+      "isAdvanced": false,
+      "validForList": [
+        "dict_dynamic"
+      ],
+      "invalidForList": [],
+      "condition": "仅：dict_dynamic",
       "defaultValue": "",
       "required": true,
       "variableMode": "UseVarOrInput",
-      "condition": "仅：dict_dynamic",
-      "description": "JSON格式的表单定义数据。格式说明请参考模块文档。"
+      "isControlField": false
     },
     {
       "key": "help",
       "name": "提示文字",
       "type": "Text",
+      "description": "帮助用户填写表单的提示文字。",
+      "isAdvanced": false,
+      "validForList": [],
+      "invalidForList": [],
+      "condition": "",
       "defaultValue": "",
+      "defaultValueRaw": "",
       "required": false,
       "variableMode": "UseVarOrInput",
-      "condition": "",
-      "description": "帮助用户填写表单的提示文字。"
+      "isControlField": false
     },
     {
       "key": "titleColumnWidth",
       "name": "标题列宽度",
       "type": "Number",
+      "description": "逻辑像素；负数表示自适应列宽的上限。",
+      "isAdvanced": false,
+      "validForList": [],
+      "invalidForList": [],
+      "condition": "",
       "defaultValue": "100",
+      "defaultValueRaw": 100,
       "required": false,
       "variableMode": "UseVarOrInput",
-      "condition": "",
-      "description": "逻辑像素；负数表示自适应列宽的上限。"
+      "isControlField": false
     },
     {
       "key": "windowWidth",
       "name": "窗口宽度",
       "type": "Number",
+      "description": "逻辑像素，最小400。",
+      "isAdvanced": false,
+      "validForList": [],
+      "invalidForList": [],
+      "condition": "",
       "defaultValue": "500",
+      "defaultValueRaw": 500,
       "required": true,
       "variableMode": "UseVarOrInput",
-      "condition": "",
-      "description": "逻辑像素，最小400。"
+      "isControlField": false
     },
     {
       "key": "defaultInputWidth",
       "name": "输入框默认宽度",
       "type": "Number",
+      "description": "逻辑像素，0表示自动宽度。",
+      "isAdvanced": true,
+      "validForList": [],
+      "invalidForList": [],
+      "condition": "",
       "defaultValue": "0",
+      "defaultValueRaw": 0,
       "required": true,
       "variableMode": "UseVarOrInput",
-      "condition": "",
-      "description": "逻辑像素，0表示自动宽度。"
+      "isControlField": false
     },
     {
       "key": "windowHeight",
       "name": "窗口最大高度",
       "type": "Number",
+      "description": "逻辑像素，0表示默认。设置时请填写大于100的值。",
+      "isAdvanced": false,
+      "validForList": [],
+      "invalidForList": [],
+      "condition": "",
       "defaultValue": "0",
+      "defaultValueRaw": "0",
       "required": true,
       "variableMode": "UseVarOrInput",
-      "condition": "",
-      "description": "逻辑像素，0表示默认。设置时请填写大于100的值。"
+      "isControlField": false
     },
     {
       "key": "topMost",
       "name": "置顶显示",
       "type": "Boolean",
+      "description": "",
+      "isAdvanced": false,
+      "validForList": [],
+      "invalidForList": [],
+      "condition": "",
       "defaultValue": "false",
+      "defaultValueRaw": false,
       "required": false,
       "variableMode": "UseVarOrInput",
-      "condition": "",
-      "description": ""
+      "isControlField": false
     },
     {
       "key": "restoreFocus",
       "name": "恢复活动窗口",
       "type": "Boolean",
+      "description": "用户输入后，是否将焦点还原到之前的活动窗口",
+      "isAdvanced": false,
+      "validForList": [],
+      "invalidForList": [],
+      "condition": "",
       "defaultValue": "false",
+      "defaultValueRaw": false,
       "required": false,
       "variableMode": "Input",
-      "condition": "",
-      "description": "用户输入后，是否将焦点还原到之前的活动窗口"
+      "isControlField": false
     },
     {
       "key": "markdownhelp",
       "name": "帮助按钮内容",
       "type": "Text",
+      "description": "点击弹出显示帮助内容，MarkDown格式。",
+      "isAdvanced": true,
+      "validForList": [],
+      "invalidForList": [],
+      "condition": "",
       "defaultValue": "",
+      "defaultValueRaw": "",
       "required": false,
       "variableMode": "Input",
-      "condition": "",
-      "description": "点击弹出显示帮助内容，MarkDown格式。"
+      "isControlField": false
     },
     {
       "key": "confirm",
       "name": "自定义“确定”按钮标题",
       "type": "Text",
+      "description": "仅在需要时填写。使用\"_字符\"的形式定义触发字符,如\"_S\"表示Alt+S可直接触发按钮",
+      "isAdvanced": true,
+      "validForList": [],
+      "invalidForList": [],
+      "condition": "",
       "defaultValue": "",
+      "defaultValueRaw": "",
       "required": false,
       "variableMode": "Input",
-      "condition": "",
-      "description": "仅在需要时填写。使用\"_字符\"的形式定义触发字符,如\"_S\"表示Alt+S可直接触发按钮"
+      "isControlField": false
     },
     {
       "key": "customButtons",
       "name": "自定义按钮",
       "type": "Text",
+      "description": "使用\"标题|返回值\"的形式定义按钮，多个按钮用换行分隔。",
+      "isAdvanced": true,
+      "validForList": [],
+      "invalidForList": [],
+      "condition": "",
       "defaultValue": "",
+      "defaultValueRaw": "",
       "required": false,
       "variableMode": "Input",
-      "condition": "",
-      "description": "使用\"标题|返回值\"的形式定义按钮，多个按钮用换行分隔。"
+      "isControlField": false
     },
     {
       "key": "selectedGroup",
       "name": "选择的分组",
       "type": "Text",
+      "description": "使用分组标签页时，默认选择的分组。",
+      "isAdvanced": true,
+      "validForList": [],
+      "invalidForList": [],
+      "condition": "",
       "defaultValue": "",
+      "defaultValueRaw": "",
       "required": false,
       "variableMode": "Input",
-      "condition": "",
-      "description": "使用分组标签页时，默认选择的分组。"
+      "isControlField": false
     },
     {
       "key": "disableEnterSubmit",
       "name": "关闭Enter提交表单功能",
       "type": "Boolean",
+      "description": "",
+      "isAdvanced": false,
+      "validForList": [],
+      "invalidForList": [],
+      "condition": "",
       "defaultValue": "false",
+      "defaultValueRaw": false,
       "required": false,
       "variableMode": "Input",
-      "condition": "",
-      "description": ""
+      "isControlField": false
     },
     {
       "key": "winLocation",
       "name": "窗口位置类型",
       "type": "Enum",
+      "description": "在哪里显示选择窗口",
+      "isAdvanced": true,
+      "validForList": [],
+      "invalidForList": [],
+      "condition": "",
       "defaultValue": "CenterScreen",
+      "defaultValueRaw": "CenterScreen",
       "required": false,
       "variableMode": "UseVarOrInput",
-      "condition": "",
-      "description": "在哪里显示选择窗口"
+      "isControlField": false
     },
     {
       "key": "winSize",
       "name": "位置",
       "type": "Text",
+      "description": "自定义位置：left,top,right,bottom；物理像素或屏幕工作区百分比。",
+      "isAdvanced": true,
+      "validForList": [],
+      "invalidForList": [],
+      "condition": "",
       "defaultValue": "",
+      "defaultValueRaw": "",
       "required": false,
       "variableMode": "Input",
-      "condition": "",
-      "description": "自定义位置：left,top,right,bottom；物理像素或屏幕工作区百分比。"
+      "isControlField": false
     },
     {
       "key": "stopIfFail",
       "name": "取消后停止",
       "type": "Boolean",
+      "description": "取消后是否停止动作",
+      "isAdvanced": false,
+      "validForList": [],
+      "invalidForList": [],
+      "condition": "",
       "defaultValue": "true",
+      "defaultValueRaw": true,
       "required": false,
       "variableMode": "Input",
-      "condition": "",
-      "description": "取消后是否停止动作"
+      "isControlField": false
     }
   ],
   "outputs": [
@@ -228,22 +338,31 @@
       "key": "isSuccess",
       "name": "是否成功",
       "type": "Boolean",
-      "condition": "",
-      "description": "操作是否成功"
+      "description": "操作是否成功",
+      "isAdvanced": false,
+      "validForList": [],
+      "invalidForList": [],
+      "condition": ""
     },
     {
       "key": "button",
       "name": "点击的按钮",
       "type": "Text",
-      "condition": "",
-      "description": "默认的确认按钮返回值为空，自定义按钮返回值为自定义的值。"
+      "description": "默认的确认按钮返回值为空，自定义按钮返回值为自定义的值。",
+      "isAdvanced": false,
+      "validForList": [],
+      "invalidForList": [],
+      "condition": ""
     },
     {
       "key": "selectedGroup",
       "name": "选择的分组",
       "type": "Text",
-      "condition": "",
-      "description": "关闭时所选择的标签页分组。"
+      "description": "关闭时所选择的标签页分组。",
+      "isAdvanced": false,
+      "validForList": [],
+      "invalidForList": [],
+      "condition": ""
     }
   ],
   "selections": {
@@ -333,5 +452,5 @@
       ]
     }
   },
-  "sourceFileName": "sys_form_多字段表单.md"
+  "sourceFileName": "catalog.json"
 }

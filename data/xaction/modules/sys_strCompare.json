@@ -16,41 +16,69 @@
       "key": "param1",
       "name": "文本1",
       "type": "Text",
+      "description": "被比较的文本",
+      "isAdvanced": false,
+      "validForList": [],
+      "invalidForList": [],
+      "condition": "",
       "defaultValue": "",
+      "defaultValueRaw": "",
       "required": true,
       "variableMode": "UseVarOrInput",
-      "condition": "",
-      "description": "被比较的文本"
+      "isControlField": false
     },
     {
       "key": "type",
       "name": "类型",
       "type": "Enum",
+      "description": "比较方式",
+      "isAdvanced": false,
+      "validForList": [],
+      "invalidForList": [],
+      "condition": "",
       "defaultValue": ">",
+      "defaultValueRaw": ">",
       "required": true,
       "variableMode": "Input",
-      "condition": "",
-      "description": "比较方式"
+      "isControlField": true
     },
     {
       "key": "param2",
       "name": "文本2",
       "type": "Text",
+      "description": "对比文本。拼音匹配时，也可用于指定拼音、拼音首字母。",
+      "isAdvanced": false,
+      "validForList": [],
+      "invalidForList": [],
+      "condition": "",
       "defaultValue": "",
+      "defaultValueRaw": "",
       "required": true,
       "variableMode": "UseVarOrInput",
-      "condition": "",
-      "description": "对比文本。拼音匹配时，也可用于指定拼音、拼音首字母。"
+      "isControlField": false
     },
     {
       "key": "case",
       "name": "区分大小写",
       "type": "Boolean",
+      "description": "是否区分大小写",
+      "isAdvanced": false,
+      "validForList": [
+        ">",
+        "=",
+        "<",
+        "contains",
+        "startsWith",
+        "endsWith",
+        "match"
+      ],
+      "invalidForList": [],
+      "condition": "仅：>, =, <, contains, startsWith, endsWith, match",
       "defaultValue": "false",
+      "defaultValueRaw": false,
       "required": false,
       "variableMode": "Input",
-      "condition": "仅：>, =, <, contains, startsWith, endsWith, match",
-      "description": "是否区分大小写"
+      "isControlField": false
     }
   ],
   "outputs": [
@@ -58,8 +86,11 @@
       "key": "value",
       "name": "值",
       "type": "Boolean",
-      "condition": "",
-      "description": "比较结果是否为真"
+      "description": "比较结果是否为真",
+      "isAdvanced": false,
+      "validForList": [],
+      "invalidForList": [],
+      "condition": ""
     }
   ],
   "selections": {
@@ -109,5 +140,5 @@
       ]
     }
   },
-  "sourceFileName": "sys_strCompare_比较文本.md"
+  "sourceFileName": "catalog.json"
 }

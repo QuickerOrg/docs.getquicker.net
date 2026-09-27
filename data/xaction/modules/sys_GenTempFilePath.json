@@ -16,11 +16,16 @@
       "key": "ext",
       "name": "扩展名",
       "type": "Text",
+      "description": "生成临时文件的扩展名",
+      "isAdvanced": false,
+      "validForList": [],
+      "invalidForList": [],
+      "condition": "",
       "defaultValue": ".txt",
+      "defaultValueRaw": ".txt",
       "required": true,
       "variableMode": "Input",
-      "condition": "",
-      "description": "生成临时文件的扩展名"
+      "isControlField": false
     }
   ],
   "outputs": [
@@ -28,10 +33,13 @@
       "key": "filePath",
       "name": "文件路径",
       "type": "Text",
-      "condition": "",
-      "description": "生成的临时文件路径"
+      "description": "生成的临时文件路径",
+      "isAdvanced": false,
+      "validForList": [],
+      "invalidForList": [],
+      "condition": ""
     }
   ],
   "selections": {},
-  "sourceFileName": "sys_GenTempFilePath_生成临时文件路径.md"
+  "sourceFileName": "catalog.json"
 }

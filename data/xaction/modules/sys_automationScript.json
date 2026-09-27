@@ -16,51 +16,75 @@
       "key": "script",
       "name": "脚本内容",
       "type": "Text",
-      "defaultValue": "import { mouse, key } from \"quicker\";\n\nmouse.moveTo(100, 200);\nmouse.click();\nkey.press(\"enter\");\n\nexport default mouse.position();",
+      "description": "要执行的桌面自动化 JavaScript。可使用 export default 导出结果。",
+      "isAdvanced": false,
+      "validForList": [],
+      "invalidForList": [],
+      "condition": "",
+      "defaultValue": "import { mouse, key } from \"quicker\";\r\n\r\nmouse.moveTo(100, 200);\r\nmouse.click();\r\nkey.press(\"enter\");\r\n\r\nexport default mouse.position();",
+      "defaultValueRaw": "import { mouse, key } from \"quicker\";\r\n\r\nmouse.moveTo(100, 200);\r\nmouse.click();\r\nkey.press(\"enter\");\r\n\r\nexport default mouse.position();",
       "required": true,
       "variableMode": "Input",
-      "condition": "",
-      "description": "要执行的桌面自动化 JavaScript。可使用 export default 导出结果。"
+      "isControlField": false
     },
     {
       "key": "input",
       "name": "输入",
       "type": "Any",
+      "description": "传入脚本的受支持数据。脚本可从 quicker 模块导入 input 读取。",
+      "isAdvanced": false,
+      "validForList": [],
+      "invalidForList": [],
+      "condition": "",
       "defaultValue": "",
       "required": false,
       "variableMode": "UseVarOrInput",
-      "condition": "",
-      "description": "传入脚本的受支持数据。脚本可从 quicker 模块导入 input 读取。"
+      "isControlField": false
     },
     {
       "key": "timeoutMs",
       "name": "超时时间（毫秒）",
       "type": "Integer",
+      "description": "脚本最长运行时间，范围 100 到 120000 毫秒。",
+      "isAdvanced": true,
+      "validForList": [],
+      "invalidForList": [],
+      "condition": "",
       "defaultValue": "30000",
+      "defaultValueRaw": 30000,
       "required": false,
       "variableMode": "Input",
-      "condition": "",
-      "description": "脚本最长运行时间，范围 100 到 120000 毫秒。"
+      "isControlField": false
     },
     {
       "key": "restoreMousePosition",
       "name": "结束后恢复鼠标位置",
       "type": "Boolean",
+      "description": "脚本正常结束或失败时恢复开始前的鼠标位置；用户接管或主动取消时不恢复。",
+      "isAdvanced": true,
+      "validForList": [],
+      "invalidForList": [],
+      "condition": "",
       "defaultValue": "false",
+      "defaultValueRaw": false,
       "required": false,
       "variableMode": "Input",
-      "condition": "",
-      "description": "脚本正常结束或失败时恢复开始前的鼠标位置；用户接管或主动取消时不恢复。"
+      "isControlField": false
     },
     {
       "key": "stopIfFail",
       "name": "失败后停止",
       "type": "Boolean",
+      "description": "失败后是否停止动作",
+      "isAdvanced": false,
+      "validForList": [],
+      "invalidForList": [],
+      "condition": "",
       "defaultValue": "true",
+      "defaultValueRaw": true,
       "required": false,
       "variableMode": "Input",
-      "condition": "",
-      "description": "失败后是否停止动作"
+      "isControlField": false
     }
   ],
   "outputs": [
@@ -68,31 +92,43 @@
       "key": "isSuccess",
       "name": "是否成功",
       "type": "Boolean",
-      "condition": "",
-      "description": "操作是否成功"
+      "description": "操作是否成功",
+      "isAdvanced": false,
+      "validForList": [],
+      "invalidForList": [],
+      "condition": ""
     },
     {
       "key": "result",
       "name": "结果",
       "type": "Any",
-      "condition": "",
-      "description": "脚本 export default 导出的受支持值。"
+      "description": "脚本 export default 导出的受支持值。",
+      "isAdvanced": false,
+      "validForList": [],
+      "invalidForList": [],
+      "condition": ""
     },
     {
       "key": "errorCode",
       "name": "错误码",
       "type": "Text",
-      "condition": "",
-      "description": "稳定的机器可读错误码。"
+      "description": "稳定的机器可读错误码。",
+      "isAdvanced": true,
+      "validForList": [],
+      "invalidForList": [],
+      "condition": ""
     },
     {
       "key": "errMessage",
       "name": "错误消息",
       "type": "Text",
-      "condition": "",
-      "description": "脚本执行失败时的错误消息。"
+      "description": "脚本执行失败时的错误消息。",
+      "isAdvanced": false,
+      "validForList": [],
+      "invalidForList": [],
+      "condition": ""
     }
   ],
   "selections": {},
-  "sourceFileName": "sys_automationScript_自动化脚本.md"
+  "sourceFileName": "catalog.json"
 }

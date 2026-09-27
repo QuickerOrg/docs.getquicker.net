@@ -16,131 +16,216 @@
       "key": "range",
       "name": "区域",
       "type": "Object",
+      "description": "可以输入区域变量、留空(表示当前选择区域）、used(表示当前工作表的使用区域)或区域范围如A1:E9等，请参考文档。",
+      "isAdvanced": false,
+      "validForList": [],
+      "invalidForList": [],
+      "condition": "",
       "defaultValue": "",
+      "defaultValueRaw": "",
       "required": false,
       "variableMode": "UseVarOrInput",
-      "condition": "",
-      "description": "可以输入区域变量、留空(表示当前选择区域）、used(表示当前工作表的使用区域)或区域范围如A1:E9等，请参考文档。"
+      "isControlField": false
     },
     {
       "key": "subRange",
       "name": "限定子范围",
       "type": "Enum",
+      "description": "根据需要，将要操作的目标限定为一个子区域",
+      "isAdvanced": false,
+      "validForList": [],
+      "invalidForList": [],
+      "condition": "",
       "defaultValue": "FullArea",
+      "defaultValueRaw": "FullArea",
       "required": true,
       "variableMode": "UseVarOrInput",
-      "condition": "",
-      "description": "根据需要，将要操作的目标限定为一个子区域"
+      "isControlField": false
     },
     {
       "key": "operation",
       "name": "操作类型",
       "type": "Enum",
+      "description": "操作类型",
+      "isAdvanced": false,
+      "validForList": [],
+      "invalidForList": [],
+      "condition": "",
       "defaultValue": "SetValue",
+      "defaultValueRaw": "SetValue",
       "required": true,
       "variableMode": "Input",
-      "condition": "",
-      "description": "操作类型"
+      "isControlField": true
     },
     {
       "key": "value",
       "name": "参数",
       "type": "Any",
+      "description": "要设置的内容",
+      "isAdvanced": false,
+      "validForList": [
+        "SetValue",
+        "SetFormula",
+        "SetNumberFormat"
+      ],
+      "invalidForList": [],
+      "condition": "仅：SetValue, SetFormula, SetNumberFormat",
       "defaultValue": "",
+      "defaultValueRaw": "",
       "required": false,
       "variableMode": "UseVarOrInput",
-      "condition": "仅：SetValue, SetFormula, SetNumberFormat",
-      "description": "要设置的内容"
+      "isControlField": false
     },
     {
       "key": "cellSize",
       "name": "行高,列宽",
       "type": "Any",
+      "description": "-表示不改变，auto表示自动，数字表示具体值。如auto,auto表示自适应高度和宽度",
+      "isAdvanced": false,
+      "validForList": [
+        "SetCellSize"
+      ],
+      "invalidForList": [],
+      "condition": "仅：SetCellSize",
       "defaultValue": "",
+      "defaultValueRaw": "",
       "required": false,
       "variableMode": "UseVarOrInput",
-      "condition": "仅：SetCellSize",
-      "description": "-表示不改变，auto表示自动，数字表示具体值。如auto,auto表示自适应高度和宽度"
+      "isControlField": false
     },
     {
       "key": "style",
       "name": "格式",
       "type": "Text",
+      "description": "要设置的格式内容。每行一个格式设置，请参考模块文档了解详细参数设置。",
+      "isAdvanced": false,
+      "validForList": [
+        "SetStyle"
+      ],
+      "invalidForList": [],
+      "condition": "仅：SetStyle",
       "defaultValue": "",
+      "defaultValueRaw": "",
       "required": false,
       "variableMode": "UseVarOrInput",
-      "condition": "仅：SetStyle",
-      "description": "要设置的格式内容。每行一个格式设置，请参考模块文档了解详细参数设置。"
+      "isControlField": false
     },
     {
       "key": "methods",
       "name": "方法",
       "type": "Text",
+      "description": "要调用的方法，每行一个。格式请参考文档。",
+      "isAdvanced": false,
+      "validForList": [
+        "CallMethod"
+      ],
+      "invalidForList": [],
+      "condition": "仅：CallMethod",
       "defaultValue": "",
+      "defaultValueRaw": "",
       "required": false,
       "variableMode": "UseVarOrInput",
-      "condition": "仅：CallMethod",
-      "description": "要调用的方法，每行一个。格式请参考文档。"
+      "isControlField": false
     },
     {
       "key": "replaceWhat",
       "name": "查找内容",
       "type": "Text",
+      "description": "要替换的内容",
+      "isAdvanced": false,
+      "validForList": [
+        "Replace"
+      ],
+      "invalidForList": [],
+      "condition": "仅：Replace",
       "defaultValue": "",
+      "defaultValueRaw": "",
       "required": true,
       "variableMode": "UseVarOrInput",
-      "condition": "仅：Replace",
-      "description": "要替换的内容"
+      "isControlField": false
     },
     {
       "key": "replaceTo",
       "name": "替换为",
       "type": "Text",
+      "description": "替换成的内容",
+      "isAdvanced": false,
+      "validForList": [
+        "Replace"
+      ],
+      "invalidForList": [],
+      "condition": "仅：Replace",
       "defaultValue": "",
+      "defaultValueRaw": "",
       "required": true,
       "variableMode": "UseVarOrInput",
-      "condition": "仅：Replace",
-      "description": "替换成的内容"
+      "isControlField": false
     },
     {
       "key": "replaceEscapeWhat",
       "name": "转义\"查找内容\"",
       "type": "Boolean",
+      "description": "替换\"查找内容\"中的转义字符（\\r,\\n,\\t）",
+      "isAdvanced": false,
+      "validForList": [
+        "Replace"
+      ],
+      "invalidForList": [],
+      "condition": "仅：Replace",
       "defaultValue": "false",
+      "defaultValueRaw": false,
       "required": false,
       "variableMode": "Input",
-      "condition": "仅：Replace",
-      "description": "替换\"查找内容\"中的转义字符（\\r,\\n,\\t）"
+      "isControlField": false
     },
     {
       "key": "replaceEscapeTo",
       "name": "转义\"替换为\"",
       "type": "Boolean",
+      "description": "替换\"替换为\"中的转义字符（\\r,\\n,\\t）",
+      "isAdvanced": false,
+      "validForList": [
+        "Replace"
+      ],
+      "invalidForList": [],
+      "condition": "仅：Replace",
       "defaultValue": "true",
+      "defaultValueRaw": true,
       "required": false,
       "variableMode": "Input",
-      "condition": "仅：Replace",
-      "description": "替换\"替换为\"中的转义字符（\\r,\\n,\\t）"
+      "isControlField": false
     },
     {
       "key": "replaceMatchCase",
       "name": "区分大小写",
       "type": "Boolean",
+      "description": "",
+      "isAdvanced": false,
+      "validForList": [
+        "Replace"
+      ],
+      "invalidForList": [],
+      "condition": "仅：Replace",
       "defaultValue": "false",
+      "defaultValueRaw": false,
       "required": false,
       "variableMode": "Input",
-      "condition": "仅：Replace",
-      "description": ""
+      "isControlField": false
     },
     {
       "key": "stopIfFail",
       "name": "失败后停止",
       "type": "Boolean",
+      "description": "失败后是否停止动作",
+      "isAdvanced": false,
+      "validForList": [],
+      "invalidForList": [],
+      "condition": "",
       "defaultValue": "true",
+      "defaultValueRaw": true,
       "required": false,
       "variableMode": "Input",
-      "condition": "",
-      "description": "失败后是否停止动作"
+      "isControlField": false
     }
   ],
   "outputs": [
@@ -148,92 +233,155 @@
       "key": "isSuccess",
       "name": "是否成功",
       "type": "Boolean",
-      "condition": "",
-      "description": "操作是否成功"
+      "description": "操作是否成功",
+      "isAdvanced": false,
+      "validForList": [],
+      "invalidForList": [],
+      "condition": ""
     },
     {
       "key": "value",
       "name": "值",
       "type": "Any",
-      "condition": "仅：GetRangeInfo",
-      "description": "单元格的值"
+      "description": "单元格的值",
+      "isAdvanced": false,
+      "validForList": [
+        "GetRangeInfo"
+      ],
+      "invalidForList": [],
+      "condition": "仅：GetRangeInfo"
     },
     {
       "key": "text",
       "name": "文本",
       "type": "Text",
-      "condition": "仅：GetRangeInfo",
-      "description": "单元格的显示文本"
+      "description": "单元格的显示文本",
+      "isAdvanced": false,
+      "validForList": [
+        "GetRangeInfo"
+      ],
+      "invalidForList": [],
+      "condition": "仅：GetRangeInfo"
     },
     {
       "key": "formula",
       "name": "公式",
       "type": "Text",
-      "condition": "仅：GetRangeInfo",
-      "description": "单元格的公式值"
+      "description": "单元格的公式值",
+      "isAdvanced": false,
+      "validForList": [
+        "GetRangeInfo"
+      ],
+      "invalidForList": [],
+      "condition": "仅：GetRangeInfo"
     },
     {
       "key": "numberFormat",
       "name": "数值格式",
       "type": "Text",
-      "condition": "仅：GetRangeInfo",
-      "description": "单元格数值格式值"
+      "description": "单元格数值格式值",
+      "isAdvanced": false,
+      "validForList": [
+        "GetRangeInfo"
+      ],
+      "invalidForList": [],
+      "condition": "仅：GetRangeInfo"
     },
     {
       "key": "address",
       "name": "位置引用",
       "type": "Text",
-      "condition": "仅：GetRangeInfo",
-      "description": "区域位置范围"
+      "description": "区域位置范围",
+      "isAdvanced": false,
+      "validForList": [
+        "GetRangeInfo"
+      ],
+      "invalidForList": [],
+      "condition": "仅：GetRangeInfo"
     },
     {
       "key": "column",
       "name": "列号",
       "type": "Integer",
-      "condition": "仅：GetRangeInfo",
-      "description": "左上角单元格从1开始的列数"
+      "description": "左上角单元格从1开始的列数",
+      "isAdvanced": false,
+      "validForList": [
+        "GetRangeInfo"
+      ],
+      "invalidForList": [],
+      "condition": "仅：GetRangeInfo"
     },
     {
       "key": "row",
       "name": "行号",
       "type": "Integer",
-      "condition": "仅：GetRangeInfo",
-      "description": "左上角单元格从1开始的行数"
+      "description": "左上角单元格从1开始的行数",
+      "isAdvanced": false,
+      "validForList": [
+        "GetRangeInfo"
+      ],
+      "invalidForList": [],
+      "condition": "仅：GetRangeInfo"
     },
     {
       "key": "colNum",
       "name": "列数",
       "type": "Integer",
-      "condition": "仅：GetRangeInfo",
-      "description": "区域包含的列数"
+      "description": "区域包含的列数",
+      "isAdvanced": false,
+      "validForList": [
+        "GetRangeInfo"
+      ],
+      "invalidForList": [],
+      "condition": "仅：GetRangeInfo"
     },
     {
       "key": "rowNum",
       "name": "行数",
       "type": "Integer",
-      "condition": "仅：GetRangeInfo",
-      "description": "区域包含的行数"
+      "description": "区域包含的行数",
+      "isAdvanced": false,
+      "validForList": [
+        "GetRangeInfo"
+      ],
+      "invalidForList": [],
+      "condition": "仅：GetRangeInfo"
     },
     {
       "key": "style",
       "name": "格式信息",
       "type": "Text",
-      "condition": "仅：GetRangeInfo",
-      "description": "单元格的格式"
+      "description": "单元格的格式",
+      "isAdvanced": false,
+      "validForList": [
+        "GetRangeInfo"
+      ],
+      "invalidForList": [],
+      "condition": "仅：GetRangeInfo"
     },
     {
       "key": "range",
       "name": "区域对象",
       "type": "Object",
-      "condition": "仅：GetRangeInfo",
-      "description": "Range对象"
+      "description": "Range对象",
+      "isAdvanced": false,
+      "validForList": [
+        "GetRangeInfo"
+      ],
+      "invalidForList": [],
+      "condition": "仅：GetRangeInfo"
     },
     {
       "key": "sheet",
       "name": "工作表对象",
       "type": "Object",
-      "condition": "仅：GetRangeInfo",
-      "description": "WorkSheet对象"
+      "description": "WorkSheet对象",
+      "isAdvanced": false,
+      "validForList": [
+        "GetRangeInfo"
+      ],
+      "invalidForList": [],
+      "condition": "仅：GetRangeInfo"
     }
   ],
   "selections": {
@@ -338,5 +486,5 @@
       ]
     }
   },
-  "sourceFileName": "sys_excelRange_Excel区域操作.md"
+  "sourceFileName": "catalog.json"
 }

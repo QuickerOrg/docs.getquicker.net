@@ -16,91 +16,161 @@
       "key": "type",
       "name": "操作类型",
       "type": "Enum",
+      "description": "",
+      "isAdvanced": false,
+      "validForList": [],
+      "invalidForList": [],
+      "condition": "",
       "defaultValue": "none",
+      "defaultValueRaw": "none",
       "required": true,
       "variableMode": "Input",
-      "condition": "",
-      "description": ""
+      "isControlField": true
     },
     {
       "key": "list",
       "name": "列表",
       "type": "List",
+      "description": "要操作的列表变量",
+      "isAdvanced": false,
+      "validForList": [],
+      "invalidForList": [],
+      "condition": "",
       "defaultValue": "",
       "required": false,
       "variableMode": "UseVarOnly",
-      "condition": "",
-      "description": "要操作的列表变量"
+      "isControlField": false
     },
     {
       "key": "list2",
       "name": "列表2",
       "type": "List",
+      "description": "要拼接的列表",
+      "isAdvanced": false,
+      "validForList": [
+        "concat"
+      ],
+      "invalidForList": [],
+      "condition": "仅：concat",
       "defaultValue": "",
       "required": false,
       "variableMode": "UseVarOrInput",
-      "condition": "仅：concat",
-      "description": "要拼接的列表"
+      "isControlField": false
     },
     {
       "key": "pos",
       "name": "序号",
       "type": "Integer",
+      "description": "目标元素的序号，从0开始。负值表示从后向前的第几个。",
+      "isAdvanced": false,
+      "validForList": [
+        "getAt",
+        "insertAt",
+        "setAt",
+        "removeAt",
+        "sub"
+      ],
+      "invalidForList": [],
+      "condition": "仅：getAt, insertAt, setAt, removeAt, sub",
       "defaultValue": "0",
+      "defaultValueRaw": 0,
       "required": false,
       "variableMode": "UseVarOrInput",
-      "condition": "仅：getAt, insertAt, setAt, removeAt, sub",
-      "description": "目标元素的序号，从0开始。负值表示从后向前的第几个。"
+      "isControlField": false
     },
     {
       "key": "length",
       "name": "长度",
       "type": "Integer",
+      "description": "操作元素的数量",
+      "isAdvanced": false,
+      "validForList": [
+        "sub"
+      ],
+      "invalidForList": [],
+      "condition": "仅：sub",
       "defaultValue": "1",
+      "defaultValueRaw": 1,
       "required": false,
       "variableMode": "UseVarOrInput",
-      "condition": "仅：sub",
-      "description": "操作元素的数量"
+      "isControlField": false
     },
     {
       "key": "item",
       "name": "值",
       "type": "Text",
+      "description": "要插入或更新的值，或筛选关键词",
+      "isAdvanced": false,
+      "validForList": [
+        "append",
+        "insertAt",
+        "setAt",
+        "remove",
+        "removeAllByValue",
+        "indexOf",
+        "filterByDefault",
+        "filterByContains",
+        "filterByStarts",
+        "filterByEnds"
+      ],
+      "invalidForList": [],
+      "condition": "仅：append, insertAt, setAt, remove, removeAllByValue, indexOf, filterByDefault, filterByContains, filterByStarts, filterByEnds",
       "defaultValue": "",
+      "defaultValueRaw": "",
       "required": false,
       "variableMode": "UseVarOrInput",
-      "condition": "仅：append, insertAt, setAt, remove, removeAllByValue, indexOf, filterByDefault, filterByContains, filterByStarts, filterByEnds",
-      "description": "要插入或更新的值，或筛选关键词"
+      "isControlField": false
     },
     {
       "key": "orderByScore",
       "name": "按匹配程度排序",
       "type": "Boolean",
+      "description": "筛选结果按匹配程度倒序排列",
+      "isAdvanced": false,
+      "validForList": [
+        "filterByDefault"
+      ],
+      "invalidForList": [],
+      "condition": "仅：filterByDefault",
       "defaultValue": "false",
+      "defaultValueRaw": false,
       "required": false,
       "variableMode": "UseVarOrInput",
-      "condition": "仅：filterByDefault",
-      "description": "筛选结果按匹配程度倒序排列"
+      "isControlField": false
     },
     {
       "key": "pattern",
       "name": "正则表达式",
       "type": "Text",
+      "description": "要匹配的正则表达式。",
+      "isAdvanced": false,
+      "validForList": [
+        "removeByMatch",
+        "removeByNotMatch",
+        "filterByRegex"
+      ],
+      "invalidForList": [],
+      "condition": "仅：removeByMatch, removeByNotMatch, filterByRegex",
       "defaultValue": "",
+      "defaultValueRaw": "",
       "required": false,
       "variableMode": "UseVarOrInput",
-      "condition": "仅：removeByMatch, removeByNotMatch, filterByRegex",
-      "description": "要匹配的正则表达式。"
+      "isControlField": false
     },
     {
       "key": "stopIfFail",
       "name": "失败后停止",
       "type": "Boolean",
+      "description": "失败后是否停止动作",
+      "isAdvanced": false,
+      "validForList": [],
+      "invalidForList": [],
+      "condition": "",
       "defaultValue": "true",
+      "defaultValueRaw": true,
       "required": false,
       "variableMode": "Input",
-      "condition": "",
-      "description": "失败后是否停止动作"
+      "isControlField": false
     }
   ],
   "outputs": [
@@ -108,36 +178,80 @@
       "key": "value",
       "name": "结果",
       "type": "Any",
-      "condition": "仅：getAt, sortAsc, sortDesc, sortAscNature, FileSizeAsc, FileSizeDesc, CreationTimeDesc, CreationTimeAsc, LastAccessTimeDesc, LastAccessTimeAsc, LastWriteTimeDesc, LastWriteTimeAsc, sub, concat, distinct, filterByRegex, filterByDefault, filterByContains, filterByStarts, filterByEnds",
-      "description": "操作后的输出（取的元素值、排序、切片或拼接后的列表等）"
+      "description": "操作后的输出（取的元素值、排序、切片或拼接后的列表等）",
+      "isAdvanced": false,
+      "validForList": [
+        "getAt",
+        "sortAsc",
+        "sortDesc",
+        "sortAscNature",
+        "FileSizeAsc",
+        "FileSizeDesc",
+        "CreationTimeDesc",
+        "CreationTimeAsc",
+        "LastAccessTimeDesc",
+        "LastAccessTimeAsc",
+        "LastWriteTimeDesc",
+        "LastWriteTimeAsc",
+        "sub",
+        "concat",
+        "distinct",
+        "filterByRegex",
+        "filterByDefault",
+        "filterByContains",
+        "filterByStarts",
+        "filterByEnds"
+      ],
+      "invalidForList": [],
+      "condition": "仅：getAt, sortAsc, sortDesc, sortAscNature, FileSizeAsc, FileSizeDesc, CreationTimeDesc, CreationTimeAsc, LastAccessTimeDesc, LastAccessTimeAsc, LastWriteTimeDesc, LastWriteTimeAsc, sub, concat, distinct, filterByRegex, filterByDefault, filterByContains, filterByStarts, filterByEnds"
     },
     {
       "key": "isEmpty",
       "name": "是否为空",
       "type": "Boolean",
-      "condition": "",
-      "description": "空返回true，非空返回false"
+      "description": "空返回true，非空返回false",
+      "isAdvanced": false,
+      "validForList": [],
+      "invalidForList": [],
+      "condition": ""
     },
     {
       "key": "length",
       "name": "列表长度",
       "type": "Integer",
-      "condition": "",
-      "description": "列表包含的元素数量，截断或拼接后输出结果列表的长度"
+      "description": "列表包含的元素数量，截断或拼接后输出结果列表的长度",
+      "isAdvanced": false,
+      "validForList": [],
+      "invalidForList": [],
+      "condition": ""
     },
     {
       "key": "index",
       "name": "序号",
       "type": "Integer",
-      "condition": "仅：indexOf",
-      "description": "值在列表里的序号，-1表示不存在"
+      "description": "值在列表里的序号，-1表示不存在",
+      "isAdvanced": false,
+      "validForList": [
+        "indexOf"
+      ],
+      "invalidForList": [],
+      "condition": "仅：indexOf"
     },
     {
       "key": "filterOutItems",
       "name": "剩余项列表",
       "type": "Any",
-      "condition": "仅：filterByRegex, filterByDefault, filterByContains, filterByStarts, filterByEnds",
-      "description": "不符合筛选条件的项的列表"
+      "description": "不符合筛选条件的项的列表",
+      "isAdvanced": false,
+      "validForList": [
+        "filterByRegex",
+        "filterByDefault",
+        "filterByContains",
+        "filterByStarts",
+        "filterByEnds"
+      ],
+      "invalidForList": [],
+      "condition": "仅：filterByRegex, filterByDefault, filterByContains, filterByStarts, filterByEnds"
     }
   ],
   "selections": {
@@ -307,5 +421,5 @@
       ]
     }
   },
-  "sourceFileName": "sys_listOperations_列表操作.md"
+  "sourceFileName": "catalog.json"
 }

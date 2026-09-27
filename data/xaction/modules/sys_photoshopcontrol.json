@@ -16,141 +16,237 @@
       "key": "operation",
       "name": "操作类型",
       "type": "Enum",
+      "description": "",
+      "isAdvanced": false,
+      "validForList": [],
+      "invalidForList": [],
+      "condition": "",
       "defaultValue": "document.get_context",
+      "defaultValueRaw": "document.get_context",
       "required": true,
       "variableMode": "Input",
-      "condition": "",
-      "description": ""
+      "isControlField": true
     },
     {
       "key": "layerId",
       "name": "图层 ID",
       "type": "Number",
+      "description": "",
+      "isAdvanced": false,
+      "validForList": [
+        "layer.select",
+        "layer.rename",
+        "layer.set_visibility",
+        "layer.duplicate",
+        "layer.delete"
+      ],
+      "invalidForList": [],
+      "condition": "仅：layer.select, layer.rename, layer.set_visibility, layer.duplicate, layer.delete",
       "defaultValue": "0",
+      "defaultValueRaw": 0,
       "required": false,
       "variableMode": "UseVarOrInput",
-      "condition": "仅：layer.select, layer.rename, layer.set_visibility, layer.duplicate, layer.delete",
-      "description": ""
+      "isControlField": false
     },
     {
       "key": "layerName",
       "name": "图层名称",
       "type": "Text",
+      "description": "",
+      "isAdvanced": false,
+      "validForList": [
+        "layer.rename"
+      ],
+      "invalidForList": [],
+      "condition": "仅：layer.rename",
       "defaultValue": "新名称",
+      "defaultValueRaw": "新名称",
       "required": true,
       "variableMode": "UseVarOrInput",
-      "condition": "仅：layer.rename",
-      "description": ""
+      "isControlField": false
     },
     {
       "key": "visible",
       "name": "可见",
       "type": "Boolean",
+      "description": "",
+      "isAdvanced": false,
+      "validForList": [
+        "layer.set_visibility"
+      ],
+      "invalidForList": [],
+      "condition": "仅：layer.set_visibility",
       "defaultValue": "true",
+      "defaultValueRaw": true,
       "required": false,
       "variableMode": "Input",
-      "condition": "仅：layer.set_visibility",
-      "description": ""
+      "isControlField": false
     },
     {
       "key": "append",
       "name": "追加选择",
       "type": "Boolean",
+      "description": "",
+      "isAdvanced": false,
+      "validForList": [
+        "layer.select"
+      ],
+      "invalidForList": [],
+      "condition": "仅：layer.select",
       "defaultValue": "false",
+      "defaultValueRaw": false,
       "required": false,
       "variableMode": "Input",
-      "condition": "仅：layer.select",
-      "description": ""
+      "isControlField": false
     },
     {
       "key": "width",
       "name": "宽度",
       "type": "Number",
+      "description": "",
+      "isAdvanced": false,
+      "validForList": [
+        "image.resize"
+      ],
+      "invalidForList": [],
+      "condition": "仅：image.resize",
       "defaultValue": "1920",
+      "defaultValueRaw": 1920,
       "required": false,
       "variableMode": "UseVarOrInput",
-      "condition": "仅：image.resize",
-      "description": ""
+      "isControlField": false
     },
     {
       "key": "height",
       "name": "高度",
       "type": "Number",
+      "description": "",
+      "isAdvanced": false,
+      "validForList": [
+        "image.resize"
+      ],
+      "invalidForList": [],
+      "condition": "仅：image.resize",
       "defaultValue": "1080",
+      "defaultValueRaw": 1080,
       "required": false,
       "variableMode": "UseVarOrInput",
-      "condition": "仅：image.resize",
-      "description": ""
+      "isControlField": false
     },
     {
       "key": "angle",
       "name": "旋转角度",
       "type": "Number",
+      "description": "",
+      "isAdvanced": false,
+      "validForList": [
+        "image.rotate"
+      ],
+      "invalidForList": [],
+      "condition": "仅：image.rotate",
       "defaultValue": "90",
+      "defaultValueRaw": 90,
       "required": false,
       "variableMode": "UseVarOrInput",
-      "condition": "仅：image.rotate",
-      "description": ""
+      "isControlField": false
     },
     {
       "key": "scriptCode",
       "name": "JavaScript 表达式",
       "type": "Text",
+      "description": "",
+      "isAdvanced": false,
+      "validForList": [
+        "script.evaluate"
+      ],
+      "invalidForList": [],
+      "condition": "仅：script.evaluate",
       "defaultValue": "photoshop.app.activeDocument.title",
+      "defaultValueRaw": "photoshop.app.activeDocument.title",
       "required": true,
       "variableMode": "UseVarOrInput",
-      "condition": "仅：script.evaluate",
-      "description": ""
+      "isControlField": false
     },
     {
       "key": "batchPlayJson",
       "name": "BatchPlay 命令（JSON 数组）",
       "type": "Text",
+      "description": "",
+      "isAdvanced": false,
+      "validForList": [
+        "batch_play.execute"
+      ],
+      "invalidForList": [],
+      "condition": "仅：batch_play.execute",
       "defaultValue": "[]",
+      "defaultValueRaw": "[]",
       "required": false,
       "variableMode": "UseVarOrInput",
-      "condition": "仅：batch_play.execute",
-      "description": ""
+      "isControlField": false
     },
     {
       "key": "commandName",
       "name": "Bridge 命令名称",
       "type": "Text",
+      "description": "",
+      "isAdvanced": false,
+      "validForList": [
+        "command.custom"
+      ],
+      "invalidForList": [],
+      "condition": "仅：command.custom",
       "defaultValue": "",
+      "defaultValueRaw": "",
       "required": true,
       "variableMode": "UseVarOrInput",
-      "condition": "仅：command.custom",
-      "description": ""
+      "isControlField": false
     },
     {
       "key": "argumentsJson",
       "name": "参数（JSON 对象）",
       "type": "Text",
+      "description": "",
+      "isAdvanced": false,
+      "validForList": [
+        "command.custom"
+      ],
+      "invalidForList": [],
+      "condition": "仅：command.custom",
       "defaultValue": "{}",
+      "defaultValueRaw": "{}",
       "required": false,
       "variableMode": "UseVarOrInput",
-      "condition": "仅：command.custom",
-      "description": ""
+      "isControlField": false
     },
     {
       "key": "waitMs",
       "name": "最长等待时间(ms)",
       "type": "Number",
+      "description": "",
+      "isAdvanced": true,
+      "validForList": [],
+      "invalidForList": [],
+      "condition": "",
       "defaultValue": "30000",
+      "defaultValueRaw": 30000,
       "required": true,
       "variableMode": "Input",
-      "condition": "",
-      "description": ""
+      "isControlField": false
     },
     {
       "key": "stopIfFail",
       "name": "失败后停止",
       "type": "Boolean",
+      "description": "失败后是否停止动作",
+      "isAdvanced": false,
+      "validForList": [],
+      "invalidForList": [],
+      "condition": "",
       "defaultValue": "true",
+      "defaultValueRaw": true,
       "required": false,
       "variableMode": "Input",
-      "condition": "",
-      "description": "失败后是否停止动作"
+      "isControlField": false
     }
   ],
   "outputs": [
@@ -158,15 +254,21 @@
       "key": "isSuccess",
       "name": "是否成功",
       "type": "Boolean",
-      "condition": "",
-      "description": "操作是否成功"
+      "description": "操作是否成功",
+      "isAdvanced": false,
+      "validForList": [],
+      "invalidForList": [],
+      "condition": ""
     },
     {
       "key": "output",
       "name": "命令结果",
       "type": "Text",
-      "condition": "",
-      "description": ""
+      "description": "",
+      "isAdvanced": false,
+      "validForList": [],
+      "invalidForList": [],
+      "condition": ""
     }
   ],
   "selections": {
@@ -271,5 +373,5 @@
       ]
     }
   },
-  "sourceFileName": "sys_photoshopcontrol_Photoshop控制.md"
+  "sourceFileName": "catalog.json"
 }

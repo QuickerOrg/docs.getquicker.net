@@ -16,311 +16,534 @@
       "key": "operation",
       "name": "操作类型",
       "type": "Enum",
+      "description": "",
+      "isAdvanced": false,
+      "validForList": [],
+      "invalidForList": [],
+      "condition": "",
       "defaultValue": "document.get_context",
+      "defaultValueRaw": "document.get_context",
       "required": true,
       "variableMode": "Input",
-      "condition": "",
-      "description": ""
+      "isControlField": true
     },
     {
       "key": "filePath",
       "name": "文件路径",
       "type": "Text",
+      "description": "",
+      "isAdvanced": false,
+      "validForList": [
+        "document.open",
+        "document.save_as",
+        "document.export"
+      ],
+      "invalidForList": [],
+      "condition": "仅：document.open, document.save_as, document.export",
       "defaultValue": "T:\\TEMP\\Quicker-Illustrator.png",
+      "defaultValueRaw": "T:\\TEMP\\Quicker-Illustrator.png",
       "required": false,
       "variableMode": "UseVarOrInput",
-      "condition": "仅：document.open, document.save_as, document.export",
-      "description": ""
+      "isControlField": false
     },
     {
       "key": "format",
       "name": "格式",
       "type": "Text",
+      "description": "",
+      "isAdvanced": false,
+      "validForList": [
+        "document.save_as",
+        "document.export"
+      ],
+      "invalidForList": [],
+      "condition": "仅：document.save_as, document.export",
       "defaultValue": "png",
+      "defaultValueRaw": "png",
       "required": false,
       "variableMode": "UseVarOrInput",
-      "condition": "仅：document.save_as, document.export",
-      "description": ""
+      "isControlField": false
     },
     {
       "key": "width",
       "name": "宽度（点）",
       "type": "Number",
+      "description": "",
+      "isAdvanced": false,
+      "validForList": [
+        "document.new"
+      ],
+      "invalidForList": [],
+      "condition": "仅：document.new",
       "defaultValue": "1920",
+      "defaultValueRaw": 1920,
       "required": false,
       "variableMode": "UseVarOrInput",
-      "condition": "仅：document.new",
-      "description": ""
+      "isControlField": false
     },
     {
       "key": "height",
       "name": "高度（点）",
       "type": "Number",
+      "description": "",
+      "isAdvanced": false,
+      "validForList": [
+        "document.new"
+      ],
+      "invalidForList": [],
+      "condition": "仅：document.new",
       "defaultValue": "1080",
+      "defaultValueRaw": 1080,
       "required": false,
       "variableMode": "UseVarOrInput",
-      "condition": "仅：document.new",
-      "description": ""
+      "isControlField": false
     },
     {
       "key": "colorSpace",
       "name": "颜色空间（rgb/cmyk）",
       "type": "Text",
+      "description": "",
+      "isAdvanced": false,
+      "validForList": [
+        "document.new"
+      ],
+      "invalidForList": [],
+      "condition": "仅：document.new",
       "defaultValue": "rgb",
+      "defaultValueRaw": "rgb",
       "required": false,
       "variableMode": "UseVarOrInput",
-      "condition": "仅：document.new",
-      "description": ""
+      "isControlField": false
     },
     {
       "key": "scale",
       "name": "导出缩放百分比",
       "type": "Number",
+      "description": "",
+      "isAdvanced": false,
+      "validForList": [
+        "document.export"
+      ],
+      "invalidForList": [],
+      "condition": "仅：document.export",
       "defaultValue": "100",
+      "defaultValueRaw": 100,
       "required": false,
       "variableMode": "UseVarOrInput",
-      "condition": "仅：document.export",
-      "description": ""
+      "isControlField": false
     },
     {
       "key": "quality",
       "name": "JPEG 质量",
       "type": "Number",
+      "description": "",
+      "isAdvanced": false,
+      "validForList": [
+        "document.export"
+      ],
+      "invalidForList": [],
+      "condition": "仅：document.export",
       "defaultValue": "80",
+      "defaultValueRaw": 80,
       "required": false,
       "variableMode": "UseVarOrInput",
-      "condition": "仅：document.export",
-      "description": ""
+      "isControlField": false
     },
     {
       "key": "artboardClipping",
       "name": "裁剪到画板",
       "type": "Boolean",
+      "description": "",
+      "isAdvanced": false,
+      "validForList": [
+        "document.export"
+      ],
+      "invalidForList": [],
+      "condition": "仅：document.export",
       "defaultValue": "true",
+      "defaultValueRaw": true,
       "required": false,
       "variableMode": "UseVarOrInput",
-      "condition": "仅：document.export",
-      "description": ""
+      "isControlField": false
     },
     {
       "key": "boolValue",
       "name": "启用",
       "type": "Boolean",
+      "description": "",
+      "isAdvanced": false,
+      "validForList": [
+        "object.set_hidden",
+        "object.set_locked",
+        "layer.set_visible",
+        "layer.set_locked"
+      ],
+      "invalidForList": [],
+      "condition": "仅：object.set_hidden, object.set_locked, layer.set_visible, layer.set_locked",
       "defaultValue": "true",
+      "defaultValueRaw": true,
       "required": false,
       "variableMode": "UseVarOrInput",
-      "condition": "仅：object.set_hidden, object.set_locked, layer.set_visible, layer.set_locked",
-      "description": ""
+      "isControlField": false
     },
     {
       "key": "deltaX",
       "name": "水平移动（点）",
       "type": "Number",
+      "description": "",
+      "isAdvanced": false,
+      "validForList": [
+        "object.translate"
+      ],
+      "invalidForList": [],
+      "condition": "仅：object.translate",
       "defaultValue": "10",
+      "defaultValueRaw": 10,
       "required": false,
       "variableMode": "UseVarOrInput",
-      "condition": "仅：object.translate",
-      "description": ""
+      "isControlField": false
     },
     {
       "key": "deltaY",
       "name": "垂直移动（点）",
       "type": "Number",
+      "description": "",
+      "isAdvanced": false,
+      "validForList": [
+        "object.translate"
+      ],
+      "invalidForList": [],
+      "condition": "仅：object.translate",
       "defaultValue": "0",
+      "defaultValueRaw": 0,
       "required": false,
       "variableMode": "UseVarOrInput",
-      "condition": "仅：object.translate",
-      "description": ""
+      "isControlField": false
     },
     {
       "key": "angle",
       "name": "旋转角度",
       "type": "Number",
+      "description": "",
+      "isAdvanced": false,
+      "validForList": [
+        "object.rotate"
+      ],
+      "invalidForList": [],
+      "condition": "仅：object.rotate",
       "defaultValue": "15",
+      "defaultValueRaw": 15,
       "required": false,
       "variableMode": "UseVarOrInput",
-      "condition": "仅：object.rotate",
-      "description": ""
+      "isControlField": false
     },
     {
       "key": "scaleX",
       "name": "水平缩放百分比",
       "type": "Number",
+      "description": "",
+      "isAdvanced": false,
+      "validForList": [
+        "object.resize"
+      ],
+      "invalidForList": [],
+      "condition": "仅：object.resize",
       "defaultValue": "120",
+      "defaultValueRaw": 120,
       "required": false,
       "variableMode": "UseVarOrInput",
-      "condition": "仅：object.resize",
-      "description": ""
+      "isControlField": false
     },
     {
       "key": "scaleY",
       "name": "垂直缩放百分比",
       "type": "Number",
+      "description": "",
+      "isAdvanced": false,
+      "validForList": [
+        "object.resize"
+      ],
+      "invalidForList": [],
+      "condition": "仅：object.resize",
       "defaultValue": "120",
+      "defaultValueRaw": 120,
       "required": false,
       "variableMode": "UseVarOrInput",
-      "condition": "仅：object.resize",
-      "description": ""
+      "isControlField": false
     },
     {
       "key": "changeLineWidths",
       "name": "线宽缩放百分比",
       "type": "Number",
+      "description": "",
+      "isAdvanced": false,
+      "validForList": [
+        "object.resize"
+      ],
+      "invalidForList": [],
+      "condition": "仅：object.resize",
       "defaultValue": "120",
+      "defaultValueRaw": 120,
       "required": false,
       "variableMode": "UseVarOrInput",
-      "condition": "仅：object.resize",
-      "description": ""
+      "isControlField": false
     },
     {
       "key": "opacity",
       "name": "透明度（0~100）",
       "type": "Number",
+      "description": "",
+      "isAdvanced": false,
+      "validForList": [
+        "object.set_opacity"
+      ],
+      "invalidForList": [],
+      "condition": "仅：object.set_opacity",
       "defaultValue": "50",
+      "defaultValueRaw": 50,
       "required": false,
       "variableMode": "UseVarOrInput",
-      "condition": "仅：object.set_opacity",
-      "description": ""
+      "isControlField": false
     },
     {
       "key": "index",
       "name": "图层/画板序号（从 0 开始）",
       "type": "Number",
+      "description": "",
+      "isAdvanced": false,
+      "validForList": [
+        "layer.activate",
+        "layer.rename",
+        "layer.set_visible",
+        "layer.set_locked",
+        "artboard.activate",
+        "artboard.fit_selection"
+      ],
+      "invalidForList": [],
+      "condition": "仅：layer.activate, layer.rename, layer.set_visible, layer.set_locked, artboard.activate, artboard.fit_selection",
       "defaultValue": "0",
+      "defaultValueRaw": 0,
       "required": false,
       "variableMode": "UseVarOrInput",
-      "condition": "仅：layer.activate, layer.rename, layer.set_visible, layer.set_locked, artboard.activate, artboard.fit_selection",
-      "description": ""
+      "isControlField": false
     },
     {
       "key": "name",
       "name": "名称",
       "type": "Text",
+      "description": "",
+      "isAdvanced": false,
+      "validForList": [
+        "layer.create",
+        "layer.rename"
+      ],
+      "invalidForList": [],
+      "condition": "仅：layer.create, layer.rename",
       "defaultValue": "Quicker 图层",
+      "defaultValueRaw": "Quicker 图层",
       "required": false,
       "variableMode": "UseVarOrInput",
-      "condition": "仅：layer.create, layer.rename",
-      "description": ""
+      "isControlField": false
     },
     {
       "key": "text",
       "name": "文本",
       "type": "Text",
+      "description": "",
+      "isAdvanced": false,
+      "validForList": [
+        "text.create"
+      ],
+      "invalidForList": [],
+      "condition": "仅：text.create",
       "defaultValue": "Quicker 文本",
+      "defaultValueRaw": "Quicker 文本",
       "required": false,
       "variableMode": "UseVarOrInput",
-      "condition": "仅：text.create",
-      "description": ""
+      "isControlField": false
     },
     {
       "key": "positionJson",
       "name": "位置（JSON）",
       "type": "Text",
+      "description": "",
+      "isAdvanced": false,
+      "validForList": [
+        "text.create"
+      ],
+      "invalidForList": [],
+      "condition": "仅：text.create",
       "defaultValue": "[100,100]",
+      "defaultValueRaw": "[100,100]",
       "required": false,
       "variableMode": "UseVarOrInput",
-      "condition": "仅：text.create",
-      "description": ""
+      "isControlField": false
     },
     {
       "key": "fontSize",
       "name": "字号",
       "type": "Number",
+      "description": "",
+      "isAdvanced": false,
+      "validForList": [
+        "text.create"
+      ],
+      "invalidForList": [],
+      "condition": "仅：text.create",
       "defaultValue": "24",
+      "defaultValueRaw": 24,
       "required": false,
       "variableMode": "UseVarOrInput",
-      "condition": "仅：text.create",
-      "description": ""
+      "isControlField": false
     },
     {
       "key": "findText",
       "name": "查找文本",
       "type": "Text",
+      "description": "",
+      "isAdvanced": false,
+      "validForList": [
+        "text.replace"
+      ],
+      "invalidForList": [],
+      "condition": "仅：text.replace",
       "defaultValue": "旧文字",
+      "defaultValueRaw": "旧文字",
       "required": false,
       "variableMode": "UseVarOrInput",
-      "condition": "仅：text.replace",
-      "description": ""
+      "isControlField": false
     },
     {
       "key": "replaceText",
       "name": "替换为",
       "type": "Text",
+      "description": "",
+      "isAdvanced": false,
+      "validForList": [
+        "text.replace"
+      ],
+      "invalidForList": [],
+      "condition": "仅：text.replace",
       "defaultValue": "新文字",
+      "defaultValueRaw": "新文字",
       "required": false,
       "variableMode": "UseVarOrInput",
-      "condition": "仅：text.replace",
-      "description": ""
+      "isControlField": false
     },
     {
       "key": "menuCommand",
       "name": "菜单命令字符串",
       "type": "Text",
+      "description": "",
+      "isAdvanced": false,
+      "validForList": [
+        "menu.execute"
+      ],
+      "invalidForList": [],
+      "condition": "仅：menu.execute",
       "defaultValue": "Fit Artboard to selected Art",
+      "defaultValueRaw": "Fit Artboard to selected Art",
       "required": false,
       "variableMode": "UseVarOrInput",
-      "condition": "仅：menu.execute",
-      "description": ""
+      "isControlField": false
     },
     {
       "key": "scriptCode",
       "name": "ExtendScript 代码",
       "type": "Text",
+      "description": "",
+      "isAdvanced": false,
+      "validForList": [
+        "script.evaluate"
+      ],
+      "invalidForList": [],
+      "condition": "仅：script.evaluate",
       "defaultValue": "app.documents.length",
+      "defaultValueRaw": "app.documents.length",
       "required": false,
       "variableMode": "UseVarOrInput",
-      "condition": "仅：script.evaluate",
-      "description": ""
+      "isControlField": false
     },
     {
       "key": "scriptFilePath",
       "name": "JSX 文件路径",
       "type": "Text",
+      "description": "",
+      "isAdvanced": false,
+      "validForList": [
+        "script.run_file"
+      ],
+      "invalidForList": [],
+      "condition": "仅：script.run_file",
       "defaultValue": "T:\\TEMP\\illustrator-script.jsx",
+      "defaultValueRaw": "T:\\TEMP\\illustrator-script.jsx",
       "required": false,
       "variableMode": "UseVarOrInput",
-      "condition": "仅：script.run_file",
-      "description": ""
+      "isControlField": false
     },
     {
       "key": "commandName",
       "name": "Bridge 命令名称",
       "type": "Text",
+      "description": "",
+      "isAdvanced": false,
+      "validForList": [
+        "command.custom"
+      ],
+      "invalidForList": [],
+      "condition": "仅：command.custom",
       "defaultValue": "",
+      "defaultValueRaw": "",
       "required": true,
       "variableMode": "UseVarOrInput",
-      "condition": "仅：command.custom",
-      "description": ""
+      "isControlField": false
     },
     {
       "key": "argumentsJson",
       "name": "参数（JSON 对象）",
       "type": "Text",
+      "description": "",
+      "isAdvanced": false,
+      "validForList": [
+        "command.custom"
+      ],
+      "invalidForList": [],
+      "condition": "仅：command.custom",
       "defaultValue": "{}",
+      "defaultValueRaw": "{}",
       "required": false,
       "variableMode": "UseVarOrInput",
-      "condition": "仅：command.custom",
-      "description": ""
+      "isControlField": false
     },
     {
       "key": "waitMs",
       "name": "最长等待时间(ms)",
       "type": "Number",
+      "description": "",
+      "isAdvanced": true,
+      "validForList": [],
+      "invalidForList": [],
+      "condition": "",
       "defaultValue": "30000",
+      "defaultValueRaw": 30000,
       "required": true,
       "variableMode": "Input",
-      "condition": "",
-      "description": ""
+      "isControlField": false
     },
     {
       "key": "stopIfFail",
       "name": "失败后停止",
       "type": "Boolean",
+      "description": "失败后是否停止动作",
+      "isAdvanced": false,
+      "validForList": [],
+      "invalidForList": [],
+      "condition": "",
       "defaultValue": "true",
+      "defaultValueRaw": true,
       "required": false,
       "variableMode": "Input",
-      "condition": "",
-      "description": "失败后是否停止动作"
+      "isControlField": false
     }
   ],
   "outputs": [
@@ -328,15 +551,21 @@
       "key": "isSuccess",
       "name": "是否成功",
       "type": "Boolean",
-      "condition": "",
-      "description": "操作是否成功"
+      "description": "操作是否成功",
+      "isAdvanced": false,
+      "validForList": [],
+      "invalidForList": [],
+      "condition": ""
     },
     {
       "key": "output",
       "name": "命令结果",
       "type": "Text",
-      "condition": "",
-      "description": ""
+      "description": "",
+      "isAdvanced": false,
+      "validForList": [],
+      "invalidForList": [],
+      "condition": ""
     }
   ],
   "selections": {
@@ -531,5 +760,5 @@
       ]
     }
   },
-  "sourceFileName": "sys_illustratorcontrol_Illustrator控制.md"
+  "sourceFileName": "catalog.json"
 }

@@ -16,24 +16,34 @@
       "key": "data",
       "name": "录制数据",
       "type": "Text",
+      "description": "录制的键鼠操作数据",
+      "isAdvanced": false,
+      "validForList": [],
+      "invalidForList": [],
+      "condition": "",
       "defaultValue": "",
+      "defaultValueRaw": "",
       "required": true,
       "variableMode": "UseVarOrInput",
-      "condition": "",
-      "description": "录制的键鼠操作数据"
+      "isControlField": false
     },
     {
       "key": "speed",
       "name": "重放速度",
       "type": "Number",
+      "description": "重放操作的速度",
+      "isAdvanced": false,
+      "validForList": [],
+      "invalidForList": [],
+      "condition": "",
       "defaultValue": "2",
+      "defaultValueRaw": 2,
       "required": true,
       "variableMode": "UseVarOrInput",
-      "condition": "",
-      "description": "重放操作的速度"
+      "isControlField": false
     }
   ],
   "outputs": [],
   "selections": {},
-  "sourceFileName": "sys_playRecords_重放键鼠操作.md"
+  "sourceFileName": "catalog.json"
 }

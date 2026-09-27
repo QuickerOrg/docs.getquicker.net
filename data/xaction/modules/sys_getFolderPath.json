@@ -16,11 +16,16 @@
       "key": "folder",
       "name": "目录类型",
       "type": "Enum",
+      "description": "Windows的特殊目录类型，详情请搜索\"Environment.SpecialFolder\"。",
+      "isAdvanced": false,
+      "validForList": [],
+      "invalidForList": [],
+      "condition": "",
       "defaultValue": "",
+      "defaultValueRaw": "",
       "required": true,
       "variableMode": "Input",
-      "condition": "",
-      "description": "Windows的特殊目录类型，详情请搜索\"Environment.SpecialFolder\"。"
+      "isControlField": false
     }
   ],
   "outputs": [
@@ -28,8 +33,11 @@
       "key": "path",
       "name": "路径",
       "type": "Text",
-      "condition": "",
-      "description": "返回的完整路径"
+      "description": "返回的完整路径",
+      "isAdvanced": false,
+      "validForList": [],
+      "invalidForList": [],
+      "condition": ""
     }
   ],
   "selections": {
@@ -279,5 +287,5 @@
       ]
     }
   },
-  "sourceFileName": "sys_getFolderPath_获取系统路径.md"
+  "sourceFileName": "catalog.json"
 }

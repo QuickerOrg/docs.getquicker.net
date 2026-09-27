@@ -8,36 +8,20 @@
   "category": "Waiting",
   "categoryName": "等待",
   "stepType": "Action",
-  "isRisky": false,
-  "isProOnly": false,
   "helpLink": "https://docs.getquicker.net/v2/xaction/modules/waitwindow",
   "inputs": [
     {
       "key": "waitFor",
       "name": "等待条件",
       "type": "Enum",
-      "description": "",
-      "isAdvanced": false,
-      "validForList": [],
-      "invalidForList": [],
-      "condition": "",
       "defaultValue": "appeared",
-      "defaultValueRaw": "appeared",
-      "required": false,
-      "variableMode": "Input",
-      "isControlField": false
+      "variableMode": "Input"
     },
     {
       "key": "targetType",
       "name": "目标类型",
       "type": "Enum",
-      "description": "",
-      "isAdvanced": false,
-      "validForList": [],
-      "invalidForList": [],
-      "condition": "",
       "defaultValue": "query",
-      "defaultValueRaw": "query",
       "required": true,
       "variableMode": "Input",
       "isControlField": true
@@ -47,9 +31,6 @@
       "name": "窗口句柄",
       "type": "Integer",
       "description": "指定顶层窗口的句柄。固定句柄模式会识别等待期间的句柄失效和复用；等待“出现”只要求该句柄有效，不要求窗口可见。低权限 Quicker 可能无法为管理员窗口建立稳定身份标记。",
-      "isAdvanced": false,
-      "validForList": [],
-      "invalidForList": [],
       "visibleWhen": {
         "kind": "Field",
         "fieldKey": "targetType",
@@ -61,18 +42,13 @@
       "condition": "targetType 为 \"handle\"",
       "defaultValue": "0",
       "defaultValueRaw": 0,
-      "required": false,
-      "variableMode": "UseVarOrInput",
-      "isControlField": false
+      "variableMode": "UseVarOrInput"
     },
     {
       "key": "titleContains",
       "name": "窗口标题包含",
       "type": "Text",
       "description": "忽略大小写；和进程名、窗口类名同时填写时按 AND 组合。",
-      "isAdvanced": false,
-      "validForList": [],
-      "invalidForList": [],
       "visibleWhen": {
         "kind": "Field",
         "fieldKey": "targetType",
@@ -83,18 +59,13 @@
       },
       "condition": "targetType 为 \"query\"",
       "defaultValue": "",
-      "required": false,
-      "variableMode": "UseVarOrInput",
-      "isControlField": false
+      "variableMode": "UseVarOrInput"
     },
     {
       "key": "processName",
       "name": "进程名",
       "type": "Text",
       "description": "程序文件名，可填写或省略 .exe，不接受完整路径。",
-      "isAdvanced": false,
-      "validForList": [],
-      "invalidForList": [],
       "visibleWhen": {
         "kind": "Field",
         "fieldKey": "targetType",
@@ -105,18 +76,13 @@
       },
       "condition": "targetType 为 \"query\"",
       "defaultValue": "",
-      "required": false,
-      "variableMode": "UseVarOrInput",
-      "isControlField": false
+      "variableMode": "UseVarOrInput"
     },
     {
       "key": "className",
       "name": "窗口类名",
       "type": "Text",
       "description": "忽略大小写精确匹配。",
-      "isAdvanced": false,
-      "validForList": [],
-      "invalidForList": [],
       "visibleWhen": {
         "kind": "Field",
         "fieldKey": "targetType",
@@ -127,18 +93,13 @@
       },
       "condition": "targetType 为 \"query\"",
       "defaultValue": "",
-      "required": false,
-      "variableMode": "UseVarOrInput",
-      "isControlField": false
+      "variableMode": "UseVarOrInput"
     },
     {
       "key": "includeHidden",
       "name": "包含隐藏窗口",
       "type": "Boolean",
       "description": "未启用时，仅在可见顶层窗口中查找。",
-      "isAdvanced": false,
-      "validForList": [],
-      "invalidForList": [],
       "visibleWhen": {
         "kind": "Field",
         "fieldKey": "targetType",
@@ -150,39 +111,26 @@
       "condition": "targetType 为 \"query\"",
       "defaultValue": "false",
       "defaultValueRaw": false,
-      "required": false,
-      "variableMode": "Input",
-      "isControlField": false
+      "variableMode": "Input"
     },
     {
       "key": "timeoutSeconds",
       "name": "最长等待秒数",
       "type": "Number",
       "description": "0 表示无限等待；无限等待仍可被动作中止或 WaitAny 分支取消。",
-      "isAdvanced": false,
-      "validForList": [],
-      "invalidForList": [],
-      "condition": "",
       "defaultValue": "10.0",
       "defaultValueRaw": 10,
       "required": true,
-      "variableMode": "UseVarOrInput",
-      "isControlField": false
+      "variableMode": "UseVarOrInput"
     },
     {
       "key": "stopIfFail",
       "name": "失败后停止",
       "type": "Boolean",
       "description": "失败后是否停止动作",
-      "isAdvanced": false,
-      "validForList": [],
-      "invalidForList": [],
-      "condition": "",
       "defaultValue": "true",
       "defaultValueRaw": true,
-      "required": false,
-      "variableMode": "Input",
-      "isControlField": false
+      "variableMode": "Input"
     }
   ],
   "outputs": [
@@ -190,131 +138,69 @@
       "key": "isSuccess",
       "name": "是否成功",
       "type": "Boolean",
-      "description": "操作是否成功",
-      "isAdvanced": false,
-      "validForList": [],
-      "invalidForList": [],
-      "condition": ""
+      "description": "操作是否成功"
     },
     {
       "key": "outcome",
       "name": "等待结果",
       "type": "Text",
-      "description": "matched、timedOut、canceled、invalidTarget、targetLost 或 error。",
-      "isAdvanced": false,
-      "validForList": [],
-      "invalidForList": [],
-      "condition": ""
+      "description": "matched、timedOut、canceled、invalidTarget、targetLost 或 error。"
     },
     {
       "key": "hWnd",
       "name": "窗口句柄",
-      "type": "Integer",
-      "description": "",
-      "isAdvanced": false,
-      "validForList": [],
-      "invalidForList": [],
-      "condition": ""
+      "type": "Integer"
     },
     {
       "key": "matchedCount",
       "name": "匹配窗口数",
-      "type": "Integer",
-      "description": "",
-      "isAdvanced": false,
-      "validForList": [],
-      "invalidForList": [],
-      "condition": ""
+      "type": "Integer"
     },
     {
       "key": "title",
       "name": "窗口标题",
-      "type": "Text",
-      "description": "",
-      "isAdvanced": false,
-      "validForList": [],
-      "invalidForList": [],
-      "condition": ""
+      "type": "Text"
     },
     {
       "key": "processName",
       "name": "进程名",
-      "type": "Text",
-      "description": "",
-      "isAdvanced": false,
-      "validForList": [],
-      "invalidForList": [],
-      "condition": ""
+      "type": "Text"
     },
     {
       "key": "className",
       "name": "窗口类名",
-      "type": "Text",
-      "description": "",
-      "isAdvanced": false,
-      "validForList": [],
-      "invalidForList": [],
-      "condition": ""
+      "type": "Text"
     },
     {
       "key": "isVisible",
       "name": "是否可见",
-      "type": "Boolean",
-      "description": "",
-      "isAdvanced": false,
-      "validForList": [],
-      "invalidForList": [],
-      "condition": ""
+      "type": "Boolean"
     },
     {
       "key": "isForeground",
       "name": "是否为前台窗口",
-      "type": "Boolean",
-      "description": "",
-      "isAdvanced": false,
-      "validForList": [],
-      "invalidForList": [],
-      "condition": ""
+      "type": "Boolean"
     },
     {
       "key": "isMinimized",
       "name": "是否最小化",
-      "type": "Boolean",
-      "description": "",
-      "isAdvanced": false,
-      "validForList": [],
-      "invalidForList": [],
-      "condition": ""
+      "type": "Boolean"
     },
     {
       "key": "elapsedMs",
       "name": "等待耗时（毫秒）",
-      "type": "Integer",
-      "description": "",
-      "isAdvanced": false,
-      "validForList": [],
-      "invalidForList": [],
-      "condition": ""
+      "type": "Integer"
     },
     {
       "key": "attemptCount",
       "name": "状态检查次数",
-      "type": "Integer",
-      "description": "",
-      "isAdvanced": false,
-      "validForList": [],
-      "invalidForList": [],
-      "condition": ""
+      "type": "Integer"
     },
     {
       "key": "message",
       "name": "结果消息",
       "type": "Text",
-      "description": "超时、取消、目标失效或查询错误的诊断消息。",
-      "isAdvanced": false,
-      "validForList": [],
-      "invalidForList": [],
-      "condition": ""
+      "description": "超时、取消、目标失效或查询错误的诊断消息。"
     }
   ],
   "selections": {
@@ -323,28 +209,23 @@
       "items": [
         {
           "value": "appeared",
-          "name": "出现",
-          "description": ""
+          "name": "出现"
         },
         {
           "value": "disappeared",
-          "name": "消失",
-          "description": ""
+          "name": "消失"
         },
         {
           "value": "foreground",
-          "name": "成为前台窗口",
-          "description": ""
+          "name": "成为前台窗口"
         },
         {
           "value": "minimized",
-          "name": "最小化",
-          "description": ""
+          "name": "最小化"
         },
         {
           "value": "restored",
-          "name": "恢复（非最小化）",
-          "description": ""
+          "name": "恢复（非最小化）"
         }
       ]
     },
@@ -353,13 +234,11 @@
       "items": [
         {
           "value": "query",
-          "name": "按条件查找",
-          "description": ""
+          "name": "按条件查找"
         },
         {
           "value": "handle",
-          "name": "指定窗口句柄",
-          "description": ""
+          "name": "指定窗口句柄"
         }
       ]
     }

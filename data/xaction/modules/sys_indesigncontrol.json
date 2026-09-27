@@ -8,21 +8,13 @@
   "category": "SoftInteraction",
   "categoryName": "第三方软件交互",
   "stepType": "Action",
-  "isRisky": false,
-  "isProOnly": false,
   "helpLink": "https://docs.getquicker.net/v2/xaction/modules/indesigncontrol",
   "inputs": [
     {
       "key": "operation",
       "name": "操作类型",
       "type": "Enum",
-      "description": "",
-      "isAdvanced": false,
-      "validForList": [],
-      "invalidForList": [],
-      "condition": "",
       "defaultValue": "document.get_context",
-      "defaultValueRaw": "document.get_context",
       "required": true,
       "variableMode": "Input",
       "isControlField": true
@@ -31,318 +23,213 @@
       "key": "filePath",
       "name": "InDesign 文件路径",
       "type": "Text",
-      "description": "",
-      "isAdvanced": false,
       "validForList": [
         "document.open",
         "document.save_as"
       ],
-      "invalidForList": [],
       "condition": "仅：document.open, document.save_as",
       "defaultValue": "T:\\TEMP\\Quicker-InDesign.indd",
-      "defaultValueRaw": "T:\\TEMP\\Quicker-InDesign.indd",
-      "required": false,
-      "variableMode": "UseVarOrInput",
-      "isControlField": false
+      "variableMode": "UseVarOrInput"
     },
     {
       "key": "exportPath",
       "name": "PDF 输出路径",
       "type": "Text",
-      "description": "",
-      "isAdvanced": false,
       "validForList": [
         "document.export_pdf"
       ],
-      "invalidForList": [],
       "condition": "仅：document.export_pdf",
       "defaultValue": "T:\\TEMP\\Quicker-InDesign.pdf",
-      "defaultValueRaw": "T:\\TEMP\\Quicker-InDesign.pdf",
-      "required": false,
-      "variableMode": "UseVarOrInput",
-      "isControlField": false
+      "variableMode": "UseVarOrInput"
     },
     {
       "key": "imagePath",
       "name": "图片路径",
       "type": "Text",
-      "description": "",
-      "isAdvanced": false,
       "validForList": [
         "image.place"
       ],
-      "invalidForList": [],
       "condition": "仅：image.place",
       "defaultValue": "T:\\TEMP\\Quicker-InDesign.png",
-      "defaultValueRaw": "T:\\TEMP\\Quicker-InDesign.png",
-      "required": false,
-      "variableMode": "UseVarOrInput",
-      "isControlField": false
+      "variableMode": "UseVarOrInput"
     },
     {
       "key": "scriptFilePath",
       "name": "脚本文件路径",
       "type": "Text",
-      "description": "",
-      "isAdvanced": false,
       "validForList": [
         "script.run_file"
       ],
-      "invalidForList": [],
       "condition": "仅：script.run_file",
       "defaultValue": "T:\\TEMP\\indesign-script.jsx",
-      "defaultValueRaw": "T:\\TEMP\\indesign-script.jsx",
-      "required": false,
-      "variableMode": "UseVarOrInput",
-      "isControlField": false
+      "variableMode": "UseVarOrInput"
     },
     {
       "key": "pageCount",
       "name": "页数",
       "type": "Number",
-      "description": "",
-      "isAdvanced": false,
       "validForList": [
         "document.new"
       ],
-      "invalidForList": [],
       "condition": "仅：document.new",
       "defaultValue": "1",
       "defaultValueRaw": 1,
-      "required": false,
-      "variableMode": "UseVarOrInput",
-      "isControlField": false
+      "variableMode": "UseVarOrInput"
     },
     {
       "key": "facingPages",
       "name": "对页",
       "type": "Boolean",
-      "description": "",
-      "isAdvanced": false,
       "validForList": [
         "document.new"
       ],
-      "invalidForList": [],
       "condition": "仅：document.new",
       "defaultValue": "true",
       "defaultValueRaw": true,
-      "required": false,
-      "variableMode": "UseVarOrInput",
-      "isControlField": false
+      "variableMode": "UseVarOrInput"
     },
     {
       "key": "width",
       "name": "页面宽度",
       "type": "Text",
-      "description": "",
-      "isAdvanced": false,
       "validForList": [
         "document.new"
       ],
-      "invalidForList": [],
       "condition": "仅：document.new",
       "defaultValue": "210mm",
-      "defaultValueRaw": "210mm",
-      "required": false,
-      "variableMode": "UseVarOrInput",
-      "isControlField": false
+      "variableMode": "UseVarOrInput"
     },
     {
       "key": "height",
       "name": "页面高度",
       "type": "Text",
-      "description": "",
-      "isAdvanced": false,
       "validForList": [
         "document.new"
       ],
-      "invalidForList": [],
       "condition": "仅：document.new",
       "defaultValue": "297mm",
-      "defaultValueRaw": "297mm",
-      "required": false,
-      "variableMode": "UseVarOrInput",
-      "isControlField": false
+      "variableMode": "UseVarOrInput"
     },
     {
       "key": "preset",
       "name": "PDF 预设名称（留空使用当前设置）",
       "type": "Text",
-      "description": "",
-      "isAdvanced": false,
       "validForList": [
         "document.export_pdf"
       ],
-      "invalidForList": [],
       "condition": "仅：document.export_pdf",
       "defaultValue": "",
-      "defaultValueRaw": "",
-      "required": false,
-      "variableMode": "UseVarOrInput",
-      "isControlField": false
+      "variableMode": "UseVarOrInput"
     },
     {
       "key": "saveMode",
       "name": "关闭时保存（prompt/save/discard）",
       "type": "Text",
-      "description": "",
-      "isAdvanced": false,
       "validForList": [
         "document.close"
       ],
-      "invalidForList": [],
       "condition": "仅：document.close",
       "defaultValue": "prompt",
-      "defaultValueRaw": "prompt",
-      "required": false,
-      "variableMode": "UseVarOrInput",
-      "isControlField": false
+      "variableMode": "UseVarOrInput"
     },
     {
       "key": "afterIndex",
       "name": "在页面序号之后（-1 表示末尾）",
       "type": "Number",
-      "description": "",
-      "isAdvanced": false,
       "validForList": [
         "page.add"
       ],
-      "invalidForList": [],
       "condition": "仅：page.add",
       "defaultValue": "-1",
       "defaultValueRaw": -1,
-      "required": false,
-      "variableMode": "UseVarOrInput",
-      "isControlField": false
+      "variableMode": "UseVarOrInput"
     },
     {
       "key": "index",
       "name": "页面序号（从 0 开始）",
       "type": "Number",
-      "description": "",
-      "isAdvanced": false,
       "validForList": [
         "page.goto"
       ],
-      "invalidForList": [],
       "condition": "仅：page.goto",
       "defaultValue": "0",
       "defaultValueRaw": 0,
-      "required": false,
-      "variableMode": "UseVarOrInput",
-      "isControlField": false
+      "variableMode": "UseVarOrInput"
     },
     {
       "key": "pageIndex",
       "name": "页面序号（从 0 开始）",
       "type": "Number",
-      "description": "",
-      "isAdvanced": false,
       "validForList": [
         "text.frame_create",
         "image.place"
       ],
-      "invalidForList": [],
       "condition": "仅：text.frame_create, image.place",
       "defaultValue": "0",
       "defaultValueRaw": 0,
-      "required": false,
-      "variableMode": "UseVarOrInput",
-      "isControlField": false
+      "variableMode": "UseVarOrInput"
     },
     {
       "key": "offsetX",
       "name": "复制水平偏移",
       "type": "Text",
-      "description": "",
-      "isAdvanced": false,
       "validForList": [
         "object.duplicate"
       ],
-      "invalidForList": [],
       "condition": "仅：object.duplicate",
       "defaultValue": "10mm",
-      "defaultValueRaw": "10mm",
-      "required": false,
-      "variableMode": "UseVarOrInput",
-      "isControlField": false
+      "variableMode": "UseVarOrInput"
     },
     {
       "key": "offsetY",
       "name": "复制垂直偏移",
       "type": "Text",
-      "description": "",
-      "isAdvanced": false,
       "validForList": [
         "object.duplicate"
       ],
-      "invalidForList": [],
       "condition": "仅：object.duplicate",
       "defaultValue": "10mm",
-      "defaultValueRaw": "10mm",
-      "required": false,
-      "variableMode": "UseVarOrInput",
-      "isControlField": false
+      "variableMode": "UseVarOrInput"
     },
     {
       "key": "deltaX",
       "name": "水平移动",
       "type": "Text",
-      "description": "",
-      "isAdvanced": false,
       "validForList": [
         "object.move"
       ],
-      "invalidForList": [],
       "condition": "仅：object.move",
       "defaultValue": "10mm",
-      "defaultValueRaw": "10mm",
-      "required": false,
-      "variableMode": "UseVarOrInput",
-      "isControlField": false
+      "variableMode": "UseVarOrInput"
     },
     {
       "key": "deltaY",
       "name": "垂直移动",
       "type": "Text",
-      "description": "",
-      "isAdvanced": false,
       "validForList": [
         "object.move"
       ],
-      "invalidForList": [],
       "condition": "仅：object.move",
       "defaultValue": "0mm",
-      "defaultValueRaw": "0mm",
-      "required": false,
-      "variableMode": "UseVarOrInput",
-      "isControlField": false
+      "variableMode": "UseVarOrInput"
     },
     {
       "key": "boundsJson",
       "name": "边界（JSON：上、左、下、右）",
       "type": "Text",
-      "description": "",
-      "isAdvanced": false,
       "validForList": [
         "object.set_bounds",
         "text.frame_create",
         "image.place"
       ],
-      "invalidForList": [],
       "condition": "仅：object.set_bounds, text.frame_create, image.place",
       "defaultValue": "[\"20mm\",\"20mm\",\"80mm\",\"180mm\"]",
-      "defaultValueRaw": "[\"20mm\",\"20mm\",\"80mm\",\"180mm\"]",
-      "required": false,
-      "variableMode": "UseVarOrInput",
-      "isControlField": false
+      "variableMode": "UseVarOrInput"
     },
     {
       "key": "name",
       "name": "名称",
       "type": "Text",
-      "description": "",
-      "isAdvanced": false,
       "validForList": [
         "layer.create",
         "layer.activate",
@@ -352,267 +239,179 @@
         "style.apply_paragraph",
         "style.apply_character"
       ],
-      "invalidForList": [],
       "condition": "仅：layer.create, layer.activate, layer.rename, layer.set_visible, layer.set_locked, style.apply_paragraph, style.apply_character",
       "defaultValue": "新图层",
-      "defaultValueRaw": "新图层",
-      "required": false,
-      "variableMode": "UseVarOrInput",
-      "isControlField": false
+      "variableMode": "UseVarOrInput"
     },
     {
       "key": "newName",
       "name": "新名称",
       "type": "Text",
-      "description": "",
-      "isAdvanced": false,
       "validForList": [
         "layer.rename"
       ],
-      "invalidForList": [],
       "condition": "仅：layer.rename",
       "defaultValue": "重命名图层",
-      "defaultValueRaw": "重命名图层",
-      "required": false,
-      "variableMode": "UseVarOrInput",
-      "isControlField": false
+      "variableMode": "UseVarOrInput"
     },
     {
       "key": "boolValue",
       "name": "启用",
       "type": "Boolean",
-      "description": "",
-      "isAdvanced": false,
       "validForList": [
         "layer.set_visible",
         "layer.set_locked"
       ],
-      "invalidForList": [],
       "condition": "仅：layer.set_visible, layer.set_locked",
       "defaultValue": "true",
       "defaultValueRaw": true,
-      "required": false,
-      "variableMode": "UseVarOrInput",
-      "isControlField": false
+      "variableMode": "UseVarOrInput"
     },
     {
       "key": "contents",
       "name": "文本内容",
       "type": "Text",
-      "description": "",
-      "isAdvanced": false,
       "validForList": [
         "text.frame_create",
         "text.set_contents"
       ],
-      "invalidForList": [],
       "condition": "仅：text.frame_create, text.set_contents",
       "defaultValue": "来自 Quicker 的文字",
-      "defaultValueRaw": "来自 Quicker 的文字",
-      "required": false,
-      "variableMode": "UseVarOrInput",
-      "isControlField": false
+      "variableMode": "UseVarOrInput"
     },
     {
       "key": "findText",
       "name": "查找文本",
       "type": "Text",
-      "description": "",
-      "isAdvanced": false,
       "validForList": [
         "text.find_replace"
       ],
-      "invalidForList": [],
       "condition": "仅：text.find_replace",
       "defaultValue": "旧文字",
-      "defaultValueRaw": "旧文字",
-      "required": false,
-      "variableMode": "UseVarOrInput",
-      "isControlField": false
+      "variableMode": "UseVarOrInput"
     },
     {
       "key": "replaceText",
       "name": "替换为",
       "type": "Text",
-      "description": "",
-      "isAdvanced": false,
       "validForList": [
         "text.find_replace"
       ],
-      "invalidForList": [],
       "condition": "仅：text.find_replace",
       "defaultValue": "新文字",
-      "defaultValueRaw": "新文字",
-      "required": false,
-      "variableMode": "UseVarOrInput",
-      "isControlField": false
+      "variableMode": "UseVarOrInput"
     },
     {
       "key": "caseSensitive",
       "name": "区分大小写",
       "type": "Boolean",
-      "description": "",
-      "isAdvanced": false,
       "validForList": [
         "text.find_replace"
       ],
-      "invalidForList": [],
       "condition": "仅：text.find_replace",
       "defaultValue": "false",
       "defaultValueRaw": false,
-      "required": false,
-      "variableMode": "UseVarOrInput",
-      "isControlField": false
+      "variableMode": "UseVarOrInput"
     },
     {
       "key": "wholeWord",
       "name": "全字匹配",
       "type": "Boolean",
-      "description": "",
-      "isAdvanced": false,
       "validForList": [
         "text.find_replace"
       ],
-      "invalidForList": [],
       "condition": "仅：text.find_replace",
       "defaultValue": "false",
       "defaultValueRaw": false,
-      "required": false,
-      "variableMode": "UseVarOrInput",
-      "isControlField": false
+      "variableMode": "UseVarOrInput"
     },
     {
       "key": "fit",
       "name": "图片适配方式",
       "type": "Text",
-      "description": "",
-      "isAdvanced": false,
       "validForList": [
         "image.place"
       ],
-      "invalidForList": [],
       "condition": "仅：image.place",
       "defaultValue": "proportionally",
-      "defaultValueRaw": "proportionally",
-      "required": false,
-      "variableMode": "UseVarOrInput",
-      "isControlField": false
+      "variableMode": "UseVarOrInput"
     },
     {
       "key": "clearOverrides",
       "name": "清除局部覆盖",
       "type": "Boolean",
-      "description": "",
-      "isAdvanced": false,
       "validForList": [
         "style.apply_paragraph",
         "style.apply_character"
       ],
-      "invalidForList": [],
       "condition": "仅：style.apply_paragraph, style.apply_character",
       "defaultValue": "false",
       "defaultValueRaw": false,
-      "required": false,
-      "variableMode": "UseVarOrInput",
-      "isControlField": false
+      "variableMode": "UseVarOrInput"
     },
     {
       "key": "scriptCode",
       "name": "ExtendScript 代码",
       "type": "Text",
-      "description": "",
-      "isAdvanced": false,
       "validForList": [
         "script.evaluate"
       ],
-      "invalidForList": [],
       "condition": "仅：script.evaluate",
       "defaultValue": "app.documents.length",
-      "defaultValueRaw": "app.documents.length",
-      "required": false,
-      "variableMode": "UseVarOrInput",
-      "isControlField": false
+      "variableMode": "UseVarOrInput"
     },
     {
       "key": "undoName",
       "name": "撤销名称",
       "type": "Text",
-      "description": "",
-      "isAdvanced": false,
       "validForList": [
         "script.evaluate"
       ],
-      "invalidForList": [],
       "condition": "仅：script.evaluate",
       "defaultValue": "Quicker InDesign 脚本",
-      "defaultValueRaw": "Quicker InDesign 脚本",
-      "required": false,
-      "variableMode": "UseVarOrInput",
-      "isControlField": false
+      "variableMode": "UseVarOrInput"
     },
     {
       "key": "commandName",
       "name": "Bridge 命令名称",
       "type": "Text",
-      "description": "",
-      "isAdvanced": false,
       "validForList": [
         "command.custom"
       ],
-      "invalidForList": [],
       "condition": "仅：command.custom",
       "defaultValue": "",
-      "defaultValueRaw": "",
       "required": true,
-      "variableMode": "UseVarOrInput",
-      "isControlField": false
+      "variableMode": "UseVarOrInput"
     },
     {
       "key": "argumentsJson",
       "name": "参数（JSON 对象）",
       "type": "Text",
-      "description": "",
-      "isAdvanced": false,
       "validForList": [
         "command.custom"
       ],
-      "invalidForList": [],
       "condition": "仅：command.custom",
       "defaultValue": "{}",
-      "defaultValueRaw": "{}",
-      "required": false,
-      "variableMode": "UseVarOrInput",
-      "isControlField": false
+      "variableMode": "UseVarOrInput"
     },
     {
       "key": "waitMs",
       "name": "最长等待时间(ms)",
       "type": "Number",
-      "description": "",
       "isAdvanced": true,
-      "validForList": [],
-      "invalidForList": [],
-      "condition": "",
       "defaultValue": "30000",
       "defaultValueRaw": 30000,
       "required": true,
-      "variableMode": "Input",
-      "isControlField": false
+      "variableMode": "Input"
     },
     {
       "key": "stopIfFail",
       "name": "失败后停止",
       "type": "Boolean",
       "description": "失败后是否停止动作",
-      "isAdvanced": false,
-      "validForList": [],
-      "invalidForList": [],
-      "condition": "",
       "defaultValue": "true",
       "defaultValueRaw": true,
-      "required": false,
-      "variableMode": "Input",
-      "isControlField": false
+      "variableMode": "Input"
     }
   ],
   "outputs": [
@@ -620,21 +419,12 @@
       "key": "isSuccess",
       "name": "是否成功",
       "type": "Boolean",
-      "description": "操作是否成功",
-      "isAdvanced": false,
-      "validForList": [],
-      "invalidForList": [],
-      "condition": ""
+      "description": "操作是否成功"
     },
     {
       "key": "output",
       "name": "命令结果",
-      "type": "Text",
-      "description": "",
-      "isAdvanced": false,
-      "validForList": [],
-      "invalidForList": [],
-      "condition": ""
+      "type": "Text"
     }
   ],
   "selections": {
@@ -643,193 +433,155 @@
       "items": [
         {
           "value": "bridge.ping",
-          "name": "[Bridge] 测试连接",
-          "description": ""
+          "name": "[Bridge] 测试连接"
         },
         {
           "value": "command.list",
-          "name": "[Bridge] 读取命令目录",
-          "description": ""
+          "name": "[Bridge] 读取命令目录"
         },
         {
           "value": "document.get_context",
-          "name": "[文档] 获取文档上下文",
-          "description": ""
+          "name": "[文档] 获取文档上下文"
         },
         {
           "value": "document.list",
-          "name": "[文档] 列出文档",
-          "description": ""
+          "name": "[文档] 列出文档"
         },
         {
           "value": "document.new",
-          "name": "[文档] 新建文档",
-          "description": ""
+          "name": "[文档] 新建文档"
         },
         {
           "value": "document.open",
-          "name": "[文档] 打开文档",
-          "description": ""
+          "name": "[文档] 打开文档"
         },
         {
           "value": "document.save",
-          "name": "[文档] 保存文档",
-          "description": ""
+          "name": "[文档] 保存文档"
         },
         {
           "value": "document.save_as",
-          "name": "[文档] 文档另存为",
-          "description": ""
+          "name": "[文档] 文档另存为"
         },
         {
           "value": "document.export_pdf",
-          "name": "[导出] 导出 PDF",
-          "description": ""
+          "name": "[导出] 导出 PDF"
         },
         {
           "value": "document.close",
-          "name": "[文档] 关闭文档",
-          "description": ""
+          "name": "[文档] 关闭文档"
         },
         {
           "value": "page.list",
-          "name": "[页面] 列出页面",
-          "description": ""
+          "name": "[页面] 列出页面"
         },
         {
           "value": "page.add",
-          "name": "[页面] 新增页面",
-          "description": ""
+          "name": "[页面] 新增页面"
         },
         {
           "value": "page.goto",
-          "name": "[页面] 跳转到页面",
-          "description": ""
+          "name": "[页面] 跳转到页面"
         },
         {
           "value": "selection.get_info",
-          "name": "[选择] 读取选择详情",
-          "description": ""
+          "name": "[选择] 读取选择详情"
         },
         {
           "value": "selection.select_all",
-          "name": "[选择] 全选当前跨页对象",
-          "description": ""
+          "name": "[选择] 全选当前跨页对象"
         },
         {
           "value": "selection.clear",
-          "name": "[选择] 清除选择",
-          "description": ""
+          "name": "[选择] 清除选择"
         },
         {
           "value": "object.duplicate",
-          "name": "[对象] 复制选择对象",
-          "description": ""
+          "name": "[对象] 复制选择对象"
         },
         {
           "value": "object.remove",
-          "name": "[对象] 删除选择对象",
-          "description": ""
+          "name": "[对象] 删除选择对象"
         },
         {
           "value": "object.move",
-          "name": "[对象] 移动选择对象",
-          "description": ""
+          "name": "[对象] 移动选择对象"
         },
         {
           "value": "object.set_bounds",
-          "name": "[对象] 设置选择对象边界",
-          "description": ""
+          "name": "[对象] 设置选择对象边界"
         },
         {
           "value": "layer.list",
-          "name": "[图层] 列出图层",
-          "description": ""
+          "name": "[图层] 列出图层"
         },
         {
           "value": "layer.create",
-          "name": "[图层] 新建图层",
-          "description": ""
+          "name": "[图层] 新建图层"
         },
         {
           "value": "layer.activate",
-          "name": "[图层] 激活图层",
-          "description": ""
+          "name": "[图层] 激活图层"
         },
         {
           "value": "layer.rename",
-          "name": "[图层] 重命名图层",
-          "description": ""
+          "name": "[图层] 重命名图层"
         },
         {
           "value": "layer.set_visible",
-          "name": "[图层] 设置图层可见性",
-          "description": ""
+          "name": "[图层] 设置图层可见性"
         },
         {
           "value": "layer.set_locked",
-          "name": "[图层] 设置图层锁定",
-          "description": ""
+          "name": "[图层] 设置图层锁定"
         },
         {
           "value": "text.frame_list",
-          "name": "[文本] 列出文本框",
-          "description": ""
+          "name": "[文本] 列出文本框"
         },
         {
           "value": "text.frame_create",
-          "name": "[文本] 新建文本框",
-          "description": ""
+          "name": "[文本] 新建文本框"
         },
         {
           "value": "text.set_contents",
-          "name": "[文本] 设置选择文本内容",
-          "description": ""
+          "name": "[文本] 设置选择文本内容"
         },
         {
           "value": "text.find_replace",
-          "name": "[文本] 全文查找替换",
-          "description": ""
+          "name": "[文本] 全文查找替换"
         },
         {
           "value": "image.place",
-          "name": "[图片] 置入图片",
-          "description": ""
+          "name": "[图片] 置入图片"
         },
         {
           "value": "style.paragraph_list",
-          "name": "[样式] 列出段落样式",
-          "description": ""
+          "name": "[样式] 列出段落样式"
         },
         {
           "value": "style.character_list",
-          "name": "[样式] 列出字符样式",
-          "description": ""
+          "name": "[样式] 列出字符样式"
         },
         {
           "value": "style.apply_paragraph",
-          "name": "[样式] 应用段落样式",
-          "description": ""
+          "name": "[样式] 应用段落样式"
         },
         {
           "value": "style.apply_character",
-          "name": "[样式] 应用字符样式",
-          "description": ""
+          "name": "[样式] 应用字符样式"
         },
         {
           "value": "script.evaluate",
-          "name": "[脚本] 执行任意 ExtendScript",
-          "description": ""
+          "name": "[脚本] 执行任意 ExtendScript"
         },
         {
           "value": "script.run_file",
-          "name": "[脚本] 运行脚本文件",
-          "description": ""
+          "name": "[脚本] 运行脚本文件"
         },
         {
           "value": "command.custom",
-          "name": "[高级] 发送自定义 Bridge 命令",
-          "description": ""
+          "name": "[高级] 发送自定义 Bridge 命令"
         }
       ]
     }

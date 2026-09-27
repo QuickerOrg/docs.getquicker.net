@@ -8,8 +8,6 @@
   "category": "Basic",
   "categoryName": "基础",
   "stepType": "Action",
-  "isRisky": false,
-  "isProOnly": false,
   "helpLink": "https://docs.getquicker.net/v2/xaction/modules/log",
   "inputs": [
     {
@@ -17,14 +15,9 @@
       "name": "内容",
       "type": "Text",
       "description": "要记录的内容，支持变量、表达式和插值文本。无需拼接时间或动作信息。",
-      "isAdvanced": false,
-      "validForList": [],
-      "invalidForList": [],
-      "condition": "",
       "defaultValue": "",
       "required": true,
-      "variableMode": "UseVarOrInput",
-      "isControlField": false
+      "variableMode": "UseVarOrInput"
     },
     {
       "key": "level",
@@ -32,14 +25,8 @@
       "type": "Enum",
       "description": "默认记录信息。警告和错误只标记日志级别，不会中止动作；调试日志仅在调试运行时记录，普通运行时不计算内容。",
       "isAdvanced": true,
-      "validForList": [],
-      "invalidForList": [],
-      "condition": "",
       "defaultValue": "info",
-      "defaultValueRaw": "info",
-      "required": false,
-      "variableMode": "UseVarOrInput",
-      "isControlField": false
+      "variableMode": "UseVarOrInput"
     }
   ],
   "outputs": [],
@@ -49,23 +36,19 @@
       "items": [
         {
           "value": "info",
-          "name": "信息",
-          "description": ""
+          "name": "信息"
         },
         {
           "value": "warning",
-          "name": "警告",
-          "description": ""
+          "name": "警告"
         },
         {
           "value": "error",
-          "name": "错误",
-          "description": ""
+          "name": "错误"
         },
         {
           "value": "debug",
-          "name": "调试",
-          "description": ""
+          "name": "调试"
         }
       ]
     }

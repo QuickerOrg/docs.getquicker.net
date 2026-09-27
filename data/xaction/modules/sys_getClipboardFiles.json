@@ -8,8 +8,6 @@
   "category": "Clipboard",
   "categoryName": "剪贴板操作",
   "stepType": "Action",
-  "isRisky": false,
-  "isProOnly": false,
   "helpLink": "https://docs.getquicker.net/v2/xaction/modules/getclipboardfiles",
   "inputs": [
     {
@@ -17,15 +15,9 @@
       "name": "失败后中止动作",
       "type": "Boolean",
       "description": "获取剪贴板文件失败后，是否停止后续动作的执行。",
-      "isAdvanced": false,
-      "validForList": [],
-      "invalidForList": [],
-      "condition": "",
       "defaultValue": "true",
       "defaultValueRaw": true,
-      "required": false,
-      "variableMode": "Input",
-      "isControlField": false
+      "variableMode": "Input"
     }
   ],
   "outputs": [
@@ -33,33 +25,20 @@
       "key": "isSuccess",
       "name": "是否成功",
       "type": "Boolean",
-      "description": "是否成功获得文件列表",
-      "isAdvanced": false,
-      "validForList": [],
-      "invalidForList": [],
-      "condition": ""
+      "description": "是否成功获得文件列表"
     },
     {
       "key": "output",
       "name": "文件列表",
       "type": "List",
-      "description": "从剪贴板获取的文件路径列表",
-      "isAdvanced": false,
-      "validForList": [],
-      "invalidForList": [],
-      "condition": ""
+      "description": "从剪贴板获取的文件路径列表"
     },
     {
       "key": "elapsedMs",
       "name": "已更新时间",
       "type": "Integer",
-      "description": "剪贴板最后更新是在多少毫秒以前",
-      "isAdvanced": false,
-      "validForList": [],
-      "invalidForList": [],
-      "condition": ""
+      "description": "剪贴板最后更新是在多少毫秒以前"
     }
   ],
-  "selections": {},
   "sourceFileName": "catalog.json"
 }

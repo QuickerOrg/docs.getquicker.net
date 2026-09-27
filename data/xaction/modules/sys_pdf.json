@@ -8,21 +8,13 @@
   "category": "Files",
   "categoryName": "系统操作",
   "stepType": "Action",
-  "isRisky": false,
-  "isProOnly": false,
   "helpLink": "https://docs.getquicker.net/v2/xaction/modules/pdf",
   "inputs": [
     {
       "key": "operation",
       "name": "操作",
       "type": "Enum",
-      "description": "",
-      "isAdvanced": false,
-      "validForList": [],
-      "invalidForList": [],
-      "condition": "",
       "defaultValue": "merge",
-      "defaultValueRaw": "merge",
       "required": true,
       "variableMode": "Input",
       "isControlField": true
@@ -32,7 +24,6 @@
       "name": "PDF 来源",
       "type": "Any",
       "description": "PDF 文件路径。合并时可传入路径列表或换行分隔的路径。",
-      "isAdvanced": false,
       "validForList": [
         "merge",
         "split",
@@ -51,29 +42,24 @@
         "drawRectangle",
         "drawEllipse"
       ],
-      "invalidForList": [],
       "condition": "仅：merge, split, keepSequence, delete, rotatePages, readInfo, setInfoField, setPassword, removePassword, overlayText, watermark, pageNumber, overlayImage, drawLine, drawRectangle, drawEllipse",
       "defaultValue": "",
       "required": true,
-      "variableMode": "UseVarOrInput",
-      "isControlField": false
+      "variableMode": "UseVarOrInput"
     },
     {
       "key": "imageSource",
       "name": "图片来源",
       "type": "Any",
       "description": "图片对象、图片路径或图片路径列表。",
-      "isAdvanced": false,
       "validForList": [
         "imagesToPdf",
         "overlayImage"
       ],
-      "invalidForList": [],
       "condition": "仅：imagesToPdf, overlayImage",
       "defaultValue": "",
       "required": true,
-      "variableMode": "UseVarOrInput",
-      "isControlField": false
+      "variableMode": "UseVarOrInput"
     },
     {
       "key": "password",
@@ -99,20 +85,15 @@
         "drawRectangle",
         "drawEllipse"
       ],
-      "invalidForList": [],
       "condition": "仅：merge, split, keepSequence, delete, rotatePages, readInfo, setInfoField, setPassword, removePassword, overlayText, watermark, pageNumber, overlayImage, drawLine, drawRectangle, drawEllipse",
       "defaultValue": "",
-      "defaultValueRaw": "",
-      "required": false,
-      "variableMode": "UseVarOrInput",
-      "isControlField": false
+      "variableMode": "UseVarOrInput"
     },
     {
       "key": "pages",
       "name": "页面",
       "type": "Text",
       "description": "1-based 页码表达式，如 1,3-5,odd,even,first,last。",
-      "isAdvanced": false,
       "validForList": [
         "split",
         "keepSequence",
@@ -126,37 +107,26 @@
         "drawRectangle",
         "drawEllipse"
       ],
-      "invalidForList": [],
       "condition": "仅：split, keepSequence, delete, rotatePages, overlayText, watermark, pageNumber, overlayImage, drawLine, drawRectangle, drawEllipse",
       "defaultValue": "all",
-      "defaultValueRaw": "all",
-      "required": false,
-      "variableMode": "UseVarOrInput",
-      "isControlField": false
+      "variableMode": "UseVarOrInput"
     },
     {
       "key": "pageRotation",
       "name": "旋转角度",
       "type": "Enum",
-      "description": "",
-      "isAdvanced": false,
       "validForList": [
         "rotatePages"
       ],
-      "invalidForList": [],
       "condition": "仅：rotatePages",
       "defaultValue": "90",
-      "defaultValueRaw": "90",
-      "required": false,
-      "variableMode": "UseVarOrInput",
-      "isControlField": false
+      "variableMode": "UseVarOrInput"
     },
     {
       "key": "outputPath",
       "name": "输出路径",
       "type": "Text",
       "description": "单文件输出路径。创建操作留空时生成临时 PDF。",
-      "isAdvanced": false,
       "validForList": [
         "createBlank",
         "imagesToPdf",
@@ -175,37 +145,26 @@
         "drawRectangle",
         "drawEllipse"
       ],
-      "invalidForList": [],
       "condition": "仅：createBlank, imagesToPdf, merge, keepSequence, delete, rotatePages, setInfoField, setPassword, removePassword, overlayText, watermark, pageNumber, overlayImage, drawLine, drawRectangle, drawEllipse",
       "defaultValue": "",
-      "defaultValueRaw": "",
-      "required": false,
-      "variableMode": "UseVarOrInput",
-      "isControlField": false
+      "variableMode": "UseVarOrInput"
     },
     {
       "key": "outputFolder",
       "name": "输出文件夹",
       "type": "Text",
       "description": "留空时使用“源文件名_pages”文件夹。",
-      "isAdvanced": false,
       "validForList": [
         "split"
       ],
-      "invalidForList": [],
       "condition": "仅：split",
       "defaultValue": "",
-      "defaultValueRaw": "",
-      "required": false,
-      "variableMode": "UseVarOrInput",
-      "isControlField": false
+      "variableMode": "UseVarOrInput"
     },
     {
       "key": "overwrite",
       "name": "覆盖已有",
       "type": "Boolean",
-      "description": "",
-      "isAdvanced": false,
       "validForList": [
         "createBlank",
         "imagesToPdf",
@@ -225,13 +184,10 @@
         "drawRectangle",
         "drawEllipse"
       ],
-      "invalidForList": [],
       "condition": "仅：createBlank, imagesToPdf, merge, split, keepSequence, delete, rotatePages, setInfoField, setPassword, removePassword, overlayText, watermark, pageNumber, overlayImage, drawLine, drawRectangle, drawEllipse",
       "defaultValue": "false",
       "defaultValueRaw": false,
-      "required": false,
-      "variableMode": "UseVarOrInput",
-      "isControlField": false
+      "variableMode": "UseVarOrInput"
     },
     {
       "key": "allowUnencryptedOutput",
@@ -254,364 +210,260 @@
         "drawRectangle",
         "drawEllipse"
       ],
-      "invalidForList": [],
       "condition": "仅：merge, split, keepSequence, delete, rotatePages, setInfoField, overlayText, watermark, pageNumber, overlayImage, drawLine, drawRectangle, drawEllipse",
       "defaultValue": "false",
       "defaultValueRaw": false,
-      "required": false,
-      "variableMode": "UseVarOrInput",
-      "isControlField": false
+      "variableMode": "UseVarOrInput"
     },
     {
       "key": "blankPageCount",
       "name": "页数",
       "type": "Integer",
-      "description": "",
-      "isAdvanced": false,
       "validForList": [
         "createBlank"
       ],
-      "invalidForList": [],
       "condition": "仅：createBlank",
       "defaultValue": "1",
       "defaultValueRaw": 1,
-      "required": false,
-      "variableMode": "UseVarOrInput",
-      "isControlField": false
+      "variableMode": "UseVarOrInput"
     },
     {
       "key": "pageSize",
       "name": "页面尺寸",
       "type": "Enum",
-      "description": "",
-      "isAdvanced": false,
       "validForList": [
         "createBlank",
         "imagesToPdf"
       ],
-      "invalidForList": [],
       "condition": "仅：createBlank, imagesToPdf",
       "defaultValue": "a4",
-      "defaultValueRaw": "a4",
-      "required": false,
-      "variableMode": "UseVarOrInput",
-      "isControlField": false
+      "variableMode": "UseVarOrInput"
     },
     {
       "key": "orientation",
       "name": "页面方向",
       "type": "Enum",
-      "description": "",
-      "isAdvanced": false,
       "validForList": [
         "createBlank",
         "imagesToPdf"
       ],
-      "invalidForList": [],
       "condition": "仅：createBlank, imagesToPdf",
       "defaultValue": "auto",
-      "defaultValueRaw": "auto",
-      "required": false,
-      "variableMode": "UseVarOrInput",
-      "isControlField": false
+      "variableMode": "UseVarOrInput"
     },
     {
       "key": "customPageWidthMm",
       "name": "自定义宽度（毫米）",
       "type": "Number",
-      "description": "",
-      "isAdvanced": false,
       "validForList": [
         "createBlank",
         "imagesToPdf"
       ],
-      "invalidForList": [],
       "condition": "仅：createBlank, imagesToPdf",
       "defaultValue": "210.0",
       "defaultValueRaw": 210,
-      "required": false,
-      "variableMode": "UseVarOrInput",
-      "isControlField": false
+      "variableMode": "UseVarOrInput"
     },
     {
       "key": "customPageHeightMm",
       "name": "自定义高度（毫米）",
       "type": "Number",
-      "description": "",
-      "isAdvanced": false,
       "validForList": [
         "createBlank",
         "imagesToPdf"
       ],
-      "invalidForList": [],
       "condition": "仅：createBlank, imagesToPdf",
       "defaultValue": "297.0",
       "defaultValueRaw": 297,
-      "required": false,
-      "variableMode": "UseVarOrInput",
-      "isControlField": false
+      "variableMode": "UseVarOrInput"
     },
     {
       "key": "imageLayout",
       "name": "图片布局",
       "type": "Enum",
-      "description": "",
-      "isAdvanced": false,
       "validForList": [
         "imagesToPdf",
         "overlayImage"
       ],
-      "invalidForList": [],
       "condition": "仅：imagesToPdf, overlayImage",
       "defaultValue": "contain",
-      "defaultValueRaw": "contain",
-      "required": false,
-      "variableMode": "UseVarOrInput",
-      "isControlField": false
+      "variableMode": "UseVarOrInput"
     },
     {
       "key": "pageMarginMm",
       "name": "页边距（毫米）",
       "type": "Number",
-      "description": "",
-      "isAdvanced": false,
       "validForList": [
         "imagesToPdf"
       ],
-      "invalidForList": [],
       "condition": "仅：imagesToPdf",
       "defaultValue": "0.0",
       "defaultValueRaw": 0,
-      "required": false,
-      "variableMode": "UseVarOrInput",
-      "isControlField": false
+      "variableMode": "UseVarOrInput"
     },
     {
       "key": "preventUpscale",
       "name": "不放大小图",
       "type": "Boolean",
-      "description": "",
-      "isAdvanced": false,
       "validForList": [
         "imagesToPdf"
       ],
-      "invalidForList": [],
       "condition": "仅：imagesToPdf",
       "defaultValue": "false",
       "defaultValueRaw": false,
-      "required": false,
-      "variableMode": "UseVarOrInput",
-      "isControlField": false
+      "variableMode": "UseVarOrInput"
     },
     {
       "key": "infoField",
       "name": "信息字段",
       "type": "Enum",
-      "description": "",
-      "isAdvanced": false,
       "validForList": [
         "setInfoField"
       ],
-      "invalidForList": [],
       "condition": "仅：setInfoField",
       "defaultValue": "title",
-      "defaultValueRaw": "title",
-      "required": false,
-      "variableMode": "UseVarOrInput",
-      "isControlField": false
+      "variableMode": "UseVarOrInput"
     },
     {
       "key": "infoValue",
       "name": "字段值",
       "type": "Text",
-      "description": "",
-      "isAdvanced": false,
       "validForList": [
         "setInfoField"
       ],
-      "invalidForList": [],
       "condition": "仅：setInfoField",
       "defaultValue": "",
-      "defaultValueRaw": "",
-      "required": false,
-      "variableMode": "UseVarOrInput",
-      "isControlField": false
+      "variableMode": "UseVarOrInput"
     },
     {
       "key": "outputUserPassword",
       "name": "输出用户密码",
       "type": "Text",
-      "description": "",
-      "isAdvanced": false,
       "validForList": [
         "setPassword"
       ],
-      "invalidForList": [],
       "condition": "仅：setPassword",
       "defaultValue": "",
-      "defaultValueRaw": "",
-      "required": false,
-      "variableMode": "UseVarOrInput",
-      "isControlField": false
+      "variableMode": "UseVarOrInput"
     },
     {
       "key": "outputOwnerPassword",
       "name": "输出 owner 密码",
       "type": "Text",
-      "description": "",
       "isAdvanced": true,
       "validForList": [
         "setPassword"
       ],
-      "invalidForList": [],
       "condition": "仅：setPassword",
       "defaultValue": "",
-      "defaultValueRaw": "",
-      "required": false,
-      "variableMode": "UseVarOrInput",
-      "isControlField": false
+      "variableMode": "UseVarOrInput"
     },
     {
       "key": "encryptionMode",
       "name": "加密方式",
       "type": "Enum",
-      "description": "",
-      "isAdvanced": false,
       "validForList": [
         "setPassword"
       ],
-      "invalidForList": [],
       "condition": "仅：setPassword",
       "defaultValue": "aes128",
-      "defaultValueRaw": "aes128",
-      "required": false,
-      "variableMode": "UseVarOrInput",
-      "isControlField": false
+      "variableMode": "UseVarOrInput"
     },
     {
       "key": "permitAnnotations",
       "name": "允许注释",
       "type": "Boolean",
-      "description": "",
       "isAdvanced": true,
       "validForList": [
         "setPassword"
       ],
-      "invalidForList": [],
       "condition": "仅：setPassword",
       "defaultValue": "true",
       "defaultValueRaw": true,
-      "required": false,
-      "variableMode": "UseVarOrInput",
-      "isControlField": false
+      "variableMode": "UseVarOrInput"
     },
     {
       "key": "permitAssembleDocument",
       "name": "允许组合文档",
       "type": "Boolean",
-      "description": "",
       "isAdvanced": true,
       "validForList": [
         "setPassword"
       ],
-      "invalidForList": [],
       "condition": "仅：setPassword",
       "defaultValue": "true",
       "defaultValueRaw": true,
-      "required": false,
-      "variableMode": "UseVarOrInput",
-      "isControlField": false
+      "variableMode": "UseVarOrInput"
     },
     {
       "key": "permitExtractContent",
       "name": "允许复制或提取内容",
       "type": "Boolean",
-      "description": "",
       "isAdvanced": true,
       "validForList": [
         "setPassword"
       ],
-      "invalidForList": [],
       "condition": "仅：setPassword",
       "defaultValue": "true",
       "defaultValueRaw": true,
-      "required": false,
-      "variableMode": "UseVarOrInput",
-      "isControlField": false
+      "variableMode": "UseVarOrInput"
     },
     {
       "key": "permitFormsFill",
       "name": "允许填写表单",
       "type": "Boolean",
-      "description": "",
       "isAdvanced": true,
       "validForList": [
         "setPassword"
       ],
-      "invalidForList": [],
       "condition": "仅：setPassword",
       "defaultValue": "true",
       "defaultValueRaw": true,
-      "required": false,
-      "variableMode": "UseVarOrInput",
-      "isControlField": false
+      "variableMode": "UseVarOrInput"
     },
     {
       "key": "permitFullQualityPrint",
       "name": "允许高质量打印",
       "type": "Boolean",
-      "description": "",
       "isAdvanced": true,
       "validForList": [
         "setPassword"
       ],
-      "invalidForList": [],
       "condition": "仅：setPassword",
       "defaultValue": "true",
       "defaultValueRaw": true,
-      "required": false,
-      "variableMode": "UseVarOrInput",
-      "isControlField": false
+      "variableMode": "UseVarOrInput"
     },
     {
       "key": "permitModifyDocument",
       "name": "允许修改文档",
       "type": "Boolean",
-      "description": "",
       "isAdvanced": true,
       "validForList": [
         "setPassword"
       ],
-      "invalidForList": [],
       "condition": "仅：setPassword",
       "defaultValue": "true",
       "defaultValueRaw": true,
-      "required": false,
-      "variableMode": "UseVarOrInput",
-      "isControlField": false
+      "variableMode": "UseVarOrInput"
     },
     {
       "key": "permitPrint",
       "name": "允许打印",
       "type": "Boolean",
-      "description": "",
       "isAdvanced": true,
       "validForList": [
         "setPassword"
       ],
-      "invalidForList": [],
       "condition": "仅：setPassword",
       "defaultValue": "true",
       "defaultValueRaw": true,
-      "required": false,
-      "variableMode": "UseVarOrInput",
-      "isControlField": false
+      "variableMode": "UseVarOrInput"
     },
     {
       "key": "layer",
       "name": "图层",
       "type": "Enum",
-      "description": "",
       "isAdvanced": true,
       "validForList": [
         "overlayText",
@@ -622,153 +474,110 @@
         "drawRectangle",
         "drawEllipse"
       ],
-      "invalidForList": [],
       "condition": "仅：overlayText, watermark, pageNumber, overlayImage, drawLine, drawRectangle, drawEllipse",
       "defaultValue": "append",
-      "defaultValueRaw": "append",
-      "required": false,
-      "variableMode": "UseVarOrInput",
-      "isControlField": false
+      "variableMode": "UseVarOrInput"
     },
     {
       "key": "text",
       "name": "文字",
       "type": "Text",
-      "description": "",
-      "isAdvanced": false,
       "validForList": [
         "overlayText",
         "watermark",
         "pageNumber"
       ],
-      "invalidForList": [],
       "condition": "仅：overlayText, watermark, pageNumber",
       "defaultValue": "",
-      "defaultValueRaw": "",
-      "required": false,
-      "variableMode": "UseVarOrInput",
-      "isControlField": false
+      "variableMode": "UseVarOrInput"
     },
     {
       "key": "fontFamily",
       "name": "字体",
       "type": "Text",
-      "description": "",
-      "isAdvanced": false,
       "validForList": [
         "overlayText",
         "watermark",
         "pageNumber"
       ],
-      "invalidForList": [],
       "condition": "仅：overlayText, watermark, pageNumber",
       "defaultValue": "Microsoft YaHei",
-      "defaultValueRaw": "Microsoft YaHei",
-      "required": false,
-      "variableMode": "UseVarOrInput",
-      "isControlField": false
+      "variableMode": "UseVarOrInput"
     },
     {
       "key": "fontSize",
       "name": "字号（磅）",
       "type": "Number",
-      "description": "",
-      "isAdvanced": false,
       "validForList": [
         "overlayText",
         "watermark",
         "pageNumber"
       ],
-      "invalidForList": [],
       "condition": "仅：overlayText, watermark, pageNumber",
       "defaultValue": "24.0",
       "defaultValueRaw": 24,
-      "required": false,
-      "variableMode": "UseVarOrInput",
-      "isControlField": false
+      "variableMode": "UseVarOrInput"
     },
     {
       "key": "bold",
       "name": "粗体",
       "type": "Boolean",
-      "description": "",
-      "isAdvanced": false,
       "validForList": [
         "overlayText",
         "watermark",
         "pageNumber"
       ],
-      "invalidForList": [],
       "condition": "仅：overlayText, watermark, pageNumber",
       "defaultValue": "false",
       "defaultValueRaw": false,
-      "required": false,
-      "variableMode": "UseVarOrInput",
-      "isControlField": false
+      "variableMode": "UseVarOrInput"
     },
     {
       "key": "italic",
       "name": "斜体",
       "type": "Boolean",
-      "description": "",
-      "isAdvanced": false,
       "validForList": [
         "overlayText",
         "watermark",
         "pageNumber"
       ],
-      "invalidForList": [],
       "condition": "仅：overlayText, watermark, pageNumber",
       "defaultValue": "false",
       "defaultValueRaw": false,
-      "required": false,
-      "variableMode": "UseVarOrInput",
-      "isControlField": false
+      "variableMode": "UseVarOrInput"
     },
     {
       "key": "textColor",
       "name": "文字颜色",
       "type": "Text",
-      "description": "",
-      "isAdvanced": false,
       "validForList": [
         "overlayText",
         "watermark",
         "pageNumber"
       ],
-      "invalidForList": [],
       "condition": "仅：overlayText, watermark, pageNumber",
       "defaultValue": "#000000",
-      "defaultValueRaw": "#000000",
-      "required": false,
-      "variableMode": "UseVarOrInput",
-      "isControlField": false
+      "variableMode": "UseVarOrInput"
     },
     {
       "key": "opacity",
       "name": "透明度",
       "type": "Number",
-      "description": "",
-      "isAdvanced": false,
       "validForList": [
         "overlayText",
         "watermark",
         "pageNumber",
         "overlayImage"
       ],
-      "invalidForList": [],
       "condition": "仅：overlayText, watermark, pageNumber, overlayImage",
       "defaultValue": "1.0",
       "defaultValueRaw": 1,
-      "required": false,
-      "variableMode": "UseVarOrInput",
-      "isControlField": false
+      "variableMode": "UseVarOrInput"
     },
     {
       "key": "xMm",
       "name": "X（毫米）",
       "type": "Number",
-      "description": "",
       "isAdvanced": true,
       "validForList": [
         "overlayText",
@@ -777,19 +586,15 @@
         "drawRectangle",
         "drawEllipse"
       ],
-      "invalidForList": [],
       "condition": "仅：overlayText, overlayImage, drawLine, drawRectangle, drawEllipse",
       "defaultValue": "0.0",
       "defaultValueRaw": 0,
-      "required": false,
-      "variableMode": "UseVarOrInput",
-      "isControlField": false
+      "variableMode": "UseVarOrInput"
     },
     {
       "key": "yMm",
       "name": "Y（毫米）",
       "type": "Number",
-      "description": "",
       "isAdvanced": true,
       "validForList": [
         "overlayText",
@@ -798,53 +603,39 @@
         "drawRectangle",
         "drawEllipse"
       ],
-      "invalidForList": [],
       "condition": "仅：overlayText, overlayImage, drawLine, drawRectangle, drawEllipse",
       "defaultValue": "0.0",
       "defaultValueRaw": 0,
-      "required": false,
-      "variableMode": "UseVarOrInput",
-      "isControlField": false
+      "variableMode": "UseVarOrInput"
     },
     {
       "key": "x2Mm",
       "name": "终点 X（毫米）",
       "type": "Number",
-      "description": "",
-      "isAdvanced": false,
       "validForList": [
         "drawLine"
       ],
-      "invalidForList": [],
       "condition": "仅：drawLine",
       "defaultValue": "10.0",
       "defaultValueRaw": 10,
-      "required": false,
-      "variableMode": "UseVarOrInput",
-      "isControlField": false
+      "variableMode": "UseVarOrInput"
     },
     {
       "key": "y2Mm",
       "name": "终点 Y（毫米）",
       "type": "Number",
-      "description": "",
-      "isAdvanced": false,
       "validForList": [
         "drawLine"
       ],
-      "invalidForList": [],
       "condition": "仅：drawLine",
       "defaultValue": "10.0",
       "defaultValueRaw": 10,
-      "required": false,
-      "variableMode": "UseVarOrInput",
-      "isControlField": false
+      "variableMode": "UseVarOrInput"
     },
     {
       "key": "widthMm",
       "name": "宽度（毫米）",
       "type": "Number",
-      "description": "",
       "isAdvanced": true,
       "validForList": [
         "overlayText",
@@ -852,19 +643,15 @@
         "drawRectangle",
         "drawEllipse"
       ],
-      "invalidForList": [],
       "condition": "仅：overlayText, overlayImage, drawRectangle, drawEllipse",
       "defaultValue": "50.0",
       "defaultValueRaw": 50,
-      "required": false,
-      "variableMode": "UseVarOrInput",
-      "isControlField": false
+      "variableMode": "UseVarOrInput"
     },
     {
       "key": "heightMm",
       "name": "高度（毫米）",
       "type": "Number",
-      "description": "",
       "isAdvanced": true,
       "validForList": [
         "overlayText",
@@ -872,207 +659,146 @@
         "drawRectangle",
         "drawEllipse"
       ],
-      "invalidForList": [],
       "condition": "仅：overlayText, overlayImage, drawRectangle, drawEllipse",
       "defaultValue": "30.0",
       "defaultValueRaw": 30,
-      "required": false,
-      "variableMode": "UseVarOrInput",
-      "isControlField": false
+      "variableMode": "UseVarOrInput"
     },
     {
       "key": "horizontalAlignment",
       "name": "水平对齐",
       "type": "Enum",
-      "description": "",
       "isAdvanced": true,
       "validForList": [
         "overlayText"
       ],
-      "invalidForList": [],
       "condition": "仅：overlayText",
       "defaultValue": "left",
-      "defaultValueRaw": "left",
-      "required": false,
-      "variableMode": "UseVarOrInput",
-      "isControlField": false
+      "variableMode": "UseVarOrInput"
     },
     {
       "key": "verticalAlignment",
       "name": "垂直对齐",
       "type": "Enum",
-      "description": "",
       "isAdvanced": true,
       "validForList": [
         "overlayText"
       ],
-      "invalidForList": [],
       "condition": "仅：overlayText",
       "defaultValue": "top",
-      "defaultValueRaw": "top",
-      "required": false,
-      "variableMode": "UseVarOrInput",
-      "isControlField": false
+      "variableMode": "UseVarOrInput"
     },
     {
       "key": "rotationDegrees",
       "name": "旋转角度",
       "type": "Number",
-      "description": "",
       "isAdvanced": true,
       "validForList": [
         "overlayText",
         "watermark",
         "overlayImage"
       ],
-      "invalidForList": [],
       "condition": "仅：overlayText, watermark, overlayImage",
       "defaultValue": "0.0",
       "defaultValueRaw": 0,
-      "required": false,
-      "variableMode": "UseVarOrInput",
-      "isControlField": false
+      "variableMode": "UseVarOrInput"
     },
     {
       "key": "positionPreset",
       "name": "位置",
       "type": "Enum",
-      "description": "",
-      "isAdvanced": false,
       "validForList": [
         "watermark",
         "pageNumber"
       ],
-      "invalidForList": [],
       "condition": "仅：watermark, pageNumber",
       "defaultValue": "center",
-      "defaultValueRaw": "center",
-      "required": false,
-      "variableMode": "UseVarOrInput",
-      "isControlField": false
+      "variableMode": "UseVarOrInput"
     },
     {
       "key": "positionMarginMm",
       "name": "位置边距（毫米）",
       "type": "Number",
-      "description": "",
-      "isAdvanced": false,
       "validForList": [
         "pageNumber"
       ],
-      "invalidForList": [],
       "condition": "仅：pageNumber",
       "defaultValue": "10.0",
       "defaultValueRaw": 10,
-      "required": false,
-      "variableMode": "UseVarOrInput",
-      "isControlField": false
+      "variableMode": "UseVarOrInput"
     },
     {
       "key": "strokeColor",
       "name": "描边颜色",
       "type": "Text",
-      "description": "",
-      "isAdvanced": false,
       "validForList": [
         "drawLine",
         "drawRectangle",
         "drawEllipse"
       ],
-      "invalidForList": [],
       "condition": "仅：drawLine, drawRectangle, drawEllipse",
       "defaultValue": "#000000",
-      "defaultValueRaw": "#000000",
-      "required": false,
-      "variableMode": "UseVarOrInput",
-      "isControlField": false
+      "variableMode": "UseVarOrInput"
     },
     {
       "key": "strokeWidth",
       "name": "线宽（磅）",
       "type": "Number",
-      "description": "",
-      "isAdvanced": false,
       "validForList": [
         "drawLine",
         "drawRectangle",
         "drawEllipse"
       ],
-      "invalidForList": [],
       "condition": "仅：drawLine, drawRectangle, drawEllipse",
       "defaultValue": "1.0",
       "defaultValueRaw": 1,
-      "required": false,
-      "variableMode": "UseVarOrInput",
-      "isControlField": false
+      "variableMode": "UseVarOrInput"
     },
     {
       "key": "fillColor",
       "name": "填充颜色",
       "type": "Text",
-      "description": "",
-      "isAdvanced": false,
       "validForList": [
         "drawRectangle",
         "drawEllipse"
       ],
-      "invalidForList": [],
       "condition": "仅：drawRectangle, drawEllipse",
       "defaultValue": "#FFFFFF",
-      "defaultValueRaw": "#FFFFFF",
-      "required": false,
-      "variableMode": "UseVarOrInput",
-      "isControlField": false
+      "variableMode": "UseVarOrInput"
     },
     {
       "key": "fillOpacity",
       "name": "填充透明度",
       "type": "Number",
-      "description": "",
-      "isAdvanced": false,
       "validForList": [
         "drawRectangle",
         "drawEllipse"
       ],
-      "invalidForList": [],
       "condition": "仅：drawRectangle, drawEllipse",
       "defaultValue": "0.0",
       "defaultValueRaw": 0,
-      "required": false,
-      "variableMode": "UseVarOrInput",
-      "isControlField": false
+      "variableMode": "UseVarOrInput"
     },
     {
       "key": "cornerRadiusMm",
       "name": "圆角半径（毫米）",
       "type": "Number",
-      "description": "",
-      "isAdvanced": false,
       "validForList": [
         "drawRectangle"
       ],
-      "invalidForList": [],
       "condition": "仅：drawRectangle",
       "defaultValue": "0.0",
       "defaultValueRaw": 0,
-      "required": false,
-      "variableMode": "UseVarOrInput",
-      "isControlField": false
+      "variableMode": "UseVarOrInput"
     },
     {
       "key": "stopIfFail",
       "name": "失败后中止动作",
       "type": "Boolean",
       "description": "失败后是否停止动作",
-      "isAdvanced": false,
-      "validForList": [],
-      "invalidForList": [],
-      "condition": "",
       "defaultValue": "true",
       "defaultValueRaw": true,
-      "required": false,
-      "variableMode": "Input",
-      "isControlField": false
+      "variableMode": "Input"
     }
   ],
   "outputs": [
@@ -1080,18 +806,12 @@
       "key": "isSuccess",
       "name": "是否成功",
       "type": "Boolean",
-      "description": "操作是否成功",
-      "isAdvanced": false,
-      "validForList": [],
-      "invalidForList": [],
-      "condition": ""
+      "description": "操作是否成功"
     },
     {
       "key": "resultPath",
       "name": "结果路径",
       "type": "Text",
-      "description": "",
-      "isAdvanced": false,
       "validForList": [
         "createBlank",
         "imagesToPdf",
@@ -1110,41 +830,29 @@
         "drawRectangle",
         "drawEllipse"
       ],
-      "invalidForList": [],
       "condition": "仅：createBlank, imagesToPdf, merge, keepSequence, delete, rotatePages, setInfoField, setPassword, removePassword, overlayText, watermark, pageNumber, overlayImage, drawLine, drawRectangle, drawEllipse"
     },
     {
       "key": "resultPaths",
       "name": "结果路径列表",
       "type": "List",
-      "description": "",
-      "isAdvanced": false,
       "validForList": [
         "split"
       ],
-      "invalidForList": [],
       "condition": "仅：split"
     },
     {
       "key": "pageCount",
       "name": "页数",
-      "type": "Integer",
-      "description": "",
-      "isAdvanced": false,
-      "validForList": [],
-      "invalidForList": [],
-      "condition": ""
+      "type": "Integer"
     },
     {
       "key": "documentInfo",
       "name": "文档信息",
       "type": "Dict",
-      "description": "",
-      "isAdvanced": false,
       "validForList": [
         "readInfo"
       ],
-      "invalidForList": [],
       "condition": "仅：readInfo"
     }
   ],
@@ -1154,93 +862,75 @@
       "items": [
         {
           "value": "createBlank",
-          "name": "创建：空白 PDF",
-          "description": ""
+          "name": "创建：空白 PDF"
         },
         {
           "value": "imagesToPdf",
-          "name": "创建：图片转 PDF",
-          "description": ""
+          "name": "创建：图片转 PDF"
         },
         {
           "value": "merge",
-          "name": "页面：合并 PDF",
-          "description": ""
+          "name": "页面：合并 PDF"
         },
         {
           "value": "split",
-          "name": "页面：按页拆分",
-          "description": ""
+          "name": "页面：按页拆分"
         },
         {
           "value": "keepSequence",
-          "name": "页面：提取/复制/重排",
-          "description": ""
+          "name": "页面：提取/复制/重排"
         },
         {
           "value": "delete",
-          "name": "页面：删除",
-          "description": ""
+          "name": "页面：删除"
         },
         {
           "value": "rotatePages",
-          "name": "页面：旋转",
-          "description": ""
+          "name": "页面：旋转"
         },
         {
           "value": "readInfo",
-          "name": "信息：读取文档信息",
-          "description": ""
+          "name": "信息：读取文档信息"
         },
         {
           "value": "setInfoField",
-          "name": "信息：设置字段",
-          "description": ""
+          "name": "信息：设置字段"
         },
         {
           "value": "setPassword",
-          "name": "安全：设置密码",
-          "description": ""
+          "name": "安全：设置密码"
         },
         {
           "value": "removePassword",
-          "name": "安全：移除密码",
-          "description": ""
+          "name": "安全：移除密码"
         },
         {
           "value": "overlayText",
-          "name": "叠加：文字",
-          "description": ""
+          "name": "叠加：文字"
         },
         {
           "value": "watermark",
-          "name": "叠加：文字水印",
-          "description": ""
+          "name": "叠加：文字水印"
         },
         {
           "value": "pageNumber",
-          "name": "叠加：页码",
-          "description": ""
+          "name": "叠加：页码"
         },
         {
           "value": "overlayImage",
-          "name": "叠加：图片",
-          "description": ""
+          "name": "叠加：图片"
         },
         {
           "value": "drawLine",
-          "name": "叠加：线条",
-          "description": ""
+          "name": "叠加：线条"
         },
         {
           "value": "drawRectangle",
-          "name": "叠加：矩形",
-          "description": ""
+          "name": "叠加：矩形"
         },
         {
           "value": "drawEllipse",
-          "name": "叠加：椭圆",
-          "description": ""
+          "name": "叠加：椭圆"
         }
       ]
     },
@@ -1249,18 +939,15 @@
       "items": [
         {
           "value": "90",
-          "name": "顺时针 90°",
-          "description": ""
+          "name": "顺时针 90°"
         },
         {
           "value": "180",
-          "name": "顺时针 180°",
-          "description": ""
+          "name": "顺时针 180°"
         },
         {
           "value": "270",
-          "name": "顺时针 270°",
-          "description": ""
+          "name": "顺时针 270°"
         }
       ]
     },
@@ -1269,28 +956,23 @@
       "items": [
         {
           "value": "image",
-          "name": "图片原尺寸",
-          "description": ""
+          "name": "图片原尺寸"
         },
         {
           "value": "a4",
-          "name": "A4",
-          "description": ""
+          "name": "A4"
         },
         {
           "value": "a3",
-          "name": "A3",
-          "description": ""
+          "name": "A3"
         },
         {
           "value": "letter",
-          "name": "Letter",
-          "description": ""
+          "name": "Letter"
         },
         {
           "value": "custom",
-          "name": "自定义",
-          "description": ""
+          "name": "自定义"
         }
       ]
     },
@@ -1299,18 +981,15 @@
       "items": [
         {
           "value": "auto",
-          "name": "自动",
-          "description": ""
+          "name": "自动"
         },
         {
           "value": "portrait",
-          "name": "纵向",
-          "description": ""
+          "name": "纵向"
         },
         {
           "value": "landscape",
-          "name": "横向",
-          "description": ""
+          "name": "横向"
         }
       ]
     },
@@ -1319,18 +998,15 @@
       "items": [
         {
           "value": "contain",
-          "name": "包含",
-          "description": ""
+          "name": "包含"
         },
         {
           "value": "cover",
-          "name": "填充裁剪",
-          "description": ""
+          "name": "填充裁剪"
         },
         {
           "value": "stretch",
-          "name": "拉伸",
-          "description": ""
+          "name": "拉伸"
         }
       ]
     },
@@ -1339,28 +1015,23 @@
       "items": [
         {
           "value": "title",
-          "name": "标题",
-          "description": ""
+          "name": "标题"
         },
         {
           "value": "author",
-          "name": "作者",
-          "description": ""
+          "name": "作者"
         },
         {
           "value": "subject",
-          "name": "主题",
-          "description": ""
+          "name": "主题"
         },
         {
           "value": "keywords",
-          "name": "关键词",
-          "description": ""
+          "name": "关键词"
         },
         {
           "value": "creator",
-          "name": "创建者",
-          "description": ""
+          "name": "创建者"
         }
       ]
     },
@@ -1369,13 +1040,11 @@
       "items": [
         {
           "value": "aes128",
-          "name": "AES-128（兼容性优先）",
-          "description": ""
+          "name": "AES-128（兼容性优先）"
         },
         {
           "value": "aes256",
-          "name": "AES-256（PDF 2.0）",
-          "description": ""
+          "name": "AES-256（PDF 2.0）"
         }
       ]
     },
@@ -1384,13 +1053,11 @@
       "items": [
         {
           "value": "append",
-          "name": "前景",
-          "description": ""
+          "name": "前景"
         },
         {
           "value": "prepend",
-          "name": "背景",
-          "description": ""
+          "name": "背景"
         }
       ]
     },
@@ -1399,18 +1066,15 @@
       "items": [
         {
           "value": "left",
-          "name": "左对齐",
-          "description": ""
+          "name": "左对齐"
         },
         {
           "value": "center",
-          "name": "居中",
-          "description": ""
+          "name": "居中"
         },
         {
           "value": "right",
-          "name": "右对齐",
-          "description": ""
+          "name": "右对齐"
         }
       ]
     },
@@ -1419,18 +1083,15 @@
       "items": [
         {
           "value": "top",
-          "name": "顶部",
-          "description": ""
+          "name": "顶部"
         },
         {
           "value": "center",
-          "name": "居中",
-          "description": ""
+          "name": "居中"
         },
         {
           "value": "bottom",
-          "name": "底部",
-          "description": ""
+          "name": "底部"
         }
       ]
     },
@@ -1439,38 +1100,31 @@
       "items": [
         {
           "value": "topLeft",
-          "name": "左上",
-          "description": ""
+          "name": "左上"
         },
         {
           "value": "topCenter",
-          "name": "顶部居中",
-          "description": ""
+          "name": "顶部居中"
         },
         {
           "value": "topRight",
-          "name": "右上",
-          "description": ""
+          "name": "右上"
         },
         {
           "value": "center",
-          "name": "居中",
-          "description": ""
+          "name": "居中"
         },
         {
           "value": "bottomLeft",
-          "name": "左下",
-          "description": ""
+          "name": "左下"
         },
         {
           "value": "bottomCenter",
-          "name": "底部居中",
-          "description": ""
+          "name": "底部居中"
         },
         {
           "value": "bottomRight",
-          "name": "右下",
-          "description": ""
+          "name": "右下"
         }
       ]
     }

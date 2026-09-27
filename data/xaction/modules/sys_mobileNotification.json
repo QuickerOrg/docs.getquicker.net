@@ -9,20 +9,13 @@
   "categoryName": "网络服务",
   "stepType": "Action",
   "isRisky": true,
-  "isProOnly": false,
   "helpLink": "https://docs.getquicker.net/v2/xaction/modules/mobilenotification",
   "inputs": [
     {
       "key": "operation",
       "name": "操作",
       "type": "Enum",
-      "description": "",
-      "isAdvanced": false,
-      "validForList": [],
-      "invalidForList": [],
-      "condition": "",
       "defaultValue": "SendAndWait",
-      "defaultValueRaw": "SendAndWait",
       "required": true,
       "variableMode": "Input",
       "isControlField": true
@@ -32,14 +25,9 @@
       "name": "设备 ID",
       "type": "Text",
       "description": "Remote 设置页已授权 Android 设备的 ID。",
-      "isAdvanced": false,
-      "validForList": [],
-      "invalidForList": [],
-      "condition": "",
       "defaultValue": "",
       "required": true,
-      "variableMode": "UseVarOrInput",
-      "isControlField": false
+      "variableMode": "UseVarOrInput"
     },
     {
       "key": "notificationId",
@@ -47,47 +35,33 @@
       "type": "Text",
       "description": "幂等标识；发送时留空会自动生成。等待或撤销时必须填写。",
       "isAdvanced": true,
-      "validForList": [],
-      "invalidForList": [],
-      "condition": "",
       "defaultValue": "",
-      "required": false,
-      "variableMode": "UseVarOrInput",
-      "isControlField": false
+      "variableMode": "UseVarOrInput"
     },
     {
       "key": "title",
       "name": "标题",
       "type": "Text",
-      "description": "",
-      "isAdvanced": false,
       "validForList": [
         "SendAndWait",
         "Send"
       ],
-      "invalidForList": [],
       "condition": "仅：SendAndWait, Send",
       "defaultValue": "",
       "required": true,
-      "variableMode": "UseVarOrInput",
-      "isControlField": false
+      "variableMode": "UseVarOrInput"
     },
     {
       "key": "body",
       "name": "正文",
       "type": "Text",
-      "description": "",
-      "isAdvanced": false,
       "validForList": [
         "SendAndWait",
         "Send"
       ],
-      "invalidForList": [],
       "condition": "仅：SendAndWait, Send",
       "defaultValue": "",
-      "required": false,
-      "variableMode": "UseVarOrInput",
-      "isControlField": false
+      "variableMode": "UseVarOrInput"
     },
     {
       "key": "expiresInSeconds",
@@ -99,224 +73,158 @@
         "SendAndWait",
         "Send"
       ],
-      "invalidForList": [],
       "condition": "仅：SendAndWait, Send",
       "defaultValue": "300",
       "defaultValueRaw": 300,
-      "required": false,
-      "variableMode": "UseVarOrInput",
-      "isControlField": false
+      "variableMode": "UseVarOrInput"
     },
     {
       "key": "action1Id",
       "name": "按钮 1 ID",
       "type": "Text",
-      "description": "",
       "isAdvanced": true,
       "validForList": [
         "SendAndWait",
         "Send"
       ],
-      "invalidForList": [],
       "condition": "仅：SendAndWait, Send",
       "defaultValue": "confirm",
-      "defaultValueRaw": "confirm",
-      "required": false,
-      "variableMode": "UseVarOrInput",
-      "isControlField": false
+      "variableMode": "UseVarOrInput"
     },
     {
       "key": "action1Title",
       "name": "按钮 1 标题",
       "type": "Text",
-      "description": "",
       "isAdvanced": true,
       "validForList": [
         "SendAndWait",
         "Send"
       ],
-      "invalidForList": [],
       "condition": "仅：SendAndWait, Send",
       "defaultValue": "",
-      "required": false,
-      "variableMode": "UseVarOrInput",
-      "isControlField": false
+      "variableMode": "UseVarOrInput"
     },
     {
       "key": "action1Reply",
       "name": "按钮 1 接受文本回复",
       "type": "Boolean",
-      "description": "",
       "isAdvanced": true,
       "validForList": [
         "SendAndWait",
         "Send"
       ],
-      "invalidForList": [],
       "condition": "仅：SendAndWait, Send",
       "defaultValue": "false",
       "defaultValueRaw": false,
-      "required": false,
-      "variableMode": "UseVarOrInput",
-      "isControlField": false
+      "variableMode": "UseVarOrInput"
     },
     {
       "key": "action2Id",
       "name": "按钮 2 ID",
       "type": "Text",
-      "description": "",
       "isAdvanced": true,
       "validForList": [
         "SendAndWait",
         "Send"
       ],
-      "invalidForList": [],
       "condition": "仅：SendAndWait, Send",
       "defaultValue": "cancel",
-      "defaultValueRaw": "cancel",
-      "required": false,
-      "variableMode": "UseVarOrInput",
-      "isControlField": false
+      "variableMode": "UseVarOrInput"
     },
     {
       "key": "action2Title",
       "name": "按钮 2 标题",
       "type": "Text",
-      "description": "",
       "isAdvanced": true,
       "validForList": [
         "SendAndWait",
         "Send"
       ],
-      "invalidForList": [],
       "condition": "仅：SendAndWait, Send",
       "defaultValue": "",
-      "required": false,
-      "variableMode": "UseVarOrInput",
-      "isControlField": false
+      "variableMode": "UseVarOrInput"
     },
     {
       "key": "action2Reply",
       "name": "按钮 2 接受文本回复",
       "type": "Boolean",
-      "description": "",
       "isAdvanced": true,
       "validForList": [
         "SendAndWait",
         "Send"
       ],
-      "invalidForList": [],
       "condition": "仅：SendAndWait, Send",
       "defaultValue": "false",
       "defaultValueRaw": false,
-      "required": false,
-      "variableMode": "UseVarOrInput",
-      "isControlField": false
+      "variableMode": "UseVarOrInput"
     },
     {
       "key": "action3Id",
       "name": "按钮 3 ID",
       "type": "Text",
-      "description": "",
       "isAdvanced": true,
       "validForList": [
         "SendAndWait",
         "Send"
       ],
-      "invalidForList": [],
       "condition": "仅：SendAndWait, Send",
       "defaultValue": "reply",
-      "defaultValueRaw": "reply",
-      "required": false,
-      "variableMode": "UseVarOrInput",
-      "isControlField": false
+      "variableMode": "UseVarOrInput"
     },
     {
       "key": "action3Title",
       "name": "按钮 3 标题",
       "type": "Text",
-      "description": "",
       "isAdvanced": true,
       "validForList": [
         "SendAndWait",
         "Send"
       ],
-      "invalidForList": [],
       "condition": "仅：SendAndWait, Send",
       "defaultValue": "",
-      "required": false,
-      "variableMode": "UseVarOrInput",
-      "isControlField": false
+      "variableMode": "UseVarOrInput"
     },
     {
       "key": "action3Reply",
       "name": "按钮 3 接受文本回复",
       "type": "Boolean",
-      "description": "",
       "isAdvanced": true,
       "validForList": [
         "SendAndWait",
         "Send"
       ],
-      "invalidForList": [],
       "condition": "仅：SendAndWait, Send",
       "defaultValue": "false",
       "defaultValueRaw": false,
-      "required": false,
-      "variableMode": "UseVarOrInput",
-      "isControlField": false
+      "variableMode": "UseVarOrInput"
     }
   ],
   "outputs": [
     {
       "key": "resultNotificationId",
       "name": "通知 ID",
-      "type": "Text",
-      "description": "",
-      "isAdvanced": false,
-      "validForList": [],
-      "invalidForList": [],
-      "condition": ""
+      "type": "Text"
     },
     {
       "key": "status",
       "name": "状态",
-      "type": "Text",
-      "description": "",
-      "isAdvanced": false,
-      "validForList": [],
-      "invalidForList": [],
-      "condition": ""
+      "type": "Text"
     },
     {
       "key": "selectedActionId",
       "name": "点击按钮 ID",
-      "type": "Text",
-      "description": "",
-      "isAdvanced": false,
-      "validForList": [],
-      "invalidForList": [],
-      "condition": ""
+      "type": "Text"
     },
     {
       "key": "replyText",
       "name": "回复文本",
-      "type": "Text",
-      "description": "",
-      "isAdvanced": false,
-      "validForList": [],
-      "invalidForList": [],
-      "condition": ""
+      "type": "Text"
     },
     {
       "key": "errorCode",
       "name": "状态码",
       "type": "Text",
-      "description": "",
-      "isAdvanced": true,
-      "validForList": [],
-      "invalidForList": [],
-      "condition": ""
+      "isAdvanced": true
     }
   ],
   "selections": {
@@ -325,23 +233,19 @@
       "items": [
         {
           "value": "SendAndWait",
-          "name": "发送并等待响应",
-          "description": ""
+          "name": "发送并等待响应"
         },
         {
           "value": "Send",
-          "name": "异步发送",
-          "description": ""
+          "name": "异步发送"
         },
         {
           "value": "Wait",
-          "name": "等待已有通知",
-          "description": ""
+          "name": "等待已有通知"
         },
         {
           "value": "Cancel",
-          "name": "撤销已有通知",
-          "description": ""
+          "name": "撤销已有通知"
         }
       ]
     }

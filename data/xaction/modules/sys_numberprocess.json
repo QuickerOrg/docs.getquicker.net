@@ -8,21 +8,13 @@
   "category": "Compute",
   "categoryName": "计算与比较",
   "stepType": "Action",
-  "isRisky": false,
-  "isProOnly": false,
   "helpLink": "https://docs.getquicker.net/v2/xaction/modules/numberprocess",
   "inputs": [
     {
       "key": "operation",
       "name": "操作",
       "type": "Enum",
-      "description": "",
-      "isAdvanced": false,
-      "validForList": [],
-      "invalidForList": [],
-      "condition": "",
       "defaultValue": "toString",
-      "defaultValueRaw": "toString",
       "required": true,
       "variableMode": "Input",
       "isControlField": true
@@ -31,119 +23,81 @@
       "key": "srcNumber",
       "name": "原始数字",
       "type": "Number",
-      "description": "",
-      "isAdvanced": false,
       "validForList": [
         "toString",
         "toInteger"
       ],
-      "invalidForList": [],
       "condition": "仅：toString, toInteger",
       "defaultValue": "0.0",
       "defaultValueRaw": 0,
-      "required": false,
-      "variableMode": "UseVarOrInput",
-      "isControlField": false
+      "variableMode": "UseVarOrInput"
     },
     {
       "key": "decimalPlace",
       "name": "保留小数位",
       "type": "Integer",
-      "description": "",
-      "isAdvanced": false,
       "validForList": [
         "toString"
       ],
-      "invalidForList": [],
       "condition": "仅：toString",
       "defaultValue": "2",
       "defaultValueRaw": 2,
-      "required": false,
-      "variableMode": "UseVarOrInput",
-      "isControlField": false
+      "variableMode": "UseVarOrInput"
     },
     {
       "key": "roundingMethod",
       "name": "舍入方式",
       "type": "Enum",
-      "description": "",
-      "isAdvanced": false,
       "validForList": [
         "toString"
       ],
-      "invalidForList": [],
       "condition": "仅：toString",
       "defaultValue": "Round45",
-      "defaultValueRaw": "Round45",
-      "required": false,
-      "variableMode": "Input",
-      "isControlField": false
+      "variableMode": "Input"
     },
     {
       "key": "toIntegerMethod",
       "name": "取整方式",
       "type": "Enum",
-      "description": "",
-      "isAdvanced": false,
       "validForList": [
         "toInteger"
       ],
-      "invalidForList": [],
       "condition": "仅：toInteger",
       "defaultValue": "Round45",
-      "defaultValueRaw": "Round45",
-      "required": false,
-      "variableMode": "Input",
-      "isControlField": false
+      "variableMode": "Input"
     },
     {
       "key": "srcNumberStr",
       "name": "原始数字(文本)",
       "type": "Text",
-      "description": "",
-      "isAdvanced": false,
       "validForList": [
         "baseConversion"
       ],
-      "invalidForList": [],
       "condition": "仅：baseConversion",
       "defaultValue": "0",
-      "defaultValueRaw": "0",
-      "required": false,
-      "variableMode": "UseVarOrInput",
-      "isControlField": false
+      "variableMode": "UseVarOrInput"
     },
     {
       "key": "srcBase",
       "name": "原始数字进制",
       "type": "Integer",
       "description": "可选0/2/8/16。0为自动判断：全由0、1构成判断为二进制，0x开始或包含A-D判断为16进制，其它判断为10进制。",
-      "isAdvanced": false,
       "validForList": [
         "baseConversion"
       ],
-      "invalidForList": [],
       "condition": "仅：baseConversion",
       "defaultValue": "0",
       "defaultValueRaw": 0,
-      "required": false,
-      "variableMode": "UseVarOrInput",
-      "isControlField": false
+      "variableMode": "UseVarOrInput"
     },
     {
       "key": "stopIfFail",
       "name": "失败后停止",
       "type": "Boolean",
       "description": "失败后是否停止动作",
-      "isAdvanced": false,
-      "validForList": [],
-      "invalidForList": [],
-      "condition": "",
       "defaultValue": "true",
       "defaultValueRaw": true,
-      "required": false,
-      "variableMode": "Input",
-      "isControlField": false
+      "variableMode": "Input"
     }
   ],
   "outputs": [
@@ -151,22 +105,16 @@
       "key": "isSuccess",
       "name": "是否成功",
       "type": "Boolean",
-      "description": "操作是否成功",
-      "isAdvanced": false,
-      "validForList": [],
-      "invalidForList": [],
-      "condition": ""
+      "description": "操作是否成功"
     },
     {
       "key": "rtnF",
       "name": "结果文本(不含逗号)",
       "type": "Text",
       "description": "如1234.56",
-      "isAdvanced": false,
       "validForList": [
         "toString"
       ],
-      "invalidForList": [],
       "condition": "仅：toString"
     },
     {
@@ -174,11 +122,9 @@
       "name": "结果文本(含逗号)",
       "type": "Text",
       "description": "如1,234.56",
-      "isAdvanced": false,
       "validForList": [
         "toString"
       ],
-      "invalidForList": [],
       "condition": "仅：toString"
     },
     {
@@ -186,11 +132,9 @@
       "name": "结果文本(百分比)",
       "type": "Text",
       "description": "如23.56%",
-      "isAdvanced": false,
       "validForList": [
         "toString"
       ],
-      "invalidForList": [],
       "condition": "仅：toString"
     },
     {
@@ -198,48 +142,37 @@
       "name": "结果整数",
       "type": "Integer",
       "description": "十进制数",
-      "isAdvanced": false,
       "validForList": [
         "toInteger",
         "baseConversion"
       ],
-      "invalidForList": [],
       "condition": "仅：toInteger, baseConversion"
     },
     {
       "key": "resultHex",
       "name": "十六进制",
       "type": "Text",
-      "description": "",
-      "isAdvanced": false,
       "validForList": [
         "baseConversion"
       ],
-      "invalidForList": [],
       "condition": "仅：baseConversion"
     },
     {
       "key": "resultOctal",
       "name": "八进制",
       "type": "Text",
-      "description": "",
-      "isAdvanced": false,
       "validForList": [
         "baseConversion"
       ],
-      "invalidForList": [],
       "condition": "仅：baseConversion"
     },
     {
       "key": "resultBin",
       "name": "二进制",
       "type": "Text",
-      "description": "",
-      "isAdvanced": false,
       "validForList": [
         "baseConversion"
       ],
-      "invalidForList": [],
       "condition": "仅：baseConversion"
     }
   ],
@@ -249,18 +182,15 @@
       "items": [
         {
           "value": "toString",
-          "name": "数字转换为文本",
-          "description": ""
+          "name": "数字转换为文本"
         },
         {
           "value": "toInteger",
-          "name": "取整",
-          "description": ""
+          "name": "取整"
         },
         {
           "value": "baseConversion",
-          "name": "进制转换",
-          "description": ""
+          "name": "进制转换"
         }
       ]
     },
@@ -269,18 +199,15 @@
       "items": [
         {
           "value": "Round",
-          "name": "舍入：奇进偶舍",
-          "description": ""
+          "name": "舍入：奇进偶舍"
         },
         {
           "value": "Round45",
-          "name": "舍入：四舍五入",
-          "description": ""
+          "name": "舍入：四舍五入"
         },
         {
           "value": "Truncate",
-          "name": "截断",
-          "description": ""
+          "name": "截断"
         }
       ]
     },
@@ -289,23 +216,19 @@
       "items": [
         {
           "value": "Round",
-          "name": "舍入：奇进偶舍",
-          "description": ""
+          "name": "舍入：奇进偶舍"
         },
         {
           "value": "Round45",
-          "name": "舍入：四舍五入",
-          "description": ""
+          "name": "舍入：四舍五入"
         },
         {
           "value": "Ceiling",
-          "name": "向上取整",
-          "description": ""
+          "name": "向上取整"
         },
         {
           "value": "Floor",
-          "name": "向下取整",
-          "description": ""
+          "name": "向下取整"
         }
       ]
     }

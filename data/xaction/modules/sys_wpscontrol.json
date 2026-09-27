@@ -8,21 +8,13 @@
   "category": "SoftInteraction",
   "categoryName": "第三方软件交互",
   "stepType": "Action",
-  "isRisky": false,
-  "isProOnly": false,
   "helpLink": "https://docs.getquicker.net/v2/xaction/modules/wpscontrol",
   "inputs": [
     {
       "key": "operation",
       "name": "操作类型",
       "type": "Enum",
-      "description": "",
-      "isAdvanced": false,
-      "validForList": [],
-      "invalidForList": [],
-      "condition": "",
       "defaultValue": "context.get",
-      "defaultValueRaw": "context.get",
       "required": true,
       "variableMode": "Input",
       "isControlField": true
@@ -32,302 +24,208 @@
       "name": "目标组件",
       "type": "Enum",
       "description": "同一 WPS 窗口同时承载文字、表格或演示时用于精确定位；组件专用命令会自动判断。",
-      "isAdvanced": false,
-      "validForList": [],
-      "invalidForList": [],
-      "condition": "",
       "defaultValue": "auto",
-      "defaultValueRaw": "auto",
-      "required": false,
-      "variableMode": "UseVarOrInput",
-      "isControlField": false
+      "variableMode": "UseVarOrInput"
     },
     {
       "key": "filePath",
       "name": "文件路径",
       "type": "Text",
       "description": "文档另存为的绝对路径，扩展名应与当前 WPS 组件匹配。",
-      "isAdvanced": false,
       "validForList": [
         "document.save_as"
       ],
-      "invalidForList": [],
       "condition": "仅：document.save_as",
       "defaultValue": "",
-      "defaultValueRaw": "",
       "required": true,
-      "variableMode": "UseVarOrInput",
-      "isControlField": false
+      "variableMode": "UseVarOrInput"
     },
     {
       "key": "sheetName",
       "name": "工作表名称",
       "type": "Text",
-      "description": "",
-      "isAdvanced": false,
       "validForList": [
         "sheet.activate"
       ],
-      "invalidForList": [],
       "condition": "仅：sheet.activate",
       "defaultValue": "Sheet1",
-      "defaultValueRaw": "Sheet1",
       "required": true,
-      "variableMode": "UseVarOrInput",
-      "isControlField": false
+      "variableMode": "UseVarOrInput"
     },
     {
       "key": "rangeAddress",
       "name": "单元格区域",
       "type": "Text",
-      "description": "",
-      "isAdvanced": false,
       "validForList": [
         "range.read",
         "range.clear",
         "range.write"
       ],
-      "invalidForList": [],
       "condition": "仅：range.read, range.clear, range.write",
       "defaultValue": "A1:C10",
-      "defaultValueRaw": "A1:C10",
       "required": true,
-      "variableMode": "UseVarOrInput",
-      "isControlField": false
+      "variableMode": "UseVarOrInput"
     },
     {
       "key": "valuesJson",
       "name": "二维数据（JSON）",
       "type": "Text",
-      "description": "",
-      "isAdvanced": false,
       "validForList": [
         "range.write"
       ],
-      "invalidForList": [],
       "condition": "仅：range.write",
       "defaultValue": "[[\"名称\",\"数量\"],[\"示例\",1]]",
-      "defaultValueRaw": "[[\"名称\",\"数量\"],[\"示例\",1]]",
       "required": true,
-      "variableMode": "UseVarOrInput",
-      "isControlField": false
+      "variableMode": "UseVarOrInput"
     },
     {
       "key": "text",
       "name": "文字",
       "type": "Text",
-      "description": "",
-      "isAdvanced": false,
       "validForList": [
         "text.insert"
       ],
-      "invalidForList": [],
       "condition": "仅：text.insert",
       "defaultValue": "来自 Quicker 的文字",
-      "defaultValueRaw": "来自 Quicker 的文字",
       "required": true,
-      "variableMode": "UseVarOrInput",
-      "isControlField": false
+      "variableMode": "UseVarOrInput"
     },
     {
       "key": "findText",
       "name": "查找文字",
       "type": "Text",
-      "description": "",
-      "isAdvanced": false,
       "validForList": [
         "text.replace"
       ],
-      "invalidForList": [],
       "condition": "仅：text.replace",
       "defaultValue": "",
-      "defaultValueRaw": "",
       "required": true,
-      "variableMode": "UseVarOrInput",
-      "isControlField": false
+      "variableMode": "UseVarOrInput"
     },
     {
       "key": "replaceText",
       "name": "替换为",
       "type": "Text",
-      "description": "",
-      "isAdvanced": false,
       "validForList": [
         "text.replace"
       ],
-      "invalidForList": [],
       "condition": "仅：text.replace",
       "defaultValue": "",
-      "defaultValueRaw": "",
-      "required": false,
-      "variableMode": "UseVarOrInput",
-      "isControlField": false
+      "variableMode": "UseVarOrInput"
     },
     {
       "key": "replaceAll",
       "name": "替换全部",
       "type": "Boolean",
-      "description": "",
-      "isAdvanced": false,
       "validForList": [
         "text.replace"
       ],
-      "invalidForList": [],
       "condition": "仅：text.replace",
       "defaultValue": "true",
       "defaultValueRaw": true,
-      "required": false,
-      "variableMode": "Input",
-      "isControlField": false
+      "variableMode": "Input"
     },
     {
       "key": "slideIndex",
       "name": "幻灯片序号",
       "type": "Number",
-      "description": "",
-      "isAdvanced": false,
       "validForList": [
         "slide.activate"
       ],
-      "invalidForList": [],
       "condition": "仅：slide.activate",
       "defaultValue": "1",
       "defaultValueRaw": 1,
-      "required": false,
-      "variableMode": "UseVarOrInput",
-      "isControlField": false
+      "variableMode": "UseVarOrInput"
     },
     {
       "key": "slideLayout",
       "name": "版式 ID",
       "type": "Number",
-      "description": "",
-      "isAdvanced": false,
       "validForList": [
         "slide.add"
       ],
-      "invalidForList": [],
       "condition": "仅：slide.add",
       "defaultValue": "12",
       "defaultValueRaw": 12,
-      "required": false,
-      "variableMode": "UseVarOrInput",
-      "isControlField": false
+      "variableMode": "UseVarOrInput"
     },
     {
       "key": "macroName",
       "name": "宏名称",
       "type": "Text",
-      "description": "",
-      "isAdvanced": false,
       "validForList": [
         "macro.run"
       ],
-      "invalidForList": [],
       "condition": "仅：macro.run",
       "defaultValue": "模块名.函数名",
-      "defaultValueRaw": "模块名.函数名",
       "required": true,
-      "variableMode": "UseVarOrInput",
-      "isControlField": false
+      "variableMode": "UseVarOrInput"
     },
     {
       "key": "macroArgumentsJson",
       "name": "宏参数（JSON 数组）",
       "type": "Text",
-      "description": "",
-      "isAdvanced": false,
       "validForList": [
         "macro.run"
       ],
-      "invalidForList": [],
       "condition": "仅：macro.run",
       "defaultValue": "[]",
-      "defaultValueRaw": "[]",
-      "required": false,
-      "variableMode": "UseVarOrInput",
-      "isControlField": false
+      "variableMode": "UseVarOrInput"
     },
     {
       "key": "scriptCode",
       "name": "JavaScript 表达式",
       "type": "Text",
       "description": "在当前 WPS 加载项上下文执行，可直接访问 Application。",
-      "isAdvanced": false,
       "validForList": [
         "script.evaluate"
       ],
-      "invalidForList": [],
       "condition": "仅：script.evaluate",
       "defaultValue": "({ app: Application.Name, version: Application.Version })",
-      "defaultValueRaw": "({ app: Application.Name, version: Application.Version })",
       "required": true,
-      "variableMode": "UseVarOrInput",
-      "isControlField": false
+      "variableMode": "UseVarOrInput"
     },
     {
       "key": "commandName",
       "name": "Bridge 命令名称",
       "type": "Text",
-      "description": "",
-      "isAdvanced": false,
       "validForList": [
         "command.custom"
       ],
-      "invalidForList": [],
       "condition": "仅：command.custom",
       "defaultValue": "",
-      "defaultValueRaw": "",
       "required": true,
-      "variableMode": "UseVarOrInput",
-      "isControlField": false
+      "variableMode": "UseVarOrInput"
     },
     {
       "key": "argumentsJson",
       "name": "参数（JSON 对象）",
       "type": "Text",
-      "description": "",
-      "isAdvanced": false,
       "validForList": [
         "command.custom"
       ],
-      "invalidForList": [],
       "condition": "仅：command.custom",
       "defaultValue": "{}",
-      "defaultValueRaw": "{}",
-      "required": false,
-      "variableMode": "UseVarOrInput",
-      "isControlField": false
+      "variableMode": "UseVarOrInput"
     },
     {
       "key": "waitMs",
       "name": "最长等待时间(ms)",
       "type": "Number",
-      "description": "",
       "isAdvanced": true,
-      "validForList": [],
-      "invalidForList": [],
-      "condition": "",
       "defaultValue": "30000",
       "defaultValueRaw": 30000,
       "required": true,
-      "variableMode": "Input",
-      "isControlField": false
+      "variableMode": "Input"
     },
     {
       "key": "stopIfFail",
       "name": "失败后停止",
       "type": "Boolean",
       "description": "失败后是否停止动作",
-      "isAdvanced": false,
-      "validForList": [],
-      "invalidForList": [],
-      "condition": "",
       "defaultValue": "true",
       "defaultValueRaw": true,
-      "required": false,
-      "variableMode": "Input",
-      "isControlField": false
+      "variableMode": "Input"
     }
   ],
   "outputs": [
@@ -335,21 +233,13 @@
       "key": "isSuccess",
       "name": "是否成功",
       "type": "Boolean",
-      "description": "操作是否成功",
-      "isAdvanced": false,
-      "validForList": [],
-      "invalidForList": [],
-      "condition": ""
+      "description": "操作是否成功"
     },
     {
       "key": "output",
       "name": "命令结果",
       "type": "Text",
-      "description": "WPS 返回的 JSON 结果。",
-      "isAdvanced": false,
-      "validForList": [],
-      "invalidForList": [],
-      "condition": ""
+      "description": "WPS 返回的 JSON 结果。"
     }
   ],
   "selections": {
@@ -358,98 +248,79 @@
       "items": [
         {
           "value": "bridge.ping",
-          "name": "[Bridge] 测试连接",
-          "description": ""
+          "name": "[Bridge] 测试连接"
         },
         {
           "value": "context.get",
-          "name": "[上下文] 读取当前上下文",
-          "description": ""
+          "name": "[上下文] 读取当前上下文"
         },
         {
           "value": "document.get_info",
-          "name": "[文档] 读取文档信息",
-          "description": ""
+          "name": "[文档] 读取文档信息"
         },
         {
           "value": "document.save",
-          "name": "[文档] 保存当前文档",
-          "description": ""
+          "name": "[文档] 保存当前文档"
         },
         {
           "value": "document.save_as",
-          "name": "[文档] 文档另存为",
-          "description": ""
+          "name": "[文档] 文档另存为"
         },
         {
           "value": "selection.get",
-          "name": "[选择] 读取当前选择",
-          "description": ""
+          "name": "[选择] 读取当前选择"
         },
         {
           "value": "sheet.list",
-          "name": "[表格] 列出工作表",
-          "description": ""
+          "name": "[表格] 列出工作表"
         },
         {
           "value": "sheet.activate",
-          "name": "[表格] 激活工作表",
-          "description": ""
+          "name": "[表格] 激活工作表"
         },
         {
           "value": "range.read",
-          "name": "[表格] 读取区域",
-          "description": ""
+          "name": "[表格] 读取区域"
         },
         {
           "value": "range.write",
-          "name": "[表格] 写入区域",
-          "description": ""
+          "name": "[表格] 写入区域"
         },
         {
           "value": "range.clear",
-          "name": "[表格] 清空区域",
-          "description": ""
+          "name": "[表格] 清空区域"
         },
         {
           "value": "text.insert",
-          "name": "[文字] 插入文字",
-          "description": ""
+          "name": "[文字] 插入文字"
         },
         {
           "value": "text.replace",
-          "name": "[文字] 全文替换",
-          "description": ""
+          "name": "[文字] 全文替换"
         },
         {
           "value": "slide.list",
-          "name": "[演示] 列出幻灯片",
-          "description": ""
+          "name": "[演示] 列出幻灯片"
         },
         {
           "value": "slide.activate",
-          "name": "[演示] 激活幻灯片",
-          "description": ""
+          "name": "[演示] 激活幻灯片"
         },
         {
           "value": "slide.add",
-          "name": "[演示] 新增幻灯片",
-          "description": ""
+          "name": "[演示] 新增幻灯片"
         },
         {
           "value": "macro.run",
-          "name": "[宏] 运行已有宏",
-          "description": ""
+          "name": "[宏] 运行已有宏"
         },
         {
           "value": "script.evaluate",
-          "name": "[脚本] 执行任意 JavaScript",
-          "description": ""
+          "name": "[脚本] 执行任意 JavaScript"
         },
         {
           "value": "command.custom",
-          "name": "[高级] 发送自定义 Bridge 命令",
-          "description": ""
+          "name": "[高级] 发送自定义 Bridge 命令"
         }
       ]
     },
@@ -458,23 +329,19 @@
       "items": [
         {
           "value": "auto",
-          "name": "自动判断",
-          "description": ""
+          "name": "自动判断"
         },
         {
           "value": "wps",
-          "name": "WPS 文字",
-          "description": ""
+          "name": "WPS 文字"
         },
         {
           "value": "et",
-          "name": "WPS 表格",
-          "description": ""
+          "name": "WPS 表格"
         },
         {
           "value": "wpp",
-          "name": "WPS 演示",
-          "description": ""
+          "name": "WPS 演示"
         }
       ]
     }

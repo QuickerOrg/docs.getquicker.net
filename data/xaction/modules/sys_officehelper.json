@@ -8,21 +8,13 @@
   "category": "SoftInteraction",
   "categoryName": "第三方软件交互",
   "stepType": "Action",
-  "isRisky": false,
-  "isProOnly": false,
   "helpLink": "https://docs.getquicker.net/v2/xaction/modules/officehelper",
   "inputs": [
     {
       "key": "operation",
       "name": "操作类型",
       "type": "Enum",
-      "description": "",
-      "isAdvanced": false,
-      "validForList": [],
-      "invalidForList": [],
-      "condition": "",
       "defaultValue": "execVBA",
-      "defaultValueRaw": "execVBA",
       "required": true,
       "variableMode": "Input",
       "isControlField": true
@@ -31,86 +23,59 @@
       "key": "appType",
       "name": "应用程序",
       "type": "Enum",
-      "description": "",
-      "isAdvanced": false,
-      "validForList": [],
-      "invalidForList": [],
-      "condition": "",
       "defaultValue": "word_wps",
-      "defaultValueRaw": "word_wps",
-      "required": false,
-      "variableMode": "Input",
-      "isControlField": false
+      "variableMode": "Input"
     },
     {
       "key": "code",
       "name": "宏名称或VBA代码",
       "type": "Text",
       "description": "宏的名称，或VBA代码（将执行第一个找到的Sub或Function）",
-      "isAdvanced": false,
       "validForList": [
         "execVBA"
       ],
-      "invalidForList": [],
       "condition": "仅：execVBA",
       "defaultValue": "Sub Hello()\r\nMsgBox \"Hello World\"\r\nEnd Sub\r\n",
-      "defaultValueRaw": "Sub Hello()\r\nMsgBox \"Hello World\"\r\nEnd Sub\r\n",
-      "required": false,
-      "variableMode": "Input",
-      "isControlField": false
+      "variableMode": "Input"
     },
     {
       "key": "command",
       "name": "命令ID",
       "type": "Text",
       "description": "界面按钮所对应的命令ID，请参考模块文档了解如何获取。",
-      "isAdvanced": false,
       "validForList": [
         "executeMsoCommand"
       ],
-      "invalidForList": [],
       "condition": "仅：executeMsoCommand",
       "defaultValue": "",
-      "defaultValueRaw": "",
-      "required": false,
-      "variableMode": "Input",
-      "isControlField": false
+      "variableMode": "Input"
     },
     {
       "key": "formats",
       "name": "格式设置/属性赋值代码",
       "type": "Text",
       "description": "请参考文档说明",
-      "isAdvanced": false,
       "validForList": [
         "setFormats"
       ],
-      "invalidForList": [],
       "condition": "仅：setFormats",
       "defaultValue": "",
-      "defaultValueRaw": "",
-      "required": false,
-      "variableMode": "Input",
-      "isControlField": false
+      "variableMode": "Input"
     },
     {
       "key": "waitResp",
       "name": "等待执行结束",
       "type": "Boolean",
       "description": "不等待将立即继续后续步骤的执行，如果遇到异常情况无法获知。",
-      "isAdvanced": false,
       "validForList": [
         "execVBA",
         "setFormats",
         "executeMsoCommand"
       ],
-      "invalidForList": [],
       "condition": "仅：execVBA, setFormats, executeMsoCommand",
       "defaultValue": "true",
       "defaultValueRaw": true,
-      "required": false,
-      "variableMode": "Input",
-      "isControlField": false
+      "variableMode": "Input"
     },
     {
       "key": "waitMs",
@@ -123,28 +88,20 @@
         "setFormats",
         "executeMsoCommand"
       ],
-      "invalidForList": [],
       "condition": "仅：execVBA, setFormats, executeMsoCommand",
       "defaultValue": "10000",
       "defaultValueRaw": 10000,
       "required": true,
-      "variableMode": "Input",
-      "isControlField": false
+      "variableMode": "Input"
     },
     {
       "key": "stopIfFail",
       "name": "失败后停止动作",
       "type": "Boolean",
       "description": "失败后是否停止动作",
-      "isAdvanced": false,
-      "validForList": [],
-      "invalidForList": [],
-      "condition": "",
       "defaultValue": "true",
       "defaultValueRaw": true,
-      "required": false,
-      "variableMode": "Input",
-      "isControlField": false
+      "variableMode": "Input"
     }
   ],
   "outputs": [
@@ -152,24 +109,17 @@
       "key": "isSuccess",
       "name": "步骤执行是否成功",
       "type": "Boolean",
-      "description": "步骤执行是否成功",
-      "isAdvanced": false,
-      "validForList": [],
-      "invalidForList": [],
-      "condition": ""
+      "description": "步骤执行是否成功"
     },
     {
       "key": "resp",
       "name": "返回内容",
       "type": "Text",
-      "description": "",
-      "isAdvanced": false,
       "validForList": [
         "execVBA",
         "setFormats",
         "executeMsoCommand"
       ],
-      "invalidForList": [],
       "condition": "仅：execVBA, setFormats, executeMsoCommand"
     },
     {
@@ -177,11 +127,9 @@
       "name": "ProgId",
       "type": "Text",
       "description": "获取程序的ProgId，可用于在C#里得到对应的Application对象。",
-      "isAdvanced": false,
       "validForList": [
         "getProgId"
       ],
-      "invalidForList": [],
       "condition": "仅：getProgId"
     }
   ],
@@ -191,23 +139,19 @@
       "items": [
         {
           "value": "execVBA",
-          "name": "执行VBA宏代码",
-          "description": ""
+          "name": "执行VBA宏代码"
         },
         {
           "value": "setFormats",
-          "name": "设置格式/对象属性赋值",
-          "description": ""
+          "name": "设置格式/对象属性赋值"
         },
         {
           "value": "executeMsoCommand",
-          "name": "执行界面命令",
-          "description": ""
+          "name": "执行界面命令"
         },
         {
           "value": "getProgId",
-          "name": "获取ProgId",
-          "description": ""
+          "name": "获取ProgId"
         }
       ]
     },
@@ -216,63 +160,51 @@
       "items": [
         {
           "value": "word_wps",
-          "name": "Word 或 WPS文字（根据前台进程自动识别）",
-          "description": ""
+          "name": "Word 或 WPS文字（根据前台进程自动识别）"
         },
         {
           "value": "word",
-          "name": "Word",
-          "description": ""
+          "name": "Word"
         },
         {
           "value": "wps",
-          "name": "WPS文字",
-          "description": ""
+          "name": "WPS文字"
         },
         {
           "value": "excel_et",
-          "name": "Excel 或 WPS表格（根据前台进程自动识别）",
-          "description": ""
+          "name": "Excel 或 WPS表格（根据前台进程自动识别）"
         },
         {
           "value": "excel",
-          "name": "Excel",
-          "description": ""
+          "name": "Excel"
         },
         {
           "value": "et",
-          "name": "WPS表格",
-          "description": ""
+          "name": "WPS表格"
         },
         {
           "value": "powerpoint_wpp",
-          "name": "PowerPoint 或 WPS幻灯片（根据前台进程自动识别）",
-          "description": ""
+          "name": "PowerPoint 或 WPS幻灯片（根据前台进程自动识别）"
         },
         {
           "value": "powerpoint",
-          "name": "PowerPoint",
-          "description": ""
+          "name": "PowerPoint"
         },
         {
           "value": "wpp",
-          "name": "WPS幻灯片",
-          "description": ""
+          "name": "WPS幻灯片"
         },
         {
           "value": "outlook",
-          "name": "Outlook (支持界面命令)",
-          "description": ""
+          "name": "Outlook (支持界面命令)"
         },
         {
           "value": "project",
-          "name": "Project (支持界面命令)",
-          "description": ""
+          "name": "Project (支持界面命令)"
         },
         {
           "value": "visio",
-          "name": "Visio (支持界面命令、VBA)",
-          "description": ""
+          "name": "Visio (支持界面命令、VBA)"
         }
       ]
     }

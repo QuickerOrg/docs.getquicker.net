@@ -8,8 +8,6 @@
   "category": "Text",
   "categoryName": "文本处理",
   "stepType": "Action",
-  "isRisky": false,
-  "isProOnly": false,
   "helpLink": "https://docs.getquicker.net/v2/xaction/modules/joinlist",
   "inputs": [
     {
@@ -17,45 +15,27 @@
       "name": "输入",
       "type": "List",
       "description": "要拼接为文本的列表",
-      "isAdvanced": false,
-      "validForList": [],
-      "invalidForList": [],
-      "condition": "",
       "defaultValue": "",
-      "defaultValueRaw": "",
       "required": true,
-      "variableMode": "UseVarOrInput",
-      "isControlField": false
+      "variableMode": "UseVarOrInput"
     },
     {
       "key": "separator",
       "name": "分隔文本",
       "type": "Text",
       "description": "拼接内容时，两项之间的内容。",
-      "isAdvanced": false,
-      "validForList": [],
-      "invalidForList": [],
-      "condition": "",
       "defaultValue": ",",
-      "defaultValueRaw": ",",
       "required": true,
-      "variableMode": "Input",
-      "isControlField": false
+      "variableMode": "Input"
     },
     {
       "key": "escapeSeparator",
       "name": "转义“分隔文本”",
       "type": "Boolean",
       "description": "替换\"分隔文本\"中的转义字符（\\r,\\n,\\t）",
-      "isAdvanced": false,
-      "validForList": [],
-      "invalidForList": [],
-      "condition": "",
       "defaultValue": "false",
       "defaultValueRaw": false,
-      "required": false,
-      "variableMode": "Input",
-      "isControlField": false
+      "variableMode": "Input"
     }
   ],
   "outputs": [
@@ -63,13 +43,8 @@
       "key": "output",
       "name": "结果",
       "type": "Text",
-      "description": "生成的文本内容",
-      "isAdvanced": false,
-      "validForList": [],
-      "invalidForList": [],
-      "condition": ""
+      "description": "生成的文本内容"
     }
   ],
-  "selections": {},
   "sourceFileName": "catalog.json"
 }

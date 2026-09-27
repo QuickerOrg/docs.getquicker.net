@@ -8,8 +8,6 @@
   "category": "Compute",
   "categoryName": "计算与比较",
   "stepType": "Action",
-  "isRisky": false,
-  "isProOnly": false,
   "helpLink": "https://docs.getquicker.net/v2/xaction/modules/tableoperation",
   "inputs": [
     {
@@ -17,26 +15,15 @@
       "name": "表格变量",
       "type": "Table",
       "description": "要操作的表格变量",
-      "isAdvanced": false,
-      "validForList": [],
-      "invalidForList": [],
-      "condition": "",
       "defaultValue": "",
       "required": true,
-      "variableMode": "UseVarOnly",
-      "isControlField": false
+      "variableMode": "UseVarOnly"
     },
     {
       "key": "type",
       "name": "操作类型",
       "type": "Enum",
-      "description": "",
-      "isAdvanced": false,
-      "validForList": [],
-      "invalidForList": [],
-      "condition": "",
       "defaultValue": "info",
-      "defaultValueRaw": "info",
       "required": true,
       "variableMode": "Input",
       "isControlField": true
@@ -46,41 +33,31 @@
       "name": "行数据",
       "type": "Dict",
       "description": "包含行数据的词典；更新行时，仅包含要更新的列的内容。",
-      "isAdvanced": false,
       "validForList": [
         "addRow",
         "update"
       ],
-      "invalidForList": [],
       "condition": "仅：addRow, update",
       "defaultValue": "",
-      "required": false,
-      "variableMode": "UseVarOrInput",
-      "isControlField": false
+      "variableMode": "UseVarOrInput"
     },
     {
       "key": "dataText",
       "name": "文本数据",
       "type": "Text",
       "description": "CSV/Json格式的文本内容",
-      "isAdvanced": false,
       "validForList": [
         "importCsv",
         "importJson"
       ],
-      "invalidForList": [],
       "condition": "仅：importCsv, importJson",
       "defaultValue": "",
-      "required": false,
-      "variableMode": "UseVarOrInput",
-      "isControlField": false
+      "variableMode": "UseVarOrInput"
     },
     {
       "key": "filterExpression",
       "name": "筛选表达式",
       "type": "Text",
-      "description": "",
-      "isAdvanced": false,
       "validForList": [
         "update",
         "select",
@@ -88,237 +65,174 @@
         "export_text",
         "exportExcel"
       ],
-      "invalidForList": [],
       "condition": "仅：update, select, deleteRows, export_text, exportExcel",
       "defaultValue": "",
-      "required": false,
-      "variableMode": "UseVarOrInput",
-      "isControlField": false
+      "variableMode": "UseVarOrInput"
     },
     {
       "key": "deleteColumns",
       "name": "要删除的列",
       "type": "Text",
       "description": "可选。逗号','或分号';'隔开的列名，\"*\"表示删除所有列，\"!列1,列2...\"表示保留指定的列，删除其余的。",
-      "isAdvanced": false,
       "validForList": [
         "deleteColumns"
       ],
-      "invalidForList": [],
       "condition": "仅：deleteColumns",
       "defaultValue": "",
-      "required": false,
-      "variableMode": "UseVarOrInput",
-      "isControlField": false
+      "variableMode": "UseVarOrInput"
     },
     {
       "key": "sort",
       "name": "排序",
       "type": "Text",
-      "description": "",
-      "isAdvanced": false,
       "validForList": [
         "manage",
         "select",
         "export_text",
         "exportExcel"
       ],
-      "invalidForList": [],
       "condition": "仅：manage, select, export_text, exportExcel",
       "defaultValue": "",
-      "required": false,
-      "variableMode": "UseVarOrInput",
-      "isControlField": false
+      "variableMode": "UseVarOrInput"
     },
     {
       "key": "exportColumns",
       "name": "导出的列",
       "type": "Text",
       "description": "可选。逗号','或分号';'隔开的列名。留空时导出所有列。",
-      "isAdvanced": false,
       "validForList": [
         "export_text",
         "exportExcel"
       ],
-      "invalidForList": [],
       "condition": "仅：export_text, exportExcel",
       "defaultValue": "",
-      "required": false,
-      "variableMode": "UseVarOrInput",
-      "isControlField": false
+      "variableMode": "UseVarOrInput"
     },
     {
       "key": "excelFilePath",
       "name": "Excel文件路径",
       "type": "Text",
-      "description": "",
-      "isAdvanced": false,
       "validForList": [
         "importExcel",
         "exportExcel"
       ],
-      "invalidForList": [],
       "condition": "仅：importExcel, exportExcel",
       "defaultValue": "",
-      "required": false,
-      "variableMode": "UseVarOrInput",
-      "isControlField": false
+      "variableMode": "UseVarOrInput"
     },
     {
       "key": "sheetName",
       "name": "Excel工作表名",
       "type": "Text",
       "description": "如果未指定，则取第一个工作表。工作表首行为标题行。",
-      "isAdvanced": false,
       "validForList": [
         "importExcel",
         "exportExcel"
       ],
-      "invalidForList": [],
       "condition": "仅：importExcel, exportExcel",
       "defaultValue": "",
-      "required": false,
-      "variableMode": "UseVarOrInput",
-      "isControlField": false
+      "variableMode": "UseVarOrInput"
     },
     {
       "key": "startRowNum",
       "name": "标题行号",
       "type": "Integer",
       "description": "标题行的行号（从1开始）。当前面有表头之类的内容时，行号会变大。",
-      "isAdvanced": false,
       "validForList": [
         "importExcel"
       ],
-      "invalidForList": [],
       "condition": "仅：importExcel",
       "defaultValue": "1",
       "defaultValueRaw": 1,
       "required": true,
-      "variableMode": "UseVarOrInput",
-      "isControlField": false
+      "variableMode": "UseVarOrInput"
     },
     {
       "key": "gridSelectionMode",
       "name": "选择模式",
       "type": "Enum",
       "description": "注：单元格模式不支持返回选择的行。",
-      "isAdvanced": false,
       "validForList": [
         "manage"
       ],
-      "invalidForList": [],
       "condition": "仅：manage",
       "defaultValue": "Cells",
-      "defaultValueRaw": "Cells",
-      "required": false,
-      "variableMode": "Input",
-      "isControlField": false
+      "variableMode": "Input"
     },
     {
       "key": "clearOldRows",
       "name": "清除已有的行",
       "type": "Boolean",
       "description": "加载数据之前是否清除现有的行数据",
-      "isAdvanced": false,
       "validForList": [
         "importCsv",
         "importJson"
       ],
-      "invalidForList": [],
       "condition": "仅：importCsv, importJson",
       "defaultValue": "true",
       "defaultValueRaw": true,
-      "required": false,
-      "variableMode": "Input",
-      "isControlField": false
+      "variableMode": "Input"
     },
     {
       "key": "isReadOnly",
       "name": "只读模式",
       "type": "Boolean",
       "description": "是否以只读模式打开",
-      "isAdvanced": false,
       "validForList": [
         "manage"
       ],
-      "invalidForList": [],
       "condition": "仅：manage",
       "defaultValue": "false",
       "defaultValueRaw": false,
-      "required": false,
-      "variableMode": "Input",
-      "isControlField": false
+      "variableMode": "Input"
     },
     {
       "key": "windowTitle",
       "name": "窗口标题",
       "type": "Text",
-      "description": "",
-      "isAdvanced": false,
       "validForList": [
         "manage"
       ],
-      "invalidForList": [],
       "condition": "仅：manage",
       "defaultValue": "表格数据",
-      "defaultValueRaw": "表格数据",
-      "required": false,
-      "variableMode": "Input",
-      "isControlField": false
+      "variableMode": "Input"
     },
     {
       "key": "helpText",
       "name": "帮助文本",
       "type": "Text",
-      "description": "",
-      "isAdvanced": false,
       "validForList": [
         "manage"
       ],
-      "invalidForList": [],
       "condition": "仅：manage",
       "defaultValue": "",
-      "defaultValueRaw": "",
-      "required": false,
-      "variableMode": "Input",
-      "isControlField": false
+      "variableMode": "Input"
     },
     {
       "key": "useColumnTitle",
       "name": "使用列标题而非列名作为导出数据的标题",
       "type": "Boolean",
-      "description": "",
-      "isAdvanced": false,
       "validForList": [
         "export_text",
         "exportExcel"
       ],
-      "invalidForList": [],
       "condition": "仅：export_text, exportExcel",
       "defaultValue": "false",
       "defaultValueRaw": false,
-      "required": false,
-      "variableMode": "Input",
-      "isControlField": false
+      "variableMode": "Input"
     },
     {
       "key": "csvDelimiter",
       "name": "CSV分隔符",
       "type": "Text",
       "description": "导出或导入CSV数据时使用的字段分隔符。使用'\\t'表示Tab。",
-      "isAdvanced": false,
       "validForList": [
         "importCsv",
         "export_text"
       ],
-      "invalidForList": [],
       "condition": "仅：importCsv, export_text",
       "defaultValue": ",",
-      "defaultValueRaw": ",",
-      "required": false,
-      "variableMode": "Input",
-      "isControlField": false
+      "variableMode": "Input"
     },
     {
       "key": "winSize",
@@ -329,13 +243,9 @@
       "validForList": [
         "manage"
       ],
-      "invalidForList": [],
       "condition": "仅：manage",
       "defaultValue": "",
-      "defaultValueRaw": "",
-      "required": false,
-      "variableMode": "Input",
-      "isControlField": false
+      "variableMode": "Input"
     },
     {
       "key": "topMost",
@@ -346,28 +256,19 @@
       "validForList": [
         "manage"
       ],
-      "invalidForList": [],
       "condition": "仅：manage",
       "defaultValue": "false",
       "defaultValueRaw": false,
-      "required": false,
-      "variableMode": "UseVarOrInput",
-      "isControlField": false
+      "variableMode": "UseVarOrInput"
     },
     {
       "key": "stopIfFail",
       "name": "失败后停止",
       "type": "Boolean",
       "description": "失败后是否停止动作",
-      "isAdvanced": false,
-      "validForList": [],
-      "invalidForList": [],
-      "condition": "",
       "defaultValue": "true",
       "defaultValueRaw": true,
-      "required": false,
-      "variableMode": "Input",
-      "isControlField": false
+      "variableMode": "Input"
     }
   ],
   "outputs": [
@@ -375,35 +276,25 @@
       "key": "isSuccess",
       "name": "是否成功",
       "type": "Boolean",
-      "description": "操作是否成功",
-      "isAdvanced": false,
-      "validForList": [],
-      "invalidForList": [],
-      "condition": ""
+      "description": "操作是否成功"
     },
     {
       "key": "rowCount",
       "name": "行数",
       "type": "Integer",
-      "description": "表格内的数据行数",
-      "isAdvanced": false,
-      "validForList": [],
-      "invalidForList": [],
-      "condition": ""
+      "description": "表格内的数据行数"
     },
     {
       "key": "affectedRowCount",
       "name": "影响行数",
       "type": "Integer",
       "description": "更新或删除、筛选的行数",
-      "isAdvanced": false,
       "validForList": [
         "update",
         "deleteRows",
         "export_text",
         "exportExcel"
       ],
-      "invalidForList": [],
       "condition": "仅：update, deleteRows, export_text, exportExcel"
     },
     {
@@ -411,12 +302,10 @@
       "name": "行列表",
       "type": "Object",
       "description": "符合条件的行的数组",
-      "isAdvanced": false,
       "validForList": [
         "info",
         "select"
       ],
-      "invalidForList": [],
       "condition": "仅：info, select"
     },
     {
@@ -424,11 +313,9 @@
       "name": "列的列表",
       "type": "Object",
       "description": "表格的列的信息列表(DataTable.Columns)",
-      "isAdvanced": false,
       "validForList": [
         "info"
       ],
-      "invalidForList": [],
       "condition": "仅：info"
     },
     {
@@ -436,12 +323,10 @@
       "name": "第一行/结果行",
       "type": "Object",
       "description": "第一个符合条件的行或新添加的行，可输出为词典对象",
-      "isAdvanced": false,
       "validForList": [
         "addRow",
         "select"
       ],
-      "invalidForList": [],
       "condition": "仅：addRow, select"
     },
     {
@@ -449,35 +334,27 @@
       "name": "选择的行列表",
       "type": "Object",
       "description": "选择的所有行的列表",
-      "isAdvanced": false,
       "validForList": [
         "manage"
       ],
-      "invalidForList": [],
       "condition": "仅：manage"
     },
     {
       "key": "csvExportData",
       "name": "CSV格式文本",
       "type": "Text",
-      "description": "",
-      "isAdvanced": false,
       "validForList": [
         "export_text"
       ],
-      "invalidForList": [],
       "condition": "仅：export_text"
     },
     {
       "key": "jsonExportData",
       "name": "Json格式文本",
       "type": "Text",
-      "description": "",
-      "isAdvanced": false,
       "validForList": [
         "export_text"
       ],
-      "invalidForList": [],
       "condition": "仅：export_text"
     },
     {
@@ -485,11 +362,9 @@
       "name": "是否确认",
       "type": "Boolean",
       "description": "是否点击了确认按钮",
-      "isAdvanced": false,
       "validForList": [
         "manage"
       ],
-      "invalidForList": [],
       "condition": "仅：manage"
     }
   ],
@@ -499,68 +374,55 @@
       "items": [
         {
           "value": "info",
-          "name": "获取信息",
-          "description": ""
+          "name": "获取信息"
         },
         {
           "value": "addRow",
-          "name": "添加行",
-          "description": ""
+          "name": "添加行"
         },
         {
           "value": "update",
-          "name": "更新行",
-          "description": ""
+          "name": "更新行"
         },
         {
           "value": "manage",
-          "name": "查看或编辑数据",
-          "description": ""
+          "name": "查看或编辑数据"
         },
         {
           "value": "select",
-          "name": "查询或筛选行(Select)",
-          "description": ""
+          "name": "查询或筛选行(Select)"
         },
         {
           "value": "clear",
-          "name": "清除所有行",
-          "description": ""
+          "name": "清除所有行"
         },
         {
           "value": "deleteRows",
-          "name": "删除符合条件的行",
-          "description": ""
+          "name": "删除符合条件的行"
         },
         {
           "value": "deleteColumns",
-          "name": "删除列",
-          "description": ""
+          "name": "删除列"
         },
         {
           "value": "importCsv",
-          "name": "从CSV文本加载数据",
-          "description": ""
+          "name": "从CSV文本加载数据"
         },
         {
           "value": "importJson",
-          "name": "从Json文本加载数据",
-          "description": ""
+          "name": "从Json文本加载数据"
         },
         {
           "value": "importExcel",
-          "name": "从Excel工作表加载数据",
-          "description": ""
+          "name": "从Excel工作表加载数据"
         },
         {
           "value": "export_text",
-          "name": "导出文本数据",
-          "description": ""
+          "name": "导出文本数据"
         },
         {
           "value": "exportExcel",
-          "name": "导出Excel文件",
-          "description": ""
+          "name": "导出Excel文件"
         }
       ]
     },
@@ -569,28 +431,23 @@
       "items": [
         {
           "value": "Cells",
-          "name": "单元格(类似Excel)",
-          "description": ""
+          "name": "单元格(类似Excel)"
         },
         {
           "value": "OneRow",
-          "name": "行：0行或1行",
-          "description": ""
+          "name": "行：0行或1行"
         },
         {
           "value": "OneRowRequired",
-          "name": "行：1行(必选)",
-          "description": ""
+          "name": "行：1行(必选)"
         },
         {
           "value": "Rows",
-          "name": "行：0、1或多行",
-          "description": ""
+          "name": "行：0、1或多行"
         },
         {
           "value": "RowsRequired",
-          "name": "行：一行或多行(必选)",
-          "description": ""
+          "name": "行：一行或多行(必选)"
         }
       ]
     }

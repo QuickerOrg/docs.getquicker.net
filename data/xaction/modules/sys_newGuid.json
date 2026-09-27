@@ -8,8 +8,6 @@
   "category": "Compute",
   "categoryName": "计算与比较",
   "stepType": "Action",
-  "isRisky": false,
-  "isProOnly": false,
   "helpLink": "https://docs.getquicker.net/v2/xaction/modules/newguid",
   "inputs": [
     {
@@ -17,30 +15,17 @@
       "name": "格式",
       "type": "Enum",
       "description": "转换为文本时使用的格式",
-      "isAdvanced": false,
-      "validForList": [],
-      "invalidForList": [],
-      "condition": "",
       "defaultValue": "D",
-      "defaultValueRaw": "D",
-      "required": false,
-      "variableMode": "Input",
-      "isControlField": false
+      "variableMode": "Input"
     },
     {
       "key": "upper",
       "name": "大写",
       "type": "Boolean",
       "description": "字母输出为大写格式。",
-      "isAdvanced": false,
-      "validForList": [],
-      "invalidForList": [],
-      "condition": "",
       "defaultValue": "false",
       "defaultValueRaw": false,
-      "required": false,
-      "variableMode": "Input",
-      "isControlField": false
+      "variableMode": "Input"
     }
   ],
   "outputs": [
@@ -48,11 +33,7 @@
       "key": "output",
       "name": "内容",
       "type": "Text",
-      "description": "将获得的文本写入到变量",
-      "isAdvanced": false,
-      "validForList": [],
-      "invalidForList": [],
-      "condition": ""
+      "description": "将获得的文本写入到变量"
     }
   ],
   "selections": {
@@ -61,28 +42,23 @@
       "items": [
         {
           "value": "D",
-          "name": "默认：00000000-0000-0000-0000-000000000000",
-          "description": ""
+          "name": "默认：00000000-0000-0000-0000-000000000000"
         },
         {
           "value": "N",
-          "name": "去除连字符：00000000000000000000000000000000",
-          "description": ""
+          "name": "去除连字符：00000000000000000000000000000000"
         },
         {
           "value": "B",
-          "name": "大括号包围：{00000000-0000-0000-0000-000000000000}",
-          "description": ""
+          "name": "大括号包围：{00000000-0000-0000-0000-000000000000}"
         },
         {
           "value": "P",
-          "name": "小括号包围：(00000000-0000-0000-0000-000000000000)",
-          "description": ""
+          "name": "小括号包围：(00000000-0000-0000-0000-000000000000)"
         },
         {
           "value": "X",
-          "name": "十六进制：{0x00000000,0x0000,0x0000,{0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00}}",
-          "description": ""
+          "name": "十六进制：{0x00000000,0x0000,0x0000,{0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00}}"
         }
       ]
     }

@@ -8,21 +8,13 @@
   "category": "System",
   "categoryName": "Windows系统",
   "stepType": "Action",
-  "isRisky": false,
-  "isProOnly": false,
   "helpLink": "https://docs.getquicker.net/v2/xaction/modules/monitor",
   "inputs": [
     {
       "key": "operation",
       "name": "操作",
       "type": "Enum",
-      "description": "",
-      "isAdvanced": false,
-      "validForList": [],
-      "invalidForList": [],
-      "condition": "",
       "defaultValue": "get",
-      "defaultValueRaw": "get",
       "newStepDefaultValue": "listMonitors",
       "required": true,
       "variableMode": "Input",
@@ -33,7 +25,6 @@
       "name": "目标显示器",
       "type": "Enum",
       "description": "在本步骤开始时确定目标。所有显示器逐块处理；复制显示无法唯一确定物理显示器时，请指定显示器。",
-      "isAdvanced": false,
       "validForList": [
         "get",
         "set",
@@ -42,24 +33,18 @@
         "getMonitor",
         "showBrightnessOsd"
       ],
-      "invalidForList": [],
       "condition": "仅：get, set, increase, decrease, getMonitor, showBrightnessOsd",
       "defaultValue": "mouse",
-      "defaultValueRaw": "mouse",
-      "required": false,
-      "variableMode": "UseVarOrInput",
-      "isControlField": false
+      "variableMode": "UseVarOrInput"
     },
     {
       "key": "screenId",
       "name": "指定显示器",
       "type": "Text",
       "description": "通过显示器选择器选择设备，或传入先前输出的显示器标识。显示器不存在时不会自动改用另一块。",
-      "isAdvanced": false,
       "validForList": [
         "specified"
       ],
-      "invalidForList": [],
       "visibleWhen": {
         "kind": "All",
         "conditions": [
@@ -88,79 +73,59 @@
       },
       "condition": "(operation 为 \"get\"、\"set\"、\"increase\"、\"decrease\"、\"getMonitor\"、\"showBrightnessOsd\" 且 target 为 \"specified\")",
       "defaultValue": "",
-      "defaultValueRaw": "",
       "required": true,
-      "variableMode": "UseVarOrInput",
-      "isControlField": false
+      "variableMode": "UseVarOrInput"
     },
     {
       "key": "targetBrightness",
       "name": "目标亮度",
       "type": "Number",
       "description": "目标亮度百分比，越界限制到 0–100。设备只支持部分档位时取最接近的档位；0 不表示关闭显示器。",
-      "isAdvanced": false,
       "validForList": [
         "set"
       ],
-      "invalidForList": [],
       "condition": "仅：set",
       "defaultValue": "50.0",
       "defaultValueRaw": 50,
-      "required": false,
-      "variableMode": "UseVarOrInput",
-      "isControlField": false
+      "variableMode": "UseVarOrInput"
     },
     {
       "key": "step",
       "name": "调节幅度",
       "type": "Integer",
       "description": "1–100 的整数，单位为百分点。所有显示器分别根据各自当前亮度增减。",
-      "isAdvanced": false,
       "validForList": [
         "increase",
         "decrease"
       ],
-      "invalidForList": [],
       "condition": "仅：increase, decrease",
       "defaultValue": "5",
       "defaultValueRaw": 5,
-      "required": false,
-      "variableMode": "UseVarOrInput",
-      "isControlField": false
+      "variableMode": "UseVarOrInput"
     },
     {
       "key": "showOsd",
       "name": "显示亮度 OSD",
       "type": "Boolean",
       "description": "显示实际回读亮度，可拖动滑块继续调节。选择单个显示器时在其上显示；选择多个时，在鼠标所在显示器合并显示。闲置 2 秒后消失，交互和写入期间暂停计时；后续拖动不修改本步骤输出变量。",
-      "isAdvanced": false,
       "validForList": [
         "set",
         "increase",
         "decrease"
       ],
-      "invalidForList": [],
       "condition": "仅：set, increase, decrease",
       "defaultValue": "false",
       "defaultValueRaw": false,
-      "required": false,
-      "variableMode": "UseVarOrInput",
-      "isControlField": false
+      "variableMode": "UseVarOrInput"
     },
     {
       "key": "stopIfFail",
       "name": "失败后停止动作",
       "type": "Boolean",
       "description": "所有显示器处理完成后再汇总失败；已完成的修改不会回滚。",
-      "isAdvanced": false,
-      "validForList": [],
-      "invalidForList": [],
-      "condition": "",
       "defaultValue": "true",
       "defaultValueRaw": true,
-      "required": false,
-      "variableMode": "Input",
-      "isControlField": false
+      "variableMode": "Input"
     }
   ],
   "outputs": [
@@ -169,9 +134,6 @@
       "name": "当前亮度",
       "type": "Number",
       "description": "实际读到的亮度，0–100。读取失败时不更新目标变量，请检查是否成功或各显示器结果。修改操作返回回读值。",
-      "isAdvanced": false,
-      "validForList": [],
-      "invalidForList": [],
       "visibleWhen": {
         "kind": "All",
         "conditions": [
@@ -206,13 +168,11 @@
       "name": "显示器标识",
       "type": "Text",
       "description": "本次实际选择的设备标识，可保存后传给后续步骤的指定显示器参数。",
-      "isAdvanced": false,
       "validForList": [
         "mouse",
         "primary",
         "specified"
       ],
-      "invalidForList": [],
       "visibleWhen": {
         "kind": "All",
         "conditions": [
@@ -247,31 +207,19 @@
       "key": "results",
       "name": "各显示器结果",
       "type": "Table",
-      "description": "亮度操作列：screenId、displayName、previousBrightness、targetBrightness、brightness、status、message。显示器信息列：screenId、displayName、logicalName、isPrimary、x、y、width、height、workX、workY、workWidth、workHeight、dpiX、dpiY。坐标为显示器像素，可能为负；未知数值为空。获取列表不会读取硬件亮度。",
-      "isAdvanced": false,
-      "validForList": [],
-      "invalidForList": [],
-      "condition": ""
+      "description": "亮度操作列：screenId、displayName、previousBrightness、targetBrightness、brightness、status、message。显示器信息列：screenId、displayName、logicalName、isPrimary、x、y、width、height、workX、workY、workWidth、workHeight、dpiX、dpiY。坐标为显示器像素，可能为负；未知数值为空。获取列表不会读取硬件亮度。"
     },
     {
       "key": "isSuccess",
       "name": "是否成功",
       "type": "Boolean",
-      "description": "至少有一个目标，且全部目标均成功时为是。",
-      "isAdvanced": false,
-      "validForList": [],
-      "invalidForList": [],
-      "condition": ""
+      "description": "至少有一个目标，且全部目标均成功时为是。"
     },
     {
       "key": "errMessage",
       "name": "错误信息",
       "type": "Text",
-      "description": "步骤执行出错时的消息",
-      "isAdvanced": false,
-      "validForList": [],
-      "invalidForList": [],
-      "condition": ""
+      "description": "步骤执行出错时的消息"
     }
   ],
   "selections": {
@@ -280,38 +228,31 @@
       "items": [
         {
           "value": "get",
-          "name": "获取亮度",
-          "description": ""
+          "name": "获取亮度"
         },
         {
           "value": "set",
-          "name": "设置亮度",
-          "description": ""
+          "name": "设置亮度"
         },
         {
           "value": "increase",
-          "name": "增加亮度",
-          "description": ""
+          "name": "增加亮度"
         },
         {
           "value": "decrease",
-          "name": "降低亮度",
-          "description": ""
+          "name": "降低亮度"
         },
         {
           "value": "listMonitors",
-          "name": "获取显示器列表",
-          "description": ""
+          "name": "获取显示器列表"
         },
         {
           "value": "getMonitor",
-          "name": "获取显示器信息",
-          "description": ""
+          "name": "获取显示器信息"
         },
         {
           "value": "showBrightnessOsd",
-          "name": "显示亮度 OSD",
-          "description": ""
+          "name": "显示亮度 OSD"
         }
       ]
     },
@@ -320,23 +261,19 @@
       "items": [
         {
           "value": "mouse",
-          "name": "鼠标所在显示器",
-          "description": ""
+          "name": "鼠标所在显示器"
         },
         {
           "value": "primary",
-          "name": "主显示器",
-          "description": ""
+          "name": "主显示器"
         },
         {
           "value": "specified",
-          "name": "指定显示器",
-          "description": ""
+          "name": "指定显示器"
         },
         {
           "value": "all",
-          "name": "所有显示器",
-          "description": ""
+          "name": "所有显示器"
         }
       ]
     }

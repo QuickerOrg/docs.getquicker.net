@@ -8,8 +8,6 @@
   "category": "Basic",
   "categoryName": "基础",
   "stepType": "Action",
-  "isRisky": false,
-  "isProOnly": false,
   "helpLink": "https://docs.getquicker.net/v2/xaction/modules/sendkeys",
   "inputs": [
     {
@@ -17,18 +15,10 @@
       "name": "按键序列",
       "type": "Text",
       "description": "要发送的按键序列，使用C#语言SendKeys.Send()语法，具体请参考教程文档。",
-      "isAdvanced": false,
-      "validForList": [],
-      "invalidForList": [],
-      "condition": "",
       "defaultValue": "",
-      "defaultValueRaw": "",
-      "required": false,
-      "variableMode": "UseVarOrInput",
-      "isControlField": false
+      "variableMode": "UseVarOrInput"
     }
   ],
   "outputs": [],
-  "selections": {},
   "sourceFileName": "catalog.json"
 }

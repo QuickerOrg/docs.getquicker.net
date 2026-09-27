@@ -8,8 +8,6 @@
   "category": "Basic",
   "categoryName": "基础",
   "stepType": "Action",
-  "isRisky": false,
-  "isProOnly": false,
   "helpLink": "https://docs.getquicker.net/v2/xaction/modules/mouse",
   "inputs": [
     {
@@ -17,12 +15,7 @@
       "name": "类型",
       "type": "Enum",
       "description": "操作类型",
-      "isAdvanced": false,
-      "validForList": [],
-      "invalidForList": [],
-      "condition": "",
       "defaultValue": "restore",
-      "defaultValueRaw": "restore",
       "required": true,
       "variableMode": "Input",
       "isControlField": true
@@ -32,7 +25,6 @@
       "name": "窗口句柄",
       "type": "Integer",
       "description": "目标窗口的句柄。留空或 0 表示操作前台窗口。",
-      "isAdvanced": false,
       "validForList": [
         "toWinTL",
         "toWinTR",
@@ -41,97 +33,74 @@
         "toWinCenter",
         "moveToWinXy"
       ],
-      "invalidForList": [],
       "condition": "仅：toWinTL, toWinTR, toWinBL, toWinBR, toWinCenter, moveToWinXy",
       "defaultValue": "",
-      "defaultValueRaw": "",
-      "required": false,
-      "variableMode": "UseVarOrInput",
-      "isControlField": false
+      "variableMode": "UseVarOrInput"
     },
     {
       "key": "btn",
       "name": "按钮",
       "type": "Enum",
       "description": "操作哪个按钮",
-      "isAdvanced": false,
       "validForList": [
         "click",
         "dbclick",
         "down",
         "up"
       ],
-      "invalidForList": [],
       "condition": "仅：click, dbclick, down, up",
       "defaultValue": "left",
-      "defaultValueRaw": "left",
       "required": true,
-      "variableMode": "Input",
-      "isControlField": false
+      "variableMode": "Input"
     },
     {
       "key": "bmp",
       "name": "位图路径",
       "type": "Text",
       "description": "需要在屏幕中查找的位图路径。位图必须和屏幕图像完全匹配，不能压缩。此时X、Y的值为相对于搜索位图的左上角的偏移。",
-      "isAdvanced": false,
       "validForList": [
         "locateByBitmap"
       ],
-      "invalidForList": [],
       "condition": "仅：locateByBitmap",
       "defaultValue": "",
-      "defaultValueRaw": "",
       "required": true,
-      "variableMode": "UseVarOrInput",
-      "isControlField": false
+      "variableMode": "UseVarOrInput"
     },
     {
       "key": "bmpVar",
       "name": "位图变量",
       "type": "Image",
       "description": "需要在屏幕中查找的位图。位图必须和屏幕图像完全匹配，不能压缩。此时X、Y的值为相对于搜索位图的左上角的偏移。",
-      "isAdvanced": false,
       "validForList": [
         "locateByBitmapVar"
       ],
-      "invalidForList": [],
       "condition": "仅：locateByBitmapVar",
       "defaultValue": "",
-      "defaultValueRaw": "",
       "required": true,
-      "variableMode": "UseVar",
-      "isControlField": false
+      "variableMode": "UseVar"
     },
     {
       "key": "bmpTargetType",
       "name": "查找范围",
       "type": "Enum",
       "description": "位图查找范围",
-      "isAdvanced": false,
       "validForList": [
         "locateByBitmap",
         "locateByBitmapVar"
       ],
-      "invalidForList": [],
       "condition": "仅：locateByBitmap, locateByBitmapVar",
       "defaultValue": "MainScreen",
-      "defaultValueRaw": "MainScreen",
-      "required": false,
-      "variableMode": "Input",
-      "isControlField": false
+      "variableMode": "Input"
     },
     {
       "key": "searchRect",
       "name": "查找坐标范围",
       "type": "Text",
       "description": "当\"查找范围\"为\"坐标范围\"时有效，格式为：left,top,right,bottom",
-      "isAdvanced": false,
       "validForList": [
         "locateByBitmap",
         "locateByBitmapVar"
       ],
-      "invalidForList": [],
       "visibleWhen": {
         "kind": "All",
         "conditions": [
@@ -156,88 +125,68 @@
       },
       "condition": "(type 为 \"locateByBitmap\"、\"locateByBitmapVar\" 且 bmpTargetType 为 \"Rect\")",
       "defaultValue": "",
-      "required": false,
-      "variableMode": "UseVarOrInput",
-      "isControlField": false
+      "variableMode": "UseVarOrInput"
     },
     {
       "key": "bmpPosition",
       "name": "定位位置",
       "type": "Enum",
       "description": "查找到图片后，鼠标指针移动到的位置",
-      "isAdvanced": false,
       "validForList": [
         "locateByBitmap",
         "locateByBitmapVar"
       ],
-      "invalidForList": [],
       "condition": "仅：locateByBitmap, locateByBitmapVar",
       "defaultValue": "Center",
-      "defaultValueRaw": "Center",
-      "required": false,
-      "variableMode": "Input",
-      "isControlField": false
+      "variableMode": "Input"
     },
     {
       "key": "bmpColorError",
       "name": "颜色容差",
       "type": "Integer",
       "description": "匹配像素时允许每个颜色通道的偏差值0-100，0表示精确匹配，速度最快。",
-      "isAdvanced": false,
       "validForList": [
         "locateByBitmap",
         "locateByBitmapVar"
       ],
-      "invalidForList": [],
       "condition": "仅：locateByBitmap, locateByBitmapVar",
       "defaultValue": "10",
       "defaultValueRaw": 10,
-      "required": false,
-      "variableMode": "Input",
-      "isControlField": false
+      "variableMode": "Input"
     },
     {
       "key": "maxFindCount",
       "name": "最大匹配数量",
       "type": "Integer",
       "description": "找图的最大匹配数量。将对每个查找到的目标执行附加动作。",
-      "isAdvanced": false,
       "validForList": [
         "locateByBitmap",
         "locateByBitmapVar"
       ],
-      "invalidForList": [],
       "condition": "仅：locateByBitmap, locateByBitmapVar",
       "defaultValue": "1",
       "defaultValueRaw": 1,
-      "required": false,
-      "variableMode": "Input",
-      "isControlField": false
+      "variableMode": "Input"
     },
     {
       "key": "retryCount",
       "name": "重试次数",
       "type": "Integer",
       "description": "未找到位图时的重试次数。每次重试间隔300ms。",
-      "isAdvanced": false,
       "validForList": [
         "locateByBitmap",
         "locateByBitmapVar"
       ],
-      "invalidForList": [],
       "condition": "仅：locateByBitmap, locateByBitmapVar",
       "defaultValue": "1",
       "defaultValueRaw": 1,
-      "required": false,
-      "variableMode": "Input",
-      "isControlField": false
+      "variableMode": "Input"
     },
     {
       "key": "x",
       "name": "X",
       "type": "Integer",
       "description": "水平方向的坐标/坐标偏移/移动距离(像素) 或 滚动数量（clicks。正值向右，负值向左）",
-      "isAdvanced": false,
       "validForList": [
         "move",
         "moveTo",
@@ -250,20 +199,17 @@
         "locateByBitmap",
         "locateByBitmapVar"
       ],
-      "invalidForList": [],
       "condition": "仅：move, moveTo, scroll, toWinTL, toWinTR, toWinBL, toWinBR, toWinCenter, locateByBitmap, locateByBitmapVar",
       "defaultValue": "0",
       "defaultValueRaw": 0,
       "required": true,
-      "variableMode": "UseVarOrInput",
-      "isControlField": false
+      "variableMode": "UseVarOrInput"
     },
     {
       "key": "y",
       "name": "Y",
       "type": "Integer",
       "description": "垂直方向的坐标/坐标偏移/移动距离 或 滚动数量（clicks。正值向前，负值向后）",
-      "isAdvanced": false,
       "validForList": [
         "move",
         "moveTo",
@@ -276,54 +222,43 @@
         "locateByBitmap",
         "locateByBitmapVar"
       ],
-      "invalidForList": [],
       "condition": "仅：move, moveTo, scroll, toWinTL, toWinTR, toWinBL, toWinBR, toWinCenter, locateByBitmap, locateByBitmapVar",
       "defaultValue": "0",
       "defaultValueRaw": 0,
       "required": true,
-      "variableMode": "UseVarOrInput",
-      "isControlField": false
+      "variableMode": "UseVarOrInput"
     },
     {
       "key": "xy",
       "name": "坐标",
       "type": "Text",
       "description": "格式为：x,y，如：100,200。也可以使用百分比表示，如：50%,50% 表示屏幕中心。",
-      "isAdvanced": false,
       "validForList": [
         "moveToXy"
       ],
-      "invalidForList": [],
       "condition": "仅：moveToXy",
       "defaultValue": "",
-      "defaultValueRaw": "",
       "required": true,
-      "variableMode": "UseVarOrInput",
-      "isControlField": false
+      "variableMode": "UseVarOrInput"
     },
     {
       "key": "xyForWin",
       "name": "相对坐标",
       "type": "Text",
       "description": "格式为：x,y，如：100,200（相对于窗口左上角向右100，向下200）。也可以使用百分比表示，如：50%,50% 表示窗口中心。",
-      "isAdvanced": false,
       "validForList": [
         "moveToWinXy"
       ],
-      "invalidForList": [],
       "condition": "仅：moveToWinXy",
       "defaultValue": "",
-      "defaultValueRaw": "",
       "required": true,
-      "variableMode": "UseVarOrInput",
-      "isControlField": false
+      "variableMode": "UseVarOrInput"
     },
     {
       "key": "slowMove",
       "name": "逐渐移动到目标",
       "type": "Boolean",
       "description": "逐渐移动而不是直接移动到目标位置。",
-      "isAdvanced": false,
       "validForList": [
         "move",
         "moveTo",
@@ -337,20 +272,16 @@
         "moveToXy",
         "moveToWinXy"
       ],
-      "invalidForList": [],
       "condition": "仅：move, moveTo, toWinTL, toWinTR, toWinBL, toWinBR, toWinCenter, locateByBitmap, locateByBitmapVar, moveToXy, moveToWinXy",
       "defaultValue": "false",
       "defaultValueRaw": false,
-      "required": false,
-      "variableMode": "Input",
-      "isControlField": false
+      "variableMode": "Input"
     },
     {
       "key": "extAction",
       "name": "移动后操作",
       "type": "Enum",
       "description": "移动位置后，需要执行的动作",
-      "isAdvanced": false,
       "validForList": [
         "restore",
         "move",
@@ -365,20 +296,15 @@
         "moveToXy",
         "moveToWinXy"
       ],
-      "invalidForList": [],
       "condition": "仅：restore, move, moveTo, toWinTL, toWinTR, toWinBL, toWinBR, toWinCenter, locateByBitmap, locateByBitmapVar, moveToXy, moveToWinXy",
       "defaultValue": "none",
-      "defaultValueRaw": "none",
       "required": true,
-      "variableMode": "Input",
-      "isControlField": false
+      "variableMode": "Input"
     },
     {
       "key": "restoreMousePos",
       "name": "操作完成后恢复鼠标位置",
       "type": "Boolean",
-      "description": "",
-      "isAdvanced": false,
       "validForList": [
         "move",
         "moveTo",
@@ -392,31 +318,24 @@
         "moveToXy",
         "moveToWinXy"
       ],
-      "invalidForList": [],
       "condition": "仅：move, moveTo, toWinTL, toWinTR, toWinBL, toWinBR, toWinCenter, locateByBitmap, locateByBitmapVar, moveToXy, moveToWinXy",
       "defaultValue": "false",
       "defaultValueRaw": false,
-      "required": false,
-      "variableMode": "Input",
-      "isControlField": false
+      "variableMode": "Input"
     },
     {
       "key": "stopIfFail",
       "name": "失败后中止动作",
       "type": "Boolean",
       "description": "获取位置失败后，是否停止后续动作的执行。",
-      "isAdvanced": false,
       "validForList": [
         "locateByBitmap",
         "locateByBitmapVar"
       ],
-      "invalidForList": [],
       "condition": "仅：locateByBitmap, locateByBitmapVar",
       "defaultValue": "true",
       "defaultValueRaw": true,
-      "required": false,
-      "variableMode": "Input",
-      "isControlField": false
+      "variableMode": "Input"
     }
   ],
   "outputs": [
@@ -425,12 +344,10 @@
       "name": "找图定位是否成功",
       "type": "Boolean",
       "description": "操作是否成功",
-      "isAdvanced": false,
       "validForList": [
         "locateByBitmap",
         "locateByBitmapVar"
       ],
-      "invalidForList": [],
       "condition": "仅：locateByBitmap, locateByBitmapVar"
     },
     {
@@ -438,12 +355,10 @@
       "name": "鼠标位置",
       "type": "Text",
       "description": "格式为X,Y的文本",
-      "isAdvanced": false,
       "validForList": [
         "getMouseCurrentPosition",
         "getMouseOriginPosition"
       ],
-      "invalidForList": [],
       "condition": "仅：getMouseCurrentPosition, getMouseOriginPosition"
     },
     {
@@ -451,12 +366,10 @@
       "name": "鼠标位置X",
       "type": "Integer",
       "description": "鼠标位置X坐标",
-      "isAdvanced": false,
       "validForList": [
         "getMouseCurrentPosition",
         "getMouseOriginPosition"
       ],
-      "invalidForList": [],
       "condition": "仅：getMouseCurrentPosition, getMouseOriginPosition"
     },
     {
@@ -464,12 +377,10 @@
       "name": "鼠标位置Y",
       "type": "Integer",
       "description": "鼠标位置Y坐标",
-      "isAdvanced": false,
       "validForList": [
         "getMouseCurrentPosition",
         "getMouseOriginPosition"
       ],
-      "invalidForList": [],
       "condition": "仅：getMouseCurrentPosition, getMouseOriginPosition"
     },
     {
@@ -477,11 +388,9 @@
       "name": "光标类型",
       "type": "Text",
       "description": "当前的鼠标指针形状类型",
-      "isAdvanced": false,
       "validForList": [
         "getMouseCurrentPosition"
       ],
-      "invalidForList": [],
       "condition": "仅：getMouseCurrentPosition"
     }
   ],
@@ -491,123 +400,99 @@
       "items": [
         {
           "value": "restore",
-          "name": "还原鼠标位置",
-          "description": ""
+          "name": "还原鼠标位置"
         },
         {
           "value": "move",
-          "name": "移动距离",
-          "description": ""
+          "name": "移动距离"
         },
         {
           "value": "moveTo",
-          "name": "移动到(x,y分别指定)",
-          "description": ""
+          "name": "移动到(x,y分别指定)"
         },
         {
           "value": "moveToXy",
-          "name": "移动到(x,y一同指定)",
-          "description": ""
+          "name": "移动到(x,y一同指定)"
         },
         {
           "value": "click",
-          "name": "单击",
-          "description": ""
+          "name": "单击"
         },
         {
           "value": "dbclick",
-          "name": "双击",
-          "description": ""
+          "name": "双击"
         },
         {
           "value": "down",
-          "name": "按下",
-          "description": ""
+          "name": "按下"
         },
         {
           "value": "up",
-          "name": "抬起",
-          "description": ""
+          "name": "抬起"
         },
         {
           "value": "scroll",
-          "name": "滚动",
-          "description": ""
+          "name": "滚动"
         },
         {
           "value": "ctrlDown",
-          "name": "按下Ctrl",
-          "description": ""
+          "name": "按下Ctrl"
         },
         {
           "value": "ctrlUp",
-          "name": "松开Ctrl",
-          "description": ""
+          "name": "松开Ctrl"
         },
         {
           "value": "shiftDown",
-          "name": "按下Shift",
-          "description": ""
+          "name": "按下Shift"
         },
         {
           "value": "shiftUp",
-          "name": "松开Shift",
-          "description": ""
+          "name": "松开Shift"
         },
         {
           "value": "toWinTL",
-          "name": "移动到窗口位置：相对于窗口左上角",
-          "description": ""
+          "name": "移动到窗口位置：相对于窗口左上角"
         },
         {
           "value": "toWinTR",
-          "name": "移动到窗口位置：相对于窗口右上角",
-          "description": ""
+          "name": "移动到窗口位置：相对于窗口右上角"
         },
         {
           "value": "toWinBL",
-          "name": "移动到窗口位置：相对于窗口左下角",
-          "description": ""
+          "name": "移动到窗口位置：相对于窗口左下角"
         },
         {
           "value": "toWinBR",
-          "name": "移动到窗口位置：相对于窗口右下角",
-          "description": ""
+          "name": "移动到窗口位置：相对于窗口右下角"
         },
         {
           "value": "toWinCenter",
-          "name": "移动到窗口位置：窗口中心",
-          "description": ""
+          "name": "移动到窗口位置：窗口中心"
         },
         {
           "value": "moveToWinXy",
-          "name": "移动到窗口位置：xy一同指定",
-          "description": ""
+          "name": "移动到窗口位置：xy一同指定"
         },
         {
           "value": "locateByBitmap",
-          "name": "移动到位图位置(图片文件)",
-          "description": ""
+          "name": "移动到位图位置(图片文件)"
         },
         {
           "value": "locateByBitmapVar",
-          "name": "移动到位图位置(图片变量)",
-          "description": ""
+          "name": "移动到位图位置(图片变量)"
         },
         {
           "value": "getMouseOriginPosition",
-          "name": "获取鼠标位置(弹出面板前位置)",
-          "description": ""
+          "name": "获取鼠标位置(弹出面板前位置)"
         },
         {
           "value": "getMouseCurrentPosition",
-          "name": "获取鼠标位置及指针类型(当前位置)",
-          "description": ""
+          "name": "获取鼠标位置及指针类型(当前位置)"
         },
         {
           "value": "showIndicator",
-          "name": "显示鼠标位置提示",
-          "description": ""
+          "name": "显示鼠标位置提示"
         }
       ]
     },
@@ -616,28 +501,23 @@
       "items": [
         {
           "value": "left",
-          "name": "左键",
-          "description": ""
+          "name": "左键"
         },
         {
           "value": "right",
-          "name": "右键",
-          "description": ""
+          "name": "右键"
         },
         {
           "value": "middle",
-          "name": "中键",
-          "description": ""
+          "name": "中键"
         },
         {
           "value": "x1",
-          "name": "X1",
-          "description": ""
+          "name": "X1"
         },
         {
           "value": "x2",
-          "name": "X2",
-          "description": ""
+          "name": "X2"
         }
       ]
     },
@@ -646,23 +526,19 @@
       "items": [
         {
           "value": "MainScreen",
-          "name": "主屏幕",
-          "description": ""
+          "name": "主屏幕"
         },
         {
           "value": "CurrentWindow",
-          "name": "当前窗口",
-          "description": ""
+          "name": "当前窗口"
         },
         {
           "value": "Rect",
-          "name": "坐标范围",
-          "description": ""
+          "name": "坐标范围"
         },
         {
           "value": "AllScreens",
-          "name": "所有屏幕",
-          "description": ""
+          "name": "所有屏幕"
         }
       ]
     },
@@ -671,28 +547,23 @@
       "items": [
         {
           "value": "Center",
-          "name": "位图中间",
-          "description": ""
+          "name": "位图中间"
         },
         {
           "value": "TopLeft",
-          "name": "左上角",
-          "description": ""
+          "name": "左上角"
         },
         {
           "value": "TopRight",
-          "name": "右上角",
-          "description": ""
+          "name": "右上角"
         },
         {
           "value": "BottomLeft",
-          "name": "左下角",
-          "description": ""
+          "name": "左下角"
         },
         {
           "value": "BottomRight",
-          "name": "右下角",
-          "description": ""
+          "name": "右下角"
         }
       ]
     },
@@ -701,28 +572,23 @@
       "items": [
         {
           "value": "none",
-          "name": "无",
-          "description": ""
+          "name": "无"
         },
         {
           "value": "left",
-          "name": "左键单击",
-          "description": ""
+          "name": "左键单击"
         },
         {
           "value": "leftDbClick",
-          "name": "左键双击",
-          "description": ""
+          "name": "左键双击"
         },
         {
           "value": "right",
-          "name": "右键单击",
-          "description": ""
+          "name": "右键单击"
         },
         {
           "value": "middle",
-          "name": "中键单击",
-          "description": ""
+          "name": "中键单击"
         }
       ]
     }

@@ -8,8 +8,6 @@
   "category": "Files",
   "categoryName": "系统操作",
   "stepType": "Action",
-  "isRisky": false,
-  "isProOnly": false,
   "helpLink": "https://docs.getquicker.net/v2/xaction/modules/readfile",
   "inputs": [
     {
@@ -17,26 +15,16 @@
       "name": "文件路径",
       "type": "Text",
       "description": "要读取的文件的完整路径。",
-      "isAdvanced": false,
-      "validForList": [],
-      "invalidForList": [],
-      "condition": "",
       "defaultValue": "",
       "required": true,
-      "variableMode": "UseVarOrInput",
-      "isControlField": false
+      "variableMode": "UseVarOrInput"
     },
     {
       "key": "type",
       "name": "格式",
       "type": "Enum",
       "description": "文件内容类型",
-      "isAdvanced": false,
-      "validForList": [],
-      "invalidForList": [],
-      "condition": "",
       "defaultValue": "text",
-      "defaultValueRaw": "text",
       "required": true,
       "variableMode": "Input",
       "isControlField": true
@@ -46,32 +34,22 @@
       "name": "文件编码",
       "type": "Enum",
       "description": "文件的编码格式",
-      "isAdvanced": false,
       "validForList": [
         "text"
       ],
-      "invalidForList": [],
       "condition": "仅：text",
       "defaultValue": "utf-8",
-      "defaultValueRaw": "utf-8",
       "required": true,
-      "variableMode": "Input",
-      "isControlField": false
+      "variableMode": "Input"
     },
     {
       "key": "stopIfFail",
       "name": "失败后停止",
       "type": "Boolean",
       "description": "失败后是否停止动作",
-      "isAdvanced": false,
-      "validForList": [],
-      "invalidForList": [],
-      "condition": "",
       "defaultValue": "true",
       "defaultValueRaw": true,
-      "required": false,
-      "variableMode": "Input",
-      "isControlField": false
+      "variableMode": "Input"
     }
   ],
   "outputs": [
@@ -79,22 +57,16 @@
       "key": "isSuccess",
       "name": "是否成功",
       "type": "Boolean",
-      "description": "操作是否成功",
-      "isAdvanced": false,
-      "validForList": [],
-      "invalidForList": [],
-      "condition": ""
+      "description": "操作是否成功"
     },
     {
       "key": "txt",
       "name": "文本内容",
       "type": "Text",
       "description": "读取的文本文件的内容",
-      "isAdvanced": false,
       "validForList": [
         "text"
       ],
-      "invalidForList": [],
       "condition": "仅：text"
     },
     {
@@ -102,11 +74,9 @@
       "name": "图片内容",
       "type": "Image",
       "description": "读取的图片文件的内容",
-      "isAdvanced": false,
       "validForList": [
         "image"
       ],
-      "invalidForList": [],
       "condition": "仅：image"
     }
   ],
@@ -116,13 +86,11 @@
       "items": [
         {
           "value": "text",
-          "name": "文本",
-          "description": ""
+          "name": "文本"
         },
         {
           "value": "image",
-          "name": "图片",
-          "description": ""
+          "name": "图片"
         }
       ]
     },
@@ -131,43 +99,35 @@
       "items": [
         {
           "value": "utf-8",
-          "name": "UTF8",
-          "description": ""
+          "name": "UTF8"
         },
         {
           "value": "utf-16",
-          "name": "UTF-16 LE",
-          "description": ""
+          "name": "UTF-16 LE"
         },
         {
           "value": "utf-16BE",
-          "name": "UTF-16 BE",
-          "description": ""
+          "name": "UTF-16 BE"
         },
         {
           "value": "us-ascii",
-          "name": "ASCII",
-          "description": ""
+          "name": "ASCII"
         },
         {
           "value": "utf-7",
-          "name": "UTF7",
-          "description": ""
+          "name": "UTF7"
         },
         {
           "value": "utf-32",
-          "name": "UTF32",
-          "description": ""
+          "name": "UTF32"
         },
         {
           "value": "default",
-          "name": "系统默认(gb2312)",
-          "description": ""
+          "name": "系统默认(gb2312)"
         },
         {
           "value": "auto",
-          "name": "自动（BOM/UTF/ANSI）",
-          "description": ""
+          "name": "自动（BOM/UTF/ANSI）"
         }
       ]
     }

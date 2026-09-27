@@ -8,8 +8,6 @@
   "category": "Text",
   "categoryName": "文本处理",
   "stepType": "Action",
-  "isRisky": false,
-  "isProOnly": false,
   "helpLink": "https://docs.getquicker.net/v2/xaction/modules/splitstring",
   "inputs": [
     {
@@ -17,75 +15,46 @@
       "name": "输入",
       "type": "Text",
       "description": "要拆分为列表的文本",
-      "isAdvanced": false,
-      "validForList": [],
-      "invalidForList": [],
-      "condition": "",
       "defaultValue": "",
-      "defaultValueRaw": "",
       "required": true,
-      "variableMode": "UseVarOrInput",
-      "isControlField": false
+      "variableMode": "UseVarOrInput"
     },
     {
       "key": "separator",
       "name": "分隔",
       "type": "Text",
       "description": "拆分分隔符",
-      "isAdvanced": false,
-      "validForList": [],
-      "invalidForList": [],
-      "condition": "",
       "defaultValue": ",",
-      "defaultValueRaw": ",",
       "required": true,
-      "variableMode": "Input",
-      "isControlField": false
+      "variableMode": "Input"
     },
     {
       "key": "escapeSeparator",
       "name": "转义分隔符",
       "type": "Boolean",
       "description": "转义分隔符\\r\\n\\t字符",
-      "isAdvanced": false,
-      "validForList": [],
-      "invalidForList": [],
-      "condition": "",
       "defaultValue": "false",
       "defaultValueRaw": false,
-      "required": false,
-      "variableMode": "Input",
-      "isControlField": false
+      "variableMode": "Input"
     },
     {
       "key": "multiSeparator",
       "name": "使用多个分隔符拆分列表",
       "type": "Boolean",
       "description": "每行指定一个。",
-      "isAdvanced": false,
-      "validForList": [],
-      "invalidForList": [],
-      "condition": "",
       "defaultValue": "false",
       "defaultValueRaw": false,
-      "required": false,
-      "variableMode": "Input",
-      "isControlField": false
+      "variableMode": "Input"
     },
     {
       "key": "removeEmpty",
       "name": "滤除空值",
       "type": "Boolean",
       "description": "滤除没有内容的文本",
-      "isAdvanced": false,
-      "validForList": [],
-      "invalidForList": [],
-      "condition": "",
       "defaultValue": "true",
       "defaultValueRaw": true,
       "required": true,
-      "variableMode": "Input",
-      "isControlField": false
+      "variableMode": "Input"
     }
   ],
   "outputs": [
@@ -93,13 +62,8 @@
       "key": "output",
       "name": "结果",
       "type": "List",
-      "description": "生成的文本内容",
-      "isAdvanced": false,
-      "validForList": [],
-      "invalidForList": [],
-      "condition": ""
+      "description": "生成的文本内容"
     }
   ],
-  "selections": {},
   "sourceFileName": "catalog.json"
 }

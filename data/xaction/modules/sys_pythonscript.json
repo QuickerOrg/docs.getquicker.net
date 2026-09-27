@@ -8,8 +8,6 @@
   "category": "Flow",
   "categoryName": "程序流程",
   "stepType": "Action",
-  "isRisky": false,
-  "isProOnly": false,
   "helpLink": "https://docs.getquicker.net/v2/xaction/modules/pythonscript",
   "inputs": [
     {
@@ -17,45 +15,26 @@
       "name": "脚本内容",
       "type": "Text",
       "description": "要运行的脚本内容",
-      "isAdvanced": false,
-      "validForList": [],
-      "invalidForList": [],
-      "condition": "",
       "defaultValue": "##.py \r\nquicker.context.SetVarValue('text', 'hello world')\r\n",
-      "defaultValueRaw": "##.py \r\nquicker.context.SetVarValue('text', 'hello world')\r\n",
       "required": true,
-      "variableMode": "UseVarOrInput",
-      "isControlField": false
+      "variableMode": "UseVarOrInput"
     },
     {
       "key": "pythonPath",
       "name": "Python环境路径",
       "type": "Text",
       "description": "可选。Python环境(PythonXXX.dll)所在目录，留空时使用全局设置",
-      "isAdvanced": false,
-      "validForList": [],
-      "invalidForList": [],
-      "condition": "",
       "defaultValue": "",
-      "defaultValueRaw": "",
-      "required": false,
-      "variableMode": "UseVarOrInput",
-      "isControlField": false
+      "variableMode": "UseVarOrInput"
     },
     {
       "key": "stopIfFail",
       "name": "失败后停止",
       "type": "Boolean",
       "description": "失败后是否停止动作",
-      "isAdvanced": false,
-      "validForList": [],
-      "invalidForList": [],
-      "condition": "",
       "defaultValue": "true",
       "defaultValueRaw": true,
-      "required": false,
-      "variableMode": "Input",
-      "isControlField": false
+      "variableMode": "Input"
     }
   ],
   "outputs": [
@@ -63,13 +42,8 @@
       "key": "isSuccess",
       "name": "是否成功",
       "type": "Boolean",
-      "description": "操作是否成功",
-      "isAdvanced": false,
-      "validForList": [],
-      "invalidForList": [],
-      "condition": ""
+      "description": "操作是否成功"
     }
   ],
-  "selections": {},
   "sourceFileName": "catalog.json"
 }

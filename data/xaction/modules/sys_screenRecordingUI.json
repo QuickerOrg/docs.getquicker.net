@@ -8,8 +8,6 @@
   "category": "Image",
   "categoryName": "图片处理",
   "stepType": "Action",
-  "isRisky": false,
-  "isProOnly": false,
   "helpLink": "https://docs.getquicker.net/v2/xaction/modules/screen-recording-ui",
   "inputs": [
     {
@@ -17,27 +15,16 @@
       "name": "开始前延迟",
       "type": "Integer",
       "description": "等待多少毫秒后弹出选区界面。",
-      "isAdvanced": false,
-      "validForList": [],
-      "invalidForList": [],
-      "condition": "",
       "defaultValue": "0",
       "defaultValueRaw": 0,
-      "required": false,
-      "variableMode": "UseVarOrInput",
-      "isControlField": false
+      "variableMode": "UseVarOrInput"
     },
     {
       "key": "regionType",
       "name": "录制范围",
       "type": "Enum",
       "description": "默认手动框选。选择主屏幕、所有屏幕或固定区域时跳过框选，直接打开录屏工具栏。",
-      "isAdvanced": false,
-      "validForList": [],
-      "invalidForList": [],
-      "condition": "",
       "defaultValue": "none",
-      "defaultValueRaw": "none",
       "required": true,
       "variableMode": "Input",
       "isControlField": true
@@ -47,11 +34,9 @@
       "name": "录制区域",
       "type": "Text",
       "description": "固定区域坐标，格式：left,top,right,bottom。默认不包含右边和底边像素。",
-      "isAdvanced": false,
       "validForList": [
         "fixed_area"
       ],
-      "invalidForList": [],
       "visibleWhen": {
         "kind": "Field",
         "fieldKey": "regionType",
@@ -62,20 +47,16 @@
       },
       "condition": "regionType 为 \"fixed_area\"",
       "defaultValue": "",
-      "required": false,
-      "variableMode": "UseVarOrInput",
-      "isControlField": false
+      "variableMode": "UseVarOrInput"
     },
     {
       "key": "includeRightBottomBorder",
       "name": "包含右下边像素",
       "type": "Boolean",
       "description": "包含时，0,0,2,2 表示 3×3 区域；否则为 2×2。",
-      "isAdvanced": false,
       "validForList": [
         "fixed_area"
       ],
-      "invalidForList": [],
       "visibleWhen": {
         "kind": "Field",
         "fieldKey": "regionType",
@@ -87,20 +68,16 @@
       "condition": "regionType 为 \"fixed_area\"",
       "defaultValue": "true",
       "defaultValueRaw": true,
-      "required": false,
-      "variableMode": "Input",
-      "isControlField": false
+      "variableMode": "Input"
     },
     {
       "key": "manualAdjustSelection",
       "name": "手动调整选区",
       "type": "Boolean",
       "description": "默认关闭：框选完成后自动确认并进入录屏。勾选后可先调整选区，再确认开录。",
-      "isAdvanced": false,
       "validForList": [
         "none"
       ],
-      "invalidForList": [],
       "visibleWhen": {
         "kind": "Field",
         "fieldKey": "regionType",
@@ -112,24 +89,15 @@
       "condition": "regionType 为 \"none\"",
       "defaultValue": "false",
       "defaultValueRaw": false,
-      "required": false,
-      "variableMode": "Input",
-      "isControlField": false
+      "variableMode": "Input"
     },
     {
       "key": "saveDirectory",
       "name": "保存文件夹",
       "type": "Text",
       "description": "录制文件保存目录。留空时仍使用当前默认位置，不影响已有动作。",
-      "isAdvanced": false,
-      "validForList": [],
-      "invalidForList": [],
-      "condition": "",
       "defaultValue": "",
-      "defaultValueRaw": "",
-      "required": false,
-      "variableMode": "UseVarOrInput",
-      "isControlField": false
+      "variableMode": "UseVarOrInput"
     },
     {
       "key": "encodingPreset",
@@ -137,14 +105,8 @@
       "type": "Enum",
       "description": "可选快捷配置，默认沿用原有画质；FFmpeg 参数可覆盖方案。",
       "isAdvanced": true,
-      "validForList": [],
-      "invalidForList": [],
-      "condition": "",
       "defaultValue": "default",
-      "defaultValueRaw": "default",
-      "required": false,
-      "variableMode": "UseVarOrInput",
-      "isControlField": false
+      "variableMode": "UseVarOrInput"
     },
     {
       "key": "encodingParameters",
@@ -152,14 +114,8 @@
       "type": "Text",
       "description": "直接传给本机 FFmpeg，覆盖预设；留空沿用默认。例：-crf 20 -preset veryfast。",
       "isAdvanced": true,
-      "validForList": [],
-      "invalidForList": [],
-      "condition": "",
       "defaultValue": "",
-      "defaultValueRaw": "",
-      "required": false,
-      "variableMode": "UseVarOrInput",
-      "isControlField": false
+      "variableMode": "UseVarOrInput"
     },
     {
       "key": "addToHistory",
@@ -167,29 +123,18 @@
       "type": "Boolean",
       "description": "显式启用后，将录制结果复制到本机录屏历史；默认关闭以保持既有动作的文件生命周期。",
       "isAdvanced": true,
-      "validForList": [],
-      "invalidForList": [],
-      "condition": "",
       "defaultValue": "false",
       "defaultValueRaw": false,
-      "required": false,
-      "variableMode": "Input",
-      "isControlField": false
+      "variableMode": "Input"
     },
     {
       "key": "stopIfFail",
       "name": "失败后停止",
       "type": "Boolean",
       "description": "失败后是否停止动作",
-      "isAdvanced": false,
-      "validForList": [],
-      "invalidForList": [],
-      "condition": "",
       "defaultValue": "true",
       "defaultValueRaw": true,
-      "required": false,
-      "variableMode": "Input",
-      "isControlField": false
+      "variableMode": "Input"
     }
   ],
   "outputs": [
@@ -197,51 +142,31 @@
       "key": "isSuccess",
       "name": "是否成功",
       "type": "Boolean",
-      "description": "操作是否成功",
-      "isAdvanced": false,
-      "validForList": [],
-      "invalidForList": [],
-      "condition": ""
+      "description": "操作是否成功"
     },
     {
       "key": "filePath",
       "name": "文件路径",
       "type": "Text",
-      "description": "录制完成的视频文件路径；用户取消时为空。",
-      "isAdvanced": false,
-      "validForList": [],
-      "invalidForList": [],
-      "condition": ""
+      "description": "录制完成的视频文件路径；用户取消时为空。"
     },
     {
       "key": "durationSeconds",
       "name": "录制时长",
       "type": "Number",
-      "description": "录制时长（秒）。",
-      "isAdvanced": false,
-      "validForList": [],
-      "invalidForList": [],
-      "condition": ""
+      "description": "录制时长（秒）。"
     },
     {
       "key": "rect",
       "name": "录制区域",
       "type": "Text",
-      "description": "实际录制区域(left,top,right,bottom)。",
-      "isAdvanced": false,
-      "validForList": [],
-      "invalidForList": [],
-      "condition": ""
+      "description": "实际录制区域(left,top,right,bottom)。"
     },
     {
       "key": "errMessage",
       "name": "错误消息",
       "type": "Text",
-      "description": "步骤执行出错时的消息",
-      "isAdvanced": false,
-      "validForList": [],
-      "invalidForList": [],
-      "condition": ""
+      "description": "步骤执行出错时的消息"
     }
   ],
   "selections": {
@@ -250,23 +175,19 @@
       "items": [
         {
           "value": "none",
-          "name": "手动框选",
-          "description": ""
+          "name": "手动框选"
         },
         {
           "value": "primary_screen",
-          "name": "主屏幕",
-          "description": ""
+          "name": "主屏幕"
         },
         {
           "value": "full_screen",
-          "name": "所有屏幕",
-          "description": ""
+          "name": "所有屏幕"
         },
         {
           "value": "fixed_area",
-          "name": "固定区域",
-          "description": ""
+          "name": "固定区域"
         }
       ]
     },
@@ -275,28 +196,23 @@
       "items": [
         {
           "value": "default",
-          "name": "沿用原有画质",
-          "description": ""
+          "name": "沿用原有画质"
         },
         {
           "value": "balanced",
-          "name": "均衡",
-          "description": ""
+          "name": "均衡"
         },
         {
           "value": "text",
-          "name": "文字清晰",
-          "description": ""
+          "name": "文字清晰"
         },
         {
           "value": "compact",
-          "name": "小体积",
-          "description": ""
+          "name": "小体积"
         },
         {
           "value": "lowCpu",
-          "name": "低 CPU 占用",
-          "description": ""
+          "name": "低 CPU 占用"
         }
       ]
     }

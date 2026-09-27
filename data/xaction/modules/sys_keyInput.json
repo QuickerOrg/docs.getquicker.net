@@ -8,8 +8,6 @@
   "category": "Basic",
   "categoryName": "基础",
   "stepType": "Keyboard",
-  "isRisky": false,
-  "isProOnly": false,
   "helpLink": "https://docs.getquicker.net/v2/xaction/modules/keyinput",
   "inputs": [
     {
@@ -17,63 +15,37 @@
       "name": "按键",
       "type": "Keyboard",
       "description": "模拟的按键内容",
-      "isAdvanced": false,
-      "validForList": [],
-      "invalidForList": [],
-      "condition": "",
       "defaultValue": "",
-      "defaultValueRaw": "",
       "required": true,
-      "variableMode": "Input",
-      "isControlField": false
+      "variableMode": "Input"
     },
     {
       "key": "repeat",
       "name": "重复次数",
       "type": "Integer",
-      "description": "",
-      "isAdvanced": false,
-      "validForList": [],
-      "invalidForList": [],
-      "condition": "",
       "defaultValue": "1",
       "defaultValueRaw": 1,
-      "required": false,
-      "variableMode": "Input",
-      "isControlField": false
+      "variableMode": "Input"
     },
     {
       "key": "interval",
       "name": "重复间隔(毫秒)",
       "type": "Integer",
       "description": "每次重复之间的间隔毫秒数",
-      "isAdvanced": false,
-      "validForList": [],
-      "invalidForList": [],
-      "condition": "",
       "defaultValue": "1",
       "defaultValueRaw": 1,
-      "required": false,
-      "variableMode": "Input",
-      "isControlField": false
+      "variableMode": "Input"
     },
     {
       "key": "holdMs",
       "name": "保持毫秒数",
       "type": "Integer",
       "description": "普通键（非Ctrl/Alt/Shift/Win）在抬起前保持的时间。-1表示使用默认设置。\r\n某些直接模拟按键无法生效的软件中可以尝试增加此值。",
-      "isAdvanced": false,
-      "validForList": [],
-      "invalidForList": [],
-      "condition": "",
       "defaultValue": "-1",
       "defaultValueRaw": -1,
-      "required": false,
-      "variableMode": "Input",
-      "isControlField": false
+      "variableMode": "Input"
     }
   ],
   "outputs": [],
-  "selections": {},
   "sourceFileName": "catalog.json"
 }

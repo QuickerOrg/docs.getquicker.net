@@ -8,8 +8,6 @@
   "category": "Compute",
   "categoryName": "计算与比较",
   "stepType": "Action",
-  "isRisky": false,
-  "isProOnly": false,
   "helpLink": "https://docs.getquicker.net/v2/xaction/modules/computetime",
   "inputs": [
     {
@@ -17,12 +15,7 @@
       "name": "类型",
       "type": "Enum",
       "description": "比较方式",
-      "isAdvanced": false,
-      "validForList": [],
-      "invalidForList": [],
-      "condition": "",
       "defaultValue": "getdate",
-      "defaultValueRaw": "getdate",
       "required": true,
       "variableMode": "Input",
       "isControlField": true
@@ -32,164 +25,122 @@
       "name": "日期时间",
       "type": "DateTime",
       "description": "要计算的时间值",
-      "isAdvanced": false,
-      "validForList": [],
-      "invalidForList": [],
-      "condition": "",
       "defaultValue": "",
       "required": true,
-      "variableMode": "UseVarOrInput",
-      "isControlField": false
+      "variableMode": "UseVarOrInput"
     },
     {
       "key": "time2",
       "name": "日期时间2",
       "type": "DateTime",
       "description": "要计算的第二个时间值",
-      "isAdvanced": false,
       "validForList": [
         "timespan"
       ],
-      "invalidForList": [],
       "condition": "仅：timespan",
       "defaultValue": "",
       "required": true,
-      "variableMode": "UseVarOrInput",
-      "isControlField": false
+      "variableMode": "UseVarOrInput"
     },
     {
       "key": "formatString",
       "name": "格式化字符串",
       "type": "Text",
       "description": "时间差转换为文本时的格式化字符串。d:天数,hh:小时,mm:分钟,ss:秒。符号.:需要使用\\转义",
-      "isAdvanced": false,
       "validForList": [
         "timespan"
       ],
-      "invalidForList": [],
       "condition": "仅：timespan",
       "defaultValue": "d\\.hh\\:mm\\:ss",
-      "defaultValueRaw": "d\\.hh\\:mm\\:ss",
       "required": true,
-      "variableMode": "UseVarOrInput",
-      "isControlField": false
+      "variableMode": "UseVarOrInput"
     },
     {
       "key": "addYears",
       "name": "添加年数",
       "type": "Number",
       "description": "添加指定的年数（整数）",
-      "isAdvanced": false,
       "validForList": [
         "endtime"
       ],
-      "invalidForList": [],
       "condition": "仅：endtime",
       "defaultValue": "0",
       "defaultValueRaw": 0,
-      "required": false,
-      "variableMode": "UseVarOrInput",
-      "isControlField": false
+      "variableMode": "UseVarOrInput"
     },
     {
       "key": "addMonths",
       "name": "添加月数",
       "type": "Number",
       "description": "添加指定的月数（整数）结果不跨月，如1月31日增加1个月等于2月28日。",
-      "isAdvanced": false,
       "validForList": [
         "endtime"
       ],
-      "invalidForList": [],
       "condition": "仅：endtime",
       "defaultValue": "0",
       "defaultValueRaw": 0,
-      "required": false,
-      "variableMode": "UseVarOrInput",
-      "isControlField": false
+      "variableMode": "UseVarOrInput"
     },
     {
       "key": "addDays",
       "name": "添加天数",
       "type": "Number",
       "description": "添加指定的天数（可以为小数）",
-      "isAdvanced": false,
       "validForList": [
         "endtime"
       ],
-      "invalidForList": [],
       "condition": "仅：endtime",
       "defaultValue": "0",
       "defaultValueRaw": 0,
-      "required": false,
-      "variableMode": "UseVarOrInput",
-      "isControlField": false
+      "variableMode": "UseVarOrInput"
     },
     {
       "key": "addHours",
       "name": "添加小时数",
       "type": "Number",
       "description": "添加指定的小时数（可以为小数）",
-      "isAdvanced": false,
       "validForList": [
         "endtime"
       ],
-      "invalidForList": [],
       "condition": "仅：endtime",
       "defaultValue": "0",
       "defaultValueRaw": 0,
-      "required": false,
-      "variableMode": "UseVarOrInput",
-      "isControlField": false
+      "variableMode": "UseVarOrInput"
     },
     {
       "key": "addMinutes",
       "name": "添加分钟数",
       "type": "Number",
       "description": "添加指定的分钟数（可以为小数）",
-      "isAdvanced": false,
       "validForList": [
         "endtime"
       ],
-      "invalidForList": [],
       "condition": "仅：endtime",
       "defaultValue": "0",
       "defaultValueRaw": 0,
-      "required": false,
-      "variableMode": "UseVarOrInput",
-      "isControlField": false
+      "variableMode": "UseVarOrInput"
     },
     {
       "key": "addSeconds",
       "name": "添加秒数",
       "type": "Number",
       "description": "添加指定的秒数（可以为小数）",
-      "isAdvanced": false,
       "validForList": [
         "endtime"
       ],
-      "invalidForList": [],
       "condition": "仅：endtime",
       "defaultValue": "0",
       "defaultValueRaw": 0,
-      "required": false,
-      "variableMode": "UseVarOrInput",
-      "isControlField": false
+      "variableMode": "UseVarOrInput"
     },
     {
       "key": "stopIfFail",
       "name": "失败后停止",
       "type": "Boolean",
       "description": "失败后是否停止动作",
-      "isAdvanced": false,
-      "validForList": [],
-      "invalidForList": [],
-      "condition": "",
       "defaultValue": "true",
       "defaultValueRaw": true,
-      "required": false,
-      "variableMode": "Input",
-      "isControlField": false
+      "variableMode": "Input"
     }
   ],
   "outputs": [
@@ -197,25 +148,19 @@
       "key": "isSuccess",
       "name": "是否成功",
       "type": "Boolean",
-      "description": "操作是否成功",
-      "isAdvanced": false,
-      "validForList": [],
-      "invalidForList": [],
-      "condition": ""
+      "description": "操作是否成功"
     },
     {
       "key": "resultTime",
       "name": "结果时间",
       "type": "DateTime",
       "description": "计算的结果时间",
-      "isAdvanced": false,
       "validForList": [
         "endtime",
         "getdate",
         "utcToLocal",
         "localToUtc"
       ],
-      "invalidForList": [],
       "condition": "仅：endtime, getdate, utcToLocal, localToUtc"
     },
     {
@@ -223,11 +168,9 @@
       "name": "总天数",
       "type": "Number",
       "description": "间隔的总天数值",
-      "isAdvanced": false,
       "validForList": [
         "timespan"
       ],
-      "invalidForList": [],
       "condition": "仅：timespan"
     },
     {
@@ -235,11 +178,9 @@
       "name": "总小时数",
       "type": "Number",
       "description": "间隔的总小时数",
-      "isAdvanced": false,
       "validForList": [
         "timespan"
       ],
-      "invalidForList": [],
       "condition": "仅：timespan"
     },
     {
@@ -247,11 +188,9 @@
       "name": "总分钟数",
       "type": "Number",
       "description": "间隔的总分钟数值",
-      "isAdvanced": false,
       "validForList": [
         "timespan"
       ],
-      "invalidForList": [],
       "condition": "仅：timespan"
     },
     {
@@ -259,11 +198,9 @@
       "name": "总秒数",
       "type": "Number",
       "description": "间隔的总秒数数值",
-      "isAdvanced": false,
       "validForList": [
         "timespan"
       ],
-      "invalidForList": [],
       "condition": "仅：timespan"
     },
     {
@@ -271,11 +208,9 @@
       "name": "文本值",
       "type": "Text",
       "description": "时间间隔的文本结果",
-      "isAdvanced": false,
       "validForList": [
         "timespan"
       ],
-      "invalidForList": [],
       "condition": "仅：timespan"
     }
   ],
@@ -285,28 +220,23 @@
       "items": [
         {
           "value": "getdate",
-          "name": "取日期值（去除当天的时间部分）",
-          "description": ""
+          "name": "取日期值（去除当天的时间部分）"
         },
         {
           "value": "timespan",
-          "name": "计算时间差（日期时间2 减 日期时间）",
-          "description": ""
+          "name": "计算时间差（日期时间2 减 日期时间）"
         },
         {
           "value": "endtime",
-          "name": "计算结束时间",
-          "description": ""
+          "name": "计算结束时间"
         },
         {
           "value": "localToUtc",
-          "name": "本地时间转换为UTC时间",
-          "description": ""
+          "name": "本地时间转换为UTC时间"
         },
         {
           "value": "utcToLocal",
-          "name": "UTC时间转换为本地时间",
-          "description": ""
+          "name": "UTC时间转换为本地时间"
         }
       ]
     }

@@ -8,8 +8,6 @@
   "category": "SoftInteraction",
   "categoryName": "第三方软件交互",
   "stepType": "Action",
-  "isRisky": false,
-  "isProOnly": false,
   "helpLink": "https://docs.getquicker.net/v2/xaction/modules/rhinocontrol",
   "inputs": [
     {
@@ -17,12 +15,7 @@
       "name": "操作类型",
       "type": "Enum",
       "description": "操作类型",
-      "isAdvanced": false,
-      "validForList": [],
-      "invalidForList": [],
-      "condition": "",
       "defaultValue": "RunScript",
-      "defaultValueRaw": "RunScript",
       "required": true,
       "variableMode": "Input",
       "isControlField": true
@@ -32,60 +25,43 @@
       "name": "命令内容",
       "type": "Text",
       "description": "命令或脚本内容。",
-      "isAdvanced": false,
       "validForList": [
         "RunScript",
         "command.run"
       ],
-      "invalidForList": [],
       "condition": "仅：RunScript, command.run",
       "defaultValue": "",
-      "defaultValueRaw": "",
-      "required": false,
-      "variableMode": "UseVarOrInput",
-      "isControlField": false
+      "variableMode": "UseVarOrInput"
     },
     {
       "key": "waitResp",
       "name": "等待命令结束",
       "type": "Boolean",
-      "description": "",
-      "isAdvanced": false,
       "validForList": [
         "RunScript"
       ],
-      "invalidForList": [],
       "condition": "仅：RunScript",
       "defaultValue": "true",
       "defaultValueRaw": true,
-      "required": false,
-      "variableMode": "UseVarOrInput",
-      "isControlField": false
+      "variableMode": "UseVarOrInput"
     },
     {
       "key": "filePath",
       "name": "文件路径",
       "type": "Text",
-      "description": "",
-      "isAdvanced": false,
       "validForList": [
         "document.save_as",
         "python.run_file"
       ],
-      "invalidForList": [],
       "condition": "仅：document.save_as, python.run_file",
       "defaultValue": "",
-      "defaultValueRaw": "",
       "required": true,
-      "variableMode": "UseVarOrInput",
-      "isControlField": false
+      "variableMode": "UseVarOrInput"
     },
     {
       "key": "idsJson",
       "name": "对象 ID（JSON 数组）",
       "type": "Text",
-      "description": "",
-      "isAdvanced": false,
       "validForList": [
         "selection.select_by_ids",
         "object.delete",
@@ -94,205 +70,140 @@
         "object.lock",
         "object.unlock"
       ],
-      "invalidForList": [],
       "condition": "仅：selection.select_by_ids, object.delete, object.hide, object.show, object.lock, object.unlock",
       "defaultValue": "[]",
-      "defaultValueRaw": "[]",
-      "required": false,
-      "variableMode": "UseVarOrInput",
-      "isControlField": false
+      "variableMode": "UseVarOrInput"
     },
     {
       "key": "clearSelection",
       "name": "先清除原选择",
       "type": "Boolean",
-      "description": "",
-      "isAdvanced": false,
       "validForList": [
         "selection.select_by_ids"
       ],
-      "invalidForList": [],
       "condition": "仅：selection.select_by_ids",
       "defaultValue": "true",
       "defaultValueRaw": true,
-      "required": false,
-      "variableMode": "UseVarOrInput",
-      "isControlField": false
+      "variableMode": "UseVarOrInput"
     },
     {
       "key": "name",
       "name": "图层名称、路径或 ID（新建仅名称）",
       "type": "Text",
-      "description": "",
-      "isAdvanced": false,
       "validForList": [
         "layer.create",
         "layer.set_current",
         "layer.set_visible",
         "layer.set_locked"
       ],
-      "invalidForList": [],
       "condition": "仅：layer.create, layer.set_current, layer.set_visible, layer.set_locked",
       "defaultValue": "新图层",
-      "defaultValueRaw": "新图层",
-      "required": false,
-      "variableMode": "UseVarOrInput",
-      "isControlField": false
+      "variableMode": "UseVarOrInput"
     },
     {
       "key": "boolValue",
       "name": "启用",
       "type": "Boolean",
-      "description": "",
-      "isAdvanced": false,
       "validForList": [
         "layer.set_visible",
         "layer.set_locked"
       ],
-      "invalidForList": [],
       "condition": "仅：layer.set_visible, layer.set_locked",
       "defaultValue": "true",
       "defaultValueRaw": true,
-      "required": false,
-      "variableMode": "UseVarOrInput",
-      "isControlField": false
+      "variableMode": "UseVarOrInput"
     },
     {
       "key": "pointJson",
       "name": "点坐标（JSON）",
       "type": "Text",
-      "description": "",
-      "isAdvanced": false,
       "validForList": [
         "geometry.add_point",
         "geometry.add_sphere"
       ],
-      "invalidForList": [],
       "condition": "仅：geometry.add_point, geometry.add_sphere",
       "defaultValue": "[0,0,0]",
-      "defaultValueRaw": "[0,0,0]",
-      "required": false,
-      "variableMode": "UseVarOrInput",
-      "isControlField": false
+      "variableMode": "UseVarOrInput"
     },
     {
       "key": "fromJson",
       "name": "起点（JSON）",
       "type": "Text",
-      "description": "",
-      "isAdvanced": false,
       "validForList": [
         "geometry.add_line"
       ],
-      "invalidForList": [],
       "condition": "仅：geometry.add_line",
       "defaultValue": "[0,0,0]",
-      "defaultValueRaw": "[0,0,0]",
-      "required": false,
-      "variableMode": "UseVarOrInput",
-      "isControlField": false
+      "variableMode": "UseVarOrInput"
     },
     {
       "key": "toJson",
       "name": "终点（JSON）",
       "type": "Text",
-      "description": "",
-      "isAdvanced": false,
       "validForList": [
         "geometry.add_line"
       ],
-      "invalidForList": [],
       "condition": "仅：geometry.add_line",
       "defaultValue": "[100,0,0]",
-      "defaultValueRaw": "[100,0,0]",
-      "required": false,
-      "variableMode": "UseVarOrInput",
-      "isControlField": false
+      "variableMode": "UseVarOrInput"
     },
     {
       "key": "sizeJson",
       "name": "尺寸（JSON）",
       "type": "Text",
-      "description": "",
-      "isAdvanced": false,
       "validForList": [
         "geometry.add_box"
       ],
-      "invalidForList": [],
       "condition": "仅：geometry.add_box",
       "defaultValue": "[100,100,100]",
-      "defaultValueRaw": "[100,100,100]",
-      "required": false,
-      "variableMode": "UseVarOrInput",
-      "isControlField": false
+      "variableMode": "UseVarOrInput"
     },
     {
       "key": "radius",
       "name": "半径",
       "type": "Number",
-      "description": "",
-      "isAdvanced": false,
       "validForList": [
         "geometry.add_sphere"
       ],
-      "invalidForList": [],
       "condition": "仅：geometry.add_sphere",
       "defaultValue": "50",
       "defaultValueRaw": 50,
-      "required": false,
-      "variableMode": "UseVarOrInput",
-      "isControlField": false
+      "variableMode": "UseVarOrInput"
     },
     {
       "key": "echo",
       "name": "回显命令",
       "type": "Boolean",
-      "description": "",
-      "isAdvanced": false,
       "validForList": [
         "command.run"
       ],
-      "invalidForList": [],
       "condition": "仅：command.run",
       "defaultValue": "false",
       "defaultValueRaw": false,
-      "required": false,
-      "variableMode": "UseVarOrInput",
-      "isControlField": false
+      "variableMode": "UseVarOrInput"
     },
     {
       "key": "bridgeCommandName",
       "name": "Bridge 命令名称",
       "type": "Text",
-      "description": "",
-      "isAdvanced": false,
       "validForList": [
         "BridgeCustom"
       ],
-      "invalidForList": [],
       "condition": "仅：BridgeCustom",
       "defaultValue": "",
-      "defaultValueRaw": "",
       "required": true,
-      "variableMode": "UseVarOrInput",
-      "isControlField": false
+      "variableMode": "UseVarOrInput"
     },
     {
       "key": "bridgeArgumentsJson",
       "name": "参数（JSON 对象）",
       "type": "Text",
-      "description": "",
-      "isAdvanced": false,
       "validForList": [
         "BridgeCustom"
       ],
-      "invalidForList": [],
       "condition": "仅：BridgeCustom",
       "defaultValue": "{}",
-      "defaultValueRaw": "{}",
-      "required": false,
-      "variableMode": "UseVarOrInput",
-      "isControlField": false
+      "variableMode": "UseVarOrInput"
     },
     {
       "key": "waitMs",
@@ -300,29 +211,19 @@
       "type": "Number",
       "description": "最长的等待返回结果的，毫秒数",
       "isAdvanced": true,
-      "validForList": [],
-      "invalidForList": [],
-      "condition": "",
       "defaultValue": "10000",
       "defaultValueRaw": 10000,
       "required": true,
-      "variableMode": "Input",
-      "isControlField": false
+      "variableMode": "Input"
     },
     {
       "key": "stopIfFail",
       "name": "失败后停止",
       "type": "Boolean",
       "description": "失败后是否停止动作",
-      "isAdvanced": false,
-      "validForList": [],
-      "invalidForList": [],
-      "condition": "",
       "defaultValue": "true",
       "defaultValueRaw": true,
-      "required": false,
-      "variableMode": "Input",
-      "isControlField": false
+      "variableMode": "Input"
     }
   ],
   "outputs": [
@@ -330,21 +231,13 @@
       "key": "isSuccess",
       "name": "是否成功",
       "type": "Boolean",
-      "description": "操作是否成功",
-      "isAdvanced": false,
-      "validForList": [],
-      "invalidForList": [],
-      "condition": ""
+      "description": "操作是否成功"
     },
     {
       "key": "output",
       "name": "脚本输出",
       "type": "Text",
-      "description": "仅通过接口执行脚本时支持返回内容。",
-      "isAdvanced": false,
-      "validForList": [],
-      "invalidForList": [],
-      "condition": ""
+      "description": "仅通过接口执行脚本时支持返回内容。"
     }
   ],
   "selections": {
@@ -353,153 +246,123 @@
       "items": [
         {
           "value": "RunScript",
-          "name": "[兼容] 执行脚本",
-          "description": ""
+          "name": "[兼容] 执行脚本"
         },
         {
           "value": "bridge.ping",
-          "name": "[Bridge] 测试连接",
-          "description": ""
+          "name": "[Bridge] 测试连接"
         },
         {
           "value": "command.list",
-          "name": "[Bridge] 读取命令目录",
-          "description": ""
+          "name": "[Bridge] 读取命令目录"
         },
         {
           "value": "document.get_context",
-          "name": "[文档] 获取文档上下文",
-          "description": ""
+          "name": "[文档] 获取文档上下文"
         },
         {
           "value": "document.list",
-          "name": "[文档] 列出文档",
-          "description": ""
+          "name": "[文档] 列出文档"
         },
         {
           "value": "document.save",
-          "name": "[文档] 保存文档",
-          "description": ""
+          "name": "[文档] 保存文档"
         },
         {
           "value": "document.save_as",
-          "name": "[文档] 文档另存为",
-          "description": ""
+          "name": "[文档] 文档另存为"
         },
         {
           "value": "selection.get_info",
-          "name": "[选择] 读取选择详情",
-          "description": ""
+          "name": "[选择] 读取选择详情"
         },
         {
           "value": "selection.select_all",
-          "name": "[选择] 全选对象",
-          "description": ""
+          "name": "[选择] 全选对象"
         },
         {
           "value": "selection.clear",
-          "name": "[选择] 清除选择",
-          "description": ""
+          "name": "[选择] 清除选择"
         },
         {
           "value": "selection.select_by_ids",
-          "name": "[选择] 按 ID 选择",
-          "description": ""
+          "name": "[选择] 按 ID 选择"
         },
         {
           "value": "object.delete",
-          "name": "[对象] 删除对象",
-          "description": ""
+          "name": "[对象] 删除对象"
         },
         {
           "value": "object.hide",
-          "name": "[对象] 隐藏对象",
-          "description": ""
+          "name": "[对象] 隐藏对象"
         },
         {
           "value": "object.show",
-          "name": "[对象] 显示对象",
-          "description": ""
+          "name": "[对象] 显示对象"
         },
         {
           "value": "object.lock",
-          "name": "[对象] 锁定对象",
-          "description": ""
+          "name": "[对象] 锁定对象"
         },
         {
           "value": "object.unlock",
-          "name": "[对象] 解锁对象",
-          "description": ""
+          "name": "[对象] 解锁对象"
         },
         {
           "value": "layer.list",
-          "name": "[图层] 列出图层",
-          "description": ""
+          "name": "[图层] 列出图层"
         },
         {
           "value": "layer.create",
-          "name": "[图层] 新建图层",
-          "description": ""
+          "name": "[图层] 新建图层"
         },
         {
           "value": "layer.set_current",
-          "name": "[图层] 设为当前图层",
-          "description": ""
+          "name": "[图层] 设为当前图层"
         },
         {
           "value": "layer.set_visible",
-          "name": "[图层] 设置图层可见性",
-          "description": ""
+          "name": "[图层] 设置图层可见性"
         },
         {
           "value": "layer.set_locked",
-          "name": "[图层] 设置图层锁定",
-          "description": ""
+          "name": "[图层] 设置图层锁定"
         },
         {
           "value": "view.zoom_extents",
-          "name": "[视图] 缩放到全部",
-          "description": ""
+          "name": "[视图] 缩放到全部"
         },
         {
           "value": "view.zoom_selection",
-          "name": "[视图] 缩放到选择",
-          "description": ""
+          "name": "[视图] 缩放到选择"
         },
         {
           "value": "geometry.add_point",
-          "name": "[几何] 创建点",
-          "description": ""
+          "name": "[几何] 创建点"
         },
         {
           "value": "geometry.add_line",
-          "name": "[几何] 创建直线",
-          "description": ""
+          "name": "[几何] 创建直线"
         },
         {
           "value": "geometry.add_box",
-          "name": "[几何] 创建长方体",
-          "description": ""
+          "name": "[几何] 创建长方体"
         },
         {
           "value": "geometry.add_sphere",
-          "name": "[几何] 创建球体",
-          "description": ""
+          "name": "[几何] 创建球体"
         },
         {
           "value": "command.run",
-          "name": "[命令] 运行任意 Rhino 命令",
-          "description": ""
+          "name": "[命令] 运行任意 Rhino 命令"
         },
         {
           "value": "python.run_file",
-          "name": "[脚本] 运行 Python 文件",
-          "description": ""
+          "name": "[脚本] 运行 Python 文件"
         },
         {
           "value": "BridgeCustom",
-          "name": "[高级] 发送自定义 Bridge 命令",
-          "description": ""
+          "name": "[高级] 发送自定义 Bridge 命令"
         }
       ]
     }

@@ -8,8 +8,6 @@
   "category": "Image",
   "categoryName": "图片处理",
   "stepType": "Action",
-  "isRisky": false,
-  "isProOnly": false,
   "helpLink": "https://docs.getquicker.net/v2/xaction/modules/readqrcode",
   "inputs": [
     {
@@ -17,44 +15,27 @@
       "name": "输入图片",
       "type": "Image",
       "description": "要识别二维码的图片",
-      "isAdvanced": false,
-      "validForList": [],
-      "invalidForList": [],
-      "condition": "",
       "defaultValue": "",
       "required": true,
-      "variableMode": "UseVar",
-      "isControlField": false
+      "variableMode": "UseVar"
     },
     {
       "key": "tryNetwork",
       "name": "本地识别失败后尝试在线识别服务",
       "type": "Boolean",
       "description": "在线服务拥有更强识别能力（频率限制2秒/次，仅专业版提供）。",
-      "isAdvanced": false,
-      "validForList": [],
-      "invalidForList": [],
-      "condition": "",
       "defaultValue": "false",
       "defaultValueRaw": false,
-      "required": false,
-      "variableMode": "Input",
-      "isControlField": false
+      "variableMode": "Input"
     },
     {
       "key": "stopIfFail",
       "name": "失败后停止",
       "type": "Boolean",
       "description": "失败后是否停止动作",
-      "isAdvanced": false,
-      "validForList": [],
-      "invalidForList": [],
-      "condition": "",
       "defaultValue": "true",
       "defaultValueRaw": true,
-      "required": false,
-      "variableMode": "Input",
-      "isControlField": false
+      "variableMode": "Input"
     }
   ],
   "outputs": [
@@ -62,43 +43,26 @@
       "key": "isSuccess",
       "name": "是否成功",
       "type": "Boolean",
-      "description": "操作是否成功",
-      "isAdvanced": false,
-      "validForList": [],
-      "invalidForList": [],
-      "condition": ""
+      "description": "操作是否成功"
     },
     {
       "key": "code",
       "name": "值",
       "type": "Text",
-      "description": "识别出的二维码内容",
-      "isAdvanced": false,
-      "validForList": [],
-      "invalidForList": [],
-      "condition": ""
+      "description": "识别出的二维码内容"
     },
     {
       "key": "codeList",
       "name": "全部二维码值",
       "type": "List",
-      "description": "当一个图片含有多个二维码，且需要返回所有结果时使用。",
-      "isAdvanced": false,
-      "validForList": [],
-      "invalidForList": [],
-      "condition": ""
+      "description": "当一个图片含有多个二维码，且需要返回所有结果时使用。"
     },
     {
       "key": "barcodFormat",
       "name": "条码类型",
       "type": "Text",
-      "description": "识别出的条码类型，如\"EAN-13\"",
-      "isAdvanced": false,
-      "validForList": [],
-      "invalidForList": [],
-      "condition": ""
+      "description": "识别出的条码类型，如\"EAN-13\""
     }
   ],
-  "selections": {},
   "sourceFileName": "catalog.json"
 }

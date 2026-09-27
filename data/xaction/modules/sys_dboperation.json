@@ -8,96 +8,52 @@
   "category": "Compute",
   "categoryName": "计算与比较",
   "stepType": "Action",
-  "isRisky": false,
-  "isProOnly": false,
   "helpLink": "https://docs.getquicker.net/v2/xaction/modules/dboperation",
   "inputs": [
     {
       "key": "dbType",
       "name": "数据库连接类型",
       "type": "Enum",
-      "description": "",
-      "isAdvanced": false,
-      "validForList": [],
-      "invalidForList": [],
-      "condition": "",
       "defaultValue": "",
-      "defaultValueRaw": "",
-      "required": false,
-      "variableMode": "Input",
-      "isControlField": false
+      "variableMode": "Input"
     },
     {
       "key": "connectionString",
       "name": "连接字符串",
       "type": "Text",
       "description": "Connection string",
-      "isAdvanced": false,
-      "validForList": [],
-      "invalidForList": [],
-      "condition": "",
       "defaultValue": "",
-      "defaultValueRaw": "",
-      "required": false,
-      "variableMode": "UseVarOrInput",
-      "isControlField": false
+      "variableMode": "UseVarOrInput"
     },
     {
       "key": "sql",
       "name": "SQL语句",
       "type": "Text",
       "description": "要执行的SQL语句内容",
-      "isAdvanced": false,
-      "validForList": [],
-      "invalidForList": [],
-      "condition": "",
       "defaultValue": "",
-      "defaultValueRaw": "",
-      "required": false,
-      "variableMode": "UseVarOrInput",
-      "isControlField": false
+      "variableMode": "UseVarOrInput"
     },
     {
       "key": "sqlParam",
       "name": "参数",
       "type": "Object",
       "description": "为SQL语句提供的参数",
-      "isAdvanced": false,
-      "validForList": [],
-      "invalidForList": [],
-      "condition": "",
       "defaultValue": "",
-      "defaultValueRaw": "",
-      "required": false,
-      "variableMode": "UseVarOrInput",
-      "isControlField": false
+      "variableMode": "UseVarOrInput"
     },
     {
       "key": "timeoutSeconds",
       "name": "超时秒数",
       "type": "Integer",
       "description": "留空或0表示默认。",
-      "isAdvanced": false,
-      "validForList": [],
-      "invalidForList": [],
-      "condition": "",
       "defaultValue": "",
-      "defaultValueRaw": "",
-      "required": false,
-      "variableMode": "UseVarOrInput",
-      "isControlField": false
+      "variableMode": "UseVarOrInput"
     },
     {
       "key": "operationType",
       "name": "执行方式",
       "type": "Enum",
-      "description": "",
-      "isAdvanced": false,
-      "validForList": [],
-      "invalidForList": [],
-      "condition": "",
       "defaultValue": "Query",
-      "defaultValueRaw": "Query",
       "required": true,
       "variableMode": "Input",
       "isControlField": true
@@ -107,15 +63,9 @@
       "name": "失败后停止",
       "type": "Boolean",
       "description": "失败后是否停止动作",
-      "isAdvanced": false,
-      "validForList": [],
-      "invalidForList": [],
-      "condition": "",
       "defaultValue": "true",
       "defaultValueRaw": true,
-      "required": false,
-      "variableMode": "Input",
-      "isControlField": false
+      "variableMode": "Input"
     }
   ],
   "outputs": [
@@ -123,34 +73,24 @@
       "key": "isSuccess",
       "name": "是否成功",
       "type": "Boolean",
-      "description": "操作是否成功",
-      "isAdvanced": false,
-      "validForList": [],
-      "invalidForList": [],
-      "condition": ""
+      "description": "操作是否成功"
     },
     {
       "key": "rowsAffected",
       "name": "影响行数",
       "type": "Integer",
-      "description": "",
-      "isAdvanced": false,
       "validForList": [
         "Execute"
       ],
-      "invalidForList": [],
       "condition": "仅：Execute"
     },
     {
       "key": "scalarResult",
       "name": "单值结果",
       "type": "Any",
-      "description": "",
-      "isAdvanced": false,
       "validForList": [
         "ExecuteScalar"
       ],
-      "invalidForList": [],
       "condition": "仅：ExecuteScalar"
     },
     {
@@ -158,11 +98,9 @@
       "name": "查询结果(表格)",
       "type": "Table",
       "description": "获取表格类型的行结果",
-      "isAdvanced": false,
       "validForList": [
         "Query"
       ],
-      "invalidForList": [],
       "condition": "仅：Query"
     },
     {
@@ -170,11 +108,9 @@
       "name": "查询结果(对象列表)",
       "type": "Object",
       "description": "获得动态对象列表类型的结果",
-      "isAdvanced": false,
       "validForList": [
         "Query"
       ],
-      "invalidForList": [],
       "condition": "仅：Query"
     },
     {
@@ -182,23 +118,18 @@
       "name": "首项结果",
       "type": "Object",
       "description": "如果只需要返回结果的第一行，可以使用此项输出，支持词典或dynamic对象。没有结果时返回null。",
-      "isAdvanced": false,
       "validForList": [
         "Query"
       ],
-      "invalidForList": [],
       "condition": "仅：Query"
     },
     {
       "key": "rowCount",
       "name": "结果行数",
       "type": "Integer",
-      "description": "",
-      "isAdvanced": false,
       "validForList": [
         "Query"
       ],
-      "invalidForList": [],
       "condition": "仅：Query"
     }
   ],
@@ -208,28 +139,23 @@
       "items": [
         {
           "value": "sqlserver",
-          "name": "SQL Server",
-          "description": ""
+          "name": "SQL Server"
         },
         {
           "value": "mysql",
-          "name": "MySQL",
-          "description": ""
+          "name": "MySQL"
         },
         {
           "value": "sqlite",
-          "name": "SQLite",
-          "description": ""
+          "name": "SQLite"
         },
         {
           "value": "oledb",
-          "name": "OleDB",
-          "description": ""
+          "name": "OleDB"
         },
         {
           "value": "odbc",
-          "name": "ODBC",
-          "description": ""
+          "name": "ODBC"
         }
       ]
     },
@@ -238,18 +164,15 @@
       "items": [
         {
           "value": "Query",
-          "name": "Query：查询并返回结果数据",
-          "description": ""
+          "name": "Query：查询并返回结果数据"
         },
         {
           "value": "Execute",
-          "name": "Execute：执行并返回影响的行数",
-          "description": ""
+          "name": "Execute：执行并返回影响的行数"
         },
         {
           "value": "ExecuteScalar",
-          "name": "ExecuteScalar：执行并返回单个值(首行首列的值)",
-          "description": ""
+          "name": "ExecuteScalar：执行并返回单个值(首行首列的值)"
         }
       ]
     }

@@ -8,21 +8,13 @@
   "category": "Text",
   "categoryName": "文本处理",
   "stepType": "Action",
-  "isRisky": false,
-  "isProOnly": false,
   "helpLink": "https://docs.getquicker.net/v2/xaction/modules/enc",
   "inputs": [
     {
       "key": "operation",
       "name": "操作类型",
       "type": "Enum",
-      "description": "",
-      "isAdvanced": false,
-      "validForList": [],
-      "invalidForList": [],
-      "condition": "",
       "defaultValue": "hash_hmac",
-      "defaultValueRaw": "hash_hmac",
       "required": true,
       "variableMode": "Input",
       "isControlField": true
@@ -31,37 +23,22 @@
       "key": "inputContentType",
       "name": "输入内容类型",
       "type": "Enum",
-      "description": "",
-      "isAdvanced": false,
-      "validForList": [],
-      "invalidForList": [],
-      "condition": "",
       "defaultValue": "text",
-      "defaultValueRaw": "text",
-      "required": false,
-      "variableMode": "Input",
-      "isControlField": false
+      "variableMode": "Input"
     },
     {
       "key": "input",
       "name": "输入",
       "type": "Text",
       "description": "待加密或解密的内容",
-      "isAdvanced": false,
-      "validForList": [],
-      "invalidForList": [],
-      "condition": "",
       "defaultValue": "",
       "required": true,
-      "variableMode": "UseVarOrInput",
-      "isControlField": false
+      "variableMode": "UseVarOrInput"
     },
     {
       "key": "keyContentType",
       "name": "密钥内容类型",
       "type": "Enum",
-      "description": "",
-      "isAdvanced": false,
       "validForList": [
         "enc_des",
         "dec_des",
@@ -69,20 +46,14 @@
         "dec_aes",
         "hash_hmac"
       ],
-      "invalidForList": [],
       "condition": "仅：enc_des, dec_des, enc_aes, dec_aes, hash_hmac",
       "defaultValue": "text",
-      "defaultValueRaw": "text",
-      "required": false,
-      "variableMode": "Input",
-      "isControlField": false
+      "variableMode": "Input"
     },
     {
       "key": "key",
       "name": "密钥",
       "type": "Text",
-      "description": "",
-      "isAdvanced": false,
       "validForList": [
         "enc_des",
         "dec_des",
@@ -90,157 +61,116 @@
         "dec_aes",
         "hash_hmac"
       ],
-      "invalidForList": [],
       "condition": "仅：enc_des, dec_des, enc_aes, dec_aes, hash_hmac",
       "defaultValue": "",
       "required": true,
-      "variableMode": "UseVarOrInput",
-      "isControlField": false
+      "variableMode": "UseVarOrInput"
     },
     {
       "key": "ivContentType",
       "name": "初始化向量IV内容类型",
       "type": "Enum",
-      "description": "",
-      "isAdvanced": false,
       "validForList": [
         "enc_des",
         "dec_des",
         "enc_aes",
         "dec_aes"
       ],
-      "invalidForList": [],
       "condition": "仅：enc_des, dec_des, enc_aes, dec_aes",
       "defaultValue": "text",
-      "defaultValueRaw": "text",
-      "required": false,
-      "variableMode": "Input",
-      "isControlField": false
+      "variableMode": "Input"
     },
     {
       "key": "iv",
       "name": "初始化向量",
       "type": "Text",
-      "description": "",
-      "isAdvanced": false,
       "validForList": [
         "enc_des",
         "dec_des",
         "enc_aes",
         "dec_aes"
       ],
-      "invalidForList": [],
       "condition": "仅：enc_des, dec_des, enc_aes, dec_aes",
       "defaultValue": "",
       "required": true,
-      "variableMode": "UseVarOrInput",
-      "isControlField": false
+      "variableMode": "UseVarOrInput"
     },
     {
       "key": "pairKey",
       "name": "公钥/私钥",
       "type": "Text",
       "description": "XML格式的公钥（加密用）或私钥（解密用）",
-      "isAdvanced": false,
       "validForList": [
         "enc_rsa",
         "dec_rsa"
       ],
-      "invalidForList": [],
       "condition": "仅：enc_rsa, dec_rsa",
       "defaultValue": "",
       "required": true,
-      "variableMode": "UseVarOrInput",
-      "isControlField": false
+      "variableMode": "UseVarOrInput"
     },
     {
       "key": "hashType",
       "name": "算法",
       "type": "Text",
-      "description": "",
-      "isAdvanced": false,
       "validForList": [
         "hash"
       ],
-      "invalidForList": [],
       "condition": "仅：hash",
       "defaultValue": "MD5",
-      "defaultValueRaw": "MD5",
       "required": true,
-      "variableMode": "UseVarOrInput",
-      "isControlField": false
+      "variableMode": "UseVarOrInput"
     },
     {
       "key": "hmacAlgorithm",
       "name": "算法",
       "type": "Text",
-      "description": "",
-      "isAdvanced": false,
       "validForList": [
         "hash_hmac"
       ],
-      "invalidForList": [],
       "condition": "仅：hash_hmac",
       "defaultValue": "HMACSHA1",
-      "defaultValueRaw": "HMACSHA1",
       "required": true,
-      "variableMode": "UseVarOrInput",
-      "isControlField": false
+      "variableMode": "UseVarOrInput"
     },
     {
       "key": "cipherMode",
       "name": "运算模式",
       "type": "Text",
-      "description": "",
-      "isAdvanced": false,
       "validForList": [
         "enc_des",
         "dec_des",
         "enc_aes",
         "dec_aes"
       ],
-      "invalidForList": [],
       "condition": "仅：enc_des, dec_des, enc_aes, dec_aes",
       "defaultValue": "CBC",
-      "defaultValueRaw": "CBC",
       "required": true,
-      "variableMode": "UseVarOrInput",
-      "isControlField": false
+      "variableMode": "UseVarOrInput"
     },
     {
       "key": "paddingMode",
       "name": "填充模式",
       "type": "Text",
-      "description": "",
-      "isAdvanced": false,
       "validForList": [
         "enc_des",
         "dec_des",
         "enc_aes",
         "dec_aes"
       ],
-      "invalidForList": [],
       "condition": "仅：enc_des, dec_des, enc_aes, dec_aes",
       "defaultValue": "PKCS7",
-      "defaultValueRaw": "PKCS7",
       "required": true,
-      "variableMode": "UseVarOrInput",
-      "isControlField": false
+      "variableMode": "UseVarOrInput"
     },
     {
       "key": "stopIfFail",
       "name": "失败后停止",
       "type": "Boolean",
       "description": "失败后是否停止动作",
-      "isAdvanced": false,
-      "validForList": [],
-      "invalidForList": [],
-      "condition": "",
       "defaultValue": "true",
       "defaultValueRaw": true,
-      "required": false,
-      "variableMode": "Input",
-      "isControlField": false
+      "variableMode": "Input"
     }
   ],
   "outputs": [
@@ -248,56 +178,34 @@
       "key": "isSuccess",
       "name": "是否成功",
       "type": "Boolean",
-      "description": "操作是否成功",
-      "isAdvanced": false,
-      "validForList": [],
-      "invalidForList": [],
-      "condition": ""
+      "description": "操作是否成功"
     },
     {
       "key": "resultText",
       "name": "文本结果",
       "type": "Text",
-      "description": "",
-      "isAdvanced": false,
       "validForList": [
         "dec_des",
         "dec_aes",
         "dec_rsa",
         "local_dec"
       ],
-      "invalidForList": [],
       "condition": "仅：dec_des, dec_aes, dec_rsa, local_dec"
     },
     {
       "key": "resultHex",
       "name": "十六进制编码(大写)",
-      "type": "Text",
-      "description": "",
-      "isAdvanced": false,
-      "validForList": [],
-      "invalidForList": [],
-      "condition": ""
+      "type": "Text"
     },
     {
       "key": "resultLowerHex",
       "name": "十六进制编码(小写)",
-      "type": "Text",
-      "description": "",
-      "isAdvanced": false,
-      "validForList": [],
-      "invalidForList": [],
-      "condition": ""
+      "type": "Text"
     },
     {
       "key": "resultBase64",
       "name": "Base64编码结果",
-      "type": "Text",
-      "description": "",
-      "isAdvanced": false,
-      "validForList": [],
-      "invalidForList": [],
-      "condition": ""
+      "type": "Text"
     }
   ],
   "selections": {
@@ -306,53 +214,43 @@
       "items": [
         {
           "value": "enc_des",
-          "name": "DES 加密",
-          "description": ""
+          "name": "DES 加密"
         },
         {
           "value": "dec_des",
-          "name": "DES 解密",
-          "description": ""
+          "name": "DES 解密"
         },
         {
           "value": "enc_aes",
-          "name": "AES 加密",
-          "description": ""
+          "name": "AES 加密"
         },
         {
           "value": "dec_aes",
-          "name": "AES 解密",
-          "description": ""
+          "name": "AES 解密"
         },
         {
           "value": "enc_rsa",
-          "name": "RSA 加密",
-          "description": ""
+          "name": "RSA 加密"
         },
         {
           "value": "dec_rsa",
-          "name": "RSA 解密",
-          "description": ""
+          "name": "RSA 解密"
         },
         {
           "value": "hash_hmac",
-          "name": "键控哈希 HMAC",
-          "description": ""
+          "name": "键控哈希 HMAC"
         },
         {
           "value": "hash",
-          "name": "哈希（MD5、SHA1等）",
-          "description": ""
+          "name": "哈希（MD5、SHA1等）"
         },
         {
           "value": "local_enc",
-          "name": "自用加密",
-          "description": ""
+          "name": "自用加密"
         },
         {
           "value": "local_dec",
-          "name": "自用解密",
-          "description": ""
+          "name": "自用解密"
         }
       ]
     },
@@ -361,18 +259,15 @@
       "items": [
         {
           "value": "text",
-          "name": "文本",
-          "description": ""
+          "name": "文本"
         },
         {
           "value": "base64",
-          "name": "Base64编码",
-          "description": ""
+          "name": "Base64编码"
         },
         {
           "value": "hex",
-          "name": "十六进制编码",
-          "description": ""
+          "name": "十六进制编码"
         }
       ]
     },
@@ -381,18 +276,15 @@
       "items": [
         {
           "value": "text",
-          "name": "文本",
-          "description": ""
+          "name": "文本"
         },
         {
           "value": "base64",
-          "name": "Base64编码",
-          "description": ""
+          "name": "Base64编码"
         },
         {
           "value": "hex",
-          "name": "十六进制编码",
-          "description": ""
+          "name": "十六进制编码"
         }
       ]
     },
@@ -401,18 +293,15 @@
       "items": [
         {
           "value": "text",
-          "name": "文本",
-          "description": ""
+          "name": "文本"
         },
         {
           "value": "base64",
-          "name": "Base64编码",
-          "description": ""
+          "name": "Base64编码"
         },
         {
           "value": "hex",
-          "name": "十六进制编码",
-          "description": ""
+          "name": "十六进制编码"
         }
       ]
     },
@@ -421,28 +310,23 @@
       "items": [
         {
           "value": "MD5",
-          "name": "MD5",
-          "description": ""
+          "name": "MD5"
         },
         {
           "value": "SHA1",
-          "name": "SHA1",
-          "description": ""
+          "name": "SHA1"
         },
         {
           "value": "SHA256",
-          "name": "SHA256",
-          "description": ""
+          "name": "SHA256"
         },
         {
           "value": "SHA384",
-          "name": "SHA384",
-          "description": ""
+          "name": "SHA384"
         },
         {
           "value": "SHA512",
-          "name": "SHA512",
-          "description": ""
+          "name": "SHA512"
         }
       ]
     },
@@ -451,33 +335,27 @@
       "items": [
         {
           "value": "HMACSHA1",
-          "name": "HMACSHA1",
-          "description": ""
+          "name": "HMACSHA1"
         },
         {
           "value": "HMACSHA256",
-          "name": "HMACSHA256",
-          "description": ""
+          "name": "HMACSHA256"
         },
         {
           "value": "HMACSHA384",
-          "name": "HMACSHA384",
-          "description": ""
+          "name": "HMACSHA384"
         },
         {
           "value": "HMACSHA512",
-          "name": "HMACSHA512",
-          "description": ""
+          "name": "HMACSHA512"
         },
         {
           "value": "MACTripleDES",
-          "name": "MACTripleDES",
-          "description": ""
+          "name": "MACTripleDES"
         },
         {
           "value": "HMACMD5",
-          "name": "HMACMD5",
-          "description": ""
+          "name": "HMACMD5"
         }
       ]
     },
@@ -486,28 +364,23 @@
       "items": [
         {
           "value": "CBC",
-          "name": "CBC(密码块链，默认)",
-          "description": ""
+          "name": "CBC(密码块链，默认)"
         },
         {
           "value": "CFB",
-          "name": "CFB(加密反馈)",
-          "description": ""
+          "name": "CFB(加密反馈)"
         },
         {
           "value": "CTS",
-          "name": "CTS(密文窃取)",
-          "description": ""
+          "name": "CTS(密文窃取)"
         },
         {
           "value": "ECB",
-          "name": "ECB(电子密码本)",
-          "description": ""
+          "name": "ECB(电子密码本)"
         },
         {
           "value": "OFB",
-          "name": "OFB(输出反馈)",
-          "description": ""
+          "name": "OFB(输出反馈)"
         }
       ]
     },
@@ -516,28 +389,23 @@
       "items": [
         {
           "value": "PKCS7",
-          "name": "PKCS7",
-          "description": ""
+          "name": "PKCS7"
         },
         {
           "value": "None",
-          "name": "None",
-          "description": ""
+          "name": "None"
         },
         {
           "value": "ANSIX923",
-          "name": "ANSIX923",
-          "description": ""
+          "name": "ANSIX923"
         },
         {
           "value": "ISO10126",
-          "name": "ISO10126",
-          "description": ""
+          "name": "ISO10126"
         },
         {
           "value": "Zeros",
-          "name": "Zeros",
-          "description": ""
+          "name": "Zeros"
         }
       ]
     }

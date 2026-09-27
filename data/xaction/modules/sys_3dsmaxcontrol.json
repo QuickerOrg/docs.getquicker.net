@@ -8,21 +8,13 @@
   "category": "SoftInteraction",
   "categoryName": "第三方软件交互",
   "stepType": "Action",
-  "isRisky": false,
-  "isProOnly": false,
   "helpLink": "https://docs.getquicker.net/v2/xaction/modules/3dsmaxcontrol",
   "inputs": [
     {
       "key": "operation",
       "name": "操作类型",
       "type": "Enum",
-      "description": "",
-      "isAdvanced": false,
-      "validForList": [],
-      "invalidForList": [],
-      "condition": "",
       "defaultValue": "scene.get_context",
-      "defaultValueRaw": "scene.get_context",
       "required": true,
       "variableMode": "Input",
       "isControlField": true
@@ -31,771 +23,549 @@
       "key": "includeTransform",
       "name": "返回对象变换",
       "type": "Boolean",
-      "description": "",
-      "isAdvanced": false,
       "validForList": [
         "object.list"
       ],
-      "invalidForList": [],
       "condition": "仅：object.list",
       "defaultValue": "false",
       "defaultValueRaw": false,
-      "required": false,
-      "variableMode": "Input",
-      "isControlField": false
+      "variableMode": "Input"
     },
     {
       "key": "sceneFilePath",
       "name": "场景文件路径",
       "type": "Text",
       "description": "使用 .max 文件的绝对路径。",
-      "isAdvanced": false,
       "validForList": [
         "scene.save_as"
       ],
-      "invalidForList": [],
       "condition": "仅：scene.save_as",
       "defaultValue": "",
-      "defaultValueRaw": "",
       "required": true,
-      "variableMode": "UseVarOrInput",
-      "isControlField": false
+      "variableMode": "UseVarOrInput"
     },
     {
       "key": "objectRefsJson",
       "name": "对象句柄(JSON 数组)",
       "type": "Text",
       "description": "句柄可从列出对象或选择详情的 handle 字段取得。",
-      "isAdvanced": false,
       "validForList": [
         "selection.select_by_handles"
       ],
-      "invalidForList": [],
       "condition": "仅：selection.select_by_handles",
       "defaultValue": "[]",
-      "defaultValueRaw": "[]",
-      "required": false,
-      "variableMode": "UseVarOrInput",
-      "isControlField": false
+      "variableMode": "UseVarOrInput"
     },
     {
       "key": "selectionMode",
       "name": "选择方式",
       "type": "Text",
       "description": "replace、add 或 remove。",
-      "isAdvanced": false,
       "validForList": [
         "selection.select_by_handles"
       ],
-      "invalidForList": [],
       "condition": "仅：selection.select_by_handles",
       "defaultValue": "replace",
-      "defaultValueRaw": "replace",
-      "required": false,
-      "variableMode": "UseVarOrInput",
-      "isControlField": false
+      "variableMode": "UseVarOrInput"
     },
     {
       "key": "primitiveType",
       "name": "对象类型",
       "type": "Text",
       "description": "支持 box、sphere、cylinder、cone、plane、torus、teapot。",
-      "isAdvanced": false,
       "validForList": [
         "object.create_primitive"
       ],
-      "invalidForList": [],
       "condition": "仅：object.create_primitive",
       "defaultValue": "box",
-      "defaultValueRaw": "box",
-      "required": false,
-      "variableMode": "UseVarOrInput",
-      "isControlField": false
+      "variableMode": "UseVarOrInput"
     },
     {
       "key": "objectName",
       "name": "对象名称",
       "type": "Text",
-      "description": "",
-      "isAdvanced": false,
       "validForList": [
         "object.create_primitive"
       ],
-      "invalidForList": [],
       "condition": "仅：object.create_primitive",
       "defaultValue": "Quicker Object",
-      "defaultValueRaw": "Quicker Object",
-      "required": false,
-      "variableMode": "UseVarOrInput",
-      "isControlField": false
+      "variableMode": "UseVarOrInput"
     },
     {
       "key": "renamePattern",
       "name": "重命名模板",
       "type": "Text",
       "description": "支持 {oldName} 和 {index}，例如 Obj_{index:03d}。",
-      "isAdvanced": false,
       "validForList": [
         "object.rename_selected"
       ],
-      "invalidForList": [],
       "condition": "仅：object.rename_selected",
       "defaultValue": "{oldName}_{index:02d}",
-      "defaultValueRaw": "{oldName}_{index:02d}",
-      "required": false,
-      "variableMode": "UseVarOrInput",
-      "isControlField": false
+      "variableMode": "UseVarOrInput"
     },
     {
       "key": "startIndex",
       "name": "起始编号",
       "type": "Integer",
-      "description": "",
-      "isAdvanced": false,
       "validForList": [
         "object.rename_selected"
       ],
-      "invalidForList": [],
       "condition": "仅：object.rename_selected",
       "defaultValue": "1",
       "defaultValueRaw": 1,
-      "required": false,
-      "variableMode": "Input",
-      "isControlField": false
+      "variableMode": "Input"
     },
     {
       "key": "offsetX",
       "name": "移动 X",
       "type": "Number",
-      "description": "",
-      "isAdvanced": false,
       "validForList": [
         "object.move_selected"
       ],
-      "invalidForList": [],
       "condition": "仅：object.move_selected",
       "defaultValue": "100",
       "defaultValueRaw": 100,
-      "required": false,
-      "variableMode": "Input",
-      "isControlField": false
+      "variableMode": "Input"
     },
     {
       "key": "offsetY",
       "name": "移动 Y",
       "type": "Number",
-      "description": "",
-      "isAdvanced": false,
       "validForList": [
         "object.move_selected"
       ],
-      "invalidForList": [],
       "condition": "仅：object.move_selected",
       "defaultValue": "0",
       "defaultValueRaw": 0,
-      "required": false,
-      "variableMode": "Input",
-      "isControlField": false
+      "variableMode": "Input"
     },
     {
       "key": "offsetZ",
       "name": "移动 Z",
       "type": "Number",
-      "description": "",
-      "isAdvanced": false,
       "validForList": [
         "object.move_selected"
       ],
-      "invalidForList": [],
       "condition": "仅：object.move_selected",
       "defaultValue": "0",
       "defaultValueRaw": 0,
-      "required": false,
-      "variableMode": "Input",
-      "isControlField": false
+      "variableMode": "Input"
     },
     {
       "key": "coordinateSpace",
       "name": "坐标空间",
       "type": "Text",
       "description": "global 使用世界坐标；local 使用父级坐标。",
-      "isAdvanced": false,
       "validForList": [
         "object.move_selected"
       ],
-      "invalidForList": [],
       "condition": "仅：object.move_selected",
       "defaultValue": "global",
-      "defaultValueRaw": "global",
-      "required": false,
-      "variableMode": "UseVarOrInput",
-      "isControlField": false
+      "variableMode": "UseVarOrInput"
     },
     {
       "key": "cloneCount",
       "name": "每个对象复制份数",
       "type": "Integer",
-      "description": "",
-      "isAdvanced": false,
       "validForList": [
         "object.clone_selected"
       ],
-      "invalidForList": [],
       "condition": "仅：object.clone_selected",
       "defaultValue": "1",
       "defaultValueRaw": 1,
-      "required": false,
-      "variableMode": "Input",
-      "isControlField": false
+      "variableMode": "Input"
     },
     {
       "key": "clonePattern",
       "name": "复制对象命名模板",
       "type": "Text",
       "description": "支持 {oldName} 和 {index}。",
-      "isAdvanced": false,
       "validForList": [
         "object.clone_selected"
       ],
-      "invalidForList": [],
       "condition": "仅：object.clone_selected",
       "defaultValue": "{oldName}_copy{index}",
-      "defaultValueRaw": "{oldName}_copy{index}",
-      "required": false,
-      "variableMode": "UseVarOrInput",
-      "isControlField": false
+      "variableMode": "UseVarOrInput"
     },
     {
       "key": "cloneOffsetX",
       "name": "每份偏移 X",
       "type": "Number",
-      "description": "",
-      "isAdvanced": false,
       "validForList": [
         "object.clone_selected"
       ],
-      "invalidForList": [],
       "condition": "仅：object.clone_selected",
       "defaultValue": "20",
       "defaultValueRaw": 20,
-      "required": false,
-      "variableMode": "Input",
-      "isControlField": false
+      "variableMode": "Input"
     },
     {
       "key": "cloneOffsetY",
       "name": "每份偏移 Y",
       "type": "Number",
-      "description": "",
-      "isAdvanced": false,
       "validForList": [
         "object.clone_selected"
       ],
-      "invalidForList": [],
       "condition": "仅：object.clone_selected",
       "defaultValue": "0",
       "defaultValueRaw": 0,
-      "required": false,
-      "variableMode": "Input",
-      "isControlField": false
+      "variableMode": "Input"
     },
     {
       "key": "cloneOffsetZ",
       "name": "每份偏移 Z",
       "type": "Number",
-      "description": "",
-      "isAdvanced": false,
       "validForList": [
         "object.clone_selected"
       ],
-      "invalidForList": [],
       "condition": "仅：object.clone_selected",
       "defaultValue": "0",
       "defaultValueRaw": 0,
-      "required": false,
-      "variableMode": "Input",
-      "isControlField": false
+      "variableMode": "Input"
     },
     {
       "key": "rotationX",
       "name": "旋转 X(度)",
       "type": "Number",
-      "description": "",
-      "isAdvanced": false,
       "validForList": [
         "object.rotate_selected"
       ],
-      "invalidForList": [],
       "condition": "仅：object.rotate_selected",
       "defaultValue": "0",
       "defaultValueRaw": 0,
-      "required": false,
-      "variableMode": "Input",
-      "isControlField": false
+      "variableMode": "Input"
     },
     {
       "key": "rotationY",
       "name": "旋转 Y(度)",
       "type": "Number",
-      "description": "",
-      "isAdvanced": false,
       "validForList": [
         "object.rotate_selected"
       ],
-      "invalidForList": [],
       "condition": "仅：object.rotate_selected",
       "defaultValue": "0",
       "defaultValueRaw": 0,
-      "required": false,
-      "variableMode": "Input",
-      "isControlField": false
+      "variableMode": "Input"
     },
     {
       "key": "rotationZ",
       "name": "旋转 Z(度)",
       "type": "Number",
-      "description": "",
-      "isAdvanced": false,
       "validForList": [
         "object.rotate_selected"
       ],
-      "invalidForList": [],
       "condition": "仅：object.rotate_selected",
       "defaultValue": "90",
       "defaultValueRaw": 90,
-      "required": false,
-      "variableMode": "Input",
-      "isControlField": false
+      "variableMode": "Input"
     },
     {
       "key": "rotationSpace",
       "name": "旋转坐标空间",
       "type": "Text",
       "description": "world、local 或 parent；每个对象围绕自身轴心旋转。",
-      "isAdvanced": false,
       "validForList": [
         "object.rotate_selected"
       ],
-      "invalidForList": [],
       "condition": "仅：object.rotate_selected",
       "defaultValue": "world",
-      "defaultValueRaw": "world",
-      "required": false,
-      "variableMode": "UseVarOrInput",
-      "isControlField": false
+      "variableMode": "UseVarOrInput"
     },
     {
       "key": "scaleX",
       "name": "缩放 X 倍率",
       "type": "Number",
-      "description": "",
-      "isAdvanced": false,
       "validForList": [
         "object.scale_selected"
       ],
-      "invalidForList": [],
       "condition": "仅：object.scale_selected",
       "defaultValue": "2",
       "defaultValueRaw": 2,
-      "required": false,
-      "variableMode": "Input",
-      "isControlField": false
+      "variableMode": "Input"
     },
     {
       "key": "scaleY",
       "name": "缩放 Y 倍率",
       "type": "Number",
-      "description": "",
-      "isAdvanced": false,
       "validForList": [
         "object.scale_selected"
       ],
-      "invalidForList": [],
       "condition": "仅：object.scale_selected",
       "defaultValue": "2",
       "defaultValueRaw": 2,
-      "required": false,
-      "variableMode": "Input",
-      "isControlField": false
+      "variableMode": "Input"
     },
     {
       "key": "scaleZ",
       "name": "缩放 Z 倍率",
       "type": "Number",
-      "description": "",
-      "isAdvanced": false,
       "validForList": [
         "object.scale_selected"
       ],
-      "invalidForList": [],
       "condition": "仅：object.scale_selected",
       "defaultValue": "2",
       "defaultValueRaw": 2,
-      "required": false,
-      "variableMode": "Input",
-      "isControlField": false
+      "variableMode": "Input"
     },
     {
       "key": "hiddenState",
       "name": "隐藏",
       "type": "Boolean",
-      "description": "",
-      "isAdvanced": false,
       "validForList": [
         "object.set_hidden"
       ],
-      "invalidForList": [],
       "condition": "仅：object.set_hidden",
       "defaultValue": "true",
       "defaultValueRaw": true,
-      "required": false,
-      "variableMode": "Input",
-      "isControlField": false
+      "variableMode": "Input"
     },
     {
       "key": "frozenState",
       "name": "冻结",
       "type": "Boolean",
-      "description": "",
-      "isAdvanced": false,
       "validForList": [
         "object.set_frozen"
       ],
-      "invalidForList": [],
       "condition": "仅：object.set_frozen",
       "defaultValue": "true",
       "defaultValueRaw": true,
-      "required": false,
-      "variableMode": "Input",
-      "isControlField": false
+      "variableMode": "Input"
     },
     {
       "key": "layerName",
       "name": "图层名称",
       "type": "Text",
-      "description": "",
-      "isAdvanced": false,
       "validForList": [
         "layer.create",
         "layer.assign_selected"
       ],
-      "invalidForList": [],
       "condition": "仅：layer.create, layer.assign_selected",
       "defaultValue": "Quicker Layer",
-      "defaultValueRaw": "Quicker Layer",
       "required": true,
-      "variableMode": "UseVarOrInput",
-      "isControlField": false
+      "variableMode": "UseVarOrInput"
     },
     {
       "key": "createLayerIfMissing",
       "name": "图层不存在时创建",
       "type": "Boolean",
-      "description": "",
-      "isAdvanced": false,
       "validForList": [
         "layer.assign_selected"
       ],
-      "invalidForList": [],
       "condition": "仅：layer.assign_selected",
       "defaultValue": "true",
       "defaultValueRaw": true,
-      "required": false,
-      "variableMode": "Input",
-      "isControlField": false
+      "variableMode": "Input"
     },
     {
       "key": "currentFrame",
       "name": "当前帧",
       "type": "Number",
-      "description": "",
-      "isAdvanced": false,
       "validForList": [
         "animation.set_time"
       ],
-      "invalidForList": [],
       "condition": "仅：animation.set_time",
       "defaultValue": "0",
       "defaultValueRaw": 0,
-      "required": false,
-      "variableMode": "Input",
-      "isControlField": false
+      "variableMode": "Input"
     },
     {
       "key": "animationStart",
       "name": "开始帧",
       "type": "Number",
-      "description": "",
-      "isAdvanced": false,
       "validForList": [
         "animation.set_range"
       ],
-      "invalidForList": [],
       "condition": "仅：animation.set_range",
       "defaultValue": "0",
       "defaultValueRaw": 0,
-      "required": false,
-      "variableMode": "Input",
-      "isControlField": false
+      "variableMode": "Input"
     },
     {
       "key": "animationEnd",
       "name": "结束帧",
       "type": "Number",
-      "description": "",
-      "isAdvanced": false,
       "validForList": [
         "animation.set_range"
       ],
-      "invalidForList": [],
       "condition": "仅：animation.set_range",
       "defaultValue": "100",
       "defaultValueRaw": 100,
-      "required": false,
-      "variableMode": "Input",
-      "isControlField": false
+      "variableMode": "Input"
     },
     {
       "key": "renderFilePath",
       "name": "渲染输出路径",
       "type": "Text",
       "description": "扩展名决定图片格式，例如 .png、.jpg 或 .exr。",
-      "isAdvanced": false,
       "validForList": [
         "render.current_frame"
       ],
-      "invalidForList": [],
       "condition": "仅：render.current_frame",
       "defaultValue": "",
-      "defaultValueRaw": "",
       "required": true,
-      "variableMode": "UseVarOrInput",
-      "isControlField": false
+      "variableMode": "UseVarOrInput"
     },
     {
       "key": "renderWidth",
       "name": "渲染宽度",
       "type": "Integer",
-      "description": "",
-      "isAdvanced": false,
       "validForList": [
         "render.current_frame"
       ],
-      "invalidForList": [],
       "condition": "仅：render.current_frame",
       "defaultValue": "1920",
       "defaultValueRaw": 1920,
-      "required": false,
-      "variableMode": "Input",
-      "isControlField": false
+      "variableMode": "Input"
     },
     {
       "key": "renderHeight",
       "name": "渲染高度",
       "type": "Integer",
-      "description": "",
-      "isAdvanced": false,
       "validForList": [
         "render.current_frame"
       ],
-      "invalidForList": [],
       "condition": "仅：render.current_frame",
       "defaultValue": "1080",
       "defaultValueRaw": 1080,
-      "required": false,
-      "variableMode": "Input",
-      "isControlField": false
+      "variableMode": "Input"
     },
     {
       "key": "showRenderWindow",
       "name": "显示渲染窗口",
       "type": "Boolean",
-      "description": "",
-      "isAdvanced": false,
       "validForList": [
         "render.current_frame"
       ],
-      "invalidForList": [],
       "condition": "仅：render.current_frame",
       "defaultValue": "false",
       "defaultValueRaw": false,
-      "required": false,
-      "variableMode": "Input",
-      "isControlField": false
+      "variableMode": "Input"
     },
     {
       "key": "overwriteFile",
       "name": "允许覆盖已有文件",
       "type": "Boolean",
-      "description": "",
-      "isAdvanced": false,
       "validForList": [
         "scene.save_as",
         "render.current_frame"
       ],
-      "invalidForList": [],
       "condition": "仅：scene.save_as, render.current_frame",
       "defaultValue": "false",
       "defaultValueRaw": false,
-      "required": false,
-      "variableMode": "Input",
-      "isControlField": false
+      "variableMode": "Input"
     },
     {
       "key": "commandQuery",
       "name": "搜索内容",
       "type": "Text",
       "description": "按命令 ID、本地标题或帮助文本筛选；留空返回前若干项。",
-      "isAdvanced": false,
       "validForList": [
         "action.search"
       ],
-      "invalidForList": [],
       "condition": "仅：action.search",
       "defaultValue": "",
-      "defaultValueRaw": "",
-      "required": false,
-      "variableMode": "UseVarOrInput",
-      "isControlField": false
+      "variableMode": "UseVarOrInput"
     },
     {
       "key": "maxCount",
       "name": "最多返回数量",
       "type": "Integer",
-      "description": "",
-      "isAdvanced": false,
       "validForList": [
         "action.search"
       ],
-      "invalidForList": [],
       "condition": "仅：action.search",
       "defaultValue": "100",
       "defaultValueRaw": 100,
-      "required": false,
-      "variableMode": "Input",
-      "isControlField": false
+      "variableMode": "Input"
     },
     {
       "key": "commandIdentifier",
       "name": "Action 标识或标题",
       "type": "Text",
       "description": "填写 action.search 返回的 tableId:actionId，或本地化标题；标题不唯一时返回候选项。",
-      "isAdvanced": false,
       "validForList": [
         "action.get_info",
         "action.execute"
       ],
-      "invalidForList": [],
       "condition": "仅：action.get_info, action.execute",
       "defaultValue": "",
-      "defaultValueRaw": "",
-      "required": false,
-      "variableMode": "UseVarOrInput",
-      "isControlField": false
+      "variableMode": "UseVarOrInput"
     },
     {
       "key": "maxScriptCode",
       "name": "MAXScript 代码",
       "type": "Text",
       "description": "表达式直接返回 value；脚本返回最后一个表达式的值。",
-      "isAdvanced": false,
       "validForList": [
         "maxscript.evaluate",
         "maxscript.execute"
       ],
-      "invalidForList": [],
       "condition": "仅：maxscript.evaluate, maxscript.execute",
       "defaultValue": "",
-      "defaultValueRaw": "",
       "required": true,
-      "variableMode": "UseVarOrInput",
-      "isControlField": false
+      "variableMode": "UseVarOrInput"
     },
     {
       "key": "maxScriptFilePath",
       "name": "MAXScript 文件路径",
       "type": "Text",
       "description": "每行一个路径；单个直接运行，多个弹出菜单选择。默认显示文件名，也可填写 显示名称|路径。",
-      "isAdvanced": false,
       "validForList": [
         "maxscript.run_file"
       ],
-      "invalidForList": [],
       "condition": "仅：maxscript.run_file",
       "defaultValue": "",
-      "defaultValueRaw": "",
       "required": true,
-      "variableMode": "UseVarOrInput",
-      "isControlField": false
+      "variableMode": "UseVarOrInput"
     },
     {
       "key": "pythonCode",
       "name": "Python 代码",
       "type": "Text",
       "description": "表达式直接返回 value；脚本可把返回值赋给 result。",
-      "isAdvanced": false,
       "validForList": [
         "python.evaluate",
         "python.execute"
       ],
-      "invalidForList": [],
       "condition": "仅：python.evaluate, python.execute",
       "defaultValue": "",
-      "defaultValueRaw": "",
       "required": true,
-      "variableMode": "UseVarOrInput",
-      "isControlField": false
+      "variableMode": "UseVarOrInput"
     },
     {
       "key": "filePath",
       "name": "Python 文件路径",
       "type": "Text",
-      "description": "",
-      "isAdvanced": false,
       "validForList": [
         "python.run_file"
       ],
-      "invalidForList": [],
       "condition": "仅：python.run_file",
       "defaultValue": "",
-      "defaultValueRaw": "",
       "required": true,
-      "variableMode": "UseVarOrInput",
-      "isControlField": false
+      "variableMode": "UseVarOrInput"
     },
     {
       "key": "commandName",
       "name": "Bridge 命令名称",
       "type": "Text",
-      "description": "",
-      "isAdvanced": false,
       "validForList": [
         "command.custom"
       ],
-      "invalidForList": [],
       "condition": "仅：command.custom",
       "defaultValue": "",
-      "defaultValueRaw": "",
       "required": true,
-      "variableMode": "UseVarOrInput",
-      "isControlField": false
+      "variableMode": "UseVarOrInput"
     },
     {
       "key": "argumentsJson",
       "name": "参数(JSON 对象)",
       "type": "Text",
-      "description": "",
-      "isAdvanced": false,
       "validForList": [
         "command.custom"
       ],
-      "invalidForList": [],
       "condition": "仅：command.custom",
       "defaultValue": "{}",
-      "defaultValueRaw": "{}",
-      "required": false,
-      "variableMode": "UseVarOrInput",
-      "isControlField": false
+      "variableMode": "UseVarOrInput"
     },
     {
       "key": "waitMs",
@@ -803,29 +573,19 @@
       "type": "Number",
       "description": "普通命令建议 30000；渲染等耗时操作请按场景复杂度增大。",
       "isAdvanced": true,
-      "validForList": [],
-      "invalidForList": [],
-      "condition": "",
       "defaultValue": "30000",
       "defaultValueRaw": 30000,
       "required": true,
-      "variableMode": "Input",
-      "isControlField": false
+      "variableMode": "Input"
     },
     {
       "key": "stopIfFail",
       "name": "失败后停止",
       "type": "Boolean",
       "description": "失败后是否停止动作",
-      "isAdvanced": false,
-      "validForList": [],
-      "invalidForList": [],
-      "condition": "",
       "defaultValue": "true",
       "defaultValueRaw": true,
-      "required": false,
-      "variableMode": "Input",
-      "isControlField": false
+      "variableMode": "Input"
     }
   ],
   "outputs": [
@@ -833,21 +593,13 @@
       "key": "isSuccess",
       "name": "是否成功",
       "type": "Boolean",
-      "description": "操作是否成功",
-      "isAdvanced": false,
-      "validForList": [],
-      "invalidForList": [],
-      "condition": ""
+      "description": "操作是否成功"
     },
     {
       "key": "output",
       "name": "命令结果",
       "type": "Text",
-      "description": "3ds Max 返回的 JSON 结果。",
-      "isAdvanced": false,
-      "validForList": [],
-      "invalidForList": [],
-      "condition": ""
+      "description": "3ds Max 返回的 JSON 结果。"
     }
   ],
   "selections": {
@@ -856,198 +608,159 @@
       "items": [
         {
           "value": "bridge.ping",
-          "name": "[Bridge] 测试连接",
-          "description": ""
+          "name": "[Bridge] 测试连接"
         },
         {
           "value": "scene.get_context",
-          "name": "[场景] 读取当前场景上下文",
-          "description": ""
+          "name": "[场景] 读取当前场景上下文"
         },
         {
           "value": "scene.save",
-          "name": "[场景] 保存当前场景",
-          "description": ""
+          "name": "[场景] 保存当前场景"
         },
         {
           "value": "scene.save_as",
-          "name": "[场景] 场景另存为",
-          "description": ""
+          "name": "[场景] 场景另存为"
         },
         {
           "value": "object.list",
-          "name": "[对象] 列出场景对象",
-          "description": ""
+          "name": "[对象] 列出场景对象"
         },
         {
           "value": "selection.get_info",
-          "name": "[选择] 读取选择详情",
-          "description": ""
+          "name": "[选择] 读取选择详情"
         },
         {
           "value": "selection.select_all",
-          "name": "[选择] 全选对象",
-          "description": ""
+          "name": "[选择] 全选对象"
         },
         {
           "value": "selection.clear",
-          "name": "[选择] 清空选择",
-          "description": ""
+          "name": "[选择] 清空选择"
         },
         {
           "value": "selection.invert",
-          "name": "[选择] 反选对象",
-          "description": ""
+          "name": "[选择] 反选对象"
         },
         {
           "value": "selection.select_by_handles",
-          "name": "[选择] 按句柄选择对象",
-          "description": ""
+          "name": "[选择] 按句柄选择对象"
         },
         {
           "value": "object.create_primitive",
-          "name": "[对象] 创建基础对象",
-          "description": ""
+          "name": "[对象] 创建基础对象"
         },
         {
           "value": "object.rename_selected",
-          "name": "[对象] 批量重命名选择对象",
-          "description": ""
+          "name": "[对象] 批量重命名选择对象"
         },
         {
           "value": "object.delete_selected",
-          "name": "[对象] 删除选择对象",
-          "description": ""
+          "name": "[对象] 删除选择对象"
         },
         {
           "value": "object.move_selected",
-          "name": "[对象] 移动选择对象",
-          "description": ""
+          "name": "[对象] 移动选择对象"
         },
         {
           "value": "object.clone_selected",
-          "name": "[对象] 复制选择对象",
-          "description": ""
+          "name": "[对象] 复制选择对象"
         },
         {
           "value": "object.rotate_selected",
-          "name": "[对象] 旋转选择对象",
-          "description": ""
+          "name": "[对象] 旋转选择对象"
         },
         {
           "value": "object.scale_selected",
-          "name": "[对象] 缩放选择对象",
-          "description": ""
+          "name": "[对象] 缩放选择对象"
         },
         {
           "value": "object.set_hidden",
-          "name": "[对象] 设置选择对象隐藏状态",
-          "description": ""
+          "name": "[对象] 设置选择对象隐藏状态"
         },
         {
           "value": "object.set_frozen",
-          "name": "[对象] 设置选择对象冻结状态",
-          "description": ""
+          "name": "[对象] 设置选择对象冻结状态"
         },
         {
           "value": "object.unhide_all",
-          "name": "[对象] 取消隐藏全部对象",
-          "description": ""
+          "name": "[对象] 取消隐藏全部对象"
         },
         {
           "value": "object.unfreeze_all",
-          "name": "[对象] 取消冻结全部对象",
-          "description": ""
+          "name": "[对象] 取消冻结全部对象"
         },
         {
           "value": "layer.list",
-          "name": "[图层] 列出图层",
-          "description": ""
+          "name": "[图层] 列出图层"
         },
         {
           "value": "layer.create",
-          "name": "[图层] 新建图层",
-          "description": ""
+          "name": "[图层] 新建图层"
         },
         {
           "value": "layer.assign_selected",
-          "name": "[图层] 将选择对象移到图层",
-          "description": ""
+          "name": "[图层] 将选择对象移到图层"
         },
         {
           "value": "animation.set_time",
-          "name": "[动画] 设置当前帧",
-          "description": ""
+          "name": "[动画] 设置当前帧"
         },
         {
           "value": "animation.set_range",
-          "name": "[动画] 设置动画范围",
-          "description": ""
+          "name": "[动画] 设置动画范围"
         },
         {
           "value": "view.frame_selection",
-          "name": "[视图] 聚焦选择对象",
-          "description": ""
+          "name": "[视图] 聚焦选择对象"
         },
         {
           "value": "view.frame_all",
-          "name": "[视图] 显示全部对象",
-          "description": ""
+          "name": "[视图] 显示全部对象"
         },
         {
           "value": "render.current_frame",
-          "name": "[渲染] 渲染当前帧到文件",
-          "description": ""
+          "name": "[渲染] 渲染当前帧到文件"
         },
         {
           "value": "action.search",
-          "name": "[Action] 搜索 3ds Max Action",
-          "description": ""
+          "name": "[Action] 搜索 3ds Max Action"
         },
         {
           "value": "action.get_info",
-          "name": "[Action] 读取 3ds Max Action 信息",
-          "description": ""
+          "name": "[Action] 读取 3ds Max Action 信息"
         },
         {
           "value": "action.execute",
-          "name": "[Action] 调用 3ds Max Action",
-          "description": ""
+          "name": "[Action] 调用 3ds Max Action"
         },
         {
           "value": "maxscript.evaluate",
-          "name": "[MAXScript] 计算任意表达式",
-          "description": ""
+          "name": "[MAXScript] 计算任意表达式"
         },
         {
           "value": "maxscript.execute",
-          "name": "[MAXScript] 执行任意脚本",
-          "description": ""
+          "name": "[MAXScript] 执行任意脚本"
         },
         {
           "value": "maxscript.run_file",
-          "name": "[MAXScript] 运行脚本文件",
-          "description": ""
+          "name": "[MAXScript] 运行脚本文件"
         },
         {
           "value": "python.evaluate",
-          "name": "[脚本] 计算任意 Python 表达式",
-          "description": ""
+          "name": "[脚本] 计算任意 Python 表达式"
         },
         {
           "value": "python.execute",
-          "name": "[脚本] 执行任意 Python 脚本",
-          "description": ""
+          "name": "[脚本] 执行任意 Python 脚本"
         },
         {
           "value": "python.run_file",
-          "name": "[脚本] 运行 Python 文件",
-          "description": ""
+          "name": "[脚本] 运行 Python 文件"
         },
         {
           "value": "command.custom",
-          "name": "[高级] 发送自定义 Bridge 命令",
-          "description": ""
+          "name": "[高级] 发送自定义 Bridge 命令"
         }
       ]
     }

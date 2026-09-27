@@ -8,21 +8,13 @@
   "category": "Ui",
   "categoryName": "界面组件",
   "stepType": "Action",
-  "isRisky": false,
-  "isProOnly": false,
   "helpLink": "https://docs.getquicker.net/v2/xaction/modules/customwindow",
   "inputs": [
     {
       "key": "type",
       "name": "操作类型",
       "type": "Enum",
-      "description": "",
-      "isAdvanced": false,
-      "validForList": [],
-      "invalidForList": [],
-      "condition": "",
       "defaultValue": "ShowAndWaitClose",
-      "defaultValueRaw": "ShowAndWaitClose",
       "required": true,
       "variableMode": "Input",
       "isControlField": true
@@ -32,35 +24,28 @@
       "name": "窗口XAML代码",
       "type": "Text",
       "description": "窗口定义XAML代码",
-      "isAdvanced": false,
       "validForList": [
         "ShowAndWaitClose",
         "Show"
       ],
-      "invalidForList": [],
       "condition": "仅：ShowAndWaitClose, Show",
       "defaultValue": "<Window xmlns=\"http://schemas.microsoft.com/winfx/2006/xaml/presentation\"\r\n        xmlns:d=\"http://schemas.microsoft.com/expression/blend/2008\"\r\n        xmlns:x=\"http://schemas.microsoft.com/winfx/2006/xaml\"\r\n        xmlns:hc=\"https://handyorg.github.io/handycontrol\"\r\n        xmlns:mc=\"http://schemas.openxmlformats.org/markup-compatibility/2006\"\r\n        xmlns:qk=\"https://getquicker.net\"\r\n        Width=\"637\"\r\n        Height=\"556\"\r\n        Title=\"Test Window\"\r\n        mc:Ignorable=\"d\">\r\n  <Grid Margin=\"10\">\r\n    <StackPanel>\r\n      <TextBlock Margin=\"10,50,10,50\" Text=\"Hello World！\" FontSize=\"20\" />\r\n     \r\n      <Button Margin=\"10\" qk:Att.Action=\"close:result\" Style=\"{StaticResource ButtonPrimary}\" Width=\"50\">\r\n        关闭\r\n      </Button>\r\n    </StackPanel>\r\n  </Grid>\r\n</Window>",
-      "defaultValueRaw": "<Window xmlns=\"http://schemas.microsoft.com/winfx/2006/xaml/presentation\"\r\n        xmlns:d=\"http://schemas.microsoft.com/expression/blend/2008\"\r\n        xmlns:x=\"http://schemas.microsoft.com/winfx/2006/xaml\"\r\n        xmlns:hc=\"https://handyorg.github.io/handycontrol\"\r\n        xmlns:mc=\"http://schemas.openxmlformats.org/markup-compatibility/2006\"\r\n        xmlns:qk=\"https://getquicker.net\"\r\n        Width=\"637\"\r\n        Height=\"556\"\r\n        Title=\"Test Window\"\r\n        mc:Ignorable=\"d\">\r\n  <Grid Margin=\"10\">\r\n    <StackPanel>\r\n      <TextBlock Margin=\"10,50,10,50\" Text=\"Hello World！\" FontSize=\"20\" />\r\n     \r\n      <Button Margin=\"10\" qk:Att.Action=\"close:result\" Style=\"{StaticResource ButtonPrimary}\" Width=\"50\">\r\n        关闭\r\n      </Button>\r\n    </StackPanel>\r\n  </Grid>\r\n</Window>",
       "required": true,
-      "variableMode": "UseVarOrInput",
-      "isControlField": false
+      "variableMode": "UseVarOrInput"
     },
     {
       "key": "dataMapping",
       "name": "数据映射",
       "type": "Text",
       "description": "将变量与窗口上下文数据进行映射。每行一个，格式为:\"窗口数据项名称:{动作变量名}\" 或 \"窗口数据项:=表达式\"",
-      "isAdvanced": false,
       "validForList": [
         "ShowAndWaitClose",
         "Show"
       ],
-      "invalidForList": [],
       "condition": "仅：ShowAndWaitClose, Show",
       "defaultValue": "",
       "required": true,
-      "variableMode": "UseVarOrInput",
-      "isControlField": false
+      "variableMode": "UseVarOrInput"
     },
     {
       "key": "events",
@@ -72,12 +57,10 @@
         "ShowAndWaitClose",
         "Show"
       ],
-      "invalidForList": [],
       "condition": "仅：ShowAndWaitClose, Show",
       "defaultValue": "",
       "required": true,
-      "variableMode": "UseVarOrInput",
-      "isControlField": false
+      "variableMode": "UseVarOrInput"
     },
     {
       "key": "cscode",
@@ -89,12 +72,9 @@
         "ShowAndWaitClose",
         "Show"
       ],
-      "invalidForList": [],
       "condition": "仅：ShowAndWaitClose, Show",
       "defaultValue": "",
-      "required": false,
-      "variableMode": "UseVarOrInput",
-      "isControlField": false
+      "variableMode": "UseVarOrInput"
     },
     {
       "key": "csReference",
@@ -106,26 +86,18 @@
         "ShowAndWaitClose",
         "Show"
       ],
-      "invalidForList": [],
       "condition": "仅：ShowAndWaitClose, Show",
       "defaultValue": "",
-      "required": false,
-      "variableMode": "UseVarOrInput",
-      "isControlField": false
+      "variableMode": "UseVarOrInput"
     },
     {
       "key": "windowId",
       "name": "窗口标识",
       "type": "Text",
       "description": "如需单独的步骤关闭窗口，需使用标识查找窗口。",
-      "isAdvanced": false,
-      "validForList": [],
-      "invalidForList": [],
-      "condition": "",
       "defaultValue": "",
       "required": true,
-      "variableMode": "UseVarOrInput",
-      "isControlField": false
+      "variableMode": "UseVarOrInput"
     },
     {
       "key": "autoCloseTime",
@@ -137,13 +109,11 @@
         "ShowAndWaitClose",
         "Show"
       ],
-      "invalidForList": [],
       "condition": "仅：ShowAndWaitClose, Show",
       "defaultValue": "0",
       "defaultValueRaw": 0,
       "required": true,
-      "variableMode": "UseVarOrInput",
-      "isControlField": false
+      "variableMode": "UseVarOrInput"
     },
     {
       "key": "winLocation",
@@ -155,13 +125,9 @@
         "ShowAndWaitClose",
         "Show"
       ],
-      "invalidForList": [],
       "condition": "仅：ShowAndWaitClose, Show",
       "defaultValue": "CenterScreen",
-      "defaultValueRaw": "CenterScreen",
-      "required": false,
-      "variableMode": "UseVarOrInput",
-      "isControlField": false
+      "variableMode": "UseVarOrInput"
     },
     {
       "key": "mouseOffset",
@@ -173,13 +139,9 @@
         "ShowAndWaitClose",
         "Show"
       ],
-      "invalidForList": [],
       "condition": "仅：ShowAndWaitClose, Show",
       "defaultValue": "",
-      "defaultValueRaw": "",
-      "required": false,
-      "variableMode": "UseVarOrInput",
-      "isControlField": false
+      "variableMode": "UseVarOrInput"
     },
     {
       "key": "winSize",
@@ -191,64 +153,44 @@
         "ShowAndWaitClose",
         "Show"
       ],
-      "invalidForList": [],
       "condition": "仅：ShowAndWaitClose, Show",
       "defaultValue": "",
-      "defaultValueRaw": "",
-      "required": false,
-      "variableMode": "Input",
-      "isControlField": false
+      "variableMode": "Input"
     },
     {
       "key": "activateMode",
       "name": "激活模式",
       "type": "Enum",
-      "description": "",
       "isAdvanced": true,
       "validForList": [
         "ShowAndWaitClose",
         "Show"
       ],
-      "invalidForList": [],
       "condition": "仅：ShowAndWaitClose, Show",
       "defaultValue": "AutoActivate",
-      "defaultValueRaw": "AutoActivate",
-      "required": false,
-      "variableMode": "UseVarOrInput",
-      "isControlField": false
+      "variableMode": "UseVarOrInput"
     },
     {
       "key": "closeWhenDeactivate",
       "name": "失去焦点后关闭窗口",
       "type": "Text",
       "description": "仅在窗口支持激活（获取焦点）的情况下有效。",
-      "isAdvanced": false,
       "validForList": [
         "ShowAndWaitClose",
         "Show"
       ],
-      "invalidForList": [],
       "condition": "仅：ShowAndWaitClose, Show",
       "defaultValue": "false",
-      "defaultValueRaw": "false",
-      "required": false,
-      "variableMode": "UseVarOrInput",
-      "isControlField": false
+      "variableMode": "UseVarOrInput"
     },
     {
       "key": "stopIfFail",
       "name": "失败后停止",
       "type": "Boolean",
       "description": "失败后是否停止动作",
-      "isAdvanced": false,
-      "validForList": [],
-      "invalidForList": [],
-      "condition": "",
       "defaultValue": "true",
       "defaultValueRaw": true,
-      "required": false,
-      "variableMode": "Input",
-      "isControlField": false
+      "variableMode": "Input"
     }
   ],
   "outputs": [
@@ -256,23 +198,17 @@
       "key": "isSuccess",
       "name": "是否成功",
       "type": "Boolean",
-      "description": "操作是否成功",
-      "isAdvanced": false,
-      "validForList": [],
-      "invalidForList": [],
-      "condition": ""
+      "description": "操作是否成功"
     },
     {
       "key": "result",
       "name": "窗口结果",
       "type": "Text",
       "description": "通过close:result返回的结果",
-      "isAdvanced": false,
       "validForList": [
         "ShowAndWaitClose",
         "Close"
       ],
-      "invalidForList": [],
       "condition": "仅：ShowAndWaitClose, Close"
     },
     {
@@ -280,35 +216,27 @@
       "name": "窗口对象列表",
       "type": "Object",
       "description": "IList<Window>对象",
-      "isAdvanced": false,
       "validForList": [
         "GetWindows"
       ],
-      "invalidForList": [],
       "condition": "仅：GetWindows"
     },
     {
       "key": "windowHandle",
       "name": "窗口句柄",
       "type": "Integer",
-      "description": "",
-      "isAdvanced": false,
       "validForList": [
         "Show"
       ],
-      "invalidForList": [],
       "condition": "仅：Show"
     },
     {
       "key": "windowLocation",
       "name": "关闭时窗口位置",
       "type": "Text",
-      "description": "",
-      "isAdvanced": false,
       "validForList": [
         "ShowAndWaitClose"
       ],
-      "invalidForList": [],
       "condition": "仅：ShowAndWaitClose"
     }
   ],
@@ -318,23 +246,19 @@
       "items": [
         {
           "value": "ShowAndWaitClose",
-          "name": "显示窗口并等待关闭",
-          "description": ""
+          "name": "显示窗口并等待关闭"
         },
         {
           "value": "Show",
-          "name": "显示窗口",
-          "description": ""
+          "name": "显示窗口"
         },
         {
           "value": "Close",
-          "name": "关闭窗口",
-          "description": ""
+          "name": "关闭窗口"
         },
         {
           "value": "GetWindows",
-          "name": "获取窗口列表",
-          "description": ""
+          "name": "获取窗口列表"
         }
       ]
     },
@@ -343,83 +267,67 @@
       "items": [
         {
           "value": "WithMouse1",
-          "name": "跟随鼠标（指针周围）",
-          "description": ""
+          "name": "跟随鼠标（指针周围）"
         },
         {
           "value": "WithMouse2",
-          "name": "跟随鼠标（指针右下）",
-          "description": ""
+          "name": "跟随鼠标（指针右下）"
         },
         {
           "value": "WithMouseTopRight",
-          "name": "跟随鼠标（指针右上）",
-          "description": ""
+          "name": "跟随鼠标（指针右上）"
         },
         {
           "value": "CenterScreen",
-          "name": "屏幕中间",
-          "description": ""
+          "name": "屏幕中间"
         },
         {
           "value": "TopLeft",
-          "name": "屏幕左上",
-          "description": ""
+          "name": "屏幕左上"
         },
         {
           "value": "TopCenter",
-          "name": "屏幕中上",
-          "description": ""
+          "name": "屏幕中上"
         },
         {
           "value": "TopRight",
-          "name": "屏幕右上",
-          "description": ""
+          "name": "屏幕右上"
         },
         {
           "value": "LeftCenter",
-          "name": "屏幕左中",
-          "description": ""
+          "name": "屏幕左中"
         },
         {
           "value": "RightCenter",
-          "name": "屏幕右中",
-          "description": ""
+          "name": "屏幕右中"
         },
         {
           "value": "BottomLeft",
-          "name": "屏幕左下",
-          "description": ""
+          "name": "屏幕左下"
         },
         {
           "value": "BottomCenter",
-          "name": "屏幕中下",
-          "description": ""
+          "name": "屏幕中下"
         },
         {
           "value": "BottomRight",
-          "name": "屏幕右下",
-          "description": ""
+          "name": "屏幕右下"
         },
         {
           "value": "FullScreen",
-          "name": "全屏",
-          "description": ""
+          "name": "全屏"
         },
         {
           "value": "Maximized",
-          "name": "最大化",
-          "description": ""
+          "name": "最大化"
         },
         {
           "value": "Manual",
-          "name": "自定义位置",
-          "description": ""
+          "name": "自定义位置"
         },
         {
           "value": "Auto",
-          "name": "系统默认",
-          "description": ""
+          "name": "系统默认"
         }
       ]
     },
@@ -428,23 +336,19 @@
       "items": [
         {
           "value": "AutoActivate",
-          "name": "支持激活，打开时抢占焦点",
-          "description": ""
+          "name": "支持激活，打开时抢占焦点"
         },
         {
           "value": "NotActivatable",
-          "name": "不支持激活（不占用焦点，仅能使用鼠标操作）",
-          "description": ""
+          "name": "不支持激活（不占用焦点，仅能使用鼠标操作）"
         },
         {
           "value": "NotActivatableMouseThrough",
-          "name": "不支持激活，鼠标穿透",
-          "description": ""
+          "name": "不支持激活，鼠标穿透"
         },
         {
           "value": "NotActivated",
-          "name": "支持激活，打开时不抢占焦点",
-          "description": ""
+          "name": "支持激活，打开时不抢占焦点"
         }
       ]
     },
@@ -453,18 +357,15 @@
       "items": [
         {
           "value": "true",
-          "name": "是",
-          "description": ""
+          "name": "是"
         },
         {
           "value": "false",
-          "name": "否",
-          "description": ""
+          "name": "否"
         },
         {
           "value": "closeIfNotTopmost",
-          "name": "在未置顶时",
-          "description": ""
+          "name": "在未置顶时"
         }
       ]
     }

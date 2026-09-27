@@ -8,8 +8,6 @@
   "category": "Ui",
   "categoryName": "界面组件",
   "stepType": "Action",
-  "isRisky": false,
-  "isProOnly": false,
   "helpLink": "https://docs.getquicker.net/v2/xaction/modules/reportprogress",
   "inputs": [
     {
@@ -17,12 +15,7 @@
       "name": "类型",
       "type": "Enum",
       "description": "操作类型",
-      "isAdvanced": false,
-      "validForList": [],
-      "invalidForList": [],
-      "condition": "",
       "defaultValue": "REQUEST_ID",
-      "defaultValueRaw": "REQUEST_ID",
       "required": true,
       "variableMode": "Input",
       "isControlField": true
@@ -32,67 +25,51 @@
       "name": "进度条ID",
       "type": "Integer",
       "description": "进度条的序号，用于后续更新或删除进度条",
-      "isAdvanced": false,
       "validForList": [
         "UPDATE_PROGRESS",
         "REMOVE"
       ],
-      "invalidForList": [],
       "condition": "仅：UPDATE_PROGRESS, REMOVE",
       "defaultValue": "0",
       "defaultValueRaw": 0,
-      "required": false,
-      "variableMode": "UseVarOrInput",
-      "isControlField": false
+      "variableMode": "UseVarOrInput"
     },
     {
       "key": "title",
       "name": "进度条标题",
       "type": "Text",
       "description": "进度条的标题(显示在进度条上方)",
-      "isAdvanced": false,
       "validForList": [
         "UPDATE_PROGRESS"
       ],
-      "invalidForList": [],
       "condition": "仅：UPDATE_PROGRESS",
       "defaultValue": "",
-      "required": false,
-      "variableMode": "UseVarOrInput",
-      "isControlField": false
+      "variableMode": "UseVarOrInput"
     },
     {
       "key": "percentage",
       "name": "进度百分比",
       "type": "Number",
       "description": "0到100之间的数字",
-      "isAdvanced": false,
       "validForList": [
         "UPDATE_PROGRESS"
       ],
-      "invalidForList": [],
       "condition": "仅：UPDATE_PROGRESS",
       "defaultValue": "0.0",
       "defaultValueRaw": 0,
-      "required": false,
-      "variableMode": "UseVarOrInput",
-      "isControlField": false
+      "variableMode": "UseVarOrInput"
     },
     {
       "key": "text",
       "name": "说明文字",
       "type": "Text",
       "description": "显示在进度条下方",
-      "isAdvanced": false,
       "validForList": [
         "UPDATE_PROGRESS"
       ],
-      "invalidForList": [],
       "condition": "仅：UPDATE_PROGRESS",
       "defaultValue": "",
-      "required": false,
-      "variableMode": "UseVarOrInput",
-      "isControlField": false
+      "variableMode": "UseVarOrInput"
     }
   ],
   "outputs": [
@@ -101,11 +78,9 @@
       "name": "进度条ID",
       "type": "Integer",
       "description": "进度条的序号，用于后续更新或删除进度条",
-      "isAdvanced": false,
       "validForList": [
         "REQUEST_ID"
       ],
-      "invalidForList": [],
       "condition": "仅：REQUEST_ID"
     }
   ],
@@ -115,18 +90,15 @@
       "items": [
         {
           "value": "REQUEST_ID",
-          "name": "创建进度条",
-          "description": ""
+          "name": "创建进度条"
         },
         {
           "value": "UPDATE_PROGRESS",
-          "name": "更新进度",
-          "description": ""
+          "name": "更新进度"
         },
         {
           "value": "REMOVE",
-          "name": "去除进度条",
-          "description": ""
+          "name": "去除进度条"
         }
       ]
     }

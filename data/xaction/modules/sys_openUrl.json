@@ -8,8 +8,6 @@
   "category": "Basic",
   "categoryName": "基础",
   "stepType": "Action",
-  "isRisky": false,
-  "isProOnly": false,
   "helpLink": "https://docs.getquicker.net/v2/xaction/modules/openurl",
   "inputs": [
     {
@@ -17,27 +15,16 @@
       "name": "网址",
       "type": "Text",
       "description": "要打开的网页地址",
-      "isAdvanced": false,
-      "validForList": [],
-      "invalidForList": [],
-      "condition": "",
       "defaultValue": "https://",
-      "defaultValueRaw": "https://",
       "required": true,
-      "variableMode": "UseVarOrInput",
-      "isControlField": false
+      "variableMode": "UseVarOrInput"
     },
     {
       "key": "browser",
       "name": "浏览器",
       "type": "Enum",
       "description": "使用什么浏览器打开网址",
-      "isAdvanced": false,
-      "validForList": [],
-      "invalidForList": [],
-      "condition": "",
       "defaultValue": "default",
-      "defaultValueRaw": "default",
       "required": true,
       "variableMode": "UseVarOrInput",
       "isControlField": true
@@ -47,32 +34,22 @@
       "name": "浏览器程序路径",
       "type": "Text",
       "description": "浏览器exe程序路径",
-      "isAdvanced": false,
       "validForList": [
         "custom"
       ],
-      "invalidForList": [],
       "condition": "仅：custom",
       "defaultValue": "",
-      "defaultValueRaw": "",
       "required": true,
-      "variableMode": "UseVarOrInput",
-      "isControlField": false
+      "variableMode": "UseVarOrInput"
     },
     {
       "key": "stopIfFail",
       "name": "失败后停止",
       "type": "Boolean",
       "description": "失败后是否停止动作",
-      "isAdvanced": false,
-      "validForList": [],
-      "invalidForList": [],
-      "condition": "",
       "defaultValue": "true",
       "defaultValueRaw": true,
-      "required": false,
-      "variableMode": "Input",
-      "isControlField": false
+      "variableMode": "Input"
     }
   ],
   "outputs": [
@@ -80,11 +57,7 @@
       "key": "isSuccess",
       "name": "是否成功",
       "type": "Boolean",
-      "description": "操作是否成功",
-      "isAdvanced": false,
-      "validForList": [],
-      "invalidForList": [],
-      "condition": ""
+      "description": "操作是否成功"
     }
   ],
   "selections": {
@@ -93,58 +66,47 @@
       "items": [
         {
           "value": "default",
-          "name": "(系统默认浏览器)",
-          "description": ""
+          "name": "(系统默认浏览器)"
         },
         {
           "value": "iexplore.exe",
-          "name": "IE浏览器",
-          "description": ""
+          "name": "IE浏览器"
         },
         {
           "value": "microsoft-edge:",
-          "name": "Edge",
-          "description": ""
+          "name": "Edge"
         },
         {
           "value": "msedgeApp",
-          "name": "Edge App模式",
-          "description": ""
+          "name": "Edge App模式"
         },
         {
           "value": "msedgeIncognito",
-          "name": "Edge InPrivate窗口",
-          "description": ""
+          "name": "Edge InPrivate窗口"
         },
         {
           "value": "chrome",
-          "name": "Chrome",
-          "description": ""
+          "name": "Chrome"
         },
         {
           "value": "chromeApp",
-          "name": "Chrome App模式",
-          "description": ""
+          "name": "Chrome App模式"
         },
         {
           "value": "chromeIncognito",
-          "name": "Chrome 无痕窗口",
-          "description": ""
+          "name": "Chrome 无痕窗口"
         },
         {
           "value": "local",
-          "name": "本地浏览器窗口",
-          "description": ""
+          "name": "本地浏览器窗口"
         },
         {
           "value": "custom",
-          "name": "*自定义浏览器程序*",
-          "description": ""
+          "name": "*自定义浏览器程序*"
         },
         {
           "value": "current",
-          "name": "*前台浏览器程序*",
-          "description": ""
+          "name": "*前台浏览器程序*"
         }
       ]
     }

@@ -8,8 +8,6 @@
   "category": "System",
   "categoryName": "Windows系统",
   "stepType": "Action",
-  "isRisky": false,
-  "isProOnly": false,
   "helpLink": "https://docs.getquicker.net/v2/xaction/modules/getactiveprocessinfo",
   "inputs": [
     {
@@ -17,15 +15,9 @@
       "name": "失败后中止动作",
       "type": "Boolean",
       "description": "获取进程信息失败后是否停止动作",
-      "isAdvanced": false,
-      "validForList": [],
-      "invalidForList": [],
-      "condition": "",
       "defaultValue": "true",
       "defaultValueRaw": true,
-      "required": false,
-      "variableMode": "Input",
-      "isControlField": false
+      "variableMode": "Input"
     }
   ],
   "outputs": [
@@ -33,43 +25,26 @@
       "key": "isSuccess",
       "name": "是否成功",
       "type": "Boolean",
-      "description": "是否成功获得进程信息",
-      "isAdvanced": false,
-      "validForList": [],
-      "invalidForList": [],
-      "condition": ""
+      "description": "是否成功获得进程信息"
     },
     {
       "key": "path",
       "name": "程序路径",
       "type": "Text",
-      "description": "获得的进程路径",
-      "isAdvanced": false,
-      "validForList": [],
-      "invalidForList": [],
-      "condition": ""
+      "description": "获得的进程路径"
     },
     {
       "key": "procName",
       "name": "进程名",
       "type": "Text",
-      "description": "进程名通常为程序文件名去掉.exe后缀，大小写不确定。",
-      "isAdvanced": false,
-      "validForList": [],
-      "invalidForList": [],
-      "condition": ""
+      "description": "进程名通常为程序文件名去掉.exe后缀，大小写不确定。"
     },
     {
       "key": "pid",
       "name": "PID",
       "type": "Integer",
-      "description": "进程ID",
-      "isAdvanced": false,
-      "validForList": [],
-      "invalidForList": [],
-      "condition": ""
+      "description": "进程ID"
     }
   ],
-  "selections": {},
   "sourceFileName": "catalog.json"
 }

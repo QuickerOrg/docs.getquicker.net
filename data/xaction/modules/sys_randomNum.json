@@ -8,8 +8,6 @@
   "category": "Compute",
   "categoryName": "计算与比较",
   "stepType": "Action",
-  "isRisky": false,
-  "isProOnly": false,
   "helpLink": "https://docs.getquicker.net/v2/xaction/modules/randomnum",
   "inputs": [
     {
@@ -17,30 +15,20 @@
       "name": "最小值",
       "type": "Integer",
       "description": "随机数范围的最小值（结果大于或等于此值）",
-      "isAdvanced": false,
-      "validForList": [],
-      "invalidForList": [],
-      "condition": "",
       "defaultValue": "0",
       "defaultValueRaw": 0,
       "required": true,
-      "variableMode": "UseVarOrInput",
-      "isControlField": false
+      "variableMode": "UseVarOrInput"
     },
     {
       "key": "max",
       "name": "最大值",
       "type": "Integer",
       "description": "随机数范围的最大值（结果小于此值）",
-      "isAdvanced": false,
-      "validForList": [],
-      "invalidForList": [],
-      "condition": "",
       "defaultValue": "100",
       "defaultValueRaw": 100,
       "required": true,
-      "variableMode": "UseVarOrInput",
-      "isControlField": false
+      "variableMode": "UseVarOrInput"
     }
   ],
   "outputs": [
@@ -48,13 +36,8 @@
       "key": "output",
       "name": "随机数",
       "type": "Integer",
-      "description": "生成的随机数",
-      "isAdvanced": false,
-      "validForList": [],
-      "invalidForList": [],
-      "condition": ""
+      "description": "生成的随机数"
     }
   ],
-  "selections": {},
   "sourceFileName": "catalog.json"
 }

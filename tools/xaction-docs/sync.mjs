@@ -1,8 +1,10 @@
 import crypto from 'node:crypto';
+import {isDeepStrictEqual} from 'node:util';
 import fs from 'node:fs';
 import path from 'node:path';
 import process from 'node:process';
 import {fileURLToPath, pathToFileURL} from 'node:url';
+import {compactModule} from './compact-metadata.mjs';
 import {parseGeneratedCatalog} from './read-generated-catalog.mjs';
 
 const scriptDirectory = path.dirname(fileURLToPath(import.meta.url));
@@ -544,8 +546,8 @@ export type XActionModuleDef = {
   category: string;
   categoryName: string;
   stepType: string;
-  isRisky: boolean;
-  isProOnly: boolean;
+  isRisky?: boolean;
+  isProOnly?: boolean;
   inputs: XActionParam[];
   outputs: XActionOutput[];
   selections?: Record<string, XActionSelection>;
@@ -811,7 +813,7 @@ function diffKeyedItems(beforeItems = [], afterItems = []) {
   const changed = [];
   for (const after of afterItems) {
     const before = beforeByKey.get(after.key);
-    if (!before || JSON.stringify(before) === JSON.stringify(after)) {
+    if (!before || isDeepStrictEqual(before, after)) {
       continue;
     }
     changed.push({key: after.key, before, after});
@@ -833,6 +835,9 @@ function createChangeReport(previousCatalog, nextCatalog) {
     };
   }
 
+  // 旧的完整字段与新的省略默认字段表达同一含义，不应制造整库变更报告。
+  previousCatalog = {...previousCatalog, modules: previousCatalog.modules.map(compactModule)};
+  nextCatalog = {...nextCatalog, modules: nextCatalog.modules.map(compactModule)};
   const previousByKey = new Map(previousCatalog.modules.map((module) => [module.key, module]));
   const nextByKey = new Map(nextCatalog.modules.map((module) => [module.key, module]));
   const addedModules = nextCatalog.modules
@@ -865,7 +870,7 @@ function createChangeReport(previousCatalog, nextCatalog) {
     const inputs = diffKeyedItems(before.inputs, module.inputs);
     const outputs = diffKeyedItems(before.outputs, module.outputs);
     const selectionsChanged =
-      JSON.stringify(before.selections ?? {}) !== JSON.stringify(module.selections ?? {});
+      !isDeepStrictEqual(before.selections ?? {}, module.selections ?? {});
     if (
       fields.length === 0 &&
       inputs.added.length === 0 &&
@@ -965,6 +970,7 @@ function main() {
   const modules = (generatedCatalog ? parseGeneratedCatalog(generatedCatalog)
     : collectFiles(generatedModulesRoot, (value) => value.endsWith('.md')).map(parseGeneratedModule))
     .filter(isUserModule)
+    .map(compactModule)
     .sort((left, right) =>
       left.category === right.category
         ? left.name.localeCompare(right.name, 'zh-Hans-CN')
@@ -1086,7 +1092,7 @@ function main() {
           legacyDocument,
           generatedAt,
           (index + 1) * 10,
-        )}\n\n# ${module.name}\n\n${module.description}\n\n${reference}\n\n${manualBody}`;
+        )}\n\n# ${module.name}\n\n${module.description ?? ''}\n\n${reference}\n\n${manualBody}`;
         writeText(destination, content);
       }
   });

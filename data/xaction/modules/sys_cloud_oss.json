@@ -8,21 +8,13 @@
   "category": "Network",
   "categoryName": "网络服务",
   "stepType": "Action",
-  "isRisky": false,
-  "isProOnly": false,
   "helpLink": "https://docs.getquicker.net/v2/xaction/modules/cloud_oss",
   "inputs": [
     {
       "key": "operation",
       "name": "操作类型",
       "type": "Enum",
-      "description": "",
-      "isAdvanced": false,
-      "validForList": [],
-      "invalidForList": [],
-      "condition": "",
       "defaultValue": "Upload",
-      "defaultValueRaw": "Upload",
       "required": true,
       "variableMode": "Input",
       "isControlField": true
@@ -31,127 +23,81 @@
       "key": "vendor",
       "name": "服务商",
       "type": "Enum",
-      "description": "",
-      "isAdvanced": false,
-      "validForList": [],
-      "invalidForList": [],
-      "condition": "",
       "defaultValue": "Aliyun",
-      "defaultValueRaw": "Aliyun",
       "required": true,
-      "variableMode": "Input",
-      "isControlField": false
+      "variableMode": "Input"
     },
     {
       "key": "vendorSettings",
       "name": "服务商参数",
       "type": "Text",
       "description": "设置相关",
-      "isAdvanced": false,
-      "validForList": [],
-      "invalidForList": [],
-      "condition": "",
       "defaultValue": "",
-      "defaultValueRaw": "",
       "required": true,
-      "variableMode": "Input",
-      "isControlField": false
+      "variableMode": "Input"
     },
     {
       "key": "key",
       "name": "对象名",
       "type": "Text",
       "description": "可选。留空时自动生成对象名。如果以'/'结尾，则在此基础上自动生成对象名。",
-      "isAdvanced": false,
       "validForList": [
         "Upload"
       ],
-      "invalidForList": [],
       "condition": "仅：Upload",
       "defaultValue": "",
-      "defaultValueRaw": "",
-      "required": false,
-      "variableMode": "Input",
-      "isControlField": false
+      "variableMode": "Input"
     },
     {
       "key": "content",
       "name": "上传内容",
       "type": "Any",
       "description": "要上传的文件路径、其它文本内容或图片变量。",
-      "isAdvanced": false,
       "validForList": [
         "Upload"
       ],
-      "invalidForList": [],
       "condition": "仅：Upload",
       "defaultValue": "",
-      "defaultValueRaw": "",
-      "required": false,
-      "variableMode": "Input",
-      "isControlField": false
+      "variableMode": "Input"
     },
     {
       "key": "customDomain",
       "name": "自定义域名",
       "type": "Text",
       "description": "如\"https://files.example.com\"。",
-      "isAdvanced": false,
       "validForList": [
         "Upload"
       ],
-      "invalidForList": [],
       "condition": "仅：Upload",
       "defaultValue": "",
-      "defaultValueRaw": "",
-      "required": false,
-      "variableMode": "Input",
-      "isControlField": false
+      "variableMode": "Input"
     },
     {
       "key": "extraHeaders",
       "name": "额外的请求头",
       "type": "Text",
       "description": "可选。设置厂商相关的特定http头。",
-      "isAdvanced": false,
-      "validForList": [],
-      "invalidForList": [],
-      "condition": "",
       "defaultValue": "",
-      "defaultValueRaw": "",
       "required": true,
-      "variableMode": "Input",
-      "isControlField": false
+      "variableMode": "Input"
     },
     {
       "key": "expireSeconds",
       "name": "超时时间",
       "type": "Number",
       "description": "请求超时时间（秒数）",
-      "isAdvanced": false,
-      "validForList": [],
-      "invalidForList": [],
-      "condition": "",
       "defaultValue": "180",
       "defaultValueRaw": 180,
-      "required": false,
-      "variableMode": "UseVarOrInput",
-      "isControlField": false
+      "variableMode": "UseVarOrInput"
     },
     {
       "key": "stopIfFail",
       "name": "失败后停止",
       "type": "Boolean",
       "description": "失败后是否停止动作",
-      "isAdvanced": false,
-      "validForList": [],
-      "invalidForList": [],
-      "condition": "",
       "defaultValue": "true",
       "defaultValueRaw": true,
-      "required": false,
-      "variableMode": "Input",
-      "isControlField": false
+      "variableMode": "Input"
     }
   ],
   "outputs": [
@@ -159,22 +105,15 @@
       "key": "isSuccess",
       "name": "是否成功",
       "type": "Boolean",
-      "description": "操作是否成功",
-      "isAdvanced": false,
-      "validForList": [],
-      "invalidForList": [],
-      "condition": ""
+      "description": "操作是否成功"
     },
     {
       "key": "vendorUrl",
       "name": "服务商网址",
       "type": "Any",
-      "description": "",
-      "isAdvanced": false,
       "validForList": [
         "Upload"
       ],
-      "invalidForList": [],
       "condition": "仅：Upload"
     },
     {
@@ -182,22 +121,16 @@
       "name": "自定义域名网址",
       "type": "Any",
       "description": "设置了自定义域名时会生成此网址。",
-      "isAdvanced": false,
       "validForList": [
         "Upload"
       ],
-      "invalidForList": [],
       "condition": "仅：Upload"
     },
     {
       "key": "err",
       "name": "错误信息",
       "type": "Text",
-      "description": "出错时输出的错误信息。",
-      "isAdvanced": false,
-      "validForList": [],
-      "invalidForList": [],
-      "condition": ""
+      "description": "出错时输出的错误信息。"
     }
   ],
   "selections": {
@@ -206,8 +139,7 @@
       "items": [
         {
           "value": "Upload",
-          "name": "上传",
-          "description": ""
+          "name": "上传"
         }
       ]
     },
@@ -216,18 +148,15 @@
       "items": [
         {
           "value": "Aliyun",
-          "name": "阿里云 OSS",
-          "description": ""
+          "name": "阿里云 OSS"
         },
         {
           "value": "Tencent",
-          "name": "腾讯云 COS",
-          "description": ""
+          "name": "腾讯云 COS"
         },
         {
           "value": "Qiniu",
-          "name": "七牛云",
-          "description": ""
+          "name": "七牛云"
         }
       ]
     }

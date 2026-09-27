@@ -8,21 +8,13 @@
   "category": "System",
   "categoryName": "Windows系统",
   "stepType": "Action",
-  "isRisky": false,
-  "isProOnly": false,
   "helpLink": "https://docs.getquicker.net/v2/xaction/modules/winservice",
   "inputs": [
     {
       "key": "operation",
       "name": "操作类型",
       "type": "Enum",
-      "description": "",
-      "isAdvanced": false,
-      "validForList": [],
-      "invalidForList": [],
-      "condition": "",
       "defaultValue": "getServiceInfo",
-      "defaultValueRaw": "getServiceInfo",
       "required": true,
       "variableMode": "Input",
       "isControlField": true
@@ -32,63 +24,45 @@
       "name": "服务名",
       "type": "Text",
       "description": "服务名称（不是显示名称），大小写敏感。",
-      "isAdvanced": false,
       "validForList": [
         "getServiceInfo"
       ],
-      "invalidForList": [],
       "condition": "仅：getServiceInfo",
       "defaultValue": "",
-      "required": false,
-      "variableMode": "UseVarOrInput",
-      "isControlField": false
+      "variableMode": "UseVarOrInput"
     },
     {
       "key": "regKeyPath",
       "name": "注册表项路径",
       "type": "Text",
       "description": "如：HKEY_CURRENT_USER\\Software\\Quicker",
-      "isAdvanced": false,
       "validForList": [
         "getRegValue"
       ],
-      "invalidForList": [],
       "condition": "仅：getRegValue",
       "defaultValue": "",
-      "required": false,
-      "variableMode": "UseVarOrInput",
-      "isControlField": false
+      "variableMode": "UseVarOrInput"
     },
     {
       "key": "regValueName",
       "name": "值名称",
       "type": "Text",
       "description": "留空表示\"默认\"项",
-      "isAdvanced": false,
       "validForList": [
         "getRegValue"
       ],
-      "invalidForList": [],
       "condition": "仅：getRegValue",
       "defaultValue": "",
-      "required": false,
-      "variableMode": "UseVarOrInput",
-      "isControlField": false
+      "variableMode": "UseVarOrInput"
     },
     {
       "key": "stopIfFail",
       "name": "失败后停止",
       "type": "Boolean",
       "description": "失败后是否停止动作",
-      "isAdvanced": false,
-      "validForList": [],
-      "invalidForList": [],
-      "condition": "",
       "defaultValue": "true",
       "defaultValueRaw": true,
-      "required": false,
-      "variableMode": "Input",
-      "isControlField": false
+      "variableMode": "Input"
     }
   ],
   "outputs": [
@@ -97,12 +71,10 @@
       "name": "是否存在",
       "type": "Boolean",
       "description": "服务或注册表项是否存在",
-      "isAdvanced": false,
       "validForList": [
         "getServiceInfo",
         "getRegValue"
       ],
-      "invalidForList": [],
       "condition": "仅：getServiceInfo, getRegValue"
     },
     {
@@ -110,11 +82,9 @@
       "name": "显示名",
       "type": "Text",
       "description": "服务的显示名",
-      "isAdvanced": false,
       "validForList": [
         "getServiceInfo"
       ],
-      "invalidForList": [],
       "condition": "仅：getServiceInfo"
     },
     {
@@ -122,11 +92,9 @@
       "name": "服务状态",
       "type": "Integer",
       "description": "服务的当前状态。4:运行中，1:已停止。其它状态请参考文档。",
-      "isAdvanced": false,
       "validForList": [
         "getServiceInfo"
       ],
-      "invalidForList": [],
       "condition": "仅：getServiceInfo"
     },
     {
@@ -134,23 +102,18 @@
       "name": "值",
       "type": "Text",
       "description": "注册表项的值",
-      "isAdvanced": false,
       "validForList": [
         "getRegValue"
       ],
-      "invalidForList": [],
       "condition": "仅：getRegValue"
     },
     {
       "key": "serviceList",
       "name": "服务名列表",
       "type": "List",
-      "description": "",
-      "isAdvanced": false,
       "validForList": [
         "getServiceList"
       ],
-      "invalidForList": [],
       "condition": "仅：getServiceList"
     }
   ],
@@ -160,18 +123,15 @@
       "items": [
         {
           "value": "getServiceInfo",
-          "name": "获取某个服务的信息",
-          "description": ""
+          "name": "获取某个服务的信息"
         },
         {
           "value": "getServiceList",
-          "name": "获取Windows服务列表",
-          "description": ""
+          "name": "获取Windows服务列表"
         },
         {
           "value": "getRegValue",
-          "name": "获取注册表项值",
-          "description": ""
+          "name": "获取注册表项值"
         }
       ]
     }

@@ -8,8 +8,6 @@
   "category": "Ui",
   "categoryName": "界面组件",
   "stepType": "Action",
-  "isRisky": false,
-  "isProOnly": false,
   "helpLink": "https://docs.getquicker.net/v2/xaction/modules/showmenu",
   "inputs": [
     {
@@ -17,104 +15,65 @@
       "name": "菜单数据",
       "type": "Text",
       "description": "可以为Json/菜单文本格式/IList<CommonOperationItem>对象，详情请参考文档",
-      "isAdvanced": false,
-      "validForList": [],
-      "invalidForList": [],
-      "condition": "",
       "defaultValue": "",
       "required": true,
-      "variableMode": "UseVarOrInput",
-      "isControlField": false
+      "variableMode": "UseVarOrInput"
     },
     {
       "key": "fontsize",
       "name": "字体大小",
       "type": "Number",
-      "description": "",
-      "isAdvanced": false,
-      "validForList": [],
-      "invalidForList": [],
-      "condition": "",
       "defaultValue": "12",
       "defaultValueRaw": 12,
       "required": true,
-      "variableMode": "UseVarOrInput",
-      "isControlField": false
+      "variableMode": "UseVarOrInput"
     },
     {
       "key": "iconsize",
       "name": "图标大小",
       "type": "Number",
       "description": "图标的宽度/高度像素数",
-      "isAdvanced": false,
-      "validForList": [],
-      "invalidForList": [],
-      "condition": "",
       "defaultValue": "16",
       "defaultValueRaw": 16,
       "required": true,
-      "variableMode": "UseVarOrInput",
-      "isControlField": false
+      "variableMode": "UseVarOrInput"
     },
     {
       "key": "maxHeight",
       "name": "最大高度",
       "type": "Text",
       "description": "可以为百分比（如:50%）或固定数值（如:500）。",
-      "isAdvanced": false,
-      "validForList": [],
-      "invalidForList": [],
-      "condition": "",
       "defaultValue": "0",
       "defaultValueRaw": 0,
       "required": true,
-      "variableMode": "UseVarOrInput",
-      "isControlField": false
+      "variableMode": "UseVarOrInput"
     },
     {
       "key": "waitMenuClose",
       "name": "等待菜单关闭",
       "type": "Boolean",
       "description": "是否等待菜单关闭后再运行后续步骤",
-      "isAdvanced": false,
-      "validForList": [],
-      "invalidForList": [],
-      "condition": "",
       "defaultValue": "true",
       "defaultValueRaw": true,
-      "required": false,
-      "variableMode": "Input",
-      "isControlField": false
+      "variableMode": "Input"
     },
     {
       "key": "useFocus",
       "name": "占用焦点",
       "type": "Boolean",
       "description": "是否允许菜单占用焦点（从而可以键盘选择菜单项）",
-      "isAdvanced": false,
-      "validForList": [],
-      "invalidForList": [],
-      "condition": "",
       "defaultValue": "false",
       "defaultValueRaw": false,
-      "required": false,
-      "variableMode": "Input",
-      "isControlField": false
+      "variableMode": "Input"
     },
     {
       "key": "stopIfFail",
       "name": "失败后停止",
       "type": "Boolean",
       "description": "失败后是否停止动作",
-      "isAdvanced": false,
-      "validForList": [],
-      "invalidForList": [],
-      "condition": "",
       "defaultValue": "true",
       "defaultValueRaw": true,
-      "required": false,
-      "variableMode": "Input",
-      "isControlField": false
+      "variableMode": "Input"
     }
   ],
   "outputs": [
@@ -122,43 +81,26 @@
       "key": "isSuccess",
       "name": "是否成功",
       "type": "Boolean",
-      "description": "操作是否成功",
-      "isAdvanced": false,
-      "validForList": [],
-      "invalidForList": [],
-      "condition": ""
+      "description": "操作是否成功"
     },
     {
       "key": "selectedItemData",
       "name": "选择的菜单项数据",
       "type": "Text",
-      "description": "选择的菜单项的data属性数据",
-      "isAdvanced": false,
-      "validForList": [],
-      "invalidForList": [],
-      "condition": ""
+      "description": "选择的菜单项的data属性数据"
     },
     {
       "key": "selectedItem",
       "name": "选择的菜单项",
       "type": "Object",
-      "description": "选择的菜单项的CommonOperationItem对象",
-      "isAdvanced": false,
-      "validForList": [],
-      "invalidForList": [],
-      "condition": ""
+      "description": "选择的菜单项的CommonOperationItem对象"
     },
     {
       "key": "clickButton",
       "name": "点击按钮",
       "type": "Text",
-      "description": "点击菜单使用的鼠标按钮：Left（左键）或 Right（右键）",
-      "isAdvanced": false,
-      "validForList": [],
-      "invalidForList": [],
-      "condition": ""
+      "description": "点击菜单使用的鼠标按钮：Left（左键）或 Right（右键）"
     }
   ],
-  "selections": {},
   "sourceFileName": "catalog.json"
 }

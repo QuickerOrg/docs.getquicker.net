@@ -8,8 +8,6 @@
   "category": "Flow",
   "categoryName": "程序流程",
   "stepType": "If",
-  "isRisky": false,
-  "isProOnly": false,
   "helpLink": "https://docs.getquicker.net/v2/xaction/modules/if",
   "inputs": [
     {
@@ -17,17 +15,10 @@
       "name": "如果",
       "type": "Boolean",
       "description": "是否符合指定的条件",
-      "isAdvanced": false,
-      "validForList": [],
-      "invalidForList": [],
-      "condition": "",
       "defaultValue": "",
-      "required": false,
-      "variableMode": "UseVarOrInput",
-      "isControlField": false
+      "variableMode": "UseVarOrInput"
     }
   ],
   "outputs": [],
-  "selections": {},
   "sourceFileName": "catalog.json"
 }

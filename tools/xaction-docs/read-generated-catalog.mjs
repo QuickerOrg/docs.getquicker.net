@@ -1,3 +1,5 @@
+import {compactModule} from './compact-metadata.mjs';
+
 // JSON 是参数事实源；Markdown 只供阅读，不能可靠承载原文和多级条件。
 export function parseGeneratedCatalog(catalog) {
   if (catalog.SchemaVersion != null && catalog.SchemaVersion !== 1) {
@@ -22,7 +24,7 @@ export function parseGeneratedCatalog(catalog) {
     const helpLink = step.HelpLink ?? '';
     const slug = (helpLink.match(/\/([^/?#]+)\/?(?:[?#].*)?$/)?.[1] ||
       step.Key.replace(/^[^:]+:/, '')).toLowerCase();
-    return {
+    return compactModule({
       key: step.Key,
       slug,
       legacySlug: slug,
@@ -56,7 +58,7 @@ export function parseGeneratedCatalog(catalog) {
           })),
         }])),
       sourceFileName: 'catalog.json',
-    };
+    });
   });
 }
 

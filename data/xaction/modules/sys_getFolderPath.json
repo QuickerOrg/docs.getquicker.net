@@ -8,8 +8,6 @@
   "category": "System",
   "categoryName": "Windows系统",
   "stepType": "Action",
-  "isRisky": false,
-  "isProOnly": false,
   "helpLink": "https://docs.getquicker.net/v2/xaction/modules/getfolderpath",
   "inputs": [
     {
@@ -17,15 +15,9 @@
       "name": "目录类型",
       "type": "Enum",
       "description": "Windows的特殊目录类型，详情请搜索\"Environment.SpecialFolder\"。",
-      "isAdvanced": false,
-      "validForList": [],
-      "invalidForList": [],
-      "condition": "",
       "defaultValue": "",
-      "defaultValueRaw": "",
       "required": true,
-      "variableMode": "Input",
-      "isControlField": false
+      "variableMode": "Input"
     }
   ],
   "outputs": [
@@ -33,11 +25,7 @@
       "key": "path",
       "name": "路径",
       "type": "Text",
-      "description": "返回的完整路径",
-      "isAdvanced": false,
-      "validForList": [],
-      "invalidForList": [],
-      "condition": ""
+      "description": "返回的完整路径"
     }
   ],
   "selections": {
@@ -46,243 +34,195 @@
       "items": [
         {
           "value": "AdminTools",
-          "name": "AdminTools",
-          "description": ""
+          "name": "AdminTools"
         },
         {
           "value": "ApplicationData",
-          "name": "ApplicationData 应用数据",
-          "description": ""
+          "name": "ApplicationData 应用数据"
         },
         {
           "value": "CDBurning",
-          "name": "CDBurning",
-          "description": ""
+          "name": "CDBurning"
         },
         {
           "value": "CommonAdminTools",
-          "name": "CommonAdminTools",
-          "description": ""
+          "name": "CommonAdminTools"
         },
         {
           "value": "CommonApplicationData",
-          "name": "CommonApplicationData",
-          "description": ""
+          "name": "CommonApplicationData"
         },
         {
           "value": "CommonDesktopDirectory",
-          "name": "CommonDesktopDirectory",
-          "description": ""
+          "name": "CommonDesktopDirectory"
         },
         {
           "value": "CommonDocuments",
-          "name": "CommonDocuments",
-          "description": ""
+          "name": "CommonDocuments"
         },
         {
           "value": "CommonMusic",
-          "name": "CommonMusic",
-          "description": ""
+          "name": "CommonMusic"
         },
         {
           "value": "CommonOemLinks",
-          "name": "CommonOemLinks",
-          "description": ""
+          "name": "CommonOemLinks"
         },
         {
           "value": "CommonPictures",
-          "name": "CommonPictures",
-          "description": ""
+          "name": "CommonPictures"
         },
         {
           "value": "CommonProgramFiles",
-          "name": "CommonProgramFiles",
-          "description": ""
+          "name": "CommonProgramFiles"
         },
         {
           "value": "CommonProgramFilesX86",
-          "name": "CommonProgramFilesX86",
-          "description": ""
+          "name": "CommonProgramFilesX86"
         },
         {
           "value": "CommonPrograms",
-          "name": "CommonPrograms",
-          "description": ""
+          "name": "CommonPrograms"
         },
         {
           "value": "CommonStartMenu",
-          "name": "CommonStartMenu 通用开始菜单",
-          "description": ""
+          "name": "CommonStartMenu 通用开始菜单"
         },
         {
           "value": "CommonStartup",
-          "name": "CommonStartup 通用启动",
-          "description": ""
+          "name": "CommonStartup 通用启动"
         },
         {
           "value": "CommonTemplates",
-          "name": "CommonTemplates",
-          "description": ""
+          "name": "CommonTemplates"
         },
         {
           "value": "CommonVideos",
-          "name": "CommonVideos",
-          "description": ""
+          "name": "CommonVideos"
         },
         {
           "value": "Cookies",
-          "name": "Cookies",
-          "description": ""
+          "name": "Cookies"
         },
         {
           "value": "Desktop",
-          "name": "Desktop 桌面",
-          "description": ""
+          "name": "Desktop 桌面"
         },
         {
           "value": "DesktopDirectory",
-          "name": "DesktopDirectory",
-          "description": ""
+          "name": "DesktopDirectory"
         },
         {
           "value": "Downloads",
-          "name": "Downloads 下载",
-          "description": ""
+          "name": "Downloads 下载"
         },
         {
           "value": "Favorites",
-          "name": "Favorites 收藏夹",
-          "description": ""
+          "name": "Favorites 收藏夹"
         },
         {
           "value": "Fonts",
-          "name": "Fonts 字体",
-          "description": ""
+          "name": "Fonts 字体"
         },
         {
           "value": "History",
-          "name": "History 网络历史",
-          "description": ""
+          "name": "History 网络历史"
         },
         {
           "value": "InternetCache",
-          "name": "InternetCache 网络缓存",
-          "description": ""
+          "name": "InternetCache 网络缓存"
         },
         {
           "value": "LocalApplicationData",
-          "name": "LocalApplicationData 本地应用数据",
-          "description": ""
+          "name": "LocalApplicationData 本地应用数据"
         },
         {
           "value": "LocalizedResources",
-          "name": "LocalizedResources",
-          "description": ""
+          "name": "LocalizedResources"
         },
         {
           "value": "MyComputer",
-          "name": "MyComputer 我的电脑",
-          "description": ""
+          "name": "MyComputer 我的电脑"
         },
         {
           "value": "MyDocuments",
-          "name": "MyDocuments 我的文档",
-          "description": ""
+          "name": "MyDocuments 我的文档"
         },
         {
           "value": "MyMusic",
-          "name": "MyMusic 我的音乐",
-          "description": ""
+          "name": "MyMusic 我的音乐"
         },
         {
           "value": "MyPictures",
-          "name": "MyPictures 我的照片",
-          "description": ""
+          "name": "MyPictures 我的照片"
         },
         {
           "value": "MyVideos",
-          "name": "MyVideos 我的视频",
-          "description": ""
+          "name": "MyVideos 我的视频"
         },
         {
           "value": "NetworkShortcuts",
-          "name": "NetworkShortcuts 网络位置",
-          "description": ""
+          "name": "NetworkShortcuts 网络位置"
         },
         {
           "value": "Personal",
-          "name": "Personal",
-          "description": ""
+          "name": "Personal"
         },
         {
           "value": "PrinterShortcuts",
-          "name": "PrinterShortcuts 打印机",
-          "description": ""
+          "name": "PrinterShortcuts 打印机"
         },
         {
           "value": "ProgramFiles",
-          "name": "ProgramFiles",
-          "description": ""
+          "name": "ProgramFiles"
         },
         {
           "value": "ProgramFilesX86",
-          "name": "ProgramFilesX86",
-          "description": ""
+          "name": "ProgramFilesX86"
         },
         {
           "value": "Programs",
-          "name": "Programs",
-          "description": ""
+          "name": "Programs"
         },
         {
           "value": "Recent",
-          "name": "Recent 最近",
-          "description": ""
+          "name": "Recent 最近"
         },
         {
           "value": "Resources",
-          "name": "Resources",
-          "description": ""
+          "name": "Resources"
         },
         {
           "value": "SendTo",
-          "name": "SendTo 发送到",
-          "description": ""
+          "name": "SendTo 发送到"
         },
         {
           "value": "StartMenu",
-          "name": "StartMenu 开始菜单",
-          "description": ""
+          "name": "StartMenu 开始菜单"
         },
         {
           "value": "Startup",
-          "name": "Startup 启动",
-          "description": ""
+          "name": "Startup 启动"
         },
         {
           "value": "System",
-          "name": "System System目录",
-          "description": ""
+          "name": "System System目录"
         },
         {
           "value": "SystemX86",
-          "name": "SystemX86",
-          "description": ""
+          "name": "SystemX86"
         },
         {
           "value": "Templates",
-          "name": "Templates 文档模版",
-          "description": ""
+          "name": "Templates 文档模版"
         },
         {
           "value": "UserProfile",
-          "name": "UserProfile",
-          "description": ""
+          "name": "UserProfile"
         },
         {
           "value": "Windows",
-          "name": "Windows Windows根目录",
-          "description": ""
+          "name": "Windows Windows根目录"
         }
       ]
     }

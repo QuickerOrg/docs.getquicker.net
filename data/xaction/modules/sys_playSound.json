@@ -8,21 +8,13 @@
   "category": "System",
   "categoryName": "Windows系统",
   "stepType": "Action",
-  "isRisky": false,
-  "isProOnly": false,
   "helpLink": "https://docs.getquicker.net/v2/xaction/modules/playsound",
   "inputs": [
     {
       "key": "type",
       "name": "类型",
       "type": "Enum",
-      "description": "",
-      "isAdvanced": false,
-      "validForList": [],
-      "invalidForList": [],
-      "condition": "",
       "defaultValue": "LOCAL",
-      "defaultValueRaw": "LOCAL",
       "required": true,
       "variableMode": "Input",
       "isControlField": true
@@ -31,79 +23,52 @@
       "key": "localSound",
       "name": "提示音类型",
       "type": "Enum",
-      "description": "",
-      "isAdvanced": false,
       "validForList": [
         "LOCAL"
       ],
-      "invalidForList": [],
       "condition": "仅：LOCAL",
       "defaultValue": "info",
-      "defaultValueRaw": "info",
-      "required": false,
-      "variableMode": "Input",
-      "isControlField": false
+      "variableMode": "Input"
     },
     {
       "key": "uri",
       "name": "路径或URL",
       "type": "Text",
       "description": "音乐文件的本地路径或网址。",
-      "isAdvanced": false,
       "validForList": [
         "EXTERN"
       ],
-      "invalidForList": [],
       "condition": "仅：EXTERN",
       "defaultValue": "",
-      "required": false,
-      "variableMode": "UseVarOrInput",
-      "isControlField": false
+      "variableMode": "UseVarOrInput"
     },
     {
       "key": "text",
       "name": "文本内容",
       "type": "Text",
       "description": "需要朗读的文本。",
-      "isAdvanced": false,
       "validForList": [
         "TTS"
       ],
-      "invalidForList": [],
       "condition": "仅：TTS",
       "defaultValue": "",
-      "required": false,
-      "variableMode": "UseVarOrInput",
-      "isControlField": false
+      "variableMode": "UseVarOrInput"
     },
     {
       "key": "wait",
       "name": "等待播放完成",
       "type": "Boolean",
-      "description": "",
-      "isAdvanced": false,
-      "validForList": [],
-      "invalidForList": [],
-      "condition": "",
       "defaultValue": "",
-      "required": false,
-      "variableMode": "Input",
-      "isControlField": false
+      "variableMode": "Input"
     },
     {
       "key": "stopIfFail",
       "name": "失败后停止",
       "type": "Boolean",
       "description": "失败后是否停止动作",
-      "isAdvanced": false,
-      "validForList": [],
-      "invalidForList": [],
-      "condition": "",
       "defaultValue": "true",
       "defaultValueRaw": true,
-      "required": false,
-      "variableMode": "Input",
-      "isControlField": false
+      "variableMode": "Input"
     }
   ],
   "outputs": [
@@ -111,11 +76,7 @@
       "key": "isSuccess",
       "name": "是否成功",
       "type": "Boolean",
-      "description": "操作是否成功",
-      "isAdvanced": false,
-      "validForList": [],
-      "invalidForList": [],
-      "condition": ""
+      "description": "操作是否成功"
     }
   ],
   "selections": {
@@ -124,18 +85,15 @@
       "items": [
         {
           "value": "LOCAL",
-          "name": "内置声音提示",
-          "description": ""
+          "name": "内置声音提示"
         },
         {
           "value": "EXTERN",
-          "name": "电脑文件或网络文件",
-          "description": ""
+          "name": "电脑文件或网络文件"
         },
         {
           "value": "TTS",
-          "name": "朗读文本（系统TTS）",
-          "description": ""
+          "name": "朗读文本（系统TTS）"
         }
       ]
     },
@@ -144,33 +102,27 @@
       "items": [
         {
           "value": "info",
-          "name": "信息",
-          "description": ""
+          "name": "信息"
         },
         {
           "value": "snip",
-          "name": "截图",
-          "description": ""
+          "name": "截图"
         },
         {
           "value": "succeed",
-          "name": "成功",
-          "description": ""
+          "name": "成功"
         },
         {
           "value": "warning",
-          "name": "警告",
-          "description": ""
+          "name": "警告"
         },
         {
           "value": "wrong",
-          "name": "错误",
-          "description": ""
+          "name": "错误"
         },
         {
           "value": "dim",
-          "name": "弱提醒",
-          "description": ""
+          "name": "弱提醒"
         }
       ]
     }

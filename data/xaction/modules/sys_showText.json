@@ -83,6 +83,16 @@
       "description": "宽度,高度：逻辑像素或屏幕工作区百分比；自定义位置填坐标。"
     },
     {
+      "key": "rememberWindowPlacement",
+      "name": "记住上次位置和大小",
+      "type": "Boolean",
+      "defaultValue": "false",
+      "required": false,
+      "variableMode": "Input",
+      "condition": "仅：WAIT, NO_WAIT",
+      "description": "关闭窗口后保存位置和大小，下次运行此动作时恢复。按文本窗口标识分别记忆；全屏或最大化的位置类型不使用记忆位置。"
+    },
+    {
       "key": "topMost",
       "name": "置顶显示",
       "type": "Boolean",

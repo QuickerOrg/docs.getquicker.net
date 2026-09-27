@@ -37,6 +37,7 @@ comments: true
 - [表单多选列表](/v2/xaction/modules/form#多选列表已选标签图标)的已选标签会显示选项图标。
 - [长截图](/v2/features/screenshot/capture-pro#长截图编辑)支持「重来」；截图、贴图和录屏标注中 `Ctrl+Shift+Z` 改为重做，「清空全部标注」改用 `Shift+Delete`，详见[快捷键说明](/v2/features/screenshot/capture-pro#快捷键一览)。
 - 主面板「最新动作」会包含在编辑器中打开查看过的动作；更多对话框可用 `Esc` 取消。完整改动见[官网版本记录](https://getquicker.net/V2/Versions)。
+- 补充[列表自定义编辑的变量类型和表单示例](/v2/xaction/modules/managelist#用子程序自定义添加和编辑)、[键鼠脚本提示选项](/v2/xaction/modules/automationscript#提示选项)，以及[Agent 对话文件导入导出和步骤加入对话](/v2/features/ai-and-agent)。
 
 ### 2.2.21 · 代码补全与动作面板
 

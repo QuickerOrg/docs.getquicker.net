@@ -131,6 +131,26 @@
       "variableMode": "Input",
       "condition": "",
       "description": "点击弹出显示帮助内容，MarkDown格式"
+    },
+    {
+      "key": "addSubprogram",
+      "name": "添加项子程序",
+      "type": "Text",
+      "defaultValue": "",
+      "required": false,
+      "variableMode": "Input",
+      "condition": "",
+      "description": "可选，留空使用内置编辑器。输入：_item（文本，空串）、_index（数字，0起始插入位置）、_isNew（布尔，true）。输出：_confirmed（布尔）为true时，使用_item（文本）添加一项。"
+    },
+    {
+      "key": "editSubprogram",
+      "name": "编辑项子程序",
+      "type": "Text",
+      "defaultValue": "",
+      "required": false,
+      "variableMode": "Input",
+      "condition": "",
+      "description": "可选，留空使用内置编辑器。输入：_item（原始文本）、_index（数字，0起始索引）、_isNew（布尔，false）。输出：_confirmed（布尔）为true时，使用_item（文本）替换当前项；取消不修改列表。"
     }
   ],
   "outputs": [

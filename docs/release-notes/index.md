@@ -30,6 +30,24 @@ comments: true
 
 ## 近期文档补充
 
+### 2.2.26 · 动作编辑 AI 分析、上下文菜单与入口整合
+
+- [动作编辑窗口 AI](/v2/features/ai-and-agent#用-ai-编写和修改动作)支持「运行并分析」：可查看最近运行结果、定位失败步骤并分析运行问题。
+- [上下文菜单](/v2/features/tools#上下文菜单)可按文本、图片、文件分别调整内置功能显隐；「管理关联动作」支持自动显示或手动挑选并调整顺序。
+- [轮盘菜单](/v2/features/triggers/circle-menu#按-f2-编辑指向的动作)显示时可按 `F2` 编辑鼠标指向的动作（默认开启，可在轮盘设置中关闭）；已有 F2 子动作及 F2 重复触发设置优先。回退注意见[体验前必读](/important-notice#2226-轮盘-f2-编辑指向的动作)。
+- 「动作管理」整合到 **设置 → 动作 → 全部动作**，「公共子程序管理」整合到 **设置 → 动作 → 公共子程序**；独立公共子程序窗口已移除。原「场景与动作」管理窗口更名为 **场景、动作与触发**。按键双击管理入口移至 **设置 → 功能快捷键**，原有数据沿用。入口说明见[动作面板](/v2/features/action-panel/usage#侧边栏快捷按钮)、[按键双击](/v2/features/triggers/key-double-click)。
+- [AI 对话](/v2/features/ai-and-agent#对话界面)合并展示同轮程序变更，支持撤销已记录完整快照的整轮修改，并保留新对话与输入草稿；粘贴附件与图片文字识别改为按需处理。
+- 录屏鼠标点击提示改为中空圆环；旧 C# 脚本 `Marshal.GetActiveObject` 编译失败等修复见[官网版本记录](https://getquicker.net/V2/Versions)。
+
+### 2.2.25 · 设置改版、设计器 AI 与截图增强
+
+- [设置窗口](/important-notice#2225-设置窗口改版与本机界面状态)改为树形导航，支持搜索并定位具体设置项；选项修改通常立即生效，不再提供整页「应用／撤销」。找不到原位置时可用搜索；无效或尚未提交的输入会在离页时提示。
+- [动作编辑窗口](/v2/features/ai-and-agent#在设计器内修改)在配置好 AI 参数后，可点右上角 AI 按钮或按 `Ctrl+J` 打开面板，用 AI 编写和修改当前动作。
+- [动作面板](/v2/features/action-panel/usage#移动或复制动作)拖动动作时，悬停在场景标签上即可切换场景，便于跨场景整理。
+- [截图 Pro](/v2/features/screenshot/capture-pro#预选截图区域与快捷出口)所有操作均可使用预选截图区域；「框选即出图」和快速保存可同时选择复制到剪贴板、截图后贴图。
+- [HTML 贴图](/v2/features/screenshot/capture-pro#贴图窗口截图后)加强自动识别、剪贴板等来源的隔离，阻止其中的页面脚本；动作作者明确选择 HTML 模式时仍保留脚本能力。
+- 分享更新列表找不到仅限 V2 的子程序（#553）、事件触发最低版本提示反复弹出（#552）等修复见[官网版本记录](https://getquicker.net/V2/Versions)。
+
 ### 2.2.24 · Quicker操作、自定义操作窗设计与 AI 对话
 
 - [Quicker操作](/v2/xaction/modules/quickeroperations#获取最后打开编辑器的动作)新增「获取最后打开编辑器的动作」，可取得本次启动期间最近打开或重新激活编辑器的已安装动作 ID，便于接续编辑。使用该类型的动作需要 **2.2.24 或更高版本**，详见[升级注意](/important-notice#2224-获取最后打开编辑器的动作)。
@@ -121,7 +139,7 @@ comments: true
 
 ### 2.2.9 · 软件连接与场景
 
-- 补充[软件连接总开关](/v2/features/software-connections/install-and-manage#软件连接总开关)（默认开启、仅本机）、[图片无 EXIF 日期时的回退及「拍摄时间为空」](/v2/xaction/modules/imageinfo#无-exif-日期时)、[场景列表右键菜单](/v2/features/scenes#场景与动作管理中的右键)。
+- 补充[软件连接总开关](/v2/features/software-connections/install-and-manage#软件连接总开关)（默认开启、仅本机）、[图片无 EXIF 日期时的回退及「拍摄时间为空」](/v2/xaction/modules/imageinfo#无-exif-日期时)、[场景列表右键菜单](/v2/features/scenes#场景动作与触发管理中的右键)。
 - 记录仪表盘 Esc、Clover 等内嵌资源管理器的场景识别、旧面板工具菜单、模块列表 Ctrl+F，以及截图刷新和工具栏图标等修复。
 
 ### 2.2.8 · 贴图与截图修复

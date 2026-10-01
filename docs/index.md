@@ -20,7 +20,7 @@ Quicker 是 Windows 上的效率工具。你可以从面板运行动作，也可
 
 <div className="docs-landing__notice">
 
-**V2 目前为 Preview 体验版，仅面向专业版用户。** 免费版数据迁移仍在开发，免费账号目前无法登录 2.0。体验前请阅读 [使用限制与回退说明](./important-notice.md)，不建议替换无法中断的 1.x 关键环境。
+**V2 目前为 Preview 体验版，仅面向专业版用户。** 免费版数据迁移仍在开发，免费账号目前无法登录 2.0。体验前请阅读 [安装前准备](./important-notice.md)，不建议替换无法中断的 1.x 关键环境。
 
 </div>
 

@@ -9,7 +9,7 @@ comments: true
 # 更新 Quicker V2
 
 :::caution[Preview · 仅专业版]
-当前 V2 是 **Preview 体验版**，仅面向专业版用户。回退到更早版本前，先看 [体验前必读](/important-notice) 和 [官网版本记录](https://getquicker.net/v2/versions) 里该版本的注意项。
+当前 V2 是 **Preview 体验版**，仅面向专业版用户。回退到更早版本前，先看 [升级与回退](/v2/migration/upgrade-and-rollback) 和 [官网版本记录](https://getquicker.net/v2/versions) 里该版本的注意项。
 :::
 
 日常升级优先用软件内的更新窗口，不要去 `https://getquicker.net/Download` 找 1.x 安装包。需要手动下载某个 2.x 安装器时，用 [https://getquicker.net/V2](https://getquicker.net/V2) 或 [版本记录](https://getquicker.net/v2/versions)。
@@ -37,4 +37,4 @@ comments: true
 3. 看安全软件是否隔离了安装器或更新程序。
 4. 仍失败时，从 [版本记录](https://getquicker.net/v2/versions) 下载对应安装包手动安装；不要覆盖 1.x 数据目录。
 
-降级不是「点一下就回去」。从 2.1.0 降到 2.0.x 可能清掉新数据结构；从 2.1.17 降到 2.1.15 需要重填 AI API 密钥。见 [体验前必读](/important-notice)。
+降级不是「点一下就回去」。从 2.1.0 降到 2.0.x 可能清掉新数据结构；从 2.1.17 降到 2.1.15 需要重填 AI API 密钥。见 [升级与回退](/v2/migration/upgrade-and-rollback)。

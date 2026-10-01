@@ -494,7 +494,7 @@ legacyContentUpdatedAt: "2025-10-30T03:16:55.000Z"
 - 在线模式下，补全会向服务器发送正在编辑的代码、变量类型和默认 using。
 - 本地模式下，组件不可用时 **不会** 自动改回在线服务。
 
-隐私与风险说明见 [体验前必读](/important-notice#2221-代码补全服务)。表达式侧的补全交互仍见 [表达式高级话题](/v2/xaction/concepts/expression-adv#补全与验证)。
+隐私与风险说明见 [升级与回退](/v2/migration/upgrade-and-rollback#2221-代码补全服务)。表达式侧的补全交互仍见 [表达式高级话题](/v2/xaction/concepts/expression-adv#补全与验证)。
 
 ## 限制与排障
 
@@ -538,8 +538,8 @@ legacyContentUpdatedAt: "2025-10-30T03:16:55.000Z"
       description: '运行钮、选中步骤和日志',
     },
     {
-      href: '/important-notice#2221-代码补全服务',
-      label: '体验前必读：代码补全',
+      href: '/v2/migration/upgrade-and-rollback#2221-代码补全服务',
+      label: '代码补全的隐私与兼容',
       description: '在线补全会发送代码；本地默认关闭',
     },
   ]}

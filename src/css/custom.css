@@ -653,7 +653,11 @@ html[data-theme='dark'] .theme-code-block .token.parameter {
   color: var(--quicker-text-muted);
   font-size: 0.8rem;
 }
-.theme-doc-markdown h1 { font-size: 1.9rem; }
+/* Docusaurus sets larger heading sizes inside .markdown; use article sizes here. */
+.theme-doc-markdown h1 { font-size: 1.7rem; }
+.theme-doc-markdown h2 { font-size: 1.28rem; }
+.theme-doc-markdown h3 { font-size: 1.1rem; }
+.theme-doc-markdown h4 { font-size: 1rem; }
 .docs-landing { padding: 0.5rem 0 0.75rem; }
 .markdown .docs-landing > h1 {
   font-size: clamp(1.9rem, 3vw, 2.35rem);

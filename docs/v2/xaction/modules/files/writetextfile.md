@@ -31,7 +31,7 @@ legacyContentUpdatedAt: "2019-12-20T02:52:44.000Z"
 
 **文件路径**：目标文件的完整路径，必须包含文件名。
 
-**文件编码**：UTF8、UTF-16 LE / BE、ASCII、UTF7、UTF32，或系统默认(gb2312)。默认 UTF8。
+**文件编码**：UTF8、UTF-16 LE / BE、ASCII、UTF7、UTF32，或系统默认。默认 UTF8。“系统默认”取运行电脑的 Windows 默认代码页，不一定是 gb2312；需要在多台电脑间交换文件时，建议明确选择接收方支持的编码。
 
 **添加UTF-BOM**：UTF-8 文件是否写入 BOM。默认关闭。
 

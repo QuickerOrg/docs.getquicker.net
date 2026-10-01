@@ -39,7 +39,7 @@ legacyContentUpdatedAt: "2020-10-26T11:03:34.000Z"
   values={{type: 'image'}}
 />
 
-**文件编码**：仅 **文本**。UTF8、UTF-16 LE / BE、ASCII、UTF7、UTF32、系统默认(gb2312)，或自动（BOM/UTF/ANSI）。默认 UTF8。
+**文件编码**：仅 **文本**。UTF8、UTF-16 LE / BE、ASCII、UTF7、UTF32、系统默认，或自动（BOM/UTF/ANSI）。默认 UTF8。“系统默认”取运行电脑的 Windows 默认代码页，不一定是 gb2312；读取来自其他电脑的文件时，应选择与文件实际编码一致的选项，或使用自动检测后检查结果。
 
 **失败后停止**：读取失败是否中止动作。默认开启。
 

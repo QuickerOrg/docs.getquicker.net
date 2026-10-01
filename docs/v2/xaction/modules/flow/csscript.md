@@ -126,6 +126,14 @@ context.SetVarValue("ready", true);
 "ok"
 ```
 
+<a id="开发版获取已运行的-com-对象" />
+
+### 获取已运行的 COM 对象
+
+2.2.26 恢复了旧脚本中 `System.Runtime.InteropServices.Marshal.GetActiveObject("Excel.Application")` 这类调用的兼容支持。它获取已运行且已注册的 COM 对象，不会启动目标程序；找不到对象仍会报错，程序是否注册该对象以及双方权限是否一致仍会影响结果。
+
+这项兼容针对 Quicker 的 C# 脚本宿主，不适用于「运行 C# 文件应用」或任意外部 .NET 程序。`using static Marshal` 后不带类型名的裸调用、通过反射查找该方法也不在兼容范围内。
+
 ### 何时仍应写完整 Exec
 
 以下情况不会按「纯脚本」包装：

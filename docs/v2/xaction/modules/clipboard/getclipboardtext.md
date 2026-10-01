@@ -46,7 +46,7 @@ legacyContentUpdatedAt: "2019-08-21T01:42:45.000Z"
 
 ![Free Clipboard Viewer 中同时存在多种剪贴板格式](./img/getclipboardtext-002-493ba546c2.png)
 
-**文本编码**：仅 **自定义格式名**。按哪种编码把字节解成文本。默认 UTF8。
+**文本编码**：仅 **自定义格式名**。按哪种编码把字节解成文本。默认 UTF8。“系统默认”随运行电脑的 Windows 默认代码页变化，不一定是 gb2312；应按写入该剪贴板格式的程序所用编码选择。
 
 <ModuleParamPreview
   moduleKey="sys:getClipboardText"

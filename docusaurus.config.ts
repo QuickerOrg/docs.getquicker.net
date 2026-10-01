@@ -185,13 +185,14 @@ const config: Config = {
       },
       items: [
         {
-          type: 'docSidebar',
-          sidebarId: 'docsSidebar',
+          to: '/v2/getting-started',
           position: 'left',
-          label: '文档',
+          label: '开始使用',
         },
+        {to: '/v2/features', label: '功能使用', position: 'left'},
+        {to: '/v2/xaction', label: '组合动作', position: 'left'},
         {to: '/release-notes', label: '更新记录', position: 'left'},
-        {type: 'search', position: 'left'},
+        {type: 'search', position: 'right'},
         ...(!isProd
           ? [
               {

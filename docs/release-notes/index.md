@@ -28,7 +28,18 @@ comments: true
 
 多设备使用、降级或回退前，请阅读[升级与回退](/v2/migration/upgrade-and-rollback)。各版本的具体风险也在下方对应条目中标出。
 
+官网版本记录目前写到 2.3.0，完整条目以那里为准。
+
 ## 近期文档补充
+
+### 2.3.0 · 脚本动作与截图/设置 AI
+
+- 新增 [脚本动作](/v2/features/script-actions/)：用 C# 语法编写动作，通过内置 API 处理文本、文件、网络、窗口和键鼠，并可调用其他动作与公共子程序。编辑器支持 AI 辅助、代码检查、断点与单步调试、运行轨迹和变量变化查看；可最小化后延迟运行。安全与授权见 [脚本动作安全与授权](/v2/features/script-actions/security)；回退注意见[升级与回退](/v2/migration/upgrade-and-rollback#230-脚本动作)。
+- [设置与场景窗口中的 AI 助手](/v2/features/ai-and-agent#设置与场景窗口中的-ai-助手)：可用自然语言协助调整设置和触发规则。
+- [内嵌子程序](/v2/xaction/concepts/subprogram#检查内嵌子程序的来源更新)支持从来源检查和应用更新，并可撤销、重做更新。
+- [长截图自动滚动](/v2/features/screenshot/capture-pro#长截图自动滚动)与速度调整；选区外增加采集状态提示。
+- [二维码与条形码](/v2/features/screenshot/capture-pro#二维码与条形码)识别扩展为多种常见码制；自动预览优先快速显示，手动识别执行完整扫描。
+- 选择操作类型时支持搜索和分类筛选（完整说明见[官网版本记录](https://getquicker.net/V2/Versions)）。
 
 ### 2.2.26 · 动作编辑 AI 分析、上下文菜单与入口整合
 

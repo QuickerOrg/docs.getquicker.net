@@ -24,6 +24,7 @@ hide_table_of_contents: true
   {href: '/v2/features/triggers/', label: '快捷键与鼠标触发', description: '快捷键、手势、轮盘、划词工具条和其他触发方式。'},
   {href: '/v2/features/floating-actions', label: '悬浮动作与分组', description: '把动作留在桌面上，整理悬浮布局或跟随程序窗口。'},
   {href: '/v2/features/actions', label: '动作的运行与管理', description: '了解动作、面板入口和引用关系，避免误删动作本体。'},
+  {href: '/v2/features/script-actions/', label: '脚本动作', description: '用 C# 编写动作，调用 qk API 处理文本、文件、窗口与网络。'},
   {href: '/v2/features/action-sharing', label: '分享动作与公共子程序', description: '发布、安装和更新动作，了解 V1 / V2 格式与版本历史。'},
 ]} />
 

@@ -163,6 +163,33 @@ import { Button, Panel } from "QuickerUi";
 
 外层建议使用 `<main className="qk-ui-page">`，以便与窗口边距、主题一致。
 
+### 代码与文本对比
+
+:::note[适用范围]
+`CodeDiff` 需要 Quicker 2.2.23 或更新版本。旧版缺少该导出时，请先升级再运行使用它的动作。
+:::
+
+从 `QuickerUi` 导入 `CodeDiff`，用 `before` 和 `after` 传入修改前后的文本。默认并排显示，也可在界面切换为合并视图；对象和数组会以 JSON 文本展示。适合让用户检查 AI 改写结果、配置差异或代码修改。
+
+例如，让上游步骤把两份文本放在 **输入数据** 的 `before`、`after` 字段中：
+
+```tsx
+import Quicker from "Quicker";
+import { Button, CodeDiff, Panel } from "QuickerUi";
+
+export default function App() {
+  const input = Quicker.getInput<{ before?: string; after?: string }>() ?? {};
+  return (
+    <Panel title="检查修改">
+      <CodeDiff before={input.before ?? ""} after={input.after ?? ""} />
+      <Button onClick={() => Quicker.close({ accepted: true })}>采用修改</Button>
+    </Panel>
+  );
+}
+```
+
+这个界面只展示差异，并在点击按钮后返回 `accepted: true`；是否保存文本或修改文件，由后续步骤处理。未变化的长段落会折叠，可展开查看；超长文本只对比前 4000 行，差异过大时部分区段会按整段增删展示，因此不要把截断后的展示当作完整文件检查。
+
 ### 草稿 storage 示例
 
 若希望用户上次填写的名称在**同一动作**下次运行时仍保留，可用 `useQuickerStorage`：

@@ -24,13 +24,22 @@
       "key": "preSelectArea",
       "name": "预选截图区域",
       "type": "Text",
-      "description": "留空时手动选择；指定物理屏幕坐标 left,top,right,bottom（右、下边界不包含）时，从该区域进入可调整、可标注状态。",
+      "description": "留空时手动选择；指定物理屏幕坐标 left,top,right,bottom（右、下边界不包含）时，截图/快速保存从该区域进入可调整状态，其他操作直接对该区域执行。",
       "isAdvanced": true,
       "validForList": [
         "capture",
+        "capture_now",
+        "copy",
+        "pin",
+        "ocr_copy",
+        "ocr",
+        "table",
+        "formula",
+        "translate",
+        "image_translate",
         "quick_save"
       ],
-      "condition": "仅：capture, quick_save",
+      "condition": "仅：capture, capture_now, copy, pin, ocr_copy, ocr, table, formula, translate, image_translate, quick_save",
       "defaultValue": "",
       "variableMode": "UseVarOrInput"
     },
@@ -58,11 +67,13 @@
       "key": "toClip",
       "name": "写入剪贴板",
       "type": "Boolean",
-      "description": "打勾或双击后写入剪贴板。",
+      "description": "确认截图后写入剪贴板；“框选即出图”在框选完成后写入。其他工具栏出口不触发。",
       "validForList": [
-        "capture"
+        "capture",
+        "capture_now",
+        "quick_save"
       ],
-      "condition": "仅：capture",
+      "condition": "仅：capture, capture_now, quick_save",
       "defaultValue": "false",
       "defaultValueRaw": false,
       "variableMode": "Input"
@@ -71,11 +82,13 @@
       "key": "pinImage",
       "name": "截图后贴图",
       "type": "Boolean",
-      "description": "打勾或双击后贴到原位置。",
+      "description": "确认截图后贴到原位置；“框选即出图”在框选完成后贴图。其他工具栏出口不触发。",
       "validForList": [
-        "capture"
+        "capture",
+        "capture_now",
+        "quick_save"
       ],
-      "condition": "仅：capture",
+      "condition": "仅：capture, capture_now, quick_save",
       "defaultValue": "false",
       "defaultValueRaw": false,
       "variableMode": "Input"
@@ -87,9 +100,11 @@
       "isAdvanced": true,
       "validForList": [
         "capture",
-        "pin"
+        "capture_now",
+        "pin",
+        "quick_save"
       ],
-      "condition": "仅：capture, pin",
+      "condition": "仅：capture, capture_now, pin, quick_save",
       "defaultValue": "false",
       "defaultValueRaw": false,
       "variableMode": "Input"

@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-09-27 14:50:01",
+  "generatedAt": "2026-09-30 06:04:10",
   "moduleCount": 175,
   "legacyMappedModuleCount": 0,
   "migratedLegacyModuleCount": 0,
@@ -4351,7 +4351,7 @@
             },
             {
               "value": "default",
-              "name": "系统默认(gb2312)"
+              "name": "系统默认(windows-1252)"
             }
           ]
         },
@@ -4606,7 +4606,7 @@
             },
             {
               "value": "default",
-              "name": "系统默认(gb2312)"
+              "name": "系统默认(windows-1252)"
             }
           ]
         }
@@ -6506,7 +6506,8 @@
             },
             {
               "value": "reverse",
-              "name": "倒置"
+              "name": "倒置",
+              "description": "原地倒置输入列表，不输出到“结果”"
             },
             {
               "value": "sub",
@@ -7420,7 +7421,7 @@
             },
             {
               "value": "default",
-              "name": "系统默认(gb2312)"
+              "name": "系统默认(windows-1252)"
             },
             {
               "value": "auto",
@@ -8499,7 +8500,7 @@
             },
             {
               "value": "default",
-              "name": "系统默认(gb2312)"
+              "name": "系统默认(windows-1252)"
             }
           ]
         },
@@ -12050,13 +12051,22 @@
           "key": "preSelectArea",
           "name": "预选截图区域",
           "type": "Text",
-          "description": "留空时手动选择；指定物理屏幕坐标 left,top,right,bottom（右、下边界不包含）时，从该区域进入可调整、可标注状态。",
+          "description": "留空时手动选择；指定物理屏幕坐标 left,top,right,bottom（右、下边界不包含）时，截图/快速保存从该区域进入可调整状态，其他操作直接对该区域执行。",
           "isAdvanced": true,
           "validForList": [
             "capture",
+            "capture_now",
+            "copy",
+            "pin",
+            "ocr_copy",
+            "ocr",
+            "table",
+            "formula",
+            "translate",
+            "image_translate",
             "quick_save"
           ],
-          "condition": "仅：capture, quick_save",
+          "condition": "仅：capture, capture_now, copy, pin, ocr_copy, ocr, table, formula, translate, image_translate, quick_save",
           "defaultValue": "",
           "variableMode": "UseVarOrInput"
         },
@@ -12084,11 +12094,13 @@
           "key": "toClip",
           "name": "写入剪贴板",
           "type": "Boolean",
-          "description": "打勾或双击后写入剪贴板。",
+          "description": "确认截图后写入剪贴板；“框选即出图”在框选完成后写入。其他工具栏出口不触发。",
           "validForList": [
-            "capture"
+            "capture",
+            "capture_now",
+            "quick_save"
           ],
-          "condition": "仅：capture",
+          "condition": "仅：capture, capture_now, quick_save",
           "defaultValue": "false",
           "defaultValueRaw": false,
           "variableMode": "Input"
@@ -12097,11 +12109,13 @@
           "key": "pinImage",
           "name": "截图后贴图",
           "type": "Boolean",
-          "description": "打勾或双击后贴到原位置。",
+          "description": "确认截图后贴到原位置；“框选即出图”在框选完成后贴图。其他工具栏出口不触发。",
           "validForList": [
-            "capture"
+            "capture",
+            "capture_now",
+            "quick_save"
           ],
-          "condition": "仅：capture",
+          "condition": "仅：capture, capture_now, quick_save",
           "defaultValue": "false",
           "defaultValueRaw": false,
           "variableMode": "Input"
@@ -12113,9 +12127,11 @@
           "isAdvanced": true,
           "validForList": [
             "capture",
-            "pin"
+            "capture_now",
+            "pin",
+            "quick_save"
           ],
-          "condition": "仅：capture, pin",
+          "condition": "仅：capture, capture_now, pin, quick_save",
           "defaultValue": "false",
           "defaultValueRaw": false,
           "variableMode": "Input"
@@ -14195,15 +14211,18 @@
             },
             {
               "value": "Invert",
-              "name": "反色"
+              "name": "反色",
+              "description": "原地修改输入图片 img，不输出结果图片；需保留原图请先用“复制图片”"
             },
             {
               "value": "GrayScale",
-              "name": "灰度"
+              "name": "灰度",
+              "description": "原地修改输入图片 img，不输出结果图片；需保留原图请先用“复制图片”"
             },
             {
               "value": "Rotate",
-              "name": "旋转"
+              "name": "旋转",
+              "description": "原地修改输入图片 img，不输出结果图片；需保留原图请先用“复制图片”"
             },
             {
               "value": "Filters",
@@ -40033,7 +40052,7 @@
           "key": "profileId",
           "name": "动作页ID",
           "type": "Text",
-          "description": "请在场景与动作管理中，查看动作页信息获取ID。",
+          "description": "请在场景、动作与触发管理中，查看动作页信息获取ID。",
           "validForList": [
             "loadProfile"
           ],
@@ -40075,7 +40094,7 @@
           "key": "exe",
           "name": "场景标识",
           "type": "Text",
-          "description": "场景关联的exe文件名。请参考场景与动作管理窗口左侧应用列表；打开轮盘或场景管理时可填写 _curr 表示当前程序场景。",
+          "description": "场景关联的exe文件名。请参考场景、动作与触发管理窗口左侧应用列表；打开轮盘或场景管理时可填写 _curr 表示当前程序场景。",
           "validForList": [
             "showCircleMenu",
             "showDashboardWindow",
@@ -40247,6 +40266,16 @@
             "GetActionInfo"
           ],
           "condition": "仅：GetActionInfo"
+        },
+        {
+          "key": "lastEditedActionId",
+          "name": "动作ID",
+          "type": "Text",
+          "description": "本次启动Quicker期间，最后打开或重新激活编辑器的已安装动作ID，不包含预览、草稿和公共子程序。关闭或取消编辑后仍保留记录；已删除或不属于当前账号的动作会跳过。没有记录时输出空文本并返回步骤失败。",
+          "validForList": [
+            "GetLastEditedAction"
+          ],
+          "condition": "仅：GetLastEditedAction"
         }
       ],
       "selections": {
@@ -40307,7 +40336,7 @@
             },
             {
               "value": "showExeSettingWindow",
-              "name": "显示场景与动作管理窗口"
+              "name": "显示场景、动作与触发管理窗口"
             },
             {
               "value": "closeAllFloatWindow",
@@ -40380,6 +40409,10 @@
             {
               "value": "GetActionInfo",
               "name": "根据ID获取动作信息"
+            },
+            {
+              "value": "GetLastEditedAction",
+              "name": "获取最后打开编辑器的动作"
             }
           ]
         },

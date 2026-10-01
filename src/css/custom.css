@@ -4,13 +4,13 @@
 
 /* You can override the default Infima variables here. */
 :root {
-  --ifm-color-primary: #2b7abf;
-  --ifm-color-primary-dark: #2469a4;
-  --ifm-color-primary-darker: #22639b;
-  --ifm-color-primary-darkest: #1c527f;
-  --ifm-color-primary-light: #3d88c6;
-  --ifm-color-primary-lighter: #488ec9;
-  --ifm-color-primary-lightest: #6aa4d4;
+  --ifm-color-primary: #326ab7;
+  --ifm-color-primary-dark: #2d60a5;
+  --ifm-color-primary-darker: #2a5a9c;
+  --ifm-color-primary-darkest: #234a80;
+  --ifm-color-primary-light: #447bc8;
+  --ifm-color-primary-lighter: #4e83cc;
+  --ifm-color-primary-lightest: #6c98d6;
   --ifm-font-family-base:
     "Microsoft YaHei UI",
     "PingFang SC",
@@ -40,9 +40,9 @@
   --ifm-list-margin: 0.7rem;
   --ifm-spacing-horizontal: 1rem;
   --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.1);
-  --quicker-text-muted: #5f6b7a;
-  --quicker-surface-subtle: #f7f9fb;
-  --quicker-border-subtle: #e4e9f0;
+  --quicker-text-muted: #606874;
+  --quicker-surface-subtle: #f6f7f9;
+  --quicker-border-subtle: #e1e4e8;
   --qk-scrollbar-thumb: rgba(0, 0, 0, 0.08);
   --qk-scrollbar-thumb-hover: rgba(0, 0, 0, 0.16);
   /* Match prism-react-renderer github / vsDark plain colors. */
@@ -66,23 +66,25 @@
 }
 
 [data-theme='dark'] {
-  --ifm-color-primary: #4d9fff;
-  --ifm-color-primary-dark: #2f8fff;
-  --ifm-color-primary-darker: #2287ff;
-  --ifm-color-primary-darkest: #006ee5;
-  --ifm-color-primary-light: #6aafff;
-  --ifm-color-primary-lighter: #79b6ff;
-  --ifm-color-primary-lightest: #a5ceff;
+  --ifm-color-primary: #8ab4f8;
+  --ifm-color-primary-dark: #73a5f6;
+  --ifm-color-primary-darker: #679df6;
+  --ifm-color-primary-darkest: #4587f3;
+  --ifm-color-primary-light: #a1c3fa;
+  --ifm-color-primary-lighter: #adcafa;
+  --ifm-color-primary-lightest: #cfe0fc;
   --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.3);
-  --quicker-text-muted: #a7b2c0;
-  --quicker-surface-subtle: #18212b;
-  --quicker-border-subtle: #2a3644;
+  --quicker-text-muted: #a6adb8;
+  --ifm-background-color: #181a1e;
+  --ifm-background-surface-color: #202226;
+  --quicker-surface-subtle: #202226;
+  --quicker-border-subtle: #34383f;
   --qk-scrollbar-thumb: rgba(255, 255, 255, 0.1);
   --qk-scrollbar-thumb-hover: rgba(255, 255, 255, 0.18);
   --qk-code-bg: #1e1e1e;
   --qk-code-fg: #9cdcfe;
   --ifm-navbar-search-input-background-color: var(--quicker-surface-subtle);
-  --search-local-modal-background: #1b2430;
+  --search-local-modal-background: #202226;
   --search-local-modal-shadow: 0 12px 32px rgba(0, 0, 0, 0.38);
 }
 
@@ -281,16 +283,12 @@
   }
 
   .theme-doc-card-container.card.padding--lg {
-    padding: 0.5rem 0.75rem !important;
-  }
-
-  .theme-doc-card--gallery.card.padding--lg {
-    padding: 0 !important;
+    padding: 1.2rem !important;
   }
 
   [class*="generatedIndexPage"] section.row {
     display: grid !important;
-    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)) !important;
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 280px), 1fr)) !important;
     gap: 0.75rem !important;
     margin-left: 0 !important;
     margin-right: 0 !important;
@@ -595,182 +593,127 @@ html[data-theme='dark'] .theme-code-block .token.parameter {
   font-size: 0.75rem;
 }
 
-/* Generated-index / DocCard: compact title rows, no emoji tiles. */
-[class*="generatedIndexPage"] {
-  max-width: 100% !important;
-}
-
+/* Directory pages use the same quiet title-first links as the landing pages. */
+[class*="generatedIndexPage"] { max-width: 100% !important; }
 [class*="generatedIndexPage"] > header h1,
 [class*="generatedIndexPage"] h1[class*="title"] {
-  --ifm-h1-font-size: 1.5rem;
-  font-size: 1.5rem;
-  margin-bottom: 0.45rem;
+  font-size: 1.8rem;
+  margin-bottom: 0.6rem;
 }
-
 [class*="generatedIndexPage"] > header p {
   color: var(--quicker-text-muted);
-  font-size: 0.88rem;
-  line-height: 1.55;
-  margin-bottom: 0.85rem;
+  line-height: 1.65;
+  margin-bottom: 1.4rem;
 }
-
-.theme-doc-card-container.card,
-.theme-doc-card--gallery.card {
-  box-shadow: none;
-  border: 1px solid var(--quicker-border-subtle);
-  background: var(--quicker-surface-subtle);
-  border-radius: 8px;
-  overflow: hidden;
+.theme-doc-card-container.card {
   height: 100%;
+  padding: 1.2rem !important;
+  border: 1px solid var(--quicker-border-subtle);
+  border-radius: 10px;
+  background: var(--ifm-background-color);
+  box-shadow: none;
+  color: var(--ifm-font-color-base);
   text-decoration: none !important;
-  color: inherit;
   transition: border-color 0.15s ease, background 0.15s ease;
 }
-
-.theme-doc-card-container:hover,
-.theme-doc-card--gallery:hover {
-  box-shadow: none;
+.theme-doc-card-container.card:hover {
   border-color: var(--ifm-color-primary);
-  background: color-mix(in srgb, var(--ifm-color-primary) 7%, var(--quicker-surface-subtle));
-}
-
-.theme-doc-card__cover {
-  position: relative;
-  display: block;
-  aspect-ratio: 16 / 10;
-  min-height: 148px;
-  max-height: 148px;
-  background: color-mix(in srgb, var(--ifm-color-primary) 8%, var(--quicker-surface-subtle));
-  overflow: hidden;
-}
-
-.theme-doc-card__cover img {
-  position: absolute;
-  inset: 0;
-  display: block;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  object-position: top left;
-}
-
-.theme-doc-card__cover--mosaic {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  grid-template-rows: 1fr 1fr;
-  gap: 1px;
-  background: var(--quicker-border-subtle);
-}
-
-.theme-doc-card__cover--two {
-  grid-template-rows: 1fr;
-}
-
-.theme-doc-card__cover--mosaic img {
-  position: static;
-  min-width: 0;
-  min-height: 0;
-}
-
-.theme-doc-card__cover--text {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  gap: 10px;
-  padding: 16px 14px;
-  background:
-    linear-gradient(
-      165deg,
-      color-mix(in srgb, var(--ifm-color-primary) 16%, var(--quicker-surface-subtle)) 0%,
-      var(--quicker-surface-subtle) 72%
-    );
-}
-
-.theme-doc-card__excerpt {
-  margin: 0;
+  background: var(--quicker-surface-subtle);
   color: var(--ifm-font-color-base);
-  font-size: 0.8rem;
-  line-height: 1.55;
-  opacity: 0.82;
-  display: -webkit-box;
-  -webkit-box-orient: vertical;
-  -webkit-line-clamp: 4;
-  overflow: hidden;
 }
-
-.theme-doc-card__chips {
+.theme-doc-card-container:focus-visible,
+.docs-landing a:focus-visible {
+  outline: 2px solid var(--ifm-color-primary);
+  outline-offset: 3px;
+}
+.theme-doc-card__heading-row {
   display: flex;
-  flex-wrap: wrap;
-  gap: 6px;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 1rem;
+}
+.theme-doc-card-heading {
   margin: 0;
+  font-size: 1rem;
+  font-weight: 600;
+  line-height: 1.5;
+}
+.theme-doc-card-title { white-space: normal; overflow-wrap: anywhere; }
+.theme-doc-card__arrow { color: var(--quicker-text-muted); }
+.theme-doc-card-description {
+  margin: 0.5rem 0 0;
+  color: var(--quicker-text-muted);
+  font-size: 0.88rem;
+  line-height: 1.65;
+  white-space: normal;
+}
+.theme-doc-card__count {
+  display: block;
+  margin-top: 0.6rem;
+  color: var(--quicker-text-muted);
+  font-size: 0.8rem;
+}
+.theme-doc-markdown h1 { font-size: 1.9rem; }
+.docs-landing { padding: 0.5rem 0 0.75rem; }
+.markdown .docs-landing > h1 {
+  font-size: clamp(1.9rem, 3vw, 2.35rem);
+  margin: 0 0 0.65rem;
+  line-height: 1.3;
+}
+.markdown .docs-landing__lead {
+  color: var(--quicker-text-muted);
+  font-size: 1.08rem;
+  line-height: 1.7;
+  margin-bottom: 1.1rem;
+}
+.markdown .docs-landing h2 {
+  margin-top: 2rem;
+  margin-bottom: 0.85rem;
+  border: 0;
   padding: 0;
+  font-size: 1.16rem;
+}
+.docs-landing__notice {
+  margin: 1.2rem 0 1.6rem;
+  padding: 0.85rem 1rem;
+  border: 1px solid var(--quicker-border-subtle);
+  border-left: 3px solid var(--ifm-color-primary);
+  border-radius: 6px;
+  background: var(--quicker-surface-subtle);
+  color: var(--quicker-text-muted);
+  font-size: 0.85rem;
+}
+.markdown .docs-landing__notice p { margin: 0; }
+.docs-landing__notice strong { color: var(--ifm-font-color-base); }
+.docs-landing__more { margin-top: -0.25rem; font-size: 0.88rem; }
+.docs-landing__lessons {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1rem;
+  padding: 0;
+  margin: 0;
   list-style: none;
 }
-
-.theme-doc-card__chips li {
-  max-width: 100%;
-  padding: 2px 8px;
-  border: 1px solid var(--quicker-border-subtle);
-  border-radius: 999px;
-  background: color-mix(in srgb, var(--ifm-background-color) 78%, transparent);
-  color: var(--quicker-text-muted);
-  font-size: 0.68rem;
-  line-height: 1.4;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-}
-
-.theme-doc-card__cover-fallback {
+.docs-landing__lessons li { margin: 0; }
+.docs-landing__lessons a {
   display: flex;
-  align-items: center;
-  justify-content: center;
+  flex-direction: column;
+  gap: 0.4rem;
   height: 100%;
+  padding: 1rem 0;
+  border-top: 1px solid var(--quicker-border-subtle);
+  color: var(--ifm-font-color-base);
+  text-decoration: none;
+}
+.docs-landing__lesson-number {
   color: var(--ifm-color-primary);
-  font-size: 1.4rem;
-  font-weight: 650;
-  background:
-    linear-gradient(
-      165deg,
-      color-mix(in srgb, var(--ifm-color-primary) 16%, var(--quicker-surface-subtle)) 0%,
-      var(--quicker-surface-subtle) 72%
-    );
-}
-
-.theme-doc-card__body {
-  padding: 0.55rem 0.7rem 0.7rem;
-}
-
-.theme-doc-card-heading {
-  display: flex;
-  align-items: center;
-  gap: 0.35rem;
-  margin: 0;
-  font-size: 0.9rem;
+  font-size: 0.8rem;
   font-weight: 600;
-  line-height: 1.35;
 }
-
-.theme-doc-card-icon {
-  display: none;
-}
-
-.theme-doc-card-title {
-  font-size: 0.9rem;
-  white-space: normal;
-  overflow: visible;
-  text-overflow: unset;
-}
-
-.theme-doc-card--gallery .theme-doc-card-description {
-  display: -webkit-box;
-  -webkit-box-orient: vertical;
-  -webkit-line-clamp: 2;
-  overflow: hidden;
-  margin: 0.28rem 0 0;
-  color: var(--quicker-text-muted);
-  font-size: 0.76rem;
-  line-height: 1.45;
+.docs-landing__lessons a:hover strong { color: var(--ifm-color-primary); }
+.docs-landing__lessons span { color: var(--quicker-text-muted); font-size: 0.85rem; }
+@media (max-width: 640px) {
+  .docs-landing__lessons { grid-template-columns: 1fr; gap: 0; }
 }
 
 .table-of-contents__link--active {

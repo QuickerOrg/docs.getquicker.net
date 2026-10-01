@@ -5,50 +5,40 @@ slug: /v2
 sidebar_position: 1
 quickerDocKey: v2/index
 comments: false
+hide_title: true
+hide_table_of_contents: true
 ---
+
+<div className="docs-landing">
 
 # Quicker V2
 
-:::caution[Preview · 仅专业版]
-当前 V2 是 **Preview 体验版**，仅面向专业版用户。免费版数据迁移仍在开发，免费账号目前无法登录 2.0。不建议用它替换无法中断的 1.x 关键环境。体验前请先读 [体验前必读](/important-notice)。
-:::
+<p className="docs-landing__lead">安装、使用和编写动作，都从这里开始。</p>
 
-V2 重做了数据存储、同步、动作模型和主面板。动作内容和它出现的位置分开，组合动作用模块拼步骤。
+<div className="docs-landing__notice">
 
-| 你想… | 去这篇 |
-| --- | --- |
-| 第一次打开 | [开始使用](./getting-started.md) |
-| 下载安装 | [安装 Quicker V2](./install/windows.md) |
-| 从 1.x 过来 | [从 V1 迁移](./migration/from-v1.md) |
-| 相对 1.x 改了什么 | [V2 重要变化](./what's-new/index.md) |
-| 面板、触发、截图、账号 | [功能使用](/v2/features) |
-| 自己写组合动作 | [组合动作](/v2/xaction) |
-| 连接设计、建模或办公软件 | [软件连接与 Bridge](./features/software-connections/index.md) |
-| 运行出问题 | [常见问题](./troubleshooting.md) |
+**V2 目前为 Preview 体验版，仅面向专业版用户。** 免费版数据迁移仍在开发，免费账号目前无法登录 2.0。体验前请阅读 [使用限制与回退说明](/important-notice)，不建议替换无法中断的 1.x 关键环境。
 
-安装包只从 [https://getquicker.net/V2](https://getquicker.net/V2) 下载。`https://getquicker.net/Download` 目前提供的是 1.x，不要从那里装 V2。
+</div>
 
-<RelatedDocs
-  items={[
-    {
-      href: '/important-notice',
-      label: '体验前必读',
-      description: 'Preview、专业版和回退风险',
-    },
-    {
-      href: '/v2/getting-started',
-      label: '开始使用',
-      description: '面板、动作、第一次运行',
-    },
-    {
-      href: '/v2/install/windows',
-      label: '安装',
-      description: '系统要求和下载入口',
-    },
-    {
-      href: '/release-notes',
-      label: '更新记录',
-      description: '指向官网各版本说明',
-    },
-  ]}
-/>
+## 安装与入门
+
+<RelatedDocs layout="cards" items={[
+  {href: '/v2/install/windows', label: '安装 Quicker V2', description: '确认系统要求，下载并完成首次启动。'},
+  {href: '/v2/getting-started', label: '开始使用', description: '认识动作、面板和场景，运行第一个动作。'},
+  {href: '/v2/migration/from-v1', label: '从 1.x 迁移', description: '迁移动作与设置，了解兼容性和回退方式。'},
+  {href: "/v2/what's-new/", label: 'V2 重要变化', description: '了解新版面板、数据同步和动作模型的变化。'},
+]} />
+
+安装包请从 [Quicker V2 官网](https://getquicker.net/V2) 下载；官网 `/Download` 页面目前提供的是 1.x。
+
+## 继续探索
+
+<RelatedDocs layout="cards" items={[
+  {href: '/v2/features', label: '功能使用', description: '面板、快捷触发、截图、工具和账号设置。'},
+  {href: '/v2/xaction', label: '组合动作', description: '从入门练习到模块参考，编写自己的自动化动作。'},
+  {href: '/v2/features/software-connections', label: '软件连接', description: '安装 Bridge，调用设计、建模和办公软件。'},
+  {href: '/v2/troubleshooting', label: '常见问题', description: '排查面板呼出、选中文本和动作运行问题。'},
+]} />
+
+</div>

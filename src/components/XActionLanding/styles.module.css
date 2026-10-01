@@ -57,7 +57,7 @@
 
 @media (min-width: 900px) {
   .categories {
-    grid-template-columns: repeat(3, minmax(0, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 230px), 1fr));
   }
 }
 
@@ -66,10 +66,10 @@
   flex-direction: column;
   gap: 4px;
   min-width: 0;
-  padding: 0.7rem 0.8rem 0.75rem;
+  padding: 1.1rem;
   border: 1px solid var(--quicker-border-subtle);
   border-radius: 8px;
-  background: var(--quicker-surface-subtle);
+  background: var(--ifm-background-color);
   color: inherit;
   text-decoration: none !important;
   transition:
@@ -79,7 +79,7 @@
 
 .card:hover {
   border-color: var(--ifm-color-primary);
-  background: color-mix(in srgb, var(--ifm-color-primary) 7%, var(--quicker-surface-subtle));
+  background: var(--quicker-surface-subtle);
 }
 
 .pathCard {
@@ -102,7 +102,7 @@
 }
 
 .title {
-  font-size: 0.92rem;
+  font-size: 1rem;
   font-weight: 650;
   line-height: 1.35;
 }
@@ -126,7 +126,7 @@
 
 .description {
   color: var(--quicker-text-muted);
-  font-size: 0.78rem;
+  font-size: 0.88rem;
   line-height: 1.45;
 }
 
@@ -145,7 +145,7 @@
   border-radius: 999px;
   background: var(--ifm-background-surface-color, #fff);
   color: inherit;
-  font-size: 0.78rem;
+  font-size: 0.88rem;
   line-height: 1.4;
   text-decoration: none !important;
   transition:
@@ -185,7 +185,7 @@
 .migrateLabel {
   flex: 0 0 auto;
   color: var(--quicker-text-muted);
-  font-size: 0.78rem;
+  font-size: 0.88rem;
 }
 
 .migrateTitle {

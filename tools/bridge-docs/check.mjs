@@ -84,7 +84,10 @@ export function check() {
     } else assert.equal(bridge.componentId, `quicker.bridge.${bridge.connectionId}`);
   }
   assert.ok(!catalog.modules.some((module) => module.key === 'sys:test'));
-  for (const home of ['docs/index.md', 'docs/v2/index.md']) assert.ok(read(home).includes('software-connections/index.md'));
+  // 首页也可通过 RelatedDocs 卡片使用稳定的站内路由。
+  for (const home of ['docs/index.md', 'docs/v2/index.md']) {
+    assert.match(read(home), /software-connections\/index\.md|\/v2\/features\/software-connections\/?(?=['")])/, `${home} 缺少软件连接入口`);
+  }
   for (const name of ['index', 'install-and-manage', 'command-tool', 'troubleshooting']) read(`docs/v2/features/software-connections/${name}.md`);
   return bridges.length;
 }

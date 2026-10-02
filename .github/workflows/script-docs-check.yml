@@ -1,0 +1,31 @@
+name: Script action docs check
+on:
+  pull_request:
+    paths:
+      - 'data/script-action/**'
+      - 'docs/v2/script-action/**'
+      - 'static/files/script-action/**'
+      - 'tools/script-docs/**'
+      - 'package.json'
+      - 'package-lock.json'
+      - '.github/workflows/script-docs-check.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+concurrency:
+  group: script-docs-${{ github.ref }}
+  cancel-in-progress: true
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: npm
+      - run: npm ci
+      - run: npm run docs:script:check
+      - run: npm run docs:script:test
+      - run: npm run build

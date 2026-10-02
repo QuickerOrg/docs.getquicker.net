@@ -36,6 +36,7 @@ hide_table_of_contents: true
 
 <RelatedDocs layout="cards" items={[
   {href: '/v2/features', label: '功能使用', description: '面板、快捷触发、截图、工具和账号设置。'},
+  {href: '/v2/script-action', label: '脚本动作', description: '用 C# 语法与 qk API 编写、调试和分享动作。'},
   {href: '/v2/xaction', label: '组合动作', description: '从入门练习到模块参考，编写自己的自动化动作。'},
   {href: '/v2/features/software-connections', label: '软件连接', description: '安装 Bridge，调用设计、建模和办公软件。'},
   {href: '/v2/troubleshooting', label: '常见问题', description: '排查面板呼出、选中文本和动作运行问题。'},

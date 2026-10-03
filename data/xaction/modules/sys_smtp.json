@@ -33,7 +33,7 @@
       "key": "useSsl",
       "name": "使用加密连接",
       "type": "Boolean",
-      "description": "是否使用TLS连接（通常为587端口）。",
+      "description": "是否使用TLS加密连接。采用 STARTTLS（先明文连接再升级加密，通常为587端口，部分服务器为25端口）；不支持465端口的隐式SSL连接。",
       "defaultValue": "false",
       "defaultValueRaw": false,
       "variableMode": "UseVarOrInput"
@@ -78,7 +78,7 @@
       "key": "to",
       "name": "收件人",
       "type": "Text",
-      "description": "收件人Email地址，多个的话使用小写逗号分隔。",
+      "description": "收件人Email地址，多个的话使用英文逗号（,）分隔，不支持分号或中文逗号。",
       "defaultValue": "",
       "required": true,
       "variableMode": "UseVarOrInput"
@@ -87,7 +87,7 @@
       "key": "cc",
       "name": "抄送",
       "type": "Text",
-      "description": "抄送给的Email地址列表，多个的话使用小写逗号分隔。",
+      "description": "抄送给的Email地址列表，多个的话使用英文逗号（,）分隔，不支持分号或中文逗号。",
       "defaultValue": "",
       "required": true,
       "variableMode": "UseVarOrInput"
@@ -96,7 +96,7 @@
       "key": "bcc",
       "name": "密送",
       "type": "Text",
-      "description": "密送给的Email地址列表，多个的话使用小写逗号分隔。",
+      "description": "密送给的Email地址列表，多个的话使用英文逗号（,）分隔，不支持分号或中文逗号。",
       "defaultValue": "",
       "required": true,
       "variableMode": "UseVarOrInput"
@@ -122,7 +122,7 @@
       "key": "attachList",
       "name": "附件",
       "type": "Text",
-      "description": "附件文件列表。多个时每行一个。",
+      "description": "附件文件路径列表。多个时每行一个（按换行拆分），文件不存在时步骤失败。",
       "defaultValue": "",
       "variableMode": "UseVarOrInput"
     },

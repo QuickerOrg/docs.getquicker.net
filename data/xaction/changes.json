@@ -1,89 +1,51 @@
 {
   "schemaVersion": 1,
   "baselineCreated": false,
-  "fromGeneratedAt": "2026-09-29 15:21:29",
-  "toGeneratedAt": "2026-09-30 06:04:10",
+  "fromGeneratedAt": "2026-09-30 06:04:10",
+  "toGeneratedAt": "2026-10-02 06:19:26",
   "summary": {
     "addedModules": 0,
     "removedModules": 0,
-    "changedModules": 1
+    "changedModules": 3
   },
   "addedModules": [],
   "removedModules": [],
   "changedModules": [
     {
-      "key": "sys:quickeroperations",
-      "name": "Quicker操作",
+      "key": "sys:pdf",
+      "name": "PDF 文件处理",
       "changedFields": [],
       "inputs": {
         "added": [],
         "removed": [],
         "changed": [
           {
-            "key": "profileId",
+            "key": "text",
             "before": {
-              "key": "profileId",
-              "name": "动作页ID",
+              "key": "text",
+              "name": "文字",
               "type": "Text",
-              "description": "请在场景与动作管理中，查看动作页信息获取ID。",
               "validForList": [
-                "loadProfile"
+                "overlayText",
+                "watermark",
+                "pageNumber"
               ],
-              "condition": "仅：loadProfile",
+              "condition": "仅：overlayText, watermark, pageNumber",
               "defaultValue": "",
-              "required": true,
               "variableMode": "UseVarOrInput"
             },
             "after": {
-              "key": "profileId",
-              "name": "动作页ID",
+              "key": "text",
+              "name": "文字",
               "type": "Text",
-              "description": "请在场景、动作与触发管理中，查看动作页信息获取ID。",
+              "description": "要绘制的文字。支持占位符 {page}（该页在整个文档中的页码，从 1 开始）和 {pages}（整个文档的总页数，不受 pages 页码范围影响），不区分大小写，如“第{page}页/共{pages}页”。页码操作留空时为 {page}；叠加文字与水印不能为空。",
               "validForList": [
-                "loadProfile"
+                "overlayText",
+                "watermark",
+                "pageNumber"
               ],
-              "condition": "仅：loadProfile",
+              "condition": "仅：overlayText, watermark, pageNumber",
               "defaultValue": "",
-              "required": true,
-              "variableMode": "UseVarOrInput"
-            }
-          },
-          {
-            "key": "exe",
-            "before": {
-              "key": "exe",
-              "name": "场景标识",
-              "type": "Text",
-              "description": "场景关联的exe文件名。请参考场景与动作管理窗口左侧应用列表；打开轮盘或场景管理时可填写 _curr 表示当前程序场景。",
-              "validForList": [
-                "showCircleMenu",
-                "showDashboardWindow",
-                "showExeSettingWindow",
-                "loadExeProfiles",
-                "loadExeProfilesNoLock",
-                "GetActionList"
-              ],
-              "condition": "仅：showCircleMenu, showDashboardWindow, showExeSettingWindow, loadExeProfiles, loadExeProfilesNoLock, GetActionList",
-              "defaultValue": "",
-              "required": true,
-              "variableMode": "UseVarOrInput"
-            },
-            "after": {
-              "key": "exe",
-              "name": "场景标识",
-              "type": "Text",
-              "description": "场景关联的exe文件名。请参考场景、动作与触发管理窗口左侧应用列表；打开轮盘或场景管理时可填写 _curr 表示当前程序场景。",
-              "validForList": [
-                "showCircleMenu",
-                "showDashboardWindow",
-                "showExeSettingWindow",
-                "loadExeProfiles",
-                "loadExeProfilesNoLock",
-                "GetActionList"
-              ],
-              "condition": "仅：showCircleMenu, showDashboardWindow, showExeSettingWindow, loadExeProfiles, loadExeProfilesNoLock, GetActionList",
-              "defaultValue": "",
-              "required": true,
               "variableMode": "UseVarOrInput"
             }
           }
@@ -94,379 +56,221 @@
         "removed": [],
         "changed": []
       },
-      "selectionsChanged": true,
-      "selections": {
-        "before": {
-          "type": {
-            "name": "类型",
-            "items": [
-              {
-                "value": "showPanel",
-                "name": "显示面板"
-              },
-              {
-                "value": "showSearch",
-                "name": "显示搜索框"
-              },
-              {
-                "value": "closeSearch",
-                "name": "关闭搜索框"
-              },
-              {
-                "value": "showCircleMenu",
-                "name": "显示轮盘菜单 (点击)"
-              },
-              {
-                "value": "showTextSelectionToolbar",
-                "name": "显示选中文本工具条"
-              },
-              {
-                "value": "togglePause",
-                "name": "禁用/启用"
-              },
-              {
-                "value": "runLastAction",
-                "name": "运行最后使用的动作"
-              },
-              {
-                "value": "startAppVoiceInput",
-                "name": "启动App语音输入"
-              },
-              {
-                "value": "stopAllActions",
-                "name": "停止运行中的动作"
-              },
-              {
-                "value": "reinstallMouseHook",
-                "name": "重新加载键鼠挂钩"
-              },
-              {
-                "value": "ResetKeyboard",
-                "name": "重置键盘状态"
-              },
-              {
-                "value": "showDashboardWindow",
-                "name": "显示仪表盘窗口"
-              },
-              {
-                "value": "showConfigWindow",
-                "name": "显示设置窗口"
-              },
-              {
-                "value": "showExeSettingWindow",
-                "name": "显示场景与动作管理窗口"
-              },
-              {
-                "value": "closeAllFloatWindow",
-                "name": "关闭所有悬浮按钮"
-              },
-              {
-                "value": "loadProfile",
-                "name": "加载动作页"
-              },
-              {
-                "value": "loadExeProfiles",
-                "name": "加载场景动作（锁定切换）"
-              },
-              {
-                "value": "loadExeProfilesNoLock",
-                "name": "加载场景动作（不锁定切换）"
-              },
-              {
-                "value": "ToggleLockPanel",
-                "name": "锁定/解锁 动作页自动切换"
-              },
-              {
-                "value": "editAction",
-                "name": "编辑动作"
-              },
-              {
-                "value": "RestartQuicker",
-                "name": "重启Quicker"
-              },
-              {
-                "value": "SetPushActiveClient",
-                "name": "推送服务：设置为活动客户端"
-              },
-              {
-                "value": "StartSearchWithAction",
-                "name": "使用当前动作进行实时搜索"
-              },
-              {
-                "value": "SearchWithCertainAction",
-                "name": "使用指定动作进行实时搜索"
-              },
-              {
-                "value": "operation_show_context_menu",
-                "name": "显示剪贴板上下文菜单"
-              },
-              {
-                "value": "LoadSkin",
-                "name": "加载外观/切换主题(专业版功能)"
-              },
-              {
-                "value": "ExitQuicker",
-                "name": "退出Quicker"
-              },
-              {
-                "value": "FloatAction",
-                "name": "悬浮动作(专业版功能)"
-              },
-              {
-                "value": "ToggleFloatButtons",
-                "name": "切换所有悬浮按钮显示"
-              },
-              {
-                "value": "ShowHideImageWindows",
-                "name": "显示或隐藏所有图片窗口"
-              },
-              {
-                "value": "RemoveAction",
-                "name": "删除当前动作"
-              },
-              {
-                "value": "GetActionInfo",
-                "name": "根据ID获取动作信息"
-              },
-              {
-                "value": "GetLastEditedAction",
-                "name": "获取最后打开编辑器的动作"
-              }
-            ]
+      "selectionsChanged": false
+    },
+    {
+      "key": "sys:smtp",
+      "name": "SMTP发送邮件",
+      "changedFields": [],
+      "inputs": {
+        "added": [],
+        "removed": [],
+        "changed": [
+          {
+            "key": "useSsl",
+            "before": {
+              "key": "useSsl",
+              "name": "使用加密连接",
+              "type": "Boolean",
+              "description": "是否使用TLS连接（通常为587端口）。",
+              "defaultValue": "false",
+              "defaultValueRaw": false,
+              "variableMode": "UseVarOrInput"
+            },
+            "after": {
+              "key": "useSsl",
+              "name": "使用加密连接",
+              "type": "Boolean",
+              "description": "是否使用TLS加密连接。采用 STARTTLS（先明文连接再升级加密，通常为587端口，部分服务器为25端口）；不支持465端口的隐式SSL连接。",
+              "defaultValue": "false",
+              "defaultValueRaw": false,
+              "variableMode": "UseVarOrInput"
+            }
           },
-          "theme": {
-            "name": "主题模式",
-            "items": [
-              {
-                "value": "",
-                "name": "不改变"
-              },
-              {
-                "value": "auto",
-                "name": "跟随Windows"
-              },
-              {
-                "value": "light",
-                "name": "浅色"
-              },
-              {
-                "value": "dark",
-                "name": "暗色"
-              },
-              {
-                "value": "toggle",
-                "name": "切换浅色和暗色"
-              }
-            ]
+          {
+            "key": "to",
+            "before": {
+              "key": "to",
+              "name": "收件人",
+              "type": "Text",
+              "description": "收件人Email地址，多个的话使用小写逗号分隔。",
+              "defaultValue": "",
+              "required": true,
+              "variableMode": "UseVarOrInput"
+            },
+            "after": {
+              "key": "to",
+              "name": "收件人",
+              "type": "Text",
+              "description": "收件人Email地址，多个的话使用英文逗号（,）分隔，不支持分号或中文逗号。",
+              "defaultValue": "",
+              "required": true,
+              "variableMode": "UseVarOrInput"
+            }
           },
-          "viewMode": {
-            "name": "显示状态",
-            "items": [
-              {
-                "value": "HideAll",
-                "name": "隐藏全部"
-              },
-              {
-                "value": "ByProcess",
-                "name": "自动(按关联进程切换)"
-              },
-              {
-                "value": "ShowAll",
-                "name": "显示全部"
-              },
-              {
-                "value": "ToggleHideAndAuto",
-                "name": "切换隐藏和自动"
-              }
-            ]
+          {
+            "key": "cc",
+            "before": {
+              "key": "cc",
+              "name": "抄送",
+              "type": "Text",
+              "description": "抄送给的Email地址列表，多个的话使用小写逗号分隔。",
+              "defaultValue": "",
+              "required": true,
+              "variableMode": "UseVarOrInput"
+            },
+            "after": {
+              "key": "cc",
+              "name": "抄送",
+              "type": "Text",
+              "description": "抄送给的Email地址列表，多个的话使用英文逗号（,）分隔，不支持分号或中文逗号。",
+              "defaultValue": "",
+              "required": true,
+              "variableMode": "UseVarOrInput"
+            }
+          },
+          {
+            "key": "bcc",
+            "before": {
+              "key": "bcc",
+              "name": "密送",
+              "type": "Text",
+              "description": "密送给的Email地址列表，多个的话使用小写逗号分隔。",
+              "defaultValue": "",
+              "required": true,
+              "variableMode": "UseVarOrInput"
+            },
+            "after": {
+              "key": "bcc",
+              "name": "密送",
+              "type": "Text",
+              "description": "密送给的Email地址列表，多个的话使用英文逗号（,）分隔，不支持分号或中文逗号。",
+              "defaultValue": "",
+              "required": true,
+              "variableMode": "UseVarOrInput"
+            }
+          },
+          {
+            "key": "attachList",
+            "before": {
+              "key": "attachList",
+              "name": "附件",
+              "type": "Text",
+              "description": "附件文件列表。多个时每行一个。",
+              "defaultValue": "",
+              "variableMode": "UseVarOrInput"
+            },
+            "after": {
+              "key": "attachList",
+              "name": "附件",
+              "type": "Text",
+              "description": "附件文件路径列表。多个时每行一个（按换行拆分），文件不存在时步骤失败。",
+              "defaultValue": "",
+              "variableMode": "UseVarOrInput"
+            }
           }
-        },
-        "after": {
-          "type": {
-            "name": "类型",
-            "items": [
-              {
-                "value": "showPanel",
-                "name": "显示面板"
-              },
-              {
-                "value": "showSearch",
-                "name": "显示搜索框"
-              },
-              {
-                "value": "closeSearch",
-                "name": "关闭搜索框"
-              },
-              {
-                "value": "showCircleMenu",
-                "name": "显示轮盘菜单 (点击)"
-              },
-              {
-                "value": "showTextSelectionToolbar",
-                "name": "显示选中文本工具条"
-              },
-              {
-                "value": "togglePause",
-                "name": "禁用/启用"
-              },
-              {
-                "value": "runLastAction",
-                "name": "运行最后使用的动作"
-              },
-              {
-                "value": "startAppVoiceInput",
-                "name": "启动App语音输入"
-              },
-              {
-                "value": "stopAllActions",
-                "name": "停止运行中的动作"
-              },
-              {
-                "value": "reinstallMouseHook",
-                "name": "重新加载键鼠挂钩"
-              },
-              {
-                "value": "ResetKeyboard",
-                "name": "重置键盘状态"
-              },
-              {
-                "value": "showDashboardWindow",
-                "name": "显示仪表盘窗口"
-              },
-              {
-                "value": "showConfigWindow",
-                "name": "显示设置窗口"
-              },
-              {
-                "value": "showExeSettingWindow",
-                "name": "显示场景、动作与触发管理窗口"
-              },
-              {
-                "value": "closeAllFloatWindow",
-                "name": "关闭所有悬浮按钮"
-              },
-              {
-                "value": "loadProfile",
-                "name": "加载动作页"
-              },
-              {
-                "value": "loadExeProfiles",
-                "name": "加载场景动作（锁定切换）"
-              },
-              {
-                "value": "loadExeProfilesNoLock",
-                "name": "加载场景动作（不锁定切换）"
-              },
-              {
-                "value": "ToggleLockPanel",
-                "name": "锁定/解锁 动作页自动切换"
-              },
-              {
-                "value": "editAction",
-                "name": "编辑动作"
-              },
-              {
-                "value": "RestartQuicker",
-                "name": "重启Quicker"
-              },
-              {
-                "value": "SetPushActiveClient",
-                "name": "推送服务：设置为活动客户端"
-              },
-              {
-                "value": "StartSearchWithAction",
-                "name": "使用当前动作进行实时搜索"
-              },
-              {
-                "value": "SearchWithCertainAction",
-                "name": "使用指定动作进行实时搜索"
-              },
-              {
-                "value": "operation_show_context_menu",
-                "name": "显示剪贴板上下文菜单"
-              },
-              {
-                "value": "LoadSkin",
-                "name": "加载外观/切换主题(专业版功能)"
-              },
-              {
-                "value": "ExitQuicker",
-                "name": "退出Quicker"
-              },
-              {
-                "value": "FloatAction",
-                "name": "悬浮动作(专业版功能)"
-              },
-              {
-                "value": "ToggleFloatButtons",
-                "name": "切换所有悬浮按钮显示"
-              },
-              {
-                "value": "ShowHideImageWindows",
-                "name": "显示或隐藏所有图片窗口"
-              },
-              {
-                "value": "RemoveAction",
-                "name": "删除当前动作"
-              },
-              {
-                "value": "GetActionInfo",
-                "name": "根据ID获取动作信息"
-              },
-              {
-                "value": "GetLastEditedAction",
-                "name": "获取最后打开编辑器的动作"
-              }
-            ]
+        ]
+      },
+      "outputs": {
+        "added": [],
+        "removed": [],
+        "changed": []
+      },
+      "selectionsChanged": false
+    },
+    {
+      "key": "sys:audioControl",
+      "name": "音频设备",
+      "changedFields": [],
+      "inputs": {
+        "added": [],
+        "removed": [],
+        "changed": []
+      },
+      "outputs": {
+        "added": [],
+        "removed": [],
+        "changed": [
+          {
+            "key": "deviceList",
+            "before": {
+              "key": "deviceList",
+              "name": "设备信息列表",
+              "type": "List",
+              "description": "每项的格式为:[图标]名称(注释)|设备ID",
+              "validForList": [
+                "GetOutputDeviceList",
+                "GetInputDeviceList"
+              ],
+              "condition": "仅：GetOutputDeviceList, GetInputDeviceList"
+            },
+            "after": {
+              "key": "deviceList",
+              "name": "设备信息列表",
+              "type": "List",
+              "description": "每项的格式为:[icon:图标路径]设备名称(状态: …, ID: …)|设备ID。取设备ID时按最后一个“|”拆分，取其后的部分。",
+              "validForList": [
+                "GetOutputDeviceList",
+                "GetInputDeviceList"
+              ],
+              "condition": "仅：GetOutputDeviceList, GetInputDeviceList"
+            }
           },
-          "theme": {
-            "name": "主题模式",
-            "items": [
-              {
-                "value": "",
-                "name": "不改变"
-              },
-              {
-                "value": "auto",
-                "name": "跟随Windows"
-              },
-              {
-                "value": "light",
-                "name": "浅色"
-              },
-              {
-                "value": "dark",
-                "name": "暗色"
-              },
-              {
-                "value": "toggle",
-                "name": "切换浅色和暗色"
-              }
-            ]
+          {
+            "key": "volume",
+            "before": {
+              "key": "volume",
+              "name": "设置音量",
+              "type": "Number",
+              "validForList": [
+                "GetOutputDefaultDevice",
+                "GetInputDefaultDevice",
+                "GetDeviceById"
+              ],
+              "condition": "仅：GetOutputDefaultDevice, GetInputDefaultDevice, GetDeviceById"
+            },
+            "after": {
+              "key": "volume",
+              "name": "设置音量",
+              "type": "Number",
+              "description": "设备当前主音量，0–1 之间的小数（0.5 表示 50%），不是 0–100。",
+              "validForList": [
+                "GetOutputDefaultDevice",
+                "GetInputDefaultDevice",
+                "GetDeviceById"
+              ],
+              "condition": "仅：GetOutputDefaultDevice, GetInputDefaultDevice, GetDeviceById"
+            }
           },
-          "viewMode": {
-            "name": "显示状态",
-            "items": [
-              {
-                "value": "HideAll",
-                "name": "隐藏全部"
-              },
-              {
-                "value": "ByProcess",
-                "name": "自动(按关联进程切换)"
-              },
-              {
-                "value": "ShowAll",
-                "name": "显示全部"
-              },
-              {
-                "value": "ToggleHideAndAuto",
-                "name": "切换隐藏和自动"
-              }
-            ]
+          {
+            "key": "masterPeakValue",
+            "before": {
+              "key": "masterPeakValue",
+              "name": "实时音量",
+              "type": "Number",
+              "validForList": [
+                "GetOutputDefaultDevice",
+                "GetInputDefaultDevice",
+                "GetDeviceById"
+              ],
+              "condition": "仅：GetOutputDefaultDevice, GetInputDefaultDevice, GetDeviceById"
+            },
+            "after": {
+              "key": "masterPeakValue",
+              "name": "实时音量",
+              "type": "Number",
+              "description": "设备当前的峰值电平，0–1 之间的小数。",
+              "validForList": [
+                "GetOutputDefaultDevice",
+                "GetInputDefaultDevice",
+                "GetDeviceById"
+              ],
+              "condition": "仅：GetOutputDefaultDevice, GetInputDefaultDevice, GetDeviceById"
+            }
           }
-        }
-      }
+        ]
+      },
+      "selectionsChanged": false
     }
   ]
 }

@@ -482,6 +482,7 @@
       "key": "text",
       "name": "文字",
       "type": "Text",
+      "description": "要绘制的文字。支持占位符 {page}（该页在整个文档中的页码，从 1 开始）和 {pages}（整个文档的总页数，不受 pages 页码范围影响），不区分大小写，如“第{page}页/共{pages}页”。页码操作留空时为 {page}；叠加文字与水印不能为空。",
       "validForList": [
         "overlayText",
         "watermark",

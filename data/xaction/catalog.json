@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-09-30 06:04:10",
+  "generatedAt": "2026-10-02 06:19:26",
   "moduleCount": 175,
   "legacyMappedModuleCount": 0,
   "migratedLegacyModuleCount": 0,
@@ -9245,6 +9245,7 @@
           "key": "text",
           "name": "文字",
           "type": "Text",
+          "description": "要绘制的文字。支持占位符 {page}（该页在整个文档中的页码，从 1 开始）和 {pages}（整个文档的总页数，不受 pages 页码范围影响），不区分大小写，如“第{page}页/共{pages}页”。页码操作留空时为 {page}；叠加文字与水印不能为空。",
           "validForList": [
             "overlayText",
             "watermark",
@@ -18150,7 +18151,7 @@
           "key": "useSsl",
           "name": "使用加密连接",
           "type": "Boolean",
-          "description": "是否使用TLS连接（通常为587端口）。",
+          "description": "是否使用TLS加密连接。采用 STARTTLS（先明文连接再升级加密，通常为587端口，部分服务器为25端口）；不支持465端口的隐式SSL连接。",
           "defaultValue": "false",
           "defaultValueRaw": false,
           "variableMode": "UseVarOrInput"
@@ -18195,7 +18196,7 @@
           "key": "to",
           "name": "收件人",
           "type": "Text",
-          "description": "收件人Email地址，多个的话使用小写逗号分隔。",
+          "description": "收件人Email地址，多个的话使用英文逗号（,）分隔，不支持分号或中文逗号。",
           "defaultValue": "",
           "required": true,
           "variableMode": "UseVarOrInput"
@@ -18204,7 +18205,7 @@
           "key": "cc",
           "name": "抄送",
           "type": "Text",
-          "description": "抄送给的Email地址列表，多个的话使用小写逗号分隔。",
+          "description": "抄送给的Email地址列表，多个的话使用英文逗号（,）分隔，不支持分号或中文逗号。",
           "defaultValue": "",
           "required": true,
           "variableMode": "UseVarOrInput"
@@ -18213,7 +18214,7 @@
           "key": "bcc",
           "name": "密送",
           "type": "Text",
-          "description": "密送给的Email地址列表，多个的话使用小写逗号分隔。",
+          "description": "密送给的Email地址列表，多个的话使用英文逗号（,）分隔，不支持分号或中文逗号。",
           "defaultValue": "",
           "required": true,
           "variableMode": "UseVarOrInput"
@@ -18239,7 +18240,7 @@
           "key": "attachList",
           "name": "附件",
           "type": "Text",
-          "description": "附件文件列表。多个时每行一个。",
+          "description": "附件文件路径列表。多个时每行一个（按换行拆分），文件不存在时步骤失败。",
           "defaultValue": "",
           "variableMode": "UseVarOrInput"
         },
@@ -39818,7 +39819,7 @@
           "key": "deviceList",
           "name": "设备信息列表",
           "type": "List",
-          "description": "每项的格式为:[图标]名称(注释)|设备ID",
+          "description": "每项的格式为:[icon:图标路径]设备名称(状态: …, ID: …)|设备ID。取设备ID时按最后一个“|”拆分，取其后的部分。",
           "validForList": [
             "GetOutputDeviceList",
             "GetInputDeviceList"
@@ -39883,6 +39884,7 @@
           "key": "volume",
           "name": "设置音量",
           "type": "Number",
+          "description": "设备当前主音量，0–1 之间的小数（0.5 表示 50%），不是 0–100。",
           "validForList": [
             "GetOutputDefaultDevice",
             "GetInputDefaultDevice",
@@ -39894,6 +39896,7 @@
           "key": "masterPeakValue",
           "name": "实时音量",
           "type": "Number",
+          "description": "设备当前的峰值电平，0–1 之间的小数。",
           "validForList": [
             "GetOutputDefaultDevice",
             "GetInputDefaultDevice",

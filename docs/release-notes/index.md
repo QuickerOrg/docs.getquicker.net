@@ -167,7 +167,7 @@ comments: true
 ### 2.2.6 · 悬浮动作与分组
 
 - 补充[悬浮动作与分组](/v2/features/floating-actions)：整组缩放、窗口跟随、自动折叠和布局备份。功能默认关闭，启用后需要重启。
-- 补充[截图选区悬停识别二维码](/v2/features/screenshot/capture-pro#选区二维码)、[Mastercam 软件连接](/v2/features/software-connections/software/mastercam)、动作编辑器优先显示收藏夹，以及[作者重装恢复原标识、复制切断分享关系](/v2/features/action-sharing#安装标识与副本)。
+- 补充[截图选区悬停识别二维码](/v2/features/screenshot/capture-pro#二维码与条形码)、[Mastercam 软件连接](/v2/features/software-connections/software/mastercam)、动作编辑器优先显示收藏夹，以及[作者重装恢复原标识、复制切断分享关系](/v2/features/action-sharing#安装标识与副本)。
 
 ### 2.2.5 · 连接管理与贴图
 

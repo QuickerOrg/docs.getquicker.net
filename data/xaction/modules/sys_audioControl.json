@@ -108,7 +108,7 @@
       "key": "deviceList",
       "name": "设备信息列表",
       "type": "List",
-      "description": "每项的格式为:[图标]名称(注释)|设备ID",
+      "description": "每项的格式为:[icon:图标路径]设备名称(状态: …, ID: …)|设备ID。取设备ID时按最后一个“|”拆分，取其后的部分。",
       "validForList": [
         "GetOutputDeviceList",
         "GetInputDeviceList"
@@ -173,6 +173,7 @@
       "key": "volume",
       "name": "设置音量",
       "type": "Number",
+      "description": "设备当前主音量，0–1 之间的小数（0.5 表示 50%），不是 0–100。",
       "validForList": [
         "GetOutputDefaultDevice",
         "GetInputDefaultDevice",
@@ -184,6 +185,7 @@
       "key": "masterPeakValue",
       "name": "实时音量",
       "type": "Number",
+      "description": "设备当前的峰值电平，0–1 之间的小数。",
       "validForList": [
         "GetOutputDefaultDevice",
         "GetInputDefaultDevice",

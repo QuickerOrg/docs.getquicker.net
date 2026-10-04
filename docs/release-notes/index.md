@@ -30,6 +30,17 @@ comments: true
 
 官网版本记录目前写到 2.3.0，完整条目以那里为准。
 
+## 开发版说明补充
+
+以下说明按 2026-10-04 的开发版整理，**尚未包含在官网当前提供的 2.3.0 中**；不能据此判断已经开放下载。
+
+- [本机动作暂存区](/v2/features/action-panel/action-drafts#开发版从文件导入与导出)：从文件导入、导出动作定义，以及标识重复、分享来源和本机版本历史的边界。
+- [截图 Pro](/v2/features/screenshot/capture-pro#开发版序号旁的文字说明)：序号文字说明；[图片与录屏历史管理](/v2/features/screenshot/capture-pro#开发版图片与录屏历史管理)和[窗口贴图缩放](/v2/features/screenshot/capture-pro#开发版窗口贴图缩放)。
+- [设置搜索](/v2/features/tools#开发版搜索并定位设置)：按页面组织结果，定位功能分组与选项，并区分同名配色项。
+- [轮盘设置](/v2/features/triggers/circle-menu#开发版在设置中选择和编辑位置)：单击选择位置，双击 / F2 编辑，继承项保存为当前场景覆盖。
+- [文本指令](/v2/features/triggers/text-commands#开发版多条指令同时匹配)：先解析场景覆盖，再按普通文本优先、较长指令优先匹配。
+- [AI 对话](/v2/features/ai-and-agent#设计器与对话中的检查入口)：合并连续工作过程，展开核对操作明细与失败提示。
+
 ## 近期文档补充
 
 ### 2.3.0 · 脚本动作与截图/设置 AI

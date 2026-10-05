@@ -1,276 +1,586 @@
 {
   "schemaVersion": 1,
   "baselineCreated": false,
-  "fromGeneratedAt": "2026-09-30 06:04:10",
-  "toGeneratedAt": "2026-10-02 06:19:26",
+  "fromGeneratedAt": "2026-10-02 06:19:26",
+  "toGeneratedAt": "2026-10-05 06:13:02",
   "summary": {
     "addedModules": 0,
     "removedModules": 0,
-    "changedModules": 3
+    "changedModules": 2
   },
   "addedModules": [],
   "removedModules": [],
   "changedModules": [
     {
-      "key": "sys:pdf",
-      "name": "PDF 文件处理",
+      "key": "sys:checkPathExists",
+      "name": "检查路径/获取文件信息",
       "changedFields": [],
       "inputs": {
-        "added": [],
-        "removed": [],
-        "changed": [
+        "added": [
           {
-            "key": "text",
-            "before": {
-              "key": "text",
-              "name": "文字",
-              "type": "Text",
-              "validForList": [
-                "overlayText",
-                "watermark",
-                "pageNumber"
-              ],
-              "condition": "仅：overlayText, watermark, pageNumber",
-              "defaultValue": "",
-              "variableMode": "UseVarOrInput"
-            },
-            "after": {
-              "key": "text",
-              "name": "文字",
-              "type": "Text",
-              "description": "要绘制的文字。支持占位符 {page}（该页在整个文档中的页码，从 1 开始）和 {pages}（整个文档的总页数，不受 pages 页码范围影响），不区分大小写，如“第{page}页/共{pages}页”。页码操作留空时为 {page}；叠加文字与水印不能为空。",
-              "validForList": [
-                "overlayText",
-                "watermark",
-                "pageNumber"
-              ],
-              "condition": "仅：overlayText, watermark, pageNumber",
-              "defaultValue": "",
-              "variableMode": "UseVarOrInput"
-            }
+            "key": "stopIfFail",
+            "name": "失败后停止",
+            "type": "Boolean",
+            "description": "失败后是否停止动作。关闭后请检查是否成功和错误消息，失败时其他输出可能保留原值。",
+            "defaultValue": "true",
+            "defaultValueRaw": true,
+            "variableMode": "Input"
           }
-        ]
+        ],
+        "removed": [],
+        "changed": []
       },
       "outputs": {
-        "added": [],
+        "added": [
+          {
+            "key": "isSuccess",
+            "name": "是否成功",
+            "type": "Boolean",
+            "description": "是否成功完成本次查询。路径不存在属于正常查询结果；失败时其他输出可能保留原值。"
+          }
+        ],
         "removed": [],
         "changed": []
       },
       "selectionsChanged": false
     },
     {
-      "key": "sys:smtp",
-      "name": "SMTP发送邮件",
+      "key": "sys:custompanel",
+      "name": "自定义操作窗",
       "changedFields": [],
       "inputs": {
-        "added": [],
-        "removed": [],
-        "changed": [
+        "added": [
           {
-            "key": "useSsl",
-            "before": {
-              "key": "useSsl",
-              "name": "使用加密连接",
-              "type": "Boolean",
-              "description": "是否使用TLS连接（通常为587端口）。",
-              "defaultValue": "false",
-              "defaultValueRaw": false,
-              "variableMode": "UseVarOrInput"
-            },
-            "after": {
-              "key": "useSsl",
-              "name": "使用加密连接",
-              "type": "Boolean",
-              "description": "是否使用TLS加密连接。采用 STARTTLS（先明文连接再升级加密，通常为587端口，部分服务器为25端口）；不支持465端口的隐式SSL连接。",
-              "defaultValue": "false",
-              "defaultValueRaw": false,
-              "variableMode": "UseVarOrInput"
-            }
-          },
-          {
-            "key": "to",
-            "before": {
-              "key": "to",
-              "name": "收件人",
-              "type": "Text",
-              "description": "收件人Email地址，多个的话使用小写逗号分隔。",
-              "defaultValue": "",
-              "required": true,
-              "variableMode": "UseVarOrInput"
-            },
-            "after": {
-              "key": "to",
-              "name": "收件人",
-              "type": "Text",
-              "description": "收件人Email地址，多个的话使用英文逗号（,）分隔，不支持分号或中文逗号。",
-              "defaultValue": "",
-              "required": true,
-              "variableMode": "UseVarOrInput"
-            }
-          },
-          {
-            "key": "cc",
-            "before": {
-              "key": "cc",
-              "name": "抄送",
-              "type": "Text",
-              "description": "抄送给的Email地址列表，多个的话使用小写逗号分隔。",
-              "defaultValue": "",
-              "required": true,
-              "variableMode": "UseVarOrInput"
-            },
-            "after": {
-              "key": "cc",
-              "name": "抄送",
-              "type": "Text",
-              "description": "抄送给的Email地址列表，多个的话使用英文逗号（,）分隔，不支持分号或中文逗号。",
-              "defaultValue": "",
-              "required": true,
-              "variableMode": "UseVarOrInput"
-            }
-          },
-          {
-            "key": "bcc",
-            "before": {
-              "key": "bcc",
-              "name": "密送",
-              "type": "Text",
-              "description": "密送给的Email地址列表，多个的话使用小写逗号分隔。",
-              "defaultValue": "",
-              "required": true,
-              "variableMode": "UseVarOrInput"
-            },
-            "after": {
-              "key": "bcc",
-              "name": "密送",
-              "type": "Text",
-              "description": "密送给的Email地址列表，多个的话使用英文逗号（,）分隔，不支持分号或中文逗号。",
-              "defaultValue": "",
-              "required": true,
-              "variableMode": "UseVarOrInput"
-            }
-          },
-          {
-            "key": "attachList",
-            "before": {
-              "key": "attachList",
-              "name": "附件",
-              "type": "Text",
-              "description": "附件文件列表。多个时每行一个。",
-              "defaultValue": "",
-              "variableMode": "UseVarOrInput"
-            },
-            "after": {
-              "key": "attachList",
-              "name": "附件",
-              "type": "Text",
-              "description": "附件文件路径列表。多个时每行一个（按换行拆分），文件不存在时步骤失败。",
-              "defaultValue": "",
-              "variableMode": "UseVarOrInput"
-            }
+            "key": "panelDefinition",
+            "name": "操作窗定义",
+            "type": "Text",
+            "description": "完整 JSON 定义。编辑时留空新建；按定义显示时必填。",
+            "validForList": [
+              "edit_panel_definition",
+              "show_panel_definition"
+            ],
+            "condition": "仅：edit_panel_definition, show_panel_definition",
+            "defaultValue": "",
+            "variableMode": "UseVarOrInput"
           }
-        ]
-      },
-      "outputs": {
-        "added": [],
-        "removed": [],
-        "changed": []
-      },
-      "selectionsChanged": false
-    },
-    {
-      "key": "sys:audioControl",
-      "name": "音频设备",
-      "changedFields": [],
-      "inputs": {
-        "added": [],
+        ],
         "removed": [],
         "changed": []
       },
       "outputs": {
-        "added": [],
+        "added": [
+          {
+            "key": "panelDefinitionResult",
+            "name": "结果定义",
+            "type": "Text",
+            "description": "确认后输出完整 JSON 定义；取消时返回输入原文。",
+            "validForList": [
+              "edit_panel_definition"
+            ],
+            "condition": "仅：edit_panel_definition"
+          },
+          {
+            "key": "panelDefinitionConfirmed",
+            "name": "已确认",
+            "type": "Boolean",
+            "description": "仅在确认编辑后为 true。保存定义前必须判断此结果。",
+            "validForList": [
+              "edit_panel_definition"
+            ],
+            "condition": "仅：edit_panel_definition"
+          }
+        ],
         "removed": [],
         "changed": [
           {
-            "key": "deviceList",
+            "key": "winHandle",
             "before": {
-              "key": "deviceList",
-              "name": "设备信息列表",
-              "type": "List",
-              "description": "每项的格式为:[图标]名称(注释)|设备ID",
+              "key": "winHandle",
+              "name": "窗口句柄",
+              "type": "Integer",
+              "description": "操作窗的窗口句柄",
               "validForList": [
-                "GetOutputDeviceList",
-                "GetInputDeviceList"
+                "show_fixed_panel",
+                "get_panel_info"
               ],
-              "condition": "仅：GetOutputDeviceList, GetInputDeviceList"
+              "condition": "仅：show_fixed_panel, get_panel_info"
             },
             "after": {
-              "key": "deviceList",
-              "name": "设备信息列表",
-              "type": "List",
-              "description": "每项的格式为:[icon:图标路径]设备名称(状态: …, ID: …)|设备ID。取设备ID时按最后一个“|”拆分，取其后的部分。",
+              "key": "winHandle",
+              "name": "窗口句柄",
+              "type": "Integer",
+              "description": "操作窗的窗口句柄",
               "validForList": [
-                "GetOutputDeviceList",
-                "GetInputDeviceList"
+                "show_fixed_panel",
+                "show_panel_definition",
+                "get_panel_info"
               ],
-              "condition": "仅：GetOutputDeviceList, GetInputDeviceList"
-            }
-          },
-          {
-            "key": "volume",
-            "before": {
-              "key": "volume",
-              "name": "设置音量",
-              "type": "Number",
-              "validForList": [
-                "GetOutputDefaultDevice",
-                "GetInputDefaultDevice",
-                "GetDeviceById"
-              ],
-              "condition": "仅：GetOutputDefaultDevice, GetInputDefaultDevice, GetDeviceById"
-            },
-            "after": {
-              "key": "volume",
-              "name": "设置音量",
-              "type": "Number",
-              "description": "设备当前主音量，0–1 之间的小数（0.5 表示 50%），不是 0–100。",
-              "validForList": [
-                "GetOutputDefaultDevice",
-                "GetInputDefaultDevice",
-                "GetDeviceById"
-              ],
-              "condition": "仅：GetOutputDefaultDevice, GetInputDefaultDevice, GetDeviceById"
-            }
-          },
-          {
-            "key": "masterPeakValue",
-            "before": {
-              "key": "masterPeakValue",
-              "name": "实时音量",
-              "type": "Number",
-              "validForList": [
-                "GetOutputDefaultDevice",
-                "GetInputDefaultDevice",
-                "GetDeviceById"
-              ],
-              "condition": "仅：GetOutputDefaultDevice, GetInputDefaultDevice, GetDeviceById"
-            },
-            "after": {
-              "key": "masterPeakValue",
-              "name": "实时音量",
-              "type": "Number",
-              "description": "设备当前的峰值电平，0–1 之间的小数。",
-              "validForList": [
-                "GetOutputDefaultDevice",
-                "GetInputDefaultDevice",
-                "GetDeviceById"
-              ],
-              "condition": "仅：GetOutputDefaultDevice, GetInputDefaultDevice, GetDeviceById"
+              "condition": "仅：show_fixed_panel, show_panel_definition, get_panel_info"
             }
           }
         ]
       },
-      "selectionsChanged": false
+      "selectionsChanged": true,
+      "selections": {
+        "before": {
+          "operation": {
+            "name": "操作类型",
+            "items": [
+              {
+                "value": "show_fixed_panel",
+                "name": "显示操作窗"
+              },
+              {
+                "value": "show_fixed_panel_wait_close",
+                "name": "显示操作窗并等待关闭"
+              },
+              {
+                "value": "close_fixed_panel",
+                "name": "关闭操作窗"
+              },
+              {
+                "value": "toggle_collapse",
+                "name": "切换展开状态"
+              },
+              {
+                "value": "get_panel_info",
+                "name": "获取操作窗状态"
+              }
+            ]
+          },
+          "defaultOperation": {
+            "name": "默认Operation",
+            "items": [
+              {
+                "value": "copy",
+                "name": "复制"
+              },
+              {
+                "value": "paste",
+                "name": "粘贴"
+              },
+              {
+                "value": "pastefile",
+                "name": "粘贴文件"
+              },
+              {
+                "value": "pasteimage",
+                "name": "粘贴图片"
+              },
+              {
+                "value": "inputtext",
+                "name": "键入文本"
+              },
+              {
+                "value": "run",
+                "name": "执行命令"
+              },
+              {
+                "value": "sendkeys",
+                "name": "模拟按键B"
+              },
+              {
+                "value": "action",
+                "name": "执行动作"
+              },
+              {
+                "value": "selectfile",
+                "name": "定位文件"
+              },
+              {
+                "value": "inputscript",
+                "name": "多步骤输入"
+              },
+              {
+                "value": "sp",
+                "name": "执行子程序"
+              }
+            ]
+          },
+          "groupMode": {
+            "name": "分组方式",
+            "items": [
+              {
+                "value": "heading",
+                "name": "标题分组"
+              },
+              {
+                "value": "expander",
+                "name": "可折叠的分组"
+              },
+              {
+                "value": "tab-top",
+                "name": "标签页-顶部"
+              },
+              {
+                "value": "tab-left",
+                "name": "标签页-左侧"
+              },
+              {
+                "value": "tab-right",
+                "name": "标签页-右侧"
+              },
+              {
+                "value": "tab-bottom",
+                "name": "标签页-底部"
+              },
+              {
+                "value": "headingLeft",
+                "name": "多行"
+              },
+              {
+                "value": "columns",
+                "name": "多列"
+              },
+              {
+                "value": "none",
+                "name": "不分组"
+              }
+            ]
+          },
+          "winLocation": {
+            "name": "窗口位置",
+            "items": [
+              {
+                "value": "WithMouse1",
+                "name": "跟随鼠标（指针周围）"
+              },
+              {
+                "value": "WithMouse2",
+                "name": "跟随鼠标（指针右下）"
+              },
+              {
+                "value": "CenterScreen",
+                "name": "屏幕中间"
+              },
+              {
+                "value": "TopLeft",
+                "name": "屏幕左上"
+              },
+              {
+                "value": "TopCenter",
+                "name": "屏幕中上"
+              },
+              {
+                "value": "TopRight",
+                "name": "屏幕右上"
+              },
+              {
+                "value": "LeftCenter",
+                "name": "屏幕左中"
+              },
+              {
+                "value": "RightCenter",
+                "name": "屏幕右中"
+              },
+              {
+                "value": "BottomLeft",
+                "name": "屏幕左下"
+              },
+              {
+                "value": "BottomCenter",
+                "name": "屏幕中下"
+              },
+              {
+                "value": "BottomRight",
+                "name": "屏幕右下"
+              },
+              {
+                "value": "FullScreen",
+                "name": "全屏"
+              },
+              {
+                "value": "Maximized",
+                "name": "最大化"
+              },
+              {
+                "value": "Manual",
+                "name": "自定义位置"
+              },
+              {
+                "value": "Auto",
+                "name": "系统默认"
+              }
+            ]
+          },
+          "horzAlign": {
+            "name": "按钮内容对齐方式",
+            "items": [
+              {
+                "value": "Center",
+                "name": "居中"
+              },
+              {
+                "value": "Left",
+                "name": "左侧"
+              },
+              {
+                "value": "Right",
+                "name": "右侧"
+              }
+            ]
+          },
+          "bindProc": {
+            "name": "自动关联到进程",
+            "items": [
+              {
+                "value": "-",
+                "name": "禁用此功能"
+              }
+            ]
+          },
+          "autoCollapse": {
+            "name": "自动折叠",
+            "items": [
+              {
+                "value": "0",
+                "name": "关闭"
+              },
+              {
+                "value": "1",
+                "name": "开启"
+              },
+              {
+                "value": "-1",
+                "name": "禁用此功能"
+              }
+            ]
+          }
+        },
+        "after": {
+          "operation": {
+            "name": "操作类型",
+            "items": [
+              {
+                "value": "show_fixed_panel",
+                "name": "显示操作窗"
+              },
+              {
+                "value": "show_fixed_panel_wait_close",
+                "name": "显示操作窗并等待关闭"
+              },
+              {
+                "value": "close_fixed_panel",
+                "name": "关闭操作窗"
+              },
+              {
+                "value": "toggle_collapse",
+                "name": "切换展开状态"
+              },
+              {
+                "value": "get_panel_info",
+                "name": "获取操作窗状态"
+              },
+              {
+                "value": "edit_panel_definition",
+                "name": "编辑操作窗定义"
+              },
+              {
+                "value": "show_panel_definition",
+                "name": "按定义显示操作窗"
+              }
+            ]
+          },
+          "defaultOperation": {
+            "name": "默认Operation",
+            "items": [
+              {
+                "value": "copy",
+                "name": "复制"
+              },
+              {
+                "value": "paste",
+                "name": "粘贴"
+              },
+              {
+                "value": "pastefile",
+                "name": "粘贴文件"
+              },
+              {
+                "value": "pasteimage",
+                "name": "粘贴图片"
+              },
+              {
+                "value": "inputtext",
+                "name": "键入文本"
+              },
+              {
+                "value": "run",
+                "name": "执行命令"
+              },
+              {
+                "value": "sendkeys",
+                "name": "模拟按键B"
+              },
+              {
+                "value": "action",
+                "name": "执行动作"
+              },
+              {
+                "value": "selectfile",
+                "name": "定位文件"
+              },
+              {
+                "value": "inputscript",
+                "name": "多步骤输入"
+              },
+              {
+                "value": "sp",
+                "name": "执行子程序"
+              }
+            ]
+          },
+          "groupMode": {
+            "name": "分组方式",
+            "items": [
+              {
+                "value": "heading",
+                "name": "标题分组"
+              },
+              {
+                "value": "expander",
+                "name": "可折叠的分组"
+              },
+              {
+                "value": "tab-top",
+                "name": "标签页-顶部"
+              },
+              {
+                "value": "tab-left",
+                "name": "标签页-左侧"
+              },
+              {
+                "value": "tab-right",
+                "name": "标签页-右侧"
+              },
+              {
+                "value": "tab-bottom",
+                "name": "标签页-底部"
+              },
+              {
+                "value": "headingLeft",
+                "name": "多行"
+              },
+              {
+                "value": "columns",
+                "name": "多列"
+              },
+              {
+                "value": "none",
+                "name": "不分组"
+              }
+            ]
+          },
+          "winLocation": {
+            "name": "窗口位置",
+            "items": [
+              {
+                "value": "WithMouse1",
+                "name": "跟随鼠标（指针周围）"
+              },
+              {
+                "value": "WithMouse2",
+                "name": "跟随鼠标（指针右下）"
+              },
+              {
+                "value": "CenterScreen",
+                "name": "屏幕中间"
+              },
+              {
+                "value": "TopLeft",
+                "name": "屏幕左上"
+              },
+              {
+                "value": "TopCenter",
+                "name": "屏幕中上"
+              },
+              {
+                "value": "TopRight",
+                "name": "屏幕右上"
+              },
+              {
+                "value": "LeftCenter",
+                "name": "屏幕左中"
+              },
+              {
+                "value": "RightCenter",
+                "name": "屏幕右中"
+              },
+              {
+                "value": "BottomLeft",
+                "name": "屏幕左下"
+              },
+              {
+                "value": "BottomCenter",
+                "name": "屏幕中下"
+              },
+              {
+                "value": "BottomRight",
+                "name": "屏幕右下"
+              },
+              {
+                "value": "FullScreen",
+                "name": "全屏"
+              },
+              {
+                "value": "Maximized",
+                "name": "最大化"
+              },
+              {
+                "value": "Manual",
+                "name": "自定义位置"
+              },
+              {
+                "value": "Auto",
+                "name": "系统默认"
+              }
+            ]
+          },
+          "horzAlign": {
+            "name": "按钮内容对齐方式",
+            "items": [
+              {
+                "value": "Center",
+                "name": "居中"
+              },
+              {
+                "value": "Left",
+                "name": "左侧"
+              },
+              {
+                "value": "Right",
+                "name": "右侧"
+              }
+            ]
+          },
+          "bindProc": {
+            "name": "自动关联到进程",
+            "items": [
+              {
+                "value": "-",
+                "name": "禁用此功能"
+              }
+            ]
+          },
+          "autoCollapse": {
+            "name": "自动折叠",
+            "items": [
+              {
+                "value": "0",
+                "name": "关闭"
+              },
+              {
+                "value": "1",
+                "name": "开启"
+              },
+              {
+                "value": "-1",
+                "name": "禁用此功能"
+              }
+            ]
+          }
+        }
+      }
     }
   ]
 }

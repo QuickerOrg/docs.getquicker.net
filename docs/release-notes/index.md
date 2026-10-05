@@ -28,26 +28,22 @@ comments: true
 
 多设备使用、降级或回退前，请阅读[升级与回退](/v2/migration/upgrade-and-rollback)。各版本的具体风险也在下方对应条目中标出。
 
-官网版本记录目前写到 2.3.0，完整条目以那里为准。
-
-## 开发版说明补充
-
-以下说明按 2026-10-05 的开发版整理，**尚未包含在官网当前提供的 2.3.0 中**；不能据此判断已经开放下载。
-
-- [AI 模型、附件与提问](/v2/features/ai-and-agent#开发版模型附件与提问)：按对话选择模型和思考档位，设计器 / 脚本助手附件、截图与选择窗口，逐题作答及任务反馈。
-- [AI 本机数据按账号存放](/v2/features/account-and-sync#开发版ai-本机数据按账号存放)与[可选密钥同步](/v2/what's-new/ai-services-and-models#开发版在设备间同步-api-密钥)：区分本机记录、账号同步与凭据上传范围。
-- [脚本 AI 助手](/v2/script-action/assistant#开发版先确认需求再修改)：新建脚本或新增行为先确认，写入草稿同时检查，正式保存和运行仍由本人决定。
-- [运行时编辑操作窗定义](/v2/xaction/modules/custompanel#开发版运行时编辑操作窗定义)：编辑完整 JSON 布局，确认后自行保存，再按定义显示窗口。
-- [文件查询失败处理](/v2/xaction/modules/checkpathexists#开发版区分路径不存在与查询失败)：可选择失败后继续，先检查成功与存在性，避免使用上一次遗留的输出。
-
-- [本机动作暂存区](/v2/features/action-panel/action-drafts#开发版从文件导入与导出)：从文件导入、导出动作定义，以及标识重复、分享来源和本机版本历史的边界。
-- [截图 Pro](/v2/features/screenshot/capture-pro#开发版序号旁的文字说明)：序号文字说明；[图片与录屏历史管理](/v2/features/screenshot/capture-pro#开发版图片与录屏历史管理)和[窗口贴图缩放](/v2/features/screenshot/capture-pro#开发版窗口贴图缩放)。
-- [设置搜索](/v2/features/tools#开发版搜索并定位设置)：按页面组织结果，定位功能分组与选项，并区分同名配色项。
-- [轮盘设置](/v2/features/triggers/circle-menu#开发版在设置中选择和编辑位置)：单击选择位置，双击 / F2 编辑，继承项保存为当前场景覆盖。
-- [文本指令](/v2/features/triggers/text-commands#开发版多条指令同时匹配)：先解析场景覆盖，再按普通文本优先、较长指令优先匹配。
-- [AI 对话](/v2/features/ai-and-agent#设计器与对话中的检查入口)：合并连续工作过程，展开核对操作明细与失败提示。
+官网版本记录目前写到 2.3.1，完整条目以那里为准。
 
 ## 近期文档补充
+
+### 2.3.1 · AI 助手附件、按账号存放与暂存文件
+
+- [AI 本机数据按账号存放](/v2/features/account-and-sync#ai-本机数据按账号存放)：AI 配置、会话、动作日志和运行历史改为按账号存放；升级后首个启动的账号接收旧数据副本。多账号用户请先看[升级与回退](/v2/migration/upgrade-and-rollback#231-ai-数据按账号存放与密钥同步)，确认要保留旧数据的账号和回退影响。
+- [在设备间同步 API 密钥](/v2/what's-new/ai-services-and-models#在设备间同步-api-密钥)：可选同步 API 密钥和自定义请求头，默认关闭；开启后会上传到 Quicker 服务器。建议所有设备升级后再启用。
+- [组合动作与脚本动作的 AI 助手](/v2/features/ai-and-agent#模型附件与提问)：按对话选择模型和推理强度，添加或粘贴附件、截图与选择窗口，逐题回答助手提问；[脚本助手](/v2/script-action/assistant#先确认需求再修改)新建脚本或新增行为前先确认需求。开启完全控制时可[直接写回原动作](/v2/features/ai-and-agent#动作保存与对话入口)，新对话可一键引用最近修改的动作。
+- [本机动作暂存区](/v2/features/action-panel/action-drafts#从文件导入与导出)支持从文件导入、导出动作，以及[手动备份和版本说明](/v2/features/action-panel/action-drafts#手动备份和版本说明)；点击 **＋** 先选择创建组合动作或脚本动作。
+- [自定义操作窗](/v2/xaction/modules/custompanel#运行时编辑操作窗定义)新增「编辑操作窗定义」「按定义显示操作窗」，可在动作运行时打开设计器并按返回的定义显示窗口。
+- [检查路径/获取文件信息](/v2/xaction/modules/checkpathexists#区分路径不存在与查询失败)可选择查询失败后继续，需先检查是否成功和是否存在。
+- 截图与贴图：[截图内选字与全文编辑](/v2/features/screenshot/capture-pro#截图内选字与全文编辑)、[序号旁的文字说明](/v2/features/screenshot/capture-pro#序号旁的文字说明)、改版的[图片与录屏历史管理](/v2/features/screenshot/capture-pro#图片与录屏历史管理)，以及[窗口贴图缩放](/v2/features/screenshot/capture-pro#窗口贴图缩放)。
+- [设置搜索](/v2/features/tools#搜索并定位设置)按页面组织结果并定位到选项；[窗口检查器](/v2/features/tools#查看控件树与取消选择)支持展开全部、展开分支和刷新节点，控件选择器可按 `Esc` 取消。
+- [轮盘设置页](/v2/features/triggers/circle-menu#在设置中选择和编辑位置)单击只选中位置，双击或 `F2` 再编辑；[文本指令](/v2/features/triggers/text-commands#多条指令同时匹配)恢复较长指令优先匹配；[选择操作类型](/v2/features/triggers#选择操作类型)恢复为多级菜单。
+- [完整分享窗口](/v2/features/action-sharing#如何选择发布格式)新分享和更新时默认勾选兼容发布格式。WebDAV 目录查询与 301 跳转、长步骤编辑窗顶部出屏、Everything 修改时间排序等修复见[官网版本记录](https://getquicker.net/V2/Versions)。
 
 ### 2.3.0 · 脚本动作与截图/设置 AI
 

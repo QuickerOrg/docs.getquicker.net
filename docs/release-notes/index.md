@@ -32,7 +32,13 @@ comments: true
 
 ## 开发版说明补充
 
-以下说明按 2026-10-04 的开发版整理，**尚未包含在官网当前提供的 2.3.0 中**；不能据此判断已经开放下载。
+以下说明按 2026-10-05 的开发版整理，**尚未包含在官网当前提供的 2.3.0 中**；不能据此判断已经开放下载。
+
+- [AI 模型、附件与提问](/v2/features/ai-and-agent#开发版模型附件与提问)：按对话选择模型和思考档位，设计器 / 脚本助手附件、截图与选择窗口，逐题作答及任务反馈。
+- [AI 本机数据按账号存放](/v2/features/account-and-sync#开发版ai-本机数据按账号存放)与[可选密钥同步](/v2/what's-new/ai-services-and-models#开发版在设备间同步-api-密钥)：区分本机记录、账号同步与凭据上传范围。
+- [脚本 AI 助手](/v2/script-action/assistant#开发版先确认需求再修改)：新建脚本或新增行为先确认，写入草稿同时检查，正式保存和运行仍由本人决定。
+- [运行时编辑操作窗定义](/v2/xaction/modules/custompanel#开发版运行时编辑操作窗定义)：编辑完整 JSON 布局，确认后自行保存，再按定义显示窗口。
+- [文件查询失败处理](/v2/xaction/modules/checkpathexists#开发版区分路径不存在与查询失败)：可选择失败后继续，先检查成功与存在性，避免使用上一次遗留的输出。
 
 - [本机动作暂存区](/v2/features/action-panel/action-drafts#开发版从文件导入与导出)：从文件导入、导出动作定义，以及标识重复、分享来源和本机版本历史的边界。
 - [截图 Pro](/v2/features/screenshot/capture-pro#开发版序号旁的文字说明)：序号文字说明；[图片与录屏历史管理](/v2/features/screenshot/capture-pro#开发版图片与录屏历史管理)和[窗口贴图缩放](/v2/features/screenshot/capture-pro#开发版窗口贴图缩放)。

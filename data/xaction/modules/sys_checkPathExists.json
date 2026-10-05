@@ -18,9 +18,24 @@
       "defaultValue": "",
       "required": true,
       "variableMode": "UseVarOrInput"
+    },
+    {
+      "key": "stopIfFail",
+      "name": "失败后停止",
+      "type": "Boolean",
+      "description": "失败后是否停止动作。关闭后请检查是否成功和错误消息，失败时其他输出可能保留原值。",
+      "defaultValue": "true",
+      "defaultValueRaw": true,
+      "variableMode": "Input"
     }
   ],
   "outputs": [
+    {
+      "key": "isSuccess",
+      "name": "是否成功",
+      "type": "Boolean",
+      "description": "是否成功完成本次查询。路径不存在属于正常查询结果；失败时其他输出可能保留原值。"
+    },
     {
       "key": "isExists",
       "name": "路径是否存在",

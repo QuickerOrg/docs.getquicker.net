@@ -34,6 +34,19 @@
       "variableMode": "UseVarOrInput"
     },
     {
+      "key": "panelDefinition",
+      "name": "操作窗定义",
+      "type": "Text",
+      "description": "完整 JSON 定义。编辑时留空新建；按定义显示时必填。",
+      "validForList": [
+        "edit_panel_definition",
+        "show_panel_definition"
+      ],
+      "condition": "仅：edit_panel_definition, show_panel_definition",
+      "defaultValue": "",
+      "variableMode": "UseVarOrInput"
+    },
+    {
       "key": "defaultOperation",
       "name": "默认Operation",
       "type": "Text",
@@ -426,9 +439,30 @@
       "description": "操作窗的窗口句柄",
       "validForList": [
         "show_fixed_panel",
+        "show_panel_definition",
         "get_panel_info"
       ],
-      "condition": "仅：show_fixed_panel, get_panel_info"
+      "condition": "仅：show_fixed_panel, show_panel_definition, get_panel_info"
+    },
+    {
+      "key": "panelDefinitionResult",
+      "name": "结果定义",
+      "type": "Text",
+      "description": "确认后输出完整 JSON 定义；取消时返回输入原文。",
+      "validForList": [
+        "edit_panel_definition"
+      ],
+      "condition": "仅：edit_panel_definition"
+    },
+    {
+      "key": "panelDefinitionConfirmed",
+      "name": "已确认",
+      "type": "Boolean",
+      "description": "仅在确认编辑后为 true。保存定义前必须判断此结果。",
+      "validForList": [
+        "edit_panel_definition"
+      ],
+      "condition": "仅：edit_panel_definition"
     },
     {
       "key": "isWindowExpanded",
@@ -473,6 +507,14 @@
         {
           "value": "get_panel_info",
           "name": "获取操作窗状态"
+        },
+        {
+          "value": "edit_panel_definition",
+          "name": "编辑操作窗定义"
+        },
+        {
+          "value": "show_panel_definition",
+          "name": "按定义显示操作窗"
         }
       ]
     },

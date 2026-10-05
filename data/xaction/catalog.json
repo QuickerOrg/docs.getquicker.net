@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-10-02 06:19:26",
+  "generatedAt": "2026-10-05 06:13:02",
   "moduleCount": 175,
   "legacyMappedModuleCount": 0,
   "migratedLegacyModuleCount": 0,
@@ -7452,9 +7452,24 @@
           "defaultValue": "",
           "required": true,
           "variableMode": "UseVarOrInput"
+        },
+        {
+          "key": "stopIfFail",
+          "name": "失败后停止",
+          "type": "Boolean",
+          "description": "失败后是否停止动作。关闭后请检查是否成功和错误消息，失败时其他输出可能保留原值。",
+          "defaultValue": "true",
+          "defaultValueRaw": true,
+          "variableMode": "Input"
         }
       ],
       "outputs": [
+        {
+          "key": "isSuccess",
+          "name": "是否成功",
+          "type": "Boolean",
+          "description": "是否成功完成本次查询。路径不存在属于正常查询结果；失败时其他输出可能保留原值。"
+        },
         {
           "key": "isExists",
           "name": "路径是否存在",
@@ -44375,6 +44390,19 @@
           "variableMode": "UseVarOrInput"
         },
         {
+          "key": "panelDefinition",
+          "name": "操作窗定义",
+          "type": "Text",
+          "description": "完整 JSON 定义。编辑时留空新建；按定义显示时必填。",
+          "validForList": [
+            "edit_panel_definition",
+            "show_panel_definition"
+          ],
+          "condition": "仅：edit_panel_definition, show_panel_definition",
+          "defaultValue": "",
+          "variableMode": "UseVarOrInput"
+        },
+        {
           "key": "defaultOperation",
           "name": "默认Operation",
           "type": "Text",
@@ -44767,9 +44795,30 @@
           "description": "操作窗的窗口句柄",
           "validForList": [
             "show_fixed_panel",
+            "show_panel_definition",
             "get_panel_info"
           ],
-          "condition": "仅：show_fixed_panel, get_panel_info"
+          "condition": "仅：show_fixed_panel, show_panel_definition, get_panel_info"
+        },
+        {
+          "key": "panelDefinitionResult",
+          "name": "结果定义",
+          "type": "Text",
+          "description": "确认后输出完整 JSON 定义；取消时返回输入原文。",
+          "validForList": [
+            "edit_panel_definition"
+          ],
+          "condition": "仅：edit_panel_definition"
+        },
+        {
+          "key": "panelDefinitionConfirmed",
+          "name": "已确认",
+          "type": "Boolean",
+          "description": "仅在确认编辑后为 true。保存定义前必须判断此结果。",
+          "validForList": [
+            "edit_panel_definition"
+          ],
+          "condition": "仅：edit_panel_definition"
         },
         {
           "key": "isWindowExpanded",
@@ -44814,6 +44863,14 @@
             {
               "value": "get_panel_info",
               "name": "获取操作窗状态"
+            },
+            {
+              "value": "edit_panel_definition",
+              "name": "编辑操作窗定义"
+            },
+            {
+              "value": "show_panel_definition",
+              "name": "按定义显示操作窗"
             }
           ]
         },

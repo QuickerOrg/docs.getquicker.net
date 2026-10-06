@@ -1,581 +1,602 @@
 {
   "schemaVersion": 1,
   "baselineCreated": false,
-  "fromGeneratedAt": "2026-10-02 06:19:26",
-  "toGeneratedAt": "2026-10-05 06:13:02",
+  "fromGeneratedAt": "2026-10-05 06:13:02",
+  "toGeneratedAt": "2026-10-06 22:53:51",
   "summary": {
     "addedModules": 0,
     "removedModules": 0,
-    "changedModules": 2
+    "changedModules": 4
   },
   "addedModules": [],
   "removedModules": [],
   "changedModules": [
     {
-      "key": "sys:checkPathExists",
-      "name": "检查路径/获取文件信息",
+      "key": "sys:runScript",
+      "name": "运行脚本",
       "changedFields": [],
       "inputs": {
-        "added": [
-          {
-            "key": "stopIfFail",
-            "name": "失败后停止",
-            "type": "Boolean",
-            "description": "失败后是否停止动作。关闭后请检查是否成功和错误消息，失败时其他输出可能保留原值。",
-            "defaultValue": "true",
-            "defaultValueRaw": true,
-            "variableMode": "Input"
-          }
-        ],
+        "added": [],
         "removed": [],
         "changed": []
       },
       "outputs": {
-        "added": [
-          {
-            "key": "isSuccess",
-            "name": "是否成功",
-            "type": "Boolean",
-            "description": "是否成功完成本次查询。路径不存在属于正常查询结果；失败时其他输出可能保留原值。"
-          }
-        ],
+        "added": [],
         "removed": [],
         "changed": []
-      },
-      "selectionsChanged": false
-    },
-    {
-      "key": "sys:custompanel",
-      "name": "自定义操作窗",
-      "changedFields": [],
-      "inputs": {
-        "added": [
-          {
-            "key": "panelDefinition",
-            "name": "操作窗定义",
-            "type": "Text",
-            "description": "完整 JSON 定义。编辑时留空新建；按定义显示时必填。",
-            "validForList": [
-              "edit_panel_definition",
-              "show_panel_definition"
-            ],
-            "condition": "仅：edit_panel_definition, show_panel_definition",
-            "defaultValue": "",
-            "variableMode": "UseVarOrInput"
-          }
-        ],
-        "removed": [],
-        "changed": []
-      },
-      "outputs": {
-        "added": [
-          {
-            "key": "panelDefinitionResult",
-            "name": "结果定义",
-            "type": "Text",
-            "description": "确认后输出完整 JSON 定义；取消时返回输入原文。",
-            "validForList": [
-              "edit_panel_definition"
-            ],
-            "condition": "仅：edit_panel_definition"
-          },
-          {
-            "key": "panelDefinitionConfirmed",
-            "name": "已确认",
-            "type": "Boolean",
-            "description": "仅在确认编辑后为 true。保存定义前必须判断此结果。",
-            "validForList": [
-              "edit_panel_definition"
-            ],
-            "condition": "仅：edit_panel_definition"
-          }
-        ],
-        "removed": [],
-        "changed": [
-          {
-            "key": "winHandle",
-            "before": {
-              "key": "winHandle",
-              "name": "窗口句柄",
-              "type": "Integer",
-              "description": "操作窗的窗口句柄",
-              "validForList": [
-                "show_fixed_panel",
-                "get_panel_info"
-              ],
-              "condition": "仅：show_fixed_panel, get_panel_info"
-            },
-            "after": {
-              "key": "winHandle",
-              "name": "窗口句柄",
-              "type": "Integer",
-              "description": "操作窗的窗口句柄",
-              "validForList": [
-                "show_fixed_panel",
-                "show_panel_definition",
-                "get_panel_info"
-              ],
-              "condition": "仅：show_fixed_panel, show_panel_definition, get_panel_info"
-            }
-          }
-        ]
       },
       "selectionsChanged": true,
       "selections": {
         "before": {
-          "operation": {
-            "name": "操作类型",
+          "type": {
+            "name": "脚本类型",
             "items": [
               {
-                "value": "show_fixed_panel",
-                "name": "显示操作窗"
+                "value": "CMD_K",
+                "name": "CMD命令 (完成后保留窗口)"
               },
               {
-                "value": "show_fixed_panel_wait_close",
-                "name": "显示操作窗并等待关闭"
+                "value": "CMD_C",
+                "name": "CMD命令 (完成后关闭窗口)"
               },
               {
-                "value": "close_fixed_panel",
-                "name": "关闭操作窗"
+                "value": "CMD_H",
+                "name": "CMD命令 (隐藏命令行窗口)"
               },
               {
-                "value": "toggle_collapse",
-                "name": "切换展开状态"
+                "value": "BAT",
+                "name": "BAT批处理脚本(.bat)"
               },
               {
-                "value": "get_panel_info",
-                "name": "获取操作窗状态"
+                "value": "CMD_F",
+                "name": "CMD批处理脚本(.cmd)"
+              },
+              {
+                "value": "PS",
+                "name": "PowerShell脚本(.ps1)"
+              },
+              {
+                "value": "AHK",
+                "name": "AutoHotKey脚本(.ahk)"
+              },
+              {
+                "value": "CUSTOM",
+                "name": "自定义脚本类型"
               }
             ]
           },
-          "defaultOperation": {
-            "name": "默认Operation",
+          "encoding": {
+            "name": "文件编码",
             "items": [
               {
-                "value": "copy",
-                "name": "复制"
+                "value": "utf-8",
+                "name": "UTF8 (有BOM)"
               },
               {
-                "value": "paste",
-                "name": "粘贴"
+                "value": "UTF8-NOBOM",
+                "name": "UTF8 (无BOM)"
               },
               {
-                "value": "pastefile",
-                "name": "粘贴文件"
+                "value": "utf-16",
+                "name": "UTF-16 LE"
               },
               {
-                "value": "pasteimage",
-                "name": "粘贴图片"
+                "value": "utf-16BE",
+                "name": "UTF-16 BE"
               },
               {
-                "value": "inputtext",
-                "name": "键入文本"
+                "value": "us-ascii",
+                "name": "ASCII"
               },
               {
-                "value": "run",
-                "name": "执行命令"
+                "value": "utf-7",
+                "name": "UTF7"
               },
               {
-                "value": "sendkeys",
-                "name": "模拟按键B"
+                "value": "utf-32",
+                "name": "UTF32"
               },
               {
-                "value": "action",
-                "name": "执行动作"
-              },
-              {
-                "value": "selectfile",
-                "name": "定位文件"
-              },
-              {
-                "value": "inputscript",
-                "name": "多步骤输入"
-              },
-              {
-                "value": "sp",
-                "name": "执行子程序"
+                "value": "default",
+                "name": "系统默认(windows-1252)"
               }
             ]
           },
-          "groupMode": {
-            "name": "分组方式",
+          "outputEncoding": {
+            "name": "控制台输出编码",
             "items": [
               {
-                "value": "heading",
-                "name": "标题分组"
+                "value": "utf8",
+                "name": "UTF8"
               },
               {
-                "value": "expander",
-                "name": "可折叠的分组"
-              },
-              {
-                "value": "tab-top",
-                "name": "标签页-顶部"
-              },
-              {
-                "value": "tab-left",
-                "name": "标签页-左侧"
-              },
-              {
-                "value": "tab-right",
-                "name": "标签页-右侧"
-              },
-              {
-                "value": "tab-bottom",
-                "name": "标签页-底部"
-              },
-              {
-                "value": "headingLeft",
-                "name": "多行"
-              },
-              {
-                "value": "columns",
-                "name": "多列"
-              },
-              {
-                "value": "none",
-                "name": "不分组"
-              }
-            ]
-          },
-          "winLocation": {
-            "name": "窗口位置",
-            "items": [
-              {
-                "value": "WithMouse1",
-                "name": "跟随鼠标（指针周围）"
-              },
-              {
-                "value": "WithMouse2",
-                "name": "跟随鼠标（指针右下）"
-              },
-              {
-                "value": "CenterScreen",
-                "name": "屏幕中间"
-              },
-              {
-                "value": "TopLeft",
-                "name": "屏幕左上"
-              },
-              {
-                "value": "TopCenter",
-                "name": "屏幕中上"
-              },
-              {
-                "value": "TopRight",
-                "name": "屏幕右上"
-              },
-              {
-                "value": "LeftCenter",
-                "name": "屏幕左中"
-              },
-              {
-                "value": "RightCenter",
-                "name": "屏幕右中"
-              },
-              {
-                "value": "BottomLeft",
-                "name": "屏幕左下"
-              },
-              {
-                "value": "BottomCenter",
-                "name": "屏幕中下"
-              },
-              {
-                "value": "BottomRight",
-                "name": "屏幕右下"
-              },
-              {
-                "value": "FullScreen",
-                "name": "全屏"
-              },
-              {
-                "value": "Maximized",
-                "name": "最大化"
-              },
-              {
-                "value": "Manual",
-                "name": "自定义位置"
-              },
-              {
-                "value": "Auto",
-                "name": "系统默认"
-              }
-            ]
-          },
-          "horzAlign": {
-            "name": "按钮内容对齐方式",
-            "items": [
-              {
-                "value": "Center",
-                "name": "居中"
-              },
-              {
-                "value": "Left",
-                "name": "左侧"
-              },
-              {
-                "value": "Right",
-                "name": "右侧"
-              }
-            ]
-          },
-          "bindProc": {
-            "name": "自动关联到进程",
-            "items": [
-              {
-                "value": "-",
-                "name": "禁用此功能"
-              }
-            ]
-          },
-          "autoCollapse": {
-            "name": "自动折叠",
-            "items": [
-              {
-                "value": "0",
-                "name": "关闭"
-              },
-              {
-                "value": "1",
-                "name": "开启"
-              },
-              {
-                "value": "-1",
-                "name": "禁用此功能"
+                "value": "oem",
+                "name": "OEM"
               }
             ]
           }
         },
         "after": {
-          "operation": {
-            "name": "操作类型",
+          "type": {
+            "name": "脚本类型",
             "items": [
               {
-                "value": "show_fixed_panel",
-                "name": "显示操作窗"
+                "value": "CMD_K",
+                "name": "CMD命令 (完成后保留窗口)"
               },
               {
-                "value": "show_fixed_panel_wait_close",
-                "name": "显示操作窗并等待关闭"
+                "value": "CMD_C",
+                "name": "CMD命令 (完成后关闭窗口)"
               },
               {
-                "value": "close_fixed_panel",
-                "name": "关闭操作窗"
+                "value": "CMD_H",
+                "name": "CMD命令 (隐藏命令行窗口)"
               },
               {
-                "value": "toggle_collapse",
-                "name": "切换展开状态"
+                "value": "BAT",
+                "name": "BAT批处理脚本(.bat)"
               },
               {
-                "value": "get_panel_info",
-                "name": "获取操作窗状态"
+                "value": "CMD_F",
+                "name": "CMD批处理脚本(.cmd)"
               },
               {
-                "value": "edit_panel_definition",
-                "name": "编辑操作窗定义"
+                "value": "PS",
+                "name": "PowerShell脚本(.ps1)"
               },
               {
-                "value": "show_panel_definition",
-                "name": "按定义显示操作窗"
+                "value": "AHK",
+                "name": "AutoHotKey脚本(.ahk)"
+              },
+              {
+                "value": "CUSTOM",
+                "name": "自定义脚本类型"
               }
             ]
           },
-          "defaultOperation": {
-            "name": "默认Operation",
+          "encoding": {
+            "name": "文件编码",
             "items": [
               {
-                "value": "copy",
-                "name": "复制"
+                "value": "utf-8",
+                "name": "UTF8 (有BOM)"
               },
               {
-                "value": "paste",
-                "name": "粘贴"
+                "value": "UTF8-NOBOM",
+                "name": "UTF8 (无BOM)"
               },
               {
-                "value": "pastefile",
-                "name": "粘贴文件"
+                "value": "utf-16",
+                "name": "UTF-16 LE"
               },
               {
-                "value": "pasteimage",
-                "name": "粘贴图片"
+                "value": "utf-16BE",
+                "name": "UTF-16 BE"
               },
               {
-                "value": "inputtext",
-                "name": "键入文本"
+                "value": "us-ascii",
+                "name": "ASCII"
               },
               {
-                "value": "run",
-                "name": "执行命令"
+                "value": "utf-7",
+                "name": "UTF7"
               },
               {
-                "value": "sendkeys",
-                "name": "模拟按键B"
+                "value": "utf-32",
+                "name": "UTF32"
               },
               {
-                "value": "action",
-                "name": "执行动作"
-              },
-              {
-                "value": "selectfile",
-                "name": "定位文件"
-              },
-              {
-                "value": "inputscript",
-                "name": "多步骤输入"
-              },
-              {
-                "value": "sp",
-                "name": "执行子程序"
+                "value": "default",
+                "name": "系统默认(gb2312)"
               }
             ]
           },
-          "groupMode": {
-            "name": "分组方式",
+          "outputEncoding": {
+            "name": "控制台输出编码",
             "items": [
               {
-                "value": "heading",
-                "name": "标题分组"
+                "value": "utf8",
+                "name": "UTF8"
               },
               {
-                "value": "expander",
-                "name": "可折叠的分组"
+                "value": "oem",
+                "name": "OEM"
+              }
+            ]
+          }
+        }
+      }
+    },
+    {
+      "key": "sys:getClipboardText",
+      "name": "获取剪贴板文本",
+      "changedFields": [],
+      "inputs": {
+        "added": [],
+        "removed": [],
+        "changed": []
+      },
+      "outputs": {
+        "added": [],
+        "removed": [],
+        "changed": []
+      },
+      "selectionsChanged": true,
+      "selections": {
+        "before": {
+          "format": {
+            "name": "文本数据格式",
+            "items": [
+              {
+                "value": "UnicodeText",
+                "name": "纯文本（默认）"
               },
               {
-                "value": "tab-top",
-                "name": "标签页-顶部"
+                "value": "Rtf",
+                "name": "Rtf"
               },
               {
-                "value": "tab-left",
-                "name": "标签页-左侧"
+                "value": "Html",
+                "name": "Html"
               },
               {
-                "value": "tab-right",
-                "name": "标签页-右侧"
+                "value": "CommaSeparatedValue",
+                "name": "逗号分隔的值（csv）"
               },
               {
-                "value": "tab-bottom",
-                "name": "标签页-底部"
-              },
-              {
-                "value": "headingLeft",
-                "name": "多行"
-              },
-              {
-                "value": "columns",
-                "name": "多列"
-              },
-              {
-                "value": "none",
-                "name": "不分组"
+                "value": "Custom",
+                "name": "自定义格式名"
               }
             ]
           },
-          "winLocation": {
-            "name": "窗口位置",
+          "encoding": {
+            "name": "文本编码",
             "items": [
               {
-                "value": "WithMouse1",
-                "name": "跟随鼠标（指针周围）"
+                "value": "utf-8",
+                "name": "UTF8"
               },
               {
-                "value": "WithMouse2",
-                "name": "跟随鼠标（指针右下）"
+                "value": "utf-16",
+                "name": "UTF-16 LE"
               },
               {
-                "value": "CenterScreen",
-                "name": "屏幕中间"
+                "value": "utf-16BE",
+                "name": "UTF-16 BE"
               },
               {
-                "value": "TopLeft",
-                "name": "屏幕左上"
+                "value": "us-ascii",
+                "name": "ASCII"
               },
               {
-                "value": "TopCenter",
-                "name": "屏幕中上"
+                "value": "utf-7",
+                "name": "UTF7"
               },
               {
-                "value": "TopRight",
-                "name": "屏幕右上"
+                "value": "utf-32",
+                "name": "UTF32"
               },
               {
-                "value": "LeftCenter",
-                "name": "屏幕左中"
+                "value": "default",
+                "name": "系统默认(windows-1252)"
+              }
+            ]
+          }
+        },
+        "after": {
+          "format": {
+            "name": "文本数据格式",
+            "items": [
+              {
+                "value": "UnicodeText",
+                "name": "纯文本（默认）"
               },
               {
-                "value": "RightCenter",
-                "name": "屏幕右中"
+                "value": "Rtf",
+                "name": "Rtf"
               },
               {
-                "value": "BottomLeft",
-                "name": "屏幕左下"
+                "value": "Html",
+                "name": "Html"
               },
               {
-                "value": "BottomCenter",
-                "name": "屏幕中下"
+                "value": "CommaSeparatedValue",
+                "name": "逗号分隔的值（csv）"
               },
               {
-                "value": "BottomRight",
-                "name": "屏幕右下"
-              },
-              {
-                "value": "FullScreen",
-                "name": "全屏"
-              },
-              {
-                "value": "Maximized",
-                "name": "最大化"
-              },
-              {
-                "value": "Manual",
-                "name": "自定义位置"
-              },
-              {
-                "value": "Auto",
-                "name": "系统默认"
+                "value": "Custom",
+                "name": "自定义格式名"
               }
             ]
           },
-          "horzAlign": {
-            "name": "按钮内容对齐方式",
+          "encoding": {
+            "name": "文本编码",
             "items": [
               {
-                "value": "Center",
-                "name": "居中"
+                "value": "utf-8",
+                "name": "UTF8"
               },
               {
-                "value": "Left",
-                "name": "左侧"
+                "value": "utf-16",
+                "name": "UTF-16 LE"
               },
               {
-                "value": "Right",
-                "name": "右侧"
+                "value": "utf-16BE",
+                "name": "UTF-16 BE"
+              },
+              {
+                "value": "us-ascii",
+                "name": "ASCII"
+              },
+              {
+                "value": "utf-7",
+                "name": "UTF7"
+              },
+              {
+                "value": "utf-32",
+                "name": "UTF32"
+              },
+              {
+                "value": "default",
+                "name": "系统默认(gb2312)"
+              }
+            ]
+          }
+        }
+      }
+    },
+    {
+      "key": "sys:readFile",
+      "name": "读取文件",
+      "changedFields": [],
+      "inputs": {
+        "added": [],
+        "removed": [],
+        "changed": []
+      },
+      "outputs": {
+        "added": [],
+        "removed": [],
+        "changed": []
+      },
+      "selectionsChanged": true,
+      "selections": {
+        "before": {
+          "type": {
+            "name": "格式",
+            "items": [
+              {
+                "value": "text",
+                "name": "文本"
+              },
+              {
+                "value": "image",
+                "name": "图片"
               }
             ]
           },
-          "bindProc": {
-            "name": "自动关联到进程",
+          "encoding": {
+            "name": "文件编码",
             "items": [
               {
-                "value": "-",
-                "name": "禁用此功能"
+                "value": "utf-8",
+                "name": "UTF8"
+              },
+              {
+                "value": "utf-16",
+                "name": "UTF-16 LE"
+              },
+              {
+                "value": "utf-16BE",
+                "name": "UTF-16 BE"
+              },
+              {
+                "value": "us-ascii",
+                "name": "ASCII"
+              },
+              {
+                "value": "utf-7",
+                "name": "UTF7"
+              },
+              {
+                "value": "utf-32",
+                "name": "UTF32"
+              },
+              {
+                "value": "default",
+                "name": "系统默认(windows-1252)"
+              },
+              {
+                "value": "auto",
+                "name": "自动（BOM/UTF/ANSI）"
+              }
+            ]
+          }
+        },
+        "after": {
+          "type": {
+            "name": "格式",
+            "items": [
+              {
+                "value": "text",
+                "name": "文本"
+              },
+              {
+                "value": "image",
+                "name": "图片"
               }
             ]
           },
-          "autoCollapse": {
-            "name": "自动折叠",
+          "encoding": {
+            "name": "文件编码",
             "items": [
               {
-                "value": "0",
-                "name": "关闭"
+                "value": "utf-8",
+                "name": "UTF8"
               },
               {
-                "value": "1",
-                "name": "开启"
+                "value": "utf-16",
+                "name": "UTF-16 LE"
               },
               {
-                "value": "-1",
-                "name": "禁用此功能"
+                "value": "utf-16BE",
+                "name": "UTF-16 BE"
+              },
+              {
+                "value": "us-ascii",
+                "name": "ASCII"
+              },
+              {
+                "value": "utf-7",
+                "name": "UTF7"
+              },
+              {
+                "value": "utf-32",
+                "name": "UTF32"
+              },
+              {
+                "value": "default",
+                "name": "系统默认(gb2312)"
+              },
+              {
+                "value": "auto",
+                "name": "自动（BOM/UTF/ANSI）"
+              }
+            ]
+          }
+        }
+      }
+    },
+    {
+      "key": "sys:WriteTextFile",
+      "name": "写入文本文件",
+      "changedFields": [],
+      "inputs": {
+        "added": [],
+        "removed": [],
+        "changed": []
+      },
+      "outputs": {
+        "added": [],
+        "removed": [],
+        "changed": []
+      },
+      "selectionsChanged": true,
+      "selections": {
+        "before": {
+          "encoding": {
+            "name": "文件编码",
+            "items": [
+              {
+                "value": "utf-8",
+                "name": "UTF8"
+              },
+              {
+                "value": "utf-16",
+                "name": "UTF-16 LE"
+              },
+              {
+                "value": "utf-16BE",
+                "name": "UTF-16 BE"
+              },
+              {
+                "value": "us-ascii",
+                "name": "ASCII"
+              },
+              {
+                "value": "utf-7",
+                "name": "UTF7"
+              },
+              {
+                "value": "utf-32",
+                "name": "UTF32"
+              },
+              {
+                "value": "default",
+                "name": "系统默认(windows-1252)"
+              }
+            ]
+          },
+          "newLineChars": {
+            "name": "统一换行字符",
+            "items": [
+              {
+                "value": "",
+                "name": "默认（不处理）"
+              },
+              {
+                "value": "\r\n",
+                "name": "\\r\\n",
+                "description": "Windows"
+              },
+              {
+                "value": "\r",
+                "name": "\\r ",
+                "description": "(Mac)"
+              },
+              {
+                "value": "\n",
+                "name": "\\n ",
+                "description": "(Linux)"
+              }
+            ]
+          }
+        },
+        "after": {
+          "encoding": {
+            "name": "文件编码",
+            "items": [
+              {
+                "value": "utf-8",
+                "name": "UTF8"
+              },
+              {
+                "value": "utf-16",
+                "name": "UTF-16 LE"
+              },
+              {
+                "value": "utf-16BE",
+                "name": "UTF-16 BE"
+              },
+              {
+                "value": "us-ascii",
+                "name": "ASCII"
+              },
+              {
+                "value": "utf-7",
+                "name": "UTF7"
+              },
+              {
+                "value": "utf-32",
+                "name": "UTF32"
+              },
+              {
+                "value": "default",
+                "name": "系统默认(gb2312)"
+              }
+            ]
+          },
+          "newLineChars": {
+            "name": "统一换行字符",
+            "items": [
+              {
+                "value": "",
+                "name": "默认（不处理）"
+              },
+              {
+                "value": "\r\n",
+                "name": "\\r\\n",
+                "description": "Windows"
+              },
+              {
+                "value": "\r",
+                "name": "\\r ",
+                "description": "(Mac)"
+              },
+              {
+                "value": "\n",
+                "name": "\\n ",
+                "description": "(Linux)"
               }
             ]
           }

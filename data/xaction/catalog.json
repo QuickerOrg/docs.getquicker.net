@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-10-07 06:07:37",
+  "generatedAt": "2026-10-08 20:35:18",
   "moduleCount": 175,
   "legacyMappedModuleCount": 0,
   "migratedLegacyModuleCount": 0,
@@ -13530,7 +13530,7 @@
           "key": "content",
           "name": "内容",
           "type": "Any",
-          "description": "图片变量、图片路径，或文本（HTML / LaTeX / $公式$ / OCR 原始结果 / 纯文本）。自动判断类型并渲染。",
+          "description": "图片变量、图片路径，或文本（HTML / LaTeX / $公式$ / OCR 原始结果 / 纯文本）。自动判断类型并渲染；HTML 使用自身静态样式，禁用来源脚本和网络访问。",
           "validForList": [
             "variable"
           ],
@@ -13563,9 +13563,9 @@
         },
         {
           "key": "fontName",
-          "name": "字体名称",
+          "name": "纯文本字体名称",
           "type": "Text",
-          "description": "纯文本贴图使用的本机字体。",
+          "description": "纯文本贴图使用的本机字体，自动识别 OCR 时沿用；HTML 使用内容自身的字体样式。",
           "isAdvanced": true,
           "validForList": [
             "variable",
@@ -13580,6 +13580,7 @@
           "key": "fontSize",
           "name": "字号",
           "type": "Number",
+          "description": "纯文本字号。为兼容旧动作，自动识别公式时与公式字号取较大值；HTML 使用内容自身的字号。",
           "isAdvanced": true,
           "validForList": [
             "variable",
@@ -13594,9 +13595,9 @@
         },
         {
           "key": "textColor",
-          "name": "文字颜色",
+          "name": "纯文本文字颜色",
           "type": "Text",
-          "description": "#AARRGGBB",
+          "description": "#AARRGGBB。纯文本文字颜色，自动识别 OCR 时沿用；HTML 使用内容自身的文字颜色。",
           "isAdvanced": true,
           "validForList": [
             "variable",
@@ -13609,18 +13610,17 @@
         },
         {
           "key": "backgroundColor",
-          "name": "背景颜色",
+          "name": "文本/公式背景颜色",
           "type": "Text",
-          "description": "#AARRGGBB。文本 / HTML / 公式画布背景。透明请用带透明通道的颜色（如 #00FFFFFF）。",
+          "description": "#AARRGGBB。纯文本与公式画布背景，自动识别 OCR 时沿用，不影响自动识别的 HTML；旧显式 HTML 动作兼容已保存的背景设置。透明请用带透明通道的颜色（如 #00FFFFFF）。",
           "isAdvanced": true,
           "validForList": [
             "variable",
             "clipboard",
             "text",
-            "html",
             "formula"
           ],
-          "condition": "仅：variable, clipboard, text, html, formula",
+          "condition": "仅：variable, clipboard, text, formula",
           "defaultValue": "#FFFFFFFF",
           "variableMode": "UseVarOrInput"
         },
@@ -13673,7 +13673,7 @@
           "key": "html",
           "name": "HTML",
           "type": "Text",
-          "description": "完整 HTML 文档或片段。由隐藏 WebView2 渲染后贴图。",
+          "description": "完整 HTML 文档或片段。仅渲染静态 HTML 与内联样式，禁用来源脚本和网络访问；公式使用本地 KaTeX。",
           "isAdvanced": true,
           "validForList": [
             "html"
@@ -13698,15 +13698,18 @@
         },
         {
           "key": "htmlBackground",
-          "name": "HTML 背景",
+          "name": "HTML/公式默认背景",
           "type": "Text",
-          "description": "#AARRGGBB。公式与 HTML 贴图的画布背景。",
+          "description": "#AARRGGBB。HTML 内容自身的背景优先；HTML 的默认白色会匹配文字明暗，自定义颜色作为无背景 HTML 的画布背景。旧显式 HTML 动作未设置本项或保持默认白色时沿用已保存的背景颜色。公式背景兼容旧动作设置。",
           "isAdvanced": true,
           "validForList": [
+            "variable",
+            "clipboard",
+            "text",
             "html",
             "formula"
           ],
-          "condition": "仅：html, formula",
+          "condition": "仅：variable, clipboard, text, html, formula",
           "defaultValue": "#FFFFFFFF",
           "variableMode": "UseVarOrInput"
         },
@@ -38525,7 +38528,7 @@
           "key": "vendorAccount",
           "name": "服务商账号",
           "type": "Text",
-          "description": "专业版用户可不填。格式要求请参考模块文档",
+          "description": "格式要求请参考模块文档",
           "validForList": [
             "short_voice_input"
           ],

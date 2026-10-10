@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-10-08 20:35:18",
+  "generatedAt": "2026-10-10 06:06:14",
   "moduleCount": 175,
   "legacyMappedModuleCount": 0,
   "migratedLegacyModuleCount": 0,
@@ -13520,7 +13520,7 @@
           "key": "mode",
           "name": "内容来源",
           "type": "Enum",
-          "description": "变量：自动识别图片、HTML、公式（$ / $$ / LaTeX）、OCR 原始结果或文本。剪贴板：按富文本 HTML、图片、图片文件、公式、文本自动处理；屏幕位置为「自动」或自定义坐标仍为默认 0,0 时，有 PixPin/Quicker 位置元数据则贴回截图原位置。",
+          "description": "变量和剪贴板自动识别图片、HTML、公式、OCR 结果或文本。「纯文本」直接显示输入文字，可设置字体与字号。HTML 仅静态渲染，禁止网络访问。",
           "defaultValue": "variable",
           "required": true,
           "variableMode": "Input",
@@ -13537,6 +13537,19 @@
           "condition": "仅：variable",
           "defaultValue": "",
           "required": true,
+          "variableMode": "UseVarOrInput"
+        },
+        {
+          "key": "text",
+          "name": "文本",
+          "type": "Text",
+          "description": "要贴图的多行文字。支持变量；纯文本模式直接显示文字。",
+          "validForList": [
+            "text",
+            "plainText"
+          ],
+          "condition": "仅：text, plainText",
+          "defaultValue": "",
           "variableMode": "UseVarOrInput"
         },
         {
@@ -13565,64 +13578,49 @@
           "key": "fontName",
           "name": "纯文本字体名称",
           "type": "Text",
-          "description": "纯文本贴图使用的本机字体，自动识别 OCR 时沿用；HTML 使用内容自身的字体样式。",
+          "description": "纯文本贴图使用的本机字体。",
           "isAdvanced": true,
           "validForList": [
-            "variable",
-            "clipboard",
-            "text"
+            "text",
+            "plainText"
           ],
-          "condition": "仅：variable, clipboard, text",
+          "condition": "仅：text, plainText",
           "defaultValue": "Microsoft YaHei UI",
           "variableMode": "UseVarOrInput"
         },
         {
           "key": "fontSize",
-          "name": "字号",
+          "name": "纯文本字号",
           "type": "Number",
-          "description": "纯文本字号。为兼容旧动作，自动识别公式时与公式字号取较大值；HTML 使用内容自身的字号。",
+          "description": "纯文本贴图的字号。",
           "isAdvanced": true,
           "validForList": [
-            "variable",
-            "clipboard",
             "text",
-            "formula"
+            "plainText"
           ],
-          "condition": "仅：variable, clipboard, text, formula",
+          "condition": "仅：text, plainText",
           "defaultValue": "16.0",
           "defaultValueRaw": 16,
           "variableMode": "UseVarOrInput"
         },
         {
-          "key": "textColor",
-          "name": "纯文本文字颜色",
-          "type": "Text",
-          "description": "#AARRGGBB。纯文本文字颜色，自动识别 OCR 时沿用；HTML 使用内容自身的文字颜色。",
-          "isAdvanced": true,
-          "validForList": [
-            "variable",
-            "clipboard",
-            "text"
-          ],
-          "condition": "仅：variable, clipboard, text",
-          "defaultValue": "#FF000000",
-          "variableMode": "UseVarOrInput"
-        },
-        {
-          "key": "backgroundColor",
-          "name": "文本/公式背景颜色",
-          "type": "Text",
-          "description": "#AARRGGBB。纯文本与公式画布背景，自动识别 OCR 时沿用，不影响自动识别的 HTML；旧显式 HTML 动作兼容已保存的背景设置。透明请用带透明通道的颜色（如 #00FFFFFF）。",
+          "key": "theme",
+          "name": "主题",
+          "type": "Enum",
+          "description": "自动：HTML 保留来源主题，文本、公式和 OCR 跟随 Quicker 主题。也可统一使用浅色或深色。",
           "isAdvanced": true,
           "validForList": [
             "variable",
             "clipboard",
             "text",
+            "plainText",
+            "baiduOcrJson",
+            "html",
             "formula"
           ],
-          "condition": "仅：variable, clipboard, text, formula",
-          "defaultValue": "#FFFFFFFF",
-          "variableMode": "UseVarOrInput"
+          "condition": "仅：variable, clipboard, text, plainText, baiduOcrJson, html, formula",
+          "defaultValue": "auto",
+          "variableMode": "Input"
         },
         {
           "key": "maxTextWidth",
@@ -13634,25 +13632,13 @@
             "variable",
             "clipboard",
             "text",
+            "plainText",
             "html",
             "formula"
           ],
-          "condition": "仅：variable, clipboard, text, html, formula",
+          "condition": "仅：variable, clipboard, text, plainText, html, formula",
           "defaultValue": "0",
           "defaultValueRaw": 0,
-          "variableMode": "UseVarOrInput"
-        },
-        {
-          "key": "text",
-          "name": "文本",
-          "type": "Text",
-          "description": "要渲染为图片并贴图的多行文本。",
-          "isAdvanced": true,
-          "validForList": [
-            "text"
-          ],
-          "condition": "仅：text",
-          "defaultValue": "",
           "variableMode": "UseVarOrInput"
         },
         {
@@ -13697,23 +13683,6 @@
           "variableMode": "UseVarOrInput"
         },
         {
-          "key": "htmlBackground",
-          "name": "HTML/公式默认背景",
-          "type": "Text",
-          "description": "#AARRGGBB。HTML 内容自身的背景优先；HTML 的默认白色会匹配文字明暗，自定义颜色作为无背景 HTML 的画布背景。旧显式 HTML 动作未设置本项或保持默认白色时沿用已保存的背景颜色。公式背景兼容旧动作设置。",
-          "isAdvanced": true,
-          "validForList": [
-            "variable",
-            "clipboard",
-            "text",
-            "html",
-            "formula"
-          ],
-          "condition": "仅：variable, clipboard, text, html, formula",
-          "defaultValue": "#FFFFFFFF",
-          "variableMode": "UseVarOrInput"
-        },
-        {
           "key": "latex",
           "name": "LaTeX",
           "type": "Text",
@@ -13744,9 +13713,10 @@
           "type": "Number",
           "isAdvanced": true,
           "validForList": [
+            "text",
             "formula"
           ],
-          "condition": "仅：formula",
+          "condition": "仅：text, formula",
           "defaultValue": "22.0",
           "defaultValueRaw": 22,
           "variableMode": "UseVarOrInput"
@@ -13805,30 +13775,6 @@
           "variableMode": "UseVarOrInput"
         },
         {
-          "key": "ocrTextColor",
-          "name": "OCR 文字颜色",
-          "type": "Text",
-          "isAdvanced": true,
-          "validForList": [
-            "baiduOcrJson"
-          ],
-          "condition": "仅：baiduOcrJson",
-          "defaultValue": "#FF000000",
-          "variableMode": "UseVarOrInput"
-        },
-        {
-          "key": "ocrBackgroundColor",
-          "name": "OCR 画布背景",
-          "type": "Text",
-          "isAdvanced": true,
-          "validForList": [
-            "baiduOcrJson"
-          ],
-          "condition": "仅：baiduOcrJson",
-          "defaultValue": "#FFFFFFFF",
-          "variableMode": "UseVarOrInput"
-        },
-        {
           "key": "stopIfFail",
           "name": "失败后停止",
           "type": "Boolean",
@@ -13869,6 +13815,10 @@
             {
               "value": "variable",
               "name": "变量（自动）"
+            },
+            {
+              "value": "plainText",
+              "name": "纯文本"
             }
           ]
         },
@@ -13922,6 +13872,23 @@
             {
               "value": "auto",
               "name": "自动"
+            }
+          ]
+        },
+        "theme": {
+          "name": "主题",
+          "items": [
+            {
+              "value": "auto",
+              "name": "自动（Auto）"
+            },
+            {
+              "value": "light",
+              "name": "浅色"
+            },
+            {
+              "value": "dark",
+              "name": "深色"
             }
           ]
         },
@@ -19588,159 +19555,159 @@
             },
             {
               "value": "50000",
-              "name": "按钮"
+              "name": "button"
             },
             {
               "value": "50001",
-              "name": "日历"
+              "name": "calendar"
             },
             {
               "value": "50002",
-              "name": "复选框"
+              "name": "check box"
             },
             {
               "value": "50003",
-              "name": "组合框"
+              "name": "combo box"
             },
             {
               "value": "50025",
-              "name": "自定义"
+              "name": "custom"
             },
             {
               "value": "50028",
-              "name": "数据网格"
+              "name": "datagrid"
             },
             {
               "value": "50029",
-              "name": "数据项"
+              "name": "dataitem"
             },
             {
               "value": "50030",
-              "name": "文档"
+              "name": "document"
             },
             {
               "value": "50004",
-              "name": "编辑"
+              "name": "edit"
             },
             {
               "value": "50026",
-              "name": "组"
+              "name": "group"
             },
             {
               "value": "50034",
-              "name": "标头"
+              "name": "header"
             },
             {
               "value": "50035",
-              "name": "标头项"
+              "name": "header item"
             },
             {
               "value": "50005",
-              "name": "超链接"
+              "name": "hyperlink"
             },
             {
               "value": "50006",
-              "name": "图像"
+              "name": "image"
             },
             {
               "value": "50008",
-              "name": "列表视图"
+              "name": "list view"
             },
             {
               "value": "50007",
-              "name": "列表项"
+              "name": "list item"
             },
             {
               "value": "50009",
-              "name": "菜单"
+              "name": "menu"
             },
             {
               "value": "50010",
-              "name": "菜单栏"
+              "name": "menu bar"
             },
             {
               "value": "50011",
-              "name": "菜单项"
+              "name": "menu item"
             },
             {
               "value": "50033",
-              "name": "窗格"
+              "name": "pane"
             },
             {
               "value": "50012",
-              "name": "进度栏"
+              "name": "progress bar"
             },
             {
               "value": "50013",
-              "name": "单选按钮"
+              "name": "radio button"
             },
             {
               "value": "50014",
-              "name": "滚动条"
+              "name": "scroll bar"
             },
             {
               "value": "50038",
-              "name": "分隔符"
+              "name": "separator"
             },
             {
               "value": "50015",
-              "name": "滑块"
+              "name": "slider"
             },
             {
               "value": "50016",
-              "name": "微调框"
+              "name": "spinner"
             },
             {
               "value": "50031",
-              "name": "拆分按钮"
+              "name": "split button"
             },
             {
               "value": "50017",
-              "name": "状态栏"
+              "name": "status bar"
             },
             {
               "value": "50018",
-              "name": "选项卡"
+              "name": "tab"
             },
             {
               "value": "50019",
-              "name": "选项卡项"
+              "name": "tab item"
             },
             {
               "value": "50036",
-              "name": "表"
+              "name": "table"
             },
             {
               "value": "50020",
-              "name": "文本"
+              "name": "text"
             },
             {
               "value": "50027",
-              "name": "缩略"
+              "name": "thumb"
             },
             {
               "value": "50037",
-              "name": "标题栏"
+              "name": "title bar"
             },
             {
               "value": "50021",
-              "name": "工具栏"
+              "name": "tool bar"
             },
             {
               "value": "50022",
-              "name": "工具提示"
+              "name": "tool tip"
             },
             {
               "value": "50023",
-              "name": "树视图"
+              "name": "tree view"
             },
             {
               "value": "50024",
-              "name": "树视图项"
+              "name": "tree view item"
             },
             {
               "value": "50032",
-              "name": "窗口"
+              "name": "window"
             }
           ]
         },

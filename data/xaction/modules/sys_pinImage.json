@@ -14,7 +14,7 @@
       "key": "mode",
       "name": "内容来源",
       "type": "Enum",
-      "description": "变量：自动识别图片、HTML、公式（$ / $$ / LaTeX）、OCR 原始结果或文本。剪贴板：按富文本 HTML、图片、图片文件、公式、文本自动处理；屏幕位置为「自动」或自定义坐标仍为默认 0,0 时，有 PixPin/Quicker 位置元数据则贴回截图原位置。",
+      "description": "变量和剪贴板自动识别图片、HTML、公式、OCR 结果或文本。「纯文本」直接显示输入文字，可设置字体与字号。HTML 仅静态渲染，禁止网络访问。",
       "defaultValue": "variable",
       "required": true,
       "variableMode": "Input",
@@ -31,6 +31,19 @@
       "condition": "仅：variable",
       "defaultValue": "",
       "required": true,
+      "variableMode": "UseVarOrInput"
+    },
+    {
+      "key": "text",
+      "name": "文本",
+      "type": "Text",
+      "description": "要贴图的多行文字。支持变量；纯文本模式直接显示文字。",
+      "validForList": [
+        "text",
+        "plainText"
+      ],
+      "condition": "仅：text, plainText",
+      "defaultValue": "",
       "variableMode": "UseVarOrInput"
     },
     {
@@ -59,64 +72,49 @@
       "key": "fontName",
       "name": "纯文本字体名称",
       "type": "Text",
-      "description": "纯文本贴图使用的本机字体，自动识别 OCR 时沿用；HTML 使用内容自身的字体样式。",
+      "description": "纯文本贴图使用的本机字体。",
       "isAdvanced": true,
       "validForList": [
-        "variable",
-        "clipboard",
-        "text"
+        "text",
+        "plainText"
       ],
-      "condition": "仅：variable, clipboard, text",
+      "condition": "仅：text, plainText",
       "defaultValue": "Microsoft YaHei UI",
       "variableMode": "UseVarOrInput"
     },
     {
       "key": "fontSize",
-      "name": "字号",
+      "name": "纯文本字号",
       "type": "Number",
-      "description": "纯文本字号。为兼容旧动作，自动识别公式时与公式字号取较大值；HTML 使用内容自身的字号。",
+      "description": "纯文本贴图的字号。",
       "isAdvanced": true,
       "validForList": [
-        "variable",
-        "clipboard",
         "text",
-        "formula"
+        "plainText"
       ],
-      "condition": "仅：variable, clipboard, text, formula",
+      "condition": "仅：text, plainText",
       "defaultValue": "16.0",
       "defaultValueRaw": 16,
       "variableMode": "UseVarOrInput"
     },
     {
-      "key": "textColor",
-      "name": "纯文本文字颜色",
-      "type": "Text",
-      "description": "#AARRGGBB。纯文本文字颜色，自动识别 OCR 时沿用；HTML 使用内容自身的文字颜色。",
-      "isAdvanced": true,
-      "validForList": [
-        "variable",
-        "clipboard",
-        "text"
-      ],
-      "condition": "仅：variable, clipboard, text",
-      "defaultValue": "#FF000000",
-      "variableMode": "UseVarOrInput"
-    },
-    {
-      "key": "backgroundColor",
-      "name": "文本/公式背景颜色",
-      "type": "Text",
-      "description": "#AARRGGBB。纯文本与公式画布背景，自动识别 OCR 时沿用，不影响自动识别的 HTML；旧显式 HTML 动作兼容已保存的背景设置。透明请用带透明通道的颜色（如 #00FFFFFF）。",
+      "key": "theme",
+      "name": "主题",
+      "type": "Enum",
+      "description": "自动：HTML 保留来源主题，文本、公式和 OCR 跟随 Quicker 主题。也可统一使用浅色或深色。",
       "isAdvanced": true,
       "validForList": [
         "variable",
         "clipboard",
         "text",
+        "plainText",
+        "baiduOcrJson",
+        "html",
         "formula"
       ],
-      "condition": "仅：variable, clipboard, text, formula",
-      "defaultValue": "#FFFFFFFF",
-      "variableMode": "UseVarOrInput"
+      "condition": "仅：variable, clipboard, text, plainText, baiduOcrJson, html, formula",
+      "defaultValue": "auto",
+      "variableMode": "Input"
     },
     {
       "key": "maxTextWidth",
@@ -128,25 +126,13 @@
         "variable",
         "clipboard",
         "text",
+        "plainText",
         "html",
         "formula"
       ],
-      "condition": "仅：variable, clipboard, text, html, formula",
+      "condition": "仅：variable, clipboard, text, plainText, html, formula",
       "defaultValue": "0",
       "defaultValueRaw": 0,
-      "variableMode": "UseVarOrInput"
-    },
-    {
-      "key": "text",
-      "name": "文本",
-      "type": "Text",
-      "description": "要渲染为图片并贴图的多行文本。",
-      "isAdvanced": true,
-      "validForList": [
-        "text"
-      ],
-      "condition": "仅：text",
-      "defaultValue": "",
       "variableMode": "UseVarOrInput"
     },
     {
@@ -191,23 +177,6 @@
       "variableMode": "UseVarOrInput"
     },
     {
-      "key": "htmlBackground",
-      "name": "HTML/公式默认背景",
-      "type": "Text",
-      "description": "#AARRGGBB。HTML 内容自身的背景优先；HTML 的默认白色会匹配文字明暗，自定义颜色作为无背景 HTML 的画布背景。旧显式 HTML 动作未设置本项或保持默认白色时沿用已保存的背景颜色。公式背景兼容旧动作设置。",
-      "isAdvanced": true,
-      "validForList": [
-        "variable",
-        "clipboard",
-        "text",
-        "html",
-        "formula"
-      ],
-      "condition": "仅：variable, clipboard, text, html, formula",
-      "defaultValue": "#FFFFFFFF",
-      "variableMode": "UseVarOrInput"
-    },
-    {
       "key": "latex",
       "name": "LaTeX",
       "type": "Text",
@@ -238,9 +207,10 @@
       "type": "Number",
       "isAdvanced": true,
       "validForList": [
+        "text",
         "formula"
       ],
-      "condition": "仅：formula",
+      "condition": "仅：text, formula",
       "defaultValue": "22.0",
       "defaultValueRaw": 22,
       "variableMode": "UseVarOrInput"
@@ -299,30 +269,6 @@
       "variableMode": "UseVarOrInput"
     },
     {
-      "key": "ocrTextColor",
-      "name": "OCR 文字颜色",
-      "type": "Text",
-      "isAdvanced": true,
-      "validForList": [
-        "baiduOcrJson"
-      ],
-      "condition": "仅：baiduOcrJson",
-      "defaultValue": "#FF000000",
-      "variableMode": "UseVarOrInput"
-    },
-    {
-      "key": "ocrBackgroundColor",
-      "name": "OCR 画布背景",
-      "type": "Text",
-      "isAdvanced": true,
-      "validForList": [
-        "baiduOcrJson"
-      ],
-      "condition": "仅：baiduOcrJson",
-      "defaultValue": "#FFFFFFFF",
-      "variableMode": "UseVarOrInput"
-    },
-    {
       "key": "stopIfFail",
       "name": "失败后停止",
       "type": "Boolean",
@@ -363,6 +309,10 @@
         {
           "value": "variable",
           "name": "变量（自动）"
+        },
+        {
+          "value": "plainText",
+          "name": "纯文本"
         }
       ]
     },
@@ -416,6 +366,23 @@
         {
           "value": "auto",
           "name": "自动"
+        }
+      ]
+    },
+    "theme": {
+      "name": "主题",
+      "items": [
+        {
+          "value": "auto",
+          "name": "自动（Auto）"
+        },
+        {
+          "value": "light",
+          "name": "浅色"
+        },
+        {
+          "value": "dark",
+          "name": "深色"
         }
       ]
     },

@@ -1,8 +1,8 @@
 {
   "schemaVersion": 1,
   "baselineCreated": false,
-  "fromGeneratedAt": "2026-10-07 06:07:37",
-  "toGeneratedAt": "2026-10-08 20:35:18",
+  "fromGeneratedAt": "2026-10-08 20:35:18",
+  "toGeneratedAt": "2026-10-10 06:06:14",
   "summary": {
     "addedModules": 0,
     "removedModules": 0,
@@ -16,35 +16,151 @@
       "name": "贴图",
       "changedFields": [],
       "inputs": {
-        "added": [],
-        "removed": [],
+        "added": [
+          {
+            "key": "theme",
+            "name": "主题",
+            "type": "Enum",
+            "description": "自动：HTML 保留来源主题，文本、公式和 OCR 跟随 Quicker 主题。也可统一使用浅色或深色。",
+            "isAdvanced": true,
+            "validForList": [
+              "variable",
+              "clipboard",
+              "text",
+              "plainText",
+              "baiduOcrJson",
+              "html",
+              "formula"
+            ],
+            "condition": "仅：variable, clipboard, text, plainText, baiduOcrJson, html, formula",
+            "defaultValue": "auto",
+            "variableMode": "Input"
+          }
+        ],
+        "removed": [
+          {
+            "key": "textColor",
+            "name": "纯文本文字颜色",
+            "type": "Text",
+            "description": "#AARRGGBB。纯文本文字颜色，自动识别 OCR 时沿用；HTML 使用内容自身的文字颜色。",
+            "isAdvanced": true,
+            "validForList": [
+              "variable",
+              "clipboard",
+              "text"
+            ],
+            "condition": "仅：variable, clipboard, text",
+            "defaultValue": "#FF000000",
+            "variableMode": "UseVarOrInput"
+          },
+          {
+            "key": "backgroundColor",
+            "name": "文本/公式背景颜色",
+            "type": "Text",
+            "description": "#AARRGGBB。纯文本与公式画布背景，自动识别 OCR 时沿用，不影响自动识别的 HTML；旧显式 HTML 动作兼容已保存的背景设置。透明请用带透明通道的颜色（如 #00FFFFFF）。",
+            "isAdvanced": true,
+            "validForList": [
+              "variable",
+              "clipboard",
+              "text",
+              "formula"
+            ],
+            "condition": "仅：variable, clipboard, text, formula",
+            "defaultValue": "#FFFFFFFF",
+            "variableMode": "UseVarOrInput"
+          },
+          {
+            "key": "htmlBackground",
+            "name": "HTML/公式默认背景",
+            "type": "Text",
+            "description": "#AARRGGBB。HTML 内容自身的背景优先；HTML 的默认白色会匹配文字明暗，自定义颜色作为无背景 HTML 的画布背景。旧显式 HTML 动作未设置本项或保持默认白色时沿用已保存的背景颜色。公式背景兼容旧动作设置。",
+            "isAdvanced": true,
+            "validForList": [
+              "variable",
+              "clipboard",
+              "text",
+              "html",
+              "formula"
+            ],
+            "condition": "仅：variable, clipboard, text, html, formula",
+            "defaultValue": "#FFFFFFFF",
+            "variableMode": "UseVarOrInput"
+          },
+          {
+            "key": "ocrTextColor",
+            "name": "OCR 文字颜色",
+            "type": "Text",
+            "isAdvanced": true,
+            "validForList": [
+              "baiduOcrJson"
+            ],
+            "condition": "仅：baiduOcrJson",
+            "defaultValue": "#FF000000",
+            "variableMode": "UseVarOrInput"
+          },
+          {
+            "key": "ocrBackgroundColor",
+            "name": "OCR 画布背景",
+            "type": "Text",
+            "isAdvanced": true,
+            "validForList": [
+              "baiduOcrJson"
+            ],
+            "condition": "仅：baiduOcrJson",
+            "defaultValue": "#FFFFFFFF",
+            "variableMode": "UseVarOrInput"
+          }
+        ],
         "changed": [
           {
-            "key": "content",
+            "key": "mode",
             "before": {
-              "key": "content",
-              "name": "内容",
-              "type": "Any",
-              "description": "图片变量、图片路径，或文本（HTML / LaTeX / $公式$ / OCR 原始结果 / 纯文本）。自动判断类型并渲染。",
-              "validForList": [
-                "variable"
-              ],
-              "condition": "仅：variable",
-              "defaultValue": "",
+              "key": "mode",
+              "name": "内容来源",
+              "type": "Enum",
+              "description": "变量：自动识别图片、HTML、公式（$ / $$ / LaTeX）、OCR 原始结果或文本。剪贴板：按富文本 HTML、图片、图片文件、公式、文本自动处理；屏幕位置为「自动」或自定义坐标仍为默认 0,0 时，有 PixPin/Quicker 位置元数据则贴回截图原位置。",
+              "defaultValue": "variable",
               "required": true,
+              "variableMode": "Input",
+              "isControlField": true
+            },
+            "after": {
+              "key": "mode",
+              "name": "内容来源",
+              "type": "Enum",
+              "description": "变量和剪贴板自动识别图片、HTML、公式、OCR 结果或文本。「纯文本」直接显示输入文字，可设置字体与字号。HTML 仅静态渲染，禁止网络访问。",
+              "defaultValue": "variable",
+              "required": true,
+              "variableMode": "Input",
+              "isControlField": true
+            }
+          },
+          {
+            "key": "text",
+            "before": {
+              "key": "text",
+              "name": "文本",
+              "type": "Text",
+              "description": "要渲染为图片并贴图的多行文本。",
+              "isAdvanced": true,
+              "validForList": [
+                "text"
+              ],
+              "condition": "仅：text",
+              "defaultValue": "",
               "variableMode": "UseVarOrInput"
             },
             "after": {
-              "key": "content",
-              "name": "内容",
-              "type": "Any",
-              "description": "图片变量、图片路径，或文本（HTML / LaTeX / $公式$ / OCR 原始结果 / 纯文本）。自动判断类型并渲染；HTML 使用自身静态样式，禁用来源脚本和网络访问。",
+              "key": "text",
+              "name": "文本",
+              "type": "Text",
+              "description": "要贴图的多行文字。支持变量；纯文本模式直接显示文字。",
               "validForList": [
-                "variable"
+                "text",
+                "plainText"
               ],
-              "condition": "仅：variable",
+              "condition": "仅：text, plainText",
               "defaultValue": "",
-              "required": true,
               "variableMode": "UseVarOrInput"
             }
           },
@@ -52,9 +168,9 @@
             "key": "fontName",
             "before": {
               "key": "fontName",
-              "name": "字体名称",
+              "name": "纯文本字体名称",
               "type": "Text",
-              "description": "纯文本贴图使用的本机字体。",
+              "description": "纯文本贴图使用的本机字体，自动识别 OCR 时沿用；HTML 使用内容自身的字体样式。",
               "isAdvanced": true,
               "validForList": [
                 "variable",
@@ -69,14 +185,13 @@
               "key": "fontName",
               "name": "纯文本字体名称",
               "type": "Text",
-              "description": "纯文本贴图使用的本机字体，自动识别 OCR 时沿用；HTML 使用内容自身的字体样式。",
+              "description": "纯文本贴图使用的本机字体。",
               "isAdvanced": true,
               "validForList": [
-                "variable",
-                "clipboard",
-                "text"
+                "text",
+                "plainText"
               ],
-              "condition": "仅：variable, clipboard, text",
+              "condition": "仅：text, plainText",
               "defaultValue": "Microsoft YaHei UI",
               "variableMode": "UseVarOrInput"
             }
@@ -84,22 +199,6 @@
           {
             "key": "fontSize",
             "before": {
-              "key": "fontSize",
-              "name": "字号",
-              "type": "Number",
-              "isAdvanced": true,
-              "validForList": [
-                "variable",
-                "clipboard",
-                "text",
-                "formula"
-              ],
-              "condition": "仅：variable, clipboard, text, formula",
-              "defaultValue": "16.0",
-              "defaultValueRaw": 16,
-              "variableMode": "UseVarOrInput"
-            },
-            "after": {
               "key": "fontSize",
               "name": "字号",
               "type": "Number",
@@ -115,48 +214,30 @@
               "defaultValue": "16.0",
               "defaultValueRaw": 16,
               "variableMode": "UseVarOrInput"
-            }
-          },
-          {
-            "key": "textColor",
-            "before": {
-              "key": "textColor",
-              "name": "文字颜色",
-              "type": "Text",
-              "description": "#AARRGGBB",
-              "isAdvanced": true,
-              "validForList": [
-                "variable",
-                "clipboard",
-                "text"
-              ],
-              "condition": "仅：variable, clipboard, text",
-              "defaultValue": "#FF000000",
-              "variableMode": "UseVarOrInput"
             },
             "after": {
-              "key": "textColor",
-              "name": "纯文本文字颜色",
-              "type": "Text",
-              "description": "#AARRGGBB。纯文本文字颜色，自动识别 OCR 时沿用；HTML 使用内容自身的文字颜色。",
+              "key": "fontSize",
+              "name": "纯文本字号",
+              "type": "Number",
+              "description": "纯文本贴图的字号。",
               "isAdvanced": true,
               "validForList": [
-                "variable",
-                "clipboard",
-                "text"
+                "text",
+                "plainText"
               ],
-              "condition": "仅：variable, clipboard, text",
-              "defaultValue": "#FF000000",
+              "condition": "仅：text, plainText",
+              "defaultValue": "16.0",
+              "defaultValueRaw": 16,
               "variableMode": "UseVarOrInput"
             }
           },
           {
-            "key": "backgroundColor",
+            "key": "maxTextWidth",
             "before": {
-              "key": "backgroundColor",
-              "name": "背景颜色",
-              "type": "Text",
-              "description": "#AARRGGBB。文本 / HTML / 公式画布背景。透明请用带透明通道的颜色（如 #00FFFFFF）。",
+              "key": "maxTextWidth",
+              "name": "最大宽度",
+              "type": "Integer",
+              "description": "像素。0 表示按内容自动扩展。纯文本大于 0 时自动换行；HTML / 公式上限 2400。",
               "isAdvanced": true,
               "validForList": [
                 "variable",
@@ -166,86 +247,57 @@
                 "formula"
               ],
               "condition": "仅：variable, clipboard, text, html, formula",
-              "defaultValue": "#FFFFFFFF",
+              "defaultValue": "0",
+              "defaultValueRaw": 0,
               "variableMode": "UseVarOrInput"
             },
             "after": {
-              "key": "backgroundColor",
-              "name": "文本/公式背景颜色",
-              "type": "Text",
-              "description": "#AARRGGBB。纯文本与公式画布背景，自动识别 OCR 时沿用，不影响自动识别的 HTML；旧显式 HTML 动作兼容已保存的背景设置。透明请用带透明通道的颜色（如 #00FFFFFF）。",
+              "key": "maxTextWidth",
+              "name": "最大宽度",
+              "type": "Integer",
+              "description": "像素。0 表示按内容自动扩展。纯文本大于 0 时自动换行；HTML / 公式上限 2400。",
               "isAdvanced": true,
               "validForList": [
                 "variable",
                 "clipboard",
                 "text",
-                "formula"
-              ],
-              "condition": "仅：variable, clipboard, text, formula",
-              "defaultValue": "#FFFFFFFF",
-              "variableMode": "UseVarOrInput"
-            }
-          },
-          {
-            "key": "html",
-            "before": {
-              "key": "html",
-              "name": "HTML",
-              "type": "Text",
-              "description": "完整 HTML 文档或片段。由隐藏 WebView2 渲染后贴图。",
-              "isAdvanced": true,
-              "validForList": [
-                "html"
-              ],
-              "condition": "仅：html",
-              "defaultValue": "",
-              "variableMode": "UseVarOrInput"
-            },
-            "after": {
-              "key": "html",
-              "name": "HTML",
-              "type": "Text",
-              "description": "完整 HTML 文档或片段。仅渲染静态 HTML 与内联样式，禁用来源脚本和网络访问；公式使用本地 KaTeX。",
-              "isAdvanced": true,
-              "validForList": [
-                "html"
-              ],
-              "condition": "仅：html",
-              "defaultValue": "",
-              "variableMode": "UseVarOrInput"
-            }
-          },
-          {
-            "key": "htmlBackground",
-            "before": {
-              "key": "htmlBackground",
-              "name": "HTML 背景",
-              "type": "Text",
-              "description": "#AARRGGBB。公式与 HTML 贴图的画布背景。",
-              "isAdvanced": true,
-              "validForList": [
+                "plainText",
                 "html",
                 "formula"
               ],
-              "condition": "仅：html, formula",
-              "defaultValue": "#FFFFFFFF",
+              "condition": "仅：variable, clipboard, text, plainText, html, formula",
+              "defaultValue": "0",
+              "defaultValueRaw": 0,
+              "variableMode": "UseVarOrInput"
+            }
+          },
+          {
+            "key": "formulaFontSize",
+            "before": {
+              "key": "formulaFontSize",
+              "name": "公式字号",
+              "type": "Number",
+              "isAdvanced": true,
+              "validForList": [
+                "formula"
+              ],
+              "condition": "仅：formula",
+              "defaultValue": "22.0",
+              "defaultValueRaw": 22,
               "variableMode": "UseVarOrInput"
             },
             "after": {
-              "key": "htmlBackground",
-              "name": "HTML/公式默认背景",
-              "type": "Text",
-              "description": "#AARRGGBB。HTML 内容自身的背景优先；HTML 的默认白色会匹配文字明暗，自定义颜色作为无背景 HTML 的画布背景。旧显式 HTML 动作未设置本项或保持默认白色时沿用已保存的背景颜色。公式背景兼容旧动作设置。",
+              "key": "formulaFontSize",
+              "name": "公式字号",
+              "type": "Number",
               "isAdvanced": true,
               "validForList": [
-                "variable",
-                "clipboard",
                 "text",
-                "html",
                 "formula"
               ],
-              "condition": "仅：variable, clipboard, text, html, formula",
-              "defaultValue": "#FFFFFFFF",
+              "condition": "仅：text, formula",
+              "defaultValue": "22.0",
+              "defaultValueRaw": 22,
               "variableMode": "UseVarOrInput"
             }
           }
@@ -256,51 +308,798 @@
         "removed": [],
         "changed": []
       },
-      "selectionsChanged": false
+      "selectionsChanged": true,
+      "selections": {
+        "before": {
+          "mode": {
+            "name": "内容来源",
+            "items": [
+              {
+                "value": "clipboard",
+                "name": "剪贴板（自动）"
+              },
+              {
+                "value": "variable",
+                "name": "变量（自动）"
+              }
+            ]
+          },
+          "screenPlacement": {
+            "name": "屏幕位置",
+            "items": [
+              {
+                "value": "manual",
+                "name": "自定义坐标"
+              },
+              {
+                "value": "center",
+                "name": "屏幕中间"
+              },
+              {
+                "value": "topLeft",
+                "name": "屏幕左上"
+              },
+              {
+                "value": "topCenter",
+                "name": "屏幕中上"
+              },
+              {
+                "value": "topRight",
+                "name": "屏幕右上"
+              },
+              {
+                "value": "leftCenter",
+                "name": "屏幕左中"
+              },
+              {
+                "value": "rightCenter",
+                "name": "屏幕右中"
+              },
+              {
+                "value": "bottomLeft",
+                "name": "屏幕左下"
+              },
+              {
+                "value": "bottomCenter",
+                "name": "屏幕中下"
+              },
+              {
+                "value": "bottomRight",
+                "name": "屏幕右下"
+              },
+              {
+                "value": "captureOrigin",
+                "name": "截图原位置"
+              },
+              {
+                "value": "auto",
+                "name": "自动"
+              }
+            ]
+          },
+          "formulaLayout": {
+            "name": "公式版式",
+            "items": [
+              {
+                "value": "display",
+                "name": "独立公式"
+              },
+              {
+                "value": "inline",
+                "name": "行内公式"
+              }
+            ]
+          }
+        },
+        "after": {
+          "mode": {
+            "name": "内容来源",
+            "items": [
+              {
+                "value": "clipboard",
+                "name": "剪贴板（自动）"
+              },
+              {
+                "value": "variable",
+                "name": "变量（自动）"
+              },
+              {
+                "value": "plainText",
+                "name": "纯文本"
+              }
+            ]
+          },
+          "screenPlacement": {
+            "name": "屏幕位置",
+            "items": [
+              {
+                "value": "manual",
+                "name": "自定义坐标"
+              },
+              {
+                "value": "center",
+                "name": "屏幕中间"
+              },
+              {
+                "value": "topLeft",
+                "name": "屏幕左上"
+              },
+              {
+                "value": "topCenter",
+                "name": "屏幕中上"
+              },
+              {
+                "value": "topRight",
+                "name": "屏幕右上"
+              },
+              {
+                "value": "leftCenter",
+                "name": "屏幕左中"
+              },
+              {
+                "value": "rightCenter",
+                "name": "屏幕右中"
+              },
+              {
+                "value": "bottomLeft",
+                "name": "屏幕左下"
+              },
+              {
+                "value": "bottomCenter",
+                "name": "屏幕中下"
+              },
+              {
+                "value": "bottomRight",
+                "name": "屏幕右下"
+              },
+              {
+                "value": "captureOrigin",
+                "name": "截图原位置"
+              },
+              {
+                "value": "auto",
+                "name": "自动"
+              }
+            ]
+          },
+          "theme": {
+            "name": "主题",
+            "items": [
+              {
+                "value": "auto",
+                "name": "自动（Auto）"
+              },
+              {
+                "value": "light",
+                "name": "浅色"
+              },
+              {
+                "value": "dark",
+                "name": "深色"
+              }
+            ]
+          },
+          "formulaLayout": {
+            "name": "公式版式",
+            "items": [
+              {
+                "value": "display",
+                "name": "独立公式"
+              },
+              {
+                "value": "inline",
+                "name": "行内公式"
+              }
+            ]
+          }
+        }
+      }
     },
     {
-      "key": "sys:recordSound",
-      "name": "录制声音/语音识别",
+      "key": "sys:uiautomation",
+      "name": "窗口界面控制",
       "changedFields": [],
       "inputs": {
         "added": [],
         "removed": [],
-        "changed": [
-          {
-            "key": "vendorAccount",
-            "before": {
-              "key": "vendorAccount",
-              "name": "服务商账号",
-              "type": "Text",
-              "description": "专业版用户可不填。格式要求请参考模块文档",
-              "validForList": [
-                "short_voice_input"
-              ],
-              "condition": "仅：short_voice_input",
-              "defaultValue": "",
-              "variableMode": "Input"
-            },
-            "after": {
-              "key": "vendorAccount",
-              "name": "服务商账号",
-              "type": "Text",
-              "description": "格式要求请参考模块文档",
-              "validForList": [
-                "short_voice_input"
-              ],
-              "condition": "仅：short_voice_input",
-              "defaultValue": "",
-              "variableMode": "Input"
-            }
-          }
-        ]
+        "changed": []
       },
       "outputs": {
         "added": [],
         "removed": [],
         "changed": []
       },
-      "selectionsChanged": false
+      "selectionsChanged": true,
+      "selections": {
+        "before": {
+          "type": {
+            "name": "操作类型",
+            "items": [
+              {
+                "value": "TriggerMenu",
+                "name": "触发窗口菜单"
+              },
+              {
+                "value": "TriggerControl",
+                "name": "触发窗口控件"
+              },
+              {
+                "value": "GetControlInfo",
+                "name": "获取窗口控件信息"
+              },
+              {
+                "value": "GetCursorPointControlInfo",
+                "name": "获取鼠标指针位置控件信息"
+              },
+              {
+                "value": "GetFocusedControlInfo",
+                "name": "获取焦点控件信息"
+              },
+              {
+                "value": "GetControlInfoByPosition",
+                "name": "获取指定位置控件信息"
+              },
+              {
+                "value": "UpdateSaveAsDialogPath",
+                "name": "更新\"另存为\"或\"打开\"对话框的路径"
+              }
+            ]
+          },
+          "controlType": {
+            "name": "控件类型",
+            "items": [
+              {
+                "value": "0",
+                "name": "*任意类型*"
+              },
+              {
+                "value": "50000",
+                "name": "按钮"
+              },
+              {
+                "value": "50001",
+                "name": "日历"
+              },
+              {
+                "value": "50002",
+                "name": "复选框"
+              },
+              {
+                "value": "50003",
+                "name": "组合框"
+              },
+              {
+                "value": "50025",
+                "name": "自定义"
+              },
+              {
+                "value": "50028",
+                "name": "数据网格"
+              },
+              {
+                "value": "50029",
+                "name": "数据项"
+              },
+              {
+                "value": "50030",
+                "name": "文档"
+              },
+              {
+                "value": "50004",
+                "name": "编辑"
+              },
+              {
+                "value": "50026",
+                "name": "组"
+              },
+              {
+                "value": "50034",
+                "name": "标头"
+              },
+              {
+                "value": "50035",
+                "name": "标头项"
+              },
+              {
+                "value": "50005",
+                "name": "超链接"
+              },
+              {
+                "value": "50006",
+                "name": "图像"
+              },
+              {
+                "value": "50008",
+                "name": "列表视图"
+              },
+              {
+                "value": "50007",
+                "name": "列表项"
+              },
+              {
+                "value": "50009",
+                "name": "菜单"
+              },
+              {
+                "value": "50010",
+                "name": "菜单栏"
+              },
+              {
+                "value": "50011",
+                "name": "菜单项"
+              },
+              {
+                "value": "50033",
+                "name": "窗格"
+              },
+              {
+                "value": "50012",
+                "name": "进度栏"
+              },
+              {
+                "value": "50013",
+                "name": "单选按钮"
+              },
+              {
+                "value": "50014",
+                "name": "滚动条"
+              },
+              {
+                "value": "50038",
+                "name": "分隔符"
+              },
+              {
+                "value": "50015",
+                "name": "滑块"
+              },
+              {
+                "value": "50016",
+                "name": "微调框"
+              },
+              {
+                "value": "50031",
+                "name": "拆分按钮"
+              },
+              {
+                "value": "50017",
+                "name": "状态栏"
+              },
+              {
+                "value": "50018",
+                "name": "选项卡"
+              },
+              {
+                "value": "50019",
+                "name": "选项卡项"
+              },
+              {
+                "value": "50036",
+                "name": "表"
+              },
+              {
+                "value": "50020",
+                "name": "文本"
+              },
+              {
+                "value": "50027",
+                "name": "缩略"
+              },
+              {
+                "value": "50037",
+                "name": "标题栏"
+              },
+              {
+                "value": "50021",
+                "name": "工具栏"
+              },
+              {
+                "value": "50022",
+                "name": "工具提示"
+              },
+              {
+                "value": "50023",
+                "name": "树视图"
+              },
+              {
+                "value": "50024",
+                "name": "树视图项"
+              },
+              {
+                "value": "50032",
+                "name": "窗口"
+              }
+            ]
+          },
+          "controlOperation": {
+            "name": "动作",
+            "items": [
+              {
+                "value": "Auto",
+                "name": "自动"
+              },
+              {
+                "value": "Invoke",
+                "name": "调用（按钮、菜单项等）"
+              },
+              {
+                "value": "LeftClick",
+                "name": "鼠标左键单击"
+              },
+              {
+                "value": "MiddleClick",
+                "name": "鼠标中键单击"
+              },
+              {
+                "value": "RightClick",
+                "name": "鼠标右键单击"
+              },
+              {
+                "value": "LeftDoubleClick",
+                "name": "鼠标左键双击"
+              },
+              {
+                "value": "Select",
+                "name": "单选：选择（单选框、标签页等）"
+              },
+              {
+                "value": "AddToSelection",
+                "name": "多选：添加到多选（多选列表等）"
+              },
+              {
+                "value": "RemoveFromSelection",
+                "name": "多选：从多选中移除（多选列表）"
+              },
+              {
+                "value": "ToggleItemSelection",
+                "name": "多选：切换选中状态"
+              },
+              {
+                "value": "Expand",
+                "name": "展开折叠：展开（菜单等）"
+              },
+              {
+                "value": "Collapse",
+                "name": "展开折叠：折叠（菜单等）"
+              },
+              {
+                "value": "ToggleExpandCollapse",
+                "name": "展开折叠：切换展开折叠（菜单等）"
+              },
+              {
+                "value": "Toggle",
+                "name": "切换：切换（检查框等）"
+              },
+              {
+                "value": "ToggleOn",
+                "name": "切换：开（检查框等）"
+              },
+              {
+                "value": "ToggleOff",
+                "name": "切换：关（检查框等）"
+              },
+              {
+                "value": "SetValue",
+                "name": "设置值"
+              }
+            ]
+          },
+          "autoCreateDir": {
+            "name": "自动创建文件夹",
+            "items": [
+              {
+                "value": "no",
+                "name": "不自动创建"
+              },
+              {
+                "value": "auto",
+                "name": "自动创建：自动（根据后缀自动判断路径为文件还是文件夹路径）"
+              },
+              {
+                "value": "asFilePath",
+                "name": "自动创建：给定文件路径"
+              },
+              {
+                "value": "asFolderPath",
+                "name": "自动创建：给定文件夹路径"
+              }
+            ]
+          }
+        },
+        "after": {
+          "type": {
+            "name": "操作类型",
+            "items": [
+              {
+                "value": "TriggerMenu",
+                "name": "触发窗口菜单"
+              },
+              {
+                "value": "TriggerControl",
+                "name": "触发窗口控件"
+              },
+              {
+                "value": "GetControlInfo",
+                "name": "获取窗口控件信息"
+              },
+              {
+                "value": "GetCursorPointControlInfo",
+                "name": "获取鼠标指针位置控件信息"
+              },
+              {
+                "value": "GetFocusedControlInfo",
+                "name": "获取焦点控件信息"
+              },
+              {
+                "value": "GetControlInfoByPosition",
+                "name": "获取指定位置控件信息"
+              },
+              {
+                "value": "UpdateSaveAsDialogPath",
+                "name": "更新\"另存为\"或\"打开\"对话框的路径"
+              }
+            ]
+          },
+          "controlType": {
+            "name": "控件类型",
+            "items": [
+              {
+                "value": "0",
+                "name": "*任意类型*"
+              },
+              {
+                "value": "50000",
+                "name": "button"
+              },
+              {
+                "value": "50001",
+                "name": "calendar"
+              },
+              {
+                "value": "50002",
+                "name": "check box"
+              },
+              {
+                "value": "50003",
+                "name": "combo box"
+              },
+              {
+                "value": "50025",
+                "name": "custom"
+              },
+              {
+                "value": "50028",
+                "name": "datagrid"
+              },
+              {
+                "value": "50029",
+                "name": "dataitem"
+              },
+              {
+                "value": "50030",
+                "name": "document"
+              },
+              {
+                "value": "50004",
+                "name": "edit"
+              },
+              {
+                "value": "50026",
+                "name": "group"
+              },
+              {
+                "value": "50034",
+                "name": "header"
+              },
+              {
+                "value": "50035",
+                "name": "header item"
+              },
+              {
+                "value": "50005",
+                "name": "hyperlink"
+              },
+              {
+                "value": "50006",
+                "name": "image"
+              },
+              {
+                "value": "50008",
+                "name": "list view"
+              },
+              {
+                "value": "50007",
+                "name": "list item"
+              },
+              {
+                "value": "50009",
+                "name": "menu"
+              },
+              {
+                "value": "50010",
+                "name": "menu bar"
+              },
+              {
+                "value": "50011",
+                "name": "menu item"
+              },
+              {
+                "value": "50033",
+                "name": "pane"
+              },
+              {
+                "value": "50012",
+                "name": "progress bar"
+              },
+              {
+                "value": "50013",
+                "name": "radio button"
+              },
+              {
+                "value": "50014",
+                "name": "scroll bar"
+              },
+              {
+                "value": "50038",
+                "name": "separator"
+              },
+              {
+                "value": "50015",
+                "name": "slider"
+              },
+              {
+                "value": "50016",
+                "name": "spinner"
+              },
+              {
+                "value": "50031",
+                "name": "split button"
+              },
+              {
+                "value": "50017",
+                "name": "status bar"
+              },
+              {
+                "value": "50018",
+                "name": "tab"
+              },
+              {
+                "value": "50019",
+                "name": "tab item"
+              },
+              {
+                "value": "50036",
+                "name": "table"
+              },
+              {
+                "value": "50020",
+                "name": "text"
+              },
+              {
+                "value": "50027",
+                "name": "thumb"
+              },
+              {
+                "value": "50037",
+                "name": "title bar"
+              },
+              {
+                "value": "50021",
+                "name": "tool bar"
+              },
+              {
+                "value": "50022",
+                "name": "tool tip"
+              },
+              {
+                "value": "50023",
+                "name": "tree view"
+              },
+              {
+                "value": "50024",
+                "name": "tree view item"
+              },
+              {
+                "value": "50032",
+                "name": "window"
+              }
+            ]
+          },
+          "controlOperation": {
+            "name": "动作",
+            "items": [
+              {
+                "value": "Auto",
+                "name": "自动"
+              },
+              {
+                "value": "Invoke",
+                "name": "调用（按钮、菜单项等）"
+              },
+              {
+                "value": "LeftClick",
+                "name": "鼠标左键单击"
+              },
+              {
+                "value": "MiddleClick",
+                "name": "鼠标中键单击"
+              },
+              {
+                "value": "RightClick",
+                "name": "鼠标右键单击"
+              },
+              {
+                "value": "LeftDoubleClick",
+                "name": "鼠标左键双击"
+              },
+              {
+                "value": "Select",
+                "name": "单选：选择（单选框、标签页等）"
+              },
+              {
+                "value": "AddToSelection",
+                "name": "多选：添加到多选（多选列表等）"
+              },
+              {
+                "value": "RemoveFromSelection",
+                "name": "多选：从多选中移除（多选列表）"
+              },
+              {
+                "value": "ToggleItemSelection",
+                "name": "多选：切换选中状态"
+              },
+              {
+                "value": "Expand",
+                "name": "展开折叠：展开（菜单等）"
+              },
+              {
+                "value": "Collapse",
+                "name": "展开折叠：折叠（菜单等）"
+              },
+              {
+                "value": "ToggleExpandCollapse",
+                "name": "展开折叠：切换展开折叠（菜单等）"
+              },
+              {
+                "value": "Toggle",
+                "name": "切换：切换（检查框等）"
+              },
+              {
+                "value": "ToggleOn",
+                "name": "切换：开（检查框等）"
+              },
+              {
+                "value": "ToggleOff",
+                "name": "切换：关（检查框等）"
+              },
+              {
+                "value": "SetValue",
+                "name": "设置值"
+              }
+            ]
+          },
+          "autoCreateDir": {
+            "name": "自动创建文件夹",
+            "items": [
+              {
+                "value": "no",
+                "name": "不自动创建"
+              },
+              {
+                "value": "auto",
+                "name": "自动创建：自动（根据后缀自动判断路径为文件还是文件夹路径）"
+              },
+              {
+                "value": "asFilePath",
+                "name": "自动创建：给定文件路径"
+              },
+              {
+                "value": "asFolderPath",
+                "name": "自动创建：给定文件夹路径"
+              }
+            ]
+          }
+        }
+      }
     }
   ]
 }

@@ -92,6 +92,20 @@ if ({number1} > {number2})
 
 搜索框触发的动作可用 `$=_context.ExtraData?.ActiveWindowBeforeSearch` 取搜索窗出现前的活动窗口句柄（1.39.10+）。
 
+### 开发中：读取动作的只读信息
+
+以下说明依据 **2026-10-10 的开发代码，尚未包含在官网已发布的 2.3.6 中**。
+
+动作运行时可通过 `_context.Action` 读取 `Id`、`Title`、`Icon` 和 `Description`。例如给子程序传递当前动作图标：
+
+```csharp
+$=_context.Action.Icon
+```
+
+`Id` 是 `Guid`；文字和图标字段可能为空。原有 `_context.ActionId`（字符串）和 `_context.ActionTitle` 继续可用，需要字符串 ID 时不必换成新属性。需要主程序信息时，可使用 `$=_context.GetRootContext().Action.Icon`；这些读取不会查找或修改动作库中的其他动作。
+
+这四个成员只读，不能通过赋值修改图标或标题，也没有恢复旧内部动作对象的完整成员集合；`Options`、`OperationPayload` 等不在此入口中。2.3.6 及此前版本遇到“没有成员 Action”时，可使用[Quicker 操作 · 根据 ID 获取动作信息](/v2/xaction/modules/quickeroperations#根据id获取动作信息)，不要把开发版表达式直接当作旧版兼容写法。
+
 ### `_eval`
 
 用来注册表达式里额外的类型，见 [Eval-expression 文档](https://eval-expression.net/)。要单独一步先注册，后面的步骤才能用。

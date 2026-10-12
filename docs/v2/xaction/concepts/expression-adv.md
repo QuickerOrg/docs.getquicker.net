@@ -96,6 +96,12 @@ if ({number1} > {number2})
 
 ### 2.3.7 · 读取动作的只读信息
 
+:::caution[2.3.8 起请使用独立属性]
+2.3.7 的 `_context.Action.Icon`、`.Title`、`.Description` 写法在 2.3.8 起不再适用，已有表达式不会自动改写。当前请使用 `_context.ActionIcon`、`_context.ActionTitle`、`_context.ActionDescription`；动作 ID 继续使用 `_context.ActionId`。图标和说明属性需要 2.3.8 或更高版本。下方保留 2.3.7 的说明用于核对旧动作。
+
+例如当前动作图标使用 `$=_context.ActionIcon`，主程序图标使用 `$=_context.GetRootContext().ActionIcon`。这些属性只读取信息，不修改动作。
+:::
+
 以下说明依据 **2.3.7 发布快照**，版本是否开放下载以[官网版本记录](https://getquicker.net/V2/Versions)为准。
 
 动作运行时可通过 `_context.Action` 读取 `Id`、`Title`、`Icon` 和 `Description`。例如给子程序传递当前动作图标：

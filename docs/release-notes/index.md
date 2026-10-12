@@ -28,9 +28,25 @@ comments: true
 
 多设备使用、降级或回退前，请阅读[升级与回退](/v2/migration/upgrade-and-rollback)。各版本的具体风险也在下方对应条目中标出。
 
-本站已补充到 2.3.7 发布快照；该版本已完成构建与上传，是否启用及开放下载以官网为准。
+本站已补充到 2.3.9 发布快照；该版本已完成构建与上传，是否启用及开放下载以官网为准。
 
 ## 近期文档补充
+
+### 2.3.9 · AI 动作编写、截图撕边与录屏操作
+
+- [AI 编写、搜索与管理动作](/v2/features/ai-and-agent#239--编写搜索与管理动作)：工作台与 MCP 支持脚本动作和常用基础动作，按需求选择类型，扩展搜索排序、行内运行编辑、复制、引用查询和历史恢复；明确保存冲突和真实试跑的边界。
+- [截图撕边](/v2/features/screenshot/capture-pro#239--截图撕边)：选择作用边、深度和齿宽，与边框和阴影组合；外观参数分开调整，窗口吸附按可见边框和圆角裁切。（[需求反馈](https://getquicker.net/QA/Question/42473)）
+- [录屏指针与预览删除](/v2/xaction/modules/screen-recording-ui#239--鼠标指针与预览删除)：录制中切换鼠标指针、在预览中放弃本次录制；删除失败保留预览，已另存文件不受影响。
+- [升级与回退](/v2/migration/upgrade-and-rollback#239--截图外观与录屏默认提示)：首次录屏默认显示点击与滚轮，旧选择保留；回退旧版并保存截图设置会清除撕边偏好，截图文件不受影响。
+- 恢复动作面板“粘贴为链接动作”，加载场景时切回动作面板；修复 React 表单保存与回车提交、后台朗读失败无提示等问题。完整修复见[官网版本记录](https://getquicker.net/V2/Versions)。
+
+### 2.3.8 · 动作隐藏、远程目录删除与表达式兼容
+
+- [隐藏不常用动作](/v2/features/action-panel/usage#238--隐藏不常用动作)：分别从最近使用 / 最近活动及动作搜索中隐藏，在动作管理中恢复；设置随账号同步，不影响快捷键等运行入口。
+- [远程目录删除](/v2/xaction/modules/remotefile#238--删除目录)：支持 WebDAV 和 S3，默认只删空目录，递归删除前需确认范围。（[#588](https://github.com/QuickerOrg/Quicker2-issues/issues/588)）
+- [动作信息表达式](/v2/xaction/concepts/expression-adv#237--读取动作的只读信息)：改用 `_context.ActionIcon`、`_context.ActionTitle`、`_context.ActionDescription`，已有 `_context.Action.Icon` 等写法需手动调整。
+- [升级与回退](/v2/migration/upgrade-and-rollback#238--动作隐藏与远程目录删除)：旧设备不应用隐藏设置，也不能运行新的目录删除操作；需要这些能力时请先升级对应设备。
+- AI 对话显示当前模型，发送消息后收起脚本最近运行卡片；脚本编辑器“最小化运行”等待 2.5 秒后开始。完整修复见[官网版本记录](https://getquicker.net/V2/Versions)。
 
 <a id="开发中--api-配置贴图主题与动作信息" />
 

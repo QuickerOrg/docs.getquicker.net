@@ -21,6 +21,7 @@
 
 ## 文档编写
 
+- 所有文档页的当前更新时间由 Docusaurus 读取该文件的 Git 最后提交时间，随发布自动更新；不要手写 `last_update.date`。`legacyContentUpdatedAt` 仅保留旧版文档的历史日期，不能用于当前更新时间。正式构建使用 `npm run build`，其 `prebuild` 会在浅克隆环境补齐 Git 历史；开发预览中的日期由 Docusaurus 模拟，准确日期以生产构建为准。
 - 用户文档优先写在 `docs/` 下，按产品功能和用户任务组织目录。
 - 文档面向最终用户，说明可见行为、操作步骤、限制、风险和排障方式；不要写成内部代码 diff。
 - 新增文档 front matter 建议包含：

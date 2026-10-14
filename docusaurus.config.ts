@@ -141,6 +141,7 @@ const config: Config = {
         docs: {
           sidebarPath: './sidebars.ts',
           routeBasePath: '/',
+          showLastUpdateTime: true,
           editUrl:
             'https://github.com/QuickerOrg/docs.getquicker.net/tree/main/',
         },

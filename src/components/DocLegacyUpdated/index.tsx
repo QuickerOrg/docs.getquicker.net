@@ -32,7 +32,7 @@ export default function DocLegacyUpdated({value}: Props): ReactNode {
 
   return (
     <p className="doc-legacy-updated">
-      更新于 <time dateTime={formatted.iso}>{formatted.label}</time>
+      旧版文档更新时间：<time dateTime={formatted.iso}>{formatted.label}</time>
     </p>
   );
 }

@@ -23,7 +23,6 @@ const ARTICLE_REMOVE = [
   '.theme-doc-version-badge',
   '.theme-doc-version-banner',
   '.theme-doc-footer',
-  '.doc-legacy-updated',
   '.qk-docs-preview-fallback',
   '[data-qk-preview]',
 ].join(',');

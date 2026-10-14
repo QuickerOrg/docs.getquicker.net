@@ -6,8 +6,9 @@ import path from 'node:path';
 import {pathToFileURL} from 'node:url';
 import test from 'node:test';
 import {ensureGitHistory} from './ensure-git-history.mjs';
+import {getVcsPreset} from '@docusaurus/utils';
 
-test('浅克隆补齐历史后，未随最新提交修改的文档保留自己的更新时间', (t) => {
+test('浅克隆补齐历史后，未随最新提交修改的文档保留自己的更新时间', async (t) => {
   const root = mkdtempSync(path.join(tmpdir(), 'quicker-doc-history-'));
   t.after(() => rmSync(root, {recursive: true, force: true}));
   const source = path.join(root, 'source');
@@ -41,4 +42,12 @@ test('浅克隆补齐历史后，未随最新提交修改的文档保留自己�
   assert.equal(git(clone, ['rev-parse', '--is-shallow-repository']), 'false');
   assert.equal(git(clone, ['log', '-1', '--format=%ct', '--', 'doc.md']), originalDate);
   assert.equal(git(clone, ['rev-parse', 'HEAD']), head);
+  if (process.platform === 'win32') {
+    const file = path.join(clone, 'doc.md');
+    const changedCase = file[0] === file[0].toUpperCase()
+      ? file[0].toLowerCase() + file.slice(1)
+      : file[0].toUpperCase() + file.slice(1);
+    const update = await getVcsPreset('git-ad-hoc').getFileLastUpdateInfo(changedCase);
+    assert.equal(update.timestamp, Number(originalDate) * 1000);
+  }
 });

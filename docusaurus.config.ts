@@ -81,6 +81,8 @@ const config: Config = {
   // Future flags, see https://docusaurus.io/docs/api/docusaurus-config#future
   future: {
     v4: true, // Improve compatibility with the upcoming Docusaurus v4
+    // Windows Jenkins 工作目录的盘符大小写可能与 Git 不同；逐文件查询避免缓存路径匹配失败。
+    experimental_vcs: 'git-ad-hoc',
   },
 
   // Set the production url of your site here

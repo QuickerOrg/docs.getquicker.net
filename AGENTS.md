@@ -67,9 +67,9 @@ npm run start -- --host 127.0.0.1 --port 3000 --no-open
 
 ## 部署与发布
 
-- 生产站托管在 Cloudflare Pages，项目名为 `docs-getquicker-net`。
+- 正式域名目前由 Jenkins 任务 `docs.getquicker.net` 构建后通过 MSDeploy 发布到 IIS；Cloudflare Pages（项目名 `docs-getquicker-net`）另有独立构建，不能仅凭 Pages 部署成功认定正式站已生效。
 - 正式地址为 `https://docs.getquicker.net`，默认 Pages 地址为 `https://docs-getquicker-net.pages.dev`。
-- Cloudflare Pages 连接 GitHub 仓库 `QuickerOrg/docs.getquicker.net`，生产分支为 `main`；推送到 `main` 会触发生产部署，其他分支用于预览部署。
+- Jenkins 与 Cloudflare Pages 均连接 GitHub 仓库 `QuickerOrg/docs.getquicker.net`，正式发布分支为 `main`；推送后需检查 Jenkins 构建及正式域名的实际产物。
 - Cloudflare Pages 使用 Docusaurus 预设，构建命令为 `npm run build`，构建输出目录为 `build`，根目录为空，目前不需要额外环境变量。
 - 本项目不使用 `npm run deploy` 发布生产站，也不需要 GitHub Pages 的 `static/CNAME`。
 - 未提交或未推送的本地修改不会进入生产站。未经用户明确要求，不要为触发部署而提交或推送。

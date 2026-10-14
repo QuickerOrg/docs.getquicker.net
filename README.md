@@ -28,7 +28,7 @@ npm run build
 
 ## 发布
 
-生产站通过 Cloudflare Pages 托管：
+正式域名由 Jenkins 任务 `docs.getquicker.net` 构建，并通过 MSDeploy 发布到 IIS；Cloudflare Pages 同时提供独立部署：
 
 - GitHub 仓库：`QuickerOrg/docs.getquicker.net`
 - 生产分支：`main`
@@ -36,7 +36,7 @@ npm run build
 - 构建输出目录：`build`
 - 正式地址：`https://docs.getquicker.net`
 
-推送到 `main` 后，Cloudflare Pages 会自动构建并发布；其他分支的构建用于预览。
+推送到 `main` 后会触发 Jenkins 正式发布及 Cloudflare Pages 构建。正式站是否生效，以 Jenkins 构建结果及正式域名实际页面为准；不能用 Pages 预览成功替代正式站验证。
 
 ## 目录
 

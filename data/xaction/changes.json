@@ -1,303 +1,979 @@
 {
   "schemaVersion": 1,
   "baselineCreated": false,
-  "fromGeneratedAt": "2026-10-08 20:35:18",
-  "toGeneratedAt": "2026-10-10 06:06:14",
+  "fromGeneratedAt": "2026-10-10 06:06:14",
+  "toGeneratedAt": "2026-10-17 20:02:51",
   "summary": {
     "addedModules": 0,
     "removedModules": 0,
-    "changedModules": 2
+    "changedModules": 7
   },
   "addedModules": [],
   "removedModules": [],
   "changedModules": [
     {
-      "key": "sys:pinImage",
-      "name": "贴图",
+      "key": "sys:runScript",
+      "name": "运行脚本",
+      "changedFields": [],
+      "inputs": {
+        "added": [],
+        "removed": [],
+        "changed": []
+      },
+      "outputs": {
+        "added": [],
+        "removed": [],
+        "changed": []
+      },
+      "selectionsChanged": true,
+      "selections": {
+        "before": {
+          "type": {
+            "name": "脚本类型",
+            "items": [
+              {
+                "value": "CMD_K",
+                "name": "CMD命令 (完成后保留窗口)"
+              },
+              {
+                "value": "CMD_C",
+                "name": "CMD命令 (完成后关闭窗口)"
+              },
+              {
+                "value": "CMD_H",
+                "name": "CMD命令 (隐藏命令行窗口)"
+              },
+              {
+                "value": "BAT",
+                "name": "BAT批处理脚本(.bat)"
+              },
+              {
+                "value": "CMD_F",
+                "name": "CMD批处理脚本(.cmd)"
+              },
+              {
+                "value": "PS",
+                "name": "PowerShell脚本(.ps1)"
+              },
+              {
+                "value": "AHK",
+                "name": "AutoHotKey脚本(.ahk)"
+              },
+              {
+                "value": "CUSTOM",
+                "name": "自定义脚本类型"
+              }
+            ]
+          },
+          "encoding": {
+            "name": "文件编码",
+            "items": [
+              {
+                "value": "utf-8",
+                "name": "UTF8 (有BOM)"
+              },
+              {
+                "value": "UTF8-NOBOM",
+                "name": "UTF8 (无BOM)"
+              },
+              {
+                "value": "utf-16",
+                "name": "UTF-16 LE"
+              },
+              {
+                "value": "utf-16BE",
+                "name": "UTF-16 BE"
+              },
+              {
+                "value": "us-ascii",
+                "name": "ASCII"
+              },
+              {
+                "value": "utf-7",
+                "name": "UTF7"
+              },
+              {
+                "value": "utf-32",
+                "name": "UTF32"
+              },
+              {
+                "value": "default",
+                "name": "系统默认(windows-1252)"
+              }
+            ]
+          },
+          "outputEncoding": {
+            "name": "控制台输出编码",
+            "items": [
+              {
+                "value": "utf8",
+                "name": "UTF8"
+              },
+              {
+                "value": "oem",
+                "name": "OEM"
+              }
+            ]
+          }
+        },
+        "after": {
+          "type": {
+            "name": "脚本类型",
+            "items": [
+              {
+                "value": "CMD_K",
+                "name": "CMD命令 (完成后保留窗口)"
+              },
+              {
+                "value": "CMD_C",
+                "name": "CMD命令 (完成后关闭窗口)"
+              },
+              {
+                "value": "CMD_H",
+                "name": "CMD命令 (隐藏命令行窗口)"
+              },
+              {
+                "value": "BAT",
+                "name": "BAT批处理脚本(.bat)"
+              },
+              {
+                "value": "CMD_F",
+                "name": "CMD批处理脚本(.cmd)"
+              },
+              {
+                "value": "PS",
+                "name": "PowerShell脚本(.ps1)"
+              },
+              {
+                "value": "AHK",
+                "name": "AutoHotKey脚本(.ahk)"
+              },
+              {
+                "value": "CUSTOM",
+                "name": "自定义脚本类型"
+              }
+            ]
+          },
+          "encoding": {
+            "name": "文件编码",
+            "items": [
+              {
+                "value": "utf-8",
+                "name": "UTF8 (有BOM)"
+              },
+              {
+                "value": "UTF8-NOBOM",
+                "name": "UTF8 (无BOM)"
+              },
+              {
+                "value": "utf-16",
+                "name": "UTF-16 LE"
+              },
+              {
+                "value": "utf-16BE",
+                "name": "UTF-16 BE"
+              },
+              {
+                "value": "us-ascii",
+                "name": "ASCII"
+              },
+              {
+                "value": "utf-7",
+                "name": "UTF7"
+              },
+              {
+                "value": "utf-32",
+                "name": "UTF32"
+              },
+              {
+                "value": "default",
+                "name": "系统默认(gb2312)"
+              }
+            ]
+          },
+          "outputEncoding": {
+            "name": "控制台输出编码",
+            "items": [
+              {
+                "value": "utf8",
+                "name": "UTF8"
+              },
+              {
+                "value": "oem",
+                "name": "OEM"
+              }
+            ]
+          }
+        }
+      }
+    },
+    {
+      "key": "sys:getClipboardText",
+      "name": "获取剪贴板文本",
+      "changedFields": [],
+      "inputs": {
+        "added": [],
+        "removed": [],
+        "changed": []
+      },
+      "outputs": {
+        "added": [],
+        "removed": [],
+        "changed": []
+      },
+      "selectionsChanged": true,
+      "selections": {
+        "before": {
+          "format": {
+            "name": "文本数据格式",
+            "items": [
+              {
+                "value": "UnicodeText",
+                "name": "纯文本（默认）"
+              },
+              {
+                "value": "Rtf",
+                "name": "Rtf"
+              },
+              {
+                "value": "Html",
+                "name": "Html"
+              },
+              {
+                "value": "CommaSeparatedValue",
+                "name": "逗号分隔的值（csv）"
+              },
+              {
+                "value": "Custom",
+                "name": "自定义格式名"
+              }
+            ]
+          },
+          "encoding": {
+            "name": "文本编码",
+            "items": [
+              {
+                "value": "utf-8",
+                "name": "UTF8"
+              },
+              {
+                "value": "utf-16",
+                "name": "UTF-16 LE"
+              },
+              {
+                "value": "utf-16BE",
+                "name": "UTF-16 BE"
+              },
+              {
+                "value": "us-ascii",
+                "name": "ASCII"
+              },
+              {
+                "value": "utf-7",
+                "name": "UTF7"
+              },
+              {
+                "value": "utf-32",
+                "name": "UTF32"
+              },
+              {
+                "value": "default",
+                "name": "系统默认(windows-1252)"
+              }
+            ]
+          }
+        },
+        "after": {
+          "format": {
+            "name": "文本数据格式",
+            "items": [
+              {
+                "value": "UnicodeText",
+                "name": "纯文本（默认）"
+              },
+              {
+                "value": "Rtf",
+                "name": "Rtf"
+              },
+              {
+                "value": "Html",
+                "name": "Html"
+              },
+              {
+                "value": "CommaSeparatedValue",
+                "name": "逗号分隔的值（csv）"
+              },
+              {
+                "value": "Custom",
+                "name": "自定义格式名"
+              }
+            ]
+          },
+          "encoding": {
+            "name": "文本编码",
+            "items": [
+              {
+                "value": "utf-8",
+                "name": "UTF8"
+              },
+              {
+                "value": "utf-16",
+                "name": "UTF-16 LE"
+              },
+              {
+                "value": "utf-16BE",
+                "name": "UTF-16 BE"
+              },
+              {
+                "value": "us-ascii",
+                "name": "ASCII"
+              },
+              {
+                "value": "utf-7",
+                "name": "UTF7"
+              },
+              {
+                "value": "utf-32",
+                "name": "UTF32"
+              },
+              {
+                "value": "default",
+                "name": "系统默认(gb2312)"
+              }
+            ]
+          }
+        }
+      }
+    },
+    {
+      "key": "sys:readFile",
+      "name": "读取文件",
+      "changedFields": [],
+      "inputs": {
+        "added": [],
+        "removed": [],
+        "changed": []
+      },
+      "outputs": {
+        "added": [],
+        "removed": [],
+        "changed": []
+      },
+      "selectionsChanged": true,
+      "selections": {
+        "before": {
+          "type": {
+            "name": "格式",
+            "items": [
+              {
+                "value": "text",
+                "name": "文本"
+              },
+              {
+                "value": "image",
+                "name": "图片"
+              }
+            ]
+          },
+          "encoding": {
+            "name": "文件编码",
+            "items": [
+              {
+                "value": "utf-8",
+                "name": "UTF8"
+              },
+              {
+                "value": "utf-16",
+                "name": "UTF-16 LE"
+              },
+              {
+                "value": "utf-16BE",
+                "name": "UTF-16 BE"
+              },
+              {
+                "value": "us-ascii",
+                "name": "ASCII"
+              },
+              {
+                "value": "utf-7",
+                "name": "UTF7"
+              },
+              {
+                "value": "utf-32",
+                "name": "UTF32"
+              },
+              {
+                "value": "default",
+                "name": "系统默认(windows-1252)"
+              },
+              {
+                "value": "auto",
+                "name": "自动（BOM/UTF/ANSI）"
+              }
+            ]
+          }
+        },
+        "after": {
+          "type": {
+            "name": "格式",
+            "items": [
+              {
+                "value": "text",
+                "name": "文本"
+              },
+              {
+                "value": "image",
+                "name": "图片"
+              }
+            ]
+          },
+          "encoding": {
+            "name": "文件编码",
+            "items": [
+              {
+                "value": "utf-8",
+                "name": "UTF8"
+              },
+              {
+                "value": "utf-16",
+                "name": "UTF-16 LE"
+              },
+              {
+                "value": "utf-16BE",
+                "name": "UTF-16 BE"
+              },
+              {
+                "value": "us-ascii",
+                "name": "ASCII"
+              },
+              {
+                "value": "utf-7",
+                "name": "UTF7"
+              },
+              {
+                "value": "utf-32",
+                "name": "UTF32"
+              },
+              {
+                "value": "default",
+                "name": "系统默认(gb2312)"
+              },
+              {
+                "value": "auto",
+                "name": "自动（BOM/UTF/ANSI）"
+              }
+            ]
+          }
+        }
+      }
+    },
+    {
+      "key": "sys:WriteTextFile",
+      "name": "写入文本文件",
+      "changedFields": [],
+      "inputs": {
+        "added": [],
+        "removed": [],
+        "changed": []
+      },
+      "outputs": {
+        "added": [],
+        "removed": [],
+        "changed": []
+      },
+      "selectionsChanged": true,
+      "selections": {
+        "before": {
+          "encoding": {
+            "name": "文件编码",
+            "items": [
+              {
+                "value": "utf-8",
+                "name": "UTF8"
+              },
+              {
+                "value": "utf-16",
+                "name": "UTF-16 LE"
+              },
+              {
+                "value": "utf-16BE",
+                "name": "UTF-16 BE"
+              },
+              {
+                "value": "us-ascii",
+                "name": "ASCII"
+              },
+              {
+                "value": "utf-7",
+                "name": "UTF7"
+              },
+              {
+                "value": "utf-32",
+                "name": "UTF32"
+              },
+              {
+                "value": "default",
+                "name": "系统默认(windows-1252)"
+              }
+            ]
+          },
+          "newLineChars": {
+            "name": "统一换行字符",
+            "items": [
+              {
+                "value": "",
+                "name": "默认（不处理）"
+              },
+              {
+                "value": "\r\n",
+                "name": "\\r\\n",
+                "description": "Windows"
+              },
+              {
+                "value": "\r",
+                "name": "\\r ",
+                "description": "(Mac)"
+              },
+              {
+                "value": "\n",
+                "name": "\\n ",
+                "description": "(Linux)"
+              }
+            ]
+          }
+        },
+        "after": {
+          "encoding": {
+            "name": "文件编码",
+            "items": [
+              {
+                "value": "utf-8",
+                "name": "UTF8"
+              },
+              {
+                "value": "utf-16",
+                "name": "UTF-16 LE"
+              },
+              {
+                "value": "utf-16BE",
+                "name": "UTF-16 BE"
+              },
+              {
+                "value": "us-ascii",
+                "name": "ASCII"
+              },
+              {
+                "value": "utf-7",
+                "name": "UTF7"
+              },
+              {
+                "value": "utf-32",
+                "name": "UTF32"
+              },
+              {
+                "value": "default",
+                "name": "系统默认(gb2312)"
+              }
+            ]
+          },
+          "newLineChars": {
+            "name": "统一换行字符",
+            "items": [
+              {
+                "value": "",
+                "name": "默认（不处理）"
+              },
+              {
+                "value": "\r\n",
+                "name": "\\r\\n",
+                "description": "Windows"
+              },
+              {
+                "value": "\r",
+                "name": "\\r ",
+                "description": "(Mac)"
+              },
+              {
+                "value": "\n",
+                "name": "\\n ",
+                "description": "(Linux)"
+              }
+            ]
+          }
+        }
+      }
+    },
+    {
+      "key": "sys:screenCapturePro",
+      "name": "截图 Pro",
       "changedFields": [],
       "inputs": {
         "added": [
           {
-            "key": "theme",
-            "name": "主题",
+            "key": "includeCursor",
+            "name": "包含鼠标指针",
             "type": "Enum",
-            "description": "自动：HTML 保留来源主题，文本、公式和 OCR 跟随 Quicker 主题。也可统一使用浅色或深色。",
+            "description": "本次初始值；跟随设置保持旧动作行为，不修改全局偏好。交互时仍可临时切换。",
             "isAdvanced": true,
-            "validForList": [
-              "variable",
-              "clipboard",
-              "text",
-              "plainText",
-              "baiduOcrJson",
-              "html",
-              "formula"
-            ],
-            "condition": "仅：variable, clipboard, text, plainText, baiduOcrJson, html, formula",
-            "defaultValue": "auto",
-            "variableMode": "Input"
-          }
-        ],
-        "removed": [
-          {
-            "key": "textColor",
-            "name": "纯文本文字颜色",
-            "type": "Text",
-            "description": "#AARRGGBB。纯文本文字颜色，自动识别 OCR 时沿用；HTML 使用内容自身的文字颜色。",
-            "isAdvanced": true,
-            "validForList": [
-              "variable",
-              "clipboard",
-              "text"
-            ],
-            "condition": "仅：variable, clipboard, text",
-            "defaultValue": "#FF000000",
+            "defaultValue": "inherit",
             "variableMode": "UseVarOrInput"
           },
           {
-            "key": "backgroundColor",
-            "name": "文本/公式背景颜色",
+            "key": "saveNameTemplate",
+            "name": "文件名模板",
             "type": "Text",
-            "description": "#AARRGGBB。纯文本与公式画布背景，自动识别 OCR 时沿用，不影响自动识别的 HTML；旧显式 HTML 动作兼容已保存的背景设置。透明请用带透明通道的颜色（如 #00FFFFFF）。",
+            "description": "留空继承全局；支持 {date}、{date:格式}、{time}、{width}、{height}。只改确认快存，重名自动加序号。",
             "isAdvanced": true,
             "validForList": [
-              "variable",
-              "clipboard",
-              "text",
-              "formula"
+              "quick_save"
             ],
-            "condition": "仅：variable, clipboard, text, formula",
-            "defaultValue": "#FFFFFFFF",
+            "condition": "仅：quick_save",
+            "defaultValue": "",
             "variableMode": "UseVarOrInput"
           },
           {
-            "key": "htmlBackground",
-            "name": "HTML/公式默认背景",
-            "type": "Text",
-            "description": "#AARRGGBB。HTML 内容自身的背景优先；HTML 的默认白色会匹配文字明暗，自定义颜色作为无背景 HTML 的画布背景。旧显式 HTML 动作未设置本项或保持默认白色时沿用已保存的背景颜色。公式背景兼容旧动作设置。",
+            "key": "saveFormat",
+            "name": "保存格式",
+            "type": "Enum",
             "isAdvanced": true,
             "validForList": [
-              "variable",
-              "clipboard",
-              "text",
-              "html",
-              "formula"
+              "quick_save"
             ],
-            "condition": "仅：variable, clipboard, text, html, formula",
-            "defaultValue": "#FFFFFFFF",
-            "variableMode": "UseVarOrInput"
-          },
-          {
-            "key": "ocrTextColor",
-            "name": "OCR 文字颜色",
-            "type": "Text",
-            "isAdvanced": true,
-            "validForList": [
-              "baiduOcrJson"
-            ],
-            "condition": "仅：baiduOcrJson",
-            "defaultValue": "#FF000000",
-            "variableMode": "UseVarOrInput"
-          },
-          {
-            "key": "ocrBackgroundColor",
-            "name": "OCR 画布背景",
-            "type": "Text",
-            "isAdvanced": true,
-            "validForList": [
-              "baiduOcrJson"
-            ],
-            "condition": "仅：baiduOcrJson",
-            "defaultValue": "#FFFFFFFF",
+            "condition": "仅：quick_save",
+            "defaultValue": "inherit",
             "variableMode": "UseVarOrInput"
           }
         ],
+        "removed": [],
         "changed": [
           {
-            "key": "mode",
+            "key": "toClip",
             "before": {
-              "key": "mode",
-              "name": "内容来源",
-              "type": "Enum",
-              "description": "变量：自动识别图片、HTML、公式（$ / $$ / LaTeX）、OCR 原始结果或文本。剪贴板：按富文本 HTML、图片、图片文件、公式、文本自动处理；屏幕位置为「自动」或自定义坐标仍为默认 0,0 时，有 PixPin/Quicker 位置元数据则贴回截图原位置。",
-              "defaultValue": "variable",
-              "required": true,
-              "variableMode": "Input",
-              "isControlField": true
+              "key": "toClip",
+              "name": "写入剪贴板",
+              "type": "Boolean",
+              "description": "确认截图后写入剪贴板；“框选即出图”在框选完成后写入。其他工具栏出口不触发。",
+              "validForList": [
+                "capture",
+                "capture_now",
+                "quick_save"
+              ],
+              "condition": "仅：capture, capture_now, quick_save",
+              "defaultValue": "false",
+              "defaultValueRaw": false,
+              "variableMode": "Input"
             },
             "after": {
-              "key": "mode",
-              "name": "内容来源",
-              "type": "Enum",
-              "description": "变量和剪贴板自动识别图片、HTML、公式、OCR 结果或文本。「纯文本」直接显示输入文字，可设置字体与字号。HTML 仅静态渲染，禁止网络访问。",
-              "defaultValue": "variable",
-              "required": true,
-              "variableMode": "Input",
-              "isControlField": true
+              "key": "toClip",
+              "name": "确认后复制图片",
+              "type": "Boolean",
+              "description": "确认截图后写入剪贴板；“框选即出图”在框选完成后写入。其他工具栏出口不触发。",
+              "validForList": [
+                "capture",
+                "capture_now",
+                "quick_save"
+              ],
+              "condition": "仅：capture, capture_now, quick_save",
+              "defaultValue": "false",
+              "defaultValueRaw": false,
+              "variableMode": "Input"
             }
           },
           {
-            "key": "text",
+            "key": "pinImage",
             "before": {
-              "key": "text",
-              "name": "文本",
+              "key": "pinImage",
+              "name": "截图后贴图",
+              "type": "Boolean",
+              "description": "确认截图后贴到原位置；“框选即出图”在框选完成后贴图。其他工具栏出口不触发。",
+              "validForList": [
+                "capture",
+                "capture_now",
+                "quick_save"
+              ],
+              "condition": "仅：capture, capture_now, quick_save",
+              "defaultValue": "false",
+              "defaultValueRaw": false,
+              "variableMode": "Input"
+            },
+            "after": {
+              "key": "pinImage",
+              "name": "确认后贴图",
+              "type": "Boolean",
+              "description": "确认截图后贴到原位置；“框选即出图”在框选完成后贴图。其他工具栏出口不触发。",
+              "validForList": [
+                "capture",
+                "capture_now",
+                "quick_save"
+              ],
+              "condition": "仅：capture, capture_now, quick_save",
+              "defaultValue": "false",
+              "defaultValueRaw": false,
+              "variableMode": "Input"
+            }
+          },
+          {
+            "key": "saveDirectory",
+            "before": {
+              "key": "saveDirectory",
+              "name": "保存目录",
               "type": "Text",
-              "description": "要渲染为图片并贴图的多行文本。",
+              "description": "留空用全局目录，只改本次。",
               "isAdvanced": true,
               "validForList": [
-                "text"
+                "quick_save"
               ],
-              "condition": "仅：text",
+              "condition": "仅：quick_save",
               "defaultValue": "",
               "variableMode": "UseVarOrInput"
             },
             "after": {
-              "key": "text",
-              "name": "文本",
+              "key": "saveDirectory",
+              "name": "确认快存目录",
               "type": "Text",
-              "description": "要贴图的多行文字。支持变量；纯文本模式直接显示文字。",
+              "description": "留空用全局目录，只改确认快存。工具栏另存为使用其独立选择的路径。",
+              "isAdvanced": true,
               "validForList": [
-                "text",
-                "plainText"
+                "quick_save"
               ],
-              "condition": "仅：text, plainText",
+              "condition": "仅：quick_save",
               "defaultValue": "",
               "variableMode": "UseVarOrInput"
             }
-          },
+          }
+        ]
+      },
+      "outputs": {
+        "added": [
           {
-            "key": "fontName",
+            "key": "endKind",
+            "name": "结束方式",
+            "type": "Text",
+            "description": "实际出口：confirmed/saved/copied/pinned/ocr 等；失败或取消为空。仅成功时读取图片等结果，确认后的复制/贴图不改变出口名。"
+          }
+        ],
+        "removed": [],
+        "changed": []
+      },
+      "selectionsChanged": true,
+      "selections": {
+        "before": {
+          "operation": {
+            "name": "操作",
+            "items": [
+              {
+                "value": "capture",
+                "name": "截图"
+              },
+              {
+                "value": "capture_now",
+                "name": "框选即出图"
+              },
+              {
+                "value": "copy",
+                "name": "立刻复制"
+              },
+              {
+                "value": "pin",
+                "name": "立刻贴图"
+              },
+              {
+                "value": "ocr_copy",
+                "name": "识别并复制"
+              },
+              {
+                "value": "ocr",
+                "name": "文本识别"
+              },
+              {
+                "value": "table",
+                "name": "表格识别"
+              },
+              {
+                "value": "formula",
+                "name": "公式识别"
+              },
+              {
+                "value": "translate",
+                "name": "文本翻译"
+              },
+              {
+                "value": "image_translate",
+                "name": "图片翻译"
+              },
+              {
+                "value": "quick_save",
+                "name": "快速保存"
+              }
+            ]
+          }
+        },
+        "after": {
+          "operation": {
+            "name": "操作",
+            "items": [
+              {
+                "value": "capture",
+                "name": "截图"
+              },
+              {
+                "value": "capture_now",
+                "name": "框选即出图"
+              },
+              {
+                "value": "copy",
+                "name": "立刻复制"
+              },
+              {
+                "value": "pin",
+                "name": "立刻贴图"
+              },
+              {
+                "value": "ocr_copy",
+                "name": "识别并复制"
+              },
+              {
+                "value": "ocr",
+                "name": "文本识别"
+              },
+              {
+                "value": "table",
+                "name": "表格识别"
+              },
+              {
+                "value": "formula",
+                "name": "公式识别"
+              },
+              {
+                "value": "translate",
+                "name": "文本翻译"
+              },
+              {
+                "value": "image_translate",
+                "name": "图片翻译"
+              },
+              {
+                "value": "quick_save",
+                "name": "快速保存"
+              }
+            ]
+          },
+          "includeCursor": {
+            "name": "包含鼠标指针",
+            "items": [
+              {
+                "value": "inherit",
+                "name": "跟随设置"
+              },
+              {
+                "value": "include",
+                "name": "包含"
+              },
+              {
+                "value": "exclude",
+                "name": "不包含"
+              }
+            ]
+          },
+          "saveFormat": {
+            "name": "保存格式",
+            "items": [
+              {
+                "value": "inherit",
+                "name": "跟随设置"
+              },
+              {
+                "value": "png",
+                "name": "PNG"
+              },
+              {
+                "value": "jpeg",
+                "name": "JPEG"
+              }
+            ]
+          }
+        }
+      }
+    },
+    {
+      "key": "sys:remoteFile",
+      "name": "远程文件",
+      "changedFields": [],
+      "inputs": {
+        "added": [
+          {
+            "key": "recursiveDelete",
+            "name": "递归删除",
+            "type": "Boolean",
+            "description": "关闭时只删除空目录；开启后删除目标目录及全部文件、子目录。禁止删除账号根目录。删除失败或取消时可能已删除部分内容。WebDAV 空目录检查与删除之间的并发写入仍可能被删除。S3 不删除历史版本。",
+            "validForList": [
+              "deleteDirectory"
+            ],
+            "condition": "仅：deleteDirectory",
+            "defaultValue": "false",
+            "defaultValueRaw": false,
+            "variableMode": "UseVarOrInput"
+          }
+        ],
+        "removed": [],
+        "changed": [
+          {
+            "key": "remotePath",
             "before": {
-              "key": "fontName",
-              "name": "纯文本字体名称",
+              "key": "remotePath",
+              "name": "远端路径",
               "type": "Text",
-              "description": "纯文本贴图使用的本机字体，自动识别 OCR 时沿用；HTML 使用内容自身的字体样式。",
-              "isAdvanced": true,
-              "validForList": [
-                "variable",
-                "clipboard",
-                "text"
-              ],
-              "condition": "仅：variable, clipboard, text",
-              "defaultValue": "Microsoft YaHei UI",
+              "description": "相对账号根目录的路径，不是网址；/ 表示账号根。单文件操作须包含文件名，如 /目录/文件.txt，上传不会自动追加原文件名；目录操作填写目录路径。批量下载时填写基准目录。",
+              "visibleWhen": {
+                "kind": "Field",
+                "fieldKey": "operation",
+                "operator": "In",
+                "values": [
+                  "upload",
+                  "download",
+                  "list",
+                  "query",
+                  "createDirectory",
+                  "deleteFile",
+                  "moveFile",
+                  "copyFile",
+                  "batchDownload",
+                  "uploadFolder",
+                  "downloadFolder"
+                ]
+              },
+              "condition": "operation 为 \"upload\"、\"download\"、\"list\"、\"query\"、\"createDirectory\"、\"deleteFile\"、\"moveFile\"、\"copyFile\"、\"batchDownload\"、\"uploadFolder\"、\"downloadFolder\"",
+              "defaultValue": "",
+              "required": true,
               "variableMode": "UseVarOrInput"
             },
             "after": {
-              "key": "fontName",
-              "name": "纯文本字体名称",
+              "key": "remotePath",
+              "name": "远端路径",
               "type": "Text",
-              "description": "纯文本贴图使用的本机字体。",
-              "isAdvanced": true,
-              "validForList": [
-                "text",
-                "plainText"
-              ],
-              "condition": "仅：text, plainText",
-              "defaultValue": "Microsoft YaHei UI",
-              "variableMode": "UseVarOrInput"
-            }
-          },
-          {
-            "key": "fontSize",
-            "before": {
-              "key": "fontSize",
-              "name": "字号",
-              "type": "Number",
-              "description": "纯文本字号。为兼容旧动作，自动识别公式时与公式字号取较大值；HTML 使用内容自身的字号。",
-              "isAdvanced": true,
-              "validForList": [
-                "variable",
-                "clipboard",
-                "text",
-                "formula"
-              ],
-              "condition": "仅：variable, clipboard, text, formula",
-              "defaultValue": "16.0",
-              "defaultValueRaw": 16,
-              "variableMode": "UseVarOrInput"
-            },
-            "after": {
-              "key": "fontSize",
-              "name": "纯文本字号",
-              "type": "Number",
-              "description": "纯文本贴图的字号。",
-              "isAdvanced": true,
-              "validForList": [
-                "text",
-                "plainText"
-              ],
-              "condition": "仅：text, plainText",
-              "defaultValue": "16.0",
-              "defaultValueRaw": 16,
-              "variableMode": "UseVarOrInput"
-            }
-          },
-          {
-            "key": "maxTextWidth",
-            "before": {
-              "key": "maxTextWidth",
-              "name": "最大宽度",
-              "type": "Integer",
-              "description": "像素。0 表示按内容自动扩展。纯文本大于 0 时自动换行；HTML / 公式上限 2400。",
-              "isAdvanced": true,
-              "validForList": [
-                "variable",
-                "clipboard",
-                "text",
-                "html",
-                "formula"
-              ],
-              "condition": "仅：variable, clipboard, text, html, formula",
-              "defaultValue": "0",
-              "defaultValueRaw": 0,
-              "variableMode": "UseVarOrInput"
-            },
-            "after": {
-              "key": "maxTextWidth",
-              "name": "最大宽度",
-              "type": "Integer",
-              "description": "像素。0 表示按内容自动扩展。纯文本大于 0 时自动换行；HTML / 公式上限 2400。",
-              "isAdvanced": true,
-              "validForList": [
-                "variable",
-                "clipboard",
-                "text",
-                "plainText",
-                "html",
-                "formula"
-              ],
-              "condition": "仅：variable, clipboard, text, plainText, html, formula",
-              "defaultValue": "0",
-              "defaultValueRaw": 0,
-              "variableMode": "UseVarOrInput"
-            }
-          },
-          {
-            "key": "formulaFontSize",
-            "before": {
-              "key": "formulaFontSize",
-              "name": "公式字号",
-              "type": "Number",
-              "isAdvanced": true,
-              "validForList": [
-                "formula"
-              ],
-              "condition": "仅：formula",
-              "defaultValue": "22.0",
-              "defaultValueRaw": 22,
-              "variableMode": "UseVarOrInput"
-            },
-            "after": {
-              "key": "formulaFontSize",
-              "name": "公式字号",
-              "type": "Number",
-              "isAdvanced": true,
-              "validForList": [
-                "text",
-                "formula"
-              ],
-              "condition": "仅：text, formula",
-              "defaultValue": "22.0",
-              "defaultValueRaw": 22,
+              "description": "相对账号根目录的路径，不是网址；/ 表示账号根。单文件操作须包含文件名，如 /目录/文件.txt，上传不会自动追加原文件名；目录操作填写目录路径。批量下载时填写基准目录。",
+              "visibleWhen": {
+                "kind": "Field",
+                "fieldKey": "operation",
+                "operator": "In",
+                "values": [
+                  "upload",
+                  "download",
+                  "list",
+                  "query",
+                  "createDirectory",
+                  "deleteFile",
+                  "deleteDirectory",
+                  "moveFile",
+                  "copyFile",
+                  "batchDownload",
+                  "uploadFolder",
+                  "downloadFolder"
+                ]
+              },
+              "condition": "operation 为 \"upload\"、\"download\"、\"list\"、\"query\"、\"createDirectory\"、\"deleteFile\"、\"deleteDirectory\"、\"moveFile\"、\"copyFile\"、\"batchDownload\"、\"uploadFolder\"、\"downloadFolder\"",
+              "defaultValue": "",
+              "required": true,
               "variableMode": "UseVarOrInput"
             }
           }
@@ -311,184 +987,353 @@
       "selectionsChanged": true,
       "selections": {
         "before": {
-          "mode": {
-            "name": "内容来源",
+          "operation": {
+            "name": "操作",
             "items": [
               {
-                "value": "clipboard",
-                "name": "剪贴板（自动）"
+                "value": "listAccounts",
+                "name": "获取账号列表"
               },
               {
-                "value": "variable",
-                "name": "变量（自动）"
+                "value": "upload",
+                "name": "上传"
+              },
+              {
+                "value": "download",
+                "name": "下载/读取内容"
+              },
+              {
+                "value": "list",
+                "name": "列目录"
+              },
+              {
+                "value": "query",
+                "name": "查询"
+              },
+              {
+                "value": "createDirectory",
+                "name": "新建目录"
+              },
+              {
+                "value": "deleteFile",
+                "name": "删除文件"
+              },
+              {
+                "value": "moveFile",
+                "name": "移动/重命名文件"
+              },
+              {
+                "value": "copyFile",
+                "name": "复制文件"
+              },
+              {
+                "value": "batchRead",
+                "name": "批量读取内容"
+              },
+              {
+                "value": "batchDownload",
+                "name": "批量下载文件"
+              },
+              {
+                "value": "uploadFolder",
+                "name": "上传文件夹"
+              },
+              {
+                "value": "downloadFolder",
+                "name": "下载文件夹"
               }
             ]
           },
-          "screenPlacement": {
-            "name": "屏幕位置",
+          "uploadSource": {
+            "name": "上传内容",
             "items": [
               {
-                "value": "manual",
-                "name": "自定义坐标"
+                "value": "file",
+                "name": "本地文件"
               },
               {
-                "value": "center",
-                "name": "屏幕中间"
+                "value": "text",
+                "name": "文本"
               },
               {
-                "value": "topLeft",
-                "name": "屏幕左上"
+                "value": "bytes",
+                "name": "字节数组"
               },
               {
-                "value": "topCenter",
-                "name": "屏幕中上"
-              },
-              {
-                "value": "topRight",
-                "name": "屏幕右上"
-              },
-              {
-                "value": "leftCenter",
-                "name": "屏幕左中"
-              },
-              {
-                "value": "rightCenter",
-                "name": "屏幕右中"
-              },
-              {
-                "value": "bottomLeft",
-                "name": "屏幕左下"
-              },
-              {
-                "value": "bottomCenter",
-                "name": "屏幕中下"
-              },
-              {
-                "value": "bottomRight",
-                "name": "屏幕右下"
-              },
-              {
-                "value": "captureOrigin",
-                "name": "截图原位置"
-              },
-              {
-                "value": "auto",
-                "name": "自动"
+                "value": "image",
+                "name": "图片"
               }
             ]
           },
-          "formulaLayout": {
-            "name": "公式版式",
+          "batchContent": {
+            "name": "读取内容",
             "items": [
               {
-                "value": "display",
-                "name": "独立公式"
+                "value": "text",
+                "name": "文本"
               },
               {
-                "value": "inline",
-                "name": "行内公式"
+                "value": "bytes",
+                "name": "字节数组"
+              }
+            ]
+          },
+          "downloadMode": {
+            "name": "下载方式",
+            "items": [
+              {
+                "value": "file",
+                "name": "保存为本地文件"
+              },
+              {
+                "value": "text",
+                "name": "读取为文本"
+              },
+              {
+                "value": "bytes",
+                "name": "读取为字节数组"
+              },
+              {
+                "value": "image",
+                "name": "图片"
+              }
+            ]
+          },
+          "imageFormat": {
+            "name": "图片格式",
+            "items": [
+              {
+                "value": "png",
+                "name": "PNG"
+              },
+              {
+                "value": "jpeg",
+                "name": "JPEG"
+              }
+            ]
+          },
+          "existsPolicy": {
+            "name": "已存在时",
+            "items": [
+              {
+                "value": "fail",
+                "name": "失败"
+              },
+              {
+                "value": "skip",
+                "name": "跳过"
+              },
+              {
+                "value": "overwrite",
+                "name": "覆盖"
+              }
+            ]
+          },
+          "moveExistsPolicy": {
+            "name": "目标已存在时",
+            "items": [
+              {
+                "value": "fail",
+                "name": "失败"
+              },
+              {
+                "value": "overwrite",
+                "name": "覆盖"
+              }
+            ]
+          },
+          "listFilter": {
+            "name": "列出",
+            "items": [
+              {
+                "value": "all",
+                "name": "全部"
+              },
+              {
+                "value": "files",
+                "name": "只列文件"
+              },
+              {
+                "value": "directories",
+                "name": "只列目录"
               }
             ]
           }
         },
         "after": {
-          "mode": {
-            "name": "内容来源",
+          "operation": {
+            "name": "操作",
             "items": [
               {
-                "value": "clipboard",
-                "name": "剪贴板（自动）"
+                "value": "listAccounts",
+                "name": "获取账号列表"
               },
               {
-                "value": "variable",
-                "name": "变量（自动）"
+                "value": "upload",
+                "name": "上传"
               },
               {
-                "value": "plainText",
-                "name": "纯文本"
+                "value": "download",
+                "name": "下载/读取内容"
+              },
+              {
+                "value": "list",
+                "name": "列目录"
+              },
+              {
+                "value": "query",
+                "name": "查询"
+              },
+              {
+                "value": "createDirectory",
+                "name": "新建目录"
+              },
+              {
+                "value": "deleteFile",
+                "name": "删除文件"
+              },
+              {
+                "value": "deleteDirectory",
+                "name": "删除目录"
+              },
+              {
+                "value": "moveFile",
+                "name": "移动/重命名文件"
+              },
+              {
+                "value": "copyFile",
+                "name": "复制文件"
+              },
+              {
+                "value": "batchRead",
+                "name": "批量读取内容"
+              },
+              {
+                "value": "batchDownload",
+                "name": "批量下载文件"
+              },
+              {
+                "value": "uploadFolder",
+                "name": "上传文件夹"
+              },
+              {
+                "value": "downloadFolder",
+                "name": "下载文件夹"
               }
             ]
           },
-          "screenPlacement": {
-            "name": "屏幕位置",
+          "uploadSource": {
+            "name": "上传内容",
             "items": [
               {
-                "value": "manual",
-                "name": "自定义坐标"
+                "value": "file",
+                "name": "本地文件"
               },
               {
-                "value": "center",
-                "name": "屏幕中间"
+                "value": "text",
+                "name": "文本"
               },
               {
-                "value": "topLeft",
-                "name": "屏幕左上"
+                "value": "bytes",
+                "name": "字节数组"
               },
               {
-                "value": "topCenter",
-                "name": "屏幕中上"
-              },
-              {
-                "value": "topRight",
-                "name": "屏幕右上"
-              },
-              {
-                "value": "leftCenter",
-                "name": "屏幕左中"
-              },
-              {
-                "value": "rightCenter",
-                "name": "屏幕右中"
-              },
-              {
-                "value": "bottomLeft",
-                "name": "屏幕左下"
-              },
-              {
-                "value": "bottomCenter",
-                "name": "屏幕中下"
-              },
-              {
-                "value": "bottomRight",
-                "name": "屏幕右下"
-              },
-              {
-                "value": "captureOrigin",
-                "name": "截图原位置"
-              },
-              {
-                "value": "auto",
-                "name": "自动"
+                "value": "image",
+                "name": "图片"
               }
             ]
           },
-          "theme": {
-            "name": "主题",
+          "batchContent": {
+            "name": "读取内容",
             "items": [
               {
-                "value": "auto",
-                "name": "自动（Auto）"
+                "value": "text",
+                "name": "文本"
               },
               {
-                "value": "light",
-                "name": "浅色"
-              },
-              {
-                "value": "dark",
-                "name": "深色"
+                "value": "bytes",
+                "name": "字节数组"
               }
             ]
           },
-          "formulaLayout": {
-            "name": "公式版式",
+          "downloadMode": {
+            "name": "下载方式",
             "items": [
               {
-                "value": "display",
-                "name": "独立公式"
+                "value": "file",
+                "name": "保存为本地文件"
               },
               {
-                "value": "inline",
-                "name": "行内公式"
+                "value": "text",
+                "name": "读取为文本"
+              },
+              {
+                "value": "bytes",
+                "name": "读取为字节数组"
+              },
+              {
+                "value": "image",
+                "name": "图片"
+              }
+            ]
+          },
+          "imageFormat": {
+            "name": "图片格式",
+            "items": [
+              {
+                "value": "png",
+                "name": "PNG"
+              },
+              {
+                "value": "jpeg",
+                "name": "JPEG"
+              }
+            ]
+          },
+          "existsPolicy": {
+            "name": "已存在时",
+            "items": [
+              {
+                "value": "fail",
+                "name": "失败"
+              },
+              {
+                "value": "skip",
+                "name": "跳过"
+              },
+              {
+                "value": "overwrite",
+                "name": "覆盖"
+              }
+            ]
+          },
+          "moveExistsPolicy": {
+            "name": "目标已存在时",
+            "items": [
+              {
+                "value": "fail",
+                "name": "失败"
+              },
+              {
+                "value": "overwrite",
+                "name": "覆盖"
+              }
+            ]
+          },
+          "listFilter": {
+            "name": "列出",
+            "items": [
+              {
+                "value": "all",
+                "name": "全部"
+              },
+              {
+                "value": "files",
+                "name": "只列文件"
+              },
+              {
+                "value": "directories",
+                "name": "只列目录"
               }
             ]
           }
@@ -496,8 +1341,8 @@
       }
     },
     {
-      "key": "sys:uiautomation",
-      "name": "窗口界面控制",
+      "key": "sys:getSysInfo",
+      "name": "获取系统或动作信息",
       "changedFields": [],
       "inputs": {
         "added": [],
@@ -505,601 +1350,18 @@
         "changed": []
       },
       "outputs": {
-        "added": [],
+        "added": [
+          {
+            "key": "actionDataDirectory",
+            "name": "动作数据文件夹",
+            "type": "Text",
+            "description": "当前动作的本机数据目录完整路径，不自动创建；不随动作同步或备份。"
+          }
+        ],
         "removed": [],
         "changed": []
       },
-      "selectionsChanged": true,
-      "selections": {
-        "before": {
-          "type": {
-            "name": "操作类型",
-            "items": [
-              {
-                "value": "TriggerMenu",
-                "name": "触发窗口菜单"
-              },
-              {
-                "value": "TriggerControl",
-                "name": "触发窗口控件"
-              },
-              {
-                "value": "GetControlInfo",
-                "name": "获取窗口控件信息"
-              },
-              {
-                "value": "GetCursorPointControlInfo",
-                "name": "获取鼠标指针位置控件信息"
-              },
-              {
-                "value": "GetFocusedControlInfo",
-                "name": "获取焦点控件信息"
-              },
-              {
-                "value": "GetControlInfoByPosition",
-                "name": "获取指定位置控件信息"
-              },
-              {
-                "value": "UpdateSaveAsDialogPath",
-                "name": "更新\"另存为\"或\"打开\"对话框的路径"
-              }
-            ]
-          },
-          "controlType": {
-            "name": "控件类型",
-            "items": [
-              {
-                "value": "0",
-                "name": "*任意类型*"
-              },
-              {
-                "value": "50000",
-                "name": "按钮"
-              },
-              {
-                "value": "50001",
-                "name": "日历"
-              },
-              {
-                "value": "50002",
-                "name": "复选框"
-              },
-              {
-                "value": "50003",
-                "name": "组合框"
-              },
-              {
-                "value": "50025",
-                "name": "自定义"
-              },
-              {
-                "value": "50028",
-                "name": "数据网格"
-              },
-              {
-                "value": "50029",
-                "name": "数据项"
-              },
-              {
-                "value": "50030",
-                "name": "文档"
-              },
-              {
-                "value": "50004",
-                "name": "编辑"
-              },
-              {
-                "value": "50026",
-                "name": "组"
-              },
-              {
-                "value": "50034",
-                "name": "标头"
-              },
-              {
-                "value": "50035",
-                "name": "标头项"
-              },
-              {
-                "value": "50005",
-                "name": "超链接"
-              },
-              {
-                "value": "50006",
-                "name": "图像"
-              },
-              {
-                "value": "50008",
-                "name": "列表视图"
-              },
-              {
-                "value": "50007",
-                "name": "列表项"
-              },
-              {
-                "value": "50009",
-                "name": "菜单"
-              },
-              {
-                "value": "50010",
-                "name": "菜单栏"
-              },
-              {
-                "value": "50011",
-                "name": "菜单项"
-              },
-              {
-                "value": "50033",
-                "name": "窗格"
-              },
-              {
-                "value": "50012",
-                "name": "进度栏"
-              },
-              {
-                "value": "50013",
-                "name": "单选按钮"
-              },
-              {
-                "value": "50014",
-                "name": "滚动条"
-              },
-              {
-                "value": "50038",
-                "name": "分隔符"
-              },
-              {
-                "value": "50015",
-                "name": "滑块"
-              },
-              {
-                "value": "50016",
-                "name": "微调框"
-              },
-              {
-                "value": "50031",
-                "name": "拆分按钮"
-              },
-              {
-                "value": "50017",
-                "name": "状态栏"
-              },
-              {
-                "value": "50018",
-                "name": "选项卡"
-              },
-              {
-                "value": "50019",
-                "name": "选项卡项"
-              },
-              {
-                "value": "50036",
-                "name": "表"
-              },
-              {
-                "value": "50020",
-                "name": "文本"
-              },
-              {
-                "value": "50027",
-                "name": "缩略"
-              },
-              {
-                "value": "50037",
-                "name": "标题栏"
-              },
-              {
-                "value": "50021",
-                "name": "工具栏"
-              },
-              {
-                "value": "50022",
-                "name": "工具提示"
-              },
-              {
-                "value": "50023",
-                "name": "树视图"
-              },
-              {
-                "value": "50024",
-                "name": "树视图项"
-              },
-              {
-                "value": "50032",
-                "name": "窗口"
-              }
-            ]
-          },
-          "controlOperation": {
-            "name": "动作",
-            "items": [
-              {
-                "value": "Auto",
-                "name": "自动"
-              },
-              {
-                "value": "Invoke",
-                "name": "调用（按钮、菜单项等）"
-              },
-              {
-                "value": "LeftClick",
-                "name": "鼠标左键单击"
-              },
-              {
-                "value": "MiddleClick",
-                "name": "鼠标中键单击"
-              },
-              {
-                "value": "RightClick",
-                "name": "鼠标右键单击"
-              },
-              {
-                "value": "LeftDoubleClick",
-                "name": "鼠标左键双击"
-              },
-              {
-                "value": "Select",
-                "name": "单选：选择（单选框、标签页等）"
-              },
-              {
-                "value": "AddToSelection",
-                "name": "多选：添加到多选（多选列表等）"
-              },
-              {
-                "value": "RemoveFromSelection",
-                "name": "多选：从多选中移除（多选列表）"
-              },
-              {
-                "value": "ToggleItemSelection",
-                "name": "多选：切换选中状态"
-              },
-              {
-                "value": "Expand",
-                "name": "展开折叠：展开（菜单等）"
-              },
-              {
-                "value": "Collapse",
-                "name": "展开折叠：折叠（菜单等）"
-              },
-              {
-                "value": "ToggleExpandCollapse",
-                "name": "展开折叠：切换展开折叠（菜单等）"
-              },
-              {
-                "value": "Toggle",
-                "name": "切换：切换（检查框等）"
-              },
-              {
-                "value": "ToggleOn",
-                "name": "切换：开（检查框等）"
-              },
-              {
-                "value": "ToggleOff",
-                "name": "切换：关（检查框等）"
-              },
-              {
-                "value": "SetValue",
-                "name": "设置值"
-              }
-            ]
-          },
-          "autoCreateDir": {
-            "name": "自动创建文件夹",
-            "items": [
-              {
-                "value": "no",
-                "name": "不自动创建"
-              },
-              {
-                "value": "auto",
-                "name": "自动创建：自动（根据后缀自动判断路径为文件还是文件夹路径）"
-              },
-              {
-                "value": "asFilePath",
-                "name": "自动创建：给定文件路径"
-              },
-              {
-                "value": "asFolderPath",
-                "name": "自动创建：给定文件夹路径"
-              }
-            ]
-          }
-        },
-        "after": {
-          "type": {
-            "name": "操作类型",
-            "items": [
-              {
-                "value": "TriggerMenu",
-                "name": "触发窗口菜单"
-              },
-              {
-                "value": "TriggerControl",
-                "name": "触发窗口控件"
-              },
-              {
-                "value": "GetControlInfo",
-                "name": "获取窗口控件信息"
-              },
-              {
-                "value": "GetCursorPointControlInfo",
-                "name": "获取鼠标指针位置控件信息"
-              },
-              {
-                "value": "GetFocusedControlInfo",
-                "name": "获取焦点控件信息"
-              },
-              {
-                "value": "GetControlInfoByPosition",
-                "name": "获取指定位置控件信息"
-              },
-              {
-                "value": "UpdateSaveAsDialogPath",
-                "name": "更新\"另存为\"或\"打开\"对话框的路径"
-              }
-            ]
-          },
-          "controlType": {
-            "name": "控件类型",
-            "items": [
-              {
-                "value": "0",
-                "name": "*任意类型*"
-              },
-              {
-                "value": "50000",
-                "name": "button"
-              },
-              {
-                "value": "50001",
-                "name": "calendar"
-              },
-              {
-                "value": "50002",
-                "name": "check box"
-              },
-              {
-                "value": "50003",
-                "name": "combo box"
-              },
-              {
-                "value": "50025",
-                "name": "custom"
-              },
-              {
-                "value": "50028",
-                "name": "datagrid"
-              },
-              {
-                "value": "50029",
-                "name": "dataitem"
-              },
-              {
-                "value": "50030",
-                "name": "document"
-              },
-              {
-                "value": "50004",
-                "name": "edit"
-              },
-              {
-                "value": "50026",
-                "name": "group"
-              },
-              {
-                "value": "50034",
-                "name": "header"
-              },
-              {
-                "value": "50035",
-                "name": "header item"
-              },
-              {
-                "value": "50005",
-                "name": "hyperlink"
-              },
-              {
-                "value": "50006",
-                "name": "image"
-              },
-              {
-                "value": "50008",
-                "name": "list view"
-              },
-              {
-                "value": "50007",
-                "name": "list item"
-              },
-              {
-                "value": "50009",
-                "name": "menu"
-              },
-              {
-                "value": "50010",
-                "name": "menu bar"
-              },
-              {
-                "value": "50011",
-                "name": "menu item"
-              },
-              {
-                "value": "50033",
-                "name": "pane"
-              },
-              {
-                "value": "50012",
-                "name": "progress bar"
-              },
-              {
-                "value": "50013",
-                "name": "radio button"
-              },
-              {
-                "value": "50014",
-                "name": "scroll bar"
-              },
-              {
-                "value": "50038",
-                "name": "separator"
-              },
-              {
-                "value": "50015",
-                "name": "slider"
-              },
-              {
-                "value": "50016",
-                "name": "spinner"
-              },
-              {
-                "value": "50031",
-                "name": "split button"
-              },
-              {
-                "value": "50017",
-                "name": "status bar"
-              },
-              {
-                "value": "50018",
-                "name": "tab"
-              },
-              {
-                "value": "50019",
-                "name": "tab item"
-              },
-              {
-                "value": "50036",
-                "name": "table"
-              },
-              {
-                "value": "50020",
-                "name": "text"
-              },
-              {
-                "value": "50027",
-                "name": "thumb"
-              },
-              {
-                "value": "50037",
-                "name": "title bar"
-              },
-              {
-                "value": "50021",
-                "name": "tool bar"
-              },
-              {
-                "value": "50022",
-                "name": "tool tip"
-              },
-              {
-                "value": "50023",
-                "name": "tree view"
-              },
-              {
-                "value": "50024",
-                "name": "tree view item"
-              },
-              {
-                "value": "50032",
-                "name": "window"
-              }
-            ]
-          },
-          "controlOperation": {
-            "name": "动作",
-            "items": [
-              {
-                "value": "Auto",
-                "name": "自动"
-              },
-              {
-                "value": "Invoke",
-                "name": "调用（按钮、菜单项等）"
-              },
-              {
-                "value": "LeftClick",
-                "name": "鼠标左键单击"
-              },
-              {
-                "value": "MiddleClick",
-                "name": "鼠标中键单击"
-              },
-              {
-                "value": "RightClick",
-                "name": "鼠标右键单击"
-              },
-              {
-                "value": "LeftDoubleClick",
-                "name": "鼠标左键双击"
-              },
-              {
-                "value": "Select",
-                "name": "单选：选择（单选框、标签页等）"
-              },
-              {
-                "value": "AddToSelection",
-                "name": "多选：添加到多选（多选列表等）"
-              },
-              {
-                "value": "RemoveFromSelection",
-                "name": "多选：从多选中移除（多选列表）"
-              },
-              {
-                "value": "ToggleItemSelection",
-                "name": "多选：切换选中状态"
-              },
-              {
-                "value": "Expand",
-                "name": "展开折叠：展开（菜单等）"
-              },
-              {
-                "value": "Collapse",
-                "name": "展开折叠：折叠（菜单等）"
-              },
-              {
-                "value": "ToggleExpandCollapse",
-                "name": "展开折叠：切换展开折叠（菜单等）"
-              },
-              {
-                "value": "Toggle",
-                "name": "切换：切换（检查框等）"
-              },
-              {
-                "value": "ToggleOn",
-                "name": "切换：开（检查框等）"
-              },
-              {
-                "value": "ToggleOff",
-                "name": "切换：关（检查框等）"
-              },
-              {
-                "value": "SetValue",
-                "name": "设置值"
-              }
-            ]
-          },
-          "autoCreateDir": {
-            "name": "自动创建文件夹",
-            "items": [
-              {
-                "value": "no",
-                "name": "不自动创建"
-              },
-              {
-                "value": "auto",
-                "name": "自动创建：自动（根据后缀自动判断路径为文件还是文件夹路径）"
-              },
-              {
-                "value": "asFilePath",
-                "name": "自动创建：给定文件路径"
-              },
-              {
-                "value": "asFolderPath",
-                "name": "自动创建：给定文件夹路径"
-              }
-            ]
-          }
-        }
-      }
+      "selectionsChanged": false
     }
   ]
 }

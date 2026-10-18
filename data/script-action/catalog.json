@@ -1,8 +1,8 @@
 {
   "schemaVersion": 1,
-  "sourceCommit": "fef5d1faaa616a03b7257ceca19b66fff40718b4",
-  "productVersion": "2.3.0+Branch.codex-script-docs.Sha.fef5d1faaa616a03b7257ceca19b66fff40718b4",
-  "assemblySha256": "c8a29101a60535d341ac79d354417c09fbe24fcd72b2d13851dc817da0b357b6",
+  "sourceCommit": "d1f1bf2fbc8d0199261f8db113b5b34aed189bb9",
+  "productVersion": "2.3.13+Branch.dev-v2.Sha.d1f1bf2fbc8d0199261f8db113b5b34aed189bb9",
+  "assemblySha256": "616d1d5ac3fb64d3b8998301c5cadf0aa6aefa7715a2c74f807d30c0b4b0e774",
   "apiVersion": 1,
   "domains": [
     {
@@ -3654,6 +3654,16 @@
             }
           ],
           "capability": "FileRead",
+          "cleanup": false
+        },
+        {
+          "key": "Files.GetActionDataDirectory",
+          "name": "GetActionDataDirectory",
+          "signature": "string GetActionDataDirectory()",
+          "returns": "string",
+          "description": "当前动作的本机持久数据目录（完整路径，不自动创建）；子程序使用调用方目录。首次写入前 CreateDirectory；取路径不需授权，读写仍需文件能力。不随动作同步或备份；删除动作时可选移入 Windows 回收站。",
+          "parameters": [],
+          "capability": "None",
           "cleanup": false
         },
         {

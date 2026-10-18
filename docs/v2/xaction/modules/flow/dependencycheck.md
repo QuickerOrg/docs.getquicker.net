@@ -23,9 +23,13 @@ legacyContentUpdatedAt: "2022-08-09T02:54:40.000Z"
 
 ## 概述
 
-依赖包下载后会自动解压到：
+2.3.13 起，新下载的依赖包自动解压到：
 
-`我的文档\Quicker\_packages\依赖包名\版本号`
+`%LOCALAPPDATA%\Quicker\packages\依赖包名\版本号`
+
+仍会读取旧位置 `我的文档\Quicker\_packages\依赖包名\版本号` 中符合版本要求的包，不会自动搬迁或清理旧包；相同版本优先使用新位置。旧版仍使用旧位置，必要时会重新下载。
+
+后续步骤始终使用 **依赖包路径** 输出，不要硬编码新旧根目录。本目录是共享依赖包位置，与每个动作的[动作数据文件夹](/v2/xaction/concepts/standard#动作数据文件夹)用途不同。
 
 ![](./img/dependencycheck-001-33ceddde5f.png)
 

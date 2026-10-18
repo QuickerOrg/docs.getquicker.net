@@ -185,6 +185,12 @@
       "name": "Quicker是否暂停",
       "type": "Boolean",
       "description": "Quicker是否处于暂停状态。true表示已暂停，false表示正常运行。"
+    },
+    {
+      "key": "actionDataDirectory",
+      "name": "动作数据文件夹",
+      "type": "Text",
+      "description": "当前动作的本机数据目录完整路径，不自动创建；不随动作同步或备份。"
     }
   ],
   "sourceFileName": "catalog.json"

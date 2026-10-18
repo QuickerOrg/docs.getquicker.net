@@ -53,6 +53,7 @@
           "query",
           "createDirectory",
           "deleteFile",
+          "deleteDirectory",
           "moveFile",
           "copyFile",
           "batchDownload",
@@ -60,7 +61,7 @@
           "downloadFolder"
         ]
       },
-      "condition": "operation 为 \"upload\"、\"download\"、\"list\"、\"query\"、\"createDirectory\"、\"deleteFile\"、\"moveFile\"、\"copyFile\"、\"batchDownload\"、\"uploadFolder\"、\"downloadFolder\"",
+      "condition": "operation 为 \"upload\"、\"download\"、\"list\"、\"query\"、\"createDirectory\"、\"deleteFile\"、\"deleteDirectory\"、\"moveFile\"、\"copyFile\"、\"batchDownload\"、\"uploadFolder\"、\"downloadFolder\"",
       "defaultValue": "",
       "required": true,
       "variableMode": "UseVarOrInput"
@@ -414,6 +415,19 @@
         "list"
       ],
       "condition": "仅：list",
+      "defaultValue": "false",
+      "defaultValueRaw": false,
+      "variableMode": "UseVarOrInput"
+    },
+    {
+      "key": "recursiveDelete",
+      "name": "递归删除",
+      "type": "Boolean",
+      "description": "关闭时只删除空目录；开启后删除目标目录及全部文件、子目录。禁止删除账号根目录。删除失败或取消时可能已删除部分内容。WebDAV 空目录检查与删除之间的并发写入仍可能被删除。S3 不删除历史版本。",
+      "validForList": [
+        "deleteDirectory"
+      ],
+      "condition": "仅：deleteDirectory",
       "defaultValue": "false",
       "defaultValueRaw": false,
       "variableMode": "UseVarOrInput"
@@ -832,6 +846,10 @@
         {
           "value": "deleteFile",
           "name": "删除文件"
+        },
+        {
+          "value": "deleteDirectory",
+          "name": "删除目录"
         },
         {
           "value": "moveFile",

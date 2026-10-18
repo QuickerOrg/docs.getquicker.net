@@ -21,6 +21,8 @@ Win11 自带运行时。其它系统可到 [WebView2 下载页](https://develope
 
 ## 当前模块定义
 
+2.3.13 起，浏览器用户数据目录在首次使用时迁入 `%LOCALAPPDATA%\Quicker\browser-data`，保留旧副本；已迁移目录后续使用新位置。新旧副本的登录状态不再互相更新，回退和清理前请看[动作文件与浏览器数据](/v2/migration/upgrade-and-rollback#2313--动作文件与浏览器数据)。
+
 <XActionModuleMeta moduleKey="sys:webview2" />
 
 ## 概述

@@ -65,7 +65,7 @@
     },
     {
       "key": "toClip",
-      "name": "写入剪贴板",
+      "name": "确认后复制图片",
       "type": "Boolean",
       "description": "确认截图后写入剪贴板；“框选即出图”在框选完成后写入。其他工具栏出口不触发。",
       "validForList": [
@@ -80,7 +80,7 @@
     },
     {
       "key": "pinImage",
-      "name": "截图后贴图",
+      "name": "确认后贴图",
       "type": "Boolean",
       "description": "确认截图后贴到原位置；“框选即出图”在框选完成后贴图。其他工具栏出口不触发。",
       "validForList": [
@@ -135,6 +135,15 @@
       "variableMode": "UseVarOrInput"
     },
     {
+      "key": "includeCursor",
+      "name": "包含鼠标指针",
+      "type": "Enum",
+      "description": "本次初始值；跟随设置保持旧动作行为，不修改全局偏好。交互时仍可临时切换。",
+      "isAdvanced": true,
+      "defaultValue": "inherit",
+      "variableMode": "UseVarOrInput"
+    },
+    {
       "key": "stopIfFail",
       "name": "失败后停止",
       "type": "Boolean",
@@ -145,9 +154,9 @@
     },
     {
       "key": "saveDirectory",
-      "name": "保存目录",
+      "name": "确认快存目录",
       "type": "Text",
-      "description": "留空用全局目录，只改本次。",
+      "description": "留空用全局目录，只改确认快存。工具栏另存为使用其独立选择的路径。",
       "isAdvanced": true,
       "validForList": [
         "quick_save"
@@ -155,9 +164,40 @@
       "condition": "仅：quick_save",
       "defaultValue": "",
       "variableMode": "UseVarOrInput"
+    },
+    {
+      "key": "saveNameTemplate",
+      "name": "文件名模板",
+      "type": "Text",
+      "description": "留空继承全局；支持 {date}、{date:格式}、{time}、{width}、{height}。只改确认快存，重名自动加序号。",
+      "isAdvanced": true,
+      "validForList": [
+        "quick_save"
+      ],
+      "condition": "仅：quick_save",
+      "defaultValue": "",
+      "variableMode": "UseVarOrInput"
+    },
+    {
+      "key": "saveFormat",
+      "name": "保存格式",
+      "type": "Enum",
+      "isAdvanced": true,
+      "validForList": [
+        "quick_save"
+      ],
+      "condition": "仅：quick_save",
+      "defaultValue": "inherit",
+      "variableMode": "UseVarOrInput"
     }
   ],
   "outputs": [
+    {
+      "key": "endKind",
+      "name": "结束方式",
+      "type": "Text",
+      "description": "实际出口：confirmed/saved/copied/pinned/ocr 等；失败或取消为空。仅成功时读取图片等结果，确认后的复制/贴图不改变出口名。"
+    },
     {
       "key": "isSuccess",
       "name": "是否成功",
@@ -238,6 +278,40 @@
         {
           "value": "quick_save",
           "name": "快速保存"
+        }
+      ]
+    },
+    "includeCursor": {
+      "name": "包含鼠标指针",
+      "items": [
+        {
+          "value": "inherit",
+          "name": "跟随设置"
+        },
+        {
+          "value": "include",
+          "name": "包含"
+        },
+        {
+          "value": "exclude",
+          "name": "不包含"
+        }
+      ]
+    },
+    "saveFormat": {
+      "name": "保存格式",
+      "items": [
+        {
+          "value": "inherit",
+          "name": "跟随设置"
+        },
+        {
+          "value": "png",
+          "name": "PNG"
+        },
+        {
+          "value": "jpeg",
+          "name": "JPEG"
         }
       ]
     }

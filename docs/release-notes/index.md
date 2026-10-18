@@ -28,9 +28,18 @@ comments: true
 
 多设备使用、降级或回退前，请阅读[升级与回退](/v2/migration/upgrade-and-rollback)。各版本的具体风险也在下方对应条目中标出。
 
-本站已补充到 2.3.9 发布快照；该版本已完成构建与上传，是否启用及开放下载以官网为准。
+本站已补充到 **2.3.13**；版本下载与完整修复记录以官网为准。
 
 ## 近期文档补充
+
+### 2.3.13 · 动作数据目录、桌面 AI 与存储调整
+
+- [动作数据文件夹](/v2/xaction/concepts/standard#动作数据文件夹)：说明设计目的、组合动作与脚本入口、创建目录、适用场景、分享和备份边界，以及删除时回收和手动恢复。补充[获取系统或动作信息](/v2/xaction/modules/getsysinfo)的新输出。（[#594](https://github.com/QuickerOrg/Quicker2-issues/issues/594)）
+- [截图 Pro 单次参数与结束方式](/v2/xaction/modules/screen-capture-pro#2313--单次截图参数与结束方式)：本次鼠标指针、确认快存模板和 PNG/JPEG 格式，按实际出口处理后续步骤；[自定义工具栏](/v2/features/screenshot/toolbar-script)改用独立编辑窗口，并修复图片图标黑块。
+- [桌面 AI 与 MCP 接入](/v2/features/ai-and-agent#2313--桌面入口与-mcp-接入)：统一桌面预览、编辑和分享确认，说明当前会话输入历史及回复保存重试；MCP 提供 AI 自动配置、HTTP 和 stdio 三种接入指引。桌面网页版 AI、网页设计器和手机 AI 已退役，已有桌面对话保留。
+- [检查和下载依赖](/v2/xaction/modules/dependencycheck)：新包写入应用数据目录，继续识别旧包，后续步骤应使用实际输出路径。[清理旧浏览器数据副本](/v2/features/tools#清理旧浏览器数据副本)说明浏览器按目录迁移后的清理入口与限制。
+- [升级与回退](/v2/migration/upgrade-and-rollback#2313--动作文件与浏览器数据)：动作文件不包含在内置备份中；浏览器新旧副本独立变化，回退前需手动备份，清理旧副本不经过回收站。
+- 修复远程文件账号候选列表刷新、AutoCAD 连接依赖加载、带引号匿名成员名称的表达式兼容，以及部分输入、焦点和快捷键异常，并缩小安装包。完整条目见[官网版本记录](https://getquicker.net/V2/Versions)。
 
 ### 2.3.9 · AI 动作编写、截图撕边与录屏操作
 

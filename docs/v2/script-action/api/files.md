@@ -6,6 +6,8 @@ comments: false
 sidebar_position: 10
 ---
 
+2.3.13 起，可用 `qk.Files.GetActionDataDirectory()` 获取当前动作的本机持久数据目录。存放建议、首次创建、分享备份和删除恢复见[动作数据文件夹](/v2/xaction/concepts/standard#动作数据文件夹)。它与运行结束后自动清理的 `GetRunTempDirectory()` 用途不同。
+
 {/* script-api:start */}
 
 本机文件与文件夹（读写、复制、压缩、搜索）以及资源管理器当前文件夹；用关联程序打开文件见 qk.Process.Open。文本默认严格 UTF-8（BOM 优先）；ReadBytes/ReadText/WriteBytes/WriteText/AppendText 单次最多 16 MiB（Copy/Move/Zip/Unzip/Hash 不受此限）；覆盖/递归默认关闭；删除不进回收站；临时文件建议放在 GetRunTempDirectory()。WriteText/AppendText 从不写 BOM（"utf-8-bom" 不是编码名）；给 Excel 打开的 UTF-8 CSV 请写 "\uFEFF" + 文本（或先用 WriteBytes 写 EF BB BF）；AppendText 在文件不存在时创建。常见错误码：FILE_NOT_FOUND、ACCESS_DENIED、FILE_FAILED（目标已存在、被占用等）、LIMIT_EXCEEDED。
@@ -27,6 +29,20 @@ string GetFullPath(string path)
 返回类型：`string`。空值、用户取消和异常行为以成员及域说明为准。
 
 基础能力：读取文件。某些参数或数据来源会追加能力，详见[安全与授权](../security.md)。
+
+<a id="files-getactiondatadirectory" />
+
+## Files.GetActionDataDirectory
+
+```csharp
+string GetActionDataDirectory()
+```
+
+当前动作的本机持久数据目录（完整路径，不自动创建）；子程序使用调用方目录。首次写入前 CreateDirectory；取路径不需授权，读写仍需文件能力。不随动作同步或备份；删除动作时可选移入 Windows 回收站。
+
+返回类型：`string`。空值、用户取消和异常行为以成员及域说明为准。
+
+基础能力：无基础能力授权要求。某些参数或数据来源会追加能力，详见[安全与授权](../security.md)。
 
 <a id="files-getruntempdirectory" />
 

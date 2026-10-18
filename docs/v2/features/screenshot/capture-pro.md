@@ -12,6 +12,8 @@ comments: true
 
 在组合动作中，对应步骤为 **截图 Pro**（步骤 Key：`sys:screenCapturePro`）。
 
+2.3.13 起，步骤可单次指定鼠标指针、确认快存文件名模板和 PNG/JPEG 格式，并输出实际结束方式。用法见[单次截图参数与结束方式](/v2/xaction/modules/screen-capture-pro#2313--单次截图参数与结束方式)。
+
 ## 快速开始
 
 ### 作为动作步骤

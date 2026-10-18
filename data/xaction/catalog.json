@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-10-10 06:06:14",
+  "generatedAt": "2026-10-17 20:02:51",
   "moduleCount": 175,
   "legacyMappedModuleCount": 0,
   "migratedLegacyModuleCount": 0,
@@ -4351,7 +4351,7 @@
             },
             {
               "value": "default",
-              "name": "系统默认(windows-1252)"
+              "name": "系统默认(gb2312)"
             }
           ]
         },
@@ -4606,7 +4606,7 @@
             },
             {
               "value": "default",
-              "name": "系统默认(windows-1252)"
+              "name": "系统默认(gb2312)"
             }
           ]
         }
@@ -7421,7 +7421,7 @@
             },
             {
               "value": "default",
-              "name": "系统默认(windows-1252)"
+              "name": "系统默认(gb2312)"
             },
             {
               "value": "auto",
@@ -8515,7 +8515,7 @@
             },
             {
               "value": "default",
-              "name": "系统默认(windows-1252)"
+              "name": "系统默认(gb2312)"
             }
           ]
         },
@@ -12108,7 +12108,7 @@
         },
         {
           "key": "toClip",
-          "name": "写入剪贴板",
+          "name": "确认后复制图片",
           "type": "Boolean",
           "description": "确认截图后写入剪贴板；“框选即出图”在框选完成后写入。其他工具栏出口不触发。",
           "validForList": [
@@ -12123,7 +12123,7 @@
         },
         {
           "key": "pinImage",
-          "name": "截图后贴图",
+          "name": "确认后贴图",
           "type": "Boolean",
           "description": "确认截图后贴到原位置；“框选即出图”在框选完成后贴图。其他工具栏出口不触发。",
           "validForList": [
@@ -12178,6 +12178,15 @@
           "variableMode": "UseVarOrInput"
         },
         {
+          "key": "includeCursor",
+          "name": "包含鼠标指针",
+          "type": "Enum",
+          "description": "本次初始值；跟随设置保持旧动作行为，不修改全局偏好。交互时仍可临时切换。",
+          "isAdvanced": true,
+          "defaultValue": "inherit",
+          "variableMode": "UseVarOrInput"
+        },
+        {
           "key": "stopIfFail",
           "name": "失败后停止",
           "type": "Boolean",
@@ -12188,9 +12197,9 @@
         },
         {
           "key": "saveDirectory",
-          "name": "保存目录",
+          "name": "确认快存目录",
           "type": "Text",
-          "description": "留空用全局目录，只改本次。",
+          "description": "留空用全局目录，只改确认快存。工具栏另存为使用其独立选择的路径。",
           "isAdvanced": true,
           "validForList": [
             "quick_save"
@@ -12198,9 +12207,40 @@
           "condition": "仅：quick_save",
           "defaultValue": "",
           "variableMode": "UseVarOrInput"
+        },
+        {
+          "key": "saveNameTemplate",
+          "name": "文件名模板",
+          "type": "Text",
+          "description": "留空继承全局；支持 {date}、{date:格式}、{time}、{width}、{height}。只改确认快存，重名自动加序号。",
+          "isAdvanced": true,
+          "validForList": [
+            "quick_save"
+          ],
+          "condition": "仅：quick_save",
+          "defaultValue": "",
+          "variableMode": "UseVarOrInput"
+        },
+        {
+          "key": "saveFormat",
+          "name": "保存格式",
+          "type": "Enum",
+          "isAdvanced": true,
+          "validForList": [
+            "quick_save"
+          ],
+          "condition": "仅：quick_save",
+          "defaultValue": "inherit",
+          "variableMode": "UseVarOrInput"
         }
       ],
       "outputs": [
+        {
+          "key": "endKind",
+          "name": "结束方式",
+          "type": "Text",
+          "description": "实际出口：confirmed/saved/copied/pinned/ocr 等；失败或取消为空。仅成功时读取图片等结果，确认后的复制/贴图不改变出口名。"
+        },
         {
           "key": "isSuccess",
           "name": "是否成功",
@@ -12281,6 +12321,40 @@
             {
               "value": "quick_save",
               "name": "快速保存"
+            }
+          ]
+        },
+        "includeCursor": {
+          "name": "包含鼠标指针",
+          "items": [
+            {
+              "value": "inherit",
+              "name": "跟随设置"
+            },
+            {
+              "value": "include",
+              "name": "包含"
+            },
+            {
+              "value": "exclude",
+              "name": "不包含"
+            }
+          ]
+        },
+        "saveFormat": {
+          "name": "保存格式",
+          "items": [
+            {
+              "value": "inherit",
+              "name": "跟随设置"
+            },
+            {
+              "value": "png",
+              "name": "PNG"
+            },
+            {
+              "value": "jpeg",
+              "name": "JPEG"
             }
           ]
         }
@@ -16514,6 +16588,7 @@
               "query",
               "createDirectory",
               "deleteFile",
+              "deleteDirectory",
               "moveFile",
               "copyFile",
               "batchDownload",
@@ -16521,7 +16596,7 @@
               "downloadFolder"
             ]
           },
-          "condition": "operation 为 \"upload\"、\"download\"、\"list\"、\"query\"、\"createDirectory\"、\"deleteFile\"、\"moveFile\"、\"copyFile\"、\"batchDownload\"、\"uploadFolder\"、\"downloadFolder\"",
+          "condition": "operation 为 \"upload\"、\"download\"、\"list\"、\"query\"、\"createDirectory\"、\"deleteFile\"、\"deleteDirectory\"、\"moveFile\"、\"copyFile\"、\"batchDownload\"、\"uploadFolder\"、\"downloadFolder\"",
           "defaultValue": "",
           "required": true,
           "variableMode": "UseVarOrInput"
@@ -16875,6 +16950,19 @@
             "list"
           ],
           "condition": "仅：list",
+          "defaultValue": "false",
+          "defaultValueRaw": false,
+          "variableMode": "UseVarOrInput"
+        },
+        {
+          "key": "recursiveDelete",
+          "name": "递归删除",
+          "type": "Boolean",
+          "description": "关闭时只删除空目录；开启后删除目标目录及全部文件、子目录。禁止删除账号根目录。删除失败或取消时可能已删除部分内容。WebDAV 空目录检查与删除之间的并发写入仍可能被删除。S3 不删除历史版本。",
+          "validForList": [
+            "deleteDirectory"
+          ],
+          "condition": "仅：deleteDirectory",
           "defaultValue": "false",
           "defaultValueRaw": false,
           "variableMode": "UseVarOrInput"
@@ -17293,6 +17381,10 @@
             {
               "value": "deleteFile",
               "name": "删除文件"
+            },
+            {
+              "value": "deleteDirectory",
+              "name": "删除目录"
             },
             {
               "value": "moveFile",
@@ -37693,6 +37785,12 @@
           "name": "Quicker是否暂停",
           "type": "Boolean",
           "description": "Quicker是否处于暂停状态。true表示已暂停，false表示正常运行。"
+        },
+        {
+          "key": "actionDataDirectory",
+          "name": "动作数据文件夹",
+          "type": "Text",
+          "description": "当前动作的本机数据目录完整路径，不自动创建；不随动作同步或备份。"
         }
       ],
       "sourceFileName": "catalog.json"

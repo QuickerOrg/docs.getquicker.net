@@ -32,6 +32,14 @@ comments: true
 
 ## 近期文档补充
 
+### 2.3.18 · 截图多选、工作台做事与表达式兼容
+
+- [截图确认与外观记忆](/v2/features/screenshot/capture-pro#capture-confirm-actions)：确认后组合执行复制、自动保存、贴图和运行动作；图钉复制与各项外观记忆分别控制。[识字浮层](/v2/features/screenshot/capture-pro#open-full-ocr)可带着已编辑文字打开完整 OCR 窗口。
+- [让工作台直接帮忙做事](/v2/features/ai-and-agent#desktop-tasks-2318)：查找本机文件和程序、执行一次性操作，说明目标窗口、批准和自定义 MCP 写入方式。
+- [悬浮缩放](/v2/features/floating-actions#调整按钮大小)与[侧栏拖放](/v2/features/action-panel/usage#sidebar-shortcut-drag)：拖动右下角缩放悬浮按钮或整组，在面板侧栏排序和放置动作；[文字图标](/v2/xaction/concepts/use-icon-in-actions#2317--编辑动作的文字图标)支持手动换行。
+- [升级与回退](/v2/migration/upgrade-and-rollback#capture-preferences-2318)：截图偏好回退后再次保存会丢失新版选项；旧表达式引擎已移除，直接调用其程序集的脚本需调整。同步修正排障和迁移页中已过时的开关指引。
+- 修复 DeepSeek 思考模式的历史回传、规则编辑重复、轮盘悬停展开、JSON 数值运算、截图阴影及面板留白等问题。完整版本说明见[官网版本记录](https://getquicker.net/V2/Versions)。
+
 ### 2.3.17 · 问问 AI、场景合并与截图
 
 - [问问 AI](/v2/features/ai-and-agent#2317--问问-ai-入口与文件操作)：从搜索、选中文本工具条及图片、文件菜单提问，在独立小窗继续对话；说明文件操作的确认与备份提示。

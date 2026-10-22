@@ -24,7 +24,7 @@ comments: true
 
 ## 下载和安装
 
-1. 打开官网 V2 页：[https://getquicker.net/V2](https://getquicker.net/V2)，下载当前 2.0 安装包。
+1. 打开官网 V2 页：[https://getquicker.net/V2](https://getquicker.net/V2)，下载当前 V2 安装包。
 2. 按向导完成安装。若提示缺少 [.NET 10 桌面运行时](https://dotnet.microsoft.com/download/dotnet/10.0)，按提示安装后再打开 Quicker。
 3. 若 Windows SmartScreen 或浏览器拦截，先确认文件来自上述官网，再选择保留并继续。
 
@@ -35,7 +35,7 @@ comments: true
 ## 首次启动
 
 1. 启动 Quicker，按提示登录或使用本机离线账号。
-2. 默认用**鼠标中键**弹出面板。弹出方式在 **设置 → 基础设置 → 弹出面板**。
+2. 默认用**鼠标中键**弹出面板。需要调整时，打开 **设置 → 面板、搜索与悬浮 → 弹出方式**。
 3. 已登录账号若仍看到旧面板，按 [动作面板使用说明](/v2/features/action-panel/usage#启用新面板窗口) 切到新版主窗口。
 
 接着看 [开始使用](/v2/getting-started.md)。要从 1.x 迁数据，先完成 1.x 同步和备份，再安装 V2，步骤见 [从 V1 迁移](/v2/migration/from-v1.md)。

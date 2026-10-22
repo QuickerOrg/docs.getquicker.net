@@ -17,7 +17,7 @@ Bridge 是安装在第三方软件中的连接插件。Quicker 通过它读取�
 
 ```mermaid
 flowchart TD
-  A[Quicker 设置 → 软件连接] --> B[选择软件卡片 → 安装或管理 Bridge]
+  A[Quicker 设置 → 连接 → 软件连接] --> B[选择软件卡片 → 安装或管理 Bridge]
   B --> C[重启宿主并完成首次启用]
   C --> D[确认在线实例]
   D --> E[命令工具 → bridge.ping → 选择命令并立即调用]
@@ -25,12 +25,12 @@ flowchart TD
   F --> G[运行时按宿主能力选择目标]
 ```
 
-1. [安装、更新、修复与卸载](./install-and-manage.md)：在 **设置 → 软件连接** 的软件卡片中安装、更新、修复或卸载 Bridge。
+1. [安装、更新、修复与卸载](./install-and-manage.md)：在 **设置 → 连接 → 软件连接** 的软件卡片中安装、更新、修复或卸载 Bridge。
 2. [连接状态与命令工具](./command-tool.md)：设置页查看连接，工具选择实例并测试命令；软件卡片上的文档链接可打开对应指南。
 3. 选择下表中的软件指南和模块参考，创建可重复运行的动作。
 4. 遇到问题，从[通用排障](./troubleshooting.md)定位失败环节。
 
-WPS 使用官方网页管理，是上述普通安装路径的例外，目前正式分发仍处于预览。
+WPS 使用独立的[加载项管理页](https://getquicker.net/bridges/wps/publish.html)分别安装和管理文字、表格、演示三个加载项，不走上述普通 Bridge 文件安装流程。
 
 [模兔云](./software/motuyun.md) 则直接使用其在 SketchUp 中提供的本机服务，无需安装 Quicker Bridge；支持搜索插件命令、按插件名筛选和生成动作，目标窗口由模兔云分派。
 
@@ -38,12 +38,12 @@ WPS 使用官方网页管理，是上述普通安装路径的例外，目前正�
 
 2.2.9 起，设置页另有[软件连接总开关](./install-and-manage.md#软件连接总开关)：默认开启、仅本机生效；关闭后停止连接服务与后台探测，但不卸载已安装的 Bridge。
 
-## 软件连接分组里的其它入口
+## 连接分组里的其它入口
 
-2.2.18 起，**设置 → 软件连接** 分组还包含下列本机连接设置：
+当前 **设置 → 连接** 分组还包含下列本机连接设置：
 
 - **远程文件账号**：供组合动作中的远程文件步骤引用，用于通过 WebDAV 上传、下载、列出、查询、删除、移动文件并创建目录。账号信息只保存在本机，不随账号云同步、状态备份或动作导出迁移；换电脑或分享动作时，需要在目标电脑重新配置相同的账号引用名。步骤参数以客户端为准，当前文档站不单独维护模块页。
-- **HTTP / WebSocket 服务**：用于让脚本、快捷指令或局域网设备调用这台电脑上的 Quicker。2.2.18 起入口移入软件连接分组，原有端口、令牌、验证码和访问范围配置会保留；具体设置见 [HTTP 与 WebSocket 服务](../http-websocket.md)。
+- **HTTP / WebSocket 服务**：用于让脚本、快捷指令或局域网设备调用这台电脑上的 Quicker；具体设置见 [HTTP 与 WebSocket 服务](../http-websocket.md)。
 
 ## 支持的软件
 
@@ -68,11 +68,9 @@ WPS 使用官方网页管理，是上述普通安装路径的例外，目前正�
 | SketchUp | 建筑与三维 | 已有安装与连接验证记录 | 设置页软件卡片 | 前台进程精确路由 | [SketchUp控制](/v2/xaction/modules/sketchupcontrol) | [查看指南](./software/sketchup.md) |
 | 模兔云 | SketchUp 插件命令 | 已有设置页入口 | 模兔云卡片（不安装 Bridge） | 由模兔云分派 | 模兔云控制 | [查看指南](./software/motuyun.md) |
 | SOLIDWORKS | 机械 CAD | 已有安装与连接验证记录 | 设置页软件卡片 | 前台进程精确路由 | [SOLIDWORKS控制](/v2/xaction/modules/solidworkscontrol) | [查看指南](./software/solidworks.md) |
-| WPS Office | 办公 | 预览／分发闭环未完成 | 官方管理页（预览） | 前台窗口 + WPS 组件 | [WPS Office控制](/v2/xaction/modules/wpscontrol) | [查看指南](./software/wps-office.md) |
+| WPS Office | 办公 | 已提供安装与连接入口 | [加载项管理页](https://getquicker.net/bridges/wps/publish.html) | 前台窗口 + WPS 组件 | [WPS Office控制](/v2/xaction/modules/wpscontrol) | [查看指南](./software/wps-office.md) |
 
-:::caution[WPS 正式分发仍未完成闭环]
-WPS 已有 JSA 加载、回连与命令目录验证，但正式管理页的安装、更新、卸载仍待真机闭环。请先阅读 [WPS 预览说明](./software/wps-office.md)，不要把已有页面或安装器入口等同于正式可用。
-:::
+WPS 的三个加载项需要分别安装和启用；具体步骤见 [WPS Office 指南](./software/wps-office.md)。
 
 ## 工具选中的实例会保存在动作里吗？
 

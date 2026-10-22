@@ -1,6 +1,8 @@
 const fs = require('node:fs');
 const path = require('node:path');
 const crypto = require('node:crypto');
+const {createRequire} = require('node:module');
+const {pathToFileURL} = require('node:url');
 const ts = require('typescript');
 const {
   aliasedSitePathToRelativePath,
@@ -11,6 +13,21 @@ const {
 
 const hash = (value) => crypto.createHash('sha256').update(value).digest('hex');
 const host = 'https://docs.getquicker.net';
+let headingProcessor;
+let headingToString;
+let markdownReady;
+const mdxRequire = createRequire(require.resolve('@docusaurus/mdx-loader'));
+
+function prepareMarkdown() {
+  // 使用与 Docusaurus 相同的 Markdown AST 文本语义，保留代码标识符，排除链接地址。
+  return markdownReady ??= Promise.all([
+    import(pathToFileURL(mdxRequire.resolve('@mdx-js/mdx')).href),
+    import(pathToFileURL(mdxRequire.resolve('mdast-util-to-string')).href),
+  ]).then(([{createProcessor}, {toString}]) => {
+    headingProcessor = createProcessor({format: 'md'});
+    headingToString = toString;
+  });
+}
 
 function moduleDefinitions(siteDir) {
   const dir = path.join(siteDir, 'data', 'xaction', 'modules');
@@ -184,6 +201,7 @@ function expandKnownComponents(markdown, siteDir, diagnostics, source) {
 }
 
 function splitSections(markdown, baseUrl) {
+  if (!headingProcessor) throw new Error('章节解析器尚未初始化');
   const slugger = createSlugger();
   const sections = [];
   let title = '正文';
@@ -198,12 +216,14 @@ function splitSections(markdown, baseUrl) {
   };
   for (const line of markdown.split(/\r?\n/)) {
     if (/^\s*(```|~~~)/.test(line)) fenced = !fenced;
-    const heading = !fenced && line.match(/^(#{1,6})\s+(.+?)\s*$/);
+    const heading = !fenced && line.match(/^(#{1,6})[ \t]+(.*)$/);
     if (heading) {
       flush();
       // MDX 使用注释形式的显式 ID；支持中文锚点，与文档站生成的链接保持一致。
       const explicit = heading[2].match(/\s*\{(?:\/\*\s*#([^\s}]+)\s*\*\/|#([^\s}]+))\}\s*$/);
-      title = (explicit ? heading[2].slice(0, explicit.index) : heading[2]).replace(/[`*_]/g, '').trim();
+      const node = headingProcessor.parse(`# ${explicit ? heading[2].slice(0, explicit.index) : heading[2]}`).children[0];
+      const textNodes = node.children.filter(({type}) => !['html', 'jsx'].includes(type));
+      title = headingToString(textNodes.length ? textNodes : node);
       id = explicit?.[1] ?? explicit?.[2] ?? slugger.slug(title);
       // Docusaurus 将一级标题作为页头渲染，不生成可跳转的标题 ID。
       sectionUrl = heading[1].length === 1 ? baseUrl : `${baseUrl}#${id}`;
@@ -306,6 +326,7 @@ module.exports = function docsServiceExport(context) {
   return {
     name: 'docs-service-export',
     async allContentLoaded({allContent}) {
+      await prepareMarkdown();
       const content = allContent['docusaurus-plugin-content-docs'];
       const definitions = moduleDefinitions(context.siteDir);
       const diagnostics = [];
@@ -417,3 +438,4 @@ module.exports.splitSections = splitSections;
 module.exports.enrichArticle = enrichArticle;
 module.exports.moduleMarkdown = moduleMarkdown;
 module.exports.expandKnownComponents = expandKnownComponents;
+module.exports.prepareMarkdown = prepareMarkdown;

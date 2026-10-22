@@ -3,7 +3,20 @@ const assert = require('node:assert/strict');
 const fs = require('node:fs');
 const os = require('node:os');
 const path = require('node:path');
-const {splitSections, moduleMarkdown, expandKnownComponents, enrichArticle} = require('./index');
+const {splitSections, moduleMarkdown, expandKnownComponents, enrichArticle, prepareMarkdown} = require('./index');
+
+test.before(prepareMarkdown);
+
+test('标题锚点保留代码下划线，只包含链接可见文字并处理结束标记', () => {
+  const sections = splitSections('## `_context`：动作上下文\n说明\n' +
+    '## 与[插值](/v2/xaction/concepts/interpolation)方式的比较\n说明\n' +
+    '## 0x800401E3 / 0x800401E1 (MK_E_UNAVAILABLE)\n说明\n' +
+    '## **加粗标题** ##\n说明', 'https://docs.getquicker.net/a');
+  assert.equal(sections[0].id, '_context动作上下文');
+  assert.equal(sections[1].id, '与插值方式的比较');
+  assert.equal(sections[2].id, '0x800401e3--0x800401e1-mk_e_unavailable');
+  assert.equal(sections[3].id, '加粗标题');
+});
 
 test('摘要摘录原文并记录章节哈希，代码与组件不进入摘要', () => {
   const markdown = '# 屏幕找图\n\n在屏幕上查找目标图片，返回匹配点坐标。\n\n' +

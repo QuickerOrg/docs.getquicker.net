@@ -79,8 +79,12 @@ export function check() {
     for (const value of Object.values(example[0].inputs)) assert.ok(body.includes(value), `正文缺少示例值 ${value}`);
     if (bridge.connectionId === 'wps') {
       assert.equal(bridge.componentId, null);
-      assert.ok(guide.includes('预览') && guide.includes('尚未完成真机闭环'));
-      assert.ok(body.includes('预览') && body.includes('仍待真机验证'));
+      // 发布状态已由产品负责人确认；检查管理入口与两类页面口径，不能再强制旧预览提示。
+      for (const page of [guide, body]) {
+        assert.ok(page.includes('https://getquicker.net/bridges/wps/publish.html'), 'WPS 缺少加载项管理入口');
+        assert.doesNotMatch(page, /正式分发闭环未完成|尚未完成真机闭环|正式管理页的安装、更新、卸载仍待真机验证/,
+          'WPS 页面仍保留已废弃的预览限制');
+      }
     } else assert.equal(bridge.componentId, `quicker.bridge.${bridge.connectionId}`);
   }
   assert.ok(!catalog.modules.some((module) => module.key === 'sys:test'));

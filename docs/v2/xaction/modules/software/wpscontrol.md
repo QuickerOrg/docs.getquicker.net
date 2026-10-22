@@ -13,8 +13,8 @@ metadataGeneratedAt: "2026-09-20 15:25:17"
 
 # WPS Office控制
 
-:::caution[预览：正式分发闭环未完成]
-已验证 JSA 加载、Bridge 回连及命令目录；正式管理页的安装、更新、卸载仍待真机验证。以下连接与动作说明适用于已有预览环境。
+:::note[先安装并启用对应组件]
+WPS 文字、表格和演示的加载项需要分别安装和启用。请从[WPS 加载项管理页](https://getquicker.net/bridges/wps/publish.html)安装，重启对应应用后确认在线实例，再测试模块连接；软件发行版还须支持 JSA 加载项。
 :::
 
 使用前先[安装并连接 WPS Office Bridge](/v2/features/software-connections/software/wps-office)。本模块用于文档与选择、表格区域、文字替换、幻灯片、已有宏及 JavaScript；根据任务选择对应操作，或发送当前实例支持的自定义命令。

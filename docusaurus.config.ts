@@ -118,7 +118,7 @@ const config: Config = {
       } satisfies LocalSearchOptions,
     ],
   ],
-  plugins: ['./plugins/doc-gallery', './plugins/dev-local-search', './plugins/prefetch-previews'],
+  plugins: ['./plugins/doc-gallery', './plugins/dev-local-search', './plugins/prefetch-previews', './plugins/docs-service-export'],
   clientModules: [
     './src/clientModules/quickerEmbedChrome.ts',
     './src/clientModules/prefetchSearchIndex.ts',

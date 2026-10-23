@@ -1,8 +1,8 @@
 ---
-title: "截图 Pro"
+title: "交互截图"
 description: "框选截图、标注、贴图或识别。默认自动吸附，可关闭后用滚轮手动调整选区。"
 slug: "/v2/xaction/modules/screen-capture-pro"
-sidebar_label: "截图 Pro"
+sidebar_label: "交互截图"
 sidebar_position: 30
 quickerDocKey: "xaction/module/sys:screenCapturePro"
 comments: true
@@ -11,7 +11,7 @@ docStatus: "reviewed"
 metadataGeneratedAt: "2026-09-20 15:25:17"
 ---
 
-# 截图 Pro
+# 交互截图
 
 渐进式选区截图：进入后出现全屏遮罩，光标附近给出初始选区；可拖拽框选、吸附控件，再复制、保存或贴图。Esc 取消。
 
@@ -22,7 +22,7 @@ metadataGeneratedAt: "2026-09-20 15:25:17"
   items={[
     {
       href: '/v2/features/screenshot/capture-pro',
-      label: '截图 Pro 功能说明',
+      label: 'Quicker 截图功能说明',
       description: '选区、控件吸附、标注、OCR、贴图、快捷键与排障。',
       featured: true,
     },
@@ -43,6 +43,8 @@ metadataGeneratedAt: "2026-09-20 15:25:17"
     },
   ]}
 />
+
+2.3.19 的步骤名称为 **交互截图**，打开的功能窗口称为 **Quicker 截图**；旧版曾显示为“截图 Pro”。步骤 Key 与本文网址保持不变。下方模块组件仍来自本站的元数据导出快照，若名称与当前客户端不同，以客户端为准；新标注工具见[功能说明](/v2/features/screenshot/capture-pro#annotation-tools-2319)。
 
 ## 当前模块定义
 
@@ -70,7 +72,7 @@ metadataGeneratedAt: "2026-09-20 15:25:17"
 
 **自动吸附UI元素**：开启后悬停自动吸附到控件；关闭时只跟随窗口范围，用滚轮选择更细的控件。2.2.17 起新建步骤默认开启，已有步骤保留原参数；旧动作未保存该参数时仍按关闭处理。
 
-**自定义工具栏**：给截图 Pro 工具栏添加自定义按钮，或在进阶场景下重排工具栏。可内联填写 JSON / JS，也可外置为动作包内文件。完整写法见上面的 **JS 自定义工具栏**。
+**自定义工具栏**：给 Quicker 截图工具栏添加自定义按钮，或在进阶场景下重排工具栏。可内联填写 JSON / JS，也可外置为动作包内文件。完整写法见上面的 **JS 自定义工具栏**。
 
 **失败后停止**：失败或取消是否中止动作。默认开启。
 

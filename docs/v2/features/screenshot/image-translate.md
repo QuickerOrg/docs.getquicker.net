@@ -1,6 +1,6 @@
 ---
 title: 图片翻译
-description: 在截图 Pro 与贴图中使用百度 / 有道图片翻译，以及如何配置本机图片翻译凭证。
+description: 在 Quicker 截图与贴图中使用百度 / 有道图片翻译，以及如何配置本机图片翻译凭证。
 sidebar_position: 15
 quickerDocKey: v2/features/screenshot/image-translate
 comments: true
@@ -22,7 +22,7 @@ comments: true
 2. 选择 **服务商**（百度翻译开放平台 / 有道智云），并设置 **目标语言**。
 3. 按下文在开放平台开通**图片翻译**能力，把凭证填入对应栏目。2.2.5 起，百度图片翻译 V2.0 需同时填写 **APP ID** 与 **API Key**；仅有 API Key 时请补填 APP ID。2.2.4 曾短暂简化为只需 API Key，2.2.5 起恢复双凭证。
 4. 点击 **验证图片翻译**，确认成功。
-5. 进入 [截图 Pro](./capture-pro.md)：确认选区后打开工具栏，点击 **图片翻译**；或在贴图右键菜单选择 **图片翻译**。
+5. 进入 [Quicker 截图](./capture-pro.md)：确认选区后打开工具栏，点击 **图片翻译**；或在贴图右键菜单选择 **图片翻译**。
 6. 在结果窗口预览译文图，可 **复制图片** 或 **替换**（贴图 / 截图选区内容）。
 
 未配置凭证时，软件会提示到 **设置 → 截图 → 识别与翻译** 填写。
@@ -46,9 +46,9 @@ comments: true
 
 ## 如何使用
 
-### 截图 Pro
+### Quicker 截图
 
-1. 进入截图 Pro，框选或确认选区。
+1. 进入 Quicker 截图，框选或确认选区。
 2. 按空格显示标注工具栏（若尚未显示）。
 3. 点击工具栏上的 **图片翻译**。
 4. 等待云端处理；结果窗口打开后预览译文贴合图。
@@ -108,7 +108,7 @@ Quicker 的「验证图片翻译」会真实调用图片翻译接口。验证成
   items={[
     {
       href: '/v2/features/screenshot/capture-pro',
-      label: '截图 Pro 功能说明',
+      label: 'Quicker 截图功能说明',
       description: '确认选区后打开工具栏，即可使用图片翻译。',
       featured: true,
     },

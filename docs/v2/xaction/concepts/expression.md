@@ -22,7 +22,9 @@ legacyContentUpdatedAt: "2023-10-08T07:46:06.000Z"
 
 拼接文本用 [$$ 插值](/v2/xaction/concepts/interpolation)；要计算或比较，用 `$=`。
 
-1.9.5 起内部是 [Eval-expression](https://eval-expression.net/)（支持 Lambda）；更早版本是 DynamicExpresso。
+当前 V2 使用 Quicker 表达式引擎，支持计算、条件判断及 Lambda 等写法。2.3.18 起不再提供切换旧表达式引擎的选项；历史动作的兼容范围与排障见[表达式引擎说明](/v2/what's-new/actions/new-expression-engine)。
+
+2.3.19 修复了兼容表达式中 `Rectangle`、`Point`、`Size`、`Color` 等基础绘图类型短名无法识别的问题。动作显式登记了 WPF 同名类型时，仍以显式登记为准；需要区分时使用完整类型名，例如 `System.Drawing.Rectangle`。同版起，也可在表达式中[获取动作数据文件夹](/v2/xaction/concepts/standard#expression-action-data-directory)。
 
 若要输出以 `$=` 开头的纯文本，写 `$="$=ABC"`。
 

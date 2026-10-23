@@ -1,6 +1,6 @@
 ---
 title: JS 自定义工具栏
-description: 用一段 JavaScript 给截图 Pro 工具栏增加自定义按钮，或在进阶场景下重排整栏布局。
+description: 用一段 JavaScript 给 Quicker 截图工具栏增加自定义按钮，或在进阶场景下重排整栏布局。
 sidebar_position: 20
 quickerDocKey: v2/features/screenshot/toolbar-script
 comments: true
@@ -8,12 +8,12 @@ comments: true
 
 # JS 自定义工具栏
 
-用一段脚本给 [截图 Pro](./capture-pro.md) 工具栏加自定义按钮：调用子程序处理当前图，或把图交给某个动作。默认只加按钮（原工具栏保留，保存 / 复制前固定位置出「扩展」下拉）；只有要改内置工具顺序时，才整栏重排。
+用一段脚本给 [Quicker 截图](./capture-pro.md) 工具栏加自定义按钮：调用子程序处理当前图，或把图交给某个动作。默认只加按钮（原工具栏保留，保存 / 复制前固定位置出「扩展」下拉）；只有要改内置工具顺序时，才整栏重排。
 
 脚本在打开截图会话前求值一次，决定按钮（或整栏布局）；点击后再执行对应逻辑。
 
 :::info[步骤参数]
-在组合动作的 **截图 Pro** 步骤中填写 **自定义工具栏**（参数 Key：`toolbarScript`）。可内联粘贴，也可外置为动作包内文件。
+在组合动作的 **交互截图** 步骤中填写 **自定义工具栏**（参数 Key：`toolbarScript`）。可内联粘贴，也可外置为动作包内文件。
 :::
 
 ## 怎么写（推荐：压缩写法）
@@ -249,7 +249,7 @@ save, copy, pin, close, confirm
 | `ctx.sessionId` | 本次截图会话 ID |
 | `ctx.toolId` | 当前自定义命令 ID |
 | `ctx.host` | `'capturePro'` 或 `'pin'`（贴图宿主若启用脚本时） |
-| `ctx.originActionId` | 发起本次截图的动作 ID；仅由动作内 **截图 Pro** 步骤进入时存在。全局快捷截图入口可能为空 |
+| `ctx.originActionId` | 发起本次截图的动作 ID；仅由动作内 **交互截图** 步骤进入时存在。全局快捷截图入口可能为空 |
 | `ctx.runSp(...)` | 运行子程序并**等待**结果（见下） |
 
 `runSp` 第二个对象的键必须和子程序输入变量同名；当前图可省略（见上文「怎么写」）。
@@ -298,7 +298,7 @@ await ctx.runSp({
 | `strength` 等 | 输入 | `runSp` 第二参里的同名键 |
 | `image` | 输出 | `r.outputs.image` |
 
-1. **读图**：在子程序里声明名为 **`image`** 的输入变量，直接用它。也可以用 **获取系统或动作信息** / **获取Quicker信息** 的 **图片上下文参数**。脚本里都可以不传图。
+1. **读图**：在子程序里声明名为 **`image`** 的输入变量，直接用它。也可以用 **获取系统或动作信息** / **获取 Quicker信息** 的 **图片上下文参数**。脚本里都可以不传图。
 2. **出图**：处理后把结果图放到名为 **`image`** 的输出变量。脚本里写 `r.outputs.image`。
 3. **关不关窗**：不要写在子程序输出里。由脚本的 `post.keep` / `post.confirm` / `post.close` 决定。
 
@@ -423,7 +423,7 @@ type CaptureToolContext = {
   /** 点击瞬间合成图（含已提交标注，不含工具栏等界面装饰） */
   image: ImageRef;
   area: CaptureArea;
-  /** 仅由动作内「截图 Pro」步骤进入时存在；全局快捷截图可能为空 */
+  /** 仅由动作内「Quicker 截图」步骤进入时存在；全局快捷截图可能为空 */
   originActionId?: string;
   /**
    * 运行子程序并等待结束。
@@ -565,7 +565,7 @@ declare const post: {
 
 ### 和默认工具栏有何关系
 
-未配置脚本时，截图 Pro 使用内置默认工具栏。配置脚本后：
+未配置脚本时，Quicker 截图使用内置默认工具栏。配置脚本后：
 
 - **只返回自定义按钮**（推荐）：默认工具栏保留，宿主在保存 / 复制前固定加入「扩展」下拉（只有一个按钮时直接放按钮）。
 - **整栏重排**（数组里写了内置工具，或 `return { layout: [...] }`）：以脚本为准，宿主仍可能补上必需的关闭 / 确认等项。
@@ -581,13 +581,13 @@ declare const post: {
   items={[
     {
       href: '/v2/features/screenshot/capture-pro',
-      label: '截图 Pro 功能说明',
+      label: 'Quicker 截图功能说明',
       description: '选区、标注、OCR、贴图与快捷键。',
       featured: true,
     },
     {
       href: '/v2/xaction/modules/screen-capture-pro',
-      label: '截图 Pro 步骤参数',
+      label: '交互截图步骤参数',
       description: '在步骤里填写自定义工具栏。',
     },
     {

@@ -28,9 +28,17 @@ comments: true
 
 多设备使用、降级或回退前，请阅读[升级与回退](/v2/migration/upgrade-and-rollback)。各版本的具体风险也在下方对应条目中标出。
 
-本站已补充到 **2.3.17**；版本下载与完整修复记录以官网为准。
+本站已补充到 **2.3.19**；版本下载与完整修复记录以官网为准。
 
 ## 近期文档补充
+
+### 2.3.19 · 截图标注与 AI 窗口背景
+
+- [Quicker 截图的新标注工具](/v2/features/screenshot/capture-pro#annotation-tools-2319)：尺寸、角度、引出线与局部放大；更新工具分组、数字键说明及截图 AI 的当前快捷键。[全局快捷键](/v2/features/screenshot/capture-pro#capture-name-and-hotkey-2319)可直接打开截图，仅本机生效。
+- [AI 窗口背景与欢迎示例](/v2/features/ai-and-agent#window-context-2319)：核对来源、重新读取或取消背景，先显示问问 AI 窗口再补入选区；说明路径、网址及选中文字随提问发送的范围。
+- [AI 服务可稍后补全](/v2/what's-new/ai-services-and-models#incomplete-connections-2319)：保存未完成连接、区分不可用与保存失败，不影响其他有效服务。
+- [文本变量](/v2/xaction/concepts/variables#2319--文本变量的空默认值)统一使用空字符串作为缺省初值；表达式可[获取动作数据目录](/v2/xaction/concepts/standard#expression-action-data-directory)，基础绘图类型兼容问题已修复。
+- [升级与回退](/v2/migration/upgrade-and-rollback#preferences-and-ai-2319)：说明旧版保存截图偏好、按键动作页显示选择、AI 背景及不完整服务时的影响。
 
 ### 2.3.18 · 截图多选、工作台做事与表达式兼容
 

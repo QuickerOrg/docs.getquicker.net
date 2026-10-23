@@ -28,13 +28,22 @@ comments: true
 
 多设备使用、降级或回退前，请阅读[升级与回退](/v2/migration/upgrade-and-rollback)。各版本的具体风险也在下方对应条目中标出。
 
-本站已补充到 **2.3.19**；版本下载与完整修复记录以官网为准。
+本站已补充到 **2.3.20**；版本下载与完整修复记录以官网为准。
 
 ## 近期文档补充
 
+### 2.3.20 · 截图同步、气泡标注与助手图标
+
+- [截图复制与同步](/v2/features/screenshot/capture-pro#capture-copy-and-sync-2320)：复制时可附带 PNG 文件，Ctrl 点击保存打开系统“另存为”；截图操作偏好和全局快捷键随账号同步，目录与 HDR 等设备设置仍保留在本机。
+- [气泡与连续标注](/v2/features/screenshot/capture-pro#annotation-tools-2320)：调整气泡文字、边框、底色及尖角，使用方形和白色描边序号；尺寸线按上一条比例预填，铅笔按 Shift 连续点击连线。（[#605](https://github.com/QuickerOrg/Quicker2-issues/issues/605)）
+- [助手图标与执行详情](/v2/features/ai-and-agent#icons-and-tool-details-2320)：为所选动作生成并应用图标，导入 PNG、JPEG 和 SVG；按结果、输入和调用记录查看详情。补充离线图标的使用边界。
+- [本地 OCR 空闲保活](/v2/features/screenshot/capture-pro#local-ocr-keepalive-2320)：未配置时默认 5 分钟退出，0 表示常驻，已有值保留；[亮度快捷操作](/v2/features/displays-and-desktops#显示器)默认显示浮层。
+- [升级与回退](/v2/migration/upgrade-and-rollback#capture-sync-and-icons-2320)：首次导入、旧客户端同步截图快捷键、标注样式及 SVG 外链兼容注意事项。
+- 修复窗口贴图按 R 恢复报错、Windows 应用内部进程查找和问问 AI 多窗口目标跟随等问题。（[#607](https://github.com/QuickerOrg/Quicker2-issues/issues/607)、[#603](https://github.com/QuickerOrg/Quicker2-issues/issues/603)）完整记录见[官网版本记录](https://getquicker.net/v2/versions)。
+
 ### 2.3.19 · 截图标注与 AI 窗口背景
 
-- [Quicker 截图的新标注工具](/v2/features/screenshot/capture-pro#annotation-tools-2319)：尺寸、角度、引出线与局部放大；更新工具分组、数字键说明及截图 AI 的当前快捷键。[全局快捷键](/v2/features/screenshot/capture-pro#capture-name-and-hotkey-2319)可直接打开截图，仅本机生效。
+- [Quicker 截图的新标注工具](/v2/features/screenshot/capture-pro#annotation-tools-2319)：尺寸、角度、引出线与局部放大；更新工具分组、数字键说明及截图 AI 的当前快捷键。[全局快捷键](/v2/features/screenshot/capture-pro#capture-name-and-hotkey-2319)可直接打开截图，2.3.19 仅本机生效，2.3.20 起随账号同步。
 - [AI 窗口背景与欢迎示例](/v2/features/ai-and-agent#window-context-2319)：核对来源、重新读取或取消背景，先显示问问 AI 窗口再补入选区；说明路径、网址及选中文字随提问发送的范围。
 - [AI 服务可稍后补全](/v2/what's-new/ai-services-and-models#incomplete-connections-2319)：保存未完成连接、区分不可用与保存失败，不影响其他有效服务。
 - [文本变量](/v2/xaction/concepts/variables#2319--文本变量的空默认值)统一使用空字符串作为缺省初值；表达式可[获取动作数据目录](/v2/xaction/concepts/standard#expression-action-data-directory)，基础绘图类型兼容问题已修复。

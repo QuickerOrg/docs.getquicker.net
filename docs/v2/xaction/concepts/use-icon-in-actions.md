@@ -50,6 +50,8 @@ legacyContentUpdatedAt: "2023-12-28T00:34:49.000Z"
 
 建议不超过 64×64，以免拖慢界面。本地路径只在你这台电脑上有效，换机或分享后会丢。
 
+2.3.20 起，可让[助手导入图片或生成 SVG 图标](/v2/features/ai-and-agent#icons-and-tool-details-2320)并应用到动作。在线导入会上传至图标服务，离线导入的引用仅在本机可用。SVG 不再加载外部文件或网络资源；已有图标若依赖这些内容，请改为自包含 SVG，见[兼容说明](/v2/migration/upgrade-and-rollback#capture-sync-and-icons-2320)。
+
 格式：`[url:图片网址或本地路径]`。
 
 ## 其它

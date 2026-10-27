@@ -28,9 +28,20 @@ comments: true
 
 多设备使用、降级或回退前，请阅读[升级与回退](/v2/migration/upgrade-and-rollback)。各版本的具体风险也在下方对应条目中标出。
 
-本站已补充到 **2.3.20**；版本下载与完整修复记录以官网为准。
+本站已补充到 **2.3.22**；版本下载与完整修复记录以官网为准。
 
 ## 近期文档补充
+
+### 2.3.22 · 截图工具栏、脚本编辑与 AI 工具
+
+- [截图工具栏布局](/v2/features/screenshot/capture-pro#toolbar-layout-2322)：在设置中调整顺序、主栏与更多菜单、分组和默认项，随账号同步；保存后对新开的截图和贴图生效。
+- [贴图组与图片预览](/v2/features/screenshot/capture-pro#pin-groups-2322)：快捷切组、调整组顺序及创建指定组切换动作；预览栏可拖动调整宽度。组和图片仍只保存在本机。
+- [OCR 识别与选字](/v2/features/screenshot/capture-pro#ocr-selection-2322)：优先使用已安装的中文识别引擎，改善逐字选字及本地失败后的提示。
+- [脚本编辑器](/v2/script-action/editor#source-search-2322)支持查找、替换和代码折叠；[多字段表单](/v2/xaction/modules/form#slider-buttons-2322)的滑块增加步进按钮。（[#606](https://github.com/QuickerOrg/Quicker2-issues/issues/606)）
+- [AI 来源动作与用量](/v2/features/ai-and-agent#source-and-usage-2322)：按权限编辑来源组合动作，分析运行记录；统计动作调用和模型测试的用量。（[#613](https://github.com/QuickerOrg/Quicker2-issues/issues/613)）
+- [CorelDRAW 连接](/v2/features/software-connections/software/coreldraw#catalogs-2322)：补充原生命令和自动化 API 目录、模板使用限制及旧版 x64 兼容范围。
+- [自定义 MCP 升级](/v2/features/ai-and-agent#自定义-mcp-集成的写入方式)：移除 `quicker_eval`，读取改用专用工具；停止运行和合并预览使用独立工具。同步及回退边界见[升级与回退](/v2/migration/upgrade-and-rollback#toolbar-and-mcp-2322)。
+- 修复贴图 Ctrl 拖出无法置入 Photoshop、工作台空会话、搜索说明过长和摘要恢复等问题。（[#611](https://github.com/QuickerOrg/Quicker2-issues/issues/611)、[#620](https://github.com/QuickerOrg/Quicker2-issues/issues/620)、[#621](https://github.com/QuickerOrg/Quicker2-issues/issues/621)、[#608](https://github.com/QuickerOrg/Quicker2-issues/issues/608)）完整记录见[官网版本记录](https://getquicker.net/v2/versions)。
 
 ### 2.3.20 · 截图同步、气泡标注与助手图标
 

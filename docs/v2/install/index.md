@@ -19,6 +19,7 @@ V2 安装包从 [https://getquicker.net/V2](https://getquicker.net/V2) 下载。
 | --- | --- |
 | [安装 Quicker V2](./windows.md) | 系统要求、下载、首次启动；两代不能同时安装 |
 | [更新 Quicker V2](./update.md) | 应用内检查更新、静默安装和校验 |
+| [数据目录与迁移](./data-location.md) | 本机数据与截图历史的位置、迁移到其他磁盘及迁回 |
 | [运行平台与兼容性](/v2/what's-new/platform-and-compatibility.md) | .NET 10、x64、脚本和组件位数 |
 
 从 1.x 迁数据请先看 [从 V1 迁移](/v2/migration/from-v1.md)，不要先装 V2 再回头找备份。

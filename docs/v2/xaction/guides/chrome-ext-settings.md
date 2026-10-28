@@ -10,6 +10,18 @@ legacyDocId: 232672344
 legacyContentUpdatedAt: "2025-08-16T06:49:55.000Z"
 ---
 
+<a id="手动安装-crx" />
+
+## 手动安装 CRX
+
+优先使用浏览器官方扩展商店安装。浏览器无法使用商店、且允许安装本地扩展时，可在 Quicker 的浏览器扩展帮助窗口点击“下载crx文件”，从官方入口取得安装包。
+
+1. 打开目标浏览器的扩展管理页（Chrome 为 `chrome://extensions`，Edge 为 `edge://extensions`）。
+2. 按浏览器要求开启开发者模式，将下载的 `.crx` 文件拖入扩展管理页并核对安装提示。
+3. 安装后检查扩展是否启用，并回到 Quicker 查看连接状态。
+
+浏览器可能禁止从商店外安装 CRX，企业策略也可能限制安装；出现阻止提示时，应使用浏览器支持的安装渠道或联系管理员，不要通过关闭安全保护强行安装。换用第三方 Chromium 浏览器时，管理页地址与安装规则以该浏览器为准。
+
 ## 安装与版本
 
 请从 [Quicker 下载页面](https://getquicker.net/Download)进入对应浏览器的扩展商店。Quicker Connector 1.2.0 的 Chrome / Edge 版本要求浏览器 135 或更高版本，基础连接要求 Quicker 1.44.12 或更高版本。

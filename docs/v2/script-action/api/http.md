@@ -28,12 +28,10 @@ HttpResult Send(string url, string method = "GET", string? body = null, string c
 | `string contentType = "application/json"` | 正文类型，默认 application/json。 |
 | `IDictionary<string, string>? headers = null` | 自定义请求头。 |
 | `IDictionary<string, string>? form = null` | multipart/form-data 的文本字段（字段名 → 值，null 为空串）；给出 form 或 files 时按 multipart 发送：body 须为 null、忽略 contentType、headers 不能含 Content-Type、method 不能是 GET/HEAD。 |
-| `IDictionary<string, string>? files = null` | multipart 的文件字段（字段名 → 本机文件路径）；需要读文件能力；流式上传，合计最多 256 MiB；文件不存在报 FILE_NOT_FOUND（发送前检查）。 |
+| `IDictionary<string, string>? files = null` | multipart 的文件字段（字段名 → 本机文件路径）；流式上传，合计最多 256 MiB；文件不存在报 FILE_NOT_FOUND（发送前检查）。 |
 | `int timeoutMs = 60000` | 单次超时毫秒（默认 60000；0 为只受动作超时约束）；超时报 HTTP_TIMEOUT（请求已取消，服务端可能已处理，非幂等请求可能已生效）。 |
 
 返回类型：`HttpResult`。空值、用户取消和异常行为以成员及域说明为准。
-
-基础能力：访问网络。某些参数或数据来源会追加能力，详见[安全与授权](../security.md)。
 
 <a id="http-gettext" />
 
@@ -52,8 +50,6 @@ GET 并返回响应文本；非 2xx 抛 HTTP_STATUS_FAILED。
 
 返回类型：`string`。空值、用户取消和异常行为以成员及域说明为准。
 
-基础能力：访问网络。某些参数或数据来源会追加能力，详见[安全与授权](../security.md)。
-
 <a id="http-postjson" />
 
 ## Http.PostJson
@@ -71,8 +67,6 @@ POST JSON 并返回响应文本；非 2xx 抛 HTTP_STATUS_FAILED。
 | `int timeoutMs = 60000` | 单次超时毫秒（默认 60000；0 为只受动作超时约束）；超时报 HTTP_TIMEOUT。 |
 
 返回类型：`string`。空值、用户取消和异常行为以成员及域说明为准。
-
-基础能力：访问网络。某些参数或数据来源会追加能力，详见[安全与授权](../security.md)。
 
 <a id="http-download" />
 
@@ -93,7 +87,5 @@ string Download(string url, string path, bool overwrite = false, IDictionary<str
 | `int timeoutMs = 0` | 整次下载的超时毫秒（默认 0 为不单独限时，只受动作超时约束）；超时报 HTTP_TIMEOUT，不留残缺文件。 |
 
 返回类型：`string`。空值、用户取消和异常行为以成员及域说明为准。
-
-基础能力：修改文件；访问网络。某些参数或数据来源会追加能力，详见[安全与授权](../security.md)。
 
 {/* script-api:end */}

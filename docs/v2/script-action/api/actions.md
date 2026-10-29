@@ -27,8 +27,6 @@ object? Call(string action, string? input = null)
 
 返回类型：`object?`。空值、用户取消和异常行为以成员及域说明为准。
 
-基础能力：调用或停止其他动作。某些参数或数据来源会追加能力，详见[安全与授权](../security.md)。
-
 <a id="actions-callsubprogram" />
 
 ## Actions.CallSubprogram
@@ -46,8 +44,6 @@ IReadOnlyDictionary<string, object?> CallSubprogram(string name, IDictionary<str
 
 返回类型：`IReadOnlyDictionary<string, object?>`。空值、用户取消和异常行为以成员及域说明为准。
 
-基础能力：调用或停止其他动作。某些参数或数据来源会追加能力，详见[安全与授权](../security.md)。
-
 <a id="actions-stop" />
 
 ## Actions.Stop
@@ -56,15 +52,13 @@ IReadOnlyDictionary<string, object?> CallSubprogram(string name, IDictionary<str
 int Stop(string action)
 ```
 
-按动作 Id 或标题（精确）停止其正在运行的实例（同“运行动作”步骤的停止动作；不含本次运行），只发出停止请求、立即返回停止的实例数（0 不报错，不等待对方结束；返回值也反映该标题的动作是否在运行）。停止以 Actions.Call 等待本脚本的调用方时，本次运行也随之停止。需要“调用或停止动作”能力。
+按动作 Id 或标题（精确）停止其正在运行的实例（同“运行动作”步骤的停止动作；不含本次运行），只发出停止请求、立即返回停止的实例数（0 不报错，不等待对方结束；返回值也反映该标题的动作是否在运行）。停止以 Actions.Call 等待本脚本的调用方时，本次运行也随之停止。
 
 | 参数声明 | 说明 |
 |---|---|
 | `string action` | 动作 Id 或标题。 |
 
 返回类型：`int`。空值、用户取消和异常行为以成员及域说明为准。
-
-基础能力：调用或停止其他动作。某些参数或数据来源会追加能力，详见[安全与授权](../security.md)。
 
 <a id="actions-getrunningcount" />
 
@@ -82,8 +76,6 @@ int GetRunningCount(string? action = null)
 
 返回类型：`int`。空值、用户取消和异常行为以成员及域说明为准。
 
-基础能力：无基础能力授权要求。某些参数或数据来源会追加能力，详见[安全与授权](../security.md)。
-
 <a id="actions-stopothers" />
 
 ## Actions.StopOthers
@@ -95,8 +87,6 @@ void StopOthers()
 停止当前动作的其他运行实例（不影响其他动作），立即返回；常用于切换型脚本开头。未保存的动作报 INVALID_ARGUMENT。
 
 返回类型：`void`。空值、用户取消和异常行为以成员及域说明为准。
-
-基础能力：无基础能力授权要求。某些参数或数据来源会追加能力，详见[安全与授权](../security.md)。
 
 <a id="actions-info" />
 
@@ -113,8 +103,6 @@ ActionInfo? Info(string action)
 | `string action` | 动作 Id、动作库 Id 或名称。 |
 
 返回类型：`ActionInfo?`。空值、用户取消和异常行为以成员及域说明为准。
-
-基础能力：无基础能力授权要求。某些参数或数据来源会追加能力，详见[安全与授权](../security.md)。
 
 <a id="actions-setbadge" />
 
@@ -134,8 +122,6 @@ void SetBadge(string? text, string? color = null, string? textColor = null)
 
 返回类型：`void`。空值、用户取消和异常行为以成员及域说明为准。
 
-基础能力：无基础能力授权要求。某些参数或数据来源会追加能力，详见[安全与授权](../security.md)。
-
 <a id="actions-setoverlay" />
 
 ## Actions.SetOverlay
@@ -153,8 +139,6 @@ void SetOverlay(string? icon, string? tooltip = null)
 
 返回类型：`void`。空值、用户取消和异常行为以成员及域说明为准。
 
-基础能力：无基础能力授权要求。某些参数或数据来源会追加能力，详见[安全与授权](../security.md)。
-
 <a id="actions-setcontextmenu" />
 
 ## Actions.SetContextMenu
@@ -171,8 +155,6 @@ void SetContextMenu(string? menu)
 
 返回类型：`void`。空值、用户取消和异常行为以成员及域说明为准。
 
-基础能力：无基础能力授权要求。某些参数或数据来源会追加能力，详见[安全与授权](../security.md)。
-
 <a id="actions-showcontextmenu" />
 
 ## Actions.ShowContextMenu
@@ -181,7 +163,7 @@ void SetContextMenu(string? menu)
 void ShowContextMenu(string? action = null, bool customOnly = true)
 ```
 
-在鼠标处弹出动作的右键菜单，立即返回（不等待选择）；计入对话框限额。需要“调用本机其他动作”能力（点击自定义菜单项会运行该动作）。
+在鼠标处弹出动作的右键菜单，立即返回（不等待选择）；计入对话框限额。点击自定义菜单项会运行该动作。
 
 | 参数声明 | 说明 |
 |---|---|
@@ -189,7 +171,5 @@ void ShowContextMenu(string? action = null, bool customOnly = true)
 | `bool customOnly = true` | true（默认）：只显示动作自定义的菜单项（点击以该项的值作为 qk.Context.Input 运行该动作）；false：完整管理菜单（安装来源不允许）。 |
 
 返回类型：`void`。空值、用户取消和异常行为以成员及域说明为准。
-
-基础能力：调用或停止其他动作。某些参数或数据来源会追加能力，详见[安全与授权](../security.md)。
 
 {/* script-api:end */}

@@ -28,8 +28,6 @@ void Press(string keys, int repeat = 1, int holdMs = 0)
 
 返回类型：`void`。空值、用户取消和异常行为以成员及域说明为准。
 
-基础能力：键盘自动化。某些参数或数据来源会追加能力，详见[安全与授权](../security.md)。
-
 <a id="keyboard-down" />
 
 ## Keyboard.Down
@@ -46,8 +44,6 @@ void Down(string key)
 
 返回类型：`void`。空值、用户取消和异常行为以成员及域说明为准。
 
-基础能力：键盘自动化。某些参数或数据来源会追加能力，详见[安全与授权](../security.md)。
-
 <a id="keyboard-up" />
 
 ## Keyboard.Up
@@ -63,8 +59,6 @@ void Up(string key)
 | `string key` | 见本成员和所在域的说明。 |
 
 返回类型：`void`。空值、用户取消和异常行为以成员及域说明为准。
-
-基础能力：键盘自动化。某些参数或数据来源会追加能力，详见[安全与授权](../security.md)。
 
 <a id="keyboard-isdown" />
 
@@ -83,8 +77,6 @@ bool IsDown(string key, bool toggled = false)
 
 返回类型：`bool`。空值、用户取消和异常行为以成员及域说明为准。
 
-基础能力：键盘自动化。某些参数或数据来源会追加能力，详见[安全与授权](../security.md)。
-
 <a id="keyboard-type" />
 
 ## Keyboard.Type
@@ -101,8 +93,6 @@ int Type(string text, int intervalMs = 0)
 | `int intervalMs = 0` | 字符间隔毫秒（0–2000）。 |
 
 返回类型：`int`。空值、用户取消和异常行为以成员及域说明为准。
-
-基础能力：键盘自动化。某些参数或数据来源会追加能力，详见[安全与授权](../security.md)。
 
 <a id="keyboard-paste" />
 
@@ -122,8 +112,6 @@ void Paste(string text, bool restore = true, int restoreDelayMs = 400)
 
 返回类型：`void`。空值、用户取消和异常行为以成员及域说明为准。
 
-基础能力：键盘自动化；读取剪贴板；修改剪贴板。某些参数或数据来源会追加能力，详见[安全与授权](../security.md)。
-
 <a id="keyboard-sendkeys" />
 
 ## Keyboard.SendKeys
@@ -140,8 +128,6 @@ void SendKeys(string keys)
 
 返回类型：`void`。空值、用户取消和异常行为以成员及域说明为准。
 
-基础能力：键盘自动化。某些参数或数据来源会追加能力，详见[安全与授权](../security.md)。
-
 <a id="keyboard-waitforkey" />
 
 ## Keyboard.WaitForKey
@@ -150,7 +136,7 @@ void SendKeys(string keys)
 string? WaitForKey(string? keys = null, int timeoutMs = 0, bool swallow = false)
 ```
 
-等待用户的物理按键（全局钩子，忽略模拟按键，不阻挡用户操作），返回键名（与 Keyboard.Press 相同，如 "Enter"、"A"；组合键条目带修饰键前缀，如 "Ctrl+Q"）；超时返回 null。需要“监听按键”能力；有 Keyboard.Down/Mouse.Down 按住的键时不能调用。一次调用只返回一个键，命中后不再拦截其他按键；前台为管理员权限窗口时按键被忽略（不命中、不拦截）；每次运行最多调用 1000 次（LIMIT_EXCEEDED）。
+等待用户的物理按键（全局钩子，忽略模拟按键，不阻挡用户操作），返回键名（与 Keyboard.Press 相同，如 "Enter"、"A"；组合键条目带修饰键前缀，如 "Ctrl+Q"）；超时返回 null。有 Keyboard.Down/Mouse.Down 按住的键时不能调用。一次调用只返回一个键，命中后不再拦截其他按键；前台为管理员权限窗口时按键被忽略（不命中、不拦截）；每次运行最多调用 1000 次（LIMIT_EXCEEDED）。
 
 | 参数声明 | 说明 |
 |---|---|
@@ -159,8 +145,6 @@ string? WaitForKey(string? keys = null, int timeoutMs = 0, bool swallow = false)
 | `bool swallow = false` | 拦截命中的那次按下，不传给前台程序（修饰键不拦截）。 |
 
 返回类型：`string?`。空值、用户取消和异常行为以成员及域说明为准。
-
-基础能力：监听按键。某些参数或数据来源会追加能力，详见[安全与授权](../security.md)。
 
 <a id="keyboard-getime" />
 
@@ -173,8 +157,6 @@ bool GetIme()
 读取前台窗口输入法当前是否为中文（读不到状态视为 false）。只读取、不记录恢复基线，停止后的 finally 中也可调用。恢复写法：var was = qk.Keyboard.GetIme(); qk.Keyboard.SetIme(false); try &#123; … &#125; finally &#123; qk.Keyboard.SetIme(was); &#125;
 
 返回类型：`bool`。空值、用户取消和异常行为以成员及域说明为准。
-
-基础能力：键盘自动化。某些参数或数据来源会追加能力，详见[安全与授权](../security.md)。
 
 <a id="keyboard-setime" />
 
@@ -191,7 +173,5 @@ void SetIme(bool chinese)
 | `bool chinese` | true 切换到中文，false 切换到英文。 |
 
 返回类型：`void`。空值、用户取消和异常行为以成员及域说明为准。
-
-基础能力：键盘自动化。某些参数或数据来源会追加能力，详见[安全与授权](../security.md)。
 
 {/* script-api:end */}

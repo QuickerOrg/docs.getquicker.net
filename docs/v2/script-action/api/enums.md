@@ -69,6 +69,11 @@ sidebar_position: 10
 | `Sys.ListAudioDevices` | `device` | `output`、`input` | 否 |
 | `Sys.SetDefaultAudioDevice` | `device` | `output`、`input` | 否 |
 | `Sys.SetDarkMode` | `scope` | `apps`、`system`、`all` | 否 |
+| `Sys.MediaKey` | `key` | `playPause`、`next`、`previous`、`stop` | 否 |
+| `Window.Snap` | `position` | `left`、`right`、`top`、`bottom`、`topLeft`、`topRight`、`bottomLeft`、`bottomRight`、`maximize`、`center`、`restore` | 否 |
+| `Window.Snap` | `screen` | `primary`、`mouse` | 是，见成员说明 |
+| `Browser.SearchBookmarks` | `browser` | `chrome`、`msedge`、`360chromex`、`vivaldi` | 否 |
+| `Process.ListUsage` | `sort` | `cpu`、`memory` | 否 |
 | `Ctx` | `Trigger` | `panel`、`floatButton`、`floatPanel`、`dashboard`、`editor`、`circleMenu`、`search`、`searchInput`、`searchCallback`、`searchContextMenu`、`hotkey`、`hotkeyWatcher`、`mouse`、`leftButtonPlus`、`scrollOnButton`、`advancedMouseAction`、`mobileApp`、`external`、`androidRemote`、`event`、`screenshot`、`textToolbar`、`triggerKey`、`gesture`、`textCommand`、`autoRun`、`contextMenu`、`association`、`browserContextMenu`、`webpageButton`、`other` | 否 |
 
 {/* script-api:end */}

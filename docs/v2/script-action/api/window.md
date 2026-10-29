@@ -22,8 +22,6 @@ Win? GetForeground()
 
 返回类型：`Win?`。空值、用户取消和异常行为以成员及域说明为准。
 
-基础能力：读取窗口信息。某些参数或数据来源会追加能力，详见[安全与授权](../security.md)。
-
 <a id="window-frompoint" />
 
 ## Window.FromPoint
@@ -40,8 +38,6 @@ Win? FromPoint(Pt? point = null, bool root = true)
 | `bool root = true` | true（默认）返回顶层窗口；false 返回点下最深的子窗口/控件（如给 Edit 发 WM_SETTEXT；对顶层窗口发 WM_SETTEXT 改的是标题）。子窗口只能查询与发消息。 |
 
 返回类型：`Win?`。空值、用户取消和异常行为以成员及域说明为准。
-
-基础能力：读取窗口信息。某些参数或数据来源会追加能力，详见[安全与授权](../security.md)。
 
 <a id="window-find" />
 
@@ -62,8 +58,6 @@ Win? Find(string title = "", string process = "", string className = "", bool re
 | `bool hidden = false` | 包含不可见窗口。 |
 
 返回类型：`Win?`。空值、用户取消和异常行为以成员及域说明为准。
-
-基础能力：读取窗口信息。某些参数或数据来源会追加能力，详见[安全与授权](../security.md)。
 
 <a id="window-findall" />
 
@@ -86,8 +80,6 @@ Win[] FindAll(string title = "", string process = "", string className = "", boo
 
 返回类型：`Win[]`。空值、用户取消和异常行为以成员及域说明为准。
 
-基础能力：读取窗口信息。某些参数或数据来源会追加能力，详见[安全与授权](../security.md)。
-
 <a id="window-findallinfo" />
 
 ## Window.FindAllInfo
@@ -109,8 +101,6 @@ WinInfo[] FindAllInfo(string title = "", string process = "", string className =
 
 返回类型：`WinInfo[]`。空值、用户取消和异常行为以成员及域说明为准。
 
-基础能力：读取窗口信息。某些参数或数据来源会追加能力，详见[安全与授权](../security.md)。
-
 <a id="window-listchildren" />
 
 ## Window.ListChildren
@@ -129,8 +119,6 @@ Win[] ListChildren(Win window, string title = "", string className = "")
 
 返回类型：`Win[]`。空值、用户取消和异常行为以成员及域说明为准。
 
-基础能力：读取窗口信息。某些参数或数据来源会追加能力，详见[安全与授权](../security.md)。
-
 <a id="window-info" />
 
 ## Window.Info
@@ -147,8 +135,6 @@ WinInfo Info(Win window)
 
 返回类型：`WinInfo`。空值、用户取消和异常行为以成员及域说明为准。
 
-基础能力：读取窗口信息。某些参数或数据来源会追加能力，详见[安全与授权](../security.md)。
-
 <a id="window-activate" />
 
 ## Window.Activate
@@ -164,8 +150,6 @@ void Activate(Win window)
 | `Win window` | 见本成员和所在域的说明。 |
 
 返回类型：`void`。空值、用户取消和异常行为以成员及域说明为准。
-
-基础能力：激活窗口。某些参数或数据来源会追加能力，详见[安全与授权](../security.md)。
 
 <a id="window-activateprocess" />
 
@@ -184,12 +168,10 @@ Win? ActivateProcess(string process, string? path = null, string? title = null, 
 | `string? title = null` | 窗口标题：包含匹配、不区分大小写（regex 为 true 时为正则，无效正则报 INVALID_ARGUMENT）。 |
 | `string? className = null` | 窗口类名：完整匹配、不区分大小写（regex 为 true 时为正则）。 |
 | `bool regex = false` | title/className 按 .NET 正则匹配。 |
-| `string? hotkey = null` | 唤出窗口的快捷键（如托盘程序的唤醒键），只接受单个组合键如 "Ctrl+Alt+Q"；经输入会话发送，需要键盘能力。 |
+| `string? hotkey = null` | 唤出窗口的快捷键（如托盘程序的唤醒键），只接受单个组合键如 "Ctrl+Alt+Q"；经输入会话发送。 |
 | `bool launch = true` | 未运行时是否启动。 |
 
 返回类型：`Win?`。空值、用户取消和异常行为以成员及域说明为准。
-
-基础能力：读取窗口信息；激活窗口；启动程序或打开文件/网址。某些参数或数据来源会追加能力，详见[安全与授权](../security.md)。
 
 <a id="window-restoreforeground" />
 
@@ -202,8 +184,6 @@ void RestoreForeground()
 回到弹出面板前的前台窗口；没有记录时不操作。
 
 返回类型：`void`。空值、用户取消和异常行为以成员及域说明为准。
-
-基础能力：激活窗口。某些参数或数据来源会追加能力，详见[安全与授权](../security.md)。
 
 <a id="window-setbounds" />
 
@@ -222,8 +202,6 @@ void SetBounds(Win window, Rect bounds)
 
 返回类型：`void`。空值、用户取消和异常行为以成员及域说明为准。
 
-基础能力：改变窗口状态或位置。某些参数或数据来源会追加能力，详见[安全与授权](../security.md)。
-
 <a id="window-setstate" />
 
 ## Window.SetState
@@ -241,7 +219,23 @@ void SetState(Win window, string state)
 
 返回类型：`void`。空值、用户取消和异常行为以成员及域说明为准。
 
-基础能力：改变窗口状态或位置。某些参数或数据来源会追加能力，详见[安全与授权](../security.md)。
+<a id="window-snap" />
+
+## Window.Snap
+
+```csharp
+bool Snap(Win window, string position, string? screen = null)
+```
+
+把顶层窗口吸附到屏幕的某个位置（取目标屏幕的工作区 WorkArea：已排除任务栏，物理像素；DPI 与窗口不可见的缩放边框由宿主处理，使可见部分紧贴工作区）。最大化/最小化的窗口先还原（等还原完成）再摆放；跨 DPI 屏幕移动后系统可能重算窗口大小，宿主在窗口稳定后复核并最多补一次。目标须为顶层窗口，拒绝 Quicker 自身和提权窗口；计 1–4 次排列操作。移动与状态改变异步投递，目标窗口无响应（挂起）时 Snap 不会阻塞脚本。返回 bool：窗口稳定（连续两次读取相隔 50 毫秒相同，最多约 1 秒）后核实最终可见边界（maximize/restore 核实状态）在几个像素内才为 true，否则 false（不报错）。最多补一次且仅在稳定时。
+
+| 参数声明 | 说明 |
+|---|---|
+| `Win window` | 要吸附的顶层窗口。 |
+| `string position` | left &#124; right &#124; top &#124; bottom（半屏）&#124; topLeft &#124; topRight &#124; bottomLeft &#124; bottomRight（四分之一屏）&#124; maximize（最大化）&#124; center（保持当前大小并居中，超出工作区时收缩）&#124; restore（还原为普通状态，不移动，此时忽略 screen）；不区分大小写，不接受别名。 取值：`left`、`right`、`top`、`bottom`、`topLeft`、`topRight`、`bottomLeft`、`bottomRight`、`maximize`、`center`、`restore`。 |
+| `string? screen = null` | qk.Screen.List() 的 ScreenInfo.Id，或 primary（主屏）&#124; mouse（鼠标所在屏）；null 为窗口当前所在的屏幕（注意：与 Sys.GetBrightness 默认 mouse 不同）；找不到该 Id 报 INVALID_ARGUMENT。 取值：`primary`、`mouse`。也接受其他值，详见成员说明。 |
+
+返回类型：`bool`。空值、用户取消和异常行为以成员及域说明为准。
 
 <a id="window-setvisible" />
 
@@ -260,8 +254,6 @@ void SetVisible(Win window, bool visible)
 
 返回类型：`void`。空值、用户取消和异常行为以成员及域说明为准。
 
-基础能力：改变窗口状态或位置。某些参数或数据来源会追加能力，详见[安全与授权](../security.md)。
-
 <a id="window-sendtoback" />
 
 ## Window.SendToBack
@@ -277,8 +269,6 @@ void SendToBack(Win window)
 | `Win window` | 见本成员和所在域的说明。 |
 
 返回类型：`void`。空值、用户取消和异常行为以成员及域说明为准。
-
-基础能力：改变窗口状态或位置。某些参数或数据来源会追加能力，详见[安全与授权](../security.md)。
 
 <a id="window-settopmost" />
 
@@ -297,8 +287,6 @@ bool SetTopmost(Win window, bool topmost = true)
 
 返回类型：`bool`。空值、用户取消和异常行为以成员及域说明为准。
 
-基础能力：改变窗口状态或位置。某些参数或数据来源会追加能力，详见[安全与授权](../security.md)。
-
 <a id="window-setopacity" />
 
 ## Window.SetOpacity
@@ -316,8 +304,6 @@ void SetOpacity(Win window, int alpha)
 
 返回类型：`void`。空值、用户取消和异常行为以成员及域说明为准。
 
-基础能力：改变窗口状态或位置。某些参数或数据来源会追加能力，详见[安全与授权](../security.md)。
-
 <a id="window-close" />
 
 ## Window.Close
@@ -331,11 +317,9 @@ void Close(Win window, bool kill = false)
 | 参数声明 | 说明 |
 |---|---|
 | `Win window` | 见本成员和所在域的说明。 |
-| `bool kill = false` | 未及时关闭时强制结束窗口所属程序（可能丢失未保存数据）；需要“强制结束程序”能力，不能用于资源管理器/桌面与 Quicker 及其辅助进程。 |
+| `bool kill = false` | 未及时关闭时强制结束窗口所属程序（可能丢失未保存数据）；不能用于资源管理器/桌面与 Quicker 及其辅助进程。 |
 
 返回类型：`void`。空值、用户取消和异常行为以成员及域说明为准。
-
-基础能力：改变窗口状态或位置。某些参数或数据来源会追加能力，详见[安全与授权](../security.md)。
 
 <a id="window-waitfor" />
 
@@ -357,8 +341,6 @@ Win? WaitFor(string title = "", string process = "", string className = "", stri
 
 返回类型：`Win?`。空值、用户取消和异常行为以成员及域说明为准。
 
-基础能力：读取窗口信息。某些参数或数据来源会追加能力，详见[安全与授权](../security.md)。
-
 <a id="window-waitforclose" />
 
 ## Window.WaitForClose
@@ -378,8 +360,6 @@ bool WaitForClose(string title = "", string process = "", string className = "",
 
 返回类型：`bool`。空值、用户取消和异常行为以成员及域说明为准。
 
-基础能力：读取窗口信息。某些参数或数据来源会追加能力，详见[安全与授权](../security.md)。
-
 <a id="window-toscreen" />
 
 ## Window.ToScreen
@@ -388,7 +368,7 @@ bool WaitForClose(string title = "", string process = "", string className = "",
 Pt ToScreen(Win window, Pt offset, string anchor = "topLeft")
 ```
 
-窗口内相对坐标转屏幕坐标：可见边界（DWM 扩展边框，不含阴影，与“鼠标”步骤一致）的锚点加 offset，返回屏幕物理像素。
+DWM 可见边界的锚点加 offset，读取失败时回退窗口外框，返回屏幕物理像素。前台 CaptureWindow 按外框采集，两者原点可能不同；不要用本方法转换截图/OCR 图内点，也不要猜边框补偿。屏幕 Vision.Find* 的结果已是屏幕坐标。
 
 | 参数声明 | 说明 |
 |---|---|
@@ -398,8 +378,6 @@ Pt ToScreen(Win window, Pt offset, string anchor = "topLeft")
 
 返回类型：`Pt`。空值、用户取消和异常行为以成员及域说明为准。
 
-基础能力：读取窗口信息。某些参数或数据来源会追加能力，详见[安全与授权](../security.md)。
-
 <a id="window-sendmessage" />
 
 ## Window.SendMessage
@@ -408,7 +386,7 @@ Pt ToScreen(Win window, Pt offset, string anchor = "topLeft")
 long SendMessage(Win window, int message, long wParam = 0, object? lParam = null, bool post = false, int timeoutMs = 5000)
 ```
 
-【高风险】向窗口（可为子控件）发送窗口消息并返回结果；需要“发送窗口消息”能力。拒绝 Quicker 自身窗口与提权窗口；计 1 次排列操作。
+向窗口（可为子控件）发送窗口消息并返回结果。拒绝 Quicker 自身窗口与提权窗口；计 1 次排列操作。
 
 | 参数声明 | 说明 |
 |---|---|
@@ -420,8 +398,6 @@ long SendMessage(Win window, int message, long wParam = 0, object? lParam = null
 | `int timeoutMs = 5000` | 同步发送的超时 1–60000 毫秒；目标无响应报 WINDOW_MESSAGE_TIMEOUT。 |
 
 返回类型：`long`。空值、用户取消和异常行为以成员及域说明为准。
-
-基础能力：发送任意窗口消息（高风险）。某些参数或数据来源会追加能力，详见[安全与授权](../security.md)。
 
 <a id="window-closesimilar" />
 
@@ -440,8 +416,6 @@ int CloseSimilar(Win window, bool keepCurrent = false)
 
 返回类型：`int`。空值、用户取消和异常行为以成员及域说明为准。
 
-基础能力：改变窗口状态或位置。某些参数或数据来源会追加能力，详见[安全与授权](../security.md)。
-
 <a id="window-minimizesimilar" />
 
 ## Window.MinimizeSimilar
@@ -458,8 +432,6 @@ int MinimizeSimilar(Win window)
 
 返回类型：`int`。空值、用户取消和异常行为以成员及域说明为准。
 
-基础能力：改变窗口状态或位置。某些参数或数据来源会追加能力，详见[安全与授权](../security.md)。
-
 <a id="window-restoresimilar" />
 
 ## Window.RestoreSimilar
@@ -475,8 +447,6 @@ int RestoreSimilar(Win window)
 | `Win window` | 见本成员和所在域的说明。 |
 
 返回类型：`int`。空值、用户取消和异常行为以成员及域说明为准。
-
-基础能力：改变窗口状态或位置。某些参数或数据来源会追加能力，详见[安全与授权](../security.md)。
 
 <a id="window-activatesimilar" />
 
@@ -495,8 +465,6 @@ Win? ActivateSimilar(Win window, bool previous = false)
 
 返回类型：`Win?`。空值、用户取消和异常行为以成员及域说明为准。
 
-基础能力：激活窗口。某些参数或数据来源会追加能力，详见[安全与授权](../security.md)。
-
 <a id="window-setedgehide" />
 
 ## Window.SetEdgeHide
@@ -514,7 +482,5 @@ bool SetEdgeHide(Win window, bool enabled = true, string edge = "auto")
 | `string edge = "auto"` | auto&#124;left&#124;top&#124;right&#124;bottom；已启用时再次启用不改变贴靠的边。 取值：`auto`、`left`、`top`、`right`、`bottom`。 |
 
 返回类型：`bool`。空值、用户取消和异常行为以成员及域说明为准。
-
-基础能力：改变窗口状态或位置。某些参数或数据来源会追加能力，详见[安全与授权](../security.md)。
 
 {/* script-api:end */}

@@ -26,9 +26,9 @@ test('每个域和类型都有页面，重载共用稳定成员锚点', () => {
   }
   for (const t of catalog.types) assert.ok(output.has(`api/types/${t.name.toLowerCase()}.md`));
 });
-test('未知能力与重复签名失败，避免默默漏文档', () => {
+test('无效桌面输入规则与重复签名失败，避免默默漏文档', () => {
   const c = structuredClone(catalog);
-  c.domains[0].methods[0].capability = 'UnknownCapability';
+  c.domains[0].methods[0].usesDesktopInput = 'invalid';
   assert.throws(() => pages(c));
   const d = structuredClone(catalog);
   d.domains[0].methods.push(d.domains[0].methods[0]);

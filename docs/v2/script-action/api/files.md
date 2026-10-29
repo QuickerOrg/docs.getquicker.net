@@ -28,8 +28,6 @@ string GetFullPath(string path)
 
 返回类型：`string`。空值、用户取消和异常行为以成员及域说明为准。
 
-基础能力：读取文件。某些参数或数据来源会追加能力，详见[安全与授权](../security.md)。
-
 <a id="files-getactiondatadirectory" />
 
 ## Files.GetActionDataDirectory
@@ -38,11 +36,9 @@ string GetFullPath(string path)
 string GetActionDataDirectory()
 ```
 
-当前动作的本机持久数据目录（完整路径，不自动创建）；子程序使用调用方目录。首次写入前 CreateDirectory；取路径不需授权，读写仍需文件能力。不随动作同步或备份；删除动作时可选移入 Windows 回收站。
+当前动作的本机持久数据目录（完整路径，不自动创建）；子程序使用调用方目录。首次写入前 CreateDirectory。不随动作同步或备份；删除动作时可选移入 Windows 回收站。
 
 返回类型：`string`。空值、用户取消和异常行为以成员及域说明为准。
-
-基础能力：无基础能力授权要求。某些参数或数据来源会追加能力，详见[安全与授权](../security.md)。
 
 <a id="files-getruntempdirectory" />
 
@@ -52,11 +48,9 @@ string GetActionDataDirectory()
 string GetRunTempDirectory()
 ```
 
-本次根运行专属的临时文件夹（完整路径，不以 \ 结尾），首次调用时创建；qk.Actions.Call 调用的子脚本得到同一个文件夹。运行结束（正常、异常、停止、超时）后由 Quicker 递归删除，脚本不必在 finally 里删除（停止后 finally 也不能调用 Files.Delete）。本方法不需确认；在其中读写文件仍按文件读写能力确认。
+本次根运行专属的临时文件夹（完整路径，不以 \ 结尾），首次调用时创建；qk.Actions.Call 调用的子脚本得到同一个文件夹。运行结束（正常、异常、停止、超时）后由 Quicker 递归删除，脚本不必在 finally 里删除（停止后 finally 也不能调用 Files.Delete）。
 
 返回类型：`string`。空值、用户取消和异常行为以成员及域说明为准。
-
-基础能力：无基础能力授权要求。某些参数或数据来源会追加能力，详见[安全与授权](../security.md)。
 
 <a id="files-exists" />
 
@@ -74,8 +68,6 @@ bool Exists(string path)
 
 返回类型：`bool`。空值、用户取消和异常行为以成员及域说明为准。
 
-基础能力：读取文件。某些参数或数据来源会追加能力，详见[安全与授权](../security.md)。
-
 <a id="files-info" />
 
 ## Files.Info
@@ -92,8 +84,6 @@ PathInfo? Info(string path)
 
 返回类型：`PathInfo?`。空值、用户取消和异常行为以成员及域说明为准。
 
-基础能力：读取文件。某些参数或数据来源会追加能力，详见[安全与授权](../security.md)。
-
 <a id="files-readbytes" />
 
 ## Files.ReadBytes
@@ -109,8 +99,6 @@ byte[] ReadBytes(string path)
 | `string path` | 见本成员和所在域的说明。 |
 
 返回类型：`byte[]`。空值、用户取消和异常行为以成员及域说明为准。
-
-基础能力：读取文件。某些参数或数据来源会追加能力，详见[安全与授权](../security.md)。
 
 <a id="files-readtext" />
 
@@ -129,8 +117,6 @@ string ReadText(string path, string encoding = "utf-8")
 
 返回类型：`string`。空值、用户取消和异常行为以成员及域说明为准。
 
-基础能力：读取文件。某些参数或数据来源会追加能力，详见[安全与授权](../security.md)。
-
 <a id="files-writebytes" />
 
 ## Files.WriteBytes
@@ -148,8 +134,6 @@ void WriteBytes(string path, byte[] bytes, bool overwrite = false)
 | `bool overwrite = false` | 覆盖已有文件（默认不覆盖，已存在则报错）。 |
 
 返回类型：`void`。空值、用户取消和异常行为以成员及域说明为准。
-
-基础能力：修改文件。某些参数或数据来源会追加能力，详见[安全与授权](../security.md)。
 
 <a id="files-writetext" />
 
@@ -170,8 +154,6 @@ void WriteText(string path, string text, bool overwrite = false, string encoding
 
 返回类型：`void`。空值、用户取消和异常行为以成员及域说明为准。
 
-基础能力：修改文件。某些参数或数据来源会追加能力，详见[安全与授权](../security.md)。
-
 <a id="files-appendtext" />
 
 ## Files.AppendText
@@ -189,8 +171,6 @@ void AppendText(string path, string text, string encoding = "utf-8")
 | `string encoding = "utf-8"` | 见本成员和所在域的说明。 |
 
 返回类型：`void`。空值、用户取消和异常行为以成员及域说明为准。
-
-基础能力：修改文件。某些参数或数据来源会追加能力，详见[安全与授权](../security.md)。
 
 <a id="files-listfiles" />
 
@@ -210,8 +190,6 @@ string[] ListFiles(string directory, string pattern = "*", bool recursive = fals
 
 返回类型：`string[]`。空值、用户取消和异常行为以成员及域说明为准。
 
-基础能力：读取文件。某些参数或数据来源会追加能力，详见[安全与授权](../security.md)。
-
 <a id="files-listdirectories" />
 
 ## Files.ListDirectories
@@ -230,8 +208,6 @@ string[] ListDirectories(string directory, string pattern = "*", bool recursive 
 
 返回类型：`string[]`。空值、用户取消和异常行为以成员及域说明为准。
 
-基础能力：读取文件。某些参数或数据来源会追加能力，详见[安全与授权](../security.md)。
-
 <a id="files-createdirectory" />
 
 ## Files.CreateDirectory
@@ -247,8 +223,6 @@ string CreateDirectory(string path)
 | `string path` | 见本成员和所在域的说明。 |
 
 返回类型：`string`。空值、用户取消和异常行为以成员及域说明为准。
-
-基础能力：修改文件。某些参数或数据来源会追加能力，详见[安全与授权](../security.md)。
 
 <a id="files-copy" />
 
@@ -268,8 +242,6 @@ void Copy(string source, string destination, bool overwrite = false)
 
 返回类型：`void`。空值、用户取消和异常行为以成员及域说明为准。
 
-基础能力：修改文件。某些参数或数据来源会追加能力，详见[安全与授权](../security.md)。
-
 <a id="files-move" />
 
 ## Files.Move
@@ -287,8 +259,6 @@ void Move(string source, string destination, bool overwrite = false)
 | `bool overwrite = false` | 覆盖目标文件（默认不覆盖）。 |
 
 返回类型：`void`。空值、用户取消和异常行为以成员及域说明为准。
-
-基础能力：修改文件。某些参数或数据来源会追加能力，详见[安全与授权](../security.md)。
 
 <a id="files-delete" />
 
@@ -308,8 +278,6 @@ void Delete(string path, bool recursive = false, bool recycle = false)
 
 返回类型：`void`。空值、用户取消和异常行为以成员及域说明为准。
 
-基础能力：修改文件。某些参数或数据来源会追加能力，详见[安全与授权](../security.md)。
-
 <a id="files-zip" />
 
 ## Files.Zip
@@ -327,8 +295,6 @@ void Zip(string source, string zipPath, bool overwrite = false)
 | `bool overwrite = false` | zipPath 已存在时是否覆盖（否则 FILE_FAILED）。 |
 
 返回类型：`void`。空值、用户取消和异常行为以成员及域说明为准。
-
-基础能力：修改文件。某些参数或数据来源会追加能力，详见[安全与授权](../security.md)。
 
 <a id="files-unzip" />
 
@@ -348,8 +314,6 @@ void Unzip(string zipPath, string directory, bool overwrite = false)
 
 返回类型：`void`。空值、用户取消和异常行为以成员及域说明为准。
 
-基础能力：修改文件。某些参数或数据来源会追加能力，详见[安全与授权](../security.md)。
-
 <a id="files-getknownfolder" />
 
 ## Files.GetKnownFolder
@@ -365,8 +329,6 @@ string GetKnownFolder(string name)
 | `string name` | 不区分大小写：desktop&#124;documents&#124;downloads&#124;pictures&#124;music&#124;videos&#124;appData（Roaming）&#124;localAppData&#124;programData&#124;userProfile&#124;temp&#124;startup&#124;startMenu&#124;programs&#124;sendTo&#124;recent&#124;templates&#124;favorites&#124;fonts&#124;programFiles&#124;programFilesX86&#124;windows&#124;system&#124;commonDesktop&#124;commonStartup&#124;commonStartMenu，或 .NET Environment.SpecialFolder 名称的 camelCase（如 commonDocuments）；未知名称报 INVALID_ARGUMENT。 取值：`desktop`、`documents`、`pictures`、`music`、`videos`、`appData`、`localAppData`、`programData`、`userProfile`、`startup`、`downloads`、`temp`。也接受其他值，详见成员说明。 |
 
 返回类型：`string`。空值、用户取消和异常行为以成员及域说明为准。
-
-基础能力：读取文件。某些参数或数据来源会追加能力，详见[安全与授权](../security.md)。
 
 <a id="files-reveal" />
 
@@ -384,8 +346,6 @@ void Reveal(params string[] paths)
 
 返回类型：`void`。空值、用户取消和异常行为以成员及域说明为准。
 
-基础能力：读取文件。某些参数或数据来源会追加能力，详见[安全与授权](../security.md)。
-
 <a id="files-getexplorerpath" />
 
 ## Files.GetExplorerPath
@@ -397,8 +357,6 @@ string? GetExplorerPath()
 当前资源管理器窗口的文件夹（桌面返回桌面路径）；不在资源管理器中返回 null。
 
 返回类型：`string?`。空值、用户取消和异常行为以成员及域说明为准。
-
-基础能力：读取资源管理器路径。某些参数或数据来源会追加能力，详见[安全与授权](../security.md)。
 
 <a id="files-setexplorerpath" />
 
@@ -416,8 +374,6 @@ void SetExplorerPath(string directory, Win? window = null)
 | `Win? window = null` | 目标资源管理器窗口；null 为前台窗口。 |
 
 返回类型：`void`。空值、用户取消和异常行为以成员及域说明为准。
-
-基础能力：激活窗口；读取资源管理器路径。某些参数或数据来源会追加能力，详见[安全与授权](../security.md)。
 
 <a id="files-search" />
 
@@ -439,8 +395,6 @@ string[] Search(string query, int limit = 100, bool regex = false, string? sort 
 
 返回类型：`string[]`。空值、用户取消和异常行为以成员及域说明为准。
 
-基础能力：读取文件。某些参数或数据来源会追加能力，详见[安全与授权](../security.md)。
-
 <a id="files-hash" />
 
 ## Files.Hash
@@ -459,6 +413,22 @@ string Hash(string path, string algorithm = "sha256", string output = "hex")
 
 返回类型：`string`。空值、用户取消和异常行为以成员及域说明为准。
 
-基础能力：读取文件。某些参数或数据来源会追加能力，详见[安全与授权](../security.md)。
+<a id="files-listrecent" />
+
+## Files.ListRecent
+
+```csharp
+RecentFile[] ListRecent(int limit = 20, string? extension = null, bool includeFolders = false)
+```
+
+用户最近使用的文件（Windows 的 Recent 文件夹），按最近使用时间倒序：快捷方式先按更新时间排序，再惰性解析 .lnk，凑够 limit 条匹配结果就停止；目标已不存在的、重复的、文件夹（includeFolders 为 true 时保留）、扩展名不符的都会跳过。网络目标（UNC 路径、映射的网络盘）不探测是否存在（断开的网络位置会卡很久），按原样返回，IsDirectory 为 false，可能已不存在。只读 Recent 文件夹并探测本地目标是否存在，不读文件内容。没有记录返回空数组。
+
+| 参数声明 | 说明 |
+|---|---|
+| `int limit = 20` | 最多返回条数，1–500。 |
+| `string? extension = null` | 只留该扩展名的文件，如 ".pdf" 或 "pdf"（不区分大小写）；null 不过滤。 |
+| `bool includeFolders = false` | 是否保留文件夹（默认 false，只返回文件）。 |
+
+返回类型：`RecentFile[]`。空值、用户取消和异常行为以成员及域说明为准。
 
 {/* script-api:end */}

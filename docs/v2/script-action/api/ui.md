@@ -33,8 +33,6 @@ SelectResult? Select(IEnumerable<object> items, string? note = null, string? sel
 
 返回类型：`SelectResult?`。空值、用户取消和异常行为以成员及域说明为准。
 
-基础能力：无基础能力授权要求。某些参数或数据来源会追加能力，详见[安全与授权](../security.md)。
-
 <a id="ui-selectmany" />
 
 ## Ui.SelectMany
@@ -57,8 +55,6 @@ SelectManyResult? SelectMany(IEnumerable<object> items, string? note = null, IEn
 | `UiOptions? options = null` | 窗口选项（标题、位置等）。 |
 
 返回类型：`SelectManyResult?`。空值、用户取消和异常行为以成员及域说明为准。
-
-基础能力：无基础能力授权要求。某些参数或数据来源会追加能力，详见[安全与授权](../security.md)。
 
 <a id="ui-prompt" />
 
@@ -83,8 +79,6 @@ string? Prompt(string message, string value = "", bool multiline = false, bool r
 
 返回类型：`string?`。空值、用户取消和异常行为以成员及域说明为准。
 
-基础能力：无基础能力授权要求。某些参数或数据来源会追加能力，详见[安全与授权](../security.md)。
-
 <a id="ui-promptnumber" />
 
 ## Ui.PromptNumber
@@ -104,8 +98,6 @@ double? PromptNumber(string message, double? value = null, string? pattern = nul
 
 返回类型：`double?`。空值、用户取消和异常行为以成员及域说明为准。
 
-基础能力：无基础能力授权要求。某些参数或数据来源会追加能力，详见[安全与授权](../security.md)。
-
 <a id="ui-promptdate" />
 
 ## Ui.PromptDate
@@ -124,8 +116,6 @@ DateTimeOffset? PromptDate(string message, DateTimeOffset? value = null, UiOptio
 
 返回类型：`DateTimeOffset?`。空值、用户取消和异常行为以成员及域说明为准。
 
-基础能力：无基础能力授权要求。某些参数或数据来源会追加能力，详见[安全与授权](../security.md)。
-
 <a id="ui-alert" />
 
 ## Ui.Alert
@@ -143,8 +133,6 @@ void Alert(string message, string icon = "info", UiOptions? options = null)
 | `UiOptions? options = null` | 见本成员和所在域的说明。 |
 
 返回类型：`void`。空值、用户取消和异常行为以成员及域说明为准。
-
-基础能力：无基础能力授权要求。某些参数或数据来源会追加能力，详见[安全与授权](../security.md)。
 
 <a id="ui-confirm" />
 
@@ -165,8 +153,6 @@ bool Confirm(string message, bool yesNo = false, string icon = "question", UiOpt
 
 返回类型：`bool`。空值、用户取消和异常行为以成员及域说明为准。
 
-基础能力：无基础能力授权要求。某些参数或数据来源会追加能力，详见[安全与授权](../security.md)。
-
 <a id="ui-ask" />
 
 ## Ui.Ask
@@ -186,8 +172,6 @@ string? Ask(string message, IEnumerable<string> buttons, string? defaultValue = 
 | `UiOptions? options = null` | 见本成员和所在域的说明。 |
 
 返回类型：`string?`。空值、用户取消和异常行为以成员及域说明为准。
-
-基础能力：无基础能力授权要求。某些参数或数据来源会追加能力，详见[安全与授权](../security.md)。
 
 <a id="ui-form" />
 
@@ -213,8 +197,6 @@ FormResult? Form(IEnumerable<Field> fields, IDictionary<string, object?>? values
 
 返回类型：`FormResult?`。空值、用户取消和异常行为以成员及域说明为准。
 
-基础能力：无基础能力授权要求。某些参数或数据来源会追加能力，详见[安全与授权](../security.md)。
-
 <a id="ui-showtext" />
 
 ## Ui.ShowText
@@ -238,8 +220,6 @@ TextResult ShowText(string text, string[]? operations = null, string? language =
 
 返回类型：`TextResult`。空值、用户取消和异常行为以成员及域说明为准。
 
-基础能力：无基础能力授权要求。某些参数或数据来源会追加能力，详见[安全与授权](../security.md)。
-
 <a id="ui-notify" />
 
 ## Ui.Notify
@@ -259,11 +239,9 @@ void Notify(string message, string kind = "info", string? title = null, int dura
 | `string position = "bottomCenter"` | bottomCenter&#124;bottomLeft&#124;bottomRight&#124;topCenter&#124;topLeft&#124;topRight。 取值：`bottomCenter`、`bottomLeft`、`bottomRight`、`topCenter`、`topLeft`、`topRight`。 |
 | `string? key = null` | 通知标识（按动作隔离，不能含冒号）；同 key 的通知仍在显示时按 duplicate 处理。 |
 | `string duplicate = "replace"` | 同 key 的通知仍在显示时：replace（替换，默认）&#124;count（合并计数）&#124;ignore（忽略新通知）；需要同时给出 key。 取值：`replace`、`count`、`ignore`。 |
-| `string? click = null` | 点击操作（同“通知”步骤语法）；需要进程能力。@button/@buttons 按钮只允许 run/open/copy/none 操作。 |
+| `string? click = null` | 点击操作（同“通知”步骤语法）。@button/@buttons 按钮只允许 run/open/copy/none 操作。 |
 
 返回类型：`void`。空值、用户取消和异常行为以成员及域说明为准。
-
-基础能力：无基础能力授权要求。某些参数或数据来源会追加能力，详见[安全与授权](../security.md)。
 
 <a id="ui-pin" />
 
@@ -283,8 +261,6 @@ void Pin(object content, Pt? at = null, string kind = "auto")
 
 返回类型：`void`。空值、用户取消和异常行为以成员及域说明为准。
 
-基础能力：无基础能力授权要求。某些参数或数据来源会追加能力，详见[安全与授权](../security.md)。
-
 <a id="ui-pickfile" />
 
 ## Ui.PickFile
@@ -303,8 +279,6 @@ string? PickFile(string? filter = null, string? directory = null, UiOptions? opt
 
 返回类型：`string?`。空值、用户取消和异常行为以成员及域说明为准。
 
-基础能力：无基础能力授权要求。某些参数或数据来源会追加能力，详见[安全与授权](../security.md)。
-
 <a id="ui-pickfiles" />
 
 ## Ui.PickFiles
@@ -322,8 +296,6 @@ string[]? PickFiles(string? filter = null, string? directory = null, UiOptions? 
 | `UiOptions? options = null` | 见本成员和所在域的说明。 |
 
 返回类型：`string[]?`。空值、用户取消和异常行为以成员及域说明为准。
-
-基础能力：无基础能力授权要求。某些参数或数据来源会追加能力，详见[安全与授权](../security.md)。
 
 <a id="ui-picksavefile" />
 
@@ -344,8 +316,6 @@ string? PickSaveFile(string? filter = null, string? fileName = null, string? dir
 
 返回类型：`string?`。空值、用户取消和异常行为以成员及域说明为准。
 
-基础能力：无基础能力授权要求。某些参数或数据来源会追加能力，详见[安全与授权](../security.md)。
-
 <a id="ui-pickfolder" />
 
 ## Ui.PickFolder
@@ -362,8 +332,6 @@ string? PickFolder(string? directory = null, UiOptions? options = null)
 | `UiOptions? options = null` | 见本成员和所在域的说明。 |
 
 返回类型：`string?`。空值、用户取消和异常行为以成员及域说明为准。
-
-基础能力：无基础能力授权要求。某些参数或数据来源会追加能力，详见[安全与授权](../security.md)。
 
 <a id="ui-opentext" />
 
@@ -384,8 +352,6 @@ TextWin OpenText(string text, string[]? operations = null, string? language = nu
 
 返回类型：`TextWin`。空值、用户取消和异常行为以成员及域说明为准。
 
-基础能力：无基础能力授权要求。某些参数或数据来源会追加能力，详见[安全与授权](../security.md)。
-
 <a id="ui-showmenu" />
 
 ## Ui.ShowMenu
@@ -404,8 +370,6 @@ string? ShowMenu(IEnumerable<object> items, bool focus = false, int fontSize = 0
 | `int iconSize = 0` | 图标大小，0 为 16（8–64）。 |
 
 返回类型：`string?`。空值、用户取消和异常行为以成员及域说明为准。
-
-基础能力：无基础能力授权要求。某些参数或数据来源会追加能力，详见[安全与授权](../security.md)。
 
 <a id="ui-openprogress" />
 
@@ -429,8 +393,6 @@ ProgressWin OpenProgress(string text, string? title = null, double? percent = nu
 
 返回类型：`ProgressWin`。空值、用户取消和异常行为以成员及域说明为准。
 
-基础能力：无基础能力授权要求。某些参数或数据来源会追加能力，详见[安全与授权](../security.md)。
-
 <a id="ui-showimage" />
 
 ## Ui.ShowImage
@@ -452,8 +414,6 @@ void ShowImage(Img image, double scale = 1, bool wait = false, double opacity = 
 
 返回类型：`void`。空值、用户取消和异常行为以成员及域说明为准。
 
-基础能力：无基础能力授权要求。某些参数或数据来源会追加能力，详见[安全与授权](../security.md)。
-
 <a id="ui-pickpoint" />
 
 ## Ui.PickPoint
@@ -465,8 +425,6 @@ Pt? PickPoint()
 让用户在屏幕上点选一个点（全屏遮罩），返回屏幕物理像素；取消返回 null；另一个截图/选择进行中报 CAPTURE_BUSY。
 
 返回类型：`Pt?`。空值、用户取消和异常行为以成员及域说明为准。
-
-基础能力：无基础能力授权要求。某些参数或数据来源会追加能力，详见[安全与授权](../security.md)。
 
 <a id="ui-pickarea" />
 
@@ -484,8 +442,6 @@ Rect? PickArea(bool detect = true)
 
 返回类型：`Rect?`。空值、用户取消和异常行为以成员及域说明为准。
 
-基础能力：无基础能力授权要求。某些参数或数据来源会追加能力，详见[安全与授权](../security.md)。
-
 <a id="ui-pickwindow" />
 
 ## Ui.PickWindow
@@ -497,8 +453,6 @@ Win? PickWindow()
 让用户点选一个窗口，返回其顶层窗口的 Win（计 1 次窗口观察；提权窗口报 ELEVATED_TARGET_DENIED）；取消返回 null。
 
 返回类型：`Win?`。空值、用户取消和异常行为以成员及域说明为准。
-
-基础能力：无基础能力授权要求。某些参数或数据来源会追加能力，详见[安全与授权](../security.md)。
 
 <a id="ui-pickcolor" />
 
@@ -517,8 +471,6 @@ string? PickColor(string? initialColor = null, bool fromScreen = false, bool alp
 | `bool alpha = false` | 返回含透明度的 "#AARRGGBB"。 |
 
 返回类型：`string?`。空值、用户取消和异常行为以成员及域说明为准。
-
-基础能力：无基础能力授权要求。某些参数或数据来源会追加能力，详见[安全与授权](../security.md)。
 
 <a id="ui-editlist" />
 
@@ -543,8 +495,6 @@ List<string>? EditList(IEnumerable<string> items, string? note = null, bool allo
 
 返回类型：`List<string>?`。空值、用户取消和异常行为以成员及域说明为准。
 
-基础能力：无基础能力授权要求。某些参数或数据来源会追加能力，详见[安全与授权](../security.md)。
-
 <a id="ui-edittable" />
 
 ## Ui.EditTable
@@ -566,8 +516,6 @@ List<Dictionary<string, object?>>? EditTable(IEnumerable<IDictionary<string, obj
 
 返回类型：`List<Dictionary<string, object?>>?`。空值、用户取消和异常行为以成员及域说明为准。
 
-基础能力：无基础能力授权要求。某些参数或数据来源会追加能力，详见[安全与授权](../security.md)。
-
 <a id="ui-react" />
 
 ## Ui.React
@@ -587,7 +535,5 @@ object? React(string source, object? input = null, int width = 0, int height = 0
 | `UiOptions? options = null` | 只使用 Title（缺省为动作标题）；Position/Bounds/Topmost/Font 等其余字段不生效。窗口在鼠标所在屏幕的工作区居中显示。 |
 
 返回类型：`object?`。空值、用户取消和异常行为以成员及域说明为准。
-
-基础能力：无基础能力授权要求。某些参数或数据来源会追加能力，详见[安全与授权](../security.md)。
 
 {/* script-api:end */}

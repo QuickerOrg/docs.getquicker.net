@@ -8,7 +8,7 @@ sidebar_position: 10
 
 {/* script-api:start */}
 
-Quicker 自身与账号服务（信息、命令、云端数据、临时分享、账号绑定加解密）；调用其他动作见 qk.Actions。云端数据（GetCloud/SetCloud/RemoveCloud）按 Quicker 用户跨动作、跨设备共享。
+Quicker 自身与账号服务（信息、命令、云端数据、临时分享、账号绑定加解密、一次性提醒）；调用其他动作见 qk.Actions。云端数据（GetCloud/SetCloud/RemoveCloud）按 Quicker 用户跨动作、跨设备共享。
 
 <a id="quicker-info" />
 
@@ -18,11 +18,9 @@ Quicker 自身与账号服务（信息、命令、云端数据、临时分享、
 QuickerInfo Info()
 ```
 
-读取 Quicker 版本、专业版状态、用户标识（UnionId）、暂停状态、主题与运行时长。需要“读取可识别信息”能力。
+读取 Quicker 版本、专业版状态、用户标识（UnionId）、暂停状态、主题与运行时长。
 
 返回类型：`QuickerInfo`。空值、用户取消和异常行为以成员及域说明为准。
-
-基础能力：读取系统信息。某些参数或数据来源会追加能力，详见[安全与授权](../security.md)。
 
 <a id="quicker-command" />
 
@@ -32,7 +30,7 @@ QuickerInfo Info()
 void Command(string command, string? argument = null)
 ```
 
-执行 Quicker 命令，发出即返回（showPanel 最多等 2 秒面板出现）；未知 command 报 INVALID_ARGUMENT（不开放退出 Quicker、删除动作等）。togglePause/stopAll/loadProfile/restart 需要“控制 Quicker”能力，runLast 需要“调用动作”能力；其他失败 QUICKER_COMMAND_FAILED。
+执行 Quicker 命令，发出即返回（showPanel 最多等 2 秒面板出现）；未知 command 报 INVALID_ARGUMENT（不开放退出 Quicker、删除动作等）。其他失败 QUICKER_COMMAND_FAILED。
 
 | 参数声明 | 说明 |
 |---|---|
@@ -40,8 +38,6 @@ void Command(string command, string? argument = null)
 | `string? argument = null` | showSearch 的预填搜索文字；showCircleMenu 可选的场景 exe（"_curr" 为当前程序）；editAction 的动作 Id/名称/动作库 Id（不接受 %% 前缀）；editSubprogram 的公共子程序名称或 Id；loadProfile 的动作页 Id（editAction/editSubprogram/loadProfile 必填；找不到报 INVALID_ARGUMENT）。 |
 
 返回类型：`void`。空值、用户取消和异常行为以成员及域说明为准。
-
-基础能力：无基础能力授权要求。某些参数或数据来源会追加能力，详见[安全与授权](../security.md)。
 
 <a id="quicker-getcloud" />
 
@@ -58,8 +54,6 @@ string? GetCloud(string key)
 | `string key` | 见本成员和所在域的说明。 |
 
 返回类型：`string?`。空值、用户取消和异常行为以成员及域说明为准。
-
-基础能力：访问网络；读写账号云端数据。某些参数或数据来源会追加能力，详见[安全与授权](../security.md)。
 
 <a id="quicker-setcloud" />
 
@@ -78,8 +72,6 @@ void SetCloud(string key, string value)
 
 返回类型：`void`。空值、用户取消和异常行为以成员及域说明为准。
 
-基础能力：访问网络；读写账号云端数据。某些参数或数据来源会追加能力，详见[安全与授权](../security.md)。
-
 <a id="quicker-removecloud" />
 
 ## Quicker.RemoveCloud
@@ -95,8 +87,6 @@ void RemoveCloud(string key)
 | `string key` | 见本成员和所在域的说明。 |
 
 返回类型：`void`。空值、用户取消和异常行为以成员及域说明为准。
-
-基础能力：访问网络；读写账号云端数据。某些参数或数据来源会追加能力，详见[安全与授权](../security.md)。
 
 <a id="quicker-sharetemporary" />
 
@@ -114,8 +104,6 @@ string ShareTemporary(object content)
 
 返回类型：`string`。空值、用户取消和异常行为以成员及域说明为准。
 
-基础能力：访问网络；上传临时分享。某些参数或数据来源会追加能力，详见[安全与授权](../security.md)。
-
 <a id="quicker-sharetemporaryfile" />
 
 ## Quicker.ShareTemporaryFile
@@ -124,7 +112,7 @@ string ShareTemporary(object content)
 string ShareTemporaryFile(string path, bool randomName = false)
 ```
 
-上传本机文件（最多 10 MB，需要读文件能力）到 Quicker 临时分享并返回网址（他人可访问，有效期由服务器决定）。
+上传本机文件（最多 10 MB）到 Quicker 临时分享并返回网址（他人可访问，有效期由服务器决定）。
 
 | 参数声明 | 说明 |
 |---|---|
@@ -132,8 +120,6 @@ string ShareTemporaryFile(string path, bool randomName = false)
 | `bool randomName = false` | true：网址使用随机文件名（保留扩展名）；false：网址保留原文件名。 |
 
 返回类型：`string`。空值、用户取消和异常行为以成员及域说明为准。
-
-基础能力：读取文件；访问网络；上传临时分享。某些参数或数据来源会追加能力，详见[安全与授权](../security.md)。
 
 <a id="quicker-encryptlocal" />
 
@@ -151,8 +137,6 @@ string EncryptLocal(string text)
 
 返回类型：`string`。空值、用户取消和异常行为以成员及域说明为准。
 
-基础能力：无基础能力授权要求。某些参数或数据来源会追加能力，详见[安全与授权](../security.md)。
-
 <a id="quicker-decryptlocal" />
 
 ## Quicker.DecryptLocal
@@ -161,7 +145,7 @@ string EncryptLocal(string text)
 string DecryptLocal(string cipherText)
 ```
 
-解密“自用加密”的 Base64 密文，返回 UTF-8 文本；需要“解密自用加密数据”能力（可解开本账号下任何动作保存的密文）。密文无效、不是本账号加密或结果不是 UTF-8 报 INVALID_ARGUMENT；未登录报 ACCESS_DENIED。
+解密“自用加密”的 Base64 密文，返回 UTF-8 文本；可解开本账号下任何动作保存的密文。密文无效、不是本账号加密或结果不是 UTF-8 报 INVALID_ARGUMENT；未登录报 ACCESS_DENIED。
 
 | 参数声明 | 说明 |
 |---|---|
@@ -169,6 +153,51 @@ string DecryptLocal(string cipherText)
 
 返回类型：`string`。空值、用户取消和异常行为以成员及域说明为准。
 
-基础能力：自用解密。某些参数或数据来源会追加能力，详见[安全与授权](../security.md)。
+<a id="quicker-remind" />
+
+## Quicker.Remind
+
+```csharp
+string Remind(string title, string? text = null, DateTimeOffset? dueAt = null, long? delayMs = null)
+```
+
+创建一次性提醒并返回提醒 Id：脚本不必等待（qk_run 整次运行最多 30 秒），到点由 Quicker 自身弹出常驻通知（标题 + 正文，不抢焦点）。按账号落盘，Quicker 重启后仍有效；到点时 Quicker 没运行的，会在下次启动时补一次并标注“（已错过，原定 HH:mm）”。dueAt（具体时刻）与 delayMs（多少毫秒后，long）必须恰好给一个，时间须在现在之后 5 秒到 30 天之内，否则 INVALID_ARGUMENT；title 1–100 字符，text 至多 1000 字符。没有“修改”：要改请先 CancelReminder 再重新 Remind；脚本重复运行会重复创建提醒（需要去重请先 ListReminders）。提醒归创建它的动作（qk_run 为 AI 一次性脚本）所有：ListReminders / CancelReminder 只看得到、取消得了自己创建的；安装来源的脚本需要用户确认“设置提醒”。每个账号最多 50 条待触发提醒、同一动作最多 20 条、每次运行最多新建 20 条，超出 LIMIT_EXCEEDED。提醒、定时的需求不要新建动作，也不要在脚本里等待。
+
+| 参数声明 | 说明 |
+|---|---|
+| `string title` | 提醒标题，1–100 字符。 |
+| `string? text = null` | 提醒正文，至多 1000 字符；null 时通知只显示标题。 |
+| `DateTimeOffset? dueAt = null` | 具体触发时刻（DateTimeOffset，如 DateTimeOffset.Now.Date.AddDays(1).AddHours(9)）；与 delayMs 二选一。 |
+| `long? delayMs = null` | 多少毫秒后触发（如 600000 = 10 分钟后，范围 5000–2592000000）；与 dueAt 二选一。 |
+
+返回类型：`string`。空值、用户取消和异常行为以成员及域说明为准。
+
+<a id="quicker-listreminders" />
+
+## Quicker.ListReminders
+
+```csharp
+ReminderInfo[] ListReminders()
+```
+
+列出本动作自己创建的待触发提醒，按触发时间升序（已触发、已取消的与其他动作的提醒不在其中）。
+
+返回类型：`ReminderInfo[]`。空值、用户取消和异常行为以成员及域说明为准。
+
+<a id="quicker-cancelreminder" />
+
+## Quicker.CancelReminder
+
+```csharp
+bool CancelReminder(string id)
+```
+
+按提醒 Id 取消本动作自己创建的一条待触发提醒；Id 不存在（含已触发）或不是本动作创建的返回 false，不报错。
+
+| 参数声明 | 说明 |
+|---|---|
+| `string id` | Quicker.Remind 返回的提醒 Id。 |
+
+返回类型：`bool`。空值、用户取消和异常行为以成员及域说明为准。
 
 {/* script-api:end */}

@@ -8,7 +8,7 @@ sidebar_position: 15
 
 ## 每次运行的限额
 
-限额用于防止脚本失控，具体数值可能放宽。超出时一般报 `LIMIT_EXCEEDED` 或所在域的 `*_LIMIT_EXCEEDED`。
+下表是 qk API 的每次运行限额，用于防止失控，具体数值可能放宽。2.3.23 起可直接调用 .NET；这些调用不受下表的 qk 限额约束，也不保证能被动作停止立即打断。超出时一般报 `LIMIT_EXCEEDED` 或所在域的 `*_LIMIT_EXCEEDED`。
 
 | 范围 | 限额 |
 |---|---|

@@ -27,8 +27,6 @@ string? GetText(int timeoutMs = 500, string format = "text")
 
 返回类型：`string?`。空值、用户取消和异常行为以成员及域说明为准。
 
-基础能力：读取选中文本。某些参数或数据来源会追加能力，详见[安全与授权](../security.md)。
-
 <a id="selection-getfiles" />
 
 ## Selection.GetFiles
@@ -40,7 +38,5 @@ string[] GetFiles()
 资源管理器或桌面中选中的文件/文件夹（完整路径）；不在资源管理器中返回空数组。最多 256 项。
 
 返回类型：`string[]`。空值、用户取消和异常行为以成员及域说明为准。
-
-基础能力：读取资源管理器路径。某些参数或数据来源会追加能力，详见[安全与授权](../security.md)。
 
 {/* script-api:end */}

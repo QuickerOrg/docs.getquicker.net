@@ -8,7 +8,7 @@ sidebar_position: 10
 
 {/* script-api:start */}
 
-进度窗口句柄（qk.Ui.OpenProgress 返回）：仅本次运行有效，不能返回或写入 State；本次运行新建的窗口在运行结束（含停止、超时）时自动关闭。停止后的 finally 中仍可调用 Close；读取 Closed/Operation 不需要能力，任何时候都可用。
+进度窗口句柄（qk.Ui.OpenProgress 返回）：仅本次运行有效，不能返回或写入 State；本次运行新建的窗口在运行结束（含停止、超时）时自动关闭。停止后的 finally 中仍可调用 Close；读取 Closed/Operation 任何时候都可用。
 
 ## 属性
 
@@ -35,8 +35,6 @@ void Update(string? text = null, double? percent = null, string? title = null)
 
 返回类型：`void`。空值、用户取消和异常行为以成员及域说明为准。
 
-基础能力：无基础能力授权要求。某些参数或数据来源会追加能力，详见[安全与授权](../../security.md)。
-
 <a id="progresswin-waitforclose" />
 
 ## ProgressWin.WaitForClose
@@ -49,8 +47,6 @@ string? WaitForClose()
 
 返回类型：`string?`。空值、用户取消和异常行为以成员及域说明为准。
 
-基础能力：无基础能力授权要求。某些参数或数据来源会追加能力，详见[安全与授权](../../security.md)。
-
 <a id="progresswin-close" />
 
 ## ProgressWin.Close
@@ -62,7 +58,5 @@ void Close()
 关闭窗口；已关闭时无操作。
 
 返回类型：`void`。空值、用户取消和异常行为以成员及域说明为准。
-
-基础能力：无基础能力授权要求。某些参数或数据来源会追加能力，详见[安全与授权](../../security.md)。
 
 {/* script-api:end */}

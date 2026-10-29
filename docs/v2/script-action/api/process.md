@@ -8,7 +8,7 @@ sidebar_position: 10
 
 {/* script-api:start */}
 
-启动程序、用关联程序打开文件/网址、运行命令行并读取输出、列出与结束进程；在已打开的程序内部执行代码见 qk.Apps。以普通（非提升）权限启动。Run 被停止或 timeoutMs 到期时停止等待并尽力结束进程树。常见错误码：PROCESS_FAILED（启动失败）、PROCESS_TIMEOUT（Run 超时）、LIMIT_EXCEEDED（输出或列表超限）。
+启动程序、用关联程序打开文件/网址、运行命令行并读取输出、列出进程、按 CPU/内存排名（ListUsage）与结束进程；在已打开的程序内部执行代码见 qk.Apps。以普通（非提升）权限启动。Run 被停止或 timeoutMs 到期时停止等待并尽力结束进程树。常见错误码：PROCESS_FAILED（启动失败）、PROCESS_TIMEOUT（Run 超时）、LIMIT_EXCEEDED（输出或列表超限）。
 
 <a id="process-start" />
 
@@ -28,8 +28,6 @@ int Start(string executable, string[]? arguments = null, string workingDirectory
 
 返回类型：`int`。空值、用户取消和异常行为以成员及域说明为准。
 
-基础能力：启动程序或打开文件/网址。某些参数或数据来源会追加能力，详见[安全与授权](../security.md)。
-
 <a id="process-open" />
 
 ## Process.Open
@@ -45,8 +43,6 @@ void Open(string target)
 | `string target` | 见本成员和所在域的说明。 |
 
 返回类型：`void`。空值、用户取消和异常行为以成员及域说明为准。
-
-基础能力：启动程序或打开文件/网址。某些参数或数据来源会追加能力，详见[安全与授权](../security.md)。
 
 <a id="process-run" />
 
@@ -68,8 +64,6 @@ ProcResult Run(string executable, string[]? arguments = null, string workingDire
 
 返回类型：`ProcResult`。空值、用户取消和异常行为以成员及域说明为准。
 
-基础能力：启动程序或打开文件/网址。某些参数或数据来源会追加能力，详见[安全与授权](../security.md)。
-
 <a id="process-list" />
 
 ## Process.List
@@ -86,7 +80,23 @@ ProcInfo[] List(string? name = null)
 
 返回类型：`ProcInfo[]`。空值、用户取消和异常行为以成员及域说明为准。
 
-基础能力：读取窗口信息。某些参数或数据来源会追加能力，详见[安全与授权](../security.md)。
+<a id="process-listusage" />
+
+## Process.ListUsage
+
+```csharp
+ProcUsage[] ListUsage(int limit = 10, string sort = "cpu", string? name = null)
+```
+
+当前登录会话中占用最高的进程（只读）：sort 为 cpu（默认）或 memory，limit 1–100（默认 10）；name 只统计该进程名（规则同 Process.List：不含路径，可省略 .exe，不区分大小写）。CPU 取约 0.5 秒内两次采样的差值（调用会阻塞约半秒，可被停止打断），按处理器数归一；MemoryBytes 为工作集。读不到的进程（提权/管理员进程、采样期间退出）直接跳过，不报错；采样期间新启动的进程不计入；同名多进程各算一项。
+
+| 参数声明 | 说明 |
+|---|---|
+| `int limit = 10` | 返回条数，1–100。 |
+| `string sort = "cpu"` | cpu（默认）&#124; memory；不区分大小写。 取值：`cpu`、`memory`。 |
+| `string? name = null` | 见本成员和所在域的说明。 |
+
+返回类型：`ProcUsage[]`。空值、用户取消和异常行为以成员及域说明为准。
 
 <a id="process-kill" />
 
@@ -96,7 +106,7 @@ ProcInfo[] List(string? name = null)
 int Kill(int pid)
 ```
 
-结束进程（不含子进程），返回结束的进程数（没有在运行为 0，不报错）。Kill(pid) 结束指定进程（只能是当前登录会话中的进程）；Kill(name) 结束当前会话中全部同名进程（名称规则同 List）。拒绝其他会话的进程、Quicker 自身及辅助进程、资源管理器与关键系统进程（INVALID_ARGUMENT，一个都不结束）；无权限（如管理员进程）报 PROCESS_FAILED（按名称时全部失败才报）。需要“强制结束程序”能力（可能丢失未保存数据）。
+结束进程（不含子进程），返回结束的进程数（没有在运行为 0，不报错）。Kill(pid) 结束指定进程（只能是当前登录会话中的进程）；Kill(name) 结束当前会话中全部同名进程（名称规则同 List）。拒绝其他会话的进程、Quicker 自身及辅助进程、资源管理器与关键系统进程（INVALID_ARGUMENT，一个都不结束）；无权限（如管理员进程）报 PROCESS_FAILED（按名称时全部失败才报）。可能丢失未保存数据。
 
 | 参数声明 | 说明 |
 |---|---|
@@ -104,21 +114,17 @@ int Kill(int pid)
 
 返回类型：`int`。空值、用户取消和异常行为以成员及域说明为准。
 
-基础能力：强制结束程序。某些参数或数据来源会追加能力，详见[安全与授权](../security.md)。
-
 
 ```csharp
 int Kill(string name)
 ```
 
-结束进程（不含子进程），返回结束的进程数（没有在运行为 0，不报错）。Kill(pid) 结束指定进程（只能是当前登录会话中的进程）；Kill(name) 结束当前会话中全部同名进程（名称规则同 List）。拒绝其他会话的进程、Quicker 自身及辅助进程、资源管理器与关键系统进程（INVALID_ARGUMENT，一个都不结束）；无权限（如管理员进程）报 PROCESS_FAILED（按名称时全部失败才报）。需要“强制结束程序”能力（可能丢失未保存数据）。
+结束进程（不含子进程），返回结束的进程数（没有在运行为 0，不报错）。Kill(pid) 结束指定进程（只能是当前登录会话中的进程）；Kill(name) 结束当前会话中全部同名进程（名称规则同 List）。拒绝其他会话的进程、Quicker 自身及辅助进程、资源管理器与关键系统进程（INVALID_ARGUMENT，一个都不结束）；无权限（如管理员进程）报 PROCESS_FAILED（按名称时全部失败才报）。可能丢失未保存数据。
 
 | 参数声明 | 说明 |
 |---|---|
 | `string name` | 进程名（不含路径，可省略 .exe）。 |
 
 返回类型：`int`。空值、用户取消和异常行为以成员及域说明为准。
-
-基础能力：强制结束程序。某些参数或数据来源会追加能力，详见[安全与授权](../security.md)。
 
 {/* script-api:end */}

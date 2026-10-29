@@ -28,9 +28,18 @@ comments: true
 
 多设备使用、降级或回退前，请阅读[升级与回退](/v2/migration/upgrade-and-rollback)。各版本的具体风险也在下方对应条目中标出。
 
-本站已补充到 **2.3.22**；版本下载与完整修复记录以官网为准。
+本站已补充到 **2.3.23**；版本下载与完整修复记录以官网为准。
 
 ## 近期文档补充
+
+### 2.3.23 · 脚本 .NET、截图布局与文件收发
+
+- [脚本动作](../v2/script-action/language.md)开放 .NET 类型，方法修饰符可自动忽略；[安全说明](../v2/script-action/security.md)同步调整为当前执行权限和停止边界。
+- [截图工具栏](../v2/features/screenshot/capture-pro.md#toolbar-layout-2323)统一整理更多菜单，保存后立即刷新当前普通截图；恢复默认可正确保存，指定贴图组可重新显示全部未关闭贴图。
+- [WebSocket 文件接收目录](../v2/features/http-websocket.md#receive-directory-2323)可按本机设置，连续接收合并通知，发送二进制文件显示进度。
+- [AI 工具结果与草稿确认](../v2/features/ai-and-agent.md#tool-results-2323)说明检查、保存和设置跳转的结果，以及草稿外观修改的确认范围。
+- 修复快捷键截图下拉框提前收起、OCR 小窗滚动、悬浮分组打开、轮盘边界滚轮和 AI 参数初始化卡死等问题；调整滑块数字框宽度，并修正 V2 帮助入口。（[#606](https://github.com/QuickerOrg/Quicker2-issues/issues/606)、[#623](https://github.com/QuickerOrg/Quicker2-issues/issues/623)）完整记录见[官网版本记录](https://getquicker.net/v2/versions)。
+- **升级与回退**：安装和导入的脚本不再逐项确认能力；新 .NET 调用可能无法在旧版运行，早期 AI 配置读取路径退役。请先阅读[本版注意事项](../v2/migration/upgrade-and-rollback.md#script-and-settings-2323)。
 
 ### 2.3.22 · 截图工具栏、脚本编辑与 AI 工具
 

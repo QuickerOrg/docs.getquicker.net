@@ -8,7 +8,7 @@ sidebar_position: 10
 
 {/* script-api:start */}
 
-浏览器中的网页（标签页、元素、表单、页面脚本），经 Quicker 浏览器扩展读取和操作；单纯请求网址或下载见 qk.Http。Chrome/Edge 等需安装并连接扩展（Open 不经扩展）。目标浏览器为前台/最近使用的已连接浏览器，本次运行内不变；tabId 为 null 表示其当前标签页。错误码：BROWSER_UNAVAILABLE（没有已连接的扩展）、BROWSER_FAILED（扩展返回错误、找不到元素、标签页已关闭）、BROWSER_TIMEOUT（扩展无响应）。
+浏览器中的网页（标签页、元素、表单、页面脚本），经 Quicker 浏览器扩展读取和操作；单纯请求网址或下载见 qk.Http。Chrome/Edge 等需安装并连接扩展（Open 与 SearchBookmarks 不经扩展）。目标浏览器为前台/最近使用的已连接浏览器，本次运行内不变；tabId 为 null 表示其当前标签页。错误码：BROWSER_UNAVAILABLE（没有已连接的扩展）、BROWSER_FAILED（扩展返回错误、找不到元素、标签页已关闭）、BROWSER_TIMEOUT（扩展无响应）。
 
 <a id="browser-open" />
 
@@ -18,7 +18,7 @@ sidebar_position: 10
 void Open(string url, string browser = "default")
 ```
 
-用浏览器打开网址（启动程序，不经扩展，需要启动程序能力）；启动失败报 PROCESS_FAILED。
+用浏览器打开网址（启动程序，不经扩展）；启动失败报 PROCESS_FAILED。
 
 | 参数声明 | 说明 |
 |---|---|
@@ -26,8 +26,6 @@ void Open(string url, string browser = "default")
 | `string browser = "default"` | default&#124;edge&#124;chrome&#124;current（前台浏览器）&#124;edgeApp&#124;edgeIncognito&#124;chromeApp&#124;chromeIncognito&#124;浏览器 exe 的完整路径（以普通权限启动，网址作为参数）。 取值：`default`、`edge`、`chrome`、`current`、`edgeApp`、`edgeIncognito`、`chromeApp`、`chromeIncognito`。也接受其他值，详见成员说明。 |
 
 返回类型：`void`。空值、用户取消和异常行为以成员及域说明为准。
-
-基础能力：启动程序或打开文件/网址。某些参数或数据来源会追加能力，详见[安全与授权](../security.md)。
 
 <a id="browser-geturl" />
 
@@ -41,8 +39,6 @@ string? GetUrl()
 
 返回类型：`string?`。空值、用户取消和异常行为以成员及域说明为准。
 
-基础能力：操作浏览器页面。某些参数或数据来源会追加能力，详见[安全与授权](../security.md)。
-
 <a id="browser-listtabs" />
 
 ## Browser.ListTabs
@@ -54,8 +50,6 @@ Tab[] ListTabs()
 目标浏览器（首次调用时选定的已连接浏览器，本次运行内不变）的全部标签页。
 
 返回类型：`Tab[]`。空值、用户取消和异常行为以成员及域说明为准。
-
-基础能力：操作浏览器页面。某些参数或数据来源会追加能力，详见[安全与授权](../security.md)。
 
 <a id="browser-opentab" />
 
@@ -74,8 +68,6 @@ int OpenTab(string url, bool wait = true)
 
 返回类型：`int`。空值、用户取消和异常行为以成员及域说明为准。
 
-基础能力：操作浏览器页面。某些参数或数据来源会追加能力，详见[安全与授权](../security.md)。
-
 <a id="browser-activatetab" />
 
 ## Browser.ActivateTab
@@ -91,8 +83,6 @@ void ActivateTab(int tabId)
 | `int tabId` | 标签页 Id（来自 ListTabs/OpenTab）。 |
 
 返回类型：`void`。空值、用户取消和异常行为以成员及域说明为准。
-
-基础能力：操作浏览器页面。某些参数或数据来源会追加能力，详见[安全与授权](../security.md)。
 
 <a id="browser-closetab" />
 
@@ -110,8 +100,6 @@ void CloseTab(int tabId)
 
 返回类型：`void`。空值、用户取消和异常行为以成员及域说明为准。
 
-基础能力：操作浏览器页面。某些参数或数据来源会追加能力，详见[安全与授权](../security.md)。
-
 <a id="browser-eval" />
 
 ## Browser.Eval
@@ -120,7 +108,7 @@ void CloseTab(int tabId)
 object? Eval(string script, int? tabId = null, int frameId = 0, int timeoutMs = 30000)
 ```
 
-在页面中执行 JS 并返回结果（JSON 数据：Dictionary/List/string/bool 或 null；整数为 long、小数为 decimal，用 Convert.ToInt32(x)/Convert.ToDouble(x) 转换，不要 (int)x 强转）；高风险能力。MV3 扩展需开启“允许运行用户脚本”。
+在页面中执行 JS 并返回结果（JSON 数据：Dictionary/List/string/bool 或 null；整数为 long、小数为 decimal，用 Convert.ToInt32(x)/Convert.ToDouble(x) 转换，不要 (int)x 强转）。MV3 扩展需开启“允许运行用户脚本”。
 
 | 参数声明 | 说明 |
 |---|---|
@@ -130,8 +118,6 @@ object? Eval(string script, int? tabId = null, int frameId = 0, int timeoutMs = 
 | `int timeoutMs = 30000` | 等待结果的超时毫秒（200–300000，默认 30000；扩展传输需要有限超时，不支持 0）；超时报 BROWSER_TIMEOUT（宿主只停止等待，页面脚本可能仍在运行）。 |
 
 返回类型：`object?`。空值、用户取消和异常行为以成员及域说明为准。
-
-基础能力：在外部程序中执行脚本或命令（高风险）。某些参数或数据来源会追加能力，详见[安全与授权](../security.md)。
 
 <a id="browser-act" />
 
@@ -153,8 +139,6 @@ void Act(string target, string action = "click", string? value = null, int? tabI
 
 返回类型：`void`。空值、用户取消和异常行为以成员及域说明为准。
 
-基础能力：操作浏览器页面。某些参数或数据来源会追加能力，详见[安全与授权](../security.md)。
-
 <a id="browser-waitfor" />
 
 ## Browser.WaitFor
@@ -173,8 +157,6 @@ bool WaitFor(string? target = null, string? urlPattern = null, int timeoutMs = 1
 | `int? tabId = null` | 见本成员和所在域的说明。 |
 
 返回类型：`bool`。空值、用户取消和异常行为以成员及域说明为准。
-
-基础能力：操作浏览器页面。某些参数或数据来源会追加能力，详见[安全与授权](../security.md)。
 
 <a id="browser-extract" />
 
@@ -195,8 +177,6 @@ List<Dictionary<string, object?>> Extract(string template, int? tabId = null, in
 | `int timeoutMs = 30000` | 整个调用的超时 1000–300000 毫秒。 |
 
 返回类型：`List<Dictionary<string, object?>>`。空值、用户取消和异常行为以成员及域说明为准。
-
-基础能力：操作浏览器页面。某些参数或数据来源会追加能力，详见[安全与授权](../security.md)。
 
 <a id="browser-fill" />
 
@@ -219,8 +199,6 @@ FillResult Fill(string template, IDictionary<string, object?> data, int? tabId =
 
 返回类型：`FillResult`。空值、用户取消和异常行为以成员及域说明为准。
 
-基础能力：操作浏览器页面。某些参数或数据来源会追加能力，详见[安全与授权](../security.md)。
-
 <a id="browser-upload" />
 
 ## Browser.Upload
@@ -229,7 +207,7 @@ FillResult Fill(string template, IDictionary<string, object?> data, int? tabId =
 void Upload(string target, IEnumerable<string> files, int? tabId = null, string? urlPattern = null, int timeoutMs = 30000)
 ```
 
-把本机文件放入页面的文件输入框（需要读文件能力；浏览器按路径读取文件并显示调试提示条）。
+把本机文件放入页面的文件输入框（浏览器按路径读取文件并显示调试提示条）。
 
 | 参数声明 | 说明 |
 |---|---|
@@ -241,8 +219,6 @@ void Upload(string target, IEnumerable<string> files, int? tabId = null, string?
 
 返回类型：`void`。空值、用户取消和异常行为以成员及域说明为准。
 
-基础能力：读取文件；操作浏览器页面。某些参数或数据来源会追加能力，详见[安全与授权](../security.md)。
-
 <a id="browser-command" />
 
 ## Browser.Command
@@ -251,7 +227,7 @@ void Upload(string target, IEnumerable<string> files, int? tabId = null, string?
 object? Command(string command, object? arguments = null, int? tabId = null, int timeoutMs = 30000)
 ```
 
-【高风险】执行浏览器扩展后台命令并返回结果（与 Eval 同一能力）。拒绝（INVALID_ARGUMENT）：读写或运行本机文件的命令（上传/拖放/下载/打开下载文件/写入下载文件夹的截图与归档）、调试协议、删除浏览数据、读取或删除历史、扩展自身存储、未给 url 的 Cookie 命令、已有专门方法的 page.* 命令、租约与诊断命令。
+执行浏览器扩展后台命令并返回结果。拒绝（INVALID_ARGUMENT）：读写或运行本机文件的命令（上传/拖放/下载/打开下载文件/写入下载文件夹的截图与归档）、调试协议、删除浏览数据、读取或删除历史、扩展自身存储、未给 url 的 Cookie 命令、已有专门方法的 page.* 命令、租约与诊断命令。
 
 | 参数声明 | 说明 |
 |---|---|
@@ -262,6 +238,22 @@ object? Command(string command, object? arguments = null, int? tabId = null, int
 
 返回类型：`object?`。空值、用户取消和异常行为以成员及域说明为准。
 
-基础能力：在外部程序中执行脚本或命令（高风险）。某些参数或数据来源会追加能力，详见[安全与授权](../security.md)。
+<a id="browser-searchbookmarks" />
+
+## Browser.SearchBookmarks
+
+```csharp
+Bookmark[] SearchBookmarks(string query, int limit = 20, string? browser = null)
+```
+
+在本机浏览器书签中搜索：直接读浏览器的 Bookmarks 文件，不需要浏览器扩展，浏览器也不用开着。query 的每个词都须出现在标题、网址或文件夹中（不区分大小写），标题命中的排前面。只覆盖各浏览器的默认用户配置（其他配置文件的书签搜不到）；不读取浏览历史、Cookie 或已保存的密码。
+
+| 参数声明 | 说明 |
+|---|---|
+| `string query` | 关键词；多个词用空格分隔，须全部命中。 |
+| `int limit = 20` | 最多返回条数，1–200。 |
+| `string? browser = null` | chrome &#124; msedge &#124; 360chromex &#124; vivaldi（不接受别名）；null 搜索全部已知浏览器。 取值：`chrome`、`msedge`、`360chromex`、`vivaldi`。 |
+
+返回类型：`Bookmark[]`。空值、用户取消和异常行为以成员及域说明为准。
 
 {/* script-api:end */}

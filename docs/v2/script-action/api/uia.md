@@ -8,7 +8,7 @@ sidebar_position: 10
 
 {/* script-api:start */}
 
-其他程序窗口里的界面元素（查找/读取/操作）；Quicker 自己的对话框见 qk.Ui，窗口本身见 qk.Window。window 为 null 表示前台窗口。El 仅本次运行有效；Find 找不到返回 null，元素消失或所在窗口关闭后使用 El 报 UIA_REF_STALE；高权限窗口报 ELEVATED_TARGET_DENIED；Quicker 自身窗口不能读取也不能操作，报 UIA_TARGET_DENIED；无法确定所在窗口的元素按找不到处理。常见错误码：UIA_PATTERN_UNSUPPORTED（元素不支持该操作）、UIA_NOT_FOUND（菜单项/对话框）、UIA_TIMEOUT（程序无响应，单次 10 秒）、UIA_LIMIT_EXCEEDED（每次运行读取 400 次、操作 100 次、El 1024 个、累计 120 秒）。读取需要“读取界面元素”能力，操作需要“操作界面元素”能力。
+其他程序窗口里的界面元素（查找/读取/操作）；Quicker 自己的对话框见 qk.Ui，窗口本身见 qk.Window。window 为 null 表示前台窗口。El 仅本次运行有效；Find 找不到返回 null，元素消失或所在窗口关闭后使用 El 报 UIA_REF_STALE；高权限窗口报 ELEVATED_TARGET_DENIED；Quicker 自身窗口不能读取也不能操作，报 UIA_TARGET_DENIED；无法确定所在窗口的元素按找不到处理。常见错误码：UIA_PATTERN_UNSUPPORTED（元素不支持该操作）、UIA_NOT_FOUND（菜单项/对话框）、UIA_TIMEOUT（程序无响应，单次 10 秒）、UIA_LIMIT_EXCEEDED（每次运行读取 400 次、操作 100 次、El 1024 个、累计 120 秒）。
 
 <a id="uia-find" />
 
@@ -32,8 +32,6 @@ El? Find(Win? window = null, string? name = null, string? controlType = null, st
 
 返回类型：`El?`。空值、用户取消和异常行为以成员及域说明为准。
 
-基础能力：读取其他程序的界面元素。某些参数或数据来源会追加能力，详见[安全与授权](../security.md)。
-
 <a id="uia-findall" />
 
 ## Uia.FindAll
@@ -55,8 +53,6 @@ El[] FindAll(Win? window = null, string? name = null, string? controlType = null
 
 返回类型：`El[]`。空值、用户取消和异常行为以成员及域说明为准。
 
-基础能力：读取其他程序的界面元素。某些参数或数据来源会追加能力，详见[安全与授权](../security.md)。
-
 <a id="uia-frompoint" />
 
 ## Uia.FromPoint
@@ -73,8 +69,6 @@ El? FromPoint(Pt? point = null)
 
 返回类型：`El?`。空值、用户取消和异常行为以成员及域说明为准。
 
-基础能力：读取其他程序的界面元素。某些参数或数据来源会追加能力，详见[安全与授权](../security.md)。
-
 <a id="uia-getfocused" />
 
 ## Uia.GetFocused
@@ -86,8 +80,6 @@ El? GetFocused()
 当前拥有键盘焦点的元素；没有返回 null。
 
 返回类型：`El?`。空值、用户取消和异常行为以成员及域说明为准。
-
-基础能力：读取其他程序的界面元素。某些参数或数据来源会追加能力，详见[安全与授权](../security.md)。
 
 <a id="uia-info" />
 
@@ -105,8 +97,6 @@ ElInfo Info(El element)
 
 返回类型：`ElInfo`。空值、用户取消和异常行为以成员及域说明为准。
 
-基础能力：读取其他程序的界面元素。某些参数或数据来源会追加能力，详见[安全与授权](../security.md)。
-
 <a id="uia-act" />
 
 ## Uia.Act
@@ -120,11 +110,9 @@ void Act(El element, string action = "invoke")
 | 参数声明 | 说明 |
 |---|---|
 | `El element` | 见本成员和所在域的说明。 |
-| `string action = "invoke"` | invoke（默认，按钮/菜单项）&#124;click（经鼠标输入真实点击元素，另需鼠标能力；元素在屏幕外时先 scroll）&#124;check / uncheck（复选框、开关按钮：设为勾选 / 不勾选，已是该状态时不操作，优先于 toggle）&#124;toggle（翻转当前状态）&#124;expand&#124;collapse（组合框、树节点、菜单）&#124;select（单选、标签页、列表项）&#124;focus&#124;scroll（滚动到可见）。元素不支持时报 UIA_PATTERN_UNSUPPORTED。 取值：`invoke`、`click`、`toggle`、`check`、`uncheck`、`expand`、`collapse`、`select`、`focus`、`scroll`。 |
+| `string action = "invoke"` | invoke（默认，按钮/菜单项）&#124;click（经鼠标输入真实点击元素；元素在屏幕外时先 scroll）&#124;check / uncheck（复选框、开关按钮：设为勾选 / 不勾选，已是该状态时不操作，优先于 toggle）&#124;toggle（翻转当前状态）&#124;expand&#124;collapse（组合框、树节点、菜单）&#124;select（单选、标签页、列表项）&#124;focus&#124;scroll（滚动到可见）。元素不支持时报 UIA_PATTERN_UNSUPPORTED。 取值：`invoke`、`click`、`toggle`、`check`、`uncheck`、`expand`、`collapse`、`select`、`focus`、`scroll`。 |
 
 返回类型：`void`。空值、用户取消和异常行为以成员及域说明为准。
-
-基础能力：操作其他程序的界面元素。某些参数或数据来源会追加能力，详见[安全与授权](../security.md)。
 
 <a id="uia-setvalue" />
 
@@ -142,8 +130,6 @@ void SetValue(El element, string value)
 | `string value` | 见本成员和所在域的说明。 |
 
 返回类型：`void`。空值、用户取消和异常行为以成员及域说明为准。
-
-基础能力：操作其他程序的界面元素。某些参数或数据来源会追加能力，详见[安全与授权](../security.md)。
 
 <a id="uia-gettree" />
 
@@ -163,8 +149,6 @@ string GetTree(Win? window = null, int depth = 6, bool interactiveOnly = true)
 
 返回类型：`string`。空值、用户取消和异常行为以成员及域说明为准。
 
-基础能力：读取其他程序的界面元素。某些参数或数据来源会追加能力，详见[安全与授权](../security.md)。
-
 <a id="uia-clickmenu" />
 
 ## Uia.ClickMenu
@@ -182,8 +166,6 @@ void ClickMenu(string path, Win? window = null)
 
 返回类型：`void`。空值、用户取消和异常行为以成员及域说明为准。
 
-基础能力：操作其他程序的界面元素。某些参数或数据来源会追加能力，详见[安全与授权](../security.md)。
-
 <a id="uia-setdialogpath" />
 
 ## Uia.SetDialogPath
@@ -197,11 +179,9 @@ void SetDialogPath(string path, bool createDirectory = false, bool pressEnter = 
 | 参数声明 | 说明 |
 |---|---|
 | `string path` | 文件夹或完整文件路径。以 \ 结尾表示文件夹（如 @"D:\out\v1.2\"），否则视为文件。 |
-| `bool createDirectory = false` | 先创建缺少的文件夹（另需写文件能力）：以 \ 结尾时创建整个路径，否则只创建其上级文件夹（不按扩展名猜测）。 |
+| `bool createDirectory = false` | 先创建缺少的文件夹：以 \ 结尾时创建整个路径，否则只创建其上级文件夹（不按扩展名猜测）。 |
 | `bool pressEnter = false` | false（默认）：只填写，由用户确认；true：填写后按 Enter 提交——文件夹路径使对话框跳转，文件路径会让程序立即在该路径保存或打开文件（另存为可能覆盖同名文件）。之后不要再按 Enter。 |
 
 返回类型：`void`。空值、用户取消和异常行为以成员及域说明为准。
-
-基础能力：操作其他程序的界面元素。某些参数或数据来源会追加能力，详见[安全与授权](../security.md)。
 
 {/* script-api:end */}

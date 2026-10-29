@@ -22,8 +22,6 @@ string? GetText()
 
 返回类型：`string?`。空值、用户取消和异常行为以成员及域说明为准。
 
-基础能力：读取剪贴板。某些参数或数据来源会追加能力，详见[安全与授权](../security.md)。
-
 <a id="clipboard-gethtml" />
 
 ## Clipboard.GetHtml
@@ -35,8 +33,6 @@ string? GetHtml()
 读取 HTML 片段正文（去掉 CF_HTML 头）；没有返回 null。
 
 返回类型：`string?`。空值、用户取消和异常行为以成员及域说明为准。
-
-基础能力：读取剪贴板。某些参数或数据来源会追加能力，详见[安全与授权](../security.md)。
 
 <a id="clipboard-get" />
 
@@ -54,8 +50,6 @@ string? Get(string format)
 
 返回类型：`string?`。空值、用户取消和异常行为以成员及域说明为准。
 
-基础能力：读取剪贴板。某些参数或数据来源会追加能力，详见[安全与授权](../security.md)。
-
 <a id="clipboard-getfiles" />
 
 ## Clipboard.GetFiles
@@ -68,8 +62,6 @@ string[] GetFiles()
 
 返回类型：`string[]`。空值、用户取消和异常行为以成员及域说明为准。
 
-基础能力：读取剪贴板。某些参数或数据来源会追加能力，详见[安全与授权](../security.md)。
-
 <a id="clipboard-getimage" />
 
 ## Clipboard.GetImage
@@ -81,8 +73,6 @@ Img? GetImage()
 读取剪贴板图片；没有图片返回 null；剪贴板被占用或图片数据无法读取报 CLIPBOARD_UNAVAILABLE。
 
 返回类型：`Img?`。空值、用户取消和异常行为以成员及域说明为准。
-
-基础能力：读取剪贴板。某些参数或数据来源会追加能力，详见[安全与授权](../security.md)。
 
 <a id="clipboard-setimage" />
 
@@ -99,8 +89,6 @@ void SetImage(Img image)
 | `Img image` | 见本成员和所在域的说明。 |
 
 返回类型：`void`。空值、用户取消和异常行为以成员及域说明为准。
-
-基础能力：修改剪贴板。某些参数或数据来源会追加能力，详见[安全与授权](../security.md)。
 
 <a id="clipboard-settext" />
 
@@ -119,8 +107,6 @@ void SetText(string text, bool noHistory = false)
 
 返回类型：`void`。空值、用户取消和异常行为以成员及域说明为准。
 
-基础能力：修改剪贴板。某些参数或数据来源会追加能力，详见[安全与授权](../security.md)。
-
 <a id="clipboard-sethtml" />
 
 ## Clipboard.SetHtml
@@ -138,8 +124,6 @@ void SetHtml(string html, string? text = null)
 
 返回类型：`void`。空值、用户取消和异常行为以成员及域说明为准。
 
-基础能力：修改剪贴板。某些参数或数据来源会追加能力，详见[安全与授权](../security.md)。
-
 <a id="clipboard-setfiles" />
 
 ## Clipboard.SetFiles
@@ -148,16 +132,14 @@ void SetHtml(string html, string? text = null)
 void SetFiles(IEnumerable<string> paths, bool cut = false)
 ```
 
-写入文件列表（路径须存在）；需要读文件能力（校验路径会探测本机文件）。
+写入文件列表（路径须存在）；校验路径会探测本机文件。
 
 | 参数声明 | 说明 |
 |---|---|
 | `IEnumerable<string> paths` | 见本成员和所在域的说明。 |
-| `bool cut = false` | 剪切：粘贴后移动文件；需要写文件能力。 |
+| `bool cut = false` | 剪切：粘贴后移动文件。 |
 
 返回类型：`void`。空值、用户取消和异常行为以成员及域说明为准。
-
-基础能力：修改剪贴板；读取文件。某些参数或数据来源会追加能力，详见[安全与授权](../security.md)。
 
 <a id="clipboard-set" />
 
@@ -176,8 +158,6 @@ void Set(string format, object data)
 
 返回类型：`void`。空值、用户取消和异常行为以成员及域说明为准。
 
-基础能力：修改剪贴板。某些参数或数据来源会追加能力，详见[安全与授权](../security.md)。
-
 <a id="clipboard-clear" />
 
 ## Clipboard.Clear
@@ -194,8 +174,6 @@ void Clear(bool history = false)
 
 返回类型：`void`。空值、用户取消和异常行为以成员及域说明为准。
 
-基础能力：修改剪贴板。某些参数或数据来源会追加能力，详见[安全与授权](../security.md)。
-
 <a id="clipboard-waitforchange" />
 
 ## Clipboard.WaitForChange
@@ -211,7 +189,5 @@ bool WaitForChange(int timeoutMs = 5000)
 | `int timeoutMs = 5000` | 超时毫秒（最长 3600000，即 1 小时）。 |
 
 返回类型：`bool`。空值、用户取消和异常行为以成员及域说明为准。
-
-基础能力：读取剪贴板。某些参数或数据来源会追加能力，详见[安全与授权](../security.md)。
 
 {/* script-api:end */}

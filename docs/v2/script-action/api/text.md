@@ -8,7 +8,7 @@ sidebar_position: 10
 
 {/* script-api:start */}
 
-纯计算的文本工具（哈希、拼音、HTML 解析）；显示文本见 qk.Ui.ShowText。不需要能力。
+纯计算的文本工具（哈希、拼音、HTML 解析）；显示文本见 qk.Ui.ShowText。
 
 <a id="text-hash" />
 
@@ -29,8 +29,6 @@ string Hash(object data, string algorithm = "sha256", string? hmacKey = null, st
 
 返回类型：`string`。空值、用户取消和异常行为以成员及域说明为准。
 
-基础能力：无基础能力授权要求。某些参数或数据来源会追加能力，详见[安全与授权](../security.md)。
-
 <a id="text-topinyin" />
 
 ## Text.ToPinyin
@@ -50,8 +48,6 @@ string ToPinyin(string text, bool initials = false, bool allReadings = false, st
 
 返回类型：`string`。空值、用户取消和异常行为以成员及域说明为准。
 
-基础能力：无基础能力授权要求。某些参数或数据来源会追加能力，详见[安全与授权](../security.md)。
-
 <a id="text-matchpinyin" />
 
 ## Text.MatchPinyin
@@ -69,8 +65,6 @@ text 是否匹配 query（包含、全拼、首字母或混合；空格分隔的
 
 返回类型：`bool`。空值、用户取消和异常行为以成员及域说明为准。
 
-基础能力：无基础能力授权要求。某些参数或数据来源会追加能力，详见[安全与授权](../security.md)。
-
 <a id="text-htmltotext" />
 
 ## Text.HtmlToText
@@ -86,8 +80,6 @@ HTML 转纯文本（同“文本处理”步骤的 html2text）：去掉 script/
 | `string html` | 见本成员和所在域的说明。 |
 
 返回类型：`string`。空值、用户取消和异常行为以成员及域说明为准。
-
-基础能力：无基础能力授权要求。某些参数或数据来源会追加能力，详见[安全与授权](../security.md)。
 
 <a id="text-queryhtml" />
 
@@ -107,7 +99,5 @@ string[] QueryHtml(string html, string xpath, string? attribute = null, string o
 | `string output = "text"` | text（InnerText，已解码实体、去首尾空白）&#124;innerHtml（InnerHtml）&#124;outerHtml（OuterHtml）；均去首尾空白。 取值：`text`、`innerHtml`、`outerHtml`。 |
 
 返回类型：`string[]`。空值、用户取消和异常行为以成员及域说明为准。
-
-基础能力：无基础能力授权要求。某些参数或数据来源会追加能力，详见[安全与授权](../security.md)。
 
 {/* script-api:end */}

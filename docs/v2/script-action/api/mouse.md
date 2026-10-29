@@ -22,8 +22,6 @@ Pt GetPosition()
 
 返回类型：`Pt`。空值、用户取消和异常行为以成员及域说明为准。
 
-基础能力：鼠标自动化。某些参数或数据来源会追加能力，详见[安全与授权](../security.md)。
-
 <a id="mouse-moveto" />
 
 ## Mouse.MoveTo
@@ -41,8 +39,6 @@ Pt MoveTo(Pt to, int durationMs = 0)
 
 返回类型：`Pt`。空值、用户取消和异常行为以成员及域说明为准。
 
-基础能力：鼠标自动化。某些参数或数据来源会追加能力，详见[安全与授权](../security.md)。
-
 <a id="mouse-moveby" />
 
 ## Mouse.MoveBy
@@ -59,8 +55,6 @@ Pt MoveBy(int dx, int dy)
 | `int dy` | 见本成员和所在域的说明。 |
 
 返回类型：`Pt`。空值、用户取消和异常行为以成员及域说明为准。
-
-基础能力：鼠标自动化。某些参数或数据来源会追加能力，详见[安全与授权](../security.md)。
 
 <a id="mouse-click" />
 
@@ -80,8 +74,6 @@ Pt Click(Pt? at = null, string button = "left", int count = 1)
 
 返回类型：`Pt`。空值、用户取消和异常行为以成员及域说明为准。
 
-基础能力：鼠标自动化。某些参数或数据来源会追加能力，详见[安全与授权](../security.md)。
-
 <a id="mouse-down" />
 
 ## Mouse.Down
@@ -98,8 +90,6 @@ void Down(string button = "left")
 
 返回类型：`void`。空值、用户取消和异常行为以成员及域说明为准。
 
-基础能力：鼠标自动化。某些参数或数据来源会追加能力，详见[安全与授权](../security.md)。
-
 <a id="mouse-up" />
 
 ## Mouse.Up
@@ -115,8 +105,6 @@ void Up(string button = "left")
 | `string button = "left"` | 见本成员和所在域的说明。 取值：`left`、`right`、`middle`。 |
 
 返回类型：`void`。空值、用户取消和异常行为以成员及域说明为准。
-
-基础能力：鼠标自动化。某些参数或数据来源会追加能力，详见[安全与授权](../security.md)。
 
 <a id="mouse-scroll" />
 
@@ -135,8 +123,6 @@ Pt Scroll(int clicks, bool horizontal = false)
 
 返回类型：`Pt`。空值、用户取消和异常行为以成员及域说明为准。
 
-基础能力：鼠标自动化。某些参数或数据来源会追加能力，详见[安全与授权](../security.md)。
-
 <a id="mouse-dragto" />
 
 ## Mouse.DragTo
@@ -154,8 +140,6 @@ Pt DragTo(Pt to, int durationMs = 300)
 
 返回类型：`Pt`。空值、用户取消和异常行为以成员及域说明为准。
 
-基础能力：鼠标自动化。某些参数或数据来源会追加能力，详见[安全与授权](../security.md)。
-
 <a id="mouse-restoreposition" />
 
 ## Mouse.RestorePosition
@@ -168,8 +152,6 @@ Pt RestorePosition()
 
 返回类型：`Pt`。空值、用户取消和异常行为以成员及域说明为准。
 
-基础能力：鼠标自动化。某些参数或数据来源会追加能力，详见[安全与授权](../security.md)。
-
 <a id="mouse-getcursor" />
 
 ## Mouse.GetCursor
@@ -178,10 +160,8 @@ Pt RestorePosition()
 string GetCursor()
 ```
 
-当前鼠标指针形状：arrow|iBeam|hand|wait|appStarting|cross|no|help|sizeAll|sizeNs|sizeWe|sizeNwse|sizeNesw|upArrow，隐藏为 "hidden"，其他为 "unknown"。只读，不需确认。
+当前鼠标指针形状：arrow|iBeam|hand|wait|appStarting|cross|no|help|sizeAll|sizeNs|sizeWe|sizeNwse|sizeNesw|upArrow，隐藏为 "hidden"，其他为 "unknown"。只读。
 
 返回类型：`string`。空值、用户取消和异常行为以成员及域说明为准。
-
-基础能力：无基础能力授权要求。某些参数或数据来源会追加能力，详见[安全与授权](../security.md)。
 
 {/* script-api:end */}

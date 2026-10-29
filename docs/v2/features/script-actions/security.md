@@ -1,6 +1,6 @@
 ---
 title: 脚本动作安全与授权
-description: 脚本动作的沙箱边界、按来源的能力授权、高风险提示与分享规则。
+description: 脚本动作的 .NET 执行权限、运行确认、停止边界与分享规则。
 sidebar_position: 2
 quickerDocKey: v2/features/script-actions/security
 comments: true
@@ -9,6 +9,8 @@ comments: true
 # 脚本动作安全与授权
 
 **2.3.0 或更高版本**可用。脚本动作现已整理为独立的文档体系：入门、语言、参数、调试、AI 助手、恢复、安全、教程与按域 API 参考。
+
+2.3.23 起开放 .NET 类型，安装和导入的脚本不再逐项确认能力；旧章节名仅为保留历史链接，当前行为以完整说明为准。
 
 请从[完整安全与授权说明](../../script-action/security.md)阅读。下面保留原章节入口，方便已有收藏与链接继续使用。
 

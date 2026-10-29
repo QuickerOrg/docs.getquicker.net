@@ -32,8 +32,6 @@ string Ask(string prompt, string? system = null, string? useCase = null, IEnumer
 
 返回类型：`string`。空值、用户取消和异常行为以成员及域说明为准。
 
-基础能力：调用 AI 或翻译服务。某些参数或数据来源会追加能力，详见[安全与授权](../security.md)。
-
 <a id="ai-extract" />
 
 ## Ai.Extract
@@ -53,8 +51,6 @@ JsonNode? Extract(string text, string schema, string? instructions = null, strin
 | `int timeoutMs = 120000` | 见本成员和所在域的说明。 |
 
 返回类型：`JsonNode?`。空值、用户取消和异常行为以成员及域说明为准。
-
-基础能力：调用 AI 或翻译服务。某些参数或数据来源会追加能力，详见[安全与授权](../security.md)。
 
 <a id="ai-classify" />
 
@@ -76,8 +72,6 @@ ClassifyResult Classify(string text, IDictionary<string, string> categories, str
 
 返回类型：`ClassifyResult`。空值、用户取消和异常行为以成员及域说明为准。
 
-基础能力：调用 AI 或翻译服务。某些参数或数据来源会追加能力，详见[安全与授权](../security.md)。
-
 <a id="ai-askimage" />
 
 ## Ai.AskImage
@@ -98,8 +92,6 @@ string AskImage(Img image, string prompt, string? system = null, string? useCase
 
 返回类型：`string`。空值、用户取消和异常行为以成员及域说明为准。
 
-基础能力：调用 AI 或翻译服务。某些参数或数据来源会追加能力，详见[安全与授权](../security.md)。
-
 <a id="ai-translate" />
 
 ## Ai.Translate
@@ -119,8 +111,6 @@ string Translate(string text, string targetLanguage = "zh", string? sourceLangua
 | `int timeoutMs = 120000` | 单次超时毫秒（默认 120000；0 为只受动作超时约束）；超时报 TRANSLATE_TIMEOUT。 |
 
 返回类型：`string`。空值、用户取消和异常行为以成员及域说明为准。
-
-基础能力：调用 AI 或翻译服务。某些参数或数据来源会追加能力，详见[安全与授权](../security.md)。
 
 <a id="ai-chat" />
 
@@ -143,7 +133,5 @@ ChatResult? Chat(string prompt, string? conversationId = null, string? system = 
 | `int maxTokens = 0` | 见本成员和所在域的说明。 |
 
 返回类型：`ChatResult?`。空值、用户取消和异常行为以成员及域说明为准。
-
-基础能力：调用 AI 或翻译服务。某些参数或数据来源会追加能力，详见[安全与授权](../security.md)。
 
 {/* script-api:end */}

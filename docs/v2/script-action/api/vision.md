@@ -31,8 +31,6 @@ Hit[] FindImage(Img template, Rect? area = null, Win? window = null, double simi
 
 返回类型：`Hit[]`。空值、用户取消和异常行为以成员及域说明为准。
 
-基础能力：读取屏幕图像。某些参数或数据来源会追加能力，详见[安全与授权](../security.md)。
-
 <a id="vision-findcolor" />
 
 ## Vision.FindColor
@@ -52,8 +50,6 @@ Pt[] FindColor(string color, Rect? area = null, Win? window = null, int toleranc
 | `int limit = 1` | 最多返回数（1–64）；从左上角按行扫描。 |
 
 返回类型：`Pt[]`。空值、用户取消和异常行为以成员及域说明为准。
-
-基础能力：读取屏幕图像。某些参数或数据来源会追加能力，详见[安全与授权](../security.md)。
 
 <a id="vision-findtext" />
 
@@ -76,8 +72,6 @@ Hit[] FindText(string text, Rect? area = null, Win? window = null, int timeoutMs
 
 返回类型：`Hit[]`。空值、用户取消和异常行为以成员及域说明为准。
 
-基础能力：读取屏幕图像；本机文字识别。某些参数或数据来源会追加能力，详见[安全与授权](../security.md)。
-
 <a id="vision-ocr" />
 
 ## Vision.Ocr
@@ -97,8 +91,6 @@ OcrResult Ocr(object? source = null, string model = "small", bool detectOrientat
 
 返回类型：`OcrResult`。空值、用户取消和异常行为以成员及域说明为准。
 
-基础能力：读取屏幕图像；本机文字识别。某些参数或数据来源会追加能力，详见[安全与授权](../security.md)。
-
 <a id="vision-ocrtable" />
 
 ## Vision.OcrTable
@@ -117,8 +109,6 @@ OcrTableResult OcrTable(object? source = null, bool detectOrientation = false, i
 
 返回类型：`OcrTableResult`。空值、用户取消和异常行为以成员及域说明为准。
 
-基础能力：读取屏幕图像；本机文字识别。某些参数或数据来源会追加能力，详见[安全与授权](../security.md)。
-
 <a id="vision-readqr" />
 
 ## Vision.ReadQr
@@ -134,7 +124,5 @@ string[] ReadQr(Img image)
 | `Img image` | 见本成员和所在域的说明。 |
 
 返回类型：`string[]`。空值、用户取消和异常行为以成员及域说明为准。
-
-基础能力：无基础能力授权要求。某些参数或数据来源会追加能力，详见[安全与授权](../security.md)。
 
 {/* script-api:end */}

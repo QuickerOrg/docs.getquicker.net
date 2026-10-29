@@ -8,7 +8,7 @@ sidebar_position: 10
 
 {/* script-api:start */}
 
-在 Office/WPS/Adobe/CAD 等程序内部执行代码或调用插件命令；启动程序见 qk.Process。支持 Office/WPS VBA、Adobe JS、AutoCAD 命令、Rhino 脚本与软件连接插件命令，经低权限代理执行（不在 Quicker 进程内）；高风险能力。
+在 Office/WPS/Adobe/CAD 等程序内部执行代码或调用插件命令；启动程序见 qk.Process。支持 Office/WPS VBA、Adobe JS、AutoCAD 命令、Rhino 脚本与软件连接插件命令，经低权限代理执行（不在 Quicker 进程内）。
 
 <a id="apps-run" />
 
@@ -18,7 +18,7 @@ sidebar_position: 10
 string? Run(string app, string code, bool wait = true, int timeoutMs = 30000, bool launch = false)
 ```
 
-经低权限代理在目标程序中执行代码并返回结果文本（对象为 JSON）；高风险能力。停止脚本只中止等待，已发送的代码仍会执行完。错误码：APP_UNAVAILABLE（未安装/未运行/代理不可用）、APP_FAILED（程序返回的错误）、APP_TIMEOUT。
+经低权限代理在目标程序中执行代码并返回结果文本（对象为 JSON）。停止脚本只中止等待，已发送的代码仍会执行完。错误码：APP_UNAVAILABLE（未安装/未运行/代理不可用）、APP_FAILED（程序返回的错误）、APP_TIMEOUT。
 
 | 参数声明 | 说明 |
 |---|---|
@@ -30,8 +30,6 @@ string? Run(string app, string code, bool wait = true, int timeoutMs = 30000, bo
 
 返回类型：`string?`。空值、用户取消和异常行为以成员及域说明为准。
 
-基础能力：在外部程序中执行脚本或命令（高风险）。某些参数或数据来源会追加能力，详见[安全与授权](../security.md)。
-
 <a id="apps-bridge" />
 
 ## Apps.Bridge
@@ -40,7 +38,7 @@ string? Run(string app, string code, bool wait = true, int timeoutMs = 30000, bo
 object? Bridge(string app, string command, object? arguments = null, int timeoutMs = 30000, string? target = null)
 ```
 
-调用软件连接（Bridge 插件）命令并返回解码后的结果（对象为 Dictionary、数组为 List，同 Browser.Eval；没有结果为 null）；需在 设置 → 软件连接 中开启，且目标软件的插件已连接；高风险能力。错误码：BRIDGE_DISABLED、BRIDGE_TARGET_NOT_FOUND、BRIDGE_TARGET_AMBIGUOUS（多个实例，请从目标窗口触发）、BRIDGE_TIMEOUT、BRIDGE_BUSY（软件连接正在切换，稍后重试）；插件返回失败时报 BRIDGE_FAILED，插件自己的错误码在 e.Detail；结果不是有效 JSON 或超过 1 MiB/10000 项等数据上限时报 BRIDGE_FAILED（e.Detail 为 RESULT_INVALID），此时命令可能已在目标软件中执行，请勿盲目重试。
+调用软件连接（Bridge 插件）命令并返回解码后的结果（对象为 Dictionary、数组为 List，同 Browser.Eval；没有结果为 null）；需在 设置 → 软件连接 中开启，且目标软件的插件已连接。错误码：BRIDGE_DISABLED、BRIDGE_TARGET_NOT_FOUND、BRIDGE_TARGET_AMBIGUOUS（多个实例，请从目标窗口触发）、BRIDGE_TIMEOUT、BRIDGE_BUSY（软件连接正在切换，稍后重试）；插件返回失败时报 BRIDGE_FAILED，插件自己的错误码在 e.Detail；结果不是有效 JSON 或超过 1 MiB/10000 项等数据上限时报 BRIDGE_FAILED（e.Detail 为 RESULT_INVALID），此时命令可能已在目标软件中执行，请勿盲目重试。
 
 | 参数声明 | 说明 |
 |---|---|
@@ -51,8 +49,6 @@ object? Bridge(string app, string command, object? arguments = null, int timeout
 | `string? target = null` | 可选：qk.Apps.ListTargets(app) 返回的 Id，指定实例（多个实例在线时避免 BRIDGE_TARGET_AMBIGUOUS）；null 按唯一在线实例或触发窗口选择。实例已离线 BRIDGE_TARGET_NOT_FOUND；WPS 实例须与命令所属组件一致；motuyun 不支持。 |
 
 返回类型：`object?`。空值、用户取消和异常行为以成员及域说明为准。
-
-基础能力：在外部程序中执行脚本或命令（高风险）。某些参数或数据来源会追加能力，详见[安全与授权](../security.md)。
 
 <a id="apps-listtargets" />
 
@@ -69,8 +65,6 @@ BridgeTarget[] ListTargets(string app)
 | `string app` | 见本成员和所在域的说明。 |
 
 返回类型：`BridgeTarget[]`。空值、用户取消和异常行为以成员及域说明为准。
-
-基础能力：读取窗口信息。某些参数或数据来源会追加能力，详见[安全与授权](../security.md)。
 
 <a id="apps-runofficecommand" />
 
@@ -89,7 +83,5 @@ void RunOfficeCommand(string app, string msoId, int timeoutMs = 10000)
 | `int timeoutMs = 10000` | 见本成员和所在域的说明。 |
 
 返回类型：`void`。空值、用户取消和异常行为以成员及域说明为准。
-
-基础能力：在外部程序中执行脚本或命令（高风险）。某些参数或数据来源会追加能力，详见[安全与授权](../security.md)。
 
 {/* script-api:end */}

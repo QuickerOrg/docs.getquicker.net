@@ -18,15 +18,13 @@ Img 图片的读取、生成二维码、处理与保存为文件（路径规则�
 Img Load(object source)
 ```
 
-读取图片（png/jpg/gif/bmp/tif/ico，不支持 webp；取第一帧，按 EXIF 方向转正）。路径规则与 qk.Files 相同（可用 UNC），需要读文件能力；网址需要网络能力（最多 32 MiB、30 秒）；数据（含 Base64/data URI）最多 64 MiB；ftp:/file: 等其他协议报 INVALID_ARGUMENT，无法解码报 IMAGE_DECODE_FAILED。
+读取图片（png/jpg/gif/bmp/tif/ico，不支持 webp；取第一帧，按 EXIF 方向转正）。路径规则与 qk.Files 相同（可用 UNC），网址最多 32 MiB、30 秒；数据（含 Base64/data URI）最多 64 MiB；ftp:/file: 等其他协议报 INVALID_ARGUMENT，无法解码报 IMAGE_DECODE_FAILED。
 
 | 参数声明 | 说明 |
 |---|---|
 | `object source` | 文件路径、http(s) 网址、byte[]、Base64 或 data URI。 |
 
 返回类型：`Img`。空值、用户取消和异常行为以成员及域说明为准。
-
-基础能力：无基础能力授权要求。某些参数或数据来源会追加能力，详见[安全与授权](../security.md)。
 
 <a id="image-save" />
 
@@ -36,7 +34,7 @@ Img Load(object source)
 string Save(Img image, string path, int quality = 90, bool overwrite = false)
 ```
 
-保存为文件并返回完整路径；格式按扩展名（png|jpg|jpeg|bmp|gif|tif|tiff）。路径规则与 qk.Files 相同，需要写文件能力；写同目录临时文件后替换，已存在且未 overwrite 报 FILE_FAILED，编码失败报 IMAGE_ENCODE_FAILED。
+保存为文件并返回完整路径；格式按扩展名（png|jpg|jpeg|bmp|gif|tif|tiff）。路径规则与 qk.Files 相同；写同目录临时文件后替换，已存在且未 overwrite 报 FILE_FAILED，编码失败报 IMAGE_ENCODE_FAILED。
 
 | 参数声明 | 说明 |
 |---|---|
@@ -46,8 +44,6 @@ string Save(Img image, string path, int quality = 90, bool overwrite = false)
 | `bool overwrite = false` | 覆盖已有文件（默认不覆盖，已存在则报错）。 |
 
 返回类型：`string`。空值、用户取消和异常行为以成员及域说明为准。
-
-基础能力：修改文件。某些参数或数据来源会追加能力，详见[安全与授权](../security.md)。
 
 <a id="image-createqr" />
 
@@ -69,7 +65,5 @@ Img CreateQr(string text, int size = 256, Img? icon = null, string darkColor = "
 | `bool quietZone = true` | 是否保留白边。 |
 
 返回类型：`Img`。空值、用户取消和异常行为以成员及域说明为准。
-
-基础能力：无基础能力授权要求。某些参数或数据来源会追加能力，详见[安全与授权](../security.md)。
 
 {/* script-api:end */}

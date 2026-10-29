@@ -8,7 +8,7 @@ sidebar_position: 10
 
 {/* script-api:start */}
 
-非等待文本窗口句柄（qk.Ui.OpenText 返回）：仅本次运行有效，不能返回或写入 State；窗口本身在运行结束后保留，由用户关闭。窗口关闭后 Append/SetText/Activate/Close 不做任何事（用 Closed 判断）。停止后的 finally 中仍可对它调用 Close/Append/SetText（清理阶段合计最多 64K 字符）；读取 Closed 不需要能力，任何时候都可用。
+非等待文本窗口句柄（qk.Ui.OpenText 返回）：仅本次运行有效，不能返回或写入 State；窗口本身在运行结束后保留，由用户关闭。窗口关闭后 Append/SetText/Activate/Close 不做任何事（用 Closed 判断）。停止后的 finally 中仍可对它调用 Close/Append/SetText（清理阶段合计最多 64K 字符）；读取 Closed 任何时候都可用。
 
 ## 属性
 
@@ -32,8 +32,6 @@ void Append(string text)
 
 返回类型：`void`。空值、用户取消和异常行为以成员及域说明为准。
 
-基础能力：无基础能力授权要求。某些参数或数据来源会追加能力，详见[安全与授权](../../security.md)。
-
 <a id="textwin-settext" />
 
 ## TextWin.SetText
@@ -50,8 +48,6 @@ void SetText(string text)
 
 返回类型：`void`。空值、用户取消和异常行为以成员及域说明为准。
 
-基础能力：无基础能力授权要求。某些参数或数据来源会追加能力，详见[安全与授权](../../security.md)。
-
 <a id="textwin-activate" />
 
 ## TextWin.Activate
@@ -63,8 +59,6 @@ void Activate()
 显示并激活窗口（最小化时还原）。
 
 返回类型：`void`。空值、用户取消和异常行为以成员及域说明为准。
-
-基础能力：无基础能力授权要求。某些参数或数据来源会追加能力，详见[安全与授权](../../security.md)。
 
 <a id="textwin-waitforclose" />
 
@@ -78,8 +72,6 @@ TextResult? WaitForClose()
 
 返回类型：`TextResult?`。空值、用户取消和异常行为以成员及域说明为准。
 
-基础能力：无基础能力授权要求。某些参数或数据来源会追加能力，详见[安全与授权](../../security.md)。
-
 <a id="textwin-close" />
 
 ## TextWin.Close
@@ -91,7 +83,5 @@ void Close()
 关闭窗口（之后 WaitForClose 返回 null）；已关闭时无操作。
 
 返回类型：`void`。空值、用户取消和异常行为以成员及域说明为准。
-
-基础能力：无基础能力授权要求。某些参数或数据来源会追加能力，详见[安全与授权](../../security.md)。
 
 {/* script-api:end */}

@@ -27,8 +27,6 @@ T? Get<T>(string key, T? defaultValue = default)
 
 返回类型：`T?`。空值、用户取消和异常行为以成员及域说明为准。
 
-基础能力：无基础能力授权要求。某些参数或数据来源会追加能力，详见[安全与授权](../security.md)。
-
 <a id="state-set" />
 
 ## State.Set
@@ -46,8 +44,6 @@ void Set(string key, object? value)
 
 返回类型：`void`。空值、用户取消和异常行为以成员及域说明为准。
 
-基础能力：无基础能力授权要求。某些参数或数据来源会追加能力，详见[安全与授权](../security.md)。
-
 <a id="state-gettext" />
 
 ## State.GetText
@@ -63,8 +59,6 @@ string? GetText(string key)
 | `string key` | 见本成员和所在域的说明。 |
 
 返回类型：`string?`。空值、用户取消和异常行为以成员及域说明为准。
-
-基础能力：无基础能力授权要求。某些参数或数据来源会追加能力，详见[安全与授权](../security.md)。
 
 <a id="state-settext" />
 
@@ -83,8 +77,6 @@ void SetText(string key, string value)
 
 返回类型：`void`。空值、用户取消和异常行为以成员及域说明为准。
 
-基础能力：无基础能力授权要求。某些参数或数据来源会追加能力，详见[安全与授权](../security.md)。
-
 <a id="state-remove" />
 
 ## State.Remove
@@ -100,8 +92,6 @@ void Remove(string key)
 | `string key` | 见本成员和所在域的说明。 |
 
 返回类型：`void`。空值、用户取消和异常行为以成员及域说明为准。
-
-基础能力：无基础能力授权要求。某些参数或数据来源会追加能力，详见[安全与授权](../security.md)。
 
 <a id="state-getglobal" />
 
@@ -120,8 +110,6 @@ T? GetGlobal<T>(string key, T? defaultValue = default)
 
 返回类型：`T?`。空值、用户取消和异常行为以成员及域说明为准。
 
-基础能力：无基础能力授权要求。某些参数或数据来源会追加能力，详见[安全与授权](../security.md)。
-
 <a id="state-setglobal" />
 
 ## State.SetGlobal
@@ -139,8 +127,6 @@ void SetGlobal(string key, object? value)
 
 返回类型：`void`。空值、用户取消和异常行为以成员及域说明为准。
 
-基础能力：无基础能力授权要求。某些参数或数据来源会追加能力，详见[安全与授权](../security.md)。
-
 <a id="state-getglobaltext" />
 
 ## State.GetGlobalText
@@ -156,8 +142,6 @@ string? GetGlobalText(string key)
 | `string key` | 见本成员和所在域的说明。 |
 
 返回类型：`string?`。空值、用户取消和异常行为以成员及域说明为准。
-
-基础能力：无基础能力授权要求。某些参数或数据来源会追加能力，详见[安全与授权](../security.md)。
 
 <a id="state-setglobaltext" />
 
@@ -176,8 +160,6 @@ void SetGlobalText(string key, string value)
 
 返回类型：`void`。空值、用户取消和异常行为以成员及域说明为准。
 
-基础能力：无基础能力授权要求。某些参数或数据来源会追加能力，详见[安全与授权](../security.md)。
-
 <a id="state-removeglobal" />
 
 ## State.RemoveGlobal
@@ -193,7 +175,5 @@ void RemoveGlobal(string key)
 | `string key` | 见本成员和所在域的说明。 |
 
 返回类型：`void`。空值、用户取消和异常行为以成员及域说明为准。
-
-基础能力：无基础能力授权要求。某些参数或数据来源会追加能力，详见[安全与授权](../security.md)。
 
 {/* script-api:end */}

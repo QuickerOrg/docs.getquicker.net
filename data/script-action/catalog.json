@@ -1,8 +1,8 @@
 {
   "schemaVersion": 1,
-  "sourceCommit": "d1f1bf2fbc8d0199261f8db113b5b34aed189bb9",
-  "productVersion": "2.3.13+Branch.dev-v2.Sha.d1f1bf2fbc8d0199261f8db113b5b34aed189bb9",
-  "assemblySha256": "616d1d5ac3fb64d3b8998301c5cadf0aa6aefa7715a2c74f807d30c0b4b0e774",
+  "sourceCommit": "e0b9ede7f20fde0778ea8b69017c4c1c9b226edd",
+  "productVersion": "2.3.23+Branch.codex-docs-v2323-export.Sha.e0b9ede7f20fde0778ea8b69017c4c1c9b226edd.e0b9ede7f20fde0778ea8b69017c4c1c9b226edd",
+  "assemblySha256": "9b94590fe00b6f3ca38c202d914e0f477662fbba026342644dbd0ea0553ce0ef",
   "apiVersion": 1,
   "domains": [
     {
@@ -43,7 +43,7 @@
               }
             }
           ],
-          "capability": "None",
+          "usesDesktopInput": false,
           "cleanup": true
         },
         {
@@ -62,7 +62,7 @@
               "values": null
             }
           ],
-          "capability": "None",
+          "usesDesktopInput": false,
           "cleanup": false
         }
       ]
@@ -105,7 +105,7 @@
               }
             }
           ],
-          "capability": "SelectionText",
+          "usesDesktopInput": true,
           "cleanup": false
         },
         {
@@ -115,7 +115,7 @@
           "returns": "string[]",
           "description": "资源管理器或桌面中选中的文件/文件夹（完整路径）；不在资源管理器中返回空数组。最多 256 项。",
           "parameters": [],
-          "capability": "SelectionPaths",
+          "usesDesktopInput": false,
           "cleanup": false
         }
       ]
@@ -148,7 +148,7 @@
               "values": null
             }
           ],
-          "capability": "None",
+          "usesDesktopInput": false,
           "cleanup": true
         },
         {
@@ -175,7 +175,7 @@
               "values": null
             }
           ],
-          "capability": "None",
+          "usesDesktopInput": false,
           "cleanup": true
         },
         {
@@ -194,7 +194,7 @@
               "values": null
             }
           ],
-          "capability": "None",
+          "usesDesktopInput": false,
           "cleanup": true
         },
         {
@@ -221,7 +221,7 @@
               "values": null
             }
           ],
-          "capability": "None",
+          "usesDesktopInput": false,
           "cleanup": true
         },
         {
@@ -240,7 +240,7 @@
               "values": null
             }
           ],
-          "capability": "None",
+          "usesDesktopInput": false,
           "cleanup": true
         },
         {
@@ -267,7 +267,7 @@
               "values": null
             }
           ],
-          "capability": "None",
+          "usesDesktopInput": false,
           "cleanup": true
         },
         {
@@ -294,7 +294,7 @@
               "values": null
             }
           ],
-          "capability": "None",
+          "usesDesktopInput": false,
           "cleanup": true
         },
         {
@@ -313,7 +313,7 @@
               "values": null
             }
           ],
-          "capability": "None",
+          "usesDesktopInput": false,
           "cleanup": true
         },
         {
@@ -340,7 +340,7 @@
               "values": null
             }
           ],
-          "capability": "None",
+          "usesDesktopInput": false,
           "cleanup": true
         },
         {
@@ -359,7 +359,7 @@
               "values": null
             }
           ],
-          "capability": "None",
+          "usesDesktopInput": false,
           "cleanup": true
         }
       ]
@@ -392,7 +392,7 @@
               "values": null
             }
           ],
-          "capability": "ActionInvoke",
+          "usesDesktopInput": false,
           "cleanup": false
         },
         {
@@ -419,7 +419,7 @@
               "values": null
             }
           ],
-          "capability": "ActionInvoke",
+          "usesDesktopInput": false,
           "cleanup": false
         },
         {
@@ -427,7 +427,7 @@
           "name": "Stop",
           "signature": "int Stop(string action)",
           "returns": "int",
-          "description": "按动作 Id 或标题（精确）停止其正在运行的实例（同“运行动作”步骤的停止动作；不含本次运行），只发出停止请求、立即返回停止的实例数（0 不报错，不等待对方结束；返回值也反映该标题的动作是否在运行）。停止以 Actions.Call 等待本脚本的调用方时，本次运行也随之停止。需要“调用或停止动作”能力。",
+          "description": "按动作 Id 或标题（精确）停止其正在运行的实例（同“运行动作”步骤的停止动作；不含本次运行），只发出停止请求、立即返回停止的实例数（0 不报错，不等待对方结束；返回值也反映该标题的动作是否在运行）。停止以 Actions.Call 等待本脚本的调用方时，本次运行也随之停止。",
           "parameters": [
             {
               "name": "action",
@@ -438,7 +438,7 @@
               "values": null
             }
           ],
-          "capability": "ActionInvoke",
+          "usesDesktopInput": false,
           "cleanup": false
         },
         {
@@ -457,7 +457,7 @@
               "values": null
             }
           ],
-          "capability": "None",
+          "usesDesktopInput": false,
           "cleanup": false
         },
         {
@@ -467,7 +467,7 @@
           "returns": "void",
           "description": "停止当前动作的其他运行实例（不影响其他动作），立即返回；常用于切换型脚本开头。未保存的动作报 INVALID_ARGUMENT。",
           "parameters": [],
-          "capability": "None",
+          "usesDesktopInput": false,
           "cleanup": false
         },
         {
@@ -486,7 +486,7 @@
               "values": null
             }
           ],
-          "capability": "None",
+          "usesDesktopInput": false,
           "cleanup": false
         },
         {
@@ -521,7 +521,7 @@
               "values": null
             }
           ],
-          "capability": "None",
+          "usesDesktopInput": false,
           "cleanup": true
         },
         {
@@ -548,7 +548,7 @@
               "values": null
             }
           ],
-          "capability": "None",
+          "usesDesktopInput": false,
           "cleanup": true
         },
         {
@@ -567,7 +567,7 @@
               "values": null
             }
           ],
-          "capability": "None",
+          "usesDesktopInput": false,
           "cleanup": false
         },
         {
@@ -575,7 +575,7 @@
           "name": "ShowContextMenu",
           "signature": "void ShowContextMenu(string? action = null, bool customOnly = true)",
           "returns": "void",
-          "description": "在鼠标处弹出动作的右键菜单，立即返回（不等待选择）；计入对话框限额。需要“调用本机其他动作”能力（点击自定义菜单项会运行该动作）。",
+          "description": "在鼠标处弹出动作的右键菜单，立即返回（不等待选择）；计入对话框限额。点击自定义菜单项会运行该动作。",
           "parameters": [
             {
               "name": "action",
@@ -594,7 +594,7 @@
               "values": null
             }
           ],
-          "capability": "ActionInvoke",
+          "usesDesktopInput": false,
           "cleanup": false
         }
       ]
@@ -675,7 +675,7 @@
               "values": null
             }
           ],
-          "capability": "None",
+          "usesDesktopInput": false,
           "cleanup": false
         },
         {
@@ -750,7 +750,7 @@
               "values": null
             }
           ],
-          "capability": "None",
+          "usesDesktopInput": false,
           "cleanup": false
         },
         {
@@ -825,7 +825,7 @@
               "values": null
             }
           ],
-          "capability": "None",
+          "usesDesktopInput": false,
           "cleanup": false
         },
         {
@@ -868,7 +868,7 @@
               "values": null
             }
           ],
-          "capability": "None",
+          "usesDesktopInput": false,
           "cleanup": false
         },
         {
@@ -903,7 +903,7 @@
               "values": null
             }
           ],
-          "capability": "None",
+          "usesDesktopInput": false,
           "cleanup": false
         },
         {
@@ -949,7 +949,7 @@
               "values": null
             }
           ],
-          "capability": "None",
+          "usesDesktopInput": false,
           "cleanup": false
         },
         {
@@ -1003,7 +1003,7 @@
               "values": null
             }
           ],
-          "capability": "None",
+          "usesDesktopInput": false,
           "cleanup": false
         },
         {
@@ -1065,7 +1065,7 @@
               "values": null
             }
           ],
-          "capability": "None",
+          "usesDesktopInput": false,
           "cleanup": false
         },
         {
@@ -1148,7 +1148,7 @@
               "values": null
             }
           ],
-          "capability": "None",
+          "usesDesktopInput": false,
           "cleanup": false
         },
         {
@@ -1223,7 +1223,7 @@
               "values": null
             }
           ],
-          "capability": "None",
+          "usesDesktopInput": false,
           "cleanup": false
         },
         {
@@ -1326,11 +1326,11 @@
               "type": "string?",
               "declaration": "string? click = null",
               "optional": true,
-              "description": "点击操作（同“通知”步骤语法）；需要进程能力。@button/@buttons 按钮只允许 run/open/copy/none 操作。",
+              "description": "点击操作（同“通知”步骤语法）。@button/@buttons 按钮只允许 run/open/copy/none 操作。",
               "values": null
             }
           ],
-          "capability": "None",
+          "usesDesktopInput": false,
           "cleanup": false
         },
         {
@@ -1376,7 +1376,7 @@
               }
             }
           ],
-          "capability": "None",
+          "usesDesktopInput": false,
           "cleanup": false
         },
         {
@@ -1411,7 +1411,7 @@
               "values": null
             }
           ],
-          "capability": "None",
+          "usesDesktopInput": false,
           "cleanup": false
         },
         {
@@ -1446,7 +1446,7 @@
               "values": null
             }
           ],
-          "capability": "None",
+          "usesDesktopInput": false,
           "cleanup": false
         },
         {
@@ -1489,7 +1489,7 @@
               "values": null
             }
           ],
-          "capability": "None",
+          "usesDesktopInput": false,
           "cleanup": false
         },
         {
@@ -1516,7 +1516,7 @@
               "values": null
             }
           ],
-          "capability": "None",
+          "usesDesktopInput": false,
           "cleanup": false
         },
         {
@@ -1559,7 +1559,7 @@
               "values": null
             }
           ],
-          "capability": "None",
+          "usesDesktopInput": false,
           "cleanup": false
         },
         {
@@ -1602,7 +1602,7 @@
               "values": null
             }
           ],
-          "capability": "None",
+          "usesDesktopInput": false,
           "cleanup": false
         },
         {
@@ -1669,7 +1669,7 @@
               "values": null
             }
           ],
-          "capability": "None",
+          "usesDesktopInput": false,
           "cleanup": false
         },
         {
@@ -1728,7 +1728,7 @@
               "values": null
             }
           ],
-          "capability": "None",
+          "usesDesktopInput": false,
           "cleanup": false
         },
         {
@@ -1738,7 +1738,7 @@
           "returns": "Pt?",
           "description": "让用户在屏幕上点选一个点（全屏遮罩），返回屏幕物理像素；取消返回 null；另一个截图/选择进行中报 CAPTURE_BUSY。",
           "parameters": [],
-          "capability": "None",
+          "usesDesktopInput": false,
           "cleanup": false
         },
         {
@@ -1757,7 +1757,7 @@
               "values": null
             }
           ],
-          "capability": "None",
+          "usesDesktopInput": false,
           "cleanup": false
         },
         {
@@ -1767,7 +1767,7 @@
           "returns": "Win?",
           "description": "让用户点选一个窗口，返回其顶层窗口的 Win（计 1 次窗口观察；提权窗口报 ELEVATED_TARGET_DENIED）；取消返回 null。",
           "parameters": [],
-          "capability": "None",
+          "usesDesktopInput": false,
           "cleanup": false
         },
         {
@@ -1802,7 +1802,7 @@
               "values": null
             }
           ],
-          "capability": "None",
+          "usesDesktopInput": false,
           "cleanup": false
         },
         {
@@ -1877,7 +1877,7 @@
               "values": null
             }
           ],
-          "capability": "None",
+          "usesDesktopInput": false,
           "cleanup": false
         },
         {
@@ -1936,7 +1936,7 @@
               "values": null
             }
           ],
-          "capability": "None",
+          "usesDesktopInput": false,
           "cleanup": false
         },
         {
@@ -1987,7 +1987,7 @@
               "values": null
             }
           ],
-          "capability": "None",
+          "usesDesktopInput": false,
           "cleanup": false
         }
       ]
@@ -2003,7 +2003,7 @@
           "returns": "Win?",
           "description": "当前前台窗口（顶层）；取不到时回退到动作启动时的活动窗口。",
           "parameters": [],
-          "capability": "WindowObserve",
+          "usesDesktopInput": false,
           "cleanup": false
         },
         {
@@ -2030,7 +2030,7 @@
               "values": null
             }
           ],
-          "capability": "WindowObserve",
+          "usesDesktopInput": false,
           "cleanup": false
         },
         {
@@ -2081,7 +2081,7 @@
               "values": null
             }
           ],
-          "capability": "WindowObserve",
+          "usesDesktopInput": false,
           "cleanup": false
         },
         {
@@ -2140,7 +2140,7 @@
               "values": null
             }
           ],
-          "capability": "WindowObserve",
+          "usesDesktopInput": false,
           "cleanup": false
         },
         {
@@ -2199,7 +2199,7 @@
               "values": null
             }
           ],
-          "capability": "WindowObserve",
+          "usesDesktopInput": false,
           "cleanup": false
         },
         {
@@ -2234,7 +2234,7 @@
               "values": null
             }
           ],
-          "capability": "WindowObserve",
+          "usesDesktopInput": false,
           "cleanup": false
         },
         {
@@ -2253,7 +2253,7 @@
               "values": null
             }
           ],
-          "capability": "WindowObserve",
+          "usesDesktopInput": false,
           "cleanup": false
         },
         {
@@ -2272,7 +2272,7 @@
               "values": null
             }
           ],
-          "capability": "WindowFocus",
+          "usesDesktopInput": false,
           "cleanup": false
         },
         {
@@ -2327,7 +2327,7 @@
               "type": "string?",
               "declaration": "string? hotkey = null",
               "optional": true,
-              "description": "唤出窗口的快捷键（如托盘程序的唤醒键），只接受单个组合键如 \"Ctrl+Alt+Q\"；经输入会话发送，需要键盘能力。",
+              "description": "唤出窗口的快捷键（如托盘程序的唤醒键），只接受单个组合键如 \"Ctrl+Alt+Q\"；经输入会话发送。",
               "values": null
             },
             {
@@ -2339,7 +2339,7 @@
               "values": null
             }
           ],
-          "capability": "WindowObserve, WindowFocus, ProcessStart",
+          "usesDesktopInput": false,
           "cleanup": false
         },
         {
@@ -2349,7 +2349,7 @@
           "returns": "void",
           "description": "回到弹出面板前的前台窗口；没有记录时不操作。",
           "parameters": [],
-          "capability": "WindowFocus",
+          "usesDesktopInput": false,
           "cleanup": false
         },
         {
@@ -2376,7 +2376,7 @@
               "values": null
             }
           ],
-          "capability": "WindowArrange",
+          "usesDesktopInput": false,
           "cleanup": false
         },
         {
@@ -2412,7 +2412,67 @@
               }
             }
           ],
-          "capability": "WindowArrange",
+          "usesDesktopInput": false,
+          "cleanup": false
+        },
+        {
+          "key": "Window.Snap",
+          "name": "Snap",
+          "signature": "bool Snap(Win window, string position, string? screen = null)",
+          "returns": "bool",
+          "description": "把顶层窗口吸附到屏幕的某个位置（取目标屏幕的工作区 WorkArea：已排除任务栏，物理像素；DPI 与窗口不可见的缩放边框由宿主处理，使可见部分紧贴工作区）。最大化/最小化的窗口先还原（等还原完成）再摆放；跨 DPI 屏幕移动后系统可能重算窗口大小，宿主在窗口稳定后复核并最多补一次。目标须为顶层窗口，拒绝 Quicker 自身和提权窗口；计 1–4 次排列操作。移动与状态改变异步投递，目标窗口无响应（挂起）时 Snap 不会阻塞脚本。返回 bool：窗口稳定（连续两次读取相隔 50 毫秒相同，最多约 1 秒）后核实最终可见边界（maximize/restore 核实状态）在几个像素内才为 true，否则 false（不报错）。最多补一次且仅在稳定时。",
+          "parameters": [
+            {
+              "name": "window",
+              "type": "Win",
+              "declaration": "Win window",
+              "optional": false,
+              "description": "要吸附的顶层窗口。",
+              "values": null
+            },
+            {
+              "name": "position",
+              "type": "string",
+              "declaration": "string position",
+              "optional": false,
+              "description": "left | right | top | bottom（半屏）| topLeft | topRight | bottomLeft | bottomRight（四分之一屏）| maximize（最大化）| center（保持当前大小并居中，超出工作区时收缩）| restore（还原为普通状态，不移动，此时忽略 screen）；不区分大小写，不接受别名。",
+              "values": {
+                "owner": "Window.Snap",
+                "target": "position",
+                "values": [
+                  "left",
+                  "right",
+                  "top",
+                  "bottom",
+                  "topLeft",
+                  "topRight",
+                  "bottomLeft",
+                  "bottomRight",
+                  "maximize",
+                  "center",
+                  "restore"
+                ],
+                "open": false
+              }
+            },
+            {
+              "name": "screen",
+              "type": "string?",
+              "declaration": "string? screen = null",
+              "optional": true,
+              "description": "qk.Screen.List() 的 ScreenInfo.Id，或 primary（主屏）| mouse（鼠标所在屏）；null 为窗口当前所在的屏幕（注意：与 Sys.GetBrightness 默认 mouse 不同）；找不到该 Id 报 INVALID_ARGUMENT。",
+              "values": {
+                "owner": "Window.Snap",
+                "target": "screen",
+                "values": [
+                  "primary",
+                  "mouse"
+                ],
+                "open": true
+              }
+            }
+          ],
+          "usesDesktopInput": false,
           "cleanup": false
         },
         {
@@ -2439,7 +2499,7 @@
               "values": null
             }
           ],
-          "capability": "WindowArrange",
+          "usesDesktopInput": false,
           "cleanup": false
         },
         {
@@ -2458,7 +2518,7 @@
               "values": null
             }
           ],
-          "capability": "WindowArrange",
+          "usesDesktopInput": false,
           "cleanup": false
         },
         {
@@ -2485,7 +2545,7 @@
               "values": null
             }
           ],
-          "capability": "WindowArrange",
+          "usesDesktopInput": false,
           "cleanup": false
         },
         {
@@ -2512,7 +2572,7 @@
               "values": null
             }
           ],
-          "capability": "WindowArrange",
+          "usesDesktopInput": false,
           "cleanup": false
         },
         {
@@ -2535,11 +2595,11 @@
               "type": "bool",
               "declaration": "bool kill = false",
               "optional": true,
-              "description": "未及时关闭时强制结束窗口所属程序（可能丢失未保存数据）；需要“强制结束程序”能力，不能用于资源管理器/桌面与 Quicker 及其辅助进程。",
+              "description": "未及时关闭时强制结束窗口所属程序（可能丢失未保存数据）；不能用于资源管理器/桌面与 Quicker 及其辅助进程。",
               "values": null
             }
           ],
-          "capability": "WindowArrange",
+          "usesDesktopInput": false,
           "cleanup": false
         },
         {
@@ -2599,7 +2659,7 @@
               "values": null
             }
           ],
-          "capability": "WindowObserve",
+          "usesDesktopInput": false,
           "cleanup": false
         },
         {
@@ -2642,7 +2702,7 @@
               "values": null
             }
           ],
-          "capability": "WindowObserve",
+          "usesDesktopInput": false,
           "cleanup": false
         },
         {
@@ -2650,7 +2710,7 @@
           "name": "ToScreen",
           "signature": "Pt ToScreen(Win window, Pt offset, string anchor = \"topLeft\")",
           "returns": "Pt",
-          "description": "窗口内相对坐标转屏幕坐标：可见边界（DWM 扩展边框，不含阴影，与“鼠标”步骤一致）的锚点加 offset，返回屏幕物理像素。",
+          "description": "DWM 可见边界的锚点加 offset，读取失败时回退窗口外框，返回屏幕物理像素。前台 CaptureWindow 按外框采集，两者原点可能不同；不要用本方法转换截图/OCR 图内点，也不要猜边框补偿。屏幕 Vision.Find* 的结果已是屏幕坐标。",
           "parameters": [
             {
               "name": "window",
@@ -2688,7 +2748,7 @@
               }
             }
           ],
-          "capability": "WindowObserve",
+          "usesDesktopInput": false,
           "cleanup": false
         },
         {
@@ -2696,7 +2756,7 @@
           "name": "SendMessage",
           "signature": "long SendMessage(Win window, int message, long wParam = 0, object? lParam = null, bool post = false, int timeoutMs = 5000)",
           "returns": "long",
-          "description": "【高风险】向窗口（可为子控件）发送窗口消息并返回结果；需要“发送窗口消息”能力。拒绝 Quicker 自身窗口与提权窗口；计 1 次排列操作。",
+          "description": "向窗口（可为子控件）发送窗口消息并返回结果。拒绝 Quicker 自身窗口与提权窗口；计 1 次排列操作。",
           "parameters": [
             {
               "name": "window",
@@ -2747,7 +2807,7 @@
               "values": null
             }
           ],
-          "capability": "WindowMessage",
+          "usesDesktopInput": false,
           "cleanup": false
         },
         {
@@ -2774,7 +2834,7 @@
               "values": null
             }
           ],
-          "capability": "WindowArrange",
+          "usesDesktopInput": false,
           "cleanup": false
         },
         {
@@ -2793,7 +2853,7 @@
               "values": null
             }
           ],
-          "capability": "WindowArrange",
+          "usesDesktopInput": false,
           "cleanup": false
         },
         {
@@ -2812,7 +2872,7 @@
               "values": null
             }
           ],
-          "capability": "WindowArrange",
+          "usesDesktopInput": false,
           "cleanup": false
         },
         {
@@ -2839,7 +2899,7 @@
               "values": null
             }
           ],
-          "capability": "WindowFocus",
+          "usesDesktopInput": false,
           "cleanup": false
         },
         {
@@ -2885,7 +2945,7 @@
               }
             }
           ],
-          "capability": "WindowArrange",
+          "usesDesktopInput": false,
           "cleanup": false
         }
       ]
@@ -2926,7 +2986,7 @@
               "values": null
             }
           ],
-          "capability": "Keyboard",
+          "usesDesktopInput": true,
           "cleanup": false
         },
         {
@@ -2945,7 +3005,7 @@
               "values": null
             }
           ],
-          "capability": "Keyboard",
+          "usesDesktopInput": true,
           "cleanup": false
         },
         {
@@ -2964,7 +3024,7 @@
               "values": null
             }
           ],
-          "capability": "Keyboard",
+          "usesDesktopInput": true,
           "cleanup": true
         },
         {
@@ -2991,7 +3051,7 @@
               "values": null
             }
           ],
-          "capability": "Keyboard",
+          "usesDesktopInput": true,
           "cleanup": false
         },
         {
@@ -3018,7 +3078,7 @@
               "values": null
             }
           ],
-          "capability": "Keyboard",
+          "usesDesktopInput": true,
           "cleanup": false
         },
         {
@@ -3053,7 +3113,7 @@
               "values": null
             }
           ],
-          "capability": "Keyboard, ClipboardRead, ClipboardWrite",
+          "usesDesktopInput": true,
           "cleanup": false
         },
         {
@@ -3072,7 +3132,7 @@
               "values": null
             }
           ],
-          "capability": "Keyboard",
+          "usesDesktopInput": true,
           "cleanup": false
         },
         {
@@ -3080,7 +3140,7 @@
           "name": "WaitForKey",
           "signature": "string? WaitForKey(string? keys = null, int timeoutMs = 0, bool swallow = false)",
           "returns": "string?",
-          "description": "等待用户的物理按键（全局钩子，忽略模拟按键，不阻挡用户操作），返回键名（与 Keyboard.Press 相同，如 \"Enter\"、\"A\"；组合键条目带修饰键前缀，如 \"Ctrl+Q\"）；超时返回 null。需要“监听按键”能力；有 Keyboard.Down/Mouse.Down 按住的键时不能调用。一次调用只返回一个键，命中后不再拦截其他按键；前台为管理员权限窗口时按键被忽略（不命中、不拦截）；每次运行最多调用 1000 次（LIMIT_EXCEEDED）。",
+          "description": "等待用户的物理按键（全局钩子，忽略模拟按键，不阻挡用户操作），返回键名（与 Keyboard.Press 相同，如 \"Enter\"、\"A\"；组合键条目带修饰键前缀，如 \"Ctrl+Q\"）；超时返回 null。有 Keyboard.Down/Mouse.Down 按住的键时不能调用。一次调用只返回一个键，命中后不再拦截其他按键；前台为管理员权限窗口时按键被忽略（不命中、不拦截）；每次运行最多调用 1000 次（LIMIT_EXCEEDED）。",
           "parameters": [
             {
               "name": "keys",
@@ -3107,7 +3167,7 @@
               "values": null
             }
           ],
-          "capability": "KeyboardMonitor",
+          "usesDesktopInput": false,
           "cleanup": false
         },
         {
@@ -3117,7 +3177,7 @@
           "returns": "bool",
           "description": "读取前台窗口输入法当前是否为中文（读不到状态视为 false）。只读取、不记录恢复基线，停止后的 finally 中也可调用。恢复写法：var was = qk.Keyboard.GetIme(); qk.Keyboard.SetIme(false); try { … } finally { qk.Keyboard.SetIme(was); }",
           "parameters": [],
-          "capability": "Keyboard",
+          "usesDesktopInput": true,
           "cleanup": true
         },
         {
@@ -3136,7 +3196,7 @@
               "values": null
             }
           ],
-          "capability": "Keyboard",
+          "usesDesktopInput": true,
           "cleanup": true
         }
       ]
@@ -3152,7 +3212,7 @@
           "returns": "Pt",
           "description": "当前鼠标位置（只读，不占用输入会话）。",
           "parameters": [],
-          "capability": "Mouse",
+          "usesDesktopInput": true,
           "cleanup": false
         },
         {
@@ -3179,7 +3239,7 @@
               "values": null
             }
           ],
-          "capability": "Mouse",
+          "usesDesktopInput": true,
           "cleanup": false
         },
         {
@@ -3206,7 +3266,7 @@
               "values": null
             }
           ],
-          "capability": "Mouse",
+          "usesDesktopInput": true,
           "cleanup": false
         },
         {
@@ -3250,7 +3310,7 @@
               "values": null
             }
           ],
-          "capability": "Mouse",
+          "usesDesktopInput": true,
           "cleanup": false
         },
         {
@@ -3278,7 +3338,7 @@
               }
             }
           ],
-          "capability": "Mouse",
+          "usesDesktopInput": true,
           "cleanup": false
         },
         {
@@ -3306,7 +3366,7 @@
               }
             }
           ],
-          "capability": "Mouse",
+          "usesDesktopInput": true,
           "cleanup": true
         },
         {
@@ -3333,7 +3393,7 @@
               "values": null
             }
           ],
-          "capability": "Mouse",
+          "usesDesktopInput": true,
           "cleanup": false
         },
         {
@@ -3360,7 +3420,7 @@
               "values": null
             }
           ],
-          "capability": "Mouse",
+          "usesDesktopInput": true,
           "cleanup": false
         },
         {
@@ -3370,7 +3430,7 @@
           "returns": "Pt",
           "description": "回到 qk.Context.Mouse：弹出面板前的鼠标位置；没有面板（热键、调试运行）时回到运行开始时的鼠标位置；已在该处时不移动。只移动不点击，停止后的 finally 中也可调用。点击后复位推荐写 try { … } finally { qk.Mouse.RestorePosition(); }（正常结束、出错、停止都会复位）。",
           "parameters": [],
-          "capability": "Mouse",
+          "usesDesktopInput": true,
           "cleanup": true
         },
         {
@@ -3378,9 +3438,9 @@
           "name": "GetCursor",
           "signature": "string GetCursor()",
           "returns": "string",
-          "description": "当前鼠标指针形状：arrow|iBeam|hand|wait|appStarting|cross|no|help|sizeAll|sizeNs|sizeWe|sizeNwse|sizeNesw|upArrow，隐藏为 \"hidden\"，其他为 \"unknown\"。只读，不需确认。",
+          "description": "当前鼠标指针形状：arrow|iBeam|hand|wait|appStarting|cross|no|help|sizeAll|sizeNs|sizeWe|sizeNwse|sizeNesw|upArrow，隐藏为 \"hidden\"，其他为 \"unknown\"。只读。",
           "parameters": [],
-          "capability": "None",
+          "usesDesktopInput": false,
           "cleanup": true
         }
       ]
@@ -3396,7 +3456,7 @@
           "returns": "string?",
           "description": "读取剪贴板文本；无文本返回 null。",
           "parameters": [],
-          "capability": "ClipboardRead",
+          "usesDesktopInput": false,
           "cleanup": true
         },
         {
@@ -3406,7 +3466,7 @@
           "returns": "string?",
           "description": "读取 HTML 片段正文（去掉 CF_HTML 头）；没有返回 null。",
           "parameters": [],
-          "capability": "ClipboardRead",
+          "usesDesktopInput": false,
           "cleanup": true
         },
         {
@@ -3433,7 +3493,7 @@
               }
             }
           ],
-          "capability": "ClipboardRead",
+          "usesDesktopInput": false,
           "cleanup": true
         },
         {
@@ -3443,7 +3503,7 @@
           "returns": "string[]",
           "description": "剪贴板中的文件/文件夹路径；没有返回空数组。",
           "parameters": [],
-          "capability": "ClipboardRead",
+          "usesDesktopInput": false,
           "cleanup": true
         },
         {
@@ -3453,7 +3513,7 @@
           "returns": "Img?",
           "description": "读取剪贴板图片；没有图片返回 null；剪贴板被占用或图片数据无法读取报 CLIPBOARD_UNAVAILABLE。",
           "parameters": [],
-          "capability": "ClipboardRead",
+          "usesDesktopInput": false,
           "cleanup": true
         },
         {
@@ -3472,7 +3532,7 @@
               "values": null
             }
           ],
-          "capability": "ClipboardWrite",
+          "usesDesktopInput": false,
           "cleanup": true
         },
         {
@@ -3499,7 +3559,7 @@
               "values": null
             }
           ],
-          "capability": "ClipboardWrite",
+          "usesDesktopInput": false,
           "cleanup": true
         },
         {
@@ -3526,7 +3586,7 @@
               "values": null
             }
           ],
-          "capability": "ClipboardWrite",
+          "usesDesktopInput": false,
           "cleanup": true
         },
         {
@@ -3534,7 +3594,7 @@
           "name": "SetFiles",
           "signature": "void SetFiles(IEnumerable<string> paths, bool cut = false)",
           "returns": "void",
-          "description": "写入文件列表（路径须存在）；需要读文件能力（校验路径会探测本机文件）。",
+          "description": "写入文件列表（路径须存在）；校验路径会探测本机文件。",
           "parameters": [
             {
               "name": "paths",
@@ -3549,11 +3609,11 @@
               "type": "bool",
               "declaration": "bool cut = false",
               "optional": true,
-              "description": "剪切：粘贴后移动文件；需要写文件能力。",
+              "description": "剪切：粘贴后移动文件。",
               "values": null
             }
           ],
-          "capability": "ClipboardWrite, FileRead",
+          "usesDesktopInput": false,
           "cleanup": true
         },
         {
@@ -3590,7 +3650,7 @@
               "values": null
             }
           ],
-          "capability": "ClipboardWrite",
+          "usesDesktopInput": false,
           "cleanup": true
         },
         {
@@ -3609,7 +3669,7 @@
               "values": null
             }
           ],
-          "capability": "ClipboardWrite",
+          "usesDesktopInput": false,
           "cleanup": true
         },
         {
@@ -3628,7 +3688,7 @@
               "values": null
             }
           ],
-          "capability": "ClipboardRead",
+          "usesDesktopInput": false,
           "cleanup": false
         }
       ]
@@ -3653,7 +3713,7 @@
               "values": null
             }
           ],
-          "capability": "FileRead",
+          "usesDesktopInput": false,
           "cleanup": false
         },
         {
@@ -3661,9 +3721,9 @@
           "name": "GetActionDataDirectory",
           "signature": "string GetActionDataDirectory()",
           "returns": "string",
-          "description": "当前动作的本机持久数据目录（完整路径，不自动创建）；子程序使用调用方目录。首次写入前 CreateDirectory；取路径不需授权，读写仍需文件能力。不随动作同步或备份；删除动作时可选移入 Windows 回收站。",
+          "description": "当前动作的本机持久数据目录（完整路径，不自动创建）；子程序使用调用方目录。首次写入前 CreateDirectory。不随动作同步或备份；删除动作时可选移入 Windows 回收站。",
           "parameters": [],
-          "capability": "None",
+          "usesDesktopInput": false,
           "cleanup": false
         },
         {
@@ -3671,9 +3731,9 @@
           "name": "GetRunTempDirectory",
           "signature": "string GetRunTempDirectory()",
           "returns": "string",
-          "description": "本次根运行专属的临时文件夹（完整路径，不以 \\ 结尾），首次调用时创建；qk.Actions.Call 调用的子脚本得到同一个文件夹。运行结束（正常、异常、停止、超时）后由 Quicker 递归删除，脚本不必在 finally 里删除（停止后 finally 也不能调用 Files.Delete）。本方法不需确认；在其中读写文件仍按文件读写能力确认。",
+          "description": "本次根运行专属的临时文件夹（完整路径，不以 \\ 结尾），首次调用时创建；qk.Actions.Call 调用的子脚本得到同一个文件夹。运行结束（正常、异常、停止、超时）后由 Quicker 递归删除，脚本不必在 finally 里删除（停止后 finally 也不能调用 Files.Delete）。",
           "parameters": [],
-          "capability": "None",
+          "usesDesktopInput": false,
           "cleanup": false
         },
         {
@@ -3692,7 +3752,7 @@
               "values": null
             }
           ],
-          "capability": "FileRead",
+          "usesDesktopInput": false,
           "cleanup": false
         },
         {
@@ -3711,7 +3771,7 @@
               "values": null
             }
           ],
-          "capability": "FileRead",
+          "usesDesktopInput": false,
           "cleanup": false
         },
         {
@@ -3730,7 +3790,7 @@
               "values": null
             }
           ],
-          "capability": "FileRead",
+          "usesDesktopInput": false,
           "cleanup": false
         },
         {
@@ -3757,7 +3817,7 @@
               "values": null
             }
           ],
-          "capability": "FileRead",
+          "usesDesktopInput": false,
           "cleanup": false
         },
         {
@@ -3792,7 +3852,7 @@
               "values": null
             }
           ],
-          "capability": "FileWrite",
+          "usesDesktopInput": false,
           "cleanup": false
         },
         {
@@ -3835,7 +3895,7 @@
               "values": null
             }
           ],
-          "capability": "FileWrite",
+          "usesDesktopInput": false,
           "cleanup": false
         },
         {
@@ -3870,7 +3930,7 @@
               "values": null
             }
           ],
-          "capability": "FileWrite",
+          "usesDesktopInput": false,
           "cleanup": false
         },
         {
@@ -3905,7 +3965,7 @@
               "values": null
             }
           ],
-          "capability": "FileRead",
+          "usesDesktopInput": false,
           "cleanup": false
         },
         {
@@ -3940,7 +4000,7 @@
               "values": null
             }
           ],
-          "capability": "FileRead",
+          "usesDesktopInput": false,
           "cleanup": false
         },
         {
@@ -3959,7 +4019,7 @@
               "values": null
             }
           ],
-          "capability": "FileWrite",
+          "usesDesktopInput": false,
           "cleanup": false
         },
         {
@@ -3994,7 +4054,7 @@
               "values": null
             }
           ],
-          "capability": "FileWrite",
+          "usesDesktopInput": false,
           "cleanup": false
         },
         {
@@ -4029,7 +4089,7 @@
               "values": null
             }
           ],
-          "capability": "FileWrite",
+          "usesDesktopInput": false,
           "cleanup": false
         },
         {
@@ -4064,7 +4124,7 @@
               "values": null
             }
           ],
-          "capability": "FileWrite",
+          "usesDesktopInput": false,
           "cleanup": false
         },
         {
@@ -4099,7 +4159,7 @@
               "values": null
             }
           ],
-          "capability": "FileWrite",
+          "usesDesktopInput": false,
           "cleanup": false
         },
         {
@@ -4134,7 +4194,7 @@
               "values": null
             }
           ],
-          "capability": "FileWrite",
+          "usesDesktopInput": false,
           "cleanup": false
         },
         {
@@ -4171,7 +4231,7 @@
               }
             }
           ],
-          "capability": "FileRead",
+          "usesDesktopInput": false,
           "cleanup": false
         },
         {
@@ -4190,7 +4250,7 @@
               "values": null
             }
           ],
-          "capability": "FileRead",
+          "usesDesktopInput": false,
           "cleanup": false
         },
         {
@@ -4200,7 +4260,7 @@
           "returns": "string?",
           "description": "当前资源管理器窗口的文件夹（桌面返回桌面路径）；不在资源管理器中返回 null。",
           "parameters": [],
-          "capability": "SelectionPaths",
+          "usesDesktopInput": false,
           "cleanup": false
         },
         {
@@ -4227,7 +4287,7 @@
               "values": null
             }
           ],
-          "capability": "WindowFocus, SelectionPaths",
+          "usesDesktopInput": false,
           "cleanup": false
         },
         {
@@ -4290,7 +4350,7 @@
               "values": null
             }
           ],
-          "capability": "FileRead",
+          "usesDesktopInput": false,
           "cleanup": false
         },
         {
@@ -4344,7 +4404,42 @@
               }
             }
           ],
-          "capability": "FileRead",
+          "usesDesktopInput": false,
+          "cleanup": false
+        },
+        {
+          "key": "Files.ListRecent",
+          "name": "ListRecent",
+          "signature": "RecentFile[] ListRecent(int limit = 20, string? extension = null, bool includeFolders = false)",
+          "returns": "RecentFile[]",
+          "description": "用户最近使用的文件（Windows 的 Recent 文件夹），按最近使用时间倒序：快捷方式先按更新时间排序，再惰性解析 .lnk，凑够 limit 条匹配结果就停止；目标已不存在的、重复的、文件夹（includeFolders 为 true 时保留）、扩展名不符的都会跳过。网络目标（UNC 路径、映射的网络盘）不探测是否存在（断开的网络位置会卡很久），按原样返回，IsDirectory 为 false，可能已不存在。只读 Recent 文件夹并探测本地目标是否存在，不读文件内容。没有记录返回空数组。",
+          "parameters": [
+            {
+              "name": "limit",
+              "type": "int",
+              "declaration": "int limit = 20",
+              "optional": true,
+              "description": "最多返回条数，1–500。",
+              "values": null
+            },
+            {
+              "name": "extension",
+              "type": "string?",
+              "declaration": "string? extension = null",
+              "optional": true,
+              "description": "只留该扩展名的文件，如 \".pdf\" 或 \"pdf\"（不区分大小写）；null 不过滤。",
+              "values": null
+            },
+            {
+              "name": "includeFolders",
+              "type": "bool",
+              "declaration": "bool includeFolders = false",
+              "optional": true,
+              "description": "是否保留文件夹（默认 false，只返回文件）。",
+              "values": null
+            }
+          ],
+          "usesDesktopInput": false,
           "cleanup": false
         }
       ]
@@ -4413,7 +4508,7 @@
               "type": "IDictionary<string, string>?",
               "declaration": "IDictionary<string, string>? files = null",
               "optional": true,
-              "description": "multipart 的文件字段（字段名 → 本机文件路径）；需要读文件能力；流式上传，合计最多 256 MiB；文件不存在报 FILE_NOT_FOUND（发送前检查）。",
+              "description": "multipart 的文件字段（字段名 → 本机文件路径）；流式上传，合计最多 256 MiB；文件不存在报 FILE_NOT_FOUND（发送前检查）。",
               "values": null
             },
             {
@@ -4425,7 +4520,7 @@
               "values": null
             }
           ],
-          "capability": "Network",
+          "usesDesktopInput": false,
           "cleanup": false
         },
         {
@@ -4452,7 +4547,7 @@
               "values": null
             }
           ],
-          "capability": "Network",
+          "usesDesktopInput": false,
           "cleanup": false
         },
         {
@@ -4487,7 +4582,7 @@
               "values": null
             }
           ],
-          "capability": "Network",
+          "usesDesktopInput": false,
           "cleanup": false
         },
         {
@@ -4538,14 +4633,14 @@
               "values": null
             }
           ],
-          "capability": "FileWrite, Network",
+          "usesDesktopInput": false,
           "cleanup": false
         }
       ]
     },
     {
       "name": "Process",
-      "description": "启动程序、用关联程序打开文件/网址、运行命令行并读取输出、列出与结束进程；在已打开的程序内部执行代码见 qk.Apps。以普通（非提升）权限启动。Run 被停止或 timeoutMs 到期时停止等待并尽力结束进程树。常见错误码：PROCESS_FAILED（启动失败）、PROCESS_TIMEOUT（Run 超时）、LIMIT_EXCEEDED（输出或列表超限）。",
+      "description": "启动程序、用关联程序打开文件/网址、运行命令行并读取输出、列出进程、按 CPU/内存排名（ListUsage）与结束进程；在已打开的程序内部执行代码见 qk.Apps。以普通（非提升）权限启动。Run 被停止或 timeoutMs 到期时停止等待并尽力结束进程树。常见错误码：PROCESS_FAILED（启动失败）、PROCESS_TIMEOUT（Run 超时）、LIMIT_EXCEEDED（输出或列表超限）。",
       "methods": [
         {
           "key": "Process.Start",
@@ -4579,7 +4674,7 @@
               "values": null
             }
           ],
-          "capability": "ProcessStart",
+          "usesDesktopInput": false,
           "cleanup": false
         },
         {
@@ -4598,7 +4693,7 @@
               "values": null
             }
           ],
-          "capability": "ProcessStart",
+          "usesDesktopInput": false,
           "cleanup": false
         },
         {
@@ -4649,7 +4744,7 @@
               "values": null
             }
           ],
-          "capability": "ProcessStart",
+          "usesDesktopInput": false,
           "cleanup": false
         },
         {
@@ -4668,7 +4763,50 @@
               "values": null
             }
           ],
-          "capability": "WindowObserve",
+          "usesDesktopInput": false,
+          "cleanup": false
+        },
+        {
+          "key": "Process.ListUsage",
+          "name": "ListUsage",
+          "signature": "ProcUsage[] ListUsage(int limit = 10, string sort = \"cpu\", string? name = null)",
+          "returns": "ProcUsage[]",
+          "description": "当前登录会话中占用最高的进程（只读）：sort 为 cpu（默认）或 memory，limit 1–100（默认 10）；name 只统计该进程名（规则同 Process.List：不含路径，可省略 .exe，不区分大小写）。CPU 取约 0.5 秒内两次采样的差值（调用会阻塞约半秒，可被停止打断），按处理器数归一；MemoryBytes 为工作集。读不到的进程（提权/管理员进程、采样期间退出）直接跳过，不报错；采样期间新启动的进程不计入；同名多进程各算一项。",
+          "parameters": [
+            {
+              "name": "limit",
+              "type": "int",
+              "declaration": "int limit = 10",
+              "optional": true,
+              "description": "返回条数，1–100。",
+              "values": null
+            },
+            {
+              "name": "sort",
+              "type": "string",
+              "declaration": "string sort = \"cpu\"",
+              "optional": true,
+              "description": "cpu（默认）| memory；不区分大小写。",
+              "values": {
+                "owner": "Process.ListUsage",
+                "target": "sort",
+                "values": [
+                  "cpu",
+                  "memory"
+                ],
+                "open": false
+              }
+            },
+            {
+              "name": "name",
+              "type": "string?",
+              "declaration": "string? name = null",
+              "optional": true,
+              "description": null,
+              "values": null
+            }
+          ],
+          "usesDesktopInput": false,
           "cleanup": false
         },
         {
@@ -4676,7 +4814,7 @@
           "name": "Kill",
           "signature": "int Kill(int pid)",
           "returns": "int",
-          "description": "结束进程（不含子进程），返回结束的进程数（没有在运行为 0，不报错）。Kill(pid) 结束指定进程（只能是当前登录会话中的进程）；Kill(name) 结束当前会话中全部同名进程（名称规则同 List）。拒绝其他会话的进程、Quicker 自身及辅助进程、资源管理器与关键系统进程（INVALID_ARGUMENT，一个都不结束）；无权限（如管理员进程）报 PROCESS_FAILED（按名称时全部失败才报）。需要“强制结束程序”能力（可能丢失未保存数据）。",
+          "description": "结束进程（不含子进程），返回结束的进程数（没有在运行为 0，不报错）。Kill(pid) 结束指定进程（只能是当前登录会话中的进程）；Kill(name) 结束当前会话中全部同名进程（名称规则同 List）。拒绝其他会话的进程、Quicker 自身及辅助进程、资源管理器与关键系统进程（INVALID_ARGUMENT，一个都不结束）；无权限（如管理员进程）报 PROCESS_FAILED（按名称时全部失败才报）。可能丢失未保存数据。",
           "parameters": [
             {
               "name": "pid",
@@ -4687,7 +4825,7 @@
               "values": null
             }
           ],
-          "capability": "ProcessTerminate",
+          "usesDesktopInput": false,
           "cleanup": false
         },
         {
@@ -4695,7 +4833,7 @@
           "name": "Kill",
           "signature": "int Kill(string name)",
           "returns": "int",
-          "description": "结束进程（不含子进程），返回结束的进程数（没有在运行为 0，不报错）。Kill(pid) 结束指定进程（只能是当前登录会话中的进程）；Kill(name) 结束当前会话中全部同名进程（名称规则同 List）。拒绝其他会话的进程、Quicker 自身及辅助进程、资源管理器与关键系统进程（INVALID_ARGUMENT，一个都不结束）；无权限（如管理员进程）报 PROCESS_FAILED（按名称时全部失败才报）。需要“强制结束程序”能力（可能丢失未保存数据）。",
+          "description": "结束进程（不含子进程），返回结束的进程数（没有在运行为 0，不报错）。Kill(pid) 结束指定进程（只能是当前登录会话中的进程）；Kill(name) 结束当前会话中全部同名进程（名称规则同 List）。拒绝其他会话的进程、Quicker 自身及辅助进程、资源管理器与关键系统进程（INVALID_ARGUMENT，一个都不结束）；无权限（如管理员进程）报 PROCESS_FAILED（按名称时全部失败才报）。可能丢失未保存数据。",
           "parameters": [
             {
               "name": "name",
@@ -4706,7 +4844,7 @@
               "values": null
             }
           ],
-          "capability": "ProcessTerminate",
+          "usesDesktopInput": false,
           "cleanup": false
         }
       ]
@@ -4720,7 +4858,7 @@
           "name": "Load",
           "signature": "Img Load(object source)",
           "returns": "Img",
-          "description": "读取图片（png/jpg/gif/bmp/tif/ico，不支持 webp；取第一帧，按 EXIF 方向转正）。路径规则与 qk.Files 相同（可用 UNC），需要读文件能力；网址需要网络能力（最多 32 MiB、30 秒）；数据（含 Base64/data URI）最多 64 MiB；ftp:/file: 等其他协议报 INVALID_ARGUMENT，无法解码报 IMAGE_DECODE_FAILED。",
+          "description": "读取图片（png/jpg/gif/bmp/tif/ico，不支持 webp；取第一帧，按 EXIF 方向转正）。路径规则与 qk.Files 相同（可用 UNC），网址最多 32 MiB、30 秒；数据（含 Base64/data URI）最多 64 MiB；ftp:/file: 等其他协议报 INVALID_ARGUMENT，无法解码报 IMAGE_DECODE_FAILED。",
           "parameters": [
             {
               "name": "source",
@@ -4731,7 +4869,7 @@
               "values": null
             }
           ],
-          "capability": "None",
+          "usesDesktopInput": false,
           "cleanup": false
         },
         {
@@ -4739,7 +4877,7 @@
           "name": "Save",
           "signature": "string Save(Img image, string path, int quality = 90, bool overwrite = false)",
           "returns": "string",
-          "description": "保存为文件并返回完整路径；格式按扩展名（png|jpg|jpeg|bmp|gif|tif|tiff）。路径规则与 qk.Files 相同，需要写文件能力；写同目录临时文件后替换，已存在且未 overwrite 报 FILE_FAILED，编码失败报 IMAGE_ENCODE_FAILED。",
+          "description": "保存为文件并返回完整路径；格式按扩展名（png|jpg|jpeg|bmp|gif|tif|tiff）。路径规则与 qk.Files 相同；写同目录临时文件后替换，已存在且未 overwrite 报 FILE_FAILED，编码失败报 IMAGE_ENCODE_FAILED。",
           "parameters": [
             {
               "name": "image",
@@ -4774,7 +4912,7 @@
               "values": null
             }
           ],
-          "capability": "FileWrite",
+          "usesDesktopInput": false,
           "cleanup": false
         },
         {
@@ -4833,14 +4971,14 @@
               "values": null
             }
           ],
-          "capability": "None",
+          "usesDesktopInput": false,
           "cleanup": false
         }
       ]
     },
     {
       "name": "Screen",
-      "description": "获取屏幕图像：截屏、截窗口、框选截图、截图 Pro、取色与显示器信息（屏幕物理像素）；只要坐标不要图像见 qk.Ui.PickArea。PickCapture 与 CapturePro 合计每次运行 64 次；截屏计入每次运行 1000 次截图；停止脚本会关闭框选界面。",
+      "description": "获取屏幕图像：截屏、截窗口、框选截图、Quicker 截图、取色与显示器信息（屏幕物理像素）；只要坐标不要图像见 qk.Ui.PickArea。PickCapture 与 CapturePro 合计每次运行 64 次；截屏计入每次运行 1000 次截图；停止脚本会关闭框选界面。",
       "methods": [
         {
           "key": "Screen.Capture",
@@ -4875,7 +5013,7 @@
               }
             }
           ],
-          "capability": "ScreenObserve",
+          "usesDesktopInput": false,
           "cleanup": false
         },
         {
@@ -4883,7 +5021,7 @@
           "name": "CaptureWindow",
           "signature": "Img CaptureWindow(Win window, bool background = false)",
           "returns": "Img",
-          "description": "截取窗口。",
+          "description": "前台截图按窗口快照 Bounds（外框）采集，与 ToScreen 优先使用的 DWM 可见边界原点可能不同。图内识别点不能直接传 ToScreen；需要实时定位点击时优先使用窗口范围的 Vision.Find*，其结果已是屏幕坐标。",
           "parameters": [
             {
               "name": "window",
@@ -4902,7 +5040,7 @@
               "values": null
             }
           ],
-          "capability": "ScreenObserve",
+          "usesDesktopInput": false,
           "cleanup": false
         },
         {
@@ -4929,7 +5067,7 @@
               "values": null
             }
           ],
-          "capability": "InteractiveCapture",
+          "usesDesktopInput": false,
           "cleanup": false
         },
         {
@@ -4937,14 +5075,14 @@
           "name": "CapturePro",
           "signature": "CaptureResult? CapturePro(string mode = \"capture\")",
           "returns": "CaptureResult?",
-          "description": "打开截图 Pro；取消返回 null；截图不写入截图历史。capture/captureNow 在用户确认后以 CaptureResult.Image 返回截图。",
+          "description": "打开 Quicker 截图；取消返回 null；截图不写入截图历史。capture/captureNow 在用户确认后以 CaptureResult.Image 返回截图。",
           "parameters": [
             {
               "name": "mode",
               "type": "string",
               "declaration": "string mode = \"capture\"",
               "optional": true,
-              "description": "capture|captureNow|copy|pin|ocr|ocrCopy|table|formula|translate|imageTranslate|quickSave（不区分大小写）；仅 ocrCopy 返回文字（识别失败报 CAPTURE_PRO_FAILED），ocr/table/formula/translate/imageTranslate 打开结果界面。copy/ocrCopy 需要写剪贴板能力，quickSave 需要写文件能力，pin/ocr/ocrCopy/table/formula/translate/imageTranslate 需要网络能力（识别可能回退在线或自动下载模型）。",
+              "description": "capture|captureNow|copy|pin|ocr|ocrCopy|table|formula|translate|imageTranslate|quickSave（不区分大小写）；仅 ocrCopy 返回文字（识别失败报 CAPTURE_PRO_FAILED），ocr/table/formula/translate/imageTranslate 打开结果界面。copy/ocrCopy 写入剪贴板，quickSave 写入文件；pin/ocr/ocrCopy/table/formula/translate/imageTranslate 的识别可能回退在线或自动下载模型。",
               "values": {
                 "owner": "Screen.CapturePro",
                 "target": "mode",
@@ -4965,7 +5103,7 @@
               }
             }
           ],
-          "capability": "InteractiveCapture",
+          "usesDesktopInput": false,
           "cleanup": false
         },
         {
@@ -4984,7 +5122,7 @@
               "values": null
             }
           ],
-          "capability": "ScreenObserve",
+          "usesDesktopInput": false,
           "cleanup": false
         },
         {
@@ -4994,7 +5132,7 @@
           "returns": "ScreenInfo[]",
           "description": "全部显示器信息（主屏在前）；ScreenInfo.Id 可传给 qk.Sys.GetBrightness/SetBrightness 的 screen。",
           "parameters": [],
-          "capability": "None",
+          "usesDesktopInput": false,
           "cleanup": false
         }
       ]
@@ -5059,7 +5197,7 @@
               "values": null
             }
           ],
-          "capability": "ScreenObserve",
+          "usesDesktopInput": false,
           "cleanup": false
         },
         {
@@ -5110,7 +5248,7 @@
               "values": null
             }
           ],
-          "capability": "ScreenObserve",
+          "usesDesktopInput": false,
           "cleanup": false
         },
         {
@@ -5177,7 +5315,7 @@
               "values": null
             }
           ],
-          "capability": "ScreenObserve, OcrLocal",
+          "usesDesktopInput": false,
           "cleanup": false
         },
         {
@@ -5228,7 +5366,7 @@
               "values": null
             }
           ],
-          "capability": "ScreenObserve, OcrLocal",
+          "usesDesktopInput": false,
           "cleanup": false
         },
         {
@@ -5263,7 +5401,7 @@
               "values": null
             }
           ],
-          "capability": "ScreenObserve, OcrLocal",
+          "usesDesktopInput": false,
           "cleanup": false
         },
         {
@@ -5282,21 +5420,21 @@
               "values": null
             }
           ],
-          "capability": "None",
+          "usesDesktopInput": false,
           "cleanup": false
         }
       ]
     },
     {
       "name": "Browser",
-      "description": "浏览器中的网页（标签页、元素、表单、页面脚本），经 Quicker 浏览器扩展读取和操作；单纯请求网址或下载见 qk.Http。Chrome/Edge 等需安装并连接扩展（Open 不经扩展）。目标浏览器为前台/最近使用的已连接浏览器，本次运行内不变；tabId 为 null 表示其当前标签页。错误码：BROWSER_UNAVAILABLE（没有已连接的扩展）、BROWSER_FAILED（扩展返回错误、找不到元素、标签页已关闭）、BROWSER_TIMEOUT（扩展无响应）。",
+      "description": "浏览器中的网页（标签页、元素、表单、页面脚本），经 Quicker 浏览器扩展读取和操作；单纯请求网址或下载见 qk.Http。Chrome/Edge 等需安装并连接扩展（Open 与 SearchBookmarks 不经扩展）。目标浏览器为前台/最近使用的已连接浏览器，本次运行内不变；tabId 为 null 表示其当前标签页。错误码：BROWSER_UNAVAILABLE（没有已连接的扩展）、BROWSER_FAILED（扩展返回错误、找不到元素、标签页已关闭）、BROWSER_TIMEOUT（扩展无响应）。",
       "methods": [
         {
           "key": "Browser.Open",
           "name": "Open",
           "signature": "void Open(string url, string browser = \"default\")",
           "returns": "void",
-          "description": "用浏览器打开网址（启动程序，不经扩展，需要启动程序能力）；启动失败报 PROCESS_FAILED。",
+          "description": "用浏览器打开网址（启动程序，不经扩展）；启动失败报 PROCESS_FAILED。",
           "parameters": [
             {
               "name": "url",
@@ -5329,7 +5467,7 @@
               }
             }
           ],
-          "capability": "ProcessStart",
+          "usesDesktopInput": false,
           "cleanup": false
         },
         {
@@ -5339,7 +5477,7 @@
           "returns": "string?",
           "description": "前台浏览器当前标签页的网址；前台不是浏览器或其扩展未连接时返回 null（不是错误；其他 Browser 调用仍可能作用于另一个已连接的浏览器，没有时报 BROWSER_UNAVAILABLE）；已连接但读取标签页失败报 BROWSER_FAILED。",
           "parameters": [],
-          "capability": "BrowserControl",
+          "usesDesktopInput": false,
           "cleanup": false
         },
         {
@@ -5349,7 +5487,7 @@
           "returns": "Tab[]",
           "description": "目标浏览器（首次调用时选定的已连接浏览器，本次运行内不变）的全部标签页。",
           "parameters": [],
-          "capability": "BrowserControl",
+          "usesDesktopInput": false,
           "cleanup": false
         },
         {
@@ -5376,7 +5514,7 @@
               "values": null
             }
           ],
-          "capability": "BrowserControl",
+          "usesDesktopInput": false,
           "cleanup": false
         },
         {
@@ -5395,7 +5533,7 @@
               "values": null
             }
           ],
-          "capability": "BrowserControl",
+          "usesDesktopInput": false,
           "cleanup": false
         },
         {
@@ -5414,7 +5552,7 @@
               "values": null
             }
           ],
-          "capability": "BrowserControl",
+          "usesDesktopInput": false,
           "cleanup": false
         },
         {
@@ -5422,7 +5560,7 @@
           "name": "Eval",
           "signature": "object? Eval(string script, int? tabId = null, int frameId = 0, int timeoutMs = 30000)",
           "returns": "object?",
-          "description": "在页面中执行 JS 并返回结果（JSON 数据：Dictionary/List/string/bool 或 null；整数为 long、小数为 decimal，用 Convert.ToInt32(x)/Convert.ToDouble(x) 转换，不要 (int)x 强转）；高风险能力。MV3 扩展需开启“允许运行用户脚本”。",
+          "description": "在页面中执行 JS 并返回结果（JSON 数据：Dictionary/List/string/bool 或 null；整数为 long、小数为 decimal，用 Convert.ToInt32(x)/Convert.ToDouble(x) 转换，不要 (int)x 强转）。MV3 扩展需开启“允许运行用户脚本”。",
           "parameters": [
             {
               "name": "script",
@@ -5457,7 +5595,7 @@
               "values": null
             }
           ],
-          "capability": "ExternalScript",
+          "usesDesktopInput": false,
           "cleanup": false
         },
         {
@@ -5524,7 +5662,7 @@
               "values": null
             }
           ],
-          "capability": "BrowserControl",
+          "usesDesktopInput": false,
           "cleanup": false
         },
         {
@@ -5567,7 +5705,7 @@
               "values": null
             }
           ],
-          "capability": "BrowserControl",
+          "usesDesktopInput": false,
           "cleanup": false
         },
         {
@@ -5618,7 +5756,7 @@
               "values": null
             }
           ],
-          "capability": "BrowserControl",
+          "usesDesktopInput": false,
           "cleanup": false
         },
         {
@@ -5686,7 +5824,7 @@
               "values": null
             }
           ],
-          "capability": "BrowserControl",
+          "usesDesktopInput": false,
           "cleanup": false
         },
         {
@@ -5694,7 +5832,7 @@
           "name": "Upload",
           "signature": "void Upload(string target, IEnumerable<string> files, int? tabId = null, string? urlPattern = null, int timeoutMs = 30000)",
           "returns": "void",
-          "description": "把本机文件放入页面的文件输入框（需要读文件能力；浏览器按路径读取文件并显示调试提示条）。",
+          "description": "把本机文件放入页面的文件输入框（浏览器按路径读取文件并显示调试提示条）。",
           "parameters": [
             {
               "name": "target",
@@ -5737,7 +5875,7 @@
               "values": null
             }
           ],
-          "capability": "FileRead, BrowserControl",
+          "usesDesktopInput": false,
           "cleanup": false
         },
         {
@@ -5745,7 +5883,7 @@
           "name": "Command",
           "signature": "object? Command(string command, object? arguments = null, int? tabId = null, int timeoutMs = 30000)",
           "returns": "object?",
-          "description": "【高风险】执行浏览器扩展后台命令并返回结果（与 Eval 同一能力）。拒绝（INVALID_ARGUMENT）：读写或运行本机文件的命令（上传/拖放/下载/打开下载文件/写入下载文件夹的截图与归档）、调试协议、删除浏览数据、读取或删除历史、扩展自身存储、未给 url 的 Cookie 命令、已有专门方法的 page.* 命令、租约与诊断命令。",
+          "description": "执行浏览器扩展后台命令并返回结果。拒绝（INVALID_ARGUMENT）：读写或运行本机文件的命令（上传/拖放/下载/打开下载文件/写入下载文件夹的截图与归档）、调试协议、删除浏览数据、读取或删除历史、扩展自身存储、未给 url 的 Cookie 命令、已有专门方法的 page.* 命令、租约与诊断命令。",
           "parameters": [
             {
               "name": "command",
@@ -5780,21 +5918,66 @@
               "values": null
             }
           ],
-          "capability": "ExternalScript",
+          "usesDesktopInput": false,
+          "cleanup": false
+        },
+        {
+          "key": "Browser.SearchBookmarks",
+          "name": "SearchBookmarks",
+          "signature": "Bookmark[] SearchBookmarks(string query, int limit = 20, string? browser = null)",
+          "returns": "Bookmark[]",
+          "description": "在本机浏览器书签中搜索：直接读浏览器的 Bookmarks 文件，不需要浏览器扩展，浏览器也不用开着。query 的每个词都须出现在标题、网址或文件夹中（不区分大小写），标题命中的排前面。只覆盖各浏览器的默认用户配置（其他配置文件的书签搜不到）；不读取浏览历史、Cookie 或已保存的密码。",
+          "parameters": [
+            {
+              "name": "query",
+              "type": "string",
+              "declaration": "string query",
+              "optional": false,
+              "description": "关键词；多个词用空格分隔，须全部命中。",
+              "values": null
+            },
+            {
+              "name": "limit",
+              "type": "int",
+              "declaration": "int limit = 20",
+              "optional": true,
+              "description": "最多返回条数，1–200。",
+              "values": null
+            },
+            {
+              "name": "browser",
+              "type": "string?",
+              "declaration": "string? browser = null",
+              "optional": true,
+              "description": "chrome | msedge | 360chromex | vivaldi（不接受别名）；null 搜索全部已知浏览器。",
+              "values": {
+                "owner": "Browser.SearchBookmarks",
+                "target": "browser",
+                "values": [
+                  "chrome",
+                  "msedge",
+                  "360chromex",
+                  "vivaldi"
+                ],
+                "open": false
+              }
+            }
+          ],
+          "usesDesktopInput": false,
           "cleanup": false
         }
       ]
     },
     {
       "name": "Apps",
-      "description": "在 Office/WPS/Adobe/CAD 等程序内部执行代码或调用插件命令；启动程序见 qk.Process。支持 Office/WPS VBA、Adobe JS、AutoCAD 命令、Rhino 脚本与软件连接插件命令，经低权限代理执行（不在 Quicker 进程内）；高风险能力。",
+      "description": "在 Office/WPS/Adobe/CAD 等程序内部执行代码或调用插件命令；启动程序见 qk.Process。支持 Office/WPS VBA、Adobe JS、AutoCAD 命令、Rhino 脚本与软件连接插件命令，经低权限代理执行（不在 Quicker 进程内）。",
       "methods": [
         {
           "key": "Apps.Run",
           "name": "Run",
           "signature": "string? Run(string app, string code, bool wait = true, int timeoutMs = 30000, bool launch = false)",
           "returns": "string?",
-          "description": "经低权限代理在目标程序中执行代码并返回结果文本（对象为 JSON）；高风险能力。停止脚本只中止等待，已发送的代码仍会执行完。错误码：APP_UNAVAILABLE（未安装/未运行/代理不可用）、APP_FAILED（程序返回的错误）、APP_TIMEOUT。",
+          "description": "经低权限代理在目标程序中执行代码并返回结果文本（对象为 JSON）。停止脚本只中止等待，已发送的代码仍会执行完。错误码：APP_UNAVAILABLE（未安装/未运行/代理不可用）、APP_FAILED（程序返回的错误）、APP_TIMEOUT。",
           "parameters": [
             {
               "name": "app",
@@ -5857,7 +6040,7 @@
               "values": null
             }
           ],
-          "capability": "ExternalScript",
+          "usesDesktopInput": false,
           "cleanup": false
         },
         {
@@ -5865,7 +6048,7 @@
           "name": "Bridge",
           "signature": "object? Bridge(string app, string command, object? arguments = null, int timeoutMs = 30000, string? target = null)",
           "returns": "object?",
-          "description": "调用软件连接（Bridge 插件）命令并返回解码后的结果（对象为 Dictionary、数组为 List，同 Browser.Eval；没有结果为 null）；需在 设置 → 软件连接 中开启，且目标软件的插件已连接；高风险能力。错误码：BRIDGE_DISABLED、BRIDGE_TARGET_NOT_FOUND、BRIDGE_TARGET_AMBIGUOUS（多个实例，请从目标窗口触发）、BRIDGE_TIMEOUT、BRIDGE_BUSY（软件连接正在切换，稍后重试）；插件返回失败时报 BRIDGE_FAILED，插件自己的错误码在 e.Detail；结果不是有效 JSON 或超过 1 MiB/10000 项等数据上限时报 BRIDGE_FAILED（e.Detail 为 RESULT_INVALID），此时命令可能已在目标软件中执行，请勿盲目重试。",
+          "description": "调用软件连接（Bridge 插件）命令并返回解码后的结果（对象为 Dictionary、数组为 List，同 Browser.Eval；没有结果为 null）；需在 设置 → 软件连接 中开启，且目标软件的插件已连接。错误码：BRIDGE_DISABLED、BRIDGE_TARGET_NOT_FOUND、BRIDGE_TARGET_AMBIGUOUS（多个实例，请从目标窗口触发）、BRIDGE_TIMEOUT、BRIDGE_BUSY（软件连接正在切换，稍后重试）；插件返回失败时报 BRIDGE_FAILED，插件自己的错误码在 e.Detail；结果不是有效 JSON 或超过 1 MiB/10000 项等数据上限时报 BRIDGE_FAILED（e.Detail 为 RESULT_INVALID），此时命令可能已在目标软件中执行，请勿盲目重试。",
           "parameters": [
             {
               "name": "app",
@@ -5908,7 +6091,7 @@
               "values": null
             }
           ],
-          "capability": "ExternalScript",
+          "usesDesktopInput": false,
           "cleanup": false
         },
         {
@@ -5927,7 +6110,7 @@
               "values": null
             }
           ],
-          "capability": "WindowObserve",
+          "usesDesktopInput": false,
           "cleanup": false
         },
         {
@@ -5978,7 +6161,7 @@
               "values": null
             }
           ],
-          "capability": "ExternalScript",
+          "usesDesktopInput": false,
           "cleanup": false
         }
       ]
@@ -6051,7 +6234,7 @@
               "values": null
             }
           ],
-          "capability": "AiInvoke",
+          "usesDesktopInput": false,
           "cleanup": false
         },
         {
@@ -6102,7 +6285,7 @@
               "values": null
             }
           ],
-          "capability": "AiInvoke",
+          "usesDesktopInput": false,
           "cleanup": false
         },
         {
@@ -6153,7 +6336,7 @@
               "values": null
             }
           ],
-          "capability": "AiInvoke",
+          "usesDesktopInput": false,
           "cleanup": false
         },
         {
@@ -6204,7 +6387,7 @@
               "values": null
             }
           ],
-          "capability": "AiInvoke",
+          "usesDesktopInput": false,
           "cleanup": false
         },
         {
@@ -6275,7 +6458,7 @@
               "values": null
             }
           ],
-          "capability": "AiInvoke",
+          "usesDesktopInput": false,
           "cleanup": false
         },
         {
@@ -6342,14 +6525,14 @@
               "values": null
             }
           ],
-          "capability": "AiInvoke",
+          "usesDesktopInput": false,
           "cleanup": false
         }
       ]
     },
     {
       "name": "Uia",
-      "description": "其他程序窗口里的界面元素（查找/读取/操作）；Quicker 自己的对话框见 qk.Ui，窗口本身见 qk.Window。window 为 null 表示前台窗口。El 仅本次运行有效；Find 找不到返回 null，元素消失或所在窗口关闭后使用 El 报 UIA_REF_STALE；高权限窗口报 ELEVATED_TARGET_DENIED；Quicker 自身窗口不能读取也不能操作，报 UIA_TARGET_DENIED；无法确定所在窗口的元素按找不到处理。常见错误码：UIA_PATTERN_UNSUPPORTED（元素不支持该操作）、UIA_NOT_FOUND（菜单项/对话框）、UIA_TIMEOUT（程序无响应，单次 10 秒）、UIA_LIMIT_EXCEEDED（每次运行读取 400 次、操作 100 次、El 1024 个、累计 120 秒）。读取需要“读取界面元素”能力，操作需要“操作界面元素”能力。",
+      "description": "其他程序窗口里的界面元素（查找/读取/操作）；Quicker 自己的对话框见 qk.Ui，窗口本身见 qk.Window。window 为 null 表示前台窗口。El 仅本次运行有效；Find 找不到返回 null，元素消失或所在窗口关闭后使用 El 报 UIA_REF_STALE；高权限窗口报 ELEVATED_TARGET_DENIED；Quicker 自身窗口不能读取也不能操作，报 UIA_TARGET_DENIED；无法确定所在窗口的元素按找不到处理。常见错误码：UIA_PATTERN_UNSUPPORTED（元素不支持该操作）、UIA_NOT_FOUND（菜单项/对话框）、UIA_TIMEOUT（程序无响应，单次 10 秒）、UIA_LIMIT_EXCEEDED（每次运行读取 400 次、操作 100 次、El 1024 个、累计 120 秒）。",
       "methods": [
         {
           "key": "Uia.Find",
@@ -6420,7 +6603,7 @@
               "values": null
             }
           ],
-          "capability": "UiObserve",
+          "usesDesktopInput": false,
           "cleanup": false
         },
         {
@@ -6479,7 +6662,7 @@
               "values": null
             }
           ],
-          "capability": "UiObserve",
+          "usesDesktopInput": false,
           "cleanup": false
         },
         {
@@ -6498,7 +6681,7 @@
               "values": null
             }
           ],
-          "capability": "UiObserve",
+          "usesDesktopInput": false,
           "cleanup": false
         },
         {
@@ -6508,7 +6691,7 @@
           "returns": "El?",
           "description": "当前拥有键盘焦点的元素；没有返回 null。",
           "parameters": [],
-          "capability": "UiObserve",
+          "usesDesktopInput": false,
           "cleanup": false
         },
         {
@@ -6527,7 +6710,7 @@
               "values": null
             }
           ],
-          "capability": "UiObserve",
+          "usesDesktopInput": false,
           "cleanup": false
         },
         {
@@ -6550,7 +6733,7 @@
               "type": "string",
               "declaration": "string action = \"invoke\"",
               "optional": true,
-              "description": "invoke（默认，按钮/菜单项）|click（经鼠标输入真实点击元素，另需鼠标能力；元素在屏幕外时先 scroll）|check / uncheck（复选框、开关按钮：设为勾选 / 不勾选，已是该状态时不操作，优先于 toggle）|toggle（翻转当前状态）|expand|collapse（组合框、树节点、菜单）|select（单选、标签页、列表项）|focus|scroll（滚动到可见）。元素不支持时报 UIA_PATTERN_UNSUPPORTED。",
+              "description": "invoke（默认，按钮/菜单项）|click（经鼠标输入真实点击元素；元素在屏幕外时先 scroll）|check / uncheck（复选框、开关按钮：设为勾选 / 不勾选，已是该状态时不操作，优先于 toggle）|toggle（翻转当前状态）|expand|collapse（组合框、树节点、菜单）|select（单选、标签页、列表项）|focus|scroll（滚动到可见）。元素不支持时报 UIA_PATTERN_UNSUPPORTED。",
               "values": {
                 "owner": "Uia.Act",
                 "target": "action",
@@ -6570,7 +6753,7 @@
               }
             }
           ],
-          "capability": "UiControl",
+          "usesDesktopInput": false,
           "cleanup": false
         },
         {
@@ -6597,7 +6780,7 @@
               "values": null
             }
           ],
-          "capability": "UiControl",
+          "usesDesktopInput": false,
           "cleanup": false
         },
         {
@@ -6632,7 +6815,7 @@
               "values": null
             }
           ],
-          "capability": "UiObserve",
+          "usesDesktopInput": false,
           "cleanup": false
         },
         {
@@ -6659,7 +6842,7 @@
               "values": null
             }
           ],
-          "capability": "UiControl",
+          "usesDesktopInput": false,
           "cleanup": false
         },
         {
@@ -6682,7 +6865,7 @@
               "type": "bool",
               "declaration": "bool createDirectory = false",
               "optional": true,
-              "description": "先创建缺少的文件夹（另需写文件能力）：以 \\ 结尾时创建整个路径，否则只创建其上级文件夹（不按扩展名猜测）。",
+              "description": "先创建缺少的文件夹：以 \\ 结尾时创建整个路径，否则只创建其上级文件夹（不按扩展名猜测）。",
               "values": null
             },
             {
@@ -6694,23 +6877,23 @@
               "values": null
             }
           ],
-          "capability": "UiControl",
+          "usesDesktopInput": false,
           "cleanup": false
         }
       ]
     },
     {
       "name": "Quicker",
-      "description": "Quicker 自身与账号服务（信息、命令、云端数据、临时分享、账号绑定加解密）；调用其他动作见 qk.Actions。云端数据（GetCloud/SetCloud/RemoveCloud）按 Quicker 用户跨动作、跨设备共享。",
+      "description": "Quicker 自身与账号服务（信息、命令、云端数据、临时分享、账号绑定加解密、一次性提醒）；调用其他动作见 qk.Actions。云端数据（GetCloud/SetCloud/RemoveCloud）按 Quicker 用户跨动作、跨设备共享。",
       "methods": [
         {
           "key": "Quicker.Info",
           "name": "Info",
           "signature": "QuickerInfo Info()",
           "returns": "QuickerInfo",
-          "description": "读取 Quicker 版本、专业版状态、用户标识（UnionId）、暂停状态、主题与运行时长。需要“读取可识别信息”能力。",
+          "description": "读取 Quicker 版本、专业版状态、用户标识（UnionId）、暂停状态、主题与运行时长。",
           "parameters": [],
-          "capability": "SystemInfo",
+          "usesDesktopInput": false,
           "cleanup": false
         },
         {
@@ -6718,7 +6901,7 @@
           "name": "Command",
           "signature": "void Command(string command, string? argument = null)",
           "returns": "void",
-          "description": "执行 Quicker 命令，发出即返回（showPanel 最多等 2 秒面板出现）；未知 command 报 INVALID_ARGUMENT（不开放退出 Quicker、删除动作等）。togglePause/stopAll/loadProfile/restart 需要“控制 Quicker”能力，runLast 需要“调用动作”能力；其他失败 QUICKER_COMMAND_FAILED。",
+          "description": "执行 Quicker 命令，发出即返回（showPanel 最多等 2 秒面板出现）；未知 command 报 INVALID_ARGUMENT（不开放退出 Quicker、删除动作等）。其他失败 QUICKER_COMMAND_FAILED。",
           "parameters": [
             {
               "name": "command",
@@ -6754,7 +6937,7 @@
               "values": null
             }
           ],
-          "capability": "None",
+          "usesDesktopInput": false,
           "cleanup": false
         },
         {
@@ -6773,7 +6956,7 @@
               "values": null
             }
           ],
-          "capability": "Network, QuickerCloud",
+          "usesDesktopInput": false,
           "cleanup": false
         },
         {
@@ -6800,7 +6983,7 @@
               "values": null
             }
           ],
-          "capability": "Network, QuickerCloud",
+          "usesDesktopInput": false,
           "cleanup": false
         },
         {
@@ -6819,7 +7002,7 @@
               "values": null
             }
           ],
-          "capability": "Network, QuickerCloud",
+          "usesDesktopInput": false,
           "cleanup": false
         },
         {
@@ -6838,7 +7021,7 @@
               "values": null
             }
           ],
-          "capability": "Network, TempShare",
+          "usesDesktopInput": false,
           "cleanup": false
         },
         {
@@ -6846,7 +7029,7 @@
           "name": "ShareTemporaryFile",
           "signature": "string ShareTemporaryFile(string path, bool randomName = false)",
           "returns": "string",
-          "description": "上传本机文件（最多 10 MB，需要读文件能力）到 Quicker 临时分享并返回网址（他人可访问，有效期由服务器决定）。",
+          "description": "上传本机文件（最多 10 MB）到 Quicker 临时分享并返回网址（他人可访问，有效期由服务器决定）。",
           "parameters": [
             {
               "name": "path",
@@ -6865,7 +7048,7 @@
               "values": null
             }
           ],
-          "capability": "FileRead, Network, TempShare",
+          "usesDesktopInput": false,
           "cleanup": false
         },
         {
@@ -6884,7 +7067,7 @@
               "values": null
             }
           ],
-          "capability": "None",
+          "usesDesktopInput": false,
           "cleanup": false
         },
         {
@@ -6892,7 +7075,7 @@
           "name": "DecryptLocal",
           "signature": "string DecryptLocal(string cipherText)",
           "returns": "string",
-          "description": "解密“自用加密”的 Base64 密文，返回 UTF-8 文本；需要“解密自用加密数据”能力（可解开本账号下任何动作保存的密文）。密文无效、不是本账号加密或结果不是 UTF-8 报 INVALID_ARGUMENT；未登录报 ACCESS_DENIED。",
+          "description": "解密“自用加密”的 Base64 密文，返回 UTF-8 文本；可解开本账号下任何动作保存的密文。密文无效、不是本账号加密或结果不是 UTF-8 报 INVALID_ARGUMENT；未登录报 ACCESS_DENIED。",
           "parameters": [
             {
               "name": "cipherText",
@@ -6903,14 +7086,86 @@
               "values": null
             }
           ],
-          "capability": "LocalDecrypt",
+          "usesDesktopInput": false,
+          "cleanup": false
+        },
+        {
+          "key": "Quicker.Remind",
+          "name": "Remind",
+          "signature": "string Remind(string title, string? text = null, DateTimeOffset? dueAt = null, long? delayMs = null)",
+          "returns": "string",
+          "description": "创建一次性提醒并返回提醒 Id：脚本不必等待（qk_run 整次运行最多 30 秒），到点由 Quicker 自身弹出常驻通知（标题 + 正文，不抢焦点）。按账号落盘，Quicker 重启后仍有效；到点时 Quicker 没运行的，会在下次启动时补一次并标注“（已错过，原定 HH:mm）”。dueAt（具体时刻）与 delayMs（多少毫秒后，long）必须恰好给一个，时间须在现在之后 5 秒到 30 天之内，否则 INVALID_ARGUMENT；title 1–100 字符，text 至多 1000 字符。没有“修改”：要改请先 CancelReminder 再重新 Remind；脚本重复运行会重复创建提醒（需要去重请先 ListReminders）。提醒归创建它的动作（qk_run 为 AI 一次性脚本）所有：ListReminders / CancelReminder 只看得到、取消得了自己创建的；安装来源的脚本需要用户确认“设置提醒”。每个账号最多 50 条待触发提醒、同一动作最多 20 条、每次运行最多新建 20 条，超出 LIMIT_EXCEEDED。提醒、定时的需求不要新建动作，也不要在脚本里等待。",
+          "parameters": [
+            {
+              "name": "title",
+              "type": "string",
+              "declaration": "string title",
+              "optional": false,
+              "description": "提醒标题，1–100 字符。",
+              "values": null
+            },
+            {
+              "name": "text",
+              "type": "string?",
+              "declaration": "string? text = null",
+              "optional": true,
+              "description": "提醒正文，至多 1000 字符；null 时通知只显示标题。",
+              "values": null
+            },
+            {
+              "name": "dueAt",
+              "type": "DateTimeOffset?",
+              "declaration": "DateTimeOffset? dueAt = null",
+              "optional": true,
+              "description": "具体触发时刻（DateTimeOffset，如 DateTimeOffset.Now.Date.AddDays(1).AddHours(9)）；与 delayMs 二选一。",
+              "values": null
+            },
+            {
+              "name": "delayMs",
+              "type": "long?",
+              "declaration": "long? delayMs = null",
+              "optional": true,
+              "description": "多少毫秒后触发（如 600000 = 10 分钟后，范围 5000–2592000000）；与 dueAt 二选一。",
+              "values": null
+            }
+          ],
+          "usesDesktopInput": false,
+          "cleanup": false
+        },
+        {
+          "key": "Quicker.ListReminders",
+          "name": "ListReminders",
+          "signature": "ReminderInfo[] ListReminders()",
+          "returns": "ReminderInfo[]",
+          "description": "列出本动作自己创建的待触发提醒，按触发时间升序（已触发、已取消的与其他动作的提醒不在其中）。",
+          "parameters": [],
+          "usesDesktopInput": false,
+          "cleanup": false
+        },
+        {
+          "key": "Quicker.CancelReminder",
+          "name": "CancelReminder",
+          "signature": "bool CancelReminder(string id)",
+          "returns": "bool",
+          "description": "按提醒 Id 取消本动作自己创建的一条待触发提醒；Id 不存在（含已触发）或不是本动作创建的返回 false，不报错。",
+          "parameters": [
+            {
+              "name": "id",
+              "type": "string",
+              "declaration": "string id",
+              "optional": false,
+              "description": "Quicker.Remind 返回的提醒 Id。",
+              "values": null
+            }
+          ],
+          "usesDesktopInput": false,
           "cleanup": false
         }
       ]
     },
     {
       "name": "Text",
-      "description": "纯计算的文本工具（哈希、拼音、HTML 解析）；显示文本见 qk.Ui.ShowText。不需要能力。",
+      "description": "纯计算的文本工具（哈希、拼音、HTML 解析）；显示文本见 qk.Ui.ShowText。",
       "methods": [
         {
           "key": "Text.Hash",
@@ -6971,7 +7226,7 @@
               }
             }
           ],
-          "capability": "None",
+          "usesDesktopInput": false,
           "cleanup": false
         },
         {
@@ -7014,7 +7269,7 @@
               "values": null
             }
           ],
-          "capability": "None",
+          "usesDesktopInput": false,
           "cleanup": false
         },
         {
@@ -7041,7 +7296,7 @@
               "values": null
             }
           ],
-          "capability": "None",
+          "usesDesktopInput": false,
           "cleanup": false
         },
         {
@@ -7060,7 +7315,7 @@
               "values": null
             }
           ],
-          "capability": "None",
+          "usesDesktopInput": false,
           "cleanup": false
         },
         {
@@ -7112,23 +7367,23 @@
               }
             }
           ],
-          "capability": "None",
+          "usesDesktopInput": false,
           "cleanup": false
         }
       ]
     },
     {
       "name": "Sys",
-      "description": "Windows 与本机（系统信息、环境变量与注册表读取、提示音、朗读、音量与音频设备、显示器亮度、深色模式、锁屏/关屏/睡眠/关机等电源操作）；Quicker 自身的信息见 qk.Quicker。",
+      "description": "Windows 与本机（系统信息、CPU 与内存占用、环境变量与注册表读取、提示音、朗读、音量与音频设备、媒体键、磁盘、网络与 Wi-Fi、Windows 设置页（SearchSettings/OpenSettings）、显示器亮度、深色模式、锁屏/关屏/睡眠/关机等电源操作）；Quicker 自身的信息见 qk.Quicker。",
       "methods": [
         {
           "key": "Sys.Info",
           "name": "Info",
           "signature": "SysInfo Info()",
           "returns": "SysInfo",
-          "description": "读取计算机名、用户名、系统版本、锁屏/全屏/深色模式/联网状态、局域网 IP 与开机时长。需要“读取可识别信息”能力。",
+          "description": "读取计算机名、用户名、系统版本、锁屏/全屏/深色模式/联网状态、局域网 IP 与开机时长。",
           "parameters": [],
-          "capability": "SystemInfo",
+          "usesDesktopInput": false,
           "cleanup": false
         },
         {
@@ -7143,7 +7398,7 @@
               "type": "string",
               "declaration": "string sound",
               "optional": false,
-              "description": "内置音名 info|snip|succeed|warning|wrong|dim（总是按内置音处理），或音频文件路径（mp3/wav/wma/m4a 等；需要读文件能力；不存在 FILE_NOT_FOUND），或 http(s) 网址（需要网络能力）；其他协议 INVALID_ARGUMENT。",
+              "description": "内置音名 info|snip|succeed|warning|wrong|dim（总是按内置音处理），或音频文件路径（mp3/wav/wma/m4a 等；不存在 FILE_NOT_FOUND），或 http(s) 网址；其他协议 INVALID_ARGUMENT。",
               "values": {
                 "owner": "Sys.PlaySound",
                 "target": "sound",
@@ -7167,7 +7422,7 @@
               "values": null
             }
           ],
-          "capability": "None",
+          "usesDesktopInput": false,
           "cleanup": false
         },
         {
@@ -7194,7 +7449,7 @@
               "values": null
             }
           ],
-          "capability": "None",
+          "usesDesktopInput": false,
           "cleanup": false
         },
         {
@@ -7202,7 +7457,7 @@
           "name": "GetVolume",
           "signature": "VolumeInfo GetVolume(string device = \"output\")",
           "returns": "VolumeInfo",
-          "description": "读取当前默认输出设备（或默认录音设备）的音量与静音（每次调用都重新取默认设备）；没有音频设备报 SOUND_FAILED。不需确认；停止后的 finally 中也可调用。",
+          "description": "读取当前默认输出设备（或默认录音设备）的音量与静音（每次调用都重新取默认设备）；没有音频设备报 SOUND_FAILED。停止后的 finally 中也可调用。",
           "parameters": [
             {
               "name": "device",
@@ -7221,7 +7476,7 @@
               }
             }
           ],
-          "capability": "None",
+          "usesDesktopInput": false,
           "cleanup": true
         },
         {
@@ -7264,7 +7519,7 @@
               }
             }
           ],
-          "capability": "None",
+          "usesDesktopInput": false,
           "cleanup": true
         },
         {
@@ -7272,7 +7527,7 @@
           "name": "Power",
           "signature": "void Power(string action)",
           "returns": "void",
-          "description": "电源与会话操作。lock、screenOff 不需确认；sleep/hibernate/signOut/shutdown/restart 需要“电源/会话”能力（后果严重：未保存的工作可能丢失），action 请写成字符串字面量以便只确认所需操作。失败报 POWER_FAILED。screenOff 由鼠标或按键触发时，随后的鼠标移动或松键可能立即点亮屏幕。睡眠期间停止与超时不生效；唤醒后若已超过动作超时，后续代码不再执行。",
+          "description": "电源与会话操作。lock、screenOff 锁定或关闭屏幕；sleep/hibernate/signOut/shutdown/restart 可使电脑睡眠、休眠、注销、关机或重启，未保存的工作可能丢失。失败报 POWER_FAILED。screenOff 由鼠标或按键触发时，随后的鼠标移动或松键可能立即点亮屏幕。睡眠期间停止与超时不生效；唤醒后若已超过动作超时，后续代码不再执行。",
           "parameters": [
             {
               "name": "action",
@@ -7296,7 +7551,7 @@
               }
             }
           ],
-          "capability": "None",
+          "usesDesktopInput": false,
           "cleanup": false
         },
         {
@@ -7304,7 +7559,7 @@
           "name": "GetBrightness",
           "signature": "int GetBrightness(string screen = \"mouse\")",
           "returns": "int",
-          "description": "读取显示器亮度 0–100（同“显示器亮度”步骤：笔记本内置屏走 WMI，外接显示器走 DDC/CI）。不支持调节亮度报 BRIGHTNESS_UNSUPPORTED，其他失败（屏幕未连接等）报 BRIGHTNESS_FAILED。不需确认。",
+          "description": "读取显示器亮度 0–100（同“显示器亮度”步骤：笔记本内置屏走 WMI，外接显示器走 DDC/CI）。不支持调节亮度报 BRIGHTNESS_UNSUPPORTED，其他失败（屏幕未连接等）报 BRIGHTNESS_FAILED。",
           "parameters": [
             {
               "name": "screen",
@@ -7324,7 +7579,7 @@
               }
             }
           ],
-          "capability": "None",
+          "usesDesktopInput": false,
           "cleanup": false
         },
         {
@@ -7332,7 +7587,7 @@
           "name": "SetBrightness",
           "signature": "int SetBrightness(int? level = null, int delta = 0, string screen = \"mouse\", bool osd = false)",
           "returns": "int",
-          "description": "设置显示器亮度，返回设置后的亮度；设备只支持部分档位时取最接近的档位；运行后保留。screen 为 all 时设置全部显示器，至少一块成功即返回（鼠标所在屏，否则第一块成功屏的亮度），全部失败才报错。错误码同 GetBrightness。不需确认。",
+          "description": "设置显示器亮度，返回设置后的亮度；设备只支持部分档位时取最接近的档位；运行后保留。screen 为 all 时设置全部显示器，至少一块成功即返回（鼠标所在屏，否则第一块成功屏的亮度），全部失败才报错。错误码同 GetBrightness。",
           "parameters": [
             {
               "name": "level",
@@ -7376,7 +7631,7 @@
               "values": null
             }
           ],
-          "capability": "None",
+          "usesDesktopInput": false,
           "cleanup": false
         },
         {
@@ -7384,7 +7639,7 @@
           "name": "ListAudioDevices",
           "signature": "AudioDevice[] ListAudioDevices(string device = \"output\")",
           "returns": "AudioDevice[]",
-          "description": "列出已启用的音频输出（或录音）设备，IsDefault 标出当前默认设备；读取失败报 SOUND_FAILED。不需确认。",
+          "description": "列出已启用的音频输出（或录音）设备，IsDefault 标出当前默认设备；读取失败报 SOUND_FAILED。",
           "parameters": [
             {
               "name": "device",
@@ -7403,7 +7658,7 @@
               }
             }
           ],
-          "capability": "None",
+          "usesDesktopInput": false,
           "cleanup": false
         },
         {
@@ -7411,7 +7666,7 @@
           "name": "SetDefaultAudioDevice",
           "signature": "void SetDefaultAudioDevice(string idOrName, string device = \"output\")",
           "returns": "void",
-          "description": "设为默认音频设备（多媒体、控制台与通信，同“音频控制”步骤）；运行后保留。找不到 AUDIO_DEVICE_NOT_FOUND；名称匹配到多个 INVALID_ARGUMENT（请改用 Id）；设置失败 SOUND_FAILED。不需确认。",
+          "description": "设为默认音频设备（多媒体、控制台与通信，同“音频控制”步骤）；运行后保留。找不到 AUDIO_DEVICE_NOT_FOUND；名称匹配到多个 INVALID_ARGUMENT（请改用 Id）；设置失败 SOUND_FAILED。",
           "parameters": [
             {
               "name": "idOrName",
@@ -7438,7 +7693,7 @@
               }
             }
           ],
-          "capability": "None",
+          "usesDesktopInput": false,
           "cleanup": false
         },
         {
@@ -7446,7 +7701,7 @@
           "name": "GetEnv",
           "signature": "string? GetEnv(string name)",
           "returns": "string?",
-          "description": "读取环境变量（Quicker 进程中的当前值；Quicker 启动后在系统设置中修改的变量需重启 Quicker 才可见）；不存在返回 null。需要“读取可识别信息”能力。",
+          "description": "读取环境变量（Quicker 进程中的当前值；Quicker 启动后在系统设置中修改的变量需重启 Quicker 才可见）；不存在返回 null。",
           "parameters": [
             {
               "name": "name",
@@ -7457,7 +7712,7 @@
               "values": null
             }
           ],
-          "capability": "SystemInfo",
+          "usesDesktopInput": false,
           "cleanup": false
         },
         {
@@ -7465,7 +7720,7 @@
           "name": "GetRegistry",
           "signature": "object? GetRegistry(string path, string? name = null)",
           "returns": "object?",
-          "description": "读取注册表值（只读）；键或值不存在返回 null。REG_SZ/REG_EXPAND_SZ → string（已展开）、REG_DWORD → long（无符号）、REG_QWORD → long、REG_MULTI_SZ → string[]、REG_BINARY → byte[]；无权限报 ACCESS_DENIED。需要“读取可识别信息”能力。",
+          "description": "读取注册表值（只读）；键或值不存在返回 null。REG_SZ/REG_EXPAND_SZ → string（已展开）、REG_DWORD → long（无符号）、REG_QWORD → long、REG_MULTI_SZ → string[]、REG_BINARY → byte[]；无权限报 ACCESS_DENIED。",
           "parameters": [
             {
               "name": "path",
@@ -7484,7 +7739,7 @@
               "values": null
             }
           ],
-          "capability": "SystemInfo",
+          "usesDesktopInput": false,
           "cleanup": false
         },
         {
@@ -7492,7 +7747,7 @@
           "name": "SetDarkMode",
           "signature": "void SetDarkMode(bool dark, string scope = \"all\")",
           "returns": "void",
-          "description": "切换当前用户的 Windows 深色（true）/浅色（false）模式，并通知已打开的程序（个别程序重启后才生效）；运行后保留，当前状态见 qk.Sys.Info().DarkMode。不需确认。",
+          "description": "切换当前用户的 Windows 深色（true）/浅色（false）模式，并通知已打开的程序（个别程序重启后才生效）；运行后保留，当前状态见 qk.Sys.Info().DarkMode。",
           "parameters": [
             {
               "name": "dark",
@@ -7520,14 +7775,119 @@
               }
             }
           ],
-          "capability": "None",
+          "usesDesktopInput": false,
+          "cleanup": false
+        },
+        {
+          "key": "Sys.MediaKey",
+          "name": "MediaKey",
+          "signature": "void MediaKey(string key)",
+          "returns": "void",
+          "description": "发送系统媒体播放键。全局生效，不需要目标窗口或键盘焦点（qk_run 的 target:'none' 可用）；响应的播放器由系统决定；只能发送这四个键（音量与静音请用 Sys.SetVolume）。失败报 HOST_FAILED。",
+          "parameters": [
+            {
+              "name": "key",
+              "type": "string",
+              "declaration": "string key",
+              "optional": false,
+              "description": "playPause（播放/暂停）| next（下一首）| previous（上一首）| stop；不区分大小写，不接受别名（play_pause 等报 INVALID_ARGUMENT）。",
+              "values": {
+                "owner": "Sys.MediaKey",
+                "target": "key",
+                "values": [
+                  "playPause",
+                  "next",
+                  "previous",
+                  "stop"
+                ],
+                "open": false
+              }
+            }
+          ],
+          "usesDesktopInput": false,
+          "cleanup": false
+        },
+        {
+          "key": "Sys.ListDisks",
+          "name": "ListDisks",
+          "signature": "DiskInfo[] ListDisks()",
+          "returns": "DiskInfo[]",
+          "description": "列出本机各驱动器的盘符、卷标、类型、文件系统、总容量与剩余空间（字节）。未就绪的驱动器（光驱无盘、断开的网络盘）IsReady 为 false，其余字段为 null，不报错；所有非固定盘（可移动盘、光驱、网络盘、内存盘、未知类型）并行探测，合计最多约 0.5 秒，无响应的按“未就绪、容量未知”报告（类型照实给出），不会被断开的网络盘或休眠的 USB 盘卡住。",
+          "parameters": [],
+          "usesDesktopInput": false,
+          "cleanup": false
+        },
+        {
+          "key": "Sys.SearchSettings",
+          "name": "SearchSettings",
+          "signature": "SettingsPage[] SearchSettings(string query, int limit = 10)",
+          "returns": "SettingsPage[]",
+          "description": "按关键词查 Windows 设置页（数据同搜索插件“Windows 设置”）：空白分隔的每个词都须出现在标题、分类或地址中（不区分大小写），标题更贴近的排前面；只收 ms-settings: 与 control.exe 目标；没有命中返回空数组。",
+          "parameters": [
+            {
+              "name": "query",
+              "type": "string",
+              "declaration": "string query",
+              "optional": false,
+              "description": "关键词，如 \"蓝牙\"、\"wifi\"、\"默认应用\"；多个词用空格分隔。",
+              "values": null
+            },
+            {
+              "name": "limit",
+              "type": "int",
+              "declaration": "int limit = 10",
+              "optional": true,
+              "description": "最多返回条数，1–100。",
+              "values": null
+            }
+          ],
+          "usesDesktopInput": false,
+          "cleanup": false
+        },
+        {
+          "key": "Sys.OpenSettings",
+          "name": "OpenSettings",
+          "signature": "void OpenSettings(string uri)",
+          "returns": "void",
+          "description": "以普通权限打开 Windows 设置页，不等待窗口出现。uri 只接受 ms-settings: 开头的地址（按原样打开，不检查该页在当前 Windows 版本是否存在），或 SearchSettings 返回的 control.exe 目标；其他地址、命令（含 rundll32）报 INVALID_ARGUMENT；启动失败 PROCESS_FAILED。",
+          "parameters": [
+            {
+              "name": "uri",
+              "type": "string",
+              "declaration": "string uri",
+              "optional": false,
+              "description": "如 \"ms-settings:bluetooth\"，或 SearchSettings 返回的 Uri（control.exe 目标须与目录中的命令逐字相同）。",
+              "values": null
+            }
+          ],
+          "usesDesktopInput": false,
+          "cleanup": false
+        },
+        {
+          "key": "Sys.GetNetwork",
+          "name": "GetNetwork",
+          "signature": "NetworkInfo GetNetwork()",
+          "returns": "NetworkInfo",
+          "description": "本机网络状态：是否联网，以及已连接的适配器（不含回环与隧道）的名称、类型、Wi-Fi 名称与信号、IPv4/IPv6、网关、DNS。绝不读取或返回 Wi-Fi 密码。Wi-Fi 名称与 IP 可识别用户。",
+          "parameters": [],
+          "usesDesktopInput": false,
+          "cleanup": false
+        },
+        {
+          "key": "Sys.GetPerf",
+          "name": "GetPerf",
+          "signature": "PerfInfo GetPerf()",
+          "returns": "PerfInfo",
+          "description": "整机性能（只读）：CPU 占用（约 0.5 秒采样，调用阻塞约半秒）与物理内存已用/总量（字节）；开机时长请用 Sys.Info().UptimeMs。",
+          "parameters": [],
+          "usesDesktopInput": false,
           "cleanup": false
         }
       ]
     },
     {
       "name": "Steps",
-      "description": "通用步骤入口：执行没有 qk 对应方法的长尾 XAction 步骤（如 Windows 服务/注册表、PDF、Excel 区域、CorelDRAW/Revit 等软件控制）；已有 qk 方法时优先用 qk。需要“【高风险】执行 XAction 步骤”能力，按步骤键逐项确认（确认中显示步骤名称；可运行任意程序/命令的高风险步骤——sys:run、sys:shelloperation、sys:openUrl、sys:officehelper、sys:inputScript/sendKeys、sys:sendMessage、浏览器与各软件控制步骤等——另起一行警示，需用户额外确认，能用 qk 方法时不要用它们）：步骤键请写成字符串字面量（计算出的步骤键需要“任意步骤”授权，否则运行时报 CAPABILITY_DENIED）。调用前先查步骤的参数 key、类型与选项值（Agent/MCP：grep @knowledge/catalog 后 read_file 模块 yaml，或 steps.resolve('sys:xxx')），不要猜；先读模块卡（sys.<key>.yaml），受第二个控制字段门控的参数（如 virtualDesktop 的 moveWindow + target=id → desktopId）在那里以“when … & target=…”列出（steps.resolve 的逐分支说明中也在对应分支下列出）。只有经过审计的步骤可调用：流程控制、变量类、执行代码/表达式、调用动作/子程序/控制 Quicker、依赖 XAction 运行时的步骤，以及未经审计的（新增）步骤被拒绝（INVALID_ARGUMENT）。",
+      "description": "通用步骤入口：执行没有 qk 对应方法的长尾 XAction 步骤（如 Windows 服务/注册表、PDF、Excel 区域、CorelDRAW/Revit 等软件控制）；已有 qk 方法时优先用 qk。调用前先查步骤的参数 key、类型与选项值（Agent/MCP：grep @knowledge/catalog 后 read_file 模块 yaml，或 steps.resolve('sys:xxx')），不要猜；先读模块卡（sys.<key>.yaml），受第二个控制字段门控的参数（如 virtualDesktop 的 moveWindow + target=id → desktopId）在那里以“when … & target=…”列出（steps.resolve 的逐分支说明中也在对应分支下列出）。只支持登记在支持表中的步骤：流程控制、变量类、执行代码/表达式、调用动作/子程序/控制 Quicker、依赖 XAction 运行时的步骤，以及尚未登记的（新增）步骤不支持（INVALID_ARGUMENT）。",
       "methods": [
         {
           "key": "Steps.Run",
@@ -7541,7 +7901,7 @@
               "type": "string",
               "declaration": "string key",
               "optional": false,
-              "description": "步骤键，如 \"sys:winservice\"；可省略 \"sys:\" 前缀，不区分大小写。须为字符串字面量才能在运行前识别并确认。",
+              "description": "步骤键，如 \"sys:winservice\"；可省略 \"sys:\" 前缀，不区分大小写。",
               "values": null
             },
             {
@@ -7561,7 +7921,7 @@
               "values": null
             }
           ],
-          "capability": "XActionStep",
+          "usesDesktopInput": false,
           "cleanup": false
         }
       ]
@@ -7596,7 +7956,7 @@
     },
     {
       "name": "ActionErrorCode",
-      "description": "qk 错误码。qk 调用可能报出的每个码都有同名常量（错误码的 PascalCase，如 ActionErrorCode.BrowserUnavailable）；也可用 e.Code.Value == \"…\" 比较。HOST_UNAVAILABLE 表示当前宿主没有提供该服务（与未获授权的 CAPABILITY_DENIED 不同）。",
+      "description": "qk 错误码。qk 调用可能报出的每个码都有同名常量（错误码的 PascalCase，如 ActionErrorCode.BrowserUnavailable）；也可用 e.Code.Value == \"…\" 比较。HOST_UNAVAILABLE 表示当前宿主没有提供该服务（CAPABILITY_DENIED 可表示停止后禁止的清理操作）。",
       "constructors": [
         "ActionErrorCode(string Value)"
       ],
@@ -7679,6 +8039,40 @@
           "name": "IsDefault",
           "type": "bool",
           "description": "是否为当前默认设备（多媒体）。",
+          "writable": true
+        }
+      ],
+      "methods": []
+    },
+    {
+      "name": "Bookmark",
+      "description": "浏览器书签（Browser.SearchBookmarks 返回）。",
+      "constructors": [
+        "Bookmark(string Title, string Url, string Folder, string Browser)"
+      ],
+      "properties": [
+        {
+          "name": "Title",
+          "type": "string",
+          "description": "书签标题。",
+          "writable": true
+        },
+        {
+          "name": "Url",
+          "type": "string",
+          "description": "书签网址。",
+          "writable": true
+        },
+        {
+          "name": "Folder",
+          "type": "string",
+          "description": "所在书签文件夹路径，如“书签栏/工作”；没有为 \"\"。",
+          "writable": true
+        },
+        {
+          "name": "Browser",
+          "type": "string",
+          "description": "浏览器标识：chrome | msedge | 360chromex | vivaldi。",
           "writable": true
         }
       ],
@@ -7943,6 +8337,58 @@
           "name": "Image",
           "type": "Img?",
           "description": "图片上下文参数（如从截图工具栏触发时的图片）；没有为 null。首次读取时才复制像素（计入图片限额；复制失败返回 null 并记警告）。句柄：返回或写入 State 时编码为 null。",
+          "writable": true
+        }
+      ],
+      "methods": []
+    },
+    {
+      "name": "DiskInfo",
+      "description": "磁盘/驱动器（Sys.ListDisks 返回）。",
+      "constructors": [
+        "DiskInfo(string Name, string? Label, string DriveType, string? Format, long? TotalBytes, long? FreeBytes, bool IsReady)"
+      ],
+      "properties": [
+        {
+          "name": "Name",
+          "type": "string",
+          "description": "盘符根，如 \"C:\\\"。",
+          "writable": true
+        },
+        {
+          "name": "Label",
+          "type": "string?",
+          "description": "卷标；驱动器未就绪为 null。",
+          "writable": true
+        },
+        {
+          "name": "DriveType",
+          "type": "string",
+          "description": "fixed | removable | network | cdrom | ram | noRootDirectory | unknown。",
+          "writable": true
+        },
+        {
+          "name": "Format",
+          "type": "string?",
+          "description": "文件系统，如 NTFS；未就绪为 null。",
+          "writable": true
+        },
+        {
+          "name": "TotalBytes",
+          "type": "long?",
+          "description": "总容量（字节）；未就绪为 null。",
+          "writable": true
+        },
+        {
+          "name": "FreeBytes",
+          "type": "long?",
+          "description": "当前用户可用的剩余空间（字节，受配额限制）；未就绪为 null。",
+          "writable": true
+        },
+        {
+          "name": "IsReady",
+          "type": "bool",
+          "description": "驱动器是否就绪（光驱无盘、断开的网络盘、约 0.5 秒内没有响应的网络盘为 false）。",
           "writable": true
         }
       ],
@@ -8355,7 +8801,7 @@
               "values": null
             }
           ],
-          "capability": null,
+          "usesDesktopInput": null,
           "cleanup": null
         },
         {
@@ -8382,7 +8828,7 @@
               "values": null
             }
           ],
-          "capability": null,
+          "usesDesktopInput": null,
           "cleanup": null
         },
         {
@@ -8401,7 +8847,7 @@
               "values": null
             }
           ],
-          "capability": null,
+          "usesDesktopInput": null,
           "cleanup": null
         },
         {
@@ -8420,7 +8866,7 @@
               "values": null
             }
           ],
-          "capability": null,
+          "usesDesktopInput": null,
           "cleanup": null
         },
         {
@@ -8430,7 +8876,7 @@
           "returns": "Img",
           "description": "灰度，返回新图。",
           "parameters": [],
-          "capability": null,
+          "usesDesktopInput": null,
           "cleanup": null
         },
         {
@@ -8440,7 +8886,7 @@
           "returns": "Img",
           "description": "反色，返回新图。",
           "parameters": [],
-          "capability": null,
+          "usesDesktopInput": null,
           "cleanup": null
         },
         {
@@ -8476,7 +8922,7 @@
               "values": null
             }
           ],
-          "capability": null,
+          "usesDesktopInput": null,
           "cleanup": null
         },
         {
@@ -8520,7 +8966,7 @@
               "values": null
             }
           ],
-          "capability": null,
+          "usesDesktopInput": null,
           "cleanup": null
         },
         {
@@ -8530,7 +8976,7 @@
           "returns": "void",
           "description": "提前释放像素（循环中大量取图时使用）；之后再用本句柄报错。停止后的 finally 中也可调用。",
           "parameters": [],
-          "capability": null,
+          "usesDesktopInput": null,
           "cleanup": null
         }
       ]
@@ -8570,6 +9016,86 @@
           "name": "Children",
           "type": "Item[]?",
           "description": "子项/子菜单；Ui.Select/SelectMany 中被忽略。",
+          "writable": true
+        }
+      ],
+      "methods": []
+    },
+    {
+      "name": "NetworkAdapterInfo",
+      "description": "一个已连接的网络适配器（Sys.GetNetwork 返回）。",
+      "constructors": [
+        "NetworkAdapterInfo(string Name, string Type, string? Ssid, int? SignalPercent, string[] Ipv4, string[] Ipv6, string[] Gateway, string[] Dns)"
+      ],
+      "properties": [
+        {
+          "name": "Name",
+          "type": "string",
+          "description": "适配器名称，如“WLAN”“以太网”。",
+          "writable": true
+        },
+        {
+          "name": "Type",
+          "type": "string",
+          "description": "wifi | ethernet | mobile | ppp | other。",
+          "writable": true
+        },
+        {
+          "name": "Ssid",
+          "type": "string?",
+          "description": "Wi-Fi 名称；非 Wi-Fi 适配器或系统不提供时为 null。",
+          "writable": true
+        },
+        {
+          "name": "SignalPercent",
+          "type": "int?",
+          "description": "Wi-Fi 信号强度 0–100（系统信号格数 × 20，只有 0/20/40/60/80/100 六档）；取不到为 null。",
+          "writable": true
+        },
+        {
+          "name": "Ipv4",
+          "type": "string[]",
+          "description": "IPv4 地址。",
+          "writable": true
+        },
+        {
+          "name": "Ipv6",
+          "type": "string[]",
+          "description": "IPv6 地址（不含链路本地地址）。",
+          "writable": true
+        },
+        {
+          "name": "Gateway",
+          "type": "string[]",
+          "description": "默认网关地址。",
+          "writable": true
+        },
+        {
+          "name": "Dns",
+          "type": "string[]",
+          "description": "DNS 服务器地址。",
+          "writable": true
+        }
+      ],
+      "methods": []
+    },
+    {
+      "name": "NetworkInfo",
+      "description": "本机网络状态（Sys.GetNetwork 返回）。",
+      "constructors": [
+        "NetworkInfo(bool Online, NetworkAdapterInfo[] Adapters)"
+      ],
+      "properties": [
+        {
+          "name": "Online",
+          "type": "bool",
+          "description": "系统认为至少有一个可用的网络连接。",
+          "writable": true
+        },
+        {
+          "name": "Adapters",
+          "type": "NetworkAdapterInfo[]",
+          "description": "已连接（Up）的适配器，不含回环与隧道。",
           "writable": true
         }
       ],
@@ -8806,6 +9332,34 @@
       "methods": []
     },
     {
+      "name": "PerfInfo",
+      "description": "整机性能（Sys.GetPerf 返回）。",
+      "constructors": [
+        "PerfInfo(double CpuPercent, long MemoryUsedBytes, long MemoryTotalBytes)"
+      ],
+      "properties": [
+        {
+          "name": "CpuPercent",
+          "type": "double",
+          "description": "整机 CPU 占用 0–100（约 0.5 秒采样，1 位小数）。",
+          "writable": true
+        },
+        {
+          "name": "MemoryUsedBytes",
+          "type": "long",
+          "description": "已用物理内存，字节。",
+          "writable": true
+        },
+        {
+          "name": "MemoryTotalBytes",
+          "type": "long",
+          "description": "物理内存总量，字节（开机时长见 Sys.Info().UptimeMs）。",
+          "writable": true
+        }
+      ],
+      "methods": []
+    },
+    {
       "name": "ProcInfo",
       "description": "进程信息。",
       "constructors": [
@@ -8868,8 +9422,42 @@
       "methods": []
     },
     {
+      "name": "ProcUsage",
+      "description": "进程资源占用（Process.ListUsage 返回）。",
+      "constructors": [
+        "ProcUsage(int Pid, string Name, double CpuPercent, long MemoryBytes)"
+      ],
+      "properties": [
+        {
+          "name": "Pid",
+          "type": "int",
+          "description": "进程 Id。",
+          "writable": true
+        },
+        {
+          "name": "Name",
+          "type": "string",
+          "description": "进程名（不含 .exe）。",
+          "writable": true
+        },
+        {
+          "name": "CpuPercent",
+          "type": "double",
+          "description": "约 0.5 秒采样区间内占整机全部逻辑处理器的百分比（0–100，已按处理器数归一，1 位小数）。",
+          "writable": true
+        },
+        {
+          "name": "MemoryBytes",
+          "type": "long",
+          "description": "工作集（物理内存占用），字节。",
+          "writable": true
+        }
+      ],
+      "methods": []
+    },
+    {
       "name": "ProgressWin",
-      "description": "进度窗口句柄（qk.Ui.OpenProgress 返回）：仅本次运行有效，不能返回或写入 State；本次运行新建的窗口在运行结束（含停止、超时）时自动关闭。停止后的 finally 中仍可调用 Close；读取 Closed/Operation 不需要能力，任何时候都可用。",
+      "description": "进度窗口句柄（qk.Ui.OpenProgress 返回）：仅本次运行有效，不能返回或写入 State；本次运行新建的窗口在运行结束（含停止、超时）时自动关闭。停止后的 finally 中仍可调用 Close；读取 Closed/Operation 任何时候都可用。",
       "constructors": [],
       "properties": [
         {
@@ -8918,7 +9506,7 @@
               "values": null
             }
           ],
-          "capability": "None",
+          "usesDesktopInput": false,
           "cleanup": false
         },
         {
@@ -8928,7 +9516,7 @@
           "returns": "string?",
           "description": "等待窗口关闭，返回 Operation（点 X 等其它方式关闭为 null）；运行被停止时中断等待，运行结束时返回 null；bar 进度条不支持（INVALID_ARGUMENT）。",
           "parameters": [],
-          "capability": "None",
+          "usesDesktopInput": false,
           "cleanup": false
         },
         {
@@ -8938,7 +9526,7 @@
           "returns": "void",
           "description": "关闭窗口；已关闭时无操作。",
           "parameters": [],
-          "capability": "None",
+          "usesDesktopInput": false,
           "cleanup": true
         }
       ]
@@ -9012,6 +9600,40 @@
       "methods": []
     },
     {
+      "name": "RecentFile",
+      "description": "最近使用的文件（Files.ListRecent 返回）。",
+      "constructors": [
+        "RecentFile(string Path, string Name, bool IsDirectory, DateTimeOffset AccessedAt)"
+      ],
+      "properties": [
+        {
+          "name": "Path",
+          "type": "string",
+          "description": "快捷方式解析出的目标完整路径。",
+          "writable": true
+        },
+        {
+          "name": "Name",
+          "type": "string",
+          "description": "文件名。",
+          "writable": true
+        },
+        {
+          "name": "IsDirectory",
+          "type": "bool",
+          "description": "目标是否文件夹（需 includeFolders: true 才会有 true）；网络目标不探测，恒为 false。",
+          "writable": true
+        },
+        {
+          "name": "AccessedAt",
+          "type": "DateTimeOffset",
+          "description": "快捷方式的最近更新时间（UTC 时间点，与 PathInfo.ModifiedAt 一致），即该文件最近一次被使用的时间。",
+          "writable": true
+        }
+      ],
+      "methods": []
+    },
+    {
       "name": "Rect",
       "description": "屏幕矩形（物理像素）：左上角 X/Y 与宽 Width、高 Height。",
       "constructors": [
@@ -9040,6 +9662,40 @@
           "name": "Height",
           "type": "int",
           "description": null,
+          "writable": true
+        }
+      ],
+      "methods": []
+    },
+    {
+      "name": "ReminderInfo",
+      "description": "待触发的一次性提醒（Quicker.ListReminders 返回）。",
+      "constructors": [
+        "ReminderInfo(string Id, string Title, string? Text, DateTimeOffset At)"
+      ],
+      "properties": [
+        {
+          "name": "Id",
+          "type": "string",
+          "description": "提醒 Id，可传给 CancelReminder。",
+          "writable": true
+        },
+        {
+          "name": "Title",
+          "type": "string",
+          "description": "提醒标题。",
+          "writable": true
+        },
+        {
+          "name": "Text",
+          "type": "string?",
+          "description": "提醒正文；没有为 null。",
+          "writable": true
+        },
+        {
+          "name": "At",
+          "type": "DateTimeOffset",
+          "description": "原定触发时刻（本机时区偏移）。",
           "writable": true
         }
       ],
@@ -9166,6 +9822,34 @@
           "name": "Filter",
           "type": "string",
           "description": "关闭时的筛选文字。",
+          "writable": true
+        }
+      ],
+      "methods": []
+    },
+    {
+      "name": "SettingsPage",
+      "description": "Windows 设置页（Sys.SearchSettings 返回）。",
+      "constructors": [
+        "SettingsPage(string Title, string Uri, string Path)"
+      ],
+      "properties": [
+        {
+          "name": "Title",
+          "type": "string",
+          "description": "设置页名称。",
+          "writable": true
+        },
+        {
+          "name": "Uri",
+          "type": "string",
+          "description": "可直接传给 qk.Sys.OpenSettings 的地址（ms-settings:… 或 control.exe -name …）。",
+          "writable": true
+        },
+        {
+          "name": "Path",
+          "type": "string",
+          "description": "所属分类，如“网络和 Internet”。",
           "writable": true
         }
       ],
@@ -9323,7 +10007,7 @@
     },
     {
       "name": "TextWin",
-      "description": "非等待文本窗口句柄（qk.Ui.OpenText 返回）：仅本次运行有效，不能返回或写入 State；窗口本身在运行结束后保留，由用户关闭。窗口关闭后 Append/SetText/Activate/Close 不做任何事（用 Closed 判断）。停止后的 finally 中仍可对它调用 Close/Append/SetText（清理阶段合计最多 64K 字符）；读取 Closed 不需要能力，任何时候都可用。",
+      "description": "非等待文本窗口句柄（qk.Ui.OpenText 返回）：仅本次运行有效，不能返回或写入 State；窗口本身在运行结束后保留，由用户关闭。窗口关闭后 Append/SetText/Activate/Close 不做任何事（用 Closed 判断）。停止后的 finally 中仍可对它调用 Close/Append/SetText（清理阶段合计最多 64K 字符）；读取 Closed 任何时候都可用。",
       "constructors": [],
       "properties": [
         {
@@ -9350,7 +10034,7 @@
               "values": null
             }
           ],
-          "capability": "None",
+          "usesDesktopInput": false,
           "cleanup": true
         },
         {
@@ -9369,7 +10053,7 @@
               "values": null
             }
           ],
-          "capability": "None",
+          "usesDesktopInput": false,
           "cleanup": true
         },
         {
@@ -9379,7 +10063,7 @@
           "returns": "void",
           "description": "显示并激活窗口（最小化时还原）。",
           "parameters": [],
-          "capability": "None",
+          "usesDesktopInput": false,
           "cleanup": false
         },
         {
@@ -9389,7 +10073,7 @@
           "returns": "TextResult?",
           "description": "等待用户关闭窗口（点 X、Esc、失焦关闭或点击 operations 按钮——点击 operations 按钮即关闭窗口），返回关闭时的文本、选中内容、光标与 Operation（点击的 operations 值，否则 null）；被 Close 关闭、被同 options.Key 的 OpenText 替换或运行结束时返回 null；运行被停止时中断等待。",
           "parameters": [],
-          "capability": "None",
+          "usesDesktopInput": false,
           "cleanup": false
         },
         {
@@ -9399,7 +10083,7 @@
           "returns": "void",
           "description": "关闭窗口（之后 WaitForClose 返回 null）；已关闭时无操作。",
           "parameters": [],
-          "capability": "None",
+          "usesDesktopInput": false,
           "cleanup": true
         }
       ]
@@ -10326,6 +11010,64 @@
       "open": false
     },
     {
+      "owner": "Sys.MediaKey",
+      "target": "key",
+      "values": [
+        "playPause",
+        "next",
+        "previous",
+        "stop"
+      ],
+      "open": false
+    },
+    {
+      "owner": "Window.Snap",
+      "target": "position",
+      "values": [
+        "left",
+        "right",
+        "top",
+        "bottom",
+        "topLeft",
+        "topRight",
+        "bottomLeft",
+        "bottomRight",
+        "maximize",
+        "center",
+        "restore"
+      ],
+      "open": false
+    },
+    {
+      "owner": "Window.Snap",
+      "target": "screen",
+      "values": [
+        "primary",
+        "mouse"
+      ],
+      "open": true
+    },
+    {
+      "owner": "Browser.SearchBookmarks",
+      "target": "browser",
+      "values": [
+        "chrome",
+        "msedge",
+        "360chromex",
+        "vivaldi"
+      ],
+      "open": false
+    },
+    {
+      "owner": "Process.ListUsage",
+      "target": "sort",
+      "values": [
+        "cpu",
+        "memory"
+      ],
+      "open": false
+    },
+    {
       "owner": "Ctx",
       "target": "Trigger",
       "values": [
@@ -11074,6 +11816,7 @@
     "ProcResult(ExitCode)",
     "ProcResult(StandardError)",
     "ProcResult(StandardOutput)",
+    "Process.ListUsage(name)",
     "Process.Open(target)",
     "Process.Run(executable)",
     "Process.Run(workingDirectory)",

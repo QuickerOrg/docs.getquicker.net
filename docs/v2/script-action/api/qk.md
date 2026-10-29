@@ -29,8 +29,6 @@ void Log(string message, string level = "info")
 
 返回类型：`void`。空值、用户取消和异常行为以成员及域说明为准。
 
-基础能力：无基础能力授权要求。某些参数或数据来源会追加能力，详见[安全与授权](../security.md)。
-
 <a id="wait" />
 
 ## Wait
@@ -46,7 +44,5 @@ void Wait(int durationMs)
 | `int durationMs` | 等待毫秒数（≥ 0）。 |
 
 返回类型：`void`。空值、用户取消和异常行为以成员及域说明为准。
-
-基础能力：无基础能力授权要求。某些参数或数据来源会追加能力，详见[安全与授权](../security.md)。
 
 {/* script-api:end */}

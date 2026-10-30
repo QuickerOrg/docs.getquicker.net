@@ -28,9 +28,17 @@ comments: true
 
 多设备使用、降级或回退前，请阅读[升级与回退](/v2/migration/upgrade-and-rollback)。各版本的具体风险也在下方对应条目中标出。
 
-本站已补充到 **2.3.24**；版本下载与完整修复记录以官网为准。
+本站已补充到 **2.3.25**；版本下载与完整修复记录以官网为准。
 
 ## 近期文档补充
+
+### 2.3.25 · 截图现场、尺寸约束与 AI 编辑
+
+- [截图现场与选区恢复](../v2/features/screenshot/capture-pro.md#capture-history-2325)：逗号/句号浏览截图现场，N / M 在当前画面恢复选区；说明完整底图的本机保存范围、容量与关闭方式。
+- [尺寸与比例约束](../v2/features/screenshot/capture-pro.md#capture-size-2325)：选区可保持固定像素尺寸或比例，并随历史恢复尺寸模式；补充取色格式记忆、撤销按钮右键重做和贴图组显隐动作。
+- [AI 在线图库](../v2/features/ai-and-agent.md#icons-and-editing-2325)可由助手搜索或打开候选窗口选择；[设计器助手](../v2/xaction/concepts/xaction-editor.md#designer-configuration-2325)可编辑动作菜单、运行选项和关联配置，冲突时可覆盖或放弃，检查后仍需保存。
+- [Quicker操作](../v2/xaction/modules/system/quickeroperations.md#management-2325)补充指定设置页和悬浮分组管理入口；[SOLIDWORKS 软件连接](../v2/features/software-connections/software/solidworks.md)兼容范围扩展到 2018–2026，并说明真机验证边界。
+- **升级与回退**：完整底图可能包含选区外的敏感内容；旧版保存可能清除新版尺寸模式与取色格式。请先阅读[本版注意事项](../v2/migration/upgrade-and-rollback.md#capture-and-ai-2325)。
 
 ### 2.3.24 · 贴图交互、脚本文本工具与步骤参数
 

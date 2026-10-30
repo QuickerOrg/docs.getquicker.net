@@ -27,6 +27,12 @@ legacyContentUpdatedAt: "2024-08-20T01:16:01.000Z"
 
 <ModuleParamPreview moduleKey="sys:quickeroperations" />
 
+## 2.3.25 · 设置页与悬浮分组管理 {/* #management-2325 */}
+
+**显示设置窗口** 可填写“设置页面标识”，直接打开指定页面；留空沿用默认页面。页面标识示例：`BasicInfo`、`SearchSettings`、`ScreenCaptureSettings`。
+
+类型增加 **打开悬浮分组管理**，用于从动作进入悬浮分组管理窗口。旧动作已有操作继续按原值执行；使用新操作的动作需在 2.3.25 或更高版本运行。
+
 ## 参数说明
 
 **类型**：要调用的 Quicker 功能，见下面各节。

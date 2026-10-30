@@ -6,6 +6,21 @@ comments: false
 sidebar_position: 10
 ---
 
+## 2.3.25 · Quicker 管理分支
+
+2.3.25 起，`qk.Steps.Run` 对 `sys:quickeroperations` 开放设置、场景管理及悬浮分组管理分支，这是下方“控制 Quicker 不支持”规则的限定例外。`type` 必须显式填写，不能因模块已经开放就调用其余操作；其他功能继续使用 `qk.Actions` 或 `qk.Quicker.Command`。
+
+例如，打开截图设置：
+
+```csharp
+qk.Steps.Run("sys:quickeroperations", new {
+    type = "showConfigWindow",
+    settingPage = "ScreenCaptureSettings"
+});
+```
+
+参数名及可用值见[Quicker操作](/v2/xaction/modules/quickeroperations#management-2325)。这会真实打开管理窗口；使用新分支的脚本需在 2.3.25 或更高版本运行。
+
 {/* script-api:start */}
 
 通用步骤入口：执行没有 qk 对应方法的长尾 XAction 步骤（如 Windows 服务/注册表、PDF、Excel 区域、CorelDRAW/Revit 等软件控制）；已有 qk 方法时优先用 qk。调用前先查步骤的参数 key、类型与选项值（Agent/MCP：grep @knowledge/catalog 后 read_file 模块 yaml，或 steps.resolve('sys:xxx')），不要猜；先读模块卡（sys.&lt;key>.yaml），受第二个控制字段门控的参数（如 virtualDesktop 的 moveWindow + target=id → desktopId）在那里以“when … & target=…”列出（steps.resolve 的逐分支说明中也在对应分支下列出）。只支持登记在支持表中的步骤：流程控制、变量类、执行代码/表达式、调用动作/子程序/控制 Quicker、依赖 XAction 运行时的步骤，以及尚未登记的（新增）步骤不支持（INVALID_ARGUMENT）。

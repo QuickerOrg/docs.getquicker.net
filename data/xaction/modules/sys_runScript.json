@@ -58,9 +58,13 @@
       "type": "Text",
       "description": "使用指定的程序运行脚本。如果双击脚本可以直接运行，则不需要指定。",
       "validForList": [
-        "CUSTOM"
+        "CUSTOM",
+        "BAT",
+        "CMD_F",
+        "PS",
+        "AHK"
       ],
-      "condition": "仅：CUSTOM",
+      "condition": "仅：CUSTOM, BAT, CMD_F, PS, AHK",
       "defaultValue": "",
       "required": true,
       "variableMode": "Input"
@@ -71,9 +75,13 @@
       "type": "Text",
       "description": "使用指定软件时指定命令行参数的格式。%FILE% 代替脚本文件的路径。",
       "validForList": [
-        "CUSTOM"
+        "CUSTOM",
+        "BAT",
+        "CMD_F",
+        "PS",
+        "AHK"
       ],
-      "condition": "仅：CUSTOM",
+      "condition": "仅：CUSTOM, BAT, CMD_F, PS, AHK",
       "defaultValue": "%FILE%",
       "required": true,
       "variableMode": "Input"
@@ -92,12 +100,13 @@
       "type": "Text",
       "description": "为脚本传递的参数。将会被追加到运行脚本的命令行中。",
       "validForList": [
+        "CUSTOM",
         "BAT",
         "CMD_F",
         "PS",
         "AHK"
       ],
-      "condition": "仅：BAT, CMD_F, PS, AHK",
+      "condition": "仅：CUSTOM, BAT, CMD_F, PS, AHK",
       "defaultValue": "",
       "variableMode": "UseVarOrInput"
     },

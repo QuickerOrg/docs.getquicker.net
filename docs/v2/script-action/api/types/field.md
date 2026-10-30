@@ -34,5 +34,7 @@ Field(string Key, string Label, string Kind = "text", object? Value = null, stri
 | `Max` | `double?` | 数值上限（number/slider）。 |
 | `ReadOnly` | `bool` | 见类型说明。 |
 | `Width` | `int` | 字段宽度；0 为默认。 |
+| `Tools` | `string?` | 内置文本工具，逗号分隔；仅非只读 text/multiline/combo/autocomplete。可用名称与 Ui.Prompt(tools) 相同。 |
+| `CustomTools` | `IReadOnlyList<TextTool>?` | 自定义 TextTool 列表，最多 16 项；仅非只读文本字段。只在本次表单会话中有效，不序列化处理器。 |
 
 {/* script-api:end */}

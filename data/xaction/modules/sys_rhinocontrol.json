@@ -119,9 +119,10 @@
       "type": "Text",
       "validForList": [
         "geometry.add_point",
+        "geometry.add_box",
         "geometry.add_sphere"
       ],
-      "condition": "仅：geometry.add_point, geometry.add_sphere",
+      "condition": "仅：geometry.add_point, geometry.add_box, geometry.add_sphere",
       "defaultValue": "[0,0,0]",
       "variableMode": "UseVarOrInput"
     },

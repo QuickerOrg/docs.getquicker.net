@@ -98,10 +98,41 @@
       "name": "系统提示词",
       "type": "Text",
       "description": "告知AI所需要扮演的角色和要求。如\"你是一个专业的翻译助手\"。",
-      "validForList": [
-        "chat"
-      ],
-      "condition": "仅：chat",
+      "visibleWhen": {
+        "kind": "Any",
+        "conditions": [
+          {
+            "kind": "Field",
+            "fieldKey": "modelSource",
+            "operator": "In",
+            "values": [
+              "global"
+            ]
+          },
+          {
+            "kind": "All",
+            "conditions": [
+              {
+                "kind": "Field",
+                "fieldKey": "modelSource",
+                "operator": "In",
+                "values": [
+                  "custom"
+                ]
+              },
+              {
+                "kind": "Field",
+                "fieldKey": "endpoint",
+                "operator": "In",
+                "values": [
+                  "chat"
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      "condition": "(modelSource 为 \"global\" 或 (modelSource 为 \"custom\" 且 endpoint 为 \"chat\"))",
       "defaultValue": "",
       "variableMode": "Input"
     },
@@ -140,11 +171,42 @@
       "name": "提示词",
       "type": "Text",
       "description": "要为其生成补全的完整提示内容。",
-      "validForList": [
-        "chat",
-        "completions"
-      ],
-      "condition": "仅：chat, completions",
+      "visibleWhen": {
+        "kind": "Any",
+        "conditions": [
+          {
+            "kind": "Field",
+            "fieldKey": "modelSource",
+            "operator": "In",
+            "values": [
+              "global"
+            ]
+          },
+          {
+            "kind": "All",
+            "conditions": [
+              {
+                "kind": "Field",
+                "fieldKey": "modelSource",
+                "operator": "In",
+                "values": [
+                  "custom"
+                ]
+              },
+              {
+                "kind": "Field",
+                "fieldKey": "endpoint",
+                "operator": "In",
+                "values": [
+                  "chat",
+                  "completions"
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      "condition": "(modelSource 为 \"global\" 或 (modelSource 为 \"custom\" 且 endpoint 为 \"chat\"、\"completions\"))",
       "defaultValue": "",
       "variableMode": "Input"
     },

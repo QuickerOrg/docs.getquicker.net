@@ -286,6 +286,7 @@
       "validForList": [
         "OpenUrl",
         "WaitTabComplete",
+        "ActivateTab",
         "GetTabInfo",
         "RunScript",
         "PickElement",
@@ -299,7 +300,7 @@
         "UploadFiles",
         "DropFiles"
       ],
-      "condition": "仅：OpenUrl, WaitTabComplete, GetTabInfo, RunScript, PickElement, GetElementInfo, UpdateElement, TriggerEvent, Wait, BackgroundScript, BackgroundCommand, PageAction, UploadFiles, DropFiles",
+      "condition": "仅：OpenUrl, WaitTabComplete, ActivateTab, GetTabInfo, RunScript, PickElement, GetElementInfo, UpdateElement, TriggerEvent, Wait, BackgroundScript, BackgroundCommand, PageAction, UploadFiles, DropFiles",
       "defaultValue": "3000",
       "defaultValueRaw": 3000,
       "required": true,

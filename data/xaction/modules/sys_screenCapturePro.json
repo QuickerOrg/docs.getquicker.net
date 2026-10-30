@@ -3,8 +3,8 @@
   "slug": "screen-capture-pro",
   "legacySlug": "screen-capture-pro",
   "ownsLegacyContent": true,
-  "name": "截图 Pro",
-  "description": "框选截图、标注、贴图或识别。默认自动吸附，可关闭后用滚轮手动调整选区。",
+  "name": "交互截图",
+  "description": "打开 Quicker 截图进行框选、标注、贴图或识别。默认自动吸附，可关闭后用滚轮手动调整选区。",
   "category": "Image",
   "categoryName": "图片处理",
   "stepType": "Action",
@@ -17,7 +17,7 @@
       "description": "这次截图怎么结束，不受设置中“直接截图的完成操作”影响。",
       "defaultValue": "capture",
       "required": true,
-      "variableMode": "Input",
+      "variableMode": "UseVarOrInput",
       "isControlField": true
     },
     {

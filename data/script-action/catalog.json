@@ -1,8 +1,8 @@
 {
   "schemaVersion": 1,
-  "sourceCommit": "e0b9ede7f20fde0778ea8b69017c4c1c9b226edd",
-  "productVersion": "2.3.23+Branch.codex-docs-v2323-export.Sha.e0b9ede7f20fde0778ea8b69017c4c1c9b226edd.e0b9ede7f20fde0778ea8b69017c4c1c9b226edd",
-  "assemblySha256": "9b94590fe00b6f3ca38c202d914e0f477662fbba026342644dbd0ea0553ce0ef",
+  "sourceCommit": "b02db3251ccf8f7e3df551ce2b603a4b998f652e",
+  "productVersion": "2.3.24+Branch.codex-docs-v2324-export.Sha.b02db3251ccf8f7e3df551ce2b603a4b998f652e.b02db3251ccf8f7e3df551ce2b603a4b998f652e",
+  "assemblySha256": "8233652d7b2b632b975cdedc8763574764c692dd74d1a413a32890bad6a52bfa",
   "apiVersion": 1,
   "domains": [
     {
@@ -756,7 +756,7 @@
         {
           "key": "Ui.Prompt",
           "name": "Prompt",
-          "signature": "string? Prompt(string message, string value = \"\", bool multiline = false, bool required = false, string? pattern = null, string? tools = null, bool enterSubmit = true, UiOptions? options = null)",
+          "signature": "string? Prompt(string message, string value = \"\", bool multiline = false, bool required = false, string? pattern = null, string? tools = null, bool enterSubmit = true, UiOptions? options = null, IReadOnlyList<TextTool>? customTools = null)",
           "returns": "string?",
           "description": "输入文本；取消返回 null。UiOptions 支持 Title/Help/Position/Topmost/RestoreFocus/CloseOnBlur/Font/FontSize/Ime，Bounds 与 Position=last 降级为 mouse。",
           "parameters": [
@@ -822,6 +822,14 @@
               "declaration": "UiOptions? options = null",
               "optional": true,
               "description": "窗口选项（标题、位置等）。",
+              "values": null
+            },
+            {
+              "name": "customTools",
+              "type": "IReadOnlyList<TextTool>?",
+              "declaration": "IReadOnlyList<TextTool>? customTools = null",
+              "optional": true,
+              "description": "最多 16 个 TextTool；返回 null 不改文本，空字符串替换为空文本。禁止嵌套自定义工具，关闭后不再回填。",
               "values": null
             }
           ],
@@ -8574,6 +8582,18 @@
           "type": "int",
           "description": "字段宽度；0 为默认。",
           "writable": true
+        },
+        {
+          "name": "Tools",
+          "type": "string?",
+          "description": "内置文本工具，逗号分隔；仅非只读 text/multiline/combo/autocomplete。可用名称与 Ui.Prompt(tools) 相同。",
+          "writable": true
+        },
+        {
+          "name": "CustomTools",
+          "type": "IReadOnlyList<TextTool>?",
+          "description": "自定义 TextTool 列表，最多 16 项；仅非只读文本字段。只在本次表单会话中有效，不序列化处理器。",
+          "writable": true
         }
       ],
       "methods": []
@@ -9998,6 +10018,86 @@
         },
         {
           "name": "Operation",
+          "type": "string?",
+          "description": null,
+          "writable": true
+        }
+      ],
+      "methods": []
+    },
+    {
+      "name": "TextTool",
+      "description": "自定义文本工具：同步 Handler 在原脚本线程处理 TextToolInput，返回 string 替换或 null 不修改；宜仅做短时间文本处理。Replace 固定为 all/selection，关闭窗口后后续 qk 被拒绝，纯计算继续至返回、停止或超时。",
+      "constructors": [
+        "TextTool(string Title, Func<TextToolInput, string?> Handler, string Replace = \"all\", string? Icon = null, string? Help = null)"
+      ],
+      "properties": [
+        {
+          "name": "Title",
+          "type": "string",
+          "description": null,
+          "writable": true
+        },
+        {
+          "name": "Handler",
+          "type": "Func<TextToolInput, string?>",
+          "description": null,
+          "writable": true
+        },
+        {
+          "name": "Replace",
+          "type": "string",
+          "description": null,
+          "writable": true
+        },
+        {
+          "name": "Icon",
+          "type": "string?",
+          "description": null,
+          "writable": true
+        },
+        {
+          "name": "Help",
+          "type": "string?",
+          "description": null,
+          "writable": true
+        }
+      ],
+      "methods": []
+    },
+    {
+      "name": "TextToolInput",
+      "description": "点击时的全文、选中文字及 UTF-16 选区；Prompt 的 FieldKey 为 null，Form 为字段键。",
+      "constructors": [
+        "TextToolInput(string Text, string SelectedText, int SelectionStart, int SelectionLength, string? FieldKey)"
+      ],
+      "properties": [
+        {
+          "name": "Text",
+          "type": "string",
+          "description": null,
+          "writable": true
+        },
+        {
+          "name": "SelectedText",
+          "type": "string",
+          "description": null,
+          "writable": true
+        },
+        {
+          "name": "SelectionStart",
+          "type": "int",
+          "description": null,
+          "writable": true
+        },
+        {
+          "name": "SelectionLength",
+          "type": "int",
+          "description": null,
+          "writable": true
+        },
+        {
+          "name": "FieldKey",
           "type": "string?",
           "description": null,
           "writable": true
@@ -11878,6 +11978,16 @@
     "TextResult(Operation)",
     "TextResult(SelectedText)",
     "TextResult(Text)",
+    "TextTool(Handler)",
+    "TextTool(Help)",
+    "TextTool(Icon)",
+    "TextTool(Replace)",
+    "TextTool(Title)",
+    "TextToolInput(FieldKey)",
+    "TextToolInput(SelectedText)",
+    "TextToolInput(SelectionLength)",
+    "TextToolInput(SelectionStart)",
+    "TextToolInput(Text)",
     "TextWin.Append(text)",
     "TextWin.SetText(text)",
     "Ui.Alert(message)",

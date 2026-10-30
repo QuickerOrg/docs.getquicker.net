@@ -28,9 +28,17 @@ comments: true
 
 多设备使用、降级或回退前，请阅读[升级与回退](/v2/migration/upgrade-and-rollback)。各版本的具体风险也在下方对应条目中标出。
 
-本站已补充到 **2.3.23**；版本下载与完整修复记录以官网为准。
+本站已补充到 **2.3.24**；版本下载与完整修复记录以官网为准。
 
 ## 近期文档补充
+
+### 2.3.24 · 贴图交互、脚本文本工具与步骤参数
+
+- [贴图自动折叠、复制与缩放](../v2/features/screenshot/capture-pro.md#pin-interaction-2324)：默认关闭的逐张自动折叠、复制按钮双击成功后关闭、文字优先复制与鼠标锚点缩放。
+- [脚本文本工具](../v2/script-action/tutorials/text-tools.md)：输入框及表单可使用内置和自定义工具，说明全文/选区替换、取消和停止边界。
+- [交互截图](../v2/xaction/modules/image/screen-capture-pro.md#参数说明)的“操作”支持变量输入；[鼠标输入](../v2/xaction/modules/basic/mouse.md#通用参数)、[运行脚本](../v2/xaction/modules/basic/runscript.md#参数说明)等步骤补齐实际生效参数的配置入口。（[#626](https://github.com/QuickerOrg/Quicker2-issues/issues/626)）
+- 场景禁用轮盘菜单或手势后不再拦截原生拖拽，AI 编辑动作时改善参数与文本保留；完整修复记录见[官网版本记录](https://getquicker.net/v2/versions)。（[#628](https://github.com/QuickerOrg/Quicker2-issues/issues/628)）
+- **升级与回退**：浏览器步骤保存会清理不适用的元素选择器，旧版保存本地库可能丢弃自动折叠偏好；详见[本版注意事项](../v2/migration/upgrade-and-rollback.md#pin-and-step-inputs-2324)。
 
 ### 2.3.23 · 脚本 .NET、截图布局与文件收发
 

@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-10-17 20:02:51",
+  "generatedAt": "2026-10-29 18:56:54",
   "moduleCount": 175,
   "legacyMappedModuleCount": 0,
   "migratedLegacyModuleCount": 0,
@@ -172,10 +172,41 @@
           "name": "系统提示词",
           "type": "Text",
           "description": "告知AI所需要扮演的角色和要求。如\"你是一个专业的翻译助手\"。",
-          "validForList": [
-            "chat"
-          ],
-          "condition": "仅：chat",
+          "visibleWhen": {
+            "kind": "Any",
+            "conditions": [
+              {
+                "kind": "Field",
+                "fieldKey": "modelSource",
+                "operator": "In",
+                "values": [
+                  "global"
+                ]
+              },
+              {
+                "kind": "All",
+                "conditions": [
+                  {
+                    "kind": "Field",
+                    "fieldKey": "modelSource",
+                    "operator": "In",
+                    "values": [
+                      "custom"
+                    ]
+                  },
+                  {
+                    "kind": "Field",
+                    "fieldKey": "endpoint",
+                    "operator": "In",
+                    "values": [
+                      "chat"
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          "condition": "(modelSource 为 \"global\" 或 (modelSource 为 \"custom\" 且 endpoint 为 \"chat\"))",
           "defaultValue": "",
           "variableMode": "Input"
         },
@@ -214,11 +245,42 @@
           "name": "提示词",
           "type": "Text",
           "description": "要为其生成补全的完整提示内容。",
-          "validForList": [
-            "chat",
-            "completions"
-          ],
-          "condition": "仅：chat, completions",
+          "visibleWhen": {
+            "kind": "Any",
+            "conditions": [
+              {
+                "kind": "Field",
+                "fieldKey": "modelSource",
+                "operator": "In",
+                "values": [
+                  "global"
+                ]
+              },
+              {
+                "kind": "All",
+                "conditions": [
+                  {
+                    "kind": "Field",
+                    "fieldKey": "modelSource",
+                    "operator": "In",
+                    "values": [
+                      "custom"
+                    ]
+                  },
+                  {
+                    "kind": "Field",
+                    "fieldKey": "endpoint",
+                    "operator": "In",
+                    "values": [
+                      "chat",
+                      "completions"
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          "condition": "(modelSource 为 \"global\" 或 (modelSource 为 \"custom\" 且 endpoint 为 \"chat\"、\"completions\"))",
           "defaultValue": "",
           "variableMode": "Input"
         },
@@ -2574,9 +2636,10 @@
             "locateByBitmap",
             "locateByBitmapVar",
             "moveToXy",
-            "moveToWinXy"
+            "moveToWinXy",
+            "restore"
           ],
-          "condition": "仅：move, moveTo, toWinTL, toWinTR, toWinBL, toWinBR, toWinCenter, locateByBitmap, locateByBitmapVar, moveToXy, moveToWinXy",
+          "condition": "仅：move, moveTo, toWinTL, toWinTR, toWinBL, toWinBR, toWinCenter, locateByBitmap, locateByBitmapVar, moveToXy, moveToWinXy, restore",
           "defaultValue": "false",
           "defaultValueRaw": false,
           "variableMode": "Input"
@@ -2631,12 +2694,7 @@
           "key": "stopIfFail",
           "name": "失败后中止动作",
           "type": "Boolean",
-          "description": "获取位置失败后，是否停止后续动作的执行。",
-          "validForList": [
-            "locateByBitmap",
-            "locateByBitmapVar"
-          ],
-          "condition": "仅：locateByBitmap, locateByBitmapVar",
+          "description": "步骤失败后，是否停止后续动作的执行。",
           "defaultValue": "true",
           "defaultValueRaw": true,
           "variableMode": "Input"
@@ -4180,9 +4238,13 @@
           "type": "Text",
           "description": "使用指定的程序运行脚本。如果双击脚本可以直接运行，则不需要指定。",
           "validForList": [
-            "CUSTOM"
+            "CUSTOM",
+            "BAT",
+            "CMD_F",
+            "PS",
+            "AHK"
           ],
-          "condition": "仅：CUSTOM",
+          "condition": "仅：CUSTOM, BAT, CMD_F, PS, AHK",
           "defaultValue": "",
           "required": true,
           "variableMode": "Input"
@@ -4193,9 +4255,13 @@
           "type": "Text",
           "description": "使用指定软件时指定命令行参数的格式。%FILE% 代替脚本文件的路径。",
           "validForList": [
-            "CUSTOM"
+            "CUSTOM",
+            "BAT",
+            "CMD_F",
+            "PS",
+            "AHK"
           ],
-          "condition": "仅：CUSTOM",
+          "condition": "仅：CUSTOM, BAT, CMD_F, PS, AHK",
           "defaultValue": "%FILE%",
           "required": true,
           "variableMode": "Input"
@@ -4214,12 +4280,13 @@
           "type": "Text",
           "description": "为脚本传递的参数。将会被追加到运行脚本的命令行中。",
           "validForList": [
+            "CUSTOM",
             "BAT",
             "CMD_F",
             "PS",
             "AHK"
           ],
-          "condition": "仅：BAT, CMD_F, PS, AHK",
+          "condition": "仅：CUSTOM, BAT, CMD_F, PS, AHK",
           "defaultValue": "",
           "variableMode": "UseVarOrInput"
         },
@@ -11277,7 +11344,7 @@
           "key": "pythonPath",
           "name": "Python环境路径",
           "type": "Text",
-          "description": "可选。Python环境(PythonXXX.dll)所在目录，留空时使用全局设置",
+          "description": "可选。Python 3.11及以上环境的解释器DLL或所在目录（例如python311.dll），留空时使用全局设置",
           "defaultValue": "",
           "variableMode": "UseVarOrInput"
         },
@@ -12046,8 +12113,8 @@
       "slug": "screen-capture-pro",
       "legacySlug": "screen-capture-pro",
       "ownsLegacyContent": true,
-      "name": "截图 Pro",
-      "description": "框选截图、标注、贴图或识别。默认自动吸附，可关闭后用滚轮手动调整选区。",
+      "name": "交互截图",
+      "description": "打开 Quicker 截图进行框选、标注、贴图或识别。默认自动吸附，可关闭后用滚轮手动调整选区。",
       "category": "Image",
       "categoryName": "图片处理",
       "stepType": "Action",
@@ -12060,7 +12127,7 @@
           "description": "这次截图怎么结束，不受设置中“直接截图的完成操作”影响。",
           "defaultValue": "capture",
           "required": true,
-          "variableMode": "Input",
+          "variableMode": "UseVarOrInput",
           "isControlField": true
         },
         {
@@ -13584,7 +13651,7 @@
       "legacySlug": "pinimage",
       "ownsLegacyContent": true,
       "name": "贴图",
-      "description": "在屏幕指定位置浮动贴图（与截图 Pro 贴图窗口一致）。按来源自动识别图片、HTML、公式、OCR 原始结果或文本。",
+      "description": "在屏幕指定位置浮动贴图（与 Quicker 截图贴图窗口一致）。按来源自动识别图片、HTML、公式、OCR 原始结果或文本。",
       "category": "Image",
       "categoryName": "图片处理",
       "stepType": "Action",
@@ -15757,10 +15824,11 @@
           "description": "合并文本时，是否转换标点符号",
           "validForList": [
             "QuickerServerOcr",
+            "WindowsOcr",
             "baidu-basic",
             "baidu-quicker"
           ],
-          "condition": "仅：QuickerServerOcr, baidu-basic, baidu-quicker",
+          "condition": "仅：QuickerServerOcr, WindowsOcr, baidu-basic, baidu-quicker",
           "defaultValue": "no",
           "required": true,
           "variableMode": "UseVarOrInput"
@@ -15772,10 +15840,11 @@
           "description": "是否智能合并段落。",
           "validForList": [
             "QuickerServerOcr",
+            "WindowsOcr",
             "baidu-basic",
             "baidu-quicker"
           ],
-          "condition": "仅：QuickerServerOcr, baidu-basic, baidu-quicker",
+          "condition": "仅：QuickerServerOcr, WindowsOcr, baidu-basic, baidu-quicker",
           "defaultValue": "no",
           "required": true,
           "variableMode": "UseVarOrInput"
@@ -15835,10 +15904,41 @@
           "name": "模型",
           "type": "Enum",
           "description": "标准=small（更准更大，默认）；快速=tiny（更快更小）。切换后如未安装会下载对应模型包。表格识别固定用 small，不出现此参数。",
-          "validForList": [
-            "LocalOcr"
-          ],
-          "condition": "仅：LocalOcr",
+          "visibleWhen": {
+            "kind": "Any",
+            "conditions": [
+              {
+                "kind": "Field",
+                "fieldKey": "operation",
+                "operator": "In",
+                "values": [
+                  "LocalOcr"
+                ]
+              },
+              {
+                "kind": "All",
+                "conditions": [
+                  {
+                    "kind": "Field",
+                    "fieldKey": "operation",
+                    "operator": "In",
+                    "values": [
+                      "QuickerServerOcr"
+                    ]
+                  },
+                  {
+                    "kind": "Field",
+                    "fieldKey": "offlineMode",
+                    "operator": "In",
+                    "values": [
+                      "OfflineOnly"
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          "condition": "(operation 为 \"LocalOcr\" 或 (operation 为 \"QuickerServerOcr\" 且 offlineMode 为 \"OfflineOnly\"))",
           "defaultValue": "small",
           "variableMode": "Input"
         },
@@ -20921,6 +21021,7 @@
           "validForList": [
             "OpenUrl",
             "WaitTabComplete",
+            "ActivateTab",
             "GetTabInfo",
             "RunScript",
             "PickElement",
@@ -20934,7 +21035,7 @@
             "UploadFiles",
             "DropFiles"
           ],
-          "condition": "仅：OpenUrl, WaitTabComplete, GetTabInfo, RunScript, PickElement, GetElementInfo, UpdateElement, TriggerEvent, Wait, BackgroundScript, BackgroundCommand, PageAction, UploadFiles, DropFiles",
+          "condition": "仅：OpenUrl, WaitTabComplete, ActivateTab, GetTabInfo, RunScript, PickElement, GetElementInfo, UpdateElement, TriggerEvent, Wait, BackgroundScript, BackgroundCommand, PageAction, UploadFiles, DropFiles",
           "defaultValue": "3000",
           "defaultValueRaw": 3000,
           "required": true,
@@ -32442,9 +32543,10 @@
           "type": "Text",
           "validForList": [
             "geometry.add_point",
+            "geometry.add_box",
             "geometry.add_sphere"
           ],
-          "condition": "仅：geometry.add_point, geometry.add_sphere",
+          "condition": "仅：geometry.add_point, geometry.add_box, geometry.add_sphere",
           "defaultValue": "[0,0,0]",
           "variableMode": "UseVarOrInput"
         },
@@ -43450,9 +43552,17 @@
           "name": "当前值",
           "type": "Text",
           "validForList": [
-            "OperationItemEditor"
+            "SelectSingleFile",
+            "SelectMultiFile",
+            "SelectSingleFolder",
+            "SelectSavePath",
+            "SelectProfileExe",
+            "OperationItemEditor",
+            "SelectFontFamily",
+            "SelectMonitor",
+            "SelectVirtualDesktop"
           ],
-          "condition": "仅：OperationItemEditor",
+          "condition": "仅：SelectSingleFile, SelectMultiFile, SelectSingleFolder, SelectSavePath, SelectProfileExe, OperationItemEditor, SelectFontFamily, SelectMonitor, SelectVirtualDesktop",
           "defaultValue": "",
           "variableMode": "UseVarOrInput"
         },
@@ -45777,9 +45887,10 @@
           "type": "Enum",
           "validForList": [
             "OpenUrl",
-            "OpenAndWaitLoad"
+            "OpenAndWaitLoad",
+            "OpenUrlAndWaitClose"
           ],
-          "condition": "仅：OpenUrl, OpenAndWaitLoad",
+          "condition": "仅：OpenUrl, OpenAndWaitLoad, OpenUrlAndWaitClose",
           "defaultValue": "SkipThisStep",
           "variableMode": "Input"
         },
@@ -46553,7 +46664,7 @@
       "slug": "waitwindow",
       "legacySlug": "waitwindow",
       "ownsLegacyContent": true,
-      "name": "等待窗口",
+      "name": "等待窗口事件",
       "description": "等待窗口出现、消失、成为前台、最小化或恢复。",
       "category": "Waiting",
       "categoryName": "等待",

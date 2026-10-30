@@ -61,7 +61,7 @@ SelectManyResult? SelectMany(IEnumerable<object> items, string? note = null, IEn
 ## Ui.Prompt
 
 ```csharp
-string? Prompt(string message, string value = "", bool multiline = false, bool required = false, string? pattern = null, string? tools = null, bool enterSubmit = true, UiOptions? options = null)
+string? Prompt(string message, string value = "", bool multiline = false, bool required = false, string? pattern = null, string? tools = null, bool enterSubmit = true, UiOptions? options = null, IReadOnlyList<TextTool>? customTools = null)
 ```
 
 输入文本；取消返回 null。UiOptions 支持 Title/Help/Position/Topmost/RestoreFocus/CloseOnBlur/Font/FontSize/Ime，Bounds 与 Position=last 降级为 mouse。
@@ -76,6 +76,7 @@ string? Prompt(string message, string value = "", bool multiline = false, bool r
 | `string? tools = null` | 文本工具，逗号分隔，只支持 EditInCodeWindow/SelectSingleFile/SelectMultiFile/SelectSingleFolder/SelectSavePath/ColorPicker/ColorPickerArgb/SelectFontFamily。 |
 | `bool enterSubmit = true` | 是否按 Enter 确定。 |
 | `UiOptions? options = null` | 窗口选项（标题、位置等）。 |
+| `IReadOnlyList<TextTool>? customTools = null` | 最多 16 个 TextTool；返回 null 不改文本，空字符串替换为空文本。禁止嵌套自定义工具，关闭后不再回填。 |
 
 返回类型：`string?`。空值、用户取消和异常行为以成员及域说明为准。
 

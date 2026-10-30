@@ -64,10 +64,11 @@
       "description": "合并文本时，是否转换标点符号",
       "validForList": [
         "QuickerServerOcr",
+        "WindowsOcr",
         "baidu-basic",
         "baidu-quicker"
       ],
-      "condition": "仅：QuickerServerOcr, baidu-basic, baidu-quicker",
+      "condition": "仅：QuickerServerOcr, WindowsOcr, baidu-basic, baidu-quicker",
       "defaultValue": "no",
       "required": true,
       "variableMode": "UseVarOrInput"
@@ -79,10 +80,11 @@
       "description": "是否智能合并段落。",
       "validForList": [
         "QuickerServerOcr",
+        "WindowsOcr",
         "baidu-basic",
         "baidu-quicker"
       ],
-      "condition": "仅：QuickerServerOcr, baidu-basic, baidu-quicker",
+      "condition": "仅：QuickerServerOcr, WindowsOcr, baidu-basic, baidu-quicker",
       "defaultValue": "no",
       "required": true,
       "variableMode": "UseVarOrInput"
@@ -142,10 +144,41 @@
       "name": "模型",
       "type": "Enum",
       "description": "标准=small（更准更大，默认）；快速=tiny（更快更小）。切换后如未安装会下载对应模型包。表格识别固定用 small，不出现此参数。",
-      "validForList": [
-        "LocalOcr"
-      ],
-      "condition": "仅：LocalOcr",
+      "visibleWhen": {
+        "kind": "Any",
+        "conditions": [
+          {
+            "kind": "Field",
+            "fieldKey": "operation",
+            "operator": "In",
+            "values": [
+              "LocalOcr"
+            ]
+          },
+          {
+            "kind": "All",
+            "conditions": [
+              {
+                "kind": "Field",
+                "fieldKey": "operation",
+                "operator": "In",
+                "values": [
+                  "QuickerServerOcr"
+                ]
+              },
+              {
+                "kind": "Field",
+                "fieldKey": "offlineMode",
+                "operator": "In",
+                "values": [
+                  "OfflineOnly"
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      "condition": "(operation 为 \"LocalOcr\" 或 (operation 为 \"QuickerServerOcr\" 且 offlineMode 为 \"OfflineOnly\"))",
       "defaultValue": "small",
       "variableMode": "Input"
     },

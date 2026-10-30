@@ -10,6 +10,7 @@ sidebar_position: 1
 
 - [清理剪贴板文本](./clipboard.md)
 - [参数表单与文本转换](./parameters.md)
+- [输入框与表单的文本工具](./text-tools.md)（2.3.24 起）
 - [跨运行计数与右键菜单](./menu.md)
 - [预览后创建清理文本](./file-preview.md)
 - [预览后批量创建清理文本](./file-batch.md)

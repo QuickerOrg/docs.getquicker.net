@@ -1,16 +1,244 @@
 {
   "schemaVersion": 1,
   "baselineCreated": false,
-  "fromGeneratedAt": "2026-10-10 06:06:14",
-  "toGeneratedAt": "2026-10-17 20:02:51",
+  "fromGeneratedAt": "2026-10-17 20:02:51",
+  "toGeneratedAt": "2026-10-29 18:56:54",
   "summary": {
     "addedModules": 0,
     "removedModules": 0,
-    "changedModules": 7
+    "changedModules": 12
   },
   "addedModules": [],
   "removedModules": [],
   "changedModules": [
+    {
+      "key": "sys:ai",
+      "name": "AI 调用",
+      "changedFields": [],
+      "inputs": {
+        "added": [],
+        "removed": [],
+        "changed": [
+          {
+            "key": "systemPrompt",
+            "before": {
+              "key": "systemPrompt",
+              "name": "系统提示词",
+              "type": "Text",
+              "description": "告知AI所需要扮演的角色和要求。如\"你是一个专业的翻译助手\"。",
+              "validForList": [
+                "chat"
+              ],
+              "condition": "仅：chat",
+              "defaultValue": "",
+              "variableMode": "Input"
+            },
+            "after": {
+              "key": "systemPrompt",
+              "name": "系统提示词",
+              "type": "Text",
+              "description": "告知AI所需要扮演的角色和要求。如\"你是一个专业的翻译助手\"。",
+              "visibleWhen": {
+                "kind": "Any",
+                "conditions": [
+                  {
+                    "kind": "Field",
+                    "fieldKey": "modelSource",
+                    "operator": "In",
+                    "values": [
+                      "global"
+                    ]
+                  },
+                  {
+                    "kind": "All",
+                    "conditions": [
+                      {
+                        "kind": "Field",
+                        "fieldKey": "modelSource",
+                        "operator": "In",
+                        "values": [
+                          "custom"
+                        ]
+                      },
+                      {
+                        "kind": "Field",
+                        "fieldKey": "endpoint",
+                        "operator": "In",
+                        "values": [
+                          "chat"
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              },
+              "condition": "(modelSource 为 \"global\" 或 (modelSource 为 \"custom\" 且 endpoint 为 \"chat\"))",
+              "defaultValue": "",
+              "variableMode": "Input"
+            }
+          },
+          {
+            "key": "prompt",
+            "before": {
+              "key": "prompt",
+              "name": "提示词",
+              "type": "Text",
+              "description": "要为其生成补全的完整提示内容。",
+              "validForList": [
+                "chat",
+                "completions"
+              ],
+              "condition": "仅：chat, completions",
+              "defaultValue": "",
+              "variableMode": "Input"
+            },
+            "after": {
+              "key": "prompt",
+              "name": "提示词",
+              "type": "Text",
+              "description": "要为其生成补全的完整提示内容。",
+              "visibleWhen": {
+                "kind": "Any",
+                "conditions": [
+                  {
+                    "kind": "Field",
+                    "fieldKey": "modelSource",
+                    "operator": "In",
+                    "values": [
+                      "global"
+                    ]
+                  },
+                  {
+                    "kind": "All",
+                    "conditions": [
+                      {
+                        "kind": "Field",
+                        "fieldKey": "modelSource",
+                        "operator": "In",
+                        "values": [
+                          "custom"
+                        ]
+                      },
+                      {
+                        "kind": "Field",
+                        "fieldKey": "endpoint",
+                        "operator": "In",
+                        "values": [
+                          "chat",
+                          "completions"
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              },
+              "condition": "(modelSource 为 \"global\" 或 (modelSource 为 \"custom\" 且 endpoint 为 \"chat\"、\"completions\"))",
+              "defaultValue": "",
+              "variableMode": "Input"
+            }
+          }
+        ]
+      },
+      "outputs": {
+        "added": [],
+        "removed": [],
+        "changed": []
+      },
+      "selectionsChanged": false
+    },
+    {
+      "key": "sys:mouse",
+      "name": "鼠标输入",
+      "changedFields": [],
+      "inputs": {
+        "added": [],
+        "removed": [],
+        "changed": [
+          {
+            "key": "slowMove",
+            "before": {
+              "key": "slowMove",
+              "name": "逐渐移动到目标",
+              "type": "Boolean",
+              "description": "逐渐移动而不是直接移动到目标位置。",
+              "validForList": [
+                "move",
+                "moveTo",
+                "toWinTL",
+                "toWinTR",
+                "toWinBL",
+                "toWinBR",
+                "toWinCenter",
+                "locateByBitmap",
+                "locateByBitmapVar",
+                "moveToXy",
+                "moveToWinXy"
+              ],
+              "condition": "仅：move, moveTo, toWinTL, toWinTR, toWinBL, toWinBR, toWinCenter, locateByBitmap, locateByBitmapVar, moveToXy, moveToWinXy",
+              "defaultValue": "false",
+              "defaultValueRaw": false,
+              "variableMode": "Input"
+            },
+            "after": {
+              "key": "slowMove",
+              "name": "逐渐移动到目标",
+              "type": "Boolean",
+              "description": "逐渐移动而不是直接移动到目标位置。",
+              "validForList": [
+                "move",
+                "moveTo",
+                "toWinTL",
+                "toWinTR",
+                "toWinBL",
+                "toWinBR",
+                "toWinCenter",
+                "locateByBitmap",
+                "locateByBitmapVar",
+                "moveToXy",
+                "moveToWinXy",
+                "restore"
+              ],
+              "condition": "仅：move, moveTo, toWinTL, toWinTR, toWinBL, toWinBR, toWinCenter, locateByBitmap, locateByBitmapVar, moveToXy, moveToWinXy, restore",
+              "defaultValue": "false",
+              "defaultValueRaw": false,
+              "variableMode": "Input"
+            }
+          },
+          {
+            "key": "stopIfFail",
+            "before": {
+              "key": "stopIfFail",
+              "name": "失败后中止动作",
+              "type": "Boolean",
+              "description": "获取位置失败后，是否停止后续动作的执行。",
+              "validForList": [
+                "locateByBitmap",
+                "locateByBitmapVar"
+              ],
+              "condition": "仅：locateByBitmap, locateByBitmapVar",
+              "defaultValue": "true",
+              "defaultValueRaw": true,
+              "variableMode": "Input"
+            },
+            "after": {
+              "key": "stopIfFail",
+              "name": "失败后中止动作",
+              "type": "Boolean",
+              "description": "步骤失败后，是否停止后续动作的执行。",
+              "defaultValue": "true",
+              "defaultValueRaw": true,
+              "variableMode": "Input"
+            }
+          }
+        ]
+      },
+      "outputs": {
+        "added": [],
+        "removed": [],
+        "changed": []
+      },
+      "selectionsChanged": false
+    },
     {
       "key": "sys:runScript",
       "name": "运行脚本",
@@ -18,962 +246,464 @@
       "inputs": {
         "added": [],
         "removed": [],
-        "changed": []
+        "changed": [
+          {
+            "key": "runner",
+            "before": {
+              "key": "runner",
+              "name": "使用指定软件",
+              "type": "Text",
+              "description": "使用指定的程序运行脚本。如果双击脚本可以直接运行，则不需要指定。",
+              "validForList": [
+                "CUSTOM"
+              ],
+              "condition": "仅：CUSTOM",
+              "defaultValue": "",
+              "required": true,
+              "variableMode": "Input"
+            },
+            "after": {
+              "key": "runner",
+              "name": "使用指定软件",
+              "type": "Text",
+              "description": "使用指定的程序运行脚本。如果双击脚本可以直接运行，则不需要指定。",
+              "validForList": [
+                "CUSTOM",
+                "BAT",
+                "CMD_F",
+                "PS",
+                "AHK"
+              ],
+              "condition": "仅：CUSTOM, BAT, CMD_F, PS, AHK",
+              "defaultValue": "",
+              "required": true,
+              "variableMode": "Input"
+            }
+          },
+          {
+            "key": "argTemplate",
+            "before": {
+              "key": "argTemplate",
+              "name": "命令行参数模板",
+              "type": "Text",
+              "description": "使用指定软件时指定命令行参数的格式。%FILE% 代替脚本文件的路径。",
+              "validForList": [
+                "CUSTOM"
+              ],
+              "condition": "仅：CUSTOM",
+              "defaultValue": "%FILE%",
+              "required": true,
+              "variableMode": "Input"
+            },
+            "after": {
+              "key": "argTemplate",
+              "name": "命令行参数模板",
+              "type": "Text",
+              "description": "使用指定软件时指定命令行参数的格式。%FILE% 代替脚本文件的路径。",
+              "validForList": [
+                "CUSTOM",
+                "BAT",
+                "CMD_F",
+                "PS",
+                "AHK"
+              ],
+              "condition": "仅：CUSTOM, BAT, CMD_F, PS, AHK",
+              "defaultValue": "%FILE%",
+              "required": true,
+              "variableMode": "Input"
+            }
+          },
+          {
+            "key": "scriptParams",
+            "before": {
+              "key": "scriptParams",
+              "name": "脚本参数",
+              "type": "Text",
+              "description": "为脚本传递的参数。将会被追加到运行脚本的命令行中。",
+              "validForList": [
+                "BAT",
+                "CMD_F",
+                "PS",
+                "AHK"
+              ],
+              "condition": "仅：BAT, CMD_F, PS, AHK",
+              "defaultValue": "",
+              "variableMode": "UseVarOrInput"
+            },
+            "after": {
+              "key": "scriptParams",
+              "name": "脚本参数",
+              "type": "Text",
+              "description": "为脚本传递的参数。将会被追加到运行脚本的命令行中。",
+              "validForList": [
+                "CUSTOM",
+                "BAT",
+                "CMD_F",
+                "PS",
+                "AHK"
+              ],
+              "condition": "仅：CUSTOM, BAT, CMD_F, PS, AHK",
+              "defaultValue": "",
+              "variableMode": "UseVarOrInput"
+            }
+          }
+        ]
       },
       "outputs": {
         "added": [],
         "removed": [],
         "changed": []
       },
-      "selectionsChanged": true,
-      "selections": {
-        "before": {
-          "type": {
-            "name": "脚本类型",
-            "items": [
-              {
-                "value": "CMD_K",
-                "name": "CMD命令 (完成后保留窗口)"
-              },
-              {
-                "value": "CMD_C",
-                "name": "CMD命令 (完成后关闭窗口)"
-              },
-              {
-                "value": "CMD_H",
-                "name": "CMD命令 (隐藏命令行窗口)"
-              },
-              {
-                "value": "BAT",
-                "name": "BAT批处理脚本(.bat)"
-              },
-              {
-                "value": "CMD_F",
-                "name": "CMD批处理脚本(.cmd)"
-              },
-              {
-                "value": "PS",
-                "name": "PowerShell脚本(.ps1)"
-              },
-              {
-                "value": "AHK",
-                "name": "AutoHotKey脚本(.ahk)"
-              },
-              {
-                "value": "CUSTOM",
-                "name": "自定义脚本类型"
-              }
-            ]
-          },
-          "encoding": {
-            "name": "文件编码",
-            "items": [
-              {
-                "value": "utf-8",
-                "name": "UTF8 (有BOM)"
-              },
-              {
-                "value": "UTF8-NOBOM",
-                "name": "UTF8 (无BOM)"
-              },
-              {
-                "value": "utf-16",
-                "name": "UTF-16 LE"
-              },
-              {
-                "value": "utf-16BE",
-                "name": "UTF-16 BE"
-              },
-              {
-                "value": "us-ascii",
-                "name": "ASCII"
-              },
-              {
-                "value": "utf-7",
-                "name": "UTF7"
-              },
-              {
-                "value": "utf-32",
-                "name": "UTF32"
-              },
-              {
-                "value": "default",
-                "name": "系统默认(windows-1252)"
-              }
-            ]
-          },
-          "outputEncoding": {
-            "name": "控制台输出编码",
-            "items": [
-              {
-                "value": "utf8",
-                "name": "UTF8"
-              },
-              {
-                "value": "oem",
-                "name": "OEM"
-              }
-            ]
-          }
-        },
-        "after": {
-          "type": {
-            "name": "脚本类型",
-            "items": [
-              {
-                "value": "CMD_K",
-                "name": "CMD命令 (完成后保留窗口)"
-              },
-              {
-                "value": "CMD_C",
-                "name": "CMD命令 (完成后关闭窗口)"
-              },
-              {
-                "value": "CMD_H",
-                "name": "CMD命令 (隐藏命令行窗口)"
-              },
-              {
-                "value": "BAT",
-                "name": "BAT批处理脚本(.bat)"
-              },
-              {
-                "value": "CMD_F",
-                "name": "CMD批处理脚本(.cmd)"
-              },
-              {
-                "value": "PS",
-                "name": "PowerShell脚本(.ps1)"
-              },
-              {
-                "value": "AHK",
-                "name": "AutoHotKey脚本(.ahk)"
-              },
-              {
-                "value": "CUSTOM",
-                "name": "自定义脚本类型"
-              }
-            ]
-          },
-          "encoding": {
-            "name": "文件编码",
-            "items": [
-              {
-                "value": "utf-8",
-                "name": "UTF8 (有BOM)"
-              },
-              {
-                "value": "UTF8-NOBOM",
-                "name": "UTF8 (无BOM)"
-              },
-              {
-                "value": "utf-16",
-                "name": "UTF-16 LE"
-              },
-              {
-                "value": "utf-16BE",
-                "name": "UTF-16 BE"
-              },
-              {
-                "value": "us-ascii",
-                "name": "ASCII"
-              },
-              {
-                "value": "utf-7",
-                "name": "UTF7"
-              },
-              {
-                "value": "utf-32",
-                "name": "UTF32"
-              },
-              {
-                "value": "default",
-                "name": "系统默认(gb2312)"
-              }
-            ]
-          },
-          "outputEncoding": {
-            "name": "控制台输出编码",
-            "items": [
-              {
-                "value": "utf8",
-                "name": "UTF8"
-              },
-              {
-                "value": "oem",
-                "name": "OEM"
-              }
-            ]
-          }
-        }
-      }
+      "selectionsChanged": false
     },
     {
-      "key": "sys:getClipboardText",
-      "name": "获取剪贴板文本",
+      "key": "sys:pythonscript",
+      "name": "运行Python代码",
       "changedFields": [],
       "inputs": {
         "added": [],
         "removed": [],
-        "changed": []
+        "changed": [
+          {
+            "key": "pythonPath",
+            "before": {
+              "key": "pythonPath",
+              "name": "Python环境路径",
+              "type": "Text",
+              "description": "可选。Python环境(PythonXXX.dll)所在目录，留空时使用全局设置",
+              "defaultValue": "",
+              "variableMode": "UseVarOrInput"
+            },
+            "after": {
+              "key": "pythonPath",
+              "name": "Python环境路径",
+              "type": "Text",
+              "description": "可选。Python 3.11及以上环境的解释器DLL或所在目录（例如python311.dll），留空时使用全局设置",
+              "defaultValue": "",
+              "variableMode": "UseVarOrInput"
+            }
+          }
+        ]
       },
       "outputs": {
         "added": [],
         "removed": [],
         "changed": []
       },
-      "selectionsChanged": true,
-      "selections": {
-        "before": {
-          "format": {
-            "name": "文本数据格式",
-            "items": [
-              {
-                "value": "UnicodeText",
-                "name": "纯文本（默认）"
-              },
-              {
-                "value": "Rtf",
-                "name": "Rtf"
-              },
-              {
-                "value": "Html",
-                "name": "Html"
-              },
-              {
-                "value": "CommaSeparatedValue",
-                "name": "逗号分隔的值（csv）"
-              },
-              {
-                "value": "Custom",
-                "name": "自定义格式名"
-              }
-            ]
-          },
-          "encoding": {
-            "name": "文本编码",
-            "items": [
-              {
-                "value": "utf-8",
-                "name": "UTF8"
-              },
-              {
-                "value": "utf-16",
-                "name": "UTF-16 LE"
-              },
-              {
-                "value": "utf-16BE",
-                "name": "UTF-16 BE"
-              },
-              {
-                "value": "us-ascii",
-                "name": "ASCII"
-              },
-              {
-                "value": "utf-7",
-                "name": "UTF7"
-              },
-              {
-                "value": "utf-32",
-                "name": "UTF32"
-              },
-              {
-                "value": "default",
-                "name": "系统默认(windows-1252)"
-              }
-            ]
-          }
-        },
-        "after": {
-          "format": {
-            "name": "文本数据格式",
-            "items": [
-              {
-                "value": "UnicodeText",
-                "name": "纯文本（默认）"
-              },
-              {
-                "value": "Rtf",
-                "name": "Rtf"
-              },
-              {
-                "value": "Html",
-                "name": "Html"
-              },
-              {
-                "value": "CommaSeparatedValue",
-                "name": "逗号分隔的值（csv）"
-              },
-              {
-                "value": "Custom",
-                "name": "自定义格式名"
-              }
-            ]
-          },
-          "encoding": {
-            "name": "文本编码",
-            "items": [
-              {
-                "value": "utf-8",
-                "name": "UTF8"
-              },
-              {
-                "value": "utf-16",
-                "name": "UTF-16 LE"
-              },
-              {
-                "value": "utf-16BE",
-                "name": "UTF-16 BE"
-              },
-              {
-                "value": "us-ascii",
-                "name": "ASCII"
-              },
-              {
-                "value": "utf-7",
-                "name": "UTF7"
-              },
-              {
-                "value": "utf-32",
-                "name": "UTF32"
-              },
-              {
-                "value": "default",
-                "name": "系统默认(gb2312)"
-              }
-            ]
-          }
-        }
-      }
-    },
-    {
-      "key": "sys:readFile",
-      "name": "读取文件",
-      "changedFields": [],
-      "inputs": {
-        "added": [],
-        "removed": [],
-        "changed": []
-      },
-      "outputs": {
-        "added": [],
-        "removed": [],
-        "changed": []
-      },
-      "selectionsChanged": true,
-      "selections": {
-        "before": {
-          "type": {
-            "name": "格式",
-            "items": [
-              {
-                "value": "text",
-                "name": "文本"
-              },
-              {
-                "value": "image",
-                "name": "图片"
-              }
-            ]
-          },
-          "encoding": {
-            "name": "文件编码",
-            "items": [
-              {
-                "value": "utf-8",
-                "name": "UTF8"
-              },
-              {
-                "value": "utf-16",
-                "name": "UTF-16 LE"
-              },
-              {
-                "value": "utf-16BE",
-                "name": "UTF-16 BE"
-              },
-              {
-                "value": "us-ascii",
-                "name": "ASCII"
-              },
-              {
-                "value": "utf-7",
-                "name": "UTF7"
-              },
-              {
-                "value": "utf-32",
-                "name": "UTF32"
-              },
-              {
-                "value": "default",
-                "name": "系统默认(windows-1252)"
-              },
-              {
-                "value": "auto",
-                "name": "自动（BOM/UTF/ANSI）"
-              }
-            ]
-          }
-        },
-        "after": {
-          "type": {
-            "name": "格式",
-            "items": [
-              {
-                "value": "text",
-                "name": "文本"
-              },
-              {
-                "value": "image",
-                "name": "图片"
-              }
-            ]
-          },
-          "encoding": {
-            "name": "文件编码",
-            "items": [
-              {
-                "value": "utf-8",
-                "name": "UTF8"
-              },
-              {
-                "value": "utf-16",
-                "name": "UTF-16 LE"
-              },
-              {
-                "value": "utf-16BE",
-                "name": "UTF-16 BE"
-              },
-              {
-                "value": "us-ascii",
-                "name": "ASCII"
-              },
-              {
-                "value": "utf-7",
-                "name": "UTF7"
-              },
-              {
-                "value": "utf-32",
-                "name": "UTF32"
-              },
-              {
-                "value": "default",
-                "name": "系统默认(gb2312)"
-              },
-              {
-                "value": "auto",
-                "name": "自动（BOM/UTF/ANSI）"
-              }
-            ]
-          }
-        }
-      }
-    },
-    {
-      "key": "sys:WriteTextFile",
-      "name": "写入文本文件",
-      "changedFields": [],
-      "inputs": {
-        "added": [],
-        "removed": [],
-        "changed": []
-      },
-      "outputs": {
-        "added": [],
-        "removed": [],
-        "changed": []
-      },
-      "selectionsChanged": true,
-      "selections": {
-        "before": {
-          "encoding": {
-            "name": "文件编码",
-            "items": [
-              {
-                "value": "utf-8",
-                "name": "UTF8"
-              },
-              {
-                "value": "utf-16",
-                "name": "UTF-16 LE"
-              },
-              {
-                "value": "utf-16BE",
-                "name": "UTF-16 BE"
-              },
-              {
-                "value": "us-ascii",
-                "name": "ASCII"
-              },
-              {
-                "value": "utf-7",
-                "name": "UTF7"
-              },
-              {
-                "value": "utf-32",
-                "name": "UTF32"
-              },
-              {
-                "value": "default",
-                "name": "系统默认(windows-1252)"
-              }
-            ]
-          },
-          "newLineChars": {
-            "name": "统一换行字符",
-            "items": [
-              {
-                "value": "",
-                "name": "默认（不处理）"
-              },
-              {
-                "value": "\r\n",
-                "name": "\\r\\n",
-                "description": "Windows"
-              },
-              {
-                "value": "\r",
-                "name": "\\r ",
-                "description": "(Mac)"
-              },
-              {
-                "value": "\n",
-                "name": "\\n ",
-                "description": "(Linux)"
-              }
-            ]
-          }
-        },
-        "after": {
-          "encoding": {
-            "name": "文件编码",
-            "items": [
-              {
-                "value": "utf-8",
-                "name": "UTF8"
-              },
-              {
-                "value": "utf-16",
-                "name": "UTF-16 LE"
-              },
-              {
-                "value": "utf-16BE",
-                "name": "UTF-16 BE"
-              },
-              {
-                "value": "us-ascii",
-                "name": "ASCII"
-              },
-              {
-                "value": "utf-7",
-                "name": "UTF7"
-              },
-              {
-                "value": "utf-32",
-                "name": "UTF32"
-              },
-              {
-                "value": "default",
-                "name": "系统默认(gb2312)"
-              }
-            ]
-          },
-          "newLineChars": {
-            "name": "统一换行字符",
-            "items": [
-              {
-                "value": "",
-                "name": "默认（不处理）"
-              },
-              {
-                "value": "\r\n",
-                "name": "\\r\\n",
-                "description": "Windows"
-              },
-              {
-                "value": "\r",
-                "name": "\\r ",
-                "description": "(Mac)"
-              },
-              {
-                "value": "\n",
-                "name": "\\n ",
-                "description": "(Linux)"
-              }
-            ]
-          }
-        }
-      }
+      "selectionsChanged": false
     },
     {
       "key": "sys:screenCapturePro",
-      "name": "截图 Pro",
-      "changedFields": [],
+      "name": "交互截图",
+      "changedFields": [
+        "name",
+        "description"
+      ],
       "inputs": {
-        "added": [
-          {
-            "key": "includeCursor",
-            "name": "包含鼠标指针",
-            "type": "Enum",
-            "description": "本次初始值；跟随设置保持旧动作行为，不修改全局偏好。交互时仍可临时切换。",
-            "isAdvanced": true,
-            "defaultValue": "inherit",
-            "variableMode": "UseVarOrInput"
-          },
-          {
-            "key": "saveNameTemplate",
-            "name": "文件名模板",
-            "type": "Text",
-            "description": "留空继承全局；支持 {date}、{date:格式}、{time}、{width}、{height}。只改确认快存，重名自动加序号。",
-            "isAdvanced": true,
-            "validForList": [
-              "quick_save"
-            ],
-            "condition": "仅：quick_save",
-            "defaultValue": "",
-            "variableMode": "UseVarOrInput"
-          },
-          {
-            "key": "saveFormat",
-            "name": "保存格式",
-            "type": "Enum",
-            "isAdvanced": true,
-            "validForList": [
-              "quick_save"
-            ],
-            "condition": "仅：quick_save",
-            "defaultValue": "inherit",
-            "variableMode": "UseVarOrInput"
-          }
-        ],
+        "added": [],
         "removed": [],
         "changed": [
           {
-            "key": "toClip",
+            "key": "operation",
             "before": {
-              "key": "toClip",
-              "name": "写入剪贴板",
-              "type": "Boolean",
-              "description": "确认截图后写入剪贴板；“框选即出图”在框选完成后写入。其他工具栏出口不触发。",
-              "validForList": [
-                "capture",
-                "capture_now",
-                "quick_save"
-              ],
-              "condition": "仅：capture, capture_now, quick_save",
-              "defaultValue": "false",
-              "defaultValueRaw": false,
-              "variableMode": "Input"
+              "key": "operation",
+              "name": "操作",
+              "type": "Enum",
+              "description": "这次截图怎么结束，不受设置中“直接截图的完成操作”影响。",
+              "defaultValue": "capture",
+              "required": true,
+              "variableMode": "Input",
+              "isControlField": true
             },
             "after": {
-              "key": "toClip",
-              "name": "确认后复制图片",
-              "type": "Boolean",
-              "description": "确认截图后写入剪贴板；“框选即出图”在框选完成后写入。其他工具栏出口不触发。",
-              "validForList": [
-                "capture",
-                "capture_now",
-                "quick_save"
-              ],
-              "condition": "仅：capture, capture_now, quick_save",
-              "defaultValue": "false",
-              "defaultValueRaw": false,
-              "variableMode": "Input"
-            }
-          },
-          {
-            "key": "pinImage",
-            "before": {
-              "key": "pinImage",
-              "name": "截图后贴图",
-              "type": "Boolean",
-              "description": "确认截图后贴到原位置；“框选即出图”在框选完成后贴图。其他工具栏出口不触发。",
-              "validForList": [
-                "capture",
-                "capture_now",
-                "quick_save"
-              ],
-              "condition": "仅：capture, capture_now, quick_save",
-              "defaultValue": "false",
-              "defaultValueRaw": false,
-              "variableMode": "Input"
-            },
-            "after": {
-              "key": "pinImage",
-              "name": "确认后贴图",
-              "type": "Boolean",
-              "description": "确认截图后贴到原位置；“框选即出图”在框选完成后贴图。其他工具栏出口不触发。",
-              "validForList": [
-                "capture",
-                "capture_now",
-                "quick_save"
-              ],
-              "condition": "仅：capture, capture_now, quick_save",
-              "defaultValue": "false",
-              "defaultValueRaw": false,
-              "variableMode": "Input"
-            }
-          },
-          {
-            "key": "saveDirectory",
-            "before": {
-              "key": "saveDirectory",
-              "name": "保存目录",
-              "type": "Text",
-              "description": "留空用全局目录，只改本次。",
-              "isAdvanced": true,
-              "validForList": [
-                "quick_save"
-              ],
-              "condition": "仅：quick_save",
-              "defaultValue": "",
-              "variableMode": "UseVarOrInput"
-            },
-            "after": {
-              "key": "saveDirectory",
-              "name": "确认快存目录",
-              "type": "Text",
-              "description": "留空用全局目录，只改确认快存。工具栏另存为使用其独立选择的路径。",
-              "isAdvanced": true,
-              "validForList": [
-                "quick_save"
-              ],
-              "condition": "仅：quick_save",
-              "defaultValue": "",
-              "variableMode": "UseVarOrInput"
+              "key": "operation",
+              "name": "操作",
+              "type": "Enum",
+              "description": "这次截图怎么结束，不受设置中“直接截图的完成操作”影响。",
+              "defaultValue": "capture",
+              "required": true,
+              "variableMode": "UseVarOrInput",
+              "isControlField": true
             }
           }
         ]
       },
       "outputs": {
-        "added": [
-          {
-            "key": "endKind",
-            "name": "结束方式",
-            "type": "Text",
-            "description": "实际出口：confirmed/saved/copied/pinned/ocr 等；失败或取消为空。仅成功时读取图片等结果，确认后的复制/贴图不改变出口名。"
-          }
-        ],
+        "added": [],
         "removed": [],
         "changed": []
       },
-      "selectionsChanged": true,
-      "selections": {
-        "before": {
-          "operation": {
-            "name": "操作",
-            "items": [
-              {
-                "value": "capture",
-                "name": "截图"
-              },
-              {
-                "value": "capture_now",
-                "name": "框选即出图"
-              },
-              {
-                "value": "copy",
-                "name": "立刻复制"
-              },
-              {
-                "value": "pin",
-                "name": "立刻贴图"
-              },
-              {
-                "value": "ocr_copy",
-                "name": "识别并复制"
-              },
-              {
-                "value": "ocr",
-                "name": "文本识别"
-              },
-              {
-                "value": "table",
-                "name": "表格识别"
-              },
-              {
-                "value": "formula",
-                "name": "公式识别"
-              },
-              {
-                "value": "translate",
-                "name": "文本翻译"
-              },
-              {
-                "value": "image_translate",
-                "name": "图片翻译"
-              },
-              {
-                "value": "quick_save",
-                "name": "快速保存"
-              }
-            ]
-          }
-        },
-        "after": {
-          "operation": {
-            "name": "操作",
-            "items": [
-              {
-                "value": "capture",
-                "name": "截图"
-              },
-              {
-                "value": "capture_now",
-                "name": "框选即出图"
-              },
-              {
-                "value": "copy",
-                "name": "立刻复制"
-              },
-              {
-                "value": "pin",
-                "name": "立刻贴图"
-              },
-              {
-                "value": "ocr_copy",
-                "name": "识别并复制"
-              },
-              {
-                "value": "ocr",
-                "name": "文本识别"
-              },
-              {
-                "value": "table",
-                "name": "表格识别"
-              },
-              {
-                "value": "formula",
-                "name": "公式识别"
-              },
-              {
-                "value": "translate",
-                "name": "文本翻译"
-              },
-              {
-                "value": "image_translate",
-                "name": "图片翻译"
-              },
-              {
-                "value": "quick_save",
-                "name": "快速保存"
-              }
-            ]
-          },
-          "includeCursor": {
-            "name": "包含鼠标指针",
-            "items": [
-              {
-                "value": "inherit",
-                "name": "跟随设置"
-              },
-              {
-                "value": "include",
-                "name": "包含"
-              },
-              {
-                "value": "exclude",
-                "name": "不包含"
-              }
-            ]
-          },
-          "saveFormat": {
-            "name": "保存格式",
-            "items": [
-              {
-                "value": "inherit",
-                "name": "跟随设置"
-              },
-              {
-                "value": "png",
-                "name": "PNG"
-              },
-              {
-                "value": "jpeg",
-                "name": "JPEG"
-              }
-            ]
-          }
-        }
-      }
+      "selectionsChanged": false
     },
     {
-      "key": "sys:remoteFile",
-      "name": "远程文件",
+      "key": "sys:pinImage",
+      "name": "贴图",
+      "changedFields": [
+        "description"
+      ],
+      "inputs": {
+        "added": [],
+        "removed": [],
+        "changed": []
+      },
+      "outputs": {
+        "added": [],
+        "removed": [],
+        "changed": []
+      },
+      "selectionsChanged": false
+    },
+    {
+      "key": "sys:basic-ocr",
+      "name": "基础OCR",
       "changedFields": [],
       "inputs": {
-        "added": [
-          {
-            "key": "recursiveDelete",
-            "name": "递归删除",
-            "type": "Boolean",
-            "description": "关闭时只删除空目录；开启后删除目标目录及全部文件、子目录。禁止删除账号根目录。删除失败或取消时可能已删除部分内容。WebDAV 空目录检查与删除之间的并发写入仍可能被删除。S3 不删除历史版本。",
-            "validForList": [
-              "deleteDirectory"
-            ],
-            "condition": "仅：deleteDirectory",
-            "defaultValue": "false",
-            "defaultValueRaw": false,
-            "variableMode": "UseVarOrInput"
-          }
-        ],
+        "added": [],
         "removed": [],
         "changed": [
           {
-            "key": "remotePath",
+            "key": "punctuationType",
             "before": {
-              "key": "remotePath",
-              "name": "远端路径",
-              "type": "Text",
-              "description": "相对账号根目录的路径，不是网址；/ 表示账号根。单文件操作须包含文件名，如 /目录/文件.txt，上传不会自动追加原文件名；目录操作填写目录路径。批量下载时填写基准目录。",
-              "visibleWhen": {
-                "kind": "Field",
-                "fieldKey": "operation",
-                "operator": "In",
-                "values": [
-                  "upload",
-                  "download",
-                  "list",
-                  "query",
-                  "createDirectory",
-                  "deleteFile",
-                  "moveFile",
-                  "copyFile",
-                  "batchDownload",
-                  "uploadFolder",
-                  "downloadFolder"
-                ]
-              },
-              "condition": "operation 为 \"upload\"、\"download\"、\"list\"、\"query\"、\"createDirectory\"、\"deleteFile\"、\"moveFile\"、\"copyFile\"、\"batchDownload\"、\"uploadFolder\"、\"downloadFolder\"",
-              "defaultValue": "",
+              "key": "punctuationType",
+              "name": "转换标点符号",
+              "type": "Enum",
+              "description": "合并文本时，是否转换标点符号",
+              "validForList": [
+                "QuickerServerOcr",
+                "baidu-basic",
+                "baidu-quicker"
+              ],
+              "condition": "仅：QuickerServerOcr, baidu-basic, baidu-quicker",
+              "defaultValue": "no",
               "required": true,
               "variableMode": "UseVarOrInput"
             },
             "after": {
-              "key": "remotePath",
-              "name": "远端路径",
-              "type": "Text",
-              "description": "相对账号根目录的路径，不是网址；/ 表示账号根。单文件操作须包含文件名，如 /目录/文件.txt，上传不会自动追加原文件名；目录操作填写目录路径。批量下载时填写基准目录。",
+              "key": "punctuationType",
+              "name": "转换标点符号",
+              "type": "Enum",
+              "description": "合并文本时，是否转换标点符号",
+              "validForList": [
+                "QuickerServerOcr",
+                "WindowsOcr",
+                "baidu-basic",
+                "baidu-quicker"
+              ],
+              "condition": "仅：QuickerServerOcr, WindowsOcr, baidu-basic, baidu-quicker",
+              "defaultValue": "no",
+              "required": true,
+              "variableMode": "UseVarOrInput"
+            }
+          },
+          {
+            "key": "mergeChapter",
+            "before": {
+              "key": "mergeChapter",
+              "name": "合并段落",
+              "type": "Enum",
+              "description": "是否智能合并段落。",
+              "validForList": [
+                "QuickerServerOcr",
+                "baidu-basic",
+                "baidu-quicker"
+              ],
+              "condition": "仅：QuickerServerOcr, baidu-basic, baidu-quicker",
+              "defaultValue": "no",
+              "required": true,
+              "variableMode": "UseVarOrInput"
+            },
+            "after": {
+              "key": "mergeChapter",
+              "name": "合并段落",
+              "type": "Enum",
+              "description": "是否智能合并段落。",
+              "validForList": [
+                "QuickerServerOcr",
+                "WindowsOcr",
+                "baidu-basic",
+                "baidu-quicker"
+              ],
+              "condition": "仅：QuickerServerOcr, WindowsOcr, baidu-basic, baidu-quicker",
+              "defaultValue": "no",
+              "required": true,
+              "variableMode": "UseVarOrInput"
+            }
+          },
+          {
+            "key": "modelTier",
+            "before": {
+              "key": "modelTier",
+              "name": "模型",
+              "type": "Enum",
+              "description": "标准=small（更准更大，默认）；快速=tiny（更快更小）。切换后如未安装会下载对应模型包。表格识别固定用 small，不出现此参数。",
+              "validForList": [
+                "LocalOcr"
+              ],
+              "condition": "仅：LocalOcr",
+              "defaultValue": "small",
+              "variableMode": "Input"
+            },
+            "after": {
+              "key": "modelTier",
+              "name": "模型",
+              "type": "Enum",
+              "description": "标准=small（更准更大，默认）；快速=tiny（更快更小）。切换后如未安装会下载对应模型包。表格识别固定用 small，不出现此参数。",
               "visibleWhen": {
-                "kind": "Field",
-                "fieldKey": "operation",
-                "operator": "In",
-                "values": [
-                  "upload",
-                  "download",
-                  "list",
-                  "query",
-                  "createDirectory",
-                  "deleteFile",
-                  "deleteDirectory",
-                  "moveFile",
-                  "copyFile",
-                  "batchDownload",
-                  "uploadFolder",
-                  "downloadFolder"
+                "kind": "Any",
+                "conditions": [
+                  {
+                    "kind": "Field",
+                    "fieldKey": "operation",
+                    "operator": "In",
+                    "values": [
+                      "LocalOcr"
+                    ]
+                  },
+                  {
+                    "kind": "All",
+                    "conditions": [
+                      {
+                        "kind": "Field",
+                        "fieldKey": "operation",
+                        "operator": "In",
+                        "values": [
+                          "QuickerServerOcr"
+                        ]
+                      },
+                      {
+                        "kind": "Field",
+                        "fieldKey": "offlineMode",
+                        "operator": "In",
+                        "values": [
+                          "OfflineOnly"
+                        ]
+                      }
+                    ]
+                  }
                 ]
               },
-              "condition": "operation 为 \"upload\"、\"download\"、\"list\"、\"query\"、\"createDirectory\"、\"deleteFile\"、\"deleteDirectory\"、\"moveFile\"、\"copyFile\"、\"batchDownload\"、\"uploadFolder\"、\"downloadFolder\"",
-              "defaultValue": "",
+              "condition": "(operation 为 \"LocalOcr\" 或 (operation 为 \"QuickerServerOcr\" 且 offlineMode 为 \"OfflineOnly\"))",
+              "defaultValue": "small",
+              "variableMode": "Input"
+            }
+          }
+        ]
+      },
+      "outputs": {
+        "added": [],
+        "removed": [],
+        "changed": []
+      },
+      "selectionsChanged": false
+    },
+    {
+      "key": "sys:chromecontrol",
+      "name": "浏览器控制",
+      "changedFields": [],
+      "inputs": {
+        "added": [],
+        "removed": [],
+        "changed": [
+          {
+            "key": "timeoutMs",
+            "before": {
+              "key": "timeoutMs",
+              "name": "超时时间(ms)",
+              "type": "Number",
+              "description": "超时等待时间，毫秒数",
+              "validForList": [
+                "OpenUrl",
+                "WaitTabComplete",
+                "GetTabInfo",
+                "RunScript",
+                "PickElement",
+                "GetElementInfo",
+                "UpdateElement",
+                "TriggerEvent",
+                "Wait",
+                "BackgroundScript",
+                "BackgroundCommand",
+                "PageAction",
+                "UploadFiles",
+                "DropFiles"
+              ],
+              "condition": "仅：OpenUrl, WaitTabComplete, GetTabInfo, RunScript, PickElement, GetElementInfo, UpdateElement, TriggerEvent, Wait, BackgroundScript, BackgroundCommand, PageAction, UploadFiles, DropFiles",
+              "defaultValue": "3000",
+              "defaultValueRaw": 3000,
               "required": true,
+              "variableMode": "Input"
+            },
+            "after": {
+              "key": "timeoutMs",
+              "name": "超时时间(ms)",
+              "type": "Number",
+              "description": "超时等待时间，毫秒数",
+              "validForList": [
+                "OpenUrl",
+                "WaitTabComplete",
+                "ActivateTab",
+                "GetTabInfo",
+                "RunScript",
+                "PickElement",
+                "GetElementInfo",
+                "UpdateElement",
+                "TriggerEvent",
+                "Wait",
+                "BackgroundScript",
+                "BackgroundCommand",
+                "PageAction",
+                "UploadFiles",
+                "DropFiles"
+              ],
+              "condition": "仅：OpenUrl, WaitTabComplete, ActivateTab, GetTabInfo, RunScript, PickElement, GetElementInfo, UpdateElement, TriggerEvent, Wait, BackgroundScript, BackgroundCommand, PageAction, UploadFiles, DropFiles",
+              "defaultValue": "3000",
+              "defaultValueRaw": 3000,
+              "required": true,
+              "variableMode": "Input"
+            }
+          }
+        ]
+      },
+      "outputs": {
+        "added": [],
+        "removed": [],
+        "changed": []
+      },
+      "selectionsChanged": false
+    },
+    {
+      "key": "sys:rhinocontrol",
+      "name": "Rhino软件控制",
+      "changedFields": [],
+      "inputs": {
+        "added": [],
+        "removed": [],
+        "changed": [
+          {
+            "key": "pointJson",
+            "before": {
+              "key": "pointJson",
+              "name": "点坐标（JSON）",
+              "type": "Text",
+              "validForList": [
+                "geometry.add_point",
+                "geometry.add_sphere"
+              ],
+              "condition": "仅：geometry.add_point, geometry.add_sphere",
+              "defaultValue": "[0,0,0]",
+              "variableMode": "UseVarOrInput"
+            },
+            "after": {
+              "key": "pointJson",
+              "name": "点坐标（JSON）",
+              "type": "Text",
+              "validForList": [
+                "geometry.add_point",
+                "geometry.add_box",
+                "geometry.add_sphere"
+              ],
+              "condition": "仅：geometry.add_point, geometry.add_box, geometry.add_sphere",
+              "defaultValue": "[0,0,0]",
               "variableMode": "UseVarOrInput"
             }
           }
@@ -984,380 +714,116 @@
         "removed": [],
         "changed": []
       },
-      "selectionsChanged": true,
-      "selections": {
-        "before": {
-          "operation": {
-            "name": "操作",
-            "items": [
-              {
-                "value": "listAccounts",
-                "name": "获取账号列表"
-              },
-              {
-                "value": "upload",
-                "name": "上传"
-              },
-              {
-                "value": "download",
-                "name": "下载/读取内容"
-              },
-              {
-                "value": "list",
-                "name": "列目录"
-              },
-              {
-                "value": "query",
-                "name": "查询"
-              },
-              {
-                "value": "createDirectory",
-                "name": "新建目录"
-              },
-              {
-                "value": "deleteFile",
-                "name": "删除文件"
-              },
-              {
-                "value": "moveFile",
-                "name": "移动/重命名文件"
-              },
-              {
-                "value": "copyFile",
-                "name": "复制文件"
-              },
-              {
-                "value": "batchRead",
-                "name": "批量读取内容"
-              },
-              {
-                "value": "batchDownload",
-                "name": "批量下载文件"
-              },
-              {
-                "value": "uploadFolder",
-                "name": "上传文件夹"
-              },
-              {
-                "value": "downloadFolder",
-                "name": "下载文件夹"
-              }
-            ]
-          },
-          "uploadSource": {
-            "name": "上传内容",
-            "items": [
-              {
-                "value": "file",
-                "name": "本地文件"
-              },
-              {
-                "value": "text",
-                "name": "文本"
-              },
-              {
-                "value": "bytes",
-                "name": "字节数组"
-              },
-              {
-                "value": "image",
-                "name": "图片"
-              }
-            ]
-          },
-          "batchContent": {
-            "name": "读取内容",
-            "items": [
-              {
-                "value": "text",
-                "name": "文本"
-              },
-              {
-                "value": "bytes",
-                "name": "字节数组"
-              }
-            ]
-          },
-          "downloadMode": {
-            "name": "下载方式",
-            "items": [
-              {
-                "value": "file",
-                "name": "保存为本地文件"
-              },
-              {
-                "value": "text",
-                "name": "读取为文本"
-              },
-              {
-                "value": "bytes",
-                "name": "读取为字节数组"
-              },
-              {
-                "value": "image",
-                "name": "图片"
-              }
-            ]
-          },
-          "imageFormat": {
-            "name": "图片格式",
-            "items": [
-              {
-                "value": "png",
-                "name": "PNG"
-              },
-              {
-                "value": "jpeg",
-                "name": "JPEG"
-              }
-            ]
-          },
-          "existsPolicy": {
-            "name": "已存在时",
-            "items": [
-              {
-                "value": "fail",
-                "name": "失败"
-              },
-              {
-                "value": "skip",
-                "name": "跳过"
-              },
-              {
-                "value": "overwrite",
-                "name": "覆盖"
-              }
-            ]
-          },
-          "moveExistsPolicy": {
-            "name": "目标已存在时",
-            "items": [
-              {
-                "value": "fail",
-                "name": "失败"
-              },
-              {
-                "value": "overwrite",
-                "name": "覆盖"
-              }
-            ]
-          },
-          "listFilter": {
-            "name": "列出",
-            "items": [
-              {
-                "value": "all",
-                "name": "全部"
-              },
-              {
-                "value": "files",
-                "name": "只列文件"
-              },
-              {
-                "value": "directories",
-                "name": "只列目录"
-              }
-            ]
-          }
-        },
-        "after": {
-          "operation": {
-            "name": "操作",
-            "items": [
-              {
-                "value": "listAccounts",
-                "name": "获取账号列表"
-              },
-              {
-                "value": "upload",
-                "name": "上传"
-              },
-              {
-                "value": "download",
-                "name": "下载/读取内容"
-              },
-              {
-                "value": "list",
-                "name": "列目录"
-              },
-              {
-                "value": "query",
-                "name": "查询"
-              },
-              {
-                "value": "createDirectory",
-                "name": "新建目录"
-              },
-              {
-                "value": "deleteFile",
-                "name": "删除文件"
-              },
-              {
-                "value": "deleteDirectory",
-                "name": "删除目录"
-              },
-              {
-                "value": "moveFile",
-                "name": "移动/重命名文件"
-              },
-              {
-                "value": "copyFile",
-                "name": "复制文件"
-              },
-              {
-                "value": "batchRead",
-                "name": "批量读取内容"
-              },
-              {
-                "value": "batchDownload",
-                "name": "批量下载文件"
-              },
-              {
-                "value": "uploadFolder",
-                "name": "上传文件夹"
-              },
-              {
-                "value": "downloadFolder",
-                "name": "下载文件夹"
-              }
-            ]
-          },
-          "uploadSource": {
-            "name": "上传内容",
-            "items": [
-              {
-                "value": "file",
-                "name": "本地文件"
-              },
-              {
-                "value": "text",
-                "name": "文本"
-              },
-              {
-                "value": "bytes",
-                "name": "字节数组"
-              },
-              {
-                "value": "image",
-                "name": "图片"
-              }
-            ]
-          },
-          "batchContent": {
-            "name": "读取内容",
-            "items": [
-              {
-                "value": "text",
-                "name": "文本"
-              },
-              {
-                "value": "bytes",
-                "name": "字节数组"
-              }
-            ]
-          },
-          "downloadMode": {
-            "name": "下载方式",
-            "items": [
-              {
-                "value": "file",
-                "name": "保存为本地文件"
-              },
-              {
-                "value": "text",
-                "name": "读取为文本"
-              },
-              {
-                "value": "bytes",
-                "name": "读取为字节数组"
-              },
-              {
-                "value": "image",
-                "name": "图片"
-              }
-            ]
-          },
-          "imageFormat": {
-            "name": "图片格式",
-            "items": [
-              {
-                "value": "png",
-                "name": "PNG"
-              },
-              {
-                "value": "jpeg",
-                "name": "JPEG"
-              }
-            ]
-          },
-          "existsPolicy": {
-            "name": "已存在时",
-            "items": [
-              {
-                "value": "fail",
-                "name": "失败"
-              },
-              {
-                "value": "skip",
-                "name": "跳过"
-              },
-              {
-                "value": "overwrite",
-                "name": "覆盖"
-              }
-            ]
-          },
-          "moveExistsPolicy": {
-            "name": "目标已存在时",
-            "items": [
-              {
-                "value": "fail",
-                "name": "失败"
-              },
-              {
-                "value": "overwrite",
-                "name": "覆盖"
-              }
-            ]
-          },
-          "listFilter": {
-            "name": "列出",
-            "items": [
-              {
-                "value": "all",
-                "name": "全部"
-              },
-              {
-                "value": "files",
-                "name": "只列文件"
-              },
-              {
-                "value": "directories",
-                "name": "只列目录"
-              }
-            ]
-          }
-        }
-      }
+      "selectionsChanged": false
     },
     {
-      "key": "sys:getSysInfo",
-      "name": "获取系统或动作信息",
+      "key": "sys:textSelectTools",
+      "name": "辅助选择工具",
       "changedFields": [],
+      "inputs": {
+        "added": [],
+        "removed": [],
+        "changed": [
+          {
+            "key": "currValue",
+            "before": {
+              "key": "currValue",
+              "name": "当前值",
+              "type": "Text",
+              "validForList": [
+                "OperationItemEditor"
+              ],
+              "condition": "仅：OperationItemEditor",
+              "defaultValue": "",
+              "variableMode": "UseVarOrInput"
+            },
+            "after": {
+              "key": "currValue",
+              "name": "当前值",
+              "type": "Text",
+              "validForList": [
+                "SelectSingleFile",
+                "SelectMultiFile",
+                "SelectSingleFolder",
+                "SelectSavePath",
+                "SelectProfileExe",
+                "OperationItemEditor",
+                "SelectFontFamily",
+                "SelectMonitor",
+                "SelectVirtualDesktop"
+              ],
+              "condition": "仅：SelectSingleFile, SelectMultiFile, SelectSingleFolder, SelectSavePath, SelectProfileExe, OperationItemEditor, SelectFontFamily, SelectMonitor, SelectVirtualDesktop",
+              "defaultValue": "",
+              "variableMode": "UseVarOrInput"
+            }
+          }
+        ]
+      },
+      "outputs": {
+        "added": [],
+        "removed": [],
+        "changed": []
+      },
+      "selectionsChanged": false
+    },
+    {
+      "key": "sys:webview2",
+      "name": "WebView2浏览器窗口",
+      "changedFields": [],
+      "inputs": {
+        "added": [],
+        "removed": [],
+        "changed": [
+          {
+            "key": "modeForExists",
+            "before": {
+              "key": "modeForExists",
+              "name": "如果窗口已存在",
+              "type": "Enum",
+              "validForList": [
+                "OpenUrl",
+                "OpenAndWaitLoad"
+              ],
+              "condition": "仅：OpenUrl, OpenAndWaitLoad",
+              "defaultValue": "SkipThisStep",
+              "variableMode": "Input"
+            },
+            "after": {
+              "key": "modeForExists",
+              "name": "如果窗口已存在",
+              "type": "Enum",
+              "validForList": [
+                "OpenUrl",
+                "OpenAndWaitLoad",
+                "OpenUrlAndWaitClose"
+              ],
+              "condition": "仅：OpenUrl, OpenAndWaitLoad, OpenUrlAndWaitClose",
+              "defaultValue": "SkipThisStep",
+              "variableMode": "Input"
+            }
+          }
+        ]
+      },
+      "outputs": {
+        "added": [],
+        "removed": [],
+        "changed": []
+      },
+      "selectionsChanged": false
+    },
+    {
+      "key": "sys:waitWindow",
+      "name": "等待窗口事件",
+      "changedFields": [
+        "name"
+      ],
       "inputs": {
         "added": [],
         "removed": [],
         "changed": []
       },
       "outputs": {
-        "added": [
-          {
-            "key": "actionDataDirectory",
-            "name": "动作数据文件夹",
-            "type": "Text",
-            "description": "当前动作的本机数据目录完整路径，不自动创建；不随动作同步或备份。"
-          }
-        ],
+        "added": [],
         "removed": [],
         "changed": []
       },

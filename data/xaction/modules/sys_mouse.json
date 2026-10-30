@@ -270,9 +270,10 @@
         "locateByBitmap",
         "locateByBitmapVar",
         "moveToXy",
-        "moveToWinXy"
+        "moveToWinXy",
+        "restore"
       ],
-      "condition": "仅：move, moveTo, toWinTL, toWinTR, toWinBL, toWinBR, toWinCenter, locateByBitmap, locateByBitmapVar, moveToXy, moveToWinXy",
+      "condition": "仅：move, moveTo, toWinTL, toWinTR, toWinBL, toWinBR, toWinCenter, locateByBitmap, locateByBitmapVar, moveToXy, moveToWinXy, restore",
       "defaultValue": "false",
       "defaultValueRaw": false,
       "variableMode": "Input"
@@ -327,12 +328,7 @@
       "key": "stopIfFail",
       "name": "失败后中止动作",
       "type": "Boolean",
-      "description": "获取位置失败后，是否停止后续动作的执行。",
-      "validForList": [
-        "locateByBitmap",
-        "locateByBitmapVar"
-      ],
-      "condition": "仅：locateByBitmap, locateByBitmapVar",
+      "description": "步骤失败后，是否停止后续动作的执行。",
       "defaultValue": "true",
       "defaultValueRaw": true,
       "variableMode": "Input"

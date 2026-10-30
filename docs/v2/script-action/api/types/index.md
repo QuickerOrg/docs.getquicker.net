@@ -56,6 +56,8 @@ sidebar_position: 1
 - [SysInfo](./sysinfo.md)
 - [Tab](./tab.md)
 - [TextResult](./textresult.md)
+- [TextTool](./texttool.md)
+- [TextToolInput](./texttoolinput.md)
 - [TextWin](./textwin.md)
 - [UiOptions](./uioptions.md)
 - [VolumeInfo](./volumeinfo.md)

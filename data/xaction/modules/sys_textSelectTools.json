@@ -23,9 +23,17 @@
       "name": "当前值",
       "type": "Text",
       "validForList": [
-        "OperationItemEditor"
+        "SelectSingleFile",
+        "SelectMultiFile",
+        "SelectSingleFolder",
+        "SelectSavePath",
+        "SelectProfileExe",
+        "OperationItemEditor",
+        "SelectFontFamily",
+        "SelectMonitor",
+        "SelectVirtualDesktop"
       ],
-      "condition": "仅：OperationItemEditor",
+      "condition": "仅：SelectSingleFile, SelectMultiFile, SelectSingleFolder, SelectSavePath, SelectProfileExe, OperationItemEditor, SelectFontFamily, SelectMonitor, SelectVirtualDesktop",
       "defaultValue": "",
       "variableMode": "UseVarOrInput"
     },

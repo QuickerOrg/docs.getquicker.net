@@ -167,9 +167,10 @@
       "type": "Enum",
       "validForList": [
         "OpenUrl",
-        "OpenAndWaitLoad"
+        "OpenAndWaitLoad",
+        "OpenUrlAndWaitClose"
       ],
-      "condition": "仅：OpenUrl, OpenAndWaitLoad",
+      "condition": "仅：OpenUrl, OpenAndWaitLoad, OpenUrlAndWaitClose",
       "defaultValue": "SkipThisStep",
       "variableMode": "Input"
     },

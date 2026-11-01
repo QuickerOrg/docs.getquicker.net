@@ -28,9 +28,17 @@ comments: true
 
 多设备使用、降级或回退前，请阅读[升级与回退](/v2/migration/upgrade-and-rollback)。各版本的具体风险也在下方对应条目中标出。
 
-本站已补充到 **2.3.25**；版本下载与完整修复记录以官网为准。
+本站已补充到 **2.3.26**；版本下载与完整修复记录以官网为准。
 
 ## 近期文档补充
+
+### 2.3.26 · 长截图保存、通用标签与 AI 会话恢复
+
+- [长截图直接保存](../v2/features/screenshot/capture-pro.md#long-capture-save-2326)：采集工具栏增加保存按钮，`Ctrl` 点击使用系统“另存为”；取消或保存失败后保留拼接内容。
+- [通用场景标签显示](../v2/features/action-panel/usage.md#common-scene-tab-2326)：可关闭通用标签常驻显示，默认开启，随账号同步；说明兜底显示与旧版使用边界。
+- [AI 会话恢复与图片原图](../v2/features/ai-and-agent.md#session-recovery-2326)：暂存动作转正后原聊天可继续，失效模型引用尝试恢复，图片附件使用系统查看器打开原图；访问权限与冲突检查仍保留。
+- [暂存动作悬浮](../v2/features/action-panel/action-drafts.md#float-saved-draft-2326)：修复编辑器保存后仍无法悬浮，说明首次保存及使用已保存内容的边界。（[#634](https://github.com/QuickerOrg/Quicker2-issues/issues/634)）
+- 面板触发键名称完整显示、内嵌网页子框架桥接、React 界面取消结果和亮度浮层闪烁等修复，见[官网完整版本记录](https://getquicker.net/V2/Versions)。（[#636](https://github.com/QuickerOrg/Quicker2-issues/issues/636)、[#633](https://github.com/QuickerOrg/Quicker2-issues/issues/633)、[#609](https://github.com/QuickerOrg/Quicker2-issues/issues/609)）
 
 ### 2.3.25 · 截图现场、尺寸约束与 AI 编辑
 

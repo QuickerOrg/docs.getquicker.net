@@ -28,9 +28,18 @@ comments: true
 
 多设备使用、降级或回退前，请阅读[升级与回退](/v2/migration/upgrade-and-rollback)。各版本的具体风险也在下方对应条目中标出。
 
-本站已补充到 **2.3.27**；版本下载与完整修复记录以官网为准。
+本站已补充到 **2.3.28**；版本下载与完整修复记录以官网为准。
 
 ## 近期文档补充
+
+### 2.3.28 · 场景规则整理、动作引用与 MCP 接入
+
+- [文本指令](/v2/features/triggers/text-commands#移动到父场景)补充批量复制粘贴、移动到父场景、重复项跳过及继承影响；指令引用的动作不会一起复制或移动。
+- [动作面板](/v2/features/action-panel/usage#2328--定位最近动作与引用到助手)补充最近动作定位、场景动作列表复制 ID 和引用到侧边 AI 助手。
+- [软件连接](/v2/features/software-connections/install-and-manage#2328--怎样判断版本兼容)按连接包声明判断兼容范围，补充 Mastercam 2022 包及验证边界，不将检测到的年度等同于已适配。
+- [内置升级](/v2/install/update#2328--安装日志)补充安装日志位置和缓存复用说明。
+- **升级注意**：[MCP 客户端接入同意](/v2/migration/upgrade-and-rollback#mcp-client-consent-2328)独立于完全控制，无人值守任务需先手动完成接入确认。
+- AI 正文图片、对话排序、截图扩展热键、贴图定位及设计器撤销等修复见[官网完整记录](https://getquicker.net/V2/Versions)。
 
 ### 2.3.27 · AI 指令与记忆、状态迁移与响应超时
 

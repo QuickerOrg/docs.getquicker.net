@@ -132,8 +132,8 @@ comments: true
 
 ## AI
 
-- [统一 AI 服务与模型设置](/v2/what's-new/ai-services-and-models.md)：服务连接、模型能力和用途优选
-- [AI 与 Agent 现状](./ai-and-agent.md)：AI 写动作、外部助手连接及当前功能边界
+- [统一 AI 服务与模型设置](/v2/what's-new/ai-services-and-models)：服务连接、模型能力和用途优选
+- [AI 与 Agent 现状](/v2/features/ai-and-agent)：AI 写动作、外部助手连接及当前功能边界
 
 <a id="开发版挑选上下文菜单的内容" />
 

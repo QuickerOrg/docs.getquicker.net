@@ -97,7 +97,7 @@ comments: true
 
 ## Agent 工具
 
-配置联网搜索等 Agent 工具及其服务连接。工具连接与模型服务是两套配置；配置模型可用并不代表搜索工具已经可用。选择工具提供方并补齐其连接后，使用不含敏感信息的问题验证调用。见[AI 与 Agent](./ai-and-agent.md)。
+配置联网搜索等 Agent 工具及其服务连接。工具连接与模型服务是两套配置；配置模型可用并不代表搜索工具已经可用。选择工具提供方并补齐其连接后，使用不含敏感信息的问题验证调用。见[AI 与 Agent](/v2/features/ai-and-agent)。
 
 <a id="BasicToolsSettingPage" />
 

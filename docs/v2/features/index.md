@@ -34,7 +34,7 @@ hide_table_of_contents: true
   {href: '/v2/features/screenshot/', label: '截图与贴图', description: '截图、标注、滚动截图，以及桌面贴图。'},
   {href: '/v2/features/tools', label: '内置工具', description: '查找截图、搜索、选中文本及动作运行记录等工具入口。'},
   {href: '/v2/features/displays-and-desktops', label: '显示器与虚拟桌面', description: '查询显示器、调整亮度，管理 Windows 虚拟桌面。'},
-  {href: '/v2/features/ai-and-agent', label: 'AI 与 Agent', description: '设置模型，用 AI 编写动作，连接外部助手。'},
+  {href: '/v2/features/ai', label: 'AI 使用', description: '设置模型，用 AI 编写动作，管理长期指令与记忆。'},
 ]} />
 
 ## 账号、文件与软件连接

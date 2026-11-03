@@ -1,13 +1,13 @@
 ---
-title: 安装与更新
-description: 下载、安装和更新 Quicker V2，以及系统要求。
+title: 安装、更新与卸载
+description: 下载、安装、更新和卸载 Quicker V2，以及安装日志和本机数据的处理。
 slug: /v2/install
 sidebar_position: 1
 quickerDocKey: v2/install/index
 comments: false
 ---
 
-# 安装与更新
+# 安装、更新与卸载
 
 :::caution[Preview · 仅专业版]
 当前 V2 是 **Preview 体验版**，仅面向专业版用户。免费版数据迁移仍在开发，免费账号目前无法登录 2.0。不建议用它替换无法中断的 1.x 关键环境。体验前请先读 [安装前准备](/important-notice)。
@@ -18,8 +18,13 @@ V2 安装包从 [https://getquicker.net/V2](https://getquicker.net/V2) 下载。
 | 文档 | 内容 |
 | --- | --- |
 | [安装 Quicker V2](./windows.md) | 系统要求、下载、首次启动；两代不能同时安装 |
-| [更新 Quicker V2](./update.md) | 应用内检查更新、静默安装和校验 |
+| [更新 Quicker V2](./update.md) | 应用内检查更新、安装流程、校验和安装日志 |
+| [卸载 Quicker V2](./uninstall.md) | 从 Windows 卸载、保留数据重装及清理本机数据 |
 | [数据目录与迁移](./data-location.md) | 本机数据与截图历史的位置、迁移到其他磁盘及迁回 |
 | [运行平台与兼容性](/v2/what's-new/platform-and-compatibility.md) | .NET 10、x64、脚本和组件位数 |
 
 从 1.x 迁数据请先看 [从 V1 迁移](/v2/migration/from-v1.md)，不要先装 V2 再回头找备份。
+
+## 查找安装日志
+
+由 **2.3.28 或更高版本发起的内置升级**，默认将日志保存到 `%TEMP%\QuickerInstallerLogs`。按 `Win+R`，粘贴此路径并按回车，按修改时间查找本次更新对应的 `.log` 文件。适用范围、文件名和保留数量见[安装日志](./update.md#2328--安装日志)。

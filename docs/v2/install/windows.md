@@ -40,6 +40,11 @@ comments: true
 
 接着看 [开始使用](/v2/getting-started.md)。要从 1.x 迁数据，先完成 1.x 同步和备份，再安装 V2，步骤见 [从 V1 迁移](/v2/migration/from-v1.md)。
 
+## 后续更新与卸载
+
+- 更新程序：见[更新 Quicker V2](./update.md)，其中包含内置升级流程和[安装日志位置](./update.md#2328--安装日志)。
+- 卸载或重新安装：见[卸载 Quicker V2](./uninstall.md)，先确认是否需要保留本机数据。
+
 ## 限制与排障
 
 - 装不上：先核对 Windows 版本和是否为 64 位。1.x 能运行，不代表这台电脑能跑 V2。

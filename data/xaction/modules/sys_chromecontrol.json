@@ -975,9 +975,10 @@
       "type": "Text",
       "description": "当前访问的浏览器",
       "validForList": [
+        "ActivateTab",
         "GetTabInfo"
       ],
-      "condition": "仅：GetTabInfo"
+      "condition": "仅：ActivateTab, GetTabInfo"
     },
     {
       "key": "extVersion",
@@ -985,9 +986,10 @@
       "type": "Text",
       "description": "浏览器插件版本号",
       "validForList": [
+        "ActivateTab",
         "GetTabInfo"
       ],
-      "condition": "仅：GetTabInfo"
+      "condition": "仅：ActivateTab, GetTabInfo"
     },
     {
       "key": "manifestVersion",
@@ -995,9 +997,10 @@
       "type": "Integer",
       "description": "浏览器插件的Manifest版本号",
       "validForList": [
+        "ActivateTab",
         "GetTabInfo"
       ],
-      "condition": "仅：GetTabInfo"
+      "condition": "仅：ActivateTab, GetTabInfo"
     },
     {
       "key": "envName",
@@ -1005,9 +1008,10 @@
       "type": "Text",
       "description": "浏览器Profile的自定义环境名称",
       "validForList": [
+        "ActivateTab",
         "GetTabInfo"
       ],
-      "condition": "仅：GetTabInfo"
+      "condition": "仅：ActivateTab, GetTabInfo"
     },
     {
       "key": "selector",

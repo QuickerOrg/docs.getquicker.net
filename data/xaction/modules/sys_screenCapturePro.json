@@ -4,7 +4,7 @@
   "legacySlug": "screen-capture-pro",
   "ownsLegacyContent": true,
   "name": "交互截图",
-  "description": "打开 Quicker 截图进行框选、标注、贴图或识别。默认自动吸附，可关闭后用滚轮手动调整选区。",
+  "description": "打开 Quicker 截图进行框选、标注、贴图或识别，或打开采集历史与截图设置。默认自动吸附，可关闭后用滚轮手动调整选区。",
   "category": "Image",
   "categoryName": "图片处理",
   "stepType": "Action",
@@ -14,7 +14,7 @@
       "key": "operation",
       "name": "操作",
       "type": "Enum",
-      "description": "这次截图怎么结束，不受设置中“直接截图的完成操作”影响。",
+      "description": "选择截图出口，或打开历史与设置。截图出口不受全局完成操作影响。",
       "defaultValue": "capture",
       "required": true,
       "variableMode": "UseVarOrInput",
@@ -48,6 +48,18 @@
       "name": "截图前延迟时间",
       "type": "Integer",
       "description": "等待多少毫秒后开始截图",
+      "visibleWhen": {
+        "kind": "Field",
+        "fieldKey": "operation",
+        "operator": "NotIn",
+        "values": [
+          "History",
+          "historyCaptures",
+          "historyRecordings",
+          "settings"
+        ]
+      },
+      "condition": "operation 不为 \"History\"、\"historyCaptures\"、\"historyRecordings\"、\"settings\"",
       "defaultValue": "0",
       "defaultValueRaw": 0,
       "required": true,
@@ -59,6 +71,18 @@
       "type": "Boolean",
       "description": "遵循全局截图历史开关；取消勾选可排除本次截图，不会打开全局历史。",
       "isAdvanced": true,
+      "visibleWhen": {
+        "kind": "Field",
+        "fieldKey": "operation",
+        "operator": "NotIn",
+        "values": [
+          "History",
+          "historyCaptures",
+          "historyRecordings",
+          "settings"
+        ]
+      },
+      "condition": "operation 不为 \"History\"、\"historyCaptures\"、\"historyRecordings\"、\"settings\"",
       "defaultValue": "true",
       "defaultValueRaw": true,
       "variableMode": "Input"
@@ -115,6 +139,18 @@
       "type": "Boolean",
       "description": "自动吸附鼠标下的界面元素。关闭后可用滚轮手动缩小或扩大选区。",
       "isAdvanced": true,
+      "visibleWhen": {
+        "kind": "Field",
+        "fieldKey": "operation",
+        "operator": "NotIn",
+        "values": [
+          "History",
+          "historyCaptures",
+          "historyRecordings",
+          "settings"
+        ]
+      },
+      "condition": "operation 不为 \"History\"、\"historyCaptures\"、\"historyRecordings\"、\"settings\"",
       "defaultValue": "false",
       "defaultValueRaw": false,
       "newStepDefaultValue": "true",
@@ -140,6 +176,18 @@
       "type": "Enum",
       "description": "本次初始值；跟随设置保持旧动作行为，不修改全局偏好。交互时仍可临时切换。",
       "isAdvanced": true,
+      "visibleWhen": {
+        "kind": "Field",
+        "fieldKey": "operation",
+        "operator": "NotIn",
+        "values": [
+          "History",
+          "historyCaptures",
+          "historyRecordings",
+          "settings"
+        ]
+      },
+      "condition": "operation 不为 \"History\"、\"historyCaptures\"、\"historyRecordings\"、\"settings\"",
       "defaultValue": "inherit",
       "variableMode": "UseVarOrInput"
     },
@@ -196,7 +244,19 @@
       "key": "endKind",
       "name": "结束方式",
       "type": "Text",
-      "description": "实际出口：confirmed/saved/copied/pinned/ocr 等；失败或取消为空。仅成功时读取图片等结果，确认后的复制/贴图不改变出口名。"
+      "description": "实际出口：confirmed/saved/copied/pinned/ocr 等；失败或取消为空。仅成功时读取图片等结果，确认后的复制/贴图不改变出口名。",
+      "visibleWhen": {
+        "kind": "Field",
+        "fieldKey": "operation",
+        "operator": "NotIn",
+        "values": [
+          "History",
+          "historyCaptures",
+          "historyRecordings",
+          "settings"
+        ]
+      },
+      "condition": "operation 不为 \"History\"、\"historyCaptures\"、\"historyRecordings\"、\"settings\""
     },
     {
       "key": "isSuccess",
@@ -207,19 +267,55 @@
     {
       "key": "img",
       "name": "图片",
-      "type": "Image"
+      "type": "Image",
+      "visibleWhen": {
+        "kind": "Field",
+        "fieldKey": "operation",
+        "operator": "NotIn",
+        "values": [
+          "History",
+          "historyCaptures",
+          "historyRecordings",
+          "settings"
+        ]
+      },
+      "condition": "operation 不为 \"History\"、\"historyCaptures\"、\"historyRecordings\"、\"settings\""
     },
     {
       "key": "rect",
       "name": "截图区域",
       "type": "Text",
-      "description": "图片的截取区域(left,top,right,bottom)。"
+      "description": "图片的截取区域(left,top,right,bottom)。",
+      "visibleWhen": {
+        "kind": "Field",
+        "fieldKey": "operation",
+        "operator": "NotIn",
+        "values": [
+          "History",
+          "historyCaptures",
+          "historyRecordings",
+          "settings"
+        ]
+      },
+      "condition": "operation 不为 \"History\"、\"historyCaptures\"、\"historyRecordings\"、\"settings\""
     },
     {
       "key": "savedPath",
       "name": "保存路径",
       "type": "Text",
-      "description": "保存后的路径；未保存时为空。"
+      "description": "保存后的路径；未保存时为空。",
+      "visibleWhen": {
+        "kind": "Field",
+        "fieldKey": "operation",
+        "operator": "NotIn",
+        "values": [
+          "History",
+          "historyCaptures",
+          "historyRecordings",
+          "settings"
+        ]
+      },
+      "condition": "operation 不为 \"History\"、\"historyCaptures\"、\"historyRecordings\"、\"settings\""
     },
     {
       "key": "text",
@@ -278,6 +374,18 @@
         {
           "value": "quick_save",
           "name": "快速保存"
+        },
+        {
+          "value": "historyCaptures",
+          "name": "打开截图历史"
+        },
+        {
+          "value": "historyRecordings",
+          "name": "打开录屏历史"
+        },
+        {
+          "value": "settings",
+          "name": "打开截图设置"
         }
       ]
     },

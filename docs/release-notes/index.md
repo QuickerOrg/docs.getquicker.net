@@ -28,9 +28,18 @@ comments: true
 
 多设备使用、降级或回退前，请阅读[升级与回退](/v2/migration/upgrade-and-rollback)。各版本的具体风险也在下方对应条目中标出。
 
-本站已补充到 **2.3.28**；版本下载与完整修复记录以官网为准。
+本站已补充到 **2.3.29**；版本下载与完整修复记录以官网为准。
 
 ## 近期文档补充
+
+### 2.3.29 · 图片标签、标注快捷操作与步骤配置清理
+
+- [图片、贴图与录屏管理](/v2/features/screenshot/capture-pro#图片与录屏历史管理)更新当前导航、图片标签、来源程序筛选、标签内新截图、文字识别及大图入口。
+- [标注快捷操作](/v2/features/screenshot/capture-pro#annotation-copy-2329)补充 Shift 等宽高绘制和 Ctrl+D 复制标注。
+- [AI 图片保存](/v2/features/ai-and-agent#save-reply-image-2329)说明回复完成后的下载按钮及图片右键另存为。
+- [动作历史与备份](/v2/features/action-history#backup-restore-2329)说明自动备份分类修复、按准确来源版本恢复和只读恢复限制。
+- [步骤参数保存](/v2/xaction/concepts/edit-step-param#step-save-cleanup-2329)说明操作切换后的无效绑定清理范围；模块参数预览同步当前发布快照。
+- **升级注意**：[步骤运行行为与回退](/v2/migration/upgrade-and-rollback#step-and-image-library-2329)列出残留参数停读、无意义输出停写及保存同步后的配置恢复边界，并说明图片标签的本机存储范围。
 
 ### 2.3.28 · 场景规则整理、动作引用与 MCP 接入
 

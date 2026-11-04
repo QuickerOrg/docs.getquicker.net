@@ -291,11 +291,12 @@
       "description": "更新或删除、筛选的行数",
       "validForList": [
         "update",
+        "select",
         "deleteRows",
         "export_text",
         "exportExcel"
       ],
-      "condition": "仅：update, deleteRows, export_text, exportExcel"
+      "condition": "仅：update, select, deleteRows, export_text, exportExcel"
     },
     {
       "key": "rows",

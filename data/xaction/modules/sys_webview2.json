@@ -470,11 +470,12 @@
       "type": "Text",
       "description": "返回窗口坐标范围。格式为：left,top,right,bottom",
       "validForList": [
+        "OpenUrl",
         "OpenAndWaitLoad",
         "OpenUrlAndWaitClose",
         "CheckWindowState"
       ],
-      "condition": "仅：OpenAndWaitLoad, OpenUrlAndWaitClose, CheckWindowState"
+      "condition": "仅：OpenUrl, OpenAndWaitLoad, OpenUrlAndWaitClose, CheckWindowState"
     },
     {
       "key": "currUri",

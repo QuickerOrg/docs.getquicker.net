@@ -670,46 +670,19 @@
       "key": "status",
       "name": "状态",
       "type": "Text",
-      "description": "completed（完成）/ skipped（跳过）/ failed（失败）/ unknown（结果未知）。跳过算成功；失败与结果未知按“失败时”设置处理。",
-      "visibleWhen": {
-        "kind": "Field",
-        "fieldKey": "operation",
-        "operator": "NotIn",
-        "values": [
-          "listAccounts"
-        ]
-      },
-      "condition": "operation 不为 \"listAccounts\""
+      "description": "completed（完成）/ skipped（跳过）/ failed（失败）/ unknown（结果未知）。跳过算成功；失败与结果未知按“失败时”设置处理。"
     },
     {
       "key": "message",
       "name": "消息",
-      "type": "Text",
-      "visibleWhen": {
-        "kind": "Field",
-        "fieldKey": "operation",
-        "operator": "NotIn",
-        "values": [
-          "listAccounts"
-        ]
-      },
-      "condition": "operation 不为 \"listAccounts\""
+      "type": "Text"
     },
     {
       "key": "details",
       "name": "详情",
       "type": "Text",
       "description": "写入类操作出错时的相关远端路径、临时文件路径、服务器状态码等，供核实。",
-      "isAdvanced": true,
-      "visibleWhen": {
-        "kind": "Field",
-        "fieldKey": "operation",
-        "operator": "NotIn",
-        "values": [
-          "listAccounts"
-        ]
-      },
-      "condition": "operation 不为 \"listAccounts\""
+      "isAdvanced": true
     },
     {
       "key": "accountList",

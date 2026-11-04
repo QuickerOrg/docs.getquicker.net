@@ -209,7 +209,7 @@
       "key": "bmpColorError",
       "name": "颜色容差",
       "type": "Integer",
-      "description": "找色或颜色容差匹配时，允许每个颜色通道的偏差值0-100；0表示精确匹配，速度最快。相似度匹配不使用此参数。",
+      "description": "找色或颜色容差匹配时，允许每个颜色通道的偏差值0-100；0表示精确匹配，速度最快。找图时两种匹配算法都会读取此参数。",
       "validForList": [
         "locateByBitmapFile",
         "locateByBitmapVar",
@@ -243,14 +243,15 @@
                 "fieldKey": "bitmapMatchMode",
                 "operator": "In",
                 "values": [
-                  "colorTolerance"
+                  "colorTolerance",
+                  "similarity"
                 ]
               }
             ]
           }
         ]
       },
-      "condition": "(type 为 \"locateByColor\" 或 (type 为 \"locateByBitmapFile\"、\"locateByBitmapVar\" 且 bitmapMatchMode 为 \"colorTolerance\"))",
+      "condition": "(type 为 \"locateByColor\" 或 (type 为 \"locateByBitmapFile\"、\"locateByBitmapVar\" 且 bitmapMatchMode 为 \"colorTolerance\"、\"similarity\"))",
       "defaultValue": "10",
       "defaultValueRaw": 10,
       "variableMode": "Input"

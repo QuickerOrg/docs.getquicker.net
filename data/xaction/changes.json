@@ -1,394 +1,101 @@
 {
   "schemaVersion": 1,
   "baselineCreated": false,
-  "fromGeneratedAt": "2026-10-17 20:02:51",
-  "toGeneratedAt": "2026-10-29 18:56:54",
+  "fromGeneratedAt": "2026-10-29 18:56:54",
+  "toGeneratedAt": "2026-11-03 15:57:53",
   "summary": {
     "addedModules": 0,
     "removedModules": 0,
-    "changedModules": 12
+    "changedModules": 9
   },
   "addedModules": [],
   "removedModules": [],
   "changedModules": [
     {
-      "key": "sys:ai",
-      "name": "AI 调用",
+      "key": "sys:tableoperation",
+      "name": "表格数据操作",
       "changedFields": [],
       "inputs": {
         "added": [],
         "removed": [],
-        "changed": [
-          {
-            "key": "systemPrompt",
-            "before": {
-              "key": "systemPrompt",
-              "name": "系统提示词",
-              "type": "Text",
-              "description": "告知AI所需要扮演的角色和要求。如\"你是一个专业的翻译助手\"。",
-              "validForList": [
-                "chat"
-              ],
-              "condition": "仅：chat",
-              "defaultValue": "",
-              "variableMode": "Input"
-            },
-            "after": {
-              "key": "systemPrompt",
-              "name": "系统提示词",
-              "type": "Text",
-              "description": "告知AI所需要扮演的角色和要求。如\"你是一个专业的翻译助手\"。",
-              "visibleWhen": {
-                "kind": "Any",
-                "conditions": [
-                  {
-                    "kind": "Field",
-                    "fieldKey": "modelSource",
-                    "operator": "In",
-                    "values": [
-                      "global"
-                    ]
-                  },
-                  {
-                    "kind": "All",
-                    "conditions": [
-                      {
-                        "kind": "Field",
-                        "fieldKey": "modelSource",
-                        "operator": "In",
-                        "values": [
-                          "custom"
-                        ]
-                      },
-                      {
-                        "kind": "Field",
-                        "fieldKey": "endpoint",
-                        "operator": "In",
-                        "values": [
-                          "chat"
-                        ]
-                      }
-                    ]
-                  }
-                ]
-              },
-              "condition": "(modelSource 为 \"global\" 或 (modelSource 为 \"custom\" 且 endpoint 为 \"chat\"))",
-              "defaultValue": "",
-              "variableMode": "Input"
-            }
-          },
-          {
-            "key": "prompt",
-            "before": {
-              "key": "prompt",
-              "name": "提示词",
-              "type": "Text",
-              "description": "要为其生成补全的完整提示内容。",
-              "validForList": [
-                "chat",
-                "completions"
-              ],
-              "condition": "仅：chat, completions",
-              "defaultValue": "",
-              "variableMode": "Input"
-            },
-            "after": {
-              "key": "prompt",
-              "name": "提示词",
-              "type": "Text",
-              "description": "要为其生成补全的完整提示内容。",
-              "visibleWhen": {
-                "kind": "Any",
-                "conditions": [
-                  {
-                    "kind": "Field",
-                    "fieldKey": "modelSource",
-                    "operator": "In",
-                    "values": [
-                      "global"
-                    ]
-                  },
-                  {
-                    "kind": "All",
-                    "conditions": [
-                      {
-                        "kind": "Field",
-                        "fieldKey": "modelSource",
-                        "operator": "In",
-                        "values": [
-                          "custom"
-                        ]
-                      },
-                      {
-                        "kind": "Field",
-                        "fieldKey": "endpoint",
-                        "operator": "In",
-                        "values": [
-                          "chat",
-                          "completions"
-                        ]
-                      }
-                    ]
-                  }
-                ]
-              },
-              "condition": "(modelSource 为 \"global\" 或 (modelSource 为 \"custom\" 且 endpoint 为 \"chat\"、\"completions\"))",
-              "defaultValue": "",
-              "variableMode": "Input"
-            }
-          }
-        ]
+        "changed": []
       },
       "outputs": {
         "added": [],
         "removed": [],
-        "changed": []
+        "changed": [
+          {
+            "key": "affectedRowCount",
+            "before": {
+              "key": "affectedRowCount",
+              "name": "影响行数",
+              "type": "Integer",
+              "description": "更新或删除、筛选的行数",
+              "validForList": [
+                "update",
+                "deleteRows",
+                "export_text",
+                "exportExcel"
+              ],
+              "condition": "仅：update, deleteRows, export_text, exportExcel"
+            },
+            "after": {
+              "key": "affectedRowCount",
+              "name": "影响行数",
+              "type": "Integer",
+              "description": "更新或删除、筛选的行数",
+              "validForList": [
+                "update",
+                "select",
+                "deleteRows",
+                "export_text",
+                "exportExcel"
+              ],
+              "condition": "仅：update, select, deleteRows, export_text, exportExcel"
+            }
+          }
+        ]
       },
       "selectionsChanged": false
     },
     {
-      "key": "sys:mouse",
-      "name": "鼠标输入",
+      "key": "sys:runAction",
+      "name": "运行或停止动作",
       "changedFields": [],
       "inputs": {
         "added": [],
         "removed": [],
-        "changed": [
-          {
-            "key": "slowMove",
-            "before": {
-              "key": "slowMove",
-              "name": "逐渐移动到目标",
-              "type": "Boolean",
-              "description": "逐渐移动而不是直接移动到目标位置。",
-              "validForList": [
-                "move",
-                "moveTo",
-                "toWinTL",
-                "toWinTR",
-                "toWinBL",
-                "toWinBR",
-                "toWinCenter",
-                "locateByBitmap",
-                "locateByBitmapVar",
-                "moveToXy",
-                "moveToWinXy"
-              ],
-              "condition": "仅：move, moveTo, toWinTL, toWinTR, toWinBL, toWinBR, toWinCenter, locateByBitmap, locateByBitmapVar, moveToXy, moveToWinXy",
-              "defaultValue": "false",
-              "defaultValueRaw": false,
-              "variableMode": "Input"
-            },
-            "after": {
-              "key": "slowMove",
-              "name": "逐渐移动到目标",
-              "type": "Boolean",
-              "description": "逐渐移动而不是直接移动到目标位置。",
-              "validForList": [
-                "move",
-                "moveTo",
-                "toWinTL",
-                "toWinTR",
-                "toWinBL",
-                "toWinBR",
-                "toWinCenter",
-                "locateByBitmap",
-                "locateByBitmapVar",
-                "moveToXy",
-                "moveToWinXy",
-                "restore"
-              ],
-              "condition": "仅：move, moveTo, toWinTL, toWinTR, toWinBL, toWinBR, toWinCenter, locateByBitmap, locateByBitmapVar, moveToXy, moveToWinXy, restore",
-              "defaultValue": "false",
-              "defaultValueRaw": false,
-              "variableMode": "Input"
-            }
-          },
-          {
-            "key": "stopIfFail",
-            "before": {
-              "key": "stopIfFail",
-              "name": "失败后中止动作",
-              "type": "Boolean",
-              "description": "获取位置失败后，是否停止后续动作的执行。",
-              "validForList": [
-                "locateByBitmap",
-                "locateByBitmapVar"
-              ],
-              "condition": "仅：locateByBitmap, locateByBitmapVar",
-              "defaultValue": "true",
-              "defaultValueRaw": true,
-              "variableMode": "Input"
-            },
-            "after": {
-              "key": "stopIfFail",
-              "name": "失败后中止动作",
-              "type": "Boolean",
-              "description": "步骤失败后，是否停止后续动作的执行。",
-              "defaultValue": "true",
-              "defaultValueRaw": true,
-              "variableMode": "Input"
-            }
-          }
-        ]
+        "changed": []
       },
       "outputs": {
         "added": [],
         "removed": [],
-        "changed": []
-      },
-      "selectionsChanged": false
-    },
-    {
-      "key": "sys:runScript",
-      "name": "运行脚本",
-      "changedFields": [],
-      "inputs": {
-        "added": [],
-        "removed": [],
         "changed": [
           {
-            "key": "runner",
+            "key": "actionTitle",
             "before": {
-              "key": "runner",
-              "name": "使用指定软件",
+              "key": "actionTitle",
+              "name": "动作名称",
               "type": "Text",
-              "description": "使用指定的程序运行脚本。如果双击脚本可以直接运行，则不需要指定。",
+              "description": "运行的动作名称。",
               "validForList": [
-                "CUSTOM"
+                "StartAction"
               ],
-              "condition": "仅：CUSTOM",
-              "defaultValue": "",
-              "required": true,
-              "variableMode": "Input"
+              "condition": "仅：StartAction"
             },
             "after": {
-              "key": "runner",
-              "name": "使用指定软件",
+              "key": "actionTitle",
+              "name": "动作名称",
               "type": "Text",
-              "description": "使用指定的程序运行脚本。如果双击脚本可以直接运行，则不需要指定。",
+              "description": "运行的动作名称。",
               "validForList": [
-                "CUSTOM",
-                "BAT",
-                "CMD_F",
-                "PS",
-                "AHK"
+                "StartAction",
+                "StartCurrentAction"
               ],
-              "condition": "仅：CUSTOM, BAT, CMD_F, PS, AHK",
-              "defaultValue": "",
-              "required": true,
-              "variableMode": "Input"
-            }
-          },
-          {
-            "key": "argTemplate",
-            "before": {
-              "key": "argTemplate",
-              "name": "命令行参数模板",
-              "type": "Text",
-              "description": "使用指定软件时指定命令行参数的格式。%FILE% 代替脚本文件的路径。",
-              "validForList": [
-                "CUSTOM"
-              ],
-              "condition": "仅：CUSTOM",
-              "defaultValue": "%FILE%",
-              "required": true,
-              "variableMode": "Input"
-            },
-            "after": {
-              "key": "argTemplate",
-              "name": "命令行参数模板",
-              "type": "Text",
-              "description": "使用指定软件时指定命令行参数的格式。%FILE% 代替脚本文件的路径。",
-              "validForList": [
-                "CUSTOM",
-                "BAT",
-                "CMD_F",
-                "PS",
-                "AHK"
-              ],
-              "condition": "仅：CUSTOM, BAT, CMD_F, PS, AHK",
-              "defaultValue": "%FILE%",
-              "required": true,
-              "variableMode": "Input"
-            }
-          },
-          {
-            "key": "scriptParams",
-            "before": {
-              "key": "scriptParams",
-              "name": "脚本参数",
-              "type": "Text",
-              "description": "为脚本传递的参数。将会被追加到运行脚本的命令行中。",
-              "validForList": [
-                "BAT",
-                "CMD_F",
-                "PS",
-                "AHK"
-              ],
-              "condition": "仅：BAT, CMD_F, PS, AHK",
-              "defaultValue": "",
-              "variableMode": "UseVarOrInput"
-            },
-            "after": {
-              "key": "scriptParams",
-              "name": "脚本参数",
-              "type": "Text",
-              "description": "为脚本传递的参数。将会被追加到运行脚本的命令行中。",
-              "validForList": [
-                "CUSTOM",
-                "BAT",
-                "CMD_F",
-                "PS",
-                "AHK"
-              ],
-              "condition": "仅：CUSTOM, BAT, CMD_F, PS, AHK",
-              "defaultValue": "",
-              "variableMode": "UseVarOrInput"
+              "condition": "仅：StartAction, StartCurrentAction"
             }
           }
         ]
-      },
-      "outputs": {
-        "added": [],
-        "removed": [],
-        "changed": []
-      },
-      "selectionsChanged": false
-    },
-    {
-      "key": "sys:pythonscript",
-      "name": "运行Python代码",
-      "changedFields": [],
-      "inputs": {
-        "added": [],
-        "removed": [],
-        "changed": [
-          {
-            "key": "pythonPath",
-            "before": {
-              "key": "pythonPath",
-              "name": "Python环境路径",
-              "type": "Text",
-              "description": "可选。Python环境(PythonXXX.dll)所在目录，留空时使用全局设置",
-              "defaultValue": "",
-              "variableMode": "UseVarOrInput"
-            },
-            "after": {
-              "key": "pythonPath",
-              "name": "Python环境路径",
-              "type": "Text",
-              "description": "可选。Python 3.11及以上环境的解释器DLL或所在目录（例如python311.dll），留空时使用全局设置",
-              "defaultValue": "",
-              "variableMode": "UseVarOrInput"
-            }
-          }
-        ]
-      },
-      "outputs": {
-        "added": [],
-        "removed": [],
-        "changed": []
       },
       "selectionsChanged": false
     },
@@ -396,7 +103,6 @@
       "key": "sys:screenCapturePro",
       "name": "交互截图",
       "changedFields": [
-        "name",
         "description"
       ],
       "inputs": {
@@ -412,18 +118,570 @@
               "description": "这次截图怎么结束，不受设置中“直接截图的完成操作”影响。",
               "defaultValue": "capture",
               "required": true,
-              "variableMode": "Input",
+              "variableMode": "UseVarOrInput",
               "isControlField": true
             },
             "after": {
               "key": "operation",
               "name": "操作",
               "type": "Enum",
-              "description": "这次截图怎么结束，不受设置中“直接截图的完成操作”影响。",
+              "description": "选择截图出口，或打开历史与设置。截图出口不受全局完成操作影响。",
               "defaultValue": "capture",
               "required": true,
               "variableMode": "UseVarOrInput",
               "isControlField": true
+            }
+          },
+          {
+            "key": "delay",
+            "before": {
+              "key": "delay",
+              "name": "截图前延迟时间",
+              "type": "Integer",
+              "description": "等待多少毫秒后开始截图",
+              "defaultValue": "0",
+              "defaultValueRaw": 0,
+              "required": true,
+              "variableMode": "UseVarOrInput"
+            },
+            "after": {
+              "key": "delay",
+              "name": "截图前延迟时间",
+              "type": "Integer",
+              "description": "等待多少毫秒后开始截图",
+              "visibleWhen": {
+                "kind": "Field",
+                "fieldKey": "operation",
+                "operator": "NotIn",
+                "values": [
+                  "History",
+                  "historyCaptures",
+                  "historyRecordings",
+                  "settings"
+                ]
+              },
+              "condition": "operation 不为 \"History\"、\"historyCaptures\"、\"historyRecordings\"、\"settings\"",
+              "defaultValue": "0",
+              "defaultValueRaw": 0,
+              "required": true,
+              "variableMode": "UseVarOrInput"
+            }
+          },
+          {
+            "key": "addToHistory",
+            "before": {
+              "key": "addToHistory",
+              "name": "加入截图历史",
+              "type": "Boolean",
+              "description": "遵循全局截图历史开关；取消勾选可排除本次截图，不会打开全局历史。",
+              "isAdvanced": true,
+              "defaultValue": "true",
+              "defaultValueRaw": true,
+              "variableMode": "Input"
+            },
+            "after": {
+              "key": "addToHistory",
+              "name": "加入截图历史",
+              "type": "Boolean",
+              "description": "遵循全局截图历史开关；取消勾选可排除本次截图，不会打开全局历史。",
+              "isAdvanced": true,
+              "visibleWhen": {
+                "kind": "Field",
+                "fieldKey": "operation",
+                "operator": "NotIn",
+                "values": [
+                  "History",
+                  "historyCaptures",
+                  "historyRecordings",
+                  "settings"
+                ]
+              },
+              "condition": "operation 不为 \"History\"、\"historyCaptures\"、\"historyRecordings\"、\"settings\"",
+              "defaultValue": "true",
+              "defaultValueRaw": true,
+              "variableMode": "Input"
+            }
+          },
+          {
+            "key": "autoAdsorb",
+            "before": {
+              "key": "autoAdsorb",
+              "name": "自动吸附UI元素",
+              "type": "Boolean",
+              "description": "自动吸附鼠标下的界面元素。关闭后可用滚轮手动缩小或扩大选区。",
+              "isAdvanced": true,
+              "defaultValue": "false",
+              "defaultValueRaw": false,
+              "newStepDefaultValue": "true",
+              "variableMode": "Input"
+            },
+            "after": {
+              "key": "autoAdsorb",
+              "name": "自动吸附UI元素",
+              "type": "Boolean",
+              "description": "自动吸附鼠标下的界面元素。关闭后可用滚轮手动缩小或扩大选区。",
+              "isAdvanced": true,
+              "visibleWhen": {
+                "kind": "Field",
+                "fieldKey": "operation",
+                "operator": "NotIn",
+                "values": [
+                  "History",
+                  "historyCaptures",
+                  "historyRecordings",
+                  "settings"
+                ]
+              },
+              "condition": "operation 不为 \"History\"、\"historyCaptures\"、\"historyRecordings\"、\"settings\"",
+              "defaultValue": "false",
+              "defaultValueRaw": false,
+              "newStepDefaultValue": "true",
+              "variableMode": "Input"
+            }
+          },
+          {
+            "key": "includeCursor",
+            "before": {
+              "key": "includeCursor",
+              "name": "包含鼠标指针",
+              "type": "Enum",
+              "description": "本次初始值；跟随设置保持旧动作行为，不修改全局偏好。交互时仍可临时切换。",
+              "isAdvanced": true,
+              "defaultValue": "inherit",
+              "variableMode": "UseVarOrInput"
+            },
+            "after": {
+              "key": "includeCursor",
+              "name": "包含鼠标指针",
+              "type": "Enum",
+              "description": "本次初始值；跟随设置保持旧动作行为，不修改全局偏好。交互时仍可临时切换。",
+              "isAdvanced": true,
+              "visibleWhen": {
+                "kind": "Field",
+                "fieldKey": "operation",
+                "operator": "NotIn",
+                "values": [
+                  "History",
+                  "historyCaptures",
+                  "historyRecordings",
+                  "settings"
+                ]
+              },
+              "condition": "operation 不为 \"History\"、\"historyCaptures\"、\"historyRecordings\"、\"settings\"",
+              "defaultValue": "inherit",
+              "variableMode": "UseVarOrInput"
+            }
+          }
+        ]
+      },
+      "outputs": {
+        "added": [],
+        "removed": [],
+        "changed": [
+          {
+            "key": "endKind",
+            "before": {
+              "key": "endKind",
+              "name": "结束方式",
+              "type": "Text",
+              "description": "实际出口：confirmed/saved/copied/pinned/ocr 等；失败或取消为空。仅成功时读取图片等结果，确认后的复制/贴图不改变出口名。"
+            },
+            "after": {
+              "key": "endKind",
+              "name": "结束方式",
+              "type": "Text",
+              "description": "实际出口：confirmed/saved/copied/pinned/ocr 等；失败或取消为空。仅成功时读取图片等结果，确认后的复制/贴图不改变出口名。",
+              "visibleWhen": {
+                "kind": "Field",
+                "fieldKey": "operation",
+                "operator": "NotIn",
+                "values": [
+                  "History",
+                  "historyCaptures",
+                  "historyRecordings",
+                  "settings"
+                ]
+              },
+              "condition": "operation 不为 \"History\"、\"historyCaptures\"、\"historyRecordings\"、\"settings\""
+            }
+          },
+          {
+            "key": "img",
+            "before": {
+              "key": "img",
+              "name": "图片",
+              "type": "Image"
+            },
+            "after": {
+              "key": "img",
+              "name": "图片",
+              "type": "Image",
+              "visibleWhen": {
+                "kind": "Field",
+                "fieldKey": "operation",
+                "operator": "NotIn",
+                "values": [
+                  "History",
+                  "historyCaptures",
+                  "historyRecordings",
+                  "settings"
+                ]
+              },
+              "condition": "operation 不为 \"History\"、\"historyCaptures\"、\"historyRecordings\"、\"settings\""
+            }
+          },
+          {
+            "key": "rect",
+            "before": {
+              "key": "rect",
+              "name": "截图区域",
+              "type": "Text",
+              "description": "图片的截取区域(left,top,right,bottom)。"
+            },
+            "after": {
+              "key": "rect",
+              "name": "截图区域",
+              "type": "Text",
+              "description": "图片的截取区域(left,top,right,bottom)。",
+              "visibleWhen": {
+                "kind": "Field",
+                "fieldKey": "operation",
+                "operator": "NotIn",
+                "values": [
+                  "History",
+                  "historyCaptures",
+                  "historyRecordings",
+                  "settings"
+                ]
+              },
+              "condition": "operation 不为 \"History\"、\"historyCaptures\"、\"historyRecordings\"、\"settings\""
+            }
+          },
+          {
+            "key": "savedPath",
+            "before": {
+              "key": "savedPath",
+              "name": "保存路径",
+              "type": "Text",
+              "description": "保存后的路径；未保存时为空。"
+            },
+            "after": {
+              "key": "savedPath",
+              "name": "保存路径",
+              "type": "Text",
+              "description": "保存后的路径；未保存时为空。",
+              "visibleWhen": {
+                "kind": "Field",
+                "fieldKey": "operation",
+                "operator": "NotIn",
+                "values": [
+                  "History",
+                  "historyCaptures",
+                  "historyRecordings",
+                  "settings"
+                ]
+              },
+              "condition": "operation 不为 \"History\"、\"historyCaptures\"、\"historyRecordings\"、\"settings\""
+            }
+          }
+        ]
+      },
+      "selectionsChanged": true,
+      "selections": {
+        "before": {
+          "operation": {
+            "name": "操作",
+            "items": [
+              {
+                "value": "capture",
+                "name": "截图"
+              },
+              {
+                "value": "capture_now",
+                "name": "框选即出图"
+              },
+              {
+                "value": "copy",
+                "name": "立刻复制"
+              },
+              {
+                "value": "pin",
+                "name": "立刻贴图"
+              },
+              {
+                "value": "ocr_copy",
+                "name": "识别并复制"
+              },
+              {
+                "value": "ocr",
+                "name": "文本识别"
+              },
+              {
+                "value": "table",
+                "name": "表格识别"
+              },
+              {
+                "value": "formula",
+                "name": "公式识别"
+              },
+              {
+                "value": "translate",
+                "name": "文本翻译"
+              },
+              {
+                "value": "image_translate",
+                "name": "图片翻译"
+              },
+              {
+                "value": "quick_save",
+                "name": "快速保存"
+              }
+            ]
+          },
+          "includeCursor": {
+            "name": "包含鼠标指针",
+            "items": [
+              {
+                "value": "inherit",
+                "name": "跟随设置"
+              },
+              {
+                "value": "include",
+                "name": "包含"
+              },
+              {
+                "value": "exclude",
+                "name": "不包含"
+              }
+            ]
+          },
+          "saveFormat": {
+            "name": "保存格式",
+            "items": [
+              {
+                "value": "inherit",
+                "name": "跟随设置"
+              },
+              {
+                "value": "png",
+                "name": "PNG"
+              },
+              {
+                "value": "jpeg",
+                "name": "JPEG"
+              }
+            ]
+          }
+        },
+        "after": {
+          "operation": {
+            "name": "操作",
+            "items": [
+              {
+                "value": "capture",
+                "name": "截图"
+              },
+              {
+                "value": "capture_now",
+                "name": "框选即出图"
+              },
+              {
+                "value": "copy",
+                "name": "立刻复制"
+              },
+              {
+                "value": "pin",
+                "name": "立刻贴图"
+              },
+              {
+                "value": "ocr_copy",
+                "name": "识别并复制"
+              },
+              {
+                "value": "ocr",
+                "name": "文本识别"
+              },
+              {
+                "value": "table",
+                "name": "表格识别"
+              },
+              {
+                "value": "formula",
+                "name": "公式识别"
+              },
+              {
+                "value": "translate",
+                "name": "文本翻译"
+              },
+              {
+                "value": "image_translate",
+                "name": "图片翻译"
+              },
+              {
+                "value": "quick_save",
+                "name": "快速保存"
+              },
+              {
+                "value": "historyCaptures",
+                "name": "打开截图历史"
+              },
+              {
+                "value": "historyRecordings",
+                "name": "打开录屏历史"
+              },
+              {
+                "value": "settings",
+                "name": "打开截图设置"
+              }
+            ]
+          },
+          "includeCursor": {
+            "name": "包含鼠标指针",
+            "items": [
+              {
+                "value": "inherit",
+                "name": "跟随设置"
+              },
+              {
+                "value": "include",
+                "name": "包含"
+              },
+              {
+                "value": "exclude",
+                "name": "不包含"
+              }
+            ]
+          },
+          "saveFormat": {
+            "name": "保存格式",
+            "items": [
+              {
+                "value": "inherit",
+                "name": "跟随设置"
+              },
+              {
+                "value": "png",
+                "name": "PNG"
+              },
+              {
+                "value": "jpeg",
+                "name": "JPEG"
+              }
+            ]
+          }
+        }
+      }
+    },
+    {
+      "key": "sys:searchBmp",
+      "name": "屏幕找图/找色/找字",
+      "changedFields": [],
+      "inputs": {
+        "added": [],
+        "removed": [],
+        "changed": [
+          {
+            "key": "bmpColorError",
+            "before": {
+              "key": "bmpColorError",
+              "name": "颜色容差",
+              "type": "Integer",
+              "description": "找色或颜色容差匹配时，允许每个颜色通道的偏差值0-100；0表示精确匹配，速度最快。相似度匹配不使用此参数。",
+              "validForList": [
+                "locateByBitmapFile",
+                "locateByBitmapVar",
+                "locateByColor"
+              ],
+              "visibleWhen": {
+                "kind": "Any",
+                "conditions": [
+                  {
+                    "kind": "Field",
+                    "fieldKey": "type",
+                    "operator": "In",
+                    "values": [
+                      "locateByColor"
+                    ]
+                  },
+                  {
+                    "kind": "All",
+                    "conditions": [
+                      {
+                        "kind": "Field",
+                        "fieldKey": "type",
+                        "operator": "In",
+                        "values": [
+                          "locateByBitmapFile",
+                          "locateByBitmapVar"
+                        ]
+                      },
+                      {
+                        "kind": "Field",
+                        "fieldKey": "bitmapMatchMode",
+                        "operator": "In",
+                        "values": [
+                          "colorTolerance"
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              },
+              "condition": "(type 为 \"locateByColor\" 或 (type 为 \"locateByBitmapFile\"、\"locateByBitmapVar\" 且 bitmapMatchMode 为 \"colorTolerance\"))",
+              "defaultValue": "10",
+              "defaultValueRaw": 10,
+              "variableMode": "Input"
+            },
+            "after": {
+              "key": "bmpColorError",
+              "name": "颜色容差",
+              "type": "Integer",
+              "description": "找色或颜色容差匹配时，允许每个颜色通道的偏差值0-100；0表示精确匹配，速度最快。找图时两种匹配算法都会读取此参数。",
+              "validForList": [
+                "locateByBitmapFile",
+                "locateByBitmapVar",
+                "locateByColor"
+              ],
+              "visibleWhen": {
+                "kind": "Any",
+                "conditions": [
+                  {
+                    "kind": "Field",
+                    "fieldKey": "type",
+                    "operator": "In",
+                    "values": [
+                      "locateByColor"
+                    ]
+                  },
+                  {
+                    "kind": "All",
+                    "conditions": [
+                      {
+                        "kind": "Field",
+                        "fieldKey": "type",
+                        "operator": "In",
+                        "values": [
+                          "locateByBitmapFile",
+                          "locateByBitmapVar"
+                        ]
+                      },
+                      {
+                        "kind": "Field",
+                        "fieldKey": "bitmapMatchMode",
+                        "operator": "In",
+                        "values": [
+                          "colorTolerance",
+                          "similarity"
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              },
+              "condition": "(type 为 \"locateByColor\" 或 (type 为 \"locateByBitmapFile\"、\"locateByBitmapVar\" 且 bitmapMatchMode 为 \"colorTolerance\"、\"similarity\"))",
+              "defaultValue": "10",
+              "defaultValueRaw": 10,
+              "variableMode": "Input"
             }
           }
         ]
@@ -442,149 +700,981 @@
         "description"
       ],
       "inputs": {
-        "added": [],
-        "removed": [],
-        "changed": []
-      },
-      "outputs": {
-        "added": [],
-        "removed": [],
-        "changed": []
-      },
-      "selectionsChanged": false
-    },
-    {
-      "key": "sys:basic-ocr",
-      "name": "基础OCR",
-      "changedFields": [],
-      "inputs": {
-        "added": [],
+        "added": [
+          {
+            "key": "operation",
+            "name": "操作",
+            "type": "Enum",
+            "defaultValue": "create",
+            "required": true,
+            "variableMode": "UseVarOrInput",
+            "isControlField": true
+          },
+          {
+            "key": "groupId",
+            "name": "贴图组 ID",
+            "type": "Text",
+            "description": "稳定的贴图组 ID；重命名不影响绑定。切换并显示与重复点击切换显隐是不同操作。",
+            "validForList": [
+              "groupSwitch",
+              "groupToggle"
+            ],
+            "condition": "仅：groupSwitch, groupToggle",
+            "defaultValue": "",
+            "required": true,
+            "variableMode": "UseVarOrInput"
+          }
+        ],
         "removed": [],
         "changed": [
           {
-            "key": "punctuationType",
+            "key": "mode",
             "before": {
-              "key": "punctuationType",
-              "name": "转换标点符号",
+              "key": "mode",
+              "name": "内容来源",
               "type": "Enum",
-              "description": "合并文本时，是否转换标点符号",
-              "validForList": [
-                "QuickerServerOcr",
-                "baidu-basic",
-                "baidu-quicker"
-              ],
-              "condition": "仅：QuickerServerOcr, baidu-basic, baidu-quicker",
-              "defaultValue": "no",
+              "description": "变量和剪贴板自动识别图片、HTML、公式、OCR 结果或文本。「纯文本」直接显示输入文字，可设置字体与字号。HTML 仅静态渲染，禁止网络访问。",
+              "defaultValue": "variable",
               "required": true,
-              "variableMode": "UseVarOrInput"
+              "variableMode": "Input",
+              "isControlField": true
             },
             "after": {
-              "key": "punctuationType",
-              "name": "转换标点符号",
+              "key": "mode",
+              "name": "内容来源",
               "type": "Enum",
-              "description": "合并文本时，是否转换标点符号",
+              "description": "变量和剪贴板自动识别图片、HTML、公式、OCR 结果或文本。「纯文本」直接显示输入文字，可设置字体与字号。HTML 仅静态渲染，禁止网络访问。",
               "validForList": [
-                "QuickerServerOcr",
-                "WindowsOcr",
-                "baidu-basic",
-                "baidu-quicker"
+                "create"
               ],
-              "condition": "仅：QuickerServerOcr, WindowsOcr, baidu-basic, baidu-quicker",
-              "defaultValue": "no",
+              "condition": "仅：create",
+              "defaultValue": "variable",
               "required": true,
-              "variableMode": "UseVarOrInput"
+              "variableMode": "Input",
+              "isControlField": true
             }
           },
           {
-            "key": "mergeChapter",
+            "key": "content",
             "before": {
-              "key": "mergeChapter",
-              "name": "合并段落",
-              "type": "Enum",
-              "description": "是否智能合并段落。",
+              "key": "content",
+              "name": "内容",
+              "type": "Any",
+              "description": "图片变量、图片路径，或文本（HTML / LaTeX / $公式$ / OCR 原始结果 / 纯文本）。自动判断类型并渲染；HTML 使用自身静态样式，禁用来源脚本和网络访问。",
               "validForList": [
-                "QuickerServerOcr",
-                "baidu-basic",
-                "baidu-quicker"
+                "variable"
               ],
-              "condition": "仅：QuickerServerOcr, baidu-basic, baidu-quicker",
-              "defaultValue": "no",
+              "condition": "仅：variable",
+              "defaultValue": "",
               "required": true,
               "variableMode": "UseVarOrInput"
             },
             "after": {
-              "key": "mergeChapter",
-              "name": "合并段落",
-              "type": "Enum",
-              "description": "是否智能合并段落。",
+              "key": "content",
+              "name": "内容",
+              "type": "Any",
+              "description": "图片变量、图片路径，或文本（HTML / LaTeX / $公式$ / OCR 原始结果 / 纯文本）。自动判断类型并渲染；HTML 使用自身静态样式，禁用来源脚本和网络访问。",
               "validForList": [
-                "QuickerServerOcr",
-                "WindowsOcr",
-                "baidu-basic",
-                "baidu-quicker"
+                "variable"
               ],
-              "condition": "仅：QuickerServerOcr, WindowsOcr, baidu-basic, baidu-quicker",
-              "defaultValue": "no",
-              "required": true,
-              "variableMode": "UseVarOrInput"
-            }
-          },
-          {
-            "key": "modelTier",
-            "before": {
-              "key": "modelTier",
-              "name": "模型",
-              "type": "Enum",
-              "description": "标准=small（更准更大，默认）；快速=tiny（更快更小）。切换后如未安装会下载对应模型包。表格识别固定用 small，不出现此参数。",
-              "validForList": [
-                "LocalOcr"
-              ],
-              "condition": "仅：LocalOcr",
-              "defaultValue": "small",
-              "variableMode": "Input"
-            },
-            "after": {
-              "key": "modelTier",
-              "name": "模型",
-              "type": "Enum",
-              "description": "标准=small（更准更大，默认）；快速=tiny（更快更小）。切换后如未安装会下载对应模型包。表格识别固定用 small，不出现此参数。",
               "visibleWhen": {
-                "kind": "Any",
+                "kind": "All",
                 "conditions": [
                   {
                     "kind": "Field",
                     "fieldKey": "operation",
                     "operator": "In",
                     "values": [
-                      "LocalOcr"
+                      "create"
                     ]
                   },
                   {
-                    "kind": "All",
-                    "conditions": [
-                      {
-                        "kind": "Field",
-                        "fieldKey": "operation",
-                        "operator": "In",
-                        "values": [
-                          "QuickerServerOcr"
-                        ]
-                      },
-                      {
-                        "kind": "Field",
-                        "fieldKey": "offlineMode",
-                        "operator": "In",
-                        "values": [
-                          "OfflineOnly"
-                        ]
-                      }
+                    "kind": "Field",
+                    "fieldKey": "mode",
+                    "operator": "In",
+                    "values": [
+                      "variable"
                     ]
                   }
                 ]
               },
-              "condition": "(operation 为 \"LocalOcr\" 或 (operation 为 \"QuickerServerOcr\" 且 offlineMode 为 \"OfflineOnly\"))",
-              "defaultValue": "small",
+              "condition": "(operation 为 \"create\" 且 mode 为 \"variable\")",
+              "defaultValue": "",
+              "required": true,
+              "variableMode": "UseVarOrInput"
+            }
+          },
+          {
+            "key": "text",
+            "before": {
+              "key": "text",
+              "name": "文本",
+              "type": "Text",
+              "description": "要贴图的多行文字。支持变量；纯文本模式直接显示文字。",
+              "validForList": [
+                "text",
+                "plainText"
+              ],
+              "condition": "仅：text, plainText",
+              "defaultValue": "",
+              "variableMode": "UseVarOrInput"
+            },
+            "after": {
+              "key": "text",
+              "name": "文本",
+              "type": "Text",
+              "description": "要贴图的多行文字。支持变量；纯文本模式直接显示文字。",
+              "validForList": [
+                "text",
+                "plainText"
+              ],
+              "visibleWhen": {
+                "kind": "All",
+                "conditions": [
+                  {
+                    "kind": "Field",
+                    "fieldKey": "operation",
+                    "operator": "In",
+                    "values": [
+                      "create"
+                    ]
+                  },
+                  {
+                    "kind": "Field",
+                    "fieldKey": "mode",
+                    "operator": "In",
+                    "values": [
+                      "text",
+                      "plainText"
+                    ]
+                  }
+                ]
+              },
+              "condition": "(operation 为 \"create\" 且 mode 为 \"text\"、\"plainText\")",
+              "defaultValue": "",
+              "variableMode": "UseVarOrInput"
+            }
+          },
+          {
+            "key": "screenPlacement",
+            "before": {
+              "key": "screenPlacement",
+              "name": "屏幕位置",
+              "type": "Enum",
+              "description": "「自动」：剪贴板有 QuickerPinData / PixPinData 时贴回截图原位置，否则屏幕中间。其余预设相对鼠标所在显示器工作区定位（图片左上角）。「截图原位置」没有元数据时落到当前光标。来源为剪贴板且本项为「自定义坐标」且坐标为默认 0,0 时，有位置元数据也按原位置。未保存过此参数的旧动作仍是「自定义坐标」；新建步骤默认「自动」。",
+              "defaultValue": "manual",
+              "newStepDefaultValue": "auto",
+              "required": true,
               "variableMode": "Input"
+            },
+            "after": {
+              "key": "screenPlacement",
+              "name": "屏幕位置",
+              "type": "Enum",
+              "description": "「自动」：剪贴板有 QuickerPinData / PixPinData 时贴回截图原位置，否则屏幕中间。其余预设相对鼠标所在显示器工作区定位（图片左上角）。「截图原位置」没有元数据时落到当前光标。来源为剪贴板且本项为「自定义坐标」且坐标为默认 0,0 时，有位置元数据也按原位置。未保存过此参数的旧动作仍是「自定义坐标」；新建步骤默认「自动」。",
+              "validForList": [
+                "create"
+              ],
+              "condition": "仅：create",
+              "defaultValue": "manual",
+              "newStepDefaultValue": "auto",
+              "required": true,
+              "variableMode": "Input"
+            }
+          },
+          {
+            "key": "rect",
+            "before": {
+              "key": "rect",
+              "name": "自定义坐标",
+              "type": "Text",
+              "description": "仅当「屏幕位置」为自定义时有效。图片内容左上角的屏幕像素坐标：left,top 或 left,top,right,bottom（四元组时仅取 left、top）。",
+              "validForList": [
+                "manual"
+              ],
+              "condition": "仅：manual",
+              "defaultValue": "0,0",
+              "variableMode": "UseVarOrInput"
+            },
+            "after": {
+              "key": "rect",
+              "name": "自定义坐标",
+              "type": "Text",
+              "description": "仅当「屏幕位置」为自定义时有效。图片内容左上角的屏幕像素坐标：left,top 或 left,top,right,bottom（四元组时仅取 left、top）。",
+              "visibleWhen": {
+                "kind": "All",
+                "conditions": [
+                  {
+                    "kind": "Field",
+                    "fieldKey": "operation",
+                    "operator": "In",
+                    "values": [
+                      "create"
+                    ]
+                  },
+                  {
+                    "kind": "Field",
+                    "fieldKey": "screenPlacement",
+                    "operator": "In",
+                    "values": [
+                      "manual"
+                    ]
+                  }
+                ]
+              },
+              "condition": "(operation 为 \"create\" 且 screenPlacement 为 \"manual\")",
+              "defaultValue": "0,0",
+              "variableMode": "UseVarOrInput"
+            }
+          },
+          {
+            "key": "fontName",
+            "before": {
+              "key": "fontName",
+              "name": "纯文本字体名称",
+              "type": "Text",
+              "description": "纯文本贴图使用的本机字体。",
+              "isAdvanced": true,
+              "validForList": [
+                "text",
+                "plainText"
+              ],
+              "condition": "仅：text, plainText",
+              "defaultValue": "Microsoft YaHei UI",
+              "variableMode": "UseVarOrInput"
+            },
+            "after": {
+              "key": "fontName",
+              "name": "纯文本字体名称",
+              "type": "Text",
+              "description": "纯文本贴图使用的本机字体。",
+              "isAdvanced": true,
+              "validForList": [
+                "text",
+                "plainText"
+              ],
+              "visibleWhen": {
+                "kind": "All",
+                "conditions": [
+                  {
+                    "kind": "Field",
+                    "fieldKey": "operation",
+                    "operator": "In",
+                    "values": [
+                      "create"
+                    ]
+                  },
+                  {
+                    "kind": "Field",
+                    "fieldKey": "mode",
+                    "operator": "In",
+                    "values": [
+                      "text",
+                      "plainText"
+                    ]
+                  }
+                ]
+              },
+              "condition": "(operation 为 \"create\" 且 mode 为 \"text\"、\"plainText\")",
+              "defaultValue": "Microsoft YaHei UI",
+              "variableMode": "UseVarOrInput"
+            }
+          },
+          {
+            "key": "fontSize",
+            "before": {
+              "key": "fontSize",
+              "name": "纯文本字号",
+              "type": "Number",
+              "description": "纯文本贴图的字号。",
+              "isAdvanced": true,
+              "validForList": [
+                "text",
+                "plainText"
+              ],
+              "condition": "仅：text, plainText",
+              "defaultValue": "16.0",
+              "defaultValueRaw": 16,
+              "variableMode": "UseVarOrInput"
+            },
+            "after": {
+              "key": "fontSize",
+              "name": "纯文本字号",
+              "type": "Number",
+              "description": "纯文本贴图的字号。",
+              "isAdvanced": true,
+              "validForList": [
+                "text",
+                "plainText"
+              ],
+              "visibleWhen": {
+                "kind": "All",
+                "conditions": [
+                  {
+                    "kind": "Field",
+                    "fieldKey": "operation",
+                    "operator": "In",
+                    "values": [
+                      "create"
+                    ]
+                  },
+                  {
+                    "kind": "Field",
+                    "fieldKey": "mode",
+                    "operator": "In",
+                    "values": [
+                      "text",
+                      "plainText"
+                    ]
+                  }
+                ]
+              },
+              "condition": "(operation 为 \"create\" 且 mode 为 \"text\"、\"plainText\")",
+              "defaultValue": "16.0",
+              "defaultValueRaw": 16,
+              "variableMode": "UseVarOrInput"
+            }
+          },
+          {
+            "key": "theme",
+            "before": {
+              "key": "theme",
+              "name": "主题",
+              "type": "Enum",
+              "description": "自动：HTML 保留来源主题，文本、公式和 OCR 跟随 Quicker 主题。也可统一使用浅色或深色。",
+              "isAdvanced": true,
+              "validForList": [
+                "variable",
+                "clipboard",
+                "text",
+                "plainText",
+                "baiduOcrJson",
+                "html",
+                "formula"
+              ],
+              "condition": "仅：variable, clipboard, text, plainText, baiduOcrJson, html, formula",
+              "defaultValue": "auto",
+              "variableMode": "Input"
+            },
+            "after": {
+              "key": "theme",
+              "name": "主题",
+              "type": "Enum",
+              "description": "自动：HTML 保留来源主题，文本、公式和 OCR 跟随 Quicker 主题。也可统一使用浅色或深色。",
+              "isAdvanced": true,
+              "validForList": [
+                "variable",
+                "clipboard",
+                "text",
+                "plainText",
+                "baiduOcrJson",
+                "html",
+                "formula"
+              ],
+              "visibleWhen": {
+                "kind": "All",
+                "conditions": [
+                  {
+                    "kind": "Field",
+                    "fieldKey": "operation",
+                    "operator": "In",
+                    "values": [
+                      "create"
+                    ]
+                  },
+                  {
+                    "kind": "Field",
+                    "fieldKey": "mode",
+                    "operator": "In",
+                    "values": [
+                      "variable",
+                      "clipboard",
+                      "text",
+                      "plainText",
+                      "baiduOcrJson",
+                      "html",
+                      "formula"
+                    ]
+                  }
+                ]
+              },
+              "condition": "(operation 为 \"create\" 且 mode 为 \"variable\"、\"clipboard\"、\"text\"、\"plainText\"、\"baiduOcrJson\"、\"html\"、\"formula\")",
+              "defaultValue": "auto",
+              "variableMode": "Input"
+            }
+          },
+          {
+            "key": "maxTextWidth",
+            "before": {
+              "key": "maxTextWidth",
+              "name": "最大宽度",
+              "type": "Integer",
+              "description": "像素。0 表示按内容自动扩展。纯文本大于 0 时自动换行；HTML / 公式上限 2400。",
+              "isAdvanced": true,
+              "validForList": [
+                "variable",
+                "clipboard",
+                "text",
+                "plainText",
+                "html",
+                "formula"
+              ],
+              "condition": "仅：variable, clipboard, text, plainText, html, formula",
+              "defaultValue": "0",
+              "defaultValueRaw": 0,
+              "variableMode": "UseVarOrInput"
+            },
+            "after": {
+              "key": "maxTextWidth",
+              "name": "最大宽度",
+              "type": "Integer",
+              "description": "像素。0 表示按内容自动扩展。纯文本大于 0 时自动换行；HTML / 公式上限 2400。",
+              "isAdvanced": true,
+              "validForList": [
+                "variable",
+                "clipboard",
+                "text",
+                "plainText",
+                "html",
+                "formula"
+              ],
+              "visibleWhen": {
+                "kind": "All",
+                "conditions": [
+                  {
+                    "kind": "Field",
+                    "fieldKey": "operation",
+                    "operator": "In",
+                    "values": [
+                      "create"
+                    ]
+                  },
+                  {
+                    "kind": "Field",
+                    "fieldKey": "mode",
+                    "operator": "In",
+                    "values": [
+                      "variable",
+                      "clipboard",
+                      "text",
+                      "plainText",
+                      "html",
+                      "formula"
+                    ]
+                  }
+                ]
+              },
+              "condition": "(operation 为 \"create\" 且 mode 为 \"variable\"、\"clipboard\"、\"text\"、\"plainText\"、\"html\"、\"formula\")",
+              "defaultValue": "0",
+              "defaultValueRaw": 0,
+              "variableMode": "UseVarOrInput"
+            }
+          },
+          {
+            "key": "imgVar",
+            "before": {
+              "key": "imgVar",
+              "name": "图片",
+              "type": "Image",
+              "description": "要贴图的图片变量。",
+              "isAdvanced": true,
+              "validForList": [
+                "image"
+              ],
+              "condition": "仅：image",
+              "defaultValue": "",
+              "required": true,
+              "variableMode": "UseVar"
+            },
+            "after": {
+              "key": "imgVar",
+              "name": "图片",
+              "type": "Image",
+              "description": "要贴图的图片变量。",
+              "isAdvanced": true,
+              "validForList": [
+                "image"
+              ],
+              "visibleWhen": {
+                "kind": "All",
+                "conditions": [
+                  {
+                    "kind": "Field",
+                    "fieldKey": "operation",
+                    "operator": "In",
+                    "values": [
+                      "create"
+                    ]
+                  },
+                  {
+                    "kind": "Field",
+                    "fieldKey": "mode",
+                    "operator": "In",
+                    "values": [
+                      "image"
+                    ]
+                  }
+                ]
+              },
+              "condition": "(operation 为 \"create\" 且 mode 为 \"image\")",
+              "defaultValue": "",
+              "required": true,
+              "variableMode": "UseVar"
+            }
+          },
+          {
+            "key": "html",
+            "before": {
+              "key": "html",
+              "name": "HTML",
+              "type": "Text",
+              "description": "完整 HTML 文档或片段。仅渲染静态 HTML 与内联样式，禁用来源脚本和网络访问；公式使用本地 KaTeX。",
+              "isAdvanced": true,
+              "validForList": [
+                "html"
+              ],
+              "condition": "仅：html",
+              "defaultValue": "",
+              "variableMode": "UseVarOrInput"
+            },
+            "after": {
+              "key": "html",
+              "name": "HTML",
+              "type": "Text",
+              "description": "完整 HTML 文档或片段。仅渲染静态 HTML 与内联样式，禁用来源脚本和网络访问；公式使用本地 KaTeX。",
+              "isAdvanced": true,
+              "validForList": [
+                "html"
+              ],
+              "visibleWhen": {
+                "kind": "All",
+                "conditions": [
+                  {
+                    "kind": "Field",
+                    "fieldKey": "operation",
+                    "operator": "In",
+                    "values": [
+                      "create"
+                    ]
+                  },
+                  {
+                    "kind": "Field",
+                    "fieldKey": "mode",
+                    "operator": "In",
+                    "values": [
+                      "html"
+                    ]
+                  }
+                ]
+              },
+              "condition": "(operation 为 \"create\" 且 mode 为 \"html\")",
+              "defaultValue": "",
+              "variableMode": "UseVarOrInput"
+            }
+          },
+          {
+            "key": "htmlMaxWidth",
+            "before": {
+              "key": "htmlMaxWidth",
+              "name": "HTML 最大宽度",
+              "type": "Integer",
+              "description": "像素。0 表示按内容自动扩展（上限 2400）。",
+              "isAdvanced": true,
+              "validForList": [
+                "html"
+              ],
+              "condition": "仅：html",
+              "defaultValue": "0",
+              "defaultValueRaw": 0,
+              "variableMode": "UseVarOrInput"
+            },
+            "after": {
+              "key": "htmlMaxWidth",
+              "name": "HTML 最大宽度",
+              "type": "Integer",
+              "description": "像素。0 表示按内容自动扩展（上限 2400）。",
+              "isAdvanced": true,
+              "validForList": [
+                "html"
+              ],
+              "visibleWhen": {
+                "kind": "All",
+                "conditions": [
+                  {
+                    "kind": "Field",
+                    "fieldKey": "operation",
+                    "operator": "In",
+                    "values": [
+                      "create"
+                    ]
+                  },
+                  {
+                    "kind": "Field",
+                    "fieldKey": "mode",
+                    "operator": "In",
+                    "values": [
+                      "html"
+                    ]
+                  }
+                ]
+              },
+              "condition": "(operation 为 \"create\" 且 mode 为 \"html\")",
+              "defaultValue": "0",
+              "defaultValueRaw": 0,
+              "variableMode": "UseVarOrInput"
+            }
+          },
+          {
+            "key": "latex",
+            "before": {
+              "key": "latex",
+              "name": "LaTeX",
+              "type": "Text",
+              "description": "数学公式，如 E=mc^2 或 \\frac{a}{b}。使用本地 KaTeX 渲染。",
+              "isAdvanced": true,
+              "validForList": [
+                "formula"
+              ],
+              "condition": "仅：formula",
+              "defaultValue": "",
+              "variableMode": "UseVarOrInput"
+            },
+            "after": {
+              "key": "latex",
+              "name": "LaTeX",
+              "type": "Text",
+              "description": "数学公式，如 E=mc^2 或 \\frac{a}{b}。使用本地 KaTeX 渲染。",
+              "isAdvanced": true,
+              "validForList": [
+                "formula"
+              ],
+              "visibleWhen": {
+                "kind": "All",
+                "conditions": [
+                  {
+                    "kind": "Field",
+                    "fieldKey": "operation",
+                    "operator": "In",
+                    "values": [
+                      "create"
+                    ]
+                  },
+                  {
+                    "kind": "Field",
+                    "fieldKey": "mode",
+                    "operator": "In",
+                    "values": [
+                      "formula"
+                    ]
+                  }
+                ]
+              },
+              "condition": "(operation 为 \"create\" 且 mode 为 \"formula\")",
+              "defaultValue": "",
+              "variableMode": "UseVarOrInput"
+            }
+          },
+          {
+            "key": "formulaLayout",
+            "before": {
+              "key": "formulaLayout",
+              "name": "公式版式",
+              "type": "Enum",
+              "isAdvanced": true,
+              "validForList": [
+                "formula"
+              ],
+              "condition": "仅：formula",
+              "defaultValue": "display",
+              "variableMode": "UseVarOrInput"
+            },
+            "after": {
+              "key": "formulaLayout",
+              "name": "公式版式",
+              "type": "Enum",
+              "isAdvanced": true,
+              "validForList": [
+                "formula"
+              ],
+              "visibleWhen": {
+                "kind": "All",
+                "conditions": [
+                  {
+                    "kind": "Field",
+                    "fieldKey": "operation",
+                    "operator": "In",
+                    "values": [
+                      "create"
+                    ]
+                  },
+                  {
+                    "kind": "Field",
+                    "fieldKey": "mode",
+                    "operator": "In",
+                    "values": [
+                      "formula"
+                    ]
+                  }
+                ]
+              },
+              "condition": "(operation 为 \"create\" 且 mode 为 \"formula\")",
+              "defaultValue": "display",
+              "variableMode": "UseVarOrInput"
+            }
+          },
+          {
+            "key": "formulaFontSize",
+            "before": {
+              "key": "formulaFontSize",
+              "name": "公式字号",
+              "type": "Number",
+              "isAdvanced": true,
+              "validForList": [
+                "text",
+                "formula"
+              ],
+              "condition": "仅：text, formula",
+              "defaultValue": "22.0",
+              "defaultValueRaw": 22,
+              "variableMode": "UseVarOrInput"
+            },
+            "after": {
+              "key": "formulaFontSize",
+              "name": "公式字号",
+              "type": "Number",
+              "isAdvanced": true,
+              "validForList": [
+                "text",
+                "formula"
+              ],
+              "visibleWhen": {
+                "kind": "All",
+                "conditions": [
+                  {
+                    "kind": "Field",
+                    "fieldKey": "operation",
+                    "operator": "In",
+                    "values": [
+                      "create"
+                    ]
+                  },
+                  {
+                    "kind": "Field",
+                    "fieldKey": "mode",
+                    "operator": "In",
+                    "values": [
+                      "text",
+                      "formula"
+                    ]
+                  }
+                ]
+              },
+              "condition": "(operation 为 \"create\" 且 mode 为 \"text\"、\"formula\")",
+              "defaultValue": "22.0",
+              "defaultValueRaw": 22,
+              "variableMode": "UseVarOrInput"
+            }
+          },
+          {
+            "key": "ocrJson",
+            "before": {
+              "key": "ocrJson",
+              "name": "OCR 原始结果",
+              "type": "Text",
+              "description": "通常为「基础 OCR」步骤输出的「原始结果」(rawData)。支持 words_result/location 与 Result/Regions/Rect；无位置信息时纵向排列。",
+              "isAdvanced": true,
+              "validForList": [
+                "baiduOcrJson"
+              ],
+              "condition": "仅：baiduOcrJson",
+              "defaultValue": "",
+              "variableMode": "UseVarOrInput"
+            },
+            "after": {
+              "key": "ocrJson",
+              "name": "OCR 原始结果",
+              "type": "Text",
+              "description": "通常为「基础 OCR」步骤输出的「原始结果」(rawData)。支持 words_result/location 与 Result/Regions/Rect；无位置信息时纵向排列。",
+              "isAdvanced": true,
+              "validForList": [
+                "baiduOcrJson"
+              ],
+              "visibleWhen": {
+                "kind": "All",
+                "conditions": [
+                  {
+                    "kind": "Field",
+                    "fieldKey": "operation",
+                    "operator": "In",
+                    "values": [
+                      "create"
+                    ]
+                  },
+                  {
+                    "kind": "Field",
+                    "fieldKey": "mode",
+                    "operator": "In",
+                    "values": [
+                      "baiduOcrJson"
+                    ]
+                  }
+                ]
+              },
+              "condition": "(operation 为 \"create\" 且 mode 为 \"baiduOcrJson\")",
+              "defaultValue": "",
+              "variableMode": "UseVarOrInput"
+            }
+          },
+          {
+            "key": "ocrCanvasWidth",
+            "before": {
+              "key": "ocrCanvasWidth",
+              "name": "画布宽度",
+              "type": "Integer",
+              "description": "0 表示根据识别框自动推算（含边距）。",
+              "isAdvanced": true,
+              "validForList": [
+                "baiduOcrJson"
+              ],
+              "condition": "仅：baiduOcrJson",
+              "defaultValue": "0",
+              "defaultValueRaw": 0,
+              "variableMode": "UseVarOrInput"
+            },
+            "after": {
+              "key": "ocrCanvasWidth",
+              "name": "画布宽度",
+              "type": "Integer",
+              "description": "0 表示根据识别框自动推算（含边距）。",
+              "isAdvanced": true,
+              "validForList": [
+                "baiduOcrJson"
+              ],
+              "visibleWhen": {
+                "kind": "All",
+                "conditions": [
+                  {
+                    "kind": "Field",
+                    "fieldKey": "operation",
+                    "operator": "In",
+                    "values": [
+                      "create"
+                    ]
+                  },
+                  {
+                    "kind": "Field",
+                    "fieldKey": "mode",
+                    "operator": "In",
+                    "values": [
+                      "baiduOcrJson"
+                    ]
+                  }
+                ]
+              },
+              "condition": "(operation 为 \"create\" 且 mode 为 \"baiduOcrJson\")",
+              "defaultValue": "0",
+              "defaultValueRaw": 0,
+              "variableMode": "UseVarOrInput"
+            }
+          },
+          {
+            "key": "ocrCanvasHeight",
+            "before": {
+              "key": "ocrCanvasHeight",
+              "name": "画布高度",
+              "type": "Integer",
+              "description": "0 表示根据识别框自动推算（含边距）。",
+              "isAdvanced": true,
+              "validForList": [
+                "baiduOcrJson"
+              ],
+              "condition": "仅：baiduOcrJson",
+              "defaultValue": "0",
+              "defaultValueRaw": 0,
+              "variableMode": "UseVarOrInput"
+            },
+            "after": {
+              "key": "ocrCanvasHeight",
+              "name": "画布高度",
+              "type": "Integer",
+              "description": "0 表示根据识别框自动推算（含边距）。",
+              "isAdvanced": true,
+              "validForList": [
+                "baiduOcrJson"
+              ],
+              "visibleWhen": {
+                "kind": "All",
+                "conditions": [
+                  {
+                    "kind": "Field",
+                    "fieldKey": "operation",
+                    "operator": "In",
+                    "values": [
+                      "create"
+                    ]
+                  },
+                  {
+                    "kind": "Field",
+                    "fieldKey": "mode",
+                    "operator": "In",
+                    "values": [
+                      "baiduOcrJson"
+                    ]
+                  }
+                ]
+              },
+              "condition": "(operation 为 \"create\" 且 mode 为 \"baiduOcrJson\")",
+              "defaultValue": "0",
+              "defaultValueRaw": 0,
+              "variableMode": "UseVarOrInput"
+            }
+          },
+          {
+            "key": "ocrFontName",
+            "before": {
+              "key": "ocrFontName",
+              "name": "OCR 绘制字体",
+              "type": "Text",
+              "isAdvanced": true,
+              "validForList": [
+                "baiduOcrJson"
+              ],
+              "condition": "仅：baiduOcrJson",
+              "defaultValue": "Microsoft YaHei UI",
+              "variableMode": "UseVarOrInput"
+            },
+            "after": {
+              "key": "ocrFontName",
+              "name": "OCR 绘制字体",
+              "type": "Text",
+              "isAdvanced": true,
+              "validForList": [
+                "baiduOcrJson"
+              ],
+              "visibleWhen": {
+                "kind": "All",
+                "conditions": [
+                  {
+                    "kind": "Field",
+                    "fieldKey": "operation",
+                    "operator": "In",
+                    "values": [
+                      "create"
+                    ]
+                  },
+                  {
+                    "kind": "Field",
+                    "fieldKey": "mode",
+                    "operator": "In",
+                    "values": [
+                      "baiduOcrJson"
+                    ]
+                  }
+                ]
+              },
+              "condition": "(operation 为 \"create\" 且 mode 为 \"baiduOcrJson\")",
+              "defaultValue": "Microsoft YaHei UI",
+              "variableMode": "UseVarOrInput"
             }
           }
         ]
@@ -592,7 +1682,394 @@
       "outputs": {
         "added": [],
         "removed": [],
+        "changed": [
+          {
+            "key": "img",
+            "before": {
+              "key": "img",
+              "name": "贴图位图",
+              "type": "Image",
+              "description": "本次生成或用于贴图的位图（与窗口显示内容一致）。"
+            },
+            "after": {
+              "key": "img",
+              "name": "贴图位图",
+              "type": "Image",
+              "description": "本次生成或用于贴图的位图（与窗口显示内容一致）。",
+              "validForList": [
+                "create"
+              ],
+              "condition": "仅：create"
+            }
+          },
+          {
+            "key": "hwnd",
+            "before": {
+              "key": "hwnd",
+              "name": "窗口句柄",
+              "type": "Integer",
+              "description": "本次创建的贴图窗口句柄，可用于后续窗口操作。窗口关闭后失效。"
+            },
+            "after": {
+              "key": "hwnd",
+              "name": "窗口句柄",
+              "type": "Integer",
+              "description": "本次创建的贴图窗口句柄，可用于后续窗口操作。窗口关闭后失效。",
+              "validForList": [
+                "create"
+              ],
+              "condition": "仅：create"
+            }
+          }
+        ]
+      },
+      "selectionsChanged": true,
+      "selections": {
+        "before": {
+          "mode": {
+            "name": "内容来源",
+            "items": [
+              {
+                "value": "clipboard",
+                "name": "剪贴板（自动）"
+              },
+              {
+                "value": "variable",
+                "name": "变量（自动）"
+              },
+              {
+                "value": "plainText",
+                "name": "纯文本"
+              }
+            ]
+          },
+          "screenPlacement": {
+            "name": "屏幕位置",
+            "items": [
+              {
+                "value": "manual",
+                "name": "自定义坐标"
+              },
+              {
+                "value": "center",
+                "name": "屏幕中间"
+              },
+              {
+                "value": "topLeft",
+                "name": "屏幕左上"
+              },
+              {
+                "value": "topCenter",
+                "name": "屏幕中上"
+              },
+              {
+                "value": "topRight",
+                "name": "屏幕右上"
+              },
+              {
+                "value": "leftCenter",
+                "name": "屏幕左中"
+              },
+              {
+                "value": "rightCenter",
+                "name": "屏幕右中"
+              },
+              {
+                "value": "bottomLeft",
+                "name": "屏幕左下"
+              },
+              {
+                "value": "bottomCenter",
+                "name": "屏幕中下"
+              },
+              {
+                "value": "bottomRight",
+                "name": "屏幕右下"
+              },
+              {
+                "value": "captureOrigin",
+                "name": "截图原位置"
+              },
+              {
+                "value": "auto",
+                "name": "自动"
+              }
+            ]
+          },
+          "theme": {
+            "name": "主题",
+            "items": [
+              {
+                "value": "auto",
+                "name": "自动（Auto）"
+              },
+              {
+                "value": "light",
+                "name": "浅色"
+              },
+              {
+                "value": "dark",
+                "name": "深色"
+              }
+            ]
+          },
+          "formulaLayout": {
+            "name": "公式版式",
+            "items": [
+              {
+                "value": "display",
+                "name": "独立公式"
+              },
+              {
+                "value": "inline",
+                "name": "行内公式"
+              }
+            ]
+          }
+        },
+        "after": {
+          "operation": {
+            "name": "操作",
+            "items": [
+              {
+                "value": "create",
+                "name": "创建贴图"
+              },
+              {
+                "value": "restoreLast",
+                "name": "恢复最近关闭的贴图"
+              },
+              {
+                "value": "hideAll",
+                "name": "隐藏当前组全部贴图"
+              },
+              {
+                "value": "showAll",
+                "name": "显示当前组全部贴图"
+              },
+              {
+                "value": "toggleAll",
+                "name": "切换当前组贴图显隐"
+              },
+              {
+                "value": "closeAll",
+                "name": "关闭所有组的全部贴图"
+              },
+              {
+                "value": "groupPrevious",
+                "name": "上一个贴图组"
+              },
+              {
+                "value": "groupNext",
+                "name": "下一个贴图组"
+              },
+              {
+                "value": "groupChoose",
+                "name": "选择贴图组"
+              },
+              {
+                "value": "groupSwitch",
+                "name": "切换到指定贴图组并显示"
+              },
+              {
+                "value": "groupToggle",
+                "name": "切换指定贴图组显隐"
+              },
+              {
+                "value": "groupManage",
+                "name": "管理贴图组"
+              }
+            ]
+          },
+          "mode": {
+            "name": "内容来源",
+            "items": [
+              {
+                "value": "clipboard",
+                "name": "剪贴板（自动）"
+              },
+              {
+                "value": "variable",
+                "name": "变量（自动）"
+              },
+              {
+                "value": "plainText",
+                "name": "纯文本"
+              }
+            ]
+          },
+          "screenPlacement": {
+            "name": "屏幕位置",
+            "items": [
+              {
+                "value": "manual",
+                "name": "自定义坐标"
+              },
+              {
+                "value": "center",
+                "name": "屏幕中间"
+              },
+              {
+                "value": "topLeft",
+                "name": "屏幕左上"
+              },
+              {
+                "value": "topCenter",
+                "name": "屏幕中上"
+              },
+              {
+                "value": "topRight",
+                "name": "屏幕右上"
+              },
+              {
+                "value": "leftCenter",
+                "name": "屏幕左中"
+              },
+              {
+                "value": "rightCenter",
+                "name": "屏幕右中"
+              },
+              {
+                "value": "bottomLeft",
+                "name": "屏幕左下"
+              },
+              {
+                "value": "bottomCenter",
+                "name": "屏幕中下"
+              },
+              {
+                "value": "bottomRight",
+                "name": "屏幕右下"
+              },
+              {
+                "value": "captureOrigin",
+                "name": "截图原位置"
+              },
+              {
+                "value": "auto",
+                "name": "自动"
+              }
+            ]
+          },
+          "theme": {
+            "name": "主题",
+            "items": [
+              {
+                "value": "auto",
+                "name": "自动（Auto）"
+              },
+              {
+                "value": "light",
+                "name": "浅色"
+              },
+              {
+                "value": "dark",
+                "name": "深色"
+              }
+            ]
+          },
+          "formulaLayout": {
+            "name": "公式版式",
+            "items": [
+              {
+                "value": "display",
+                "name": "独立公式"
+              },
+              {
+                "value": "inline",
+                "name": "行内公式"
+              }
+            ]
+          }
+        }
+      }
+    },
+    {
+      "key": "sys:remoteFile",
+      "name": "远程文件",
+      "changedFields": [],
+      "inputs": {
+        "added": [],
+        "removed": [],
         "changed": []
+      },
+      "outputs": {
+        "added": [],
+        "removed": [],
+        "changed": [
+          {
+            "key": "status",
+            "before": {
+              "key": "status",
+              "name": "状态",
+              "type": "Text",
+              "description": "completed（完成）/ skipped（跳过）/ failed（失败）/ unknown（结果未知）。跳过算成功；失败与结果未知按“失败时”设置处理。",
+              "visibleWhen": {
+                "kind": "Field",
+                "fieldKey": "operation",
+                "operator": "NotIn",
+                "values": [
+                  "listAccounts"
+                ]
+              },
+              "condition": "operation 不为 \"listAccounts\""
+            },
+            "after": {
+              "key": "status",
+              "name": "状态",
+              "type": "Text",
+              "description": "completed（完成）/ skipped（跳过）/ failed（失败）/ unknown（结果未知）。跳过算成功；失败与结果未知按“失败时”设置处理。"
+            }
+          },
+          {
+            "key": "message",
+            "before": {
+              "key": "message",
+              "name": "消息",
+              "type": "Text",
+              "visibleWhen": {
+                "kind": "Field",
+                "fieldKey": "operation",
+                "operator": "NotIn",
+                "values": [
+                  "listAccounts"
+                ]
+              },
+              "condition": "operation 不为 \"listAccounts\""
+            },
+            "after": {
+              "key": "message",
+              "name": "消息",
+              "type": "Text"
+            }
+          },
+          {
+            "key": "details",
+            "before": {
+              "key": "details",
+              "name": "详情",
+              "type": "Text",
+              "description": "写入类操作出错时的相关远端路径、临时文件路径、服务器状态码等，供核实。",
+              "isAdvanced": true,
+              "visibleWhen": {
+                "kind": "Field",
+                "fieldKey": "operation",
+                "operator": "NotIn",
+                "values": [
+                  "listAccounts"
+                ]
+              },
+              "condition": "operation 不为 \"listAccounts\""
+            },
+            "after": {
+              "key": "details",
+              "name": "详情",
+              "type": "Text",
+              "description": "写入类操作出错时的相关远端路径、临时文件路径、服务器状态码等，供核实。",
+              "isAdvanced": true
+            }
+          }
+        ]
       },
       "selectionsChanged": false
     },
@@ -603,168 +2080,516 @@
       "inputs": {
         "added": [],
         "removed": [],
+        "changed": []
+      },
+      "outputs": {
+        "added": [],
+        "removed": [],
         "changed": [
           {
-            "key": "timeoutMs",
+            "key": "browser",
             "before": {
-              "key": "timeoutMs",
-              "name": "超时时间(ms)",
-              "type": "Number",
-              "description": "超时等待时间，毫秒数",
+              "key": "browser",
+              "name": "浏览器",
+              "type": "Text",
+              "description": "当前访问的浏览器",
               "validForList": [
-                "OpenUrl",
-                "WaitTabComplete",
-                "GetTabInfo",
-                "RunScript",
-                "PickElement",
-                "GetElementInfo",
-                "UpdateElement",
-                "TriggerEvent",
-                "Wait",
-                "BackgroundScript",
-                "BackgroundCommand",
-                "PageAction",
-                "UploadFiles",
-                "DropFiles"
+                "GetTabInfo"
               ],
-              "condition": "仅：OpenUrl, WaitTabComplete, GetTabInfo, RunScript, PickElement, GetElementInfo, UpdateElement, TriggerEvent, Wait, BackgroundScript, BackgroundCommand, PageAction, UploadFiles, DropFiles",
-              "defaultValue": "3000",
-              "defaultValueRaw": 3000,
-              "required": true,
-              "variableMode": "Input"
+              "condition": "仅：GetTabInfo"
             },
             "after": {
-              "key": "timeoutMs",
-              "name": "超时时间(ms)",
-              "type": "Number",
-              "description": "超时等待时间，毫秒数",
+              "key": "browser",
+              "name": "浏览器",
+              "type": "Text",
+              "description": "当前访问的浏览器",
               "validForList": [
-                "OpenUrl",
-                "WaitTabComplete",
                 "ActivateTab",
-                "GetTabInfo",
-                "RunScript",
-                "PickElement",
-                "GetElementInfo",
-                "UpdateElement",
-                "TriggerEvent",
-                "Wait",
-                "BackgroundScript",
-                "BackgroundCommand",
-                "PageAction",
-                "UploadFiles",
-                "DropFiles"
+                "GetTabInfo"
               ],
-              "condition": "仅：OpenUrl, WaitTabComplete, ActivateTab, GetTabInfo, RunScript, PickElement, GetElementInfo, UpdateElement, TriggerEvent, Wait, BackgroundScript, BackgroundCommand, PageAction, UploadFiles, DropFiles",
-              "defaultValue": "3000",
-              "defaultValueRaw": 3000,
-              "required": true,
-              "variableMode": "Input"
+              "condition": "仅：ActivateTab, GetTabInfo"
+            }
+          },
+          {
+            "key": "extVersion",
+            "before": {
+              "key": "extVersion",
+              "name": "插件版本",
+              "type": "Text",
+              "description": "浏览器插件版本号",
+              "validForList": [
+                "GetTabInfo"
+              ],
+              "condition": "仅：GetTabInfo"
+            },
+            "after": {
+              "key": "extVersion",
+              "name": "插件版本",
+              "type": "Text",
+              "description": "浏览器插件版本号",
+              "validForList": [
+                "ActivateTab",
+                "GetTabInfo"
+              ],
+              "condition": "仅：ActivateTab, GetTabInfo"
+            }
+          },
+          {
+            "key": "manifestVersion",
+            "before": {
+              "key": "manifestVersion",
+              "name": "Manifest版本",
+              "type": "Integer",
+              "description": "浏览器插件的Manifest版本号",
+              "validForList": [
+                "GetTabInfo"
+              ],
+              "condition": "仅：GetTabInfo"
+            },
+            "after": {
+              "key": "manifestVersion",
+              "name": "Manifest版本",
+              "type": "Integer",
+              "description": "浏览器插件的Manifest版本号",
+              "validForList": [
+                "ActivateTab",
+                "GetTabInfo"
+              ],
+              "condition": "仅：ActivateTab, GetTabInfo"
+            }
+          },
+          {
+            "key": "envName",
+            "before": {
+              "key": "envName",
+              "name": "环境名称",
+              "type": "Text",
+              "description": "浏览器Profile的自定义环境名称",
+              "validForList": [
+                "GetTabInfo"
+              ],
+              "condition": "仅：GetTabInfo"
+            },
+            "after": {
+              "key": "envName",
+              "name": "环境名称",
+              "type": "Text",
+              "description": "浏览器Profile的自定义环境名称",
+              "validForList": [
+                "ActivateTab",
+                "GetTabInfo"
+              ],
+              "condition": "仅：ActivateTab, GetTabInfo"
             }
           }
         ]
-      },
-      "outputs": {
-        "added": [],
-        "removed": [],
-        "changed": []
       },
       "selectionsChanged": false
     },
     {
-      "key": "sys:rhinocontrol",
-      "name": "Rhino软件控制",
+      "key": "sys:quickeroperations",
+      "name": "Quicker操作",
       "changedFields": [],
       "inputs": {
-        "added": [],
-        "removed": [],
-        "changed": [
+        "added": [
           {
-            "key": "pointJson",
-            "before": {
-              "key": "pointJson",
-              "name": "点坐标（JSON）",
-              "type": "Text",
-              "validForList": [
-                "geometry.add_point",
-                "geometry.add_sphere"
-              ],
-              "condition": "仅：geometry.add_point, geometry.add_sphere",
-              "defaultValue": "[0,0,0]",
-              "variableMode": "UseVarOrInput"
-            },
-            "after": {
-              "key": "pointJson",
-              "name": "点坐标（JSON）",
-              "type": "Text",
-              "validForList": [
-                "geometry.add_point",
-                "geometry.add_box",
-                "geometry.add_sphere"
-              ],
-              "condition": "仅：geometry.add_point, geometry.add_box, geometry.add_sphere",
-              "defaultValue": "[0,0,0]",
-              "variableMode": "UseVarOrInput"
-            }
+            "key": "settingPage",
+            "name": "设置页面标识",
+            "type": "Text",
+            "description": "留空打开默认页；例如 BasicInfo、SearchSettings、ScreenCaptureSettings。旧动作留空行为不变。",
+            "validForList": [
+              "showConfigWindow"
+            ],
+            "condition": "仅：showConfigWindow",
+            "defaultValue": "",
+            "variableMode": "UseVarOrInput"
           }
-        ]
+        ],
+        "removed": [],
+        "changed": []
       },
       "outputs": {
         "added": [],
         "removed": [],
         "changed": []
       },
-      "selectionsChanged": false
-    },
-    {
-      "key": "sys:textSelectTools",
-      "name": "辅助选择工具",
-      "changedFields": [],
-      "inputs": {
-        "added": [],
-        "removed": [],
-        "changed": [
-          {
-            "key": "currValue",
-            "before": {
-              "key": "currValue",
-              "name": "当前值",
-              "type": "Text",
-              "validForList": [
-                "OperationItemEditor"
-              ],
-              "condition": "仅：OperationItemEditor",
-              "defaultValue": "",
-              "variableMode": "UseVarOrInput"
-            },
-            "after": {
-              "key": "currValue",
-              "name": "当前值",
-              "type": "Text",
-              "validForList": [
-                "SelectSingleFile",
-                "SelectMultiFile",
-                "SelectSingleFolder",
-                "SelectSavePath",
-                "SelectProfileExe",
-                "OperationItemEditor",
-                "SelectFontFamily",
-                "SelectMonitor",
-                "SelectVirtualDesktop"
-              ],
-              "condition": "仅：SelectSingleFile, SelectMultiFile, SelectSingleFolder, SelectSavePath, SelectProfileExe, OperationItemEditor, SelectFontFamily, SelectMonitor, SelectVirtualDesktop",
-              "defaultValue": "",
-              "variableMode": "UseVarOrInput"
-            }
+      "selectionsChanged": true,
+      "selections": {
+        "before": {
+          "type": {
+            "name": "类型",
+            "items": [
+              {
+                "value": "showPanel",
+                "name": "显示面板"
+              },
+              {
+                "value": "showSearch",
+                "name": "显示搜索框"
+              },
+              {
+                "value": "closeSearch",
+                "name": "关闭搜索框"
+              },
+              {
+                "value": "showCircleMenu",
+                "name": "显示轮盘菜单 (点击)"
+              },
+              {
+                "value": "showTextSelectionToolbar",
+                "name": "显示选中文本工具条"
+              },
+              {
+                "value": "togglePause",
+                "name": "禁用/启用"
+              },
+              {
+                "value": "runLastAction",
+                "name": "运行最后使用的动作"
+              },
+              {
+                "value": "startAppVoiceInput",
+                "name": "启动App语音输入"
+              },
+              {
+                "value": "stopAllActions",
+                "name": "停止运行中的动作"
+              },
+              {
+                "value": "reinstallMouseHook",
+                "name": "重新加载键鼠挂钩"
+              },
+              {
+                "value": "ResetKeyboard",
+                "name": "重置键盘状态"
+              },
+              {
+                "value": "showDashboardWindow",
+                "name": "显示仪表盘窗口"
+              },
+              {
+                "value": "showConfigWindow",
+                "name": "显示设置窗口"
+              },
+              {
+                "value": "showExeSettingWindow",
+                "name": "显示场景、动作与触发管理窗口"
+              },
+              {
+                "value": "closeAllFloatWindow",
+                "name": "关闭所有悬浮按钮"
+              },
+              {
+                "value": "loadProfile",
+                "name": "加载动作页"
+              },
+              {
+                "value": "loadExeProfiles",
+                "name": "加载场景动作（锁定切换）"
+              },
+              {
+                "value": "loadExeProfilesNoLock",
+                "name": "加载场景动作（不锁定切换）"
+              },
+              {
+                "value": "ToggleLockPanel",
+                "name": "锁定/解锁 动作页自动切换"
+              },
+              {
+                "value": "editAction",
+                "name": "编辑动作"
+              },
+              {
+                "value": "RestartQuicker",
+                "name": "重启Quicker"
+              },
+              {
+                "value": "SetPushActiveClient",
+                "name": "推送服务：设置为活动客户端"
+              },
+              {
+                "value": "StartSearchWithAction",
+                "name": "使用当前动作进行实时搜索"
+              },
+              {
+                "value": "SearchWithCertainAction",
+                "name": "使用指定动作进行实时搜索"
+              },
+              {
+                "value": "operation_show_context_menu",
+                "name": "显示剪贴板上下文菜单"
+              },
+              {
+                "value": "LoadSkin",
+                "name": "加载外观/切换主题(专业版功能)"
+              },
+              {
+                "value": "ExitQuicker",
+                "name": "退出Quicker"
+              },
+              {
+                "value": "FloatAction",
+                "name": "悬浮动作(专业版功能)"
+              },
+              {
+                "value": "ToggleFloatButtons",
+                "name": "切换所有悬浮按钮显示"
+              },
+              {
+                "value": "ShowHideImageWindows",
+                "name": "显示或隐藏所有图片窗口"
+              },
+              {
+                "value": "RemoveAction",
+                "name": "删除当前动作"
+              },
+              {
+                "value": "GetActionInfo",
+                "name": "根据ID获取动作信息"
+              },
+              {
+                "value": "GetLastEditedAction",
+                "name": "获取最后打开编辑器的动作"
+              }
+            ]
+          },
+          "theme": {
+            "name": "主题模式",
+            "items": [
+              {
+                "value": "",
+                "name": "不改变"
+              },
+              {
+                "value": "auto",
+                "name": "跟随Windows"
+              },
+              {
+                "value": "light",
+                "name": "浅色"
+              },
+              {
+                "value": "dark",
+                "name": "暗色"
+              },
+              {
+                "value": "toggle",
+                "name": "切换浅色和暗色"
+              }
+            ]
+          },
+          "viewMode": {
+            "name": "显示状态",
+            "items": [
+              {
+                "value": "HideAll",
+                "name": "隐藏全部"
+              },
+              {
+                "value": "ByProcess",
+                "name": "自动(按关联进程切换)"
+              },
+              {
+                "value": "ShowAll",
+                "name": "显示全部"
+              },
+              {
+                "value": "ToggleHideAndAuto",
+                "name": "切换隐藏和自动"
+              }
+            ]
           }
-        ]
-      },
-      "outputs": {
-        "added": [],
-        "removed": [],
-        "changed": []
-      },
-      "selectionsChanged": false
+        },
+        "after": {
+          "type": {
+            "name": "类型",
+            "items": [
+              {
+                "value": "showPanel",
+                "name": "显示面板"
+              },
+              {
+                "value": "showSearch",
+                "name": "显示搜索框"
+              },
+              {
+                "value": "closeSearch",
+                "name": "关闭搜索框"
+              },
+              {
+                "value": "showCircleMenu",
+                "name": "显示轮盘菜单 (点击)"
+              },
+              {
+                "value": "showTextSelectionToolbar",
+                "name": "显示选中文本工具条"
+              },
+              {
+                "value": "togglePause",
+                "name": "禁用/启用"
+              },
+              {
+                "value": "runLastAction",
+                "name": "运行最后使用的动作"
+              },
+              {
+                "value": "startAppVoiceInput",
+                "name": "启动App语音输入"
+              },
+              {
+                "value": "stopAllActions",
+                "name": "停止运行中的动作"
+              },
+              {
+                "value": "reinstallMouseHook",
+                "name": "重新加载键鼠挂钩"
+              },
+              {
+                "value": "ResetKeyboard",
+                "name": "重置键盘状态"
+              },
+              {
+                "value": "showDashboardWindow",
+                "name": "显示仪表盘窗口"
+              },
+              {
+                "value": "showConfigWindow",
+                "name": "显示设置窗口"
+              },
+              {
+                "value": "showExeSettingWindow",
+                "name": "显示场景、动作与触发管理窗口"
+              },
+              {
+                "value": "closeAllFloatWindow",
+                "name": "关闭所有悬浮按钮"
+              },
+              {
+                "value": "loadProfile",
+                "name": "加载动作页"
+              },
+              {
+                "value": "loadExeProfiles",
+                "name": "加载场景动作（锁定切换）"
+              },
+              {
+                "value": "loadExeProfilesNoLock",
+                "name": "加载场景动作（不锁定切换）"
+              },
+              {
+                "value": "ToggleLockPanel",
+                "name": "锁定/解锁 动作页自动切换"
+              },
+              {
+                "value": "editAction",
+                "name": "编辑动作"
+              },
+              {
+                "value": "RestartQuicker",
+                "name": "重启Quicker"
+              },
+              {
+                "value": "SetPushActiveClient",
+                "name": "推送服务：设置为活动客户端"
+              },
+              {
+                "value": "StartSearchWithAction",
+                "name": "使用当前动作进行实时搜索"
+              },
+              {
+                "value": "SearchWithCertainAction",
+                "name": "使用指定动作进行实时搜索"
+              },
+              {
+                "value": "operation_show_context_menu",
+                "name": "显示剪贴板上下文菜单"
+              },
+              {
+                "value": "LoadSkin",
+                "name": "加载外观/切换主题(专业版功能)"
+              },
+              {
+                "value": "ExitQuicker",
+                "name": "退出Quicker"
+              },
+              {
+                "value": "FloatAction",
+                "name": "悬浮动作(专业版功能)"
+              },
+              {
+                "value": "ToggleFloatButtons",
+                "name": "切换所有悬浮按钮显示"
+              },
+              {
+                "value": "ShowHideImageWindows",
+                "name": "显示或隐藏所有图片窗口"
+              },
+              {
+                "value": "RemoveAction",
+                "name": "删除当前动作"
+              },
+              {
+                "value": "GetActionInfo",
+                "name": "根据ID获取动作信息"
+              },
+              {
+                "value": "GetLastEditedAction",
+                "name": "获取最后打开编辑器的动作"
+              },
+              {
+                "value": "showFloatingGroupManager",
+                "name": "打开悬浮分组管理"
+              }
+            ]
+          },
+          "theme": {
+            "name": "主题模式",
+            "items": [
+              {
+                "value": "",
+                "name": "不改变"
+              },
+              {
+                "value": "auto",
+                "name": "跟随Windows"
+              },
+              {
+                "value": "light",
+                "name": "浅色"
+              },
+              {
+                "value": "dark",
+                "name": "暗色"
+              },
+              {
+                "value": "toggle",
+                "name": "切换浅色和暗色"
+              }
+            ]
+          },
+          "viewMode": {
+            "name": "显示状态",
+            "items": [
+              {
+                "value": "HideAll",
+                "name": "隐藏全部"
+              },
+              {
+                "value": "ByProcess",
+                "name": "自动(按关联进程切换)"
+              },
+              {
+                "value": "ShowAll",
+                "name": "显示全部"
+              },
+              {
+                "value": "ToggleHideAndAuto",
+                "name": "切换隐藏和自动"
+              }
+            ]
+          }
+        }
+      }
     },
     {
       "key": "sys:webview2",
@@ -773,59 +2598,41 @@
       "inputs": {
         "added": [],
         "removed": [],
+        "changed": []
+      },
+      "outputs": {
+        "added": [],
+        "removed": [],
         "changed": [
           {
-            "key": "modeForExists",
+            "key": "lastLocation",
             "before": {
-              "key": "modeForExists",
-              "name": "如果窗口已存在",
-              "type": "Enum",
+              "key": "lastLocation",
+              "name": "窗口位置",
+              "type": "Text",
+              "description": "返回窗口坐标范围。格式为：left,top,right,bottom",
               "validForList": [
-                "OpenUrl",
-                "OpenAndWaitLoad"
+                "OpenAndWaitLoad",
+                "OpenUrlAndWaitClose",
+                "CheckWindowState"
               ],
-              "condition": "仅：OpenUrl, OpenAndWaitLoad",
-              "defaultValue": "SkipThisStep",
-              "variableMode": "Input"
+              "condition": "仅：OpenAndWaitLoad, OpenUrlAndWaitClose, CheckWindowState"
             },
             "after": {
-              "key": "modeForExists",
-              "name": "如果窗口已存在",
-              "type": "Enum",
+              "key": "lastLocation",
+              "name": "窗口位置",
+              "type": "Text",
+              "description": "返回窗口坐标范围。格式为：left,top,right,bottom",
               "validForList": [
                 "OpenUrl",
                 "OpenAndWaitLoad",
-                "OpenUrlAndWaitClose"
+                "OpenUrlAndWaitClose",
+                "CheckWindowState"
               ],
-              "condition": "仅：OpenUrl, OpenAndWaitLoad, OpenUrlAndWaitClose",
-              "defaultValue": "SkipThisStep",
-              "variableMode": "Input"
+              "condition": "仅：OpenUrl, OpenAndWaitLoad, OpenUrlAndWaitClose, CheckWindowState"
             }
           }
         ]
-      },
-      "outputs": {
-        "added": [],
-        "removed": [],
-        "changed": []
-      },
-      "selectionsChanged": false
-    },
-    {
-      "key": "sys:waitWindow",
-      "name": "等待窗口事件",
-      "changedFields": [
-        "name"
-      ],
-      "inputs": {
-        "added": [],
-        "removed": [],
-        "changed": []
-      },
-      "outputs": {
-        "added": [],
-        "removed": [],
-        "changed": []
       },
       "selectionsChanged": false
     }

@@ -42,6 +42,10 @@ legacyContentUpdatedAt: "2024-12-06T01:38:30.000Z"
 
 2.3.20 起，可在 **设置 → 截图 → 识别与翻译 → 本地 OCR** 调整空闲保活时间：未配置时默认 300 秒，0 表示常驻，已有值保留。空闲退出后再次识别需要重新加载模型，不会因此重新下载。设置在下一次本地识别或抠图时应用，且仅在本机当前账号生效，详见[本地 OCR 空闲退出](/v2/features/screenshot/capture-pro#local-ocr-keepalive-2320)。
 
+## 2.3.29 · Quicker 帐号模式与自有百度 Key
+
+选择 **百度通用文字识别（Quicker帐号）** 时，不再读取该步骤以前残留的 API Key、Secret Key；是否使用自有 Key 由全局百度 Key 配置决定。旧动作曾切换过识别模式、依赖残留 Key 时，请先检查全局配置并试运行，详见[升级与回退](/v2/migration/upgrade-and-rollback#step-and-image-library-2329)。
+
 ## 共用参数
 
 多数引擎都会用到：

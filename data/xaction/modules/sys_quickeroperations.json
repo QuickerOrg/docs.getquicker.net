@@ -21,6 +21,18 @@
       "isControlField": true
     },
     {
+      "key": "settingPage",
+      "name": "设置页面标识",
+      "type": "Text",
+      "description": "留空打开默认页；例如 BasicInfo、SearchSettings、ScreenCaptureSettings。旧动作留空行为不变。",
+      "validForList": [
+        "showConfigWindow"
+      ],
+      "condition": "仅：showConfigWindow",
+      "defaultValue": "",
+      "variableMode": "UseVarOrInput"
+    },
+    {
       "key": "profileId",
       "name": "动作页ID",
       "type": "Text",
@@ -385,6 +397,10 @@
         {
           "value": "GetLastEditedAction",
           "name": "获取最后打开编辑器的动作"
+        },
+        {
+          "value": "showFloatingGroupManager",
+          "name": "打开悬浮分组管理"
         }
       ]
     },

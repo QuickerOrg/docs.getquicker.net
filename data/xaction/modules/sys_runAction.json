@@ -127,9 +127,10 @@
       "type": "Text",
       "description": "运行的动作名称。",
       "validForList": [
-        "StartAction"
+        "StartAction",
+        "StartCurrentAction"
       ],
-      "condition": "仅：StartAction"
+      "condition": "仅：StartAction, StartCurrentAction"
     },
     {
       "key": "output",

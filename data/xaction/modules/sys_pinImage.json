@@ -4,17 +4,44 @@
   "legacySlug": "pinimage",
   "ownsLegacyContent": true,
   "name": "贴图",
-  "description": "在屏幕指定位置浮动贴图（与 Quicker 截图贴图窗口一致）。按来源自动识别图片、HTML、公式、OCR 原始结果或文本。",
+  "description": "创建贴图，或控制贴图显隐、恢复及分组。创建时按来源自动识别图片、HTML、公式、OCR 原始结果或文本。",
   "category": "Image",
   "categoryName": "图片处理",
   "stepType": "Action",
   "helpLink": "https://docs.getquicker.net/v2/xaction/modules/pinimage",
   "inputs": [
     {
+      "key": "operation",
+      "name": "操作",
+      "type": "Enum",
+      "defaultValue": "create",
+      "required": true,
+      "variableMode": "UseVarOrInput",
+      "isControlField": true
+    },
+    {
+      "key": "groupId",
+      "name": "贴图组 ID",
+      "type": "Text",
+      "description": "稳定的贴图组 ID；重命名不影响绑定。切换并显示与重复点击切换显隐是不同操作。",
+      "validForList": [
+        "groupSwitch",
+        "groupToggle"
+      ],
+      "condition": "仅：groupSwitch, groupToggle",
+      "defaultValue": "",
+      "required": true,
+      "variableMode": "UseVarOrInput"
+    },
+    {
       "key": "mode",
       "name": "内容来源",
       "type": "Enum",
       "description": "变量和剪贴板自动识别图片、HTML、公式、OCR 结果或文本。「纯文本」直接显示输入文字，可设置字体与字号。HTML 仅静态渲染，禁止网络访问。",
+      "validForList": [
+        "create"
+      ],
+      "condition": "仅：create",
       "defaultValue": "variable",
       "required": true,
       "variableMode": "Input",
@@ -28,7 +55,28 @@
       "validForList": [
         "variable"
       ],
-      "condition": "仅：variable",
+      "visibleWhen": {
+        "kind": "All",
+        "conditions": [
+          {
+            "kind": "Field",
+            "fieldKey": "operation",
+            "operator": "In",
+            "values": [
+              "create"
+            ]
+          },
+          {
+            "kind": "Field",
+            "fieldKey": "mode",
+            "operator": "In",
+            "values": [
+              "variable"
+            ]
+          }
+        ]
+      },
+      "condition": "(operation 为 \"create\" 且 mode 为 \"variable\")",
       "defaultValue": "",
       "required": true,
       "variableMode": "UseVarOrInput"
@@ -42,7 +90,29 @@
         "text",
         "plainText"
       ],
-      "condition": "仅：text, plainText",
+      "visibleWhen": {
+        "kind": "All",
+        "conditions": [
+          {
+            "kind": "Field",
+            "fieldKey": "operation",
+            "operator": "In",
+            "values": [
+              "create"
+            ]
+          },
+          {
+            "kind": "Field",
+            "fieldKey": "mode",
+            "operator": "In",
+            "values": [
+              "text",
+              "plainText"
+            ]
+          }
+        ]
+      },
+      "condition": "(operation 为 \"create\" 且 mode 为 \"text\"、\"plainText\")",
       "defaultValue": "",
       "variableMode": "UseVarOrInput"
     },
@@ -51,6 +121,10 @@
       "name": "屏幕位置",
       "type": "Enum",
       "description": "「自动」：剪贴板有 QuickerPinData / PixPinData 时贴回截图原位置，否则屏幕中间。其余预设相对鼠标所在显示器工作区定位（图片左上角）。「截图原位置」没有元数据时落到当前光标。来源为剪贴板且本项为「自定义坐标」且坐标为默认 0,0 时，有位置元数据也按原位置。未保存过此参数的旧动作仍是「自定义坐标」；新建步骤默认「自动」。",
+      "validForList": [
+        "create"
+      ],
+      "condition": "仅：create",
       "defaultValue": "manual",
       "newStepDefaultValue": "auto",
       "required": true,
@@ -61,10 +135,28 @@
       "name": "自定义坐标",
       "type": "Text",
       "description": "仅当「屏幕位置」为自定义时有效。图片内容左上角的屏幕像素坐标：left,top 或 left,top,right,bottom（四元组时仅取 left、top）。",
-      "validForList": [
-        "manual"
-      ],
-      "condition": "仅：manual",
+      "visibleWhen": {
+        "kind": "All",
+        "conditions": [
+          {
+            "kind": "Field",
+            "fieldKey": "operation",
+            "operator": "In",
+            "values": [
+              "create"
+            ]
+          },
+          {
+            "kind": "Field",
+            "fieldKey": "screenPlacement",
+            "operator": "In",
+            "values": [
+              "manual"
+            ]
+          }
+        ]
+      },
+      "condition": "(operation 为 \"create\" 且 screenPlacement 为 \"manual\")",
       "defaultValue": "0,0",
       "variableMode": "UseVarOrInput"
     },
@@ -78,7 +170,29 @@
         "text",
         "plainText"
       ],
-      "condition": "仅：text, plainText",
+      "visibleWhen": {
+        "kind": "All",
+        "conditions": [
+          {
+            "kind": "Field",
+            "fieldKey": "operation",
+            "operator": "In",
+            "values": [
+              "create"
+            ]
+          },
+          {
+            "kind": "Field",
+            "fieldKey": "mode",
+            "operator": "In",
+            "values": [
+              "text",
+              "plainText"
+            ]
+          }
+        ]
+      },
+      "condition": "(operation 为 \"create\" 且 mode 为 \"text\"、\"plainText\")",
       "defaultValue": "Microsoft YaHei UI",
       "variableMode": "UseVarOrInput"
     },
@@ -92,7 +206,29 @@
         "text",
         "plainText"
       ],
-      "condition": "仅：text, plainText",
+      "visibleWhen": {
+        "kind": "All",
+        "conditions": [
+          {
+            "kind": "Field",
+            "fieldKey": "operation",
+            "operator": "In",
+            "values": [
+              "create"
+            ]
+          },
+          {
+            "kind": "Field",
+            "fieldKey": "mode",
+            "operator": "In",
+            "values": [
+              "text",
+              "plainText"
+            ]
+          }
+        ]
+      },
+      "condition": "(operation 为 \"create\" 且 mode 为 \"text\"、\"plainText\")",
       "defaultValue": "16.0",
       "defaultValueRaw": 16,
       "variableMode": "UseVarOrInput"
@@ -112,7 +248,34 @@
         "html",
         "formula"
       ],
-      "condition": "仅：variable, clipboard, text, plainText, baiduOcrJson, html, formula",
+      "visibleWhen": {
+        "kind": "All",
+        "conditions": [
+          {
+            "kind": "Field",
+            "fieldKey": "operation",
+            "operator": "In",
+            "values": [
+              "create"
+            ]
+          },
+          {
+            "kind": "Field",
+            "fieldKey": "mode",
+            "operator": "In",
+            "values": [
+              "variable",
+              "clipboard",
+              "text",
+              "plainText",
+              "baiduOcrJson",
+              "html",
+              "formula"
+            ]
+          }
+        ]
+      },
+      "condition": "(operation 为 \"create\" 且 mode 为 \"variable\"、\"clipboard\"、\"text\"、\"plainText\"、\"baiduOcrJson\"、\"html\"、\"formula\")",
       "defaultValue": "auto",
       "variableMode": "Input"
     },
@@ -130,7 +293,33 @@
         "html",
         "formula"
       ],
-      "condition": "仅：variable, clipboard, text, plainText, html, formula",
+      "visibleWhen": {
+        "kind": "All",
+        "conditions": [
+          {
+            "kind": "Field",
+            "fieldKey": "operation",
+            "operator": "In",
+            "values": [
+              "create"
+            ]
+          },
+          {
+            "kind": "Field",
+            "fieldKey": "mode",
+            "operator": "In",
+            "values": [
+              "variable",
+              "clipboard",
+              "text",
+              "plainText",
+              "html",
+              "formula"
+            ]
+          }
+        ]
+      },
+      "condition": "(operation 为 \"create\" 且 mode 为 \"variable\"、\"clipboard\"、\"text\"、\"plainText\"、\"html\"、\"formula\")",
       "defaultValue": "0",
       "defaultValueRaw": 0,
       "variableMode": "UseVarOrInput"
@@ -144,7 +333,28 @@
       "validForList": [
         "image"
       ],
-      "condition": "仅：image",
+      "visibleWhen": {
+        "kind": "All",
+        "conditions": [
+          {
+            "kind": "Field",
+            "fieldKey": "operation",
+            "operator": "In",
+            "values": [
+              "create"
+            ]
+          },
+          {
+            "kind": "Field",
+            "fieldKey": "mode",
+            "operator": "In",
+            "values": [
+              "image"
+            ]
+          }
+        ]
+      },
+      "condition": "(operation 为 \"create\" 且 mode 为 \"image\")",
       "defaultValue": "",
       "required": true,
       "variableMode": "UseVar"
@@ -158,7 +368,28 @@
       "validForList": [
         "html"
       ],
-      "condition": "仅：html",
+      "visibleWhen": {
+        "kind": "All",
+        "conditions": [
+          {
+            "kind": "Field",
+            "fieldKey": "operation",
+            "operator": "In",
+            "values": [
+              "create"
+            ]
+          },
+          {
+            "kind": "Field",
+            "fieldKey": "mode",
+            "operator": "In",
+            "values": [
+              "html"
+            ]
+          }
+        ]
+      },
+      "condition": "(operation 为 \"create\" 且 mode 为 \"html\")",
       "defaultValue": "",
       "variableMode": "UseVarOrInput"
     },
@@ -171,7 +402,28 @@
       "validForList": [
         "html"
       ],
-      "condition": "仅：html",
+      "visibleWhen": {
+        "kind": "All",
+        "conditions": [
+          {
+            "kind": "Field",
+            "fieldKey": "operation",
+            "operator": "In",
+            "values": [
+              "create"
+            ]
+          },
+          {
+            "kind": "Field",
+            "fieldKey": "mode",
+            "operator": "In",
+            "values": [
+              "html"
+            ]
+          }
+        ]
+      },
+      "condition": "(operation 为 \"create\" 且 mode 为 \"html\")",
       "defaultValue": "0",
       "defaultValueRaw": 0,
       "variableMode": "UseVarOrInput"
@@ -185,7 +437,28 @@
       "validForList": [
         "formula"
       ],
-      "condition": "仅：formula",
+      "visibleWhen": {
+        "kind": "All",
+        "conditions": [
+          {
+            "kind": "Field",
+            "fieldKey": "operation",
+            "operator": "In",
+            "values": [
+              "create"
+            ]
+          },
+          {
+            "kind": "Field",
+            "fieldKey": "mode",
+            "operator": "In",
+            "values": [
+              "formula"
+            ]
+          }
+        ]
+      },
+      "condition": "(operation 为 \"create\" 且 mode 为 \"formula\")",
       "defaultValue": "",
       "variableMode": "UseVarOrInput"
     },
@@ -197,7 +470,28 @@
       "validForList": [
         "formula"
       ],
-      "condition": "仅：formula",
+      "visibleWhen": {
+        "kind": "All",
+        "conditions": [
+          {
+            "kind": "Field",
+            "fieldKey": "operation",
+            "operator": "In",
+            "values": [
+              "create"
+            ]
+          },
+          {
+            "kind": "Field",
+            "fieldKey": "mode",
+            "operator": "In",
+            "values": [
+              "formula"
+            ]
+          }
+        ]
+      },
+      "condition": "(operation 为 \"create\" 且 mode 为 \"formula\")",
       "defaultValue": "display",
       "variableMode": "UseVarOrInput"
     },
@@ -210,7 +504,29 @@
         "text",
         "formula"
       ],
-      "condition": "仅：text, formula",
+      "visibleWhen": {
+        "kind": "All",
+        "conditions": [
+          {
+            "kind": "Field",
+            "fieldKey": "operation",
+            "operator": "In",
+            "values": [
+              "create"
+            ]
+          },
+          {
+            "kind": "Field",
+            "fieldKey": "mode",
+            "operator": "In",
+            "values": [
+              "text",
+              "formula"
+            ]
+          }
+        ]
+      },
+      "condition": "(operation 为 \"create\" 且 mode 为 \"text\"、\"formula\")",
       "defaultValue": "22.0",
       "defaultValueRaw": 22,
       "variableMode": "UseVarOrInput"
@@ -224,7 +540,28 @@
       "validForList": [
         "baiduOcrJson"
       ],
-      "condition": "仅：baiduOcrJson",
+      "visibleWhen": {
+        "kind": "All",
+        "conditions": [
+          {
+            "kind": "Field",
+            "fieldKey": "operation",
+            "operator": "In",
+            "values": [
+              "create"
+            ]
+          },
+          {
+            "kind": "Field",
+            "fieldKey": "mode",
+            "operator": "In",
+            "values": [
+              "baiduOcrJson"
+            ]
+          }
+        ]
+      },
+      "condition": "(operation 为 \"create\" 且 mode 为 \"baiduOcrJson\")",
       "defaultValue": "",
       "variableMode": "UseVarOrInput"
     },
@@ -237,7 +574,28 @@
       "validForList": [
         "baiduOcrJson"
       ],
-      "condition": "仅：baiduOcrJson",
+      "visibleWhen": {
+        "kind": "All",
+        "conditions": [
+          {
+            "kind": "Field",
+            "fieldKey": "operation",
+            "operator": "In",
+            "values": [
+              "create"
+            ]
+          },
+          {
+            "kind": "Field",
+            "fieldKey": "mode",
+            "operator": "In",
+            "values": [
+              "baiduOcrJson"
+            ]
+          }
+        ]
+      },
+      "condition": "(operation 为 \"create\" 且 mode 为 \"baiduOcrJson\")",
       "defaultValue": "0",
       "defaultValueRaw": 0,
       "variableMode": "UseVarOrInput"
@@ -251,7 +609,28 @@
       "validForList": [
         "baiduOcrJson"
       ],
-      "condition": "仅：baiduOcrJson",
+      "visibleWhen": {
+        "kind": "All",
+        "conditions": [
+          {
+            "kind": "Field",
+            "fieldKey": "operation",
+            "operator": "In",
+            "values": [
+              "create"
+            ]
+          },
+          {
+            "kind": "Field",
+            "fieldKey": "mode",
+            "operator": "In",
+            "values": [
+              "baiduOcrJson"
+            ]
+          }
+        ]
+      },
+      "condition": "(operation 为 \"create\" 且 mode 为 \"baiduOcrJson\")",
       "defaultValue": "0",
       "defaultValueRaw": 0,
       "variableMode": "UseVarOrInput"
@@ -264,7 +643,28 @@
       "validForList": [
         "baiduOcrJson"
       ],
-      "condition": "仅：baiduOcrJson",
+      "visibleWhen": {
+        "kind": "All",
+        "conditions": [
+          {
+            "kind": "Field",
+            "fieldKey": "operation",
+            "operator": "In",
+            "values": [
+              "create"
+            ]
+          },
+          {
+            "kind": "Field",
+            "fieldKey": "mode",
+            "operator": "In",
+            "values": [
+              "baiduOcrJson"
+            ]
+          }
+        ]
+      },
+      "condition": "(operation 为 \"create\" 且 mode 为 \"baiduOcrJson\")",
       "defaultValue": "Microsoft YaHei UI",
       "variableMode": "UseVarOrInput"
     },
@@ -289,16 +689,77 @@
       "key": "img",
       "name": "贴图位图",
       "type": "Image",
-      "description": "本次生成或用于贴图的位图（与窗口显示内容一致）。"
+      "description": "本次生成或用于贴图的位图（与窗口显示内容一致）。",
+      "validForList": [
+        "create"
+      ],
+      "condition": "仅：create"
     },
     {
       "key": "hwnd",
       "name": "窗口句柄",
       "type": "Integer",
-      "description": "本次创建的贴图窗口句柄，可用于后续窗口操作。窗口关闭后失效。"
+      "description": "本次创建的贴图窗口句柄，可用于后续窗口操作。窗口关闭后失效。",
+      "validForList": [
+        "create"
+      ],
+      "condition": "仅：create"
     }
   ],
   "selections": {
+    "operation": {
+      "name": "操作",
+      "items": [
+        {
+          "value": "create",
+          "name": "创建贴图"
+        },
+        {
+          "value": "restoreLast",
+          "name": "恢复最近关闭的贴图"
+        },
+        {
+          "value": "hideAll",
+          "name": "隐藏当前组全部贴图"
+        },
+        {
+          "value": "showAll",
+          "name": "显示当前组全部贴图"
+        },
+        {
+          "value": "toggleAll",
+          "name": "切换当前组贴图显隐"
+        },
+        {
+          "value": "closeAll",
+          "name": "关闭所有组的全部贴图"
+        },
+        {
+          "value": "groupPrevious",
+          "name": "上一个贴图组"
+        },
+        {
+          "value": "groupNext",
+          "name": "下一个贴图组"
+        },
+        {
+          "value": "groupChoose",
+          "name": "选择贴图组"
+        },
+        {
+          "value": "groupSwitch",
+          "name": "切换到指定贴图组并显示"
+        },
+        {
+          "value": "groupToggle",
+          "name": "切换指定贴图组显隐"
+        },
+        {
+          "value": "groupManage",
+          "name": "管理贴图组"
+        }
+      ]
+    },
     "mode": {
       "name": "内容来源",
       "items": [

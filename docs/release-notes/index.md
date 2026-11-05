@@ -28,9 +28,18 @@ comments: true
 
 多设备使用、降级或回退前，请阅读[升级与回退](/v2/migration/upgrade-and-rollback)。各版本的具体风险也在下方对应条目中标出。
 
-本站已补充到 **2.3.29**；版本下载与完整修复记录以官网为准。
+本站已补充到 **2.3.30**；版本下载与完整修复记录以官网为准。
 
 ## 近期文档补充
+
+### 2.3.30 · 窗口背景确认、跨动作录屏与文本指令整理
+
+- [AI 窗口背景](/v2/features/ai-and-agent#window-context-2330)说明默认点击确认、三种本机关联方式，以及空白新对话的侧栏显示规则。
+- [后台屏幕录制](/v2/xaction/modules/screen-recording#会话什么时候结束)补充跨动作运行控制、保存会话 ID、显式停止及脚本调用示例。
+- [文本指令](/v2/features/triggers/text-commands#批量复制到其它场景)补充全局与场景互相复制、重复项处理、全局生效范围和场景分组管理。
+- [贴图右下角缩放](/v2/features/screenshot/capture-pro#pin-corner-zoom-2330)说明拖动、取消与适用状态；[脚本选中文件](/v2/script-action/api/selection#selected-files-2330)补充文件管理器兼容和剪贴板影响。
+- [Mastercam](/v2/features/software-connections/software/mastercam)补充 2022 安装检测修复；搜索高亮、补全及其他修复见[官网完整记录](https://getquicker.net/V2/Versions)。
+- **升级与回退**：[窗口背景和录屏注意事项](/v2/migration/upgrade-and-rollback#window-context-2330)说明旧版自动关联及偏好清除，以及后台录屏需显式停止的行为变化。
 
 ### 2.3.29 · 图片标签、标注快捷操作与步骤配置清理
 

@@ -69,7 +69,7 @@
     },
     {
       "name": "Selection",
-      "description": "前台程序中用户当前选中的内容（选中文本、资源管理器/桌面中选中的文件）；读写剪贴板见 qk.Clipboard，资源管理器当前文件夹见 qk.Files.GetExplorerPath/SetExplorerPath。选中文本经模拟复制读取（复制前快照剪贴板、完成后恢复）；选中的文件只支持资源管理器和桌面。每次运行最多 16 次。",
+      "description": "前台程序中用户当前选中的内容。选中文本经模拟复制读取，复制前快照剪贴板、完成后尝试恢复；2.3.30 起，选中文件复用“获取选中的文件”模块，支持文件管理器，必要时模拟复制并保留复制后的剪贴板。每次运行最多 16 次。读写剪贴板见 qk.Clipboard，资源管理器当前文件夹见 qk.Files.GetExplorerPath/SetExplorerPath。",
       "methods": [
         {
           "key": "Selection.GetText",
@@ -113,9 +113,9 @@
           "name": "GetFiles",
           "signature": "string[] GetFiles()",
           "returns": "string[]",
-          "description": "资源管理器或桌面中选中的文件/文件夹（完整路径）；不在资源管理器中返回空数组。最多 256 项。",
+          "description": "2.3.30 起，复用“获取选中的文件”模块，优先读取动作文件参数和文件管理器接口，必要时模拟复制（包括 Directory Opus、OneCommander）并保留复制后的剪贴板内容。无选中或无法获取输入会话时返回空数组；明确停止仍取消动作。返回文件/文件夹完整路径，最多 256 项。",
           "parameters": [],
-          "usesDesktopInput": false,
+          "usesDesktopInput": true,
           "cleanup": false
         }
       ]

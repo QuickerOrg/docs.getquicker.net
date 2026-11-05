@@ -166,6 +166,96 @@ curl --request POST 'https://192-168-5-50.lan.quicker.cc:668/api/exec' --header 
 
 WebSocket 服务还可提供“文档”目录下 `Quicker/_websocket` 中的静态文件。仅开启 HTTP API 时不会开放该静态文件目录。
 
+### 文件接收后处理与批量复制（待发布） {/* #file-receive-actions */}
+
+:::info 版本与客户端支持
+以下协议扩展已进入开发分支，尚未发布。旧客户端不发送新字段时，仍然只保存文件并显示接收通知；不会自动复制。这些能力需要发送端配合，未新增电脑端全局开关，也不改变原有通知的点击行为。
+:::
+
+#### 接收单个文件并复制或定位
+
+客户端先发送文件头 JSON，再发送文件内容的二进制消息。可用 `afterReceive` 指定保存成功后的操作：
+
+```json
+{
+  "messageType": 2,
+  "serial": 1000,
+  "operation": "sendfile",
+  "data": "照片.jpg",
+  "afterReceive": "copyFile;selectInExplorer"
+}
+```
+
+| 操作 | 保存成功后的行为 |
+| --- | --- |
+| `copyFile` | 将文件复制到服务电脑的文件剪贴板，供用户自行粘贴 |
+| `copyImage` | 将图片内容复制到剪贴板；非图片或解码失败会报告失败 |
+| `copyPath` | 将保存后的完整路径复制为文本 |
+| `copyFileName` | 将原始文件名复制为文本，不包含接收时添加的时间前缀 |
+| `selectInExplorer` | 在服务电脑配置的文件管理器中定位文件 |
+| `openFolder` | 打开文件所在目录 |
+
+多个操作用分号分隔，按书写顺序执行；不区分大小写，忽略空项和首尾空白，重复操作只执行第一次。未知操作会在文件头阶段被拒绝。多个剪贴板操作会依次覆盖，最终保留最后一个成功写入的内容。
+
+省略 `afterReceive` 或传入空字符串，保持原有行为。操作只在文件保存成功后执行，不自动发送粘贴按键；原有 `pasteimage` 仍表示复制图片后立即向当前窗口粘贴，不接受非空 `afterReceive` 操作列表。
+
+文件头会先收到 `message: "waiting for file..."` 的接纳响应。有操作时，响应中的 `extData.afterReceive` 会确认识别到的操作列表；旧版可能忽略新字段，不能仅凭传输成功认定后处理已执行。
+
+二进制保存完成后，再收到最终响应。`replyTo` 对应请求的 `serial`，`data` 是服务电脑上保存后的完整路径：
+
+```json
+{
+  "messageType": 4,
+  "replyTo": 1000,
+  "isSuccess": true,
+  "message": "ok",
+  "data": "D:\\Recv\\20261104_123456789_照片.jpg",
+  "extData": {
+    "afterReceiveSuccess": true,
+    "afterReceiveResults": [
+      {"operation": "copyFile", "isSuccess": true, "message": "ok"},
+      {"operation": "selectInExplorer", "isSuccess": true, "message": "ok"}
+    ]
+  }
+}
+```
+
+最终响应的 `isSuccess` 表示文件是否保存成功。后处理失败时，文件仍保留，`extData.afterReceiveSuccess` 为 `false`，失败项在 `afterReceiveResults` 中说明原因，后续操作继续执行。不要因后处理失败重复传输文件。未指定操作时不附加这组后处理结果。
+
+#### 一次复制多个接收文件
+
+每个文件的 `afterReceive` 独立执行；逐个使用 `copyFile` 不会累计文件列表。客户端可以收集一批文件最终成功响应中的 `data`，让用户选择后，再发送一次 `copyFiles`：
+
+```json
+{
+  "messageType": 2,
+  "serial": 2000,
+  "operation": "copyFiles",
+  "data": ["D:\\Recv\\a.jpg", "D:\\Recv\\b.pdf"]
+}
+```
+
+`data` 必须为非空路径数组，每项为服务电脑上存在、可访问的文件绝对路径，不接受目录。全部校验通过后，一次写入文件剪贴板，重复路径忽略。成功返回 `isSuccess: true`，失败返回 `isSuccess: false` 和原因。原有 `copy` 仍复制文本。
+
+客户端自己决定一批文件何时发送完毕；接收通知的自动合并不代表一个完整批次。这些命令只用于 WebSocket，不能直接发送到 HTTP `/api/exec`。
+
+#### 将文件交给动作处理
+
+压缩、移动、上传等特殊需求，可复用已有 `action` 命令。`data` 是传给动作的字符串，例如将路径列表编码为 JSON 字符串，由动作解析：
+
+```json
+{
+  "messageType": 2,
+  "serial": 2001,
+  "operation": "action",
+  "action": "替换为动作ID",
+  "data": "[\"D:\\\\Recv\\\\a.jpg\",\"D:\\\\Recv\\\\b.pdf\"]",
+  "wait": true
+}
+```
+
+`wait: true` 沿用已有的等待动作执行结果语义。若动作会修改文件或产生外部操作，请根据动作实际返回结果判断，避免重复执行。
+
 ## 设置保存在哪里
 
 这些设置按当前账号保存在 **本机账号数据目录的 `data/local-settings.json`** 中，属于本地账号设置。端口、安全连接、访问范围、两个服务的开关与凭据均不随账号同步到其他电脑；换电脑后需要重新配置。HTTP 令牌在本机加密保存，不能靠复制文件让另一台电脑直接使用同一密文。

@@ -44,3 +44,5 @@ npm run docs:script:check -- --catalog <新导出.json>
 本次同步基线为正式发布快照 `v2.3.24`（`b02db3251ccf8f7e3df551ce2b603a4b998f652e`）。在隔离工作树构建并导出；16 个完整示例通过产品静态检查，含新增的文本工具示例，未执行外部操作。导出器原项目固定 Roslyn 5.6.0，与产品 5.9.0 不匹配；本次在 `Tools/temp/` 复制当前导出器并对齐到 5.9.0 后导出，未修改产品源码。参数元数据同时通过正式版本的导出测试刷新。
 
 2.3.30 文档增量核对：仅按正式快照 `9d317ab3bc997dce891b5811e5a5349673b04e38` 的 `ScriptSelectionApi`、`SelectedFilesReader` 修订 `qk.Selection` 域及 `Selection.GetFiles` 中文描述，并按 `ScriptCapabilityScanner` 修正该方法的桌面输入标记，并由同步工具刷新参考页；签名、版本及程序集哈希仍保留上次 2.3.24 反射导出的来源，不表示本次重新导出或验证全部 API。正式快照的域说明仍写仅支持资源管理器，与实现不符，本次以实现为准。
+
+2.3.32 同步基线为发布快照 `efebacd3a62c95fca1744091ac765b8eb084a8fb`。隔离工作树重新构建并反射导出，16 个完整示例通过产品静态检查，未执行外部操作；导出器在临时目录对齐 Roslyn 5.9.0，产品源码未改。保留真实公开的两参数播放重载，同时记录新增的 `volumeGain` 重载。`Selection` 域注释仍落后于实现，导入后按已核实的 `ScriptSelectionApi` / `SelectedFilesReader` 保留 2.3.30 的人工描述修正，不将旧注释覆盖到用户页；其余签名、程序集哈希和说明采用本次导出。

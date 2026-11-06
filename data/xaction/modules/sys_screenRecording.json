@@ -4,7 +4,7 @@
   "legacySlug": "screen-recording",
   "ownsLegacyContent": true,
   "name": "后台屏幕录制",
-  "description": "后台录制屏幕区域为视频文件，通过会话 ID 跨步骤控制录制生命周期。",
+  "description": "后台录制屏幕区域为视频文件，动作结束后继续录制，可通过同一会话 ID 跨动作运行暂停、继续或结束。",
   "category": "Image",
   "categoryName": "图片处理",
   "stepType": "Action",
@@ -24,7 +24,7 @@
       "key": "sessionId",
       "name": "会话 ID",
       "type": "Text",
-      "description": "录屏会话标识（GUID）。开始录屏时留空将自动生成；暂停/继续/结束时必须提供。",
+      "description": "录屏会话标识（GUID）。开始时留空自动生成；可保存输出 ID，在同一次 Quicker 运行期间的后续动作中暂停、继续或结束录屏。",
       "defaultValue": "",
       "variableMode": "UseVarOrInput"
     },

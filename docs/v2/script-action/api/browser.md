@@ -112,7 +112,7 @@ object? Eval(string script, int? tabId = null, int frameId = 0, int timeoutMs = 
 
 | 参数声明 | 说明 |
 |---|---|
-| `string script` | 函数体：用 return 返回可 JSON 化的值（可 await/返回 Promise）；在隔离环境（USER_SCRIPT）运行，可访问 DOM，不能访问页面自身的全局变量。 |
+| `string script` | 兼容表达式和原始脚本（取最后结果），以及含 return/await 的函数体；宿主仅做语法判断后执行一次，不通过运行失败重试切换写法；返回值已去除单框架传输包装，数组和对象原样保留；在隔离环境（USER_SCRIPT）运行，可访问 DOM，不能访问页面自身的全局变量。 |
 | `int? tabId = null` | 标签页 Id；null 为当前标签页。 |
 | `int frameId = 0` | 框架 Id，0 为顶层框架。 |
 | `int timeoutMs = 30000` | 等待结果的超时毫秒（200–300000，默认 30000；扩展传输需要有限超时，不支持 0）；超时报 BROWSER_TIMEOUT（宿主只停止等待，页面脚本可能仍在运行）。 |

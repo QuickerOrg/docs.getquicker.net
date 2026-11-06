@@ -1,8 +1,8 @@
 {
   "schemaVersion": 1,
-  "sourceCommit": "b02db3251ccf8f7e3df551ce2b603a4b998f652e",
-  "productVersion": "2.3.24+Branch.codex-docs-v2324-export.Sha.b02db3251ccf8f7e3df551ce2b603a4b998f652e.b02db3251ccf8f7e3df551ce2b603a4b998f652e",
-  "assemblySha256": "8233652d7b2b632b975cdedc8763574764c692dd74d1a413a32890bad6a52bfa",
+  "sourceCommit": "efebacd3a62c95fca1744091ac765b8eb084a8fb",
+  "productVersion": "2.3.32+Branch.codex-docs-v2332.Sha.efebacd3a62c95fca1744091ac765b8eb084a8fb.efebacd3a62c95fca1744091ac765b8eb084a8fb",
+  "assemblySha256": "f883e67cd2a28efcc19063e4a594c6292b57898233eadbd4ecd20822b7e0b355",
   "apiVersion": 1,
   "domains": [
     {
@@ -5575,7 +5575,7 @@
               "type": "string",
               "declaration": "string script",
               "optional": false,
-              "description": "函数体：用 return 返回可 JSON 化的值（可 await/返回 Promise）；在隔离环境（USER_SCRIPT）运行，可访问 DOM，不能访问页面自身的全局变量。",
+              "description": "兼容表达式和原始脚本（取最后结果），以及含 return/await 的函数体；宿主仅做语法判断后执行一次，不通过运行失败重试切换写法；返回值已去除单框架传输包装，数组和对象原样保留；在隔离环境（USER_SCRIPT）运行，可访问 DOM，不能访问页面自身的全局变量。",
               "values": null
             },
             {
@@ -7427,6 +7427,53 @@
               "declaration": "bool wait = false",
               "optional": true,
               "description": "true：播完才返回，停止脚本即停止播放并立即返回；false：立即返回并在后台播完（运行结束后继续；在 Quicker 中停止本动作时随之停止；最长 30 分钟）。整个 Quicker 同时最多 4 个后台播放/朗读，超出报 LIMIT_EXCEEDED（不排队；连续播放请用 wait: true）。文件/网址 15 秒内打不开报 SOUND_FAILED。",
+              "values": null
+            }
+          ],
+          "usesDesktopInput": false,
+          "cleanup": false
+        },
+        {
+          "key": "Sys.PlaySound",
+          "name": "PlaySound",
+          "signature": "void PlaySound(string sound, bool wait = false, double volumeGain = 1)",
+          "returns": "void",
+          "description": "播放声音；每次运行 PlaySound 与 Speak 合计最多 100 次；无法解码或没有音频设备报 SOUND_FAILED（不等待时只记警告）。",
+          "parameters": [
+            {
+              "name": "sound",
+              "type": "string",
+              "declaration": "string sound",
+              "optional": false,
+              "description": "内置音名 info|snip|succeed|warning|wrong|dim（总是按内置音处理），或音频文件路径（mp3/wav/wma/m4a 等；不存在 FILE_NOT_FOUND），或 http(s) 网址；其他协议 INVALID_ARGUMENT。",
+              "values": {
+                "owner": "Sys.PlaySound",
+                "target": "sound",
+                "values": [
+                  "info",
+                  "snip",
+                  "succeed",
+                  "warning",
+                  "wrong",
+                  "dim"
+                ],
+                "open": true
+              }
+            },
+            {
+              "name": "wait",
+              "type": "bool",
+              "declaration": "bool wait = false",
+              "optional": true,
+              "description": "true：播完才返回，停止脚本即停止播放并立即返回；false：立即返回并在后台播完（运行结束后继续；在 Quicker 中停止本动作时随之停止；最长 30 分钟）。整个 Quicker 同时最多 4 个后台播放/朗读，超出报 LIMIT_EXCEEDED（不排队；连续播放请用 wait: true）。文件/网址 15 秒内打不开报 SOUND_FAILED。",
+              "values": null
+            },
+            {
+              "name": "volumeGain",
+              "type": "double",
+              "declaration": "double volumeGain = 1",
+              "optional": true,
+              "description": "本次播放的音量倍率，范围 0–4，支持小数；默认 1 为原始音量，0 为静音，大于 1 放大。仅影响本次播放，不改变系统或应用会话音量；过度放大可能削波失真。非有限数字或超出范围报 INVALID_ARGUMENT（后台模式也会在播放开始前报错）。",
               "values": null
             }
           ],

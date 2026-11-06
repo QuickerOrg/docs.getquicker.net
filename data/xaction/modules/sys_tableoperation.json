@@ -238,7 +238,7 @@
       "key": "winSize",
       "name": "窗口尺寸/位置",
       "type": "Text",
-      "description": "宽度,高度：逻辑像素或屏幕工作区百分比。",
+      "description": "两项为最大宽度,高度；四项为左,上,右,下坐标。支持数字或屏幕工作区百分比。",
       "isAdvanced": true,
       "validForList": [
         "manage"

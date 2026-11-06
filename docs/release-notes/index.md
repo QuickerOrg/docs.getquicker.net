@@ -28,9 +28,16 @@ comments: true
 
 多设备使用、降级或回退前，请阅读[升级与回退](/v2/migration/upgrade-and-rollback)。各版本的具体风险也在下方对应条目中标出。
 
-本站已补充到 **2.3.31**；版本下载与完整修复记录以官网为准。
+本站已补充到 **2.3.32**；版本下载与完整修复记录以官网为准。
 
 ## 近期文档补充
+
+### 2.3.32 · 模型上下文、贴图右键与播放音量
+
+- [AI 模型上下文设置](/v2/what's-new/ai-services-and-models#model-capacity-2332)补充服务端容量识别、常见值选择、未知模型添加及手动上限的优先级。
+- [贴图右键操作](/v2/features/screenshot/capture-pro#pin-right-button-2332)说明局部显示开关、关闭后使用右键鼠标手势及账号同步；[截图与取字](/v2/features/screenshot/capture-pro#capture-response-2332)补充准备速度、重复识别复用和结果窗重新截图修复。
+- [播放声音](/v2/xaction/modules/playsound)补充 0～4 音量倍率、静音和失真边界；[脚本接口](/v2/script-action/api/sys#sysplaysound)同步参数说明。
+- **升级与回退**：[2.3.32 注意事项](/v2/migration/upgrade-and-rollback#model-capacity-and-sound-2332)说明旧客户端保存或同步 AI 设置的影响，以及音量倍率的最低版本要求。规则列表显示、外部程序路径查询和更新识别修复见[官网完整记录](https://getquicker.net/V2/Versions)。
 
 ### 2.3.31 · Windows ARM64、OCR 结果窗与录屏声音
 

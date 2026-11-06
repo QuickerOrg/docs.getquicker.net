@@ -6,6 +6,8 @@ comments: false
 sidebar_position: 10
 ---
 
+2.3.32 起，`qk.Sys.PlaySound` 可单独调整本次播放的音量，例如 `qk.Sys.PlaySound("dim", volumeGain: 0.5)`。`volumeGain` 支持 0～4，默认 1，0 为静音；不改变系统音量，也不控制 TTS 朗读。使用新参数的脚本需要 2.3.32 或更高版本，过度放大可能失真。
+
 {/* script-api:start */}
 
 Windows 与本机（系统信息、CPU 与内存占用、环境变量与注册表读取、提示音、朗读、音量与音频设备、媒体键、磁盘、网络与 Wi-Fi、Windows 设置页（SearchSettings/OpenSettings）、显示器亮度、深色模式、锁屏/关屏/睡眠/关机等电源操作）；Quicker 自身的信息见 qk.Quicker。
@@ -36,6 +38,21 @@ void PlaySound(string sound, bool wait = false)
 |---|---|
 | `string sound` | 内置音名 info&#124;snip&#124;succeed&#124;warning&#124;wrong&#124;dim（总是按内置音处理），或音频文件路径（mp3/wav/wma/m4a 等；不存在 FILE_NOT_FOUND），或 http(s) 网址；其他协议 INVALID_ARGUMENT。 取值：`info`、`snip`、`succeed`、`warning`、`wrong`、`dim`。也接受其他值，详见成员说明。 |
 | `bool wait = false` | true：播完才返回，停止脚本即停止播放并立即返回；false：立即返回并在后台播完（运行结束后继续；在 Quicker 中停止本动作时随之停止；最长 30 分钟）。整个 Quicker 同时最多 4 个后台播放/朗读，超出报 LIMIT_EXCEEDED（不排队；连续播放请用 wait: true）。文件/网址 15 秒内打不开报 SOUND_FAILED。 |
+
+返回类型：`void`。空值、用户取消和异常行为以成员及域说明为准。
+
+
+```csharp
+void PlaySound(string sound, bool wait = false, double volumeGain = 1)
+```
+
+播放声音；每次运行 PlaySound 与 Speak 合计最多 100 次；无法解码或没有音频设备报 SOUND_FAILED（不等待时只记警告）。
+
+| 参数声明 | 说明 |
+|---|---|
+| `string sound` | 内置音名 info&#124;snip&#124;succeed&#124;warning&#124;wrong&#124;dim（总是按内置音处理），或音频文件路径（mp3/wav/wma/m4a 等；不存在 FILE_NOT_FOUND），或 http(s) 网址；其他协议 INVALID_ARGUMENT。 取值：`info`、`snip`、`succeed`、`warning`、`wrong`、`dim`。也接受其他值，详见成员说明。 |
+| `bool wait = false` | true：播完才返回，停止脚本即停止播放并立即返回；false：立即返回并在后台播完（运行结束后继续；在 Quicker 中停止本动作时随之停止；最长 30 分钟）。整个 Quicker 同时最多 4 个后台播放/朗读，超出报 LIMIT_EXCEEDED（不排队；连续播放请用 wait: true）。文件/网址 15 秒内打不开报 SOUND_FAILED。 |
+| `double volumeGain = 1` | 本次播放的音量倍率，范围 0–4，支持小数；默认 1 为原始音量，0 为静音，大于 1 放大。仅影响本次播放，不改变系统或应用会话音量；过度放大可能削波失真。非有限数字或超出范围报 INVALID_ARGUMENT（后台模式也会在播放开始前报错）。 |
 
 返回类型：`void`。空值、用户取消和异常行为以成员及域说明为准。
 

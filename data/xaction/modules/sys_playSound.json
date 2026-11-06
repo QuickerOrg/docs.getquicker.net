@@ -55,6 +55,20 @@
       "variableMode": "UseVarOrInput"
     },
     {
+      "key": "volumeGain",
+      "name": "音量倍率",
+      "type": "Number",
+      "description": "本次播放的音量倍率，范围 0–4，支持小数。0 为静音，1 为原始音量，空值按 1 处理，大于 1 放大；过度放大可能失真。不改变系统音量。",
+      "validForList": [
+        "LOCAL",
+        "EXTERN"
+      ],
+      "condition": "仅：LOCAL, EXTERN",
+      "defaultValue": "1.0",
+      "defaultValueRaw": 1,
+      "variableMode": "UseVarOrInput"
+    },
+    {
       "key": "wait",
       "name": "等待播放完成",
       "type": "Boolean",

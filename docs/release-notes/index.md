@@ -28,9 +28,19 @@ comments: true
 
 多设备使用、降级或回退前，请阅读[升级与回退](/v2/migration/upgrade-and-rollback)。各版本的具体风险也在下方对应条目中标出。
 
-本站已补充到 **2.3.30**；版本下载与完整修复记录以官网为准。
+本站已补充到 **2.3.31**；版本下载与完整修复记录以官网为准。
 
 ## 近期文档补充
+
+### 2.3.31 · Windows ARM64、OCR 结果窗与录屏声音
+
+- [安装说明](/v2/install/windows)新增 Windows ARM64 原生包入口；[更新与组件](/v2/install/update#arm64-update-2331)说明按架构选择主程序、OCR 和补全服务，及原生依赖限制。
+- [OCR 结果窗](/v2/features/screenshot/capture-pro#结果窗)更新原生页面、独立原图校对、标准模型和方向检测重新识别流程；[多张贴图](/v2/features/screenshot/capture-pro#pin-multi-select-2331)说明 Ctrl 点选与当前组全选。
+- [桌面录屏](/v2/features/screenshot/capture-pro#recording-2331)说明新的系统声音范围、主音量与录音音量的区别，以及不支持时的回退。
+- [AI 与 MCP](/v2/features/ai-and-agent#tool-budget-and-mcp-2331)补充每轮工具额度、上下文快捷设置和默认关闭的附加功能。
+- [WebSocket 文件后处理](/v2/features/http-websocket#file-receive-actions)标注正式版本，补充文件复制、定位和一次复制多个文件的协议；[亮度浮层](/v2/features/displays-and-desktops#显示器)更新默认关闭规则。
+- [步骤详情](/v2/xaction/concepts/edit-step-param#extra-assignment-summary-2331)补充额外赋值摘要；[子程序](/v2/xaction/modules/subprogram)注明跳过调试输出的修复。
+- **升级与回退**：[2.3.31 注意事项](/v2/migration/upgrade-and-rollback#ocr-and-arm64-2331)说明录音范围、旧版保存 OCR 校对副本和设置的影响，以及更换架构前的备份与兼容检查。
 
 ### 2.3.30 · 窗口背景确认、跨动作录屏与文本指令整理
 

@@ -15,6 +15,8 @@ metadataGeneratedAt: "2026-08-24 20:01:39"
 
 后台把一块屏幕录成视频文件。开始后动作可以继续执行；用同一个会话 ID，可以在后续步骤或后一次动作运行中暂停、继续和结束录屏。需要框选界面和录屏工具栏时用 [屏幕录制](/v2/xaction/modules/screen-recording-ui)。
 
+2.3.31 调整了系统声音的采集范围和音量行为：支持的新方式会采集所有输出设备上的其它应用声音，降低主音量不会停止录音；不需要时请关闭系统声音。详见[桌面录屏与系统声音](/v2/features/screenshot/capture-pro#recording-2331)。
+
 ## 当前模块定义
 
 <XActionModuleMeta moduleKey="sys:screenRecording" />

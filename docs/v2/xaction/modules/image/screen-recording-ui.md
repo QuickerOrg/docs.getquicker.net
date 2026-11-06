@@ -15,6 +15,8 @@ metadataGeneratedAt: "2026-09-20 15:25:17"
 
 弹出选区界面，让用户框出录制范围，再打开录屏工具栏可视化录制。录完返回文件路径。不要选区、要在动作里控制生命周期时，用 [后台屏幕录制](/v2/xaction/modules/screen-recording)。
 
+2.3.31 调整了系统声音的采集范围和音量行为：支持的新方式会采集所有输出设备上的其它应用声音，降低主音量不会停止录音；不需要时请关闭系统声音。详见[桌面录屏与系统声音](/v2/features/screenshot/capture-pro#recording-2331)。
+
 ## 当前模块定义
 
 <XActionModuleMeta moduleKey="sys:screenRecordingUI" />

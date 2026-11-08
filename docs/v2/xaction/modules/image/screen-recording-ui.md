@@ -17,6 +17,8 @@ metadataGeneratedAt: "2026-09-20 15:25:17"
 
 2.3.31 调整了系统声音的采集范围和音量行为：支持的新方式会采集所有输出设备上的其它应用声音，降低主音量不会停止录音；不需要时请关闭系统声音。详见[桌面录屏与系统声音](/v2/features/screenshot/capture-pro#recording-2331)。
 
+2.3.33 起，保留到历史的录制可从预览或历史项进入[编辑录屏](/v2/features/screenshot/capture-pro#recording-edit-2333)，截取首尾、裁切画面，并在有点击轨迹时按需开启智能缩放。编辑后另行导出 MP4，不会把步骤原先返回的文件路径自动改为新成品路径；原片与工程的保留、清理和回退注意事项见功能页。
+
 ## 当前模块定义
 
 <XActionModuleMeta moduleKey="sys:screenRecordingUI" />

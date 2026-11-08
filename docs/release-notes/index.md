@@ -28,9 +28,18 @@ comments: true
 
 多设备使用、降级或回退前，请阅读[升级与回退](/v2/migration/upgrade-and-rollback)。各版本的具体风险也在下方对应条目中标出。
 
-本站已补充到 **2.3.32**；版本下载与完整修复记录以官网为准。
+本站已补充到 **2.3.33**；版本下载与完整修复记录以官网为准。
 
 ## 近期文档补充
+
+### 2.3.33 · 录屏编辑、OCR 模式与窗口滑动
+
+- [编辑录屏与智能缩放](/v2/features/screenshot/capture-pro#recording-edit-2333)补充预览与历史入口、首尾截取、画面裁切、保存方案和 MP4 导出；说明点击轨迹、默认关闭的智能缩放与原片保留边界。
+- [截图 OCR 默认模式](/v2/features/screenshot/capture-pro#ocr-result-mode-2333)说明原图选字、打开结果窗口和直接复制全文，及右键切换、Ctrl 临时开窗和账号同步；[结果窗](/v2/features/screenshot/capture-pro#结果窗)补充识别历史和图片复制菜单。
+- [高级鼠标触发](/v2/features/triggers/advanced-mouse-triggers#window-drag-2333)新增按住滑动移动、缩放窗口的配置方法、左键修饰键限制和取消行为。
+- [动作分享](/v2/features/action-sharing#如何选择发布格式)修正新分享和更新分享的默认格式；[停止步骤](/v2/xaction/modules/stop#参数说明)补充并行分支停止整个动作的修复与取消边界。
+- [账号说明](/v2/features/account-and-sync#登录之后会发生什么)、安装与入门页明确新用户暂不开放本机离线入口，已有账号继续可用。
+- **升级与回退**：[2.3.33 注意事项](/v2/migration/upgrade-and-rollback#recording-and-account-2333)说明录屏工程的本机备份、历史清理和旧版维护限制，以及 OCR 模式和新鼠标操作的版本边界。轮盘重绘、拖放图标、编辑器等待、悬浮分组和 AI 流式兼容等修复见[官网完整记录](https://getquicker.net/V2/Versions)。
 
 ### 2.3.32 · 模型上下文、贴图右键与播放音量
 

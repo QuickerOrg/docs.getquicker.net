@@ -18,7 +18,7 @@ comments: true
 
 - **系统**：仅支持 [.NET 10 官方支持的 Windows](https://github.com/dotnet/core/blob/main/release-notes/10.0/supported-os.md)。Windows 7、8、8.1 不能安装。普通用户建议使用仍受支持的 Windows 11，并按电脑的处理器架构选择安装包。
 - **架构**：2.3.31 起提供 **x64** 和 **ARM64** 原生安装包。Intel/AMD 的普通 64 位电脑选 x64；Windows on ARM 电脑选 ARM64。32 位 Windows 不能安装或运行。
-- **账号**：建议登录，便于同步；也可以使用本机离线账号。
+- **账号**：2.3.33 起，新用户需登录或注册云账号；已有本机离线账号可继续使用，见[账号与同步](/v2/features/account-and-sync#登录之后会发生什么)。
 
 更细的运行时、Office/COM 位数和脚本兼容性见 [运行平台与兼容性](/v2/what's-new/platform-and-compatibility.md)。
 
@@ -34,7 +34,7 @@ comments: true
 
 ## 首次启动
 
-1. 启动 Quicker，按提示登录或使用本机离线账号。
+1. 启动 Quicker，按提示登录或注册云账号；已有本机离线账号可从账号选择窗口进入。
 2. 默认用**鼠标中键**弹出面板。需要调整时，打开 **设置 → 面板、搜索与悬浮 → 弹出方式**。
 3. 已登录账号若仍看到旧面板，按 [动作面板使用说明](/v2/features/action-panel/usage#启用新面板窗口) 切到新版主窗口。
 

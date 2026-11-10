@@ -28,9 +28,16 @@ comments: true
 
 多设备使用、降级或回退前，请阅读[升级与回退](/v2/migration/upgrade-and-rollback)。各版本的具体风险也在下方对应条目中标出。
 
-本站已补充到 **2.3.33**；版本下载与完整修复记录以官网为准。
+本站已补充到 **2.3.34**；版本下载与完整修复记录以官网为准。
 
 ## 近期文档补充
+
+### 2.3.34 · 录前智能缩放、标题排序与冲突确认
+
+- [录屏说明](/v2/features/screenshot/capture-pro#recording-auto-zoom-2334)补充录前智能缩放的条件、后期按键提示、取消后的草稿恢复，以及更新历史成品与另存原片的区别。
+- [面板排序](/v2/features/action-panel/usage#调整动作顺序)补充“按标题排序”；[全屏禁用](/v2/features/triggers#程序黑名单与全屏禁用)补充仅限主显示器的选项与多屏判断范围。
+- [AI 动作冲突处理](/v2/features/action-panel/action-drafts#234--外部助手恢复编辑副本)说明打开时备份刷新、保存覆盖前的明确确认，以及完全控制和无确认通道的边界。
+- [升级与回退](/v2/migration/upgrade-and-rollback#recording-and-fullscreen-2334)说明旧版保存录屏方案、旧设备同步全屏限制偏好的影响。跨设备同步通知、悬浮按钮置顶和匿名对象跨脚本读取等修复见[官网完整记录](https://getquicker.net/V2/Versions)。
 
 ### 2.3.33 · 录屏编辑、OCR 模式与窗口滑动
 

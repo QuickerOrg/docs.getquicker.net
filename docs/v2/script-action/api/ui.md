@@ -8,7 +8,7 @@ sidebar_position: 10
 
 {/* script-api:start */}
 
-Quicker 自己弹出的对话框、通知与窗口；操作其他程序窗口里的界面元素见 qk.Uia。用户取消返回 null（Confirm 返回 false）；每次运行最多 100 个对话框（OpenText/ShowMenu/OpenProgress/ShowImage/Pin 各计 1 次，ProgressWin 更新不计）、100 条通知（另限每秒 5 条）。各窗口的 operations 按钮（Select/ShowText/OpenText/OpenProgress）点击即关闭该窗口并返回 Operation，不执行任何操作。
+Quicker 自己弹出的对话框、通知与窗口；操作其他程序窗口里的界面元素见 qk.Uia。用户取消返回 null（Confirm 返回 false）；每次运行最多 100 个对话框（OpenText/ShowMenu/ShowToolbar/OpenProgress/ShowImage/Pin 各计 1 次，ProgressWin 更新不计）、100 条通知（另限每秒 5 条）。各窗口的 operations 按钮（Select/ShowText/OpenText/OpenProgress）点击即关闭该窗口并返回 Operation，不执行任何操作。
 
 <a id="ui-select" />
 
@@ -369,6 +369,26 @@ string? ShowMenu(IEnumerable<object> items, bool focus = false, int fontSize = 0
 | `bool focus = false` | 菜单获得键盘焦点（方向键、回车或空格选择），关闭后还原前台窗口。 |
 | `int fontSize = 0` | 文字大小，0 为 12（6–72）。 |
 | `int iconSize = 0` | 图标大小，0 为 16（8–64）。 |
+
+返回类型：`string?`。空值、用户取消和异常行为以成员及域说明为准。
+
+<a id="ui-showtoolbar" />
+
+## Ui.ShowToolbar
+
+```csharp
+string? ShowToolbar(IEnumerable<object> items, bool focus = false, int fontSize = 0, int iconSize = 0, bool showTitles = true)
+```
+
+在鼠标处显示横向工具条并等待选择；返回所选叶子的值，取消返回 null，只返回值不执行操作。参数 items/focus/fontSize/iconSize 与 ShowMenu 相同，子项显示为下拉菜单；一级最多直接显示 5 项，超出数量或可用宽度的放入更多。需要 Quicker 输入挂钩运行。无焦点 Esc 先关闭一层下拉，再取消工具条，不吞键，前台程序也会收到 Esc。
+
+| 参数声明 | 说明 |
+|---|---|
+| `IEnumerable<object> items` | 同 ShowMenu：字符串 [fa:icon]标题&#124;值 或 Item，Item.Children 为子菜单，- 为分隔线；最多 200 项、5 层。 |
+| `bool focus = false` | 同 ShowMenu；默认不抢焦点，true 时支持键盘导航并在选择或 Esc 后还原前台窗口。 |
+| `int fontSize = 0` | 同 ShowMenu，0 为 12（6–72）。 |
+| `int iconSize = 0` | 同 ShowMenu，0 为 16（8–64）。 |
+| `bool showTitles = true` | 默认 true；false 时仅隐藏有图标的一级按钮标题，悬停显示提示；无图标按钮和下拉菜单仍显示标题。 |
 
 返回类型：`string?`。空值、用户取消和异常行为以成员及域说明为准。
 

@@ -130,7 +130,7 @@
       "key": "offlineMode",
       "name": "离线模式",
       "type": "Enum",
-      "description": "旧版兼容参数。Quicker OCR 当前固定使用在线服务；旧动作选择“仅使用离线引擎”时转为本地 OCR。新动作请直接选择“本地 OCR”。",
+      "description": "Quicker 文字 OCR：旧动作选择仅离线时转为本地 OCR。表格识别：自动和在线均使用本地文字＋在线表格处理，不再支持仅离线。",
       "isAdvanced": true,
       "validForList": [
         "QuickerServerOcr"
@@ -245,6 +245,22 @@
         "baidu-custom"
       ],
       "condition": "仅：baidu-basic, baidu-quicker, baidu-custom"
+    },
+    {
+      "key": "errorCode",
+      "name": "表格错误码",
+      "type": "Text",
+      "description": "表格识别的稳定错误码；成功为空。登录、会员、限流及取消可分别处理。",
+      "isAdvanced": true,
+      "visibleWhen": {
+        "kind": "Field",
+        "fieldKey": "operation",
+        "operator": "In",
+        "values": [
+          "table_quicker"
+        ]
+      },
+      "condition": "operation 为 \"table_quicker\""
     }
   ],
   "selections": {
@@ -273,7 +289,7 @@
         },
         {
           "value": "table_quicker",
-          "name": "表格识别（本地）"
+          "name": "表格识别（本地文字＋在线表格，会员）"
         },
         {
           "value": "LocalOcr",

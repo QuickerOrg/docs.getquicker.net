@@ -1,8 +1,8 @@
 {
   "schemaVersion": 1,
-  "sourceCommit": "efebacd3a62c95fca1744091ac765b8eb084a8fb",
-  "productVersion": "2.3.32+Branch.codex-docs-v2332.Sha.efebacd3a62c95fca1744091ac765b8eb084a8fb.efebacd3a62c95fca1744091ac765b8eb084a8fb",
-  "assemblySha256": "f883e67cd2a28efcc19063e4a594c6292b57898233eadbd4ecd20822b7e0b355",
+  "sourceCommit": "55a9ddee175ba8f8d626f67c1c7ab6639322a3f9",
+  "productVersion": "2.3.36+Branch.codex-arm64-verify-switch.Sha.55a9ddee175ba8f8d626f67c1c7ab6639322a3f9.55a9ddee175ba8f8d626f67c1c7ab6639322a3f9",
+  "assemblySha256": "7fc6e1e4e8179ccfe8147df47f42497676b275924dd3564f10f3cc8aa1eee653",
   "apiVersion": 1,
   "domains": [
     {
@@ -601,7 +601,7 @@
     },
     {
       "name": "Ui",
-      "description": "Quicker 自己弹出的对话框、通知与窗口；操作其他程序窗口里的界面元素见 qk.Uia。用户取消返回 null（Confirm 返回 false）；每次运行最多 100 个对话框（OpenText/ShowMenu/OpenProgress/ShowImage/Pin 各计 1 次，ProgressWin 更新不计）、100 条通知（另限每秒 5 条）。各窗口的 operations 按钮（Select/ShowText/OpenText/OpenProgress）点击即关闭该窗口并返回 Operation，不执行任何操作。",
+      "description": "Quicker 自己弹出的对话框、通知与窗口；操作其他程序窗口里的界面元素见 qk.Uia。用户取消返回 null（Confirm 返回 false）；每次运行最多 100 个对话框（OpenText/ShowMenu/ShowToolbar/OpenProgress/ShowImage/Pin 各计 1 次，ProgressWin 更新不计）、100 条通知（另限每秒 5 条）。各窗口的 operations 按钮（Select/ShowText/OpenText/OpenProgress）点击即关闭该窗口并返回 Operation，不执行任何操作。",
       "methods": [
         {
           "key": "Ui.Select",
@@ -1607,6 +1607,57 @@
               "declaration": "int iconSize = 0",
               "optional": true,
               "description": "图标大小，0 为 16（8–64）。",
+              "values": null
+            }
+          ],
+          "usesDesktopInput": false,
+          "cleanup": false
+        },
+        {
+          "key": "Ui.ShowToolbar",
+          "name": "ShowToolbar",
+          "signature": "string? ShowToolbar(IEnumerable<object> items, bool focus = false, int fontSize = 0, int iconSize = 0, bool showTitles = true)",
+          "returns": "string?",
+          "description": "在鼠标处显示横向工具条并等待选择；返回所选叶子的值，取消返回 null，只返回值不执行操作。参数 items/focus/fontSize/iconSize 与 ShowMenu 相同，子项显示为下拉菜单；一级最多直接显示 5 项，超出数量或可用宽度的放入更多。需要 Quicker 输入挂钩运行。无焦点 Esc 先关闭一层下拉，再取消工具条，不吞键，前台程序也会收到 Esc。",
+          "parameters": [
+            {
+              "name": "items",
+              "type": "IEnumerable<object>",
+              "declaration": "IEnumerable<object> items",
+              "optional": false,
+              "description": "同 ShowMenu：字符串 [fa:icon]标题|值 或 Item，Item.Children 为子菜单，- 为分隔线；最多 200 项、5 层。",
+              "values": null
+            },
+            {
+              "name": "focus",
+              "type": "bool",
+              "declaration": "bool focus = false",
+              "optional": true,
+              "description": "同 ShowMenu；默认不抢焦点，true 时支持键盘导航并在选择或 Esc 后还原前台窗口。",
+              "values": null
+            },
+            {
+              "name": "fontSize",
+              "type": "int",
+              "declaration": "int fontSize = 0",
+              "optional": true,
+              "description": "同 ShowMenu，0 为 12（6–72）。",
+              "values": null
+            },
+            {
+              "name": "iconSize",
+              "type": "int",
+              "declaration": "int iconSize = 0",
+              "optional": true,
+              "description": "同 ShowMenu，0 为 16（8–64）。",
+              "values": null
+            },
+            {
+              "name": "showTitles",
+              "type": "bool",
+              "declaration": "bool showTitles = true",
+              "optional": true,
+              "description": "默认 true；false 时仅隐藏有图标的一级按钮标题，悬停显示提示；无图标按钮和下拉菜单仍显示标题。",
               "values": null
             }
           ],
@@ -5382,7 +5433,7 @@
           "name": "OcrTable",
           "signature": "OcrTableResult OcrTable(object? source = null, bool detectOrientation = false, int timeoutMs = 30000)",
           "returns": "OcrTableResult",
-          "description": "本机表格识别（不会自动下载模型）：返回 TSV、HTML、行列数、单元格（含合并跨度与位置）与表头行数；表格文字模型固定，没有 model 参数。错误码同 Ocr。",
+          "description": "2.3.36 起使用本地 small 识字＋在线表格处理，会上传原图和本地识字结果，需要登录有效会员、联网及事先在识别结果窗同意上传；首版仅支持 x64。脚本不会自动下载组件或弹出上传确认。返回 TSV、HTML、行列数、单元格（含合并跨度与位置）和表头行数；文字模型固定，无 model 参数。未同意报 OCR_UPLOAD_CONSENT_REQUIRED，缺本地组件报 OCR_UNAVAILABLE；登录、会员、限流、超时及服务不可用会返回对应 OCR 错误码。",
           "parameters": [
             {
               "name": "source",
@@ -11471,8 +11522,44 @@
       "code": "NOTIFY_LIMIT_EXCEEDED"
     },
     {
+      "name": "OcrArchitectureUnsupported",
+      "code": "OCR_ARCHITECTURE_UNSUPPORTED"
+    },
+    {
+      "name": "OcrEvidenceIncompatible",
+      "code": "OCR_EVIDENCE_INCOMPATIBLE"
+    },
+    {
       "name": "OcrFailed",
       "code": "OCR_FAILED"
+    },
+    {
+      "name": "OcrGridUnavailable",
+      "code": "OCR_GRID_UNAVAILABLE"
+    },
+    {
+      "name": "OcrInvalidImage",
+      "code": "OCR_INVALID_IMAGE"
+    },
+    {
+      "name": "OcrLoginRequired",
+      "code": "OCR_LOGIN_REQUIRED"
+    },
+    {
+      "name": "OcrMembershipRequired",
+      "code": "OCR_MEMBERSHIP_REQUIRED"
+    },
+    {
+      "name": "OcrRateLimited",
+      "code": "OCR_RATE_LIMITED"
+    },
+    {
+      "name": "OcrResponseTooLarge",
+      "code": "OCR_RESPONSE_TOO_LARGE"
+    },
+    {
+      "name": "OcrServiceUnavailable",
+      "code": "OCR_SERVICE_UNAVAILABLE"
     },
     {
       "name": "OcrTimeout",
@@ -11481,6 +11568,10 @@
     {
       "name": "OcrUnavailable",
       "code": "OCR_UNAVAILABLE"
+    },
+    {
+      "name": "OcrUploadConsentRequired",
+      "code": "OCR_UPLOAD_CONSENT_REQUIRED"
     },
     {
       "name": "PowerFailed",

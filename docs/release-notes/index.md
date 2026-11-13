@@ -22,15 +22,30 @@ comments: true
 
 ## 升级前先看
 
+:::caution[2.3.36 · 表格联网与录屏按键提示]
+表格识别改为本地识字＋在线表格处理，会上传原图和识字结果，需要有效会员及事先同意，首版仅支持 x64。录屏实时按键提示不再自动检测密码框；录制敏感输入前请暂停录屏或关闭按键提示。规则同步、会话整理与回退影响见[2.3.36 升级与回退](/v2/migration/upgrade-and-rollback#text-and-table-2336)。
+:::
+
 :::caution[后台屏幕录制的默认范围已变化]
 升级到 **2.1.23 或更高版本**时，后台屏幕录制步骤的默认录制范围改为“主屏幕”。已明确保存录制范围的动作不受影响；其他旧动作请打开并确认录制范围，避免录到不符合预期的屏幕区域。
 :::
 
 多设备使用、降级或回退前，请阅读[升级与回退](/v2/migration/upgrade-and-rollback)。各版本的具体风险也在下方对应条目中标出。
 
-本站已补充到 **2.3.34**；版本下载与完整修复记录以官网为准。
+本站已补充到 **2.3.36**；版本下载与完整修复记录以官网为准。
 
 ## 近期文档补充
+
+### 2.3.36 · 屏幕拖选文字、在线表格与会话整理
+
+- 新增[屏幕拖选文字](/v2/features/screenshot/screen-text-selection)指南，介绍 Win＋左键预设、引导键配置、复制／编辑／翻译、结果工具条和冲突排查；[高级鼠标触发](/v2/features/triggers/advanced-mouse-triggers#text-and-capture-2336)补充附加修饰键与快速截图后处理。
+- [在线表格识别](/v2/features/screenshot/capture-pro#hybrid-table-2336)说明本地识字与上传处理的区别、会员和 x64 限制、模式选择、长表恢复及手动列宽；同步修正[基础 OCR](/v2/xaction/modules/basic-ocr#hybrid-table-step-2336)及脚本接口中的旧离线说明。
+- [OCR 结果窗口](/v2/features/screenshot/capture-pro#ocr-window-and-translation-2336)补充默认关闭的窗口复用及人工译文保护；[截图吸附](/v2/features/screenshot/capture-pro#capture-snap-2336)补充自动吸附开关与整窗轮廓；[录屏提示](/v2/features/screenshot/capture-pro#recording-key-privacy-2336)明确敏感输入保护方式。
+- [触发与引用](/v2/features/actions#trigger-and-reference-2336)说明集中管理、快捷编辑和来源定位；[规则动作列表](/v2/features/scenes#rule-action-list-2336)介绍轮盘、手势配置中的候选筛选；[USB 事件](/v2/features/triggers#usb-events-2336)说明连接周期、过滤及设备标识边界。
+- [AI 会话引用与整理](/v2/features/ai-and-agent#conversation-reference-2336)补充 `@` 引用、彩色标签、关联动作筛选、草稿恢复及整表复制；修正旧文中“草稿不保留任何引用”的描述。
+- [显示菜单](/v2/xaction/modules/showmenu#toolbar-2336)补充横向工具条与脚本接口；[搜索计算器](/v2/features/search#calculator-power-2336)补充 `^^` 乘方；[Mastercam](/v2/features/software-connections/software/mastercam)补充按年度查看在线实例。
+- 组合动作参数和脚本 API 按同一发布快照重新导出，补齐早期参考数据遗漏；同时修正已存在参数却仍写“尚未同步”的旧说明。已有 [CPU 渲染切换](/v2/what's-new/platform-and-compatibility#界面或远程桌面显示异常)说明继续适用。
+- **升级与回退**：[2.3.36 注意事项](/v2/migration/upgrade-and-rollback#text-and-table-2336)说明联网迁移、旧设备保存和同步新规则的风险，以及会话整理和草稿引用的本机备份要求。
 
 ### 2.3.34 · 录前智能缩放、标题排序与冲突确认
 

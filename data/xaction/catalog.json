@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-11-06 07:32:31",
+  "generatedAt": "2026-11-12 17:57:27",
   "moduleCount": 175,
   "legacyMappedModuleCount": 0,
   "migratedLegacyModuleCount": 0,
@@ -5384,7 +5384,7 @@
           "key": "winSize",
           "name": "窗口尺寸/位置",
           "type": "Text",
-          "description": "两项为最大宽度,高度；四项为左,上,右,下坐标。支持数字或屏幕工作区百分比。",
+          "description": "两项为窗口宽度,高度；四项为左,上,右,下坐标。支持数字或屏幕工作区百分比。",
           "isAdvanced": true,
           "validForList": [
             "manage"
@@ -16462,7 +16462,7 @@
           "key": "offlineMode",
           "name": "离线模式",
           "type": "Enum",
-          "description": "旧版兼容参数。Quicker OCR 当前固定使用在线服务；旧动作选择“仅使用离线引擎”时转为本地 OCR。新动作请直接选择“本地 OCR”。",
+          "description": "Quicker 文字 OCR：旧动作选择仅离线时转为本地 OCR。表格识别：自动和在线均使用本地文字＋在线表格处理，不再支持仅离线。",
           "isAdvanced": true,
           "validForList": [
             "QuickerServerOcr"
@@ -16577,6 +16577,22 @@
             "baidu-custom"
           ],
           "condition": "仅：baidu-basic, baidu-quicker, baidu-custom"
+        },
+        {
+          "key": "errorCode",
+          "name": "表格错误码",
+          "type": "Text",
+          "description": "表格识别的稳定错误码；成功为空。登录、会员、限流及取消可分别处理。",
+          "isAdvanced": true,
+          "visibleWhen": {
+            "kind": "Field",
+            "fieldKey": "operation",
+            "operator": "In",
+            "values": [
+              "table_quicker"
+            ]
+          },
+          "condition": "operation 为 \"table_quicker\""
         }
       ],
       "selections": {
@@ -16605,7 +16621,7 @@
             },
             {
               "value": "table_quicker",
-              "name": "表格识别（本地）"
+              "name": "表格识别（本地文字＋在线表格，会员）"
             },
             {
               "value": "LocalOcr",
@@ -44364,6 +44380,51 @@
       "helpLink": "https://docs.getquicker.net/v2/xaction/modules/showmenu",
       "inputs": [
         {
+          "key": "operation",
+          "name": "显示方式",
+          "type": "Enum",
+          "defaultValue": "contextmenu",
+          "required": true,
+          "variableMode": "Input",
+          "isControlField": true
+        },
+        {
+          "key": "showTitles",
+          "name": "显示按钮标题",
+          "type": "Boolean",
+          "description": "关闭时仅显示图标；无图标的项目仍显示标题。",
+          "visibleWhen": {
+            "kind": "Field",
+            "fieldKey": "operation",
+            "operator": "In",
+            "values": [
+              "toolbar"
+            ]
+          },
+          "condition": "operation 为 \"toolbar\"",
+          "defaultValue": "true",
+          "defaultValueRaw": true,
+          "variableMode": "UseVarOrInput"
+        },
+        {
+          "key": "maxDirectItems",
+          "name": "最多直接显示数量",
+          "type": "Number",
+          "description": "取值 1–20。超出数量或当前工作区宽度的项目显示在更多菜单中。",
+          "visibleWhen": {
+            "kind": "Field",
+            "fieldKey": "operation",
+            "operator": "In",
+            "values": [
+              "toolbar"
+            ]
+          },
+          "condition": "operation 为 \"toolbar\"",
+          "defaultValue": "5",
+          "defaultValueRaw": 5,
+          "variableMode": "UseVarOrInput"
+        },
+        {
           "key": "menuData",
           "name": "菜单数据",
           "type": "Text",
@@ -44455,6 +44516,21 @@
           "description": "点击菜单使用的鼠标按钮：Left（左键）或 Right（右键）"
         }
       ],
+      "selections": {
+        "operation": {
+          "name": "显示方式",
+          "items": [
+            {
+              "value": "contextmenu",
+              "name": "显示纵向菜单"
+            },
+            {
+              "value": "toolbar",
+              "name": "显示横向工具条"
+            }
+          ]
+        }
+      },
       "sourceFileName": "catalog.json"
     },
     {

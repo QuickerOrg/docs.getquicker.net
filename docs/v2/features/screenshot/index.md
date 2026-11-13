@@ -20,6 +20,11 @@ Quicker 提供一套完整的屏幕截取与后续处理能力，可在动作中
       featured: true,
     },
     {
+      href: '/v2/features/screenshot/screen-text-selection',
+      label: '屏幕拖选文字',
+      description: '按住引导键拖选屏幕文字，复制、编辑或翻译；可直接开启 Win＋左键预设。',
+    },
+    {
       href: '/v2/features/screenshot/image-translate',
       label: '图片翻译',
       description: '截图 / 贴图图到图翻译；配置百度或有道图片翻译 API（本机 Key）。',

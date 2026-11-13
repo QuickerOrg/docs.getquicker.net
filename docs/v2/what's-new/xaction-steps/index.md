@@ -35,7 +35,7 @@ Quicker 2.x 在保持已有组合动作兼容的基础上，增加了一批面�
 - [窗口界面控制(FlaUI)](/v2/xaction/modules/flauiautomation)：2.1.28 起可提取窗口界面信息、观察可交互元素，并批量返回控件树、定位信息和坐标范围。
 - [屏幕录制模块](./new-screen-recording-ui.md) / [后台屏幕录制模块](./new-background-screen-recording.md)：2.1.23 起可选择保存文件夹；自定义目录中的成品只建立历史索引，不再额外复制一份。
 - [屏幕找图/找色/找字模块](/v2/xaction/modules/searchbmp)：找图新增相似度匹配模式；2.1.25 起查找范围还支持指定窗口和指定图片，适合在被遮挡窗口或本地图片中定位目标。2.1.26 起，指定图片可使用图片路径或图片变量；指定窗口可选择返回窗口相对坐标。2.1.25 里已经配过指定图片的动作，升级后需要重新打开步骤编辑一次。
-- [基础OCR模块](./basic-ocr.md)：增加独立本地引擎、模型档位和本地表格识别。
+- [基础OCR模块](./basic-ocr.md)：本地文字引擎、模型档位与 2.3.36 的在线表格识别要求。
 - [下载文件模块](/v2/xaction/modules/download) / [HTTP请求模块](/v2/xaction/modules/http)：2.1.27 恢复旧版重定向兼容规则，并避免大文件跳转时的额外缓冲。
 - [图片处理模块](./image-process.md)：为缩放和图标生成增加多种采样算法。
 - [读取文件模块](./read-file.md)：改进 BOM、UTF-8 和 Windows ANSI 自动编码识别。

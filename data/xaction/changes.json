@@ -1,12 +1,12 @@
 {
   "schemaVersion": 1,
   "baselineCreated": false,
-  "fromGeneratedAt": "2026-11-03 15:57:53",
-  "toGeneratedAt": "2026-11-06 07:32:31",
+  "fromGeneratedAt": "2026-11-06 07:32:31",
+  "toGeneratedAt": "2026-11-12 17:57:27",
   "summary": {
     "addedModules": 0,
     "removedModules": 0,
-    "changedModules": 4
+    "changedModules": 3
   },
   "addedModules": [],
   "removedModules": [],
@@ -25,7 +25,7 @@
               "key": "winSize",
               "name": "窗口尺寸/位置",
               "type": "Text",
-              "description": "宽度,高度：逻辑像素或屏幕工作区百分比。",
+              "description": "两项为最大宽度,高度；四项为左,上,右,下坐标。支持数字或屏幕工作区百分比。",
               "isAdvanced": true,
               "validForList": [
                 "manage"
@@ -38,7 +38,7 @@
               "key": "winSize",
               "name": "窗口尺寸/位置",
               "type": "Text",
-              "description": "两项为最大宽度,高度；四项为左,上,右,下坐标。支持数字或屏幕工作区百分比。",
+              "description": "两项为窗口宽度,高度；四项为左,上,右,下坐标。支持数字或屏幕工作区百分比。",
               "isAdvanced": true,
               "validForList": [
                 "manage"
@@ -58,61 +58,457 @@
       "selectionsChanged": false
     },
     {
-      "key": "sys:screenRecording",
-      "name": "后台屏幕录制",
-      "changedFields": [
-        "description"
-      ],
+      "key": "sys:basic-ocr",
+      "name": "基础OCR",
+      "changedFields": [],
       "inputs": {
         "added": [],
         "removed": [],
         "changed": [
           {
-            "key": "sessionId",
+            "key": "offlineMode",
             "before": {
-              "key": "sessionId",
-              "name": "会话 ID",
-              "type": "Text",
-              "description": "录屏会话标识（GUID）。开始录屏时留空将自动生成；暂停/继续/结束时必须提供。",
-              "defaultValue": "",
-              "variableMode": "UseVarOrInput"
+              "key": "offlineMode",
+              "name": "离线模式",
+              "type": "Enum",
+              "description": "旧版兼容参数。Quicker OCR 当前固定使用在线服务；旧动作选择“仅使用离线引擎”时转为本地 OCR。新动作请直接选择“本地 OCR”。",
+              "isAdvanced": true,
+              "validForList": [
+                "QuickerServerOcr"
+              ],
+              "condition": "仅：QuickerServerOcr",
+              "defaultValue": "Auto",
+              "variableMode": "Input"
             },
             "after": {
-              "key": "sessionId",
-              "name": "会话 ID",
-              "type": "Text",
-              "description": "录屏会话标识（GUID）。开始时留空自动生成；可保存输出 ID，在同一次 Quicker 运行期间的后续动作中暂停、继续或结束录屏。",
-              "defaultValue": "",
-              "variableMode": "UseVarOrInput"
+              "key": "offlineMode",
+              "name": "离线模式",
+              "type": "Enum",
+              "description": "Quicker 文字 OCR：旧动作选择仅离线时转为本地 OCR。表格识别：自动和在线均使用本地文字＋在线表格处理，不再支持仅离线。",
+              "isAdvanced": true,
+              "validForList": [
+                "QuickerServerOcr"
+              ],
+              "condition": "仅：QuickerServerOcr",
+              "defaultValue": "Auto",
+              "variableMode": "Input"
             }
           }
         ]
       },
       "outputs": {
-        "added": [],
+        "added": [
+          {
+            "key": "errorCode",
+            "name": "表格错误码",
+            "type": "Text",
+            "description": "表格识别的稳定错误码；成功为空。登录、会员、限流及取消可分别处理。",
+            "isAdvanced": true,
+            "visibleWhen": {
+              "kind": "Field",
+              "fieldKey": "operation",
+              "operator": "In",
+              "values": [
+                "table_quicker"
+              ]
+            },
+            "condition": "operation 为 \"table_quicker\""
+          }
+        ],
         "removed": [],
         "changed": []
       },
-      "selectionsChanged": false
+      "selectionsChanged": true,
+      "selections": {
+        "before": {
+          "operation": {
+            "name": "接口/引擎",
+            "items": [
+              {
+                "value": "QuickerServerOcr",
+                "name": "Quicker OCR引擎"
+              },
+              {
+                "value": "WindowsOcr",
+                "name": "Windows10/11 内置OCR引擎"
+              },
+              {
+                "value": "baidu-basic",
+                "name": "百度通用文字识别（自定义帐号）"
+              },
+              {
+                "value": "baidu-quicker",
+                "name": "百度通用文字识别（Quicker帐号）"
+              },
+              {
+                "value": "baidu-custom",
+                "name": "百度自定义接口识别（自定义帐号）"
+              },
+              {
+                "value": "table_quicker",
+                "name": "表格识别（本地）"
+              },
+              {
+                "value": "LocalOcr",
+                "name": "本地 OCR"
+              }
+            ]
+          },
+          "punctuationType": {
+            "name": "转换标点符号",
+            "items": [
+              {
+                "value": "no",
+                "name": "不转换"
+              },
+              {
+                "value": "sbc",
+                "name": "全角符号"
+              },
+              {
+                "value": "dbc",
+                "name": "半角符号"
+              }
+            ]
+          },
+          "mergeChapter": {
+            "name": "合并段落",
+            "items": [
+              {
+                "value": "no",
+                "name": "不合并"
+              },
+              {
+                "value": "merge",
+                "name": "合并"
+              }
+            ]
+          },
+          "interface": {
+            "name": "接口名称或网址",
+            "items": [
+              {
+                "value": "general_basic",
+                "name": "通用文字识别（标准版）"
+              },
+              {
+                "value": "general",
+                "name": "通用文字识别（标准含位置版）"
+              },
+              {
+                "value": "accurate_basic",
+                "name": "通用文字识别（高精度版）"
+              },
+              {
+                "value": "accurate",
+                "name": "通用文字识别（高精度含位置版）"
+              },
+              {
+                "value": "handwriting",
+                "name": "手写文字识别"
+              },
+              {
+                "value": "numbers",
+                "name": "数字识别"
+              },
+              {
+                "value": "doc_analysis_office",
+                "name": "办公文档识别"
+              },
+              {
+                "value": "form",
+                "name": "表格文字识别(同步接口)"
+              },
+              {
+                "value": "qrcode",
+                "name": "二维码识别"
+              }
+            ]
+          },
+          "lang": {
+            "name": "语言",
+            "items": [
+              {
+                "value": "CHN_ENG",
+                "name": "中英混合"
+              },
+              {
+                "value": "ENG",
+                "name": "英语"
+              },
+              {
+                "value": "KOR",
+                "name": "韩语"
+              },
+              {
+                "value": "JAP",
+                "name": "日语"
+              },
+              {
+                "value": "CHT",
+                "name": "繁体中文"
+              },
+              {
+                "value": "LAT",
+                "name": "拉丁语"
+              },
+              {
+                "value": "ARA",
+                "name": "阿拉伯语"
+              }
+            ]
+          },
+          "offlineMode": {
+            "name": "离线模式",
+            "items": [
+              {
+                "value": "Auto",
+                "name": "自动"
+              },
+              {
+                "value": "OnlineOnly",
+                "name": "仅使用在线服务"
+              },
+              {
+                "value": "OfflineOnly",
+                "name": "仅使用离线引擎"
+              }
+            ]
+          },
+          "modelTier": {
+            "name": "模型",
+            "items": [
+              {
+                "value": "tiny",
+                "name": "快速"
+              },
+              {
+                "value": "small",
+                "name": "标准"
+              }
+            ]
+          }
+        },
+        "after": {
+          "operation": {
+            "name": "接口/引擎",
+            "items": [
+              {
+                "value": "QuickerServerOcr",
+                "name": "Quicker OCR引擎"
+              },
+              {
+                "value": "WindowsOcr",
+                "name": "Windows10/11 内置OCR引擎"
+              },
+              {
+                "value": "baidu-basic",
+                "name": "百度通用文字识别（自定义帐号）"
+              },
+              {
+                "value": "baidu-quicker",
+                "name": "百度通用文字识别（Quicker帐号）"
+              },
+              {
+                "value": "baidu-custom",
+                "name": "百度自定义接口识别（自定义帐号）"
+              },
+              {
+                "value": "table_quicker",
+                "name": "表格识别（本地文字＋在线表格，会员）"
+              },
+              {
+                "value": "LocalOcr",
+                "name": "本地 OCR"
+              }
+            ]
+          },
+          "punctuationType": {
+            "name": "转换标点符号",
+            "items": [
+              {
+                "value": "no",
+                "name": "不转换"
+              },
+              {
+                "value": "sbc",
+                "name": "全角符号"
+              },
+              {
+                "value": "dbc",
+                "name": "半角符号"
+              }
+            ]
+          },
+          "mergeChapter": {
+            "name": "合并段落",
+            "items": [
+              {
+                "value": "no",
+                "name": "不合并"
+              },
+              {
+                "value": "merge",
+                "name": "合并"
+              }
+            ]
+          },
+          "interface": {
+            "name": "接口名称或网址",
+            "items": [
+              {
+                "value": "general_basic",
+                "name": "通用文字识别（标准版）"
+              },
+              {
+                "value": "general",
+                "name": "通用文字识别（标准含位置版）"
+              },
+              {
+                "value": "accurate_basic",
+                "name": "通用文字识别（高精度版）"
+              },
+              {
+                "value": "accurate",
+                "name": "通用文字识别（高精度含位置版）"
+              },
+              {
+                "value": "handwriting",
+                "name": "手写文字识别"
+              },
+              {
+                "value": "numbers",
+                "name": "数字识别"
+              },
+              {
+                "value": "doc_analysis_office",
+                "name": "办公文档识别"
+              },
+              {
+                "value": "form",
+                "name": "表格文字识别(同步接口)"
+              },
+              {
+                "value": "qrcode",
+                "name": "二维码识别"
+              }
+            ]
+          },
+          "lang": {
+            "name": "语言",
+            "items": [
+              {
+                "value": "CHN_ENG",
+                "name": "中英混合"
+              },
+              {
+                "value": "ENG",
+                "name": "英语"
+              },
+              {
+                "value": "KOR",
+                "name": "韩语"
+              },
+              {
+                "value": "JAP",
+                "name": "日语"
+              },
+              {
+                "value": "CHT",
+                "name": "繁体中文"
+              },
+              {
+                "value": "LAT",
+                "name": "拉丁语"
+              },
+              {
+                "value": "ARA",
+                "name": "阿拉伯语"
+              }
+            ]
+          },
+          "offlineMode": {
+            "name": "离线模式",
+            "items": [
+              {
+                "value": "Auto",
+                "name": "自动"
+              },
+              {
+                "value": "OnlineOnly",
+                "name": "仅使用在线服务"
+              },
+              {
+                "value": "OfflineOnly",
+                "name": "仅使用离线引擎"
+              }
+            ]
+          },
+          "modelTier": {
+            "name": "模型",
+            "items": [
+              {
+                "value": "tiny",
+                "name": "快速"
+              },
+              {
+                "value": "small",
+                "name": "标准"
+              }
+            ]
+          }
+        }
+      }
     },
     {
-      "key": "sys:playSound",
-      "name": "播放声音",
+      "key": "sys:showmenu",
+      "name": "显示菜单",
       "changedFields": [],
       "inputs": {
         "added": [
           {
-            "key": "volumeGain",
-            "name": "音量倍率",
+            "key": "operation",
+            "name": "显示方式",
+            "type": "Enum",
+            "defaultValue": "contextmenu",
+            "required": true,
+            "variableMode": "Input",
+            "isControlField": true
+          },
+          {
+            "key": "showTitles",
+            "name": "显示按钮标题",
+            "type": "Boolean",
+            "description": "关闭时仅显示图标；无图标的项目仍显示标题。",
+            "visibleWhen": {
+              "kind": "Field",
+              "fieldKey": "operation",
+              "operator": "In",
+              "values": [
+                "toolbar"
+              ]
+            },
+            "condition": "operation 为 \"toolbar\"",
+            "defaultValue": "true",
+            "defaultValueRaw": true,
+            "variableMode": "UseVarOrInput"
+          },
+          {
+            "key": "maxDirectItems",
+            "name": "最多直接显示数量",
             "type": "Number",
-            "description": "本次播放的音量倍率，范围 0–4，支持小数。0 为静音，1 为原始音量，空值按 1 处理，大于 1 放大；过度放大可能失真。不改变系统音量。",
-            "validForList": [
-              "LOCAL",
-              "EXTERN"
-            ],
-            "condition": "仅：LOCAL, EXTERN",
-            "defaultValue": "1.0",
-            "defaultValueRaw": 1,
+            "description": "取值 1–20。超出数量或当前工作区宽度的项目显示在更多菜单中。",
+            "visibleWhen": {
+              "kind": "Field",
+              "fieldKey": "operation",
+              "operator": "In",
+              "values": [
+                "toolbar"
+              ]
+            },
+            "condition": "operation 为 \"toolbar\"",
+            "defaultValue": "5",
+            "defaultValueRaw": 5,
             "variableMode": "UseVarOrInput"
           }
         ],
@@ -124,55 +520,25 @@
         "removed": [],
         "changed": []
       },
-      "selectionsChanged": false
-    },
-    {
-      "key": "sys:customwindow",
-      "name": "自定义窗口",
-      "changedFields": [],
-      "inputs": {
-        "added": [],
-        "removed": [],
-        "changed": [
-          {
-            "key": "winSize",
-            "before": {
-              "key": "winSize",
-              "name": "窗口尺寸/位置",
-              "type": "Text",
-              "description": "最大宽度,高度：逻辑像素或屏幕工作区百分比；自定义位置填坐标。",
-              "isAdvanced": true,
-              "validForList": [
-                "ShowAndWaitClose",
-                "Show"
-              ],
-              "condition": "仅：ShowAndWaitClose, Show",
-              "defaultValue": "",
-              "variableMode": "Input"
-            },
-            "after": {
-              "key": "winSize",
-              "name": "最大尺寸/位置坐标",
-              "type": "Text",
-              "description": "最大宽度,高度：逻辑像素或屏幕工作区百分比；自定义位置填坐标。",
-              "isAdvanced": true,
-              "validForList": [
-                "ShowAndWaitClose",
-                "Show"
-              ],
-              "condition": "仅：ShowAndWaitClose, Show",
-              "defaultValue": "",
-              "variableMode": "Input"
-            }
+      "selectionsChanged": true,
+      "selections": {
+        "before": {},
+        "after": {
+          "operation": {
+            "name": "显示方式",
+            "items": [
+              {
+                "value": "contextmenu",
+                "name": "显示纵向菜单"
+              },
+              {
+                "value": "toolbar",
+                "name": "显示横向工具条"
+              }
+            ]
           }
-        ]
-      },
-      "outputs": {
-        "added": [],
-        "removed": [],
-        "changed": []
-      },
-      "selectionsChanged": false
+        }
+      }
     }
   ]
 }

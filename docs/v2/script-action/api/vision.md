@@ -99,7 +99,7 @@ OcrResult Ocr(object? source = null, string model = "small", bool detectOrientat
 OcrTableResult OcrTable(object? source = null, bool detectOrientation = false, int timeoutMs = 30000)
 ```
 
-本机表格识别（不会自动下载模型）：返回 TSV、HTML、行列数、单元格（含合并跨度与位置）与表头行数；表格文字模型固定，没有 model 参数。错误码同 Ocr。
+2.3.36 起使用本地 small 识字＋在线表格处理，会上传原图和本地识字结果，需要登录有效会员、联网及事先在识别结果窗同意上传；首版仅支持 x64。脚本不会自动下载组件或弹出上传确认。返回 TSV、HTML、行列数、单元格（含合并跨度与位置）和表头行数；文字模型固定，无 model 参数。未同意报 OCR_UPLOAD_CONSENT_REQUIRED，缺本地组件报 OCR_UNAVAILABLE；登录、会员、限流、超时及服务不可用会返回对应 OCR 错误码。
 
 | 参数声明 | 说明 |
 |---|---|

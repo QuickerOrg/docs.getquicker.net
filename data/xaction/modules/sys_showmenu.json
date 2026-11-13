@@ -11,6 +11,51 @@
   "helpLink": "https://docs.getquicker.net/v2/xaction/modules/showmenu",
   "inputs": [
     {
+      "key": "operation",
+      "name": "显示方式",
+      "type": "Enum",
+      "defaultValue": "contextmenu",
+      "required": true,
+      "variableMode": "Input",
+      "isControlField": true
+    },
+    {
+      "key": "showTitles",
+      "name": "显示按钮标题",
+      "type": "Boolean",
+      "description": "关闭时仅显示图标；无图标的项目仍显示标题。",
+      "visibleWhen": {
+        "kind": "Field",
+        "fieldKey": "operation",
+        "operator": "In",
+        "values": [
+          "toolbar"
+        ]
+      },
+      "condition": "operation 为 \"toolbar\"",
+      "defaultValue": "true",
+      "defaultValueRaw": true,
+      "variableMode": "UseVarOrInput"
+    },
+    {
+      "key": "maxDirectItems",
+      "name": "最多直接显示数量",
+      "type": "Number",
+      "description": "取值 1–20。超出数量或当前工作区宽度的项目显示在更多菜单中。",
+      "visibleWhen": {
+        "kind": "Field",
+        "fieldKey": "operation",
+        "operator": "In",
+        "values": [
+          "toolbar"
+        ]
+      },
+      "condition": "operation 为 \"toolbar\"",
+      "defaultValue": "5",
+      "defaultValueRaw": 5,
+      "variableMode": "UseVarOrInput"
+    },
+    {
       "key": "menuData",
       "name": "菜单数据",
       "type": "Text",
@@ -102,5 +147,20 @@
       "description": "点击菜单使用的鼠标按钮：Left（左键）或 Right（右键）"
     }
   ],
+  "selections": {
+    "operation": {
+      "name": "显示方式",
+      "items": [
+        {
+          "value": "contextmenu",
+          "name": "显示纵向菜单"
+        },
+        {
+          "value": "toolbar",
+          "name": "显示横向工具条"
+        }
+      ]
+    }
+  },
   "sourceFileName": "catalog.json"
 }

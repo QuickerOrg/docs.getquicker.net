@@ -79,7 +79,9 @@ comments: true
 
 ## 常用辅助功能
 
-这里集中提供辅助功能开关和管理入口，包括[高级鼠标触发](./triggers/advanced-mouse-triggers.md)等。打开管理器后仍需为目标场景配置规则；开启开关本身不会自动创建动作。
+这里集中提供辅助功能开关和管理入口，包括[高级鼠标触发](./triggers/advanced-mouse-triggers.md)等。打开管理器后仍需为目标场景配置规则。
+
+2.3.36 起，**其它鼠标操作** 增加 **Win+左键拖动：选择屏幕文字**，默认关闭；开启时补齐或启用左右 Win 引导键，关闭本项不会关闭引导键。使用方法及冲突排查见[屏幕拖选文字](./screenshot/screen-text-selection.md)。
 
 <a id="QuickCaptureSettings" />
 

@@ -1,8 +1,8 @@
 {
   "schemaVersion": 1,
-  "sourceCommit": "55a9ddee175ba8f8d626f67c1c7ab6639322a3f9",
-  "productVersion": "2.3.36+Branch.codex-arm64-verify-switch.Sha.55a9ddee175ba8f8d626f67c1c7ab6639322a3f9.55a9ddee175ba8f8d626f67c1c7ab6639322a3f9",
-  "assemblySha256": "7fc6e1e4e8179ccfe8147df47f42497676b275924dd3564f10f3cc8aa1eee653",
+  "sourceCommit": "67e1828220db71eeb4b2ce9a99cfa2838a7c8a0e",
+  "productVersion": "2.4.0-codex-ai-composer-font.1+20.Branch.codex-ai-composer-font.Sha.67e1828220db71eeb4b2ce9a99cfa2838a7c8a0e.67e1828220db71eeb4b2ce9a99cfa2838a7c8a0e",
+  "assemblySha256": "cebdf1a0a5dcf2e5e909c3c9e664bf2ecc105bd920805f3bce3b687da1cfd46c",
   "apiVersion": 1,
   "domains": [
     {
@@ -2042,7 +2042,7 @@
               "type": "UiOptions?",
               "declaration": "UiOptions? options = null",
               "optional": true,
-              "description": "只使用 Title（缺省为动作标题）；Position/Bounds/Topmost/Font 等其余字段不生效。窗口在鼠标所在屏幕的工作区居中显示。",
+              "description": "使用 Title（缺省为动作标题）、AllowResize/ShowMinimizeButton/ShowMaximizeButton（默认 false；任一按钮自动允许拉伸）；Position/Bounds/Topmost/Font 等其余字段不生效。窗口在鼠标所在屏幕的工作区居中显示；TSX 可调用 Quicker.minimize()/maximize()/restore()，不受按钮显隐限制，但仅活动且未最小化时生效，每 500ms 最多接受一次；最小化后由用户从任务栏恢复，从已有窗口回调打开的附属窗口禁用最小化。切换窗口状态后停止内容自适应，保留正常窗口尺寸。",
               "values": null
             }
           ],
@@ -10290,7 +10290,7 @@
       "name": "UiOptions",
       "description": "窗口类 UI 的共享选项（标题、位置、置顶、焦点、字体、输入法、自动关闭等）；各方法只使用其支持的字段（见方法说明），其余忽略。",
       "constructors": [
-        "UiOptions(string? Title = null, string? Help = null, string Position = \"mouse\", Rect? Bounds = null, bool Topmost = true, bool RestoreFocus = true, bool CloseOnBlur = false, bool NoFocus = false, int FontSize = 0, string? Font = null, string? Ime = null, int AutoCloseMs = 0, string? Key = null)"
+        "UiOptions(string? Title = null, string? Help = null, string Position = \"mouse\", Rect? Bounds = null, bool Topmost = true, bool RestoreFocus = true, bool CloseOnBlur = false, bool NoFocus = false, int FontSize = 0, string? Font = null, string? Ime = null, int AutoCloseMs = 0, string? Key = null, bool ShowMinimizeButton = false, bool ShowMaximizeButton = false, bool AllowResize = false)"
       ],
       "properties": [
         {
@@ -10369,6 +10369,24 @@
           "name": "Key",
           "type": "string?",
           "description": "窗口标识：再次显示同 Key 窗口时，关闭本动作仍打开的旧窗口并沿用其位置（仅 Select/SelectMany/ShowText 使用）；按动作隔离，位置不持久化。",
+          "writable": true
+        },
+        {
+          "name": "ShowMinimizeButton",
+          "type": "bool",
+          "description": "仅 Ui.React：显示最小化按钮，默认 false。",
+          "writable": true
+        },
+        {
+          "name": "ShowMaximizeButton",
+          "type": "bool",
+          "description": "仅 Ui.React：显示最大化/还原按钮，默认 false。",
+          "writable": true
+        },
+        {
+          "name": "AllowResize",
+          "type": "bool",
+          "description": "仅 Ui.React：允许拖动边缘调整尺寸，默认 false；显示最小化或最大化按钮时自动允许。手动调整后停止内容自适应。",
           "writable": true
         }
       ],

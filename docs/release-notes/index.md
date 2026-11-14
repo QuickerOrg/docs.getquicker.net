@@ -32,9 +32,17 @@ comments: true
 
 多设备使用、降级或回退前，请阅读[升级与回退](/v2/migration/upgrade-and-rollback)。各版本的具体风险也在下方对应条目中标出。
 
-本站已补充到 **2.3.36**；版本下载与完整修复记录以官网为准。
+本站已补充到 **2.3.37**；版本下载与完整修复记录以官网为准。
 
 ## 近期文档补充
+
+### 2.3.37 · 框选贴图、选字关联动作与规则分类
+
+- [Win＋Alt 框选截图并贴图](/v2/features/screenshot/capture-pro#win-alt-capture-2337)补充开关、默认关闭、编辑工具条和规则冲突说明；[高级鼠标触发](/v2/features/triggers/advanced-mouse-triggers)补充截图后展开工具条及按类型管理规则。
+- [屏幕选字](/v2/features/screenshot/screen-text-selection#text-actions-2337)补充问问 AI、文本关联动作菜单、关联条件和下载识别组件时的行为；[截图标注](/v2/features/screenshot/capture-pro)补充铅笔平滑、智能马赛克遮盖与关闭贴图按钮。
+- [触发与引用](/v2/features/actions#trigger-and-reference-2336)、[动作快捷键](/v2/features/triggers/action-hotkeys#从动作入口编辑已有规则)及[扩展热键](/v2/features/triggers/powerkeys#按引导键查看场景规则)补充类型筛选、动作参数、删除规则与更换引导键。
+- [助手字号](/v2/features/ai-and-agent#assistant-font-2337)补充输入框同步缩放、本机分别记忆输入与内容字号；[React 界面](/v2/xaction/modules/reactui#window-controls-2337)补充窗口按钮、拉伸与首次聚焦，模块参数及脚本 API 按同一发布快照重新导出。
+- **升级与回退**：[2.3.37 注意事项](/v2/migration/upgrade-and-rollback#capture-and-font-2337)说明旧设备保存设置对新开关和本机字号的影响，以及新增截图后处理的版本要求。
 
 ### 2.3.36 · 屏幕拖选文字、在线表格与会话整理
 

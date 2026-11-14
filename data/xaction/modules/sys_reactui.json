@@ -54,6 +54,31 @@
       "variableMode": "UseVarOrInput"
     },
     {
+      "key": "allowResize",
+      "name": "允许调整窗口尺寸",
+      "type": "Boolean",
+      "description": "允许拖动窗口边缘调整尺寸；显示最小化或最大化按钮时自动允许。",
+      "defaultValue": "false",
+      "defaultValueRaw": false,
+      "variableMode": "UseVarOrInput"
+    },
+    {
+      "key": "showMinimizeButton",
+      "name": "显示最小化按钮",
+      "type": "Boolean",
+      "defaultValue": "false",
+      "defaultValueRaw": false,
+      "variableMode": "UseVarOrInput"
+    },
+    {
+      "key": "showMaximizeButton",
+      "name": "显示最大化按钮",
+      "type": "Boolean",
+      "defaultValue": "false",
+      "defaultValueRaw": false,
+      "variableMode": "UseVarOrInput"
+    },
+    {
       "key": "stopIfFail",
       "name": "取消后停止",
       "type": "Boolean",

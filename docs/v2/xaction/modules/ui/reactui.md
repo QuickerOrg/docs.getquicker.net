@@ -72,6 +72,16 @@ export default function App() {
 
 <ModuleParamPreview moduleKey="sys:reactui" />
 
+## 窗口大小与首次输入焦点 {/* #window-controls-2337 */}
+
+2.3.37 起，步骤提供 **允许调整窗口尺寸、显示最小化按钮、显示最大化按钮** 三项设置，默认均关闭。打开任一窗口按钮也会自动允许拖动边缘调整尺寸；手动调整或切换窗口状态后停止根据页面内容自动收缩，保留正常窗口尺寸。最大化使用当前显示器的工作区。
+
+在 TSX 中可用 `Quicker.minimize()`、`Quicker.maximize()`、`Quicker.restore()` 控制窗口，不要求先显示相应按钮；命令仅对当前活动且未最小化的窗口生效，最小化后从任务栏恢复。作为已有窗口回调打开的附属窗口不允许最小化。
+
+需要打开后直接输入时，给 `TextField` 或 `TextArea` 设置 `autoFocus`，例如 `<TextField autoFocus wide />`。页面已有明确焦点时会保留该选择；不要给多个控件同时声明自动聚焦。
+
+普通运行隐藏标题栏的开发工具按钮，编辑、调试时仍可使用；`F12` 快捷键继续可用。
+
 ## 数据怎么进出动作
 
 本模块**不提供**在 TSX 里直接读写动作变量的 API（没有 `vars.get` / `vars.set`）。请按下面三种通道理解：

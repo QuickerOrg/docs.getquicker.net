@@ -6,6 +6,8 @@ comments: false
 sidebar_position: 10
 ---
 
+2.3.37 起，`Ui.React` 的窗口控制选项见 [UiOptions](./types/uioptions.md)；设置 `AllowResize`、`ShowMinimizeButton` 或 `ShowMaximizeButton` 后可调整窗口尺寸，默认均关闭。TSX 输入控件的自动聚焦及窗口命令用法见 [React 界面](../../xaction/modules/ui/reactui.md#window-controls-2337)。这些选项只用于 `Ui.React`，不要据此推断其它对话框也支持。
+
 {/* script-api:start */}
 
 Quicker 自己弹出的对话框、通知与窗口；操作其他程序窗口里的界面元素见 qk.Uia。用户取消返回 null（Confirm 返回 false）；每次运行最多 100 个对话框（OpenText/ShowMenu/ShowToolbar/OpenProgress/ShowImage/Pin 各计 1 次，ProgressWin 更新不计）、100 条通知（另限每秒 5 条）。各窗口的 operations 按钮（Select/ShowText/OpenText/OpenProgress）点击即关闭该窗口并返回 Operation，不执行任何操作。
@@ -553,7 +555,7 @@ object? React(string source, object? input = null, int width = 0, int height = 0
 | `object? input = null` | 传给页面的数据（可 JSON 序列化的值）。 |
 | `int width = 0` | 窗口最大宽度（DIP）；0 为 440，否则 100–4000。窗口随页面内容收缩，至少 360、至多工作区的 92%。 |
 | `int height = 0` | 窗口最大高度（DIP，含 36 的标题栏）；0 为 300，否则 100–4000。窗口随页面内容收缩，至少 220、至多工作区的 92%。 |
-| `UiOptions? options = null` | 只使用 Title（缺省为动作标题）；Position/Bounds/Topmost/Font 等其余字段不生效。窗口在鼠标所在屏幕的工作区居中显示。 |
+| `UiOptions? options = null` | 使用 Title（缺省为动作标题）、AllowResize/ShowMinimizeButton/ShowMaximizeButton（默认 false；任一按钮自动允许拉伸）；Position/Bounds/Topmost/Font 等其余字段不生效。窗口在鼠标所在屏幕的工作区居中显示；TSX 可调用 Quicker.minimize()/maximize()/restore()，不受按钮显隐限制，但仅活动且未最小化时生效，每 500ms 最多接受一次；最小化后由用户从任务栏恢复，从已有窗口回调打开的附属窗口禁用最小化。切换窗口状态后停止内容自适应，保留正常窗口尺寸。 |
 
 返回类型：`object?`。空值、用户取消和异常行为以成员及域说明为准。
 

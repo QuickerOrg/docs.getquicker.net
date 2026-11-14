@@ -13,7 +13,7 @@ sidebar_position: 10
 ## 构造
 
 ```csharp
-UiOptions(string? Title = null, string? Help = null, string Position = "mouse", Rect? Bounds = null, bool Topmost = true, bool RestoreFocus = true, bool CloseOnBlur = false, bool NoFocus = false, int FontSize = 0, string? Font = null, string? Ime = null, int AutoCloseMs = 0, string? Key = null)
+UiOptions(string? Title = null, string? Help = null, string Position = "mouse", Rect? Bounds = null, bool Topmost = true, bool RestoreFocus = true, bool CloseOnBlur = false, bool NoFocus = false, int FontSize = 0, string? Font = null, string? Ime = null, int AutoCloseMs = 0, string? Key = null, bool ShowMinimizeButton = false, bool ShowMaximizeButton = false, bool AllowResize = false)
 ```
 
 ## 属性
@@ -33,5 +33,8 @@ UiOptions(string? Title = null, string? Help = null, string Position = "mouse", 
 | `Ime` | `string?` | 输入法：on&#124;off；null 为不切换。 |
 | `AutoCloseMs` | `int` | 自动关闭时长（毫秒；0 为不自动关闭；窗口按整秒计时，不足 1 秒向上取整）。仅 Select/SelectMany/ShowImage 使用。 |
 | `Key` | `string?` | 窗口标识：再次显示同 Key 窗口时，关闭本动作仍打开的旧窗口并沿用其位置（仅 Select/SelectMany/ShowText 使用）；按动作隔离，位置不持久化。 |
+| `ShowMinimizeButton` | `bool` | 仅 Ui.React：显示最小化按钮，默认 false。 |
+| `ShowMaximizeButton` | `bool` | 仅 Ui.React：显示最大化/还原按钮，默认 false。 |
+| `AllowResize` | `bool` | 仅 Ui.React：允许拖动边缘调整尺寸，默认 false；显示最小化或最大化按钮时自动允许。手动调整后停止内容自适应。 |
 
 {/* script-api:end */}

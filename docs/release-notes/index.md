@@ -32,9 +32,17 @@ comments: true
 
 多设备使用、降级或回退前，请阅读[升级与回退](/v2/migration/upgrade-and-rollback)。各版本的具体风险也在下方对应条目中标出。
 
-本站已补充到 **2.3.37**；版本下载与完整修复记录以官网为准。
+本站已补充到 **2.3.38**；版本下载与完整修复记录以官网为准。
 
 ## 近期文档补充
+
+### 2.3.38 · 文本指令黑名单、最近动作与面板入口
+
+- [文本指令](/v2/features/triggers/text-commands#global-blacklist-2338)补充统一黑名单、全屏禁用、默认关闭和自身白名单优先；[Win 拖动规则](/v2/features/triggers/advanced-mouse-triggers#drag-priority-2338)修正辅助功能预设与自定义规则的优先级，并同步选字、框选截图指南。
+- [Quicker操作](/v2/xaction/modules/quickeroperations#recent-actions-2338)新增获取最近动作列表的使用方式和版本要求；[输入法状态](/v2/xaction/modules/imecontrol#限制与排障)说明未知状态、恢复基线和切换未确认提示；[调试报告](/v2/xaction/concepts/debug)补充 JSON 显示与报告标题。
+- [面板顶栏入口](/v2/features/action-panel/usage#scene-button-2338)说明单击打开全局、Ctrl＋单击打开当前程序动作页；[触发与引用](/v2/features/actions#trigger-and-reference-2336)补充位置和运行参数，说明动作侧窗口选择入口。
+- [AI 助手](/v2/features/ai-and-agent#整理会话与保留输入)补充删除会话受阻时的处理方式，并说明输入框换行修复；截图指南补充 Alt 热键启动修复。
+- **升级与回退**：[2.3.38 注意事项](/v2/migration/upgrade-and-rollback#triggers-and-recent-actions-2338)说明旧设备保存开关、拖动规则优先级和新增动作操作的兼容限制。
 
 ### 2.3.37 · 框选贴图、选字关联动作与规则分类
 

@@ -206,6 +206,26 @@
       "condition": "仅：GetActionList"
     },
     {
+      "key": "recentActionIds",
+      "name": "动作 ID 列表",
+      "type": "List",
+      "description": "最近运行的已安装动作 ID，最近的在前、去重，最多 30 条；排除当前调用动作和已失效动作，不含暂存区。无记录输出空列表。",
+      "validForList": [
+        "GetRecentActions"
+      ],
+      "condition": "仅：GetRecentActions"
+    },
+    {
+      "key": "recentActionItems",
+      "name": "操作项列表",
+      "type": "List",
+      "description": "与动作 ID 列表同序，每项为 [图标]标题(说明)|动作ID 的文本，可用于用户选择或显示菜单；选择后返回动作 ID，由后续步骤执行。无记录输出空列表。",
+      "validForList": [
+        "GetRecentActions"
+      ],
+      "condition": "仅：GetRecentActions"
+    },
+    {
       "key": "actionTitle",
       "name": "动作标题",
       "type": "Text",
@@ -401,6 +421,10 @@
         {
           "value": "showFloatingGroupManager",
           "name": "打开悬浮分组管理"
+        },
+        {
+          "value": "GetRecentActions",
+          "name": "获取最近使用的动作列表"
         }
       ]
     },

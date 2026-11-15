@@ -21,6 +21,14 @@ toc_max_heading_level: 2
 
 ## 数据与多设备
 
+### 2.3.38 · 文本指令黑名单与最近动作列表 {/* #triggers-and-recent-actions-2338 */}
+
+**旧客户端保存并同步常规设置，可能清除“文本指令”统一黑名单开关。** 建议会维护同一账号设置的设备均升级到 2.3.38 后，再在黑名单页开启。被旧设备覆盖后，可在新版重新开启；指令内容和黑名单名单本身不因这个新增开关丢失，见[文本指令](/v2/features/triggers/text-commands#global-blacklist-2338)。
+
+**Win 拖动预设的优先级已变化。** 常用辅助功能中的屏幕选字和框选截图预设现在优先于相同手势的用户规则；若升级后原自定义拖动规则不再触发，请先关闭冲突预设，再使用自定义规则，见[规则优先级](/v2/features/triggers/advanced-mouse-triggers#drag-priority-2338)。
+
+**新增“获取最近使用的动作列表”操作需要 2.3.38。** 旧版不能执行；动作同步或分享成功不代表旧版可运行。需要兼容旧设备时，请避免使用该操作或先统一升级，见[Quicker操作](/v2/xaction/modules/quickeroperations#recent-actions-2338)。
+
 ### 2.3.37 · 框选贴图与助手字号 {/* #capture-and-font-2337 */}
 
 **旧客户端保存并同步常规设置，可能清除 Win＋Alt 框选截图开关。** 建议会维护同一账号设置的设备均升级到 2.3.37，再开启[框选截图并贴图](/v2/features/screenshot/capture-pro#win-alt-capture-2337)。如果被旧设备覆盖，可在新版重新开启，不会因此删除图片或动作。

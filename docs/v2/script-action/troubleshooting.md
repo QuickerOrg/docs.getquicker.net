@@ -75,7 +75,7 @@ string Main(string path = @"C:\temp\不存在.txt")
 | `CODEC_VALUE_INVALID` | `qk.State.Get<T>` 读回的数据与类型不符 | 检查写入与读取的类型是否一致；文本状态用 `GetText` |
 | `INPUT_LIMIT_EXCEEDED` | 键盘输入超出本次运行的限额（如 `Type` 累计超过 2000 字符） | 之后本次运行的键鼠输入全部失败；长文本改用 `qk.Keyboard.Paste` |
 | `WINDOW_LIMIT_EXCEEDED` | 窗口查询/操作次数超限 | 用 `FindAllInfo` 一次取回多个窗口信息，避免循环里逐个 `Info` |
-| `ELEVATED_TARGET_DENIED` | 目标是管理员权限运行的程序 | 普通权限下无法操作管理员窗口 |
+| `ELEVATED_TARGET_DENIED` | 旧版的目标权限检查，或底层后端拒绝访问 | 2.3.39 起不再按管理员身份预先拒绝；升级后仍失败时，检查 Windows 权限和目标窗口的实际状态 |
 | 右键菜单点击提示“源码已更新” | 保存了新源码，菜单还是旧的 | 重新打开右键菜单 |
 | 检查提示“`qk.X.Y` 在当前 Quicker 中不存在” | 成员名写错，或当前 Quicker 版本没有它 | 按补全列表改正，或更新 Quicker |
 

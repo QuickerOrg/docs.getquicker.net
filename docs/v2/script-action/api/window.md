@@ -8,7 +8,7 @@ sidebar_position: 10
 
 {/* script-api:start */}
 
-桌面上的顶层窗口本身（查找、激活、移动/缩放、置顶、关闭等）；窗口里的按钮、输入框等界面元素见 qk.Uia。Win 仅本次运行有效；子窗口只能查询，不能激活/排列/关闭；高权限窗口被拒绝。常见错误码：WINDOW_LIMIT_EXCEEDED（超出次数或枚举上限）、WINDOW_REF_STALE（窗口已关闭）、ELEVATED_TARGET_DENIED（高权限窗口）、WINDOW_UNAVAILABLE（窗口隐藏/最小化或无法校验，不能用于该操作）、WINDOW_CHANGED（操作期间窗口被移动、改变大小或遮挡）。
+桌面上的顶层窗口本身（查找、激活、移动/缩放、置顶、关闭等）；窗口里的按钮、输入框等界面元素见 qk.Uia。不按目标管理员权限、完整性级别或 UIAccess 身份额外拦截；实际操作仍受 Windows 限制。Win 仅本次运行有效；子窗口只能查询，不能激活/排列/关闭。常见错误码：WINDOW_LIMIT_EXCEEDED（超出次数或枚举上限）、WINDOW_REF_STALE（窗口已关闭）、WINDOW_UNAVAILABLE（窗口隐藏/最小化或无法校验，不能用于该操作）、WINDOW_CHANGED（操作期间窗口被移动、改变大小或遮挡）。
 
 <a id="window-getforeground" />
 
@@ -159,7 +159,7 @@ void Activate(Win window)
 Win? ActivateProcess(string process, string? path = null, string? title = null, string? className = null, bool regex = false, string? hotkey = null, bool launch = true)
 ```
 
-进程已运行则激活其主窗口，否则按 path 以普通权限启动并等待窗口；未运行且不启动时返回 null。提权窗口在激活前被拒绝。
+进程已运行则激活其主窗口，否则按 path 以普通权限启动并等待窗口；未运行且不启动时返回 null。目标窗口的身份和状态仍由宿主校验。
 
 | 参数声明 | 说明 |
 |---|---|
@@ -227,7 +227,7 @@ void SetState(Win window, string state)
 bool Snap(Win window, string position, string? screen = null)
 ```
 
-把顶层窗口吸附到屏幕的某个位置（取目标屏幕的工作区 WorkArea：已排除任务栏，物理像素；DPI 与窗口不可见的缩放边框由宿主处理，使可见部分紧贴工作区）。最大化/最小化的窗口先还原（等还原完成）再摆放；跨 DPI 屏幕移动后系统可能重算窗口大小，宿主在窗口稳定后复核并最多补一次。目标须为顶层窗口，拒绝 Quicker 自身和提权窗口；计 1–4 次排列操作。移动与状态改变异步投递，目标窗口无响应（挂起）时 Snap 不会阻塞脚本。返回 bool：窗口稳定（连续两次读取相隔 50 毫秒相同，最多约 1 秒）后核实最终可见边界（maximize/restore 核实状态）在几个像素内才为 true，否则 false（不报错）。最多补一次且仅在稳定时。
+把顶层窗口吸附到屏幕的某个位置（取目标屏幕的工作区 WorkArea：已排除任务栏，物理像素；DPI 与窗口不可见的缩放边框由宿主处理，使可见部分紧贴工作区）。最大化/最小化的窗口先还原（等还原完成）再摆放；跨 DPI 屏幕移动后系统可能重算窗口大小，宿主在窗口稳定后复核并最多补一次。目标须为顶层窗口，拒绝 Quicker 自身窗口；计 1–4 次排列操作。移动与状态改变异步投递，目标窗口无响应（挂起）时 Snap 不会阻塞脚本。返回 bool：窗口稳定（连续两次读取相隔 50 毫秒相同，最多约 1 秒）后核实最终可见边界（maximize/restore 核实状态）在几个像素内才为 true，否则 false（不报错）。最多补一次且仅在稳定时。
 
 | 参数声明 | 说明 |
 |---|---|
@@ -386,7 +386,7 @@ DWM 可见边界的锚点加 offset，读取失败时回退窗口外框，返回
 long SendMessage(Win window, int message, long wParam = 0, object? lParam = null, bool post = false, int timeoutMs = 5000)
 ```
 
-向窗口（可为子控件）发送窗口消息并返回结果。拒绝 Quicker 自身窗口与提权窗口；计 1 次排列操作。
+向窗口（可为子控件）发送窗口消息并返回结果。拒绝 Quicker 自身窗口；计 1 次排列操作。
 
 | 参数声明 | 说明 |
 |---|---|

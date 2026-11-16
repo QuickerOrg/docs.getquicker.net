@@ -88,7 +88,7 @@ ProcInfo[] List(string? name = null)
 ProcUsage[] ListUsage(int limit = 10, string sort = "cpu", string? name = null)
 ```
 
-当前登录会话中占用最高的进程（只读）：sort 为 cpu（默认）或 memory，limit 1–100（默认 10）；name 只统计该进程名（规则同 Process.List：不含路径，可省略 .exe，不区分大小写）。CPU 取约 0.5 秒内两次采样的差值（调用会阻塞约半秒，可被停止打断），按处理器数归一；MemoryBytes 为工作集。读不到的进程（提权/管理员进程、采样期间退出）直接跳过，不报错；采样期间新启动的进程不计入；同名多进程各算一项。
+当前登录会话中占用最高的进程（只读）：sort 为 cpu（默认）或 memory，limit 1–100（默认 10）；name 只统计该进程名（规则同 Process.List：不含路径，可省略 .exe，不区分大小写）。CPU 取约 0.5 秒内两次采样的差值（调用会阻塞约半秒，可被停止打断），按处理器数归一；MemoryBytes 为工作集。读不到的进程（采样期间退出）直接跳过，不报错；采样期间新启动的进程不计入；同名多进程各算一项。
 
 | 参数声明 | 说明 |
 |---|---|

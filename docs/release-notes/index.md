@@ -32,9 +32,17 @@ comments: true
 
 多设备使用、降级或回退前，请阅读[升级与回退](/v2/migration/upgrade-and-rollback)。各版本的具体风险也在下方对应条目中标出。
 
-本站已补充到 **2.3.38**；版本下载与完整修复记录以官网为准。
+本站已补充到 **2.3.39**；版本下载与完整修复记录以官网为准。
 
 ## 近期文档补充
+
+### 2.3.39 · 选字自动复制、设置导航与面板菜单
+
+- [屏幕选字](/v2/features/screenshot/screen-text-selection#自定义引导键和触发规则)补充“显示工具栏并复制文字”、与内置预设的关系、识别等待和连续正文漏选修复；[截图与贴图](/v2/features/screenshot/capture-pro)补充圆尾内凹实心箭头和贴图工具条表格识别入口。
+- [设置导航](/v2/features/settings)说明固定分组栏与页面列表；[面板菜单](/v2/features/action-panel/usage#工具菜单)修正取消“工具”中转层后的入口，说明全局触发规则与侧栏入口。
+- [调试记录](/v2/xaction/concepts/debug)补充分支递归展开、折叠及过滤限制；[远程文件](/v2/features/remote-files#webdav)补充 WebDAV 签名直链下载；[AI 模型](/v2/what's-new/ai-services-and-models)补充 Gemini 工具调用后的 HTTP 400 修复。
+- [脚本窗口 API](/v2/script-action/api/window)和[JavaScript 自动化](/v2/xaction/modules/automationscript#权限用户接管和输入安全)修正目标提权窗口的旧限制，明确实际操作仍受 Windows 权限约束。
+- **升级与回退**：[2.3.39 注意事项](/v2/migration/upgrade-and-rollback#text-and-arrow-2339)说明新选字后处理的最低版本，以及回退保存箭头偏好后的恢复方式。
 
 ### 2.3.38 · 文本指令黑名单、最近动作与面板入口
 

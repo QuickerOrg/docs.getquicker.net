@@ -617,7 +617,7 @@ export default {
 - 授权绑定动作、脚本、超时、恢复位置选项和固定配额策略；这些内容变化后需要重新确认。
 - 授权只保存在当前账号的本机数据中，不随动作导出、分享、状态备份或同步到其它设备。
 - 只有脚本导入 `mouse` 或 `key` 时才会建立输入接管会话和占用输入互斥。仅使用 `notify`、`clipboard`、`screen`、`sleep` 或 `input` 的脚本不会占用鼠标键盘输入接管。
-- 锁屏、UAC / 安全桌面下不会注入输入。鼠标操作会核对目标坐标下的窗口，键盘操作会核对当前前台窗口；管理员权限或高完整性目标一律拒绝，其它权限高于 Quicker 或权限无法确认的目标也会被拒绝。
+- 锁屏、UAC / 安全桌面下不会注入输入。鼠标操作会核对目标坐标下的窗口，键盘操作会核对当前前台窗口。2.3.39 起，不再仅因目标已提权、完整性级别更高或无法预先读取权限而拒绝；实际输入仍受 Windows 限制，不能据此绕过系统权限。
 - 启动时已经按住的动作触发键或鼠标按钮，需要在 1 秒内松开；新的按键、鼠标按钮或滚轮输入会立即由用户接管。
 - 真实鼠标在 200 毫秒内累计移动约 5 个物理像素也会接管；极小的传感器抖动不会立刻中止。
 - 如果已经配置 Quicker 的“停止运行中动作”全局热键，也可以用它取消正在执行的自动化脚本。
@@ -692,7 +692,7 @@ export default {
 | `INPUT_BUSY` | 另一个已接入协调器的输入自动化正在运行；等待它结束。 |
 | `INPUT_MONITOR_UNAVAILABLE` | Quicker 无法可靠监测用户接管；重新启动 Quicker 后再试。 |
 | `WINDOWS_LOCKED`、`SECURE_DESKTOP`、`UNSAFE_DESKTOP` | 解锁 Windows，关闭 UAC / 安全桌面后再运行。 |
-| `ELEVATED_TARGET_DENIED`、`TARGET_PERMISSION_UNKNOWN` | 管理员权限或高完整性目标一律不支持；其它目标也不能高于 Quicker，且必须能确认权限。 |
+| `ELEVATED_TARGET_DENIED`、`TARGET_PERMISSION_UNKNOWN` | 旧版可能按目标权限拒绝；2.3.39 起已移除这类权限前置限制，仍需检查目标窗口是否存在、可访问，以及 Windows 返回的实际失败原因。 |
 | `INPUT_LIMIT_EXCEEDED`、`LIMIT_EXCEEDED` | 减少点击、滚轮、按键、文本、循环、源码规模或复杂度。 |
 | `NOTIFY_LIMIT_EXCEEDED` | 减少提示消息数量或发送频率；每次运行最多 20 条、每秒最多 5 条。 |
 | `NOTIFY_FAILED` | Quicker 提示消息发布失败；检查应用状态后重试。 |

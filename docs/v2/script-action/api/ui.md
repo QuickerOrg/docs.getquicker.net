@@ -473,7 +473,7 @@ Rect? PickArea(bool detect = true)
 Win? PickWindow()
 ```
 
-让用户点选一个窗口，返回其顶层窗口的 Win（计 1 次窗口观察；提权窗口报 ELEVATED_TARGET_DENIED）；取消返回 null。
+让用户点选一个窗口，返回其顶层窗口的 Win（计 1 次窗口观察）；取消返回 null。
 
 返回类型：`Win?`。空值、用户取消和异常行为以成员及域说明为准。
 

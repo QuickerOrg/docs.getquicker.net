@@ -8,7 +8,7 @@ sidebar_position: 10
 
 {/* script-api:start */}
 
-其他程序窗口里的界面元素（查找/读取/操作）；Quicker 自己的对话框见 qk.Ui，窗口本身见 qk.Window。window 为 null 表示前台窗口。El 仅本次运行有效；Find 找不到返回 null，元素消失或所在窗口关闭后使用 El 报 UIA_REF_STALE；高权限窗口报 ELEVATED_TARGET_DENIED；Quicker 自身窗口不能读取也不能操作，报 UIA_TARGET_DENIED；无法确定所在窗口的元素按找不到处理。常见错误码：UIA_PATTERN_UNSUPPORTED（元素不支持该操作）、UIA_NOT_FOUND（菜单项/对话框）、UIA_TIMEOUT（程序无响应，单次 10 秒）、UIA_LIMIT_EXCEEDED（每次运行读取 400 次、操作 100 次、El 1024 个、累计 120 秒）。
+其他程序窗口里的界面元素（查找/读取/操作）；Quicker 自己的对话框见 qk.Ui，窗口本身见 qk.Window。window 为 null 表示前台窗口。El 仅本次运行有效；Find 找不到返回 null，元素消失或所在窗口关闭后使用 El 报 UIA_REF_STALE；Quicker 自身窗口不能读取也不能操作，报 UIA_TARGET_DENIED；无法确定所在窗口的元素按找不到处理。常见错误码：UIA_PATTERN_UNSUPPORTED（元素不支持该操作）、UIA_NOT_FOUND（菜单项/对话框）、UIA_TIMEOUT（程序无响应，单次 10 秒）、UIA_LIMIT_EXCEEDED（每次运行读取 400 次、操作 100 次、El 1024 个、累计 120 秒）。
 
 <a id="uia-find" />
 

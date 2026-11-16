@@ -98,7 +98,7 @@ void Down(string button = "left")
 void Up(string button = "left")
 ```
 
-松开由 Down 按下的按钮（只释放，不做提权目标检查）；停止后的 finally 中也可调用。
+松开由 Down 按下的按钮（只释放）；停止后的 finally 中也可调用。
 
 | 参数声明 | 说明 |
 |---|---|

@@ -138,7 +138,7 @@ void SendKeys(string keys)
 string? WaitForKey(string? keys = null, int timeoutMs = 0, bool swallow = false)
 ```
 
-等待用户的物理按键（全局钩子，忽略模拟按键，不阻挡用户操作），返回键名（与 Keyboard.Press 相同，如 "Enter"、"A"；组合键条目带修饰键前缀，如 "Ctrl+Q"）；超时返回 null。有 Keyboard.Down/Mouse.Down 按住的键时不能调用。一次调用只返回一个键，命中后不再拦截其他按键；前台为管理员权限窗口时按键被忽略（不命中、不拦截）；每次运行最多调用 1000 次（LIMIT_EXCEEDED）。
+等待用户的物理按键（全局钩子，忽略模拟按键，不阻挡用户操作），返回键名（与 Keyboard.Press 相同，如 "Enter"、"A"；组合键条目带修饰键前缀，如 "Ctrl+Q"）；超时返回 null。有 Keyboard.Down/Mouse.Down 按住的键时不能调用。一次调用只返回一个键，命中后不再拦截其他按键；每次运行最多调用 1000 次（LIMIT_EXCEEDED）。
 
 | 参数声明 | 说明 |
 |---|---|

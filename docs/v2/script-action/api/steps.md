@@ -33,7 +33,7 @@ qk.Steps.Run("sys:quickeroperations", new {
 IReadOnlyDictionary<string, object?> Run(string key, object? inputs = null, int timeoutMs = 0)
 ```
 
-执行一个 XAction 步骤并返回其输出（键为输出参数 key；未写出的为 null；图片为 Img，表格为行字典列表；原始 C# 对象类型的输出不返回；不含 isSuccess/errMessage）。参数一律按字面值注入（"$="、"$$"、&#123;变量&#125; 都按原文传入），按参数类型转换，类型不符、未知参数、stopIfFail 与“仅变量”参数报 INVALID_ARGUMENT。所选分支用到的控制字段（operation/type/target 等）必须显式给出，否则报 INVALID_ARGUMENT 并列出可选值；传入所选分支不读取的参数也报 INVALID_ARGUMENT 并指出它属于哪个分支；其余未提供的参数取步骤默认值。文本参数不接受集合（不会自动拼接或转 JSON），请先 string.Join；窗口句柄参数（hwnd 等）可传 Win（与 qk.Window 同样拒绝提权窗口与 Quicker 自身窗口）。步骤失败报 STEP_FAILED（附步骤的错误信息，e.Detail 为步骤的错误码或异常类型名，副作用可能已发生），超时报 STEP_TIMEOUT；停止脚本会停止步骤。
+执行一个 XAction 步骤并返回其输出（键为输出参数 key；未写出的为 null；图片为 Img，表格为行字典列表；原始 C# 对象类型的输出不返回；不含 isSuccess/errMessage）。参数一律按字面值注入（"$="、"$$"、&#123;变量&#125; 都按原文传入），按参数类型转换，类型不符、未知参数、stopIfFail 与“仅变量”参数报 INVALID_ARGUMENT。所选分支用到的控制字段（operation/type/target 等）必须显式给出，否则报 INVALID_ARGUMENT 并列出可选值；传入所选分支不读取的参数也报 INVALID_ARGUMENT 并指出它属于哪个分支；其余未提供的参数取步骤默认值。文本参数不接受集合（不会自动拼接或转 JSON），请先 string.Join；窗口句柄参数（hwnd 等）可传 Win（与 qk.Window 同样拒绝 Quicker 自身窗口）。步骤失败报 STEP_FAILED（附步骤的错误信息，e.Detail 为步骤的错误码或异常类型名，副作用可能已发生），超时报 STEP_TIMEOUT；停止脚本会停止步骤。
 
 | 参数声明 | 说明 |
 |---|---|

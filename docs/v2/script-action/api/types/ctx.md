@@ -28,8 +28,8 @@ Ctx(string ActionId, Guid RunId, string ActionTitle, string Trigger, DateTimeOff
 | `Debugging` | `bool` | 见类型说明。 |
 | `Text` | `string?` | 触发上下文附带的文本（如从文本工具条触发时选中的文本）；没有为 null。与 Input 不互相回退。 |
 | `Mouse` | `Pt` | 弹出面板前的鼠标位置；没有面板（热键、调试运行）时为运行开始时的鼠标位置（与 qk.Mouse.RestorePosition 的目标相同）。 |
-| `MouseWindow` | `Win?` | 弹出面板前鼠标下的顶层窗口（句柄；不一定是前台窗口）；没有记录、已关闭或更高权限时为 null。返回或写入 State 时编码为 null，需要信息请用 qk.Window.Info。 |
-| `ActiveWindow` | `Win?` | 弹出面板前的前台窗口（句柄；即 qk.Window.RestoreForeground 的目标）；没有记录、已关闭或更高权限时为 null。返回或写入 State 时编码为 null。实时前台窗口用 qk.Window.GetForeground()。 |
+| `MouseWindow` | `Win?` | 弹出面板前鼠标下的顶层窗口（句柄；不一定是前台窗口）；没有记录或已关闭时为 null。返回或写入 State 时编码为 null，需要信息请用 qk.Window.Info。 |
+| `ActiveWindow` | `Win?` | 弹出面板前的前台窗口（句柄；即 qk.Window.RestoreForeground 的目标）；没有记录或已关闭时为 null。返回或写入 State 时编码为 null。实时前台窗口用 qk.Window.GetForeground()。 |
 | `MouseProcess` | `string?` | MouseWindow 所属进程名，不含 .exe（如 notepad，与 WinInfo.Process 一致）；没有为 null。 |
 | `MouseDpi` | `int?` | 目标点所在屏幕的 DPI；未采集时为 null。 |
 | `Input` | `string?` | 调用方传入的原始输入字符串（运行动作步骤、qk.Actions.Call 的 input、右键附加菜单的值、文本指令等；与 Main 的 quicker_in_param 同值）；没有为 null。与 Text 不互相回退。 |

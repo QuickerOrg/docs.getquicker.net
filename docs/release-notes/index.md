@@ -32,9 +32,17 @@ comments: true
 
 多设备使用、降级或回退前，请阅读[升级与回退](/v2/migration/upgrade-and-rollback)。各版本的具体风险也在下方对应条目中标出。
 
-本站已补充到 **2.3.40**；版本下载与完整修复记录以官网为准。
+本站已补充到 **2.3.41**；版本下载与完整修复记录以官网为准。
 
 ## 近期文档补充
+
+### 2.3.41 · 选字固定动作、标注样式与设置导航
+
+- [屏幕选字](/v2/features/screenshot/screen-text-selection#pinned-actions-2341)补充最多 3 个固定动作的添加、排序、删除与文本交付，并说明跨屏 Ctrl+C、内置文本菜单和两行选字排版。
+- [截图与贴图](/v2/features/screenshot/capture-pro#arrow-and-polyline-2341)补充箭头圆角、折线起止样式及交换两端；说明 OCR 历史列表随打开入口展开或收起。
+- [设置导航](/v2/features/settings#navigation-2341)补充分类标题切换与直达链接；[左键辅助](/v2/features/triggers/left-button-plus#hold-time-2341)区分辅助键长按触发时间与左键保持时间。
+- [面板入口](/v2/features/action-panel/usage#scene-button-2338)补充旧面板窄宽度下的菜单收纳；[AI 助手](/v2/features/ai-and-agent#workspace-recovery-2341)补充工作目录与路径恢复修复。
+- **升级与回退**：[2.3.41 注意事项](/v2/migration/upgrade-and-rollback#screen-text-and-settings-2341)说明旧版保存和同步对新增长按时间、本机标注样式及导航偏好的影响，并明确固定动作在 2.3.40 的保留边界。
 
 ### 2.3.40 · 提示词库、会话管理与截图文字编辑
 

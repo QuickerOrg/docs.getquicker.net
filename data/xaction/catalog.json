@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-11-15 06:25:10",
+  "generatedAt": "2026-11-17 16:41:03",
   "moduleCount": 175,
   "legacyMappedModuleCount": 0,
   "migratedLegacyModuleCount": 0,
@@ -16559,6 +16559,17 @@
             "table_quicker"
           ],
           "condition": "仅：QuickerServerOcr, LocalOcr, WindowsOcr, baidu-basic, baidu-quicker, table_quicker"
+        },
+        {
+          "key": "smartContent",
+          "name": "智能合并结果",
+          "type": "Text",
+          "description": "根据文字位置智能合并段落。保留旧版识别结果兼容，不受合并段落和标点转换参数影响。",
+          "validForList": [
+            "QuickerServerOcr",
+            "LocalOcr"
+          ],
+          "condition": "仅：QuickerServerOcr, LocalOcr"
         },
         {
           "key": "rawData",

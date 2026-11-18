@@ -32,9 +32,16 @@ comments: true
 
 多设备使用、降级或回退前，请阅读[升级与回退](/v2/migration/upgrade-and-rollback)。各版本的具体风险也在下方对应条目中标出。
 
-本站已补充到 **2.3.39**；版本下载与完整修复记录以官网为准。
+本站已补充到 **2.3.40**；版本下载与完整修复记录以官网为准。
 
 ## 近期文档补充
+
+### 2.3.40 · 提示词库、会话管理与截图文字编辑
+
+- [AI 提示词库](/v2/features/ai-and-agent#prompt-library-2340)补充按场景管理、快捷命令、账号同步及冲突处理；[会话历史](/v2/features/ai-and-agent#conversation-history-2340)说明集中预览、归档、恢复和永久删除的范围。
+- [截图与贴图](/v2/features/screenshot/capture-pro)补充自定义快捷键、录屏 `Alt+F10`、文字局部格式与对齐、OCR 智能排版和 Agent 版本要求；[基础 OCR](/v2/xaction/modules/basic-ocr#输出)说明新的“智能合并结果”输出。
+- [设置导航](/v2/features/settings)、[隐藏分组标题](/v2/features/action-panel/usage#hide-group-titles-2340)、[动作快捷键](/v2/features/triggers/action-hotkeys)和[屏幕选字](/v2/features/screenshot/screen-text-selection)同步到本版入口与操作方式；[表格行编辑](/v2/xaction/concepts/tablevar#管理表格数据)补充多行文本与编辑器回填。
+- **升级与回退**：[2.3.40 注意事项](/v2/migration/upgrade-and-rollback#prompts-and-ocr-2340)说明旧提示词不自动导入、旧版重存文字样式和 OCR 快照的影响，以及普通键选字规则的版本要求。
 
 ### 2.3.39 · 选字自动复制、设置导航与面板菜单
 

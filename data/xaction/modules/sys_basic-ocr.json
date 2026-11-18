@@ -229,6 +229,17 @@
       "condition": "仅：QuickerServerOcr, LocalOcr, WindowsOcr, baidu-basic, baidu-quicker, table_quicker"
     },
     {
+      "key": "smartContent",
+      "name": "智能合并结果",
+      "type": "Text",
+      "description": "根据文字位置智能合并段落。保留旧版识别结果兼容，不受合并段落和标点转换参数影响。",
+      "validForList": [
+        "QuickerServerOcr",
+        "LocalOcr"
+      ],
+      "condition": "仅：QuickerServerOcr, LocalOcr"
+    },
+    {
       "key": "rawData",
       "name": "原始结果",
       "type": "Text",

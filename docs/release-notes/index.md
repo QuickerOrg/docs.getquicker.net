@@ -32,9 +32,16 @@ comments: true
 
 多设备使用、降级或回退前，请阅读[升级与回退](/v2/migration/upgrade-and-rollback)。各版本的具体风险也在下方对应条目中标出。
 
-本站已补充到 **2.3.41**；版本下载与完整修复记录以官网为准。
+本站已补充到 **2.3.42**；版本下载与完整修复记录以官网为准。
 
 ## 近期文档补充
+
+### 2.3.42 · 截图速度与设置直达动作
+
+- [截图速度](/v2/features/screenshot/capture-pro#capture-speed-2342)说明默认开启的速度优化、本机资源占用与关闭方式，并补充远程标注卡顿和文字框切换、撤销行为的改进。
+- [设置直达动作](/v2/features/settings#navigation-actions-2342)说明从帮助按钮复制设置页动作，以及携带场景复制或拖入轮盘的操作。
+- [动作面板](/v2/features/action-panel/usage)补充旧面板按钮逐个收起、浏览器父场景排序和同步转圈修复；[会话历史](/v2/features/ai-and-agent#conversation-history-2340)补充旧设置会话的删除修复；[动作分享](/v2/features/action-sharing)补充更新说明编辑器入口和字数限制。
+- **升级与回退**：[2.3.42 注意事项](/v2/migration/upgrade-and-rollback#capture-speed-2342)说明旧版保存本机配置可能清除截图速度的关闭偏好，以及重新设置与备份方式。
 
 ### 2.3.41 · 选字固定动作、标注样式与设置导航
 

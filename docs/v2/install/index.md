@@ -14,6 +14,7 @@ V2 安装包从 [https://getquicker.net/V2](https://getquicker.net/V2) 下载。
 | 文档 | 内容 |
 | --- | --- |
 | [安装 Quicker V2](./windows.md) | 系统要求、下载、首次启动；两代不能同时安装 |
+| [Quicker 安装器与修复工具](./installer.md) | 安装运行环境、选择历史版本，以及启动、显示、连接和安装状态修复 |
 | [更新 Quicker V2](./update.md) | 应用内检查更新、安装流程、校验和安装日志 |
 | [卸载 Quicker V2](./uninstall.md) | 从 Windows 卸载、保留数据重装及清理本机数据 |
 | [数据目录与迁移](./data-location.md) | 本机数据与截图历史的位置、迁移到其他磁盘及迁回 |

@@ -21,7 +21,7 @@ comments: true
 ## 下载和安装
 
 1. 普通 x64 电脑从[官网 V2 页面](https://getquicker.net/V2)下载；Windows on ARM 电脑请直接使用 [ARM64 版本记录与完整 MSI 下载](https://getquicker.net/V2/Versions?arch=arm64&platform=windows&framework=net10)，不要把普通下载入口得到的 x64 包当作 ARM64 原生包。
-2. 按向导完成安装。若提示缺少 [.NET 10 桌面运行时](https://dotnet.microsoft.com/download/dotnet/10.0)，选择与 Quicker 安装包相同的 x64 或 ARM64 桌面运行时，安装后再打开 Quicker。
+2. 下载的是独立安装器 `.exe` 时，按[安装器说明](./installer.md)先准备运行环境，再安装 Quicker。下载完整 `.msi` 时，按向导完成安装；若提示缺少 [.NET 10 桌面运行时](https://dotnet.microsoft.com/download/dotnet/10.0)，选择与 Quicker 安装包相同的 x64 或 ARM64 桌面运行时，安装后再打开 Quicker。
 3. 若 Windows SmartScreen 或浏览器拦截，先确认文件来自上述官网，再选择保留并继续。
 
 **不要**从 [https://getquicker.net/Download](https://getquicker.net/Download) 下载。那个页面目前提供的是 Quicker **1.x**（例如 1.45.5），不是 V2。

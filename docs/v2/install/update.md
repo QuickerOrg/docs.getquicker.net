@@ -8,11 +8,9 @@ comments: true
 
 # 更新 Quicker V2
 
-:::caution[Preview · 仅专业版]
-当前 V2 是 **Preview 体验版**，仅面向专业版用户。回退到更早版本前，先看 [升级与回退](/v2/migration/upgrade-and-rollback) 和 [官网版本记录](https://getquicker.net/v2/versions) 里该版本的注意项。
-:::
-
 日常升级优先用软件内的更新窗口，不要去 `https://getquicker.net/Download` 找 1.x 安装包。需要手动下载某个 2.x 安装器时，用 [https://getquicker.net/V2](https://getquicker.net/V2) 或 [版本记录](https://getquicker.net/v2/versions)。
+
+回退到更早版本前，先看 [升级与回退](/v2/migration/upgrade-and-rollback) 和 [官网版本记录](https://getquicker.net/v2/versions) 里该版本的注意项。
 
 ## 应用内更新
 
@@ -87,5 +85,7 @@ Windows on ARM 电脑安装 ARM64 原生版后，内置更新会按当前客户�
 2. 核对 Windows 仍在支持范围内，安装包与 .NET 10 桌面运行时的 x64 / ARM64 架构一致。
 3. 看安全软件是否隔离了安装器或更新程序。
 4. 仍失败时，从 [版本记录](https://getquicker.net/v2/versions) 下载对应安装包手动安装；不要覆盖 1.x 数据目录。
+
+缺少运行环境时，可用[Quicker 安装器](./installer.md#安装运行环境与-quicker)补齐；若明确提示旧 MSI 缓存或安装记录损坏，先阅读[安装状态修复前确认](./installer.md#安装状态修复前确认)，再决定是否清理旧安装状态并重新安装。
 
 降级不是「点一下就回去」。从 2.1.0 降到 2.0.x 可能清掉新数据结构；从 2.1.17 降到 2.1.15 需要重填 AI API 密钥。见 [升级与回退](/v2/migration/upgrade-and-rollback)。

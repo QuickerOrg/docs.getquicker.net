@@ -1,0 +1,1129 @@
+{
+  "schemaVersion": 1,
+  "generatedAt": "2026-11-22 17:10:45",
+  "moduleCount": 176,
+  "categories": [
+    {
+      "key": "Basic",
+      "name": "基础",
+      "moduleCount": 14
+    },
+    {
+      "key": "Waiting",
+      "name": "等待",
+      "moduleCount": 4
+    },
+    {
+      "key": "Text",
+      "name": "文本处理",
+      "moduleCount": 11
+    },
+    {
+      "key": "Image",
+      "name": "图片处理",
+      "moduleCount": 15
+    },
+    {
+      "key": "Clipboard",
+      "name": "剪贴板操作",
+      "moduleCount": 5
+    },
+    {
+      "key": "Flow",
+      "name": "程序流程",
+      "moduleCount": 15
+    },
+    {
+      "key": "System",
+      "name": "Windows 系统",
+      "moduleCount": 24
+    },
+    {
+      "key": "Files",
+      "name": "文件与系统操作",
+      "moduleCount": 11
+    },
+    {
+      "key": "Compute",
+      "name": "计算与比较",
+      "moduleCount": 14
+    },
+    {
+      "key": "Network",
+      "name": "网络服务",
+      "moduleCount": 14
+    },
+    {
+      "key": "Ui",
+      "name": "界面组件",
+      "moduleCount": 13
+    },
+    {
+      "key": "SoftInteraction",
+      "name": "第三方软件交互",
+      "moduleCount": 27
+    },
+    {
+      "key": "Input",
+      "name": "键鼠输入",
+      "moduleCount": 2
+    }
+  ],
+  "modules": [
+    {
+      "key": "sys:askAi",
+      "name": "问问AI",
+      "description": "打开问问AI并预填材料，可自动发送且不另行确认。材料可能发送到配置的模型并产生费用；后续助手工具调用沿用审批规则。不等待或返回回答。",
+      "category": "Ai"
+    },
+    {
+      "key": "sys:ai",
+      "name": "AI 调用",
+      "description": "调用第三方AI服务",
+      "category": "Ai"
+    },
+    {
+      "key": "sys:aiChat",
+      "name": "AI 交互对话",
+      "description": "打开流式 AI 对话窗口，支持追问并显式采用回答",
+      "category": "Ai"
+    },
+    {
+      "key": "sys:aiExtract",
+      "name": "AI 结构化提取",
+      "description": "使用全局 AI 设置按 JSON Schema 从文本中提取结构化数据",
+      "category": "Ai"
+    },
+    {
+      "key": "sys:aiVision",
+      "name": "AI 图片理解",
+      "description": "使用全局 AI 设置理解图片内容并回答问题",
+      "category": "Ai"
+    },
+    {
+      "key": "sys:aiText",
+      "name": "AI 文本处理",
+      "description": "使用全局 AI 设置总结、改写、翻译或处理文本",
+      "category": "Ai"
+    },
+    {
+      "key": "sys:aiClassify",
+      "name": "AI 文本分类",
+      "description": "使用全局 AI 设置从给定分类中选择一个稳定 Key",
+      "category": "Ai"
+    },
+    {
+      "key": "sys:openUrl",
+      "name": "打开网址",
+      "description": "打开指定的网址",
+      "category": "Basic"
+    },
+    {
+      "key": "sys:MsgBox",
+      "name": "弹窗提示或确认",
+      "description": "弹窗显示提示或确认对话框",
+      "category": "Basic"
+    },
+    {
+      "key": "sys:outputText",
+      "name": "发送文本到窗口",
+      "description": "将文本输出到活动窗口中",
+      "category": "Basic"
+    },
+    {
+      "key": "sys:getSelectedText",
+      "name": "获取选中的文本",
+      "description": "获取选中的文字",
+      "category": "Basic"
+    },
+    {
+      "key": "sys:keyInput",
+      "name": "模拟按键A（录入）",
+      "description": "模拟键盘输入",
+      "category": "Basic"
+    },
+    {
+      "key": "sys:sendKeys",
+      "name": "模拟按键B（参数）",
+      "description": "发送按键和文本",
+      "category": "Basic"
+    },
+    {
+      "key": "sys:log",
+      "name": "输出日志",
+      "description": "记录动作运行中的信息，供后续查看和排查问题。通常只需填写内容，时间、动作和步骤信息由 Quicker 自动补充并统一管理。",
+      "category": "Basic"
+    },
+    {
+      "key": "sys:mouse",
+      "name": "鼠标输入",
+      "description": "模拟鼠标输入",
+      "category": "Basic"
+    },
+    {
+      "key": "sys:notify",
+      "name": "提示消息",
+      "description": "显示可以自动消失的消息提示。",
+      "category": "Basic"
+    },
+    {
+      "key": "sys:userInput",
+      "name": "用户输入",
+      "description": "请用户输入内容。",
+      "category": "Basic"
+    },
+    {
+      "key": "sys:select",
+      "name": "用户选择",
+      "description": "请用户选择一个选项。",
+      "category": "Basic"
+    },
+    {
+      "key": "sys:run",
+      "name": "运行或打开",
+      "description": "运行软件或命令，打开文件、文件夹或网址。效果类似于在Windows\"运行\"对话框中执行命令。",
+      "category": "Basic"
+    },
+    {
+      "key": "sys:runScript",
+      "name": "运行脚本",
+      "description": "运行脚本。",
+      "category": "Basic"
+    },
+    {
+      "key": "sys:comment",
+      "name": "注释",
+      "description": "使用注释将步骤分组，描述后续步骤的目的。",
+      "category": "Basic"
+    },
+    {
+      "key": "sys:getClipboardImage",
+      "name": "获取剪贴板图片",
+      "description": "读取剪贴板中的图片内容输出到图片变量中。",
+      "category": "Clipboard"
+    },
+    {
+      "key": "sys:getClipboardText",
+      "name": "获取剪贴板文本",
+      "description": "读取剪贴板中的文本内容",
+      "category": "Clipboard"
+    },
+    {
+      "key": "sys:getClipboardFiles",
+      "name": "获取剪贴板文件列表",
+      "description": "获取剪贴板中复制的文件(或文件夹)的路径列表",
+      "category": "Clipboard"
+    },
+    {
+      "key": "sys:fileToClipboard",
+      "name": "文件放入剪贴板",
+      "description": "将文件或文件列表存入剪贴板",
+      "category": "Clipboard"
+    },
+    {
+      "key": "sys:writeClipboard",
+      "name": "写入剪贴板",
+      "description": "将文本或图片等内容写入剪贴板",
+      "category": "Clipboard"
+    },
+    {
+      "key": "sys:numCompare",
+      "name": "比较数字",
+      "description": "比较数字大小。",
+      "category": "Compute"
+    },
+    {
+      "key": "sys:strCompare",
+      "name": "比较文本",
+      "description": "文本比较",
+      "category": "Compute"
+    },
+    {
+      "key": "sys:tableoperation",
+      "name": "表格数据操作",
+      "description": "表格变量的相关处理操作",
+      "category": "Compute"
+    },
+    {
+      "key": "sys:dictOperations",
+      "name": "词典操作",
+      "description": "对词典变量进行添加、删除等操作",
+      "category": "Compute"
+    },
+    {
+      "key": "sys:assign",
+      "name": "赋值",
+      "description": "为变量赋值。",
+      "category": "Compute"
+    },
+    {
+      "key": "sys:manageList",
+      "name": "管理和排序列表",
+      "description": "对列表内容进行手工排序、添加、删除等操作",
+      "category": "Compute"
+    },
+    {
+      "key": "sys:compute",
+      "name": "计算",
+      "description": "对表达式进行计算。",
+      "category": "Compute"
+    },
+    {
+      "key": "sys:computeTime",
+      "name": "计算时间",
+      "description": "时间相关的计算操作",
+      "category": "Compute"
+    },
+    {
+      "key": "sys:listOperations",
+      "name": "列表操作",
+      "description": "对列表变量进行添加、删除等操作",
+      "category": "Compute"
+    },
+    {
+      "key": "sys:color",
+      "name": "屏幕取色/颜色转换与计算",
+      "description": "转换颜色值及相关计算处理",
+      "category": "Compute"
+    },
+    {
+      "key": "sys:randomNum",
+      "name": "生成随机数",
+      "description": "生成随机数",
+      "category": "Compute"
+    },
+    {
+      "key": "sys:newGuid",
+      "name": "生成Guid",
+      "description": "生成一个新的Guid(全局唯一ID标示符)，并转换为文本格式。",
+      "category": "Compute"
+    },
+    {
+      "key": "sys:dboperation",
+      "name": "数据库查询",
+      "description": "对数据库执行SQL语句并返回结果",
+      "category": "Compute"
+    },
+    {
+      "key": "sys:numberprocess",
+      "name": "数字转换与处理",
+      "description": "数字转换为文本等相关处理",
+      "category": "Compute"
+    },
+    {
+      "key": "sys:readFile",
+      "name": "读取文件",
+      "description": "将读取的文本或图片内容写入变量。",
+      "category": "Files"
+    },
+    {
+      "key": "sys:checkPathExists",
+      "name": "检查路径/获取文件信息",
+      "description": "检查指定的文件或文件夹是否存在。",
+      "category": "Files"
+    },
+    {
+      "key": "sys:GenTempFilePath",
+      "name": "生成临时文件路径",
+      "description": "根据指定的扩展名生成一个随机的临时文件名（完整路径），供后续步骤写入文件使用。",
+      "category": "Files"
+    },
+    {
+      "key": "sys:everythingsearch",
+      "name": "使用Everything搜索文件",
+      "description": "调用Everything提供的接口搜索文件",
+      "category": "Files"
+    },
+    {
+      "key": "sys:pathExtraction",
+      "name": "提取文件路径信息/生成路径",
+      "description": "从文件路径中提取文件名、文件夹等信息",
+      "category": "Files"
+    },
+    {
+      "key": "sys:fileOperation",
+      "name": "文件和目录操作",
+      "description": "文件和目录操作。请确保路径是合法的。",
+      "category": "Files"
+    },
+    {
+      "key": "sys:WriteImageFile",
+      "name": "写入图片文件",
+      "description": "将图片内容写入文件",
+      "category": "Files"
+    },
+    {
+      "key": "sys:WriteTextFile",
+      "name": "写入文本文件",
+      "description": "将内容写入文本文件",
+      "category": "Files"
+    },
+    {
+      "key": "sys:stateStorage",
+      "name": "状态存取",
+      "description": "存取状态数据；更新动作的徽标文字；设置附加的动作右键菜单项",
+      "category": "Files"
+    },
+    {
+      "key": "sys:pdf",
+      "name": "PDF 文件处理",
+      "description": "创建、合并、拆分、调整、保护或在 PDF 页面上叠加内容。",
+      "category": "Files"
+    },
+    {
+      "key": "sys:zip",
+      "name": "Zip压缩打包",
+      "description": "Zip压缩或解压缩",
+      "category": "Files"
+    },
+    {
+      "key": "sys:group",
+      "name": "步骤组",
+      "description": "一组有关的模块（方便整体禁用、删除等）",
+      "category": "Flow"
+    },
+    {
+      "key": "sys:dependencycheck",
+      "name": "检查和下载依赖",
+      "description": "检查和下载依赖的外部文件包。",
+      "category": "Flow"
+    },
+    {
+      "key": "sys:each",
+      "name": "每个",
+      "description": "对列表的每项执行处理",
+      "category": "Flow"
+    },
+    {
+      "key": "sys:simpleIf",
+      "name": "如果",
+      "description": "依据条件执行操作",
+      "category": "Flow"
+    },
+    {
+      "key": "sys:if",
+      "name": "如果/否则",
+      "description": "依据条件执行操作",
+      "category": "Flow"
+    },
+    {
+      "key": "sys:break",
+      "name": "跳出循环(break)",
+      "description": "跳出循环（\"每个\" 或 \"重复\" 模块）",
+      "category": "Flow"
+    },
+    {
+      "key": "sys:continue",
+      "name": "跳过后续步骤(continue)",
+      "description": "跳过后续步骤（循环内部），开始下一次循环。在循环内部使用。",
+      "category": "Flow"
+    },
+    {
+      "key": "sys:stop",
+      "name": "停止(return)",
+      "description": "停止动作或从子程序中返回",
+      "category": "Flow"
+    },
+    {
+      "key": "sys:runAction",
+      "name": "运行或停止动作",
+      "description": "执行指定的其他动作",
+      "category": "Flow"
+    },
+    {
+      "key": "sys:subprogram",
+      "name": "运行子程序",
+      "description": "运行子程序",
+      "category": "Flow"
+    },
+    {
+      "key": "sys:csscript",
+      "name": "运行C#代码",
+      "description": "执行C#代码。可写完整 Exec(context)，或纯脚本（末行表达式即返回值；可用 context 读写变量）。async Task 由宿主等待。",
+      "category": "Flow"
+    },
+    {
+      "key": "sys:csharpFileApp",
+      "name": "运行C#文件应用",
+      "description": "使用.NET SDK运行C# file-based app。支持新语法、NuGet包引用和WPF等SDK功能。",
+      "category": "Flow"
+    },
+    {
+      "key": "sys:jsscript",
+      "name": "运行Javascript代码",
+      "description": "执行Js代码片段。代码中应包含主函数exec()，请参考文档。",
+      "category": "Flow"
+    },
+    {
+      "key": "sys:pythonscript",
+      "name": "运行Python代码",
+      "description": "执行Python代码片段。",
+      "category": "Flow"
+    },
+    {
+      "key": "sys:repeat",
+      "name": "重复",
+      "description": "循环指定的次数，或符合某个条件时中止",
+      "category": "Flow"
+    },
+    {
+      "key": "sys:imageinfo",
+      "name": "读取图片信息",
+      "description": "获取图片的尺寸或exif信息",
+      "category": "Image"
+    },
+    {
+      "key": "sys:screenRecording",
+      "name": "后台屏幕录制",
+      "description": "后台录制屏幕区域为视频文件，动作结束后继续录制，可通过同一会话 ID 跨动作运行暂停、继续或结束。",
+      "category": "Image"
+    },
+    {
+      "key": "sys:screenCapturePro",
+      "name": "交互截图",
+      "description": "打开 Quicker 截图进行框选、标注、贴图或识别，或打开采集历史与截图设置。默认自动吸附，可关闭后用滚轮手动调整选区。",
+      "category": "Image"
+    },
+    {
+      "key": "sys:tempImgBed",
+      "name": "临时图床",
+      "description": "将图片上传到临时（1分钟后删除）的图床，用以搜图等场景。勿上传非法内容。",
+      "category": "Image"
+    },
+    {
+      "key": "sys:screenCapture",
+      "name": "屏幕截图",
+      "description": "截取屏幕区域",
+      "category": "Image"
+    },
+    {
+      "key": "sys:screenRecordingUI",
+      "name": "屏幕录制",
+      "description": "弹出选区 UI 让用户框选录制范围，打开录屏工具栏进行可视化录制，录完后返回文件路径。",
+      "category": "Image"
+    },
+    {
+      "key": "sys:searchBmp",
+      "name": "屏幕找图/找色/找字",
+      "description": "在屏幕上查找图片里的内容出现的位置",
+      "category": "Image"
+    },
+    {
+      "key": "sys:createQrCode",
+      "name": "生成二维码",
+      "description": "将文本转换为二维码",
+      "category": "Image"
+    },
+    {
+      "key": "sys:readQrCode",
+      "name": "识别二维码",
+      "description": "识别图片中的二维码",
+      "category": "Image"
+    },
+    {
+      "key": "sys:whiteboard",
+      "name": "手写板",
+      "description": "手写内容，生成图片对象。",
+      "category": "Image"
+    },
+    {
+      "key": "sys:pinImage",
+      "name": "贴图",
+      "description": "创建贴图，或控制贴图显隐、恢复及分组。创建时按来源自动识别图片、HTML、公式、OCR 原始结果或文本。",
+      "category": "Image"
+    },
+    {
+      "key": "sys:imgToBase64",
+      "name": "图片/Base64 转换",
+      "description": "图片和Base64转换",
+      "category": "Image"
+    },
+    {
+      "key": "sys:imgProcess",
+      "name": "图片处理",
+      "description": "图片处理和变换",
+      "category": "Image"
+    },
+    {
+      "key": "sys:showImage",
+      "name": "显示图片",
+      "description": "在屏幕上显示图片。输入文件路径/url或图片变量。",
+      "category": "Image"
+    },
+    {
+      "key": "sys:longScreenshot",
+      "name": "长截图",
+      "description": "先使用屏幕选区工具选择范围，再进行长截图。",
+      "category": "Image"
+    },
+    {
+      "key": "sys:inputScript",
+      "name": "多步骤输入",
+      "description": "多步骤键盘组合输入",
+      "category": "Input"
+    },
+    {
+      "key": "sys:automationScript",
+      "name": "自动化脚本",
+      "description": "使用 JavaScript 编排鼠标、键盘等桌面自动化操作。",
+      "category": "Input"
+    },
+    {
+      "key": "sys:cloud_oss",
+      "name": "第三方云存储/图床",
+      "description": "使用第三方云服务上传文件。",
+      "category": "Network"
+    },
+    {
+      "key": "sys:mobileNotification",
+      "name": "发送手机通知",
+      "description": "向已授权并在线的 Android 设备发送可响应通知。",
+      "category": "Network"
+    },
+    {
+      "key": "sys:mathocr",
+      "name": "公式识别",
+      "description": "数学公式识别",
+      "category": "Network"
+    },
+    {
+      "key": "sys:translation",
+      "name": "机器翻译/词典",
+      "description": "调用第三方服务翻译文字到指定的语言。此功能需要单独付费使用，详情请参考文档。",
+      "category": "Network"
+    },
+    {
+      "key": "sys:basic-ocr",
+      "name": "基础OCR",
+      "description": "获取图片中的文字",
+      "category": "Network"
+    },
+    {
+      "key": "sys:tempcloudstore",
+      "name": "临时云存储",
+      "description": "将文本、文件、图片临时保存到云端并得到网址。",
+      "category": "Network"
+    },
+    {
+      "key": "sys:htmlExtract",
+      "name": "提取HTML内容",
+      "description": "从HTML代码中提取内容",
+      "category": "Network"
+    },
+    {
+      "key": "sys:download",
+      "name": "下载文件",
+      "description": "下载网络文件(请勿用于下载大文件)",
+      "category": "Network"
+    },
+    {
+      "key": "sys:remoteFile",
+      "name": "远程文件",
+      "description": "通过 WebDAV / S3 读写文本和图片、复制文件、批量读取或传输文件夹，也支持列目录、查询、删除和移动；可获取本机账号列表供选择窗口使用。账号在设置中管理。",
+      "category": "Network"
+    },
+    {
+      "key": "sys:clouddata",
+      "name": "云状态存取",
+      "description": "根据键值读取或写入网络数据。",
+      "category": "Network"
+    },
+    {
+      "key": "sys:httpserver",
+      "name": "HTTP服务器",
+      "description": "创建临时的本地HTTP服务器，从而可以从移动端或其它设备访问。",
+      "category": "Network"
+    },
+    {
+      "key": "sys:http",
+      "name": "HTTP请求",
+      "description": "发送HTTP请求，并获取返回结果",
+      "category": "Network"
+    },
+    {
+      "key": "sys:smtp",
+      "name": "SMTP发送邮件",
+      "description": "使用SMTP协议发送邮件",
+      "category": "Network"
+    },
+    {
+      "key": "sys:websocket",
+      "name": "Websocket",
+      "description": "Websocket相关操作",
+      "category": "Network"
+    },
+    {
+      "key": "sys:3dsmaxcontrol",
+      "name": "3ds Max控制",
+      "description": "通过 3ds Max Python 插件发送命令；仅有一个在线连接时直接使用，多个连接时按动作触发窗口定位。",
+      "category": "SoftInteraction"
+    },
+    {
+      "key": "sys:uiautomation",
+      "name": "窗口界面控制",
+      "description": "触发Windows窗口的菜单/按钮等控件。",
+      "category": "SoftInteraction"
+    },
+    {
+      "key": "sys:flauiautomation",
+      "name": "窗口界面控制(FlaUI)",
+      "description": "触发Windows窗口的菜单/按钮等控件(通过FlaUI库实现)。",
+      "category": "SoftInteraction"
+    },
+    {
+      "key": "sys:getChromeUrl",
+      "name": "获取浏览器网址",
+      "description": "获取当前浏览器网址。",
+      "category": "SoftInteraction"
+    },
+    {
+      "key": "sys:chromecontrol",
+      "name": "浏览器控制",
+      "description": "与Chrome/Edge/Firefox等浏览器通信，控制网页或浏览器。",
+      "category": "SoftInteraction"
+    },
+    {
+      "key": "sys:motuyuncontrol",
+      "name": "模兔云控制",
+      "description": "通过模兔云本机服务搜索并执行 SketchUp 插件命令。",
+      "category": "SoftInteraction"
+    },
+    {
+      "key": "sys:adobesoftscontrol",
+      "name": "Adobe系列软件控制",
+      "category": "SoftInteraction"
+    },
+    {
+      "key": "sys:aftereffectscontrol",
+      "name": "After Effects控制",
+      "description": "通过 After Effects CEP 扩展调用工程、合成和 ExtendScript 能力。",
+      "category": "SoftInteraction"
+    },
+    {
+      "key": "sys:autocadcontrol",
+      "name": "AutoCAD控制",
+      "description": "通过低权限代理或 HTTP Bridge 调用 AutoCAD。",
+      "category": "SoftInteraction"
+    },
+    {
+      "key": "sys:blendercontrol",
+      "name": "Blender控制",
+      "description": "通过 Blender Python Extension 发送命令；仅有一个在线连接时直接使用，多个连接时按动作触发窗口定位。",
+      "category": "SoftInteraction"
+    },
+    {
+      "key": "sys:cinema4dcontrol",
+      "name": "Cinema 4D控制",
+      "description": "通过 Cinema 4D Python 插件发送命令；仅有一个在线连接时直接使用，多个连接时按动作触发窗口定位。",
+      "category": "SoftInteraction"
+    },
+    {
+      "key": "sys:coreldrawcontrol",
+      "name": "CorelDRAW控制",
+      "description": "通过 CorelDRAW Add-on 调用文档、页面、选择、对象、图层、视图和脚本能力",
+      "category": "SoftInteraction"
+    },
+    {
+      "key": "sys:excelObjects",
+      "name": "Excel对象操作",
+      "description": "操作Excel的某个对象",
+      "category": "SoftInteraction"
+    },
+    {
+      "key": "sys:excelRange",
+      "name": "Excel区域操作",
+      "description": "操作Excel的某个区域或单元格",
+      "category": "SoftInteraction"
+    },
+    {
+      "key": "sys:excelreadwrite",
+      "name": "Excel文件读写",
+      "description": "读取Excel文件内容或写入Excel文件",
+      "category": "SoftInteraction"
+    },
+    {
+      "key": "sys:illustratorcontrol",
+      "name": "Illustrator控制",
+      "description": "通过 Illustrator CEP 扩展调用文档、选择、图层、画板、文本和 ExtendScript 能力。",
+      "category": "SoftInteraction"
+    },
+    {
+      "key": "sys:indesigncontrol",
+      "name": "InDesign控制",
+      "description": "通过 InDesign UXP 启动脚本调用文档、页面、对象、图层、文本、样式和 ExtendScript 能力。",
+      "category": "SoftInteraction"
+    },
+    {
+      "key": "sys:mastercamcontrol",
+      "name": "Mastercam控制",
+      "description": "通过 Mastercam 2024/2027 NET-Hook 发送命令；仅有一个在线连接时直接使用，多个连接时按动作触发窗口定位。",
+      "category": "SoftInteraction"
+    },
+    {
+      "key": "sys:mayacontrol",
+      "name": "Maya控制",
+      "description": "通过 Maya Python 插件发送命令；仅有一个在线连接时直接使用，多个连接时按动作触发窗口定位。",
+      "category": "SoftInteraction"
+    },
+    {
+      "key": "sys:officehelper",
+      "name": "Office软件辅助",
+      "description": "辅助控制Office软件",
+      "category": "SoftInteraction"
+    },
+    {
+      "key": "sys:photoshopcontrol",
+      "name": "Photoshop控制",
+      "description": "通过 Photoshop UXP 插件调用文档、图层、选择、图像与脚本能力。",
+      "category": "SoftInteraction"
+    },
+    {
+      "key": "sys:premierecontrol",
+      "name": "Premiere Pro控制",
+      "description": "通过 Premiere UXP 插件调用项目、序列、时间线、媒体、标记和脚本能力。",
+      "category": "SoftInteraction"
+    },
+    {
+      "key": "sys:revitcontrol",
+      "name": "Revit控制",
+      "description": "通过 Revit Add-in 调用项目、选择、元素、参数、视图和 C# 脚本能力",
+      "category": "SoftInteraction"
+    },
+    {
+      "key": "sys:rhinocontrol",
+      "name": "Rhino软件控制",
+      "description": "向Rhino发送命令或脚本",
+      "category": "SoftInteraction"
+    },
+    {
+      "key": "sys:sketchupcontrol",
+      "name": "SketchUp控制",
+      "description": "通过 SketchUp Ruby 扩展发送命令；仅有一个在线连接时直接使用，多个连接时按动作触发窗口定位。",
+      "category": "SoftInteraction"
+    },
+    {
+      "key": "sys:solidworkscontrol",
+      "name": "SOLIDWORKS控制",
+      "description": "通过 SOLIDWORKS Add-in 发送命令；仅有一个在线连接时直接使用，多个连接时按动作触发窗口定位。",
+      "category": "SoftInteraction"
+    },
+    {
+      "key": "sys:wpscontrol",
+      "name": "WPS Office控制",
+      "description": "通过 WPS JavaScript 加载项调用文字、表格、演示、宏和脚本能力。",
+      "category": "SoftInteraction"
+    },
+    {
+      "key": "sys:keyoperation",
+      "name": "按键操作",
+      "description": "单个键盘按键的操作控制或状态获取",
+      "category": "System"
+    },
+    {
+      "key": "sys:playSound",
+      "name": "播放声音",
+      "description": "播放声音提示或声音文件。",
+      "category": "System"
+    },
+    {
+      "key": "sys:windowOperations",
+      "name": "窗口操作",
+      "description": "Window窗口相关操作",
+      "category": "System"
+    },
+    {
+      "key": "sys:restoreActiveWindow",
+      "name": "恢复活动窗口",
+      "description": "如果活动窗口改变了（比如使用了参数输入步骤）,使用此动作恢复窗口焦点。",
+      "category": "System"
+    },
+    {
+      "key": "sys:getWindowTitle",
+      "name": "获取窗口信息/查找窗口",
+      "description": "获取指定窗口的标题等信息。",
+      "category": "System"
+    },
+    {
+      "key": "sys:getActiveProcessInfo",
+      "name": "获取前台进程信息",
+      "description": "获取当前活动窗口进程的信息。",
+      "category": "System"
+    },
+    {
+      "key": "sys:getCurrentTime",
+      "name": "获取日期时间",
+      "description": "获取当前或从文本、unix时间戳转换日期时间",
+      "category": "System"
+    },
+    {
+      "key": "sys:getSysInfo",
+      "name": "获取系统或动作信息",
+      "description": "获取系统、Quicker 及当前运行动作的相关信息。",
+      "category": "System"
+    },
+    {
+      "key": "sys:getFolderPath",
+      "name": "获取系统路径",
+      "description": "返回指定的特殊目录路径。",
+      "category": "System"
+    },
+    {
+      "key": "sys:getSelectedFiles",
+      "name": "获取选择的文件(夹)/选择特定文件",
+      "description": "获取资源管理器、桌面等位置选择的文件或文件夹的路径",
+      "category": "System"
+    },
+    {
+      "key": "sys:getExplorerPath",
+      "name": "获取资源管理器路径/跳转路径",
+      "description": "获取资源管理器的当前文件夹路径。",
+      "category": "System"
+    },
+    {
+      "key": "sys:activateProcessMainWindow",
+      "name": "激活进程主窗口",
+      "description": "找到指定进程的主窗口并使其显示在前台。",
+      "category": "System"
+    },
+    {
+      "key": "sys:checkProcessExists",
+      "name": "检查程序已启动/获取进程信息",
+      "description": "检查指定的应用程序是否已经启动。",
+      "category": "System"
+    },
+    {
+      "key": "sys:recordSound",
+      "name": "录制声音/语音识别",
+      "description": "录制音频到文件或识别语音",
+      "category": "System"
+    },
+    {
+      "key": "sys:imeControl",
+      "name": "输入法状态",
+      "description": "获取或更改当前的输入法中英文状态，避免在发送热键时受影响。",
+      "category": "System"
+    },
+    {
+      "key": "sys:fileSystemWatch",
+      "name": "文件系统监控",
+      "description": "监控文件创建/变更/删除等事件。",
+      "category": "System"
+    },
+    {
+      "key": "sys:monitor",
+      "name": "显示器",
+      "description": "获取显示器列表、读取显示器坐标与工作区，获取或调整指定显示器的硬件亮度。",
+      "category": "System"
+    },
+    {
+      "key": "sys:sendMessage",
+      "name": "向窗口发送消息",
+      "description": "使用SendMessage Win32Api向窗口发送消息。使用方法请搜索SendMessage Win32 API接口。",
+      "category": "System"
+    },
+    {
+      "key": "sys:virtualDesktop",
+      "name": "虚拟桌面",
+      "description": "查询和管理 Windows 虚拟桌面，移动窗口或将窗口固定到所有桌面。支持范围取决于 Windows 完整版本。",
+      "category": "System"
+    },
+    {
+      "key": "sys:audioControl",
+      "name": "音频设备",
+      "description": "获取音频设备信息，设置默认音频设备。",
+      "category": "System"
+    },
+    {
+      "key": "sys:SelectFileInExplorer",
+      "name": "在资源管理器中定位文件",
+      "description": "在资源管理器中选中文件",
+      "category": "System"
+    },
+    {
+      "key": "sys:quickeroperations",
+      "name": "Quicker操作",
+      "description": "调用Quicker的某个功能",
+      "category": "System"
+    },
+    {
+      "key": "sys:shelloperation",
+      "name": "Shell文件操作",
+      "description": "针对文件的Windows Shell相关操作",
+      "category": "System"
+    },
+    {
+      "key": "sys:winservice",
+      "name": "Windows服务和注册表",
+      "description": "获取Windows服务的状态、注册表项信息",
+      "category": "System"
+    },
+    {
+      "key": "sys:splitString",
+      "name": "拆分文本为列表",
+      "description": "将文本拆分为列表",
+      "category": "Text"
+    },
+    {
+      "key": "sys:charInfo",
+      "name": "获取字符信息",
+      "description": "获取字符信息",
+      "category": "Text"
+    },
+    {
+      "key": "sys:enc",
+      "name": "加密/解密/哈希",
+      "description": "加密、解密，以及哈希计算",
+      "category": "Text"
+    },
+    {
+      "key": "sys:joinList",
+      "name": "列表合并成文本",
+      "description": "将列表拼接为一段文本",
+      "category": "Text"
+    },
+    {
+      "key": "sys:jsonExtract",
+      "name": "提取JSON内容",
+      "description": "提取Json文本中的信息",
+      "category": "Text"
+    },
+    {
+      "key": "sys:strReplace",
+      "name": "替换文本",
+      "description": "替换文本中的指定内容",
+      "category": "Text"
+    },
+    {
+      "key": "sys:stringProcess",
+      "name": "文本处理",
+      "description": "各种文本处理功能",
+      "category": "Text"
+    },
+    {
+      "key": "sys:showText",
+      "name": "文本窗口",
+      "description": "在独立的窗口中显示文本。",
+      "category": "Text"
+    },
+    {
+      "key": "sys:regexExtract",
+      "name": "正则提取",
+      "description": "使用正则表达式提取指定内容",
+      "category": "Text"
+    },
+    {
+      "key": "sys:textCounter",
+      "name": "字数统计",
+      "description": "统计文本行数、字符数等",
+      "category": "Text"
+    },
+    {
+      "key": "sys:formatString",
+      "name": "组合成文本",
+      "description": "将（多个）变量组合成一段文本。",
+      "category": "Text"
+    },
+    {
+      "key": "sys:form",
+      "name": "多字段表单",
+      "description": "使用表单窗口编辑多个变量的值。",
+      "category": "Ui"
+    },
+    {
+      "key": "sys:textSelectTools",
+      "name": "辅助选择工具",
+      "description": "一些常用的选择内容并获取文本的工具",
+      "category": "Ui"
+    },
+    {
+      "key": "sys:record",
+      "name": "录制键鼠操作",
+      "description": "录制键鼠操作过程",
+      "category": "Ui"
+    },
+    {
+      "key": "sys:showmenu",
+      "name": "显示菜单",
+      "description": "显示一个菜单",
+      "category": "Ui"
+    },
+    {
+      "key": "sys:showWaitWin",
+      "name": "显示等待窗口",
+      "description": "显示一个等待用户完成某个操作的提示窗口。",
+      "category": "Ui"
+    },
+    {
+      "key": "sys:reportProgress",
+      "name": "显示进度条",
+      "description": "显示/更新进度条",
+      "category": "Ui"
+    },
+    {
+      "key": "sys:selectFile",
+      "name": "选择文件",
+      "description": "用文件选择对话框选择要打开或保存的文件",
+      "category": "Ui"
+    },
+    {
+      "key": "sys:selectFolder",
+      "name": "选择文件夹",
+      "description": "文件夹选择对话框",
+      "category": "Ui"
+    },
+    {
+      "key": "sys:playRecords",
+      "name": "重放键鼠操作",
+      "description": "重放录制好的键鼠操作数据。",
+      "category": "Ui"
+    },
+    {
+      "key": "sys:custompanel",
+      "name": "自定义操作窗",
+      "description": "自定义悬浮操作窗口，点击后直接执行操作，不隐藏。",
+      "category": "Ui"
+    },
+    {
+      "key": "sys:customwindow",
+      "name": "自定义窗口",
+      "description": "创建和显示自定义窗口",
+      "category": "Ui"
+    },
+    {
+      "key": "sys:reactui",
+      "name": "React 界面",
+      "description": "用单文件 TSX 显示可交互窗口，通过 Quicker.close 把结果写回动作。",
+      "category": "Ui"
+    },
+    {
+      "key": "sys:webview2",
+      "name": "WebView2浏览器窗口",
+      "description": "基于微软Edge浏览器内核的组件，需要安装Edge最新预览版方可使用。",
+      "category": "Ui"
+    },
+    {
+      "key": "sys:waitKeyboard",
+      "name": "等待按键",
+      "description": "等待用户按下某个按键",
+      "category": "Waiting"
+    },
+    {
+      "key": "sys:waitWindow",
+      "name": "等待窗口事件",
+      "description": "等待窗口出现、消失、成为前台、最小化或恢复。",
+      "category": "Waiting"
+    },
+    {
+      "key": "sys:waitClipboardChange",
+      "name": "等待剪贴板内容改变",
+      "description": "等待剪贴板的内容发生改变。等待第三方工具（如截图工具）完成操作并更新剪贴板。",
+      "category": "Waiting"
+    },
+    {
+      "key": "sys:delay",
+      "name": "等待时间",
+      "description": "等待指定的毫秒数",
+      "category": "Waiting"
+    }
+  ]
+}

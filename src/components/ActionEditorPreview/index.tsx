@@ -105,12 +105,12 @@ const STEP_CATALOG = stepCatalog as StepCatalogShape;
 
 let catalogModulesPromise: Promise<CatalogModule[]> | null = null;
 
-/** Full xaction catalog is ~860KB — only load when the toolbox is visible. */
+/** Lightweight index (~35KB vs 1.45MB catalog) — only load when the toolbox is visible. */
 function loadCatalogModules(): Promise<CatalogModule[]> {
   if (!catalogModulesPromise) {
     catalogModulesPromise = import(
       /* webpackChunkName: "qk-xaction-catalog" */
-      '@site/data/xaction/catalog.json'
+      '@site/data/xaction/catalog-index.json'
     ).then((mod) => {
       const data = (mod as {default?: {modules: CatalogModule[]}}).default ??
         (mod as {modules: CatalogModule[]});

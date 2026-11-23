@@ -1,0 +1,436 @@
+# Quicker V2 官方文档
+
+> Quicker V2 中文帮助文档、组合动作模块契约、C# 脚本动作 API 参考与 1.x 迁移说明（自动跳过归档与未列出旧兼容页）。
+
+## 站点关键资源
+- [文档首页](https://docs.getquicker.net/)
+- [站点地图](https://docs.getquicker.net/sitemap.xml)
+- [组合动作模块参考目录](https://docs.getquicker.net/v2/xaction/modules)
+- [组合动作结构化元数据（catalog.json）](https://github.com/QuickerOrg/docs.getquicker.net/blob/main/data/xaction/catalog.json)
+
+## 开始、安装与从 1.x 迁移
+
+- [安装前准备](https://docs.getquicker.net/important-notice): 确认 Quicker V2 的体验范围，准备安装环境和 V1 数据迁移。
+- [Quicker 文档](https://docs.getquicker.net/): Quicker V2 使用说明：安装、面板、组合动作教程、功能说明和迁移指南。
+- [开始使用 Quicker V2](https://docs.getquicker.net/v2/getting-started): 认识动作和面板，完成首次启动，并开始编写组合动作。
+- [Quicker V2](https://docs.getquicker.net/v2): Quicker V2 文档入口：开始使用、安装、迁移、功能说明和重要变化。
+- [数据目录与迁移](https://docs.getquicker.net/v2/install/data-location): 查找 Quicker 本机数据、截图历史的存储位置，并使用安装器将数据整体迁移到其他磁盘。
+- [安装、更新与卸载](https://docs.getquicker.net/v2/install): 下载、安装、更新和卸载 Quicker V2，以及安装日志和本机数据的处理。
+- [卸载 Quicker V2](https://docs.getquicker.net/v2/install/uninstall): 从 Windows 卸载 Quicker V2，了解本机数据保留、重新安装和清理数据的注意事项。
+- [更新 Quicker V2](https://docs.getquicker.net/v2/install/update): 在 Quicker V2 内检查更新、下载并安装，以及失败时怎么处理。
+- [安装 Quicker V2](https://docs.getquicker.net/v2/install/windows): 在 64 位 Windows 上下载并安装 Quicker V2，以及首次启动要注意的事项。
+- [动作作者：迁移到 V2 与维护 V1 兼容版本](https://docs.getquicker.net/v2/migration/action-authors): 为已分享的动作选择 V1/V2 支持范围，保留旧版兼容修订，并继续更新 V2。
+- [从 1.x 迁移到 V2](https://docs.getquicker.net/v2/migration/from-v1): 从 Quicker 1.x 迁到 V2 的清单，以及数据分叉后通过重置或导出导入带入 1.x 新动作的方法。
+- [迁移](https://docs.getquicker.net/v2/migration): 从 Quicker 1.x 迁到 V2 的步骤，以及升级、回退和多设备使用注意事项。
+- [加载场景与加载动作页动作](https://docs.getquicker.net/v2/migration/new-main-win/load-action-page): 在新面板里切换场景、分组或旧动作页，以及用「Quicker 操作」步骤自动加载。
+- [升级与回退](https://docs.getquicker.net/v2/migration/upgrade-and-rollback): 按功能查找 Quicker V2 的版本兼容、降级风险和多设备同步注意事项。
+- [常见问题](https://docs.getquicker.net/v2/troubleshooting): Quicker V2 安装、面板、组合动作和选中文本的常见问题。
+
+## 核心功能使用
+
+- [账号、登录与数据同步](https://docs.getquicker.net/v2/features/account-and-sync): Quicker V2 的账号隔离、首次登录分叉、同步范围和离线使用。
+- [动作历史版本、备份与恢复](https://docs.getquicker.net/v2/features/action-history): 使用本地、手动网络和自动网络备份找回正式动作的旧版本，并区分暂存动作历史。
+- [本机动作暂存区](https://docs.getquicker.net/v2/features/action-panel/action-drafts): 在本机暂存、试运行、调试和保留动作，以及暂存动作与正式动作、云同步的区别。
+- [动作面板常见问题](https://docs.getquicker.net/v2/features/action-panel/faq): 新面板的启用、分组、批量转移、置顶、查找与数据同步等常见问题。
+- [动作面板（新面板）](https://docs.getquicker.net/v2/features/action-panel): Quicker V2 新面板窗口是什么、何时用、以及使用说明 / 暂存区 / 常见问题入口。
+- [动作面板使用说明](https://docs.getquicker.net/v2/features/action-panel/usage): Quicker V2 新面板的启用、界面结构、查找运行、双击导航、整理分组与显示方式。
+- [动作回收站](https://docs.getquicker.net/v2/features/action-recyclebin): 从本地或云端回收站复制已删除动作，以及清空回收站的范围与限制。
+- [分享动作与公共子程序](https://docs.getquicker.net/v2/features/action-sharing): 了解 Quicker 2.2.1 起的统一分享、V1/V2 发布格式、安装修复、公共子程序嵌入和版本历史。
+- [动作与动作面板](https://docs.getquicker.net/v2/features/actions): Quicker V2 中动作的使用、动作面板的呼出与操作。
+- [AI 助手与动作编写](https://docs.getquicker.net/v2/features/ai-and-agent): Quicker V2 的桌面 AI 工作台、问问 AI、AI 编写与修改动作、设计器与窗口助手及权限审批边界。
+- [AI 使用](https://docs.getquicker.net/v2/features/ai): 配置 AI 服务与模型，用助手编写动作、管理提示词与会话历史、连接外部 MCP 及管理长期指令与记忆。
+- [连接外部助手与 MCP](https://docs.getquicker.net/v2/features/ai/mcp-and-external-agents): 启用 Quicker MCP 服务，选择 AI 自动配置、HTTP 或 stdio 连接外部助手，并管理接入同意、写入权限、附加功能与工具额度。
+- [AI 指令与记忆](https://docs.getquicker.net/v2/features/ai/memory): 在 Quicker 中管理 AI 的长期指令和记忆，区分共享与本机范围，了解同步、整理、导入导出和隐私边界。
+- [AI 助手提示词库、会话历史与工作区](https://docs.getquicker.net/v2/features/ai/prompt-library-and-sessions): 管理按场景分类的 AI 提示词库、集中查看与归档会话历史、独立工作目录、会话引用及对话界面操作。
+- [统一 AI 服务与模型设置](https://docs.getquicker.net/v2/what's-new/ai-services-and-models): 介绍 Quicker V2 的统一 AI 服务与模型设置，以及新增的文本、视觉、分类、提取和交互对话模块。
+- [基础操作：输入、打开与运行](https://docs.getquicker.net/v2/features/basic-actions): 选择输入、运行程序、打开文件、网址、链接动作及切换动作页等操作。
+- [内容上下文菜单](https://docs.getquicker.net/v2/features/context-menu): 配置文本、图片和文件的上下文菜单，以及搜索服务网址和文件移动目标。
+- [显示器与虚拟桌面](https://docs.getquicker.net/v2/features/displays-and-desktops): 在组合动作中查询显示器、调整硬件亮度，以及管理 Windows 虚拟桌面。
+- [悬浮动作与分组](https://docs.getquicker.net/v2/features/floating-actions): 将常用动作放在桌面上，使用悬浮分组整理布局、关联程序、跟随窗口，并备份和恢复悬浮状态。
+- [HTTP 与 WebSocket 服务](https://docs.getquicker.net/v2/features/http-websocket): 开启 Quicker 本机或局域网服务，通过 HTTP 运行动作、复制与输入文本，并配置 WebSocket、安全连接及访问范围。
+- [功能使用](https://docs.getquicker.net/v2/features): 按使用场景查找 Quicker V2 的面板、触发、截图、账号和软件连接说明。
+- [专业版权益与版本限制](https://docs.getquicker.net/v2/features/license): 查看当前账号可用功能及购买续费入口，理解客户端版本限制提示。
+- [快速操作与操作类型](https://docs.getquicker.net/v2/features/quick-operations): 为轮盘、文本指令、超级键和触发规则选择操作，区分运行已有动作与直接执行简单操作。
+- [远程文件](https://docs.getquicker.net/v2/features/remote-files): 配置 WebDAV 或 S3 账号，在组合动作中上传、下载、查询和批量传输远程文件。
+- [场景与分组](https://docs.getquicker.net/v2/features/scenes): 在新面板里按「场景 → 分组 → 动作」组织入口，以及场景如何和触发规则共用。
+- [Quicker 截图](https://docs.getquicker.net/v2/features/screenshot/capture-pro): Quicker 截图（原截图 Pro）的选区、控件吸附、标注、长截图、快捷键一览及动作步骤参数说明。
+- [图片翻译](https://docs.getquicker.net/v2/features/screenshot/image-translate): 在 Quicker 截图与贴图中使用百度 / 有道图片翻译，以及如何配置本机图片翻译凭证。
+- [截图与贴图概览](https://docs.getquicker.net/v2/features/screenshot): Quicker 截图、贴图、长截图与录屏功能入口说明。
+- [截图文字识别（OCR）与表格识别](https://docs.getquicker.net/v2/features/screenshot/ocr): Quicker 截图与贴图内的文字识别（OCR）、原图选字、在线表格识别、结果窗与图片翻译说明。
+- [桌面录屏、贴图窗口与采集历史](https://docs.getquicker.net/v2/features/screenshot/recording-and-pin): Quicker 可视化录屏、系统声音、录屏剪辑与智能缩放、桌面贴图交互、分组及图片与录屏历史管理。
+- [屏幕拖选文字](https://docs.getquicker.net/v2/features/screenshot/screen-text-selection): 按住引导键拖选屏幕文字，复制、编辑或翻译，并了解 Win 拖选预设、鼠标规则和版本要求。
+- [JS 自定义工具栏](https://docs.getquicker.net/v2/features/screenshot/toolbar-script): 用一段 JavaScript 给 Quicker 截图工具栏增加自定义按钮，或在进阶场景下重排整栏布局。
+- [搜索功能与设置定位](https://docs.getquicker.net/v2/features/search): 使用搜索插件查找动作、设置和其它结果，配置触发词、动作直达词与默认处理。
+- [设置页面与功能入口](https://docs.getquicker.net/v2/features/settings): 按当前设置页查找启动、快捷键、黑名单、输入、动作设计、自动触发和维护选项。
+- [连接状态与命令工具](https://docs.getquicker.net/v2/features/software-connections/command-tool): 确认在线实例，使用 bridge.ping 验证连接，并生成可重复运行的动作。
+- [软件连接](https://docs.getquicker.net/v2/features/software-connections): 安装 Bridge，让 Quicker 连接设计、建模和办公软件，验证命令并生成动作。
+- [在设置页安装与管理 Bridge](https://docs.getquicker.net/v2/features/software-connections/install-and-manage): 从 Quicker 设置的软件连接页安装、更新、修复或卸载软件连接插件。
+- [3ds Max 软件连接](https://docs.getquicker.net/v2/features/software-connections/software/3ds-max): 3ds Max Bridge 的兼容范围、安装启用、目标选择与常见限制。
+- [After Effects 软件连接](https://docs.getquicker.net/v2/features/software-connections/software/after-effects): After Effects Bridge 的兼容范围、安装启用、目标选择与常见限制。
+- [AutoCAD 软件连接](https://docs.getquicker.net/v2/features/software-connections/software/autocad): AutoCAD Bridge 的兼容范围、安装启用、目标选择与常见限制。
+- [Blender 软件连接](https://docs.getquicker.net/v2/features/software-connections/software/blender): Blender Bridge 的兼容范围、安装启用、目标选择与常见限制。
+- [Cinema 4D 软件连接](https://docs.getquicker.net/v2/features/software-connections/software/cinema-4d): Cinema 4D Bridge 的兼容范围、安装启用、目标选择与常见限制。
+- [CorelDRAW 软件连接](https://docs.getquicker.net/v2/features/software-connections/software/coreldraw): CorelDRAW Bridge 的兼容范围、安装启用、目标选择与常见限制。
+- [Illustrator 软件连接](https://docs.getquicker.net/v2/features/software-connections/software/illustrator): Illustrator Bridge 的兼容范围、安装启用、目标选择与常见限制。
+- [InDesign 软件连接](https://docs.getquicker.net/v2/features/software-connections/software/indesign): InDesign Bridge 的兼容范围、安装启用、目标选择与常见限制。
+- [Mastercam 软件连接](https://docs.getquicker.net/v2/features/software-connections/software/mastercam): Mastercam Bridge 的兼容范围、分年度安装、命令工具与常见限制。
+- [Maya 软件连接](https://docs.getquicker.net/v2/features/software-connections/software/maya): Maya Bridge 的兼容范围、安装启用、目标选择与常见限制。
+- [模兔云软件连接](https://docs.getquicker.net/v2/features/software-connections/software/motuyun): 在 Quicker 中搜索模兔云插件命令、按插件筛选，并生成带图标的 SketchUp 自动化动作。
+- [Photoshop 软件连接](https://docs.getquicker.net/v2/features/software-connections/software/photoshop): Photoshop Bridge 的兼容范围、安装启用、目标选择与常见限制。
+- [Premiere Pro 软件连接](https://docs.getquicker.net/v2/features/software-connections/software/premiere-pro): Premiere Pro Bridge 的兼容范围、安装启用、目标选择与常见限制。
+- [Revit 软件连接](https://docs.getquicker.net/v2/features/software-connections/software/revit): Revit Bridge 的兼容范围、安装启用、目标选择与常见限制。
+- [Rhino 软件连接](https://docs.getquicker.net/v2/features/software-connections/software/rhino): Rhino Bridge 的兼容范围、安装启用、目标选择与常见限制。
+- [SketchUp 软件连接](https://docs.getquicker.net/v2/features/software-connections/software/sketchup): SketchUp Bridge 的兼容范围、安装启用、目标选择与常见限制。
+- [SOLIDWORKS 软件连接](https://docs.getquicker.net/v2/features/software-connections/software/solidworks): SOLIDWORKS Bridge 的兼容范围、安装启用、目标选择与常见限制。
+- [WPS Office 软件连接](https://docs.getquicker.net/v2/features/software-connections/software/wps-office): WPS Office Bridge 的兼容范围、安装启用、目标选择与常见限制。
+- [软件连接排障](https://docs.getquicker.net/v2/features/software-connections/troubleshooting): Quicker Bridge 软件连接排障：检测不到软件、已安装但未连接、连接状态异常、命令失败与插件修复。
+- [内置工具](https://docs.getquicker.net/v2/features/tools): Quicker V2 已有说明的截图、AI、搜索、选中文本和更新入口。
+- [动作快捷键](https://docs.getquicker.net/v2/features/triggers/action-hotkeys): Quicker 动作快捷键的场景绑定、继承覆盖、注册状态与常见排障。
+- [高级鼠标触发](https://docs.getquicker.net/v2/features/triggers/advanced-mouse-triggers): Quicker 高级鼠标触发的短按、划动、角落、规则筛选，以及如何启动轮盘、手势和截图。
+- [轮盘菜单](https://docs.getquicker.net/v2/features/triggers/circle-menu): Quicker 轮盘菜单的启用、圈层、可视子动作、场景来源、快速编辑与常见排障。
+- [热键联动](https://docs.getquicker.net/v2/features/triggers/hotkey-watchers): Quicker 热键联动的单段与两段序列、场景继承、管理方式与常见排障。
+- [快速触发概览](https://docs.getquicker.net/v2/features/triggers): Quicker 各类触发方式的选型、心智模型与文档入口：手势、轮盘、快捷键、选中文本工具条等。
+- [按键双击](https://docs.getquicker.net/v2/features/triggers/key-double-click): Quicker 按键双击的启用、场景绑定、禁用回退语义、Win 键兼容与常见排障。
+- [左键辅助](https://docs.getquicker.net/v2/features/triggers/left-button-plus): Quicker 左键辅助的启用、短按与长按、场景覆盖、拖放配置与常见排障。
+- [鼠标手势](https://docs.getquicker.net/v2/features/triggers/mouse-gestures): Quicker 鼠标手势的启用、绘制、场景绑定、延迟执行与常见排障。
+- [扩展热键](https://docs.getquicker.net/v2/features/triggers/powerkeys): Quicker 扩展热键的引导键策略、逐键设置、打字节奏校准、右键协作与判定诊断。
+- [文本指令](https://docs.getquicker.net/v2/features/triggers/text-commands): Quicker 文本指令的缩写与正则匹配、场景继承、批量复制和常见排障。
+- [选中文本工具条](https://docs.getquicker.net/v2/features/triggers/text-selection-toolbar): Quicker V2 选中文本工具条的开启、触发、动作配置、场景规则和故障排查。
+
+## 组合动作概念与入门教程
+
+- [为动作设计自定义右键菜单](https://docs.getquicker.net/v2/xaction/concepts/action-custom-context-menu): 给动作加右键菜单：点一项等于运行该动作并传入该项的参数。
+- [模块和步骤](https://docs.getquicker.net/v2/xaction/concepts/basic): 步骤对应模块；输入可绑变量、写固定值，或用 $$ / $= ；输出写入变量。
+- [为输入框设置自定义的文本选择工具](https://docs.getquicker.net/v2/xaction/concepts/custom_texttool): 用子程序给表单或用户输入的文本框加自定义文本选择工具。
+- [调试运行组合动作](https://docs.getquicker.net/v2/xaction/concepts/debug): 调试运行会记录每步输入输出并打开 HTML 日志；也可只跑选中的步骤。
+- [选择或输入步骤参数](https://docs.getquicker.net/v2/xaction/concepts/edit-step-param): 参数可写固定值、$$ 插值或 $= 表达式；F1 在三种模式间切换。
+- [表达式高级话题](https://docs.getquicker.net/v2/xaction/concepts/expression-adv): 复杂表达式、F1 切换、补全与测试、布尔助手，以及 _context / _eval。
+- [表达式](https://docs.getquicker.net/v2/xaction/concepts/expression): 参数以 $= 开头时按表达式计算或比较；插值只负责拼文本。
+- [文本插值](https://docs.getquicker.net/v2/xaction/concepts/interpolation): 参数以 $$ 开头时，用变量值替换 {变量名}，得到一段新文本。
+- [动态对象变量](https://docs.getquicker.net/v2/xaction/concepts/object): 动态对象可存任意 C# 对象，在表达式里按原类型调用属性和方法。
+- [参数传递](https://docs.getquicker.net/v2/xaction/concepts/parameters): 步骤参数先取变量或计算 $$ / $= ，再转成目标类型；输出写入变量。
+- [公共API](https://docs.getquicker.net/v2/xaction/concepts/public-api): Quicker 开放的动作、版本和工具 HTTP 接口；不要循环高频调用。
+- [为动作传递参数](https://docs.getquicker.net/v2/xaction/concepts/quicker_in_param): 从命令行、运行其他动作、热键或右键菜单给动作传参，用 quicker_in_param 读取。
+- [复杂动作的编程约定](https://docs.getquicker.net/v2/xaction/concepts/standard): 选择动作文件的存放位置：动作专属本机数据目录、用户文档和临时目录，以及备份、分享与删除清理的边界。
+- [在动作中存储用户设置](https://docs.getquicker.net/v2/xaction/concepts/store-settings): 把设置变量勾成「作为状态使用」，用右键菜单打开表单修改。
+- [子程序](https://docs.getquicker.net/v2/xaction/concepts/subprogram): 子程序把步骤和变量封成自定义模块；分动作内、公共、网络共享三类。
+- [表格筛选条件](https://docs.getquicker.net/v2/xaction/concepts/table-filter): 表格管理窗口的筛选使用 DataView 表达式，支持比较、逻辑运算、LIKE 和空值判断。
+- [表格变量类型](https://docs.getquicker.net/v2/xaction/concepts/tablevar): 表格是二维数据表；可预定义列来管理数据，或临时承接查询结果。
+- [在动作中使用图标](https://docs.getquicker.net/v2/xaction/concepts/use-icon-in-actions): 界面项可用 [fa:…]、[icon:…]、[url:…] 等前缀加上标题和可选 tooltip。
+- [词典类型](https://docs.getquicker.net/v2/xaction/concepts/var-dict): 词典存键值对；默认值可用每行 Key:Value 或 JSON；比较值时要先转成同一类型。
+- [列表类型](https://docs.getquicker.net/v2/xaction/concepts/var-list): 列表存一组字符串；可与多行文本互转，用拆分/合并/列表操作模块处理。
+- [变量](https://docs.getquicker.net/v2/xaction/concepts/variables): 变量在步骤之间传数据；右侧列表可创建、筛选，对话框里设类型和默认值。
+- [可见性表达式](https://docs.getquicker.net/v2/xaction/concepts/visibility-expression): 用 $= 表达式按另一个下拉字段的值，显示或隐藏子程序参数或表单字段。
+- [动作编辑器的使用](https://docs.getquicker.net/v2/xaction/concepts/xaction-editor): 组合动作编辑器分左中右三栏：工具箱、步骤列表、变量与外观。
+- [组合动作基础](https://docs.getquicker.net/v2/xaction/concepts/xaction-intro): 组合动作把多个步骤按顺序执行，用变量传递数据，用如果/否则做分支。
+- [一个浏览器多个Profile的情况](https://docs.getquicker.net/v2/xaction/guides/browser-multiprofile): 一个浏览器多个Profile的情况的 Quicker 2.0 使用说明。
+- [设置 Quicker Connector 浏览器扩展](https://docs.getquicker.net/v2/xaction/guides/chrome-ext-settings): 安装、连接和设置 Quicker Connector，并打开网页列表与表单工具。
+- [日期时间的处理](https://docs.getquicker.net/v2/xaction/guides/date-time-process): 获取当前时间、格式化为文本，以及时间戳换算的常用做法。
+- [窗口界面控制的XPATH简介](https://docs.getquicker.net/v2/xaction/guides/flaui-xpath-intro): 窗口界面控制的XPATH简介的 Quicker 2.0 使用说明。
+- [第一个组合动作](https://docs.getquicker.net/v2/xaction/guides/helloworld): 新建组合动作，用「提示消息」在桌面显示 Hello, World!，并保存后从面板运行。
+- [怎样学会组合动作](https://docs.getquicker.net/v2/xaction/guides/how-to-learn): 组合动作的学习顺序：步骤与变量、三条动手课，以及之后该读哪些概念和模块。
+- [更多示例](https://docs.getquicker.net/v2/xaction/guides/samples): 官方动手课、专题指南，以及社区视频和动作单。
+- [使用滚轮连续触发的动作](https://docs.getquicker.net/v2/xaction/guides/scroll-trigger): 使用滚轮连续触发的动作的 Quicker 2.0 使用说明。
+- [从搜索框给动作传递参数](https://docs.getquicker.net/v2/xaction/guides/search-adv): 从搜索框给动作传递参数的 Quicker 2.0 使用说明。
+- [选中文字就搜索](https://docs.getquicker.net/v2/xaction/guides/search-selected): 用如果/否则和文本插值：选中了文字则搜索，否则打开搜索引擎首页；网址使用 URL 编码后的内容。
+- [把选中文字变成大写](https://docs.getquicker.net/v2/xaction/guides/selected-text): 用获取选中的文本、文本处理和发送文本到窗口，把当前选区变成英文大写并写回。
+- [文本的处理](https://docs.getquicker.net/v2/xaction/guides/text-process): 组合动作里文本从哪来、怎么处理、写到哪里：选区、剪贴板、文件，以及插值和常用模块。
+- [网页动作按钮 & 网址关联场景/动作页](https://docs.getquicker.net/v2/xaction/guides/url-links): 网页动作按钮 & 网址关联场景/动作页的 Quicker 2.0 使用说明。
+- [网页列表提取与表单填写](https://docs.getquicker.net/v2/xaction/guides/web-data-and-form-automation): 使用 Quicker Connector 侧边栏设计模板，并在 Quicker V2 中提取列表、连续翻页汇总或批量填写网页表单。
+- [网页控制示例（传统方式）](https://docs.getquicker.net/v2/xaction/guides/web-page-control): 使用浏览器控制模块逐个读取、修改或触发网页元素的传统示例。
+- [组合动作](https://docs.getquicker.net/v2/xaction): Quicker 2.0 组合动作的入门、模块参考、教程与迁移说明。
+
+## 脚本动作（C# / qk API）
+
+- [qk.Actions：动作与子程序](https://docs.getquicker.net/v2/script-action/api/actions): qk.Actions：动作与子程序的成员、参数和使用约定。
+- [qk.Ai：AI 与翻译](https://docs.getquicker.net/v2/script-action/api/ai): qk.Ai：AI 与翻译的成员、参数和使用约定。
+- [qk.Apps：外部程序](https://docs.getquicker.net/v2/script-action/api/apps): qk.Apps：外部程序的成员、参数和使用约定。
+- [qk.Browser：浏览器](https://docs.getquicker.net/v2/script-action/api/browser): qk.Browser：浏览器的成员、参数和使用约定。
+- [qk.Clipboard：剪贴板](https://docs.getquicker.net/v2/script-action/api/clipboard): qk.Clipboard：剪贴板的成员、参数和使用约定。
+- [字符串取值](https://docs.getquicker.net/v2/script-action/api/enums): 字符串取值的成员、参数和使用约定。
+- [错误码索引](https://docs.getquicker.net/v2/script-action/api/errors): 错误码索引的成员、参数和使用约定。
+- [qk.Files：文件](https://docs.getquicker.net/v2/script-action/api/files): qk.Files：文件的成员、参数和使用约定。
+- [qk.Http：HTTP 请求](https://docs.getquicker.net/v2/script-action/api/http): qk.Http：HTTP 请求的成员、参数和使用约定。
+- [qk.Image：图片](https://docs.getquicker.net/v2/script-action/api/image): qk.Image：图片的成员、参数和使用约定。
+- [脚本动作 API 参考](https://docs.getquicker.net/v2/script-action/api): 脚本动作中 qk 对象各域成员、参数与使用约定。
+- [qk.Keyboard：键盘](https://docs.getquicker.net/v2/script-action/api/keyboard): qk.Keyboard：键盘的成员、参数和使用约定。
+- [qk.Mouse：鼠标](https://docs.getquicker.net/v2/script-action/api/mouse): qk.Mouse：鼠标的成员、参数和使用约定。
+- [qk.Process：进程](https://docs.getquicker.net/v2/script-action/api/process): qk.Process：进程的成员、参数和使用约定。
+- [qk：根成员与运行上下文](https://docs.getquicker.net/v2/script-action/api/qk): qk：根成员与运行上下文的成员、参数和使用约定。
+- [qk.Quicker：Quicker 服务](https://docs.getquicker.net/v2/script-action/api/quicker): qk.Quicker：Quicker 服务的成员、参数和使用约定。
+- [qk.Screen：截屏](https://docs.getquicker.net/v2/script-action/api/screen): qk.Screen：截屏的成员、参数和使用约定。
+- [qk.Selection：选区](https://docs.getquicker.net/v2/script-action/api/selection): qk.Selection：选区的成员、参数和使用约定。
+- [qk.State：动作状态](https://docs.getquicker.net/v2/script-action/api/state): qk.State：动作状态的成员、参数和使用约定。
+- [qk.Steps：组合动作步骤](https://docs.getquicker.net/v2/script-action/api/steps): qk.Steps：组合动作步骤的成员、参数和使用约定。
+- [qk.Sys：系统](https://docs.getquicker.net/v2/script-action/api/sys): qk.Sys：系统的成员、参数和使用约定。
+- [qk.Text：文本工具](https://docs.getquicker.net/v2/script-action/api/text): qk.Text：文本工具的成员、参数和使用约定。
+- [ActionApiException](https://docs.getquicker.net/v2/script-action/api/types/actionapiexception): ActionApiException的成员、参数和使用约定。
+- [ActionErrorCode](https://docs.getquicker.net/v2/script-action/api/types/actionerrorcode): ActionErrorCode的成员、参数和使用约定。
+- [ActionInfo](https://docs.getquicker.net/v2/script-action/api/types/actioninfo): ActionInfo的成员、参数和使用约定。
+- [AiMaterial](https://docs.getquicker.net/v2/script-action/api/types/aimaterial): AiMaterial的成员、参数和使用约定。
+- [AiMaterialResult](https://docs.getquicker.net/v2/script-action/api/types/aimaterialresult): AiMaterialResult的成员、参数和使用约定。
+- [AudioDevice](https://docs.getquicker.net/v2/script-action/api/types/audiodevice): AudioDevice的成员、参数和使用约定。
+- [Bookmark](https://docs.getquicker.net/v2/script-action/api/types/bookmark): Bookmark的成员、参数和使用约定。
+- [BridgeTarget](https://docs.getquicker.net/v2/script-action/api/types/bridgetarget): BridgeTarget的成员、参数和使用约定。
+- [CaptureResult](https://docs.getquicker.net/v2/script-action/api/types/captureresult): CaptureResult的成员、参数和使用约定。
+- [ChatMessage](https://docs.getquicker.net/v2/script-action/api/types/chatmessage): ChatMessage的成员、参数和使用约定。
+- [ChatResult](https://docs.getquicker.net/v2/script-action/api/types/chatresult): ChatResult的成员、参数和使用约定。
+- [ClassifyResult](https://docs.getquicker.net/v2/script-action/api/types/classifyresult): ClassifyResult的成员、参数和使用约定。
+- [Ctx](https://docs.getquicker.net/v2/script-action/api/types/ctx): Ctx的成员、参数和使用约定。
+- [DiskInfo](https://docs.getquicker.net/v2/script-action/api/types/diskinfo): DiskInfo的成员、参数和使用约定。
+- [El](https://docs.getquicker.net/v2/script-action/api/types/el): El的成员、参数和使用约定。
+- [ElInfo](https://docs.getquicker.net/v2/script-action/api/types/elinfo): ElInfo的成员、参数和使用约定。
+- [Field](https://docs.getquicker.net/v2/script-action/api/types/field): Field的成员、参数和使用约定。
+- [FillField](https://docs.getquicker.net/v2/script-action/api/types/fillfield): FillField的成员、参数和使用约定。
+- [FillResult](https://docs.getquicker.net/v2/script-action/api/types/fillresult): FillResult的成员、参数和使用约定。
+- [FormResult](https://docs.getquicker.net/v2/script-action/api/types/formresult): FormResult的成员、参数和使用约定。
+- [Hit](https://docs.getquicker.net/v2/script-action/api/types/hit): Hit的成员、参数和使用约定。
+- [HttpResult](https://docs.getquicker.net/v2/script-action/api/types/httpresult): HttpResult的成员、参数和使用约定。
+- [Img](https://docs.getquicker.net/v2/script-action/api/types/img): Img的成员、参数和使用约定。
+- [公共类型](https://docs.getquicker.net/v2/script-action/api/types): 公共类型的成员、参数和使用约定。
+- [Item](https://docs.getquicker.net/v2/script-action/api/types/item): Item的成员、参数和使用约定。
+- [NetworkAdapterInfo](https://docs.getquicker.net/v2/script-action/api/types/networkadapterinfo): NetworkAdapterInfo的成员、参数和使用约定。
+- [NetworkInfo](https://docs.getquicker.net/v2/script-action/api/types/networkinfo): NetworkInfo的成员、参数和使用约定。
+- [OcrCell](https://docs.getquicker.net/v2/script-action/api/types/ocrcell): OcrCell的成员、参数和使用约定。
+- [OcrLine](https://docs.getquicker.net/v2/script-action/api/types/ocrline): OcrLine的成员、参数和使用约定。
+- [OcrResult](https://docs.getquicker.net/v2/script-action/api/types/ocrresult): OcrResult的成员、参数和使用约定。
+- [OcrTableResult](https://docs.getquicker.net/v2/script-action/api/types/ocrtableresult): OcrTableResult的成员、参数和使用约定。
+- [OpenAssistantOptions](https://docs.getquicker.net/v2/script-action/api/types/openassistantoptions): OpenAssistantOptions的成员、参数和使用约定。
+- [OpenAssistantResult](https://docs.getquicker.net/v2/script-action/api/types/openassistantresult): OpenAssistantResult的成员、参数和使用约定。
+- [PathInfo](https://docs.getquicker.net/v2/script-action/api/types/pathinfo): PathInfo的成员、参数和使用约定。
+- [PerfInfo](https://docs.getquicker.net/v2/script-action/api/types/perfinfo): PerfInfo的成员、参数和使用约定。
+- [ProcInfo](https://docs.getquicker.net/v2/script-action/api/types/procinfo): ProcInfo的成员、参数和使用约定。
+- [ProcResult](https://docs.getquicker.net/v2/script-action/api/types/procresult): ProcResult的成员、参数和使用约定。
+- [ProcUsage](https://docs.getquicker.net/v2/script-action/api/types/procusage): ProcUsage的成员、参数和使用约定。
+- [ProgressWin](https://docs.getquicker.net/v2/script-action/api/types/progresswin): ProgressWin的成员、参数和使用约定。
+- [Pt](https://docs.getquicker.net/v2/script-action/api/types/pt): Pt的成员、参数和使用约定。
+- [QuickerInfo](https://docs.getquicker.net/v2/script-action/api/types/quickerinfo): QuickerInfo的成员、参数和使用约定。
+- [RecentFile](https://docs.getquicker.net/v2/script-action/api/types/recentfile): RecentFile的成员、参数和使用约定。
+- [Rect](https://docs.getquicker.net/v2/script-action/api/types/rect): Rect的成员、参数和使用约定。
+- [ReminderInfo](https://docs.getquicker.net/v2/script-action/api/types/reminderinfo): ReminderInfo的成员、参数和使用约定。
+- [ScreenInfo](https://docs.getquicker.net/v2/script-action/api/types/screeninfo): ScreenInfo的成员、参数和使用约定。
+- [SelectManyResult](https://docs.getquicker.net/v2/script-action/api/types/selectmanyresult): SelectManyResult的成员、参数和使用约定。
+- [SelectResult](https://docs.getquicker.net/v2/script-action/api/types/selectresult): SelectResult的成员、参数和使用约定。
+- [SettingsPage](https://docs.getquicker.net/v2/script-action/api/types/settingspage): SettingsPage的成员、参数和使用约定。
+- [SysInfo](https://docs.getquicker.net/v2/script-action/api/types/sysinfo): SysInfo的成员、参数和使用约定。
+- [Tab](https://docs.getquicker.net/v2/script-action/api/types/tab): Tab的成员、参数和使用约定。
+- [TextResult](https://docs.getquicker.net/v2/script-action/api/types/textresult): TextResult的成员、参数和使用约定。
+- [TextTool](https://docs.getquicker.net/v2/script-action/api/types/texttool): TextTool的成员、参数和使用约定。
+- [TextToolInput](https://docs.getquicker.net/v2/script-action/api/types/texttoolinput): TextToolInput的成员、参数和使用约定。
+- [TextWin](https://docs.getquicker.net/v2/script-action/api/types/textwin): TextWin的成员、参数和使用约定。
+- [UiOptions](https://docs.getquicker.net/v2/script-action/api/types/uioptions): UiOptions的成员、参数和使用约定。
+- [VolumeInfo](https://docs.getquicker.net/v2/script-action/api/types/volumeinfo): VolumeInfo的成员、参数和使用约定。
+- [Win](https://docs.getquicker.net/v2/script-action/api/types/win): Win的成员、参数和使用约定。
+- [WinInfo](https://docs.getquicker.net/v2/script-action/api/types/wininfo): WinInfo的成员、参数和使用约定。
+- [qk.Ui：对话框与界面](https://docs.getquicker.net/v2/script-action/api/ui): qk.Ui：对话框与界面的成员、参数和使用约定。
+- [qk.Uia：界面自动化](https://docs.getquicker.net/v2/script-action/api/uia): qk.Uia：界面自动化的成员、参数和使用约定。
+- [qk.Vision：找图与 OCR](https://docs.getquicker.net/v2/script-action/api/vision): qk.Vision：找图与 OCR的成员、参数和使用约定。
+- [qk.Window：窗口](https://docs.getquicker.net/v2/script-action/api/window): qk.Window：窗口的成员、参数和使用约定。
+- [使用 AI 助手编写脚本](https://docs.getquicker.net/v2/script-action/assistant): 描述需求、引用代码、修复错误并检查 AI 修改。
+- [备份、历史版本与未保存恢复](https://docs.getquicker.net/v2/script-action/backup): 保存版本、载入历史内容以及恢复意外退出前的编辑。
+- [调试与运行分析](https://docs.getquicker.net/v2/script-action/debugging): 断点、单步、变量、调用栈以及运行轨迹的使用方法。
+- [编辑器与运行](https://docs.getquicker.net/v2/script-action/editor): 认识源码、问题、结果、日志、运行轨迹与保存操作。
+- [Quicker 脚本动作](https://docs.getquicker.net/v2/script-action): 用 C# 语法和 qk API 编写、调试、分享 Quicker 动作。
+- [语言与脚本结构](https://docs.getquicker.net/v2/script-action/language): Main 入口、辅助方法、支持的 C# 语法和 .NET 类型环境。
+- [运行限额](https://docs.getquicker.net/v2/script-action/limits): 每次运行的次数、大小、时长和调用链限制。
+- [右键菜单与附加菜单](https://docs.getquicker.net/v2/script-action/menus): 用 ActionMenu 定义菜单方法，以及动态菜单的使用场景。
+- [从旧 C# 脚本迁移](https://docs.getquicker.net/v2/script-action/migration): 区分组合动作脚本步骤与新版脚本动作，逐步迁移能力与输入输出。
+- [参数与返回值](https://docs.getquicker.net/v2/script-action/parameters): Main 参数表单、输入绑定、quicker_in_param 和返回值。
+- [快速开始：清理剪贴板文本](https://docs.getquicker.net/v2/script-action/quick-start): 新建、检查、运行并保存第一个脚本动作。
+- [运行上下文与生命周期](https://docs.getquicker.net/v2/script-action/runtime): 动作输入、目标窗口、超时、取消、清理与跨动作调用。
+- [脚本动作安全与授权](https://docs.getquicker.net/v2/script-action/security): 脚本动作的 .NET 执行权限、运行确认、停止边界与分享注意事项。
+- [分享与版本兼容](https://docs.getquicker.net/v2/script-action/sharing): 脚本动作的发布前检查、数据影响和最低版本要求。
+- [常见问题与错误处理](https://docs.getquicker.net/v2/script-action/troubleshooting): 诊断检查错误、运行异常、用户取消、超时与外部依赖。
+- [调用组合动作并传入文本](https://docs.getquicker.net/v2/script-action/tutorials/action-call): 通过动作名称或 Id 调用其他动作，取得其返回值。
+- [清理剪贴板文本](https://docs.getquicker.net/v2/script-action/tutorials/clipboard): 读取、转换并写回剪贴板，处理没有文本的情况。
+- [预览后批量创建清理文本](https://docs.getquicker.net/v2/script-action/tutorials/file-batch): 先预览文件映射并检查冲突，再将最多 20 个文本文件写到新目录。
+- [预览后创建清理文本](https://docs.getquicker.net/v2/script-action/tutorials/file-preview): 先展示输入输出路径和字符数，确认后创建新文件。
+- [读取并解析 JSON 接口](https://docs.getquicker.net/v2/script-action/tutorials/http-json): 请求用户指定的 JSON 地址，解析响应并输出格式化数据。
+- [任务教程](https://docs.getquicker.net/v2/script-action/tutorials): 从完整源码学习文本、交互、状态、文件、网络、窗口与动作互调。
+- [跨运行计数与右键菜单](https://docs.getquicker.net/v2/script-action/tutorials/menu): 保存动作状态，并用菜单查看和重置计数。
+- [参数表单与文本转换](https://docs.getquicker.net/v2/script-action/tutorials/parameters): 用 Main 参数自动生成表单，通过下拉项选择转换方式。
+- [输入框与表单的文本工具](https://docs.getquicker.net/v2/script-action/tutorials/text-tools): 为脚本输入框和表单添加内置或自定义文本工具，处理全文或选区。
+- [查找并激活窗口](https://docs.getquicker.net/v2/script-action/tutorials/window): 检查查找结果再激活窗口，避免直接操作空引用。
+
+## 版本更新记录与其它参考
+
+- [更新记录](https://docs.getquicker.net/release-notes): 查看 Quicker V2 完整版本记录、下载入口，以及本站按版本补充的使用说明。
+
+## 组合动作系统模块参考（全部）
+
+- [注释（`sys:comment`）](https://docs.getquicker.net/v2/xaction/modules/comment): 使用注释将步骤分组，描述后续步骤的目的。
+- [等待时间（`sys:delay`）](https://docs.getquicker.net/v2/xaction/modules/delay): 等待指定的毫秒数
+- [获取选中的文本（`sys:getSelectedText`）](https://docs.getquicker.net/v2/xaction/modules/get_selected_text): 获取选中的文字
+- [模拟按键A（录入）（`sys:keyInput`）](https://docs.getquicker.net/v2/xaction/modules/keyinput): 模拟键盘输入
+- [输出日志（`sys:log`）](https://docs.getquicker.net/v2/xaction/modules/log): 记录动作运行中的信息，供后续查看和排查问题。通常只需填写内容，时间、动作和步骤信息由 Quicker 自动补充并统一管理。
+- [鼠标输入（`sys:mouse`）](https://docs.getquicker.net/v2/xaction/modules/mouse): 模拟鼠标输入
+- [弹窗提示或确认（`sys:MsgBox`）](https://docs.getquicker.net/v2/xaction/modules/msgbox): 弹窗显示提示或确认对话框
+- [提示消息（`sys:notify`）](https://docs.getquicker.net/v2/xaction/modules/notify): 显示可以自动消失的消息提示。
+- [打开网址（`sys:openUrl`）](https://docs.getquicker.net/v2/xaction/modules/openurl): 打开指定的网址
+- [发送文本到窗口（`sys:outputText`）](https://docs.getquicker.net/v2/xaction/modules/outputtext): 将文本输出到活动窗口中
+- [运行或打开（`sys:run`）](https://docs.getquicker.net/v2/xaction/modules/run): 运行软件或命令，打开文件、文件夹或网址。效果类似于在Windows\"运行\"对话框中执行命令。
+- [运行脚本（`sys:runScript`）](https://docs.getquicker.net/v2/xaction/modules/runscript): 运行脚本。
+- [模拟按键B（参数）（`sys:sendKeys`）](https://docs.getquicker.net/v2/xaction/modules/sendkeys): 发送按键和文本
+- [用户输入（`sys:userInput`）](https://docs.getquicker.net/v2/xaction/modules/userinput): 请用户输入内容。
+- [用户选择（`sys:select`）](https://docs.getquicker.net/v2/xaction/modules/userselect): 请用户选择一个选项。
+- [文件放入剪贴板（`sys:fileToClipboard`）](https://docs.getquicker.net/v2/xaction/modules/filetoclipboard): 将文件或文件列表存入剪贴板
+- [获取剪贴板文件列表（`sys:getClipboardFiles`）](https://docs.getquicker.net/v2/xaction/modules/getclipboardfiles): 获取剪贴板中复制的文件(或文件夹)的路径列表
+- [获取剪贴板图片（`sys:getClipboardImage`）](https://docs.getquicker.net/v2/xaction/modules/getclipboardimage): 读取剪贴板中的图片内容输出到图片变量中。
+- [获取剪贴板文本（`sys:getClipboardText`）](https://docs.getquicker.net/v2/xaction/modules/getclipboardtext): 读取剪贴板中的文本内容
+- [等待剪贴板内容改变（`sys:waitClipboardChange`）](https://docs.getquicker.net/v2/xaction/modules/waitclipboardchange): 等待剪贴板的内容发生改变。等待第三方工具（如截图工具）完成操作并更新剪贴板。
+- [写入剪贴板（`sys:writeClipboard`）](https://docs.getquicker.net/v2/xaction/modules/writeclipboard): 将文本或图片等内容写入剪贴板
+- [赋值（`sys:assign`）](https://docs.getquicker.net/v2/xaction/modules/assign): 为变量赋值。
+- [屏幕取色/颜色转换与计算（`sys:color`）](https://docs.getquicker.net/v2/xaction/modules/color): 转换颜色值及相关计算处理
+- [计算（`sys:compute`）](https://docs.getquicker.net/v2/xaction/modules/compute): 对表达式进行计算。
+- [计算时间（`sys:computeTime`）](https://docs.getquicker.net/v2/xaction/modules/computetime): 时间相关的计算操作
+- [数据库查询（`sys:dboperation`）](https://docs.getquicker.net/v2/xaction/modules/dboperation): 对数据库执行SQL语句并返回结果
+- [词典操作（`sys:dictOperations`）](https://docs.getquicker.net/v2/xaction/modules/dictoperations): 对词典变量进行添加、删除等操作
+- [列表操作（`sys:listOperations`）](https://docs.getquicker.net/v2/xaction/modules/listoperations): 对列表变量进行添加、删除等操作
+- [管理和排序列表（`sys:manageList`）](https://docs.getquicker.net/v2/xaction/modules/managelist): 对列表内容进行手工排序、添加、删除等操作
+- [生成Guid（`sys:newGuid`）](https://docs.getquicker.net/v2/xaction/modules/newguid): 生成一个新的Guid(全局唯一ID标示符)，并转换为文本格式。
+- [数字转换与处理（`sys:numberprocess`）](https://docs.getquicker.net/v2/xaction/modules/numberprocess): 数字转换为文本等相关处理
+- [比较数字（`sys:numCompare`）](https://docs.getquicker.net/v2/xaction/modules/numcompare): 比较数字大小。
+- [生成随机数（`sys:randomNum`）](https://docs.getquicker.net/v2/xaction/modules/randomnum): 生成随机数
+- [比较文本（`sys:strCompare`）](https://docs.getquicker.net/v2/xaction/modules/strcompare): 文本比较
+- [表格数据操作（`sys:tableoperation`）](https://docs.getquicker.net/v2/xaction/modules/tableoperation): 表格变量的相关处理操作
+- [检查路径/获取文件信息（`sys:checkPathExists`）](https://docs.getquicker.net/v2/xaction/modules/checkpathexists): 检查指定的文件或文件夹是否存在。
+- [使用Everything搜索文件（`sys:everythingsearch`）](https://docs.getquicker.net/v2/xaction/modules/everythingsearch): 调用Everything提供的接口搜索文件
+- [文件和目录操作（`sys:fileOperation`）](https://docs.getquicker.net/v2/xaction/modules/fileoperation): 文件和目录操作。请确保路径是合法的。
+- [生成临时文件路径（`sys:GenTempFilePath`）](https://docs.getquicker.net/v2/xaction/modules/gentempfilepath): 根据指定的扩展名生成一个随机的临时文件名（完整路径），供后续步骤写入文件使用。
+- [提取文件路径信息/生成路径（`sys:pathExtraction`）](https://docs.getquicker.net/v2/xaction/modules/pathextraction): 从文件路径中提取文件名、文件夹等信息
+- [PDF 文件处理（`sys:pdf`）](https://docs.getquicker.net/v2/xaction/modules/pdf): 创建、合并、拆分、调整、保护或在 PDF 页面上叠加内容。
+- [读取文件（`sys:readFile`）](https://docs.getquicker.net/v2/xaction/modules/readfile): 将读取的文本或图片内容写入变量。
+- [状态存取（`sys:stateStorage`）](https://docs.getquicker.net/v2/xaction/modules/statestorage): 存取状态数据；更新动作的徽标文字；设置附加的动作右键菜单项
+- [写入图片文件（`sys:WriteImageFile`）](https://docs.getquicker.net/v2/xaction/modules/writeimagefile): 将图片内容写入文件
+- [写入文本文件（`sys:WriteTextFile`）](https://docs.getquicker.net/v2/xaction/modules/writetextfile): 将内容写入文本文件
+- [Zip压缩打包（`sys:zip`）](https://docs.getquicker.net/v2/xaction/modules/zip): Zip压缩或解压缩
+- [跳出循环(break)（`sys:break`）](https://docs.getquicker.net/v2/xaction/modules/break): 跳出循环（\"每个\" 或 \"重复\" 模块）
+- [跳过后续步骤(continue)（`sys:continue`）](https://docs.getquicker.net/v2/xaction/modules/continue): 跳过后续步骤（循环内部），开始下一次循环。在循环内部使用。
+- [运行C#代码（`sys:csscript`）](https://docs.getquicker.net/v2/xaction/modules/csscript): 执行C#代码。可写完整 Exec(context)，或纯脚本（末行表达式即返回值；可用 context 读写变量）。async Task 由宿主等待。
+- [检查和下载依赖（`sys:dependencycheck`）](https://docs.getquicker.net/v2/xaction/modules/dependencycheck): 检查和下载依赖的外部文件包。
+- [每个（`sys:each`）](https://docs.getquicker.net/v2/xaction/modules/each): 对列表的每项执行处理
+- [运行C#文件应用（`sys:csharpFileApp`）](https://docs.getquicker.net/v2/xaction/modules/file-based-apps): 使用.NET SDK运行C# file-based app。支持新语法、NuGet包引用和WPF等SDK功能。
+- [步骤组（`sys:group`）](https://docs.getquicker.net/v2/xaction/modules/group): 一组有关的模块（方便整体禁用、删除等）
+- [如果/否则（`sys:if`）](https://docs.getquicker.net/v2/xaction/modules/if): 依据条件执行操作
+- [运行Javascript代码（`sys:jsscript`）](https://docs.getquicker.net/v2/xaction/modules/jsscript): 执行Js代码片段。代码中应包含主函数exec()，请参考文档。
+- [运行Python代码（`sys:pythonscript`）](https://docs.getquicker.net/v2/xaction/modules/pythonscript): 执行Python代码片段。
+- [重复（`sys:repeat`）](https://docs.getquicker.net/v2/xaction/modules/repeat): 循环指定的次数，或符合某个条件时中止
+- [运行或停止动作（`sys:runAction`）](https://docs.getquicker.net/v2/xaction/modules/runaction): 执行指定的其他动作
+- [如果（`sys:simpleIf`）](https://docs.getquicker.net/v2/xaction/modules/simple-if): 依据条件执行操作
+- [停止(return)（`sys:stop`）](https://docs.getquicker.net/v2/xaction/modules/stop): 停止动作或从子程序中返回
+- [运行子程序（`sys:subprogram`）](https://docs.getquicker.net/v2/xaction/modules/subprogram): 运行子程序
+- [AI 图片理解（`sys:aiVision`）](https://docs.getquicker.net/v2/xaction/modules/ai-vision): 使用全局 AI 设置理解图片内容并回答问题
+- [生成二维码（`sys:createQrCode`）](https://docs.getquicker.net/v2/xaction/modules/createqrcode): 将文本转换为二维码
+- [读取图片信息（`sys:imageinfo`）](https://docs.getquicker.net/v2/xaction/modules/imageinfo): 获取图片的尺寸或exif信息
+- [图片处理（`sys:imgProcess`）](https://docs.getquicker.net/v2/xaction/modules/imgprocess): 图片处理和变换
+- [图片/Base64 转换（`sys:imgToBase64`）](https://docs.getquicker.net/v2/xaction/modules/imgtobase64): 图片和Base64转换
+- [长截图（`sys:longScreenshot`）](https://docs.getquicker.net/v2/xaction/modules/long-screenshot): 先使用屏幕选区工具选择范围，再进行长截图。
+- [贴图（`sys:pinImage`）](https://docs.getquicker.net/v2/xaction/modules/pinimage): 在屏幕指定位置浮动贴图（与截图 Pro 贴图窗口一致）。按来源自动识别图片、HTML、公式、OCR 原始结果或文本。
+- [识别二维码（`sys:readQrCode`）](https://docs.getquicker.net/v2/xaction/modules/readqrcode): 识别图片中的二维码
+- [交互截图（`sys:screenCapturePro`）](https://docs.getquicker.net/v2/xaction/modules/screen-capture-pro): 框选截图、标注、贴图或识别。默认自动吸附，可关闭后用滚轮手动调整选区。
+- [屏幕录制（`sys:screenRecordingUI`）](https://docs.getquicker.net/v2/xaction/modules/screen-recording-ui): 弹出选区 UI 让用户框选录制范围，打开录屏工具栏进行可视化录制，录完后返回文件路径。
+- [后台屏幕录制（`sys:screenRecording`）](https://docs.getquicker.net/v2/xaction/modules/screen-recording): 后台录制屏幕区域，用同一会话 ID 跨步骤或跨动作运行开始、暂停、继续和结束录屏。
+- [屏幕截图（`sys:screenCapture`）](https://docs.getquicker.net/v2/xaction/modules/screencapture): 截取屏幕区域
+- [屏幕找图/找色/找字（`sys:searchBmp`）](https://docs.getquicker.net/v2/xaction/modules/searchbmp): 在屏幕上查找图片里的内容出现的位置
+- [显示图片（`sys:showImage`）](https://docs.getquicker.net/v2/xaction/modules/showimage): 在屏幕上显示图片。输入文件路径/url或图片变量。
+- [临时图床（`sys:tempImgBed`）](https://docs.getquicker.net/v2/xaction/modules/tempimgbed): 将图片上传到临时（1分钟后删除）的图床，用以搜图等场景。勿上传非法内容。
+- [手写板（`sys:whiteboard`）](https://docs.getquicker.net/v2/xaction/modules/whiteboard): 手写内容，生成图片对象。
+- [自动化脚本（`sys:automationScript`）](https://docs.getquicker.net/v2/xaction/modules/automationscript): 使用 JavaScript 编排鼠标、键盘等桌面自动化操作。
+- [多步骤输入（`sys:inputScript`）](https://docs.getquicker.net/v2/xaction/modules/inputscript): 多步骤键盘组合输入
+- [AI 交互对话（`sys:aiChat`）](https://docs.getquicker.net/v2/xaction/modules/ai-chat): 打开流式 AI 对话窗口，支持追问并显式采用回答
+- [AI 调用（`sys:ai`）](https://docs.getquicker.net/v2/xaction/modules/ai): 调用第三方AI服务
+- [问问AI（`sys:askAi`）](https://docs.getquicker.net/v2/xaction/modules/askai): 从组合动作打开问问 AI，预填问题并交付图片、文件、文本或窗口背景。
+- [基础OCR（`sys:basic-ocr`）](https://docs.getquicker.net/v2/xaction/modules/basic-ocr): 获取图片中的文字
+- [第三方云存储/图床（`sys:cloud_oss`）](https://docs.getquicker.net/v2/xaction/modules/cloud_oss): 使用第三方云服务上传文件。
+- [云状态存取（`sys:clouddata`）](https://docs.getquicker.net/v2/xaction/modules/clouddata): 根据键值读取或写入网络数据。
+- [下载文件（`sys:download`）](https://docs.getquicker.net/v2/xaction/modules/download): 下载网络文件(请勿用于下载大文件)
+- [提取HTML内容（`sys:htmlExtract`）](https://docs.getquicker.net/v2/xaction/modules/htmlextract): 从HTML代码中提取内容
+- [HTTP请求（`sys:http`）](https://docs.getquicker.net/v2/xaction/modules/http): 发送HTTP请求，并获取返回结果
+- [HTTP服务器（`sys:httpserver`）](https://docs.getquicker.net/v2/xaction/modules/httpserver): 创建临时的本地HTTP服务器，从而可以从移动端或其它设备访问。
+- [公式识别（`sys:mathocr`）](https://docs.getquicker.net/v2/xaction/modules/mathocr): 数学公式识别
+- [发送手机通知（`sys:mobileNotification`）](https://docs.getquicker.net/v2/xaction/modules/mobilenotification): 向已授权并在线的 Android 设备发送可响应通知。
+- [远程文件（`sys:remoteFile`）](https://docs.getquicker.net/v2/xaction/modules/remotefile): 通过 WebDAV 或 S3 上传、下载、查询和批量传输远程文件。
+- [SMTP发送邮件（`sys:smtp`）](https://docs.getquicker.net/v2/xaction/modules/smtp): 使用SMTP协议发送邮件
+- [临时云存储（`sys:tempcloudstore`）](https://docs.getquicker.net/v2/xaction/modules/tempcloudstore): 将文本、文件、图片临时保存到云端并得到网址。
+- [机器翻译/词典（`sys:translation`）](https://docs.getquicker.net/v2/xaction/modules/translation): 调用第三方服务翻译文字到指定的语言。此功能需要单独付费使用，详情请参考文档。
+- [Websocket（`sys:websocket`）](https://docs.getquicker.net/v2/xaction/modules/websocket): Websocket相关操作
+- [3ds Max控制（`sys:3dsmaxcontrol`）](https://docs.getquicker.net/v2/xaction/modules/3dsmaxcontrol): 通过 3ds Max Python 插件发送命令；仅有一个在线连接时直接使用，多个连接时按动作触发窗口定位。
+- [Adobe系列软件控制（`sys:adobesoftscontrol`）](https://docs.getquicker.net/v2/xaction/modules/adobesoftscontrol): Adobe系列软件控制模块的参数、输出与使用说明。
+- [After Effects控制（`sys:aftereffectscontrol`）](https://docs.getquicker.net/v2/xaction/modules/aftereffectscontrol): 通过 After Effects CEP 扩展调用工程、合成和 ExtendScript 能力。
+- [AutoCAD控制（`sys:autocadcontrol`）](https://docs.getquicker.net/v2/xaction/modules/autocadcontrol): 通过低权限代理或 HTTP Bridge 调用 AutoCAD。
+- [Blender控制（`sys:blendercontrol`）](https://docs.getquicker.net/v2/xaction/modules/blendercontrol): 通过 Blender Python Extension 发送命令；仅有一个在线连接时直接使用，多个连接时按动作触发窗口定位。
+- [浏览器控制（`sys:chromecontrol`）](https://docs.getquicker.net/v2/xaction/modules/chromecontrol): 与Chrome/Edge/Firefox等浏览器通信，控制网页或浏览器。
+- [Cinema 4D控制（`sys:cinema4dcontrol`）](https://docs.getquicker.net/v2/xaction/modules/cinema4dcontrol): 通过 Cinema 4D Python 插件发送命令；仅有一个在线连接时直接使用，多个连接时按动作触发窗口定位。
+- [CorelDRAW控制（`sys:coreldrawcontrol`）](https://docs.getquicker.net/v2/xaction/modules/coreldrawcontrol): 通过 CorelDRAW Add-on 调用文档、页面、选择、对象、图层、视图和脚本能力
+- [Excel对象操作（`sys:excelObjects`）](https://docs.getquicker.net/v2/xaction/modules/excelobjects): 操作Excel的某个对象
+- [Excel区域操作（`sys:excelRange`）](https://docs.getquicker.net/v2/xaction/modules/excelrange): 操作Excel的某个区域或单元格
+- [Excel文件读写（`sys:excelreadwrite`）](https://docs.getquicker.net/v2/xaction/modules/excelreadwrite): 读取Excel文件内容或写入Excel文件
+- [窗口界面控制(FlaUI)（`sys:flauiautomation`）](https://docs.getquicker.net/v2/xaction/modules/flauiautomation): 触发Windows窗口的菜单/按钮等控件(通过FlaUI库实现)。
+- [获取浏览器网址（`sys:getChromeUrl`）](https://docs.getquicker.net/v2/xaction/modules/getchromeurl): 获取当前浏览器网址。
+- [Illustrator控制（`sys:illustratorcontrol`）](https://docs.getquicker.net/v2/xaction/modules/illustratorcontrol): 通过 Illustrator CEP 扩展调用文档、选择、图层、画板、文本和 ExtendScript 能力。
+- [InDesign控制（`sys:indesigncontrol`）](https://docs.getquicker.net/v2/xaction/modules/indesigncontrol): 通过 InDesign UXP 启动脚本调用文档、页面、对象、图层、文本、样式和 ExtendScript 能力。
+- [Mastercam控制（`sys:mastercamcontrol`）](https://docs.getquicker.net/v2/xaction/modules/mastercamcontrol): 通过 Mastercam 2024/2027 NET-Hook 发送命令；仅有一个在线连接时直接使用，多个连接时按动作触发窗口定位。
+- [Maya控制（`sys:mayacontrol`）](https://docs.getquicker.net/v2/xaction/modules/mayacontrol): 通过 Maya Python 插件发送命令；仅有一个在线连接时直接使用，多个连接时按动作触发窗口定位。
+- [模兔云控制（`sys:motuyuncontrol`）](https://docs.getquicker.net/v2/xaction/modules/motuyuncontrol): 通过模兔云本机服务搜索并执行 SketchUp 插件命令。
+- [Office软件辅助（`sys:officehelper`）](https://docs.getquicker.net/v2/xaction/modules/officehelper): 辅助控制Office软件
+- [Photoshop控制（`sys:photoshopcontrol`）](https://docs.getquicker.net/v2/xaction/modules/photoshopcontrol): 通过 Photoshop UXP 插件调用文档、图层、选择、图像与脚本能力。
+- [Premiere Pro控制（`sys:premierecontrol`）](https://docs.getquicker.net/v2/xaction/modules/premierecontrol): 通过 Premiere UXP 插件调用项目、序列、时间线、媒体、标记和脚本能力。
+- [Revit控制（`sys:revitcontrol`）](https://docs.getquicker.net/v2/xaction/modules/revitcontrol): 通过 Revit Add-in 调用项目、选择、元素、参数、视图和 C# 脚本能力
+- [Rhino软件控制（`sys:rhinocontrol`）](https://docs.getquicker.net/v2/xaction/modules/rhinocontrol): 向Rhino发送命令或脚本
+- [SketchUp控制（`sys:sketchupcontrol`）](https://docs.getquicker.net/v2/xaction/modules/sketchupcontrol): 通过 SketchUp Ruby 扩展发送命令；仅有一个在线连接时直接使用，多个连接时按动作触发窗口定位。
+- [SOLIDWORKS控制（`sys:solidworkscontrol`）](https://docs.getquicker.net/v2/xaction/modules/solidworkscontrol): 通过 SOLIDWORKS Add-in 发送命令；仅有一个在线连接时直接使用，多个连接时按动作触发窗口定位。
+- [窗口界面控制（`sys:uiautomation`）](https://docs.getquicker.net/v2/xaction/modules/uiautomation): 触发Windows窗口的菜单/按钮等控件。
+- [WPS Office控制（`sys:wpscontrol`）](https://docs.getquicker.net/v2/xaction/modules/wpscontrol): 通过 WPS JavaScript 加载项调用文字、表格、演示、宏和脚本能力。
+- [激活进程主窗口（`sys:activateProcessMainWindow`）](https://docs.getquicker.net/v2/xaction/modules/activateprocessmainwindow): 找到指定进程的主窗口并使其显示在前台。
+- [音频设备（`sys:audioControl`）](https://docs.getquicker.net/v2/xaction/modules/audiocontrol): 获取音频设备信息，设置默认音频设备。
+- [检查程序已启动/获取进程信息（`sys:checkProcessExists`）](https://docs.getquicker.net/v2/xaction/modules/checkprocessexists): 检查指定的应用程序是否已经启动。
+- [文件系统监控（`sys:fileSystemWatch`）](https://docs.getquicker.net/v2/xaction/modules/filesystemwatch): 监控文件创建/变更/删除等事件。
+- [获取前台进程信息（`sys:getActiveProcessInfo`）](https://docs.getquicker.net/v2/xaction/modules/getactiveprocessinfo): 获取当前活动窗口进程的信息。
+- [获取资源管理器路径/跳转路径（`sys:getExplorerPath`）](https://docs.getquicker.net/v2/xaction/modules/getexplorerpath): 获取资源管理器的当前文件夹路径。
+- [获取系统路径（`sys:getFolderPath`）](https://docs.getquicker.net/v2/xaction/modules/getfolderpath): 返回指定的特殊目录路径。
+- [获取选择的文件(夹)/选择特定文件（`sys:getSelectedFiles`）](https://docs.getquicker.net/v2/xaction/modules/getselectedfiles): 获取资源管理器、桌面等位置选择的文件或文件夹的路径
+- [获取系统或动作信息（`sys:getSysInfo`）](https://docs.getquicker.net/v2/xaction/modules/getsysinfo): 获取系统、Quicker 及当前运行动作的相关信息。
+- [获取日期时间（`sys:getCurrentTime`）](https://docs.getquicker.net/v2/xaction/modules/gettime): 获取当前或从文本、unix时间戳转换日期时间
+- [获取窗口信息/查找窗口（`sys:getWindowTitle`）](https://docs.getquicker.net/v2/xaction/modules/getwindowtitle): 获取指定窗口的标题等信息。
+- [输入法状态（`sys:imeControl`）](https://docs.getquicker.net/v2/xaction/modules/imecontrol): 获取或更改当前的输入法中英文状态，避免在发送热键时受影响。
+- [按键操作（`sys:keyoperation`）](https://docs.getquicker.net/v2/xaction/modules/keyoperation): 单个键盘按键的操作控制或状态获取
+- [显示器（`sys:monitor`）](https://docs.getquicker.net/v2/xaction/modules/monitor): 获取显示器列表、坐标与工作区，读取和调整硬件亮度。
+- [播放声音（`sys:playSound`）](https://docs.getquicker.net/v2/xaction/modules/playsound): 播放声音提示或声音文件。
+- [Quicker操作（`sys:quickeroperations`）](https://docs.getquicker.net/v2/xaction/modules/quickeroperations): 调用Quicker的某个功能
+- [录制声音/语音识别（`sys:recordSound`）](https://docs.getquicker.net/v2/xaction/modules/recordsound): 录制音频到文件或识别语音
+- [恢复活动窗口（`sys:restoreActiveWindow`）](https://docs.getquicker.net/v2/xaction/modules/restoreactivewindow): 如果活动窗口改变了（比如使用了参数输入步骤）,使用此动作恢复窗口焦点。
+- [在资源管理器中定位文件（`sys:SelectFileInExplorer`）](https://docs.getquicker.net/v2/xaction/modules/selectfileinexplorer): 在资源管理器中选中文件
+- [向窗口发送消息（`sys:sendMessage`）](https://docs.getquicker.net/v2/xaction/modules/sendmessage): 使用SendMessage Win32Api向窗口发送消息。使用方法请搜索SendMessage Win32 API接口。
+- [Shell文件操作（`sys:shelloperation`）](https://docs.getquicker.net/v2/xaction/modules/shelloperation): 针对文件的Windows Shell相关操作
+- [虚拟桌面（`sys:virtualDesktop`）](https://docs.getquicker.net/v2/xaction/modules/virtualdesktop): 查询和管理 Windows 虚拟桌面，移动窗口或将窗口固定到所有桌面。支持范围取决于 Windows 完整版本。
+- [窗口操作（`sys:windowOperations`）](https://docs.getquicker.net/v2/xaction/modules/windowoperations): Window窗口相关操作
+- [Windows服务和注册表（`sys:winservice`）](https://docs.getquicker.net/v2/xaction/modules/winservice): 获取Windows服务的状态、注册表项信息
+- [AI 文本分类（`sys:aiClassify`）](https://docs.getquicker.net/v2/xaction/modules/ai-classify): 使用全局 AI 设置从给定分类中选择一个稳定 Key
+- [AI 结构化提取（`sys:aiExtract`）](https://docs.getquicker.net/v2/xaction/modules/ai-extract): 使用全局 AI 设置按 JSON Schema 从文本中提取结构化数据
+- [AI 文本处理（`sys:aiText`）](https://docs.getquicker.net/v2/xaction/modules/ai-text): 使用全局 AI 设置总结、改写、翻译或处理文本
+- [获取字符信息（`sys:charInfo`）](https://docs.getquicker.net/v2/xaction/modules/charinfo): 获取字符信息
+- [加密/解密/哈希（`sys:enc`）](https://docs.getquicker.net/v2/xaction/modules/enc): 加密、解密，以及哈希计算
+- [组合成文本（`sys:formatString`）](https://docs.getquicker.net/v2/xaction/modules/formatstring): 将（多个）变量组合成一段文本。
+- [列表合并成文本（`sys:joinList`）](https://docs.getquicker.net/v2/xaction/modules/joinlist): 将列表拼接为一段文本
+- [提取JSON内容（`sys:jsonExtract`）](https://docs.getquicker.net/v2/xaction/modules/jsonextract): 提取Json文本中的信息
+- [正则提取（`sys:regexExtract`）](https://docs.getquicker.net/v2/xaction/modules/regexextract): 使用正则表达式提取指定内容
+- [文本窗口（`sys:showText`）](https://docs.getquicker.net/v2/xaction/modules/showtext): 在独立的窗口中显示文本。
+- [拆分文本为列表（`sys:splitString`）](https://docs.getquicker.net/v2/xaction/modules/splitstring): 将文本拆分为列表
+- [文本处理（`sys:stringProcess`）](https://docs.getquicker.net/v2/xaction/modules/stringprocess): 各种文本处理功能
+- [替换文本（`sys:strReplace`）](https://docs.getquicker.net/v2/xaction/modules/strreplace): 替换文本中的指定内容
+- [字数统计（`sys:textCounter`）](https://docs.getquicker.net/v2/xaction/modules/textcounter): 统计文本行数、字符数等
+- [自定义操作窗（`sys:custompanel`）](https://docs.getquicker.net/v2/xaction/modules/custompanel): 自定义悬浮操作窗口，点击后直接执行操作，不隐藏。
+- [自定义窗口（`sys:customwindow`）](https://docs.getquicker.net/v2/xaction/modules/customwindow): 创建和显示自定义窗口
+- [多字段表单（`sys:form`）](https://docs.getquicker.net/v2/xaction/modules/form): 使用表单窗口编辑多个变量的值。
+- [重放键鼠操作（`sys:playRecords`）](https://docs.getquicker.net/v2/xaction/modules/playrecord): 重放录制好的键鼠操作数据。
+- [React 界面（`sys:reactui`）](https://docs.getquicker.net/v2/xaction/modules/reactui): 用单文件 TSX 显示可交互窗口，通过 Quicker.close 把结果写回动作。
+- [录制键鼠操作（`sys:record`）](https://docs.getquicker.net/v2/xaction/modules/record): 录制键鼠操作过程
+- [显示进度条（`sys:reportProgress`）](https://docs.getquicker.net/v2/xaction/modules/reportprogress): 显示/更新进度条
+- [选择文件（`sys:selectFile`）](https://docs.getquicker.net/v2/xaction/modules/selectfile): 用文件选择对话框选择要打开或保存的文件
+- [选择文件夹（`sys:selectFolder`）](https://docs.getquicker.net/v2/xaction/modules/selectfolder): 文件夹选择对话框
+- [显示菜单（`sys:showmenu`）](https://docs.getquicker.net/v2/xaction/modules/showmenu): 显示一个菜单
+- [显示等待窗口（`sys:showWaitWin`）](https://docs.getquicker.net/v2/xaction/modules/showwaitwin): 显示一个等待用户完成某个操作的提示窗口。
+- [辅助选择工具（`sys:textSelectTools`）](https://docs.getquicker.net/v2/xaction/modules/textselecttools): 一些常用的选择内容并获取文本的工具
+- [等待按键（`sys:waitKeyboard`）](https://docs.getquicker.net/v2/xaction/modules/waitkeyboard): 等待用户按下某个按键
+- [WebView2浏览器窗口（`sys:webview2`）](https://docs.getquicker.net/v2/xaction/modules/webview2): 基于微软Edge浏览器内核的组件，需要安装Edge最新预览版方可使用。
+- [等待窗口（`sys:waitWindow`）](https://docs.getquicker.net/v2/xaction/modules/waitwindow): 等待窗口出现、消失、成为前台、最小化或恢复。

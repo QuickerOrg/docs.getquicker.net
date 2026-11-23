@@ -97,6 +97,7 @@ const config: Config = {
   projectName: 'docs.getquicker.net', // Usually your repo name.
 
   onBrokenLinks: 'throw',
+  onBrokenAnchors: 'throw',
 
   markdown: {
     mermaid: true,
@@ -146,6 +147,12 @@ const config: Config = {
           showLastUpdateTime: true,
           editUrl:
             'https://github.com/QuickerOrg/docs.getquicker.net/tree/main/',
+          beforeDefaultRemarkPlugins: [
+            [
+              require('./plugins/remark-xaction-ssr-meta.js'),
+              {siteDir: __dirname},
+            ],
+          ],
         },
         blog: false,
         pages: {
@@ -194,6 +201,7 @@ const config: Config = {
         },
         {to: '/v2/features', label: '功能使用', position: 'left'},
         {to: '/v2/xaction', label: '组合动作', position: 'left'},
+        {to: '/v2/script-action', label: '脚本动作', position: 'left'},
         {to: '/release-notes', label: '更新记录', position: 'left'},
         {type: 'search', position: 'right'},
         ...(!isProd

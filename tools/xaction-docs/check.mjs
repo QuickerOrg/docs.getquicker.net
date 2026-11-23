@@ -4,6 +4,7 @@ import path from 'node:path';
 import process from 'node:process';
 import {isDeepStrictEqual} from 'node:util';
 import {fileURLToPath} from 'node:url';
+import {buildCatalogIndex} from './build-catalog-index.mjs';
 
 const scriptDirectory = path.dirname(fileURLToPath(import.meta.url));
 const repositoryRoot = path.resolve(scriptDirectory, '..', '..');
@@ -58,6 +59,16 @@ function main() {
     const changes = JSON.parse(readText(changesPath));
     if (changes.schemaVersion !== 1 || changes.toGeneratedAt !== catalog.generatedAt) {
       fail(errors, 'changes.json 与当前 catalog 不一致。');
+    }
+  }
+  const catalogIndexPath = path.join(dataRoot, 'catalog-index.json');
+  if (!fs.existsSync(catalogIndexPath)) {
+    fail(errors, '缺少 data/xaction/catalog-index.json，请运行 docs:xaction:catalog-index。');
+  } else {
+    const actualIndex = JSON.parse(readText(catalogIndexPath));
+    const expectedIndex = buildCatalogIndex(catalog);
+    if (!isDeepStrictEqual(actualIndex, expectedIndex)) {
+      fail(errors, 'data/xaction/catalog-index.json 与 catalog.json 不一致，请重新运行 docs:xaction:catalog-index。');
     }
   }
 

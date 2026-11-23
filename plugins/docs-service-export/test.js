@@ -3,7 +3,16 @@ const assert = require('node:assert/strict');
 const fs = require('node:fs');
 const os = require('node:os');
 const path = require('node:path');
-const {splitSections, moduleMarkdown, expandKnownComponents, enrichArticle, prepareMarkdown} = require('./index');
+const {
+  splitSections,
+  chunkSections,
+  moduleMarkdown,
+  expandModules,
+  expandKnownComponents,
+  enrichArticle,
+  classifyArticle,
+  prepareMarkdown,
+} = require('./index');
 
 test.before(prepareMarkdown);
 
@@ -108,4 +117,142 @@ test('面板布局热点的设置位置从组件静态数据导出', () => {
   } finally {
     fs.rmSync(siteDir, {recursive: true, force: true});
   }
+});
+
+test('V2PreviewNotice 展开为纯文本提示且不产生告警', () => {
+  const diagnostics = [];
+  const result = expandKnownComponents(
+    '<V2PreviewNotice />\n\n<V2PreviewNotice variant="landing" />',
+    process.cwd(),
+    diagnostics,
+    'notice.md',
+  );
+  assert.match(result, /Preview · 仅专业版/);
+  assert.match(result, /V2 目前为 Preview 体验版，仅面向专业版用户/);
+  assert.match(result, /https:\/\/docs\.getquicker\.net\/important-notice/);
+  assert.doesNotMatch(result, /<V2PreviewNotice/);
+  assert.deepEqual(diagnostics, []);
+});
+
+
+test('moduleMarkdown 导出完整契约字段、双默认值、枚举与动态未求值条件', () => {
+  const md = moduleMarkdown({
+    key: 'sys:demo',
+    name: '演示模块',
+    selections: {
+      mode: {name: '模式', items: [{value: 'a', name: '甲'}, {value: 'b', name: '乙'}]},
+    },
+    inputs: [
+      {
+        name: '模式',
+        key: 'mode',
+        type: 'Enum',
+        variableMode: 'Input',
+        required: true,
+        newStepDefaultValue: 'b',
+        defaultValue: 'a',
+        validForList: ['op1'],
+      },
+      {
+        name: '高级项',
+        key: 'adv',
+        type: 'Text',
+        visibleWhen: {kind: 'Expression', expr: 'foo > 1'},
+        condition: '脚本条件',
+      },
+    ],
+    outputs: [{name: '结果', key: 'out', type: 'Text', invalidForList: ['legacy']}],
+  });
+  assert.match(md, /变量模式/);
+  assert.match(md, /新建初始值: `b`；运行时缺省: `a`/);
+  assert.match(md, /可选：`a`\(甲\) \/ `b`\(乙\)/);
+  assert.match(md, /仅适用于：op1/);
+  assert.match(md, /动态表达式：未求值/);
+  assert.match(md, /排除：legacy/);
+});
+
+test('ModuleParamPreview 按精确优先级展开示例值与初始值并关联契约', () => {
+  const definitions = new Map([
+    ['sys:sample', {
+      key: 'sys:sample',
+      name: '示例模块',
+      slug: 'sample',
+      inputs: [
+        {key: 'op', name: '操作', defaultValue: 'read', newStepDefaultValue: 'write'},
+        {key: 'flag', name: '开关', defaultValue: 'false'},
+        {key: 'target', name: '目标', defaultValue: ''},
+      ],
+      outputs: [{key: 'res', name: '结果'}],
+    }],
+  ]);
+  const diagnostics = [];
+  const mdx = `<ModuleParamPreview
+  moduleKey="sys:sample"
+  focusKeys={['target']}
+  values={{target: 'hello'}}
+  inputVars={{target: 'vTarget'}}
+  outputVars={{res: 'vOut'}}
+/>`;
+  const out = expandModules(mdx, definitions, diagnostics, 'guide.md');
+  assert.deepEqual(diagnostics, []);
+  assert.match(out, /https:\/\/docs\.getquicker\.net\/v2\/xaction\/modules\/sample/);
+  assert.match(out, /\| ★ 目标 \| target \| hello \| 示例值 \| 输入 `vTarget` \|/);
+  assert.match(out, /\| 操作 \| op \| write \| 新建步骤初始值 \|/);
+  assert.match(out, /\| 开关 \| flag \| false \| 运行时缺省值 \|/);
+  assert.match(out, /`res`\(结果\) → `vOut`/);
+});
+
+test('其余静态预览组件展开且保留 PreviewMap 内部子文本', () => {
+  const diagnostics = [];
+  const sample = [
+    '<NotifyToastPreview message="已完成" variant="success" />',
+    '<ContextMenuPreview items={[{label: "复制"}, {type: "separator"}, {label: "粘贴", tooltip: "快捷粘贴"}]} />',
+    '<TableDataPreview title="清单" columns={["名称", "分值"]} rows={[["甲", 10]]} />',
+    '<VariableDefPreview name="count" typeLabel="数字" defaultValue="0" asState />',
+    '<PreviewMap links={[{from: "a", to: "b"}]}><MsgBoxPreview title="提示" message="确认？" buttons={["确定"]} /></PreviewMap>',
+    '<XActionLanding moduleCount={176} />',
+    '<HashRedirect fromPath="/a" routes={[{to: "/b", hashes: ["x"]}]} />',
+  ].join('\n\n');
+  const out = expandKnownComponents(sample, process.cwd(), diagnostics, 'comp.md');
+  assert.deepEqual(diagnostics, []);
+  assert.match(out, /\[提示消息预览 · success\] 完成|已完成/);
+  assert.match(out, /- 复制/);
+  assert.match(out, /\| 名称 \| 分值 \|/);
+  assert.match(out, /保存为状态/);
+  assert.match(out, /\[弹窗消息预览 · 提示\]/);
+  assert.match(out, /176 个内置模块/);
+  assert.match(out, /已拆分专题锚点自动跳转至/);
+  assert.doesNotMatch(out, /<HashRedirect/);
+  assert.doesNotMatch(out, /<[A-Z][A-Za-z]+Preview/);
+});
+
+test('chunkSections 保持表格与代码块完整并附带 parentHeadings，enrichArticle 注入分类与 sys:xxx 关键词', () => {
+  const bigTable = ['| 列A | 列B |', '| --- | --- |', ...Array.from({length: 40}, (_, i) => `| 行${i} | 值${'x'.repeat(25)} |`)].join('\n');
+  const bigCode = '```csharp\n' + 'var x = 1;\n'.repeat(160) + '```';
+  const md = `# 模块页\n\n## 主节\n\n### 子节\n\n前导段落。\n\n${bigTable}\n\n${bigCode}\n\n结尾段落。`;
+  const article = enrichArticle({
+    id: 'xaction/module/sys:notify',
+    title: '提示消息',
+    description: '',
+    keywords: [],
+    url: 'https://docs.getquicker.net/v2/xaction/modules/notify',
+    markdown: md,
+  }, {
+    contentType: 'reference',
+    authority: {role: 'canonical', isPrimary: true},
+    appliesToVersion: 'V2',
+    verification: {status: 'reviewed', basis: 'frontMatter.docStatus'},
+    moduleKey: 'sys:notify',
+    moduleContract: {moduleKey: 'sys:notify', name: '提示消息', slug: 'notify', inputCount: 9, outputCount: 0},
+    extraKeywords: ['sys:notify', 'notify'],
+  });
+  assert.ok(article.chunks.length >= 2);
+  const subChunks = article.chunks.filter((c) => c.sectionId === '子节');
+  assert.ok(subChunks.every((c) => JSON.stringify(c.parentHeadings) === JSON.stringify(['模块页', '主节'])));
+  assert.ok(subChunks.some((c) => c.markdown.includes('| 行39 |') && c.markdown.includes('| 列A | 列B |')));
+  assert.ok(subChunks.some((c) => c.markdown.includes(bigCode)));
+  assert.equal(article.contentType, 'reference');
+  assert.deepEqual(article.authority, {role: 'canonical', isPrimary: true});
+  assert.equal(article.moduleContract.moduleKey, 'sys:notify');
+  assert.ok(article.keywords.includes('sys:notify'));
 });

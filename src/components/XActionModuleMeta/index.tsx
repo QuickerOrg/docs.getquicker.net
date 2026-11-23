@@ -7,10 +7,12 @@ import {
 } from '@site/data/xaction/modules-index';
 import {useModuleDef} from '@site/src/components/xaction/useModuleDef';
 import {isStepParamVisible} from '@site/src/components/xaction/conditionVisibility';
+import {XActionModuleMetaSsr} from './XActionModuleMetaSsr';
 import styles from './styles.module.css';
 
 type Props = {
   moduleKey: string;
+  ssrMetaJson?: string;
 };
 
 const LONG_DEFAULT_CHARS = 80;
@@ -295,10 +297,21 @@ function ModuleBody({module}: {module: XActionModuleDef}): ReactNode {
   );
 }
 
-export default function XActionModuleMeta({moduleKey}: Props): ReactNode {
+export default function XActionModuleMeta({
+  moduleKey,
+  ssrMetaJson,
+}: Props): ReactNode {
   const {module, ready} = useModuleDef(moduleKey);
 
   if (!ready) {
+    if (ssrMetaJson) {
+      return (
+        <XActionModuleMetaSsr
+          moduleKey={moduleKey}
+          ssrMetaJson={ssrMetaJson}
+        />
+      );
+    }
     return (
       <div
         className="qk-docs-preview-fallback"
@@ -312,7 +325,10 @@ export default function XActionModuleMeta({moduleKey}: Props): ReactNode {
 
   if (!module) {
     return (
-      <div className={['qk-docs-preview', styles.root].join(' ')} data-gallery-skip="">
+      <div
+        className={['qk-docs-preview', styles.root].join(' ')}
+        id="module-contract"
+        data-gallery-skip="">
         <p className={styles.missing}>
           未找到模块定义 <code>{moduleKey}</code>。请确认已同步{' '}
           <code>data/xaction/catalog.json</code>。
@@ -322,7 +338,10 @@ export default function XActionModuleMeta({moduleKey}: Props): ReactNode {
   }
 
   return (
-    <div className={['qk-docs-preview', styles.root].join(' ')} data-gallery-skip="">
+    <div
+      className={['qk-docs-preview', styles.root].join(' ')}
+      id="module-contract"
+      data-gallery-skip="">
       <ModuleBody module={module} />
     </div>
   );

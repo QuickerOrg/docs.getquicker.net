@@ -8,6 +8,7 @@ import React, {
   type ReactNode,
 } from 'react';
 import ExecutionEnvironment from '@docusaurus/ExecutionEnvironment';
+import {XActionModuleMetaSsr} from '@site/src/components/XActionModuleMeta/XActionModuleMetaSsr';
 
 export type PreviewKind = 'heavy' | 'light' | 'editor';
 
@@ -175,13 +176,34 @@ export function lazyHeavy<P extends object>(name: string): ComponentType<P> {
       typeof (props as {moduleKey?: unknown}).moduleKey === 'string'
         ? (props as {moduleKey: string}).moduleKey
         : undefined;
+    const ssrMetaJson =
+      props &&
+      typeof props === 'object' &&
+      'ssrMetaJson' in props &&
+      typeof (props as {ssrMetaJson?: unknown}).ssrMetaJson === 'string'
+        ? (props as {ssrMetaJson: string}).ssrMetaJson
+        : undefined;
     if (ExecutionEnvironment.canUseDOM) {
       void loadHeavy();
     }
-    const fallback = <PreviewFallback kind="heavy" moduleKey={moduleKey} />;
-    const errorFallback = (
-      <PreviewFallback kind="heavy" moduleKey={moduleKey} failed />
-    );
+    const fallback =
+      name === 'XActionModuleMeta' && ssrMetaJson ? (
+        <XActionModuleMetaSsr
+          moduleKey={moduleKey ?? ''}
+          ssrMetaJson={ssrMetaJson}
+        />
+      ) : (
+        <PreviewFallback kind="heavy" moduleKey={moduleKey} />
+      );
+    const errorFallback =
+      name === 'XActionModuleMeta' && ssrMetaJson ? (
+        <XActionModuleMetaSsr
+          moduleKey={moduleKey ?? ''}
+          ssrMetaJson={ssrMetaJson}
+        />
+      ) : (
+        <PreviewFallback kind="heavy" moduleKey={moduleKey} failed />
+      );
     return (
       <AfterHydrate fallback={fallback} errorFallback={errorFallback}>
         <HeavyPreviewHost

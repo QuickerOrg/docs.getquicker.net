@@ -5,6 +5,7 @@ import path from 'node:path';
 import process from 'node:process';
 import {fileURLToPath, pathToFileURL} from 'node:url';
 import {compactModule} from './compact-metadata.mjs';
+import {writeCatalogIndex} from './build-catalog-index.mjs';
 import {parseGeneratedCatalog} from './read-generated-catalog.mjs';
 
 const scriptDirectory = path.dirname(fileURLToPath(import.meta.url));
@@ -1130,6 +1131,7 @@ function main() {
   const changesPath = path.join(dataRoot, 'changes.json');
   const isSameExport = JSON.stringify(previousCatalog) === JSON.stringify(catalog);
   writeText(path.join(dataRoot, 'catalog.json'), JSON.stringify(catalog, null, 2));
+  writeCatalogIndex(path.join(dataRoot, 'catalog.json'), path.join(dataRoot, 'catalog-index.json'));
   if (!isSameExport || !fs.existsSync(changesPath)) {
     writeText(changesPath, JSON.stringify(changes, null, 2));
   }

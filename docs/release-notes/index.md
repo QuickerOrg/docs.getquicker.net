@@ -32,9 +32,16 @@ comments: true
 
 多设备使用、降级或回退前，请阅读[升级与回退](/v2/migration/upgrade-and-rollback)。各版本的具体风险也在下方对应条目中标出。
 
-本站已补充到 **2.3.44**；版本下载与完整修复记录以官网为准。
+本站已补充到 **2.3.45**；版本下载与完整修复记录以官网为准。
 
 ## 近期文档补充
+
+### 2.3.45 · 问问AI步骤、图片对话与路径导航
+
+- [问问AI](/v2/xaction/modules/askai)说明从组合动作交付问题与材料、默认手动发送、自动发送费用及成功结果的含义；[AI 助手](/v2/features/ai-and-agent#ask-ai-2345)同步每轮 20 个内容附件的限制。
+- [AI 交互对话](/v2/xaction/modules/ai-chat#images-2345)补充图片发送、历史图片恢复、模型切换及回复引用；[脚本 AI API](/v2/script-action/api/ai#aiopenassistant)同步打开助手的调用入口。
+- [文件对话框路径](/v2/script-action/api/uia#uiasetdialogpath)说明本地目录直接导航及默认不提交文件的边界；[动作日志](/v2/features/tools#action-log-search-2345)补充动作搜索和同名来源区分；[截图](/v2/features/screenshot/capture-pro#悬停与滚轮)补充吸附动画及设置分组选择。
+- **升级与回退**：[2.3.45 注意事项](/v2/migration/upgrade-and-rollback#ai-images-2345)说明旧版续聊可能缺少历史图片上下文，以及新步骤的最低版本要求。
 
 ### 2.3.44 · 整场景移动与树形场景选择
 

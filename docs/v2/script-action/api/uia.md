@@ -174,13 +174,13 @@ void ClickMenu(string path, Win? window = null)
 void SetDialogPath(string path, bool createDirectory = false, bool pressEnter = false)
 ```
 
-把路径（按 qk.Files 规则转为完整路径）填入打开/另存为对话框（前台的，否则第一个）的文件名框；没有对话框报 UIA_NOT_FOUND。让资源管理器窗口转到文件夹见 qk.Files.SetExplorerPath。
+作用于可识别的打开/另存为/选择文件夹对话框（前台的，否则第一个），否则报 UIA_NOT_FOUND。已存在的本地文件夹直接切换，不改文件名框；文件路径切到上级文件夹并只填文件名。网络路径或无法直接切换时回退为填写完整路径。资源管理器窗口见 qk.Files.SetExplorerPath。
 
 | 参数声明 | 说明 |
 |---|---|
-| `string path` | 文件夹或完整文件路径。以 \ 结尾表示文件夹（如 @"D:\out\v1.2\"），否则视为文件。 |
+| `string path` | 文件夹或文件路径（按 qk.Files 规则转为完整路径）；是否为文件夹以实际存在为准。createDirectory 创建范围另按末尾分隔符判断。 |
 | `bool createDirectory = false` | 先创建缺少的文件夹：以 \ 结尾时创建整个路径，否则只创建其上级文件夹（不按扩展名猜测）。 |
-| `bool pressEnter = false` | false（默认）：只填写，由用户确认；true：填写后按 Enter 提交——文件夹路径使对话框跳转，文件路径会让程序立即在该路径保存或打开文件（另存为可能覆盖同名文件）。之后不要再按 Enter。 |
+| `bool pressEnter = false` | false（默认）：文件路径只填文件名，由用户确认；true：提交并立即保存或打开文件（另存为可能覆盖同名文件），之后不要再按 Enter。直接切换到已存在的本地文件夹时不受此参数影响；回退时 true 才提交完整路径。 |
 
 返回类型：`void`。空值、用户取消和异常行为以成员及域说明为准。
 

@@ -1,8 +1,8 @@
 {
   "schemaVersion": 1,
-  "sourceCommit": "67e1828220db71eeb4b2ce9a99cfa2838a7c8a0e",
-  "productVersion": "2.4.0-codex-ai-composer-font.1+20.Branch.codex-ai-composer-font.Sha.67e1828220db71eeb4b2ce9a99cfa2838a7c8a0e.67e1828220db71eeb4b2ce9a99cfa2838a7c8a0e",
-  "assemblySha256": "cebdf1a0a5dcf2e5e909c3c9e664bf2ecc105bd920805f3bce3b687da1cfd46c",
+  "sourceCommit": "52f4959a192d90b55e323b4fd185d2954bb5c2c8",
+  "productVersion": "2.3.45+Branch.dev-v2.Sha.52f4959a192d90b55e323b4fd185d2954bb5c2c8.52f4959a192d90b55e323b4fd185d2954bb5c2c8",
+  "assemblySha256": "17dee57f048b37cba47e82dfe60bd2db10d1d7f4d2645cfcc4df29fe8eba6256",
   "apiVersion": 1,
   "domains": [
     {
@@ -6586,6 +6586,25 @@
           ],
           "usesDesktopInput": false,
           "cleanup": false
+        },
+        {
+          "key": "Ai.OpenAssistant",
+          "name": "OpenAssistant",
+          "signature": "OpenAssistantResult OpenAssistant(OpenAssistantOptions options)",
+          "returns": "OpenAssistantResult",
+          "description": "打开问问AI并携带提示词及 Materials。默认预填后返回；AutoSend=true 等待 Host 接受后返回，不等待回答，不返回回答。文件按规则导入内容或附带路径。窗口句柄 -1 不附带，0 为调用时前台。",
+          "parameters": [
+            {
+              "name": "options",
+              "type": "OpenAssistantOptions",
+              "declaration": "OpenAssistantOptions options",
+              "optional": false,
+              "description": null,
+              "values": null
+            }
+          ],
+          "usesDesktopInput": false,
+          "cleanup": false
         }
       ]
     },
@@ -6909,14 +6928,14 @@
           "name": "SetDialogPath",
           "signature": "void SetDialogPath(string path, bool createDirectory = false, bool pressEnter = false)",
           "returns": "void",
-          "description": "把路径（按 qk.Files 规则转为完整路径）填入打开/另存为对话框（前台的，否则第一个）的文件名框；没有对话框报 UIA_NOT_FOUND。让资源管理器窗口转到文件夹见 qk.Files.SetExplorerPath。",
+          "description": "作用于可识别的打开/另存为/选择文件夹对话框（前台的，否则第一个），否则报 UIA_NOT_FOUND。已存在的本地文件夹直接切换，不改文件名框；文件路径切到上级文件夹并只填文件名。网络路径或无法直接切换时回退为填写完整路径。资源管理器窗口见 qk.Files.SetExplorerPath。",
           "parameters": [
             {
               "name": "path",
               "type": "string",
               "declaration": "string path",
               "optional": false,
-              "description": "文件夹或完整文件路径。以 \\ 结尾表示文件夹（如 @\"D:\\out\\v1.2\\\"），否则视为文件。",
+              "description": "文件夹或文件路径（按 qk.Files 规则转为完整路径）；是否为文件夹以实际存在为准。createDirectory 创建范围另按末尾分隔符判断。",
               "values": null
             },
             {
@@ -6932,7 +6951,7 @@
               "type": "bool",
               "declaration": "bool pressEnter = false",
               "optional": true,
-              "description": "false（默认）：只填写，由用户确认；true：填写后按 Enter 提交——文件夹路径使对话框跳转，文件路径会让程序立即在该路径保存或打开文件（另存为可能覆盖同名文件）。之后不要再按 Enter。",
+              "description": "false（默认）：文件路径只填文件名，由用户确认；true：提交并立即保存或打开文件（另存为可能覆盖同名文件），之后不要再按 Enter。直接切换到已存在的本地文件夹时不受此参数影响；回退时 true 才提交完整路径。",
               "values": null
             }
           ],
@@ -8117,6 +8136,47 @@
           "name": "SharedRevision",
           "type": "int?",
           "description": "动作库来源的版本号；本机自建动作为 null（不是本地修改次数）。",
+          "writable": true
+        }
+      ],
+      "methods": []
+    },
+    {
+      "name": "AiMaterial",
+      "description": null,
+      "constructors": [],
+      "properties": [],
+      "methods": []
+    },
+    {
+      "name": "AiMaterialResult",
+      "description": null,
+      "constructors": [
+        "AiMaterialResult(string Kind, string Name, string Status, string Message)"
+      ],
+      "properties": [
+        {
+          "name": "Kind",
+          "type": "string",
+          "description": null,
+          "writable": true
+        },
+        {
+          "name": "Name",
+          "type": "string",
+          "description": null,
+          "writable": true
+        },
+        {
+          "name": "Status",
+          "type": "string",
+          "description": null,
+          "writable": true
+        },
+        {
+          "name": "Message",
+          "type": "string",
+          "description": null,
           "writable": true
         }
       ],
@@ -9404,6 +9464,92 @@
           "name": "HeaderRows",
           "type": "int",
           "description": "表头行数（Html 的 <thead> 中的行；没有为 0）。",
+          "writable": true
+        }
+      ],
+      "methods": []
+    },
+    {
+      "name": "OpenAssistantOptions",
+      "description": null,
+      "constructors": [
+        "OpenAssistantOptions()"
+      ],
+      "properties": [
+        {
+          "name": "Prompt",
+          "type": "string",
+          "description": null,
+          "writable": true
+        },
+        {
+          "name": "Materials",
+          "type": "IEnumerable<AiMaterial>?",
+          "description": null,
+          "writable": true
+        },
+        {
+          "name": "AutoSend",
+          "type": "bool",
+          "description": null,
+          "writable": true
+        },
+        {
+          "name": "TimeoutMs",
+          "type": "int",
+          "description": null,
+          "writable": true
+        }
+      ],
+      "methods": []
+    },
+    {
+      "name": "OpenAssistantResult",
+      "description": null,
+      "constructors": [
+        "OpenAssistantResult(bool Success, string Status, string RequestId, string ThreadId, string TurnId, string Message, AiMaterialResult[] AttachmentResults)"
+      ],
+      "properties": [
+        {
+          "name": "Success",
+          "type": "bool",
+          "description": null,
+          "writable": true
+        },
+        {
+          "name": "Status",
+          "type": "string",
+          "description": null,
+          "writable": true
+        },
+        {
+          "name": "RequestId",
+          "type": "string",
+          "description": null,
+          "writable": true
+        },
+        {
+          "name": "ThreadId",
+          "type": "string",
+          "description": null,
+          "writable": true
+        },
+        {
+          "name": "TurnId",
+          "type": "string",
+          "description": null,
+          "writable": true
+        },
+        {
+          "name": "Message",
+          "type": "string",
+          "description": null,
+          "writable": true
+        },
+        {
+          "name": "AttachmentResults",
+          "type": "AiMaterialResult[]",
+          "description": null,
           "writable": true
         }
       ],
@@ -11962,7 +12108,14 @@
     "Ai.Extract(text)",
     "Ai.Extract(timeoutMs)",
     "Ai.Extract(useCase)",
+    "Ai.OpenAssistant(options)",
     "Ai.Translate(text)",
+    "AiMaterial",
+    "AiMaterialResult",
+    "AiMaterialResult(Kind)",
+    "AiMaterialResult(Message)",
+    "AiMaterialResult(Name)",
+    "AiMaterialResult(Status)",
     "Apps.ListTargets(app)",
     "Apps.RunOfficeCommand(app)",
     "Apps.RunOfficeCommand(timeoutMs)",
@@ -12061,6 +12214,19 @@
     "OcrTableResult(Cells)",
     "OcrTableResult(Columns)",
     "OcrTableResult(Rows)",
+    "OpenAssistantOptions",
+    "OpenAssistantOptions(AutoSend)",
+    "OpenAssistantOptions(Materials)",
+    "OpenAssistantOptions(Prompt)",
+    "OpenAssistantOptions(TimeoutMs)",
+    "OpenAssistantResult",
+    "OpenAssistantResult(AttachmentResults)",
+    "OpenAssistantResult(Message)",
+    "OpenAssistantResult(RequestId)",
+    "OpenAssistantResult(Status)",
+    "OpenAssistantResult(Success)",
+    "OpenAssistantResult(ThreadId)",
+    "OpenAssistantResult(TurnId)",
     "PathInfo(IsDirectory)",
     "PathInfo(Length)",
     "PathInfo(ModifiedAt)",

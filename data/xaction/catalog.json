@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-11-17 16:41:03",
-  "moduleCount": 175,
+  "generatedAt": "2026-11-22 17:10:45",
+  "moduleCount": 176,
   "legacyMappedModuleCount": 0,
   "migratedLegacyModuleCount": 0,
   "categories": [
@@ -72,6 +72,102 @@
     }
   ],
   "modules": [
+    {
+      "key": "sys:askAi",
+      "slug": "askai",
+      "legacySlug": "askai",
+      "ownsLegacyContent": true,
+      "name": "问问AI",
+      "description": "打开问问AI并预填材料，可自动发送且不另行确认。材料可能发送到配置的模型并产生费用；后续助手工具调用沿用审批规则。不等待或返回回答。",
+      "category": "Ai",
+      "categoryName": "AI",
+      "stepType": "Action",
+      "isRisky": true,
+      "inputs": [
+        {
+          "key": "prompt",
+          "name": "提示词",
+          "type": "Text",
+          "description": "告诉 AI 你想问什么或做什么，支持变量。例如“总结附带文件”“解释这张图片”。这是本次用户内容，不是系统提示词。",
+          "defaultValue": "",
+          "variableMode": "UseVarOrInput"
+        },
+        {
+          "key": "image",
+          "name": "附带图片",
+          "type": "Image",
+          "description": "可选图片变量，PNG 编码后最多 8 MiB；超限请先缩小图片。多张图片文件可通过附带文件传入。",
+          "defaultValue": "",
+          "variableMode": "UseVar"
+        },
+        {
+          "key": "files",
+          "name": "附带文件",
+          "type": "List",
+          "description": "本地文件或目录路径列表。每轮最多 20 个内容附件（图片和文本合计），单张图片最多 8 MiB。图片和不超过 512 KiB 的受支持文本导入内容，其它文件和目录附带路径；路径不表示正文已读取，后续读取受工具权限约束。",
+          "defaultValue": "",
+          "variableMode": "UseVarOrInput"
+        },
+        {
+          "key": "mode",
+          "name": "发送方式",
+          "type": "Enum",
+          "defaultValue": "manual",
+          "variableMode": "UseVarOrInput"
+        },
+        {
+          "key": "text",
+          "name": "附带文本",
+          "type": "Text",
+          "description": "日志、JSON、正文等作为文本附件，不占提示词输入框；最多 UTF-8 512 KiB。",
+          "isAdvanced": true,
+          "defaultValue": "",
+          "variableMode": "UseVarOrInput"
+        },
+        {
+          "key": "windowHandle",
+          "name": "窗口上下文",
+          "type": "Integer",
+          "description": "-1 不附带；0 为执行本步骤时的前台窗口；其它有效句柄指定窗口。仅附带背景，不获取选区；遵守现有确认设置。",
+          "isAdvanced": true,
+          "defaultValue": "-1",
+          "variableMode": "UseVarOrInput"
+        },
+        {
+          "key": "stopIfFail",
+          "name": "失败后停止",
+          "type": "Boolean",
+          "description": "失败后是否停止动作",
+          "defaultValue": "true",
+          "defaultValueRaw": true,
+          "variableMode": "Input"
+        }
+      ],
+      "outputs": [
+        {
+          "key": "isSuccess",
+          "name": "是否成功",
+          "type": "Boolean",
+          "description": "手动模式表示材料已准备好；自动模式表示助手已接受本轮。均不代表回答完成。可留空。"
+        }
+      ],
+      "selections": {
+        "mode": {
+          "name": "发送方式",
+          "items": [
+            {
+              "value": "manual",
+              "name": "用户确认后发送"
+            },
+            {
+              "value": "auto",
+              "name": "自动发送"
+            }
+          ]
+        }
+      },
+      "sourceFileName": "catalog.json"
+    },
     {
       "key": "sys:ai",
       "slug": "ai",

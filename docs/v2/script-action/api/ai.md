@@ -134,4 +134,30 @@ ChatResult? Chat(string prompt, string? conversationId = null, string? system = 
 
 返回类型：`ChatResult?`。空值、用户取消和异常行为以成员及域说明为准。
 
+<a id="ai-openassistant" />
+
+## Ai.OpenAssistant
+
+```csharp
+OpenAssistantResult OpenAssistant(OpenAssistantOptions options)
+```
+
+打开问问AI并携带提示词及 Materials。默认预填后返回；AutoSend=true 等待 Host 接受后返回，不等待回答，不返回回答。文件按规则导入内容或附带路径。窗口句柄 -1 不附带，0 为调用时前台。
+
+| 参数声明 | 说明 |
+|---|---|
+| `OpenAssistantOptions options` | 见本成员和所在域的说明。 |
+
+返回类型：`OpenAssistantResult`。空值、用户取消和异常行为以成员及域说明为准。
+
 {/* script-api:end */}
+
+## 2.3.45 · 打开助手与取得回答的区别
+
+`qk.Ai.OpenAssistant` 打开问问 AI 并交付材料。`OpenAssistantOptions.AutoSend` 默认为 `false`，用户检查后自行发送；设为 `true` 时直接提交材料，可能上传文件内容并产生模型费用，不再另行确认。后续助手工具调用仍沿用审批设置。
+
+`Success` 只表示手动模式的材料已准备好，或自动模式的本轮已被助手接受，**不表示回答已经生成**。需要直接取得回答正文时使用 `qk.Ai.Ask`；需要用户采用交互回答时使用 `qk.Ai.Chat`。
+
+`Status` 为 `SubmissionUnknown` 时，先检查问问 AI 会话，确认是否已经发送，再决定是否重试，避免重复提交或计费。`AttachmentResults` 提供各材料的处理结果，发送前应检查内容或路径是否符合预期。
+
+材料由 [AiMaterial](./types/aimaterial.md) 创建，选项与默认值见 [OpenAssistantOptions](./types/openassistantoptions.md)。组合动作中的对应入口见[问问AI](/v2/xaction/modules/askai)。

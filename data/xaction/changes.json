@@ -1,43 +1,21 @@
 {
   "schemaVersion": 1,
   "baselineCreated": false,
-  "fromGeneratedAt": "2026-11-15 06:25:10",
-  "toGeneratedAt": "2026-11-17 16:41:03",
+  "fromGeneratedAt": "2026-11-17 16:41:03",
+  "toGeneratedAt": "2026-11-22 17:10:45",
   "summary": {
-    "addedModules": 0,
+    "addedModules": 1,
     "removedModules": 0,
-    "changedModules": 1
+    "changedModules": 0
   },
-  "addedModules": [],
-  "removedModules": [],
-  "changedModules": [
+  "addedModules": [
     {
-      "key": "sys:basic-ocr",
-      "name": "基础OCR",
-      "changedFields": [],
-      "inputs": {
-        "added": [],
-        "removed": [],
-        "changed": []
-      },
-      "outputs": {
-        "added": [
-          {
-            "key": "smartContent",
-            "name": "智能合并结果",
-            "type": "Text",
-            "description": "根据文字位置智能合并段落。保留旧版识别结果兼容，不受合并段落和标点转换参数影响。",
-            "validForList": [
-              "QuickerServerOcr",
-              "LocalOcr"
-            ],
-            "condition": "仅：QuickerServerOcr, LocalOcr"
-          }
-        ],
-        "removed": [],
-        "changed": []
-      },
-      "selectionsChanged": false
+      "key": "sys:askAi",
+      "name": "问问AI",
+      "slug": "askai",
+      "category": "Ai"
     }
-  ]
+  ],
+  "removedModules": [],
+  "changedModules": []
 }

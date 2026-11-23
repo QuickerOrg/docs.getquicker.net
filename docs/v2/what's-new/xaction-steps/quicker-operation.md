@@ -4,6 +4,7 @@ description: Quicker 2.x 的 Quicker 操作模块增加显示选中文本工具�
 sidebar_position: 210
 quickerDocKey: v2/what's-new/xaction-steps/quicker-operation
 comments: true
+displayed_sidebar: docsSidebar
 ---
 
 # Quicker操作模块

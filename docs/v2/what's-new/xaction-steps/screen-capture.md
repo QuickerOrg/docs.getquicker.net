@@ -4,6 +4,7 @@ description: Quicker 2.x 屏幕截图模块增加 UI 元素检测、截图历史
 sidebar_position: 120
 quickerDocKey: v2/what's-new/xaction-steps/screen-capture
 comments: true
+displayed_sidebar: docsSidebar
 ---
 
 # 屏幕截图模块

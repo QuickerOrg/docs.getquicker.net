@@ -4,6 +4,7 @@ description: Quicker 2.x 新增长截图模块，可选择滚动区域并输出�
 sidebar_position: 40
 quickerDocKey: v2/what's-new/xaction-steps/new-long-screenshot
 comments: true
+displayed_sidebar: docsSidebar
 ---
 
 # 新增：长截图模块

@@ -4,6 +4,7 @@ description: Quicker 2.x 新增运行 C# 文件应用模块，使用 .NET SDK �
 sidebar_position: 70
 quickerDocKey: v2/what's-new/xaction-steps/new-csharp-file-app
 comments: true
+displayed_sidebar: docsSidebar
 ---
 
 # 新增：运行C#文件应用模块

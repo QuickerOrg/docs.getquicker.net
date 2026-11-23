@@ -143,6 +143,228 @@ const config: Config = {
       {
         docs: {
           sidebarPath: './sidebars.ts',
+          async sidebarItemsGenerator({
+            defaultSidebarItemsGenerator,
+            ...args
+          }) {
+            const items = await defaultSidebarItemsGenerator(args);
+            if (args.item.dirName !== '.') {
+              return items;
+            }
+
+            type SidebarItem = (typeof items)[number];
+            type CategoryItem = Extract<SidebarItem, {type: 'category'}>;
+
+            const isCategoryLinkedTo = (
+              item: SidebarItem,
+              docId: string,
+            ): item is CategoryItem =>
+              item.type === 'category' &&
+              item.link?.type === 'doc' &&
+              item.link.id === docId;
+
+            const isDocWithId = (item: SidebarItem, docId: string): boolean =>
+              item.type === 'doc' && item.id === docId;
+
+            const categoryContainsDocPrefix = (
+              item: SidebarItem,
+              prefix: string,
+            ): item is CategoryItem =>
+              item.type === 'category' &&
+              item.items.some(
+                (sub) => sub.type === 'doc' && sub.id.startsWith(prefix),
+              );
+
+            const insertRelative = (
+              list: SidebarItem[],
+              entry: SidebarItem | undefined,
+              anchorId: string,
+              position: 'before' | 'after',
+            ): SidebarItem[] => {
+              if (!entry) return list;
+              const nextList = [...list];
+              const idx = nextList.findIndex((it) => isDocWithId(it, anchorId));
+              if (idx === -1) {
+                nextList.push(entry);
+              } else {
+                nextList.splice(position === 'after' ? idx + 1 : idx, 0, entry);
+              }
+              return nextList;
+            };
+
+            const v2Index = items.findIndex((it) =>
+              isCategoryLinkedTo(it, 'v2/index'),
+            );
+            if (v2Index === -1) {
+              return items;
+            }
+
+            const v2Category = items[v2Index];
+            if (v2Category.type !== 'category') {
+              return items;
+            }
+
+            const installCategory = v2Category.items.find((it) =>
+              isCategoryLinkedTo(it, 'v2/install/index'),
+            );
+            const featuresCategory = v2Category.items.find((it) =>
+              isCategoryLinkedTo(it, 'v2/features/index'),
+            );
+            const migrationCategory = v2Category.items.find((it) =>
+              isCategoryLinkedTo(it, 'v2/migration/index'),
+            );
+            const whatsNewCategory = v2Category.items.find((it) =>
+              isCategoryLinkedTo(it, "v2/what's-new/index"),
+            );
+            if (
+              !installCategory ||
+              !featuresCategory ||
+              !migrationCategory ||
+              !whatsNewCategory
+            ) {
+              return items;
+            }
+
+            const actionPanelCategory = featuresCategory.items.find((it) =>
+              isCategoryLinkedTo(it, 'v2/features/action-panel/index'),
+            );
+            if (!actionPanelCategory) {
+              return items;
+            }
+
+            // 1. Move upgrade-and-rollback and load-action-page back into Quicker V2.
+            const upgradeRollbackDoc = migrationCategory.items.find((it) =>
+              isDocWithId(it, 'v2/migration/upgrade-and-rollback'),
+            );
+            const loadActionPageDoc = migrationCategory.items.find((it) =>
+              isDocWithId(it, 'v2/migration/load-action-page'),
+            );
+
+            const nextInstallCategory: CategoryItem = {
+              ...installCategory,
+              items: insertRelative(
+                installCategory.items,
+                upgradeRollbackDoc,
+                'v2/install/update',
+                'after',
+              ),
+            };
+            const nextActionPanelCategory: CategoryItem = {
+              ...actionPanelCategory,
+              items: insertRelative(
+                actionPanelCategory.items,
+                loadActionPageDoc,
+                'v2/features/action-panel/faq',
+                'before',
+              ),
+            };
+            const nextFeaturesCategory: CategoryItem = {
+              ...featuresCategory,
+              items: featuresCategory.items.map((it) =>
+                isCategoryLinkedTo(it, 'v2/features/action-panel/index')
+                  ? nextActionPanelCategory
+                  : it,
+              ),
+            };
+
+            const nextV2Items = v2Category.items
+              .filter(
+                (it) =>
+                  !isCategoryLinkedTo(it, 'v2/migration/index') &&
+                  !isCategoryLinkedTo(it, "v2/what's-new/index"),
+              )
+              .map((it) => {
+                if (isCategoryLinkedTo(it, 'v2/install/index')) {
+                  return nextInstallCategory;
+                }
+                if (isCategoryLinkedTo(it, 'v2/features/index')) {
+                  return nextFeaturesCategory;
+                }
+                return it;
+              });
+
+            // 2. Refine what's-new: promote not-supported, merge actions sub-docs,
+            //    keep only xaction-steps/index, and hide 34 stub pages from sidebar.
+            const notSupportedDoc = whatsNewCategory.items.find((it) =>
+              isDocWithId(it, "v2/what's-new/not-supported"),
+            );
+            const actionsSubCategory = whatsNewCategory.items.find((it) =>
+              categoryContainsDocPrefix(it, "v2/what's-new/actions/"),
+            );
+
+            const refinedWhatsNewItems: SidebarItem[] = [];
+            for (const it of whatsNewCategory.items) {
+              if (isDocWithId(it, "v2/what's-new/not-supported")) continue;
+              if (categoryContainsDocPrefix(it, "v2/what's-new/actions/")) continue;
+              if (categoryContainsDocPrefix(it, "v2/what's-new/new-main-win/")) continue;
+              if (categoryContainsDocPrefix(it, "v2/what's-new/others/")) continue;
+
+              if (isDocWithId(it, "v2/what's-new/actions") && actionsSubCategory) {
+                refinedWhatsNewItems.push({
+                  type: 'category',
+                  label: '动作存储、执行与调试',
+                  collapsed: true,
+                  link: {type: 'doc', id: "v2/what's-new/actions"},
+                  items: actionsSubCategory.items,
+                });
+                continue;
+              }
+
+              if (
+                isCategoryLinkedTo(it, "v2/what's-new/xaction-steps/index") ||
+                categoryContainsDocPrefix(it, "v2/what's-new/xaction-steps/")
+              ) {
+                refinedWhatsNewItems.push({
+                  type: 'doc',
+                  id: "v2/what's-new/xaction-steps/index",
+                  label: '组合动作模块新增与改进',
+                });
+                continue;
+              }
+
+              refinedWhatsNewItems.push(it);
+            }
+
+            const whatsNewRefined: CategoryItem = {
+              type: 'category',
+              label: '按主题深入了解 V2 变化',
+              collapsed: true,
+              link: whatsNewCategory.link,
+              items: refinedWhatsNewItems,
+            };
+
+            // 3. Assemble top-level "从 1.x 升级" category in user-journey order.
+            const whyUpgradeDoc = migrationCategory.items.find((it) =>
+              isDocWithId(it, 'v2/migration/why-upgrade'),
+            );
+            const remainingMigrationItems = migrationCategory.items.filter(
+              (it) =>
+                !isDocWithId(it, 'v2/migration/upgrade-and-rollback') &&
+                !isDocWithId(it, 'v2/migration/load-action-page') &&
+                !isDocWithId(it, 'v2/migration/why-upgrade'),
+            );
+
+            const upgradeFromV1Category: CategoryItem = {
+              type: 'category',
+              label: '从 1.x 升级',
+              collapsed: true,
+              link: migrationCategory.link,
+              items: [
+                ...(whyUpgradeDoc ? [whyUpgradeDoc] : []),
+                ...(notSupportedDoc ? [notSupportedDoc] : []),
+                ...remainingMigrationItems,
+                whatsNewRefined,
+              ],
+            };
+
+            const next = [...items];
+            next[v2Index] = {
+              ...v2Category,
+              items: nextV2Items,
+            };
+            next.splice(v2Index + 1, 0, upgradeFromV1Category);
+            return next;
+          },
           routeBasePath: '/',
           showLastUpdateTime: true,
           editUrl:

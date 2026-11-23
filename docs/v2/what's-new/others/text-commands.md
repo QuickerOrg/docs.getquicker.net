@@ -4,6 +4,7 @@ description: Quicker 2.x 文本指令相对 1.x 全局列表的场景化继承�
 sidebar_position: 90
 quickerDocKey: v2/what's-new/others/text-commands
 comments: true
+displayed_sidebar: docsSidebar
 ---
 
 # 文本指令（V2 变化）

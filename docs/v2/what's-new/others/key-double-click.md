@@ -4,6 +4,7 @@ description: Quicker 2.x 按键双击相对 1.x 的场景继承与 Win 键双击
 sidebar_position: 50
 quickerDocKey: v2/what's-new/others/key-double-click
 comments: true
+displayed_sidebar: docsSidebar
 ---
 
 # 按键双击（V2 变化）

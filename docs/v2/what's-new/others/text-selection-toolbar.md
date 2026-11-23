@@ -4,6 +4,7 @@ description: Quicker 2.x 选中文本工具条替代 1.x 文本悬浮窗的变�
 sidebar_position: 100
 quickerDocKey: v2/what's-new/others/text-selection-toolbar
 comments: true
+displayed_sidebar: docsSidebar
 ---
 
 # 选中文本工具条（V2 变化）

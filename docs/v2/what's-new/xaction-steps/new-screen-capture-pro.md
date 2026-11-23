@@ -4,6 +4,7 @@ description: Quicker 2.x 新增截图 Pro 模块，提供控件跟踪、渐进�
 sidebar_position: 30
 quickerDocKey: v2/what's-new/xaction-steps/new-screen-capture-pro
 comments: true
+displayed_sidebar: docsSidebar
 ---
 
 # 新增：截图 Pro 模块

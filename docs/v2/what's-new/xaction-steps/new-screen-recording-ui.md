@@ -4,6 +4,7 @@ description: Quicker 2.x 新增交互式屏幕录制模块，可框选区域、�
 sidebar_position: 50
 quickerDocKey: v2/what's-new/xaction-steps/new-screen-recording-ui
 comments: true
+displayed_sidebar: docsSidebar
 ---
 
 # 新增：屏幕录制模块

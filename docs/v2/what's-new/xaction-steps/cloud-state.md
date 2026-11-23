@@ -4,6 +4,7 @@ description: Quicker 2.x 云状态存取模块在读取内容时增加本机时�
 sidebar_position: 225
 quickerDocKey: v2/what's-new/xaction-steps/cloud-state
 comments: true
+displayed_sidebar: docsSidebar
 ---
 
 # 云状态存取模块

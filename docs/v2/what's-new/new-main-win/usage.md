@@ -4,6 +4,7 @@ description: Quicker V2 新面板窗口相对 1.x 二维动作页的结构变化
 sidebar_position: 10
 quickerDocKey: v2/what's-new/new-main-win/usage
 comments: true
+displayed_sidebar: docsSidebar
 ---
 
 # 新面板窗口的使用（V2 变化）

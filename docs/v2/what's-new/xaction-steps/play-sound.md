@@ -4,6 +4,7 @@ description: Quicker 2.x 播放声音模块的弱提醒音效与独立音量倍�
 sidebar_position: 220
 quickerDocKey: v2/what's-new/xaction-steps/play-sound
 comments: true
+displayed_sidebar: docsSidebar
 ---
 
 # 播放声音模块

@@ -4,6 +4,7 @@ description: 从 Quicker 1.x 迁移到 V2 新面板窗口时，旧动作页、�
 sidebar_position: 20
 quickerDocKey: v2/what's-new/new-main-win/faq
 comments: true
+displayed_sidebar: docsSidebar
 ---
 
 # 新面板窗口常见问题（V2 变化）

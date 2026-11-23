@@ -4,6 +4,7 @@ description: Quicker V2 相对 1.x 新增本机动作暂存区的迁移说明与
 sidebar_position: 15
 quickerDocKey: v2/what's-new/new-main-win/action-drafts
 comments: true
+displayed_sidebar: docsSidebar
 ---
 
 # 本机动作暂存区（V2 变化）

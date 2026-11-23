@@ -4,6 +4,7 @@ description: Quicker 2.x 热键联动相对 1.x 全局白名单的场景化改�
 sidebar_position: 40
 quickerDocKey: v2/what's-new/others/hotkey-watchers
 comments: true
+displayed_sidebar: docsSidebar
 ---
 
 # 热键联动（V2 变化）

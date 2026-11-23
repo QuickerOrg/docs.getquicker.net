@@ -4,6 +4,7 @@ description: Quicker 2.x 提示消息模块改进了显示位置、持续时间�
 sidebar_position: 110
 quickerDocKey: v2/what's-new/xaction-steps/notify
 comments: true
+displayed_sidebar: docsSidebar
 ---
 
 # 提示消息模块

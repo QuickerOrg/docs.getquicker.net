@@ -4,6 +4,7 @@ description: Quicker 2.x 运行 C# 代码模块改用新版编译与补全能力
 sidebar_position: 160
 quickerDocKey: v2/what's-new/xaction-steps/csharp-script
 comments: true
+displayed_sidebar: docsSidebar
 ---
 
 # 运行C#代码模块

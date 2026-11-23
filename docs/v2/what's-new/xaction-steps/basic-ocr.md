@@ -4,6 +4,7 @@ description: Quicker 2.x 的本地文字引擎、模型档位，以及 2.3.36 �
 sidebar_position: 130
 quickerDocKey: v2/what's-new/xaction-steps/basic-ocr
 comments: true
+displayed_sidebar: docsSidebar
 ---
 
 # 基础OCR模块

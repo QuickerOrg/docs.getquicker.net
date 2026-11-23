@@ -4,6 +4,7 @@ description: Quicker 2.x 鼠标手势相对 1.x 的收笔识别、场景继承�
 sidebar_position: 70
 quickerDocKey: v2/what's-new/others/mouse-gestures
 comments: true
+displayed_sidebar: docsSidebar
 ---
 
 # 鼠标手势（V2 变化）

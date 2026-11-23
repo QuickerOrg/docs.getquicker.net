@@ -4,6 +4,7 @@ description: Quicker 2.x “每个”模块改进并行循环的 WaitAny、取�
 sidebar_position: 180
 quickerDocKey: v2/what's-new/xaction-steps/each
 comments: true
+displayed_sidebar: docsSidebar
 ---
 
 # “每个”模块

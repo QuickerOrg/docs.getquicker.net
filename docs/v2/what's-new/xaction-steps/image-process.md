@@ -4,6 +4,7 @@ description: Quicker 2.x 图片处理模块为缩放和图标生成增加多种�
 sidebar_position: 140
 quickerDocKey: v2/what's-new/xaction-steps/image-process
 comments: true
+displayed_sidebar: docsSidebar
 ---
 
 # 图片处理模块

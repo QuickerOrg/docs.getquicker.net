@@ -4,9 +4,14 @@ description: Quicker 2.x 新增发送手机通知模块，可向已授权的 And
 sidebar_position: 10
 quickerDocKey: v2/what's-new/xaction-steps/new-mobile-notification
 comments: true
+displayed_sidebar: docsSidebar
 ---
 
 # 新增：发送手机通知模块
+
+:::warning[2.3.17 起不能新建]
+动作编辑器已隐藏“发送手机通知”的新建入口。本页仅保留 V2 早期介绍；完整参数与当前边界见 [发送手机通知](/v2/xaction/modules/mobilenotification)。
+:::
 
 1.x 没有对应的组合动作模块。2.x 可以向 Remote 设置中已授权且在线的 Android 设备发送通知，并在手机上用按钮或文字回复，把结果送回组合动作。
 

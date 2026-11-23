@@ -4,6 +4,7 @@ description: Quicker 2.x 动作快捷键相对 1.x 全局白黑名单的场景�
 sidebar_position: 10
 quickerDocKey: v2/what's-new/others/action-hotkeys
 comments: true
+displayed_sidebar: docsSidebar
 ---
 
 # 动作快捷键（V2 变化）

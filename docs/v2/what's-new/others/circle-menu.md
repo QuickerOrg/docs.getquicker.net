@@ -4,6 +4,7 @@ description: Quicker 2.x 轮盘菜单相对 1.x 的第三常驻圈、可视子�
 sidebar_position: 30
 quickerDocKey: v2/what's-new/others/circle-menu
 comments: true
+displayed_sidebar: docsSidebar
 ---
 
 # 轮盘菜单（V2 变化）

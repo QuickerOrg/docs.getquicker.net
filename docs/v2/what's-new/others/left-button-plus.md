@@ -4,6 +4,7 @@ description: Quicker 2.x 左键辅助相对 1.x 的场景动作拆分、2.2.11 �
 sidebar_position: 60
 quickerDocKey: v2/what's-new/others/left-button-plus
 comments: true
+displayed_sidebar: docsSidebar
 ---
 
 # 左键辅助（V2 变化）

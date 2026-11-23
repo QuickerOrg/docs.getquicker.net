@@ -4,6 +4,7 @@ description: Quicker 2.x 步骤组模块改进多线程 WaitAny 的取消行为�
 sidebar_position: 170
 quickerDocKey: v2/what's-new/xaction-steps/group
 comments: true
+displayed_sidebar: docsSidebar
 ---
 
 # 步骤组模块

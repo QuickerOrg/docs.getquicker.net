@@ -1,7 +1,7 @@
 ---
 title: 从 1.x 迁移到 V2
 description: 从 Quicker 1.x 迁到 V2 的清单，以及数据分叉后通过重置或导出导入带入 1.x 新动作的方法。
-sidebar_position: 1
+sidebar_position: 20
 sidebar_label: 从 V1 迁移
 quickerDocKey: v2/migration/from-v1
 comments: true

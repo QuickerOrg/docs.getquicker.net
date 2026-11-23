@@ -4,6 +4,7 @@ description: Quicker 2.x 自定义窗口模块改进脚本缓存、动作状态�
 sidebar_position: 230
 quickerDocKey: v2/what's-new/xaction-steps/custom-window
 comments: true
+displayed_sidebar: docsSidebar
 ---
 
 # 自定义窗口模块

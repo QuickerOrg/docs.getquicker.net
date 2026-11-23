@@ -4,6 +4,7 @@ description: Quicker 2.x 运行子程序模块改进了调用会话、取消传�
 sidebar_position: 200
 quickerDocKey: v2/what's-new/xaction-steps/subprogram
 comments: true
+displayed_sidebar: docsSidebar
 ---
 
 # 运行子程序模块

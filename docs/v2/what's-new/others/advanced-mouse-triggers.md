@@ -4,6 +4,7 @@ description: Quicker 2.x 高级鼠标触发相对 1.x 的统一场景识别与�
 sidebar_position: 20
 quickerDocKey: v2/what's-new/others/advanced-mouse-triggers
 comments: true
+displayed_sidebar: docsSidebar
 ---
 
 # 高级鼠标触发（V2 变化）

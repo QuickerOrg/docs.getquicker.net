@@ -4,6 +4,7 @@ description: Quicker 2.x 新增 PDF 文件处理模块，集中提供创建、�
 sidebar_position: 20
 quickerDocKey: v2/what's-new/xaction-steps/new-pdf
 comments: true
+displayed_sidebar: docsSidebar
 ---
 
 # 新增：PDF 文件处理模块

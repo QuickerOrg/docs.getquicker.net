@@ -4,6 +4,7 @@ description: Quicker 2.x 等待按键模块改进了动作停止和并行分支�
 sidebar_position: 190
 quickerDocKey: v2/what's-new/xaction-steps/wait-keyboard
 comments: true
+displayed_sidebar: docsSidebar
 ---
 
 # 等待按键模块

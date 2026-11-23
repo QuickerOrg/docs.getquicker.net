@@ -1,7 +1,7 @@
 ---
 title: 动作作者：迁移到 V2 与维护 V1 兼容版本
 description: 为已分享的动作选择 V1/V2 支持范围，保留旧版兼容修订，并继续更新 V2。
-sidebar_position: 2
+sidebar_position: 40
 quickerDocKey: v2/migration/action-authors
 comments: true
 ---

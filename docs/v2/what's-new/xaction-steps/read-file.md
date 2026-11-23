@@ -4,6 +4,7 @@ description: Quicker 2.x 读取文件模块改进自动编码识别，兼顾 BOM
 sidebar_position: 150
 quickerDocKey: v2/what's-new/xaction-steps/read-file
 comments: true
+displayed_sidebar: docsSidebar
 ---
 
 # 读取文件模块

@@ -4,6 +4,7 @@ description: Quicker 2.x 扩展热键相对 1.x 的三种激活策略、打字�
 sidebar_position: 80
 quickerDocKey: v2/what's-new/others/powerkeys
 comments: true
+displayed_sidebar: docsSidebar
 ---
 
 # 扩展热键（V2 变化）

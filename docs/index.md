@@ -23,7 +23,7 @@ Quicker 是 Windows 上的效率工具。你可以从面板运行动作，也可
 <RelatedDocs layout="cards" className="docs-start-paths" items={[
   {href: '/v2/getting-started', label: '第一次使用 Quicker', description: '安装、打开面板，运行第一个动作。'},
   {href: '/v2/xaction/guides/how-to-learn', label: '自己编写动作', description: '跟着三个小练习，学会步骤、变量和分支。'},
-  {href: '/v2/migration/from-v1', label: '从 1.x 升级', description: '先了解迁移、兼容性和新版的使用方式。'},
+  {href: '/v2/migration', label: '从 1.x 升级', description: '看 2.x 的提升、升级前排雷、迁移清单和习惯变化。'},
 ]} />
 
 ## 常用内容

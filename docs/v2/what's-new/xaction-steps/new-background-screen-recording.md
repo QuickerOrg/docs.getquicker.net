@@ -4,6 +4,7 @@ description: Quicker 2.x 新增后台屏幕录制模块，可通过会话 ID 控
 sidebar_position: 60
 quickerDocKey: v2/what's-new/xaction-steps/new-background-screen-recording
 comments: true
+displayed_sidebar: docsSidebar
 ---
 
 # 新增：后台屏幕录制模块

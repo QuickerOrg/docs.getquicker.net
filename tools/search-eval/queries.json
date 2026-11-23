@@ -69,14 +69,14 @@
       "id": "op-screen-recording",
       "category": "operation",
       "query": "桌面录屏 系统声音",
-      "targetUrls": ["/v2/features/screenshot/recording-and-pin", "/v2/features/screenshot/capture-pro"],
+      "targetUrls": ["/v2/features/screenshot/screen-recording", "/v2/features/screenshot/recording-and-pin", "/v2/features/screenshot/capture-pro"],
       "maxRank": 3
     },
     {
       "id": "op-pin-window",
       "category": "operation",
       "query": "贴图窗口 缩放",
-      "targetUrls": ["/v2/features/screenshot/recording-and-pin", "/v2/features/screenshot/capture-pro"],
+      "targetUrls": ["/v2/features/screenshot/pin-window", "/v2/features/screenshot/recording-and-pin", "/v2/features/screenshot/capture-pro"],
       "maxRank": 3
     },
     {

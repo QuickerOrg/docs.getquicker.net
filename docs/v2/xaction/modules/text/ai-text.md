@@ -15,7 +15,7 @@ metadataGeneratedAt: "2026-08-12 20:29:09"
 
 使用统一 AI 设置完成总结、改写、翻译、校对等文本任务，也可以用完整系统提示词定义自定义处理规则。
 
-使用前，请先在 Quicker 的 **设置 → AI** 中配置服务、模型和“日常文本处理与翻译”任务场景。配置方式见[统一 AI 服务与模型设置](/v2/what's-new/ai-services-and-models)。
+使用前，请先在 Quicker 的 **设置 → AI** 中配置服务、模型和“日常文本处理与翻译”任务场景。配置方式见[统一 AI 服务与模型设置](/v2/features/ai/services-and-models)。
 
 ## 当前模块定义
 

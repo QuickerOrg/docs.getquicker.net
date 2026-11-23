@@ -8,7 +8,7 @@ comments: true
 
 # 截图文字识别（OCR）与表格识别
 
-本页说明 **Quicker 截图** 与 **贴图窗口** 中的本地 OCR 识字、截图内选字编辑、在线表格识别、OCR 结果窗与译文校对；选区、标注与快捷键见 [Quicker 截图](./capture-pro.md)，贴图管理与桌面录屏见 [桌面录屏、贴图窗口与采集历史](./recording-and-pin.md)。
+本页说明 **Quicker 截图** 与 **贴图窗口** 中的本地 OCR 识字、截图内选字编辑、在线表格识别、OCR 结果窗与译文校对；选区、标注与快捷键见 [Quicker 截图](./capture-pro.md)，贴图交互见 [贴图窗口](./pin-window.md)，历史图片管理见 [图片、贴图与录屏历史管理](./media-history.md)，桌面录屏见 [桌面录屏与视频编辑](./screen-recording.md)。
 
 ### 2.3.18 · 从识字浮层打开 OCR 窗口 {/* #open-full-ocr */}
 
@@ -173,9 +173,19 @@ Quicker 截图与贴图共用一套本地 OCR 能力，但使用场景不同。�
       description: '框选、控件自动吸附、标注、长截图、结束方式与快捷键一览。',
     },
     {
-      href: '/v2/features/screenshot/recording-and-pin',
-      label: '桌面录屏、贴图窗口与采集历史',
-      description: '区域录屏、系统声音、录屏编辑、贴图交互与图片/录屏历史管理。',
+      href: '/v2/features/screenshot/pin-window',
+      label: '贴图窗口',
+      description: '桌面贴图交互、鼠标穿透、自动折叠与窗口贴图缩放。',
+    },
+    {
+      href: '/v2/features/screenshot/media-history',
+      label: '图片、贴图与录屏历史管理',
+      description: '采集历史中心、图片标签、桌面贴图分组与保留设置。',
+    },
+    {
+      href: '/v2/features/screenshot/screen-recording',
+      label: '桌面录屏与视频编辑',
+      description: '区域录屏、系统声音、录屏剪辑与智能缩放。',
     },
     {
       href: '/v2/features/screenshot/image-translate',

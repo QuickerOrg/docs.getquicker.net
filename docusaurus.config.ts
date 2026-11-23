@@ -258,13 +258,116 @@ const config: Config = {
                 'before',
               ),
             };
+            const getFeatureItemId = (item: SidebarItem): string | null => {
+              if (item.type === 'doc') return item.id;
+              if (item.type === 'category' && item.link?.type === 'doc') {
+                return item.link.id;
+              }
+              return null;
+            };
+
+            const featuresItemsWithPanel = featuresCategory.items.map((it) =>
+              isCategoryLinkedTo(it, 'v2/features/action-panel/index')
+                ? nextActionPanelCategory
+                : it,
+            );
+            const featureItemById = new Map<string, SidebarItem>();
+            for (const item of featuresItemsWithPanel) {
+              const id = getFeatureItemId(item);
+              if (id) {
+                featureItemById.set(id, item);
+              }
+            }
+
+            const featureGroups: Array<{
+              label: string;
+              collapsed: boolean;
+              itemIds: string[];
+            }> = [
+              {
+                label: '运行动作与整理入口',
+                collapsed: false,
+                itemIds: [
+                  'v2/features/action-panel/index',
+                  'v2/features/scenes',
+                  'v2/features/triggers/index',
+                  'v2/features/floating-actions',
+                  'v2/features/actions',
+                  'v2/features/quick-operations',
+                  'v2/features/basic-actions',
+                  'v2/features/context-menu',
+                ],
+              },
+              {
+                label: '管理与保护动作',
+                collapsed: true,
+                itemIds: [
+                  'v2/features/action-sharing',
+                  'v2/features/action-history',
+                  'v2/features/action-recyclebin',
+                ],
+              },
+              {
+                label: '日常工具',
+                collapsed: true,
+                itemIds: [
+                  'v2/features/screenshot/index',
+                  'v2/features/search',
+                  'v2/features/displays-and-desktops',
+                  'v2/features/tools',
+                ],
+              },
+              {
+                label: 'AI 与外部连接',
+                collapsed: true,
+                itemIds: [
+                  'v2/features/ai/index',
+                  'v2/features/software-connections/index',
+                  'v2/features/remote-files',
+                  'v2/features/http-websocket',
+                ],
+              },
+              {
+                label: '账号与设置',
+                collapsed: true,
+                itemIds: [
+                  'v2/features/account-and-sync',
+                  'v2/features/license',
+                  'v2/features/settings',
+                ],
+              },
+            ];
+
+            const assignedFeatureIds = new Set<string>();
+            const groupedFeatureItems: SidebarItem[] = featureGroups
+              .map((group) => {
+                const groupItems: SidebarItem[] = [];
+                for (const id of group.itemIds) {
+                  const match = featureItemById.get(id);
+                  if (match) {
+                    assignedFeatureIds.add(id);
+                    groupItems.push(match);
+                  }
+                }
+                return {
+                  type: 'category' as const,
+                  label: group.label,
+                  collapsed: group.collapsed,
+                  items: groupItems,
+                };
+              })
+              .filter((group) => group.items.length > 0);
+
+            const remainingFeatureItems = featuresItemsWithPanel.filter(
+              (item) => {
+                const id = getFeatureItemId(item);
+                return !id || !assignedFeatureIds.has(id);
+              },
+            );
+
             const nextFeaturesCategory: CategoryItem = {
               ...featuresCategory,
-              items: featuresCategory.items.map((it) =>
-                isCategoryLinkedTo(it, 'v2/features/action-panel/index')
-                  ? nextActionPanelCategory
-                  : it,
-              ),
+              items: [...groupedFeatureItems, ...remainingFeatureItems],
             };
 
             const nextV2Items = v2Category.items

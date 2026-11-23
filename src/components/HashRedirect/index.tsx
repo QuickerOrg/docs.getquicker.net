@@ -1,60 +1,63 @@
-import {useEffect, useRef} from 'react';
+import {useCallback, useEffect, useRef} from 'react';
 import {useHistory, useLocation} from '@docusaurus/router';
-
-type HashRouteGroup = {
-  to: string;
-  hashes: readonly string[];
-};
+import {
+  createHashRedirectTracker,
+  type HashRouteGroup,
+} from './resolveHashRedirect';
 
 type Props = {
   fromPath: string;
   routes?: readonly HashRouteGroup[];
   aliases?: Readonly<Record<string, string>>;
+  defaultTo?: string;
 };
 
-function encodeTarget(target: string): string {
-  const hashIdx = target.indexOf('#');
-  if (hashIdx === -1) return target;
-  const page = target.slice(0, hashIdx);
-  const id = target.slice(hashIdx + 1);
-  return `${page}#${encodeURIComponent(id)}`;
-}
-
 /** Redirects legacy section hashes to split/archived pages without breaking external links. */
-export default function HashRedirect({fromPath, routes = [], aliases}: Props) {
+export default function HashRedirect({fromPath, routes = [], aliases, defaultTo}: Props) {
   const {pathname, hash} = useLocation();
   const history = useHistory();
-  const redirectedId = useRef<string | null>(null);
+  const trackerRef = useRef<ReturnType<typeof createHashRedirectTracker> | null>(null);
+  if (!trackerRef.current) {
+    trackerRef.current = createHashRedirectTracker();
+  }
 
-  useEffect(() => {
-    const normalizedPath = pathname.replace(/\/$/, '') || '/';
-    const normalizedFrom = fromPath.replace(/\/$/, '') || '/';
-    if (normalizedPath !== normalizedFrom || !hash || hash === '#') {
-      return;
-    }
-    let id: string;
-    try {
-      id = decodeURIComponent(hash.slice(1));
-    } catch {
-      return;
-    }
-    if (redirectedId.current === id) {
-      return;
-    }
-    const aliasTarget = aliases?.[id];
-    if (aliasTarget) {
-      redirectedId.current = id;
-      history.replace(encodeTarget(aliasTarget));
-      return;
-    }
-    for (const group of routes) {
-      if (group.hashes.includes(id)) {
-        redirectedId.current = id;
-        history.replace(`${group.to}#${encodeURIComponent(id)}`);
+  const applyRedirect = useCallback(
+    (currentPath: string, currentHash: string) => {
+      const result = trackerRef.current!.next({
+        pathname: currentPath,
+        hash: currentHash,
+        fromPath,
+        routes,
+        aliases,
+        defaultTo,
+      });
+      if (!result) {
         return;
       }
-    }
-  }, [pathname, hash, fromPath, routes, aliases, history]);
+      history.replace(result.target);
+      if (result.isSamePage && result.targetId) {
+        window.requestAnimationFrame(() => {
+          document.getElementById(result.targetId)?.scrollIntoView();
+        });
+      }
+    },
+    [fromPath, routes, aliases, defaultTo, history],
+  );
+
+  useEffect(() => {
+    applyRedirect(pathname, hash);
+  }, [pathname, hash, applyRedirect]);
+
+  useEffect(() => {
+    const onHashChange = () => {
+      trackerRef.current?.reset();
+      applyRedirect(window.location.pathname, window.location.hash);
+    };
+    window.addEventListener('hashchange', onHashChange);
+    return () => {
+      window.removeEventListener('hashchange', onHashChange);
+    };
+  }, [applyRedirect]);
 
   return null;
 }

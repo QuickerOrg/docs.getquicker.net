@@ -151,4 +151,4 @@ comments: true
 - [AI 助手与动作编写](/v2/features/ai-and-agent)
 - [连接外部助手与 MCP](/v2/features/ai/mcp-and-external-agents)
 - [AI 指令与记忆](/v2/features/ai/memory)
-- [统一 AI 服务与模型设置](/v2/what's-new/ai-services-and-models)
+- [统一 AI 服务与模型设置](/v2/features/ai/services-and-models)

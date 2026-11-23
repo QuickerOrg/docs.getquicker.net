@@ -12,7 +12,7 @@ docStatus: "reviewed"
 
 # 问问AI
 
-2.3.45 起，可在组合动作中使用 **问问AI** 步骤，把问题和材料交给问问 AI 小窗。使用前先在[AI 服务与模型设置](/v2/what's-new/ai-services-and-models)中配置可用模型。
+2.3.45 起，可在组合动作中使用 **问问AI** 步骤，把问题和材料交给问问 AI 小窗。使用前先在[AI 服务与模型设置](/v2/features/ai/services-and-models)中配置可用模型。
 
 ## 当前模块定义
 

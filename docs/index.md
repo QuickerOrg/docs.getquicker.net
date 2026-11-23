@@ -54,11 +54,11 @@ Quicker 是 Windows 上的效率工具。你可以从面板运行动作，也可
 
 ## 选择编写自动化的方法
 
-| 方式 | 适合什么任务 | 入口 |
+| 动作类型 | 适合什么任务 | 入口 |
 | --- | --- | --- |
-| **组合动作** | 图形化搭步骤、复用现成桌面与软件模块 | [入门教程](/v2/xaction/guides/how-to-learn) · [模块参考](/v2/xaction/modules) |
-| **脚本动作（C#）** | 文本/JSON/文件处理、多分支循环与现代 C# 代码 | [脚本动作](/v2/script-action) |
-| **运行 C# 步骤** | 在组合动作中复用原有 C# 代码块或 .NET 文件应用 | [运行C#代码](/v2/xaction/modules/csscript) · [运行C#文件应用](/v2/xaction/modules/file-based-apps) |
-| **自动化脚本（JS）** | 在组合动作中用轻量 JS 编排键鼠、窗口和图像定位 | [自动化脚本](/v2/xaction/modules/automationscript) |
+| **组合动作** | 用现成模块图形化搭步骤，串起桌面操作、文本、截图、AI 与软件连接 | [入门教程](/v2/xaction/guides/how-to-learn) · [模块参考](/v2/xaction/modules) |
+| **脚本动作（C#）** | 直接用现代 C# 与 `qk` API 编写逻辑，适合复杂文本/JSON/文件处理与多分支循环 | [脚本动作](/v2/script-action) |
+
+如果整体使用**组合动作**，但局部某个步骤需要写代码或编排键鼠，可在动作内添加 [运行 C# 代码](/v2/xaction/modules/csscript)、[运行 C# 文件应用](/v2/xaction/modules/file-based-apps) 或 [自动化脚本（JS）](/v2/xaction/modules/automationscript) 步骤。详细对比见 [组合动作与代码方式怎么选](/v2/xaction/guides/how-to-learn#组合动作与代码方式怎么选)。
 
 </div>

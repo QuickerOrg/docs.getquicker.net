@@ -3,8 +3,10 @@ title: 统一 AI 服务与模型设置
 description: 介绍 Quicker V2 的统一 AI 服务与模型设置，以及新增的文本、视觉、分类、提取和交互对话模块。
 sidebar_position: 10
 sidebar_label: 服务与模型设置
-slug: /v2/what's-new/ai-services-and-models
 quickerDocKey: v2/what's-new/ai-services-and-models
+contentType: guide
+authority: canonical
+appliesToVersion: V2
 comments: true
 ---
 

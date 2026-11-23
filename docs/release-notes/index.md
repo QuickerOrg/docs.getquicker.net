@@ -104,7 +104,7 @@ comments: true
 
 - [屏幕选字](/v2/features/screenshot/screen-text-selection#自定义引导键和触发规则)补充“显示工具栏并复制文字”、与内置预设的关系、识别等待和连续正文漏选修复；[截图与贴图](/v2/features/screenshot/capture-pro)补充圆尾内凹实心箭头和贴图工具条表格识别入口。
 - [设置导航](/v2/features/settings)说明固定分组栏与页面列表；[面板菜单](/v2/features/action-panel/usage#工具菜单)修正取消“工具”中转层后的入口，说明全局触发规则与侧栏入口。
-- [调试记录](/v2/xaction/concepts/debug)补充分支递归展开、折叠及过滤限制；[远程文件](/v2/features/remote-files#webdav)补充 WebDAV 签名直链下载；[AI 模型](/v2/what's-new/ai-services-and-models)补充 Gemini 工具调用后的 HTTP 400 修复。
+- [调试记录](/v2/xaction/concepts/debug)补充分支递归展开、折叠及过滤限制；[远程文件](/v2/features/remote-files#webdav)补充 WebDAV 签名直链下载；[AI 模型](/v2/features/ai/services-and-models)补充 Gemini 工具调用后的 HTTP 400 修复。
 - [脚本窗口 API](/v2/script-action/api/window)和[JavaScript 自动化](/v2/xaction/modules/automationscript#权限用户接管和输入安全)修正目标提权窗口的旧限制，明确实际操作仍受 Windows 权限约束。
 - **升级与回退**：[2.3.39 注意事项](/v2/migration/upgrade-and-rollback#text-and-arrow-2339)说明新选字后处理的最低版本，以及回退保存箭头偏好后的恢复方式。
 
@@ -128,7 +128,7 @@ comments: true
 
 - 新增[屏幕拖选文字](/v2/features/screenshot/screen-text-selection)指南，介绍 Win＋左键预设、引导键配置、复制／编辑／翻译、结果工具条和冲突排查；[高级鼠标触发](/v2/features/triggers/advanced-mouse-triggers#text-and-capture-2336)补充附加修饰键与快速截图后处理。
 - [在线表格识别](/v2/features/screenshot/ocr#hybrid-table-2336)说明本地识字与上传处理的区别、会员和 x64 限制、模式选择、长表恢复及手动列宽；同步修正[基础 OCR](/v2/xaction/modules/basic-ocr#hybrid-table-step-2336)及脚本接口中的旧离线说明。
-- [OCR 结果窗口](/v2/features/screenshot/ocr#ocr-window-and-translation-2336)补充默认关闭的窗口复用及人工译文保护；[截图吸附](/v2/features/screenshot/capture-pro#capture-snap-2336)补充自动吸附开关与整窗轮廓；[录屏提示](/v2/features/screenshot/recording-and-pin#recording-key-privacy-2336)明确敏感输入保护方式。
+- [OCR 结果窗口](/v2/features/screenshot/ocr#ocr-window-and-translation-2336)补充默认关闭的窗口复用及人工译文保护；[截图吸附](/v2/features/screenshot/capture-pro#capture-snap-2336)补充自动吸附开关与整窗轮廓；[录屏提示](/v2/features/screenshot/screen-recording#recording-key-privacy-2336)明确敏感输入保护方式。
 - [触发与引用](/v2/features/actions#trigger-and-reference-2336)说明集中管理、快捷编辑和来源定位；[规则动作列表](/v2/features/scenes#rule-action-list-2336)介绍轮盘、手势配置中的候选筛选；[USB 事件](/v2/features/triggers#usb-events-2336)说明连接周期、过滤及设备标识边界。
 - [AI 会话引用与整理](/v2/features/ai/prompt-library-and-sessions#conversation-reference-2336)补充 `@` 引用、彩色标签、关联动作筛选、草稿恢复及整表复制；修正旧文中“草稿不保留任何引用”的描述。
 - [显示菜单](/v2/xaction/modules/showmenu#toolbar-2336)补充横向工具条与脚本接口；[搜索计算器](/v2/features/search#calculator-power-2336)补充 `^^` 乘方；[Mastercam](/v2/features/software-connections/software/mastercam)补充按年度查看在线实例。
@@ -137,14 +137,14 @@ comments: true
 
 ### 2.3.34 · 录前智能缩放、标题排序与冲突确认
 
-- [录屏说明](/v2/features/screenshot/recording-and-pin#recording-auto-zoom-2334)补充录前智能缩放的条件、后期按键提示、取消后的草稿恢复，以及更新历史成品与另存原片的区别。
+- [录屏说明](/v2/features/screenshot/screen-recording#recording-auto-zoom-2334)补充录前智能缩放的条件、后期按键提示、取消后的草稿恢复，以及更新历史成品与另存原片的区别。
 - [面板排序](/v2/features/action-panel/usage#调整动作顺序)补充“按标题排序”；[全屏禁用](/v2/features/triggers#程序黑名单与全屏禁用)补充仅限主显示器的选项与多屏判断范围。
 - [AI 动作冲突处理](/v2/features/action-panel/action-drafts#234--外部助手恢复编辑副本)说明打开时备份刷新、保存覆盖前的明确确认，以及完全控制和无确认通道的边界。
 - [升级与回退](/v2/migration/upgrade-and-rollback#recording-and-fullscreen-2334)说明旧版保存录屏方案、旧设备同步全屏限制偏好的影响。跨设备同步通知、悬浮按钮置顶和匿名对象跨脚本读取等修复见[官网完整记录](https://getquicker.net/V2/Versions)。
 
 ### 2.3.33 · 录屏编辑、OCR 模式与窗口滑动
 
-- [编辑录屏与智能缩放](/v2/features/screenshot/recording-and-pin#recording-edit-2333)补充预览与历史入口、首尾截取、画面裁切、保存方案和 MP4 导出；说明点击轨迹、默认关闭的智能缩放与原片保留边界。
+- [编辑录屏与智能缩放](/v2/features/screenshot/screen-recording#recording-edit-2333)补充预览与历史入口、首尾截取、画面裁切、保存方案和 MP4 导出；说明点击轨迹、默认关闭的智能缩放与原片保留边界。
 - [截图 OCR 默认模式](/v2/features/screenshot/ocr#ocr-result-mode-2333)说明原图选字、打开结果窗口和直接复制全文，及右键切换、Ctrl 临时开窗和账号同步；[结果窗](/v2/features/screenshot/ocr#结果窗)补充识别历史和图片复制菜单。
 - [高级鼠标触发](/v2/features/triggers/advanced-mouse-triggers#window-drag-2333)新增按住滑动移动、缩放窗口的配置方法、左键修饰键限制和取消行为。
 - [动作分享](/v2/features/action-sharing#如何选择发布格式)修正新分享和更新分享的默认格式；[停止步骤](/v2/xaction/modules/stop#参数说明)补充并行分支停止整个动作的修复与取消边界。
@@ -153,16 +153,16 @@ comments: true
 
 ### 2.3.32 · 模型上下文、贴图右键与播放音量
 
-- [AI 模型上下文设置](/v2/what's-new/ai-services-and-models#model-capacity-2332)补充服务端容量识别、常见值选择、未知模型添加及手动上限的优先级。
-- [贴图右键操作](/v2/features/screenshot/recording-and-pin#pin-right-button-2332)说明局部显示开关、关闭后使用右键鼠标手势及账号同步；[截图与取字](/v2/features/screenshot/capture-pro#capture-response-2332)补充准备速度、重复识别复用和结果窗重新截图修复。
+- [AI 模型上下文设置](/v2/features/ai/services-and-models#model-capacity-2332)补充服务端容量识别、常见值选择、未知模型添加及手动上限的优先级。
+- [贴图右键操作](/v2/features/screenshot/pin-window#pin-right-button-2332)说明局部显示开关、关闭后使用右键鼠标手势及账号同步；[截图与取字](/v2/features/screenshot/capture-pro#capture-response-2332)补充准备速度、重复识别复用和结果窗重新截图修复。
 - [播放声音](/v2/xaction/modules/playsound)补充 0～4 音量倍率、静音和失真边界；[脚本接口](/v2/script-action/api/sys#sysplaysound)同步参数说明。
 - **升级与回退**：[2.3.32 注意事项](/v2/migration/upgrade-and-rollback#model-capacity-and-sound-2332)说明旧客户端保存或同步 AI 设置的影响，以及音量倍率的最低版本要求。规则列表显示、外部程序路径查询和更新识别修复见[官网完整记录](https://getquicker.net/V2/Versions)。
 
 ### 2.3.31 · Windows ARM64、OCR 结果窗与录屏声音
 
 - [安装说明](/v2/install/windows)新增 Windows ARM64 原生包入口；[更新与组件](/v2/install/update#arm64-update-2331)说明按架构选择主程序、OCR 和补全服务，及原生依赖限制。
-- [OCR 结果窗](/v2/features/screenshot/ocr#结果窗)更新原生页面、独立原图校对、标准模型和方向检测重新识别流程；[多张贴图](/v2/features/screenshot/recording-and-pin#pin-multi-select-2331)说明 Ctrl 点选与当前组全选。
-- [桌面录屏](/v2/features/screenshot/recording-and-pin#recording-2331)说明新的系统声音范围、主音量与录音音量的区别，以及不支持时的回退。
+- [OCR 结果窗](/v2/features/screenshot/ocr#结果窗)更新原生页面、独立原图校对、标准模型和方向检测重新识别流程；[多张贴图](/v2/features/screenshot/pin-window#pin-multi-select-2331)说明 Ctrl 点选与当前组全选。
+- [桌面录屏](/v2/features/screenshot/screen-recording#recording-2331)说明新的系统声音范围、主音量与录音音量的区别，以及不支持时的回退。
 - [AI 与 MCP](/v2/features/ai/mcp-and-external-agents#tool-budget-and-mcp-2331)补充每轮工具额度、上下文快捷设置和默认关闭的附加功能。
 - [WebSocket 文件后处理](/v2/features/http-websocket#file-receive-actions)标注正式版本，补充文件复制、定位和一次复制多个文件的协议；[亮度浮层](/v2/features/displays-and-desktops#显示器)更新默认关闭规则。
 - [步骤详情](/v2/xaction/concepts/edit-step-param#extra-assignment-summary-2331)补充额外赋值摘要；[子程序](/v2/xaction/modules/subprogram)注明跳过调试输出的修复。
@@ -173,13 +173,13 @@ comments: true
 - [AI 窗口背景](/v2/features/ai-and-agent#window-context-2330)说明默认点击确认、三种本机关联方式，以及空白新对话的侧栏显示规则。
 - [后台屏幕录制](/v2/xaction/modules/screen-recording#会话什么时候结束)补充跨动作运行控制、保存会话 ID、显式停止及脚本调用示例。
 - [文本指令](/v2/features/triggers/text-commands#批量复制到其它场景)补充全局与场景互相复制、重复项处理、全局生效范围和场景分组管理。
-- [贴图右下角缩放](/v2/features/screenshot/recording-and-pin#pin-corner-zoom-2330)说明拖动、取消与适用状态；[脚本选中文件](/v2/script-action/api/selection#selected-files-2330)补充文件管理器兼容和剪贴板影响。
+- [贴图右下角缩放](/v2/features/screenshot/pin-window#pin-corner-zoom-2330)说明拖动、取消与适用状态；[脚本选中文件](/v2/script-action/api/selection#selected-files-2330)补充文件管理器兼容和剪贴板影响。
 - [Mastercam](/v2/features/software-connections/software/mastercam)补充 2022 安装检测修复；搜索高亮、补全及其他修复见[官网完整记录](https://getquicker.net/V2/Versions)。
 - **升级与回退**：[窗口背景和录屏注意事项](/v2/migration/upgrade-and-rollback#window-context-2330)说明旧版自动关联及偏好清除，以及后台录屏需显式停止的行为变化。
 
 ### 2.3.29 · 图片标签、标注快捷操作与步骤配置清理
 
-- [图片、贴图与录屏管理](/v2/features/screenshot/recording-and-pin#图片与录屏历史管理)更新当前导航、图片标签、来源程序筛选、标签内新截图、文字识别及大图入口。
+- [图片、贴图与录屏管理](/v2/features/screenshot/media-history#图片与录屏历史管理)更新当前导航、图片标签、来源程序筛选、标签内新截图、文字识别及大图入口。
 - [标注快捷操作](/v2/features/screenshot/capture-pro#annotation-copy-2329)补充 Shift 等宽高绘制和 Ctrl+D 复制标注。
 - [AI 图片保存](/v2/features/ai/prompt-library-and-sessions#save-reply-image-2329)说明回复完成后的下载按钮及图片右键另存为。
 - [动作历史与备份](/v2/features/action-history#backup-restore-2329)说明自动备份分类修复、按准确来源版本恢复和只读恢复限制。
@@ -198,9 +198,9 @@ comments: true
 ### 2.3.27 · AI 指令与记忆、状态迁移与响应超时
 
 - [AI 使用](/v2/features/ai)现集中提供服务配置、助手操作与[AI 指令与记忆](/v2/features/ai/memory)专页；说明共享与本机范围、默认启用、整理、撤销、导入导出和隐私边界。
-- [响应超时](/v2/what's-new/ai-services-and-models#response-timeout-2327)：首次响应与输出间隔分别设置，持续流式输出不受固定总时长限制，压缩摘要沿用相同规则。
+- [响应超时](/v2/features/ai/services-and-models#response-timeout-2327)：首次响应与输出间隔分别设置，持续流式输出不受固定总时长限制，压缩摘要沿用相同规则。
 - [1.x 动作状态迁移](/v2/migration/from-v1#action-state-migration-2327)：按动作选择、对比新旧状态，覆盖前自动备份；已有 V2 状态的动作默认不选中。
-- [窗口贴图](/v2/features/screenshot/recording-and-pin#窗口贴图缩放)支持双击关闭和缩放右键菜单；截图、贴图与录屏补充工具提示。
+- [窗口贴图](/v2/features/screenshot/pin-window#窗口贴图缩放)支持双击关闭和缩放右键菜单；截图、贴图与录屏补充工具提示。
 - **升级与回退**：共享指令与记忆明文上传，本机内容不随账号同步；回退后保存 AI 设置会丢失新版超时配置。迁移旧状态会替换所选动作当前状态。请先阅读[本版注意事项](/v2/migration/upgrade-and-rollback#ai-memory-and-timeout-2327)及迁移页中的覆盖说明。
 - 轮盘跨屏定位、亮度浮层等待、规则列表刷新、表达式兼容与子菜单显示等修复见[官网完整记录](https://getquicker.net/V2/Versions)。
 
@@ -222,7 +222,7 @@ comments: true
 
 ### 2.3.24 · 贴图交互、脚本文本工具与步骤参数
 
-- [贴图自动折叠、复制与缩放](/v2/features/screenshot/recording-and-pin#pin-interaction-2324)：默认关闭的逐张自动折叠、复制按钮双击成功后关闭、文字优先复制与鼠标锚点缩放。
+- [贴图自动折叠、复制与缩放](/v2/features/screenshot/pin-window#pin-interaction-2324)：默认关闭的逐张自动折叠、复制按钮双击成功后关闭、文字优先复制与鼠标锚点缩放。
 - [脚本文本工具](../v2/script-action/tutorials/text-tools.md)：输入框及表单可使用内置和自定义工具，说明全文/选区替换、取消和停止边界。
 - [交互截图](../v2/xaction/modules/image/screen-capture-pro.md#参数说明)的“操作”支持变量输入；[鼠标输入](../v2/xaction/modules/basic/mouse.md#通用参数)、[运行脚本](../v2/xaction/modules/basic/runscript.md#参数说明)等步骤补齐实际生效参数的配置入口。（[#626](https://github.com/QuickerOrg/Quicker2-issues/issues/626)）
 - 场景禁用轮盘菜单或手势后不再拦截原生拖拽，AI 编辑动作时改善参数与文本保留；完整修复记录见[官网版本记录](https://getquicker.net/v2/versions)。（[#628](https://github.com/QuickerOrg/Quicker2-issues/issues/628)）
@@ -240,7 +240,7 @@ comments: true
 ### 2.3.22 · 截图工具栏、脚本编辑与 AI 工具
 
 - [截图工具栏布局](/v2/features/screenshot/capture-pro#toolbar-layout-2322)：在设置中调整顺序、主栏与更多菜单、分组和默认项，随账号同步；保存后对新开的截图和贴图生效。
-- [贴图组与图片预览](/v2/features/screenshot/recording-and-pin#pin-groups-2322)：快捷切组、调整组顺序及创建指定组切换动作；预览栏可拖动调整宽度。组和图片仍只保存在本机。
+- [贴图组与图片预览](/v2/features/screenshot/pin-window#pin-groups-2322)：快捷切组、调整组顺序及创建指定组切换动作；预览栏可拖动调整宽度。组和图片仍只保存在本机。
 - [OCR 识别与选字](/v2/features/screenshot/ocr#ocr-selection-2322)：优先使用已安装的中文识别引擎，改善逐字选字及本地失败后的提示。
 - [脚本编辑器](/v2/script-action/editor#source-search-2322)支持查找、替换和代码折叠；[多字段表单](/v2/xaction/modules/form#slider-buttons-2322)的滑块增加步进按钮。（[#606](https://github.com/QuickerOrg/Quicker2-issues/issues/606)）
 - [AI 来源动作与用量](/v2/features/ai-and-agent#source-and-usage-2322)：按权限编辑来源组合动作，分析运行记录；统计动作调用和模型测试的用量。（[#613](https://github.com/QuickerOrg/Quicker2-issues/issues/613)）
@@ -261,7 +261,7 @@ comments: true
 
 - [Quicker 截图的新标注工具](/v2/features/screenshot/capture-pro#annotation-tools-2319)：尺寸、角度、引出线与局部放大；更新工具分组、数字键说明及截图 AI 的当前快捷键。[全局快捷键](/v2/features/screenshot/capture-pro#capture-name-and-hotkey-2319)可直接打开截图，2.3.19 仅本机生效，2.3.20 起随账号同步。
 - [AI 窗口背景与欢迎示例](/v2/features/ai-and-agent#window-context-2319)：核对来源、重新读取或取消背景，先显示问问 AI 窗口再补入选区；说明路径、网址及选中文字随提问发送的范围。
-- [AI 服务可稍后补全](/v2/what's-new/ai-services-and-models#incomplete-connections-2319)：保存未完成连接、区分不可用与保存失败，不影响其他有效服务。
+- [AI 服务可稍后补全](/v2/features/ai/services-and-models#incomplete-connections-2319)：保存未完成连接、区分不可用与保存失败，不影响其他有效服务。
 - [文本变量](/v2/xaction/concepts/variables#2319--文本变量的空默认值)统一使用空字符串作为缺省初值；表达式可[获取动作数据目录](/v2/xaction/concepts/standard#expression-action-data-directory)，基础绘图类型兼容问题已修复。
 - [升级与回退](/v2/migration/upgrade-and-rollback#preferences-and-ai-2319)：说明旧版保存截图偏好、按键动作页显示选择、AI 背景及不完整服务时的影响。
 
@@ -321,7 +321,7 @@ comments: true
 
 以下说明依据 2.3.7 发布快照。使用 2.3.6 或更早版本时，仍按对应旧版说明操作。
 
-- [API 配置弹窗](/v2/what's-new/ai-services-and-models#237--api-配置弹窗)：在对话内添加服务与模型，区分自动保存、能力测试和对话模型选择，不再隐式填入默认模型或改写模型分配。
+- [API 配置弹窗](/v2/features/ai/services-and-models#237--api-配置弹窗)：在对话内添加服务与模型，区分自动保存、能力测试和对话模型选择，不再隐式填入默认模型或改写模型分配。
 - [模型不可用与 Claude 授权](/v2/features/ai/mcp-and-external-agents#237--api-配置与外部助手授权)：按停用、凭据和工具能力分别排查，Claude 同一安装布局的版本/构建可复用 MCP 同意。
 - [纯文本与主题](/v2/xaction/modules/pinimage#237--纯文本与主题)：同步最新参数，说明纯文本不自动识别内容、自动来源的简化选项和旧颜色参数退役；原配色需重新检查。
 - [只读动作信息](/v2/xaction/concepts/expression-adv#237--读取动作的只读信息)：用 `_context.Action` 读取 ID、标题、图标和说明，保留旧 ID/标题入口，不能修改或读取内部完整动作对象。
@@ -345,7 +345,7 @@ comments: true
 ### 2.3.5 · 完全控制、贴图与更新流程
 
 - [完全控制与工具恢复](/v2/features/ai-and-agent#235--完全控制与工具恢复)：已启用的工具直接执行，MCP 继承全局完全控制；需要逐次确认时改用「请求批准」。普通工具错误可修正后继续尝试。
-- [AI 自动保存与密钥更换](/v2/what's-new/ai-services-and-models#235--自动保存与密钥更换)：离开编辑控件或切换服务时自动保存，明确说明更换、取消更换和清除 API Key 的操作。
+- [AI 自动保存与密钥更换](/v2/features/ai/services-and-models#235--自动保存与密钥更换)：离开编辑控件或切换服务时自动保存，明确说明更换、取消更换和清除 API Key 的操作。
 - [文字与 HTML 贴图](/v2/xaction/modules/pinimage#235--文字与-html-贴图)：改善文字生成速度、深色配色和透明背景；HTML 统一静态离线渲染，依赖网络或脚本的内容需先转换。
 - [应用内更新](/v2/install/update#应用内更新)：更新包保留原名及下载文件，修复等待退出的权限问题，并说明文件占用状态的处理。
 - [诊断报告进度](/v2/features/tools#235--诊断报告进度)：说明压缩、上传进度与预计时间，以及最终成功状态的判断。
@@ -357,7 +357,7 @@ comments: true
 - [外部助手恢复编辑副本](/v2/features/action-panel/action-drafts#234--外部助手恢复编辑副本)：先保全内容，以当前已保存动作作为恢复基础。
 - [脚本提示词加载方式](/v2/script-action/assistant#234--提示词加载方式)：完整或按需加载（实验），本机保存，新会话生效；[最近运行卡片](/v2/script-action/assistant#234--收起最近运行卡片)可关闭。
 - [MSI 更新模式](/v2/install/update#应用内更新)：展示安装进度，取消或失败时尝试恢复原版本；[诊断报告](/v2/features/tools#收集诊断报告)改用进程快照，报告 ZIP 不加密。
-- [面板空白处创建与粘贴](/v2/features/action-panel/usage#234--在空白处创建和粘贴)、[OpenCode 连接](/v2/what's-new/ai-services-and-models#234--opencode-连接兼容)与[语音识别账号说明](/v2/xaction/modules/recordsound)已更新。表达式 LINQ 结果类型、深色悬浮动作闪白及文字图标等修复见[官网版本记录](https://getquicker.net/v2/versions)。
+- [面板空白处创建与粘贴](/v2/features/action-panel/usage#234--在空白处创建和粘贴)、[OpenCode 连接](/v2/features/ai/services-and-models#234--opencode-连接兼容)与[语音识别账号说明](/v2/xaction/modules/recordsound)已更新。表达式 LINQ 结果类型、深色悬浮动作闪白及文字图标等修复见[官网版本记录](https://getquicker.net/v2/versions)。
 
 <a id="开发中--诊断脚本排查与暂存权限" />
 
@@ -376,7 +376,7 @@ comments: true
 ### 2.3.2 · 窗口助手、键盘黑名单与布局改进
 
 - [窗口助手](/v2/features/ai-and-agent#232--窗口助手)：设置 / 场景助手开放附件与截图；设计器、脚本、设置 / 场景助手可继续历史会话、改名、归档或删除。载入历史不会回退当前动作和设置。
-- [服务商与模型分配](/v2/what's-new/ai-services-and-models#232--服务商与模型分配)：重整设置入口，管理模型能力、探测或手动确认，并调整各任务场景的候选顺序。
+- [服务商与模型分配](/v2/features/ai/services-and-models#232--服务商与模型分配)：重整设置入口，管理模型能力、探测或手动确认，并调整各任务场景的候选顺序。
 - [键盘触发黑名单](/v2/features/triggers#程序黑名单与全屏禁用)：动作快捷键、按键双击、热键联动可分别选择遵循全局黑名单和全屏禁用，新增开关默认关闭。
 - [悬浮分组](/v2/features/floating-actions#保存备份与恢复)：默认启用分组；异常旧布局可从空布局继续，首次保存前备份原文件。
 - [外部文件拖放](/v2/features/action-panel/usage#232--外部文件拖放)：改善跨权限拖放创建动作；流式布局支持多文件，自由格子仅接收空格中的单文件。
@@ -388,12 +388,12 @@ comments: true
 ### 2.3.1 · AI 助手附件、按账号存放与暂存文件
 
 - [AI 本机数据按账号存放](/v2/features/account-and-sync#ai-本机数据按账号存放)：AI 配置、会话、动作日志和运行历史改为按账号存放；升级后首个启动的账号接收旧数据副本。多账号用户请先看[升级与回退](/v2/migration/upgrade-and-rollback#231-ai-数据按账号存放与密钥同步)，确认要保留旧数据的账号和回退影响。
-- [在设备间同步 API 密钥](/v2/what's-new/ai-services-and-models#在设备间同步-api-密钥)：可选同步 API 密钥和自定义请求头，默认关闭；开启后会上传到 Quicker 服务器。建议所有设备升级后再启用。
+- [在设备间同步 API 密钥](/v2/features/ai/services-and-models#在设备间同步-api-密钥)：可选同步 API 密钥和自定义请求头，默认关闭；开启后会上传到 Quicker 服务器。建议所有设备升级后再启用。
 - [组合动作与脚本动作的 AI 助手](/v2/features/ai-and-agent#模型附件与提问)：按对话选择模型和推理强度，添加或粘贴附件、截图与选择窗口，逐题回答助手提问；[脚本助手](/v2/script-action/assistant#先确认需求再修改)新建脚本或新增行为前先确认需求。开启完全控制时可[直接写回原动作](/v2/features/ai-and-agent#动作保存与对话入口)，新对话可一键引用最近修改的动作。
 - [本机动作暂存区](/v2/features/action-panel/action-drafts#从文件导入与导出)支持从文件导入、导出动作，以及[手动备份和版本说明](/v2/features/action-panel/action-drafts#手动备份和版本说明)；点击 **＋** 先选择创建组合动作或脚本动作。
 - [自定义操作窗](/v2/xaction/modules/custompanel#运行时编辑操作窗定义)新增「编辑操作窗定义」「按定义显示操作窗」，可在动作运行时打开设计器并按返回的定义显示窗口。
 - [检查路径/获取文件信息](/v2/xaction/modules/checkpathexists#区分路径不存在与查询失败)可选择查询失败后继续，需先检查是否成功和是否存在。
-- 截图与贴图：[截图内选字与全文编辑](/v2/features/screenshot/ocr#截图内选字与全文编辑)、[序号旁的文字说明](/v2/features/screenshot/capture-pro#序号旁的文字说明)、改版的[图片与录屏历史管理](/v2/features/screenshot/recording-and-pin#图片与录屏历史管理)，以及[窗口贴图缩放](/v2/features/screenshot/recording-and-pin#窗口贴图缩放)。
+- 截图与贴图：[截图内选字与全文编辑](/v2/features/screenshot/ocr#截图内选字与全文编辑)、[序号旁的文字说明](/v2/features/screenshot/capture-pro#序号旁的文字说明)、改版的[图片与录屏历史管理](/v2/features/screenshot/media-history#图片与录屏历史管理)，以及[窗口贴图缩放](/v2/features/screenshot/pin-window#窗口贴图缩放)。
 - [设置搜索](/v2/features/tools#搜索并定位设置)按页面组织结果并定位到选项；[窗口检查器](/v2/features/tools#查看控件树与取消选择)支持展开全部、展开分支和刷新节点，控件选择器可按 `Esc` 取消。
 - [轮盘设置页](/v2/features/triggers/circle-menu#在设置中选择和编辑位置)单击只选中位置，双击或 `F2` 再编辑；[文本指令](/v2/features/triggers/text-commands#多条指令同时匹配)恢复较长指令优先匹配；[选择操作类型](/v2/features/triggers#选择操作类型)恢复为多级菜单。
 - [完整分享窗口](/v2/features/action-sharing#如何选择发布格式)新分享和更新时默认勾选兼容发布格式。WebDAV 目录查询与 301 跳转、长步骤编辑窗顶部出屏、Everything 修改时间排序等修复见[官网版本记录](https://getquicker.net/V2/Versions)。
@@ -422,7 +422,7 @@ comments: true
 - [动作编辑窗口](/v2/features/ai-and-agent#在设计器内修改)在配置好 AI 参数后，可点右上角 AI 按钮或按 `Ctrl+J` 打开面板，用 AI 编写和修改当前动作。
 - [动作面板](/v2/features/action-panel/usage#移动或复制动作)拖动动作时，悬停在场景标签上即可切换场景，便于跨场景整理。
 - [Quicker 截图](/v2/features/screenshot/capture-pro#预选截图区域与快捷出口)所有操作均可使用预选截图区域；「框选即出图」和快速保存可同时选择复制到剪贴板、截图后贴图。
-- [HTML 贴图](/v2/features/screenshot/recording-and-pin#贴图窗口截图后)加强自动识别、剪贴板等来源的隔离，阻止其中的页面脚本；动作作者明确选择 HTML 模式时仍保留脚本能力。
+- [HTML 贴图](/v2/features/screenshot/pin-window#贴图窗口截图后)加强自动识别、剪贴板等来源的隔离，阻止其中的页面脚本；动作作者明确选择 HTML 模式时仍保留脚本能力。
 - 分享更新列表找不到仅限 V2 的子程序（#553）、事件触发最低版本提示反复弹出（#552）等修复见[官网版本记录](https://getquicker.net/V2/Versions)。
 
 ### 2.2.24 · Quicker操作、自定义操作窗设计与 AI 对话
@@ -436,7 +436,7 @@ comments: true
 
 - 分享动作可选[「浏览器通用」适用软件](/v2/features/action-sharing#适用软件与浏览器通用)，可在 Chrome、Edge、Firefox 等支持的浏览器动作页中找到同一动作；从浏览器通用场景分享时默认选此分类。更新已有分享时若原适用软件为非法值需重选，详见[升级注意](/v2/migration/upgrade-and-rollback#2223-分享适用软件与浏览器通用)。
 - [主面板侧边栏快捷按钮](/v2/features/action-panel/usage#侧边栏快捷按钮)按可用高度显示更多，放不下的收进「更多」。
-- [贴图窗口](/v2/features/screenshot/recording-and-pin#贴图窗口截图后)标题不再随内容变化；图片标题改在窗口内（图片下方）显示。
+- [贴图窗口](/v2/features/screenshot/pin-window#贴图窗口截图后)标题不再随内容变化；图片标题改在窗口内（图片下方）显示。
 - 步骤选中轮廓更清晰且保留底色；锁屏时悬浮分组不显示；托盘程序激活误报等多窗口的修复。完整改动见[官网版本记录](https://getquicker.net/V2/Versions)。
 
 ### 2.2.22 · 列表编辑、提示消息与长截图
@@ -458,17 +458,17 @@ comments: true
 
 - 新增[显示器与虚拟桌面步骤](/v2/features/displays-and-desktops)及其参数说明。包含这些步骤的动作需要 **2.2.20 或更高版本**客户端，详见[升级注意](/v2/migration/upgrade-and-rollback#2220-显示器与虚拟桌面步骤)。
 - 补充[子程序输入参数的代码语言与高级分组](/v2/xaction/modules/subprogram#输入参数)，以及[屏幕录制](/v2/xaction/modules/screen-recording-ui#参数说明)和[后台屏幕录制](/v2/xaction/modules/screen-recording#参数说明)的 FFmpeg 编码参数。
-- 补充[AI 对话导入导出与侧边设计器](/v2/features/ai-and-agent)，以及[贴图窗口按 `Y` 切换阴影、右键菜单调整](/v2/features/screenshot/recording-and-pin#移动模式)。
+- 补充[AI 对话导入导出与侧边设计器](/v2/features/ai-and-agent)，以及[贴图窗口按 `Y` 切换阴影、右键菜单调整](/v2/features/screenshot/pin-window#移动模式)。
 
 ### 2.2.18 · 远程文件与工作区
 
 - 补充[远程文件（WebDAV）步骤及本机账号限制](/v2/xaction)、[远程文件账号入口和 HTTP / WebSocket 设置迁移](/v2/features/software-connections)。跨设备或可能回退时，请先看[远程文件账号与 AI 助手工作区注意](/v2/migration/upgrade-and-rollback#2218-远程文件账号与-ai-助手工作区)。
 - 补充[主面板自由格子边缘插队、工具菜单及未配置程序提示](/v2/features/action-panel/usage)、[软件桥接命令工具的动作拖放与 Photoshop 分类筛选](/v2/features/software-connections/command-tool)、[触发规则粘贴顺序与批量删除](/v2/features/triggers/advanced-mouse-triggers#规则列表筛选)。
-- 补充[AI 助手正式版工作区选择、历史对话目录恢复和导出后打开文件夹](/v2/features/ai-and-agent)，以及[贴图穿透时从工具栏拖动与定位](/v2/features/screenshot/recording-and-pin#贴图窗口截图后)。网络子程序、焦点切换和贴图工具栏等其他修复见官网完整记录。
+- 补充[AI 助手正式版工作区选择、历史对话目录恢复和导出后打开文件夹](/v2/features/ai-and-agent)，以及[贴图穿透时从工具栏拖动与定位](/v2/features/screenshot/pin-window#贴图窗口截图后)。网络子程序、焦点切换和贴图工具栏等其他修复见官网完整记录。
 
 ### 2.2.17 · 贴图、录屏与运行记录
 
-- 补充[贴图鼠标穿透及独立工具条](/v2/features/screenshot/recording-and-pin#贴图窗口截图后)、[录屏预览焦点和播放速度](/v2/features/screenshot/capture-pro#结束方式)、[本机 FFmpeg 实时录屏](/v2/features/screenshot/capture-pro#截图-pro-设置页)。交互截图步骤框选后可直接截图、复制、贴图、保存或识别；完整改动见[官网版本记录](https://getquicker.net/V2/Versions)。
+- 补充[贴图鼠标穿透及独立工具条](/v2/features/screenshot/pin-window#贴图窗口截图后)、[录屏预览焦点和播放速度](/v2/features/screenshot/capture-pro#结束方式)、[本机 FFmpeg 实时录屏](/v2/features/screenshot/capture-pro#截图-pro-设置页)。交互截图步骤框选后可直接截图、复制、贴图、保存或识别；完整改动见[官网版本记录](https://getquicker.net/V2/Versions)。
 - 补充[提示消息保持 1 秒](/v2/xaction/modules/notify)、[Everything 通信接口替代服务](/v2/xaction/modules/everythingsearch)、[动作日志并入运行记录窗口](/v2/features/tools#动作运行与触发记录)。
 - 补充[浏览器父场景归属的管理与同步](/v2/features/scenes#作为浏览器程序与父场景归属)、[Mastercam 第三方 FT 命令筛选](/v2/features/software-connections/software/mastercam)。选择窗口会跳过鼠标穿透覆盖层；Windows 应用拖放启动参数、显示菜单子程序生命周期等修复见[官网版本记录](https://getquicker.net/V2/Versions)。
 

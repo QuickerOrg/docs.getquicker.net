@@ -34,12 +34,18 @@ comments: true
       ],
     },
     {
-      to: '/v2/features/screenshot/recording-and-pin',
+      to: '/v2/features/screenshot/screen-recording',
       hashes: [
+        '桌面录屏与采集设置',
         'recording-2331',
         'recording-edit-2333',
         'recording-key-privacy-2336',
         'recording-auto-zoom-2334',
+      ],
+    },
+    {
+      to: '/v2/features/screenshot/pin-window',
+      hashes: [
         '贴图窗口截图后',
         '移动模式',
         'pin-multi-select-2331',
@@ -50,14 +56,19 @@ comments: true
         '显示与局部显示',
         '锁定与历史',
         'pin-groups-2322',
+        '开发版窗口贴图缩放',
+        '窗口贴图缩放',
+        '贴图渲染与清晰度',
+      ],
+    },
+    {
+      to: '/v2/features/screenshot/media-history',
+      hashes: [
         '开发版图片与录屏历史管理',
         '图片与录屏历史管理',
         '图片标签与新截图',
         '查看识别与桌面操作',
         '存储位置与空间占用',
-        '开发版窗口贴图缩放',
-        '窗口贴图缩放',
-        '贴图渲染与清晰度',
       ],
     },
   ]}
@@ -72,7 +83,9 @@ Quicker 截图（原称**截图 Pro**）是 Quicker 的渐进式选区截图：�
 
 :::tip[专题拆分导航]
 - 文字识别、原图选字、在线表格识别、结果窗与本地 OCR 保活设置已拆至 [截图文字识别（OCR）与表格识别](./ocr.md)。
-- 区域录屏、系统声音、录屏编辑与智能缩放、贴图窗口与图片/录屏历史管理已拆至 [桌面录屏、贴图窗口与采集历史](./recording-and-pin.md)。
+- 区域录屏、系统声音、录屏编辑与智能缩放已拆至 [桌面录屏与视频编辑](./screen-recording.md)。
+- 桌面贴图交互、分组管理、窗口贴图缩放与渲染清晰度已拆至 [贴图窗口](./pin-window.md)。
+- 统一采集历史中心、图片标签、贴图实例与录屏保留设置已拆至 [图片、贴图与录屏历史管理](./media-history.md)。
 :::
 
 ## 截图速度与资源占用 {/* #capture-speed-2342 */}
@@ -192,7 +205,7 @@ Quicker 截图（原称**截图 Pro**）是 Quicker 的渐进式选区截图：�
 选好截图区域后，点击工具栏的 **问问 AI**，或在截图画布按 `/`，可直接就这张图片提问。
 
 1. 输入问题，例如“把表格转成 Markdown”或“解释图中的报错”。
-2. 选择可用的模型，再明确发送。需要先配置 AI 服务和支持图片输入的模型，见[AI 设置](/v2/what's-new/ai-services-and-models)。
+2. 选择可用的模型，再明确发送。需要先配置 AI 服务和支持图片输入的模型，见[AI 设置](/v2/features/ai/services-and-models)。
 3. 截图层关闭后，图片和问题交给 **问问 AI** 独立窗口处理，之后也可在 AI 工作台继续同一对话。若模型不可用或发送失败，检查工作台保留的草稿，再手动重试。
 
 输入框以 `/` 开头时，会显示历史问题和预置示例；继续输入可筛选。上下键选择后按 `Enter`，或点击候选，只会填入问题，仍需再次明确发送。`Esc` 优先收起候选，输入文字或使用输入法时不会误触画布的 `/` 快捷键。
@@ -699,9 +712,19 @@ Quicker 截图工具栏可以拖动并吸附到选区附近；双击拖动手柄
       description: '原图选字、OCR 结果窗、在线表格识别与翻译校对。',
     },
     {
-      href: '/v2/features/screenshot/recording-and-pin',
-      label: '桌面录屏、贴图窗口与采集历史',
-      description: '区域录屏、系统声音、录屏编辑、贴图交互与历史管理。',
+      href: '/v2/features/screenshot/screen-recording',
+      label: '桌面录屏与视频编辑',
+      description: '区域录屏、系统声音、录屏编辑与智能缩放。',
+    },
+    {
+      href: '/v2/features/screenshot/pin-window',
+      label: '贴图窗口',
+      description: '桌面贴图交互、分组管理、窗口贴图缩放与清晰度设置。',
+    },
+    {
+      href: '/v2/features/screenshot/media-history',
+      label: '图片、贴图与录屏历史管理',
+      description: '采集历史中心、图片标签与录屏保留设置。',
     },
     {
       href: '/v2/features/screenshot/toolbar-script',

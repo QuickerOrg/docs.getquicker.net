@@ -16,12 +16,13 @@ npm run build
 
 - `catalog.json`：从生成侧栏提取目录层级和文章引用。
 - `articles.json`：文章、章节、规范 URL、原始 Markdown、摘要、关键词和来源哈希。
-- `manifest.json`：schemaVersion 1、构建时间、两个数据文件的 SHA-256，以及按 catalog、articles 字节顺序拼接计算的 revision。
+- `chunks.json`：扩展分块文件（按标题层级切分的自包含检索分块）；遵循 v1 契约且不消费分块的旧服务端可直接忽略。
+- `manifest.json`：`schemaVersion` 1、构建时间、各数据文件（含扩展 `chunks.json`）的 SHA-256，以及仍按 v1 协议由 `catalog.json`、`articles.json` 字节顺序拼接计算的 `revision`。
 - `diagnostics.txt`：缺少稳定键、未展开组件、图片等需要审查的诊断；不属于服务运行数据。
 
 只有 **完整构建成功后** 的知识包可用于部署。`allContentLoaded` 先生成中间包，`postBuild` 再把图片路径映射为实际构建资源并重新计算哈希；开发预览或尚未结束的构建不能替代最终产物。知识包留在 `.cache`，不自动复制到静态站的 `build` 目录，也不自动发布 API。
 
-更新服务时使用同一次构建的三个 JSON 文件，先复制 catalog、articles，最后替换 manifest；保留旧包以便回退。每次正式提交/合并后应重建，因为文档的 Git 更新时间也进入导出元数据。revision 是内容修订号，不是产品版本号。
+更新服务时使用同一次构建的数据文件，先复制 `catalog.json`、`articles.json`（以及需要消费分块的 `chunks.json`），最后替换 `manifest.json`；保留旧包以便回退。每次正式提交/合并后应重建，因为文档的 Git 更新时间也进入导出元数据。revision 是内容修订号，不是产品版本号。
 
 ## 内容边界
 

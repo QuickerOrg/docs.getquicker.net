@@ -9,15 +9,25 @@ export default function LegacyNoticeRedirect({hashes}: {hashes: readonly string[
 
   useEffect(() => {
     if (pathname.replace(/\/$/, '') !== '/important-notice') {
+      redirectedId.current = null;
+      return;
+    }
+    if (!hash || hash === '#') {
+      redirectedId.current = null;
       return;
     }
     let id: string;
     try {
       id = decodeURIComponent(hash.slice(1));
     } catch {
+      redirectedId.current = null;
       return;
     }
-    if (hashes.includes(id) && redirectedId.current !== id) {
+    if (!hashes.includes(id)) {
+      redirectedId.current = null;
+      return;
+    }
+    if (redirectedId.current !== id) {
       // A lazy route may keep this page mounted during the transition.
       redirectedId.current = id;
       history.replace(`/v2/migration/upgrade-and-rollback#${encodeURIComponent(id)}`);

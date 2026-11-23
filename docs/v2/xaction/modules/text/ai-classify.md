@@ -15,7 +15,7 @@ metadataGeneratedAt: "2026-08-12 20:29:09"
 
 让 AI 从预先定义的分类中选择一个稳定 Key，适合邮件分流、反馈归类、意图识别和后续条件分支。
 
-使用前，请先在 Quicker 的 **设置 → AI** 中配置文本任务场景，并选择明确支持结构化输出的模型。配置方式见[统一 AI 服务与模型设置](/v2/what's-new/ai-services-and-models)。
+使用前，请先在 Quicker 的 **设置 → AI** 中配置文本任务场景，并选择明确支持结构化输出的模型。配置方式见[统一 AI 服务与模型设置](/v2/features/ai/services-and-models)。
 
 ## 当前模块定义
 

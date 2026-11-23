@@ -769,27 +769,48 @@ function searchKeywords(title, summary, markdown, limit = 14) {
   return [...words].sort((a, b) => b[1] - a[1]).slice(0, limit).map(([word]) => word);
 }
 
-function classifyArticle({url = '', frontMatter = {}, moduleDef = null}) {
+function classifyArticle({url = '', source = '', frontMatter = {}, moduleDef = null}) {
+  const refPath = (source || url).replace(/\\/g, '/');
   let contentType = frontMatter.contentType ?? 'guide';
   if (!frontMatter.contentType) {
-    if (url.includes('/v2/xaction/modules/') || url.includes('/v2/script-action/api/') || url.endsWith('/v2/xaction/variables')) {
+    if (
+      refPath.includes('/v2/xaction/modules/') ||
+      refPath.includes('/v2/script-action/api/') ||
+      url.includes('/v2/xaction/modules/') ||
+      url.includes('/v2/script-action/api/') ||
+      url.endsWith('/v2/xaction/variables')
+    ) {
       contentType = 'reference';
-    } else if (url.includes('/release-notes') || url.includes("/v2/what's-new/")) {
-      contentType = 'changelog';
-    } else if (url.includes('/troubleshooting') || url.includes('/faq')) {
+    } else if (
+      !refPath.includes("/v2/what's-new/") &&
+      !refPath.includes('/release-notes') &&
+      (refPath.includes('/troubleshooting') || refPath.includes('/faq') || url.includes('/troubleshooting') || url.includes('/faq'))
+    ) {
       contentType = 'troubleshooting';
-    } else if (url.includes('/v2/xaction/concepts/')) {
+    } else if (refPath.includes('/v2/xaction/concepts/') || url.includes('/v2/xaction/concepts/')) {
       contentType = 'concept';
+    } else if (refPath.includes('/v2/features/')) {
+      contentType = 'guide';
+    } else if (
+      refPath.includes('/release-notes') ||
+      refPath.includes("/v2/what's-new/") ||
+      url.includes('/release-notes') ||
+      url.includes("/v2/what's-new/")
+    ) {
+      contentType = 'changelog';
     }
   }
   const authorityRole = frontMatter.authority
-    ?? (url.includes("/v2/what's-new/") ? 'compat-alias'
-      : (url.includes('/release-notes/archive-') ? 'archive' : 'canonical'));
+    ?? ((!refPath.includes('/v2/features/') && refPath.includes("/v2/what's-new/"))
+      ? 'compat-alias'
+      : (refPath.includes('/release-notes/archive-') ? 'archive' : 'canonical'));
   const authority = typeof authorityRole === 'object' && authorityRole
     ? authorityRole
     : {role: authorityRole, isPrimary: authorityRole === 'canonical'};
   const appliesToVersion = frontMatter.appliesToVersion
-    ?? ((url.includes('/v2/migration/') || url.includes("/v2/what's-new/")) ? 'V1→V2' : 'V2');
+    ?? ((!refPath.includes('/v2/features/') && (refPath.includes('/v2/migration/') || refPath.includes("/v2/what's-new/")))
+      ? 'V1→V2'
+      : 'V2');
   const verification = {
     status: frontMatter.docStatus ?? 'unmarked',
     basis: frontMatter.docStatus ? 'frontMatter.docStatus' : 'editorial',
@@ -872,6 +893,23 @@ function catalogFromSidebar(sidebars, docsById, articlesById) {
   return {categories};
 }
 
+function buildManifest(catalogBytes, articleBytes, chunkBytes, generatedAt = new Date().toISOString()) {
+  const files = {
+    'catalog.json': hash(catalogBytes),
+    'articles.json': hash(articleBytes),
+  };
+  if (chunkBytes) {
+    files['chunks.json'] = hash(chunkBytes);
+  }
+  return {
+    schemaVersion: 1,
+    // 保持 v1 契约：revision 仅由 catalog + articles 计算，chunks.json 作为兼容扩展。
+    revision: hash(Buffer.concat([catalogBytes, articleBytes])),
+    generatedAt,
+    files,
+  };
+}
+
 module.exports = function docsServiceExport(context) {
   const output = path.join(context.siteDir, '.cache', 'docs-service');
   const sourceById = new Map();
@@ -882,16 +920,7 @@ module.exports = function docsServiceExport(context) {
     const chunks = articles.flatMap((article) => article.chunks ?? []);
     const articleBytes = Buffer.from(JSON.stringify({articles: cleanArticles}));
     const chunkBytes = Buffer.from(JSON.stringify({chunks}));
-    const manifest = {
-      schemaVersion: 1,
-      revision: hash(Buffer.concat([catalogBytes, articleBytes, chunkBytes])),
-      generatedAt: new Date().toISOString(),
-      files: {
-        'catalog.json': hash(catalogBytes),
-        'articles.json': hash(articleBytes),
-        'chunks.json': hash(chunkBytes),
-      },
-    };
+    const manifest = buildManifest(catalogBytes, articleBytes, chunkBytes);
     fs.writeFileSync(path.join(output, 'catalog.json'), catalogBytes);
     fs.writeFileSync(path.join(output, 'articles.json'), articleBytes);
     fs.writeFileSync(path.join(output, 'chunks.json'), chunkBytes);
@@ -944,7 +973,7 @@ module.exports = function docsServiceExport(context) {
         const url = `${host}${doc.permalink}`;
         const moduleKey = doc.frontMatter?.moduleKey ? String(doc.frontMatter.moduleKey) : null;
         const moduleDef = moduleKey ? definitions.get(moduleKey) ?? null : null;
-        const meta = classifyArticle({url, frontMatter: doc.frontMatter ?? {}, moduleDef});
+        const meta = classifyArticle({url, source, frontMatter: doc.frontMatter ?? {}, moduleDef});
         articles.push(enrichArticle({
           id,
           title: doc.title,
@@ -1024,3 +1053,4 @@ module.exports.expandModules = expandModules;
 module.exports.expandKnownComponents = expandKnownComponents;
 module.exports.prepareMarkdown = prepareMarkdown;
 module.exports.classifyArticle = classifyArticle;
+module.exports.buildManifest = buildManifest;

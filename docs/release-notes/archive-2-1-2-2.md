@@ -20,7 +20,7 @@ comments: true
 ### 2.2.15 · 面板与贴图细节
 
 - 补充[分组圆点颜色及上方居中](/v2/features/action-panel/usage#创建和管理分组)、[面板软隐藏以减少弹出闪烁](/v2/features/action-panel/usage#减少面板弹出闪烁)。
-- 补充[Quicker 截图用反引号切换原始鼠标指针](/v2/features/screenshot/capture-pro#快捷键一览)、[HTML 贴图换行及屏幕内定位](/v2/features/screenshot/recording-and-pin#贴图窗口截图后)、[单个在线软件连接的目标选择](/v2/features/software-connections/command-tool#动作怎样选择目标)；并记录自由格子跨分组拖放、截图光标与提示、表单对齐等修复。
+- 补充[Quicker 截图用反引号切换原始鼠标指针](/v2/features/screenshot/capture-pro#快捷键一览)、[HTML 贴图换行及屏幕内定位](/v2/features/screenshot/pin-window#贴图窗口截图后)、[单个在线软件连接的目标选择](/v2/features/software-connections/command-tool#动作怎样选择目标)；并记录自由格子跨分组拖放、截图光标与提示、表单对齐等修复。
 
 ### 2.2.14 · 自由格子与表单
 
@@ -59,12 +59,12 @@ comments: true
 
 ### 2.2.8 · 贴图与截图修复
 
-- 补充[混合文本捕获](/v2/features/screenshot/capture-pro#混合文本捕获)、[选区侧栏按住刷新与 F5](/v2/features/screenshot/capture-pro#选区刷新)、[剪贴板贴图的富文本、公式、纯文本及图片文件支持](/v2/features/screenshot/recording-and-pin#贴图窗口截图后)、[「恢复贴图」更名与连续恢复](/v2/features/screenshot/recording-and-pin#贴图窗口截图后)。
+- 补充[混合文本捕获](/v2/features/screenshot/capture-pro#混合文本捕获)、[选区侧栏按住刷新与 F5](/v2/features/screenshot/capture-pro#选区刷新)、[剪贴板贴图的富文本、公式、纯文本及图片文件支持](/v2/features/screenshot/pin-window#贴图窗口截图后)、[「恢复贴图」更名与连续恢复](/v2/features/screenshot/pin-window#贴图窗口截图后)。
 - 补充跨屏工具栏定位、马赛克结果清理、[文本工具条从圆点展开不再误隐藏](/v2/features/triggers/text-selection-toolbar#悬浮圆点与选区定位)、[表达式数组、可空值及枚举匹配](/v2/xaction/concepts/expression#表达式的运算结果)、[表单小数加减尾数](/v2/xaction/modules/form)、[子程序内的软件连接目标窗口](/v2/what's-new/xaction-steps/subprogram)等修复。
 
 ### 2.2.7 · 截图外观与回退
 
-- 补充[Quicker 截图选区阴影、边框及记忆规则](/v2/features/screenshot/capture-pro#选区阴影与边框)、[OCR 结果窗文本工具](/v2/features/screenshot/ocr#结果窗)、[截图侧栏恢复已关闭贴图](/v2/features/screenshot/recording-and-pin#贴图窗口截图后)。
+- 补充[Quicker 截图选区阴影、边框及记忆规则](/v2/features/screenshot/capture-pro#选区阴影与边框)、[OCR 结果窗文本工具](/v2/features/screenshot/ocr#结果窗)、[截图侧栏恢复已关闭贴图](/v2/features/screenshot/pin-window#贴图窗口截图后)。
 - 补充[Photoshop 手动路径与 Adobe 依赖检测](/v2/features/software-connections/software/photoshop)、设置窗滚轮切换分组、[表达式显式 `dynamic`](/v2/xaction/concepts/expression#表达式的运算结果)、[表单打开前提示缺失变量](/v2/xaction/modules/form)。
 - 回退到 2.2.6 会丢失阴影与边框配置；可先备份 `image-drawing-tool-state.json`，详见[回退注意](/v2/migration/upgrade-and-rollback#回退到-226-后保存截图设置会丢弃-227-的阴影与边框配置2026-09-07)。
 

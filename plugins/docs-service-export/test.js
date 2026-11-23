@@ -1,5 +1,6 @@
 const test = require('node:test');
 const assert = require('node:assert/strict');
+const crypto = require('node:crypto');
 const fs = require('node:fs');
 const os = require('node:os');
 const path = require('node:path');
@@ -11,8 +12,13 @@ const {
   expandKnownComponents,
   enrichArticle,
   classifyArticle,
+  buildManifest,
   prepareMarkdown,
 } = require('./index');
+const {
+  resolveHashRedirect,
+  createHashRedirectTracker,
+} = require('../../src/components/HashRedirect/resolveHashRedirect');
 
 test.before(prepareMarkdown);
 
@@ -239,4 +245,147 @@ test('chunkSections 保持表格与代码块完整并附带 parentHeadings，enr
   assert.deepEqual(article.authority, {role: 'canonical', isPrimary: true});
   assert.equal(article.moduleContract.moduleKey, 'sys:notify');
   assert.ok(article.keywords.includes('sys:notify'));
+});
+
+test('buildManifest 保持 v1 revision 算法并将 chunks.json 作为兼容扩展', () => {
+  const sha256 = (buf) => crypto.createHash('sha256').update(buf).digest('hex');
+  const catalogBytes = Buffer.from(JSON.stringify([{id: 'c1', items: ['/a']}]));
+  const articleBytes = Buffer.from(JSON.stringify({articles: [{id: '/a', markdown: 'hi'}]}));
+  const chunkBytesV1 = Buffer.from(JSON.stringify({chunks: [{id: '/a#s1', markdown: 'hi'}]}));
+  const chunkBytesV2 = Buffer.from(JSON.stringify({chunks: [{id: '/a#s1', markdown: 'hi v2'}]}));
+
+  const m1 = buildManifest(catalogBytes, articleBytes, chunkBytesV1, '2026-11-23T00:00:00.000Z');
+  const m2 = buildManifest(catalogBytes, articleBytes, chunkBytesV2, '2026-11-23T00:00:00.000Z');
+  const expectedRevision = sha256(Buffer.concat([catalogBytes, articleBytes]));
+
+  assert.equal(m1.schemaVersion, 1);
+  assert.equal(m1.revision, expectedRevision);
+  assert.equal(m2.revision, expectedRevision);
+  assert.equal(m1.files['catalog.json'], sha256(catalogBytes));
+  assert.equal(m1.files['articles.json'], sha256(articleBytes));
+  assert.equal(m1.files['chunks.json'], sha256(chunkBytesV1));
+  assert.equal(m2.files['chunks.json'], sha256(chunkBytesV2));
+  assert.notEqual(m1.files['chunks.json'], m2.files['chunks.json']);
+});
+
+test('HashRedirect 支持同页旧锚点重复跳转且不会自跳转死循环', () => {
+  const fromPath = '/v2/features/ai-and-agent';
+  const aliases = {
+    '新建动作': '/v2/features/ai-and-agent#239--编写搜索与管理动作',
+    'loop': '/v2/features/ai-and-agent#loop',
+  };
+  const tracker = createHashRedirectTracker();
+  const encodedLegacy = `#${encodeURIComponent('新建动作')}`;
+  const encodedTarget = `#${encodeURIComponent('239--编写搜索与管理动作')}`;
+
+  const first = tracker.next({pathname: fromPath, hash: encodedLegacy, fromPath, aliases});
+  assert.equal(first.isSamePage, true);
+  assert.equal(first.targetId, '239--编写搜索与管理动作');
+  assert.equal(first.target, `${fromPath}${encodedTarget}`);
+
+  // 同一次导航尚未替换完成前的重复 effect 不应重复触发 replace
+  assert.equal(tracker.next({pathname: fromPath, hash: encodedLegacy, fromPath, aliases}), null);
+
+  // 落到目标锚点后自动清除去重状态
+  assert.equal(tracker.next({pathname: fromPath, hash: encodedTarget, fromPath, aliases}), null);
+
+  // 再次访问同页旧锚点应重新跳转
+  const second = tracker.next({pathname: fromPath, hash: '#新建动作', fromPath, aliases});
+  assert.equal(second.targetId, '239--编写搜索与管理动作');
+  assert.equal(second.target, `${fromPath}${encodedTarget}`);
+
+  // 离开锚点后再回来或手动 reset（hashchange 场景）同样可再次触发
+  assert.equal(tracker.next({pathname: fromPath, hash: '', fromPath, aliases}), null);
+  const third = tracker.next({pathname: fromPath, hash: encodedLegacy, fromPath, aliases});
+  assert.equal(third.target, `${fromPath}${encodedTarget}`);
+  tracker.reset();
+  const fourth = tracker.next({pathname: fromPath, hash: encodedLegacy, fromPath, aliases});
+  assert.equal(fourth.target, `${fromPath}${encodedTarget}`);
+
+  // 自引用锚点不应死循环
+  assert.equal(resolveHashRedirect({pathname: fromPath, hash: '#loop', fromPath, aliases}), null);
+
+  // defaultTo 支持无 hash 整页兼容跳转与未枚举锚点透传
+  const legacyPage = "/v2/what's-new/ai-services-and-models";
+  const newPage = '/v2/features/ai/services-and-models';
+  assert.deepEqual(
+    resolveHashRedirect({pathname: legacyPage, hash: '', fromPath: legacyPage, defaultTo: newPage}),
+    {
+      sourceId: '__default__',
+      targetPath: newPage,
+      targetId: '',
+      target: newPage,
+      isSamePage: false,
+    },
+  );
+  assert.deepEqual(
+    resolveHashRedirect({pathname: legacyPage, hash: '#服务连接与模型分开管理', fromPath: legacyPage, defaultTo: newPage}),
+    {
+      sourceId: '服务连接与模型分开管理',
+      targetPath: newPage,
+      targetId: '服务连接与模型分开管理',
+      target: `${newPage}#${encodeURIComponent('服务连接与模型分开管理')}`,
+      isSamePage: false,
+    },
+  );
+});
+
+test('classifyArticle 按物理源文件优先识别 V2 主指南，并支持 front matter 显式覆盖', () => {
+  // 即使保留旧 /v2/what's-new/ slug，位于 docs/v2/features/ 下的当前功能指南也不应误判为 changelog
+  const bySource = classifyArticle({
+    url: "https://docs.getquicker.net/v2/what's-new/ai-services-and-models",
+    source: 'docs/v2/features/ai/services-and-models.md',
+  });
+  assert.equal(bySource.contentType, 'guide');
+  assert.deepEqual(bySource.authority, {role: 'canonical', isPrimary: true});
+  assert.equal(bySource.appliesToVersion, 'V2');
+
+  // 位于 docs/v2/migration/ 下的页若显式声明 V2 主指南，应按声明覆盖
+  const byFrontMatter = classifyArticle({
+    url: 'https://docs.getquicker.net/v2/migration/upgrade-and-rollback',
+    source: 'docs/v2/migration/upgrade-and-rollback.md',
+    frontMatter: {
+      contentType: 'guide',
+      authority: 'canonical',
+      appliesToVersion: 'V2',
+    },
+  });
+  assert.equal(byFrontMatter.contentType, 'guide');
+  assert.deepEqual(byFrontMatter.authority, {role: 'canonical', isPrimary: true});
+  assert.equal(byFrontMatter.appliesToVersion, 'V2');
+
+  // 真正属于 what's-new 兼容说明的文档仍标为 changelog / compat-alias / V1→V2
+  const whatsNew = classifyArticle({
+    url: "https://docs.getquicker.net/v2/what's-new/actions",
+    source: "docs/v2/what's-new/actions.md",
+  });
+  assert.equal(whatsNew.contentType, 'changelog');
+  assert.deepEqual(whatsNew.authority, {role: 'compat-alias', isPrimary: false});
+  assert.equal(whatsNew.appliesToVersion, 'V1→V2');
+
+  // features 下的 FAQ 与排障页应识别为 troubleshooting，而不被通用 guide 吞并
+  const panelFaq = classifyArticle({
+    url: 'https://docs.getquicker.net/v2/features/action-panel/faq',
+    source: 'docs/v2/features/action-panel/faq.md',
+  });
+  assert.equal(panelFaq.contentType, 'troubleshooting');
+  assert.deepEqual(panelFaq.authority, {role: 'canonical', isPrimary: true});
+  assert.equal(panelFaq.appliesToVersion, 'V2');
+
+  const bridgeTroubleshooting = classifyArticle({
+    url: 'https://docs.getquicker.net/v2/features/software-connections/troubleshooting',
+    source: 'docs/v2/features/software-connections/troubleshooting.md',
+  });
+  assert.equal(bridgeTroubleshooting.contentType, 'troubleshooting');
+  assert.deepEqual(bridgeTroubleshooting.authority, {role: 'canonical', isPrimary: true});
+  assert.equal(bridgeTroubleshooting.appliesToVersion, 'V2');
+
+  // what's-new 下的旧 FAQ 兼容页仍保持 changelog / compat-alias
+  const legacyFaq = classifyArticle({
+    url: "https://docs.getquicker.net/v2/what's-new/new-main-win/faq",
+    source: "docs/v2/what's-new/new-main-win/faq.md",
+  });
+  assert.equal(legacyFaq.contentType, 'changelog');
+  assert.deepEqual(legacyFaq.authority, {role: 'compat-alias', isPrimary: false});
+  assert.equal(legacyFaq.appliesToVersion, 'V1→V2');
 });

@@ -97,7 +97,7 @@ comments: true
 
 - 管理提示词模板、会话历史、独立工作目录和界面操作，见[AI 提示词库、会话历史与工作区](/v2/features/ai/prompt-library-and-sessions)。
 - 配置外部助手（Cursor / Claude 等）与 MCP 权限，见[连接外部助手与 MCP](/v2/features/ai/mcp-and-external-agents)。
-- 配置 API 服务与模型分配，见[统一 AI 服务与模型设置](/v2/what's-new/ai-services-and-models)；管理长期偏好，见[AI 指令与记忆](./memory.md)。
+- 配置 API 服务与模型分配，见[统一 AI 服务与模型设置](/v2/features/ai/services-and-models)；管理长期偏好，见[AI 指令与记忆](./memory.md)。
 
 ## 入口与整体能力
 
@@ -110,9 +110,9 @@ comments: true
 
 可在 **设置 → AI → AI 指令与记忆** 中管理长期偏好与背景。共享部分随云账号同步，本机部分仅保存在当前设备；支持手动编辑、记忆操作撤销、AI 整理与导入导出。默认启用，隐私、暂停使用及换机方法见专页[AI 指令与记忆](./memory.md)。
 
-助手处理动作时，只在你要求打开编辑器时才主动打开，避免编辑窗口打断当前任务。模型请求可分别设置首次响应和响应间隔超时，持续输出的流式回复不再受固定总时长限制，见[响应超时](/v2/what's-new/ai-services-and-models#response-timeout-2327)。
+助手处理动作时，只在你要求打开编辑器时才主动打开，避免编辑窗口打断当前任务。模型请求可分别设置首次响应和响应间隔超时，持续输出的流式回复不再受固定总时长限制，见[响应超时](/v2/features/ai/services-and-models#response-timeout-2327)。
 
-首次使用前需在「配置 API」添加服务商、模型与 API Key。API Key 默认仅在本机加密保存，不随动作分享或普通设置同步；2.3.1 起可按需开启[设备间凭据同步](/v2/what's-new/ai-services-and-models#在设备间同步-api-密钥)（默认关闭）。
+首次使用前需在「配置 API」添加服务商、模型与 API Key。API Key 默认仅在本机加密保存，不随动作分享或普通设置同步；2.3.1 起可按需开启[设备间凭据同步](/v2/features/ai/services-and-models#在设备间同步-api-密钥)（默认关闭）。
 
 ## 问问 AI 与从动作打开问问 AI {/* #2317--问问-ai-入口与文件操作 */}
 

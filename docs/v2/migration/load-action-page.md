@@ -4,6 +4,9 @@ description: 在新面板里切换场景、分组或旧动作页，以及用「Q
 slug: /v2/migration/new-main-win/load-action-page
 sidebar_position: 35
 quickerDocKey: v2/migration/new-main-win/load-action-page
+contentType: guide
+authority: canonical
+appliesToVersion: V2
 comments: true
 ---
 

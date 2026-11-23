@@ -65,7 +65,7 @@ comments: true
 
 <a id="开发中api-配置与外部助手授权" />
 
-对话内的「配置 API」弹窗用于本人直接编辑服务与模型（细节见[统一 AI 服务与模型设置](/v2/what's-new/ai-services-and-models#237--api-配置弹窗)）。若模型不可用，模型菜单会具体区分「待确认工具调用」「不支持工具调用」、连接停用、模型停用和缺少密钥；Agent 需要支持工具调用的模型，能力未知时请先测试或核实，不要仅凭已保存 Key 就认定可用于 Agent。
+对话内的「配置 API」弹窗用于本人直接编辑服务与模型（细节见[统一 AI 服务与模型设置](/v2/features/ai/services-and-models#237--api-配置弹窗)）。若模型不可用，模型菜单会具体区分「待确认工具调用」「不支持工具调用」、连接停用、模型停用和缺少密钥；Agent 需要支持工具调用的模型，能力未知时请先测试或核实，不要仅凭已保存 Key 就认定可用于 Agent。
 
 AI 服务连接与远程文件账号列表仅支持助手查询，**助手不能新增、改写或删除账号与密钥**；未向桌面设置开放的内部项目，也不会因为换到外部 MCP 助手就变为可写。
 
@@ -79,4 +79,4 @@ AI 服务连接与远程文件账号列表仅支持助手查询，**助手不能
 
 - [AI 助手与动作编写](/v2/features/ai-and-agent)
 - [提示词库与会话管理](/v2/features/ai/prompt-library-and-sessions)
-- [统一 AI 服务与模型设置](/v2/what's-new/ai-services-and-models)
+- [统一 AI 服务与模型设置](/v2/features/ai/services-and-models)

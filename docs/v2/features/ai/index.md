@@ -14,7 +14,7 @@ Quicker 的 AI 能力需要先配置可用的服务与模型。之后可以在�
 
 | 想做什么 | 阅读页面 |
 | --- | --- |
-| 填写服务地址、API Key，选择模型，设置超时 | [统一 AI 服务与模型设置](/v2/what's-new/ai-services-and-models) |
+| 填写服务地址、API Key，选择模型，设置超时 | [统一 AI 服务与模型设置](/v2/features/ai/services-and-models) |
 | 用工作台、问问 AI 或设计器助手写动作与改设置 | [AI 助手与动作编写](/v2/features/ai-and-agent) |
 | 管理按场景分类的提示词库、会话历史、工作区与引用 | [AI 提示词库、会话历史与工作区](/v2/features/ai/prompt-library-and-sessions) |
 | 通过 MCP 连接外部 AI 助手、管理接入同意与工具额度 | [连接外部助手与 MCP](/v2/features/ai/mcp-and-external-agents) |

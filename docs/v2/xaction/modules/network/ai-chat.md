@@ -15,7 +15,7 @@ metadataGeneratedAt: "2026-08-12 20:29:09"
 
 打开流式 AI 对话窗口，在动作运行期间继续追问，并由用户明确选择是否采用当前回答。
 
-使用前，请先在 Quicker 的 **设置 → AI** 中配置服务、模型和文本任务场景。配置方式见[统一 AI 服务与模型设置](/v2/what's-new/ai-services-and-models)。
+使用前，请先在 Quicker 的 **设置 → AI** 中配置服务、模型和文本任务场景。配置方式见[统一 AI 服务与模型设置](/v2/features/ai/services-and-models)。
 
 ## 当前模块定义
 

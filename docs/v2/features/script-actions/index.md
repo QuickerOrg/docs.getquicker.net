@@ -4,6 +4,7 @@ description: 用 C# 语法编写 Quicker 动作，通过 qk 处理文本、文�
 sidebar_position: 1
 quickerDocKey: v2/features/script-actions
 comments: true
+unlisted: true
 ---
 
 # 脚本动作

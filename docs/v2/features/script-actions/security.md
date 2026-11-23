@@ -4,6 +4,7 @@ description: 脚本动作的 .NET 执行权限、运行确认、停止边界与�
 sidebar_position: 2
 quickerDocKey: v2/features/script-actions/security
 comments: true
+unlisted: true
 ---
 
 # 脚本动作安全与授权

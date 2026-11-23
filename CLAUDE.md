@@ -19,7 +19,7 @@ npm run build                                            # 生产构建，产物
 npm run clear                                            # 清理 .docusaurus 缓存，构建异常时先试
 ```
 
-验证策略（见 `AGENTS.md`）：改 `docs/` 的路径/链接/front matter/MDX/`sidebars.ts` 后跑 `npm run build`；改 `src/`/`docusaurus.config.ts`/依赖后先 `npm run typecheck` 再 `npm run build`。本站没有测试套件，构建即主要验证手段。`onBrokenLinks: 'throw'`，因此死链会直接让 `build` 失败。
+验证策略（见 `AGENTS.md`）：改 `docs/` 的路径/链接/front matter/MDX/`sidebars.ts` 后跑 `npm run check:all`（含 `typecheck`、xaction/bridges/script/emphasis/screenshot/docs-service-export/git-history 校验与单测）和 `npm run build`；改 `src/`/`docusaurus.config.ts`/依赖后同样跑 `npm run check:all` 与 `npm run build`。`onBrokenLinks: 'throw'`，因此死链会直接让 `build` 失败。
 
 ## 架构要点（需跨文件理解的部分）
 

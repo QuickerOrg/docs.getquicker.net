@@ -38,7 +38,7 @@ legacyContentUpdatedAt: "2019-07-29T14:23:39.000Z"
 
 **Base64编码**：仅「Base64 文本转图片」。待解码的文本。
 
-**添加data头**：仅「图片或文件转 Base64 文本」。打开后在结果前加上 `data:image/png;base64,`。默认关闭。旧稿未写。
+**添加data头**：仅「图片或文件转 Base64 文本」。打开后在结果前加上 `data:image/png;base64,`。默认关闭。
 
 ## 输出
 

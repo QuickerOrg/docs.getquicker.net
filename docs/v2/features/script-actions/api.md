@@ -4,6 +4,7 @@ description: 脚本动作中 qk 对象各域成员、数据类型、运行限额
 sidebar_position: 3
 quickerDocKey: v2/features/script-actions/api
 comments: true
+unlisted: true
 ---
 
 # 脚本动作 API 参考

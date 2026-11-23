@@ -8,15 +8,13 @@ comments: true
 
 # 常见问题
 
-:::caution[Preview · 仅专业版]
-当前 V2 是 **Preview 体验版**，仅面向专业版用户。免费版数据迁移仍在开发，免费账号目前无法登录 2.0。不建议用它替换无法中断的 1.x 关键环境。体验前请先读 [安装前准备](/important-notice)。
-:::
+<V2PreviewNotice />
 
 先对照现象看下面几条。组合动作的参数和限制以各 [模块页](/v2/xaction/modules) 为准。
 
 ## 安装和启动
 
-**装不上或打不开**：V2 只提供 x64，并且只能跑在 [.NET 10 支持的 Windows](https://github.com/dotnet/core/blob/main/release-notes/10.0/supported-os.md) 上。1.x 能用，不代表这台电脑能跑 V2。安装包只从 [https://getquicker.net/V2](https://getquicker.net/V2) 下载，不要用 `/Download` 上的 1.x。见 [安装](/v2/install/windows.md) 和 [运行平台](/v2/what's-new/platform-and-compatibility.md)。
+**装不上或打不开**：V2 仅支持 64 位 Windows（提供 x64 和 ARM64 安装包，不再提供 x86），并且只能跑在 [.NET 10 支持的 Windows](https://github.com/dotnet/core/blob/main/release-notes/10.0/supported-os.md) 上。1.x 能用，不代表这台电脑能跑 V2。安装包只从 [https://getquicker.net/V2](https://getquicker.net/V2) 下载，不要用 `/Download` 上的 1.x。见 [安装](/v2/install/windows.md) 和 [运行平台](/v2/what's-new/platform-and-compatibility.md)。
 
 **免费账号登不进去**：免费版数据迁移仍在开发，目前只有专业版能登录 2.0。见 [安装前准备](/important-notice)。
 

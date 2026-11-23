@@ -100,11 +100,16 @@ function scanReferences(dir) {
     const lines = readFileSync(file, 'utf8').split(/\r?\n/);
     for (let index = 0; index < lines.length; index += 1) {
       const line = lines[index];
-      const re = /!\[[^\]]*\]\(([^)]+\.(?:png|jpe?g|webp|gif)(?:[?#][^)]*)?)\)/gi;
-      let match;
-      while ((match = re.exec(line))) {
-        const image = resolveImage(page, match[1]);
-        if (image) refs.push({page, image, line: index + 1});
+      const patterns = [
+        /!\[[^\]]*\]\(([^)]+\.(?:png|jpe?g|webp|gif)(?:[?#][^)]*)?)\)/gi,
+        /\brequire\(\s*['"]([^'"]+\.(?:png|jpe?g|webp|gif))['"]\s*\)/gi,
+      ];
+      for (const re of patterns) {
+        let match;
+        while ((match = re.exec(line))) {
+          const image = resolveImage(page, match[1]);
+          if (image) refs.push({page, image, line: index + 1});
+        }
       }
     }
   }

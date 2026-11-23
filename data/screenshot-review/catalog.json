@@ -1,28 +1,28 @@
 {
-  "generatedAt": "2026-08-12T17:29:38.047Z",
-  "count": 524,
+  "generatedAt": "2026-11-23T06:08:39.104Z",
+  "count": 560,
   "byComponent": {
-    "ContextMenuPreview": 42,
+    "ContextMenuPreview": 43,
     "ActionEditorPreview": 36,
-    "ModuleParamPreview": 257,
-    "StepProgramView": 96,
-    "PreviewMarks": 23,
-    "UserInputPreview": 2,
+    "ModuleParamPreview": 274,
+    "StepProgramView": 97,
+    "PreviewMarks": 35,
+    "UserInputPreview": 3,
     "ExpressionAssistPreview": 2,
     "VariableDefPreview": 13,
     "ShareLinkCard": 1,
     "TableFieldPreview": 5,
     "TableDataPreview": 6,
     "VariableListPane": 1,
-    "SearchBoxPreview": 2,
+    "NotifyToastPreview": 5,
+    "TextWindowPreview": 4,
+    "SearchBoxPreview": 4,
     "CoordDiagram": 1,
     "ClickIndicatorPreview": 1,
     "MsgBoxPreview": 4,
     "PreviewMap": 7,
-    "NotifyToastPreview": 4,
     "ChoiceListPreview": 9,
     "markdown-table": 2,
-    "TextWindowPreview": 3,
     "mermaid": 1,
     "ElseToggleMenuDemo": 1,
     "PreviewCompare": 1,
@@ -30,16 +30,16 @@
     "WaitWinPreview": 3
   },
   "bySource": {
-    "orphan": 404,
-    "direct": 120
+    "orphan": 423,
+    "direct": 137
   },
   "pairConfidence": {
-    "page-ref": 218,
-    "decision-unique": 96,
-    "decision-order": 82,
+    "page-ref": 226,
+    "decision-unique": 95,
+    "decision-order": 94,
     "decision-gesture": 8
   },
-  "skippedOrphansWithoutConvertedDecision": 114,
+  "skippedOrphansWithoutConvertedDecision": 133,
   "items": [
     {
       "id": "76e658fbc37d4df8",
@@ -768,7 +768,7 @@
       "sourceSnippet": "<ModuleParamPreview moduleKey=\"sys:userInput\" values={{ type: 'text', extraSettings: '[fa:Light_Magic]生成示例(按 count 生成)|operation=sp&spname=自定义文本工具&count=3', }} focusKeys={['extraSettings']} />"
     },
     {
-      "id": "0ccb10cbcb87cd79",
+      "id": "f308d36f5d5d35b3",
       "source": "direct",
       "page": "docs/v2/xaction/concepts/debug.md",
       "pageUrl": "/v2/xaction/concepts/debug",
@@ -977,7 +977,7 @@
       "sourceSnippet": "<ExpressionAssistPreview variable=\"count\" operation=\"大于\" paramTitle=\"比较值\" paramValue=\"10\" />"
     },
     {
-      "id": "ede7119de2592ae6",
+      "id": "66b18c7f49730e4a",
       "source": "direct",
       "page": "docs/v2/xaction/concepts/expression.md",
       "pageUrl": "/v2/xaction/concepts/expression",
@@ -1810,20 +1810,34 @@
       "page": "docs/v2/xaction/concepts/standard.md",
       "pageUrl": "/v2/xaction/concepts/standard",
       "title": "复杂动作的编程约定",
-      "moduleKey": "sys:getFolderPath",
+      "moduleKey": "sys:getSysInfo",
       "image": "docs/v2/xaction/concepts/img/standard-001-1158dea522.png",
       "imageName": "standard-001-1158dea522.png",
       "component": "ModuleParamPreview",
       "decidedComponent": "ModuleParamPreview",
-      "pairConfidence": "decision-unique",
-      "renderMode": "preview",
-      "props": {
-        "moduleKey": "sys:getFolderPath",
-        "values": "{\"folder\":\"MyDocuments\"}",
-        "outputVars": "{\"path\":\"docsRoot\"}",
-        "focusKeys": "[\"folder\",\"path\"]"
-      },
-      "sourceSnippet": "<ModuleParamPreview moduleKey=\"sys:getFolderPath\" values={{folder: 'MyDocuments'}} outputVars={{path: 'docsRoot'}} focusKeys={['folder', 'path']} />"
+      "pairConfidence": "page-ref",
+      "renderMode": "page-ref",
+      "props": {},
+      "candidates": [
+        {
+          "props": {
+            "moduleKey": "sys:getSysInfo",
+            "outputVars": "{\"actionDataDirectory\":\"actionDataDir\"}",
+            "focusKeys": "[\"actionDataDirectory\"]"
+          },
+          "snippet": "<ModuleParamPreview moduleKey=\"sys:getSysInfo\" outputVars={{actionDataDirectory: 'actionDataDir'}} focusKeys={['actionDataDirectory']} />"
+        },
+        {
+          "props": {
+            "moduleKey": "sys:getFolderPath",
+            "values": "{\"folder\":\"MyDocuments\"}",
+            "outputVars": "{\"path\":\"docsRoot\"}",
+            "focusKeys": "[\"folder\",\"path\"]"
+          },
+          "snippet": "<ModuleParamPreview moduleKey=\"sys:getFolderPath\" values={{folder: 'MyDocuments'}} outputVars={{path: 'docsRoot'}} focusKeys={['folder', 'path']} />"
+        }
+      ],
+      "sourceSnippet": ""
     },
     {
       "id": "8b22ee33e3f318e6",
@@ -2232,7 +2246,7 @@
       "sourceSnippet": ""
     },
     {
-      "id": "d0c26114048a7426",
+      "id": "e9029899a38a0a0a",
       "source": "direct",
       "page": "docs/v2/xaction/concepts/tablevar.md",
       "pageUrl": "/v2/xaction/concepts/tablevar",
@@ -2248,7 +2262,7 @@
       "sourceSnippet": "<PreviewMarks marks={[{key: 'image', label: '双击查看大图'}]} > <TableDataPreview editable columns={['Name', 'Age', 'image']} rows={[ [ '张三', 20, { image: 'https://files.getquicker.net/_icons/3405578BB0D5022376C8A4D9DD6B9F92C28585C6.png', width: "
     },
     {
-      "id": "b8758491f61a7f6a",
+      "id": "767cdf8318709528",
       "source": "direct",
       "page": "docs/v2/xaction/concepts/tablevar.md",
       "pageUrl": "/v2/xaction/concepts/tablevar",
@@ -2264,7 +2278,7 @@
       "sourceSnippet": "<StepProgramView example=\"8ad1e7b0-5ce8-4d57-fa45-08dcdc2c1d1a\" />"
     },
     {
-      "id": "7046f2714adbfab0",
+      "id": "6333f4d1b5735432",
       "source": "direct",
       "page": "docs/v2/xaction/concepts/tablevar.md",
       "pageUrl": "/v2/xaction/concepts/tablevar",
@@ -2650,7 +2664,7 @@
       "sourceSnippet": "<VariableDefPreview name=\"fileList\" typeLabel=\"列表\" remark=\"文件路径列表\" defaultValue={\"AAAAAA\\nBBBBBB\\nCCCCCCC\"} />"
     },
     {
-      "id": "ec022704b0d17ae8",
+      "id": "004174076ea5a160",
       "source": "direct",
       "page": "docs/v2/xaction/concepts/variables.md",
       "pageUrl": "/v2/xaction/concepts/variables",
@@ -2995,7 +3009,7 @@
       "sourceSnippet": "<ActionEditorPreview focus=\"variables\" caption=\"子程序输入：形状、宽高、边长；输出 area\" data={{steps: []}} actionTitle=\"计算面积\" actionDescription=\"按形状切换可见参数\" selectedVar=\"area\" variables={[ {name: 'type', type: 'Text', usage: ['in'], remark: '形状类型'}, {name: "
     },
     {
-      "id": "0173177e5e8b754b",
+      "id": "6ae916e6cd53f92a",
       "source": "direct",
       "page": "docs/v2/xaction/concepts/xaction-editor.md",
       "pageUrl": "/v2/xaction/concepts/xaction-editor",
@@ -3012,7 +3026,7 @@
       "sourceSnippet": "<ContextMenuPreview openPath={['按使用次数排序']} items={[ {label: '按名称排序'}, {label: '按使用次数排序'}, {type: 'separator'}, {label: '添加常用模块到收藏夹'}, {label: '清空收藏夹'}, ]} />"
     },
     {
-      "id": "4ca2567ee0c0c665",
+      "id": "7ab5d1de621c15e4",
       "source": "direct",
       "page": "docs/v2/xaction/concepts/xaction-editor.md",
       "pageUrl": "/v2/xaction/concepts/xaction-editor",
@@ -3030,7 +3044,7 @@
       "sourceSnippet": "<ContextMenuPreview openPath={['复制(_C)']} items={[ {label: '复制(_C)', icon: 'fa:Light_Copy:#6aaded'}, {label: '剪切(_X)', icon: 'fa:Light_Cut:#6aaded'}, {type: 'separator'}, {label: '插入延时(_T)', icon: 'fa:Light_Clock:#6aaded'}, { label: '放入...("
     },
     {
-      "id": "f02ad180e07ab4f6",
+      "id": "6890c146df00ee53",
       "source": "direct",
       "page": "docs/v2/xaction/concepts/xaction-editor.md",
       "pageUrl": "/v2/xaction/concepts/xaction-editor",
@@ -3047,7 +3061,7 @@
       "sourceSnippet": "<ContextMenuPreview openPath={['调试']} items={[ {label: '运行', icon: 'fa:Light_Play:#39b54d'}, {label: '调试', icon: 'fa:Light_Bug:#f5b042'}, {type: 'separator'}, {label: '指定参数调试'}, {label: '指定参数运行'}, ]} />"
     },
     {
-      "id": "ec04fc5072b102cf",
+      "id": "0856bdfb0ed28bb8",
       "source": "direct",
       "page": "docs/v2/xaction/concepts/xaction-editor.md",
       "pageUrl": "/v2/xaction/concepts/xaction-editor",
@@ -3065,7 +3079,7 @@
       "sourceSnippet": "<ContextMenuPreview openPath={['运行(_R)']} items={[ {label: '复制(_C)', icon: 'fa:Light_Copy:#6aaded'}, {label: '剪切(_X)', icon: 'fa:Light_Cut:#6aaded'}, {type: 'separator'}, {label: '插入延时(_T)', icon: 'fa:Light_Clock:#6aaded'}, {label: '放入...(_"
     },
     {
-      "id": "7c786ce036704143",
+      "id": "8a62a52d630e8e6d",
       "source": "direct",
       "page": "docs/v2/xaction/concepts/xaction-editor.md",
       "pageUrl": "/v2/xaction/concepts/xaction-editor",
@@ -3081,7 +3095,7 @@
       "sourceSnippet": "<StepProgramView selectedIndexes={[0]} data={{ steps: [ { key: 'sys:getSelectedText', outputs: {output: 'selectedText', isSuccess: 'selectSuccess'}, }, { key: 'sys:if', inputs: {condition: '{selectSuccess}'}, ifSteps: [ { key: 'sys:openUrl'"
     },
     {
-      "id": "7d8708c419fad209",
+      "id": "ef4beb2ce44ce559",
       "source": "direct",
       "page": "docs/v2/xaction/concepts/xaction-editor.md",
       "pageUrl": "/v2/xaction/concepts/xaction-editor",
@@ -3097,7 +3111,7 @@
       "sourceSnippet": "<StepProgramView selectedIndexes={[0, 1]} data={{ steps: [ { key: 'sys:getSelectedText', outputs: {output: 'context', isSuccess: 'ok'}, }, {key: 'sys:notify', inputs: {msg: '$${context}'}}, ], }} />"
     },
     {
-      "id": "40293acb3b64b8e3",
+      "id": "2f3c260d4477a761",
       "source": "direct",
       "page": "docs/v2/xaction/concepts/xaction-editor.md",
       "pageUrl": "/v2/xaction/concepts/xaction-editor",
@@ -3117,7 +3131,7 @@
       "sourceSnippet": "<ActionEditorPreview caption=\"动作外观\" focus=\"appearance\" rightTab=\"appearance\" actionTitle=\"谷歌搜索\" actionDescription=\"选中文字则搜索，否则打开首页\" />"
     },
     {
-      "id": "bc9fd248a4b35bf3",
+      "id": "d21550fb0eb5269a",
       "source": "direct",
       "page": "docs/v2/xaction/concepts/xaction-editor.md",
       "pageUrl": "/v2/xaction/concepts/xaction-editor",
@@ -3136,7 +3150,7 @@
       "sourceSnippet": "<ActionEditorPreview caption=\"搜索模块\" focus=\"toolbox\" toolboxSearch=\"文本\" toolboxSelected=\"sys:getSelectedText\" />"
     },
     {
-      "id": "506fb3409ab16da8",
+      "id": "66e9dedb9f9ae691",
       "source": "direct",
       "page": "docs/v2/xaction/concepts/xaction-editor.md",
       "pageUrl": "/v2/xaction/concepts/xaction-editor",
@@ -3155,7 +3169,7 @@
       "sourceSnippet": "<ActionEditorPreview caption=\"模块工具箱\" focus=\"toolbox\" toolboxTab=\"basic\" toolboxSelected=\"sys:notify\" />"
     },
     {
-      "id": "3e7c0ac6bb8d2df6",
+      "id": "d3947606714b0dbd",
       "source": "direct",
       "page": "docs/v2/xaction/concepts/xaction-editor.md",
       "pageUrl": "/v2/xaction/concepts/xaction-editor",
@@ -4512,12 +4526,245 @@
       "sourceSnippet": "<StepProgramView caption=\"选中文字搜索\" showVariables selectedIndexes={[1]} data={{ steps: [ { key: 'sys:getSelectedText', outputs: {output: 'selectedText', isSuccess: 'selectSuccess'}, }, { key: 'sys:if', inputs: {condition: '{selectSuccess}'}, "
     },
     {
+      "id": "21162bef8023bc30",
+      "source": "direct",
+      "page": "docs/v2/xaction/guides/browser-multiprofile.md",
+      "pageUrl": "/v2/xaction/guides/browser-multiprofile",
+      "title": "一个浏览器多个Profile的情况",
+      "moduleKey": "sys:chromecontrol",
+      "image": "",
+      "imageName": "（直接写组件）",
+      "component": "PreviewMarks",
+      "pairConfidence": "direct",
+      "props": {
+        "marks": "[{\"key\":\"browser\",\"label\":\"选择要连接的浏览器\"},{\"key\":\"envName\",\"label\":\"填写扩展环境名\"}]"
+      },
+      "sourceSnippet": "<PreviewMarks marks={[ {key: 'browser', label: '选择要连接的浏览器'}, {key: 'envName', label: '填写扩展环境名'}, ]} > <ModuleParamPreview moduleKey=\"sys:chromecontrol\" focusKeys={['operation', 'browser', 'mainProcessId', 'envName', 'stopIfFail']} values={{"
+    },
+    {
+      "id": "ac286f4e5bc2cd6a",
+      "source": "orphan",
+      "page": "docs/v2/xaction/guides/browser-multiprofile.md",
+      "pageUrl": "/v2/xaction/guides/browser-multiprofile",
+      "title": "一个浏览器多个Profile的情况",
+      "moduleKey": "sys:chromecontrol",
+      "image": "docs/v2/xaction/guides/img/browser-multiprofile-005-45f072decf.png",
+      "imageName": "browser-multiprofile-005-45f072decf.png",
+      "component": "ModuleParamPreview",
+      "decidedComponent": "ModuleParamPreview",
+      "pairConfidence": "decision-unique",
+      "renderMode": "preview",
+      "props": {
+        "moduleKey": "sys:chromecontrol",
+        "values": "{\"operation\":\"SetBrowser\",\"browser\":\"msedge\",\"mainProcessId\":\"0\",\"envName\":\"用户1\",\"stopIfFail\":\"true\"}",
+        "focusKeys": "[\"operation\",\"browser\",\"mainProcessId\",\"envName\",\"stopIfFail\"]"
+      },
+      "sourceSnippet": "<ModuleParamPreview moduleKey=\"sys:chromecontrol\" focusKeys={['operation', 'browser', 'mainProcessId', 'envName', 'stopIfFail']} values={{ operation: 'SetBrowser', browser: 'msedge', mainProcessId: '0', envName: '用户1', stopIfFail: 'true', }"
+    },
+    {
+      "id": "1f9203721dde21fc",
+      "source": "direct",
+      "page": "docs/v2/xaction/guides/date-time-process.md",
+      "pageUrl": "/v2/xaction/guides/date-time-process",
+      "title": "date-time-process",
+      "moduleKey": "sys:getCurrentTime",
+      "image": "",
+      "imageName": "当前时间文本 → 提示",
+      "component": "StepProgramView",
+      "pairConfidence": "direct",
+      "props": {
+        "caption": "当前时间文本 → 提示",
+        "data": "{\"steps\":[{\"key\":\"sys:getCurrentTime\",\"inputs\":{\"source\":\"currTime\",\"format\":\"yyyy-MM-dd HH:mm:ss\"},\"outputs\":{\"strValue\":\"nowText\"}},{\"key\":\"sys:notify\",\"inputs\":{\"msg\":\"{nowText}\"}}]}"
+      },
+      "sourceSnippet": "<StepProgramView caption=\"当前时间文本 → 提示\" data={{ steps: [ { key: 'sys:getCurrentTime', inputs: { source: 'currTime', format: 'yyyy-MM-dd HH:mm:ss', }, outputs: {strValue: 'nowText'}, }, { key: 'sys:notify', inputs: {msg: '{nowText}'}, }, ], }"
+    },
+    {
+      "id": "6b83ff2348c2e82f",
+      "source": "orphan",
+      "page": "docs/v2/xaction/guides/date-time-process.md",
+      "pageUrl": "/v2/xaction/guides/date-time-process",
+      "title": "date-time-process",
+      "moduleKey": "sys:getCurrentTime",
+      "image": "docs/v2/xaction/guides/img/date-time-process-001-f05b4b2111.png",
+      "imageName": "date-time-process-001-f05b4b2111.png",
+      "component": "ModuleParamPreview",
+      "decidedComponent": "ModuleParamPreview",
+      "pairConfidence": "page-ref",
+      "renderMode": "page-ref",
+      "props": {},
+      "candidates": [
+        {
+          "props": {
+            "moduleKey": "sys:getCurrentTime",
+            "values": "{\"source\":\"currTime\",\"useUtc\":\"false\",\"format\":\"yyyy-MM-dd HH:mm:ss, dddd\"}",
+            "outputVars": "{\"strValue\":\"context\",\"timeStamp\":\"tmStamp\",\"year\":\"year\",\"month\":\"month\",\"day\":\"day\",\"hour\":\"hour\",\"minute\":\"minute\",\"second\":\"seconds\",\"dayOfWeek\":\"dayOfWeek\",\"dayOfYear\":\"dayOfYear\"}",
+            "focusKeys": "[\"source\",\"useUtc\",\"format\",\"strValue\",\"timeStamp\",\"year\",\"month\",\"day\",\"hour\",\"minute\",\"second\",\"dayOfWeek\",\"dayOfYear\"]"
+          },
+          "snippet": "<ModuleParamPreview moduleKey=\"sys:getCurrentTime\" values={{ source: 'currTime', useUtc: 'false', format: 'yyyy-MM-dd HH:mm:ss, dddd', }} outputVars={{ strValue: 'context', timeStamp: 'tmStamp', year: 'year', month: 'month', day: 'day', hou"
+        },
+        {
+          "props": {
+            "moduleKey": "sys:formatString",
+            "values": "{\"formatString\":\"当前时间是: {0:yyyyMMdd-HH:mm:ss}\"}",
+            "inputVars": "{\"p0\":\"currTime\"}",
+            "outputVars": "{\"output\":\"context\"}",
+            "focusKeys": "[\"formatString\",\"p0\",\"output\"]"
+          },
+          "snippet": "<ModuleParamPreview moduleKey=\"sys:formatString\" values={{ formatString: '当前时间是: {0:yyyyMMdd-HH:mm:ss}', }} inputVars={{p0: 'currTime'}} outputVars={{output: 'context'}} focusKeys={['formatString', 'p0', 'output']} />"
+        }
+      ],
+      "sourceSnippet": ""
+    },
+    {
+      "id": "266f7123a5dab151",
+      "source": "orphan",
+      "page": "docs/v2/xaction/guides/date-time-process.md",
+      "pageUrl": "/v2/xaction/guides/date-time-process",
+      "title": "date-time-process",
+      "moduleKey": "sys:getCurrentTime",
+      "image": "docs/v2/xaction/guides/img/date-time-process-002-6c368c9aed.png",
+      "imageName": "date-time-process-002-6c368c9aed.png",
+      "component": "PreviewMarks",
+      "decidedComponent": "PreviewMarks",
+      "pairConfidence": "decision-unique",
+      "renderMode": "preview",
+      "props": {
+        "marks": "[{\"key\":\"formatString\",\"label\":\"{0:格式} 对应参数0\"},{\"key\":\"p0\",\"label\":\"日期时间变量\"}]"
+      },
+      "sourceSnippet": "<PreviewMarks marks={[ {key: 'formatString', label: '{0:格式} 对应参数0'}, {key: 'p0', label: '日期时间变量'}, ]} > <ModuleParamPreview moduleKey=\"sys:formatString\" values={{ formatString: '当前时间是: {0:yyyyMMdd-HH:mm:ss}', }} inputVars={{p0: 'currTime'}}"
+    },
+    {
+      "id": "8a26ead2fa2b6813",
+      "source": "direct",
+      "page": "docs/v2/xaction/guides/flaui-xpath-intro.md",
+      "pageUrl": "/v2/xaction/guides/flaui-xpath-intro",
+      "title": "窗口界面控制的XPATH简介",
+      "moduleKey": "sys:flauiautomation",
+      "image": "",
+      "imageName": "（直接写组件）",
+      "component": "PreviewMarks",
+      "pairConfidence": "direct",
+      "props": {
+        "marks": "[{\"key\":\"control\",\"label\":\"点右侧按钮选取控件 XPath\"}]"
+      },
+      "sourceSnippet": "<PreviewMarks marks={[{key: 'control', label: '点右侧按钮选取控件 XPath'}]}> <ModuleParamPreview moduleKey=\"sys:flauiautomation\" focusKeys={['type', 'window', 'control', 'controlType']} values={{ type: 'TriggerControl', window: '', control: \"/Pane[@"
+    },
+    {
+      "id": "479da9c78063dee6",
+      "source": "orphan",
+      "page": "docs/v2/xaction/guides/flaui-xpath-intro.md",
+      "pageUrl": "/v2/xaction/guides/flaui-xpath-intro",
+      "title": "窗口界面控制的XPATH简介",
+      "moduleKey": "sys:flauiautomation",
+      "image": "docs/v2/xaction/guides/img/flaui-xpath-intro-001-edebe8f0b4.png",
+      "imageName": "flaui-xpath-intro-001-edebe8f0b4.png",
+      "component": "ModuleParamPreview",
+      "decidedComponent": "ModuleParamPreview",
+      "pairConfidence": "decision-order",
+      "renderMode": "preview",
+      "props": {
+        "moduleKey": "sys:flauiautomation",
+        "values": "{\n      type: 'TriggerControl',\n      window: '',\n      control:\n        \"/Pane[@Name='MsoDockTop' | #4]/Toolbar/Pane/Pane/Pane/Pane/Group/Group[@Name='样式' | #4]//ListItem[@Name='无间隔']\",\n      controlType: '0',\n    }",
+        "focusKeys": "[\"type\",\"window\",\"control\",\"controlType\"]"
+      },
+      "sourceSnippet": "<ModuleParamPreview moduleKey=\"sys:flauiautomation\" focusKeys={['type', 'window', 'control', 'controlType']} values={{ type: 'TriggerControl', window: '', control: \"/Pane[@Name='MsoDockTop' | #4]/Toolbar/Pane/Pane/Pane/Pane/Group/Group[@Nam"
+    },
+    {
+      "id": "4d8f1cbddbff7b19",
+      "source": "orphan",
+      "page": "docs/v2/xaction/guides/flaui-xpath-intro.md",
+      "pageUrl": "/v2/xaction/guides/flaui-xpath-intro",
+      "title": "窗口界面控制的XPATH简介",
+      "moduleKey": "sys:textSelectTools",
+      "image": "docs/v2/xaction/guides/img/flaui-xpath-intro-003-c8e6030fb4.png",
+      "imageName": "flaui-xpath-intro-003-c8e6030fb4.png",
+      "component": "ModuleParamPreview",
+      "decidedComponent": "ModuleParamPreview",
+      "pairConfidence": "decision-order",
+      "renderMode": "preview",
+      "props": {
+        "moduleKey": "sys:textSelectTools",
+        "values": "{\"operation\":\"SelectControlXPath\",\"stopIfFail\":\"true\"}",
+        "outputVars": "{\"output\":\"xpath\"}",
+        "focusKeys": "[\"operation\",\"stopIfFail\",\"isSuccess\",\"output\"]"
+      },
+      "sourceSnippet": "<ModuleParamPreview moduleKey=\"sys:textSelectTools\" focusKeys={['operation', 'stopIfFail', 'isSuccess', 'output']} values={{operation: 'SelectControlXPath', stopIfFail: 'true'}} outputVars={{output: 'xpath'}} />"
+    },
+    {
+      "id": "336c7f04ebd1344d",
+      "source": "direct",
+      "page": "docs/v2/xaction/guides/helloworld.md",
+      "pageUrl": "/v2/xaction/guides/helloworld",
+      "title": "helloworld",
+      "moduleKey": "sys:notify",
+      "image": "",
+      "imageName": "（直接写组件）",
+      "component": "ContextMenuPreview",
+      "pairConfidence": "direct",
+      "props": {
+        "openPath": "[\"新建组合动作\"]",
+        "items": "[{\"label\":\"运行其它动作\",\"icon\":\"fa:Light_PlayCircle:#6aaded\"},{\"label\":\"新建组合动作\",\"icon\":\"fa:Light_ProjectDiagram:#6aaded\"},{\"type\":\"separator\"},{\"label\":\"模拟输入\",\"icon\":\"fa:Light_Keyboard:#6aaded\",\"children\":[{\"label\":\"…\"}]},{\"label\":\"运行或打开\",\"icon\":\"fa:Light_FolderOpen:#6aaded\",\"children\":[{\"label\":\"…\"}]},{\"label\":\"常用功能\",\"icon\":\"fa:Light_Star:#6aaded\",\"children\":[{\"label\":\"…\"}]}]"
+      },
+      "sourceSnippet": "<ContextMenuPreview openPath={['新建组合动作']} items={[ {label: '运行其它动作', icon: 'fa:Light_PlayCircle:#6aaded'}, {label: '新建组合动作', icon: 'fa:Light_ProjectDiagram:#6aaded'}, {type: 'separator'}, {label: '模拟输入', icon: 'fa:Light_Keyboard:#6aaded', c"
+    },
+    {
+      "id": "7d2263d47f941a8a",
+      "source": "direct",
+      "page": "docs/v2/xaction/guides/helloworld.md",
+      "pageUrl": "/v2/xaction/guides/helloworld",
+      "title": "helloworld",
+      "moduleKey": "sys:notify",
+      "image": "",
+      "imageName": "（直接写组件）",
+      "component": "NotifyToastPreview",
+      "pairConfidence": "direct",
+      "props": {
+        "message": "Hello, World!"
+      },
+      "sourceSnippet": "<NotifyToastPreview message=\"Hello, World!\" />"
+    },
+    {
+      "id": "ed7ba3e149329e80",
+      "source": "direct",
+      "page": "docs/v2/xaction/guides/helloworld.md",
+      "pageUrl": "/v2/xaction/guides/helloworld",
+      "title": "helloworld",
+      "moduleKey": "sys:notify",
+      "image": "",
+      "imageName": "（直接写组件）",
+      "component": "TextWindowPreview",
+      "pairConfidence": "direct",
+      "props": {
+        "title": "Hello World",
+        "text": "Hello, World!",
+        "showLineNum": "false"
+      },
+      "sourceSnippet": "<TextWindowPreview title=\"Hello World\" text=\"Hello, World!\" showLineNum={false} />"
+    },
+    {
+      "id": "790faa86547e14b0",
+      "source": "direct",
+      "page": "docs/v2/xaction/guides/helloworld.md",
+      "pageUrl": "/v2/xaction/guides/helloworld",
+      "title": "helloworld",
+      "moduleKey": "sys:notify",
+      "image": "",
+      "imageName": "Hello World",
+      "component": "StepProgramView",
+      "pairConfidence": "direct",
+      "props": {
+        "caption": "Hello World",
+        "data": "{\"steps\":[{\"key\":\"sys:notify\",\"inputs\":{\"msg\":\"Hello, World!\",\"type\":\"Info\"}}]}"
+      },
+      "sourceSnippet": "<StepProgramView caption=\"Hello World\" data={{ steps: [ { key: 'sys:notify', inputs: {msg: 'Hello, World!', type: 'Info'}, }, ], }} />"
+    },
+    {
       "id": "959dba8faba199a2",
       "source": "orphan",
       "page": "docs/v2/xaction/guides/helloworld.md",
       "pageUrl": "/v2/xaction/guides/helloworld",
-      "title": "第一个组合动作Hello World!",
-      "moduleKey": "",
+      "title": "helloworld",
+      "moduleKey": "sys:notify",
       "image": "docs/v2/xaction/guides/img/helloworld-003-e9885f8abf.gif",
       "imageName": "helloworld-003-e9885f8abf.gif",
       "component": "ActionEditorPreview",
@@ -4526,16 +4773,84 @@
       "renderMode": "preview",
       "props": {
         "focus": "toolbox",
-        "toolboxTab": "text",
-        "toolboxSearch": "文本窗口",
-        "toolboxSelected": "sys:showText",
-        "actionTitle": "我的第一个Quicker动作",
-        "actionDescription": "Hello World",
-        "caption": "将「文本窗口」拖到步骤列表（示意，悬停可暂停）",
+        "toolboxTab": "basic",
+        "toolboxSearch": "提示",
+        "toolboxSelected": "sys:notify",
+        "actionTitle": "Hello World",
+        "actionDescription": "桌面提示 Hello, World!",
+        "caption": "将「提示消息」拖到步骤列表（示意，悬停可暂停）",
         "data": "{\"steps\":[]}",
-        "dragDemo": "{\"moduleKey\":\"sys:showText\",\"targetSlot\":\"steps\",\"afterData\":{\"steps\":[{\"key\":\"sys:showText\",\"inputs\":{\"text\":\"Hello World！\",\"title\":\"我的第一个Quicker动作\"}}]}}"
+        "dragDemo": "{\"moduleKey\":\"sys:notify\",\"targetSlot\":\"steps\",\"afterData\":{\"steps\":[{\"key\":\"sys:notify\",\"inputs\":{\"msg\":\"Hello, World!\",\"type\":\"Info\"}}]}}"
       },
-      "sourceSnippet": "<ActionEditorPreview focus=\"toolbox\" toolboxTab=\"text\" toolboxSearch=\"文本窗口\" toolboxSelected=\"sys:showText\" actionTitle=\"我的第一个Quicker动作\" actionDescription=\"Hello World\" caption=\"将「文本窗口」拖到步骤列表（示意，悬停可暂停）\" data={{steps: []}} dragDemo={{ moduleK"
+      "sourceSnippet": "<ActionEditorPreview focus=\"toolbox\" toolboxTab=\"basic\" toolboxSearch=\"提示\" toolboxSelected=\"sys:notify\" actionTitle=\"Hello World\" actionDescription=\"桌面提示 Hello, World!\" caption=\"将「提示消息」拖到步骤列表（示意，悬停可暂停）\" data={{steps: []}} dragDemo={{ module"
+    },
+    {
+      "id": "46f0983fce72dd4b",
+      "source": "direct",
+      "page": "docs/v2/xaction/guides/how-to-learn.md",
+      "pageUrl": "/v2/xaction/guides/how-to-learn",
+      "title": "how-to-learn",
+      "moduleKey": "",
+      "image": "",
+      "imageName": "取词 → 处理 → 写回",
+      "component": "StepProgramView",
+      "pairConfidence": "direct",
+      "props": {
+        "caption": "取词 → 处理 → 写回",
+        "data": "{\"steps\":[{\"key\":\"sys:getSelectedText\",\"outputs\":{\"output\":\"selectedText\",\"isSuccess\":\"ok\"}},{\"key\":\"sys:stringProcess\",\"inputs\":{\"data\":\"{selectedText}\",\"method\":\"toUpper\"},\"outputs\":{\"output\":\"resultText\"}},{\"key\":\"sys:outputText\",\"inputs\":{\"content\":\"{resultText}\"}}]}"
+      },
+      "sourceSnippet": "<StepProgramView caption=\"取词 → 处理 → 写回\" showVariables data={{ steps: [ { key: 'sys:getSelectedText', outputs: {output: 'selectedText', isSuccess: 'ok'}, }, { key: 'sys:stringProcess', inputs: {data: '{selectedText}', method: 'toUpper'}, out"
+    },
+    {
+      "id": "0880963136e83952",
+      "source": "direct",
+      "page": "docs/v2/xaction/guides/search-adv.md",
+      "pageUrl": "/v2/xaction/guides/search-adv",
+      "title": "从搜索框给动作传递参数",
+      "moduleKey": "sys:if",
+      "image": "",
+      "imageName": "（直接写组件）",
+      "component": "PreviewMarks",
+      "pairConfidence": "direct",
+      "props": {
+        "marks": "[{\"key\":\"actionId\",\"label\":\"要调试的动作\"},{\"key\":\"inputParam\",\"label\":\"传递参数 search:搜索内容\"},{\"key\":\"debug\",\"label\":\"开启调试模式\"}]"
+      },
+      "sourceSnippet": "<PreviewMarks marks={[ {key: 'actionId', label: '要调试的动作'}, {key: 'inputParam', label: '传递参数 search:搜索内容'}, {key: 'debug', label: '开启调试模式'}, ]} > <ModuleParamPreview moduleKey=\"sys:runAction\" focusKeys={[ 'type', 'actionId', 'inputParam', 'w"
+    },
+    {
+      "id": "0d9e6f2266489c94",
+      "source": "direct",
+      "page": "docs/v2/xaction/guides/search-adv.md",
+      "pageUrl": "/v2/xaction/guides/search-adv",
+      "title": "从搜索框给动作传递参数",
+      "moduleKey": "sys:if",
+      "image": "",
+      "imageName": "（直接写组件）",
+      "component": "SearchBoxPreview",
+      "pairConfidence": "direct",
+      "props": {
+        "mode": "pick",
+        "query": "翻译"
+      },
+      "sourceSnippet": "<SearchBoxPreview mode=\"pick\" query=\"翻译\" />"
+    },
+    {
+      "id": "107afd441d395f64",
+      "source": "direct",
+      "page": "docs/v2/xaction/guides/search-adv.md",
+      "pageUrl": "/v2/xaction/guides/search-adv",
+      "title": "从搜索框给动作传递参数",
+      "moduleKey": "sys:if",
+      "image": "",
+      "imageName": "（直接写组件）",
+      "component": "SearchBoxPreview",
+      "pairConfidence": "direct",
+      "props": {
+        "mode": "param",
+        "selectedAction": "翻译",
+        "query": "Quick"
+      },
+      "sourceSnippet": "<SearchBoxPreview mode=\"param\" selectedAction=\"翻译\" query=\"Quick\" />"
     },
     {
       "id": "33e5a294d49fc80e",
@@ -4543,19 +4858,32 @@
       "page": "docs/v2/xaction/guides/search-adv.md",
       "pageUrl": "/v2/xaction/guides/search-adv",
       "title": "从搜索框给动作传递参数",
-      "moduleKey": "",
+      "moduleKey": "sys:if",
       "image": "docs/v2/xaction/guides/img/search-adv-001-9bb455763a.gif",
       "imageName": "search-adv-001-9bb455763a.gif",
       "component": "SearchBoxPreview",
       "decidedComponent": "SearchBoxPreview",
-      "pairConfidence": "decision-gesture",
-      "renderMode": "preview",
-      "props": {
-        "mode": "pick",
-        "selectedAction": "翻译",
-        "query": "翻译"
-      },
-      "sourceSnippet": "<SearchBoxPreview mode=\"pick\" selectedAction=\"翻译\" query=\"翻译\" animate />"
+      "pairConfidence": "page-ref",
+      "renderMode": "page-ref",
+      "props": {},
+      "candidates": [
+        {
+          "props": {
+            "mode": "pick",
+            "query": "翻译"
+          },
+          "snippet": "<SearchBoxPreview mode=\"pick\" query=\"翻译\" />"
+        },
+        {
+          "props": {
+            "mode": "param",
+            "selectedAction": "翻译",
+            "query": "Quick"
+          },
+          "snippet": "<SearchBoxPreview mode=\"param\" selectedAction=\"翻译\" query=\"Quick\" />"
+        }
+      ],
+      "sourceSnippet": ""
     },
     {
       "id": "a423bb91bdecbef2",
@@ -4563,12 +4891,12 @@
       "page": "docs/v2/xaction/guides/search-adv.md",
       "pageUrl": "/v2/xaction/guides/search-adv",
       "title": "从搜索框给动作传递参数",
-      "moduleKey": "",
+      "moduleKey": "sys:if",
       "image": "docs/v2/xaction/guides/img/search-adv-002-358598021a.gif",
       "imageName": "search-adv-002-358598021a.gif",
       "component": "SearchBoxPreview",
       "decidedComponent": "SearchBoxPreview",
-      "pairConfidence": "decision-unique",
+      "pairConfidence": "decision-gesture",
       "renderMode": "preview",
       "props": {
         "mode": "live",
@@ -4576,6 +4904,153 @@
         "results": "[{\"title\":\"大写\",\"description\":\"转为大写\",\"icon\":\"fa:Solid_Font:#2b7abf\"},{\"title\":\"复制\",\"description\":\"复制到剪贴板\",\"icon\":\"fa:Light_Copy:#6aaded\"},{\"title\":\"粘贴\",\"description\":\"粘贴剪贴板\",\"icon\":\"fa:Light_Paste:#6aaded\"},{\"title\":\"运行\",\"description\":\"运行匹配项\",\"icon\":\"fa:Light_Play:#39b54d\"}]"
       },
       "sourceSnippet": "<SearchBoxPreview mode=\"live\" query=\"h\" results={[ {title: '大写', description: '转为大写', icon: 'fa:Solid_Font:#2b7abf'}, {title: '复制', description: '复制到剪贴板', icon: 'fa:Light_Copy:#6aaded'}, {title: '粘贴', description: '粘贴剪贴板', icon: 'fa:Light_P"
+    },
+    {
+      "id": "fc2bb17f4018c34e",
+      "source": "orphan",
+      "page": "docs/v2/xaction/guides/search-adv.md",
+      "pageUrl": "/v2/xaction/guides/search-adv",
+      "title": "从搜索框给动作传递参数",
+      "moduleKey": "sys:if",
+      "image": "docs/v2/xaction/guides/img/search-adv-004-1898f812d4.png",
+      "imageName": "search-adv-004-1898f812d4.png",
+      "component": "ModuleParamPreview",
+      "decidedComponent": "ModuleParamPreview",
+      "pairConfidence": "decision-order",
+      "renderMode": "preview",
+      "props": {
+        "moduleKey": "sys:if",
+        "values": "{\"condition\":\"$= {quicker_in_param}.StartsWith(\\\"search:\\\")\"}",
+        "focusKeys": "[\"condition\"]"
+      },
+      "sourceSnippet": "<ModuleParamPreview moduleKey=\"sys:if\" focusKeys={['condition']} values={{condition: '$= {quicker_in_param}.StartsWith(\"search:\")'}} />"
+    },
+    {
+      "id": "cc1ceccc9cbe35ce",
+      "source": "orphan",
+      "page": "docs/v2/xaction/guides/search-adv.md",
+      "pageUrl": "/v2/xaction/guides/search-adv",
+      "title": "从搜索框给动作传递参数",
+      "moduleKey": "sys:quickeroperations",
+      "image": "docs/v2/xaction/guides/img/search-adv-009-9ece21b8a3.png",
+      "imageName": "search-adv-009-9ece21b8a3.png",
+      "component": "ModuleParamPreview",
+      "decidedComponent": "ModuleParamPreview",
+      "pairConfidence": "decision-order",
+      "renderMode": "preview",
+      "props": {
+        "moduleKey": "sys:quickeroperations",
+        "values": "{\"type\":\"StartSearchWithAction\",\"searchText\":\"\",\"stopIfFail\":\"true\"}",
+        "focusKeys": "[\"type\",\"searchText\",\"stopIfFail\"]"
+      },
+      "sourceSnippet": "<ModuleParamPreview moduleKey=\"sys:quickeroperations\" focusKeys={['type', 'searchText', 'stopIfFail']} values={{type: 'StartSearchWithAction', searchText: '', stopIfFail: 'true'}} />"
+    },
+    {
+      "id": "b1d2bf65793192b9",
+      "source": "orphan",
+      "page": "docs/v2/xaction/guides/search-adv.md",
+      "pageUrl": "/v2/xaction/guides/search-adv",
+      "title": "从搜索框给动作传递参数",
+      "moduleKey": "sys:runAction",
+      "image": "docs/v2/xaction/guides/img/search-adv-011-1a89585e80.png",
+      "imageName": "search-adv-011-1a89585e80.png",
+      "component": "ModuleParamPreview",
+      "decidedComponent": "ModuleParamPreview",
+      "pairConfidence": "decision-order",
+      "renderMode": "preview",
+      "props": {
+        "moduleKey": "sys:runAction",
+        "values": "{\"type\":\"StartAction\",\"actionId\":\"查询\",\"inputParam\":\"search:hello\",\"wait\":\"true\",\"debug\":\"true\",\"stopIfFail\":\"true\"}",
+        "focusKeys": "[\"type\",\"actionId\",\"inputParam\",\"wait\",\"debug\",\"stopIfFail\",\"isSuccess\",\"actionTitle\",\"output\"]"
+      },
+      "sourceSnippet": "<ModuleParamPreview moduleKey=\"sys:runAction\" focusKeys={[ 'type', 'actionId', 'inputParam', 'wait', 'debug', 'stopIfFail', 'isSuccess', 'actionTitle', 'output', ]} values={{ type: 'StartAction', actionId: '查询', inputParam: 'search:hello', "
+    },
+    {
+      "id": "dac08994b6fef764",
+      "source": "direct",
+      "page": "docs/v2/xaction/guides/search-selected.md",
+      "pageUrl": "/v2/xaction/guides/search-selected",
+      "title": "search-selected",
+      "moduleKey": "sys:getSelectedText",
+      "image": "",
+      "imageName": "选中文字则搜索，否则打开首页",
+      "component": "StepProgramView",
+      "pairConfidence": "direct",
+      "props": {
+        "caption": "选中文字则搜索，否则打开首页",
+        "data": "{\"steps\":[{\"key\":\"sys:getSelectedText\",\"inputs\":{\"stopIfFail\":\"false\"},\"outputs\":{\"output\":\"selectedText\",\"isSuccess\":\"selectSuccess\",\"outputEncoded\":\"encodedText\"}},{\"key\":\"sys:if\",\"inputs\":{\"condition\":\"{selectSuccess}\"},\"ifSteps\":[{\"key\":\"sys:openUrl\",\"inputs\":{\"url\":\"$$https://www.google.com/search?q={encodedText}\"}}],\"elseSteps\":[{\"key\":\"sys:openUrl\",\"inputs\":{\"url\":\"https://www.google.com\"}}]}]}"
+      },
+      "sourceSnippet": "<StepProgramView caption=\"选中文字则搜索，否则打开首页\" showVariables selectedIndexes={[1]} data={{ steps: [ { key: 'sys:getSelectedText', inputs: {stopIfFail: 'false'}, outputs: { output: 'selectedText', isSuccess: 'selectSuccess', outputEncoded: 'encod"
+    },
+    {
+      "id": "cdda791c60711573",
+      "source": "direct",
+      "page": "docs/v2/xaction/guides/selected-text.md",
+      "pageUrl": "/v2/xaction/guides/selected-text",
+      "title": "selected-text",
+      "moduleKey": "sys:getSelectedText",
+      "image": "",
+      "imageName": "选中文字转大写",
+      "component": "StepProgramView",
+      "pairConfidence": "direct",
+      "props": {
+        "caption": "选中文字转大写",
+        "data": "{\"steps\":[{\"key\":\"sys:getSelectedText\",\"outputs\":{\"output\":\"selectedText\",\"isSuccess\":\"ok\"}},{\"key\":\"sys:stringProcess\",\"inputs\":{\"data\":\"{selectedText}\",\"method\":\"toUpper\"},\"outputs\":{\"output\":\"resultText\"}},{\"key\":\"sys:outputText\",\"inputs\":{\"content\":\"{resultText}\"}}]}"
+      },
+      "sourceSnippet": "<StepProgramView caption=\"选中文字转大写\" showVariables data={{ steps: [ { key: 'sys:getSelectedText', outputs: {output: 'selectedText', isSuccess: 'ok'}, }, { key: 'sys:stringProcess', inputs: {data: '{selectedText}', method: 'toUpper'}, outputs:"
+    },
+    {
+      "id": "ae372a0d1979de75",
+      "source": "direct",
+      "page": "docs/v2/xaction/guides/text-process.md",
+      "pageUrl": "/v2/xaction/guides/text-process",
+      "title": "text-process",
+      "moduleKey": "",
+      "image": "",
+      "imageName": "选中文字转大写",
+      "component": "StepProgramView",
+      "pairConfidence": "direct",
+      "props": {
+        "caption": "选中文字转大写",
+        "data": "{\"steps\":[{\"key\":\"sys:getSelectedText\",\"outputs\":{\"output\":\"selectedText\"}},{\"key\":\"sys:stringProcess\",\"inputs\":{\"data\":\"{selectedText}\",\"method\":\"toUpper\"},\"outputs\":{\"output\":\"resultText\"}},{\"key\":\"sys:outputText\",\"inputs\":{\"content\":\"{resultText}\"}}]}"
+      },
+      "sourceSnippet": "<StepProgramView caption=\"选中文字转大写\" showVariables data={{ steps: [ { key: 'sys:getSelectedText', outputs: {output: 'selectedText'}, }, { key: 'sys:stringProcess', inputs: {data: '{selectedText}', method: 'toUpper'}, outputs: {output: 'result"
+    },
+    {
+      "id": "355953a8d77a745b",
+      "source": "direct",
+      "page": "docs/v2/xaction/guides/web-page-control.md",
+      "pageUrl": "/v2/xaction/guides/web-page-control",
+      "title": "网页控制示例（传统方式）",
+      "moduleKey": "sys:chromecontrol",
+      "image": "",
+      "imageName": "（直接写组件）",
+      "component": "PreviewMarks",
+      "pairConfidence": "direct",
+      "props": {
+        "marks": "[{\"key\":\"selector\",\"label\":\"单个检查框或单选按钮的选择器\"},{\"key\":\"updateElementInfo\",\"label\":\"更新 checked 属性\"},{\"key\":\"attrName\",\"label\":\"属性名 checked\"},{\"key\":\"updateElementValue\",\"label\":\"值为 true 或 false\"}]"
+      },
+      "sourceSnippet": "<PreviewMarks marks={[ {key: 'selector', label: '单个检查框或单选按钮的选择器'}, {key: 'updateElementInfo', label: '更新 checked 属性'}, {key: 'attrName', label: '属性名 checked'}, {key: 'updateElementValue', label: '值为 true 或 false'}, ]} > <ModuleParamPreview "
+    },
+    {
+      "id": "31b287c310c37d8f",
+      "source": "orphan",
+      "page": "docs/v2/xaction/guides/web-page-control.md",
+      "pageUrl": "/v2/xaction/guides/web-page-control",
+      "title": "网页控制示例（传统方式）",
+      "moduleKey": "sys:chromecontrol",
+      "image": "docs/v2/xaction/guides/img/web-page-control-004-c84447898d.png",
+      "imageName": "web-page-control-004-c84447898d.png",
+      "component": "ModuleParamPreview",
+      "decidedComponent": "ModuleParamPreview",
+      "pairConfidence": "decision-unique",
+      "renderMode": "preview",
+      "props": {
+        "moduleKey": "sys:chromecontrol",
+        "values": "{\"operation\":\"UpdateElement\",\"tabId\":\"\",\"selector\":\"#demo-john\",\"updateElementInfo\":\"Property\",\"attrName\":\"checked\",\"updateElementValue\":\"true\",\"frame\":\"all\",\"stopIfFail\":\"true\"}",
+        "focusKeys": "[\"operation\",\"tabId\",\"selector\",\"updateElementInfo\",\"attrName\",\"updateElementValue\",\"frame\",\"stopIfFail\"]"
+      },
+      "sourceSnippet": "<ModuleParamPreview moduleKey=\"sys:chromecontrol\" focusKeys={[ 'operation', 'tabId', 'selector', 'updateElementInfo', 'attrName', 'updateElementValue', 'frame', 'stopIfFail', ]} values={{ operation: 'UpdateElement', tabId: '', selector: '#d"
     },
     {
       "id": "001e3a0edede9ee4",
@@ -4701,7 +5176,7 @@
       "sourceSnippet": "<ContextMenuPreview openPath={['运行(_R)']} items={[ {label: '复制(_C)', icon: 'fa:Light_Copy:#6aaded'}, {label: '剪切(_X)', icon: 'fa:Light_Cut:#6aaded', tooltip: '剪切选中的步骤'}, {type: 'separator'}, { label: '插入延时(_T)', icon: 'fa:Light_Clock:#6aade"
     },
     {
-      "id": "3e4602eaa8df4fe1",
+      "id": "8751a8de15309bb1",
       "source": "direct",
       "page": "docs/v2/xaction/modules/basic/delay.md",
       "pageUrl": "/v2/xaction/modules/delay",
@@ -4774,7 +5249,7 @@
       "sourceSnippet": "<StepProgramView wheelDelay={{from: 100, to: 350, step: 50}} data={{ steps: [{key: 'sys:delay', inputs: {delayMs: '100'}}], }} />"
     },
     {
-      "id": "c948169fba347f50",
+      "id": "bfaa12470ba5421a",
       "source": "direct",
       "page": "docs/v2/xaction/modules/basic/get_selected_text.md",
       "pageUrl": "/v2/xaction/modules/get_selected_text",
@@ -4840,7 +5315,7 @@
       "sourceSnippet": ""
     },
     {
-      "id": "3c5593290576e005",
+      "id": "99dc3c801dd0d779",
       "source": "direct",
       "page": "docs/v2/xaction/modules/basic/keyinput.md",
       "pageUrl": "/v2/xaction/modules/keyinput",
@@ -4856,7 +5331,7 @@
       "sourceSnippet": "<PreviewMarks marks={[{key: 'keys', label: '点录制后，在键盘上输入按键'}]} > <ModuleParamPreview moduleKey=\"sys:keyInput\" values={{keys: '{\"CtrlKeys\":[164],\"Keys\":[72]}'}} /> </PreviewMarks>"
     },
     {
-      "id": "bcd159de62e3d50c",
+      "id": "585cc271e6e06327",
       "source": "direct",
       "page": "docs/v2/xaction/modules/basic/keyinput.md",
       "pageUrl": "/v2/xaction/modules/keyinput",
@@ -6501,7 +6976,7 @@
       "sourceSnippet": "<ModuleParamPreview moduleKey=\"sys:outputText\" />"
     },
     {
-      "id": "c7289e8d2fda30b3",
+      "id": "88a1dcc03a9abef6",
       "source": "direct",
       "page": "docs/v2/xaction/modules/basic/run.md",
       "pageUrl": "/v2/xaction/modules/run",
@@ -6622,7 +7097,7 @@
       "sourceSnippet": "<PreviewMarks marks={[ {key: 'ext', label: '自定义扩展名，如 .ps1'}, {key: 'runner', label: '双击能跑就可留空；否则填程序路径'}, ]} > <ModuleParamPreview moduleKey=\"sys:runScript\" scrollBody={false} focusKeys={['type', 'ext', 'runner', 'argTemplate']} values={{ ty"
     },
     {
-      "id": "d0752f905651a37e",
+      "id": "3bbed481a504337c",
       "source": "direct",
       "page": "docs/v2/xaction/modules/basic/sendkeys.md",
       "pageUrl": "/v2/xaction/modules/sendkeys",
@@ -6671,7 +7146,7 @@
       "sourceSnippet": ""
     },
     {
-      "id": "554268434992f692",
+      "id": "0426509eac48e634",
       "source": "direct",
       "page": "docs/v2/xaction/modules/basic/userinput.md",
       "pageUrl": "/v2/xaction/modules/userinput",
@@ -6687,7 +7162,7 @@
       "sourceSnippet": "<PreviewMarks marks={[ {key: 'prompt', label: '提示文字'}, {key: 'defaultValue', label: '默认值 / 用户输入的内容'}, {key: 'texttools', label: '选择工具'}, {key: 'help', label: '帮助按钮，Markdown 提示'}, ]} > <UserInputPreview title=\"test1234\" prompt=\"请选择程序路径\" valu"
     },
     {
-      "id": "a51388666126a412",
+      "id": "7da8f802be7d25ca",
       "source": "direct",
       "page": "docs/v2/xaction/modules/basic/userinput.md",
       "pageUrl": "/v2/xaction/modules/userinput",
@@ -6745,7 +7220,7 @@
       "sourceSnippet": "<ModuleParamPreview moduleKey=\"sys:userInput\" values={{ type: 'text', prompt: '请选择程序路径', defaultValue: 'd:\\\\test.exe', isRequired: 'true', restoreFocus: 'true', stopIfFail: 'true', fontsize: '14', }} outputVars={{textValue: 'text'}} />"
     },
     {
-      "id": "47abb71c3189e859",
+      "id": "01c395ff91165a23",
       "source": "direct",
       "page": "docs/v2/xaction/modules/basic/userselect.md",
       "pageUrl": "/v2/xaction/modules/userselect",
@@ -6762,7 +7237,7 @@
       "sourceSnippet": "<ChoiceListPreview title=\"请选择格式\" options={[ '2022-10-11', '2022.10.11', '2022/10/11', '2022年10月11日', '2022-10-11 13:53', '2022/10/11 13:53', '2022年10月11日13时53分', '2022-10-11 13:53:47', '2022/10/11 13:53:47', '13:53', '13:53:47', ]} />"
     },
     {
-      "id": "5693a286fcec11c5",
+      "id": "24ffa3bcee460d8f",
       "source": "direct",
       "page": "docs/v2/xaction/modules/basic/userselect.md",
       "pageUrl": "/v2/xaction/modules/userselect",
@@ -6781,7 +7256,7 @@
       "sourceSnippet": "<ChoiceListPreview title=\"请选择格式\" hint=\"请选择一种日期格式\" selectedIndex={0} options={[ '2018-12-01', '2018-12-01 12:32', '2018-12-01 12:32:33', '2018/12/01', '2018年12月01日', ]} />"
     },
     {
-      "id": "aece1bfc98e43858",
+      "id": "960086e1625226c5",
       "source": "direct",
       "page": "docs/v2/xaction/modules/basic/userselect.md",
       "pageUrl": "/v2/xaction/modules/userselect",
@@ -6800,7 +7275,7 @@
       "sourceSnippet": "<ChoiceListPreview title=\"请选择\" options={['a', 'b', 'c', 'd']} selectedIndex={3} globalButtons={['按钮文字', '全局按钮']} showMoreMenu />"
     },
     {
-      "id": "a2d95d890d658f7a",
+      "id": "68099c3e71c9539e",
       "source": "direct",
       "page": "docs/v2/xaction/modules/basic/userselect.md",
       "pageUrl": "/v2/xaction/modules/userselect",
@@ -6819,7 +7294,7 @@
       "sourceSnippet": "<ChoiceListPreview title=\"请选择 (单选)\" filterText=\"xcq\" selectedIndex={0} options={[ '110102 西城区', '150102 新城区', '320507 相城区', '321302 宿城区', '330103 下城区', '350602 芗城区', '370403 薛城区', '420602 襄城区', '610102 新城区', ]} />"
     },
     {
-      "id": "340632891b194744",
+      "id": "12f45e3d0d2a8701",
       "source": "direct",
       "page": "docs/v2/xaction/modules/basic/userselect.md",
       "pageUrl": "/v2/xaction/modules/userselect",
@@ -6833,7 +7308,7 @@
       "sourceSnippet": "<PreviewMap links={[ {from: 'prompt', to: 'prompt'}, {from: 'items', to: 'items'}, {from: 'note', to: 'note'}, ]} > <ModuleParamPreview moduleKey=\"sys:select\" scrollBody={false} focusKeys={['prompt', 'note', 'items', 'defaultValue', 'textVa"
     },
     {
-      "id": "9c003604fddf05fe",
+      "id": "5e753acf52b51ef5",
       "source": "direct",
       "page": "docs/v2/xaction/modules/basic/userselect.md",
       "pageUrl": "/v2/xaction/modules/userselect",
@@ -6847,7 +7322,7 @@
       "sourceSnippet": "<PreviewMap links={[{from: 'operations', to: 'operations'}]} > <ModuleParamPreview moduleKey=\"sys:select\" scrollBody={false} focusKeys={['operations', 'extraOperation']} values={{ type: 'single', prompt: '请选择', items: `a b c d`, operations:"
     },
     {
-      "id": "8c60053a39be6819",
+      "id": "ac40be23c9db0723",
       "source": "direct",
       "page": "docs/v2/xaction/modules/basic/userselect.md",
       "pageUrl": "/v2/xaction/modules/userselect",
@@ -7144,7 +7619,7 @@
       "sourceSnippet": "<ModuleParamPreview moduleKey=\"sys:waitClipboardChange\" />"
     },
     {
-      "id": "60fe62d3f73fd15b",
+      "id": "df0256c118ac49fc",
       "source": "direct",
       "page": "docs/v2/xaction/modules/clipboard/writeclipboard.md",
       "pageUrl": "/v2/xaction/modules/writeclipboard",
@@ -7472,7 +7947,7 @@
       "sourceSnippet": ""
     },
     {
-      "id": "c99a9f0ba9224339",
+      "id": "2a93a7bc497f361b",
       "source": "direct",
       "page": "docs/v2/xaction/modules/compute/color.md",
       "pageUrl": "/v2/xaction/modules/color",
@@ -7488,7 +7963,7 @@
       "sourceSnippet": "<StepProgramView example=\"a6aaa916-9fea-4355-fbd4-08d7cd418588\" />"
     },
     {
-      "id": "0842cf12112f1758",
+      "id": "d95f8101b3292f01",
       "source": "direct",
       "page": "docs/v2/xaction/modules/compute/compute.md",
       "pageUrl": "/v2/xaction/modules/compute",
@@ -7603,6 +8078,22 @@
       "sourceSnippet": "<ModuleParamPreview moduleKey=\"sys:computeTime\" focusKeys={['type', 'time1', 'resultTime']} values={{type: 'localToUtc', time1: 'currTime'}} outputVars={{resultTime: 'currTime'}} />"
     },
     {
+      "id": "c8eba0f419d6c4e3",
+      "source": "direct",
+      "page": "docs/v2/xaction/modules/compute/dboperation.md",
+      "pageUrl": "/v2/xaction/modules/dboperation",
+      "title": "数据库查询",
+      "moduleKey": "sys:dboperation",
+      "image": "",
+      "imageName": "（直接写组件）",
+      "component": "PreviewMarks",
+      "pairConfidence": "direct",
+      "props": {
+        "marks": "[{\"key\":\"msg\",\"label\":\"用列名访问每一行的字段\"}]"
+      },
+      "sourceSnippet": "<PreviewMarks marks={[{key: 'msg', label: '用列名访问每一行的字段'}]}> <ModuleParamPreview moduleKey=\"sys:notify\" focusKeys={['msg', 'maxLines', 'type', 'placement']} values={{ msg: '$= \"动态对象列表结果条目：\" + {item}.first_name + {item}.last_name', maxLines: "
+    },
+    {
       "id": "f1f61c2a75bc477e",
       "source": "orphan",
       "page": "docs/v2/xaction/modules/compute/dboperation.md",
@@ -7709,7 +8200,27 @@
       "sourceSnippet": "<ModuleParamPreview moduleKey=\"sys:each\" focusKeys={['input', 'useMultiThread', 'item', 'count']} values={{useMultiThread: '0'}} inputVars={{input: 'listResult'}} outputVars={{item: 'item'}} />"
     },
     {
-      "id": "702f1a6e7dc6df3a",
+      "id": "18c7a2771f575fa8",
+      "source": "orphan",
+      "page": "docs/v2/xaction/modules/compute/dboperation.md",
+      "pageUrl": "/v2/xaction/modules/dboperation",
+      "title": "数据库查询",
+      "moduleKey": "sys:notify",
+      "image": "docs/v2/xaction/modules/compute/img/dboperation-007-ccd2839f7e.png",
+      "imageName": "dboperation-007-ccd2839f7e.png",
+      "component": "ModuleParamPreview",
+      "decidedComponent": "ModuleParamPreview",
+      "pairConfidence": "decision-order",
+      "renderMode": "preview",
+      "props": {
+        "moduleKey": "sys:notify",
+        "values": "{\"msg\":\"$= \\\"动态对象列表结果条目：\\\" + {item}.first_name + {item}.last_name\",\"maxLines\":\"0\",\"type\":\"Info\",\"placement\":\"BottomCenter\"}",
+        "focusKeys": "[\"msg\",\"maxLines\",\"type\",\"placement\"]"
+      },
+      "sourceSnippet": "<ModuleParamPreview moduleKey=\"sys:notify\" focusKeys={['msg', 'maxLines', 'type', 'placement']} values={{ msg: '$= \"动态对象列表结果条目：\" + {item}.first_name + {item}.last_name', maxLines: '0', type: 'Info', placement: 'BottomCenter', }} />"
+    },
+    {
+      "id": "9c283681050818a3",
       "source": "direct",
       "page": "docs/v2/xaction/modules/compute/dictoperations.md",
       "pageUrl": "/v2/xaction/modules/dictoperations",
@@ -8411,7 +8922,7 @@
       "sourceSnippet": ""
     },
     {
-      "id": "aa42469e9e3057e0",
+      "id": "59ca802f52bcecbd",
       "source": "direct",
       "page": "docs/v2/xaction/modules/files/checkpathexists.md",
       "pageUrl": "/v2/xaction/modules/checkpathexists",
@@ -8482,7 +8993,7 @@
       "sourceSnippet": "<ModuleParamPreview moduleKey=\"sys:everythingsearch\" />"
     },
     {
-      "id": "43f59911de914a22",
+      "id": "adaab475682959ac",
       "source": "direct",
       "page": "docs/v2/xaction/modules/files/fileoperation.md",
       "pageUrl": "/v2/xaction/modules/fileoperation",
@@ -8516,7 +9027,7 @@
       "sourceSnippet": "<ModuleParamPreview moduleKey=\"sys:fileOperation\" />"
     },
     {
-      "id": "e16991a301626769",
+      "id": "1a07531d733f3262",
       "source": "direct",
       "page": "docs/v2/xaction/modules/files/pathextraction.md",
       "pageUrl": "/v2/xaction/modules/pathextraction",
@@ -9282,6 +9793,26 @@
       "sourceSnippet": ""
     },
     {
+      "id": "d7ebac3a7ee9c32c",
+      "source": "orphan",
+      "page": "docs/v2/xaction/modules/files/statestorage.md",
+      "pageUrl": "/v2/xaction/modules/statestorage",
+      "title": "状态存取",
+      "moduleKey": "sys:stateStorage",
+      "image": "docs/v2/xaction/modules/files/img/statestorage-015-7f9521c8c4.png",
+      "imageName": "statestorage-015-7f9521c8c4.png",
+      "component": "UserInputPreview",
+      "decidedComponent": "UserInputPreview",
+      "pairConfidence": "decision-unique",
+      "renderMode": "preview",
+      "props": {
+        "title": "备份动作数据",
+        "prompt": "请输入备份说明",
+        "value": "配置数据1"
+      },
+      "sourceSnippet": "<UserInputPreview title=\"备份动作数据\" prompt=\"请输入备份说明\" value=\"配置数据1\" />"
+    },
+    {
       "id": "38c71c2e1fe14443",
       "source": "orphan",
       "page": "docs/v2/xaction/modules/files/zip.md",
@@ -9424,7 +9955,7 @@
       "sourceSnippet": "<ModuleParamPreview moduleKey=\"sys:dependencycheck\" values={{packageName: 'everything'}} outputVars={{packagePath: 'packagePath'}} />"
     },
     {
-      "id": "448f44769901e732",
+      "id": "02380603adee6506",
       "source": "direct",
       "page": "docs/v2/xaction/modules/flow/each.md",
       "pageUrl": "/v2/xaction/modules/each",
@@ -9734,7 +10265,7 @@
       "sourceSnippet": "<ModuleParamPreview moduleKey=\"sys:jsscript\" />"
     },
     {
-      "id": "86f90b385ba77ca5",
+      "id": "1883c4484dd8fcf1",
       "source": "direct",
       "page": "docs/v2/xaction/modules/flow/pythonscript.md",
       "pageUrl": "/v2/xaction/modules/pythonscript",
@@ -9768,7 +10299,7 @@
       "sourceSnippet": "<ModuleParamPreview moduleKey=\"sys:pythonscript\" />"
     },
     {
-      "id": "dcab2d28e51b6c9d",
+      "id": "1f333654ce324f58",
       "source": "direct",
       "page": "docs/v2/xaction/modules/flow/repeat.md",
       "pageUrl": "/v2/xaction/modules/repeat",
@@ -9907,7 +10438,7 @@
       "sourceSnippet": "<ModuleParamPreview moduleKey=\"sys:runAction\" focusKeys={['type', 'actionId', 'hideMessage']} values={{type: 'StopAction', actionId: '等待点击', hideMessage: 'false'}} />"
     },
     {
-      "id": "aa9abc22dc5bb05e",
+      "id": "0837081206d0a719",
       "source": "direct",
       "page": "docs/v2/xaction/modules/flow/stop.md",
       "pageUrl": "/v2/xaction/modules/stop",
@@ -10024,7 +10555,7 @@
       "sourceSnippet": "<ContextMenuPreview openPath={['查看子程序定义(P)']} items={[ {label: '查看子程序定义(P)', icon: '⌕', iconColor: '#2196f3'}, {label: '导入为动作内子程序(D)', icon: '□', iconColor: '#2196f3'}, ]} />"
     },
     {
-      "id": "bff0445090ceafbb",
+      "id": "fb06660a036e0908",
       "source": "direct",
       "page": "docs/v2/xaction/modules/image/imgprocess.md",
       "pageUrl": "/v2/xaction/modules/imgprocess",
@@ -10138,7 +10669,23 @@
       "sourceSnippet": "<ModuleParamPreview moduleKey=\"sys:readQrCode\" />"
     },
     {
-      "id": "afae4ae6bcd7f524",
+      "id": "fd13030cf67f6f89",
+      "source": "direct",
+      "page": "docs/v2/xaction/modules/image/screencapture.md",
+      "pageUrl": "/v2/xaction/modules/screencapture",
+      "title": "屏幕截图",
+      "moduleKey": "sys:screenCapture",
+      "image": "",
+      "imageName": "（直接写组件）",
+      "component": "PreviewMarks",
+      "pairConfidence": "direct",
+      "props": {
+        "marks": "[{\"key\":\"area\",\"label\":\"点击右侧按钮选择坐标范围\"}]"
+      },
+      "sourceSnippet": "<PreviewMarks marks={[{key: 'area', label: '点击右侧按钮选择坐标范围'}]}> <ModuleParamPreview moduleKey=\"sys:screenCapture\" focusKeys={['type', 'area', 'delay', 'toClip', 'stopIfFail', 'img', 'rect']} values={{type: 'fixed_area', area: '1521,851,2306,1"
+    },
+    {
+      "id": "9f98bc5fe78eeb60",
       "source": "direct",
       "page": "docs/v2/xaction/modules/image/screencapture.md",
       "pageUrl": "/v2/xaction/modules/screencapture",
@@ -10164,45 +10711,12 @@
       "imageName": "screencapture-001-2231b0e68f.png",
       "component": "ModuleParamPreview",
       "decidedComponent": "ModuleParamPreview",
-      "pairConfidence": "page-ref",
-      "renderMode": "page-ref",
-      "props": {},
-      "candidates": [
-        {
-          "props": {
-            "moduleKey": "sys:screenCapture"
-          },
-          "snippet": "<ModuleParamPreview moduleKey=\"sys:screenCapture\" />"
-        },
-        {
-          "props": {
-            "moduleKey": "sys:screenCapture",
-            "values": "{\"type\":\"select\",\"delay\":\"0\",\"toClip\":\"false\",\"stopIfFail\":\"true\"}",
-            "outputVars": "{\"img\":\"img\",\"rect\":\"rect\"}",
-            "focusKeys": "[\"type\",\"delay\",\"toClip\",\"stopIfFail\",\"img\",\"rect\",\"isSuccess\"]"
-          },
-          "snippet": "<ModuleParamPreview moduleKey=\"sys:screenCapture\" focusKeys={['type', 'delay', 'toClip', 'stopIfFail', 'img', 'rect', 'isSuccess']} values={{type: 'select', delay: '0', toClip: 'false', stopIfFail: 'true'}} outputVars={{img: 'img', rect: 'r"
-        },
-        {
-          "props": {
-            "moduleKey": "sys:screenCapture",
-            "values": "{\"type\":\"fixed_area\",\"area\":\"1521,851,2306,1277\",\"delay\":\"0\",\"toClip\":\"false\",\"stopIfFail\":\"true\"}",
-            "outputVars": "{\"img\":\"img\",\"rect\":\"rect\"}",
-            "focusKeys": "[\"type\",\"area\",\"delay\",\"toClip\",\"stopIfFail\",\"img\",\"rect\"]"
-          },
-          "snippet": "<ModuleParamPreview moduleKey=\"sys:screenCapture\" focusKeys={['type', 'area', 'delay', 'toClip', 'stopIfFail', 'img', 'rect']} values={{type: 'fixed_area', area: '1521,851,2306,1277', delay: '0', toClip: 'false', stopIfFail: 'true'}} output"
-        },
-        {
-          "props": {
-            "moduleKey": "sys:screenCapture",
-            "values": "{\"type\":\"window\",\"windowHandle\":\"0\",\"delay\":\"0\",\"toClip\":\"false\",\"stopIfFail\":\"true\"}",
-            "outputVars": "{\"img\":\"img\",\"rect\":\"rect\"}",
-            "focusKeys": "[\"type\",\"windowHandle\",\"delay\",\"toClip\",\"stopIfFail\",\"img\",\"rect\",\"isSuccess\"]"
-          },
-          "snippet": "<ModuleParamPreview moduleKey=\"sys:screenCapture\" focusKeys={['type', 'windowHandle', 'delay', 'toClip', 'stopIfFail', 'img', 'rect', 'isSuccess']} values={{type: 'window', windowHandle: '0', delay: '0', toClip: 'false', stopIfFail: 'true'}"
-        }
-      ],
-      "sourceSnippet": ""
+      "pairConfidence": "decision-order",
+      "renderMode": "preview",
+      "props": {
+        "moduleKey": "sys:screenCapture"
+      },
+      "sourceSnippet": "<ModuleParamPreview moduleKey=\"sys:screenCapture\" />"
     },
     {
       "id": "f652660380df8601",
@@ -10215,45 +10729,36 @@
       "imageName": "screencapture-003-254ac8acf9.png",
       "component": "ModuleParamPreview",
       "decidedComponent": "ModuleParamPreview",
-      "pairConfidence": "page-ref",
-      "renderMode": "page-ref",
-      "props": {},
-      "candidates": [
-        {
-          "props": {
-            "moduleKey": "sys:screenCapture"
-          },
-          "snippet": "<ModuleParamPreview moduleKey=\"sys:screenCapture\" />"
-        },
-        {
-          "props": {
-            "moduleKey": "sys:screenCapture",
-            "values": "{\"type\":\"select\",\"delay\":\"0\",\"toClip\":\"false\",\"stopIfFail\":\"true\"}",
-            "outputVars": "{\"img\":\"img\",\"rect\":\"rect\"}",
-            "focusKeys": "[\"type\",\"delay\",\"toClip\",\"stopIfFail\",\"img\",\"rect\",\"isSuccess\"]"
-          },
-          "snippet": "<ModuleParamPreview moduleKey=\"sys:screenCapture\" focusKeys={['type', 'delay', 'toClip', 'stopIfFail', 'img', 'rect', 'isSuccess']} values={{type: 'select', delay: '0', toClip: 'false', stopIfFail: 'true'}} outputVars={{img: 'img', rect: 'r"
-        },
-        {
-          "props": {
-            "moduleKey": "sys:screenCapture",
-            "values": "{\"type\":\"fixed_area\",\"area\":\"1521,851,2306,1277\",\"delay\":\"0\",\"toClip\":\"false\",\"stopIfFail\":\"true\"}",
-            "outputVars": "{\"img\":\"img\",\"rect\":\"rect\"}",
-            "focusKeys": "[\"type\",\"area\",\"delay\",\"toClip\",\"stopIfFail\",\"img\",\"rect\"]"
-          },
-          "snippet": "<ModuleParamPreview moduleKey=\"sys:screenCapture\" focusKeys={['type', 'area', 'delay', 'toClip', 'stopIfFail', 'img', 'rect']} values={{type: 'fixed_area', area: '1521,851,2306,1277', delay: '0', toClip: 'false', stopIfFail: 'true'}} output"
-        },
-        {
-          "props": {
-            "moduleKey": "sys:screenCapture",
-            "values": "{\"type\":\"window\",\"windowHandle\":\"0\",\"delay\":\"0\",\"toClip\":\"false\",\"stopIfFail\":\"true\"}",
-            "outputVars": "{\"img\":\"img\",\"rect\":\"rect\"}",
-            "focusKeys": "[\"type\",\"windowHandle\",\"delay\",\"toClip\",\"stopIfFail\",\"img\",\"rect\",\"isSuccess\"]"
-          },
-          "snippet": "<ModuleParamPreview moduleKey=\"sys:screenCapture\" focusKeys={['type', 'windowHandle', 'delay', 'toClip', 'stopIfFail', 'img', 'rect', 'isSuccess']} values={{type: 'window', windowHandle: '0', delay: '0', toClip: 'false', stopIfFail: 'true'}"
-        }
-      ],
-      "sourceSnippet": ""
+      "pairConfidence": "decision-order",
+      "renderMode": "preview",
+      "props": {
+        "moduleKey": "sys:screenCapture",
+        "values": "{\"type\":\"select\",\"delay\":\"0\",\"toClip\":\"false\",\"stopIfFail\":\"true\"}",
+        "outputVars": "{\"img\":\"img\",\"rect\":\"rect\"}",
+        "focusKeys": "[\"type\",\"delay\",\"toClip\",\"stopIfFail\",\"img\",\"rect\",\"isSuccess\"]"
+      },
+      "sourceSnippet": "<ModuleParamPreview moduleKey=\"sys:screenCapture\" focusKeys={['type', 'delay', 'toClip', 'stopIfFail', 'img', 'rect', 'isSuccess']} values={{type: 'select', delay: '0', toClip: 'false', stopIfFail: 'true'}} outputVars={{img: 'img', rect: 'r"
+    },
+    {
+      "id": "815f61960ed53236",
+      "source": "orphan",
+      "page": "docs/v2/xaction/modules/image/screencapture.md",
+      "pageUrl": "/v2/xaction/modules/screencapture",
+      "title": "屏幕截图",
+      "moduleKey": "sys:screenCapture",
+      "image": "docs/v2/xaction/modules/image/img/screencapture-006-8c2c04523b.png",
+      "imageName": "screencapture-006-8c2c04523b.png",
+      "component": "ModuleParamPreview",
+      "decidedComponent": "ModuleParamPreview",
+      "pairConfidence": "decision-order",
+      "renderMode": "preview",
+      "props": {
+        "moduleKey": "sys:screenCapture",
+        "values": "{\"type\":\"fixed_area\",\"area\":\"1521,851,2306,1277\",\"delay\":\"0\",\"toClip\":\"false\",\"stopIfFail\":\"true\"}",
+        "outputVars": "{\"img\":\"img\",\"rect\":\"rect\"}",
+        "focusKeys": "[\"type\",\"area\",\"delay\",\"toClip\",\"stopIfFail\",\"img\",\"rect\"]"
+      },
+      "sourceSnippet": "<ModuleParamPreview moduleKey=\"sys:screenCapture\" focusKeys={['type', 'area', 'delay', 'toClip', 'stopIfFail', 'img', 'rect']} values={{type: 'fixed_area', area: '1521,851,2306,1277', delay: '0', toClip: 'false', stopIfFail: 'true'}} output"
     },
     {
       "id": "f57ce298a53fb79b",
@@ -10266,48 +10771,34 @@
       "imageName": "screencapture-007-510b30adbd.png",
       "component": "ModuleParamPreview",
       "decidedComponent": "ModuleParamPreview",
-      "pairConfidence": "page-ref",
-      "renderMode": "page-ref",
-      "props": {},
-      "candidates": [
-        {
-          "props": {
-            "moduleKey": "sys:screenCapture"
-          },
-          "snippet": "<ModuleParamPreview moduleKey=\"sys:screenCapture\" />"
-        },
-        {
-          "props": {
-            "moduleKey": "sys:screenCapture",
-            "values": "{\"type\":\"select\",\"delay\":\"0\",\"toClip\":\"false\",\"stopIfFail\":\"true\"}",
-            "outputVars": "{\"img\":\"img\",\"rect\":\"rect\"}",
-            "focusKeys": "[\"type\",\"delay\",\"toClip\",\"stopIfFail\",\"img\",\"rect\",\"isSuccess\"]"
-          },
-          "snippet": "<ModuleParamPreview moduleKey=\"sys:screenCapture\" focusKeys={['type', 'delay', 'toClip', 'stopIfFail', 'img', 'rect', 'isSuccess']} values={{type: 'select', delay: '0', toClip: 'false', stopIfFail: 'true'}} outputVars={{img: 'img', rect: 'r"
-        },
-        {
-          "props": {
-            "moduleKey": "sys:screenCapture",
-            "values": "{\"type\":\"fixed_area\",\"area\":\"1521,851,2306,1277\",\"delay\":\"0\",\"toClip\":\"false\",\"stopIfFail\":\"true\"}",
-            "outputVars": "{\"img\":\"img\",\"rect\":\"rect\"}",
-            "focusKeys": "[\"type\",\"area\",\"delay\",\"toClip\",\"stopIfFail\",\"img\",\"rect\"]"
-          },
-          "snippet": "<ModuleParamPreview moduleKey=\"sys:screenCapture\" focusKeys={['type', 'area', 'delay', 'toClip', 'stopIfFail', 'img', 'rect']} values={{type: 'fixed_area', area: '1521,851,2306,1277', delay: '0', toClip: 'false', stopIfFail: 'true'}} output"
-        },
-        {
-          "props": {
-            "moduleKey": "sys:screenCapture",
-            "values": "{\"type\":\"window\",\"windowHandle\":\"0\",\"delay\":\"0\",\"toClip\":\"false\",\"stopIfFail\":\"true\"}",
-            "outputVars": "{\"img\":\"img\",\"rect\":\"rect\"}",
-            "focusKeys": "[\"type\",\"windowHandle\",\"delay\",\"toClip\",\"stopIfFail\",\"img\",\"rect\",\"isSuccess\"]"
-          },
-          "snippet": "<ModuleParamPreview moduleKey=\"sys:screenCapture\" focusKeys={['type', 'windowHandle', 'delay', 'toClip', 'stopIfFail', 'img', 'rect', 'isSuccess']} values={{type: 'window', windowHandle: '0', delay: '0', toClip: 'false', stopIfFail: 'true'}"
-        }
-      ],
-      "sourceSnippet": ""
+      "pairConfidence": "decision-order",
+      "renderMode": "preview",
+      "props": {
+        "moduleKey": "sys:screenCapture",
+        "values": "{\"type\":\"window\",\"windowHandle\":\"0\",\"delay\":\"0\",\"toClip\":\"false\",\"stopIfFail\":\"true\"}",
+        "outputVars": "{\"img\":\"img\",\"rect\":\"rect\"}",
+        "focusKeys": "[\"type\",\"windowHandle\",\"delay\",\"toClip\",\"stopIfFail\",\"img\",\"rect\",\"isSuccess\"]"
+      },
+      "sourceSnippet": "<ModuleParamPreview moduleKey=\"sys:screenCapture\" focusKeys={['type', 'windowHandle', 'delay', 'toClip', 'stopIfFail', 'img', 'rect', 'isSuccess']} values={{type: 'window', windowHandle: '0', delay: '0', toClip: 'false', stopIfFail: 'true'}"
     },
     {
-      "id": "c4d52feb20cfbff4",
+      "id": "66d3463fa6ae3813",
+      "source": "direct",
+      "page": "docs/v2/xaction/modules/image/searchbmp.md",
+      "pageUrl": "/v2/xaction/modules/searchbmp",
+      "title": "屏幕找图/找色/找字",
+      "moduleKey": "sys:searchBmp",
+      "image": "",
+      "imageName": "（直接写组件）",
+      "component": "PreviewMarks",
+      "pairConfidence": "direct",
+      "props": {
+        "marks": "[{\"key\":\"type\",\"label\":\"移动到(x,y 一同指定)\"},{\"key\":\"xy\",\"label\":\"使用 firstPoint\"},{\"key\":\"extAction\",\"label\":\"移动后左键单击\"}]"
+      },
+      "sourceSnippet": "<PreviewMarks marks={[ {key: 'type', label: '移动到(x,y 一同指定)'}, {key: 'xy', label: '使用 firstPoint'}, {key: 'extAction', label: '移动后左键单击'}, ]} > <ModuleParamPreview moduleKey=\"sys:mouse\" focusKeys={['type', 'xy', 'slowMove', 'extAction']} valu"
+    },
+    {
+      "id": "7306c86202c28684",
       "source": "direct",
       "page": "docs/v2/xaction/modules/image/searchbmp.md",
       "pageUrl": "/v2/xaction/modules/searchbmp",
@@ -10389,6 +10880,64 @@
       "moduleKey": "sys:searchBmp",
       "image": "docs/v2/xaction/modules/image/img/searchbmp-005-9e8604d63b.png",
       "imageName": "searchbmp-005-9e8604d63b.png",
+      "component": "ModuleParamPreview",
+      "decidedComponent": "ModuleParamPreview",
+      "pairConfidence": "page-ref",
+      "renderMode": "page-ref",
+      "props": {},
+      "candidates": [
+        {
+          "props": {
+            "moduleKey": "sys:searchBmp"
+          },
+          "snippet": "<ModuleParamPreview moduleKey=\"sys:searchBmp\" />"
+        },
+        {
+          "props": {
+            "moduleKey": "sys:searchBmp",
+            "values": "{\"bmpColorError\":\"20\"}",
+            "focusKeys": "[\"bmpColorError\"]"
+          },
+          "snippet": "<ModuleParamPreview moduleKey=\"sys:searchBmp\" focusKeys={['bmpColorError']} values={{bmpColorError: '20'}} />"
+        },
+        {
+          "props": {
+            "moduleKey": "sys:searchBmp",
+            "values": "{\"type\":\"locateByColor\",\"color\":\"#352559\",\"bmpTargetType\":\"AllScreens\",\"searchRect\":\"\",\"x\":\"0\",\"y\":\"0\",\"bmpColorError\":\"0\",\"retryCount\":\"1\",\"stopIfFail\":\"true\"}",
+            "outputVars": "{\"isSuccess\":\"isSuccess\",\"firstPoint\":\"position\"}",
+            "focusKeys": "[\"type\",\"color\",\"bmpTargetType\",\"searchRect\",\"x\",\"y\",\"bmpColorError\",\"retryCount\",\"stopIfFail\",\"isSuccess\",\"firstPoint\"]"
+          },
+          "snippet": "<ModuleParamPreview moduleKey=\"sys:searchBmp\" focusKeys={[ 'type', 'color', 'bmpTargetType', 'searchRect', 'x', 'y', 'bmpColorError', 'retryCount', 'stopIfFail', 'isSuccess', 'firstPoint', ]} values={{ type: 'locateByColor', color: '#352559"
+        },
+        {
+          "props": {
+            "moduleKey": "sys:mouse",
+            "values": "{\"type\":\"moveToXy\",\"xy\":\"{firstPoint}\",\"slowMove\":\"false\",\"extAction\":\"left\"}",
+            "focusKeys": "[\"type\",\"xy\",\"slowMove\",\"extAction\"]"
+          },
+          "snippet": "<ModuleParamPreview moduleKey=\"sys:mouse\" focusKeys={['type', 'xy', 'slowMove', 'extAction']} values={{type: 'moveToXy', xy: '{firstPoint}', slowMove: 'false', extAction: 'left'}} />"
+        },
+        {
+          "props": {
+            "moduleKey": "sys:searchBmp",
+            "values": "{\"type\":\"locateByText\",\"searchText\":\"行业排名\",\"bmpTargetType\":\"CurrentWindow\",\"searchRect\":\"\",\"x\":\"0\",\"y\":\"0\",\"retryCount\":\"1\",\"stopIfFail\":\"true\"}",
+            "outputVars": "{\"isSuccess\":\"isSuccess\",\"firstPoint\":\"firstPoint\"}",
+            "focusKeys": "[\"type\",\"searchText\",\"bmpTargetType\",\"searchRect\",\"x\",\"y\",\"retryCount\",\"stopIfFail\",\"isSuccess\",\"firstPoint\"]"
+          },
+          "snippet": "<ModuleParamPreview moduleKey=\"sys:searchBmp\" focusKeys={[ 'type', 'searchText', 'bmpTargetType', 'searchRect', 'x', 'y', 'retryCount', 'stopIfFail', 'isSuccess', 'firstPoint', ]} values={{ type: 'locateByText', searchText: '行业排名', bmpTarge"
+        }
+      ],
+      "sourceSnippet": ""
+    },
+    {
+      "id": "1a51a7dd74391d35",
+      "source": "orphan",
+      "page": "docs/v2/xaction/modules/image/searchbmp.md",
+      "pageUrl": "/v2/xaction/modules/searchbmp",
+      "title": "屏幕找图/找色/找字",
+      "moduleKey": "sys:searchBmp",
+      "image": "docs/v2/xaction/modules/image/img/searchbmp-006-14fe2e9696.png",
+      "imageName": "searchbmp-006-14fe2e9696.png",
       "component": "ModuleParamPreview",
       "decidedComponent": "ModuleParamPreview",
       "pairConfidence": "page-ref",
@@ -10684,7 +11233,7 @@
       "sourceSnippet": "<ModuleParamPreview moduleKey=\"sys:inputScript\" values={{ data: 'input:hello\\ndelay:200\\nhotkey:Ctrl+A', }} />"
     },
     {
-      "id": "d3cf8ed411b058aa",
+      "id": "1b2eb477b45142e9",
       "source": "direct",
       "page": "docs/v2/xaction/modules/network/ai.md",
       "pageUrl": "/v2/xaction/modules/ai",
@@ -10700,7 +11249,7 @@
       "sourceSnippet": "<StepProgramView data={{ steps: [ { key: 'sys:showText', note: '显示窗口，不等待关闭（立即开始执行后续的步骤） 翻译结果：', }, {key: 'sys:ai'}, ], }} />"
     },
     {
-      "id": "8427a5f10db0d688",
+      "id": "9aa00d53a997bd5a",
       "source": "direct",
       "page": "docs/v2/xaction/modules/network/ai.md",
       "pageUrl": "/v2/xaction/modules/ai",
@@ -10912,7 +11461,7 @@
       "sourceSnippet": ""
     },
     {
-      "id": "984bc84eded90baf",
+      "id": "b7a8dbee9f6a7ff5",
       "source": "direct",
       "page": "docs/v2/xaction/modules/network/basic-ocr.md",
       "pageUrl": "/v2/xaction/modules/basic-ocr",
@@ -11637,7 +12186,7 @@
       "sourceSnippet": ""
     },
     {
-      "id": "49e985d2d3426264",
+      "id": "ae911406d7293538",
       "source": "direct",
       "page": "docs/v2/xaction/modules/network/download.md",
       "pageUrl": "/v2/xaction/modules/download",
@@ -11705,7 +12254,7 @@
       "sourceSnippet": "<StepProgramView example=\"bbf0a162-6f95-46fb-1e7a-08dbbf546dec\" />"
     },
     {
-      "id": "577665da9e97366e",
+      "id": "dc3ce53fa8993cd6",
       "source": "direct",
       "page": "docs/v2/xaction/modules/network/http.md",
       "pageUrl": "/v2/xaction/modules/http",
@@ -11721,7 +12270,7 @@
       "sourceSnippet": "<StepProgramView example=\"0c8ab8ca-b721-407a-11da-08dc5ee89ca7\" />"
     },
     {
-      "id": "6cef96eb67ea0d69",
+      "id": "136d53d18a11fbf5",
       "source": "direct",
       "page": "docs/v2/xaction/modules/network/http.md",
       "pageUrl": "/v2/xaction/modules/http",
@@ -11771,7 +12320,7 @@
       "sourceSnippet": ""
     },
     {
-      "id": "80f44a0d83ac9526",
+      "id": "97d0504b2d6fb0c2",
       "source": "direct",
       "page": "docs/v2/xaction/modules/network/httpserver.md",
       "pageUrl": "/v2/xaction/modules/httpserver",
@@ -11908,7 +12457,7 @@
       "sourceSnippet": "<ModuleParamPreview moduleKey=\"sys:tempcloudstore\" values={{dataType: 'file', expireSeconds: '2.5'}} inputVars={{file: 'textValue'}} outputVars={{url: 'url'}} />"
     },
     {
-      "id": "129cfe89c4a18c31",
+      "id": "bcfb50bfd2a5f307",
       "source": "direct",
       "page": "docs/v2/xaction/modules/network/translation.md",
       "pageUrl": "/v2/xaction/modules/translation",
@@ -12176,7 +12725,23 @@
       "sourceSnippet": ""
     },
     {
-      "id": "2cab20b5c2345f2f",
+      "id": "20aa68324d5204b2",
+      "source": "direct",
+      "page": "docs/v2/xaction/modules/software/adobesoftscontrol.md",
+      "pageUrl": "/v2/xaction/modules/adobesoftscontrol",
+      "title": "Adobe系列软件控制",
+      "moduleKey": "sys:adobesoftscontrol",
+      "image": "",
+      "imageName": "（直接写组件）",
+      "component": "PreviewMarks",
+      "pairConfidence": "direct",
+      "props": {
+        "marks": "[{\"key\":\"script\",\"label\":\"脚本内容\"},{\"key\":\"type\",\"label\":\"自定义脚本类型\"},{\"key\":\"ext\",\"label\":\"扩展名 .psjs\"},{\"key\":\"encoding\",\"label\":\"文件编码 UTF8 (有 BOM)\"}]"
+      },
+      "sourceSnippet": "<PreviewMarks marks={[ {key: 'script', label: '脚本内容'}, {key: 'type', label: '自定义脚本类型'}, {key: 'ext', label: '扩展名 .psjs'}, {key: 'encoding', label: '文件编码 UTF8 (有 BOM)'}, ]} > <ModuleParamPreview moduleKey=\"sys:runScript\" focusKeys={[ 'script"
+    },
+    {
+      "id": "01c825e9d83e5903",
       "source": "direct",
       "page": "docs/v2/xaction/modules/software/adobesoftscontrol.md",
       "pageUrl": "/v2/xaction/modules/adobesoftscontrol",
@@ -12192,7 +12757,7 @@
       "sourceSnippet": "<StepProgramView example=\"f757e64d-dff9-4bc1-6b82-08da4f3f8574\" />"
     },
     {
-      "id": "e3e3cafb5b4529f6",
+      "id": "b567efd8361236bb",
       "source": "direct",
       "page": "docs/v2/xaction/modules/software/adobesoftscontrol.md",
       "pageUrl": "/v2/xaction/modules/adobesoftscontrol",
@@ -12218,7 +12783,7 @@
       "imageName": "adobesoftscontrol-001-2aca30bd3a.png",
       "component": "ModuleParamPreview",
       "decidedComponent": "ModuleParamPreview",
-      "pairConfidence": "decision-unique",
+      "pairConfidence": "decision-order",
       "renderMode": "preview",
       "props": {
         "moduleKey": "sys:adobesoftscontrol"
@@ -12226,52 +12791,24 @@
       "sourceSnippet": "<ModuleParamPreview moduleKey=\"sys:adobesoftscontrol\" />"
     },
     {
-      "id": "1a028149df4ed21c",
-      "source": "direct",
-      "page": "docs/v2/xaction/modules/software/autocadcontrol.md",
-      "pageUrl": "/v2/xaction/modules/autocadcontrol",
-      "title": "AutoCAD控制",
-      "moduleKey": "sys:autocadcontrol",
-      "image": "",
-      "imageName": "（直接写组件）",
-      "component": "StepProgramView",
-      "pairConfidence": "direct",
+      "id": "a0dc5c230d5e29a8",
+      "source": "orphan",
+      "page": "docs/v2/xaction/modules/software/adobesoftscontrol.md",
+      "pageUrl": "/v2/xaction/modules/adobesoftscontrol",
+      "title": "Adobe系列软件控制",
+      "moduleKey": "sys:runScript",
+      "image": "docs/v2/xaction/modules/software/img/adobesoftscontrol-005-d07b486340.png",
+      "imageName": "adobesoftscontrol-005-d07b486340.png",
+      "component": "ModuleParamPreview",
+      "decidedComponent": "ModuleParamPreview",
+      "pairConfidence": "decision-order",
+      "renderMode": "preview",
       "props": {
-        "example": "837633b1-cbea-4156-0c36-08da45d22d56"
+        "moduleKey": "sys:runScript",
+        "values": "{\"script\":\"//脚本内容\",\"type\":\"CUSTOM\",\"ext\":\".psjs\",\"encoding\":\"utf-8\",\"runner\":\"\",\"argTemplate\":\"%FILE%\",\"outputEncoding\":\"oem\",\"workingDir\":\"\"}",
+        "focusKeys": "[\"script\",\"type\",\"ext\",\"encoding\",\"runner\",\"argTemplate\",\"outputEncoding\",\"workingDir\"]"
       },
-      "sourceSnippet": "<StepProgramView example=\"837633b1-cbea-4156-0c36-08da45d22d56\" />"
-    },
-    {
-      "id": "da847c5ab4a86c30",
-      "source": "direct",
-      "page": "docs/v2/xaction/modules/software/autocadcontrol.md",
-      "pageUrl": "/v2/xaction/modules/autocadcontrol",
-      "title": "AutoCAD控制",
-      "moduleKey": "sys:autocadcontrol",
-      "image": "",
-      "imageName": "（直接写组件）",
-      "component": "StepProgramView",
-      "pairConfidence": "direct",
-      "props": {
-        "example": "2de554cd-f7f6-417c-6b7c-08da4f3f8574"
-      },
-      "sourceSnippet": "<StepProgramView example=\"2de554cd-f7f6-417c-6b7c-08da4f3f8574\" />"
-    },
-    {
-      "id": "21fb693278fa9306",
-      "source": "direct",
-      "page": "docs/v2/xaction/modules/software/autocadcontrol.md",
-      "pageUrl": "/v2/xaction/modules/autocadcontrol",
-      "title": "AutoCAD控制",
-      "moduleKey": "sys:autocadcontrol",
-      "image": "",
-      "imageName": "（直接写组件）",
-      "component": "StepProgramView",
-      "pairConfidence": "direct",
-      "props": {
-        "example": "3dfd19f5-7e33-4864-5286-08da4e691004"
-      },
-      "sourceSnippet": "<StepProgramView example=\"3dfd19f5-7e33-4864-5286-08da4e691004\" />"
+      "sourceSnippet": "<ModuleParamPreview moduleKey=\"sys:runScript\" focusKeys={[ 'script', 'type', 'ext', 'encoding', 'runner', 'argTemplate', 'outputEncoding', 'workingDir', ]} values={{ script: '//脚本内容', type: 'CUSTOM', ext: '.psjs', encoding: 'utf-8', runner:"
     },
     {
       "id": "f6b77a378d07340d",
@@ -12284,12 +12821,256 @@
       "imageName": "autocadcontrol-001-074afbab24.png",
       "component": "ModuleParamPreview",
       "decidedComponent": "ModuleParamPreview",
-      "pairConfidence": "decision-unique",
-      "renderMode": "preview",
-      "props": {
-        "moduleKey": "sys:autocadcontrol"
-      },
-      "sourceSnippet": "<ModuleParamPreview moduleKey=\"sys:autocadcontrol\" />"
+      "pairConfidence": "page-ref",
+      "renderMode": "page-ref",
+      "props": {},
+      "sourceSnippet": ""
+    },
+    {
+      "id": "7d92f60e56c7954e",
+      "source": "orphan",
+      "page": "docs/v2/xaction/modules/software/chromecontrol.md",
+      "pageUrl": "/v2/xaction/modules/chromecontrol",
+      "title": "浏览器控制",
+      "moduleKey": "sys:chromecontrol",
+      "image": "docs/v2/xaction/modules/software/img/chromecontrol-012-771112c601.png",
+      "imageName": "chromecontrol-012-771112c601.png",
+      "component": "ModuleParamPreview",
+      "decidedComponent": "ModuleParamPreview",
+      "pairConfidence": "page-ref",
+      "renderMode": "page-ref",
+      "props": {},
+      "candidates": [
+        {
+          "props": {
+            "moduleKey": "sys:chromecontrol",
+            "values": "{\"operation\":\"RunScript\",\"tabId\":\"\",\"script\":\"//.js\",\"waitManualReturn\":\"false\",\"stopIfFail\":\"true\",\"timeoutMs\":\"3000\",\"frame\":\"all\"}",
+            "focusKeys": "[\"operation\",\"tabId\",\"script\",\"waitManualReturn\",\"stopIfFail\",\"timeoutMs\",\"frame\",\"isSuccess\",\"rawResponse\"]"
+          },
+          "snippet": "<ModuleParamPreview moduleKey=\"sys:chromecontrol\" focusKeys={[ 'operation', 'tabId', 'script', 'waitManualReturn', 'stopIfFail', 'timeoutMs', 'frame', 'isSuccess', 'rawResponse', ]} values={{ operation: 'RunScript', tabId: '', script: '//.j"
+        },
+        {
+          "props": {
+            "moduleKey": "sys:chromecontrol",
+            "values": "{\"operation\":\"BackgroundCommand\"}",
+            "focusKeys": "[\"operation\"]"
+          },
+          "snippet": "<ModuleParamPreview moduleKey=\"sys:chromecontrol\" focusKeys={['operation']} values={{operation: 'BackgroundCommand'}} />"
+        },
+        {
+          "props": {
+            "moduleKey": "sys:chromecontrol",
+            "values": "{\"operation\":\"ExtractList\",\"tabId\":\"\",\"listTemplate\":\"{ /* 从扩展复制的列表模板 */ }\",\"listCollectionScope\":\"CurrentPage\",\"listMaxRows\":\"500\",\"listAllowEmpty\":\"false\",\"listTimeoutMs\":\"30000\"}",
+            "outputVars": "{\"listTable\":\"列表数据\",\"listRowCount\":\"提取行数\",\"listWarnings\":\"提取警告\",\"listCompleted\":\"结果完整\",\"listStopReason\":\"停止原因\"}",
+            "focusKeys": "[\"operation\",\"tabId\",\"listTemplate\",\"listCollectionScope\",\"listMaxRows\",\"listAllowEmpty\",\"listTimeoutMs\",\"listTable\",\"listRowCount\",\"listTotalMatchedRows\",\"listTruncated\",\"listWarnings\",\"listPagesCollected\",\"listCompleted\",\"listStopReason\",\"rawResponse\"]"
+          },
+          "snippet": "<ModuleParamPreview moduleKey=\"sys:chromecontrol\" focusKeys={[ 'operation', 'tabId', 'listTemplate', 'listCollectionScope', 'listMaxRows', 'listAllowEmpty', 'listTimeoutMs', 'listTable', 'listRowCount', 'listTotalMatchedRows', 'listTruncate"
+        },
+        {
+          "props": {
+            "moduleKey": "sys:chromecontrol",
+            "values": "{\n    operation: 'FillForm',\n    tabId: '',\n    formTemplate: '{ /* 从扩展复制的表单模板 */ }',\n    formData: `customerName: 张三\ncity: 北京`,\n    formDryRun: 'true',\n    formFailurePolicy: 'RequiredField',\n    formTimeoutMs: '30000',\n  }",
+            "outputVars": "{\"formAllRequiredSucceeded\":\"必填字段成功\",\"formFilledCount\":\"填写数量\",\"formFailedCount\":\"失败数量\",\"formResults\":\"逐字段结果\",\"formWarnings\":\"表单警告\"}",
+            "focusKeys": "[\"operation\",\"tabId\",\"formTemplate\",\"formData\",\"formDryRun\",\"formFailurePolicy\",\"formTimeoutMs\",\"formAllRequiredSucceeded\",\"formFilledCount\",\"formFailedCount\",\"formResults\",\"formCheckStatus\",\"formWarnings\",\"rawResponse\"]"
+          },
+          "snippet": "<ModuleParamPreview moduleKey=\"sys:chromecontrol\" focusKeys={[ 'operation', 'tabId', 'formTemplate', 'formData', 'formDryRun', 'formFailurePolicy', 'formTimeoutMs', 'formAllRequiredSucceeded', 'formFilledCount', 'formFailedCount', 'formResu"
+        },
+        {
+          "props": {
+            "moduleKey": "sys:chromecontrol",
+            "values": "{\"operation\":\"PageAction\",\"tabId\":\"\",\"pageUrlPattern\":\"\",\"pageLocator\":\"role\",\"pageLocatorRole\":\"button\",\"pageLocatorValue\":\"提交\",\"pageOperation\":\"click\"}",
+            "focusKeys": "[\"operation\",\"tabId\",\"pageUrlPattern\",\"pageLocator\",\"pageLocatorRole\",\"pageLocatorValue\",\"pageExact\",\"pageOperation\",\"pageValue\",\"pageFrameId\",\"isSuccess\",\"rawResponse\"]"
+          },
+          "snippet": "<ModuleParamPreview moduleKey=\"sys:chromecontrol\" focusKeys={[ 'operation', 'tabId', 'pageUrlPattern', 'pageLocator', 'pageLocatorRole', 'pageLocatorValue', 'pageExact', 'pageOperation', 'pageValue', 'pageFrameId', 'isSuccess', 'rawResponse"
+        },
+        {
+          "props": {
+            "moduleKey": "sys:chromecontrol",
+            "type": "file",
+            "values": "{\n    operation: 'UploadFiles',\n    tabId: '',\n    pageUrlPattern: 'https://example.com/upload/*',\n    pageFileTarget: 'css',\n    pageFileSelector: 'input[type=\"file\"]',\n    pageFiles: `D:\\\\Files\\\\report.pdf\nD:\\\\Files\\\\image.png`,\n  }",
+            "focusKeys": "[\"operation\",\"tabId\",\"pageUrlPattern\",\"pageFileTarget\",\"pageFileSelector\",\"pageFiles\",\"pageFrameId\",\"isSuccess\",\"rawResponse\"]"
+          },
+          "snippet": "<ModuleParamPreview moduleKey=\"sys:chromecontrol\" focusKeys={[ 'operation', 'tabId', 'pageUrlPattern', 'pageFileTarget', 'pageFileSelector', 'pageFiles', 'pageFrameId', 'isSuccess', 'rawResponse', ]} values={{ operation: 'UploadFiles', tabI"
+        },
+        {
+          "props": {
+            "moduleKey": "sys:chromecontrol",
+            "values": "{\n    operation: 'OpenUrl',\n    url: 'https://baidu.com',\n    windowId: 'New',\n    windowInfo: `{\n  focused: true,\n  width: 1000,\n  height: 1000,\n  incognito: false,\n  left: 100,\n  top: 100,\n  type: \"normal\"\n}`,\n    waitComplete: 'true',\n    stopIfFail: 'true',\n    timeoutMs: '3000',\n  }",
+            "outputVars": "{\"tabId\":\"tabId\",\"windowId\":\"windowId\",\"rawResponse\":\"rawResponse\"}",
+            "focusKeys": "[\"operation\",\"url\",\"windowId\",\"windowInfo\",\"waitComplete\",\"stopIfFail\",\"timeoutMs\",\"isSuccess\",\"tabId\",\"rawResponse\"]"
+          },
+          "snippet": "<ModuleParamPreview moduleKey=\"sys:chromecontrol\" focusKeys={[ 'operation', 'url', 'windowId', 'windowInfo', 'waitComplete', 'stopIfFail', 'timeoutMs', 'isSuccess', 'tabId', 'rawResponse', ]} values={{ operation: 'OpenUrl', url: 'https://ba"
+        },
+        {
+          "props": {
+            "moduleKey": "sys:chromecontrol",
+            "values": "{\"operation\":\"WaitTabComplete\",\"tabId\":\"\",\"timeoutMs\":\"2000\",\"stopIfFail\":\"true\"}",
+            "outputVars": "{\"isSuccess\":\"isSuccess\",\"rawResponse\":\"rtn\"}",
+            "focusKeys": "[\"operation\",\"tabId\",\"timeoutMs\",\"stopIfFail\",\"isSuccess\",\"rawResponse\"]"
+          },
+          "snippet": "<ModuleParamPreview moduleKey=\"sys:chromecontrol\" focusKeys={['operation', 'tabId', 'timeoutMs', 'stopIfFail', 'isSuccess', 'rawResponse']} values={{operation: 'WaitTabComplete', tabId: '', timeoutMs: '2000', stopIfFail: 'true'}} outputVars"
+        },
+        {
+          "props": {
+            "moduleKey": "sys:chromecontrol",
+            "values": "{\"operation\":\"ActivateTab\",\"url\":\"https://baidu.com\",\"tabId\":\"\",\"stopIfFail\":\"true\"}",
+            "outputVars": "{\"tabId\":\"tabId\",\"windowId\":\"windowId\"}",
+            "focusKeys": "[\"operation\",\"url\",\"tabId\",\"stopIfFail\",\"isSuccess\",\"windowId\",\"groupId\",\"title\",\"favicon\",\"rawResponse\"]"
+          },
+          "snippet": "<ModuleParamPreview moduleKey=\"sys:chromecontrol\" focusKeys={[ 'operation', 'url', 'tabId', 'stopIfFail', 'isSuccess', 'windowId', 'groupId', 'title', 'favicon', 'rawResponse', ]} values={{operation: 'ActivateTab', url: 'https://baidu.com',"
+        },
+        {
+          "props": {
+            "moduleKey": "sys:chromecontrol",
+            "values": "{\"operation\":\"GetTabInfo\",\"tabId\":\"\",\"stopIfFail\":\"true\",\"timeoutMs\":\"3000\"}",
+            "outputVars": "{\"tabId\":\"tabId\",\"windowId\":\"windowId\",\"groupId\":\"groupId\",\"url\":\"url\",\"title\":\"text\",\"favicon\":\"favicon\",\"browser\":\"browser\",\"extVersion\":\"extVersion\",\"manifestVersion\":\"manifestVersion\",\"rawResponse\":\"rawResponse\"}",
+            "focusKeys": "[\"operation\",\"tabId\",\"stopIfFail\",\"timeoutMs\",\"isSuccess\",\"windowId\",\"groupId\",\"url\",\"title\",\"favicon\",\"browser\",\"extVersion\",\"manifestVersion\",\"envName\",\"rawResponse\"]"
+          },
+          "snippet": "<ModuleParamPreview moduleKey=\"sys:chromecontrol\" focusKeys={[ 'operation', 'tabId', 'stopIfFail', 'timeoutMs', 'isSuccess', 'windowId', 'groupId', 'url', 'title', 'favicon', 'browser', 'extVersion', 'manifestVersion', 'envName', 'rawRespon"
+        },
+        {
+          "props": {
+            "moduleKey": "sys:chromecontrol",
+            "values": "{\"operation\":\"CloseTab\",\"tabId\":\"\",\"stopIfFail\":\"true\"}",
+            "outputVars": "{\"isSuccess\":\"isSuccess\",\"rawResponse\":\"rtn\"}",
+            "focusKeys": "[\"operation\",\"tabId\",\"stopIfFail\",\"isSuccess\",\"rawResponse\"]"
+          },
+          "snippet": "<ModuleParamPreview moduleKey=\"sys:chromecontrol\" focusKeys={['operation', 'tabId', 'stopIfFail', 'isSuccess', 'rawResponse']} values={{operation: 'CloseTab', tabId: '', stopIfFail: 'true'}} outputVars={{isSuccess: 'isSuccess', rawResponse:"
+        },
+        {
+          "props": {
+            "moduleKey": "sys:chromecontrol",
+            "values": "{\"operation\":\"RunScript\",\"tabId\":\"\",\"script\":\"//.js\\ndocument.title\",\"frame\":\"0\",\"executionWorld\":\"\",\"waitManualReturn\":\"false\",\"stopIfFail\":\"true\",\"timeoutMs\":\"3000\"}",
+            "outputVars": "{\"rawResponse\":\"rawResponse\"}",
+            "focusKeys": "[\"operation\",\"tabId\",\"script\",\"frame\",\"executionWorld\",\"waitManualReturn\",\"stopIfFail\",\"timeoutMs\",\"isSuccess\",\"rawResponse\"]"
+          },
+          "snippet": "<ModuleParamPreview moduleKey=\"sys:chromecontrol\" focusKeys={[ 'operation', 'tabId', 'script', 'frame', 'executionWorld', 'waitManualReturn', 'stopIfFail', 'timeoutMs', 'isSuccess', 'rawResponse', ]} values={{ operation: 'RunScript', tabId:"
+        }
+      ],
+      "sourceSnippet": ""
+    },
+    {
+      "id": "ae8a4010df234167",
+      "source": "orphan",
+      "page": "docs/v2/xaction/modules/software/chromecontrol.md",
+      "pageUrl": "/v2/xaction/modules/chromecontrol",
+      "title": "浏览器控制",
+      "moduleKey": "sys:chromecontrol",
+      "image": "docs/v2/xaction/modules/software/img/chromecontrol-015-9ab26a6de3.png",
+      "imageName": "chromecontrol-015-9ab26a6de3.png",
+      "component": "ModuleParamPreview",
+      "decidedComponent": "ModuleParamPreview",
+      "pairConfidence": "page-ref",
+      "renderMode": "page-ref",
+      "props": {},
+      "candidates": [
+        {
+          "props": {
+            "moduleKey": "sys:chromecontrol",
+            "values": "{\"operation\":\"RunScript\",\"tabId\":\"\",\"script\":\"//.js\",\"waitManualReturn\":\"false\",\"stopIfFail\":\"true\",\"timeoutMs\":\"3000\",\"frame\":\"all\"}",
+            "focusKeys": "[\"operation\",\"tabId\",\"script\",\"waitManualReturn\",\"stopIfFail\",\"timeoutMs\",\"frame\",\"isSuccess\",\"rawResponse\"]"
+          },
+          "snippet": "<ModuleParamPreview moduleKey=\"sys:chromecontrol\" focusKeys={[ 'operation', 'tabId', 'script', 'waitManualReturn', 'stopIfFail', 'timeoutMs', 'frame', 'isSuccess', 'rawResponse', ]} values={{ operation: 'RunScript', tabId: '', script: '//.j"
+        },
+        {
+          "props": {
+            "moduleKey": "sys:chromecontrol",
+            "values": "{\"operation\":\"BackgroundCommand\"}",
+            "focusKeys": "[\"operation\"]"
+          },
+          "snippet": "<ModuleParamPreview moduleKey=\"sys:chromecontrol\" focusKeys={['operation']} values={{operation: 'BackgroundCommand'}} />"
+        },
+        {
+          "props": {
+            "moduleKey": "sys:chromecontrol",
+            "values": "{\"operation\":\"ExtractList\",\"tabId\":\"\",\"listTemplate\":\"{ /* 从扩展复制的列表模板 */ }\",\"listCollectionScope\":\"CurrentPage\",\"listMaxRows\":\"500\",\"listAllowEmpty\":\"false\",\"listTimeoutMs\":\"30000\"}",
+            "outputVars": "{\"listTable\":\"列表数据\",\"listRowCount\":\"提取行数\",\"listWarnings\":\"提取警告\",\"listCompleted\":\"结果完整\",\"listStopReason\":\"停止原因\"}",
+            "focusKeys": "[\"operation\",\"tabId\",\"listTemplate\",\"listCollectionScope\",\"listMaxRows\",\"listAllowEmpty\",\"listTimeoutMs\",\"listTable\",\"listRowCount\",\"listTotalMatchedRows\",\"listTruncated\",\"listWarnings\",\"listPagesCollected\",\"listCompleted\",\"listStopReason\",\"rawResponse\"]"
+          },
+          "snippet": "<ModuleParamPreview moduleKey=\"sys:chromecontrol\" focusKeys={[ 'operation', 'tabId', 'listTemplate', 'listCollectionScope', 'listMaxRows', 'listAllowEmpty', 'listTimeoutMs', 'listTable', 'listRowCount', 'listTotalMatchedRows', 'listTruncate"
+        },
+        {
+          "props": {
+            "moduleKey": "sys:chromecontrol",
+            "values": "{\n    operation: 'FillForm',\n    tabId: '',\n    formTemplate: '{ /* 从扩展复制的表单模板 */ }',\n    formData: `customerName: 张三\ncity: 北京`,\n    formDryRun: 'true',\n    formFailurePolicy: 'RequiredField',\n    formTimeoutMs: '30000',\n  }",
+            "outputVars": "{\"formAllRequiredSucceeded\":\"必填字段成功\",\"formFilledCount\":\"填写数量\",\"formFailedCount\":\"失败数量\",\"formResults\":\"逐字段结果\",\"formWarnings\":\"表单警告\"}",
+            "focusKeys": "[\"operation\",\"tabId\",\"formTemplate\",\"formData\",\"formDryRun\",\"formFailurePolicy\",\"formTimeoutMs\",\"formAllRequiredSucceeded\",\"formFilledCount\",\"formFailedCount\",\"formResults\",\"formCheckStatus\",\"formWarnings\",\"rawResponse\"]"
+          },
+          "snippet": "<ModuleParamPreview moduleKey=\"sys:chromecontrol\" focusKeys={[ 'operation', 'tabId', 'formTemplate', 'formData', 'formDryRun', 'formFailurePolicy', 'formTimeoutMs', 'formAllRequiredSucceeded', 'formFilledCount', 'formFailedCount', 'formResu"
+        },
+        {
+          "props": {
+            "moduleKey": "sys:chromecontrol",
+            "values": "{\"operation\":\"PageAction\",\"tabId\":\"\",\"pageUrlPattern\":\"\",\"pageLocator\":\"role\",\"pageLocatorRole\":\"button\",\"pageLocatorValue\":\"提交\",\"pageOperation\":\"click\"}",
+            "focusKeys": "[\"operation\",\"tabId\",\"pageUrlPattern\",\"pageLocator\",\"pageLocatorRole\",\"pageLocatorValue\",\"pageExact\",\"pageOperation\",\"pageValue\",\"pageFrameId\",\"isSuccess\",\"rawResponse\"]"
+          },
+          "snippet": "<ModuleParamPreview moduleKey=\"sys:chromecontrol\" focusKeys={[ 'operation', 'tabId', 'pageUrlPattern', 'pageLocator', 'pageLocatorRole', 'pageLocatorValue', 'pageExact', 'pageOperation', 'pageValue', 'pageFrameId', 'isSuccess', 'rawResponse"
+        },
+        {
+          "props": {
+            "moduleKey": "sys:chromecontrol",
+            "type": "file",
+            "values": "{\n    operation: 'UploadFiles',\n    tabId: '',\n    pageUrlPattern: 'https://example.com/upload/*',\n    pageFileTarget: 'css',\n    pageFileSelector: 'input[type=\"file\"]',\n    pageFiles: `D:\\\\Files\\\\report.pdf\nD:\\\\Files\\\\image.png`,\n  }",
+            "focusKeys": "[\"operation\",\"tabId\",\"pageUrlPattern\",\"pageFileTarget\",\"pageFileSelector\",\"pageFiles\",\"pageFrameId\",\"isSuccess\",\"rawResponse\"]"
+          },
+          "snippet": "<ModuleParamPreview moduleKey=\"sys:chromecontrol\" focusKeys={[ 'operation', 'tabId', 'pageUrlPattern', 'pageFileTarget', 'pageFileSelector', 'pageFiles', 'pageFrameId', 'isSuccess', 'rawResponse', ]} values={{ operation: 'UploadFiles', tabI"
+        },
+        {
+          "props": {
+            "moduleKey": "sys:chromecontrol",
+            "values": "{\n    operation: 'OpenUrl',\n    url: 'https://baidu.com',\n    windowId: 'New',\n    windowInfo: `{\n  focused: true,\n  width: 1000,\n  height: 1000,\n  incognito: false,\n  left: 100,\n  top: 100,\n  type: \"normal\"\n}`,\n    waitComplete: 'true',\n    stopIfFail: 'true',\n    timeoutMs: '3000',\n  }",
+            "outputVars": "{\"tabId\":\"tabId\",\"windowId\":\"windowId\",\"rawResponse\":\"rawResponse\"}",
+            "focusKeys": "[\"operation\",\"url\",\"windowId\",\"windowInfo\",\"waitComplete\",\"stopIfFail\",\"timeoutMs\",\"isSuccess\",\"tabId\",\"rawResponse\"]"
+          },
+          "snippet": "<ModuleParamPreview moduleKey=\"sys:chromecontrol\" focusKeys={[ 'operation', 'url', 'windowId', 'windowInfo', 'waitComplete', 'stopIfFail', 'timeoutMs', 'isSuccess', 'tabId', 'rawResponse', ]} values={{ operation: 'OpenUrl', url: 'https://ba"
+        },
+        {
+          "props": {
+            "moduleKey": "sys:chromecontrol",
+            "values": "{\"operation\":\"WaitTabComplete\",\"tabId\":\"\",\"timeoutMs\":\"2000\",\"stopIfFail\":\"true\"}",
+            "outputVars": "{\"isSuccess\":\"isSuccess\",\"rawResponse\":\"rtn\"}",
+            "focusKeys": "[\"operation\",\"tabId\",\"timeoutMs\",\"stopIfFail\",\"isSuccess\",\"rawResponse\"]"
+          },
+          "snippet": "<ModuleParamPreview moduleKey=\"sys:chromecontrol\" focusKeys={['operation', 'tabId', 'timeoutMs', 'stopIfFail', 'isSuccess', 'rawResponse']} values={{operation: 'WaitTabComplete', tabId: '', timeoutMs: '2000', stopIfFail: 'true'}} outputVars"
+        },
+        {
+          "props": {
+            "moduleKey": "sys:chromecontrol",
+            "values": "{\"operation\":\"ActivateTab\",\"url\":\"https://baidu.com\",\"tabId\":\"\",\"stopIfFail\":\"true\"}",
+            "outputVars": "{\"tabId\":\"tabId\",\"windowId\":\"windowId\"}",
+            "focusKeys": "[\"operation\",\"url\",\"tabId\",\"stopIfFail\",\"isSuccess\",\"windowId\",\"groupId\",\"title\",\"favicon\",\"rawResponse\"]"
+          },
+          "snippet": "<ModuleParamPreview moduleKey=\"sys:chromecontrol\" focusKeys={[ 'operation', 'url', 'tabId', 'stopIfFail', 'isSuccess', 'windowId', 'groupId', 'title', 'favicon', 'rawResponse', ]} values={{operation: 'ActivateTab', url: 'https://baidu.com',"
+        },
+        {
+          "props": {
+            "moduleKey": "sys:chromecontrol",
+            "values": "{\"operation\":\"GetTabInfo\",\"tabId\":\"\",\"stopIfFail\":\"true\",\"timeoutMs\":\"3000\"}",
+            "outputVars": "{\"tabId\":\"tabId\",\"windowId\":\"windowId\",\"groupId\":\"groupId\",\"url\":\"url\",\"title\":\"text\",\"favicon\":\"favicon\",\"browser\":\"browser\",\"extVersion\":\"extVersion\",\"manifestVersion\":\"manifestVersion\",\"rawResponse\":\"rawResponse\"}",
+            "focusKeys": "[\"operation\",\"tabId\",\"stopIfFail\",\"timeoutMs\",\"isSuccess\",\"windowId\",\"groupId\",\"url\",\"title\",\"favicon\",\"browser\",\"extVersion\",\"manifestVersion\",\"envName\",\"rawResponse\"]"
+          },
+          "snippet": "<ModuleParamPreview moduleKey=\"sys:chromecontrol\" focusKeys={[ 'operation', 'tabId', 'stopIfFail', 'timeoutMs', 'isSuccess', 'windowId', 'groupId', 'url', 'title', 'favicon', 'browser', 'extVersion', 'manifestVersion', 'envName', 'rawRespon"
+        },
+        {
+          "props": {
+            "moduleKey": "sys:chromecontrol",
+            "values": "{\"operation\":\"CloseTab\",\"tabId\":\"\",\"stopIfFail\":\"true\"}",
+            "outputVars": "{\"isSuccess\":\"isSuccess\",\"rawResponse\":\"rtn\"}",
+            "focusKeys": "[\"operation\",\"tabId\",\"stopIfFail\",\"isSuccess\",\"rawResponse\"]"
+          },
+          "snippet": "<ModuleParamPreview moduleKey=\"sys:chromecontrol\" focusKeys={['operation', 'tabId', 'stopIfFail', 'isSuccess', 'rawResponse']} values={{operation: 'CloseTab', tabId: '', stopIfFail: 'true'}} outputVars={{isSuccess: 'isSuccess', rawResponse:"
+        },
+        {
+          "props": {
+            "moduleKey": "sys:chromecontrol",
+            "values": "{\"operation\":\"RunScript\",\"tabId\":\"\",\"script\":\"//.js\\ndocument.title\",\"frame\":\"0\",\"executionWorld\":\"\",\"waitManualReturn\":\"false\",\"stopIfFail\":\"true\",\"timeoutMs\":\"3000\"}",
+            "outputVars": "{\"rawResponse\":\"rawResponse\"}",
+            "focusKeys": "[\"operation\",\"tabId\",\"script\",\"frame\",\"executionWorld\",\"waitManualReturn\",\"stopIfFail\",\"timeoutMs\",\"isSuccess\",\"rawResponse\"]"
+          },
+          "snippet": "<ModuleParamPreview moduleKey=\"sys:chromecontrol\" focusKeys={[ 'operation', 'tabId', 'script', 'frame', 'executionWorld', 'waitManualReturn', 'stopIfFail', 'timeoutMs', 'isSuccess', 'rawResponse', ]} values={{ operation: 'RunScript', tabId:"
+        }
+      ],
+      "sourceSnippet": ""
     },
     {
       "id": "0cbffa65fb797e0a",
@@ -12667,7 +13448,7 @@
       "sourceSnippet": ""
     },
     {
-      "id": "0f34a366b10c4d99",
+      "id": "43e7d24da89f9bfe",
       "source": "direct",
       "page": "docs/v2/xaction/modules/software/excelrange.md",
       "pageUrl": "/v2/xaction/modules/excelrange",
@@ -13044,7 +13825,7 @@
       "sourceSnippet": "<ModuleParamPreview moduleKey=\"sys:getChromeUrl\" />"
     },
     {
-      "id": "5f947c9c61a69f7c",
+      "id": "bec01d31606f640d",
       "source": "direct",
       "page": "docs/v2/xaction/modules/software/officehelper.md",
       "pageUrl": "/v2/xaction/modules/officehelper",
@@ -13060,7 +13841,7 @@
       "sourceSnippet": "<StepProgramView example=\"4d774256-f3fa-4c61-72c6-08dac59559d0\" />"
     },
     {
-      "id": "8ab1910f566a0324",
+      "id": "ae3b51bd736962be",
       "source": "direct",
       "page": "docs/v2/xaction/modules/software/officehelper.md",
       "pageUrl": "/v2/xaction/modules/officehelper",
@@ -13076,7 +13857,7 @@
       "sourceSnippet": "<StepProgramView example=\"dd32199e-8d36-465a-b13d-08dac77c5292\" />"
     },
     {
-      "id": "eb5267a62778b7b7",
+      "id": "9bc72f3d232b7002",
       "source": "direct",
       "page": "docs/v2/xaction/modules/software/officehelper.md",
       "pageUrl": "/v2/xaction/modules/officehelper",
@@ -13141,38 +13922,6 @@
       "sourceSnippet": ""
     },
     {
-      "id": "cd2f36e429d1d7be",
-      "source": "direct",
-      "page": "docs/v2/xaction/modules/software/rhinocontrol.md",
-      "pageUrl": "/v2/xaction/modules/rhinocontrol",
-      "title": "Rhino软件控制",
-      "moduleKey": "sys:rhinocontrol",
-      "image": "",
-      "imageName": "（直接写组件）",
-      "component": "StepProgramView",
-      "pairConfidence": "direct",
-      "props": {
-        "example": "4e40c634-8eca-4515-6b7e-08da4f3f8574"
-      },
-      "sourceSnippet": "<StepProgramView example=\"4e40c634-8eca-4515-6b7e-08da4f3f8574\" />"
-    },
-    {
-      "id": "77f500b083920999",
-      "source": "direct",
-      "page": "docs/v2/xaction/modules/software/rhinocontrol.md",
-      "pageUrl": "/v2/xaction/modules/rhinocontrol",
-      "title": "Rhino软件控制",
-      "moduleKey": "sys:rhinocontrol",
-      "image": "",
-      "imageName": "（直接写组件）",
-      "component": "StepProgramView",
-      "pairConfidence": "direct",
-      "props": {
-        "example": "ff3309da-7c30-4655-6b7d-08da4f3f8574"
-      },
-      "sourceSnippet": "<StepProgramView example=\"ff3309da-7c30-4655-6b7d-08da4f3f8574\" />"
-    },
-    {
       "id": "f303121f7dbfdcb1",
       "source": "orphan",
       "page": "docs/v2/xaction/modules/software/rhinocontrol.md",
@@ -13183,12 +13932,26 @@
       "imageName": "rhinocontrol-001-33e73dbbca.png",
       "component": "ModuleParamPreview",
       "decidedComponent": "ModuleParamPreview",
-      "pairConfidence": "decision-unique",
-      "renderMode": "preview",
+      "pairConfidence": "page-ref",
+      "renderMode": "page-ref",
+      "props": {},
+      "sourceSnippet": ""
+    },
+    {
+      "id": "fd148e13a7cfa6da",
+      "source": "direct",
+      "page": "docs/v2/xaction/modules/software/uiautomation.md",
+      "pageUrl": "/v2/xaction/modules/uiautomation",
+      "title": "窗口界面控制",
+      "moduleKey": "sys:uiautomation",
+      "image": "",
+      "imageName": "（直接写组件）",
+      "component": "PreviewMarks",
+      "pairConfidence": "direct",
       "props": {
-        "moduleKey": "sys:rhinocontrol"
+        "marks": "[{\"key\":\"control\",\"label\":\"点击右侧按钮获取控件 XPath\"}]"
       },
-      "sourceSnippet": "<ModuleParamPreview moduleKey=\"sys:rhinocontrol\" />"
+      "sourceSnippet": "<PreviewMarks marks={[{key: 'control', label: '点击右侧按钮获取控件 XPath'}]}> <ModuleParamPreview moduleKey=\"sys:flauiautomation\" focusKeys={['type', 'window', 'control', 'controlOperation']} values={{type: 'TriggerControl'}} /> </PreviewMarks>"
     },
     {
       "id": "d65b7d7e7546d25f",
@@ -13725,6 +14488,95 @@
       "sourceSnippet": ""
     },
     {
+      "id": "216d83fdc68a910c",
+      "source": "orphan",
+      "page": "docs/v2/xaction/modules/software/uiautomation.md",
+      "pageUrl": "/v2/xaction/modules/uiautomation",
+      "title": "窗口界面控制",
+      "moduleKey": "sys:uiautomation",
+      "image": "docs/v2/xaction/modules/software/img/uiautomation-012-9d0efe644f.png",
+      "imageName": "uiautomation-012-9d0efe644f.png",
+      "component": "ModuleParamPreview",
+      "decidedComponent": "ModuleParamPreview",
+      "pairConfidence": "page-ref",
+      "renderMode": "page-ref",
+      "props": {},
+      "candidates": [
+        {
+          "props": {
+            "moduleKey": "sys:uiautomation",
+            "values": "{\"type\":\"TriggerControl\"}"
+          },
+          "snippet": "<ModuleParamPreview moduleKey=\"sys:uiautomation\" values={{type: 'TriggerControl'}} />"
+        },
+        {
+          "props": {
+            "moduleKey": "sys:uiautomation",
+            "values": "{\"type\":\"TriggerMenu\",\"menuPath\":\"视图(V)\\n详情(D)\",\"expandDelay\":\"200\"}",
+            "focusKeys": "[\"type\",\"window\",\"menuPath\",\"expandDelay\",\"stopIfFail\",\"isSuccess\"]"
+          },
+          "snippet": "<ModuleParamPreview moduleKey=\"sys:uiautomation\" focusKeys={['type', 'window', 'menuPath', 'expandDelay', 'stopIfFail', 'isSuccess']} values={{ type: 'TriggerMenu', menuPath: '视图(V)\\n详情(D)', expandDelay: '200', }} />"
+        },
+        {
+          "props": {
+            "moduleKey": "sys:uiautomation",
+            "values": "{\"type\":\"TriggerControl\",\"control\":\"选项\",\"controlType\":\"50031\",\"controlOperation\":\"Auto\"}",
+            "focusKeys": "[\"type\",\"window\",\"control\",\"controlType\",\"controlOperation\",\"value\",\"stopIfFail\",\"isSuccess\"]"
+          },
+          "snippet": "<ModuleParamPreview moduleKey=\"sys:uiautomation\" focusKeys={[ 'type', 'window', 'control', 'controlType', 'controlOperation', 'value', 'stopIfFail', 'isSuccess', ]} values={{ type: 'TriggerControl', control: '选项', controlType: '50031', cont"
+        },
+        {
+          "props": {
+            "moduleKey": "sys:uiautomation",
+            "values": "{\"type\":\"GetControlInfo\",\"control\":\"特殊格式(S):\",\"controlType\":\"50003\"}",
+            "focusKeys": "[\"type\",\"window\",\"control\",\"controlType\",\"stopIfFail\",\"isSuccess\",\"value\",\"controlText\",\"rect\",\"controlName\",\"controlTypeId\",\"controlIsEnabled\",\"controlIsVisible\",\"controlNativeWindowHandle\"]"
+          },
+          "snippet": "<ModuleParamPreview moduleKey=\"sys:uiautomation\" focusKeys={[ 'type', 'window', 'control', 'controlType', 'stopIfFail', 'isSuccess', 'value', 'controlText', 'rect', 'controlName', 'controlTypeId', 'controlIsEnabled', 'controlIsVisible', 'co"
+        },
+        {
+          "props": {
+            "moduleKey": "sys:uiautomation",
+            "values": "{\"type\":\"GetCursorPointControlInfo\"}",
+            "focusKeys": "[\"type\",\"stopIfFail\",\"isSuccess\",\"value\",\"controlText\",\"rect\",\"controlName\",\"controlType\"]"
+          },
+          "snippet": "<ModuleParamPreview moduleKey=\"sys:uiautomation\" focusKeys={[ 'type', 'stopIfFail', 'isSuccess', 'value', 'controlText', 'rect', 'controlName', 'controlType', ]} values={{type: 'GetCursorPointControlInfo'}} />"
+        },
+        {
+          "props": {
+            "moduleKey": "sys:uiautomation",
+            "values": "{\"type\":\"GetFocusedControlInfo\"}",
+            "focusKeys": "[\"type\",\"stopIfFail\",\"isSuccess\",\"value\",\"controlText\",\"rect\",\"controlName\"]"
+          },
+          "snippet": "<ModuleParamPreview moduleKey=\"sys:uiautomation\" focusKeys={['type', 'stopIfFail', 'isSuccess', 'value', 'controlText', 'rect', 'controlName']} values={{type: 'GetFocusedControlInfo'}} />"
+        },
+        {
+          "props": {
+            "moduleKey": "sys:uiautomation",
+            "values": "{\"type\":\"GetControlInfoByPosition\",\"pointLocation\":\"100,200\"}",
+            "focusKeys": "[\"type\",\"pointLocation\",\"stopIfFail\",\"isSuccess\",\"value\",\"controlText\",\"rect\"]"
+          },
+          "snippet": "<ModuleParamPreview moduleKey=\"sys:uiautomation\" focusKeys={['type', 'pointLocation', 'stopIfFail', 'isSuccess', 'value', 'controlText', 'rect']} values={{type: 'GetControlInfoByPosition', pointLocation: '100,200'}} />"
+        },
+        {
+          "props": {
+            "moduleKey": "sys:uiautomation",
+            "values": "{\"type\":\"UpdateSaveAsDialogPath\",\"path\":\"C:\\\\\\\\Users\\\\\\\\cuili\\\\\\\\Desktop\\\\\\\\\"}",
+            "focusKeys": "[\"type\",\"path\",\"autoCreateDir\",\"stopIfFail\",\"isSuccess\"]"
+          },
+          "snippet": "<ModuleParamPreview moduleKey=\"sys:uiautomation\" focusKeys={['type', 'path', 'autoCreateDir', 'stopIfFail', 'isSuccess']} values={{ type: 'UpdateSaveAsDialogPath', path: 'C:\\\\Users\\\\cuili\\\\Desktop\\\\', }} />"
+        },
+        {
+          "props": {
+            "moduleKey": "sys:flauiautomation",
+            "values": "{\"type\":\"TriggerControl\"}",
+            "focusKeys": "[\"type\",\"window\",\"control\",\"controlOperation\"]"
+          },
+          "snippet": "<ModuleParamPreview moduleKey=\"sys:flauiautomation\" focusKeys={['type', 'window', 'control', 'controlOperation']} values={{type: 'TriggerControl'}} />"
+        }
+      ],
+      "sourceSnippet": ""
+    },
+    {
       "id": "6b3af407b6878c40",
       "source": "orphan",
       "page": "docs/v2/xaction/modules/system/activateprocessmainwindow.md",
@@ -13743,7 +14595,7 @@
       "sourceSnippet": "<ModuleParamPreview moduleKey=\"sys:activateProcessMainWindow\" />"
     },
     {
-      "id": "89928ac9cf668c6d",
+      "id": "590ce62b5b8f8fb0",
       "source": "direct",
       "page": "docs/v2/xaction/modules/system/audiocontrol.md",
       "pageUrl": "/v2/xaction/modules/audiocontrol",
@@ -13759,7 +14611,7 @@
       "sourceSnippet": "<StepProgramView example=\"789bfd8d-3ef0-43c9-7f48-08d8fe1fe745\" />"
     },
     {
-      "id": "2ff71e7102c2b90a",
+      "id": "65453bbcf2767e9d",
       "source": "direct",
       "page": "docs/v2/xaction/modules/system/audiocontrol.md",
       "pageUrl": "/v2/xaction/modules/audiocontrol",
@@ -13775,7 +14627,7 @@
       "sourceSnippet": "<StepProgramView example=\"d4eab7c4-b53e-4fd9-7f4a-08d8fe1fe745\" />"
     },
     {
-      "id": "f0a467ec95d819d6",
+      "id": "b3caaaf1ce0c7b0c",
       "source": "direct",
       "page": "docs/v2/xaction/modules/system/audiocontrol.md",
       "pageUrl": "/v2/xaction/modules/audiocontrol",
@@ -14891,7 +15743,7 @@
       "sourceSnippet": "<PreviewMarks marks={[ {key: 'format', label: '控制此输出的结果格式'}, {key: 'strValue', label: '按格式转换后的文本值'}, ]} > <ModuleParamPreview moduleKey=\"sys:getCurrentTime\" scrollBody={false} focusKeys={['format', 'outputCulture', 'output', 'strValue']} va"
     },
     {
-      "id": "facbb67c260fe789",
+      "id": "49e2f6938e213228",
       "source": "direct",
       "page": "docs/v2/xaction/modules/system/getwindowtitle.md",
       "pageUrl": "/v2/xaction/modules/getwindowtitle",
@@ -14961,6 +15813,38 @@
       "sourceSnippet": "<ModuleParamPreview moduleKey=\"sys:keyoperation\" />"
     },
     {
+      "id": "b8578bbaba4448bf",
+      "source": "direct",
+      "page": "docs/v2/xaction/modules/system/quickeroperations.md",
+      "pageUrl": "/v2/xaction/modules/quickeroperations",
+      "title": "Quicker操作",
+      "moduleKey": "sys:quickeroperations",
+      "image": "",
+      "imageName": "（直接写组件）",
+      "component": "PreviewMarks",
+      "pairConfidence": "direct",
+      "props": {
+        "marks": "[{\"key\":\"searchText\",\"label\":\"预置搜索词\"}]"
+      },
+      "sourceSnippet": "<PreviewMarks marks={[{key: 'searchText', label: '预置搜索词'}]}> <ModuleParamPreview moduleKey=\"sys:quickeroperations\" focusKeys={['type', 'searchText', 'stopIfFail', 'isSuccess']} values={{type: 'showSearch', searchText: 'ff', stopIfFail: 'tru"
+    },
+    {
+      "id": "9ae75febc71c2c06",
+      "source": "direct",
+      "page": "docs/v2/xaction/modules/system/quickeroperations.md",
+      "pageUrl": "/v2/xaction/modules/quickeroperations",
+      "title": "Quicker操作",
+      "moduleKey": "sys:quickeroperations",
+      "image": "",
+      "imageName": "（直接写组件）",
+      "component": "PreviewMarks",
+      "pairConfidence": "direct",
+      "props": {
+        "marks": "[{\"key\":\"exe\",\"label\":\"场景标识；可点右侧按钮选择，留空时加载前台窗口场景\"}]"
+      },
+      "sourceSnippet": "<PreviewMarks marks={[ {key: 'exe', label: '场景标识；可点右侧按钮选择，留空时加载前台窗口场景'}, ]} > <ModuleParamPreview moduleKey=\"sys:quickeroperations\" focusKeys={['type', 'exe', 'stopIfFail', 'isSuccess']} values={{type: 'showCircleMenu', exe: '', stopIfFail:"
+    },
+    {
       "id": "7c902522183f6b8a",
       "source": "orphan",
       "page": "docs/v2/xaction/modules/system/quickeroperations.md",
@@ -14984,6 +15868,14 @@
         {
           "props": {
             "moduleKey": "sys:quickeroperations",
+            "values": "{\"type\":\"GetRecentActions\"}",
+            "focusKeys": "[\"type\",\"recentActionIds\",\"recentActionItems\"]"
+          },
+          "snippet": "<ModuleParamPreview moduleKey=\"sys:quickeroperations\" values={{type: 'GetRecentActions'}} focusKeys={['type', 'recentActionIds', 'recentActionItems']} />"
+        },
+        {
+          "props": {
+            "moduleKey": "sys:quickeroperations",
             "values": "{\"type\":\"showPanel\",\"activatePointWindow\":\"false\",\"followMousePosition\":\"true\",\"stopIfFail\":\"true\"}",
             "focusKeys": "[\"type\",\"activatePointWindow\",\"followMousePosition\",\"stopIfFail\",\"isSuccess\"]"
           },
@@ -14996,6 +15888,22 @@
             "focusKeys": "[\"type\",\"searchText\",\"stopIfFail\"]"
           },
           "snippet": "<ModuleParamPreview moduleKey=\"sys:quickeroperations\" focusKeys={['type', 'searchText', 'stopIfFail']} values={{type: 'showSearch', searchText: '', stopIfFail: 'true'}} />"
+        },
+        {
+          "props": {
+            "moduleKey": "sys:quickeroperations",
+            "values": "{\"type\":\"showSearch\",\"searchText\":\"ff\",\"stopIfFail\":\"true\"}",
+            "focusKeys": "[\"type\",\"searchText\",\"stopIfFail\",\"isSuccess\"]"
+          },
+          "snippet": "<ModuleParamPreview moduleKey=\"sys:quickeroperations\" focusKeys={['type', 'searchText', 'stopIfFail', 'isSuccess']} values={{type: 'showSearch', searchText: 'ff', stopIfFail: 'true'}} />"
+        },
+        {
+          "props": {
+            "moduleKey": "sys:quickeroperations",
+            "values": "{\"type\":\"showCircleMenu\",\"exe\":\"\",\"stopIfFail\":\"true\"}",
+            "focusKeys": "[\"type\",\"exe\",\"stopIfFail\",\"isSuccess\"]"
+          },
+          "snippet": "<ModuleParamPreview moduleKey=\"sys:quickeroperations\" focusKeys={['type', 'exe', 'stopIfFail', 'isSuccess']} values={{type: 'showCircleMenu', exe: '', stopIfFail: 'true'}} />"
         },
         {
           "props": {
@@ -15032,34 +15940,242 @@
         {
           "props": {
             "moduleKey": "sys:quickeroperations",
+            "values": "{\"type\":\"GetLastEditedAction\"}",
+            "focusKeys": "[\"type\",\"lastEditedActionId\",\"isSuccess\"]"
+          },
+          "snippet": "<ModuleParamPreview moduleKey=\"sys:quickeroperations\" focusKeys={['type', 'lastEditedActionId', 'isSuccess']} values={{type: 'GetLastEditedAction'}} />"
+        },
+        {
+          "props": {
+            "moduleKey": "sys:quickeroperations",
             "values": "{\"type\":\"SearchWithCertainAction\",\"actionId\":\"测试动作20240108\",\"searchText\":\"\",\"stopIfFail\":\"true\"}",
             "focusKeys": "[\"type\",\"actionId\",\"searchText\",\"stopIfFail\"]"
           },
           "snippet": "<ModuleParamPreview moduleKey=\"sys:quickeroperations\" focusKeys={['type', 'actionId', 'searchText', 'stopIfFail']} values={{ type: 'SearchWithCertainAction', actionId: '测试动作20240108', searchText: '', stopIfFail: 'true', }} />"
+        }
+      ],
+      "sourceSnippet": ""
+    },
+    {
+      "id": "6b4ab70a5ea3450e",
+      "source": "orphan",
+      "page": "docs/v2/xaction/modules/system/quickeroperations.md",
+      "pageUrl": "/v2/xaction/modules/quickeroperations",
+      "title": "Quicker操作",
+      "moduleKey": "sys:quickeroperations",
+      "image": "docs/v2/xaction/modules/system/img/quickeroperations-003-4b3b4dfd7e.png",
+      "imageName": "quickeroperations-003-4b3b4dfd7e.png",
+      "component": "ModuleParamPreview",
+      "decidedComponent": "ModuleParamPreview",
+      "pairConfidence": "page-ref",
+      "renderMode": "page-ref",
+      "props": {},
+      "candidates": [
+        {
+          "props": {
+            "moduleKey": "sys:quickeroperations"
+          },
+          "snippet": "<ModuleParamPreview moduleKey=\"sys:quickeroperations\" />"
         },
         {
           "props": {
             "moduleKey": "sys:quickeroperations",
-            "values": "{\"type\":\"LoadSkin\",\"skinId\":\"16e905c4-bdab-40d6-ff8e-08dcbaf60df3\",\"theme\":\"\"}",
-            "focusKeys": "[\"type\",\"skinId\",\"theme\",\"isSuccess\"]"
+            "values": "{\"type\":\"GetRecentActions\"}",
+            "focusKeys": "[\"type\",\"recentActionIds\",\"recentActionItems\"]"
           },
-          "snippet": "<ModuleParamPreview moduleKey=\"sys:quickeroperations\" focusKeys={['type', 'skinId', 'theme', 'isSuccess']} values={{ type: 'LoadSkin', skinId: '16e905c4-bdab-40d6-ff8e-08dcbaf60df3', theme: '', }} />"
+          "snippet": "<ModuleParamPreview moduleKey=\"sys:quickeroperations\" values={{type: 'GetRecentActions'}} focusKeys={['type', 'recentActionIds', 'recentActionItems']} />"
         },
         {
           "props": {
             "moduleKey": "sys:quickeroperations",
-            "values": "{\"type\":\"FloatAction\",\"actionId\":\"\",\"position\":\"200,200\",\"stopIfFail\":\"true\"}",
-            "focusKeys": "[\"type\",\"actionId\",\"position\",\"stopIfFail\",\"isSuccess\"]"
+            "values": "{\"type\":\"showPanel\",\"activatePointWindow\":\"false\",\"followMousePosition\":\"true\",\"stopIfFail\":\"true\"}",
+            "focusKeys": "[\"type\",\"activatePointWindow\",\"followMousePosition\",\"stopIfFail\",\"isSuccess\"]"
           },
-          "snippet": "<ModuleParamPreview moduleKey=\"sys:quickeroperations\" focusKeys={['type', 'actionId', 'position', 'stopIfFail', 'isSuccess']} values={{type: 'FloatAction', actionId: '', position: '200,200', stopIfFail: 'true'}} />"
+          "snippet": "<ModuleParamPreview moduleKey=\"sys:quickeroperations\" focusKeys={['type', 'activatePointWindow', 'followMousePosition', 'stopIfFail', 'isSuccess']} values={{ type: 'showPanel', activatePointWindow: 'false', followMousePosition: 'true', stop"
         },
         {
           "props": {
             "moduleKey": "sys:quickeroperations",
-            "values": "{\"type\":\"ToggleFloatButtons\",\"viewMode\":\"ByProcess\"}",
-            "focusKeys": "[\"type\",\"viewMode\",\"isSuccess\"]"
+            "values": "{\"type\":\"showSearch\",\"searchText\":\"\",\"stopIfFail\":\"true\"}",
+            "focusKeys": "[\"type\",\"searchText\",\"stopIfFail\"]"
           },
-          "snippet": "<ModuleParamPreview moduleKey=\"sys:quickeroperations\" focusKeys={['type', 'viewMode', 'isSuccess']} values={{type: 'ToggleFloatButtons', viewMode: 'ByProcess'}} />"
+          "snippet": "<ModuleParamPreview moduleKey=\"sys:quickeroperations\" focusKeys={['type', 'searchText', 'stopIfFail']} values={{type: 'showSearch', searchText: '', stopIfFail: 'true'}} />"
+        },
+        {
+          "props": {
+            "moduleKey": "sys:quickeroperations",
+            "values": "{\"type\":\"showSearch\",\"searchText\":\"ff\",\"stopIfFail\":\"true\"}",
+            "focusKeys": "[\"type\",\"searchText\",\"stopIfFail\",\"isSuccess\"]"
+          },
+          "snippet": "<ModuleParamPreview moduleKey=\"sys:quickeroperations\" focusKeys={['type', 'searchText', 'stopIfFail', 'isSuccess']} values={{type: 'showSearch', searchText: 'ff', stopIfFail: 'true'}} />"
+        },
+        {
+          "props": {
+            "moduleKey": "sys:quickeroperations",
+            "values": "{\"type\":\"showCircleMenu\",\"exe\":\"\",\"stopIfFail\":\"true\"}",
+            "focusKeys": "[\"type\",\"exe\",\"stopIfFail\",\"isSuccess\"]"
+          },
+          "snippet": "<ModuleParamPreview moduleKey=\"sys:quickeroperations\" focusKeys={['type', 'exe', 'stopIfFail', 'isSuccess']} values={{type: 'showCircleMenu', exe: '', stopIfFail: 'true'}} />"
+        },
+        {
+          "props": {
+            "moduleKey": "sys:quickeroperations",
+            "values": "{\"type\":\"showDashboardWindow\",\"exe\":\"\",\"stopIfFail\":\"true\"}",
+            "focusKeys": "[\"type\",\"exe\",\"stopIfFail\"]"
+          },
+          "snippet": "<ModuleParamPreview moduleKey=\"sys:quickeroperations\" focusKeys={['type', 'exe', 'stopIfFail']} values={{type: 'showDashboardWindow', exe: '', stopIfFail: 'true'}} />"
+        },
+        {
+          "props": {
+            "moduleKey": "sys:quickeroperations",
+            "values": "{\"type\":\"showExeSettingWindow\",\"exe\":\"\",\"stopIfFail\":\"true\"}",
+            "focusKeys": "[\"type\",\"exe\",\"stopIfFail\"]"
+          },
+          "snippet": "<ModuleParamPreview moduleKey=\"sys:quickeroperations\" focusKeys={['type', 'exe', 'stopIfFail']} values={{type: 'showExeSettingWindow', exe: '', stopIfFail: 'true'}} />"
+        },
+        {
+          "props": {
+            "moduleKey": "sys:quickeroperations",
+            "values": "{\"type\":\"loadExeProfiles\",\"exe\":\"\",\"sceneGroup\":\"\",\"stopIfFail\":\"true\"}",
+            "focusKeys": "[\"type\",\"exe\",\"sceneGroup\",\"stopIfFail\"]"
+          },
+          "snippet": "<ModuleParamPreview moduleKey=\"sys:quickeroperations\" focusKeys={['type', 'exe', 'sceneGroup', 'stopIfFail']} values={{type: 'loadExeProfiles', exe: '', sceneGroup: '', stopIfFail: 'true'}} />"
+        },
+        {
+          "props": {
+            "moduleKey": "sys:quickeroperations",
+            "values": "{\"type\":\"editAction\",\"actionId\":\"测试动作20240108\",\"stopIfFail\":\"true\"}",
+            "focusKeys": "[\"type\",\"actionId\",\"stopIfFail\"]"
+          },
+          "snippet": "<ModuleParamPreview moduleKey=\"sys:quickeroperations\" focusKeys={['type', 'actionId', 'stopIfFail']} values={{type: 'editAction', actionId: '测试动作20240108', stopIfFail: 'true'}} />"
+        },
+        {
+          "props": {
+            "moduleKey": "sys:quickeroperations",
+            "values": "{\"type\":\"GetLastEditedAction\"}",
+            "focusKeys": "[\"type\",\"lastEditedActionId\",\"isSuccess\"]"
+          },
+          "snippet": "<ModuleParamPreview moduleKey=\"sys:quickeroperations\" focusKeys={['type', 'lastEditedActionId', 'isSuccess']} values={{type: 'GetLastEditedAction'}} />"
+        },
+        {
+          "props": {
+            "moduleKey": "sys:quickeroperations",
+            "values": "{\"type\":\"SearchWithCertainAction\",\"actionId\":\"测试动作20240108\",\"searchText\":\"\",\"stopIfFail\":\"true\"}",
+            "focusKeys": "[\"type\",\"actionId\",\"searchText\",\"stopIfFail\"]"
+          },
+          "snippet": "<ModuleParamPreview moduleKey=\"sys:quickeroperations\" focusKeys={['type', 'actionId', 'searchText', 'stopIfFail']} values={{ type: 'SearchWithCertainAction', actionId: '测试动作20240108', searchText: '', stopIfFail: 'true', }} />"
+        }
+      ],
+      "sourceSnippet": ""
+    },
+    {
+      "id": "c0d5dd484467a9fa",
+      "source": "orphan",
+      "page": "docs/v2/xaction/modules/system/quickeroperations.md",
+      "pageUrl": "/v2/xaction/modules/quickeroperations",
+      "title": "Quicker操作",
+      "moduleKey": "sys:quickeroperations",
+      "image": "docs/v2/xaction/modules/system/img/quickeroperations-004-267fc8d535.png",
+      "imageName": "quickeroperations-004-267fc8d535.png",
+      "component": "ModuleParamPreview",
+      "decidedComponent": "ModuleParamPreview",
+      "pairConfidence": "page-ref",
+      "renderMode": "page-ref",
+      "props": {},
+      "candidates": [
+        {
+          "props": {
+            "moduleKey": "sys:quickeroperations"
+          },
+          "snippet": "<ModuleParamPreview moduleKey=\"sys:quickeroperations\" />"
+        },
+        {
+          "props": {
+            "moduleKey": "sys:quickeroperations",
+            "values": "{\"type\":\"GetRecentActions\"}",
+            "focusKeys": "[\"type\",\"recentActionIds\",\"recentActionItems\"]"
+          },
+          "snippet": "<ModuleParamPreview moduleKey=\"sys:quickeroperations\" values={{type: 'GetRecentActions'}} focusKeys={['type', 'recentActionIds', 'recentActionItems']} />"
+        },
+        {
+          "props": {
+            "moduleKey": "sys:quickeroperations",
+            "values": "{\"type\":\"showPanel\",\"activatePointWindow\":\"false\",\"followMousePosition\":\"true\",\"stopIfFail\":\"true\"}",
+            "focusKeys": "[\"type\",\"activatePointWindow\",\"followMousePosition\",\"stopIfFail\",\"isSuccess\"]"
+          },
+          "snippet": "<ModuleParamPreview moduleKey=\"sys:quickeroperations\" focusKeys={['type', 'activatePointWindow', 'followMousePosition', 'stopIfFail', 'isSuccess']} values={{ type: 'showPanel', activatePointWindow: 'false', followMousePosition: 'true', stop"
+        },
+        {
+          "props": {
+            "moduleKey": "sys:quickeroperations",
+            "values": "{\"type\":\"showSearch\",\"searchText\":\"\",\"stopIfFail\":\"true\"}",
+            "focusKeys": "[\"type\",\"searchText\",\"stopIfFail\"]"
+          },
+          "snippet": "<ModuleParamPreview moduleKey=\"sys:quickeroperations\" focusKeys={['type', 'searchText', 'stopIfFail']} values={{type: 'showSearch', searchText: '', stopIfFail: 'true'}} />"
+        },
+        {
+          "props": {
+            "moduleKey": "sys:quickeroperations",
+            "values": "{\"type\":\"showSearch\",\"searchText\":\"ff\",\"stopIfFail\":\"true\"}",
+            "focusKeys": "[\"type\",\"searchText\",\"stopIfFail\",\"isSuccess\"]"
+          },
+          "snippet": "<ModuleParamPreview moduleKey=\"sys:quickeroperations\" focusKeys={['type', 'searchText', 'stopIfFail', 'isSuccess']} values={{type: 'showSearch', searchText: 'ff', stopIfFail: 'true'}} />"
+        },
+        {
+          "props": {
+            "moduleKey": "sys:quickeroperations",
+            "values": "{\"type\":\"showCircleMenu\",\"exe\":\"\",\"stopIfFail\":\"true\"}",
+            "focusKeys": "[\"type\",\"exe\",\"stopIfFail\",\"isSuccess\"]"
+          },
+          "snippet": "<ModuleParamPreview moduleKey=\"sys:quickeroperations\" focusKeys={['type', 'exe', 'stopIfFail', 'isSuccess']} values={{type: 'showCircleMenu', exe: '', stopIfFail: 'true'}} />"
+        },
+        {
+          "props": {
+            "moduleKey": "sys:quickeroperations",
+            "values": "{\"type\":\"showDashboardWindow\",\"exe\":\"\",\"stopIfFail\":\"true\"}",
+            "focusKeys": "[\"type\",\"exe\",\"stopIfFail\"]"
+          },
+          "snippet": "<ModuleParamPreview moduleKey=\"sys:quickeroperations\" focusKeys={['type', 'exe', 'stopIfFail']} values={{type: 'showDashboardWindow', exe: '', stopIfFail: 'true'}} />"
+        },
+        {
+          "props": {
+            "moduleKey": "sys:quickeroperations",
+            "values": "{\"type\":\"showExeSettingWindow\",\"exe\":\"\",\"stopIfFail\":\"true\"}",
+            "focusKeys": "[\"type\",\"exe\",\"stopIfFail\"]"
+          },
+          "snippet": "<ModuleParamPreview moduleKey=\"sys:quickeroperations\" focusKeys={['type', 'exe', 'stopIfFail']} values={{type: 'showExeSettingWindow', exe: '', stopIfFail: 'true'}} />"
+        },
+        {
+          "props": {
+            "moduleKey": "sys:quickeroperations",
+            "values": "{\"type\":\"loadExeProfiles\",\"exe\":\"\",\"sceneGroup\":\"\",\"stopIfFail\":\"true\"}",
+            "focusKeys": "[\"type\",\"exe\",\"sceneGroup\",\"stopIfFail\"]"
+          },
+          "snippet": "<ModuleParamPreview moduleKey=\"sys:quickeroperations\" focusKeys={['type', 'exe', 'sceneGroup', 'stopIfFail']} values={{type: 'loadExeProfiles', exe: '', sceneGroup: '', stopIfFail: 'true'}} />"
+        },
+        {
+          "props": {
+            "moduleKey": "sys:quickeroperations",
+            "values": "{\"type\":\"editAction\",\"actionId\":\"测试动作20240108\",\"stopIfFail\":\"true\"}",
+            "focusKeys": "[\"type\",\"actionId\",\"stopIfFail\"]"
+          },
+          "snippet": "<ModuleParamPreview moduleKey=\"sys:quickeroperations\" focusKeys={['type', 'actionId', 'stopIfFail']} values={{type: 'editAction', actionId: '测试动作20240108', stopIfFail: 'true'}} />"
+        },
+        {
+          "props": {
+            "moduleKey": "sys:quickeroperations",
+            "values": "{\"type\":\"GetLastEditedAction\"}",
+            "focusKeys": "[\"type\",\"lastEditedActionId\",\"isSuccess\"]"
+          },
+          "snippet": "<ModuleParamPreview moduleKey=\"sys:quickeroperations\" focusKeys={['type', 'lastEditedActionId', 'isSuccess']} values={{type: 'GetLastEditedAction'}} />"
+        },
+        {
+          "props": {
+            "moduleKey": "sys:quickeroperations",
+            "values": "{\"type\":\"SearchWithCertainAction\",\"actionId\":\"测试动作20240108\",\"searchText\":\"\",\"stopIfFail\":\"true\"}",
+            "focusKeys": "[\"type\",\"actionId\",\"searchText\",\"stopIfFail\"]"
+          },
+          "snippet": "<ModuleParamPreview moduleKey=\"sys:quickeroperations\" focusKeys={['type', 'actionId', 'searchText', 'stopIfFail']} values={{ type: 'SearchWithCertainAction', actionId: '测试动作20240108', searchText: '', stopIfFail: 'true', }} />"
         }
       ],
       "sourceSnippet": ""
@@ -15681,6 +16797,22 @@
             "focusKeys": "[\"type\",\"hWnd\",\"alpha\"]"
           },
           "snippet": "<ModuleParamPreview moduleKey=\"sys:windowOperations\" focusKeys={['type', 'hWnd', 'alpha']} values={{type: 'set_trans', hWnd: '', alpha: '128'}} />"
+        },
+        {
+          "props": {
+            "moduleKey": "sys:windowOperations",
+            "values": "{\"type\":\"closeSimilar\",\"hWnd\":\"\",\"closeSimilarKeepCurrent\":false}",
+            "focusKeys": "[\"type\",\"hWnd\",\"closeSimilarKeepCurrent\",\"switchSimilarDirection\",\"matchedCount\",\"skippedCount\"]"
+          },
+          "snippet": "<ModuleParamPreview moduleKey=\"sys:windowOperations\" focusKeys={['type', 'hWnd', 'closeSimilarKeepCurrent', 'switchSimilarDirection', 'matchedCount', 'skippedCount']} values={{type: 'closeSimilar', hWnd: '', closeSimilarKeepCurrent: false}}"
+        },
+        {
+          "props": {
+            "moduleKey": "sys:windowOperations",
+            "values": "{\"type\":\"edgeAutoHide\",\"hWnd\":\"\",\"edgeAutoHideAction\":\"toggle\",\"edgeAutoHideEdge\":\"auto\",\"edgeAutoHideRevealDip\":4,\"edgeAutoHideDelayMs\":600,\"borderColor\":\"\"}",
+            "focusKeys": "[\"type\",\"hWnd\",\"edgeAutoHideAction\",\"edgeAutoHideEdge\",\"edgeAutoHideRevealDip\",\"edgeAutoHideDelayMs\",\"borderColor\",\"isEdgeAutoHideEnabled\"]"
+          },
+          "snippet": "<ModuleParamPreview moduleKey=\"sys:windowOperations\" focusKeys={['type', 'hWnd', 'edgeAutoHideAction', 'edgeAutoHideEdge', 'edgeAutoHideRevealDip', 'edgeAutoHideDelayMs', 'borderColor', 'isEdgeAutoHideEnabled']} values={{type: 'edgeAutoHide"
         }
       ],
       "sourceSnippet": ""
@@ -15942,7 +17074,7 @@
       "sourceSnippet": ""
     },
     {
-      "id": "d663eb1cb4e8aaa5",
+      "id": "21f8edfdfc230f6f",
       "source": "direct",
       "page": "docs/v2/xaction/modules/text/formatstring.md",
       "pageUrl": "/v2/xaction/modules/formatstring",
@@ -16027,7 +17159,7 @@
       "sourceSnippet": ""
     },
     {
-      "id": "4344496b155ee6e5",
+      "id": "0e26b1f3f3dbc029",
       "source": "direct",
       "page": "docs/v2/xaction/modules/text/showtext.md",
       "pageUrl": "/v2/xaction/modules/showtext",
@@ -16065,7 +17197,7 @@
       "sourceSnippet": "<ContextMenuPreview openPath={['高亮语法', 'C#']} items={[ {label: '撤消', icon: 'fa:Light_Undo'}, {label: '重做', icon: 'fa:Light_Redo'}, {type: 'separator'}, {label: '剪切'}, {label: '复制'}, {label: '粘贴'}, {type: 'separator'}, {label: '恢复初始内容'}, { l"
     },
     {
-      "id": "9d581aeb997161e7",
+      "id": "12b1a1e964a8bd6a",
       "source": "direct",
       "page": "docs/v2/xaction/modules/text/splitstring.md",
       "pageUrl": "/v2/xaction/modules/splitstring",
@@ -16463,7 +17595,7 @@
       "sourceSnippet": "<ModuleParamPreview moduleKey=\"sys:record\" />"
     },
     {
-      "id": "125bb75a19f84e80",
+      "id": "61e5a9ab4fe82953",
       "source": "direct",
       "page": "docs/v2/xaction/modules/ui/reportprogress.md",
       "pageUrl": "/v2/xaction/modules/reportprogress",
@@ -16601,7 +17733,7 @@
       "sourceSnippet": "<ModuleParamPreview moduleKey=\"sys:selectFile\" />"
     },
     {
-      "id": "95af9ed4fbd29c30",
+      "id": "944c926a9adc61dd",
       "source": "direct",
       "page": "docs/v2/xaction/modules/ui/selectfolder.md",
       "pageUrl": "/v2/xaction/modules/selectfolder",
@@ -16638,7 +17770,7 @@
       "sourceSnippet": "<ModuleParamPreview moduleKey=\"sys:selectFolder\" />"
     },
     {
-      "id": "dac6cef208814143",
+      "id": "b48e53a449422576",
       "source": "direct",
       "page": "docs/v2/xaction/modules/ui/showmenu.md",
       "pageUrl": "/v2/xaction/modules/showmenu",
@@ -16654,7 +17786,7 @@
       "sourceSnippet": "<StepProgramView example=\"a2933deb-ebe7-4895-69d4-08d992b19cae\" />"
     },
     {
-      "id": "e79c55a8278f2056",
+      "id": "963be398cbf9dfc9",
       "source": "direct",
       "page": "docs/v2/xaction/modules/ui/showmenu.md",
       "pageUrl": "/v2/xaction/modules/showmenu",
@@ -16728,7 +17860,7 @@
       "sourceSnippet": "<ContextMenuPreview openPath={['二级菜单', '三级菜单']} items={[ {label: '粘贴内容', icon: 'fa:Light_Paste'}, { label: '二级菜单', icon: 'fa:Light_Cog', children: [ {label: '发送按键Ctrl+S', icon: 'fa:Light_Save'}, {label: '发送按键Ctrl+V', icon: 'fa:Light_Paste'}"
     },
     {
-      "id": "7339c09edaa4a8ff",
+      "id": "1f8e899286db186f",
       "source": "direct",
       "page": "docs/v2/xaction/modules/ui/showwaitwin.md",
       "pageUrl": "/v2/xaction/modules/showwaitwin",
@@ -16744,7 +17876,7 @@
       "sourceSnippet": "<StepProgramView example=\"80427a4f-78c4-4fc5-7b1a-08d6a9169e61\" />"
     },
     {
-      "id": "c5dc8df8888c02a7",
+      "id": "a9dc24bb08bc111e",
       "source": "direct",
       "page": "docs/v2/xaction/modules/ui/showwaitwin.md",
       "pageUrl": "/v2/xaction/modules/showwaitwin",
@@ -16763,7 +17895,7 @@
       "sourceSnippet": "<WaitWinPreview title=\"完成后继续\" message=\"完成复制操作后，点按钮开始粘贴\" progress=\"44/100\" buttons={['继续']} />"
     },
     {
-      "id": "dd35ebac93bd9ee3",
+      "id": "24e8a528ab2831cd",
       "source": "direct",
       "page": "docs/v2/xaction/modules/ui/showwaitwin.md",
       "pageUrl": "/v2/xaction/modules/showwaitwin",
@@ -16918,7 +18050,7 @@
       "sourceSnippet": "<ModuleParamPreview moduleKey=\"sys:textSelectTools\" />"
     },
     {
-      "id": "98d107e327797323",
+      "id": "9f6c553308b4fa0c",
       "source": "direct",
       "page": "docs/v2/xaction/modules/ui/waitkeyboard.md",
       "pageUrl": "/v2/xaction/modules/waitkeyboard",

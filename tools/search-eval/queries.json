@@ -1,0 +1,179 @@
+{
+  "version": 1,
+  "description": "Quicker 文档固定问题集：用于检验阶段 2-3 目录整理、静态可读性与知识包检索的效果。",
+  "queries": [
+    {
+      "id": "op-action-panel",
+      "category": "operation",
+      "query": "如何弹出动作面板",
+      "targetUrls": ["/v2/features/action-panel/usage", "/v2/features/action-panel", "/v2/getting-started"],
+      "maxRank": 3
+    },
+    {
+      "id": "op-capture-pro-annotate",
+      "category": "operation",
+      "query": "截图 Pro 标注 快捷键",
+      "targetUrls": ["/v2/features/screenshot/capture-pro"],
+      "maxRank": 3
+    },
+    {
+      "id": "op-ai-prompts",
+      "category": "operation",
+      "query": "AI 助手 提示词库",
+      "targetUrls": ["/v2/features/ai/prompt-library-and-sessions", "/v2/features/ai-and-agent"],
+      "maxRank": 3
+    },
+    {
+      "id": "op-mcp-external",
+      "category": "operation",
+      "query": "配置 MCP 外部助手",
+      "targetUrls": ["/v2/features/ai/mcp-and-external-agents", "/v2/features/ai-and-agent"],
+      "maxRank": 3
+    },
+    {
+      "id": "op-powerkeys",
+      "category": "operation",
+      "query": "扩展热键 引导键",
+      "targetUrls": ["/v2/features/triggers/powerkeys"],
+      "maxRank": 3
+    },
+    {
+      "id": "op-mouse-gestures",
+      "category": "operation",
+      "query": "鼠标手势 设置",
+      "targetUrls": ["/v2/features/triggers/mouse-gestures"],
+      "maxRank": 3
+    },
+    {
+      "id": "op-script-security",
+      "category": "operation",
+      "query": "脚本动作 安全与授权",
+      "targetUrls": ["/v2/script-action/security"],
+      "maxRank": 3
+    },
+    {
+      "id": "op-migrate-from-v1",
+      "category": "operation",
+      "query": "从 1.x 迁移到 V2",
+      "targetUrls": ["/v2/migration/from-v1", "/v2/migration"],
+      "maxRank": 3
+    },
+    {
+      "id": "op-install-arm64",
+      "category": "operation",
+      "query": "Windows ARM64 安装",
+      "targetUrls": ["/v2/install/windows"],
+      "maxRank": 3
+    },
+    {
+      "id": "op-screen-recording",
+      "category": "operation",
+      "query": "桌面录屏 系统声音",
+      "targetUrls": ["/v2/features/screenshot/recording-and-pin", "/v2/features/screenshot/capture-pro"],
+      "maxRank": 3
+    },
+    {
+      "id": "op-pin-window",
+      "category": "operation",
+      "query": "贴图窗口 缩放",
+      "targetUrls": ["/v2/features/screenshot/recording-and-pin", "/v2/features/screenshot/capture-pro"],
+      "maxRank": 3
+    },
+    {
+      "id": "op-action-drafts",
+      "category": "operation",
+      "query": "动作暂存区 保留到场景",
+      "targetUrls": ["/v2/features/action-panel/action-drafts"],
+      "maxRank": 3
+    },
+    {
+      "id": "op-ocr-table",
+      "category": "operation",
+      "query": "在线表格识别 OCR",
+      "targetUrls": ["/v2/features/screenshot/ocr", "/v2/features/screenshot/capture-pro"],
+      "maxRank": 3
+    },
+    {
+      "id": "mod-notify",
+      "category": "moduleKey",
+      "query": "sys:notify",
+      "targetUrls": ["/v2/xaction/modules/notify"],
+      "maxRank": 1
+    },
+    {
+      "id": "mod-http",
+      "category": "moduleKey",
+      "query": "sys:http",
+      "targetUrls": ["/v2/xaction/modules/http"],
+      "maxRank": 1
+    },
+    {
+      "id": "mod-chromecontrol",
+      "category": "moduleKey",
+      "query": "sys:chromecontrol",
+      "targetUrls": ["/v2/xaction/modules/chromecontrol"],
+      "maxRank": 1
+    },
+    {
+      "id": "mod-screenCapturePro",
+      "category": "moduleKey",
+      "query": "sys:screenCapturePro",
+      "targetUrls": ["/v2/xaction/modules/screen-capture-pro"],
+      "maxRank": 1
+    },
+    {
+      "id": "mod-waitWindow",
+      "category": "moduleKey",
+      "query": "sys:waitWindow",
+      "targetUrls": ["/v2/xaction/modules/waitwindow"],
+      "maxRank": 1
+    },
+    {
+      "id": "mod-tableoperation",
+      "category": "moduleKey",
+      "query": "sys:tableoperation",
+      "targetUrls": ["/v2/xaction/modules/tableoperation"],
+      "maxRank": 1
+    },
+    {
+      "id": "nl-script-action",
+      "category": "noLegacyCrowding",
+      "query": "脚本动作",
+      "targetUrls": ["/v2/script-action"],
+      "legacyPrefixes": ["/v2/features/script-actions", "/v2/what's-new/"],
+      "maxRank": 3
+    },
+    {
+      "id": "nl-script-api",
+      "category": "noLegacyCrowding",
+      "query": "脚本动作 API 参考",
+      "targetUrls": ["/v2/script-action/api"],
+      "legacyPrefixes": ["/v2/features/script-actions", "/v2/what's-new/"],
+      "maxRank": 3
+    },
+    {
+      "id": "nl-powerkeys",
+      "category": "noLegacyCrowding",
+      "query": "扩展热键",
+      "targetUrls": ["/v2/features/triggers/powerkeys"],
+      "legacyPrefixes": ["/v2/what's-new/"],
+      "maxRank": 3
+    },
+    {
+      "id": "nl-circle-menu",
+      "category": "noLegacyCrowding",
+      "query": "轮盘菜单",
+      "targetUrls": ["/v2/features/triggers/circle-menu"],
+      "legacyPrefixes": ["/v2/what's-new/"],
+      "maxRank": 3
+    },
+    {
+      "id": "nl-action-panel-usage",
+      "category": "noLegacyCrowding",
+      "query": "动作面板 使用",
+      "targetUrls": ["/v2/features/action-panel/usage", "/v2/features/action-panel"],
+      "legacyPrefixes": ["/v2/what's-new/"],
+      "maxRank": 3
+    }
+  ]
+}

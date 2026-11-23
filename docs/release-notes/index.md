@@ -280,7 +280,7 @@ comments: true
 - [编辑文字图标](/v2/xaction/concepts/use-icon-in-actions#2317--编辑动作的文字图标)：设置文字、字体、颜色和背景；在线分享时转换为图片，旧版直接导入原始动作有兼容限制。
 - [HDR 截图颜色校正](/v2/features/screenshot/capture-pro#2317--hdr-截图颜色校正实验性)：为 HDR 屏幕提供默认关闭的实验选项，说明适用入口与回落情况。
 - [升级与回退](/v2/migration/upgrade-and-rollback#2317--相关场景显示与文字图标)：说明旧版对面板合并设置及原始文字图标的兼容范围。
-- 动作编辑器不再提供新建“发送手机通知”和“自动化脚本”的入口；已有动作的运行边界见对应模块文档。完整修复记录见[官网版本记录](https://getquicker.net/V2/Versions)。
+- 完整修复记录见[官网版本记录](https://getquicker.net/V2/Versions)。
 
 ### 2.3.15 · 截图 AI、会话目录与分卷更新
 
@@ -294,7 +294,7 @@ comments: true
 
 - [动作数据文件夹](/v2/xaction/concepts/standard#动作数据文件夹)：说明设计目的、组合动作与脚本入口、创建目录、适用场景、分享和备份边界，以及删除时回收和手动恢复。补充[获取系统或动作信息](/v2/xaction/modules/getsysinfo)的新输出。（[#594](https://github.com/QuickerOrg/Quicker2-issues/issues/594)）
 - [交互截图单次参数与结束方式](/v2/xaction/modules/screen-capture-pro#2313--单次截图参数与结束方式)：本次鼠标指针、确认快存模板和 PNG/JPEG 格式，按实际出口处理后续步骤；[自定义工具栏](/v2/features/screenshot/toolbar-script)改用独立编辑窗口，并修复图片图标黑块。
-- [桌面 AI 与 MCP 接入](/v2/features/ai/mcp-and-external-agents#2313--桌面入口与-mcp-接入)：统一桌面预览、编辑和分享确认，说明当前会话输入历史及回复保存重试；MCP 提供 AI 自动配置、HTTP 和 stdio 三种接入指引。桌面网页版 AI、网页设计器和手机 AI 已退役，已有桌面对话保留。
+- [桌面 AI 与 MCP 接入](/v2/features/ai/mcp-and-external-agents#2313--桌面入口与-mcp-接入)：统一桌面预览、编辑和分享确认，说明当前会话输入历史及回复保存重试；MCP 提供 AI 自动配置、HTTP 和 stdio 三种接入指引。
 - [检查和下载依赖](/v2/xaction/modules/dependencycheck)：新包写入应用数据目录，继续识别旧包，后续步骤应使用实际输出路径。[清理旧浏览器数据副本](/v2/features/tools#清理旧浏览器数据副本)说明浏览器按目录迁移后的清理入口与限制。
 - [升级与回退](/v2/migration/upgrade-and-rollback#2313--动作文件与浏览器数据)：动作文件不包含在内置备份中；浏览器新旧副本独立变化，回退前需手动备份，清理旧副本不经过回收站。
 - 修复远程文件账号候选列表刷新、AutoCAD 连接依赖加载、带引号匿名成员名称的表达式兼容，以及部分输入、焦点和快捷键异常，并缩小安装包。完整条目见[官网版本记录](https://getquicker.net/V2/Versions)。
@@ -327,13 +327,13 @@ comments: true
 - [只读动作信息](/v2/xaction/concepts/expression-adv#237--读取动作的只读信息)：用 `_context.Action` 读取 ID、标题、图标和说明，保留旧 ID/标题入口，不能修改或读取内部完整动作对象。
 - [已有动作的保存流程](/v2/features/ai-and-agent#237--保存已有动作)：同一项目的聊天复用工作内容，保存按权限直接提交原动作；内容冲突时保留修改，新建动作仍需保留到场景。
 - [升级与回退](/v2/migration/upgrade-and-rollback#237--贴图主题与-ai-保存)：检查停用的自定义颜色、明确选择 API 模型，并确认 AI 保存已生效的范围。
-- 改善变量列表、输入法组字和网页窗口关闭后的内存释放，统一内置图标配色，限制动作安装说明区域高度；完整修复条目见[官网版本记录](https://getquicker.net/V2/Versions)。
+- 改善变量列表与输入法组字，统一内置图标配色，限制动作安装说明区域高度；完整修复条目见[官网版本记录](https://getquicker.net/V2/Versions)。
 
 <a id="开发中--设置入口与步骤参数" />
 
 ### 2.3.6 · 设置入口与步骤参数
 
-- [桌面与网页设置入口](/v2/what's-new/tools-and-experience#236--桌面与网页设置入口)：网页设置只留外观与主题，其他项目在桌面窗口修改；旧地址需点击打开，桌面页空白点击可提交正在编辑的输入。
+- [查找和修改设置](/v2/what's-new/tools-and-experience#查找和修改设置)：正在编辑单行输入时，点击桌面设置页空白处可移开焦点并提交。
 - [设置助手范围](/v2/features/ai-and-agent#236--统一设置入口与助手范围)：统一使用桌面已开放的项目，服务连接及远程文件账号列表只读，设置卡片点击后才打开页面。
 - [旧参数与子程序接口](/v2/xaction/concepts/edit-step-param#236--旧参数与子程序接口)：确认编辑时清理已删除的接口；区分普通参数键名大小写兼容与子程序准确名称匹配，不批量清理其他动作。
 - 创建场景提示菜单可对当前程序或所有程序关闭提示；设置页面卡顿、变量菜单「创建变量」图标等修复见[官网版本记录](https://getquicker.net/V2/Versions)。

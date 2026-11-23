@@ -38,7 +38,7 @@ comments: true
 
 **旧版组合动作不能改**：V2 里旧版组合动作可以运行和查看，但不能继续编辑。需要改的，迁移为新版组合动作。见 [动作存储、执行与调试](/v2/what's-new/actions.md)。
 
-**表达式和 1.x 行为不一样**：2.3.18 起只使用 QkEval，旧引擎及其兼容开关已移除。复杂表达式先复制动作测试，并按错误位置核对类型、语法和依赖；不要继续寻找已移除的开关。请反馈原始表达式和完整错误；直接调用 `Z.Expressions` 的脚本还需调整外部引用，见 [QkEval](/v2/what's-new/actions/new-expression-engine.md#回退和反馈)。
+**表达式和 1.x 行为不一样**：V2 使用自研 QkEval 表达式引擎，不再内置 1.x 的 `Z.Expressions`。复杂表达式先复制动作测试，并按错误位置核对类型、语法和依赖；请反馈原始表达式和完整错误。直接调用 `Z.Expressions` 的脚本还需调整外部引用，见 [QkEval](/v2/what's-new/actions/new-expression-engine.md#回退和反馈)。
 
 ## 反馈
 

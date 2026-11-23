@@ -16,7 +16,7 @@ Quicker 2.x 在保持已有组合动作兼容的基础上，增加了一批面�
 
 - [新增：发送手机通知模块](./new-mobile-notification.md)：向已授权的 Android 设备发送通知，并接收按钮或文字回复（2.3.17 起编辑器已隐藏新建入口，仅保留已有动作兼容运行）。
 - [新增：PDF 文件处理模块](./new-pdf.md)：创建、合并、拆分和调整 PDF，并处理文档信息、安全和内容叠加。
-- [新增：截图 Pro 模块](./new-screen-capture-pro.md)：使用控件跟踪、渐进式选区、标注、贴图和保存结果。
+- [新增：交互截图模块（原截图 Pro）](./new-screen-capture-pro.md)：打开 Quicker 截图，使用控件跟踪、渐进式选区、标注、贴图和保存结果。
 - [新增：长截图模块](./new-long-screenshot.md)：选择滚动区域并输出拼接后的长图。
 - [新增：屏幕录制模块](./new-screen-recording-ui.md)：框选区域，通过录屏工具栏交互式完成录制。
 - [新增：后台屏幕录制模块](./new-background-screen-recording.md)：通过会话 ID 自动开始、查询和停止录制。

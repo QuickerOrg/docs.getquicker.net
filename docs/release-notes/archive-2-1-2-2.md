@@ -15,12 +15,12 @@ comments: true
 ### 2.2.16 · 悬浮分组与截图工具栏
 
 - 补充[悬浮分组受控合并与中间拆分](/v2/features/floating-actions#移动和整理)、[搜索引擎 JSON 批量导入导出](/v2/features/tools#自定义搜索引擎的导入导出)。
-- 补充[截图 Pro 自定义工具栏可视化编排](/v2/features/screenshot/capture-pro#标注)：拖动排序、添加子程序或动作、设置图标大小；并记录网络路径图标探测、表单多行高度、提示消息、录屏结束和缩略图等修复。
+- 补充[Quicker 截图自定义工具栏可视化编排](/v2/features/screenshot/capture-pro#标注)：拖动排序、添加子程序或动作、设置图标大小；并记录网络路径图标探测、表单多行高度、提示消息、录屏结束和缩略图等修复。
 
 ### 2.2.15 · 面板与贴图细节
 
 - 补充[分组圆点颜色及上方居中](/v2/features/action-panel/usage#创建和管理分组)、[面板软隐藏以减少弹出闪烁](/v2/features/action-panel/usage#减少面板弹出闪烁)。
-- 补充[截图 Pro 用反引号切换原始鼠标指针](/v2/features/screenshot/capture-pro#快捷键一览)、[HTML 贴图换行及屏幕内定位](/v2/features/screenshot/recording-and-pin#贴图窗口截图后)、[单个在线软件连接的目标选择](/v2/features/software-connections/command-tool#动作怎样选择目标)；并记录自由格子跨分组拖放、截图光标与提示、表单对齐等修复。
+- 补充[Quicker 截图用反引号切换原始鼠标指针](/v2/features/screenshot/capture-pro#快捷键一览)、[HTML 贴图换行及屏幕内定位](/v2/features/screenshot/recording-and-pin#贴图窗口截图后)、[单个在线软件连接的目标选择](/v2/features/software-connections/command-tool#动作怎样选择目标)；并记录自由格子跨分组拖放、截图光标与提示、表单对齐等修复。
 
 ### 2.2.14 · 自由格子与表单
 
@@ -41,7 +41,7 @@ comments: true
 ### 2.2.11 · 触发与运行记录
 
 - 补充[左键辅助连续按键](/v2/features/triggers/left-button-plus#一次按住连续执行)、[触碰屏幕边框](/v2/features/triggers/advanced-mouse-triggers#触碰屏幕边框)、[云端动作回收站](/v2/features/account-and-sync#云端动作回收站)。
-- 更新[变量](/v2/xaction/concepts/variables)、[运行记录](/v2/features/tools#动作运行与触发记录)、[截图 Pro](/v2/features/screenshot/capture-pro)、[AI 与外部助手](/v2/features/ai-and-agent)的操作说明；动作更新方式、只读动作外观及分享限制见[动作分享](/v2/features/action-sharing)。
+- 更新[变量](/v2/xaction/concepts/variables)、[运行记录](/v2/features/tools#动作运行与触发记录)、[Quicker 截图](/v2/features/screenshot/capture-pro)、[AI 与外部助手](/v2/features/ai-and-agent)的操作说明；动作更新方式、只读动作外观及分享限制见[动作分享](/v2/features/action-sharing)。
 - 升级前请阅读[触发设置的多设备与回退风险](/v2/migration/upgrade-and-rollback#2211-触发设置的多设备与回退风险)。
 
 ## 早期文档补充
@@ -64,7 +64,7 @@ comments: true
 
 ### 2.2.7 · 截图外观与回退
 
-- 补充[截图 Pro 选区阴影、边框及记忆规则](/v2/features/screenshot/capture-pro#选区阴影与边框)、[OCR 结果窗文本工具](/v2/features/screenshot/ocr#结果窗)、[截图侧栏恢复已关闭贴图](/v2/features/screenshot/recording-and-pin#贴图窗口截图后)。
+- 补充[Quicker 截图选区阴影、边框及记忆规则](/v2/features/screenshot/capture-pro#选区阴影与边框)、[OCR 结果窗文本工具](/v2/features/screenshot/ocr#结果窗)、[截图侧栏恢复已关闭贴图](/v2/features/screenshot/recording-and-pin#贴图窗口截图后)。
 - 补充[Photoshop 手动路径与 Adobe 依赖检测](/v2/features/software-connections/software/photoshop)、设置窗滚轮切换分组、[表达式显式 `dynamic`](/v2/xaction/concepts/expression#表达式的运算结果)、[表单打开前提示缺失变量](/v2/xaction/modules/form)。
 - 回退到 2.2.6 会丢失阴影与边框配置；可先备份 `image-drawing-tool-state.json`，详见[回退注意](/v2/migration/upgrade-and-rollback#回退到-226-后保存截图设置会丢弃-227-的阴影与边框配置2026-09-07)。
 
@@ -76,7 +76,7 @@ comments: true
 ### 2.2.5 · 连接管理与贴图
 
 - 补充[软件连接与 Bridge 在设置页安装和管理](/v2/features/software-connections)、[模兔云软件连接](/v2/features/software-connections/software/motuyun)。
-- 补充[截图 Pro 二维码识别、贴图分组和保存模板](/v2/features/screenshot/capture-pro)、[AI 助手本机用量与工作区](/v2/features/ai-and-agent)，以及文件列表获取超时处理。
+- 补充[Quicker 截图二维码识别、贴图分组和保存模板](/v2/features/screenshot/capture-pro)、[AI 助手本机用量与工作区](/v2/features/ai-and-agent)，以及文件列表获取超时处理。
 - 百度图片翻译 V2.0 使用 [APP ID 与 API Key 双凭证](/v2/features/screenshot/image-translate)；可能回退时请先查看该功能的凭证说明，并核对[官网版本记录](https://getquicker.net/v2/versions)中对应版本的注意项。
 
 ### 2.2.4 · 软件连接与 OCR 结果窗
@@ -92,7 +92,7 @@ comments: true
 ### 2.2.1 · 分享、录屏与等待步骤
 
 - 补充[动作分享的 V1 / V2 制品兼容说明](/v2/what's-new/actions#动作与公共子程序分享)、[可视化录屏预选范围](/v2/xaction/modules/screen-recording-ui)、[选中文本工具条悬浮圆点与选区定位](/v2/features/triggers/text-selection-toolbar)。
-- 补充[截图 Pro 设置页](/v2/features/screenshot/capture-pro#截图-pro-设置页)、[图片翻译 V2.0 单独凭证](/v2/features/screenshot/image-translate)；新增[等待窗口](/v2/xaction/modules/waitwindow)步骤，并将等待类步骤集中到等待分组。
+- 补充[Quicker 截图设置页](/v2/features/screenshot/capture-pro#截图-pro-设置页)、[图片翻译 V2.0 单独凭证](/v2/features/screenshot/image-translate)；新增[等待窗口](/v2/xaction/modules/waitwindow)步骤，并将等待类步骤集中到等待分组。
 
 ### 2.1.29–2.2.0 · 主窗口、贴图与步骤编辑
 

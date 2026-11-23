@@ -93,7 +93,7 @@ const HOTSPOTS: readonly Hotspot[] = [
     id: 'sidebarButtons',
     label: '快捷按钮',
     title: '侧边栏快捷按钮',
-    body: '导航栏底部默认只有「截图 Pro」。2.1.29 起可自定义，还可放入设置、场景与动作管理、公共子程序管理，或添加常用动作并调整顺序。',
+    body: '导航栏底部默认只有「Quicker 截图」（原「截图 Pro」）。2.1.29 起可自定义，还可放入设置、场景与动作管理、公共子程序管理，或添加常用动作并调整顺序。',
     settingPath: '标题栏「更多」→ 面板窗口 → 快捷按钮设置…',
     href: '/v2/features/action-panel/usage#侧边栏快捷按钮',
     hrefLabel: '侧边栏说明',

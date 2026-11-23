@@ -293,7 +293,7 @@ comments: true
 ### 2.3.13 · 动作数据目录、桌面 AI 与存储调整
 
 - [动作数据文件夹](/v2/xaction/concepts/standard#动作数据文件夹)：说明设计目的、组合动作与脚本入口、创建目录、适用场景、分享和备份边界，以及删除时回收和手动恢复。补充[获取系统或动作信息](/v2/xaction/modules/getsysinfo)的新输出。（[#594](https://github.com/QuickerOrg/Quicker2-issues/issues/594)）
-- [截图 Pro 单次参数与结束方式](/v2/xaction/modules/screen-capture-pro#2313--单次截图参数与结束方式)：本次鼠标指针、确认快存模板和 PNG/JPEG 格式，按实际出口处理后续步骤；[自定义工具栏](/v2/features/screenshot/toolbar-script)改用独立编辑窗口，并修复图片图标黑块。
+- [交互截图单次参数与结束方式](/v2/xaction/modules/screen-capture-pro#2313--单次截图参数与结束方式)：本次鼠标指针、确认快存模板和 PNG/JPEG 格式，按实际出口处理后续步骤；[自定义工具栏](/v2/features/screenshot/toolbar-script)改用独立编辑窗口，并修复图片图标黑块。
 - [桌面 AI 与 MCP 接入](/v2/features/ai/mcp-and-external-agents#2313--桌面入口与-mcp-接入)：统一桌面预览、编辑和分享确认，说明当前会话输入历史及回复保存重试；MCP 提供 AI 自动配置、HTTP 和 stdio 三种接入指引。桌面网页版 AI、网页设计器和手机 AI 已退役，已有桌面对话保留。
 - [检查和下载依赖](/v2/xaction/modules/dependencycheck)：新包写入应用数据目录，继续识别旧包，后续步骤应使用实际输出路径。[清理旧浏览器数据副本](/v2/features/tools#清理旧浏览器数据副本)说明浏览器按目录迁移后的清理入口与限制。
 - [升级与回退](/v2/migration/upgrade-and-rollback#2313--动作文件与浏览器数据)：动作文件不包含在内置备份中；浏览器新旧副本独立变化，回退前需手动备份，清理旧副本不经过回收站。
@@ -421,7 +421,7 @@ comments: true
 - [设置窗口](/v2/migration/upgrade-and-rollback#2225-设置窗口改版与本机界面状态)改为树形导航，支持搜索并定位具体设置项；选项修改通常立即生效，不再提供整页「应用／撤销」。找不到原位置时可用搜索；无效或尚未提交的输入会在离页时提示。
 - [动作编辑窗口](/v2/features/ai-and-agent#在设计器内修改)在配置好 AI 参数后，可点右上角 AI 按钮或按 `Ctrl+J` 打开面板，用 AI 编写和修改当前动作。
 - [动作面板](/v2/features/action-panel/usage#移动或复制动作)拖动动作时，悬停在场景标签上即可切换场景，便于跨场景整理。
-- [截图 Pro](/v2/features/screenshot/capture-pro#预选截图区域与快捷出口)所有操作均可使用预选截图区域；「框选即出图」和快速保存可同时选择复制到剪贴板、截图后贴图。
+- [Quicker 截图](/v2/features/screenshot/capture-pro#预选截图区域与快捷出口)所有操作均可使用预选截图区域；「框选即出图」和快速保存可同时选择复制到剪贴板、截图后贴图。
 - [HTML 贴图](/v2/features/screenshot/recording-and-pin#贴图窗口截图后)加强自动识别、剪贴板等来源的隔离，阻止其中的页面脚本；动作作者明确选择 HTML 模式时仍保留脚本能力。
 - 分享更新列表找不到仅限 V2 的子程序（#553）、事件触发最低版本提示反复弹出（#552）等修复见[官网版本记录](https://getquicker.net/V2/Versions)。
 
@@ -468,7 +468,7 @@ comments: true
 
 ### 2.2.17 · 贴图、录屏与运行记录
 
-- 补充[贴图鼠标穿透及独立工具条](/v2/features/screenshot/recording-and-pin#贴图窗口截图后)、[录屏预览焦点和播放速度](/v2/features/screenshot/capture-pro#结束方式)、[本机 FFmpeg 实时录屏](/v2/features/screenshot/capture-pro#截图-pro-设置页)。截图 Pro 步骤框选后可直接截图、复制、贴图、保存或识别；完整改动见[官网版本记录](https://getquicker.net/V2/Versions)。
+- 补充[贴图鼠标穿透及独立工具条](/v2/features/screenshot/recording-and-pin#贴图窗口截图后)、[录屏预览焦点和播放速度](/v2/features/screenshot/capture-pro#结束方式)、[本机 FFmpeg 实时录屏](/v2/features/screenshot/capture-pro#截图-pro-设置页)。交互截图步骤框选后可直接截图、复制、贴图、保存或识别；完整改动见[官网版本记录](https://getquicker.net/V2/Versions)。
 - 补充[提示消息保持 1 秒](/v2/xaction/modules/notify)、[Everything 通信接口替代服务](/v2/xaction/modules/everythingsearch)、[动作日志并入运行记录窗口](/v2/features/tools#动作运行与触发记录)。
 - 补充[浏览器父场景归属的管理与同步](/v2/features/scenes#作为浏览器程序与父场景归属)、[Mastercam 第三方 FT 命令筛选](/v2/features/software-connections/software/mastercam)。选择窗口会跳过鼠标穿透覆盖层；Windows 应用拖放启动参数、显示菜单子程序生命周期等修复见[官网版本记录](https://getquicker.net/V2/Versions)。
 

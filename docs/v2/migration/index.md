@@ -22,7 +22,7 @@ comments: false
     {
       href: '/v2/migration/why-upgrade',
       label: '1. 升级到 2.x 的理由',
-      description: '看 V2 相比 1.x 的实际提升，判断值不值得现在升级',
+      description: '看 AI 写动作、新面板、脚本动作与性能等核心提升，判断值不值得现在升级',
     },
     {
       href: "/v2/what's-new/not-supported",

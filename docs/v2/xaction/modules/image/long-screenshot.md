@@ -28,7 +28,7 @@ metadataGeneratedAt: "2026-08-24 20:01:39"
   items={[
     {
       href: '/v2/features/screenshot/capture-pro',
-      label: '截图 Pro 功能说明',
+      label: 'Quicker 截图功能说明',
       description: '同一套选区界面里也可以进入长截图。',
       featured: true,
     },
@@ -67,7 +67,7 @@ metadataGeneratedAt: "2026-08-24 20:01:39"
   items={[
     {
       href: '/v2/xaction/modules/screen-capture-pro',
-      label: '截图 Pro',
+      label: '交互截图',
       description: '同一套选区界面里也可以进入长截图。',
     },
     {

@@ -15,21 +15,21 @@ legacyContentUpdatedAt: "2025-12-21T14:14:54.000Z"
 
 # 屏幕截图
 
-截取一块屏幕，存进图片变量，也可同时写入剪贴板。需要渐进式选区、标注或贴图时，请用 **截图 Pro**：
+截取一块屏幕，存进图片变量，也可同时写入剪贴板。需要渐进式选区、标注或贴图时，请用 **Quicker 截图**（组合动作步骤为 **交互截图**）：
 
 <RelatedDocs
   layout="cards"
   items={[
     {
       href: '/v2/features/screenshot/capture-pro',
-      label: '截图 Pro 功能说明',
+      label: 'Quicker 截图功能说明',
       description: '选区、吸附、标注、OCR 与贴图。',
       featured: true,
     },
     {
       href: '/v2/xaction/modules/screen-capture-pro',
-      label: '截图 Pro 步骤参数',
-      description: '组合动作里的截图 Pro 步骤。',
+      label: '交互截图步骤参数',
+      description: '组合动作里的交互截图步骤。',
     },
   ]}
 />

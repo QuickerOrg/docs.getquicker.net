@@ -114,9 +114,9 @@ if (match !== null) {
 - 返回的文字、图片和颜色匹配项含 `x`、`y`、`bounds`、`target`。把目标相对点交给 `mouse.click()` 时，Quicker 会在输入前重新解析窗口位置；窗口移动后仍点击新的屏幕位置，窗口身份变化或目标越界时则失败关闭。
 - 需要复用图片时，可从 `"quicker/vision"` 导入 `capture`、`image`、`ocr`：`capture.screen()` / `capture.window(app)` 截图，`image.crop()`、`image.findColor()`、`image.findTemplate()` 处理图片，完成后用 `image.dispose()` 释放。
 
-### 打开截图 Pro
+### 打开 Quicker 截图 {/* #打开截图-pro */}
 
-2.2.19 起，可从 `"quicker/capture"` 导入 `capturePro`，打开交互式截图 Pro 并同步等待结束：
+2.2.19 起，可从 `"quicker/capture"` 导入 `capturePro`，打开 Quicker 截图并同步等待结束：
 
 ```javascript
 import { capturePro } from "quicker/capture";

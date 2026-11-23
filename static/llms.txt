@@ -25,7 +25,7 @@
 - [加载场景与加载动作页动作](https://docs.getquicker.net/v2/migration/new-main-win/load-action-page): 在新面板里切换场景、分组或旧动作页，以及用「Quicker 操作」步骤自动加载。
 - [升级与回退](https://docs.getquicker.net/v2/migration/upgrade-and-rollback): 按功能查找 Quicker V2 的版本兼容、降级风险和多设备同步注意事项。
 - [1.x 习惯与入口变化速查](https://docs.getquicker.net/v2/migration/v1-to-v2-habits): 从 Quicker 1.x 升级到 V2 第一天最容易不习惯的地方：新旧面板切换、设置入口搬家、动作本体与位置分离、触发手感微调和旧动作排障。
-- [升级到 2.x 的理由](https://docs.getquicker.net/v2/migration/why-upgrade): Quicker 2.x 相比 1.x 在面板体验、动作管理、性能、新能力与数据同步上的核心提升，帮你判断是否现在升级。
+- [升级到 2.x 的理由](https://docs.getquicker.net/v2/migration/why-upgrade): Quicker 2.x 相比 1.x 在 AI 写动作、新面板体验、脚本与调试、运行性能、截图工具链与数据同步上的核心提升，帮你判断是否现在升级。
 - [常见问题](https://docs.getquicker.net/v2/troubleshooting): Quicker V2 安装、面板、组合动作和选中文本的常见问题。
 
 ## 核心功能使用
@@ -327,7 +327,7 @@
 - [图片处理（`sys:imgProcess`）](https://docs.getquicker.net/v2/xaction/modules/imgprocess): 图片处理和变换
 - [图片/Base64 转换（`sys:imgToBase64`）](https://docs.getquicker.net/v2/xaction/modules/imgtobase64): 图片和Base64转换
 - [长截图（`sys:longScreenshot`）](https://docs.getquicker.net/v2/xaction/modules/long-screenshot): 先使用屏幕选区工具选择范围，再进行长截图。
-- [贴图（`sys:pinImage`）](https://docs.getquicker.net/v2/xaction/modules/pinimage): 在屏幕指定位置浮动贴图（与截图 Pro 贴图窗口一致）。按来源自动识别图片、HTML、公式、OCR 原始结果或文本。
+- [贴图（`sys:pinImage`）](https://docs.getquicker.net/v2/xaction/modules/pinimage): 在屏幕指定位置浮动贴图（与 Quicker 截图贴图窗口一致）。按来源自动识别图片、HTML、公式、OCR 原始结果或文本。
 - [识别二维码（`sys:readQrCode`）](https://docs.getquicker.net/v2/xaction/modules/readqrcode): 识别图片中的二维码
 - [交互截图（`sys:screenCapturePro`）](https://docs.getquicker.net/v2/xaction/modules/screen-capture-pro): 框选截图、标注、贴图或识别。默认自动吸附，可关闭后用滚轮手动调整选区。
 - [屏幕录制（`sys:screenRecordingUI`）](https://docs.getquicker.net/v2/xaction/modules/screen-recording-ui): 弹出选区 UI 让用户框选录制范围，打开录屏工具栏进行可视化录制，录完后返回文件路径。

@@ -201,7 +201,7 @@ string Main(string operation = "start")
     },
     {
       href: '/v2/xaction/modules/screen-capture-pro',
-      label: '截图 Pro',
+      label: '交互截图',
       description: '选区界面里也可以进入录屏。',
     },
   ]}

@@ -226,13 +226,13 @@ legacyContentUpdatedAt: "2025-05-11T08:37:04.000Z"
   items={[
     {
       href: '/v2/features/screenshot/capture-pro',
-      label: '截图 Pro 功能说明',
+      label: 'Quicker 截图功能说明',
       description: '截图完成后也可以直接贴图；贴图操作与本模块相近。',
       featured: true,
     },
     {
       href: '/v2/xaction/modules/screen-capture-pro',
-      label: '截图 Pro 步骤',
+      label: '交互截图步骤',
       description: '截完再交给本模块，或直接勾选「截图后贴图」。',
     },
     {

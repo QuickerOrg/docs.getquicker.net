@@ -500,7 +500,7 @@ export default function ScreenshotSelectionDemo({
         onPointerLeave={handlePointerLeave}
         tabIndex={0}
         role="application"
-        aria-label="截图 Pro 自动选区交互演示：移入后滚轮切换父级或子级，移出后自动演示">
+        aria-label="Quicker 截图自动选区交互演示：移入后滚轮切换父级或子级，移出后自动演示">
         <div className={styles.desktop}>
           <div ref={windowRef} className={styles.mockWindow} data-capture-id="window">
             <div className={styles.mockTitleBar}>

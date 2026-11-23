@@ -143,7 +143,7 @@ const FEATURED: FeaturedItem[] = [
   {href: '/v2/xaction/modules/get_selected_text', title: '获取选中的文本'},
   {href: '/v2/xaction/modules/if', title: '如果/否则'},
   {href: '/v2/xaction/modules/stringprocess', title: '文本处理'},
-  {href: '/v2/xaction/modules/screen-capture-pro', title: '截图 Pro'},
+  {href: '/v2/xaction/modules/screen-capture-pro', title: '交互截图'},
 ];
 
 function PathCard({item}: {item: PathItem}): ReactNode {

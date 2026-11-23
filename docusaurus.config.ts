@@ -186,6 +186,14 @@ const config: Config = {
     colorMode: {
       respectPrefersColorScheme: true,
     },
+    announcementBar: {
+      id: 'v2-preview-pro-only',
+      content:
+        'V2 目前为 <strong>Preview 体验版</strong>，仅面向专业版用户（免费账号暂无法登录）。体验前请先阅读 <a href="/important-notice">安装前准备</a>。',
+      backgroundColor: 'var(--quicker-announcement-bg)',
+      textColor: 'var(--quicker-announcement-fg)',
+      isCloseable: true,
+    },
     navbar: {
       title: 'Quicker 文档',
       logo: {

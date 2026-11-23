@@ -8,8 +8,6 @@ comments: true
 
 # Quicker V2 重要变化
 
-<V2PreviewNotice />
-
 Quicker V2 不只是更换界面。它升级了运行平台，并重做了动作、面板、场景管理、本地存储和云同步等基础结构。
 
 本节集中说明相对于 Quicker 1.x 的重要变化。具体版本新增的小功能和问题修复，见 [更新记录](/release-notes)（指向 [官网版本记录](https://getquicker.net/v2/versions)）。

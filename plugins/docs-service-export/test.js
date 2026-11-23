@@ -119,22 +119,6 @@ test('面板布局热点的设置位置从组件静态数据导出', () => {
   }
 });
 
-test('V2PreviewNotice 展开为纯文本提示且不产生告警', () => {
-  const diagnostics = [];
-  const result = expandKnownComponents(
-    '<V2PreviewNotice />\n\n<V2PreviewNotice variant="landing" />',
-    process.cwd(),
-    diagnostics,
-    'notice.md',
-  );
-  assert.match(result, /Preview · 仅专业版/);
-  assert.match(result, /V2 目前为 Preview 体验版，仅面向专业版用户/);
-  assert.match(result, /https:\/\/docs\.getquicker\.net\/important-notice/);
-  assert.doesNotMatch(result, /<V2PreviewNotice/);
-  assert.deepEqual(diagnostics, []);
-});
-
-
 test('moduleMarkdown 导出完整契约字段、双默认值、枚举与动态未求值条件', () => {
   const md = moduleMarkdown({
     key: 'sys:demo',

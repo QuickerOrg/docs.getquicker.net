@@ -15,8 +15,6 @@ hide_table_of_contents: true
 
 <p className="docs-landing__lead">安装、使用和编写动作，都从这里开始。</p>
 
-<V2PreviewNotice variant="landing" />
-
 ## 安装与入门
 
 <RelatedDocs layout="cards" items={[

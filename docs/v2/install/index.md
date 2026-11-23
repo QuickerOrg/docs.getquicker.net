@@ -9,8 +9,6 @@ comments: false
 
 # 安装、更新与卸载
 
-<V2PreviewNotice />
-
 V2 安装包从 [https://getquicker.net/V2](https://getquicker.net/V2) 下载。不要使用 `https://getquicker.net/Download`，那个页面目前提供的是 Quicker 1.x。
 
 | 文档 | 内容 |

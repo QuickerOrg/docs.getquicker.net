@@ -387,12 +387,6 @@ function renderPreviewComponent(found, siteDir, diagnostics, source) {
 
   const props = componentProps(openTag);
 
-  if (tagName === 'V2PreviewNotice') {
-    if (props.variant === 'landing') {
-      return `\n**V2 目前为 Preview 体验版，仅面向专业版用户。** 免费版数据迁移仍在开发，免费账号目前无法登录 2.0。体验前请阅读 [安装前准备](${host}/important-notice)，不建议替换无法中断的 1.x 关键环境。\n`;
-    }
-    return `\n> **Preview · 仅专业版**：当前 V2 是 **Preview 体验版**，仅面向专业版用户。免费版数据迁移仍在开发，免费账号目前无法登录 2.0。不建议用它替换无法中断的 1.x 关键环境。体验前请先读 [安装前准备](${host}/important-notice)。\n`;
-  }
   if (tagName === 'ActionPanelLayoutDemo') return actionPanelLayoutMarkdown(siteDir);
   if (tagName === 'PreviewMarks') {
     if (!Array.isArray(props.marks)) throw new Error('标注列表无效');
@@ -560,7 +554,7 @@ function renderPreviewComponent(found, siteDir, diagnostics, source) {
 
 const EXPANDABLE_TAGS = [
   'PreviewMarks', 'PreviewMap', 'PreviewCompare', 'ContextMenuPreview',
-  'V2PreviewNotice', 'StepProgramView', 'ShareLinkCard', 'RelatedDocs', 'FlowChart',
+  'StepProgramView', 'ShareLinkCard', 'RelatedDocs', 'FlowChart',
   'ActionPanelLayoutDemo', 'ActionEditorPreview', 'VariableDefPreview',
   'TableDataPreview', 'TableFieldPreview', 'ChoiceListPreview',
   'NotifyToastPreview', 'TextWindowPreview', 'UserInputPreview', 'SearchBoxPreview',

@@ -8,8 +8,6 @@ comments: true
 
 # 常见问题
 
-<V2PreviewNotice />
-
 先对照现象看下面几条。组合动作的参数和限制以各 [模块页](/v2/xaction/modules) 为准。
 
 ## 安装和启动

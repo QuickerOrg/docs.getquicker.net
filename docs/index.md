@@ -18,8 +18,6 @@ hide_table_of_contents: true
 
 Quicker 是 Windows 上的效率工具。你可以从面板运行动作，也可以用快捷键、鼠标手势等方式随时调用。
 
-<V2PreviewNotice variant="landing" />
-
 ## 从这里开始
 
 <RelatedDocs layout="cards" className="docs-start-paths" items={[

@@ -7,7 +7,6 @@ import FlowChart from '@site/src/components/FlowChart';
 import HashRedirect from '@site/src/components/HashRedirect';
 import RelatedDocs from '@site/src/components/RelatedDocs';
 import ShareLinkCard from '@site/src/components/ShareLinkCard';
-import V2PreviewNotice from '@site/src/components/V2PreviewNotice';
 import XActionLanding from '@site/src/components/XActionLanding';
 import {lazyActionEditor, lazyHeavy, lazyMdx} from './lazyMdxComponent';
 
@@ -28,7 +27,6 @@ const mdxComponentsMap = {
   RelatedDocs,
   ShareLinkCard,
   HashRedirect,
-  V2PreviewNotice,
   XActionLanding,
   BilibiliPlayer,
   FlowChart,

@@ -43,6 +43,9 @@
   --quicker-text-muted: #606874;
   --quicker-surface-subtle: #f6f7f9;
   --quicker-border-subtle: #e1e4e8;
+  --quicker-announcement-bg: #eef4fc;
+  --quicker-announcement-fg: #1f2d3d;
+  --quicker-announcement-border: #d5e3f5;
   --qk-scrollbar-thumb: rgba(0, 0, 0, 0.08);
   --qk-scrollbar-thumb-hover: rgba(0, 0, 0, 0.16);
   /* Match prism-react-renderer github / vsDark plain colors. */
@@ -79,6 +82,9 @@
   --ifm-background-surface-color: #202226;
   --quicker-surface-subtle: #202226;
   --quicker-border-subtle: #34383f;
+  --quicker-announcement-bg: #1e2736;
+  --quicker-announcement-fg: #dce7f7;
+  --quicker-announcement-border: #2e3d54;
   --qk-scrollbar-thumb: rgba(255, 255, 255, 0.1);
   --qk-scrollbar-thumb-hover: rgba(255, 255, 255, 0.18);
   --qk-code-bg: #1e1e1e;
@@ -86,6 +92,25 @@
   --ifm-navbar-search-input-background-color: var(--quicker-surface-subtle);
   --search-local-modal-background: #202226;
   --search-local-modal-shadow: 0 12px 32px rgba(0, 0, 0, 0.38);
+}
+
+/* Site-wide announcement bar (V2 Preview notice). */
+.theme-announcement-bar {
+  height: auto;
+  min-height: 34px;
+  border-bottom: 1px solid var(--quicker-announcement-border);
+}
+
+.theme-announcement-bar [class*='announcementBarContent'] {
+  font-size: 0.85rem;
+  line-height: 1.45;
+  padding: 6px 8px;
+}
+
+.theme-announcement-bar [class*='announcementBarContent'] a {
+  color: var(--ifm-color-primary);
+  font-weight: 500;
+  text-underline-offset: 2px;
 }
 
 .navbar {
@@ -671,18 +696,6 @@ html[data-theme='dark'] .theme-code-block .token.parameter {
   padding: 0;
   font-size: 1.16rem;
 }
-.docs-landing__notice {
-  margin: 1.2rem 0 1.6rem;
-  padding: 0.85rem 1rem;
-  border: 1px solid var(--quicker-border-subtle);
-  border-left: 3px solid var(--ifm-color-primary);
-  border-radius: 6px;
-  background: var(--quicker-surface-subtle);
-  color: var(--quicker-text-muted);
-  font-size: 0.85rem;
-}
-.markdown .docs-landing__notice p { margin: 0; }
-.docs-landing__notice strong { color: var(--ifm-font-color-base); }
 .docs-landing__more { margin-top: -0.25rem; font-size: 0.88rem; }
 .docs-landing__lessons {
   display: grid;
@@ -847,8 +860,10 @@ html[data-theme='dark'] .qk-docs-preview-fallback {
 html[data-qk-embed] {
   --ifm-navbar-height: 0px;
   --doc-sidebar-width: 0px;
+  --docusaurus-announcement-bar-height: 0px;
 }
 
+html[data-qk-embed] .theme-announcement-bar,
 html[data-qk-embed] .navbar,
 html[data-qk-embed] .navbar-sidebar,
 html[data-qk-embed] .theme-doc-sidebar-container,

@@ -9,8 +9,6 @@ comments: false
 
 # 迁移
 
-<V2PreviewNotice />
-
 1.x 和 V2 **不能同时安装**。迁移是「备份 → 卸载 1.x → 安装 V2」，不是两套程序并行。
 
 | 文档 | 内容 |

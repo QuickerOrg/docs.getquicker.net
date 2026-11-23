@@ -5,7 +5,7 @@ slug: "/v2/xaction/guides/browser-multiprofile"
 sidebar_position: 100
 quickerDocKey: "xaction/guides/browser-multiprofile"
 comments: true
-docStatus: "migrated-unreviewed"
+docStatus: "reviewed"
 legacyDocId: 249205455
 legacyContentUpdatedAt: "2025-12-18T01:12:24.000Z"
 ---
@@ -30,7 +30,7 @@ Quicker 1.44.48 版本，结合浏览器扩展 1.1.0 版本，可允许设定“
 
 此种情况下，每个profile账号有一个单独的主进程。同时连接到Quicker时，Quicker可以通过主进程的id进行区分。
 
-2**）直接在浏览器中添加和切换profile。**
+**2）直接在浏览器中添加和切换profile。**
 
 如在Edge浏览器中：
 
@@ -60,7 +60,7 @@ Quicker 1.44.48 版本，结合浏览器扩展 1.1.0 版本，可允许设定“
 
 注：之所以需要手动设置环境名称，是因为浏览器没有提供API或其它获取Profile名称的方式。
 
-设置完成后，在 Quicker面板窗口的菜单 - 工具 - 修复浏览器扩展连接窗口 中可以看到已连接的浏览器，设置过自定义环境名称的，该名称会在括号中显示。
+设置完成后，在 Quicker 新版主窗口顶栏 **更多 → 诊断与修复 → 修复浏览器扩展连接**（或旧面板 **菜单 → 工具 → 修复浏览器扩展连接**）中可以看到已连接的浏览器，设置过自定义环境名称的，该名称会在括号中显示。
 
 ![](./img/browser-multiprofile-004-3185f3b4c9.png)
 

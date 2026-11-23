@@ -1,6 +1,7 @@
 ---
 title: 设置页面与功能入口
 description: 按当前设置页查找启动、快捷键、黑名单、输入、动作设计、自动触发和维护选项。
+sidebar_position: 54
 quickerDocKey: v2/features/settings
 comments: true
 ---
@@ -133,9 +134,9 @@ comments: true
 
 ## AI 提示词库与会话历史
 
-2.3.40 起，在 **设置 → AI → 提示词库** 中按图片提问、文本提问、通用提问和 AI 工作台管理常用模板；云账号的模板随账号同步。旧本机模板不会自动导入，请先阅读[提示词库的建立与同步](/v2/features/ai-and-agent#prompt-library-2340)。
+2.3.40 起，在 **设置 → AI → 提示词库** 中按图片提问、文本提问、通用提问和 AI 工作台管理常用模板；云账号的模板随账号同步。旧本机模板不会自动导入，请先阅读[提示词库的建立与同步](/v2/features/ai/prompt-library-and-sessions#prompt-library-2340)。
 
-**设置 → AI → 会话历史** 可集中筛选、预览和管理工作台及编辑助手的本机历史，归档、恢复或永久删除所选会话，也可回到原助手继续处理。会话内容不会因为这个页面而上传或跨设备同步，具体范围见[集中管理会话历史](/v2/features/ai-and-agent#conversation-history-2340)。
+**设置 → AI → 会话历史** 可集中筛选、预览和管理工作台及编辑助手的本机历史，归档、恢复或永久删除所选会话，也可回到原助手继续处理。会话内容不会因为这个页面而上传或跨设备同步，具体范围见[集中管理会话历史](/v2/features/ai/prompt-library-and-sessions#conversation-history-2340)。
 
 <a id="AboutSettingPage" />
 

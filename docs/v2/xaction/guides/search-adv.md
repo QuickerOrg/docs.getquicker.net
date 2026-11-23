@@ -5,7 +5,7 @@ slug: "/v2/xaction/guides/search-adv"
 sidebar_position: 120
 quickerDocKey: "xaction/guides/search-adv"
 comments: true
-docStatus: "migrated-unreviewed"
+docStatus: "reviewed"
 legacyDocId: 34115628
 legacyContentUpdatedAt: "2022-11-16T14:20:44.000Z"
 ---
@@ -65,7 +65,7 @@ legacyContentUpdatedAt: "2022-11-16T14:20:44.000Z"
 
 如果是实时搜索传参，则对搜索内容进行处理并返回结果。
 
-表达式：`**$=** **{quicker\_in\_param}**.**StartsWith**("search:")`    
+表达式：`$= {quicker_in_param}.StartsWith("search:")`
 
 <ModuleParamPreview
   moduleKey="sys:if"
@@ -111,54 +111,57 @@ CommonOperationItem 类将作为一个通用类用于更多场景的数据传输
 
 在这里，它的Children属性用于存储结果项的右键菜单。
 
-&#123;
-  "Items": \[
-    &#123;
-      "Score": 80,				// 批量程度
-      "NoHide": false,		// 选择选项后是否自动隐藏搜索框。 仅在结果项用于继续触发搜索框时使用，以避免搜索框闪烁。
+```json
+{
+  "Items": [
+    {
+      "Score": 80,              // 匹配程度
+      "NoHide": false,          // 选择选项后是否自动隐藏搜索框（用于继续触发搜索框避免闪烁）
       "Title": "结果项标题",
       "Description": "结果项描述",
-      "Icon": "fa:Light\_Cog", // 主图标
-      "SecondaryIcon": "fa:Solid\_History", // 角标
+      "Icon": "fa:Light_Cog",             // 主图标
+      "SecondaryIcon": "fa:Solid_History",// 角标
       "Data": "内容数据",
       "DataType": "text",
-      "Operation": null, 		// 无意义
-      "Action": null,		 		// 无意义
-      "IsSeparator": false, // 无意义
-      "ExtraData": null,  	// 用于传递额外数据的词典
-      "Children": \[ 				// 子项数据，这里用于存储额外的右键菜单项
-        &#123;
-          "Icon": "fa:Light\_Cog", //菜单图标
-          "Title": "菜单项1",	// 菜单标题
-          "Data": "settings",  // 菜单KEY
-          "Description": "tooltip", // 菜单提示
+      "Operation": null,        // 无意义
+      "Action": null,           // 无意义
+      "IsSeparator": false,     // 无意义
+      "ExtraData": null,        // 用于传递额外数据的词典
+      "Children": [             // 子项数据，用于存储额外的右键菜单项
+        {
+          "Icon": "fa:Light_Cog",
+          "Title": "菜单项1",
+          "Data": "settings",
+          "Description": "tooltip",
           "DataType": null,
           "Operation": null,
           "Action": null,
-          "IsSeparator": false,  // 是否为分割线
+          "IsSeparator": false,
           "ExtraData": null,
           "Children": null
-        &#125;
-      \]
-    &#125;,
-    ...
-  \]
-&#125;
+        }
+      ]
+    }
+  ]
+}
+```
 
-也可通过表达式直接返回CustomSearchResult类型的对象：
+也可通过表达式直接返回 `CustomSearchResult` 类型的对象：
 
-$=new CustomSearchResult()&#123;
-  Items = new List&lt;CustomSearchResultItem&gt;()&#123;
-    new CustomSearchResultItem()&#123;
+```csharp
+$=new CustomSearchResult(){
+  Items = new List<CustomSearchResultItem>(){
+    new CustomSearchResultItem(){
       Title = "结果项标题",
-      Icon = "fa:Light\_Cog",
-      SecondaryIcon = "fa:Light\_history",
+      Icon = "fa:Light_Cog",
+      SecondaryIcon = "fa:Light_history",
       DataType = "text",
-      Data = "Hello World",
-            //.....其他属性，可以通过补全查看...
-    &#125;
-
-&#125;&#125;;
+      Data = "Hello World"
+      // 其他属性可通过编辑器补全查看
+    }
+  }
+}
+```
 
 
 

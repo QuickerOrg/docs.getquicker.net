@@ -5,7 +5,7 @@ slug: "/v2/xaction/guides/flaui-xpath-intro"
 sidebar_position: 60
 quickerDocKey: "xaction/guides/flaui-xpath-intro"
 comments: true
-docStatus: "migrated-unreviewed"
+docStatus: "reviewed"
 legacyDocId: 250740377
 legacyContentUpdatedAt: "2025-12-28T07:26:23.000Z"
 ---

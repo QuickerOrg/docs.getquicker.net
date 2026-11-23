@@ -1,6 +1,7 @@
 ---
 title: 基础操作：输入、打开与运行
 description: 选择输入、运行程序、打开文件、网址、链接动作及切换动作页等操作。
+sidebar_position: 13
 quickerDocKey: v2/features/basic-actions
 comments: true
 ---

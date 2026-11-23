@@ -1,6 +1,7 @@
 ---
 title: 动作历史版本、备份与恢复
 description: 使用本地、手动网络和自动网络备份找回正式动作的旧版本，并区分暂存动作历史。
+sidebar_position: 22
 quickerDocKey: v2/features/action-history
 comments: true
 ---

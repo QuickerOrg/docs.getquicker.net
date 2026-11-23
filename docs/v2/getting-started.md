@@ -1,16 +1,14 @@
 ---
 title: 开始使用 Quicker V2
 description: 认识动作和面板，完成首次启动，并开始编写组合动作。
-sidebar_position: 1
+sidebar_position: 2
 quickerDocKey: v2/getting-started
 comments: true
 ---
 
 # 开始使用 Quicker V2
 
-:::caution[Preview · 仅专业版]
-当前 V2 是 **Preview 体验版**，仅面向专业版用户。免费版数据迁移仍在开发，免费账号目前无法登录 2.0。不建议用它替换无法中断的 1.x 关键环境。体验前请先读 [安装前准备](/important-notice)。
-:::
+<V2PreviewNotice />
 
 Quicker 把一件重复的事做成一个**动作**。动作可以出现在面板里，也可以绑快捷键、场景或其它触发规则。组合动作则是用多个步骤按顺序完成这件事。
 
@@ -40,6 +38,15 @@ Quicker 把一件重复的事做成一个**动作**。动作可以出现在面�
 从 1.x 过来的，先看 [从 V1 迁移](./migration/from-v1.md) 和 [V2 重要变化](/v2/what's-new/)。两代**不能同时安装**（浏览器扩展会冲突）；回退只能重装 1.x。
 
 ## 自己写一个动作
+
+Quicker V2 提供四种主要编写方式，按任务复杂度和习惯选择即可：
+
+| 编写方式 | 适合场景 | 入口位置 |
+| --- | --- | --- |
+| **组合动作** | 图形化拖步骤、复用现成模块与桌面操作 | [组合动作入门](./xaction/guides/how-to-learn.md) · [模块参考](./xaction/modules) |
+| **脚本动作（C#）** | 条件分支多、文本/JSON 处理与批量计算 | [脚本动作文档](./script-action/index.md) |
+| **运行 C# 代码 / 文件应用** | 在组合动作内复用现有 CLR 代码或单文件应用 | [运行C#代码](./xaction/modules/flow/csscript.md) · [运行C#文件应用](./xaction/modules/flow/file-based-apps.md) |
+| **自动化脚本（JS）** | 在组合动作内用受限 JS 编排窗口、找图、点击与键鼠 | [自动化脚本](./xaction/modules/input/automationscript.md) |
 
 最常见的做法是新建**组合动作**：左边拖模块，中间排步骤，右边看变量。
 

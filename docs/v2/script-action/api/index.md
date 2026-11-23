@@ -1,6 +1,7 @@
 ---
-title: "API 参考"
-description: "API 参考的成员、参数和使用约定。"
+title: "脚本动作 API 参考"
+sidebar_label: "API 参考"
+description: "脚本动作中 qk 对象各域成员、参数与使用约定。"
 quickerDocKey: v2/script-action/api/index
 comments: false
 sidebar_position: 1

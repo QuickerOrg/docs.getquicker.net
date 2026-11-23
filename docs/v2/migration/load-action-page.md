@@ -1,7 +1,8 @@
 ---
 title: 加载场景与加载动作页动作
 description: 在新面板里切换场景、分组或旧动作页，以及用「Quicker 操作」步骤自动加载。
-sidebar_position: 10
+slug: /v2/migration/new-main-win/load-action-page
+sidebar_position: 35
 quickerDocKey: v2/migration/new-main-win/load-action-page
 comments: true
 ---

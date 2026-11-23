@@ -1,6 +1,7 @@
 ---
 title: 快速操作与操作类型
 description: 为轮盘、文本指令、超级键和触发规则选择操作，区分运行已有动作与直接执行简单操作。
+sidebar_position: 14
 quickerDocKey: v2/features/quick-operations
 comments: true
 ---

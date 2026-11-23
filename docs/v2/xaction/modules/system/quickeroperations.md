@@ -103,7 +103,7 @@ legacyContentUpdatedAt: "2024-08-20T01:16:01.000Z"
 
 ### 显示轮盘菜单 (点击)
 
-以点击模式显示轮盘：出现后要点选动作，而不是滑动选择。若轮盘设置里开启了「非滑动方式触发式显示扩展圈」，这样触发的轮盘会把扩展圈铺在屏幕上。轮盘本身的说明见 [轮盘菜单](/v2/what's-new/others/circle-menu)。
+以点击模式显示轮盘：出现后要点选动作，而不是滑动选择。若轮盘设置里开启了「非滑动方式触发式显示扩展圈」，这样触发的轮盘会把扩展圈铺在屏幕上。轮盘本身的说明见 [轮盘菜单](/v2/features/triggers/circle-menu)。
 
 <PreviewMarks
   marks={[
@@ -402,7 +402,7 @@ legacyContentUpdatedAt: "2024-08-20T01:16:01.000Z"
       description: '2.x 替代文本悬浮窗的选区工具条。',
     },
     {
-      href: "/v2/what's-new/others/circle-menu",
+      href: "/v2/features/triggers/circle-menu",
       label: '轮盘菜单',
       description: '点击模式与扩展圈的说明。',
     },

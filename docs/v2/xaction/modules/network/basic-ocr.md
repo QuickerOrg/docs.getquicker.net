@@ -40,7 +40,7 @@ legacyContentUpdatedAt: "2024-12-06T01:38:30.000Z"
 
 旧动作若在 Quicker OCR 上选了「仅使用离线引擎」，会转到 **本地 OCR（中英）**。新动作请直接选本地 OCR。
 
-2.3.20 起，可在 **设置 → 截图 → 识别与翻译 → 本地 OCR** 调整空闲保活时间：未配置时默认 300 秒，0 表示常驻，已有值保留。空闲退出后再次识别需要重新加载模型，不会因此重新下载。设置在下一次本地识别或抠图时应用，且仅在本机当前账号生效，详见[本地 OCR 空闲退出](/v2/features/screenshot/capture-pro#local-ocr-keepalive-2320)。
+2.3.20 起，可在 **设置 → 截图 → 识别与翻译 → 本地 OCR** 调整空闲保活时间：未配置时默认 300 秒，0 表示常驻，已有值保留。空闲退出后再次识别需要重新加载模型，不会因此重新下载。设置在下一次本地识别或抠图时应用，且仅在本机当前账号生效，详见[本地 OCR 空闲退出](/v2/features/screenshot/ocr#local-ocr-keepalive-2320)。
 
 ## 2.3.29 · Quicker 帐号模式与自有百度 Key
 
@@ -270,7 +270,7 @@ legacyContentUpdatedAt: "2024-12-06T01:38:30.000Z"
 
 首次运行前，先打开识别结果窗的表格入口阅读并确认上传说明。动作运行时不会自行弹出迁移确认；未同意会失败。**离线模式** 选自动或在线时使用混合服务，旧动作选“仅使用离线引擎”会报不支持。表格文字模型固定为 small，不提供模型档位选择；准备组件失败时先按提示修复。
 
-可绑定高级输出 **表格错误码**，分别处理未同意上传、未登录、会员不可用、限流、超时和取消等情况；成功时为空。**原始结果** 保留 ApiResult JSON，包含 `Data.Html` 和 `Data.Tsv`，不要把“合并后结果”的 HTML 误当成 TSV。结果窗的模式、长表恢复与 Excel 用法见[在线表格识别](/v2/features/screenshot/capture-pro#hybrid-table-2336)。
+可绑定高级输出 **表格错误码**，分别处理未同意上传、未登录、会员不可用、限流、超时和取消等情况；成功时为空。**原始结果** 保留 ApiResult JSON，包含 `Data.Html` 和 `Data.Tsv`，不要把“合并后结果”的 HTML 误当成 TSV。结果窗的模式、长表恢复与 Excel 用法见[在线表格识别](/v2/features/screenshot/ocr#hybrid-table-2336)。
 
 <ModuleParamPreview
   moduleKey="sys:basic-ocr"

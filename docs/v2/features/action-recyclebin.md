@@ -1,6 +1,7 @@
 ---
 title: 动作回收站
 description: 从本地或云端回收站复制已删除动作，以及清空回收站的范围与限制。
+sidebar_position: 24
 quickerDocKey: v2/features/action-recyclebin
 comments: true
 ---

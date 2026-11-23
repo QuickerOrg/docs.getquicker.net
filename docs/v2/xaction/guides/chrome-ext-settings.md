@@ -5,7 +5,7 @@ slug: "/v2/xaction/guides/chrome-ext-settings"
 sidebar_position: 90
 quickerDocKey: "xaction/guides/chrome-ext-settings"
 comments: true
-docStatus: "migrated-unreviewed"
+docStatus: "reviewed"
 legacyDocId: 232672344
 legacyContentUpdatedAt: "2025-08-16T06:49:55.000Z"
 ---

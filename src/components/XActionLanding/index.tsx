@@ -64,6 +64,12 @@ const CATEGORIES: CategoryItem[] = [
     description: '运行程序、输入输出、通知、打开网址',
   },
   {
+    key: 'Waiting',
+    href: '/v2/xaction/modules/category/waiting',
+    title: '等待',
+    description: '等待时间、窗口、按键或剪贴板变化',
+  },
+  {
     key: 'Text',
     href: '/v2/xaction/modules/category/text',
     title: '文本处理',

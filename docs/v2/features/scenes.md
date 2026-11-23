@@ -142,4 +142,4 @@ regex:^https://example\.com/docs/start$
 
 相对 1.x 的管理方式和诊断见 [场景与触发方式](/v2/what's-new/scenes-and-triggers.md)。各入口怎么选见 [快速触发概览](./triggers/index.md)。
 
-需要用动作切到某个场景、分组或旧动作页时，见 [加载场景与加载动作页](/v2/migration/new-main-win/load-action-page.md)。
+需要用动作切到某个场景、分组或旧动作页时，见 [加载场景与加载动作页](../migration/load-action-page.md)。

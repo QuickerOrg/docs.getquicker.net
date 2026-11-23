@@ -5,14 +5,14 @@ slug: "/v2/xaction/guides/scroll-trigger"
 sidebar_position: 110
 quickerDocKey: "xaction/guides/scroll-trigger"
 comments: true
-docStatus: "migrated-unreviewed"
+docStatus: "reviewed"
 legacyDocId: 11122851
 legacyContentUpdatedAt: "2023-06-26T04:08:11.000Z"
 ---
 
 **注意：**
 
--   因本功能无法在面板窗口触发（面板上滚动用于翻页），建议通过[高级鼠标触发功能](https://getquicker.net/kc/manual/doc/adv-mouse-actions)来实现类似的连续触发需求。
+-   因本功能无法在面板窗口直接用普通滚轮触发（面板上滚轮用于翻页），建议通过[高级鼠标触发功能](/v2/features/triggers/advanced-mouse-triggers)来实现类似的连续触发需求。
 -   Win7 不支持此功能。
 
 ## 概述
@@ -25,7 +25,7 @@ legacyContentUpdatedAt: "2023-06-26T04:08:11.000Z"
 
 滚动触发与悬浮动作按钮结合起来效果更佳。
 
-在面板窗口使用时，因为滚轮用于动作页翻页，所以需要按Shift或Ctrl+滚轮才能触发动作。在悬浮按钮上则可以直接滚动触发。
+在面板窗口使用时，因为滚轮用于翻页，需要按 `Ctrl + 滚轮` 才能触发动作；在悬浮动作按钮上则可以直接滚动触发。
 
 
 
@@ -77,14 +77,8 @@ legacyContentUpdatedAt: "2023-06-26T04:08:11.000Z"
 
 下面的表达式可用于判断是否通过滚动方式触发了动作（判断条件：参数内容是否以“\_scroll\_”开始）：
 
-**$=&#123;quicker\_in\_param&#125;**.**StartsWith**("\_scroll\_")
+`$= {quicker_in_param}.StartsWith("_scroll_")`
 
+下面的表达式可用于判断是否向下滚动（判断条件：参数内容是否以“\_scroll\_-”开始）：
 
-
-下面的表达式可用于判断是否向下滚动（判断条件：参数内容是否以“\_scroll\_**\-**”开始）：
-
-**$=** **&#123;quicker\_in\_param&#125;**.**StartsWith**("\_scroll\_-")
-
-
-
-\_
+`$= {quicker_in_param}.StartsWith("_scroll_-")`

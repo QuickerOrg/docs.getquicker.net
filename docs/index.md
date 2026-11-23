@@ -18,11 +18,7 @@ hide_table_of_contents: true
 
 Quicker 是 Windows 上的效率工具。你可以从面板运行动作，也可以用快捷键、鼠标手势等方式随时调用。
 
-<div className="docs-landing__notice">
-
-**V2 目前为 Preview 体验版，仅面向专业版用户。** 免费版数据迁移仍在开发，免费账号目前无法登录 2.0。体验前请阅读 [安装前准备](./important-notice.md)，不建议替换无法中断的 1.x 关键环境。
-
-</div>
+<V2PreviewNotice variant="landing" />
 
 ## 从这里开始
 
@@ -39,6 +35,7 @@ Quicker 是 Windows 上的效率工具。你可以从面板运行动作，也可
   {href: '/v2/features/triggers/', label: '快捷键与鼠标触发', description: '选择合适的快捷键、手势、轮盘或划词入口。'},
   {href: '/v2/features/screenshot/', label: '截图与贴图', description: '截图、标注、滚动截图，以及将图片贴在桌面上。'},
   {href: '/v2/xaction/modules', label: '组合动作模块参考', description: '按分类查找步骤，查看参数、输出和使用说明。'},
+  {href: '/v2/script-action', label: '脚本动作', description: '用 C# 语法与 qk API 编写、调试和分享动作。'},
   {href: '/v2/features/software-connections', label: '软件连接', description: '通过 Bridge 连接设计、建模和办公软件。'},
   {href: '/v2/features/ai-and-agent', label: 'AI 与 Agent', description: '配置模型，用 AI 编写动作，连接外部助手。'},
 ]} />
@@ -56,5 +53,14 @@ Quicker 是 Windows 上的效率工具。你可以从面板运行动作，也可
   <li><a href="/v2/xaction/guides/selected-text"><span className="docs-landing__lesson-number" aria-hidden="true">02</span><strong>把选中文字变成大写</strong><span>用变量传递和处理文本</span></a></li>
   <li><a href="/v2/xaction/guides/search-selected"><span className="docs-landing__lesson-number" aria-hidden="true">03</span><strong>选中文字就搜索</strong><span>加入条件，打开搜索网址</span></a></li>
 </ol>
+
+## 选择编写自动化的方法
+
+| 方式 | 适合什么任务 | 入口 |
+| --- | --- | --- |
+| **组合动作** | 图形化搭步骤、复用现成桌面与软件模块 | [入门教程](/v2/xaction/guides/how-to-learn) · [模块参考](/v2/xaction/modules) |
+| **脚本动作（C#）** | 文本/JSON/文件处理、多分支循环与现代 C# 代码 | [脚本动作](/v2/script-action) |
+| **运行 C# 步骤** | 在组合动作中复用原有 C# 代码块或 .NET 文件应用 | [运行C#代码](/v2/xaction/modules/csscript) · [运行C#文件应用](/v2/xaction/modules/file-based-apps) |
+| **自动化脚本（JS）** | 在组合动作中用轻量 JS 编排键鼠、窗口和图像定位 | [自动化脚本](/v2/xaction/modules/automationscript) |
 
 </div>

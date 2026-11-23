@@ -20,6 +20,16 @@ Quicker 提供一套完整的屏幕截取与后续处理能力，可在动作中
       featured: true,
     },
     {
+      href: '/v2/features/screenshot/ocr',
+      label: '文字识别（OCR）与表格识别',
+      description: '原图选字、OCR 结果窗、在线表格识别、翻译校对与本地 OCR 保活设置。',
+    },
+    {
+      href: '/v2/features/screenshot/recording-and-pin',
+      label: '桌面录屏、贴图窗口与采集历史',
+      description: '区域录屏、系统声音、录屏剪辑与智能缩放、桌面贴图交互及图片/录屏历史管理。',
+    },
+    {
       href: '/v2/features/screenshot/screen-text-selection',
       label: '屏幕拖选文字',
       description: '按住引导键拖选屏幕文字，复制、编辑或翻译；可直接开启 Win＋左键预设。',
@@ -62,7 +72,7 @@ Quicker 提供一套完整的屏幕截取与后续处理能力，可在动作中
   ]}
 />
 
-**2.3.29** 的图片管理用法见[图片、贴图与录屏管理](/v2/features/screenshot/capture-pro#图片与录屏历史管理)：在原有图片和贴图管理基础上，增加图片标签、来源程序筛选、标签内新截图以及文字识别等管理入口。绘制正方形、圆形和快捷复制标注见[标注快捷操作](/v2/features/screenshot/capture-pro#annotation-copy-2329)。
+**2.3.29** 的图片管理用法见[图片、贴图与录屏管理](/v2/features/screenshot/recording-and-pin#图片与录屏历史管理)：在原有图片和贴图管理基础上，增加图片标签、来源程序筛选、标签内新截图以及文字识别等管理入口。绘制正方形、圆形和快捷复制标注见[标注快捷操作](/v2/features/screenshot/capture-pro#annotation-copy-2329)。
 
 [官网 2.1.21 记录](https://getquicker.net/V2/Versions)中新增了独立的 **贴图** 组合动作步骤，可从图片变量、剪贴板、文本、HTML、公式或 OCR 原始结果创建贴图；内容参数会跟随内容来源显示。[官网 2.1.23 记录](https://getquicker.net/V2/Versions)进一步增加了「自动」和「截图原位置」贴图位置，Quicker 或 PixPin 复制的图片可贴回原处，旧动作仍保持原有自定义坐标。当前参数与用法见[贴图步骤](/v2/xaction/modules/pinimage)，2.3.7 发布快照的纯文本与主题变化也在该页说明。已有 **显示图片** 步骤仍可用于显示图片文件、图片变量或剪贴板图片。
 

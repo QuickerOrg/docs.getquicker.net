@@ -1,6 +1,7 @@
 ---
 title: 搜索功能与设置定位
 description: 使用搜索插件查找动作、设置和其它结果，配置触发词、动作直达词与默认处理。
+sidebar_position: 52
 quickerDocKey: v2/features/search
 comments: true
 ---

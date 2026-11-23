@@ -1,6 +1,7 @@
 ---
 title: 内容上下文菜单
 description: 配置文本、图片和文件的上下文菜单，以及搜索服务网址和文件移动目标。
+sidebar_position: 16
 quickerDocKey: v2/features/context-menu
 comments: true
 ---

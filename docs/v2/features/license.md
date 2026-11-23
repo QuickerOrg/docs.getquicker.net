@@ -1,6 +1,7 @@
 ---
 title: 专业版权益与版本限制
 description: 查看当前账号可用功能及购买续费入口，理解客户端版本限制提示。
+sidebar_position: 70
 quickerDocKey: v2/features/license
 comments: true
 ---

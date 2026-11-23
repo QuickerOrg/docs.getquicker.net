@@ -5,7 +5,7 @@ slug: "/v2/xaction/guides/web-page-control"
 sidebar_position: 70
 quickerDocKey: "xaction/guides/web-page-control"
 comments: true
-docStatus: "migrated-unreviewed"
+docStatus: "reviewed"
 legacyDocId: 117402914
 legacyContentUpdatedAt: "2023-03-11T12:42:09.000Z"
 ---
@@ -89,14 +89,16 @@ legacyContentUpdatedAt: "2023-03-11T12:42:09.000Z"
 
 ## 在网页上下文运行脚本
 
-浏览器扩展具有独立的上下文，因此是无法对网页里的对象和变量进行修改的。有一个变通的方式是在网页文档中插入一个&lt;script&gt;元素。
+浏览器扩展具有独立的上下文，因此是无法对网页里的对象和变量进行修改的。有一个变通的方式是在网页文档中插入一个 `<script>` 元素。
 
+```js
 const scriptElement = document.createElement('script');
 scriptElement.innerHTML = `
   console.log('Dynamic script loaded');
   // Execute code here
-  window.confirm = function()&#123;return true;&#125;
+  window.confirm = function() { return true; };
 `;
 document.body.appendChild(scriptElement);
+```
 
 上面的代码重写了网页的confirm方法，使得可以跳过网页里的确认窗口。

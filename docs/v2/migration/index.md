@@ -9,9 +9,7 @@ comments: false
 
 # 迁移
 
-:::caution[Preview · 仅专业版]
-当前 V2 是 **Preview 体验版**，仅面向专业版用户。免费版数据迁移仍在开发，免费账号目前无法登录 2.0。不建议用它替换无法中断的 1.x 关键环境。体验前请先读 [安装前准备](/important-notice)。
-:::
+<V2PreviewNotice />
 
 1.x 和 V2 **不能同时安装**。迁移是「备份 → 卸载 1.x → 安装 V2」，不是两套程序并行。
 
@@ -20,7 +18,7 @@ comments: false
 | [从 V1 迁移](./from-v1.md) | 可执行清单：同步备份、卸载、安装、验证、回退 |
 | [升级与回退](./upgrade-and-rollback.md) | 按功能查找版本兼容、降级与多设备同步注意项 |
 | [动作作者迁移指南](./action-authors.md) | 选择 V1/V2 支持范围、保留旧版修订和继续发布 V2 |
-| [加载场景与加载动作页](./new-main-win/load-action-page.md) | 新面板里如何切到指定场景、分组或旧动作页 |
+| [加载场景与加载动作页](./load-action-page.md) | 新面板里如何切到指定场景、分组或旧动作页 |
 | [数据存储与同步变化](/v2/what's-new/data-and-sync.md) | 首次登录如何分叉数据，以及为什么不是双向镜像 |
 
 相对 1.x 的能力变化见 [V2 重要变化](/v2/what's-new/)。

@@ -1,5 +1,6 @@
 ---
-title: "安全与授权"
+title: "脚本动作安全与授权"
+sidebar_label: "安全与授权"
 description: "脚本动作的 .NET 执行权限、运行确认、停止边界与分享注意事项。"
 quickerDocKey: v2/script-action/security
 comments: false

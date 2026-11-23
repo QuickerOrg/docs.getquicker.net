@@ -1,7 +1,7 @@
 ---
 title: 远程文件
 description: 配置 WebDAV 或 S3 账号，在组合动作中上传、下载、查询和批量传输远程文件。
-sidebar_position: 45
+sidebar_position: 46
 quickerDocKey: v2/features/remote-files
 comments: true
 ---

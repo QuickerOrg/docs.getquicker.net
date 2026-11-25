@@ -71,6 +71,16 @@ AI 服务连接与远程文件账号列表仅支持助手查询，**助手不能
 
 ## 自定义 MCP 集成的工具迁移 {/* #自定义-mcp-集成的写入方式 */}
 
+### 修改设置与打开原生页面 {/* #settings-write-2347 */}
+
+外部助手可以先通过 `quicker_settings_search` 查找设置、用 `quicker_settings_getvalues` 读取当前值，再通过 `quicker_settings_set` 修改已开放的全局设置。写入仍需开启 **允许 MCP 写入**，并遵守当前审批方式；完全控制也不会把未开放的内部项目或账号密钥变成可写。
+
+需要本人查看和调整时，可让助手调用 `quicker_settings_open` 打开原生设置页或定位具体项目。定位命令按钮只负责找到入口，不等于执行该命令；有子窗口阻挡、请求取消或目标不可用时，应按工具返回结果处理，不能把助手的文字回复当作已打开或已保存。
+
+这两项能力从 2.3.47 起按上述方式提供；升级后请在外部客户端刷新工具列表或重新连接。设置是否跨设备同步，取决于该设置本来的保存范围，不会因为由 MCP 修改就改变。
+
+### 旧工具与专用入口
+
 - `quicker_eval` 已彻底移除（2.3.18 起不再用于写入，2.3.22 起移除）。请刷新客户端工具清单并改用专用工具，例如查找/读取设置用 `quicker_settings_search`、`quicker_settings_getvalues`，读取表格用 `quicker_tables_listrows`。
 - 停止运行使用 `quicker_run_stop`（勿再向 `quicker_run_output` 传 `stop=true`）；合并预览使用 `quicker_merge_draft_preview`，`quicker_merge_draft` 只提交合并候选。
 - 以客户端获取到的实际工具列表与参数说明为准，浏览器写入工具不会因工具调整而自动向 MCP 开放；已有写入授权、客户端同意和运行批准继续独立生效。

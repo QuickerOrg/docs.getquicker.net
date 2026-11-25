@@ -61,9 +61,17 @@ comments: true
 
 多设备使用、降级或回退前，请阅读[升级与回退](/v2/migration/upgrade-and-rollback)。各版本的具体风险也在下方对应条目中标出。
 
-本站已补充到 **2.3.45**；版本下载与完整修复记录以官网为准。
+本站已补充到 **2.3.47**；版本下载与完整修复记录以官网为准。
 
 ## 近期文档补充
+
+### 2.3.47 · 面板设置、合并标签与分组导航
+
+- [面板设置](/v2/features/action-panel/usage#视图选项)说明独立工具窗口、布局与外观标签，以及流式和自由格子模式下的适用选项；[合并标签](/v2/features/action-panel/usage#panel-layout)说明全局优先、上下文优先及当前页搜索范围。
+- [分组导航](/v2/features/action-panel/usage#group-navigation)说明四种导航、单组禁用隐藏、文字栏调宽和区域初始 500ms 的悬停切组；[数字切标签](/v2/features/action-panel/usage#digit-scene-tabs)说明默认关闭、鼠标区域编号和搜索／动作触发键优先级。
+- [保存范围](/v2/features/action-panel/usage#panel-preferences-sync)区分账号同步偏好与当前实例的分组栏宽度；[外部 MCP](/v2/features/ai/mcp-and-external-agents#settings-write-2347)补充设置写入与原生页面定位。
+- [悬浮动作](/v2/features/floating-actions#紧凑半透明和名称显示)说明主题底色；软件同版还修正了面板中键关闭、底色与图文间距、字典空参数重载，并减少闲置状态更新开销，完整修复记录见官网。
+- **升级与回退**：[2.3.47 注意事项](/v2/migration/upgrade-and-rollback#panel-settings-2347)说明旧客户端保存和同步对合并布局及选中文字配色的影响。
 
 ### 2.3.45 · 问问AI步骤、图片对话与路径导航
 

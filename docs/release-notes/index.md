@@ -61,9 +61,21 @@ comments: true
 
 多设备使用、降级或回退前，请阅读[升级与回退](/v2/migration/upgrade-and-rollback)。各版本的具体风险也在下方对应条目中标出。
 
-本站已补充到 **2.3.47**；版本下载与完整修复记录以官网为准。
+本站已补充到 **2.3.49**；版本下载与完整修复记录以官网为准。
 
 ## 近期文档补充
+
+### 2.3.49 · 面板上下文设置与扩展热键分组
+
+- [相关场景合并显示](/v2/features/action-panel/usage#2317--合并显示父子场景动作)补充“面板设置”中的上下文场景选项，说明父场景顺序与分组来源标注；[分组导航](/v2/features/action-panel/usage#group-navigation)同步顶部圆点行的精简显示。软件同版减少场景切换时的按钮创建和重复布局开销。
+- [扩展热键](/v2/features/triggers/powerkeys#global-groups-2349)补充全局规则底部分组标签、横向滚动，以及紧凑键盘预览中的配置边框和数量标识。
+- [事件触发](/v2/features/settings#事件触发)说明编辑类型后列表描述和提示会同步刷新；完整修复记录见官网。
+
+### 2.3.48 · 蓝牙断开原因与模型名称
+
+- [蓝牙事件](/v2/features/settings#bluetooth-disconnect-2348)说明关闭电脑蓝牙时的断开触发、断开原因参数及无法区分外设关机原因的边界。
+- [模型选择](/v2/features/ai/prompt-library-and-sessions#session-recovery-2326)补充输入栏优先显示自定义模型名称、悬停查看 API 模型 ID；[面板设置](/v2/features/action-panel/usage#panel-layout)同步自由格子单组下隐藏创建动作磁贴选项。
+- [Shell文件操作](/v2/xaction/modules/shelloperation#显示系统上下文菜单)补充跨目录文件菜单修复。软件同版修复轮盘图标和标题空白、贴图富文本点击异常，完整记录见官网。
 
 ### 2.3.47 · 面板设置、合并标签与分组导航
 
@@ -72,6 +84,10 @@ comments: true
 - [保存范围](/v2/features/action-panel/usage#panel-preferences-sync)区分账号同步偏好与当前实例的分组栏宽度；[外部 MCP](/v2/features/ai/mcp-and-external-agents#settings-write-2347)补充设置写入与原生页面定位。
 - [悬浮动作](/v2/features/floating-actions#紧凑半透明和名称显示)说明主题底色；软件同版还修正了面板中键关闭、底色与图文间距、字典空参数重载，并减少闲置状态更新开销，完整修复记录见官网。
 - **升级与回退**：[2.3.47 注意事项](/v2/migration/upgrade-and-rollback#panel-settings-2347)说明旧客户端保存和同步对合并布局及选中文字配色的影响。
+
+### 2.3.46 · 截图加速资源与显示变化
+
+- [截图速度与资源占用](/v2/features/screenshot/capture-pro#capture-speed-2342)补充锁屏、远程桌面重连或显示变化后内存与线程持续增长的修复及临时关闭方式。
 
 ### 2.3.45 · 问问AI步骤、图片对话与路径导航
 
@@ -85,6 +101,13 @@ comments: true
 - [整场景移动](/v2/features/action-panel/usage#move-scene-2344)说明从 **面板动作** 右键菜单，将全部分组和动作入口移到父场景或其它场景；补充分组属性、空分组、同步范围和部分失败后的处理。
 - [动作面板常见问题](/v2/features/action-panel/faq)补充浏览器父场景的选择方法，并校正跨场景同名分组的处理说明；[保留暂存动作](/v2/features/action-panel/action-drafts#保留为正式动作)同步树形目标选择入口。
 - [搜索排障](/v2/features/search#排障)补充自定义程序目录深度无效时，仅跳过该条目录的行为。
+
+### 2.3.43 · 截图快捷键、面板重新迁移与菜单编辑
+
+- [截图快捷键](/v2/features/screenshot/capture-pro#capture-shortcuts-2340)补充默认命令的改绑、清除、单项恢复与整体恢复区别；[截图资源占用](/v2/features/screenshot/capture-pro#capture-speed-2342)说明首次截图关闭后才准备加速资源。
+- [按旧动作页重建面板](/v2/features/action-panel/usage#rebuild-from-legacy-2343)补齐预览、备份、同步范围和恢复保护；[维护工具](/v2/features/settings#维护工具)补充入口。
+- [内容上下文菜单](/v2/features/context-menu#list-editor-2343)补充搜索服务和“移动到”目标的列表编辑、拖动排序与图标推荐；[问问 AI](/v2/features/ai-and-agent#从搜索选区与菜单提问)补充选区读取失败时使用剪贴板及图片路径预览。
+- **升级与回退**：[快捷键兼容](/v2/migration/upgrade-and-rollback#capture-shortcuts-2343)说明回退后部分键位可能停用；[面板重新迁移](/v2/migration/upgrade-and-rollback#panel-rebuild-2343)说明覆盖范围及恢复前提。
 
 ### 2.3.42 · 截图速度与设置直达动作
 
@@ -298,6 +321,10 @@ comments: true
 - [升级与回退](/v2/migration/upgrade-and-rollback#2315--会话目录与截图-ai-历史)：回退旧版可能无法接续新版会话上下文，保存本机状态可能清除截图问题历史，需提前保留重要内容。
 - 修复动作预览中无法向 AI 提问分析内容、悬浮分组失去置顶后点击不能恢复的问题；改进 AI 服务启停和模型提示，服务设置保存失败时恢复原开关状态。完整修复记录见[官网版本记录](https://getquicker.net/V2/Versions)。
 
+### 2.3.14 · 模型能力与用途分配
+
+- [服务与模型设置](/v2/features/ai/services-and-models#服务连接与模型分开管理)补充助手允许选择工具调用能力未知的模型、明确不支持时仍不可选，以及模型旁的用途分配入口。
+
 ### 2.3.13 · 动作数据目录、桌面 AI 与存储调整
 
 - [动作数据文件夹](/v2/xaction/concepts/standard#动作数据文件夹)：说明设计目的、组合动作与脚本入口、创建目录、适用场景、分享和备份边界，以及删除时回收和手动恢复。补充[获取系统或动作信息](/v2/xaction/modules/getsysinfo)的新输出。（[#594](https://github.com/QuickerOrg/Quicker2-issues/issues/594)）
@@ -306,6 +333,12 @@ comments: true
 - [检查和下载依赖](/v2/xaction/modules/dependencycheck)：新包写入应用数据目录，继续识别旧包，后续步骤应使用实际输出路径。[清理旧浏览器数据副本](/v2/features/tools#清理旧浏览器数据副本)说明浏览器按目录迁移后的清理入口与限制。
 - [升级与回退](/v2/migration/upgrade-and-rollback#2313--动作文件与浏览器数据)：动作文件不包含在内置备份中；浏览器新旧副本独立变化，回退前需手动备份，清理旧副本不经过回收站。
 - 修复远程文件账号候选列表刷新、AutoCAD 连接依赖加载、带引号匿名成员名称的表达式兼容，以及部分输入、焦点和快捷键异常，并缩小安装包。完整条目见[官网版本记录](https://getquicker.net/V2/Versions)。
+
+### 2.3.11 · 变量读写检索与标注样式
+
+- [调试报告](/v2/xaction/concepts/debug#variable-access-2311)补充作用域、变量名和读取／赋值筛选、步骤参数定位，以及表达式引用不保证实际读取的限制。
+- [助手输入与历史编辑](/v2/features/ai/prompt-library-and-sessions#markdown-input-2311)补充 Markdown 输入、发送与换行按键，以及历史消息附件的归属。
+- [标注样式](/v2/features/screenshot/capture-pro#annotation-style-2311)补充各工具独立记忆的阴影、矩形与椭圆线型；[回退说明](/v2/migration/upgrade-and-rollback#annotation-style-2311)补充旧版保存本机工具样式的影响。
 
 ### 2.3.9 · AI 动作编写、截图撕边与录屏操作
 

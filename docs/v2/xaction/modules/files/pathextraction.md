@@ -44,7 +44,7 @@ legacyContentUpdatedAt: "2022-06-14T01:38:52.000Z"
 
 ## 更改扩展名，其它不变
 
-基于现有路径，只改扩展名（需 Quicker 1.33.25+）。
+基于现有路径，只改扩展名。
 
 <ModuleParamPreview
   moduleKey="sys:pathExtraction"

@@ -6,7 +6,7 @@ comments: false
 sidebar_position: 3
 ---
 
-脚本动作使用 C# 语法，由 Quicker 内置解释器执行。源码由一个 Main 入口与可选辅助方法组成。2.3.23 起可使用 .NET 类型；Quicker 与桌面操作也可通过 qk 完成。
+脚本动作使用 C# 语法，由 Quicker 内置解释器执行。源码由一个 Main 入口与可选辅助方法组成。可使用 .NET 类型；Quicker 与桌面操作也可通过 qk 完成。
 
 ```csharp
 string Main(
@@ -21,13 +21,13 @@ string Main(
 
 常用变量、条件、循环、字符串插值、LINQ、模式匹配、try/catch/finally、局部函数、元组、匿名类型、List、Dictionary、Regex 和 JsonNode 可用。
 
-不支持 async/await、yield、lock、goto、声明 class/record/struct/enum/命名空间及泛型局部函数。2.3.23 起，方法和局部函数声明中的 public、private、protected、internal、static 会在分析和执行时自动忽略，无需为此删改原文；这不会开放类声明、异步方法或泛型入口。想组织数据时可使用元组、匿名类型或字典。
+不支持 async/await、yield、lock、goto、声明 class/record/struct/enum/命名空间及泛型局部函数。方法和局部函数声明中的 public、private、protected、internal、static 会在分析和执行时自动忽略，无需为此删改原文；这不会开放类声明、异步方法或泛型入口。想组织数据时可使用元组、匿名类型或字典。
 
 当前也不支持 catch 中不带异常表达式的 `throw;`。从旧 CLR 脚本复制错误处理时，应先检查受控语法，再选择返回失败结果或使用产品支持的异常处理写法。
 
 ## .NET 类型环境
 
-2.3.23 起，脚本与组合动作共享 .NET 类型环境，可以直接使用 File、Directory、HttpClient、Process、Thread、Console 等类型。常用类型可用短名；发生同名歧义时使用完整类型名。可用类型来自当前产品及其已提供的程序集，并不表示可以原样运行任意 C# 项目或自动引用所有第三方库。
+脚本与组合动作共享 .NET 类型环境，可以直接使用 File、Directory、HttpClient、Process、Thread、Console 等类型。常用类型可用短名；发生同名歧义时使用完整类型名。可用类型来自当前产品及其已提供的程序集，并不表示可以原样运行任意 C# 项目或自动引用所有第三方库。
 
 qk API 继续提供适合动作的参数、目标窗口、取消和结果处理。下面是常用替代方式，可按任务选择 .NET 或 qk；两者的默认值、权限、超时及异常行为需要分别核对。
 
@@ -43,6 +43,14 @@ qk API 继续提供适合动作的参数、目标窗口、取消和结果处理�
 
 ## 源码中的 qk 调用
 
-建议直接写 qk.域.方法(...)，例如 qk.Clipboard.GetText()，辅助方法也可以直接访问 qk。2.3.23 起不再按旧的能力识别规则限制分享，但入口、类型和实际调用仍需通过编辑器检查。执行权限与停止边界见[安全与授权](./security.md)。
+建议直接写 qk.域.方法(...)，例如 qk.Clipboard.GetText()，辅助方法也可以直接访问 qk。入口、类型和实际调用需通过编辑器检查，分享前还应验证所需依赖和运行效果。执行权限与停止边界见[安全与授权](./security.md)。
 
 窗口、图片和界面元素等句柄只属于本次运行；不要返回这些句柄或写进动作状态。需要保存数据时，使用对应的信息快照或纯数据类型。坐标与尺寸的具体语义见各 API 域与公共类型。
+
+## 历史版本相关变化
+
+以下为与本页相关的重要变化，当前用法以正文为准。
+
+- [2.3.23](/release-notes#2323--脚本-net截图布局与文件收发)：脚本可直接使用共享 .NET 类型环境，不再按来源或能力逐项确认；仍以 Quicker 权限执行。
+
+更早记录与完整修复列表见[更新记录](/release-notes)。

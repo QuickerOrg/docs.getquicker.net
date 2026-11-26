@@ -32,21 +32,21 @@ legacyContentUpdatedAt: "2025-02-20T23:53:47.000Z"
 
 ## 参数说明
 
-**步骤脚本**：每行一条指令。`//` 开头是注释。格式为 `命令:参数`。没法换行时，可用 `;;` 表示换行（1.36.17+）。
+**步骤脚本**：每行一条指令。`//` 开头是注释。格式为 `命令:参数`。没法换行时，可用 `;;` 表示换行。
 
 **失败后停止**：出错后是否中止动作。默认开启。
 
 ### 键盘命令
 
 - **input**：模拟键入纯文本（不受输入法影响）。如 `input:hello world，你好 世界`。
-- **input2**（1.30.0+）：纯文本，支持转义。`\t` 是 Tab，`\r\n` 是换行。
+- **input2**：纯文本，支持转义。`\t` 是 Tab，`\r\n` 是换行。
 - **sendkeys**：按 [模拟按键B](/v2/xaction/modules/sendkeys) 语法。如 `sendkeys:{LEFT 2}`。
 - **delay**：等待毫秒。如 `delay:1000`。
 - **paste**：写入剪贴板后模拟 Ctrl+V。如 `paste:hello world`。
 - **keydown** / **keyup** / **keypress**：按下、抬起、点按。如 `keydown:F1`，或 `keydown:#175`（`#` + 键值）。keydown 必须配对 keyup。键名见 [Keys 枚举](https://docs.microsoft.com/zh-cn/dotnet/api/system.windows.forms.keys?view=net-5.0)。
 - **hotkey**：组合键。如 `hotkey:Ctrl+S`。数字键写成 `D` + 数字，如 `hotkey:Ctrl+Alt+D1`。
 
-### 鼠标命令（1.28.16+）
+### 鼠标命令 {/* #鼠标命令12816 */}
 
 - **moveto**：移到绝对坐标。`moveto:100,200`。1.30.0+ 支持百分比，`moveto:50%,50%` 是主屏中心。
 - **move**：相对移动。`move:10,-10` 向右、向上各 10 像素。
@@ -54,7 +54,7 @@ legacyContentUpdatedAt: "2025-02-20T23:53:47.000Z"
 - **wheel** / **wheeldelta**：垂直滚动。正值远离用户（内容向下），负值朝向用户。`wheel` 单位是 click（行），`wheeldelta` 是 1/120 click。
 - **hwheel** / **hwheeldelta**：水平滚动。正值内容向左，负值向右。
 
-### 组合命令（1.28.12+）
+### 组合命令 {/* #组合命令12812 */}
 
 - **pastefile**：把文件放进剪贴板后 Ctrl+V。多个路径用英文分号：`pastefile:d:\test1.png;d:\test2.txt`。
 - **pasteimage**：读图片文件为图片对象再粘贴（不是粘贴文件）。只支持一张：`pasteimage:d:\test.png`。
@@ -65,7 +65,7 @@ legacyContentUpdatedAt: "2025-02-20T23:53:47.000Z"
 
 ## 编辑窗口
 
-2.2.10 起，多步骤输入的可视化编辑窗口支持：
+多步骤输入的可视化编辑窗口支持：
 
 - **撤销 / 重做**编辑操作
 - **批量修改**多条步骤的启用状态与延迟
@@ -123,7 +123,12 @@ legacyContentUpdatedAt: "2025-02-20T23:53:47.000Z"
   ]}
 />
 
-## 更新历史
+<a id="更新历史" />
 
-- 20230219 增加 hotkey 中使用数字键的说明。
-- 20250221 增加新的辅助动作链接。
+## 历史版本相关变化
+
+以下为与本页相关的重要变化，当前用法以正文为准。
+
+- [2.2.10](/release-notes/archive-2-1-2-2#2210--面板轮盘与编辑器)：扩展多步骤输入的可视化编辑。
+
+更早记录与完整修复列表见[更新记录](/release-notes)。

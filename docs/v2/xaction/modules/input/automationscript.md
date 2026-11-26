@@ -15,7 +15,7 @@ metadataGeneratedAt: "2026-09-25 22:26:23"
 
 使用 JavaScript 编排鼠标、键盘、Quicker 提示消息、文本剪贴板以及屏幕识别相关操作。适合坐标数组、循环、网格、批量点击、键鼠组合以及根据运行结果显示消息或读写文本这类用普通步骤不方便表达的自动化。
 
-:::warning[2.3.17 起不能新建]
+:::warning[仅用于维护已有动作]
 动作编辑器已隐藏“自动化脚本”的新建入口，已有动作中的步骤仍可运行。本页的参数和示例供维护旧动作参考；新动作请使用当前编辑器中可选择的步骤或[脚本动作](/v2/script-action/)实现所需操作。
 :::
 
@@ -32,7 +32,7 @@ metadataGeneratedAt: "2026-09-25 22:26:23"
 - 需要循环、数组、条件判断、坐标计算、热键、键鼠组合、提示消息、文本剪贴板或脚本化识别定位：使用本模块。
 - 需要通用 JavaScript、动作变量读写或可选 CLR：使用[运行 Javascript 代码](/v2/xaction/modules/jsscript)。它与本模块的语法和安全边界不同。
 
-本模块专门提供受控的桌面自动化能力，不是可任意访问系统资源的通用 JavaScript 环境，也不会替换已有的 JavaScript 模块。2.1.29 起，自动化脚本可面向窗口和区域做 OCR、找图、找色，并对识别或定位到的目标执行相对点击；目标窗口移动后，仍可按最新位置执行。
+本模块专门提供受控的桌面自动化能力，不是可任意访问系统资源的通用 JavaScript 环境，也不会替换已有的 JavaScript 模块。自动化脚本可面向窗口和区域做 OCR、找图、找色，并对识别或定位到的目标执行相对点击；目标窗口移动后，仍可按最新位置执行。
 
 ## 当前模块定义
 
@@ -116,7 +116,7 @@ if (match !== null) {
 
 ### 打开 Quicker 截图 {/* #打开截图-pro */}
 
-2.2.19 起，可从 `"quicker/capture"` 导入 `capturePro`，打开 Quicker 截图并同步等待结束：
+可从 `"quicker/capture"` 导入 `capturePro`，打开 Quicker 截图并同步等待结束：
 
 ```javascript
 import { capturePro } from "quicker/capture";
@@ -477,7 +477,7 @@ notify.show("正在同步", {
 });
 ```
 
-`placement` 支持 `bottomCenter`、`bottomLeft`、`bottomRight`、`topCenter`、`topLeft`、`topRight`。2.2.22 起，省略 `placement` 时跟随[提示消息的全局默认位置](/v2/xaction/modules/notify#默认位置与停留时间)；明确传入 `bottomCenter` 则固定在底部居中。省略 `durationMs` 或设为 `0` 时使用全局默认时长。`title` 最长 128 个字符，`key` 最长 64 个字符且不能全是空白。
+`placement` 支持 `bottomCenter`、`bottomLeft`、`bottomRight`、`topCenter`、`topLeft`、`topRight`。省略 `placement` 时跟随[提示消息的全局默认位置](/v2/xaction/modules/notify#默认位置与停留时间)；明确传入 `bottomCenter` 则固定在底部居中。省略 `durationMs` 或设为 `0` 时使用全局默认时长。`title` 最长 128 个字符，`key` 最长 64 个字符且不能全是空白。
 
 相同 `key` 只在当前动作范围内参与去重：`replace` 替换已有消息，`count` 合并并累计次数，`ignore` 忽略新的重复消息。每次脚本最多显示 20 条提示，每秒最多 5 条；超过限制返回 `NOTIFY_LIMIT_EXCEEDED`。
 
@@ -617,7 +617,7 @@ export default {
 - 授权绑定动作、脚本、超时、恢复位置选项和固定配额策略；这些内容变化后需要重新确认。
 - 授权只保存在当前账号的本机数据中，不随动作导出、分享、状态备份或同步到其它设备。
 - 只有脚本导入 `mouse` 或 `key` 时才会建立输入接管会话和占用输入互斥。仅使用 `notify`、`clipboard`、`screen`、`sleep` 或 `input` 的脚本不会占用鼠标键盘输入接管。
-- 锁屏、UAC / 安全桌面下不会注入输入。鼠标操作会核对目标坐标下的窗口，键盘操作会核对当前前台窗口。2.3.39 起，不再仅因目标已提权、完整性级别更高或无法预先读取权限而拒绝；实际输入仍受 Windows 限制，不能据此绕过系统权限。
+- 锁屏、UAC / 安全桌面下不会注入输入。鼠标操作会核对目标坐标下的窗口，键盘操作会核对当前前台窗口。不再仅因目标已提权、完整性级别更高或无法预先读取权限而拒绝；实际输入仍受 Windows 限制，不能据此绕过系统权限。
 - 启动时已经按住的动作触发键或鼠标按钮，需要在 1 秒内松开；新的按键、鼠标按钮或滚轮输入会立即由用户接管。
 - 真实鼠标在 200 毫秒内累计移动约 5 个物理像素也会接管；极小的传感器抖动不会立刻中止。
 - 如果已经配置 Quicker 的“停止运行中动作”全局热键，也可以用它取消正在执行的自动化脚本。
@@ -692,7 +692,7 @@ export default {
 | `INPUT_BUSY` | 另一个已接入协调器的输入自动化正在运行；等待它结束。 |
 | `INPUT_MONITOR_UNAVAILABLE` | Quicker 无法可靠监测用户接管；重新启动 Quicker 后再试。 |
 | `WINDOWS_LOCKED`、`SECURE_DESKTOP`、`UNSAFE_DESKTOP` | 解锁 Windows，关闭 UAC / 安全桌面后再运行。 |
-| `ELEVATED_TARGET_DENIED`、`TARGET_PERMISSION_UNKNOWN` | 旧版可能按目标权限拒绝；2.3.39 起已移除这类权限前置限制，仍需检查目标窗口是否存在、可访问，以及 Windows 返回的实际失败原因。 |
+| `ELEVATED_TARGET_DENIED`、`TARGET_PERMISSION_UNKNOWN` | 旧版可能按目标权限拒绝；已移除这类权限前置限制，仍需检查目标窗口是否存在、可访问，以及 Windows 返回的实际失败原因。 |
 | `INPUT_LIMIT_EXCEEDED`、`LIMIT_EXCEEDED` | 减少点击、滚轮、按键、文本、循环、源码规模或复杂度。 |
 | `NOTIFY_LIMIT_EXCEEDED` | 减少提示消息数量或发送频率；每次运行最多 20 条、每秒最多 5 条。 |
 | `NOTIFY_FAILED` | Quicker 提示消息发布失败；检查应用状态后重试。 |
@@ -730,7 +730,16 @@ export default {
   ]}
 />
 
-## 更新历史
+<a id="更新历史" />
 
-- 2026-08-14 新增 Quicker 提示消息和文本剪贴板 API，并按导入能力建立宿主。
-- 2026-08-13 首次加入自动化脚本模块文档，提供受控的鼠标和键盘 API。
+## 历史版本相关变化
+
+以下为与本页相关的重要变化，当前用法以正文为准。
+
+- [2.3.39](/release-notes#2339--选字自动复制设置导航与面板菜单)：桌面输入仍受系统权限限制，但不再仅因提权身份预先拒绝。
+- [2.3.17](/release-notes#2317--问问-ai场景合并与截图)：隐藏自动化脚本的新建入口，已有步骤仍可运行。
+- [2.2.22](/release-notes#2222--列表编辑提示消息与长截图)：提示消息可跟随全局默认位置与时长。
+- [2.2.19](/release-notes/archive-2-1-2-2)：可通过 capturePro 打开截图并等待结束。
+- [2.1.29](/release-notes/archive-2-1-2-2)：增加窗口与区域内 OCR、找图、找色与相对点击。
+
+完整发布信息见[更新记录](/release-notes)。

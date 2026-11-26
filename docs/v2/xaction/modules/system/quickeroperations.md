@@ -27,7 +27,7 @@ legacyContentUpdatedAt: "2024-08-20T01:16:01.000Z"
 
 <ModuleParamPreview moduleKey="sys:quickeroperations" />
 
-## 2.3.25 · 设置页与悬浮分组管理 {/* #management-2325 */}
+## 设置页与悬浮分组管理 {/* #management-2325 */}
 
 **显示设置窗口** 可填写“设置页面标识”，直接打开指定页面；留空沿用默认页面。页面标识示例：`BasicInfo`、`SearchSettings`、`ScreenCaptureSettings`。
 
@@ -35,7 +35,7 @@ legacyContentUpdatedAt: "2024-08-20T01:16:01.000Z"
 
 ## 获取最近使用的动作列表 {/* #recent-actions-2338 */}
 
-2.3.38 起，**类型** 可选 **获取最近使用的动作列表**。可用它制作“最近运行”菜单：先读取列表，再交给[显示菜单](/v2/xaction/modules/showmenu)或用户选择步骤，最后把选中的动作 ID 交给[运行动作](/v2/xaction/modules/runaction)。读取列表本身不会执行动作。
+**类型** 可选 **获取最近使用的动作列表**。可用它制作“最近运行”菜单：先读取列表，再交给[显示菜单](/v2/xaction/modules/showmenu)或用户选择步骤，最后把选中的动作 ID 交给[运行动作](/v2/xaction/modules/runaction)。读取列表本身不会执行动作。
 
 <ModuleParamPreview
   moduleKey="sys:quickeroperations"
@@ -185,7 +185,7 @@ legacyContentUpdatedAt: "2024-08-20T01:16:01.000Z"
 
 打开场景、动作与触发管理。需要时可填 **场景标识**，自动切到该场景。
 
-2.2.26 起，此选项和窗口名称改为「显示场景、动作与触发管理窗口」，以说明这里也管理触发规则。操作标识和场景参数保持兼容，已有动作不需要重建；这与设置中的「全部动作」管理页不同。
+选择 **显示场景、动作与触发管理窗口** 可管理场景与规则；它与管理动作本体的 **设置 → 动作 → 全部动作** 是不同入口。
 
 <ModuleParamPreview
   moduleKey="sys:quickeroperations"
@@ -253,8 +253,8 @@ legacyContentUpdatedAt: "2024-08-20T01:16:01.000Z"
 
 - 动作 ID
 - 动作名称（名称必须唯一）
-- `%%` 公共子程序 id（1.43.18+）
-- `%%` 公共子程序名称（1.43.18+）
+- `%%` 公共子程序 id
+- `%%` 公共子程序名称
 
 右键动作 → 信息 可查看 ID。用名称时不能有重名。
 
@@ -414,6 +414,14 @@ legacyContentUpdatedAt: "2024-08-20T01:16:01.000Z"
   ]}
 />
 
-## 更新历史
+<a id="更新历史" />
 
-- 20240820 完善文档。
+## 历史版本相关变化
+
+以下为与本页相关的重要变化，当前用法以正文为准。
+
+- [2.3.38](/release-notes#2338--文本指令黑名单最近动作与面板入口)：可读取最近使用动作列表。
+- [2.3.25](/release-notes#2325--截图现场尺寸约束与-ai-编辑)：扩展设置页与悬浮分组管理操作。
+- [2.2.26](/release-notes#2226--动作编辑-ai-分析上下文菜单与入口整合)：管理窗口名称统一为场景、动作与触发管理。
+
+完整发布信息见[更新记录](/release-notes)。

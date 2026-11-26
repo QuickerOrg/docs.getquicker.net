@@ -262,7 +262,4 @@ curl.exe -F "file=@D:\Temp\demo.txt" "http://127.0.0.1:8080/__api/upload?path=/u
   ]}
 />
 
-## 更新历史
-
-- 20240701 增加 HTTPS 证书过期说明。
-- 20260810 增加程序化上传 API 及失败排查。
+<a id="更新历史" />

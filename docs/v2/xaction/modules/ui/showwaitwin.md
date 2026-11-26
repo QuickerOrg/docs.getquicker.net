@@ -78,7 +78,7 @@ legacyContentUpdatedAt: "2025-03-13T03:07:54.000Z"
   buttons={['aaa', 'bbb', 'ccc', '完成']}
 />
 
-按钮文字可用 `[fa:Light_Pen:#99AAFF]标题(Tooltip)`（1.5.21+）。
+按钮文字可用 `[fa:Light_Pen:#99AAFF]标题(Tooltip)`。
 
 **图标大小**：按钮图标逻辑像素，默认 16。
 

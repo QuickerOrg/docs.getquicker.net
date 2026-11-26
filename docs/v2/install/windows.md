@@ -13,8 +13,8 @@ comments: true
 ## 系统要求
 
 - **系统**：仅支持 [.NET 10 官方支持的 Windows](https://github.com/dotnet/core/blob/main/release-notes/10.0/supported-os.md)。Windows 7、8、8.1 不能安装。普通用户建议使用仍受支持的 Windows 11，并按电脑的处理器架构选择安装包。
-- **架构**：2.3.31 起提供 **x64** 和 **ARM64** 原生安装包。Intel/AMD 的普通 64 位电脑选 x64；Windows on ARM 电脑选 ARM64。32 位 Windows 不能安装或运行。
-- **账号**：2.3.33 起，新用户需登录或注册云账号；已有本机离线账号可继续使用，见[账号与同步](/v2/features/account-and-sync#登录之后会发生什么)。
+- **架构**：提供 **x64** 和 **ARM64** 原生安装包。Intel/AMD 的普通 64 位电脑选 x64；Windows on ARM 电脑选 ARM64。32 位 Windows 不能安装或运行。
+- **账号**：新用户需登录或注册云账号；已有本机离线账号可继续使用，见[账号与同步](/v2/features/account-and-sync#登录之后会发生什么)。
 
 更细的运行时、Office/COM 位数和脚本兼容性见 [运行平台与兼容性](/v2/what's-new/platform-and-compatibility.md)。
 
@@ -24,7 +24,7 @@ comments: true
 2. 下载的是独立安装器 `.exe` 时，按[安装器说明](./installer.md)先准备运行环境，再安装 Quicker。下载完整 `.msi` 时，按向导完成安装；若提示缺少 [.NET 10 桌面运行时](https://dotnet.microsoft.com/download/dotnet/10.0)，选择与 Quicker 安装包相同的 x64 或 ARM64 桌面运行时，安装后再打开 Quicker。
 3. 若 Windows SmartScreen 或浏览器拦截，先确认文件来自上述官网，再选择保留并继续。
 
-**不要**从 [https://getquicker.net/Download](https://getquicker.net/Download) 下载。那个页面目前提供的是 Quicker **1.x**（例如 1.45.5），不是 V2。
+**不要**从 [https://getquicker.net/Download](https://getquicker.net/Download) 下载。那个页面目前提供的是 Quicker **1.x**，不是 V2。
 
 不要从不明镜像或转发网盘下载。本机若已安装 1.x，先按 [从 V1 迁移](/v2/migration/from-v1.md) 备份并卸载，再装 V2。安装完成后从开始菜单或桌面快捷方式启动。
 
@@ -74,3 +74,12 @@ comments: true
     },
   ]}
 />
+
+## 历史版本相关变化
+
+以下为与本页相关的重要变化，当前用法以正文为准。
+
+- [2.3.33](/release-notes#2333--录屏编辑ocr-模式与窗口滑动)：新用户使用云账号登录，已有本机离线账号可继续使用。
+- [2.3.31](/release-notes#2331--windows-arm64ocr-结果窗与录屏声音)：提供 x64 与 ARM64 原生安装包。
+
+更早记录与完整修复列表见[更新记录](/release-notes)。

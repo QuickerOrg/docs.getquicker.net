@@ -36,7 +36,7 @@ if ({number1} > {number2})
 
 ### 补全与验证
 
-补全会提示关键词和变量方法。默认使用在线服务，需要联网；2.2.21 起，也可以在“设置 → 动作设计 → 代码补全服务”中选择本地补全。提示仅供参考，以实际运行为准。
+补全会提示关键词和变量方法。默认使用在线服务，需要联网；也可以在“设置 → 动作设计 → 代码补全服务”中选择本地补全。提示仅供参考，以实际运行为准。
 
 ![](./img/expression-adv-001-e21604f457.gif)
 
@@ -83,36 +83,37 @@ if ({number1} > {number2})
 | TryGetValue | 没有该变量时返回默认值 |
 | IsVarExists | 变量是否存在 |
 | GetRootContext | 主程序上下文 |
-| GetParentContext | 上一级子程序或主程序（1.37.24+） |
+| GetParentContext | 上一级子程序或主程序 |
 | RunSp | 跑子程序 |
 | WriteState / ReadState | 动作状态 |
 | WriteCache / ReadCache | 对象缓存（动作结束后仍留在内存，退出 Quicker 失效） |
-| UpdateVariablesFromDict | 用词典更新变量，键是变量名（1.26.0+） |
-| UpdateVariablesFromJson | 用 JSON 键值更新变量（1.26.0+） |
+| UpdateVariablesFromDict | 用词典更新变量，键是变量名 |
+| UpdateVariablesFromJson | 用 JSON 键值更新变量 |
 
-搜索框触发的动作可用 `$=_context.ExtraData?.ActiveWindowBeforeSearch` 取搜索窗出现前的活动窗口句柄（1.39.10+）。
+搜索框触发的动作可用 `$=_context.ExtraData?.ActiveWindowBeforeSearch` 取搜索窗出现前的活动窗口句柄。
 
 <a id="开发中读取动作的只读信息" />
 
-### 2.3.7 · 读取动作的只读信息
+### 读取动作的只读信息 {/* #237--读取动作的只读信息 */}
 
-:::caution[2.3.8 起请使用独立属性]
-2.3.7 的 `_context.Action.Icon`、`.Title`、`.Description` 写法在 2.3.8 起不再适用，已有表达式不会自动改写。当前请使用 `_context.ActionIcon`、`_context.ActionTitle`、`_context.ActionDescription`；动作 ID 继续使用 `_context.ActionId`。图标和说明属性需要 2.3.8 或更高版本。下方保留 2.3.7 的说明用于核对旧动作。
+通过运行上下文的独立只读属性获取当前动作信息：
 
-例如当前动作图标使用 `$=_context.ActionIcon`，主程序图标使用 `$=_context.GetRootContext().ActionIcon`。这些属性只读取信息，不修改动作。
-:::
+| 属性 | 内容 |
+| --- | --- |
+| `_context.ActionId` | 动作 ID，字符串 |
+| `_context.ActionTitle` | 动作标题 |
+| `_context.ActionIcon` | 动作图标描述 |
+| `_context.ActionDescription` | 动作说明 |
 
-以下说明依据 **2.3.7 发布快照**，版本是否开放下载以[官网版本记录](https://getquicker.net/V2/Versions)为准。
-
-动作运行时可通过 `_context.Action` 读取 `Id`、`Title`、`Icon` 和 `Description`。例如给子程序传递当前动作图标：
+例如给子程序传递当前动作图标：
 
 ```csharp
-$=_context.Action.Icon
+$=_context.ActionIcon
 ```
 
-`Id` 是 `Guid`；文字和图标字段可能为空。原有 `_context.ActionId`（字符串）和 `_context.ActionTitle` 继续可用，需要字符串 ID 时不必换成新属性。需要主程序信息时，可使用 `$=_context.GetRootContext().Action.Icon`；这些读取不会查找或修改动作库中的其他动作。
+读取主程序信息时，使用 `$=_context.GetRootContext().ActionIcon` 等属性。它们只读取运行中的动作，不查找其他动作，也不能通过赋值修改动作库。要根据 ID 查询另一动作，使用[Quicker 操作 · 根据 ID 获取动作信息](/v2/xaction/modules/quickeroperations#根据id获取动作信息)。
 
-这四个成员只读，不能通过赋值修改图标或标题，也没有恢复旧内部动作对象的完整成员集合；`Options`、`OperationPayload` 等不在此入口中。2.3.6 及此前版本遇到“没有成员 Action”时，可使用[Quicker 操作 · 根据 ID 获取动作信息](/v2/xaction/modules/quickeroperations#根据id获取动作信息)，不要把新版表达式直接当作旧版兼容写法。
+图标与说明属性最低需要 2.3.8。早期 `_context.Action.*` 写法的迁移注意事项见[升级与回退](/v2/migration/upgrade-and-rollback)。
 
 ### `_eval`
 
@@ -169,3 +170,12 @@ EvalManager.DefaultContext.RegisterType(
     },
   ]}
 />
+
+## 历史版本相关变化
+
+以下为与本页相关的重要变化，当前用法以正文为准。
+
+- [2.3.8](/release-notes#238--动作隐藏远程目录删除与表达式兼容)：动作图标和说明改用上下文独立只读属性，替代早期 Action 对象入口。
+- [2.2.21](/release-notes#2221--代码补全与动作面板)：提供可选的本地代码补全服务。
+
+更早记录与完整修复列表见[更新记录](/release-notes)。

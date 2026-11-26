@@ -6,9 +6,9 @@ comments: false
 sidebar_position: 10
 ---
 
-## 2.3.25 · Quicker 管理分支
+## Quicker 管理分支 {/* #2325--quicker-管理分支 */}
 
-2.3.25 起，`qk.Steps.Run` 对 `sys:quickeroperations` 开放设置、场景管理及悬浮分组管理分支，这是下方“控制 Quicker 不支持”规则的限定例外。`type` 必须显式填写，不能因模块已经开放就调用其余操作；其他功能继续使用 `qk.Actions` 或 `qk.Quicker.Command`。
+`qk.Steps.Run` 对 `sys:quickeroperations` 开放设置、场景管理及悬浮分组管理分支，这是下方“控制 Quicker 不支持”规则的限定例外。`type` 必须显式填写，不能因模块已经开放就调用其余操作；其他功能继续使用 `qk.Actions` 或 `qk.Quicker.Command`。
 
 例如，打开截图设置：
 
@@ -44,3 +44,11 @@ IReadOnlyDictionary<string, object?> Run(string key, object? inputs = null, int 
 返回类型：`IReadOnlyDictionary<string, object?>`。空值、用户取消和异常行为以成员及域说明为准。
 
 {/* script-api:end */}
+
+## 历史版本相关变化
+
+以下为与本页相关的重要变化，当前用法以正文为准。
+
+- [2.3.25](/release-notes#2325--截图现场尺寸约束与-ai-编辑)：qk.Steps.Run 开放 Quicker 操作的设置、场景与悬浮分组管理分支。
+
+更早记录与完整修复列表见[更新记录](/release-notes)。

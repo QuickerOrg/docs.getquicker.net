@@ -18,17 +18,13 @@ legacyContentUpdatedAt: "2023-03-11T12:42:09.000Z"
 
 ## 网页填表
 
-
-
 #### 普通输入框、文本域、单选列表
 
 ![](./img/web-page-control-001-5577d16ab6.png)
 
 ![](./img/web-page-control-002-531408c7de.png)
 
-在获取选择器的时候，务必选择input元素本身的选择器，不要选到它的外层元素。2.1.27 起，使用 Quicker Connector 获取 CSS 选择器时，选中后可滚动鼠标滚轮切换上级 / 下级元素，按 `Enter` 确认。
-
-
+在获取选择器的时候，务必选择input元素本身的选择器，不要选到它的外层元素。使用 Quicker Connector 获取 CSS 选择器时，选中后可滚动鼠标滚轮切换上级 / 下级元素，按 `Enter` 确认。
 
 #### 检查框、单选按钮(Radio)
 
@@ -69,8 +65,6 @@ legacyContentUpdatedAt: "2023-03-11T12:42:09.000Z"
   />
 </PreviewMarks>
 
-
-
 #### 多选形式的列表
 
 ![](./img/web-page-control-005-de99e9ef2a.png)
@@ -78,8 +72,6 @@ legacyContentUpdatedAt: "2023-03-11T12:42:09.000Z"
 此时需要更新“数组值”类型。在“值”参数中分行填写每个要选择的值，或使用JSON数组格式填写。（注意在JSON中，每个值需要使用双引号包围）
 
 ![](./img/web-page-control-006-e68da8533f.png)
-
-
 
 #### 文件选择控件
 
@@ -102,3 +94,11 @@ document.body.appendChild(scriptElement);
 ```
 
 上面的代码重写了网页的confirm方法，使得可以跳过网页里的确认窗口。
+
+## 历史版本相关变化
+
+以下为与本页相关的重要变化，当前用法以正文为准。
+
+- [2.1.27](/release-notes/archive-2-1-2-2)：获取 CSS 选择器时可用滚轮切换父子元素。
+
+更早记录与完整修复列表见[更新记录](/release-notes)。

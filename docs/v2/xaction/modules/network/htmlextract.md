@@ -100,7 +100,4 @@ XPath 教程：[W3School](https://www.w3school.com.cn/xpath/index.asp)、[知乎
   ]}
 />
 
-## 更新历史
-
-- 1.4.17 开始提供。
-- 20230704 增加支持 XML，以及使用小写 XPath 的说明。
+<a id="更新历史" />

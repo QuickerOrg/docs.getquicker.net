@@ -107,7 +107,7 @@ legacyContentUpdatedAt: "2024-10-29T00:01:11.000Z"
   />
 </PreviewMap>
 
-自定义模式下，消息内容以 `MD:`（半角冒号）开头可写 Markdown（1.39.20+）。语法见 [MdXaml 扩展说明](https://github.com/whistyun/MdXaml/wiki/How-to-use-Enhanched-syntax)。
+自定义模式下，消息内容以 `MD:`（半角冒号）开头可写 Markdown。语法见 [MdXaml 扩展说明](https://github.com/whistyun/MdXaml/wiki/How-to-use-Enhanched-syntax)。
 
 **图标**：可选预定义名称，或直接输入 Quicker [自定义图标](/v2/xaction/concepts/use-icon-in-actions)（不要加中括号）。
 
@@ -172,9 +172,11 @@ legacyContentUpdatedAt: "2024-10-29T00:01:11.000Z"
   ]}
 />
 
-## 更新历史
+<a id="更新历史" />
 
-- 20230617 v1.38.21：增加自定义模式。
-- 20230713：补充图标格式无需中括号的说明。
+## 历史版本相关变化
+
+以下为与本页相关的重要变化，当前用法以正文为准。
+
 - 20230904 1.39.20：自定义模式支持 Markdown 内容。
-- 20241029：增加 Markdown 扩展语法文档链接。
+- 20230617 v1.38.21：增加自定义模式。

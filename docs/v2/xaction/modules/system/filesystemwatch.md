@@ -15,7 +15,7 @@ legacyContentUpdatedAt: "2022-07-15T06:51:51.000Z"
 
 # 文件系统监控
 
-监视指定文件夹下文件或目录的创建、删除、变更、重命名。1.31.0+ 提供。内部使用 [.NET FileSystemWatcher](https://learn.microsoft.com/dotnet/api/system.io.filesystemwatcher)。只要等剪贴板变化，用 [等待剪贴板改变](/v2/xaction/modules/waitclipboardchange)。
+监视指定文件夹下文件或目录的创建、删除、变更、重命名。内部使用 [.NET FileSystemWatcher](https://learn.microsoft.com/dotnet/api/system.io.filesystemwatcher)。只要等剪贴板变化，用 [等待剪贴板改变](/v2/xaction/modules/waitclipboardchange)。
 
 ## 当前模块定义
 

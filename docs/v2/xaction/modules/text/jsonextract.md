@@ -23,7 +23,7 @@ legacyContentUpdatedAt: "2022-03-11T14:45:55.000Z"
 
 ## 概述
 
-内部先用 [JToken.SelectToken](https://www.newtonsoft.com/json/help/html/SelectToken.htm) 取单个值，失败再试 [SelectTokens](https://www.newtonsoft.com/json/help/html/Overload_Newtonsoft_Json_Linq_JToken_SelectTokens.htm) 取列表。路径前加 `list:` 可强制按数组提取（1.30.14+）。
+内部先用 [JToken.SelectToken](https://www.newtonsoft.com/json/help/html/SelectToken.htm) 取单个值，失败再试 [SelectTokens](https://www.newtonsoft.com/json/help/html/Overload_Newtonsoft_Json_Linq_JToken_SelectTokens.htm) 取列表。路径前加 `list:` 可强制按数组提取。
 
 <ModuleParamPreview moduleKey="sys:jsonExtract" />
 
@@ -91,6 +91,10 @@ legacyContentUpdatedAt: "2022-03-11T14:45:55.000Z"
   ]}
 />
 
-## 更新历史
+<a id="更新历史" />
+
+## 历史版本相关变化
+
+以下为与本页相关的重要变化，当前用法以正文为准。
 
 - 1.4.18 复杂类型返回原始 JToken。

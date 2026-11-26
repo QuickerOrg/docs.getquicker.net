@@ -14,7 +14,7 @@ sidebar_position: 10
 
 ## 创建材料
 
-2.3.45 起，用以下静态方法创建材料，再放入 `OpenAssistantOptions.Materials`；不要直接构造 `AiMaterial`：
+用以下静态方法创建材料，再放入 `OpenAssistantOptions.Materials`；不要直接构造 `AiMaterial`：
 
 ```csharp
 AiMaterial.Text(string text, string? name = null)
@@ -29,3 +29,11 @@ AiMaterial.WindowContext(long handle)
 - `WindowContext` 附带窗口背景：`0` 表示调用时前台窗口，`-1` 表示不附带，其它值指定窗口句柄。沿用现有采集确认设置，不单独模拟复制选中文字。
 
 更多发送与结果约定见 [qk.Ai.OpenAssistant](../ai.md#aiopenassistant)。
+
+## 历史版本相关变化
+
+以下为与本页相关的重要变化，当前用法以正文为准。
+
+- [2.3.45](/release-notes#2345--问问ai步骤图片对话与路径导航)：使用 AiMaterial 静态方法为 OpenAssistant 创建材料。
+
+更早记录与完整修复列表见[更新记录](/release-notes)。

@@ -34,9 +34,9 @@ WPS 使用独立的[加载项管理页](https://getquicker.net/bridges/wps/publi
 
 [模兔云](./software/motuyun.md) 则直接使用其在 SketchUp 中提供的本机服务，无需安装 Quicker Bridge；支持搜索插件命令、按插件名筛选和生成动作，目标窗口由模兔云分派。
 
-旧版本文档或界面可能还提到 **Quicker组件安装器**。2.2.5 起，普通 Bridge 的安装与管理优先从设置页的软件卡片进入；如果当前版本仍提供安装器入口，可把它作为备选路径处理。
+普通 Bridge 的安装与管理从设置页的软件卡片进入，操作见[安装与管理](./install-and-manage.md)。
 
-2.2.9 起，设置页另有[软件连接总开关](./install-and-manage.md#软件连接总开关)：默认开启、仅本机生效；关闭后停止连接服务与后台探测，但不卸载已安装的 Bridge。
+设置页另有[软件连接总开关](./install-and-manage.md#软件连接总开关)：默认开启、仅本机生效；关闭后停止连接服务与后台探测，但不卸载已安装的 Bridge。
 
 ## 连接分组里的其它入口
 
@@ -60,7 +60,7 @@ WPS 使用独立的[加载项管理页](https://getquicker.net/bridges/wps/publi
 | Illustrator | 平面设计 | 已有安装与连接验证记录 | 设置页软件卡片 | 唯一在线会话 | [Illustrator控制](/v2/xaction/modules/illustratorcontrol) | [查看指南](./software/illustrator.md) |
 | InDesign | 排版 | 已有安装与连接验证记录 | 设置页软件卡片 | 唯一在线会话 | [InDesign控制](/v2/xaction/modules/indesigncontrol) | [查看指南](./software/indesign.md) |
 | Maya | 三维与动画 | 已有安装与连接验证记录 | 设置页软件卡片 | 前台进程精确路由 | [Maya控制](/v2/xaction/modules/mayacontrol) | [查看指南](./software/maya.md) |
-| Mastercam | CAM / 数控 | 2.2.6 起支持 2024 / 2027 | 设置页软件卡片（分年度） | 前台进程精确路由 | Mastercam 控制（由命令工具生成；模块参考待同步） | [查看指南](./software/mastercam.md) |
+| Mastercam | CAM / 数控 | 按宿主版本与连接包声明判断，详见指南 | 设置页软件卡片（分年度） | 前台进程精确路由 | Mastercam 控制（由命令工具生成；模块参考待同步） | [查看指南](./software/mastercam.md) |
 | Photoshop | 图像处理 | 已有安装与连接验证记录 | 设置页软件卡片 | 前台类型 + 唯一会话 | [Photoshop控制](/v2/xaction/modules/photoshopcontrol) | [查看指南](./software/photoshop.md) |
 | Premiere Pro | 视频与动效 | 已有安装与连接验证记录 | 设置页软件卡片 | 前台类型 + 唯一会话 | [Premiere Pro控制](/v2/xaction/modules/premierecontrol) | [查看指南](./software/premiere-pro.md) |
 | Revit | 建筑与 BIM | 已有安装与连接验证记录 | 设置页软件卡片 | 前台进程精确路由 | [Revit控制](/v2/xaction/modules/revitcontrol) | [查看指南](./software/revit.md) |
@@ -83,3 +83,13 @@ WPS 的三个加载项需要分别安装和启用；具体步骤见 [WPS Office 
 Bridge 只连接本机 Quicker。可用命令受插件、宿主版本、许可证及当前文档状态限制，不能绕过宿主的信任、宏安全或文档编辑规则。
 
 查询可先用 `bridge.ping` 验证连接。保存、删除、导出或任意脚本可能修改文件和模型；请阅读命令说明，并先在副本中验证。成功连接不代表每个业务操作都能撤销。
+
+## 历史版本相关变化
+
+以下为与本页相关的重要变化，当前用法以正文为准。
+
+- [2.3.28](/release-notes#2328--场景规则整理动作引用与-mcp-接入)：兼容判断结合实际宿主和连接包声明，不再仅使用固定年度白名单。
+- [2.2.9](/release-notes/archive-2-1-2-2#229--软件连接与场景)：提供本机软件连接总开关。
+- [2.2.5](/release-notes/archive-2-1-2-2#225--连接管理与贴图)：普通 Bridge 安装管理集成到设置页软件卡片。
+
+更早记录与完整修复列表见[更新记录](/release-notes)。

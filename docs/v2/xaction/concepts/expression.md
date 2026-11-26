@@ -24,11 +24,9 @@ legacyContentUpdatedAt: "2023-10-08T07:46:06.000Z"
 
 当前 V2 使用 Quicker 表达式引擎（QkEval），支持计算、条件判断及 Lambda 等写法。与 1.x 旧表达式的兼容范围与排障见[表达式引擎说明](/v2/what's-new/actions/new-expression-engine)。
 
-2.3.19 修复了兼容表达式中 `Rectangle`、`Point`、`Size`、`Color` 等基础绘图类型短名无法识别的问题。动作显式登记了 WPF 同名类型时，仍以显式登记为准；需要区分时使用完整类型名，例如 `System.Drawing.Rectangle`。同版起，也可在表达式中[获取动作数据文件夹](/v2/xaction/concepts/standard#expression-action-data-directory)。
+表达式可使用 `System.Drawing.Rectangle`、`Point`、`Size`、`Color` 等绘图类型。显式登记了 WPF 同名类型时，以登记结果为准；需区分时使用完整类型名。动作数据目录用法见[在表达式中获取](/v2/xaction/concepts/standard#expression-action-data-directory)。
 
 若要输出以 `$=` 开头的纯文本，写 `$="$=ABC"`。
-
-
 
 ## 表达式基础
 
@@ -40,8 +38,6 @@ legacyContentUpdatedAt: "2023-10-08T07:46:06.000Z"
 -   **$**\=&#123;次数&#125; &gt; 5
 -   **$**\=&#123;选项&#125; == "选项1"
 
-
-
 ### 常量
 
 表达式中不变的内容称作常量。
@@ -50,8 +46,6 @@ legacyContentUpdatedAt: "2023-10-08T07:46:06.000Z"
 -   数字常量：10   50.1
 -   文本常量使用**英文半角双引号**包围："China"
 -   字符常量： 'A'  'c'
-
-
 
 #### 转义字符
 
@@ -64,13 +58,9 @@ legacyContentUpdatedAt: "2023-10-08T07:46:06.000Z"
 -   `\r` - 回车 Carriage return (character 13)
 -   `\t` - Tab跳格 Horizontal tab (character 9)
 
-
-
 ### 变量
 
 表达式中值会动态变化的内容称作为变量，如前面例子中的&#123;秒数&#125;，&#123;姓名&#125;，&#123;次数&#125;和&#123;选项&#125;，它们的变量名是固定的，但值是动态变化的。更多内容请阅读[变量](/v2/xaction/concepts/variables)。
-
-
 
 ### 启用表达式
 
@@ -82,15 +72,11 @@ legacyContentUpdatedAt: "2023-10-08T07:46:06.000Z"
   focusKeys={['condition']}
 />
 
-
-
 ### 在表达式中使用变量
 
 与插值写法类似，表达式中使用 **&#123;变量名&#125;** 的方式表示动作中的变量。注意变量名需要以英文字母或汉字开始，不能以数字开始，不能包含特殊符号。
 
 表达式编辑框里输入 `{` 后会列出当前动作的变量；可按名字或拼音筛选，用 Tab、回车或空格填入高亮项。补全动画见 [表达式高级话题](/v2/xaction/concepts/expression-adv)。
-
-
 
 ### 表达式的运算结果
 
@@ -98,11 +84,9 @@ legacyContentUpdatedAt: "2023-10-08T07:46:06.000Z"
 
 如果参数的类型与表达式结果的不同，Quicker将尝试自动转换（如将文本转换为数字等）。
 
-2.2.7 起，表达式可显式声明 `dynamic` 类型；按 `object` 使用时的行为与以前一致，只是需要动态类型时不必再绕弯声明。2.2.8 起，数组初始化、空可空值转文本，以及枚举参数匹配的边界情况已修复，相关写法不再因此导致动作运行失败。
+表达式可显式声明 `dynamic` 类型。需要动态绑定时使用 `dynamic`，按普通对象处理时使用 `object`。
 
 ### 表达式支持的数据类型(C#)
-
-
 
 | 类型 | 值 | 备注 |
 | --- | --- | --- |
@@ -116,17 +100,11 @@ legacyContentUpdatedAt: "2023-10-08T07:46:06.000Z"
 | [Path 静态类](https://docs.microsoft.com/en-us/dotnet/api/system.io.path) |  | 用于处理文件路径。 |
 | [Regex 正则表达式处理类](https://docs.microsoft.com/en-us/dotnet/api/system.text.regularexpressions.regex) |  | 用于正则相关处理。 |
 
-
-
-
-
 ## 表达式进阶
 
 ### 运算符
 
 *注：以下部分内容摘录自*[*https://www.runoob.com/csharp/csharp-regular-expressions.html*](https://www.runoob.com/csharp/csharp-regular-expressions.html) *有删改。*
-
-
 
 #### 算术运算符
 
@@ -139,8 +117,6 @@ legacyContentUpdatedAt: "2023-10-08T07:46:06.000Z"
 | \* | 把两个操作数相乘 | A \* B 将得到 200 |
 | / | 分子除以分母 | B / A 将得到 2 |
 | % | 取模运算符，整除后的余数 | B % A 将得到 0 |
-
-
 
 #### 关系运算符
 
@@ -155,8 +131,6 @@ legacyContentUpdatedAt: "2023-10-08T07:46:06.000Z"
 | \&gt;= | 检查左操作数的值是否大于或等于右操作数的值，如果是则条件为真。 | (A &gt;= B) 不为真。 |
 | &lt;= | 检查左操作数的值是否小于或等于右操作数的值，如果是则条件为真。 | (A &lt;= B) 为真。 |
 
-
-
 #### 逻辑运算符
 
 下表显示了 C# 支持的所有逻辑运算符。假设变量 **A** 为布尔值 true，变量 **B** 为布尔值 false，则：
@@ -166,8 +140,6 @@ legacyContentUpdatedAt: "2023-10-08T07:46:06.000Z"
 | && | 称为逻辑与运算符。如果两个操作数都非零，则条件为真。 | (A && B) 为假。<br />例如：（数字是否在0和10之间）<br />$= &#123;数字&#125; &gt; 0 && &#123;数字&#125; &lt; 10 |
 | \|\| | 称为逻辑或运算符。如果两个操作数中有任意一个非零，则条件为真。 | (A \|\| B) 为真。<br />例如：（文本为AAA、BBB、CCC中的任意一个）<br />$= &#123;变量&#125; == "AAA" \|\| &#123;变量&#125; =="BBB" \|\| &#123;变量&#125; = "CCC" |
 | ! | 称为逻辑非运算符。用来逆转操作数的逻辑状态。如果条件为真则逻辑非运算符将使其为假。 | !(A && B) 为真。 |
-
-
 
 #### 位运算符
 
@@ -180,8 +152,6 @@ legacyContentUpdatedAt: "2023-10-08T07:46:06.000Z"
 | 1 | 1 | 1 | 1 | 0 |
 | 1 | 0 | 0 | 1 | 1 |
 
-
-
 #### 条件运算符?:     
 
 *写法：条件* **?** *条件成立时返回的值* **:**  *条件不成立返回**的值，例如：*
@@ -189,23 +159,15 @@ legacyContentUpdatedAt: "2023-10-08T07:46:06.000Z"
 -   取两个变量的最大值： $= &#123;a&#125; &gt; &#123;b&#125; ? &#123;a&#125; : &#123;b&#125;
 -   取3个变量的最大值：$= &#123;a&#125; &gt; &#123;b&#125; ? (&#123;a&#125; &gt; &#123;c&#125; ? &#123;a&#125; : &#123;c&#125; ): (&#123;b&#125; &gt; &#123;c&#125; ? &#123;b&#125; : &#123;c&#125; )
 
-
-
 #### 运算符的优先级
 
 遵循c#语言的语法，请参考：[https://docs.microsoft.com/zh-cn/dotnet/csharp/language-reference/operators/index#code-try-0](https://docs.microsoft.com/zh-cn/dotnet/csharp/language-reference/operators/index#code-try-0)
-
-
 
 一般的：
 
 -   括号具有更高的优先级  (2+3)\*5 的值为25。
 -   乘除优先级大于加减。 2+3\*5 的值为17。
 -   加减的优先级大于比较。 2+4 &gt; 5 的值为true。
-
-
-
-
 
 ### 调用变量（或常量的）属性或方法
 
@@ -214,8 +176,6 @@ legacyContentUpdatedAt: "2023-10-08T07:46:06.000Z"
 -   属性： &#123;变量&#125;.属性名
 -   变量实例方法： &#123;变量&#125;.方法名(参数列表)
 -   类型的静态方法：类型名.方法名(参数列表)
-
-
 
 #### 文本类型的常用属性和方法
 
@@ -242,8 +202,6 @@ legacyContentUpdatedAt: "2023-10-08T07:46:06.000Z"
 | Regex.Split<br />正则拆分 | 正则拆分内容为列表 | Regex.Split(**&#123;文本变量&#125;**,"正则表达式")<br />例子:拆分回车换行<br />Regex.Split(**&#123;文本变量&#125;**,@"\\r\\n") |
 | JsonConvert.DeserializeObject() | 将字符串解析为JToken | JsonConvert.DeserializeObject(&#123;JSON字符串&#125;) |
 
-
-
 #### 词典的常用属性和方法
 
 | 属性或方法 | 说明 | 示例 |
@@ -253,8 +211,6 @@ legacyContentUpdatedAt: "2023-10-08T07:46:06.000Z"
 | Keys | 获取所有键的列表 | $= &#123;词典变量&#125;.Keys |
 | Values | 获取所有值的列表 | $= &#123;词典变量&#125;.Values |
 | JsonConvert.SerializeObject() | 词典序列化json字符串 | $=JsonConvert.SerializeObject(&#123;词典变量&#125;) |
-
-
 
 #### 列表的常用属性和方法
 
@@ -266,13 +222,9 @@ legacyContentUpdatedAt: "2023-10-08T07:46:06.000Z"
 | IndexOf() | 某一项的序号。从0开始，不存在的话返回-1. | $= &#123;列表变量&#125;.IndexOf("某项内容") |
 | Count() | 返回列表的长度（含有的元素个数） | $= &#123;列表变量&#125;.Count() |
 
-
-
 #### 用户分享（[链接](https://getquicker.net/QA/Question/1811)）
 
 在这个帖子里有不少用户分享了一些常用的表达式。
-
-
 
 #### 数学计算
 
@@ -285,19 +237,11 @@ legacyContentUpdatedAt: "2023-10-08T07:46:06.000Z"
 
 如，求圆的面积 `$= Math.PI * {R} * {R}`
 
-
-
 可以在表达式中使用Math的静态方法。更多请参考：[https://docs.microsoft.com/zh-cn/dotnet/api/system.math?view=netframework-4.8#methods](https://docs.microsoft.com/zh-cn/dotnet/api/system.math?view=netframework-4.8)
 
 如：求2的指定次方： `$= Math.Pow(2, {次数})`
 
-
-
 Quicker中的数字类型变量在内部为C#语言的double类型，整数数字类型在内部为c#的long型。
-
-
-
-
 
 ### 转换值的类型
 
@@ -306,10 +250,6 @@ Quicker中的数字类型变量在内部为C#语言的double类型，整数数�
 -   文本-&gt;整数数字:可以使用int.Parse(string)或long.Parse(string)。 如 $=int.Parse(&#123;文本变量&#125;)，也可以使用C#的**Convert类**转换数据的类型。如$= Convert.ToDouble(&#123;文本变量&#125;)
 
 更多请参考：[https://docs.microsoft.com/en-us/dotnet/api/system.convert?view=netframework-4.8](https://docs.microsoft.com/en-us/dotnet/api/system.convert?view=netframework-4.8)
-
-
-
-
 
 ### Lambda表达式
 
@@ -332,13 +272,9 @@ $= {列表变量}.Where(x => !String.IsNullOrWhiteSpace(x)).Select(x => x.Trim()
 
 -   .ToList() 转换为列表类型
 
-
-
 上面例子中使用了 `x => 表达式` 这样的语法，它表示对参数x做后面的处理，取其结果。
 
 如果有多个参数，需要在参数列表两侧添加括号：`(x,y,z)` 当计算结果的逻辑比较复杂时 =&gt; 后面可以写多个c#语句并使用&#123;&#125;包围起来。
-
-
 
 下面是几个例子：
 
@@ -381,10 +317,6 @@ $= {list}.Select(x => Convert.ToInt32(x))
 $= {list1}.Select((x,index) => x + {list2}[index]).ToList()
 ```
 
-
-
-
-
 <StepProgramView example="acf2fc09-3753-4b67-d714-08d827485760" />
 
 <ShareLinkCard
@@ -396,10 +328,6 @@ $= {list1}.Select((x,index) => x + {list2}[index]).ToList()
 
 Select()/Where()/ToList() 是C#中[System.Linq.Enumerable](https://docs.microsoft.com/en-us/dotnet/api/system.linq.enumerable?view=netcore-3.1)静态类下的扩展函数。
 
-
-
-
-
 ## 与[插值](/v2/xaction/concepts/interpolation)方式的比较
 
 -   插值的作用是将变量的值插入到一段文本中。其结果也是一段文本。
@@ -407,8 +335,6 @@ Select()/Where()/ToList() 是C#中[System.Linq.Enumerable](https://docs.microsof
 -   在需要接收布尔类型值的参数中（例如，在“如果”模块），插值后的结果文本会被作为一个表达式进行解析，转换为布尔值。
 
 -   比较字符串时，插值方式使用单引号包围两个被比较的字符串。
-
-
 
 - 使用表达式时，变量名不要加单引号；文本常量用英文双引号。
 
@@ -418,11 +344,7 @@ Select()/Where()/ToList() 是C#中[System.Linq.Enumerable](https://docs.microsof
   focusKeys={['condition']}
 />
 
-
-
 -   在需要比较、计算的场景下，应该使用**$**\=表达式的写法。
-
-
 
 |  | **插值** | **表达式** |
 | --- | --- | --- |
@@ -431,8 +353,6 @@ Select()/Where()/ToList() 是C#中[System.Linq.Enumerable](https://docs.microsof
 | 实现方式 | 将变量的值插入到文本中，组合成一段大的文本。 | 将Quicker变量使用c#语言变量的方式进行处理。<br />  <br />支持变量原始对象的c#方法和属性调用。<br />比较一个文本不为空并且长度超过5：<br />$= !String.IsNullOrEmpty(&#123;thePath&#125;) && &#123;thePath&#125;.Length &gt; 5 |
 | 优缺点 | 优点：<br />-   拼接文本比较方便<br />缺点：<br />-   功能比较受限 | 优点：<br />-   可以使用变量自身的c#属性和方法；<br />-   功能强大； |
 
-
-
 示例：
 
 |  | 插值 | 表达式 |
@@ -440,13 +360,9 @@ Select()/Where()/ToList() 是C#中[System.Linq.Enumerable](https://docs.microsof
 | 组合文本 | $$ 你好， &#123;name&#125;<br />*将&#123;name&#125;的值替换到文本中* | $= "你好," + &#123;name&#125;<br />*相当于两个文本对象相加* |
 | 比较大小 | $$ &#123;数字变量&#125; &gt; 5<br />*插值后进行解析，仅在部分模块中支持。* | $= &#123;数字变量&#125; &gt; 5 |
 
-
-
-
-
 ## 表达式的辅助编写
 
-自 1.24.27 起提供自动补全和语法校验。补全出现后用方向键选择，`Tab` 或回车确认。需联网；提示仅供参考，以实际运行为准。补全录屏与设置开关见 [表达式高级话题](/v2/xaction/concepts/expression-adv)。
+表达式编辑器提供自动补全和语法校验。补全出现后用方向键选择，`Tab` 或回车确认。需联网；提示仅供参考，以实际运行为准。补全录屏与设置开关见 [表达式高级话题](/v2/xaction/concepts/expression-adv)。
 
 ## 限制与排障
 
@@ -476,3 +392,12 @@ Select()/Where()/ToList() 是C#中[System.Linq.Enumerable](https://docs.microsof
     },
   ]}
 />
+
+## 历史版本相关变化
+
+以下为与本页相关的重要变化，当前用法以正文为准。
+
+- [2.3.19](/release-notes#2319--截图标注与-ai-窗口背景)：可直接使用基础绘图类型短名，并获取动作数据文件夹。
+- [2.2.7](/release-notes/archive-2-1-2-2#227--截图外观与回退)：支持显式声明 dynamic 类型。
+
+更早记录与完整修复列表见[更新记录](/release-notes)。

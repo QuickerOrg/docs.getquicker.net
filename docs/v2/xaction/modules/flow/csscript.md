@@ -41,7 +41,7 @@ legacyContentUpdatedAt: "2025-01-20T01:01:01.000Z"
 
 **脚本内容**：要运行的 C#。三种模式各有一份输入（界面上仍叫「脚本内容」）。普通模式可写纯脚本或完整 `Exec`；低权限必须声明 `Exec(string paramValue)`；生成程序集按模板写命名空间和类。
 
-2.1.26 起，代码编辑器支持 `#region` / `#endregion` 和 `//#region` / `//#endregion` 区域折叠，可嵌套；除作为独立区域标记的 `//#region` 行外，字符串和普通注释中的同名文本不会误触发折叠。编辑器也会补全 region 标记，错误提示的位置会尽量对应到你实际编辑的代码行。
+代码编辑器支持 `#region` / `#endregion` 和 `//#region` / `//#endregion` 区域折叠，可嵌套；除作为独立区域标记的 `//#region` 行外，字符串和普通注释中的同名文本不会误触发折叠。编辑器也会补全 region 标记，错误提示的位置会尽量对应到你实际编辑的代码行。
 
 **参数值**：仅低权限。传给 `Exec(string paramValue)` 的参数。
 
@@ -114,7 +114,7 @@ return DateTime.Now.ToString("O");
 
 若末行是 `MessageBox.Show(...)` 这类本身没有可用返回值的调用，编译器会按「无返回值」处理；需要同时弹窗并返回文本时，把返回值单独放在最后一行。
 
-2.1.26 继续兼容早期普通模式里的旧式末行表达式。如果旧脚本升级后只是依赖最后一行返回结果，通常不需要改成完整 `return`。
+普通模式兼容末行表达式返回结果。如果旧脚本升级后只是依赖最后一行返回结果，通常不需要改成完整 `return`。
 
 ### 使用 await
 
@@ -130,7 +130,7 @@ context.SetVarValue("ready", true);
 
 ### 获取已运行的 COM 对象
 
-2.2.26 恢复了旧脚本中 `System.Runtime.InteropServices.Marshal.GetActiveObject("Excel.Application")` 这类调用的兼容支持。它获取已运行且已注册的 COM 对象，不会启动目标程序；找不到对象仍会报错，程序是否注册该对象以及双方权限是否一致仍会影响结果。
+支持脚本中的 `System.Runtime.InteropServices.Marshal.GetActiveObject("Excel.Application")` 这类调用。它获取已运行且已注册的 COM 对象，不会启动目标程序；找不到对象仍会报错，程序是否注册该对象以及双方权限是否一致仍会影响结果。
 
 这项兼容针对 Quicker 的 C# 脚本宿主，不适用于「运行 C# 文件应用」或任意外部 .NET 程序。`using static Marshal` 后不带类型名的裸调用、通过反射查找该方法也不在兼容范围内。
 
@@ -274,12 +274,13 @@ public static string Exec(string paramValue)
   ]}
 />
 
-## 更新历史
+<a id="更新历史" />
 
-- 早期普通 / 低权限还有 CodeDOM（v1）引擎；当前界面只保留 Roslyn 的普通模式、低权限模式，以及生成程序集。
-- 20230406 增加 v2 / Roslyn 说明。
-- 20230731 增加网页复制代码可能带不可见字符的说明。
-- 20231130 执行线程增加 STA 选项；普通模式支持返回值。
-- 20250120 更新文档标题，以匹配实际功能。
-- 20260811 普通模式支持直接编写纯脚本：末行表达式作返回值、可用 `context`、支持 `await` / Task；完整 `Exec` 仍兼容。
-- 20260823 代码编辑器支持 region 折叠；普通模式继续兼容旧式末行表达式。
+## 历史版本相关变化
+
+以下为与本页相关的重要变化，当前用法以正文为准。
+
+- [2.2.26](/release-notes#2226--动作编辑-ai-分析上下文菜单与入口整合)：恢复 Marshal.GetActiveObject 调用兼容。
+- [2.1.26](/release-notes/archive-2-1-2-2)：编辑器支持区域折叠，并兼容普通模式末行表达式。
+
+完整发布信息见[更新记录](/release-notes)。

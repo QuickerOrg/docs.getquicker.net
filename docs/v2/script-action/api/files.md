@@ -6,7 +6,7 @@ comments: false
 sidebar_position: 10
 ---
 
-2.3.13 起，可用 `qk.Files.GetActionDataDirectory()` 获取当前动作的本机持久数据目录。存放建议、首次创建、分享备份和删除恢复见[动作数据文件夹](/v2/xaction/concepts/standard#动作数据文件夹)。它与运行结束后自动清理的 `GetRunTempDirectory()` 用途不同。
+可用 `qk.Files.GetActionDataDirectory()` 获取当前动作的本机持久数据目录。存放建议、首次创建、分享备份和删除恢复见[动作数据文件夹](/v2/xaction/concepts/standard#动作数据文件夹)。它与运行结束后自动清理的 `GetRunTempDirectory()` 用途不同。
 
 {/* script-api:start */}
 
@@ -432,3 +432,11 @@ RecentFile[] ListRecent(int limit = 20, string? extension = null, bool includeFo
 返回类型：`RecentFile[]`。空值、用户取消和异常行为以成员及域说明为准。
 
 {/* script-api:end */}
+
+## 历史版本相关变化
+
+以下为与本页相关的重要变化，当前用法以正文为准。
+
+- [2.3.13](/release-notes#2313--动作数据目录桌面-ai-与存储调整)：可获取按动作 ID 隔离的本机持久数据目录。
+
+更早记录与完整修复列表见[更新记录](/release-notes)。

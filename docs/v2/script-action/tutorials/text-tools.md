@@ -6,7 +6,7 @@ comments: false
 sidebar_position: 4
 ---
 
-**2.3.24 起**，脚本动作可为 `qk.Ui.Prompt` 和表单的可编辑文本字段添加自定义文本工具。已有的输入框内置工具继续使用 `tools` 参数；表单现在也可通过 `Field.Tools` 配置它们。
+脚本动作可为 `qk.Ui.Prompt` 和表单的可编辑文本字段添加自定义文本工具。已有的输入框内置工具继续使用 `tools` 参数；表单现在也可通过 `Field.Tools` 配置它们。
 
 ## 完整源码
 
@@ -63,3 +63,11 @@ var field = new Field("content", "内容", "multiline")
 ## 相关 API
 
 [qk.Ui](../api/ui.md)、[Field](../api/types/field.md)、[TextTool](../api/types/texttool.md)、[TextToolInput](../api/types/texttoolinput.md)
+
+## 历史版本相关变化
+
+以下为与本页相关的重要变化，当前用法以正文为准。
+
+- [2.3.24](/release-notes#2324--贴图交互脚本文本工具与步骤参数)：脚本输入框与表单可配置自定义文本工具。
+
+更早记录与完整修复列表见[更新记录](/release-notes)。

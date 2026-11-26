@@ -21,7 +21,7 @@ legacyContentUpdatedAt: "2025-10-28T06:17:46.000Z"
 
 <XActionModuleMeta moduleKey="sys:chromecontrol" />
 
-## 2.3.24 · 参数显示与保存 {/* #step-inputs-2324 */}
+## 参数显示与保存 {/* #step-inputs-2324 */}
 
 步骤编辑器按当前操作显示实际使用的参数，避免隐藏仍然有效的输入，或用不适用的元素信息生成摘要。
 
@@ -37,7 +37,7 @@ legacyContentUpdatedAt: "2025-10-28T06:17:46.000Z"
 
 ### MV3 版本浏览器扩展
 
-当前扩展版本为 1.2.0，提供 Chrome、Edge 和 Firefox 构建。官网 2.1.27 记录发布时，Edge 商店已发布 1.2.0，Chrome 商店待审核；请确认实际安装的扩展已达到 1.2.0。
+本页功能需要支持相应接口的浏览器扩展，使用前请在扩展管理页检查并更新。Chrome、Edge 和 Firefox 分别提供构建，连接与用户脚本权限见下文。
 
 参考：
 
@@ -1023,11 +1023,11 @@ $= new {
 
 ## 运行后台脚本
 
-MV3 扩展已不支持直接跑自定义后台脚本，相关需求请改用「运行后台命令」。1.44.10+ 在 MV3 上用兼容方式继续支持后台脚本；遇到问题欢迎在讨论区反馈。
+MV3 扩展已不支持直接跑自定义后台脚本，相关需求请改用「运行后台命令」。已有后台脚本由 PC 端兼容解析，维护时应优先改用支持的后台命令。
 
 ### 迁移后台脚本动作
 
-在 Quicker 1.44.5+ 搜索框搜 `CONTAINS:BackgroundScript`，可找出仍使用后台脚本的动作。
+在 Quicker 搜索框搜 `CONTAINS:BackgroundScript`，可找出仍使用后台脚本的动作。
 
 ![](./img/chromecontrol-031-cea86b3997.png)
 
@@ -1066,11 +1066,11 @@ chrome.tabs.query({ lastFocusedWindow: true, active: true }, function (tabs) {
 });
 ```
 
-#### MV3 扩展（1.0.0+）
+#### MV3 扩展 {/* #mv3-扩展100 */}
 
 MV3 不能直接跑自定义后台脚本。兼容方式是：在 Quicker 进程里解析脚本，遇到 API 调用时转成后台命令发给浏览器。
 
-除 MV2 的回调模式外，Quicker **1.44.12+** 也支持异步。上面的 Cookie 示例可写成：
+除 MV2 的回调模式外，Quicker 支持异步。上面的 Cookie 示例可写成：
 
 ```javascript
 //.js
@@ -1363,10 +1363,12 @@ ChromeAgent.exe 是浏览器和 Quicker 之间的消息代理，由浏览器启�
 - jQuery：[菜鸟教程](https://www.runoob.com/jquery/jquery-tutorial.html)
 - Chrome API：[官方](https://developer.chrome.com/extensions/api_index)、[国内镜像](http://docs.getquicker.cn/chrome/developer.chrome.com/extensions.html)
 
-## 更新说明
+<a id="更新说明" />
 
-- 20230207 增加无法连接问题排查。
-- 20230316 触发事件支持 native 方式。
-- 20231015 去除创建新窗口实例参数中的 active 字段（浏览器不支持）。
-- 202505 更新 MV3 版本浏览器扩展。
-- 202608 增加结构化列表提取、连续翻页、表单填写、语义化网页操作和安全文件操作；获取 CSS 选择器时可在候选元素层级间切换后确认。
+## 历史版本相关变化
+
+以下为与本页相关的重要变化，当前用法以正文为准。
+
+- [2.3.24](/release-notes#2324--贴图交互脚本文本工具与步骤参数)：优化操作相关参数的显示与保存。
+
+完整发布信息见[更新记录](/release-notes)。

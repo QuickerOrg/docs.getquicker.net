@@ -23,7 +23,7 @@ legacyContentUpdatedAt: "2024-07-01T23:59:07.000Z"
 
 ## 概述
 
-1.43.7+ 使用 [Jint](https://github.com/sebastienros/jint)，语法更完整。1.43.6 及更早使用 [Jurassic](https://github.com/paulbartrum/jurassic)（ECMAScript 3 / 5）。
+使用 [Jint](https://github.com/sebastienros/jint) 执行 JavaScript。代码需符合本模块提供的运行环境和接口。
 
 ```javascript
 // 主函数 exec()
@@ -40,7 +40,7 @@ function exec(){
 
 **脚本内容**：要运行的 JS。必须包含 `exec()`。
 
-**允许访问.Net程序集**：初始化 Jint 时允许访问 .NET 基本类库（相当于 `new Engine(cfg => cfg.AllowClr())`）。详见 Jint 文档。1.43.7+。
+**允许访问.Net程序集**：初始化 Jint 时允许访问 .NET 基本类库（相当于 `new Engine(cfg => cfg.AllowClr())`）。详见 Jint 文档。
 
 **失败后停止**：失败后是否停止动作。默认开启。
 
@@ -53,7 +53,7 @@ function exec(){
 
 Quicker 会调用 `exec`。正常请返回数字 `0`，否则返回非 0。
 
-1.43.7+ 还提供：
+可在脚本中使用以下接口：
 
 - `log('text')`：输出调试信息（仅调试运行时）
 - `alert('text')`：显示提示消息
@@ -112,7 +112,4 @@ quickerSetVar('动作里的变量名', 新的值);
   ]}
 />
 
-## 更新历史
-
-- 1.1.13 开始提供此模块。
-- 20240702 改为 Jint；支持 `log` / `alert`。（感谢 @小布丁的大布丁）
+<a id="更新历史" />

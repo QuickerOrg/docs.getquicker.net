@@ -6,7 +6,7 @@ comments: false
 sidebar_position: 10
 ---
 
-2.3.32 起，`qk.Sys.PlaySound` 可单独调整本次播放的音量，例如 `qk.Sys.PlaySound("dim", volumeGain: 0.5)`。`volumeGain` 支持 0～4，默认 1，0 为静音；不改变系统音量，也不控制 TTS 朗读。使用新参数的脚本需要 2.3.32 或更高版本，过度放大可能失真。
+`qk.Sys.PlaySound` 可单独调整本次播放的音量，例如 `qk.Sys.PlaySound("dim", volumeGain: 0.5)`。`volumeGain` 支持 0～4，默认 1，0 为静音；不改变系统音量，也不控制 TTS 朗读。使用新参数的脚本需要 2.3.32 或更高版本，过度放大可能失真。
 
 {/* script-api:start */}
 
@@ -327,3 +327,11 @@ PerfInfo GetPerf()
 返回类型：`PerfInfo`。空值、用户取消和异常行为以成员及域说明为准。
 
 {/* script-api:end */}
+
+## 历史版本相关变化
+
+以下为与本页相关的重要变化，当前用法以正文为准。
+
+- [2.3.32](/release-notes#2332--模型上下文贴图右键与播放音量)：PlaySound 支持单次 volumeGain 音量参数。
+
+更早记录与完整修复列表见[更新记录](/release-notes)。

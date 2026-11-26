@@ -23,7 +23,7 @@ legacyContentUpdatedAt: "2025-03-17T14:58:05.000Z"
 
 ## 概述
 
-翻译走付费接口，按字符扣 Q豆（Quicker 自有翻译对专业版免费）。[购买 Q豆](https://getquicker.net/Member/Buy?productId=3)。需要联网，Quicker 1.25.11+。
+翻译走付费接口，按字符扣 Q豆（Quicker 自有翻译对专业版免费）。[购买 Q豆](https://getquicker.net/Member/Buy?productId=3)。需要联网。
 
 专业版日常轻量使用会赠送一些 Q豆：
 
@@ -207,7 +207,4 @@ Quicker 服务器只中转请求，不记录、不存储请求内容和厂商响
   ]}
 />
 
-## 更新历史
-
-- 2023-07-15 去除 Xunfei 接口支持。
-- 2025-03-17 专业版翻译 5 折。
+<a id="更新历史" />

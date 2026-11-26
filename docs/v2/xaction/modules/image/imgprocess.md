@@ -136,7 +136,7 @@ Save:{savePath}
 | EntropyCrop | `EntropyCrop:阈值`（0–255）。[原始文档](https://imageprocessor.org/imageprocessor/imagefactory/entropycrop/)。四周大面积单色时较好 |
 | 滤镜 | `Filter:序号`。0 黑白、1 漫画、2 Gotham、3 灰度、4 HiSatch、5 反转、6 Lomograph、7 LoSatch、8 宝丽来、9 棕褐。[原始文档](https://imageprocessor.org/imageprocessor/imagefactory/filter/) |
 | 翻转 | `Flip:true` 垂直；`Flip:false` 水平 |
-| 设置保存格式 | `Format:png\|jpg\|tiff\|bmp\|gif`（1.22.29+）。透明色请先 `Format:png` |
+| 设置保存格式 | `Format:png\|jpg\|tiff\|bmp\|gif`。透明色请先 `Format:png` |
 | Gamma | `Gamma:值`，通常 0.2–0.5 |
 | 高斯模糊 | `GaussianBlur:像素数`，越大越糊 |
 | 高斯锐化 | `GaussianSharpen:像素数` |
@@ -148,7 +148,7 @@ Save:{savePath}
 | 替换颜色 | `ReplaceColor:旧颜色;新颜色;容差`。颜色支持 `#RRGGBB`、`#AARRGGBB`、`rgb(...)`、`rgba(...)`。容差 0–128。透明色请先 `Format:png` |
 | 重置 | `Reset:` 回到初始状态，便于一次动作里存多种结果 |
 | 调整大小 | `Resize:宽度,高度`。某一边填 `0` 则忽略该边 |
-| 调整大小（高级） | `ResizeEx:宽,高;缩放模式;锚点;是否放大`（1.22.40+）。宽高用逗号，其余用分号。模式：`0`/`Pad` 填充、`1`/`Stretch` 拉伸、`2`/`Crop` 裁切铺满、`3`/`Max` 限制最长边、`4`/`Min` 限制最短边、`5`/`BoxPad` 小图只填充不放大。锚点：`0` Center、`1` Top、`2` Bottom、`3` Left、`4` Right、`5` TopLeft、`6` TopRight、`7` BottomRight、`8` BottomLeft。是否放大仅非 Stretch 时有效 |
+| 调整大小（高级） | `ResizeEx:宽,高;缩放模式;锚点;是否放大`。宽高用逗号，其余用分号。模式：`0`/`Pad` 填充、`1`/`Stretch` 拉伸、`2`/`Crop` 裁切铺满、`3`/`Max` 限制最长边、`4`/`Min` 限制最短边、`5`/`BoxPad` 小图只填充不放大。锚点：`0` Center、`1` Top、`2` Bottom、`3` Left、`4` Right、`5` TopLeft、`6` TopRight、`7` BottomRight、`8` BottomLeft。是否放大仅非 Stretch 时有效 |
 | 调整分辨率 | `Resolution:水平,垂直`。改的是分辨率元数据，不是像素尺寸 |
 | 旋转角度 | `Rotate:角度`，可为小数 |
 | 圆角 | `RoundedCorners:半径` 或 `RoundedCorners:半径;左上;右上;左下;右下`。透明效果请先 `Format:png` 和 `BackgroundColor:#00000000` |
@@ -156,7 +156,7 @@ Save:{savePath}
 | 保存 | `Save:路径` |
 | 色调 | `Tint:颜色` |
 | 暗角 | `Vignette:颜色`。[参考](https://imageprocessor.org/imageprocessor/imagefactory/vignette/) |
-| 文字水印 | `Watermark:字体;字号;颜色;风格;透明度;位置;阴影;垂直;RTL;文字`。风格可用 Bold / Italic / Underline / Strikeout，逗号分隔。位置 `x,y`，或 `x,y,锚点`（1.39.35+），或 `x,y,锚点,顺时针角度`（1.40.5+）；空则居中。锚点含义同 ResizeEx。文字可用 `\r\n` 换行。垂直、RTL 官方文档无对应参数，可能无效 |
+| 文字水印 | `Watermark:字体;字号;颜色;风格;透明度;位置;阴影;垂直;RTL;文字`。风格可用 Bold / Italic / Underline / Strikeout，逗号分隔。位置 `x,y`，或 `x,y,锚点`，或 `x,y,锚点,顺时针角度`；空则居中。锚点含义同 ResizeEx。文字可用 `\r\n` 换行。垂直、RTL 官方文档无对应参数，可能无效 |
 | 二值化 | `Threshold:亮度`（0–255）。高于变白，低于变黑 |
 | 底色过滤 | `WhiteThreshold:亮度`。高于变白，其余不变。常用于扫描件去纸色 |
 | 输出质量 | `Quality:0-100`。只对 Save 到 jpg 有效 |
@@ -215,15 +215,13 @@ Save:{savePath}
   ]}
 />
 
-## 更新历史
+<a id="更新历史" />
 
-- 1.0.6：增加此模块。
-- 1.5.7：增加反色、灰度、旋转。
-- 1.22.24：增加组合图片处理。
-- 1.33.22：增加生成图标。
-- 20230712：说明 ResizeEx「是否放大」仅对非 Stretch 生效。
-- 20230817：补充 Watermark 位置格式。
-- 20231008：水印支持锚点。
+## 历史版本相关变化
+
+以下为与本页相关的重要变化，当前用法以正文为准。
+
 - 20231029：1.40.5 水印支持旋转角度。
-- 20240611：修正 Constrain（小图会放大，感谢 @Moy）。
-- 20240826：水印文字支持 `\r\n` 换行。
+- 1.33.22：增加生成图标。
+- 1.22.24：增加组合图片处理。
+- 1.5.7：增加反色、灰度、旋转。

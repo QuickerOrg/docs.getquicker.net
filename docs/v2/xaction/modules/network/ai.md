@@ -75,7 +75,7 @@ legacyContentUpdatedAt: "2025-11-04T00:24:46.000Z"
 
 **系统提示词**：仅 Chat。角色和要求，例如「你是一个专业的翻译助手」。
 
-**提示词**：仅 Chat / Completions。完整用户提示。1.42.21+ 支持纯文本，或兼容 gpt-4-vision 的 JSON 数组。不要填完整请求体。
+**提示词**：仅 Chat / Completions。完整用户提示。支持纯文本，或兼容 gpt-4-vision 的 JSON 数组。不要填完整请求体。
 
 <ModuleParamPreview
   moduleKey="sys:ai"
@@ -113,19 +113,19 @@ legacyContentUpdatedAt: "2025-11-04T00:24:46.000Z"
 
 **流式输出窗口标识**：事先用非等待模式打开的文本窗口标识。填 `INPUT_TEXT` 则模拟输入到当前窗口（一切走焦点就停）。
 
-**停止符stop**：遇到这些内容就停。[官方说明](https://help.openai.com/en/articles/5072263-how-do-i-use-stop-sequences)。留空时用推荐默认 `<|endoftext|>`。接第三方接口时务必设置（或用 1.38.35+），建议 `<|endoftext|>`。可用 `\r` `\n` `\t`；多行表示多个停止符。
+**停止符stop**：遇到这些内容就停。[官方说明](https://help.openai.com/en/articles/5072263-how-do-i-use-stop-sequences)。留空时用推荐默认 `<|endoftext|>`。接第三方接口时务必设置，建议 `<|endoftext|>`。可用 `\r` `\n` `\t`；多行表示多个停止符。
 
 **API网址**：自定义或中转。
 
 - Azure：`https://YOUR_RESOURCE_NAME.openai.azure.com/openai/deployments/YOUR_DEPLOYMENT_NAME/{1}?api-version=2023-05-15`。`{1}` 不要改，是接口名占位符。
 - 其它中转：`https://api网址/{1}`。
-- 1.44.32+ 也可直接写以 `chat/completions` 结尾的完整网址。其它结尾可在前面加 `!` 强制使用，如 `!https://myserver/api/chat`。
+- 也可直接写以 `chat/completions` 结尾的完整网址。其它结尾可在前面加 `!` 强制使用，如 `!https://myserver/api/chat`。
 - 硅基流动：`https://api.siliconflow.cn/v1/{1}`
 - Ollama 本机：`http://127.0.0.1:11434/v1/{1}`
 
 **超时秒数**：默认 `120`。
 
-**响应格式**：仅 Chat。留空为文本，或 `json_object`。1.43.55+ 也可填完整 `response_format` JSON（如 json_schema）。输出 JSON 时提示词要配合，并避免超 token 被截断。
+**响应格式**：仅 Chat。留空为文本，或 `json_object`。也可填完整 `response_format` JSON（如 json_schema）。输出 JSON 时提示词要配合，并避免超 token 被截断。
 
 ```json
 {
@@ -216,7 +216,7 @@ legacyContentUpdatedAt: "2025-11-04T00:24:46.000Z"
   }}
 />
 
-新内容会追加到窗口。1.43.61+ 若窗口开了 Markdown 高亮，`<think>` 推理过程会显示为灰色。
+新内容会追加到窗口。若窗口开了 Markdown 高亮，`<think>` 推理过程会显示为灰色。
 
 ### 模拟输入到当前窗口
 
@@ -224,7 +224,7 @@ legacyContentUpdatedAt: "2025-11-04T00:24:46.000Z"
 
 ## 历史会话
 
-1.37.17+ 支持自动带上历史消息。
+支持自动带上历史消息。
 
 <ModuleParamPreview
   moduleKey="sys:ai"
@@ -272,7 +272,7 @@ legacyContentUpdatedAt: "2025-11-04T00:24:46.000Z"
 ## 限制与排障
 
 - 密钥、组织 ID 不要写进分享动作。
-- 第三方中转必须带 `{1}` 或按 1.44.32+ 规则写完整网址。
+- 第三方中转必须带 `{1}` 或写受支持的完整网址。
 - 流式看不到错误和 token；调试先关掉流式。
 - 会话 ID 必须是 GUID，否则自动存历史会失败。
 
@@ -303,9 +303,10 @@ legacyContentUpdatedAt: "2025-11-04T00:24:46.000Z"
   ]}
 />
 
-## 更新历史
+<a id="更新历史" />
 
-- 20230714 修复 Azure 接口地址。
-- 20240327 增加响应格式、附加参数；提示词支持 gpt-4-vision。
-- 20241219 增加自定义响应格式说明。
+## 历史版本相关变化
+
+以下为与本页相关的重要变化，当前用法以正文为准。
+
 - 20250307 1.43.61 输出 `reasoning_content`；Markdown 窗口灰色显示 `<think>`。

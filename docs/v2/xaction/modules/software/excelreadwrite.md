@@ -15,7 +15,7 @@ legacyContentUpdatedAt: "2026-04-22T00:22:41.000Z"
 
 # Excel文件读写
 
-不启动 Excel，用 [NPOI](https://github.com/nissl-lab/npoi) 直接读写 `.xls` / `.xlsx`（1.32.6+）。不需要安装 Office 或 WPS。要控制已经打开的 Excel 窗口，用 [Excel对象操作](/v2/xaction/modules/excelobjects) 或 [Excel区域操作](/v2/xaction/modules/excelrange)——两边的工作簿 / 工作表对象互不通用。
+不启动 Excel，用 [NPOI](https://github.com/nissl-lab/npoi) 直接读写 `.xls` / `.xlsx`。不需要安装 Office 或 WPS。要控制已经打开的 Excel 窗口，用 [Excel对象操作](/v2/xaction/modules/excelobjects) 或 [Excel区域操作](/v2/xaction/modules/excelrange)——两边的工作簿 / 工作表对象互不通用。
 
 ## 当前模块定义
 
@@ -230,7 +230,7 @@ legacyContentUpdatedAt: "2026-04-22T00:22:41.000Z"
 
 ### 查找单元格
 
-查找首个具有特定值的单元格。（1.33.12+版本）
+查找首个具有特定值的单元格。
 
 <ModuleParamPreview
   moduleKey="sys:excelreadwrite"
@@ -702,7 +702,4 @@ border.outside:Thick,#FF0000
   ]}
 />
 
-## 更新历史
-
--   20230623 增加写入Workbook的注意信息、打开Workbook的一种错误原因的说明。
--   20250803 增加wraptext设置的说明、表达式调用npoi方法的说明。
+<a id="更新历史" />

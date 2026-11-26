@@ -156,7 +156,7 @@ legacyContentUpdatedAt: "2021-12-27T07:35:08.000Z"
 
 ### 遍历数据行
 
-需要 Quicker 1.28.10+。查询结果可以输出到表格，或输出到动态对象列表，再用 [每个](/v2/xaction/modules/each) 循环。
+查询结果可以输出到表格，或输出到动态对象列表，再用 [每个](/v2/xaction/modules/each) 循环。
 
 ![](./img/dboperation-005-bf75e25e68.png)
 

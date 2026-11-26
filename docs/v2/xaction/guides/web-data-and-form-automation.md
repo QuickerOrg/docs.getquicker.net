@@ -10,7 +10,7 @@ docStatus: "reviewed"
 
 # 网页列表提取与表单填写
 
-Quicker Connector 1.2.0 增加了可视化的网页工具。你可以在浏览器侧边栏中识别列表或表单、调整字段并复制模板，再由 Quicker 动作在实际运行时提取数据或填写表单。
+Quicker Connector 提供可视化的网页工具。你可以在浏览器侧边栏中识别列表或表单、调整字段并复制模板，再由 Quicker 动作在实际运行时提取数据或填写表单。
 
 这套功能把配置分为两部分：
 
@@ -20,7 +20,7 @@ Quicker Connector 1.2.0 增加了可视化的网页工具。你可以在浏览�
 模板不保存本次填写值，因此同一份模板可以反复使用，也更适合分享动作。
 
 :::tip[使用条件]
-请安装 Quicker Connector 1.2.0 或更高版本，并使用包含“提取网页列表数据”和“填写网页表单”操作的 Quicker V2 版本。官网 2.1.27 记录发布时，Edge 商店已发布 1.2.0，Chrome 商店待审核；旧版扩展不能执行这些新操作。
+请安装 Quicker Connector 1.2.0 或更高版本，并使用包含“提取网页列表数据”和“填写网页表单”操作的 Quicker V2 版本。旧版扩展不能执行这些操作，请在所用浏览器的扩展管理页确认版本。
 :::
 
 ## 打开网页工具
@@ -184,3 +184,11 @@ $=new { customerName = "张三", city = "北京", subscribe = true }
 - [设置浏览器扩展](/v2/xaction/guides/chrome-ext-settings)
 - [网页控制示例（传统方式）](/v2/xaction/guides/web-page-control)
 - [浏览器扩展后台命令参考](https://quickerconnectortests.getquicker.cn/docs/commands.html)
+
+## 历史版本相关变化
+
+以下为与本页相关的重要变化，当前用法以正文为准。
+
+- [2.1.27](/release-notes/archive-2-1-2-2)：配套 Connector 1.2.0 提供可视化网页列表与表单工具。
+
+更早记录与完整修复列表见[更新记录](/release-notes)。

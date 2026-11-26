@@ -158,7 +158,7 @@ curl --request POST 'https://192-168-5-50.lan.quicker.cc:668/api/exec' --header 
 
 已有 WebSocket 客户端继续使用原有消息协议，但要核对共享端口、安全连接和访问范围。修改验证码或关闭 WebSocket 后，应让客户端断开重连；如果需要立即清退全部旧连接，请退出并重新启动 Quicker。
 
-### 2.3.23 · 文件接收目录 {/* #receive-directory-2323 */}
+### 文件接收目录 {/* #receive-directory-2323 */}
 
 在同一设置页的 WebSocket 分组填写 **文件接收目录**，使用绝对路径；留空仍保存到系统“文档”目录下的 `Quicker\_recv`。目录只保存在本机，不随账号同步，也不移动已经接收的文件；保存后从下一个接收文件开始使用，不支持环境变量写法。
 
@@ -166,10 +166,10 @@ curl --request POST 'https://192-168-5-50.lan.quicker.cc:668/api/exec' --header 
 
 WebSocket 服务还可提供“文档”目录下 `Quicker/_websocket` 中的静态文件。仅开启 HTTP API 时不会开放该静态文件目录。
 
-### 2.3.31 · 文件接收后处理与批量复制 {/* #file-receive-actions */}
+### 文件接收后处理与批量复制 {/* #file-receive-actions */}
 
-:::info 版本与客户端支持
-以下协议扩展从 **2.3.31** 起可用。服务电脑需运行 2.3.31 或更高版本；不发送新字段时，仍然只保存文件并显示接收通知，不会自动复制。这些能力需要发送端配合，未新增电脑端全局开关，也不改变原有通知的点击行为。
+:::info 发送端配合要求
+服务电脑需运行 2.3.31 或更高版本；不发送新字段时，仍然只保存文件并显示接收通知，不会自动复制。这些能力需要发送端配合，未新增电脑端全局开关，也不改变原有通知的点击行为。
 :::
 
 #### 接收单个文件并复制或定位
@@ -304,3 +304,12 @@ curl.exe --noproxy "*" --request POST "https://127-0-0-1.lan.quicker.cc:668/api/
 - 本页服务让外部调用 Quicker，不需要云端推送服务转发。
 - [软件连接](./software-connections/index.md)通过 Bridge 让 Quicker 调用第三方软件，使用独立的连接服务。
 - 组合动作中的 [HTTP 服务](/v2/xaction/modules/httpserver)和 [WebSocket](/v2/xaction/modules/websocket)模块用于编写动作内的网络逻辑，独立于本页内置服务的开关和接口。
+
+## 历史版本相关变化
+
+以下为与本页相关的重要变化，当前用法以正文为准。
+
+- [2.3.31](/release-notes#2331--windows-arm64ocr-结果窗与录屏声音)：文件接收协议可指定后处理，并支持批量复制。
+- [2.3.23](/release-notes#2323--脚本-net截图布局与文件收发)：文件接收目录可单独配置。
+
+更早记录与完整修复列表见[更新记录](/release-notes)。

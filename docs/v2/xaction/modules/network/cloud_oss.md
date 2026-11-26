@@ -15,7 +15,7 @@ legacyContentUpdatedAt: "2024-12-06T06:30:48.000Z"
 
 # 第三方云存储/图床
 
-把文件、图片或文本传到你自己的云账号，换回网址。1.37.5+。只要临时链接，用 [临时云存储](/v2/xaction/modules/tempcloudstore)。
+把文件、图片或文本传到你自己的云账号，换回网址。只要临时链接，用 [临时云存储](/v2/xaction/modules/tempcloudstore)。
 
 ## 当前模块定义
 
@@ -144,6 +144,4 @@ AccessKey：[密钥管理](https://portal.qiniu.com/user/key)
   ]}
 />
 
-## 更新历史
-
-- 20241206 完善文字。
+<a id="更新历史" />

@@ -152,7 +152,7 @@ OpenAssistantResult OpenAssistant(OpenAssistantOptions options)
 
 {/* script-api:end */}
 
-## 2.3.45 · 打开助手与取得回答的区别
+## 打开助手与取得回答的区别 {/* #2345--打开助手与取得回答的区别 */}
 
 `qk.Ai.OpenAssistant` 打开问问 AI 并交付材料。`OpenAssistantOptions.AutoSend` 默认为 `false`，用户检查后自行发送；设为 `true` 时直接提交材料，可能上传文件内容并产生模型费用，不再另行确认。后续助手工具调用仍沿用审批设置。
 
@@ -161,3 +161,11 @@ OpenAssistantResult OpenAssistant(OpenAssistantOptions options)
 `Status` 为 `SubmissionUnknown` 时，先检查问问 AI 会话，确认是否已经发送，再决定是否重试，避免重复提交或计费。`AttachmentResults` 提供各材料的处理结果，发送前应检查内容或路径是否符合预期。
 
 材料由 [AiMaterial](./types/aimaterial.md) 创建，选项与默认值见 [OpenAssistantOptions](./types/openassistantoptions.md)。组合动作中的对应入口见[问问AI](/v2/xaction/modules/askai)。
+
+## 历史版本相关变化
+
+以下为与本页相关的重要变化，当前用法以正文为准。
+
+- [2.3.45](/release-notes#2345--问问ai步骤图片对话与路径导航)：OpenAssistant 可交付问题与材料，不等待助手返回答案。
+
+更早记录与完整修复列表见[更新记录](/release-notes)。

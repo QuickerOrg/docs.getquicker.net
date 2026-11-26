@@ -6,7 +6,7 @@ comments: false
 sidebar_position: 10
 ---
 
-2.3.37 起，`Ui.React` 的窗口控制选项见 [UiOptions](./types/uioptions.md)；设置 `AllowResize`、`ShowMinimizeButton` 或 `ShowMaximizeButton` 后可调整窗口尺寸，默认均关闭。TSX 输入控件的自动聚焦及窗口命令用法见 [React 界面](../../xaction/modules/ui/reactui.md#window-controls-2337)。这些选项只用于 `Ui.React`，不要据此推断其它对话框也支持。
+`Ui.React` 的窗口控制选项见 [UiOptions](./types/uioptions.md)；设置 `AllowResize`、`ShowMinimizeButton` 或 `ShowMaximizeButton` 后可调整窗口尺寸，默认均关闭。TSX 输入控件的自动聚焦及窗口命令用法见 [React 界面](../../xaction/modules/ui/reactui.md#window-controls-2337)。这些选项只用于 `Ui.React`，不要据此推断其它对话框也支持。
 
 {/* script-api:start */}
 
@@ -560,3 +560,11 @@ object? React(string source, object? input = null, int width = 0, int height = 0
 返回类型：`object?`。空值、用户取消和异常行为以成员及域说明为准。
 
 {/* script-api:end */}
+
+## 历史版本相关变化
+
+以下为与本页相关的重要变化，当前用法以正文为准。
+
+- [2.3.37](/release-notes#2337--框选贴图选字关联动作与规则分类)：Ui.React 可配置窗口大小调整与最小化、最大化按钮。
+
+更早记录与完整修复列表见[更新记录](/release-notes)。

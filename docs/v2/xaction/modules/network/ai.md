@@ -43,6 +43,8 @@ legacyContentUpdatedAt: "2025-11-04T00:24:46.000Z"
 
 全局模式也支持流式输出。它会一边写入指定文本窗口或当前前台窗口，一边保留完整的 **结果**、结束原因和可用的 token 统计；下面“流式时拿不到原始响应和 token”的限制只适用于步骤内自定义 API 模式。
 
+全局模式下可在高级参数中选择 **推理强度**，默认跟随模型；选择自动会让本次调用不发送推理参数。明确档位必须受实际模型支持，详见[按次设置推理强度](/v2/features/ai/services-and-models#action-reasoning)。步骤内自定义 API 模式不使用这个选项。
+
 <ModuleParamPreview
   moduleKey="sys:ai"
   values={{
@@ -308,5 +310,7 @@ legacyContentUpdatedAt: "2025-11-04T00:24:46.000Z"
 ## 历史版本相关变化
 
 以下为与本页相关的重要变化，当前用法以正文为准。
+
+- [2.3.50](/release-notes#2350)：可通过高级参数为本次调用设置推理强度，覆盖模型默认值。
 
 - 20250307 1.43.61 输出 `reasoning_content`；Markdown 窗口灰色显示 `<think>`。

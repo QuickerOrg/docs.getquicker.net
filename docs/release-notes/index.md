@@ -61,9 +61,17 @@ comments: true
 
 多设备使用、降级或回退前，请阅读[升级与回退](/v2/migration/upgrade-and-rollback)。各版本的具体风险也在下方对应条目中标出。
 
-本站已补充到 **2.3.49**；版本下载与完整修复记录以官网为准。
+本站已补充到 **2.3.50**；版本下载与完整修复记录以官网为准。
 
 ## 近期文档补充
+
+### 2.3.50 · 分组背景、规则复制与 AI 推理档位 {/* #2350 */}
+
+- [动作面板](/v2/features/action-panel/usage#group-navigation)补充分组背景开关、单组标题与导航标识，并说明磁贴比例及触发键文字颜色。
+- [扩展热键](/v2/features/triggers/powerkeys#copy-rules)说明场景分组筛选、多选复制规则，以及跨场景、引导键粘贴时的冲突与数量限制。
+- [AI 服务与模型](/v2/features/ai/services-and-models#action-reasoning)补齐 Off、Min、Extra、Max 等默认档位及组合动作按次覆盖；同步六个 AI 模块的参数定义和用法。
+- [贴图窗口](/v2/features/screenshot/pin-window)说明从右键菜单新建组并移入当前贴图；[显示器](/v2/features/displays-and-desktops)说明亮度浮层的紧凑布局、系统阴影及悬停手柄。软件同版改进远程鼠标触发、动作执行时的界面响应及 Office VBA 环境判断，完整修复记录见官网。
+- **升级与回退**：[2.3.50 兼容提醒](/v2/migration/upgrade-and-rollback#panel-and-reasoning-2350)区分 AI 精确默认值被旧版保存覆盖的风险、动作参数的最低版本，以及分组背景未知字段的保留边界。
 
 ### 2.3.49 · 面板上下文设置与扩展热键分组
 

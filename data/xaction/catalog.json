@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-11-22 17:10:45",
+  "generatedAt": "2026-11-26 19:08:20",
   "moduleCount": 176,
   "legacyMappedModuleCount": 0,
   "migratedLegacyModuleCount": 0,
@@ -180,6 +180,19 @@
       "stepType": "Action",
       "helpLink": "https://docs.getquicker.net/v2/xaction/modules/ai",
       "inputs": [
+        {
+          "key": "reasoningEffort",
+          "name": "推理强度",
+          "type": "Enum",
+          "description": "跟随模型默认保持现有行为；自动不发送推理参数。其它档位覆盖模型默认值，须由实际模型支持；Extra/Max 可兼容映射，不支持且无法映射时执行失败。",
+          "isAdvanced": true,
+          "validForList": [
+            "global"
+          ],
+          "condition": "仅：global",
+          "defaultValue": "model",
+          "variableMode": "UseVarOrInput"
+        },
         {
           "key": "modelSource",
           "name": "模型来源",
@@ -613,6 +626,47 @@
         }
       ],
       "selections": {
+        "reasoningEffort": {
+          "name": "推理强度",
+          "items": [
+            {
+              "value": "model",
+              "name": "跟随模型默认"
+            },
+            {
+              "value": "auto",
+              "name": "自动（不发送参数）"
+            },
+            {
+              "value": "none",
+              "name": "Off · 关闭思考"
+            },
+            {
+              "value": "minimal",
+              "name": "Min · 最少思考"
+            },
+            {
+              "value": "low",
+              "name": "Low · 低"
+            },
+            {
+              "value": "medium",
+              "name": "Medium · 中"
+            },
+            {
+              "value": "high",
+              "name": "High · 高"
+            },
+            {
+              "value": "xhigh",
+              "name": "Extra · 极高"
+            },
+            {
+              "value": "max",
+              "name": "Max · 最强"
+            }
+          ]
+        },
         "modelSource": {
           "name": "模型来源",
           "items": [
@@ -676,6 +730,15 @@
       "stepType": "Action",
       "helpLink": "https://docs.getquicker.net/v2/xaction/modules/ai-chat",
       "inputs": [
+        {
+          "key": "reasoningEffort",
+          "name": "推理强度",
+          "type": "Enum",
+          "description": "跟随模型默认保持现有行为；自动不发送推理参数。其它档位覆盖模型默认值，须由实际模型支持；Extra/Max 可兼容映射，不支持且无法映射时执行失败。",
+          "isAdvanced": true,
+          "defaultValue": "model",
+          "variableMode": "UseVarOrInput"
+        },
         {
           "key": "mode",
           "name": "会话方式",
@@ -845,6 +908,47 @@
         }
       ],
       "selections": {
+        "reasoningEffort": {
+          "name": "推理强度",
+          "items": [
+            {
+              "value": "model",
+              "name": "跟随模型默认"
+            },
+            {
+              "value": "auto",
+              "name": "自动（不发送参数）"
+            },
+            {
+              "value": "none",
+              "name": "Off · 关闭思考"
+            },
+            {
+              "value": "minimal",
+              "name": "Min · 最少思考"
+            },
+            {
+              "value": "low",
+              "name": "Low · 低"
+            },
+            {
+              "value": "medium",
+              "name": "Medium · 中"
+            },
+            {
+              "value": "high",
+              "name": "High · 高"
+            },
+            {
+              "value": "xhigh",
+              "name": "Extra · 极高"
+            },
+            {
+              "value": "max",
+              "name": "Max · 最强"
+            }
+          ]
+        },
         "mode": {
           "name": "会话方式",
           "items": [
@@ -895,6 +999,15 @@
       "stepType": "Action",
       "helpLink": "https://docs.getquicker.net/v2/xaction/modules/ai-extract",
       "inputs": [
+        {
+          "key": "reasoningEffort",
+          "name": "推理强度",
+          "type": "Enum",
+          "description": "跟随模型默认保持现有行为；自动不发送推理参数。其它档位覆盖模型默认值，须由实际模型支持；Extra/Max 可兼容映射，不支持且无法映射时执行失败。",
+          "isAdvanced": true,
+          "defaultValue": "model",
+          "variableMode": "UseVarOrInput"
+        },
         {
           "key": "text",
           "name": "文本",
@@ -1031,6 +1144,47 @@
         }
       ],
       "selections": {
+        "reasoningEffort": {
+          "name": "推理强度",
+          "items": [
+            {
+              "value": "model",
+              "name": "跟随模型默认"
+            },
+            {
+              "value": "auto",
+              "name": "自动（不发送参数）"
+            },
+            {
+              "value": "none",
+              "name": "Off · 关闭思考"
+            },
+            {
+              "value": "minimal",
+              "name": "Min · 最少思考"
+            },
+            {
+              "value": "low",
+              "name": "Low · 低"
+            },
+            {
+              "value": "medium",
+              "name": "Medium · 中"
+            },
+            {
+              "value": "high",
+              "name": "High · 高"
+            },
+            {
+              "value": "xhigh",
+              "name": "Extra · 极高"
+            },
+            {
+              "value": "max",
+              "name": "Max · 最强"
+            }
+          ]
+        },
         "useCaseId": {
           "name": "AI 任务场景",
           "items": [
@@ -1068,6 +1222,15 @@
       "stepType": "Action",
       "helpLink": "https://docs.getquicker.net/v2/xaction/modules/ai-vision",
       "inputs": [
+        {
+          "key": "reasoningEffort",
+          "name": "推理强度",
+          "type": "Enum",
+          "description": "跟随模型默认保持现有行为；自动不发送推理参数。其它档位覆盖模型默认值，须由实际模型支持；Extra/Max 可兼容映射，不支持且无法映射时执行失败。",
+          "isAdvanced": true,
+          "defaultValue": "model",
+          "variableMode": "UseVarOrInput"
+        },
         {
           "key": "image",
           "name": "图片",
@@ -1225,6 +1388,47 @@
         }
       ],
       "selections": {
+        "reasoningEffort": {
+          "name": "推理强度",
+          "items": [
+            {
+              "value": "model",
+              "name": "跟随模型默认"
+            },
+            {
+              "value": "auto",
+              "name": "自动（不发送参数）"
+            },
+            {
+              "value": "none",
+              "name": "Off · 关闭思考"
+            },
+            {
+              "value": "minimal",
+              "name": "Min · 最少思考"
+            },
+            {
+              "value": "low",
+              "name": "Low · 低"
+            },
+            {
+              "value": "medium",
+              "name": "Medium · 中"
+            },
+            {
+              "value": "high",
+              "name": "High · 高"
+            },
+            {
+              "value": "xhigh",
+              "name": "Extra · 极高"
+            },
+            {
+              "value": "max",
+              "name": "Max · 最强"
+            }
+          ]
+        },
         "useCaseId": {
           "name": "AI 任务场景",
           "items": [
@@ -1275,6 +1479,15 @@
       "stepType": "Action",
       "helpLink": "https://docs.getquicker.net/v2/xaction/modules/ai-text",
       "inputs": [
+        {
+          "key": "reasoningEffort",
+          "name": "推理强度",
+          "type": "Enum",
+          "description": "跟随模型默认保持现有行为；自动不发送推理参数。其它档位覆盖模型默认值，须由实际模型支持；Extra/Max 可兼容映射，不支持且无法映射时执行失败。",
+          "isAdvanced": true,
+          "defaultValue": "model",
+          "variableMode": "UseVarOrInput"
+        },
         {
           "key": "operation",
           "name": "操作",
@@ -1463,6 +1676,47 @@
         }
       ],
       "selections": {
+        "reasoningEffort": {
+          "name": "推理强度",
+          "items": [
+            {
+              "value": "model",
+              "name": "跟随模型默认"
+            },
+            {
+              "value": "auto",
+              "name": "自动（不发送参数）"
+            },
+            {
+              "value": "none",
+              "name": "Off · 关闭思考"
+            },
+            {
+              "value": "minimal",
+              "name": "Min · 最少思考"
+            },
+            {
+              "value": "low",
+              "name": "Low · 低"
+            },
+            {
+              "value": "medium",
+              "name": "Medium · 中"
+            },
+            {
+              "value": "high",
+              "name": "High · 高"
+            },
+            {
+              "value": "xhigh",
+              "name": "Extra · 极高"
+            },
+            {
+              "value": "max",
+              "name": "Max · 最强"
+            }
+          ]
+        },
         "operation": {
           "name": "操作",
           "items": [
@@ -1558,6 +1812,15 @@
       "stepType": "Action",
       "helpLink": "https://docs.getquicker.net/v2/xaction/modules/ai-classify",
       "inputs": [
+        {
+          "key": "reasoningEffort",
+          "name": "推理强度",
+          "type": "Enum",
+          "description": "跟随模型默认保持现有行为；自动不发送推理参数。其它档位覆盖模型默认值，须由实际模型支持；Extra/Max 可兼容映射，不支持且无法映射时执行失败。",
+          "isAdvanced": true,
+          "defaultValue": "model",
+          "variableMode": "UseVarOrInput"
+        },
         {
           "key": "text",
           "name": "文本",
@@ -1707,6 +1970,47 @@
         }
       ],
       "selections": {
+        "reasoningEffort": {
+          "name": "推理强度",
+          "items": [
+            {
+              "value": "model",
+              "name": "跟随模型默认"
+            },
+            {
+              "value": "auto",
+              "name": "自动（不发送参数）"
+            },
+            {
+              "value": "none",
+              "name": "Off · 关闭思考"
+            },
+            {
+              "value": "minimal",
+              "name": "Min · 最少思考"
+            },
+            {
+              "value": "low",
+              "name": "Low · 低"
+            },
+            {
+              "value": "medium",
+              "name": "Medium · 中"
+            },
+            {
+              "value": "high",
+              "name": "High · 高"
+            },
+            {
+              "value": "xhigh",
+              "name": "Extra · 极高"
+            },
+            {
+              "value": "max",
+              "name": "Max · 最强"
+            }
+          ]
+        },
         "useCaseId": {
           "name": "AI 任务场景",
           "items": [

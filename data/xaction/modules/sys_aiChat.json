@@ -11,6 +11,15 @@
   "helpLink": "https://docs.getquicker.net/v2/xaction/modules/ai-chat",
   "inputs": [
     {
+      "key": "reasoningEffort",
+      "name": "推理强度",
+      "type": "Enum",
+      "description": "跟随模型默认保持现有行为；自动不发送推理参数。其它档位覆盖模型默认值，须由实际模型支持；Extra/Max 可兼容映射，不支持且无法映射时执行失败。",
+      "isAdvanced": true,
+      "defaultValue": "model",
+      "variableMode": "UseVarOrInput"
+    },
+    {
       "key": "mode",
       "name": "会话方式",
       "type": "Enum",
@@ -179,6 +188,47 @@
     }
   ],
   "selections": {
+    "reasoningEffort": {
+      "name": "推理强度",
+      "items": [
+        {
+          "value": "model",
+          "name": "跟随模型默认"
+        },
+        {
+          "value": "auto",
+          "name": "自动（不发送参数）"
+        },
+        {
+          "value": "none",
+          "name": "Off · 关闭思考"
+        },
+        {
+          "value": "minimal",
+          "name": "Min · 最少思考"
+        },
+        {
+          "value": "low",
+          "name": "Low · 低"
+        },
+        {
+          "value": "medium",
+          "name": "Medium · 中"
+        },
+        {
+          "value": "high",
+          "name": "High · 高"
+        },
+        {
+          "value": "xhigh",
+          "name": "Extra · 极高"
+        },
+        {
+          "value": "max",
+          "name": "Max · 最强"
+        }
+      ]
+    },
     "mode": {
       "name": "会话方式",
       "items": [

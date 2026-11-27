@@ -1,21 +1,941 @@
 {
   "schemaVersion": 1,
   "baselineCreated": false,
-  "fromGeneratedAt": "2026-11-17 16:41:03",
-  "toGeneratedAt": "2026-11-22 17:10:45",
+  "fromGeneratedAt": "2026-11-22 17:10:45",
+  "toGeneratedAt": "2026-11-26 19:08:20",
   "summary": {
-    "addedModules": 1,
+    "addedModules": 0,
     "removedModules": 0,
-    "changedModules": 0
+    "changedModules": 6
   },
-  "addedModules": [
-    {
-      "key": "sys:askAi",
-      "name": "问问AI",
-      "slug": "askai",
-      "category": "Ai"
-    }
-  ],
+  "addedModules": [],
   "removedModules": [],
-  "changedModules": []
+  "changedModules": [
+    {
+      "key": "sys:ai",
+      "name": "AI 调用",
+      "changedFields": [],
+      "inputs": {
+        "added": [
+          {
+            "key": "reasoningEffort",
+            "name": "推理强度",
+            "type": "Enum",
+            "description": "跟随模型默认保持现有行为；自动不发送推理参数。其它档位覆盖模型默认值，须由实际模型支持；Extra/Max 可兼容映射，不支持且无法映射时执行失败。",
+            "isAdvanced": true,
+            "validForList": [
+              "global"
+            ],
+            "condition": "仅：global",
+            "defaultValue": "model",
+            "variableMode": "UseVarOrInput"
+          }
+        ],
+        "removed": [],
+        "changed": []
+      },
+      "outputs": {
+        "added": [],
+        "removed": [],
+        "changed": []
+      },
+      "selectionsChanged": true,
+      "selections": {
+        "before": {
+          "modelSource": {
+            "name": "模型来源",
+            "items": [
+              {
+                "value": "custom",
+                "name": "步骤内自定义 API"
+              },
+              {
+                "value": "global",
+                "name": "全局 AI 配置"
+              }
+            ]
+          },
+          "globalUseCaseId": {
+            "name": "AI 任务场景",
+            "items": [
+              {
+                "value": "text.general",
+                "name": "日常文本处理与翻译"
+              }
+            ]
+          },
+          "endpoint": {
+            "name": "接口端点",
+            "items": [
+              {
+                "value": "chat",
+                "name": "Chat"
+              },
+              {
+                "value": "completions",
+                "name": "Completions"
+              }
+            ]
+          },
+          "respFormat": {
+            "name": "响应格式",
+            "items": [
+              {
+                "value": "",
+                "name": "文本"
+              },
+              {
+                "value": "json_object",
+                "name": "JSON对象"
+              }
+            ]
+          }
+        },
+        "after": {
+          "reasoningEffort": {
+            "name": "推理强度",
+            "items": [
+              {
+                "value": "model",
+                "name": "跟随模型默认"
+              },
+              {
+                "value": "auto",
+                "name": "自动（不发送参数）"
+              },
+              {
+                "value": "none",
+                "name": "Off · 关闭思考"
+              },
+              {
+                "value": "minimal",
+                "name": "Min · 最少思考"
+              },
+              {
+                "value": "low",
+                "name": "Low · 低"
+              },
+              {
+                "value": "medium",
+                "name": "Medium · 中"
+              },
+              {
+                "value": "high",
+                "name": "High · 高"
+              },
+              {
+                "value": "xhigh",
+                "name": "Extra · 极高"
+              },
+              {
+                "value": "max",
+                "name": "Max · 最强"
+              }
+            ]
+          },
+          "modelSource": {
+            "name": "模型来源",
+            "items": [
+              {
+                "value": "custom",
+                "name": "步骤内自定义 API"
+              },
+              {
+                "value": "global",
+                "name": "全局 AI 配置"
+              }
+            ]
+          },
+          "globalUseCaseId": {
+            "name": "AI 任务场景",
+            "items": [
+              {
+                "value": "text.general",
+                "name": "日常文本处理与翻译"
+              }
+            ]
+          },
+          "endpoint": {
+            "name": "接口端点",
+            "items": [
+              {
+                "value": "chat",
+                "name": "Chat"
+              },
+              {
+                "value": "completions",
+                "name": "Completions"
+              }
+            ]
+          },
+          "respFormat": {
+            "name": "响应格式",
+            "items": [
+              {
+                "value": "",
+                "name": "文本"
+              },
+              {
+                "value": "json_object",
+                "name": "JSON对象"
+              }
+            ]
+          }
+        }
+      }
+    },
+    {
+      "key": "sys:aiChat",
+      "name": "AI 交互对话",
+      "changedFields": [],
+      "inputs": {
+        "added": [
+          {
+            "key": "reasoningEffort",
+            "name": "推理强度",
+            "type": "Enum",
+            "description": "跟随模型默认保持现有行为；自动不发送推理参数。其它档位覆盖模型默认值，须由实际模型支持；Extra/Max 可兼容映射，不支持且无法映射时执行失败。",
+            "isAdvanced": true,
+            "defaultValue": "model",
+            "variableMode": "UseVarOrInput"
+          }
+        ],
+        "removed": [],
+        "changed": []
+      },
+      "outputs": {
+        "added": [],
+        "removed": [],
+        "changed": []
+      },
+      "selectionsChanged": true,
+      "selections": {
+        "before": {
+          "mode": {
+            "name": "会话方式",
+            "items": [
+              {
+                "value": "new",
+                "name": "新建会话"
+              },
+              {
+                "value": "continue",
+                "name": "继续指定会话"
+              }
+            ]
+          },
+          "useCaseId": {
+            "name": "AI 任务场景",
+            "items": [
+              {
+                "value": "text.general",
+                "name": "日常文本处理与翻译"
+              }
+            ]
+          },
+          "missingUseCaseBehavior": {
+            "name": "任务场景缺失时",
+            "items": [
+              {
+                "value": "UseBaseUseCase",
+                "name": "使用基础场景"
+              },
+              {
+                "value": "Fail",
+                "name": "执行失败"
+              }
+            ]
+          }
+        },
+        "after": {
+          "reasoningEffort": {
+            "name": "推理强度",
+            "items": [
+              {
+                "value": "model",
+                "name": "跟随模型默认"
+              },
+              {
+                "value": "auto",
+                "name": "自动（不发送参数）"
+              },
+              {
+                "value": "none",
+                "name": "Off · 关闭思考"
+              },
+              {
+                "value": "minimal",
+                "name": "Min · 最少思考"
+              },
+              {
+                "value": "low",
+                "name": "Low · 低"
+              },
+              {
+                "value": "medium",
+                "name": "Medium · 中"
+              },
+              {
+                "value": "high",
+                "name": "High · 高"
+              },
+              {
+                "value": "xhigh",
+                "name": "Extra · 极高"
+              },
+              {
+                "value": "max",
+                "name": "Max · 最强"
+              }
+            ]
+          },
+          "mode": {
+            "name": "会话方式",
+            "items": [
+              {
+                "value": "new",
+                "name": "新建会话"
+              },
+              {
+                "value": "continue",
+                "name": "继续指定会话"
+              }
+            ]
+          },
+          "useCaseId": {
+            "name": "AI 任务场景",
+            "items": [
+              {
+                "value": "text.general",
+                "name": "日常文本处理与翻译"
+              }
+            ]
+          },
+          "missingUseCaseBehavior": {
+            "name": "任务场景缺失时",
+            "items": [
+              {
+                "value": "UseBaseUseCase",
+                "name": "使用基础场景"
+              },
+              {
+                "value": "Fail",
+                "name": "执行失败"
+              }
+            ]
+          }
+        }
+      }
+    },
+    {
+      "key": "sys:aiExtract",
+      "name": "AI 结构化提取",
+      "changedFields": [],
+      "inputs": {
+        "added": [
+          {
+            "key": "reasoningEffort",
+            "name": "推理强度",
+            "type": "Enum",
+            "description": "跟随模型默认保持现有行为；自动不发送推理参数。其它档位覆盖模型默认值，须由实际模型支持；Extra/Max 可兼容映射，不支持且无法映射时执行失败。",
+            "isAdvanced": true,
+            "defaultValue": "model",
+            "variableMode": "UseVarOrInput"
+          }
+        ],
+        "removed": [],
+        "changed": []
+      },
+      "outputs": {
+        "added": [],
+        "removed": [],
+        "changed": []
+      },
+      "selectionsChanged": true,
+      "selections": {
+        "before": {
+          "useCaseId": {
+            "name": "AI 任务场景",
+            "items": [
+              {
+                "value": "text.general",
+                "name": "日常文本处理与翻译"
+              }
+            ]
+          },
+          "missingUseCaseBehavior": {
+            "name": "任务场景缺失时",
+            "items": [
+              {
+                "value": "UseBaseUseCase",
+                "name": "使用基础场景"
+              },
+              {
+                "value": "Fail",
+                "name": "执行失败"
+              }
+            ]
+          }
+        },
+        "after": {
+          "reasoningEffort": {
+            "name": "推理强度",
+            "items": [
+              {
+                "value": "model",
+                "name": "跟随模型默认"
+              },
+              {
+                "value": "auto",
+                "name": "自动（不发送参数）"
+              },
+              {
+                "value": "none",
+                "name": "Off · 关闭思考"
+              },
+              {
+                "value": "minimal",
+                "name": "Min · 最少思考"
+              },
+              {
+                "value": "low",
+                "name": "Low · 低"
+              },
+              {
+                "value": "medium",
+                "name": "Medium · 中"
+              },
+              {
+                "value": "high",
+                "name": "High · 高"
+              },
+              {
+                "value": "xhigh",
+                "name": "Extra · 极高"
+              },
+              {
+                "value": "max",
+                "name": "Max · 最强"
+              }
+            ]
+          },
+          "useCaseId": {
+            "name": "AI 任务场景",
+            "items": [
+              {
+                "value": "text.general",
+                "name": "日常文本处理与翻译"
+              }
+            ]
+          },
+          "missingUseCaseBehavior": {
+            "name": "任务场景缺失时",
+            "items": [
+              {
+                "value": "UseBaseUseCase",
+                "name": "使用基础场景"
+              },
+              {
+                "value": "Fail",
+                "name": "执行失败"
+              }
+            ]
+          }
+        }
+      }
+    },
+    {
+      "key": "sys:aiVision",
+      "name": "AI 图片理解",
+      "changedFields": [],
+      "inputs": {
+        "added": [
+          {
+            "key": "reasoningEffort",
+            "name": "推理强度",
+            "type": "Enum",
+            "description": "跟随模型默认保持现有行为；自动不发送推理参数。其它档位覆盖模型默认值，须由实际模型支持；Extra/Max 可兼容映射，不支持且无法映射时执行失败。",
+            "isAdvanced": true,
+            "defaultValue": "model",
+            "variableMode": "UseVarOrInput"
+          }
+        ],
+        "removed": [],
+        "changed": []
+      },
+      "outputs": {
+        "added": [],
+        "removed": [],
+        "changed": []
+      },
+      "selectionsChanged": true,
+      "selections": {
+        "before": {
+          "useCaseId": {
+            "name": "AI 任务场景",
+            "items": [
+              {
+                "value": "image.understanding",
+                "name": "图片理解"
+              }
+            ]
+          },
+          "outputMode": {
+            "name": "输出方式",
+            "items": [
+              {
+                "value": "direct",
+                "name": "直接返回"
+              },
+              {
+                "value": "interactive",
+                "name": "交互调整"
+              }
+            ]
+          },
+          "missingUseCaseBehavior": {
+            "name": "任务场景缺失时",
+            "items": [
+              {
+                "value": "UseBaseUseCase",
+                "name": "使用基础场景"
+              },
+              {
+                "value": "Fail",
+                "name": "执行失败"
+              }
+            ]
+          }
+        },
+        "after": {
+          "reasoningEffort": {
+            "name": "推理强度",
+            "items": [
+              {
+                "value": "model",
+                "name": "跟随模型默认"
+              },
+              {
+                "value": "auto",
+                "name": "自动（不发送参数）"
+              },
+              {
+                "value": "none",
+                "name": "Off · 关闭思考"
+              },
+              {
+                "value": "minimal",
+                "name": "Min · 最少思考"
+              },
+              {
+                "value": "low",
+                "name": "Low · 低"
+              },
+              {
+                "value": "medium",
+                "name": "Medium · 中"
+              },
+              {
+                "value": "high",
+                "name": "High · 高"
+              },
+              {
+                "value": "xhigh",
+                "name": "Extra · 极高"
+              },
+              {
+                "value": "max",
+                "name": "Max · 最强"
+              }
+            ]
+          },
+          "useCaseId": {
+            "name": "AI 任务场景",
+            "items": [
+              {
+                "value": "image.understanding",
+                "name": "图片理解"
+              }
+            ]
+          },
+          "outputMode": {
+            "name": "输出方式",
+            "items": [
+              {
+                "value": "direct",
+                "name": "直接返回"
+              },
+              {
+                "value": "interactive",
+                "name": "交互调整"
+              }
+            ]
+          },
+          "missingUseCaseBehavior": {
+            "name": "任务场景缺失时",
+            "items": [
+              {
+                "value": "UseBaseUseCase",
+                "name": "使用基础场景"
+              },
+              {
+                "value": "Fail",
+                "name": "执行失败"
+              }
+            ]
+          }
+        }
+      }
+    },
+    {
+      "key": "sys:aiText",
+      "name": "AI 文本处理",
+      "changedFields": [],
+      "inputs": {
+        "added": [
+          {
+            "key": "reasoningEffort",
+            "name": "推理强度",
+            "type": "Enum",
+            "description": "跟随模型默认保持现有行为；自动不发送推理参数。其它档位覆盖模型默认值，须由实际模型支持；Extra/Max 可兼容映射，不支持且无法映射时执行失败。",
+            "isAdvanced": true,
+            "defaultValue": "model",
+            "variableMode": "UseVarOrInput"
+          }
+        ],
+        "removed": [],
+        "changed": []
+      },
+      "outputs": {
+        "added": [],
+        "removed": [],
+        "changed": []
+      },
+      "selectionsChanged": true,
+      "selections": {
+        "before": {
+          "operation": {
+            "name": "操作",
+            "items": [
+              {
+                "value": "custom",
+                "name": "自定义"
+              },
+              {
+                "value": "summarize",
+                "name": "总结"
+              },
+              {
+                "value": "rewrite",
+                "name": "改写"
+              },
+              {
+                "value": "shorten",
+                "name": "精简"
+              },
+              {
+                "value": "expand",
+                "name": "扩写"
+              },
+              {
+                "value": "translate",
+                "name": "翻译"
+              },
+              {
+                "value": "proofread",
+                "name": "校对"
+              },
+              {
+                "value": "tone",
+                "name": "改变语气"
+              },
+              {
+                "value": "title",
+                "name": "生成标题"
+              },
+              {
+                "value": "keywords",
+                "name": "提取关键词"
+              }
+            ]
+          },
+          "useCaseId": {
+            "name": "AI 任务场景",
+            "items": [
+              {
+                "value": "text.general",
+                "name": "日常文本处理与翻译"
+              }
+            ]
+          },
+          "outputMode": {
+            "name": "输出方式",
+            "items": [
+              {
+                "value": "direct",
+                "name": "直接返回"
+              },
+              {
+                "value": "interactive",
+                "name": "交互调整"
+              }
+            ]
+          },
+          "missingUseCaseBehavior": {
+            "name": "任务场景缺失时",
+            "items": [
+              {
+                "value": "UseBaseUseCase",
+                "name": "使用基础场景"
+              },
+              {
+                "value": "Fail",
+                "name": "执行失败"
+              }
+            ]
+          }
+        },
+        "after": {
+          "reasoningEffort": {
+            "name": "推理强度",
+            "items": [
+              {
+                "value": "model",
+                "name": "跟随模型默认"
+              },
+              {
+                "value": "auto",
+                "name": "自动（不发送参数）"
+              },
+              {
+                "value": "none",
+                "name": "Off · 关闭思考"
+              },
+              {
+                "value": "minimal",
+                "name": "Min · 最少思考"
+              },
+              {
+                "value": "low",
+                "name": "Low · 低"
+              },
+              {
+                "value": "medium",
+                "name": "Medium · 中"
+              },
+              {
+                "value": "high",
+                "name": "High · 高"
+              },
+              {
+                "value": "xhigh",
+                "name": "Extra · 极高"
+              },
+              {
+                "value": "max",
+                "name": "Max · 最强"
+              }
+            ]
+          },
+          "operation": {
+            "name": "操作",
+            "items": [
+              {
+                "value": "custom",
+                "name": "自定义"
+              },
+              {
+                "value": "summarize",
+                "name": "总结"
+              },
+              {
+                "value": "rewrite",
+                "name": "改写"
+              },
+              {
+                "value": "shorten",
+                "name": "精简"
+              },
+              {
+                "value": "expand",
+                "name": "扩写"
+              },
+              {
+                "value": "translate",
+                "name": "翻译"
+              },
+              {
+                "value": "proofread",
+                "name": "校对"
+              },
+              {
+                "value": "tone",
+                "name": "改变语气"
+              },
+              {
+                "value": "title",
+                "name": "生成标题"
+              },
+              {
+                "value": "keywords",
+                "name": "提取关键词"
+              }
+            ]
+          },
+          "useCaseId": {
+            "name": "AI 任务场景",
+            "items": [
+              {
+                "value": "text.general",
+                "name": "日常文本处理与翻译"
+              }
+            ]
+          },
+          "outputMode": {
+            "name": "输出方式",
+            "items": [
+              {
+                "value": "direct",
+                "name": "直接返回"
+              },
+              {
+                "value": "interactive",
+                "name": "交互调整"
+              }
+            ]
+          },
+          "missingUseCaseBehavior": {
+            "name": "任务场景缺失时",
+            "items": [
+              {
+                "value": "UseBaseUseCase",
+                "name": "使用基础场景"
+              },
+              {
+                "value": "Fail",
+                "name": "执行失败"
+              }
+            ]
+          }
+        }
+      }
+    },
+    {
+      "key": "sys:aiClassify",
+      "name": "AI 文本分类",
+      "changedFields": [],
+      "inputs": {
+        "added": [
+          {
+            "key": "reasoningEffort",
+            "name": "推理强度",
+            "type": "Enum",
+            "description": "跟随模型默认保持现有行为；自动不发送推理参数。其它档位覆盖模型默认值，须由实际模型支持；Extra/Max 可兼容映射，不支持且无法映射时执行失败。",
+            "isAdvanced": true,
+            "defaultValue": "model",
+            "variableMode": "UseVarOrInput"
+          }
+        ],
+        "removed": [],
+        "changed": []
+      },
+      "outputs": {
+        "added": [],
+        "removed": [],
+        "changed": []
+      },
+      "selectionsChanged": true,
+      "selections": {
+        "before": {
+          "useCaseId": {
+            "name": "AI 任务场景",
+            "items": [
+              {
+                "value": "text.general",
+                "name": "日常文本处理与翻译"
+              }
+            ]
+          },
+          "missingUseCaseBehavior": {
+            "name": "任务场景缺失时",
+            "items": [
+              {
+                "value": "UseBaseUseCase",
+                "name": "使用基础场景"
+              },
+              {
+                "value": "Fail",
+                "name": "执行失败"
+              }
+            ]
+          }
+        },
+        "after": {
+          "reasoningEffort": {
+            "name": "推理强度",
+            "items": [
+              {
+                "value": "model",
+                "name": "跟随模型默认"
+              },
+              {
+                "value": "auto",
+                "name": "自动（不发送参数）"
+              },
+              {
+                "value": "none",
+                "name": "Off · 关闭思考"
+              },
+              {
+                "value": "minimal",
+                "name": "Min · 最少思考"
+              },
+              {
+                "value": "low",
+                "name": "Low · 低"
+              },
+              {
+                "value": "medium",
+                "name": "Medium · 中"
+              },
+              {
+                "value": "high",
+                "name": "High · 高"
+              },
+              {
+                "value": "xhigh",
+                "name": "Extra · 极高"
+              },
+              {
+                "value": "max",
+                "name": "Max · 最强"
+              }
+            ]
+          },
+          "useCaseId": {
+            "name": "AI 任务场景",
+            "items": [
+              {
+                "value": "text.general",
+                "name": "日常文本处理与翻译"
+              }
+            ]
+          },
+          "missingUseCaseBehavior": {
+            "name": "任务场景缺失时",
+            "items": [
+              {
+                "value": "UseBaseUseCase",
+                "name": "使用基础场景"
+              },
+              {
+                "value": "Fail",
+                "name": "执行失败"
+              }
+            ]
+          }
+        }
+      }
+    }
+  ]
 }
